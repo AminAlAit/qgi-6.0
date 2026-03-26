@@ -1,0 +1,16 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfvars
+*.tfvars.json
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraform.tfstate.lock.info
+crash.log
+crash.*.log
+
+# Keep the lock file — it ensures reproducible provider installs
+!.terraform.lock.hcl
