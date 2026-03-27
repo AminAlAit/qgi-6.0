@@ -58,7 +58,7 @@ jobs:
           echo "old_key_id=$OLD_KEY_ID" >> "$GITHUB_OUTPUT"
 
       - name: Dry run — report key age
-        if: inputs.dry_run == 'true'
+        if: inputs.dry_run == true
         run: |
           aws iam list-access-keys \
             --user-name ci-terraform-deployer \
@@ -67,7 +67,7 @@ jobs:
           echo "Dry run complete. No keys were rotated."
 
       - name: Create new access key
-        if: inputs.dry_run != 'true'
+        if: inputs.dry_run != true
         id: create_key
         run: |
           NEW_KEY=$(aws iam create-access-key \
@@ -83,7 +83,7 @@ jobs:
           echo "new_key_secret=$NEW_KEY_SECRET" >> "$GITHUB_OUTPUT"
 
       - name: Update GitHub Codespace secrets
-        if: inputs.dry_run != 'true'
+        if: inputs.dry_run != true
         env:
           GH_TOKEN: ${{ secrets.GH_PAT_CODESPACE_SECRETS }}
           NEW_KEY_ID: ${{ steps.create_key.outputs.new_key_id }}
@@ -102,7 +102,7 @@ jobs:
           echo "Codespace secrets updated."
 
       - name: Delete old access key
-        if: inputs.dry_run != 'true'
+        if: inputs.dry_run != true
         run: |
           OLD_KEY_ID="${{ steps.list_keys.outputs.old_key_id }}"
           # Only delete the old key if we now have 2 keys (old + new)
@@ -113,7 +113,7 @@ jobs:
           echo "Deleted old key: $OLD_KEY_ID"
 
       - name: Verify final state
-        if: inputs.dry_run != 'true'
+        if: inputs.dry_run != true
         run: |
           aws iam list-access-keys \
             --user-name ci-terraform-deployer \
