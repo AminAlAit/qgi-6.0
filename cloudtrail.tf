@@ -8,6 +8,7 @@ locals {
   cloudtrail_bucket_name = "qgi-cloudtrail-logs-111111111111"
 }
 
+
 resource "aws_s3_bucket" "cloudtrail_logs" {
   bucket        = local.cloudtrail_bucket_name
   force_destroy = false
