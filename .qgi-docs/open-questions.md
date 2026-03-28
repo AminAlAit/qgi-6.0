@@ -5,14 +5,6 @@
 
 ---
 
-## Recipes pipeline
+*No open questions at this time.*
 
-**Q7. How do you score confidence in a Recipe alert when it is driven by predicted indicator values?**
-When Recipe matching runs against current patterns that include predicted (not yet published) values, those predictions carry uncertainty that grows with how far into the future they extend. How should this uncertainty be surfaced to the user?
-
-Options under consideration:
-- (a) Binary flag: "this alert contains predicted values" — let the user judge
-- (b) Confidence decay: score = Recipe match strength × `f(how many predicted years)` — a continuous discount
-- (c) Separate alert tiers: "confirmed alert" (all real data) vs "early signal alert" (contains predictions)
-
-Needed for: alert/confidence scoring design.
+All architectural and product questions raised to date have been answered and recorded in [decisions.md](decisions.md), [architecture.md](architecture.md), and [business-context.md](business-context.md).
