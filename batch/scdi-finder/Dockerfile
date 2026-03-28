@@ -1,2 +1,17 @@
-# TODO: migrate from qgi-pipeline-b-scdi-finder (#55)
-FROM public.ecr.aws/lambda/python:3.13-arm64
+# Use an official Python runtime as a parent image
+FROM python:3.12-slim
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the application code into the container
+COPY ./src/ .
+
+# Specify the command to run on container start
+CMD ["python", "scdi_finder.py"]

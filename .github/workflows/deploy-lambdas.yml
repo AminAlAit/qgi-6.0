@@ -26,15 +26,21 @@ jobs:
             | grep '^lambdas/' | cut -d/ -f2 | sort -u)
           for NAME in $CHANGED; do
             LAMBDA_DIR="lambdas/$NAME"
-            [ -f "$LAMBDA_DIR/handler.py" ] || continue
+            [ -f "$LAMBDA_DIR/lambda_function.py" ] || continue
             echo "Deploying qgi-$NAME..."
             cd "$LAMBDA_DIR"
             pip install -q -r requirements.txt -t package/ 2>/dev/null || true
-            cp handler.py package/
+            cp *.py package/
+            [ -f indicators.yaml ] && cp indicators.yaml package/ || true
             cd package && zip -qr ../function.zip . && cd ..
+            # Dir name → AWS function name (handles the one mismatch)
+            case "$NAME" in
+              pipeline-b-checker) AWS_NAME="qgi-pipeline-ops-batch-checker" ;;
+              *) AWS_NAME="qgi-$NAME" ;;
+            esac
             aws lambda update-function-code \
-              --function-name "qgi-$NAME" \
+              --function-name "$AWS_NAME" \
               --zip-file fileb://function.zip \
               --architectures arm64
-            cd /workspaces/qgi-pipeline
+            cd "$GITHUB_WORKSPACE"
           done
