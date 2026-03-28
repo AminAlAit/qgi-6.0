@@ -18,6 +18,9 @@ locals {
 
 data "aws_caller_identity" "current" {}
 
+
+
+
 # ---------------------------------------------------------------------------
 # cloud-resume-web — S3 + CloudFront deploy role
 # Replaces: aminalait-github-actions-deploy IAM user
@@ -74,8 +77,8 @@ data "aws_iam_policy_document" "cloud_resume_web_deploy" {
   }
 
   statement {
-    sid    = "CloudFrontInvalidate"
-    effect = "Allow"
+    sid     = "CloudFrontInvalidate"
+    effect  = "Allow"
     actions = ["cloudfront:CreateInvalidation"]
     resources = [
       "arn:aws:cloudfront::${data.aws_caller_identity.current.account_id}:distribution/E1MXUQ8TWPFAEQ",

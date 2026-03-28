@@ -122,9 +122,18 @@ This is another reason the EventBridge Scheduler was paused: the pipeline should
 
 ## Customers and commercial model
 
-**Model:** SaaS — subscription-based access to QGI's intelligence outputs.
+**Business stage:** Pre-launch. Pipeline infrastructure is being rebuilt in Terraform before product development begins.
 
-**Target subscribers:**
+### Revenue streams
+
+| Stream | Model | Price | Notes |
+|--------|-------|-------|-------|
+| B2B private indicators | Client pays to run their private dataset through the pipeline | ~$5K/indicator (large clients), ~$1.5K (standard), ~$2K (mid) | Pipeline already built; client data stays private, never mixed with public indicators |
+| Client reports | One-off intelligence report for a specific country pair or question | Variable | White-glove service |
+| SaaS tiers | Subscription access to QGI web platform | TBD tiers | Recipes alerts, pattern explorer, country profiles |
+| Social media | Public-facing content (insights, pattern highlights) | Free / brand-building | Drives awareness and inbound |
+
+### Target subscribers (SaaS)
 - Journalists and investigative reporters
 - Academic researchers and political scientists
 - Policy makers and government analysts
@@ -132,7 +141,8 @@ This is another reason the EventBridge Scheduler was paused: the pipeline should
 - Prediction market participants
 - Geopolitics enthusiasts and informed news-followers
 
-**Business stage:** Pre-launch. Pipeline infrastructure is being rebuilt in Terraform before product development begins.
+### B2B private indicator model (key differentiator)
+A client with proprietary data (e.g. satellite imagery, private sentiment scores, classified economic data) can pay to have that indicator run through the QGI pipeline. The pipeline produces SCDIs and Patterns for that indicator against all 260 countries — results are returned to the client and never exposed on the public platform. This monetises the pipeline infrastructure independently of the SaaS product.
 
 ---
 
