@@ -1,6 +1,8 @@
 {
   "name": "qgi-aws-tf hub",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
 
   "features": {
     "ghcr.io/devcontainers/features/terraform:1": {
