@@ -1,74 +1,68 @@
 # QGI — Open Questions
 
-> This file tracks architectural, product, and strategic questions that block design decisions.
-> When answered, move the answer to the relevant doc and remove from here.
+> Answered questions are moved to the relevant doc. Only unresolved questions live here.
 > Last updated: 2026-03-28
 
 ---
 
-## Product / Business (high priority — blocks knowledge extraction design)
+## Product / Business
 
-**Q1. What does QGI stand for?**
-Needed for: business-context.md, all public-facing docs.
+**Q1. What does #17 qgi-api-cost-ticker do?**
+"Cost ticker" could mean: (a) pipeline operational cost tracking (internal), (b) a "geopolitical cost" ticker (human/economic cost of events), or (c) something else. Needs clarification to know if this issue is still relevant given the Recipes direction.
 
-**Q2. What is the product in one sentence, and who is the intended customer?**
-Is this: (a) a personal research tool for Amin, (b) a B2B data/intelligence product, (c) a public platform, (d) something else?
-Needed for: business-context.md, prioritising the API layer (#15, #16, #17).
-
-**Q3. What does a "Pattern" mean to a human analyst?**
-Give an example: "Country A did X between years T1 and T2, and Country B did the same thing M years later, across N indicators. What does that tell us?"
-Needed for: knowledge extraction design, API design, frontend design.
-
-**Q4. What are your ideas for knowledge extraction (Phase 6+)?**
-You mentioned you have several ideas. Even rough ones:
-- Ranking algorithms? (e.g. top-10 predictive country pairs globally)
-- Regime-change detection? (pattern breakdown signals)
-- Investment/risk signals?
-- Historical narrative generation? (e.g. "Country A in 1990 looks like Country B in 2024")
-Needed for: Phase 6 architecture, deciding whether ML is involved.
-
-**Q5. Who consumes the website-facing APIs (#15, #16, #17)?**
-"Pattern of week", "cost ticker", "pipeline status" — for whom? Internal dashboard? Public website? Clients?
-Needed for: API design, authentication requirements.
+**Q2. What are the 1-year and 3-year goals for QGI?**
+Needed for: strategic prioritisation of engineering work.
 
 ---
 
-## Architecture (medium priority — blocks Terraform rebuild details)
+## Recipes pipeline
 
-**Q6. How many Batch jobs typically ran per monthly execution?**
-Specifically: on a typical month, how many indicators get updated (have new World Bank data)?
-If typically 5–10 indicators are updated, that's 1,300–2,600 Batch jobs per run.
-Needed for: correct instance type and concurrency sizing in Terraform.
+**Q3. How do you define "end of a pattern" for event mapping?**
+In the Saudi-Azeri example, the pattern ends at 2016 for Saudi and 2021 for Azerbaijan. What time window counts as "at the end"? E.g., within 1 year of `start_year + length`? Within 2 years?
+Needed for: Recipe-building algorithm design.
 
-**Q7. What is the typical Batch job duration per country?**
-Each job (one indicator × one country_a) runs FFT cross-correlation against 259 country_b's.
-Even a rough estimate ("under 5 minutes", "5–30 minutes") matters for cost modelling.
-Needed for: instance type selection, concurrency limits.
+**Q4. Does a Recipe require BOTH countries to have the same event type, or just one?**
+In the Saudi-Azeri example, both ended in military conflict. Is "both countries" a hard requirement, or can a recipe fire if only one country had the event?
+Needed for: Recipe matching algorithm.
 
-**Q8. Should Phase 1 hard waits (21 min for workers, 60 min for Pattern workers) be replaced?**
-They waste time when workers finish early. Better approach: track completion via DynamoDB counter or Step Functions callbacks. Is this worth doing in the rebuild, or keep simple waits?
-Needed for: Step Functions redesign decision.
+**Q5. What is the minimum number of pattern instances for a Recipe to be considered statistically valid?**
+E.g., must at least 5 country pairs have independently ended in "Military Conflict" before that Recipe is trusted?
+Needed for: Recipe confidence scoring.
 
-**Q9. Country name resolution strategy for multi-source ingestion**
-When a new source uses ISO codes or different country names, how do we map to `countries.csv`?
-Options: (a) per-source lookup table in S3, (b) ISO alpha-2/3 column in countries.csv already exists — use it, (c) fuzzy matching Lambda.
+**Q6. How do you envision collecting country events?**
+Options: (a) AI-generated in bulk (Claude/Gemini reads historical records), (b) third-party events API (GDELT, ACLED), (c) manual curation, (d) hybrid.
+Needed for: events collection pipeline design.
+
+**Q7. For Recipe matching against current patterns — how "current" is current?**
+With indicator completion (self-prediction), patterns can extend to today. But how do you handle the uncertainty of predicted values when generating Recipe alerts? E.g., "80% confidence" based on how far the prediction extends?
+Needed for: alert/confidence scoring design.
+
+---
+
+## Architecture
+
+**Q8. Should Phase 1 hard waits (21 min workers, 60 min Pattern workers) be replaced with completion callbacks?**
+Hard waits waste time when workers finish early. Alternative: track completion via DynamoDB counter (decrement per completed worker, trigger next phase when zero). Worth redesigning in the rebuild?
+
+**Q9. Country name normalization strategy for multi-source ingestion**
+Each new source uses different country identifiers. `countries.csv` has `alpha_2`, `alpha_3`, `numeric_code`, and 20 alternate name columns. Strategy: use ISO codes as primary key for normalization where available, with a per-source override table for mismatches?
 Needed for: multi-source Phase 1 design.
 
-**Q10. What happens to the `qgi-pipeline-c-poc` Lambda?**
-It's a prototype of Pipeline C with combined dispatcher+worker. References non-existent `countries_parquet` table. Safe to delete after rebuild confirms Production Pipeline C is solid?
-Current answer: yes, pending rebuild.
+**Q10. Indicator completion — where in the pipeline does it run?**
+Options: (a) Phase 1.5 — immediately after Phase 1 ingest, before Phase 2 Batch; (b) separate monthly job that runs ahead of the main pipeline; (c) on-demand at query time.
+The simpler answer is (a) — integrate into the existing Step Functions before Phase 2.
+
+**Q11. What is the actual current volume of SCDIs and Patterns in S3?**
+Run these and report back:
+\`\`\`sql
+SELECT COUNT(*) FROM qgi_data.scdis;
+SELECT COUNT(*) FROM qgi_data.patterns;
+\`\`\`
+Needed for: understanding whether the knowledge extraction layer needs big-data tooling or Athena is sufficient.
 
 ---
 
-## Data (lower priority — can be answered during rebuild)
+## Data
 
-**Q11. Is `indicator_map.csv` currently manually maintained or auto-generated?**
-Confirmed: consumed by `scdi_finder.py`. Should be auto-generated from xlsx.
-Action: create issue to generate it in Pipeline A rather than maintaining manually.
-
-**Q12. Should the `countries` Glue table be migrated to Parquet?**
-Currently backed by CSV. Parquet would be faster and cheaper for Athena queries (Pattern synthesis queries join on countries).
-The PoC Lambda (`qgi-pipeline-c-poc`) references a `countries_parquet` table that doesn't exist — was this the intent?
-
-**Q13. Are there SCDIs or Patterns currently in S3 that are worth keeping?**
-When the Terraform rebuild deploys and the new pipeline runs for the first time, it will recompute everything from scratch. Is the existing data in `pipeline-B-scdi-finder/scdis/` and `pipeline-C-pattern-synthesizer/output/` worth preserving or can it be recomputed?
+**Q12. Can existing SCDI and Pattern data in S3 be discarded when the Terraform rebuild runs?**
+The rebuild will recompute everything from scratch. Is the current data in `pipeline-B-scdi-finder/scdis/` and `pipeline-C-pattern-synthesizer/output/` worth preserving, or can it be recomputed?
