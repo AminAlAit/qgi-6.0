@@ -96,13 +96,18 @@ Sourced from external APIs/files. Currently: World Bank only.
 - Stored as: `{indicator_id}/{indicator_id}.csv.gz` — columns: `country, year, value`
 - Indicator map: `indicator_map.csv` — maps `indicator_id_string` → `indicator_numeric_id` (consumed by scdi_finder; should be auto-generated from xlsx)
 
+**Indicator completion (not yet implemented):**
+All indicators must be extended to the current year via self-prediction (time series forecasting per indicator per country) before SCDI computation. Predicted values must be stored with an `is_predicted` flag. See Phase 1.5 below.
+
 ### Countries
 - 260 countries in `countries.csv` (S3)
 - Glue table: `qgi_data.countries` (backed by same S3 path)
 - Has numeric `id`, `name_1` (primary name), `alpha_2`, `alpha_3`, `numeric_code`, + alternate names
 
 ### SCDIs (Single Dyadic Correlating Indexes)
-One SCDI = a statistically significant correlation between Country A's indicator time series and Country B's time series at a given lag.
+One SCDI = a statistically significant correlation between Country A's segment of indicator X and Country B's segment of the **same indicator X**, possibly offset in time.
+
+**Important:** It is always the same indicator for both countries. The "lag" is not a separate column — it is implicit as `start_year_b - start_year_a` (can be zero, positive, or negative).
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -137,8 +142,30 @@ Aggregation of SCDIs per country pair, summarising how strongly Country A's hist
 - Location: `s3://qgi-data-lake/pipeline-C-pattern-synthesizer/output/data/country_a_id={id}/`
 - Glue table: `qgi_data.patterns`
 
-### Knowledge extraction layer (not yet built)
-`[TBD]` — See [open-questions.md](open-questions.md)
+### Country events (not yet built — required for Recipes)
+One record = one significant event for a country in a given year.
+
+| Field | Type | Description |
+|-------|------|-------------|
+| country | string | Country name |
+| year | int | Year |
+| title | string | 2–3 word label |
+| description | string | 1–2 line description |
+| severity | float/enum | AI-assessed severity |
+
+Collection: AI-generated in bulk for history, then annual updates. ~10 events per country per year target.
+
+### Recipes (Phase 6 — first knowledge extraction pipeline)
+A Recipe = a statistical fingerprint of patterns that historically precede a specific event type.
+
+Built by: collecting events → linking pattern endpoints to event types → aggregating instances → producing a weighted recipe.
+Output: for each event type, a distribution of pattern characteristics (length, indicator_count, avg_correlation, contributing indicators).
+
+Recipe matching: compare current patterns (including predicted-value patterns) against known recipes → generate alerts.
+
+### Other knowledge extraction (planned, not designed)
+- Influence Cascade — TBD
+- Country Profiles — TBD
 
 ---
 
@@ -172,7 +199,9 @@ Aggregation of SCDIs per country pair, summarising how strongly Country A's hist
 | Phase 1 and Phase 4 use hard waits (21 min, 60 min) | Wastes time when workers finish early | Replace with SQS completion callbacks |
 | `indicator_map.csv` manually maintained | Drift risk from xlsx | Auto-generate from xlsx in Pipeline A |
 | No S3 lifecycle rule on `query_results/` | Unbounded growth | 30-day expiry on Athena temp results |
-| Pipeline A hard-coded to World Bank | Can't add new sources | Multi-source ingestion architecture (#TODO) |
+| No indicator completion step | SCDIs/Patterns missing recent years; Recipes can't work in real-time | Add Phase 1.5: self-prediction per indicator/country |
+| Predicted values not flagged | Frontend can't distinguish real vs predicted | Add `is_predicted` field to indicator storage |
+| Pipeline A hard-coded to World Bank | Can't add new sources | Multi-source ingestion architecture (#68) |
 | Orphaned Glue tables in qgi_data | Noise, minor cost | Clean up in rebuild |
 
 ---

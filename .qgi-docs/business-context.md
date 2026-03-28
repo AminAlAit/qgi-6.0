@@ -1,80 +1,138 @@
 # QGI — Business Context
 
-> **Status:** Partially documented. Sections marked `[TBD — ask Amin]` must be filled in.
 > Last updated: 2026-03-28
 
 ---
 
 ## What is QGI?
 
-**QGI** stands for `[TBD — ask Amin: what does the acronym stand for?]`
+**QGI** = **Quantitative Geopolitical Intelligence**
 
-In one sentence: `[TBD — ask Amin: what is the product, and who is the intended customer/user?]`
-
-### Working description (derived from architecture, pending confirmation)
-
-QGI is a data intelligence platform that ingests quantitative indicators from international data sources (World Bank, OECD, UN, IMF, and others), computes statistical correlations between countries' indicator time series, and synthesizes these into geopolitical intelligence patterns — revealing which countries' historical trajectories predict other countries' future trajectories across economic, social, political, and stability dimensions.
+QGI is a SaaS platform that captures how countries behave and react — and offers highly educated predictions on where countries are heading — by finding statistical patterns in how one country's quantitative history mirrors another country's future.
 
 ---
 
 ## The core insight
 
-The platform is built on a concept called the **SCDI (Single Dyadic Correlating Index)**:
+Every country's trajectory can be measured through indicators: GDP growth, energy exports, military spending, social stability, and hundreds more. QGI's central discovery is that **countries often walk the same path**, just at different times.
 
-> Country A's indicator X, measured over years T to T+N, correlates with Country B's indicator Y, measured over years T+M to T+M+N, at correlation strength R.
+### SCDI — Single Dyadic Correlating Index
 
-In plain terms: "What Country A did between years T and T+N is statistically similar to what Country B did M years later."
+An SCDI is a statistically significant match between Country A's indicator segment and Country B's indicator segment of the same indicator, possibly offset in time:
 
-Aggregating thousands of SCDIs across many indicators for the same country pair produces a **Pattern** — a summary of how strongly and how often Country A's past predicts Country B's future (or vice versa).
+> Country A's [indicator X] over years [T_a → T_a + length] correlates with Country B's [indicator X] over years [T_b → T_b + length] at strength R.
 
-`[TBD — ask Amin: what does a pattern mean to a human analyst? What geopolitical insight does it provide? Provide an example.]`
+The years can overlap (T_a = T_b) or be offset (T_b > T_a means B is following A with a delay). There is no separate "lag" field — the lag is implicit as `start_year_b - start_year_a`.
+
+### Pattern
+
+A Pattern aggregates all SCDIs from **all indicators** that share the same country pair, length, and start years. It answers: "How many indicators, and how strongly, does Country A's [T_a → T_a+N] trajectory match Country B's [T_b → T_b+N] trajectory?"
+
+**Pattern columns:**
+
+| Column | Meaning |
+|--------|---------|
+| country_a_id | The "predictor" country |
+| country_b_id | The "follower" country |
+| length | Segment length in years |
+| start_year_a | Country A's segment start |
+| start_year_b | Country B's segment start |
+| indicator_count | How many indicators contribute to this match |
+| avg_correlation | Average Pearson correlation across contributing indicators |
+| pattern_power_score | `length × indicator_count × avg_correlation` — composite ranking metric |
+
+### Real-world example
+
+| | SCDI 1: Energy Exports | SCDI 2: Military Expenditure |
+|-|------------------------|------------------------------|
+| Country A | Saudi Arabia | Saudi Arabia |
+| Country B | Azerbaijan | Azerbaijan |
+| Length | 5 years | 5 years |
+| A segment | 2011–2016 | 2011–2016 |
+| B segment | 2016–2021 | 2016–2021 |
+| Correlation | 95% | 91% |
+
+**What happened:** Saudi Arabia ended its 2011–2016 trajectory by starting the Yemen War. Azerbaijan ended its 2016–2021 trajectory by starting the Nagorno-Karabakh war.
+
+**The insight:** A QGI user in 2019 would see: "Azerbaijan has been walking on Saudi Arabia's footsteps for 4 years. It is on the path of a trajectory that — for Saudi Arabia — ended in military conflict."
+
+This is QGI's core value proposition: **finding these footstep relationships across all 260 countries and all available indicators, continuously**.
 
 ---
 
-## Current product state
+## Product layers
 
 | Layer | Status | Description |
 |-------|--------|-------------|
-| Data ingestion (Phase 1) | Live | Fetches 50 active World Bank indicators for 260 countries monthly |
-| SCDI computation (Phase 2) | Live | Batch job computes all country-pair SCDIs for updated indicators |
-| Pattern synthesis (Phase 4) | Live | Aggregates SCDIs into per-country-pair patterns |
-| Knowledge extraction | Not started | Extracting actionable intelligence from SCDIs and Patterns |
-| Website-facing APIs | Not started | #15, #16, #17 — public or internal API layer |
-| Frontend | Not started | `[TBD]` |
+| Data ingestion (Phase 1) | Live | World Bank indicators, 260 countries, monthly |
+| Indicator completion (Phase 1.5) | Not built | Self-predict missing recent years per indicator; flag as predicted |
+| SCDI computation (Phase 2) | Live | Batch: all country pairs, all updated indicators |
+| Pattern synthesis (Phase 4) | Live | Aggregate SCDIs into patterns |
+| Recipes (Phase 6 — first KE pipeline) | Not started | Map patterns to real-world event types via country event data |
+| Other KE pipelines | Planned | Influence Cascade, Country Profiles (future) |
+| Website-facing APIs | Not started | SaaS subscription layer |
+| Frontend | Not started | Web application for subscribers |
 
 ---
 
-## Users and customers
+## Knowledge extraction — Recipes
 
-`[TBD — ask Amin:]`
-- Who is the intended user of the output? (Amin only? Clients? Public?)
-- Is this a B2B product, B2C, or personal research tool?
-- Is there a commercial model (subscription, consulting, data licensing)?
-- Is the website (qgi-api-* Lambdas) public-facing or internal?
+The first knowledge extraction pipeline to build.
+
+**Concept:** A Recipe is a pattern that has historically preceded a specific event type — e.g. "Military Conflict", "Economic Boom", "Inflation Surge", "Political Unrest".
+
+**How it works:**
+1. Collect the top ~10 most important events per country per year (AI-generated, see below)
+2. For each pattern, look at what events occurred for Country A and Country B at the end of their respective segments (`start_year + length`)
+3. If both countries ended with the same event type (e.g., both "Military Conflict"), that pattern is a candidate instance of the "Military Conflict" recipe
+4. Aggregate many such instances → a Recipe = a statistical fingerprint of patterns that precede a given event type
+5. Match current (possibly incomplete) patterns against Recipes → generate alerts: "Country X is currently showing a pattern consistent with the [Military Conflict] recipe"
+
+**Events data model:**
+
+| Field | Type | Description |
+|-------|------|-------------|
+| country | string | Country name |
+| year | int | Year of the event |
+| title | string | 2–3 word summary |
+| description | string | 1–2 line description |
+| severity | float/enum | Assessed by AI model |
+
+**Collection method:** AI-generated from historical records (Claude or Gemini). One-time bulk generation for history, then annual updates.
+
+**Important:** Recipe matching against current-year patterns requires completed (predicted) indicator values — which is why the Indicator Completion phase (1.5) is a prerequisite for Recipes to work in real-time.
+
+**Other planned KE pipelines (deferred):** Influence Cascade, Country Profiles.
 
 ---
 
-## Data sources
+## Indicator completion
 
-See [data-sources.md](data-sources.md) for the full source registry.
+A critical missing pipeline component. World Bank (and other source) indicator values are often published 1–2 years late. To make Recipes useful in real-time, each indicator's time series must be extended to the current year using **self-prediction** (each indicator predicts its own missing values, not cross-indicator prediction).
 
-**Current:** World Bank API (50 active indicators, 210 on hold)
-**Planned:** OECD, Our World In Data, UN, IMF, Fund for Peace, Freedom House, others
+**Rules:**
+- Predicted values are stored distinctly from real values (flag: `is_predicted = true`)
+- Frontend must visually differentiate predicted from real values
+- SCDI/Pattern computation can run on predicted values, but outputs must carry a `contains_predicted` flag
+- Self-prediction only — not cross-indicator
 
-**Licensing constraint:** All sources must be free to use for commercial purposes, including commercial exploitation of derived intelligence (SCDIs, Patterns, downstream insights). This must be verified per source before integration.
+This is another reason the EventBridge Scheduler was paused: the pipeline should run indicator completion before SCDI computation, which it currently does not do.
 
 ---
 
-## Strategic direction
+## Customers and commercial model
 
-`[TBD — ask Amin: what are the 1-year and 3-year goals for QGI?]`
+**Model:** SaaS — subscription-based access to QGI's intelligence outputs.
 
-Known intentions (derived from conversations):
-- Rebuild the pipeline in Terraform (qgi-infra) for reproducibility and multi-environment support
-- Extend ingestion to multiple data sources (multi-source architecture)
-- Build knowledge extraction pipelines on top of SCDIs and Patterns
-- Build website-facing API layer for consuming intelligence outputs
-- Eventually: staging → QA → production environment progression
+**Target subscribers:**
+- Journalists and investigative reporters
+- Academic researchers and political scientists
+- Policy makers and government analysts
+- Corporate decision makers (risk, geopolitical exposure)
+- Prediction market participants
+- Geopolitics enthusiasts and informed news-followers
+
+**Business stage:** Pre-launch. Pipeline infrastructure is being rebuilt in Terraform before product development begins.
 
 ---
 
