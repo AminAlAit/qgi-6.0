@@ -90,3 +90,20 @@ EventBridge (monthly)
 - **State:** `s3://qgi-tf-state/qgi/terraform.tfstate` + DynamoDB lock `qgi-tf-state-lock`
 
 See [CLAUDE.md](CLAUDE.md) for Claude Code-specific instructions.
+
+---
+
+## Codespace — multi-repo setup
+
+This repo is the **hub Codespace** for the entire system. When a Codespace is created here, sibling repos are automatically cloned alongside it:
+
+- The `setup.sh` in `.devcontainer/` runs on every new Codespace and calls `git clone` (or `git pull`) for each sibling repo — no manual action needed.
+- All repos land under `/workspaces/` next to each other.
+
+**To get the VS Code multi-root sidebar** (all repos visible side-by-side in the Explorer):
+
+1. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) → **"Open Workspace from File"**
+2. Select `qgi-hub.code-workspace` at the root of this repo
+3. VS Code will reload and show all repos in the sidebar — this persists for the lifetime of the Codespace
+
+VS Code may also prompt you automatically with _"Do you want to open the workspace file?"_ when the Codespace first starts — clicking yes has the same effect.
