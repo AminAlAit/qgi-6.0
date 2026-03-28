@@ -40,6 +40,19 @@ clone_or_pull() {
 clone_or_pull "qgi-infra"
 clone_or_pull "qgi-pipeline"
 
+# ---------------------------------------------------------------------------
+# Restore Claude memory from source-controlled .claude/ so the next Claude
+# instance has full context (preferences, project state, past decisions).
+# ---------------------------------------------------------------------------
+MEMORY_DIR="$HOME/.claude/projects/-workspaces-qgi-aws-tf/memory"
+mkdir -p "$MEMORY_DIR"
+for f in MEMORY.md user_amin.md project_qgi_state.md feedback_responsibilities.md; do
+  if [ -f "/workspaces/qgi-aws-tf/.claude/$f" ]; then
+    cp "/workspaces/qgi-aws-tf/.claude/$f" "$MEMORY_DIR/$f"
+    echo "Restored Claude memory: $f"
+  fi
+done
+
 echo ""
 echo "Hub Codespace ready. /workspaces contents:"
 ls "$WORKSPACES"
