@@ -12,5 +12,12 @@ override.tf.json
 crash.log
 crash.*.log
 
+# Terraform plan output — never commit
+tfplan
+*.tfplan
+
+# Pipeline control surface lives in qgi-pipeline, not here
+*.xlsx
+
 # Keep the lock file — it ensures reproducible provider installs
 !.terraform.lock.hcl
