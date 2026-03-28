@@ -8,7 +8,8 @@ clone_or_pull() {
   local dir="$WORKSPACES/$repo"
   if [ ! -d "$dir/.git" ]; then
     echo "Cloning AminAlAit/$repo..."
-    git clone "https://github.com/AminAlAit/$repo.git" "$dir"
+    git clone "https://github.com/AminAlAit/$repo.git" "$dir" 2>&1 || \
+      echo "  WARNING: AminAlAit/$repo not found (repo may not exist yet — see qgi-aws-tf issues #52/#54)"
   else
     echo "$repo present — pulling..."
     git -C "$dir" pull --ff-only 2>/dev/null || echo "(pull skipped — local changes or diverged)"
