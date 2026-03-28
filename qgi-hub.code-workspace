@@ -1,0 +1,14 @@
+{
+  "folders": [
+    { "name": "qgi-aws-tf (hub)", "path": "/workspaces/qgi-aws-tf" },
+    { "name": "qgi-pipeline", "path": "/workspaces/qgi-pipeline" },
+    { "name": "qgi-infra", "path": "/workspaces/qgi-infra" }
+  ],
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "[terraform]": {
+      "editor.formatOnSave": true,
+      "editor.defaultFormatter": "hashicorp.terraform"
+    }
+  }
+}

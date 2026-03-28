@@ -39,7 +39,11 @@
         "[terraform]": {
           "editor.formatOnSave": true,
           "editor.defaultFormatter": "hashicorp.terraform"
-        }
+        },
+        "git.scanRepositories": [
+          "/workspaces/qgi-infra",
+          "/workspaces/qgi-pipeline"
+        ]
       }
     }
   },
