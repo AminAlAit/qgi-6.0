@@ -1,0 +1,40 @@
+name: Deploy Lambdas
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'lambdas/**'
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::111111111111:role/github-actions-qgi-lambda-deploy
+          aws-region: eu-central-1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Deploy changed Lambdas
+        run: |
+          # Find Lambda dirs changed in this push
+          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
+            | grep '^lambdas/' | cut -d/ -f2 | sort -u)
+          for NAME in $CHANGED; do
+            LAMBDA_DIR="lambdas/$NAME"
+            [ -f "$LAMBDA_DIR/handler.py" ] || continue
+            echo "Deploying qgi-$NAME..."
+            cd "$LAMBDA_DIR"
+            pip install -q -r requirements.txt -t package/ 2>/dev/null || true
+            cp handler.py package/
+            cd package && zip -qr ../function.zip . && cd ..
+            aws lambda update-function-code \
+              --function-name "qgi-$NAME" \
+              --zip-file fileb://function.zip \
+              --architectures arm64
+            cd /workspaces/qgi-pipeline
+          done
