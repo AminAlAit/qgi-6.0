@@ -7,7 +7,7 @@
 #
 # Covered repos:
 #   - AminAlAit/cloud-resume-web  → S3 + CloudFront deploy
-#   - AminAlAit/qgi               → ECR push (qgi-pipeline-b-scdi-finder)
+#   - AminAlAit/qgi-pipeline      → ECR push + Lambda deploy (closes #58, #60)
 #   - AminAlAit/qgi-aws-tf        → IAM key rotation (Codespace credential refresh)
 # ---------------------------------------------------------------------------
 
@@ -90,9 +90,10 @@ resource "aws_iam_role_policy" "cloud_resume_web_deploy" {
 }
 
 # ---------------------------------------------------------------------------
-# qgi — ECR push role
+# qgi-pipeline — ECR push role (closes #58)
 # Replaces: github-actions-ecr-pusher IAM user (AdminAccess removed — closes #24)
 # Reuses existing least-privilege policy GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess
+# Trust updated from AminAlAit/qgi → AminAlAit/qgi-pipeline (scdi-finder migrated in #55)
 # ---------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "qgi_ecr_assume" {
@@ -114,7 +115,7 @@ data "aws_iam_policy_document" "qgi_ecr_assume" {
     condition {
       test     = "StringLike"
       variable = "${local.oidc_provider_url}:sub"
-      values   = ["repo:AminAlAit/qgi:*"]
+      values   = ["repo:AminAlAit/qgi-pipeline:ref:refs/heads/main"]
     }
   }
 }
@@ -122,7 +123,7 @@ data "aws_iam_policy_document" "qgi_ecr_assume" {
 resource "aws_iam_role" "qgi_ecr_push" {
   name               = "github-actions-qgi-ecr-push"
   assume_role_policy = data.aws_iam_policy_document.qgi_ecr_assume.json
-  description        = "OIDC role for AminAlAit/qgi GitHub Actions - ECR push to qgi-pipeline-b-scdi-finder"
+  description        = "OIDC role for AminAlAit/qgi-pipeline GitHub Actions - ECR push for scdi-finder"
 
   tags = {
     Project = "qgi"
@@ -132,6 +133,66 @@ resource "aws_iam_role" "qgi_ecr_push" {
 resource "aws_iam_role_policy_attachment" "qgi_ecr_push" {
   role       = aws_iam_role.qgi_ecr_push.name
   policy_arn = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:policy/GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess"
+}
+
+# ---------------------------------------------------------------------------
+# qgi-pipeline — Lambda deploy role (closes #60)
+# Used by deploy-lambdas.yml in AminAlAit/qgi-pipeline to update function code.
+# Scoped to qgi-* functions only; no config/env/permission changes allowed.
+# ---------------------------------------------------------------------------
+
+data "aws_iam_policy_document" "qgi_lambda_deploy_assume" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRoleWithWebIdentity"]
+
+    principals {
+      type        = "Federated"
+      identifiers = [local.oidc_provider_arn]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "${local.oidc_provider_url}:aud"
+      values   = ["sts.amazonaws.com"]
+    }
+
+    condition {
+      test     = "StringLike"
+      variable = "${local.oidc_provider_url}:sub"
+      values   = ["repo:AminAlAit/qgi-pipeline:ref:refs/heads/main"]
+    }
+  }
+}
+
+resource "aws_iam_role" "qgi_lambda_deploy" {
+  name               = "github-actions-qgi-lambda-deploy"
+  assume_role_policy = data.aws_iam_policy_document.qgi_lambda_deploy_assume.json
+  description        = "OIDC role for AminAlAit/qgi-pipeline GitHub Actions - Lambda function code updates"
+
+  tags = {
+    Project = "qgi"
+  }
+}
+
+data "aws_iam_policy_document" "qgi_lambda_deploy" {
+  statement {
+    sid    = "LambdaUpdateFunctionCode"
+    effect = "Allow"
+    actions = [
+      "lambda:UpdateFunctionCode",
+      "lambda:GetFunction",
+    ]
+    resources = [
+      "arn:aws:lambda:eu-central-1:${data.aws_caller_identity.current.account_id}:function:qgi-*",
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "qgi_lambda_deploy" {
+  name   = "lambda-update-function-code"
+  role   = aws_iam_role.qgi_lambda_deploy.id
+  policy = data.aws_iam_policy_document.qgi_lambda_deploy.json
 }
 
 # ---------------------------------------------------------------------------
