@@ -2,7 +2,7 @@
 
 > Records of key technical decisions, the reasoning behind them, and what was considered.
 > Future contributors: read this before proposing changes to core algorithms.
-> Last updated: 2026-03-28
+> Last updated: 2026-03-28 (D1–D7)
 
 ---
 
@@ -86,3 +86,21 @@ Geopolitical events rarely follow indicator patterns with exact-year precision. 
 **Rationale:** Hard waits waste time when workers finish early (common case). They also mask failures — a Phase 1 worker could have all failed silently but the pipeline would still proceed after 21 minutes. Counter-based completion is both faster and safer.
 
 **Not yet implemented:** Build in Terraform rebuild.
+
+---
+
+## D7 — Recipe alert confidence: binary `contains_predicted` flag (no decay scoring at launch)
+
+**Decision:** When a Recipe alert is generated from a pattern that contains predicted indicator values, mark it with a simple binary flag: `contains_predicted = True`. Do not implement a confidence decay score at launch.
+
+**Rationale:**
+Indicator providers only publish values when the year ends. This means predicted values will **always** be present for any current-year pattern — a "confirmed alert" (all real data) is practically unreachable in the near term. Given this, a binary flag is honest and sufficient: it tells the user "this alert uses some predicted values" without false precision.
+
+**What was considered and deferred:**
+A continuous confidence decay metric — `alert_confidence = recipe_match_score × f(predicted_years / total_years)` — would be more informative. This is tracked in issue #77 as a future enhancement. The decay function shape should be determined empirically once Recipe data accumulates.
+
+**Flag propagation:**
+- `is_predicted = True` on individual indicator values (Phase 1.5)
+- `contains_predicted = True` on any SCDI or Pattern derived from predicted values (Phase 2/4)
+- `contains_predicted = True` on any Recipe alert derived from such patterns (Phase 6)
+- Frontend must visually differentiate predicted-value alerts from fully-real-data alerts
