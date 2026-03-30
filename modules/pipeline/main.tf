@@ -8,7 +8,7 @@ data "archive_file" "placeholder" {
   type        = "zip"
   output_path = "${path.module}/placeholder.zip"
   source {
-    content  = "def handler(event, context): return {'statusCode': 200, 'body': 'placeholder'}"
+    content  = "def lambda_handler(event, context): return {'statusCode': 200, 'body': 'placeholder'}"
     filename = "lambda_function.py"
   }
 }
@@ -29,7 +29,7 @@ locals {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "ops_janitor" {
   function_name    = "qgi-pipeline-ops-janitor"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 512
   runtime          = local.lambda_defaults.runtime
@@ -57,7 +57,7 @@ resource "aws_lambda_function" "ops_janitor" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "a_sheet_fetcher" {
   function_name    = "qgi-pipeline-a-sheet-fetcher"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -84,7 +84,7 @@ resource "aws_lambda_function" "a_sheet_fetcher" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "a_dispatcher" {
   function_name    = "qgi-pipeline-a-dispatcher"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 512
   runtime          = local.lambda_defaults.runtime
@@ -111,7 +111,7 @@ resource "aws_lambda_function" "a_dispatcher" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "a_indicator_extractor" {
   function_name    = "qgi-pipeline-a-indicator-extractor"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 512
   runtime          = local.lambda_defaults.runtime
@@ -139,7 +139,7 @@ resource "aws_lambda_function" "a_indicator_extractor" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "a_worker" {
   function_name    = "qgi-pipeline-a-worker"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 512
   runtime          = local.lambda_defaults.runtime
@@ -177,7 +177,7 @@ resource "aws_lambda_event_source_mapping" "a_worker_sqs" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "a_reporter" {
   function_name    = "qgi-pipeline-a-reporter"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -202,7 +202,7 @@ resource "aws_lambda_function" "a_reporter" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "b_orchestrator" {
   function_name    = "qgi-pipeline-b-scdi-finder-batch-orchestrator"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -229,7 +229,7 @@ resource "aws_lambda_function" "b_orchestrator" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "ops_batch_checker" {
   function_name    = "qgi-pipeline-ops-batch-checker"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -253,7 +253,7 @@ resource "aws_lambda_function" "ops_batch_checker" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "b_dispatcher" {
   function_name    = "qgi-pipeline-b-dispatcher"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -280,7 +280,7 @@ resource "aws_lambda_function" "b_dispatcher" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "b_scdi_finder" {
   function_name    = "qgi-pipeline-b-scdi-finder"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -308,7 +308,7 @@ resource "aws_lambda_function" "b_scdi_finder" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "c_dispatcher" {
   function_name    = "qgi-pipeline-c-dispatcher"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -337,7 +337,7 @@ resource "aws_lambda_function" "c_dispatcher" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "c_worker" {
   function_name    = "qgi-pipeline-c-worker"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -375,7 +375,7 @@ resource "aws_lambda_event_source_mapping" "c_worker_sqs" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "c_dlq_inspector" {
   function_name    = "qgi-pipeline-c-dlq-inspector"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -412,7 +412,7 @@ resource "aws_lambda_event_source_mapping" "c_dlq_inspector_sqs" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "ops_dlq_scanner" {
   function_name    = "qgi-pipeline-ops-dlq-scanner"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
@@ -437,7 +437,7 @@ resource "aws_lambda_function" "ops_dlq_scanner" {
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "batch_job_terminator" {
   function_name    = "qgi-batch-job-terminator"
-  handler          = "lambda_function.handler"
+  handler          = "lambda_function.lambda_handler"
   timeout          = 900
   memory_size      = 128
   runtime          = local.lambda_defaults.runtime
