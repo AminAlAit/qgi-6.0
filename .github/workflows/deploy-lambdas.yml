@@ -1,46 +1,92 @@
 name: Deploy Lambdas
+
 on:
   push:
     branches: [main]
     paths:
       - 'lambdas/**'
+  # Allow deploying all functions to a specific environment on demand
+  workflow_dispatch:
+    inputs:
+      deploy_all:
+        description: 'Deploy ALL Lambda functions (not just changed)'
+        required: false
+        default: false
+        type: boolean
+      environment:
+        description: 'Target environment'
+        required: false
+        default: 'staging'
+        type: choice
+        options: [staging, prod]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
       contents: read
+
     steps:
       - uses: actions/checkout@v4
-      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          fetch-depth: 2
+
+      # Staging: assume role in qgi-staging account via its own OIDC role
+      - name: Configure AWS credentials (staging)
+        if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && inputs.environment == 'staging')
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-lambda-deploy
+          aws-region: eu-central-1
+
+      # Prod: assume role in management account (existing role)
+      - name: Configure AWS credentials (prod)
+        if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'prod')
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::111111111111:role/github-actions-qgi-lambda-deploy
           aws-region: eu-central-1
+
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-      - name: Deploy changed Lambdas
+
+      - name: Deploy Lambdas
         run: |
-          # Find Lambda dirs changed in this push
-          CHANGED=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} \
-            | grep '^lambdas/' | cut -d/ -f2 | sort -u)
+          if [ "${{ inputs.deploy_all }}" = "true" ]; then
+            CHANGED=$(ls lambdas/)
+          else
+            CHANGED=$(git diff --name-only HEAD~1 HEAD \
+              | grep '^lambdas/' | cut -d/ -f2 | sort -u)
+          fi
+
           for NAME in $CHANGED; do
             LAMBDA_DIR="lambdas/$NAME"
             [ -f "$LAMBDA_DIR/lambda_function.py" ] || continue
+            # pipeline-c-poc is being retired (issue #61) — skip
+            [ "$NAME" = "pipeline-c-poc" ] && continue
+
             echo "Deploying qgi-$NAME..."
-            cd "$LAMBDA_DIR"
-            pip install -q -r requirements.txt -t package/ 2>/dev/null || true
-            cp *.py package/
-            [ -f indicators.yaml ] && cp indicators.yaml package/ || true
-            cd package && zip -qr ../function.zip . && cd ..
-            # Dir name → AWS function name (handles the one mismatch)
+            WORK=$(mktemp -d)
+            cp "$LAMBDA_DIR"/*.py "$WORK"/
+            [ -f "$LAMBDA_DIR/indicators.yaml" ] && cp "$LAMBDA_DIR/indicators.yaml" "$WORK/" || true
+            if [ -f "$LAMBDA_DIR/requirements.txt" ] && [ -s "$LAMBDA_DIR/requirements.txt" ]; then
+              pip install -q -r "$LAMBDA_DIR/requirements.txt" -t "$WORK/" 2>/dev/null || true
+            fi
+            ZIP="$WORK/function.zip"
+            (cd "$WORK" && zip -qr "$ZIP" . --exclude "function.zip")
+
             case "$NAME" in
               pipeline-b-checker) AWS_NAME="qgi-pipeline-ops-batch-checker" ;;
               *) AWS_NAME="qgi-$NAME" ;;
             esac
+
             aws lambda update-function-code \
               --function-name "$AWS_NAME" \
-              --zip-file fileb://function.zip \
-              --architectures arm64
-            cd "$GITHUB_WORKSPACE"
+              --zip-file "fileb://$ZIP" \
+              --architectures arm64 \
+              --query 'FunctionName' --output text
+
+            rm -rf "$WORK"
           done
