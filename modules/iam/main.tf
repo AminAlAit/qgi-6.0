@@ -1,4 +1,58 @@
 # ---------------------------------------------------------------------------
+# GitHub Actions OIDC provider — allows qgi-pipeline CI/CD to deploy Lambdas
+# ---------------------------------------------------------------------------
+data "tls_certificate" "github_actions" {
+  url = "https://token.actions.githubusercontent.com/.well-known/openid-configuration"
+}
+
+resource "aws_iam_openid_connect_provider" "github_actions" {
+  url             = "https://token.actions.githubusercontent.com"
+  client_id_list  = ["sts.amazonaws.com"]
+  thumbprint_list = [data.tls_certificate.github_actions.certificates[0].sha1_fingerprint]
+}
+
+resource "aws_iam_role" "github_actions_lambda_deploy" {
+  name = "github-actions-qgi-lambda-deploy"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Federated = aws_iam_openid_connect_provider.github_actions.arn }
+      Action    = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+        }
+        StringLike = {
+          # Allow from main branch and version tags
+          "token.actions.githubusercontent.com:sub" = [
+            "repo:AminAlAit/qgi-pipeline:ref:refs/heads/main",
+            "repo:AminAlAit/qgi-pipeline:ref:refs/tags/*",
+          ]
+        }
+      }
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "github_actions_lambda_deploy" {
+  name = "qgi-lambda-deploy-policy"
+  role = aws_iam_role.github_actions_lambda_deploy.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect   = "Allow"
+      Action   = ["lambda:UpdateFunctionCode", "lambda:GetFunction"]
+      Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
+    }]
+  })
+}
+
+# ---------------------------------------------------------------------------
 # Lambda execution role
 # ---------------------------------------------------------------------------
 resource "aws_iam_role" "lambda_execution" {
