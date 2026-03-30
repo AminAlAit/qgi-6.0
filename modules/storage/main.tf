@@ -85,9 +85,10 @@ resource "aws_sqs_queue" "b_main" {
 # SQS — Phase C
 # ---------------------------------------------------------------------------
 resource "aws_sqs_queue" "c_dlq" {
-  name                      = "qgi-pipeline-c-dlq"
-  message_retention_seconds = 1209600
-  tags                      = var.tags
+  name                       = "qgi-pipeline-c-dlq"
+  message_retention_seconds  = 1209600
+  visibility_timeout_seconds = 900 # must be >= c-dlq-inspector Lambda timeout
+  tags                       = var.tags
 }
 
 resource "aws_sqs_queue" "c_main" {
