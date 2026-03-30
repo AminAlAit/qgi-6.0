@@ -305,6 +305,66 @@ resource "aws_iam_role_policy" "stepfunctions" {
 }
 
 # ---------------------------------------------------------------------------
+# Cross-account ops role — allows management account deployer to trigger and
+# monitor staging/qa pipeline executions from the hub Codespace CLI
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "cross_account_ops" {
+  name = "qgi-cross-account-ops"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { AWS = "arn:aws:iam::${var.management_account_id}:user/ci-terraform-deployer" }
+      Action    = "sts:AssumeRole"
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "cross_account_ops" {
+  name = "qgi-cross-account-ops-policy"
+  role = aws_iam_role.cross_account_ops.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      # Step Functions — start and observe executions
+      {
+        Effect   = "Allow"
+        Action   = ["states:StartExecution", "states:DescribeExecution",
+          "states:ListExecutions", "states:GetExecutionHistory",
+          "states:StopExecution"]
+        Resource = "*"
+      },
+      # Lambda — describe only (no invoke)
+      {
+        Effect   = "Allow"
+        Action   = ["lambda:GetFunction", "lambda:GetFunctionConfiguration",
+          "lambda:ListFunctions"]
+        Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
+      },
+      # CloudWatch Logs — read pipeline logs
+      {
+        Effect   = "Allow"
+        Action   = ["logs:DescribeLogGroups", "logs:DescribeLogStreams",
+          "logs:GetLogEvents", "logs:FilterLogEvents"]
+        Resource = "arn:aws:logs:${var.region}:${var.aws_account_id}:log-group:/aws/*:*"
+      },
+      # Batch — observe job status
+      {
+        Effect   = "Allow"
+        Action   = ["batch:DescribeJobs", "batch:ListJobs",
+          "batch:DescribeJobQueues", "batch:DescribeComputeEnvironments",
+          "batch:DescribeJobDefinitions"]
+        Resource = "*"
+      },
+    ]
+  })
+}
+
+# ---------------------------------------------------------------------------
 # EventBridge Scheduler — role to start the Step Functions execution
 # ---------------------------------------------------------------------------
 resource "aws_iam_role" "eventbridge_scheduler" {
