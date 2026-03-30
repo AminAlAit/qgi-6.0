@@ -63,6 +63,12 @@ variable "queue_c_main_arn" { type = string }
 variable "queue_c_dlq_url"  { type = string }
 variable "queue_c_dlq_arn"  { type = string }
 
+variable "batch_invoke_mode" {
+  type        = string
+  default     = "invoke"
+  description = "Mode passed to b-orchestrator: 'invoke' submits all jobs; 'invoke_5' caps at 5 (for staging tests)."
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

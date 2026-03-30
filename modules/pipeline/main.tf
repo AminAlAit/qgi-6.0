@@ -527,7 +527,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.b_orchestrator.arn
         Parameters = {
-          mode            = "invoke"
+          mode            = var.batch_invoke_mode
           "indicator_ids.$" = "$.reporter_result.updated_ids"
         }
         ResultPath = "$.trigger_b_output"
