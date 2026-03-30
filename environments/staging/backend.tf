@@ -5,5 +5,8 @@ terraform {
     region         = "eu-central-1"
     dynamodb_table = "qgi-infra-state-lock"
     encrypt        = true
+    assume_role = {
+      role_arn = "arn:aws:iam::222222222222:role/OrganizationAccountAccessRole"
+    }
   }
 }

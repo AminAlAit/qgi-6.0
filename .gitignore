@@ -3,3 +3,5 @@
 *.tfstate.backup
 .terraform.lock.hcl
 *.auto.tfvars
+*.tfplan
+placeholder.zip
