@@ -4,23 +4,33 @@ set -e
 WORKSPACES=/workspaces
 
 # ---------------------------------------------------------------------------
-# Authenticate gh CLI with PAT so cross-repo operations work.
-# GH_PAT is injected automatically from the "qgi-hub-codespace" Codespace
-# user secret (github.com/settings/codespaces). If missing, gh falls back
-# to the read-only GITHUB_TOKEN — repo creation and cross-repo pushes will
-# fail until the secret is set.
+# Git + gh authentication with PAT.
+#
+# GH_PAT is injected from the "qgi-hub-codespace" Codespace user secret
+# (github.com/settings/codespaces). It is needed to clone private sibling
+# repos (qgi-infra, qgi-pipeline) and push across repos.
+#
+# Root cause of past failures: Codespaces always sets GITHUB_TOKEN in the
+# environment, and `gh auth login --with-token` silently no-ops when
+# GITHUB_TOKEN is present (gh prefers the env var). The git insteadOf URL
+# rewrite is the reliable mechanism — it embeds the PAT directly in URLs so
+# git clone/push work regardless of which token gh is using.
 # ---------------------------------------------------------------------------
 if [ -n "$GH_PAT" ]; then
-  echo "$GH_PAT" | gh auth login --with-token
-  echo "gh CLI authenticated via GH_PAT"
-else
-  echo "WARNING: GH_PAT secret not found — gh is read-only (GITHUB_TOKEN only)"
-  echo "  Fix: github.com/settings/codespaces → add GH_PAT secret scoped to this repo"
-fi
-
-# Configure git to use the PAT for HTTPS pushes to any AminAlAit repo
-if [ -n "$GH_PAT" ]; then
+  # Set git URL rewrite FIRST — this is what actually enables private clone/push.
+  # Must be done before clone_or_pull is called.
   git config --global url."https://${GH_PAT}@github.com/".insteadOf "https://github.com/"
+  echo "git configured to use GH_PAT for github.com URLs"
+
+  # Also try to authenticate gh CLI (may no-op if GITHUB_TOKEN env var is set,
+  # but doesn't harm anything — git config above is the real fix).
+  unset GITHUB_TOKEN
+  echo "$GH_PAT" | gh auth login --with-token 2>/dev/null && \
+    echo "gh CLI authenticated via GH_PAT" || \
+    echo "gh CLI kept GITHUB_TOKEN (read-only for gh commands; git ops use PAT via insteadOf)"
+else
+  echo "WARNING: GH_PAT secret not found — cannot clone private repos or push cross-repo"
+  echo "  Fix: github.com/settings/codespaces → add GH_PAT secret scoped to qgi-aws-tf"
 fi
 
 clone_or_pull() {
@@ -29,14 +39,14 @@ clone_or_pull() {
   if [ ! -d "$dir/.git" ]; then
     echo "Cloning AminAlAit/$repo..."
     git clone "https://github.com/AminAlAit/$repo.git" "$dir" 2>&1 || \
-      echo "  WARNING: AminAlAit/$repo not found (repo may not exist yet — see qgi-aws-tf issues #52/#54)"
+      echo "  WARNING: failed to clone AminAlAit/$repo — check GH_PAT secret and repo existence"
   else
     echo "$repo present — pulling..."
     git -C "$dir" pull --ff-only 2>/dev/null || echo "(pull skipped — local changes or diverged)"
   fi
 }
 
-# Sibling repos — add new repos here as they are created (#52, #54)
+# Sibling repos — all active repos that should be present in the hub Codespace
 clone_or_pull "qgi-infra"
 clone_or_pull "qgi-pipeline"
 
