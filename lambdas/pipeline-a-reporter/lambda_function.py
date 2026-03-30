@@ -1,15 +1,12 @@
 import boto3
 import os
-import json
 from boto3.dynamodb.conditions import Key
 
 dynamodb = boto3.resource('dynamodb')
 sns = boto3.client('sns')
-lambda_client = boto3.client('lambda')
 
 TABLE_NAME = "qgi-indicator-updates"
-SNS_TOPIC_ARN = os.environ['SNS_TOPIC_ARN'] # Create an SNS topic for your email
-PIPELINE_B_ARN = os.environ['PIPELINE_B_ARN'] # Orchestrator ARN
+SNS_TOPIC_ARN = os.environ['SNS_TOPIC_ARN']
 
 def lambda_handler(event, context):
     run_id = event.get('run_id') # Passed from Step Function
@@ -44,27 +41,15 @@ def lambda_handler(event, context):
     else:
         message += "No updates found. Pipeline B will NOT be triggered."
 
-    # 1. Notify User
+    # Notify user
     sns.publish(
         TopicArn=SNS_TOPIC_ARN,
         Subject=f"QGI Update: {len(updated)} Changes",
         Message=message
     )
 
-    # 2. Trigger Pipeline B (If there are updates)
-    if updated:
-        # Construct the "Surgical" payload for Pipeline B
-        pipeline_b_payload = {
-            "mode": "invoke",
-            "indicator_ids": updated # Pass the specific list!
-        }
-        
-        # Invoke asynchronously
-        lambda_client.invoke(
-            FunctionName=PIPELINE_B_ARN,
-            InvocationType='Event',
-            Payload=json.dumps(pipeline_b_payload)
-        )
+    # Step Functions calls b-orchestrator directly after this returns.
+    # Do NOT invoke it here — that would bypass the batch_invoke_mode cap.
 
     return {
         "status": "Complete", 
