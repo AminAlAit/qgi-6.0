@@ -72,7 +72,11 @@ jobs:
             cp "$LAMBDA_DIR"/*.py "$WORK"/
             [ -f "$LAMBDA_DIR/indicators.yaml" ] && cp "$LAMBDA_DIR/indicators.yaml" "$WORK/" || true
             if [ -f "$LAMBDA_DIR/requirements.txt" ] && [ -s "$LAMBDA_DIR/requirements.txt" ]; then
-              pip install -q -r "$LAMBDA_DIR/requirements.txt" -t "$WORK/" 2>/dev/null || true
+              pip install -q -r "$LAMBDA_DIR/requirements.txt" \
+                --platform manylinux2014_aarch64 \
+                --only-binary=:all: \
+                --python-version 3.13 \
+                -t "$WORK/"
             fi
             ZIP="$WORK/function.zip"
             (cd "$WORK" && zip -qr "$ZIP" . --exclude "function.zip")
