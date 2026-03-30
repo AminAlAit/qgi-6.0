@@ -72,6 +72,16 @@ resource "aws_batch_job_queue" "scdi" {
 }
 
 # ---------------------------------------------------------------------------
+# CloudWatch log group for Batch job logs
+# Must exist before the first job runs; awslogs driver will fail otherwise.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_log_group" "scdi_finder" {
+  name              = "/aws/batch/qgi-scdi-finder"
+  retention_in_days = 30
+  tags              = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # Batch job definition — scdi-finder
 # Image lives in the management account ECR (shared registry).
 # Cross-account pull requires an ECR resource policy in the management
