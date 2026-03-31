@@ -349,7 +349,7 @@ resource "aws_lambda_function" "c_worker" {
   environment {
     variables = {
       S3_BUCKET             = var.data_lake_bucket_name
-      DB_NAME               = var.glue_database_name
+      ATHENA_DATABASE       = var.glue_database_name
       SCDIS_TABLE           = "scdis"
       COUNTRIES_NAMES_TABLE = "countries"
       ATHENA_WORKGROUP      = var.athena_workgroup_name
