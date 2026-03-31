@@ -68,10 +68,11 @@ resource "aws_lambda_function" "a_sheet_fetcher" {
 
   environment {
     variables = {
-      INPUT_BUCKET = var.data_lake_bucket_name
-      INPUT_KEY    = "pipeline-A-indicator-extractor/indicators/Pipeline A Dispatcher World Bank Indicators.xlsx"
-      OUTPUT_BUCKET = var.data_lake_bucket_name
-      OUTPUT_KEY    = "indicators/indicators.json"
+      INPUT_BUCKET        = var.data_lake_bucket_name
+      INPUT_KEY           = "pipeline-A-indicator-extractor/indicators/Pipeline A Dispatcher World Bank Indicators.xlsx"
+      OUTPUT_BUCKET       = var.data_lake_bucket_name
+      OUTPUT_KEY          = "indicators/indicators.json"
+      INDICATOR_MAP_KEY   = "pipeline-A-indicator-extractor/input/indicator_map.csv"
     }
   }
 
