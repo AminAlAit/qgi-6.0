@@ -1,4 +1,4 @@
-# Use an official Python runtime as a parent image
+# Use an official Python runtime as a parent image (linux/arm64 — built for Graviton Batch)
 FROM python:3.12-slim
 
 # Set the working directory in the container
