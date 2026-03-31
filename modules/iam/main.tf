@@ -360,6 +360,27 @@ resource "aws_iam_role_policy" "cross_account_ops" {
           "batch:DescribeJobDefinitions"]
         Resource = "*"
       },
+      # S3 — read/delete pipeline data lake objects (for e2e test resets)
+      {
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket", "s3:GetObject", "s3:DeleteObject", "s3:PutObject", "s3:HeadObject"]
+        Resource = [
+          "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}",
+          "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}/*"
+        ]
+      },
+      # SQS — purge DLQ for test resets
+      {
+        Effect   = "Allow"
+        Action   = ["sqs:PurgeQueue", "sqs:GetQueueAttributes", "sqs:ListQueues"]
+        Resource = "arn:aws:sqs:${var.region}:${var.aws_account_id}:qgi-*"
+      },
+      # DynamoDB — read run tracking table
+      {
+        Effect   = "Allow"
+        Action   = ["dynamodb:Scan", "dynamodb:Query", "dynamodb:DeleteItem"]
+        Resource = "arn:aws:dynamodb:${var.region}:${var.aws_account_id}:table/qgi-*"
+      },
     ]
   })
 }
