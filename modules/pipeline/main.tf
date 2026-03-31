@@ -536,7 +536,7 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "Wait 30 Mins (Poll Interval)" = {
         Type    = "Wait"
-        Seconds = 1800
+        Seconds = 300
         Next    = "Phase 2: Check Batch Status"
       }
 
