@@ -94,7 +94,8 @@ resource "aws_iam_role_policy" "lambda_execution" {
       {
         Effect   = "Allow"
         Action   = ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage",
-          "sqs:GetQueueAttributes", "sqs:GetQueueUrl", "sqs:ChangeMessageVisibility"]
+          "sqs:GetQueueAttributes", "sqs:GetQueueUrl", "sqs:ChangeMessageVisibility",
+          "sqs:PurgeQueue"]
         Resource = var.queue_arns
       },
       # DynamoDB — indicator updates + completion counters
