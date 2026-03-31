@@ -15,6 +15,7 @@ s3_client = boto3.client('s3')
 # INPUT_KEY: pipeline-A-indicator-extractor/indicators/Pipeline A Dispatcher World Bank Indicators.xlsx
 # OUTPUT_BUCKET: qgi-data-lake-111111111111
 # OUTPUT_KEY: indicators/indicators.json
+# INDICATOR_MAP_KEY: pipeline-A-indicator-extractor/input/indicator_map.csv (optional)
 
 def lambda_handler(event, context):
     try:
@@ -75,6 +76,21 @@ def lambda_handler(event, context):
         )
         
         logger.info(f"Successfully saved {len(indicators)} indicators to s3://{output_bucket}/{output_key}")
+
+        # 5. Write indicator_map.csv — maps id_string -> numeric_id for scdi-finder Batch job
+        # Makes the xlsx the single source of truth; the CSV is a generated artifact.
+        indicator_map_key = os.environ.get('INDICATOR_MAP_KEY')
+        if indicator_map_key:
+            map_rows = [f"{ind['id_string']},{ind['numeric_id']}" for ind in indicators]
+            map_csv = "id_string,numeric_id\n" + "\n".join(map_rows)
+            s3_client.put_object(
+                Bucket=output_bucket,
+                Key=indicator_map_key,
+                Body=map_csv,
+                ContentType='text/csv'
+            )
+            logger.info(f"Wrote indicator_map.csv ({len(map_rows)} rows) to s3://{output_bucket}/{indicator_map_key}")
+
         return {"status": "Success", "indicators_fetched": len(indicators)}
 
     except Exception as e:
