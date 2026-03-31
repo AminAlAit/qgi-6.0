@@ -33,9 +33,9 @@ def run_athena_query(query_string, workgroup, db_name, output_location, expects_
             if status == 'SUCCEEDED':
                 logger.info(f"Query {query_execution_id} succeeded.")
                 if expects_result_path:
-                    # Use actual output location from API — workgroup may enforce its own path
-                    actual_output = stats['QueryExecution']['ResultConfiguration']['OutputLocation']
-                    return f"{actual_output.rstrip('/')}/{query_execution_id}.csv"
+                    # workgroup has enforce_workgroup_configuration=true, so results always land at
+                    # {output_location}/{query_execution_id}.csv regardless of what we requested
+                    return f"{output_location.rstrip('/')}/{query_execution_id}.csv"
                 return None
             else:
                 error_message = stats['QueryExecution']['Status'].get('StateChangeReason', 'Unknown error')
