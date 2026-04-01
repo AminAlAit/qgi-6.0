@@ -18,7 +18,7 @@ on:
         required: false
         default: 'staging'
         type: choice
-        options: [staging, prod]
+        options: [staging, qa, prod]
 
 jobs:
   deploy:
@@ -32,7 +32,7 @@ jobs:
         with:
           fetch-depth: 2
 
-      # Staging: assume role in qgi-staging account via its own OIDC role
+      # Staging: push to main or workflow_dispatch targeting staging
       - name: Configure AWS credentials (staging)
         if: github.ref == 'refs/heads/main' || (github.event_name == 'workflow_dispatch' && inputs.environment == 'staging')
         uses: aws-actions/configure-aws-credentials@v4
@@ -40,7 +40,15 @@ jobs:
           role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-lambda-deploy
           aws-region: eu-central-1
 
-      # Prod: assume role in qgi-prod account (444444444444)
+      # QA: rc-* tags or workflow_dispatch targeting qa
+      - name: Configure AWS credentials (qa)
+        if: startsWith(github.ref, 'refs/tags/rc-') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'qa')
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::333333333333:role/github-actions-qgi-lambda-deploy
+          aws-region: eu-central-1
+
+      # Prod: v* tags or workflow_dispatch targeting prod
       - name: Configure AWS credentials (prod)
         if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'prod')
         uses: aws-actions/configure-aws-credentials@v4
