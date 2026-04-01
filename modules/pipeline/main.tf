@@ -22,6 +22,15 @@ locals {
     role          = var.lambda_execution_role_arn
   }
   s3_output_location = "s3://${var.data_lake_bucket_name}/query_results/"
+
+  # Standard retry for all Lambda Task states — handles transient throttles and
+  # service errors that are common on new accounts with low burst limits.
+  lambda_retry = [{
+    ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException", "Lambda.AWSLambdaException", "Lambda.SdkClientException"]
+    IntervalSeconds = 30
+    MaxAttempts     = 5
+    BackoffRate     = 2
+  }]
 }
 
 # ---------------------------------------------------------------------------
@@ -528,6 +537,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_janitor.arn
         ResultPath = "$.janitor_output"
+        Retry      = local.lambda_retry
         Next       = "Phase 1: Ingest (Fetcher)"
       }
 
@@ -535,6 +545,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type       = "Task"
         Resource   = aws_lambda_function.a_sheet_fetcher.arn
         ResultPath = "$.fetcher_output"
+        Retry      = local.lambda_retry
         Next       = "Phase 1: Ingest (Dispatch A)"
       }
 
@@ -545,6 +556,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.dispatch_a_output"
+        Retry      = local.lambda_retry
         Next       = "Wait 2 Mins (Phase A Poll)"
       }
 
@@ -558,10 +570,11 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.a_checker.arn
         Parameters = {
-          "run_id.$"  = "$$.Execution.Name"
+          "run_id.$"   = "$$.Execution.Name"
           "expected.$" = "$.dispatch_a_output.dispatched"
         }
         ResultPath = "$.a_check"
+        Retry      = local.lambda_retry
         Next       = "Phase A Done?"
       }
 
@@ -582,15 +595,16 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.reporter_result"
+        Retry      = local.lambda_retry
         Next       = "Decision: Updates Found?"
       }
 
       "Decision: Updates Found?" = {
         Type = "Choice"
         Choices = [{
-          Variable          = "$.reporter_result.updated_count"
+          Variable           = "$.reporter_result.updated_count"
           NumericGreaterThan = 0
-          Next              = "Phase 2: Compute (Trigger B)"
+          Next               = "Phase 2: Compute (Trigger B)"
         }]
         Default = "Phase 5: Ops Report (Final Check)"
       }
@@ -599,10 +613,11 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.b_orchestrator.arn
         Parameters = {
-          mode            = var.batch_invoke_mode
+          mode              = var.batch_invoke_mode
           "indicator_ids.$" = "$.reporter_result.updated_ids"
         }
         ResultPath = "$.trigger_b_output"
+        Retry      = local.lambda_retry
         Next       = "Wait 30 Mins (Poll Interval)"
       }
 
@@ -616,15 +631,16 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_batch_checker.arn
         ResultPath = "$.batch_status"
+        Retry      = local.lambda_retry
         Next       = "Batch Done?"
       }
 
       "Batch Done?" = {
         Type = "Choice"
         Choices = [{
-          Variable          = "$.batch_status.jobs_running"
+          Variable           = "$.batch_status.jobs_running"
           NumericGreaterThan = 0
-          Next              = "Wait 30 Mins (Poll Interval)"
+          Next               = "Wait 30 Mins (Poll Interval)"
         }]
         Default = "Phase 3: MSCK Repair scdis"
       }
@@ -656,6 +672,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.dispatch_c_output"
+        Retry      = local.lambda_retry
         Next       = "Wait 5 Mins (Phase C Poll)"
       }
 
@@ -669,10 +686,11 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.c_checker.arn
         Parameters = {
-          "run_id.$"  = "$$.Execution.Name"
+          "run_id.$"   = "$$.Execution.Name"
           "expected.$" = "$.dispatch_c_output.dispatched_count"
         }
         ResultPath = "$.c_check"
+        Retry      = local.lambda_retry
         Next       = "Phase C Done?"
       }
 
@@ -707,6 +725,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_dlq_scanner.arn
         ResultPath = "$.dlq_report"
+        Retry      = local.lambda_retry
         Next       = "Workflow Complete"
       }
 
