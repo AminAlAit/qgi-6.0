@@ -21,3 +21,4 @@ tfplan
 
 # Keep the lock file — it ensures reproducible provider installs
 !.terraform.lock.hcl
+.claude/settings.json
