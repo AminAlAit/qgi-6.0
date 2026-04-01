@@ -2,7 +2,8 @@
   "folders": [
     { "name": "qgi-aws-tf (hub)", "path": "/workspaces/qgi-aws-tf" },
     { "name": "qgi-pipeline", "path": "/workspaces/qgi-pipeline" },
-    { "name": "qgi-infra", "path": "/workspaces/qgi-infra" }
+    { "name": "qgi-infra", "path": "/workspaces/qgi-infra" },
+    { "name": "qgi-frontend", "path": "/workspaces/qgi-frontend" }
   ],
   "settings": {
     "terminal.integrated.defaultProfile.linux": "bash",
