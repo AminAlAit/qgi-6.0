@@ -1,73 +1,63 @@
 # qgi-aws-tf
 
-Terraform repository for Amin's AWS account organisation and QGI (Quantitative Geopolitical Intelligence) infrastructure.
+Terraform hub repository for Amin's AWS organisation and the QGI (Quantitative Geopolitical Intelligence) pipeline infrastructure.
 
-**AWS Account:** `111111111111` · **Region:** `eu-central-1`
+**Management account:** `111111111111` · **Region:** `eu-central-1`
 
 ---
 
 ## What this repo does
 
-This repo has two sequential responsibilities:
+Manages the **management account only**:
+- AWS Organizations structure
+- CloudTrail (multi-region, management events)
+- IAM Identity Center (SSO) — users and permission sets
+- OIDC roles for GitHub Actions (ECR push, Lambda deploy, key rotation)
+- Terraform state backend (S3 + DynamoDB)
 
-1. **Account organisation** — Fix the AWS account structure so QGI and the personal website (`aminalait.com`) live in properly isolated environments with clean billing, auditing, and tagging.
-2. **QGI infrastructure** — Reconstruct the entire QGI data pipeline as Terraform, replacing the current hand-built state.
-
----
-
-## Current state (March 2026)
-
-| Item | Status |
-|------|--------|
-| AWS Organizations | ✅ Created (`o-tq0c7s4aea`) — no member accounts yet |
-| CloudTrail | ❌ Not enabled |
-| Cost allocation tags | ❌ Not activated in Billing |
-| QGI resource tagging | ❌ No tags on any QGI resource |
-| QGI Terraform | ❌ All resources built manually |
-| EventBridge schedule | ❌ No scheduled rule found for QGI pipeline |
+QGI pipeline infrastructure lives in [`qgi-infra`](https://github.com/AminAlAit/qgi-infra). Application code lives in [`qgi-pipeline`](https://github.com/AminAlAit/qgi-pipeline).
 
 ---
 
-## The 4-phase plan
+## AWS account structure (as of March 2026)
 
-### Phase 1 — Account hygiene
-- Enable CloudTrail (management events, multi-region)
-- Activate cost allocation tags in AWS Billing console
-- Tag all existing QGI resources
-
-### Phase 2 — AWS Organizations
-- Create `qgi` member account
-- Create `personal-website` member account
-- Set up IAM Identity Center for cross-account access
-- Add Service Control Policies (region restriction, etc.)
-
-### Phase 3 — Migrate website
-- Re-point `cloud-resume-aws-tf` backend to the new `personal-website` account
-- `terraform destroy` in old account, `terraform apply` in new
-- Update Namecheap nameservers
-
-### Phase 4 — Reconstruct QGI in Terraform _(main deliverable)_
-- Full IaC for: Step Functions, Lambda, Batch, Glue, Athena, S3, SQS, DynamoDB, EventBridge, IAM
-- State backend: `qgi-tf-state` S3 bucket in the QGI account
-- All resources tagged `Project=qgi`
+| Account | ID | Purpose |
+|---------|-----|---------|
+| Management (Amin) | `111111111111` | Org root, CloudTrail, OIDC roles, state backend |
+| `qgi-legacy` | `555555555555` | Old hand-built pipeline — read-only, do not deploy here |
+| `qgi-prod` | `444444444444` | Terraform-managed production pipeline |
+| `qgi-staging` | `222222222222` | Terraform-managed staging environment |
+| `qgi-qa` | `333333333333` | Terraform-managed QA environment |
+| `personal-website` | `666666666666` | aminalait.com infrastructure |
 
 ---
 
 ## QGI — what it is
 
-QGI ingests World Bank economic/political indicator data for ~200 countries, computes FFT-based cross-correlations (SDCIs) between every country pair for every indicator, and synthesises them into Patterns and Influence Cascades. The end product is **QGI Macroscope** — a strategic intelligence dashboard currently in development.
+QGI ingests World Bank economic/political indicator data for ~200 countries, computes FFT-based cross-correlations (SCDIs) between every country pair for every indicator, and synthesises them into Patterns. The end product is **QGI Macroscope** — a strategic intelligence dashboard.
 
 ### Pipeline architecture
 
 ```
-EventBridge (monthly)
+EventBridge Scheduler (monthly, 6am Berlin, 1st of month)
   └── Step Functions: qgi-indicator-monthly-updater
-        ├── Phase 0: janitor (cleanup)
-        ├── Phase 1: sheet-fetcher → dispatcher → reporter (World Bank ingestion)
-        ├── Phase 2: batch-orchestrator → AWS Batch (FFT SDCI computation)
-        ├── Phase 4: dispatcher → SQS → workers (Pattern synthesis)
-        └── Phase 5: dlq-scanner (dead letter queue audit)
+        ├── Phase 0: Janitor — purge queues, clean temp data
+        ├── Phase 1: Ingestion — fetch World Bank data → dispatch → workers → reporter
+        ├── Phase 2: Compute — AWS Batch SCDI computation (Graviton Spot)
+        ├── Phase 3: Glue — MSCK REPAIR TABLE on scdis and patterns
+        ├── Phase 4: Synthesis — dispatcher → SQS → workers → pattern generation
+        └── Phase 5: Audit — DLQ scan, ops report
 ```
+
+---
+
+## Environment strategy
+
+| Environment | AWS Account | Deploy trigger |
+|-------------|-------------|----------------|
+| staging | `qgi-staging` (`222222222222`) | push to `main` in qgi-pipeline / qgi-infra |
+| qa | `qgi-qa` (`333333333333`) | tag `rc-*` |
+| prod | `qgi-prod` (`444444444444`) | tag `v*` |
 
 ---
 
@@ -75,9 +65,11 @@ EventBridge (monthly)
 
 | Repo | Responsibility |
 |------|---------------|
-| `AminAlAit/cloud-resume-aws-tf` | Website infrastructure (S3, CloudFront, Lambda, Route 53) — complete |
-| `AminAlAit/cloud-resume-web` | Frontend HTML/CSS/JS — complete |
-| **This repo** | AWS Org setup + QGI Terraform |
+| [`qgi-infra`](https://github.com/AminAlAit/qgi-infra) | Pipeline Terraform — staging/QA/prod environments |
+| [`qgi-pipeline`](https://github.com/AminAlAit/qgi-pipeline) | Lambda + Batch application code |
+| [`cloud-resume-aws-tf`](https://github.com/AminAlAit/cloud-resume-aws-tf) | aminalait.com infrastructure |
+| [`cloud-resume-web`](https://github.com/AminAlAit/cloud-resume-web) | aminalait.com frontend |
+| **This repo** | Management account IaC only |
 
 ---
 
@@ -86,8 +78,8 @@ EventBridge (monthly)
 - **Runtime:** Python 3.13 (Graviton/arm64)
 - **Region:** `eu-central-1` exclusively
 - **Naming:** `qgi-` prefix for pipeline, `qgi-api-` for website-facing endpoints
-- **Tags:** `Project=qgi`, `Environment=production`, `ManagedBy=terraform`, `Owner=amin.al-ait`
-- **State:** `s3://qgi-tf-state/qgi/terraform.tfstate` + DynamoDB lock `qgi-tf-state-lock`
+- **Tags:** `Project=qgi`, `Environment=<env>`, `ManagedBy=terraform`, `Owner=amin.al-ait`
+- **State:** `s3://qgi-aws-tf-state-111111111111/management/terraform.tfstate` + DynamoDB lock `qgi-aws-tf-state-lock`
 
 See [CLAUDE.md](CLAUDE.md) for Claude Code-specific instructions.
 
