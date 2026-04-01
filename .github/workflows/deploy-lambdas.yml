@@ -89,10 +89,7 @@ jobs:
             ZIP="$WORK/function.zip"
             (cd "$WORK" && zip -qr "$ZIP" . --exclude "function.zip")
 
-            case "$NAME" in
-              pipeline-b-checker) AWS_NAME="qgi-pipeline-ops-batch-checker" ;;
-              *) AWS_NAME="qgi-$NAME" ;;
-            esac
+            AWS_NAME="qgi-$NAME"
 
             aws lambda update-function-code \
               --function-name "$AWS_NAME" \
