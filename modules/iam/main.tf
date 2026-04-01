@@ -339,11 +339,11 @@ resource "aws_iam_role_policy" "cross_account_ops" {
           "states:StopExecution"]
         Resource = "*"
       },
-      # Lambda — describe only (no invoke)
+      # Lambda — describe + deploy code updates
       {
         Effect   = "Allow"
         Action   = ["lambda:GetFunction", "lambda:GetFunctionConfiguration",
-          "lambda:ListFunctions"]
+          "lambda:ListFunctions", "lambda:UpdateFunctionCode"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
       # CloudWatch Logs — read pipeline logs

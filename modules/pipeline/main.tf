@@ -110,6 +110,7 @@ resource "aws_lambda_function" "a_dispatcher" {
       INPUT_KEY        = "indicators/indicators.json"
       SQS_QUEUE_URL    = var.queue_a_main_url
       COMPLETION_TABLE = var.completion_table_name
+      DISPATCH_LIMIT   = tostring(var.dispatch_limit)
     }
   }
 

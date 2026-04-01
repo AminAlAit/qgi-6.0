@@ -68,6 +68,12 @@ variable "completion_table_name" {
   description = "Name of qgi-completion-counters DynamoDB table"
 }
 
+variable "dispatch_limit" {
+  type        = number
+  default     = 0
+  description = "Cap the number of indicators dispatched in Phase 1. 0 = unlimited (production). Set to 2 for E2E tests."
+}
+
 variable "batch_invoke_mode" {
   type        = string
   default     = "invoke"
