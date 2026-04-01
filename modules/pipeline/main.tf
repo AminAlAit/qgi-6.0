@@ -709,12 +709,12 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.dispatch_c_output"
         Retry      = local.lambda_retry
-        Next       = "Wait 5 Mins (Phase C Poll)"
+        Next       = "Wait 30s (Phase C Poll)"
       }
 
-      "Wait 5 Mins (Phase C Poll)" = {
+      "Wait 30s (Phase C Poll)" = {
         Type    = "Wait"
-        Seconds = 300
+        Seconds = 30
         Next    = "Phase 4: Check Complete?"
       }
 
@@ -737,7 +737,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           BooleanEquals = true
           Next          = "Phase 4: Synthesis (Repair patterns)"
         }]
-        Default = "Wait 5 Mins (Phase C Poll)"
+        Default = "Wait 30s (Phase C Poll)"
       }
 
       "Phase 4: Synthesis (Repair patterns)" = {
