@@ -63,6 +63,11 @@ variable "queue_c_main_arn" { type = string }
 variable "queue_c_dlq_url"  { type = string }
 variable "queue_c_dlq_arn"  { type = string }
 
+variable "completion_table_name" {
+  type        = string
+  description = "Name of qgi-completion-counters DynamoDB table"
+}
+
 variable "batch_invoke_mode" {
   type        = string
   default     = "invoke"

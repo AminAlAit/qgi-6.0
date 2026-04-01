@@ -96,10 +96,35 @@ resource "aws_lambda_function" "a_dispatcher" {
 
   environment {
     variables = {
-      S3_BUCKET     = var.data_lake_bucket_name
-      S3_PREFIX     = "pipeline-A-indicator-extractor"
-      INPUT_KEY     = "indicators/indicators.json"
-      SQS_QUEUE_URL = var.queue_a_main_url
+      S3_BUCKET        = var.data_lake_bucket_name
+      S3_PREFIX        = "pipeline-A-indicator-extractor"
+      INPUT_KEY        = "indicators/indicators.json"
+      SQS_QUEUE_URL    = var.queue_a_main_url
+      COMPLETION_TABLE = var.completion_table_name
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Phase 1 — completion checker (polls qgi-indicator-updates instead of hard wait)
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "a_checker" {
+  function_name    = "qgi-pipeline-a-checker"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 30
+  memory_size      = 128
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+
+  environment {
+    variables = {
+      DYNAMODB_TABLE = "qgi-indicator-updates"
     }
   }
 
@@ -326,6 +351,7 @@ resource "aws_lambda_function" "c_dispatcher" {
       ATHENA_WORKGROUP      = var.athena_workgroup_name
       S3_OUTPUT_LOCATION    = local.s3_output_location
       SQS_QUEUE_URL         = var.queue_c_main_url
+      COMPLETION_TABLE      = var.completion_table_name
     }
   }
 
@@ -356,6 +382,7 @@ resource "aws_lambda_function" "c_worker" {
       ATHENA_WORKGROUP      = var.athena_workgroup_name
       S3_OUTPUT_LOCATION    = local.s3_output_location
       SQS_QUEUE_URL         = var.queue_c_main_url
+      COMPLETION_TABLE      = var.completion_table_name
     }
   }
 
@@ -368,6 +395,30 @@ resource "aws_lambda_event_source_mapping" "c_worker_sqs" {
   function_name    = aws_lambda_function.c_worker.arn
   batch_size       = 1
   enabled          = true
+}
+
+# ---------------------------------------------------------------------------
+# Phase 4 — completion checker (polls qgi-completion-counters instead of hard wait)
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "c_checker" {
+  function_name    = "qgi-pipeline-c-checker"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 30
+  memory_size      = 128
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+
+  environment {
+    variables = {
+      COMPLETION_TABLE = var.completion_table_name
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
 }
 
 # ---------------------------------------------------------------------------
@@ -494,14 +545,34 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.dispatch_a_output"
-        Next       = "Wait 21 Mins (Hard Wait)"
+        Next       = "Wait 2 Mins (Phase A Poll)"
       }
 
-      "Wait 21 Mins (Hard Wait)" = {
+      "Wait 2 Mins (Phase A Poll)" = {
         Type    = "Wait"
-        Seconds = 1260
-        Comment = "Waiting for Phase A workers. Replace with DynamoDB counter (issue #76)."
-        Next    = "Phase 1: Ingest (Reporter)"
+        Seconds = 120
+        Next    = "Phase 1: Check Complete?"
+      }
+
+      "Phase 1: Check Complete?" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.a_checker.arn
+        Parameters = {
+          "run_id.$"  = "$$.Execution.Name"
+          "expected.$" = "$.dispatch_a_output.dispatched"
+        }
+        ResultPath = "$.a_check"
+        Next       = "Phase A Done?"
+      }
+
+      "Phase A Done?" = {
+        Type = "Choice"
+        Choices = [{
+          Variable      = "$.a_check.done"
+          BooleanEquals = true
+          Next          = "Phase 1: Ingest (Reporter)"
+        }]
+        Default = "Wait 2 Mins (Phase A Poll)"
       }
 
       "Phase 1: Ingest (Reporter)" = {
@@ -581,17 +652,38 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.c_dispatcher.arn
         Parameters = {
-          action = "start"
+          action     = "start"
+          "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.dispatch_c_output"
-        Next       = "Wait 60 Mins (Hard Wait)"
+        Next       = "Wait 5 Mins (Phase C Poll)"
       }
 
-      "Wait 60 Mins (Hard Wait)" = {
+      "Wait 5 Mins (Phase C Poll)" = {
         Type    = "Wait"
-        Seconds = 3600
-        Comment = "Waiting for Phase C workers. Replace with DynamoDB counter (issue #76)."
-        Next    = "Phase 4: Synthesis (Repair patterns)"
+        Seconds = 300
+        Next    = "Phase 4: Check Complete?"
+      }
+
+      "Phase 4: Check Complete?" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.c_checker.arn
+        Parameters = {
+          "run_id.$"  = "$$.Execution.Name"
+          "expected.$" = "$.dispatch_c_output.dispatched_count"
+        }
+        ResultPath = "$.c_check"
+        Next       = "Phase C Done?"
+      }
+
+      "Phase C Done?" = {
+        Type = "Choice"
+        Choices = [{
+          Variable      = "$.c_check.done"
+          BooleanEquals = true
+          Next          = "Phase 4: Synthesis (Repair patterns)"
+        }]
+        Default = "Wait 5 Mins (Phase C Poll)"
       }
 
       "Phase 4: Synthesis (Repair patterns)" = {
