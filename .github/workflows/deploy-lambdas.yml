@@ -40,12 +40,12 @@ jobs:
           role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-lambda-deploy
           aws-region: eu-central-1
 
-      # Prod: assume role in qgi-prod account (555555555555)
+      # Prod: assume role in qgi-prod account (444444444444)
       - name: Configure AWS credentials (prod)
         if: startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && inputs.environment == 'prod')
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          role-to-assume: arn:aws:iam::555555555555:role/github-actions-qgi-lambda-deploy
+          role-to-assume: arn:aws:iam::444444444444:role/github-actions-qgi-lambda-deploy
           aws-region: eu-central-1
 
       - uses: actions/setup-python@v5
