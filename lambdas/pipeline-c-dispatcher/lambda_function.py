@@ -60,7 +60,9 @@ def lambda_handler(event, context):
     ATHENA_WORKGROUP = os.environ['ATHENA_WORKGROUP']
     S3_OUTPUT_LOCATION = os.environ['S3_OUTPUT_LOCATION']
     SQS_QUEUE_URL = os.environ['SQS_QUEUE_URL']
-    
+    COMPLETION_TABLE = os.environ.get('COMPLETION_TABLE')
+    RUN_ID = event.get('run_id', 'unknown')
+
     PATTERNS_TABLE_NAME = "patterns"
     PATTERNS_S3_LOCATION = f"s3://{S3_BUCKET}/pipeline-C-pattern-synthesizer/output/data/"
 
@@ -111,8 +113,12 @@ def lambda_handler(event, context):
         time.sleep(5)
 
         # 3. Dispatch messages to SQS
+        import json as _json
         for count, country_id in enumerate(country_ids):
-            sqs_client.send_message(QueueUrl=SQS_QUEUE_URL, MessageBody=country_id)
+            sqs_client.send_message(
+                QueueUrl=SQS_QUEUE_URL,
+                MessageBody=_json.dumps({"country_id": country_id, "run_id": RUN_ID}),
+            )
             logger.info(f"Dispatching country ID {country_id} to the SQS queue.")
             if (count + 1) % 10 == 0:
                 logger.info(f"Dispatched {count + 1} countries to the SQS queue.")
@@ -120,8 +126,22 @@ def lambda_handler(event, context):
                 if count > 3:
                     break
         
-        logger.info(f"Successfully dispatched all {len(country_ids)} countries to the SQS queue.")
-        return {'statusCode': 200, 'body': f"Dispatched {len(country_ids)} countries."}
+        dispatched_count = count + 1 if event.get("action") == "start_sample" else len(country_ids)
+        logger.info(f"Successfully dispatched {dispatched_count} countries to the SQS queue.")
+
+        # Write completion counter so c-checker can poll without a hard wait
+        if COMPLETION_TABLE:
+            boto3.resource('dynamodb').Table(COMPLETION_TABLE).update_item(
+                Key={'run_id': RUN_ID},
+                UpdateExpression='SET total_c = :t, processed_c = if_not_exists(processed_c, :z), expires_at = :e',
+                ExpressionAttributeValues={
+                    ':t': dispatched_count,
+                    ':z': 0,
+                    ':e': int(time.time()) + 7 * 24 * 3600,
+                },
+            )
+
+        return {'statusCode': 200, 'dispatched_count': dispatched_count, 'body': f"Dispatched {dispatched_count} countries."}
     else:
         logger.warning("Dispatcher invoked without 'action: start'. No action taken.")
         return {'statusCode': 400, 'body': 'Invalid invocation event.'}

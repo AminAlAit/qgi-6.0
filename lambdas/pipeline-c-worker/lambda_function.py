@@ -1,4 +1,5 @@
 import boto3
+import json
 import logging
 import os
 import time
@@ -51,6 +52,20 @@ def add_partition_manually(table_name, partition_col, partition_val, s3_bucket, 
     run_athena_query(add_partition_query, workgroup, db_name, output_location)
 
 
+def _increment_completion(table_name, run_id):
+    """Atomically increment processed_c counter for this run."""
+    if not table_name or not run_id or run_id == 'unknown':
+        return
+    try:
+        boto3.resource('dynamodb').Table(table_name).update_item(
+            Key={'run_id': run_id},
+            UpdateExpression='ADD processed_c :one',
+            ExpressionAttributeValues={':one': 1},
+        )
+    except Exception as e:
+        logger.warning(f"Failed to increment completion counter: {e}")
+
+
 def lambda_handler(event, context):
     DB_NAME = os.environ['ATHENA_DATABASE']
     SCDIS_TABLE = os.environ['SCDIS_TABLE']
@@ -59,13 +74,24 @@ def lambda_handler(event, context):
     S3_OUTPUT_LOCATION = os.environ['S3_OUTPUT_LOCATION']
     SQS_QUEUE_URL = os.environ['SQS_QUEUE_URL']
     S3_BUCKET = os.environ['S3_BUCKET']
-    
+    COMPLETION_TABLE = os.environ.get('COMPLETION_TABLE')
+    RUN_ID = event.get('run_id', 'unknown')
+
     PATTERNS_TABLE_NAME = "patterns"
     PATTERNS_S3_PREFIX = "pipeline-C-pattern-synthesizer/output/data/"
 
     for record in event["Records"]:
-        country_id_str = record["body"]
         receipt_handle = record["receiptHandle"]
+        raw_body = record["body"]
+
+        # Support both legacy plain-string messages and new JSON format
+        try:
+            msg = json.loads(raw_body)
+            country_id_str = str(msg.get("country_id", raw_body))
+            run_id_msg = msg.get("run_id", RUN_ID)
+        except (json.JSONDecodeError, AttributeError):
+            country_id_str = raw_body
+            run_id_msg = RUN_ID
 
         if not country_id_str.isdigit():
             logger.warning(f"Skipping and deleting invalid message. Body is not a digit: '{country_id_str}'")
@@ -75,6 +101,7 @@ def lambda_handler(event, context):
         if check_partition_exists(S3_BUCKET, PATTERNS_S3_PREFIX, country_id_str):
             logger.info(f"Output for country ID {country_id_str} already exists in S3. Deleting redundant message and skipping.")
             sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
+            _increment_completion(COMPLETION_TABLE, run_id_msg)
             continue
 
         logger.info(f"--- WORKER MODE: Processing country ID: {country_id_str} ---")
@@ -128,6 +155,7 @@ def lambda_handler(event, context):
             
             logger.info(f"Successfully processed country ID {country_id_str}. Deleting message.")
             sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
+            _increment_completion(COMPLETION_TABLE, run_id_msg)
 
         except Exception as e:
             if "Insufficient permissions" in str(e) and "create partitions on Glue catalog" in str(e):
@@ -142,6 +170,7 @@ def lambda_handler(event, context):
                         )
                         logger.info(f"Self-healing successful. Partition added. Deleting message for country ID {country_id_str}.")
                         sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
+                        _increment_completion(COMPLETION_TABLE, run_id_msg)
                         continue 
                     except Exception as repair_e:
                         logger.error(f"Self-healing FAILED for country ID '{country_id_str}'. ALTER TABLE command failed. Error: {repair_e}", exc_info=True)

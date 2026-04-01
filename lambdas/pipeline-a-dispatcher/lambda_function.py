@@ -1,22 +1,25 @@
 import os
 import logging
 import json
+import time
 import boto3
 import pandas as pd
 import datetime
 from dataclasses import dataclass
 
 # Env Vars
-S3_BUCKET = os.environ.get('S3_BUCKET') 
+S3_BUCKET = os.environ.get('S3_BUCKET')
 SQS_QUEUE_URL = os.environ.get('SQS_QUEUE_URL')
-S3_PREFIX = os.environ.get('S3_PREFIX') 
+S3_PREFIX = os.environ.get('S3_PREFIX')
+COMPLETION_TABLE = os.environ.get('COMPLETION_TABLE')
 # Input: Where the Sheet Fetcher put the file
-INPUT_KEY = "indicators/indicators.json" 
+INPUT_KEY = "indicators/indicators.json"
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 s3_client = boto3.client('s3')
 sqs_client = boto3.client('sqs')
+dynamodb = boto3.resource('dynamodb')
 
 @dataclass
 class IndicatorConfig:
@@ -77,9 +80,18 @@ def lambda_handler(event, context):
                 MessageBody=json.dumps(payload)
             )
 
+        # Write completion counter so a-checker can poll without a hard wait
+        if COMPLETION_TABLE:
+            dynamodb.Table(COMPLETION_TABLE).put_item(Item={
+                'run_id': run_id,
+                'total_a': len(process_list),
+                'expires_at': int(time.time()) + 7 * 24 * 3600,
+            })
+
         return {
             "statusCode": 200,
             "run_id": run_id,
+            "dispatched": len(process_list),
             "body": json.dumps({
                 "status": "Success",
                 "dispatched": len(process_list)
