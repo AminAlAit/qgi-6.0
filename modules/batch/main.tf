@@ -107,7 +107,7 @@ resource "aws_batch_job_definition" "scdi_finder" {
 
     environment = [
       { name = "S3_BUCKET",            value = var.data_lake_bucket_name },
-      { name = "S3_INPUT_PREFIX",      value = "pipeline-A-indicator-extractor/output/csv/" },
+      { name = "S3_INPUT_PREFIX",      value = "pipeline-A-indicator-extractor/output/csv-completed/" },
       { name = "S3_OUTPUT_PREFIX",     value = "pipeline-B-scdi-finder/scdis" },
       { name = "MIN_LENGTH",           value = "3" },
       { name = "CORRELATION_THRESHOLD", value = "0.5" },

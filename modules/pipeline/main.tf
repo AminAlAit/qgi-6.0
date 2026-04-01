@@ -234,6 +234,33 @@ resource "aws_lambda_function" "a_reporter" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 1.5 — indicator completer (ETS self-prediction for missing recent years)
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "a_completer" {
+  function_name    = "qgi-pipeline-a-completer"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 1024
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+
+  environment {
+    variables = {
+      S3_BUCKET         = var.data_lake_bucket_name
+      INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/csv"
+      OUTPUT_PREFIX     = "pipeline-A-indicator-extractor/output/csv-completed"
+      INDICATOR_MAP_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # Phase 2 — Batch orchestrator (launches one Batch job per updated indicator)
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "b_orchestrator" {
@@ -596,6 +623,14 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.reporter_result"
+        Retry      = local.lambda_retry
+        Next       = "Phase 1.5: Complete Indicators"
+      }
+
+      "Phase 1.5: Complete Indicators" = {
+        Type       = "Task"
+        Resource   = aws_lambda_function.a_completer.arn
+        ResultPath = "$.completer_result"
         Retry      = local.lambda_retry
         Next       = "Decision: Updates Found?"
       }
