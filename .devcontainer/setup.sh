@@ -49,6 +49,7 @@ clone_or_pull() {
 # Sibling repos — all active repos that should be present in the hub Codespace
 clone_or_pull "qgi-infra"
 clone_or_pull "qgi-pipeline"
+clone_or_pull "qgi-frontend"
 
 # ---------------------------------------------------------------------------
 # Restore Claude memory from source-controlled .claude/ so the next Claude
