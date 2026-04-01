@@ -134,12 +134,17 @@ This is another reason the EventBridge Scheduler was paused: the pipeline should
 | Social media | Public-facing content (insights, pattern highlights) | Free / brand-building | Drives awareness and inbound |
 
 ### Target subscribers (SaaS)
-- Journalists and investigative reporters
-- Academic researchers and political scientists
-- Policy makers and government analysts
-- Corporate decision makers (risk, geopolitical exposure)
-- Prediction market participants
-- Geopolitics enthusiasts and informed news-followers
+
+Primary audience — professionals who make or influence consequential decisions:
+- **Policy makers** — government officials, foreign affairs departments, national security staff
+- **Public policy professionals** — think tanks, international organisations (UN, World Bank, IMF)
+- **Consultants** — geopolitical risk consultants, strategy advisors
+- **Journalists** — investigative reporters, foreign correspondents, editorial researchers
+- **Academics** — political science, international relations, economics professors and researchers
+- **Decision makers** — C-suite executives with international exposure, board-level risk
+- **Bankers and financial professionals** — sovereign debt, emerging markets, geopolitical risk desks
+- **Prediction market participants** — Metaculus, Polymarket, Manifold; professional forecasters
+- **Geopolitics enthusiasts** — informed general public, analysts-in-training, engaged citizens
 
 ### B2B private indicator model (key differentiator)
 A client with proprietary data (e.g. satellite imagery, private sentiment scores, classified economic data) can pay to have that indicator run through the QGI pipeline. The pipeline produces SCDIs and Patterns for that indicator against all 260 countries — results are returned to the client and never exposed on the public platform. This monetises the pipeline infrastructure independently of the SaaS product.

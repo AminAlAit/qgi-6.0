@@ -6,7 +6,101 @@
 
 ---
 
-## Overview
+## UX Vision
+
+### The feeling we are building
+
+QGI is a **professional intelligence platform** used by policy makers, analysts, journalists, academics, bankers, and prediction market participants to understand macro-geopolitical trajectories. It is not a data game. It is not casual.
+
+The experience should feel like being handed **a classified briefing room and its control panel** — calm, authoritative, information-dense but never cluttered. The user is a professional. They came with a specific question. Every design decision should help them answer it faster and with more confidence.
+
+**Analogues that get the tone right:**
+- Bloomberg Terminal — dense, data-forward, trusted by professionals who make consequential decisions. No hand-holding.
+- Palantir Gotham / Foundry — the sense of operating powerful analytical machinery. Dark, focused, purposeful.
+- Flight deck HUDs — layered information, high signal-to-noise, every element earns its place.
+
+**What QGI is not:**
+- Not a news site (no feed, no infinite scroll)
+- Not a "beautiful data viz" portfolio (design serves analysis, not the other way around)
+- Not a consumer app (no onboarding wizard, no tooltips explaining what a country is)
+
+---
+
+### Visual language
+
+**Theme: dark, with high-contrast data elements.**
+
+Dark background (near-black, not pure black — e.g. `#0d1117` or `#0f1923`) with:
+- Data elements in crisp white/light grey
+- Accent colour for QGI's primary highlight: a deep electric blue (`#0ea5e9` range) or cold amber (`#f59e0b`) — to be decided
+- Correlation values, scores, and key metrics in a warm accent (gold/amber) to signal "important number"
+- Predicted values in a clearly muted/distinct style (dashed, lower opacity, different hue)
+- Country pair relationships rendered with two distinct colours — one per country, consistent throughout all charts on a given page
+- Sector chips/badges: colour-coded by sector, subtle (not loud)
+
+**Typography:**
+- Monospaced or semi-monospaced for numbers, years, scores — reinforces the "data terminal" feel
+- Clean sans-serif for prose (Inter or similar)
+- All-caps labels for axis titles, column headers, section headers — not shouting, just structured
+
+**Layout:**
+- Dense but breathable — not sparse/whitespace-heavy like a marketing site, but not wall-to-wall like a Bloomberg terminal either
+- Sidebar navigation (not top nav) — users will be switching between views repeatedly, sidebar keeps context
+- Fixed sidebar + scrollable main content area
+- Responsive down to ~1280px wide minimum (this is a desktop tool; mobile is not a priority for v1)
+
+---
+
+### Improvements over the legacy Streamlit app
+
+The legacy app was a functional prototype. The new frontend improves on it in these specific ways:
+
+| Area | Legacy (Streamlit) | New (Next.js) |
+|------|--------------------|---------------|
+| **Navigation** | Multi-page app, full reload between pages | Single-page feel, instant client-side transitions |
+| **Pattern selection** | Sequential sidebar selects, no search | Searchable dropdowns with country flags, keyboard-navigable |
+| **Charts** | Static ECharts, one transformation at a time | Transformation selector updates all charts simultaneously in real time, no reload |
+| **Country identification** | Text names + IDs | Country flag (ISO alpha-2) + name + region colour chip throughout |
+| **Pattern Power Score** | Plain number | Styled as a primary metric — large, prominent, with a visual gauge or ring showing relative strength vs universe |
+| **Early Warning Signals** | Buried inside the patterns page | Dedicated prominent section — this is the highest-value insight, it deserves to lead |
+| **Predicted values** | Not built (Phase 1.5 is new) | Dashed lines in charts, badged rows in tables, tooltip explaining the model |
+| **Sector breakdown** | Small doughnut chart | Interactive doughnut — clicking a sector filters the SCDIs table and highlights relevant charts |
+| **Data export** | None | CSV export on any table, PNG export on any chart |
+| **Timeline of events** | Raw `streamlit-timeline` | Custom timeline component, events colour-coded by country, expandable detail cards |
+| **Index metadata** | Small popover | Dedicated metadata panel — slides in from the right, shows description, tips, source, citation, and a sparkline of the index over time |
+| **Mobile** | Unusable | Responsive to ~1280px; not a v1 priority but not broken |
+| **Auth / paywall** | None | Cognito, plan-gated features clearly signposted (not hidden — users can see what exists, just prompted to upgrade) |
+
+---
+
+### Information hierarchy for the Patterns Portal (the core screen)
+
+The user has selected a pattern. They want to understand it quickly. Information should be revealed in this order:
+
+1. **The headline** — immediately: Country A → Country B, date ranges, lag, Pattern Power Score. One glance should answer "what am I looking at and how strong is it?"
+2. **The sector fingerprint** — sector doughnut shows *what kind* of relationship this is (military? economic? social?)
+3. **The evidence** — SCDIs table: which specific indicators are driving the pattern, sorted by correlation strength
+4. **The detail** — charts: the actual time series for each indicator, with transformation and alignment controls
+5. **The context** — events timeline: what actually happened to these countries at the end of their respective segments
+6. **The warning** — if this is an Early Warning Signal (Country A is currently in its window), show a prominent alert banner at the top of the page
+
+---
+
+### Terminology upgrades for the UI
+
+The legacy app uses internal/technical terms. The new frontend should use clear, professional language that lands for a policy analyst who has never heard of QGI:
+
+| Internal term | UI label |
+|---------------|----------|
+| Pattern Power Score | **Pattern Strength** (keep PPS as the hover tooltip explanation) |
+| SCDI | **Indicator Match** in plain contexts; **SCDI** acceptable in technical/advanced views |
+| Country A / Country B | **Predictor Country** / **Following Country** (or just country names — never A/B in the UI) |
+| start_year_a / start_year_b | **Predictor window** / **Following window** |
+| Lag | **Time offset** (shown as "X years later") |
+| avg_correlation | **Average alignment** or **Correlation** — % is fine |
+| Solos | Not surfaced directly in the UI — just the underlying data for charts |
+| Pattern length | **Pattern duration** |
+| Recipe | **Alert fingerprint** (when Recipes are built — Phase 6) |
 
 The `qgi-frontend` replaces the legacy Streamlit app with a production-grade Next.js SaaS application. This document captures everything learned from the legacy app's UX, data structures, and business logic that must be preserved or improved in the new frontend.
 
