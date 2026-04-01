@@ -12,6 +12,7 @@ S3_BUCKET = os.environ.get('S3_BUCKET')
 SQS_QUEUE_URL = os.environ.get('SQS_QUEUE_URL')
 S3_PREFIX = os.environ.get('S3_PREFIX')
 COMPLETION_TABLE = os.environ.get('COMPLETION_TABLE')
+DISPATCH_LIMIT = int(os.environ.get('DISPATCH_LIMIT', '0'))  # 0 = unlimited
 # Input: Where the Sheet Fetcher put the file
 INPUT_KEY = "indicators/indicators.json"
 
@@ -65,6 +66,9 @@ def lambda_handler(event, context):
 
         # 3. Filter & Dispatch
         process_list = [ind for ind in indicators if ind.status == "process"]
+        if DISPATCH_LIMIT > 0:
+            process_list = process_list[:DISPATCH_LIMIT]
+            logger.info(f"DISPATCH_LIMIT={DISPATCH_LIMIT} applied.")
         logger.info(f"Dispatching {len(process_list)} indicators to SQS.")
         
         run_id = event.get('run_id') or datetime.datetime.now().strftime("%Y-%m-%d-%H%M")
