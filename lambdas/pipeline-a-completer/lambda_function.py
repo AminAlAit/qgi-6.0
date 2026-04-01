@@ -25,12 +25,11 @@ Rules:
 import os
 import io
 import gzip
-import json
 import logging
 import datetime
 import boto3
+import numpy as np
 import pandas as pd
-from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
@@ -77,17 +76,40 @@ def _write_csv_gz(df: pd.DataFrame, key: str) -> None:
 
 def _ets_forecast(series: pd.Series, n_steps: int) -> list[float]:
     """
-    Fit Holt-Winters ETS (additive trend, no seasonality) and forecast
-    n_steps ahead. Returns a list of forecasted floats.
+    Holt-Winters double exponential smoothing (additive trend, no seasonality).
+    Pure numpy implementation — no statsmodels dependency.
+    Grid-searches alpha/beta to minimise in-sample SSE.
     """
-    model = ExponentialSmoothing(
-        series,
-        trend="add",
-        seasonal=None,
-        initialization_method="estimated",
-    )
-    fit = model.fit(optimized=True, remove_bias=True)
-    return fit.forecast(n_steps).tolist()
+    y = np.array(series, dtype=float)
+    n = len(y)
+
+    best_sse = float("inf")
+    best_alpha = 0.3
+    best_beta = 0.1
+
+    for alpha in np.arange(0.05, 1.0, 0.05):
+        for beta in np.arange(0.01, 0.5, 0.05):
+            l = y[0]
+            b = y[1] - y[0] if n > 1 else 0.0
+            sse = 0.0
+            for t in range(1, n):
+                l_prev, b_prev = l, b
+                l = alpha * y[t] + (1 - alpha) * (l_prev + b_prev)
+                b = beta * (l - l_prev) + (1 - beta) * b_prev
+                sse += (y[t] - (l_prev + b_prev)) ** 2
+            if sse < best_sse:
+                best_sse = sse
+                best_alpha, best_beta = alpha, beta
+
+    # Final fit with best params
+    l = y[0]
+    b = y[1] - y[0] if n > 1 else 0.0
+    for t in range(1, n):
+        l_prev, b_prev = l, b
+        l = best_alpha * y[t] + (1 - best_alpha) * (l_prev + b_prev)
+        b = best_beta * (l - l_prev) + (1 - best_beta) * b_prev
+
+    return [float(l + h * b) for h in range(1, n_steps + 1)]
 
 
 def _complete_indicator(df: pd.DataFrame) -> pd.DataFrame:
