@@ -67,14 +67,10 @@ export function Sidebar() {
               className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
               style={{
                 color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
-                backgroundColor: active
-                  ? "var(--qgi-accent-glow)"
-                  : "transparent",
+                backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
               }}
             >
-              <span className="text-base leading-none w-4 text-center">
-                {icon}
-              </span>
+              <span className="text-base leading-none w-4 text-center">{icon}</span>
               {label}
             </Link>
           );
