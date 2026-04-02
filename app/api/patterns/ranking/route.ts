@@ -22,13 +22,21 @@ export const GET = withAuth(async (req: NextRequest) => {
   const where = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 
   // Athena (Presto) does not support OFFSET — use ROW_NUMBER() for pagination
+  // Subquery countries to get one row per id (legacy table has duplicates)
   const rows = await runQuery(
-    `SELECT * FROM (
-       SELECT country_a_id AS country_a, country_b_id AS country_b,
-              start_year_a, start_year_b, length AS pattern_length,
-              indicator_count AS num_indexes, avg_correlation, pattern_power_score,
-              ROW_NUMBER() OVER (ORDER BY pattern_power_score DESC) AS rn
-       FROM qgi_data.patterns
+    `WITH c AS (
+       SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
+     )
+     SELECT * FROM (
+       SELECT ca.name AS country_a, cb.name AS country_b,
+              p.start_year_a, p.start_year_b, p.length AS pattern_length,
+              p.indicator_count AS num_indexes, p.avg_correlation, p.pattern_power_score,
+              CAST(p.country_a_id AS VARCHAR) AS country_a_id,
+              CAST(p.country_b_id AS VARCHAR) AS country_b_id,
+              ROW_NUMBER() OVER (ORDER BY p.pattern_power_score DESC) AS rn
+       FROM qgi_data.patterns p
+       LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
+       LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
        ${where}
      ) t
      WHERE rn > ${offset} AND rn <= ${offset + limit}

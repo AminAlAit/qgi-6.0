@@ -17,9 +17,9 @@ export const GET = withAuth(async (req: NextRequest) => {
   const rows = await runQuery(
     `SELECT DISTINCT start_year_a, start_year_b
      FROM qgi_data.patterns
-     WHERE country_a = '${country_a.replace(/'/g, "''")}'
-       AND country_b = '${country_b.replace(/'/g, "''")}'
-       AND pattern_length = ${Number(length)}
+     WHERE country_a_id = ${Number(country_a)}
+       AND country_b_id = ${Number(country_b)}
+       AND length = ${Number(length)}
      ORDER BY start_year_a, start_year_b`
   );
 

@@ -8,12 +8,19 @@ export const GET = withAuth(async (_req: NextRequest, payload) => {
   const currentYear = new Date().getFullYear();
 
   const rows = await runQuery(
-    `SELECT country_a, country_b, start_year_a, start_year_b, pattern_length,
-            avg_correlation, pattern_power_score, num_indexes
-     FROM qgi_data.patterns
-     WHERE start_year_b < start_year_a
-       AND (start_year_a + pattern_length) >= ${currentYear - 2}
-     ORDER BY CAST(pattern_power_score AS DOUBLE) DESC`
+    `WITH c AS (
+       SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
+     )
+     SELECT ca.name AS country_a, cb.name AS country_b,
+            p.start_year_a, p.start_year_b, p.length AS pattern_length,
+            p.avg_correlation, p.pattern_power_score,
+            p.indicator_count AS num_indexes
+     FROM qgi_data.patterns p
+     LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
+     LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
+     WHERE p.start_year_b < p.start_year_a
+       AND (p.start_year_a + p.length) >= ${currentYear - 2}
+     ORDER BY p.pattern_power_score DESC`
   );
 
   return NextResponse.json(

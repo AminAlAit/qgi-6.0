@@ -14,14 +14,14 @@ export const GET = withAuth(async (req: NextRequest) => {
   }
 
   const conditions = [
-    `country_a = '${country_a.replace(/'/g, "''")}'`,
-    `country_b = '${country_b.replace(/'/g, "''")}'`,
+    `country_a_id = ${Number(country_a)}`,
+    `country_b_id = ${Number(country_b)}`,
   ];
   if (year_from) conditions.push(`start_year_a >= ${Number(year_from)}`);
   if (year_to) conditions.push(`start_year_a <= ${Number(year_to)}`);
 
   const rows = await runQuery(
-    `SELECT index_name, sector, org, correlation, start_year_a, start_year_b, pattern_length, predicted
+    `SELECT indicator_numeric_id, correlation, start_year_a, start_year_b, length
      FROM qgi_data.scdis
      WHERE ${conditions.join(" AND ")}
      ORDER BY CAST(correlation AS DOUBLE) DESC`
@@ -29,9 +29,15 @@ export const GET = withAuth(async (req: NextRequest) => {
 
   return NextResponse.json(
     rows.map((r) => ({
-      ...r,
+      indicator_numeric_id: Number(r.indicator_numeric_id),
+      index_name: `Indicator #${r.indicator_numeric_id}`,
+      sector: "Unknown",
+      org: "Unknown",
       correlation: Number(r.correlation),
-      predicted: r.predicted === "true",
+      start_year_a: Number(r.start_year_a),
+      start_year_b: Number(r.start_year_b),
+      length: Number(r.length),
+      predicted: false,
     }))
   );
 });

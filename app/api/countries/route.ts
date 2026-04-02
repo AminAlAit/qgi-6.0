@@ -9,9 +9,10 @@ export const GET = withAuth(async (_req: NextRequest) => {
     "SELECT id, name_1 AS name, alpha_2 FROM qgi_data.countries ORDER BY name_1"
   );
   // Legacy table has multiple name columns per country — deduplicate by id
+  // and filter out placeholder rows with empty names
   const seen = new Set<string>();
   const unique = rows.filter((r) => {
-    if (seen.has(r.id)) return false;
+    if (!r.name || seen.has(r.id)) return false;
     seen.add(r.id);
     return true;
   });

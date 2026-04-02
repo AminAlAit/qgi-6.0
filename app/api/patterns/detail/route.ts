@@ -17,22 +17,31 @@ export const GET = withAuth(async (req: NextRequest) => {
     );
   }
 
-  const safeA = country_a.replace(/'/g, "''");
-  const safeB = country_b.replace(/'/g, "''");
+  const aId = Number(country_a);
+  const bId = Number(country_b);
   const lenNum = Number(length);
   const startANum = Number(start_a);
   const startBNum = Number(start_b);
 
-  // Pattern metadata row
+  // Pattern metadata row (join deduplicated countries for names)
   const metaRows = await runQuery(
-    `SELECT country_a, country_b, start_year_a, start_year_b, pattern_length,
-            avg_correlation, pattern_power_score, num_indexes, predicted
-     FROM qgi_data.patterns
-     WHERE country_a = '${safeA}'
-       AND country_b = '${safeB}'
-       AND start_year_a = ${startANum}
-       AND start_year_b = ${startBNum}
-       AND pattern_length = ${lenNum}
+    `WITH c AS (
+       SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
+     )
+     SELECT CAST(p.country_a_id AS VARCHAR) AS country_a,
+            CAST(p.country_b_id AS VARCHAR) AS country_b,
+            ca.name AS country_a_name, cb.name AS country_b_name,
+            p.start_year_a, p.start_year_b, p.length AS pattern_length,
+            p.avg_correlation, p.pattern_power_score,
+            p.indicator_count AS num_indexes
+     FROM qgi_data.patterns p
+     LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
+     LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
+     WHERE p.country_a_id = ${aId}
+       AND p.country_b_id = ${bId}
+       AND p.start_year_a = ${startANum}
+       AND p.start_year_b = ${startBNum}
+       AND p.length = ${lenNum}
      LIMIT 1`
   );
 
@@ -40,27 +49,29 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "Pattern not found" }, { status: 404 });
   }
 
-  // SCDIs for this pattern
+  // SCDIs for this pattern — legacy scdis table has limited columns
   const scdiRows = await runQuery(
-    `SELECT s.index_name, s.sector, s.org, s.correlation,
-            s.values_a, s.values_b, s.predicted
+    `SELECT s.indicator_numeric_id, s.correlation,
+            s.country_a_id, s.country_b_id,
+            s.start_year_a, s.start_year_b, s.length
      FROM qgi_data.scdis s
-     WHERE s.country_a = '${safeA}'
-       AND s.country_b = '${safeB}'
+     WHERE s.country_a_id = ${aId}
+       AND s.country_b_id = ${bId}
        AND s.start_year_a = ${startANum}
        AND s.start_year_b = ${startBNum}
-       AND s.pattern_length = ${lenNum}
+       AND s.length = ${lenNum}
      ORDER BY CAST(s.correlation AS DOUBLE) DESC`
   );
 
   const scdis = scdiRows.map((r) => ({
-    index_name: r.index_name,
-    sector: r.sector,
-    org: r.org,
+    indicator_numeric_id: Number(r.indicator_numeric_id),
+    index_name: `Indicator #${r.indicator_numeric_id}`,
+    sector: "Unknown",
+    org: "Unknown",
     correlation: Number(r.correlation),
-    predicted: r.predicted === "true",
-    values_a: JSON.parse(r.values_a ?? "[]"),
-    values_b: JSON.parse(r.values_b ?? "[]"),
+    predicted: false,
+    values_a: [],
+    values_b: [],
   }));
 
   return NextResponse.json({

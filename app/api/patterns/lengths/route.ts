@@ -11,12 +11,12 @@ export const GET = withAuth(async (req: NextRequest) => {
   }
 
   const rows = await runQuery(
-    `SELECT DISTINCT pattern_length
+    `SELECT DISTINCT length
      FROM qgi_data.patterns
-     WHERE country_a = '${country_a.replace(/'/g, "''")}'
-       AND country_b = '${country_b.replace(/'/g, "''")}'
-     ORDER BY pattern_length`
+     WHERE country_a_id = ${Number(country_a)}
+       AND country_b_id = ${Number(country_b)}
+     ORDER BY length`
   );
 
-  return NextResponse.json(rows.map((r) => Number(r.pattern_length)));
+  return NextResponse.json(rows.map((r) => Number(r.length)));
 });

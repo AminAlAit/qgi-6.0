@@ -9,19 +9,22 @@ export const GET = withAuth(async (req: NextRequest) => {
   }
 
   const rows = await runQuery(
-    `SELECT country_b AS country_b_id, MAX(country_name) AS country_b_name,
-            array_agg(DISTINCT pattern_length) AS available_lengths
+    `WITH c AS (
+       SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
+     )
+     SELECT CAST(p.country_b_id AS VARCHAR) AS country_b_id,
+            c.name AS country_b_name,
+            array_agg(DISTINCT p.length) AS available_lengths
      FROM qgi_data.patterns p
-     JOIN qgi_data.countries c ON c.country_id = p.country_b
-     WHERE country_a = '${country_a.replace(/'/g, "''")}'
-     GROUP BY country_b
-     ORDER BY country_b_name`
+     LEFT JOIN c ON c.id = CAST(p.country_b_id AS VARCHAR)
+     WHERE p.country_a_id = ${Number(country_a)}
+     GROUP BY p.country_b_id, c.name
+     ORDER BY c.name`
   );
 
-  // available_lengths comes back as a string like "[5, 10, 15]" — parse it
   const result = rows.map((r) => ({
     country_b_id: r.country_b_id,
-    country_b_name: r.country_b_name,
+    country_b_name: r.country_b_name ?? r.country_b_id,
     available_lengths: (r.available_lengths ?? "")
       .replace(/[\[\]\s]/g, "")
       .split(",")
