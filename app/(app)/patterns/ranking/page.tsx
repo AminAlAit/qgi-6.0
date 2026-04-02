@@ -88,8 +88,8 @@ export default function RankingPage() {
 
   function navigateToPattern(p: PatternRow) {
     const qs = new URLSearchParams({
-      country_a: p.country_a,
-      country_b: p.country_b,
+      country_a: p.country_a_id ?? p.country_a,
+      country_b: p.country_b_id ?? p.country_b,
       length: String(p.pattern_length),
       start_a: String(p.start_year_a),
       start_b: String(p.start_year_b),

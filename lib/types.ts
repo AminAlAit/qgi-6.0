@@ -1,6 +1,8 @@
 export interface PatternRow {
   country_a: string;
   country_b: string;
+  country_a_id?: string;
+  country_b_id?: string;
   start_year_a: number;
   start_year_b: number;
   pattern_length: number;

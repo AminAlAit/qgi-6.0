@@ -19,6 +19,8 @@ export function PatternScatter({ patterns }: Props) {
     p.country_b,
     p.start_year_a,
     p.start_year_b,
+    p.country_a_id ?? p.country_a,
+    p.country_b_id ?? p.country_b,
   ]);
 
   const option = {
@@ -93,10 +95,10 @@ export function PatternScatter({ patterns }: Props) {
 
   const onEvents = {
     click: (params: { value: (string | number)[] }) => {
-      const [len, , , ca, cb, sya, syb] = params.value;
+      const [len, , , , , sya, syb, caId, cbId] = params.value;
       const qs = new URLSearchParams({
-        country_a: String(ca),
-        country_b: String(cb),
+        country_a: String(caId),
+        country_b: String(cbId),
         length: String(len),
         start_a: String(sya),
         start_b: String(syb),

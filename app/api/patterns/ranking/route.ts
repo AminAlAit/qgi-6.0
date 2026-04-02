@@ -47,8 +47,10 @@ export const GET = withAuth(async (req: NextRequest) => {
     page,
     limit,
     results: rows.map((r) => ({
-      country_a: r.country_a,
-      country_b: r.country_b,
+      country_a: r.country_a ?? r.country_a_id,
+      country_b: r.country_b ?? r.country_b_id,
+      country_a_id: r.country_a_id,
+      country_b_id: r.country_b_id,
       start_year_a: Number(r.start_year_a),
       start_year_b: Number(r.start_year_b),
       pattern_length: Number(r.pattern_length),
