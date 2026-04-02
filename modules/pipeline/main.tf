@@ -385,6 +385,7 @@ resource "aws_lambda_function" "c_dispatcher" {
       S3_BUCKET             = var.data_lake_bucket_name
       ATHENA_DATABASE       = var.glue_database_name
       COUNTRIES_NAMES_TABLE = "countries"
+      SCDIS_TABLE           = "scdis"
       ATHENA_WORKGROUP      = var.athena_workgroup_name
       S3_OUTPUT_LOCATION    = local.s3_output_location
       SQS_QUEUE_URL         = var.queue_c_main_url
@@ -403,7 +404,7 @@ resource "aws_lambda_function" "c_worker" {
   function_name    = "qgi-pipeline-c-worker"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
-  memory_size      = 128
+  memory_size      = 256
   runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
@@ -428,10 +429,11 @@ resource "aws_lambda_function" "c_worker" {
 }
 
 resource "aws_lambda_event_source_mapping" "c_worker_sqs" {
-  event_source_arn = var.queue_c_main_arn
-  function_name    = aws_lambda_function.c_worker.arn
-  batch_size       = 1
-  enabled          = true
+  event_source_arn                   = var.queue_c_main_arn
+  function_name                      = aws_lambda_function.c_worker.arn
+  batch_size                         = 10
+  maximum_batching_window_in_seconds = 5
+  enabled                            = true
 }
 
 # ---------------------------------------------------------------------------
@@ -451,6 +453,7 @@ resource "aws_lambda_function" "c_checker" {
   environment {
     variables = {
       COMPLETION_TABLE = var.completion_table_name
+      S3_BUCKET        = var.data_lake_bucket_name
     }
   }
 
