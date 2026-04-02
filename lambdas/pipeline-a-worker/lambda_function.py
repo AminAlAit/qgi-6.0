@@ -68,7 +68,8 @@ class ETLWorker:
                 'expire_at': expire_at
             })
         except Exception as e:
-            logger.error(f"Failed to update DynamoDB: {e}")
+            logger.error(f"Failed to update DynamoDB: {e}", exc_info=True)
+            raise
 
     def _fetch_with_retry(self, indicator_id: str, max_attempts=5) -> pd.DataFrame:
         """Fetches data with custom exponential backoff for 429 errors."""

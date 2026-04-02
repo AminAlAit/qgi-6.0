@@ -61,6 +61,7 @@ def lambda_handler(event, context):
     S3_OUTPUT_LOCATION = os.environ['S3_OUTPUT_LOCATION']
     SQS_QUEUE_URL = os.environ['SQS_QUEUE_URL']
     COMPLETION_TABLE = os.environ.get('COMPLETION_TABLE')
+    SCDIS_TABLE = os.environ.get('SCDIS_TABLE', 'scdis')
     RUN_ID = event.get('run_id', 'unknown')
 
     PATTERNS_TABLE_NAME = "patterns"
@@ -68,9 +69,11 @@ def lambda_handler(event, context):
 
     if event.get("action") == "start" or event.get("action") == "start_sample":
         logger.info("--- DISPATCHER MODE: Starting Pipeline C ---")
-        
-        # 1. Get list of country IDs
-        countries_query = f"SELECT DISTINCT id FROM {DB_NAME}.{COUNTRIES_NAMES_TABLE}"
+
+        # 1. Get list of country IDs that actually have SCDIs (not all 261 countries).
+        #    Dispatching all countries caused 200+ empty INSERTs and the DynamoDB write
+        #    burst that triggered the counter bug fixed in #108.
+        countries_query = f"SELECT DISTINCT country_a_id FROM {DB_NAME}.{SCDIS_TABLE}"
         result_path = run_athena_query(countries_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, expects_result_path=True)
         result_key = result_path.replace(f"s3://{S3_BUCKET}/", "")
         obj = s3_client.get_object(Bucket=S3_BUCKET, Key=result_key)
