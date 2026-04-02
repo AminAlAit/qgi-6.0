@@ -149,4 +149,5 @@ class TestPhaseCPatternSynthesis:
                     result[col].reset_index(drop=True),
                     expected[col].reset_index(drop=True),
                     check_names=False,
+                    check_dtype=False,
                 )

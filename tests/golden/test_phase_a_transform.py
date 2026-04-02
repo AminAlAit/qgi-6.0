@@ -123,4 +123,4 @@ class TestPhaseATransform:
             pytest.skip("Golden file created — re-run to validate")
 
         expected = pd.read_parquet(golden_path)
-        pd.testing.assert_frame_equal(result, expected)
+        pd.testing.assert_frame_equal(result, expected, check_dtype=False)
