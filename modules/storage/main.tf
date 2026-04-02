@@ -452,7 +452,17 @@ resource "aws_athena_workgroup" "qgi" {
     }
     enforce_workgroup_configuration    = true
     publish_cloudwatch_metrics_enabled = true
+
+    engine_version {
+      selected_engine_version = "Athena engine version 3"
+    }
   }
 
   tags = var.tags
 }
+
+# Enable Athena query result caching (24h TTL) — not yet natively supported
+# by the Terraform AWS provider. Run once per environment after applying:
+#   aws athena update-work-group --work-group QGI-Lambda-Workgroup \
+#     --configuration-updates '{"ResultReuseConfiguration":{"ResultReuseByAgeConfiguration":{"Enabled":true,"MaxAgeInMinutes":1440}}}'
+# Reduces Athena scan costs when Batch jobs re-query the same data (#109 P1-6).
