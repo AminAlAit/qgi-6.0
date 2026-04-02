@@ -301,6 +301,104 @@ resource "aws_glue_catalog_table" "patterns" {
 }
 
 # ---------------------------------------------------------------------------
+# Glue — indicators table (Phase 1 output, Parquet)
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "indicators" {
+  name          = "indicators"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-A-indicator-extractor/output/parquet/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "country"
+      type = "string"
+    }
+    columns {
+      name = "year"
+      type = "int"
+    }
+    columns {
+      name = "value"
+      type = "double"
+    }
+  }
+
+  partition_keys {
+    name = "indicator_id"
+    type = "string"
+  }
+}
+
+# ---------------------------------------------------------------------------
+# Glue — indicators_completed table (Phase 1.5 output, Parquet with is_predicted)
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "indicators_completed" {
+  name          = "indicators_completed"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-A-indicator-extractor/output/parquet-completed/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "country"
+      type = "string"
+    }
+    columns {
+      name = "year"
+      type = "int"
+    }
+    columns {
+      name = "value"
+      type = "double"
+    }
+    columns {
+      name = "is_predicted"
+      type = "boolean"
+    }
+  }
+
+  partition_keys {
+    name = "indicator_id"
+    type = "string"
+  }
+}
+
+# ---------------------------------------------------------------------------
 # Glue — countries table (reference data, backed by CSV in S3)
 # ---------------------------------------------------------------------------
 resource "aws_glue_catalog_table" "countries" {

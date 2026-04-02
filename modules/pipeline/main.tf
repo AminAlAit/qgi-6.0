@@ -250,8 +250,8 @@ resource "aws_lambda_function" "a_completer" {
   environment {
     variables = {
       S3_BUCKET         = var.data_lake_bucket_name
-      INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/csv"
-      OUTPUT_PREFIX     = "pipeline-A-indicator-extractor/output/csv-completed"
+      INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/parquet"
+      OUTPUT_PREFIX     = "pipeline-A-indicator-extractor/output/parquet-completed"
       INDICATOR_MAP_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
     }
   }
@@ -277,7 +277,7 @@ resource "aws_lambda_function" "b_orchestrator" {
   environment {
     variables = {
       S3_BUCKET            = var.data_lake_bucket_name
-      S3_INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/csv/"
+      S3_INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/parquet-completed/"
       BATCH_JOB_QUEUE      = "qgi-pipeline-b-high-priority-queue"
       BATCH_JOB_DEFINITION = "scdi-finder-job"
     }
@@ -328,7 +328,7 @@ resource "aws_lambda_function" "b_dispatcher" {
   environment {
     variables = {
       S3_BUCKET       = var.data_lake_bucket_name
-      S3_INPUT_PREFIX = "pipeline-A-indicator-extractor/output/csv/"
+      S3_INPUT_PREFIX = "pipeline-A-indicator-extractor/output/parquet-completed/"
       SQS_QUEUE_URL   = var.queue_b_main_url
     }
   }
@@ -355,7 +355,7 @@ resource "aws_lambda_function" "b_scdi_finder" {
   environment {
     variables = {
       S3_BUCKET             = var.data_lake_bucket_name
-      S3_INPUT_PREFIX       = "pipeline-A-indicator-extractor/output/csv/"
+      S3_INPUT_PREFIX       = "pipeline-A-indicator-extractor/output/parquet-completed/"
       S3_OUTPUT_PREFIX      = "pipeline-B-scdi-finder/scdis"
       MIN_LENGTH            = "3"
       CORRELATION_THRESHOLD = "0.5"
