@@ -1,6 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import indexData from "@/data/indexes.json";
+
+// Build a lookup from numeric_id → index metadata
+const indexByNumericId = new Map<number, { name: string; sector: string; org: string }>();
+for (const idx of indexData as { numeric_id: number | null; name: string; sector: string; org: string }[]) {
+  if (idx.numeric_id != null) {
+    indexByNumericId.set(idx.numeric_id, { name: idx.name, sector: idx.sector, org: idx.org });
+  }
+}
 
 export const GET = withAuth(async (req: NextRequest) => {
   const { searchParams } = req.nextUrl;
@@ -28,9 +37,7 @@ export const GET = withAuth(async (req: NextRequest) => {
     `WITH c AS (
        SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
      )
-     SELECT CAST(p.country_a_id AS VARCHAR) AS country_a,
-            CAST(p.country_b_id AS VARCHAR) AS country_b,
-            ca.name AS country_a_name, cb.name AS country_b_name,
+     SELECT ca.name AS country_a, cb.name AS country_b,
             p.start_year_a, p.start_year_b, p.length AS pattern_length,
             p.avg_correlation, p.pattern_power_score,
             p.indicator_count AS num_indexes
@@ -49,11 +56,9 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "Pattern not found" }, { status: 404 });
   }
 
-  // SCDIs for this pattern — legacy scdis table has limited columns
+  // SCDIs for this pattern
   const scdiRows = await runQuery(
-    `SELECT s.indicator_numeric_id, s.correlation,
-            s.country_a_id, s.country_b_id,
-            s.start_year_a, s.start_year_b, s.length
+    `SELECT s.indicator_numeric_id, s.correlation
      FROM qgi_data.scdis s
      WHERE s.country_a_id = ${aId}
        AND s.country_b_id = ${bId}
@@ -63,16 +68,20 @@ export const GET = withAuth(async (req: NextRequest) => {
      ORDER BY CAST(s.correlation AS DOUBLE) DESC`
   );
 
-  const scdis = scdiRows.map((r) => ({
-    indicator_numeric_id: Number(r.indicator_numeric_id),
-    index_name: `Indicator #${r.indicator_numeric_id}`,
-    sector: "Unknown",
-    org: "Unknown",
-    correlation: Number(r.correlation),
-    predicted: false,
-    values_a: [],
-    values_b: [],
-  }));
+  const scdis = scdiRows.map((r) => {
+    const numId = Number(r.indicator_numeric_id);
+    const meta = indexByNumericId.get(numId);
+    return {
+      indicator_numeric_id: numId,
+      index_name: meta?.name ?? `Indicator #${numId}`,
+      sector: meta?.sector ?? "Unknown",
+      org: meta?.org ?? "Unknown",
+      correlation: Number(r.correlation),
+      predicted: false,
+      values_a: [] as number[],
+      values_b: [] as number[],
+    };
+  });
 
   return NextResponse.json({
     metadata: metaRows[0],

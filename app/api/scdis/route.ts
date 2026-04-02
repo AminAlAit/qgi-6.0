@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import indexData from "@/data/indexes.json";
+
+const indexByNumericId = new Map<number, { name: string; sector: string; org: string }>();
+for (const idx of indexData as { numeric_id: number | null; name: string; sector: string; org: string }[]) {
+  if (idx.numeric_id != null) {
+    indexByNumericId.set(idx.numeric_id, { name: idx.name, sector: idx.sector, org: idx.org });
+  }
+}
 
 export const GET = withAuth(async (req: NextRequest) => {
   const { searchParams } = req.nextUrl;
@@ -28,16 +36,20 @@ export const GET = withAuth(async (req: NextRequest) => {
   );
 
   return NextResponse.json(
-    rows.map((r) => ({
-      indicator_numeric_id: Number(r.indicator_numeric_id),
-      index_name: `Indicator #${r.indicator_numeric_id}`,
-      sector: "Unknown",
-      org: "Unknown",
-      correlation: Number(r.correlation),
-      start_year_a: Number(r.start_year_a),
-      start_year_b: Number(r.start_year_b),
-      length: Number(r.length),
-      predicted: false,
-    }))
+    rows.map((r) => {
+      const numId = Number(r.indicator_numeric_id);
+      const meta = indexByNumericId.get(numId);
+      return {
+        indicator_numeric_id: numId,
+        index_name: meta?.name ?? `Indicator #${numId}`,
+        sector: meta?.sector ?? "Unknown",
+        org: meta?.org ?? "Unknown",
+        correlation: Number(r.correlation),
+        start_year_a: Number(r.start_year_a),
+        start_year_b: Number(r.start_year_b),
+        length: Number(r.length),
+        predicted: false,
+      };
+    })
   );
 });
