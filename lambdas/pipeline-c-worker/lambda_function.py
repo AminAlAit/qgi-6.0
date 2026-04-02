@@ -63,7 +63,8 @@ def _increment_completion(table_name, run_id):
             ExpressionAttributeValues={':one': 1},
         )
     except Exception as e:
-        logger.warning(f"Failed to increment completion counter: {e}")
+        logger.error(f"Failed to increment completion counter: {e}", exc_info=True)
+        raise
 
 
 def lambda_handler(event, context):
