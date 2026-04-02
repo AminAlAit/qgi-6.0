@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import { getIndicatorValues } from "@/lib/indicator-values";
 import indexData from "@/data/indexes.json";
 
-// Build a lookup from numeric_id → index metadata
-const indexByNumericId = new Map<number, { name: string; sector: string; org: string }>();
-for (const idx of indexData as { numeric_id: number | null; name: string; sector: string; org: string }[]) {
+// Build lookups from numeric_id → metadata and → string ID
+const indexByNumericId = new Map<number, { id: string; name: string; sector: string; org: string }>();
+for (const idx of indexData as { id: string; numeric_id: number | null; name: string; sector: string; org: string }[]) {
   if (idx.numeric_id != null) {
-    indexByNumericId.set(idx.numeric_id, { name: idx.name, sector: idx.sector, org: idx.org });
+    indexByNumericId.set(idx.numeric_id, { id: idx.id, name: idx.name, sector: idx.sector, org: idx.org });
   }
 }
 
@@ -56,6 +57,9 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "Pattern not found" }, { status: 404 });
   }
 
+  const countryAName = metaRows[0].country_a;
+  const countryBName = metaRows[0].country_b;
+
   // SCDIs for this pattern
   const scdiRows = await runQuery(
     `SELECT s.indicator_numeric_id, s.correlation
@@ -68,20 +72,35 @@ export const GET = withAuth(async (req: NextRequest) => {
      ORDER BY CAST(s.correlation AS DOUBLE) DESC`
   );
 
-  const scdis = scdiRows.map((r) => {
-    const numId = Number(r.indicator_numeric_id);
-    const meta = indexByNumericId.get(numId);
-    return {
-      indicator_numeric_id: numId,
-      index_name: meta?.name ?? `Indicator #${numId}`,
-      sector: meta?.sector ?? "Unknown",
-      org: meta?.org ?? "Unknown",
-      correlation: Number(r.correlation),
-      predicted: false,
-      values_a: [] as number[],
-      values_b: [] as number[],
-    };
-  });
+  // Fetch indicator time-series values in parallel
+  const scdis = await Promise.all(
+    scdiRows.map(async (r) => {
+      const numId = Number(r.indicator_numeric_id);
+      const meta = indexByNumericId.get(numId);
+      const indicatorId = meta?.id;
+
+      let values_a: number[] = [];
+      let values_b: number[] = [];
+
+      if (indicatorId && countryAName && countryBName) {
+        [values_a, values_b] = await Promise.all([
+          getIndicatorValues(indicatorId, countryAName, startANum, lenNum),
+          getIndicatorValues(indicatorId, countryBName, startBNum, lenNum),
+        ]);
+      }
+
+      return {
+        indicator_numeric_id: numId,
+        index_name: meta?.name ?? `Indicator #${numId}`,
+        sector: meta?.sector ?? "Unknown",
+        org: meta?.org ?? "Unknown",
+        correlation: Number(r.correlation),
+        predicted: false,
+        values_a,
+        values_b,
+      };
+    })
+  );
 
   return NextResponse.json({
     metadata: metaRows[0],
