@@ -7,7 +7,8 @@ import {
 } from "@aws-sdk/client-athena";
 
 const REGION = "eu-central-1";
-const WORKGROUP = "QGI-Lambda-Workgroup";
+const WORKGROUP = process.env.ATHENA_WORKGROUP ?? "QGI-Lambda-Workgroup";
+const OUTPUT_LOCATION = process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-111111111111/query_results/";
 
 // Cache: queryKey → { result, expiresAt }
 const cache = new Map<string, { result: Record<string, string>[]; expiresAt: number }>();
@@ -61,6 +62,7 @@ export async function runQuery(
       QueryString: sql,
       QueryExecutionContext: { Database: database },
       WorkGroup: WORKGROUP,
+      ResultConfiguration: { OutputLocation: OUTPUT_LOCATION },
     })
   );
   if (!QueryExecutionId) throw new Error("No QueryExecutionId returned");

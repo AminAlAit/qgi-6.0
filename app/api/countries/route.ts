@@ -6,7 +6,14 @@ export const revalidate = 3600; // 1 hour
 
 export const GET = withAuth(async (_req: NextRequest) => {
   const rows = await runQuery(
-    "SELECT DISTINCT country_id AS id, country_name AS name, alpha_2 FROM qgi_data.countries ORDER BY country_name"
+    "SELECT id, name_1 AS name, alpha_2 FROM qgi_data.countries ORDER BY name_1"
   );
-  return NextResponse.json(rows);
+  // Legacy table has multiple name columns per country — deduplicate by id
+  const seen = new Set<string>();
+  const unique = rows.filter((r) => {
+    if (seen.has(r.id)) return false;
+    seen.add(r.id);
+    return true;
+  });
+  return NextResponse.json(unique);
 });

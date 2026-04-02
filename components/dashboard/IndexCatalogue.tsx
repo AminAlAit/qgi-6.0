@@ -42,8 +42,8 @@ export function IndexCatalogue({ indexes, activeSector }: Props) {
         <span className="w-20">SOURCE</span>
       </div>
       <div className="flex-1 overflow-y-auto">
-        {visible.map((idx) => (
-          <div key={idx.id}>
+        {visible.map((idx, i) => (
+          <div key={`${idx.id}-${i}`}>
             <button
               onClick={() => setExpandedId(expandedId === idx.id ? null : idx.id)}
               className="w-full text-left flex items-center gap-4 px-4 py-2 border-b text-xs transition-colors hover:bg-[var(--qgi-surface-2)]"
