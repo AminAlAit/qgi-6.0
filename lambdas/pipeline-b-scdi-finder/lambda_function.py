@@ -430,7 +430,7 @@ def preprocess_data(df: pd.DataFrame, countries: list, min_len: int) -> list:
 def convert_sdcis_to_df(sdcis: List[SDCI]) -> pd.DataFrame:
     """Converts a list of SDCI objects to a memory-optimized DataFrame."""
     if not sdcis: return pd.DataFrame()
-    return pd.DataFrame([sdc.__dict__ for sdc in sDcis]).astype({
+    return pd.DataFrame([sdc.__dict__ for sdc in sdcis]).astype({
         "country_a_id": "uint16", "country_b_id": "uint16",
         "length": "uint16", "start_year_a": "uint16", "start_year_b": "uint16",
         "correlation": "float32",
