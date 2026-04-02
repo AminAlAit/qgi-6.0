@@ -14,6 +14,9 @@
     },
     "ghcr.io/devcontainers/features/github-cli:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "20"
     }
   },
 
@@ -29,7 +32,10 @@
         "eamodio.gitlens",
         "ms-azuretools.vscode-docker",
         "amazonwebservices.aws-toolkit-vscode",
-        "davidanson.vscode-markdownlint"
+        "davidanson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets"
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "bash",
@@ -39,11 +45,14 @@
         },
         "git.scanRepositories": [
           "/workspaces/qgi-infra",
-          "/workspaces/qgi-pipeline"
+          "/workspaces/qgi-pipeline",
+          "/workspaces/qgi-frontend"
         ]
       }
     }
   },
+
+  "forwardPorts": [3000],
 
   "postStartCommand": "bash .devcontainer/setup.sh",
 
