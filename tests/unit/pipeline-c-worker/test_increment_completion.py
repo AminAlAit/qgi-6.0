@@ -5,9 +5,12 @@ Verifies that DynamoDB failures are propagated (not swallowed).
 import importlib
 import sys
 import types
+from pathlib import Path
 from unittest.mock import MagicMock, patch
 
 import pytest
+
+_LAMBDAS_DIR = Path(__file__).resolve().parent.parent.parent.parent / "lambdas"
 
 # ---------------------------------------------------------------------------
 # Minimal stub for boto3 so the module can be imported without real AWS creds
@@ -26,7 +29,7 @@ def _load_module():
     with patch.dict(sys.modules, {"boto3": boto3_stub}):
         spec = importlib.util.spec_from_file_location(
             "lambda_function",
-            "/workspaces/qgi-pipeline/lambdas/pipeline-c-worker/lambda_function.py",
+            str(_LAMBDAS_DIR / "pipeline-c-worker" / "lambda_function.py"),
         )
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)

@@ -5,8 +5,11 @@ Unit tests for pipeline-c-dispatcher: verifies the dispatcher queries SCDIs
 import sys
 import types
 import importlib
+from pathlib import Path
 from unittest.mock import MagicMock, patch, call
 import pytest
+
+_LAMBDAS_DIR = Path(__file__).resolve().parent.parent.parent.parent / "lambdas"
 
 
 def _make_boto3_stub():
@@ -21,7 +24,7 @@ def _load_module():
     with patch.dict(sys.modules, {"boto3": boto3_stub}):
         spec = importlib.util.spec_from_file_location(
             "c_dispatcher",
-            "/workspaces/qgi-pipeline/lambdas/pipeline-c-dispatcher/lambda_function.py",
+            str(_LAMBDAS_DIR / "pipeline-c-dispatcher" / "lambda_function.py"),
         )
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)

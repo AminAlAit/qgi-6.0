@@ -1,5 +1,7 @@
 boto3
 botocore
 moto[dynamodb,sqs,s3]
+pandas
+pyarrow
 pytest
 pytest-cov

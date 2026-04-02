@@ -7,8 +7,11 @@ import sys
 import types
 import importlib
 import os
+from pathlib import Path
 from unittest.mock import MagicMock, patch, call
 import pytest
+
+_LAMBDAS_DIR = Path(__file__).resolve().parent.parent.parent.parent / "lambdas"
 
 
 def _make_boto3_stub():
@@ -28,7 +31,7 @@ def _load_module():
          patch.dict(os.environ, env_patch):
         spec = importlib.util.spec_from_file_location(
             "c_checker",
-            "/workspaces/qgi-pipeline/lambdas/pipeline-c-checker/lambda_function.py",
+            str(_LAMBDAS_DIR / "pipeline-c-checker" / "lambda_function.py"),
         )
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
