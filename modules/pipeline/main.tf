@@ -14,12 +14,16 @@ data "archive_file" "placeholder" {
 }
 
 locals {
+  # AWS SDK for Pandas layer — provides pandas, pyarrow, numpy, scipy, etc.
+  aws_sdk_pandas_layer = "arn:aws:lambda:${var.region}:336392948345:layer:AWSSDKPandas-Python313-Arm64:1"
+
   lambda_defaults = {
     runtime       = "python3.13"
     architectures = ["arm64"]
     filename      = data.archive_file.placeholder.output_path
     source_code_hash = data.archive_file.placeholder.output_base64sha256
     role          = var.lambda_execution_role_arn
+    layers        = [local.aws_sdk_pandas_layer]
   }
   s3_output_location = "s3://${var.data_lake_bucket_name}/query_results/"
 
@@ -46,6 +50,7 @@ resource "aws_lambda_function" "ops_janitor" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -74,6 +79,7 @@ resource "aws_lambda_function" "a_sheet_fetcher" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -102,6 +108,7 @@ resource "aws_lambda_function" "a_dispatcher" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -131,6 +138,7 @@ resource "aws_lambda_function" "a_checker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -155,6 +163,7 @@ resource "aws_lambda_function" "a_indicator_extractor" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -183,6 +192,7 @@ resource "aws_lambda_function" "a_worker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -221,6 +231,7 @@ resource "aws_lambda_function" "a_reporter" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -246,6 +257,7 @@ resource "aws_lambda_function" "a_completer" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -273,6 +285,7 @@ resource "aws_lambda_function" "b_orchestrator" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -300,6 +313,7 @@ resource "aws_lambda_function" "ops_batch_checker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -324,6 +338,7 @@ resource "aws_lambda_function" "b_dispatcher" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -351,6 +366,7 @@ resource "aws_lambda_function" "b_scdi_finder" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -379,6 +395,7 @@ resource "aws_lambda_function" "c_dispatcher" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -410,6 +427,7 @@ resource "aws_lambda_function" "c_worker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -449,6 +467,7 @@ resource "aws_lambda_function" "c_checker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -475,6 +494,7 @@ resource "aws_lambda_function" "c_dlq_inspector" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -512,6 +532,7 @@ resource "aws_lambda_function" "ops_dlq_scanner" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
@@ -537,6 +558,7 @@ resource "aws_lambda_function" "batch_job_terminator" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
