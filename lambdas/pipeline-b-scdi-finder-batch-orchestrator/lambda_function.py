@@ -75,12 +75,12 @@ def lambda_handler(event, context):
     logger.info(f"Found {len(indicators_to_process)} indicator(s) to process.")
 
     for indicator_id in indicators_to_process:
-        indicator_key = f"{input_prefix}{indicator_id}/{indicator_id}.csv.gz"
+        indicator_key = f"{input_prefix}{indicator_id}/{indicator_id}.parquet"
         logger.info(f"Processing indicator: {indicator_id}")
-        
+
         try:
             obj = s3_client.get_object(Bucket=bucket, Key=indicator_key)
-            df = pd.read_csv(BytesIO(obj['Body'].read()), compression='gzip')
+            df = pd.read_parquet(BytesIO(obj['Body'].read()))
             countries = df['country'].unique()
 
             for country_a_name in countries:

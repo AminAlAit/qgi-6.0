@@ -24,7 +24,6 @@ Rules:
 
 import os
 import io
-import gzip
 import logging
 import datetime
 import boto3
@@ -50,28 +49,29 @@ def _current_year() -> int:
 
 
 def _list_indicator_ids() -> list[str]:
-    """Returns all indicator IDs that have a csv.gz file under INPUT_PREFIX."""
+    """Returns all indicator IDs that have a parquet file under INPUT_PREFIX."""
     paginator = s3.get_paginator("list_objects_v2")
     ids = []
     for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=INPUT_PREFIX + "/"):
         for obj in page.get("Contents", []):
             key = obj["Key"]
-            if key.endswith(".csv.gz"):
-                # key shape: {INPUT_PREFIX}/{id}/{id}.csv.gz
+            if key.endswith(".parquet"):
+                # key shape: {INPUT_PREFIX}/{id}/{id}.parquet
                 parts = key.split("/")
                 if len(parts) >= 2:
                     ids.append(parts[-2])
     return ids
 
 
-def _read_csv_gz(key: str) -> pd.DataFrame:
+def _read_parquet(key: str) -> pd.DataFrame:
     obj = s3.get_object(Bucket=S3_BUCKET, Key=key)
-    return pd.read_csv(io.BytesIO(obj["Body"].read()), compression="gzip")
+    return pd.read_parquet(io.BytesIO(obj["Body"].read()))
 
 
-def _write_csv_gz(df: pd.DataFrame, key: str) -> None:
-    buf = gzip.compress(df.to_csv(index=False).encode("utf-8"), mtime=0)
-    s3.put_object(Bucket=S3_BUCKET, Key=key, Body=buf)
+def _write_parquet(df: pd.DataFrame, key: str) -> None:
+    buf = io.BytesIO()
+    df.to_parquet(buf, index=False, engine='pyarrow', compression='snappy')
+    s3.put_object(Bucket=S3_BUCKET, Key=key, Body=buf.getvalue())
 
 
 def _ets_forecast(series: pd.Series, n_steps: int) -> list[float]:
@@ -176,15 +176,15 @@ def lambda_handler(event, context):
     stats = {"completed": 0, "skipped": 0, "failed": 0}
 
     for indicator_id in indicator_ids:
-        input_key  = f"{INPUT_PREFIX}/{indicator_id}/{indicator_id}.csv.gz"
-        output_key = f"{OUTPUT_PREFIX}/{indicator_id}/{indicator_id}.csv.gz"
+        input_key  = f"{INPUT_PREFIX}/{indicator_id}/{indicator_id}.parquet"
+        output_key = f"{OUTPUT_PREFIX}/{indicator_id}/{indicator_id}.parquet"
 
         try:
-            df = _read_csv_gz(input_key)
+            df = _read_parquet(input_key)
             logger.info(f"Processing {indicator_id}: {len(df)} rows, {df['country'].nunique()} countries")
 
             completed = _complete_indicator(df)
-            _write_csv_gz(completed, output_key)
+            _write_parquet(completed, output_key)
 
             added = len(completed) - len(df)
             logger.info(f"  → wrote {len(completed)} rows (+{added} predicted) to {output_key}")

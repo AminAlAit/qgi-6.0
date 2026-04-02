@@ -4,13 +4,12 @@ import os
 import logging
 import json
 import yaml
-import gzip
 import boto3
 import pandas as pd
 import wbgapi as wb
 from dataclasses import dataclass, asdict
 from typing import List, Dict, Tuple
-from io import StringIO
+from io import StringIO, BytesIO
 
 # --- Environment Variables & S3 Client Initialization ---
 S3_BUCKET = os.environ.get('S3_BUCKET')
@@ -146,10 +145,10 @@ class Loader:
                 continue
             
             try:
-                output_key = f"{S3_OUTPUT_PREFIX}/csv/{indicator.id}/{indicator.id}.csv.gz"
-                csv_string = indicator.data.to_csv(index=False)
-                compressed_csv = gzip.compress(csv_string.encode('utf-8'))
-                s3_client.put_object(Bucket=S3_BUCKET, Key=output_key, Body=compressed_csv)
+                output_key = f"{S3_OUTPUT_PREFIX}/parquet/{indicator.id}/{indicator.id}.parquet"
+                parquet_buffer = BytesIO()
+                indicator.data.to_parquet(parquet_buffer, index=False, engine='pyarrow', compression='snappy')
+                s3_client.put_object(Bucket=S3_BUCKET, Key=output_key, Body=parquet_buffer.getvalue())
                 logger.info("Successfully saved %s to s3://%s/%s", indicator.id, S3_BUCKET, output_key)
             except Exception as e:
                 logger.error("Failed to save indicator %s to S3: %s", indicator.id, e)

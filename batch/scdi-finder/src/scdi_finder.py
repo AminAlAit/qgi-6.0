@@ -328,10 +328,10 @@ def find_and_save_sdcis_parallel(preprocessed_data: list, country_name_to_id: di
 def load_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
     """Loads the main indicator file and the countries mapping file from S3."""
     try:
-        indicator_key = f"{S3_INPUT_PREFIX.rstrip('/')}/{INDICATOR_ID}/{INDICATOR_ID}.csv.gz"
+        indicator_key = f"{S3_INPUT_PREFIX.rstrip('/')}/{INDICATOR_ID}/{INDICATOR_ID}.parquet"
         logging.info(f"Loading indicator data from s3://{S3_BUCKET}/{indicator_key}")
         indicator_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=indicator_key)
-        indicator_df = pd.read_csv(indicator_obj['Body'], compression='gzip')
+        indicator_df = pd.read_parquet(BytesIO(indicator_obj['Body'].read()))
 
         countries_key = "pipeline-A-indicator-extractor/input/countries.csv"
         logging.info(f"Loading countries mapping from s3://{S3_BUCKET}/{countries_key}")

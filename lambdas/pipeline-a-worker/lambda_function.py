@@ -1,14 +1,15 @@
 import os
 import logging
 import json
-import gzip
 import time
 import random
 import boto3
 import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
 import wbgapi as wb
 import hashlib
-from io import StringIO
+from io import StringIO, BytesIO
 
 S3_BUCKET = os.environ.get('S3_BUCKET')
 S3_INPUT_PREFIX = os.environ.get('S3_INPUT_PREFIX')
@@ -121,8 +122,8 @@ class ETLWorker:
             csv_str = final_df.to_csv(index=False)
             new_hash = hashlib.md5(csv_str.encode('utf-8')).hexdigest()
             
-            output_key = f"{S3_OUTPUT_PREFIX}/csv/{indicator_id}/{indicator_id}.csv.gz"
-            
+            output_key = f"{S3_OUTPUT_PREFIX}/parquet/{indicator_id}/{indicator_id}.parquet"
+
             # Check existing S3 Metadata
             existing_hash = self.get_remote_hash(output_key)
 
@@ -133,14 +134,14 @@ class ETLWorker:
 
             # 4. LOAD (Only if changed)
             logger.info(f"Hash mismatch (Old: {existing_hash} | New: {new_hash}). Uploading.")
-            
-            # Create reproducible GZIP (mtime=0) to ensure binary stability if needed later
-            csv_buffer = gzip.compress(csv_str.encode('utf-8'), mtime=0)
-            
+
+            parquet_buffer = BytesIO()
+            final_df.to_parquet(parquet_buffer, index=False, engine='pyarrow', compression='snappy')
+
             s3_client.put_object(
-                Bucket=S3_BUCKET, 
-                Key=output_key, 
-                Body=csv_buffer,
+                Bucket=S3_BUCKET,
+                Key=output_key,
+                Body=parquet_buffer.getvalue(),
                 Metadata={'content_hash': new_hash} # Store hash for next time
             )
             self.update_state(run_id, indicator_id, "UPDATED")
