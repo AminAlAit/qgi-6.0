@@ -15,6 +15,8 @@ data "archive_file" "placeholder" {
 
 locals {
   # AWS SDK for Pandas layer — provides pandas, pyarrow, numpy, scipy, etc.
+  # Pinned to version 1. Check for updates periodically but test before bumping.
+  # https://aws-sdk-pandas.readthedocs.io/en/stable/layers.html
   aws_sdk_pandas_layer = "arn:aws:lambda:${var.region}:336392948345:layer:AWSSDKPandas-Python313-Arm64:1"
 
   lambda_defaults = {
