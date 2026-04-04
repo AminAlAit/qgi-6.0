@@ -94,7 +94,7 @@ class ETLWorker:
     def run(self, indicator_id: str, run_id: str = None):
         logger.info(f"--- START WORKER for {indicator_id} (RunID: {run_id}) ---")
 
-        wait_time = random.uniform(5.0, 300) # 5 seconds to 5 minutes
+        wait_time = random.uniform(5.0, 30) # 5-30s jitter. Concurrency controlled by SQS MaximumConcurrency=10
         logger.info(f"Adding random jitter of {wait_time:.2f} seconds")
         time.sleep(wait_time)
         

@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .env
 *.zip
+
+# Local data files (events, SCDIs, etc.) - too large for git
+data/
