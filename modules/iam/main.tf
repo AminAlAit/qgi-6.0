@@ -145,6 +145,18 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Action   = ["lambda:InvokeFunction"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
+      # EC2 — start/stop indicator fetcher instance + describe for status checks
+      {
+        Effect   = "Allow"
+        Action   = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances", "ec2:DescribeInstanceStatus"]
+        Resource = "*"
+      },
+      # SSM — send commands to EC2 indicator fetcher
+      {
+        Effect   = "Allow"
+        Action   = ["ssm:SendCommand", "ssm:GetCommandInvocation", "ssm:ListCommandInvocations"]
+        Resource = "*"
+      },
     ]
   })
 }
@@ -382,8 +394,81 @@ resource "aws_iam_role_policy" "cross_account_ops" {
         Action   = ["dynamodb:Scan", "dynamodb:Query", "dynamodb:DeleteItem"]
         Resource = "arn:aws:dynamodb:${var.region}:${var.aws_account_id}:table/qgi-*"
       },
+      # EC2 — manage indicator fetcher instance
+      {
+        Effect   = "Allow"
+        Action   = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances",
+          "ec2:DescribeInstanceStatus"]
+        Resource = "*"
+      },
+      # SSM — send commands and check status
+      {
+        Effect   = "Allow"
+        Action   = ["ssm:SendCommand", "ssm:GetCommandInvocation",
+          "ssm:ListCommandInvocations", "ssm:DescribeInstanceInformation"]
+        Resource = "*"
+      },
     ]
   })
+}
+
+# ---------------------------------------------------------------------------
+# EC2 Indicator Fetcher — instance role + profile (Phase 1 replacement)
+# Needs: S3 (read/write data lake), DynamoDB (update counters), SSM (receive commands), CloudWatch Logs
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "ec2_indicator_fetcher" {
+  name = "qgi-ec2-indicator-fetcher-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Service = "ec2.amazonaws.com" }
+      Action    = "sts:AssumeRole"
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "ec2_indicator_fetcher" {
+  name = "qgi-ec2-indicator-fetcher-policy"
+  role = aws_iam_role.ec2_indicator_fetcher.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      # S3 — data lake (read config, write indicator data)
+      {
+        Effect   = "Allow"
+        Action   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation", "s3:HeadObject"]
+        Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
+      },
+      # DynamoDB — indicator tracking + completion counters
+      {
+        Effect   = "Allow"
+        Action   = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:GetItem", "dynamodb:Query"]
+        Resource = [var.indicator_table_arn, var.completion_table_arn]
+      },
+      # CloudWatch Logs
+      {
+        Effect   = "Allow"
+        Action   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
+        Resource = "arn:aws:logs:*:${var.aws_account_id}:log-group:/qgi/*"
+      },
+    ]
+  })
+}
+
+# SSM managed policy — required for SSM Run Command
+resource "aws_iam_role_policy_attachment" "ec2_indicator_fetcher_ssm" {
+  role       = aws_iam_role.ec2_indicator_fetcher.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+}
+
+resource "aws_iam_instance_profile" "ec2_indicator_fetcher" {
+  name = "qgi-ec2-indicator-fetcher-profile"
+  role = aws_iam_role.ec2_indicator_fetcher.name
 }
 
 # ---------------------------------------------------------------------------

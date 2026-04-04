@@ -96,8 +96,10 @@ module "pipeline" {
   queue_c_dlq_url  = module.storage.queue_c_dlq_url
   queue_c_dlq_arn  = module.storage.queue_c_dlq_arn
 
-  batch_invoke_mode     = "invoke_5"
+  batch_invoke_mode     = "invoke"
   completion_table_name = module.storage.completion_table_name
+
+  ec2_indicator_fetcher_profile_name = module.iam.ec2_indicator_fetcher_profile_name
 
   tags = local.tags
 }

@@ -80,6 +80,11 @@ variable "batch_invoke_mode" {
   description = "Mode passed to b-orchestrator: 'invoke' submits all jobs; 'invoke_5' caps at 5 (for staging tests)."
 }
 
+variable "ec2_indicator_fetcher_profile_name" {
+  type        = string
+  description = "IAM instance profile name for the EC2 indicator fetcher"
+}
+
 variable "tags" {
   type    = map(string)
   default = {}
