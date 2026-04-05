@@ -37,6 +37,25 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   }
 }
 
+# Allow management account to write to this bucket (for legacy data sync)
+resource "aws_s3_bucket_policy" "data_lake_cross_account" {
+  bucket = aws_s3_bucket.data_lake.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid       = "AllowManagementAccountSync"
+      Effect    = "Allow"
+      Principal = { AWS = "arn:aws:iam::${var.management_account_id}:root" }
+      Action    = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
+      Resource  = [
+        aws_s3_bucket.data_lake.arn,
+        "${aws_s3_bucket.data_lake.arn}/*"
+      ]
+    }]
+  })
+}
+
 resource "aws_s3_bucket_public_access_block" "data_lake" {
   bucket                  = aws_s3_bucket.data_lake.id
   block_public_acls       = true
@@ -435,6 +454,183 @@ resource "aws_glue_catalog_table" "countries" {
         name = columns.value
         type = "string"
       }
+    }
+  }
+}
+
+# ---------------------------------------------------------------------------
+# Glue — events table (legacy ChatGPT + Sonnet-generated events)
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "events" {
+  name          = "events"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/events/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "country_name"
+      type = "string"
+    }
+    columns {
+      name = "year"
+      type = "smallint"
+    }
+    columns {
+      name = "title"
+      type = "string"
+    }
+    columns {
+      name = "description"
+      type = "string"
+    }
+    columns {
+      name = "category"
+      type = "string"
+    }
+    columns {
+      name = "category_normalized"
+      type = "string"
+    }
+    columns {
+      name = "source"
+      type = "string"
+    }
+  }
+
+  partition_keys {
+    name = "country_id"
+    type = "smallint"
+  }
+}
+
+# ---------------------------------------------------------------------------
+# Glue — recipes table (Phase 5: pattern-event matches)
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "recipes" {
+  name          = "recipes"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/recipes/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "recipe_id"
+      type = "string"
+    }
+    columns {
+      name = "event_category"
+      type = "string"
+    }
+    columns {
+      name = "pattern_id"
+      type = "string"
+    }
+    columns {
+      name = "country_a_id"
+      type = "smallint"
+    }
+    columns {
+      name = "country_b_id"
+      type = "smallint"
+    }
+    columns {
+      name = "country_a_name"
+      type = "string"
+    }
+    columns {
+      name = "country_b_name"
+      type = "string"
+    }
+    columns {
+      name = "start_year_a"
+      type = "smallint"
+    }
+    columns {
+      name = "start_year_b"
+      type = "smallint"
+    }
+    columns {
+      name = "length"
+      type = "smallint"
+    }
+    columns {
+      name = "avg_correlation"
+      type = "double"
+    }
+    columns {
+      name = "end_year_a"
+      type = "smallint"
+    }
+    columns {
+      name = "end_year_b"
+      type = "smallint"
+    }
+    columns {
+      name = "event_window"
+      type = "smallint"
+    }
+    columns {
+      name = "event_year_a"
+      type = "smallint"
+    }
+    columns {
+      name = "event_year_b"
+      type = "smallint"
+    }
+    columns {
+      name = "event_title_a"
+      type = "string"
+    }
+    columns {
+      name = "event_title_b"
+      type = "string"
+    }
+    columns {
+      name = "indicator_count"
+      type = "bigint"
+    }
+    columns {
+      name = "pattern_power_score"
+      type = "double"
+    }
+    columns {
+      name = "instance_count"
+      type = "bigint"
     }
   }
 }

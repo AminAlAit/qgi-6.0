@@ -407,7 +407,7 @@ resource "aws_lambda_function" "b_orchestrator" {
   function_name    = "qgi-pipeline-b-scdi-finder-batch-orchestrator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
-  memory_size      = 128
+  memory_size      = 512
   runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
@@ -674,13 +674,41 @@ resource "aws_lambda_function" "ops_dlq_scanner" {
 }
 
 # ---------------------------------------------------------------------------
-# Utility — Batch job terminator (manual invocation only)
+# Phase 5 — Recipe engine (matches patterns + events → recipes)
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "recipe_engine" {
+  function_name    = "qgi-pipeline-recipe-engine"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 1024
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET          = var.data_lake_bucket_name
+      ATHENA_DATABASE    = var.glue_database_name
+      ATHENA_WORKGROUP   = var.athena_workgroup_name
+      S3_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Utility — Batch job terminator (Step Function + Lambda fan-out)
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "batch_job_terminator" {
   function_name    = "qgi-batch-job-terminator"
   handler          = "lambda_function.lambda_handler"
   timeout          = 900
-  memory_size      = 128
+  memory_size      = 512
   runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
@@ -695,6 +723,96 @@ resource "aws_lambda_function" "batch_job_terminator" {
   }
 
   lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+resource "aws_sfn_state_machine" "batch_job_terminator" {
+  name     = "qgi-batch-job-terminator"
+  role_arn = var.stepfunctions_role_arn
+
+  definition = jsonencode({
+    Comment = "Kill all active AWS Batch jobs. List → S3 chunks → parallel Map kill → Report."
+    StartAt = "List Active Jobs"
+    States = {
+
+      "List Active Jobs" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.batch_job_terminator.arn
+        Parameters = {
+          mode   = "list"
+          reason = "Terminated by Step Function."
+          bucket = var.data_lake_bucket_name
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.listing"
+        Next       = "Any Jobs?"
+      }
+
+      "Any Jobs?" = {
+        Type = "Choice"
+        Choices = [{
+          Variable           = "$.listing.total_jobs"
+          NumericGreaterThan = 0
+          Next               = "Kill All Chunks"
+        }]
+        Default = "No Jobs Found"
+      }
+
+      "No Jobs Found" = {
+        Type    = "Succeed"
+        Comment = "Nothing to kill."
+      }
+
+      "Kill All Chunks" = {
+        Type           = "Map"
+        ItemsPath      = "$.listing.chunk_indices"
+        MaxConcurrency = 10
+        ItemProcessor = {
+          ProcessorConfig = {
+            Mode = "INLINE"
+          }
+          StartAt = "Kill Chunk"
+          States = {
+            "Kill Chunk" = {
+              Type     = "Task"
+              Resource = aws_lambda_function.batch_job_terminator.arn
+              Parameters = {
+                mode        = "kill"
+                reason      = "Terminated by Step Function."
+                bucket      = var.data_lake_bucket_name
+                "run_id.$"  = "$$.Execution.Name"
+                "chunk_index.$" = "$.chunk_index"
+              }
+              End = true
+              Retry = [{
+                ErrorEquals     = ["States.ALL"]
+                IntervalSeconds = 10
+                MaxAttempts     = 3
+                BackoffRate     = 2
+              }]
+            }
+          }
+        }
+        ResultPath = "$.kill_results"
+        Next       = "Report"
+      }
+
+      "Report" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.batch_job_terminator.arn
+        Parameters = {
+          mode = "report"
+        }
+        ResultPath = "$.report"
+        Next       = "Done"
+      }
+
+      "Done" = {
+        Type = "Succeed"
+      }
+    }
+  })
+
   tags = var.tags
 }
 
@@ -803,7 +921,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           NumericGreaterThan = 0
           Next               = "Phase 2: Compute (Trigger B)"
         }]
-        Default = "Phase 5: Ops Report (Final Check)"
+        Default = "Phase 6: Ops Report (Final Check)"
       }
 
       "Phase 2: Compute (Trigger B)" = {
@@ -915,10 +1033,56 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_patterns_output"
-        Next       = "Phase 5: Ops Report (Final Check)"
+        Next       = "Phase 5: MSCK Repair events"
       }
 
-      "Phase 5: Ops Report (Final Check)" = {
+      # Phase 5: Recipe engine — match patterns against events (D4/D5)
+      "Phase 5: MSCK Repair events" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          QueryString = "MSCK REPAIR TABLE `${var.glue_database_name}`.`events`;"
+          WorkGroup   = var.athena_workgroup_name
+          QueryExecutionContext = {
+            Database = var.glue_database_name
+          }
+          ResultConfiguration = {
+            OutputLocation = local.s3_output_location
+          }
+        }
+        ResultPath = "$.repair_events_output"
+        Next       = "Phase 5: Recipe Engine"
+      }
+
+      "Phase 5: Recipe Engine" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_engine.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.recipe_engine_output"
+        Retry      = local.lambda_retry
+        Next       = "Phase 5: MSCK Repair recipes"
+      }
+
+      "Phase 5: MSCK Repair recipes" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          QueryString = "MSCK REPAIR TABLE `${var.glue_database_name}`.`recipes`;"
+          WorkGroup   = var.athena_workgroup_name
+          QueryExecutionContext = {
+            Database = var.glue_database_name
+          }
+          ResultConfiguration = {
+            OutputLocation = local.s3_output_location
+          }
+        }
+        ResultPath = "$.repair_recipes_output"
+        Next       = "Phase 6: Ops Report (Final Check)"
+      }
+
+      "Phase 6: Ops Report (Final Check)" = {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_dlq_scanner.arn
         ResultPath = "$.dlq_report"

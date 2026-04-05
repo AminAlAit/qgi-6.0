@@ -351,11 +351,12 @@ resource "aws_iam_role_policy" "cross_account_ops" {
           "states:StopExecution"]
         Resource = "*"
       },
-      # Lambda — describe + deploy code updates
+      # Lambda — describe, deploy, and invoke
       {
         Effect   = "Allow"
         Action   = ["lambda:GetFunction", "lambda:GetFunctionConfiguration",
-          "lambda:ListFunctions", "lambda:UpdateFunctionCode"]
+          "lambda:ListFunctions", "lambda:UpdateFunctionCode",
+          "lambda:InvokeFunction"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
       # CloudWatch Logs — read pipeline logs
@@ -365,12 +366,14 @@ resource "aws_iam_role_policy" "cross_account_ops" {
           "logs:GetLogEvents", "logs:FilterLogEvents"]
         Resource = "arn:aws:logs:${var.region}:${var.aws_account_id}:log-group:/aws/*:*"
       },
-      # Batch — observe job status
+      # Batch — observe and manage jobs
       {
         Effect   = "Allow"
         Action   = ["batch:DescribeJobs", "batch:ListJobs",
           "batch:DescribeJobQueues", "batch:DescribeComputeEnvironments",
-          "batch:DescribeJobDefinitions"]
+          "batch:DescribeJobDefinitions", "batch:CancelJob",
+          "batch:TerminateJob", "batch:UpdateComputeEnvironment",
+          "batch:UpdateJobQueue", "batch:SubmitJob"]
         Resource = "*"
       },
       # S3 — read/delete pipeline data lake objects (for e2e test resets)

@@ -20,11 +20,10 @@ data "aws_security_group" "default" {
 
 # ---------------------------------------------------------------------------
 # Batch compute environment
-# Fixes the production cost issue: restricts to m7g.2xlarge only.
-# The scdi-finder job requires 8 vCPU / 30 GB; m7g.2xlarge (8 vCPU, 32 GB)
-# is the smallest Graviton instance that satisfies this requirement.
-# Production had `instanceTypes = ["m7g", "r7g"]` (full families) which
-# caused Batch to occasionally pick m7g.16xlarge ($35/run).
+# Right-sized: jobs need 2 vCPU / 4 GB. c7g.large (compute-optimized
+# Graviton, 2 vCPU, 4 GB) is the perfect fit at ~$0.073/hr.
+# On-demand for reliable allocation (Spot had <10 concurrent).
+# maxvCpus=512 → up to 256 concurrent jobs → ~9.5K jobs in ~2 hours.
 # ---------------------------------------------------------------------------
 resource "aws_batch_compute_environment" "scdi_spot" {
   compute_environment_name = "qgi-pipeline-b-spot-environment"
@@ -32,12 +31,11 @@ resource "aws_batch_compute_environment" "scdi_spot" {
   state                    = "ENABLED"
 
   compute_resources {
-    type                = "SPOT"
-    allocation_strategy = "SPOT_PRICE_CAPACITY_OPTIMIZED"
-    instance_type       = ["m7g.2xlarge"]
+    type          = "EC2"
+    instance_type = ["m7g.2xlarge"]
 
     min_vcpus     = 0
-    max_vcpus     = 256 # up to 32 concurrent jobs
+    max_vcpus     = 512
     desired_vcpus = 0
 
     instance_role = var.ecs_instance_profile_arn
@@ -101,8 +99,8 @@ resource "aws_batch_job_definition" "scdi_finder" {
     executionRoleArn = var.batch_job_role_arn
 
     resourceRequirements = [
-      { type = "VCPU",   value = "8" },
-      { type = "MEMORY", value = "30000" },
+      { type = "VCPU",   value = "2" },
+      { type = "MEMORY", value = "4096" },
     ]
 
     environment = [
