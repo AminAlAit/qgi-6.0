@@ -2,61 +2,142 @@ import boto3
 import os
 import logging
 import json
+import time
+import random
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 batch_client = boto3.client('batch')
+s3_client = boto3.client('s3')
+
+MAX_WORKERS = 50
+CHUNK_SIZE = 500
+
+CANCEL_STATUSES = ['SUBMITTED', 'PENDING', 'RUNNABLE']
+TERMINATE_STATUSES = ['STARTING', 'RUNNING']
+
 
 def lambda_handler(event, context):
     """
-    Terminates all active jobs in a specified AWS Batch job queue.
+    Three modes, orchestrated by Step Functions:
+
+    1. mode=list   — Collect all active job IDs, write chunks to S3, return metadata
+    2. mode=kill   — Read a chunk from S3 by index, kill jobs in parallel
+    3. mode=report — Summarize results
     """
+    mode = event.get('mode', 'list')
     job_queue = os.environ.get('BATCH_JOB_QUEUE')
-    # The reason for termination will be passed in the Lambda's test event
-    reason = event.get('reason', 'Manual termination triggered by Lambda.')
+    reason = event.get('reason', 'Terminated by batch-job-terminator.')
+    bucket = event.get('bucket', '')
+    run_id = event.get('run_id', 'default')
 
     if not job_queue:
-        logger.error("FATAL: BATCH_JOB_QUEUE environment variable not set.")
-        return {'statusCode': 500, 'body': 'Internal configuration error.'}
+        raise ValueError("BATCH_JOB_QUEUE environment variable not set.")
 
-    logger.info(f"Starting termination process for all active jobs in queue: {job_queue}")
-    
-    # These are all the states that represent a job that is not in a terminal state
-    active_statuses = ['SUBMITTED', 'PENDING', 'RUNNABLE', 'STARTING', 'RUNNING']
-    terminated_job_ids = []
+    if mode == 'list':
+        return handle_list(job_queue, bucket, run_id)
+    elif mode == 'kill':
+        chunk_index = event.get('chunk_index', 0)
+        return handle_kill(bucket, run_id, chunk_index, reason)
+    elif mode == 'report':
+        return handle_report(job_queue)
+    else:
+        raise ValueError(f"Unknown mode: {mode}")
 
-    for status in active_statuses:
-        logger.info(f"--- Checking for jobs in '{status}' state ---")
+
+def handle_list(job_queue, bucket, run_id):
+    """List all active jobs, write chunks to S3, return chunk count."""
+    all_jobs = []
+
+    for status in CANCEL_STATUSES:
         try:
             paginator = batch_client.get_paginator('list_jobs')
-            pages = paginator.paginate(jobQueue=job_queue, jobStatus=status)
-            
-            for page in pages:
+            for page in paginator.paginate(jobQueue=job_queue, jobStatus=status):
                 for job in page.get('jobSummaryList', []):
-                    job_id = job['jobId']
-                    job_name = job['jobName']
-                    logger.info(f"Terminating job '{job_name}' (ID: {job_id}) with reason: {reason}")
-                    try:
-                        batch_client.terminate_job(
-                            jobId=job_id,
-                            reason=reason
-                        )
-                        terminated_job_ids.append(job_id)
-                    except Exception as e:
-                        # This can happen if the job finishes between the list and terminate calls
-                        logger.warning(f"Could not terminate job {job_id}. It may have already completed. Error: {e}")
+                    all_jobs.append({'id': job['jobId'], 'cancel': True})
         except Exception as e:
-            logger.error(f"Failed to list or process jobs with status {status}. Error: {e}", exc_info=True)
-            continue # Continue to the next status
+            logger.error(f"Failed to list {status} jobs: {e}")
 
-    summary = f"Termination process complete. Terminated {len(terminated_job_ids)} jobs in queue '{job_queue}'."
-    logger.info(summary)
-    
+    for status in TERMINATE_STATUSES:
+        try:
+            paginator = batch_client.get_paginator('list_jobs')
+            for page in paginator.paginate(jobQueue=job_queue, jobStatus=status):
+                for job in page.get('jobSummaryList', []):
+                    all_jobs.append({'id': job['jobId'], 'cancel': False})
+        except Exception as e:
+            logger.error(f"Failed to list {status} jobs: {e}")
+
+    total = len(all_jobs)
+    logger.info(f"Found {total} active jobs.")
+
+    if total == 0:
+        return {'total_jobs': 0, 'total_chunks': 0, 'chunk_indices': []}
+
+    # Write chunks to S3
+    chunk_indices = []
+    for i in range(0, total, CHUNK_SIZE):
+        chunk_idx = i // CHUNK_SIZE
+        chunk = all_jobs[i:i + CHUNK_SIZE]
+        key = f"_terminator/{run_id}/chunk_{chunk_idx}.json"
+        s3_client.put_object(
+            Bucket=bucket,
+            Key=key,
+            Body=json.dumps(chunk).encode()
+        )
+        chunk_indices.append({'chunk_index': chunk_idx})
+
+    logger.info(f"Wrote {len(chunk_indices)} chunks to S3.")
+
     return {
-        'statusCode': 200,
-        'body': json.dumps({
-            'message': summary,
-            'terminated_job_ids': terminated_job_ids
-        })
+        'total_jobs': total,
+        'total_chunks': len(chunk_indices),
+        'chunk_indices': chunk_indices
     }
+
+
+def handle_kill(bucket, run_id, chunk_index, reason):
+    """Read a chunk from S3 and kill all jobs in parallel."""
+    key = f"_terminator/{run_id}/chunk_{chunk_index}.json"
+    obj = s3_client.get_object(Bucket=bucket, Key=key)
+    jobs = json.loads(obj['Body'].read())
+
+    logger.info(f"Chunk {chunk_index}: killing {len(jobs)} jobs")
+
+    success = 0
+    fail = 0
+
+    def kill_one(job):
+        try:
+            if job['cancel']:
+                batch_client.cancel_job(jobId=job['id'], reason=reason)
+            else:
+                batch_client.terminate_job(jobId=job['id'], reason=reason)
+            return True
+        except Exception:
+            return False
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = [pool.submit(kill_one, j) for j in jobs]
+        for f in as_completed(futures):
+            if f.result():
+                success += 1
+            else:
+                fail += 1
+
+    logger.info(f"Chunk {chunk_index}: {success} killed, {fail} failed")
+    return {'chunk_index': chunk_index, 'killed': success, 'failed': fail}
+
+
+def handle_report(job_queue):
+    """Check remaining active jobs."""
+    remaining = 0
+    for status in CANCEL_STATUSES + TERMINATE_STATUSES:
+        try:
+            paginator = batch_client.get_paginator('list_jobs')
+            for page in paginator.paginate(jobQueue=job_queue, jobStatus=status):
+                remaining += len(page.get('jobSummaryList', []))
+        except Exception:
+            pass
+    return {'remaining_jobs': remaining}

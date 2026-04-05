@@ -4,30 +4,126 @@ import pandas as pd
 from io import BytesIO
 import logging
 import re
+import json
+import time
+import random
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
+
 s3_client = boto3.client('s3')
 batch_client = boto3.client('batch')
+lambda_client = boto3.client('lambda')
+
+# 10 threads per worker (50 workers × 10 = 500 concurrent, within Batch API limits)
+MAX_WORKERS = 10
+MAX_RETRIES = 5
+FUNCTION_NAME = os.environ.get('AWS_LAMBDA_FUNCTION_NAME',
+                               'qgi-pipeline-b-scdi-finder-batch-orchestrator')
+
 
 def sanitize_for_batch(name: str) -> str:
-    """Sanitizes a string for a valid AWS Batch job name."""
     name = name.replace(' ', '_').replace('.', '_')
     return re.sub(r'[^a-zA-Z0-9_-]', '', name)
 
+
 def get_country_map(bucket: str) -> dict:
-    """
-    Loads the countries.csv file from S3 once and returns a name-to-id dictionary.
-    """
+    countries_key = "pipeline-A-indicator-extractor/input/countries.csv"
+    logger.info(f"Loading countries mapping from s3://{bucket}/{countries_key}")
+    countries_obj = s3_client.get_object(Bucket=bucket, Key=countries_key)
+    countries_df = pd.read_csv(countries_obj['Body'])
+    return {row["name_1"]: row["id"] for _, row in countries_df.iterrows()}
+
+
+def collect_indicators(event, bucket, input_prefix):
+    multiple = event.get("indicator_ids")
+    single = event.get("indicator_id")
+
+    if multiple:
+        logger.info(f"Multi-indicator mode: {len(multiple)} indicators")
+        return multiple
+    elif single:
+        logger.info(f"Single-indicator mode: {single}")
+        return [single]
+    else:
+        logger.info("Full-scan mode: scanning S3 for all indicators...")
+        indicators = []
+        paginator = s3_client.get_paginator('list_objects_v2')
+        for page in paginator.paginate(Bucket=bucket, Prefix=input_prefix, Delimiter='/'):
+            for prefix in page.get('CommonPrefixes', []):
+                ind = prefix.get('Prefix').strip('/').split('/')[-1]
+                indicators.append(ind)
+        logger.info(f"Found {len(indicators)} indicators via S3 scan")
+        return indicators
+
+
+def build_jobs_for_indicator(indicator_id, bucket, input_prefix, country_map,
+                             job_queue, job_definition):
+    indicator_key = f"{input_prefix}{indicator_id}/{indicator_id}.parquet"
     try:
-        countries_key = "pipeline-A-indicator-extractor/input/countries.csv"
-        logger.info(f"Loading countries mapping from s3://{bucket}/{countries_key}")
-        countries_obj = s3_client.get_object(Bucket=bucket, Key=countries_key)
-        countries_df = pd.read_csv(countries_obj['Body'])
-        return {row["name_1"]: row["id"] for _, row in countries_df.iterrows()}
+        obj = s3_client.get_object(Bucket=bucket, Key=indicator_key)
+        df = pd.read_parquet(BytesIO(obj['Body'].read()))
+        countries = df['country'].unique()
     except Exception as e:
-        logger.error(f"FATAL: Failed to load and parse countries mapping file: {e}", exc_info=True)
-        raise
+        logger.error(f"Could not read indicator {indicator_id}: {e}")
+        return []
+
+    jobs = []
+    for country_a_name in countries:
+        country_a_id = country_map.get(country_a_name)
+        if not country_a_id:
+            continue
+
+        sane_ind = sanitize_for_batch(indicator_id)
+        sane_country = sanitize_for_batch(country_a_name)
+        jobs.append({
+            "jobName": f"scdi-{sane_ind}-{sane_country}"[:128],
+            "jobQueue": job_queue,
+            "jobDefinition": job_definition,
+            "containerOverrides": {
+                'environment': [
+                    {'name': 'INDICATOR_ID', 'value': indicator_id},
+                    {'name': 'COUNTRY_A_NAME', 'value': country_a_name}
+                ]
+            }
+        })
+    return jobs
+
+
+def submit_one_with_retry(job_params):
+    """Submit a single Batch job with exponential backoff on throttling."""
+    for attempt in range(MAX_RETRIES):
+        try:
+            batch_client.submit_job(**job_params)
+            return True
+        except batch_client.exceptions.ClientException:
+            # Non-retryable error
+            return False
+        except Exception as e:
+            err_str = str(e)
+            if 'TooManyRequestsException' in err_str or 'ThrottlingException' in err_str:
+                wait = (2 ** attempt) + random.uniform(0, 1)
+                time.sleep(wait)
+                continue
+            else:
+                return False
+    return False
+
+
+def submit_jobs_parallel(jobs):
+    """Submit jobs with limited concurrency + per-job exponential backoff."""
+    success = 0
+    fail = 0
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
+        futures = [pool.submit(submit_one_with_retry, j) for j in jobs]
+        for f in as_completed(futures):
+            if f.result():
+                success += 1
+            else:
+                fail += 1
+    return success, fail
+
 
 def lambda_handler(event, context):
     bucket = os.environ.get('S3_BUCKET')
@@ -36,115 +132,112 @@ def lambda_handler(event, context):
     job_definition = os.environ.get('BATCH_JOB_DEFINITION')
 
     if not all([bucket, input_prefix, job_queue, job_definition]):
-        logger.error("FATAL: Missing one or more environment variables.")
+        logger.error("FATAL: Missing environment variables.")
         return {'statusCode': 500, 'body': 'Internal configuration error.'}
-    
+
     mode = event.get("mode", "test")
     logger.info(f"Running in '{mode}' mode.")
 
-    country_name_to_id_map = get_country_map(bucket)
-    logger.info(f"Successfully loaded mapping for {len(country_name_to_id_map)} countries.")
+    # ---------------------------------------------------------------
+    # Worker mode: receive a single indicator, build + submit its jobs
+    # ---------------------------------------------------------------
+    if mode == "worker":
+        indicator_id = event["indicator_id"]
+        # Stagger worker start to avoid thundering herd
+        jitter = random.uniform(0, 5)
+        time.sleep(jitter)
 
-    jobs_to_submit = []
-    indicators_to_process = []
-    
-    # Check for a list of indicators, then a single indicator, else full scan.
-    multiple_indicators = event.get("indicator_ids") # Plural list
-    single_indicator = event.get("indicator_id")   # Singular string
+        country_map = get_country_map(bucket)
+        jobs = build_jobs_for_indicator(
+            indicator_id, bucket, input_prefix, country_map,
+            job_queue, job_definition
+        )
+        logger.info(f"Worker [{indicator_id}]: submitting {len(jobs)} jobs")
+        success, fail = submit_jobs_parallel(jobs)
+        msg = f"Worker [{indicator_id}]: {success} submitted, {fail} failed"
+        logger.info(msg)
+        return {'statusCode': 200, 'body': msg}
 
-    if multiple_indicators:
-        logger.info(f"Running in multi-indicator mode for: {multiple_indicators}")
-        indicators_to_process = multiple_indicators
-    elif single_indicator:
-        logger.info(f"Running in single-indicator mode for: {single_indicator}")
-        indicators_to_process = [single_indicator] # Put the single string into a list
-    else:
-        logger.info("Running in full-scan mode. Scanning S3 for all indicators...")
-        try:
-            paginator = s3_client.get_paginator('list_objects_v2')
-            pages = paginator.paginate(Bucket=bucket, Prefix=input_prefix, Delimiter='/')
+    # ---------------------------------------------------------------
+    # Coordinator path
+    # ---------------------------------------------------------------
+    indicators = collect_indicators(event, bucket, input_prefix)
+    logger.info(f"Found {len(indicators)} indicator(s) to process.")
 
-            for page in pages:
-                for prefix in page.get('CommonPrefixes', []):
-                    indicator_id = prefix.get('Prefix').strip('/').split('/')[-1]
-                    indicators_to_process.append(indicator_id)
-        except Exception as e:
-            logger.error(f"Error during S3 scanning: {e}", exc_info=True)
-            return {'statusCode': 500, 'body': 'Failed during S3 scan.'}
+    # --- test mode: dry run ---
+    if mode == "test":
+        country_map = get_country_map(bucket)
+        total_jobs = 0
+        for ind in indicators:
+            jobs = build_jobs_for_indicator(
+                ind, bucket, input_prefix, country_map,
+                job_queue, job_definition
+            )
+            total_jobs += len(jobs)
+        return {'statusCode': 200,
+                'body': f'Dry run complete. Collected {total_jobs} jobs.'}
 
-    logger.info(f"Found {len(indicators_to_process)} indicator(s) to process.")
-
-    for indicator_id in indicators_to_process:
-        indicator_key = f"{input_prefix}{indicator_id}/{indicator_id}.parquet"
-        logger.info(f"Processing indicator: {indicator_id}")
-
-        try:
-            obj = s3_client.get_object(Bucket=bucket, Key=indicator_key)
-            df = pd.read_parquet(BytesIO(obj['Body'].read()))
-            countries = df['country'].unique()
-
-            for country_a_name in countries:
-                country_a_id = country_name_to_id_map.get(country_a_name)
-                
-                if not country_a_id:
-                    logger.warning(f"Skipping job for '{country_a_name}' as it was not found in the country mapping file.")
-                    continue
-
-                sane_indicator = sanitize_for_batch(indicator_id)
-                sane_country = sanitize_for_batch(country_a_name)
-                job_name = f"scdi-{sane_indicator}-{sane_country}"
-                
-                jobs_to_submit.append({
-                    "jobName": job_name[:128],
-                    "jobQueue": job_queue,
-                    "jobDefinition": job_definition,
-                    "containerOverrides": {
-                        'environment': [
-                            {'name': 'INDICATOR_ID', 'value': indicator_id},
-                            {'name': 'COUNTRY_A_NAME', 'value': country_a_name}
-                        ]
-                    }
-                })
-        except Exception as e:
-            logger.error(f"Could not read or process indicator {indicator_id}: {e}", exc_info=True)
-            continue
-
-    logger.info(f"Phase 1 Complete. Collected {len(jobs_to_submit)} total jobs.")
-
+    # --- debug mode: submit limited count ---
     if mode == "debug":
-        num_to_process = event.get("number_of_countries_to_process", 1)
-        logger.info(f"Debug Mode: Attempting to submit up to {num_to_process} jobs.")
-        debug_output_prefix = "pipeline-B-scdi-finder/debug-output"
-        submitted_count = 0
-        for job_params in jobs_to_submit:
-            if submitted_count >= num_to_process: break
-            job_params["containerOverrides"]["environment"].append({'name': 'S3_DEBUG_OUTPUT_PREFIX', 'value': debug_output_prefix})
-            job_params["jobName"] = "debug-" + job_params["jobName"]
+        country_map = get_country_map(bucket)
+        num = event.get("number_of_countries_to_process", 1)
+        all_jobs = []
+        for ind in indicators:
+            all_jobs.extend(build_jobs_for_indicator(
+                ind, bucket, input_prefix, country_map,
+                job_queue, job_definition
+            ))
+        submitted = 0
+        for j in all_jobs[:num]:
+            j["jobName"] = "debug-" + j["jobName"]
             try:
-                batch_client.submit_job(**job_params)
-                submitted_count += 1
-            except Exception as e:
-                logger.error(f"Failed to submit debug job {job_params['jobName']}: {e}")
-                continue
-        logger.info(f"Debug mode complete. Successfully submitted {submitted_count} jobs.")
-        return {'statusCode': 200, 'body': f"Successfully submitted {submitted_count} debug jobs."}
+                batch_client.submit_job(**j)
+                submitted += 1
+            except Exception:
+                pass
+        return {'statusCode': 200,
+                'body': f'Successfully submitted {submitted} debug jobs.'}
 
-    elif "invoke" in mode:
-        logger.info("Phase 2: Submitting all jobs to AWS Batch...")
-        submitted_count = 0
-        for job_params in jobs_to_submit:
+    # --- invoke_5 mode: submit exactly 5 ---
+    if mode == "invoke_5":
+        country_map = get_country_map(bucket)
+        all_jobs = []
+        for ind in indicators:
+            all_jobs.extend(build_jobs_for_indicator(
+                ind, bucket, input_prefix, country_map,
+                job_queue, job_definition
+            ))
+        submitted = 0
+        for j in all_jobs[:5]:
             try:
-                batch_client.submit_job(**job_params)
-                submitted_count += 1
-                if mode == "invoke_5":
-                    if submitted_count > 4:
-                        break
+                batch_client.submit_job(**j)
+                submitted += 1
+            except Exception:
+                pass
+        return {'statusCode': 200,
+                'body': f'Successfully submitted {submitted} of {len(all_jobs)} jobs.'}
+
+    # --- invoke mode: FAN-OUT — one worker Lambda per indicator ---
+    if "invoke" in mode:
+        workers_launched = 0
+        for indicator_id in indicators:
+            payload = {
+                "mode": "worker",
+                "indicator_id": indicator_id
+            }
+            try:
+                lambda_client.invoke(
+                    FunctionName=FUNCTION_NAME,
+                    InvocationType='Event',
+                    Payload=json.dumps(payload).encode()
+                )
+                workers_launched += 1
             except Exception as e:
-                logger.error(f"Failed to submit job {job_params['jobName']}: {e}")
-                continue
-        logger.info(f"Phase 2 Complete. Successfully submitted {submitted_count} of {len(jobs_to_submit)} jobs.")
-        return {'statusCode': 200, 'body': f'Successfully submitted {submitted_count} of {len(jobs_to_submit)} jobs.'}
-    
-    else: # This will catch 'test' mode
-        logger.info("Phase 2 Skipped. Running in 'test' mode (dry run).")
-        return {'statusCode': 200, 'body': f'Dry run complete. Collected {len(jobs_to_submit)} jobs.'}
+                logger.error(f"Failed to invoke worker for {indicator_id}: {e}")
+
+        msg = (f"Successfully submitted {workers_launched} of "
+               f"{len(indicators)} indicator workers.")
+        logger.info(msg)
+        return {'statusCode': 200, 'body': msg}
+
+    return {'statusCode': 400, 'body': f'Unknown mode: {mode}'}
