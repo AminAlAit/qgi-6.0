@@ -110,8 +110,8 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Effect   = "Allow"
         Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
           "athena:GetQueryResults", "athena:StopQueryExecution",
-          "athena:ListQueryExecutions"]
-        Resource = "arn:aws:athena:${var.region}:${var.aws_account_id}:workgroup/QGI-Lambda-Workgroup"
+          "athena:ListQueryExecutions", "athena:GetWorkGroup"]
+        Resource = "*"
       },
       # Glue — qgi_data database
       {
@@ -376,10 +376,29 @@ resource "aws_iam_role_policy" "cross_account_ops" {
           "batch:UpdateJobQueue", "batch:SubmitJob"]
         Resource = "*"
       },
+      # Athena — run queries (MSCK REPAIR, recipe engine debugging)
+      {
+        Effect   = "Allow"
+        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+          "athena:GetQueryResults", "athena:StopQueryExecution",
+          "athena:GetWorkGroup", "athena:UpdateWorkGroup",
+          "athena:ListQueryExecutions"]
+        Resource = "*"
+      },
+      # Glue — catalog access for Athena queries
+      {
+        Effect   = "Allow"
+        Action   = ["glue:GetTable", "glue:GetTables", "glue:GetDatabase",
+          "glue:GetPartitions", "glue:BatchCreatePartition", "glue:GetPartition",
+          "glue:CreateTable", "glue:DeleteTable", "glue:UpdateTable"]
+        Resource = "*"
+      },
       # S3 — read/delete pipeline data lake objects (for e2e test resets)
       {
         Effect   = "Allow"
-        Action   = ["s3:ListBucket", "s3:GetObject", "s3:DeleteObject", "s3:PutObject", "s3:HeadObject"]
+        Action   = ["s3:ListBucket", "s3:GetObject", "s3:DeleteObject", "s3:PutObject", "s3:HeadObject",
+          "s3:GetBucketLocation", "s3:ListBucketMultipartUploads", "s3:AbortMultipartUpload",
+          "s3:ListMultipartUploadParts", "s3:PutObjectAcl"]
         Resource = [
           "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}",
           "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}/*"

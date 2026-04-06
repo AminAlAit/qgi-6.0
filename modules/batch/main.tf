@@ -20,10 +20,11 @@ data "aws_security_group" "default" {
 
 # ---------------------------------------------------------------------------
 # Batch compute environment
-# Right-sized: jobs need 2 vCPU / 4 GB. c7g.large (compute-optimized
-# Graviton, 2 vCPU, 4 GB) is the perfect fit at ~$0.073/hr.
-# On-demand for reliable allocation (Spot had <10 concurrent).
-# maxvCpus=512 → up to 256 concurrent jobs → ~9.5K jobs in ~2 hours.
+# Right-sized: jobs need 2 vCPU / 4 GB.
+# Spot with multiple Graviton instance types for best availability + price.
+# m6g.large (~$0.034/hr), c7g.large (~$0.043/hr), m7g.large (~$0.045/hr)
+# All verified available in eu-central-1 a/b/c.
+# maxvCpus=512 for good concurrency. Spot is cheaper but slower to allocate.
 # ---------------------------------------------------------------------------
 resource "aws_batch_compute_environment" "scdi_spot" {
   compute_environment_name = "qgi-pipeline-b-spot-environment"
@@ -31,8 +32,9 @@ resource "aws_batch_compute_environment" "scdi_spot" {
   state                    = "ENABLED"
 
   compute_resources {
-    type          = "EC2"
-    instance_type = ["m7g.2xlarge"]
+    type                = "SPOT"
+    allocation_strategy = "SPOT_CAPACITY_OPTIMIZED"
+    instance_type       = ["m6g.large", "c7g.large", "m7g.large"]
 
     min_vcpus     = 0
     max_vcpus     = 512
@@ -44,7 +46,7 @@ resource "aws_batch_compute_environment" "scdi_spot" {
     security_group_ids = [data.aws_security_group.default.id]
 
     ec2_configuration {
-      image_type = "ECS_AL2023"
+      image_type = "ECS_AL2"
     }
 
     tags = var.tags

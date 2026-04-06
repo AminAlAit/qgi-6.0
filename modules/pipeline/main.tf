@@ -933,12 +933,12 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.trigger_b_output"
         Retry      = local.lambda_retry
-        Next       = "Wait 30 Mins (Poll Interval)"
+        Next       = "Wait 2 Hrs (Spot Poll Interval)"
       }
 
-      "Wait 30 Mins (Poll Interval)" = {
+      "Wait 2 Hrs (Spot Poll Interval)" = {
         Type    = "Wait"
-        Seconds = 1800
+        Seconds = 7200
         Next    = "Phase 2: Check Batch Status"
       }
 
@@ -955,7 +955,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Choices = [{
           Variable           = "$.batch_status.jobs_running"
           NumericGreaterThan = 0
-          Next               = "Wait 30 Mins (Poll Interval)"
+          Next               = "Wait 2 Hrs (Spot Poll Interval)"
         }]
         Default = "Phase 3: MSCK Repair scdis"
       }
