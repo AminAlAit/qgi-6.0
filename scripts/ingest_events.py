@@ -39,27 +39,37 @@ SONNET_EVENTS_DIR = REPO_ROOT / "data" / "events" / "batches"
 S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"
 COUNTRIES_KEY = "pipeline-A-indicator-extractor/input/countries.csv"
+CATEGORY_MAPPING_FILE = REPO_ROOT / "data" / "events" / "category_mapping.json"
 
 
-# ─── Category Deduplication ───────────────────────────────────────────────
+# ─── Category Normalization ──────────────────────────────────────────────
+_category_mapping = None
+
+def load_category_mapping():
+    """Load the 60-category mapping from JSON file."""
+    global _category_mapping
+    if _category_mapping is None:
+        with open(CATEGORY_MAPPING_FILE, encoding='utf-8') as f:
+            data = json.load(f)
+        _category_mapping = data['mapping']
+        print(f"Loaded category mapping: {len(_category_mapping)} entries -> {len(data['taxonomy'])} categories")
+    return _category_mapping
+
+
 def normalize_category(cat: str) -> str:
-    """Normalize event category: lowercase, strip whitespace, singularize simple plurals,
-    collapse separators."""
+    """Normalize to one of 60 categories using the mapping file."""
     if not cat or not isinstance(cat, str):
-        return "unknown"
-    cat = cat.strip().lower()
-    # Collapse separators: " & ", " / ", " and " -> "_"
-    cat = re.sub(r'\s*[&/]\s*', '_', cat)
-    cat = re.sub(r'\s+and\s+', '_', cat)
-    # Replace spaces with underscores
-    cat = re.sub(r'\s+', '_', cat)
-    # Remove non-alphanumeric (except underscores)
-    cat = re.sub(r'[^a-z0-9_]', '', cat)
-    # Simple singularization: trailing 's' if word > 4 chars
-    # Handles: reforms->reform, conflicts->conflict, elections->election
-    if cat.endswith('s') and len(cat) > 4 and not cat.endswith('ss'):
-        cat = cat[:-1]
-    return cat
+        return "other"
+    mapping = load_category_mapping()
+    # Try exact match first
+    if cat in mapping:
+        return mapping[cat]
+    # Try stripped match
+    cat_stripped = cat.strip()
+    if cat_stripped in mapping:
+        return mapping[cat_stripped]
+    # Fallback: simple normalization for unmapped
+    return "other"
 
 
 # ─── Load Countries Mapping ──────────────────────────────────────────────
@@ -257,6 +267,7 @@ def main():
     parser.add_argument('--region', default='eu-central-1')
     parser.add_argument('--role-arn', help='Cross-account role ARN to assume')
     parser.add_argument('--dry-run', action='store_true', help='Parse only, no upload')
+    parser.add_argument('--sonnet-only', action='store_true', help='Use only Sonnet events, skip legacy')
     args = parser.parse_args()
 
     if args.role_arn:
@@ -274,8 +285,12 @@ def main():
     countries_df, country_lookup = load_countries(s3_client, args.bucket)
     print(f"Loaded {len(countries_df)} countries with {len(country_lookup)} name variants")
 
-    # 2. Parse all events
-    legacy_events = parse_legacy_events(LEGACY_EVENTS_DIR)
+    # 2. Parse events
+    if args.sonnet_only:
+        legacy_events = []
+        print("Sonnet-only mode: skipping legacy events")
+    else:
+        legacy_events = parse_legacy_events(LEGACY_EVENTS_DIR)
     sonnet_events = parse_sonnet_events(SONNET_EVENTS_DIR)
     all_events = legacy_events + sonnet_events
     print(f"\nTotal events: {len(all_events)} ({len(legacy_events)} legacy + {len(sonnet_events)} Sonnet)")
