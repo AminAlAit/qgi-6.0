@@ -10,6 +10,16 @@ const NAV_ITEMS = [
     icon: "▦",
   },
   {
+    label: "TOP 50 ALERTS",
+    href: "/alerts",
+    icon: "▲",
+  },
+  {
+    label: "EARLY WARNING",
+    href: "/patterns/early-warning",
+    icon: "⚡",
+  },
+  {
     label: "PATTERNS",
     href: "/patterns",
     icon: "◈",
@@ -18,11 +28,6 @@ const NAV_ITEMS = [
     label: "RANKING",
     href: "/patterns/ranking",
     icon: "◉",
-  },
-  {
-    label: "EARLY WARNING",
-    href: "/patterns/early-warning",
-    icon: "⚡",
   },
 ] as const;
 

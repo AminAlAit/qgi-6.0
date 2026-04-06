@@ -8,11 +8,11 @@ import {
 
 const REGION = "eu-central-1";
 const WORKGROUP = process.env.ATHENA_WORKGROUP ?? "QGI-Lambda-Workgroup";
-const OUTPUT_LOCATION = process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-111111111111/query_results/";
+const OUTPUT_LOCATION = process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-222222222222/query_results/";
 
 // Cache: queryKey → { result, expiresAt }
 const cache = new Map<string, { result: Record<string, string>[]; expiresAt: number }>();
-const CACHE_TTL_MS = 60_000;
+const CACHE_TTL_MS = 600_000; // 10 minutes
 
 function getClient(): AthenaClient {
   return new AthenaClient({ region: REGION });
