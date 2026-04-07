@@ -43,8 +43,11 @@ export const GET = withAuth(async (req: NextRequest) => {
        LIMIT 100`
     );
 
-    return NextResponse.json(
-      rows.map((r) => ({
+    return NextResponse.json({
+      // #137: live Athena query — generated_at is "now". Per-country queries
+      // bypass the dashboard JSON cache, so this is always fresh.
+      generated_at: new Date().toISOString(),
+      results: rows.map((r) => ({
         recipe_id: r.recipe_id,
         event_category: r.event_category,
         country_a_id: Number(r.country_a_id),
@@ -67,8 +70,8 @@ export const GET = withAuth(async (req: NextRequest) => {
         pattern_power_score: Number(r.pattern_power_score),
         pps: Number(r.pps),
         pattern_tier: r.pattern_tier ?? null,
-      }))
-    );
+      })),
+    });
   } catch (err) {
     console.error("Recipe country query failed:", err);
     return NextResponse.json(

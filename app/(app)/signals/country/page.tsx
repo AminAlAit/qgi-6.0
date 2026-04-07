@@ -2,7 +2,8 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import type { SignalRow } from "@/lib/types";
+import type { SignalRow, SignalsResponse } from "@/lib/types";
+import { DataFreshness } from "@/components/DataFreshness";
 
 export default function CountrySignalProfilePage() {
   const searchParams = useSearchParams();
@@ -11,10 +12,12 @@ export default function CountrySignalProfilePage() {
 
   const [country, setCountry] = useState(initialCountry);
   const [query, setQuery] = useState(initialCountry);
-  const [signals, setSignals] = useState<SignalRow[]>([]);
+  const [payload, setPayload] = useState<SignalsResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [countries, setCountries] = useState<string[]>([]);
+
+  const signals: SignalRow[] = payload?.results ?? [];
 
   // Load country list for autocomplete
   useEffect(() => {
@@ -38,10 +41,11 @@ export default function CountrySignalProfilePage() {
       // API path stays /api/recipes/* — that's the data-layer name (#121)
       const res = await fetch(`/api/recipes/country?country=${encodeURIComponent(name)}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setSignals(await res.json());
+      const data: SignalsResponse = await res.json();
+      setPayload(data);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load");
-      setSignals([]);
+      setPayload(null);
     } finally {
       setLoading(false);
     }
@@ -83,6 +87,9 @@ export default function CountrySignalProfilePage() {
         >
           Country Signal Profile
         </h1>
+        {/* #137: data freshness UX. Per-country queries are live (no cache),
+            so generated_at is the moment the Athena query ran. */}
+        {payload && <DataFreshness generatedAt={payload.generated_at} label="Live query" />}
       </div>
 
       <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>

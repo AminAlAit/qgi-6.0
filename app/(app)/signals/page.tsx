@@ -2,17 +2,18 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import type { SignalRow } from "@/lib/types";
+import type { SignalRow, SignalsResponse } from "@/lib/types";
+import { DataFreshness } from "@/components/DataFreshness";
 
 // Module-level cache so navigating away and back doesn't re-fetch
-let cachedSignals: SignalRow[] | null = null;
+let cachedPayload: SignalsResponse | null = null;
 let cacheTime = 0;
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
 export default function ActiveSignalsPage() {
   const router = useRouter();
-  const [signals, setSignals] = useState<SignalRow[]>(cachedSignals ?? []);
-  const [loading, setLoading] = useState(!cachedSignals);
+  const [payload, setPayload] = useState<SignalsResponse | null>(cachedPayload);
+  const [loading, setLoading] = useState(!cachedPayload);
   const [error, setError] = useState<string | null>(null);
   const fetchedRef = useRef(false);
 
@@ -21,8 +22,8 @@ export default function ActiveSignalsPage() {
     fetchedRef.current = true;
 
     // Use cache if fresh
-    if (cachedSignals && Date.now() - cacheTime < CACHE_TTL) {
-      setSignals(cachedSignals);
+    if (cachedPayload && Date.now() - cacheTime < CACHE_TTL) {
+      setPayload(cachedPayload);
       setLoading(false);
       return;
     }
@@ -33,10 +34,10 @@ export default function ActiveSignalsPage() {
         // name "signals" applies to the user-facing layer only (#121).
         const res = await fetch("/api/recipes/top50");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        cachedSignals = data;
+        const data: SignalsResponse = await res.json();
+        cachedPayload = data;
         cacheTime = Date.now();
-        setSignals(data);
+        setPayload(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load");
       } finally {
@@ -44,6 +45,8 @@ export default function ActiveSignalsPage() {
       }
     })();
   }, []);
+
+  const signals: SignalRow[] = payload?.results ?? [];
 
   function openDetail(s: SignalRow) {
     sessionStorage.setItem("qgi-signal-" + s.recipe_id, JSON.stringify(s));
@@ -67,6 +70,8 @@ export default function ActiveSignalsPage() {
           >
             Active Signals
           </h1>
+          {/* #137: data freshness UX */}
+          <DataFreshness generatedAt={payload?.generated_at} label="Pipeline data" />
         </div>
         <span className="text-[10px] tracking-wider font-data" style={{ color: "var(--qgi-text-dim)" }}>
           {signals.length} ACTIVE SIGNALS

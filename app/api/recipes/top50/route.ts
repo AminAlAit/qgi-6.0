@@ -10,10 +10,14 @@ export const GET = withAuth(async (_req: NextRequest) => {
   // #146: try the pre-computed dashboard JSON first.
   const cached = await getDashboardJson<RecipesTop50Payload>("recipes-top50.json");
   if (cached) {
-    return NextResponse.json(cached.results, {
-      // #144: edge-cache for 24h on CloudFront once Amplify (#102) lands
-      headers: { "Cache-Control": "public, max-age=300, s-maxage=86400" },
-    });
+    return NextResponse.json(
+      // #137: wrap with generated_at so the frontend can render data freshness UX
+      { generated_at: cached.generated_at, results: cached.results },
+      {
+        // #144: edge-cache for 24h on CloudFront once Amplify (#102) lands
+        headers: { "Cache-Control": "public, max-age=300, s-maxage=86400" },
+      }
+    );
   }
 
   // Fallback: query recipes JOIN convergence view directly.
@@ -59,8 +63,10 @@ export const GET = withAuth(async (_req: NextRequest) => {
       .filter((n) => !Number.isNaN(n));
   };
 
-  return NextResponse.json(
-    rows.map((r) => ({
+  return NextResponse.json({
+    // #137: live Athena query — generated_at is "now"
+    generated_at: new Date().toISOString(),
+    results: rows.map((r) => ({
       recipe_id: r.recipe_id,
       event_category: r.event_category,
       country_a_id: Number(r.country_a_id),
@@ -93,6 +99,6 @@ export const GET = withAuth(async (_req: NextRequest) => {
       n_regions: Number(r.n_regions),
       predictor_country_ids: parseIdArray(r.predictor_country_ids),
       composite_sort_key: Number(r.composite_sort_key),
-    }))
-  );
+    })),
+  });
 });

@@ -65,3 +65,20 @@ export interface SignalRow {
 
 /** @deprecated Use SignalRow. Kept as an alias during the #121 rename rollout. */
 export type RecipeRow = SignalRow;
+
+/**
+ * #137: Wrapped API response shape for signal/precedent endpoints.
+ *
+ * `generated_at` is an ISO timestamp:
+ *  - For S3-cached endpoints (top50, ranking, early-warning), it's the moment
+ *    `pipeline-recipe-engine` last wrote the dashboard JSON. This means it
+ *    reflects the last monthly pipeline run, not the request time.
+ *  - For live endpoints (country profile), it's the request time.
+ *
+ * The frontend uses this for the data freshness UX (DataFreshness component)
+ * so users can tell whether they're looking at month-old material or live data.
+ */
+export interface SignalsResponse {
+  generated_at: string;
+  results: SignalRow[];
+}
