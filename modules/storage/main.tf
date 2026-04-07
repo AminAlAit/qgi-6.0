@@ -311,6 +311,13 @@ resource "aws_glue_catalog_table" "patterns" {
       name = "indicator_numeric_ids"
       type = "array<smallint>"
     }
+    # #128: Pattern length tier (S/M/L/XL). Derived from `length` in the
+    # Phase 4 INSERT. Must be the last non-partition column to match the
+    # SELECT order in pipeline-c-worker.
+    columns {
+      name = "pattern_tier"
+      type = "string"
+    }
   }
 
   partition_keys {
@@ -631,6 +638,12 @@ resource "aws_glue_catalog_table" "recipes" {
     columns {
       name = "instance_count"
       type = "bigint"
+    }
+    # #128: Pattern length tier propagated from patterns table.
+    # The recipe-engine CTAS adds p.pattern_tier to the SELECT.
+    columns {
+      name = "pattern_tier"
+      type = "string"
     }
   }
 
