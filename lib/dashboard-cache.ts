@@ -128,7 +128,9 @@ export type RecipesTop50Payload = {
     event_title_a: string;
     event_title_b: string;
     indicator_count: number;
-    pattern_power_score: number;
+    instance_count: number; // #129
+    pattern_power_score: number; // legacy, kept for compat/debug
+    pps: number; // #129 — new normalized 0-100 Pattern Strength
     pattern_tier: PatternTier | null; // #128
   }>;
 };

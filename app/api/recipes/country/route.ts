@@ -26,37 +26,20 @@ export const GET = withAuth(async (req: NextRequest) => {
 
     const countryId = countryRows[0].cid;
 
-    // GROUP BY recipe_id to collapse country-name-variant duplicates
+    // #129: recipes is pre-deduplicated at source — no MAX(...) GROUP BY needed.
+    // #145: country_a_id is now a partition key, so this WHERE clause prunes
+    // to a single partition (~0.5% scan vs 100%).
     const rows = await runQuery(
-      `WITH deduped AS (
-         SELECT
-           recipe_id,
-           MAX(event_category) AS event_category,
-           MAX(country_a_id) AS country_a_id,
-           MAX(country_b_id) AS country_b_id,
-           MAX(country_a_name) AS country_a_name,
-           MAX(country_b_name) AS country_b_name,
-           MAX(start_year_a) AS start_year_a,
-           MAX(start_year_b) AS start_year_b,
-           MAX(length) AS length,
-           MAX(avg_correlation) AS avg_correlation,
-           MAX(end_year_a) AS end_year_a,
-           MAX(end_year_b) AS end_year_b,
-           MAX(event_window) AS event_window,
-           MAX(event_year_a) AS event_year_a,
-           MAX(event_year_b) AS event_year_b,
-           MAX(event_title_a) AS event_title_a,
-           MAX(event_title_b) AS event_title_b,
-           MAX(indicator_count) AS indicator_count,
-           MAX(pattern_power_score) AS pattern_power_score
-         FROM qgi_data.recipes
-         WHERE country_a_id = ${countryId}
-           AND start_year_b < start_year_a
-           AND (start_year_a + length) >= ${currentYear - 2}
-         GROUP BY recipe_id
-       )
-       SELECT * FROM deduped
-       ORDER BY pattern_power_score DESC
+      `SELECT recipe_id, event_category, country_a_id, country_b_id,
+              country_a_name, country_b_name, start_year_a, start_year_b,
+              length, avg_correlation, end_year_a, end_year_b, event_window,
+              event_year_a, event_year_b, event_title_a, event_title_b,
+              indicator_count, instance_count, pattern_power_score, pps, pattern_tier
+       FROM qgi_data.recipes
+       WHERE country_a_id = ${countryId}
+         AND start_year_b < start_year_a
+         AND (start_year_a + length) >= ${currentYear - 2}
+       ORDER BY pps DESC
        LIMIT 100`
     );
 
@@ -80,7 +63,10 @@ export const GET = withAuth(async (req: NextRequest) => {
         event_title_a: r.event_title_a,
         event_title_b: r.event_title_b,
         indicator_count: Number(r.indicator_count),
+        instance_count: Number(r.instance_count),
         pattern_power_score: Number(r.pattern_power_score),
+        pps: Number(r.pps),
+        pattern_tier: r.pattern_tier ?? null,
       }))
     );
   } catch (err) {
