@@ -135,6 +135,12 @@ export type RecipesTop50Payload = {
     pattern_power_score: number; // legacy, kept for compat/debug
     pps: number; // #129 — new normalized 0-100 Pattern Strength
     pattern_tier: PatternTier | null; // #128
+    // #134: forecast timing — median lead time in years between pattern end
+    // and the historical matched event (computed from the predictor country).
+    // Display: "median: X years (range: min–max)".
+    median_lead_time: number | null;
+    min_lead_time: number | null;
+    max_lead_time: number | null;
     // #133: multi-pattern convergence signal
     convergence_score: number;
     convergence_tier: ConvergenceTier;

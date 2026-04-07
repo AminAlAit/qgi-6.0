@@ -83,6 +83,10 @@ export const GET = withAuth(async (_req: NextRequest) => {
       pattern_power_score: Number(r.pattern_power_score),
       pps: Number(r.pps),
       pattern_tier: r.pattern_tier ?? null,
+      // #134: forecast timing
+      median_lead_time: r.median_lead_time_b ? Number(r.median_lead_time_b) : null,
+      min_lead_time: r.min_lead_time_b ? Number(r.min_lead_time_b) : null,
+      max_lead_time: r.max_lead_time_b ? Number(r.max_lead_time_b) : null,
       convergence_score: Number(r.convergence_score),
       convergence_tier: r.convergence_tier,
       n_predictors: Number(r.n_predictors),
