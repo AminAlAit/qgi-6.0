@@ -348,11 +348,17 @@ def build_recipe_query(cutoff_year=None):
         pattern_filter = f"WHERE (p.start_year_a + p.length) <= {cutoff_year} AND (p.start_year_b + p.length) <= {cutoff_year}"
         event_filter = f"AND e.year <= {cutoff_year}"
 
+    # Athena CTAS partitioning rule (#145): the partition column(s) must be the
+    # LAST column(s) in the SELECT list. country_a_id is moved to the very end
+    # so that recipes is laid out as s3://{bucket}/recipes/country_a_id={N}/...
+    # This makes country-filtered queries (recipes/country, dashboard top50, etc.)
+    # scan ~0.5% of the table instead of 100%.
     return f"""
     CREATE TABLE qgi_data.recipes
     WITH (
         format = 'PARQUET',
-        write_compression = 'SNAPPY'
+        write_compression = 'SNAPPY',
+        partitioned_by = ARRAY['country_a_id']
     ) AS
 
     SELECT
@@ -363,7 +369,6 @@ def build_recipe_query(cutoff_year=None):
                ea.category_normalized) as recipe_id,
         ea.category_normalized as event_category,
         p.pattern_id,
-        p.country_a_id,
         p.country_b_id,
         ca.name_1 as country_a_name,
         cb.name_1 as country_b_name,
@@ -379,7 +384,9 @@ def build_recipe_query(cutoff_year=None):
         ea.title as event_title_a,
         eb.title as event_title_b,
         p.indicator_count,
-        p.pattern_power_score
+        p.pattern_power_score,
+        -- Partition column MUST be last (Athena CTAS requirement)
+        p.country_a_id
     FROM
         qgi_data.patterns p
     -- Join events for country A within D4 window
