@@ -16,7 +16,23 @@ S3_INPUT_PREFIX = os.environ.get('S3_INPUT_PREFIX')
 S3_OUTPUT_PREFIX = os.environ.get('S3_OUTPUT_PREFIX')
 LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO').upper()
 
+# #149: Glue partition auto-registration. The qgi_data.indicators table is
+# partitioned by indicator_id with a bare (non-Hive) S3 layout
+# (parquet/{INDICATOR_ID}/...), so MSCK REPAIR can't discover new partitions
+# automatically. Every worker invocation that writes a fresh parquet must
+# register its partition with Glue via Athena, or Athena queries will return
+# zero rows for that indicator_id. Reuses the same pattern as
+# pipeline-c-worker's add_partition_manually().
+ATHENA_DATABASE = os.environ.get('ATHENA_DATABASE', 'qgi_data')
+ATHENA_WORKGROUP = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
+ATHENA_OUTPUT_LOCATION = os.environ.get(
+    'ATHENA_OUTPUT_LOCATION',
+    f's3://{S3_BUCKET}/query_results/' if S3_BUCKET else None,
+)
+INDICATORS_TABLE = 'indicators'
+
 s3_client = boto3.client('s3')
+athena_client = boto3.client('athena')
 dynamodb = boto3.resource('dynamodb')
 TABLE_NAME = os.environ.get('DYNAMODB_TABLE')
 table = dynamodb.Table(TABLE_NAME)
@@ -24,6 +40,62 @@ logger = logging.getLogger()
 logger.setLevel(LOG_LEVEL)
 
 COUNTRIES_CSV_KEY = f"{S3_INPUT_PREFIX}/countries.csv"
+
+
+def _register_indicator_partition(indicator_id: str) -> None:
+    """#149: Register (or no-op if already present) a Glue partition for this
+    indicator_id on qgi_data.indicators via Athena ALTER TABLE.
+
+    Best-effort: log and swallow exceptions so a partition-registration
+    hiccup never blocks a successful parquet write. The follow-up completer
+    run also registers partitions as a safety net.
+    """
+    if not ATHENA_OUTPUT_LOCATION:
+        logger.warning(
+            f"ATHENA_OUTPUT_LOCATION not set; skipping partition registration for {indicator_id}"
+        )
+        return
+    partition_location = (
+        f"s3://{S3_BUCKET}/{S3_OUTPUT_PREFIX.rstrip('/')}/parquet/{indicator_id}/"
+    )
+    sql = (
+        f"ALTER TABLE {ATHENA_DATABASE}.{INDICATORS_TABLE} "
+        f"ADD IF NOT EXISTS PARTITION (indicator_id='{indicator_id}') "
+        f"LOCATION '{partition_location}'"
+    )
+    try:
+        response = athena_client.start_query_execution(
+            QueryString=sql,
+            QueryExecutionContext={'Database': ATHENA_DATABASE},
+            WorkGroup=ATHENA_WORKGROUP,
+            ResultConfiguration={'OutputLocation': ATHENA_OUTPUT_LOCATION},
+        )
+        query_id = response['QueryExecutionId']
+        # Poll briefly — ALTER TABLE is fast, typically <2s
+        for _ in range(20):
+            status = athena_client.get_query_execution(QueryExecutionId=query_id)
+            state = status['QueryExecution']['Status']['State']
+            if state == 'SUCCEEDED':
+                logger.info(
+                    f"Partition registered: {INDICATORS_TABLE}(indicator_id={indicator_id})"
+                )
+                return
+            if state in ('FAILED', 'CANCELLED'):
+                reason = status['QueryExecution']['Status'].get(
+                    'StateChangeReason', 'unknown'
+                )
+                logger.warning(
+                    f"ALTER TABLE ADD PARTITION failed for {indicator_id}: {reason}"
+                )
+                return
+            time.sleep(0.5)
+        logger.warning(
+            f"ALTER TABLE ADD PARTITION timed out for {indicator_id} (still RUNNING after 10s)"
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            f"Partition registration exception for {indicator_id}: {exc}"
+        )
 
 class ETLWorker:
     def __init__(self):
@@ -144,6 +216,8 @@ class ETLWorker:
                 Body=parquet_buffer.getvalue(),
                 Metadata={'content_hash': new_hash} # Store hash for next time
             )
+            # #149: register the Glue partition so Athena can see the new file
+            _register_indicator_partition(indicator_id)
             self.update_state(run_id, indicator_id, "UPDATED")
             logger.info(f"SUCCESS: Saved s3://{S3_BUCKET}/{output_key}")
 

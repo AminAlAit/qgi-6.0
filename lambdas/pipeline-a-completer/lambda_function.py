@@ -26,6 +26,7 @@ import os
 import io
 import logging
 import datetime
+import time
 import boto3
 import numpy as np
 import pandas as pd
@@ -34,11 +35,27 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 s3 = boto3.client("s3")
+athena = boto3.client("athena")
 
 S3_BUCKET         = os.environ["S3_BUCKET"]
 INPUT_PREFIX      = os.environ["INPUT_PREFIX"]   # pipeline-A-indicator-extractor/output/csv
 OUTPUT_PREFIX     = os.environ["OUTPUT_PREFIX"]  # pipeline-A-indicator-extractor/output/csv-completed
 INDICATOR_MAP_KEY = os.environ["INDICATOR_MAP_KEY"]  # pipeline-A-indicator-extractor/input/indicator_map.csv
+
+# #149: Glue partition auto-registration for qgi_data.indicators_completed.
+# The table is partitioned by indicator_id but the S3 layout is bare
+# ({INDICATOR_ID}/) rather than Hive-style (indicator_id={INDICATOR_ID}/),
+# so MSCK REPAIR can't discover new partitions. We run a single batched
+# ALTER TABLE ADD IF NOT EXISTS for every completed indicator at the end
+# of the handler, plus a parallel registration on qgi_data.indicators for
+# any raw-table partitions that the worker may have missed.
+ATHENA_DATABASE = os.environ.get("ATHENA_DATABASE", "qgi_data")
+ATHENA_WORKGROUP = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
+ATHENA_OUTPUT_LOCATION = os.environ.get(
+    "ATHENA_OUTPUT_LOCATION", f"s3://{S3_BUCKET}/query_results/"
+)
+INDICATORS_TABLE = "indicators"
+INDICATORS_COMPLETED_TABLE = "indicators_completed"
 
 MIN_HISTORY        = 5   # minimum real data points required to attempt forecasting
 MAX_FORECAST_YEARS = 5   # refuse to extrapolate more than 5 years forward
@@ -72,6 +89,69 @@ def _write_parquet(df: pd.DataFrame, key: str) -> None:
     buf = io.BytesIO()
     df.to_parquet(buf, index=False, engine='pyarrow', compression='snappy')
     s3.put_object(Bucket=S3_BUCKET, Key=key, Body=buf.getvalue())
+
+
+def _register_partitions_batched(
+    table_name: str,
+    prefix_template: str,
+    indicator_ids: list[str],
+) -> None:
+    """#149: Batched ALTER TABLE ADD IF NOT EXISTS PARTITION for every
+    indicator_id on the given table.
+
+    prefix_template is an f-string-friendly template like
+    '{prefix}/parquet-completed/{indicator_id}/' — the {indicator_id}
+    placeholder is substituted per partition, and the result becomes the
+    Hive LOCATION clause.
+
+    Best-effort: log and swallow exceptions so a partition-registration
+    hiccup never fails the handler. Idempotent via IF NOT EXISTS.
+    """
+    if not indicator_ids:
+        return
+    partitions_sql = "\n".join(
+        f"PARTITION (indicator_id='{ind}') LOCATION "
+        f"'s3://{S3_BUCKET}/{prefix_template.format(indicator_id=ind)}'"
+        for ind in sorted(set(indicator_ids))
+    )
+    sql = (
+        f"ALTER TABLE {ATHENA_DATABASE}.{table_name} ADD IF NOT EXISTS\n"
+        f"{partitions_sql}"
+    )
+    try:
+        response = athena.start_query_execution(
+            QueryString=sql,
+            QueryExecutionContext={"Database": ATHENA_DATABASE},
+            WorkGroup=ATHENA_WORKGROUP,
+            ResultConfiguration={"OutputLocation": ATHENA_OUTPUT_LOCATION},
+        )
+        query_id = response["QueryExecutionId"]
+        # ALTER TABLE with hundreds of partitions can take 5-15s
+        for _ in range(60):
+            status = athena.get_query_execution(QueryExecutionId=query_id)
+            state = status["QueryExecution"]["Status"]["State"]
+            if state == "SUCCEEDED":
+                logger.info(
+                    f"Registered {len(indicator_ids)} partitions on "
+                    f"{ATHENA_DATABASE}.{table_name}"
+                )
+                return
+            if state in ("FAILED", "CANCELLED"):
+                reason = status["QueryExecution"]["Status"].get(
+                    "StateChangeReason", "unknown"
+                )
+                logger.warning(
+                    f"Batched ALTER TABLE on {table_name} failed: {reason}"
+                )
+                return
+            time.sleep(0.5)
+        logger.warning(
+            f"Batched ALTER TABLE on {table_name} timed out (still RUNNING after 30s)"
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            f"Batched partition registration exception on {table_name}: {exc}"
+        )
 
 
 def _ets_forecast(series: pd.Series, n_steps: int) -> list[float]:
@@ -193,6 +273,25 @@ def lambda_handler(event, context):
         except Exception as e:
             logger.error(f"Failed to complete {indicator_id}: {e}", exc_info=True)
             stats["failed"] += 1
+
+    # #149: Register Glue partitions for both tables.
+    #   - indicators_completed: gets every indicator_id we just wrote
+    #   - indicators (raw, written by pipeline-a-worker): also registered here
+    #     as a safety net in case the worker skipped it (unchanged hash path,
+    #     transient Athena error, etc). BOTH prefixes use bare
+    #     {indicator_id}/ layout, not Hive-style.
+    _register_partitions_batched(
+        INDICATORS_COMPLETED_TABLE,
+        # OUTPUT_PREFIX is e.g. 'pipeline-A-indicator-extractor/output/parquet-completed'
+        f"{OUTPUT_PREFIX.rstrip('/')}/" + "{indicator_id}/",
+        indicator_ids,
+    )
+    _register_partitions_batched(
+        INDICATORS_TABLE,
+        # INPUT_PREFIX is e.g. 'pipeline-A-indicator-extractor/output/parquet'
+        f"{INPUT_PREFIX.rstrip('/')}/" + "{indicator_id}/",
+        indicator_ids,
+    )
 
     logger.info(f"Phase 1.5 complete: {stats}")
     return {
