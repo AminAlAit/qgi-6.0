@@ -11,7 +11,14 @@ const WORKGROUP = process.env.ATHENA_WORKGROUP ?? "QGI-Lambda-Workgroup";
 const OUTPUT_LOCATION = process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-222222222222/query_results/";
 
 // Cache: queryKey → { result, expiresAt }
-const cache = new Map<string, { result: Record<string, string>[]; expiresAt: number }>();
+// Stored on globalThis so it survives `next dev` HMR hot-reloads. Without this,
+// every file save during development re-runs every Athena query cold (#142, #143).
+type AthenaCacheEntry = { result: Record<string, string>[]; expiresAt: number };
+const globalForAthena = globalThis as typeof globalThis & {
+  __qgiAthenaCache?: Map<string, AthenaCacheEntry>;
+};
+const cache = globalForAthena.__qgiAthenaCache ?? new Map<string, AthenaCacheEntry>();
+if (!globalForAthena.__qgiAthenaCache) globalForAthena.__qgiAthenaCache = cache;
 const CACHE_TTL_MS = 600_000; // 10 minutes
 
 function getClient(): AthenaClient {

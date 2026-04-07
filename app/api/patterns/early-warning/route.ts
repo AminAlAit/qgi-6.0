@@ -1,12 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth, requireGroup } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import { getDashboardJson, type EarlyWarningPayload } from "@/lib/dashboard-cache";
+
+// Early-warning data updates only on monthly pipeline runs — cache for 24h (#143)
+export const revalidate = 86400;
 
 export const GET = withAuth(async (_req: NextRequest, payload) => {
   requireGroup(payload, "pro");
 
-  const currentYear = new Date().getFullYear();
+  // #146: try the pre-computed dashboard JSON first.
+  const cached = await getDashboardJson<EarlyWarningPayload>("early-warning.json");
+  if (cached) {
+    return NextResponse.json(cached.results);
+  }
 
+  // Fallback: hit Athena directly. Capped at 500 to bound cost (Child B early bird).
+  const currentYear = new Date().getFullYear();
   const rows = await runQuery(
     `WITH c AS (
        SELECT id, MAX(name_1) AS name FROM qgi_data.countries WHERE name_1 != '' GROUP BY id
@@ -20,7 +30,8 @@ export const GET = withAuth(async (_req: NextRequest, payload) => {
      LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
      WHERE p.start_year_b < p.start_year_a
        AND (p.start_year_a + p.length) >= ${currentYear - 2}
-     ORDER BY p.pattern_power_score DESC`
+     ORDER BY p.pattern_power_score DESC
+     LIMIT 500`
   );
 
   return NextResponse.json(

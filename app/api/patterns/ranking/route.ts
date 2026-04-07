@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import { getDashboardJson, type RankingPayload } from "@/lib/dashboard-cache";
+
+// Pattern data updates only on monthly pipeline runs — cache for 24h (#143)
+export const revalidate = 86400;
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 1000;
@@ -13,6 +17,22 @@ export const GET = withAuth(async (req: NextRequest) => {
   const min_pps = searchParams.get("min_pps");
   const min_corr = searchParams.get("min_corr");
   const offset = (page - 1) * limit;
+
+  // #146: try the pre-computed dashboard JSON first when there are no filters.
+  // The pipeline-recipe-engine pre-computes the top 1000 unfiltered patterns
+  // on every monthly run. Filtered/paginated requests beyond that fall through to Athena.
+  const isUnfiltered = !sector && !min_pps && !min_corr;
+  if (isUnfiltered && offset + limit <= 1000) {
+    const cached = await getDashboardJson<RankingPayload>("ranking.json");
+    if (cached) {
+      return NextResponse.json({
+        page,
+        limit,
+        results: cached.results.slice(offset, offset + limit),
+      });
+    }
+    // No cache yet (fresh env or pre-compute failed) — fall through to Athena
+  }
 
   const conditions: string[] = [];
   if (sector) conditions.push(`sector = '${sector.replace(/'/g, "''")}'`);

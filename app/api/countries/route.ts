@@ -1,15 +1,41 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 
-export const revalidate = 3600; // 1 hour
+// Countries change effectively never. Cache 24h. (#143)
+// Prefer the static dump at data/countries.json — if missing, fall back to Athena
+// (slow + expensive in dev because next dev silently ignores `revalidate`).
+// To populate the static file, run: `tsx scripts/dump-countries.ts` with staging creds.
+export const revalidate = 86400;
+
+type Country = { id: string; name: string; alpha_2: string };
+
+let staticCache: Country[] | null | undefined;
+
+async function loadStatic(): Promise<Country[] | null> {
+  if (staticCache !== undefined) return staticCache;
+  try {
+    const path = join(process.cwd(), "data", "countries.json");
+    const text = await readFile(path, "utf-8");
+    staticCache = JSON.parse(text) as Country[];
+  } catch {
+    staticCache = null;
+  }
+  return staticCache;
+}
 
 export const GET = withAuth(async (_req: NextRequest) => {
+  const staticCountries = await loadStatic();
+  if (staticCountries) {
+    return NextResponse.json(staticCountries);
+  }
+
+  // Fallback: query Athena (legacy path; remove once data/countries.json is committed)
   const rows = await runQuery(
-    "SELECT id, name_1 AS name, alpha_2 FROM qgi_data.countries ORDER BY name_1"
+    "SELECT id, name_1 AS name, alpha_2 FROM qgi_data.countries WHERE name_1 != '' ORDER BY name_1"
   );
-  // Legacy table has multiple name columns per country — deduplicate by id
-  // and filter out placeholder rows with empty names
   const seen = new Set<string>();
   const unique = rows.filter((r) => {
     if (!r.name || seen.has(r.id)) return false;

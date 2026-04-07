@@ -1,8 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import { getDashboardJson, type RecipesTop50Payload } from "@/lib/dashboard-cache";
+
+// Recipes top50 updates only on monthly pipeline runs — cache for 24h (#143)
+export const revalidate = 86400;
 
 export const GET = withAuth(async (_req: NextRequest) => {
+  // #146: try the pre-computed dashboard JSON first.
+  const cached = await getDashboardJson<RecipesTop50Payload>("recipes-top50.json");
+  if (cached) {
+    return NextResponse.json(cached.results);
+  }
+
+  // Fallback: query recipes directly
   const currentYear = new Date().getFullYear();
 
   // The recipes table has massive duplication from the countries LEFT JOIN in the CTAS
