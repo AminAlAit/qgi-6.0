@@ -36,6 +36,7 @@ logger.setLevel(logging.INFO)
 
 s3 = boto3.client("s3")
 athena = boto3.client("athena")
+dynamodb = boto3.resource("dynamodb")
 
 S3_BUCKET         = os.environ["S3_BUCKET"]
 INPUT_PREFIX      = os.environ["INPUT_PREFIX"]   # pipeline-A-indicator-extractor/output/csv
@@ -56,6 +57,18 @@ ATHENA_OUTPUT_LOCATION = os.environ.get(
 )
 INDICATORS_TABLE = "indicators"
 INDICATORS_COMPLETED_TABLE = "indicators_completed"
+
+# #148: DynamoDB table for fast frontend reads of indicator values.
+# Schema:
+#   PK   indicator_country : S   (e.g. "SP.POP.TOTL#South Korea")
+#   SK   year              : N
+#   attr value             : N
+# The frontend issues BatchGetItem with up to 100 (PK, SK) tuples per call,
+# replacing the per-(indicator, country) Athena query that was 2-10s cold.
+INDICATOR_VALUES_TABLE_NAME = os.environ.get("INDICATOR_VALUES_TABLE_NAME", "")
+_indicator_values_table = (
+    dynamodb.Table(INDICATOR_VALUES_TABLE_NAME) if INDICATOR_VALUES_TABLE_NAME else None
+)
 
 MIN_HISTORY        = 5   # minimum real data points required to attempt forecasting
 MAX_FORECAST_YEARS = 5   # refuse to extrapolate more than 5 years forward
@@ -89,6 +102,85 @@ def _write_parquet(df: pd.DataFrame, key: str) -> None:
     buf = io.BytesIO()
     df.to_parquet(buf, index=False, engine='pyarrow', compression='snappy')
     s3.put_object(Bucket=S3_BUCKET, Key=key, Body=buf.getvalue())
+
+
+def _mirror_to_dynamodb(df: pd.DataFrame, indicator_id: str) -> int:
+    """#148: mirror this indicator's completed values to qgi-indicator-values.
+
+    Items are keyed (indicator_country=f'{indicator_id}#{country}', year=year)
+    with a single 'value' attribute. Items where value is NaN/None are
+    skipped — the frontend treats missing keys as 'data unavailable' and
+    renders gaps in the chart (consistent with the #125 missing-data UX).
+
+    Best-effort: failures are logged and counted but never break the
+    pipeline. Returns the number of items written.
+
+    DDB BatchWriteItem caps at 25 items per request, so we batch 25 at a
+    time. Idempotent: re-runs simply overwrite existing items with the
+    same (PK, SK) — values are immutable historical for any given year.
+    """
+    if _indicator_values_table is None:
+        logger.warning(
+            f"INDICATOR_VALUES_TABLE_NAME not set; skipping DDB mirror for {indicator_id}"
+        )
+        return 0
+
+    # Build the put-item list, dropping NaN values
+    items = []
+    for row in df.itertuples(index=False):
+        country = str(row.country) if row.country is not None else None
+        year = row.year
+        value = row.value
+        if not country:
+            continue
+        try:
+            year_int = int(year)
+        except (TypeError, ValueError):
+            continue
+        try:
+            value_float = float(value)
+        except (TypeError, ValueError):
+            continue
+        if value_float != value_float:  # NaN check (NaN != NaN)
+            continue
+        items.append(
+            {
+                "indicator_country": f"{indicator_id}#{country}",
+                "year": year_int,
+                # DDB doesn't accept Python float; the resource API converts
+                # via Decimal — but Decimal(float) raises on NaN/Inf, which
+                # we already filtered above.
+                "value": _to_ddb_number(value_float),
+            }
+        )
+
+    if not items:
+        return 0
+
+    written = 0
+    try:
+        with _indicator_values_table.batch_writer(overwrite_by_pkeys=["indicator_country", "year"]) as batch:
+            for item in items:
+                batch.put_item(Item=item)
+                written += 1
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            f"DDB mirror partial failure for {indicator_id} after {written}/{len(items)} items: {exc}"
+        )
+    return written
+
+
+def _to_ddb_number(value: float):
+    """Convert a Python float to a DDB-safe Decimal.
+
+    boto3's resource API requires Decimal for numeric attributes; passing
+    a raw float raises TypeError. We round to 6 significant digits to
+    avoid the long binary-decimal expansion that Decimal(float) produces.
+    """
+    from decimal import Decimal
+    # Format as a fixed-precision string then convert — sidesteps the
+    # Decimal(float) precision-noise issue.
+    return Decimal(format(value, ".6g"))
 
 
 def _register_partitions_batched(
@@ -268,6 +360,12 @@ def lambda_handler(event, context):
 
             added = len(completed) - len(df)
             logger.info(f"  → wrote {len(completed)} rows (+{added} predicted) to {output_key}")
+
+            # #148: mirror to DynamoDB for sub-second frontend reads
+            ddb_written = _mirror_to_dynamodb(completed, indicator_id)
+            if ddb_written > 0:
+                logger.info(f"  → mirrored {ddb_written} items to DDB for {indicator_id}")
+
             stats["completed"] += 1
 
         except Exception as e:
