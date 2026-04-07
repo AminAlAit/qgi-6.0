@@ -219,45 +219,26 @@ def _write_early_warning_json(current_year):
 
 
 def _write_recipes_top50_json(current_year):
-    """Deduped + diversity-capped top-50 recipes."""
+    """Diversity-capped top-50 recipes.
+
+    #129: recipes is now pre-deduplicated at source by recipe_id with
+    instance_count populated, so the old `MAX(...) GROUP BY recipe_id`
+    collapse step is gone. Ranking now uses the new normalized 0-100
+    `pps` column instead of the legacy `pattern_power_score`.
+    """
     sql = f"""
-    WITH deduped AS (
-        SELECT
-            recipe_id,
-            MAX(event_category) AS event_category,
-            MAX(country_a_id) AS country_a_id,
-            MAX(country_b_id) AS country_b_id,
-            MAX(country_a_name) AS country_a_name,
-            MAX(country_b_name) AS country_b_name,
-            MAX(start_year_a) AS start_year_a,
-            MAX(start_year_b) AS start_year_b,
-            MAX(length) AS length,
-            MAX(avg_correlation) AS avg_correlation,
-            MAX(end_year_a) AS end_year_a,
-            MAX(end_year_b) AS end_year_b,
-            MAX(event_window) AS event_window,
-            MAX(event_year_a) AS event_year_a,
-            MAX(event_year_b) AS event_year_b,
-            MAX(event_title_a) AS event_title_a,
-            MAX(event_title_b) AS event_title_b,
-            MAX(indicator_count) AS indicator_count,
-            MAX(pattern_power_score) AS pattern_power_score,
-            MAX(pattern_tier) AS pattern_tier  -- #128
-        FROM qgi_data.recipes
-        WHERE start_year_b < start_year_a
-          AND (start_year_a + length) >= {current_year - 2}
-          AND (start_year_a + length) <= {current_year + 3}
-        GROUP BY recipe_id
-    ),
-    ranked AS (
-        SELECT d.*,
-            ROW_NUMBER() OVER (PARTITION BY d.country_a_id ORDER BY d.pattern_power_score DESC) AS country_rank,
-            ROW_NUMBER() OVER (PARTITION BY d.event_category ORDER BY d.pattern_power_score DESC) AS cat_rank
-        FROM deduped d
+    WITH ranked AS (
+        SELECT r.*,
+            ROW_NUMBER() OVER (PARTITION BY r.country_a_id   ORDER BY r.pps DESC) AS country_rank,
+            ROW_NUMBER() OVER (PARTITION BY r.event_category ORDER BY r.pps DESC) AS cat_rank
+        FROM qgi_data.recipes r
+        WHERE r.start_year_b < r.start_year_a
+          AND (r.start_year_a + r.length) >= {current_year - 2}
+          AND (r.start_year_a + r.length) <= {current_year + 3}
     )
     SELECT * FROM ranked
     WHERE country_rank <= 3 AND cat_rank <= 10
-    ORDER BY pattern_power_score DESC
+    ORDER BY pps DESC
     LIMIT 50
     """
     rows = _run_query_to_rows(sql)
@@ -281,7 +262,9 @@ def _write_recipes_top50_json(current_year):
             'event_title_a': r.get('event_title_a'),
             'event_title_b': r.get('event_title_b'),
             'indicator_count': _to_int(r.get('indicator_count')),
-            'pattern_power_score': _to_float(r.get('pattern_power_score')),
+            'instance_count': _to_int(r.get('instance_count')),  # #129
+            'pattern_power_score': _to_float(r.get('pattern_power_score')),  # legacy
+            'pps': _to_float(r.get('pps')),  # #129 — new normalized 0-100 score
             'pattern_tier': r.get('pattern_tier'),  # #128
         }
         for r in rows
@@ -359,19 +342,36 @@ def _to_float(value):
 
 
 def build_recipe_query(cutoff_year=None):
-    """Build CTAS query that JOINs patterns with events using D4/D5 logic."""
+    """Build CTAS query that JOINs patterns with events using D4/D5 logic.
 
+    The CTAS produces ONE row per recipe_id. The previous version emitted one
+    row per (pattern × eventA × eventB) match, leading to massive duplication
+    that downstream consumers had to collapse with `MAX(...) GROUP BY recipe_id`.
+    Source-side aggregation (#129) eliminates that duplication permanently and
+    populates the `instance_count` column the Glue schema has always had.
+
+    Three CTEs:
+      1. raw_recipes      — the old INNER JOIN, exploded form
+      2. recipes_aggregated — collapsed to one row per recipe_id, COUNT(*) for
+                              instance_count, MIN(event_year_*) for the earliest
+                              precedent
+      3. global_stats     — single-row max values for normalising the 0-100 PPS
+
+    Athena CTAS rules:
+      - Partition columns must be the LAST column(s) in the final SELECT
+      - CTE chains may reference each other in declaration order
+    """
     pattern_filter = ""
-    event_filter = ""
+    event_filter_a = ""
+    event_filter_b = ""
     if cutoff_year:
-        pattern_filter = f"WHERE (p.start_year_a + p.length) <= {cutoff_year} AND (p.start_year_b + p.length) <= {cutoff_year}"
-        event_filter = f"AND e.year <= {cutoff_year}"
+        pattern_filter = (
+            f"WHERE (p.start_year_a + p.length) <= {cutoff_year} "
+            f"AND (p.start_year_b + p.length) <= {cutoff_year}"
+        )
+        event_filter_a = f"AND ea.year <= {cutoff_year}"
+        event_filter_b = f"AND eb.year <= {cutoff_year}"
 
-    # Athena CTAS partitioning rule (#145): the partition column(s) must be the
-    # LAST column(s) in the SELECT list. country_a_id is moved to the very end
-    # so that recipes is laid out as s3://{bucket}/recipes/country_a_id={N}/...
-    # This makes country-filtered queries (recipes/country, dashboard top50, etc.)
-    # scan ~0.5% of the table instead of 100%.
     return f"""
     CREATE TABLE qgi_data.recipes
     WITH (
@@ -380,68 +380,139 @@ def build_recipe_query(cutoff_year=None):
         partitioned_by = ARRAY['country_a_id']
     ) AS
 
+    WITH raw_recipes AS (
+        SELECT
+            concat(cast(p.country_a_id as varchar), '-',
+                   cast(p.country_b_id as varchar), '-',
+                   cast(p.start_year_a as varchar), '-',
+                   cast(p.length as varchar), '-',
+                   ea.category_normalized) as recipe_id,
+            ea.category_normalized as event_category,
+            p.pattern_id,
+            p.country_a_id,
+            p.country_b_id,
+            ca.name_1 as country_a_name,
+            cb.name_1 as country_b_name,
+            p.start_year_a,
+            p.start_year_b,
+            p.length,
+            p.avg_correlation,
+            cast(p.start_year_a + p.length as smallint) as end_year_a,
+            cast(p.start_year_b + p.length as smallint) as end_year_b,
+            cast(greatest(1, cast(ceil(p.length * 0.15) as integer)) as smallint) as event_window,
+            ea.year as event_year_a,
+            eb.year as event_year_b,
+            ea.title as event_title_a,
+            eb.title as event_title_b,
+            p.indicator_count,
+            p.pattern_power_score,
+            -- #128: tier with length-derived fallback for legacy rows
+            COALESCE(
+                p.pattern_tier,
+                CASE
+                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
+                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
+                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
+                    ELSE 'XL'
+                END
+            ) AS pattern_tier
+        FROM qgi_data.patterns p
+        INNER JOIN qgi_data.events ea
+            ON ea.country_id = p.country_a_id
+            AND ea.year BETWEEN
+                (p.start_year_a + p.length - greatest(1, cast(ceil(p.length * 0.15) as integer)))
+                AND
+                (p.start_year_a + p.length + greatest(1, cast(ceil(p.length * 0.15) as integer)))
+            {event_filter_a}
+        INNER JOIN qgi_data.events eb
+            ON eb.country_id = p.country_b_id
+            AND eb.category_normalized = ea.category_normalized
+            AND eb.year BETWEEN
+                (p.start_year_b + p.length - greatest(1, cast(ceil(p.length * 0.15) as integer)))
+                AND
+                (p.start_year_b + p.length + greatest(1, cast(ceil(p.length * 0.15) as integer)))
+            {event_filter_b}
+        LEFT JOIN qgi_data.countries ca ON cast(ca.id as integer) = p.country_a_id
+        LEFT JOIN qgi_data.countries cb ON cast(cb.id as integer) = p.country_b_id
+        {pattern_filter}
+    ),
+    -- #129: collapse the (pattern × eventA × eventB) explosion to one row per
+    -- recipe_id and count the instances along the way.
+    recipes_aggregated AS (
+        SELECT
+            recipe_id,
+            arbitrary(event_category)        AS event_category,
+            arbitrary(pattern_id)            AS pattern_id,
+            arbitrary(country_b_id)          AS country_b_id,
+            arbitrary(country_a_name)        AS country_a_name,
+            arbitrary(country_b_name)        AS country_b_name,
+            arbitrary(start_year_a)          AS start_year_a,
+            arbitrary(start_year_b)          AS start_year_b,
+            arbitrary(length)                AS length,
+            arbitrary(avg_correlation)       AS avg_correlation,
+            arbitrary(end_year_a)            AS end_year_a,
+            arbitrary(end_year_b)            AS end_year_b,
+            arbitrary(event_window)          AS event_window,
+            min(event_year_a)                AS event_year_a,
+            min(event_year_b)                AS event_year_b,
+            arbitrary(event_title_a)         AS event_title_a,
+            arbitrary(event_title_b)         AS event_title_b,
+            arbitrary(indicator_count)       AS indicator_count,
+            arbitrary(pattern_power_score)   AS pattern_power_score,
+            arbitrary(pattern_tier)          AS pattern_tier,
+            cast(count(*) as bigint)         AS instance_count,
+            country_a_id
+        FROM raw_recipes
+        GROUP BY recipe_id, country_a_id
+    ),
+    -- #129: single-row maxima for the normalised 0-100 PPS. CROSS JOIN
+    -- broadcasts these scalars onto every recipe row at zero scan cost.
+    global_stats AS (
+        SELECT
+            cast(max(instance_count) as double)  AS max_inst,
+            cast(max(indicator_count) as double) AS max_ind
+        FROM recipes_aggregated
+    )
     SELECT
-        concat(cast(p.country_a_id as varchar), '-',
-               cast(p.country_b_id as varchar), '-',
-               cast(p.start_year_a as varchar), '-',
-               cast(p.length as varchar), '-',
-               ea.category_normalized) as recipe_id,
-        ea.category_normalized as event_category,
-        p.pattern_id,
-        p.country_b_id,
-        ca.name_1 as country_a_name,
-        cb.name_1 as country_b_name,
-        p.start_year_a,
-        p.start_year_b,
-        p.length,
-        p.avg_correlation,
-        cast(p.start_year_a + p.length as smallint) as end_year_a,
-        cast(p.start_year_b + p.length as smallint) as end_year_b,
-        cast(greatest(1, cast(ceil(p.length * 0.15) as integer)) as smallint) as event_window,
-        ea.year as event_year_a,
-        eb.year as event_year_b,
-        ea.title as event_title_a,
-        eb.title as event_title_b,
-        p.indicator_count,
-        p.pattern_power_score,
-        -- #128: propagate the pattern length tier (S/M/L/XL) into recipes so
-        -- per-tier backtesting (#130) and convergence scoring (#133) can read it
-        -- without joining back to patterns. Falls back to a length-derived CASE
-        -- for any rows in the legacy patterns table that pre-date #128.
-        COALESCE(
-            p.pattern_tier,
-            CASE
-                WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                ELSE 'XL'
-            END
-        ) AS pattern_tier,
-        -- Partition column MUST be last (Athena CTAS requirement)
-        p.country_a_id
-    FROM
-        qgi_data.patterns p
-    -- Join events for country A within D4 window
-    INNER JOIN qgi_data.events ea
-        ON ea.country_id = p.country_a_id
-        AND ea.year BETWEEN
-            (p.start_year_a + p.length - greatest(1, cast(ceil(p.length * 0.15) as integer)))
-            AND
-            (p.start_year_a + p.length + greatest(1, cast(ceil(p.length * 0.15) as integer)))
-        {event_filter}
-    -- D5: Join events for country B with SAME category within D4 window
-    INNER JOIN qgi_data.events eb
-        ON eb.country_id = p.country_b_id
-        AND eb.category_normalized = ea.category_normalized
-        AND eb.year BETWEEN
-            (p.start_year_b + p.length - greatest(1, cast(ceil(p.length * 0.15) as integer)))
-            AND
-            (p.start_year_b + p.length + greatest(1, cast(ceil(p.length * 0.15) as integer)))
-        {event_filter}
-    -- Resolve country names
-    LEFT JOIN qgi_data.countries ca ON cast(ca.id as integer) = p.country_a_id
-    LEFT JOIN qgi_data.countries cb ON cast(cb.id as integer) = p.country_b_id
-    {pattern_filter}
+        r.recipe_id,
+        r.event_category,
+        r.pattern_id,
+        r.country_b_id,
+        r.country_a_name,
+        r.country_b_name,
+        r.start_year_a,
+        r.start_year_b,
+        r.length,
+        r.avg_correlation,
+        r.end_year_a,
+        r.end_year_b,
+        r.event_window,
+        r.event_year_a,
+        r.event_year_b,
+        r.event_title_a,
+        r.event_title_b,
+        r.indicator_count,
+        r.pattern_power_score,
+        r.instance_count,
+        r.pattern_tier,
+        -- #129: new normalized 0-100 PPS. Weights 0.35/0.30/0.20/0.15 are
+        -- initial; lock after V1.5.3 backtesting (#130) calibrates them
+        -- empirically via logistic regression on verified recipes.
+        cast(
+            (
+                0.35 * r.avg_correlation
+                + 0.30 * (ln(cast(r.instance_count as double) + 1.0)
+                          / nullif(ln(g.max_inst + 1.0), 0.0))
+                + 0.20 * (ln(cast(r.indicator_count as double) + 1.0)
+                          / nullif(ln(g.max_ind + 1.0), 0.0))
+                + 0.15 * (1.0 / (1.0 + 0.05 * greatest(0, cast(r.length as double) - 10.0)))
+            ) * 100.0
+            AS double
+        ) AS pps,
+        -- Partition column MUST be last (Athena CTAS requirement, #145)
+        r.country_a_id
+    FROM recipes_aggregated r
+    CROSS JOIN global_stats g
     """
 
 
