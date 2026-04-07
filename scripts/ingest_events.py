@@ -35,11 +35,14 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 LEGACY_EVENTS_DIR = Path(r"/workspace/qgi\qgi-4.0\data\events")
 SONNET_EVENTS_DIR = REPO_ROOT / "data" / "events" / "batches"
+CURATED_EVENTS_DIR = REPO_ROOT / "data" / "events" / "curated"
 
 S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"
+S3_EVENTS_SOURCE_PREFIX = "events-source/curated/"  # Mirror of local curated/ — source of truth (#141)
 COUNTRIES_KEY = "pipeline-A-indicator-extractor/input/countries.csv"
 CATEGORY_MAPPING_FILE = REPO_ROOT / "data" / "events" / "category_mapping.json"
+TRACKING_FILE = REPO_ROOT / "data" / "events" / "TRACKING.md"
 
 
 # ─── Category Normalization ──────────────────────────────────────────────
@@ -165,30 +168,66 @@ def parse_legacy_events(events_dir: Path) -> list:
 
 
 # ─── Parse Sonnet Events ─────────────────────────────────────────────────
-def parse_sonnet_events(events_dir: Path) -> list:
-    """Parse Sonnet JSON batch files."""
+def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> list:
+    """Parse Sonnet JSON batch files.
+
+    Per #141: when curated_dir is provided AND a `{country}.json` exists there,
+    use it instead of the corresponding file in batches_dir. Curated files have
+    been through the E1-E5 cleanup pass and represent the canonical source.
+    """
     events = []
-    if not events_dir.exists():
-        print(f"WARNING: Sonnet events dir not found: {events_dir}")
+    if not batches_dir.exists():
+        print(f"WARNING: Sonnet events dir not found: {batches_dir}")
         return events
 
-    for json_file in sorted(events_dir.glob("*.json")):
+    curated_files = set()
+    if curated_dir and curated_dir.exists():
+        curated_files = {f.name for f in curated_dir.glob("*.json")}
+        print(f"Found {len(curated_files)} curated event files (will override batches/)")
+
+    curated_used = 0
+    batches_used = 0
+    for json_file in sorted(batches_dir.glob("*.json")):
+        # Prefer curated version if it exists
+        if json_file.name in curated_files:
+            actual_file = curated_dir / json_file.name
+            source_label = 'sonnet_curated'
+            curated_used += 1
+        else:
+            actual_file = json_file
+            source_label = 'sonnet'
+            batches_used += 1
+
+        # Country name is derived from the filename (e.g. jordan.json -> Jordan)
+        # because curated files don't preserve the legacy `country` field.
+        # Convert snake_case → Title Case for resolve_country_id().
+        derived_country = json_file.stem.replace('_', ' ').title()
+
         try:
-            data = json.loads(json_file.read_text(encoding='utf-8', errors='replace'))
-            for entry in data:
+            for entry in _read_json_with_fallback(actual_file):
+                # Curated entries don't carry a `country` field; raw batches do.
+                country_name = entry.get('country') or derived_country
                 events.append({
-                    'country_name': entry.get('country', ''),
+                    'country_name': country_name,
                     'year': int(entry.get('year', 0)),
                     'title': entry.get('title', ''),
                     'description': entry.get('description', ''),
                     'category': entry.get('category', ''),
-                    'source': 'sonnet'
+                    'source': source_label,
                 })
-        except (json.JSONDecodeError, KeyError) as e:
-            print(f"WARNING: Failed to parse {json_file.name}: {e}")
+        except (json.JSONDecodeError, KeyError, ValueError) as e:
+            print(f"WARNING: Failed to parse {actual_file.name}: {e}")
 
-    print(f"Parsed {len(events)} Sonnet events from {events_dir}")
+    print(f"Parsed {len(events)} Sonnet events ({curated_used} curated + {batches_used} raw batches)")
     return events
+
+
+def _read_json_with_fallback(path: Path) -> list:
+    """Read a JSON file, falling back to latin-1 if utf-8 decoding fails."""
+    try:
+        return json.loads(path.read_text(encoding='utf-8'))
+    except UnicodeDecodeError:
+        return json.loads(path.read_text(encoding='latin-1'))
 
 
 # ─── Compute Baselines ───────────────────────────────────────────────────
@@ -291,7 +330,7 @@ def main():
         print("Sonnet-only mode: skipping legacy events")
     else:
         legacy_events = parse_legacy_events(LEGACY_EVENTS_DIR)
-    sonnet_events = parse_sonnet_events(SONNET_EVENTS_DIR)
+    sonnet_events = parse_sonnet_events(SONNET_EVENTS_DIR, CURATED_EVENTS_DIR)
     all_events = legacy_events + sonnet_events
     print(f"\nTotal events: {len(all_events)} ({len(legacy_events)} legacy + {len(sonnet_events)} Sonnet)")
 
