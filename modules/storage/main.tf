@@ -48,7 +48,7 @@ resource "aws_s3_bucket_policy" "data_lake_cross_account" {
       Effect    = "Allow"
       Principal = { AWS = "arn:aws:iam::${var.management_account_id}:root" }
       Action    = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
-      Resource  = [
+      Resource = [
         aws_s3_bucket.data_lake.arn,
         "${aws_s3_bucket.data_lake.arn}/*"
       ]
@@ -198,9 +198,9 @@ resource "aws_glue_catalog_table" "scdis" {
   table_type    = "EXTERNAL_TABLE"
 
   parameters = {
-    "parquet.compress"  = "SNAPPY"
-    "classification"    = "parquet"
-    "EXTERNAL"          = "TRUE"
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
   }
 
   storage_descriptor {
@@ -426,9 +426,9 @@ resource "aws_glue_catalog_table" "countries" {
   table_type    = "EXTERNAL_TABLE"
 
   parameters = {
-    "classification"            = "csv"
-    "EXTERNAL"                  = "TRUE"
-    "skip.header.line.count"    = "1"
+    "classification"         = "csv"
+    "EXTERNAL"               = "TRUE"
+    "skip.header.line.count" = "1"
   }
 
   storage_descriptor {
@@ -632,6 +632,15 @@ resource "aws_glue_catalog_table" "recipes" {
       name = "instance_count"
       type = "bigint"
     }
+  }
+
+  # #145: recipes is partitioned by country_a_id so that filtered queries
+  # (recipes/country, dashboard top50, etc.) scan ~0.5% of the table instead of 100%.
+  # The recipe-engine Lambda CTAS specifies partitioned_by=ARRAY['country_a_id'] and
+  # writes data to s3://{bucket}/recipes/country_a_id={N}/...
+  partition_keys {
+    name = "country_a_id"
+    type = "smallint"
   }
 }
 
