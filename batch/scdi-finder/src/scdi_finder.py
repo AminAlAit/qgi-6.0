@@ -41,7 +41,39 @@ S3_OUTPUT_PREFIX = os.environ.get('S3_OUTPUT_PREFIX')
 INDICATOR_ID = os.environ.get('INDICATOR_ID')
 COUNTRY_A_NAME = os.environ.get('COUNTRY_A_NAME')
 MIN_LENGTH = int(os.environ.get('MIN_LENGTH', 3))
+# Legacy single-threshold env var, retained as a hard floor across all tiers.
+# Set to a value below the lowest tier threshold (0.82) so it never overrides them.
 CORRELATION_THRESHOLD = float(os.environ.get('CORRELATION_THRESHOLD', 0.5))
+
+# #128: Tier-aware Pearson thresholds. Pattern length stratification (D-decision
+# 2026-04-06): short patterns capture specific causal mechanisms and demand a
+# stricter |r| threshold; longer patterns reflect institutional similarity and
+# can tolerate slightly looser correlation.
+#
+#   S  ( 3-8 yr)  : single policy/commodity cycle               -> |r| >= 0.88
+#   M  ( 9-20 yr) : leadership era / generational shift          -> |r| >= 0.85
+#   L  (21-40 yr) : Cold War era / development model             -> |r| >= 0.82
+#   XL (41+  yr)  : institutional similarity                     -> |r| >= 0.82
+#
+# Each threshold can be overridden via env var for backtesting / sweeps.
+TIER_THRESHOLD_S  = float(os.environ.get('TIER_THRESHOLD_S',  0.88))
+TIER_THRESHOLD_M  = float(os.environ.get('TIER_THRESHOLD_M',  0.85))
+TIER_THRESHOLD_L  = float(os.environ.get('TIER_THRESHOLD_L',  0.82))
+TIER_THRESHOLD_XL = float(os.environ.get('TIER_THRESHOLD_XL', 0.82))
+
+
+def tier_threshold(segment_len: int) -> float:
+    """Return the minimum |Pearson r| required for a given pattern length."""
+    if segment_len <= 8:
+        t = TIER_THRESHOLD_S
+    elif segment_len <= 20:
+        t = TIER_THRESHOLD_M
+    elif segment_len <= 40:
+        t = TIER_THRESHOLD_L
+    else:
+        t = TIER_THRESHOLD_XL
+    # Honour the legacy global floor in case it is set higher than the tier value
+    return max(t, CORRELATION_THRESHOLD)
 
 
 s3_client = boto3.client('s3')
@@ -127,6 +159,9 @@ def find_sdcis_with_fft(
     if len(values_b) < segment_len:
         return sdcis
 
+    # #128: tier-aware Pearson floor for this specific segment length
+    threshold = tier_threshold(segment_len)
+
     # Pre-calculate rolling statistics for country B for efficiency
     b_series = pd.Series(values_b)
     rolling_mean_b = b_series.rolling(window=segment_len).mean().to_numpy()[segment_len-1:]
@@ -166,7 +201,7 @@ def find_sdcis_with_fft(
             pearson_corr = (1 / (segment_len * std_b)) * (raw_corr_sum - (mean_b * sum_z_a))
 
 
-            if pearson_corr >= CORRELATION_THRESHOLD:
+            if pearson_corr >= threshold:
                 sdcis.append(SDCI(
                     country_a_id=country_name_to_id.get(country_a_data["country"], 0),
                     country_b_id=country_name_to_id.get(country_b_data["country"], 0),

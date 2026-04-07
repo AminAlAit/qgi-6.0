@@ -136,20 +136,30 @@ def lambda_handler(event, context):
                     HAVING COUNT(*) > 1
                 )
                 SELECT
-                    to_hex(md5(to_utf8(concat_ws('-', 
-                        CAST(country_a_id AS varchar), 
-                        CAST(country_b_id AS varchar), 
-                        CAST(length AS varchar), 
-                        CAST(start_year_a AS varchar), 
+                    to_hex(md5(to_utf8(concat_ws('-',
+                        CAST(country_a_id AS varchar),
+                        CAST(country_b_id AS varchar),
+                        CAST(length AS varchar),
+                        CAST(start_year_a AS varchar),
                         CAST(start_year_b AS varchar)
                     )))) AS pattern_id,
-                    country_b_id, length, start_year_a, start_year_b, 
-                    indicator_count, 
+                    country_b_id, length, start_year_a, start_year_b,
+                    indicator_count,
                     avg_correlation,
                     -- This calculation no longer needs to cast length, as it's already a number
                     avg_correlation * CAST(length AS double) * indicator_count AS pattern_power_score,
                     collected_indicator_ids AS indicator_numeric_ids,
-                    country_a_id 
+                    -- #128: pattern_tier (S/M/L/XL). Derived from length, zero-cost.
+                    -- Must be the LAST non-partition column to match the Glue schema column order.
+                    CAST(
+                        CASE
+                            WHEN length BETWEEN 3 AND 8  THEN 'S'
+                            WHEN length BETWEEN 9 AND 20 THEN 'M'
+                            WHEN length BETWEEN 21 AND 40 THEN 'L'
+                            ELSE 'XL'
+                        END
+                    AS varchar) AS pattern_tier,
+                    country_a_id
                 FROM patterns_aggregated
                 """
             run_athena_query(insert_patterns_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
