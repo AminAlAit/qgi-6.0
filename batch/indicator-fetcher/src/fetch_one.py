@@ -152,11 +152,27 @@ def get_country_mapping():
 # ---------------------------------------------------------------------------
 
 
+class IndicatorNotFound(Exception):
+    """Permanent error — the WB API returned an XML 'Data not found' body for
+    this indicator/source pair. Retrying is pointless; the indicator id is
+    either retired, moved to a different source database, or simply wrong.
+    """
+
+
 def fetch_with_retry(indicator_id):
     """10-attempt exponential backoff fetch from World Bank.
 
     Backoff schedule (seconds): 2, 4, 8, 16, 32, 60, 60, 60, 60, 60.
     Capped at 60s to keep tail latency bounded but still respect rate limits.
+
+    Fail-fast on permanent errors:
+    - The WB API returns HTTP 200 with an XML <wb:error> body when the
+      requested indicator is not in the queried source. wbgapi blindly
+      JSON-decodes the XML and raises ``APIResponseError: JSON decoding
+      error``. Retrying that wastes 4+ minutes of Fargate time per task
+      and drowns out real transient errors. We detect the "JSON decoding
+      error" signature and abort immediately as IndicatorNotFound, which
+      the caller maps to a clean FAILED tracker row with a clear cause.
     """
     last_err = None
     for attempt in range(1, MAX_FETCH_ATTEMPTS + 1):
@@ -167,6 +183,17 @@ def fetch_with_retry(indicator_id):
             return wb.data.DataFrame(indicator_id)
         except Exception as e:  # noqa: BLE001
             last_err = e
+            # Permanent error — bail immediately, don't burn retry budget.
+            if "JSON decoding error" in str(e):
+                logger.error(
+                    f"{indicator_id}: WB API returned XML error body (likely "
+                    f"retired or wrong source). Failing fast — no retry."
+                )
+                raise IndicatorNotFound(
+                    f"{indicator_id}: not found in WB source 2 (WDI). "
+                    f"The id may have been retired, moved to another source, "
+                    f"or be misspelled. Original: {e}"
+                ) from e
             if attempt == MAX_FETCH_ATTEMPTS:
                 logger.error(f"Final attempt failed for {indicator_id}: {e}")
                 raise
