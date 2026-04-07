@@ -17,6 +17,8 @@ describe("Sidebar", () => {
     expect(screen.getByText("DASHBOARD")).toBeInTheDocument();
     expect(screen.getByText("PATTERNS")).toBeInTheDocument();
     expect(screen.getByText("RANKING")).toBeInTheDocument();
-    expect(screen.getByText("EARLY WARNING")).toBeInTheDocument();
+    // #121: renamed from "TOP 50 ALERTS" / "EARLY WARNING"
+    expect(screen.getByText("ACTIVE SIGNALS")).toBeInTheDocument();
+    expect(screen.getByText("COUNTRY PROFILE")).toBeInTheDocument();
   });
 });

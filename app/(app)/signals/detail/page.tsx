@@ -1,52 +1,47 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import type { RecipeRow } from "@/lib/types";
+import type { SignalRow } from "@/lib/types";
 
-export default function AlertDetailPage() {
+function readSignalFromStorage(signalId: string | null): SignalRow | null {
+  if (!signalId) return null;
+  if (typeof window === "undefined") return null;
+  const stored = sessionStorage.getItem("qgi-signal-" + signalId);
+  if (!stored) return null;
+  try {
+    return JSON.parse(stored) as SignalRow;
+  } catch {
+    return null;
+  }
+}
+
+export default function SignalDetailPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const recipeId = searchParams.get("id");
-  const [recipe, setRecipe] = useState<RecipeRow | null>(null);
-  const [loading, setLoading] = useState(true);
+  const signalId = searchParams.get("id");
 
-  useEffect(() => {
-    if (!recipeId) return;
-    // Recipe is passed via sessionStorage from the top50/early-warning pages
-    const stored = sessionStorage.getItem("qgi-recipe-" + recipeId);
-    if (stored) {
-      setRecipe(JSON.parse(stored));
-      setLoading(false);
-    } else {
-      setLoading(false);
-    }
-  }, [recipeId]);
+  // Lazy initial state — sessionStorage read happens once at mount, not in
+  // an effect, which avoids the react-hooks/set-state-in-effect lint rule
+  // and skips the loading flicker entirely.
+  const [signal] = useState<SignalRow | null>(() => readSignalFromStorage(signalId));
 
-  if (loading) {
+  if (!signal) {
     return (
       <div className="flex items-center justify-center h-full text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-        LOADING...
-      </div>
-    );
-  }
-
-  if (!recipe) {
-    return (
-      <div className="flex items-center justify-center h-full text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-        RECIPE NOT FOUND
+        SIGNAL NOT FOUND
       </div>
     );
   }
 
   const ppsColor =
-    recipe.pattern_power_score >= 8
+    signal.pattern_power_score >= 8
       ? "var(--qgi-danger)"
-      : recipe.pattern_power_score >= 5
+      : signal.pattern_power_score >= 5
         ? "var(--qgi-amber)"
         : "var(--qgi-success)";
 
-  const corrPct = Math.round(recipe.avg_correlation * 100);
+  const corrPct = Math.round(signal.avg_correlation * 100);
 
   return (
     <div className="flex flex-col h-full p-6 gap-6 overflow-y-auto">
@@ -62,17 +57,17 @@ export default function AlertDetailPage() {
       {/* Title */}
       <div>
         <h1 className="text-xs tracking-[0.2em] uppercase font-semibold mb-2" style={{ color: "var(--qgi-accent)" }}>
-          Alert Detail
+          Signal Detail
         </h1>
         <div className="flex items-center gap-3">
           <span className="font-data text-lg" style={{ color: "var(--qgi-country-b)" }}>
-            {recipe.country_a_name}
+            {signal.country_a_name}
           </span>
           <span className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
             following
           </span>
           <span className="font-data text-lg" style={{ color: "var(--qgi-country-a)" }}>
-            {recipe.country_b_name}
+            {signal.country_b_name}
           </span>
         </div>
       </div>
@@ -80,10 +75,10 @@ export default function AlertDetailPage() {
       {/* Score card */}
       <div className="grid grid-cols-4 gap-3">
         {[
-          { label: "POWER SCORE", value: recipe.pattern_power_score.toFixed(1), color: ppsColor },
+          { label: "POWER SCORE", value: signal.pattern_power_score.toFixed(1), color: ppsColor },
           { label: "CORRELATION", value: `${corrPct}%`, color: corrPct >= 80 ? "var(--qgi-success)" : "var(--qgi-amber)" },
-          { label: "INDICATORS", value: String(recipe.indicator_count), color: "var(--qgi-text)" },
-          { label: "PATTERN LENGTH", value: `${recipe.length} yrs`, color: "var(--qgi-text)" },
+          { label: "INDICATORS", value: String(signal.indicator_count), color: "var(--qgi-text)" },
+          { label: "PATTERN LENGTH", value: `${signal.length} yrs`, color: "var(--qgi-text)" },
         ].map((m) => (
           <div
             key={m.label}
@@ -112,7 +107,7 @@ export default function AlertDetailPage() {
           className="px-3 py-1 rounded text-xs tracking-wider uppercase font-data"
           style={{ backgroundColor: "var(--qgi-surface-2)", color: "var(--qgi-accent)" }}
         >
-          {recipe.event_category.replace(/_/g, " ")}
+          {signal.event_category.replace(/_/g, " ")}
         </span>
       </div>
 
@@ -124,26 +119,26 @@ export default function AlertDetailPage() {
           style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
         >
           <div className="text-[9px] tracking-[0.15em] uppercase mb-3" style={{ color: "var(--qgi-text-dim)" }}>
-            Predictor (Historical)
+            Precedent (Historical)
           </div>
           <div className="font-data text-sm mb-2" style={{ color: "var(--qgi-country-a)" }}>
-            {recipe.country_b_name}
+            {signal.country_b_name}
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex justify-between text-[10px]">
               <span style={{ color: "var(--qgi-text-dim)" }}>Pattern window</span>
               <span className="font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                {recipe.start_year_b} – {recipe.end_year_b}
+                {signal.start_year_b} – {signal.end_year_b}
               </span>
             </div>
             <div className="flex justify-between text-[10px]">
               <span style={{ color: "var(--qgi-text-dim)" }}>Event year</span>
               <span className="font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                {recipe.event_year_b}
+                {signal.event_year_b}
               </span>
             </div>
             <div className="text-[10px] mt-1" style={{ color: "var(--qgi-text-muted)" }}>
-              {recipe.event_title_b}
+              {signal.event_title_b}
             </div>
           </div>
         </div>
@@ -157,23 +152,23 @@ export default function AlertDetailPage() {
             Following (Active Now)
           </div>
           <div className="font-data text-sm mb-2" style={{ color: "var(--qgi-country-b)" }}>
-            {recipe.country_a_name}
+            {signal.country_a_name}
           </div>
           <div className="flex flex-col gap-2">
             <div className="flex justify-between text-[10px]">
               <span style={{ color: "var(--qgi-text-dim)" }}>Pattern window</span>
               <span className="font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                {recipe.start_year_a} – {recipe.end_year_a}
+                {signal.start_year_a} – {signal.end_year_a}
               </span>
             </div>
             <div className="flex justify-between text-[10px]">
               <span style={{ color: "var(--qgi-text-dim)" }}>Event year</span>
               <span className="font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                {recipe.event_year_a}
+                {signal.event_year_a}
               </span>
             </div>
             <div className="text-[10px] mt-1" style={{ color: "var(--qgi-text-muted)" }}>
-              {recipe.event_title_a}
+              {signal.event_title_a}
             </div>
           </div>
         </div>
@@ -185,15 +180,15 @@ export default function AlertDetailPage() {
         style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
       >
         <div className="text-[9px] tracking-[0.15em] uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-          How this prediction works
+          How this signal works
         </div>
         <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-          {recipe.country_b_name} and {recipe.country_a_name} share a {recipe.length}-year pattern of
-          {" "}{recipe.indicator_count} correlated indicators ({corrPct}% avg correlation).
-          {" "}{recipe.country_b_name}&apos;s pattern started in {recipe.start_year_b} and ended in {recipe.end_year_b},
-          followed by &quot;{recipe.event_title_b}&quot; in {recipe.event_year_b}.
-          {" "}{recipe.country_a_name}&apos;s matching pattern started in {recipe.start_year_a} and ends in {recipe.end_year_a} —
-          meaning a similar event (&quot;{recipe.event_category.replace(/_/g, " ")}&quot;) may follow.
+          {signal.country_b_name} and {signal.country_a_name} share a {signal.length}-year pattern of
+          {" "}{signal.indicator_count} correlated indicators ({corrPct}% avg correlation).
+          {" "}{signal.country_b_name}&apos;s pattern started in {signal.start_year_b} and ended in {signal.end_year_b},
+          followed by &quot;{signal.event_title_b}&quot; in {signal.event_year_b}.
+          {" "}{signal.country_a_name}&apos;s matching pattern started in {signal.start_year_a} and ends in {signal.end_year_a} —
+          meaning a similar event (&quot;{signal.event_category.replace(/_/g, " ")}&quot;) may follow.
         </p>
       </div>
 
@@ -201,11 +196,11 @@ export default function AlertDetailPage() {
       <button
         onClick={() => {
           const qs = new URLSearchParams({
-            country_a: String(recipe.country_a_id),
-            country_b: String(recipe.country_b_id),
-            length: String(recipe.length),
-            start_a: String(recipe.start_year_a),
-            start_b: String(recipe.start_year_b),
+            country_a: String(signal.country_a_id),
+            country_b: String(signal.country_b_id),
+            length: String(signal.length),
+            start_a: String(signal.start_year_a),
+            start_b: String(signal.start_year_b),
           });
           router.push(`/patterns?${qs}`);
         }}

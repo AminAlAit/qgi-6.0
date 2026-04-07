@@ -2,16 +2,16 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import type { RecipeRow } from "@/lib/types";
+import type { SignalRow } from "@/lib/types";
 
-export default function EarlyWarningPage() {
+export default function CountrySignalProfilePage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const initialCountry = searchParams.get("country") ?? "";
 
   const [country, setCountry] = useState(initialCountry);
   const [query, setQuery] = useState(initialCountry);
-  const [recipes, setRecipes] = useState<RecipeRow[]>([]);
+  const [signals, setSignals] = useState<SignalRow[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [countries, setCountries] = useState<string[]>([]);
@@ -30,17 +30,18 @@ export default function EarlyWarningPage() {
     })();
   }, []);
 
-  const fetchRecipes = useCallback(async (name: string) => {
+  const fetchSignals = useCallback(async (name: string) => {
     if (!name) return;
     setLoading(true);
     setError(null);
     try {
+      // API path stays /api/recipes/* — that's the data-layer name (#121)
       const res = await fetch(`/api/recipes/country?country=${encodeURIComponent(name)}`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setRecipes(await res.json());
+      setSignals(await res.json());
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to load");
-      setRecipes([]);
+      setSignals([]);
     } finally {
       setLoading(false);
     }
@@ -48,23 +49,23 @@ export default function EarlyWarningPage() {
 
   // Fetch on initial load if country in URL
   useEffect(() => {
-    if (initialCountry) fetchRecipes(initialCountry);
-  }, [initialCountry, fetchRecipes]);
+    if (initialCountry) fetchSignals(initialCountry);
+  }, [initialCountry, fetchSignals]);
 
   function handleSearch() {
     if (!query.trim()) return;
     setCountry(query.trim());
-    router.replace(`/patterns/early-warning?country=${encodeURIComponent(query.trim())}`, {
+    router.replace(`/signals/country?country=${encodeURIComponent(query.trim())}`, {
       scroll: false,
     });
-    fetchRecipes(query.trim());
+    fetchSignals(query.trim());
   }
 
-  // Group recipes by event_category
-  const byCategory = recipes.reduce<Record<string, RecipeRow[]>>((acc, r) => {
-    const cat = r.event_category;
+  // Group signals by event_category
+  const byCategory = signals.reduce<Record<string, SignalRow[]>>((acc, s) => {
+    const cat = s.event_category;
     if (!acc[cat]) acc[cat] = [];
-    acc[cat].push(r);
+    acc[cat].push(s);
     return acc;
   }, {});
 
@@ -80,13 +81,14 @@ export default function EarlyWarningPage() {
           className="text-xs tracking-[0.2em] uppercase font-semibold"
           style={{ color: "var(--qgi-accent)" }}
         >
-          Early Warning Signals
+          Country Signal Profile
         </h1>
       </div>
 
       <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-        Select a country to see active recipe matches — patterns where this country is currently
-        following another country&apos;s historical trajectory, with matching events on both sides.
+        Select a country to see its active signals — patterns where this country is currently
+        following another country&apos;s historical trajectory, with matching events on both sides
+        forming a structural precedent.
       </p>
 
       {/* Search bar */}
@@ -134,7 +136,7 @@ export default function EarlyWarningPage() {
       <div className="flex-1 overflow-y-auto flex flex-col gap-3">
         {loading ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-            QUERYING ATHENA...
+            LOADING SIGNALS...
           </div>
         ) : error ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-danger)" }}>
@@ -142,11 +144,11 @@ export default function EarlyWarningPage() {
           </div>
         ) : !country ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-            SELECT A COUNTRY TO VIEW EARLY WARNING SIGNALS
+            SELECT A COUNTRY TO VIEW ITS SIGNAL PROFILE
           </div>
-        ) : recipes.length === 0 ? (
+        ) : signals.length === 0 ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-            NO ACTIVE RECIPES FOR {country.toUpperCase()}
+            NO ACTIVE SIGNALS FOR {country.toUpperCase()}
           </div>
         ) : (
           <>
@@ -160,7 +162,7 @@ export default function EarlyWarningPage() {
               </span>
               <div className="flex gap-4">
                 <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                  {recipes.length} active recipe{recipes.length !== 1 ? "s" : ""}
+                  {signals.length} active signal{signals.length !== 1 ? "s" : ""}
                 </span>
                 <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
                   {categories.length} categor{categories.length !== 1 ? "ies" : "y"}
@@ -187,21 +189,21 @@ export default function EarlyWarningPage() {
                     {cat.replace(/_/g, " ")}
                   </span>
                   <span className="text-[9px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
-                    {byCategory[cat].length} match{byCategory[cat].length !== 1 ? "es" : ""}
+                    {byCategory[cat].length} precedent{byCategory[cat].length !== 1 ? "s" : ""}
                   </span>
                 </div>
 
-                {/* Recipes in this category */}
-                {byCategory[cat].map((r, i) => (
+                {/* Signals in this category */}
+                {byCategory[cat].map((s, i) => (
                   <button
-                    key={r.recipe_id + i}
+                    key={s.recipe_id + i}
                     onClick={() => {
                       const qs = new URLSearchParams({
-                        country_a: String(r.country_a_id),
-                        country_b: String(r.country_b_id),
-                        length: String(r.length),
-                        start_a: String(r.start_year_a),
-                        start_b: String(r.start_year_b),
+                        country_a: String(s.country_a_id),
+                        country_b: String(s.country_b_id),
+                        length: String(s.length),
+                        start_a: String(s.start_year_a),
+                        start_b: String(s.start_year_b),
                       });
                       router.push(`/patterns?${qs}`);
                     }}
@@ -211,33 +213,33 @@ export default function EarlyWarningPage() {
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
                         <span className="font-data text-xs" style={{ color: "var(--qgi-country-a)" }}>
-                          {r.country_b_name}
+                          {s.country_b_name}
                         </span>
                         <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
-                          ({r.start_year_b}–{r.end_year_b})
+                          ({s.start_year_b}–{s.end_year_b})
                         </span>
                       </div>
                       <span
                         className="font-data text-xs font-bold"
                         style={{
                           color:
-                            r.pattern_power_score >= 8
+                            s.pattern_power_score >= 8
                               ? "var(--qgi-danger)"
-                              : r.pattern_power_score >= 5
+                              : s.pattern_power_score >= 5
                                 ? "var(--qgi-amber)"
                                 : "var(--qgi-success)",
                         }}
                       >
-                        PPS {r.pattern_power_score.toFixed(1)}
+                        PPS {s.pattern_power_score.toFixed(1)}
                       </span>
                     </div>
 
                     <div className="flex items-center gap-3 text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                      <span className="font-data">{r.length}yr</span>
-                      <span className="font-data">{(r.avg_correlation * 100).toFixed(0)}% corr</span>
-                      <span className="font-data">{r.indicator_count} indicators</span>
+                      <span className="font-data">{s.length}yr</span>
+                      <span className="font-data">{(s.avg_correlation * 100).toFixed(0)}% corr</span>
+                      <span className="font-data">{s.indicator_count} indicators</span>
                       <span className="truncate max-w-xs" style={{ color: "var(--qgi-text-dim)" }}>
-                        {r.event_title_b}
+                        {s.event_title_b}
                       </span>
                     </div>
                   </button>

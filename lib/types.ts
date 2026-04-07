@@ -30,7 +30,17 @@ export interface Country {
   alpha_2: string;
 }
 
-export interface RecipeRow {
+/**
+ * A "signal" is the user-facing name for an active recipe match in QGI's
+ * mental model (#121, 2026-04-07): a country currently following another
+ * country's historical trajectory. The underlying database table is still
+ * called `recipes` (Athena) — that's the data layer name. Everything the
+ * user reads says "signal" or "precedent" instead.
+ *
+ * SignalRow is the canonical type name. RecipeRow is kept as an alias for
+ * backwards compatibility with imports that haven't migrated yet.
+ */
+export interface SignalRow {
   recipe_id: string;
   event_category: string;
   country_a_id: number;
@@ -52,3 +62,6 @@ export interface RecipeRow {
   pattern_power_score: number;
   instance_count: number;
 }
+
+/** @deprecated Use SignalRow. Kept as an alias during the #121 rename rollout. */
+export type RecipeRow = SignalRow;

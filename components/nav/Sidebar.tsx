@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// #121: Renamed Alerts → Signals, Early Warning → Country Profile.
+// QGI predictions span 2-5 year windows on multi-decade trends — calling
+// them "alerts" implies real-time urgency like a SIEM. "Signals" communicates
+// probabilistic, structural, important-but-not-urgent.
 const NAV_ITEMS = [
   {
     label: "DASHBOARD",
@@ -10,13 +14,13 @@ const NAV_ITEMS = [
     icon: "▦",
   },
   {
-    label: "TOP 50 ALERTS",
-    href: "/alerts",
+    label: "ACTIVE SIGNALS",
+    href: "/signals",
     icon: "▲",
   },
   {
-    label: "EARLY WARNING",
-    href: "/patterns/early-warning",
+    label: "COUNTRY PROFILE",
+    href: "/signals/country",
     icon: "⚡",
   },
   {

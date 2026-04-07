@@ -2,17 +2,17 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import type { RecipeRow } from "@/lib/types";
+import type { SignalRow } from "@/lib/types";
 
 // Module-level cache so navigating away and back doesn't re-fetch
-let cachedRecipes: RecipeRow[] | null = null;
+let cachedSignals: SignalRow[] | null = null;
 let cacheTime = 0;
 const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
 
-export default function Top50AlertsPage() {
+export default function ActiveSignalsPage() {
   const router = useRouter();
-  const [recipes, setRecipes] = useState<RecipeRow[]>(cachedRecipes ?? []);
-  const [loading, setLoading] = useState(!cachedRecipes);
+  const [signals, setSignals] = useState<SignalRow[]>(cachedSignals ?? []);
+  const [loading, setLoading] = useState(!cachedSignals);
   const [error, setError] = useState<string | null>(null);
   const fetchedRef = useRef(false);
 
@@ -21,20 +21,22 @@ export default function Top50AlertsPage() {
     fetchedRef.current = true;
 
     // Use cache if fresh
-    if (cachedRecipes && Date.now() - cacheTime < CACHE_TTL) {
-      setRecipes(cachedRecipes);
+    if (cachedSignals && Date.now() - cacheTime < CACHE_TTL) {
+      setSignals(cachedSignals);
       setLoading(false);
       return;
     }
 
     (async () => {
       try {
+        // API path stays /api/recipes/* — that's the data-layer name. The UX
+        // name "signals" applies to the user-facing layer only (#121).
         const res = await fetch("/api/recipes/top50");
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
-        cachedRecipes = data;
+        cachedSignals = data;
         cacheTime = Date.now();
-        setRecipes(data);
+        setSignals(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Failed to load");
       } finally {
@@ -43,10 +45,9 @@ export default function Top50AlertsPage() {
     })();
   }, []);
 
-  function openDetail(r: RecipeRow) {
-    // Store recipe in sessionStorage for the detail page
-    sessionStorage.setItem("qgi-recipe-" + r.recipe_id, JSON.stringify(r));
-    router.push(`/alerts/detail?id=${encodeURIComponent(r.recipe_id)}`);
+  function openDetail(s: SignalRow) {
+    sessionStorage.setItem("qgi-signal-" + s.recipe_id, JSON.stringify(s));
+    router.push(`/signals/detail?id=${encodeURIComponent(s.recipe_id)}`);
   }
 
   function confidenceColor(pps: number) {
@@ -64,44 +65,39 @@ export default function Top50AlertsPage() {
             className="text-xs tracking-[0.2em] uppercase font-semibold"
             style={{ color: "var(--qgi-accent)" }}
           >
-            Top 50 Alert Feed
+            Active Signals
           </h1>
-          <span
-            className="px-2 py-0.5 rounded text-[9px] tracking-wider uppercase font-data"
-            style={{ backgroundColor: "var(--qgi-danger)", color: "#fff", opacity: 0.9 }}
-          >
-            LIVE
-          </span>
         </div>
         <span className="text-[10px] tracking-wider font-data" style={{ color: "var(--qgi-text-dim)" }}>
-          {recipes.length} ACTIVE PREDICTIONS
+          {signals.length} ACTIVE SIGNALS
         </span>
       </div>
 
       <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-        Highest-confidence predictions where a country is currently following another&apos;s historical
-        trajectory. Both countries experienced matching events — the predictor&apos;s outcome may repeat.
+        Highest-confidence signals where a country is currently following another&apos;s historical
+        trajectory. Each signal is grounded in a structural precedent — the predictor country
+        experienced a matching event after a similar pattern, and the same outcome may follow.
       </p>
 
-      {/* Alert cards */}
+      {/* Signal cards */}
       <div className="flex-1 overflow-y-auto flex flex-col gap-2">
         {loading ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-            QUERYING ATHENA...
+            LOADING SIGNALS...
           </div>
         ) : error ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-danger)" }}>
             {error}
           </div>
-        ) : recipes.length === 0 ? (
+        ) : signals.length === 0 ? (
           <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-            NO ACTIVE PREDICTIONS FOUND
+            NO ACTIVE SIGNALS FOUND
           </div>
         ) : (
-          recipes.map((r, i) => (
+          signals.map((s, i) => (
             <button
-              key={r.recipe_id + i}
-              onClick={() => openDetail(r)}
+              key={s.recipe_id + i}
+              onClick={() => openDetail(s)}
               className="w-full text-left rounded border p-4 transition-colors hover:bg-[var(--qgi-surface-2)]"
               style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
             >
@@ -112,17 +108,17 @@ export default function Top50AlertsPage() {
                     #{i + 1}
                   </span>
                   <span className="font-data text-xs" style={{ color: "var(--qgi-country-b)" }}>
-                    {r.country_a_name}
+                    {s.country_a_name}
                   </span>
                   <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                     following
                   </span>
                   <span className="font-data text-xs" style={{ color: "var(--qgi-country-a)" }}>
-                    {r.country_b_name}
+                    {s.country_b_name}
                   </span>
                 </div>
-                <span className="font-data text-sm font-bold" style={{ color: confidenceColor(r.pattern_power_score) }}>
-                  {r.pattern_power_score.toFixed(1)}
+                <span className="font-data text-sm font-bold" style={{ color: confidenceColor(s.pattern_power_score) }}>
+                  {s.pattern_power_score.toFixed(1)}
                 </span>
               </div>
 
@@ -132,10 +128,10 @@ export default function Top50AlertsPage() {
                   className="px-2 py-0.5 rounded text-[9px] tracking-wider uppercase font-data"
                   style={{ backgroundColor: "var(--qgi-surface-2)", color: "var(--qgi-accent)" }}
                 >
-                  {r.event_category.replace(/_/g, " ")}
+                  {s.event_category.replace(/_/g, " ")}
                 </span>
                 <span className="text-[10px] truncate max-w-md" style={{ color: "var(--qgi-text-dim)" }}>
-                  {r.event_title_b}
+                  {s.event_title_b}
                 </span>
               </div>
 
@@ -145,28 +141,28 @@ export default function Top50AlertsPage() {
                   <div
                     className="h-1.5 rounded-full"
                     style={{
-                      width: `${Math.min(100, Math.round(r.avg_correlation * 100))}%`,
+                      width: `${Math.min(100, Math.round(s.avg_correlation * 100))}%`,
                       minWidth: "4px",
                       backgroundColor:
-                        r.avg_correlation >= 0.8
+                        s.avg_correlation >= 0.8
                           ? "var(--qgi-success)"
-                          : r.avg_correlation >= 0.6
+                          : s.avg_correlation >= 0.6
                             ? "var(--qgi-amber)"
                             : "var(--qgi-text-dim)",
                     }}
                   />
                   <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                    {Math.round(r.avg_correlation * 100)}%
+                    {Math.round(s.avg_correlation * 100)}%
                   </span>
                 </div>
                 <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-                  {r.length}yr
+                  {s.length}yr
                 </span>
                 <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-                  {r.indicator_count} idx
+                  {s.indicator_count} idx
                 </span>
                 <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                  {r.start_year_a}–{r.end_year_a}
+                  {s.start_year_a}–{s.end_year_a}
                 </span>
               </div>
             </button>
