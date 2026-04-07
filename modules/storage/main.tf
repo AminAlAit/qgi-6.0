@@ -653,6 +653,27 @@ resource "aws_glue_catalog_table" "recipes" {
       name = "pps"
       type = "double"
     }
+    # #134: Forecast timing — median lead time between pattern end and the
+    # historical matched event, computed via approx_percentile across the
+    # un-aggregated raw recipe rows in pipeline-recipe-engine. lead_time_b
+    # is in the PREDICTOR country and is the headline "when?" number;
+    # lead_time_a is kept for symmetry/debugging.
+    columns {
+      name = "median_lead_time_b"
+      type = "smallint"
+    }
+    columns {
+      name = "min_lead_time_b"
+      type = "smallint"
+    }
+    columns {
+      name = "max_lead_time_b"
+      type = "smallint"
+    }
+    columns {
+      name = "median_lead_time_a"
+      type = "smallint"
+    }
   }
 
   # #145: recipes is partitioned by country_a_id so that filtered queries
