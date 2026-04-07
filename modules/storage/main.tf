@@ -645,6 +645,14 @@ resource "aws_glue_catalog_table" "recipes" {
       name = "pattern_tier"
       type = "string"
     }
+    # #129: New normalized 0-100 Pattern Power Score, computed in the recipe
+    # engine CTAS via global maxima broadcast (CROSS JOIN). Replaces the legacy
+    # `pattern_power_score` column for ranking/display. Old column kept for
+    # backward compatibility and debugging.
+    columns {
+      name = "pps"
+      type = "double"
+    }
   }
 
   # #145: recipes is partitioned by country_a_id so that filtered queries
