@@ -86,9 +86,44 @@ variable "batch_invoke_mode" {
   description = "Mode passed to b-orchestrator: 'invoke' submits all jobs; 'invoke_5' caps at 5 (for staging tests)."
 }
 
-variable "ec2_indicator_fetcher_profile_name" {
+# #FAR-1: Phase 1 Fargate Spot dispatch
+variable "fetcher_job_queue_arn" {
   type        = string
-  description = "IAM instance profile name for the EC2 indicator fetcher"
+  description = "Batch job queue ARN for Fargate Spot indicator fetcher tasks"
+}
+
+variable "fetcher_job_definition_arn" {
+  type        = string
+  description = "Batch job definition ARN for Fargate Spot indicator fetcher"
+}
+
+variable "pipeline_a_counter_table_name" {
+  type        = string
+  description = "Name of qgi-pipeline-a-counter DynamoDB table (#FAR-1)"
+}
+
+variable "indicator_table_name" {
+  type        = string
+  default     = "qgi-indicator-updates"
+  description = "Name of qgi-indicator-updates tracker DDB table"
+}
+
+variable "phase1_deadman_seconds" {
+  type        = number
+  default     = 5400
+  description = "Hard cap (seconds) for Phase 1 fan-out before deadman trips. Default 90 min."
+}
+
+variable "phase1_jitter_min_s" {
+  type        = number
+  default     = 60
+  description = "Minimum random sleep (seconds) per fetcher task before WB API call"
+}
+
+variable "phase1_jitter_max_s" {
+  type        = number
+  default     = 300
+  description = "Maximum random sleep (seconds) per fetcher task before WB API call"
 }
 
 variable "tags" {

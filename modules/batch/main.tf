@@ -82,6 +82,157 @@ resource "aws_cloudwatch_log_group" "scdi_finder" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 1 indicator fetcher — Fargate Spot (#FAR-1)
+#
+# Replaces the legacy EC2+SSM single-instance fetcher with a fan-out to
+# AWS Batch on Fargate Spot, one job per indicator. Each task sleeps a
+# random 1-5 min before its WB API call so the requests naturally spread
+# across time. Each Fargate Spot task gets its own public IP, so the WB
+# rate limiter sees N independent clients instead of one source.
+#
+# Fargate Spot vs EC2 Spot:
+# - No instance management, no boot time amortization
+# - Smallest possible config: 0.25 vCPU + 512 MB RAM (~$0.0008 per task)
+# - Each task gets its own micro-VM with its own ENI/IP
+# - eu-central-1 quotas verified (sustained 20/sec, burst 100, 30 vCPU concurrent)
+# ---------------------------------------------------------------------------
+
+# ECR repo for the local-account image. Co-located with staging Batch CE
+# to skip the cross-account pull pattern the scdi-finder uses (it's
+# grandfathered in qgi-aws-tf, but we don't need to repeat it here).
+resource "aws_ecr_repository" "indicator_fetcher" {
+  name                 = "qgi-pipeline-a-indicator-fetcher"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = var.tags
+}
+
+resource "aws_ecr_lifecycle_policy" "indicator_fetcher" {
+  repository = aws_ecr_repository.indicator_fetcher.name
+
+  policy = jsonencode({
+    rules = [{
+      rulePriority = 1
+      description  = "Keep last 10 images"
+      selection = {
+        tagStatus   = "any"
+        countType   = "imageCountMoreThan"
+        countNumber = 10
+      }
+      action = { type = "expire" }
+    }]
+  })
+}
+
+# Fargate Spot compute environment — no instances, no AMIs, no scaling.
+# Just submits tasks and Fargate provisions micro-VMs on demand.
+resource "aws_batch_compute_environment" "fetcher_fargate_spot" {
+  compute_environment_name = "qgi-pipeline-a-fetcher-fargate-spot"
+  type                     = "MANAGED"
+  state                    = "ENABLED"
+
+  compute_resources {
+    type      = "FARGATE_SPOT"
+    max_vcpus = 30 # service quota; bumpable via support ticket if needed for V1.6.0
+
+    subnets            = data.aws_subnets.default.ids
+    security_group_ids = [data.aws_security_group.default.id]
+  }
+
+  tags = var.tags
+}
+
+resource "aws_batch_job_queue" "fetcher" {
+  name     = "qgi-pipeline-a-fetcher-queue"
+  state    = "ENABLED"
+  priority = 100
+
+  compute_environment_order {
+    order               = 1
+    compute_environment = aws_batch_compute_environment.fetcher_fargate_spot.arn
+  }
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_log_group" "indicator_fetcher" {
+  name              = "/aws/batch/qgi-indicator-fetcher"
+  retention_in_days = 14
+  tags              = var.tags
+}
+
+# Job definition: 0.25 vCPU + 512 MB. Timeout 15 min (5min jitter +
+# 1min fetch + 9min slack for retries). attempts=2 = one retry on
+# infrastructure failure (Fargate Spot reclaim, OOM). The script's
+# in-process L1 backoff handles transient WB API errors before exiting.
+resource "aws_batch_job_definition" "indicator_fetcher" {
+  name = "qgi-indicator-fetcher-job"
+  type = "container"
+
+  platform_capabilities = ["FARGATE"]
+
+  retry_strategy {
+    attempts = 2
+  }
+
+  timeout {
+    attempt_duration_seconds = 900 # 15 min
+  }
+
+  container_properties = jsonencode({
+    image   = "${aws_ecr_repository.indicator_fetcher.repository_url}:latest"
+    command = []
+
+    jobRoleArn       = var.fargate_task_role_arn
+    executionRoleArn = var.fargate_execution_role_arn
+
+    resourceRequirements = [
+      { type = "VCPU",   value = "0.25" },
+      { type = "MEMORY", value = "512" },
+    ]
+
+    networkConfiguration = {
+      assignPublicIp = "ENABLED" # required for Fargate to reach WB + S3 in default VPC
+    }
+
+    fargatePlatformConfiguration = {
+      platformVersion = "LATEST"
+    }
+
+    # #FAR-1: arm64 — ~20% cheaper on Fargate Spot than x86, and keeps the
+    # Phase 1 fetcher consistent with the rest of the Graviton stack.
+    runtimePlatform = {
+      cpuArchitecture       = "ARM64"
+      operatingSystemFamily = "LINUX"
+    }
+
+    environment = [
+      # Most env vars are overridden by the dispatcher per-job; defaults
+      # here are used only if a manual `aws batch submit-job` is run for
+      # debugging.
+      { name = "JITTER_MIN_S",      value = "60" },
+      { name = "JITTER_MAX_S",      value = "300" },
+      { name = "MAX_FETCH_ATTEMPTS", value = "10" },
+    ]
+
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/aws/batch/qgi-indicator-fetcher"
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "fetch"
+      }
+    }
+  })
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # Batch job definition — scdi-finder
 # Image lives in the management account ECR (shared registry).
 # Cross-account pull requires an ECR resource policy in the management

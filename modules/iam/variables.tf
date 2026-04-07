@@ -40,6 +40,12 @@ variable "indicator_values_table_arn" {
   description = "ARN of the qgi-indicator-values DynamoDB table (#148)"
 }
 
+# #FAR-1: Phase 1 Fargate Spot dispatch counter
+variable "pipeline_a_counter_table_arn" {
+  type        = string
+  description = "ARN of the qgi-pipeline-a-counter DynamoDB table (#FAR-1)"
+}
+
 variable "sns_topic_arn" {
   type = string
 }

@@ -5,9 +5,8 @@ output "lambda_arns" {
   value = {
     ops_janitor        = aws_lambda_function.ops_janitor.arn
     a_sheet_fetcher    = aws_lambda_function.a_sheet_fetcher.arn
-    a_dispatcher       = aws_lambda_function.a_dispatcher.arn
-    a_indicator_extractor = aws_lambda_function.a_indicator_extractor.arn
-    a_worker           = aws_lambda_function.a_worker.arn
+    a_batch_dispatcher = aws_lambda_function.a_batch_dispatcher.arn
+    a_batch_checker    = aws_lambda_function.a_batch_checker.arn
     a_reporter         = aws_lambda_function.a_reporter.arn
     b_orchestrator     = aws_lambda_function.b_orchestrator.arn
     b_dispatcher       = aws_lambda_function.b_dispatcher.arn

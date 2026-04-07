@@ -190,6 +190,45 @@ resource "aws_dynamodb_table" "indicator_values" {
 }
 
 # ---------------------------------------------------------------------------
+# DynamoDB — Phase 1 fetcher counter (#FAR-1)
+#
+# Replaces the legacy completion-counters table for Phase 1 specifically.
+# The dispatcher Lambda seeds `pending=N` at run start; each Fargate Spot
+# task decrements `pending` by 1 when it finishes (success OR graceful
+# failure). The checker Lambda polls until pending <= 0, then advances
+# to the Reporter.
+#
+# Why a dedicated table (not reusing qgi-completion-counters):
+#  - Phase 1 has its own lifecycle and deadman timeout
+#  - Phase 4 (qgi-completion-counters) uses a different schema (processed_c
+#    counter that goes UP, not DOWN)
+#  - Cleaner blast radius — a Phase 1 race can't corrupt Phase 4 state
+#
+# Schema:
+#   PK   run_id   : S   (Step Function execution name)
+#   attr pending  : N   (decrements from total to 0)
+#   attr total    : N   (immutable, set by dispatcher, used by reporter)
+#   attr expires_at : N (TTL — clean up old run records after 30 days)
+# ---------------------------------------------------------------------------
+resource "aws_dynamodb_table" "pipeline_a_counter" {
+  name         = "qgi-pipeline-a-counter"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "run_id"
+
+  attribute {
+    name = "run_id"
+    type = "S"
+  }
+
+  ttl {
+    attribute_name = "expires_at"
+    enabled        = true
+  }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # DynamoDB — completion counters (D6: replaces Phase 1/4 hard waits)
 # Dispatcher writes run_id + total worker count; each worker decrements.
 # Not yet wired into Step Functions — Lambda code update required (issue #76).

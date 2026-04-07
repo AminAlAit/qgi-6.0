@@ -28,6 +28,22 @@ variable "data_lake_bucket_name" {
   type = string
 }
 
+# #FAR-1: Fargate task IAM roles for the Phase 1 indicator fetcher.
+# Fargate tasks need TWO roles:
+#  - executionRole: used by Fargate itself to pull the image from ECR
+#    and write logs to CloudWatch (the "infra" role)
+#  - taskRole: the IAM identity assumed by code running INSIDE the
+#    container (the "application" role)
+variable "fargate_task_role_arn" {
+  type        = string
+  description = "Task role ARN — IAM identity assumed by the fetcher script (#FAR-1)"
+}
+
+variable "fargate_execution_role_arn" {
+  type        = string
+  description = "Execution role ARN — Fargate uses this to pull images + write logs (#FAR-1)"
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

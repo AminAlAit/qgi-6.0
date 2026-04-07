@@ -35,6 +35,7 @@ module "iam" {
   indicator_table_arn        = module.storage.indicator_table_arn
   completion_table_arn       = module.storage.completion_table_arn
   indicator_values_table_arn = module.storage.indicator_values_table_arn
+  pipeline_a_counter_table_arn = module.storage.pipeline_a_counter_table_arn
   sns_topic_arn              = module.storage.sns_topic_arn
 
   # state_machine_arn is left empty on first apply (chicken-and-egg).
@@ -59,6 +60,10 @@ module "batch" {
   batch_job_role_arn       = module.iam.batch_job_role_arn
   ecs_instance_profile_arn = module.iam.ecs_instance_profile_arn
   data_lake_bucket_name    = module.storage.bucket_name
+
+  # #FAR-1: Fargate task roles for the Phase 1 indicator fetcher
+  fargate_task_role_arn      = module.iam.fargate_indicator_fetcher_task_role_arn
+  fargate_execution_role_arn = module.iam.fargate_execution_role_arn
 
   tags = local.tags
 }
@@ -101,7 +106,10 @@ module "pipeline" {
   completion_table_name      = module.storage.completion_table_name
   indicator_values_table_name = module.storage.indicator_values_table_name
 
-  ec2_indicator_fetcher_profile_name = module.iam.ec2_indicator_fetcher_profile_name
+  # #FAR-1: Phase 1 Fargate Spot dispatch
+  fetcher_job_queue_arn         = module.batch.fetcher_job_queue_arn
+  fetcher_job_definition_arn    = module.batch.fetcher_job_definition_arn
+  pipeline_a_counter_table_name = module.storage.pipeline_a_counter_table_name
 
   tags = local.tags
 }

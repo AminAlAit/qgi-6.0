@@ -98,28 +98,55 @@ resource "aws_lambda_function" "a_sheet_fetcher" {
 }
 
 # ---------------------------------------------------------------------------
-# Phase 1 — dispatcher (reads indicators.json, fans out to SQS)
+# Phase 1 legacy SQS path (a_dispatcher, a_checker, a_indicator_extractor,
+# a_worker, a_worker_sqs event source mapping) was deleted as part of
+# #FAR-1. Replaced by the Fargate Spot dispatcher + checker below. Phase 1
+# now reads indicators.json directly from S3 in the dispatcher and fans
+# out one Fargate task per indicator — no SQS, no Lambda workers.
 # ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_dispatcher" {
-  function_name    = "qgi-pipeline-a-dispatcher"
+# ---------------------------------------------------------------------------
+# Phase 1 — Fargate Spot indicator fetcher (#FAR-1)
+#
+# Replaces the legacy EC2 + SSM Run Command approach (which hit the SSM
+# 1-hour command timeout at 36/52 indicators) with a fan-out to AWS Batch
+# on Fargate Spot. One Fargate task per indicator. Each task gets its own
+# ENI/public IP, sleeps a random 1-5 min before its WB API call, then
+# fetches/transforms/uploads.
+#
+# Coordination uses a DDB counter (qgi-pipeline-a-counter) keyed on run_id.
+# The dispatcher seeds the counter to N at submission time (race-free vs
+# starting at 0 + incrementing). Each fetcher task decrements on exit
+# (success OR failure — the script always exits 0). The checker Lambda
+# polls the counter from the Step Function loop.
+# ---------------------------------------------------------------------------
+
+# --- Dispatcher Lambda — replaces a_ec2_trigger ---
+resource "aws_lambda_function" "a_batch_dispatcher" {
+  function_name    = "qgi-pipeline-a-batch-dispatcher"
   handler          = "lambda_function.lambda_handler"
-  timeout          = 900
-  memory_size      = 512
+  timeout          = 300
+  memory_size      = 256
   runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
-  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
-      S3_BUCKET        = var.data_lake_bucket_name
-      S3_PREFIX        = "pipeline-A-indicator-extractor"
-      INPUT_KEY        = "indicators/indicators.json"
-      SQS_QUEUE_URL    = var.queue_a_main_url
-      COMPLETION_TABLE = var.completion_table_name
-      DISPATCH_LIMIT   = tostring(var.dispatch_limit)
+      S3_BUCKET                 = var.data_lake_bucket_name
+      INDICATORS_KEY            = "pipeline-A-indicator-extractor/input/indicators.json"
+      BATCH_JOB_QUEUE           = var.fetcher_job_queue_arn
+      BATCH_JOB_DEFINITION      = var.fetcher_job_definition_arn
+      COUNTER_TABLE             = var.pipeline_a_counter_table_name
+      TRACKER_TABLE             = var.indicator_table_name
+      INDICATOR_VALUES_TABLE    = var.indicator_values_table_name
+      ATHENA_DATABASE           = var.glue_database_name
+      ATHENA_WORKGROUP          = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION    = local.s3_output_location
+      JITTER_MIN_S              = tostring(var.phase1_jitter_min_s)
+      JITTER_MAX_S              = tostring(var.phase1_jitter_max_s)
+      DISPATCH_LIMIT            = tostring(var.dispatch_limit)
     }
   }
 
@@ -127,11 +154,9 @@ resource "aws_lambda_function" "a_dispatcher" {
   tags = var.tags
 }
 
-# ---------------------------------------------------------------------------
-# Phase 1 — completion checker (polls qgi-indicator-updates instead of hard wait)
-# ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_checker" {
-  function_name    = "qgi-pipeline-a-checker"
+# --- Checker Lambda — replaces a_checker for Phase 1 ---
+resource "aws_lambda_function" "a_batch_checker" {
+  function_name    = "qgi-pipeline-a-batch-checker"
   handler          = "lambda_function.lambda_handler"
   timeout          = 30
   memory_size      = 128
@@ -140,202 +165,11 @@ resource "aws_lambda_function" "a_checker" {
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
   role             = local.lambda_defaults.role
-  layers           = local.lambda_defaults.layers
 
   environment {
     variables = {
-      DYNAMODB_TABLE = "qgi-indicator-updates"
-    }
-  }
-
-  lifecycle { ignore_changes = [filename, source_code_hash] }
-  tags = var.tags
-}
-
-# ---------------------------------------------------------------------------
-# Phase 1 — indicator extractor (SQS-triggered, processes one indicator)
-# ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_indicator_extractor" {
-  function_name    = "qgi-pipeline-a-indicator-extractor"
-  handler          = "lambda_function.lambda_handler"
-  timeout          = 900
-  memory_size      = 512
-  runtime          = local.lambda_defaults.runtime
-  architectures    = local.lambda_defaults.architectures
-  filename         = local.lambda_defaults.filename
-  source_code_hash = local.lambda_defaults.source_code_hash
-  role             = local.lambda_defaults.role
-  layers           = local.lambda_defaults.layers
-
-  environment {
-    variables = {
-      S3_BUCKET        = var.data_lake_bucket_name
-      S3_INPUT_PREFIX  = "pipeline-A-indicator-extractor/input"
-      S3_OUTPUT_PREFIX = "pipeline-A-indicator-extractor/output"
-      LOG_LEVEL        = "INFO"
-    }
-  }
-
-  lifecycle { ignore_changes = [filename, source_code_hash] }
-  tags = var.tags
-}
-
-# ---------------------------------------------------------------------------
-# Phase 1 — worker (SQS-triggered: fetches World Bank data, writes to S3,
-# updates qgi-indicator-updates DynamoDB)
-# ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_worker" {
-  function_name    = "qgi-pipeline-a-worker"
-  handler          = "lambda_function.lambda_handler"
-  timeout          = 900
-  memory_size      = 512
-  runtime          = local.lambda_defaults.runtime
-  architectures    = local.lambda_defaults.architectures
-  filename         = local.lambda_defaults.filename
-  source_code_hash = local.lambda_defaults.source_code_hash
-  role             = local.lambda_defaults.role
-  layers           = local.lambda_defaults.layers
-
-  environment {
-    variables = {
-      S3_BUCKET        = var.data_lake_bucket_name
-      S3_INPUT_PREFIX  = "pipeline-A-indicator-extractor/input"
-      S3_OUTPUT_PREFIX = "pipeline-A-indicator-extractor/output"
-      LOG_LEVEL        = "INFO"
-      DYNAMODB_TABLE   = "qgi-indicator-updates"
-    }
-  }
-
-  lifecycle { ignore_changes = [filename, source_code_hash] }
-  tags = var.tags
-}
-
-resource "aws_lambda_event_source_mapping" "a_worker_sqs" {
-  event_source_arn = var.queue_a_main_arn
-  function_name    = aws_lambda_function.a_worker.arn
-  batch_size       = 1
-  enabled          = false  # DISABLED — replaced by EC2 fetcher (issue #117)
-
-  scaling_config {
-    maximum_concurrency = 10
-  }
-}
-
-# ---------------------------------------------------------------------------
-# Phase 1 — EC2 Indicator Fetcher (replaces Lambda workers, issue #117)
-# On-demand t4g.small, started/stopped by trigger/stopper Lambdas.
-# Fetches indicators sequentially — no timeout limit, no API throttling.
-# ---------------------------------------------------------------------------
-
-# Look up latest Amazon Linux 2023 ARM AMI
-data "aws_ami" "al2023_arm" {
-  most_recent = true
-  owners      = ["amazon"]
-
-  filter {
-    name   = "name"
-    values = ["al2023-ami-*-arm64"]
-  }
-
-  filter {
-    name   = "architecture"
-    values = ["arm64"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-}
-
-# Security group — outbound only (WB API + S3 + DynamoDB + SSM)
-resource "aws_security_group" "ec2_fetcher" {
-  name_prefix = "qgi-ec2-fetcher-"
-  description = "EC2 indicator fetcher - outbound only"
-
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-    description = "All outbound (WB API, S3, DynamoDB, SSM)"
-  }
-
-  tags = merge(var.tags, { Name = "qgi-ec2-indicator-fetcher" })
-}
-
-resource "aws_instance" "indicator_fetcher" {
-  ami                    = data.aws_ami.al2023_arm.id
-  instance_type          = "t4g.small"
-  iam_instance_profile   = var.ec2_indicator_fetcher_profile_name
-  vpc_security_group_ids = [aws_security_group.ec2_fetcher.id]
-
-  # Install Python deps and download fetch script from S3 on every boot
-  user_data = base64encode(<<-USERDATA
-    #!/bin/bash
-    dnf install -y python3-pip
-    pip3 install boto3 pandas pyarrow wbgapi
-    mkdir -p /opt/qgi
-    aws s3 cp s3://${var.data_lake_bucket_name}/ec2-scripts/fetch_indicators.py /opt/qgi/fetch_indicators.py --region eu-central-1
-    chmod +x /opt/qgi/fetch_indicators.py
-    echo "QGI indicator fetcher ready" > /opt/qgi/ready.txt
-  USERDATA
-  )
-
-  tags = merge(var.tags, {
-    Name = "qgi-indicator-fetcher"
-  })
-
-  # Start in stopped state — only runs when triggered
-  lifecycle {
-    ignore_changes = [ami]  # Don't recreate on AMI updates
-  }
-}
-
-# ---------------------------------------------------------------------------
-# Phase 1 — EC2 trigger Lambda (starts instance + sends SSM command)
-# ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_ec2_trigger" {
-  function_name    = "qgi-pipeline-a-ec2-trigger"
-  handler          = "lambda_function.lambda_handler"
-  timeout          = 300
-  memory_size      = 128
-  runtime          = local.lambda_defaults.runtime
-  architectures    = local.lambda_defaults.architectures
-  filename         = local.lambda_defaults.filename
-  source_code_hash = local.lambda_defaults.source_code_hash
-  role             = local.lambda_defaults.role
-
-  environment {
-    variables = {
-      INSTANCE_ID       = aws_instance.indicator_fetcher.id
-      S3_BUCKET         = var.data_lake_bucket_name
-      DYNAMODB_TABLE    = "qgi-indicator-updates"
-      COMPLETION_TABLE  = var.completion_table_name
-    }
-  }
-
-  lifecycle { ignore_changes = [filename, source_code_hash] }
-  tags = var.tags
-}
-
-# ---------------------------------------------------------------------------
-# Phase 1 — EC2 stopper Lambda (stops instance after Phase 1 completes)
-# ---------------------------------------------------------------------------
-resource "aws_lambda_function" "a_ec2_stopper" {
-  function_name    = "qgi-pipeline-a-ec2-stopper"
-  handler          = "lambda_function.lambda_handler"
-  timeout          = 60
-  memory_size      = 128
-  runtime          = local.lambda_defaults.runtime
-  architectures    = local.lambda_defaults.architectures
-  filename         = local.lambda_defaults.filename
-  source_code_hash = local.lambda_defaults.source_code_hash
-  role             = local.lambda_defaults.role
-
-  environment {
-    variables = {
-      INSTANCE_ID = aws_instance.indicator_fetcher.id
+      COUNTER_TABLE     = var.pipeline_a_counter_table_name
+      DEADMAN_SECONDS   = tostring(var.phase1_deadman_seconds)
     }
   }
 
@@ -365,6 +199,9 @@ resource "aws_lambda_function" "a_reporter" {
     variables = {
       SNS_TOPIC_ARN  = var.sns_topic_arn
       PIPELINE_B_ARN = aws_lambda_function.b_orchestrator.arn
+      # #FAR-1: tables read by the detailed email reporter
+      TRACKER_TABLE  = var.indicator_table_name
+      COUNTER_TABLE  = var.pipeline_a_counter_table_name
     }
   }
 
@@ -849,12 +686,15 @@ resource "aws_sfn_state_machine" "pipeline" {
         Resource   = aws_lambda_function.a_sheet_fetcher.arn
         ResultPath = "$.fetcher_output"
         Retry      = local.lambda_retry
-        Next       = "Phase 1: Ingest (EC2 Trigger)"
+        Next       = "Phase 1: Dispatch Batch"
       }
 
-      "Phase 1: Ingest (EC2 Trigger)" = {
+      # #FAR-1: Fan out one Fargate Spot task per indicator. Dispatcher
+      # seeds the counter to N at this step so the checker has a fixed
+      # finish line.
+      "Phase 1: Dispatch Batch" = {
         Type     = "Task"
-        Resource = aws_lambda_function.a_ec2_trigger.arn
+        Resource = aws_lambda_function.a_batch_dispatcher.arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
@@ -866,15 +706,20 @@ resource "aws_sfn_state_machine" "pipeline" {
       "Wait 2 Mins (Phase A Poll)" = {
         Type    = "Wait"
         Seconds = 120
-        Next    = "Phase 1: Check Complete?"
+        Next    = "Phase 1: Check Counter"
       }
 
-      "Phase 1: Check Complete?" = {
+      # #FAR-1: Polls the qgi-pipeline-a-counter DDB row for run_id.
+      # Returns done=true when pending hits 0, OR when the deadman
+      # timer (default 90 min) expires (sets deadman_expired=true so
+      # the reporter can flag the run as degraded).
+      "Phase 1: Check Counter" = {
         Type     = "Task"
-        Resource = aws_lambda_function.a_checker.arn
+        Resource = aws_lambda_function.a_batch_checker.arn
         Parameters = {
-          "run_id.$"   = "$$.Execution.Name"
-          "expected.$" = "$.dispatch_a_output.dispatched"
+          "run_id.$"             = "$$.Execution.Name"
+          "phase1_started_at.$"  = "$.dispatch_a_output.phase1_started_at"
+          "total.$"              = "$.dispatch_a_output.total"
         }
         ResultPath = "$.a_check"
         Retry      = local.lambda_retry
@@ -886,24 +731,20 @@ resource "aws_sfn_state_machine" "pipeline" {
         Choices = [{
           Variable      = "$.a_check.done"
           BooleanEquals = true
-          Next          = "Phase 1: EC2 Stop"
+          Next          = "Phase 1: Ingest (Reporter)"
         }]
         Default = "Wait 2 Mins (Phase A Poll)"
-      }
-
-      "Phase 1: EC2 Stop" = {
-        Type     = "Task"
-        Resource = aws_lambda_function.a_ec2_stopper.arn
-        ResultPath = "$.ec2_stop_output"
-        Retry      = local.lambda_retry
-        Next       = "Phase 1: Ingest (Reporter)"
       }
 
       "Phase 1: Ingest (Reporter)" = {
         Type     = "Task"
         Resource = aws_lambda_function.a_reporter.arn
         Parameters = {
-          "run_id.$" = "$$.Execution.Name"
+          "run_id.$"           = "$$.Execution.Name"
+          "deadman_expired.$"  = "$.a_check.deadman_expired"
+          "total.$"            = "$.a_check.total"
+          "done.$"             = "$.a_check.done"
+          "pending.$"          = "$.a_check.pending"
         }
         ResultPath = "$.reporter_result"
         Retry      = local.lambda_retry

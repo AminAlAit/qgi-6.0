@@ -108,6 +108,7 @@ resource "aws_iam_role_policy" "lambda_execution" {
           var.indicator_table_arn,
           var.completion_table_arn,
           var.indicator_values_table_arn,
+          var.pipeline_a_counter_table_arn,
         ]
       },
       # Athena
@@ -150,18 +151,9 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Action   = ["lambda:InvokeFunction"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
-      # EC2 — start/stop indicator fetcher instance + describe for status checks
-      {
-        Effect   = "Allow"
-        Action   = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances", "ec2:DescribeInstanceStatus"]
-        Resource = "*"
-      },
-      # SSM — send commands to EC2 indicator fetcher
-      {
-        Effect   = "Allow"
-        Action   = ["ssm:SendCommand", "ssm:GetCommandInvocation", "ssm:ListCommandInvocations"]
-        Resource = "*"
-      },
+      # (#FAR-1) EC2 + SSM perms removed — Phase 1 no longer uses an EC2
+      # fetcher instance, so the dispatcher Lambda has no need to start
+      # instances or send SSM commands.
     ]
   })
 }
@@ -440,17 +432,27 @@ resource "aws_iam_role_policy" "cross_account_ops" {
 }
 
 # ---------------------------------------------------------------------------
-# EC2 Indicator Fetcher — instance role + profile (Phase 1 replacement)
-# Needs: S3 (read/write data lake), DynamoDB (update counters), SSM (receive commands), CloudWatch Logs
+# (Removed) EC2 Indicator Fetcher role/profile — Phase 1 now uses Fargate
+# Spot tasks via #FAR-1. Roles deleted on next apply.
 # ---------------------------------------------------------------------------
-resource "aws_iam_role" "ec2_indicator_fetcher" {
-  name = "qgi-ec2-indicator-fetcher-role"
+# #FAR-1: Fargate task roles for the Phase 1 indicator fetcher
+#
+# Two roles are required:
+#  - Execution role: assumed by Fargate itself to pull the image from ECR
+#    and ship logs to CloudWatch (the "infra plumbing" role).
+#  - Task role: assumed by the code running INSIDE the container — this is
+#    the IAM identity the fetcher script uses to talk to S3, DDB, Athena, etc.
+# ---------------------------------------------------------------------------
+
+# --- Execution role ---
+resource "aws_iam_role" "fargate_execution" {
+  name = "qgi-fargate-execution-role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [{
       Effect    = "Allow"
-      Principal = { Service = "ec2.amazonaws.com" }
+      Principal = { Service = "ecs-tasks.amazonaws.com" }
       Action    = "sts:AssumeRole"
     }]
   })
@@ -458,49 +460,79 @@ resource "aws_iam_role" "ec2_indicator_fetcher" {
   tags = var.tags
 }
 
-resource "aws_iam_role_policy" "ec2_indicator_fetcher" {
-  name = "qgi-ec2-indicator-fetcher-policy"
-  role = aws_iam_role.ec2_indicator_fetcher.id
+resource "aws_iam_role_policy_attachment" "fargate_execution_managed" {
+  role       = aws_iam_role.fargate_execution.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+}
+
+# --- Task role (the identity the fetcher script runs as) ---
+resource "aws_iam_role" "fargate_indicator_fetcher_task" {
+  name = "qgi-fargate-indicator-fetcher-task-role"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Service = "ecs-tasks.amazonaws.com" }
+      Action    = "sts:AssumeRole"
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "fargate_indicator_fetcher_task" {
+  name = "qgi-fargate-indicator-fetcher-task-policy"
+  role = aws_iam_role.fargate_indicator_fetcher_task.id
 
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      # S3 — data lake (read config, write indicator data)
-      {
-        Effect   = "Allow"
-        Action   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation", "s3:HeadObject"]
-        Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
-      },
-      # DynamoDB — indicator tracking + completion counters + indicator values (#148)
+      # S3 — read indicators.json + read existing parquet for hash compare + write fresh parquet
       {
         Effect = "Allow"
-        Action = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:GetItem",
-          "dynamodb:Query", "dynamodb:BatchWriteItem", "dynamodb:BatchGetItem"]
+        Action = ["s3:GetObject", "s3:PutObject", "s3:ListBucket",
+        "s3:GetBucketLocation", "s3:HeadObject"]
+        Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
+      },
+      # DynamoDB — counter (decrement), tracker (PutItem), values mirror (#148)
+      {
+        Effect = "Allow"
+        Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem",
+        "dynamodb:Query", "dynamodb:BatchWriteItem", "dynamodb:BatchGetItem"]
         Resource = [
           var.indicator_table_arn,
-          var.completion_table_arn,
           var.indicator_values_table_arn,
+          var.pipeline_a_counter_table_arn,
         ]
       },
-      # CloudWatch Logs
+      # Athena — used to ALTER TABLE ADD PARTITION (#149)
+      {
+        Effect = "Allow"
+        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        "athena:GetQueryResults", "athena:StopQueryExecution", "athena:GetWorkGroup"]
+        Resource = "*"
+      },
+      # Glue — Athena needs Glue catalog access for ALTER TABLE
+      {
+        Effect = "Allow"
+        Action = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
+        "glue:GetPartition", "glue:GetPartitions", "glue:BatchCreatePartition",
+        "glue:CreatePartition", "glue:UpdateTable"]
+        Resource = [
+          "arn:aws:glue:${var.region}:${var.aws_account_id}:catalog",
+          "arn:aws:glue:${var.region}:${var.aws_account_id}:database/qgi_data",
+          "arn:aws:glue:${var.region}:${var.aws_account_id}:table/qgi_data/*",
+        ]
+      },
+      # CloudWatch Logs — Fargate task application logs
       {
         Effect   = "Allow"
-        Action   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
-        Resource = "arn:aws:logs:*:${var.aws_account_id}:log-group:/qgi/*"
+        Action   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+        Resource = "arn:aws:logs:*:${var.aws_account_id}:log-group:/aws/batch/*"
       },
     ]
   })
-}
-
-# SSM managed policy — required for SSM Run Command
-resource "aws_iam_role_policy_attachment" "ec2_indicator_fetcher_ssm" {
-  role       = aws_iam_role.ec2_indicator_fetcher.name
-  policy_arn = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
-}
-
-resource "aws_iam_instance_profile" "ec2_indicator_fetcher" {
-  name = "qgi-ec2-indicator-fetcher-profile"
-  role = aws_iam_role.ec2_indicator_fetcher.name
 }
 
 # ---------------------------------------------------------------------------

@@ -5,5 +5,6 @@ output "ecs_instance_profile_arn"       { value = aws_iam_instance_profile.ecs_i
 output "stepfunctions_role_arn"         { value = aws_iam_role.stepfunctions.arn }
 output "eventbridge_scheduler_role_arn" { value = aws_iam_role.eventbridge_scheduler.arn }
 output "cross_account_ops_role_arn"     { value = aws_iam_role.cross_account_ops.arn }
-output "ec2_indicator_fetcher_profile_name" { value = aws_iam_instance_profile.ec2_indicator_fetcher.name }
-output "ec2_indicator_fetcher_role_arn"     { value = aws_iam_role.ec2_indicator_fetcher.arn }
+# #FAR-1: Fargate roles for the Phase 1 indicator fetcher
+output "fargate_execution_role_arn"      { value = aws_iam_role.fargate_execution.arn }
+output "fargate_indicator_fetcher_task_role_arn" { value = aws_iam_role.fargate_indicator_fetcher_task.arn }

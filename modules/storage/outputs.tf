@@ -39,6 +39,10 @@ output "completion_table_arn"  { value = aws_dynamodb_table.completion_counters.
 output "indicator_values_table_name" { value = aws_dynamodb_table.indicator_values.name }
 output "indicator_values_table_arn"  { value = aws_dynamodb_table.indicator_values.arn }
 
+# #FAR-1: Phase 1 Fargate Spot dispatch counter
+output "pipeline_a_counter_table_name" { value = aws_dynamodb_table.pipeline_a_counter.name }
+output "pipeline_a_counter_table_arn"  { value = aws_dynamodb_table.pipeline_a_counter.arn }
+
 output "sns_topic_arn" { value = aws_sns_topic.pipeline_notifications.arn }
 
 output "glue_database_name"    { value = aws_glue_catalog_database.qgi_data.name }
