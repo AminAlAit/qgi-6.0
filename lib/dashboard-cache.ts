@@ -71,6 +71,9 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
 
 export type PatternTier = "S" | "M" | "L" | "XL";
 
+// #133: convergence tiers
+export type ConvergenceTier = "single" | "emerging" | "multilateral" | "high";
+
 export type RankingPayload = {
   generated_at: string;
   limit: number;
@@ -132,5 +135,12 @@ export type RecipesTop50Payload = {
     pattern_power_score: number; // legacy, kept for compat/debug
     pps: number; // #129 — new normalized 0-100 Pattern Strength
     pattern_tier: PatternTier | null; // #128
+    // #133: multi-pattern convergence signal
+    convergence_score: number;
+    convergence_tier: ConvergenceTier;
+    n_predictors: number;
+    n_regions: number;
+    predictor_country_ids: number[];
+    composite_sort_key: number;
   }>;
 };

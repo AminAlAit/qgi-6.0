@@ -16,26 +16,48 @@ export const GET = withAuth(async (_req: NextRequest) => {
     });
   }
 
-  // Fallback: query recipes directly.
-  // #129: recipes is now pre-deduplicated at source, so the old `MAX(...)
-  // GROUP BY recipe_id` collapse step is gone. Ranks by the new normalized
-  // 0-100 `pps` column instead of legacy pattern_power_score.
+  // Fallback: query recipes JOIN convergence view directly.
+  // #129: recipes is pre-deduplicated at source.
+  // #133: rank by composite sort key (best_pps × ln(1+convergence)),
+  // require n_predictors >= 2.
   const currentYear = new Date().getFullYear();
   const rows = await runQuery(
-    `WITH ranked AS (
+    `WITH joined AS (
        SELECT r.*,
-         ROW_NUMBER() OVER (PARTITION BY r.country_a_id   ORDER BY r.pps DESC) AS country_rank,
-         ROW_NUMBER() OVER (PARTITION BY r.event_category ORDER BY r.pps DESC) AS cat_rank
+              cv.convergence_score, cv.n_predictors, cv.n_regions,
+              cv.convergence_tier, cv.predictor_country_ids, cv.composite_sort_key
        FROM qgi_data.recipes r
+       INNER JOIN qgi_data.recipe_convergence cv
+         ON cv.following_country_id = r.country_a_id
+        AND cv.event_category       = r.event_category
+        AND cv.end_year_a           = r.end_year_a
        WHERE r.start_year_b < r.start_year_a
          AND (r.start_year_a + r.length) >= ${currentYear - 2}
          AND (r.start_year_a + r.length) <= ${currentYear + 3}
+         AND cv.n_predictors >= 2
+     ),
+     ranked AS (
+       SELECT j.*,
+         ROW_NUMBER() OVER (PARTITION BY j.country_a_id   ORDER BY j.composite_sort_key DESC) AS country_rank,
+         ROW_NUMBER() OVER (PARTITION BY j.event_category ORDER BY j.composite_sort_key DESC) AS cat_rank
+       FROM joined j
      )
      SELECT * FROM ranked
      WHERE country_rank <= 3 AND cat_rank <= 10
-     ORDER BY pps DESC
+     ORDER BY composite_sort_key DESC
      LIMIT 50`
   );
+
+  // Athena returns array<smallint> as a string like "[1, 5, 23]"
+  const parseIdArray = (raw: string | undefined): number[] => {
+    if (!raw) return [];
+    return raw
+      .replace(/[\[\]\s]/g, "")
+      .split(",")
+      .filter(Boolean)
+      .map(Number)
+      .filter((n) => !Number.isNaN(n));
+  };
 
   return NextResponse.json(
     rows.map((r) => ({
@@ -61,6 +83,12 @@ export const GET = withAuth(async (_req: NextRequest) => {
       pattern_power_score: Number(r.pattern_power_score),
       pps: Number(r.pps),
       pattern_tier: r.pattern_tier ?? null,
+      convergence_score: Number(r.convergence_score),
+      convergence_tier: r.convergence_tier,
+      n_predictors: Number(r.n_predictors),
+      n_regions: Number(r.n_regions),
+      predictor_country_ids: parseIdArray(r.predictor_country_ids),
+      composite_sort_key: Number(r.composite_sort_key),
     }))
   );
 });
