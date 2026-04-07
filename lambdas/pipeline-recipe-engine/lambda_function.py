@@ -484,6 +484,10 @@ def _write_recipes_top50_json(current_year):
             'pattern_power_score': _to_float(r.get('pattern_power_score')),  # legacy
             'pps': _to_float(r.get('pps')),  # #129 — new normalized 0-100 score
             'pattern_tier': r.get('pattern_tier'),  # #128
+            # #134: forecast timing
+            'median_lead_time': _to_int(r.get('median_lead_time_b')),  # headline "when?"
+            'min_lead_time': _to_int(r.get('min_lead_time_b')),
+            'max_lead_time': _to_int(r.get('max_lead_time_b')),
             # #133: convergence fields from the recipe_convergence view
             'convergence_score': _to_float(r.get('convergence_score')),
             'convergence_tier': r.get('convergence_tier'),
@@ -707,6 +711,17 @@ def build_recipe_query(cutoff_year=None):
             arbitrary(pattern_power_score)   AS pattern_power_score,
             arbitrary(pattern_tier)          AS pattern_tier,
             cast(count(*) as bigint)         AS instance_count,
+            -- #134: median lead time = how many years after the pattern ends
+            -- did the historic event actually occur. lead_time_b is computed in
+            -- the PREDICTOR country and is the headline "when?" number — we
+            -- project it onto the following country's still-running pattern.
+            -- lead_time_a is kept for symmetry / debugging.
+            cast(approx_percentile(cast(event_year_b - end_year_b as double), 0.5) as smallint)
+                AS median_lead_time_b,
+            cast(min(event_year_b - end_year_b) as smallint) AS min_lead_time_b,
+            cast(max(event_year_b - end_year_b) as smallint) AS max_lead_time_b,
+            cast(approx_percentile(cast(event_year_a - end_year_a as double), 0.5) as smallint)
+                AS median_lead_time_a,
             country_a_id
         FROM raw_recipes
         GROUP BY recipe_id, country_a_id
@@ -741,6 +756,13 @@ def build_recipe_query(cutoff_year=None):
         r.pattern_power_score,
         r.instance_count,
         r.pattern_tier,
+        -- #134: forecast timing — lead time in PREDICTOR country (b) is the
+        -- headline "when will it happen?" number; we project it onto the
+        -- following country's pattern end date in the frontend.
+        r.median_lead_time_b,
+        r.min_lead_time_b,
+        r.max_lead_time_b,
+        r.median_lead_time_a,
         -- #129: new normalized 0-100 PPS. Weights 0.35/0.30/0.20/0.15 are
         -- initial; lock after V1.5.3 backtesting (#130) calibrates them
         -- empirically via logistic regression on verified recipes.
