@@ -69,6 +69,8 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
 // Strongly-typed payload shapes that mirror what pipeline-recipe-engine writes.
 // Keep these in sync with qgi-pipeline/lambdas/pipeline-recipe-engine/lambda_function.py.
 
+export type PatternTier = "S" | "M" | "L" | "XL";
+
 export type RankingPayload = {
   generated_at: string;
   limit: number;
@@ -83,6 +85,7 @@ export type RankingPayload = {
     avg_correlation: number;
     pattern_power_score: number;
     num_indexes: number;
+    pattern_tier: PatternTier | null; // #128
     predicted: boolean;
   }>;
 };
@@ -99,6 +102,7 @@ export type EarlyWarningPayload = {
     avg_correlation: number;
     pattern_power_score: number;
     num_indexes: number;
+    pattern_tier: PatternTier | null; // #128
   }>;
 };
 
@@ -125,5 +129,6 @@ export type RecipesTop50Payload = {
     event_title_b: string;
     indicator_count: number;
     pattern_power_score: number;
+    pattern_tier: PatternTier | null; // #128
   }>;
 };
