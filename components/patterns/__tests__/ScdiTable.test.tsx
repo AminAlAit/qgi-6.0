@@ -23,10 +23,12 @@ describe("ScdiTable", () => {
     expect(screen.getByText("PREDICTED")).toBeInTheDocument();
   });
 
-  it("formats correlation as percentage", () => {
+  it("formats correlation as 3-decimal r value", () => {
+    // #125: switched from 92.0% to 0.920 — Pearson r is more appropriate
+    // for the analyst audience and matches the chart subtext format.
     render(<ScdiTable scdis={SCDIS} />);
-    expect(screen.getByText("92.0%")).toBeInTheDocument();
-    expect(screen.getByText("78.0%")).toBeInTheDocument();
+    expect(screen.getByText("0.920")).toBeInTheDocument();
+    expect(screen.getByText("0.780")).toBeInTheDocument();
   });
 
   it("calls onRowSelect when a row is clicked", async () => {
