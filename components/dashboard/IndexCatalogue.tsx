@@ -2,28 +2,12 @@
 
 import { useState } from "react";
 import type { IndexEntry } from "@/lib/types";
+import { sectorColor, sectorChipBg } from "@/lib/design";
 
 interface Props {
   indexes: IndexEntry[];
   activeSector?: string | null;
 }
-
-const SECTOR_COLORS: Record<string, string> = {
-  Economic: "#38bdf8",
-  Trade: "#34d399",
-  Military: "#f87171",
-  Governance: "#a78bfa",
-  Health: "#fb923c",
-  Demographic: "#fbbf24",
-  Social: "#e879f9",
-  Education: "#22d3ee",
-  Infrastructure: "#4ade80",
-  Environment: "#86efac",
-  Finance: "#93c5fd",
-  Energy: "#fde68a",
-  Government: "#c4b5fd",
-  Other: "#7a90a8",
-};
 
 export function IndexCatalogue({ indexes, activeSector }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
@@ -61,8 +45,8 @@ export function IndexCatalogue({ indexes, activeSector }: Props) {
               <span
                 className="w-24 shrink-0 text-[9px] rounded px-1.5 py-0.5 text-center"
                 style={{
-                  color: SECTOR_COLORS[idx.sector] ?? "#7a90a8",
-                  backgroundColor: `${SECTOR_COLORS[idx.sector] ?? "#7a90a8"}18`,
+                  color: sectorColor(idx.sector),
+                  backgroundColor: sectorChipBg(idx.sector),
                 }}
               >
                 {idx.sector.toUpperCase()}

@@ -1,6 +1,7 @@
 "use client";
 
 import ReactECharts from "echarts-for-react";
+import { sectorColor } from "@/lib/design";
 
 interface Props {
   data: { name: string; value: number }[];
@@ -8,30 +9,14 @@ interface Props {
   activeSector?: string | null;
 }
 
-const SECTOR_COLORS: Record<string, string> = {
-  Economic: "#38bdf8",
-  Trade: "#34d399",
-  Military: "#f87171",
-  Governance: "#a78bfa",
-  Health: "#fb923c",
-  Demographic: "#fbbf24",
-  Social: "#e879f9",
-  Education: "#22d3ee",
-  Infrastructure: "#4ade80",
-  Environment: "#86efac",
-  Finance: "#93c5fd",
-  Energy: "#fde68a",
-  Government: "#c4b5fd",
-  Other: "#7a90a8",
-};
-
 export function SectorRose({ data, onSectorClick, activeSector }: Props) {
   const enriched = data.map((d) => ({
     ...d,
     itemStyle: {
-      color: activeSector && activeSector !== d.name
-        ? "rgba(36, 51, 71, 0.8)"
-        : SECTOR_COLORS[d.name] ?? "#7a90a8",
+      color:
+        activeSector && activeSector !== d.name
+          ? "rgba(36, 51, 71, 0.8)"
+          : sectorColor(d.name),
     },
   }));
 

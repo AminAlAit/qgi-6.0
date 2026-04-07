@@ -6,6 +6,7 @@ import { applyTransformation, type Transformation } from "@/lib/transforms";
 import indexData from "@/data/indexes.json";
 import type { IndexEntry } from "@/lib/types";
 import { pearsonCorrelation, pearsonPValue, formatPValue, significanceLabel } from "@/lib/stats";
+import { correlationColor } from "@/lib/design";
 
 const INDEX_MAP: Record<string, IndexEntry> = Object.fromEntries(
   (indexData as IndexEntry[]).map((idx) => [idx.name, idx])
@@ -102,7 +103,7 @@ export function IndexChart({
       subtext: `r=${(correlation * 100).toFixed(1)}%  n=${actualN}  p=${formatPValue(pValue)} ${sig}`,
       textStyle: { color: "var(--qgi-text-muted)", fontSize: 10, fontWeight: 400 },
       subtextStyle: {
-        color: correlation >= 0.8 ? "#34d399" : correlation >= 0.6 ? "#f59e0b" : "#7a90a8",
+        color: correlationColor(correlation),
         fontSize: 9,
       },
       top: 4,
@@ -235,7 +236,7 @@ export function IndexChart({
       subtext: `R²=${Number.isFinite(r2) ? r2.toFixed(3) : "—"}  n=${actualN}  p=${formatPValue(pValue)} ${sig}`,
       textStyle: { color: "var(--qgi-text-muted)", fontSize: 10, fontWeight: 400 },
       subtextStyle: {
-        color: correlation >= 0.8 ? "#34d399" : correlation >= 0.6 ? "#f59e0b" : "#7a90a8",
+        color: correlationColor(correlation),
         fontSize: 9,
       },
       top: 4,

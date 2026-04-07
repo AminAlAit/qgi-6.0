@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { pearsonPValue, formatPValue, significanceLabel } from "@/lib/stats";
+import { sectorColor, sectorChipBg, correlationColor, significanceColor } from "@/lib/design";
 
 interface ScdiRow {
   index_name: string;
@@ -22,13 +23,7 @@ interface Props {
   selectedIndex?: string | null;
 }
 
-const SECTOR_COLORS: Record<string, string> = {
-  Economic: "#38bdf8", Trade: "#34d399", Military: "#f87171",
-  Governance: "#a78bfa", Health: "#fb923c", Demographic: "#fbbf24",
-  Social: "#e879f9", Education: "#22d3ee", Infrastructure: "#4ade80",
-  Environment: "#86efac", Finance: "#93c5fd", Energy: "#fde68a",
-  Government: "#c4b5fd", Other: "#7a90a8",
-};
+// #126: SECTOR_COLORS moved to lib/design.ts — import from there.
 
 export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
   const [sortKey, setSortKey] = useState<"correlation" | "index_name" | "sector">("correlation");
@@ -69,10 +64,10 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
             onClick={() => toggleSector(s)}
             className="text-[9px] rounded px-2 py-0.5 transition-colors"
             style={{
-              color: sectorFilter.includes(s) ? "var(--qgi-bg)" : (SECTOR_COLORS[s] ?? "#7a90a8"),
+              color: sectorFilter.includes(s) ? "var(--qgi-bg)" : (sectorColor(s)),
               backgroundColor: sectorFilter.includes(s)
-                ? (SECTOR_COLORS[s] ?? "#7a90a8")
-                : `${SECTOR_COLORS[s] ?? "#7a90a8"}18`,
+                ? sectorColor(s)
+                : sectorChipBg(s),
             }}
           >
             {s.toUpperCase()}
@@ -125,12 +120,7 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
         }
         const p = n >= 3 ? pearsonPValue(row.correlation, n) : NaN;
         const sig = significanceLabel(p);
-        const sigColor =
-          sig === "***" ? "var(--qgi-success)" :
-          sig === "**" ? "var(--qgi-success)" :
-          sig === "*" ? "var(--qgi-amber)" :
-          sig === "ns" ? "var(--qgi-text-dim)" :
-          "var(--qgi-text-dim)";
+        const sigCol = significanceColor(sig);
 
         return (
           <button
@@ -157,7 +147,7 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
             </span>
             <span
               className="text-[9px] truncate"
-              style={{ color: SECTOR_COLORS[row.sector] ?? "#7a90a8" }}
+              style={{ color: sectorColor(row.sector) }}
             >
               {row.sector}
             </span>
@@ -166,21 +156,14 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
             </span>
             <span
               className="text-right font-data font-semibold"
-              style={{
-                color:
-                  row.correlation >= 0.8
-                    ? "var(--qgi-success)"
-                    : row.correlation >= 0.6
-                      ? "var(--qgi-amber)"
-                      : "var(--qgi-text-muted)",
-              }}
+              style={{ color: correlationColor(row.correlation) }}
             >
               {row.correlation.toFixed(3)}
             </span>
             <span className="text-right font-data text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
               {n > 0 ? n : "—"}
             </span>
-            <span className="text-right font-data text-[10px]" style={{ color: sigColor }}>
+            <span className="text-right font-data text-[10px]" style={{ color: sigCol }}>
               {n >= 3 ? `${formatPValue(p)} ${sig}` : "—"}
             </span>
             <span className="text-center text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>

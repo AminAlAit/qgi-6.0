@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { sectorColor, sectorChipBg } from "@/lib/design";
 
 const SectorRose = dynamic(
   () => import("@/components/charts/SectorRose").then((m) => m.SectorRose),
@@ -33,13 +34,7 @@ interface Props {
   isEarlyWarning: boolean;
 }
 
-const SECTOR_COLORS: Record<string, string> = {
-  Economic: "#38bdf8", Trade: "#34d399", Military: "#f87171",
-  Governance: "#a78bfa", Health: "#fb923c", Demographic: "#fbbf24",
-  Social: "#e879f9", Education: "#22d3ee", Infrastructure: "#4ade80",
-  Environment: "#86efac", Finance: "#93c5fd", Energy: "#fde68a",
-  Government: "#c4b5fd", Other: "#7a90a8",
-};
+// #126: SECTOR_COLORS moved to lib/design.ts — import from there.
 
 export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
   const len = Number(meta.pattern_length);
@@ -151,8 +146,8 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
               <span
                 className="text-[9px] rounded px-1.5 py-0.5"
                 style={{
-                  color: SECTOR_COLORS[s.name] ?? "#7a90a8",
-                  backgroundColor: `${SECTOR_COLORS[s.name] ?? "#7a90a8"}18`,
+                  color: sectorColor(s.name),
+                  backgroundColor: sectorChipBg(s.name),
                 }}
               >
                 {s.name.toUpperCase()}
