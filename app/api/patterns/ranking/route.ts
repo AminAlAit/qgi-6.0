@@ -25,11 +25,17 @@ export const GET = withAuth(async (req: NextRequest) => {
   if (isUnfiltered && offset + limit <= 1000) {
     const cached = await getDashboardJson<RankingPayload>("ranking.json");
     if (cached) {
-      return NextResponse.json({
-        page,
-        limit,
-        results: cached.results.slice(offset, offset + limit),
-      });
+      return NextResponse.json(
+        {
+          page,
+          limit,
+          results: cached.results.slice(offset, offset + limit),
+        },
+        {
+          // #144: edge-cache for 24h on CloudFront once Amplify (#102) lands
+          headers: { "Cache-Control": "public, max-age=300, s-maxage=86400" },
+        }
+      );
     }
     // No cache yet (fresh env or pre-compute failed) — fall through to Athena
   }

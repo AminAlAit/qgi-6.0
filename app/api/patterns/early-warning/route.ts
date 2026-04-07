@@ -12,7 +12,10 @@ export const GET = withAuth(async (_req: NextRequest, payload) => {
   // #146: try the pre-computed dashboard JSON first.
   const cached = await getDashboardJson<EarlyWarningPayload>("early-warning.json");
   if (cached) {
-    return NextResponse.json(cached.results);
+    return NextResponse.json(cached.results, {
+      // #144: edge-cache for 24h on CloudFront once Amplify (#102) lands
+      headers: { "Cache-Control": "public, max-age=300, s-maxage=86400" },
+    });
   }
 
   // Fallback: hit Athena directly. Capped at 500 to bound cost (Child B early bird).

@@ -5,21 +5,12 @@ import {
   GetQueryResultsCommand,
   type Row,
 } from "@aws-sdk/client-athena";
+import { unstable_cache } from "next/cache";
 
 const REGION = "eu-central-1";
 const WORKGROUP = process.env.ATHENA_WORKGROUP ?? "QGI-Lambda-Workgroup";
 const OUTPUT_LOCATION = process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-222222222222/query_results/";
-
-// Cache: queryKey → { result, expiresAt }
-// Stored on globalThis so it survives `next dev` HMR hot-reloads. Without this,
-// every file save during development re-runs every Athena query cold (#142, #143).
-type AthenaCacheEntry = { result: Record<string, string>[]; expiresAt: number };
-const globalForAthena = globalThis as typeof globalThis & {
-  __qgiAthenaCache?: Map<string, AthenaCacheEntry>;
-};
-const cache = globalForAthena.__qgiAthenaCache ?? new Map<string, AthenaCacheEntry>();
-if (!globalForAthena.__qgiAthenaCache) globalForAthena.__qgiAthenaCache = cache;
-const CACHE_TTL_MS = 600_000; // 10 minutes
+const CACHE_TTL_SECONDS = 600; // 10 minutes
 
 function getClient(): AthenaClient {
   return new AthenaClient({ region: REGION });
@@ -54,15 +45,13 @@ async function poll(client: AthenaClient, queryExecutionId: string): Promise<voi
   throw new Error("Athena query timed out after 60s");
 }
 
-export async function runQuery(
+/**
+ * Internal: actually run an Athena query (no caching). Wrapped by `runQuery`.
+ */
+async function _runQueryUncached(
   sql: string,
-  database: string = "qgi_data"
+  database: string
 ): Promise<Record<string, string>[]> {
-  const cacheKey = `${database}::${sql}`;
-  const now = Date.now();
-  const cached = cache.get(cacheKey);
-  if (cached && cached.expiresAt > now) return cached.result;
-
   const client = getClient();
   const { QueryExecutionId } = await client.send(
     new StartQueryExecutionCommand({
@@ -88,14 +77,43 @@ export async function runQuery(
       allRows.push(...rowsToObjects(rows));
     } else {
       // Prepend a fake header row so rowsToObjects works
-      const firstPageHeaders = res.ResultSet?.ResultSetMetadata?.ColumnInfo?.map(
-        (c) => ({ VarCharValue: c.Name })
-      ) ?? [];
+      const firstPageHeaders =
+        res.ResultSet?.ResultSetMetadata?.ColumnInfo?.map((c) => ({
+          VarCharValue: c.Name,
+        })) ?? [];
       allRows.push(...rowsToObjects([{ Data: firstPageHeaders }, ...rows]));
     }
     nextToken = res.NextToken;
   } while (nextToken);
 
-  cache.set(cacheKey, { result: allRows, expiresAt: now + CACHE_TTL_MS });
   return allRows;
+}
+
+/**
+ * Internal cached wrapper. unstable_cache uses the literal args as part of the
+ * cache key, so we always pass `database` explicitly (never let a default kick
+ * in) to keep the key stable across call sites.
+ */
+const _runQueryCached = unstable_cache(
+  (sql: string, database: string) => _runQueryUncached(sql, database),
+  ["qgi-athena-query"],
+  { revalidate: CACHE_TTL_SECONDS, tags: ["athena"] }
+);
+
+/**
+ * Run an Athena query with caching (#144).
+ *
+ * Uses Next.js `unstable_cache` (filesystem-backed in dev, Next data cache in
+ * production). Survives `next dev` HMR hot-reloads and is shared across server
+ * instances in production. Cache TTL: 10 minutes.
+ *
+ * Note: `unstable_cache` is being phased out in Next 16 in favor of the
+ * `'use cache'` directive (which requires opting into Cache Components).
+ * Migrate when QGI enables Cache Components project-wide.
+ */
+export function runQuery(
+  sql: string,
+  database: string = "qgi_data"
+): Promise<Record<string, string>[]> {
+  return _runQueryCached(sql, database);
 }
