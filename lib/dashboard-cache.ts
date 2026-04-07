@@ -69,10 +69,11 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
 // Strongly-typed payload shapes that mirror what pipeline-recipe-engine writes.
 // Keep these in sync with qgi-pipeline/lambdas/pipeline-recipe-engine/lambda_function.py.
 
-export type PatternTier = "S" | "M" | "L" | "XL";
-
-// #133: convergence tiers
-export type ConvergenceTier = "single" | "emerging" | "multilateral" | "high";
+// #122: PatternTier and ConvergenceTier unified in lib/types.ts; re-export for
+// callers that import them from this module.
+import type { PatternTier as _PatternTier, ConvergenceTier as _ConvergenceTier, SignalRow } from "@/lib/types";
+export type PatternTier = _PatternTier;
+export type ConvergenceTier = _ConvergenceTier;
 
 export type RankingPayload = {
   generated_at: string;
@@ -109,44 +110,28 @@ export type EarlyWarningPayload = {
   }>;
 };
 
+/**
+ * #122: RecipesTop50Payload rows are the canonical V1.5.3 signal shape —
+ * SignalRow with every optional V1.5.3 field marked as required. A
+ * top50-entry ALWAYS has pps, pattern_tier, convergence_*, lead_time
+ * because the recipe-engine CTAS populates all of them.
+ */
 export type RecipesTop50Payload = {
   generated_at: string;
   as_of_year: number;
-  results: Array<{
-    recipe_id: string;
-    event_category: string;
-    country_a_id: number;
-    country_b_id: number;
-    country_a_name: string;
-    country_b_name: string;
-    start_year_a: number;
-    start_year_b: number;
-    length: number;
-    avg_correlation: number;
-    end_year_a: number;
-    end_year_b: number;
-    event_window: number;
-    event_year_a: number;
-    event_year_b: number;
-    event_title_a: string;
-    event_title_b: string;
-    indicator_count: number;
-    instance_count: number; // #129
-    pattern_power_score: number; // legacy, kept for compat/debug
-    pps: number; // #129 — new normalized 0-100 Pattern Strength
-    pattern_tier: PatternTier | null; // #128
-    // #134: forecast timing — median lead time in years between pattern end
-    // and the historical matched event (computed from the predictor country).
-    // Display: "median: X years (range: min–max)".
-    median_lead_time: number | null;
-    min_lead_time: number | null;
-    max_lead_time: number | null;
-    // #133: multi-pattern convergence signal
-    convergence_score: number;
-    convergence_tier: ConvergenceTier;
-    n_predictors: number;
-    n_regions: number;
-    predictor_country_ids: number[];
-    composite_sort_key: number;
-  }>;
+  results: Array<
+    SignalRow & {
+      pps: number;
+      pattern_tier: PatternTier | null;
+      median_lead_time: number | null;
+      min_lead_time: number | null;
+      max_lead_time: number | null;
+      convergence_score: number;
+      convergence_tier: ConvergenceTier;
+      n_predictors: number;
+      n_regions: number;
+      predictor_country_ids: number[];
+      composite_sort_key: number;
+    }
+  >;
 };

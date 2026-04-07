@@ -30,6 +30,12 @@ export interface Country {
   alpha_2: string;
 }
 
+/** #128: Pattern length tier — from qgi_data.patterns.pattern_tier */
+export type PatternTier = "S" | "M" | "L" | "XL";
+
+/** #133: Convergence tier — from qgi_data.recipe_convergence.convergence_tier */
+export type ConvergenceTier = "single" | "emerging" | "multilateral" | "high";
+
 /**
  * A "signal" is the user-facing name for an active recipe match in QGI's
  * mental model (#121, 2026-04-07): a country currently following another
@@ -39,6 +45,11 @@ export interface Country {
  *
  * SignalRow is the canonical type name. RecipeRow is kept as an alias for
  * backwards compatibility with imports that haven't migrated yet.
+ *
+ * The V1.5.3 fields (#128 pattern_tier, #129 pps + instance_count, #133
+ * convergence_*, #134 median_lead_time) are all optional so pre-V1.5.3
+ * dashboard JSONs (before the next pipeline run lands the new CTAS)
+ * still load without TypeScript errors.
  */
 export interface SignalRow {
   recipe_id: string;
@@ -61,6 +72,25 @@ export interface SignalRow {
   indicator_count: number;
   pattern_power_score: number;
   instance_count: number;
+
+  // #129: new normalized 0-100 Pattern Strength
+  pps?: number;
+
+  // #128: pattern length tier
+  pattern_tier?: PatternTier | null;
+
+  // #134: forecast timing
+  median_lead_time?: number | null;
+  min_lead_time?: number | null;
+  max_lead_time?: number | null;
+
+  // #133: multi-pattern convergence
+  convergence_score?: number;
+  convergence_tier?: ConvergenceTier;
+  n_predictors?: number;
+  n_regions?: number;
+  predictor_country_ids?: number[];
+  composite_sort_key?: number;
 }
 
 /** @deprecated Use SignalRow. Kept as an alias during the #121 rename rollout. */
