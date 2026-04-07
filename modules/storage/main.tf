@@ -152,6 +152,44 @@ resource "aws_dynamodb_table" "indicator_updates" {
 }
 
 # ---------------------------------------------------------------------------
+# DynamoDB — indicator values (#148)
+#
+# Frontend latency fix: pattern detail pages issue an N+1 burst of Athena
+# queries (one per indicator). Each cold-start adds 2-10s. With ~22 indicators
+# per pattern that's 10-50s of cumulative latency. Migrating reads to DDB
+# turns the entire batch into a single BatchGetItem (sub-second).
+#
+# Schema:
+#   PK   indicator_country : S   (e.g. "SP.POP.TOTL#South Korea")
+#   SK   year              : N
+#   attr value             : N
+#
+# Access pattern: BatchGetItem with up to 100 keys per call. The frontend
+# pre-computes the (indicator, country, year) tuples for the requested
+# pattern window and fetches them all in one round trip.
+#
+# Capacity: PAY_PER_REQUEST (workload is bursty + small — total dataset is
+# ~750k items, well within DDB free tier).
+# ---------------------------------------------------------------------------
+resource "aws_dynamodb_table" "indicator_values" {
+  name         = "qgi-indicator-values"
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "indicator_country"
+  range_key    = "year"
+
+  attribute {
+    name = "indicator_country"
+    type = "S"
+  }
+  attribute {
+    name = "year"
+    type = "N"
+  }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # DynamoDB — completion counters (D6: replaces Phase 1/4 hard waits)
 # Dispatcher writes run_id + total worker count; each worker decrements.
 # Not yet wired into Step Functions — Lambda code update required (issue #76).

@@ -34,6 +34,12 @@ variable "completion_table_arn" {
   type = string
 }
 
+# #148: DDB table holding indicator values for fast frontend reads
+variable "indicator_values_table_arn" {
+  type        = string
+  description = "ARN of the qgi-indicator-values DynamoDB table (#148)"
+}
+
 variable "sns_topic_arn" {
   type = string
 }

@@ -98,12 +98,17 @@ resource "aws_iam_role_policy" "lambda_execution" {
           "sqs:PurgeQueue"]
         Resource = var.queue_arns
       },
-      # DynamoDB — indicator updates + completion counters
+      # DynamoDB — indicator updates + completion counters + indicator values (#148)
       {
-        Effect   = "Allow"
-        Action   = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem",
-          "dynamodb:DeleteItem", "dynamodb:Query", "dynamodb:Scan"]
-        Resource = [var.indicator_table_arn, var.completion_table_arn]
+        Effect = "Allow"
+        Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem",
+          "dynamodb:DeleteItem", "dynamodb:Query", "dynamodb:Scan",
+          "dynamodb:BatchGetItem", "dynamodb:BatchWriteItem"]
+        Resource = [
+          var.indicator_table_arn,
+          var.completion_table_arn,
+          var.indicator_values_table_arn,
+        ]
       },
       # Athena
       {
@@ -466,11 +471,16 @@ resource "aws_iam_role_policy" "ec2_indicator_fetcher" {
         Action   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation", "s3:HeadObject"]
         Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
       },
-      # DynamoDB — indicator tracking + completion counters
+      # DynamoDB — indicator tracking + completion counters + indicator values (#148)
       {
-        Effect   = "Allow"
-        Action   = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:GetItem", "dynamodb:Query"]
-        Resource = [var.indicator_table_arn, var.completion_table_arn]
+        Effect = "Allow"
+        Action = ["dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:GetItem",
+          "dynamodb:Query", "dynamodb:BatchWriteItem", "dynamodb:BatchGetItem"]
+        Resource = [
+          var.indicator_table_arn,
+          var.completion_table_arn,
+          var.indicator_values_table_arn,
+        ]
       },
       # CloudWatch Logs
       {

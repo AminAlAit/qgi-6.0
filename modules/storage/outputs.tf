@@ -35,6 +35,10 @@ output "indicator_table_arn"  { value = aws_dynamodb_table.indicator_updates.arn
 output "completion_table_name" { value = aws_dynamodb_table.completion_counters.name }
 output "completion_table_arn"  { value = aws_dynamodb_table.completion_counters.arn }
 
+# #148: indicator values DDB table
+output "indicator_values_table_name" { value = aws_dynamodb_table.indicator_values.name }
+output "indicator_values_table_arn"  { value = aws_dynamodb_table.indicator_values.arn }
+
 output "sns_topic_arn" { value = aws_sns_topic.pipeline_notifications.arn }
 
 output "glue_database_name"    { value = aws_glue_catalog_database.qgi_data.name }

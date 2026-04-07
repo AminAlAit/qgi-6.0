@@ -68,6 +68,12 @@ variable "completion_table_name" {
   description = "Name of qgi-completion-counters DynamoDB table"
 }
 
+# #148: indicator values DDB for fast frontend reads
+variable "indicator_values_table_name" {
+  type        = string
+  description = "Name of the qgi-indicator-values DynamoDB table (#148). Read by lib/indicator-values.ts via BatchGetItem; written by pipeline-a-completer."
+}
+
 variable "dispatch_limit" {
   type        = number
   default     = 0

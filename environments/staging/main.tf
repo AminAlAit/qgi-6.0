@@ -30,11 +30,12 @@ module "iam" {
   management_account_id = var.management_account_id
   region                = var.region
 
-  data_lake_bucket_arn = module.storage.bucket_arn
-  queue_arns           = module.storage.all_queue_arns
-  indicator_table_arn  = module.storage.indicator_table_arn
-  completion_table_arn = module.storage.completion_table_arn
-  sns_topic_arn        = module.storage.sns_topic_arn
+  data_lake_bucket_arn       = module.storage.bucket_arn
+  queue_arns                 = module.storage.all_queue_arns
+  indicator_table_arn        = module.storage.indicator_table_arn
+  completion_table_arn       = module.storage.completion_table_arn
+  indicator_values_table_arn = module.storage.indicator_values_table_arn
+  sns_topic_arn              = module.storage.sns_topic_arn
 
   # state_machine_arn is left empty on first apply (chicken-and-egg).
   # The EventBridge scheduler role gets a wildcard fallback ARN.
@@ -96,8 +97,9 @@ module "pipeline" {
   queue_c_dlq_url  = module.storage.queue_c_dlq_url
   queue_c_dlq_arn  = module.storage.queue_c_dlq_arn
 
-  batch_invoke_mode     = "invoke"
-  completion_table_name = module.storage.completion_table_name
+  batch_invoke_mode          = "invoke"
+  completion_table_name      = module.storage.completion_table_name
+  indicator_values_table_name = module.storage.indicator_values_table_name
 
   ec2_indicator_fetcher_profile_name = module.iam.ec2_indicator_fetcher_profile_name
 

@@ -389,10 +389,14 @@ resource "aws_lambda_function" "a_completer" {
 
   environment {
     variables = {
-      S3_BUCKET         = var.data_lake_bucket_name
-      INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/parquet"
-      OUTPUT_PREFIX     = "pipeline-A-indicator-extractor/output/parquet-completed"
-      INDICATOR_MAP_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+      S3_BUCKET                   = var.data_lake_bucket_name
+      INPUT_PREFIX                = "pipeline-A-indicator-extractor/output/parquet"
+      OUTPUT_PREFIX               = "pipeline-A-indicator-extractor/output/parquet-completed"
+      INDICATOR_MAP_KEY           = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+      ATHENA_DATABASE             = var.glue_database_name
+      ATHENA_WORKGROUP            = var.athena_workgroup_name
+      # #148: name of the DDB table to mirror indicator values into
+      INDICATOR_VALUES_TABLE_NAME = var.indicator_values_table_name
     }
   }
 
