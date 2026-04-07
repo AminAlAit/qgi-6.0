@@ -32,6 +32,7 @@ import boto3
 import pandas as pd
 import numpy as np
 from scipy import signal
+from scipy import stats  # #139: BH FDR uses scipy.stats.t for Pearson p-values
 import psutil # For getting CPU count
 
 
@@ -44,6 +45,15 @@ MIN_LENGTH = int(os.environ.get('MIN_LENGTH', 3))
 # Legacy single-threshold env var, retained as a hard floor across all tiers.
 # Set to a value below the lowest tier threshold (0.82) so it never overrides them.
 CORRELATION_THRESHOLD = float(os.environ.get('CORRELATION_THRESHOLD', 0.5))
+
+# #139: Benjamini-Hochberg false discovery rate correction.
+# At V1.5.3 scale (~50 indicators × 200 countries) the multiple-comparison
+# noise floor is manageable, but with the planned indicator expansion to ~700
+# indicators (FAOSTAT + ILOSTAT + WB+) we expect ~14M correlation tests per
+# job. At p<0.05 that's ~700K spurious correlations by chance alone — BH is
+# a defensive screen on the candidates that passed the |r| pre-filter.
+BH_FDR_ENABLED = os.environ.get('BH_FDR_ENABLED', 'true').lower() in ('true', '1', 'yes')
+BH_FDR_ALPHA = float(os.environ.get('BH_FDR_ALPHA', 0.05))
 
 # #128: Tier-aware Pearson thresholds. Pattern length stratification (D-decision
 # 2026-04-06): short patterns capture specific causal mechanisms and demand a
@@ -74,6 +84,71 @@ def tier_threshold(segment_len: int) -> float:
         t = TIER_THRESHOLD_XL
     # Honour the legacy global floor in case it is set higher than the tier value
     return max(t, CORRELATION_THRESHOLD)
+
+
+# ---------------------------------------------------------------------------
+# #139: Benjamini-Hochberg false discovery rate correction
+# ---------------------------------------------------------------------------
+
+def pearson_pvalues_vectorized(r: np.ndarray, n: np.ndarray) -> np.ndarray:
+    """Two-tailed Pearson p-values from arrays of (r, n).
+
+    n is the segment length used to compute each correlation. df = n - 2.
+
+    Vectorised over numpy arrays for performance — applied to the full survivor
+    set at consolidation time, not per (start_a, start_b) pair.
+    """
+    n = np.asarray(n, dtype=float)
+    r = np.asarray(r, dtype=float)
+    # Clip to avoid division by zero at |r| == 1
+    r_safe = np.clip(r, -0.9999999, 0.9999999)
+    df = np.maximum(n - 2.0, 1.0)
+    t = r_safe * np.sqrt(df / (1.0 - r_safe ** 2))
+    # Two-tailed: P(|T| >= |t|) where T ~ Student-t(df)
+    # 2 * (1 - cdf(|t|, df)) is equivalent to 2 * sf(|t|, df) and avoids
+    # cancellation error in the cdf tail.
+    return 2.0 * stats.t.sf(np.abs(t), df)
+
+
+def bh_fdr_mask(pvalues: np.ndarray, alpha: float) -> np.ndarray:
+    """Benjamini-Hochberg multiple-testing correction at level alpha.
+
+    Returns a boolean mask of which p-values survive. Mathematically:
+        Sort p-values ascending: p_(1) <= p_(2) <= ... <= p_(m)
+        Find the largest k such that p_(k) <= (k/m) * alpha
+        Reject H_0 for the smallest k tests
+
+    The 'm' here is the number of survivors of the upstream |r| pre-filter,
+    NOT the total number of tests considered. The pre-filter is the primary
+    screen; BH is the secondary screen for spurious survivors. Using the
+    full test count would over-correct catastrophically because the
+    pre-filter already eliminates ~99% of tests as obvious noise.
+
+    For ablation experiments, BH_FDR_ENABLED can be turned off entirely.
+    """
+    pvalues = np.asarray(pvalues, dtype=float)
+    m = len(pvalues)
+    if m == 0:
+        return np.zeros(0, dtype=bool)
+
+    sorted_idx = np.argsort(pvalues)
+    sorted_p = pvalues[sorted_idx]
+    ranks = np.arange(1, m + 1, dtype=float)
+    critical = ranks * (alpha / m)
+
+    pass_sorted = sorted_p <= critical
+    if not pass_sorted.any():
+        return np.zeros(m, dtype=bool)
+
+    # Largest k such that p_(k) <= critical[k]; reject all tests up to and including k.
+    max_k = int(np.where(pass_sorted)[0].max())
+    survives_sorted = np.zeros(m, dtype=bool)
+    survives_sorted[: max_k + 1] = True
+
+    # Map back to original order
+    survives = np.zeros(m, dtype=bool)
+    survives[sorted_idx] = survives_sorted
+    return survives
 
 
 s3_client = boto3.client('s3')
@@ -341,6 +416,24 @@ def find_and_save_sdcis_parallel(preprocessed_data: list, country_name_to_id: di
 
         if 'country_a_id' in final_df.columns:
             final_df = final_df.drop(columns=['country_a_id'])
+
+        # #139: apply Benjamini-Hochberg FDR correction across all survivors
+        # of the upstream |r| pre-filter, scoped to this entire job (one
+        # country_a × one indicator across all country_b × all segment_lens).
+        # Computes p-values from (correlation, length) on the fly so no
+        # checkpoint format change is needed.
+        if BH_FDR_ENABLED and len(final_df) > 0:
+            n_before = len(final_df)
+            pvals = pearson_pvalues_vectorized(
+                final_df['correlation'].values,
+                final_df['length'].values,
+            )
+            survives = bh_fdr_mask(pvals, BH_FDR_ALPHA)
+            final_df = final_df.loc[survives].reset_index(drop=True)
+            logging.info(
+                f"BH FDR (alpha={BH_FDR_ALPHA}): {len(final_df)}/{n_before} "
+                f"SDCIs survived multiple-testing correction"
+            )
 
         # Add the indicator_numeric_id column
         final_df['indicator_numeric_id'] = indicator_numeric_id
