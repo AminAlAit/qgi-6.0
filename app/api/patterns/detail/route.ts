@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
-import { getIndicatorValues } from "@/lib/indicator-values";
+import { getIndicatorValuesBatch, type IndicatorRequest } from "@/lib/indicator-values";
 import indexData from "@/data/indexes.json";
 
 // Build lookups from numeric_id → metadata and → string ID
@@ -72,35 +72,50 @@ export const GET = withAuth(async (req: NextRequest) => {
      ORDER BY CAST(s.correlation AS DOUBLE) DESC`
   );
 
-  // Fetch indicator time-series values in parallel
-  const scdis = await Promise.all(
-    scdiRows.map(async (r) => {
-      const numId = Number(r.indicator_numeric_id);
-      const meta = indexByNumericId.get(numId);
-      const indicatorId = meta?.id;
+  // #148: pre-build the full request list (one per (scdi, side)) and fetch
+  // them all in one DDB BatchGetItem instead of N parallel Athena queries.
+  // For a 22-indicator pattern this collapses ~44 separate Athena cold
+  // starts (3-15s each) into a single sub-second DDB round-trip.
+  const requests: IndicatorRequest[] = [];
+  const scdiMeta: Array<{ numId: number; indicatorId?: string; correlation: number }> = [];
+  for (const r of scdiRows) {
+    const numId = Number(r.indicator_numeric_id);
+    const meta = indexByNumericId.get(numId);
+    const indicatorId = meta?.id;
+    scdiMeta.push({ numId, indicatorId, correlation: Number(r.correlation) });
+    if (indicatorId && countryAName && countryBName) {
+      requests.push({
+        indicatorId,
+        countryName: countryAName,
+        startYear: startANum,
+        length: lenNum,
+      });
+      requests.push({
+        indicatorId,
+        countryName: countryBName,
+        startYear: startBNum,
+        length: lenNum,
+      });
+    }
+  }
 
-      let values_a: number[] = [];
-      let values_b: number[] = [];
+  const allValues = await getIndicatorValuesBatch(requests);
 
-      if (indicatorId && countryAName && countryBName) {
-        [values_a, values_b] = await Promise.all([
-          getIndicatorValues(indicatorId, countryAName, startANum, lenNum),
-          getIndicatorValues(indicatorId, countryBName, startBNum, lenNum),
-        ]);
-      }
-
-      return {
-        indicator_numeric_id: numId,
-        index_name: meta?.name ?? `Indicator #${numId}`,
-        sector: meta?.sector ?? "Unknown",
-        org: meta?.org ?? "Unknown",
-        correlation: Number(r.correlation),
-        predicted: false,
-        values_a,
-        values_b,
-      };
-    })
-  );
+  const scdis = scdiMeta.map((m, i) => {
+    const meta = indexByNumericId.get(m.numId);
+    const values_a = m.indicatorId ? allValues[i * 2] ?? [] : [];
+    const values_b = m.indicatorId ? allValues[i * 2 + 1] ?? [] : [];
+    return {
+      indicator_numeric_id: m.numId,
+      index_name: meta?.name ?? `Indicator #${m.numId}`,
+      sector: meta?.sector ?? "Unknown",
+      org: meta?.org ?? "Unknown",
+      correlation: m.correlation,
+      predicted: false,
+      values_a,
+      values_b,
+    };
+  });
 
   return NextResponse.json({
     metadata: metaRows[0],

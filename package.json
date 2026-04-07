@@ -18,7 +18,9 @@
   },
   "dependencies": {
     "@aws-sdk/client-athena": "^3.1022.0",
+    "@aws-sdk/client-dynamodb": "^3.1025.0",
     "@aws-sdk/client-s3": "^3.1022.0",
+    "@aws-sdk/util-dynamodb": "^3.996.2",
     "echarts": "^5.6.0",
     "echarts-for-react": "^3.0.6",
     "jose": "^6.2.2",
