@@ -751,9 +751,16 @@ resource "aws_sfn_state_machine" "pipeline" {
         Next       = "1g. Complete Indicator Series"
       }
 
+      # #157: pass updated_ids into the completer so it only mirrors
+      # changed indicators to qgi-indicator-values DDB (prior behavior
+      # re-mirrored all ~60 indicators on every run = ~720K writes/run).
       "1g. Complete Indicator Series" = {
-        Type       = "Task"
-        Resource   = aws_lambda_function.a_completer.arn
+        Type     = "Task"
+        Resource = aws_lambda_function.a_completer.arn
+        Parameters = {
+          "run_id.$"       = "$$.Execution.Name"
+          "updated_ids.$"  = "$.reporter_result.updated_ids"
+        }
         ResultPath = "$.completer_result"
         Retry      = local.lambda_retry
         Next       = "1h. Updates Found?"
