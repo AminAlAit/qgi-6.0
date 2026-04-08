@@ -342,12 +342,28 @@ def _complete_indicator(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def lambda_handler(event, context):
-    indicator_ids = _list_indicator_ids()
-    logger.info(f"Found {len(indicator_ids)} indicator files to complete")
+    # #157: only re-mirror indicators whose parquet actually changed this run.
+    # Previously the completer mirrored every indicator on every invocation,
+    # which cost ~720K DDB writes per run (60 indicators × ~200 countries ×
+    # ~60 years). Most runs have just 0-2 indicator updates, so the mirror
+    # was writing ~99.7% redundant data, burning ~$2/run on DDB writes.
+    #
+    # The Step Function now passes updated_ids from the reporter result.
+    # If the list is empty or missing, we still complete all parquet files
+    # (because the completer also writes output/csv-completed/ for scdi-finder
+    # and handles forecast extension), BUT we only mirror-to-DDB the ones
+    # that actually changed.
+    all_indicator_ids = _list_indicator_ids()
+    updated_set = set(event.get("updated_ids") or [])
+    logger.info(
+        f"Found {len(all_indicator_ids)} indicator files to complete; "
+        f"{len(updated_set)} flagged as UPDATED this run "
+        f"→ DDB mirror restricted to the updated set"
+    )
 
-    stats = {"completed": 0, "skipped": 0, "failed": 0}
+    stats = {"completed": 0, "ddb_mirrored": 0, "ddb_skipped": 0, "failed": 0}
 
-    for indicator_id in indicator_ids:
+    for indicator_id in all_indicator_ids:
         input_key  = f"{INPUT_PREFIX}/{indicator_id}/{indicator_id}.parquet"
         output_key = f"{OUTPUT_PREFIX}/{indicator_id}/{indicator_id}.parquet"
 
@@ -361,10 +377,17 @@ def lambda_handler(event, context):
             added = len(completed) - len(df)
             logger.info(f"  → wrote {len(completed)} rows (+{added} predicted) to {output_key}")
 
-            # #148: mirror to DynamoDB for sub-second frontend reads
-            ddb_written = _mirror_to_dynamodb(completed, indicator_id)
-            if ddb_written > 0:
-                logger.info(f"  → mirrored {ddb_written} items to DDB for {indicator_id}")
+            # #148 + #157: mirror only if this indicator was updated this run.
+            # When updated_set is empty (manual invoke, backward compat), fall
+            # back to mirroring all — same behavior as before #157.
+            should_mirror = (not updated_set) or (indicator_id in updated_set)
+            if should_mirror:
+                ddb_written = _mirror_to_dynamodb(completed, indicator_id)
+                if ddb_written > 0:
+                    logger.info(f"  → mirrored {ddb_written} items to DDB for {indicator_id}")
+                stats["ddb_mirrored"] += 1
+            else:
+                stats["ddb_skipped"] += 1
 
             stats["completed"] += 1
 
