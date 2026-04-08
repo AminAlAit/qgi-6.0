@@ -1,14 +1,49 @@
 # ---------------------------------------------------------------------------
 # Lambda placeholder zip — used for initial Terraform apply only.
 # Real code is deployed by qgi-pipeline CI/CD (deploy-lambdas.yml).
+#
 # lifecycle.ignore_changes on filename/source_code_hash means re-apply
 # after CI/CD deploys real code will not revert it.
+#
+# IMPORTANT (#153): the placeholder MUST fail loudly on invocation. If a
+# Lambda is recreated via TF (rename, immutable attribute change, etc.)
+# and no commit subsequently touches its source dir, CI never re-deploys
+# and the placeholder ships live. The previous placeholder returned
+# {statusCode: 200, body: 'placeholder'}, looking like a successful
+# response — Step Functions happily passed it downstream. The result was
+# the 2026-04-08 pipeline-ops-batch-checker outage where every pipeline
+# run silently broke for days because the checker returned a stub instead
+# of {jobs_running: int}.
+#
+# This placeholder now raises a clear, descriptive RuntimeError on every
+# invocation. Any pipeline run hitting a non-deployed Lambda will fail
+# within seconds with a self-explanatory error in CloudWatch + the SF
+# execution history. Recovery is one CI run away (commit+push or
+# `gh workflow run deploy-lambdas.yml -f deploy_all=true`).
 # ---------------------------------------------------------------------------
 data "archive_file" "placeholder" {
   type        = "zip"
   output_path = "${path.module}/placeholder.zip"
   source {
-    content  = "def lambda_handler(event, context): return {'statusCode': 200, 'body': 'placeholder'}"
+    content  = <<-EOT
+      """Placeholder for a TF-managed Lambda whose real code has not been
+      deployed by CI/CD yet. See qgi-infra/modules/pipeline/main.tf for
+      the rationale (#153). Fix: trigger deploy-lambdas.yml in qgi-pipeline.
+      """
+      import os
+
+      def lambda_handler(event, context):
+          fn = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "<unknown>")
+          raise RuntimeError(
+              f"PLACEHOLDER STUB STILL LIVE for Lambda '{fn}'. "
+              f"Terraform created or recreated this function but CI/CD "
+              f"(qgi-pipeline deploy-lambdas.yml) has not yet deployed "
+              f"the real code. Trigger a deploy with: "
+              f"`gh workflow run deploy-lambdas.yml --repo AminAlAit/qgi-pipeline "
+              f"-f deploy_all=true` or push any commit touching "
+              f"lambdas/{fn.removeprefix('qgi-')}/. See #153."
+          )
+    EOT
     filename = "lambda_function.py"
   }
 }
