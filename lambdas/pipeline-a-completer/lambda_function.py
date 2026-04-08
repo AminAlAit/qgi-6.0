@@ -405,13 +405,13 @@ def lambda_handler(event, context):
         INDICATORS_COMPLETED_TABLE,
         # OUTPUT_PREFIX is e.g. 'pipeline-A-indicator-extractor/output/parquet-completed'
         f"{OUTPUT_PREFIX.rstrip('/')}/" + "{indicator_id}/",
-        indicator_ids,
+        all_indicator_ids,
     )
     _register_partitions_batched(
         INDICATORS_TABLE,
         # INPUT_PREFIX is e.g. 'pipeline-A-indicator-extractor/output/parquet'
         f"{INPUT_PREFIX.rstrip('/')}/" + "{indicator_id}/",
-        indicator_ids,
+        all_indicator_ids,
     )
 
     logger.info(f"Phase 1.5 complete: {stats}")
