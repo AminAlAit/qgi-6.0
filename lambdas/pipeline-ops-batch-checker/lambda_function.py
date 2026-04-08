@@ -1,3 +1,7 @@
+"""Phase 2 batch checker — polls AWS Batch for in-flight scdi-finder jobs.
+
+Returns {"jobs_running": N} for the Step Function 'Batch Done?' choice state.
+"""
 import boto3
 import os
 
