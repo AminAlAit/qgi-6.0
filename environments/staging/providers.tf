@@ -16,14 +16,22 @@ terraform {
   }
 }
 
-# All resources deploy into the qgi-staging account via the default
-# cross-account role created by AWS Organizations.
+# All resources deploy into the qgi-staging account.
+#
+# #96: assume_role is now toggleable via var.use_cross_account_assume_role.
+# Default (false) = caller credentials are used directly. Set to true when
+# running from the management account to cross-account into staging.
 provider "aws" {
   region = "eu-central-1"
-  assume_role {
-    role_arn     = "arn:aws:iam::${var.aws_account_id}:role/OrganizationAccountAccessRole"
-    session_name = "terraform-qgi-${var.environment}"
+
+  dynamic "assume_role" {
+    for_each = var.use_cross_account_assume_role ? [1] : []
+    content {
+      role_arn     = "arn:aws:iam::${var.aws_account_id}:role/OrganizationAccountAccessRole"
+      session_name = "terraform-qgi-${var.environment}"
+    }
   }
+
   default_tags {
     tags = local.tags
   }
