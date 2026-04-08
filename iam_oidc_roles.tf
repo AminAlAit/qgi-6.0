@@ -139,6 +139,45 @@ resource "aws_iam_role_policy_attachment" "qgi_ecr_push" {
 }
 
 # ---------------------------------------------------------------------------
+# qgi-pipeline — ECR push for indicator-fetcher (#152 Path A, #FAR-1)
+# Separate inline policy so we can ship this TF-managed without touching
+# the hand-managed GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess policy.
+# ---------------------------------------------------------------------------
+
+data "aws_iam_policy_document" "qgi_ecr_push_indicator_fetcher" {
+  statement {
+    sid    = "ECRAuth"
+    effect = "Allow"
+    actions = [
+      "ecr:GetAuthorizationToken",
+    ]
+    resources = ["*"]
+  }
+
+  statement {
+    sid    = "ECRPushIndicatorFetcher"
+    effect = "Allow"
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart",
+    ]
+    resources = [
+      aws_ecr_repository.indicator_fetcher.arn,
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "qgi_ecr_push_indicator_fetcher" {
+  name   = "ECRPushIndicatorFetcher"
+  role   = aws_iam_role.qgi_ecr_push.id
+  policy = data.aws_iam_policy_document.qgi_ecr_push_indicator_fetcher.json
+}
+
+# ---------------------------------------------------------------------------
 # qgi-pipeline — Lambda deploy role (closes #60)
 # Used by deploy-lambdas.yml in AminAlAit/qgi-pipeline to update function code.
 # Scoped to qgi-* functions only; no config/env/permission changes allowed.
