@@ -670,29 +670,29 @@ resource "aws_sfn_state_machine" "pipeline" {
   role_arn = var.stepfunctions_role_arn
 
   definition = jsonencode({
-    Comment = "QGI Monthly Pipeline — Phases 0-5"
-    StartAt = "Phase 0: Hygiene (Janitor)"
+    Comment = "QGI Monthly Pipeline — stages 0-6"
+    StartAt = "0. Janitor"
     States = {
-      "Phase 0: Hygiene (Janitor)" = {
+      "0. Janitor" = {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_janitor.arn
         ResultPath = "$.janitor_output"
         Retry      = local.lambda_retry
-        Next       = "Phase 1: Ingest (Fetcher)"
+        Next       = "1a. Fetch Indicators XLSX"
       }
 
-      "Phase 1: Ingest (Fetcher)" = {
+      "1a. Fetch Indicators XLSX" = {
         Type       = "Task"
         Resource   = aws_lambda_function.a_sheet_fetcher.arn
         ResultPath = "$.fetcher_output"
         Retry      = local.lambda_retry
-        Next       = "Phase 1: Dispatch Batch"
+        Next       = "1b. Dispatch Fargate Fetchers"
       }
 
       # #FAR-1: Fan out one Fargate Spot task per indicator. Dispatcher
       # seeds the counter to N at this step so the checker has a fixed
       # finish line.
-      "Phase 1: Dispatch Batch" = {
+      "1b. Dispatch Fargate Fetchers" = {
         Type     = "Task"
         Resource = aws_lambda_function.a_batch_dispatcher.arn
         Parameters = {
@@ -700,20 +700,20 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.dispatch_a_output"
         Retry      = local.lambda_retry
-        Next       = "Wait 2 Mins (Phase A Poll)"
+        Next       = "1c. Wait 2m (Fetcher Poll)"
       }
 
-      "Wait 2 Mins (Phase A Poll)" = {
+      "1c. Wait 2m (Fetcher Poll)" = {
         Type    = "Wait"
         Seconds = 120
-        Next    = "Phase 1: Check Counter"
+        Next    = "1d. Check Fetcher Counter"
       }
 
       # #FAR-1: Polls the qgi-pipeline-a-counter DDB row for run_id.
       # Returns done=true when pending hits 0, OR when the deadman
       # timer (default 90 min) expires (sets deadman_expired=true so
       # the reporter can flag the run as degraded).
-      "Phase 1: Check Counter" = {
+      "1d. Check Fetcher Counter" = {
         Type     = "Task"
         Resource = aws_lambda_function.a_batch_checker.arn
         Parameters = {
@@ -723,20 +723,20 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.a_check"
         Retry      = local.lambda_retry
-        Next       = "Phase A Done?"
+        Next       = "1e. Fetchers Done?"
       }
 
-      "Phase A Done?" = {
+      "1e. Fetchers Done?" = {
         Type = "Choice"
         Choices = [{
           Variable      = "$.a_check.done"
           BooleanEquals = true
-          Next          = "Phase 1: Ingest (Reporter)"
+          Next          = "1f. Email Fetcher Report"
         }]
-        Default = "Wait 2 Mins (Phase A Poll)"
+        Default = "1c. Wait 2m (Fetcher Poll)"
       }
 
-      "Phase 1: Ingest (Reporter)" = {
+      "1f. Email Fetcher Report" = {
         Type     = "Task"
         Resource = aws_lambda_function.a_reporter.arn
         Parameters = {
@@ -748,28 +748,28 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.reporter_result"
         Retry      = local.lambda_retry
-        Next       = "Phase 1.5: Complete Indicators"
+        Next       = "1g. Complete Indicator Series"
       }
 
-      "Phase 1.5: Complete Indicators" = {
+      "1g. Complete Indicator Series" = {
         Type       = "Task"
         Resource   = aws_lambda_function.a_completer.arn
         ResultPath = "$.completer_result"
         Retry      = local.lambda_retry
-        Next       = "Decision: Updates Found?"
+        Next       = "1h. Updates Found?"
       }
 
-      "Decision: Updates Found?" = {
+      "1h. Updates Found?" = {
         Type = "Choice"
         Choices = [{
           Variable           = "$.reporter_result.updated_count"
           NumericGreaterThan = 0
-          Next               = "Phase 2: Compute (Trigger B)"
+          Next               = "2a. Dispatch SCDI Batch"
         }]
-        Default = "Phase 6: Ops Report (Final Check)"
+        Default = "6. Ops Report"
       }
 
-      "Phase 2: Compute (Trigger B)" = {
+      "2a. Dispatch SCDI Batch" = {
         Type     = "Task"
         Resource = aws_lambda_function.b_orchestrator.arn
         Parameters = {
@@ -778,36 +778,36 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.trigger_b_output"
         Retry      = local.lambda_retry
-        Next       = "Wait 2 Hrs (Spot Poll Interval)"
+        Next       = "2b. Wait 30m (SCDI Poll)"
       }
 
-      "Wait 2 Hrs (Spot Poll Interval)" = {
+      "2b. Wait 30m (SCDI Poll)" = {
         Type    = "Wait"
-        Seconds = 7200
-        Next    = "Phase 2: Check Batch Status"
+        Seconds = 1800
+        Next    = "2c. Check SCDI Batch"
       }
 
-      "Phase 2: Check Batch Status" = {
+      "2c. Check SCDI Batch" = {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_batch_checker.arn
         ResultPath = "$.batch_status"
         Retry      = local.lambda_retry
-        Next       = "Batch Done?"
+        Next       = "2d. SCDI Done?"
       }
 
-      "Batch Done?" = {
+      "2d. SCDI Done?" = {
         Type = "Choice"
         Choices = [{
           Variable           = "$.batch_status.jobs_running"
           NumericGreaterThan = 0
-          Next               = "Wait 2 Hrs (Spot Poll Interval)"
+          Next               = "2b. Wait 30m (SCDI Poll)"
         }]
-        Default = "Phase 3: MSCK Repair scdis"
+        Default = "3. Athena MSCK scdis"
       }
 
       # Phase 3: replaced Glue crawler with MSCK REPAIR TABLE scdis (issue #66)
       # Faster, cheaper (~$0), and avoids Glue crawler $0.44/DPU-hour cost.
-      "Phase 3: MSCK Repair scdis" = {
+      "3. Athena MSCK scdis" = {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
@@ -821,10 +821,10 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_scdis_output"
-        Next       = "Phase 4: Synthesis (Dispatch C)"
+        Next       = "4a. Dispatch Pattern Synth"
       }
 
-      "Phase 4: Synthesis (Dispatch C)" = {
+      "4a. Dispatch Pattern Synth" = {
         Type     = "Task"
         Resource = aws_lambda_function.c_dispatcher.arn
         Parameters = {
@@ -833,16 +833,16 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.dispatch_c_output"
         Retry      = local.lambda_retry
-        Next       = "Wait 30s (Phase C Poll)"
+        Next       = "4b. Wait 30s (Pattern Poll)"
       }
 
-      "Wait 30s (Phase C Poll)" = {
+      "4b. Wait 30s (Pattern Poll)" = {
         Type    = "Wait"
         Seconds = 30
-        Next    = "Phase 4: Check Complete?"
+        Next    = "4c. Check Pattern Counter"
       }
 
-      "Phase 4: Check Complete?" = {
+      "4c. Check Pattern Counter" = {
         Type     = "Task"
         Resource = aws_lambda_function.c_checker.arn
         Parameters = {
@@ -851,20 +851,20 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.c_check"
         Retry      = local.lambda_retry
-        Next       = "Phase C Done?"
+        Next       = "4d. Patterns Done?"
       }
 
-      "Phase C Done?" = {
+      "4d. Patterns Done?" = {
         Type = "Choice"
         Choices = [{
           Variable      = "$.c_check.done"
           BooleanEquals = true
-          Next          = "Phase 4: Synthesis (Repair patterns)"
+          Next          = "4e. Athena MSCK patterns"
         }]
-        Default = "Wait 30s (Phase C Poll)"
+        Default = "4b. Wait 30s (Pattern Poll)"
       }
 
-      "Phase 4: Synthesis (Repair patterns)" = {
+      "4e. Athena MSCK patterns" = {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
@@ -878,11 +878,11 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_patterns_output"
-        Next       = "Phase 5: MSCK Repair events"
+        Next       = "5a. Athena MSCK events"
       }
 
       # Phase 5: Recipe engine — match patterns against events (D4/D5)
-      "Phase 5: MSCK Repair events" = {
+      "5a. Athena MSCK events" = {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
@@ -896,10 +896,10 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_events_output"
-        Next       = "Phase 5: Recipe Engine"
+        Next       = "5b. Recipe Engine"
       }
 
-      "Phase 5: Recipe Engine" = {
+      "5b. Recipe Engine" = {
         Type     = "Task"
         Resource = aws_lambda_function.recipe_engine.arn
         Parameters = {
@@ -907,10 +907,10 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.recipe_engine_output"
         Retry      = local.lambda_retry
-        Next       = "Phase 5: MSCK Repair recipes"
+        Next       = "5c. Athena MSCK recipes"
       }
 
-      "Phase 5: MSCK Repair recipes" = {
+      "5c. Athena MSCK recipes" = {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
@@ -924,18 +924,18 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_recipes_output"
-        Next       = "Phase 6: Ops Report (Final Check)"
+        Next       = "6. Ops Report"
       }
 
-      "Phase 6: Ops Report (Final Check)" = {
+      "6. Ops Report" = {
         Type       = "Task"
         Resource   = aws_lambda_function.ops_dlq_scanner.arn
         ResultPath = "$.dlq_report"
         Retry      = local.lambda_retry
-        Next       = "Workflow Complete"
+        Next       = "Complete"
       }
 
-      "Workflow Complete" = {
+      "Complete" = {
         Type = "Succeed"
       }
     }
