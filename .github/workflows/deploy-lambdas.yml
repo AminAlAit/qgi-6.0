@@ -65,17 +65,41 @@ jobs:
           if [ "${{ inputs.deploy_all }}" = "true" ]; then
             CHANGED=$(ls lambdas/)
           else
-            CHANGED=$(git diff --name-only HEAD~1 HEAD \
+            # Use the GitHub push event's before..after SHA range rather than
+            # HEAD~1..HEAD so multi-commit pushes don't silently drop commits
+            # (2026-04-08: c-dispatcher fix #108 was lost this way). Fall back
+            # to HEAD~1..HEAD if before_sha is empty (first push) or all-zeros
+            # (workflow_dispatch on a branch tip).
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              BEFORE="HEAD~1"
+            fi
+            echo "Deploy range: $BEFORE..HEAD"
+            CHANGED=$(git diff --name-only "$BEFORE" HEAD \
               | grep '^lambdas/' | cut -d/ -f2 | sort -u)
           fi
 
+          DEPLOYED=0
+          SKIPPED=0
+          FAILED=0
           for NAME in $CHANGED; do
             LAMBDA_DIR="lambdas/$NAME"
-            [ -f "$LAMBDA_DIR/lambda_function.py" ] || continue
+            [ -f "$LAMBDA_DIR/lambda_function.py" ] || { echo "skip $NAME (no lambda_function.py)"; continue; }
             # pipeline-c-poc is being retired (issue #61) — skip
-            [ "$NAME" = "pipeline-c-poc" ] && continue
+            [ "$NAME" = "pipeline-c-poc" ] && { echo "skip $NAME (retired)"; continue; }
 
-            echo "Deploying qgi-$NAME..."
+            AWS_NAME="qgi-$NAME"
+
+            # Verify the function exists in AWS before building. Stale repo
+            # dirs (e.g. pipeline-a-checker after #FAR-1) otherwise crash the
+            # whole workflow on deploy_all=true. Skip with a warning instead.
+            if ! aws lambda get-function --function-name "$AWS_NAME" --query 'Configuration.FunctionName' --output text >/dev/null 2>&1; then
+              echo "::warning::AWS Lambda '$AWS_NAME' does not exist (stale repo dir?) — skipping"
+              SKIPPED=$((SKIPPED + 1))
+              continue
+            fi
+
+            echo "Deploying $AWS_NAME..."
             WORK=$(mktemp -d)
             cp "$LAMBDA_DIR"/*.py "$WORK"/
             [ -f "$LAMBDA_DIR/indicators.yaml" ] && cp "$LAMBDA_DIR/indicators.yaml" "$WORK/" || true
@@ -89,13 +113,19 @@ jobs:
             ZIP="$WORK/function.zip"
             (cd "$WORK" && zip -qr "$ZIP" . --exclude "function.zip")
 
-            AWS_NAME="qgi-$NAME"
-
-            aws lambda update-function-code \
-              --function-name "$AWS_NAME" \
-              --zip-file "fileb://$ZIP" \
-              --architectures arm64 \
-              --query 'FunctionName' --output text
+            if aws lambda update-function-code \
+                --function-name "$AWS_NAME" \
+                --zip-file "fileb://$ZIP" \
+                --architectures arm64 \
+                --query 'FunctionName' --output text; then
+              DEPLOYED=$((DEPLOYED + 1))
+            else
+              echo "::error::Failed to deploy $AWS_NAME"
+              FAILED=$((FAILED + 1))
+            fi
 
             rm -rf "$WORK"
           done
+
+          echo "Summary: deployed=$DEPLOYED skipped=$SKIPPED failed=$FAILED"
+          [ "$FAILED" -eq 0 ] || exit 1
