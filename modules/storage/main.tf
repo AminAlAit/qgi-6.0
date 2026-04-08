@@ -190,6 +190,43 @@ resource "aws_dynamodb_table" "indicator_values" {
 }
 
 # ---------------------------------------------------------------------------
+# CloudWatch alarm — qgi-indicator-values write capacity surge guard (#157)
+#
+# 2026-04-08: a bug in pipeline-a-completer caused it to mirror every
+# indicator on every pipeline run instead of just the changed ones.
+# Result: ~1.77M DynamoDB writes in one day, $2.21 cost surge from a
+# baseline of $0.0004/day. Fix shipped, but a defense-in-depth alarm
+# is cheap insurance against the next regression.
+#
+# Threshold rationale: a healthy run mirrors at most ~24K writes
+# (1-2 changed indicators × ~12K rows each). 100K writes in any single
+# 5-min window is presumptively a bug. The alarm triggers on 2 of 2
+# breaching periods to filter transient spikes from initial pipeline
+# population runs.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_metric_alarm" "indicator_values_write_surge" {
+  alarm_name          = "qgi-indicator-values-write-surge"
+  alarm_description   = "Triggers when qgi-indicator-values write capacity exceeds 100K units in a 5-min window. See #157 — guard against the completer mirroring all indicators instead of only updated ones."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 2
+  metric_name         = "ConsumedWriteCapacityUnits"
+  namespace           = "AWS/DynamoDB"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 100000
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    TableName = aws_dynamodb_table.indicator_values.name
+  }
+
+  alarm_actions = [aws_sns_topic.pipeline_notifications.arn]
+  ok_actions    = [aws_sns_topic.pipeline_notifications.arn]
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # DynamoDB — Phase 1 fetcher counter (#FAR-1)
 #
 # Replaces the legacy completion-counters table for Phase 1 specifically.
