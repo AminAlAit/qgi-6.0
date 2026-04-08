@@ -89,17 +89,23 @@ def lambda_handler(event, context):
 
         # Create the main patterns table (WITH pattern_id, WITHOUT indicator_ids)
         logger.info(f"Creating shell table: {PATTERNS_TABLE_NAME}")
+        # NOTE: pattern_tier MUST be the last non-partition column to match
+        # the SELECT column order in pipeline-c-worker. Adding #128's
+        # pattern_tier column to the worker query without adding it here
+        # was the real cause of #108's Phase C stall — every INSERT failed
+        # with TYPE_MISMATCH, no counter increments, loop forever.
         create_patterns_query = f"""
         CREATE EXTERNAL TABLE `{DB_NAME}`.`{PATTERNS_TABLE_NAME}` (
           `pattern_id` string,
-          `country_b_id` smallint, 
-          `length` smallint, 
-          `start_year_a` smallint, 
+          `country_b_id` smallint,
+          `length` smallint,
+          `start_year_a` smallint,
           `start_year_b` smallint,
-          `indicator_count` bigint, 
-          `avg_correlation` double, 
+          `indicator_count` bigint,
+          `avg_correlation` double,
           `pattern_power_score` double,
-          `indicator_numeric_ids` array<smallint>
+          `indicator_numeric_ids` array<smallint>,
+          `pattern_tier` string
         )
         PARTITIONED BY (`country_a_id` smallint)
         STORED AS PARQUET
