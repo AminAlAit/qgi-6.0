@@ -172,18 +172,25 @@ class SDCI:
 
 
 def load_indicator_map(bucket: str) -> Dict[str, int]:
-    """Loads the indicator string-to-numeric-ID map from S3."""
-    # Define the S3 key for your indicator map CSV file
-    # Example: 'pipeline-A-indicator-extractor/input/indicator_map.csv'
-    map_key = "pipeline-A-indicator-extractor/input/indicator_map.csv" # Adjust if needed
+    """Loads the indicator string-to-numeric-ID map from S3.
+
+    Schema: the CSV at s3://{bucket}/pipeline-A-indicator-extractor/input/
+    indicator_map.csv has two columns produced by the upstream WB sheet
+    fetcher: ``id_string`` (e.g. NY.GDP.MKTP.KD.ZG) and ``numeric_id``
+    (sequential int). This matches the WB indicators XLSX schema (#155).
+    """
+    map_key = "pipeline-A-indicator-extractor/input/indicator_map.csv"
     logging.info(f"Loading indicator mapping from s3://{bucket}/{map_key}")
     try:
         map_obj = s3_client.get_object(Bucket=bucket, Key=map_key)
         map_df = pd.read_csv(map_obj['Body'])
-        # Assumes columns are named 'indicator_id_string' and 'indicator_numeric_id'
-        if not {'indicator_id_string', 'indicator_numeric_id'}.issubset(map_df.columns):
-             raise ValueError("Indicator map CSV is missing required columns.")
-        return map_df.set_index('indicator_id_string')['indicator_numeric_id'].to_dict()
+        required = {'id_string', 'numeric_id'}
+        if not required.issubset(map_df.columns):
+            raise ValueError(
+                f"Indicator map CSV is missing required columns. "
+                f"Expected {sorted(required)}, found {sorted(map_df.columns)}."
+            )
+        return map_df.set_index('id_string')['numeric_id'].to_dict()
     except Exception as e:
         logging.error(f"Failed to load indicator map from S3: {e}", exc_info=True)
         raise
