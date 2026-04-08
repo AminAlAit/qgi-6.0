@@ -97,36 +97,11 @@ resource "aws_cloudwatch_log_group" "scdi_finder" {
 # - eu-central-1 quotas verified (sustained 20/sec, burst 100, 30 vCPU concurrent)
 # ---------------------------------------------------------------------------
 
-# ECR repo for the local-account image. Co-located with staging Batch CE
-# to skip the cross-account pull pattern the scdi-finder uses (it's
-# grandfathered in qgi-aws-tf, but we don't need to repeat it here).
-resource "aws_ecr_repository" "indicator_fetcher" {
-  name                 = "qgi-pipeline-a-indicator-fetcher"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-
-  tags = var.tags
-}
-
-resource "aws_ecr_lifecycle_policy" "indicator_fetcher" {
-  repository = aws_ecr_repository.indicator_fetcher.name
-
-  policy = jsonencode({
-    rules = [{
-      rulePriority = 1
-      description  = "Keep last 10 images"
-      selection = {
-        tagStatus   = "any"
-        countType   = "imageCountMoreThan"
-        countNumber = 10
-      }
-      action = { type = "expire" }
-    }]
-  })
-}
+# ECR repo for the indicator-fetcher image now lives in the MANAGEMENT
+# account (#152 Path A) alongside scdi-finder. This module pulls it
+# cross-account via the job definition's image URI below. The local
+# `aws_ecr_repository.indicator_fetcher` resource was removed as part
+# of the migration; see the #152 runbook for the one-time image copy.
 
 # Fargate Spot compute environment — no instances, no AMIs, no scaling.
 # Just submits tasks and Fargate provisions micro-VMs on demand.
@@ -184,7 +159,7 @@ resource "aws_batch_job_definition" "indicator_fetcher" {
   }
 
   container_properties = jsonencode({
-    image   = "${aws_ecr_repository.indicator_fetcher.repository_url}:latest"
+    image   = "${var.management_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-a-indicator-fetcher:latest"
     command = []
 
     jobRoleArn       = var.fargate_task_role_arn
