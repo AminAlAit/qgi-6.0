@@ -814,10 +814,59 @@ resource "aws_athena_workgroup" "qgi" {
     enforce_workgroup_configuration    = true
     publish_cloudwatch_metrics_enabled = true
 
+    # #142 cost guardrail: hard cap on data scanned per query.
+    # 50 GB ≈ $0.25 per query at $5/TB. Any query exceeding this is
+    # presumptively a bug (full-table scan on patterns/recipes without
+    # partition pruning is the canonical example — that's how the 04-06
+    # surge hit $18 in 3 hours from frontend dev). Athena aborts the
+    # query immediately when this is exceeded; pipeline INSERTs are
+    # well under this threshold (largest is ~few GB for SCDIs aggregation).
+    #
+    # Pipeline-side queries: cap is generous because Phase 2/4 INSERTs
+    # legitimately scan multi-GB partitions during synthesis.
+    # Frontend-side queries: cap forces frontend devs to use Children C/D
+    # caches and pre-computed JSONs rather than direct SELECTs.
+    bytes_scanned_cutoff_per_query = 50 * 1024 * 1024 * 1024 # 50 GiB
+
     engine_version {
       selected_engine_version = "Athena engine version 3"
     }
   }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# CloudWatch alarm — Athena cost guardrail (#142)
+#
+# 2026-04-06: ~$18 in 3 hours of frontend dev work, from full-table scans
+# on patterns/recipes (each call 50–2000 GB). Children A+B fixed the
+# worst client-side patterns; this alarm closes the loop with a fast
+# feedback signal if anything regresses.
+#
+# Metric: AWS/Athena ProcessedBytes for the QGI workgroup. Threshold of
+# 100 GB in any 5-min window means a single accidental full-scan or a
+# burst of expensive queries fires the alarm immediately.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge" {
+  alarm_name          = "qgi-athena-processed-bytes-surge"
+  alarm_description   = "Triggers when QGI Athena workgroup scans more than 100GB in a 5-min window. See #142 — guard against frontend or pipeline regressions doing unbounded full-table scans on patterns/recipes."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  metric_name         = "ProcessedBytes"
+  namespace           = "AWS/Athena"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 100 * 1024 * 1024 * 1024 # 100 GiB
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    WorkGroup  = aws_athena_workgroup.qgi.name
+    QueryState = "SUCCEEDED"
+  }
+
+  alarm_actions = [aws_sns_topic.pipeline_notifications.arn]
+  ok_actions    = [aws_sns_topic.pipeline_notifications.arn]
 
   tags = var.tags
 }
