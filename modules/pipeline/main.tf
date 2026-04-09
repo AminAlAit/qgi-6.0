@@ -578,6 +578,70 @@ resource "aws_lambda_function" "recipe_engine" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 5 — Recipe Engine List Formatter (#162 Layer 2)
+#
+# Tiny Lambda (~20 lines of real work) that parses the Athena query results
+# from the "5b.2. Enumerate country_a_ids" state and pre-generates all
+# per-country SQL strings (one CTAS for the smallest-by-pattern-count
+# country, and INSERTs for the rest). Does NO Athena execution itself.
+# Max wall time: ~10 seconds.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "recipe_engine_list_formatter" {
+  function_name    = "qgi-pipeline-recipe-engine-list-formatter"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 60
+  memory_size      = 256
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      ATHENA_DATABASE = var.glue_database_name
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Phase 5 — Recipe Engine Finalize (#162 Layer 2)
+#
+# Post-write Lambda: runs AFTER the Map state has populated all recipe
+# partitions. Responsibilities: count/category stats, recipes_normalized
+# view (#158 follow-up), convergence view (#133), dashboard JSONs (#146).
+# All bounded aggregates on the finished recipes table: ~2-3 min wall time.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "recipe_engine_finalize" {
+  function_name    = "qgi-pipeline-recipe-engine-finalize"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 1024
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET          = var.data_lake_bucket_name
+      ATHENA_DATABASE    = var.glue_database_name
+      ATHENA_WORKGROUP   = var.athena_workgroup_name
+      S3_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # Utility — Batch job terminator (Step Function + Lambda fan-out)
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "batch_job_terminator" {
@@ -938,16 +1002,169 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         }
         ResultPath = "$.repair_events_output"
-        Next       = "5b. Recipe Engine"
+        Next       = "5b.1. Drop Recipes Table"
       }
 
-      "5b. Recipe Engine" = {
+      # -----------------------------------------------------------------
+      # Phase 5b: Recipe Engine (#162 Layer 2)
+      #
+      # Replaces the single monolithic recipe-engine Lambda that timed out
+      # at 900s with a 6-state chain. Athena queries now run via SF native
+      # .sync integration (no Lambda 15-min ceiling). Per-country INSERTs
+      # fan out via Map state at concurrency 20.
+      #
+      # Flow:
+      #   5b.1 DROP TABLE recipes     (Athena .sync)
+      #   5b.2 Enumerate country_ids  (Athena .sync, sorted by pattern count)
+      #   5b.3 List Formatter Lambda  (parse results, pre-gen SQL strings)
+      #   5b.4 Seed CTAS              (Athena .sync, smallest country)
+      #   5b.5 Map per-country INSERT (Athena .sync × 20, idempotent)
+      #   5b.6 Finalize Lambda        (views + dashboard JSONs)
+      # -----------------------------------------------------------------
+
+      "5b.1. Drop Recipes Table" = {
         Type     = "Task"
-        Resource = aws_lambda_function.recipe_engine.arn
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
-          "run_id.$" = "$$.Execution.Name"
+          QueryString = "DROP TABLE IF EXISTS `${var.glue_database_name}`.`recipes`;"
+          WorkGroup   = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration  = { OutputLocation = local.s3_output_location }
         }
-        ResultPath = "$.recipe_engine_output"
+        ResultPath = "$.drop_recipes_output"
+        Retry = [{
+          ErrorEquals     = ["States.ALL"]
+          IntervalSeconds = 5
+          MaxAttempts     = 2
+          BackoffRate     = 2
+        }]
+        Next = "5b.2. Enumerate Country IDs"
+      }
+
+      "5b.2. Enumerate Country IDs" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          QueryString = <<-EOT
+            SELECT country_a_id, count(*) AS pc
+            FROM `${var.glue_database_name}`.`patterns`
+            WHERE country_a_id IS NOT NULL
+            GROUP BY country_a_id
+            ORDER BY pc ASC
+          EOT
+          WorkGroup = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration  = { OutputLocation = local.s3_output_location }
+        }
+        ResultPath = "$.enumerate_output"
+        Retry = [{
+          ErrorEquals     = ["States.ALL"]
+          IntervalSeconds = 5
+          MaxAttempts     = 2
+          BackoffRate     = 2
+        }]
+        Next = "5b.3. List Formatter"
+      }
+
+      "5b.3. List Formatter" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_engine_list_formatter.arn
+        Parameters = {
+          "run_id.$"               = "$$.Execution.Name"
+          "country_count_query_id.$" = "$.enumerate_output.QueryExecution.QueryExecutionId"
+        }
+        ResultPath = "$.recipe_list"
+        Retry      = local.lambda_retry
+        Next       = "5b.4. Seed CTAS"
+      }
+
+      "5b.4. Seed CTAS" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          "QueryString.$" = "$.recipe_list.seed_sql"
+          WorkGroup       = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration  = { OutputLocation = local.s3_output_location }
+        }
+        ResultPath = "$.seed_ctas_output"
+        Retry = [{
+          ErrorEquals     = ["States.ALL"]
+          IntervalSeconds = 10
+          MaxAttempts     = 1
+          BackoffRate     = 1
+        }]
+        Next = "5b.5. Per-Country INSERTs"
+      }
+
+      "5b.5. Per-Country INSERTs" = {
+        Type           = "Map"
+        ItemsPath      = "$.recipe_list.insert_items"
+        MaxConcurrency = 20
+        ItemProcessor = {
+          ProcessorConfig = {
+            Mode = "INLINE"
+          }
+          StartAt = "Drop Partition"
+          States = {
+            "Drop Partition" = {
+              Type     = "Task"
+              Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+              Parameters = {
+                "QueryString.$" = "$.drop_partition_sql"
+                WorkGroup       = var.athena_workgroup_name
+                QueryExecutionContext = { Database = var.glue_database_name }
+                ResultConfiguration  = { OutputLocation = local.s3_output_location }
+              }
+              ResultPath = "$.drop_output"
+              Retry = [{
+                ErrorEquals     = ["States.ALL"]
+                IntervalSeconds = 5
+                MaxAttempts     = 2
+                BackoffRate     = 2
+              }]
+              Next = "Run INSERT"
+            }
+            "Run INSERT" = {
+              Type     = "Task"
+              Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+              Parameters = {
+                "QueryString.$" = "$.insert_sql"
+                WorkGroup       = var.athena_workgroup_name
+                QueryExecutionContext = { Database = var.glue_database_name }
+                ResultConfiguration  = { OutputLocation = local.s3_output_location }
+              }
+              ResultPath = "$.insert_output"
+              Retry = [{
+                ErrorEquals     = ["States.ALL"]
+                IntervalSeconds = 10
+                MaxAttempts     = 2
+                BackoffRate     = 2
+              }]
+              End = true
+            }
+          }
+        }
+        # #162 review issue 3: ToleratedFailurePercentage 0 means any
+        # single per-country failure fails the whole Map immediately.
+        # Zombie queries from in-flight iterations will keep running on
+        # Athena (SF doesn't cancel them). Acceptable: they'll finish
+        # harmlessly; the next pipeline run's DROP TABLE cleans up.
+        # A cleanup Lambda (Catch → StopQueryExecution on survivors)
+        # can be added later if the zombie cost is material.
+        ToleratedFailurePercentage = 0
+        ResultPath = "$.map_results"
+        Next       = "5b.6. Finalize"
+      }
+
+      "5b.6. Finalize" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_engine_finalize.arn
+        Parameters = {
+          "run_id.$"          = "$$.Execution.Name"
+          "partitions_total.$" = "$.recipe_list.partitions_total"
+        }
+        ResultPath = "$.recipe_finalize_output"
         Retry      = local.lambda_retry
         Next       = "5c. Athena MSCK recipes"
       }
