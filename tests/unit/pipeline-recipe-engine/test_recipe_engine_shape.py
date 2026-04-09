@@ -376,3 +376,95 @@ def test_concurrency_limit_respected():
     assert fake.max_in_flight >= 2, (
         f"test did not exercise parallelism; max_in_flight={fake.max_in_flight}"
     )
+
+
+# ---------------------------------------------------------------------------
+# Test 6: recipes_normalized view exists and uses a GLOBAL max CROSS JOIN
+# ---------------------------------------------------------------------------
+#
+# #158 follow-up (Sonnet review): the per-country INSERT approach causes
+# `global_stats` in build_recipe_query to be computed per-partition, so the
+# `pps` column written to recipes is NOT comparable across countries. The
+# fix is to overlay a view that recomputes pps using a CROSS JOIN against
+# a global max subquery over the full recipes table.
+#
+# This test is the regression guard: if anyone removes the view, removes
+# the CROSS JOIN, or points convergence/top50 back at `qgi_data.recipes`
+# directly, this test fails and we don't silently ship per-partition pps.
+
+def test_recipes_normalized_view_with_global_max_cross_join():
+    """The Recipe Engine must CREATE OR REPLACE VIEW qgi_data.recipes_normalized
+    with a CROSS JOIN to (SELECT max(instance_count), max(indicator_count)
+    FROM qgi_data.recipes) so pps is globally comparable.
+    """
+    fake = FakeAthena(distinct_country_ids=[1, 2, 3])
+    mod, _s3 = _load_module(fake)
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    view_queries = [
+        sql for _qid, sql in fake.started_queries
+        if "CREATE OR REPLACE VIEW qgi_data.recipes_normalized" in sql
+    ]
+    assert len(view_queries) == 1, (
+        f"expected exactly 1 recipes_normalized view creation, got "
+        f"{len(view_queries)}. #158 follow-up regression: pps would be "
+        f"per-partition wrong without this view."
+    )
+    view_sql = view_queries[0]
+
+    # Must contain a CROSS JOIN to a global max subquery. This is the
+    # whole point of the fix.
+    assert "CROSS JOIN" in view_sql, (
+        "recipes_normalized view must CROSS JOIN a global max subquery"
+    )
+    assert "max(instance_count)" in view_sql, (
+        "recipes_normalized view must compute global max(instance_count)"
+    )
+    assert "max(indicator_count)" in view_sql, (
+        "recipes_normalized view must compute global max(indicator_count)"
+    )
+    # Must redefine pps via SELECT * EXCEPT — otherwise the base `pps`
+    # column collides and the fix is a no-op.
+    assert "EXCEPT (pps)" in view_sql, (
+        "recipes_normalized view must use SELECT * EXCEPT (pps) to override "
+        "the per-partition-wrong pps column from the base table"
+    )
+
+
+# ---------------------------------------------------------------------------
+# Test 7: convergence + top50 queries read from recipes_normalized, NOT recipes
+# ---------------------------------------------------------------------------
+
+def test_convergence_and_top50_read_from_normalized_view():
+    """The downstream consumers of `pps` (convergence view and top50
+    dashboard query) must read from qgi_data.recipes_normalized, NOT from
+    qgi_data.recipes directly. Otherwise they pick up the per-partition-
+    wrong pps and the ranking is silently broken.
+    """
+    fake = FakeAthena(distinct_country_ids=[1, 2, 3])
+    mod, _s3 = _load_module(fake)
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # Convergence view DDL
+    cv_creates = [
+        sql for _qid, sql in fake.started_queries
+        if "CREATE OR REPLACE VIEW qgi_data.recipe_convergence" in sql
+    ]
+    assert len(cv_creates) == 1, "expected one convergence view creation"
+    cv_sql = cv_creates[0]
+    assert "FROM qgi_data.recipes_normalized" in cv_sql, (
+        "convergence view must read from recipes_normalized, not recipes"
+    )
+
+    # Top50 dashboard query (runs during write_dashboard_jsons)
+    top50_queries = [
+        sql for _qid, sql in fake.started_queries
+        if "composite_sort_key" in sql
+        and "INNER JOIN qgi_data.recipe_convergence" in sql
+    ]
+    assert len(top50_queries) == 1, "expected one top50 dashboard query"
+    top50_sql = top50_queries[0]
+    assert "FROM qgi_data.recipes_normalized" in top50_sql, (
+        "top50 dashboard query must read from recipes_normalized, "
+        "not recipes, so r.pps is globally normalized"
+    )

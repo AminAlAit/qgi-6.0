@@ -174,8 +174,19 @@ def lambda_handler(event, context):
     ]
     logger.info(f"Top categories: {top_categories}")
 
-    # 8. Create convergence view (#133) — must run BEFORE dashboard JSONs
-    # so that _write_recipes_top50_json can read from it.
+    # 8a. Create recipes_normalized view (#158 follow-up, Sonnet review fix).
+    # The per-country INSERT approach causes `global_stats` in the CTE body
+    # to be computed per-partition instead of globally, so the `pps` column
+    # written to recipes is NOT comparable across countries. We overlay a
+    # view that recomputes `pps` using the GLOBAL max across all partitions
+    # and redirect all downstream consumers (convergence view + top50
+    # dashboard query) to read from this view instead of `recipes`
+    # directly. The `pps` column physically stored in `recipes` remains
+    # per-partition-wrong but nothing reads it.
+    create_recipes_normalized_view()
+
+    # 8b. Create convergence view (#133) — reads from recipes_normalized so
+    # predictor_best_pps is a true global max, not a per-partition max.
     convergence_status = 'skipped'
     if cutoff_year is None:
         try:
@@ -327,6 +338,64 @@ def run_parallel_inserts(country_ids, cutoff_year):
 # ---------------------------------------------------------------------------
 
 CONVERGENCE_VIEW_NAME = "recipe_convergence"
+RECIPES_NORMALIZED_VIEW_NAME = "recipes_normalized"
+
+
+# ---------------------------------------------------------------------------
+# #158 follow-up: recipes_normalized view (global pps normalization)
+# ---------------------------------------------------------------------------
+
+def create_recipes_normalized_view():
+    """Create a view that recomputes `pps` using GLOBAL max values.
+
+    The per-country INSERT approach introduced in #158 Layer 1 causes the
+    `global_stats` CTE in build_recipe_query to be computed per-partition
+    (because each INSERT only sees its own country's raw_recipes). That
+    makes the `pps` column physically stored in `recipes` NOT comparable
+    across countries — a small country with local max=5 instance_count
+    gets pps=100 on its top recipe, while a large country with local
+    max=500 gets pps=30 on a recipe with the same instance_count.
+
+    Fix: a view on top of `recipes` that:
+    1. Scans `recipes` once to compute the actual global max
+       (max instance_count and max indicator_count across ALL countries)
+    2. Uses `SELECT * EXCEPT (pps)` + the corrected formula to produce a
+       new `pps` column that IS comparable globally
+    3. Downstream readers (convergence view, top50 dashboard query) read
+       from this view instead of `recipes` directly
+
+    Requires Athena engine v3 (supports `SELECT * EXCEPT`). Confirmed in
+    the QGI-Lambda-Workgroup.
+    """
+    sql = f"""
+    CREATE OR REPLACE VIEW qgi_data.{RECIPES_NORMALIZED_VIEW_NAME} AS
+    SELECT
+        r.* EXCEPT (pps),
+        cast(
+            (
+                0.35 * r.avg_correlation
+                + 0.30 * (ln(cast(r.instance_count as double) + 1.0)
+                          / nullif(ln(g.max_inst + 1.0), 0.0))
+                + 0.20 * (ln(cast(r.indicator_count as double) + 1.0)
+                          / nullif(ln(g.max_ind + 1.0), 0.0))
+                + 0.15 * (1.0 / (1.0 + 0.05 * greatest(0, cast(r.length as double) - 10.0)))
+            ) * 100.0
+            AS double
+        ) AS pps
+    FROM qgi_data.recipes r
+    CROSS JOIN (
+        SELECT
+            cast(max(instance_count) as double)  AS max_inst,
+            cast(max(indicator_count) as double) AS max_ind
+        FROM qgi_data.recipes
+    ) g
+    """
+    logger.info(
+        f"Creating {RECIPES_NORMALIZED_VIEW_NAME} view "
+        f"(global pps normalization, #158 follow-up)"
+    )
+    run_query(sql)
+    logger.info(f"View qgi_data.{RECIPES_NORMALIZED_VIEW_NAME} created")
 
 
 def create_convergence_view():
@@ -377,7 +446,9 @@ def create_convergence_view():
             COUNT(*)                 AS recipe_count,
             MAX(r.pps)               AS predictor_best_pps,
             ARBITRARY(r.pattern_tier) AS predictor_best_tier
-        FROM qgi_data.recipes r
+        -- #158 follow-up: read from the normalized view so pps is globally
+        -- comparable, not per-partition wrong.
+        FROM qgi_data.{RECIPES_NORMALIZED_VIEW_NAME} r
         GROUP BY r.country_a_id, r.event_category, r.end_year_a, r.country_b_id
     ),
     -- Step 2: resolve regions for both following and predictor countries,
@@ -592,7 +663,9 @@ def _write_recipes_top50_json(current_year):
             cv.convergence_tier,
             cv.predictor_country_ids,
             cv.composite_sort_key
-        FROM qgi_data.recipes r
+        -- #158 follow-up: read from recipes_normalized so `r.pps` is the
+        -- globally-normalized value, not the per-partition-wrong one.
+        FROM qgi_data.{RECIPES_NORMALIZED_VIEW_NAME} r
         INNER JOIN qgi_data.{CONVERGENCE_VIEW_NAME} cv
             ON cv.following_country_id = r.country_a_id
            AND cv.event_category       = r.event_category
