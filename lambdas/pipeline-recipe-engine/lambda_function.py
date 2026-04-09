@@ -1,7 +1,7 @@
 """
 Phase 5: Recipe Engine — matches patterns against events to create recipes.
 
-Uses pure Athena SQL (CTAS) to JOIN patterns with events, applying:
+Uses pure Athena SQL to JOIN patterns with events, applying:
 - D4: event window = max(1, ceil(length * 0.15))
 - D5: both countries must match the same event category
 
@@ -9,9 +9,18 @@ Supports optional cutoff_year for backtesting (D12/D13/D14).
 
 Reads: qgi_data.patterns + qgi_data.events (via Athena)
 Writes:
-- s3://{bucket}/recipes/ (Parquet via CTAS)
+- s3://{bucket}/recipes/ (Parquet, partitioned by country_a_id)
 - s3://{bucket}/dashboard/{ranking,early-warning,recipes-top50}.json
   Pre-computed dashboard JSON to eliminate per-request Athena cost (#146)
+
+#158 Layer 1 (2026-04-09): the previous implementation ran a single
+monolithic CTAS with no partition filter on patterns.country_a_id. That
+scanned ~43.7 GB and reliably timed out at Athena's 30-min DML cap, blocking
+#146. This rewrite splits the work into one CTAS for the first country_a_id
+(to create the table shell + first partition) plus per-country INSERTs for
+the remaining ids, fanned out in parallel waves of up to 20. Each per-country
+query scans ~200 MB instead of 43 GB. Total wall time drops from 30+ min to
+~1-2 min, and per-run Athena cost from ~$0.22 to ~$0.001.
 """
 
 import os
@@ -32,6 +41,11 @@ S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', f's3://{S3_BUCKET}/query_result
 RECIPES_PREFIX = 'recipes'
 DASHBOARD_PREFIX = 'dashboard'
 RANKING_LIMIT = 1000  # pre-compute top 1000 unfiltered patterns; route falls back to Athena for filtered requests
+
+# #158: concurrency cap for per-country fan-out. Default Athena workgroup
+# limit is 20 concurrent DML queries; staying under avoids ThrottlingException.
+MAX_CONCURRENT_INSERTS = int(os.environ.get('RECIPE_ENGINE_MAX_CONCURRENCY', '20'))
+POLL_INTERVAL_SECONDS = float(os.environ.get('RECIPE_ENGINE_POLL_INTERVAL', '2.0'))
 
 # ---------------------------------------------------------------------------
 # #133: Country → region map for the convergence score view.
@@ -111,18 +125,44 @@ def lambda_handler(event, context):
     # 2. Drop old recipes table if exists
     run_query("DROP TABLE IF EXISTS qgi_data.recipes;")
 
-    # 3. Run CTAS to generate recipes
-    ctas_query = build_recipe_query(cutoff_year)
-    logger.info(f"Running CTAS query ({len(ctas_query)} chars)")
-    query_id = run_query(ctas_query)
+    # 3. Enumerate country_a_id partitions from patterns (#158)
+    country_ids = get_patterns_country_a_ids()
+    if not country_ids:
+        raise RuntimeError(
+            "No country_a_id values found in qgi_data.patterns. "
+            "Phase 4 must have failed to populate the patterns table."
+        )
+    logger.info(f"Found {len(country_ids)} country_a_id partitions in patterns")
 
-    # 4. Count results
+    # 4. Create recipes table + first partition via a single-country CTAS.
+    #    This creates the table shell with the exact schema the SELECT produces
+    #    (no hand-maintained column list) and populates one partition worth of
+    #    data. Scans only the first country's patterns partition (~200 MB).
+    first_id = country_ids[0]
+    ctas_sql = build_recipe_query(cutoff_year, country_a_id=first_id)
+    logger.info(
+        f"Running CTAS for first partition country_a_id={first_id} "
+        f"({len(ctas_sql)} chars)"
+    )
+    run_query(ctas_sql)
+
+    # 5. Fan out INSERT INTO queries for remaining country_a_id partitions.
+    remaining_ids = country_ids[1:]
+    insert_stats = []
+    if remaining_ids:
+        logger.info(
+            f"Dispatching {len(remaining_ids)} per-country INSERTs "
+            f"(concurrency={MAX_CONCURRENT_INSERTS})"
+        )
+        insert_stats = run_parallel_inserts(remaining_ids, cutoff_year)
+
+    # 6. Count results for observability
     count_id = run_query("SELECT count(*) as cnt FROM qgi_data.recipes;")
     result = athena.get_query_results(QueryExecutionId=count_id)
     count = result['ResultSet']['Rows'][1]['Data'][0]['VarCharValue']
-    logger.info(f"Generated {count} recipes.")
+    logger.info(f"Generated {count} recipes across {len(country_ids)} partitions.")
 
-    # 5. Get category breakdown
+    # 7. Get category breakdown
     cat_id = run_query(
         "SELECT event_category, count(*) as cnt FROM qgi_data.recipes "
         "GROUP BY event_category ORDER BY cnt DESC LIMIT 20;"
@@ -134,7 +174,7 @@ def lambda_handler(event, context):
     ]
     logger.info(f"Top categories: {top_categories}")
 
-    # 6. Create convergence view (#133) — must run BEFORE dashboard JSONs
+    # 8. Create convergence view (#133) — must run BEFORE dashboard JSONs
     # so that _write_recipes_top50_json can read from it.
     convergence_status = 'skipped'
     if cutoff_year is None:
@@ -145,7 +185,7 @@ def lambda_handler(event, context):
             logger.exception(f"Failed to create convergence view: {exc}")
             convergence_status = f'error: {exc}'
 
-    # 7. Pre-compute dashboard JSONs (#146)
+    # 9. Pre-compute dashboard JSONs (#146)
     # Eliminates per-request Athena cost for the three biggest frontend queries.
     # Skip on backtesting runs (cutoff_year set) — only the canonical run should publish.
     dashboard_results = {}
@@ -165,7 +205,121 @@ def lambda_handler(event, context):
         'top_categories': top_categories,
         'convergence_view': convergence_status,
         'dashboard': dashboard_results,
+        'partitions_total': len(country_ids),
+        'partitions_via_insert': len(insert_stats),
     }
+
+
+# ---------------------------------------------------------------------------
+# #158: per-country fan-out machinery
+# ---------------------------------------------------------------------------
+
+def get_patterns_country_a_ids():
+    """Return a sorted list of distinct country_a_id values from patterns.
+
+    Scans the partition key only — Athena prunes this to ~200 MB or less.
+    """
+    query_id = run_query(
+        "SELECT DISTINCT country_a_id FROM qgi_data.patterns "
+        "WHERE country_a_id IS NOT NULL ORDER BY country_a_id;"
+    )
+    ids = []
+    next_token = None
+    header_seen = False
+    while True:
+        kwargs = {'QueryExecutionId': query_id}
+        if next_token:
+            kwargs['NextToken'] = next_token
+        result = athena.get_query_results(**kwargs)
+        rows = result['ResultSet']['Rows']
+        data_rows = rows[1:] if not header_seen else rows
+        header_seen = True
+        for row in data_rows:
+            cells = row.get('Data', [])
+            if not cells:
+                continue
+            raw = cells[0].get('VarCharValue')
+            if raw is None or raw == '':
+                continue
+            try:
+                ids.append(int(raw))
+            except ValueError:
+                logger.warning(f"Skipping non-integer country_a_id: {raw!r}")
+        next_token = result.get('NextToken')
+        if not next_token:
+            break
+    return ids
+
+
+def run_parallel_inserts(country_ids, cutoff_year):
+    """Dispatch per-country INSERT INTO qgi_data.recipes queries in parallel.
+
+    At most MAX_CONCURRENT_INSERTS are in flight at any time. Polls each
+    submitted query to terminal state. Raises RuntimeError listing all
+    failures if any per-country query did not SUCCEED — does NOT continue
+    to dashboard JSON generation with partial data.
+
+    Returns list of dicts: [{country_a_id, query_id, state, bytes_scanned, ms}]
+    """
+    pending = list(country_ids)
+    in_flight = {}  # query_id -> country_a_id
+    results = []
+    failures = []
+
+    while pending or in_flight:
+        # Launch up to the concurrency cap
+        while pending and len(in_flight) < MAX_CONCURRENT_INSERTS:
+            cid = pending.pop(0)
+            sql = build_recipe_query(cutoff_year, country_a_id=cid, mode='insert')
+            response = athena.start_query_execution(
+                QueryString=sql,
+                QueryExecutionContext={'Database': ATHENA_DB},
+                WorkGroup=ATHENA_WG,
+            )
+            qid = response['QueryExecutionId']
+            in_flight[qid] = cid
+            logger.info(f"INSERT country_a_id={cid}: query {qid} started")
+
+        # Poll all in-flight queries once
+        for qid in list(in_flight.keys()):
+            status = athena.get_query_execution(QueryExecutionId=qid)
+            qe = status['QueryExecution']
+            state = qe['Status']['State']
+            if state in ('QUEUED', 'RUNNING'):
+                continue
+            cid = in_flight.pop(qid)
+            stats = qe.get('Statistics', {}) or {}
+            entry = {
+                'country_a_id': cid,
+                'query_id': qid,
+                'state': state,
+                'bytes_scanned': stats.get('DataScannedInBytes', 0),
+                'ms': stats.get('EngineExecutionTimeInMillis', 0),
+            }
+            results.append(entry)
+            if state == 'SUCCEEDED':
+                logger.info(
+                    f"INSERT country_a_id={cid}: SUCCEEDED "
+                    f"({entry['bytes_scanned']} bytes, {entry['ms']} ms)"
+                )
+            else:
+                reason = qe['Status'].get('StateChangeReason', 'unknown')
+                logger.error(
+                    f"INSERT country_a_id={cid}: {state} - {reason}"
+                )
+                failures.append({**entry, 'reason': reason})
+
+        if in_flight:
+            time.sleep(POLL_INTERVAL_SECONDS)
+
+    if failures:
+        raise RuntimeError(
+            f"Recipe Engine: {len(failures)} per-country INSERT queries failed. "
+            f"Refusing to continue to dashboard JSON generation with partial data. "
+            f"Failures: {failures}"
+        )
+
+    return results
 
 
 # ---------------------------------------------------------------------------
@@ -591,45 +745,58 @@ def _parse_id_array(value):
     return out
 
 
-def build_recipe_query(cutoff_year=None):
-    """Build CTAS query that JOINs patterns with events using D4/D5 logic.
+def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
+    """Build the recipe-generation SQL, optionally filtered to one country_a_id.
 
-    The CTAS produces ONE row per recipe_id. The previous version emitted one
-    row per (pattern × eventA × eventB) match, leading to massive duplication
-    that downstream consumers had to collapse with `MAX(...) GROUP BY recipe_id`.
-    Source-side aggregation (#129) eliminates that duplication permanently and
-    populates the `instance_count` column the Glue schema has always had.
+    Parameters
+    ----------
+    cutoff_year : int or None
+        Optional backtesting cutoff.
+    country_a_id : int or None
+        #158: MANDATORY partition filter for all production runs. When set,
+        the innermost `raw_recipes` CTE adds `WHERE p.country_a_id = N`,
+        which prunes the patterns scan to exactly one partition (~200 MB
+        vs. the full 43 GB table). None is only for legacy debugging.
+    mode : 'ctas' | 'insert'
+        'ctas' wraps the SELECT in `CREATE TABLE qgi_data.recipes WITH (...) AS`
+        to create the table on first call. 'insert' wraps it in
+        `INSERT INTO qgi_data.recipes` for subsequent per-partition fan-out.
+
+    The CTAS produces ONE row per recipe_id. Source-side aggregation (#129)
+    eliminates the (pattern × eventA × eventB) explosion and populates the
+    `instance_count` column the Glue schema has always had.
 
     Three CTEs:
-      1. raw_recipes      — the old INNER JOIN, exploded form
-      2. recipes_aggregated — collapsed to one row per recipe_id, COUNT(*) for
-                              instance_count, MIN(event_year_*) for the earliest
-                              precedent
-      3. global_stats     — single-row max values for normalising the 0-100 PPS
+      1. raw_recipes          — the INNER JOIN, exploded form
+      2. recipes_aggregated   — collapsed to one row per recipe_id
+      3. global_stats         — single-row max values for the normalised PPS
 
     Athena CTAS rules:
       - Partition columns must be the LAST column(s) in the final SELECT
       - CTE chains may reference each other in declaration order
     """
-    pattern_filter = ""
+    pattern_filters = []
     event_filter_a = ""
     event_filter_b = ""
     if cutoff_year:
-        pattern_filter = (
-            f"WHERE (p.start_year_a + p.length) <= {cutoff_year} "
+        pattern_filters.append(
+            f"(p.start_year_a + p.length) <= {cutoff_year} "
             f"AND (p.start_year_b + p.length) <= {cutoff_year}"
         )
         event_filter_a = f"AND ea.year <= {cutoff_year}"
         event_filter_b = f"AND eb.year <= {cutoff_year}"
 
-    return f"""
-    CREATE TABLE qgi_data.recipes
-    WITH (
-        format = 'PARQUET',
-        write_compression = 'SNAPPY',
-        partitioned_by = ARRAY['country_a_id']
-    ) AS
+    # #158: partition pruning — this is the critical fix.
+    if country_a_id is not None:
+        pattern_filters.append(f"p.country_a_id = {int(country_a_id)}")
 
+    pattern_where = (
+        "WHERE " + " AND ".join(f"({f})" for f in pattern_filters)
+        if pattern_filters
+        else ""
+    )
+
+    select_body = f"""
     WITH raw_recipes AS (
         SELECT
             concat(cast(p.country_a_id as varchar), '-',
@@ -684,7 +851,7 @@ def build_recipe_query(cutoff_year=None):
             {event_filter_b}
         LEFT JOIN qgi_data.countries ca ON cast(ca.id as integer) = p.country_a_id
         LEFT JOIN qgi_data.countries cb ON cast(cb.id as integer) = p.country_b_id
-        {pattern_filter}
+        {pattern_where}
     ),
     -- #129: collapse the (pattern × eventA × eventB) explosion to one row per
     -- recipe_id and count the instances along the way.
@@ -712,10 +879,7 @@ def build_recipe_query(cutoff_year=None):
             arbitrary(pattern_tier)          AS pattern_tier,
             cast(count(*) as bigint)         AS instance_count,
             -- #134: median lead time = how many years after the pattern ends
-            -- did the historic event actually occur. lead_time_b is computed in
-            -- the PREDICTOR country and is the headline "when?" number — we
-            -- project it onto the following country's still-running pattern.
-            -- lead_time_a is kept for symmetry / debugging.
+            -- did the historic event actually occur.
             cast(approx_percentile(cast(event_year_b - end_year_b as double), 0.5) as smallint)
                 AS median_lead_time_b,
             cast(min(event_year_b - end_year_b) as smallint) AS min_lead_time_b,
@@ -757,15 +921,12 @@ def build_recipe_query(cutoff_year=None):
         r.instance_count,
         r.pattern_tier,
         -- #134: forecast timing — lead time in PREDICTOR country (b) is the
-        -- headline "when will it happen?" number; we project it onto the
-        -- following country's pattern end date in the frontend.
+        -- headline "when will it happen?" number.
         r.median_lead_time_b,
         r.min_lead_time_b,
         r.max_lead_time_b,
         r.median_lead_time_a,
-        -- #129: new normalized 0-100 PPS. Weights 0.35/0.30/0.20/0.15 are
-        -- initial; lock after V1.5.3 backtesting (#130) calibrates them
-        -- empirically via logistic regression on verified recipes.
+        -- #129: new normalized 0-100 PPS.
         cast(
             (
                 0.35 * r.avg_correlation
@@ -782,6 +943,21 @@ def build_recipe_query(cutoff_year=None):
     FROM recipes_aggregated r
     CROSS JOIN global_stats g
     """
+
+    if mode == 'ctas':
+        return f"""
+        CREATE TABLE qgi_data.recipes
+        WITH (
+            format = 'PARQUET',
+            write_compression = 'SNAPPY',
+            partitioned_by = ARRAY['country_a_id']
+        ) AS
+        {select_body}
+        """
+    elif mode == 'insert':
+        return f"INSERT INTO qgi_data.recipes\n{select_body}"
+    else:
+        raise ValueError(f"Unknown build_recipe_query mode: {mode!r}")
 
 
 def clean_recipes():
@@ -818,4 +994,4 @@ def run_query(sql):
             reason = status['QueryExecution']['Status'].get('StateChangeReason', 'unknown')
             logger.error(f"Query {query_id}: {state} - {reason}")
             raise RuntimeError(f"Athena query {state}: {reason}")
-        time.sleep(5)
+        time.sleep(1)
