@@ -197,8 +197,8 @@ def fetch_with_retry(indicator_id):
             if attempt == MAX_FETCH_ATTEMPTS:
                 logger.error(f"Final attempt failed for {indicator_id}: {e}")
                 raise
-            # Exponential backoff with cap
-            wait = min(60, 2 ** attempt)
+            # Exponential backoff with cap (#175: 2x more generous)
+            wait = min(120, 2 ** (attempt + 1))
             logger.warning(
                 f"Attempt {attempt} failed for {indicator_id} ({e}); "
                 f"sleeping {wait}s before retry"
