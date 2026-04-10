@@ -35,6 +35,35 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
       days = 30
     }
   }
+
+  # #160: Quarantined parquet files — forensic backups from forced reruns.
+  # Nobody looks at them after ~30 days. Move to Glacier IR after 90 days
+  # (retrieval still instant, ~5x cheaper storage), delete after 180.
+  rule {
+    id     = "archive-quarantine"
+    status = "Enabled"
+    filter {
+      prefix = "_quarantine/"
+    }
+    transition {
+      days          = 90
+      storage_class = "GLACIER_IR"
+    }
+    expiration {
+      days = 180
+    }
+  }
+
+  # #160: Abort incomplete multipart uploads after 1 day (prevents orphaned
+  # partial uploads from accumulating storage cost).
+  rule {
+    id     = "abort-incomplete-uploads"
+    status = "Enabled"
+    filter {}
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 1
+    }
+  }
 }
 
 # Allow management account to write to this bucket (for legacy data sync)
