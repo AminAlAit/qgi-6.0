@@ -35,7 +35,7 @@ SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 LEGACY_EVENTS_DIR = Path(r"/workspace/qgi\qgi-4.0\data\events")
 SONNET_EVENTS_DIR = REPO_ROOT / "data" / "events" / "batches"
-CURATED_EVENTS_DIR = REPO_ROOT / "data" / "events" / "curated"
+CURATED_EVENTS_DIR = REPO_ROOT / "events" / "curated"
 
 S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"

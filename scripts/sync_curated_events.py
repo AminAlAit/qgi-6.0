@@ -32,7 +32,7 @@ from botocore.exceptions import ClientError
 
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
-CURATED_DIR = REPO_ROOT / "data" / "events" / "curated"
+CURATED_DIR = REPO_ROOT / "events" / "curated"
 TRACKING_FILE = REPO_ROOT / "data" / "events" / "TRACKING.md"
 
 S3_PREFIX = "events-source/curated/"

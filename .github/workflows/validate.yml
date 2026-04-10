@@ -1,0 +1,20 @@
+name: Validate Events
+
+on:
+  push:
+    branches: [main]
+    paths: ['events/**']
+  pull_request:
+    branches: [main]
+    paths: ['events/**']
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate event JSON files
+        run: python scripts/validate_events.py
