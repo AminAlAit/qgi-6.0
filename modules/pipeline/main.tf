@@ -605,7 +605,9 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
 
   environment {
     variables = {
-      ATHENA_DATABASE = var.glue_database_name
+      ATHENA_DATABASE    = var.glue_database_name
+      ATHENA_WORKGROUP   = var.athena_workgroup_name
+      S3_OUTPUT_LOCATION = local.s3_output_location
     }
   }
 
@@ -1177,31 +1179,8 @@ resource "aws_sfn_state_machine" "pipeline" {
           MaxAttempts     = 2
           BackoffRate     = 2
         }]
-        Next = "5b.2. Enumerate Country IDs"
-      }
-
-      "5b.2. Enumerate Country IDs" = {
-        Type     = "Task"
-        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
-        Parameters = {
-          QueryString           = <<-EOT
-            SELECT country_a_id, count(*) AS pc
-            FROM `${var.glue_database_name}`.`patterns`
-            WHERE country_a_id IS NOT NULL
-            GROUP BY country_a_id
-            ORDER BY pc ASC
-          EOT
-          WorkGroup             = var.athena_workgroup_name
-          QueryExecutionContext = { Database = var.glue_database_name }
-          ResultConfiguration   = { OutputLocation = local.s3_output_location }
-        }
-        ResultPath = "$.enumerate_output"
-        Retry = [{
-          ErrorEquals     = ["States.ALL"]
-          IntervalSeconds = 5
-          MaxAttempts     = 2
-          BackoffRate     = 2
-        }]
+        # 5b.2 removed: Athena .sync doesn't support plain SELECT.
+        # The enumerate query now runs inside 5b.3 (list-formatter Lambda).
         Next = "5b.3. List Formatter"
       }
 
@@ -1209,8 +1188,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.recipe_engine_list_formatter.arn
         Parameters = {
-          "run_id.$"                 = "$$.Execution.Name"
-          "country_count_query_id.$" = "$.enumerate_output.QueryExecution.QueryExecutionId"
+          "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.recipe_list"
         Retry      = local.lambda_retry
