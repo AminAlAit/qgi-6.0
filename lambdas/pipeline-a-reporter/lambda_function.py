@@ -20,6 +20,7 @@ inbox (the topic ARN comes from qgi-infra storage module's
 pipeline_notifications topic).
 """
 
+import json
 import logging
 import os
 from datetime import datetime, timezone
@@ -32,8 +33,13 @@ logger.setLevel(logging.INFO)
 
 dynamodb = boto3.resource("dynamodb")
 sns = boto3.client("sns")
+s3 = boto3.client("s3")
 
 TABLE_NAME = "qgi-indicator-updates"
+S3_BUCKET = os.environ.get("S3_BUCKET", "")
+MANIFEST_KEY = os.environ.get(
+    "MANIFEST_KEY", "indicator-freshness/latest-fetch-manifest.json"
+)
 SNS_TOPIC_ARN = os.environ["SNS_TOPIC_ARN"]
 
 # #FAR-1: failure threshold for the loud alarm. >20% failed = alarm in
@@ -191,6 +197,34 @@ def lambda_handler(event, context):
     )
 
     sns.publish(TopicArn=SNS_TOPIC_ARN, Subject=subject[:99], Message=body)
+
+    # #175: write fetch manifest to S3 so the decoupled Main SF can read it
+    # via the manifest-reader Lambda instead of re-running the Fargate fetch.
+    if S3_BUCKET:
+        now_iso = datetime.now(timezone.utc).isoformat()
+        manifest = {
+            "run_id": run_id,
+            "timestamp": now_iso,
+            "updated_ids": updated,
+            "updated_count": len(updated),
+            "total_fetched": total_processed,
+            "failed_ids": failed,
+            "all_indicator_ids": sorted(
+                set(updated + unchanged + skipped + failed)
+            ),
+        }
+        try:
+            s3.put_object(
+                Bucket=S3_BUCKET,
+                Key=MANIFEST_KEY,
+                Body=json.dumps(manifest, indent=2),
+                ContentType="application/json",
+            )
+            logger.info(
+                f"Fetch manifest written to s3://{S3_BUCKET}/{MANIFEST_KEY}"
+            )
+        except Exception:
+            logger.exception("Failed to write fetch manifest (non-fatal)")
 
     return {
         "status": "Complete",
