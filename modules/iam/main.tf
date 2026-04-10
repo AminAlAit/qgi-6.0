@@ -92,10 +92,10 @@ resource "aws_iam_role_policy" "lambda_execution" {
       },
       # SQS — all pipeline queues
       {
-        Effect   = "Allow"
-        Action   = ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage",
+        Effect = "Allow"
+        Action = ["sqs:SendMessage", "sqs:ReceiveMessage", "sqs:DeleteMessage",
           "sqs:GetQueueAttributes", "sqs:GetQueueUrl", "sqs:ChangeMessageVisibility",
-          "sqs:PurgeQueue"]
+        "sqs:PurgeQueue"]
         Resource = var.queue_arns
       },
       # DynamoDB — indicator updates + completion counters + indicator values (#148)
@@ -103,7 +103,7 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Effect = "Allow"
         Action = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem",
           "dynamodb:DeleteItem", "dynamodb:Query", "dynamodb:Scan",
-          "dynamodb:BatchGetItem", "dynamodb:BatchWriteItem"]
+        "dynamodb:BatchGetItem", "dynamodb:BatchWriteItem"]
         Resource = [
           var.indicator_table_arn,
           var.completion_table_arn,
@@ -113,19 +113,19 @@ resource "aws_iam_role_policy" "lambda_execution" {
       },
       # Athena
       {
-        Effect   = "Allow"
-        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        Effect = "Allow"
+        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
           "athena:GetQueryResults", "athena:StopQueryExecution",
-          "athena:ListQueryExecutions", "athena:GetWorkGroup"]
+        "athena:ListQueryExecutions", "athena:GetWorkGroup"]
         Resource = "*"
       },
       # Glue — qgi_data database
       {
-        Effect   = "Allow"
-        Action   = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
+        Effect = "Allow"
+        Action = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
           "glue:CreateTable", "glue:UpdateTable", "glue:DeleteTable",
           "glue:GetPartition", "glue:GetPartitions", "glue:BatchCreatePartition",
-          "glue:BatchDeletePartition"]
+        "glue:BatchDeletePartition"]
         Resource = [
           "arn:aws:glue:${var.region}:${var.aws_account_id}:catalog",
           "arn:aws:glue:${var.region}:${var.aws_account_id}:database/qgi_data",
@@ -134,8 +134,8 @@ resource "aws_iam_role_policy" "lambda_execution" {
       },
       # Batch — orchestrator and terminator
       {
-        Effect   = "Allow"
-        Action   = ["batch:SubmitJob", "batch:DescribeJobs", "batch:ListJobs",
+        Effect = "Allow"
+        Action = ["batch:SubmitJob", "batch:DescribeJobs", "batch:ListJobs",
         "batch:TerminateJob", "batch:DescribeJobQueues", "batch:DescribeJobDefinitions"]
         Resource = "*"
       },
@@ -278,24 +278,24 @@ resource "aws_iam_role_policy" "stepfunctions" {
       },
       # Athena — for MSCK REPAIR TABLE queries (Phase 3 + Phase 4)
       {
-        Effect   = "Allow"
-        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
-          "athena:GetQueryResults", "athena:StopQueryExecution"]
+        Effect = "Allow"
+        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        "athena:GetQueryResults", "athena:StopQueryExecution"]
         Resource = "arn:aws:athena:${var.region}:${var.aws_account_id}:workgroup/*"
       },
       # S3 — Athena query result writes
       {
-        Effect   = "Allow"
-        Action   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation",
-          "s3:AbortMultipartUpload", "s3:ListMultipartUploadParts"]
+        Effect = "Allow"
+        Action = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation",
+        "s3:AbortMultipartUpload", "s3:ListMultipartUploadParts"]
         Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
       },
       # Glue — Athena needs Glue for metadata
       {
-        Effect   = "Allow"
-        Action   = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
+        Effect = "Allow"
+        Action = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
           "glue:GetPartition", "glue:GetPartitions", "glue:BatchCreatePartition",
-          "glue:UpdateTable", "glue:CreateTable", "glue:DeleteTable"]
+        "glue:UpdateTable", "glue:CreateTable", "glue:DeleteTable"]
         Resource = [
           "arn:aws:glue:${var.region}:${var.aws_account_id}:catalog",
           "arn:aws:glue:${var.region}:${var.aws_account_id}:database/qgi_data",
@@ -304,10 +304,10 @@ resource "aws_iam_role_policy" "stepfunctions" {
       },
       # CloudWatch Logs — Step Functions execution logging
       {
-        Effect   = "Allow"
-        Action   = ["logs:CreateLogDelivery", "logs:GetLogDelivery", "logs:UpdateLogDelivery",
+        Effect = "Allow"
+        Action = ["logs:CreateLogDelivery", "logs:GetLogDelivery", "logs:UpdateLogDelivery",
           "logs:DeleteLogDelivery", "logs:ListLogDeliveries", "logs:PutResourcePolicy",
-          "logs:DescribeResourcePolicies", "logs:DescribeLogGroups"]
+        "logs:DescribeResourcePolicies", "logs:DescribeLogGroups"]
         Resource = "*"
       },
     ]
@@ -342,60 +342,60 @@ resource "aws_iam_role_policy" "cross_account_ops" {
     Statement = [
       # Step Functions — start and observe executions
       {
-        Effect   = "Allow"
-        Action   = ["states:StartExecution", "states:DescribeExecution",
+        Effect = "Allow"
+        Action = ["states:StartExecution", "states:DescribeExecution",
           "states:ListExecutions", "states:GetExecutionHistory",
-          "states:StopExecution"]
+        "states:StopExecution"]
         Resource = "*"
       },
       # Lambda — describe, deploy, and invoke
       {
-        Effect   = "Allow"
-        Action   = ["lambda:GetFunction", "lambda:GetFunctionConfiguration",
+        Effect = "Allow"
+        Action = ["lambda:GetFunction", "lambda:GetFunctionConfiguration",
           "lambda:ListFunctions", "lambda:UpdateFunctionCode",
-          "lambda:InvokeFunction"]
+        "lambda:InvokeFunction"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
       # CloudWatch Logs — read pipeline logs
       {
-        Effect   = "Allow"
-        Action   = ["logs:DescribeLogGroups", "logs:DescribeLogStreams",
-          "logs:GetLogEvents", "logs:FilterLogEvents"]
+        Effect = "Allow"
+        Action = ["logs:DescribeLogGroups", "logs:DescribeLogStreams",
+        "logs:GetLogEvents", "logs:FilterLogEvents"]
         Resource = "arn:aws:logs:${var.region}:${var.aws_account_id}:log-group:/aws/*:*"
       },
       # Batch — observe and manage jobs
       {
-        Effect   = "Allow"
-        Action   = ["batch:DescribeJobs", "batch:ListJobs",
+        Effect = "Allow"
+        Action = ["batch:DescribeJobs", "batch:ListJobs",
           "batch:DescribeJobQueues", "batch:DescribeComputeEnvironments",
           "batch:DescribeJobDefinitions", "batch:CancelJob",
           "batch:TerminateJob", "batch:UpdateComputeEnvironment",
-          "batch:UpdateJobQueue", "batch:SubmitJob"]
+        "batch:UpdateJobQueue", "batch:SubmitJob"]
         Resource = "*"
       },
       # Athena — run queries (MSCK REPAIR, recipe engine debugging)
       {
-        Effect   = "Allow"
-        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        Effect = "Allow"
+        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
           "athena:GetQueryResults", "athena:StopQueryExecution",
           "athena:GetWorkGroup", "athena:UpdateWorkGroup",
-          "athena:ListQueryExecutions"]
+        "athena:ListQueryExecutions"]
         Resource = "*"
       },
       # Glue — catalog access for Athena queries
       {
-        Effect   = "Allow"
-        Action   = ["glue:GetTable", "glue:GetTables", "glue:GetDatabase",
+        Effect = "Allow"
+        Action = ["glue:GetTable", "glue:GetTables", "glue:GetDatabase",
           "glue:GetPartitions", "glue:BatchCreatePartition", "glue:GetPartition",
-          "glue:CreateTable", "glue:DeleteTable", "glue:UpdateTable"]
+        "glue:CreateTable", "glue:DeleteTable", "glue:UpdateTable"]
         Resource = "*"
       },
       # S3 — read/delete pipeline data lake objects (for e2e test resets)
       {
-        Effect   = "Allow"
-        Action   = ["s3:ListBucket", "s3:GetObject", "s3:DeleteObject", "s3:PutObject", "s3:HeadObject",
+        Effect = "Allow"
+        Action = ["s3:ListBucket", "s3:GetObject", "s3:DeleteObject", "s3:PutObject", "s3:HeadObject",
           "s3:GetBucketLocation", "s3:ListBucketMultipartUploads", "s3:AbortMultipartUpload",
-          "s3:ListMultipartUploadParts", "s3:PutObjectAcl"]
+        "s3:ListMultipartUploadParts", "s3:PutObjectAcl"]
         Resource = [
           "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}",
           "arn:aws:s3:::qgi-data-lake-${var.aws_account_id}/*"
@@ -415,16 +415,16 @@ resource "aws_iam_role_policy" "cross_account_ops" {
       },
       # EC2 — manage indicator fetcher instance
       {
-        Effect   = "Allow"
-        Action   = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances",
-          "ec2:DescribeInstanceStatus"]
+        Effect = "Allow"
+        Action = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances",
+        "ec2:DescribeInstanceStatus"]
         Resource = "*"
       },
       # SSM — send commands and check status
       {
-        Effect   = "Allow"
-        Action   = ["ssm:SendCommand", "ssm:GetCommandInvocation",
-          "ssm:ListCommandInvocations", "ssm:DescribeInstanceInformation"]
+        Effect = "Allow"
+        Action = ["ssm:SendCommand", "ssm:GetCommandInvocation",
+        "ssm:ListCommandInvocations", "ssm:DescribeInstanceInformation"]
         Resource = "*"
       },
     ]
@@ -517,7 +517,7 @@ resource "aws_iam_role_policy" "fargate_indicator_fetcher_task" {
       {
         Effect = "Allow"
         Action = ["glue:GetDatabase", "glue:GetTable", "glue:GetTables",
-        "glue:GetPartition", "glue:GetPartitions", "glue:BatchCreatePartition",
+          "glue:GetPartition", "glue:GetPartitions", "glue:BatchCreatePartition",
         "glue:CreatePartition", "glue:UpdateTable"]
         Resource = [
           "arn:aws:glue:${var.region}:${var.aws_account_id}:catalog",
@@ -566,9 +566,12 @@ resource "aws_iam_role_policy" "eventbridge_scheduler" {
     Version = "2012-10-17"
     Statement = [
       {
-        Effect   = "Allow"
-        Action   = ["states:StartExecution"]
-        Resource = var.state_machine_arn != "" ? var.state_machine_arn : "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-monthly-updater"
+        Effect = "Allow"
+        Action = ["states:StartExecution"]
+        Resource = [
+          var.state_machine_arn != "" ? var.state_machine_arn : "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-monthly-updater",
+          var.fetch_state_machine_arn != "" ? var.fetch_state_machine_arn : "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-data-refresher",
+        ]
       }
     ]
   })

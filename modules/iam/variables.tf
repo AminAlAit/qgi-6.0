@@ -56,6 +56,12 @@ variable "state_machine_arn" {
   default     = ""
 }
 
+variable "fetch_state_machine_arn" {
+  type        = string
+  description = "#175: Fetch SF ARN for EventBridge scheduler role. Pass empty string during bootstrap."
+  default     = ""
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

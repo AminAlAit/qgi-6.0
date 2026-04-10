@@ -55,12 +55,12 @@ locals {
   aws_sdk_pandas_layer = "arn:aws:lambda:${var.region}:336392948345:layer:AWSSDKPandas-Python313-Arm64:1"
 
   lambda_defaults = {
-    runtime       = "python3.13"
-    architectures = ["arm64"]
-    filename      = data.archive_file.placeholder.output_path
+    runtime          = "python3.13"
+    architectures    = ["arm64"]
+    filename         = data.archive_file.placeholder.output_path
     source_code_hash = data.archive_file.placeholder.output_base64sha256
-    role          = var.lambda_execution_role_arn
-    layers        = [local.aws_sdk_pandas_layer]
+    role             = var.lambda_execution_role_arn
+    layers           = [local.aws_sdk_pandas_layer]
   }
   s3_output_location = "s3://${var.data_lake_bucket_name}/query_results/"
 
@@ -120,11 +120,11 @@ resource "aws_lambda_function" "a_sheet_fetcher" {
 
   environment {
     variables = {
-      INPUT_BUCKET        = var.data_lake_bucket_name
-      INPUT_KEY           = "pipeline-A-indicator-extractor/indicators/Pipeline A Dispatcher World Bank Indicators.xlsx"
-      OUTPUT_BUCKET       = var.data_lake_bucket_name
-      OUTPUT_KEY          = "indicators/indicators.json"
-      INDICATOR_MAP_KEY   = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+      INPUT_BUCKET      = var.data_lake_bucket_name
+      INPUT_KEY         = "pipeline-A-indicator-extractor/indicators/Pipeline A Dispatcher World Bank Indicators.xlsx"
+      OUTPUT_BUCKET     = var.data_lake_bucket_name
+      OUTPUT_KEY        = "indicators/indicators.json"
+      INDICATOR_MAP_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
     }
   }
 
@@ -169,19 +169,19 @@ resource "aws_lambda_function" "a_batch_dispatcher" {
 
   environment {
     variables = {
-      S3_BUCKET                 = var.data_lake_bucket_name
-      INDICATORS_KEY            = "pipeline-A-indicator-extractor/input/indicators.json"
-      BATCH_JOB_QUEUE           = var.fetcher_job_queue_arn
-      BATCH_JOB_DEFINITION      = var.fetcher_job_definition_arn
-      COUNTER_TABLE             = var.pipeline_a_counter_table_name
-      TRACKER_TABLE             = var.indicator_table_name
-      INDICATOR_VALUES_TABLE    = var.indicator_values_table_name
-      ATHENA_DATABASE           = var.glue_database_name
-      ATHENA_WORKGROUP          = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION    = local.s3_output_location
-      JITTER_MIN_S              = tostring(var.phase1_jitter_min_s)
-      JITTER_MAX_S              = tostring(var.phase1_jitter_max_s)
-      DISPATCH_LIMIT            = tostring(var.dispatch_limit)
+      S3_BUCKET              = var.data_lake_bucket_name
+      INDICATORS_KEY         = "pipeline-A-indicator-extractor/input/indicators.json"
+      BATCH_JOB_QUEUE        = var.fetcher_job_queue_arn
+      BATCH_JOB_DEFINITION   = var.fetcher_job_definition_arn
+      COUNTER_TABLE          = var.pipeline_a_counter_table_name
+      TRACKER_TABLE          = var.indicator_table_name
+      INDICATOR_VALUES_TABLE = var.indicator_values_table_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      JITTER_MIN_S           = tostring(var.phase1_jitter_min_s)
+      JITTER_MAX_S           = tostring(var.phase1_jitter_max_s)
+      DISPATCH_LIMIT         = tostring(var.dispatch_limit)
     }
   }
 
@@ -203,8 +203,8 @@ resource "aws_lambda_function" "a_batch_checker" {
 
   environment {
     variables = {
-      COUNTER_TABLE     = var.pipeline_a_counter_table_name
-      DEADMAN_SECONDS   = tostring(var.phase1_deadman_seconds)
+      COUNTER_TABLE   = var.pipeline_a_counter_table_name
+      DEADMAN_SECONDS = tostring(var.phase1_deadman_seconds)
     }
   }
 
@@ -235,8 +235,11 @@ resource "aws_lambda_function" "a_reporter" {
       SNS_TOPIC_ARN  = var.sns_topic_arn
       PIPELINE_B_ARN = aws_lambda_function.b_orchestrator.arn
       # #FAR-1: tables read by the detailed email reporter
-      TRACKER_TABLE  = var.indicator_table_name
-      COUNTER_TABLE  = var.pipeline_a_counter_table_name
+      TRACKER_TABLE = var.indicator_table_name
+      COUNTER_TABLE = var.pipeline_a_counter_table_name
+      # #175: write fetch manifest to S3 for the decoupled Main SF
+      S3_BUCKET    = var.data_lake_bucket_name
+      MANIFEST_KEY = "indicator-freshness/latest-fetch-manifest.json"
     }
   }
 
@@ -261,12 +264,12 @@ resource "aws_lambda_function" "a_completer" {
 
   environment {
     variables = {
-      S3_BUCKET                   = var.data_lake_bucket_name
-      INPUT_PREFIX                = "pipeline-A-indicator-extractor/output/parquet"
-      OUTPUT_PREFIX               = "pipeline-A-indicator-extractor/output/parquet-completed"
-      INDICATOR_MAP_KEY           = "pipeline-A-indicator-extractor/input/indicator_map.csv"
-      ATHENA_DATABASE             = var.glue_database_name
-      ATHENA_WORKGROUP            = var.athena_workgroup_name
+      S3_BUCKET         = var.data_lake_bucket_name
+      INPUT_PREFIX      = "pipeline-A-indicator-extractor/output/parquet"
+      OUTPUT_PREFIX     = "pipeline-A-indicator-extractor/output/parquet-completed"
+      INDICATOR_MAP_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+      ATHENA_DATABASE   = var.glue_database_name
+      ATHENA_WORKGROUP  = var.athena_workgroup_name
       # #148: name of the DDB table to mirror indicator values into
       INDICATOR_VALUES_TABLE_NAME = var.indicator_values_table_name
     }
@@ -642,6 +645,34 @@ resource "aws_lambda_function" "recipe_engine_finalize" {
 }
 
 # ---------------------------------------------------------------------------
+# #175: Indicator manifest reader (decoupled pipeline)
+#
+# Reads the fetch manifest from S3 and returns it for the Main SF.
+# ~35 LOC, no external dependencies, <1 second wall time.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "indicator_manifest_reader" {
+  function_name    = "qgi-pipeline-indicator-manifest-reader"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 30
+  memory_size      = 128
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+
+  environment {
+    variables = {
+      S3_BUCKET    = var.data_lake_bucket_name
+      MANIFEST_KEY = "indicator-freshness/latest-fetch-manifest.json"
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # Utility — Batch job terminator (Step Function + Lambda fan-out)
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "batch_job_terminator" {
@@ -679,9 +710,9 @@ resource "aws_sfn_state_machine" "batch_job_terminator" {
         Type     = "Task"
         Resource = aws_lambda_function.batch_job_terminator.arn
         Parameters = {
-          mode   = "list"
-          reason = "Terminated by Step Function."
-          bucket = var.data_lake_bucket_name
+          mode       = "list"
+          reason     = "Terminated by Step Function."
+          bucket     = var.data_lake_bucket_name
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.listing"
@@ -717,10 +748,10 @@ resource "aws_sfn_state_machine" "batch_job_terminator" {
               Type     = "Task"
               Resource = aws_lambda_function.batch_job_terminator.arn
               Parameters = {
-                mode        = "kill"
-                reason      = "Terminated by Step Function."
-                bucket      = var.data_lake_bucket_name
-                "run_id.$"  = "$$.Execution.Name"
+                mode            = "kill"
+                reason          = "Terminated by Step Function."
+                bucket          = var.data_lake_bucket_name
+                "run_id.$"      = "$$.Execution.Name"
                 "chunk_index.$" = "$.chunk_index"
               }
               End = true
@@ -757,7 +788,115 @@ resource "aws_sfn_state_machine" "batch_job_terminator" {
 }
 
 # ---------------------------------------------------------------------------
-# Step Functions — state machine
+# Step Functions — Fetch SF (#175: decoupled indicator data refresher)
+#
+# Standalone SF that fetches indicator data from WB/FAOSTAT/ILOSTAT,
+# writes parquets to S3, and produces a manifest JSON for the Main SF.
+# Runs monthly via EventBridge or manually. Does NOT process SCDIs/patterns.
+# ---------------------------------------------------------------------------
+resource "aws_sfn_state_machine" "fetch_pipeline" {
+  name     = "qgi-indicator-data-refresher"
+  role_arn = var.stepfunctions_role_arn
+
+  definition = jsonencode({
+    Comment = "QGI Fetch Pipeline (#175) — fetches indicator data, writes manifest"
+    StartAt = "F.0 Fetch XLSX"
+    States = {
+      "F.0 Fetch XLSX" = {
+        Type       = "Task"
+        Resource   = aws_lambda_function.a_sheet_fetcher.arn
+        ResultPath = "$.fetcher_output"
+        Retry      = local.lambda_retry
+        Next       = "F.1 Dispatch Fargate"
+      }
+
+      "F.1 Dispatch Fargate" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.a_batch_dispatcher.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.dispatch_output"
+        Retry      = local.lambda_retry
+        Next       = "F.2 Wait 2m"
+      }
+
+      "F.2 Wait 2m" = {
+        Type    = "Wait"
+        Seconds = 120
+        Next    = "F.3 Check Counter"
+      }
+
+      "F.3 Check Counter" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.a_batch_checker.arn
+        Parameters = {
+          "run_id.$"            = "$$.Execution.Name"
+          "phase1_started_at.$" = "$.dispatch_output.phase1_started_at"
+          "total.$"             = "$.dispatch_output.total"
+        }
+        ResultPath = "$.check"
+        Retry      = local.lambda_retry
+        Next       = "F.4 Fetchers Done?"
+      }
+
+      "F.4 Fetchers Done?" = {
+        Type = "Choice"
+        Choices = [{
+          Variable      = "$.check.done"
+          BooleanEquals = true
+          Next          = "F.5 Report"
+        }]
+        Default = "F.2 Wait 2m"
+      }
+
+      # Reporter now writes manifest to S3 (#175) so the Main SF
+      # can read it via the manifest-reader Lambda.
+      "F.5 Report" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.a_reporter.arn
+        Parameters = {
+          "run_id.$"          = "$$.Execution.Name"
+          "deadman_expired.$" = "$.check.deadman_expired"
+          "total.$"           = "$.check.total"
+          "done.$"            = "$.check.done"
+          "pending.$"         = "$.check.pending"
+        }
+        ResultPath = "$.reporter_result"
+        Retry      = local.lambda_retry
+        End        = true
+      }
+    }
+  })
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# EventBridge Scheduler — Fetch SF monthly (#175)
+# DISABLED by default. Enable after first manual verification.
+# ---------------------------------------------------------------------------
+resource "aws_scheduler_schedule" "fetch_monthly" {
+  name       = "qgi-indicator-data-refresher-1st"
+  group_name = "default"
+
+  flexible_time_window {
+    mode = "OFF"
+  }
+
+  schedule_expression          = "cron(0 6 1 * ? *)"
+  schedule_expression_timezone = "Europe/Berlin"
+
+  state = "DISABLED"
+
+  target {
+    arn      = aws_sfn_state_machine.fetch_pipeline.arn
+    role_arn = var.eventbridge_scheduler_role_arn
+  }
+}
+
+# ---------------------------------------------------------------------------
+# Step Functions — Main pipeline state machine
 #
 # Changes vs production:
 # - Phase 3: Glue crawler replaced with MSCK REPAIR TABLE scdis (issue #66)
@@ -777,7 +916,46 @@ resource "aws_sfn_state_machine" "pipeline" {
         Resource   = aws_lambda_function.ops_janitor.arn
         ResultPath = "$.janitor_output"
         Retry      = local.lambda_retry
-        Next       = "1a. Fetch Indicators XLSX"
+        Next       = "Route by Mode"
+      }
+
+      # -----------------------------------------------------------------
+      # #175: Mode routing — decoupled pipeline supports three run modes.
+      #
+      # Input: {"mode": "full"|"recipes_only"|"dashboards_only",
+      #         "force_full_run": bool (optional, default false)}
+      #
+      # "full" (default): read manifest → completer → SCDI → patterns → recipes → report
+      # "recipes_only":   skip phases 1-4, jump to 5b (recipe engine)
+      # "dashboards_only": just regenerate the 3 dashboard JSONs from current recipes
+      # -----------------------------------------------------------------
+      "Route by Mode" = {
+        Type = "Choice"
+        Choices = [
+          {
+            Variable     = "$.mode"
+            StringEquals = "recipes_only"
+            Next         = "5b.1. Drop Recipes Table"
+          },
+          {
+            Variable     = "$.mode"
+            StringEquals = "dashboards_only"
+            Next         = "Finalize Dashboards"
+          }
+        ]
+        Default = "1a. Fetch Indicators XLSX"
+      }
+
+      # dashboards_only: invoke finalize directly, skip everything else
+      "Finalize Dashboards" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_engine_finalize.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.recipe_finalize_output"
+        Retry      = local.lambda_retry
+        Next       = "6. Ops Report"
       }
 
       "1a. Fetch Indicators XLSX" = {
@@ -785,80 +963,34 @@ resource "aws_sfn_state_machine" "pipeline" {
         Resource   = aws_lambda_function.a_sheet_fetcher.arn
         ResultPath = "$.fetcher_output"
         Retry      = local.lambda_retry
-        Next       = "1b. Dispatch Fargate Fetchers"
+        Next       = "1-manifest. Read Fetch Manifest"
       }
 
-      # #FAR-1: Fan out one Fargate Spot task per indicator. Dispatcher
-      # seeds the counter to N at this step so the checker has a fixed
-      # finish line.
-      "1b. Dispatch Fargate Fetchers" = {
-        Type     = "Task"
-        Resource = aws_lambda_function.a_batch_dispatcher.arn
-        Parameters = {
-          "run_id.$" = "$$.Execution.Name"
-        }
-        ResultPath = "$.dispatch_a_output"
-        Retry      = local.lambda_retry
-        Next       = "1c. Wait 2m (Fetcher Poll)"
-      }
-
-      "1c. Wait 2m (Fetcher Poll)" = {
-        Type    = "Wait"
-        Seconds = 120
-        Next    = "1d. Check Fetcher Counter"
-      }
-
-      # #FAR-1: Polls the qgi-pipeline-a-counter DDB row for run_id.
-      # Returns done=true when pending hits 0, OR when the deadman
-      # timer (default 90 min) expires (sets deadman_expired=true so
-      # the reporter can flag the run as degraded).
-      "1d. Check Fetcher Counter" = {
-        Type     = "Task"
-        Resource = aws_lambda_function.a_batch_checker.arn
-        Parameters = {
-          "run_id.$"             = "$$.Execution.Name"
-          "phase1_started_at.$"  = "$.dispatch_a_output.phase1_started_at"
-          "total.$"              = "$.dispatch_a_output.total"
-        }
-        ResultPath = "$.a_check"
-        Retry      = local.lambda_retry
-        Next       = "1e. Fetchers Done?"
-      }
-
-      "1e. Fetchers Done?" = {
-        Type = "Choice"
-        Choices = [{
-          Variable      = "$.a_check.done"
-          BooleanEquals = true
-          Next          = "1f. Email Fetcher Report"
-        }]
-        Default = "1c. Wait 2m (Fetcher Poll)"
-      }
-
-      "1f. Email Fetcher Report" = {
-        Type     = "Task"
-        Resource = aws_lambda_function.a_reporter.arn
-        Parameters = {
-          "run_id.$"           = "$$.Execution.Name"
-          "deadman_expired.$"  = "$.a_check.deadman_expired"
-          "total.$"            = "$.a_check.total"
-          "done.$"             = "$.a_check.done"
-          "pending.$"          = "$.a_check.pending"
-        }
+      # #175: Reads the fetch manifest from S3 (written by the separate
+      # Fetch SF qgi-indicator-data-refresher). Returns updated_ids +
+      # all_indicator_ids. If force_full_run=true, overrides updated_ids
+      # with all indicators for a full recompute.
+      #
+      # Output goes to $.reporter_result so all downstream states (1g,
+      # 1h, 2a) work unchanged — they already reference
+      # $.reporter_result.updated_ids and $.reporter_result.updated_count.
+      "1-manifest. Read Fetch Manifest" = {
+        Type       = "Task"
+        Resource   = aws_lambda_function.indicator_manifest_reader.arn
+        InputPath  = "$"
         ResultPath = "$.reporter_result"
         Retry      = local.lambda_retry
         Next       = "1g. Complete Indicator Series"
       }
 
       # #157: pass updated_ids into the completer so it only mirrors
-      # changed indicators to qgi-indicator-values DDB (prior behavior
-      # re-mirrored all ~60 indicators on every run = ~720K writes/run).
+      # changed indicators to qgi-indicator-values DDB.
       "1g. Complete Indicator Series" = {
         Type     = "Task"
         Resource = aws_lambda_function.a_completer.arn
         Parameters = {
-          "run_id.$"       = "$$.Execution.Name"
-          "updated_ids.$"  = "$.reporter_result.updated_ids"
+          "run_id.$"      = "$$.Execution.Name"
+          "updated_ids.$" = "$.reporter_result.updated_ids"
         }
         ResultPath = "$.completer_result"
         Retry      = local.lambda_retry
@@ -1026,10 +1158,10 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
-          QueryString = "DROP TABLE IF EXISTS `${var.glue_database_name}`.`recipes`;"
-          WorkGroup   = var.athena_workgroup_name
+          QueryString           = "DROP TABLE IF EXISTS `${var.glue_database_name}`.`recipes`;"
+          WorkGroup             = var.athena_workgroup_name
           QueryExecutionContext = { Database = var.glue_database_name }
-          ResultConfiguration  = { OutputLocation = local.s3_output_location }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
         }
         ResultPath = "$.drop_recipes_output"
         Retry = [{
@@ -1045,16 +1177,16 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
-          QueryString = <<-EOT
+          QueryString           = <<-EOT
             SELECT country_a_id, count(*) AS pc
             FROM `${var.glue_database_name}`.`patterns`
             WHERE country_a_id IS NOT NULL
             GROUP BY country_a_id
             ORDER BY pc ASC
           EOT
-          WorkGroup = var.athena_workgroup_name
+          WorkGroup             = var.athena_workgroup_name
           QueryExecutionContext = { Database = var.glue_database_name }
-          ResultConfiguration  = { OutputLocation = local.s3_output_location }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
         }
         ResultPath = "$.enumerate_output"
         Retry = [{
@@ -1070,7 +1202,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = aws_lambda_function.recipe_engine_list_formatter.arn
         Parameters = {
-          "run_id.$"               = "$$.Execution.Name"
+          "run_id.$"                 = "$$.Execution.Name"
           "country_count_query_id.$" = "$.enumerate_output.QueryExecution.QueryExecutionId"
         }
         ResultPath = "$.recipe_list"
@@ -1082,10 +1214,10 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
-          "QueryString.$" = "$.recipe_list.seed_sql"
-          WorkGroup       = var.athena_workgroup_name
+          "QueryString.$"       = "$.recipe_list.seed_sql"
+          WorkGroup             = var.athena_workgroup_name
           QueryExecutionContext = { Database = var.glue_database_name }
-          ResultConfiguration  = { OutputLocation = local.s3_output_location }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
         }
         ResultPath = "$.seed_ctas_output"
         Retry = [{
@@ -1111,10 +1243,10 @@ resource "aws_sfn_state_machine" "pipeline" {
               Type     = "Task"
               Resource = "arn:aws:states:::athena:startQueryExecution.sync"
               Parameters = {
-                "QueryString.$" = "$.drop_partition_sql"
-                WorkGroup       = var.athena_workgroup_name
+                "QueryString.$"       = "$.drop_partition_sql"
+                WorkGroup             = var.athena_workgroup_name
                 QueryExecutionContext = { Database = var.glue_database_name }
-                ResultConfiguration  = { OutputLocation = local.s3_output_location }
+                ResultConfiguration   = { OutputLocation = local.s3_output_location }
               }
               ResultPath = "$.drop_output"
               Retry = [{
@@ -1129,10 +1261,10 @@ resource "aws_sfn_state_machine" "pipeline" {
               Type     = "Task"
               Resource = "arn:aws:states:::athena:startQueryExecution.sync"
               Parameters = {
-                "QueryString.$" = "$.insert_sql"
-                WorkGroup       = var.athena_workgroup_name
+                "QueryString.$"       = "$.insert_sql"
+                WorkGroup             = var.athena_workgroup_name
                 QueryExecutionContext = { Database = var.glue_database_name }
-                ResultConfiguration  = { OutputLocation = local.s3_output_location }
+                ResultConfiguration   = { OutputLocation = local.s3_output_location }
               }
               ResultPath = "$.insert_output"
               Retry = [{
@@ -1153,15 +1285,15 @@ resource "aws_sfn_state_machine" "pipeline" {
         # A cleanup Lambda (Catch → StopQueryExecution on survivors)
         # can be added later if the zombie cost is material.
         ToleratedFailurePercentage = 0
-        ResultPath = "$.map_results"
-        Next       = "5b.6. Finalize"
+        ResultPath                 = "$.map_results"
+        Next                       = "5b.6. Finalize"
       }
 
       "5b.6. Finalize" = {
         Type     = "Task"
         Resource = aws_lambda_function.recipe_engine_finalize.arn
         Parameters = {
-          "run_id.$"          = "$$.Execution.Name"
+          "run_id.$"           = "$$.Execution.Name"
           "partitions_total.$" = "$.recipe_list.partitions_total"
         }
         ResultPath = "$.recipe_finalize_output"
