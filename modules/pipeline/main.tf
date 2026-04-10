@@ -1018,12 +1018,17 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.trigger_b_output"
         Retry      = local.lambda_retry
-        Next       = "2b. Wait 30m (SCDI Poll)"
+        Next       = "2b. Wait 2m (SCDI Poll)"
       }
 
-      "2b. Wait 30m (SCDI Poll)" = {
+      # #167: replaced 30m hard wait with 2m poll loop (matches Phase 1 pattern).
+      # Saves 20+ min of dead time on small test runs (3-indicator runs finish
+      # in ~5 min but the old 30m wait sat idle). On full 60-indicator runs,
+      # Batch takes ~20-30 min so the poll loop checks ~15 times and exits
+      # within a minute of completion instead of waiting for the next 30m tick.
+      "2b. Wait 2m (SCDI Poll)" = {
         Type    = "Wait"
-        Seconds = 1800
+        Seconds = 120
         Next    = "2c. Check SCDI Batch"
       }
 
@@ -1040,7 +1045,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Choices = [{
           Variable           = "$.batch_status.jobs_running"
           NumericGreaterThan = 0
-          Next               = "2b. Wait 30m (SCDI Poll)"
+          Next               = "2b. Wait 2m (SCDI Poll)"
         }]
         Default = "3. Athena MSCK scdis"
       }
