@@ -159,7 +159,9 @@ resource "aws_batch_job_definition" "indicator_fetcher" {
   }
 
   container_properties = jsonencode({
-    image   = "${var.management_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-a-indicator-fetcher:latest"
+    # Per-environment ECR repo (not cross-account from management).
+    # #152 Path A was parked — using local staging ECR for now.
+    image   = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-a-indicator-fetcher:latest"
     command = []
 
     jobRoleArn       = var.fargate_task_role_arn
