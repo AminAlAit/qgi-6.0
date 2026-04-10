@@ -52,43 +52,55 @@ RECIPES_NORMALIZED_VIEW_NAME = "recipes_normalized"
 CONVERGENCE_VIEW_NAME = "recipe_convergence"
 
 # ---------------------------------------------------------------------------
-# #133: Country → region map for the convergence score view.
-# Duplicated from the old monolithic recipe-engine Lambda. Source of truth
-# lives here; if a country is reclassified, update this dict and redeploy.
+# #170: Country → region map for the convergence score view.
+#
+# Canonical source of truth: qgi-data/registries/country_regions.yaml
+# (synced to S3 at indicator-freshness/country_regions.yaml).
+#
+# This Lambda reads the YAML from S3 at init time and caches it.
+# Falls back to an embedded copy if S3 read fails (cold start, missing
+# file, permissions). The fallback is intentionally NOT maintained — it
+# exists only as a safety net. If you update regions, update the YAML
+# in qgi-data, sync to S3, and redeploy.
 # ---------------------------------------------------------------------------
-COUNTRY_REGIONS = {
-    "AFR": {
-        "AO","BF","BI","BJ","BW","CD","CF","CG","CI","CM","CV","DJ","ER","ET","GA",
-        "GH","GM","GN","GQ","GW","KE","KM","LR","LS","MG","ML","MR","MU","MW","MZ",
-        "NA","NE","NG","RE","RW","SC","SH","SL","SN","SO","SS","ST","SZ","TD","TG",
-        "TZ","UG","YT","ZA","ZM","ZW",
-    },
-    "MEA": {
-        "AE","BH","DZ","EG","EH","IL","IQ","IR","JO","KW","LB","LY","MA","OM","PS",
-        "QA","SA","SD","SY","TN","TR","YE",
-    },
-    "EUR": {
-        "AD","AL","AT","AX","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES",
-        "FI","FO","FR","GB","GG","GI","GL","GR","HR","HU","IE","IM","IS","IT","JE",
-        "LI","LT","LU","LV","MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS",
-        "RU","SE","SI","SJ","SK","SM","UA","VA","XK",
-    },
-    "ASI": {
-        "AF","AM","AZ","BD","BN","BT","CC","CN","CX","GE","HK","ID","IN","IO","JP",
-        "KG","KH","KP","KR","KZ","LA","LK","MM","MN","MO","MV","MY","NP","PH","PK",
-        "SG","TH","TJ","TL","TM","TW","UZ","VN",
-    },
-    "AMR": {
-        "AG","AI","AN","AR","AW","BB","BL","BM","BO","BQ","BR","BS","BZ","CA","CL",
-        "CO","CR","CU","CW","DM","DO","EC","FK","GD","GF","GP","GS","GT","GY","HN",
-        "HT","JM","KN","KY","LC","MF","MQ","MS","MX","NI","PA","PE","PM","PR","PY",
-        "SR","SV","SX","TC","TT","US","UY","VC","VE","VG","VI",
-    },
-    "OCE": {
-        "AQ","AS","AU","BV","CK","FJ","FM","GU","HM","KI","MH","MP","NC","NF","NR",
-        "NU","NZ","PF","PG","PN","PW","SB","TF","TK","TO","TV","UM","VU","WF","WS",
-    },
-}
+REGIONS_S3_KEY = os.environ.get(
+    'REGIONS_KEY', 'indicator-freshness/country_regions.yaml'
+)
+
+def _load_country_regions():
+    """Load country regions from S3 YAML, fall back to hardcoded."""
+    try:
+        obj = boto3.client('s3').get_object(Bucket=S3_BUCKET, Key=REGIONS_S3_KEY)
+        raw = obj['Body'].read().decode('utf-8')
+        # Parse simple YAML without pyyaml: each region is "REG:" followed by "  - XX" lines
+        regions = {}
+        current_region = None
+        for line in raw.split('\n'):
+            stripped = line.strip()
+            if stripped.startswith('#') or stripped.startswith('version') or not stripped:
+                continue
+            if not line.startswith(' ') and stripped.endswith(':'):
+                current_region = stripped[:-1]
+                regions[current_region] = set()
+            elif current_region and stripped.startswith('- '):
+                regions[current_region].add(stripped[2:].strip())
+        if regions:
+            logger.info(f"Loaded {sum(len(v) for v in regions.values())} country codes from S3")
+            return regions
+    except Exception:
+        logger.warning("Failed to load country_regions from S3, using fallback", exc_info=True)
+
+    # Hardcoded fallback (last synced 2026-04-10, 251 codes, 6 regions)
+    return {
+        "AFR": {"AO","BF","BI","BJ","BW","CD","CF","CG","CI","CM","CV","DJ","ER","ET","GA","GH","GM","GN","GQ","GW","KE","KM","LR","LS","MG","ML","MR","MU","MW","MZ","NA","NE","NG","RE","RW","SC","SH","SL","SN","SO","SS","ST","SZ","TD","TG","TZ","UG","YT","ZA","ZM","ZW"},
+        "MEA": {"AE","BH","DZ","EG","EH","IL","IQ","IR","JO","KW","LB","LY","MA","OM","PS","QA","SA","SD","SY","TN","TR","YE"},
+        "EUR": {"AD","AL","AT","AX","BA","BE","BG","BY","CH","CY","CZ","DE","DK","EE","ES","FI","FO","FR","GB","GG","GI","GL","GR","HR","HU","IE","IM","IS","IT","JE","LI","LT","LU","LV","MC","MD","ME","MK","MT","NL","NO","PL","PT","RO","RS","RU","SE","SI","SJ","SK","SM","UA","VA","XK"},
+        "ASI": {"AF","AM","AZ","BD","BN","BT","CC","CN","CX","GE","HK","ID","IN","IO","JP","KG","KH","KP","KR","KZ","LA","LK","MM","MN","MO","MV","MY","NP","PH","PK","SG","TH","TJ","TL","TM","TW","UZ","VN"},
+        "AMR": {"AG","AI","AN","AR","AW","BB","BL","BM","BO","BQ","BR","BS","BZ","CA","CL","CO","CR","CU","CW","DM","DO","EC","FK","GD","GF","GP","GS","GT","GY","HN","HT","JM","KN","KY","LC","MF","MQ","MS","MX","NI","PA","PE","PM","PR","PY","SR","SV","SX","TC","TT","US","UY","VC","VE","VG","VI"},
+        "OCE": {"AQ","AS","AU","BV","CK","FJ","FM","GU","HM","KI","MH","MP","NC","NF","NR","NU","NZ","PF","PG","PN","PW","SB","TF","TK","TO","TV","UM","VU","WF","WS"},
+    }
+
+COUNTRY_REGIONS = _load_country_regions()
 
 
 athena = boto3.client('athena')
