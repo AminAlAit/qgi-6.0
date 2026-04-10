@@ -204,6 +204,8 @@ resource "aws_lambda_function" "a_batch_checker" {
   environment {
     variables = {
       COUNTER_TABLE   = var.pipeline_a_counter_table_name
+      # #178: scan-count checker reads tracker table instead of counter
+      TRACKER_TABLE   = var.indicator_table_name
       DEADMAN_SECONDS = tostring(var.phase1_deadman_seconds)
     }
   }

@@ -150,8 +150,12 @@ resource "aws_batch_job_definition" "indicator_fetcher" {
 
   platform_capabilities = ["FARGATE"]
 
+  # #178: Fargate Spot tasks can be reclaimed by AWS. attempts=10 gives
+  # Batch plenty of room to auto-retry on Spot interruption. Combined with
+  # the scan-count checker (#178), a retried task just writes its tracker
+  # row on the successful attempt.
   retry_strategy {
-    attempts = 2
+    attempts = 10
   }
 
   timeout {
