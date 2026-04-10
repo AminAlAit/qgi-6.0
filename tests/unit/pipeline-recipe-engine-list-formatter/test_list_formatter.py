@@ -37,6 +37,11 @@ def _make_athena_results(country_counts):
 def _load_module(country_counts):
     """Load list-formatter with a mocked athena client returning given country counts."""
     athena_mock = MagicMock()
+    # Mock the enumerate query (start + poll + results)
+    athena_mock.start_query_execution.return_value = {"QueryExecutionId": "q-enum-1"}
+    athena_mock.get_query_execution.return_value = {
+        "QueryExecution": {"Status": {"State": "SUCCEEDED"}}
+    }
     athena_mock.get_query_results.return_value = _make_athena_results(country_counts)
 
     def client_factory(name, *a, **kw):
@@ -47,7 +52,7 @@ def _load_module(country_counts):
     boto3_stub = types.ModuleType("boto3")
     boto3_stub.client = MagicMock(side_effect=client_factory)
 
-    env = {"ATHENA_DATABASE": "qgi_data"}
+    env = {"ATHENA_DATABASE": "qgi_data", "ATHENA_WORKGROUP": "test-wg"}
     with patch.dict(sys.modules, {"boto3": boto3_stub}), \
          patch.dict(os.environ, env):
         spec = importlib.util.spec_from_file_location(
@@ -55,6 +60,8 @@ def _load_module(country_counts):
         )
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
+        # Stub time.sleep so the poll loop doesn't actually wait
+        mod.time.sleep = lambda *_: None
     return mod
 
 
@@ -69,7 +76,6 @@ def test_seed_is_smallest_by_pattern_count():
     # counts already sorted asc: id=99 has 10 patterns (smallest), id=1 has 50000
     mod = _load_module([(99, 10), (42, 500), (1, 50000)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc-123",
         "run_id": "test",
     }, None)
 
@@ -88,8 +94,7 @@ def test_all_inserts_have_partition_filter():
     """Every generated INSERT must contain WHERE p.country_a_id = N."""
     mod = _load_module([(5, 1), (10, 100), (20, 200), (30, 300)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc",
-        "run_id": "test",
+                "run_id": "test",
     }, None)
 
     # Seed should also have partition filter
@@ -109,8 +114,7 @@ def test_all_inserts_have_partition_filter():
 def test_seed_is_ctas_and_rest_are_insert():
     mod = _load_module([(5, 1), (10, 100), (20, 200)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc",
-        "run_id": "test",
+                "run_id": "test",
     }, None)
 
     assert "CREATE TABLE" in result['seed_sql']
@@ -130,8 +134,7 @@ def test_empty_country_list_raises():
     raised = False
     try:
         mod.lambda_handler({
-            "country_count_query_id": "q-abc",
-            "run_id": "test",
+                        "run_id": "test",
         }, None)
     except RuntimeError as exc:
         raised = True
@@ -146,8 +149,7 @@ def test_empty_country_list_raises():
 def test_cutoff_year_threaded_into_sql():
     mod = _load_module([(5, 1), (10, 100)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc",
-        "run_id": "test",
+                "run_id": "test",
         "cutoff_year": 2020,
     }, None)
 
@@ -165,8 +167,7 @@ def test_cutoff_year_threaded_into_sql():
 def test_drop_partition_sql_generated():
     mod = _load_module([(5, 1), (10, 100), (20, 200)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc",
-        "run_id": "test",
+                "run_id": "test",
     }, None)
 
     for item in result['insert_items']:
@@ -182,8 +183,7 @@ def test_drop_partition_sql_generated():
 def test_partitions_total():
     mod = _load_module([(5, 1), (10, 100), (20, 200), (30, 300)])
     result = mod.lambda_handler({
-        "country_count_query_id": "q-abc",
-        "run_id": "test",
+                "run_id": "test",
     }, None)
 
     assert result['partitions_total'] == 4

@@ -39,11 +39,17 @@ Doing Step 3 here (in Python) rather than in ASL `States.Format()` avoids
 the #162 review issue 4: SQL escape hazards when any literal in the
 INSERT query body contains quotes, percent signs, or backslashes.
 
-This Lambda does NO Athena execution itself. Total wall time budget < 10s.
+This Lambda runs ONE Athena SELECT query (~2s) to enumerate country_a_ids,
+then generates all per-country SQL strings. Total wall time budget < 30s.
+
+Note: the SELECT query was originally in a separate SF Athena .sync state
+(5b.2) but Athena .sync only supports DDL/DML, not plain SELECT. Moved
+into this Lambda as a fix.
 """
 
 import os
 import json
+import time
 import logging
 from datetime import datetime, timezone
 
@@ -53,6 +59,8 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 ATHENA_DB = os.environ.get('ATHENA_DATABASE', 'qgi_data')
+ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
+S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', '')
 
 athena = boto3.client('athena')
 
@@ -60,21 +68,17 @@ athena = boto3.client('athena')
 def lambda_handler(event, context):
     run_id = event.get('run_id', 'manual')
     cutoff_year = event.get('cutoff_year')
-    query_id = event.get('country_count_query_id')
-
-    if not query_id:
-        raise ValueError(
-            "country_count_query_id missing from event. Expected this Lambda "
-            "to be chained after the '5b.2. Enumerate country_a_ids' Athena "
-            "state which publishes QueryExecution.QueryExecutionId."
-        )
 
     logger.info(
         f"Recipe engine list formatter starting. run_id={run_id}, "
-        f"cutoff_year={cutoff_year}, upstream query_id={query_id}"
+        f"cutoff_year={cutoff_year}"
     )
 
-    # Step 1: fetch the country_a_id, pattern_count list from Athena
+    # Step 1: run the enumerate query directly (was 5b.2 SF state, but
+    # Athena .sync doesn't support plain SELECT)
+    query_id = _run_enumerate_query()
+
+    # Step 2: fetch the country_a_id, pattern_count list from results
     country_counts = _fetch_country_counts(query_id)
     if not country_counts:
         raise RuntimeError(
@@ -129,6 +133,38 @@ def lambda_handler(event, context):
         'insert_items': insert_items,
         'partitions_total': len(country_counts),
     }
+
+
+def _run_enumerate_query():
+    """Run SELECT DISTINCT country_a_id, count(*) from patterns, sorted ASC.
+
+    Returns the query execution ID. Polls until SUCCEEDED.
+    """
+    sql = f"""
+        SELECT country_a_id, count(*) AS pc
+        FROM {ATHENA_DB}.patterns
+        WHERE country_a_id IS NOT NULL
+        GROUP BY country_a_id
+        ORDER BY pc ASC
+    """
+    response = athena.start_query_execution(
+        QueryString=sql,
+        QueryExecutionContext={'Database': ATHENA_DB},
+        WorkGroup=ATHENA_WG,
+    )
+    query_id = response['QueryExecutionId']
+    logger.info(f"Enumerate query {query_id}: started")
+
+    while True:
+        status = athena.get_query_execution(QueryExecutionId=query_id)
+        state = status['QueryExecution']['Status']['State']
+        if state == 'SUCCEEDED':
+            logger.info(f"Enumerate query {query_id}: SUCCEEDED")
+            return query_id
+        if state in ('FAILED', 'CANCELLED'):
+            reason = status['QueryExecution']['Status'].get('StateChangeReason', 'unknown')
+            raise RuntimeError(f"Enumerate query {state}: {reason}")
+        time.sleep(1)
 
 
 def _fetch_country_counts(query_id):
