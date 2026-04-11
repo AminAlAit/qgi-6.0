@@ -189,7 +189,14 @@ def create_recipes_normalized_view():
     sql = f"""
     CREATE OR REPLACE VIEW {ATHENA_DB}.{RECIPES_NORMALIZED_VIEW_NAME} AS
     SELECT
-        r.* EXCEPT (pps),
+        r.recipe_id, r.event_category, r.pattern_id, r.country_b_id,
+        r.country_a_name, r.country_b_name, r.start_year_a, r.start_year_b,
+        r.length, r.avg_correlation, r.end_year_a, r.end_year_b,
+        r.event_window, r.event_year_a, r.event_year_b,
+        r.event_title_a, r.event_title_b, r.indicator_count,
+        r.pattern_power_score, r.instance_count, r.pattern_tier,
+        r.median_lead_time_b, r.min_lead_time_b, r.max_lead_time_b,
+        r.median_lead_time_a, r.country_a_id,
         cast(
             (
                 0.35 * r.avg_correlation
