@@ -640,6 +640,7 @@ resource "aws_lambda_function" "recipe_engine_finalize" {
       S3_BUCKET          = var.data_lake_bucket_name
       ATHENA_DATABASE    = var.glue_database_name
       ATHENA_WORKGROUP   = var.athena_workgroup_name
+      S3_BUCKET          = var.data_lake_bucket_name
       S3_OUTPUT_LOCATION = local.s3_output_location
     }
   }
@@ -1216,11 +1217,21 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.5. Per-Country INSERTs" = {
         Type           = "Map"
-        ItemsPath      = "$.recipe_list.insert_items"
         MaxConcurrency = 20
+        ItemReader = {
+          Resource     = "arn:aws:states:::s3:getObject"
+          ReaderConfig = {
+            InputType = "JSON"
+          }
+          Parameters = {
+            "Bucket.$" = "$.recipe_list.insert_items_bucket"
+            "Key.$"    = "$.recipe_list.insert_items_key"
+          }
+        }
         ItemProcessor = {
           ProcessorConfig = {
-            Mode = "INLINE"
+            Mode = "DISTRIBUTED"
+            ExecutionType = "STANDARD"
           }
           StartAt = "Drop Partition"
           States = {
