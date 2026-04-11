@@ -60,9 +60,11 @@ logger.setLevel(logging.INFO)
 
 ATHENA_DB = os.environ.get('ATHENA_DATABASE', 'qgi_data')
 ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
+S3_BUCKET = os.environ.get('S3_BUCKET', '')
 S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', '')
 
 athena = boto3.client('athena')
+s3 = boto3.client('s3')
 
 
 def lambda_handler(event, context):
@@ -123,6 +125,21 @@ def lambda_handler(event, context):
         f"INSERT statements."
     )
 
+    # Write insert_items to S3 — the list is ~1.3MB (214 × 6KB SQL strings)
+    # which exceeds SF's 256KB state payload limit. The Map state reads
+    # items from S3 via ItemReader instead of ItemsPath.
+    items_key = f"recipe-engine/insert-items-{run_id}.json"
+    s3.put_object(
+        Bucket=S3_BUCKET,
+        Key=items_key,
+        Body=json.dumps(insert_items),
+        ContentType='application/json',
+    )
+    logger.info(
+        f"Wrote {len(insert_items)} insert items to "
+        f"s3://{S3_BUCKET}/{items_key}"
+    )
+
     return {
         'statusCode': 200,
         'run_id': run_id,
@@ -130,7 +147,8 @@ def lambda_handler(event, context):
         'seed_country_id': seed_country_id,
         'seed_pattern_count': seed_count,
         'seed_sql': seed_sql,
-        'insert_items': insert_items,
+        'insert_items_bucket': S3_BUCKET,
+        'insert_items_key': items_key,
         'partitions_total': len(country_counts),
     }
 
