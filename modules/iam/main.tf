@@ -310,6 +310,16 @@ resource "aws_iam_role_policy" "stepfunctions" {
         "logs:DescribeResourcePolicies", "logs:DescribeLogGroups"]
         Resource = "*"
       },
+      # #162: Distributed Map state requires StartExecution on the parent SF
+      # (each Map iteration becomes a child execution)
+      {
+        Effect = "Allow"
+        Action = ["states:StartExecution", "states:DescribeExecution", "states:StopExecution"]
+        Resource = [
+          "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-monthly-updater",
+          "arn:aws:states:${var.region}:${var.aws_account_id}:execution:qgi-indicator-monthly-updater:*",
+        ]
+      },
     ]
   })
 }
