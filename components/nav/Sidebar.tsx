@@ -3,25 +3,24 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// #121: Renamed Alerts → Signals, Early Warning → Country Profile.
-// QGI predictions span 2-5 year windows on multi-decade trends — calling
-// them "alerts" implies real-time urgency like a SIEM. "Signals" communicates
-// probabilistic, structural, important-but-not-urgent.
+// Navigation items — updated for the Country Intelligence Browser launch.
+// Naming: Patterns → Precedents, Recipes → Signals (#121).
+// Countries added as first item; COUNTRY PROFILE removed (replaced by /countries/[id]).
 const NAV_ITEMS = [
+  {
+    label: "COUNTRIES",
+    href: "/countries",
+    icon: "⊕",
+  },
   {
     label: "DASHBOARD",
     href: "/dashboard",
     icon: "▦",
   },
   {
-    label: "ACTIVE SIGNALS",
+    label: "PRECEDENTS",
     href: "/signals",
     icon: "▲",
-  },
-  {
-    label: "COUNTRY PROFILE",
-    href: "/signals/country",
-    icon: "⚡",
   },
   {
     label: "PATTERNS",

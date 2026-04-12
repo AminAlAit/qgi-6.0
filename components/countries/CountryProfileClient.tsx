@@ -1,0 +1,391 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+
+const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
+  HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
+  MODERATE: { bg: "rgba(251, 191, 36, 0.12)", text: "#fbbf24", border: "#fbbf24" },
+  INDICATIVE: { bg: "rgba(56, 189, 248, 0.12)", text: "#38bdf8", border: "#38bdf8" },
+};
+
+const PATTERN_TIERS = ["S", "M", "L", "XL"] as const;
+const TIER_LABELS: Record<string, string> = {
+  S: "Short (3-8 yr)",
+  M: "Medium (9-20 yr)",
+  L: "Long (21-40 yr)",
+  XL: "Institutional (41+ yr)",
+};
+
+const TIER_COLORS: Record<string, string> = {
+  S: "#f87171",
+  M: "#fbbf24",
+  L: "#38bdf8",
+  XL: "#a78bfa",
+};
+
+interface Props {
+  countryId: string;
+  country: CountryRisk;
+  generatedAt: string | null;
+  version: string;
+}
+
+export function CountryProfileClient({
+  countryId,
+  country,
+  generatedAt,
+  version,
+}: Props) {
+  const [activeTier, setActiveTier] = useState<string>("S");
+  const style = TIER_STYLES[country.overall_risk_tier];
+
+  const tierData = country.tiers?.[activeTier];
+  const topCategories = tierData?.top_categories ?? [];
+
+  // Aggregate z-scores across all tiers for the risk breakdown chart
+  const categoryZScores = getCategoryBreakdown(country);
+
+  return (
+    <div className="p-8 max-w-5xl">
+      {/* Breadcrumb */}
+      <div className="mb-6">
+        <Link
+          href="/countries"
+          className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          &larr; Countries
+        </Link>
+      </div>
+
+      {/* ─── Header ─────────────────────────────────────────────────── */}
+      <div className="flex items-start justify-between mb-8">
+        <div className="flex items-center gap-4">
+          <span className="text-4xl">{countryFlag(country.alpha_2)}</span>
+          <div>
+            <h1 className="text-2xl font-semibold">{country.name}</h1>
+            <div className="flex items-center gap-3 mt-1">
+              <span
+                className="text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded"
+                style={{
+                  backgroundColor: style.bg,
+                  color: style.text,
+                  border: `1px solid ${style.border}40`,
+                }}
+              >
+                {country.overall_risk_tier} RISK
+              </span>
+              {country.curated && (
+                <span
+                  className="text-[10px] tracking-wider"
+                  style={{ color: "var(--qgi-success)" }}
+                >
+                  Verified events
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Metadata */}
+        <div
+          className="text-right text-[10px]"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          <div>Scoring: {version}</div>
+          {generatedAt && (
+            <div>
+              Updated: {new Date(generatedAt).toLocaleDateString()}
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* ─── Risk Breakdown (horizontal bar chart) ──────────────────── */}
+      <section
+        className="rounded-lg border p-6 mb-6"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <h2
+          className="text-xs tracking-widest uppercase mb-4"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Risk Breakdown by Category
+        </h2>
+        <div className="space-y-2">
+          {categoryZScores.slice(0, 10).map(({ category, z_score, recipe_count }) => (
+            <CategoryBar
+              key={category}
+              category={category}
+              zScore={z_score}
+              recipeCount={recipe_count}
+              maxZ={categoryZScores[0]?.z_score ?? 1}
+            />
+          ))}
+        </div>
+        {categoryZScores.length === 0 && (
+          <p
+            className="text-sm"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            No scored categories available.
+          </p>
+        )}
+      </section>
+
+      {/* ─── Top Precedents (tabbed by tier) ────────────────────────── */}
+      <section
+        className="rounded-lg border p-6 mb-6"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <h2
+          className="text-xs tracking-widest uppercase mb-4"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Top Precedents by Pattern Tier
+        </h2>
+
+        {/* Tier tabs */}
+        <div className="flex gap-2 mb-4">
+          {PATTERN_TIERS.map((tier) => (
+            <button
+              key={tier}
+              onClick={() => setActiveTier(tier)}
+              className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors"
+              style={{
+                backgroundColor:
+                  activeTier === tier
+                    ? `${TIER_COLORS[tier]}20`
+                    : "transparent",
+                borderColor:
+                  activeTier === tier
+                    ? TIER_COLORS[tier]
+                    : "var(--qgi-border)",
+                color:
+                  activeTier === tier
+                    ? TIER_COLORS[tier]
+                    : "var(--qgi-text-muted)",
+              }}
+            >
+              {tier} &middot; {TIER_LABELS[tier]}
+            </button>
+          ))}
+        </div>
+
+        {/* Precedent table */}
+        {topCategories.length > 0 ? (
+          <table className="w-full text-sm">
+            <thead>
+              <tr
+                className="text-[10px] tracking-wider uppercase text-left"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                <th className="pb-2 font-normal">Rank</th>
+                <th className="pb-2 font-normal">Category</th>
+                <th className="pb-2 font-normal text-right">Z-Score</th>
+                <th className="pb-2 font-normal text-right">Precedents</th>
+                <th className="pb-2 font-normal text-right">Last Event</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topCategories.map((cat, i) => (
+                <PrecedentRow key={cat.category} rank={i + 1} cat={cat} />
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p
+            className="text-sm py-4"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            No precedent data for this tier.
+          </p>
+        )}
+      </section>
+
+      {/* ─── Evidence link ──────────────────────────────────────────── */}
+      <div
+        className="rounded-lg border p-4 text-center"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <Link
+          href={`/signals/country?country=${encodeURIComponent(country.name)}`}
+          className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          Explore full precedent evidence for {country.name} &rarr;
+        </Link>
+      </div>
+
+      {/* ─── Honest framing footer ──────────────────────────────────── */}
+      <p
+        className="mt-6 text-[10px] leading-relaxed text-center"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        QGI surfaces economically-grounded risk candidates that analysts should
+        examine. Risk tiers reflect historical precedent density, not
+        probability forecasts.
+      </p>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components
+// ---------------------------------------------------------------------------
+
+function CategoryBar({
+  category,
+  zScore,
+  recipeCount,
+  maxZ,
+}: {
+  category: string;
+  zScore: number;
+  recipeCount: number;
+  maxZ: number;
+}) {
+  const width = maxZ > 0 ? Math.max((zScore / maxZ) * 100, 2) : 2;
+  const color =
+    zScore >= 1.5
+      ? "#f87171"
+      : zScore >= 0.5
+        ? "#fbbf24"
+        : "#38bdf8";
+
+  return (
+    <div className="flex items-center gap-3">
+      <div
+        className="w-40 shrink-0 text-xs truncate"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {formatCategory(category)}
+      </div>
+      <div className="flex-1 h-5 relative rounded overflow-hidden"
+        style={{ backgroundColor: "var(--qgi-surface-2)" }}
+      >
+        <div
+          className="h-full rounded transition-all"
+          style={{
+            width: `${Math.min(width, 100)}%`,
+            backgroundColor: `${color}60`,
+            borderRight: `2px solid ${color}`,
+          }}
+        />
+        <span
+          className="absolute left-2 top-0.5 font-data text-[10px]"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          {zScore.toFixed(2)}
+        </span>
+      </div>
+      <div
+        className="font-data text-[10px] w-20 text-right shrink-0"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {recipeCount} prec.
+      </div>
+    </div>
+  );
+}
+
+function PrecedentRow({
+  rank,
+  cat,
+}: {
+  rank: number;
+  cat: CategoryScore;
+}) {
+  const zColor =
+    cat.z_score >= 1.5
+      ? "#f87171"
+      : cat.z_score >= 0.5
+        ? "#fbbf24"
+        : "var(--qgi-text)";
+
+  return (
+    <tr
+      className="border-t"
+      style={{ borderColor: "var(--qgi-border)" }}
+    >
+      <td
+        className="py-2 font-data text-xs"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        {rank}
+      </td>
+      <td className="py-2 text-xs">{formatCategory(cat.category)}</td>
+      <td
+        className="py-2 font-data text-xs text-right"
+        style={{ color: zColor }}
+      >
+        {cat.z_score.toFixed(2)}
+      </td>
+      <td
+        className="py-2 font-data text-xs text-right"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {cat.recipe_count}
+      </td>
+      <td
+        className="py-2 font-data text-xs text-right"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        {cat.last_event_year ?? "—"}
+      </td>
+    </tr>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
+
+function getCategoryBreakdown(
+  country: CountryRisk
+): Array<{ category: string; z_score: number; recipe_count: number }> {
+  // Average z-scores across tiers for each category
+  const catMap: Record<string, { zSum: number; rSum: number; n: number }> = {};
+  for (const tierData of Object.values(country.tiers)) {
+    for (const cat of tierData.top_categories) {
+      if (!catMap[cat.category]) {
+        catMap[cat.category] = { zSum: 0, rSum: 0, n: 0 };
+      }
+      catMap[cat.category].zSum += cat.z_score;
+      catMap[cat.category].rSum += cat.recipe_count;
+      catMap[cat.category].n += 1;
+    }
+  }
+  return Object.entries(catMap)
+    .map(([category, { zSum, rSum, n }]) => ({
+      category,
+      z_score: zSum / n,
+      recipe_count: Math.round(rSum / n),
+    }))
+    .sort((a, b) => b.z_score - a.z_score);
+}
+
+function countryFlag(alpha2: string): string {
+  if (!alpha2) return "";
+  const codePoints = [...alpha2.toUpperCase()].map(
+    (c) => 0x1f1e6 + c.charCodeAt(0) - 65
+  );
+  return String.fromCodePoint(...codePoints);
+}
+
+function formatCategory(cat: string): string {
+  return cat
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
