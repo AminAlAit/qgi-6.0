@@ -3,8 +3,8 @@ import { withAuth, requireGroup } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type EarlyWarningPayload } from "@/lib/dashboard-cache";
 
-// Early-warning data updates only on monthly pipeline runs — cache for 24h (#143)
-export const revalidate = 86400;
+// Dynamic: requires AWS credentials at runtime, cannot prerender at build time.
+export const dynamic = "force-dynamic";
 
 export const GET = withAuth(async (_req: NextRequest, payload) => {
   requireGroup(payload, "pro");

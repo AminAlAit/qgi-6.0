@@ -3,8 +3,8 @@ import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type RankingPayload } from "@/lib/dashboard-cache";
 
-// Pattern data updates only on monthly pipeline runs — cache for 24h (#143)
-export const revalidate = 86400;
+// Dynamic: requires AWS credentials at runtime, cannot prerender at build time.
+export const dynamic = "force-dynamic";
 
 const DEFAULT_LIMIT = 50;
 const MAX_LIMIT = 1000;

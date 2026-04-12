@@ -4,11 +4,10 @@ import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 
-// Countries change effectively never. Cache 24h. (#143)
-// Prefer the static dump at data/countries.json — if missing, fall back to Athena
-// (slow + expensive in dev because next dev silently ignores `revalidate`).
+// Dynamic: Athena fallback requires AWS credentials, cannot prerender at build time.
+// Prefer the static dump at data/countries.json — if missing, fall back to Athena.
 // To populate the static file, run: `tsx scripts/dump-countries.ts` with staging creds.
-export const revalidate = 86400;
+export const dynamic = "force-dynamic";
 
 type Country = { id: string; name: string; alpha_2: string };
 

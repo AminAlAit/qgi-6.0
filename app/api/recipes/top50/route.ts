@@ -3,8 +3,8 @@ import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type RecipesTop50Payload } from "@/lib/dashboard-cache";
 
-// Recipes top50 updates only on monthly pipeline runs — cache for 24h (#143)
-export const revalidate = 86400;
+// Dynamic: requires AWS credentials at runtime, cannot prerender at build time.
+export const dynamic = "force-dynamic";
 
 export const GET = withAuth(async (_req: NextRequest) => {
   // #146: try the pre-computed dashboard JSON first.
