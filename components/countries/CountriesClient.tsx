@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks";
+import { CountryFlag } from "@/components/design/CountryFlag";
 
 interface CountryEntry {
   id: string;
@@ -147,7 +148,7 @@ function CountryCard({ country }: { country: CountryEntry }) {
     >
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2.5">
-          <span className="text-lg">{countryFlag(country.alpha_2)}</span>
+          <CountryFlag alpha2={country.alpha_2} size={20} />
           <Link
             href={`/countries/${country.id}`}
             className="text-sm font-medium truncate hover:text-[var(--qgi-accent)] transition-colors"

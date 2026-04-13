@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+import { CountryFlag } from "@/components/design/CountryFlag";
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -63,7 +64,7 @@ export function CountryProfileClient({
       {/* ─── Header ─────────────────────────────────────────────────── */}
       <div className="flex items-start justify-between mb-8">
         <div className="flex items-center gap-4">
-          <span className="text-4xl">{countryFlag(country.alpha_2)}</span>
+          <CountryFlag alpha2={country.alpha_2} size={36} />
           <div>
             <h1 className="text-2xl font-semibold">{country.name}</h1>
             <div className="flex items-center gap-3 mt-1">

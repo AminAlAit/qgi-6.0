@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+import { CountryFlag } from "@/components/design/CountryFlag";
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -88,7 +89,7 @@ export function PrecedentDetailClient({
       <div className="flex items-start justify-between mb-8">
         <div>
           <div className="flex items-center gap-3 mb-2">
-            <span className="text-3xl">{countryFlag(country.alpha_2)}</span>
+            <CountryFlag alpha2={country.alpha_2} size={32} />
             <h1 className="text-2xl font-semibold">{country.name}</h1>
             <span
               className="text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded"
