@@ -17,6 +17,8 @@ export type RiskTier = "HIGH" | "MODERATE" | "INDICATIVE";
 export interface CategoryScore {
   category: string;
   z_score: number;
+  salience_score: number;
+  drama_tier: number;
   rrf_rank: number;
   rrf_score: number;
   recipe_count: number;
@@ -123,17 +125,18 @@ export async function getCountriesSortedByRisk(): Promise<
         tierOrder[a.overall_risk_tier] - tierOrder[b.overall_risk_tier];
       if (tierDiff !== 0) return tierDiff;
       // Within same tier, sort by max z-score descending
-      const maxZA = getMaxZScore(a);
-      const maxZB = getMaxZScore(b);
+      const maxZA = getMaxSalience(a);
+      const maxZB = getMaxSalience(b);
       return maxZB - maxZA;
     });
 }
 
-function getMaxZScore(country: CountryRisk): number {
+function getMaxSalience(country: CountryRisk): number {
   let max = -999;
   for (const tier of Object.values(country.tiers)) {
     for (const cat of tier.top_categories.slice(0, 5)) {
-      if (cat.z_score > max) max = cat.z_score;
+      const salience = cat.salience_score ?? cat.z_score;
+      if (salience > max) max = salience;
     }
   }
   return max;

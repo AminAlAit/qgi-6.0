@@ -169,7 +169,7 @@ function CountryCard({ country }: { country: CountryEntry }) {
             className="font-data text-[11px]"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            {topCat.recipe_count} precedent windows &middot; z={topCat.z_score.toFixed(1)}
+            {topCat.recipe_count} precedent windows &middot; salience={topCat.salience_score?.toFixed(1) ?? topCat.z_score.toFixed(1)}
           </div>
         </>
       ) : (

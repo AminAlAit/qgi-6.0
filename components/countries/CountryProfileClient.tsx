@@ -118,13 +118,13 @@ export function CountryProfileClient({
           Risk Breakdown by Category
         </h2>
         <div className="space-y-2">
-          {categoryZScores.slice(0, 10).map(({ category, z_score, recipe_count }) => (
+          {categoryZScores.slice(0, 10).map(({ category, salience, recipe_count }) => (
             <CategoryBar
               key={category}
               category={category}
-              zScore={z_score}
+              salience={salience}
               recipeCount={recipe_count}
-              maxZ={categoryZScores[0]?.z_score ?? 1}
+              maxSalience={categoryZScores[0]?.salience ?? 1}
             />
           ))}
         </div>
@@ -190,7 +190,7 @@ export function CountryProfileClient({
               >
                 <th className="pb-2 font-normal">Rank</th>
                 <th className="pb-2 font-normal">Category</th>
-                <th className="pb-2 font-normal text-right">Z-Score</th>
+                <th className="pb-2 font-normal text-right">Salience</th>
                 <th className="pb-2 font-normal text-right">Precedents</th>
                 <th className="pb-2 font-normal text-right">Last Event</th>
               </tr>
@@ -247,20 +247,20 @@ export function CountryProfileClient({
 
 function CategoryBar({
   category,
-  zScore,
+  salience,
   recipeCount,
-  maxZ,
+  maxSalience,
 }: {
   category: string;
-  zScore: number;
+  salience: number;
   recipeCount: number;
-  maxZ: number;
+  maxSalience: number;
 }) {
-  const width = maxZ > 0 ? Math.max((zScore / maxZ) * 100, 2) : 2;
+  const width = maxSalience > 0 ? Math.max((salience / maxSalience) * 100, 2) : 2;
   const color =
-    zScore >= 1.5
+    salience >= 1.2
       ? "#f87171"
-      : zScore >= 0.5
+      : salience >= 0.5
         ? "#fbbf24"
         : "#38bdf8";
 
@@ -287,7 +287,7 @@ function CategoryBar({
           className="absolute left-2 top-0.5 font-data text-[10px]"
           style={{ color: "var(--qgi-text)" }}
         >
-          {zScore.toFixed(2)}
+          {salience.toFixed(2)}
         </span>
       </div>
       <div
@@ -307,10 +307,11 @@ function PrecedentRow({
   rank: number;
   cat: CategoryScore;
 }) {
-  const zColor =
-    cat.z_score >= 1.5
+  const salience = cat.salience_score ?? cat.z_score;
+  const sColor =
+    salience >= 1.2
       ? "#f87171"
-      : cat.z_score >= 0.5
+      : salience >= 0.5
         ? "#fbbf24"
         : "var(--qgi-text)";
 
@@ -328,9 +329,9 @@ function PrecedentRow({
       <td className="py-2 text-xs">{formatCategory(cat.category)}</td>
       <td
         className="py-2 font-data text-xs text-right"
-        style={{ color: zColor }}
+        style={{ color: sColor }}
       >
-        {cat.z_score.toFixed(2)}
+        {salience.toFixed(2)}
       </td>
       <td
         className="py-2 font-data text-xs text-right"
@@ -354,26 +355,27 @@ function PrecedentRow({
 
 function getCategoryBreakdown(
   country: CountryRisk
-): Array<{ category: string; z_score: number; recipe_count: number }> {
-  // Average z-scores across tiers for each category
-  const catMap: Record<string, { zSum: number; rSum: number; n: number }> = {};
+): Array<{ category: string; salience: number; z_score: number; recipe_count: number }> {
+  const catMap: Record<string, { sSum: number; zSum: number; rSum: number; n: number }> = {};
   for (const tierData of Object.values(country.tiers)) {
     for (const cat of tierData.top_categories) {
       if (!catMap[cat.category]) {
-        catMap[cat.category] = { zSum: 0, rSum: 0, n: 0 };
+        catMap[cat.category] = { sSum: 0, zSum: 0, rSum: 0, n: 0 };
       }
+      catMap[cat.category].sSum += cat.salience_score ?? cat.z_score;
       catMap[cat.category].zSum += cat.z_score;
       catMap[cat.category].rSum += cat.recipe_count;
       catMap[cat.category].n += 1;
     }
   }
   return Object.entries(catMap)
-    .map(([category, { zSum, rSum, n }]) => ({
+    .map(([category, { sSum, zSum, rSum, n }]) => ({
       category,
+      salience: sSum / n,
       z_score: zSum / n,
       recipe_count: Math.round(rSum / n),
     }))
-    .sort((a, b) => b.z_score - a.z_score);
+    .sort((a, b) => b.salience - a.salience);
 }
 
 function countryFlag(alpha2: string): string {
