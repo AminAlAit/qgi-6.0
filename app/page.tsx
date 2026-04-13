@@ -199,9 +199,14 @@ export default function LandingPage() {
                 {/* Country header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">
-                      {countryFlag(c.alpha_2)}
-                    </span>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${c.alpha_2.toUpperCase()}.svg`}
+                      alt={c.alpha_2}
+                      width={36}
+                      height={24}
+                      style={{ borderRadius: 2 }}
+                    />
                     <span className="font-medium">{c.name}</span>
                   </div>
                   <span
@@ -384,10 +389,3 @@ function Metric({ value, label }: { value: string; label: string }) {
   );
 }
 
-/** Convert ISO 3166-1 alpha-2 to emoji flag. */
-function countryFlag(alpha2: string): string {
-  const codePoints = [...alpha2.toUpperCase()].map(
-    (c) => 0x1f1e6 + c.charCodeAt(0) - 65
-  );
-  return String.fromCodePoint(...codePoints);
-}

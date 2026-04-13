@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { EventsTimeline } from "@/components/countries/EventsTimeline";
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -26,11 +27,18 @@ const TIER_COLORS: Record<string, string> = {
   XL: "#a78bfa",
 };
 
+interface TimelineEvent {
+  year: number;
+  title: string;
+  category: string;
+}
+
 interface Props {
   countryId: string;
   country: CountryRisk;
   generatedAt: string | null;
   version: string;
+  events?: TimelineEvent[];
 }
 
 export function CountryProfileClient({
@@ -38,6 +46,7 @@ export function CountryProfileClient({
   country,
   generatedAt,
   version,
+  events = [],
 }: Props) {
   const [activeTier, setActiveTier] = useState<string>("S");
   const style = TIER_STYLES[country.overall_risk_tier];
@@ -133,13 +142,18 @@ export function CountryProfileClient({
         </h2>
         <div className="space-y-2">
           {categoryZScores.slice(0, 10).map(({ category, salience, recipe_count }) => (
-            <CategoryBar
+            <Link
               key={category}
-              category={category}
-              salience={salience}
-              recipeCount={recipe_count}
-              maxSalience={categoryZScores[0]?.salience ?? 1}
-            />
+              href={`/countries/${countryId}/${encodeURIComponent(category)}`}
+              className="block transition-opacity hover:opacity-80"
+            >
+              <CategoryBar
+                category={category}
+                salience={salience}
+                recipeCount={recipe_count}
+                maxSalience={categoryZScores[0]?.salience ?? 1}
+              />
+            </Link>
           ))}
         </div>
         {categoryZScores.length === 0 && (
@@ -211,7 +225,13 @@ export function CountryProfileClient({
             </thead>
             <tbody>
               {topCategories.map((cat, i) => (
-                <PrecedentRow key={cat.category} rank={i + 1} cat={cat} />
+                <Link
+                  key={cat.category}
+                  href={`/countries/${countryId}/${encodeURIComponent(cat.category)}`}
+                  className="contents hover:opacity-80"
+                >
+                  <PrecedentRow rank={i + 1} cat={cat} />
+                </Link>
               ))}
             </tbody>
           </table>
@@ -224,6 +244,13 @@ export function CountryProfileClient({
           </p>
         )}
       </section>
+
+      {/* ─── Events Timeline ───────────────────────────────────────── */}
+      {events.length > 0 && (
+        <div className="mb-6">
+          <EventsTimeline events={events} countryName={country.name} />
+        </div>
+      )}
 
       {/* ─── Evidence link ──────────────────────────────────────────── */}
       <div

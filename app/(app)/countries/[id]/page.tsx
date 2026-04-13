@@ -16,6 +16,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/**
+ * Load curated events for a country by matching country name to filename.
+ */
+async function loadCountryEvents(
+  countryName: string
+): Promise<Array<{ year: number; title: string; category: string }>> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "country-events.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const allEvents = JSON.parse(raw) as Record<
+      string,
+      Array<{ year: number; title: string; category: string }>
+    >;
+    // Match by snake_case country name
+    const key = countryName.toLowerCase().replace(/\s+/g, "_");
+    return allEvents[key] ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export default async function CountryProfilePage({ params }: Props) {
   const { id } = await params;
   const country = await getCountryRisk(id);
@@ -36,7 +59,6 @@ export default async function CountryProfilePage({ params }: Props) {
     );
   }
 
-  // Load metadata for the header
   let data;
   try {
     data = await loadCountryRisks();
@@ -44,12 +66,15 @@ export default async function CountryProfilePage({ params }: Props) {
     data = null;
   }
 
+  const events = await loadCountryEvents(country.name);
+
   return (
     <CountryProfileClient
       countryId={id}
       country={country}
       generatedAt={data?.generated_at ?? null}
       version={data?.version ?? "unknown"}
+      events={events}
     />
   );
 }
