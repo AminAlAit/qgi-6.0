@@ -131,9 +131,14 @@ function CountryCard({ country }: { country: CountryEntry }) {
   const topCats = country.tiers?.S?.top_categories ?? [];
   const topCat = topCats[0];
 
+  // Card links to precedent detail (country + category); country name links to profile
+  const cardHref = topCat
+    ? `/countries/${country.id}/${encodeURIComponent(topCat.category)}`
+    : `/countries/${country.id}`;
+
   return (
     <Link
-      href={`/countries/${country.id}`}
+      href={cardHref}
       className="block rounded-lg border p-4 transition-all hover:border-[var(--qgi-accent)] hover:bg-[var(--qgi-surface-2)]"
       style={{
         backgroundColor: "var(--qgi-surface)",
@@ -143,7 +148,13 @@ function CountryCard({ country }: { country: CountryEntry }) {
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2.5">
           <span className="text-lg">{countryFlag(country.alpha_2)}</span>
-          <span className="text-sm font-medium truncate">{country.name}</span>
+          <Link
+            href={`/countries/${country.id}`}
+            className="text-sm font-medium truncate hover:text-[var(--qgi-accent)] transition-colors"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {country.name}
+          </Link>
         </div>
         <span
           className="text-[9px] tracking-widest font-semibold px-1.5 py-0.5 rounded shrink-0"
