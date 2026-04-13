@@ -178,7 +178,7 @@ export default function LegalPage() {
             For questions about these terms, data use, or to exercise your
             data rights, contact:{" "}
             <span style={{ color: "var(--qgi-accent)" }}>
-              amin@qgintelligence.com
+              aminalait.de@gmail.com
             </span>
           </p>
         </Section>
