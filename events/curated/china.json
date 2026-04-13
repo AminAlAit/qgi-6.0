@@ -1,179 +1,1418 @@
 [
-  {"year": 1950, "title": "China enters Korean War", "description": "Chinese People's Volunteer Army crossed the Yalu River in October 1950 to support North Korea against UN forces, reshaping the war and cementing Cold War hostility between China and the West.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1950, "title": "Sino-Soviet Treaty of Friendship signed", "description": "China and the Soviet Union signed a 30-year mutual defense and assistance treaty, providing China with Soviet technical and economic aid during its early reconstruction period.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 1950, "title": "Land Reform Law enacted nationwide", "description": "The Agrarian Reform Law of 1950 abolished the landlord system and redistributed land to approximately 300 million peasants, involving mass mobilizations and executions of landlords across rural China.", "category": "land_reform_and_agrarian", "verified": false, "verification_source": null},
-  {"year": 1950, "title": "PRC annexes Tibet militarily", "description": "The People's Liberation Army invaded Tibet in October 1950, defeating Tibetan forces within weeks. China called it a 'peaceful liberation' but Tibet's government and the UN condemned it as illegal annexation.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 1950, "title": "Marriage Law abolishes feudal marriage system", "description": "The 1950 Marriage Law outlawed arranged marriages, child brides, and concubinage, giving women equal rights to divorce — one of the most sweeping social reforms of the early PRC.", "category": "gender_and_womens_rights", "verified": false, "verification_source": null},
-  {"year": 1950, "title": "Mass political repression campaigns begin", "description": "Nationwide campaigns — Suppression of Counterrevolutionaries, Three-Antis, and Five-Antis — targeted political opponents, former Nationalist officials, and the urban bourgeoisie. Estimates of executions range from 500,000 to 2 million.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1951, "title": "Thought Reform Campaign targets intellectuals", "description": "A mass ideological remolding campaign compelled university professors, writers, and intellectuals to publicly confess bourgeois thought and embrace Marxism-Leninism, establishing a template for future political campaigns.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1953, "title": "Korean War armistice signed", "description": "An armistice ending active combat was signed at Panmunjom on July 27, 1953. China suffered an estimated 180,000–400,000 military deaths and emerged with enhanced international prestige despite the stalemate.", "category": "peacekeeping_and_peace_process", "verified": false, "verification_source": null},
-  {"year": 1953, "title": "First Five-Year Plan launched", "description": "China's First Five-Year Plan (1953–1957) launched with emphasis on Soviet-style heavy industrial development, including 156 major Soviet-aided projects. It achieved significant growth in steel, coal, and electricity production.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1953, "title": "Gao Gang purged from leadership", "description": "Gao Gang, head of the State Planning Commission, was accused of attempting to split the Party and expelled; he reportedly committed suicide in 1954. The purge established precedents for elite political discipline.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1954, "title": "First Constitution of the PRC adopted", "description": "The First National People's Congress adopted China's first formal constitution, establishing the NPC as the supreme state organ and codifying the socialist state structure.", "category": "constitutional_change", "verified": false, "verification_source": null},
-  {"year": 1954, "title": "First Taiwan Strait Crisis", "description": "PLA forces bombarded Nationalist-held islands, triggering a crisis that drew in the United States. The US signed a mutual defense treaty with Taiwan in December 1954, formalizing the cross-strait standoff.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 1954, "title": "Five Principles of Peaceful Coexistence proclaimed", "description": "Zhou Enlai and India's Nehru proclaimed the Panchsheel principles — mutual respect, non-aggression, non-interference, equality, and peaceful coexistence — which became cornerstones of Chinese foreign policy.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 1955, "title": "Bandung Conference — China leads decolonizing world", "description": "Zhou Enlai attended the Bandung Conference in April 1955, presenting China as a champion of Asian and African nations against colonialism and marking China's emergence as a leader in the developing world.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1955, "title": "Agricultural collectivization drive accelerates", "description": "Mao pushed rapid formation of higher-level agricultural cooperatives, overriding moderates. Within a year, over 90% of peasant households were enrolled in cooperatives, restructuring Chinese agriculture.", "category": "land_reform_and_agrarian", "verified": false, "verification_source": null},
-  {"year": 1956, "title": "Hundred Flowers Campaign and Anti-Rightist crackdown", "description": "Mao's brief liberalization encouraging intellectuals to criticize the Party was abruptly reversed in mid-1957 with the Anti-Rightist Campaign. An estimated 500,000 people were labeled 'rightists' and sent to labor camps.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1956, "title": "Socialist transformation of industry completed", "description": "By 1956 virtually all private industrial and commercial enterprises had been converted to joint state-private or fully state ownership, completing China's socialist transformation of the urban economy.", "category": "privatization_and_nationalization", "verified": false, "verification_source": null},
-  {"year": 1956, "title": "Sino-Soviet ideological divergence begins", "description": "Khrushchev's 1956 secret speech denouncing Stalin created ideological tension with Beijing. Mao criticized the de-Stalinization as destabilizing and began charting a more independent course from Moscow.", "category": "cold_war_geopolitics", "verified": false, "verification_source": null},
-  {"year": 1958, "title": "Great Leap Forward launched", "description": "Mao launched the Great Leap Forward in 1958, aiming to rapidly industrialize China through mass mobilization into People's Communes. Unrealistic production quotas and falsified reports led to a catastrophic famine killing an estimated 15–55 million people by 1962.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1958, "title": "Second Taiwan Strait Crisis — Quemoy bombardment", "description": "The PLA launched a massive artillery bombardment of Nationalist-held Quemoy (Kinmen) from August 1958. The US intervened with naval escorts; the crisis de-escalated after several weeks without a full military conflict.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1958, "title": "Sino-Soviet nuclear cooperation breaks down", "description": "The Soviet Union suspended its agreement to provide China with nuclear weapons technology, formalized after Khrushchev visited the US. This marked the beginning of the Sino-Soviet split.", "category": "cold_war_geopolitics", "verified": false, "verification_source": null},
-  {"year": 1959, "title": "Tibetan Uprising and Dalai Lama's exile", "description": "A Tibetan uprising against Chinese rule broke out in Lhasa in March 1959. Chinese forces suppressed it within weeks; the Dalai Lama fled to India and established a government-in-exile in Dharamsala.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1959, "title": "Lushan Conference — Peng Dehuai purged", "description": "Defense Minister Peng Dehuai's private letter criticizing the Great Leap Forward led to his purge by Mao. His replacement by Lin Biao intensified disastrous GLF policies and set the stage for the Cultural Revolution.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1960, "title": "Sino-Soviet split becomes public", "description": "Ideological disputes broke into the open at the 1960 Bucharest and Moscow communist conferences. The USSR withdrew all technical advisors from China in July 1960, halting hundreds of joint projects and accelerating China's independent development path.", "category": "cold_war_geopolitics", "verified": false, "verification_source": null},
-  {"year": 1960, "title": "China launches independent nuclear weapons program", "description": "Following Soviet withdrawal, China accelerated domestic nuclear weapons development under the Second Ministry of Machine Building, drawing on scientists trained abroad.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1961, "title": "Great Leap Forward wound down — economic recovery begins", "description": "Liu Shaoqi and Deng Xiaoping wound down GLF policies in 1961, restoring private plots and market activities. The January 1962 Seven Thousand Cadres Conference included Mao's self-criticism; Mao was temporarily sidelined.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1962, "title": "Sino-Indian War", "description": "China launched a military offensive along the Himalayan border in October 1962, routing Indian forces in both the Aksai Chin and NEFA sectors before declaring a unilateral ceasefire. The war defined the disputed border that remains contested today.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1963, "title": "Sino-Soviet split becomes irreversible", "description": "China and the USSR exchanged open polemics throughout 1963, with China publishing 'Nine Commentaries' criticizing Soviet revisionism. China refused to sign the Partial Nuclear Test Ban Treaty, further deepening the rupture.", "category": "cold_war_geopolitics", "verified": false, "verification_source": null},
-  {"year": 1964, "title": "China's first nuclear weapon test", "description": "China successfully detonated its first atomic bomb at Lop Nor on October 16, 1964, becoming the fifth nuclear power. The test was achieved indigenously after Soviet withdrawal and was a major geopolitical milestone.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1964, "title": "France recognizes the People's Republic of China", "description": "France became the first major Western country to establish diplomatic relations with the PRC in January 1964, breaking with NATO allies and signaling the limits of Western isolation of China.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1965, "title": "Cultural Revolution ideological preparations begin", "description": "The 1965 critique of the play 'Hai Rui Dismissed from Office' marked the opening shot of the Cultural Revolution. Mao used it to attack Beijing's municipal leadership and moderate Party officials.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1965, "title": "China deploys troops to support Vietnam War", "description": "China deployed approximately 320,000 military personnel to North Vietnam between 1965 and 1969 for air defenses, logistics, and engineering, and supplied massive quantities of arms — a major Cold War intervention.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1966, "title": "Cultural Revolution officially launched", "description": "The Cultural Revolution was formally launched with the May 16 Circular and mobilization of Red Guards. The movement attacked the 'Four Olds,' decimated the Party and state apparatus, closed all schools, and caused massive social violence persisting until 1976.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1967, "title": "Cultural Revolution violence peaks — Revolutionary Committees", "description": "Factional Red Guard fighting escalated into armed battles in 1967; Guangxi massacres killed tens of thousands. The PLA was ordered to restore order, and Revolutionary Committees replaced Party structures at all administrative levels.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 1967, "title": "China conducts first hydrogen bomb test", "description": "China successfully tested its first thermonuclear bomb at Lop Nor on June 17, 1967 — just 32 months after its first atomic test, the fastest fission-to-fusion progression of any nuclear power.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1968, "title": "Down to the Countryside Movement begins", "description": "Mao ordered urban youth 'sent down' to rural areas; between 1968 and 1980 approximately 16 million young people were relocated, disrupting their education and careers and creating a 'lost generation.'", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 1969, "title": "Sino-Soviet border conflict — Zhenbao Island clashes", "description": "Chinese and Soviet forces clashed in bloody border battles along the Ussuri River in March 1969, with the USSR threatening nuclear retaliation. The crisis drove China strategically toward rapprochement with the United States.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1971, "title": "Lin Biao incident — designated successor dies fleeing China", "description": "Lin Biao, Mao's designated successor, reportedly attempted a coup and fled toward the Soviet Union; his plane crashed in Mongolia on September 13, 1971, killing all aboard. The incident shattered Maoist ideology.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1971, "title": "China admitted to the United Nations, Taiwan expelled", "description": "UN General Assembly Resolution 2758 recognized the PRC as the sole legitimate representative of China, expelling Taiwan and giving China the permanent Security Council seat — a fundamental shift in international order.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1971, "title": "Bangladesh Liberation War — China backs Pakistan", "description": "China backed Pakistan against India during the 1971 war that created Bangladesh and cast its first UN Security Council veto on related resolutions, cementing the Sino-Indian rivalry.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1972, "title": "Nixon visits China — Shanghai Communiqué", "description": "President Nixon's February 1972 visit and the Shanghai Communiqué fundamentally transformed the Cold War balance. The US acknowledged Taiwan as part of China and agreed to reduce military presence there, ending 23 years of Sino-American hostility.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1972, "title": "Japan normalizes relations with China", "description": "Japan and China normalized diplomatic relations in September 1972 during Prime Minister Tanaka's Beijing visit, with Japan renouncing its peace treaty with Taiwan — a major diplomatic victory for the PRC.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1974, "title": "Paracel Islands seized from South Vietnam", "description": "China seized the Paracel Islands from South Vietnam in January 1974, expelling Vietnamese forces. The islands remain under Chinese control and are contested by Vietnam, marking China's first forcible territorial expansion in the South China Sea.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 1975, "title": "Banqiao Dam disaster", "description": "Typhoon Nina caused catastrophic failure of the Banqiao Dam in Henan Province in August 1975, killing an estimated 85,000–240,000 people — the worst dam failure in history. The disaster was covered up for decades.", "category": "natural_disaster", "verified": false, "verification_source": null},
-  {"year": 1976, "title": "Mao Zedong dies and Gang of Four arrested", "description": "Premier Zhou Enlai died in January 1976, and Mao Zedong died on September 9, 1976, ending his 27-year rule. Within weeks, Hua Guofeng and the military arrested the Gang of Four on October 6, 1976, ending the Cultural Revolution era.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1976, "title": "Tangshan earthquake kills hundreds of thousands", "description": "A magnitude 7.6 earthquake struck Tangshan on July 28, 1976, killing an official 242,000 but estimated 500,000+. The government initially rejected foreign aid, managing the disaster in secrecy.", "category": "natural_disaster", "verified": false, "verification_source": null},
-  {"year": 1977, "title": "Deng Xiaoping rehabilitated — returns to power", "description": "Deng Xiaoping was rehabilitated for the third time in July 1977 and quickly consolidated influence against Hua Guofeng, beginning the ideological debate on 'practice as the criterion of truth' that would legitimize reform.", "category": "political_reform", "verified": false, "verification_source": null},
-  {"year": 1977, "title": "National college entrance examinations restored", "description": "China restored the Gaokao university entrance examinations in December 1977 after an 11-year suspension. Over 5.7 million candidates sat the first exams, marking the decisive end of Cultural Revolution anti-intellectualism.", "category": "education_and_intellectual_life", "verified": false, "verification_source": null},
-  {"year": 1978, "title": "Third Plenum — Reform and Opening Up begins", "description": "The Third Plenary Session of the 11th CCP Central Committee in December 1978 marked the decisive shift to the Deng Xiaoping reform era, abandoning class struggle and establishing economic development as the national priority.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1978, "title": "US-China full diplomatic normalization", "description": "The United States and China announced full diplomatic normalization effective January 1, 1979, with the US switching recognition from Taiwan to Beijing. The Taiwan Relations Act governed subsequent unofficial US-Taiwan ties.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1978, "title": "Democracy Wall movement", "description": "Chinese citizens posted political manifestos on a Beijing wall calling for democracy and human rights; Wei Jingsheng's call for a 'Fifth Modernization' was the most famous. The movement was suppressed in 1979 and Wei sentenced to 15 years.", "category": "civil_liberties", "verified": false, "verification_source": null},
-  {"year": 1978, "title": "Sino-Japanese Treaty of Peace and Friendship signed", "description": "China and Japan signed a Treaty of Peace and Friendship in August 1978, normalizing relations and opening the path for massive Japanese investment in China's modernization.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1979, "title": "Sino-Vietnamese War", "description": "China launched a punitive military invasion of Vietnam in February–March 1979 in retaliation for Vietnam's invasion of Cambodia. The war exposed serious PLA weaknesses and ended inconclusively with heavy casualties on both sides.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1979, "title": "One Child Policy announced", "description": "China announced its One Child Policy in 1979 (formally enacted 1980) to control population growth. Enforced through fines, forced sterilizations, and social pressure, it shaped Chinese demographics for decades.", "category": "demographics_and_population", "verified": false, "verification_source": null},
-  {"year": 1979, "title": "Household Responsibility System piloted", "description": "The household responsibility system, allowing farming families to sell surplus production on the market after meeting state quotas, was piloted in Anhui province. Its success prompted national adoption and transformed Chinese agriculture.", "category": "land_reform_and_agrarian", "verified": false, "verification_source": null},
-  {"year": 1980, "title": "Shenzhen designated first Special Economic Zone", "description": "Shenzhen was designated China's first Special Economic Zone in August 1980, becoming the symbol of China's economic opening and growing from a fishing village into a city of millions.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1980, "title": "Trial of the Gang of Four", "description": "The Gang of Four and associates of Lin Biao were tried before a special court; Jiang Qing and Zhang Chunqiao received death sentences later commuted to life imprisonment. The trial publicly repudiated the Cultural Revolution.", "category": "transitional_justice", "verified": false, "verification_source": null},
-  {"year": 1980, "title": "China joins the IMF and World Bank", "description": "China joined the IMF and World Bank in April 1980, with the PRC displacing Taiwan as the representative of China, enabling access to international capital and technical assistance for the reform program.", "category": "foreign_investment_and_aid", "verified": false, "verification_source": null},
-  {"year": 1981, "title": "Resolution on CCP History — Mao assessed as '70% correct'", "description": "The CCP's historic resolution assessed Mao as '70% correct, 30% wrong,' condemning the Cultural Revolution while preserving Mao's overall legacy. The formula enabled reform without repudiating the Party's founding mythology.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 1982, "title": "New Chinese Constitution adopted", "description": "China adopted a new constitution in December 1982, restoring the position of state president and incorporating reform-era economic policies. It has been amended four times since, including to remove presidential term limits in 2018.", "category": "constitutional_change", "verified": false, "verification_source": null},
-  {"year": 1982, "title": "Sino-British negotiations on Hong Kong begin — 'One Country, Two Systems'", "description": "Deng Xiaoping proposed 'One Country, Two Systems' during negotiations with Thatcher over Hong Kong's future. China's position that sovereignty was non-negotiable prevailed, leading to the 1984 Joint Declaration.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1983, "title": "Economic reforms expand to urban industry", "description": "China expanded economic reforms from agriculture to urban industry, allowing state enterprises greater autonomy and permitting private businesses. Township and village enterprises (TVEs) emerged as a major growth engine.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1984, "title": "Sino-British Joint Declaration signed", "description": "China and Britain signed the Joint Declaration in December 1984, agreeing that Hong Kong would revert to Chinese sovereignty on July 1, 1997, under the 'One Country, Two Systems' framework for 50 years.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1984, "title": "Fourteen coastal cities opened to foreign investment", "description": "China opened fourteen coastal cities to foreign investment in 1984, extending the SEZ model to include Shanghai, Guangzhou, and Tianjin, accelerating coastal development and export industrialization.", "category": "foreign_investment_and_aid", "verified": false, "verification_source": null},
-  {"year": 1985, "title": "PLA reduced by one million troops", "description": "Deng Xiaoping announced a reduction of the PLA by one million personnel in 1985, the largest peacetime military demobilization in history, freeing resources for economic development.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1986, "title": "Student democracy protests sweep China", "description": "Student democracy protests swept Chinese campuses in late 1986, demanding political reform and freedom of the press. The protests were suppressed and directly contributed to Hu Yaobang's dismissal in January 1987.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 1986, "title": "Compulsory Education Law enacted", "description": "China enacted a Compulsory Education Law requiring nine years of schooling for all children, establishing a legal framework for universal education.", "category": "education_and_intellectual_life", "verified": false, "verification_source": null},
-  {"year": 1987, "title": "Hu Yaobang dismissed as CCP General Secretary", "description": "Hu Yaobang was forced to resign in January 1987, blamed for sympathy with the 1986 student protests. His death in April 1989 would trigger the Tiananmen Square demonstrations.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1987, "title": "Tibet protests — Lhasa crackdown", "description": "Major pro-independence demonstrations by monks erupted in Lhasa in September–October 1987, with security forces killing several protesters. Martial law was declared in Tibet in March 1989, killing dozens more.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1988, "title": "Price reform triggers 'price storming' inflation crisis", "description": "An attempt to liberalize prices in 1988 triggered panic buying and double-digit inflation. The crisis severely damaged public confidence in the reform program and empowered Party hardliners ahead of 1989.", "category": "economic_crisis", "verified": false, "verification_source": null},
-  {"year": 1989, "title": "Tiananmen Square massacre", "description": "Pro-democracy demonstrations centered on Beijing's Tiananmen Square drew hundreds of thousands of students and workers. On June 3–4, the PLA crushed the movement with tanks; death estimates range from hundreds to thousands.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 1989, "title": "Zhao Ziyang purged — Jiang Zemin appointed General Secretary", "description": "General Secretary Zhao Ziyang was removed for opposing the military crackdown and spent his last 15 years under house arrest. Jiang Zemin, Shanghai's party secretary, was appointed General Secretary, beginning a decade of Jiang's leadership.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1989, "title": "Western sanctions imposed after Tiananmen", "description": "The US, European Community, and other Western nations imposed sanctions including arms embargoes after Tiananmen. The EU arms embargo remains in force; the sanctions defined China's international relations for years.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 1990, "title": "Shanghai Stock Exchange established", "description": "The Shanghai Stock Exchange was established in December 1990, followed by the Shenzhen Stock Exchange in 1991, marking a major step in China's transition to a market economy.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1991, "title": "Soviet Union collapse — China draws lessons on Party control", "description": "The collapse of the Soviet Union deeply alarmed Chinese leaders, reinforcing their conviction that political liberalization must be avoided and that the Party must never relinquish control — a lesson that shaped CCP strategy for decades.", "category": "cold_war_geopolitics", "verified": false, "verification_source": null},
-  {"year": 1992, "title": "Deng Xiaoping's Southern Tour relaunches reforms", "description": "Deng Xiaoping's informal inspection tour of Shenzhen, Zhuhai, and Shanghai in early 1992 relaunched economic reform after Tiananmen-era conservatism. The Fourteenth Party Congress formally endorsed the 'socialist market economy.'", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1992, "title": "Three Gorges Dam approved", "description": "The NPC controversially approved the Three Gorges Dam project in April 1992 with unusually high dissenting votes. The project displaced 1.3 million people, transformed the Yangtze River, and was completed in 2006.", "category": "infrastructure_and_urban_development", "verified": false, "verification_source": null},
-  {"year": 1992, "title": "China normalizes relations with South Korea", "description": "China and South Korea established full diplomatic relations in August 1992, forcing Taiwan to sever its ties with Seoul. The normalization reflected China's growing economic importance in the region.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1993, "title": "China becomes net oil importer", "description": "China became a net oil importer in 1993 for the first time, a strategic turning point that would drive China's global energy diplomacy, Africa engagement, and Middle East policy for decades.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 1994, "title": "Yuan renminbi unified exchange rate reform", "description": "China unified its dual exchange rate system in January 1994, effectively devaluing the currency and boosting export competitiveness — a key step in integrating China into the global economy.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1994, "title": "Tax-sharing reform reshapes central-local fiscal relations", "description": "A major fiscal reform in 1994 restructured tax collection between central and local governments, significantly increasing Beijing's revenue share and strengthening the central government's fiscal capacity.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1994, "title": "China launches first internet connection", "description": "China established its first full internet connection in April 1994 via a 64 Kbps line to Stanford University. The internet transformed Chinese commerce and society while enabling the state's digital surveillance apparatus.", "category": "technology_and_digital", "verified": false, "verification_source": null},
-  {"year": 1995, "title": "Third Taiwan Strait Crisis — China fires missiles near Taiwan", "description": "China conducted ballistic missile tests near Taiwan in 1995–96 to intimidate voters ahead of Taiwan's first direct presidential election. The US deployed two carrier battle groups; China backed down, establishing deterrence patterns.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1995, "title": "Panchen Lama succession dispute", "description": "The Dalai Lama recognized a six-year-old boy as the 11th Panchen Lama in May 1995; China rejected the selection, installed its own candidate, and took the Dalai Lama's choice into custody. He has not been seen publicly since.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1996, "title": "China-Russia strategic partnership", "description": "China and Russia announced a 'strategic partnership of equality and cooperation' in April 1996, explicitly directed at building a multipolar world. The Shanghai Five (forerunner to the SCO) was also established that year.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 1997, "title": "Hong Kong handover to China", "description": "Britain transferred sovereignty over Hong Kong to China on July 1, 1997, ending 156 years of British colonial rule. Hong Kong became a Special Administrative Region under 'One Country, Two Systems.'", "category": "decolonization_and_independence", "verified": false, "verification_source": null},
-  {"year": 1997, "title": "Deng Xiaoping dies", "description": "Deng Xiaoping, China's paramount leader since 1978, died on February 19, 1997. His death was managed smoothly; Jiang Zemin had already consolidated power, and the succession caused no political instability.", "category": "political_reform", "verified": false, "verification_source": null},
-  {"year": 1997, "title": "Asian Financial Crisis — China holds renminbi peg", "description": "During the 1997 Asian Financial Crisis, China maintained the renminbi's peg to the US dollar, preventing competitive devaluation. This earned international goodwill and facilitated China's WTO accession negotiations.", "category": "economic_crisis", "verified": false, "verification_source": null},
-  {"year": 1997, "title": "State-owned enterprise restructuring — millions laid off", "description": "Zhu Rongji launched massive restructuring of state-owned enterprises, closing or merging thousands of unprofitable companies. An estimated 20–40 million state workers were laid off over three years — the largest peacetime labor displacement in history.", "category": "labor_and_industrial_relations", "verified": false, "verification_source": null},
-  {"year": 1998, "title": "Yangtze River floods — massive disaster", "description": "Catastrophic floods along the Yangtze River in 1998 killed over 3,000 people, displaced 14 million, and caused $26 billion in damages. The disaster accelerated programs to halt deforestation and relocate flood-plain residents.", "category": "natural_disaster", "verified": false, "verification_source": null},
-  {"year": 1999, "title": "NATO bombing of Chinese embassy in Belgrade", "description": "NATO bombs destroyed the Chinese embassy in Belgrade on May 7, 1999, killing three Chinese journalists. Massive anti-US protests erupted in China; the incident deeply poisoned Sino-American relations.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 1999, "title": "Falun Gong banned and persecution begins", "description": "China officially banned Falun Gong on July 22, 1999, declaring it an 'evil cult.' A nationwide campaign of arrests, detention, and forced re-education targeted millions of practitioners.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1999, "title": "Macau handover to China", "description": "Portugal transferred Macau to Chinese sovereignty on December 20, 1999, ending 442 years of Portuguese rule. Macau became a Special Administrative Region and subsequently the world's largest gambling hub.", "category": "decolonization_and_independence", "verified": false, "verification_source": null},
-  {"year": 1999, "title": "Taiwan 'two states' statement triggers crisis", "description": "Taiwan's Lee Teng-hui described cross-strait relations as 'special state-to-state relations' in July 1999, infuriating Beijing. China suspended cross-strait dialogue and threatened military action.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2001, "title": "China joins the World Trade Organization", "description": "China formally joined the WTO on December 11, 2001, after 15 years of negotiations. Membership accelerated China's export boom, attracted massive foreign investment, and transformed global manufacturing supply chains.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2001, "title": "Shanghai Cooperation Organisation established", "description": "China, Russia, and four Central Asian states established the SCO in June 2001, formalizing the Shanghai Five. The SCO became a major platform for Eurasian security cooperation and a counterweight to Western institutions.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 2001, "title": "Beijing wins 2008 Olympics bid", "description": "Beijing won the bid to host the 2008 Summer Olympics in July 2001, representing international validation of China's rise and triggering massive infrastructure investment.", "category": "sport_and_international_events", "verified": false, "verification_source": null},
-  {"year": 2002, "title": "Sixteenth Party Congress — first peaceful CCP leadership transfer", "description": "The Sixteenth Party Congress in November 2002 marked the first peaceful power transfer in PRC history, with Jiang Zemin handing the General Secretary position to Hu Jintao, beginning the 'fourth generation' of leadership.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "SARS epidemic — government cover-up and global spread", "description": "SARS spread globally in early 2003 after initial cover-up by Chinese authorities. Health Minister Zhang Wenkang and Beijing Mayor Meng Xuenong were dismissed; the epidemic killed 774 globally and exposed systemic public health failures.", "category": "public_health_and_epidemics", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "China's first crewed space mission", "description": "China launched astronaut Yang Liwei into orbit on October 15, 2003, becoming only the third country to independently achieve human spaceflight — a source of enormous national pride and a strategic milestone.", "category": "technology_and_digital", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "Six-Party Talks on North Korea begin", "description": "China hosted the first round of Six-Party Talks on North Korea's nuclear program in August 2003, positioning itself as an indispensable regional mediator and restraint on Pyongyang.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 2004, "title": "Constitution amended to protect private property", "description": "China amended its constitution to explicitly protect lawfully obtained private property, a significant formal acknowledgment of the market economy and the role of private enterprise.", "category": "constitutional_change", "verified": false, "verification_source": null},
-  {"year": 2004, "title": "Rural land rights protests escalate", "description": "Mass protests by farmers over illegal land seizures for development projects escalated in 2004. The CCP reported 74,000 'mass incidents,' many related to land disputes, revealing deep tensions accompanying rapid urbanization.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2005, "title": "Anti-Secession Law passed against Taiwan", "description": "China passed the Anti-Secession Law in March 2005, legally authorizing the use of force against Taiwan if it declares independence or if peaceful reunification becomes 'completely impossible.' Taiwan and the US protested strongly.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2005, "title": "Renminbi revaluation and managed float", "description": "China revalued the renminbi by 2.1% against the US dollar in July 2005 and shifted to a managed float against a basket of currencies, responding to intense international pressure over China's trade surplus.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2006, "title": "China-Africa summit — Forum on China-Africa Cooperation", "description": "China hosted 48 African leaders at the FOCAC summit in November 2006, pledging $5 billion in loans and credits. The event marked China's emergence as Africa's leading development partner.", "category": "foreign_investment_and_aid", "verified": false, "verification_source": null},
-  {"year": 2006, "title": "North Korea's first nuclear test — China condemns", "description": "North Korea conducted its first nuclear test in October 2006. China publicly condemned the test and voted for UN Security Council sanctions — a rare public rebuke of its sole major ally.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2007, "title": "China's ASAT missile test destroys own satellite", "description": "China conducted an anti-satellite missile test on January 11, 2007, destroying a weather satellite and creating thousands of debris fragments. The test alarmed the US and demonstrated China's space warfare capabilities.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Tibet protests and Olympic torch relay disruptions", "description": "Protests erupted across Tibet in March 2008 on the anniversary of the 1959 uprising; security forces killed dozens. Pro-Tibet activists disrupted Olympic torch relay events worldwide, embarrassing China ahead of the games.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Sichuan earthquake kills nearly 90,000", "description": "A magnitude 7.9 earthquake struck Sichuan Province on May 12, 2008, killing nearly 70,000 people. The collapse of 'tofu construction' school buildings sparked public anger at corruption and construction safety.", "category": "natural_disaster", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Beijing Summer Olympics", "description": "China hosted the 2008 Summer Olympics, a globally watched showcase of China's rise. China's 51 gold medals and the spectacular opening ceremony cemented the games as a national triumph and international coming-out.", "category": "sport_and_international_events", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Global financial crisis — China's $586B stimulus", "description": "China responded to the 2008 global financial crisis with a 4 trillion yuan ($586 billion) stimulus package focused on infrastructure and housing, maintaining high growth and helping stabilize the global economy.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Melamine milk scandal", "description": "Melamine contamination of infant formula sickened 300,000 babies and killed at least six in 2008. The scandal exposed deep problems in food safety regulation and became a defining moment in public trust of domestic products.", "category": "public_health_and_epidemics", "verified": false, "verification_source": null},
-  {"year": 2009, "title": "Xinjiang Urumqi riots — ethnic violence", "description": "Riots between Han and Uyghur communities in Urumqi on July 5, 2009 killed nearly 200 people. China blamed overseas separatists; underlying causes were ethnic tensions and economic marginalization of Uyghurs.", "category": "race_and_ethnic_relations", "verified": false, "verification_source": null},
-  {"year": 2009, "title": "Great Firewall expands — internet censorship tightened", "description": "China expanded its internet censorship apparatus, blocking YouTube after Xinjiang riot videos and progressively blocking Facebook, Twitter, and Google. The 'Great Firewall' became a defining feature of China's digital governance.", "category": "media_and_press_freedom", "verified": false, "verification_source": null},
-  {"year": 2010, "title": "China surpasses Japan as world's second largest economy", "description": "China officially confirmed it had surpassed Japan as the world's second largest economy in 2010, a historic shift in the global economic order and a key benchmark in China's ascent.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2010, "title": "Liu Xiaobo awarded Nobel Peace Prize — China furious", "description": "Imprisoned dissident and Charter 08 co-author Liu Xiaobo was awarded the Nobel Peace Prize. China condemned the decision and pressured countries to boycott the ceremony; the award chair was left empty.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 2010, "title": "China-Japan Diaoyu/Senkaku boat collision — rare earth embargo", "description": "A Chinese fishing trawler collision with Japanese Coast Guard vessels near the disputed islands led China to halt rare earth exports to Japan — a dramatic use of economic coercion in a territorial dispute.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2011, "title": "China's first aircraft carrier commissioned", "description": "China commissioned its first aircraft carrier, the refurbished Soviet-era Liaoning, signaling China's intention to develop blue-water naval power and project force beyond its immediate region.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2011, "title": "South China Sea — nine-dash line claims escalate", "description": "China issued maps asserting the 'nine-dash line' encompassing most of the South China Sea, escalating tensions with Vietnam, the Philippines, Malaysia, and Brunei over islands and maritime resources.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2012, "title": "Xi Jinping becomes CCP General Secretary", "description": "Xi Jinping was appointed CCP General Secretary and Military Affairs Commission chairman at the Eighteenth Party Congress in November 2012, beginning what would become the most powerful Chinese leadership since Mao.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2012, "title": "Senkaku/Diaoyu Islands nationalization crisis", "description": "Japan's purchase of three Senkaku/Diaoyu islands from private owners in September 2012 triggered massive anti-Japanese protests across China and a severe diplomatic crisis. China began regular patrol operations around the islands.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2012, "title": "Bo Xilai scandal — elite political crisis", "description": "Chongqing party chief Bo Xilai was removed amid a scandal involving his wife's murder of a British businessman and police chief Wang Lijun's defection. The case exposed deep elite political fissures ahead of the leadership transition.", "category": "political_corruption", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "Xi Jinping becomes state president — 'Chinese Dream'", "description": "Xi Jinping formally assumed the state presidency in March 2013 and launched the 'Chinese Dream' campaign articulating national rejuvenation as China's central goal, marking a shift toward more assertive nationalism.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "Belt and Road Initiative announced", "description": "Xi Jinping announced the Silk Road Economic Belt (September 2013) and Maritime Silk Road (October 2013), together forming the BRI — China's signature foreign policy instrument to finance infrastructure connecting Asia, Africa, and Europe.", "category": "foreign_investment_and_aid", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "Third Plenum — comprehensive reform blueprint", "description": "The Third Plenum of the 18th Central Committee issued a sweeping reform plan endorsing 'letting the market play a decisive role' in resource allocation, covering the economy, judiciary, military, and social policy.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "East China Sea Air Defense Identification Zone declared", "description": "China unilaterally declared an ADIZ over the East China Sea in November 2013, covering disputed airspace claimed by Japan. The US, Japan, and South Korea refused to recognize it, raising the risk of aerial confrontation.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "Anti-corruption campaign launched under Xi", "description": "Xi Jinping launched a sweeping anti-corruption campaign that became the most extensive in PRC history, eventually ensnaring over a million officials including senior leaders ('tigers') and low-level cadres ('flies').", "category": "political_corruption", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "Zhou Yongkang arrested — unprecedented Politburo Standing Committee case", "description": "Former PSC member Zhou Yongkang was placed under investigation — the first time a sitting or former PSC member had been targeted. He was sentenced to life imprisonment in 2015, signaling that no one was immune from Xi's anti-corruption drive.", "category": "political_corruption", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "South China Sea island-building — artificial islands with military installations", "description": "China dramatically accelerated construction of artificial islands in the Spratly Islands from 2014, creating airstrips, harbors, and military facilities on reefs, alarming regional neighbors and the US.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "Hong Kong Umbrella Movement protests", "description": "Pro-democracy protesters occupied central Hong Kong for 79 days in the 'Umbrella Movement,' demanding genuine universal suffrage. The protests were cleared without the promised electoral reforms.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "China-Russia Power of Siberia gas deal", "description": "China and Russia signed a $400 billion natural gas deal in May 2014 following Russia's isolation over Ukraine, strengthening Sino-Russian energy ties and diversifying China's gas supply.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 2015, "title": "Made in China 2025 industrial strategy", "description": "China announced 'Made in China 2025' in May 2015, targeting dominance in ten advanced manufacturing sectors including semiconductors, AI, and aerospace. The plan alarmed Western governments and became a major flashpoint in trade tensions.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2015, "title": "China's stock market crash — $5 trillion wiped out", "description": "A bubble in Chinese equities burst in June–August 2015, erasing over $5 trillion in market value. The government's heavy-handed interventions damaged confidence in China's financial management.", "category": "economic_crisis", "verified": false, "verification_source": null},
-  {"year": 2015, "title": "Two Child Policy — end of One Child Policy", "description": "China announced the end of the One Child Policy in October 2015, allowing all couples two children. The change came too late to reverse demographic aging, and the demographic challenge intensified.", "category": "demographics_and_population", "verified": false, "verification_source": null},
-  {"year": 2015, "title": "Renminbi added to IMF Special Drawing Rights basket", "description": "The IMF voted in November 2015 to include the renminbi in its SDR currency basket alongside the dollar, euro, pound, and yen, recognizing China's global economic weight.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2016, "title": "South China Sea arbitration ruling against China", "description": "The Permanent Court of Arbitration ruled in July 2016 that China's nine-dash line had no legal basis under international law. China rejected the ruling as 'null and void,' establishing a pattern of non-compliance with international adjudication.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2016, "title": "Xi Jinping declared 'core' leader", "description": "The Sixth Plenum of the 18th Central Committee in October 2016 designated Xi Jinping as the 'core' of the CCP leadership — a title marking his elevation to near-absolute authority within the Party.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2016, "title": "Taiwan's Tsai Ing-wen elected president", "description": "Tsai Ing-wen of the DPP was elected Taiwan's first female president in January 2016. Beijing suspended cross-strait contacts, demanding she affirm the '1992 Consensus'; her refusal set the pattern for hostile cross-strait relations.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "Nineteenth Party Congress — Xi Thought enshrined in constitution", "description": "The Nineteenth Party Congress in October 2017 enshrined 'Xi Jinping Thought' in the Party constitution — the first leader since Mao to have his named ideology enshrined during his lifetime — cementing his dominance.", "category": "communist_regime_and_transition", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "Mass detention of Uyghurs in Xinjiang begins", "description": "China established a network of 'vocational education and training centers' from around 2017 that detained an estimated 1–1.8 million Uyghurs and other Muslim minorities in Xinjiang, drawing escalating international condemnation.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "China establishes first overseas military base in Djibouti", "description": "China opened its first overseas military base in Djibouti in July 2017, supporting naval operations in the Gulf of Aden and signaling China's intention to develop a global military presence.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "China-India Doklam border standoff", "description": "Chinese and Indian troops faced off for 73 days at the Doklam plateau in 2017. India intervened to prevent China from extending a road into disputed territory near Bhutan; both sides eventually disengaged.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "Presidential term limits abolished — Xi can rule indefinitely", "description": "The NPC voted to remove presidential term limits from the constitution in March 2018, allowing Xi Jinping to rule indefinitely. The change was widely criticized internationally as a return to one-man authoritarian rule.", "category": "constitutional_change", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "US-China trade war begins", "description": "The Trump administration imposed 25% tariffs on $34 billion of Chinese goods in July 2018, launching a trade war that escalated to cover $360 billion in bilateral trade. China retaliated with equivalent measures.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "Huawei and ZTE crisis — US semiconductor export controls", "description": "The US banned ZTE from purchasing American components in April 2018, nearly destroying the telecom giant. Huawei CFO Meng Wanzhou's arrest in Canada in December 2018 further exposed China's deep dependence on US semiconductor technology.", "category": "technology_and_digital", "verified": false, "verification_source": null},
-  {"year": 2019, "title": "Hong Kong protests — extradition bill and pro-democracy revolt", "description": "Massive protests erupted in June 2019 against a proposed extradition bill allowing transfers to mainland China. The protests escalated into a broader pro-democracy movement with millions participating; the bill was eventually withdrawn.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2019, "title": "Xinjiang detention camps draw global condemnation", "description": "Leaked documents ('China Cables') confirmed the systematic scale of Xinjiang's detention network. Multiple Western governments subsequently imposed sanctions; China defended the camps as counter-terrorism training centers.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "COVID-19 pandemic originates in Wuhan", "description": "A novel coronavirus emerged in Wuhan in late 2019, declared a global pandemic in March 2020. China's initial response — including silencing whistleblowers — drew international criticism; the origin investigation became a major diplomatic flashpoint.", "category": "public_health_and_epidemics", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "Wuhan lockdown — unprecedented urban quarantine", "description": "China locked down Wuhan (11 million people) and surrounding Hubei Province on January 23, 2020 for 76 days in an unprecedented quarantine that became the global template for pandemic suppression.", "category": "public_health_and_epidemics", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "Hong Kong National Security Law imposed", "description": "China imposed the National Security Law on Hong Kong on June 30, 2020, criminalizing secession, subversion, and collusion with foreign forces. The law effectively ended Hong Kong's political opposition and independent press.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "Galwan Valley clash with India — first deadly border clash since 1975", "description": "A violent clash between Chinese and Indian troops in the Galwan Valley of Ladakh in June 2020 killed 20 Indian soldiers and an unknown number of Chinese — the first deadly Sino-Indian border incident in 45 years.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "China imposes trade sanctions on Australia", "description": "China imposed tariffs and unofficial bans on Australian barley, wine, beef, and coal in 2020 after Australia called for an independent inquiry into COVID-19's origins, demonstrating China's willingness to use economic coercion.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "China declares victory over absolute poverty", "description": "China declared victory over absolute poverty in November 2020, claiming to have lifted the last 98.99 million people out of extreme poverty — a genuine developmental achievement, though measured by Chinese thresholds.", "category": "social_welfare_and_poverty", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "Crackdown on tech giants — Ant Group, Didi, Alibaba", "description": "China launched a broad regulatory crackdown on its technology sector in 2021, halting Ant Group's $37 billion IPO, fining Alibaba $2.8 billion, and forcing Didi to delist. Over $1 trillion in market value was wiped out, signaling state supremacy over private capital.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "Evergrande crisis — real estate debt implosion", "description": "China Evergrande Group defaulted in late 2021, triggering a broader real estate crisis in a sector representing ~25–30% of GDP. The prolonged downturn became China's most severe structural economic challenge in decades.", "category": "economic_crisis", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "Western sanctions over Xinjiang — China counter-sanctions freeze EU deal", "description": "The US, EU, UK, and Canada imposed coordinated sanctions on Chinese officials over Xinjiang human rights abuses in March 2021. China responded with counter-sanctions on European parliamentarians, causing the EU to freeze CAI ratification.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "RCEP trade agreement enters into force", "description": "China ratified the Regional Comprehensive Economic Partnership in March 2021, creating the world's largest trade bloc covering 15 Asia-Pacific nations and deepening China's regional economic integration.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "Three-child policy announced", "description": "China announced a three-child policy in May 2021 in response to the 2020 census showing sharply declining birth rates. The demographic shift threatened China's labor supply and long-term growth.", "category": "demographics_and_population", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "Xi-Putin 'no limits' partnership — Russia invades Ukraine", "description": "Xi Jinping and Putin declared a partnership with 'no limits' days before Russia's February 2022 invasion of Ukraine. China refused to condemn the invasion and became a crucial economic lifeline for Russia under Western sanctions.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "Nancy Pelosi visits Taiwan — PLA military exercises encircle island", "description": "US House Speaker Pelosi visited Taiwan in August 2022, the highest-level US visit in 25 years. China responded with unprecedented military exercises encircling Taiwan, including ballistic missiles fired over the island.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "Shanghai COVID lockdown — two-month shutdown", "description": "Shanghai was placed under a strict two-month lockdown from April to June 2022 under Zero-COVID policy, disrupting global supply chains, devastating the local economy, and generating widespread public anger.", "category": "public_health_and_epidemics", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "Twentieth Party Congress — Xi Jinping gets unprecedented third term", "description": "The Twentieth Party Congress in October 2022 gave Xi Jinping an unprecedented third term as General Secretary, with the Politburo Standing Committee stacked entirely with Xi loyalists.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "A4 Revolution — Zero-COVID protests and policy reversal", "description": "Unprecedented public protests against Zero-COVID erupted across Chinese cities in November 2022, with demonstrators holding blank white sheets. The protests contributed to the abrupt abandonment of Zero-COVID in December, which caused a massive COVID wave.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "China-brokered Saudi-Iran normalization deal", "description": "China brokered a surprise agreement between Saudi Arabia and Iran to restore diplomatic relations in March 2023, marking a significant expansion of Chinese diplomatic influence in the Middle East.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Chinese spy balloon shot down over US", "description": "A Chinese high-altitude surveillance balloon traversed the continental United States in February 2023 before being shot down off South Carolina, causing Secretary Blinken to cancel his Beijing visit and deepening bilateral distrust.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Youth unemployment surges — data suppressed", "description": "China's official youth unemployment rate hit a record 21.3% in June 2023 before the National Bureau of Statistics suspended publication of the data. The 'lying flat' phenomenon spread among disillusioned young Chinese.", "category": "labor_and_industrial_relations", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Gallium and germanium export controls — tech war escalation", "description": "China imposed export controls on gallium and germanium in August 2023 — materials critical for semiconductors and defense electronics — retaliating for US chip export controls and escalating the technology war.", "category": "technology_and_digital", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Senior officials purged — Qin Gang and Rocket Force generals", "description": "Foreign Minister Qin Gang was dismissed in July 2023 after a mysterious absence; multiple Rocket Force generals were removed in a corruption investigation. The purges raised questions about PLA institutional integrity.", "category": "political_corruption", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "Taiwan election — Lai Ching-te wins presidency", "description": "Lai Ching-te of the DPP won Taiwan's presidential election in January 2024. Beijing considers Lai a separatist; China launched large-scale military exercises around Taiwan following his inauguration in May 2024.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "Third Plenum — economic reform blueprint amid structural crisis", "description": "China's Third Plenum of the 20th Central Committee was held in July 2024, issuing a reform blueprint aimed at structural problems including overcapacity, real estate collapse, and weak domestic consumption.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "EU imposes tariffs on Chinese electric vehicles", "description": "The European Union imposed provisional tariffs of up to 38% on Chinese electric vehicles in June 2024, alleging illegal state subsidies. China strongly protested and imposed retaliatory measures on European goods.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "South China Sea confrontations with Philippines escalate", "description": "Chinese and Philippine vessels engaged in repeated physical confrontations at Second Thomas Shoal in 2024, with China using water cannons. The US reaffirmed its Mutual Defense Treaty obligations to the Philippines.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2025, "title": "Trump tariffs escalate to 145% — US-China trade war and truce", "description": "The Trump administration raised tariffs on Chinese goods to 145% in April 2025, the highest in modern history. China responded with 125% tariffs; the two sides subsequently agreed to a 90-day truce reducing tariffs to 30% and 10% respectively.", "category": "trade_and_commerce", "verified": false, "verification_source": null},
-  {"year": 2025, "title": "China's semiconductor self-sufficiency drive accelerates", "description": "China dramatically increased investment in domestic semiconductor manufacturing in 2025, with Huawei and SMIC advancing advanced chip production. The drive was accelerated by continuing US export controls.", "category": "technology_and_digital", "verified": false, "verification_source": null},
-  {"year": 2025, "title": "China's population decline accelerates", "description": "China's population continued its demographic decline in 2025 with birth rates at historic lows despite government incentives. The shrinking working-age population poses long-term economic challenges that population policies have so far failed to reverse.", "category": "demographics_and_population", "verified": false, "verification_source": null},
-  {"year": 2025, "title": "BYD overtakes global automakers in EV sales", "description": "Chinese EV manufacturer BYD consolidated its position as the world's leading EV maker in 2025, exporting across Southeast Asia, Europe, and Latin America despite escalating trade barriers — demonstrating China's industrial competitiveness.", "category": "trade_and_commerce", "verified": false, "verification_source": null}
+  {
+    "year": 1950,
+    "title": "China enters Korean War",
+    "description": "Chinese People's Volunteer Army crossed the Yalu River in October 1950 to support North Korea against UN forces, reshaping the war and cementing Cold War hostility between China and the West.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1950,
+    "title": "Sino-Soviet Treaty of Friendship signed",
+    "description": "China and the Soviet Union signed a 30-year mutual defense and assistance treaty, providing China with Soviet technical and economic aid during its early reconstruction period.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1950,
+    "title": "Land Reform Law enacted nationwide",
+    "description": "The Agrarian Reform Law of 1950 abolished the landlord system and redistributed land to approximately 300 million peasants, involving mass mobilizations and executions of landlords across rural China.",
+    "category": "land_reform_and_agrarian",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1950,
+    "title": "PRC annexes Tibet militarily",
+    "description": "The People's Liberation Army invaded Tibet in October 1950, defeating Tibetan forces within weeks. China called it a 'peaceful liberation' but Tibet's government and the UN condemned it as illegal annexation.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1950,
+    "title": "Marriage Law abolishes feudal marriage system",
+    "description": "The 1950 Marriage Law outlawed arranged marriages, child brides, and concubinage, giving women equal rights to divorce — one of the most sweeping social reforms of the early PRC.",
+    "category": "gender_and_womens_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1950,
+    "title": "Mass political repression campaigns begin",
+    "description": "Nationwide campaigns — Suppression of Counterrevolutionaries, Three-Antis, and Five-Antis — targeted political opponents, former Nationalist officials, and the urban bourgeoisie. Estimates of executions range from 500,000 to 2 million.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1951,
+    "title": "Thought Reform Campaign targets intellectuals",
+    "description": "A mass ideological remolding campaign compelled university professors, writers, and intellectuals to publicly confess bourgeois thought and embrace Marxism-Leninism, establishing a template for future political campaigns.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1953,
+    "title": "Korean War armistice signed",
+    "description": "An armistice ending active combat was signed at Panmunjom on July 27, 1953. China suffered an estimated 180,000–400,000 military deaths and emerged with enhanced international prestige despite the stalemate.",
+    "category": "peacekeeping_and_peace_process",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1953,
+    "title": "First Five-Year Plan launched",
+    "description": "China's First Five-Year Plan (1953–1957) launched with emphasis on Soviet-style heavy industrial development, including 156 major Soviet-aided projects. It achieved significant growth in steel, coal, and electricity production.",
+    "category": "economic_growth_milestone",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1953,
+    "title": "Gao Gang purged from leadership",
+    "description": "Gao Gang, head of the State Planning Commission, was accused of attempting to split the Party and expelled; he reportedly committed suicide in 1954. The purge established precedents for elite political discipline.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1954,
+    "title": "First Constitution of the PRC adopted",
+    "description": "The First National People's Congress adopted China's first formal constitution, establishing the NPC as the supreme state organ and codifying the socialist state structure.",
+    "category": "constitutional_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1954,
+    "title": "First Taiwan Strait Crisis",
+    "description": "PLA forces bombarded Nationalist-held islands, triggering a crisis that drew in the United States. The US signed a mutual defense treaty with Taiwan in December 1954, formalizing the cross-strait standoff.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1954,
+    "title": "Five Principles of Peaceful Coexistence proclaimed",
+    "description": "Zhou Enlai and India's Nehru proclaimed the Panchsheel principles — mutual respect, non-aggression, non-interference, equality, and peaceful coexistence — which became cornerstones of Chinese foreign policy.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1955,
+    "title": "Bandung Conference — China leads decolonizing world",
+    "description": "Zhou Enlai attended the Bandung Conference in April 1955, presenting China as a champion of Asian and African nations against colonialism and marking China's emergence as a leader in the developing world.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1955,
+    "title": "Agricultural collectivization drive accelerates",
+    "description": "Mao pushed rapid formation of higher-level agricultural cooperatives, overriding moderates. Within a year, over 90% of peasant households were enrolled in cooperatives, restructuring Chinese agriculture.",
+    "category": "land_reform_and_agrarian",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1956,
+    "title": "Hundred Flowers Campaign and Anti-Rightist crackdown",
+    "description": "Mao's brief liberalization encouraging intellectuals to criticize the Party was abruptly reversed in mid-1957 with the Anti-Rightist Campaign. An estimated 500,000 people were labeled 'rightists' and sent to labor camps.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1956,
+    "title": "Socialist transformation of industry completed",
+    "description": "By 1956 virtually all private industrial and commercial enterprises had been converted to joint state-private or fully state ownership, completing China's socialist transformation of the urban economy.",
+    "category": "privatization_and_nationalization",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1956,
+    "title": "Sino-Soviet ideological divergence begins",
+    "description": "Khrushchev's 1956 secret speech denouncing Stalin created ideological tension with Beijing. Mao criticized the de-Stalinization as destabilizing and began charting a more independent course from Moscow.",
+    "category": "cold_war_geopolitics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1958,
+    "title": "Great Leap Forward launched",
+    "description": "Mao launched the Great Leap Forward in 1958, aiming to rapidly industrialize China through mass mobilization into People's Communes. Unrealistic production quotas and falsified reports led to a catastrophic famine killing an estimated 15–55 million people by 1962.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1958,
+    "title": "Second Taiwan Strait Crisis — Quemoy bombardment",
+    "description": "The PLA launched a massive artillery bombardment of Nationalist-held Quemoy (Kinmen) from August 1958. The US intervened with naval escorts; the crisis de-escalated after several weeks without a full military conflict.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1958,
+    "title": "Sino-Soviet nuclear cooperation breaks down",
+    "description": "The Soviet Union suspended its agreement to provide China with nuclear weapons technology, formalized after Khrushchev visited the US. This marked the beginning of the Sino-Soviet split.",
+    "category": "cold_war_geopolitics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1959,
+    "title": "Tibetan Uprising and Dalai Lama's exile",
+    "description": "A Tibetan uprising against Chinese rule broke out in Lhasa in March 1959. Chinese forces suppressed it within weeks; the Dalai Lama fled to India and established a government-in-exile in Dharamsala.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1959,
+    "title": "Lushan Conference — Peng Dehuai purged",
+    "description": "Defense Minister Peng Dehuai's private letter criticizing the Great Leap Forward led to his purge by Mao. His replacement by Lin Biao intensified disastrous GLF policies and set the stage for the Cultural Revolution.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1960,
+    "title": "Sino-Soviet split becomes public",
+    "description": "Ideological disputes broke into the open at the 1960 Bucharest and Moscow communist conferences. The USSR withdrew all technical advisors from China in July 1960, halting hundreds of joint projects and accelerating China's independent development path.",
+    "category": "cold_war_geopolitics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1960,
+    "title": "China launches independent nuclear weapons program",
+    "description": "Following Soviet withdrawal, China accelerated domestic nuclear weapons development under the Second Ministry of Machine Building, drawing on scientists trained abroad.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1961,
+    "title": "Great Leap Forward wound down — economic recovery begins",
+    "description": "Liu Shaoqi and Deng Xiaoping wound down GLF policies in 1961, restoring private plots and market activities. The January 1962 Seven Thousand Cadres Conference included Mao's self-criticism; Mao was temporarily sidelined.",
+    "category": "economic_recovery",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1962,
+    "title": "Sino-Indian War",
+    "description": "China launched a military offensive along the Himalayan border in October 1962, routing Indian forces in both the Aksai Chin and NEFA sectors before declaring a unilateral ceasefire. The war defined the disputed border that remains contested today.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1963,
+    "title": "Sino-Soviet split becomes irreversible",
+    "description": "China and the USSR exchanged open polemics throughout 1963, with China publishing 'Nine Commentaries' criticizing Soviet revisionism. China refused to sign the Partial Nuclear Test Ban Treaty, further deepening the rupture.",
+    "category": "cold_war_geopolitics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1964,
+    "title": "China's first nuclear weapon test",
+    "description": "China successfully detonated its first atomic bomb at Lop Nor on October 16, 1964, becoming the fifth nuclear power. The test was achieved indigenously after Soviet withdrawal and was a major geopolitical milestone.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1964,
+    "title": "France recognizes the People's Republic of China",
+    "description": "France became the first major Western country to establish diplomatic relations with the PRC in January 1964, breaking with NATO allies and signaling the limits of Western isolation of China.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1965,
+    "title": "Cultural Revolution ideological preparations begin",
+    "description": "The 1965 critique of the play 'Hai Rui Dismissed from Office' marked the opening shot of the Cultural Revolution. Mao used it to attack Beijing's municipal leadership and moderate Party officials.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1965,
+    "title": "China deploys troops to support Vietnam War",
+    "description": "China deployed approximately 320,000 military personnel to North Vietnam between 1965 and 1969 for air defenses, logistics, and engineering, and supplied massive quantities of arms — a major Cold War intervention.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1966,
+    "title": "Cultural Revolution officially launched",
+    "description": "The Cultural Revolution was formally launched with the May 16 Circular and mobilization of Red Guards. The movement attacked the 'Four Olds,' decimated the Party and state apparatus, closed all schools, and caused massive social violence persisting until 1976.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1967,
+    "title": "Cultural Revolution violence peaks — Revolutionary Committees",
+    "description": "Factional Red Guard fighting escalated into armed battles in 1967; Guangxi massacres killed tens of thousands. The PLA was ordered to restore order, and Revolutionary Committees replaced Party structures at all administrative levels.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1967,
+    "title": "China conducts first hydrogen bomb test",
+    "description": "China successfully tested its first thermonuclear bomb at Lop Nor on June 17, 1967 — just 32 months after its first atomic test, the fastest fission-to-fusion progression of any nuclear power.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1968,
+    "title": "Down to the Countryside Movement begins",
+    "description": "Mao ordered urban youth 'sent down' to rural areas; between 1968 and 1980 approximately 16 million young people were relocated, disrupting their education and careers and creating a 'lost generation.'",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1969,
+    "title": "Sino-Soviet border conflict — Zhenbao Island clashes",
+    "description": "Chinese and Soviet forces clashed in bloody border battles along the Ussuri River in March 1969, with the USSR threatening nuclear retaliation. The crisis drove China strategically toward rapprochement with the United States.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1971,
+    "title": "Lin Biao incident — designated successor dies fleeing China",
+    "description": "Lin Biao, Mao's designated successor, reportedly attempted a coup and fled toward the Soviet Union; his plane crashed in Mongolia on September 13, 1971, killing all aboard. The incident shattered Maoist ideology.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1971,
+    "title": "China admitted to the United Nations, Taiwan expelled",
+    "description": "UN General Assembly Resolution 2758 recognized the PRC as the sole legitimate representative of China, expelling Taiwan and giving China the permanent Security Council seat — a fundamental shift in international order.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1971,
+    "title": "Bangladesh Liberation War — China backs Pakistan",
+    "description": "China backed Pakistan against India during the 1971 war that created Bangladesh and cast its first UN Security Council veto on related resolutions, cementing the Sino-Indian rivalry.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1972,
+    "title": "Nixon visits China — Shanghai Communiqué",
+    "description": "President Nixon's February 1972 visit and the Shanghai Communiqué fundamentally transformed the Cold War balance. The US acknowledged Taiwan as part of China and agreed to reduce military presence there, ending 23 years of Sino-American hostility.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1972,
+    "title": "Japan normalizes relations with China",
+    "description": "Japan and China normalized diplomatic relations in September 1972 during Prime Minister Tanaka's Beijing visit, with Japan renouncing its peace treaty with Taiwan — a major diplomatic victory for the PRC.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1974,
+    "title": "Paracel Islands seized from South Vietnam",
+    "description": "China seized the Paracel Islands from South Vietnam in January 1974, expelling Vietnamese forces. The islands remain under Chinese control and are contested by Vietnam, marking China's first forcible territorial expansion in the South China Sea.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1975,
+    "title": "Banqiao Dam disaster",
+    "description": "Typhoon Nina caused catastrophic failure of the Banqiao Dam in Henan Province in August 1975, killing an estimated 85,000–240,000 people — the worst dam failure in history. The disaster was covered up for decades.",
+    "category": "natural_disaster",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1976,
+    "title": "Mao Zedong dies and Gang of Four arrested",
+    "description": "Premier Zhou Enlai died in January 1976, and Mao Zedong died on September 9, 1976, ending his 27-year rule. Within weeks, Hua Guofeng and the military arrested the Gang of Four on October 6, 1976, ending the Cultural Revolution era.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1976,
+    "title": "Tangshan earthquake kills hundreds of thousands",
+    "description": "A magnitude 7.6 earthquake struck Tangshan on July 28, 1976, killing an official 242,000 but estimated 500,000+. The government initially rejected foreign aid, managing the disaster in secrecy.",
+    "category": "natural_disaster",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1977,
+    "title": "Deng Xiaoping rehabilitated — returns to power",
+    "description": "Deng Xiaoping was rehabilitated for the third time in July 1977 and quickly consolidated influence against Hua Guofeng, beginning the ideological debate on 'practice as the criterion of truth' that would legitimize reform.",
+    "category": "executive_power_consolidation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1977,
+    "title": "National college entrance examinations restored",
+    "description": "China restored the Gaokao university entrance examinations in December 1977 after an 11-year suspension. Over 5.7 million candidates sat the first exams, marking the decisive end of Cultural Revolution anti-intellectualism.",
+    "category": "education_and_intellectual_life",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1978,
+    "title": "Third Plenum — Reform and Opening Up begins",
+    "description": "The Third Plenary Session of the 11th CCP Central Committee in December 1978 marked the decisive shift to the Deng Xiaoping reform era, abandoning class struggle and establishing economic development as the national priority.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1978,
+    "title": "US-China full diplomatic normalization",
+    "description": "The United States and China announced full diplomatic normalization effective January 1, 1979, with the US switching recognition from Taiwan to Beijing. The Taiwan Relations Act governed subsequent unofficial US-Taiwan ties.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1978,
+    "title": "Democracy Wall movement",
+    "description": "Chinese citizens posted political manifestos on a Beijing wall calling for democracy and human rights; Wei Jingsheng's call for a 'Fifth Modernization' was the most famous. The movement was suppressed in 1979 and Wei sentenced to 15 years.",
+    "category": "civil_liberties",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1978,
+    "title": "Sino-Japanese Treaty of Peace and Friendship signed",
+    "description": "China and Japan signed a Treaty of Peace and Friendship in August 1978, normalizing relations and opening the path for massive Japanese investment in China's modernization.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "Sino-Vietnamese War",
+    "description": "China launched a punitive military invasion of Vietnam in February–March 1979 in retaliation for Vietnam's invasion of Cambodia. The war exposed serious PLA weaknesses and ended inconclusively with heavy casualties on both sides.",
+    "category": "interstate_war",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "One Child Policy announced",
+    "description": "China announced its One Child Policy in 1979 (formally enacted 1980) to control population growth. Enforced through fines, forced sterilizations, and social pressure, it shaped Chinese demographics for decades.",
+    "category": "demographics_and_population",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "Household Responsibility System piloted",
+    "description": "The household responsibility system, allowing farming families to sell surplus production on the market after meeting state quotas, was piloted in Anhui province. Its success prompted national adoption and transformed Chinese agriculture.",
+    "category": "land_reform_and_agrarian",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1980,
+    "title": "Shenzhen designated first Special Economic Zone",
+    "description": "Shenzhen was designated China's first Special Economic Zone in August 1980, becoming the symbol of China's economic opening and growing from a fishing village into a city of millions.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1980,
+    "title": "Trial of the Gang of Four",
+    "description": "The Gang of Four and associates of Lin Biao were tried before a special court; Jiang Qing and Zhang Chunqiao received death sentences later commuted to life imprisonment. The trial publicly repudiated the Cultural Revolution.",
+    "category": "transitional_justice",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1980,
+    "title": "China joins the IMF and World Bank",
+    "description": "China joined the IMF and World Bank in April 1980, with the PRC displacing Taiwan as the representative of China, enabling access to international capital and technical assistance for the reform program.",
+    "category": "foreign_investment_and_aid",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1981,
+    "title": "Resolution on CCP History — Mao assessed as '70% correct'",
+    "description": "The CCP's historic resolution assessed Mao as '70% correct, 30% wrong,' condemning the Cultural Revolution while preserving Mao's overall legacy. The formula enabled reform without repudiating the Party's founding mythology.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1982,
+    "title": "New Chinese Constitution adopted",
+    "description": "China adopted a new constitution in December 1982, restoring the position of state president and incorporating reform-era economic policies. It has been amended four times since, including to remove presidential term limits in 2018.",
+    "category": "constitutional_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1982,
+    "title": "Sino-British negotiations on Hong Kong begin — 'One Country, Two Systems'",
+    "description": "Deng Xiaoping proposed 'One Country, Two Systems' during negotiations with Thatcher over Hong Kong's future. China's position that sovereignty was non-negotiable prevailed, leading to the 1984 Joint Declaration.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1983,
+    "title": "Economic reforms expand to urban industry",
+    "description": "China expanded economic reforms from agriculture to urban industry, allowing state enterprises greater autonomy and permitting private businesses. Township and village enterprises (TVEs) emerged as a major growth engine.",
+    "category": "economic_growth_milestone",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1984,
+    "title": "Sino-British Joint Declaration signed",
+    "description": "China and Britain signed the Joint Declaration in December 1984, agreeing that Hong Kong would revert to Chinese sovereignty on July 1, 1997, under the 'One Country, Two Systems' framework for 50 years.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1984,
+    "title": "Fourteen coastal cities opened to foreign investment",
+    "description": "China opened fourteen coastal cities to foreign investment in 1984, extending the SEZ model to include Shanghai, Guangzhou, and Tianjin, accelerating coastal development and export industrialization.",
+    "category": "foreign_investment_and_aid",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1985,
+    "title": "PLA reduced by one million troops",
+    "description": "Deng Xiaoping announced a reduction of the PLA by one million personnel in 1985, the largest peacetime military demobilization in history, freeing resources for economic development.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1986,
+    "title": "Student democracy protests sweep China",
+    "description": "Student democracy protests swept Chinese campuses in late 1986, demanding political reform and freedom of the press. The protests were suppressed and directly contributed to Hu Yaobang's dismissal in January 1987.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1986,
+    "title": "Compulsory Education Law enacted",
+    "description": "China enacted a Compulsory Education Law requiring nine years of schooling for all children, establishing a legal framework for universal education.",
+    "category": "education_and_intellectual_life",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1987,
+    "title": "Hu Yaobang dismissed as CCP General Secretary",
+    "description": "Hu Yaobang was forced to resign in January 1987, blamed for sympathy with the 1986 student protests. His death in April 1989 would trigger the Tiananmen Square demonstrations.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1987,
+    "title": "Tibet protests — Lhasa crackdown",
+    "description": "Major pro-independence demonstrations by monks erupted in Lhasa in September–October 1987, with security forces killing several protesters. Martial law was declared in Tibet in March 1989, killing dozens more.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1988,
+    "title": "Price reform triggers 'price storming' inflation crisis",
+    "description": "An attempt to liberalize prices in 1988 triggered panic buying and double-digit inflation. The crisis severely damaged public confidence in the reform program and empowered Party hardliners ahead of 1989.",
+    "category": "economic_recession",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1989,
+    "title": "Tiananmen Square massacre",
+    "description": "Pro-democracy demonstrations centered on Beijing's Tiananmen Square drew hundreds of thousands of students and workers. On June 3–4, the PLA crushed the movement with tanks; death estimates range from hundreds to thousands.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1989,
+    "title": "Zhao Ziyang purged — Jiang Zemin appointed General Secretary",
+    "description": "General Secretary Zhao Ziyang was removed for opposing the military crackdown and spent his last 15 years under house arrest. Jiang Zemin, Shanghai's party secretary, was appointed General Secretary, beginning a decade of Jiang's leadership.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1989,
+    "title": "Western sanctions imposed after Tiananmen",
+    "description": "The US, European Community, and other Western nations imposed sanctions including arms embargoes after Tiananmen. The EU arms embargo remains in force; the sanctions defined China's international relations for years.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1990,
+    "title": "Shanghai Stock Exchange established",
+    "description": "The Shanghai Stock Exchange was established in December 1990, followed by the Shenzhen Stock Exchange in 1991, marking a major step in China's transition to a market economy.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1991,
+    "title": "Soviet Union collapse — China draws lessons on Party control",
+    "description": "The collapse of the Soviet Union deeply alarmed Chinese leaders, reinforcing their conviction that political liberalization must be avoided and that the Party must never relinquish control — a lesson that shaped CCP strategy for decades.",
+    "category": "cold_war_geopolitics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1992,
+    "title": "Deng Xiaoping's Southern Tour relaunches reforms",
+    "description": "Deng Xiaoping's informal inspection tour of Shenzhen, Zhuhai, and Shanghai in early 1992 relaunched economic reform after Tiananmen-era conservatism. The Fourteenth Party Congress formally endorsed the 'socialist market economy.'",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1992,
+    "title": "Three Gorges Dam approved",
+    "description": "The NPC controversially approved the Three Gorges Dam project in April 1992 with unusually high dissenting votes. The project displaced 1.3 million people, transformed the Yangtze River, and was completed in 2006.",
+    "category": "infrastructure_and_urban_development",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1992,
+    "title": "China normalizes relations with South Korea",
+    "description": "China and South Korea established full diplomatic relations in August 1992, forcing Taiwan to sever its ties with Seoul. The normalization reflected China's growing economic importance in the region.",
+    "category": "diplomatic_rupture",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1993,
+    "title": "China becomes net oil importer",
+    "description": "China became a net oil importer in 1993 for the first time, a strategic turning point that would drive China's global energy diplomacy, Africa engagement, and Middle East policy for decades.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1994,
+    "title": "Yuan renminbi unified exchange rate reform",
+    "description": "China unified its dual exchange rate system in January 1994, effectively devaluing the currency and boosting export competitiveness — a key step in integrating China into the global economy.",
+    "category": "monetary_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1994,
+    "title": "Tax-sharing reform reshapes central-local fiscal relations",
+    "description": "A major fiscal reform in 1994 restructured tax collection between central and local governments, significantly increasing Beijing's revenue share and strengthening the central government's fiscal capacity.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1994,
+    "title": "China launches first internet connection",
+    "description": "China established its first full internet connection in April 1994 via a 64 Kbps line to Stanford University. The internet transformed Chinese commerce and society while enabling the state's digital surveillance apparatus.",
+    "category": "technology_and_digital",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1995,
+    "title": "Third Taiwan Strait Crisis — China fires missiles near Taiwan",
+    "description": "China conducted ballistic missile tests near Taiwan in 1995–96 to intimidate voters ahead of Taiwan's first direct presidential election. The US deployed two carrier battle groups; China backed down, establishing deterrence patterns.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1995,
+    "title": "Panchen Lama succession dispute",
+    "description": "The Dalai Lama recognized a six-year-old boy as the 11th Panchen Lama in May 1995; China rejected the selection, installed its own candidate, and took the Dalai Lama's choice into custody. He has not been seen publicly since.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1996,
+    "title": "China-Russia strategic partnership",
+    "description": "China and Russia announced a 'strategic partnership of equality and cooperation' in April 1996, explicitly directed at building a multipolar world. The Shanghai Five (forerunner to the SCO) was also established that year.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1997,
+    "title": "Hong Kong handover to China",
+    "description": "Britain transferred sovereignty over Hong Kong to China on July 1, 1997, ending 156 years of British colonial rule. Hong Kong became a Special Administrative Region under 'One Country, Two Systems.'",
+    "category": "decolonization_and_independence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1997,
+    "title": "Deng Xiaoping dies",
+    "description": "Deng Xiaoping, China's paramount leader since 1978, died on February 19, 1997. His death was managed smoothly; Jiang Zemin had already consolidated power, and the succession caused no political instability.",
+    "category": "executive_power_consolidation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1997,
+    "title": "Asian Financial Crisis — China holds renminbi peg",
+    "description": "During the 1997 Asian Financial Crisis, China maintained the renminbi's peg to the US dollar, preventing competitive devaluation. This earned international goodwill and facilitated China's WTO accession negotiations.",
+    "category": "currency_crisis",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1997,
+    "title": "State-owned enterprise restructuring — millions laid off",
+    "description": "Zhu Rongji launched massive restructuring of state-owned enterprises, closing or merging thousands of unprofitable companies. An estimated 20–40 million state workers were laid off over three years — the largest peacetime labor displacement in history.",
+    "category": "labor_and_industrial_relations",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1998,
+    "title": "Yangtze River floods — massive disaster",
+    "description": "Catastrophic floods along the Yangtze River in 1998 killed over 3,000 people, displaced 14 million, and caused $26 billion in damages. The disaster accelerated programs to halt deforestation and relocate flood-plain residents.",
+    "category": "natural_disaster",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1999,
+    "title": "NATO bombing of Chinese embassy in Belgrade",
+    "description": "NATO bombs destroyed the Chinese embassy in Belgrade on May 7, 1999, killing three Chinese journalists. Massive anti-US protests erupted in China; the incident deeply poisoned Sino-American relations.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1999,
+    "title": "Falun Gong banned and persecution begins",
+    "description": "China officially banned Falun Gong on July 22, 1999, declaring it an 'evil cult.' A nationwide campaign of arrests, detention, and forced re-education targeted millions of practitioners.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1999,
+    "title": "Macau handover to China",
+    "description": "Portugal transferred Macau to Chinese sovereignty on December 20, 1999, ending 442 years of Portuguese rule. Macau became a Special Administrative Region and subsequently the world's largest gambling hub.",
+    "category": "decolonization_and_independence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1999,
+    "title": "Taiwan 'two states' statement triggers crisis",
+    "description": "Taiwan's Lee Teng-hui described cross-strait relations as 'special state-to-state relations' in July 1999, infuriating Beijing. China suspended cross-strait dialogue and threatened military action.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2001,
+    "title": "China joins the World Trade Organization",
+    "description": "China formally joined the WTO on December 11, 2001, after 15 years of negotiations. Membership accelerated China's export boom, attracted massive foreign investment, and transformed global manufacturing supply chains.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2001,
+    "title": "Shanghai Cooperation Organisation established",
+    "description": "China, Russia, and four Central Asian states established the SCO in June 2001, formalizing the Shanghai Five. The SCO became a major platform for Eurasian security cooperation and a counterweight to Western institutions.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2001,
+    "title": "Beijing wins 2008 Olympics bid",
+    "description": "Beijing won the bid to host the 2008 Summer Olympics in July 2001, representing international validation of China's rise and triggering massive infrastructure investment.",
+    "category": "sport_and_international_events",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2002,
+    "title": "Sixteenth Party Congress — first peaceful CCP leadership transfer",
+    "description": "The Sixteenth Party Congress in November 2002 marked the first peaceful power transfer in PRC history, with Jiang Zemin handing the General Secretary position to Hu Jintao, beginning the 'fourth generation' of leadership.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "SARS epidemic — government cover-up and global spread",
+    "description": "SARS spread globally in early 2003 after initial cover-up by Chinese authorities. Health Minister Zhang Wenkang and Beijing Mayor Meng Xuenong were dismissed; the epidemic killed 774 globally and exposed systemic public health failures.",
+    "category": "public_health_and_epidemics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "China's first crewed space mission",
+    "description": "China launched astronaut Yang Liwei into orbit on October 15, 2003, becoming only the third country to independently achieve human spaceflight — a source of enormous national pride and a strategic milestone.",
+    "category": "technology_and_digital",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "Six-Party Talks on North Korea begin",
+    "description": "China hosted the first round of Six-Party Talks on North Korea's nuclear program in August 2003, positioning itself as an indispensable regional mediator and restraint on Pyongyang.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2004,
+    "title": "Constitution amended to protect private property",
+    "description": "China amended its constitution to explicitly protect lawfully obtained private property, a significant formal acknowledgment of the market economy and the role of private enterprise.",
+    "category": "constitutional_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2004,
+    "title": "Rural land rights protests escalate",
+    "description": "Mass protests by farmers over illegal land seizures for development projects escalated in 2004. The CCP reported 74,000 'mass incidents,' many related to land disputes, revealing deep tensions accompanying rapid urbanization.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2005,
+    "title": "Anti-Secession Law passed against Taiwan",
+    "description": "China passed the Anti-Secession Law in March 2005, legally authorizing the use of force against Taiwan if it declares independence or if peaceful reunification becomes 'completely impossible.' Taiwan and the US protested strongly.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2005,
+    "title": "Renminbi revaluation and managed float",
+    "description": "China revalued the renminbi by 2.1% against the US dollar in July 2005 and shifted to a managed float against a basket of currencies, responding to intense international pressure over China's trade surplus.",
+    "category": "monetary_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2006,
+    "title": "China-Africa summit — Forum on China-Africa Cooperation",
+    "description": "China hosted 48 African leaders at the FOCAC summit in November 2006, pledging $5 billion in loans and credits. The event marked China's emergence as Africa's leading development partner.",
+    "category": "foreign_investment_and_aid",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2006,
+    "title": "North Korea's first nuclear test — China condemns",
+    "description": "North Korea conducted its first nuclear test in October 2006. China publicly condemned the test and voted for UN Security Council sanctions — a rare public rebuke of its sole major ally.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2007,
+    "title": "China's ASAT missile test destroys own satellite",
+    "description": "China conducted an anti-satellite missile test on January 11, 2007, destroying a weather satellite and creating thousands of debris fragments. The test alarmed the US and demonstrated China's space warfare capabilities.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Tibet protests and Olympic torch relay disruptions",
+    "description": "Protests erupted across Tibet in March 2008 on the anniversary of the 1959 uprising; security forces killed dozens. Pro-Tibet activists disrupted Olympic torch relay events worldwide, embarrassing China ahead of the games.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Sichuan earthquake kills nearly 90,000",
+    "description": "A magnitude 7.9 earthquake struck Sichuan Province on May 12, 2008, killing nearly 70,000 people. The collapse of 'tofu construction' school buildings sparked public anger at corruption and construction safety.",
+    "category": "natural_disaster",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Beijing Summer Olympics",
+    "description": "China hosted the 2008 Summer Olympics, a globally watched showcase of China's rise. China's 51 gold medals and the spectacular opening ceremony cemented the games as a national triumph and international coming-out.",
+    "category": "sport_and_international_events",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Global financial crisis — China's $586B stimulus",
+    "description": "China responded to the 2008 global financial crisis with a 4 trillion yuan ($586 billion) stimulus package focused on infrastructure and housing, maintaining high growth and helping stabilize the global economy.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Melamine milk scandal",
+    "description": "Melamine contamination of infant formula sickened 300,000 babies and killed at least six in 2008. The scandal exposed deep problems in food safety regulation and became a defining moment in public trust of domestic products.",
+    "category": "public_health_and_epidemics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2009,
+    "title": "Xinjiang Urumqi riots — ethnic violence",
+    "description": "Riots between Han and Uyghur communities in Urumqi on July 5, 2009 killed nearly 200 people. China blamed overseas separatists; underlying causes were ethnic tensions and economic marginalization of Uyghurs.",
+    "category": "race_and_ethnic_relations",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2009,
+    "title": "Great Firewall expands — internet censorship tightened",
+    "description": "China expanded its internet censorship apparatus, blocking YouTube after Xinjiang riot videos and progressively blocking Facebook, Twitter, and Google. The 'Great Firewall' became a defining feature of China's digital governance.",
+    "category": "media_and_press_freedom",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2010,
+    "title": "China surpasses Japan as world's second largest economy",
+    "description": "China officially confirmed it had surpassed Japan as the world's second largest economy in 2010, a historic shift in the global economic order and a key benchmark in China's ascent.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2010,
+    "title": "Liu Xiaobo awarded Nobel Peace Prize — China furious",
+    "description": "Imprisoned dissident and Charter 08 co-author Liu Xiaobo was awarded the Nobel Peace Prize. China condemned the decision and pressured countries to boycott the ceremony; the award chair was left empty.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2010,
+    "title": "China-Japan Diaoyu/Senkaku boat collision — rare earth embargo",
+    "description": "A Chinese fishing trawler collision with Japanese Coast Guard vessels near the disputed islands led China to halt rare earth exports to Japan — a dramatic use of economic coercion in a territorial dispute.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2011,
+    "title": "China's first aircraft carrier commissioned",
+    "description": "China commissioned its first aircraft carrier, the refurbished Soviet-era Liaoning, signaling China's intention to develop blue-water naval power and project force beyond its immediate region.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2011,
+    "title": "South China Sea — nine-dash line claims escalate",
+    "description": "China issued maps asserting the 'nine-dash line' encompassing most of the South China Sea, escalating tensions with Vietnam, the Philippines, Malaysia, and Brunei over islands and maritime resources.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2012,
+    "title": "Xi Jinping becomes CCP General Secretary",
+    "description": "Xi Jinping was appointed CCP General Secretary and Military Affairs Commission chairman at the Eighteenth Party Congress in November 2012, beginning what would become the most powerful Chinese leadership since Mao.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2012,
+    "title": "Senkaku/Diaoyu Islands nationalization crisis",
+    "description": "Japan's purchase of three Senkaku/Diaoyu islands from private owners in September 2012 triggered massive anti-Japanese protests across China and a severe diplomatic crisis. China began regular patrol operations around the islands.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2012,
+    "title": "Bo Xilai scandal — elite political crisis",
+    "description": "Chongqing party chief Bo Xilai was removed amid a scandal involving his wife's murder of a British businessman and police chief Wang Lijun's defection. The case exposed deep elite political fissures ahead of the leadership transition.",
+    "category": "political_corruption",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "Xi Jinping becomes state president — 'Chinese Dream'",
+    "description": "Xi Jinping formally assumed the state presidency in March 2013 and launched the 'Chinese Dream' campaign articulating national rejuvenation as China's central goal, marking a shift toward more assertive nationalism.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "Belt and Road Initiative announced",
+    "description": "Xi Jinping announced the Silk Road Economic Belt (September 2013) and Maritime Silk Road (October 2013), together forming the BRI — China's signature foreign policy instrument to finance infrastructure connecting Asia, Africa, and Europe.",
+    "category": "foreign_investment_and_aid",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "Third Plenum — comprehensive reform blueprint",
+    "description": "The Third Plenum of the 18th Central Committee issued a sweeping reform plan endorsing 'letting the market play a decisive role' in resource allocation, covering the economy, judiciary, military, and social policy.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "East China Sea Air Defense Identification Zone declared",
+    "description": "China unilaterally declared an ADIZ over the East China Sea in November 2013, covering disputed airspace claimed by Japan. The US, Japan, and South Korea refused to recognize it, raising the risk of aerial confrontation.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "Anti-corruption campaign launched under Xi",
+    "description": "Xi Jinping launched a sweeping anti-corruption campaign that became the most extensive in PRC history, eventually ensnaring over a million officials including senior leaders ('tigers') and low-level cadres ('flies').",
+    "category": "political_corruption",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "Zhou Yongkang arrested — unprecedented Politburo Standing Committee case",
+    "description": "Former PSC member Zhou Yongkang was placed under investigation — the first time a sitting or former PSC member had been targeted. He was sentenced to life imprisonment in 2015, signaling that no one was immune from Xi's anti-corruption drive.",
+    "category": "political_corruption",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "South China Sea island-building — artificial islands with military installations",
+    "description": "China dramatically accelerated construction of artificial islands in the Spratly Islands from 2014, creating airstrips, harbors, and military facilities on reefs, alarming regional neighbors and the US.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "Hong Kong Umbrella Movement protests",
+    "description": "Pro-democracy protesters occupied central Hong Kong for 79 days in the 'Umbrella Movement,' demanding genuine universal suffrage. The protests were cleared without the promised electoral reforms.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "China-Russia Power of Siberia gas deal",
+    "description": "China and Russia signed a $400 billion natural gas deal in May 2014 following Russia's isolation over Ukraine, strengthening Sino-Russian energy ties and diversifying China's gas supply.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2015,
+    "title": "Made in China 2025 industrial strategy",
+    "description": "China announced 'Made in China 2025' in May 2015, targeting dominance in ten advanced manufacturing sectors including semiconductors, AI, and aerospace. The plan alarmed Western governments and became a major flashpoint in trade tensions.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2015,
+    "title": "China's stock market crash — $5 trillion wiped out",
+    "description": "A bubble in Chinese equities burst in June–August 2015, erasing over $5 trillion in market value. The government's heavy-handed interventions damaged confidence in China's financial management.",
+    "category": "economic_recession",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2015,
+    "title": "Two Child Policy — end of One Child Policy",
+    "description": "China announced the end of the One Child Policy in October 2015, allowing all couples two children. The change came too late to reverse demographic aging, and the demographic challenge intensified.",
+    "category": "demographics_and_population",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2015,
+    "title": "Renminbi added to IMF Special Drawing Rights basket",
+    "description": "The IMF voted in November 2015 to include the renminbi in its SDR currency basket alongside the dollar, euro, pound, and yen, recognizing China's global economic weight.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2016,
+    "title": "South China Sea arbitration ruling against China",
+    "description": "The Permanent Court of Arbitration ruled in July 2016 that China's nine-dash line had no legal basis under international law. China rejected the ruling as 'null and void,' establishing a pattern of non-compliance with international adjudication.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2016,
+    "title": "Xi Jinping declared 'core' leader",
+    "description": "The Sixth Plenum of the 18th Central Committee in October 2016 designated Xi Jinping as the 'core' of the CCP leadership — a title marking his elevation to near-absolute authority within the Party.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2016,
+    "title": "Taiwan's Tsai Ing-wen elected president",
+    "description": "Tsai Ing-wen of the DPP was elected Taiwan's first female president in January 2016. Beijing suspended cross-strait contacts, demanding she affirm the '1992 Consensus'; her refusal set the pattern for hostile cross-strait relations.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "Nineteenth Party Congress — Xi Thought enshrined in constitution",
+    "description": "The Nineteenth Party Congress in October 2017 enshrined 'Xi Jinping Thought' in the Party constitution — the first leader since Mao to have his named ideology enshrined during his lifetime — cementing his dominance.",
+    "category": "communist_regime_and_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "Mass detention of Uyghurs in Xinjiang begins",
+    "description": "China established a network of 'vocational education and training centers' from around 2017 that detained an estimated 1–1.8 million Uyghurs and other Muslim minorities in Xinjiang, drawing escalating international condemnation.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "China establishes first overseas military base in Djibouti",
+    "description": "China opened its first overseas military base in Djibouti in July 2017, supporting naval operations in the Gulf of Aden and signaling China's intention to develop a global military presence.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "China-India Doklam border standoff",
+    "description": "Chinese and Indian troops faced off for 73 days at the Doklam plateau in 2017. India intervened to prevent China from extending a road into disputed territory near Bhutan; both sides eventually disengaged.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "Presidential term limits abolished — Xi can rule indefinitely",
+    "description": "The NPC voted to remove presidential term limits from the constitution in March 2018, allowing Xi Jinping to rule indefinitely. The change was widely criticized internationally as a return to one-man authoritarian rule.",
+    "category": "constitutional_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "US-China trade war begins",
+    "description": "The Trump administration imposed 25% tariffs on $34 billion of Chinese goods in July 2018, launching a trade war that escalated to cover $360 billion in bilateral trade. China retaliated with equivalent measures.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "Huawei and ZTE crisis — US semiconductor export controls",
+    "description": "The US banned ZTE from purchasing American components in April 2018, nearly destroying the telecom giant. Huawei CFO Meng Wanzhou's arrest in Canada in December 2018 further exposed China's deep dependence on US semiconductor technology.",
+    "category": "technology_and_digital",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2019,
+    "title": "Hong Kong protests — extradition bill and pro-democracy revolt",
+    "description": "Massive protests erupted in June 2019 against a proposed extradition bill allowing transfers to mainland China. The protests escalated into a broader pro-democracy movement with millions participating; the bill was eventually withdrawn.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2019,
+    "title": "Xinjiang detention camps draw global condemnation",
+    "description": "Leaked documents ('China Cables') confirmed the systematic scale of Xinjiang's detention network. Multiple Western governments subsequently imposed sanctions; China defended the camps as counter-terrorism training centers.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 pandemic originates in Wuhan",
+    "description": "A novel coronavirus emerged in Wuhan in late 2019, declared a global pandemic in March 2020. China's initial response — including silencing whistleblowers — drew international criticism; the origin investigation became a major diplomatic flashpoint.",
+    "category": "public_health_and_epidemics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "Wuhan lockdown — unprecedented urban quarantine",
+    "description": "China locked down Wuhan (11 million people) and surrounding Hubei Province on January 23, 2020 for 76 days in an unprecedented quarantine that became the global template for pandemic suppression.",
+    "category": "public_health_and_epidemics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "Hong Kong National Security Law imposed",
+    "description": "China imposed the National Security Law on Hong Kong on June 30, 2020, criminalizing secession, subversion, and collusion with foreign forces. The law effectively ended Hong Kong's political opposition and independent press.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "Galwan Valley clash with India — first deadly border clash since 1975",
+    "description": "A violent clash between Chinese and Indian troops in the Galwan Valley of Ladakh in June 2020 killed 20 Indian soldiers and an unknown number of Chinese — the first deadly Sino-Indian border incident in 45 years.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "China imposes trade sanctions on Australia",
+    "description": "China imposed tariffs and unofficial bans on Australian barley, wine, beef, and coal in 2020 after Australia called for an independent inquiry into COVID-19's origins, demonstrating China's willingness to use economic coercion.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "China declares victory over absolute poverty",
+    "description": "China declared victory over absolute poverty in November 2020, claiming to have lifted the last 98.99 million people out of extreme poverty — a genuine developmental achievement, though measured by Chinese thresholds.",
+    "category": "social_welfare_and_poverty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "Crackdown on tech giants — Ant Group, Didi, Alibaba",
+    "description": "China launched a broad regulatory crackdown on its technology sector in 2021, halting Ant Group's $37 billion IPO, fining Alibaba $2.8 billion, and forcing Didi to delist. Over $1 trillion in market value was wiped out, signaling state supremacy over private capital.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "Evergrande crisis — real estate debt implosion",
+    "description": "China Evergrande Group defaulted in late 2021, triggering a broader real estate crisis in a sector representing ~25–30% of GDP. The prolonged downturn became China's most severe structural economic challenge in decades.",
+    "category": "economic_recession",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "Western sanctions over Xinjiang — China counter-sanctions freeze EU deal",
+    "description": "The US, EU, UK, and Canada imposed coordinated sanctions on Chinese officials over Xinjiang human rights abuses in March 2021. China responded with counter-sanctions on European parliamentarians, causing the EU to freeze CAI ratification.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "RCEP trade agreement enters into force",
+    "description": "China ratified the Regional Comprehensive Economic Partnership in March 2021, creating the world's largest trade bloc covering 15 Asia-Pacific nations and deepening China's regional economic integration.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "Three-child policy announced",
+    "description": "China announced a three-child policy in May 2021 in response to the 2020 census showing sharply declining birth rates. The demographic shift threatened China's labor supply and long-term growth.",
+    "category": "demographics_and_population",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "Xi-Putin 'no limits' partnership — Russia invades Ukraine",
+    "description": "Xi Jinping and Putin declared a partnership with 'no limits' days before Russia's February 2022 invasion of Ukraine. China refused to condemn the invasion and became a crucial economic lifeline for Russia under Western sanctions.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "Nancy Pelosi visits Taiwan — PLA military exercises encircle island",
+    "description": "US House Speaker Pelosi visited Taiwan in August 2022, the highest-level US visit in 25 years. China responded with unprecedented military exercises encircling Taiwan, including ballistic missiles fired over the island.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "Shanghai COVID lockdown — two-month shutdown",
+    "description": "Shanghai was placed under a strict two-month lockdown from April to June 2022 under Zero-COVID policy, disrupting global supply chains, devastating the local economy, and generating widespread public anger.",
+    "category": "public_health_and_epidemics",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "Twentieth Party Congress — Xi Jinping gets unprecedented third term",
+    "description": "The Twentieth Party Congress in October 2022 gave Xi Jinping an unprecedented third term as General Secretary, with the Politburo Standing Committee stacked entirely with Xi loyalists.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "A4 Revolution — Zero-COVID protests and policy reversal",
+    "description": "Unprecedented public protests against Zero-COVID erupted across Chinese cities in November 2022, with demonstrators holding blank white sheets. The protests contributed to the abrupt abandonment of Zero-COVID in December, which caused a massive COVID wave.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "China-brokered Saudi-Iran normalization deal",
+    "description": "China brokered a surprise agreement between Saudi Arabia and Iran to restore diplomatic relations in March 2023, marking a significant expansion of Chinese diplomatic influence in the Middle East.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Chinese spy balloon shot down over US",
+    "description": "A Chinese high-altitude surveillance balloon traversed the continental United States in February 2023 before being shot down off South Carolina, causing Secretary Blinken to cancel his Beijing visit and deepening bilateral distrust.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Youth unemployment surges — data suppressed",
+    "description": "China's official youth unemployment rate hit a record 21.3% in June 2023 before the National Bureau of Statistics suspended publication of the data. The 'lying flat' phenomenon spread among disillusioned young Chinese.",
+    "category": "labor_and_industrial_relations",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Gallium and germanium export controls — tech war escalation",
+    "description": "China imposed export controls on gallium and germanium in August 2023 — materials critical for semiconductors and defense electronics — retaliating for US chip export controls and escalating the technology war.",
+    "category": "technology_and_digital",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Senior officials purged — Qin Gang and Rocket Force generals",
+    "description": "Foreign Minister Qin Gang was dismissed in July 2023 after a mysterious absence; multiple Rocket Force generals were removed in a corruption investigation. The purges raised questions about PLA institutional integrity.",
+    "category": "political_corruption",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "Taiwan election — Lai Ching-te wins presidency",
+    "description": "Lai Ching-te of the DPP won Taiwan's presidential election in January 2024. Beijing considers Lai a separatist; China launched large-scale military exercises around Taiwan following his inauguration in May 2024.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "Third Plenum — economic reform blueprint amid structural crisis",
+    "description": "China's Third Plenum of the 20th Central Committee was held in July 2024, issuing a reform blueprint aimed at structural problems including overcapacity, real estate collapse, and weak domestic consumption.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "EU imposes tariffs on Chinese electric vehicles",
+    "description": "The European Union imposed provisional tariffs of up to 38% on Chinese electric vehicles in June 2024, alleging illegal state subsidies. China strongly protested and imposed retaliatory measures on European goods.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "South China Sea confrontations with Philippines escalate",
+    "description": "Chinese and Philippine vessels engaged in repeated physical confrontations at Second Thomas Shoal in 2024, with China using water cannons. The US reaffirmed its Mutual Defense Treaty obligations to the Philippines.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2025,
+    "title": "Trump tariffs escalate to 145% — US-China trade war and truce",
+    "description": "The Trump administration raised tariffs on Chinese goods to 145% in April 2025, the highest in modern history. China responded with 125% tariffs; the two sides subsequently agreed to a 90-day truce reducing tariffs to 30% and 10% respectively.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2025,
+    "title": "China's semiconductor self-sufficiency drive accelerates",
+    "description": "China dramatically increased investment in domestic semiconductor manufacturing in 2025, with Huawei and SMIC advancing advanced chip production. The drive was accelerated by continuing US export controls.",
+    "category": "technology_and_digital",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2025,
+    "title": "China's population decline accelerates",
+    "description": "China's population continued its demographic decline in 2025 with birth rates at historic lows despite government incentives. The shrinking working-age population poses long-term economic challenges that population policies have so far failed to reverse.",
+    "category": "demographics_and_population",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2025,
+    "title": "BYD overtakes global automakers in EV sales",
+    "description": "Chinese EV manufacturer BYD consolidated its position as the world's leading EV maker in 2025, exporting across Southeast Asia, Europe, and Latin America despite escalating trade barriers — demonstrating China's industrial competitiveness.",
+    "category": "trade_and_commerce",
+    "verified": false,
+    "verification_source": null
+  }
 ]

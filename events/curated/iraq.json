@@ -1,96 +1,754 @@
 [
-  {"year": 1950, "title": "Mass Jewish Emigration from Iraq", "description": "The Iraqi government passed the Denaturalization Law, stripping citizenship from Jews who wished to emigrate. Approximately 120,000 Iraqi Jews departed for Israel in the early 1950s via Operation Ezra and Nehemiah airlifts, effectively ending one of the world's oldest Jewish communities and reshaping Baghdad's commercial and cultural landscape.", "category": "migration_and_refugees", "verified": false, "verification_source": null},
-  {"year": 1951, "title": "IPC Oil Royalties Renegotiated — 50/50 Profit Sharing", "description": "Iraq secured a 50-50 profit-sharing arrangement with the Iraq Petroleum Company consortium, increasing state income and funding infrastructure expansion. The IPC concession remained politically contentious, fueling nationalist demands for full nationalization.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 1952, "title": "November Uprising — Intifada of 1952", "description": "A popular uprising broke out in November driven by economic grievances, opposition to the British-backed monarchy, and anger at the Arab defeat in Palestine. The government declared martial law and cracked down on political parties, revealing deep tensions between the urban poor and the Hashemite establishment.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 1953, "title": "King Faisal II Assumes the Throne", "description": "King Faisal II formally assumed royal powers at age 18. Educated in England and considered Western-oriented, his reign was marked by tension between modernization and growing nationalist opposition to the monarchy.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 1954, "title": "Baghdad Development Board's Five-Year Plan", "description": "Iraq's Development Board launched an ambitious five-year plan financed by rising oil revenues, prioritizing dams, roads, ports, and public housing. Critics argued the plan favored urban elites and neglected rural poverty.", "category": "infrastructure_and_urban_development", "verified": false, "verification_source": null},
-  {"year": 1955, "title": "Iraq Joins the Baghdad Pact", "description": "Iraq signed the Baghdad Pact with Turkey, Iran, Pakistan, and the UK, creating a Cold War defense alliance to contain Soviet influence. It made Iraq the only Arab country aligned with a Western-led military organization and deepened the divide with Arab neighbors.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 1956, "title": "Suez Crisis Inflames Iraqi Public Opinion", "description": "Britain and France's invasion of Egypt following the Suez Canal nationalization caused mass protests in Baghdad. The crisis dramatically boosted pan-Arab nationalist sentiment and eroded the Hashemite monarchy's legitimacy.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 1958, "title": "14 July Revolution — Monarchy Overthrown", "description": "Brigadier Abd al-Karim Qasim and Colonel Abd al-Salam Arif led a swift military coup that overthrew the Hashemite monarchy, killing King Faisal II and Prime Minister Nuri al-Said. Iraq was proclaimed a republic and the Baghdad Pact repudiated, fundamentally reshaping Iraqi politics.", "category": "coup_and_political_takeover", "verified": false, "verification_source": null},
-  {"year": 1958, "title": "Agrarian Reform Law Issued", "description": "The new republican government issued a sweeping agrarian reform law redistributing large landholdings and placing ceilings on individual ownership, targeting the landowning class that had supported the monarchy.", "category": "land_reform_and_agrarian", "verified": false, "verification_source": null},
-  {"year": 1959, "title": "Failed Ba'athist Assassination Attempt on Qasim", "description": "Ba'ath Party operatives ambushed Qasim's motorcade on October 7, wounding him but failing to kill him. Among the plotters was a young Saddam Hussein, who fled to Syria and Egypt after the attempt.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 1960, "title": "OPEC Founded with Iraqi Participation", "description": "Iraq was among the five founding members of OPEC, formed in Baghdad in September 1960, aimed at coordinating oil production and resisting unilateral price cuts by Western companies.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 1961, "title": "Kurdish Revolt Begins under Mustafa Barzani", "description": "General Mustafa Barzani launched a major armed uprising in September 1961 demanding Kurdish autonomy, with the KDP coordinating political direction. Iraqi army offensives were repulsed by peshmerga guerrillas, defining Iraq's northern politics for the next three decades.", "category": "insurgency_and_guerrilla", "verified": false, "verification_source": null},
-  {"year": 1961, "title": "Iraq Claims Kuwait at Independence", "description": "When Britain granted Kuwait independence, Qasim immediately claimed the emirate as an integral part of Iraq citing Ottoman precedents. Britain deployed troops to deter military action; the Arab League admitted Kuwait as a member and Iraq backed down, establishing a recurring territorial claim.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 1963, "title": "Ba'ath Party Seizes Power — Qasim Killed", "description": "On February 8, 1963, a Ba'ath Party-led coup overthrew and killed Qasim, reportedly with CIA intelligence assistance. The Ba'ath Party established the National Guard militia and immediately embarked on mass killings of communists.", "category": "coup_and_political_takeover", "verified": false, "verification_source": null},
-  {"year": 1963, "title": "Ba'athist Massacre of Iraqi Communists", "description": "Following the February coup, Ba'athist National Guard units conducted systematic raids executing hundreds of communist activists and intellectuals, reportedly using CIA-provided lists. The massacre effectively destroyed the Iraqi Communist Party's organizational capacity for years.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 1963, "title": "First Ba'ath Regime Collapses — Arif Takes Power", "description": "Internal Ba'ath divisions and the brutal National Guard militia led to a counter-coup in November 1963. President Abd al-Salam Arif ousted the Ba'athists after only nine months in power, demonstrating the party's political immaturity before its return in 1968.", "category": "coup_and_political_takeover", "verified": false, "verification_source": null},
-  {"year": 1964, "title": "Economic Nationalizations under Arif", "description": "President Arif nationalized major industries including banking, insurance, and large commercial companies following Egypt's socialist model, creating a large but inefficient public sector and causing capital flight.", "category": "privatization_and_nationalization", "verified": false, "verification_source": null},
-  {"year": 1967, "title": "Iraq in the Six-Day War", "description": "Iraq participated in the June 1967 Arab-Israeli War, sending armored and air units to support Jordan and Syria. The Arab defeat shattered pan-Arab nationalism and weakened the Arif government's legitimacy, energizing Ba'athist factions.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1968, "title": "Ba'ath Party Returns to Power — July Revolution", "description": "On July 17, 1968, Ba'athist officers led by Ahmad Hasan al-Bakr overthrew Abd al-Rahman Arif. Two weeks later the Ba'athists purged non-Ba'athist partners. Saddam Hussein became deputy chairman and began building the security state that would define Ba'athist rule for 35 years.", "category": "coup_and_political_takeover", "verified": false, "verification_source": null},
-  {"year": 1970, "title": "March 1970 Manifesto — Kurdish Autonomy Agreement", "description": "The Ba'ath government and Mustafa Barzani reached the March 11 Manifesto promising Kurdish self-governance within four years, recognizing Kurdish as an official language in Kurdish areas. Both sides viewed it as temporary, and preparations for renewed conflict continued.", "category": "peacekeeping_and_peace_process", "verified": false, "verification_source": null},
-  {"year": 1972, "title": "Nationalization of Iraq Petroleum Company", "description": "Iraq nationalized the IPC in June 1972 with Soviet technical assistance keeping production running. Oil revenues now fully accruing to the state surged after the 1973 oil shock, giving the Ba'ath government the financial foundation for social programs and military buildup.", "category": "privatization_and_nationalization", "verified": false, "verification_source": null},
-  {"year": 1972, "title": "Iraqi-Soviet Friendship Treaty Signed", "description": "Iraq signed a formal Treaty of Friendship and Cooperation with the Soviet Union, guaranteeing access to weapons, technical advisors, and diplomatic backing. The relationship gave Baghdad strategic depth against Israel and Iran.", "category": "international_alliances", "verified": false, "verification_source": null},
-  {"year": 1973, "title": "Oil Price Shock — Revenue Windfall and Ba'ath Consolidation", "description": "The 1973 Arab oil embargo quadrupled global oil prices, generating an enormous revenue windfall for Iraq. Oil revenues funded rapid military expansion, social welfare, and industrialization, transforming Iraq's development trajectory but also financing future military adventurism.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 1974, "title": "Kurdish Autonomy Agreement Collapses — War Resumes", "description": "The 1970 March Manifesto deadline passed without genuine implementation. The Ba'ath offered a limited autonomy law excluding Kirkuk; Barzani rejected it and resumed armed resistance with massive Iranian support, erupting into the heaviest fighting since 1961.", "category": "insurgency_and_guerrilla", "verified": false, "verification_source": null},
-  {"year": 1974, "title": "Arabization and Mass Displacement of Kurds", "description": "The Iraqi government escalated Arabization policies in disputed border zones, forcibly displacing Kurdish and Turkmen villages and replacing residents with Arab settlers. Hundreds of thousands of Kurds were relocated, systematically engineering Kirkuk's ethnic composition and fueling generational grievances.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 1975, "title": "Algiers Accord — Iran Ends Kurdish Support", "description": "The Algiers Accord between Iraq and Iran resolved the Shatt al-Arab border dispute in exchange for Iran cutting off support to Barzani's movement. Deprived of supply lines the Kurdish revolt collapsed within weeks, representing a major diplomatic triumph for Saddam Hussein.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 1976, "title": "Ba'ath Literacy Campaign and Social Development", "description": "The Ba'ath government launched a national literacy campaign recognized by UNESCO, dramatically reducing adult illiteracy. Education, healthcare, and electricity were expanded across rural areas and women's workforce participation increased, legitimizing authoritarian rule through genuine social gains.", "category": "education_and_intellectual_life", "verified": false, "verification_source": null},
-  {"year": 1977, "title": "Shia Pilgrimage Protests — Safar Intifada", "description": "Tens of thousands of Shia pilgrims en route to Karbala clashed with security forces. The government executed eight Shia clerics and arrested hundreds, deepening sectarian tensions that would explode after the Iranian Revolution.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 1979, "title": "Saddam Hussein Becomes President — Ba'ath Purge", "description": "In July 1979, Saddam forced al-Bakr to resign and assumed the presidency, immediately reading out a list of alleged conspirators at a party congress. Twenty-two senior Ba'athists were executed by firing squad composed of their former colleagues, a calculated exercise in terror that paralyzed the party with fear.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1979, "title": "Ayatollah Muhammad Baqir al-Sadr Executed", "description": "Saddam Hussein ordered the arrest and execution of Iraq's most prominent Shia scholar, Ayatollah Muhammad Baqir al-Sadr, along with his sister. The killings sent a clear message to the Shia religious establishment about the limits of political Islam under Ba'athist rule.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1980, "title": "Iran-Iraq War Begins", "description": "On September 22, 1980, Saddam Hussein launched a full-scale invasion of Iran, seeking to exploit post-revolutionary chaos and assert dominance over the Shatt al-Arab. Iraqi forces were slowed by fierce resistance after initial gains; the conflict became an eight-year war of attrition killing approximately one million people.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1981, "title": "Israel Destroys Iraq's Osirak Nuclear Reactor", "description": "Israeli Air Force jets destroyed the French-built Osirak nuclear reactor near Baghdad on June 7, 1981 in Operation Opera, drawing broad international condemnation but effectively setting back Iraq's nuclear weapons program.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1982, "title": "Chemical Weapons Deployed Against Iran", "description": "Iraq began deploying mustard gas and nerve agents against Iranian forces, becoming the first country since World War One to use chemical weapons on a large scale in combat. Western governments were aware but looked the other way given strategic interest in an Iranian defeat.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1983, "title": "Barzani Clan Members Massacred", "description": "Saddam Hussein's forces arrested approximately 8,000 male members of the Barzani tribe and executed them in mass graves in the southern desert, an act of collective punishment foreshadowing the Anfal genocide.", "category": "genocide_and_mass_atrocity", "verified": false, "verification_source": null},
-  {"year": 1984, "title": "Tanker War in the Persian Gulf", "description": "Iraq began attacking Iranian oil tankers and shipping in the Gulf to pressure Iran economically. Iran retaliated against ships serving Gulf Arab states. Hundreds of civilian ships were damaged or sunk, drawing US naval forces to protect shipping lanes.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1985, "title": "War of the Cities — Missile Strikes on Civilian Populations", "description": "Iraq launched Scud missile attacks on Tehran and other Iranian cities; Iran responded with its own strikes on Baghdad and Basra. The exchanges caused significant civilian casualties and mass evacuations, demonstrating both sides' willingness to target civilian populations.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1985, "title": "Iraq's War Economy and Alternative Oil Routes", "description": "Iraq developed alternative oil export routes through Turkey and Saudi Arabia as the Gulf war zone threatened the Basra terminal. Despite war pressures, Iraq continued social spending financed by Gulf Arab loans, accumulating over $80 billion in war debt that would create severe postwar economic stress.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1986, "title": "Iran Captures Faw Peninsula", "description": "Iran's amphibious assault in February 1986 captured the Faw Peninsula, threatening Basra and representing a major strategic blow to Iraq. The Faw loss galvanized Iraqi use of chemical weapons more aggressively to change battlefield outcomes.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1988, "title": "Halabja Chemical Massacre", "description": "On March 16-17, 1988, Iraqi aircraft dropped chemical weapons on the Kurdish town of Halabja, killing between 3,200 and 5,000 civilians immediately with thousands more dying from long-term effects. It was the largest chemical weapons attack against a civilian population in history.", "category": "genocide_and_mass_atrocity", "verified": false, "verification_source": null},
-  {"year": 1988, "title": "Anfal Genocide Against Iraqi Kurds", "description": "The Ba'ath government launched the Anfal military campaign from February to September 1988, systematically targeting Kurdish civilians with chemical weapons, artillery, and ground troops. An estimated 4,000 villages were destroyed and 50,000 to 182,000 Kurds killed, constituting genocide under international law.", "category": "genocide_and_mass_atrocity", "verified": false, "verification_source": null},
-  {"year": 1988, "title": "Iran-Iraq War Ends with UN Ceasefire", "description": "Iran accepted UN Security Council Resolution 598 on July 18, 1988, ending the eight-year war. Over one million lives were lost, leaving hundreds of thousands disabled and both economies devastated. Iraq emerged with the Arab world's largest military but over $80 billion in debt.", "category": "peacekeeping_and_peace_process", "verified": false, "verification_source": null},
-  {"year": 1989, "title": "Post-War Economic Crisis and Kuwait Tensions", "description": "Iraq faced acute economic crisis after the war with over $80 billion in external debt. Saddam pushed Gulf Arab creditors, especially Kuwait, for debt relief. Kuwait's refusal and alleged slant-drilling into the Rumaila oilfield became major grievances leading to the 1990 invasion.", "category": "economic_crisis", "verified": false, "verification_source": null},
-  {"year": 1990, "title": "Iraq Invades and Annexes Kuwait", "description": "On August 2, 1990, Iraqi forces overran Kuwait in hours and Saddam announced its annexation as Iraq's 19th province. The UN Security Council passed Resolution 660 demanding immediate withdrawal and the US began assembling a broad international coalition to reverse the conquest.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1990, "title": "UN Comprehensive Sanctions Imposed on Iraq", "description": "The UN Security Council imposed comprehensive economic sanctions cutting off oil exports and most imports. The sanctions, maintained after the Gulf War through the 1990s, devastated Iraq's civilian population with soaring infant mortality and malnutrition.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 1991, "title": "Gulf War — Operation Desert Storm", "description": "A US-led coalition of 35 nations launched Operation Desert Storm on January 17, 1991, with massive air strikes followed by a ground campaign that routed Iraqi forces in Kuwait in 100 hours. Kuwait was liberated and Saddam accepted ceasefire terms but retained power in Baghdad.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1991, "title": "Shia and Kurdish Uprisings Crushed — 1991 Intifada", "description": "Spontaneous uprisings erupted across southern Iraq and the Kurdish north after Iraq's defeat, but US forces stood aside as Saddam's Republican Guard crushed the southern rebellion with extreme brutality, killing an estimated 60,000-100,000 people.", "category": "political_repression", "verified": false, "verification_source": null},
-  {"year": 1991, "title": "Kurdish Refugee Crisis and Northern No-Fly Zone", "description": "Republican Guard suppression of the Kurdish uprising caused approximately two million Kurds to flee toward Turkey and Iran. The US, UK, and France established a no-fly zone (Operation Provide Comfort) creating a safe haven that enabled the de facto Kurdish autonomous region.", "category": "migration_and_refugees", "verified": false, "verification_source": null},
-  {"year": 1992, "title": "Kurdish Regional Government Established", "description": "With protection from the northern no-fly zone, Iraqi Kurdistan held elections in May 1992 and established a Kurdistan Regional Government. KDP and PUK shared power in three northern provinces effectively expelled from Baghdad's authority.", "category": "democratic_transition", "verified": false, "verification_source": null},
-  {"year": 1993, "title": "Oil-for-Food Program Negotiations Begin", "description": "Iraq and the UN began negotiations on a program allowing limited oil sales to fund humanitarian imports while maintaining broader sanctions. The human cost of comprehensive sanctions mounted, with UNICEF documenting dramatically elevated child mortality rates.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 1994, "title": "Intra-Kurdish Civil War", "description": "The Kurdish Regional Government collapsed into civil war between the KDP and PUK, fighting over revenue sharing and political power. The KDP received military backing from Saddam in 1996 to capture Erbil. The conflict was eventually resolved by the 1998 Washington Agreement.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1995, "title": "UNSCOM Discovers Full Extent of Biological Weapons Program", "description": "UN inspectors made a breakthrough when Saddam's son-in-law Hussein Kamel defected and revealed Iraq's biological weapons program had weaponized anthrax, botulinum toxin, and aflatoxin on an industrial scale. Kamel returned to Iraq six months later and was immediately killed.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 1996, "title": "Oil-for-Food Program Begins Operating", "description": "Iraq accepted UN Resolution 986 allowing limited oil sales to purchase food and medicine. The program generated over $64 billion before closure in 2003 but was plagued by massive corruption with Iraqi officials and international contractors skimming billions.", "category": "international_sanctions", "verified": false, "verification_source": null},
-  {"year": 1998, "title": "Operation Desert Fox — US-UK Air Strikes", "description": "After UNSCOM inspectors were expelled in December 1998, the US and UK launched a four-day campaign of air and cruise missile strikes on Iraqi military and government targets. Iraq declared the UN weapons inspection regime over and refused future inspections.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 1999, "title": "Grand Ayatollah al-Sadr II Assassinated", "description": "Grand Ayatollah Muhammad Sadiq al-Sadr was assassinated along with two sons in Najaf in February 1999. The Shia community erupted in violently suppressed protests, making al-Sadr a martyr figure whose movement was later revived by his son Muqtada al-Sadr after 2003.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 2001, "title": "9/11 Aftermath and Iraq in US War Planning", "description": "Despite no proven connection to September 11, the Bush administration immediately began planning military action against Saddam Hussein. Neoconservative officials argued removing Saddam was essential to regional transformation, and intelligence agencies were pressed to find Iraq-al-Qaeda connections.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2002, "title": "UN Weapons Inspectors Return — UNMOVIC", "description": "Under intense US pressure, Iraq agreed to allow UN inspectors to return under UNMOVIC in November 2002. Chief inspector Hans Blix found no confirmed WMD stockpiles; the US and UK argued Iraq was deceiving inspectors while France and Russia said inspections should continue.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "US-Led Invasion of Iraq — Operation Iraqi Freedom", "description": "On March 20, 2003, a US-led coalition invaded Iraq without UN Security Council authorization. Baghdad fell in three weeks, Saddam's government collapsed, and no WMDs were found. The invasion unleashed sectarian conflict, insurgency, and regional instability transforming the Middle East for decades.", "category": "foreign_intervention", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "De-Ba'athification and Army Dissolution", "description": "Coalition Provisional Authority chief Paul Bremer dissolved the Iraqi Army and banned senior Ba'ath members from public employment in May 2003. The decisions put hundreds of thousands of armed men out of work, creating a massive insurgency recruitment pool and removing administrators needed to run a functioning state.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2003, "title": "Saddam Hussein Captured", "description": "US forces captured Saddam Hussein on December 13, 2003, in a spider hole near Tikrit. His capture raised hopes the insurgency might abate but violence continued to escalate. He was later transferred to Iraqi custody for trial before the Iraqi High Tribunal.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2004, "title": "Abu Ghraib Prison Abuse Scandal", "description": "Photographs of US military personnel abusing Iraqi detainees at Abu Ghraib emerged in April 2004, causing international outrage. The scandal severely damaged American credibility and was exploited by insurgent groups for recruitment. Low-ranking soldiers were court-martialed but higher command responsibility was largely avoided.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 2004, "title": "Battles of Fallujah and Sovereignty Transfer", "description": "Two major coalition assaults on Fallujah — an insurgent stronghold — and transfer of nominal sovereignty to an Iraqi interim government under Ayad Allawi on June 28, 2004 marked pivotal occupation milestones. The Fallujah battles became symbolic of insurgency durability while real authority remained with US forces.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2005, "title": "Iraqi Elections, Constitution, and Shia Political Dominance", "description": "Iraq held historic parliamentary elections in January 2005 with high Shia turnout and Sunni boycott. A new constitution was ratified in October establishing a federal parliamentary republic with Islam as legislative foundation. Both events confirmed Shia political dominance after decades of Ba'athist rule, deepening Sunni alienation.", "category": "elections_and_voting", "verified": false, "verification_source": null},
-  {"year": 2006, "title": "Samarra Shrine Bombing Triggers Sectarian Civil War", "description": "The bombing of the al-Askari shrine in Samarra on February 22, 2006, one of Shia Islam's holiest sites, triggered an explosion of sectarian violence. Baghdad descended into tit-for-tat killings and ethnic cleansing killing tens of thousands and displacing over two million people internally.", "category": "terrorism_and_extremism", "verified": false, "verification_source": null},
-  {"year": 2006, "title": "Saddam Hussein Executed", "description": "Saddam Hussein was convicted of crimes against humanity and executed by hanging on December 30, 2006. The execution on Eid al-Adha, accompanied by sectarian taunting broadcast worldwide via mobile phone footage, was itself controversial and reinforced Sunni grievances.", "category": "transitional_justice", "verified": false, "verification_source": null},
-  {"year": 2007, "title": "US Troop Surge and Sunni Awakening", "description": "President Bush deployed 30,000 additional troops under General Petraeus with a new counterinsurgency strategy. Simultaneously, the Sunni Awakening saw tribal leaders turn against al-Qaeda in Iraq; the Sons of Iraq movement eventually encompassed 100,000 fighters. Violence dropped dramatically by late 2007.", "category": "military_policy_and_reform", "verified": false, "verification_source": null},
-  {"year": 2008, "title": "Battle of Basra and US-Iraq Status of Forces Agreement", "description": "Prime Minister Maliki led a military operation against the Mahdi Army in Basra in March 2008, asserting central government authority. The November 2008 Status of Forces Agreement set a timeline for full US troop withdrawal by December 31, 2011, representing a major assertion of Iraqi sovereignty.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2009, "title": "Maliki Consolidates Sectarian Governance", "description": "Prime Minister Maliki's government increasingly governed along Shia sectarian lines, sidelining Sunni politicians and arresting Sunni military commanders. His centralization of security forces and sectarian favoritism created the alienation that enabled ISIS to find active Sunni support.", "category": "political_corruption", "verified": false, "verification_source": null},
-  {"year": 2010, "title": "Iraqi Parliamentary Elections and Nine-Month Deadlock", "description": "Iraq held elections in March 2010 with Ayad Allawi's Iraqiya coalition winning a narrow plurality, but Maliki refused to accept defeat. Nine months of political deadlock followed before a second Maliki term under a power-sharing agreement that was never genuinely implemented.", "category": "elections_and_voting", "verified": false, "verification_source": null},
-  {"year": 2011, "title": "US Forces Complete Withdrawal from Iraq", "description": "The last US combat troops withdrew from Iraq on December 18, 2011, ending nearly nine years of military presence. The Iraqi military was not fully capable of maintaining security, and Maliki's government was moving in an increasingly sectarian and authoritarian direction.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2012, "title": "ISIS Exploits Syrian Civil War to Rebuild", "description": "The Syrian Civil War created ungoverned territory that the Islamic State of Iraq exploited to expand, recruiting fighters and accessing new weapons. Abu Bakr al-Baghdadi extended operations into Syria, eventually creating ISIS. Iraq's security forces failed to recognize the growing threat.", "category": "terrorism_and_extremism", "verified": false, "verification_source": null},
-  {"year": 2013, "title": "Hawija Massacre and Sunni Insurgency Revival", "description": "Iraqi security forces' assault on a Sunni protest camp in Hawija on April 23, 2013 killed at least 50 protesters, ending Sunni hopes for peaceful political change. Car bombings and sectarian attacks escalated sharply, with over 9,000 Iraqi civilians killed that year — the highest toll since 2007-2008.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "ISIS Captures Mosul and Declares Caliphate", "description": "On June 10, 2014, approximately 1,500 ISIS fighters routed 30,000 Iraqi Army troops and captured Mosul. On June 29, ISIS declared a global caliphate with al-Baghdadi as caliph, controlling territory the size of the UK spanning Iraq and Syria and threatening Baghdad itself.", "category": "terrorism_and_extremism", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "Yazidi Genocide on Sinjar Mountain", "description": "ISIS besieged the Yazidi population of Sinjar in August 2014, massacring men and boys and enslaving women and girls. An estimated 5,000 Yazidis were killed and 7,000 enslaved in what the UN classified as genocide. The atrocity shocked the world into renewed international intervention.", "category": "genocide_and_mass_atrocity", "verified": false, "verification_source": null},
-  {"year": 2014, "title": "Maliki Replaced by Haider al-Abadi; US-Led Coalition Launches Airstrikes", "description": "Under US and Iranian pressure, Maliki stepped down in August 2014; Haider al-Abadi became prime minister promising inclusive governance. In September, Obama announced a new international coalition launching airstrikes against ISIS in Iraq and Syria, with US special forces returning as advisors.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2015, "title": "Counter-ISIS Campaign — Tikrit Retaken; ISIS at Peak Territorial Control", "description": "Iraqi forces, Iran-sponsored Popular Mobilization Forces, and US air power recaptured Tikrit in March-April 2015. At its peak ISIS controlled approximately one-third of Iraq including major cities and oilfields, operating as a proto-state with taxes, courts, and utilities while destroying irreplaceable Assyrian sites at Nimrud and Hatra.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2016, "title": "Battle of Fallujah and PMF Institutionalization", "description": "Iraqi forces and PMF liberated Fallujah from ISIS in May-June 2016. The Iraqi parliament then formalized the Popular Mobilization Forces as an official security component in November, institutionalizing over 100,000 Iran-linked fighters within the Iraqi state.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "Battle of Mosul — ISIS Territorial Defeat Declared", "description": "The nine-month battle to retake Mosul from October 2016 to July 2017 was the most destructive urban combat of the 21st century, killing over 10,000 ISIS fighters and tens of thousands of civilians. Prime Minister Abadi declared final victory over ISIS's territorial control on December 9, 2017.", "category": "military_conflict", "verified": false, "verification_source": null},
-  {"year": 2017, "title": "Kurdistan Independence Referendum Backfires", "description": "KRG President Barzani held an independence referendum winning 93 percent support, but Baghdad, Iran, Turkey, and the US all opposed it. Iraqi forces and PMF seized Kirkuk without significant resistance. The independence bid collapsed, Barzani resigned, and the KRG lost substantial territory and revenue.", "category": "territorial_disputes", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "Post-ISIS Elections and Iran-Backed Parties Win", "description": "Parliamentary elections in May 2018 produced a fragmented result with Muqtada al-Sadr's Sairoon alliance winning the largest bloc and Iran-backed Fatah Alliance second. Coalition building took months, resulting in Adil Abdul-Mahdi as prime minister in a compromise arrangement.", "category": "elections_and_voting", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "Basra Protests Over Services and Contaminated Water", "description": "Mass protests erupted in Basra in July-September 2018 over contaminated water supplies, power cuts, unemployment, and corrupt governance. Thousands were hospitalized from contaminated water; protesters burned Iranian consulates and party offices. A harbinger of the 2019 national uprising.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2018, "title": "Post-ISIS Reconstruction Crisis and Displacement", "description": "Iraq faced colossal reconstruction challenges with Mosul, Fallujah, Ramadi, and Sinjar in ruins and millions of internally displaced persons. International pledges of $30 billion at a Kuwait conference were far below the $88 billion estimated need, severely hampered by corruption in contracting.", "category": "postwar_reconstruction", "verified": false, "verification_source": null},
-  {"year": 2019, "title": "October Revolution — Mass Anti-Government Uprising", "description": "On October 1, 2019, spontaneous mass protests erupted in Baghdad and across southern Iraq demanding an end to corruption, sectarian governance, and Iranian interference. Security forces and Iran-backed militias killed over 600 protesters. The uprising forced Prime Minister Abdul-Mahdi to resign and represented a generational rejection of the post-2003 political order.", "category": "social_movements_and_protest", "verified": false, "verification_source": null},
-  {"year": 2019, "title": "Systematic Assassination of Protest Activists", "description": "Iran-backed militias conducted a campaign of targeted assassinations against protest organizers, activists, journalists, and social media personalities throughout 2019-2020. Hundreds were killed or abducted to terrorize the protest movement into submission.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "US Kills Soleimani at Baghdad Airport", "description": "A US drone strike at Baghdad airport on January 3, 2020 killed Iranian Quds Force commander Qasem Soleimani and Iraqi PMF leader Abu Mahdi al-Muhandis. The Iraqi parliament voted to expel US forces; Iran launched missile strikes on US bases in Iraq, injuring dozens of American troops.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2020, "title": "Mustafa al-Kadhimi Becomes Prime Minister", "description": "Former intelligence chief Mustafa al-Kadhimi was appointed prime minister in May 2020 after two previous nominees failed, attempting a balancing act between the US and Iran while managing protest demands and collapsing oil revenues from COVID-19's impact on global energy markets.", "category": "government_formation", "verified": false, "verification_source": null},
-  {"year": 2021, "title": "Iraqi Elections — Record Low Turnout Amid Political Crisis", "description": "Parliamentary elections in October 2021 saw unprecedented 41 percent turnout. Muqtada al-Sadr's movement won the largest bloc while Iran-backed Coordination Framework parties lost ground. Losing parties refused to accept results, triggering prolonged political deadlock certified by the UN.", "category": "elections_and_voting", "verified": false, "verification_source": null},
-  {"year": 2022, "title": "Government Formation Deadlock and Green Zone Clashes", "description": "Iraq experienced its longest government formation crisis, over a year. After Sadrist MPs resigned in June 2022, Sadrist-militia clashes in Baghdad's Green Zone killed at least 30. Muqtada al-Sadr stood down, enabling Iran-backed Coordination Framework to complete government formation with Mohammed Shia al-Sudani as prime minister.", "category": "political_violence", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Iraq's Regional Diplomacy — Saudi-Iranian Rapprochement", "description": "Prime Minister al-Sudani pursued active regional diplomacy in 2023, hosting diplomatic talks between Riyadh and Tehran that culminated in Saudi-Iranian agreement to restore diplomatic relations brokered by China. Iraq's bridging role reflected its unique geopolitical position between Gulf Arab states and Iran.", "category": "diplomacy_and_negotiations", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Kurdistan Oil Dispute — Turkey Halts Pipeline Exports", "description": "An ICC ruling ordered Turkey to pay Iraq $1.5 billion for unauthorized oil exports from Iraqi Kurdistan, prompting Turkey to halt the Ceyhan pipeline for months. The dispute triggered an acute fiscal crisis in Erbil and highlighted unresolved Baghdad-Erbil oil revenue tensions.", "category": "energy_policy_and_resources", "verified": false, "verification_source": null},
-  {"year": 2023, "title": "Severe Drought and Water Crisis in Southern Iraq", "description": "Southern Iraq experienced severe drought with the Tigris and Euphrates at historically low levels due to upstream Turkish and Iranian dam construction combined with climate change. Marshlands faced ecological collapse, agricultural output fell sharply, and the water crisis was identified as a major long-term national security threat.", "category": "climate_change_and_adaptation", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "US-Iran Proxy Tensions on Iraqi Soil Escalate", "description": "Iran-backed militia groups conducted dozens of drone and rocket attacks on US bases in Iraq and Syria following the Gaza conflict's outbreak. A strike on Tower 22 in Jordan killed three US soldiers. US retaliatory strikes killed senior PMF commanders in Baghdad, triggering a political crisis.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "Iraq Negotiates US Troop Withdrawal", "description": "Iraq opened formal negotiations with the US on withdrawal of international coalition combat forces, aiming at transitioning to an advisory role by 2025-2026. Al-Sudani faced domestic pressure from Iran-backed parties demanding US departure while needing American security assistance against ISIS.", "category": "foreign_policy", "verified": false, "verification_source": null},
-  {"year": 2024, "title": "Yazidi Survivors Begin Return to Sinjar", "description": "A decade after ISIS's genocide, small numbers of Yazidi displaced persons began returning to Sinjar as reconstruction made limited progress. An estimated 2,700 Yazidis remained unaccounted for; Sinjar remained contested between Iraqi government forces, PMF, Kurdish Peshmerga, and PKK-linked groups.", "category": "human_rights", "verified": false, "verification_source": null},
-  {"year": 2025, "title": "Iraq's Economic Diversification Efforts", "description": "Iraq launched new initiatives to diversify its economy away from near-total oil dependency, which still accounted for over 90 percent of government revenues. Development corridor projects were advanced with neighboring countries, but the rentier state model remained deeply entrenched despite reform rhetoric.", "category": "economic_policy_and_reform", "verified": false, "verification_source": null}
+  {
+    "year": 1950,
+    "title": "Mass Jewish Emigration from Iraq",
+    "description": "The Iraqi government passed the Denaturalization Law, stripping citizenship from Jews who wished to emigrate. Approximately 120,000 Iraqi Jews departed for Israel in the early 1950s via Operation Ezra and Nehemiah airlifts, effectively ending one of the world's oldest Jewish communities and reshaping Baghdad's commercial and cultural landscape.",
+    "category": "migration_and_refugees",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1951,
+    "title": "IPC Oil Royalties Renegotiated — 50/50 Profit Sharing",
+    "description": "Iraq secured a 50-50 profit-sharing arrangement with the Iraq Petroleum Company consortium, increasing state income and funding infrastructure expansion. The IPC concession remained politically contentious, fueling nationalist demands for full nationalization.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1952,
+    "title": "November Uprising — Intifada of 1952",
+    "description": "A popular uprising broke out in November driven by economic grievances, opposition to the British-backed monarchy, and anger at the Arab defeat in Palestine. The government declared martial law and cracked down on political parties, revealing deep tensions between the urban poor and the Hashemite establishment.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1953,
+    "title": "King Faisal II Assumes the Throne",
+    "description": "King Faisal II formally assumed royal powers at age 18. Educated in England and considered Western-oriented, his reign was marked by tension between modernization and growing nationalist opposition to the monarchy.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1954,
+    "title": "Baghdad Development Board's Five-Year Plan",
+    "description": "Iraq's Development Board launched an ambitious five-year plan financed by rising oil revenues, prioritizing dams, roads, ports, and public housing. Critics argued the plan favored urban elites and neglected rural poverty.",
+    "category": "infrastructure_and_urban_development",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1955,
+    "title": "Iraq Joins the Baghdad Pact",
+    "description": "Iraq signed the Baghdad Pact with Turkey, Iran, Pakistan, and the UK, creating a Cold War defense alliance to contain Soviet influence. It made Iraq the only Arab country aligned with a Western-led military organization and deepened the divide with Arab neighbors.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1956,
+    "title": "Suez Crisis Inflames Iraqi Public Opinion",
+    "description": "Britain and France's invasion of Egypt following the Suez Canal nationalization caused mass protests in Baghdad. The crisis dramatically boosted pan-Arab nationalist sentiment and eroded the Hashemite monarchy's legitimacy.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1958,
+    "title": "14 July Revolution — Monarchy Overthrown",
+    "description": "Brigadier Abd al-Karim Qasim and Colonel Abd al-Salam Arif led a swift military coup that overthrew the Hashemite monarchy, killing King Faisal II and Prime Minister Nuri al-Said. Iraq was proclaimed a republic and the Baghdad Pact repudiated, fundamentally reshaping Iraqi politics.",
+    "category": "coup_and_political_takeover",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1958,
+    "title": "Agrarian Reform Law Issued",
+    "description": "The new republican government issued a sweeping agrarian reform law redistributing large landholdings and placing ceilings on individual ownership, targeting the landowning class that had supported the monarchy.",
+    "category": "land_reform_and_agrarian",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1959,
+    "title": "Failed Ba'athist Assassination Attempt on Qasim",
+    "description": "Ba'ath Party operatives ambushed Qasim's motorcade on October 7, wounding him but failing to kill him. Among the plotters was a young Saddam Hussein, who fled to Syria and Egypt after the attempt.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1960,
+    "title": "OPEC Founded with Iraqi Participation",
+    "description": "Iraq was among the five founding members of OPEC, formed in Baghdad in September 1960, aimed at coordinating oil production and resisting unilateral price cuts by Western companies.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1961,
+    "title": "Kurdish Revolt Begins under Mustafa Barzani",
+    "description": "General Mustafa Barzani launched a major armed uprising in September 1961 demanding Kurdish autonomy, with the KDP coordinating political direction. Iraqi army offensives were repulsed by peshmerga guerrillas, defining Iraq's northern politics for the next three decades.",
+    "category": "insurgency_and_guerrilla",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1961,
+    "title": "Iraq Claims Kuwait at Independence",
+    "description": "When Britain granted Kuwait independence, Qasim immediately claimed the emirate as an integral part of Iraq citing Ottoman precedents. Britain deployed troops to deter military action; the Arab League admitted Kuwait as a member and Iraq backed down, establishing a recurring territorial claim.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1963,
+    "title": "Ba'ath Party Seizes Power — Qasim Killed",
+    "description": "On February 8, 1963, a Ba'ath Party-led coup overthrew and killed Qasim, reportedly with CIA intelligence assistance. The Ba'ath Party established the National Guard militia and immediately embarked on mass killings of communists.",
+    "category": "coup_and_political_takeover",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1963,
+    "title": "Ba'athist Massacre of Iraqi Communists",
+    "description": "Following the February coup, Ba'athist National Guard units conducted systematic raids executing hundreds of communist activists and intellectuals, reportedly using CIA-provided lists. The massacre effectively destroyed the Iraqi Communist Party's organizational capacity for years.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1963,
+    "title": "First Ba'ath Regime Collapses — Arif Takes Power",
+    "description": "Internal Ba'ath divisions and the brutal National Guard militia led to a counter-coup in November 1963. President Abd al-Salam Arif ousted the Ba'athists after only nine months in power, demonstrating the party's political immaturity before its return in 1968.",
+    "category": "coup_and_political_takeover",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1964,
+    "title": "Economic Nationalizations under Arif",
+    "description": "President Arif nationalized major industries including banking, insurance, and large commercial companies following Egypt's socialist model, creating a large but inefficient public sector and causing capital flight.",
+    "category": "privatization_and_nationalization",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1967,
+    "title": "Iraq in the Six-Day War",
+    "description": "Iraq participated in the June 1967 Arab-Israeli War, sending armored and air units to support Jordan and Syria. The Arab defeat shattered pan-Arab nationalism and weakened the Arif government's legitimacy, energizing Ba'athist factions.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1968,
+    "title": "Ba'ath Party Returns to Power — July Revolution",
+    "description": "On July 17, 1968, Ba'athist officers led by Ahmad Hasan al-Bakr overthrew Abd al-Rahman Arif. Two weeks later the Ba'athists purged non-Ba'athist partners. Saddam Hussein became deputy chairman and began building the security state that would define Ba'athist rule for 35 years.",
+    "category": "coup_and_political_takeover",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1970,
+    "title": "March 1970 Manifesto — Kurdish Autonomy Agreement",
+    "description": "The Ba'ath government and Mustafa Barzani reached the March 11 Manifesto promising Kurdish self-governance within four years, recognizing Kurdish as an official language in Kurdish areas. Both sides viewed it as temporary, and preparations for renewed conflict continued.",
+    "category": "peacekeeping_and_peace_process",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1972,
+    "title": "Nationalization of Iraq Petroleum Company",
+    "description": "Iraq nationalized the IPC in June 1972 with Soviet technical assistance keeping production running. Oil revenues now fully accruing to the state surged after the 1973 oil shock, giving the Ba'ath government the financial foundation for social programs and military buildup.",
+    "category": "privatization_and_nationalization",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1972,
+    "title": "Iraqi-Soviet Friendship Treaty Signed",
+    "description": "Iraq signed a formal Treaty of Friendship and Cooperation with the Soviet Union, guaranteeing access to weapons, technical advisors, and diplomatic backing. The relationship gave Baghdad strategic depth against Israel and Iran.",
+    "category": "international_alliances",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1973,
+    "title": "Oil Price Shock — Revenue Windfall and Ba'ath Consolidation",
+    "description": "The 1973 Arab oil embargo quadrupled global oil prices, generating an enormous revenue windfall for Iraq. Oil revenues funded rapid military expansion, social welfare, and industrialization, transforming Iraq's development trajectory but also financing future military adventurism.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1974,
+    "title": "Kurdish Autonomy Agreement Collapses — War Resumes",
+    "description": "The 1970 March Manifesto deadline passed without genuine implementation. The Ba'ath offered a limited autonomy law excluding Kirkuk; Barzani rejected it and resumed armed resistance with massive Iranian support, erupting into the heaviest fighting since 1961.",
+    "category": "insurgency_and_guerrilla",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1974,
+    "title": "Arabization and Mass Displacement of Kurds",
+    "description": "The Iraqi government escalated Arabization policies in disputed border zones, forcibly displacing Kurdish and Turkmen villages and replacing residents with Arab settlers. Hundreds of thousands of Kurds were relocated, systematically engineering Kirkuk's ethnic composition and fueling generational grievances.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1975,
+    "title": "Algiers Accord — Iran Ends Kurdish Support",
+    "description": "The Algiers Accord between Iraq and Iran resolved the Shatt al-Arab border dispute in exchange for Iran cutting off support to Barzani's movement. Deprived of supply lines the Kurdish revolt collapsed within weeks, representing a major diplomatic triumph for Saddam Hussein.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1976,
+    "title": "Ba'ath Literacy Campaign and Social Development",
+    "description": "The Ba'ath government launched a national literacy campaign recognized by UNESCO, dramatically reducing adult illiteracy. Education, healthcare, and electricity were expanded across rural areas and women's workforce participation increased, legitimizing authoritarian rule through genuine social gains.",
+    "category": "education_and_intellectual_life",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1977,
+    "title": "Shia Pilgrimage Protests — Safar Intifada",
+    "description": "Tens of thousands of Shia pilgrims en route to Karbala clashed with security forces. The government executed eight Shia clerics and arrested hundreds, deepening sectarian tensions that would explode after the Iranian Revolution.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "Saddam Hussein Becomes President — Ba'ath Purge",
+    "description": "In July 1979, Saddam forced al-Bakr to resign and assumed the presidency, immediately reading out a list of alleged conspirators at a party congress. Twenty-two senior Ba'athists were executed by firing squad composed of their former colleagues, a calculated exercise in terror that paralyzed the party with fear.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "Ayatollah Muhammad Baqir al-Sadr Executed",
+    "description": "Saddam Hussein ordered the arrest and execution of Iraq's most prominent Shia scholar, Ayatollah Muhammad Baqir al-Sadr, along with his sister. The killings sent a clear message to the Shia religious establishment about the limits of political Islam under Ba'athist rule.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1980,
+    "title": "Iran-Iraq War Begins",
+    "description": "On September 22, 1980, Saddam Hussein launched a full-scale invasion of Iran, seeking to exploit post-revolutionary chaos and assert dominance over the Shatt al-Arab. Iraqi forces were slowed by fierce resistance after initial gains; the conflict became an eight-year war of attrition killing approximately one million people.",
+    "category": "interstate_war",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1981,
+    "title": "Israel Destroys Iraq's Osirak Nuclear Reactor",
+    "description": "Israeli Air Force jets destroyed the French-built Osirak nuclear reactor near Baghdad on June 7, 1981 in Operation Opera, drawing broad international condemnation but effectively setting back Iraq's nuclear weapons program.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1982,
+    "title": "Chemical Weapons Deployed Against Iran",
+    "description": "Iraq began deploying mustard gas and nerve agents against Iranian forces, becoming the first country since World War One to use chemical weapons on a large scale in combat. Western governments were aware but looked the other way given strategic interest in an Iranian defeat.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1983,
+    "title": "Barzani Clan Members Massacred",
+    "description": "Saddam Hussein's forces arrested approximately 8,000 male members of the Barzani tribe and executed them in mass graves in the southern desert, an act of collective punishment foreshadowing the Anfal genocide.",
+    "category": "genocide_and_mass_atrocity",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1984,
+    "title": "Tanker War in the Persian Gulf",
+    "description": "Iraq began attacking Iranian oil tankers and shipping in the Gulf to pressure Iran economically. Iran retaliated against ships serving Gulf Arab states. Hundreds of civilian ships were damaged or sunk, drawing US naval forces to protect shipping lanes.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1985,
+    "title": "War of the Cities — Missile Strikes on Civilian Populations",
+    "description": "Iraq launched Scud missile attacks on Tehran and other Iranian cities; Iran responded with its own strikes on Baghdad and Basra. The exchanges caused significant civilian casualties and mass evacuations, demonstrating both sides' willingness to target civilian populations.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1985,
+    "title": "Iraq's War Economy and Alternative Oil Routes",
+    "description": "Iraq developed alternative oil export routes through Turkey and Saudi Arabia as the Gulf war zone threatened the Basra terminal. Despite war pressures, Iraq continued social spending financed by Gulf Arab loans, accumulating over $80 billion in war debt that would create severe postwar economic stress.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1986,
+    "title": "Iran Captures Faw Peninsula",
+    "description": "Iran's amphibious assault in February 1986 captured the Faw Peninsula, threatening Basra and representing a major strategic blow to Iraq. The Faw loss galvanized Iraqi use of chemical weapons more aggressively to change battlefield outcomes.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1988,
+    "title": "Halabja Chemical Massacre",
+    "description": "On March 16-17, 1988, Iraqi aircraft dropped chemical weapons on the Kurdish town of Halabja, killing between 3,200 and 5,000 civilians immediately with thousands more dying from long-term effects. It was the largest chemical weapons attack against a civilian population in history.",
+    "category": "genocide_and_mass_atrocity",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1988,
+    "title": "Anfal Genocide Against Iraqi Kurds",
+    "description": "The Ba'ath government launched the Anfal military campaign from February to September 1988, systematically targeting Kurdish civilians with chemical weapons, artillery, and ground troops. An estimated 4,000 villages were destroyed and 50,000 to 182,000 Kurds killed, constituting genocide under international law.",
+    "category": "genocide_and_mass_atrocity",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1988,
+    "title": "Iran-Iraq War Ends with UN Ceasefire",
+    "description": "Iran accepted UN Security Council Resolution 598 on July 18, 1988, ending the eight-year war. Over one million lives were lost, leaving hundreds of thousands disabled and both economies devastated. Iraq emerged with the Arab world's largest military but over $80 billion in debt.",
+    "category": "peacekeeping_and_peace_process",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1989,
+    "title": "Post-War Economic Crisis and Kuwait Tensions",
+    "description": "Iraq faced acute economic crisis after the war with over $80 billion in external debt. Saddam pushed Gulf Arab creditors, especially Kuwait, for debt relief. Kuwait's refusal and alleged slant-drilling into the Rumaila oilfield became major grievances leading to the 1990 invasion.",
+    "category": "economic_recession",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1990,
+    "title": "Iraq Invades and Annexes Kuwait",
+    "description": "On August 2, 1990, Iraqi forces overran Kuwait in hours and Saddam announced its annexation as Iraq's 19th province. The UN Security Council passed Resolution 660 demanding immediate withdrawal and the US began assembling a broad international coalition to reverse the conquest.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1990,
+    "title": "UN Comprehensive Sanctions Imposed on Iraq",
+    "description": "The UN Security Council imposed comprehensive economic sanctions cutting off oil exports and most imports. The sanctions, maintained after the Gulf War through the 1990s, devastated Iraq's civilian population with soaring infant mortality and malnutrition.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1991,
+    "title": "Gulf War — Operation Desert Storm",
+    "description": "A US-led coalition of 35 nations launched Operation Desert Storm on January 17, 1991, with massive air strikes followed by a ground campaign that routed Iraqi forces in Kuwait in 100 hours. Kuwait was liberated and Saddam accepted ceasefire terms but retained power in Baghdad.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1991,
+    "title": "Shia and Kurdish Uprisings Crushed — 1991 Intifada",
+    "description": "Spontaneous uprisings erupted across southern Iraq and the Kurdish north after Iraq's defeat, but US forces stood aside as Saddam's Republican Guard crushed the southern rebellion with extreme brutality, killing an estimated 60,000-100,000 people.",
+    "category": "political_repression",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1991,
+    "title": "Kurdish Refugee Crisis and Northern No-Fly Zone",
+    "description": "Republican Guard suppression of the Kurdish uprising caused approximately two million Kurds to flee toward Turkey and Iran. The US, UK, and France established a no-fly zone (Operation Provide Comfort) creating a safe haven that enabled the de facto Kurdish autonomous region.",
+    "category": "migration_and_refugees",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1992,
+    "title": "Kurdish Regional Government Established",
+    "description": "With protection from the northern no-fly zone, Iraqi Kurdistan held elections in May 1992 and established a Kurdistan Regional Government. KDP and PUK shared power in three northern provinces effectively expelled from Baghdad's authority.",
+    "category": "democratic_transition",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1993,
+    "title": "Oil-for-Food Program Negotiations Begin",
+    "description": "Iraq and the UN began negotiations on a program allowing limited oil sales to fund humanitarian imports while maintaining broader sanctions. The human cost of comprehensive sanctions mounted, with UNICEF documenting dramatically elevated child mortality rates.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1994,
+    "title": "Intra-Kurdish Civil War",
+    "description": "The Kurdish Regional Government collapsed into civil war between the KDP and PUK, fighting over revenue sharing and political power. The KDP received military backing from Saddam in 1996 to capture Erbil. The conflict was eventually resolved by the 1998 Washington Agreement.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1995,
+    "title": "UNSCOM Discovers Full Extent of Biological Weapons Program",
+    "description": "UN inspectors made a breakthrough when Saddam's son-in-law Hussein Kamel defected and revealed Iraq's biological weapons program had weaponized anthrax, botulinum toxin, and aflatoxin on an industrial scale. Kamel returned to Iraq six months later and was immediately killed.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1996,
+    "title": "Oil-for-Food Program Begins Operating",
+    "description": "Iraq accepted UN Resolution 986 allowing limited oil sales to purchase food and medicine. The program generated over $64 billion before closure in 2003 but was plagued by massive corruption with Iraqi officials and international contractors skimming billions.",
+    "category": "international_sanctions",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1998,
+    "title": "Operation Desert Fox — US-UK Air Strikes",
+    "description": "After UNSCOM inspectors were expelled in December 1998, the US and UK launched a four-day campaign of air and cruise missile strikes on Iraqi military and government targets. Iraq declared the UN weapons inspection regime over and refused future inspections.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 1999,
+    "title": "Grand Ayatollah al-Sadr II Assassinated",
+    "description": "Grand Ayatollah Muhammad Sadiq al-Sadr was assassinated along with two sons in Najaf in February 1999. The Shia community erupted in violently suppressed protests, making al-Sadr a martyr figure whose movement was later revived by his son Muqtada al-Sadr after 2003.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2001,
+    "title": "9/11 Aftermath and Iraq in US War Planning",
+    "description": "Despite no proven connection to September 11, the Bush administration immediately began planning military action against Saddam Hussein. Neoconservative officials argued removing Saddam was essential to regional transformation, and intelligence agencies were pressed to find Iraq-al-Qaeda connections.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2002,
+    "title": "UN Weapons Inspectors Return — UNMOVIC",
+    "description": "Under intense US pressure, Iraq agreed to allow UN inspectors to return under UNMOVIC in November 2002. Chief inspector Hans Blix found no confirmed WMD stockpiles; the US and UK argued Iraq was deceiving inspectors while France and Russia said inspections should continue.",
+    "category": "multilateral_agreement",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "US-Led Invasion of Iraq — Operation Iraqi Freedom",
+    "description": "On March 20, 2003, a US-led coalition invaded Iraq without UN Security Council authorization. Baghdad fell in three weeks, Saddam's government collapsed, and no WMDs were found. The invasion unleashed sectarian conflict, insurgency, and regional instability transforming the Middle East for decades.",
+    "category": "foreign_intervention",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "De-Ba'athification and Army Dissolution",
+    "description": "Coalition Provisional Authority chief Paul Bremer dissolved the Iraqi Army and banned senior Ba'ath members from public employment in May 2003. The decisions put hundreds of thousands of armed men out of work, creating a massive insurgency recruitment pool and removing administrators needed to run a functioning state.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2003,
+    "title": "Saddam Hussein Captured",
+    "description": "US forces captured Saddam Hussein on December 13, 2003, in a spider hole near Tikrit. His capture raised hopes the insurgency might abate but violence continued to escalate. He was later transferred to Iraqi custody for trial before the Iraqi High Tribunal.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2004,
+    "title": "Abu Ghraib Prison Abuse Scandal",
+    "description": "Photographs of US military personnel abusing Iraqi detainees at Abu Ghraib emerged in April 2004, causing international outrage. The scandal severely damaged American credibility and was exploited by insurgent groups for recruitment. Low-ranking soldiers were court-martialed but higher command responsibility was largely avoided.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2004,
+    "title": "Battles of Fallujah and Sovereignty Transfer",
+    "description": "Two major coalition assaults on Fallujah — an insurgent stronghold — and transfer of nominal sovereignty to an Iraqi interim government under Ayad Allawi on June 28, 2004 marked pivotal occupation milestones. The Fallujah battles became symbolic of insurgency durability while real authority remained with US forces.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2005,
+    "title": "Iraqi Elections, Constitution, and Shia Political Dominance",
+    "description": "Iraq held historic parliamentary elections in January 2005 with high Shia turnout and Sunni boycott. A new constitution was ratified in October establishing a federal parliamentary republic with Islam as legislative foundation. Both events confirmed Shia political dominance after decades of Ba'athist rule, deepening Sunni alienation.",
+    "category": "elections_and_voting",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2006,
+    "title": "Samarra Shrine Bombing Triggers Sectarian Civil War",
+    "description": "The bombing of the al-Askari shrine in Samarra on February 22, 2006, one of Shia Islam's holiest sites, triggered an explosion of sectarian violence. Baghdad descended into tit-for-tat killings and ethnic cleansing killing tens of thousands and displacing over two million people internally.",
+    "category": "terrorism_and_extremism",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2006,
+    "title": "Saddam Hussein Executed",
+    "description": "Saddam Hussein was convicted of crimes against humanity and executed by hanging on December 30, 2006. The execution on Eid al-Adha, accompanied by sectarian taunting broadcast worldwide via mobile phone footage, was itself controversial and reinforced Sunni grievances.",
+    "category": "transitional_justice",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2007,
+    "title": "US Troop Surge and Sunni Awakening",
+    "description": "President Bush deployed 30,000 additional troops under General Petraeus with a new counterinsurgency strategy. Simultaneously, the Sunni Awakening saw tribal leaders turn against al-Qaeda in Iraq; the Sons of Iraq movement eventually encompassed 100,000 fighters. Violence dropped dramatically by late 2007.",
+    "category": "military_policy_and_reform",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2008,
+    "title": "Battle of Basra and US-Iraq Status of Forces Agreement",
+    "description": "Prime Minister Maliki led a military operation against the Mahdi Army in Basra in March 2008, asserting central government authority. The November 2008 Status of Forces Agreement set a timeline for full US troop withdrawal by December 31, 2011, representing a major assertion of Iraqi sovereignty.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2009,
+    "title": "Maliki Consolidates Sectarian Governance",
+    "description": "Prime Minister Maliki's government increasingly governed along Shia sectarian lines, sidelining Sunni politicians and arresting Sunni military commanders. His centralization of security forces and sectarian favoritism created the alienation that enabled ISIS to find active Sunni support.",
+    "category": "political_corruption",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2010,
+    "title": "Iraqi Parliamentary Elections and Nine-Month Deadlock",
+    "description": "Iraq held elections in March 2010 with Ayad Allawi's Iraqiya coalition winning a narrow plurality, but Maliki refused to accept defeat. Nine months of political deadlock followed before a second Maliki term under a power-sharing agreement that was never genuinely implemented.",
+    "category": "elections_and_voting",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2011,
+    "title": "US Forces Complete Withdrawal from Iraq",
+    "description": "The last US combat troops withdrew from Iraq on December 18, 2011, ending nearly nine years of military presence. The Iraqi military was not fully capable of maintaining security, and Maliki's government was moving in an increasingly sectarian and authoritarian direction.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2012,
+    "title": "ISIS Exploits Syrian Civil War to Rebuild",
+    "description": "The Syrian Civil War created ungoverned territory that the Islamic State of Iraq exploited to expand, recruiting fighters and accessing new weapons. Abu Bakr al-Baghdadi extended operations into Syria, eventually creating ISIS. Iraq's security forces failed to recognize the growing threat.",
+    "category": "terrorism_and_extremism",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2013,
+    "title": "Hawija Massacre and Sunni Insurgency Revival",
+    "description": "Iraqi security forces' assault on a Sunni protest camp in Hawija on April 23, 2013 killed at least 50 protesters, ending Sunni hopes for peaceful political change. Car bombings and sectarian attacks escalated sharply, with over 9,000 Iraqi civilians killed that year — the highest toll since 2007-2008.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "ISIS Captures Mosul and Declares Caliphate",
+    "description": "On June 10, 2014, approximately 1,500 ISIS fighters routed 30,000 Iraqi Army troops and captured Mosul. On June 29, ISIS declared a global caliphate with al-Baghdadi as caliph, controlling territory the size of the UK spanning Iraq and Syria and threatening Baghdad itself.",
+    "category": "terrorism_and_extremism",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "Yazidi Genocide on Sinjar Mountain",
+    "description": "ISIS besieged the Yazidi population of Sinjar in August 2014, massacring men and boys and enslaving women and girls. An estimated 5,000 Yazidis were killed and 7,000 enslaved in what the UN classified as genocide. The atrocity shocked the world into renewed international intervention.",
+    "category": "genocide_and_mass_atrocity",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2014,
+    "title": "Maliki Replaced by Haider al-Abadi; US-Led Coalition Launches Airstrikes",
+    "description": "Under US and Iranian pressure, Maliki stepped down in August 2014; Haider al-Abadi became prime minister promising inclusive governance. In September, Obama announced a new international coalition launching airstrikes against ISIS in Iraq and Syria, with US special forces returning as advisors.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2015,
+    "title": "Counter-ISIS Campaign — Tikrit Retaken; ISIS at Peak Territorial Control",
+    "description": "Iraqi forces, Iran-sponsored Popular Mobilization Forces, and US air power recaptured Tikrit in March-April 2015. At its peak ISIS controlled approximately one-third of Iraq including major cities and oilfields, operating as a proto-state with taxes, courts, and utilities while destroying irreplaceable Assyrian sites at Nimrud and Hatra.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2016,
+    "title": "Battle of Fallujah and PMF Institutionalization",
+    "description": "Iraqi forces and PMF liberated Fallujah from ISIS in May-June 2016. The Iraqi parliament then formalized the Popular Mobilization Forces as an official security component in November, institutionalizing over 100,000 Iran-linked fighters within the Iraqi state.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "Battle of Mosul — ISIS Territorial Defeat Declared",
+    "description": "The nine-month battle to retake Mosul from October 2016 to July 2017 was the most destructive urban combat of the 21st century, killing over 10,000 ISIS fighters and tens of thousands of civilians. Prime Minister Abadi declared final victory over ISIS's territorial control on December 9, 2017.",
+    "category": "civil_war_and_insurgency",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2017,
+    "title": "Kurdistan Independence Referendum Backfires",
+    "description": "KRG President Barzani held an independence referendum winning 93 percent support, but Baghdad, Iran, Turkey, and the US all opposed it. Iraqi forces and PMF seized Kirkuk without significant resistance. The independence bid collapsed, Barzani resigned, and the KRG lost substantial territory and revenue.",
+    "category": "territorial_disputes",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "Post-ISIS Elections and Iran-Backed Parties Win",
+    "description": "Parliamentary elections in May 2018 produced a fragmented result with Muqtada al-Sadr's Sairoon alliance winning the largest bloc and Iran-backed Fatah Alliance second. Coalition building took months, resulting in Adil Abdul-Mahdi as prime minister in a compromise arrangement.",
+    "category": "elections_and_voting",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "Basra Protests Over Services and Contaminated Water",
+    "description": "Mass protests erupted in Basra in July-September 2018 over contaminated water supplies, power cuts, unemployment, and corrupt governance. Thousands were hospitalized from contaminated water; protesters burned Iranian consulates and party offices. A harbinger of the 2019 national uprising.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2018,
+    "title": "Post-ISIS Reconstruction Crisis and Displacement",
+    "description": "Iraq faced colossal reconstruction challenges with Mosul, Fallujah, Ramadi, and Sinjar in ruins and millions of internally displaced persons. International pledges of $30 billion at a Kuwait conference were far below the $88 billion estimated need, severely hampered by corruption in contracting.",
+    "category": "postwar_reconstruction",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2019,
+    "title": "October Revolution — Mass Anti-Government Uprising",
+    "description": "On October 1, 2019, spontaneous mass protests erupted in Baghdad and across southern Iraq demanding an end to corruption, sectarian governance, and Iranian interference. Security forces and Iran-backed militias killed over 600 protesters. The uprising forced Prime Minister Abdul-Mahdi to resign and represented a generational rejection of the post-2003 political order.",
+    "category": "social_movements_and_protest",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2019,
+    "title": "Systematic Assassination of Protest Activists",
+    "description": "Iran-backed militias conducted a campaign of targeted assassinations against protest organizers, activists, journalists, and social media personalities throughout 2019-2020. Hundreds were killed or abducted to terrorize the protest movement into submission.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "US Kills Soleimani at Baghdad Airport",
+    "description": "A US drone strike at Baghdad airport on January 3, 2020 killed Iranian Quds Force commander Qasem Soleimani and Iraqi PMF leader Abu Mahdi al-Muhandis. The Iraqi parliament voted to expel US forces; Iran launched missile strikes on US bases in Iraq, injuring dozens of American troops.",
+    "category": "diplomatic_rupture",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2020,
+    "title": "Mustafa al-Kadhimi Becomes Prime Minister",
+    "description": "Former intelligence chief Mustafa al-Kadhimi was appointed prime minister in May 2020 after two previous nominees failed, attempting a balancing act between the US and Iran while managing protest demands and collapsing oil revenues from COVID-19's impact on global energy markets.",
+    "category": "government_formation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2021,
+    "title": "Iraqi Elections — Record Low Turnout Amid Political Crisis",
+    "description": "Parliamentary elections in October 2021 saw unprecedented 41 percent turnout. Muqtada al-Sadr's movement won the largest bloc while Iran-backed Coordination Framework parties lost ground. Losing parties refused to accept results, triggering prolonged political deadlock certified by the UN.",
+    "category": "elections_and_voting",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2022,
+    "title": "Government Formation Deadlock and Green Zone Clashes",
+    "description": "Iraq experienced its longest government formation crisis, over a year. After Sadrist MPs resigned in June 2022, Sadrist-militia clashes in Baghdad's Green Zone killed at least 30. Muqtada al-Sadr stood down, enabling Iran-backed Coordination Framework to complete government formation with Mohammed Shia al-Sudani as prime minister.",
+    "category": "political_violence",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Iraq's Regional Diplomacy — Saudi-Iranian Rapprochement",
+    "description": "Prime Minister al-Sudani pursued active regional diplomacy in 2023, hosting diplomatic talks between Riyadh and Tehran that culminated in Saudi-Iranian agreement to restore diplomatic relations brokered by China. Iraq's bridging role reflected its unique geopolitical position between Gulf Arab states and Iran.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Kurdistan Oil Dispute — Turkey Halts Pipeline Exports",
+    "description": "An ICC ruling ordered Turkey to pay Iraq $1.5 billion for unauthorized oil exports from Iraqi Kurdistan, prompting Turkey to halt the Ceyhan pipeline for months. The dispute triggered an acute fiscal crisis in Erbil and highlighted unresolved Baghdad-Erbil oil revenue tensions.",
+    "category": "energy_policy_and_resources",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2023,
+    "title": "Severe Drought and Water Crisis in Southern Iraq",
+    "description": "Southern Iraq experienced severe drought with the Tigris and Euphrates at historically low levels due to upstream Turkish and Iranian dam construction combined with climate change. Marshlands faced ecological collapse, agricultural output fell sharply, and the water crisis was identified as a major long-term national security threat.",
+    "category": "climate_change_and_adaptation",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "US-Iran Proxy Tensions on Iraqi Soil Escalate",
+    "description": "Iran-backed militia groups conducted dozens of drone and rocket attacks on US bases in Iraq and Syria following the Gaza conflict's outbreak. A strike on Tower 22 in Jordan killed three US soldiers. US retaliatory strikes killed senior PMF commanders in Baghdad, triggering a political crisis.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "Iraq Negotiates US Troop Withdrawal",
+    "description": "Iraq opened formal negotiations with the US on withdrawal of international coalition combat forces, aiming at transitioning to an advisory role by 2025-2026. Al-Sudani faced domestic pressure from Iran-backed parties demanding US departure while needing American security assistance against ISIS.",
+    "category": "bilateral_treaty",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2024,
+    "title": "Yazidi Survivors Begin Return to Sinjar",
+    "description": "A decade after ISIS's genocide, small numbers of Yazidi displaced persons began returning to Sinjar as reconstruction made limited progress. An estimated 2,700 Yazidis remained unaccounted for; Sinjar remained contested between Iraqi government forces, PMF, Kurdish Peshmerga, and PKK-linked groups.",
+    "category": "human_rights",
+    "verified": false,
+    "verification_source": null
+  },
+  {
+    "year": 2025,
+    "title": "Iraq's Economic Diversification Efforts",
+    "description": "Iraq launched new initiatives to diversify its economy away from near-total oil dependency, which still accounted for over 90 percent of government revenues. Development corridor projects were advanced with neighboring countries, but the rentier state model remained deeply entrenched despite reform rhetoric.",
+    "category": "fiscal_policy_change",
+    "verified": false,
+    "verification_source": null
+  }
 ]
