@@ -103,6 +103,19 @@ export function CountryProfileClient({
         </div>
       </div>
 
+      {/* ─── Plain-English Summary ─────────────────────────────────── */}
+      <div
+        className="rounded-lg border-l-2 pl-4 py-3 mb-6"
+        style={{
+          borderColor: "var(--qgi-accent)",
+          backgroundColor: "var(--qgi-accent-glow)",
+        }}
+      >
+        <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
+          {generateSummary(country, categoryZScores)}
+        </p>
+      </div>
+
       {/* ─── Risk Breakdown (horizontal bar chart) ──────────────────── */}
       <section
         className="rounded-lg border p-6 mb-6"
@@ -376,6 +389,45 @@ function getCategoryBreakdown(
       recipe_count: Math.round(rSum / n),
     }))
     .sort((a, b) => b.salience - a.salience);
+}
+
+function generateSummary(
+  country: CountryRisk,
+  categories: Array<{ category: string; salience: number; recipe_count: number }>
+): string {
+  const topCats = categories.slice(0, 3);
+  if (topCats.length === 0) {
+    return `Limited data available for ${country.name}.`;
+  }
+
+  const top = topCats[0];
+  const topName = formatCategory(top.category);
+  const tierDesc =
+    country.overall_risk_tier === "HIGH"
+      ? "elevated"
+      : country.overall_risk_tier === "MODERATE"
+        ? "moderate"
+        : "baseline";
+
+  // Count total precedent windows across all categories
+  const totalPrecedents = categories.reduce((sum, c) => sum + c.recipe_count, 0);
+
+  let summary = `${country.name}'s economic indicators show ${tierDesc} risk signals. `;
+  summary += `The strongest signal is in ${topName} (${top.recipe_count} historical precedent windows). `;
+
+  if (topCats.length >= 2) {
+    const secondName = formatCategory(topCats[1].category);
+    summary += `Also notable: ${secondName}`;
+    if (topCats.length >= 3) {
+      summary += ` and ${formatCategory(topCats[2].category)}`;
+    }
+    summary += ". ";
+  }
+
+  summary += `Across all categories, ${totalPrecedents.toLocaleString()} precedent windows were identified — `;
+  summary += `meaning ${country.name}'s trajectory matches historical trajectories of countries that experienced these event types.`;
+
+  return summary;
 }
 
 function countryFlag(alpha2: string): string {
