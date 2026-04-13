@@ -343,13 +343,22 @@ export default function LandingPage() {
               Pattern Recurrence Intelligence &mdash; Statistical Beta
             </span>
           </div>
-          <p
-            className="text-[10px] leading-relaxed max-w-sm text-center sm:text-right"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            QGI surfaces economically-grounded risk candidates that analysts
-            should examine.
-          </p>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/methodology"
+              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Methodology
+            </Link>
+            <Link
+              href="/legal"
+              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Legal
+            </Link>
+          </div>
         </div>
       </footer>
     </div>
