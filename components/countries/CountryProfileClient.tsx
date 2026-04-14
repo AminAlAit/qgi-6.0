@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { EventsTimeline } from "@/components/countries/EventsTimeline";
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
@@ -139,6 +140,7 @@ export function CountryProfileClient({
           style={{ color: "var(--qgi-text-dim)" }}
         >
           Risk Breakdown by Category
+          <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger and more consequential signal." />
         </h2>
         <div className="space-y-2">
           {categoryZScores.slice(0, 10).map(({ category, salience, recipe_count }) => (
@@ -179,6 +181,7 @@ export function CountryProfileClient({
           style={{ color: "var(--qgi-text-dim)" }}
         >
           Top Precedents by Pattern Tier
+          <InfoTooltip text="Patterns grouped by how many years the economic similarity spans. Short (3-8yr) = policy cycles. Medium (9-20yr) = leadership eras. Long (21-40yr) = structural shifts. Institutional (41+yr) = civilizational parallels." />
         </h2>
 
         {/* Tier tabs */}

@@ -1,0 +1,48 @@
+"use client";
+
+import { useState } from "react";
+
+/**
+ * (i) info tooltip — hover on desktop, tap on mobile.
+ * Place next to any metric or term that needs explanation.
+ *
+ * Usage: <InfoTooltip text="Explanation here" />
+ */
+export function InfoTooltip({ text }: { text: string }) {
+  const [show, setShow] = useState(false);
+
+  return (
+    <span className="relative inline-block ml-1">
+      <button
+        onMouseEnter={() => setShow(true)}
+        onMouseLeave={() => setShow(false)}
+        onClick={() => setShow(!show)}
+        className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full text-[8px] font-bold transition-colors cursor-help"
+        style={{
+          backgroundColor: "var(--qgi-surface-2)",
+          color: "var(--qgi-text-dim)",
+          border: "1px solid var(--qgi-border)",
+        }}
+        aria-label="More info"
+      >
+        i
+      </button>
+      {show && (
+        <div
+          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-[11px] leading-relaxed w-56 shadow-lg"
+          style={{
+            backgroundColor: "var(--qgi-surface-2)",
+            color: "var(--qgi-text)",
+            border: "1px solid var(--qgi-border)",
+          }}
+        >
+          {text}
+          <div
+            className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 -mt-1"
+            style={{ backgroundColor: "var(--qgi-surface-2)", border: "1px solid var(--qgi-border)", borderTop: "none", borderLeft: "none" }}
+          />
+        </div>
+      )}
+    </span>
+  );
+}
