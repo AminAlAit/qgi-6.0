@@ -6,11 +6,18 @@ import { usePathname } from "next/navigation";
 // Navigation items — updated for the Country Intelligence Browser launch.
 // Naming: Patterns → Precedents, Recipes → Signals (#121).
 // Countries added as first item; COUNTRY PROFILE removed (replaced by /countries/[id]).
+// Navigation: Precedents (country+category combos), Signals (category archetypes),
+// Countries (all country profiles), then existing tools.
 const NAV_ITEMS = [
   {
-    label: "COUNTRIES",
+    label: "PRECEDENTS",
     href: "/countries",
-    icon: "⊕",
+    icon: "▲",
+  },
+  {
+    label: "SIGNALS",
+    href: "/signals-browse",
+    icon: "◈",
   },
   {
     label: "DASHBOARD",
@@ -18,19 +25,14 @@ const NAV_ITEMS = [
     icon: "▦",
   },
   {
-    label: "PRECEDENTS",
-    href: "/signals",
-    icon: "▲",
-  },
-  {
     label: "PATTERNS",
     href: "/patterns",
-    icon: "◈",
+    icon: "◉",
   },
   {
     label: "RANKING",
     href: "/patterns/ranking",
-    icon: "◉",
+    icon: "⊕",
   },
 ] as const;
 
