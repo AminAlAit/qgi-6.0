@@ -541,24 +541,30 @@ export default function PatternV2Page() {
                     {isExpanded && series ? (
                       /* Full line chart when expanded */
                       <div>
-                        {/* #2: Align toggle */}
-                        <div className="flex items-center gap-2 mb-1" onClick={(e) => e.stopPropagation()}>
-                          <label className="flex items-center gap-1.5 cursor-pointer">
-                            <input
-                              type="checkbox"
-                              checked={scdiAligned}
-                              onChange={(e) => { e.stopPropagation(); setScdiAligned(e.target.checked); }}
-                              className="accent-[var(--qgi-accent)]"
+                        {/* #2/#3: Align toggle (styled as a switch, not a checkbox) */}
+                        <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
+                          {/* Toggle switch */}
+                          <button
+                            onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
+                            className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                            style={{
+                              backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)",
+                            }}
+                          >
+                            <div
+                              className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+                              style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }}
                             />
-                            <span className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                              Align to Year 1
-                            </span>
-                          </label>
+                          </button>
+                          <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                            {scdiAligned ? "Aligned (Year 1-11)" : "Calendar years"}
+                          </span>
                           {!scdiAligned && (
                             <span className="text-[8px]" style={{ color: "var(--qgi-text-dim)" }}>
-                              {PATTERN.countryA.name} {PATTERN.countryA.windowStart}-{PATTERN.countryA.windowEnd}
-                              {" vs "}
-                              {PATTERN.countryB.name} {PATTERN.countryB.windowStart}-{PATTERN.countryB.windowEnd}
+                              {PATTERN.countryA.name} {PATTERN.countryA.windowStart}&ndash;{PATTERN.countryA.windowEnd}
+                              &ensp;|&ensp;
+                              {PATTERN.countryB.name} {PATTERN.countryB.windowStart}&ndash;{PATTERN.countryB.windowEnd}
+                              &ensp;({PATTERN.lag}yr lag)
                             </span>
                           )}
                         </div>
@@ -580,16 +586,23 @@ export default function PatternV2Page() {
                               itemWidth: 12,
                               itemHeight: 2,
                             },
-                            grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                            grid: { top: 30, right: 12, bottom: scdiAligned ? 24 : 40, left: 48 },
                             xAxis: {
                               type: "category",
                               data: scdiAligned
                                 ? Array.from({ length: PATTERN.length }, (_, j) => `Year ${j + 1}`)
                                 : Array.from({ length: PATTERN.length }, (_, j) =>
-                                    `${PATTERN.countryA.windowStart + j} / ${PATTERN.countryB.windowStart + j}`
+                                    // Show predictor year on top, follower year below
+                                    `${PATTERN.countryA.windowStart + j}\n${PATTERN.countryB.windowStart + j}`
                                   ),
                               axisLine: { lineStyle: { color: "#243347" } },
-                              axisLabel: { color: "#4a6280", fontSize: 9, rotate: scdiAligned ? 0 : 35 },
+                              axisLabel: {
+                                color: "#4a6280",
+                                fontSize: 8,
+                                rotate: 0,
+                                interval: scdiAligned ? "auto" : 1,
+                                lineHeight: 12,
+                              },
                             },
                             yAxis: {
                               type: "value",

@@ -643,8 +643,7 @@ export default function CountryV2Page() {
               Normalized 0-100 scale &middot; hover for raw values
             </span>
           </div>
-          {/* Increased height for readability; SVG renderer for crisp lines */}
-          <div className="h-[500px]">
+          <div className="h-[420px]">
             <ReactECharts
               option={indicatorTrajectoryOption()}
               style={{ height: "100%", width: "100%" }}
