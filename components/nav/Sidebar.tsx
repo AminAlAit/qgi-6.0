@@ -17,8 +17,8 @@ const NAV_ITEMS = [
     icon: "◆",
   },
   {
-    label: "PRECEDENTS",
-    href: "/precedents",
+    label: "COUNTRIES",
+    href: "/countries",
     icon: "▲",
   },
   {

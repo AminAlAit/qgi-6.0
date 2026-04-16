@@ -16,8 +16,9 @@ import { InfoTooltip } from "@/components/design/InfoTooltip";
 /* ------------------------------------------------------------------ */
 
 const PATTERN = {
-  countryA: { name: "Argentina", alpha2: "AR", windowStart: 1995, windowEnd: 2005 },
-  countryB: { name: "Brazil", alpha2: "BR", windowStart: 1981, windowEnd: 1991 },
+  // #12 fix: Brazil is the PREDICTOR (earlier window), Argentina FOLLOWS
+  countryA: { name: "Brazil", alpha2: "BR", windowStart: 1981, windowEnd: 1991 },
+  countryB: { name: "Argentina", alpha2: "AR", windowStart: 1995, windowEnd: 2005 },
   pps: 0.87,
   length: 11,
   avgCorrelation: 0.847,
@@ -32,10 +33,11 @@ const PATTERN = {
 };
 
 const NARRATIVE =
-  "Argentina's 1995-2005 trajectory mirrors Brazil's 1981-1991 " +
-  "across 8 indicators (avg r 0.847), led by Population, Mortality, and Economic sector " +
-  "signals. Brazil's window ended in March 1990 with hyperinflation peaking at " +
-  "6,821%/yr. Argentina is currently in equivalent year 7 of an 11-year arc.";
+  "Brazil's 1981-1991 economic trajectory is the predictor: it ended in " +
+  "March 1990 with hyperinflation peaking at 6,821%/yr. Argentina's 1995-2005 " +
+  "window follows the same path across 8 indicators (avg r 0.847), led by Population, " +
+  "Mortality, and Economic sector signals. Argentina is in equivalent year 7 of " +
+  "Brazil's 11-year arc.";
 
 const PPS_QUINTILES = [
   { label: "Very weak", min: 0, max: 0.5, color: "#4a6280" },
@@ -65,9 +67,9 @@ const SECTOR_COLORS: Record<string, string> = {
 
 const RELATED_PATTERNS = {
   samePredictor: [
-    { a: "AR", b: "CL", aName: "Argentina", bName: "Chile", length: 8, pps: 0.81 },
-    { a: "AR", b: "MX", aName: "Argentina", bName: "Mexico", length: 9, pps: 0.79 },
-    { a: "AR", b: "CO", aName: "Argentina", bName: "Colombia", length: 7, pps: 0.72 },
+    { a: "BR", b: "CL", aName: "Brazil", bName: "Chile", length: 8, pps: 0.81 },
+    { a: "BR", b: "MX", aName: "Brazil", bName: "Mexico", length: 9, pps: 0.79 },
+    { a: "BR", b: "CO", aName: "Brazil", bName: "Colombia", length: 7, pps: 0.72 },
   ],
   sameFollowing: [
     { a: "CO", b: "BR", aName: "Colombia", bName: "Brazil", length: 11, pps: 0.78 },

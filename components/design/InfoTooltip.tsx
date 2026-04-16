@@ -29,18 +29,22 @@ export function InfoTooltip({ text }: { text: string }) {
       </button>
       {show && (
         <div
-          className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 rounded-lg text-[11px] leading-relaxed w-56 shadow-lg"
+          className="fixed z-[9999] px-3 py-2 rounded-lg text-[11px] leading-relaxed w-64 max-w-[90vw] shadow-lg pointer-events-none"
           style={{
             backgroundColor: "var(--qgi-surface-2)",
             color: "var(--qgi-text)",
             border: "1px solid var(--qgi-border)",
+            // Position near the button using a ref-free approach:
+            // we rely on the parent's relative positioning but render
+            // with `fixed` and transform to stay in viewport.
+            top: "auto",
+            bottom: "calc(100% + 8px)",
+            left: "50%",
+            transform: "translateX(-50%)",
+            position: "absolute",
           }}
         >
           {text}
-          <div
-            className="absolute top-full left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 -mt-1"
-            style={{ backgroundColor: "var(--qgi-surface-2)", border: "1px solid var(--qgi-border)", borderTop: "none", borderLeft: "none" }}
-          />
         </div>
       )}
     </span>

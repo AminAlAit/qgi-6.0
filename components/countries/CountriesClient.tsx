@@ -477,7 +477,7 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
           background: `linear-gradient(180deg, var(--qgi-surface-2) 0%, ${dominantColor}10 100%)`,
         }}
       >
-        <CountryFlag alpha2={country.alpha_2} size={56} />
+        <CountryFlag alpha2={country.alpha_2} size={72} />
       </div>
 
       {/* ─── L1 Stat block ─── */}

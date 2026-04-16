@@ -431,6 +431,7 @@ export default function PrecedentV2Page() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             PATTERN LENGTH DISTRIBUTION
+            <InfoTooltip text="Distribution of pattern lengths (in years) across all precedent windows for this country/category. Short patterns (3-8yr) detect policy cycles; long patterns (21+yr) detect structural trajectories. A wide spread means the signal is robust across time horizons." />
           </h2>
 
           <div className="space-y-3">
@@ -492,6 +493,7 @@ export default function PrecedentV2Page() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               LEAD-TIME DISTRIBUTION
+              <InfoTooltip text="How many years before the actual event did the analogue pattern start flagging? A 3-year lead time means QGI's pattern match began 3 years before Country B's known event. Longer lead times = more advance warning, but also more false-positive risk." />
             </h2>
             <span className="text-[11px] tracking-wider italic" style={{ color: "var(--qgi-text-dim)" }}>
               &ldquo;How early did QGI flag?&rdquo;

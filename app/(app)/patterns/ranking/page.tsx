@@ -8,18 +8,19 @@ import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { PatternRow } from "@/lib/types";
-import countryRisksData from "@/data/country-risks.json";
+import countriesList from "@/data/countries.json";
 
 const PAGE_SIZE = 50;
 
-// Build a country-id -> alpha_2 lookup from the baked-in country-risks JSON
+// Build alpha_2 lookups from the FULL 251-country countries.json (not
+// country-risks.json which only has 126). Fixes missing flags for
+// countries like Paraguay that are in the pattern DB but not in the
+// scored country-risks set.
 const ALPHA2_MAP: Record<string, string> = {};
 const NAME_TO_ALPHA2: Record<string, string> = {};
-for (const [id, country] of Object.entries(
-  (countryRisksData as { countries: Record<string, { name: string; alpha_2: string }> }).countries
-)) {
-  ALPHA2_MAP[id] = country.alpha_2;
-  NAME_TO_ALPHA2[country.name] = country.alpha_2;
+for (const c of countriesList as Array<{ id: string; name: string; alpha_2: string }>) {
+  ALPHA2_MAP[c.id] = c.alpha_2;
+  NAME_TO_ALPHA2[c.name] = c.alpha_2;
 }
 
 interface RankingResponse {
@@ -43,45 +44,43 @@ export default function RankingPage() {
   const [minPps, setMinPps] = useState("");
   const [minCorr, setMinCorr] = useState("");
   const [minYearGap, setMinYearGap] = useState("");
+  // Dedup toggle — when ON, collapses to one row per country pair (best PPS
+  // window). When OFF, shows all raw windows (up to 1000).
+  const [dedupEnabled, setDedupEnabled] = useState(false);
   const [sortCol, setSortCol] = useState<keyof PatternRow>("pattern_power_score");
   const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
 
-  const fetchPage = useCallback(
-    async (p: number) => {
-      setLoading(true);
-      try {
-        const params = new URLSearchParams({
-          page: String(p),
-          limit: String(PAGE_SIZE),
-        });
-        if (minPps) params.set("min_pps", minPps);
-        if (minCorr) params.set("min_corr", minCorr);
+  // Fetch ALL results from the cache (up to 1000) in one go — client-side
+  // pagination + dedup + filtering is fast enough for this volume.
+  const [allRows, setAllRows] = useState<PatternRow[]>([]);
 
-        const res = await fetch(`/api/patterns/ranking?${params}`);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data: RankingResponse = await res.json();
-        setRows(data.results);
-        setDeduped(Boolean(data.deduped));
-        setTotalUniquePairs(data.total_unique_pairs ?? null);
-        setHasMore(data.results.length === PAGE_SIZE);
-      } catch (err) {
-        console.error("Failed to fetch ranking:", err);
-        setRows([]);
-      } finally {
-        setLoading(false);
-      }
-    },
-    [minPps, minCorr]
-  );
+  const fetchAll = useCallback(async () => {
+    setLoading(true);
+    try {
+      const params = new URLSearchParams({ page: "1", limit: "1000" });
+      if (minPps) params.set("min_pps", minPps);
+      if (minCorr) params.set("min_corr", minCorr);
+      const res = await fetch(`/api/patterns/ranking?${params}`, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data: RankingResponse = await res.json();
+      setAllRows(data.results);
+      setTotalUniquePairs(data.total_unique_pairs ?? null);
+      setDeduped(Boolean(data.deduped));
+    } catch (err) {
+      console.error("Failed to fetch ranking:", err);
+      setAllRows([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [minPps, minCorr]);
 
   useEffect(() => {
     setPage(1);
-    fetchPage(1);
-  }, [fetchPage]);
+    fetchAll();
+  }, [fetchAll]);
 
   function handlePageChange(newPage: number) {
-    setPage(newPage);
-    fetchPage(newPage);
+    setPage(Math.max(1, Math.min(newPage, totalPages)));
   }
 
   function handleSort(col: keyof PatternRow) {
@@ -104,9 +103,26 @@ export default function RankingPage() {
     router.push(`/patterns?${qs}`);
   }
 
-  // Client-side year-gap filter + sort
-  const filtered = useMemo(() => {
-    let result = rows;
+  // Client-side: dedup toggle + year-gap filter + sort + paginate
+  const processed = useMemo(() => {
+    let result = allRows;
+
+    // Optional dedup by pair (best PPS per pair)
+    if (dedupEnabled) {
+      const bestPerPair = new Map<string, PatternRow>();
+      for (const row of result) {
+        const a = row.country_a_id ?? row.country_a;
+        const b = row.country_b_id ?? row.country_b;
+        const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+        const existing = bestPerPair.get(key);
+        if (!existing || row.pattern_power_score > existing.pattern_power_score) {
+          bestPerPair.set(key, row);
+        }
+      }
+      result = Array.from(bestPerPair.values());
+    }
+
+    // Year-gap filter
     if (minYearGap) {
       const gap = Number(minYearGap);
       if (gap > 0) {
@@ -115,6 +131,8 @@ export default function RankingPage() {
         );
       }
     }
+
+    // Sort
     return [...result].sort((a, b) => {
       const av = a[sortCol];
       const bv = b[sortCol];
@@ -125,7 +143,11 @@ export default function RankingPage() {
         ? String(av).localeCompare(String(bv))
         : String(bv).localeCompare(String(av));
     });
-  }, [rows, sortCol, sortDir, minYearGap]);
+  }, [allRows, sortCol, sortDir, minYearGap, dedupEnabled]);
+
+  // Paginate
+  const totalPages = Math.ceil(processed.length / PAGE_SIZE);
+  const filtered = processed.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const sortIndicator = (col: keyof PatternRow) =>
     sortCol === col ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
@@ -198,6 +220,18 @@ export default function RankingPage() {
           placeholder="0"
           tooltip="Minimum |start_year_a - start_year_b|. Set >0 to find early-warning patterns where one country's window is offset in time from the other."
         />
+        {/* Dedup toggle */}
+        <label className="flex items-center gap-2 cursor-pointer self-end pb-1">
+          <input
+            type="checkbox"
+            checked={dedupEnabled}
+            onChange={(e) => { setDedupEnabled(e.target.checked); setPage(1); }}
+            className="accent-[var(--qgi-accent)]"
+          />
+          <span className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+            Unique pairs only
+          </span>
+        </label>
       </div>
 
       {/* Table */}
@@ -350,10 +384,10 @@ export default function RankingPage() {
           className="text-[10px] tracking-wider font-data"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          {filtered.length} results
+          {processed.length} total &middot; page {page}/{Math.max(1, totalPages)}
         </span>
         <button
-          disabled={!hasMore}
+          disabled={page >= totalPages}
           onClick={() => handlePageChange(page + 1)}
           className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors disabled:opacity-30"
           style={{

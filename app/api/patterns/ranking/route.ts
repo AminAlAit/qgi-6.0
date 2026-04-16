@@ -25,35 +25,24 @@ export const GET = withAuth(async (req: NextRequest) => {
   if (isUnfiltered && offset + limit <= 1000) {
     const cached = await getDashboardJson<RankingPayload>("ranking.json");
     if (cached) {
-      // #244: dedupe by (country_a, country_b) — keep highest-PPS window per pair.
-      // Without this, the top 50 is dominated by overlapping windows of the same
-      // South Korea/Thailand precedent (8+ entries differing only by length 49→63).
-      // We dedupe on read so the existing pre-computed JSON doesn't need to change.
-      const bestPerPair = new Map<string, (typeof cached.results)[number]>();
+      // Return ALL raw results — dedup is now a client-side toggle.
+      // Count unique pairs for the header stat.
+      const pairSet = new Set<string>();
       for (const row of cached.results) {
         const a = row.country_a_id ?? row.country_a;
         const b = row.country_b_id ?? row.country_b;
-        // Order-independent pair key so A→B and B→A collapse together
-        const key = a < b ? `${a}|${b}` : `${b}|${a}`;
-        const existing = bestPerPair.get(key);
-        if (!existing || row.pattern_power_score > existing.pattern_power_score) {
-          bestPerPair.set(key, row);
-        }
+        pairSet.add(a < b ? `${a}|${b}` : `${b}|${a}`);
       }
-      const deduped = Array.from(bestPerPair.values()).sort(
-        (a, b) => b.pattern_power_score - a.pattern_power_score
-      );
       return NextResponse.json(
         {
           page,
           limit,
-          deduped: true,
-          total_unique_pairs: deduped.length,
-          results: deduped.slice(offset, offset + limit),
+          deduped: false,
+          total_unique_pairs: pairSet.size,
+          results: cached.results.slice(offset, offset + limit),
         },
         {
-          // #144: edge-cache for 24h on CloudFront once Amplify (#102) lands
-          headers: { "Cache-Control": "public, max-age=300, s-maxage=86400" },
+          headers: { "Cache-Control": "public, max-age=60, s-maxage=3600" },
         }
       );
     }

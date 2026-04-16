@@ -2,6 +2,15 @@
 
 import dynamic from "next/dynamic";
 import { sectorColor, sectorChipBg } from "@/lib/design";
+import { CountryFlag } from "@/components/design/CountryFlag";
+import { InfoTooltip } from "@/components/design/InfoTooltip";
+import countriesList from "@/data/countries.json";
+
+// Build name -> alpha_2 lookup
+const NAME_TO_ALPHA2: Record<string, string> = {};
+for (const c of countriesList as Array<{ name: string; alpha_2: string }>) {
+  NAME_TO_ALPHA2[c.name] = c.alpha_2;
+}
 
 const SectorRose = dynamic(
   () => import("@/components/charts/SectorRose").then((m) => m.SectorRose),
@@ -77,6 +86,7 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
             Predictor
           </span>
+          <CountryFlag alpha2={NAME_TO_ALPHA2[meta.country_a] ?? ""} size={28} />
           <span className="font-data text-xl font-semibold" style={{ color: "var(--qgi-country-a)" }}>
             {meta.country_a}
           </span>
@@ -106,8 +116,9 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           className="flex flex-col items-center justify-center px-4 py-2 border-r gap-1"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+          <span className="text-[9px] tracking-widest uppercase flex items-center" style={{ color: "var(--qgi-text-dim)" }}>
             Pattern Strength
+            <InfoTooltip text="Pattern Power Score (PPS) — a composite ranking metric blending correlation strength, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0-2000+." />
           </span>
           <span className="font-data text-3xl font-semibold" style={{ color: "var(--qgi-amber)" }}>
             {pps.toFixed(3)}
@@ -115,7 +126,9 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
             {(corr * 100).toFixed(1)}% avg corr · {meta.num_indexes} indicators
           </span>
-          <div className="w-full h-20">
+          {/* Sector rose — needs enough height for labels to render.
+              ECharts auto-hides labels that don't fit. */}
+          <div className="w-full h-32">
             <SectorRose data={sectorData} />
           </div>
         </div>
@@ -128,6 +141,7 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
             Following
           </span>
+          <CountryFlag alpha2={NAME_TO_ALPHA2[meta.country_b] ?? ""} size={28} />
           <span className="font-data text-xl font-semibold" style={{ color: "var(--qgi-country-b)" }}>
             {meta.country_b}
           </span>
