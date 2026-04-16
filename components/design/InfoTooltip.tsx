@@ -13,10 +13,15 @@ export function InfoTooltip({ text }: { text: string }) {
 
   return (
     <span className="relative inline-block ml-1">
-      <button
+      {/* Use <span> not <button> to avoid nested-button hydration errors
+          when InfoTooltip is placed inside a <button> (e.g. Ranking headers) */}
+      <span
+        role="button"
+        tabIndex={0}
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
-        onClick={() => setShow(!show)}
+        onClick={(e) => { e.stopPropagation(); setShow(!show); }}
+        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.stopPropagation(); setShow(!show); } }}
         className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full text-[8px] font-bold transition-colors cursor-help"
         style={{
           backgroundColor: "var(--qgi-surface-2)",
@@ -26,7 +31,7 @@ export function InfoTooltip({ text }: { text: string }) {
         aria-label="More info"
       >
         i
-      </button>
+      </span>
       {show && (
         <div
           className="fixed z-[9999] px-3 py-2 rounded-lg text-[11px] leading-relaxed w-64 max-w-[90vw] shadow-lg pointer-events-none"

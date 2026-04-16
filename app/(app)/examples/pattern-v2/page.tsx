@@ -283,29 +283,29 @@ export default function PatternV2Page() {
                 </div>
               ))}
 
-              {/* Brazil bar (top) */}
+              {/* Predictor bar (top) — countryA = Brazil 1981-1991 */}
               <div
                 className="absolute h-5 rounded"
                 style={{
-                  left: `${yearToPercent(PATTERN.countryB.windowStart)}%`,
-                  width: `${yearToPercent(PATTERN.countryB.windowEnd) - yearToPercent(PATTERN.countryB.windowStart)}%`,
+                  left: `${yearToPercent(PATTERN.countryA.windowStart)}%`,
+                  width: `${yearToPercent(PATTERN.countryA.windowEnd) - yearToPercent(PATTERN.countryA.windowStart)}%`,
                   top: "8px",
-                  backgroundColor: "var(--qgi-country-b)",
+                  backgroundColor: "var(--qgi-country-a)",
                   opacity: 0.6,
                 }}
               />
               <div
                 className="absolute text-[9px] font-data -translate-x-1/2"
                 style={{
-                  left: `${yearToPercent((PATTERN.countryB.windowStart + PATTERN.countryB.windowEnd) / 2)}%`,
+                  left: `${yearToPercent((PATTERN.countryA.windowStart + PATTERN.countryA.windowEnd) / 2)}%`,
                   top: "10px",
                   color: "#fff",
                 }}
               >
-                BR {PATTERN.countryB.windowStart}-{PATTERN.countryB.windowEnd}
+                {PATTERN.countryA.alpha2} {PATTERN.countryA.windowStart}-{PATTERN.countryA.windowEnd}
               </div>
 
-              {/* Event marker for B */}
+              {/* Event marker — hyperinflation at end of predictor window */}
               <div
                 className="absolute"
                 style={{
@@ -323,26 +323,26 @@ export default function PatternV2Page() {
                 </div>
               </div>
 
-              {/* Argentina bar (bottom) */}
+              {/* Following bar (bottom) — countryB = Argentina 1995-2005 */}
               <div
                 className="absolute h-5 rounded"
                 style={{
-                  left: `${yearToPercent(PATTERN.countryA.windowStart)}%`,
-                  width: `${yearToPercent(PATTERN.countryA.windowEnd) - yearToPercent(PATTERN.countryA.windowStart)}%`,
+                  left: `${yearToPercent(PATTERN.countryB.windowStart)}%`,
+                  width: `${yearToPercent(PATTERN.countryB.windowEnd) - yearToPercent(PATTERN.countryB.windowStart)}%`,
                   top: "48px",
-                  backgroundColor: "var(--qgi-country-a)",
+                  backgroundColor: "var(--qgi-country-b)",
                   opacity: 0.6,
                 }}
               />
               <div
                 className="absolute text-[9px] font-data -translate-x-1/2"
                 style={{
-                  left: `${yearToPercent((PATTERN.countryA.windowStart + PATTERN.countryA.windowEnd) / 2)}%`,
+                  left: `${yearToPercent((PATTERN.countryB.windowStart + PATTERN.countryB.windowEnd) / 2)}%`,
                   top: "50px",
                   color: "#fff",
                 }}
               >
-                AR {PATTERN.countryA.windowStart}-{PATTERN.countryA.windowEnd}
+                {PATTERN.countryB.alpha2} {PATTERN.countryB.windowStart}-{PATTERN.countryB.windowEnd}
               </div>
 
               {/* Today marker */}

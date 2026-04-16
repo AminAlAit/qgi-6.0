@@ -53,14 +53,18 @@ export function CountryFlag({ alpha2, size = 24, className }: Props) {
     );
   }
 
+  // If className includes width/height utilities (e.g. w-[85%] h-auto),
+  // don't set inline width/height which would override them.
+  const hasCustomSize = className?.includes("w-") || className?.includes("h-");
+
   return (
     <FlagComponent
       className={className}
-      style={{
-        width: size * 1.5,
-        height: size,
-        borderRadius: 2,
-      }}
+      style={
+        hasCustomSize
+          ? { borderRadius: 2 }
+          : { width: size * 1.5, height: size, borderRadius: 2 }
+      }
     />
   );
 }

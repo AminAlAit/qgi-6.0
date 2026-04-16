@@ -103,11 +103,14 @@ export default function RankingPage() {
     router.push(`/patterns?${qs}`);
   }
 
-  // Client-side: dedup toggle + year-gap filter + sort + paginate
+  // Client-side: dedup/interleave + year-gap filter + sort + paginate
   const processed = useMemo(() => {
     let result = allRows;
 
-    // Optional dedup by pair (best PPS per pair)
+    // DEDUP MODE: one row per pair (best PPS window)
+    // DEFAULT MODE: interleave by pair so users see diversity instead of
+    // 50 South Korea-Thailand entries. Round-robin: take the best window
+    // of each pair first, then 2nd-best of each, then 3rd, etc.
     if (dedupEnabled) {
       const bestPerPair = new Map<string, PatternRow>();
       for (const row of result) {
@@ -120,6 +123,42 @@ export default function RankingPage() {
         }
       }
       result = Array.from(bestPerPair.values());
+    } else {
+      // DEFAULT: interleave by pair. Group entries by pair key, sort each
+      // group by PPS desc, then round-robin: take rank-0 of each pair,
+      // then rank-1 of each, etc. This ensures page 1 shows all 23 unique
+      // pairs before repeating any, instead of 50 × SK-TH.
+      const groups = new Map<string, PatternRow[]>();
+      for (const row of result) {
+        const a = row.country_a_id ?? row.country_a;
+        const b = row.country_b_id ?? row.country_b;
+        const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+        let arr = groups.get(key);
+        if (!arr) {
+          arr = [];
+          groups.set(key, arr);
+        }
+        arr.push(row);
+      }
+      // Sort groups by their best PPS (determines interleave order)
+      const sortedGroups = Array.from(groups.values())
+        .map((g) => g.sort((a, b) => b.pattern_power_score - a.pattern_power_score))
+        .sort((a, b) => b[0].pattern_power_score - a[0].pattern_power_score);
+      // Round-robin interleave
+      const interleaved: PatternRow[] = [];
+      let rank = 0;
+      let added = true;
+      while (added) {
+        added = false;
+        for (const group of sortedGroups) {
+          if (rank < group.length) {
+            interleaved.push(group[rank]);
+            added = true;
+          }
+        }
+        rank++;
+      }
+      result = interleaved;
     }
 
     // Year-gap filter
@@ -132,17 +171,21 @@ export default function RankingPage() {
       }
     }
 
-    // Sort
-    return [...result].sort((a, b) => {
-      const av = a[sortCol];
-      const bv = b[sortCol];
-      if (typeof av === "number" && typeof bv === "number") {
-        return sortDir === "asc" ? av - bv : bv - av;
-      }
-      return sortDir === "asc"
-        ? String(av).localeCompare(String(bv))
-        : String(bv).localeCompare(String(av));
-    });
+    // Sort (only when user explicitly clicks a column header — the default
+    // interleave order is already the "smart" order; explicit sort overrides)
+    if (sortCol !== "pattern_power_score" || sortDir !== "desc") {
+      return [...result].sort((a, b) => {
+        const av = a[sortCol];
+        const bv = b[sortCol];
+        if (typeof av === "number" && typeof bv === "number") {
+          return sortDir === "asc" ? av - bv : bv - av;
+        }
+        return sortDir === "asc"
+          ? String(av).localeCompare(String(bv))
+          : String(bv).localeCompare(String(av));
+      });
+    }
+    return result;
   }, [allRows, sortCol, sortDir, minYearGap, dedupEnabled]);
 
   // Paginate

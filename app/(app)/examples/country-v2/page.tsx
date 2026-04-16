@@ -340,7 +340,7 @@ export default function CountryV2Page() {
         </div>
 
         {/* ============================================================ */}
-        {/*  INDICATOR TRAJECTORY PLACEHOLDER                             */}
+        {/*  INDICATOR TRAJECTORIES                                       */}
         {/* ============================================================ */}
         <section
           className="rounded-xl p-6"
@@ -353,25 +353,19 @@ export default function CountryV2Page() {
             className="text-[11px] tracking-widest uppercase font-semibold mb-2"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            INDICATOR TRAJECTORIES &middot; TOP 6 INDICATORS &middot; 1990-2026
+            INDICATOR TRAJECTORIES &middot; TOP 6 INDICATORS &middot; 1990-2025
           </h2>
-          <div
-            className="flex items-center justify-center h-48 rounded-lg"
-            style={{ backgroundColor: "var(--qgi-surface-2)", border: "1px dashed var(--qgi-border)" }}
-          >
-            <div className="text-center">
-              <div className="text-sm mb-1" style={{ color: "var(--qgi-text-muted)" }}>
-                Indicator trajectories will render here
-              </div>
-              <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                Requires pipeline pre-compute of per-country indicator time series with event markers
-              </div>
-            </div>
+          <div className="h-[420px]">
+            <ReactECharts
+              option={indicatorTrajectoryOption()}
+              style={{ height: "100%", width: "100%" }}
+              opts={{ renderer: "svg" }}
+            />
           </div>
         </section>
 
         {/* ============================================================ */}
-        {/*  PATTERN DENSITY TIMELINE PLACEHOLDER                         */}
+        {/*  PATTERN DENSITY TIMELINE                                     */}
         {/* ============================================================ */}
         <section
           className="rounded-xl p-6"
@@ -391,18 +385,15 @@ export default function CountryV2Page() {
               12,408 patterns total
             </span>
           </div>
-          <div
-            className="flex items-center justify-center h-24 rounded-lg"
-            style={{ backgroundColor: "var(--qgi-surface-2)", border: "1px dashed var(--qgi-border)" }}
-          >
-            <div className="text-center">
-              <div className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
-                Pattern density timeline will render here
-              </div>
-              <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                Requires pattern_density_per_country.json from pipeline
-              </div>
-            </div>
+          <div className="text-[10px] tracking-wider mb-3" style={{ color: "var(--qgi-text-dim)" }}>
+            Years with more pattern starts = more structural similarity to other countries&apos; trajectories.
+          </div>
+          <div className="h-[240px]">
+            <ReactECharts
+              option={patternDensityOption()}
+              style={{ height: "100%", width: "100%" }}
+              opts={{ renderer: "svg" }}
+            />
           </div>
         </section>
 

@@ -473,11 +473,14 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
       <div
         className="relative mx-3 mb-2 rounded-md overflow-hidden flex items-center justify-center"
         style={{
-          height: 100,
+          height: 90,
           background: `linear-gradient(180deg, var(--qgi-surface-2) 0%, ${dominantColor}10 100%)`,
         }}
       >
-        <CountryFlag alpha2={country.alpha_2} size={72} />
+        {/* Fill the container: width=100% of panel minus padding, height auto
+            maintains aspect ratio. The CountryFlag SVG is 3:2 aspect; for a
+            ~200px wide container that's ~133px wide × ~90px tall. */}
+        <CountryFlag alpha2={country.alpha_2} size={80} className="w-[85%] h-auto" />
       </div>
 
       {/* ─── L1 Stat block ─── */}
