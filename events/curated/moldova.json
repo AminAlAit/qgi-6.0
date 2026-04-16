@@ -35,7 +35,7 @@
     "year": 1992,
     "title": "Transnistrian War Erupts Between Moldova and Separatists",
     "description": "Full-scale fighting broke out in March 1992 between Moldovan forces and Transnistrian separatists backed by elements of the Russian 14th Army. The war killed an estimated 1,000 people and displaced tens of thousands before a ceasefire was declared on July 21, 1992, leaving Transnistria under de facto separatist control.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Transnistrian_War"
   },
@@ -51,7 +51,7 @@
     "year": 1992,
     "title": "Moldova Introduces the Leu as National Currency",
     "description": "Moldova introduced its own national currency, the Moldovan leu, replacing the Soviet ruble in November 1993. The currency transition was part of broader economic reforms to establish monetary sovereignty following independence.",
-    "category": "monetary_policy",
+    "category": "monetary_policy_change",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Moldovan_leu"
   },
@@ -59,7 +59,7 @@
     "year": 1993,
     "title": "Moldova Joins the Commonwealth of Independent States",
     "description": "Moldova formally joined the Commonwealth of Independent States in April 1994, seeking to maintain economic ties with former Soviet republics while pursuing a multi-vector foreign policy. CIS membership facilitated trade agreements with Russia and other post-Soviet states.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Moldova%E2%80%93Russia_relations"
   },
@@ -91,7 +91,7 @@
     "year": 1995,
     "title": "Moldova Joins the Council of Europe",
     "description": "Moldova became a member of the Council of Europe on July 13, 1995, committing to European human rights standards, rule of law, and democratic governance. Membership signaled Moldova's European orientation and required alignment with European legal frameworks.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://www.coe.int/en/web/portal/moldova"
   },
@@ -99,7 +99,7 @@
     "year": 1996,
     "title": "Petru Lucinschi Elected President in First Direct Election",
     "description": "Petru Lucinschi won Moldova's first direct presidential election in December 1996, defeating incumbent Mircea Snegur in a runoff. Lucinschi, a former Soviet-era Communist Party leader, pursued pragmatic relations with both Russia and the West.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/1996_Moldovan_presidential_election"
   },
@@ -115,7 +115,7 @@
     "year": 1998,
     "title": "Russian Financial Crisis Devastates Moldovan Economy",
     "description": "The 1998 Russian financial crisis severely impacted Moldova, which depended heavily on Russian trade. GDP contracted sharply, the leu depreciated significantly, and poverty rates soared, triggering a wave of labor emigration that would see Moldova lose roughly 9% of its population by 2004.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/History_of_independent_Moldova"
   },
@@ -123,7 +123,7 @@
     "year": 1999,
     "title": "OSCE Istanbul Summit Commits Russia to Withdraw from Moldova",
     "description": "At the 1999 OSCE Istanbul Summit, Russia committed to withdrawing its military forces and ammunition from Transnistria. Russia subsequently failed to fulfill this commitment, and the issue of Russian troops in Moldova remained a persistent source of diplomatic tension.",
-    "category": "arms_control",
+    "category": "multilateral_agreement",
     "verified": false,
     "verification_source": "https://www.osce.org/mc/39569"
   },
@@ -147,7 +147,7 @@
     "year": 2001,
     "title": "Moldova Becomes First Post-Soviet WTO Member",
     "description": "Moldova acceded to the World Trade Organization on July 26, 2001, becoming the 142nd member and the first former Soviet republic to join. WTO membership signaled commitment to trade liberalization and integration into the global economy.",
-    "category": "trade_policy",
+    "category": "trade_agreement",
     "verified": false,
     "verification_source": "https://www.wto.org/english/thewto_e/acc_e/a1_moldova_e.htm"
   },
@@ -163,7 +163,7 @@
     "year": 2003,
     "title": "Mass Protests Against Russian Language Education Policy",
     "description": "Thousands of Moldovans protested in Chisinau against the Communist government's plan to make Russian a compulsory subject in schools and grant it official status alongside Moldovan. The protests forced the government to withdraw the proposal and contributed to Voronin's pivot toward the EU.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://www.britannica.com/place/Moldova/Independent-Moldova"
   },
@@ -171,7 +171,7 @@
     "year": 2005,
     "title": "EU Border Assistance Mission Deployed to Moldova-Ukraine Border",
     "description": "The European Union launched the EU Border Assistance Mission to Moldova and Ukraine (EUBAM) in November 2005 to combat smuggling and improve border controls along the Transnistrian segment. The mission represented the EU's first direct operational engagement in Moldova's frozen conflict.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://eubam.org/"
   },
@@ -187,7 +187,7 @@
     "year": 2006,
     "title": "Russia Imposes Wine Embargo on Moldova",
     "description": "Russia banned imports of Moldovan wine in March 2006, officially citing health concerns but widely viewed as political retaliation for Moldova's pro-European shift. Wine accounted for roughly one-third of Moldova's exports, and the embargo severely damaged the agricultural sector.",
-    "category": "trade_policy",
+    "category": "trade_agreement",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2006_Russian_ban_of_Moldovan_and_Georgian_wines"
   },
@@ -203,7 +203,7 @@
     "year": 2009,
     "title": "April Protests Erupt After Disputed Communist Election Victory",
     "description": "Thousands of young Moldovans took to the streets of Chisinau on April 6-7, 2009, protesting what they alleged was a rigged Communist Party election victory. Protesters stormed and damaged the parliament and presidential buildings in what became known internationally as the Twitter Revolution.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/April_2009_Moldovan_parliamentary_election_protests"
   },
@@ -227,7 +227,7 @@
     "year": 2010,
     "title": "Moldova Receives EU Autonomous Trade Preferences",
     "description": "The European Union granted Moldova autonomous trade preferences in 2008, and these were extended and deepened through 2010, allowing duty-free access for Moldovan goods to EU markets. The preferential trade regime supported Moldova's economic reorientation toward European markets.",
-    "category": "trade_policy",
+    "category": "trade_agreement",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Moldova%E2%80%93European_Union_relations"
   },
@@ -235,7 +235,7 @@
     "year": 2012,
     "title": "Nicolae Timofti Elected President Ending Three-Year Deadlock",
     "description": "Parliament elected Nicolae Timofti as president in March 2012, ending a three-year political deadlock during which Moldova had no permanent head of state. Timofti, a non-partisan judge, was a compromise candidate who pledged to continue European integration.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Nicolae_Timofti"
   },
@@ -259,7 +259,7 @@
     "year": 2014,
     "title": "Billion-Dollar Banking Fraud Scandal Exposed",
     "description": "Approximately one billion dollars disappeared from three Moldovan banks (Banca de Economii, Unibank, and Banca Sociala) through fraudulent loans orchestrated by oligarch Ilan Shor. The theft equaled roughly 12% of Moldova's GDP, triggered a currency crisis with the leu depreciating 42%, and devastated public trust in pro-European elites.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2014_Moldovan_bank_fraud_scandal"
   },
@@ -267,7 +267,7 @@
     "year": 2014,
     "title": "Moldova Gains Visa-Free Travel to EU Schengen Area",
     "description": "Moldovan citizens gained visa-free access to the Schengen Area for short-term visits starting April 28, 2014. Moldova was the first Eastern Partnership country to receive visa liberalization, a tangible benefit of its European integration track.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Visa_policy_of_the_Schengen_Area"
   },
@@ -275,7 +275,7 @@
     "year": 2015,
     "title": "Mass Anti-Corruption Protests Following Banking Scandal",
     "description": "Tens of thousands of Moldovans protested throughout 2015 demanding accountability for the banking fraud and the resignation of government officials linked to oligarch Vladimir Plahotniuc. The protests reflected deep public disillusionment with the political establishment and undermined support for EU integration.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2015%E2%80%932016_protests_in_Moldova"
   },
@@ -283,7 +283,7 @@
     "year": 2016,
     "title": "Igor Dodon Elected President on Pro-Russian Platform",
     "description": "Socialist Party leader Igor Dodon won the presidential election in November 2016, the first direct presidential vote since 2000 following a Constitutional Court ruling. Dodon campaigned on a pro-Russian platform, promising to revoke the EU Association Agreement and restore ties with Moscow.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2016_Moldovan_presidential_election"
   },
@@ -291,7 +291,7 @@
     "year": 2017,
     "title": "Russian Diplomat Expelled Over Recruitment of Moldovan Citizens",
     "description": "Moldova expelled five Russian diplomats in 2017 accused of recruiting Moldovan citizens for intelligence activities and financing paramilitary training of Moldovans abroad. The expulsions reflected growing tensions between Chisinau and Moscow over Russian interference in Moldovan politics.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://www.reuters.com/article/us-moldova-russia-diplomacy-idUSKBN19K29C"
   },
@@ -299,7 +299,7 @@
     "year": 2018,
     "title": "Chisinau Mayoral Election Invalidated Amid Democratic Backsliding",
     "description": "A court annulled the results of the Chisinau mayoral election won by opposition candidate Andrei Nastase in June 2018, citing procedural violations. The invalidation was widely condemned as politically motivated and orchestrated by oligarch Plahotniuc, leading the EU to freeze macro-financial assistance.",
-    "category": "judicial_reform",
+    "category": "human_rights_reform",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2018_ChiÈ™inÄƒu_mayoral_election"
   },
@@ -323,7 +323,7 @@
     "year": 2020,
     "title": "Maia Sandu Elected President as First Woman Head of State",
     "description": "Harvard-educated former education minister Maia Sandu defeated incumbent Igor Dodon in the November 2020 presidential runoff with 57.7% of the vote. Her election marked a decisive pro-European shift and she became Moldova's first female president.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2020_Moldovan_presidential_election"
   },
@@ -339,7 +339,7 @@
     "year": 2021,
     "title": "Gazprom Energy Crisis Forces Emergency Gas Negotiations",
     "description": "Russia's Gazprom sharply raised gas prices to Moldova and threatened to cut supplies in October 2021, demanding debt repayment and political concessions. Moldova declared an energy emergency and negotiated a new five-year contract at elevated prices while accelerating efforts to diversify energy sources through EU interconnections.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://www.crisisgroup.org/europe-central-asia/eastern-europe/moldova/securing-moldovas-future-gas-runs-low"
   },
@@ -347,7 +347,7 @@
     "year": 2022,
     "title": "Moldova Granted EU Candidate Status",
     "description": "The European Council granted Moldova EU candidate status on June 23, 2022, alongside Ukraine, in a historic decision accelerated by Russia's full-scale invasion of Ukraine. The candidacy formalized Moldova's path toward EU membership and committed the country to meeting accession criteria.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_Moldova_to_the_European_Union"
   },
@@ -363,7 +363,7 @@
     "year": 2023,
     "title": "Constitutional Court Bans Shor Party for Threatening Statehood",
     "description": "Moldova's Constitutional Court banned the Shor Party in June 2023, ruling that the party led by fugitive oligarch Ilan Shor, convicted of the 2014 banking fraud, threatened constitutional order through Russian-funded destabilization activities. Shor continued to coordinate influence networks from exile in Israel.",
-    "category": "judicial_reform",
+    "category": "human_rights_reform",
     "verified": false,
     "verification_source": "https://balkaninsight.com/2024/09/24/moldova-bars-fugitive-oligarch-shors-party-from-eu-referendum/"
   },
@@ -371,7 +371,7 @@
     "year": 2023,
     "title": "European Political Community Summit Held in Chisinau",
     "description": "Moldova hosted the second European Political Community summit in June 2023, attended by over 40 European leaders including President Macron and Prime Minister Sunak. The summit elevated Moldova's international profile and demonstrated European solidarity with Moldova's EU aspirations amid Russian pressure.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/European_Political_Community"
   },
@@ -379,7 +379,7 @@
     "year": 2024,
     "title": "EU Accession Negotiations Officially Opened",
     "description": "The European Union formally opened accession negotiations with Moldova on June 25, 2024, marking the beginning of the technical screening process across all policy chapters. The milestone represented the most concrete step toward EU membership since the country gained candidate status in 2022.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_Moldova_to_the_European_Union"
   },
@@ -395,7 +395,7 @@
     "year": 2024,
     "title": "Maia Sandu Re-elected President for Second Term",
     "description": "President Maia Sandu won re-election in the November 3, 2024 runoff with approximately 55% of the vote, defeating former Prosecutor General Alexandr Stoianoglo. The victory consolidated Moldova's pro-European trajectory despite unprecedented Russian interference in the electoral process.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2024_Moldovan_presidential_election"
   },
@@ -403,7 +403,7 @@
     "year": 2025,
     "title": "Gazprom Cuts Off All Gas Supplies to Moldova",
     "description": "On January 1, 2025, Gazprom halted all gas supplies to Moldova, citing a disputed $709 million debt that Moldova's international audit valued at just $8.6 million. The cutoff caused a severe energy crisis in Transnistria, where heating and industry depended entirely on Russian gas.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2025_Moldovan_energy_crisis"
   },

@@ -3,7 +3,7 @@
     "year": 1990,
     "title": "First Intifada Continues with Intensified Civil Disobedience",
     "description": "The First Intifada, which began in 1987, continued with widespread Palestinian civil disobedience including strikes, boycotts of Israeli products, and stone-throwing confrontations. The uprising fundamentally shifted the Israeli-Palestinian dynamic by demonstrating grassroots Palestinian resistance.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/First_Intifada"
   },
@@ -27,7 +27,7 @@
     "year": 1993,
     "title": "First Intifada Ends Following Oslo Agreement",
     "description": "The First Intifada concluded after six years of sustained Palestinian uprising against Israeli occupation. The uprising resulted in over 1,000 Palestinian and approximately 160 Israeli deaths, and its conclusion was tied directly to the Oslo peace process.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/First_Intifada"
   },
@@ -75,7 +75,7 @@
     "year": 1996,
     "title": "Western Wall Tunnel Riots Erupt",
     "description": "In September 1996, Israel's opening of an exit to the Western Wall Tunnel near the Temple Mount triggered violent Palestinian protests across the West Bank and Gaza. Clashes between Palestinian police and the Israeli military resulted in over 80 Palestinian and 17 Israeli deaths.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/1996_Western_Wall_tunnel_riots"
   },
@@ -123,7 +123,7 @@
     "year": 2002,
     "title": "Israel Launches Operation Defensive Shield",
     "description": "Israel launched its largest military operation in the West Bank since 1967 in March-April 2002, reoccupying major Palestinian cities following a series of suicide bombings. The operation severely damaged PNA infrastructure and resulted in significant civilian casualties, particularly during the Battle of Jenin.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Operation_Defensive_Shield"
   },
@@ -139,7 +139,7 @@
     "year": 2002,
     "title": "Arab Peace Initiative Proposed by Saudi Arabia",
     "description": "The Arab League adopted the Arab Peace Initiative at the Beirut Summit in March 2002, offering Israel full normalization with Arab states in exchange for full withdrawal to 1967 borders and a just solution for Palestinian refugees. Israel did not formally respond to the initiative.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Arab_Peace_Initiative"
   },
@@ -147,7 +147,7 @@
     "year": 2003,
     "title": "Mahmoud Abbas Appointed First Palestinian Prime Minister",
     "description": "Under international pressure, the PNA created the position of prime minister, and Mahmoud Abbas was appointed in March 2003. Abbas resigned after four months due to power struggles with Arafat over security control.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Mahmoud_Abbas"
   },
@@ -171,7 +171,7 @@
     "year": 2004,
     "title": "Yasser Arafat Dies in Paris",
     "description": "PLO Chairman and PNA President Yasser Arafat died on November 11, 2004, in a French military hospital under disputed medical circumstances. His death ended a decades-long era of Palestinian leadership and triggered a transition of power to Mahmoud Abbas.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Yasser_Arafat"
   },
@@ -211,7 +211,7 @@
     "year": 2006,
     "title": "International Community Imposes Sanctions on Hamas Government",
     "description": "The US, EU, and other donors suspended direct aid to the PNA following Hamas's election victory and its refusal to recognize Israel or renounce violence. The sanctions caused a severe fiscal crisis, leaving PNA employees unpaid for months.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/International_response_to_the_2006_Palestinian_legislative_election"
   },
@@ -235,7 +235,7 @@
     "year": 2008,
     "title": "Israel Launches Operation Cast Lead in Gaza",
     "description": "Israel launched a major military offensive in Gaza from December 2008 to January 2009, responding to Hamas rocket fire. The 22-day operation killed approximately 1,400 Palestinians and 13 Israelis, and caused extensive destruction of Gaza's infrastructure.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Gaza_War_(2008%E2%80%932009)"
   },
@@ -243,7 +243,7 @@
     "year": 2009,
     "title": "Goldstone Report Accuses Both Sides of War Crimes",
     "description": "The UN Fact-Finding Mission led by Justice Richard Goldstone published its report in September 2009, concluding that both Israel and Hamas committed actions amounting to war crimes during Operation Cast Lead. Israel rejected the report's findings and refused to cooperate with the investigation.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/United_Nations_Fact_Finding_Mission_on_the_Gaza_Conflict"
   },
@@ -251,7 +251,7 @@
     "year": 2010,
     "title": "Gaza Flotilla Raid Kills Nine Activists",
     "description": "Israeli naval commandos raided the Mavi Marmara aid flotilla attempting to break the Gaza blockade in May 2010, killing nine Turkish activists. The incident caused a major diplomatic crisis between Israel and Turkey and drew global attention to the Gaza blockade.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Gaza_flotilla_raid"
   },
@@ -259,7 +259,7 @@
     "year": 2011,
     "title": "Palestine Admitted to UNESCO as Full Member",
     "description": "Palestine was admitted as a full member of UNESCO in October 2011, marking its first admission to a UN specialized agency. The US and Israel opposed the move, and the US suspended its UNESCO funding in response.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Palestine_in_the_United_Nations"
   },
@@ -275,7 +275,7 @@
     "year": 2012,
     "title": "Israel Launches Operation Pillar of Defense in Gaza",
     "description": "Israel launched an eight-day military operation in Gaza in November 2012 that began with the assassination of Hamas military chief Ahmed Jabari. The conflict killed approximately 170 Palestinians and 6 Israelis before an Egyptian-brokered ceasefire.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Operation_Pillar_of_Defense"
   },
@@ -283,7 +283,7 @@
     "year": 2012,
     "title": "UN General Assembly Upgrades Palestine to Observer State",
     "description": "The UN General Assembly voted 138-9 in November 2012 to upgrade Palestine's status to non-member observer state. The resolution implicitly recognized Palestinian statehood and opened the door for Palestine to join international treaties and the ICC.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/United_Nations_General_Assembly_resolution_67/19"
   },
@@ -307,7 +307,7 @@
     "year": 2014,
     "title": "Israel Launches Operation Protective Edge in Gaza",
     "description": "Israel launched a 50-day military operation in Gaza from July to August 2014, the deadliest of the Gaza conflicts to that point. The war killed approximately 2,250 Palestinians and 73 Israelis, and destroyed or severely damaged over 18,000 housing units in Gaza.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2014_Gaza_War"
   },
@@ -315,7 +315,7 @@
     "year": 2015,
     "title": "Palestine Joins the International Criminal Court",
     "description": "Palestine acceded to the Rome Statute and became a member of the International Criminal Court in April 2015. The move opened the possibility of ICC investigations into alleged war crimes in the occupied territories.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/State_of_Palestine_and_the_International_Criminal_Court"
   },
@@ -339,7 +339,7 @@
     "year": 2017,
     "title": "US Recognizes Jerusalem as Israel's Capital",
     "description": "President Trump recognized Jerusalem as the capital of Israel in December 2017 and announced plans to move the US embassy. The decision sparked widespread Palestinian protests and was condemned by the majority of UN member states.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/United_States_recognition_of_Jerusalem_as_capital_of_Israel"
   },
@@ -347,7 +347,7 @@
     "year": 2018,
     "title": "Great March of Return Protests Begin in Gaza",
     "description": "Palestinians in Gaza launched weekly mass protests along the border fence beginning March 30, 2018, demanding the right of return and an end to the blockade. Israeli forces responded with live ammunition, killing over 200 protesters and wounding thousands over the following year.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2018%E2%80%932019_Gaza_border_protests"
   },
@@ -355,7 +355,7 @@
     "year": 2018,
     "title": "US Moves Embassy to Jerusalem",
     "description": "The US officially moved its embassy from Tel Aviv to Jerusalem in May 2018, coinciding with the 70th anniversary of Israel's establishment. On the same day, Israeli forces killed over 60 Palestinian protesters during Great March of Return demonstrations in Gaza.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Embassy_of_the_United_States,_Jerusalem"
   },
@@ -371,7 +371,7 @@
     "year": 2020,
     "title": "Abraham Accords Normalize Israel-Gulf Relations",
     "description": "The Abraham Accords, signed in September 2020, normalized relations between Israel and the UAE and Bahrain, bypassing Palestinian participation. The Palestinians condemned the agreements as a betrayal of the Arab consensus linking normalization to resolution of the Palestinian issue.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Abraham_Accords"
   },
@@ -387,7 +387,7 @@
     "year": 2021,
     "title": "Sheikh Jarrah Eviction Protests Trigger Broader Crisis",
     "description": "Protests against the planned eviction of Palestinian families in the Sheikh Jarrah neighborhood of East Jerusalem escalated into broader confrontation in May 2021. The protests spread to mixed Arab-Jewish cities within Israel and contributed to the outbreak of the May 2021 Gaza conflict.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Sheikh_Jarrah"
   },
@@ -395,7 +395,7 @@
     "year": 2021,
     "title": "Israel Launches Operation Guardian of the Walls in Gaza",
     "description": "An 11-day military escalation between Israel and Hamas in May 2021 killed approximately 260 Palestinians and 13 Israelis. The conflict was triggered by tensions in Jerusalem and included extensive rocket fire from Gaza and Israeli airstrikes that destroyed several high-rise buildings.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2021_Israel%E2%80%93Palestine_crisis"
   },
@@ -403,7 +403,7 @@
     "year": 2021,
     "title": "ICC Opens Investigation into Situation in Palestine",
     "description": "The International Criminal Court formally opened an investigation in March 2021 into the situation in Palestine, covering alleged crimes since 2014. The investigation encompassed actions by both Israeli forces and Palestinian armed groups in the occupied territories.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/ICC_investigation_in_Palestine"
   },
@@ -411,7 +411,7 @@
     "year": 2022,
     "title": "Jenin Raids Intensify as West Bank Violence Escalates",
     "description": "Israel conducted repeated military raids into the Jenin refugee camp throughout 2022 as part of operations against Palestinian armed groups. The raids killed dozens of Palestinians and marked the heaviest Israeli military operations in the West Bank in years.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2021%E2%80%932023_Israeli%E2%80%93Palestinian_crisis"
   },
@@ -427,7 +427,7 @@
     "year": 2023,
     "title": "Israel Launches Major Raid on Jenin Refugee Camp",
     "description": "Israel launched its largest military operation in the West Bank in over 20 years when it raided the Jenin refugee camp in July 2023 with over 1,000 troops and air support. The two-day operation killed 12 Palestinians and displaced thousands of residents.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2023_Jenin_raid"
   },
@@ -435,7 +435,7 @@
     "year": 2023,
     "title": "Hamas Launches October 7 Attack on Southern Israel",
     "description": "Hamas launched an unprecedented large-scale attack on southern Israel on October 7, 2023, killing approximately 1,200 people and taking around 250 hostages. The attack penetrated Israeli border defenses and struck military bases and civilian communities in the Gaza envelope.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2023_Hamas-led_attack_on_Israel"
   },
@@ -443,7 +443,7 @@
     "year": 2023,
     "title": "Israel Launches Large-Scale Military Operation in Gaza",
     "description": "Israel responded to the October 7 attack with a massive air and ground campaign in Gaza beginning October 2023. The operation caused unprecedented destruction across Gaza, with tens of thousands of Palestinian casualties and displacement of the vast majority of Gaza's 2.3 million population.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Israel%E2%80%93Hamas_war"
   },
@@ -459,7 +459,7 @@
     "year": 2024,
     "title": "ICJ Orders Provisional Measures in South Africa v. Israel",
     "description": "The International Court of Justice issued provisional measures in January 2024 in a genocide case brought by South Africa against Israel. The court ordered Israel to take all measures to prevent acts of genocide in Gaza, though it did not order a ceasefire.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/South_Africa_v._Israel"
   },
@@ -475,7 +475,7 @@
     "year": 2024,
     "title": "ICC Issues Arrest Warrants for Israeli and Hamas Leaders",
     "description": "The ICC issued arrest warrants in 2024 for Israeli PM Netanyahu and Hamas leaders for alleged war crimes and crimes against humanity. The warrants marked the first time ICC arrest warrants were issued against leaders of a Western-allied democracy.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/ICC_investigation_in_Palestine"
   },
@@ -483,7 +483,7 @@
     "year": 2024,
     "title": "Multiple Countries Recognize State of Palestine",
     "description": "Norway, Ireland, Spain, and Slovenia formally recognized the State of Palestine in May 2024, joining a wave of European recognitions. The recognitions reflected growing international frustration with the stalled peace process and the scale of destruction in Gaza.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/International_recognition_of_the_State_of_Palestine"
   },

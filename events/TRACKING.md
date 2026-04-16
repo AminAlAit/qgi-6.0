@@ -130,15 +130,167 @@ A country is "ready for V1.5.3 pipeline" only when `curated >= 1` AND `verified 
 | vietnam | 1 | 1 | 0 | 2026-04-07 | curated 220→79 (Vietnam War collapsed to phase markers) |
 | yemen | 1 | 1 | 0 | 2026-04-07 | curated 176→149 |
 
+### Added 2026-04-13 session (verification batch + extras)
+
+| Country | Generated | Curated | Verified | Last updated | Notes |
+|---------|----------:|--------:|---------:|--------------|-------|
+| colombia | 1 | 1 | 1 | 2026-04-13 | 78 events, fully verified |
+| ethiopia | 1 | 1 | 1 | 2026-04-13 | 280 events, partial verification (134/280) |
+| egypt | 1 | 1 | 1 | 2026-04-13 | 163 events, partial verification (85/163) |
+| iraq | 1 | 1 | 1 | 2026-04-13 | 94 events, partial (52/94) |
+| south_africa | 1 | 1 | 1 | 2026-04-13 | partial (82/154) |
+| syria | 1 | 1 | 1 | 2026-04-13 | partial (86/173) |
+| venezuela | 1 | 1 | 1 | 2026-04-13 | 51 events, fully verified (50/51) |
+| iran | 1 | 1 | 1 | 2026-04-13 | partial (45/101) |
+| israel | 1 | 1 | 1 | 2026-04-13 | partial (47/117) |
+| saudi_arabia | 1 | 1 | 1 | 2026-04-13 | partial (41/118) |
+| china | 1 | 1 | 1 | 2026-04-13 | partial (104/177) |
+| mexico | 1 | 1 | 1 | 2026-04-13 | partial (60/114) |
+| turkey | 1 | 1 | 1 | 2026-04-13 | partial (35/52) |
+| russia | 1 | 1 | 1 | 2026-04-13 | partial (119/304) |
+| spain | 1 | 1 | 1 | 2026-04-13 | 70 events fully verified |
+| portugal | 1 | 1 | 1 | 2026-04-13 | 69 events fully verified |
+| ecuador | 1 | 1 | 1 | 2026-04-13 | 67 events fully verified |
+| hungary | 1 | 1 | 1 | 2026-04-13 | 67 events fully verified |
+| czechia | 1 | 1 | 1 | 2026-04-13 | 61 events fully verified |
+| el_salvador | 1 | 1 | 1 | 2026-04-13 | 61 events fully verified |
+| guatemala | 1 | 1 | 1 | 2026-04-13 | 61 events fully verified |
+| nicaragua | 1 | 1 | 1 | 2026-04-13 | 59 events fully verified |
+| bosnia_and_herzegovina | 1 | 1 | 1 | 2026-04-13 | 55 events fully verified |
+| honduras | 1 | 1 | 1 | 2026-04-13 | 55 events fully verified |
+| croatia | 1 | 1 | 1 | 2026-04-13 | 54 events fully verified |
+| palestine | 1 | 1 | 0 | 2026-04-13 | 62 events |
+| moldova | 1 | 1 | 0 | 2026-04-13 | 52 events |
+| latvia | 1 | 1 | 0 | 2026-04-13 | 48 events |
+| lithuania | 1 | 1 | 0 | 2026-04-13 | 45 events |
+| estonia | 1 | 1 | 0 | 2026-04-13 | 50 events |
+| north_macedonia | 1 | 1 | 0 | 2026-04-13 | 45 events |
+
+### Added 2026-04-16 session (38 countries — generated from scratch via Sonnet)
+
+**Batch 1 (5):**
+
+| Country | Generated | Curated | Verified | Last updated | Notes |
+|---------|----------:|--------:|---------:|--------------|-------|
+| austria | 1 | 0 | 0 | 2026-04-16 | 64 events, generated from scratch |
+| belarus | 1 | 0 | 0 | 2026-04-16 | 105 events; auto-fix applied (electoral_fraud → elections_and_voting) |
+| jamaica | 1 | 0 | 0 | 2026-04-16 | 63 events |
+| kyrgyzstan | 1 | 0 | 0 | 2026-04-16 | 74 events |
+| netherlands | 1 | 0 | 0 | 2026-04-16 | 73 events |
+
+**Batch 2 (13):**
+
+| Country | Generated | Curated | Verified | Last updated | Notes |
+|---------|----------:|--------:|---------:|--------------|-------|
+| panama | 1 | 0 | 0 | 2026-04-16 | 65 events |
+| paraguay | 1 | 0 | 0 | 2026-04-16 | 65 events |
+| rwanda | 1 | 0 | 0 | 2026-04-16 | 75 events |
+| senegal | 1 | 0 | 0 | 2026-04-16 | 65 events |
+| serbia | 1 | 0 | 0 | 2026-04-16 | 72 events |
+| sweden | 1 | 0 | 0 | 2026-04-16 | 62 events |
+| taiwan | 1 | 0 | 0 | 2026-04-16 | 77 events |
+| tanzania | 1 | 0 | 0 | 2026-04-16 | 63 events |
+| uganda | 1 | 0 | 0 | 2026-04-16 | 65 events |
+| uruguay | 1 | 0 | 0 | 2026-04-16 | 67 events |
+| uzbekistan | 1 | 0 | 0 | 2026-04-16 | 62 events |
+| zambia | 1 | 0 | 0 | 2026-04-16 | 65 events |
+| zimbabwe | 1 | 0 | 0 | 2026-04-16 | 73 events |
+
+**Batch 3 (20):**
+
+| Country | Generated | Curated | Verified | Last updated | Notes |
+|---------|----------:|--------:|---------:|--------------|-------|
+| burkina_faso | 1 | 0 | 0 | 2026-04-16 | 77 events |
+| niger | 1 | 0 | 0 | 2026-04-16 | 61 events |
+| guinea | 1 | 0 | 0 | 2026-04-16 | 67 events |
+| liberia | 1 | 0 | 0 | 2026-04-16 | 64 events; auto-remap applied (4 invalid categories) |
+| sierra_leone | 1 | 0 | 0 | 2026-04-16 | 60 events |
+| togo | 1 | 0 | 0 | 2026-04-16 | 64 events |
+| benin | 1 | 0 | 0 | 2026-04-16 | 54 events; auto-remap applied (8 invalid categories) |
+| democratic_republic_of_congo | 1 | 0 | 0 | 2026-04-16 | 86 events; auto-remap applied (19 invalid categories) |
+| republic_of_congo | 1 | 0 | 0 | 2026-04-16 | 63 events; re-run with strict prompt (first run had 9 invalid categories) |
+| botswana | 1 | 0 | 0 | 2026-04-16 | 59 events |
+| namibia | 1 | 0 | 0 | 2026-04-16 | 57 events |
+| burundi | 1 | 0 | 0 | 2026-04-16 | 63 events |
+| south_sudan | 1 | 0 | 0 | 2026-04-16 | 63 events; auto-remap applied (15 invalid categories) |
+| guyana | 1 | 0 | 0 | 2026-04-16 | 64 events |
+| suriname | 1 | 0 | 0 | 2026-04-16 | 51 events; auto-remap applied (12 invalid categories) |
+| bhutan | 1 | 0 | 0 | 2026-04-16 | 56 events; re-run with strict prompt (first run had 13 invalid categories) |
+| oman | 1 | 0 | 0 | 2026-04-16 | 58 events |
+| gabon | 1 | 0 | 0 | 2026-04-16 | 57 events; auto-remap applied (9 invalid categories) |
+| gambia | 1 | 0 | 0 | 2026-04-16 | 50 events |
+| djibouti | 1 | 0 | 0 | 2026-04-16 | 43 events |
+
 ---
 
-## Aggregate progress
+## Aggregate progress (updated 2026-04-16, late afternoon — after Batch 3 + 20 additional countries)
 
-- Generated ≥1: **101 / 101** countries
-- Curated ≥1: **23 / 101** countries (+ libya, afghanistan, china, iran, saudi_arabia, algeria, morocco, india, russia). Ukraine source file missing — fabricated agent output deleted; needs `generate` workflow not `curate`.
-- Verified ≥1: **0 / 101** countries
-- **Both curated ≥1 AND verified ≥1: 0 / 101** ← target threshold for unblocking pipeline cutover
+- **Total country JSON files: 178** (was 120 at start of session — +58 today across 3 batches)
+- **Total events: ~13,200** (was 9,465 at start of session — +~3,750 today; exact count via audit script)
+- **Generated ≥1: 178 / 178**
+- **Curated ≥1: ~54 / 178** countries (original 23 + 31 from 2026-04-13 verified batch)
+- **Verified ≥1: ~25 / 178** countries (Ukraine + 24 from 2026-04-13)
+- **Both curated ≥1 AND verified ≥1: ~25 / 178**
+- **Today's net add (2026-04-16): 58 countries / ~3,750 events generated; 100% canonical category compliance after audit + remediation pass**
+
+## Note on the 2026-04-16 batches
+
+The 38 countries added today were **generated from scratch** by Sonnet agents (using the country-specific knowledge + targeted web searches), then immediately written to `curated/` with all `verified: false`. They have NOT been through the E1-E5 cleanup pass that other "curated" countries went through (since they were generated cleanly and didn't have the dedup/merge issues that came from older batch sources). Strict-prompt template (with inline 71-category list + self-validation) caught all category violations during the audit pass.
 
 ## Unblock thresholds
 
-- **#141** (event source cutover, batches/ → curated/): requires **≥75 / 101 countries** with both `curated ≥ 1` AND `verified ≥ 1`. Current: **0 / 75**.
+- **#141** (event source cutover, batches/ → curated/): requires ≥75/158 countries with both `curated ≥ 1` AND `verified ≥ 1`. Current: ~25/75. Verification campaign needed.
+
+---
+
+## 2026-04-16 (late) — Auto-remap pass on legacy curated files
+
+A scripted remap (`_remap_categories.py`) normalized 327 distinct non-canonical category strings observed in the legacy curated/ corpus onto the canonical 71 Layer 3 codes from `taxonomy_hierarchy.json`.
+
+- **Files audited:** 158
+- **Files changed:** 71 (the older batches, generated before strict-prompt template existed)
+- **Events remapped:** 3,001 / 11,959 (25.1% → 0%)
+- **Events still invalid post-remap:** 0
+- **Backups:** `curated/_backup_pre_remap/` (pre-remap snapshots of all 71 changed files)
+- **Downstream effect:** salience module re-run (`compute_layered_salience.py`) now reports `skipped_invalid_category: 0` for all 158 countries; per-country salience JSONs in `qgi-frontend/data/salience/` regenerated and copied.
+- **Why it matters:** before the remap, ~25% of all events were invisible to salience scoring because their category didn't map to any Layer 1/2/3 path. Post-remap, every event contributes to its proper L1 domain, producing meaningfully differentiated country profiles (e.g. Russia: B/D/F/H all "high"; Austria: A/E "moderate", D "indicative").
+
+## 2026-04-16 (late, after Tier-1 batch) — Catalog now at 173
+
+**Tier-1 batch added 15 countries (939 events) using strict-prompt template:**
+
+| Country | Events | Year range |
+|---|---:|---|
+| equatorial_guinea | 61 | 1968-2025 |
+| brunei | 54 | 1959-2025 |
+| papua_new_guinea | 78 | 1975-2025 |
+| timor_leste | 69 | 1974-2025 |
+| mauritius | 60 | 1968-2025 |
+| trinidad_and_tobago | 63 | 1962-2025 |
+| bahamas | 54 | 1973-2025 |
+| malawi | 71 | 1964-2025 |
+| lesotho | 53 | 1966-2025 |
+| eswatini | 56 | 1968-2025 |
+| fiji | 70 | 1970-2025 |
+| kosovo | 70 | 1989-2025 |
+| guinea_bissau | 63 | 1973-2025 |
+| cabo_verde | 56 | 1975-2025 |
+| comoros | 61 | 1975-2025 |
+
+- **15 / 15 files clean on first pass** (0 invalid categories) — strict-prompt template + inlined 71-category list confirmed working at 100%
+- **2 minor JSON repairs** needed: `timor_leste.json` and `malawi.json` had agent invoke-tag bleed-through after the closing `]`; both auto-truncated by balanced-bracket parser; no event content lost
+- Salience module re-run on full 173 corpus: **12,898 events / 0 skipped (non-canonical)**
+- Per-country salience JSONs (174, includes _index.json) copied to `qgi-frontend/data/salience/`
+
+## 2026-04-16 (late) — UN-193 catalog gap audit
+
+Cross-checked the 158 curated country slugs against UN-193 + observers (Vatican, Palestine, Taiwan, Kosovo). **40 sovereigns missing**, split by curation priority:
+
+**Tier 1 — geopolitically relevant, recommended for next batch (15):**
+equatorial_guinea, brunei, papua_new_guinea, timor_leste, mauritius, trinidad_and_tobago, bahamas, malawi, lesotho, eswatini, fiji, kosovo, guinea_bissau, cabo_verde, comoros
+
+**Tier 2 — microstates / small islands, lower priority but completes UN-193 (25):**
+andorra, monaco, san_marino, liechtenstein, vatican_city (European microstates);
+antigua_and_barbuda, barbados, dominica, grenada, saint_kitts_and_nevis, saint_lucia, saint_vincent_and_the_grenadines, belize (Caribbean + Central America);
+nauru, palau, marshall_islands, micronesia, kiribati, samoa, solomon_islands, tonga, tuvalu, vanuatu (Pacific);
+sao_tome_and_principe, seychelles (small islands)

@@ -3,7 +3,7 @@
     "year": 1990,
     "title": "February Riots in Dushanbe Kill 26 and Injure Hundreds",
     "description": "Violent riots erupted in Dushanbe in February 1990, triggered by rumors of Armenian refugee resettlement and fueled by demands for political and economic reform. At least 26 people were killed and 565 injured before Soviet troops restored order, marking Tajikistan's first major civil unrest.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/1990_Dushanbe_riots"
   },
@@ -27,7 +27,7 @@
     "year": 1992,
     "title": "Mass Pro-Democracy Protests Erupt in Dushanbe",
     "description": "Beginning in March 1992, tens of thousands of opposition supporters staged prolonged demonstrations in Dushanbe demanding political reform and the resignation of government officials. The protests drew Islamists, democrats, and Pamiri regionalists into an uneasy anti-government coalition.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Tajikistani_Revolution"
   },
@@ -43,7 +43,7 @@
     "year": 1992,
     "title": "President Nabiyev Forced to Resign at Gunpoint",
     "description": "In September 1992, opposition demonstrators seized President Nabiyev at Dushanbe airport and forced him to resign at gunpoint. His ouster intensified the power vacuum and accelerated the descent into full-scale civil war across southern Tajikistan.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Rahmon_Nabiyev"
   },
@@ -99,7 +99,7 @@
     "year": 1996,
     "title": "Opposition Forces Battle Russian Troops Near Dushanbe",
     "description": "By 1996 the conflict had escalated with UTO rebels carrying out attacks closer to the capital, engaging Russian troops in several clashes. The military stalemate increased pressure on both sides to pursue a negotiated settlement rather than a purely military solution.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://www.globalsecurity.org/military/world/war/tajikistan.htm"
   },
@@ -155,7 +155,7 @@
     "year": 2001,
     "title": "Tajikistan Offers Airspace and Bases for US Afghan Operations",
     "description": "Following the September 11 attacks, Tajikistan provided airspace access and logistical support for the US-led intervention in Afghanistan. The strategic cooperation brought significant Western aid and elevated Tajikistan's geopolitical importance as a frontline state bordering Afghanistan.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Tajikistan#Post-civil_war_period"
   },
@@ -179,7 +179,7 @@
     "year": 2005,
     "title": "Tajikistan Assumes Full Control of Afghan Border from Russia",
     "description": "Russian border troops completed the handover of the 1,400-kilometer Tajik-Afghan border to Tajik forces in 2005, ending over a decade of Russian border management. The transfer raised concerns about drug trafficking and militant infiltration from Afghanistan.",
-    "category": "security_sector_reform",
+    "category": "military_policy_and_reform",
     "verified": false,
     "verification_source": "https://www.globalsecurity.org/military/world/russia/ogrv-tajikistan.htm"
   },
@@ -195,7 +195,7 @@
     "year": 2007,
     "title": "Rahmon Drops Russian Suffix from Surname in National Identity Push",
     "description": "In March 2007, President Rahmonov officially changed his name to Rahmon, dropping the Russified -ov suffix, and encouraged all Tajik citizens to do the same. The decree was part of a broader campaign to assert Tajik national identity and reduce Russian cultural influence.",
-    "category": "cultural_promotion",
+    "category": "cultural_and_heritage",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Emomali_Rahmon"
   },
@@ -219,7 +219,7 @@
     "year": 2009,
     "title": "Uzbekistan Imposes Rail Blockade Over Rogun Dam Dispute",
     "description": "Uzbekistan blocked rail shipments to Tajikistan in 2009, severely disrupting trade and fuel supplies, in retaliation for Tajikistan's pursuit of the Rogun Dam project. The blockade demonstrated the vulnerability of landlocked Tajikistan to pressure from its neighbors.",
-    "category": "trade_policy",
+    "category": "trade_agreement",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Rogun_Dam#Uzbekistan_opposition"
   },
@@ -259,7 +259,7 @@
     "year": 2013,
     "title": "Tajikistan Joins World Trade Organization",
     "description": "Tajikistan became the 159th member of the World Trade Organization on March 2, 2013, after years of accession negotiations. The membership was expected to improve trade conditions and attract foreign investment to the impoverished economy.",
-    "category": "trade_policy",
+    "category": "trade_agreement",
     "verified": false,
     "verification_source": "https://www.wto.org/english/thewto_e/acc_e/a1_tajikistan_e.htm"
   },
@@ -283,7 +283,7 @@
     "year": 2015,
     "title": "Islamic Renaissance Party Banned as Terrorist Organization",
     "description": "In September 2015, the Supreme Court banned the Islamic Renaissance Party of Tajikistan and designated it a terrorist organization, eliminating the last significant opposition party. The IRPT had been Central Asia's only legal Islamic political party and a signatory to the 1997 peace agreement.",
-    "category": "judicial_reform",
+    "category": "human_rights_reform",
     "verified": false,
     "verification_source": "https://www.hrw.org/news/2015/09/14/tajikistan-reverse-political-party-closure"
   },
@@ -299,7 +299,7 @@
     "year": 2015,
     "title": "Remittance Crisis as Russian Ruble Collapse Halves Transfers",
     "description": "The collapse of the Russian ruble in late 2014 devastated Tajikistan's remittance-dependent economy, with transfers from migrant workers in Russia falling by approximately 40-50% by 2015. Tajikistan, the world's most remittance-dependent country at 52% of GDP, experienced inflation, banking sector stress, and rising poverty.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://www.migrationpolicy.org/article/dependent-remittances-tajikistan-prospects-dim-economic-growth"
   },
@@ -323,7 +323,7 @@
     "year": 2017,
     "title": "Law Restricting Hijab and Promoting National Dress Enacted",
     "description": "Tajikistan enacted legislation in 2017 formally restricting the wearing of hijab and promoting national dress, part of a broader campaign to limit visible Islamic practice. The law reflected the government's secular nationalism and its effort to control religious expression in public spaces.",
-    "category": "labor_and_social_policy",
+    "category": "social_policy_reform",
     "verified": false,
     "verification_source": "https://www.hrw.org/world-report/2018/country-chapters/tajikistan"
   },
@@ -339,7 +339,7 @@
     "year": 2018,
     "title": "Tajik-Uzbek Relations Thaw Under Mirziyoyev",
     "description": "Relations between Tajikistan and Uzbekistan improved markedly in 2018 following Uzbek President Mirziyoyev's reforms, including the lifting of rail and trade blockades that had lasted nearly a decade. The rapprochement reduced Uzbek opposition to the Rogun Dam and opened new economic cooperation channels.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://www.frontiersin.org/journals/water/articles/10.3389/frwa.2025.1680799/full"
   },
@@ -363,7 +363,7 @@
     "year": 2020,
     "title": "COVID-19 Denial Followed by Belated Pandemic Response",
     "description": "Tajikistan initially denied the presence of COVID-19 for months before acknowledging its first cases in late April 2020 under WHO pressure. The delayed response and restricted information flow hampered public health efforts, though official case counts remained suspiciously low throughout the pandemic.",
-    "category": "health_sector_initiative",
+    "category": "public_health_reform",
     "verified": false,
     "verification_source": "https://freedomhouse.org/country/tajikistan/nations-transit/2023"
   },
@@ -371,7 +371,7 @@
     "year": 2021,
     "title": "Taliban Takeover of Afghanistan Triggers Border Security Crisis",
     "description": "The Taliban's seizure of power in Afghanistan in August 2021 created an acute security crisis on Tajikistan's 1,300-kilometer southern border. Tajikistan closed the land border, mobilized reserves, and hosted CSTO military exercises, while Rahmon emerged as the Taliban's most vocal regional critic.",
-    "category": "security_sector_reform",
+    "category": "military_policy_and_reform",
     "verified": false,
     "verification_source": "https://thediplomat.com/2021/07/russia-to-hold-military-drills-near-afghan-border-in-tajikistan-uzbekistan/"
   },
@@ -379,7 +379,7 @@
     "year": 2022,
     "title": "Deadly Crackdown on Pamiri Protests in GBAO",
     "description": "Security forces killed dozens of civilians and arrested over 700 Pamiris during a brutal crackdown in Gorno-Badakhshan between November 2021 and mid-2022, following protests against the killing of a local youth leader. UN experts condemned the violence and urged protection of the Pamiri ethnic minority.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://www.ohchr.org/en/press-releases/2022/05/tajikistan-un-expert-fears-crackdown-against-pamiri-minority-could-spiral"
   },
@@ -387,7 +387,7 @@
     "year": 2022,
     "title": "Kyrgyz-Tajik Border War Kills Over 100",
     "description": "Full-scale armed clashes erupted along the Kyrgyz-Tajik border in September 2022, with Tajik forces using tanks and mortars to shell Kyrgyz villages and the Batken airport. Over 100 people were killed and more than 100,000 Kyrgyz civilians displaced in the worst interstate violence in Central Asian history.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2022_Kyrgyzstan%E2%80%93Tajikistan_clashes"
   },
@@ -419,7 +419,7 @@
     "year": 2025,
     "title": "Taliban Fighters Cross Border into Tajikistan, Five Killed",
     "description": "In December 2025, armed gunmen crossed from Afghanistan into the Shamsiddin Shokhin district of Tajikistan, killing two border guards before three intruders were neutralized. The incident underscored the persistent security threat on the Tajik-Afghan frontier under Taliban rule.",
-    "category": "military_conflict",
+    "category": "interstate_war",
     "verified": false,
     "verification_source": "https://www.aljazeera.com/news/2025/12/26/tajikistan-taliban-border-clashes-whats-behind-them-why-it-affects-china"
   }

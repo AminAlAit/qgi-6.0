@@ -11,7 +11,7 @@
     "year": 1991,
     "title": "Kiro Gligorov Elected as First President",
     "description": "The new parliament elected Kiro Gligorov as the first president of the Republic of Macedonia on 31 January 1991. Gligorov pursued a policy of peaceful disengagement from Yugoslavia.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Kiro_Gligorov"
   },
@@ -35,7 +35,7 @@
     "year": 1993,
     "title": "UN Admission Under Provisional Name FYROM",
     "description": "Macedonia was admitted to the United Nations on 8 April 1993 under the provisional reference 'the former Yugoslav Republic of Macedonia' due to Greek objections. This compromise allowed international recognition while deferring the name dispute.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Macedonia_naming_dispute"
   },
@@ -43,7 +43,7 @@
     "year": 1994,
     "title": "Greece Imposes Trade Embargo Over Name Dispute",
     "description": "Greece imposed a trade embargo on Macedonia in February 1994, blocking access to the port of Thessaloniki. The embargo severely damaged Macedonia's economy, already weakened by the collapse of Yugoslav trade networks.",
-    "category": "economic_crisis",
+    "category": "economic_recession",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Macedonia_naming_dispute#Greek_embargo"
   },
@@ -123,7 +123,7 @@
     "year": 2004,
     "title": "President Trajkovski Killed in Plane Crash",
     "description": "President Boris Trajkovski died on 26 February 2004 when his plane crashed near Mostar, Bosnia. His death was a significant loss as he had been credited with steering Macedonia through the 2001 conflict.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Boris_Trajkovski#Death"
   },
@@ -131,7 +131,7 @@
     "year": 2004,
     "title": "Macedonia Submits EU Membership Application",
     "description": "Macedonia formally applied for European Union membership on 22 March 2004, beginning a long and complicated accession process. The application reflected the country's Euro-Atlantic strategic orientation.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_the_European_Union"
   },
@@ -139,7 +139,7 @@
     "year": 2005,
     "title": "EU Grants Macedonia Candidate Status",
     "description": "The European Council granted Macedonia EU candidate status in December 2005, recognizing reforms made since the Ohrid Agreement. However, the start of accession negotiations would be blocked by Greece for over a decade due to the name dispute.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_the_European_Union"
   },
@@ -155,7 +155,7 @@
     "year": 2008,
     "title": "Greece Vetoes NATO Membership at Bucharest Summit",
     "description": "At the April 2008 Bucharest Summit, Greece vetoed Macedonia's invitation to join NATO due to the unresolved name dispute. The International Court of Justice later ruled in 2011 that Greece had violated the 1995 Interim Accord by blocking the invitation.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_NATO"
   },
@@ -171,7 +171,7 @@
     "year": 2011,
     "title": "ICJ Rules Greece Violated Interim Accord on NATO Veto",
     "description": "The International Court of Justice ruled on 5 December 2011 that Greece had breached its obligations under the 1995 Interim Accord by objecting to Macedonia's NATO admission. Despite the ruling, Greece maintained its position.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Application_of_the_Interim_Accord_of_13_September_1995"
   },
@@ -179,7 +179,7 @@
     "year": 2012,
     "title": "Parliament Crisis After Forcible Ejection of Opposition MPs",
     "description": "In December 2012, security guards forcibly removed opposition SDSM and ethnic Albanian DUI lawmakers from parliament during a contentious budget vote. The incident deepened the political crisis and drew international criticism of Gruevski's government.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2012%E2%80%932013_Macedonian_political_crisis"
   },
@@ -195,7 +195,7 @@
     "year": 2015,
     "title": "Wiretapping Scandal Reveals Mass Surveillance",
     "description": "In February 2015, opposition leader Zoran Zaev released recordings showing the government had illegally wiretapped over 20,000 citizens including politicians, judges, journalists, and diplomats. The recordings revealed systematic abuse of power, judicial manipulation, and election rigging.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2015_Macedonian_protests"
   },
@@ -219,7 +219,7 @@
     "year": 2016,
     "title": "Colorful Revolution Protests Erupt Across the Country",
     "description": "From April to July 2016, mass protests dubbed the Colorful Revolution swept Skopje and other cities after President Ivanov pardoned politicians implicated in the wiretapping scandal. Protesters hurled paint at government buildings and Skopje 2014 monuments.",
-    "category": "protest_and_civil_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/2016_Macedonian_protests"
   },
@@ -267,7 +267,7 @@
     "year": 2018,
     "title": "Gruevski Flees to Hungary to Avoid Prison Sentence",
     "description": "Former PM Nikola Gruevski fled to Hungary in November 2018 after being sentenced to two years in prison for corruption. Hungary granted him political asylum, straining diplomatic relations and raising concerns about accountability.",
-    "category": "judicial_reform",
+    "category": "human_rights_reform",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Nikola_Gruevski#Conviction_and_escape"
   },
@@ -283,7 +283,7 @@
     "year": 2019,
     "title": "France Vetoes Opening of EU Accession Negotiations",
     "description": "In October 2019, France blocked the opening of EU accession negotiations for North Macedonia despite the country meeting conditions and resolving the name dispute. The veto damaged EU credibility in the Western Balkans.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_the_European_Union"
   },
@@ -291,7 +291,7 @@
     "year": 2020,
     "title": "North Macedonia Joins NATO as 30th Member",
     "description": "North Macedonia formally became the 30th member of NATO on 27 March 2020, following ratification of its accession protocol by all existing members. The accession was made possible by the Prespa Agreement's resolution of the Greek veto.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_NATO"
   },
@@ -307,7 +307,7 @@
     "year": 2020,
     "title": "Bulgaria Vetoes EU Accession Framework Over Identity Dispute",
     "description": "Bulgaria blocked the EU accession negotiating framework for North Macedonia in November 2020, demanding recognition of a Bulgarian minority and disputing the separate status of the Macedonian language. The veto opened a new chapter of bilateral tensions.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Bulgaria%E2%80%93North_Macedonia_relations"
   },
@@ -323,7 +323,7 @@
     "year": 2022,
     "title": "Zaev Resigns After Local Election Defeat",
     "description": "PM Zoran Zaev resigned in January 2022 after SDSM's defeat in October 2021 local elections. Dimitar Kovacevski succeeded him as SDSM leader and prime minister, inheriting the stalled EU accession process.",
-    "category": "executive_transition",
+    "category": "government_formation",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Dimitar_Kova%C4%8Devski"
   },
@@ -331,7 +331,7 @@
     "year": 2022,
     "title": "French Proposal Accepted to Unblock EU Accession Talks",
     "description": "In July 2022, North Macedonia accepted the French proposal to unblock EU accession negotiations by agreeing to include the Bulgarian minority in its constitution. Parliament voted in favor despite street protests and VMRO-DPMNE opposition.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_the_European_Union"
   },
@@ -339,7 +339,7 @@
     "year": 2022,
     "title": "EU Accession Negotiations Formally Opened",
     "description": "The EU formally opened accession negotiations with North Macedonia in July 2022 after Bulgaria lifted its veto under the French compromise proposal. However, constitutional amendments recognizing a Bulgarian minority remained a precondition for progress.",
-    "category": "diplomatic_relations",
+    "category": "bilateral_treaty",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Accession_of_North_Macedonia_to_the_European_Union"
   },

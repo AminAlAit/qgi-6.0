@@ -3,7 +3,7 @@
     "year": 1989,
     "title": "Caracazo Riots",
     "description": "On 27 February 1989, nationwide protests, looting, and riots erupted in response to President Carlos AndrÃ©s PÃ©rez's IMF-mandated austerity package, which included a 30% rise in public-transport fares and cuts to fuel subsidies. Security forces killed an estimated 276â€“3,000 people in what became the deadliest civilian unrest in Venezuelan history. The Caracazo shattered the legitimacy of the two-party puntofijista system and radicalized the military officers who later attempted the 1992 coups.",
-    "category": "social_unrest",
+    "category": "mass_protest",
     "verified": false,
     "verification_source": "https://en.wikipedia.org/wiki/Caracazo"
   },
@@ -11,7 +11,7 @@
     "year": 1992,
     "title": "February Military Coup Attempt â€” ChÃ¡vez's MBR-200",
     "description": "On 4 February 1992 Lieutenant Colonel Hugo ChÃ¡vez led the Revolutionary Bolivarian Movement-200 in a coordinated coup attempt against President Carlos AndrÃ©s PÃ©rez. After the coup failed, ChÃ¡vez's televised 'por ahora' ('for now') concession speech made him a nationally known figure. He was convicted of sedition and imprisoned, but pardoned by President Rafael Caldera in 1994.",
-    "category": "coup_or_takeover",
+    "category": "military_coup",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/February_1992_Venezuelan_coup_attempt"
   },
@@ -19,7 +19,7 @@
     "year": 1992,
     "title": "November Military Coup Attempt",
     "description": "On 27 November 1992, a second coup attempt was launched by military officers loyal to the imprisoned ChÃ¡vez, involving Air Force jets bombing the presidential palace and military units seizing a television station. The uprising was suppressed by loyalist troops; the failed attempt deepened the political crisis of the PÃ©rez government and accelerated calls for constitutional reform.",
-    "category": "coup_or_takeover",
+    "category": "military_coup",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/November_1992_Venezuelan_coup_attempt"
   },
@@ -27,7 +27,7 @@
     "year": 1993,
     "title": "Impeachment of President Carlos AndrÃ©s PÃ©rez",
     "description": "On 20 May 1993 the Venezuelan Supreme Court found merit in corruption charges against President Carlos AndrÃ©s PÃ©rez for embezzlement of 250 million bolÃ­vars from a discretionary presidential fund. The Senate stripped him of immunity on 21 May, and Congress removed him permanently from office on 31 August 1993. His 1996 conviction marked the first time a sitting Venezuelan president was impeached and removed.",
-    "category": "government_crisis",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Carlos_Andr%C3%A9s_P%C3%A9rez"
   },
@@ -35,7 +35,7 @@
     "year": 1994,
     "title": "Venezuelan Banking Crisis",
     "description": "A systemic banking crisis erupted in January 1994 when Banco Latino â€” the country's second-largest bank â€” collapsed, triggering a wave of bank failures that wiped out more than 17 financial institutions representing roughly 60% of Venezuela's banking assets. The government spent an estimated 12â€“15% of GDP on bailouts. New President Rafael Caldera reimposed exchange controls and emergency economic restrictions in an attempt to stem capital flight.",
-    "category": "financial_crisis",
+    "category": "banking_and_financial_crisis",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/1994_Venezuelan_banking_crisis"
   },
@@ -43,7 +43,7 @@
     "year": 1996,
     "title": "Agenda Venezuela Economic Stabilization Package",
     "description": "Facing near-hyperinflation and a near-depleted foreign reserve position, President Rafael Caldera reversed course and adopted the IMF-backed 'Agenda Venezuela' structural-adjustment plan in April 1996. The programme liberalized exchange rates, cut fuel subsidies, and partially re-privatized state enterprises. Inflation fell from over 100% in 1996 to around 38% by 1997, temporarily stabilizing the economy before the 1998 oil-price shock.",
-    "category": "economic_policy_change",
+    "category": "fiscal_policy_change",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Agenda_Venezuela"
   },
@@ -75,7 +75,7 @@
     "year": 2001,
     "title": "ChÃ¡vez Issues 49 Decree-Laws â€” Business Sector Backlash",
     "description": "In November 2001 President ChÃ¡vez used enabling-law powers to issue 49 decree-laws, including a new Land Reform Law and a new Hydrocarbons Law that increased state royalties and required majority state ownership in oil joint ventures. The business federation FedecÃ¡maras and trade-union confederation CTV declared a national civic strike in December 2001, marking the beginning of a prolonged confrontation between the government and Venezuela's private sector.",
-    "category": "economic_policy_change",
+    "category": "fiscal_policy_change",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_Land_Reform_Law"
   },
@@ -83,7 +83,7 @@
     "year": 2002,
     "title": "April Coup Attempt Against ChÃ¡vez",
     "description": "On 11 April 2002 a military coup ousted President Hugo ChÃ¡vez after security forces fired on pro-government protesters during a massive anti-government march in Caracas, killing at least 19. Business leader Pedro Carmona was briefly installed as president but reversed within 47 hours when loyalist troops and mass popular mobilization restored ChÃ¡vez to power on 14 April. The United States was later criticized for tacitly endorsing the coup.",
-    "category": "coup_or_takeover",
+    "category": "military_coup",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2002_Venezuelan_coup_attempt"
   },
@@ -91,7 +91,7 @@
     "year": 2002,
     "title": "PDVSA General Strike Begins",
     "description": "In December 2002 the opposition, led by FedecÃ¡maras and the CTV, launched a general strike centred on the state oil company PDVSA in an attempt to force ChÃ¡vez's resignation or a recall referendum. The strike lasted until February 2003, cutting oil production to near zero and costing the economy an estimated $10 billion. After the strike collapsed, ChÃ¡vez fired approximately 18,000 PDVSA workers â€” 40% of the workforce â€” and cemented government control over the company.",
-    "category": "labor_and_strikes",
+    "category": "labor_action",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2002%E2%80%932003_Venezuelan_general_strike"
   },
@@ -107,7 +107,7 @@
     "year": 2005,
     "title": "Land Reform Accelerates â€” Large Estate Expropriations",
     "description": "From 2005, Venezuela's Land Reform Law enforcement intensified: the government declared millions of hectares of large privately owned estates ('latifundios') unproductive and subject to expropriation for redistribution to landless peasants. By 2010 the state had redistributed or claimed more than 4 million hectares. The process fueled violent conflicts between landowners and beneficiaries, with hundreds of rural workers killed over the decade.",
-    "category": "economic_policy_change",
+    "category": "fiscal_policy_change",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_Land_Reform_Law"
   },
@@ -123,7 +123,7 @@
     "year": 2007,
     "title": "RCTV Broadcast License Non-Renewal",
     "description": "On 27 May 2007 Venezuela's oldest private television network, Radio Caracas TelevisiÃ³n (RCTV), went off air after the government refused to renew its broadcast concession, citing RCTV's support for the 2002 coup. The closure sparked major street protests, particularly among university students, and was condemned by press-freedom organisations worldwide as an attack on free speech. It marked the first large-scale restriction of broadcast media under ChÃ¡vez.",
-    "category": "media_and_censorship",
+    "category": "political_repression",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/RCTV"
   },
@@ -139,7 +139,7 @@
     "year": 2008,
     "title": "ExxonMobil and ConocoPhillips Orinoco Nationalizations â€” ICSID Arbitration",
     "description": "After ChÃ¡vez's 2007 nationalization of Orinoco heavy-oil projects that forced ExxonMobil and ConocoPhillips to accept minority stakes, both companies refused and exited Venezuela. ExxonMobil obtained a New York court order briefly freezing PDVSA assets worth $12 billion in early 2008. The disputes proceeded to international arbitration; ConocoPhillips was eventually awarded $8.7 billion by ICSID in 2019. The episodes accelerated capital flight from Venezuela's oil sector.",
-    "category": "resource_nationalization",
+    "category": "economic_nationalization",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/ExxonMobil_v._Venezuela"
   },
@@ -155,7 +155,7 @@
     "year": 2010,
     "title": "Energy and Electricity Crisis â€” First Major Rationing",
     "description": "A severe drought in 2009â€“2010 lowered water levels in the SimÃ³n BolÃ­var hydroelectric plant's reservoir (which provides roughly 70% of Venezuela's electricity) to critically low levels. From January 2010 the government imposed rolling electricity rationing of 9â€“12 hours per week across most of the country. ChÃ¡vez declared an electricity emergency and created a Ministry of Electricity. Rationing was lifted in mid-2010 after seasonal rains recovered reservoir levels.",
-    "category": "environmental_disaster",
+    "category": "natural_disaster",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Energy_crisis_in_Venezuela"
   },
@@ -171,7 +171,7 @@
     "year": 2013,
     "title": "Death of Hugo ChÃ¡vez",
     "description": "Hugo ChÃ¡vez died on 5 March 2013 at age 58 from respiratory failure following a two-year battle with pelvic cancer. He had governed Venezuela for 14 years and was the dominant figure of the Bolivarian Revolution. Vice President NicolÃ¡s Maduro assumed the role of acting president and the country entered a period of national mourning. ChÃ¡vez's death marked a fundamental shift in Venezuelan politics; his successor would face rapidly deteriorating economic conditions.",
-    "category": "leadership_transition",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Hugo_Ch%C3%A1vez"
   },
@@ -187,7 +187,7 @@
     "year": 2014,
     "title": "Anti-Government Protests and Violent Crackdown",
     "description": "Nationwide protests erupted in February 2014, led by opposition leaders Leopoldo LÃ³pez and MarÃ­a Corina Machado, demanding the release of political prisoners and an end to crime and shortages. Security forces and pro-government colectivos killed at least 43 people and detained over 3,000 over four months of unrest. Leopoldo LÃ³pez surrendered to authorities on 18 February and was later sentenced to nearly 14 years in prison on terrorism charges.",
-    "category": "social_unrest",
+    "category": "mass_protest",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2014_Venezuelan_protests"
   },
@@ -219,7 +219,7 @@
     "year": 2016,
     "title": "Electricity Crisis and El NiÃ±o Drought",
     "description": "A powerful El NiÃ±o event produced the worst drought in Venezuela in decades, reducing the Guri reservoir (main hydroelectric source) to historically low levels. In April 2016 the government implemented rotating four-hour daily blackouts nationwide, cut the public-sector working week to two days in several states, and closed schools on Fridays to conserve power. The electricity crisis severely disrupted hospitals, factories, and basic services across the country.",
-    "category": "environmental_disaster",
+    "category": "natural_disaster",
     "verified": true,
     "verification_source": "https://climateandsecurity.org/2019/02/drought-mismanagement-and-political-instability-in-venezuela/"
   },
@@ -227,7 +227,7 @@
     "year": 2017,
     "title": "Maduro Dissolves National Assembly â€” Constitutional Crisis",
     "description": "In Marchâ€“April 2017 the pro-government Supreme Tribunal of Justice (TSJ) issued rulings effectively nullifying the opposition-controlled National Assembly, transferring its powers to itself. Although the rulings were partially walked back under international pressure, Maduro proceeded to announce a Constituent Assembly to replace the parliament. The actions were condemned by the OAS, the US, and EU as an unconstitutional power grab and triggered months of street protests.",
-    "category": "government_crisis",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2017_Venezuelan_constitutional_crisis"
   },
@@ -235,7 +235,7 @@
     "year": 2017,
     "title": "Mass Anti-Government Protests â€” 125 Killed",
     "description": "From April through July 2017 Venezuela experienced its worst wave of civil unrest since the Caracazo, as millions of citizens protested Maduro's authoritarianism, food shortages, and rising repression. At least 125 people died and over 5,000 were detained over four months. Security forces and pro-government colectivos used live ammunition, rubber bullets, and tear gas against protesters. Human Rights Watch documented systematic torture of detainees during the period.",
-    "category": "social_unrest",
+    "category": "mass_protest",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2017_Venezuelan_protests"
   },
@@ -251,7 +251,7 @@
     "year": 2018,
     "title": "Bolivar Soberano Currency Redenomination",
     "description": "On 20 August 2018 Venezuela replaced the bolÃ­var fuerte with a new currency, the bolÃ­var soberano, slashing five zeroes from the denomination in an attempt to manage hyperinflation running above 65,000% annually. The redenomination was tied to an anchor linked to the state-issued Petro cryptocurrency and a minimum-wage increase. Economists universally assessed the measure as cosmetic; annual inflation surpassed one million percent by year-end 2018.",
-    "category": "economic_policy_change",
+    "category": "fiscal_policy_change",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_bol%C3%ADvar"
   },
@@ -267,7 +267,7 @@
     "year": 2019,
     "title": "GuaidÃ³ Declares Himself Interim President",
     "description": "On 23 January 2019 National Assembly president Juan GuaidÃ³ invoked constitutional provisions to declare himself Venezuela's interim president in front of hundreds of thousands of supporters at a Caracas rally. Within hours, the United States recognized GuaidÃ³, followed by approximately 50 other countries including most of the EU and the Lima Group. Maduro retained control of the military, state institutions, and Cuba-backed intelligence services, creating a dual-authority standoff that persisted until 2022.",
-    "category": "government_crisis",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis"
   },
@@ -275,7 +275,7 @@
     "year": 2019,
     "title": "Nationwide Blackouts â€” Longest Power Failure in Modern Venezuelan History",
     "description": "On 7 March 2019 Venezuela suffered a catastrophic nationwide electricity blackout that lasted up to seven days in some regions, caused by a failure at the SimÃ³n BolÃ­var (Guri) hydroelectric plant amid alleged cyberattack claims by the Maduro government. Hospitals operated on generators; doctors reported surges in diarrhea, typhoid, and hepatitis A. Multiple shorter blackouts followed through April 2019. The crisis exposed the total collapse of electricity infrastructure after years of underinvestment.",
-    "category": "infrastructure_failure",
+    "category": "infrastructure_project",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/2019_Venezuelan_blackouts"
   },
@@ -283,7 +283,7 @@
     "year": 2019,
     "title": "US Treasury Full Oil Sector Sanctions on PDVSA",
     "description": "On 28 January 2019 the US Treasury Department imposed comprehensive sanctions on PDVSA, Venezuela's state oil company, freezing approximately $7 billion in assets and blocking $11 billion in projected revenue over the following year. The sanctions were intended to deprive the Maduro government of oil income while excluding humanitarian exemptions. PDVSA exports shifted to Russia, China, and Cuba, but oil production â€” already declining â€” fell further, reaching record lows under 700,000 bpd by 2020.",
-    "category": "sanctions_and_international_pressure",
+    "category": "sanctions_and_arms_embargo",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/United_States_sanctions_during_the_Venezuelan_crisis"
   },
@@ -299,7 +299,7 @@
     "year": 2020,
     "title": "COVID-19 Pandemic Deepens Humanitarian Crisis",
     "description": "Venezuela reported its first confirmed COVID-19 case on 13 March 2020. Maduro imposed strict quarantine measures and used the pandemic to intensify repression of dissent and restrict opposition activities. The health system â€” already near-collapsed with 80% of hospitals lacking basic supplies â€” struggled to respond. PAHO estimated Venezuela had only one ventilator per 100 ICU beds. The pandemic accelerated emigration and deepened food and medicine shortages already affecting 96% of the population.",
-    "category": "public_health_crisis",
+    "category": "epidemic_and_pandemic",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Venezuela"
   },
@@ -323,7 +323,7 @@
     "year": 2022,
     "title": "GuaidÃ³'s Interim Government Dissolved â€” Opposition Restructures",
     "description": "In December 2022 Venezuela's opposition-dominated National Assembly voted to dissolve Juan GuaidÃ³'s interim government, ending a nearly four-year dual-authority standoff. The United States formally stopped recognizing GuaidÃ³'s presidential claim in January 2023. The opposition restructured under a Unitary Platform coalition, began negotiating with the Maduro government in Barbados, and eventually rallied behind Edmundo GonzÃ¡lez Urrutia as its 2024 presidential candidate.",
-    "category": "government_crisis",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_presidential_crisis"
   },
@@ -331,7 +331,7 @@
     "year": 2022,
     "title": "Chevron Licence Restored â€” Partial Easing of US Oil Sanctions",
     "description": "In November 2022 the Biden administration issued a limited licence allowing Chevron Corporation to resume oil-for-debt swap operations in Venezuela for the first time since 2019. This represented the first significant US sanctions relief during the Maduro era, conditioned on progress in Venezuelan government-opposition talks in Mexico City. Chevron's return modestly increased oil production and provided PDVSA with foreign exchange, though output remained far below pre-sanctions levels.",
-    "category": "sanctions_and_international_pressure",
+    "category": "sanctions_and_arms_embargo",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/United_States_sanctions_during_the_Venezuelan_crisis"
   },
@@ -371,7 +371,7 @@
     "year": 2003,
     "title": "PDVSA Purge and Misiones Social Programmes Launch",
     "description": "After defeating the 2002â€“03 oil strike, ChÃ¡vez fired roughly 18,000 PDVSA employees and placed loyalists throughout the company's management, ending its operational independence. Revenues from the re-centralised PDVSA funded a rapid expansion of 'misiones' (social missions): Barrio Adentro (healthcare), MisiÃ³n Robinson (literacy), MisiÃ³n Sucre (higher education), and Mercal (subsidised food). World Bank data show Venezuela's poverty rate fell from around 49% in 1998 to 27% by 2007 during the oil boom.",
-    "category": "social_policy",
+    "category": "social_policy_reform",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Venezuelan_Missions"
   },
@@ -379,7 +379,7 @@
     "year": 2008,
     "title": "ChÃ¡vez Nationalizes Cement, Steel, and Banking Sectors",
     "description": "Throughout 2008 the ChÃ¡vez government accelerated nationalizations beyond oil, expropriating major cement producers (CEMEX Venezuela, Holcim, and Lafarge), the steel company SIDOR (from Argentine firm Ternium), and several banks. The government paid compensation below market rates, prompting international arbitration claims. The wave of nationalizations expanded the public sector while reducing private investment in key industries, contributing to supply bottlenecks visible by 2010.",
-    "category": "resource_nationalization",
+    "category": "economic_nationalization",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Nationalization_in_Venezuela"
   },
@@ -387,7 +387,7 @@
     "year": 2011,
     "title": "ChÃ¡vez Announces Cancer Diagnosis",
     "description": "On 30 June 2011 Hugo ChÃ¡vez publicly announced he had been diagnosed with cancer after undergoing emergency surgery in Cuba to remove a tumour from his pelvic region. The announcement shocked Venezuela and raised immediate succession questions. Over the following 18 months ChÃ¡vez underwent multiple surgeries and chemotherapy in Havana while maintaining an active political schedule, including successfully contesting the 2012 presidential election, before his death in March 2013.",
-    "category": "leadership_transition",
+    "category": "government_formation",
     "verified": true,
     "verification_source": "https://en.wikipedia.org/wiki/Hugo_Ch%C3%A1vez#Illness_and_death"
   },
