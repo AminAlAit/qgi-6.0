@@ -77,12 +77,18 @@ export default function LandingPage() {
         }}
       >
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2">
+          {/* GH#251: clickable; on public pages, click navigates to root. */}
+          <Link href="/" className="flex items-baseline gap-1" title="Home">
             <span
               className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)" }}
+              style={{
+                color: "var(--qgi-accent)",
+                // Compensate trailing letter-spacing so visual gap to
+                // "Intelligence" matches the qgintelligence.com domain.
+                marginRight: "-0.25em",
+              }}
             >
-              QGI
+              QG
             </span>
             <span
               className="text-[11px] tracking-widest uppercase"
@@ -90,7 +96,7 @@ export default function LandingPage() {
             >
               Intelligence
             </span>
-          </div>
+          </Link>
           <nav className="flex items-center gap-6">
             <a
               href="#how-it-works"
@@ -334,18 +340,27 @@ export default function LandingPage() {
         }}
       >
         <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-4">
-            <span
-              className="font-data text-xs tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              QGI
-            </span>
+          <div className="flex items-baseline gap-2">
+            {/* GH#251: footer wordmark also clickable \u2192 root. */}
+            <Link href="/" className="flex items-baseline gap-1" title="Home">
+              <span
+                className="font-data text-xs tracking-[0.25em] font-semibold"
+                style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+              >
+                QG
+              </span>
+              <span
+                className="text-[10px] tracking-widest uppercase"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                Intelligence
+              </span>
+            </Link>
             <span
               className="text-[10px] tracking-widest uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Pattern Recurrence Intelligence &mdash; Statistical Beta
+              &middot; Pattern Recurrence &mdash; Statistical Beta
             </span>
           </div>
           <div className="flex items-center gap-4">

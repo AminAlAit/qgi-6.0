@@ -45,7 +45,19 @@ export default function PatternsClient() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [transformation, setTransformation] = useState<Transformation>("raw");
+  // #250: align to "Year 1, Year 2, ..." when start years differ. Without
+  // this, the chart's xAxis is country A's calendar years and country B's
+  // points (at country B's calendar years) fall outside the category list
+  // and never render — invisible line, but headline correlation still real
+  // because the underlying values are paired by index position, not date.
   const [align, setAlign] = useState(false);
+  // Auto-align flag we read from the metadata when the pattern loads.
+  const startsDiffer =
+    detail != null &&
+    Number(detail.metadata.start_year_a) !== Number(detail.metadata.start_year_b);
+  // The effective align value used by the chart: user-toggled OR forced when
+  // the two windows are at different calendar years (early-warning patterns).
+  const effectiveAlign = align || startsDiffer;
   const [selectedIndex, setSelectedIndex] = useState<string | null>(null);
   const [showCharts, setShowCharts] = useState(true);
   const [showTable, setShowTable] = useState(true);
@@ -69,7 +81,21 @@ export default function PatternsClient() {
           `/api/patterns/detail?country_a=${encodeURIComponent(sel.country_a)}&country_b=${encodeURIComponent(sel.country_b)}&start_a=${sel.start_a}&start_b=${sel.start_b}&length=${sel.length}`,
           { headers: { Authorization: "Bearer __client__" } }
         );
-        if (!res.ok) throw new Error(`${res.status}`);
+        if (!res.ok) {
+          // Surface a friendlier message for the well-known 500 path:
+          // /api/patterns/detail goes to live Athena and the deployed
+          // environment doesn't always have those credentials wired
+          // (see #247). The dashboard JSON cache covers Ranking, but
+          // per-pattern detail is computed on demand. Until that's
+          // pre-computed too, give users a helpful message instead of
+          // the raw status code.
+          if (res.status === 500 || res.status === 504) {
+            throw new Error(
+              "Pattern detail data isn't available right now (per-pattern detail is fetched live and is currently being pre-computed for cache). Try Ranking for a pre-computed top-50 view, or check back after the next monthly pipeline run."
+            );
+          }
+          throw new Error(`HTTP ${res.status}`);
+        }
         const data: PatternDetail = await res.json();
         setDetail(data);
         setSelectedIndex(null);
@@ -140,10 +166,24 @@ export default function PatternsClient() {
 
         {/* Error */}
         {error && (
-          <div className="p-8">
-            <span className="text-xs" style={{ color: "var(--qgi-danger)" }}>
-              Error: {error}
-            </span>
+          <div className="p-8 max-w-2xl">
+            <div
+              className="rounded-lg border-l-2 p-4"
+              style={{
+                borderColor: "var(--qgi-amber)",
+                backgroundColor: "var(--qgi-surface)",
+              }}
+            >
+              <div
+                className="text-[10px] tracking-[0.2em] uppercase mb-2"
+                style={{ color: "var(--qgi-amber)" }}
+              >
+                Pattern detail unavailable
+              </div>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+                {error}
+              </p>
+            </div>
           </div>
         )}
 
@@ -175,18 +215,49 @@ export default function PatternsClient() {
                 ))}
               </select>
 
-              {/* Align toggle */}
-              <label className="flex items-center gap-2 cursor-pointer">
+              {/* Align toggle (#250: forced ON when start years differ) */}
+              <label
+                className={`flex items-center gap-2 ${
+                  startsDiffer ? "cursor-default opacity-60" : "cursor-pointer"
+                }`}
+                title={
+                  startsDiffer
+                    ? "Auto-aligned: this pattern's two windows are at different calendar years"
+                    : "Align both series to Year 1, Year 2, ..."
+                }
+              >
                 <input
                   type="checkbox"
-                  checked={align}
+                  checked={effectiveAlign}
+                  disabled={startsDiffer}
                   onChange={(e) => setAlign(e.target.checked)}
                   className="accent-[var(--qgi-accent)]"
                 />
                 <span className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-muted)" }}>
                   Align to Year 1
+                  {startsDiffer && (
+                    <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>
+                  )}
                 </span>
               </label>
+              {startsDiffer && (
+                <span
+                  className="text-[10px] tracking-wider"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {detail!.metadata.country_a} {detail!.metadata.start_year_a}
+                  &ndash;
+                  {Number(detail!.metadata.start_year_a) +
+                    Number(detail!.metadata.pattern_length) -
+                    1}
+                  {"  vs  "}
+                  {detail!.metadata.country_b} {detail!.metadata.start_year_b}
+                  &ndash;
+                  {Number(detail!.metadata.start_year_b) +
+                    Number(detail!.metadata.pattern_length) -
+                    1}
+                </span>
+              )}
 
               {/* Section toggles */}
               <div className="ml-auto flex gap-3">
@@ -262,7 +333,7 @@ export default function PatternsClient() {
                       correlation={s.correlation}
                       predicted={s.predicted}
                       transformation={transformation}
-                      align={align}
+                      align={effectiveAlign}
                       countryA={detail.metadata.country_a}
                       countryB={detail.metadata.country_b}
                     />

@@ -116,8 +116,12 @@ export function IndexChart({
       textStyle: { color: "#e2e8f0", fontSize: 10 },
       // #125: synchronized hover — when the user hovers a year, the tooltip
       // shows BOTH country values + their ratio so the comparison is explicit.
-      formatter: (params: Array<{ seriesName: string; data: [string, number | null] | number | null; axisValue: string }>) => {
-        const year = params[0]?.axisValue;
+      // #250: when the chart is aligned (Year-N axis) we annotate each side
+      // with its actual calendar year so the cross-time nature of the pattern
+      // is obvious (e.g. "Argentina 1995 vs Brazil 1981, both Year 1").
+      formatter: (params: Array<{ seriesName: string; data: [string, number | null] | number | null; axisValue: string; dataIndex: number }>) => {
+        const axisLabel = params[0]?.axisValue;
+        const idx = params[0]?.dataIndex ?? 0;
         const a = params.find((p) => p.seriesName === countryA);
         const b = params.find((p) => p.seriesName === countryB);
         const av = Array.isArray(a?.data) ? a.data[1] : (a?.data as number | null);
@@ -128,7 +132,11 @@ export function IndexChart({
           av != null && bv != null && Number.isFinite(av) && Number.isFinite(bv) && bv !== 0
             ? `<div style='color:#7a90a8;font-size:9px;margin-top:2px'>ratio: ${(av / bv).toFixed(2)}×</div>`
             : "";
-        return `<div style='font-family:monospace'><div style='color:#7a90a8;font-size:9px'>${year}</div><div style='color:#38bdf8'>${countryA}: ${fmt(av)}</div><div style='color:#fb923c'>${countryB}: ${fmt(bv)}</div>${ratio}</div>`;
+        // When the xAxis is "Year N" (align mode), show actual calendar years
+        // per side. When it's calendar years, just show the axis label.
+        const yearALabel = align ? `${countryA} ${startYearA + idx}` : countryA;
+        const yearBLabel = align ? `${countryB} ${startYearB + idx}` : countryB;
+        return `<div style='font-family:monospace'><div style='color:#7a90a8;font-size:9px'>${axisLabel}</div><div style='color:#38bdf8'>${yearALabel}: ${fmt(av)}</div><div style='color:#fb923c'>${yearBLabel}: ${fmt(bv)}</div>${ratio}</div>`;
       },
     },
     legend: {

@@ -21,12 +21,13 @@ export default function LegalPage() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2">
+          {/* GH#251 + GH#245: clickable QG wordmark, links home */}
+          <Link href="/" className="flex items-baseline gap-1" title="Home">
             <span
               className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)" }}
+              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
             >
-              QGI
+              QG
             </span>
             <span
               className="text-[11px] tracking-widest uppercase"

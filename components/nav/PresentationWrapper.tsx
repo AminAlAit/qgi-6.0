@@ -36,7 +36,7 @@ function PresentationInner({ children }: { children: React.ReactNode }) {
         }
         /* Watermark */
         .presentation-mode::after {
-          content: 'QGI INTELLIGENCE';
+          content: 'QG INTELLIGENCE';
           position: fixed;
           bottom: 12px;
           right: 16px;

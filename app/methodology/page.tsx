@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import LayeredTaxonomyTree from "@/components/methodology/LayeredTaxonomyTree";
 
 export const metadata: Metadata = {
   title: "Methodology — QGI Intelligence",
@@ -26,12 +27,13 @@ export default function MethodologyPage() {
         }}
       >
         <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
-          <Link href="/" className="flex items-center gap-2">
+          {/* GH#251 + GH#245: clickable QG wordmark, links home */}
+          <Link href="/" className="flex items-baseline gap-1" title="Home">
             <span
               className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)" }}
+              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
             >
-              QGI
+              QG
             </span>
             <span
               className="text-[11px] tracking-widest uppercase"
@@ -159,6 +161,23 @@ export default function MethodologyPage() {
             Additional providers (V-Dem governance indices, FAOSTAT food security,
             UCDP conflict data, UNHCR displacement data) are being integrated
             to expand coverage to 150+ indicators.
+          </p>
+        </Section>
+
+        {/* Section: Event Taxonomy */}
+        <Section id="event-taxonomy" title="Event Taxonomy">
+          <p>
+            QGI&apos;s event corpus is organized in a four-layer hierarchy that
+            preserves full granularity while remaining scannable. The recipe
+            engine matches patterns to <strong>Layer 3</strong> canonical event
+            types (the actual prediction targets); the layered structure is a
+            navigation aid for the country profile UI.
+          </p>
+          <LayeredTaxonomyTree />
+          <p className="mt-3 text-[11px]" style={{ color: "var(--qgi-text-dim)" }}>
+            Layer 4 — the individual event records themselves (currently 12,000+
+            across 158 countries) — is surfaced on the per-country profile pages,
+            not in this overview.
           </p>
         </Section>
 

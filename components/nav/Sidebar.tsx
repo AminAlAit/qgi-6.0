@@ -3,26 +3,28 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Navigation items — updated for the Country Intelligence Browser launch.
-// Naming: Patterns → Precedents, Recipes → Signals (#121).
-// Countries added as first item; COUNTRY PROFILE removed (replaced by /countries/[id]).
-// Navigation: Precedents (country+category combos), Signals (category archetypes),
-// Countries (all country profiles), then existing tools.
+// Navigation items.
+// History:
+// - 2026-04-13: Patterns→Precedents, Recipes→Signals (#121).
+// - 2026-04-16: Dashboard renamed to BASE and promoted to the top slot (#248).
+//   "Base" is QGI's command-center landing — a sample of everything in one view —
+//   not a "dashboard of legacy panels." Routed at /base; /dashboard kept as a
+//   redirect for outstanding bookmarks.
 const NAV_ITEMS = [
   {
+    label: "BASE",
+    href: "/base",
+    icon: "◆",
+  },
+  {
     label: "PRECEDENTS",
-    href: "/countries",
+    href: "/precedents",
     icon: "▲",
   },
   {
     label: "SIGNALS",
     href: "/signals-browse",
     icon: "◈",
-  },
-  {
-    label: "DASHBOARD",
-    href: "/dashboard",
-    icon: "▦",
   },
   {
     label: "PATTERNS",
@@ -47,16 +49,24 @@ export function Sidebar() {
         borderColor: "var(--qgi-border)",
       }}
     >
-      {/* Wordmark */}
-      <div
-        className="flex items-center gap-2 px-5 py-5 border-b"
+      {/* Wordmark — matches the qgintelligence.com domain (#245).
+          QG (blue) + INTELLIGENCE (grey) reads as "qg-intelligence" the same
+          way the URL does.
+          Visual: tightened with `gap-1` + negative margin-right on QG so the
+          trailing letter-spacing doesn't push "Intelligence" away (the
+          0.25em tracking adds ~3px of phantom space after the last letter).
+          GH#251: clickable; in-app sidebar always navigates to /base. */}
+      <Link
+        href="/base"
+        className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
         style={{ borderColor: "var(--qgi-border)" }}
+        title="Go to Base (command center)"
       >
         <span
           className="font-data text-xs tracking-[0.25em] font-semibold"
-          style={{ color: "var(--qgi-accent)" }}
+          style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
         >
-          QGI
+          QG
         </span>
         <span
           className="text-[10px] tracking-widest uppercase"
@@ -64,12 +74,25 @@ export function Sidebar() {
         >
           Intelligence
         </span>
-      </div>
+      </Link>
 
-      {/* Navigation */}
+      {/* Navigation
+          GH#250: longest-prefix-wins active state. Without this, RANKING
+          (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
+          naive startsWith() matches both. activeHref picks the deepest
+          NAV_ITEMS href that the current pathname matches. */}
+      {(() => null)()}
       <nav className="flex flex-col gap-0.5 px-2 pt-4 flex-1">
         {NAV_ITEMS.map(({ label, href, icon }) => {
-          const active = pathname === href || pathname.startsWith(href + "/");
+          const active =
+            pathname === href ||
+            (pathname.startsWith(href + "/") &&
+              !NAV_ITEMS.some(
+                (other) =>
+                  other.href !== href &&
+                  other.href.length > href.length &&
+                  (pathname === other.href || pathname.startsWith(other.href + "/"))
+              ));
           return (
             <Link
               key={href}

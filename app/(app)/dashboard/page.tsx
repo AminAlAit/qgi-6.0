@@ -1,25 +1,13 @@
-import { DashboardClient } from "./DashboardClient";
-import indexData from "@/data/indexes.json";
-import type { IndexEntry, PatternRow } from "@/lib/types";
+import { redirect } from "next/navigation";
 
-async function fetchRanking(): Promise<PatternRow[]> {
-  try {
-    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const res = await fetch(`${base}/api/patterns/ranking?limit=1000`, {
-      headers: { Authorization: "Bearer __ssr__" },
-      next: { revalidate: 60 },
-    });
-    if (!res.ok) return [];
-    const json = await res.json();
-    return json.results ?? [];
-  } catch {
-    return [];
-  }
-}
-
-export default async function DashboardPage() {
-  const patterns = await fetchRanking();
-  const indexes = indexData as IndexEntry[];
-
-  return <DashboardClient patterns={patterns} indexes={indexes} />;
+/**
+ * Legacy /dashboard route. Redirects to the new /base command center
+ * landing page (#248 — Dashboard renamed to "Base" and revamped to be the
+ * top sidebar selection).
+ *
+ * Kept as a redirect so any external bookmarks, embedded screenshots, or
+ * old article links to /dashboard still resolve.
+ */
+export default function LegacyDashboardPage() {
+  redirect("/base");
 }

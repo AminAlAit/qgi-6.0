@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 
@@ -126,21 +127,33 @@ export function CountriesClient({ countries }: { countries: CountryEntry[] }) {
 }
 
 function CountryCard({ country }: { country: CountryEntry }) {
+  const router = useRouter();
   const style = TIER_STYLES[country.overall_risk_tier];
 
   // Get top category from S-tier (shortest patterns, most actionable)
   const topCats = country.tiers?.S?.top_categories ?? [];
   const topCat = topCats[0];
 
-  // Card links to precedent detail (country + category); country name links to profile
+  // Card area navigates to precedent detail (country + category); the country
+  // name still navigates to the country profile. Two destinations from one card
+  // means we can't use nested <a> (invalid HTML / hydration error). Use a div
+  // with role="link" + onClick for the card, and a real <Link> for the name.
   const cardHref = topCat
     ? `/countries/${country.id}/${encodeURIComponent(topCat.category)}`
     : `/countries/${country.id}`;
 
   return (
-    <Link
-      href={cardHref}
-      className="block rounded-lg border p-4 transition-all hover:border-[var(--qgi-accent)] hover:bg-[var(--qgi-surface-2)]"
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={() => router.push(cardHref)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          router.push(cardHref);
+        }
+      }}
+      className="block rounded-lg border p-4 transition-all cursor-pointer hover:border-[var(--qgi-accent)] hover:bg-[var(--qgi-surface-2)]"
       style={{
         backgroundColor: "var(--qgi-surface)",
         borderColor: "var(--qgi-border)",
@@ -201,7 +214,7 @@ function CountryCard({ country }: { country: CountryEntry }) {
           Verified events
         </div>
       )}
-    </Link>
+    </div>
   );
 }
 

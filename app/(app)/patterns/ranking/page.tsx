@@ -26,6 +26,10 @@ interface RankingResponse {
   page: number;
   limit: number;
   results: PatternRow[];
+  /** True when results are deduped to one row per (country_a, country_b) pair (#244). */
+  deduped?: boolean;
+  /** Total count of unique pairs in the cache (informative, used for the header). */
+  total_unique_pairs?: number;
 }
 
 export default function RankingPage() {
@@ -34,6 +38,8 @@ export default function RankingPage() {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [hasMore, setHasMore] = useState(true);
+  const [deduped, setDeduped] = useState(false);
+  const [totalUniquePairs, setTotalUniquePairs] = useState<number | null>(null);
 
   // Filters
   const [minPps, setMinPps] = useState("");
@@ -56,6 +62,8 @@ export default function RankingPage() {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data: RankingResponse = await res.json();
         setRows(data.results);
+        setDeduped(Boolean(data.deduped));
+        setTotalUniquePairs(data.total_unique_pairs ?? null);
         setHasMore(data.results.length === PAGE_SIZE);
       } catch (err) {
         console.error("Failed to fetch ranking:", err);
@@ -116,12 +124,22 @@ export default function RankingPage() {
     <div className="flex flex-col h-full p-6 gap-4">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h1
-          className="text-xs tracking-[0.2em] uppercase font-semibold"
-          style={{ color: "var(--qgi-accent)" }}
-        >
-          Pattern Power Ranking
-        </h1>
+        <div className="flex items-baseline gap-3">
+          <h1
+            className="text-xs tracking-[0.2em] uppercase font-semibold"
+            style={{ color: "var(--qgi-accent)" }}
+          >
+            Pattern Power Ranking
+          </h1>
+          {deduped && totalUniquePairs != null && (
+            <span
+              className="text-[10px] tracking-wider"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              {totalUniquePairs} unique pairs · best window per pair
+            </span>
+          )}
+        </div>
         <span
           className="text-[10px] tracking-wider font-data"
           style={{ color: "var(--qgi-text-dim)" }}

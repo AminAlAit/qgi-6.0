@@ -2,7 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+import TaxonomyL1Widget from "@/components/countries/TaxonomyL1Widget";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { EventsTimeline } from "@/components/countries/EventsTimeline";
@@ -40,6 +42,8 @@ interface Props {
   generatedAt: string | null;
   version: string;
   events?: TimelineEvent[];
+  l1Scores?: Record<string, number> | null;
+  l2Scores?: Record<string, number> | null;
 }
 
 export function CountryProfileClient({
@@ -48,7 +52,10 @@ export function CountryProfileClient({
   generatedAt,
   version,
   events = [],
+  l1Scores = null,
+  l2Scores = null,
 }: Props) {
+  const router = useRouter();
   const [activeTier, setActiveTier] = useState<string>("S");
   const style = TIER_STYLES[country.overall_risk_tier];
 
@@ -108,7 +115,10 @@ export function CountryProfileClient({
           <div>Scoring: {version}</div>
           {generatedAt && (
             <div>
-              Updated: {new Date(generatedAt).toLocaleDateString()}
+              {/* Locale-stable ISO date avoids SSR/CSR hydration mismatch
+                  (server formats as DD/MM/YYYY in en-GB locale; client browsers
+                  vary). Pin to YYYY-MM-DD for consistency. */}
+              Updated: {generatedAt.slice(0, 10)}
             </div>
           )}
         </div>
@@ -126,6 +136,9 @@ export function CountryProfileClient({
           {generateSummary(country, categoryZScores)}
         </p>
       </div>
+
+      {/* ─── Layered Taxonomy Widget (8 cards, L1 → L2 drill-down) ─── */}
+      <TaxonomyL1Widget l1Scores={l1Scores} l2Scores={l2Scores} />
 
       {/* ─── Risk Breakdown (horizontal bar chart) ──────────────────── */}
       <section
@@ -228,13 +241,16 @@ export function CountryProfileClient({
             </thead>
             <tbody>
               {topCategories.map((cat, i) => (
-                <Link
+                <PrecedentRow
                   key={cat.category}
-                  href={`/countries/${countryId}/${encodeURIComponent(cat.category)}`}
-                  className="contents hover:opacity-80"
-                >
-                  <PrecedentRow rank={i + 1} cat={cat} />
-                </Link>
+                  rank={i + 1}
+                  cat={cat}
+                  onClick={() =>
+                    router.push(
+                      `/countries/${countryId}/${encodeURIComponent(cat.category)}`
+                    )
+                  }
+                />
               ))}
             </tbody>
           </table>
@@ -347,9 +363,11 @@ function CategoryBar({
 function PrecedentRow({
   rank,
   cat,
+  onClick,
 }: {
   rank: number;
   cat: CategoryScore;
+  onClick?: () => void;
 }) {
   const salience = cat.salience_score ?? cat.z_score;
   const sColor =
@@ -361,8 +379,21 @@ function PrecedentRow({
 
   return (
     <tr
-      className="border-t"
+      className="border-t cursor-pointer transition-colors hover:bg-[var(--qgi-surface-2)]"
       style={{ borderColor: "var(--qgi-border)" }}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
     >
       <td
         className="py-2 font-data text-xs"
