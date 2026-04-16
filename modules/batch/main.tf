@@ -140,26 +140,28 @@ resource "aws_cloudwatch_log_group" "indicator_fetcher" {
   tags              = var.tags
 }
 
-# Job definition: 0.25 vCPU + 512 MB. Timeout 15 min (5min jitter +
-# 1min fetch + 9min slack for retries). attempts=2 = one retry on
-# infrastructure failure (Fargate Spot reclaim, OOM). The script's
-# in-process L1 backoff handles transient WB API errors before exiting.
+# Job definition: 0.25 vCPU + 512 MB.
+#
+# GH#243 perma fix (2026-04-16): heavy WB indicators (FI.RES.TOTL.MO,
+# BM.TRF.PWKR.CD.DT, etc.) were timing out at 15 min. Bumped to a generous
+# 60 min so even the slowest indicators have headroom. Retries dropped from
+# 10 \u2192 2 because timeouts aren't transient \u2014 retrying just burns Fargate.
+#
+# Hard-kill failures (timeout, OOM, Spot reclaim) bypass the worker's
+# graceful failure path. Closed via the EventBridge rule + failure-handler
+# Lambda (see modules/pipeline/main.tf).
 resource "aws_batch_job_definition" "indicator_fetcher" {
   name = "qgi-indicator-fetcher-job"
   type = "container"
 
   platform_capabilities = ["FARGATE"]
 
-  # #178: Fargate Spot tasks can be reclaimed by AWS. attempts=10 gives
-  # Batch plenty of room to auto-retry on Spot interruption. Combined with
-  # the scan-count checker (#178), a retried task just writes its tracker
-  # row on the successful attempt.
   retry_strategy {
-    attempts = 10
+    attempts = 2 # GH#243: was 10. Timeouts aren't transient.
   }
 
   timeout {
-    attempt_duration_seconds = 900 # 15 min
+    attempt_duration_seconds = 3600 # GH#243: was 900 (15min). Now 60min.
   }
 
   container_properties = jsonencode({

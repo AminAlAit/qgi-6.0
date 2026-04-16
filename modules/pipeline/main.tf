@@ -215,6 +215,71 @@ resource "aws_lambda_function" "a_batch_checker" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 1 — Batch failure handler (GH#243 PERMA FIX)
+#
+# When a fetcher Fargate task is hard-killed (timeout, OOM, Spot reclaim),
+# the worker's `except` block never runs and no FAILED tracker row is
+# written. The checker's `tracker_count >= total` completion logic stalls
+# forever (until the 90-min L5 deadman fires).
+#
+# This Lambda subscribes to Batch JobStateChange=FAILED events on the
+# fetcher queue, parses INDICATOR_ID + RUN_ID from the dead container's
+# environment, and writes a FAILED tracker row. Closes the deadlock.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "a_batch_failure_handler" {
+  function_name    = "qgi-pipeline-a-batch-failure-handler"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 30
+  memory_size      = 256
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+
+  description = "GH#243: writes FAILED tracker row on Batch hard-kill (timeout, OOM, Spot)"
+
+  environment {
+    variables = {
+      TRACKER_TABLE = var.indicator_table_name
+      COUNTER_TABLE = var.pipeline_a_counter_table_name
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_event_rule" "a_batch_fetcher_failed" {
+  name        = "qgi-pipeline-a-batch-fetcher-failed"
+  description = "GH#243: routes Batch FAILED events from fetcher queue to failure-handler Lambda"
+
+  event_pattern = jsonencode({
+    source        = ["aws.batch"]
+    "detail-type" = ["Batch Job State Change"]
+    detail = {
+      status   = ["FAILED"]
+      jobQueue = [var.fetcher_job_queue_arn]
+    }
+  })
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_event_target" "a_batch_failure_handler" {
+  rule = aws_cloudwatch_event_rule.a_batch_fetcher_failed.name
+  arn  = aws_lambda_function.a_batch_failure_handler.arn
+}
+
+resource "aws_lambda_permission" "allow_eventbridge_failure_handler" {
+  statement_id  = "AllowEventBridgeInvokeFailureHandler"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.a_batch_failure_handler.function_name
+  principal     = "events.amazonaws.com"
+  source_arn    = aws_cloudwatch_event_rule.a_batch_fetcher_failed.arn
+}
+
+# ---------------------------------------------------------------------------
 # Phase 1 — reporter (queries DynamoDB, sends SNS, returns updated_ids)
 # Note: reporter also invokes b-orchestrator directly (known prod behaviour,
 # kept for parity — means orchestrator is called twice when Step Functions
