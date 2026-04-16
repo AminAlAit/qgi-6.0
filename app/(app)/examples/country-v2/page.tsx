@@ -111,6 +111,288 @@ function radarOption() {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Indicator trajectory chart data + option                           */
+/* ------------------------------------------------------------------ */
+
+const TRAJECTORY_YEARS = [
+  1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
+  2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009,
+  2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+  2020, 2021, 2022, 2023, 2024, 2025,
+];
+
+// Raw data for Russia (approximate real values)
+const RAW_INDICATORS: { name: string; data: number[]; unit: string }[] = [
+  {
+    name: "GDP per capita (USD)",
+    unit: "USD",
+    data: [
+      3000, 2800, 2100, 1900, 1800, 2100, 2600, 2700, 1500, 1300,
+      1800, 2100, 2400, 2900, 4100, 5300, 6900, 9100, 11600, 8600,
+      10700, 14300, 15400, 15900, 14100, 9300, 8700, 10700, 11300, 11600,
+      10100, 12200, 10600, 11400, 12100, 11500,
+    ],
+  },
+  {
+    name: "Military spending (% GDP)",
+    unit: "%",
+    data: [
+      4.0, 3.8, 4.5, 4.2, 3.8, 3.5, 3.5, 3.6, 3.3, 3.4,
+      3.7, 3.8, 4.0, 3.9, 3.5, 3.6, 3.5, 3.5, 3.5, 4.2,
+      3.8, 3.7, 3.8, 3.9, 4.1, 4.5, 5.4, 4.2, 3.9, 3.9,
+      4.3, 4.1, 4.1, 5.5, 5.9, 5.5,
+    ],
+  },
+  {
+    name: "Life expectancy (years)",
+    unit: "years",
+    data: [
+      69.2, 69.0, 67.9, 65.1, 64.0, 64.5, 65.9, 66.5, 67.0, 65.9,
+      65.3, 65.2, 65.0, 64.8, 65.3, 65.4, 66.7, 67.6, 67.9, 68.7,
+      68.9, 69.8, 70.2, 70.8, 70.9, 71.4, 71.7, 72.7, 72.9, 73.3,
+      71.3, 70.1, 72.4, 73.1, 73.4, 73.6,
+    ],
+  },
+  {
+    name: "Inflation rate (%)",
+    unit: "%",
+    data: [
+      5.0, 93.0, 1526.0, 875.0, 311.0, 198.0, 47.7, 14.8, 27.7, 85.7,
+      20.8, 21.5, 15.8, 13.7, 10.9, 12.7, 9.7, 9.0, 14.1, 11.7,
+      6.9, 8.4, 5.1, 6.8, 7.8, 15.5, 7.0, 3.7, 2.9, 4.5,
+      3.4, 6.7, 13.7, 5.9, 7.4, 6.0,
+    ],
+  },
+  {
+    name: "Trade (% GDP)",
+    unit: "%",
+    data: [
+      30, 32, 38, 40, 42, 45, 43, 44, 55, 60,
+      55, 53, 51, 50, 48, 50, 48, 45, 47, 42,
+      44, 45, 44, 43, 42, 40, 38, 42, 44, 43,
+      38, 43, 36, 38, 40, 39,
+    ],
+  },
+  {
+    name: "Population (millions)",
+    unit: "M",
+    data: [
+      148.3, 148.6, 148.5, 148.3, 148.0, 147.6, 147.1, 146.7, 146.3, 145.9,
+      145.5, 145.1, 144.7, 144.3, 143.8, 143.5, 143.0, 142.8, 142.7, 142.7,
+      142.8, 143.0, 143.2, 143.3, 146.3, 146.3, 146.4, 146.5, 146.6, 146.7,
+      146.2, 145.6, 144.2, 143.9, 143.7, 143.5,
+    ],
+  },
+];
+
+// Min-max normalize each series to 0-100
+function normalizeMinMax(data: number[]): number[] {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  if (max === min) return data.map(() => 50);
+  return data.map((v) => ((v - min) / (max - min)) * 100);
+}
+
+const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
+
+const EVENT_MARKERS: { year: number; label: string }[] = [
+  { year: 1991, label: "USSR collapse" },
+  { year: 1998, label: "Financial crisis" },
+  { year: 2008, label: "Georgia war" },
+  { year: 2014, label: "Crimea" },
+  { year: 2022, label: "Ukraine invasion" },
+];
+
+function indicatorTrajectoryOption() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const series: any[] = RAW_INDICATORS.map((ind, i) => ({
+    name: ind.name,
+    type: "line",
+    data: normalizeMinMax(ind.data),
+    smooth: true,
+    lineStyle: { width: 2, color: INDICATOR_COLORS[i] },
+    itemStyle: { color: INDICATOR_COLORS[i] },
+    symbol: "none",
+    emphasis: { lineStyle: { width: 3 } },
+  }));
+
+  // World median reference line (flat at 50)
+  series.push({
+    name: "World median",
+    type: "line",
+    data: TRAJECTORY_YEARS.map(() => 50),
+    smooth: false,
+    lineStyle: { width: 1.5, color: "#4a6280", type: "dashed" },
+    itemStyle: { color: "#4a6280" },
+    symbol: "none",
+    emphasis: { lineStyle: { width: 1.5 } },
+  });
+
+  // Event marker lines
+  const markLines = EVENT_MARKERS.map((e) => ({
+    xAxis: String(e.year),
+    lineStyle: { color: "#f87171", width: 1, type: "solid" as const },
+    label: {
+      formatter: e.label,
+      position: "insideEndTop" as const,
+      color: "#f8717180",
+      fontSize: 9,
+      fontFamily: "'JetBrains Mono', monospace",
+    },
+  }));
+
+  return {
+    backgroundColor: "transparent",
+    grid: { top: 55, right: 20, bottom: 40, left: 45 },
+    legend: {
+      top: 0,
+      left: "center",
+      textStyle: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      itemWidth: 18,
+      itemHeight: 2,
+      itemGap: 14,
+    },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#1e2d42",
+      borderColor: "#243347",
+      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+      formatter: (params: Array<{ seriesName: string; value: number; dataIndex: number; color: string }>) => {
+        if (!Array.isArray(params) || params.length === 0) return "";
+        const year = TRAJECTORY_YEARS[params[0].dataIndex];
+        let html = `<div style="font-weight:600;margin-bottom:4px">${year}</div>`;
+        params.forEach((p) => {
+          if (p.seriesName === "World median") return;
+          const raw = RAW_INDICATORS.find((r) => r.name === p.seriesName);
+          const rawVal = raw ? raw.data[p.dataIndex] : p.value;
+          const unit = raw ? raw.unit : "";
+          const formatted = typeof rawVal === "number" && rawVal > 1000
+            ? rawVal.toLocaleString()
+            : typeof rawVal === "number"
+              ? rawVal.toFixed(1)
+              : rawVal;
+          html += `<div style="display:flex;justify-content:space-between;gap:16px"><span style="color:${p.color}">\u25CF ${p.seriesName}</span><span style="font-weight:600">${formatted} ${unit}</span></div>`;
+        });
+        return html;
+      },
+    },
+    xAxis: {
+      type: "category",
+      data: TRAJECTORY_YEARS.map(String),
+      axisLine: { lineStyle: { color: "#243347" } },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+        interval: 4,
+      },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      min: 0,
+      max: 100,
+      splitNumber: 4,
+      axisLine: { show: false },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+        formatter: "{value}",
+      },
+      splitLine: { lineStyle: { color: "#243347", width: 1 } },
+    },
+    series: series.map((s, i) => ({
+      ...s,
+      // Attach markLine only to the first series to avoid duplicates
+      ...(i === 0
+        ? {
+            markLine: {
+              silent: true,
+              symbol: "none",
+              data: markLines,
+            },
+          }
+        : {}),
+    })),
+  };
+}
+
+/* ------------------------------------------------------------------ */
+/*  Pattern density chart data + option                                */
+/* ------------------------------------------------------------------ */
+
+function generatePatternDensityData(): { year: number; count: number }[] {
+  const data: { year: number; count: number }[] = [];
+  const rng = (min: number, max: number, seed: number) =>
+    min + Math.round((Math.abs(Math.sin(seed * 9301 + 49297) * 233280) % 1) * (max - min));
+
+  for (let y = 1962; y <= 2020; y++) {
+    let min: number, max: number;
+    if (y <= 1970) { min = 2; max = 3; }
+    else if (y <= 1980) { min = 5; max = 8; }
+    else if (y <= 1990) { min = 3; max = 5; }
+    else if (y <= 2000) { min = 1; max = 2; }
+    else if (y <= 2010) { min = 4; max = 6; }
+    else { min = 3; max = 4; }
+    data.push({ year: y, count: rng(min, max, y) });
+  }
+  return data;
+}
+
+const PATTERN_DENSITY_DATA = generatePatternDensityData();
+
+function patternDensityOption() {
+  return {
+    backgroundColor: "transparent",
+    grid: { top: 15, right: 15, bottom: 30, left: 40 },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#1e2d42",
+      borderColor: "#243347",
+      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+      formatter: (params: Array<{ value: number; dataIndex: number }>) => {
+        if (!Array.isArray(params) || params.length === 0) return "";
+        const d = PATTERN_DENSITY_DATA[params[0].dataIndex];
+        return `<div style="font-weight:600">${d.year}</div><div>${d.count} pattern starts</div>`;
+      },
+    },
+    xAxis: {
+      type: "category",
+      data: PATTERN_DENSITY_DATA.map((d) => String(d.year)),
+      axisLine: { lineStyle: { color: "#243347" } },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 9,
+        fontFamily: "'JetBrains Mono', monospace",
+        interval: 4,
+        rotate: 0,
+      },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      axisLine: { show: false },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
+      splitLine: { lineStyle: { color: "#243347", width: 1 } },
+    },
+    series: [
+      {
+        type: "bar",
+        data: PATTERN_DENSITY_DATA.map((d) => d.count),
+        itemStyle: { color: "#fbbf24", borderRadius: [2, 2, 0, 0] },
+        barMaxWidth: 10,
+        emphasis: { itemStyle: { color: "#fcd34d" } },
+      },
+    ],
+  };
+}
+
+/* ------------------------------------------------------------------ */
 /*  Precedents table (collapsed)                                       */
 /* ------------------------------------------------------------------ */
 

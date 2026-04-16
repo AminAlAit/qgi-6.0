@@ -8,8 +8,12 @@
  * Hardcoded sample: Argentina 1995-2005 -> Brazil 1981-1991
  */
 
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
+
+const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
 /* ------------------------------------------------------------------ */
 /*  Sample data                                                        */
@@ -57,6 +61,42 @@ const INDICATORS = [
   { name: "Population growth (annual %)", sector: "Demographic", r: 0.79, sig: "**", n: 11 },
   { name: "Trade (% of GDP)", sector: "Trade", r: 0.76, sig: "*", n: 11 },
 ];
+
+// Sample time-series data for expandable SCDI charts (hardcoded for prototype)
+const SAMPLE_SERIES: Record<string, { a: number[]; b: number[] }> = {
+  "Population, total": {
+    a: [35.1, 35.5, 35.9, 36.3, 36.7, 37.0, 37.3, 37.6, 37.9, 38.2, 38.5],
+    b: [124.1, 126.9, 129.8, 132.7, 135.6, 138.4, 141.2, 143.9, 146.6, 149.2, 151.8],
+  },
+  "Infant mortality rate": {
+    a: [24.2, 23.0, 21.9, 20.9, 19.9, 19.0, 18.1, 17.3, 16.5, 15.7, 15.0],
+    b: [91.5, 87.3, 83.3, 79.5, 75.9, 72.5, 69.2, 66.1, 63.2, 60.4, 57.8],
+  },
+  "GDP per capita (current US$)": {
+    a: [7400, 7700, 8100, 7700, 7500, 7700, 2700, 2800, 3400, 3900, 4700],
+    b: [1800, 1700, 1600, 1400, 1600, 1800, 2100, 2400, 2600, 2900, 3100],
+  },
+  "Life expectancy at birth": {
+    a: [72.1, 72.4, 72.7, 73.0, 73.3, 73.6, 73.9, 74.2, 74.4, 74.6, 74.8],
+    b: [62.7, 63.1, 63.5, 63.9, 64.3, 64.7, 65.1, 65.5, 65.9, 66.3, 66.7],
+  },
+  "GDP deflator (annual %)": {
+    a: [3.4, 0.2, 0.9, 6.1, -1.2, -0.9, -1.1, 25.9, 13.4, 6.1, 4.7],
+    b: [100, 110, 200, 1000, 2000, 230, 420, 1040, 1770, 6820, 440],
+  },
+  "Mortality rate, under-5": {
+    a: [28.3, 26.8, 25.5, 24.2, 23.1, 22.0, 21.0, 20.0, 19.1, 18.2, 17.4],
+    b: [110.5, 105.2, 100.3, 95.6, 91.3, 87.2, 83.3, 79.6, 76.1, 72.8, 69.6],
+  },
+  "Population growth (annual %)": {
+    a: [1.2, 1.1, 1.1, 1.0, 1.0, 0.9, 0.9, 0.8, 0.8, 0.7, 0.7],
+    b: [2.3, 2.2, 2.1, 2.0, 1.9, 1.9, 1.8, 1.7, 1.7, 1.6, 1.6],
+  },
+  "Trade (% of GDP)": {
+    a: [19.2, 20.5, 21.8, 22.1, 18.9, 21.3, 22.5, 34.6, 30.2, 29.8, 32.5],
+    b: [15.2, 16.8, 15.4, 18.7, 20.1, 19.3, 15.9, 13.4, 14.7, 12.3, 15.2],
+  },
+};
 
 const SECTOR_COLORS: Record<string, string> = {
   Demographic: "#fbbf24",
@@ -127,6 +167,8 @@ function SparklinePlaceholder({ seed, count }: { seed: number; count: number }) 
 export default function PatternV2Page() {
   // PPS gauge position
   const gaugePct = PATTERN.pps * 100;
+  // #13: expandable SCDI — click a card to show the full line chart inline
+  const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
 
   return (
     <div
@@ -456,44 +498,137 @@ export default function PatternV2Page() {
               </button>
             </div>
 
-            {/* Small multiples grid (4x2) */}
+            {/* Small multiples grid (4x2) — click to expand inline (#13) */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-              {INDICATORS.map((ind, i) => (
-                <div
-                  key={ind.name}
-                  className="rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)]"
-                  style={{
-                    backgroundColor: `${SECTOR_COLORS[ind.sector]}08`,
-                    border: "1px solid var(--qgi-border)",
-                  }}
-                >
+              {INDICATORS.map((ind, i) => {
+                const isExpanded = expandedIndex === ind.name;
+                const series = SAMPLE_SERIES[ind.name];
+                return (
                   <div
-                    className="text-[9px] tracking-wider mb-2 truncate"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                    title={ind.name}
+                    key={ind.name}
+                    className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${
+                      isExpanded ? "col-span-2 lg:col-span-4" : ""
+                    }`}
+                    style={{
+                      backgroundColor: `${SECTOR_COLORS[ind.sector]}08`,
+                      border: isExpanded
+                        ? `1px solid ${SECTOR_COLORS[ind.sector]}66`
+                        : "1px solid var(--qgi-border)",
+                    }}
+                    onClick={() =>
+                      setExpandedIndex(isExpanded ? null : ind.name)
+                    }
                   >
-                    {ind.name}
-                  </div>
+                    <div className="flex items-center justify-between mb-2">
+                      <div
+                        className="text-[9px] tracking-wider truncate"
+                        style={{ color: "var(--qgi-text-muted)" }}
+                        title={ind.name}
+                      >
+                        {ind.name}
+                      </div>
+                      <span
+                        className="text-[9px] ml-2 shrink-0"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
+                        {isExpanded ? "click to collapse" : "click to expand"}
+                      </span>
+                    </div>
 
-                  {/* Sparkline placeholder */}
-                  <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                    <SparklinePlaceholder seed={i * 3 + 1} count={PATTERN.length} />
-                  </div>
+                    {isExpanded && series ? (
+                      /* Full line chart when expanded */
+                      <div className="h-48 mb-2">
+                        <ReactECharts
+                          option={{
+                            backgroundColor: "transparent",
+                            tooltip: {
+                              trigger: "axis",
+                              backgroundColor: "#1e2d42",
+                              borderColor: "#243347",
+                              textStyle: { color: "#e2e8f0", fontSize: 10 },
+                            },
+                            legend: {
+                              data: [PATTERN.countryA.name, PATTERN.countryB.name],
+                              top: 0,
+                              right: 8,
+                              textStyle: { color: "#7a90a8", fontSize: 9 },
+                              itemWidth: 12,
+                              itemHeight: 2,
+                            },
+                            grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                            xAxis: {
+                              type: "category",
+                              data: Array.from(
+                                { length: PATTERN.length },
+                                (_, j) => `Year ${j + 1}`
+                              ),
+                              axisLine: { lineStyle: { color: "#243347" } },
+                              axisLabel: { color: "#4a6280", fontSize: 9 },
+                            },
+                            yAxis: {
+                              type: "value",
+                              scale: true,
+                              axisLine: { lineStyle: { color: "#243347" } },
+                              splitLine: {
+                                lineStyle: { color: "#1a2a3a" },
+                              },
+                              axisLabel: { color: "#4a6280", fontSize: 9 },
+                            },
+                            series: [
+                              {
+                                name: PATTERN.countryA.name,
+                                type: "line",
+                                data: series.a,
+                                lineStyle: { color: "#38bdf8", width: 2 },
+                                itemStyle: { color: "#38bdf8" },
+                                symbol: "circle",
+                                symbolSize: 4,
+                              },
+                              {
+                                name: PATTERN.countryB.name,
+                                type: "line",
+                                data: series.b,
+                                lineStyle: { color: "#fb923c", width: 2 },
+                                itemStyle: { color: "#fb923c" },
+                                symbol: "circle",
+                                symbolSize: 4,
+                              },
+                            ],
+                          }}
+                          style={{ height: "100%", width: "100%" }}
+                          notMerge
+                        />
+                      </div>
+                    ) : (
+                      /* Sparkline when collapsed */
+                      <div
+                        className="mb-2 rounded"
+                        style={{ backgroundColor: "var(--qgi-surface)" }}
+                      >
+                        <SparklinePlaceholder
+                          seed={i * 3 + 1}
+                          count={PATTERN.length}
+                        />
+                      </div>
+                    )}
 
-                  <div className="flex items-center justify-between">
-                    <div
-                      className="w-1 h-3 rounded-full"
-                      style={{ backgroundColor: SECTOR_COLORS[ind.sector] }}
-                    />
-                    <span
-                      className="font-data text-[10px]"
-                      style={{ color: "var(--qgi-text-muted)" }}
-                    >
-                      r={ind.r.toFixed(2)} {ind.sig}
-                    </span>
+                    <div className="flex items-center justify-between">
+                      <div
+                        className="w-1 h-3 rounded-full"
+                        style={{
+                          backgroundColor: SECTOR_COLORS[ind.sector],
+                        }}
+                      />
+                      <span
+                        className="font-data text-[10px]"
+                        style={{ color: "var(--qgi-text-muted)" }}
+                      >
+                        r={ind.r.toFixed(2)} {ind.sig}
+                      </span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Indicators table */}

@@ -1,20 +1,83 @@
-/**
- * /precedents — landing for the PRECEDENTS sidebar item (GH#253).
- *
- * GH#253 phase 1: keep the existing /countries grid as the landing
- * destination so the link works immediately while the dedicated
- * /precedents page is being designed (per #14 EA-FC cards + #248
- * country page enrichment).
- *
- * GH#253 phase 2 (separate ticket): build a precedent-window-first
- * grid here that sorts by salience density across all (country, category)
- * combinations.
- *
- * For now this just redirects to /countries so users hit the existing
- * grid. The phase 2 work will replace this page in place.
- */
-import { redirect } from "next/navigation";
+import { loadCountryRisks } from "@/lib/country-risks";
+import { PrecedentsListClient } from "@/components/precedents/PrecedentsListClient";
+import type { Metadata } from "next";
 
-export default function PrecedentsPage() {
-  redirect("/countries");
+export const metadata: Metadata = {
+  title: "Precedents Browser — QGI Intelligence",
+  description:
+    "Browse all country-category precedent combinations ranked by salience score.",
+};
+
+/**
+ * Flatten every country x S-tier category into a single precedent row list,
+ * then pass it to the client component for filtering / sorting / pagination.
+ */
+export default async function PrecedentsPage() {
+  let rows: Array<{
+    countryId: string;
+    countryName: string;
+    alpha2: string;
+    curated: boolean;
+    riskTier: string;
+    category: string;
+    salienceScore: number;
+    zScore: number;
+    recipeCount: number;
+    lastEventYear: number | null;
+  }> = [];
+  let error: string | null = null;
+
+  try {
+    const data = await loadCountryRisks();
+
+    for (const [countryId, country] of Object.entries(data.countries)) {
+      const sTier = country.tiers?.S;
+      if (!sTier?.top_categories?.length) continue;
+
+      for (const cat of sTier.top_categories) {
+        rows.push({
+          countryId,
+          countryName: country.name,
+          alpha2: country.alpha_2,
+          curated: country.curated,
+          riskTier: country.overall_risk_tier ?? "INDICATIVE",
+          category: cat.category,
+          salienceScore: cat.salience_score ?? 0,
+          zScore: cat.z_score ?? 0,
+          recipeCount: cat.recipe_count ?? 0,
+          lastEventYear: cat.last_event_year ?? null,
+        });
+      }
+    }
+  } catch (err) {
+    error = (err as Error).message;
+  }
+
+  if (error) {
+    return (
+      <div className="p-8">
+        <h1
+          className="text-xs tracking-widest uppercase mb-4"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Precedents Browser
+        </h1>
+        <div
+          className="rounded-lg border p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <p style={{ color: "var(--qgi-text-muted)" }}>
+            Precedent data not yet available. Run{" "}
+            <code className="font-data text-xs">generate_country_risks.py</code>{" "}
+            to generate the data.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return <PrecedentsListClient rows={rows} />;
 }
