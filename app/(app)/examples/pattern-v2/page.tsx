@@ -347,18 +347,19 @@ export default function PatternV2Page() {
                 {PATTERN.countryA.alpha2} {PATTERN.countryA.windowStart}-{PATTERN.countryA.windowEnd}
               </div>
 
-              {/* Event marker — hyperinflation at end of predictor window */}
+              {/* Event marker — hyperinflation at end of predictor window.
+                  Both triangle + label centered on the 1990 axis position. */}
               <div
-                className="absolute"
+                className="absolute flex flex-col items-center"
                 style={{
                   left: `${yearToPercent(1990)}%`,
-                  top: "28px",
+                  top: "26px",
                   transform: "translateX(-50%)",
                 }}
               >
-                <div className="w-0 h-0 border-l-4 border-r-4 border-t-6 border-l-transparent border-r-transparent" style={{ borderTopColor: "#f87171" }} />
+                <div className="w-0 h-0 border-l-[5px] border-r-[5px] border-t-[7px] border-l-transparent border-r-transparent" style={{ borderTopColor: "#f87171" }} />
                 <div
-                  className="text-[8px] tracking-wider mt-0.5 whitespace-nowrap -translate-x-1/4"
+                  className="text-[8px] tracking-wider mt-0.5 whitespace-nowrap"
                   style={{ color: "#f87171" }}
                 >
                   Hyperinflation 1990

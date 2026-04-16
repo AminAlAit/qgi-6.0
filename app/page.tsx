@@ -106,6 +106,13 @@ export default function LandingPage() {
               How it works
             </a>
             <Link
+              href="/reports"
+              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Reports
+            </Link>
+            <Link
               href="/methodology"
               className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-muted)" }}

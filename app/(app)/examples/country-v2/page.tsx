@@ -631,13 +631,20 @@ export default function CountryV2Page() {
             border: "1px solid var(--qgi-border)",
           }}
         >
-          <h2
-            className="text-[11px] tracking-widest uppercase font-semibold mb-2"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            INDICATOR TRAJECTORIES &middot; TOP 6 INDICATORS &middot; 1990-2025
-          </h2>
-          <div className="h-[420px]">
+          <div className="flex items-baseline justify-between mb-2">
+            <h2
+              className="text-[11px] tracking-widest uppercase font-semibold"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              INDICATOR TRAJECTORIES &middot; TOP 6 INDICATORS &middot; 1990-2025
+              <InfoTooltip text="Shows the raw economic story of this country over 35 years. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events. An analyst can instantly see how indicators responded to real-world shocks (e.g. GDP crashed in 1998, military spending spiked in 2022)." />
+            </h2>
+            <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+              Normalized 0-100 scale &middot; hover for raw values
+            </span>
+          </div>
+          {/* Increased height for readability; SVG renderer for crisp lines */}
+          <div className="h-[500px]">
             <ReactECharts
               option={indicatorTrajectoryOption()}
               style={{ height: "100%", width: "100%" }}
@@ -662,6 +669,7 @@ export default function CountryV2Page() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               PATTERN DENSITY (by year)
+              <InfoTooltip text="Shows when QGI found structural similarity between this country and others. A cluster of pattern starts in one decade means many countries' trajectories aligned with this country during that period. Sparse years mean the country was structurally unique. It's a meta-signal about how 'pattern-rich' each era was." />
             </h2>
             <span className="text-[11px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
               12,408 patterns total

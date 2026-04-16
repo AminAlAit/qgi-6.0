@@ -22,8 +22,13 @@ const NAV_ITEMS = [
     icon: "▲",
   },
   {
+    label: "PRECEDENTS",
+    href: "/precedents",
+    icon: "▼",
+  },
+  {
     label: "SIGNALS",
-    href: "/signals-browse",
+    href: "/signals",
     icon: "◈",
   },
   {
