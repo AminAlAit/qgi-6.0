@@ -57,6 +57,11 @@ const EXAMPLE_ITEMS = [
     href: "/examples/pattern-v2",
     icon: "\u25C7", // ◇
   },
+  {
+    label: "BROWSE V2",
+    href: "/examples/patterns-browse-v2",
+    icon: "\u25C7", // ◇
+  },
 ] as const;
 
 export function Sidebar() {
