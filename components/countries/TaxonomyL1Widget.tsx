@@ -61,7 +61,7 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
         borderColor: "var(--qgi-border)",
       }}
     >
-      <div className="flex items-baseline justify-between mb-4">
+      <div className="flex items-baseline justify-between mb-2">
         <h2
           className="text-xs tracking-widest uppercase"
           style={{ color: "var(--qgi-text-dim)" }}
@@ -77,6 +77,16 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
           </span>
         )}
       </div>
+      {/* #12: explain what the numbers mean */}
+      <p
+        className="text-[11px] leading-relaxed mb-4"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        These 8 cards summarize recent risk signals across the master taxonomy
+        groups. Each score reflects the <strong>most recent + most impactful
+        event</strong> in that domain (recency-weighted max). Higher = more
+        recent activity. Click a card to see sub-categories.
+      </p>
 
       {/* 8 L1 cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
@@ -101,6 +111,7 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
                 borderLeftColor: l1.color_hint,
               }}
               aria-expanded={isOpen}
+              title={l1.definition}
             >
               <div className="flex items-baseline justify-between mb-1">
                 <span
@@ -116,6 +127,12 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
                 style={{ color: "var(--qgi-text)" }}
               >
                 {l1.display_label}
+              </div>
+              {/* #12: tier label beneath the card name */}
+              <div className="text-[9px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
+                {tier === "high" ? "Recent activity" :
+                 tier === "moderate" ? "Active (1-3yr)" :
+                 tier === "indicative" ? "Historical only" : "No events"}
               </div>
             </button>
           );

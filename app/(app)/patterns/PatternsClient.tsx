@@ -119,21 +119,55 @@ export default function PatternsClient() {
     ? detail?.scdis.filter((s) => s.index_name === selectedIndex) ?? []
     : detail?.scdis ?? [];
 
+  // #9: collapse the cascade sidebar when a pattern is loaded to reclaim
+  // ~256px for the data viz. User can re-expand with the "Change pattern" button.
+  const [cascadeExpanded, setCascadeExpanded] = useState(true);
+  const hasDetail = detail != null && !loading;
+
   return (
     <div className="flex h-full min-h-0">
-      {/* Left panel — cascade filter */}
-      <div
-        className="w-64 shrink-0 border-r flex flex-col overflow-y-auto"
-        style={{ borderColor: "var(--qgi-border)" }}
-      >
+      {/* Left panel — cascade filter. Collapses when a pattern is loaded. */}
+      {hasDetail && !cascadeExpanded ? (
         <div
-          className="text-[9px] tracking-[0.25em] uppercase px-4 py-2.5 border-b"
-          style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}
+          className="w-10 shrink-0 border-r flex flex-col items-center pt-3"
+          style={{ borderColor: "var(--qgi-border)" }}
         >
-          Discover Patterns
+          <button
+            onClick={() => setCascadeExpanded(true)}
+            className="text-[9px] tracking-wider writing-mode-vertical px-1 py-3 rounded transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{
+              color: "var(--qgi-text-dim)",
+              writingMode: "vertical-lr",
+              transform: "rotate(180deg)",
+            }}
+            title="Expand filter panel"
+          >
+            Change pattern &rsaquo;
+          </button>
         </div>
-        <CascadeFilter initial={initial} onSelect={onSelect} />
-      </div>
+      ) : (
+        <div
+          className={`${hasDetail ? "w-52" : "w-64"} shrink-0 border-r flex flex-col overflow-y-auto transition-all`}
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <div
+            className="text-[9px] tracking-[0.25em] uppercase px-4 py-2.5 border-b flex items-center justify-between"
+            style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}
+          >
+            <span>Discover Patterns</span>
+            {hasDetail && (
+              <button
+                onClick={() => setCascadeExpanded(false)}
+                className="text-[9px] hover:text-[var(--qgi-accent)]"
+                title="Collapse filter panel"
+              >
+                &lsaquo;
+              </button>
+            )}
+          </div>
+          <CascadeFilter initial={initial} onSelect={onSelect} />
+        </div>
+      )}
 
       {/* Main area */}
       <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">

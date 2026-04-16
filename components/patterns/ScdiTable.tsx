@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { pearsonPValue, formatPValue, significanceLabel } from "@/lib/stats";
 import { sectorColor, sectorChipBg, correlationColor, significanceColor } from "@/lib/design";
+import { InfoTooltip } from "@/components/design/InfoTooltip";
 
 interface ScdiRow {
   index_name: string;
@@ -96,15 +97,26 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
         <button onClick={() => toggleSort("index_name")} className="text-left">
           INDICATOR {SortIndicator({ col: "index_name" })}
         </button>
-        <button onClick={() => toggleSort("sector")} className="text-left">
+        <button onClick={() => toggleSort("sector")} className="text-left flex items-center gap-0.5">
           SECTOR {SortIndicator({ col: "sector" })}
+          <InfoTooltip text="The macro-sector this indicator measures (Economic, Demographic, Health, Governance, Infrastructure, etc.). Used for sector-coverage scoring and rose-chart filtering." />
         </button>
-        <span>SOURCE</span>
-        <button onClick={() => toggleSort("correlation")} className="text-right">
+        <span className="flex items-center gap-0.5">
+          SOURCE
+          <InfoTooltip text="The data provider that publishes this indicator. Currently mostly World Bank; FAOSTAT, V-Dem, ILOSTAT being added." />
+        </span>
+        <button onClick={() => toggleSort("correlation")} className="text-right flex items-center justify-end gap-0.5">
           R {SortIndicator({ col: "correlation" })}
+          <InfoTooltip text="Pearson correlation coefficient between Country A's and Country B's value series for this indicator across the pattern window. Ranges -1 to +1. Closer to +/-1 = tighter linear relationship." />
         </button>
-        <span className="text-right" title="Number of observations used to compute the correlation (after dropping years where either side is missing)">N</span>
-        <span className="text-right" title="Two-tailed p-value of the Pearson correlation. *** p<0.001, ** p<0.01, * p<0.05">P-VALUE</span>
+        <span className="text-right flex items-center justify-end gap-0.5">
+          N
+          <InfoTooltip text="Number of matched data points (years) used to compute R. Patterns with low N are statistically weaker even at high R." />
+        </span>
+        <span className="text-right flex items-center justify-end gap-0.5">
+          P-VALUE
+          <InfoTooltip text="Probability that the observed correlation could occur by chance. p < 0.05 = statistically significant. *** = p < 0.001, ** = p < 0.01, * = p < 0.05, ns = not significant." />
+        </span>
         <span></span>
       </div>
 

@@ -153,10 +153,13 @@ export function CountryProfileClient({
           style={{ color: "var(--qgi-text-dim)" }}
         >
           Risk Breakdown by Category
-          <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger and more consequential signal." />
+          <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal. Categories with below-average signal density (negative scores) are hidden." />
         </h2>
         <div className="space-y-2">
-          {categoryZScores.slice(0, 10).map(({ category, salience, recipe_count }) => (
+          {/* #13: filter out negative z-scores — they represent below-average
+              signal density (not "negative risk") and are visually misleading
+              when shown as negative bars. */}
+          {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
             <Link
               key={category}
               href={`/countries/${countryId}/${encodeURIComponent(category)}`}

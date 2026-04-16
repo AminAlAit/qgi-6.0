@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { InfoTooltip } from "@/components/design/InfoTooltip";
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -114,7 +115,7 @@ export function PrecedentDetailClient({
           style={{ color: "var(--qgi-text-dim)" }}
         >
           <div>Scoring: {version}</div>
-          {generatedAt && <div>Updated: {new Date(generatedAt).toLocaleDateString()}</div>}
+          {generatedAt && <div>Updated: {generatedAt.slice(0, 10)}</div>}
         </div>
       </div>
 
@@ -131,28 +132,32 @@ export function PrecedentDetailClient({
         </p>
       </div>
 
-      {/* ─── Key Metrics ────────────────────────────────────────── */}
+      {/* ─── Key Metrics — #10: (i) tooltips ──────────────────── */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
         <MetricCard
           value={totalRecipes.toLocaleString()}
           label="Precedent Windows"
           note="Historical trajectory matches"
+          tooltip="Count of historical pattern windows in QGI's database where another country's trajectory in this category preceded a similar event. Higher = more historical grounding for the current signal."
         />
         <MetricCard
           value={maxSalience.toFixed(2)}
           label="Peak Salience"
           note={maxSalience >= 1.2 ? "High signal" : maxSalience >= 0.5 ? "Moderate signal" : "Weak signal"}
           color={salienceColor}
+          tooltip="Highest salience score among all matched precedents. Combines statistical signal strength (z-score), event consequence (drama tier), and rank-fusion across categories. Range typically 0-3."
         />
         <MetricCard
           value={allMatches.length.toString()}
           label="Active Tiers"
           note={`of 4 pattern length tiers`}
+          tooltip="Which pattern-length tiers (S=3-8 yr, M=9-20 yr, L=21-40 yr, XL=41+ yr) have at least one precedent for this country/category. More active tiers = signal robust across multiple time horizons."
         />
         <MetricCard
-          value={allMatches[0]?.last_event_year?.toString() ?? "—"}
+          value={allMatches[0]?.last_event_year?.toString() ?? "\u2014"}
           label="Last Event Year"
           note="Most recent matching event"
+          tooltip="Year of the most recent verified event in this category for this country. Helps gauge whether the signal is grounded in recent history (high recency weight) vs distant past (decayed weight)."
         />
       </div>
 
@@ -348,11 +353,13 @@ function MetricCard({
   label,
   note,
   color,
+  tooltip,
 }: {
   value: string;
   label: string;
   note: string;
   color?: string;
+  tooltip?: string;
 }) {
   return (
     <div
@@ -368,7 +375,10 @@ function MetricCard({
       >
         {value}
       </div>
-      <div className="text-xs font-medium mt-1">{label}</div>
+      <div className="text-xs font-medium mt-1">
+        {label}
+        {tooltip && <InfoTooltip text={tooltip} />}
+      </div>
       <div className="text-[10px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
         {note}
       </div>

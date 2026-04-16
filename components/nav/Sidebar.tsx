@@ -38,6 +38,27 @@ const NAV_ITEMS = [
   },
 ] as const;
 
+// UX prototype pages — example implementations of the Sonnet UX consult
+// redesigns (2026-04-16). These are NOT live pages; they show hardcoded
+// sample data to demonstrate the proposed layouts before implementation.
+const EXAMPLE_ITEMS = [
+  {
+    label: "PRECEDENT V2",
+    href: "/examples/precedent-v2",
+    icon: "\u25C7", // ◇
+  },
+  {
+    label: "COUNTRY V2",
+    href: "/examples/country-v2",
+    icon: "\u25C7", // ◇
+  },
+  {
+    label: "PATTERN V2",
+    href: "/examples/pattern-v2",
+    icon: "\u25C7", // ◇
+  },
+] as const;
+
 export function Sidebar() {
   const pathname = usePathname();
 
@@ -108,6 +129,36 @@ export function Sidebar() {
             </Link>
           );
         })}
+
+        {/* ---- Examples divider + links ---- */}
+        <div
+          className="mt-4 pt-3 mx-3 border-t"
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <span
+            className="block px-3 pb-2 text-[9px] tracking-[0.2em] uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            EXAMPLES
+          </span>
+          {EXAMPLE_ITEMS.map(({ label, href, icon }) => {
+            const active = pathname === href || pathname.startsWith(href + "/");
+            return (
+              <Link
+                key={href}
+                href={href}
+                className="flex items-center gap-3 px-3 py-2 rounded text-xs tracking-widest transition-colors"
+                style={{
+                  color: active ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                  backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
+                }}
+              >
+                <span className="text-base leading-none w-4 text-center">{icon}</span>
+                {label}
+              </Link>
+            );
+          })}
+        </div>
       </nav>
 
       {/* Footer */}

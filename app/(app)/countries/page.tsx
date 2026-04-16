@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { CountriesClient } from "@/components/countries/CountriesClient";
 
@@ -5,6 +7,33 @@ export const metadata = {
   title: "Countries — QGI Intelligence",
   description: "Browse country risk profiles powered by historical precedent analysis.",
 };
+
+/** Load all salience L1 scores server-side and pass to client. */
+function loadAllSalienceScores(): Record<string, Record<string, number>> {
+  const salienceDir = path.join(process.cwd(), "data", "salience");
+  const map: Record<string, Record<string, number>> = {};
+
+  try {
+    const files = fs.readdirSync(salienceDir);
+    for (const file of files) {
+      if (file === "_index.json" || !file.endsWith(".json")) continue;
+      const slug = file.replace(".json", "");
+      try {
+        const raw = fs.readFileSync(path.join(salienceDir, file), "utf-8");
+        const data = JSON.parse(raw);
+        if (data.l1_scores) {
+          map[slug] = data.l1_scores;
+        }
+      } catch {
+        // Skip malformed files
+      }
+    }
+  } catch {
+    // Salience dir not available
+  }
+
+  return map;
+}
 
 export default async function CountriesPage() {
   let countries: Awaited<ReturnType<typeof getCountriesSortedByRisk>> = [];
@@ -42,5 +71,7 @@ export default async function CountriesPage() {
     );
   }
 
-  return <CountriesClient countries={countries} />;
+  const salienceMap = loadAllSalienceScores();
+
+  return <CountriesClient countries={countries} salienceMap={salienceMap} />;
 }
