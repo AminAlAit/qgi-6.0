@@ -169,6 +169,8 @@ export default function PatternV2Page() {
   const gaugePct = PATTERN.pps * 100;
   // #13: expandable SCDI — click a card to show the full line chart inline
   const [expandedIndex, setExpandedIndex] = useState<string | null>(null);
+  // #2: per-card align toggle — when ON shows "Year 1..11", when OFF shows actual calendar years
+  const [scdiAligned, setScdiAligned] = useState(true);
 
   return (
     <div
@@ -538,7 +540,29 @@ export default function PatternV2Page() {
 
                     {isExpanded && series ? (
                       /* Full line chart when expanded */
-                      <div className="h-48 mb-2">
+                      <div>
+                        {/* #2: Align toggle */}
+                        <div className="flex items-center gap-2 mb-1" onClick={(e) => e.stopPropagation()}>
+                          <label className="flex items-center gap-1.5 cursor-pointer">
+                            <input
+                              type="checkbox"
+                              checked={scdiAligned}
+                              onChange={(e) => { e.stopPropagation(); setScdiAligned(e.target.checked); }}
+                              className="accent-[var(--qgi-accent)]"
+                            />
+                            <span className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                              Align to Year 1
+                            </span>
+                          </label>
+                          {!scdiAligned && (
+                            <span className="text-[8px]" style={{ color: "var(--qgi-text-dim)" }}>
+                              {PATTERN.countryA.name} {PATTERN.countryA.windowStart}-{PATTERN.countryA.windowEnd}
+                              {" vs "}
+                              {PATTERN.countryB.name} {PATTERN.countryB.windowStart}-{PATTERN.countryB.windowEnd}
+                            </span>
+                          )}
+                        </div>
+                        <div className="h-48 mb-2">
                         <ReactECharts
                           option={{
                             backgroundColor: "transparent",
@@ -559,12 +583,13 @@ export default function PatternV2Page() {
                             grid: { top: 30, right: 12, bottom: 24, left: 48 },
                             xAxis: {
                               type: "category",
-                              data: Array.from(
-                                { length: PATTERN.length },
-                                (_, j) => `Year ${j + 1}`
-                              ),
+                              data: scdiAligned
+                                ? Array.from({ length: PATTERN.length }, (_, j) => `Year ${j + 1}`)
+                                : Array.from({ length: PATTERN.length }, (_, j) =>
+                                    `${PATTERN.countryA.windowStart + j} / ${PATTERN.countryB.windowStart + j}`
+                                  ),
                               axisLine: { lineStyle: { color: "#243347" } },
-                              axisLabel: { color: "#4a6280", fontSize: 9 },
+                              axisLabel: { color: "#4a6280", fontSize: 9, rotate: scdiAligned ? 0 : 35 },
                             },
                             yAxis: {
                               type: "value",
@@ -599,6 +624,7 @@ export default function PatternV2Page() {
                           style={{ height: "100%", width: "100%" }}
                           notMerge
                         />
+                      </div>
                       </div>
                     ) : (
                       /* Sparkline when collapsed */
