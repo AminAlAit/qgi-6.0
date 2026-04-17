@@ -19,6 +19,8 @@ import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { IndexCatalogue } from "@/components/dashboard/IndexCatalogue";
+import { WorldDotMap } from "@/components/charts/WorldDotMap";
+import type { DotCountry } from "@/components/charts/WorldDotMap";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
 import {
@@ -428,6 +430,18 @@ export function BaseClient({
     return { sTierSignals, risingSalience, peakSalience, activeConvergences };
   }, [risks, topSignals]);
 
+  // ── Dot map countries ───────────────────────────────────────────
+  const dotCountries: DotCountry[] = useMemo(() => {
+    if (!risks) return [];
+    return Object.entries(risks.countries).map(([id, c]) => ({
+      id,
+      name: c.name,
+      alpha_2: c.alpha_2,
+      tier: c.overall_risk_tier,
+      region: REGION_MAP[id] ?? "ECA",
+    }));
+  }, [risks]);
+
   // ── Sector counts for collapsed SectorRose ──────────────────────
   const sectorCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -776,6 +790,18 @@ export function BaseClient({
           </div>
         </div>
       </div>
+
+      {/* ================================================================
+          ZONE 2.5: GLOBAL RISK MAP (dot cartogram)
+          ================================================================ */}
+      {dotCountries.length > 0 && (
+        <div
+          className="border-t shrink-0"
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <WorldDotMap countries={dotCountries} />
+        </div>
+      )}
 
       {/* ================================================================
           ZONE 3: INTELLIGENCE GRID

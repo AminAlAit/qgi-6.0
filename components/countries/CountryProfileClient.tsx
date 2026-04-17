@@ -2,12 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import TaxonomyL1Widget from "@/components/countries/TaxonomyL1Widget";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { EventsTimeline } from "@/components/countries/EventsTimeline";
+
+const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -29,6 +32,21 @@ const TIER_COLORS: Record<string, string> = {
   L: "#38bdf8",
   XL: "#a78bfa",
 };
+
+/* L1 category identifiers and short labels for the radar chart */
+const L1_CATEGORIES: { id: string; label: string; short: string }[] = [
+  { id: "conflict_security", label: "Conflict & Security", short: "Conflict" },
+  { id: "governance_institutional", label: "Governance & Institutions", short: "Govern." },
+  { id: "diplomacy_geopolitics", label: "Diplomacy & Geopolitics", short: "Diplo." },
+  { id: "economic_financial", label: "Economic & Financial Stress", short: "Econ." },
+  { id: "demography_migration", label: "Demography & Migration", short: "Demog." },
+  { id: "climate_environment", label: "Climate & Environment", short: "Climate" },
+  { id: "public_health", label: "Public Health", short: "Health" },
+  { id: "human_rights_social", label: "Human Rights & Social", short: "Rights" },
+];
+
+/** World median approximation for each L1 (global avg ~0.29) */
+const L1_WORLD_MEDIAN = 0.29;
 
 interface TimelineEvent {
   year: number;
