@@ -77,6 +77,7 @@ export function CountryProfileClient({
 }: Props) {
   const router = useRouter();
   const [activeTier, setActiveTier] = useState<string>("S");
+  const [precedentsTableOpen, setPrecedentsTableOpen] = useState(false);
   const style = TIER_STYLES[country.overall_risk_tier];
 
   const tierData = country.tiers?.[activeTier];
@@ -465,6 +466,86 @@ export function CountryProfileClient({
           </p>
         )}
       </section>
+
+      {/* ─── Full Precedent Table (collapsed by default, V2 ported) ── */}
+      {(() => {
+        const allPrecedents = getAllPrecedents(country);
+        if (allPrecedents.length === 0) return null;
+        return (
+          <section
+            className="rounded-lg overflow-hidden mb-6"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+            }}
+          >
+            <button
+              onClick={() => setPrecedentsTableOpen(!precedentsTableOpen)}
+              className="w-full flex items-center justify-between p-5 transition-colors"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              <span className="text-[11px] tracking-widest uppercase font-semibold">
+                FULL PRECEDENT TABLE ({allPrecedents.length} categories)
+              </span>
+              <span className="text-sm">{precedentsTableOpen ? "\u25B2" : "\u25BC"}</span>
+            </button>
+            {precedentsTableOpen && (
+              <div className="px-5 pb-5">
+                <table className="w-full text-[11px]">
+                  <thead>
+                    <tr style={{ color: "var(--qgi-text-dim)" }}>
+                      <th className="text-left py-2 tracking-widest font-normal">CATEGORY</th>
+                      <th className="text-center py-2 tracking-widest font-normal">TIER</th>
+                      <th className="text-right py-2 tracking-widest font-normal">SALIENCE</th>
+                      <th className="text-right py-2 tracking-widest font-normal">RECIPES</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {allPrecedents.map((p) => (
+                      <tr
+                        key={`${p.tier}-${p.category}`}
+                        className="border-t cursor-pointer transition-colors hover:bg-[var(--qgi-surface-2)]"
+                        style={{ borderColor: "var(--qgi-border)" }}
+                        onClick={() =>
+                          router.push(
+                            `/countries/${countryId}/${encodeURIComponent(p.category)}`
+                          )
+                        }
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === "Enter" || e.key === " ") {
+                            e.preventDefault();
+                            router.push(
+                              `/countries/${countryId}/${encodeURIComponent(p.category)}`
+                            );
+                          }
+                        }}
+                      >
+                        <td className="py-2" style={{ color: "var(--qgi-text)" }}>
+                          {formatCategory(p.category)}
+                        </td>
+                        <td
+                          className="py-2 text-center font-data font-bold"
+                          style={{ color: TIER_COLORS[p.tier] ?? "var(--qgi-text-muted)" }}
+                        >
+                          {p.tier}
+                        </td>
+                        <td className="py-2 text-right font-data" style={{ color: "var(--qgi-text)" }}>
+                          {p.salience.toFixed(2)}
+                        </td>
+                        <td className="py-2 text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                          {p.recipes}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </section>
+        );
+      })()}
 
       {/* ─── Events Timeline ───────────────────────────────────────── */}
       {events.length > 0 && (
@@ -861,6 +942,28 @@ function countryFlag(alpha2: string): string {
     (c) => 0x1f1e6 + c.charCodeAt(0) - 65
   );
   return String.fromCodePoint(...codePoints);
+}
+
+/**
+ * Flatten all tier top_categories into a single sorted list for the
+ * Full Precedent Table. Each entry keeps its tier label (S/M/L/XL) and
+ * is sorted by salience descending.
+ */
+function getAllPrecedents(
+  country: CountryRisk
+): Array<{ category: string; tier: string; salience: number; recipes: number }> {
+  const rows: Array<{ category: string; tier: string; salience: number; recipes: number }> = [];
+  for (const [tierKey, tierData] of Object.entries(country.tiers)) {
+    for (const cat of tierData.top_categories) {
+      rows.push({
+        category: cat.category,
+        tier: tierKey,
+        salience: cat.salience_score ?? cat.z_score,
+        recipes: cat.recipe_count,
+      });
+    }
+  }
+  return rows.sort((a, b) => b.salience - a.salience);
 }
 
 function formatCategory(cat: string): string {

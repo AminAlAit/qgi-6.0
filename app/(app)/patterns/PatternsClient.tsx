@@ -771,259 +771,304 @@ export default function PatternsClient() {
                 </div>
               </section>
 
-              {/* === TOOLBAR === */}
-              <div
-                className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  border: "1px solid var(--qgi-border)",
-                }}
-              >
-                {/* Transformation selector */}
-                <select
-                  value={transformation}
-                  onChange={(e) => setTransformation(e.target.value as Transformation)}
-                  className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
-                  style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
-                >
-                  {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
-                    <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
-                      {v}
-                    </option>
-                  ))}
-                </select>
-
-                {/* Align toggle -- V2 style (switch, not checkbox) */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
-                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+              {/* === MAIN BODY: Charts + table (left) + Related patterns (right) === */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
+                {/* ---- Left column: toolbar + charts + table ---- */}
+                <div className="space-y-6">
+                  {/* === TOOLBAR === */}
+                  <div
+                    className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
                     style={{
-                      backgroundColor: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      opacity: startsDiffer ? 0.6 : 1,
-                      cursor: startsDiffer ? "default" : "pointer",
+                      backgroundColor: "var(--qgi-surface)",
+                      border: "1px solid var(--qgi-border)",
                     }}
-                    title={startsDiffer ? "Auto-aligned: windows at different calendar years" : "Align to Year 1, Year 2, ..."}
                   >
-                    <div
-                      className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
-                      style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
-                    />
-                  </button>
-                  <span className="text-[10px] tracking-wider" style={{ color: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                    {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
-                    {startsDiffer && <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>}
-                  </span>
-                </div>
-
-                <div className="flex-1" />
-
-                {/* Sector chips */}
-                <div className="flex gap-2 flex-wrap">
-                  {Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]).map(([s]) => (
-                    <span
-                      key={s}
-                      className="px-2 py-0.5 rounded text-[9px] tracking-wider"
-                      style={{
-                        backgroundColor: `${getSectorColor(s)}18`,
-                        color: getSectorColor(s),
-                        border: `1px solid ${getSectorColor(s)}33`,
-                      }}
+                    {/* Transformation selector */}
+                    <select
+                      value={transformation}
+                      onChange={(e) => setTransformation(e.target.value as Transformation)}
+                      className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
+                      style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
                     >
-                      {s.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
+                      {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
+                        <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
+                          {v}
+                        </option>
+                      ))}
+                    </select>
 
-                {/* Section toggles */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setShowTable(!showTable)}
-                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                    style={{
-                      borderColor: showTable ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                    }}
-                  >
-                    TABLE
-                  </button>
-                  <button
-                    onClick={() => setShowCharts(!showCharts)}
-                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                    style={{
-                      borderColor: showCharts ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                    }}
-                  >
-                    CHARTS
-                  </button>
-                </div>
-              </div>
-
-              {/* === V2 EXPANDABLE SCDI CARDS === */}
-              {showCharts && (
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                  {detail.scdis.map((s, i) => {
-                    const isExpanded = expandedScdi === s.index_name;
-                    const sc = getSectorColor(s.sector);
-                    return (
-                      <div
-                        key={s.index_name}
-                        className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
+                    {/* Align toggle -- V2 style (switch, not checkbox) */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
+                        className="relative w-8 h-4 rounded-full transition-colors shrink-0"
                         style={{
-                          backgroundColor: `${sc}08`,
-                          border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
+                          backgroundColor: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-border)",
+                          opacity: startsDiffer ? 0.6 : 1,
+                          cursor: startsDiffer ? "default" : "pointer",
                         }}
-                        onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
+                        title={startsDiffer ? "Auto-aligned: windows at different calendar years" : "Align to Year 1, Year 2, ..."}
                       >
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
-                            {s.index_name}
-                          </div>
-                          <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
-                            {isExpanded ? "collapse" : "expand"}
-                          </span>
-                        </div>
+                        <div
+                          className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+                          style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
+                        />
+                      </button>
+                      <span className="text-[10px] tracking-wider" style={{ color: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                        {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
+                        {startsDiffer && <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>}
+                      </span>
+                    </div>
 
-                        {isExpanded ? (
-                          <div>
-                            {/* Align toggle for SCDI chart */}
-                            <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
-                              <button
-                                onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
-                                className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                                style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
-                              >
-                                <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
-                              </button>
-                              <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                                {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
+                    <div className="flex-1" />
+
+                    {/* Sector chips */}
+                    <div className="flex gap-2 flex-wrap">
+                      {Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]).map(([s]) => (
+                        <span
+                          key={s}
+                          className="px-2 py-0.5 rounded text-[9px] tracking-wider"
+                          style={{
+                            backgroundColor: `${getSectorColor(s)}18`,
+                            color: getSectorColor(s),
+                            border: `1px solid ${getSectorColor(s)}33`,
+                          }}
+                        >
+                          {s.toUpperCase()}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Section toggles */}
+                    <div className="flex gap-2">
+                      <button
+                        onClick={() => setShowTable(!showTable)}
+                        className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                        style={{
+                          borderColor: showTable ? "var(--qgi-accent)" : "var(--qgi-border)",
+                          color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                        }}
+                      >
+                        TABLE
+                      </button>
+                      <button
+                        onClick={() => setShowCharts(!showCharts)}
+                        className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                        style={{
+                          borderColor: showCharts ? "var(--qgi-accent)" : "var(--qgi-border)",
+                          color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                        }}
+                      >
+                        CHARTS
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* === V2 EXPANDABLE SCDI CARDS === */}
+                  {showCharts && (
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      {detail.scdis.map((s, i) => {
+                        const isExpanded = expandedScdi === s.index_name;
+                        const sc = getSectorColor(s.sector);
+                        return (
+                          <div
+                            key={s.index_name}
+                            className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
+                            style={{
+                              backgroundColor: `${sc}08`,
+                              border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
+                            }}
+                            onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
+                                {s.index_name}
+                              </div>
+                              <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
+                                {isExpanded ? "collapse" : "expand"}
                               </span>
                             </div>
-                            <div className="h-48 mb-2">
-                              <ReactECharts
-                                option={{
-                                  backgroundColor: "transparent",
-                                  tooltip: {
-                                    trigger: "axis",
-                                    backgroundColor: "#1e2d42",
-                                    borderColor: "#243347",
-                                    textStyle: { color: "#e2e8f0", fontSize: 10 },
-                                  },
-                                  legend: {
-                                    data: [countryA, countryB],
-                                    top: 0, right: 8,
-                                    textStyle: { color: "#7a90a8", fontSize: 9 },
-                                    itemWidth: 12, itemHeight: 2,
-                                  },
-                                  grid: { top: 30, right: 12, bottom: 24, left: 48 },
-                                  xAxis: scdiAligned
-                                    ? {
-                                        type: "category" as const,
-                                        data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9 },
-                                      }
-                                    : {
-                                        type: "value" as const,
-                                        min: Math.min(startA, startB) - 1,
-                                        max: Math.max(endA, endB) + 1,
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
-                                        splitLine: { show: false },
-                                      },
-                                  yAxis: {
-                                    type: "value",
-                                    scale: true,
-                                    axisLine: { lineStyle: { color: "#243347" } },
-                                    splitLine: { lineStyle: { color: "#1a2a3a" } },
-                                    axisLabel: { color: "#4a6280", fontSize: 9 },
-                                  },
-                                  series: scdiAligned
-                                    ? [
-                                        { name: countryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                        { name: countryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                      ]
-                                    : [
-                                        { name: countryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                        { name: countryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                      ],
-                                }}
-                                style={{ height: "100%", width: "100%" }}
-                                notMerge
-                              />
-                            </div>
-                          </div>
-                        ) : (
-                          /* Sparkline when collapsed */
-                          <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                            <div className="flex items-end gap-px h-16 w-full px-1">
-                              {Array.from({ length: Math.min(len, 20) }, (_, j) => {
-                                const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
-                                return (
-                                  <div
-                                    key={j}
-                                    className="flex-1 rounded-t"
-                                    style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
-                                  />
-                                );
-                              })}
-                            </div>
-                          </div>
-                        )}
 
-                        <div className="flex items-center justify-between">
-                          <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
-                          <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                            r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
-                          </span>
+                            {isExpanded ? (
+                              <div>
+                                {/* Align toggle for SCDI chart */}
+                                <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
+                                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                                    style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
+                                  >
+                                    <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
+                                  </button>
+                                  <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                                    {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
+                                  </span>
+                                </div>
+                                <div className="h-48 mb-2">
+                                  <ReactECharts
+                                    option={{
+                                      backgroundColor: "transparent",
+                                      tooltip: {
+                                        trigger: "axis",
+                                        backgroundColor: "#1e2d42",
+                                        borderColor: "#243347",
+                                        textStyle: { color: "#e2e8f0", fontSize: 10 },
+                                      },
+                                      legend: {
+                                        data: [countryA, countryB],
+                                        top: 0, right: 8,
+                                        textStyle: { color: "#7a90a8", fontSize: 9 },
+                                        itemWidth: 12, itemHeight: 2,
+                                      },
+                                      grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                                      xAxis: scdiAligned
+                                        ? {
+                                            type: "category" as const,
+                                            data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
+                                            axisLine: { lineStyle: { color: "#243347" } },
+                                            axisLabel: { color: "#4a6280", fontSize: 9 },
+                                          }
+                                        : {
+                                            type: "value" as const,
+                                            min: Math.min(startA, startB) - 1,
+                                            max: Math.max(endA, endB) + 1,
+                                            axisLine: { lineStyle: { color: "#243347" } },
+                                            axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
+                                            splitLine: { show: false },
+                                          },
+                                      yAxis: {
+                                        type: "value",
+                                        scale: true,
+                                        axisLine: { lineStyle: { color: "#243347" } },
+                                        splitLine: { lineStyle: { color: "#1a2a3a" } },
+                                        axisLabel: { color: "#4a6280", fontSize: 9 },
+                                      },
+                                      series: scdiAligned
+                                        ? [
+                                            { name: countryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                            { name: countryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                          ]
+                                        : [
+                                            { name: countryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                            { name: countryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                          ],
+                                    }}
+                                    style={{ height: "100%", width: "100%" }}
+                                    notMerge
+                                  />
+                                </div>
+                              </div>
+                            ) : (
+                              /* Sparkline when collapsed */
+                              <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
+                                <div className="flex items-end gap-px h-16 w-full px-1">
+                                  {Array.from({ length: Math.min(len, 20) }, (_, j) => {
+                                    const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
+                                    return (
+                                      <div
+                                        key={j}
+                                        className="flex-1 rounded-t"
+                                        style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
+                                      />
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+
+                            <div className="flex items-center justify-between">
+                              <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
+                              <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
+                                r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* === SCDI TABLE === */}
+                  {showTable && (
+                    <div
+                      className="rounded-xl overflow-hidden"
+                      style={{
+                        backgroundColor: "var(--qgi-surface)",
+                        border: "1px solid var(--qgi-border)",
+                      }}
+                    >
+                      <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
+                        Indicator Matches ({detail.scdis.length})
+                      </div>
+                      <ScdiTable
+                        scdis={detail.scdis}
+                        onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
+                        selectedIndex={selectedIndex}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                {/* ---- Right column: Related Patterns sidebar ---- */}
+                <div className="space-y-4">
+                  {([
+                    {
+                      title: "SAME PREDICTOR",
+                      subtitle: `${countryA} \u2192 others`,
+                    },
+                    {
+                      title: "SAME FOLLOWING",
+                      subtitle: `others \u2192 ${countryB}`,
+                    },
+                    {
+                      title: "SIMILAR MIX",
+                      subtitle: Object.entries(sectorCounts)
+                        .sort((a, b) => b[1] - a[1])
+                        .slice(0, 3)
+                        .map(([s]) => s.toUpperCase())
+                        .join(" + "),
+                    },
+                  ] as const).map((group) => (
+                    <div
+                      key={group.title}
+                      className="rounded-xl p-4"
+                      style={{
+                        backgroundColor: "var(--qgi-surface)",
+                        border: "1px solid var(--qgi-border)",
+                      }}
+                    >
+                      <div className="mb-3">
+                        <div
+                          className="text-[10px] tracking-widest uppercase font-semibold"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          {group.title}
+                        </div>
+                        <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                          {group.subtitle}
                         </div>
                       </div>
-                    );
-                  })}
+                      <div
+                        className="rounded-lg p-3 text-center"
+                        style={{
+                          backgroundColor: "var(--qgi-surface-2)",
+                          border: "1px dashed var(--qgi-border)",
+                        }}
+                      >
+                        <p className="text-[10px] leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
+                          Related patterns will appear here once the pipeline pre-computes partner indexes.
+                        </p>
+                        <a
+                          href="/patterns/ranking"
+                          className="text-[9px] tracking-wider mt-2 inline-block underline"
+                          style={{ color: "var(--qgi-accent)" }}
+                        >
+                          Browse ranking &rarr;
+                        </a>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              )}
-
-              {/* === SCDI TABLE === */}
-              {showTable && (
-                <div
-                  className="rounded-xl overflow-hidden"
-                  style={{
-                    backgroundColor: "var(--qgi-surface)",
-                    border: "1px solid var(--qgi-border)",
-                  }}
-                >
-                  <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
-                    Indicator Matches ({detail.scdis.length})
-                  </div>
-                  <ScdiTable
-                    scdis={detail.scdis}
-                    onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
-                    selectedIndex={selectedIndex}
-                  />
-                </div>
-              )}
-
-              {/* === RELATED PATTERNS SIDEBAR (placeholder) === */}
-              <div
-                className="rounded-xl p-5"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  border: "1px dashed var(--qgi-border)",
-                }}
-              >
-                <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-                  RELATED PATTERNS
-                </div>
-                <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-                  Related patterns (same predictor, same following, similar indicator mix) will appear
-                  here after the pattern adjacency pre-computation pipeline runs. For now, explore
-                  the{" "}
-                  <a href="/patterns/ranking" className="underline" style={{ color: "var(--qgi-accent)" }}>
-                    full ranking
-                  </a>{" "}
-                  to discover similar patterns.
-                </p>
               </div>
 
               {/* === METHODOLOGY FOOTER === */}

@@ -208,7 +208,37 @@ function topoToGeo(topology: Topology): GeoFeatureCollection {
     };
   });
 
+  // Fix antimeridian rendering bug: clamp all longitude values to [-180, 180].
+  // TopoJSON delta-encoding can produce longitudes slightly > 180 for features
+  // that cross the antimeridian (Russia, Fiji, etc.), causing the renderer to
+  // draw lines across the entire map.
+  for (const feature of features) {
+    clampCoordinates(feature.geometry);
+  }
+
   return { type: "FeatureCollection" as const, features };
+}
+
+/**
+ * Recursively walk all coordinate arrays in a GeoJSON geometry and
+ * wrap any longitude > 180 to longitude - 360 (and < -180 to + 360).
+ */
+function clampCoordinates(geometry: { type: string; coordinates: unknown }) {
+  function walkCoords(coords: unknown): void {
+    if (!Array.isArray(coords)) return;
+    // If this is a coordinate pair [lng, lat, ...]
+    if (coords.length >= 2 && typeof coords[0] === "number" && typeof coords[1] === "number") {
+      // Wrap longitude to [-180, 180]
+      if (coords[0] > 180) coords[0] = coords[0] - 360;
+      else if (coords[0] < -180) coords[0] = coords[0] + 360;
+      return;
+    }
+    // Otherwise recurse into nested arrays (rings, polygons, multi-polygons)
+    for (const child of coords) {
+      walkCoords(child);
+    }
+  }
+  walkCoords(geometry.coordinates);
 }
 
 // ---------------------------------------------------------------------------
