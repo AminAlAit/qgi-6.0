@@ -586,24 +586,25 @@ export default function PatternV2Page() {
                               itemWidth: 12,
                               itemHeight: 2,
                             },
-                            grid: { top: 30, right: 12, bottom: scdiAligned ? 24 : 40, left: 48 },
-                            xAxis: {
-                              type: "category",
-                              data: scdiAligned
-                                ? Array.from({ length: PATTERN.length }, (_, j) => `Year ${j + 1}`)
-                                : Array.from({ length: PATTERN.length }, (_, j) =>
-                                    // Show predictor year on top, follower year below
-                                    `${PATTERN.countryA.windowStart + j}\n${PATTERN.countryB.windowStart + j}`
-                                  ),
-                              axisLine: { lineStyle: { color: "#243347" } },
-                              axisLabel: {
-                                color: "#4a6280",
-                                fontSize: 8,
-                                rotate: 0,
-                                interval: scdiAligned ? "auto" : 1,
-                                lineHeight: 12,
-                              },
-                            },
+                            grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                            xAxis: scdiAligned
+                              ? {
+                                  type: "category" as const,
+                                  data: Array.from({ length: PATTERN.length }, (_, j) => `Year ${j + 1}`),
+                                  axisLine: { lineStyle: { color: "#243347" } },
+                                  axisLabel: { color: "#4a6280", fontSize: 9 },
+                                }
+                              : {
+                                  // Shared calendar axis spanning both windows + the gap.
+                                  // Brazil 1981-1991 plotted at their years, Argentina 1995-2005
+                                  // at theirs. The 1992-1994 gap is VISIBLE as empty space.
+                                  type: "value" as const,
+                                  min: Math.min(PATTERN.countryA.windowStart, PATTERN.countryB.windowStart) - 1,
+                                  max: Math.max(PATTERN.countryA.windowEnd, PATTERN.countryB.windowEnd) + 1,
+                                  axisLine: { lineStyle: { color: "#243347" } },
+                                  axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
+                                  splitLine: { show: false },
+                                },
                             yAxis: {
                               type: "value",
                               scale: true,
@@ -613,26 +614,48 @@ export default function PatternV2Page() {
                               },
                               axisLabel: { color: "#4a6280", fontSize: 9 },
                             },
-                            series: [
-                              {
-                                name: PATTERN.countryA.name,
-                                type: "line",
-                                data: series.a,
-                                lineStyle: { color: "#38bdf8", width: 2 },
-                                itemStyle: { color: "#38bdf8" },
-                                symbol: "circle",
-                                symbolSize: 4,
-                              },
-                              {
-                                name: PATTERN.countryB.name,
-                                type: "line",
-                                data: series.b,
-                                lineStyle: { color: "#fb923c", width: 2 },
-                                itemStyle: { color: "#fb923c" },
-                                symbol: "circle",
-                                symbolSize: 4,
-                              },
-                            ],
+                            series: scdiAligned
+                              ? [
+                                  {
+                                    name: PATTERN.countryA.name,
+                                    type: "line",
+                                    data: series.a,
+                                    lineStyle: { color: "#38bdf8", width: 2 },
+                                    itemStyle: { color: "#38bdf8" },
+                                    symbol: "circle",
+                                    symbolSize: 4,
+                                  },
+                                  {
+                                    name: PATTERN.countryB.name,
+                                    type: "line",
+                                    data: series.b,
+                                    lineStyle: { color: "#fb923c", width: 2 },
+                                    itemStyle: { color: "#fb923c" },
+                                    symbol: "circle",
+                                    symbolSize: 4,
+                                  },
+                                ]
+                              : [
+                                  // Calendar mode: each series plotted at its own years
+                                  {
+                                    name: PATTERN.countryA.name,
+                                    type: "line",
+                                    data: series.a.map((v, j) => [PATTERN.countryA.windowStart + j, v]),
+                                    lineStyle: { color: "#38bdf8", width: 2 },
+                                    itemStyle: { color: "#38bdf8" },
+                                    symbol: "circle",
+                                    symbolSize: 4,
+                                  },
+                                  {
+                                    name: PATTERN.countryB.name,
+                                    type: "line",
+                                    data: series.b.map((v, j) => [PATTERN.countryB.windowStart + j, v]),
+                                    lineStyle: { color: "#fb923c", width: 2 },
+                                    itemStyle: { color: "#fb923c" },
+                                    symbol: "circle",
+                                    symbolSize: 4,
+                                  },
+                                ],
                           }}
                           style={{ height: "100%", width: "100%" }}
                           notMerge

@@ -195,12 +195,13 @@ function normalizeMinMax(data: number[]): number[] {
 
 const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
 
+// #2: Restored original longer/more telling event names (owner preferred them)
 const EVENT_MARKERS: { year: number; label: string }[] = [
-  { year: 1991, label: "USSR" },
-  { year: 1998, label: "Crisis" },
-  { year: 2008, label: "Georgia" },
-  { year: 2014, label: "Crimea" },
-  { year: 2022, label: "Ukraine" },
+  { year: 1991, label: "USSR collapse" },
+  { year: 1998, label: "Financial crisis" },
+  { year: 2008, label: "Georgia war" },
+  { year: 2014, label: "Crimea annexation" },
+  { year: 2022, label: "Ukraine invasion" },
 ];
 
 /** Indices of the 3 most volatile indicators (GDP, Military, Inflation) */
@@ -245,23 +246,27 @@ function indicatorTrajectoryOption(showAll: boolean) {
   });
 
   // Event marker lines — vertical labels, short text
+  // #2: Event marker labels positioned BELOW the legend row (top: 60px start)
+  // with full original names. Rotated -90deg so they run vertically alongside
+  // the marker line without overlapping chart data.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
-    lineStyle: { color: "#f8717150", width: 1, type: "solid" as const },
+    lineStyle: { color: "#f8717140", width: 1.5, type: "solid" as const },
     label: {
       formatter: e.label,
       position: "insideEndTop" as const,
-      color: "#f8717190",
-      fontSize: 8,
+      color: "#f87171",
+      fontSize: 9,
       fontFamily: "'JetBrains Mono', monospace",
       rotate: -90,
-      offset: [0, -4],
+      offset: [0, 8], // push down so labels start below the legend
     },
   }));
 
   return {
     backgroundColor: "transparent",
-    grid: { top: 50, right: 20, bottom: 35, left: 45 },
+    // Increased top to 60px to give room for legend (2 rows) + event labels
+    grid: { top: 60, right: 20, bottom: 35, left: 45 },
     legend: {
       top: 0,
       left: "center",
