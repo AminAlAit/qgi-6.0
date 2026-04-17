@@ -1,20 +1,22 @@
 "use client";
 
 /**
- * PatternsClient V2 — Promoted from prototype to official.
+ * PatternsClient V3 -- Horizontal cascade strip layout.
  *
- * Two views:
- *   1. Landing (S0): Top global pairs table from ranking cache
- *   2. Detail: V2 hero card + timeline ribbon + expandable SCDI cards + align toggle
+ * Browse states (borrowed from Browse V2 prototype):
+ *   S0 - Landing: top 10 global pairs table (from ranking cache)
+ *   S1 - Country A selected: filter strip shows "Predictor > Following"
+ *   S2 - Pair + length selected: year window selector appears
+ *   S3 - Pattern loaded: V2 hero card + expandable SCDIs
  *
- * The cascade filter remains available for manual pattern discovery.
- * Clicking a row in the S0 table navigates to the detail view.
+ * The vertical cascade sidebar has been removed. All filter controls
+ * live in a sticky horizontal strip at the top. Data-fetching logic
+ * from CascadeFilter.tsx is inlined here.
  */
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams, useRouter } from "next/navigation";
-import { CascadeFilter, type PatternSelection } from "@/components/patterns/CascadeFilter";
 import { ScdiTable } from "@/components/patterns/ScdiTable";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
@@ -28,27 +30,35 @@ import countriesList from "@/data/countries.json";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
-// IndexChart kept available for potential future per-indicator deep-dive
-// const IndexChart = dynamic(
-//   () => import("@/components/patterns/IndexChart").then((m) => m.IndexChart),
-//   { ssr: false }
-// );
-
 /* ------------------------------------------------------------------ */
 /*  Country lookup                                                     */
 /* ------------------------------------------------------------------ */
 
+interface CountryEntry {
+  id: string;
+  name: string;
+  alpha_2: string;
+}
+
+const COUNTRIES_LIST = countriesList as CountryEntry[];
+
 const ALPHA2_MAP: Record<string, string> = {};
 const NAME_TO_ALPHA2: Record<string, string> = {};
-for (const c of countriesList as Array<{ id: string; name: string; alpha_2: string }>) {
+const ID_TO_NAME: Record<string, string> = {};
+for (const c of COUNTRIES_LIST) {
   ALPHA2_MAP[c.id] = c.alpha_2;
   NAME_TO_ALPHA2[c.name] = c.alpha_2;
+  ID_TO_NAME[c.id] = c.name;
 }
 
 function getAlpha2(idOrName: string | undefined, name: string): string {
   if (idOrName && ALPHA2_MAP[idOrName]) return ALPHA2_MAP[idOrName];
   if (NAME_TO_ALPHA2[name]) return NAME_TO_ALPHA2[name];
   return "";
+}
+
+function getCountryName(id: string): string {
+  return ID_TO_NAME[id] ?? id;
 }
 
 /* ------------------------------------------------------------------ */
@@ -129,11 +139,235 @@ interface PatternDetail {
 }
 
 /* ------------------------------------------------------------------ */
+/*  Cascade API types (from CascadeFilter)                             */
+/* ------------------------------------------------------------------ */
+
+interface ApiCountry {
+  id: string;
+  name: string;
+}
+
+interface Partner {
+  country_b_id: string;
+  country_b_name: string;
+  available_lengths: number[];
+}
+
+interface YearPair {
+  start_year_a: number;
+  start_year_b: number;
+}
+
+async function apiFetch<T>(url: string): Promise<T> {
+  const res = await fetch(url, { headers: { Authorization: "Bearer __client__" } });
+  if (!res.ok) throw new Error(`${res.status} ${url}`);
+  return res.json();
+}
+
+/* ------------------------------------------------------------------ */
 /*  Timeline helpers                                                   */
 /* ------------------------------------------------------------------ */
 
 function yearToPercent(year: number, start: number, end: number): number {
   return ((year - start) / (end - start)) * 100;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Searchable Country Dropdown (inline, from V2 prototype)            */
+/* ------------------------------------------------------------------ */
+
+interface DropdownOption {
+  id: string;
+  name: string;
+  alpha2: string;
+}
+
+function CountryDropdown({
+  label,
+  value,
+  options,
+  onChange,
+  disabled,
+}: {
+  label: string;
+  value: string; // country id
+  options: DropdownOption[];
+  onChange: (id: string) => void;
+  disabled?: boolean;
+}) {
+  const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState("");
+  const ref = useRef<HTMLDivElement>(null);
+
+  const selected = useMemo(
+    () => options.find((o) => o.id === value) ?? null,
+    [options, value]
+  );
+
+  const filtered = useMemo(() => {
+    if (!search) return options;
+    const q = search.toLowerCase();
+    return options.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        c.alpha2.toLowerCase().includes(q)
+    );
+  }, [options, search]);
+
+  // Close on outside click
+  useEffect(() => {
+    if (!open) return;
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false);
+        setSearch("");
+      }
+    }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [open]);
+
+  return (
+    <div className="relative" ref={ref}>
+      <div
+        className="text-[9px] tracking-widest uppercase mb-1"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        {label}
+      </div>
+      <button
+        onClick={() => !disabled && setOpen(!open)}
+        disabled={disabled}
+        className="flex items-center gap-2 px-3 py-1.5 rounded border text-xs transition-colors min-w-[180px]"
+        style={{
+          backgroundColor: disabled ? "var(--qgi-bg)" : "var(--qgi-surface)",
+          borderColor: open ? "var(--qgi-accent)" : "var(--qgi-border)",
+          color: selected ? "var(--qgi-text)" : "var(--qgi-text-dim)",
+          cursor: disabled ? "not-allowed" : "pointer",
+          opacity: disabled ? 0.5 : 1,
+        }}
+      >
+        {selected ? (
+          <>
+            <CountryFlag alpha2={selected.alpha2} size={14} />
+            <span className="truncate">{selected.name}</span>
+          </>
+        ) : (
+          <span>Select country...</span>
+        )}
+        <span
+          className="ml-auto text-[10px]"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          {open ? "\u25B2" : "\u25BC"}
+        </span>
+      </button>
+
+      {open && (
+        <div
+          className="absolute top-full left-0 mt-1 w-64 rounded-lg border shadow-xl z-50 overflow-hidden"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <div
+            className="p-2 border-b"
+            style={{ borderColor: "var(--qgi-border)" }}
+          >
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search countries..."
+              autoFocus
+              className="w-full px-2 py-1 rounded text-xs border-none outline-none"
+              style={{
+                backgroundColor: "var(--qgi-surface-2)",
+                color: "var(--qgi-text)",
+              }}
+            />
+          </div>
+          <div className="max-h-60 overflow-y-auto">
+            {filtered.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => {
+                  onChange(c.id);
+                  setOpen(false);
+                  setSearch("");
+                }}
+                className="flex items-center gap-2 w-full px-3 py-2 text-xs transition-colors hover:bg-[var(--qgi-surface-2)]"
+                style={{
+                  color:
+                    value === c.id
+                      ? "var(--qgi-accent)"
+                      : "var(--qgi-text)",
+                }}
+              >
+                <CountryFlag alpha2={c.alpha2} size={14} />
+                <span>{c.name}</span>
+                <span
+                  className="ml-auto font-data text-[10px]"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {c.alpha2}
+                </span>
+              </button>
+            ))}
+            {filtered.length === 0 && (
+              <div
+                className="px-3 py-4 text-xs text-center"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                No countries match &quot;{search}&quot;
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Breadcrumb component                                               */
+/* ------------------------------------------------------------------ */
+
+type BrowseState = "S0" | "S1" | "S2" | "S3";
+
+function Breadcrumb({
+  segments,
+  onNavigate,
+}: {
+  segments: { label: string; alpha2?: string; state: BrowseState }[];
+  onNavigate: (state: BrowseState) => void;
+}) {
+  return (
+    <div className="flex items-center gap-1.5 text-[11px] tracking-wider">
+      {segments.map((seg, i) => (
+        <span key={i} className="flex items-center gap-1.5">
+          {i > 0 && (
+            <span style={{ color: "var(--qgi-text-dim)" }}>&rsaquo;</span>
+          )}
+          <button
+            onClick={() => i < segments.length - 1 && onNavigate(seg.state)}
+            className="flex items-center gap-1 px-1.5 py-0.5 rounded transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{
+              color:
+                i === segments.length - 1
+                  ? "var(--qgi-text)"
+                  : "var(--qgi-text-muted)",
+              cursor: i === segments.length - 1 ? "default" : "pointer",
+            }}
+          >
+            {seg.alpha2 && <CountryFlag alpha2={seg.alpha2} size={12} />}
+            {seg.label}
+          </button>
+        </span>
+      ))}
+    </div>
+  );
 }
 
 /* ------------------------------------------------------------------ */
@@ -144,14 +378,27 @@ export default function PatternsClient() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const initial: Partial<PatternSelection> = {
-    country_a: searchParams.get("country_a") ?? undefined,
-    country_b: searchParams.get("country_b") ?? undefined,
-    length: searchParams.get("length") ? Number(searchParams.get("length")) : undefined,
-    start_a: searchParams.get("start_a") ? Number(searchParams.get("start_a")) : undefined,
-    start_b: searchParams.get("start_b") ? Number(searchParams.get("start_b")) : undefined,
-  };
+  // URL-driven initial state
+  const initialA = searchParams.get("country_a") ?? "";
+  const initialB = searchParams.get("country_b") ?? "";
+  const initialLength = searchParams.get("length") ? Number(searchParams.get("length")) : "";
+  const initialStartA = searchParams.get("start_a") ? Number(searchParams.get("start_a")) : "";
+  const initialStartB = searchParams.get("start_b") ? Number(searchParams.get("start_b")) : "";
 
+  // ---- Cascade state (inlined from CascadeFilter) ----
+  const [apiCountries, setApiCountries] = useState<ApiCountry[]>([]);
+  const [partners, setPartners] = useState<Partner[]>([]);
+  const [lengths, setLengths] = useState<number[]>([]);
+  const [yearPairs, setYearPairs] = useState<YearPair[]>([]);
+
+  const [countryA, setCountryA] = useState(initialA);
+  const [countryB, setCountryB] = useState(initialB);
+  const [length, setLength] = useState<number | "">(initialLength);
+  const [yearPair, setYearPair] = useState<string>(
+    initialStartA && initialStartB ? `${initialStartA}:${initialStartB}` : ""
+  );
+
+  // ---- Pattern detail state ----
   const [detail, setDetail] = useState<PatternDetail | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -167,7 +414,6 @@ export default function PatternsClient() {
 
   // V2 detail: expandable SCDI card
   const [expandedScdi, setExpandedScdi] = useState<string | null>(null);
-  // V2 detail: align toggle for SCDI charts
   const [scdiAligned, setScdiAligned] = useState(true);
 
   const startsDiffer =
@@ -175,10 +421,92 @@ export default function PatternsClient() {
     Number(detail.metadata.start_year_a) !== Number(detail.metadata.start_year_b);
   const effectiveAlign = align || startsDiffer;
 
-  const [cascadeExpanded, setCascadeExpanded] = useState(true);
-  const hasDetail = detail != null && !loading;
+  // ---- Derive browse state ----
+  const browseState: BrowseState = detail
+    ? "S3"
+    : yearPair
+      ? "S2"
+      : countryB
+        ? "S2"
+        : countryA
+          ? "S1"
+          : "S0";
 
-  // Fetch top pairs for S0 landing — dedup to show unique pairs
+  // ================================================================
+  //  CASCADE DATA FETCHING (inlined from CascadeFilter)
+  // ================================================================
+
+  // Load countries once
+  useEffect(() => {
+    apiFetch<ApiCountry[]>("/api/countries").then(setApiCountries).catch(() => {});
+  }, []);
+
+  // Build dropdown options for Country A (from API countries list, with alpha2)
+  const countryAOptions: DropdownOption[] = useMemo(() => {
+    return apiCountries.map((c) => ({
+      id: c.id,
+      name: c.name,
+      alpha2: ALPHA2_MAP[c.id] ?? "",
+    }));
+  }, [apiCountries]);
+
+  // Build dropdown options for Country B (from partners list)
+  const countryBOptions: DropdownOption[] = useMemo(() => {
+    return partners.map((p) => ({
+      id: p.country_b_id,
+      name: p.country_b_name,
+      alpha2: ALPHA2_MAP[p.country_b_id] ?? "",
+    }));
+  }, [partners]);
+
+  // Load partners when A changes
+  useEffect(() => {
+    if (!countryA) {
+      setPartners([]);
+      return;
+    }
+    apiFetch<Partner[]>(
+      `/api/patterns/partners?country_a=${encodeURIComponent(countryA)}`
+    )
+      .then(setPartners)
+      .catch(() => setPartners([]));
+  }, [countryA]);
+
+  // Load lengths when B changes
+  useEffect(() => {
+    if (!countryA || !countryB) {
+      setLengths([]);
+      return;
+    }
+    apiFetch<number[]>(
+      `/api/patterns/lengths?country_a=${encodeURIComponent(countryA)}&country_b=${encodeURIComponent(countryB)}`
+    )
+      .then(setLengths)
+      .catch(() => setLengths([]));
+  }, [countryA, countryB]);
+
+  // Load year pairs when length changes
+  useEffect(() => {
+    if (!countryA || !countryB || !length) {
+      setYearPairs([]);
+      return;
+    }
+    apiFetch<YearPair[]>(
+      `/api/patterns/years?country_a=${encodeURIComponent(countryA)}&country_b=${encodeURIComponent(countryB)}&length=${length}`
+    )
+      .then(setYearPairs)
+      .catch(() => setYearPairs([]));
+  }, [countryA, countryB, length]);
+
+  // Fire pattern load when all 5 params are set
+  useEffect(() => {
+    if (!countryA || !countryB || !length || !yearPair) return;
+    const [startA, startB] = yearPair.split(":").map(Number);
+    loadPattern(countryA, countryB, Number(length), startA, startB);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [countryA, countryB, length, yearPair]);
+
+  // Fetch top pairs for S0 landing
   useEffect(() => {
     async function fetchTopPairs() {
       try {
@@ -186,7 +514,6 @@ export default function PatternsClient() {
         if (res.ok) {
           const data = await res.json();
           const raw: PatternRow[] = data.results ?? [];
-          // Dedup: keep best PPS per pair, show top 10 unique
           const bestPerPair = new Map<string, PatternRow>();
           for (const row of raw) {
             const a = row.country_a_id ?? row.country_a;
@@ -203,7 +530,7 @@ export default function PatternsClient() {
           setTopPairs(deduped);
         }
       } catch {
-        // Non-critical — landing will show empty state
+        // Non-critical
       } finally {
         setLandingLoading(false);
       }
@@ -211,14 +538,15 @@ export default function PatternsClient() {
     fetchTopPairs();
   }, []);
 
-  const onSelect = useCallback(
-    async (sel: PatternSelection) => {
+  // ---- Load pattern detail ----
+  const loadPattern = useCallback(
+    async (ca: string, cb: string, len: number, startA: number, startB: number) => {
       const qs = new URLSearchParams({
-        country_a: sel.country_a,
-        country_b: sel.country_b,
-        length: String(sel.length),
-        start_a: String(sel.start_a),
-        start_b: String(sel.start_b),
+        country_a: ca,
+        country_b: cb,
+        length: String(len),
+        start_a: String(startA),
+        start_b: String(startB),
       });
       router.replace(`/patterns?${qs.toString()}`, { scroll: false });
 
@@ -226,7 +554,7 @@ export default function PatternsClient() {
       setError(null);
       try {
         const res = await fetch(
-          `/api/patterns/detail?country_a=${encodeURIComponent(sel.country_a)}&country_b=${encodeURIComponent(sel.country_b)}&start_a=${sel.start_a}&start_b=${sel.start_b}&length=${sel.length}`,
+          `/api/patterns/detail?country_a=${encodeURIComponent(ca)}&country_b=${encodeURIComponent(cb)}&start_a=${startA}&start_b=${startB}&length=${len}`,
           { headers: { Authorization: "Bearer __client__" } }
         );
         if (!res.ok) {
@@ -251,74 +579,242 @@ export default function PatternsClient() {
     [router]
   );
 
+  // ---- Navigation from S0 landing table ----
   function navigateToPattern(p: PatternRow) {
-    const qs = new URLSearchParams({
-      country_a: p.country_a_id ?? p.country_a,
-      country_b: p.country_b_id ?? p.country_b,
-      length: String(p.pattern_length),
-      start_a: String(p.start_year_a),
-      start_b: String(p.start_year_b),
-    });
-    router.push(`/patterns?${qs}`);
+    const ca = p.country_a_id ?? p.country_a;
+    const cb = p.country_b_id ?? p.country_b;
+    setCountryA(ca);
+    setCountryB(cb);
+    setLength(p.pattern_length);
+    setYearPair(`${p.start_year_a}:${p.start_year_b}`);
   }
 
+  // ---- Breadcrumb navigation ----
+  function navigateToState(target: BrowseState) {
+    if (target === "S0") {
+      setCountryA("");
+      setCountryB("");
+      setLength("");
+      setYearPair("");
+      setDetail(null);
+      setError(null);
+      router.replace("/patterns", { scroll: false });
+    } else if (target === "S1") {
+      setCountryB("");
+      setLength("");
+      setYearPair("");
+      setDetail(null);
+      setError(null);
+    } else if (target === "S2") {
+      setYearPair("");
+      setDetail(null);
+      setError(null);
+    }
+  }
+
+  // ---- Cascade change handlers ----
+  function handleCountryAChange(id: string) {
+    setCountryA(id);
+    setCountryB("");
+    setLength("");
+    setYearPair("");
+    setDetail(null);
+    setError(null);
+  }
+
+  function handleCountryBChange(id: string) {
+    setCountryB(id);
+    setLength("");
+    setYearPair("");
+    setDetail(null);
+    setError(null);
+  }
+
+  function handleLengthChange(val: string) {
+    setLength(val ? Number(val) : "");
+    setYearPair("");
+    setDetail(null);
+    setError(null);
+  }
+
+  function handleYearPairChange(val: string) {
+    setYearPair(val);
+    setDetail(null);
+    setError(null);
+  }
+
+  // ---- Derived values ----
   const isEarlyWarning =
     detail !== null &&
     Number(detail.metadata.start_year_b) < Number(detail.metadata.start_year_a) &&
     Number(detail.metadata.start_year_a) + Number(detail.metadata.pattern_length) >=
       new Date().getFullYear() - 2;
 
-  const visibleScdis = selectedIndex
-    ? detail?.scdis.filter((s) => s.index_name === selectedIndex) ?? []
-    : detail?.scdis ?? [];
+  const countryAName = countryA ? getCountryName(countryA) : "";
+  const countryBName = countryB ? getCountryName(countryB) : "";
+  const alpha2AVal = countryA ? (ALPHA2_MAP[countryA] ?? "") : "";
+  const alpha2BVal = countryB ? (ALPHA2_MAP[countryB] ?? "") : "";
+
+  // ---- Breadcrumb segments ----
+  const breadcrumbSegments: { label: string; alpha2?: string; state: BrowseState }[] = [
+    { label: "All Pairs", state: "S0" },
+  ];
+  if (countryA && browseState !== "S0") {
+    breadcrumbSegments.push({
+      label: countryAName || countryA,
+      alpha2: alpha2AVal,
+      state: "S1",
+    });
+  }
+  if (countryB && (browseState === "S2" || browseState === "S3")) {
+    breadcrumbSegments.push({
+      label: `${countryAName || countryA} - ${countryBName || countryB}`,
+      alpha2: alpha2BVal,
+      state: "S2",
+    });
+  }
+  if (detail && browseState === "S3") {
+    const meta = detail.metadata;
+    breadcrumbSegments.push({
+      label: `${meta.start_year_a}-${Number(meta.start_year_a) + Number(meta.pattern_length) - 1}`,
+      state: "S3",
+    });
+  }
+
+  // ---- Context line ----
+  let contextLine = `214 countries  \u00b7  2.01B patterns  \u00b7  ${topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}`;
+  if (browseState === "S1" && countryA) {
+    contextLine = `${countryAName || countryA} has patterns with ${partners.length} countries`;
+  } else if (browseState === "S2" && countryA && countryB) {
+    contextLine = `${countryAName || countryA} + ${countryBName || countryB}: ${lengths.length} lengths available`;
+  } else if (browseState === "S3" && detail) {
+    const meta = detail.metadata;
+    contextLine = `${meta.pattern_length} years  \u00b7  ${meta.num_indexes} indicators  \u00b7  PPS ${Number(meta.pattern_power_score) <= 1 ? Number(meta.pattern_power_score).toFixed(2) : Math.round(Number(meta.pattern_power_score))}`;
+  }
+
+  // ---- Select styles ----
+  const selectClass =
+    "px-3 py-1.5 text-xs rounded border bg-transparent outline-none focus:border-[var(--qgi-accent)] transition-colors min-w-[120px]";
+  const selectStyle = {
+    borderColor: "var(--qgi-border)",
+    color: "var(--qgi-text)",
+    backgroundColor: "var(--qgi-surface)",
+  };
 
   return (
-    <div className="flex h-full min-h-0">
-      {/* Left panel -- cascade filter */}
-      {hasDetail && !cascadeExpanded ? (
-        <div
-          className="w-10 shrink-0 border-r flex flex-col items-center pt-3"
-          style={{ borderColor: "var(--qgi-border)" }}
-        >
-          <button
-            onClick={() => setCascadeExpanded(true)}
-            className="text-[9px] tracking-wider writing-mode-vertical px-1 py-3 rounded transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              color: "var(--qgi-text-dim)",
-              writingMode: "vertical-lr",
-              transform: "rotate(180deg)",
-            }}
-            title="Expand filter panel"
-          >
-            Change pattern &rsaquo;
-          </button>
-        </div>
-      ) : (
-        <div
-          className={`${hasDetail ? "w-52" : "w-64"} shrink-0 border-r flex flex-col overflow-y-auto transition-all`}
-          style={{ borderColor: "var(--qgi-border)" }}
-        >
-          <div
-            className="text-[9px] tracking-[0.25em] uppercase px-4 py-2.5 border-b flex items-center justify-between"
-            style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}
-          >
-            <span>Discover Patterns</span>
-            {hasDetail && (
-              <button
-                onClick={() => setCascadeExpanded(false)}
-                className="text-[9px] hover:text-[var(--qgi-accent)]"
-                title="Collapse filter panel"
-              >
-                &lsaquo;
-              </button>
-            )}
-          </div>
-          <CascadeFilter initial={initial} onSelect={onSelect} />
-        </div>
-      )}
+    <div className="flex flex-col h-full min-h-0">
+      {/* ============================================================ */}
+      {/*  HORIZONTAL CASCADE STRIP (full width, sticky)               */}
+      {/* ============================================================ */}
+      <div
+        className="sticky top-0 z-30 border-b shrink-0"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        {/* Row 1: Filter selectors */}
+        <div className="flex items-end gap-4 px-4 py-3 flex-wrap">
+          <CountryDropdown
+            label="Predictor"
+            value={countryA}
+            options={countryAOptions}
+            onChange={handleCountryAChange}
+          />
 
-      {/* Main area */}
-      <div className="flex-1 flex flex-col min-h-0 overflow-y-auto">
+          <span
+            className="pb-2 text-sm"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            &rarr;
+          </span>
+
+          <CountryDropdown
+            label="Following"
+            value={countryB}
+            options={countryBOptions}
+            onChange={handleCountryBChange}
+            disabled={!countryA || partners.length === 0}
+          />
+
+          {/* Length selector -- appears after B is selected */}
+          {countryA && countryB && (
+            <div>
+              <div
+                className="text-[9px] tracking-widest uppercase mb-1"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Duration
+              </div>
+              <select
+                value={length}
+                onChange={(e) => handleLengthChange(e.target.value)}
+                className={selectClass}
+                style={selectStyle}
+                disabled={lengths.length === 0}
+              >
+                <option value="">Select length...</option>
+                {lengths.map((l) => (
+                  <option key={l} value={l}>
+                    {l} years
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Year window selector -- appears after length is selected */}
+          {countryA && countryB && length && (
+            <div>
+              <div
+                className="text-[9px] tracking-widest uppercase mb-1"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Window
+              </div>
+              <select
+                value={yearPair}
+                onChange={(e) => handleYearPairChange(e.target.value)}
+                className={selectClass}
+                style={{ ...selectStyle, minWidth: "200px" }}
+                disabled={yearPairs.length === 0}
+              >
+                <option value="">Select window...</option>
+                {yearPairs.map((yp) => (
+                  <option
+                    key={`${yp.start_year_a}:${yp.start_year_b}`}
+                    value={`${yp.start_year_a}:${yp.start_year_b}`}
+                  >
+                    {yp.start_year_a}&ndash;{yp.start_year_a + Number(length) - 1} / {yp.start_year_b}&ndash;{yp.start_year_b + Number(length) - 1}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+        </div>
+
+        {/* Row 2: Breadcrumb + context counts */}
+        <div
+          className="flex items-center gap-2 px-4 py-1.5 border-t"
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <Breadcrumb
+            segments={breadcrumbSegments}
+            onNavigate={navigateToState}
+          />
+          <span
+            className="ml-auto text-[10px] font-data tracking-wider"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            {contextLine}
+          </span>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/*  MAIN CONTENT AREA                                           */}
+      {/* ============================================================ */}
+      <div className="flex-1 overflow-y-auto">
         {/* ============================================================ */}
         {/*  S0 LANDING -- shown when no pattern is loaded               */}
         {/* ============================================================ */}
@@ -344,7 +840,7 @@ export default function PatternsClient() {
               >
                 Explore structural similarities between countries across
                 economic indicators and decades of data. Start by
-                selecting a Predictor Country in the sidebar, or browse the
+                selecting a Predictor Country above, or browse the
                 top-ranked pattern pairs below.
               </p>
               <div
@@ -418,8 +914,8 @@ export default function PatternsClient() {
                     </thead>
                     <tbody>
                       {topPairs.map((row, i) => {
-                        const alpha2A = getAlpha2(row.country_a_id, row.country_a);
-                        const alpha2B = getAlpha2(row.country_b_id, row.country_b);
+                        const a2A = getAlpha2(row.country_a_id, row.country_a);
+                        const a2B = getAlpha2(row.country_b_id, row.country_b);
                         const lead = row.start_year_b - row.start_year_a;
                         const maxPps = topPairs[0]?.pattern_power_score ?? 1;
                         const pct = Math.min(100, (row.pattern_power_score / maxPps) * 100);
@@ -435,12 +931,12 @@ export default function PatternsClient() {
                             </td>
                             <td className="px-3 py-2.5">
                               <div className="flex items-center gap-2">
-                                <CountryFlag alpha2={alpha2A} size={16} />
+                                <CountryFlag alpha2={a2A} size={16} />
                                 <span className="font-data text-xs" style={{ color: "var(--qgi-country-a)" }}>
                                   {row.country_a}
                                 </span>
                                 <span style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
-                                <CountryFlag alpha2={alpha2B} size={16} />
+                                <CountryFlag alpha2={a2B} size={16} />
                                 <span className="font-data text-xs" style={{ color: "var(--qgi-country-b)" }}>
                                   {row.country_b}
                                 </span>
@@ -479,7 +975,7 @@ export default function PatternsClient() {
                   className="mt-3 text-[10px] tracking-wider"
                   style={{ color: "var(--qgi-text-dim)" }}
                 >
-                  Click any row to view full pattern detail, or use the sidebar to discover patterns manually.
+                  Click any row to view full pattern detail, or use the filter strip above to discover patterns manually.
                 </p>
               </div>
             ) : (
@@ -488,7 +984,7 @@ export default function PatternsClient() {
                   Patterns Portal
                 </span>
                 <p className="text-sm text-center max-w-sm" style={{ color: "var(--qgi-text-dim)" }}>
-                  Select a Predictor Country and follow the steps to discover a geopolitical pattern.
+                  Select a Predictor Country above and follow the steps to discover a geopolitical pattern.
                 </p>
               </div>
             )}
@@ -497,7 +993,7 @@ export default function PatternsClient() {
 
         {/* Loading */}
         {loading && (
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex items-center justify-center py-24">
             <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
               Loading pattern...
             </span>
@@ -529,8 +1025,8 @@ export default function PatternsClient() {
         {/* ============================================================ */}
         {detail && !loading && (() => {
           const meta = detail.metadata;
-          const countryA = meta.country_a;
-          const countryB = meta.country_b;
+          const detailCountryA = meta.country_a;
+          const detailCountryB = meta.country_b;
           const startA = Number(meta.start_year_a);
           const startB = Number(meta.start_year_b);
           const len = Number(meta.pattern_length);
@@ -540,22 +1036,19 @@ export default function PatternsClient() {
           const ppsRaw = Number(meta.pattern_power_score);
           const numIdx = Number(meta.num_indexes);
           const lag = startB - startA;
-          const alpha2A = getAlpha2(undefined, countryA);
-          const alpha2B = getAlpha2(undefined, countryB);
+          const detailA2A = getAlpha2(undefined, detailCountryA);
+          const detailA2B = getAlpha2(undefined, detailCountryB);
 
-          // For the PPS gauge (0-1 scale for normalized, raw otherwise)
           const isNormalized = ppsRaw <= 1;
           const gaugePct = isNormalized ? ppsRaw * 100 : Math.min(100, (ppsRaw / 2000) * 100);
           const ppsDisplay = isNormalized ? ppsRaw.toFixed(2) : Math.round(ppsRaw).toLocaleString();
           const ppsLbl = isNormalized ? ppsLabel(ppsRaw) : (ppsRaw >= 1500 ? "Very Strong" : ppsRaw >= 1000 ? "Strong" : ppsRaw >= 500 ? "Moderate" : "Weak");
           const ppsClr = isNormalized ? ppsColor(ppsRaw) : rawPpsColor(ppsRaw);
 
-          // Timeline bounds
           const allYears = [startA, endA, startB, endB, new Date().getFullYear()];
           const timelineStart = Math.min(...allYears) - 3;
           const timelineEnd = Math.max(...allYears) + 3;
 
-          // Sector breakdown
           const sectorCounts: Record<string, number> = {};
           for (const s of detail.scdis) {
             sectorCounts[s.sector] = (sectorCounts[s.sector] ?? 0) + 1;
@@ -589,10 +1082,10 @@ export default function PatternsClient() {
                   <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
                     {/* Country A */}
                     <div className="flex items-center gap-4">
-                      <CountryFlag alpha2={alpha2A} size={36} />
+                      <CountryFlag alpha2={detailA2A} size={36} />
                       <div>
                         <div className="text-lg font-semibold" style={{ color: "var(--qgi-country-a)" }}>
-                          {countryA.toUpperCase()}
+                          {detailCountryA.toUpperCase()}
                         </div>
                         <div className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
                           {startA} &mdash; {endA}
@@ -657,7 +1150,7 @@ export default function PatternsClient() {
                     <div className="flex items-center gap-4 lg:justify-end">
                       <div className="text-right">
                         <div className="text-lg font-semibold" style={{ color: "var(--qgi-country-b)" }}>
-                          {countryB.toUpperCase()}
+                          {detailCountryB.toUpperCase()}
                         </div>
                         <div className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
                           {startB} &mdash; {endB}
@@ -666,7 +1159,7 @@ export default function PatternsClient() {
                           FOLLOWING
                         </div>
                       </div>
-                      <CountryFlag alpha2={alpha2B} size={36} />
+                      <CountryFlag alpha2={detailA2B} size={36} />
                     </div>
                   </div>
                 </div>
@@ -707,7 +1200,7 @@ export default function PatternsClient() {
                       className="absolute text-[9px] font-data -translate-x-1/2"
                       style={{ left: `${yearToPercent((startA + endA) / 2, timelineStart, timelineEnd)}%`, top: "10px", color: "#fff" }}
                     >
-                      {alpha2A} {startA}-{endA}
+                      {detailA2A} {startA}-{endA}
                     </div>
 
                     {/* Following bar (bottom) */}
@@ -725,7 +1218,7 @@ export default function PatternsClient() {
                       className="absolute text-[9px] font-data -translate-x-1/2"
                       style={{ left: `${yearToPercent((startB + endB) / 2, timelineStart, timelineEnd)}%`, top: "50px", color: "#fff" }}
                     >
-                      {alpha2B} {startB}-{endB}
+                      {detailA2B} {startB}-{endB}
                     </div>
 
                     {/* Today marker */}
@@ -771,304 +1264,257 @@ export default function PatternsClient() {
                 </div>
               </section>
 
-              {/* === MAIN BODY: Charts + table (left) + Related patterns (right) === */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
-                {/* ---- Left column: toolbar + charts + table ---- */}
-                <div className="space-y-6">
-                  {/* === TOOLBAR === */}
-                  <div
-                    className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
+              {/* === TOOLBAR === */}
+              <div
+                className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  border: "1px solid var(--qgi-border)",
+                }}
+              >
+                {/* Transformation selector */}
+                <select
+                  value={transformation}
+                  onChange={(e) => setTransformation(e.target.value as Transformation)}
+                  className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
+                  style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
+                >
+                  {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
+                    <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
+                      {v}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Align toggle */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
+                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
                     style={{
-                      backgroundColor: "var(--qgi-surface)",
-                      border: "1px solid var(--qgi-border)",
+                      backgroundColor: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-border)",
+                      opacity: startsDiffer ? 0.6 : 1,
+                      cursor: startsDiffer ? "default" : "pointer",
                     }}
+                    title={startsDiffer ? "Auto-aligned: windows at different calendar years" : "Align to Year 1, Year 2, ..."}
                   >
-                    {/* Transformation selector */}
-                    <select
-                      value={transformation}
-                      onChange={(e) => setTransformation(e.target.value as Transformation)}
-                      className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
-                      style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
-                    >
-                      {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
-                        <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
-                          {v}
-                        </option>
-                      ))}
-                    </select>
-
-                    {/* Align toggle -- V2 style (switch, not checkbox) */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
-                        className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                        style={{
-                          backgroundColor: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-border)",
-                          opacity: startsDiffer ? 0.6 : 1,
-                          cursor: startsDiffer ? "default" : "pointer",
-                        }}
-                        title={startsDiffer ? "Auto-aligned: windows at different calendar years" : "Align to Year 1, Year 2, ..."}
-                      >
-                        <div
-                          className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
-                          style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
-                        />
-                      </button>
-                      <span className="text-[10px] tracking-wider" style={{ color: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                        {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
-                        {startsDiffer && <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>}
-                      </span>
-                    </div>
-
-                    <div className="flex-1" />
-
-                    {/* Sector chips */}
-                    <div className="flex gap-2 flex-wrap">
-                      {Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]).map(([s]) => (
-                        <span
-                          key={s}
-                          className="px-2 py-0.5 rounded text-[9px] tracking-wider"
-                          style={{
-                            backgroundColor: `${getSectorColor(s)}18`,
-                            color: getSectorColor(s),
-                            border: `1px solid ${getSectorColor(s)}33`,
-                          }}
-                        >
-                          {s.toUpperCase()}
-                        </span>
-                      ))}
-                    </div>
-
-                    {/* Section toggles */}
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => setShowTable(!showTable)}
-                        className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                        style={{
-                          borderColor: showTable ? "var(--qgi-accent)" : "var(--qgi-border)",
-                          color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                        }}
-                      >
-                        TABLE
-                      </button>
-                      <button
-                        onClick={() => setShowCharts(!showCharts)}
-                        className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                        style={{
-                          borderColor: showCharts ? "var(--qgi-accent)" : "var(--qgi-border)",
-                          color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                        }}
-                      >
-                        CHARTS
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* === V2 EXPANDABLE SCDI CARDS === */}
-                  {showCharts && (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                      {detail.scdis.map((s, i) => {
-                        const isExpanded = expandedScdi === s.index_name;
-                        const sc = getSectorColor(s.sector);
-                        return (
-                          <div
-                            key={s.index_name}
-                            className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
-                            style={{
-                              backgroundColor: `${sc}08`,
-                              border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
-                            }}
-                            onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
-                          >
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
-                                {s.index_name}
-                              </div>
-                              <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
-                                {isExpanded ? "collapse" : "expand"}
-                              </span>
-                            </div>
-
-                            {isExpanded ? (
-                              <div>
-                                {/* Align toggle for SCDI chart */}
-                                <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
-                                  <button
-                                    onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
-                                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                                    style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
-                                  >
-                                    <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
-                                  </button>
-                                  <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                                    {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
-                                  </span>
-                                </div>
-                                <div className="h-48 mb-2">
-                                  <ReactECharts
-                                    option={{
-                                      backgroundColor: "transparent",
-                                      tooltip: {
-                                        trigger: "axis",
-                                        backgroundColor: "#1e2d42",
-                                        borderColor: "#243347",
-                                        textStyle: { color: "#e2e8f0", fontSize: 10 },
-                                      },
-                                      legend: {
-                                        data: [countryA, countryB],
-                                        top: 0, right: 8,
-                                        textStyle: { color: "#7a90a8", fontSize: 9 },
-                                        itemWidth: 12, itemHeight: 2,
-                                      },
-                                      grid: { top: 30, right: 12, bottom: 24, left: 48 },
-                                      xAxis: scdiAligned
-                                        ? {
-                                            type: "category" as const,
-                                            data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
-                                            axisLine: { lineStyle: { color: "#243347" } },
-                                            axisLabel: { color: "#4a6280", fontSize: 9 },
-                                          }
-                                        : {
-                                            type: "value" as const,
-                                            min: Math.min(startA, startB) - 1,
-                                            max: Math.max(endA, endB) + 1,
-                                            axisLine: { lineStyle: { color: "#243347" } },
-                                            axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
-                                            splitLine: { show: false },
-                                          },
-                                      yAxis: {
-                                        type: "value",
-                                        scale: true,
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        splitLine: { lineStyle: { color: "#1a2a3a" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9 },
-                                      },
-                                      series: scdiAligned
-                                        ? [
-                                            { name: countryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                            { name: countryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                          ]
-                                        : [
-                                            { name: countryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                            { name: countryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                          ],
-                                    }}
-                                    style={{ height: "100%", width: "100%" }}
-                                    notMerge
-                                  />
-                                </div>
-                              </div>
-                            ) : (
-                              /* Sparkline when collapsed */
-                              <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                                <div className="flex items-end gap-px h-16 w-full px-1">
-                                  {Array.from({ length: Math.min(len, 20) }, (_, j) => {
-                                    const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
-                                    return (
-                                      <div
-                                        key={j}
-                                        className="flex-1 rounded-t"
-                                        style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
-                                      />
-                                    );
-                                  })}
-                                </div>
-                              </div>
-                            )}
-
-                            <div className="flex items-center justify-between">
-                              <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
-                              <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                                r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
-                              </span>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-
-                  {/* === SCDI TABLE === */}
-                  {showTable && (
                     <div
-                      className="rounded-xl overflow-hidden"
-                      style={{
-                        backgroundColor: "var(--qgi-surface)",
-                        border: "1px solid var(--qgi-border)",
-                      }}
-                    >
-                      <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
-                        Indicator Matches ({detail.scdis.length})
-                      </div>
-                      <ScdiTable
-                        scdis={detail.scdis}
-                        onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
-                        selectedIndex={selectedIndex}
-                      />
-                    </div>
-                  )}
+                      className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+                      style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
+                    />
+                  </button>
+                  <span className="text-[10px] tracking-wider" style={{ color: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                    {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
+                    {startsDiffer && <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>}
+                  </span>
                 </div>
 
-                {/* ---- Right column: Related Patterns sidebar ---- */}
-                <div className="space-y-4">
-                  {([
-                    {
-                      title: "SAME PREDICTOR",
-                      subtitle: `${countryA} \u2192 others`,
-                    },
-                    {
-                      title: "SAME FOLLOWING",
-                      subtitle: `others \u2192 ${countryB}`,
-                    },
-                    {
-                      title: "SIMILAR MIX",
-                      subtitle: Object.entries(sectorCounts)
-                        .sort((a, b) => b[1] - a[1])
-                        .slice(0, 3)
-                        .map(([s]) => s.toUpperCase())
-                        .join(" + "),
-                    },
-                  ] as const).map((group) => (
-                    <div
-                      key={group.title}
-                      className="rounded-xl p-4"
+                <div className="flex-1" />
+
+                {/* Sector chips */}
+                <div className="flex gap-2 flex-wrap">
+                  {Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]).map(([s]) => (
+                    <span
+                      key={s}
+                      className="px-2 py-0.5 rounded text-[9px] tracking-wider"
                       style={{
-                        backgroundColor: "var(--qgi-surface)",
-                        border: "1px solid var(--qgi-border)",
+                        backgroundColor: `${getSectorColor(s)}18`,
+                        color: getSectorColor(s),
+                        border: `1px solid ${getSectorColor(s)}33`,
                       }}
                     >
-                      <div className="mb-3">
-                        <div
-                          className="text-[10px] tracking-widest uppercase font-semibold"
-                          style={{ color: "var(--qgi-text-muted)" }}
-                        >
-                          {group.title}
-                        </div>
-                        <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                          {group.subtitle}
-                        </div>
-                      </div>
-                      <div
-                        className="rounded-lg p-3 text-center"
-                        style={{
-                          backgroundColor: "var(--qgi-surface-2)",
-                          border: "1px dashed var(--qgi-border)",
-                        }}
-                      >
-                        <p className="text-[10px] leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-                          Related patterns will appear here once the pipeline pre-computes partner indexes.
-                        </p>
-                        <a
-                          href="/patterns/ranking"
-                          className="text-[9px] tracking-wider mt-2 inline-block underline"
-                          style={{ color: "var(--qgi-accent)" }}
-                        >
-                          Browse ranking &rarr;
-                        </a>
-                      </div>
-                    </div>
+                      {s.toUpperCase()}
+                    </span>
                   ))}
                 </div>
+
+                {/* Section toggles */}
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setShowTable(!showTable)}
+                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                    style={{
+                      borderColor: showTable ? "var(--qgi-accent)" : "var(--qgi-border)",
+                      color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                    }}
+                  >
+                    TABLE
+                  </button>
+                  <button
+                    onClick={() => setShowCharts(!showCharts)}
+                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                    style={{
+                      borderColor: showCharts ? "var(--qgi-accent)" : "var(--qgi-border)",
+                      color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                    }}
+                  >
+                    CHARTS
+                  </button>
+                </div>
+              </div>
+
+              {/* === V2 EXPANDABLE SCDI CARDS === */}
+              {showCharts && (
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                  {detail.scdis.map((s, i) => {
+                    const isExpanded = expandedScdi === s.index_name;
+                    const sc = getSectorColor(s.sector);
+                    return (
+                      <div
+                        key={s.index_name}
+                        className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
+                        style={{
+                          backgroundColor: `${sc}08`,
+                          border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
+                        }}
+                        onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
+                      >
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
+                            {s.index_name}
+                          </div>
+                          <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
+                            {isExpanded ? "collapse" : "expand"}
+                          </span>
+                        </div>
+
+                        {isExpanded ? (
+                          <div>
+                            <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
+                              <button
+                                onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
+                                className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                                style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
+                              >
+                                <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
+                              </button>
+                              <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                                {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
+                              </span>
+                            </div>
+                            <div className="h-48 mb-2">
+                              <ReactECharts
+                                option={{
+                                  backgroundColor: "transparent",
+                                  tooltip: {
+                                    trigger: "axis",
+                                    backgroundColor: "#1e2d42",
+                                    borderColor: "#243347",
+                                    textStyle: { color: "#e2e8f0", fontSize: 10 },
+                                  },
+                                  legend: {
+                                    data: [detailCountryA, detailCountryB],
+                                    top: 0, right: 8,
+                                    textStyle: { color: "#7a90a8", fontSize: 9 },
+                                    itemWidth: 12, itemHeight: 2,
+                                  },
+                                  grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                                  xAxis: scdiAligned
+                                    ? {
+                                        type: "category" as const,
+                                        data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
+                                        axisLine: { lineStyle: { color: "#243347" } },
+                                        axisLabel: { color: "#4a6280", fontSize: 9 },
+                                      }
+                                    : {
+                                        type: "value" as const,
+                                        min: Math.min(startA, startB) - 1,
+                                        max: Math.max(endA, endB) + 1,
+                                        axisLine: { lineStyle: { color: "#243347" } },
+                                        axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
+                                        splitLine: { show: false },
+                                      },
+                                  yAxis: {
+                                    type: "value",
+                                    scale: true,
+                                    axisLine: { lineStyle: { color: "#243347" } },
+                                    splitLine: { lineStyle: { color: "#1a2a3a" } },
+                                    axisLabel: { color: "#4a6280", fontSize: 9 },
+                                  },
+                                  series: scdiAligned
+                                    ? [
+                                        { name: detailCountryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                        { name: detailCountryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                      ]
+                                    : [
+                                        { name: detailCountryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                        { name: detailCountryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                      ],
+                                }}
+                                style={{ height: "100%", width: "100%" }}
+                                notMerge
+                              />
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
+                            <div className="flex items-end gap-px h-16 w-full px-1">
+                              {Array.from({ length: Math.min(len, 20) }, (_, j) => {
+                                const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
+                                return (
+                                  <div
+                                    key={j}
+                                    className="flex-1 rounded-t"
+                                    style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
+                                  />
+                                );
+                              })}
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="flex items-center justify-between">
+                          <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
+                          <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
+                            r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* === SCDI TABLE === */}
+              {showTable && (
+                <div
+                  className="rounded-xl overflow-hidden"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
+                    Indicator Matches ({detail.scdis.length})
+                  </div>
+                  <ScdiTable
+                    scdis={detail.scdis}
+                    onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
+                    selectedIndex={selectedIndex}
+                  />
+                </div>
+              )}
+
+              {/* === RELATED PATTERNS (placeholder) === */}
+              <div
+                className="rounded-xl p-5"
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  border: "1px dashed var(--qgi-border)",
+                }}
+              >
+                <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+                  RELATED PATTERNS
+                </div>
+                <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+                  Related patterns (same predictor, same following, similar indicator mix) will appear
+                  here after the pattern adjacency pre-computation pipeline runs. For now, explore
+                  the{" "}
+                  <a href="/patterns/ranking" className="underline" style={{ color: "var(--qgi-accent)" }}>
+                    full ranking
+                  </a>{" "}
+                  to discover similar patterns.
+                </p>
               </div>
 
               {/* === METHODOLOGY FOOTER === */}
