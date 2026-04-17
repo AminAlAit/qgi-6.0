@@ -246,27 +246,25 @@ function indicatorTrajectoryOption(showAll: boolean) {
   });
 
   // Event marker lines — vertical labels, short text
-  // #2: Event marker labels positioned BELOW the legend row (top: 60px start)
-  // with full original names. Rotated -90deg so they run vertically alongside
-  // the marker line without overlapping chart data.
+  // Event labels anchored to BOTTOM of the chart, running upward.
+  // This keeps them far away from the legend at the top.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
-    lineStyle: { color: "#f8717140", width: 1.5, type: "solid" as const },
+    lineStyle: { color: "#f8717130", width: 1, type: "solid" as const },
     label: {
       formatter: e.label,
-      position: "insideEndTop" as const,
-      color: "#f87171",
+      position: "insideStartTop" as const,
+      color: "#f87171aa",
       fontSize: 9,
       fontFamily: "'JetBrains Mono', monospace",
       rotate: -90,
-      offset: [0, 8], // push down so labels start below the legend
+      distance: 4,
     },
   }));
 
   return {
     backgroundColor: "transparent",
-    // Increased top to 60px to give room for legend (2 rows) + event labels
-    grid: { top: 60, right: 20, bottom: 35, left: 45 },
+    grid: { top: 55, right: 20, bottom: 35, left: 45 },
     legend: {
       top: 0,
       left: "center",

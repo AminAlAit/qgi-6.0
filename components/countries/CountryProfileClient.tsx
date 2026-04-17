@@ -271,6 +271,62 @@ export function CountryProfileClient({
         )}
       </section>
 
+      {/* ─── Indicator Trajectories (V2 placeholder) ───────────────── */}
+      <section
+        className="rounded-lg border p-6 mb-6"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <h2
+          className="text-xs tracking-widest uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Indicator Trajectories
+          <InfoTooltip text="Shows the raw economic story of this country over decades. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events." />
+        </h2>
+        <div
+          className="flex items-center justify-center py-12 rounded"
+          style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text-dim)" }}
+        >
+          <div className="text-center">
+            <div className="text-sm mb-1">Indicator trajectories will render here</div>
+            <div className="text-[10px] tracking-wider">
+              Requires pipeline pre-compute of per-country indicator time series with event markers
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Pattern Density Timeline (V2 placeholder) ────────────── */}
+      <section
+        className="rounded-lg border p-6 mb-6"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <h2
+          className="text-xs tracking-widest uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Pattern Density Timeline
+          <InfoTooltip text="Shows when QGI found structural similarity between this country and others. Clusters of pattern starts indicate periods of high structural alignment with other economies." />
+        </h2>
+        <div
+          className="flex items-center justify-center py-8 rounded"
+          style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text-dim)" }}
+        >
+          <div className="text-center">
+            <div className="text-sm mb-1">Pattern density by year will render here</div>
+            <div className="text-[10px] tracking-wider">
+              Requires pipeline pre-compute of pattern-start distributions per country
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Top Precedents (tabbed by tier) ────────────────────────── */}
       <section
         className="rounded-lg border p-6 mb-6"

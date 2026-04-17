@@ -178,14 +178,29 @@ export default function PatternsClient() {
   const [cascadeExpanded, setCascadeExpanded] = useState(true);
   const hasDetail = detail != null && !loading;
 
-  // Fetch top pairs for S0 landing
+  // Fetch top pairs for S0 landing — dedup to show unique pairs
   useEffect(() => {
     async function fetchTopPairs() {
       try {
-        const res = await fetch("/api/patterns/ranking?page=1&limit=10", { cache: "no-store" });
+        const res = await fetch("/api/patterns/ranking?page=1&limit=1000", { cache: "no-store" });
         if (res.ok) {
           const data = await res.json();
-          setTopPairs(data.results ?? []);
+          const raw: PatternRow[] = data.results ?? [];
+          // Dedup: keep best PPS per pair, show top 10 unique
+          const bestPerPair = new Map<string, PatternRow>();
+          for (const row of raw) {
+            const a = row.country_a_id ?? row.country_a;
+            const b = row.country_b_id ?? row.country_b;
+            const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+            const existing = bestPerPair.get(key);
+            if (!existing || row.pattern_power_score > existing.pattern_power_score) {
+              bestPerPair.set(key, row);
+            }
+          }
+          const deduped = Array.from(bestPerPair.values())
+            .sort((a, b) => b.pattern_power_score - a.pattern_power_score)
+            .slice(0, 10);
+          setTopPairs(deduped);
         }
       } catch {
         // Non-critical — landing will show empty state
