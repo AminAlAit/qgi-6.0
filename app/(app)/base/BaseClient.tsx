@@ -796,10 +796,64 @@ export function BaseClient({
           ================================================================ */}
       {dotCountries.length > 0 && (
         <div
-          className="border-t shrink-0"
+          className="border-t shrink-0 grid grid-cols-1 lg:grid-cols-[1fr_320px]"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <WorldMapChart countries={dotCountries} />
+          {/* Left: World Map (zoom + pan enabled) */}
+          <div className="border-r" style={{ borderColor: "var(--qgi-border)" }}>
+            <WorldMapChart countries={dotCountries} />
+          </div>
+          {/* Right: Region breakdown summary */}
+          <div className="p-4" style={{ backgroundColor: "var(--qgi-bg)" }}>
+            <h3
+              className="text-[9px] tracking-[0.25em] uppercase mb-3"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Risk by Region
+            </h3>
+            <div className="space-y-2">
+              {(() => {
+                const regionCounts: Record<string, { high: number; mod: number; ind: number; total: number }> = {};
+                for (const c of dotCountries) {
+                  if (!regionCounts[c.region]) regionCounts[c.region] = { high: 0, mod: 0, ind: 0, total: 0 };
+                  regionCounts[c.region].total++;
+                  if (c.tier === "HIGH") regionCounts[c.region].high++;
+                  else if (c.tier === "MODERATE") regionCounts[c.region].mod++;
+                  else regionCounts[c.region].ind++;
+                }
+                return Object.entries(regionCounts)
+                  .sort(([, a], [, b]) => b.high - a.high)
+                  .map(([region, counts]) => (
+                    <div key={region} className="flex items-center gap-2">
+                      <span
+                        className="text-[10px] w-8 font-data"
+                        style={{ color: "var(--qgi-text-muted)" }}
+                      >
+                        {region}
+                      </span>
+                      {/* Mini stacked bar */}
+                      <div className="flex-1 flex h-3 rounded-sm overflow-hidden" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                        {counts.high > 0 && (
+                          <div style={{ width: `${(counts.high / counts.total) * 100}%`, backgroundColor: "#f87171" }} />
+                        )}
+                        {counts.mod > 0 && (
+                          <div style={{ width: `${(counts.mod / counts.total) * 100}%`, backgroundColor: "#fbbf24" }} />
+                        )}
+                        {counts.ind > 0 && (
+                          <div style={{ width: `${(counts.ind / counts.total) * 100}%`, backgroundColor: "#38bdf8" }} />
+                        )}
+                      </div>
+                      <span
+                        className="text-[9px] font-data w-6 text-right"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
+                        {counts.total}
+                      </span>
+                    </div>
+                  ));
+              })()}
+            </div>
+          </div>
         </div>
       )}
 

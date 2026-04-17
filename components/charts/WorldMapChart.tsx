@@ -535,10 +535,14 @@ export function WorldMapChart({ countries }: Props) {
         {
           type: "map",
           map: "world",
-          roam: false,
+          roam: true, // #3: zoom + pan enabled
+          scaleLimit: { min: 1, max: 8 },
           aspectScale: 0.75,
           layoutCenter: ["50%", "55%"],
           layoutSize: "100%",
+          // Fix antimeridian line (Russia wrapping through Greenland/Canada):
+          // Shift the center slightly to avoid the seam
+          center: [10, 20],
           selectedMode: false,
           emphasis: {
             label: { show: false },
