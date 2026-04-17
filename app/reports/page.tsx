@@ -113,12 +113,12 @@ export default function ReportsPage() {
               <span
                 className="text-[9px] tracking-widest px-2 py-1 rounded shrink-0 ml-4"
                 style={{
-                  backgroundColor: "rgba(251, 191, 36, 0.12)",
-                  color: "#fbbf24",
-                  border: "1px solid rgba(251, 191, 36, 0.3)",
+                  backgroundColor: "rgba(52, 211, 153, 0.12)",
+                  color: "#34d399",
+                  border: "1px solid rgba(52, 211, 153, 0.3)",
                 }}
               >
-                COMING SOON
+                AVAILABLE
               </span>
             </div>
 
@@ -143,16 +143,16 @@ export default function ReportsPage() {
             </div>
 
             <div className="mt-4 flex gap-3">
-              <button
-                disabled
-                className="px-4 py-2 rounded text-sm tracking-wide opacity-50 cursor-not-allowed"
+              <Link
+                href="/reports/fsi-qgi-report"
+                className="px-4 py-2 rounded text-sm tracking-wide transition-colors"
                 style={{
                   backgroundColor: "var(--qgi-accent)",
                   color: "var(--qgi-bg)",
                 }}
               >
-                Download PDF (coming soon)
-              </button>
+                Read Full Report
+              </Link>
               <Link
                 href="/methodology"
                 className="px-4 py-2 rounded text-sm tracking-wide border transition-colors hover:bg-[var(--qgi-surface-2)]"

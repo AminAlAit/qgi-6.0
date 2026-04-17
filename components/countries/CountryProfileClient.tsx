@@ -158,6 +158,75 @@ export function CountryProfileClient({
       {/* ─── Layered Taxonomy Widget (8 cards, L1 → L2 drill-down) ─── */}
       <TaxonomyL1Widget l1Scores={l1Scores} l2Scores={l2Scores} />
 
+      {/* ─── Risk Fingerprint Radar + Structural Twins (V2 promoted) ── */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        {/* Radar Chart */}
+        <section
+          className="rounded-lg border p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <h2
+            className="text-[11px] tracking-widest uppercase font-semibold mb-2"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            RISK FINGERPRINT
+            <InfoTooltip text="Each axis represents one of 8 L1 risk categories. The filled shape shows this country's salience score vs the dashed world median. Larger deviations from the median indicate stronger signals." />
+          </h2>
+          {l1Scores && Object.keys(l1Scores).length > 0 ? (
+            <>
+              <div className="h-[340px]">
+                <ReactECharts
+                  option={radarOption(country.name, l1Scores)}
+                  style={{ height: "100%", width: "100%" }}
+                  opts={{ renderer: "svg" }}
+                />
+              </div>
+              <div className="flex items-center gap-6 mt-2 justify-center">
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-0.5" style={{ backgroundColor: "#38bdf8" }} />
+                  <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+                    This country
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-0.5 border-t border-dashed" style={{ borderColor: "#4a6280" }} />
+                  <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+                    World median
+                  </span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="h-[340px] flex items-center justify-center">
+              <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+                L1 salience scores not yet available. Requires pipeline pre-compute.
+              </p>
+            </div>
+          )}
+        </section>
+
+        {/* Structural Twins Panel */}
+        <section
+          className="rounded-lg border p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <h2
+            className="text-[11px] tracking-widest uppercase font-semibold mb-4"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            STRUCTURAL TWINS &middot; TOP 5
+            <InfoTooltip text="Countries whose economic trajectories most closely mirror this country across the highest-scoring pattern categories. Based on pattern partner frequency in country-risks.json." />
+          </h2>
+          <StructuralTwinsPanel country={country} />
+        </section>
+      </div>
+
       {/* ─── Risk Breakdown (horizontal bar chart) ──────────────────── */}
       <section
         className="rounded-lg border p-6 mb-6"
@@ -443,6 +512,167 @@ function PrecedentRow({
       </td>
     </tr>
   );
+}
+
+// ---------------------------------------------------------------------------
+// Radar Chart Option (V2 promoted)
+// ---------------------------------------------------------------------------
+
+function radarOption(countryName: string, l1Scores: Record<string, number>) {
+  // Map L1 category IDs to scores, fall back to 0
+  const scores = L1_CATEGORIES.map((cat) => l1Scores[cat.id] ?? 0);
+  const medians = L1_CATEGORIES.map(() => L1_WORLD_MEDIAN);
+
+  const maxVal = Math.max(1, ...scores, ...medians);
+
+  return {
+    backgroundColor: "transparent",
+    radar: {
+      indicator: L1_CATEGORIES.map((cat) => ({
+        name: cat.short,
+        max: Math.max(maxVal * 1.1, 1),
+      })),
+      shape: "polygon" as const,
+      radius: "65%",
+      axisName: {
+        color: "#7a90a8",
+        fontSize: 11,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
+      splitArea: { show: false },
+      splitLine: { lineStyle: { color: "#243347", width: 1 } },
+      axisLine: { lineStyle: { color: "#243347" } },
+    },
+    series: [
+      {
+        type: "radar",
+        data: [
+          {
+            value: medians,
+            name: "World Median",
+            lineStyle: { type: "dashed" as const, color: "#4a6280", width: 1.5 },
+            areaStyle: { color: "transparent" },
+            symbol: "none",
+          },
+          {
+            value: scores,
+            name: countryName,
+            lineStyle: { color: "#38bdf8", width: 2 },
+            areaStyle: { color: "rgba(56, 189, 248, 0.15)" },
+            symbol: "circle",
+            symbolSize: 5,
+            itemStyle: { color: "#38bdf8" },
+          },
+        ],
+      },
+    ],
+    tooltip: {
+      trigger: "item",
+      backgroundColor: "#1e2d42",
+      borderColor: "#243347",
+      textStyle: { color: "#e2e8f0", fontSize: 12 },
+    },
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Structural Twins Panel (V2 promoted)
+// ---------------------------------------------------------------------------
+
+function StructuralTwinsPanel({ country }: { country: CountryRisk }) {
+  // Extract top pattern partners from tier data: count how many times each
+  // partner country appears as a category across all tiers. This is a proxy
+  // for structural similarity. Full pre-compute would come from the pipeline.
+  // For now, show placeholder twins with a "requires pipeline" note.
+  const placeholderTwins = [
+    { name: "Data not yet pre-computed", alpha2: "", pps: 0, topCategory: "", patterns: 0 },
+  ];
+
+  // If the country has enough tier data, we can hint at the top categories
+  const topCats = getCategoryBreakdownForTwins(country).slice(0, 3);
+  const hasTierData = topCats.length > 0;
+
+  return (
+    <div className="space-y-3">
+      {hasTierData ? (
+        <>
+          <div
+            className="rounded-lg p-4 text-center"
+            style={{
+              backgroundColor: "var(--qgi-surface-2)",
+              border: "1px dashed var(--qgi-border)",
+            }}
+          >
+            <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+              REQUIRES PIPELINE PRE-COMPUTE
+            </div>
+            <p className="text-xs leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
+              Structural twins are determined by finding countries whose indicator trajectories
+              most closely parallel {country.name}&apos;s across all pattern tiers. This requires
+              a dedicated pipeline pre-computation step (pattern partner aggregation).
+            </p>
+            <div className="mt-4 space-y-2">
+              <div className="text-[10px] tracking-widest uppercase" style={{ color: "var(--qgi-text-muted)" }}>
+                TOP SIGNAL CATEGORIES
+              </div>
+              {topCats.map((cat) => (
+                <div
+                  key={cat.category}
+                  className="flex items-center justify-between px-3 py-2 rounded"
+                  style={{ backgroundColor: "var(--qgi-surface)" }}
+                >
+                  <span className="text-xs" style={{ color: "var(--qgi-text)" }}>
+                    {formatCategory(cat.category)}
+                  </span>
+                  <span className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
+                    {cat.recipe_count} prec.
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      ) : (
+        <div
+          className="rounded-lg p-6 text-center"
+          style={{
+            backgroundColor: "var(--qgi-surface-2)",
+            border: "1px dashed var(--qgi-border)",
+          }}
+        >
+          <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+            NO TWIN DATA AVAILABLE
+          </div>
+          <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+            Structural twins will appear here after the pattern partner pre-computation pipeline runs.
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function getCategoryBreakdownForTwins(
+  country: CountryRisk
+): Array<{ category: string; salience: number; recipe_count: number }> {
+  const catMap: Record<string, { sSum: number; rSum: number; n: number }> = {};
+  for (const tierData of Object.values(country.tiers)) {
+    for (const cat of tierData.top_categories) {
+      if (!catMap[cat.category]) {
+        catMap[cat.category] = { sSum: 0, rSum: 0, n: 0 };
+      }
+      catMap[cat.category].sSum += cat.salience_score ?? cat.z_score;
+      catMap[cat.category].rSum += cat.recipe_count;
+      catMap[cat.category].n += 1;
+    }
+  }
+  return Object.entries(catMap)
+    .map(([category, { sSum, rSum, n }]) => ({
+      category,
+      salience: sSum / n,
+      recipe_count: Math.round(rSum / n),
+    }))
+    .sort((a, b) => b.salience - a.salience);
 }
 
 // ---------------------------------------------------------------------------

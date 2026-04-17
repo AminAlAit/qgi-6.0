@@ -161,6 +161,17 @@ export function PrecedentDetailClient({
         />
       </div>
 
+      {/* ─── Top 5 Historical Analogues (V2 promoted) ────────────── */}
+      <AnaloguesTwinsPanel
+        category={category}
+        countryName={country.name}
+        totalRecipes={totalRecipes}
+        tierBreakdown={tierBreakdown}
+      />
+
+      {/* ─── Lead-Time Distribution (V2 promoted) ──────────────── */}
+      <LeadTimeDistribution totalAnalogues={totalRecipes} />
+
       {/* ─── Per-Tier Breakdown ─────────────────────────────────── */}
       <section
         className="rounded-lg border p-6 mb-6"
@@ -285,6 +296,161 @@ export function PrecedentDetailClient({
 // ---------------------------------------------------------------------------
 // Sub-components
 // ---------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------------
+// Analogues Twins Panel (V2 promoted — placeholder data)
+// ---------------------------------------------------------------------------
+
+function AnaloguesTwinsPanel({
+  category,
+  countryName,
+  totalRecipes,
+  tierBreakdown,
+}: {
+  category: string;
+  countryName: string;
+  totalRecipes: number;
+  tierBreakdown: { tier: string; match: CategoryScore | undefined }[];
+}) {
+  // Derive placeholder "twins" from the tier breakdown data.
+  // In the full pipeline, this would come from pre-computed pattern partners.
+  const activeTiers = tierBreakdown.filter((t) => t.match != null);
+
+  return (
+    <section
+      className="rounded-lg border p-6 mb-6"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div className="flex items-baseline justify-between mb-4">
+        <h3
+          className="text-[11px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          TOP HISTORICAL ANALOGUES
+          <InfoTooltip text="Countries whose economic trajectories most closely preceded events in this category. Each card shows a country that experienced a similar event after following a parallel indicator trajectory. Requires pipeline pre-compute for full data." />
+        </h3>
+        <span className="text-[11px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          {totalRecipes.toLocaleString()} total precedent windows
+        </span>
+      </div>
+
+      <div
+        className="rounded-lg p-5 text-center"
+        style={{
+          backgroundColor: "var(--qgi-surface-2)",
+          border: "1px dashed var(--qgi-border)",
+        }}
+      >
+        <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+          REQUIRES PIPELINE PRE-COMPUTE
+        </div>
+        <p className="text-xs leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--qgi-text-dim)" }}>
+          Analogue country cards will show here once the pattern partner aggregation pipeline
+          pre-computes the top-5 historical analogues for {countryName} in{" "}
+          {formatCategory(category).toLowerCase()}. Each card will display the analogue country,
+          its event window, match score, lead time, and a sparkline of the trajectory.
+        </p>
+        {activeTiers.length > 0 && (
+          <div className="mt-4 flex flex-wrap justify-center gap-2">
+            {activeTiers.map(({ tier, match }) => (
+              <span
+                key={tier}
+                className="px-3 py-1 rounded text-[10px] font-data"
+                style={{
+                  backgroundColor: `${TIER_COLORS[tier]}20`,
+                  color: TIER_COLORS[tier],
+                  border: `1px solid ${TIER_COLORS[tier]}40`,
+                }}
+              >
+                {tier}: {match!.recipe_count} precedents
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Lead-Time Distribution (V2 promoted — sample data)
+// ---------------------------------------------------------------------------
+
+const SAMPLE_LEAD_TIME_BINS = [
+  { years: "1y", count: 42, pct: 22 },
+  { years: "2y", count: 58, pct: 31 },
+  { years: "3y", count: 39, pct: 21 },
+  { years: "4y", count: 27, pct: 14 },
+  { years: "5y", count: 14, pct: 8 },
+  { years: "6+", count: 7, pct: 4 },
+];
+
+function LeadTimeDistribution({ totalAnalogues }: { totalAnalogues: number }) {
+  return (
+    <section
+      className="rounded-lg border p-6 mb-6"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div className="flex items-baseline justify-between mb-5">
+        <h3
+          className="text-[11px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          LEAD-TIME DISTRIBUTION
+          <InfoTooltip text="How many years before the actual event did the analogue pattern start flagging? Longer lead times = more advance warning, but also more false-positive risk. Currently showing sample distribution -- will use real data after pipeline pre-compute." />
+        </h3>
+        <span className="text-[11px] tracking-wider italic" style={{ color: "var(--qgi-text-dim)" }}>
+          Sample data -- requires pre-compute
+        </span>
+      </div>
+
+      <div className="space-y-2">
+        {SAMPLE_LEAD_TIME_BINS.map((b) => (
+          <div key={b.years} className="flex items-center gap-3">
+            <span
+              className="font-data text-xs w-8 text-right"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              {b.years}
+            </span>
+            <div className="flex-1 h-5 rounded relative" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+              <div
+                className="h-full rounded"
+                style={{
+                  width: `${b.pct * 3.2}%`,
+                  backgroundColor: "var(--qgi-accent)",
+                  opacity: 0.7,
+                }}
+              />
+            </div>
+            <span
+              className="font-data text-xs w-8 text-right"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              {b.count}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div
+        className="mt-5 text-sm leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        Median lead: <strong style={{ color: "var(--qgi-text)" }}>2 years</strong>.
+        Of the analogue patterns,{" "}
+        <strong style={{ color: "var(--qgi-text)" }}>74%</strong> led the event by
+        3 years or less.
+      </div>
+    </section>
+  );
+}
 
 function TierRow({ tier, match }: { tier: string; match: CategoryScore | undefined }) {
   const color = TIER_COLORS[tier];
