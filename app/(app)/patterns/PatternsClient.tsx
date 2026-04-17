@@ -816,9 +816,9 @@ export default function PatternsClient() {
       {/* ============================================================ */}
       <div className="flex-1 overflow-y-auto">
         {/* ============================================================ */}
-        {/*  S0 LANDING -- shown when no pattern is loaded               */}
+        {/*  S0 LANDING -- shown when no country is selected             */}
         {/* ============================================================ */}
-        {!detail && !loading && !error && (
+        {browseState === "S0" && !loading && !error && (
           <div className="p-6 space-y-6">
             {/* Summary card */}
             <div
@@ -988,6 +988,170 @@ export default function PatternsClient() {
                 </p>
               </div>
             )}
+          </div>
+        )}
+
+        {/* ============================================================ */}
+        {/*  S1 PARTNER TABLE -- shown when Country A selected           */}
+        {/* ============================================================ */}
+        {browseState === "S1" && !loading && !error && (
+          <div className="p-6 space-y-4">
+            {/* Header */}
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <div>
+                <h3
+                  className="text-xs tracking-widest uppercase flex items-center gap-2"
+                  style={{ color: "var(--qgi-text)" }}
+                >
+                  <CountryFlag alpha2={alpha2AVal} size={18} />
+                  {(countryAName || countryA).toUpperCase()}&apos;S PATTERN PARTNERS
+                  <InfoTooltip text="All countries that share structural indicator patterns with the selected predictor country." />
+                </h3>
+                <div
+                  className="text-[10px] tracking-wider mt-1 font-data"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {partners.length} countries with shared patterns
+                </div>
+              </div>
+            </div>
+
+            {/* Partner table */}
+            {partners.length === 0 ? (
+              <div className="flex items-center justify-center py-12">
+                <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
+                  Loading partners...
+                </span>
+              </div>
+            ) : (
+              <>
+                <div
+                  className="rounded-lg overflow-hidden border"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    borderColor: "var(--qgi-border)",
+                  }}
+                >
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr
+                        className="border-b text-[10px] tracking-widest uppercase"
+                        style={{
+                          borderColor: "var(--qgi-border)",
+                          color: "var(--qgi-text-dim)",
+                        }}
+                      >
+                        <th className="px-3 py-2.5 text-left w-8"></th>
+                        <th className="px-3 py-2.5 text-left">
+                          PARTNER
+                          <InfoTooltip text="The Following country that shares structural patterns with the selected Predictor." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          LENGTHS
+                          <InfoTooltip text="Number of distinct pattern lengths available for this pair." />
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {partners.map((p) => {
+                        const pAlpha2 = ALPHA2_MAP[p.country_b_id] ?? "";
+                        return (
+                          <tr
+                            key={p.country_b_id}
+                            onClick={() => handleCountryBChange(p.country_b_id)}
+                            className="border-b transition-colors cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                            style={{ borderColor: "var(--qgi-border)" }}
+                          >
+                            <td className="px-3 py-2.5">
+                              <CountryFlag alpha2={pAlpha2} size={16} />
+                            </td>
+                            <td
+                              className="px-3 py-2.5 font-medium"
+                              style={{ color: "var(--qgi-text)" }}
+                            >
+                              {p.country_b_name}
+                            </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{ color: "var(--qgi-text-muted)" }}
+                            >
+                              {p.available_lengths.length}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                <p
+                  className="text-[10px] tracking-wider"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  Click any row to see all pattern windows for {countryAName || countryA} + that country, or use the Following dropdown above.
+                </p>
+              </>
+            )}
+          </div>
+        )}
+
+        {/* ============================================================ */}
+        {/*  S2 PAIR SELECTED -- shown when A+B selected, no detail yet  */}
+        {/* ============================================================ */}
+        {browseState === "S2" && !detail && !loading && !error && (
+          <div className="p-6 space-y-5">
+            {/* Pair header */}
+            <div
+              className="rounded-xl p-5"
+              style={{
+                backgroundColor: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+              }}
+            >
+              <div className="flex items-center gap-3 mb-2">
+                <CountryFlag alpha2={alpha2AVal} size={24} />
+                <span
+                  className="text-sm font-semibold tracking-wider"
+                  style={{ color: "var(--qgi-country-a)" }}
+                >
+                  {(countryAName || countryA).toUpperCase()}
+                </span>
+                <span style={{ color: "var(--qgi-text-dim)" }}>&mdash;&mdash;&mdash;</span>
+                <CountryFlag alpha2={alpha2BVal} size={24} />
+                <span
+                  className="text-sm font-semibold tracking-wider"
+                  style={{ color: "var(--qgi-country-b)" }}
+                >
+                  {(countryBName || countryB).toUpperCase()}
+                </span>
+              </div>
+              <div
+                className="text-[10px] font-data tracking-wider"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                {lengths.length > 0
+                  ? `${lengths.length} pattern lengths available -- select Duration and Window above to view a pattern`
+                  : "Loading lengths..."}
+              </div>
+            </div>
+
+            {/* Guidance */}
+            <div
+              className="rounded-lg p-5 text-center"
+              style={{
+                backgroundColor: "var(--qgi-surface)",
+                border: "1px dashed var(--qgi-border)",
+              }}
+            >
+              <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+                SELECT A WINDOW
+              </div>
+              <p className="text-xs max-w-md mx-auto" style={{ color: "var(--qgi-text-dim)" }}>
+                Use the Duration and Window selectors in the filter strip above to choose
+                a specific pattern window. The full pattern detail will load once all
+                parameters are selected.
+              </p>
+            </div>
           </div>
         )}
 
