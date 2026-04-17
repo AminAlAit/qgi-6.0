@@ -246,25 +246,39 @@ function indicatorTrajectoryOption(showAll: boolean) {
   });
 
   // Event marker lines — vertical labels, short text
-  // Event labels anchored to BOTTOM of the chart, running upward.
-  // This keeps them far away from the legend at the top.
+  // #1 REVERTED: Original-style event markers. Bold red vertical lines
+  // spanning the full chart height. Labels at the BOTTOM (below x-axis)
+  // so they NEVER clash with the legend at the top.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
-    lineStyle: { color: "#f8717130", width: 1, type: "solid" as const },
+    lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
     label: {
+      show: false, // hide markLine's built-in label (causes overlap)
+    },
+  }));
+
+  // Render event labels as markPoints at the bottom of the chart instead
+  // This avoids ALL legend clashing issues
+  const eventAnnotations = EVENT_MARKERS.map((e) => ({
+    coord: [String(e.year), 0],
+    symbol: "triangle",
+    symbolSize: 8,
+    symbolRotate: 180,
+    itemStyle: { color: "#f87171" },
+    label: {
+      show: true,
       formatter: e.label,
-      position: "insideStartTop" as const,
-      color: "#f87171aa",
-      fontSize: 9,
-      fontFamily: "'JetBrains Mono', monospace",
-      rotate: -90,
-      distance: 4,
+      position: "bottom" as const,
+      color: "#f87171",
+      fontSize: 8,
+      rotate: -45,
+      offset: [0, 4],
     },
   }));
 
   return {
     backgroundColor: "transparent",
-    grid: { top: 55, right: 20, bottom: 35, left: 45 },
+    grid: { top: 45, right: 20, bottom: 65, left: 45 },
     legend: {
       top: 0,
       left: "center",
@@ -326,13 +340,17 @@ function indicatorTrajectoryOption(showAll: boolean) {
     },
     series: series.map((s, i) => ({
       ...s,
-      // Attach markLine only to the first series to avoid duplicates
+      // Attach markLine + markPoint only to the first series
       ...(i === 0
         ? {
             markLine: {
               silent: true,
               symbol: "none",
               data: markLines,
+            },
+            markPoint: {
+              silent: true,
+              data: eventAnnotations,
             },
           }
         : {}),

@@ -33,16 +33,18 @@ const TIER_COLORS: Record<string, string> = {
   XL: "#a78bfa",
 };
 
-/* L1 category identifiers and short labels for the radar chart */
+/* L1 category identifiers — MUST match the single-letter IDs from
+   taxonomy_hierarchy.json / salience JSONs (A-H), NOT slug names.
+   The V2 agent used slug names which caused empty radar charts. */
 const L1_CATEGORIES: { id: string; label: string; short: string }[] = [
-  { id: "conflict_security", label: "Conflict & Security", short: "Conflict" },
-  { id: "governance_institutional", label: "Governance & Institutions", short: "Govern." },
-  { id: "diplomacy_geopolitics", label: "Diplomacy & Geopolitics", short: "Diplo." },
-  { id: "economic_financial", label: "Economic & Financial Stress", short: "Econ." },
-  { id: "demography_migration", label: "Demography & Migration", short: "Demog." },
-  { id: "climate_environment", label: "Climate & Environment", short: "Climate" },
-  { id: "public_health", label: "Public Health", short: "Health" },
-  { id: "human_rights_social", label: "Human Rights & Social", short: "Rights" },
+  { id: "A", label: "Political Power & Regime", short: "Political" },
+  { id: "B", label: "Conflict & Violence", short: "Conflict" },
+  { id: "C", label: "Governance & Rights", short: "Govern." },
+  { id: "D", label: "Economic Stress", short: "Econ." },
+  { id: "E", label: "Social Mobilization", short: "Social" },
+  { id: "F", label: "Diplomacy & Geopolitics", short: "Diplo." },
+  { id: "G", label: "Humanitarian Crisis", short: "Humanit." },
+  { id: "H", label: "Structural Trends", short: "Struct." },
 ];
 
 /** World median approximation for each L1 (global avg ~0.29) */
