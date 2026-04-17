@@ -104,6 +104,43 @@ function corrColor(r: number): string {
 }
 
 /* ------------------------------------------------------------------ */
+/*  PPS inline bar (from V2 prototype)                                 */
+/* ------------------------------------------------------------------ */
+
+function PpsBar({ pps, maxPps, colorFn }: { pps: number; maxPps: number; colorFn?: (v: number) => string }) {
+  const pct = Math.min(100, maxPps > 0 ? (pps / maxPps) * 100 : 0);
+  const color = colorFn ? colorFn(pps) : rawPpsColor(pps);
+  return (
+    <div className="flex items-center gap-2">
+      <div
+        className="h-2 rounded-full"
+        style={{
+          width: "80px",
+          backgroundColor: "var(--qgi-surface-2)",
+        }}
+      >
+        <div
+          className="h-full rounded-full transition-all"
+          style={{
+            width: `${pct}%`,
+            backgroundColor: color,
+          }}
+        />
+      </div>
+      <span className="font-data text-xs" style={{ color }}>
+        {Math.round(pps)}
+      </span>
+    </div>
+  );
+}
+
+function leadLabel(lead: number): string {
+  if (lead === 0) return "sync";
+  if (lead > 0) return `+${lead}yr`;
+  return `${lead}yr`;
+}
+
+/* ------------------------------------------------------------------ */
 /*  Sector colors for SCDI cards                                       */
 /* ------------------------------------------------------------------ */
 
@@ -408,9 +445,23 @@ export default function PatternsClient() {
   const [showCharts, setShowCharts] = useState(true);
   const [showTable, setShowTable] = useState(true);
 
-  // S0 landing: top pairs from ranking cache
+  // S0 landing: top pairs from ranking cache (used for navigateToPattern but NOT shown in S0)
   const [topPairs, setTopPairs] = useState<PatternRow[]>([]);
   const [landingLoading, setLandingLoading] = useState(true);
+
+  // S2: windows data for the length-range slider experience
+  interface WindowData {
+    length: number;
+    start_year_a: number;
+    start_year_b: number;
+    num_indexes: number;
+    avg_correlation: number;
+    pattern_power_score: number;
+  }
+  const [allWindows, setAllWindows] = useState<WindowData[]>([]);
+  const [windowsLoading, setWindowsLoading] = useState(false);
+  const [lengthMin, setLengthMin] = useState<number>(0);
+  const [lengthMax, setLengthMax] = useState<number>(0);
 
   // V2 detail: expandable SCDI card
   const [expandedScdi, setExpandedScdi] = useState<string | null>(null);
@@ -483,6 +534,28 @@ export default function PatternsClient() {
     )
       .then(setLengths)
       .catch(() => setLengths([]));
+  }, [countryA, countryB]);
+
+  // Load ALL windows when B changes (for S2 length-range slider)
+  useEffect(() => {
+    if (!countryA || !countryB) {
+      setAllWindows([]);
+      return;
+    }
+    setWindowsLoading(true);
+    apiFetch<WindowData[]>(
+      `/api/patterns/windows?country_a=${encodeURIComponent(countryA)}&country_b=${encodeURIComponent(countryB)}`
+    )
+      .then((data) => {
+        setAllWindows(data);
+        if (data.length > 0) {
+          const lens = data.map((w) => w.length);
+          setLengthMin(Math.min(...lens));
+          setLengthMax(Math.max(...lens));
+        }
+      })
+      .catch(() => setAllWindows([]))
+      .finally(() => setWindowsLoading(false));
   }, [countryA, countryB]);
 
   // Load year pairs when length changes
@@ -654,6 +727,25 @@ export default function PatternsClient() {
   const countryBName = countryB ? getCountryName(countryB) : "";
   const alpha2AVal = countryA ? (ALPHA2_MAP[countryA] ?? "") : "";
   const alpha2BVal = countryB ? (ALPHA2_MAP[countryB] ?? "") : "";
+
+  // ---- S2 slider: filtered windows ----
+  const windowLengths = useMemo(() => {
+    const s = new Set(allWindows.map((w) => w.length));
+    return Array.from(s).sort((a, b) => a - b);
+  }, [allWindows]);
+
+  const globalMinLen = windowLengths.length > 0 ? windowLengths[0] : 0;
+  const globalMaxLen = windowLengths.length > 0 ? windowLengths[windowLengths.length - 1] : 0;
+
+  const filteredWindows = useMemo(
+    () =>
+      allWindows.filter(
+        (w) => w.length >= lengthMin && w.length <= lengthMax
+      ),
+    [allWindows, lengthMin, lengthMax]
+  );
+
+  const topWindowPps = allWindows.length > 0 ? Math.max(...allWindows.map((w) => w.pattern_power_score)) : 1;
 
   // ---- Breadcrumb segments ----
   const breadcrumbSegments: { label: string; alpha2?: string; state: BrowseState }[] = [

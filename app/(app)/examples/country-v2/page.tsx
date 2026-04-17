@@ -246,8 +246,8 @@ function indicatorTrajectoryOption(showAll: boolean) {
   });
 
   // Event marker lines — vertical red lines only, NO labels inside ECharts.
-  // Labels are rendered as separate HTML overlays below the x-axis to avoid
-  // clashing with the legend row at the top of the chart.
+  // Labels are rendered as separate HTML overlays at the top of the chart,
+  // below the legend row and above the grid data area.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
     lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
@@ -256,9 +256,9 @@ function indicatorTrajectoryOption(showAll: boolean) {
 
   return {
     backgroundColor: "transparent",
-    // top: 50px = legend only (no event labels in canvas anymore)
-    // bottom: 80px = x-axis labels (20px) + gap + HTML event labels below (~60px)
-    grid: { top: 50, right: 20, bottom: 80, left: 45 },
+    // top: 120px = legend (~30px) + event labels (~70px) + gap before chart data
+    // bottom: 30px = x-axis labels only (event labels moved to top)
+    grid: { top: 120, right: 20, bottom: 30, left: 45 },
     legend: {
       top: 0,
       left: "center",
@@ -673,16 +673,15 @@ export default function CountryV2Page() {
               </span>
             </div>
           </div>
-          <div className="relative h-[480px]">
+          <div className="relative h-[520px]">
             <ReactECharts
               option={indicatorTrajectoryOption(showAllIndicators)}
               style={{ height: "100%", width: "100%" }}
               opts={{ renderer: "svg" }}
             />
-            {/* HTML overlay: event labels positioned BELOW the x-axis.
-                Each label's left% is computed from the chart grid margins
-                (left: 45px, right: 20px) and the year's position in the
-                1990-2025 range. Labels are rotated -45deg in red. */}
+            {/* HTML overlay: event labels at TOP of chart, below the legend.
+                Legend occupies ~0-30px. Labels are vertically centered in the
+                38-110px zone (center ~70px). Grid.top=120px so chart data starts below. */}
             {EVENT_MARKERS.map((e) => {
               const gridLeftPx = 45;
               const gridRightPx = 20;
@@ -692,10 +691,10 @@ export default function CountryV2Page() {
                   key={e.year}
                   style={{
                     position: "absolute",
-                    bottom: 6,
+                    top: 70,
                     left: `calc(${gridLeftPx}px + ${yearFraction} * (100% - ${gridLeftPx + gridRightPx}px))`,
-                    transform: "translateX(-50%) rotate(-45deg)",
-                    transformOrigin: "top center",
+                    transform: "translateX(-50%) rotate(-90deg)",
+                    transformOrigin: "center center",
                     color: "#f87171",
                     fontSize: 9,
                     fontFamily: "'JetBrains Mono', monospace",
