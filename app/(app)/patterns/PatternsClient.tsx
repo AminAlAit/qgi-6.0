@@ -22,16 +22,17 @@ import {
   TRANSFORMATION_LABELS,
   type Transformation,
 } from "@/lib/transforms";
-import { sectorColor, sectorChipBg } from "@/lib/design";
+import { sectorColor } from "@/lib/design";
 import type { PatternRow } from "@/lib/types";
 import countriesList from "@/data/countries.json";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
-const IndexChart = dynamic(
-  () => import("@/components/patterns/IndexChart").then((m) => m.IndexChart),
-  { ssr: false }
-);
+// IndexChart kept available for potential future per-indicator deep-dive
+// const IndexChart = dynamic(
+//   () => import("@/components/patterns/IndexChart").then((m) => m.IndexChart),
+//   { ssr: false }
+// );
 
 /* ------------------------------------------------------------------ */
 /*  Country lookup                                                     */
