@@ -19,8 +19,8 @@ import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { IndexCatalogue } from "@/components/dashboard/IndexCatalogue";
-import { WorldDotMap } from "@/components/charts/WorldDotMap";
-import type { DotCountry } from "@/components/charts/WorldDotMap";
+import { WorldMapChart } from "@/components/charts/WorldMapChart";
+import type { MapCountry } from "@/components/charts/WorldMapChart";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
 import {
@@ -431,7 +431,7 @@ export function BaseClient({
   }, [risks, topSignals]);
 
   // ── Dot map countries ───────────────────────────────────────────
-  const dotCountries: DotCountry[] = useMemo(() => {
+  const dotCountries: MapCountry[] = useMemo(() => {
     if (!risks) return [];
     return Object.entries(risks.countries).map(([id, c]) => ({
       id,
@@ -799,7 +799,7 @@ export function BaseClient({
           className="border-t shrink-0"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <WorldDotMap countries={dotCountries} />
+          <WorldMapChart countries={dotCountries} />
         </div>
       )}
 
