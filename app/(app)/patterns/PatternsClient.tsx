@@ -1,17 +1,20 @@
 "use client";
 
 /**
- * PatternsClient V3 -- Horizontal cascade strip layout.
+ * PatternsClient V4 -- Matches Browse V2 prototype exactly.
  *
- * Browse states (borrowed from Browse V2 prototype):
- *   S0 - Landing: top 10 global pairs table (from ranking cache)
- *   S1 - Country A selected: filter strip shows "Predictor > Following"
- *   S2 - Pair + length selected: year window selector appears
+ * Browse states:
+ *   S0 - Landing: welcome card with stats + prompt (NO top pairs table)
+ *   S1 - Country A selected: partner table (flag, name, lengths, range)
+ *   S2 - Pair selected: pair header + LENGTH RANGE slider + windows table
  *   S3 - Pattern loaded: V2 hero card + expandable SCDIs
  *
- * The vertical cascade sidebar has been removed. All filter controls
- * live in a sticky horizontal strip at the top. Data-fetching logic
- * from CascadeFilter.tsx is inlined here.
+ * Key changes from V3:
+ * - S0: removed Top Global Pairs table (that's what /ranking is for)
+ * - S1: enhanced partner table with range column
+ * - S2: replaced Duration/Window dropdowns with length-range slider +
+ *        filterable windows table (ported from Browse V2 prototype)
+ * - Cascade strip: only Predictor + Following dropdowns (no Duration/Window)
  */
 
 import { useState, useCallback, useEffect, useMemo, useRef } from "react";
@@ -190,9 +193,13 @@ interface Partner {
   available_lengths: number[];
 }
 
-interface YearPair {
+interface WindowData {
+  length: number;
   start_year_a: number;
   start_year_b: number;
+  num_indexes: number;
+  avg_correlation: number;
+  pattern_power_score: number;
 }
 
 async function apiFetch<T>(url: string): Promise<T> {
@@ -426,8 +433,6 @@ export default function PatternsClient() {
   const [apiCountries, setApiCountries] = useState<ApiCountry[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);
   const [lengths, setLengths] = useState<number[]>([]);
-  const [yearPairs, setYearPairs] = useState<YearPair[]>([]);
-
   const [countryA, setCountryA] = useState(initialA);
   const [countryB, setCountryB] = useState(initialB);
   const [length, setLength] = useState<number | "">(initialLength);
@@ -450,14 +455,6 @@ export default function PatternsClient() {
   const [landingLoading, setLandingLoading] = useState(true);
 
   // S2: windows data for the length-range slider experience
-  interface WindowData {
-    length: number;
-    start_year_a: number;
-    start_year_b: number;
-    num_indexes: number;
-    avg_correlation: number;
-    pattern_power_score: number;
-  }
   const [allWindows, setAllWindows] = useState<WindowData[]>([]);
   const [windowsLoading, setWindowsLoading] = useState(false);
   const [lengthMin, setLengthMin] = useState<number>(0);
@@ -557,19 +554,6 @@ export default function PatternsClient() {
       .catch(() => setAllWindows([]))
       .finally(() => setWindowsLoading(false));
   }, [countryA, countryB]);
-
-  // Load year pairs when length changes
-  useEffect(() => {
-    if (!countryA || !countryB || !length) {
-      setYearPairs([]);
-      return;
-    }
-    apiFetch<YearPair[]>(
-      `/api/patterns/years?country_a=${encodeURIComponent(countryA)}&country_b=${encodeURIComponent(countryB)}&length=${length}`
-    )
-      .then(setYearPairs)
-      .catch(() => setYearPairs([]));
-  }, [countryA, countryB, length]);
 
   // Fire pattern load when all 5 params are set
   useEffect(() => {
@@ -703,19 +687,6 @@ export default function PatternsClient() {
     setError(null);
   }
 
-  function handleLengthChange(val: string) {
-    setLength(val ? Number(val) : "");
-    setYearPair("");
-    setDetail(null);
-    setError(null);
-  }
-
-  function handleYearPairChange(val: string) {
-    setYearPair(val);
-    setDetail(null);
-    setError(null);
-  }
-
   // ---- Derived values ----
   const isEarlyWarning =
     detail !== null &&
@@ -778,20 +749,11 @@ export default function PatternsClient() {
   if (browseState === "S1" && countryA) {
     contextLine = `${countryAName || countryA} has patterns with ${partners.length} countries`;
   } else if (browseState === "S2" && countryA && countryB) {
-    contextLine = `${countryAName || countryA} + ${countryBName || countryB}: ${lengths.length} lengths available`;
+    contextLine = `${countryAName || countryA} + ${countryBName || countryB}: ${allWindows.length} windows  \u00b7  lengths ${globalMinLen}-${globalMaxLen} years`;
   } else if (browseState === "S3" && detail) {
     const meta = detail.metadata;
     contextLine = `${meta.pattern_length} years  \u00b7  ${meta.num_indexes} indicators  \u00b7  PPS ${Number(meta.pattern_power_score) <= 1 ? Number(meta.pattern_power_score).toFixed(2) : Math.round(Number(meta.pattern_power_score))}`;
   }
-
-  // ---- Select styles ----
-  const selectClass =
-    "px-3 py-1.5 text-xs rounded border bg-transparent outline-none focus:border-[var(--qgi-accent)] transition-colors min-w-[120px]";
-  const selectStyle = {
-    borderColor: "var(--qgi-border)",
-    color: "var(--qgi-text)",
-    backgroundColor: "var(--qgi-surface)",
-  };
 
   return (
     <div className="flex flex-col h-full min-h-0">
@@ -828,61 +790,6 @@ export default function PatternsClient() {
             onChange={handleCountryBChange}
             disabled={!countryA || partners.length === 0}
           />
-
-          {/* Length selector -- appears after B is selected */}
-          {countryA && countryB && (
-            <div>
-              <div
-                className="text-[9px] tracking-widest uppercase mb-1"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Duration
-              </div>
-              <select
-                value={length}
-                onChange={(e) => handleLengthChange(e.target.value)}
-                className={selectClass}
-                style={selectStyle}
-                disabled={lengths.length === 0}
-              >
-                <option value="">Select length...</option>
-                {lengths.map((l) => (
-                  <option key={l} value={l}>
-                    {l} years
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
-
-          {/* Year window selector -- appears after length is selected */}
-          {countryA && countryB && length && (
-            <div>
-              <div
-                className="text-[9px] tracking-widest uppercase mb-1"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Window
-              </div>
-              <select
-                value={yearPair}
-                onChange={(e) => handleYearPairChange(e.target.value)}
-                className={selectClass}
-                style={{ ...selectStyle, minWidth: "200px" }}
-                disabled={yearPairs.length === 0}
-              >
-                <option value="">Select window...</option>
-                {yearPairs.map((yp) => (
-                  <option
-                    key={`${yp.start_year_a}:${yp.start_year_b}`}
-                    value={`${yp.start_year_a}:${yp.start_year_b}`}
-                  >
-                    {yp.start_year_a}&ndash;{yp.start_year_a + Number(length) - 1} / {yp.start_year_b}&ndash;{yp.start_year_b + Number(length) - 1}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
         </div>
 
         {/* Row 2: Breadcrumb + context counts */}
@@ -908,7 +815,7 @@ export default function PatternsClient() {
       {/* ============================================================ */}
       <div className="flex-1 overflow-y-auto">
         {/* ============================================================ */}
-        {/*  S0 LANDING -- shown when no country is selected             */}
+        {/*  S0 LANDING -- welcome card, no top pairs table               */}
         {/* ============================================================ */}
         {browseState === "S0" && !loading && !error && (
           <div className="p-6 space-y-6">
@@ -931,9 +838,16 @@ export default function PatternsClient() {
                 style={{ color: "var(--qgi-text-muted)" }}
               >
                 Explore structural similarities between countries across
-                economic indicators and decades of data. Start by
-                selecting a Predictor Country above, or browse the
-                top-ranked pattern pairs below.
+                260 economic indicators and 60+ years of data. Start by
+                selecting a Predictor Country above, or browse the{" "}
+                <a
+                  href="/patterns/ranking"
+                  className="underline transition-colors hover:text-[var(--qgi-accent)]"
+                  style={{ color: "var(--qgi-accent)" }}
+                >
+                  full ranking
+                </a>{" "}
+                for pre-computed top pairs.
               </p>
               <div
                 className="flex gap-4 mt-3 text-[10px] font-data tracking-wider"
@@ -947,139 +861,20 @@ export default function PatternsClient() {
               </div>
             </div>
 
-            {/* Top pairs table */}
-            {landingLoading ? (
-              <div className="flex items-center justify-center py-12">
-                <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
-                  Loading top pairs...
-                </span>
-              </div>
-            ) : topPairs.length > 0 ? (
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <h3
-                    className="text-xs tracking-widest uppercase"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                  >
-                    TOP GLOBAL PAIRS
-                    <InfoTooltip text="Top 10 pattern pairs ranked by Pattern Power Score (PPS), drawn from the pre-computed ranking cache." />
-                  </h3>
-                  <a
-                    href="/patterns/ranking"
-                    className="text-[10px] tracking-wider transition-colors hover:underline"
-                    style={{ color: "var(--qgi-accent)" }}
-                  >
-                    View full ranking &rarr;
-                  </a>
-                </div>
-
-                <div
-                  className="rounded-lg overflow-hidden border"
-                  style={{
-                    backgroundColor: "var(--qgi-surface)",
-                    borderColor: "var(--qgi-border)",
-                  }}
-                >
-                  <table className="w-full text-xs">
-                    <thead>
-                      <tr
-                        className="border-b text-[10px] tracking-widest uppercase"
-                        style={{
-                          borderColor: "var(--qgi-border)",
-                          color: "var(--qgi-text-dim)",
-                        }}
-                      >
-                        <th className="px-3 py-2.5 text-left w-8">#</th>
-                        <th className="px-3 py-2.5 text-left">
-                          PAIR
-                          <InfoTooltip text="Predictor country followed by Following country." />
-                        </th>
-                        <th className="px-3 py-2.5 text-right">YRS</th>
-                        <th className="px-3 py-2.5 text-right">IDX</th>
-                        <th className="px-3 py-2.5 text-right">CORR</th>
-                        <th className="px-3 py-2.5 text-left pl-6">
-                          PPS
-                          <InfoTooltip text="Pattern Power Score -- composite strength metric." />
-                        </th>
-                        <th className="px-3 py-2.5 text-right">LEAD</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {topPairs.map((row, i) => {
-                        const a2A = getAlpha2(row.country_a_id, row.country_a);
-                        const a2B = getAlpha2(row.country_b_id, row.country_b);
-                        const lead = row.start_year_b - row.start_year_a;
-                        const maxPps = topPairs[0]?.pattern_power_score ?? 1;
-                        const pct = Math.min(100, (row.pattern_power_score / maxPps) * 100);
-                        return (
-                          <tr
-                            key={`${row.country_a_id}-${row.country_b_id}-${row.start_year_a}-${i}`}
-                            onClick={() => navigateToPattern(row)}
-                            className="border-b transition-colors cursor-pointer hover:bg-[var(--qgi-surface-2)]"
-                            style={{ borderColor: "var(--qgi-border)" }}
-                          >
-                            <td className="px-3 py-2.5 font-data" style={{ color: "var(--qgi-text-dim)" }}>
-                              {i + 1}
-                            </td>
-                            <td className="px-3 py-2.5">
-                              <div className="flex items-center gap-2">
-                                <CountryFlag alpha2={a2A} size={16} />
-                                <span className="font-data text-xs" style={{ color: "var(--qgi-country-a)" }}>
-                                  {row.country_a}
-                                </span>
-                                <span style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
-                                <CountryFlag alpha2={a2B} size={16} />
-                                <span className="font-data text-xs" style={{ color: "var(--qgi-country-b)" }}>
-                                  {row.country_b}
-                                </span>
-                              </div>
-                            </td>
-                            <td className="px-3 py-2.5 text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                              {row.pattern_length}
-                            </td>
-                            <td className="px-3 py-2.5 text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                              {row.num_indexes}
-                            </td>
-                            <td className="px-3 py-2.5 text-right font-data" style={{ color: corrColor(row.avg_correlation) }}>
-                              {(row.avg_correlation * 100).toFixed(0)}%
-                            </td>
-                            <td className="px-3 py-2.5 pl-6">
-                              <div className="flex items-center gap-2">
-                                <div className="h-2 rounded-full" style={{ width: "80px", backgroundColor: "var(--qgi-surface-2)" }}>
-                                  <div className="h-full rounded-full" style={{ width: `${pct}%`, backgroundColor: rawPpsColor(row.pattern_power_score) }} />
-                                </div>
-                                <span className="font-data text-xs" style={{ color: rawPpsColor(row.pattern_power_score) }}>
-                                  {Math.round(row.pattern_power_score)}
-                                </span>
-                              </div>
-                            </td>
-                            <td className="px-3 py-2.5 text-right font-data" style={{ color: lead > 0 ? "var(--qgi-success)" : "var(--qgi-text-dim)" }}>
-                              {lead === 0 ? "sync" : lead > 0 ? `+${lead}yr` : `${lead}yr`}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
-
-                <p
-                  className="mt-3 text-[10px] tracking-wider"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  Click any row to view full pattern detail, or use the filter strip above to discover patterns manually.
-                </p>
-              </div>
-            ) : (
-              <div className="flex flex-col items-center justify-center gap-3 py-12">
-                <span className="text-[10px] tracking-[0.25em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
-                  Patterns Portal
-                </span>
-                <p className="text-sm text-center max-w-sm" style={{ color: "var(--qgi-text-dim)" }}>
-                  Select a Predictor Country above and follow the steps to discover a geopolitical pattern.
-                </p>
-              </div>
-            )}
+            <p
+              className="text-[10px] tracking-wider"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Select a country above to see all its pattern partners, or visit{" "}
+              <a
+                href="/patterns/ranking"
+                className="underline"
+                style={{ color: "var(--qgi-accent)" }}
+              >
+                Ranking
+              </a>{" "}
+              for the top global pairs.
+            </p>
           </div>
         )}
 
@@ -1088,7 +883,7 @@ export default function PatternsClient() {
         {/* ============================================================ */}
         {browseState === "S1" && !loading && !error && (
           <div className="p-6 space-y-4">
-            {/* Header */}
+            {/* Header + controls */}
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
                 <h3
@@ -1097,13 +892,13 @@ export default function PatternsClient() {
                 >
                   <CountryFlag alpha2={alpha2AVal} size={18} />
                   {(countryAName || countryA).toUpperCase()}&apos;S PATTERN PARTNERS
-                  <InfoTooltip text="All countries that share structural indicator patterns with the selected predictor country." />
+                  <InfoTooltip text="All countries that share structural indicator patterns with the selected predictor country, ranked by number of available pattern lengths." />
                 </h3>
                 <div
                   className="text-[10px] tracking-wider mt-1 font-data"
                   style={{ color: "var(--qgi-text-dim)" }}
                 >
-                  {partners.length} countries with shared patterns
+                  {partners.length} countries &middot; showing top {partners.length}
                 </div>
               </div>
             </div>
@@ -1140,13 +935,20 @@ export default function PatternsClient() {
                         </th>
                         <th className="px-3 py-2.5 text-right">
                           LENGTHS
-                          <InfoTooltip text="Number of distinct pattern lengths available for this pair." />
+                          <InfoTooltip text="Number of distinct pattern lengths available for this pair. More lengths = more evidence." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          RANGE
+                          <InfoTooltip text="Shortest to longest available pattern length in years." />
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       {partners.map((p) => {
                         const pAlpha2 = ALPHA2_MAP[p.country_b_id] ?? "";
+                        const sortedLens = [...p.available_lengths].sort((a, b) => a - b);
+                        const minL = sortedLens[0] ?? 0;
+                        const maxL = sortedLens[sortedLens.length - 1] ?? 0;
                         return (
                           <tr
                             key={p.country_b_id}
@@ -1169,6 +971,12 @@ export default function PatternsClient() {
                             >
                               {p.available_lengths.length}
                             </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{ color: "var(--qgi-text-dim)" }}
+                            >
+                              {minL}&ndash;{maxL}yr
+                            </td>
                           </tr>
                         );
                       })}
@@ -1180,7 +988,7 @@ export default function PatternsClient() {
                   className="text-[10px] tracking-wider"
                   style={{ color: "var(--qgi-text-dim)" }}
                 >
-                  Click any row to see all pattern windows for {countryAName || countryA} + that country, or use the Following dropdown above.
+                  Click any row to see all pattern windows for {countryAName || countryA} + that country.
                 </p>
               </>
             )}
@@ -1221,29 +1029,275 @@ export default function PatternsClient() {
                 className="text-[10px] font-data tracking-wider"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                {lengths.length > 0
-                  ? `${lengths.length} pattern lengths available -- select Duration and Window above to view a pattern`
-                  : "Loading lengths..."}
+                {windowsLoading
+                  ? "Loading windows..."
+                  : `${allWindows.length} pattern windows \u00b7 ${windowLengths.length} unique lengths \u00b7 best PPS ${Math.round(topWindowPps)}`}
               </div>
             </div>
 
-            {/* Guidance */}
-            <div
-              className="rounded-lg p-5 text-center"
-              style={{
-                backgroundColor: "var(--qgi-surface)",
-                border: "1px dashed var(--qgi-border)",
-              }}
-            >
-              <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-                SELECT A WINDOW
+            {/* Length range slider */}
+            {!windowsLoading && allWindows.length > 0 && (
+              <div
+                className="rounded-lg p-4"
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  border: "1px solid var(--qgi-border)",
+                }}
+              >
+                <div
+                  className="text-[10px] tracking-widest uppercase mb-3"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  LENGTH RANGE
+                  <InfoTooltip text="Filter pattern windows by length. Drag to narrow the range." />
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span
+                    className="font-data text-xs w-6 text-right"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {globalMinLen}
+                  </span>
+
+                  <div className="flex-1 relative">
+                    {/* Track background */}
+                    <div
+                      className="h-2 rounded-full"
+                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                    />
+
+                    {/* Active range highlight */}
+                    {globalMaxLen > globalMinLen && (
+                      <div
+                        className="absolute top-0 h-2 rounded-full"
+                        style={{
+                          left: `${((lengthMin - globalMinLen) / (globalMaxLen - globalMinLen)) * 100}%`,
+                          right: `${100 - ((lengthMax - globalMinLen) / (globalMaxLen - globalMinLen)) * 100}%`,
+                          backgroundColor: "var(--qgi-accent)",
+                          opacity: 0.4,
+                        }}
+                      />
+                    )}
+
+                    {/* Tick marks for available lengths */}
+                    <div className="flex justify-between mt-1.5 relative" style={{ height: "20px" }}>
+                      {windowLengths.map((len) => (
+                        <div
+                          key={len}
+                          className="flex flex-col items-center"
+                          style={{
+                            position: "absolute",
+                            left: globalMaxLen > globalMinLen
+                              ? `${((len - globalMinLen) / (globalMaxLen - globalMinLen)) * 100}%`
+                              : "50%",
+                            transform: "translateX(-50%)",
+                          }}
+                        >
+                          <div
+                            className="w-1.5 h-1.5 rounded-full mt-1"
+                            style={{
+                              backgroundColor:
+                                len >= lengthMin && len <= lengthMax
+                                  ? "var(--qgi-accent)"
+                                  : "var(--qgi-text-dim)",
+                            }}
+                          />
+                          <span
+                            className="text-[8px] font-data mt-0.5"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {len}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Range inputs (stacked, transparent) */}
+                    <input
+                      type="range"
+                      min={globalMinLen}
+                      max={globalMaxLen}
+                      value={lengthMin}
+                      onChange={(e) =>
+                        setLengthMin(Math.min(Number(e.target.value), lengthMax))
+                      }
+                      className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
+                      style={{ pointerEvents: "auto" }}
+                    />
+                    <input
+                      type="range"
+                      min={globalMinLen}
+                      max={globalMaxLen}
+                      value={lengthMax}
+                      onChange={(e) =>
+                        setLengthMax(Math.max(Number(e.target.value), lengthMin))
+                      }
+                      className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
+                      style={{ pointerEvents: "auto" }}
+                    />
+                  </div>
+
+                  <span
+                    className="font-data text-xs w-6"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {globalMaxLen}
+                  </span>
+                </div>
+
+                <div
+                  className="text-[10px] font-data mt-3 text-center"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {lengthMin} &ndash; {lengthMax} years ({filteredWindows.length} of{" "}
+                  {allWindows.length} windows)
+                </div>
               </div>
-              <p className="text-xs max-w-md mx-auto" style={{ color: "var(--qgi-text-dim)" }}>
-                Use the Duration and Window selectors in the filter strip above to choose
-                a specific pattern window. The full pattern detail will load once all
-                parameters are selected.
-              </p>
-            </div>
+            )}
+
+            {/* Windows table */}
+            {windowsLoading ? (
+              <div className="flex items-center justify-center py-12">
+                <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
+                  Loading windows...
+                </span>
+              </div>
+            ) : filteredWindows.length > 0 ? (
+              <>
+                <div
+                  className="rounded-lg overflow-hidden border"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    borderColor: "var(--qgi-border)",
+                  }}
+                >
+                  <table className="w-full text-xs">
+                    <thead>
+                      <tr
+                        className="border-b text-[10px] tracking-widest uppercase"
+                        style={{
+                          borderColor: "var(--qgi-border)",
+                          color: "var(--qgi-text-dim)",
+                        }}
+                      >
+                        <th className="px-3 py-2.5 text-left w-8">#</th>
+                        <th className="px-3 py-2.5 text-left" style={{ color: "var(--qgi-country-a)" }}>
+                          {(countryAName || countryA).toUpperCase()}
+                          <InfoTooltip text="Time window for the Predictor country." />
+                        </th>
+                        <th className="px-3 py-2.5 text-left" style={{ color: "var(--qgi-country-b)" }}>
+                          {(countryBName || countryB).toUpperCase()}
+                          <InfoTooltip text="Time window for the Following country." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          YRS
+                          <InfoTooltip text="Pattern length in years." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          IDX
+                          <InfoTooltip text="Number of matching indicators (SCDIs)." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          CORR
+                          <InfoTooltip text="Average Pearson correlation." />
+                        </th>
+                        <th className="px-3 py-2.5 text-left pl-6">
+                          PPS
+                          <InfoTooltip text="Pattern Power Score." />
+                        </th>
+                        <th className="px-3 py-2.5 text-right">
+                          LEAD
+                          <InfoTooltip text="Lead time in years." />
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredWindows.map((w, idx) => {
+                        const endA = w.start_year_a + w.length - 1;
+                        const endB = w.start_year_b + w.length - 1;
+                        const lead = w.start_year_b - w.start_year_a;
+                        return (
+                          <tr
+                            key={`${w.start_year_a}-${w.start_year_b}-${w.length}`}
+                            onClick={() => {
+                              setLength(w.length);
+                              setYearPair(`${w.start_year_a}:${w.start_year_b}`);
+                            }}
+                            className="border-b transition-colors cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                            style={{ borderColor: "var(--qgi-border)" }}
+                          >
+                            <td
+                              className="px-3 py-2.5 font-data"
+                              style={{ color: "var(--qgi-text-dim)" }}
+                            >
+                              {idx + 1}
+                            </td>
+                            <td className="px-3 py-2.5 font-data" style={{ color: "var(--qgi-country-a)" }}>
+                              {w.start_year_a}&ndash;{endA}
+                            </td>
+                            <td className="px-3 py-2.5 font-data" style={{ color: "var(--qgi-country-b)" }}>
+                              {w.start_year_b}&ndash;{endB}
+                            </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{ color: "var(--qgi-text-muted)" }}
+                            >
+                              {w.length}
+                            </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{ color: "var(--qgi-text-muted)" }}
+                            >
+                              {w.num_indexes}
+                            </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{ color: corrColor(w.avg_correlation) }}
+                            >
+                              {(w.avg_correlation * 100).toFixed(0)}%
+                            </td>
+                            <td className="px-3 py-2.5 pl-6">
+                              <PpsBar pps={w.pattern_power_score} maxPps={topWindowPps} />
+                            </td>
+                            <td
+                              className="px-3 py-2.5 text-right font-data"
+                              style={{
+                                color:
+                                  lead > 0
+                                    ? "var(--qgi-success)"
+                                    : "var(--qgi-text-dim)",
+                              }}
+                            >
+                              {leadLabel(lead)}
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+
+                <p
+                  className="text-[10px] tracking-wider"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  Click any row to view the full pattern detail with indicator charts.
+                </p>
+              </>
+            ) : allWindows.length > 0 ? (
+              <div
+                className="rounded-lg p-5 text-center"
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  border: "1px dashed var(--qgi-border)",
+                }}
+              >
+                <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+                  No windows match the selected length range. Adjust the slider above.
+                </p>
+              </div>
+            ) : null}
           </div>
         )}
 
