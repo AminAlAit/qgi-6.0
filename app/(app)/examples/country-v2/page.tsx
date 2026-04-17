@@ -196,61 +196,80 @@ function normalizeMinMax(data: number[]): number[] {
 const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
 
 const EVENT_MARKERS: { year: number; label: string }[] = [
-  { year: 1991, label: "USSR collapse" },
-  { year: 1998, label: "Financial crisis" },
-  { year: 2008, label: "Georgia war" },
+  { year: 1991, label: "USSR" },
+  { year: 1998, label: "Crisis" },
+  { year: 2008, label: "Georgia" },
   { year: 2014, label: "Crimea" },
-  { year: 2022, label: "Ukraine invasion" },
+  { year: 2022, label: "Ukraine" },
 ];
 
-function indicatorTrajectoryOption() {
+/** Indices of the 3 most volatile indicators (GDP, Military, Inflation) */
+const DEFAULT_VISIBLE_INDICES = new Set([0, 1, 3]);
+
+function indicatorTrajectoryOption(showAll: boolean) {
+  // Build legend.selected — top 3 visible by default, rest hidden unless showAll
+  const legendSelected: Record<string, boolean> = {};
+  RAW_INDICATORS.forEach((ind, i) => {
+    legendSelected[ind.name] = showAll || DEFAULT_VISIBLE_INDICES.has(i);
+  });
+  legendSelected["World median"] = true;
+
+  // Area fill colors at 6% opacity for subtle shape distinction
+  const areaAlpha = "0F"; // hex ~6%
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const series: any[] = RAW_INDICATORS.map((ind, i) => ({
     name: ind.name,
     type: "line",
     data: normalizeMinMax(ind.data),
     smooth: true,
-    lineStyle: { width: 2, color: INDICATOR_COLORS[i] },
+    lineStyle: { width: 1.5, color: INDICATOR_COLORS[i] },
     itemStyle: { color: INDICATOR_COLORS[i] },
+    areaStyle: { color: INDICATOR_COLORS[i] + areaAlpha, origin: "start" },
     symbol: "none",
-    emphasis: { lineStyle: { width: 3 } },
+    emphasis: { lineStyle: { width: 2.5 } },
+    z: DEFAULT_VISIBLE_INDICES.has(i) ? 3 : 1,
   }));
 
-  // World median reference line (flat at 50)
+  // World median reference line — subtle
   series.push({
     name: "World median",
     type: "line",
     data: TRAJECTORY_YEARS.map(() => 50),
     smooth: false,
-    lineStyle: { width: 1.5, color: "#4a6280", type: "dashed" },
-    itemStyle: { color: "#4a6280" },
+    lineStyle: { width: 1, color: "#4a628060", type: [4, 4] as unknown as string },
+    itemStyle: { color: "#4a628060" },
     symbol: "none",
-    emphasis: { lineStyle: { width: 1.5 } },
+    emphasis: { lineStyle: { width: 1 } },
+    z: 0,
   });
 
-  // Event marker lines
+  // Event marker lines — vertical labels, short text
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
-    lineStyle: { color: "#f87171", width: 1, type: "solid" as const },
+    lineStyle: { color: "#f8717150", width: 1, type: "solid" as const },
     label: {
       formatter: e.label,
       position: "insideEndTop" as const,
-      color: "#f8717180",
-      fontSize: 9,
+      color: "#f8717190",
+      fontSize: 8,
       fontFamily: "'JetBrains Mono', monospace",
+      rotate: -90,
+      offset: [0, -4],
     },
   }));
 
   return {
     backgroundColor: "transparent",
-    grid: { top: 55, right: 20, bottom: 40, left: 45 },
+    grid: { top: 50, right: 20, bottom: 35, left: 45 },
     legend: {
       top: 0,
       left: "center",
       textStyle: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
       itemWidth: 18,
       itemHeight: 2,
-      itemGap: 14,
+      itemGap: 12,
+      selected: legendSelected,
     },
     tooltip: {
       trigger: "axis",
@@ -410,6 +429,7 @@ const SAMPLE_PRECEDENTS = [
 
 export default function CountryV2Page() {
   const [precedentsOpen, setPrecedentsOpen] = useState(false);
+  const [showAllIndicators, setShowAllIndicators] = useState(false);
 
   return (
     <div
@@ -636,16 +656,29 @@ export default function CountryV2Page() {
               className="text-[11px] tracking-widest uppercase font-semibold"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              INDICATOR TRAJECTORIES &middot; TOP 6 INDICATORS &middot; 1990-2025
-              <InfoTooltip text="Shows the raw economic story of this country over 35 years. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events. An analyst can instantly see how indicators responded to real-world shocks (e.g. GDP crashed in 1998, military spending spiked in 2022)." />
+              INDICATOR TRAJECTORIES &middot; {showAllIndicators ? "ALL 6" : "TOP 3"} INDICATORS &middot; 1990-2025
+              <InfoTooltip text="Shows the raw economic story of this country over 35 years. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events. Click legend items to show/hide individual series. An analyst can instantly see how indicators responded to real-world shocks (e.g. GDP crashed in 1998, military spending spiked in 2022)." />
             </h2>
-            <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
-              Normalized 0-100 scale &middot; hover for raw values
-            </span>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowAllIndicators((v) => !v)}
+                className="px-2.5 py-1 rounded text-[9px] tracking-wider uppercase transition-colors"
+                style={{
+                  backgroundColor: showAllIndicators ? "rgba(56, 189, 248, 0.15)" : "rgba(122, 144, 168, 0.1)",
+                  color: showAllIndicators ? "#38bdf8" : "#7a90a8",
+                  border: `1px solid ${showAllIndicators ? "rgba(56, 189, 248, 0.3)" : "rgba(122, 144, 168, 0.2)"}`,
+                }}
+              >
+                {showAllIndicators ? "Top 3" : "All 6"}
+              </button>
+              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+                Normalized 0-100 &middot; hover for raw
+              </span>
+            </div>
           </div>
           <div className="h-[420px]">
             <ReactECharts
-              option={indicatorTrajectoryOption()}
+              option={indicatorTrajectoryOption(showAllIndicators)}
               style={{ height: "100%", width: "100%" }}
               opts={{ renderer: "svg" }}
             />

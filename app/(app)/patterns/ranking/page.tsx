@@ -1,21 +1,25 @@
 "use client";
 
 /**
- * Pattern Power Ranking — GH#255 enrichment: flags, (i) tooltips, year-gap filter.
+ * Pattern Power Ranking — Card-row leaderboard redesign (Phase 0 + Phase 1).
+ *
+ * Each row is a mini-story with 3 zones:
+ *   Zone 1 (Rank): #1-3 amber accent, intensity fades
+ *   Zone 2 (Pair Block): flags + directional arrow + lead-time badge
+ *   Zone 3 (Strength Block): PPS bar + correlation pill
+ *
+ * Design reference: ux-redesign-ranking-2026-04-17.md
  */
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { PatternRow } from "@/lib/types";
 import countriesList from "@/data/countries.json";
 
-const PAGE_SIZE = 50;
-
-// Build alpha_2 lookups from the FULL 251-country countries.json (not
-// country-risks.json which only has 126). Fixes missing flags for
-// countries like Paraguay that are in the pattern DB but not in the
-// scored country-risks set.
+// ---------------------------------------------------------------------------
+// Country lookup maps
+// ---------------------------------------------------------------------------
 const ALPHA2_MAP: Record<string, string> = {};
 const NAME_TO_ALPHA2: Record<string, string> = {};
 for (const c of countriesList as Array<{ id: string; name: string; alpha_2: string }>) {
@@ -23,6 +27,45 @@ for (const c of countriesList as Array<{ id: string; name: string; alpha_2: stri
   NAME_TO_ALPHA2[c.name] = c.alpha_2;
 }
 
+// ---------------------------------------------------------------------------
+// Constants
+// ---------------------------------------------------------------------------
+
+/** PPS color tiers calibrated to raw PPS range (0-2500). */
+function rawPpsColor(pps: number): string {
+  if (pps >= 1500) return "#f87171"; // red -- elite
+  if (pps >= 1000) return "#fb923c"; // orange -- strong
+  if (pps >= 500) return "#fbbf24"; // amber -- moderate
+  return "#7a90a8"; // slate -- weak
+}
+
+/** Correlation tier definitions */
+type CorrTier = "S" | "A" | "B" | "C";
+
+function getCorrTier(r: number): CorrTier {
+  if (r >= 0.85) return "S";
+  if (r >= 0.70) return "A";
+  if (r >= 0.55) return "B";
+  return "C";
+}
+
+const CORR_TIER_COLORS: Record<CorrTier, string> = {
+  S: "#34d399", // emerald
+  A: "#38bdf8", // sky
+  B: "#fbbf24", // amber
+  C: "#7a90a8", // slate
+};
+
+const CORR_TIER_LABELS: Record<CorrTier, string> = {
+  S: "Very strong correlation",
+  A: "Strong correlation",
+  B: "Moderate correlation",
+  C: "Weak correlation",
+};
+
+// ---------------------------------------------------------------------------
+// API types
+// ---------------------------------------------------------------------------
 interface RankingResponse {
   page: number;
   limit: number;
@@ -31,65 +74,77 @@ interface RankingResponse {
   total_unique_pairs?: number;
 }
 
+// ---------------------------------------------------------------------------
+// Main page component
+// ---------------------------------------------------------------------------
 export default function RankingPage() {
   const router = useRouter();
-  const [rows, setRows] = useState<PatternRow[]>([]);
-  const [page, setPage] = useState(1);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Data state
+  const [allRows, setAllRows] = useState<PatternRow[]>([]);
   const [loading, setLoading] = useState(true);
-  const [hasMore, setHasMore] = useState(true);
-  const [deduped, setDeduped] = useState(false);
   const [totalUniquePairs, setTotalUniquePairs] = useState<number | null>(null);
 
+  // View mode: "best" = one row per pair (best PPS), "all" = raw 1000 interleaved
+  const [viewMode, setViewMode] = useState<"best" | "all">("all");
+
   // Filters
-  const [minPps, setMinPps] = useState("");
-  const [minCorr, setMinCorr] = useState("");
-  const [minYearGap, setMinYearGap] = useState("");
-  // Dedup toggle — when ON, collapses to one row per country pair (best PPS
-  // window). When OFF, shows all raw windows (up to 1000).
-  const [dedupEnabled, setDedupEnabled] = useState(false);
-  const [sortCol, setSortCol] = useState<keyof PatternRow>("pattern_power_score");
-  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [countrySearch, setCountrySearch] = useState("");
+  const [minPps, setMinPps] = useState(0);
+  const [corrTierFilter, setCorrTierFilter] = useState<CorrTier | null>(null);
+  const [leadTimeFilter, setLeadTimeFilter] = useState<"all" | "concurrent" | "early-warning">("all");
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  const countryInputRef = useRef<HTMLInputElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  // Fetch ALL results from the cache (up to 1000) in one go — client-side
-  // pagination + dedup + filtering is fast enough for this volume.
-  const [allRows, setAllRows] = useState<PatternRow[]>([]);
+  // Scroll position indicator
+  const [scrollPosition, setScrollPosition] = useState({ start: 1, end: 20 });
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
+  // Fetch all 1000 rows in one go
   const fetchAll = useCallback(async () => {
     setLoading(true);
     try {
       const params = new URLSearchParams({ page: "1", limit: "1000" });
-      if (minPps) params.set("min_pps", minPps);
-      if (minCorr) params.set("min_corr", minCorr);
       const res = await fetch(`/api/patterns/ranking?${params}`, { cache: "no-store" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: RankingResponse = await res.json();
       setAllRows(data.results);
       setTotalUniquePairs(data.total_unique_pairs ?? null);
-      setDeduped(Boolean(data.deduped));
     } catch (err) {
       console.error("Failed to fetch ranking:", err);
       setAllRows([]);
     } finally {
       setLoading(false);
     }
-  }, [minPps, minCorr]);
+  }, []);
 
   useEffect(() => {
-    setPage(1);
     fetchAll();
   }, [fetchAll]);
 
-  function handlePageChange(newPage: number) {
-    setPage(Math.max(1, Math.min(newPage, totalPages)));
-  }
-
-  function handleSort(col: keyof PatternRow) {
-    if (sortCol === col) {
-      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-    } else {
-      setSortCol(col);
-      setSortDir("desc");
+  // Close country dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node) &&
+        countryInputRef.current &&
+        !countryInputRef.current.contains(e.target as Node)
+      ) {
+        setShowCountryDropdown(false);
+      }
     }
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
+  function getAlpha2(idOrName: string | undefined, name: string): string {
+    if (idOrName && ALPHA2_MAP[idOrName]) return ALPHA2_MAP[idOrName];
+    if (NAME_TO_ALPHA2[name]) return NAME_TO_ALPHA2[name];
+    return "";
   }
 
   function navigateToPattern(p: PatternRow) {
@@ -103,15 +158,14 @@ export default function RankingPage() {
     router.push(`/patterns?${qs}`);
   }
 
-  // Client-side: dedup/interleave + year-gap filter + sort + paginate
+  // ---------------------------------------------------------------------------
+  // Process rows: dedup/interleave + filters
+  // ---------------------------------------------------------------------------
   const processed = useMemo(() => {
     let result = allRows;
 
-    // DEDUP MODE: one row per pair (best PPS window)
-    // DEFAULT MODE: interleave by pair so users see diversity instead of
-    // 50 South Korea-Thailand entries. Round-robin: take the best window
-    // of each pair first, then 2nd-best of each, then 3rd, etc.
-    if (dedupEnabled) {
+    if (viewMode === "best") {
+      // Dedup: one row per pair (best PPS window)
       const bestPerPair = new Map<string, PatternRow>();
       for (const row of result) {
         const a = row.country_a_id ?? row.country_a;
@@ -122,12 +176,11 @@ export default function RankingPage() {
           bestPerPair.set(key, row);
         }
       }
-      result = Array.from(bestPerPair.values());
+      result = Array.from(bestPerPair.values()).sort(
+        (a, b) => b.pattern_power_score - a.pattern_power_score
+      );
     } else {
-      // DEFAULT: interleave by pair. Group entries by pair key, sort each
-      // group by PPS desc, then round-robin: take rank-0 of each pair,
-      // then rank-1 of each, etc. This ensures page 1 shows all 23 unique
-      // pairs before repeating any, instead of 50 × SK-TH.
+      // Interleave by pair (round-robin)
       const groups = new Map<string, PatternRow[]>();
       for (const row of result) {
         const a = row.country_a_id ?? row.country_a;
@@ -140,11 +193,9 @@ export default function RankingPage() {
         }
         arr.push(row);
       }
-      // Sort groups by their best PPS (determines interleave order)
       const sortedGroups = Array.from(groups.values())
         .map((g) => g.sort((a, b) => b.pattern_power_score - a.pattern_power_score))
         .sort((a, b) => b[0].pattern_power_score - a[0].pattern_power_score);
-      // Round-robin interleave
       const interleaved: PatternRow[] = [];
       let rank = 0;
       let added = true;
@@ -161,169 +212,374 @@ export default function RankingPage() {
       result = interleaved;
     }
 
-    // Year-gap filter
-    if (minYearGap) {
-      const gap = Number(minYearGap);
-      if (gap > 0) {
-        result = result.filter(
-          (p) => Math.abs(p.start_year_a - p.start_year_b) >= gap
-        );
-      }
+    // Country filter
+    if (selectedCountries.length > 0) {
+      const lowerSet = new Set(selectedCountries.map((c) => c.toLowerCase()));
+      result = result.filter(
+        (p) =>
+          lowerSet.has(p.country_a.toLowerCase()) ||
+          lowerSet.has(p.country_b.toLowerCase())
+      );
     }
 
-    // Sort (only when user explicitly clicks a column header — the default
-    // interleave order is already the "smart" order; explicit sort overrides)
-    if (sortCol !== "pattern_power_score" || sortDir !== "desc") {
-      return [...result].sort((a, b) => {
-        const av = a[sortCol];
-        const bv = b[sortCol];
-        if (typeof av === "number" && typeof bv === "number") {
-          return sortDir === "asc" ? av - bv : bv - av;
-        }
-        return sortDir === "asc"
-          ? String(av).localeCompare(String(bv))
-          : String(bv).localeCompare(String(av));
+    // Min PPS filter
+    if (minPps > 0) {
+      result = result.filter((p) => p.pattern_power_score >= minPps);
+    }
+
+    // Correlation tier filter
+    if (corrTierFilter) {
+      result = result.filter((p) => getCorrTier(p.avg_correlation) === corrTierFilter);
+    }
+
+    // Lead time filter
+    if (leadTimeFilter !== "all") {
+      result = result.filter((p) => {
+        const gap = p.start_year_b - p.start_year_a;
+        if (leadTimeFilter === "concurrent") return gap === 0;
+        if (leadTimeFilter === "early-warning") return gap > 0;
+        return true;
       });
     }
+
     return result;
-  }, [allRows, sortCol, sortDir, minYearGap, dedupEnabled]);
+  }, [allRows, viewMode, selectedCountries, minPps, corrTierFilter, leadTimeFilter]);
 
-  // Paginate
-  const totalPages = Math.ceil(processed.length / PAGE_SIZE);
-  const filtered = processed.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+  // Max PPS for the bar denominator (per current filtered view)
+  const maxPps = useMemo(
+    () => Math.max(1, ...processed.map((p) => p.pattern_power_score)),
+    [processed]
+  );
 
-  const sortIndicator = (col: keyof PatternRow) =>
-    sortCol === col ? (sortDir === "asc" ? " \u25B2" : " \u25BC") : "";
+  // Countries present in data (for search dropdown)
+  const countriesInData = useMemo(() => {
+    const s = new Set<string>();
+    for (const row of allRows) {
+      s.add(row.country_a);
+      s.add(row.country_b);
+    }
+    return Array.from(s).sort();
+  }, [allRows]);
 
-  function getAlpha2(idOrName: string | undefined, name: string): string {
-    if (idOrName && ALPHA2_MAP[idOrName]) return ALPHA2_MAP[idOrName];
-    if (NAME_TO_ALPHA2[name]) return NAME_TO_ALPHA2[name];
-    return "";
+  // Country search matches
+  const countryMatches = useMemo(() => {
+    if (!countrySearch.trim()) return countriesInData.slice(0, 12);
+    const q = countrySearch.toLowerCase();
+    return countriesInData.filter((c) => c.toLowerCase().includes(q)).slice(0, 12);
+  }, [countrySearch, countriesInData]);
+
+  // Track scroll position
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const rowHeight = 56;
+    const start = Math.floor(el.scrollTop / rowHeight) + 1;
+    const visible = Math.floor(el.clientHeight / rowHeight);
+    const end = Math.min(start + visible - 1, processed.length);
+    setScrollPosition({ start, end });
+    setShowBackToTop(el.scrollTop > 200);
+  }, [processed.length]);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => el.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  function scrollToTop() {
+    scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Active filter count
+  const activeFilterCount =
+    selectedCountries.length +
+    (minPps > 0 ? 1 : 0) +
+    (corrTierFilter ? 1 : 0) +
+    (leadTimeFilter !== "all" ? 1 : 0);
+
+  function clearAllFilters() {
+    setSelectedCountries([]);
+    setMinPps(0);
+    setCorrTierFilter(null);
+    setLeadTimeFilter("all");
+    setCountrySearch("");
   }
 
   return (
-    <div className="flex flex-col h-full p-6 gap-4">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-baseline gap-3">
+    <div className="flex flex-col h-full p-6 gap-3">
+      {/* ================================================================ */}
+      {/* HEADER BAR                                                        */}
+      {/* ================================================================ */}
+      <div className="flex items-start justify-between gap-4">
+        <div className="flex flex-col gap-1">
           <h1
             className="text-xs tracking-[0.2em] uppercase font-semibold"
             style={{ color: "var(--qgi-accent)" }}
           >
             Pattern Power Ranking
           </h1>
-          {deduped && totalUniquePairs != null && (
+          <div
+            className="flex items-center gap-2 text-[10px] tracking-wider"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            {totalUniquePairs != null && (
+              <span>{totalUniquePairs} pairs</span>
+            )}
+            <span>&middot;</span>
+            <span>{allRows.length.toLocaleString()} windows</span>
+          </div>
+        </div>
+
+        {/* Best/All toggle */}
+        <div
+          className="flex rounded-md overflow-hidden border"
+          style={{ borderColor: "var(--qgi-border)" }}
+        >
+          <button
+            onClick={() => setViewMode("best")}
+            className="px-3 py-1.5 text-[9px] tracking-[0.12em] uppercase transition-colors"
+            style={{
+              backgroundColor: viewMode === "best" ? "var(--qgi-surface-2)" : "transparent",
+              color: viewMode === "best" ? "var(--qgi-text)" : "var(--qgi-text-dim)",
+              borderRight: "1px solid var(--qgi-border)",
+            }}
+          >
+            Best window
+          </button>
+          <button
+            onClick={() => setViewMode("all")}
+            className="px-3 py-1.5 text-[9px] tracking-[0.12em] uppercase transition-colors"
+            style={{
+              backgroundColor: viewMode === "all" ? "var(--qgi-surface-2)" : "transparent",
+              color: viewMode === "all" ? "var(--qgi-text)" : "var(--qgi-text-dim)",
+            }}
+          >
+            All windows
+          </button>
+        </div>
+      </div>
+
+      {/* ================================================================ */}
+      {/* FILTER STRIP                                                      */}
+      {/* ================================================================ */}
+      <div
+        className="rounded border p-3 flex flex-col gap-2.5"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <div className="flex items-center gap-3 flex-wrap">
+          {/* Country search */}
+          <div className="relative">
+            <input
+              ref={countryInputRef}
+              type="text"
+              value={countrySearch}
+              onChange={(e) => {
+                setCountrySearch(e.target.value);
+                setShowCountryDropdown(true);
+              }}
+              onFocus={() => setShowCountryDropdown(true)}
+              placeholder="Search country..."
+              className="w-44 px-2.5 py-1.5 rounded text-xs font-data border outline-none focus:border-[var(--qgi-accent)] placeholder:text-[var(--qgi-text-dim)]"
+              style={{
+                backgroundColor: "var(--qgi-bg)",
+                borderColor: "var(--qgi-border)",
+                color: "var(--qgi-text)",
+              }}
+            />
+            {showCountryDropdown && countryMatches.length > 0 && (
+              <div
+                ref={dropdownRef}
+                className="absolute z-50 top-full mt-1 w-56 rounded border shadow-lg overflow-hidden max-h-60 overflow-y-auto"
+                style={{
+                  backgroundColor: "var(--qgi-surface-2)",
+                  borderColor: "var(--qgi-border)",
+                }}
+              >
+                {countryMatches.map((name) => {
+                  const isSelected = selectedCountries.includes(name);
+                  const a2 = NAME_TO_ALPHA2[name] ?? "";
+                  return (
+                    <button
+                      key={name}
+                      onClick={() => {
+                        if (isSelected) {
+                          setSelectedCountries((prev) => prev.filter((c) => c !== name));
+                        } else {
+                          setSelectedCountries((prev) => [...prev, name]);
+                        }
+                        setCountrySearch("");
+                      }}
+                      className="w-full flex items-center gap-2 px-3 py-1.5 text-xs hover:bg-[var(--qgi-surface)] transition-colors"
+                      style={{
+                        color: isSelected ? "var(--qgi-accent)" : "var(--qgi-text)",
+                      }}
+                    >
+                      <CountryFlag alpha2={a2} size={12} />
+                      <span className="truncate">{name}</span>
+                      {isSelected && (
+                        <span className="ml-auto text-[10px]" style={{ color: "var(--qgi-accent)" }}>
+                          &#10003;
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
+
+          {/* Min PPS slider */}
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+              Min PPS
+            </span>
+            <input
+              type="range"
+              min={0}
+              max={2000}
+              step={50}
+              value={minPps}
+              onChange={(e) => setMinPps(Number(e.target.value))}
+              className="w-24 accent-[var(--qgi-accent)]"
+            />
             <span
-              className="text-[10px] tracking-wider"
+              className="text-[10px] font-data w-10 text-right"
+              style={{ color: minPps > 0 ? "var(--qgi-text)" : "var(--qgi-text-dim)" }}
+            >
+              {minPps > 0 ? minPps.toLocaleString() : "Any"}
+            </span>
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
+
+          {/* Correlation tier chips */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] tracking-[0.12em] uppercase mr-1" style={{ color: "var(--qgi-text-dim)" }}>
+              Corr
+            </span>
+            {(["S", "A", "B", "C"] as CorrTier[]).map((tier) => (
+              <button
+                key={tier}
+                onClick={() => setCorrTierFilter(corrTierFilter === tier ? null : tier)}
+                className="px-2 py-0.5 rounded-full text-[10px] font-data font-semibold transition-all"
+                title={CORR_TIER_LABELS[tier]}
+                style={{
+                  backgroundColor: corrTierFilter === tier ? `${CORR_TIER_COLORS[tier]}30` : "transparent",
+                  color: corrTierFilter === tier ? CORR_TIER_COLORS[tier] : "var(--qgi-text-dim)",
+                  border: `1px solid ${corrTierFilter === tier ? CORR_TIER_COLORS[tier] : "var(--qgi-border)"}`,
+                }}
+              >
+                {tier}
+              </button>
+            ))}
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
+
+          {/* Lead-time toggle */}
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] tracking-[0.12em] uppercase mr-1" style={{ color: "var(--qgi-text-dim)" }}>
+              Lead
+            </span>
+            {([
+              { key: "all", label: "All" },
+              { key: "concurrent", label: "Concurrent" },
+              { key: "early-warning", label: "Early Warning" },
+            ] as const).map(({ key, label }) => (
+              <button
+                key={key}
+                onClick={() => setLeadTimeFilter(key)}
+                className="px-2 py-0.5 rounded-full text-[10px] tracking-wider transition-all"
+                style={{
+                  backgroundColor: leadTimeFilter === key ? "var(--qgi-surface-2)" : "transparent",
+                  color: leadTimeFilter === key ? "var(--qgi-text)" : "var(--qgi-text-dim)",
+                  border: `1px solid ${leadTimeFilter === key ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Active filter chips */}
+        {activeFilterCount > 0 && (
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+              Active:
+            </span>
+            {selectedCountries.map((name) => (
+              <FilterChip key={name} label={name} onRemove={() => setSelectedCountries((prev) => prev.filter((c) => c !== name))} />
+            ))}
+            {minPps > 0 && (
+              <FilterChip label={`PPS ${"\u2265"} ${minPps.toLocaleString()}`} onRemove={() => setMinPps(0)} />
+            )}
+            {corrTierFilter && (
+              <FilterChip
+                label={`Corr: ${corrTierFilter}`}
+                color={CORR_TIER_COLORS[corrTierFilter]}
+                onRemove={() => setCorrTierFilter(null)}
+              />
+            )}
+            {leadTimeFilter !== "all" && (
+              <FilterChip
+                label={leadTimeFilter === "concurrent" ? "Concurrent" : "Early Warning"}
+                onRemove={() => setLeadTimeFilter("all")}
+              />
+            )}
+            <button
+              onClick={clearAllFilters}
+              className="text-[9px] tracking-wider uppercase ml-2 hover:underline"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              {totalUniquePairs} unique pairs &middot; best window per pair
-            </span>
-          )}
-        </div>
-        <span
-          className="text-[10px] tracking-wider font-data"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          PAGE {page}
-        </span>
+              Clear all
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Filters — #5/#6/#7: MIN PPS + MIN CORRELATION + YEAR GAP */}
+      {/* ================================================================ */}
+      {/* LEADERBOARD BODY                                                  */}
+      {/* ================================================================ */}
       <div
-        className="flex gap-4 items-end p-3 rounded border flex-wrap"
+        className="flex-1 rounded border overflow-hidden flex flex-col relative"
         style={{
           backgroundColor: "var(--qgi-surface)",
           borderColor: "var(--qgi-border)",
         }}
       >
-        <FilterInput
-          label="Min PPS"
-          value={minPps}
-          onChange={setMinPps}
-          step="0.1"
-          placeholder="0"
-        />
-        <FilterInput
-          label="Min Correlation"
-          value={minCorr}
-          onChange={setMinCorr}
-          step="0.01"
-          min="0"
-          max="1"
-          placeholder="0"
-        />
-        <FilterInput
-          label="Min Year Gap"
-          value={minYearGap}
-          onChange={setMinYearGap}
-          step="1"
-          min="0"
-          max="60"
-          placeholder="0"
-          tooltip="Minimum |start_year_a - start_year_b|. Set >0 to find early-warning patterns where one country's window is offset in time from the other."
-        />
-        {/* Dedup toggle */}
-        <label className="flex items-center gap-2 cursor-pointer self-end pb-1">
-          <input
-            type="checkbox"
-            checked={dedupEnabled}
-            onChange={(e) => { setDedupEnabled(e.target.checked); setPage(1); }}
-            className="accent-[var(--qgi-accent)]"
-          />
-          <span className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
-            Unique pairs only
-          </span>
-        </label>
-      </div>
-
-      {/* Table */}
-      <div
-        className="flex-1 rounded border overflow-hidden flex flex-col"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        {/* Header row — #6: (i) tooltips on PPS + Corr */}
+        {/* Column labels */}
         <div
-          className="grid text-[9px] tracking-[0.15em] uppercase px-4 py-2.5 border-b select-none"
+          className="grid text-[9px] tracking-[0.12em] uppercase px-4 py-2 border-b select-none shrink-0"
           style={{
-            gridTemplateColumns: "1fr 1fr 80px 80px 60px 60px 100px 70px",
+            gridTemplateColumns: "42px 1fr 240px",
             color: "var(--qgi-text-dim)",
             borderColor: "var(--qgi-border)",
           }}
         >
-          <button className="text-left hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("country_a")}>
-            Predictor{sortIndicator("country_a")}
-          </button>
-          <button className="text-left hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("country_b")}>
-            Following{sortIndicator("country_b")}
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("start_year_a")}>
-            Year A{sortIndicator("start_year_a")}
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("start_year_b")}>
-            Year B{sortIndicator("start_year_b")}
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("pattern_length")}>
-            Yrs{sortIndicator("pattern_length")}
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)]" onClick={() => handleSort("num_indexes")}>
-            Idx{sortIndicator("num_indexes")}
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)] flex items-center justify-end gap-0.5" onClick={() => handleSort("avg_correlation")}>
-            Corr{sortIndicator("avg_correlation")}
-            <InfoTooltip text="Average Pearson correlation across all matched indicators in this pattern window. >85% = very strong, 65-85% = strong, <65% = weak." />
-          </button>
-          <button className="text-right hover:text-[var(--qgi-text-muted)] flex items-center justify-end gap-0.5" onClick={() => handleSort("pattern_power_score")}>
-            PPS{sortIndicator("pattern_power_score")}
-            <InfoTooltip text="Pattern Power Score — a composite ranking metric blending correlation strength, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0-2000+." />
-          </button>
+          <span>#</span>
+          <div className="flex items-center gap-1">
+            <span>Country Pair</span>
+            <InfoTooltip text="Predictor country's historical trajectory predicts the following country's trajectory. The arrow shows the direction of prediction." />
+          </div>
+          <div className="flex items-center gap-1 justify-end">
+            <span>Strength</span>
+            <InfoTooltip text="Pattern Power Score (PPS) measures overall pattern quality: correlation strength, pattern length, and indicator coverage. The bar shows relative strength within this view. Correlation tier: S (>=85%), A (70-84%), B (55-69%), C (<55%)." />
+          </div>
         </div>
 
-        {/* Body — #5: flags inline */}
-        <div className="flex-1 overflow-y-auto">
+        {/* Scrollable body */}
+        <div ref={scrollRef} className="flex-1 overflow-y-auto">
           {loading ? (
             <div
               className="flex items-center justify-center py-16 text-xs tracking-wider"
@@ -331,153 +587,305 @@ export default function RankingPage() {
             >
               LOADING...
             </div>
-          ) : filtered.length === 0 ? (
-            <div
-              className="flex items-center justify-center py-16 text-xs tracking-wider"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              NO PATTERNS FOUND
+          ) : processed.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-16 gap-2">
+              <span className="text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                NO PATTERNS MATCH
+              </span>
+              {activeFilterCount > 0 && (
+                <button
+                  onClick={clearAllFilters}
+                  className="text-[10px] tracking-wider underline"
+                  style={{ color: "var(--qgi-accent)" }}
+                >
+                  Clear filters
+                </button>
+              )}
             </div>
           ) : (
-            filtered.map((p, i) => {
-              const alpha2A = getAlpha2(p.country_a_id, p.country_a);
-              const alpha2B = getAlpha2(p.country_b_id, p.country_b);
-              const yearGap = Math.abs(p.start_year_a - p.start_year_b);
-              return (
-                <button
-                  key={`${p.country_a}-${p.country_b}-${p.start_year_a}-${p.start_year_b}-${i}`}
-                  onClick={() => navigateToPattern(p)}
-                  className="w-full grid items-center px-4 py-2 border-b text-xs transition-colors hover:bg-[var(--qgi-surface-2)]"
-                  style={{
-                    gridTemplateColumns: "1fr 1fr 80px 80px 60px 60px 100px 70px",
-                    borderColor: "var(--qgi-border)",
-                  }}
-                >
-                  {/* Predictor with flag */}
-                  <span className="text-left font-data truncate flex items-center gap-1.5">
-                    <CountryFlag alpha2={alpha2A} size={14} />
-                    <span style={{ color: "var(--qgi-country-a)" }}>{p.country_a}</span>
-                  </span>
-                  {/* Following with flag */}
-                  <span className="text-left font-data truncate flex items-center gap-1.5">
-                    <CountryFlag alpha2={alpha2B} size={14} />
-                    <span style={{ color: "var(--qgi-country-b)" }}>{p.country_b}</span>
-                  </span>
-                  <span className="text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                    {p.start_year_a}
-                  </span>
-                  <span className="text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                    {p.start_year_b}
-                    {yearGap > 0 && (
-                      <span
-                        className="ml-1 text-[9px]"
-                        style={{ color: "var(--qgi-amber)" }}
-                        title={`${yearGap}-year offset (early warning)`}
-                      >
-                        +{yearGap}
-                      </span>
-                    )}
-                  </span>
-                  <span className="text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                    {p.pattern_length}
-                  </span>
-                  <span className="text-right font-data" style={{ color: "var(--qgi-text)" }}>
-                    {p.num_indexes}
-                  </span>
-                  <span
-                    className="text-right font-data"
-                    style={{
-                      color:
-                        p.avg_correlation >= 0.85
-                          ? "var(--qgi-success)"
-                          : p.avg_correlation >= 0.65
-                            ? "var(--qgi-amber)"
-                            : "var(--qgi-text-muted)",
-                    }}
-                  >
-                    {(p.avg_correlation * 100).toFixed(1)}%
-                  </span>
-                  <span
-                    className="text-right font-data font-semibold"
-                    style={{ color: "var(--qgi-amber)" }}
-                  >
-                    {p.pattern_power_score.toFixed(1)}
-                  </span>
-                </button>
-              );
-            })
+            processed.map((p, i) => (
+              <RankCard
+                key={`${p.country_a_id}-${p.country_b_id}-${p.start_year_a}-${p.start_year_b}-${i}`}
+                rank={i + 1}
+                pattern={p}
+                maxPps={maxPps}
+                getAlpha2={getAlpha2}
+                onNavigate={() => navigateToPattern(p)}
+              />
+            ))
           )}
         </div>
-      </div>
 
-      {/* Pagination */}
-      <div className="flex items-center justify-between">
-        <button
-          disabled={page <= 1}
-          onClick={() => handlePageChange(page - 1)}
-          className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors disabled:opacity-30"
-          style={{
-            borderColor: "var(--qgi-border)",
-            color: "var(--qgi-text-muted)",
-          }}
-        >
-          &larr; Previous
-        </button>
-        <span
-          className="text-[10px] tracking-wider font-data"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          {processed.length} total &middot; page {page}/{Math.max(1, totalPages)}
-        </span>
-        <button
-          disabled={page >= totalPages}
-          onClick={() => handlePageChange(page + 1)}
-          className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors disabled:opacity-30"
-          style={{
-            borderColor: "var(--qgi-border)",
-            color: "var(--qgi-text-muted)",
-          }}
-        >
-          Next &rarr;
-        </button>
+        {/* Position indicator + back-to-top */}
+        {!loading && processed.length > 0 && (
+          <div
+            className="absolute bottom-3 right-3 flex items-center gap-2 px-2.5 py-1 rounded-md text-[10px] font-data"
+            style={{
+              backgroundColor: "var(--qgi-surface-2)",
+              color: "var(--qgi-text-dim)",
+              border: "1px solid var(--qgi-border)",
+              opacity: 0.9,
+            }}
+          >
+            <span>
+              #{scrollPosition.start}-{scrollPosition.end} of {processed.length.toLocaleString()}
+            </span>
+            {showBackToTop && (
+              <button
+                onClick={scrollToTop}
+                className="ml-1 px-1.5 py-0.5 rounded text-[9px] uppercase tracking-wider hover:text-[var(--qgi-text)] transition-colors"
+                style={{ color: "var(--qgi-accent)" }}
+              >
+                Top
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
 }
 
-function FilterInput({
-  label,
-  value,
-  onChange,
-  tooltip,
-  ...inputProps
+// ===========================================================================
+// RankCard — the core card-row component
+// ===========================================================================
+function RankCard({
+  rank,
+  pattern: p,
+  maxPps,
+  getAlpha2,
+  onNavigate,
 }: {
-  label: string;
-  value: string;
-  onChange: (v: string) => void;
-  tooltip?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>) {
+  rank: number;
+  pattern: PatternRow;
+  maxPps: number;
+  getAlpha2: (idOrName: string | undefined, name: string) => string;
+  onNavigate: () => void;
+}) {
+  const alpha2A = getAlpha2(p.country_a_id, p.country_a);
+  const alpha2B = getAlpha2(p.country_b_id, p.country_b);
+
+  // Rank color intensity
+  const rankColor =
+    rank <= 3
+      ? "var(--qgi-amber)"
+      : rank <= 10
+        ? "var(--qgi-text)"
+        : "var(--qgi-text-muted)";
+
+  // Top 3 get a left accent border
+  const accentBorder = rank <= 3 ? "3px solid var(--qgi-amber)" : "3px solid transparent";
+
   return (
-    <div className="flex flex-col gap-1">
-      <label
-        className="text-[9px] tracking-[0.15em] uppercase flex items-center"
+    <button
+      onClick={onNavigate}
+      className="w-full grid items-center px-3 border-b transition-all hover:bg-[var(--qgi-surface-2)] cursor-pointer group"
+      style={{
+        gridTemplateColumns: "42px 1fr 240px",
+        height: 56,
+        borderColor: "var(--qgi-border)",
+        borderLeft: accentBorder,
+      }}
+    >
+      {/* ---- Zone 1: Rank ---- */}
+      <span
+        className="font-data text-sm font-semibold"
+        style={{ color: rankColor }}
+      >
+        #{rank}
+      </span>
+
+      {/* ---- Zone 2: Pair Block ---- */}
+      <div className="flex flex-col justify-center gap-0.5 min-w-0 pr-4">
+        {/* Line 1: flags + names + arrow */}
+        <div className="flex items-center gap-1.5 text-[13px] min-w-0">
+          <CountryFlag alpha2={alpha2A} size={14} />
+          <span className="font-data truncate" style={{ color: "var(--qgi-country-a)" }}>
+            {p.country_a}
+          </span>
+          <span
+            className="text-[11px] mx-0.5 shrink-0"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            &rarr;
+          </span>
+          <CountryFlag alpha2={alpha2B} size={14} />
+          <span className="font-data truncate" style={{ color: "var(--qgi-country-b)" }}>
+            {p.country_b}
+          </span>
+        </div>
+
+        {/* Line 2: metadata */}
+        <div
+          className="flex items-center gap-1.5 text-[10px]"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          <span className="font-data">{p.start_year_a}</span>
+          <span style={{ fontSize: 8 }}>&gt;</span>
+          <span className="font-data">{p.start_year_b}</span>
+          <span className="mx-0.5">&middot;</span>
+          <LeadTimeBadge startA={p.start_year_a} startB={p.start_year_b} />
+          <span className="mx-0.5">&middot;</span>
+          <span className="font-data">{p.pattern_length} yr</span>
+          <span className="mx-0.5">&middot;</span>
+          <span className="font-data">{p.num_indexes} SCDIs</span>
+        </div>
+      </div>
+
+      {/* ---- Zone 3: Strength Block ---- */}
+      <div className="flex flex-col justify-center gap-1">
+        {/* Line 1: PPS bar + value */}
+        <PpsBar pps={p.pattern_power_score} maxPps={maxPps} />
+
+        {/* Line 2: Correlation pill */}
+        <div className="flex items-center justify-end">
+          <CorrelationPill r={p.avg_correlation} />
+        </div>
+      </div>
+    </button>
+  );
+}
+
+// ===========================================================================
+// PpsBar — horizontal strength indicator
+// ===========================================================================
+function PpsBar({ pps, maxPps }: { pps: number; maxPps: number }) {
+  const fillPercent = Math.min(100, (pps / maxPps) * 100);
+  const color = rawPpsColor(pps);
+  const formatted = Math.round(pps).toLocaleString();
+
+  return (
+    <div className="flex items-center gap-2 justify-end">
+      <span
+        className="text-[9px] uppercase tracking-wider shrink-0"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        {label}
-        {tooltip && <InfoTooltip text={tooltip} />}
-      </label>
-      <input
-        type="number"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-24 px-2 py-1.5 rounded text-xs font-data border outline-none focus:border-[var(--qgi-accent)]"
+        PPS
+      </span>
+      {/* Track */}
+      <div
+        className="relative h-[6px] rounded-full overflow-hidden"
         style={{
-          backgroundColor: "var(--qgi-bg)",
-          borderColor: "var(--qgi-border)",
-          color: "var(--qgi-text)",
+          width: 120,
+          backgroundColor: "var(--qgi-surface-2)",
         }}
-        {...inputProps}
-      />
+      >
+        {/* Fill */}
+        <div
+          className="absolute top-0 left-0 h-full rounded-full transition-all"
+          style={{
+            width: `${fillPercent}%`,
+            backgroundColor: color,
+          }}
+        />
+      </div>
+      {/* Value */}
+      <span
+        className="font-data text-xs font-semibold text-right w-12"
+        style={{ color }}
+      >
+        {formatted}
+      </span>
     </div>
+  );
+}
+
+// ===========================================================================
+// CorrelationPill — S/A/B/C tier badge
+// ===========================================================================
+function CorrelationPill({ r }: { r: number }) {
+  const tier = getCorrTier(r);
+  const color = CORR_TIER_COLORS[tier];
+  const pct = (r * 100).toFixed(0);
+
+  return (
+    <span
+      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-data font-semibold"
+      style={{
+        backgroundColor: `${color}18`,
+        color,
+      }}
+      title={CORR_TIER_LABELS[tier]}
+    >
+      {pct}%
+      <span className="text-[9px] font-bold">{tier}</span>
+    </span>
+  );
+}
+
+// ===========================================================================
+// LeadTimeBadge — directional insight at a glance
+// ===========================================================================
+function LeadTimeBadge({ startA, startB }: { startA: number; startB: number }) {
+  const gap = startB - startA;
+
+  if (gap === 0) {
+    return (
+      <span
+        className="inline-flex items-center gap-0.5 text-[10px] font-data"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        <span style={{ fontSize: 9 }}>&#9889;</span>
+        concurrent
+      </span>
+    );
+  }
+
+  if (gap > 0) {
+    return (
+      <span
+        className="inline-flex items-center gap-0.5 text-[10px] font-data font-semibold"
+        style={{ color: "var(--qgi-amber)" }}
+      >
+        <span style={{ fontSize: 9 }}>&#8612;</span>
+        +{gap} yr lead
+      </span>
+    );
+  }
+
+  // gap < 0 (trailing, rare)
+  return (
+    <span
+      className="inline-flex items-center gap-0.5 text-[10px] font-data"
+      style={{ color: "var(--qgi-text-muted)" }}
+    >
+      {gap} yr trailing
+    </span>
+  );
+}
+
+// ===========================================================================
+// FilterChip — closeable active filter chip
+// ===========================================================================
+function FilterChip({
+  label,
+  color,
+  onRemove,
+}: {
+  label: string;
+  color?: string;
+  onRemove: () => void;
+}) {
+  return (
+    <span
+      className="inline-flex items-center gap-1 pl-2 pr-1 py-0.5 rounded-full text-[10px] font-data"
+      style={{
+        backgroundColor: color ? `${color}20` : "var(--qgi-surface-2)",
+        color: color ?? "var(--qgi-text)",
+        border: `1px solid ${color ? `${color}40` : "var(--qgi-border)"}`,
+      }}
+    >
+      {label}
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          onRemove();
+        }}
+        className="ml-0.5 w-3.5 h-3.5 rounded-full inline-flex items-center justify-center hover:bg-[var(--qgi-surface)] text-[9px]"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        &times;
+      </button>
+    </span>
   );
 }

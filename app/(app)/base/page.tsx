@@ -1,12 +1,13 @@
 import { loadCountryRisks } from "@/lib/country-risks";
 import { BaseClient } from "./BaseClient";
 import indexData from "@/data/indexes.json";
-import type { IndexEntry, PatternRow } from "@/lib/types";
+import taxonomyData from "@/data/taxonomy_hierarchy.json";
+import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 
 export const metadata = {
   title: "Base — QGI Intelligence",
   description:
-    "QGI command center. A glance at top-risk countries, dominant signals, top pattern pairs, and the data footprint.",
+    "QGI command center. Situation summary, watchlist, signal landscape, and data foundation.",
 };
 
 /**
@@ -35,18 +36,41 @@ async function fetchTopPairs(): Promise<{
   }
 }
 
+/**
+ * Server-side fetch of top-50 convergence signals.
+ * Used for the Featured Alert and Top Convergences panels.
+ */
+async function fetchTopSignals(): Promise<SignalRow[]> {
+  try {
+    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+    const res = await fetch(`${base}/api/recipes/top50`, {
+      headers: { Authorization: "Bearer __ssr__" },
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+    const json = await res.json();
+    return json.results ?? [];
+  } catch {
+    return [];
+  }
+}
+
 export default async function BasePage() {
   // Don't bring down the page if any single source 500s.
-  const [risksResult, topPairsResult] = await Promise.allSettled([
-    loadCountryRisks(),
-    fetchTopPairs(),
-  ]);
+  const [risksResult, topPairsResult, topSignalsResult] =
+    await Promise.allSettled([
+      loadCountryRisks(),
+      fetchTopPairs(),
+      fetchTopSignals(),
+    ]);
 
   const risks = risksResult.status === "fulfilled" ? risksResult.value : null;
   const topPairs =
     topPairsResult.status === "fulfilled"
       ? topPairsResult.value
       : { pairs: [], totalUniquePairs: 0 };
+  const topSignals =
+    topSignalsResult.status === "fulfilled" ? topSignalsResult.value : [];
 
   const indexes = indexData as IndexEntry[];
 
@@ -56,6 +80,8 @@ export default async function BasePage() {
       indexes={indexes}
       topPairs={topPairs.pairs}
       totalUniquePairs={topPairs.totalUniquePairs}
+      topSignals={topSignals}
+      taxonomy={taxonomyData}
     />
   );
 }
