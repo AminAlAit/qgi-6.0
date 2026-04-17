@@ -245,28 +245,20 @@ function indicatorTrajectoryOption(showAll: boolean) {
     z: 0,
   });
 
-  // Event marker lines — vertical labels, short text
-  // Event markers: bold red vertical lines with labels VERTICAL at the top
-  // but BELOW the legend. The key: grid.top = 90px gives enough room for
-  // the legend (~40px) + the vertical event labels (~50px) without overlap.
+  // Event marker lines — vertical red lines only, NO labels inside ECharts.
+  // Labels are rendered as separate HTML overlays below the x-axis to avoid
+  // clashing with the legend row at the top of the chart.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
     lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
-    label: {
-      formatter: e.label,
-      position: "insideEndTop" as const,
-      color: "#f87171",
-      fontSize: 9,
-      fontFamily: "'JetBrains Mono', monospace",
-      rotate: -90,
-      offset: [0, 0],
-    },
+    label: { show: false },
   }));
 
   return {
     backgroundColor: "transparent",
-    // top: 90px = legend (0-35px) + event labels (40-85px) + gap
-    grid: { top: 90, right: 20, bottom: 35, left: 45 },
+    // top: 50px = legend only (no event labels in canvas anymore)
+    // bottom: 80px = x-axis labels (20px) + gap + HTML event labels below (~60px)
+    grid: { top: 50, right: 20, bottom: 80, left: 45 },
     legend: {
       top: 0,
       left: "center",
@@ -681,12 +673,41 @@ export default function CountryV2Page() {
               </span>
             </div>
           </div>
-          <div className="h-[480px]">
+          <div className="relative h-[480px]">
             <ReactECharts
               option={indicatorTrajectoryOption(showAllIndicators)}
               style={{ height: "100%", width: "100%" }}
               opts={{ renderer: "svg" }}
             />
+            {/* HTML overlay: event labels positioned BELOW the x-axis.
+                Each label's left% is computed from the chart grid margins
+                (left: 45px, right: 20px) and the year's position in the
+                1990-2025 range. Labels are rotated -45deg in red. */}
+            {EVENT_MARKERS.map((e) => {
+              const gridLeftPx = 45;
+              const gridRightPx = 20;
+              const yearFraction = (e.year - 1990) / (2025 - 1990);
+              return (
+                <div
+                  key={e.year}
+                  style={{
+                    position: "absolute",
+                    bottom: 6,
+                    left: `calc(${gridLeftPx}px + ${yearFraction} * (100% - ${gridLeftPx + gridRightPx}px))`,
+                    transform: "translateX(-50%) rotate(-45deg)",
+                    transformOrigin: "top center",
+                    color: "#f87171",
+                    fontSize: 9,
+                    fontFamily: "'JetBrains Mono', monospace",
+                    whiteSpace: "nowrap",
+                    pointerEvents: "none",
+                    userSelect: "none",
+                  }}
+                >
+                  {e.label}
+                </div>
+              );
+            })}
           </div>
         </section>
 
