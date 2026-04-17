@@ -160,6 +160,60 @@ export function CountryProfileClient({
       {/* ─── Layered Taxonomy Widget (8 cards, L1 → L2 drill-down) ─── */}
       <TaxonomyL1Widget l1Scores={l1Scores} l2Scores={l2Scores} />
 
+      {/* ─── L1 vs World Median (from Country V2) ────────────────────── */}
+      {l1Scores && Object.values(l1Scores).some(v => v > 0) && (
+        <section
+          className="rounded-lg border p-5 mb-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <h2
+            className="text-xs tracking-widest uppercase mb-3"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            L1 vs World Median
+            <InfoTooltip text="Each bar shows this country's L1 salience score relative to the world median (~0.29). Positive (red) = above average risk signal in that domain. Negative (green) = below average." />
+          </h2>
+          <div className="space-y-1.5">
+            {L1_CATEGORIES.map((cat) => {
+              const score = l1Scores[cat.id] ?? 0;
+              const delta = score - L1_WORLD_MEDIAN;
+              const maxBar = 0.5; // max possible delta for bar scaling
+              const pct = Math.min(100, Math.abs(delta) / maxBar * 100);
+              return (
+                <div key={cat.id} className="flex items-center gap-2">
+                  <span
+                    className="text-[10px] w-16 text-right font-data truncate"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {cat.short}
+                  </span>
+                  <div className="flex-1 h-3 rounded-sm relative" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                    <div
+                      className="absolute h-full rounded-sm"
+                      style={{
+                        width: `${pct}%`,
+                        backgroundColor: delta >= 0 ? "#f8717180" : "#34d39980",
+                        left: delta >= 0 ? 0 : undefined,
+                        right: delta < 0 ? 0 : undefined,
+                      }}
+                    />
+                  </div>
+                  <span
+                    className="text-[10px] w-10 text-right font-data"
+                    style={{ color: delta >= 0 ? "#f87171" : "#34d399" }}
+                  >
+                    {delta >= 0 ? "+" : ""}{delta.toFixed(2)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
       {/* ─── Risk Fingerprint Radar + Structural Twins (V2 promoted) ── */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         {/* Radar Chart */}

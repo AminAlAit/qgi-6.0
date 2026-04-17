@@ -246,39 +246,27 @@ function indicatorTrajectoryOption(showAll: boolean) {
   });
 
   // Event marker lines — vertical labels, short text
-  // #1 REVERTED: Original-style event markers. Bold red vertical lines
-  // spanning the full chart height. Labels at the BOTTOM (below x-axis)
-  // so they NEVER clash with the legend at the top.
+  // Event markers: bold red vertical lines with labels VERTICAL at the top
+  // but BELOW the legend. The key: grid.top = 90px gives enough room for
+  // the legend (~40px) + the vertical event labels (~50px) without overlap.
   const markLines = EVENT_MARKERS.map((e) => ({
     xAxis: String(e.year),
     lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
     label: {
-      show: false, // hide markLine's built-in label (causes overlap)
-    },
-  }));
-
-  // Render event labels as markPoints at the bottom of the chart instead
-  // This avoids ALL legend clashing issues
-  const eventAnnotations = EVENT_MARKERS.map((e) => ({
-    coord: [String(e.year), 0],
-    symbol: "triangle",
-    symbolSize: 8,
-    symbolRotate: 180,
-    itemStyle: { color: "#f87171" },
-    label: {
-      show: true,
       formatter: e.label,
-      position: "bottom" as const,
+      position: "insideEndTop" as const,
       color: "#f87171",
-      fontSize: 8,
-      rotate: -45,
-      offset: [0, 4],
+      fontSize: 9,
+      fontFamily: "'JetBrains Mono', monospace",
+      rotate: -90,
+      offset: [0, 0],
     },
   }));
 
   return {
     backgroundColor: "transparent",
-    grid: { top: 45, right: 20, bottom: 65, left: 45 },
+    // top: 90px = legend (0-35px) + event labels (40-85px) + gap
+    grid: { top: 90, right: 20, bottom: 35, left: 45 },
     legend: {
       top: 0,
       left: "center",
@@ -347,10 +335,6 @@ function indicatorTrajectoryOption(showAll: boolean) {
               silent: true,
               symbol: "none",
               data: markLines,
-            },
-            markPoint: {
-              silent: true,
-              data: eventAnnotations,
             },
           }
         : {}),
@@ -697,7 +681,7 @@ export default function CountryV2Page() {
               </span>
             </div>
           </div>
-          <div className="h-[420px]">
+          <div className="h-[480px]">
             <ReactECharts
               option={indicatorTrajectoryOption(showAllIndicators)}
               style={{ height: "100%", width: "100%" }}
