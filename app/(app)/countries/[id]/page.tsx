@@ -131,6 +131,33 @@ async function loadPatternDensity(
   }
 }
 
+/**
+ * Load indicator trajectories from baked data/indicator-trajectories.json (GH#287).
+ * Returns null if the file doesn't exist or this country has no data.
+ */
+async function loadIndicatorTrajectories(
+  countryId: string
+): Promise<{
+  years: number[];
+  indicators: { name: string; unit: string; data: (number | null)[]; predicted_from?: number }[];
+  events: { year: number; label: string }[];
+} | null> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "indicator-trajectories.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const all = JSON.parse(raw) as Record<string, {
+      years: number[];
+      indicators: { name: string; unit: string; data: (number | null)[]; predicted_from?: number }[];
+      events: { year: number; label: string }[];
+    }>;
+    return all[countryId] ?? null;
+  } catch {
+    return null;
+  }
+}
+
 export default async function CountryProfilePage({ params }: Props) {
   const { id } = await params;
   const country = await getCountryRisk(id);
@@ -162,6 +189,7 @@ export default async function CountryProfilePage({ params }: Props) {
   const salience = await loadCountrySalience(country.name);
   const twins = await loadStructuralTwins(id);
   const densityData = await loadPatternDensity(id);
+  const trajectoryData = await loadIndicatorTrajectories(id);
 
   return (
     <CountryProfileClient
@@ -174,6 +202,7 @@ export default async function CountryProfilePage({ params }: Props) {
       l2Scores={salience?.l2Scores ?? null}
       twins={twins}
       densityData={densityData}
+      trajectoryData={trajectoryData}
     />
   );
 }

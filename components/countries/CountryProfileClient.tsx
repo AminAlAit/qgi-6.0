@@ -223,7 +223,7 @@ export function CountryProfileClient({
       )}
 
       {/* ─── Risk Fingerprint Radar + Structural Twins (V2 promoted) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+      <div className={`grid grid-cols-1 ${twins && twins.length > 0 ? "lg:grid-cols-2" : ""} gap-6 mb-6`}>
         {/* Radar Chart */}
         <section
           className="rounded-lg border p-6"
@@ -272,7 +272,7 @@ export function CountryProfileClient({
           )}
         </section>
 
-        {/* Right column: Structural Twins (if data exists) + Risk Breakdown */}
+        {/* Right column: Structural Twins when available */}
         {twins && twins.length > 0 && (
           <section
             className="rounded-lg border p-6 mb-4"
@@ -317,43 +317,45 @@ export function CountryProfileClient({
             </div>
           </section>
         )}
-        <section
-          className="rounded-lg border p-6"
-          style={{
-            backgroundColor: "var(--qgi-surface)",
-            borderColor: "var(--qgi-border)",
-          }}
-        >
-          <h2
-            className="text-xs tracking-widest uppercase mb-4"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Risk Breakdown by Category
-            <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal." />
-          </h2>
-          <div className="space-y-2">
-            {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
-              <Link
-                key={category}
-                href={`/countries/${countryId}/${encodeURIComponent(category)}`}
-                className="block transition-opacity hover:opacity-80"
-              >
-                <CategoryBar
-                  category={category}
-                  salience={salience}
-                  recipeCount={recipe_count}
-                  maxSalience={categoryZScores[0]?.salience ?? 1}
-                />
-              </Link>
-            ))}
-          </div>
-          {categoryZScores.length === 0 && (
-            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
-              No scored categories available.
-            </p>
-          )}
-        </section>
       </div>
+
+      {/* ─── Risk Breakdown by Category (always full width) ───────── */}
+      <section
+        className="rounded-lg border p-6 mb-6"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <h2
+          className="text-xs tracking-widest uppercase mb-4"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Risk Breakdown by Category
+          <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal." />
+        </h2>
+        <div className="space-y-2">
+          {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
+            <Link
+              key={category}
+              href={`/countries/${countryId}/${encodeURIComponent(category)}`}
+              className="block transition-opacity hover:opacity-80"
+            >
+              <CategoryBar
+                category={category}
+                salience={salience}
+                recipeCount={recipe_count}
+                maxSalience={categoryZScores[0]?.salience ?? 1}
+              />
+            </Link>
+          ))}
+        </div>
+        {categoryZScores.length === 0 && (
+          <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+            No scored categories available.
+          </p>
+        )}
+      </section>
 
       {/* ─── Indicator Trajectories (V2 promoted) ────────────────── */}
       {trajectoryData && (
@@ -821,16 +823,27 @@ function radarOption(countryName: string, l1Scores: Record<string, number>) {
 
 const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
 
-function normalizeMinMax(data: number[]): number[] {
-  const min = Math.min(...data);
-  const max = Math.max(...data);
-  if (max === min) return data.map(() => 50);
-  return data.map((v) => ((v - min) / (max - min)) * 100);
+function normalizeMinMax(data: (number | null)[]): (number | null)[] {
+  const nums = data.filter((v): v is number => v !== null && !isNaN(v));
+  if (nums.length === 0) return data.map(() => null);
+  const min = Math.min(...nums);
+  const max = Math.max(...nums);
+  if (max === min) return data.map((v) => (v === null ? null : 50));
+  return data.map((v) => (v === null ? null : ((v - min) / (max - min)) * 100));
+}
+
+interface TrajectoryIndicator {
+  name: string;
+  data: (number | null)[];
+  unit: string;
+  /** First year where is_predicted = true. When present, data from this year
+   *  onward is rendered with a dashed line at lower opacity. */
+  predicted_from?: number;
 }
 
 interface TrajectoryData {
   years: number[];
-  indicators: { name: string; data: number[]; unit: string }[];
+  indicators: TrajectoryIndicator[];
   events: { year: number; label: string }[];
 }
 
@@ -842,24 +855,104 @@ function indicatorTrajectoryOption(
   const legendSelected: Record<string, boolean> = {};
   trajData.indicators.forEach((ind, i) => {
     legendSelected[ind.name] = showAll || defaultVisibleIndices.has(i);
+    // predicted series hidden from legend but follows the same show/hide state
+    if (ind.predicted_from !== undefined) {
+      legendSelected[`${ind.name} (predicted)`] = showAll || defaultVisibleIndices.has(i);
+    }
   });
   legendSelected["World median"] = true;
 
   const areaAlpha = "0F";
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const series: any[] = trajData.indicators.map((ind, i) => ({
-    name: ind.name,
-    type: "line",
-    data: normalizeMinMax(ind.data),
-    smooth: true,
-    lineStyle: { width: 1.5, color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] },
-    itemStyle: { color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] },
-    areaStyle: { color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] + areaAlpha, origin: "start" },
-    symbol: "none",
-    emphasis: { lineStyle: { width: 2.5 } },
-    z: defaultVisibleIndices.has(i) ? 3 : 1,
-  }));
+  const series: any[] = [];
+
+  // For tooltip: map predicted series names back to original indicator
+  const predictedSeriesNameMap: Record<string, string> = {};
+
+  trajData.indicators.forEach((ind, i) => {
+    const color = INDICATOR_COLORS[i % INDICATOR_COLORS.length];
+    const z = defaultVisibleIndices.has(i) ? 3 : 1;
+
+    const normalizedAll = normalizeMinMax(ind.data.map((v) => v ?? 0));
+
+    if (ind.predicted_from === undefined) {
+      // No predicted split — single solid series
+      series.push({
+        name: ind.name,
+        type: "line",
+        data: normalizedAll,
+        smooth: true,
+        lineStyle: { width: 1.5, color },
+        itemStyle: { color },
+        areaStyle: { color: color + areaAlpha, origin: "start" },
+        symbol: "none",
+        emphasis: { lineStyle: { width: 2.5 } },
+        z,
+      });
+    } else {
+      // Split into historical (solid) + predicted (dashed, lower opacity)
+      const splitIdx = trajData.years.indexOf(ind.predicted_from);
+
+      // Historical portion: up to (including) the transition point so lines join
+      const historicalData = normalizedAll.map((v, yi) =>
+        yi <= splitIdx ? v : null
+      );
+      // Predicted portion: from the transition point onward (null before)
+      const predictedData = normalizedAll.map((v, yi) =>
+        yi >= splitIdx ? v : null
+      );
+
+      series.push({
+        name: ind.name,
+        type: "line",
+        data: historicalData,
+        smooth: true,
+        lineStyle: { width: 1.5, color },
+        itemStyle: { color },
+        areaStyle: { color: color + areaAlpha, origin: "start" },
+        symbol: "none",
+        emphasis: { lineStyle: { width: 2.5 } },
+        z,
+        connectNulls: false,
+      });
+
+      const predictedSeriesName = `${ind.name} (predicted)`;
+      predictedSeriesNameMap[predictedSeriesName] = ind.name;
+      series.push({
+        name: predictedSeriesName,
+        type: "line",
+        data: predictedData,
+        smooth: true,
+        lineStyle: { width: 1.5, color, type: "dashed" as const, opacity: 0.5 },
+        itemStyle: { color, opacity: 0.5 },
+        areaStyle: { color: "transparent" },
+        symbol: "none",
+        emphasis: { lineStyle: { width: 2.5 } },
+        z,
+        connectNulls: false,
+        // "predicted" annotation at the transition point
+        markPoint: {
+          silent: true,
+          data: splitIdx >= 0 ? [{
+            coord: [String(ind.predicted_from), normalizedAll[splitIdx]],
+            symbol: "circle",
+            symbolSize: 6,
+            itemStyle: { color, borderColor: color, opacity: 0.5 },
+            label: {
+              show: true,
+              formatter: "predicted",
+              position: "top" as const,
+              fontSize: 9,
+              fontFamily: "'JetBrains Mono', monospace",
+              color: "#7a90a8",
+              distance: 4,
+            },
+          }] : [],
+        },
+      });
+    }
+  });
 
   series.push({
     name: "World median",
@@ -889,6 +982,10 @@ function indicatorTrajectoryOption(
       itemHeight: 2,
       itemGap: 12,
       selected: legendSelected,
+      // Hide the "(predicted)" series from the legend — they inherit visibility
+      // from their parent series via the legendSelected map but don't need
+      // separate legend entries.
+      formatter: (name: string) => name.endsWith(" (predicted)") ? "" : name,
     },
     tooltip: {
       trigger: "axis",
@@ -899,17 +996,26 @@ function indicatorTrajectoryOption(
         if (!Array.isArray(params) || params.length === 0) return "";
         const year = trajData.years[params[0].dataIndex];
         let html = `<div style="font-weight:600;margin-bottom:4px">${year}</div>`;
+        // Deduplicate — predicted series shares the name with historical series
+        const seenNames = new Set<string>();
         params.forEach((p) => {
           if (p.seriesName === "World median") return;
-          const raw = trajData.indicators.find((r) => r.name === p.seriesName);
+          // Resolve predicted series back to original name
+          const originalName = predictedSeriesNameMap[p.seriesName] ?? p.seriesName;
+          if (seenNames.has(originalName)) return;
+          seenNames.add(originalName);
+          const raw = trajData.indicators.find((r) => r.name === originalName);
           const rawVal = raw ? raw.data[p.dataIndex] : p.value;
           const unit = raw ? raw.unit : "";
+          const isPredicted = raw?.predicted_from !== undefined &&
+            trajData.years[p.dataIndex] >= (raw.predicted_from ?? Infinity);
           const formatted = typeof rawVal === "number" && rawVal > 1000
             ? rawVal.toLocaleString()
             : typeof rawVal === "number"
               ? rawVal.toFixed(1)
               : rawVal;
-          html += `<div style="display:flex;justify-content:space-between;gap:16px"><span style="color:${p.color}">\u25CF ${p.seriesName}</span><span style="font-weight:600">${formatted} ${unit}</span></div>`;
+          const predLabel = isPredicted ? ' <span style="opacity:0.6;font-size:9px">(predicted)</span>' : "";
+          html += `<div style="display:flex;justify-content:space-between;gap:16px"><span style="color:${p.color}">\u25CF ${originalName}${predLabel}</span><span style="font-weight:600">${formatted} ${unit}</span></div>`;
         });
         return html;
       },
