@@ -715,6 +715,99 @@ resource "aws_lambda_function" "recipe_engine_finalize" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 5b.7 — Partners Index Generator (GH#277)
+#
+# Reads the finished recipes table and generates a partners-index JSON
+# (country-pair co-occurrence rankings) for the frontend.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "partners_index_generator" {
+  function_name    = "qgi-pipeline-partners-index-generator"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 512
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET              = var.data_lake_bucket_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Phase 5b.8 — Pattern Density Generator (GH#278)
+#
+# Computes per-country pattern density metrics and writes a density JSON
+# for use in risk scoring and frontend visualisations.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "pattern_density_generator" {
+  function_name    = "qgi-pipeline-pattern-density-generator"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 256
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET              = var.data_lake_bucket_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Phase 5b.9 — Structural Twins Generator (GH#279)
+#
+# Identifies structurally similar country pairs based on shared pattern
+# profiles and writes a twins JSON for the frontend analogue feature.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "structural_twins_generator" {
+  function_name    = "qgi-pipeline-structural-twins-generator"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 256
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET              = var.data_lake_bucket_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # #175: Indicator manifest reader (decoupled pipeline)
 #
 # Reads the fetch manifest from S3 and returns it for the Main SF.
@@ -1358,6 +1451,39 @@ resource "aws_sfn_state_machine" "pipeline" {
           "partitions_total.$" = "$.recipe_list.partitions_total"
         }
         ResultPath = "$.recipe_finalize_output"
+        Retry      = local.lambda_retry
+        Next       = "5b.7. Generate Partners Index"
+      }
+
+      "5b.7. Generate Partners Index" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.partners_index_generator.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.partners_index_output"
+        Retry      = local.lambda_retry
+        Next       = "5b.8. Generate Pattern Density"
+      }
+
+      "5b.8. Generate Pattern Density" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.pattern_density_generator.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.pattern_density_output"
+        Retry      = local.lambda_retry
+        Next       = "5b.9. Generate Structural Twins"
+      }
+
+      "5b.9. Generate Structural Twins" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.structural_twins_generator.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.structural_twins_output"
         Retry      = local.lambda_retry
         Next       = "5c. Athena MSCK recipes"
       }
