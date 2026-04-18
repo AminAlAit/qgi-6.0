@@ -93,7 +93,9 @@ export default function RankingPage() {
   const [countrySearch, setCountrySearch] = useState("");
   const [minPps, setMinPps] = useState(0);
   const [corrTierFilter, setCorrTierFilter] = useState<CorrTier | null>(null);
+  const [patternTierFilter, setPatternTierFilter] = useState<string | null>(null);
   const [leadTimeFilter, setLeadTimeFilter] = useState<"all" | "concurrent" | "early-warning">("all");
+  const [minGapYears, setMinGapYears] = useState(0);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
   const countryInputRef = useRef<HTMLInputElement>(null);
@@ -232,6 +234,15 @@ export default function RankingPage() {
       result = result.filter((p) => getCorrTier(p.avg_correlation) === corrTierFilter);
     }
 
+    // Pattern tier filter (S/M/L/XL)
+    if (patternTierFilter) {
+      result = result.filter((p) => {
+        const len = p.pattern_length ?? 0;
+        const tier = len <= 8 ? "S" : len <= 20 ? "M" : len <= 40 ? "L" : "XL";
+        return tier === patternTierFilter;
+      });
+    }
+
     // Lead time filter
     if (leadTimeFilter !== "all") {
       result = result.filter((p) => {
@@ -242,8 +253,13 @@ export default function RankingPage() {
       });
     }
 
+    // Gap years filter
+    if (minGapYears > 0) {
+      result = result.filter((p) => Math.abs(p.start_year_b - p.start_year_a) >= minGapYears);
+    }
+
     return result;
-  }, [allRows, viewMode, selectedCountries, minPps, corrTierFilter, leadTimeFilter]);
+  }, [allRows, viewMode, selectedCountries, minPps, corrTierFilter, patternTierFilter, leadTimeFilter, minGapYears]);
 
   // Max PPS for the bar denominator (per current filtered view)
   const maxPps = useMemo(
@@ -297,11 +313,15 @@ export default function RankingPage() {
     selectedCountries.length +
     (minPps > 0 ? 1 : 0) +
     (corrTierFilter ? 1 : 0) +
-    (leadTimeFilter !== "all" ? 1 : 0);
+    (patternTierFilter ? 1 : 0) +
+    (leadTimeFilter !== "all" ? 1 : 0) +
+    (minGapYears > 0 ? 1 : 0);
 
   function clearAllFilters() {
     setSelectedCountries([]);
     setMinPps(0);
+    setPatternTierFilter(null);
+    setMinGapYears(0);
     setCorrTierFilter(null);
     setLeadTimeFilter("all");
     setCountrySearch("");
@@ -481,6 +501,54 @@ export default function RankingPage() {
                 {tier}
               </button>
             ))}
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
+
+          {/* Pattern tier chips (S/M/L/XL) */}
+          <div className="flex items-center gap-1.5">
+            {(["S", "M", "L", "XL"] as const).map((tier) => {
+              const colors: Record<string, string> = { S: "#f87171", M: "#fbbf24", L: "#38bdf8", XL: "#a78bfa" };
+              const active = patternTierFilter === tier;
+              return (
+                <button
+                  key={tier}
+                  onClick={() => setPatternTierFilter(active ? null : tier)}
+                  className="px-2 py-0.5 rounded-full text-[10px] font-data font-semibold transition-all"
+                  title={`${tier} pattern tier`}
+                  style={{
+                    backgroundColor: active ? `${colors[tier]}30` : "transparent",
+                    color: active ? colors[tier] : "var(--qgi-text-dim)",
+                    border: `1px solid ${active ? colors[tier] : "var(--qgi-border)"}`,
+                  }}
+                >
+                  {tier}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Divider */}
+          <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
+
+          {/* Gap years filter */}
+          <div className="flex items-center gap-2">
+            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+              Gap
+            </span>
+            <input
+              type="range"
+              min={0}
+              max={20}
+              value={minGapYears}
+              onChange={(e) => setMinGapYears(Number(e.target.value))}
+              className="w-16 accent-[var(--qgi-accent)]"
+              title={`Min ${minGapYears}yr gap between A and B start years`}
+            />
+            <span className="text-[10px] font-data w-8" style={{ color: minGapYears > 0 ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+              {minGapYears > 0 ? `≥${minGapYears}yr` : "Any"}
+            </span>
           </div>
 
           {/* Divider */}
