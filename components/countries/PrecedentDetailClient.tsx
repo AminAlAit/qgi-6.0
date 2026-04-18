@@ -268,37 +268,75 @@ export function PrecedentDetailClient({
               border: "1px solid var(--qgi-border)",
             }}
           >
-            <h2
-              className="text-[11px] tracking-widest uppercase font-semibold mb-4"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              TOP {analogues.length} HISTORICAL ANALOGUES
-              <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher recipe count = stronger historical signal." />
-            </h2>
-            <div className="space-y-3">
+            <div className="flex items-baseline justify-between mb-4">
+              <h2
+                className="text-[11px] tracking-widest uppercase font-semibold"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                TOP {analogues.length} HISTORICAL ANALOGUES
+                <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher recipe count = stronger historical signal." />
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {analogues.map((a, i) => (
                 <Link
                   key={a.country_b_id}
                   href={`/countries/${a.country_b_id}`}
-                  className="flex items-center gap-4 p-3 rounded-lg transition-colors hover:opacity-80"
+                  className="rounded-xl p-4 flex flex-col gap-3 transition-colors hover:border-[var(--qgi-accent)]"
                   style={{
-                    backgroundColor: i === 0 ? "rgba(56, 189, 248, 0.06)" : "var(--qgi-surface-2)",
-                    border: `1px solid ${i === 0 ? "rgba(56, 189, 248, 0.2)" : "transparent"}`,
+                    backgroundColor: "var(--qgi-surface)",
+                    border: `1px solid ${i === 0 ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
                   }}
                 >
-                  <CountryFlag alpha2={a.alpha2} size={22} />
-                  <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold">{a.country_b_name}</div>
-                    <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                      {a.recipe_count.toLocaleString()} recipes &middot; {(a.mean_corr * 100).toFixed(0)}% avg corr
-                      {a.avg_lead_years != null && <> &middot; {a.avg_lead_years.toFixed(1)}yr lead</>}
+                  {/* Country identity */}
+                  <div className="flex items-center gap-2">
+                    <CountryFlag alpha2={a.alpha2} size={20} />
+                    <div>
+                      <div className="text-xs font-semibold">{a.country_b_name}</div>
+                      <div className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+                        {a.recipe_count.toLocaleString()} recipes
+                      </div>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <div className="font-data text-lg font-bold" style={{ color: "var(--qgi-accent)" }}>
-                      {a.best_pps.toFixed(0)}
+
+                  {/* Correlation bar */}
+                  <div className="h-6 rounded flex items-center px-2" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                    <div
+                      className="h-3 rounded"
+                      style={{
+                        width: `${Math.min(100, a.mean_corr * 100)}%`,
+                        backgroundColor: "var(--qgi-accent)",
+                        opacity: 0.6,
+                      }}
+                    />
+                  </div>
+
+                  {/* Stats */}
+                  <div className="space-y-1 text-[11px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                    <div className="flex justify-between">
+                      <span>Match</span>
+                      <span className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                        {a.best_pps.toFixed(0)}
+                      </span>
                     </div>
-                    <div className="text-[9px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>PPS</div>
+                    <div className="flex justify-between">
+                      <span>Corr</span>
+                      <span>{(a.mean_corr * 100).toFixed(0)}%</span>
+                    </div>
+                    {a.avg_lead_years != null && (
+                      <div className="flex justify-between">
+                        <span>Lead</span>
+                        <span>{a.avg_lead_years.toFixed(1)}yr</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* View link */}
+                  <div className="pt-2 mt-auto border-t text-center" style={{ borderColor: "var(--qgi-border)" }}>
+                    <span className="text-[10px] tracking-widest" style={{ color: "var(--qgi-accent)" }}>
+                      View country &rarr;
+                    </span>
                   </div>
                 </Link>
               ))}
