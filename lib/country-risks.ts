@@ -63,7 +63,20 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
   const now = Date.now();
   if (_cache && now - _cacheTs < CACHE_TTL) return _cache;
 
-  // Try S3 first
+  // Try local file first (fast, zero AWS cost, always present in repo)
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "country-risks.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    _cache = JSON.parse(raw) as CountryRisksData;
+    _cacheTs = now;
+    return _cache;
+  } catch {
+    // Local file missing — fall back to S3
+  }
+
+  // S3 fallback (production override / fresh pipeline output)
   try {
     const s3 = new S3Client({ region: REGION });
     const resp = await s3.send(
@@ -76,23 +89,12 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
       return _cache;
     }
   } catch {
-    // S3 unavailable — fall back to local file
+    // S3 also unavailable
   }
 
-  // Fall back to local file (dev mode)
-  try {
-    const fs = await import("fs/promises");
-    const path = await import("path");
-    const filePath = path.join(process.cwd(), "data", "country-risks.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    _cache = JSON.parse(raw) as CountryRisksData;
-    _cacheTs = now;
-    return _cache;
-  } catch {
-    throw new Error(
-      "country-risks.json not found in S3 or data/. Run generate_country_risks.py first."
-    );
-  }
+  throw new Error(
+    "country-risks.json not found in data/ or S3. Run generate_country_risks.py first."
+  );
 }
 
 /**

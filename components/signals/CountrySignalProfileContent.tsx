@@ -206,7 +206,7 @@ export function CountrySignalProfileContent() {
                   >
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="font-data text-xs" style={{ color: "var(--qgi-country-a)" }}>
+                        <span className="font-data text-xs" style={{ color: "var(--qgi-country-b)" }}>
                           {s.country_b_name}
                         </span>
                         <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>

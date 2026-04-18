@@ -31,7 +31,7 @@ export const GET = withAuth(async (_req: NextRequest, payload) => {
      FROM qgi_data.patterns p
      LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
      LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
-     WHERE p.start_year_b < p.start_year_a
+     WHERE p.start_year_b > p.start_year_a
        AND (p.start_year_a + p.length) >= ${currentYear - 2}
      ORDER BY p.pattern_power_score DESC
      LIMIT 500`

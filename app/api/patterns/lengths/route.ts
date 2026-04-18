@@ -10,6 +10,10 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "country_a and country_b are required" }, { status: 400 });
   }
 
+  if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
+    return NextResponse.json({ error: "Invalid country_a or country_b" }, { status: 400 });
+  }
+
   const rows = await runQuery(
     `SELECT DISTINCT length
      FROM qgi_data.patterns

@@ -21,6 +21,17 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "country_a and country_b are required" }, { status: 400 });
   }
 
+  if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
+    return NextResponse.json({ error: "Invalid country_a or country_b" }, { status: 400 });
+  }
+
+  if (year_from && !Number.isFinite(Number(year_from))) {
+    return NextResponse.json({ error: "Invalid year_from" }, { status: 400 });
+  }
+  if (year_to && !Number.isFinite(Number(year_to))) {
+    return NextResponse.json({ error: "Invalid year_to" }, { status: 400 });
+  }
+
   const conditions = [
     `country_a_id = ${Number(country_a)}`,
     `country_b_id = ${Number(country_b)}`,

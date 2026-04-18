@@ -51,7 +51,7 @@ export default function ReportsPage() {
               Methodology
             </Link>
             <Link
-              href="/base"
+              href="/dashboard"
               className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
               style={{
                 backgroundColor: "var(--qgi-accent)",

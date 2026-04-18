@@ -68,13 +68,13 @@ export function SignalDetailContent() {
           )}
         </div>
         <div className="flex items-center gap-3">
-          <span className="font-data text-lg" style={{ color: "var(--qgi-country-b)" }}>
+          <span className="font-data text-lg" style={{ color: "var(--qgi-country-a)" }}>
             {signal.country_a_name}
           </span>
           <span className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
             following
           </span>
-          <span className="font-data text-lg" style={{ color: "var(--qgi-country-a)" }}>
+          <span className="font-data text-lg" style={{ color: "var(--qgi-country-b)" }}>
             {signal.country_b_name}
           </span>
         </div>

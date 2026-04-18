@@ -33,6 +33,11 @@ export const GET = withAuth(async (req: NextRequest) => {
   const startANum = Number(start_a);
   const startBNum = Number(start_b);
 
+  if (!Number.isFinite(aId) || !Number.isFinite(bId) || !Number.isFinite(lenNum) ||
+      !Number.isFinite(startANum) || !Number.isFinite(startBNum)) {
+    return NextResponse.json({ error: "Invalid numeric parameter" }, { status: 400 });
+  }
+
   // Pattern metadata row (join deduplicated countries for names)
   const metaRows = await runQuery(
     `WITH c AS (
@@ -101,10 +106,16 @@ export const GET = withAuth(async (req: NextRequest) => {
 
   const allValues = await getIndicatorValuesBatch(requests);
 
-  const scdis = scdiMeta.map((m, i) => {
+  let requestIndex = 0;
+  const scdis = scdiMeta.map((m) => {
     const meta = indexByNumericId.get(m.numId);
-    const values_a = m.indicatorId ? allValues[i * 2] ?? [] : [];
-    const values_b = m.indicatorId ? allValues[i * 2 + 1] ?? [] : [];
+    let values_a: unknown[] = [];
+    let values_b: unknown[] = [];
+    if (m.indicatorId && countryAName && countryBName) {
+      values_a = allValues[requestIndex] ?? [];
+      values_b = allValues[requestIndex + 1] ?? [];
+      requestIndex += 2;
+    }
     return {
       indicator_numeric_id: m.numId,
       index_name: meta?.name ?? `Indicator #${m.numId}`,

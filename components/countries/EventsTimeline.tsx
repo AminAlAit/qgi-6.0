@@ -46,10 +46,6 @@ export function EventsTimeline({ events, countryName }: Props) {
     [events]
   );
 
-  const displayed = expanded ? sorted : sorted.slice(0, 10);
-
-  if (events.length === 0) return null;
-
   // Group by decade for the mini-chart
   const decades = useMemo(() => {
     const groups: Record<string, number> = {};
@@ -61,6 +57,10 @@ export function EventsTimeline({ events, countryName }: Props) {
   }, [events]);
 
   const maxPerDecade = Math.max(...decades.map(([, c]) => c), 1);
+
+  const displayed = expanded ? sorted : sorted.slice(0, 10);
+
+  if (events.length === 0) return null;
 
   return (
     <section

@@ -32,7 +32,7 @@ async function loadCountryEvents(
       Array<{ year: number; title: string; category: string }>
     >;
     // Match by snake_case country name
-    const key = countryName.toLowerCase().replace(/\s+/g, "_");
+    const key = countryName.toLowerCase().replace(/^the\s+/, "").replace(/\bof the\b/g, "of").replace(/[-\s]+/g, "_").replace(/[^a-z0-9_]/g, "");
     return allEvents[key] ?? [];
   } catch {
     return [];
@@ -51,7 +51,7 @@ async function loadCountrySalience(
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
-    const slug = countryName.toLowerCase().replace(/\s+/g, "_");
+    const slug = countryName.toLowerCase().replace(/^the\s+/, "").replace(/\bof the\b/g, "of").replace(/[-\s]+/g, "_").replace(/[^a-z0-9_]/g, "");
     const filePath = path.join(process.cwd(), "data", "salience", `${slug}.json`);
     const raw = await fs.readFile(filePath, "utf-8");
     const data = JSON.parse(raw) as {
@@ -59,6 +59,73 @@ async function loadCountrySalience(
       l2_scores: Record<string, number>;
     };
     return { l1Scores: data.l1_scores, l2Scores: data.l2_scores };
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Load structural twins from baked data/structural-twins.json.
+ */
+async function loadStructuralTwins(
+  countryId: string
+): Promise<Array<{ partner_id: number; partner_name: string; alpha2: string; pattern_count: number; mean_corr: number; best_pps: number }>> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "structural-twins.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const allTwins = JSON.parse(raw) as Record<string, Array<{
+      partner_id: number; partner_name: string; alpha2: string;
+      pattern_count: number; mean_corr: number; best_pps: number;
+    }>>;
+    return allTwins[countryId] ?? [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Load analogues from baked data/analogues.json (GH#282).
+ */
+async function loadAnalogues(
+  countryId: string,
+  category?: string
+): Promise<Record<string, Array<{ country_b_id: number; country_b_name: string; alpha2: string; recipe_count: number; mean_corr: number; best_pps: number; avg_lead_years: number | null }>>> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "analogues.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const all = JSON.parse(raw) as Record<string, Record<string, Array<{
+      country_b_id: number; country_b_name: string; alpha2: string;
+      recipe_count: number; mean_corr: number; best_pps: number; avg_lead_years: number | null;
+    }>>>;
+    const countryAnalogues = all[countryId] ?? {};
+    if (category) {
+      const filtered: typeof countryAnalogues = {};
+      if (countryAnalogues[category]) filtered[category] = countryAnalogues[category];
+      return filtered;
+    }
+    return countryAnalogues;
+  } catch {
+    return {};
+  }
+}
+
+/**
+ * Load pattern density from baked data/pattern-density.json.
+ */
+async function loadPatternDensity(
+  countryId: string
+): Promise<{ years: number[]; counts: number[]; total: number } | null> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "pattern-density.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const all = JSON.parse(raw) as Record<string, { years: number[]; counts: number[]; total: number }>;
+    return all[countryId] ?? null;
   } catch {
     return null;
   }
@@ -93,6 +160,8 @@ export default async function CountryProfilePage({ params }: Props) {
 
   const events = await loadCountryEvents(country.name);
   const salience = await loadCountrySalience(country.name);
+  const twins = await loadStructuralTwins(id);
+  const densityData = await loadPatternDensity(id);
 
   return (
     <CountryProfileClient
@@ -103,6 +172,8 @@ export default async function CountryProfilePage({ params }: Props) {
       events={events}
       l1Scores={salience?.l1Scores ?? null}
       l2Scores={salience?.l2Scores ?? null}
+      twins={twins}
+      densityData={densityData}
     />
   );
 }

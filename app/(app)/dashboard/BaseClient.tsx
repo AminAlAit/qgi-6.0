@@ -18,9 +18,6 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
-import { IndexCatalogue } from "@/components/dashboard/IndexCatalogue";
-import { WorldMapChart } from "@/components/charts/WorldMapChart";
-import type { MapCountry } from "@/components/charts/WorldMapChart";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
 import {
@@ -84,8 +81,8 @@ const TIER_STYLES: Record<
   },
   MODERATE: {
     bg: "rgba(251, 191, 36, 0.12)",
-    text: "#fbbf24",
-    border: "#fbbf24",
+    text: "var(--qgi-amber)",
+    border: "var(--qgi-amber)",
   },
   INDICATIVE: {
     bg: "rgba(56, 189, 248, 0.12)",
@@ -101,12 +98,12 @@ const REGION_MAP: Record<string, string> = (() => {
   // EAP = East Asia & Pacific, SAS = South Asia, LAC = Latin America & Caribbean,
   // ECA = Europe & Central Asia
   const map: Record<string, string> = {};
-  // SSA
+  // SSA (excluding North Africa: 12=Algeria, 434=Libya, 504=Morocco → MNA)
   for (const id of [
-    "12", "24", "72", "854", "108", "120", "132", "140", "148", "174", "178",
+    "24", "72", "854", "108", "120", "132", "140", "148", "174", "178",
     "180", "204", "226", "231", "232", "266", "270", "288", "324", "624",
-    "384", "404", "426", "430", "434", "450", "454", "466", "478", "480",
-    "504", "508", "516", "562", "566", "646", "678", "686", "694", "706",
+    "384", "404", "426", "430", "450", "454", "466", "478", "480",
+    "508", "516", "562", "566", "646", "678", "686", "694", "706",
     "710", "716", "728", "729", "748", "768", "800", "834", "894",
   ])
     map[id] = "SSA";
@@ -119,7 +116,7 @@ const REGION_MAP: Record<string, string> = (() => {
   // EAP
   for (const id of [
     "36", "96", "116", "156", "242", "296", "360", "392", "408", "410",
-    "418", "458", "462", "496", "104", "540", "554", "598", "608", "882",
+    "418", "458", "496", "104", "540", "554", "598", "608", "882",
     "626", "764", "776", "798", "548",
   ])
     map[id] = "EAP";
@@ -332,7 +329,7 @@ export function BaseClient({
     if (!risks) return [];
     const regionCounts: Record<string, { total: number; high: number }> = {};
     for (const [id, country] of Object.entries(risks.countries)) {
-      const region = REGION_MAP[id] ?? "ECA";
+      const region = REGION_MAP[id] ?? "Other";
       if (!regionCounts[region])
         regionCounts[region] = { total: 0, high: 0 };
       regionCounts[region].total++;
@@ -430,18 +427,6 @@ export function BaseClient({
     return { sTierSignals, risingSalience, peakSalience, activeConvergences };
   }, [risks, topSignals]);
 
-  // ── Dot map countries ───────────────────────────────────────────
-  const dotCountries: MapCountry[] = useMemo(() => {
-    if (!risks) return [];
-    return Object.entries(risks.countries).map(([id, c]) => ({
-      id,
-      name: c.name,
-      alpha_2: c.alpha_2,
-      tier: c.overall_risk_tier,
-      region: REGION_MAP[id] ?? "ECA",
-    }));
-  }, [risks]);
-
   // ── Sector counts for collapsed SectorRose ──────────────────────
   const sectorCounts = useMemo(() => {
     const counts: Record<string, number> = {};
@@ -462,7 +447,7 @@ export function BaseClient({
     const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
     let color = "#34d399"; // green
     if (days > 30) color = "#f87171"; // red
-    else if (days > 7) color = "#fbbf24"; // amber
+    else if (days > 7) color = "var(--qgi-amber)"; // amber
     return {
       label: days === 0 ? "today" : days === 1 ? "1 day ago" : `${days} days ago`,
       color,
@@ -695,7 +680,7 @@ export function BaseClient({
                     <TierSegment
                       count={stats.moderate}
                       total={stats.total}
-                      color="#fbbf24"
+                      color="var(--qgi-amber)"
                       label="MOD"
                     />
                     <TierSegment
@@ -791,71 +776,7 @@ export function BaseClient({
         </div>
       </div>
 
-      {/* ================================================================
-          ZONE 2.5: GLOBAL RISK MAP (dot cartogram)
-          ================================================================ */}
-      {dotCountries.length > 0 && (
-        <div
-          className="border-t shrink-0 grid grid-cols-1 lg:grid-cols-[1fr_320px]"
-          style={{ borderColor: "var(--qgi-border)" }}
-        >
-          {/* Left: World Map (zoom + pan enabled) */}
-          <div className="border-r" style={{ borderColor: "var(--qgi-border)" }}>
-            <WorldMapChart countries={dotCountries} />
-          </div>
-          {/* Right: Region breakdown summary */}
-          <div className="p-4" style={{ backgroundColor: "var(--qgi-bg)" }}>
-            <h3
-              className="text-[9px] tracking-[0.25em] uppercase mb-3"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Risk by Region
-            </h3>
-            <div className="space-y-2">
-              {(() => {
-                const regionCounts: Record<string, { high: number; mod: number; ind: number; total: number }> = {};
-                for (const c of dotCountries) {
-                  if (!regionCounts[c.region]) regionCounts[c.region] = { high: 0, mod: 0, ind: 0, total: 0 };
-                  regionCounts[c.region].total++;
-                  if (c.tier === "HIGH") regionCounts[c.region].high++;
-                  else if (c.tier === "MODERATE") regionCounts[c.region].mod++;
-                  else regionCounts[c.region].ind++;
-                }
-                return Object.entries(regionCounts)
-                  .sort(([, a], [, b]) => b.high - a.high)
-                  .map(([region, counts]) => (
-                    <div key={region} className="flex items-center gap-2">
-                      <span
-                        className="text-[10px] w-8 font-data"
-                        style={{ color: "var(--qgi-text-muted)" }}
-                      >
-                        {region}
-                      </span>
-                      {/* Mini stacked bar */}
-                      <div className="flex-1 flex h-3 rounded-sm overflow-hidden" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
-                        {counts.high > 0 && (
-                          <div style={{ width: `${(counts.high / counts.total) * 100}%`, backgroundColor: "#f87171" }} />
-                        )}
-                        {counts.mod > 0 && (
-                          <div style={{ width: `${(counts.mod / counts.total) * 100}%`, backgroundColor: "#fbbf24" }} />
-                        )}
-                        {counts.ind > 0 && (
-                          <div style={{ width: `${(counts.ind / counts.total) * 100}%`, backgroundColor: "#38bdf8" }} />
-                        )}
-                      </div>
-                      <span
-                        className="text-[9px] font-data w-6 text-right"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        {counts.total}
-                      </span>
-                    </div>
-                  ));
-              })()}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* World map removed per owner request (2026-04-18) */}
 
       {/* ================================================================
           ZONE 3: INTELLIGENCE GRID
@@ -1327,7 +1248,7 @@ export function BaseClient({
                                 p.avg_correlation >= 0.8
                                   ? "#34d399"
                                   : p.avg_correlation >= 0.6
-                                    ? "#fbbf24"
+                                    ? "var(--qgi-amber)"
                                     : "#7a90a8",
                             }}
                           />

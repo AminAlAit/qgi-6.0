@@ -432,7 +432,6 @@ export default function PatternsClient() {
   // ---- Cascade state (inlined from CascadeFilter) ----
   const [apiCountries, setApiCountries] = useState<ApiCountry[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);
-  const [lengths, setLengths] = useState<number[]>([]);
   const [countryA, setCountryA] = useState(initialA);
   const [countryB, setCountryB] = useState(initialB);
   const [length, setLength] = useState<number | "">(initialLength);
@@ -452,7 +451,6 @@ export default function PatternsClient() {
 
   // S0 landing: top pairs from ranking cache (used for navigateToPattern but NOT shown in S0)
   const [topPairs, setTopPairs] = useState<PatternRow[]>([]);
-  const [landingLoading, setLandingLoading] = useState(true);
 
   // S2: windows data for the length-range slider experience
   const [allWindows, setAllWindows] = useState<WindowData[]>([]);
@@ -463,6 +461,13 @@ export default function PatternsClient() {
   // V2 detail: expandable SCDI card
   const [expandedScdi, setExpandedScdi] = useState<string | null>(null);
   const [scdiAligned, setScdiAligned] = useState(true);
+
+  // Related patterns (same predictor partners + same following partners)
+  interface RelatedPartner { id: string; name: string; alpha2: string; pps: number; lmin: number; lmax: number; }
+  const [samePredictorPartners, setSamePredictorPartners] = useState<RelatedPartner[]>([]);
+  const [sameFollowingPartners, setSameFollowingPartners] = useState<RelatedPartner[]>([]);
+  const [samePredictorLoading, setSamePredictorLoading] = useState(false);
+  const [sameFollowingLoading, setSameFollowingLoading] = useState(false);
 
   const startsDiffer =
     detail != null &&
@@ -520,19 +525,6 @@ export default function PatternsClient() {
       .catch(() => setPartners([]));
   }, [countryA]);
 
-  // Load lengths when B changes
-  useEffect(() => {
-    if (!countryA || !countryB) {
-      setLengths([]);
-      return;
-    }
-    apiFetch<number[]>(
-      `/api/patterns/lengths?country_a=${encodeURIComponent(countryA)}&country_b=${encodeURIComponent(countryB)}`
-    )
-      .then(setLengths)
-      .catch(() => setLengths([]));
-  }, [countryA, countryB]);
-
   // Load ALL windows when B changes (for S2 length-range slider)
   useEffect(() => {
     if (!countryA || !countryB) {
@@ -563,6 +555,59 @@ export default function PatternsClient() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countryA, countryB, length, yearPair]);
 
+  // Load related partners whenever A or B changes
+  useEffect(() => {
+    if (!countryA) { setSamePredictorPartners([]); return; }
+    setSamePredictorLoading(true);
+    apiFetch<Array<{ country_b_id: string; country_b_name: string; alpha2?: string; best_pps?: number; available_lengths: number[] }>>(
+      `/api/patterns/partners?country_a=${encodeURIComponent(countryA)}`
+    )
+      .then((data) => {
+        const excl = countryB;
+        setSamePredictorPartners(
+          data
+            .filter((p) => p.country_b_id !== excl)
+            .slice(0, 3)
+            .map((p) => ({
+              id: p.country_b_id,
+              name: p.country_b_name,
+              alpha2: p.alpha2 ?? ALPHA2_MAP[p.country_b_id] ?? "",
+              pps: p.best_pps ?? 0,
+              lmin: p.available_lengths[0] ?? 0,
+              lmax: p.available_lengths[p.available_lengths.length - 1] ?? 0,
+            }))
+        );
+      })
+      .catch(() => setSamePredictorPartners([]))
+      .finally(() => setSamePredictorLoading(false));
+  }, [countryA, countryB]);
+
+  useEffect(() => {
+    if (!countryB) { setSameFollowingPartners([]); return; }
+    setSameFollowingLoading(true);
+    apiFetch<Array<{ country_b_id: string; country_b_name: string; alpha2?: string; best_pps?: number; available_lengths: number[] }>>(
+      `/api/patterns/partners?country_a=${encodeURIComponent(countryB)}`
+    )
+      .then((data) => {
+        const excl = countryA;
+        setSameFollowingPartners(
+          data
+            .filter((p) => p.country_b_id !== excl)
+            .slice(0, 3)
+            .map((p) => ({
+              id: p.country_b_id,
+              name: p.country_b_name,
+              alpha2: p.alpha2 ?? ALPHA2_MAP[p.country_b_id] ?? "",
+              pps: p.best_pps ?? 0,
+              lmin: p.available_lengths[0] ?? 0,
+              lmax: p.available_lengths[p.available_lengths.length - 1] ?? 0,
+            }))
+        );
+      })
+      .catch(() => setSameFollowingPartners([]))
+      .finally(() => setSameFollowingLoading(false));
+  }, [countryA, countryB]);
+
   // Fetch top pairs for S0 landing
   useEffect(() => {
     async function fetchTopPairs() {
@@ -588,8 +633,6 @@ export default function PatternsClient() {
         }
       } catch {
         // Non-critical
-      } finally {
-        setLandingLoading(false);
       }
     }
     fetchTopPairs();
@@ -636,16 +679,6 @@ export default function PatternsClient() {
     [router]
   );
 
-  // ---- Navigation from S0 landing table ----
-  function navigateToPattern(p: PatternRow) {
-    const ca = p.country_a_id ?? p.country_a;
-    const cb = p.country_b_id ?? p.country_b;
-    setCountryA(ca);
-    setCountryB(cb);
-    setLength(p.pattern_length);
-    setYearPair(`${p.start_year_a}:${p.start_year_b}`);
-  }
-
   // ---- Breadcrumb navigation ----
   function navigateToState(target: BrowseState) {
     if (target === "S0") {
@@ -690,7 +723,7 @@ export default function PatternsClient() {
   // ---- Derived values ----
   const isEarlyWarning =
     detail !== null &&
-    Number(detail.metadata.start_year_b) < Number(detail.metadata.start_year_a) &&
+    Number(detail.metadata.start_year_b) > Number(detail.metadata.start_year_a) &&
     Number(detail.metadata.start_year_a) + Number(detail.metadata.pattern_length) >=
       new Date().getFullYear() - 2;
 
@@ -753,6 +786,70 @@ export default function PatternsClient() {
   } else if (browseState === "S3" && detail) {
     const meta = detail.metadata;
     contextLine = `${meta.pattern_length} years  \u00b7  ${meta.num_indexes} indicators  \u00b7  PPS ${Number(meta.pattern_power_score) <= 1 ? Number(meta.pattern_power_score).toFixed(2) : Math.round(Number(meta.pattern_power_score))}`;
+  }
+
+  // ---- Export helpers ----
+  function exportCsv() {
+    if (!detail) return;
+    const meta = detail.metadata;
+    const header = "indicator,sector,org,correlation,predicted,values_a,values_b";
+    const rows = detail.scdis.map((s) =>
+      [
+        `"${s.index_name}"`,
+        `"${s.sector}"`,
+        `"${s.org}"`,
+        s.correlation.toFixed(4),
+        s.predicted ? "1" : "0",
+        `"${s.values_a.join("|")}"`,
+        `"${s.values_b.join("|")}"`,
+      ].join(",")
+    );
+    const csv = [header, ...rows].join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `qgi-pattern-${meta.country_a}-${meta.country_b}-${meta.start_year_a}-${meta.start_year_b}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
+  function exportPatternSummary() {
+    if (!detail) return;
+    const meta = detail.metadata;
+    const ppsRaw = Number(meta.pattern_power_score);
+    const isNorm = ppsRaw <= 1;
+    const ppsDisplay = isNorm ? ppsRaw.toFixed(2) : Math.round(ppsRaw).toLocaleString();
+    const startA = Number(meta.start_year_a);
+    const endA = startA + Number(meta.pattern_length) - 1;
+    const startB = Number(meta.start_year_b);
+    const endB = startB + Number(meta.pattern_length) - 1;
+    const lines = [
+      `QGI Pattern Summary`,
+      `-------------------`,
+      `Predictor:  ${meta.country_a} (${startA}-${endA})`,
+      `Following:  ${meta.country_b} (${startB}-${endB})`,
+      `Length:     ${meta.pattern_length} years`,
+      `Indicators: ${meta.num_indexes}`,
+      `Avg Corr:   ${Number(meta.avg_correlation).toFixed(3)}`,
+      `PPS:        ${ppsDisplay}`,
+      ``,
+      `Top indicators:`,
+      ...detail.scdis.slice(0, 5).map((s) => `  - ${s.index_name} (r=${s.correlation.toFixed(2)})`),
+      ``,
+      `Source: qgintelligence.com/patterns`,
+    ];
+    const text = lines.join("\n");
+    navigator.clipboard.writeText(text).catch(() => {
+      // Fallback: download as text
+      const blob = new Blob([text], { type: "text/plain;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `qgi-pattern-${meta.country_a}-${meta.country_b}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
   }
 
   return (
@@ -1556,7 +1653,7 @@ export default function PatternsClient() {
                 </div>
 
                 {/* Row 3: Action buttons */}
-                <div className="p-6 lg:p-8 flex gap-3">
+                <div className="p-6 lg:p-8 flex gap-3 flex-wrap">
                   {["View methodology", "View ranking"].map((label) => (
                     <a
                       key={label}
@@ -1571,6 +1668,17 @@ export default function PatternsClient() {
                       {label}
                     </a>
                   ))}
+                  <button
+                    onClick={exportPatternSummary}
+                    className="px-4 py-2 rounded text-[11px] tracking-wider transition-colors"
+                    style={{
+                      backgroundColor: "var(--qgi-surface-2)",
+                      color: "var(--qgi-text-muted)",
+                      border: "1px solid var(--qgi-border)",
+                    }}
+                  >
+                    Export pattern
+                  </button>
                 </div>
               </section>
 
@@ -1661,170 +1769,294 @@ export default function PatternsClient() {
                     CHARTS
                   </button>
                 </div>
-              </div>
 
-              {/* === V2 EXPANDABLE SCDI CARDS === */}
-              {showCharts && (
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                  {detail.scdis.map((s, i) => {
-                    const isExpanded = expandedScdi === s.index_name;
-                    const sc = getSectorColor(s.sector);
-                    return (
-                      <div
-                        key={s.index_name}
-                        className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
-                        style={{
-                          backgroundColor: `${sc}08`,
-                          border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
-                        }}
-                        onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
-                      >
-                        <div className="flex items-center justify-between mb-2">
-                          <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
-                            {s.index_name}
-                          </div>
-                          <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
-                            {isExpanded ? "collapse" : "expand"}
-                          </span>
-                        </div>
-
-                        {isExpanded ? (
-                          <div>
-                            <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
-                              <button
-                                onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
-                                className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                                style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
-                              >
-                                <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
-                              </button>
-                              <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                                {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
-                              </span>
-                            </div>
-                            <div className="h-48 mb-2">
-                              <ReactECharts
-                                option={{
-                                  backgroundColor: "transparent",
-                                  tooltip: {
-                                    trigger: "axis",
-                                    backgroundColor: "#1e2d42",
-                                    borderColor: "#243347",
-                                    textStyle: { color: "#e2e8f0", fontSize: 10 },
-                                  },
-                                  legend: {
-                                    data: [detailCountryA, detailCountryB],
-                                    top: 0, right: 8,
-                                    textStyle: { color: "#7a90a8", fontSize: 9 },
-                                    itemWidth: 12, itemHeight: 2,
-                                  },
-                                  grid: { top: 30, right: 12, bottom: 24, left: 48 },
-                                  xAxis: scdiAligned
-                                    ? {
-                                        type: "category" as const,
-                                        data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9 },
-                                      }
-                                    : {
-                                        type: "value" as const,
-                                        min: Math.min(startA, startB) - 1,
-                                        max: Math.max(endA, endB) + 1,
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
-                                        splitLine: { show: false },
-                                      },
-                                  yAxis: {
-                                    type: "value",
-                                    scale: true,
-                                    axisLine: { lineStyle: { color: "#243347" } },
-                                    splitLine: { lineStyle: { color: "#1a2a3a" } },
-                                    axisLabel: { color: "#4a6280", fontSize: 9 },
-                                  },
-                                  series: scdiAligned
-                                    ? [
-                                        { name: detailCountryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                        { name: detailCountryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                      ]
-                                    : [
-                                        { name: detailCountryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                        { name: detailCountryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                      ],
-                                }}
-                                style={{ height: "100%", width: "100%" }}
-                                notMerge
-                              />
-                            </div>
-                          </div>
-                        ) : (
-                          <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                            <div className="flex items-end gap-px h-16 w-full px-1">
-                              {Array.from({ length: Math.min(len, 20) }, (_, j) => {
-                                const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
-                                return (
-                                  <div
-                                    key={j}
-                                    className="flex-1 rounded-t"
-                                    style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
-                                  />
-                                );
-                              })}
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="flex items-center justify-between">
-                          <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
-                          <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                            r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* === SCDI TABLE === */}
-              {showTable && (
-                <div
-                  className="rounded-xl overflow-hidden"
+                {/* Export CSV */}
+                <button
+                  onClick={exportCsv}
+                  className="px-3 py-1.5 rounded text-[10px] tracking-wider transition-colors"
                   style={{
-                    backgroundColor: "var(--qgi-surface)",
+                    backgroundColor: "var(--qgi-surface-2)",
+                    color: "var(--qgi-text-muted)",
                     border: "1px solid var(--qgi-border)",
                   }}
                 >
-                  <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
-                    Indicator Matches ({detail.scdis.length})
-                  </div>
-                  <ScdiTable
-                    scdis={detail.scdis}
-                    onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
-                    selectedIndex={selectedIndex}
-                  />
-                </div>
-              )}
+                  Export CSV
+                </button>
+              </div>
 
-              {/* === RELATED PATTERNS (placeholder) === */}
-              <div
-                className="rounded-xl p-5"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  border: "1px dashed var(--qgi-border)",
-                }}
-              >
-                <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-                  RELATED PATTERNS
+              {/* === MAIN BODY: Charts + Table LEFT / Related Patterns RIGHT === */}
+              <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
+                {/* ---- Left: SCDI cards + table ---- */}
+                <div className="space-y-6">
+                  {/* === V2 EXPANDABLE SCDI CARDS === */}
+                  {showCharts && (
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                      {detail.scdis.map((s, i) => {
+                        const isExpanded = expandedScdi === s.index_name;
+                        const sc = getSectorColor(s.sector);
+                        return (
+                          <div
+                            key={s.index_name}
+                            className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
+                            style={{
+                              backgroundColor: `${sc}08`,
+                              border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
+                            }}
+                            onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
+                          >
+                            <div className="flex items-center justify-between mb-2">
+                              <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
+                                {s.index_name}
+                              </div>
+                              <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
+                                {isExpanded ? "collapse" : "expand"}
+                              </span>
+                            </div>
+
+                            {isExpanded ? (
+                              <div>
+                                <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
+                                  <button
+                                    onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
+                                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                                    style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
+                                  >
+                                    <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
+                                  </button>
+                                  <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+                                    {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
+                                  </span>
+                                </div>
+                                <div className="h-48 mb-2">
+                                  <ReactECharts
+                                    option={{
+                                      backgroundColor: "transparent",
+                                      tooltip: {
+                                        trigger: "axis",
+                                        backgroundColor: "#1e2d42",
+                                        borderColor: "#243347",
+                                        textStyle: { color: "#e2e8f0", fontSize: 10 },
+                                      },
+                                      legend: {
+                                        data: [detailCountryA, detailCountryB],
+                                        top: 0, right: 8,
+                                        textStyle: { color: "#7a90a8", fontSize: 9 },
+                                        itemWidth: 12, itemHeight: 2,
+                                      },
+                                      grid: { top: 30, right: 12, bottom: 24, left: 48 },
+                                      xAxis: scdiAligned
+                                        ? {
+                                            type: "category" as const,
+                                            data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
+                                            axisLine: { lineStyle: { color: "#243347" } },
+                                            axisLabel: { color: "#4a6280", fontSize: 9 },
+                                          }
+                                        : {
+                                            type: "value" as const,
+                                            min: Math.min(startA, startB) - 1,
+                                            max: Math.max(endA, endB) + 1,
+                                            axisLine: { lineStyle: { color: "#243347" } },
+                                            axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
+                                            splitLine: { show: false },
+                                          },
+                                      yAxis: {
+                                        type: "value",
+                                        scale: true,
+                                        axisLine: { lineStyle: { color: "#243347" } },
+                                        splitLine: { lineStyle: { color: "#1a2a3a" } },
+                                        axisLabel: { color: "#4a6280", fontSize: 9 },
+                                      },
+                                      series: scdiAligned
+                                        ? [
+                                            { name: detailCountryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                            { name: detailCountryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                          ]
+                                        : [
+                                            { name: detailCountryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
+                                            { name: detailCountryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
+                                          ],
+                                    }}
+                                    style={{ height: "100%", width: "100%" }}
+                                    notMerge
+                                  />
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
+                                <div className="flex items-end gap-px h-16 w-full px-1">
+                                  {Array.from({ length: Math.min(len, 20) }, (_, j) => {
+                                    const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
+                                    return (
+                                      <div
+                                        key={j}
+                                        className="flex-1 rounded-t"
+                                        style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
+                                      />
+                                    );
+                                  })}
+                                </div>
+                              </div>
+                            )}
+
+                            <div className="flex items-center justify-between">
+                              <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
+                              <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
+                                r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  {/* === SCDI TABLE === */}
+                  {showTable && (
+                    <div
+                      className="rounded-xl overflow-hidden"
+                      style={{
+                        backgroundColor: "var(--qgi-surface)",
+                        border: "1px solid var(--qgi-border)",
+                      }}
+                    >
+                      <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
+                        Indicator Matches ({detail.scdis.length})
+                      </div>
+                      <ScdiTable
+                        scdis={detail.scdis}
+                        onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
+                        selectedIndex={selectedIndex}
+                      />
+                    </div>
+                  )}
                 </div>
-                <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-                  Related patterns (same predictor, same following, similar indicator mix) will appear
-                  here after the pattern adjacency pre-computation pipeline runs. For now, explore
-                  the{" "}
-                  <a href="/patterns/ranking" className="underline" style={{ color: "var(--qgi-accent)" }}>
-                    full ranking
-                  </a>{" "}
-                  to discover similar patterns.
-                </p>
+
+                {/* ---- Right: Related patterns sidebar ---- */}
+                <div className="space-y-4">
+                  {/* SAME PREDICTOR panel */}
+                  <div
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                      border: "1px solid var(--qgi-border)",
+                    }}
+                  >
+                    <div className="mb-3">
+                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
+                        SAME PREDICTOR
+                      </div>
+                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                        {detailCountryA} &rarr; others
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {samePredictorLoading ? (
+                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>Loading...</div>
+                      ) : samePredictorPartners.length === 0 ? (
+                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>No other partners</div>
+                      ) : (
+                        samePredictorPartners.map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => handleCountryBChange(p.id)}
+                            className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                          >
+                            <div className="flex items-center gap-1 shrink-0">
+                              <CountryFlag alpha2={detailA2A} size={14} />
+                              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
+                              <CountryFlag alpha2={p.alpha2} size={14} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[10px] font-data truncate" style={{ color: "var(--qgi-text)" }}>
+                                {detailCountryA} &rarr; {p.name}
+                              </div>
+                              <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+                                {p.lmin}&ndash;{p.lmax}yr
+                              </div>
+                            </div>
+                            <div className="font-data text-xs font-bold shrink-0" style={{ color: "var(--qgi-accent)" }}>
+                              {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
+                            </div>
+                          </button>
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  {/* SAME FOLLOWING panel */}
+                  <div
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                      border: "1px solid var(--qgi-border)",
+                    }}
+                  >
+                    <div className="mb-3">
+                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
+                        SAME FOLLOWING
+                      </div>
+                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                        {detailCountryB} &rarr; others
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      {sameFollowingLoading ? (
+                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>Loading...</div>
+                      ) : sameFollowingPartners.length === 0 ? (
+                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>No other partners</div>
+                      ) : (
+                        sameFollowingPartners.map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => {
+                              setCountryA(countryB);
+                              handleCountryBChange(p.id);
+                            }}
+                            className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                          >
+                            <div className="flex items-center gap-1 shrink-0">
+                              <CountryFlag alpha2={detailA2B} size={14} />
+                              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
+                              <CountryFlag alpha2={p.alpha2} size={14} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[10px] font-data truncate" style={{ color: "var(--qgi-text)" }}>
+                                {detailCountryB} &rarr; {p.name}
+                              </div>
+                              <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+                                {p.lmin}&ndash;{p.lmax}yr
+                              </div>
+                            </div>
+                            <div className="font-data text-xs font-bold shrink-0" style={{ color: "var(--qgi-accent)" }}>
+                              {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
+                            </div>
+                          </button>
+                        ))
+                      )}
+                    </div>
+                  </div>
+
+                  {/* SIMILAR MIX panel (placeholder) */}
+                  <div
+                    className="rounded-xl p-4"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                      border: "1px dashed var(--qgi-border)",
+                    }}
+                  >
+                    <div className="mb-3">
+                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
+                        SIMILAR MIX
+                      </div>
+                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                        {Object.keys(sectorCounts).slice(0, 3).join(" + ") || "indicator composition"}
+                      </div>
+                    </div>
+                    <p className="text-[9px] leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
+                      Patterns with similar indicator composition will appear here after the next pipeline run.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               {/* === METHODOLOGY FOOTER === */}

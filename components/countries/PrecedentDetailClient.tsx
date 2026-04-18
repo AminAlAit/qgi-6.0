@@ -34,14 +34,6 @@ const TIER_COLORS: Record<string, string> = {
   XL: "#a78bfa",
 };
 
-const SAMPLE_LEAD_TIME_BINS = [
-  { years: "1y", count: 42, pct: 22 },
-  { years: "2y", count: 58, pct: 31 },
-  { years: "3y", count: 39, pct: 21 },
-  { years: "4y", count: 27, pct: 14 },
-  { years: "5y", count: 14, pct: 8 },
-  { years: "6+", count: 7, pct: 4 },
-];
 
 /* ------------------------------------------------------------------ */
 /*  Props                                                              */
@@ -66,7 +58,7 @@ export function PrecedentDetailClient({
   generatedAt,
   version,
 }: Props) {
-  const tierStyle = TIER_STYLES[country.overall_risk_tier];
+  const tierStyle = TIER_STYLES[country.overall_risk_tier] ?? TIER_STYLES.INDICATIVE;
   const catLabel = formatCategory(category);
 
   // L1 taxonomy lookup
@@ -223,24 +215,6 @@ export function PrecedentDetailClient({
             {generateNarativeLede(country, category, catLabel, totalRecipes, activeTierCount, maxSalience, salienceColor, signalLabel, lastEventYear)}
           </div>
 
-          {/* ---- Actions rail ---- */}
-          <div className="mt-5 flex flex-wrap gap-3">
-            {["Download CSV", "Share card", "Open patterns view"].map(
-              (action) => (
-                <button
-                  key={action}
-                  className="px-4 py-2 rounded text-[11px] tracking-wider transition-colors"
-                  style={{
-                    backgroundColor: "var(--qgi-surface-2)",
-                    color: "var(--qgi-text-muted)",
-                    border: "1px solid var(--qgi-border)",
-                  }}
-                >
-                  {action}
-                </button>
-              )
-            )}
-          </div>
         </section>
 
         {/* ============================================================ */}
@@ -270,15 +244,6 @@ export function PrecedentDetailClient({
           />
         </section>
 
-        {/* ============================================================ */}
-        {/*  TOP 5 HISTORICAL ANALOGUES                                   */}
-        {/* ============================================================ */}
-        <AnaloguesTwinsPanel
-          category={category}
-          countryName={country.name}
-          totalRecipes={totalRecipes}
-          tierBreakdown={tierBreakdown}
-        />
 
         {/* ============================================================ */}
         {/*  TIER BREAKDOWN BARS                                          */}
@@ -383,89 +348,8 @@ export function PrecedentDetailClient({
             })}
           </div>
 
-          <div
-            className="mt-4 text-[10px] tracking-wider"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Click a tier to filter the analogues panel above
-          </div>
         </section>
 
-        {/* ============================================================ */}
-        {/*  LEAD-TIME DISTRIBUTION                                       */}
-        {/* ============================================================ */}
-        <section
-          className="rounded-xl p-6"
-          style={{
-            backgroundColor: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-          }}
-        >
-          <div className="flex items-baseline justify-between mb-5">
-            <h2
-              className="text-[11px] tracking-widest uppercase font-semibold"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              LEAD-TIME DISTRIBUTION
-              <InfoTooltip text="How many years before the actual event did the analogue pattern start flagging? Longer lead times = more advance warning, but also more false-positive risk. Currently showing sample distribution -- will use real data after pipeline pre-compute." />
-            </h2>
-            <span
-              className="text-[11px] tracking-wider italic"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              &ldquo;How early did QGI flag?&rdquo;
-            </span>
-          </div>
-
-          <div className="space-y-2">
-            {SAMPLE_LEAD_TIME_BINS.map((b) => (
-              <div key={b.years} className="flex items-center gap-3">
-                <span
-                  className="font-data text-xs w-8 text-right"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  {b.years}
-                </span>
-                <div
-                  className="flex-1 h-5 rounded relative"
-                  style={{ backgroundColor: "var(--qgi-surface-2)" }}
-                >
-                  <div
-                    className="h-full rounded"
-                    style={{
-                      width: `${b.pct * 3.2}%`,
-                      backgroundColor: "var(--qgi-accent)",
-                      opacity: 0.7,
-                    }}
-                  />
-                </div>
-                <span
-                  className="font-data text-xs w-8 text-right"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  {b.count}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          <div
-            className="mt-5 text-sm leading-relaxed"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            Median lead: <strong style={{ color: "var(--qgi-text)" }}>2 years</strong>.
-            Of the analogue patterns,{" "}
-            <strong style={{ color: "var(--qgi-text)" }}>74%</strong> led the event by
-            3 years or less.
-          </div>
-
-          <div
-            className="mt-3 text-[10px] tracking-wider italic"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Sample distribution -- requires pipeline pre-compute for real values
-          </div>
-        </section>
 
         {/* ============================================================ */}
         {/*  METHODOLOGY FOOTER                                           */}
@@ -594,180 +478,6 @@ function MetricCard({
   );
 }
 
-/* ---- Analogues Twins Panel (placeholder with V2 card layout) ---- */
-
-function AnaloguesTwinsPanel({
-  category,
-  countryName,
-  totalRecipes,
-  tierBreakdown,
-}: {
-  category: string;
-  countryName: string;
-  totalRecipes: number;
-  tierBreakdown: { tier: string; match: CategoryScore | undefined }[];
-}) {
-  const activeTiers = tierBreakdown.filter((t) => t.match != null);
-
-  return (
-    <section>
-      <div className="flex items-baseline justify-between mb-4">
-        <h2
-          className="text-[11px] tracking-widest uppercase font-semibold"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          TOP 5 HISTORICAL ANALOGUES
-          <InfoTooltip text="Countries whose economic trajectories most closely preceded events in this category. Each card shows a country that experienced a similar event after following a parallel indicator trajectory. Requires pipeline pre-compute for full data." />
-        </h2>
-        <span
-          className="text-[11px] font-data"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          {totalRecipes.toLocaleString()} total precedent windows
-        </span>
-      </div>
-
-      {/* 5 placeholder cards matching V2 card layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        {Array.from({ length: 5 }, (_, i) => (
-          <div
-            key={i}
-            className="rounded-xl p-4 flex flex-col gap-3"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              border: `1px solid ${i === 0 ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
-            }}
-          >
-            {/* Country identity placeholder */}
-            <div className="flex items-center gap-2">
-              <div
-                className="w-5 h-5 rounded-full"
-                style={{ backgroundColor: "var(--qgi-surface-2)" }}
-              />
-              <div>
-                <div
-                  className="text-xs font-semibold"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  Analogue #{i + 1}
-                </div>
-                <div
-                  className="text-[10px] font-data"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  ----
-                </div>
-              </div>
-            </div>
-
-            {/* Sparkline placeholder */}
-            <div
-              className="h-10 rounded flex items-end gap-px px-1"
-              style={{ backgroundColor: "var(--qgi-surface-2)" }}
-            >
-              {Array.from({ length: 8 }, (_, j) => (
-                <div
-                  key={j}
-                  className="flex-1 rounded-t"
-                  style={{
-                    height: `${6 + Math.sin(j * 0.8 + i) * 8}px`,
-                    backgroundColor: "var(--qgi-border)",
-                    opacity: 0.3,
-                  }}
-                />
-              ))}
-            </div>
-
-            {/* Event marker placeholder */}
-            <div
-              className="text-[10px] text-center tracking-wider"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              EVENT ----
-            </div>
-
-            {/* Stats placeholders */}
-            <div
-              className="space-y-1 text-[11px] font-data"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              <div className="flex justify-between">
-                <span>Match</span>
-                <span>--</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Lead</span>
-                <span>--</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Length</span>
-                <span>--</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Indic.</span>
-                <span>--</span>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div
-              className="pt-2 mt-auto border-t text-center"
-              style={{ borderColor: "var(--qgi-border)" }}
-            >
-              <span
-                className="text-[10px] tracking-widest"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Pending
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Pre-compute note */}
-      <div
-        className="mt-4 p-3 rounded-lg text-center"
-        style={{
-          backgroundColor: "var(--qgi-surface-2)",
-          border: "1px dashed var(--qgi-border)",
-        }}
-      >
-        <div
-          className="text-[10px] tracking-widest uppercase mb-1"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          REQUIRES PIPELINE PRE-COMPUTE
-        </div>
-        <p
-          className="text-[10px] max-w-2xl mx-auto"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Analogue cards will populate once the pattern partner aggregation
-          pipeline pre-computes the top-5 historical analogues for {countryName}{" "}
-          in {formatCategory(category).toLowerCase()}.
-        </p>
-        {activeTiers.length > 0 && (
-          <div className="mt-3 flex flex-wrap justify-center gap-2">
-            {activeTiers.map(({ tier, match }) => (
-              <span
-                key={tier}
-                className="px-3 py-1 rounded text-[10px] font-data"
-                style={{
-                  backgroundColor: `${TIER_COLORS[tier]}20`,
-                  color: TIER_COLORS[tier],
-                  border: `1px solid ${TIER_COLORS[tier]}40`,
-                }}
-              >
-                {tier}: {match!.recipe_count.toLocaleString()} precedents
-              </span>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  );
-}
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */

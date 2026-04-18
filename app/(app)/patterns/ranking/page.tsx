@@ -444,7 +444,7 @@ export default function RankingPage() {
             <input
               type="range"
               min={0}
-              max={2000}
+              max={2500}
               step={50}
               value={minPps}
               onChange={(e) => setMinPps(Number(e.target.value))}

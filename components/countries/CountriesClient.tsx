@@ -77,9 +77,14 @@ function salienceTo100(raw: number): number {
   return Math.min(100, Math.max(0, Math.round((raw / 0.5) * 100)));
 }
 
-/** Country name -> salience file slug */
+/** Country name -> salience file slug (must match filenames in data/salience/) */
 function toSlug(name: string): string {
-  return name.toLowerCase().replace(/\s+/g, "_").replace(/[^a-z0-9_]/g, "");
+  return name
+    .toLowerCase()
+    .replace(/^the\s+/, "")         // strip leading "The "
+    .replace(/\bof the\b/g, "of")   // "Republic of the Congo" → "Republic of Congo"
+    .replace(/\s+/g, "_")
+    .replace(/[^a-z0-9_]/g, "");
 }
 
 /** Compute OVR from L1 scores (Option B from the design doc — geo mean of top 4 with breadth bonus) */

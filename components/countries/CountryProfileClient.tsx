@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
@@ -64,6 +64,9 @@ interface Props {
   events?: TimelineEvent[];
   l1Scores?: Record<string, number> | null;
   l2Scores?: Record<string, number> | null;
+  trajectoryData?: TrajectoryData | null;
+  densityData?: PatternDensityData | null;
+  twins?: Array<{ partner_id: number; partner_name: string; alpha2: string; pattern_count: number; mean_corr: number; best_pps: number }> | null;
 }
 
 export function CountryProfileClient({
@@ -74,8 +77,12 @@ export function CountryProfileClient({
   events = [],
   l1Scores = null,
   l2Scores = null,
+  trajectoryData = null,
+  densityData = null,
+  twins = null,
 }: Props) {
   const router = useRouter();
+  const [showAllIndicators, setShowAllIndicators] = useState(false);
   const [activeTier, setActiveTier] = useState<string>("S");
   const [precedentsTableOpen, setPrecedentsTableOpen] = useState(false);
   const style = TIER_STYLES[country.overall_risk_tier];
@@ -175,7 +182,7 @@ export function CountryProfileClient({
             style={{ color: "var(--qgi-text-dim)" }}
           >
             L1 vs World Median
-            <InfoTooltip text="Each bar shows this country's L1 salience score relative to the world median (~0.29). Positive (red) = above average risk signal in that domain. Negative (green) = below average." />
+            <InfoTooltip text="Compares this country's risk score in each domain against the median (middle value) across all 197 countries. Red bars mean this country scores HIGHER than most countries in that domain — a stronger risk signal. Green bars mean LOWER than most — less anomalous. The further the bar extends, the more this country deviates from what's typical globally." />
           </h2>
           <div className="space-y-1.5">
             {L1_CATEGORIES.map((cat) => {
@@ -265,7 +272,51 @@ export function CountryProfileClient({
           )}
         </section>
 
-        {/* Structural Twins Panel */}
+        {/* Right column: Structural Twins (if data exists) + Risk Breakdown */}
+        {twins && twins.length > 0 && (
+          <section
+            className="rounded-lg border p-6 mb-4"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <h2
+              className="text-[11px] tracking-widest uppercase font-semibold mb-4"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              STRUCTURAL TWINS &middot; TOP {twins.length}
+              <InfoTooltip text="Countries whose economic indicator trajectories most closely parallel this country across all pattern tiers." />
+            </h2>
+            <div className="space-y-3">
+              {twins.map((twin, i) => (
+                <Link
+                  key={twin.partner_id}
+                  href={`/countries/${twin.partner_id}`}
+                  className="flex items-center gap-4 p-3 rounded-lg transition-colors hover:opacity-80"
+                  style={{
+                    backgroundColor: i === 0 ? "rgba(56, 189, 248, 0.06)" : "var(--qgi-surface-2)",
+                    border: `1px solid ${i === 0 ? "rgba(56, 189, 248, 0.2)" : "transparent"}`,
+                  }}
+                >
+                  <CountryFlag alpha2={twin.alpha2} size={22} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold">{twin.partner_name}</div>
+                    <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                      {twin.pattern_count.toLocaleString()} patterns &middot; {(twin.mean_corr * 100).toFixed(0)}% avg corr
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-data text-lg font-bold" style={{ color: "var(--qgi-accent)" }}>
+                      {twin.best_pps.toFixed(0)}
+                    </div>
+                    <div className="text-[9px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>PPS</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
         <section
           className="rounded-lg border p-6"
           style={{
@@ -274,115 +325,111 @@ export function CountryProfileClient({
           }}
         >
           <h2
-            className="text-[11px] tracking-widest uppercase font-semibold mb-4"
-            style={{ color: "var(--qgi-text-muted)" }}
+            className="text-xs tracking-widest uppercase mb-4"
+            style={{ color: "var(--qgi-text-dim)" }}
           >
-            STRUCTURAL TWINS &middot; TOP 5
-            <InfoTooltip text="Countries whose economic trajectories most closely mirror this country across the highest-scoring pattern categories. Based on pattern partner frequency in country-risks.json." />
+            Risk Breakdown by Category
+            <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal." />
           </h2>
-          <StructuralTwinsPanel country={country} />
+          <div className="space-y-2">
+            {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
+              <Link
+                key={category}
+                href={`/countries/${countryId}/${encodeURIComponent(category)}`}
+                className="block transition-opacity hover:opacity-80"
+              >
+                <CategoryBar
+                  category={category}
+                  salience={salience}
+                  recipeCount={recipe_count}
+                  maxSalience={categoryZScores[0]?.salience ?? 1}
+                />
+              </Link>
+            ))}
+          </div>
+          {categoryZScores.length === 0 && (
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              No scored categories available.
+            </p>
+          )}
         </section>
       </div>
 
-      {/* ─── Risk Breakdown (horizontal bar chart) ──────────────────── */}
-      <section
-        className="rounded-lg border p-6 mb-6"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2
-          className="text-xs tracking-widest uppercase mb-4"
-          style={{ color: "var(--qgi-text-dim)" }}
+      {/* ─── Indicator Trajectories (V2 promoted) ────────────────── */}
+      {trajectoryData && (
+        <section
+          className="rounded-lg border p-6 mb-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
         >
-          Risk Breakdown by Category
-          <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal. Categories with below-average signal density (negative scores) are hidden." />
-        </h2>
-        <div className="space-y-2">
-          {/* #13: filter out negative z-scores — they represent below-average
-              signal density (not "negative risk") and are visually misleading
-              when shown as negative bars. */}
-          {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
-            <Link
-              key={category}
-              href={`/countries/${countryId}/${encodeURIComponent(category)}`}
-              className="block transition-opacity hover:opacity-80"
+          <div className="flex items-baseline justify-between mb-2">
+            <h2
+              className="text-[11px] tracking-widest uppercase font-semibold"
+              style={{ color: "var(--qgi-text-muted)" }}
             >
-              <CategoryBar
-                category={category}
-                salience={salience}
-                recipeCount={recipe_count}
-                maxSalience={categoryZScores[0]?.salience ?? 1}
-              />
-            </Link>
-          ))}
-        </div>
-        {categoryZScores.length === 0 && (
-          <p
-            className="text-sm"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            No scored categories available.
-          </p>
-        )}
-      </section>
-
-      {/* ─── Indicator Trajectories (V2 placeholder) ───────────────── */}
-      <section
-        className="rounded-lg border p-6 mb-6"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2
-          className="text-xs tracking-widest uppercase mb-2"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Indicator Trajectories
-          <InfoTooltip text="Shows the raw economic story of this country over decades. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events." />
-        </h2>
-        <div
-          className="flex items-center justify-center py-12 rounded"
-          style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text-dim)" }}
-        >
-          <div className="text-center">
-            <div className="text-sm mb-1">Indicator trajectories will render here</div>
-            <div className="text-[10px] tracking-wider">
-              Requires pipeline pre-compute of per-country indicator time series with event markers
+              INDICATOR TRAJECTORIES &middot; {showAllIndicators ? `ALL ${trajectoryData.indicators.length}` : "TOP 3"} INDICATORS &middot; {trajectoryData.years[0]}-{trajectoryData.years[trajectoryData.years.length - 1]}
+              <InfoTooltip text="Shows the raw economic story of this country over decades. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events. Click legend items to show/hide." />
+            </h2>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => setShowAllIndicators((v) => !v)}
+                className="px-2.5 py-1 rounded text-[9px] tracking-wider uppercase transition-colors"
+                style={{
+                  backgroundColor: showAllIndicators ? "rgba(56, 189, 248, 0.15)" : "rgba(122, 144, 168, 0.1)",
+                  color: showAllIndicators ? "#38bdf8" : "#7a90a8",
+                  border: `1px solid ${showAllIndicators ? "rgba(56, 189, 248, 0.3)" : "rgba(122, 144, 168, 0.2)"}`,
+                }}
+              >
+                {showAllIndicators ? "Top 3" : `All ${trajectoryData.indicators.length}`}
+              </button>
+              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+                Normalized 0-100 &middot; hover for raw
+              </span>
             </div>
           </div>
-        </div>
-      </section>
+          <TrajectoryChartWithLabels
+            trajData={trajectoryData}
+            showAll={showAllIndicators}
+            defaultVisibleIndices={new Set([0, 1, 3])}
+          />
+        </section>
+      )}
 
-      {/* ─── Pattern Density Timeline (V2 placeholder) ────────────── */}
-      <section
-        className="rounded-lg border p-6 mb-6"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2
-          className="text-xs tracking-widest uppercase mb-2"
-          style={{ color: "var(--qgi-text-dim)" }}
+      {/* ─── Pattern Density Timeline (V2 promoted) ───────────────── */}
+      {densityData && (
+        <section
+          className="rounded-lg border p-6 mb-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
         >
-          Pattern Density Timeline
-          <InfoTooltip text="Shows when QGI found structural similarity between this country and others. Clusters of pattern starts indicate periods of high structural alignment with other economies." />
-        </h2>
-        <div
-          className="flex items-center justify-center py-8 rounded"
-          style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text-dim)" }}
-        >
-          <div className="text-center">
-            <div className="text-sm mb-1">Pattern density by year will render here</div>
-            <div className="text-[10px] tracking-wider">
-              Requires pipeline pre-compute of pattern-start distributions per country
-            </div>
+          <div className="flex items-baseline justify-between mb-2">
+            <h2
+              className="text-[11px] tracking-widest uppercase font-semibold"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              PATTERN DENSITY (by year)
+              <InfoTooltip text="Shows when QGI found structural similarity between this country and others. Clusters of pattern starts indicate periods of high structural alignment." />
+            </h2>
+            <span className="text-[11px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+              {densityData.total.toLocaleString()} patterns total
+            </span>
           </div>
-        </div>
-      </section>
+          <div className="text-[10px] tracking-wider mb-3" style={{ color: "var(--qgi-text-dim)" }}>
+            Years with more pattern starts = more structural similarity to other countries&apos; trajectories.
+          </div>
+          <div className="h-[240px]">
+            <ReactECharts
+              option={patternDensityOption(densityData)}
+              style={{ height: "100%", width: "100%" }}
+              opts={{ renderer: "svg" }}
+            />
+          </div>
+        </section>
+      )}
 
       {/* ─── Top Precedents (tabbed by tier) ────────────────────────── */}
       <section
@@ -769,104 +816,230 @@ function radarOption(countryName: string, l1Scores: Record<string, number>) {
 }
 
 // ---------------------------------------------------------------------------
-// Structural Twins Panel (V2 promoted)
+// Indicator Trajectory Chart (V2 promoted)
 // ---------------------------------------------------------------------------
 
-function StructuralTwinsPanel({ country }: { country: CountryRisk }) {
-  // Extract top pattern partners from tier data: count how many times each
-  // partner country appears as a category across all tiers. This is a proxy
-  // for structural similarity. Full pre-compute would come from the pipeline.
-  // For now, show placeholder twins with a "requires pipeline" note.
-  const placeholderTwins = [
-    { name: "Data not yet pre-computed", alpha2: "", pps: 0, topCategory: "", patterns: 0 },
-  ];
+const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
 
-  // If the country has enough tier data, we can hint at the top categories
-  const topCats = getCategoryBreakdownForTwins(country).slice(0, 3);
-  const hasTierData = topCats.length > 0;
+function normalizeMinMax(data: number[]): number[] {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  if (max === min) return data.map(() => 50);
+  return data.map((v) => ((v - min) / (max - min)) * 100);
+}
+
+interface TrajectoryData {
+  years: number[];
+  indicators: { name: string; data: number[]; unit: string }[];
+  events: { year: number; label: string }[];
+}
+
+function indicatorTrajectoryOption(
+  trajData: TrajectoryData,
+  showAll: boolean,
+  defaultVisibleIndices: Set<number>,
+) {
+  const legendSelected: Record<string, boolean> = {};
+  trajData.indicators.forEach((ind, i) => {
+    legendSelected[ind.name] = showAll || defaultVisibleIndices.has(i);
+  });
+  legendSelected["World median"] = true;
+
+  const areaAlpha = "0F";
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const series: any[] = trajData.indicators.map((ind, i) => ({
+    name: ind.name,
+    type: "line",
+    data: normalizeMinMax(ind.data),
+    smooth: true,
+    lineStyle: { width: 1.5, color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] },
+    itemStyle: { color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] },
+    areaStyle: { color: INDICATOR_COLORS[i % INDICATOR_COLORS.length] + areaAlpha, origin: "start" },
+    symbol: "none",
+    emphasis: { lineStyle: { width: 2.5 } },
+    z: defaultVisibleIndices.has(i) ? 3 : 1,
+  }));
+
+  series.push({
+    name: "World median",
+    type: "line",
+    data: trajData.years.map(() => 50),
+    smooth: false,
+    lineStyle: { width: 1, color: "#4a628060", type: [4, 4] as unknown as string },
+    itemStyle: { color: "#4a628060" },
+    symbol: "none",
+    z: 0,
+  });
+
+  const markLines = trajData.events.map((e) => ({
+    xAxis: String(e.year),
+    lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
+    label: { show: false },
+  }));
+
+  return {
+    backgroundColor: "transparent",
+    grid: { top: 55, right: 20, bottom: 30, left: 45 },
+    legend: {
+      top: 0,
+      left: "center",
+      textStyle: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      itemWidth: 18,
+      itemHeight: 2,
+      itemGap: 12,
+      selected: legendSelected,
+    },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#1e2d42",
+      borderColor: "#243347",
+      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+      formatter: (params: Array<{ seriesName: string; value: number; dataIndex: number; color: string }>) => {
+        if (!Array.isArray(params) || params.length === 0) return "";
+        const year = trajData.years[params[0].dataIndex];
+        let html = `<div style="font-weight:600;margin-bottom:4px">${year}</div>`;
+        params.forEach((p) => {
+          if (p.seriesName === "World median") return;
+          const raw = trajData.indicators.find((r) => r.name === p.seriesName);
+          const rawVal = raw ? raw.data[p.dataIndex] : p.value;
+          const unit = raw ? raw.unit : "";
+          const formatted = typeof rawVal === "number" && rawVal > 1000
+            ? rawVal.toLocaleString()
+            : typeof rawVal === "number"
+              ? rawVal.toFixed(1)
+              : rawVal;
+          html += `<div style="display:flex;justify-content:space-between;gap:16px"><span style="color:${p.color}">\u25CF ${p.seriesName}</span><span style="font-weight:600">${formatted} ${unit}</span></div>`;
+        });
+        return html;
+      },
+    },
+    xAxis: {
+      type: "category",
+      data: trajData.years.map(String),
+      axisLine: { lineStyle: { color: "#243347" } },
+      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace", interval: 4 },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      min: 0, max: 100, splitNumber: 4,
+      axisLine: { show: false },
+      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      splitLine: { lineStyle: { color: "#243347", width: 1 } },
+    },
+    series: series.map((s, i) => ({
+      ...s,
+      ...(i === 0 ? { markLine: { silent: true, symbol: "none", data: markLines } } : {}),
+    })),
+  };
+}
+
+function TrajectoryChartWithLabels({
+  trajData,
+  showAll,
+  defaultVisibleIndices,
+}: {
+  trajData: TrajectoryData;
+  showAll: boolean;
+  defaultVisibleIndices: Set<number>;
+}) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const instRef = useRef<any>(null);
+  const [labelPositions, setLabelPositions] = useState<{ year: number; label: string; x: number; y: number }[]>([]);
+
+  const onChartReady = useCallback((inst: unknown) => {
+    instRef.current = inst;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const ecInst = inst as any;
+    const positions = trajData.events.map((e) => {
+      const px = ecInst.convertToPixel({ xAxisIndex: 0 }, String(e.year));
+      const gridRect = ecInst.getModel().getComponent("grid", 0).coordinateSystem.getRect();
+      return { year: e.year, label: e.label, x: px as number, y: gridRect.y as number };
+    });
+    setLabelPositions(positions);
+  }, [trajData.events]);
 
   return (
-    <div className="space-y-3">
-      {hasTierData ? (
-        <>
-          <div
-            className="rounded-lg p-4 text-center"
-            style={{
-              backgroundColor: "var(--qgi-surface-2)",
-              border: "1px dashed var(--qgi-border)",
-            }}
-          >
-            <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-              REQUIRES PIPELINE PRE-COMPUTE
-            </div>
-            <p className="text-xs leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-              Structural twins are determined by finding countries whose indicator trajectories
-              most closely parallel {country.name}&apos;s across all pattern tiers. This requires
-              a dedicated pipeline pre-computation step (pattern partner aggregation).
-            </p>
-            <div className="mt-4 space-y-2">
-              <div className="text-[10px] tracking-widest uppercase" style={{ color: "var(--qgi-text-muted)" }}>
-                TOP SIGNAL CATEGORIES
-              </div>
-              {topCats.map((cat) => (
-                <div
-                  key={cat.category}
-                  className="flex items-center justify-between px-3 py-2 rounded"
-                  style={{ backgroundColor: "var(--qgi-surface)" }}
-                >
-                  <span className="text-xs" style={{ color: "var(--qgi-text)" }}>
-                    {formatCategory(cat.category)}
-                  </span>
-                  <span className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
-                    {cat.recipe_count} prec.
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      ) : (
+    <div className="relative h-[480px]">
+      <ReactECharts
+        option={indicatorTrajectoryOption(trajData, showAll, defaultVisibleIndices)}
+        style={{ height: "100%", width: "100%" }}
+        opts={{ renderer: "svg" }}
+        onChartReady={onChartReady}
+      />
+      {labelPositions.map((lp) => (
         <div
-          className="rounded-lg p-6 text-center"
+          key={lp.year}
           style={{
-            backgroundColor: "var(--qgi-surface-2)",
-            border: "1px dashed var(--qgi-border)",
+            position: "absolute",
+            right: `calc(100% - ${lp.x - 3}px)`,
+            top: lp.y - 2,
+            transform: "rotate(-90deg)",
+            transformOrigin: "top right",
+            color: "#f87171",
+            fontSize: 9,
+            fontFamily: "'JetBrains Mono', monospace",
+            whiteSpace: "nowrap",
+            pointerEvents: "none",
+            userSelect: "none",
           }}
         >
-          <div className="text-[10px] tracking-widest uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
-            NO TWIN DATA AVAILABLE
-          </div>
-          <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-            Structural twins will appear here after the pattern partner pre-computation pipeline runs.
-          </p>
+          {lp.label}
         </div>
-      )}
+      ))}
     </div>
   );
 }
 
-function getCategoryBreakdownForTwins(
-  country: CountryRisk
-): Array<{ category: string; salience: number; recipe_count: number }> {
-  const catMap: Record<string, { sSum: number; rSum: number; n: number }> = {};
-  for (const tierData of Object.values(country.tiers)) {
-    for (const cat of tierData.top_categories) {
-      if (!catMap[cat.category]) {
-        catMap[cat.category] = { sSum: 0, rSum: 0, n: 0 };
-      }
-      catMap[cat.category].sSum += cat.salience_score ?? cat.z_score;
-      catMap[cat.category].rSum += cat.recipe_count;
-      catMap[cat.category].n += 1;
-    }
-  }
-  return Object.entries(catMap)
-    .map(([category, { sSum, rSum, n }]) => ({
-      category,
-      salience: sSum / n,
-      recipe_count: Math.round(rSum / n),
-    }))
-    .sort((a, b) => b.salience - a.salience);
+// ---------------------------------------------------------------------------
+// Pattern Density Chart (V2 promoted)
+// ---------------------------------------------------------------------------
+
+interface PatternDensityData {
+  years: number[];
+  counts: number[];
+  total: number;
 }
+
+function patternDensityOption(densityData: PatternDensityData) {
+  return {
+    backgroundColor: "transparent",
+    grid: { top: 15, right: 15, bottom: 30, left: 40 },
+    tooltip: {
+      trigger: "axis",
+      backgroundColor: "#1e2d42",
+      borderColor: "#243347",
+      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+      formatter: (params: Array<{ value: number; dataIndex: number }>) => {
+        if (!Array.isArray(params) || params.length === 0) return "";
+        const yr = densityData.years[params[0].dataIndex];
+        return `<div style="font-weight:600">${yr}</div><div>${params[0].value} pattern starts</div>`;
+      },
+    },
+    xAxis: {
+      type: "category",
+      data: densityData.years.map(String),
+      axisLine: { lineStyle: { color: "#243347" } },
+      axisLabel: { color: "#7a90a8", fontSize: 9, fontFamily: "'JetBrains Mono', monospace", interval: 4 },
+      axisTick: { show: false },
+    },
+    yAxis: {
+      type: "value",
+      axisLine: { show: false },
+      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      splitLine: { lineStyle: { color: "#243347", width: 1 } },
+    },
+    series: [{
+      type: "bar",
+      data: densityData.counts,
+      itemStyle: { color: "#fbbf24", borderRadius: [2, 2, 0, 0] },
+      barMaxWidth: 10,
+      emphasis: { itemStyle: { color: "#fcd34d" } },
+    }],
+  };
+}
+
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -934,14 +1107,6 @@ function generateSummary(
   summary += `meaning ${country.name}'s trajectory matches historical trajectories of countries that experienced these event types.`;
 
   return summary;
-}
-
-function countryFlag(alpha2: string): string {
-  if (!alpha2) return "";
-  const codePoints = [...alpha2.toUpperCase()].map(
-    (c) => 0x1f1e6 + c.charCodeAt(0) - 65
-  );
-  return String.fromCodePoint(...codePoints);
 }
 
 /**

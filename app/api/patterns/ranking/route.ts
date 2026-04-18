@@ -3,6 +3,13 @@ import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type RankingPayload } from "@/lib/dashboard-cache";
 
+const ALLOWED_SECTORS = new Set([
+  "Agriculture", "Conflict", "Democracy", "Diplomacy", "Economics",
+  "Education", "Energy", "Environment", "Finance", "Governance",
+  "Health", "Human Rights", "Infrastructure", "Labor", "Migration",
+  "Military", "Political", "Population", "Security", "Social", "Trade",
+]);
+
 // Dynamic: requires AWS credentials at runtime, cannot prerender at build time.
 export const dynamic = "force-dynamic";
 
@@ -50,7 +57,12 @@ export const GET = withAuth(async (req: NextRequest) => {
   }
 
   const conditions: string[] = [];
-  if (sector) conditions.push(`sector = '${sector.replace(/'/g, "''")}'`);
+  if (sector) {
+    if (!ALLOWED_SECTORS.has(sector)) {
+      return NextResponse.json({ error: "Invalid sector" }, { status: 400 });
+    }
+    conditions.push(`sector = '${sector}'`);
+  }
   if (min_pps) conditions.push(`CAST(pattern_power_score AS DOUBLE) >= ${Number(min_pps)}`);
   if (min_corr) conditions.push(`CAST(avg_correlation AS DOUBLE) >= ${Number(min_corr)}`);
 

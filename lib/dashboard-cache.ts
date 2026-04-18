@@ -34,9 +34,8 @@ function getClient(): S3Client {
 }
 
 /**
- * Fetch a pre-computed dashboard JSON from S3.
- * Returns null if the object doesn't exist (caller should fall back to Athena).
- * Throws on any other S3 error.
+ * Fetch a pre-computed dashboard JSON.
+ * Priority: in-memory cache → local data/ file → S3 → null (caller falls back to Athena).
  */
 export async function getDashboardJson<T>(filename: string): Promise<T | null> {
   const cacheKey = `${BUCKET}/${PREFIX}/${filename}`;
@@ -46,6 +45,20 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
     return cached.value as T;
   }
 
+  // Try local baked file first (works in dev and Vercel)
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const localPath = path.join(process.cwd(), "data", filename);
+    const body = await fs.readFile(localPath, "utf-8");
+    const parsed = JSON.parse(body) as T;
+    cache.set(cacheKey, { value: parsed, expiresAt: now + CACHE_TTL_MS });
+    return parsed;
+  } catch {
+    // Local file not found — try S3
+  }
+
+  // Fallback to S3
   try {
     const res = await getClient().send(
       new GetObjectCommand({ Bucket: BUCKET, Key: `${PREFIX}/${filename}` })
@@ -57,12 +70,12 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
     return parsed;
   } catch (err) {
     if (err instanceof NoSuchKey) return null;
-    // Some SDK error shapes use name/Code instead of NoSuchKey instance
     const e = err as { name?: string; Code?: string; $metadata?: { httpStatusCode?: number } };
     if (e.name === "NoSuchKey" || e.Code === "NoSuchKey" || e.$metadata?.httpStatusCode === 404) {
       return null;
     }
-    throw err;
+    // S3 connection error (no creds in local dev) — return null, let caller fall back
+    return null;
   }
 }
 

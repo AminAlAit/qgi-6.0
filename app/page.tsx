@@ -1,14 +1,21 @@
 import Link from "next/link";
+import { CountryFlag } from "@/components/design/CountryFlag";
+import NewsletterForm from "@/components/NewsletterForm";
 
 /**
  * QGI Landing Page — public, static.
  *
  * Sections:
- * 1. Hero with tagline
- * 2. Live preview: 3 country risk cards
- * 3. How it works: 3-step visual
- * 4. Sign up CTA
- * 5. Footer
+ * 1. Navbar
+ * 2. Hero with tagline
+ * 3. Live preview: 3 country risk cards
+ * 4. How it works: 3-step visual
+ * 5. Metrics bar
+ * 6. Key differentiators
+ * 7. About / mission statement
+ * 8. Newsletter capture
+ * 9. Get in touch / request demo
+ * 10. Footer (enhanced)
  */
 
 const PREVIEW_COUNTRIES = [
@@ -119,6 +126,13 @@ export default function LandingPage() {
             >
               Methodology
             </Link>
+            <a
+              href="#contact"
+              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Contact
+            </a>
             <Link
               href="/dashboard"
               className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
@@ -212,14 +226,7 @@ export default function LandingPage() {
                 {/* Country header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`https://purecatamphetamine.github.io/country-flag-icons/3x2/${c.alpha_2.toUpperCase()}.svg`}
-                      alt={c.alpha_2}
-                      width={36}
-                      height={24}
-                      style={{ borderRadius: 2 }}
-                    />
+                    <CountryFlag alpha2={c.alpha_2} size={24} />
                     <span className="font-medium">{c.name}</span>
                   </div>
                   <span
@@ -314,7 +321,125 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── CTA ────────────────────────────────────────────────────── */}
+      {/* ─── Key Differentiators ────────────────────────────────────── */}
+      <section
+        className="border-t"
+        style={{ borderColor: "var(--qgi-border)" }}
+      >
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <h2
+            className="text-xs tracking-widest uppercase mb-12"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Why QGI
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Differentiator
+              label="Scale"
+              value="2.01B"
+              unit="patterns"
+              desc="Computed across 214 countries and 58 economic indicators. Every pairwise relationship, every historical window, examined."
+            />
+            <Differentiator
+              label="Method"
+              value="Statistical"
+              unit="not editorial"
+              desc="Risk candidates emerge from correlation analysis and rank fusion — not from analyst opinion or curated country lists."
+            />
+            <Differentiator
+              label="Foundation"
+              value="Open data"
+              unit="CC BY 4.0"
+              desc="Built on World Bank Open Data. Reproducible, auditable, and verifiable. No proprietary black-box scores."
+            />
+            <Differentiator
+              label="Approach"
+              value="Analogues"
+              unit="not forecasts"
+              desc="We ask which countries walked this economic path before, and what followed. Historical precedents grounded in decades of data."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── About / Mission ────────────────────────────────────────── */}
+      <section
+        className="border-t"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "var(--qgi-surface)",
+        }}
+      >
+        <div className="mx-auto max-w-6xl px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2
+              className="text-xs tracking-widest uppercase mb-6"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              About
+            </h2>
+            <p
+              className="text-xl font-medium leading-relaxed mb-6"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              QGI makes geopolitical risk measurable by finding historical
+              economic precedents at scale.
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-4"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Traditional political risk analysis relies on expert judgment,
+              regional specialists, and editorial discretion. QGI takes a
+              different approach: statistical pattern matching across the full
+              historical record of World Bank economic data.
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-6"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              When a country&rsquo;s economic indicators today resemble the
+              trajectory of another country before a known geopolitical event,
+              that is a precedent worth examining — not a prediction, but a
+              structured historical analogue that analysts can evaluate on its
+              merits.
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-8"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Built by a Cloud Data Engineer with a passion for quantitative
+              approaches to geopolitical analysis.
+            </p>
+            <Link
+              href="/methodology"
+              className="text-sm tracking-wide border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
+              style={{
+                color: "var(--qgi-text-muted)",
+                borderColor: "var(--qgi-border)",
+              }}
+            >
+              Read the full methodology
+            </Link>
+          </div>
+          <div className="space-y-6">
+            <PrincipleCard
+              heading="Pattern-based, not opinion-based"
+              body="Risk tier assignments emerge from computed correlations, z-score normalization, and reciprocal rank fusion. The methodology is documented, versioned, and open to scrutiny."
+            />
+            <PrincipleCard
+              heading="Analysts examine evidence"
+              body="QGI surfaces candidates for human review. Each country profile shows which precedent countries triggered the signal and which economic indicators aligned — giving analysts the underlying data, not just a score."
+            />
+            <PrincipleCard
+              heading="Continuously updated"
+              body="The pipeline ingests updated World Bank data monthly. Risk tiers and precedent rankings refresh automatically as new data arrives."
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Primary CTA ────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-24 text-center">
         <h2 className="text-2xl font-semibold mb-4">
           Start exploring geopolitical risk
@@ -338,6 +463,114 @@ export default function LandingPage() {
         </Link>
       </section>
 
+      {/* ─── Newsletter ─────────────────────────────────────────────── */}
+      <section
+        className="border-t"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "var(--qgi-surface)",
+        }}
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <div className="max-w-lg">
+            <h2
+              className="text-xs tracking-widest uppercase mb-4"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Stay Updated
+            </h2>
+            <p
+              className="text-lg font-medium mb-2"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              Monthly intelligence digest
+            </p>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Receive the QGI monthly update: new country risk tiers, methodology
+              improvements, and notable precedent matches from the latest pipeline
+              run. No marketing, no noise.
+            </p>
+          </div>
+          <div className="w-full md:w-auto">
+            <NewsletterForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Get in Touch / Request Demo ────────────────────────────── */}
+      <section
+        id="contact"
+        className="border-t"
+        style={{ borderColor: "var(--qgi-border)" }}
+      >
+        <div className="mx-auto max-w-6xl px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          <div>
+            <h2
+              className="text-xs tracking-widest uppercase mb-6"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Get in Touch
+            </h2>
+            <p
+              className="text-xl font-medium leading-relaxed mb-6"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              Enterprise access, custom reports, or academic licensing?
+            </p>
+            <p
+              className="text-sm leading-relaxed mb-8"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              QGI is in statistical beta. We are actively working with political
+              risk analysts, corporate strategy teams, think tanks, and academics
+              who want structured, data-driven geopolitical intelligence.
+              Reach out to discuss access, custom country reports, or
+              institutional licensing.
+            </p>
+            <div className="flex flex-col gap-4">
+              <a
+                href="mailto:contact@qgintelligence.com?subject=Demo%20Request"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110 w-fit"
+                style={{
+                  backgroundColor: "var(--qgi-accent)",
+                  color: "var(--qgi-bg)",
+                }}
+              >
+                Request a Demo
+              </a>
+              <a
+                href="mailto:contact@qgintelligence.com"
+                className="text-sm transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                contact@qgintelligence.com
+              </a>
+            </div>
+          </div>
+          <div className="space-y-5 pt-2">
+            <UseCase
+              title="Corporate Strategy Teams"
+              body="Identify which markets exhibit structural analogues to countries that experienced supply-chain disruptions, sanctions regimes, or government transitions."
+            />
+            <UseCase
+              title="Political Risk Analysts"
+              body="Augment qualitative assessments with quantitative precedent evidence. Bring the historical record to bear on current country trajectories."
+            />
+            <UseCase
+              title="Think Tanks & Academics"
+              body="Access reproducible, open-data-backed risk signals for research. Full methodology documentation and data provenance available."
+            />
+            <UseCase
+              title="Journalists & Media"
+              body="Ground geopolitical reporting in economic data. QGI surfaces which historical episodes a current situation most closely resembles."
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ─── Footer ─────────────────────────────────────────────────── */}
       <footer
         className="border-t"
@@ -346,9 +579,9 @@ export default function LandingPage() {
           backgroundColor: "var(--qgi-surface)",
         }}
       >
-        <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-baseline gap-2">
-            {/* GH#251: footer wordmark also clickable \u2192 root. */}
+        <div className="mx-auto max-w-6xl px-6 py-10">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
+            {/* Wordmark */}
             <Link href="/" className="flex items-baseline gap-1" title="Home">
               <span
                 className="font-data text-xs tracking-[0.25em] font-semibold"
@@ -363,28 +596,54 @@ export default function LandingPage() {
                 Intelligence
               </span>
             </Link>
-            <span
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              &middot; Pattern Recurrence &mdash; Statistical Beta
-            </span>
+            {/* Nav links */}
+            <div className="flex items-center gap-6">
+              <Link
+                href="/methodology"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Methodology
+              </Link>
+              <Link
+                href="/legal"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Legal
+              </Link>
+              <a
+                href="#contact"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Contact
+              </a>
+              <a
+                href="mailto:contact@qgintelligence.com"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                contact@qgintelligence.com
+              </a>
+            </div>
           </div>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/methodology"
-              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
+          <div
+            className="border-t pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+            style={{ borderColor: "var(--qgi-border)" }}
+          >
+            <span
+              className="text-[10px] tracking-wider"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Methodology
-            </Link>
-            <Link
-              href="/legal"
-              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
+              &copy; 2026 QGI Intelligence. All rights reserved.
+            </span>
+            <span
+              className="text-[10px] tracking-wider uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Legal
-            </Link>
+              Statistical Beta &mdash; Pattern Recurrence Intelligence
+            </span>
           </div>
         </div>
       </footer>
@@ -407,6 +666,108 @@ function Metric({ value, label }: { value: string; label: string }) {
       >
         {label}
       </div>
+    </div>
+  );
+}
+
+function Differentiator({
+  label,
+  value,
+  unit,
+  desc,
+}: {
+  label: string;
+  value: string;
+  unit: string;
+  desc: string;
+}) {
+  return (
+    <div
+      className="rounded-lg border p-6"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div
+        className="text-[10px] tracking-widest uppercase mb-3"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        {label}
+      </div>
+      <div className="flex items-baseline gap-2 mb-4">
+        <span
+          className="font-data text-2xl font-bold"
+          style={{ color: "var(--qgi-accent)" }}
+        >
+          {value}
+        </span>
+        <span
+          className="text-xs tracking-wide"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          {unit}
+        </span>
+      </div>
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {desc}
+      </p>
+    </div>
+  );
+}
+
+function PrincipleCard({
+  heading,
+  body,
+}: {
+  heading: string;
+  body: string;
+}) {
+  return (
+    <div
+      className="rounded-lg border p-5"
+      style={{
+        backgroundColor: "var(--qgi-surface-2)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <h3
+        className="text-sm font-semibold mb-2"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {heading}
+      </h3>
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {body}
+      </p>
+    </div>
+  );
+}
+
+function UseCase({ title, body }: { title: string; body: string }) {
+  return (
+    <div
+      className="border-l-2 pl-4 py-1"
+      style={{ borderColor: "var(--qgi-accent)" }}
+    >
+      <h3
+        className="text-sm font-semibold mb-1"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {title}
+      </h3>
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {body}
+      </p>
     </div>
   );
 }
