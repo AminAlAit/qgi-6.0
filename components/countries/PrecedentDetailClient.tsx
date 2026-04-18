@@ -39,12 +39,23 @@ const TIER_COLORS: Record<string, string> = {
 /*  Props                                                              */
 /* ------------------------------------------------------------------ */
 
+interface AnalogueEntry {
+  country_b_id: number;
+  country_b_name: string;
+  alpha2: string;
+  recipe_count: number;
+  mean_corr: number;
+  best_pps: number;
+  avg_lead_years: number | null;
+}
+
 interface Props {
   countryId: string;
   country: CountryRisk;
   category: string;
   generatedAt: string | null;
   version: string;
+  analogues?: AnalogueEntry[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -57,6 +68,7 @@ export function PrecedentDetailClient({
   category,
   generatedAt,
   version,
+  analogues = [],
 }: Props) {
   const tierStyle = TIER_STYLES[country.overall_risk_tier] ?? TIER_STYLES.INDICATIVE;
   const catLabel = formatCategory(category);
@@ -244,6 +256,55 @@ export function PrecedentDetailClient({
           />
         </section>
 
+
+        {/* ============================================================ */}
+        {/*  TOP 5 HISTORICAL ANALOGUES (from baked analogues.json)       */}
+        {/* ============================================================ */}
+        {analogues.length > 0 && (
+          <section
+            className="rounded-xl p-6"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+            }}
+          >
+            <h2
+              className="text-[11px] tracking-widest uppercase font-semibold mb-4"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              TOP {analogues.length} HISTORICAL ANALOGUES
+              <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher recipe count = stronger historical signal." />
+            </h2>
+            <div className="space-y-3">
+              {analogues.map((a, i) => (
+                <Link
+                  key={a.country_b_id}
+                  href={`/countries/${a.country_b_id}`}
+                  className="flex items-center gap-4 p-3 rounded-lg transition-colors hover:opacity-80"
+                  style={{
+                    backgroundColor: i === 0 ? "rgba(56, 189, 248, 0.06)" : "var(--qgi-surface-2)",
+                    border: `1px solid ${i === 0 ? "rgba(56, 189, 248, 0.2)" : "transparent"}`,
+                  }}
+                >
+                  <CountryFlag alpha2={a.alpha2} size={22} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold">{a.country_b_name}</div>
+                    <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+                      {a.recipe_count.toLocaleString()} recipes &middot; {(a.mean_corr * 100).toFixed(0)}% avg corr
+                      {a.avg_lead_years != null && <> &middot; {a.avg_lead_years.toFixed(1)}yr lead</>}
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <div className="font-data text-lg font-bold" style={{ color: "var(--qgi-accent)" }}>
+                      {a.best_pps.toFixed(0)}
+                    </div>
+                    <div className="text-[9px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>PPS</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* ============================================================ */}
         {/*  TIER BREAKDOWN BARS                                          */}
