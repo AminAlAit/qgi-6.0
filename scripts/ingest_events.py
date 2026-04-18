@@ -41,8 +41,8 @@ S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"
 S3_EVENTS_SOURCE_PREFIX = "events-source/curated/"  # Mirror of local curated/ — source of truth (#141)
 COUNTRIES_KEY = "pipeline-A-indicator-extractor/input/countries.csv"
-CATEGORY_MAPPING_FILE = REPO_ROOT / "data" / "events" / "category_mapping.json"
-TRACKING_FILE = REPO_ROOT / "data" / "events" / "TRACKING.md"
+CATEGORY_MAPPING_FILE = REPO_ROOT / "events" / "category_mapping.json"
+TRACKING_FILE = REPO_ROOT / "events" / "TRACKING.md"
 
 
 # ─── Category Normalization ──────────────────────────────────────────────
@@ -110,16 +110,22 @@ def resolve_country_id(name: str, lookup: dict) -> tuple:
         return cid, canonical
 
     # Try common substitutions
-    variants = [
-        key.replace('ivory coast', "côte d'ivoire"),
-        key.replace('cote d\'ivoire', "côte d'ivoire"),
-        key.replace('türkiye', 'turkey'),
-        key.replace('czech republic', 'czechia'),
-        key.replace('south korea', 'korea, republic of'),
-        key.replace('north korea', "korea, democratic people's republic of"),
-        key.replace('usa', 'united states'),
-        key.replace('uk', 'united kingdom'),
-    ]
+    subs = {
+        'ivory coast': "côte d'ivoire",
+        "cote d'ivoire": "côte d'ivoire",
+        'türkiye': 'turkey',
+        'czech republic': 'czechia',
+        'south korea': 'korea, republic of',
+        'north korea': "korea, democratic people's republic of",
+        'usa': 'united states',
+        'uk': 'united kingdom',
+        'democratic republic of congo': 'congo, dem. rep.',
+        'republic of congo': 'congo, rep.',
+        'timor leste': 'timor-leste',
+        'sao tome and principe': 'são tomé and príncipe',
+        'cabo verde': 'cape verde',
+    }
+    variants = [subs[key]] if key in subs else [key.replace(k, v) for k, v in subs.items() if k in key]
     for v in variants:
         if v in lookup:
             cid = lookup[v]
@@ -174,49 +180,67 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> l
     Per #141: when curated_dir is provided AND a `{country}.json` exists there,
     use it instead of the corresponding file in batches_dir. Curated files have
     been through the E1-E5 cleanup pass and represent the canonical source.
+
+    Curated-only files (no batch counterpart) are also ingested directly.
     """
     events = []
-    if not batches_dir.exists():
-        print(f"WARNING: Sonnet events dir not found: {batches_dir}")
-        return events
-
     curated_files = set()
     if curated_dir and curated_dir.exists():
         curated_files = {f.name for f in curated_dir.glob("*.json")}
-        print(f"Found {len(curated_files)} curated event files (will override batches/)")
+        print(f"Found {len(curated_files)} curated event files")
 
+    processed_files = set()
     curated_used = 0
     batches_used = 0
-    for json_file in sorted(batches_dir.glob("*.json")):
-        # Prefer curated version if it exists
-        if json_file.name in curated_files:
-            actual_file = curated_dir / json_file.name
-            source_label = 'sonnet_curated'
+
+    # Pass 1: iterate over batch files, substituting curated when available
+    if batches_dir.exists():
+        for json_file in sorted(batches_dir.glob("*.json")):
+            processed_files.add(json_file.name)
+            if json_file.name in curated_files:
+                actual_file = curated_dir / json_file.name
+                source_label = 'sonnet_curated'
+                curated_used += 1
+            else:
+                actual_file = json_file
+                source_label = 'sonnet'
+                batches_used += 1
+
+            derived_country = json_file.stem.replace('_', ' ').title()
+            try:
+                for entry in _read_json_with_fallback(actual_file):
+                    country_name = entry.get('country') or derived_country
+                    events.append({
+                        'country_name': country_name,
+                        'year': int(entry.get('year', 0)),
+                        'title': entry.get('title', ''),
+                        'description': entry.get('description', ''),
+                        'category': entry.get('category', ''),
+                        'source': source_label,
+                    })
+            except (json.JSONDecodeError, KeyError, ValueError) as e:
+                print(f"WARNING: Failed to parse {actual_file.name}: {e}")
+
+    # Pass 2: pick up curated-only files (no batch counterpart)
+    if curated_dir and curated_dir.exists():
+        for curated_file in sorted(curated_dir.glob("*.json")):
+            if curated_file.name in processed_files:
+                continue
             curated_used += 1
-        else:
-            actual_file = json_file
-            source_label = 'sonnet'
-            batches_used += 1
-
-        # Country name is derived from the filename (e.g. jordan.json -> Jordan)
-        # because curated files don't preserve the legacy `country` field.
-        # Convert snake_case → Title Case for resolve_country_id().
-        derived_country = json_file.stem.replace('_', ' ').title()
-
-        try:
-            for entry in _read_json_with_fallback(actual_file):
-                # Curated entries don't carry a `country` field; raw batches do.
-                country_name = entry.get('country') or derived_country
-                events.append({
-                    'country_name': country_name,
-                    'year': int(entry.get('year', 0)),
-                    'title': entry.get('title', ''),
-                    'description': entry.get('description', ''),
-                    'category': entry.get('category', ''),
-                    'source': source_label,
-                })
-        except (json.JSONDecodeError, KeyError, ValueError) as e:
-            print(f"WARNING: Failed to parse {actual_file.name}: {e}")
+            derived_country = curated_file.stem.replace('_', ' ').title()
+            try:
+                for entry in _read_json_with_fallback(curated_file):
+                    country_name = entry.get('country') or derived_country
+                    events.append({
+                        'country_name': country_name,
+                        'year': int(entry.get('year', 0)),
+                        'title': entry.get('title', ''),
+                        'description': entry.get('description', ''),
+                        'category': entry.get('category', ''),
+                        'source': 'sonnet_curated',
+                    })
+            except (json.JSONDecodeError, KeyError, ValueError) as e:
+                print(f"WARNING: Failed to parse {curated_file.name}: {e}")
 
     print(f"Parsed {len(events)} Sonnet events ({curated_used} curated + {batches_used} raw batches)")
     return events
