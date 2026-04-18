@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-QGI Backtesting Script V1.5.3 — Per-tier walk-forward validation (#130).
+QGI Backtesting Script V1.8 — Per-tier walk-forward validation.
 
 Changes from V1.5.2:
 - Per-tier (S/M/L/XL) Platt scaling and thresholds
@@ -46,6 +46,23 @@ TIERS = {
 
 XL_FALLBACK_MIN_POSITIVES = 500  # If XL has fewer, use M-tier Platt params
 
+# ---------------------------------------------------------------------------
+# Curated country IDs (55 countries with verified event histories)
+# ---------------------------------------------------------------------------
+CURATED_COUNTRY_IDS = [
+    # Original 35
+    1, 3, 10, 18, 31, 45, 63, 66, 69, 100, 101, 102, 103, 106, 112,
+    117, 121, 124, 140, 147, 159, 167, 174, 182, 195, 206, 212, 217,
+    227, 228, 233, 234, 242, 243, 248,
+    # Batch 1 (2026-04-11): Colombia, Kenya, Myanmar, North Korea, Somalia
+    48, 114, 149, 162, 205,
+    # Batch 2 (2026-04-11): Cuba, Ecuador, Germany, Ghana, Kazakhstan,
+    # Malaysia, Poland, South Korea, Thailand, United Kingdom
+    54, 62, 81, 82, 113, 131, 176, 208, 221, 235,
+    # Batch 3 (2026-04-11): Angola, Bosnia, Chile, France, Italy
+    6, 28, 44, 74, 107,
+]
+
 
 # ---------------------------------------------------------------------------
 # Athena helpers
@@ -67,7 +84,7 @@ def get_athena(args):
     return boto3.client('athena', region_name=args.region)
 
 
-def run_query(athena, sql, bucket, workgroup, max_results=10000):
+def run_query(athena, sql, bucket, workgroup, max_results=1000):
     """Execute Athena query synchronously. Returns list of row dicts."""
     r = athena.start_query_execution(
         QueryString=sql,
@@ -125,8 +142,20 @@ def run_query(athena, sql, bucket, workgroup, max_results=10000):
 # Scoring
 # ---------------------------------------------------------------------------
 
-def log_score(count, correlation, indicator_count):
-    """Log-space confidence scoring — prevents extreme outliers."""
+def log_score(count, correlation, indicator_count, eligible_countries=None):
+    """V1.6 scoring with prevalence rate (#183).
+
+    If eligible_countries is provided, uses prevalence rate instead of raw count.
+    Falls back to V1.5.3 log-count scoring if not provided.
+    """
+    if eligible_countries and float(eligible_countries) > 0:
+        prevalence = float(count) / max(float(eligible_countries), 5.0)
+        return (
+            0.30 * math.log(prevalence + 0.01)
+            + 0.40 * float(correlation)
+            + 0.15 * math.log(float(indicator_count) + 1)
+            + 0.15  # category specificity bonus (placeholder — 1.0 for all v2 categories)
+        )
     return (
         0.4 * math.log(float(count) + 1)
         + 0.4 * float(correlation)
@@ -184,11 +213,35 @@ def compute_metrics(y_true, y_scores, threshold):
         pak = precision_at_k(k)
         return pak / base_rate if base_rate > 0 else 0
 
+    # F2 score (beta=2, weights recall 2x — standard for risk products)
+    f2 = (
+        5 * precision * recall / (4 * precision + recall)
+        if (4 * precision + recall) > 0
+        else 0
+    )
+
+    # NDCG@K (Normalized Discounted Cumulative Gain)
+    def ndcg_at_k(k):
+        top_k = sorted_idx[:min(k, len(sorted_idx))]
+        dcg = sum(
+            float(y_true[top_k[i]]) / math.log2(i + 2)
+            for i in range(len(top_k))
+        )
+        ideal = np.sort(y_true)[::-1][:min(k, len(y_true))]
+        idcg = sum(
+            float(ideal[i]) / math.log2(i + 2)
+            for i in range(len(ideal))
+        )
+        return dcg / idcg if idcg > 0 else 0
+
     return {
         'f1': round(f1, 4),
+        'f2': round(f2, 4),
         'precision': round(precision, 4),
         'recall': round(recall, 4),
         'auprc': round(auprc, 4),
+        'ndcg_at_20': round(ndcg_at_k(20), 4),
+        'ndcg_at_50': round(ndcg_at_k(50), 4),
         'lift': round(lift, 2),
         'brier_skill_score': round(bss, 4),
         'precision_at_10': round(precision_at_k(10), 4),
@@ -210,14 +263,18 @@ def compute_metrics(y_true, y_scores, threshold):
 # Data loaders
 # ---------------------------------------------------------------------------
 
-def load_ground_truth(athena, cutoff, bucket, workgroup):
-    """Load actual events after cutoff."""
+def load_ground_truth(athena, cutoff, bucket, workgroup, country_ids=None):
+    """Load actual events after cutoff, optionally filtered by country IDs."""
+    country_filter = ''
+    if country_ids:
+        ids_str = ','.join(str(c) for c in country_ids)
+        country_filter = f' AND country_id IN ({ids_str})'
     rows = run_query(
         athena,
         f"""
         SELECT country_id, category_normalized
         FROM qgi_data.events
-        WHERE year > {cutoff}
+        WHERE year > {cutoff}{country_filter}
         GROUP BY country_id, category_normalized
         """,
         bucket, workgroup,
@@ -225,14 +282,34 @@ def load_ground_truth(athena, cutoff, bucket, workgroup):
     return {(r['country_id'], r['category_normalized']) for r in rows}
 
 
-def load_recipe_predictions_by_tier(athena, table, cutoff, bucket, workgroup):
+def load_recipe_predictions_by_tier(athena, table, cutoff, bucket, workgroup, country_ids=None):
     """Load aggregated recipe predictions, stratified by tier (#130).
 
     Returns: dict[tier_name] -> dict[(country_a_id, event_category)] -> score
     """
     preds_by_tier = {t: {} for t in TIERS}
+    country_filter = ''
+    if country_ids:
+        ids_str = ','.join(str(c) for c in country_ids)
+        country_filter = f' AND country_a_id IN ({ids_str})'
 
     for tier_name, (lo, hi) in TIERS.items():
+        # V1.7 P2: per-country partner-eligible count for prevalence rate
+        partner_rows = run_query(
+            athena,
+            f"""
+            SELECT country_a_id, count(DISTINCT country_b_id) as partners
+            FROM qgi_data.scdis
+            WHERE length BETWEEN {lo} AND {hi}
+            GROUP BY country_a_id
+            """,
+            bucket, workgroup,
+        )
+        partner_eligible = {
+            r['country_a_id']: int(r['partners'])
+            for r in partner_rows
+        }
+
         rows = run_query(
             athena,
             f"""
@@ -242,7 +319,7 @@ def load_recipe_predictions_by_tier(athena, table, cutoff, bucket, workgroup):
                    avg(indicator_count) as avg_ind
             FROM qgi_data.{table}
             WHERE end_year_a <= {cutoff} AND end_year_b <= {cutoff}
-              AND length BETWEEN {lo} AND {hi}
+              AND length BETWEEN {lo} AND {hi}{country_filter}
             GROUP BY country_a_id, event_category
             """,
             bucket, workgroup,
@@ -250,32 +327,35 @@ def load_recipe_predictions_by_tier(athena, table, cutoff, bucket, workgroup):
 
         tier_preds = {}
         for r in rows:
+            # V1.7: per-country denominator instead of global
+            country_partners = partner_eligible.get(r['country_a_id'], 5)
             score = log_score(
-                r['recipe_count'], r['avg_corr'], r['avg_ind']
+                r['recipe_count'], r['avg_corr'], r['avg_ind'],
+                eligible_countries=country_partners,
             )
             tier_preds[(r['country_a_id'], r['event_category'])] = score
 
-        # Normalize to 0-1 within tier
-        if tier_preds:
-            vals = list(tier_preds.values())
-            mn, mx = min(vals), max(vals)
-            rng = mx - mn if mx > mn else 1
-            tier_preds = {k: (v - mn) / rng for k, v in tier_preds.items()}
+        # P2: NO per-tier normalization — feed raw scores through
+        # (was: normalize to 0-1, which compressed Platt output)
 
         preds_by_tier[tier_name] = tier_preds
-        print(f"  {tier_name} (length {lo}-{hi}): {len(tier_preds)} predictions")
+        print(f"  {tier_name} (length {lo}-{hi}): {len(tier_preds)} predictions, {len(partner_eligible)} countries with partners")
 
     return preds_by_tier
 
 
-def load_persistence(athena, cutoff, bucket, workgroup):
+def load_persistence(athena, cutoff, bucket, workgroup, country_ids=None):
     """Persistence baseline: events in [cutoff-2, cutoff] predict cutoff+1."""
+    country_filter = ''
+    if country_ids:
+        ids_str = ','.join(str(c) for c in country_ids)
+        country_filter = f' AND country_id IN ({ids_str})'
     rows = run_query(
         athena,
         f"""
         SELECT country_id, category_normalized, count(*) as cnt
         FROM qgi_data.events
-        WHERE year BETWEEN {cutoff - 2} AND {cutoff}
+        WHERE year BETWEEN {cutoff - 2} AND {cutoff}{country_filter}
         GROUP BY country_id, category_normalized
         """,
         bucket, workgroup,
@@ -286,14 +366,18 @@ def load_persistence(athena, cutoff, bucket, workgroup):
     }
 
 
-def load_recency(athena, cutoff, bucket, workgroup):
+def load_recency(athena, cutoff, bucket, workgroup, country_ids=None):
     """Load most recent event year per (country, category) before cutoff."""
+    country_filter = ''
+    if country_ids:
+        ids_str = ','.join(str(c) for c in country_ids)
+        country_filter = f' AND country_id IN ({ids_str})'
     rows = run_query(
         athena,
         f"""
         SELECT country_id, category_normalized, max(year) as last_year
         FROM qgi_data.events
-        WHERE year <= {cutoff}
+        WHERE year <= {cutoff}{country_filter}
         GROUP BY country_id, category_normalized
         """,
         bucket, workgroup,
@@ -304,15 +388,18 @@ def load_recency(athena, cutoff, bucket, workgroup):
     }
 
 
-def apply_recency(preds, recency, cutoff, decay=0.85):
-    """Boost predictions by recency: recent events = higher score."""
+def apply_recency(preds, recency, cutoff, decay=0.85, weight=0.15):
+    """Boost predictions by recency: recent events = higher score.
+
+    V1.6: weight halved from 0.30 to 0.15 (#184 P3).
+    """
     boosted = {}
     for key, score in preds.items():
         last_year = recency.get(key)
         if last_year is not None:
             years_ago = cutoff - last_year
             boost = decay ** years_ago
-            boosted[key] = score + 0.3 * boost
+            boosted[key] = score + weight * boost
         else:
             boosted[key] = score
     return boosted
@@ -326,6 +413,69 @@ def renormalize(preds):
     mn, mx = min(vals), max(vals)
     rng = mx - mn if mx > mn else 1
     return {k: (v - mn) / rng for k, v in preds.items()}
+
+
+def zscore_per_country(preds):
+    """V1.8: Within-country z-score normalization.
+
+    For each country, center its category scores around the country's mean
+    and scale by country's std. This removes data-volume bias by asking
+    "which category is anomalously elevated for THIS country?" instead of
+    "which country has the most recipes globally?"
+    """
+    if not preds:
+        return preds
+
+    # Group scores by country
+    from collections import defaultdict
+    by_country = defaultdict(dict)
+    for (cid, cat), score in preds.items():
+        by_country[cid][(cid, cat)] = score
+
+    result = {}
+    for cid, country_preds in by_country.items():
+        vals = list(country_preds.values())
+        if len(vals) < 2:
+            # Single category for this country — can't z-score, keep raw
+            result.update(country_preds)
+            continue
+        mean = sum(vals) / len(vals)
+        std = (sum((v - mean) ** 2 for v in vals) / len(vals)) ** 0.5
+        std = max(std, 1e-6)  # prevent division by zero
+        for key, score in country_preds.items():
+            result[key] = (score - mean) / std
+
+    return result
+
+
+def rank_fusion_ensemble(recipe_preds, persistence_preds, k=60):
+    """V1.8: Reciprocal Rank Fusion of recipe + persistence signals.
+
+    Combines two complementary signals:
+    - Recipes: structural economic pattern match (what COULD happen)
+    - Persistence: recent event history (what IS happening)
+
+    RRF is robust to score scale mismatches — uses ranks only.
+    """
+    # Compute ranks for each signal
+    recipe_ranked = sorted(recipe_preds.items(), key=lambda x: -x[1])
+    recipe_rank = {key: i + 1 for i, (key, _) in enumerate(recipe_ranked)}
+
+    persist_ranked = sorted(persistence_preds.items(), key=lambda x: -x[1])
+    persist_rank = {key: i + 1 for i, (key, _) in enumerate(persist_ranked)}
+
+    # All keys from both signals
+    all_keys = set(recipe_preds.keys()) | set(persistence_preds.keys())
+    max_rank = len(all_keys) + 1  # default rank for missing keys
+
+    # RRF score
+    fused = {}
+    for key in all_keys:
+        r_rank = recipe_rank.get(key, max_rank)
+        p_rank = persist_rank.get(key, max_rank)
+        fused[key] = 1.0 / (k + r_rank) + 1.0 / (k + p_rank)
+
+    return fused
 
 
 # ---------------------------------------------------------------------------
@@ -353,28 +503,39 @@ def platt_scale(y_true_train, y_scores_train, y_scores_apply):
     return calibrated, best_a, best_b
 
 
-def find_threshold_at_precision(y_true, y_scores, target_precision=0.70):
-    """Find the lowest threshold that achieves >= target precision.
+def find_threshold_at_precision(y_true, y_scores, target_precision=0.50):
+    """V1.7: Find threshold optimizing F2 (recall-weighted) at >= target precision.
 
-    If no threshold hits the target, returns the threshold with max F1.
+    Changes from V1.6:
+    - Precision target lowered from 70% to 50% (#184 P3)
+    - Optimizes F2 (beta=2) instead of F1 — appropriate for risk products
+    - Dynamically adapts search range to actual score distribution
     """
-    best_threshold = 0.5
-    best_f1 = 0
+    # Adapt search range to actual score distribution
+    score_min = float(np.percentile(y_scores[y_scores > 0], 10)) if (y_scores > 0).any() else 0.3
+    score_max = float(np.percentile(y_scores, 95))
+    floor = max(score_min, 0.10)
+
+    best_threshold = round((floor + score_max) / 2, 2)
+    best_f2 = 0
     precision_met = False
 
-    for t in np.arange(0.05, 0.95, 0.02):
+    for t in np.arange(floor, min(score_max + 0.05, 0.99), 0.005):
         m = compute_metrics(y_true, y_scores, t)
+        if m['n_predictions'] == 0:
+            continue
+        f2 = m['f2']
         if m['precision'] >= target_precision and not precision_met:
             best_threshold = t
             precision_met = True
-        if precision_met and m['precision'] >= target_precision and m['f1'] > best_f1:
-            best_f1 = m['f1']
+        if precision_met and m['precision'] >= target_precision and f2 > best_f2:
+            best_f2 = f2
             best_threshold = t
-        if not precision_met and m['f1'] > best_f1:
-            best_f1 = m['f1']
+        if not precision_met and f2 > best_f2:
+            best_f2 = f2
             best_threshold = t
 
-    return round(best_threshold, 2), round(best_f1, 4), precision_met
+    return round(best_threshold, 3), round(best_f2, 4), precision_met
 
 
 def build_arrays(preds, ground_truth):
@@ -415,11 +576,17 @@ def main():
     parser.add_argument('--mode', choices=['validate', 'test', 'full'], default='full')
     parser.add_argument('--threshold', type=float, default=None)
     parser.add_argument('--recipe-table', default='recipes')
-    parser.add_argument('--target-precision', type=float, default=0.70, help='Min precision for threshold (#119)')
-    parser.add_argument('--output', default='backtest_v153_results.json')
+    parser.add_argument('--target-precision', type=float, default=0.50, help='Min precision for threshold (V1.7: 50%%)')
+    parser.add_argument('--curated-only', action='store_true', help='Filter to 35 curated countries only')
+    parser.add_argument('--output', default='backtest_v18_results.json')
     args = parser.parse_args()
 
     athena = get_athena(args)
+
+    # Resolve country filter
+    country_ids = CURATED_COUNTRY_IDS if args.curated_only else None
+    if country_ids:
+        print(f"CURATED-ONLY MODE: filtering to {len(country_ids)} countries")
 
     if args.mode in ('full', 'validate'):
         # =================================================================
@@ -429,14 +596,14 @@ def main():
         print("PHASE 1: VALIDATION (cutoff=2015) — PER-TIER (#130)")
         print("=" * 70)
 
-        gt_val = load_ground_truth(athena, 2015, args.bucket, args.workgroup)
+        gt_val = load_ground_truth(athena, 2015, args.bucket, args.workgroup, country_ids)
         print(f"Ground truth: {len(gt_val)} (country, category) pairs post-2015")
 
         print("\nLoading per-tier predictions...")
         preds_by_tier_val = load_recipe_predictions_by_tier(
-            athena, args.recipe_table, 2015, args.bucket, args.workgroup,
+            athena, args.recipe_table, 2015, args.bucket, args.workgroup, country_ids,
         )
-        recency_val = load_recency(athena, 2015, args.bucket, args.workgroup)
+        recency_val = load_recency(athena, 2015, args.bucket, args.workgroup, country_ids)
 
         # Per-tier: apply recency, Platt scale, find threshold
         platt_params = {}
@@ -450,9 +617,9 @@ def main():
                 tier_metrics_val[tier_name] = None
                 continue
 
-            preds_boosted = renormalize(
-                apply_recency(preds, recency_val, 2015)
-            )
+            # V1.8: recency → z-score per country → Platt
+            preds_boosted = apply_recency(preds, recency_val, 2015)
+            preds_boosted = zscore_per_country(preds_boosted)
             y_true, y_scores = build_arrays(preds_boosted, gt_val)
             n_positives = int(y_true.sum())
 
@@ -479,37 +646,39 @@ def main():
             m = compute_metrics(y_true, y_cal, threshold)
             tier_metrics_val[tier_name] = m
 
-            status = "✓" if precision_met else "⚠ precision not met"
+            status = "OK" if precision_met else "WARN precision not met"
+            base_rate = n_positives / m['n_total'] if m['n_total'] > 0 else 0
             print(
                 f"\n  {tier_name}: Platt a={a:.2f} b={b:.2f} | "
+                f"cal_range=[{y_cal.min():.3f}, {y_cal.max():.3f}] | "
                 f"threshold={threshold} | F1={m['f1']} | "
-                f"Precision={m['precision']} | AUPRC={m['auprc']} | "
-                f"n={m['n_total']} ({n_positives} positives) | {status}"
+                f"Precision={m['precision']} | Recall={m['recall']} | AUPRC={m['auprc']} | "
+                f"n={m['n_total']} ({n_positives} pos, base_rate={base_rate:.1%}) | {status}"
             )
 
         # Aggregate
         print("\n" + "=" * 70)
         print("VALIDATION SUMMARY (per-tier)")
         print("=" * 70)
-        header = ['Tier', 'F1', 'Precision', 'Recall', 'AUPRC', 'Lift@50', 'Threshold', 'N_pred', 'N_gt']
+        header = ['Tier', 'F1', 'F2', 'Precision', 'Recall', 'AUPRC', 'NDCG@20', 'Threshold', 'N_pred', 'N_gt']
         rows = []
         total_preds = 0
         weighted_f1 = 0
         for tier_name in TIERS:
             m = tier_metrics_val.get(tier_name)
             if m is None:
-                rows.append([tier_name, '-', '-', '-', '-', '-', '-', 0, 0])
+                rows.append([tier_name, '-', '-', '-', '-', '-', '-', '-', 0, 0])
                 continue
             rows.append([
-                tier_name, m['f1'], m['precision'], m['recall'], m['auprc'],
-                m['lift_at_50'], tier_thresholds.get(tier_name, '-'),
+                tier_name, m['f1'], m['f2'], m['precision'], m['recall'], m['auprc'],
+                m['ndcg_at_20'], tier_thresholds.get(tier_name, '-'),
                 m['n_predictions'], m['n_ground_truth'],
             ])
             total_preds += m['n_total']
             weighted_f1 += m['f1'] * m['n_total']
 
         agg_f1 = round(weighted_f1 / total_preds, 4) if total_preds > 0 else 0
-        rows.append(['AGG', agg_f1, '', '', '', '', '', total_preds, ''])
+        rows.append(['AGG', agg_f1, '', '', '', '', '', '', total_preds, ''])
         print_table(header, rows)
 
     if args.mode in ('full', 'test'):
@@ -527,15 +696,15 @@ def main():
             platt_params = {t: (5.0, -2.5) for t in TIERS}  # default Platt
             print(f"Using supplied threshold={args.threshold} for all tiers")
 
-        gt_test = load_ground_truth(athena, 2020, args.bucket, args.workgroup)
+        gt_test = load_ground_truth(athena, 2020, args.bucket, args.workgroup, country_ids)
         print(f"Ground truth: {len(gt_test)} (country, category) pairs post-2020")
 
         print("\nLoading per-tier predictions...")
         preds_by_tier_test = load_recipe_predictions_by_tier(
-            athena, args.recipe_table, 2020, args.bucket, args.workgroup,
+            athena, args.recipe_table, 2020, args.bucket, args.workgroup, country_ids,
         )
-        recency_test = load_recency(athena, 2020, args.bucket, args.workgroup)
-        persist_test = load_persistence(athena, 2020, args.bucket, args.workgroup)
+        recency_test = load_recency(athena, 2020, args.bucket, args.workgroup, country_ids)
+        persist_test = load_persistence(athena, 2020, args.bucket, args.workgroup, country_ids)
 
         tier_metrics_test = {}
         for tier_name in TIERS:
@@ -544,10 +713,13 @@ def main():
                 tier_metrics_test[tier_name] = None
                 continue
 
-            preds_boosted = renormalize(
-                apply_recency(preds, recency_test, 2020)
-            )
-            y_true, y_scores = build_arrays(preds_boosted, gt_test)
+            # V1.8: recency → z-score per country → rank fusion with persistence
+            preds_boosted = apply_recency(preds, recency_test, 2020)
+            preds_zscored = zscore_per_country(preds_boosted)
+
+            # V1.8: Rank fusion ensemble with persistence
+            preds_fused = rank_fusion_ensemble(preds_zscored, persist_test)
+            y_true, y_scores = build_arrays(preds_fused, gt_test)
 
             # Apply LOCKED Platt params from validation
             a, b = platt_params.get(tier_name, (5.0, -2.5))
@@ -571,34 +743,36 @@ def main():
         print("\n" + "=" * 70)
         print("TEST SUMMARY (per-tier, locked params)")
         print("=" * 70)
-        header = ['Tier', 'F1', 'Precision', 'Recall', 'AUPRC', 'Lift@50', 'N_pred', 'N_gt']
+        header = ['Tier', 'F1', 'F2', 'Precision', 'Recall', 'AUPRC', 'NDCG@20', 'Lift@50', 'N_pred', 'N_gt']
         rows = []
         total_preds = 0
         weighted_f1 = 0
         for tier_name in TIERS:
             m = tier_metrics_test.get(tier_name)
             if m is None:
-                rows.append([tier_name, '-', '-', '-', '-', '-', 0, 0])
+                rows.append([tier_name, '-', '-', '-', '-', '-', '-', '-', 0, 0])
                 continue
             rows.append([
-                tier_name, m['f1'], m['precision'], m['recall'], m['auprc'],
-                m['lift_at_50'], m['n_predictions'], m['n_ground_truth'],
+                tier_name, m['f1'], m['f2'], m['precision'], m['recall'], m['auprc'],
+                m['ndcg_at_20'], m['lift_at_50'], m['n_predictions'], m['n_ground_truth'],
             ])
             total_preds += m['n_total']
             weighted_f1 += m['f1'] * m['n_total']
 
         agg_f1 = round(weighted_f1 / total_preds, 4) if total_preds > 0 else 0
-        rows.append(['AGG', agg_f1, '', '', '', '', total_preds, ''])
-        rows.append(['Persist', mp['f1'], mp['precision'], mp['recall'], mp['auprc'], mp['lift_at_50'], mp['n_predictions'], mp['n_ground_truth']])
+        rows.append(['AGG', agg_f1, '', '', '', '', '', '', total_preds, ''])
+        rows.append(['Persist', mp['f1'], mp['f2'], mp['precision'], mp['recall'], mp['auprc'], mp['ndcg_at_20'], mp['lift_at_50'], mp['n_predictions'], mp['n_ground_truth']])
         print_table(header, rows)
 
         beats_persist = agg_f1 > mp['f1']
-        print(f"\nV1.5.3 beats persistence? {'YES' if beats_persist else 'NO'} (AGG F1={agg_f1} vs {mp['f1']})")
+        print(f"\nV1.8 beats persistence? {'YES' if beats_persist else 'NO'} (AGG F1={agg_f1} vs {mp['f1']})")
 
     # Save results
     if args.mode == 'full':
         results = {
-            'version': 'V1.5.3',
+            'version': 'V1.8',
+            'curated_only': args.curated_only,
+            'n_countries': len(country_ids) if country_ids else 'all',
             'tiers': list(TIERS.keys()),
             'tier_ranges': TIERS,
             'validation': {
@@ -616,7 +790,7 @@ def main():
                 },
                 'persistence': mp,
                 'aggregate_f1': agg_f1,
-                'beats_persistence': beats_persist,
+                'beats_persistence': bool(beats_persist),
             },
         }
         out_path = args.output
