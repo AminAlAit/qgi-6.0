@@ -46,22 +46,18 @@ async function fetchTopPairs(): Promise<{
 }
 
 /**
- * Load top-50 convergence signals from baked early-warning.json.
- * Falls back to empty if file missing.
+ * Load top-50 convergence signals from baked recipes-top50.json.
+ * This is the real convergence/signal data with event categories,
+ * lead times, and convergence scores.
  */
 async function fetchTopSignals(): Promise<SignalRow[]> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
-    const filePath = path.join(process.cwd(), "data", "early-warning.json");
+    const filePath = path.join(process.cwd(), "data", "recipes-top50.json");
     const raw = await fs.readFile(filePath, "utf-8");
     const json = JSON.parse(raw);
-    return (json.results ?? []).map((r: Record<string, unknown>) => ({
-      ...r,
-      start_year_a: Number(r.start_year_a),
-      start_year_b: Number(r.start_year_b),
-      pattern_length: Number(r.pattern_length),
-    })) as SignalRow[];
+    return (json.results ?? []) as SignalRow[];
   } catch {
     return [];
   }
