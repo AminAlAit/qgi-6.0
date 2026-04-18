@@ -808,6 +808,38 @@ resource "aws_lambda_function" "structural_twins_generator" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 5b.10 — Pair Windows Generator (GH#281)
+#
+# Queries ALL patterns ordered by (country_a_id, country_b_id, pps DESC),
+# takes top 200 windows per pair, and writes one JSON file per predictor
+# country to dashboard/pair-windows/{country_a_id}.json.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "pair_windows_generator" {
+  function_name    = "qgi-pipeline-pair-windows-generator"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 900
+  memory_size      = 1024
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET              = var.data_lake_bucket_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # #175: Indicator manifest reader (decoupled pipeline)
 #
 # Reads the fetch manifest from S3 and returns it for the Main SF.
@@ -1484,6 +1516,17 @@ resource "aws_sfn_state_machine" "pipeline" {
           "run_id.$" = "$$.Execution.Name"
         }
         ResultPath = "$.structural_twins_output"
+        Retry      = local.lambda_retry
+        Next       = "5b.10. Generate Pair Windows"
+      }
+
+      "5b.10. Generate Pair Windows" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.pair_windows_generator.arn
+        Parameters = {
+          "run_id.$" = "$$.Execution.Name"
+        }
+        ResultPath = "$.pair_windows_output"
         Retry      = local.lambda_retry
         Next       = "5c. Athena MSCK recipes"
       }

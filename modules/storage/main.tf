@@ -827,6 +827,16 @@ resource "aws_glue_catalog_table" "recipes" {
     name = "country_a_id"
     type = "smallint"
   }
+
+  # AWS provider 5.x bug: when this table already exists in AWS (created via Athena CTAS),
+  # the provider tries to set `partition_keys[0].parameters` during refresh but that
+  # attribute doesn't exist in the schema, causing "Invalid address to set" errors.
+  # Athena CTAS writes extra Parameters metadata into the partition column definition
+  # in the Glue catalog — Terraform cannot manage that metadata, so we ignore partition_keys
+  # drift. The partition schema is fixed (country_a_id smallint) and managed at creation time.
+  lifecycle {
+    ignore_changes = [partition_keys]
+  }
 }
 
 # ---------------------------------------------------------------------------

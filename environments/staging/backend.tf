@@ -21,8 +21,9 @@ terraform {
     #
     # The provider-side assume_role is variable-driven (see providers.tf +
     # var.use_cross_account_assume_role) so it doesn't have this limitation.
-    assume_role = {
-      role_arn = "arn:aws:iam::222222222222:role/OrganizationAccountAccessRole"
-    }
+    # assume_role temporarily disabled for SSO-direct apply
+    # assume_role = {
+    #   role_arn = "arn:aws:iam::222222222222:role/OrganizationAccountAccessRole"
+    # }
   }
 }
