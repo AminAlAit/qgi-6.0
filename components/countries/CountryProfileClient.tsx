@@ -965,7 +965,9 @@ function indicatorTrajectoryOption(
     z: 0,
   });
 
-  const markLines = trajData.events.map((e) => ({
+  // Limit to 5 most recent events to avoid chart clutter
+  const topEvents = [...trajData.events].sort((a, b) => b.year - a.year).slice(0, 5);
+  const markLines = topEvents.map((e) => ({
     xAxis: String(e.year),
     lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
     label: { show: false },
@@ -1058,7 +1060,8 @@ function TrajectoryChartWithLabels({
     instRef.current = inst;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ecInst = inst as any;
-    const positions = trajData.events.map((e) => {
+    const eventsToShow = [...trajData.events].sort((a, b) => b.year - a.year).slice(0, 5);
+    const positions = eventsToShow.map((e) => {
       const px = ecInst.convertToPixel({ xAxisIndex: 0 }, String(e.year));
       const gridRect = ecInst.getModel().getComponent("grid", 0).coordinateSystem.getRect();
       return { year: e.year, label: e.label, x: px as number, y: gridRect.y as number };

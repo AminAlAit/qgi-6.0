@@ -1882,19 +1882,27 @@ export default function PatternsClient() {
                                 </div>
                               </div>
                             ) : (
-                              <div className="mb-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                                <div className="flex items-end gap-px h-16 w-full px-1">
-                                  {Array.from({ length: Math.min(len, 20) }, (_, j) => {
-                                    const h = 12 + Math.sin((j * 1.1 + i) * 0.8) * 18 + ((j * 7 + i * 13) % 11);
-                                    return (
+                              <div className="mb-2 rounded flex items-center justify-center h-16" style={{ backgroundColor: "var(--qgi-surface)" }}>
+                                {s.correlation != null ? (
+                                  <div className="w-full px-2">
+                                    <div
+                                      className="h-2 rounded-full"
+                                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                                    >
                                       <div
-                                        key={j}
-                                        className="flex-1 rounded-t"
-                                        style={{ height: `${Math.max(4, h)}px`, backgroundColor: "var(--qgi-country-a)", opacity: 0.3 + (j / len) * 0.5 }}
+                                        className="h-full rounded-full"
+                                        style={{
+                                          width: `${Math.max(4, Math.round(s.correlation * 100))}%`,
+                                          backgroundColor: sc,
+                                          opacity: 0.7,
+                                        }}
                                       />
-                                    );
-                                  })}
-                                </div>
+                                    </div>
+                                    <div className="text-center mt-1.5 font-data text-[9px]" style={{ color: sc }}>
+                                      r = {s.correlation.toFixed(2)}
+                                    </div>
+                                  </div>
+                                ) : null}
                               </div>
                             )}
 
