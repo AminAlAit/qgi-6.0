@@ -11,45 +11,57 @@ export const metadata = {
 };
 
 /**
- * Server-side fetch of the deduped pattern ranking.
- * Reuses the same /api/patterns/ranking endpoint that the Ranking page uses,
- * which now dedupes by (country_a, country_b) keeping the best window per pair.
+ * Load top pattern pairs directly from baked ranking.json.
+ * No API call needed — the file is in data/.
  */
 async function fetchTopPairs(): Promise<{
   pairs: PatternRow[];
   totalUniquePairs: number;
 }> {
   try {
-    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const res = await fetch(`${base}/api/patterns/ranking?limit=5`, {
-      headers: { Authorization: "Bearer __ssr__" },
-      next: { revalidate: 60 },
-    });
-    if (!res.ok) return { pairs: [], totalUniquePairs: 0 };
-    const json = await res.json();
-    return {
-      pairs: json.results ?? [],
-      totalUniquePairs: json.total_unique_pairs ?? 0,
-    };
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "ranking.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const json = JSON.parse(raw);
+    const results: PatternRow[] = json.results ?? [];
+    // Dedupe by pair, keep best PPS per pair
+    const bestPerPair = new Map<string, PatternRow>();
+    for (const row of results) {
+      const a = row.country_a_id ?? row.country_a;
+      const b = row.country_b_id ?? row.country_b;
+      const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+      const existing = bestPerPair.get(key);
+      if (!existing || row.pattern_power_score > existing.pattern_power_score) {
+        bestPerPair.set(key, row);
+      }
+    }
+    const deduped = Array.from(bestPerPair.values())
+      .sort((a, b) => b.pattern_power_score - a.pattern_power_score)
+      .slice(0, 5);
+    return { pairs: deduped, totalUniquePairs: bestPerPair.size };
   } catch {
     return { pairs: [], totalUniquePairs: 0 };
   }
 }
 
 /**
- * Server-side fetch of top-50 convergence signals.
- * Used for the Featured Alert and Top Convergences panels.
+ * Load top-50 convergence signals from baked early-warning.json.
+ * Falls back to empty if file missing.
  */
 async function fetchTopSignals(): Promise<SignalRow[]> {
   try {
-    const base = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
-    const res = await fetch(`${base}/api/recipes/top50`, {
-      headers: { Authorization: "Bearer __ssr__" },
-      next: { revalidate: 60 },
-    });
-    if (!res.ok) return [];
-    const json = await res.json();
-    return json.results ?? [];
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "early-warning.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const json = JSON.parse(raw);
+    return (json.results ?? []).map((r: Record<string, unknown>) => ({
+      ...r,
+      start_year_a: Number(r.start_year_a),
+      start_year_b: Number(r.start_year_b),
+      pattern_length: Number(r.pattern_length),
+    })) as SignalRow[];
   } catch {
     return [];
   }
