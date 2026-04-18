@@ -1155,6 +1155,70 @@ function patternDensityOption(densityData: PatternDensityData) {
 // Helpers
 // ---------------------------------------------------------------------------
 
+/**
+ * From a list of events, pick up to `n` events that are maximally spread
+ * across the year range, so chart labels never cluster.
+ *
+ * Algorithm:
+ *   1. Sort events by year ascending.
+ *   2. If ≤ n events, return all (nothing to trim).
+ *   3. Always keep the first (oldest) and last (newest) events.
+ *   4. Divide the year range into (n-1) equal buckets; pick one representative
+ *      event per bucket — the one whose year falls closest to the bucket
+ *      midpoint. Deduplication ensures the first/last are not selected twice.
+ *
+ * Returns events sorted by year ascending so callers iterate chronologically.
+ */
+function pickSpreadEvents(
+  events: { year: number; label: string }[],
+  n: number,
+): { year: number; label: string }[] {
+  if (events.length === 0) return [];
+  const sorted = [...events].sort((a, b) => a.year - b.year);
+  if (sorted.length <= n) return sorted;
+
+  const first = sorted[0];
+  const last = sorted[sorted.length - 1];
+
+  // Edge: n === 1
+  if (n === 1) return [first];
+  // Edge: n === 2
+  if (n === 2) return [first, last];
+
+  const yearMin = first.year;
+  const yearMax = last.year;
+  const span = yearMax - yearMin;
+
+  // The inner slots (excluding first and last) fill (n-2) bucket midpoints.
+  const innerCount = n - 2;
+  const bucketSize = span / (innerCount + 1);
+
+  const selected: { year: number; label: string }[] = [first];
+
+  for (let i = 1; i <= innerCount; i++) {
+    const targetYear = yearMin + i * bucketSize;
+    // Find the event closest to this target year, excluding already-selected years.
+    const selectedYears = new Set(selected.map((e) => e.year));
+    let best: { year: number; label: string } | null = null;
+    let bestDist = Infinity;
+    for (const e of sorted) {
+      if (selectedYears.has(e.year)) continue;
+      if (e.year === last.year) continue; // reserved for last slot
+      const dist = Math.abs(e.year - targetYear);
+      if (dist < bestDist) {
+        bestDist = dist;
+        best = e;
+      }
+    }
+    if (best) selected.push(best);
+  }
+
+  selected.push(last);
+
+  // Return sorted by year for consistent rendering order.
+  return selected.sort((a, b) => a.year - b.year);
+}
+
 function getCategoryBreakdown(
   country: CountryRisk
 ): Array<{ category: string; salience: number; z_score: number; recipe_count: number }> {
