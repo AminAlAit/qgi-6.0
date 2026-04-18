@@ -965,8 +965,9 @@ function indicatorTrajectoryOption(
     z: 0,
   });
 
-  // Limit to 5 most recent events to avoid chart clutter
-  const topEvents = [...trajData.events].sort((a, b) => b.year - a.year).slice(0, 5);
+  // Pick 5 maximally-spaced events across the full timeline to prevent
+  // label clustering when all curated events are recent.
+  const topEvents = pickSpreadEvents(trajData.events, 5);
   const markLines = topEvents.map((e) => ({
     xAxis: String(e.year),
     lineStyle: { color: "#f87171", width: 1.5, type: "solid" as const },
@@ -1060,7 +1061,7 @@ function TrajectoryChartWithLabels({
     instRef.current = inst;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const ecInst = inst as any;
-    const eventsToShow = [...trajData.events].sort((a, b) => b.year - a.year).slice(0, 5);
+    const eventsToShow = pickSpreadEvents(trajData.events, 5);
     const positions = eventsToShow.map((e) => {
       const px = ecInst.convertToPixel({ xAxisIndex: 0 }, String(e.year));
       const gridRect = ecInst.getModel().getComponent("grid", 0).coordinateSystem.getRect();
