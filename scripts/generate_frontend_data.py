@@ -366,6 +366,197 @@ def generate_analogues(athena, workgroup: str, database: str, frontend_dir: Path
     print(f"  Wrote {out} ({size_kb:.0f} KB, {total_countries} countries, {total_categories} country-category pairs)")
 
 
+# Top 6 indicators to include in trajectories (GH#287)
+TRAJECTORY_INDICATORS = [
+    {"id": "NY.GDP.PCAP.CD", "name": "GDP per capita (USD)", "unit": "USD"},
+    {"id": "MS.MIL.XPND.GD.ZS", "name": "Military spending (% GDP)", "unit": "% GDP"},
+    {"id": "SP.DYN.LE00.IN", "name": "Life expectancy (years)", "unit": "yrs"},
+    {"id": "FP.CPI.TOTL.ZG", "name": "Inflation (CPI, annual %)", "unit": "%"},
+    {"id": "NE.EXP.GNFS.ZS", "name": "Trade / exports (% GDP)", "unit": "% GDP"},
+    {"id": "SP.POP.TOTL", "name": "Population, total", "unit": ""},
+]
+
+
+def generate_indicator_trajectories(
+    athena,
+    workgroup: str,
+    database: str,
+    frontend_dir: Path,
+):
+    """GH#287: Bake indicator trajectories with predicted points for country profiles.
+
+    Queries Athena indicators_completed table once per indicator (6 total),
+    groups by country, then writes indicator-trajectories.json.
+
+    Output structure:
+      {
+        "<country_id>": {
+          "years": [1960, ..., 2026],
+          "indicators": [
+            {"name": "...", "unit": "...", "data": [...], "predicted_from": 2024}
+          ],
+          "events": [{"year": 1991, "label": "..."}]
+        }
+      }
+    """
+    print("\n=== Generating indicator-trajectories.json (GH#287) ===")
+
+    # Load events keyed by country name slug → [{"year":..., "title":...}]
+    events_file = frontend_dir / "country-events.json"
+    events_by_slug: dict[str, list[dict]] = {}
+    if events_file.exists():
+        with open(events_file, encoding="utf-8") as f:
+            events_by_slug = json.load(f)
+    print(f"  Loaded events for {len(events_by_slug)} countries")
+
+    # Load country-risks.json to get country IDs and names for event lookup
+    risks_file = frontend_dir / "country-risks.json"
+    country_id_to_name: dict[str, str] = {}
+    if risks_file.exists():
+        with open(risks_file) as f:
+            risks_raw = json.load(f)
+        for cid, cdata in risks_raw.get("countries", {}).items():
+            country_id_to_name[cid] = cdata["name"]
+    print(f"  Loaded {len(country_id_to_name)} country IDs from country-risks.json")
+
+    def name_to_slug(name: str) -> str:
+        import re
+        s = name.lower()
+        s = re.sub(r"^the\s+", "", s)
+        s = re.sub(r"\bof the\b", "of", s)
+        s = re.sub(r"[-\s]+", "_", s)
+        s = re.sub(r"[^a-z0-9_]", "", s)
+        return s
+
+    # Build {country_id -> [{"year": int, "label": str}]}
+    country_events: dict[str, list[dict]] = {}
+    for cid, cname in country_id_to_name.items():
+        slug = name_to_slug(cname)
+        raw_events = events_by_slug.get(slug, [])
+        if raw_events:
+            # Keep only year+title as label, deduplicate by year (keep first)
+            seen_years: set[int] = set()
+            compressed = []
+            for ev in raw_events:
+                yr = ev.get("year")
+                if yr and yr not in seen_years:
+                    seen_years.add(yr)
+                    compressed.append({"year": yr, "label": ev.get("title", "")})
+            country_events[cid] = compressed
+
+    # Query each indicator from Athena once, accumulate per-country data
+    # Structure: {country_id -> {indicator_idx -> {"data": {year: value}, "predicted": {year: bool}}}}
+    country_indicator_data: dict[str, dict[int, dict]] = {}
+
+    for idx, ind in enumerate(TRAJECTORY_INDICATORS):
+        indicator_id = ind["id"]
+        print(f"  Querying indicator {idx+1}/{len(TRAJECTORY_INDICATORS)}: {indicator_id}")
+
+        query = f"""
+        SELECT country, year, value, is_predicted
+        FROM {database}.indicators_completed
+        WHERE indicator_id = '{indicator_id}'
+        ORDER BY country, year
+        """
+
+        try:
+            qid = run_athena_query(athena, query, workgroup, database)
+            rows = get_athena_results(athena, qid)
+            print(f"    Got {len(rows)} rows")
+        except RuntimeError as e:
+            print(f"    WARN: Query failed for {indicator_id}: {e} — skipping")
+            continue
+
+        for row in rows:
+            cid = row.get("country", "")
+            if not cid:
+                continue
+            try:
+                yr = int(float(row["year"])) if row.get("year") else None
+                val_str = row.get("value", "")
+                val = float(val_str) if val_str not in ("", None) else None
+                is_pred = row.get("is_predicted", "false").lower() in ("true", "1", "t")
+            except (ValueError, TypeError):
+                continue
+            if yr is None or val is None:
+                continue
+
+            if cid not in country_indicator_data:
+                country_indicator_data[cid] = {}
+            if idx not in country_indicator_data[cid]:
+                country_indicator_data[cid][idx] = {"data": {}, "predicted": {}}
+            country_indicator_data[cid][idx]["data"][yr] = val
+            country_indicator_data[cid][idx]["predicted"][yr] = is_pred
+
+    print(f"  Collected data for {len(country_indicator_data)} countries")
+
+    # Determine global year range across all data
+    all_years: set[int] = set()
+    for ind_map in country_indicator_data.values():
+        for ind_dict in ind_map.values():
+            all_years.update(ind_dict["data"].keys())
+    if not all_years:
+        print("  WARN: No trajectory data found — skipping output")
+        return
+
+    year_min = min(all_years)
+    year_max = max(all_years)
+    year_range = list(range(year_min, year_max + 1))
+
+    # Build name→ID lookup (reverse of country_id_to_name)
+    country_name_to_id: dict[str, str] = {name: cid for cid, name in country_id_to_name.items()}
+
+    # Build output: only include countries that appear in country-risks.json
+    output: dict[str, dict] = {}
+    for country_name, ind_map in country_indicator_data.items():
+        cid = country_name_to_id.get(country_name)
+        if not cid:
+            continue  # no indicator data for this country
+
+        indicators_out = []
+        for idx, ind_meta in enumerate(TRAJECTORY_INDICATORS):
+            if idx not in ind_map:
+                continue
+            ind_dict = ind_map[idx]
+            data_map = ind_dict["data"]
+            pred_map = ind_dict["predicted"]
+
+            # Build aligned data array (null for missing years)
+            data_arr = [data_map.get(yr) for yr in year_range]
+
+            # Find first predicted year
+            predicted_from = None
+            for yr in year_range:
+                if pred_map.get(yr):
+                    predicted_from = yr
+                    break
+
+            entry: dict = {
+                "name": ind_meta["name"],
+                "unit": ind_meta["unit"],
+                "data": data_arr,
+            }
+            if predicted_from is not None:
+                entry["predicted_from"] = predicted_from
+
+            indicators_out.append(entry)
+
+        if not indicators_out:
+            continue
+
+        output[cid] = {
+            "years": year_range,
+            "indicators": indicators_out,
+            "events": country_events.get(cid, []),
+        }
+
+    out_path = frontend_dir / "indicator-trajectories.json"
+    with open(out_path, "w") as f:
+        json.dump(output, f, separators=(",", ":"))
+    size_kb = os.path.getsize(out_path) / 1024
+    print(f"  Wrote {out_path} ({size_kb:.0f} KB, {len(output)} countries)")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Generate baked frontend JSON data")
     parser.add_argument("--bucket", required=True, help="S3 data lake bucket")
@@ -378,6 +569,7 @@ def main():
     parser.add_argument("--skip-twins", action="store_true", help="Skip structural twins")
     parser.add_argument("--skip-analogues", action="store_true", help="Skip analogues")
     parser.add_argument("--skip-pair-windows", action="store_true", help="Skip pair windows pre-compute")
+    parser.add_argument("--skip-trajectories", action="store_true", help="Skip indicator trajectories")
     parser.add_argument("--pair-windows-limit", type=int, default=None,
                         help="LIMIT rows for pair-windows query (local testing only)")
     args = parser.parse_args()
@@ -431,6 +623,10 @@ def main():
     # GH#280: Analogues
     if not args.skip_analogues:
         generate_analogues(athena, args.workgroup, args.database, frontend_dir, id_to_name, id_to_alpha2)
+
+    # GH#287: Indicator trajectories
+    if not args.skip_trajectories:
+        generate_indicator_trajectories(athena, args.workgroup, args.database, frontend_dir)
 
     # Write density and twins as separate files (cleaner than modifying country-risks.json)
     if density:
