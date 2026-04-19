@@ -94,7 +94,19 @@ variable "fetcher_job_queue_arn" {
 
 variable "fetcher_job_definition_arn" {
   type        = string
-  description = "Batch job definition ARN for Fargate Spot indicator fetcher"
+  description = "Batch JobDef ARN for the WB Fargate Spot indicator fetcher. This is the DEFAULT JobDef the dispatcher uses when an indicator's provider is not in batch_job_definition_map."
+}
+
+# #241 Phase B: per-provider Batch JobDef map. The dispatcher reads this
+# (JSON-encoded in its env var) and routes each indicator submission to
+# the provider-specific JobDef. Unknown providers fall back to
+# fetcher_job_definition_arn above. Map starts empty (legacy behaviour
+# preserved) and is populated per-env via terraform.tfvars when a new
+# provider's JobDef is ready.
+variable "batch_job_definition_map" {
+  type        = map(string)
+  description = "Map of provider (e.g. 'WB', 'FAOSTAT') -> Batch JobDef ARN. Used by dispatcher for per-provider routing (#240 Phase A / #241 Phase B)."
+  default     = {}
 }
 
 variable "pipeline_a_counter_table_name" {

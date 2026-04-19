@@ -173,6 +173,10 @@ resource "aws_lambda_function" "a_batch_dispatcher" {
       INDICATORS_KEY         = "pipeline-A-indicator-extractor/input/indicators.json"
       BATCH_JOB_QUEUE        = var.fetcher_job_queue_arn
       BATCH_JOB_DEFINITION   = var.fetcher_job_definition_arn
+      # #241 Phase B: per-provider JobDef routing. JSON-encoded. When
+      # empty ({}), dispatcher falls back to BATCH_JOB_DEFINITION for
+      # every indicator (legacy behaviour preserved).
+      BATCH_JOB_DEFINITION_MAP = jsonencode(var.batch_job_definition_map)
       COUNTER_TABLE          = var.pipeline_a_counter_table_name
       TRACKER_TABLE          = var.indicator_table_name
       INDICATOR_VALUES_TABLE = var.indicator_values_table_name

@@ -140,6 +140,123 @@ resource "aws_cloudwatch_log_group" "indicator_fetcher" {
   tags              = var.tags
 }
 
+# ---------------------------------------------------------------------------
+# #241 Phase B — FAOSTAT indicator fetcher (Fargate Spot, bulk-download)
+#
+# Sibling of the WB per-indicator fetcher above. Pattern differs:
+# - WB: one task per indicator, per-indicator API call.
+# - FAOSTAT: one task per DOMAIN (FS, RL, RFB, TM, PP, Forestry, GT,
+#   QCL), downloads the domain ZIP once and emits Parquet for every
+#   indicator in that domain. Far more efficient than 15 tasks each
+#   downloading the same ZIP.
+#
+# Shares the `fetcher_fargate_spot` compute environment + `fetcher`
+# queue with the WB JobDef — FAOSTAT tasks look identical at the
+# Fargate layer (small Graviton Spot task, 60-min timeout). Only the
+# image + resourceRequirements differ. Dispatcher decides which
+# JobDef to submit to based on the indicator's `provider` field
+# (#240 Phase A BATCH_JOB_DEFINITION_MAP env var).
+#
+# Resource sizing vs WB: WB uses 0.25 vCPU + 512 MB (per-indicator
+# API call, light). FAOSTAT downloads + parses 50-200 MB CSVs in
+# pandas, so we allocate 1 vCPU + 2 GB. Still pennies per task on
+# Fargate Spot Graviton.
+# ---------------------------------------------------------------------------
+
+resource "aws_ecr_repository" "indicator_fetcher_fao" {
+  name                 = "qgi-pipeline-a-indicator-fetcher-fao"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  encryption_configuration {
+    encryption_type = "AES256"
+  }
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_log_group" "indicator_fetcher_fao" {
+  name              = "/aws/batch/qgi-indicator-fetcher-fao"
+  retention_in_days = 14
+  tags              = var.tags
+}
+
+resource "aws_batch_job_definition" "indicator_fetcher_fao" {
+  name = "qgi-indicator-fetcher-fao-job"
+  type = "container"
+
+  platform_capabilities = ["FARGATE"]
+
+  retry_strategy {
+    # Same reasoning as the WB JobDef (#243): timeouts aren't
+    # transient; a failed FAOSTAT download typically means the CDN
+    # is having a bad time and a 3rd attempt won't help. Hard-kill
+    # path (SIGKILL / Spot reclaim) is caught by the EventBridge
+    # failure-handler Lambda that writes FAILED tracker rows.
+    attempts = 2
+  }
+
+  timeout {
+    # FAOSTAT bulk ZIPs take 1-3 min to download + 1-5 min to parse
+    # + a few seconds per indicator to write Parquet. 60 min is
+    # comfortably above worst case; matches the WB JobDef's budget.
+    attempt_duration_seconds = 3600
+  }
+
+  container_properties = jsonencode({
+    image   = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-a-indicator-fetcher-fao:latest"
+    command = []
+
+    jobRoleArn       = var.fargate_task_role_arn
+    executionRoleArn = var.fargate_execution_role_arn
+
+    resourceRequirements = [
+      # FAOSTAT CSVs run 50-200 MB; pandas loads the whole file into
+      # memory before filtering. 2 GB gives comfortable headroom
+      # (largest domain observed is ~180 MB unzipped). 1 vCPU keeps
+      # pandas' BLAS operations snappy.
+      { type = "VCPU",   value = "1" },
+      { type = "MEMORY", value = "2048" },
+    ]
+
+    networkConfiguration = {
+      assignPublicIp = "ENABLED" # required for Fargate to reach FAOSTAT CDN + S3
+    }
+
+    fargatePlatformConfiguration = {
+      platformVersion = "LATEST"
+    }
+
+    runtimePlatform = {
+      cpuArchitecture       = "ARM64" # ~20% cheaper on Fargate Spot
+      operatingSystemFamily = "LINUX"
+    }
+
+    environment = [
+      # Defaults used only if a manual `aws batch submit-job` is run.
+      # In normal operation the dispatcher overrides these per-unit
+      # via containerOverrides.
+      { name = "JITTER_MIN_S",       value = "60" },
+      { name = "JITTER_MAX_S",       value = "300" },
+      { name = "MAX_FETCH_ATTEMPTS", value = "5" },
+    ]
+
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/aws/batch/qgi-indicator-fetcher-fao"
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "fetch-fao"
+      }
+    }
+  })
+
+  tags = var.tags
+}
+
 # Job definition: 0.25 vCPU + 512 MB.
 #
 # GH#243 perma fix (2026-04-16): heavy WB indicators (FI.RES.TOTL.MO,

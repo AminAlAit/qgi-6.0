@@ -110,6 +110,18 @@ module "pipeline" {
   # #FAR-1: Phase 1 Fargate Spot dispatch
   fetcher_job_queue_arn         = module.batch.fetcher_job_queue_arn
   fetcher_job_definition_arn    = module.batch.fetcher_job_definition_arn
+  # #241 Phase B: per-provider JobDef routing. The dispatcher looks up
+  # each indicator's `provider` (WB / FAOSTAT / ...) in this map and
+  # submits to the matching JobDef. Unknown providers fall back to
+  # fetcher_job_definition_arn above. WB is redundantly listed so that
+  # even if an indicator is explicitly tagged provider=WB in future data,
+  # the map resolves — today's legacy rows without a provider tag also
+  # land on WB per the dispatcher's `provider = ind.get("provider") or "WB"`
+  # default.
+  batch_job_definition_map = {
+    WB      = module.batch.fetcher_job_definition_arn
+    FAOSTAT = module.batch.fao_fetcher_job_definition_arn
+  }
   pipeline_a_counter_table_name = module.storage.pipeline_a_counter_table_name
 
   tags = local.tags
