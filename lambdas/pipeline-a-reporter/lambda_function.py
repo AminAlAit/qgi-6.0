@@ -35,7 +35,10 @@ dynamodb = boto3.resource("dynamodb")
 sns = boto3.client("sns")
 s3 = boto3.client("s3")
 
-TABLE_NAME = "qgi-indicator-updates"
+# T11 #304 MEDIUM fix (2026-04-19): externalize tracker table name via
+# env var so staging/qa/prod can point at different DDB tables. Default
+# preserves existing legacy-account behavior.
+TABLE_NAME = os.environ.get("TRACKER_TABLE", "qgi-indicator-updates")
 S3_BUCKET = os.environ.get("S3_BUCKET", "")
 MANIFEST_KEY = os.environ.get(
     "MANIFEST_KEY", "indicator-freshness/latest-fetch-manifest.json"

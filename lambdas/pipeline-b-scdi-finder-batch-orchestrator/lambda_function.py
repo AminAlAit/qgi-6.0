@@ -188,15 +188,19 @@ def lambda_handler(event, context):
                 job_queue, job_definition
             ))
         submitted = 0
+        failed = 0
         for j in all_jobs[:num]:
             j["jobName"] = "debug-" + j["jobName"]
             try:
                 batch_client.submit_job(**j)
                 submitted += 1
             except Exception:
-                pass
+                # T11 #304 MEDIUM fix (2026-04-19): was `pass`. Log so ops
+                # can see when debug submissions are silently failing.
+                logger.exception(f"debug batch.submit_job failed for {j.get('jobName')}")
+                failed += 1
         return {'statusCode': 200,
-                'body': f'Successfully submitted {submitted} debug jobs.'}
+                'body': f'Successfully submitted {submitted} debug jobs ({failed} failed).'}
 
     # --- invoke_5 mode: submit exactly 5 ---
     if mode == "invoke_5":
@@ -208,14 +212,17 @@ def lambda_handler(event, context):
                 job_queue, job_definition
             ))
         submitted = 0
+        failed = 0
         for j in all_jobs[:5]:
             try:
                 batch_client.submit_job(**j)
                 submitted += 1
             except Exception:
-                pass
+                # T11 #304 MEDIUM fix: log so ops see silent failures.
+                logger.exception(f"invoke_5 batch.submit_job failed for {j.get('jobName')}")
+                failed += 1
         return {'statusCode': 200,
-                'body': f'Successfully submitted {submitted} of {len(all_jobs)} jobs.'}
+                'body': f'Successfully submitted {submitted} of {len(all_jobs)} jobs ({failed} failed).'}
 
     # --- invoke mode: FAN-OUT — one worker Lambda per indicator ---
     if "invoke" in mode:

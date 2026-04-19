@@ -1,6 +1,13 @@
 import boto3
+import logging
 import os
 import json
+
+# T11 #304 MEDIUM fix (2026-04-19): was using bare print(). Replaced with
+# standard logger so output is ingested by CloudWatch Logs + searchable by
+# log level.
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 sqs = boto3.client('sqs')
 sns = boto3.client('sns')
@@ -27,7 +34,7 @@ def lambda_handler(event, context):
             if count > 0:
                 failed_queues[url] = count
         except Exception as e:
-            print(f"Error checking {url}: {e}")
+            logger.exception(f"Error checking DLQ {url}")
 
     if failed_queues:
         message = "ALERT: QGI Pipeline Failure Detected.\n\nMessages found in Dead Letter Queues:\n"
