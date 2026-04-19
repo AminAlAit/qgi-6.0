@@ -1,6 +1,7 @@
 boto3
 botocore
 moto[dynamodb,sqs,s3]
+openpyxl
 pandas
 pyarrow
 pytest
