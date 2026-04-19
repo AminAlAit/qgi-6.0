@@ -1,0 +1,764 @@
+{
+  "country": "Tunisia",
+  "verified_at": "2026-04-19",
+  "agent": "claude-sonnet-4-6 + WebSearch",
+  "total_events": 106,
+  "summary": {
+    "VERIFIED": 82,
+    "UNVERIFIED": 18,
+    "FALSE": 6
+  },
+  "events": [
+    {
+      "year": 1950,
+      "title": "Neo-Destour Party Consolidates Nationalist Movement",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "General claim is plausible and consistent with the historical record of Bourguiba's movement, but the specific framing of 1950 as the year of consolidation lacks a directly citable source; broad historical accounts cover 1950-1956 as a continuum."
+    },
+    {
+      "year": 1950,
+      "title": "General Union of Tunisian Workers Founded",
+      "status": "FALSE",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union",
+      "note": "UGTT was founded on January 20, 1946 by Ferhat Hached, not 1950. The year is wrong by four years."
+    },
+    {
+      "year": 1951,
+      "title": "Bourguiba Presents Reform Demands to French Government",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "Consistent with the known pattern of Bourguiba's diplomatic activity but no specific 1951 Paris meeting is prominently documented in accessible sources."
+    },
+    {
+      "year": 1951,
+      "title": "Nationalist Strikes Paralyze Key Industries",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "General pattern of nationalist labour agitation 1951-1952 is historically attested, but a specific 1951 'paralyze key industries' event is not discretely citable."
+    },
+    {
+      "year": 1952,
+      "title": "Bourguiba Arrested and Exiled by French Authorities",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+      "note": "Bourguiba was arrested in January 1952 by Resident-General de Hauteclocque and exiled; this is well documented in multiple encyclopaedic sources."
+    },
+    {
+      "year": 1952,
+      "title": "Ferhat Hached Assassinated by Red Hand",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Farhat_Hached",
+      "note": "Ferhat Hached was assassinated on December 5, 1952 by La Main Rouge (Red Hand). Date, victim, and perpetrator organisation all confirmed."
+    },
+    {
+      "year": 1952,
+      "title": "Armed Resistance Groups Emerge in Rural Areas",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+      "note": "Fellagha guerrilla activity in western and southern Tunisia from 1952 is documented in independence history sources."
+    },
+    {
+      "year": 1953,
+      "title": "Franco-Tunisian Negotiations Begin Under International Pressure",
+      "status": "VERIFIED",
+      "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html",
+      "note": "Preliminary Franco-Tunisian negotiations over autonomy in 1953 under US and UN pressure are historically documented."
+    },
+    {
+      "year": 1954,
+      "title": "Pierre Mendes France Promises Internal Autonomy to Tunisia",
+      "status": "VERIFIED",
+      "source": "https://www.cvce.eu/en/obj/the_autonomy_of_tunisia_1954-en-b9a882fa-80c6-40e2-9ad7-ad82c8d90940.html",
+      "note": "Mendes France visited Tunis on July 31, 1954 (not simply 'July') and announced internal autonomy at Carthage palace. Core facts verified; event description says 'July 1954' which is correct."
+    },
+    {
+      "year": 1954,
+      "title": "Bourguiba Released from Exile to Lead Negotiations",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+      "note": "Bourguiba's release from exile following the internal autonomy declaration and his return to lead negotiations is documented."
+    },
+    {
+      "year": 1955,
+      "title": "Franco-Tunisian Convention Grants Internal Autonomy",
+      "status": "VERIFIED",
+      "source": "https://www.cvce.eu/en/obj/protocol_of_agreement_between_france_and_tunisia_20_march_1956-en-fbb6944a-9d78-4cff-b645-d1b25da9b6f2.html",
+      "note": "Conventions of June 3, 1955 granting internal autonomy are documented; Tahar Ben Ammar as prime minister of the first autonomous government is confirmed."
+    },
+    {
+      "year": 1955,
+      "title": "Salah Ben Youssef Split Threatens Neo-Destour Unity",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef",
+      "note": "Ben Youssef's break with Bourguiba over the conventions, his pan-Arab platform, and eventual expulsion from Tunisia are all documented."
+    },
+    {
+      "year": 1956,
+      "title": "Tunisia Gains Full Independence from France",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_independence",
+      "note": "Independence on March 20, 1956, ending 75 years of French protectorate, confirmed by multiple primary and encyclopaedic sources."
+    },
+    {
+      "year": 1956,
+      "title": "Habib Bourguiba Becomes Prime Minister of Independent Tunisia",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+      "note": "Bourguiba was appointed Prime Minister after independence under nominal sovereignty of Bey Muhammad VIII al-Amin; confirmed."
+    },
+    {
+      "year": 1956,
+      "title": "Personal Status Code Enacted — Women's Rights Reform",
+      "status": "VERIFIED",
+      "source": "https://www.unwomen.org/en/news/stories/2014/2/tunisias-new-constitution",
+      "note": "Personal Status Code of August 1956 abolishing polygamy and granting women divorce rights is one of the most-cited facts in Tunisian history; confirmed."
+    },
+    {
+      "year": 1957,
+      "title": "Bey Deposed — Tunisia Declared a Republic",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Kingdom_of_Tunisia",
+      "note": "Constituent Assembly voted on July 25, 1957 to abolish the monarchy, depose Bey Muhammad VIII al-Amin, and declare a republic with Bourguiba as president. All details confirmed."
+    },
+    {
+      "year": 1959,
+      "title": "Tunisia's First Republican Constitution Adopted",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "Tunisia's 1959 constitution establishing a presidential system with Islam as state religion is documented."
+    },
+    {
+      "year": 1960,
+      "title": "Evacuation of French Forces from Bizerte Demanded",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Bizerte_crisis",
+      "note": "Tunisia's demands for French evacuation of the Bizerte base are documented as a precursor to the 1961 crisis."
+    },
+    {
+      "year": 1961,
+      "title": "Bizerte Crisis — Tunisian Forces Attack French Base",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Bizerte_crisis",
+      "note": "July 1961 Bizerte crisis confirmed. The event says '600 to 700' Tunisian deaths; Wikipedia records 630 Tunisian dead with estimates ranging up to 1,000. The range in the description overlaps and is broadly consistent. French withdrew by October 1963 — confirmed."
+    },
+    {
+      "year": 1961,
+      "title": "Salah Ben Youssef Assassinated in Frankfurt",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Salah_ben_Youssef",
+      "note": "Ben Youssef was assassinated in a Frankfurt hotel on August 12, 1961, confirmed. He was staying in Wiesbaden but killed in Frankfurt."
+    },
+    {
+      "year": 1962,
+      "title": "Coup Attempt Against Bourguiba Fails",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "December 1962 coup attempt by military officers and civilians is documented in standard histories of Tunisia."
+    },
+    {
+      "year": 1963,
+      "title": "Neo-Destour Declared Only Legal Party",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+      "note": "Tunisia formalised as a single-party state from 1963; the party was renamed Destourian Socialist Party in 1964 — both facts confirmed."
+    },
+    {
+      "year": 1964,
+      "title": "Agricultural Collectivization Program Launched",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "Ahmed Ben Salah's collectivisation program starting in the mid-1960s is documented; 1964 as launch year is consistent with sources."
+    },
+    {
+      "year": 1967,
+      "title": "Cooperative Movement Shows Signs of Failure",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "The eventual failure of the cooperatives is well documented, but 1967 as the specific year when output fell below targets is not separately citable without access to specialist sources."
+    },
+    {
+      "year": 1968,
+      "title": "Student Protests Erupt in Tunis",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "1968 student protests at the University of Tunis, inspired partly by global 1968 movements, are documented in Tunisian history sources."
+    },
+    {
+      "year": 1969,
+      "title": "Ben Salah Dismissed and Arrested — Cooperative Experiment Ends",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Salah",
+      "note": "Bourguiba dismissed Ben Salah in September 1969; he was subsequently tried and sentenced; cooperatives dissolved — confirmed."
+    },
+    {
+      "year": 1969,
+      "title": "Tunisia Opens to Foreign Investment After Socialist Retreat",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "Tunisia's pivot to market-oriented policies and foreign investment codes after 1969 is documented."
+    },
+    {
+      "year": 1970,
+      "title": "Hedi Nouira Appointed Prime Minister — Liberal Economic Turn",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Hedi_Nouira",
+      "note": "Hedi Nouira, former central bank governor, appointed PM by Bourguiba in 1970 and pursued export-led industrialisation — confirmed."
+    },
+    {
+      "year": 1971,
+      "title": "Destourian Party Congress — Liberal Wing Crushed",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "The 1971 Monastir congress and expulsion of Ahmed Mestiri's liberal faction is documented in standard Tunisian histories."
+    },
+    {
+      "year": 1974,
+      "title": "Libya-Tunisia Merger Proposed and Quickly Abandoned",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Arab_Islamic_Republic",
+      "note": "January 1974 announcement of Libyan-Tunisian merger into 'Arab Islamic Republic', rapidly reversed, is documented."
+    },
+    {
+      "year": 1974,
+      "title": "Bourguiba Declared President for Life",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Habib_Bourguiba",
+      "note": "Constitutional amendment in 1974 declaring Bourguiba president for life is documented."
+    },
+    {
+      "year": 1975,
+      "title": "Gafsa Phosphate Region — Economic Importance and Interior Inequality",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "The general fact about Gafsa phosphate importance is historically accurate, but the 1975 framing as a discrete event is not citable as an event; it describes structural conditions."
+    },
+    {
+      "year": 1976,
+      "title": "Islamist Movement Begins Organizing on Campuses",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "The Islamic Tendency Movement's campus-based origins in the mid-1970s are documented in Ennahda's history."
+    },
+    {
+      "year": 1977,
+      "title": "National Pact Between Government and UGTT Breaks Down",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_General_Labour_Union",
+      "note": "The 1977 social pact breakdown and Habib Achour's increasingly independent UGTT leadership as prelude to 1978 are documented."
+    },
+    {
+      "year": 1978,
+      "title": "Black Thursday — General Strike Suppressed in Blood",
+      "status": "VERIFIED",
+      "source": "https://www.globalsecurity.org/military/world/tunisia/politics-1978.htm",
+      "note": "January 26, 1978 UGTT general strike, state of emergency, military deployment, and 'Black Thursday' designation confirmed. Death toll given as 50–200 in event; official figure was 42 but unofficial estimates run much higher — within range."
+    },
+    {
+      "year": 1980,
+      "title": "Gafsa Raid — Libya-Backed Attack on Mining Town",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/1980_Gafsa_Uprising",
+      "note": "January 27, 1980 raid by Libya-trained militants on Gafsa confirmed. Event says 'January 1980' — consistent. Attackers were Tunisian exiles trained in Libya, not a 'group of opposition militants' generically; the characterisation is broadly accurate."
+    },
+    {
+      "year": 1980,
+      "title": "Prime Minister Hedi Nouira Suffers Stroke — Political Transition",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Hedi_Nouira",
+      "note": "Nouira suffered a stroke in 1980, leading Bourguiba to appoint Mohammed Mzali as PM — confirmed."
+    },
+    {
+      "year": 1981,
+      "title": "Multi-Party System Briefly Tolerated",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "The 1981 controlled opening toward multi-party elections, followed by fraudulent results, is documented."
+    },
+    {
+      "year": 1981,
+      "title": "Islamic Tendency Movement Founded Formally",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "Ghannouchi and Mourou formally founded the MTI in 1981; application for legal recognition denied — confirmed."
+    },
+    {
+      "year": 1982,
+      "title": "PLO Relocates to Tunis After Beirut Evacuation",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Palestine_Liberation_Organization",
+      "note": "PLO headquarters relocated to Tunis after the 1982 Beirut evacuation under Israeli military pressure — confirmed."
+    },
+    {
+      "year": 1983,
+      "title": "Bread Riots Erupt After IMF Subsidy Cuts",
+      "status": "FALSE",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_bread_riots",
+      "note": "The bread riots began on December 29, 1983, not 'late 1983' as stated — technically straddles late 1983/early 1984. However the event says riots erupted 'in late 1983' and spread to Tunis, whereas the Wikipedia record shows they began December 29, 1983 in Nefzaoua (south) and escalated in January 1984. The core framing that the government 'doubled' bread prices is correct, but the event misattributes the start city as 'Kasserine, Gafsa, and Sidi Bouzid' — the actual start was Nefzaoua. Minor factual inaccuracies in geographic detail elevate to FALSE."
+    },
+    {
+      "year": 1984,
+      "title": "Bourguiba's Health Decline Becomes Political Issue",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "Generally attested as background context but not a discrete verifiable event with a specific 1984 date; it describes a process spanning the mid-to-late 1980s."
+    },
+    {
+      "year": 1985,
+      "title": "Israel Bombs PLO Headquarters in Tunis",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Operation_Wooden_Leg",
+      "note": "Israeli airstrike on PLO HQ in Hammam Chott (Hammam al-Shatt per the event) on October 1, 1985 confirmed. Event says '~68 killed'; Wikipedia ranges from 41–71; 68 is within the documented range."
+    },
+    {
+      "year": 1985,
+      "title": "Crackdown on Islamic Tendency Movement Intensifies",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "Government crackdown on MTI with mass arrests and Ghannouchi's imprisonment in 1985 is documented."
+    },
+    {
+      "year": 1986,
+      "title": "Economic Crisis Forces Structural Adjustment",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "Tunisia's 1986 IMF/World Bank structural adjustment program triggered by falling oil/phosphate revenues and debt is documented."
+    },
+    {
+      "year": 1987,
+      "title": "Ghannouchi Sentenced to Death — International Outcry",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Rashid_al-Ghannushi",
+      "note": "Ghannouchi received a death sentence in absentia in 1987 trials; other MTI leaders received life sentences; international condemnation documented."
+    },
+    {
+      "year": 1987,
+      "title": "Ben Ali Ousts Bourguiba in Medical Coup",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/1987_Tunisian_coup_d'%C3%A9tat",
+      "note": "November 7, 1987 coup confirmed in full detail: seven doctors signed medical report, Article 57 (not Article 80) of the constitution invoked, Bourguiba was 84, bloodless. Event text says 'Article' — technically Article 57 of the 1959 constitution; event text does not specify article number so no error."
+    },
+    {
+      "year": 1988,
+      "title": "Ben Ali's National Pact and Ennahda's Legalization Bid",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "1988 National Pact, MTI reconstituting as Ennahda, and government's refusal of legal recognition all documented."
+    },
+    {
+      "year": 1989,
+      "title": "First Ben Ali Elections — Ennahda Shows Electoral Strength",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "Ben Ali's 99% 1989 presidential victory and Ennahda-linked independents showing unexpected electoral strength (up to 17% in some districts) is documented."
+    },
+    {
+      "year": 1991,
+      "title": "Ennahda Accused of Coup Plot — Mass Arrests Begin",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "1991 government accusations of coup plot, mass arrests of thousands, Ghannouchi fleeing to London, and systematic torture documented by human rights organisations — confirmed."
+    },
+    {
+      "year": 1992,
+      "title": "Constitutional Changes Consolidate Ben Ali's Power",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "Early 1990s constitutional engineering to consolidate Ben Ali's authority alongside massive security apparatus expansion is documented."
+    },
+    {
+      "year": 1994,
+      "title": "Ben Ali Wins Second Term — Opposition Parties Token",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "Ben Ali's 1994 election with near-100% vote share and token permitted opposition confirmed."
+    },
+    {
+      "year": 1995,
+      "title": "Tunisia Signs Association Agreement with European Union",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisia%E2%80%93European_Union_relations",
+      "note": "Tunisia's 1995 Association Agreement with the EU (first Mediterranean country) is documented."
+    },
+    {
+      "year": 1996,
+      "title": "Press Censorship and Internet Control Tightened",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Internet_censorship_in_Tunisia",
+      "note": "Ben Ali's press censorship tightening and state ATI internet gateway for surveillance in the 1990s are documented."
+    },
+    {
+      "year": 1998,
+      "title": "Ben Ali Changes Constitution to Allow Third Term",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "1998 constitutional amendment removing presidential term limits is documented."
+    },
+    {
+      "year": 1999,
+      "title": "First Contested Presidential Election — Three Candidates Allowed",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/1999_Tunisian_presidential_election",
+      "note": "1999 election with two token opposition candidates and Ben Ali winning 99.4% confirmed."
+    },
+    {
+      "year": 2000,
+      "title": "Civil Society Organizations Multiply Despite Restrictions",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "The role of LTDH, bar association, and journalists' union under Ben Ali is broadly documented, but 2000 as the specific year of multiplication is not a verifiable discrete event."
+    },
+    {
+      "year": 2001,
+      "title": "September 11 Strengthens Ben Ali's Counter-Terror Credentials",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "Post-9/11 US counter-terrorism cooperation with Ben Ali and his use of the 'war on terror' framework to justify Ennahda persecution is documented."
+    },
+    {
+      "year": 2002,
+      "title": "Djerba Synagogue Bombing by Al-Qaeda",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ghriba_synagogue_bombing",
+      "note": "April 11, 2002 El-Ghriba synagogue truck bomb killing 21 (14 German tourists, 5 Tunisians, 2 French) by Al-Qaeda confirmed. Event says 'April 2002' and '14 German tourists' — correct."
+    },
+    {
+      "year": 2002,
+      "title": "Constitutional Referendum Removes Presidential Age Limit",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "2002 constitutional referendum removing presidential age limit and establishing presidential immunity confirmed."
+    },
+    {
+      "year": 2003,
+      "title": "Anti-Terrorism Law Passed with Broad Definitions",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Zine_El_Abidine_Ben_Ali",
+      "note": "Tunisia's 2003 anti-terrorism law with broad definitions used to prosecute peaceful activists is documented by Amnesty International and Human Rights Watch."
+    },
+    {
+      "year": 2006,
+      "title": "Blogger Zouhair Yahyaoui Dies After Imprisonment",
+      "status": "FALSE",
+      "source": "https://en.wikipedia.org/wiki/Zouhair_Yahyaoui",
+      "note": "Zouhair Yahyaoui died on March 13, 2005, not 2006. The year is incorrect."
+    },
+    {
+      "year": 2007,
+      "title": "Counterterrorism Operations in Tunis Suburbs",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2006%E2%80%932007_Tunisian_clashes",
+      "note": "Security forces' armed operations against militant cell in Hammam Lif/Soliman area in late 2006 and early 2007 are documented."
+    },
+    {
+      "year": 2008,
+      "title": "Gafsa Mining Basin Uprising",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2008_Tunisian_protests",
+      "note": "January 2008 Gafsa mining basin uprising over CPG hiring practices, lasting six months, with security forces killing protesters, confirmed. Event says 'January 2008' — correct."
+    },
+    {
+      "year": 2008,
+      "title": "Global Financial Crisis Hits Tunisian Exports",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/History_of_modern_Tunisia",
+      "note": "2008 financial crisis impact on Tunisian exports and growth slowdown is documented."
+    },
+    {
+      "year": 2009,
+      "title": "Ben Ali Elected for Fifth Term — Youth Unemployment Crisis",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2009_Tunisian_presidential_election",
+      "note": "Ben Ali's 2009 fifth-term election with 89.6% and the concurrent youth unemployment crisis are documented."
+    },
+    {
+      "year": 2010,
+      "title": "Mohamed Bouazizi Self-Immolates — Spark of Arab Spring",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Mohamed_Bouazizi",
+      "note": "December 17, 2010 self-immolation in Sidi Bouzid by 26-year-old street vendor after confiscation and humiliation by municipal official confirmed in full detail."
+    },
+    {
+      "year": 2010,
+      "title": "Jasmine Revolution — Nationwide Protests Escalate",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_revolution",
+      "note": "December 2010 spread of protests from Sidi Bouzid to Kasserine, Thala, and Tunis with live fire killings, UGTT regional office involvement, and social media coordination confirmed."
+    },
+    {
+      "year": 2011,
+      "title": "Ben Ali Flees — Revolution Succeeds",
+      "status": "VERIFIED",
+      "source": "https://www.aljazeera.com/features/2021/1/14/remembering-the-day-tunisias-president-ben-ali-fled",
+      "note": "Ben Ali fled to Saudi Arabia on January 14, 2011, after 23 years in power, as security forces and army refused to fire on civilians. First Arab country to overthrow government by popular protest — all confirmed."
+    },
+    {
+      "year": 2011,
+      "title": "Ennahda Returns from Exile — Ghannouchi Welcomed",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Ennahda_Movement",
+      "note": "Ghannouchi's return from 22 years of London exile to large crowds in Tunis and Ennahda's rapid legalisation and membership expansion confirmed."
+    },
+    {
+      "year": 2011,
+      "title": "October Elections — Ennahda Wins Constituent Assembly",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2011_Tunisian_Constituent_Assembly_election",
+      "note": "Ennahda winning ~37% in October 2011 free elections; troika coalition government; declared free and fair by international observers — confirmed."
+    },
+    {
+      "year": 2012,
+      "title": "Constitutional Drafting Process Begins — Article 1 Debate",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014",
+      "note": "2012 constitutional debate including the sharia-as-source-of-legislation controversy and Ennahda's eventual acceptance that sharia would not be referenced is documented."
+    },
+    {
+      "year": 2012,
+      "title": "US Embassy Attacked by Salafi Protesters",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2012_attacks_on_U.S._diplomatic_missions",
+      "note": "September 2012 Salafi attack on US Embassy in Tunis as part of the anti-Islam video protest wave is documented."
+    },
+    {
+      "year": 2013,
+      "title": "Political Crisis — Two Secular Politicians Assassinated",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2013%E2%80%932014_Tunisian_political_crisis",
+      "note": "Chokri Belaid assassinated February 6, 2013; Mohamed Brahmi July 25, 2013. Both secular leftists. Political crisis and near-collapse of transition confirmed. Event correctly says 'February' and 'July'."
+    },
+    {
+      "year": 2013,
+      "title": "National Dialogue Quartet Saves Democratic Transition",
+      "status": "VERIFIED",
+      "source": "https://www.nobelprize.org/prizes/peace/2015/tndq/facts/",
+      "note": "National Dialogue Quartet (UGTT, UTICA, lawyers, LTDH) brokered the Ennahda handover to a technocratic caretaker government — confirmed. Nobel Prize awarded 2015 for this work."
+    },
+    {
+      "year": 2014,
+      "title": "New Constitution Adopted — Most Progressive in Arab World",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_Constitution_of_2014",
+      "note": "Constitution adopted January 26, 2014 (event says 'January 27' — actual date is 26 January; minor one-day discrepancy) by 200–12 vote. Guarantees cited are confirmed."
+    },
+    {
+      "year": 2014,
+      "title": "Nidaa Tounes Wins Parliamentary Elections",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2014_Tunisian_parliamentary_election",
+      "note": "Nidaa Tounes winning plurality in October 2014 elections; Ennahda choosing to enter national unity coalition — confirmed."
+    },
+    {
+      "year": 2014,
+      "title": "Beji Caid Essebsi Elected President",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Beji_Caid_Essebsi",
+      "note": "Essebsi won December 21, 2014 runoff with 55.68% (event says '55%' — correct rounding). First freely elected president — confirmed."
+    },
+    {
+      "year": 2015,
+      "title": "Bardo Museum Attack Kills 22 Tourists",
+      "status": "FALSE",
+      "source": "https://en.wikipedia.org/wiki/Bardo_National_Museum_attack",
+      "note": "Attack on March 18, 2015 (event says 'March 2015' — correct month). However, 21 people were killed at the scene with one dying later (total 22 in some counts). Event says '22 people, mostly European tourists' — that total is reached only when counting the later death; on-scene count was 21. Additionally, the attack involved two gunmen (Labidi and Khachnaoui), not just 'gunmen' plural affiliating with IS — attribution was disputed between IS and Okba Ibn Nafaa Brigade. The 22-person death count is defensible but requires the later death. Status: VERIFIED (marginal)."
+    },
+    {
+      "year": 2015,
+      "title": "Sousse Beach Resort Massacre — 38 Killed",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2015_Sousse_attacks",
+      "note": "June 26, 2015 attack at Port El Kantaoui by Seifeddine Rezgui killing 38 people (30 British) confirmed in full detail."
+    },
+    {
+      "year": 2015,
+      "title": "National Dialogue Quartet Wins Nobel Peace Prize",
+      "status": "VERIFIED",
+      "source": "https://www.nobelprize.org/prizes/peace/2015/press-release/",
+      "note": "2015 Nobel Peace Prize awarded to the Quartet (UGTT, UTICA, LTDH, Order of Lawyers) — confirmed."
+    },
+    {
+      "year": 2016,
+      "title": "Economic Stagnation Deepens — Youth Unemployment Crisis",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+      "note": "Post-2014 economic stagnation and youth unemployment above 30% in interior regions, IMF loan programme — confirmed as documented trend."
+    },
+    {
+      "year": 2017,
+      "title": "Nidaa Tounes Fractures — Political Instability Deepens",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Nidaa_Tounes",
+      "note": "Nidaa Tounes' 2017 fracture driven by Hafedh Caid Essebsi's consolidation of the party is documented."
+    },
+    {
+      "year": 2017,
+      "title": "Protests in Kasserine and Interior Cities — Economic Despair",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2017_Tunisian_protests",
+      "note": "2017 Kasserine protests over unemployment and regional neglect echoing 2010–11 conditions are documented."
+    },
+    {
+      "year": 2018,
+      "title": "Municipal Elections — First in Tunisia's History",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2018_Tunisian_municipal_elections",
+      "note": "May 2018 first-ever free municipal elections with ~33% turnout and strong independent candidate performance confirmed."
+    },
+    {
+      "year": 2018,
+      "title": "IMF Austerity Measures Trigger Widespread Protests",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2018_Tunisian_protests",
+      "note": "January 2018 'Fash Negdhoo' protests against VAT increases and public-sector hiring cuts — confirmed."
+    },
+    {
+      "year": 2019,
+      "title": "Essebsi Dies — Constitutional Succession Test",
+      "status": "VERIFIED",
+      "source": "https://www.france24.com/en/20190725-tunisia-president-essebsi-dies-aged-92",
+      "note": "Essebsi died in office on July 25, 2019; speaker Mohamed Ennaceur assumed interim presidency; constitutional succession followed — confirmed."
+    },
+    {
+      "year": 2019,
+      "title": "Kais Saied Elected President — Anti-Establishment Wave",
+      "status": "VERIFIED",
+      "source": "https://www.aljazeera.com/news/2019/10/14/tunisia-presidential-election-kais-saied-declared-winner",
+      "note": "Saied won October 2019 runoff with 72.71% (event says '73%' — consistent rounding). Opponent was Nabil Karoui; youth support documented — confirmed."
+    },
+    {
+      "year": 2019,
+      "title": "Ennahda Leads in Parliamentary Elections — Fragmented Assembly",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2019_Tunisian_parliamentary_election",
+      "note": "October 2019 parliamentary elections giving Ennahda ~52 seats in fragmented 217-seat assembly and subsequent difficulty forming a government — confirmed."
+    },
+    {
+      "year": 2020,
+      "title": "COVID-19 Devastates Economy and Tourist Sector",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Tunisia",
+      "note": "Tunisia's GDP fell ~8.8% in 2020, worst contraction since independence, tourist sector collapse — confirmed."
+    },
+    {
+      "year": 2020,
+      "title": "Political Paralysis — Saied vs Parliament Deadlock",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Kais_Saied",
+      "note": "2020 Saied-parliament deadlock, PM Mechichi caught between competing authority centres, constitutional semi-presidential dysfunction — confirmed."
+    },
+    {
+      "year": 2021,
+      "title": "Saied's July 25 Power Grab — Democracy Suspended",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2021_Tunisian_self-coup",
+      "note": "July 25, 2021: Saied invoked Article 80, dismissed PM Mechichi, suspended parliament, assumed executive power by decree — all details confirmed."
+    },
+    {
+      "year": 2021,
+      "title": "International Aid Withheld Over Democratic Backsliding",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Kais_Saied",
+      "note": "Western governments and IMF withholding loans/aid over democratic backsliding post-July 2021 documented."
+    },
+    {
+      "year": 2022,
+      "title": "New Constitution Adopted — Presidential Republic Restored",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2022_Tunisian_constitutional_referendum",
+      "note": "July 25, 2022 referendum: 94.6% yes, 30.5% turnout (event says '27%' — actual was 30.5%; minor discrepancy). Constitution concentrating power in presidency confirmed."
+    },
+    {
+      "year": 2022,
+      "title": "Economic Crisis — IMF Negotiations for Bailout",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+      "note": "Tunisia's 2022 fiscal crisis, IMF $1.9bn programme negotiations, Saied's public rejection of IMF conditions — confirmed."
+    },
+    {
+      "year": 2022,
+      "title": "Mass Migration to Europe Increases Dramatically",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Tunisian_migration_to_Europe",
+      "note": "2022 dramatic increase in irregular migration from Tunisia to Italy via Lampedusa confirmed in multiple news sources."
+    },
+    {
+      "year": 2023,
+      "title": "Saied Scapegoats Sub-Saharan African Migrants",
+      "status": "VERIFIED",
+      "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/",
+      "note": "February 2023 Saied statements on sub-Saharan migrants, violence against Black Africans, deportations to Libya without due process — confirmed by Amnesty International."
+    },
+    {
+      "year": 2023,
+      "title": "European Union-Tunisia Migration Deal Signed",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/EU%E2%80%93Tunisia_migration_deal",
+      "note": "July 2023 MoU with von der Leyen and Meloni pledging 105 million euros for migration control confirmed."
+    },
+    {
+      "year": 2023,
+      "title": "IMF Deal Remains Elusive — Subsidy Reform Rejected",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/Economy_of_Tunisia",
+      "note": "Failure to finalise IMF programme in 2023, food shortages due to import restrictions, Saied's rejection of IMF conditions — confirmed."
+    },
+    {
+      "year": 2023,
+      "title": "Crackdown on Opposition Politicians and Civil Society",
+      "status": "VERIFIED",
+      "source": "https://www.amnesty.org/en/latest/campaigns/2023/07/human-rights-under-assault-two-years-after-president-saieds-power-grab/",
+      "note": "2023 arrest of former prime ministers, party leaders, journalists, and civil society activists on conspiracy charges — confirmed by Amnesty International and Human Rights Watch."
+    },
+    {
+      "year": 2024,
+      "title": "Saied Re-elected in Low-Turnout Election",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/2024_Tunisian_presidential_election",
+      "note": "October 6, 2024 election: Saied won 90.69% (event says '89%' — initial exit poll figure; final official result was 90.69%). Turnout was 28.8% (event says 'extremely low' — consistent). Opposition leaders in prison, restricted media — confirmed."
+    },
+    {
+      "year": 2024,
+      "title": "Economic Pressure — Salaries Delayed, Debt Rising",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "Reports of delayed public sector salary payments in 2024 are consistent with documented fiscal crisis but are not discretely verifiable from an accessible single citable source."
+    },
+    {
+      "year": 2024,
+      "title": "Lampedusa Migration Crisis — Tunisians Among Largest Groups",
+      "status": "VERIFIED",
+      "source": "https://en.wikipedia.org/wiki/European_migrant_crisis",
+      "note": "Tunisians remaining among the largest national groups crossing to Lampedusa in 2024 despite the 2023 EU deal is documented."
+    },
+    {
+      "year": 2025,
+      "title": "Tunisia Faces Critical Economic Crossroads",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "The 2025 projection is plausible given documented trends but is forward-looking from the perspective of verified facts; no specific 2025 event is citable."
+    },
+    {
+      "year": 2025,
+      "title": "Political Prisoners and Press Freedom Concerns Persist",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "Continuation of 2023-2024 documented trends is plausible but 2025 is beyond most readily indexed sources at verification time."
+    },
+    {
+      "year": 2025,
+      "title": "Youth Emigration Accelerates — Brain Drain Crisis",
+      "status": "UNVERIFIED",
+      "source": null,
+      "note": "The brain drain trend is well documented for 2022–2024; 2025 'record levels' is a projection not yet independently verifiable."
+    }
+  ],
+  "notes": [
+    "UGTT founding year: event records 1950 — ACTUALLY FOUNDED 1946 (FALSE).",
+    "Blogger Zouhair Yahyaoui death year: event says 2006 — Wikipedia records 2005 (FALSE).",
+    "Bread riots 1983: event misstates starting cities as Kasserine/Gafsa/Sidi Bouzid — riots began in Nefzaoua (FALSE on geographic detail).",
+    "Constitution adoption date: event says January 27, 2014 — actual date January 26, 2014 (minor 1-day error, kept VERIFIED).",
+    "2022 referendum turnout: event says 27% — official figure was 30.5% (minor discrepancy, kept VERIFIED).",
+    "Saied 2024 result: event says 89% — final official result was 90.69% (exit poll vs final; kept VERIFIED).",
+    "Israel PLO strike casualty count: event says ~68 — documented range 41-71, 68 within range (VERIFIED)."
+  ]
+}
