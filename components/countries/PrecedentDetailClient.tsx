@@ -360,26 +360,23 @@ export function PrecedentDetailClient({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {enrichedAnalogues.map((a, i) => {
-                // Pattern URL — use pair_* (aligned) first, then
-                // best_pattern_* (legacy), else no link at all.
-                const haveAlignedPair =
-                  a.pair_start_a !== undefined &&
-                  a.pair_start_a !== null &&
-                  a.pair_start_b !== undefined &&
-                  a.pair_start_b !== null &&
-                  a.pair_length !== undefined &&
-                  a.pair_length !== null;
-                const haveLegacyPattern =
-                  a.best_pattern_start_a !== undefined &&
-                  a.best_pattern_start_b !== undefined &&
-                  a.best_pattern_length !== undefined;
-
-                let patternHref: string | null = null;
-                if (haveAlignedPair) {
-                  patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.pair_length}&start_a=${a.pair_start_a}&start_b=${a.pair_start_b}`;
-                } else if (haveLegacyPattern) {
-                  patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.best_pattern_length}&start_a=${a.best_pattern_start_a}&start_b=${a.best_pattern_start_b}`;
-                }
+                // View pattern — always routes to the country-pair
+                // browse view (no specific window in the URL). The
+                // Patterns page loads the full list of patterns between
+                // the two countries from /api/patterns/windows; user
+                // picks from there.
+                //
+                // Earlier attempt passed `length` + `start_a` +
+                // `start_b` derived from pair_* or best_pattern_*. That
+                // sent users straight to /api/patterns/detail, which is
+                // a live-fetched endpoint that 500s on cache miss and
+                // rendered as "Pattern detail unavailable" — a
+                // confidence-destroying UX for any analogue whose
+                // specific window hadn't been pre-computed. Routing to
+                // the list view instead gives users something real to
+                // interact with on every click (even if the individual
+                // detail is still being pre-computed).
+                const patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`;
 
                 return (
                   <div
@@ -473,28 +470,17 @@ export function PrecedentDetailClient({
                       >
                         |
                       </span>
-                      {patternHref ? (
-                        <Link
-                          href={patternHref}
-                          className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
-                          style={{
-                            color: "var(--qgi-accent)",
-                            outlineColor: "var(--qgi-accent)",
-                          }}
-                          aria-label={`View pattern between ${country.name} and ${a.country_b_name}`}
-                        >
-                          View pattern
-                        </Link>
-                      ) : (
-                        <span
-                          className="text-[10px] tracking-widest cursor-not-allowed"
-                          style={{ color: "var(--qgi-text-dim)" }}
-                          title="Detailed pattern view unavailable for this analogue. Timeline shows an event-anchored approximation. Use View country to open the analogue's full profile."
-                          aria-label={`Pattern detail not available for ${a.country_b_name}`}
-                        >
-                          Pattern n/a
-                        </span>
-                      )}
+                      <Link
+                        href={patternHref}
+                        className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                        style={{
+                          color: "var(--qgi-accent)",
+                          outlineColor: "var(--qgi-accent)",
+                        }}
+                        aria-label={`View patterns between ${country.name} and ${a.country_b_name}`}
+                      >
+                        View pattern
+                      </Link>
                     </div>
                   </div>
                 );

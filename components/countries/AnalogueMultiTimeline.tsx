@@ -397,25 +397,26 @@ export function AnalogueMultiTimeline({
                 {pw.length}yr
               </text>
 
-              {/* Analogue pattern bar. Real pair-window data renders as
-                  a solid orange bar; 15yr event-anchor approximations
-                  (pw.isReal = false) render with reduced opacity + a
-                  dashed stroke so analysts can tell at a glance which
-                  rows are backed by real qgi_data.patterns windows and
-                  which are event-anchored approximations. Sonnet P1
-                  review flagged the prior single-pixel "~" tilde prefix
-                  as too subtle — 18,009 fallback rows were rendering
-                  identically to real rows. */}
+              {/* Analogue pattern bar. Earlier iteration rendered
+                  fallback windows (15yr event-anchored approximation)
+                  with dashed stroke + "(approx)" label + reduced
+                  opacity to distinguish them from real pair-window
+                  data. User feedback (2026-04-19): that distinction is
+                  an internal data-quality concern that leaks to the UI
+                  as visual degradation — users want to see the
+                  analogue's window, not a debug indicator of which
+                  pipeline produced it. Uniform bar for every row.
+                  Transparency lives in the header badge ("WINDOWS ≈
+                  15YR FALLBACK" when that's the dominant mode). */}
               <rect
                 x={xOf(patternStart)}
                 y={0}
                 width={xOf(patternEnd) - xOf(patternStart)}
                 height={barHeight}
                 fill={COLOR_ANALOGUE}
-                fillOpacity={pw.isReal ? 0.22 : 0.08}
+                fillOpacity={0.22}
                 stroke={COLOR_ANALOGUE}
                 strokeWidth={1}
-                strokeDasharray={pw.isReal ? undefined : "3 3"}
                 rx={2}
               />
               <text
@@ -427,9 +428,7 @@ export function AnalogueMultiTimeline({
                 fill={COLOR_ANALOGUE}
                 fillOpacity={0.85}
               >
-                {pw.isReal ? "" : "≈"}
                 {patternStart}–{patternEnd}
-                {!pw.isReal && " (approx)"}
               </text>
               {/* #354: event-outside-window indicator. When the analogue's
                   median-year event falls outside its length-L pattern, the
