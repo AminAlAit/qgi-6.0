@@ -109,10 +109,10 @@ export function CountryProfileClient({
       {/* ─── Header ─────────────────────────────────────────────────── */}
       <div className="flex items-start justify-between mb-8">
         <div className="flex items-center gap-4">
-          <CountryFlag alpha2={country.alpha_2} size={36} />
+          <CountryFlag alpha2={country.alpha_2} size={36} countryName={country.name} />
           <div>
             <h1 className="text-2xl font-semibold">{country.name}</h1>
-            <div className="flex items-center gap-3 mt-1">
+            <div className="flex items-center gap-3 mt-1 flex-wrap">
               <span
                 className="text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded"
                 style={{
@@ -131,6 +131,46 @@ export function CountryProfileClient({
                   Verified events
                 </span>
               )}
+              {/* T21 #314 (Santiago s2): recipe-depth disclosure — surfaces
+                  the underlying pattern evidence volume so Venezuela's
+                  ~1.5k precedents aren't visually equivalent to Colombia's
+                  15k+ when reading a country's tier. */}
+              {(() => {
+                const recipeCount = Object.values(country.tiers ?? {}).reduce(
+                  (sum, tb) =>
+                    sum +
+                    (tb.top_categories ?? []).reduce(
+                      (s, c) => s + (c.recipe_count ?? 0),
+                      0
+                    ),
+                  0
+                );
+                if (recipeCount === 0) return null;
+                const depthLabel =
+                  recipeCount >= 5000
+                    ? "robust"
+                    : recipeCount >= 1500
+                      ? "moderate"
+                      : "sparse";
+                const depthColor =
+                  depthLabel === "robust"
+                    ? "var(--qgi-success)"
+                    : depthLabel === "moderate"
+                      ? "var(--qgi-amber)"
+                      : "var(--qgi-text-dim)";
+                return (
+                  <span
+                    className="text-[10px] tracking-wider font-data flex items-center gap-1"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                    title={`${recipeCount.toLocaleString()} precedent matches across all pattern-length tiers. Interpret HIGH tiers with higher confidence when evidence volume is 'robust'; 'sparse' evidence means fewer historical analogues support the score.`}
+                  >
+                    Pattern depth:{" "}
+                    <span style={{ color: depthColor }}>
+                      {recipeCount.toLocaleString()} ({depthLabel})
+                    </span>
+                  </span>
+                );
+              })()}
             </div>
           </div>
         </div>

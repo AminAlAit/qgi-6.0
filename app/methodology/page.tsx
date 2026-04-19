@@ -94,6 +94,126 @@ export default function MethodologyPage() {
           </p>
         </div>
 
+        {/* T21 #314 (Alex s1+s2): Key Terms box — non-experts couldn't
+            parse "SCDI", "PPS", "salience", "rank fusion" without a
+            glossary. Collapsible <details> avoids pushing methodology
+            content below the fold while still surfacing the glossary to
+            first-time readers. */}
+        <details
+          className="mb-10 rounded-lg border"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <summary
+            className="cursor-pointer px-5 py-3 text-sm font-semibold flex items-center gap-2"
+            style={{ color: "var(--qgi-text)" }}
+          >
+            <span style={{ color: "var(--qgi-accent)" }}>▸</span>
+            Key Terms Glossary
+            <span
+              className="text-[10px] font-normal tracking-wider"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              (click to expand)
+            </span>
+          </summary>
+          <dl
+            className="px-5 pb-5 pt-1 text-sm leading-relaxed grid gap-3"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                SCDI — Statistically Correlated Development Indicator
+              </dt>
+              <dd>
+                A pair of country-indicator trajectories with strong Pearson
+                correlation (|r| ≥ 0.5) over a shared window. The building
+                block of every pattern.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Pattern
+              </dt>
+              <dd>
+                A bundle of 3+ SCDIs between the same two countries, over
+                the same time window. Patterns carry a Pattern Power Score
+                (PPS) that rolls correlation, indicator count, and window
+                length into a single 0–100 quality metric.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Precedent
+              </dt>
+              <dd>
+                A pattern whose predictor country experienced a known
+                geopolitical event within a forward window after the
+                pattern ended. The event is recorded in QGI&apos;s curated
+                event corpus.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Pattern Length Tier (S / M / L / XL)
+              </dt>
+              <dd>
+                <strong>S</strong> = 3–8 years (policy cycles, shocks);{" "}
+                <strong>M</strong> = 9–20 years (leadership eras);{" "}
+                <strong>L</strong> = 21–40 years (structural shifts);{" "}
+                <strong>XL</strong> = 41+ years (civilizational parallels).
+                Severity-agnostic — describes window length only.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Risk Tier (HIGH / MODERATE / INDICATIVE)
+              </dt>
+              <dd>
+                A country-level severity label derived from max salience
+                across all patterns. Category-stratified: crisis categories
+                (civil war, coup, political violence) promote at salience ≥ 1.4;
+                other categories at ≥ 1.625.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Salience Score
+              </dt>
+              <dd>
+                Per-country z-score (how far above this country&apos;s own
+                average) multiplied by a category drama weight (1.0 for
+                wars / coups, 0.6 for elections, etc). Surfaces
+                <em> unusually</em> pronounced category scores.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Rank Fusion (RRF)
+              </dt>
+              <dd>
+                Reciprocal Rank Fusion ensemble combining the pattern-based
+                risk signal with a persistence baseline. Smooths single-model
+                instability without optimizing any single metric.
+              </dd>
+            </div>
+            <div>
+              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                Pattern Depth
+              </dt>
+              <dd>
+                Total count of precedent matches across all pattern-length
+                tiers for a country. Shown on each country profile as
+                &quot;sparse&quot; (&lt;1,500), &quot;moderate&quot;
+                (1,500–5,000), or &quot;robust&quot; (5,000+) so a score
+                can be read against its evidence base.
+              </dd>
+            </div>
+          </dl>
+        </details>
+
         {/* Section 1: The Core Idea */}
         <Section id="core-idea" title="The Core Idea">
           <p>

@@ -28,6 +28,15 @@ const TIER_LABELS: Record<string, string> = {
   XL: "Institutional (41+yr)",
 };
 
+// T21 #314 (Alex s1): human-readable per-tier tooltips so the single-letter
+// tabs have narrative meaning — "what kind of historical horizon is this?"
+const TIER_TOOLTIPS: Record<string, string> = {
+  S: "Short-horizon patterns (3–8 years). Captures policy cycles, election cycles, commodity shocks, and near-term crises. Most sensitive to recent events; highest signal-to-noise for current trajectories.",
+  M: "Medium-horizon patterns (9–20 years). Captures leadership eras, post-war transitions, commodity super-cycles, and structural reform periods. Good balance of recency and durability.",
+  L: "Long-horizon patterns (21–40 years). Captures post-colonial trajectories, democratic consolidation, multi-decade economic transformations (Asian tiger rises, etc). Low year-to-year noise; emphasizes durable structural similarity.",
+  XL: "Institutional patterns (41+ years). Captures civilizational parallels — full regime cycles, empire transitions, multi-generational structural lock-ins. Fewer pairs available; interpret with historical humility.",
+};
+
 const TIER_COLORS: Record<string, string> = {
   S: "#f87171",
   M: "#fbbf24",
@@ -444,10 +453,11 @@ export function PrecedentDetailClient({
                       {tier}
                     </span>
                     <span
-                      className="w-32 text-[10px] tracking-wider"
+                      className="w-32 text-[10px] tracking-wider flex items-center gap-1"
                       style={{ color: "var(--qgi-text-dim)" }}
                     >
                       {label}
+                      <InfoTooltip text={TIER_TOOLTIPS[tier]} />
                     </span>
                     <div
                       className="flex-1 h-5 rounded"
