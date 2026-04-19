@@ -7353,7 +7353,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 30
       },
       "government_formation": {
         "subject": {
@@ -11460,7 +11460,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "government_formation": {
         "subject": {
@@ -13035,7 +13035,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "political_corruption": {
         "subject": {
@@ -13324,11 +13324,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 28,
+            "pair_length": 27,
             "pair_start_a": 1995,
             "pair_start_b": 1994,
-            "pair_pps": 499.96085381507874,
-            "pair_avg_corr": 0.8116247626868162,
+            "pair_pps": 484.50410628318787,
+            "pair_avg_corr": 0.8156634785912253,
             "event_in_window": true
           },
           {
@@ -13384,7 +13384,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "political_violence": {
         "subject": {
@@ -46751,12 +46751,12 @@
               2013
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 33,
-            "pair_start_a": 1994,
+            "pair_length": 32,
+            "pair_start_a": 1995,
             "pair_start_b": 1980,
-            "pair_pps": 483.70838212966925,
-            "pair_avg_corr": 0.8143238756391737,
-            "event_in_window": true
+            "pair_pps": 499.2203674316407,
+            "pair_avg_corr": 0.8210861306441458,
+            "event_in_window": false
           },
           {
             "country_b_id": 236,
@@ -46780,11 +46780,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 30,
-            "pair_start_a": 1995,
-            "pair_start_b": 1996,
-            "pair_pps": 442.592380642891,
-            "pair_avg_corr": 0.8196155197090573,
+            "pair_length": 28,
+            "pair_start_a": 1997,
+            "pair_start_b": 1997,
+            "pair_pps": 450.14522433280945,
+            "pair_avg_corr": 0.8038307577371597,
             "event_in_window": true
           },
           {
@@ -46830,12 +46830,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 30,
-            "pair_start_a": 1997,
-            "pair_start_b": 1993,
-            "pair_pps": 381.25815689563757,
-            "pair_avg_corr": 0.7475650135208579,
-            "event_in_window": false
+            "pair_length": 29,
+            "pair_start_a": 1996,
+            "pair_start_b": 1995,
+            "pair_pps": 390.77058255672455,
+            "pair_avg_corr": 0.7926380984923419,
+            "event_in_window": true
           },
           {
             "country_b_id": 19,
@@ -46866,7 +46866,7 @@
             "event_in_window": false
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 30
       }
     },
     "16": {
@@ -47976,13 +47976,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 38,
-            "pair_start_a": 1982,
-            "pair_start_b": 1989,
-            "pair_pps": 402.03352379798895,
-            "pair_avg_corr": 0.8138330441254836,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 127,
@@ -48028,15 +48022,15 @@
               2019
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 42,
-            "pair_start_a": 1979,
-            "pair_start_b": 1979,
-            "pair_pps": 550.9591780900955,
-            "pair_avg_corr": 0.8745383779207866,
+            "pair_length": 49,
+            "pair_start_a": 1977,
+            "pair_start_b": 1970,
+            "pair_pps": 600.90803784132,
+            "pair_avg_corr": 0.8759592388357434,
             "event_in_window": true
           }
         ],
-        "canonical_length": 40
+        "canonical_length": 47
       },
       "economic_growth_milestone": {
         "subject": {
@@ -48271,7 +48265,13 @@
               1974,
               2022
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 41,
+            "pair_start_a": 1977,
+            "pair_start_b": 1983,
+            "pair_pps": 521.4014309048653,
+            "pair_avg_corr": 0.908364862203598,
+            "event_in_window": true
           },
           {
             "country_b_id": 203,
@@ -48293,13 +48293,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 29,
-            "pair_start_a": 1990,
-            "pair_start_b": 1996,
-            "pair_pps": 400.209493458271,
-            "pair_avg_corr": 0.8625204600393772,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 222,
@@ -48321,16 +48315,10 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 25,
-            "pair_start_a": 1989,
-            "pair_start_b": 2002,
-            "pair_pps": 278.3678635954857,
-            "pair_avg_corr": 0.7953367531299591,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 40
       },
       "economic_recession": {
         "subject": {
@@ -60611,7 +60599,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 44
+        "canonical_length": 40
       },
       "government_formation": {
         "subject": {
@@ -67705,11 +67693,11 @@
               2021
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 29,
-            "pair_start_a": 1993,
+            "pair_length": 30,
+            "pair_start_a": 1994,
             "pair_start_b": 1990,
-            "pair_pps": 349.6944842934608,
-            "pair_avg_corr": 0.803895366191864,
+            "pair_pps": 355.911648273468,
+            "pair_avg_corr": 0.8474086863654,
             "event_in_window": true
           },
           {
@@ -67755,11 +67743,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 29,
-            "pair_start_a": 1995,
+            "pair_length": 30,
+            "pair_start_a": 1994,
             "pair_start_b": 1995,
-            "pair_pps": 416.46477723121643,
-            "pair_avg_corr": 0.7978252437379625,
+            "pair_pps": 428.31785559654236,
+            "pair_avg_corr": 0.7931812140676711,
             "event_in_window": true
           },
           {
@@ -67813,7 +67801,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 32
       },
       "transitional_justice": {
         "subject": {
@@ -74498,12 +74486,12 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1976,
+            "pair_length": 48,
+            "pair_start_a": 1970,
             "pair_start_b": 1975,
-            "pair_pps": 424.164342880249,
-            "pair_avg_corr": 0.848328685760498,
-            "event_in_window": true
+            "pair_pps": 429.07291889190674,
+            "pair_avg_corr": 0.8126381039619446,
+            "event_in_window": false
           },
           {
             "country_b_id": 114,
@@ -74562,7 +74550,7 @@
             "event_in_window": false
           }
         ],
-        "canonical_length": 48
+        "canonical_length": 46
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -90635,7 +90623,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "government_formation": {
         "subject": {
@@ -91957,7 +91945,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "poverty_and_inequality_crisis": {
         "subject": {
@@ -93489,7 +93477,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "climate_agreement": {
         "subject": {
@@ -93577,11 +93565,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 57,
+            "pair_length": 56,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 553.1016898155212,
-            "pair_avg_corr": 0.8821398561651056,
+            "pair_pps": 545.2839822769165,
+            "pair_avg_corr": 0.8852012699300592,
             "event_in_window": true
           },
           {
@@ -93630,15 +93618,15 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 61,
+            "pair_length": 60,
             "pair_start_a": 1963,
             "pair_start_b": 1963,
-            "pair_pps": 767.4792767763138,
-            "pair_avg_corr": 0.8387751658757527,
-            "event_in_window": true
+            "pair_pps": 754.2084431648254,
+            "pair_avg_corr": 0.8380093812942505,
+            "event_in_window": false
           }
         ],
-        "canonical_length": 59
+        "canonical_length": 58
       },
       "constitutional_change": {
         "subject": {
@@ -98349,7 +98337,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "political_violence": {
         "subject": {
@@ -108570,7 +108558,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 42
       },
       "bilateral_treaty": {
         "subject": {
@@ -109043,7 +109031,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "constitutional_change": {
         "subject": {
@@ -112549,7 +112537,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "political_repression": {
         "subject": {
@@ -113724,13 +113712,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1982,
-            "pair_start_b": 1982,
-            "pair_pps": 458.0664110183716,
-            "pair_avg_corr": 0.8482711315155029,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 194,
@@ -113781,11 +113763,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 49,
-            "pair_start_a": 1976,
-            "pair_start_b": 1976,
-            "pair_pps": 494.15587782859797,
-            "pair_avg_corr": 0.7757549102489765,
+            "pair_length": 50,
+            "pair_start_a": 1975,
+            "pair_start_b": 1975,
+            "pair_pps": 509.92079079151154,
+            "pair_avg_corr": 0.7844935242946331,
             "event_in_window": true
           },
           {
@@ -113811,7 +113793,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 49
       },
       "bilateral_treaty": {
         "subject": {
@@ -121472,11 +121454,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 41,
+            "pair_length": 40,
             "pair_start_a": 1986,
-            "pair_start_b": 1985,
-            "pair_pps": 511.09214943647385,
-            "pair_avg_corr": 0.8310441454251607,
+            "pair_start_b": 1986,
+            "pair_pps": 527.813150882721,
+            "pair_avg_corr": 0.8247080482542515,
             "event_in_window": true
           },
           {
@@ -121500,11 +121482,11 @@
               2011
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 41,
-            "pair_start_a": 1986,
+            "pair_length": 40,
+            "pair_start_a": 1987,
             "pair_start_b": 1971,
-            "pair_pps": 625.4499191641808,
-            "pair_avg_corr": 0.8474931153986189,
+            "pair_pps": 610.8472084999084,
+            "pair_avg_corr": 0.8483989006943173,
             "event_in_window": true
           },
           {
@@ -121528,15 +121510,15 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1982,
-            "pair_start_b": 1976,
-            "pair_pps": 566.6707652807236,
-            "pair_avg_corr": 0.8994774052074977,
+            "pair_length": 43,
+            "pair_start_a": 1984,
+            "pair_start_b": 1978,
+            "pair_pps": 561.9628686904907,
+            "pair_avg_corr": 0.8712602615356445,
             "event_in_window": false
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 42
       },
       "infrastructure_project": {
         "subject": {
@@ -123512,11 +123494,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 33,
-            "pair_start_a": 1994,
-            "pair_start_b": 1992,
-            "pair_pps": 420.93466544151306,
-            "pair_avg_corr": 0.8503730614980062,
+            "pair_length": 29,
+            "pair_start_a": 1996,
+            "pair_start_b": 1996,
+            "pair_pps": 417.53465032577515,
+            "pair_avg_corr": 0.8469262684092802,
             "event_in_window": true
           },
           {
@@ -123569,7 +123551,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 27
       },
       "epidemic_and_pandemic": {
         "subject": {
@@ -124831,7 +124813,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "constitutional_change": {
         "subject": {
@@ -130319,11 +130301,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 52,
-            "pair_start_a": 1975,
-            "pair_start_b": 1975,
-            "pair_pps": 930.4652497768402,
-            "pair_avg_corr": 0.852074404557546,
+            "pair_length": 55,
+            "pair_start_a": 1970,
+            "pair_start_b": 1970,
+            "pair_pps": 989.6619430184364,
+            "pair_avg_corr": 0.8568501671155294,
             "event_in_window": true
           },
           {
@@ -130371,12 +130353,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 52,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 799.8248803615569,
-            "pair_avg_corr": 0.8545137610700395,
-            "event_in_window": false
+            "pair_length": 55,
+            "pair_start_a": 1969,
+            "pair_start_b": 1969,
+            "pair_pps": 818.9045265316963,
+            "pair_avg_corr": 0.875833718215718,
+            "event_in_window": true
           },
           {
             "country_b_id": 134,
@@ -130398,13 +130380,7 @@
             "event_all_years_b": [
               2024
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 48,
-            "pair_start_a": 1962,
-            "pair_start_b": 1977,
-            "pair_pps": 640.4233961105347,
-            "pair_avg_corr": 0.8338846303522587,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 68,
@@ -130427,15 +130403,15 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1975,
-            "pair_start_b": 1975,
-            "pair_pps": 390.45459330081945,
-            "pair_avg_corr": 0.8676768740018209,
-            "event_in_window": true
+            "pair_length": 53,
+            "pair_start_a": 1970,
+            "pair_start_b": 1970,
+            "pair_pps": 387.2631519436836,
+            "pair_avg_corr": 0.9133564904332161,
+            "event_in_window": false
           }
         ],
-        "canonical_length": 50
+        "canonical_length": 55
       },
       "transitional_justice": {
         "subject": {
@@ -131062,7 +131038,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "constitutional_change": {
         "subject": {
@@ -133163,7 +133139,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "political_violence": {
         "subject": {
@@ -134124,7 +134100,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "constitutional_change": {
         "subject": {
@@ -135850,7 +135826,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "natural_disaster": {
         "subject": {
@@ -140867,7 +140843,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 27
       },
       "constitutional_change": {
         "subject": {
@@ -146414,13 +146390,7 @@
               2018,
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 52,
-            "pair_start_a": 1970,
-            "pair_start_b": 1965,
-            "pair_pps": 808.786128282547,
-            "pair_avg_corr": 0.86408774389161,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 100,
@@ -146444,15 +146414,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1977,
-            "pair_start_b": 1977,
-            "pair_pps": 1039.7862523794174,
-            "pair_avg_corr": 0.9041619585907977,
+            "pair_length": 45,
+            "pair_start_a": 1982,
+            "pair_start_b": 1980,
+            "pair_pps": 1054.2713579535484,
+            "pair_avg_corr": 0.8677130518136201,
             "event_in_window": true
           }
         ],
-        "canonical_length": 51
+        "canonical_length": 43
       },
       "transitional_justice": {
         "subject": {
@@ -147217,7 +147187,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "climate_agreement": {
         "subject": {
@@ -147362,7 +147332,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 53
+        "canonical_length": 52
       },
       "constitutional_change": {
         "subject": {
@@ -154238,7 +154208,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "government_formation": {
         "subject": {
@@ -182792,7 +182762,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 36
+        "canonical_length": 37
       },
       "humanitarian_crisis": {
         "subject": {
@@ -185142,7 +185112,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 42
       },
       "epidemic_and_pandemic": {
         "subject": {
@@ -187214,11 +187184,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 43,
+            "pair_length": 42,
             "pair_start_a": 1979,
             "pair_start_b": 1984,
-            "pair_pps": 325.6011066436767,
-            "pair_avg_corr": 0.8413465287950304,
+            "pair_pps": 318.3464434146881,
+            "pair_avg_corr": 0.8421863582399156,
             "event_in_window": true
           },
           {
@@ -187302,7 +187272,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 45
+        "canonical_length": 44
       }
     },
     "61": {
@@ -190769,7 +190739,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 38
+        "canonical_length": 37
       },
       "infrastructure_project": {
         "subject": {
@@ -192582,7 +192552,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "economic_recession": {
         "subject": {
@@ -194172,7 +194142,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "constitutional_change": {
         "subject": {
@@ -219730,7 +219700,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 26
       },
       "constitutional_change": {
         "subject": {
@@ -222391,7 +222361,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 26
       },
       "infrastructure_project": {
         "subject": {
@@ -223697,7 +223667,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 27
       },
       "political_repression": {
         "subject": {
@@ -230514,15 +230484,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 28,
-            "pair_start_a": 1996,
-            "pair_start_b": 1996,
-            "pair_pps": 502.6684658527374,
-            "pair_avg_corr": 0.8160202367739244,
-            "event_in_window": false
+            "pair_length": 25,
+            "pair_start_a": 2000,
+            "pair_start_b": 2000,
+            "pair_pps": 492.55664348602295,
+            "pair_avg_corr": 0.8209277391433716,
+            "event_in_window": true
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 24
       },
       "economic_recession": {
         "subject": {
@@ -231771,13 +231741,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 42,
-            "pair_start_a": 1976,
-            "pair_start_b": 1985,
-            "pair_pps": 605.1675549745561,
-            "pair_avg_corr": 0.8004861838287778,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 130,
@@ -231800,11 +231764,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 43,
+            "pair_length": 44,
             "pair_start_a": 1982,
             "pair_start_b": 1982,
-            "pair_pps": 418.5513954758644,
-            "pair_avg_corr": 0.8111461152633032,
+            "pair_pps": 429.20638847351074,
+            "pair_avg_corr": 0.812890887260437,
             "event_in_window": true
           },
           {
@@ -231828,11 +231792,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 46,
-            "pair_start_a": 1977,
-            "pair_start_b": 1977,
-            "pair_pps": 787.2423340082169,
-            "pair_avg_corr": 0.8556981891393661,
+            "pair_length": 48,
+            "pair_start_a": 1978,
+            "pair_start_b": 1975,
+            "pair_pps": 803.769679069519,
+            "pair_avg_corr": 0.8372600823640823,
             "event_in_window": true
           },
           {
@@ -231858,7 +231822,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 44
+        "canonical_length": 46
       },
       "infrastructure_project": {
         "subject": {
@@ -242082,7 +242046,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "regional_integration": {
         "subject": {
@@ -257472,12 +257436,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 54,
+            "pair_length": 53,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 660.1756346225739,
-            "pair_avg_corr": 0.8150316476821899,
-            "event_in_window": true
+            "pair_pps": 701.8022999763489,
+            "pair_avg_corr": 0.827597051858902,
+            "event_in_window": false
           },
           {
             "country_b_id": 208,
@@ -257551,15 +257515,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 55,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 754.2865052819252,
-            "pair_avg_corr": 0.8067235350608826,
-            "event_in_window": true
+            "pair_length": 53,
+            "pair_start_a": 1971,
+            "pair_start_b": 1971,
+            "pair_pps": 722.6102642416954,
+            "pair_avg_corr": 0.802009172299329,
+            "event_in_window": false
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 51
       },
       "regional_integration": {
         "subject": {
@@ -261089,15 +261053,15 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 47,
-            "pair_start_a": 1977,
-            "pair_start_b": 1977,
-            "pair_pps": 406.8724757432938,
-            "pair_avg_corr": 0.786987380547957,
+            "pair_length": 39,
+            "pair_start_a": 1980,
+            "pair_start_b": 1986,
+            "pair_pps": 404.60592913627625,
+            "pair_avg_corr": 0.8645425836245219,
             "event_in_window": true
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 39
       },
       "government_formation": {
         "subject": {
@@ -268618,12 +268582,12 @@
               2015
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 36,
-            "pair_start_a": 1990,
-            "pair_start_b": 1978,
-            "pair_pps": 526.0716297626495,
-            "pair_avg_corr": 0.8595941662788391,
-            "event_in_window": true
+            "pair_length": 34,
+            "pair_start_a": 1992,
+            "pair_start_b": 1979,
+            "pair_pps": 511.3762922286987,
+            "pair_avg_corr": 0.8355821768442789,
+            "event_in_window": false
           },
           {
             "country_b_id": 50,
@@ -268720,7 +268684,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 34
+        "canonical_length": 32
       },
       "government_formation": {
         "subject": {
@@ -271223,7 +271187,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "constitutional_change": {
         "subject": {
@@ -271541,7 +271505,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 29
       },
       "diplomatic_rupture": {
         "subject": {
@@ -272762,11 +272726,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1982,
-            "pair_start_b": 1982,
-            "pair_pps": 622.3503452539445,
-            "pair_avg_corr": 0.8135298630770516,
+            "pair_length": 39,
+            "pair_start_a": 1988,
+            "pair_start_b": 1986,
+            "pair_pps": 619.4398435950279,
+            "pair_avg_corr": 0.8359512059312117,
             "event_in_window": true
           },
           {
@@ -272823,7 +272787,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 45
+        "canonical_length": 37
       },
       "fiscal_policy_change": {
         "subject": {
@@ -287944,15 +287908,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 32,
-            "pair_start_a": 1993,
-            "pair_start_b": 1993,
-            "pair_pps": 567.5400238037109,
-            "pair_avg_corr": 0.8867812871932983,
+            "pair_length": 25,
+            "pair_start_a": 2000,
+            "pair_start_b": 2000,
+            "pair_pps": 568.882142007351,
+            "pair_avg_corr": 0.8427883585294088,
             "event_in_window": true
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 24
       },
       "economic_liberalization": {
         "subject": {
@@ -289508,7 +289472,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 29
       },
       "government_formation": {
         "subject": {
@@ -300121,13 +300085,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1980,
-            "pair_start_b": 1982,
-            "pair_pps": 584.3026900291443,
-            "pair_avg_corr": 0.8115315139293671,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 248,
@@ -300195,10 +300153,16 @@
             "event_all_years_b": [
               2024
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 48,
+            "pair_start_a": 1979,
+            "pair_start_b": 1975,
+            "pair_pps": 485.3831663131714,
+            "pair_avg_corr": 0.9192862998355519,
+            "event_in_window": false
           }
         ],
-        "canonical_length": 44
+        "canonical_length": 48
       },
       "religious_and_social_movement": {
         "subject": {
@@ -301434,7 +301398,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 27
       },
       "currency_crisis": {
         "subject": {
@@ -303040,7 +303004,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 27
       },
       "government_formation": {
         "subject": {
@@ -304168,7 +304132,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 27
       },
       "political_corruption": {
         "subject": {
@@ -306058,7 +306022,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 26
       },
       "constitutional_change": {
         "subject": {
@@ -309286,7 +309250,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 28
       },
       "political_repression": {
         "subject": {
@@ -312448,7 +312412,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "government_formation": {
         "subject": {
@@ -313284,7 +313248,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "military_coup": {
         "subject": {
@@ -313949,7 +313913,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "political_corruption": {
         "subject": {
@@ -315797,7 +315761,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 53
+        "canonical_length": 52
       },
       "cultural_and_heritage": {
         "subject": {
@@ -317546,10 +317510,16 @@
               2024,
               2025
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 49,
+            "pair_start_a": 1978,
+            "pair_start_b": 1972,
+            "pair_pps": 459.86103039979935,
+            "pair_avg_corr": 0.8531744534319098,
+            "event_in_window": true
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 49
       },
       "political_violence": {
         "subject": {
@@ -318529,11 +318499,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 54,
-            "pair_start_a": 1972,
-            "pair_start_b": 1972,
-            "pair_pps": 690.2027177810669,
-            "pair_avg_corr": 0.9129665579114642,
+            "pair_length": 51,
+            "pair_start_a": 1970,
+            "pair_start_b": 1975,
+            "pair_pps": 724.6777583956718,
+            "pair_avg_corr": 0.88808548822999,
             "event_in_window": true
           },
           {
@@ -318609,7 +318579,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 53
       }
     },
     "106": {
@@ -319050,7 +319020,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "constitutional_change": {
         "subject": {
@@ -321423,7 +321393,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "military_policy_and_reform": {
         "subject": {
@@ -321925,7 +321895,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "political_corruption": {
         "subject": {
@@ -323406,7 +323376,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "constitutional_change": {
         "subject": {
@@ -327491,7 +327461,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "poverty_and_inequality_crisis": {
         "subject": {
@@ -336150,13 +336120,7 @@
               2019,
               2024
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 59,
-            "pair_start_a": 1968,
-            "pair_start_b": 1967,
-            "pair_pps": 479.043620288372,
-            "pair_avg_corr": 0.9021537105242411,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 194,
@@ -336179,11 +336143,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 55,
-            "pair_start_a": 1969,
-            "pair_start_b": 1972,
-            "pair_pps": 436.25600934028625,
-            "pair_avg_corr": 0.7931927442550659,
+            "pair_length": 48,
+            "pair_start_a": 1970,
+            "pair_start_b": 1977,
+            "pair_pps": 439.68376064300537,
+            "pair_avg_corr": 0.8327343951572072,
             "event_in_window": true
           },
           {
@@ -336229,11 +336193,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 57,
-            "pair_start_a": 1968,
-            "pair_start_b": 1968,
-            "pair_pps": 527.8557747602463,
-            "pair_avg_corr": 0.8418752388520674,
+            "pair_length": 48,
+            "pair_start_a": 1976,
+            "pair_start_b": 1977,
+            "pair_pps": 531.4174518585205,
+            "pair_avg_corr": 0.8516305318245521,
             "event_in_window": true
           },
           {
@@ -336256,10 +336220,16 @@
             "event_all_years_b": [
               2024
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 44,
+            "pair_start_a": 1976,
+            "pair_start_b": 1981,
+            "pair_pps": 439.38268876075745,
+            "pair_avg_corr": 0.9078154726461931,
+            "event_in_window": true
           }
         ],
-        "canonical_length": 57
+        "canonical_length": 46
       },
       "sport_and_international_event": {
         "subject": {
@@ -343727,7 +343697,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "political_violence": {
         "subject": {
@@ -344217,12 +344187,12 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 44,
+            "pair_length": 43,
             "pair_start_a": 1978,
             "pair_start_b": 1976,
-            "pair_pps": 453.85461044311523,
-            "pair_avg_corr": 0.8595731258392334,
-            "event_in_window": true
+            "pair_pps": 444.36065661907196,
+            "pair_avg_corr": 0.8611640632152557,
+            "event_in_window": false
           },
           {
             "country_b_id": 114,
@@ -344269,11 +344239,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 41,
-            "pair_start_a": 1978,
+            "pair_length": 39,
+            "pair_start_a": 1976,
             "pair_start_b": 1986,
-            "pair_pps": 455.9721238017082,
-            "pair_avg_corr": 0.9267726093530655,
+            "pair_pps": 457.57914447784424,
+            "pair_avg_corr": 0.9025229674119216,
             "event_in_window": true
           },
           {
@@ -344334,7 +344304,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 41
       },
       "territorial_disputes": {
         "subject": {
@@ -347518,7 +347488,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 26
       },
       "climate_agreement": {
         "subject": {
@@ -350803,7 +350773,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 28
       },
       "humanitarian_crisis": {
         "subject": {
@@ -363234,15 +363204,15 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 37,
-            "pair_start_a": 1990,
-            "pair_start_b": 1961,
-            "pair_pps": 371.05630254745483,
-            "pair_avg_corr": 0.8357123931248983,
+            "pair_length": 36,
+            "pair_start_a": 1991,
+            "pair_start_b": 1962,
+            "pair_pps": 362.88123965263367,
+            "pair_avg_corr": 0.8400028695662817,
             "event_in_window": true
           }
         ],
-        "canonical_length": 35
+        "canonical_length": 34
       },
       "government_formation": {
         "subject": {
@@ -370498,11 +370468,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 25,
+            "pair_length": 24,
             "pair_start_a": 1998,
             "pair_start_b": 1998,
-            "pair_pps": 444.8198065161705,
-            "pair_avg_corr": 0.8472758219355628,
+            "pair_pps": 429.8757863044739,
+            "pair_avg_corr": 0.8529281474295116,
             "event_in_window": true
           },
           {
@@ -370556,7 +370526,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 26
       },
       "economic_growth_milestone": {
         "subject": {
@@ -374701,7 +374671,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 26
       },
       "government_formation": {
         "subject": {
@@ -375705,15 +375675,15 @@
               2016
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 25,
-            "pair_start_a": 1995,
+            "pair_length": 24,
+            "pair_start_a": 1994,
             "pair_start_b": 1990,
-            "pair_pps": 397.98880666494364,
-            "pair_avg_corr": 0.8378711719261972,
+            "pair_pps": 409.27357292175293,
+            "pair_avg_corr": 0.8120507399241129,
             "event_in_window": true
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 26
       },
       "military_policy_and_reform": {
         "subject": {
@@ -376360,7 +376330,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 26
       },
       "political_repression": {
         "subject": {
@@ -381397,7 +381367,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 47
       },
       "constitutional_change": {
         "subject": {
@@ -382772,12 +382742,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 56,
+            "pair_length": 52,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 435.4875640869141,
-            "pair_avg_corr": 0.8640626271565756,
-            "event_in_window": true
+            "pair_pps": 426.6551609039306,
+            "pair_avg_corr": 0.8204906940460205,
+            "event_in_window": false
           },
           {
             "country_b_id": 217,
@@ -382836,7 +382806,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "government_formation": {
         "subject": {
@@ -383034,7 +383004,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 47
       },
       "humanitarian_crisis": {
         "subject": {
@@ -383652,7 +383622,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 46
       },
       "political_corruption": {
         "subject": {
@@ -393550,11 +393520,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 24,
-            "pair_start_a": 2002,
-            "pair_start_b": 2002,
-            "pair_pps": 308.34101915359497,
-            "pair_avg_corr": 0.8029714040458202,
+            "pair_length": 28,
+            "pair_start_a": 1997,
+            "pair_start_b": 1997,
+            "pair_pps": 305.536826133728,
+            "pair_avg_corr": 0.8393868849827693,
             "event_in_window": true
           },
           {
@@ -393669,7 +393639,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 25
+        "canonical_length": 28
       },
       "foreign_aid_and_development": {
         "subject": {
@@ -397416,7 +397386,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 22
+        "canonical_length": 21
       },
       "military_policy_and_reform": {
         "subject": {
@@ -397495,11 +397465,11 @@
               2023
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 53,
+            "pair_length": 52,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 741.2105796337128,
-            "pair_avg_corr": 0.8740690797567368,
+            "pair_pps": 731.7096316814423,
+            "pair_avg_corr": 0.8794586919248104,
             "event_in_window": true
           },
           {
@@ -397577,7 +397547,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "monetary_policy_change": {
         "subject": {
@@ -398146,13 +398116,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 47,
-            "pair_start_a": 1980,
-            "pair_start_b": 1980,
-            "pair_pps": 351.5879674553871,
-            "pair_avg_corr": 0.8311772280269198,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 194,
@@ -398211,7 +398175,7 @@
             "event_in_window": false
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 51
       },
       "regional_integration": {
         "subject": {
@@ -401769,7 +401733,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 54
+        "canonical_length": 53
       },
       "political_repression": {
         "subject": {
@@ -407761,7 +407725,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "economic_recession": {
         "subject": {
@@ -408780,11 +408744,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 48,
+            "pair_length": 47,
             "pair_start_a": 1976,
-            "pair_start_b": 1976,
-            "pair_pps": 531.1134910583496,
-            "pair_avg_corr": 0.9220720330874125,
+            "pair_start_b": 1977,
+            "pair_pps": 522.261710703373,
+            "pair_avg_corr": 0.9259959409634272,
             "event_in_window": false
           },
           {
@@ -408833,15 +408797,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 44,
+            "pair_length": 43,
             "pair_start_a": 1982,
             "pair_start_b": 1983,
-            "pair_pps": 411.97339940071106,
-            "pair_avg_corr": 0.9363031804561615,
+            "pair_pps": 403.7122011780739,
+            "pair_avg_corr": 0.9388655841350555,
             "event_in_window": true
           }
         ],
-        "canonical_length": 46
+        "canonical_length": 45
       },
       "constitutional_change": {
         "subject": {
@@ -411227,7 +411191,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 46
       },
       "political_violence": {
         "subject": {
@@ -416427,13 +416391,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 53,
-            "pair_start_a": 1972,
-            "pair_start_b": 1974,
-            "pair_pps": 340.2347348332405,
-            "pair_avg_corr": 0.8024404123425484,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 166,
@@ -416464,7 +416422,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 51
+        "canonical_length": 50
       },
       "education_reform": {
         "subject": {
@@ -418717,12 +418675,12 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 54,
-            "pair_start_a": 1972,
-            "pair_start_b": 1971,
-            "pair_pps": 613.8255532979965,
-            "pair_avg_corr": 0.8743953750683711,
-            "event_in_window": true
+            "pair_length": 49,
+            "pair_start_a": 1975,
+            "pair_start_b": 1975,
+            "pair_pps": 632.7322708964348,
+            "pair_avg_corr": 0.8608602325121562,
+            "event_in_window": false
           },
           {
             "country_b_id": 153,
@@ -418745,12 +418703,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 52,
-            "pair_start_a": 1975,
-            "pair_start_b": 1970,
-            "pair_pps": 896.9014718532562,
-            "pair_avg_corr": 0.9077950119972229,
-            "event_in_window": false
+            "pair_length": 49,
+            "pair_start_a": 1976,
+            "pair_start_b": 1976,
+            "pair_pps": 877.1689314842224,
+            "pair_avg_corr": 0.8950703382492066,
+            "event_in_window": true
           },
           {
             "country_b_id": 220,
@@ -418820,7 +418778,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 53
+        "canonical_length": 49
       },
       "transitional_justice": {
         "subject": {
@@ -422863,7 +422821,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "interstate_war": {
         "subject": {
@@ -423302,7 +423260,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "military_policy_and_reform": {
         "subject": {
@@ -423435,7 +423393,13 @@
               2022,
               2023
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 52,
+            "pair_start_a": 1975,
+            "pair_start_b": 1970,
+            "pair_pps": 604.8372719287872,
+            "pair_avg_corr": 0.8308204284736088,
+            "event_in_window": true
           },
           {
             "country_b_id": 236,
@@ -423462,7 +423426,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 50
       },
       "natural_disaster": {
         "subject": {
@@ -427555,11 +427519,11 @@
               2019
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 49,
-            "pair_start_a": 1976,
-            "pair_start_b": 1970,
-            "pair_pps": 681.0997447371483,
-            "pair_avg_corr": 0.8687496744096279,
+            "pair_length": 45,
+            "pair_start_a": 1982,
+            "pair_start_b": 1975,
+            "pair_pps": 673.9916127920151,
+            "pair_avg_corr": 0.8320884108543396,
             "event_in_window": true
           },
           {
@@ -427583,15 +427547,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1981,
+            "pair_length": 43,
+            "pair_start_a": 1983,
             "pair_start_b": 1982,
-            "pair_pps": 564.6068644523621,
-            "pair_avg_corr": 0.8962013721466064,
+            "pair_pps": 543.6279119253159,
+            "pair_avg_corr": 0.9030363985470363,
             "event_in_window": true
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 43
       },
       "trade_agreement": {
         "subject": {
@@ -433090,11 +433054,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 48,
+            "pair_length": 47,
             "pair_start_a": 1975,
-            "pair_start_b": 1976,
-            "pair_pps": 388.31704330444336,
-            "pair_avg_corr": 0.8988820446862115,
+            "pair_start_b": 1977,
+            "pair_pps": 380.2989724874496,
+            "pair_avg_corr": 0.8990519444147745,
             "event_in_window": false
           },
           {
@@ -433144,11 +433108,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 44,
+            "pair_length": 43,
             "pair_start_a": 1978,
             "pair_start_b": 1983,
-            "pair_pps": 376.0288887023926,
-            "pair_avg_corr": 0.9495679007636176,
+            "pair_pps": 367.08012264966965,
+            "pair_avg_corr": 0.9485274487071567,
             "event_in_window": true
           },
           {
@@ -433173,15 +433137,15 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 48,
-            "pair_start_a": 1975,
-            "pair_start_b": 1975,
-            "pair_pps": 380.5016527175904,
-            "pair_avg_corr": 0.8807908627721999,
+            "pair_length": 47,
+            "pair_start_a": 1976,
+            "pair_start_b": 1976,
+            "pair_pps": 375.83507770299906,
+            "pair_avg_corr": 0.8884990016619364,
             "event_in_window": true
           }
         ],
-        "canonical_length": 46
+        "canonical_length": 45
       },
       "constitutional_change": {
         "subject": {
@@ -438509,7 +438473,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 35
+        "canonical_length": 34
       },
       "economic_nationalization": {
         "subject": {
@@ -440231,7 +440195,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 39
+        "canonical_length": 38
       }
     },
     "144": {
@@ -441953,7 +441917,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "natural_disaster": {
         "subject": {
@@ -449475,11 +449439,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 53,
+            "pair_length": 52,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 787.800025165081,
-            "pair_avg_corr": 0.8743618481299457,
+            "pair_pps": 769.1550261974335,
+            "pair_avg_corr": 0.870084871264065,
             "event_in_window": true
           },
           {
@@ -449529,7 +449493,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "resource_conflict": {
         "subject": {
@@ -454969,11 +454933,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 52,
+            "pair_length": 50,
             "pair_start_a": 1975,
             "pair_start_b": 1975,
-            "pair_pps": 540.7743322849274,
-            "pair_avg_corr": 0.9454096718267961,
+            "pair_pps": 523.252272605896,
+            "pair_avg_corr": 0.9513677683743563,
             "event_in_window": true
           },
           {
@@ -455000,12 +454964,12 @@
               2023
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 56,
+            "pair_length": 51,
             "pair_start_a": 1970,
-            "pair_start_b": 1962,
-            "pair_pps": 444.6555743217468,
-            "pair_avg_corr": 0.8822531236542596,
-            "event_in_window": false
+            "pair_start_b": 1970,
+            "pair_pps": 434.79528361558914,
+            "pair_avg_corr": 0.8525397717952728,
+            "event_in_window": true
           },
           {
             "country_b_id": 159,
@@ -455083,7 +455047,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 54
+        "canonical_length": 51
       },
       "executive_power_consolidation": {
         "subject": {
@@ -465157,7 +465121,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "constitutional_change": {
         "subject": {
@@ -467251,7 +467215,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "political_repression": {
         "subject": {
@@ -467422,7 +467386,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "political_violence": {
         "subject": {
@@ -467869,15 +467833,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1980,
-            "pair_start_b": 1980,
-            "pair_pps": 619.5416271686554,
-            "pair_avg_corr": 0.860474482178688,
+            "pair_length": 43,
+            "pair_start_a": 1984,
+            "pair_start_b": 1982,
+            "pair_pps": 606.0965911149979,
+            "pair_avg_corr": 0.880954347550869,
             "event_in_window": true
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 42
       }
     },
     "153": {
@@ -469378,11 +469342,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 62,
-            "pair_start_a": 1962,
-            "pair_start_b": 1965,
-            "pair_pps": 496.7833214998245,
-            "pair_avg_corr": 0.8902926908599006,
+            "pair_length": 53,
+            "pair_start_a": 1974,
+            "pair_start_b": 1973,
+            "pair_pps": 499.0231040120125,
+            "pair_avg_corr": 0.8559572967615995,
             "event_in_window": true
           },
           {
@@ -469406,11 +469370,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 58,
-            "pair_start_a": 1969,
-            "pair_start_b": 1967,
-            "pair_pps": 690.7490642070771,
-            "pair_avg_corr": 0.8506761874471392,
+            "pair_length": 57,
+            "pair_start_a": 1970,
+            "pair_start_b": 1968,
+            "pair_pps": 679.361798107624,
+            "pair_avg_corr": 0.8513305740697044,
             "event_in_window": true
           },
           {
@@ -469435,11 +469399,11 @@
               2021
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 58,
-            "pair_start_a": 1966,
-            "pair_start_b": 1964,
-            "pair_pps": 425.2604225873947,
-            "pair_avg_corr": 0.8146751390563117,
+            "pair_length": 57,
+            "pair_start_a": 1968,
+            "pair_start_b": 1966,
+            "pair_pps": 423.1036806106568,
+            "pair_avg_corr": 0.8247635099622939,
             "event_in_window": true
           },
           {
@@ -469467,7 +469431,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 60
+        "canonical_length": 55
       },
       "fiscal_policy_change": {
         "subject": {
@@ -472542,11 +472506,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 55,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 1025.8982446789742,
-            "pair_avg_corr": 0.8478497889908877,
+            "pair_length": 54,
+            "pair_start_a": 1971,
+            "pair_start_b": 1971,
+            "pair_pps": 1003.5461930036545,
+            "pair_avg_corr": 0.8447358526966788,
             "event_in_window": true
           },
           {
@@ -472638,7 +472602,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 54
+        "canonical_length": 52
       },
       "transitional_justice": {
         "subject": {
@@ -473302,15 +473266,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
+            "pair_length": 49,
             "pair_start_a": 1977,
             "pair_start_b": 1977,
-            "pair_pps": 556.3029319047928,
-            "pair_avg_corr": 0.855850664468912,
+            "pair_pps": 542.904549062252,
+            "pair_avg_corr": 0.8522834365184491,
             "event_in_window": true
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 51
       },
       "constitutional_change": {
         "subject": {
@@ -476927,11 +476891,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 46,
-            "pair_start_a": 1980,
-            "pair_start_b": 1981,
-            "pair_pps": 572.638201713562,
-            "pair_avg_corr": 0.8299104372660319,
+            "pair_length": 38,
+            "pair_start_a": 1986,
+            "pair_start_b": 1987,
+            "pair_pps": 538.7001787424088,
+            "pair_avg_corr": 0.8339012054836049,
             "event_in_window": true
           },
           {
@@ -477002,7 +476966,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 44
+        "canonical_length": 38
       }
     },
     "157": {
@@ -479119,7 +479083,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 22
+        "canonical_length": 21
       },
       "mass_protest": {
         "subject": {
@@ -480903,7 +480867,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "constitutional_change": {
         "subject": {
@@ -482447,7 +482411,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "government_formation": {
         "subject": {
@@ -482906,7 +482870,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "military_coup": {
         "subject": {
@@ -483188,11 +483152,11 @@
               2023
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 53,
-            "pair_start_a": 1971,
-            "pair_start_b": 1971,
-            "pair_pps": 581.2107762694359,
-            "pair_avg_corr": 0.7833029329776764,
+            "pair_length": 52,
+            "pair_start_a": 1970,
+            "pair_start_b": 1970,
+            "pair_pps": 583.5663595199585,
+            "pair_avg_corr": 0.8016021421977452,
             "event_in_window": true
           },
           {
@@ -483217,15 +483181,15 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 57,
-            "pair_start_a": 1967,
-            "pair_start_b": 1967,
-            "pair_pps": 779.6070397496223,
-            "pair_avg_corr": 0.8548322804272175,
+            "pair_length": 53,
+            "pair_start_a": 1971,
+            "pair_start_b": 1971,
+            "pair_pps": 779.0418981909752,
+            "pair_avg_corr": 0.8646413964383742,
             "event_in_window": true
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "multilateral_agreement": {
         "subject": {
@@ -483686,7 +483650,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "political_repression": {
         "subject": {
@@ -483829,7 +483793,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "political_violence": {
         "subject": {
@@ -484182,13 +484146,7 @@
               2021,
               2024
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 612.8404408693314,
-            "pair_avg_corr": 0.8754863440990448,
-            "event_in_window": false
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 50,
@@ -484228,13 +484186,7 @@
               2021,
               2022
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 49,
-            "pair_start_a": 1970,
-            "pair_start_b": 1975,
-            "pair_pps": 393.74878710508347,
-            "pair_avg_corr": 0.8035689532756806,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 200,
@@ -484257,7 +484209,13 @@
               2011,
               2018
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 56,
+            "pair_start_a": 1969,
+            "pair_start_b": 1962,
+            "pair_pps": 613.6906213760376,
+            "pair_avg_corr": 0.8429816227692825,
+            "event_in_window": true
           },
           {
             "country_b_id": 220,
@@ -484282,7 +484240,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 51
+        "canonical_length": 56
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -487085,7 +487043,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 56
+        "canonical_length": 55
       },
       "government_formation": {
         "subject": {
@@ -487258,7 +487216,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 26
       },
       "human_rights_violation": {
         "subject": {
@@ -488326,7 +488284,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 56
+        "canonical_length": 55
       },
       "political_corruption": {
         "subject": {
@@ -488882,13 +488840,7 @@
             "event_all_years_b": [
               2024
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 63,
-            "pair_start_a": 1964,
-            "pair_start_b": 1961,
-            "pair_pps": 543.8048642277718,
-            "pair_avg_corr": 0.8631823241710663,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 194,
@@ -488910,7 +488862,13 @@
             "event_all_years_b": [
               2024
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 46,
+            "pair_start_a": 1975,
+            "pair_start_b": 1978,
+            "pair_pps": 400.9266020059585,
+            "pair_avg_corr": 0.8715795695781707,
+            "event_in_window": true
           },
           {
             "country_b_id": 206,
@@ -488933,11 +488891,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 62,
-            "pair_start_a": 1965,
-            "pair_start_b": 1965,
-            "pair_pps": 496.7948809862137,
-            "pair_avg_corr": 0.8012820661067963,
+            "pair_length": 46,
+            "pair_start_a": 1981,
+            "pair_start_b": 1979,
+            "pair_pps": 504.54091644287115,
+            "pair_avg_corr": 0.8437139070951022,
             "event_in_window": true
           },
           {
@@ -488963,7 +488921,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 61
+        "canonical_length": 46
       },
       "religious_and_social_movement": {
         "subject": {
@@ -489098,7 +489056,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 61
+        "canonical_length": 60
       },
       "technology_breakthrough": {
         "subject": {
@@ -495859,7 +495817,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 29
       },
       "fiscal_policy_change": {
         "subject": {
@@ -496168,7 +496126,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 29
       },
       "government_formation": {
         "subject": {
@@ -496482,7 +496440,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 29
       },
       "military_policy_and_reform": {
         "subject": {
@@ -497254,7 +497212,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 29
       },
       "regional_integration": {
         "subject": {
@@ -497436,11 +497394,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 48,
-            "pair_start_a": 1976,
-            "pair_start_b": 1976,
-            "pair_pps": 624.7744359970093,
-            "pair_avg_corr": 0.8677422722180684,
+            "pair_length": 46,
+            "pair_start_a": 1978,
+            "pair_start_b": 1978,
+            "pair_pps": 630.8374820947647,
+            "pair_avg_corr": 0.8571161441504955,
             "event_in_window": true
           },
           {
@@ -497508,11 +497466,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 51,
+            "pair_length": 50,
             "pair_start_a": 1970,
-            "pair_start_b": 1975,
-            "pair_pps": 452.9684924483299,
-            "pair_avg_corr": 0.807430467822335,
+            "pair_start_b": 1976,
+            "pair_pps": 446.38403654098516,
+            "pair_avg_corr": 0.8116073391654275,
             "event_in_window": true
           },
           {
@@ -497536,15 +497494,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
+            "pair_length": 46,
             "pair_start_a": 1965,
-            "pair_start_b": 1976,
-            "pair_pps": 392.83068776130676,
-            "pair_avg_corr": 0.872957083914015,
+            "pair_start_b": 1980,
+            "pair_pps": 411.3783874511719,
+            "pair_avg_corr": 0.8943008422851563,
             "event_in_window": true
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 48
       },
       "sport_and_international_event": {
         "subject": {
@@ -506705,11 +506663,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 62,
-            "pair_start_a": 1962,
+            "pair_length": 61,
+            "pair_start_a": 1963,
             "pair_start_b": 1962,
-            "pair_pps": 666.1948524713516,
-            "pair_avg_corr": 0.8954231888055801,
+            "pair_pps": 657.1699324250221,
+            "pair_avg_corr": 0.8977731317281723,
             "event_in_window": true
           },
           {
@@ -506735,7 +506693,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 64
+        "canonical_length": 61
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -510056,11 +510014,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 26,
-            "pair_start_a": 1997,
-            "pair_start_b": 1975,
-            "pair_pps": 276.05018520355225,
-            "pair_avg_corr": 0.88477623462677,
+            "pair_length": 23,
+            "pair_start_a": 1999,
+            "pair_start_b": 1979,
+            "pair_pps": 276.33797788619995,
+            "pair_avg_corr": 0.8581924779074532,
             "event_in_window": true
           },
           {
@@ -510087,15 +510045,15 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 23,
-            "pair_start_a": 1996,
+            "pair_length": 21,
+            "pair_start_a": 2002,
             "pair_start_b": 1996,
-            "pair_pps": 326.97139209508896,
-            "pair_avg_corr": 0.8885092176496983,
+            "pair_pps": 343.88985264301306,
+            "pair_avg_corr": 0.8187853634357453,
             "event_in_window": true
           }
         ],
-        "canonical_length": 25
+        "canonical_length": 23
       },
       "government_formation": {
         "subject": {
@@ -510251,7 +510209,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 25
+        "canonical_length": 26
       },
       "humanitarian_crisis": {
         "subject": {
@@ -510959,11 +510917,11 @@
               2016
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 26,
-            "pair_start_a": 1996,
-            "pair_start_b": 1991,
-            "pair_pps": 280.45494878292084,
-            "pair_avg_corr": 0.8297483691802392,
+            "pair_length": 22,
+            "pair_start_a": 2000,
+            "pair_start_b": 1995,
+            "pair_pps": 286.07785725593567,
+            "pair_avg_corr": 0.8669025977452596,
             "event_in_window": true
           },
           {
@@ -511033,7 +510991,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 25
+        "canonical_length": 24
       },
       "territorial_disputes": {
         "subject": {
@@ -513516,11 +513474,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 27,
-            "pair_start_a": 1992,
+            "pair_length": 25,
+            "pair_start_a": 1996,
             "pair_start_b": 2000,
-            "pair_pps": 352.6127243041992,
-            "pair_avg_corr": 0.8162331581115723,
+            "pair_pps": 366.08647257089615,
+            "pair_avg_corr": 0.8135254946019914,
             "event_in_window": true
           },
           {
@@ -513574,7 +513532,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 27
       },
       "mass_protest": {
         "subject": {
@@ -517012,13 +516970,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 52,
-            "pair_start_a": 1975,
-            "pair_start_b": 1975,
-            "pair_pps": 335.2513036727905,
-            "pair_avg_corr": 0.8058925569057465,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
         "canonical_length": 50
@@ -517360,7 +517312,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 46
       },
       "ethnic_and_communal_conflict": {
         "subject": {
@@ -518136,7 +518088,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 46
       },
       "human_rights_reform": {
         "subject": {
@@ -518420,7 +518372,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 47
       },
       "humanitarian_crisis": {
         "subject": {
@@ -519928,7 +519880,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 47
       },
       "political_corruption": {
         "subject": {
@@ -522879,7 +522831,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 30
+        "canonical_length": 29
       },
       "infrastructure_project": {
         "subject": {
@@ -528817,7 +528769,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 45
+        "canonical_length": 43
       },
       "constitutional_change": {
         "subject": {
@@ -531554,7 +531506,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 45
+        "canonical_length": 44
       },
       "military_coup": {
         "subject": {
@@ -533274,7 +533226,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 40
+        "canonical_length": 38
       },
       "terrorist_attack": {
         "subject": {
@@ -537428,7 +537380,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 48
       },
       "economic_recession": {
         "subject": {
@@ -541094,7 +541046,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 39
+        "canonical_length": 38
       },
       "trade_agreement": {
         "subject": {
@@ -542074,11 +542026,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 26,
+            "pair_length": 25,
             "pair_start_a": 2000,
             "pair_start_b": 1998,
-            "pair_pps": 323.32775831222534,
-            "pair_avg_corr": 0.8290455341339111,
+            "pair_pps": 312.85341531038284,
+            "pair_avg_corr": 0.8342757741610209,
             "event_in_window": false
           },
           {
@@ -542170,15 +542122,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 23,
-            "pair_start_a": 1994,
-            "pair_start_b": 2003,
-            "pair_pps": 279.83586859703064,
-            "pair_avg_corr": 0.8111184597015381,
+            "pair_length": 21,
+            "pair_start_a": 1996,
+            "pair_start_b": 2005,
+            "pair_pps": 302.615827202797,
+            "pair_avg_corr": 0.8005709714359708,
             "event_in_window": true
           }
         ],
-        "canonical_length": 24
+        "canonical_length": 23
       },
       "education_and_research": {
         "subject": {
@@ -542546,7 +542498,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 47
       },
       "government_formation": {
         "subject": {
@@ -542709,7 +542661,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 47
       },
       "human_rights_reform": {
         "subject": {
@@ -543163,7 +543115,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 51
       },
       "military_coup": {
         "subject": {
@@ -543625,7 +543577,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 47
       },
       "political_violence": {
         "subject": {
@@ -543767,7 +543719,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 47
       },
       "regional_integration": {
         "subject": {
@@ -548508,7 +548460,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 42
       },
       "sport_and_international_event": {
         "subject": {
@@ -550662,7 +550614,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 24
       },
       "labor_action": {
         "subject": {
@@ -551942,7 +551894,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 33
+        "canonical_length": 32
       },
       "social_policy_reform": {
         "subject": {
@@ -554578,7 +554530,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 27
       },
       "government_formation": {
         "subject": {
@@ -557107,7 +557059,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 26
+        "canonical_length": 25
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -570329,15 +570281,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 45,
+            "pair_length": 46,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 363.36180835962296,
-            "pair_avg_corr": 0.897189650270674,
+            "pair_pps": 366.0920788049698,
+            "pair_avg_corr": 0.8842803835868835,
             "event_in_window": false
           }
         ],
-        "canonical_length": 43
+        "canonical_length": 44
       },
       "humanitarian_crisis": {
         "subject": {
@@ -573723,15 +573675,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 30,
-            "pair_start_a": 1994,
+            "pair_length": 28,
+            "pair_start_a": 1993,
             "pair_start_b": 1997,
-            "pair_pps": 412.0810639858246,
-            "pair_avg_corr": 0.8585022166371346,
+            "pair_pps": 376.3158526420593,
+            "pair_avg_corr": 0.8399907425045967,
             "event_in_window": true
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 27
       },
       "multilateral_agreement": {
         "subject": {
@@ -574653,7 +574605,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 65
+        "canonical_length": 64
       },
       "economic_recession": {
         "subject": {
@@ -574933,16 +574885,10 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 67,
-            "pair_start_a": 1960,
-            "pair_start_b": 1960,
-            "pair_pps": 103.35030472278595,
-            "pair_avg_corr": 0.7712709307670593,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 65
+        "canonical_length": 64
       },
       "elections_and_voting": {
         "subject": {
@@ -576313,7 +576259,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 65
+        "canonical_length": 64
       },
       "regional_integration": {
         "subject": {
@@ -579041,11 +578987,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 23,
+            "pair_length": 22,
             "pair_start_a": 2000,
-            "pair_start_b": 2002,
-            "pair_pps": 274.1806174516678,
-            "pair_avg_corr": 0.851492600781577,
+            "pair_start_b": 2003,
+            "pair_pps": 289.43764555454254,
+            "pair_avg_corr": 0.8222660385072231,
             "event_in_window": true
           },
           {
@@ -579069,12 +579015,12 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 27,
+            "pair_length": 26,
             "pair_start_a": 2000,
-            "pair_start_b": 1997,
-            "pair_pps": 347.89544069767,
-            "pair_avg_corr": 0.8590010881423951,
-            "event_in_window": false
+            "pair_start_b": 2000,
+            "pair_pps": 348.21176874637604,
+            "pair_avg_corr": 0.8370475210249424,
+            "event_in_window": true
           },
           {
             "country_b_id": 223,
@@ -579099,7 +579045,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 25
+        "canonical_length": 24
       },
       "military_coup": {
         "subject": {
@@ -580204,7 +580150,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 50
+        "canonical_length": 47
       },
       "renewable_energy": {
         "subject": {
@@ -580843,7 +580789,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "constitutional_change": {
         "subject": {
@@ -583207,7 +583153,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "infrastructure_project": {
         "subject": {
@@ -583295,11 +583241,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 32,
-            "pair_start_a": 1985,
-            "pair_start_b": 1995,
-            "pair_pps": 465.3325138092041,
-            "pair_avg_corr": 0.8553906503845664,
+            "pair_length": 37,
+            "pair_start_a": 1990,
+            "pair_start_b": 1989,
+            "pair_pps": 440.13235998153687,
+            "pair_avg_corr": 0.9150360914377066,
             "event_in_window": true
           },
           {
@@ -583323,11 +583269,11 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 36,
-            "pair_start_a": 1982,
-            "pair_start_b": 1984,
-            "pair_pps": 457.6989676952362,
-            "pair_avg_corr": 0.8475906809171041,
+            "pair_length": 37,
+            "pair_start_a": 1984,
+            "pair_start_b": 1983,
+            "pair_pps": 472.7415197491646,
+            "pair_avg_corr": 0.8517865220705668,
             "event_in_window": false
           },
           {
@@ -583353,7 +583299,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 34
+        "canonical_length": 35
       },
       "interstate_war": {
         "subject": {
@@ -584152,13 +584098,7 @@
               2022,
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 24,
-            "pair_start_a": 1991,
-            "pair_start_b": 1991,
-            "pair_pps": 347.07480812072754,
-            "pair_avg_corr": 0.7611289651770341,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 204,
@@ -584240,7 +584180,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 23
+        "canonical_length": 28
       },
       "political_corruption": {
         "subject": {
@@ -592529,11 +592469,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 20,
+            "pair_length": 23,
             "pair_start_a": 2004,
-            "pair_start_b": 2006,
-            "pair_pps": 173.7700426578522,
-            "pair_avg_corr": 0.7898638302629645,
+            "pair_start_b": 2002,
+            "pair_pps": 181.14755141735077,
+            "pair_avg_corr": 0.8751089440451728,
             "event_in_window": true
           },
           {
@@ -592582,7 +592522,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 19
+        "canonical_length": 21
       },
       "peacekeeping_and_peace_process": {
         "subject": {
@@ -596968,11 +596908,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 47,
-            "pair_start_a": 1978,
-            "pair_start_b": 1979,
-            "pair_pps": 618.4727609157561,
-            "pair_avg_corr": 0.8772663275400797,
+            "pair_length": 50,
+            "pair_start_a": 1976,
+            "pair_start_b": 1976,
+            "pair_pps": 619.5737302303314,
+            "pair_avg_corr": 0.8851053289004734,
             "event_in_window": true
           },
           {
@@ -597064,7 +597004,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 48
       },
       "terrorist_attack": {
         "subject": {
@@ -598459,11 +598399,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 61,
-            "pair_start_a": 1965,
-            "pair_start_b": 1964,
-            "pair_pps": 382.9903155565262,
-            "pair_avg_corr": 0.7848162204027176,
+            "pair_length": 62,
+            "pair_start_a": 1964,
+            "pair_start_b": 1963,
+            "pair_pps": 390.13248085975647,
+            "pair_avg_corr": 0.7865574210882187,
             "event_in_window": true
           },
           {
@@ -598509,11 +598449,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 61,
-            "pair_start_a": 1966,
-            "pair_start_b": 1963,
-            "pair_pps": 499.2015311717987,
-            "pair_avg_corr": 0.8183631658554077,
+            "pair_length": 62,
+            "pair_start_a": 1965,
+            "pair_start_b": 1962,
+            "pair_pps": 508.48708343505854,
+            "pair_avg_corr": 0.8201404571533203,
             "event_in_window": false
           },
           {
@@ -598567,7 +598507,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 59
+        "canonical_length": 61
       },
       "education_reform": {
         "subject": {
@@ -599348,11 +599288,11 @@
               2017
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 49,
+            "pair_length": 48,
             "pair_start_a": 1975,
             "pair_start_b": 1970,
-            "pair_pps": 552.6475641131401,
-            "pair_avg_corr": 0.8056086940424783,
+            "pair_pps": 536.6405153274536,
+            "pair_avg_corr": 0.7985721954277584,
             "event_in_window": true
           },
           {
@@ -599381,7 +599321,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 51
+        "canonical_length": 47
       },
       "government_formation": {
         "subject": {
@@ -601005,7 +600945,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 33
+        "canonical_length": 31
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -602395,11 +602335,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 26,
-            "pair_start_a": 1990,
-            "pair_start_b": 2001,
-            "pair_pps": 439.31821286678314,
-            "pair_avg_corr": 0.8046121114776248,
+            "pair_length": 30,
+            "pair_start_a": 1997,
+            "pair_start_b": 1995,
+            "pair_pps": 431.44998729228973,
+            "pair_avg_corr": 0.8988541401922703,
             "event_in_window": true
           },
           {
@@ -602422,13 +602362,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 22,
-            "pair_start_a": 2003,
-            "pair_start_b": 2003,
-            "pair_pps": 339.63043665885925,
-            "pair_avg_corr": 0.771887356042862,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 202,
@@ -602476,7 +602410,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 24
+        "canonical_length": 29
       },
       "economic_recession": {
         "subject": {
@@ -603578,7 +603512,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 22
+        "canonical_length": 19
       },
       "mass_protest": {
         "subject": {
@@ -605451,11 +605385,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 35,
-            "pair_start_a": 1992,
-            "pair_start_b": 1992,
-            "pair_pps": 226.14843159914017,
-            "pair_avg_corr": 0.8076729699969292,
+            "pair_length": 23,
+            "pair_start_a": 2001,
+            "pair_start_b": 2002,
+            "pair_pps": 225.72934693098068,
+            "pair_avg_corr": 0.7549476485985976,
             "event_in_window": true
           },
           {
@@ -605479,11 +605413,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 32,
-            "pair_start_a": 1993,
-            "pair_start_b": 1993,
-            "pair_pps": 612.1121253967285,
-            "pair_avg_corr": 0.8694774508476257,
+            "pair_length": 26,
+            "pair_start_a": 2000,
+            "pair_start_b": 2000,
+            "pair_pps": 605.400716304779,
+            "pair_avg_corr": 0.8315943905285427,
             "event_in_window": true
           },
           {
@@ -605511,7 +605445,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 33
+        "canonical_length": 24
       },
       "economic_recession": {
         "subject": {
@@ -607779,11 +607713,11 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 35,
+            "pair_length": 34,
             "pair_start_a": 1992,
-            "pair_start_b": 1986,
-            "pair_pps": 362.10529416799545,
-            "pair_avg_corr": 0.7958358113582318,
+            "pair_start_b": 1987,
+            "pair_pps": 353.66322576999664,
+            "pair_avg_corr": 0.8001430447284992,
             "event_in_window": true
           },
           {
@@ -607841,7 +607775,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 33
+        "canonical_length": 32
       },
       "political_violence": {
         "subject": {
@@ -608907,7 +608841,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 27
       },
       "economic_liberalization": {
         "subject": {
@@ -609839,7 +609773,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 32
+        "canonical_length": 27
       },
       "interstate_war": {
         "subject": {
@@ -610750,7 +610684,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 27
       },
       "political_corruption": {
         "subject": {
@@ -611720,7 +611654,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 28
       },
       "diplomatic_rupture": {
         "subject": {
@@ -613565,11 +613499,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 25,
+            "pair_length": 26,
             "pair_start_a": 1994,
             "pair_start_b": 1990,
-            "pair_pps": 318.78541707992554,
-            "pair_avg_corr": 0.8500944455464681,
+            "pair_pps": 325.7673132419586,
+            "pair_avg_corr": 0.8353008031845093,
             "event_in_window": true
           },
           {
@@ -613658,7 +613592,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 28
       },
       "regional_integration": {
         "subject": {
@@ -615556,7 +615490,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 46
       },
       "economic_recovery": {
         "subject": {
@@ -616438,12 +616372,12 @@
               2021
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1977,
+            "pair_length": 49,
+            "pair_start_a": 1978,
             "pair_start_b": 1965,
-            "pair_pps": 273.3606368303299,
-            "pair_avg_corr": 0.7810303909437997,
-            "event_in_window": true
+            "pair_pps": 281.84858870506287,
+            "pair_avg_corr": 0.8217160020555768,
+            "event_in_window": false
           },
           {
             "country_b_id": 79,
@@ -616519,7 +616453,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 47
       },
       "government_formation": {
         "subject": {
@@ -616831,7 +616765,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 46
       },
       "humanitarian_crisis": {
         "subject": {
@@ -617403,13 +617337,7 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 51,
-            "pair_start_a": 1975,
-            "pair_start_b": 1976,
-            "pair_pps": 350.7727664709091,
-            "pair_avg_corr": 0.7642108201980591,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 217,
@@ -617742,7 +617670,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 49
+        "canonical_length": 46
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -623141,11 +623069,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 54,
-            "pair_start_a": 1973,
-            "pair_start_b": 1973,
-            "pair_pps": 930.0115767717361,
-            "pair_avg_corr": 0.8611218303442001,
+            "pair_length": 56,
+            "pair_start_a": 1967,
+            "pair_start_b": 1970,
+            "pair_pps": 927.2264723777771,
+            "pair_avg_corr": 0.8714534514828732,
             "event_in_window": true
           },
           {
@@ -623168,13 +623096,7 @@
             "event_all_years_b": [
               2023
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 51,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 454.25772982835775,
-            "pair_avg_corr": 0.8907014310359955,
-            "event_in_window": false
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 250,
@@ -623199,7 +623121,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 52
+        "canonical_length": 54
       },
       "elections_and_voting": {
         "subject": {
@@ -626376,7 +626298,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 34
+        "canonical_length": 33
       },
       "democratic_transition": {
         "subject": {
@@ -627500,16 +627422,10 @@
             "event_all_years_b": [
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 62,
-            "pair_start_a": 1962,
-            "pair_start_b": 1965,
-            "pair_pps": 166.64182925224304,
-            "pair_avg_corr": 0.6719428598880768,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 60
+        "canonical_length": 33
       },
       "interstate_war": {
         "subject": {
@@ -628407,7 +628323,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 34
+        "canonical_length": 33
       },
       "political_repression": {
         "subject": {
@@ -634993,7 +634909,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "human_rights_reform": {
         "subject": {
@@ -638117,7 +638033,13 @@
               2024,
               2025
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 56,
+            "pair_start_a": 1962,
+            "pair_start_b": 1967,
+            "pair_pps": 509.3296513557434,
+            "pair_avg_corr": 0.8268338496034796,
+            "event_in_window": false
           },
           {
             "country_b_id": 79,
@@ -638141,11 +638063,11 @@
               2023
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 49,
-            "pair_start_a": 1965,
-            "pair_start_b": 1976,
-            "pair_pps": 506.16104453802103,
-            "pair_avg_corr": 0.7946013258053706,
+            "pair_length": 53,
+            "pair_start_a": 1960,
+            "pair_start_b": 1970,
+            "pair_pps": 517.9362028837204,
+            "pair_avg_corr": 0.8143650988737742,
             "event_in_window": true
           },
           {
@@ -638170,16 +638092,10 @@
               2014,
               2016
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 45,
-            "pair_start_a": 1965,
-            "pair_start_b": 1970,
-            "pair_pps": 477.8206846117973,
-            "pair_avg_corr": 0.8167874950629014,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 54
       },
       "military_coup": {
         "subject": {
@@ -639073,12 +638989,12 @@
               2024
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 49,
+            "pair_length": 51,
             "pair_start_a": 1970,
             "pair_start_b": 1970,
-            "pair_pps": 554.6122031211853,
-            "pair_avg_corr": 0.8084725993020194,
-            "event_in_window": false
+            "pair_pps": 558.6217258572578,
+            "pair_avg_corr": 0.7823833695479802,
+            "event_in_window": true
           },
           {
             "country_b_id": 50,
@@ -639098,7 +639014,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 47
+        "canonical_length": 49
       },
       "political_violence": {
         "subject": {
@@ -640658,7 +640574,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 64
+        "canonical_length": 39
       },
       "economic_recession": {
         "subject": {
@@ -641800,7 +641716,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 64
+        "canonical_length": 39
       },
       "mass_protest": {
         "subject": {
@@ -642645,13 +642561,7 @@
               2016,
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 48,
-            "pair_start_a": 1965,
-            "pair_start_b": 1965,
-            "pair_pps": 344.44109630584717,
-            "pair_avg_corr": 0.8969820216298103,
-            "event_in_window": false
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 236,
@@ -642679,7 +642589,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 46
+        "canonical_length": 39
       },
       "political_violence": {
         "subject": {
@@ -644207,11 +644117,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 20,
-            "pair_start_a": 1990,
-            "pair_start_b": 2005,
-            "pair_pps": 249.35095191001892,
-            "pair_avg_corr": 0.7792217247188091,
+            "pair_length": 23,
+            "pair_start_a": 2004,
+            "pair_start_b": 2002,
+            "pair_pps": 253.20133686065674,
+            "pair_avg_corr": 0.786339555467878,
             "event_in_window": true
           },
           {
@@ -644237,7 +644147,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 20
+        "canonical_length": 21
       },
       "elections_and_voting": {
         "subject": {
@@ -645799,15 +645709,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 20,
-            "pair_start_a": 1990,
-            "pair_start_b": 2005,
-            "pair_pps": 249.35095191001892,
-            "pair_avg_corr": 0.7792217247188091,
+            "pair_length": 23,
+            "pair_start_a": 2004,
+            "pair_start_b": 2002,
+            "pair_pps": 253.20133686065674,
+            "pair_avg_corr": 0.786339555467878,
             "event_in_window": true
           }
         ],
-        "canonical_length": 20
+        "canonical_length": 21
       },
       "mass_protest": {
         "subject": {
@@ -646095,7 +646005,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "military_policy_and_reform": {
         "subject": {
@@ -646238,7 +646148,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 48
+        "canonical_length": 47
       },
       "monetary_policy_change": {
         "subject": {
@@ -647251,7 +647161,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 65
+        "canonical_length": 64
       },
       "social_policy_reform": {
         "subject": {
@@ -647910,12 +647820,12 @@
               2022
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
+            "pair_length": 47,
             "pair_start_a": 1977,
-            "pair_start_b": 1970,
-            "pair_pps": 780.9141755104064,
-            "pair_avg_corr": 0.9187225594240076,
-            "event_in_window": false
+            "pair_start_b": 1975,
+            "pair_pps": 779.7199500799179,
+            "pair_avg_corr": 0.8731466406270078,
+            "event_in_window": true
           },
           {
             "country_b_id": 231,
@@ -647964,7 +647874,13 @@
               2023,
               2025
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 43,
+            "pair_start_a": 1984,
+            "pair_start_b": 1982,
+            "pair_pps": 503.90410989522934,
+            "pair_avg_corr": 0.8370500164372581,
+            "event_in_window": true
           },
           {
             "country_b_id": 225,
@@ -647988,11 +647904,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 50,
-            "pair_start_a": 1976,
-            "pair_start_b": 1977,
-            "pair_pps": 480.0877124071121,
-            "pair_avg_corr": 0.8728867498311129,
+            "pair_length": 43,
+            "pair_start_a": 1984,
+            "pair_start_b": 1983,
+            "pair_pps": 486.67075860500336,
+            "pair_avg_corr": 0.8706095860554621,
             "event_in_window": true
           },
           {
@@ -648015,16 +647931,10 @@
             "event_all_years_b": [
               2021
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 53,
-            "pair_start_a": 1970,
-            "pair_start_b": 1970,
-            "pair_pps": 922.9597082734108,
-            "pair_avg_corr": 0.8707167059183121,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 51
+        "canonical_length": 45
       },
       "constitutional_change": {
         "subject": {
@@ -649799,7 +649709,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "migration_and_refugees": {
         "subject": {
@@ -650940,7 +650850,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 45
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -654752,7 +654662,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 27
+        "canonical_length": 28
       },
       "multilateral_agreement": {
         "subject": {
@@ -655109,13 +655019,7 @@
               2022,
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 22,
-            "pair_start_a": 1991,
-            "pair_start_b": 1994,
-            "pair_pps": 434.0108357667923,
-            "pair_avg_corr": 0.7891106104850769,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           },
           {
             "country_b_id": 227,
@@ -655138,7 +655042,13 @@
               2013,
               2015
             ],
-            "event_data_source": "qgi-data"
+            "event_data_source": "qgi-data",
+            "pair_length": 48,
+            "pair_start_a": 1962,
+            "pair_start_b": 1967,
+            "pair_pps": 632.6688165664673,
+            "pair_avg_corr": 0.8237875215709209,
+            "event_in_window": true
           },
           {
             "country_b_id": 228,
@@ -655190,7 +655100,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 23
+        "canonical_length": 46
       },
       "political_corruption": {
         "subject": {
@@ -660607,7 +660517,7 @@
             "event_in_window": true
           }
         ],
-        "canonical_length": 35
+        "canonical_length": 34
       },
       "executive_power_consolidation": {
         "subject": {
@@ -661579,11 +661489,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 37,
-            "pair_start_a": 1990,
-            "pair_start_b": 1987,
-            "pair_pps": 563.5853736996651,
-            "pair_avg_corr": 0.846224284834332,
+            "pair_length": 36,
+            "pair_start_a": 1991,
+            "pair_start_b": 1989,
+            "pair_pps": 563.2426993846893,
+            "pair_avg_corr": 0.8234542388665048,
             "event_in_window": true
           },
           {
@@ -661636,16 +661546,10 @@
               2007,
               2023
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 37,
-            "pair_start_a": 1990,
-            "pair_start_b": 1984,
-            "pair_pps": 469.57740437984467,
-            "pair_avg_corr": 0.7932050749659538,
-            "event_in_window": false
+            "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 35
+        "canonical_length": 34
       },
       "military_coup": {
         "subject": {
@@ -662537,7 +662441,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "public_health_reform": {
         "subject": {
@@ -663026,7 +662930,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 31
+        "canonical_length": 30
       },
       "territorial_disputes": {
         "subject": {
@@ -667263,7 +667167,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "terrorist_attack": {
         "subject": {
@@ -680434,7 +680338,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 36
+        "canonical_length": 35
       },
       "mass_protest": {
         "subject": {
@@ -680723,7 +680627,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 63
+        "canonical_length": 62
       },
       "military_coup": {
         "subject": {
@@ -684562,7 +684466,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "military_coup": {
         "subject": {
@@ -685356,7 +685260,7 @@
             "event_data_source": "missing"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "resource_conflict": {
         "subject": {
@@ -687997,7 +687901,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 55
+        "canonical_length": 54
       },
       "military_coup": {
         "subject": {
@@ -693700,7 +693604,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 53
+        "canonical_length": 52
       },
       "multilateral_agreement": {
         "subject": {
@@ -696393,7 +696297,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 41
+        "canonical_length": 40
       },
       "military_coup": {
         "subject": {
@@ -697514,16 +697418,9 @@
               2021,
               2025
             ],
-            "event_data_source": "qgi-data",
-            "pair_length": 43,
-            "pair_start_a": 1984,
-            "pair_start_b": 1984,
-            "pair_pps": 518.203918337822,
-            "pair_avg_corr": 0.803416927655538,
-            "event_in_window": true
+            "event_data_source": "qgi-data"
           }
-        ],
-        "canonical_length": 41
+        ]
       },
       "sanctions_and_arms_embargo": {
         "subject": {
@@ -706067,7 +705964,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 29
+        "canonical_length": 28
       },
       "interstate_war": {
         "subject": {
@@ -706540,7 +706437,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 54
+        "canonical_length": 50
       },
       "monetary_policy_change": {
         "subject": {
@@ -710075,15 +709972,15 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 40,
+            "pair_length": 37,
             "pair_start_a": 1979,
-            "pair_start_b": 1986,
-            "pair_pps": 482.6001191139221,
-            "pair_avg_corr": 0.9280771521421579,
+            "pair_start_b": 1989,
+            "pair_pps": 482.9523120522499,
+            "pair_avg_corr": 0.9323403707572392,
             "event_in_window": true
           }
         ],
-        "canonical_length": 40
+        "canonical_length": 37
       },
       "terrorist_attack": {
         "subject": {
@@ -712168,7 +712065,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 28
+        "canonical_length": 27
       },
       "labor_action": {
         "subject": {
@@ -718175,11 +718072,11 @@
               2025
             ],
             "event_data_source": "qgi-data",
-            "pair_length": 39,
-            "pair_start_a": 1970,
-            "pair_start_b": 1986,
-            "pair_pps": 409.58514708280563,
-            "pair_avg_corr": 0.8751819382111231,
+            "pair_length": 30,
+            "pair_start_a": 1981,
+            "pair_start_b": 1995,
+            "pair_pps": 416.35032892227173,
+            "pair_avg_corr": 0.8163731939652387,
             "event_in_window": true
           },
           {
@@ -718230,7 +718127,7 @@
             "event_data_source": "qgi-data"
           }
         ],
-        "canonical_length": 39
+        "canonical_length": 29
       },
       "labor_action": {
         "subject": {

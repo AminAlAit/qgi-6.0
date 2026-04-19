@@ -489,7 +489,7 @@ export function PrecedentDetailClient({
                         <span
                           className="text-[10px] tracking-widest cursor-not-allowed"
                           style={{ color: "var(--qgi-text-dim)" }}
-                          title="No pair-window data available at this panel's canonical pattern length. Timeline shows the 15-year event-anchored approximation for this analogue."
+                          title="Detailed pattern view unavailable for this analogue. Timeline shows an event-anchored approximation. Use View country to open the analogue's full profile."
                           aria-label={`Pattern detail not available for ${a.country_b_name}`}
                         >
                           Pattern n/a

@@ -163,15 +163,26 @@ export function AnalogueMultiTimeline({
     };
   };
 
-  // Whether every analogue has real pattern data (controls the "approx" disclaimer)
+  // Pre-compute the resolved pattern for every analogue so the legend
+  // labels + visual differentiation downstream reflect what actually
+  // renders (not just which fields are present). Sonnet pre-mortem
+  // flagged that the previous `allReal` check looked at field presence
+  // — which could lie when the legacy best_pattern_* survived but
+  // got rejected by the on-the-fly end-alignment check in resolveAnaloguePattern.
+  const resolvedByAnalogueId = new Map(
+    withEvents.map((a) => [a.country_b_id, resolveAnaloguePattern(a)])
+  );
+
   const allReal = withEvents.every(
-    (a) =>
-      (a.pair_start_b !== undefined && a.pair_length !== undefined) ||
-      (a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined)
+    (a) => resolvedByAnalogueId.get(a.country_b_id)?.isReal ?? false
   );
   const allCommonLength = withEvents.every(
-    (a) => a.pair_start_b !== undefined && a.pair_length !== undefined
+    (a) => resolvedByAnalogueId.get(a.country_b_id)?.isCommonLength ?? false
   );
+  // P0 defensive guard (Sonnet review): canonicalLength is an optional
+  // prop, so `allCommonLength` can be true while `canonicalLength` is
+  // undefined. Without this guard the legend literally renders "L=?yr".
+  const showCommonLengthLabel = allCommonLength && canonicalLength != null;
 
   // Compute axis range — include event markers + every pattern window + padding
   const allYears: number[] = [CURRENT_YEAR];
@@ -242,15 +253,15 @@ export function AnalogueMultiTimeline({
           className="text-[9px] tracking-[0.1em] uppercase font-mono"
           style={{ color: "var(--qgi-text-muted)" }}
           title={
-            allCommonLength
-              ? `All analogue rows share pattern length ~${canonicalLength ?? "L"} years (common-length enforcement per #354). Subject row extends ${subjectWindow} years to NOW.`
+            showCommonLengthLabel
+              ? `All analogue rows share pattern length ~${canonicalLength} years (common-length enforcement per #354). Subject row extends ${subjectWindow} years to NOW.`
               : allReal
                 ? "Analogue pattern windows from qgi_data.patterns (per-pair best-PPS — lengths vary across rows)."
                 : "Windows ≈ 15yr fallback · Events real (qgi-data)."
           }
         >
-          {allCommonLength
-            ? `Common length L=${canonicalLength ?? "?"}yr · Events real`
+          {showCommonLengthLabel
+            ? `Common length L=${canonicalLength}yr · Events real`
             : allReal
               ? "Patterns real · Events real · Lengths vary"
               : "Windows ≈ 15yr fallback · Events real"}
@@ -386,16 +397,25 @@ export function AnalogueMultiTimeline({
                 {pw.length}yr
               </text>
 
-              {/* Analogue pattern bar — real window from qgi_data.patterns (#352) */}
+              {/* Analogue pattern bar. Real pair-window data renders as
+                  a solid orange bar; 15yr event-anchor approximations
+                  (pw.isReal = false) render with reduced opacity + a
+                  dashed stroke so analysts can tell at a glance which
+                  rows are backed by real qgi_data.patterns windows and
+                  which are event-anchored approximations. Sonnet P1
+                  review flagged the prior single-pixel "~" tilde prefix
+                  as too subtle — 18,009 fallback rows were rendering
+                  identically to real rows. */}
               <rect
                 x={xOf(patternStart)}
                 y={0}
                 width={xOf(patternEnd) - xOf(patternStart)}
                 height={barHeight}
                 fill={COLOR_ANALOGUE}
-                fillOpacity={0.22}
+                fillOpacity={pw.isReal ? 0.22 : 0.08}
                 stroke={COLOR_ANALOGUE}
                 strokeWidth={1}
+                strokeDasharray={pw.isReal ? undefined : "3 3"}
                 rx={2}
               />
               <text
@@ -407,8 +427,9 @@ export function AnalogueMultiTimeline({
                 fill={COLOR_ANALOGUE}
                 fillOpacity={0.85}
               >
-                {pw.isReal ? "" : "~"}
+                {pw.isReal ? "" : "≈"}
                 {patternStart}–{patternEnd}
+                {!pw.isReal && " (approx)"}
               </text>
               {/* #354: event-outside-window indicator. When the analogue's
                   median-year event falls outside its length-L pattern, the
