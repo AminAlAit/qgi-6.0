@@ -2,10 +2,27 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import LayeredTaxonomyTree from "@/components/methodology/LayeredTaxonomyTree";
 
+// T8 #301 + T19 #312: full openGraph + twitter + canonical. This is a
+// share-worthy page; previously it rendered a blank social preview card.
 export const metadata: Metadata = {
   title: "Methodology — QGI Intelligence",
   description:
-    "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
+    "How QGI finds historical precedents in economic data to surface geopolitical risk candidates. Open-data foundation, statistical ensemble, calibration + ranking validation.",
+  alternates: { canonical: "https://qgintelligence.com/methodology" },
+  openGraph: {
+    title: "Methodology — QGI Intelligence",
+    description:
+      "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
+    url: "https://qgintelligence.com/methodology",
+    siteName: "QGI Intelligence",
+    type: "article",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Methodology — QGI Intelligence",
+    description:
+      "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
+  },
 };
 
 /**
@@ -72,8 +89,8 @@ export default function MethodologyPage() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             QGI surfaces economically-grounded risk candidates by finding
-            historical precedents in World Bank data spanning 214 countries and
-            58 indicators. Here is how it works.
+            historical precedents in World Bank data spanning 197 countries and
+            69 indicators (as of April 2026; we are actively expanding the indicator set and curated country coverage — next update within 90 days). Here is how it works.
           </p>
         </div>
 
@@ -175,8 +192,8 @@ export default function MethodologyPage() {
           </p>
           <LayeredTaxonomyTree />
           <p className="mt-3 text-[11px]" style={{ color: "var(--qgi-text-dim)" }}>
-            Layer 4 — the individual event records themselves (currently 12,000+
-            across 158 countries) — is surfaced on the per-country profile pages,
+            Layer 4 — the individual event records themselves (13,812 events
+            across 197 countries as of April 2026) — is surfaced on the per-country profile pages,
             not in this overview.
           </p>
         </Section>
@@ -229,21 +246,107 @@ export default function MethodologyPage() {
         <Section id="validation" title="Validation">
           <p>
             QGI V1.8.1 was backtested against 403 ground-truth country-event
-            pairs across 88 curated countries with a 2020 cutoff (trained on
-            pre-2020 data, tested on 2020–2025 events):
+            pairs across 55 curated countries with a 2020 cutoff (trained on
+            pre-2020 data, tested on 2020–2025 events). Backtest cohort is
+            55 countries; current scoring cohort is 126 countries across 197 total
+            in the pipeline (as of April 2026).
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
-            <MetricCard label="Lift@50" value="2.24×" note="vs random baseline" />
-            <MetricCard label="F1 Score" value="0.480" note="vs persistence 0.336" />
-            <MetricCard label="Recall" value="100%" note="all ground-truth events captured" />
-            <MetricCard label="Countries" value="126" note="scored, 88 curated" />
-          </div>
+
           <p className="mt-4">
-            Lift@50 of 2.24× means the top 50 predictions are 2.24 times more
-            likely to match a real event than a random selection. The system
-            beats a persistence baseline (predicting last year&apos;s events
-            will repeat) on F1 score.
+            Two different questions matter, and we report both candidly:
           </p>
+
+          <div className="mt-3 grid gap-4 md:grid-cols-2">
+            {/* Ranking quality */}
+            <div
+              className="rounded border p-4"
+              style={{
+                borderColor: "var(--qgi-border)",
+                backgroundColor: "var(--qgi-surface-2)",
+              }}
+            >
+              <div
+                className="text-[10px] tracking-[0.15em] uppercase mb-2 font-mono"
+                style={{ color: "var(--qgi-accent)" }}
+              >
+                1. Ranking quality · Lift@50, F1
+              </div>
+              <p className="text-sm">
+                How well does QGI surface the most interesting countries at the
+                top of its output? This is the analyst-triage use case.
+              </p>
+              <div className="grid grid-cols-2 gap-3 mt-4">
+                <MetricCard label="Lift@50" value="2.24×" note="vs random" />
+                <MetricCard label="F1 Score" value="0.480" note="vs persistence 0.336" />
+              </div>
+              <p className="mt-3 text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+                <strong>QGI beats the persistence baseline</strong> on ranking
+                metrics. The top-50 predictions are 2.24× more likely to match
+                a real event than random selection — useful for horizon-scanning
+                and portfolio triage.
+              </p>
+            </div>
+
+            {/* Calibration */}
+            <div
+              className="rounded border p-4"
+              style={{
+                borderColor: "var(--qgi-border)",
+                backgroundColor: "var(--qgi-surface-2)",
+              }}
+            >
+              <div
+                className="text-[10px] tracking-[0.15em] uppercase mb-2 font-mono"
+                style={{ color: "var(--qgi-accent)" }}
+              >
+                2. Probability calibration · AUPRC
+              </div>
+              <p className="text-sm">
+                How well-calibrated are QGI&apos;s probability estimates across
+                all thresholds? This is the decision-theory use case.
+              </p>
+              <div className="grid grid-cols-2 gap-3 mt-4">
+                <MetricCard label="AUPRC" value="0.43" note="QGI V1.8.1" />
+                <MetricCard label="Baseline" value="0.58" note="persistence AUPRC" />
+              </div>
+              <p className="mt-3 text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+                <strong>Persistence beats QGI on AUPRC.</strong> This is expected:
+                persistence is an exceptionally strong calibration baseline for
+                rare structural events because countries that had civil wars or
+                coups tend to have them again. QGI&apos;s value-add is detecting
+                <em> when the signal is changing</em> — not re-asserting the base
+                rate. For decision-theory applications that need calibrated
+                probabilities, persistence is currently stronger. V1.9 XGBoost
+                targets AUPRC &gt; 0.55.
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-5">
+            <strong>When to use QGI vs persistence:</strong> use QGI for
+            top-K analyst triage (&ldquo;which 50 countries deserve closer review
+            this quarter?&rdquo;); use persistence (or V1.9 once it ships) for
+            calibrated probability estimates in decision-theory pipelines.
+          </p>
+
+          <div
+            className="mt-5 rounded border p-4"
+            style={{ borderColor: "var(--qgi-border)", backgroundColor: "var(--qgi-surface-2)" }}
+          >
+            <div
+              className="text-[10px] tracking-[0.15em] uppercase mb-2 font-mono"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Statistical hygiene — multiple-testing correction
+            </div>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              SCDI detection applies Benjamini-Hochberg FDR correction
+              (p &lt; 0.05) across all pairwise correlation tests per country_a
+              to control the false-discovery rate under the scale of ~14.3B
+              pairwise tests. Without BH-FDR, this many tests would produce
+              thousands of spurious correlations by chance alone.
+            </p>
+          </div>
         </Section>
 
         {/* Section 6: Pattern Tiers */}
@@ -325,7 +428,7 @@ export default function MethodologyPage() {
             className="text-[10px] tracking-wider"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            Pattern Recurrence Intelligence — Statistical Beta
+            Pattern Recurrence Intelligence
           </p>
           <div className="mt-4 flex justify-center gap-4">
             <Link

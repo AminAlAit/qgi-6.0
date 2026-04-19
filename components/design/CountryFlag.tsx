@@ -13,10 +13,36 @@ interface Props {
   alpha2: string;
   size?: number;
   className?: string;
+  /**
+   * T15 #308 a11y fix (2026-04-19): optional country name for screen
+   * readers. When provided, the flag is announced as "<countryName> flag".
+   * When omitted and the flag is decorative (adjacent text already names
+   * the country), callers should pass `ariaHidden`.
+   */
+  countryName?: string;
+  ariaHidden?: boolean;
 }
 
-export function CountryFlag({ alpha2, size = 24, className }: Props) {
+export function CountryFlag({
+  alpha2,
+  size = 24,
+  className,
+  countryName,
+  ariaHidden,
+}: Props) {
   const code = alpha2?.toUpperCase();
+  // Resolve the accessible label: explicit countryName wins, then alpha-2
+  // ("US flag"), else a generic "Country flag" fallback for unknown codes.
+  const ariaLabel = ariaHidden
+    ? undefined
+    : countryName
+      ? `${countryName} flag`
+      : code
+        ? `${code} flag`
+        : "Country flag";
+  const commonA11y = ariaHidden
+    ? { "aria-hidden": true as const }
+    : { role: "img" as const, "aria-label": ariaLabel };
 
   if (!code || !hasFlag(code)) {
     // Fallback: show alpha-2 code in a badge
@@ -29,6 +55,7 @@ export function CountryFlag({ alpha2, size = 24, className }: Props) {
           backgroundColor: "var(--qgi-surface-2)",
           color: "var(--qgi-text-muted)",
         }}
+        {...commonA11y}
       >
         {code || "??"}
       </span>
@@ -47,6 +74,7 @@ export function CountryFlag({ alpha2, size = 24, className }: Props) {
           backgroundColor: "var(--qgi-surface-2)",
           color: "var(--qgi-text-muted)",
         }}
+        {...commonA11y}
       >
         {code}
       </span>
@@ -65,6 +93,7 @@ export function CountryFlag({ alpha2, size = 24, className }: Props) {
           ? { borderRadius: 2 }
           : { width: size * 1.5, height: size, borderRadius: 2 }
       }
+      {...commonA11y}
     />
   );
 }

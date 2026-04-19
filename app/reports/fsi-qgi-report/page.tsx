@@ -2,10 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PrintButton from "./PrintButton";
 
+// T19 #312: the most share-worthy page on the site — full OG + Article
+// JSON-LD added so journalists' link unfurls render a proper preview card.
 export const metadata: Metadata = {
   title: "FSI Risk Analysis Report — QGI Intelligence",
   description:
     "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment across 126 countries and 2.01 billion computed patterns.",
+  alternates: {
+    canonical: "https://qgintelligence.com/reports/fsi-qgi-report",
+  },
+  openGraph: {
+    title: "FSI Risk Analysis Report — QGI Intelligence",
+    description:
+      "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment across 126 countries.",
+    url: "https://qgintelligence.com/reports/fsi-qgi-report",
+    siteName: "QGI Intelligence",
+    type: "article",
+    authors: ["Amin Al-Ait"],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "FSI Risk Analysis Report — QGI Intelligence",
+    description:
+      "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment.",
+  },
 };
 
 /* ---------------------------------------------------------------------------
@@ -31,7 +51,7 @@ QGI analyzed the economic trajectories of 126 countries using 2.01 billion compu
 
 1. **High agreement on the most fragile states.** Of the FSI's top 15 most fragile countries, 11 also produce elevated structural risk signals in QGI (max salience >= 0.8). QGI's purely quantitative approach converges with FSI's expert-blended methodology on the world's most vulnerable states.
 
-2. **20 potential sleeper countries identified.** These countries rank between positions 41 and 130 on FSI (Warning through Elevated tiers) but show high structural similarity to pre-crisis trajectories of historically fragile states across conflict and crisis categories.
+2. **10 potential sleeper countries identified.** These countries rank between positions 41 and 130 on FSI (Warning through Elevated tiers) but show high structural similarity to pre-crisis trajectories of historically fragile states across conflict and crisis categories.
 
 3. **Structural twin matching reveals hidden trajectories.** For the most fragile FSI countries, QGI identifies which other countries' historical economic paths they most closely resemble -- and what happened to those reference countries subsequently.
 
@@ -395,7 +415,7 @@ The countries above experienced sharp FSI deteriorations (>= 4 points year-over-
 
 QGI (Quantitative Geopolitical Intelligence) is a pattern-based structural risk analysis system. It works in three stages:
 
-1. **SCDI Detection.** For every pair of countries and every World Bank indicator, QGI computes the Pearson correlation coefficient between all possible time-window combinations. Pairs with |R| >= 0.7 are flagged as Structurally Correlated Development Indicators (SCDIs). This produces 14.3 billion SCDIs across 214 countries and 58 indicators.
+1. **SCDI Detection.** For every pair of countries and every World Bank indicator, QGI computes the Pearson correlation coefficient between all possible time-window combinations. Pairs with |R| >= 0.7 are flagged as Structurally Correlated Development Indicators (SCDIs). This produces 14.3 billion SCDIs across 197 countries and 69 indicators (as of April 2026).
 
 2. **Pattern Aggregation.** SCDIs sharing the same country pair, start years, and window length are grouped into patterns. Each pattern records how many indicators correlate and at what average strength. The system has computed 2.01 billion patterns.
 
@@ -409,7 +429,7 @@ Recipe matches are scored using z-score normalization per country, combined via 
 
 | Data Element | Source | License | Coverage |
 | :--- | :--- | :--- | :--- |
-| Economic indicators | World Bank Open Data | CC BY 4.0 | 58 indicators, 214 countries, 1960-2024 |
+| Economic indicators | World Bank Open Data | CC BY 4.0 | 69 indicators, 197 countries, 1960-2024 |
 | Geopolitical events | AI-curated with human verification | QGI proprietary | 198 countries, 1950-2025, 71 event categories |
 | FSI rankings | Fund for Peace (public) | Public data | 179 countries, 2006-2023 |
 
@@ -809,7 +829,7 @@ export default function FSIReportPage() {
               className="text-[10px] tracking-wider"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Pattern Recurrence Intelligence &mdash; Statistical Beta
+              Pattern Recurrence Intelligence
             </p>
             <div className="mt-4 flex justify-center gap-4">
               <Link

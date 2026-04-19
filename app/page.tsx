@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
+import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 
 /**
  * QGI Landing Page — public, static.
@@ -8,7 +9,7 @@ import NewsletterForm from "@/components/NewsletterForm";
  * Sections:
  * 1. Navbar
  * 2. Hero with tagline
- * 3. Live preview: 3 country risk cards
+ * 3. Live preview: 3 country risk cards (pulled from live country-risks.json)
  * 4. How it works: 3-step visual
  * 5. Metrics bar
  * 6. Key differentiators
@@ -16,34 +17,89 @@ import NewsletterForm from "@/components/NewsletterForm";
  * 8. Newsletter capture
  * 9. Get in touch / request demo
  * 10. Footer (enhanced)
+ *
+ * T1 #294 fix (2026-04-19): preview cards used to be hardcoded for
+ * Argentina/Russia/Ethiopia and drifted from the actual pipeline output.
+ * Now pull the top 3 HIGH-tier countries by max salience from the same
+ * baked JSON the dashboard reads. Revalidates on the page-level ISR.
  */
 
-const PREVIEW_COUNTRIES = [
-  {
-    name: "Argentina",
-    alpha_2: "AR",
-    tier: "HIGH" as const,
-    topCategory: "Fiscal policy change",
-    precedents: 187,
-    signal: "14 precedent windows, 11 preceded fiscal_policy_change in analogous economies",
-  },
-  {
-    name: "Russia",
-    alpha_2: "RU",
-    tier: "HIGH" as const,
-    topCategory: "Civil war & insurgency",
-    precedents: 142,
-    signal: "Cross-regional pattern convergence from 8 predictor countries",
-  },
-  {
-    name: "Ethiopia",
-    alpha_2: "ET",
-    tier: "MODERATE" as const,
-    topCategory: "Government formation",
-    precedents: 98,
-    signal: "Structural indicators mirror pre-transition trajectories in 5 economies",
-  },
-];
+// Revalidate once per hour so the preview reflects pipeline re-runs
+// without re-rendering on every request (T16 perf).
+export const revalidate = 3600;
+
+type PreviewCountry = {
+  name: string;
+  alpha_2: string;
+  tier: RiskTier;
+  topCategory: string;
+  precedents: number;
+  signal: string;
+};
+
+function prettyCategory(slug: string): string {
+  // "civil_war_and_insurgency" -> "Civil War & Insurgency"
+  return slug
+    .replace(/_and_/g, " & ")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+async function loadPreviewCountries(): Promise<PreviewCountry[]> {
+  try {
+    const data = await loadCountryRisks();
+    const rows: Array<PreviewCountry & { _salience: number }> = [];
+    for (const country of Object.values(data.countries)) {
+      if (country.overall_risk_tier !== "HIGH") continue;
+      const cats = country.tiers?.S?.top_categories ?? [];
+      const top = cats[0];
+      if (!top) continue;
+      const salience = top.salience_score ?? top.z_score ?? 0;
+      const precedents = top.recipe_count ?? 0;
+      rows.push({
+        name: country.name,
+        alpha_2: country.alpha_2,
+        tier: country.overall_risk_tier,
+        topCategory: prettyCategory(top.category),
+        precedents,
+        signal: `${precedents.toLocaleString()} precedent windows; top drivers in ${prettyCategory(
+          top.category
+        ).toLowerCase()}.`,
+        _salience: salience,
+      });
+    }
+    rows.sort((a, b) => b._salience - a._salience);
+    return rows.slice(0, 3).map(({ _salience: _s, ...rest }) => rest);
+  } catch {
+    // Static fallback if country-risks.json is unreachable at build time.
+    return [
+      {
+        name: "Syria",
+        alpha_2: "SY",
+        tier: "HIGH",
+        topCategory: "Civil War & Insurgency",
+        precedents: 0,
+        signal: "Preview unavailable — pipeline output missing.",
+      },
+      {
+        name: "Sudan",
+        alpha_2: "SD",
+        tier: "HIGH",
+        topCategory: "Civil War & Insurgency",
+        precedents: 0,
+        signal: "Preview unavailable — pipeline output missing.",
+      },
+      {
+        name: "Afghanistan",
+        alpha_2: "AF",
+        tier: "HIGH",
+        topCategory: "Civil War & Insurgency",
+        precedents: 0,
+        signal: "Preview unavailable — pipeline output missing.",
+      },
+    ];
+  }
+}
 
 const TIER_STYLES: Record<string, { bg: string; text: string; border: string }> = {
   HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
@@ -55,7 +111,7 @@ const STEPS = [
   {
     num: "01",
     title: "Detect Indicator Relationships",
-    desc: "We find statistically significant correlations between economic indicators across 214 countries spanning decades of World Bank data.",
+    desc: "We find statistically significant correlations between economic indicators across 197 countries spanning decades of World Bank data.",
   },
   {
     num: "02",
@@ -69,7 +125,8 @@ const STEPS = [
   },
 ];
 
-export default function LandingPage() {
+export default async function LandingPage() {
+  const previewCountries = await loadPreviewCountries();
   return (
     <div
       className="min-h-full"
@@ -158,7 +215,7 @@ export default function LandingPage() {
               backgroundColor: "var(--qgi-accent-glow)",
             }}
           >
-            Pattern Recurrence Intelligence &mdash; Statistical Beta
+            Pattern Recurrence Intelligence
           </div>
           <h1
             className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight"
@@ -176,7 +233,7 @@ export default function LandingPage() {
           >
             QGI surfaces economically-grounded risk candidates that analysts
             should examine. We find historical precedents in World Bank data
-            spanning 214 countries and 58 indicators.
+            spanning 197 countries and 69 indicators (as of April 2026).
           </p>
           <div className="mt-8 flex items-center gap-4">
             <Link
@@ -212,7 +269,7 @@ export default function LandingPage() {
           Live Intelligence Preview
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {PREVIEW_COUNTRIES.map((c) => {
+          {previewCountries.map((c) => {
             const style = TIER_STYLES[c.tier];
             return (
               <div
@@ -338,7 +395,7 @@ export default function LandingPage() {
               label="Scale"
               value="2.01B"
               unit="patterns"
-              desc="Computed across 214 countries and 58 economic indicators. Every pairwise relationship, every historical window, examined."
+              desc="Computed across 197 countries and 69 economic indicators (as of April 2026). Every pairwise relationship, every historical window, examined."
             />
             <Differentiator
               label="Method"
@@ -524,7 +581,7 @@ export default function LandingPage() {
               className="text-sm leading-relaxed mb-8"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              QGI is in statistical beta. We are actively working with political
+              QGI is actively working with political
               risk analysts, corporate strategy teams, think tanks, and academics
               who want structured, data-driven geopolitical intelligence.
               Reach out to discuss access, custom country reports, or
@@ -642,7 +699,7 @@ export default function LandingPage() {
               className="text-[10px] tracking-wider uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Statistical Beta &mdash; Pattern Recurrence Intelligence
+              Pattern Recurrence Intelligence
             </span>
           </div>
         </div>

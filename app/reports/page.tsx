@@ -124,7 +124,7 @@ export default function ReportsPage() {
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
               <ReportStat label="Countries" value="50" />
-              <ReportStat label="Indicators" value="260" />
+              <ReportStat label="Indicators" value="69" />
               <ReportStat label="Pages" value="20-25" />
               <ReportStat label="Format" value="PDF" />
             </div>

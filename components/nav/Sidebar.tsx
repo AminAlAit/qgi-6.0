@@ -94,6 +94,14 @@ const IconBarChart = () => (
   </svg>
 );
 
+/** ABOUT — person silhouette */
+const IconUser = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+);
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 const NAV_ITEMS: ReadonlyArray<{
@@ -131,6 +139,11 @@ const NAV_ITEMS: ReadonlyArray<{
     href: "/patterns/ranking",
     icon: <IconBarChart />,
   },
+  {
+    label: "ABOUT",
+    href: "/about",
+    icon: <IconUser />,
+  },
 ];
 
 
@@ -154,7 +167,7 @@ export function Sidebar() {
           0.25em tracking adds ~3px of phantom space after the last letter).
           GH#251: clickable; in-app sidebar always navigates to /base. */}
       <Link
-        href="/dashboard"
+        href="/base"
         className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
         style={{ borderColor: "var(--qgi-border)" }}
         title="Go to Base (command center)"
@@ -176,9 +189,8 @@ export function Sidebar() {
       {/* Navigation
           GH#250: longest-prefix-wins active state. Without this, RANKING
           (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
-          naive startsWith() matches both. activeHref picks the deepest
-          NAV_ITEMS href that the current pathname matches. */}
-      {(() => null)()}
+          naive startsWith() matches both. The per-item `active` check below
+          picks the deepest NAV_ITEMS href that the current pathname matches. */}
       <nav className="flex flex-col gap-0.5 px-2 pt-4 flex-1">
         {NAV_ITEMS.map(({ label, href, icon }) => {
           const active =
