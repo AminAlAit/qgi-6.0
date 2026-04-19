@@ -57,7 +57,8 @@ const COLOR_LABEL = "#7a90a8";
 export function AnalogueMultiTimeline({
   subject,
   analogues,
-  category,
+  // category prop reserved for future per-category filtering — suppress lint.
+  category: _category,
   categoryLabel,
   patternWindowYears = DEFAULT_PATTERN_WINDOW,
 }: Props) {
