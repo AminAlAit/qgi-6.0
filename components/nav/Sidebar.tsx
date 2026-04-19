@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 // Navigation items.
 // History:
@@ -151,14 +152,92 @@ const NAV_ITEMS: ReadonlyArray<{
 export function Sidebar() {
   const pathname = usePathname();
 
+  // T14 #307 HIGH fix (2026-04-19): mobile hamburger + off-canvas sidebar.
+  // Desktop behavior is unchanged — sidebar is always visible at md+ via
+  // static positioning. On <md viewports the sidebar slides in from the
+  // left as a fixed overlay, with a backdrop that dismisses on click,
+  // Escape closes, and body scroll-lock while open.
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Close the drawer on route change so navigating via the menu doesn't
+  // leave the overlay sitting on top of the destination page.
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
+
+  // Escape to dismiss.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
+  // Lock background scroll while the drawer is open.
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (mobileOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [mobileOpen]);
+
   return (
-    <aside
-      className="flex flex-col w-56 shrink-0 border-r"
-      style={{
-        backgroundColor: "var(--qgi-surface)",
-        borderColor: "var(--qgi-border)",
-      }}
-    >
+    <>
+      {/* Mobile hamburger — only visible <md. Fixed top-left, above the
+          drawer's own z-index so it's always tappable. */}
+      <button
+        type="button"
+        aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={mobileOpen}
+        aria-controls="qgi-sidebar-drawer"
+        onClick={() => setMobileOpen((v) => !v)}
+        className="md:hidden fixed top-3 left-3 z-[60] p-2 rounded border"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+          color: "var(--qgi-text-muted)",
+        }}
+      >
+        {mobileOpen ? (
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 3L13 13M13 3L3 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+          </svg>
+        ) : (
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <line x1="2.5" y1="4" x2="13.5" y2="4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+            <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+            <line x1="2.5" y1="12" x2="13.5" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+          </svg>
+        )}
+      </button>
+
+      {/* Backdrop — only visible <md when drawer is open. */}
+      {mobileOpen && (
+        <button
+          type="button"
+          aria-label="Close navigation menu"
+          tabIndex={-1}
+          onClick={() => setMobileOpen(false)}
+          className="md:hidden fixed inset-0 z-40 bg-black/60 animate-in fade-in duration-150"
+        />
+      )}
+
+      <aside
+        id="qgi-sidebar-drawer"
+        className={`flex flex-col w-56 shrink-0 border-r fixed md:static inset-y-0 left-0 z-50 transition-transform duration-200 md:translate-x-0 ${
+          mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
       {/* Wordmark — matches the qgintelligence.com domain (#245).
           QG (blue) + INTELLIGENCE (grey) reads as "qg-intelligence" the same
           way the URL does.
@@ -236,5 +315,6 @@ export function Sidebar() {
         INTELLIGENCE
       </div>
     </aside>
+    </>
   );
 }

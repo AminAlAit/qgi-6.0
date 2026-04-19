@@ -161,38 +161,45 @@ export default async function LandingPage() {
               Intelligence
             </span>
           </Link>
-          <nav className="flex items-center gap-6">
+          <nav className="flex items-center gap-3 sm:gap-6">
+            {/* T14 #307 (2026-04-19) — landing navbar went 5 links + CTA
+                wide; on 375px it wrapped and crushed the logo. On mobile
+                we now show only the methodology shortcut + primary CTA;
+                desktop keeps the full set.
+                Not a hamburger — landing is a read-through page, so
+                section anchors are meaningful only in the desktop layout
+                where the header is sticky and visible. */}
             <a
               href="#how-it-works"
-              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               How it works
             </a>
             <Link
               href="/reports"
-              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Reports
             </Link>
             <Link
               href="/methodology"
-              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Methodology
             </Link>
             <a
               href="#contact"
-              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Contact
             </a>
             <Link
               href="/dashboard"
-              className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
+              className="text-[10px] sm:text-xs tracking-wider uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-colors whitespace-nowrap"
               style={{
                 backgroundColor: "var(--qgi-accent)",
                 color: "var(--qgi-bg)",
