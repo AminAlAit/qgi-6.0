@@ -65,18 +65,37 @@ from pathlib import Path
 
 def best_common_length(
     pair_windows_by_analogue: dict[str, list[dict]],
-    analogue_ids: list[int],
+    analogues: list[dict],
     length_tolerance: int = 2,
+    end_tolerance: int = 2,
 ) -> int | None:
-    """Pick L that maximizes coverage across the given analogues.
+    """Pick L that maximizes coverage of EVENT-END-ALIGNED windows across
+    the given analogues.
 
-    For each candidate L (any length that appears in any analogue's top
-    list), count how many analogues have at least one window at L ± tolerance.
-    Pick L with max coverage. Break ties by sum of best-PPS within tolerance.
-    Returns None if no analogue has any windows.
+    #354 follow-up (2026-04-19): the original scorer counted any L±tol
+    window as coverage. But post-fix we only keep windows whose right
+    edge lines up with ``event_year_b`` (pattern → event invariant), so
+    the L selector should be aware of that filter — otherwise we'd pick
+    an L that looks well-covered but drops half the analogues at the
+    alignment stage.
+
+    For each candidate L, count how many analogues have at least one
+    window satisfying BOTH:
+      * ``|w.l - L| <= length_tolerance``
+      * ``|(w.sb + w.l) - event_year_b| <= end_tolerance`` (when event year available)
+
+    Pick L with max coverage. Tie-break by sum of best-PPS of the
+    aligned windows. Returns None if no candidate L covers any analogue.
+
+    ``analogues`` is a list of analogue dicts (need ``country_b_id`` and
+    ``event_year_b``) rather than just IDs so we can honour the per-pair
+    event anchor.
     """
     candidate_lengths: set[int] = set()
-    for aid in analogue_ids:
+    for a in analogues:
+        aid = a.get("country_b_id")
+        if aid is None:
+            continue
         for w in pair_windows_by_analogue.get(str(aid), {}).get("top", []):
             if isinstance(w.get("l"), int):
                 candidate_lengths.add(w["l"])
@@ -85,17 +104,25 @@ def best_common_length(
         return None
 
     def score_length(L: int) -> tuple[int, float]:
-        """Return (coverage_count, sum_best_pps_within_tolerance)."""
+        """Return (coverage_count, sum_best_pps_among_aligned)."""
         cov = 0
         total_pps = 0.0
-        for aid in analogue_ids:
+        for a in analogues:
+            aid = a.get("country_b_id")
+            eyb = a.get("event_year_b")
+            if aid is None:
+                continue
             windows = pair_windows_by_analogue.get(str(aid), {}).get("top", [])
             best = None
             for w in windows:
-                if not isinstance(w.get("l"), int):
+                if not isinstance(w.get("l"), int) or w.get("sb") is None:
                     continue
                 if abs(w["l"] - L) > length_tolerance:
                     continue
+                # When we know the event year, require end-alignment.
+                if eyb is not None:
+                    if abs((w["sb"] + w["l"]) - eyb) > end_tolerance:
+                        continue
                 if best is None or (w.get("pps") or 0) > (best.get("pps") or 0):
                     best = w
             if best is not None:
@@ -104,6 +131,10 @@ def best_common_length(
         return (cov, total_pps)
 
     best_L = max(candidate_lengths, key=score_length)
+    # If the chosen L covers zero analogues (pathological case — no pair
+    # has an end-aligned window at any candidate length), bail.
+    if score_length(best_L)[0] == 0:
+        return None
     return best_L
 
 
@@ -112,33 +143,75 @@ def pick_analogue_window(
     target_L: int,
     event_year_b: int | None,
     length_tolerance: int = 2,
+    end_tolerance: int = 2,
 ) -> dict | None:
-    """Select the best-PPS window within [L-tolerance, L+tolerance].
+    """Select the best-PPS window within [L-tolerance, L+tolerance] whose
+    RIGHT edge aligns with ``event_year_b`` (pattern precedes event).
 
-    Prefer windows where `start_b <= event_year_b <= start_b + length`
-    (event inside window). Among those, pick highest PPS. If no window
-    contains the event, fall back to highest PPS within tolerance
-    regardless of event alignment.
+    #354 follow-up (2026-04-19): the first cut of this function preferred
+    windows "containing the event" — allowing the event year to fall
+    anywhere inside the window. That produced a visible misalignment on
+    AnalogueMultiTimeline: the event star ★ could appear mid-bar or near
+    the start, breaking the "pattern → event" narrative the panel claims
+    to tell.
+
+    Correct invariant: ``sb + l == event_year_b`` (pattern ends exactly
+    at the event year). We relax this with a small ``end_tolerance`` to
+    avoid dropping analogues whose best-length windows don't line up to
+    the exact year because the pair-windows generator only sampled
+    specific window positions. Preference order:
+
+      1. Exact: ``sb + l == event_year_b``
+      2. Near:  ``|sb + l - event_year_b| <= end_tolerance`` (default 2 yr)
+      3. Drop the analogue (return None) — DO NOT fall back to arbitrary
+         best-PPS window, because that re-introduces the misalignment the
+         fix exists to prevent.
+
+    Among windows tied on end-alignment, pick highest PPS.
     """
+    if event_year_b is None:
+        # No event year = no way to align. Analogues without event years
+        # are already filtered upstream in AnalogueMultiTimeline, but be
+        # defensive here.
+        return None
+
     eligible = [
         w for w in windows
-        if isinstance(w.get("l"), int) and abs(w["l"] - target_L) <= length_tolerance
+        if isinstance(w.get("l"), int)
+        and w.get("sb") is not None
+        and abs(w["l"] - target_L) <= length_tolerance
     ]
     if not eligible:
         return None
 
-    def contains_event(w: dict) -> bool:
-        if event_year_b is None:
-            return False
-        sb = w.get("sb")
-        L = w.get("l")
-        if sb is None or L is None:
-            return False
-        return sb <= event_year_b <= sb + L
+    def end_year(w: dict) -> int:
+        return w["sb"] + w["l"]
 
-    inside = [w for w in eligible if contains_event(w)]
-    pool = inside if inside else eligible
-    return max(pool, key=lambda w: w.get("pps") or 0)
+    # Tier 1: exact end-alignment.
+    exact = [w for w in eligible if end_year(w) == event_year_b]
+    if exact:
+        return max(exact, key=lambda w: w.get("pps") or 0)
+
+    # Tier 2: near end-alignment (within ±end_tolerance years).
+    near = [w for w in eligible if abs(end_year(w) - event_year_b) <= end_tolerance]
+    if near:
+        # Prefer ending at or BEFORE the event (precedent framing: pattern
+        # → event implies pattern finishes first) over ending after it.
+        # Sort key (lower is better):
+        #   1) 0 if end <= event else 1 (before beats after)
+        #   2) distance from event (ascending)
+        #   3) -PPS (descending)
+        near.sort(
+            key=lambda w: (
+                0 if end_year(w) <= event_year_b else 1,
+                abs(end_year(w) - event_year_b),
+                -(w.get("pps") or 0),
+            )
+        )
+        return near[0]
+
+    # Tier 3: drop. No window ends close enough to the event.
+    return None
 
 
 def enrich(
@@ -176,11 +249,33 @@ def enrich(
                 continue
             stats["categories_processed"] += 1
 
-            analogue_ids = [a.get("country_b_id") for a in analogues if a.get("country_b_id") is not None]
+            # #354v2 hygiene: WIPE any pair_* + canonical_length fields
+            # from a previous enrichment pass. Without this, the v1 script
+            # (which wrote non-end-aligned pair_* values) poisoned the
+            # input file — every subsequent v2 run that legitimately
+            # decides "no aligned L exists here" (returns None from
+            # best_common_length → continue) would silently leave v1's
+            # misaligned values in place. Explicit reset keeps the output
+            # a pure reflection of the v2 algorithm's decisions.
+            block.pop("canonical_length", None)
+            for a in analogues:
+                for k in (
+                    "pair_length",
+                    "pair_start_a",
+                    "pair_start_b",
+                    "pair_pps",
+                    "pair_avg_corr",
+                    "event_in_window",
+                ):
+                    a.pop(k, None)
 
-            L = best_common_length(pair_windows, analogue_ids, length_tolerance)
+            L = best_common_length(pair_windows, analogues, length_tolerance)
             if L is None:
-                # Nothing to enrich.
+                # No end-aligned length exists across the analogues for
+                # this (subject, category). Frontend will fall back to
+                # pre-enrichment rendering (or show a "no precedent
+                # windows" message, depending on component).
+                stats["categories_no_aligned_L"] = stats.get("categories_no_aligned_L", 0) + 1
                 continue
             canonical_lengths[(subject_id, category)] = L
             block["canonical_length"] = L
@@ -228,7 +323,7 @@ def enrich(
 
     # Note the algorithm version so downstream consumers can detect + fail
     # loudly if they read an old-shape file.
-    payload["enrichment_algorithm"] = "common-length-v1 (#354, 2026-04-19)"
+    payload["enrichment_algorithm"] = "common-length-v2-event-end-aligned (#354, 2026-04-19)"
     payload["enrichment_length_tolerance"] = length_tolerance
 
     with open(enriched_path, "w", encoding="utf-8") as f:
