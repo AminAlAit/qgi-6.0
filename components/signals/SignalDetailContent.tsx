@@ -39,7 +39,13 @@ export function SignalDetailContent() {
   }
 
   const corrPct = Math.round(signal.avg_correlation * 100);
-  const pps = signal.pps ?? signal.pattern_power_score;
+  // T7 #300 HIGH fix (2026-04-19): `pattern_power_score` in prod data is
+  // the RAW value (can be ~399 for strong patterns), while `pps` is the
+  // normalized 0-100 version. If only the raw value is available, clamp
+  // it through a heuristic divide rather than letting `PpsValue`'s
+  // `/100` suffix produce "399.4 / 100".
+  const rawPps = signal.pps ?? signal.pattern_power_score;
+  const pps = rawPps != null && rawPps > 100 ? Math.min(100, rawPps / 10) : rawPps;
 
   return (
     <div className="flex flex-col h-full p-6 gap-6 overflow-y-auto">
@@ -84,7 +90,13 @@ export function SignalDetailContent() {
       <div className="grid grid-cols-4 gap-3">
         <MetricCard
           label="PATTERN STRENGTH"
-          value={<PpsValue pps={pps} size="md" showSuffix={signal.pps !== undefined} />}
+          /* T7 #300 P1-3 fix (Sonnet reviewer 2026-04-19): earlier
+             `showSuffix={signal.pps !== undefined}` suppressed the "/100"
+             suffix for signals where only raw `pattern_power_score` was
+             present — even though the normalization on line 48 already
+             produced a valid 0-100 value. Suffix should appear whenever
+             `pps` is a finite number. */
+          value={<PpsValue pps={pps} size="md" showSuffix={pps != null && Number.isFinite(pps)} />}
         />
         <MetricCard
           label="AVG CORRELATION"
@@ -140,7 +152,15 @@ export function SignalDetailContent() {
         </span>
       </div>
 
-      {/* Forecast timing (#134) */}
+      {/* Forecast timing (#134).
+          T7 #300 HIGH fix v2 (2026-04-19, Sonnet reviewer P0-1): the
+          earlier Math.abs() trick lied about the data. A negative
+          median_lead_time means the historical event co-occurred with or
+          preceded the precedent pattern's end, NOT that it followed
+          `|lead|` years later. Split the render into two branches:
+          - leadYears > 0: normal forward-looking forecast
+          - leadYears <= 0: "event co-occurred with pattern" framing,
+            no projected year. */}
       {signal.median_lead_time !== undefined && signal.median_lead_time !== null && (
         <div
           className="rounded border p-4"
@@ -149,23 +169,40 @@ export function SignalDetailContent() {
           <div className="text-[9px] tracking-[0.15em] uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
             Forecast Timing
           </div>
-          <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-            Historical precedents in {signal.country_b_name} preceded their matching events by a median of{" "}
-            <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
-              {signal.median_lead_time} year{signal.median_lead_time === 1 ? "" : "s"}
-            </span>
-            {signal.min_lead_time != null && signal.max_lead_time != null && (
-              <>
-                {" "}
-                (range: {signal.min_lead_time}–{signal.max_lead_time} yrs)
-              </>
-            )}
-            . Projected onto {signal.country_a_name}&apos;s still-running pattern, the implied event window is{" "}
-            <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
-              ~{signal.end_year_a + signal.median_lead_time}
-            </span>
-            .
-          </p>
+          {signal.median_lead_time > 0 ? (
+            <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+              Historical precedents in {signal.country_b_name} preceded their matching events by a median of{" "}
+              <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
+                {signal.median_lead_time} year{signal.median_lead_time === 1 ? "" : "s"}
+              </span>
+              {signal.min_lead_time != null && signal.max_lead_time != null && signal.min_lead_time > 0 && (
+                <>
+                  {" "}
+                  (range: {signal.min_lead_time}–{signal.max_lead_time} yrs)
+                </>
+              )}
+              . Projected onto {signal.country_a_name}&apos;s still-running pattern, the implied event window is{" "}
+              <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
+                ~{signal.end_year_a + signal.median_lead_time}
+              </span>
+              .
+            </p>
+          ) : (
+            /* Sonnet reviewer P1-B (2026-04-19): event_title_b + event_year_b
+               are optional on SignalRow (missing when Athena patterns lack
+               enrichment). Fall back to "matching event" / "—" to avoid
+               rendering the literal string "undefined". */
+            <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+              The matching event in {signal.country_b_name}
+              {signal.event_title_b && signal.event_year_b != null ? (
+                <>
+                  {" "}(&quot;{signal.event_title_b}&quot; in {signal.event_year_b})
+                </>
+              ) : null}
+              {" "}co-occurred with the precedent pattern rather than following it. No forward forecast
+              window is projected for {signal.country_a_name} on this signal — the analogue is retrospective.
+            </p>
+          )}
         </div>
       )}
 

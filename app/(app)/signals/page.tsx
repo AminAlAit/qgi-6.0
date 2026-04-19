@@ -1,12 +1,28 @@
-import { loadCountryRisks } from "@/lib/country-risks";
+import { loadCountryRisks, type CategoryScore } from "@/lib/country-risks";
 import { SignalsBrowseClient } from "@/components/signals/SignalsBrowseClient";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
 import { COUNTRY_REGIONS, type Region } from "@/lib/regions";
 
+// T19 #312: adds openGraph + twitter so signals page is shareable.
 export const metadata = {
   title: "Signals — QGI Intelligence",
   description:
     "Early-warning radar — browse active risk signals by domain, severity, and geography.",
+  alternates: { canonical: "https://qgintelligence.com/signals" },
+  openGraph: {
+    title: "Signals — QGI Intelligence",
+    description:
+      "Early-warning radar — browse active risk signals by domain, severity, and geography.",
+    url: "https://qgintelligence.com/signals",
+    siteName: "QGI Intelligence",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Signals — QGI Intelligence",
+    description:
+      "Early-warning radar — browse active risk signals by domain, severity, and geography.",
+  },
 };
 
 /** Salience tier thresholds (per-signal maxSalience). */
@@ -45,9 +61,29 @@ async function buildSignals() {
   > = {};
 
   for (const [id, country] of Object.entries(data.countries)) {
-    const cats = country.tiers?.S?.top_categories ?? [];
+    // T7 #300 HIGH fix (Elena s2, 2026-04-19): previously read ONLY
+    // S-tier (3-8yr pattern length) categories. This excluded every M/L/XL
+    // signal from the signals discovery surface — a professional risk
+    // analyst looking for 10-year or 25-year structural trajectories saw
+    // nothing. Now merge all tier categories, keeping the highest salience
+    // entry per (country, category) tuple.
+    const perCategoryBest = new Map<string, CategoryScore>();
+    for (const tierBlock of Object.values(country.tiers ?? {})) {
+      for (const c of tierBlock.top_categories ?? []) {
+        const sal = c.salience_score ?? c.z_score ?? 0;
+        const existing = perCategoryBest.get(c.category);
+        const existingSal = existing
+          ? (existing.salience_score ?? existing.z_score ?? 0)
+          : -Infinity;
+        if (sal > existingSal) perCategoryBest.set(c.category, c);
+      }
+    }
+    const cats = Array.from(perCategoryBest.values());
     for (const cat of cats) {
-      const salience = cat.salience_score ?? cat.z_score;
+      // T7 #300 MEDIUM fix: default to 0 when both salience_score and
+      // z_score are missing. Previously produced NaN downstream via
+      // `.toFixed(1)` on undefined.
+      const salience = cat.salience_score ?? cat.z_score ?? 0;
       const region = COUNTRY_REGIONS[country.alpha_2?.toUpperCase()] ?? "Unknown";
 
       if (!signalMap[cat.category]) {

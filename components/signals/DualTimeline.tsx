@@ -27,7 +27,11 @@ interface Props {
 export function DualTimeline({ signal }: Props) {
   const currentYear = new Date().getFullYear();
 
-  // Axis range: pad 2 years on either side of the extreme observed years
+  // Axis range: pad 2 years on either side of the extreme observed years.
+  // T7 #300 MEDIUM fix (2026-04-19): filter to defined finite numbers
+  // before spreading into Math.min/max — several SignalRow fields are
+  // optional and `undefined` in the spread would propagate as NaN and
+  // collapse the SVG.
   const allYears = [
     signal.start_year_a,
     signal.end_year_a,
@@ -36,18 +40,34 @@ export function DualTimeline({ signal }: Props) {
     signal.end_year_b,
     signal.event_year_b,
     currentYear,
-  ];
-  const minYear = Math.min(...allYears) - 2;
-  const maxYear = Math.max(...allYears, currentYear + 5) + 1;
+  ].filter((y): y is number => typeof y === "number" && Number.isFinite(y));
+  const minYear = (allYears.length ? Math.min(...allYears) : currentYear - 30) - 2;
+  const maxYear =
+    (allYears.length ? Math.max(...allYears, currentYear + 5) : currentYear + 5) + 1;
 
-  // Implied prediction window in country A, based on the predictor's lead time
-  // from the pattern's end to the historical event. Falls back to
-  // median_lead_time_b when the signal carries it (post-#134).
-  const leadYears =
-    (signal.median_lead_time ?? null) !== null
-      ? signal.median_lead_time!
-      : signal.event_year_b - signal.end_year_b;
+  // Implied prediction window in country A, based on the predictor's lead
+  // time from the pattern's end to the historical event. Post-#134 the
+  // signal carries `median_lead_time` directly.
+  //
+  // T7 #300 HIGH fix v2 (2026-04-19, Sonnet reviewer P0-1): earlier v1
+  // applied `Math.abs` to negative lead times so the amber band would
+  // render. That was wrong — a NEGATIVE lead time means the historical
+  // event co-occurred with (or preceded) the pattern window, not that it
+  // followed the pattern after `|lead|` years. Flipping the sign produces
+  // a plausible-looking forecast that's semantically backwards.
+  //
+  // Correct behaviour: suppress the forecast band (leadYears<=0) and
+  // surface "event co-occurred with pattern" copy instead. The render
+  // site's `impliedEventYearA > signal.end_year_a` guard already FALSEs
+  // out when leadYears is 0 or negative, so no render-site change needed.
+  const rawLead =
+    signal.median_lead_time ?? (signal.event_year_b - signal.end_year_b);
+  const leadYears = rawLead > 0 ? rawLead : 0;
   const impliedEventYearA = signal.end_year_a + leadYears;
+  // When `rawLead <= 0`, `leadYears === 0` and the render-site guard
+  // `impliedEventYearA > signal.end_year_a` is false — the amber band is
+  // suppressed. Keeping the derivation here so future copy can surface
+  // "event co-occurred with pattern" framing on the timeline itself.
 
   // Geometry
   const width = 920;
@@ -90,7 +110,12 @@ export function DualTimeline({ signal }: Props) {
         viewBox={`0 0 ${width} ${height}`}
         className="w-full h-auto"
         style={{ maxHeight: 240 }}
+        role="img"
+        aria-label={`Pattern analogy timeline: ${signal.country_b_name} ${signal.start_year_b}-${signal.end_year_b} precedent followed by ${signal.event_title_b} in ${signal.event_year_b}, compared to ${signal.country_a_name} ${signal.start_year_a}-${signal.end_year_a} current pattern.`}
       >
+        <title>
+          Pattern analogy timeline for {signal.country_a_name} and {signal.country_b_name}
+        </title>
         {/* Year grid lines */}
         {ticks.map((y) => (
           <line
@@ -131,7 +156,7 @@ export function DualTimeline({ signal }: Props) {
         <text
           x={(xOf(signal.start_year_b) + xOf(signal.end_year_b)) / 2}
           y={rowHeightA - 4}
-          fontSize="9"
+          fontSize="11"
           fontFamily="monospace"
           textAnchor="middle"
           fill={COLOR_PREDICTOR}
@@ -145,7 +170,7 @@ export function DualTimeline({ signal }: Props) {
           <text
             x={0}
             y={-12}
-            fontSize="10"
+            fontSize="11"
             fontFamily="monospace"
             textAnchor="middle"
             fill={COLOR_EVENT}
@@ -181,7 +206,7 @@ export function DualTimeline({ signal }: Props) {
         <text
           x={(xOf(signal.start_year_a) + xOf(signal.end_year_a)) / 2}
           y={rowHeightB - 4}
-          fontSize="9"
+          fontSize="11"
           fontFamily="monospace"
           textAnchor="middle"
           fill={COLOR_FOLLOWING}
@@ -211,7 +236,7 @@ export function DualTimeline({ signal }: Props) {
               <text
                 x={8}
                 y={4}
-                fontSize="9"
+                fontSize="11"
                 fontFamily="monospace"
                 textAnchor="start"
                 fill={COLOR_IMPLIED}
@@ -237,7 +262,7 @@ export function DualTimeline({ signal }: Props) {
           <text
             x={0}
             y={10}
-            fontSize="9"
+            fontSize="11"
             fontFamily="monospace"
             textAnchor="middle"
             fill={COLOR_NOW}
@@ -258,7 +283,7 @@ export function DualTimeline({ signal }: Props) {
         {ticks.map((y) => (
           <g key={`tick-${y}`} transform={`translate(${xOf(y)}, ${height - 42})`}>
             <line x1={0} x2={0} y1={0} y2={4} stroke={COLOR_AXIS} />
-            <text x={0} y={16} fontSize="9" fontFamily="monospace" textAnchor="middle" fill={COLOR_LABEL}>
+            <text x={0} y={16} fontSize="11" fontFamily="monospace" textAnchor="middle" fill={COLOR_LABEL}>
               {y}
             </text>
           </g>

@@ -69,9 +69,15 @@ export function CountrySignalProfileContent() {
     return acc;
   }, {});
 
-  const categories = Object.keys(byCategory).sort(
-    (a, b) => byCategory[b][0].pattern_power_score - byCategory[a][0].pattern_power_score
-  );
+  // T7 #300 MEDIUM fix (2026-04-19): sort by the same PPS value the
+  // detail card displays. Previously sorted by raw `pattern_power_score`
+  // while the card read `pps`, producing inconsistent ordering between
+  // the list and what the user sees inside each card.
+  const categories = Object.keys(byCategory).sort((a, b) => {
+    const ppsB = byCategory[b][0].pps ?? byCategory[b][0].pattern_power_score ?? 0;
+    const ppsA = byCategory[a][0].pps ?? byCategory[a][0].pattern_power_score ?? 0;
+    return ppsB - ppsA;
+  });
 
   return (
     <div className="flex flex-col h-full p-6 gap-4">
