@@ -94,6 +94,139 @@ DISPATCH_LIMIT = int(os.environ.get("DISPATCH_LIMIT", "0"))
 counter_table = dynamodb.Table(COUNTER_TABLE)
 
 
+# --------------------------------------------------------------------- #
+# #241 Phase B: task-unit grouping per provider                         #
+# --------------------------------------------------------------------- #
+# Different providers have different "fetch units":
+#
+#   WB        — one indicator per task (per-indicator API call).
+#               Task unit = 1 indicator.
+#
+#   FAOSTAT   — one bulk-download ZIP per DOMAIN, each domain contains
+#               multiple indicators. Downloading the same 100MB ZIP 6
+#               times (once per indicator in that domain) would waste
+#               ~500MB of egress per pipeline run. Group by
+#               `fao_domain_code` so one task fetches all indicators
+#               in its domain.
+#
+# Adding a new provider with a bulk pattern is a one-line addition to
+# _PROVIDER_TASK_GROUPING.
+
+# For providers not listed here, the default is "one task per indicator"
+# (same as WB). This is safe for API-per-indicator providers.
+_PROVIDER_TASK_GROUPING: dict[str, str] = {
+    # Provider -> name of the indicator field to group by.
+    # (None/absent field = one task per indicator.)
+    "FAOSTAT": "fao_domain_code",
+}
+
+
+def _group_indicators_into_task_units(
+    indicators: list[dict],
+) -> list[dict]:
+    """Turn a flat list of indicators into a list of "task units" that
+    the dispatcher will each submit as ONE Batch job.
+
+    Each returned unit is a dict: ``{provider, group_key, indicators}``
+    where ``indicators`` is the list of indicators that share this
+    task. For single-indicator units (the WB case), the list has
+    length 1.
+    """
+    units: list[dict] = []
+    # Walk the indicators in order, grouping contiguous-same-provider
+    # runs into task units. We key by (provider, group_value) so a
+    # FAOSTAT domain's indicators always land in the same unit even
+    # if they were interleaved in the XLSX.
+    bucketed: dict[tuple[str, str | None], list[dict]] = {}
+    bucket_order: list[tuple[str, str | None]] = []
+    for ind in indicators:
+        provider = ind.get("provider") or "WB"
+        group_field = _PROVIDER_TASK_GROUPING.get(provider)
+        if group_field:
+            group_value = ind.get(group_field)
+            if group_value is None:
+                # Defensive: provider needs a group field but indicator
+                # doesn't have it set. Fall back to per-indicator unit
+                # (key each by id_string so they get their own tasks).
+                key = (provider, f"__ungrouped__{ind['id_string']}")
+            else:
+                key = (provider, str(group_value))
+        else:
+            # One task per indicator for this provider.
+            key = (provider, f"__single__{ind['id_string']}")
+
+        if key not in bucketed:
+            bucketed[key] = []
+            bucket_order.append(key)
+        bucketed[key].append(ind)
+
+    for key in bucket_order:
+        provider, group_value = key
+        units.append({
+            "provider": provider,
+            "group_key": group_value,
+            "indicators": bucketed[key],
+        })
+    return units
+
+
+def _build_task_env(
+    unit: dict,
+    run_id: str,
+) -> list[dict]:
+    """Build the container env-var list for one task unit's Batch job.
+
+    Single-indicator units get INDICATOR_ID (existing WB shape). Multi-
+    indicator units (FAOSTAT domains) get DOMAIN_CODE + INDICATORS_JSON
+    instead. Common env (PROVIDER, RUN_ID, S3, DDB, Athena) is always
+    included — the FAOSTAT fetcher reads the same set as the WB one.
+    """
+    provider = unit["provider"]
+    indicators = unit["indicators"]
+
+    base_env = [
+        {"name": "PROVIDER", "value": provider},
+        {"name": "RUN_ID", "value": run_id},
+        {"name": "S3_BUCKET", "value": S3_BUCKET},
+        {"name": "COUNTER_TABLE", "value": COUNTER_TABLE},
+        {"name": "TRACKER_TABLE", "value": TRACKER_TABLE},
+        {"name": "INDICATOR_VALUES_TABLE", "value": INDICATOR_VALUES_TABLE},
+        {"name": "ATHENA_DATABASE", "value": ATHENA_DATABASE},
+        {"name": "ATHENA_WORKGROUP", "value": ATHENA_WORKGROUP},
+        {"name": "ATHENA_OUTPUT_LOCATION", "value": ATHENA_OUTPUT_LOCATION},
+        {"name": "JITTER_MIN_S", "value": str(JITTER_MIN_S)},
+        {"name": "JITTER_MAX_S", "value": str(JITTER_MAX_S)},
+    ]
+
+    if len(indicators) == 1 and not _PROVIDER_TASK_GROUPING.get(provider):
+        # Legacy per-indicator shape (WB and anything without a group
+        # field). Pass INDICATOR_ID as the fetcher expects today.
+        base_env.append({"name": "INDICATOR_ID", "value": indicators[0]["id_string"]})
+    else:
+        # Multi-indicator unit (e.g., FAOSTAT domain). The fetcher
+        # reads DOMAIN_CODE + INDICATORS_JSON and loops over them.
+        base_env.append({"name": "DOMAIN_CODE", "value": str(unit["group_key"])})
+        base_env.append({
+            "name": "INDICATORS_JSON",
+            "value": json.dumps([
+                {
+                    "id_string": i["id_string"],
+                    "numeric_id": i["numeric_id"],
+                    # Pass through provider-specific fields the fetcher
+                    # needs. For FAOSTAT: item_code + element_code.
+                    **{
+                        k: v for k, v in i.items()
+                        if k not in ("id_string", "numeric_id", "name",
+                                     "status", "category", "description",
+                                     "license", "hidden_source", "provider")
+                    },
+                }
+                for i in indicators
+            ]),
+        })
+    return base_env
+
+
 def lambda_handler(event, context):
     run_id = event.get("run_id", "unknown")
     logger.info(f"Phase 1 Batch dispatcher starting for run_id={run_id}")
@@ -126,65 +259,74 @@ def lambda_handler(event, context):
     )
     logger.info(f"Counter seeded: {COUNTER_TABLE}[{run_id}].pending = {n}")
 
-    # 3. Submit Batch jobs
-    submitted = 0
-    submit_failures = []
-    # Track per-provider submission counts for the return payload —
-    # lets the reporter show "dispatched 259 WB + 8 FAOSTAT" instead
-    # of a single opaque number.
+    # 3. Group indicators into task units (one Batch job per unit).
+    #    Per #241 Phase B: FAOSTAT indicators are grouped by domain so
+    #    the 6 indicators in FS domain share ONE task that downloads the
+    #    FS ZIP once, instead of 6 tasks each downloading the same ZIP.
+    task_units = _group_indicators_into_task_units(process_list)
+    logger.info(
+        f"Grouped {len(process_list)} indicators into {len(task_units)} task units"
+    )
+
+    # 4. Submit Batch jobs (one per task unit).
+    submitted_indicators = 0
+    submitted_units = 0
+    submit_failures: list[str] = []  # indicator IDs that failed to submit
+    # Track per-provider submission counts (in INDICATOR units, not task
+    # units — the reporter wants "259 WB + 15 FAOSTAT", not "259 WB
+    # tasks + 8 FAOSTAT tasks").
     per_provider_counts: dict[str, int] = {}
-    for ind in process_list:
-        ind_id = ind["id_string"]
-        # Provider tag comes from the sheet-fetcher's #240 enrichment.
-        # Unknown/missing provider = legacy path (single BATCH_JOB_DEFINITION).
-        provider = ind.get("provider") or "WB"
+    for unit in task_units:
+        provider = unit["provider"]
+        indicators = unit["indicators"]
+        unit_size = len(indicators)
         job_definition = BATCH_JOB_DEFINITION_MAP.get(provider, BATCH_JOB_DEFINITION)
-        # Job names must be alphanum + - _; replace dots in WB indicator codes
-        safe_id = ind_id.replace(".", "-").replace("_", "-")
-        job_name = f"qgi-fetch-{safe_id}-{run_id[-12:]}"[:128]
+        # Build a task-unit job name. For single-indicator units, name
+        # by the indicator id (legacy shape). For multi-indicator
+        # (FAOSTAT domain) units, name by provider + group_key.
+        if unit_size == 1 and not _PROVIDER_TASK_GROUPING.get(provider):
+            safe_id = indicators[0]["id_string"].replace(".", "-").replace("_", "-")
+            job_name = f"qgi-fetch-{safe_id}-{run_id[-12:]}"[:128]
+        else:
+            safe_group = str(unit["group_key"]).replace(".", "-").replace("_", "-")
+            job_name = f"qgi-fetch-{provider.lower()}-{safe_group}-{run_id[-12:]}"[:128]
+
+        container_env = _build_task_env(unit, run_id)
         try:
             response = batch.submit_job(
                 jobName=job_name,
                 jobQueue=BATCH_JOB_QUEUE,
                 jobDefinition=job_definition,
-                containerOverrides={
-                    "environment": [
-                        {"name": "INDICATOR_ID", "value": ind_id},
-                        {"name": "PROVIDER", "value": provider},
-                        {"name": "RUN_ID", "value": run_id},
-                        {"name": "S3_BUCKET", "value": S3_BUCKET},
-                        {"name": "COUNTER_TABLE", "value": COUNTER_TABLE},
-                        {"name": "TRACKER_TABLE", "value": TRACKER_TABLE},
-                        {
-                            "name": "INDICATOR_VALUES_TABLE",
-                            "value": INDICATOR_VALUES_TABLE,
-                        },
-                        {"name": "ATHENA_DATABASE", "value": ATHENA_DATABASE},
-                        {"name": "ATHENA_WORKGROUP", "value": ATHENA_WORKGROUP},
-                        {
-                            "name": "ATHENA_OUTPUT_LOCATION",
-                            "value": ATHENA_OUTPUT_LOCATION,
-                        },
-                        {"name": "JITTER_MIN_S", "value": str(JITTER_MIN_S)},
-                        {"name": "JITTER_MAX_S", "value": str(JITTER_MAX_S)},
-                    ]
-                },
+                containerOverrides={"environment": container_env},
             )
-            submitted += 1
-            per_provider_counts[provider] = per_provider_counts.get(provider, 0) + 1
-            logger.debug(f"Submitted {ind_id} ({provider} → {job_definition}): {response['jobId']}")
+            submitted_indicators += unit_size
+            submitted_units += 1
+            per_provider_counts[provider] = per_provider_counts.get(provider, 0) + unit_size
+            logger.debug(
+                f"Submitted {provider} unit ({unit_size} indicators, "
+                f"group={unit['group_key']}, jobDef={job_definition}): "
+                f"{response['jobId']}"
+            )
         except Exception as e:  # noqa: BLE001
-            logger.error(f"Failed to submit Batch job for {ind_id} ({provider}): {e}")
-            submit_failures.append(ind_id)
+            logger.error(
+                f"Failed to submit Batch job for {provider} unit "
+                f"(group={unit['group_key']}, {unit_size} indicators): {e}"
+            )
+            # Mark every indicator in this failed unit as failed so the
+            # counter can be decremented correctly below.
+            submit_failures.extend(i["id_string"] for i in indicators)
 
     logger.info(
-        f"Submitted {submitted}/{n} Batch jobs for run_id={run_id}. "
-        f"Failures: {len(submit_failures)}"
+        f"Submitted {submitted_indicators}/{n} indicators across "
+        f"{submitted_units}/{len(task_units)} task units for run_id={run_id}. "
+        f"Indicator-failures: {len(submit_failures)}"
     )
 
-    # If some submissions failed, decrement the counter by that count so it
-    # can still reach 0. Otherwise the run hangs forever waiting on jobs
-    # that were never submitted.
+    # If some submissions failed, decrement the counter by that count so
+    # it can still reach 0. Otherwise the run hangs forever waiting on
+    # jobs that were never submitted. We count INDICATOR failures, not
+    # TASK-UNIT failures — a failed FAOSTAT task-unit means N indicators
+    # failed to submit.
     if submit_failures:
         counter_table.update_item(
             Key={"run_id": run_id},
@@ -196,10 +338,16 @@ def lambda_handler(event, context):
         )
 
     return {
-        "dispatched": submitted,
-        "total": submitted,
-        # #240 Phase A: per-provider breakdown so the reporter can say
-        # "dispatched 259 WB + 8 FAOSTAT" instead of one opaque number.
+        # Dispatched count is in INDICATORS (not task units) — the
+        # Step Function checker compares against counter.pending which
+        # is seeded in indicators. Keeping the name for backward compat.
+        "dispatched": submitted_indicators,
+        "total": submitted_indicators,
+        # #241 Phase B: task-unit count surfaced separately so the
+        # reporter can distinguish "15 indicators in 8 Fargate tasks"
+        # from "15 indicators in 15 Fargate tasks".
+        "dispatched_task_units": submitted_units,
+        # #240 Phase A: per-provider breakdown (indicator counts).
         "per_provider_counts": per_provider_counts,
         # Epoch seconds — checker uses this against DEADMAN_SECONDS to
         # decide whether the run has busted its hard deadline.
