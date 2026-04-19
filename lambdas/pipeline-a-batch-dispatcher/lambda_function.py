@@ -50,7 +50,28 @@ S3_BUCKET = os.environ["S3_BUCKET"]
 INDICATORS_KEY = "indicators/indicators.json"
 
 BATCH_JOB_QUEUE = os.environ["BATCH_JOB_QUEUE"]
+# Legacy: one JobDef for every indicator. Still the default when an
+# indicator's provider isn't in BATCH_JOB_DEFINITION_MAP (below).
 BATCH_JOB_DEFINITION = os.environ["BATCH_JOB_DEFINITION"]
+# #240 Phase A: per-provider JobDef routing. JSON map of provider
+# name -> Batch JobDef ARN. When an indicator's `provider` field
+# matches a key here, the dispatcher submits to that JobDef instead
+# of the default. Lets WB indicators flow to the WB fetcher and
+# FAOSTAT indicators flow to the FAOSTAT bulk-download fetcher.
+# Empty/missing env var = legacy single-JobDef behaviour.
+try:
+    BATCH_JOB_DEFINITION_MAP = json.loads(
+        os.environ.get("BATCH_JOB_DEFINITION_MAP", "{}")
+    )
+    if not isinstance(BATCH_JOB_DEFINITION_MAP, dict):
+        raise ValueError("BATCH_JOB_DEFINITION_MAP must decode to a dict")
+except (ValueError, json.JSONDecodeError) as exc:
+    logger.warning(
+        "BATCH_JOB_DEFINITION_MAP env var is not valid JSON map; "
+        "falling back to legacy single-JobDef mode. error=%s",
+        exc,
+    )
+    BATCH_JOB_DEFINITION_MAP = {}
 
 COUNTER_TABLE = os.environ["COUNTER_TABLE"]            # qgi-pipeline-a-counter
 TRACKER_TABLE = os.environ.get("TRACKER_TABLE", "qgi-indicator-updates")
@@ -108,8 +129,16 @@ def lambda_handler(event, context):
     # 3. Submit Batch jobs
     submitted = 0
     submit_failures = []
+    # Track per-provider submission counts for the return payload —
+    # lets the reporter show "dispatched 259 WB + 8 FAOSTAT" instead
+    # of a single opaque number.
+    per_provider_counts: dict[str, int] = {}
     for ind in process_list:
         ind_id = ind["id_string"]
+        # Provider tag comes from the sheet-fetcher's #240 enrichment.
+        # Unknown/missing provider = legacy path (single BATCH_JOB_DEFINITION).
+        provider = ind.get("provider") or "WB"
+        job_definition = BATCH_JOB_DEFINITION_MAP.get(provider, BATCH_JOB_DEFINITION)
         # Job names must be alphanum + - _; replace dots in WB indicator codes
         safe_id = ind_id.replace(".", "-").replace("_", "-")
         job_name = f"qgi-fetch-{safe_id}-{run_id[-12:]}"[:128]
@@ -117,10 +146,11 @@ def lambda_handler(event, context):
             response = batch.submit_job(
                 jobName=job_name,
                 jobQueue=BATCH_JOB_QUEUE,
-                jobDefinition=BATCH_JOB_DEFINITION,
+                jobDefinition=job_definition,
                 containerOverrides={
                     "environment": [
                         {"name": "INDICATOR_ID", "value": ind_id},
+                        {"name": "PROVIDER", "value": provider},
                         {"name": "RUN_ID", "value": run_id},
                         {"name": "S3_BUCKET", "value": S3_BUCKET},
                         {"name": "COUNTER_TABLE", "value": COUNTER_TABLE},
@@ -141,9 +171,10 @@ def lambda_handler(event, context):
                 },
             )
             submitted += 1
-            logger.debug(f"Submitted {ind_id}: {response['jobId']}")
+            per_provider_counts[provider] = per_provider_counts.get(provider, 0) + 1
+            logger.debug(f"Submitted {ind_id} ({provider} → {job_definition}): {response['jobId']}")
         except Exception as e:  # noqa: BLE001
-            logger.error(f"Failed to submit Batch job for {ind_id}: {e}")
+            logger.error(f"Failed to submit Batch job for {ind_id} ({provider}): {e}")
             submit_failures.append(ind_id)
 
     logger.info(
@@ -167,6 +198,9 @@ def lambda_handler(event, context):
     return {
         "dispatched": submitted,
         "total": submitted,
+        # #240 Phase A: per-provider breakdown so the reporter can say
+        # "dispatched 259 WB + 8 FAOSTAT" instead of one opaque number.
+        "per_provider_counts": per_provider_counts,
         # Epoch seconds — checker uses this against DEADMAN_SECONDS to
         # decide whether the run has busted its hard deadline.
         "phase1_started_at": int(time.time()),
