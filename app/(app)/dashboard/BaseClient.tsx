@@ -459,10 +459,19 @@ export function BaseClient({
   const maxSalience = Math.max(1, ...topCountries.map((c) => c.topSalience));
 
   // ── Navigator for pattern pairs ────────────────────────────────
+  // T2 #295 HIGH fix: previously fell back to country NAMES when numeric IDs
+  // were missing, producing malformed /patterns URLs (400 from API). Pattern
+  // route only accepts numeric country ids — skip rows that don't have them.
   function navigateToPair(p: PatternRow) {
+    if (!p.country_a_id || !p.country_b_id) {
+      console.warn(
+        `[BaseClient] Skipping pattern navigation — missing numeric IDs on row ${p.country_a}/${p.country_b}.`
+      );
+      return;
+    }
     const qs = new URLSearchParams({
-      country_a: p.country_a_id ?? p.country_a,
-      country_b: p.country_b_id ?? p.country_b,
+      country_a: p.country_a_id,
+      country_b: p.country_b_id,
       length: String(p.pattern_length),
       start_a: String(p.start_year_a),
       start_b: String(p.start_year_b),
@@ -764,7 +773,6 @@ export function BaseClient({
                 label="Peak salience"
                 value={headlineMetrics.peakSalience.toFixed(2)}
                 tooltip="Highest single-category salience score across all countries."
-                isNumber
               />
               <MetricTile
                 label="Convergences"
@@ -1471,13 +1479,13 @@ function MetricTile({
   label,
   value,
   tooltip,
-  isNumber,
 }: {
   label: string;
   value: string | number;
   tooltip: string;
-  isNumber?: boolean;
 }) {
+  // T2 #295 cleanup: `isNumber` prop was defined but applied `""` in both
+  // branches (dead code). Removed.
   return (
     <div
       className="px-3 py-2 rounded"
@@ -1493,7 +1501,7 @@ function MetricTile({
         <InfoTooltip text={tooltip} />
       </div>
       <div
-        className={`font-data text-lg font-semibold mt-0.5 ${isNumber ? "" : ""}`}
+        className="font-data text-lg font-semibold mt-0.5"
         style={{ color: "var(--qgi-amber)" }}
       >
         {value}

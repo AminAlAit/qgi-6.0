@@ -166,12 +166,24 @@ export default function RankingPage() {
   const processed = useMemo(() => {
     let result = allRows;
 
+    // Sonnet reviewer P1-A (2026-04-19): zero-padded numeric-string key so
+    // lex-order matches numeric-order. Without this, `"10"` orders before
+    // `"2"` lexicographically and the same pair dedups inconsistently
+    // between "best" mode and "all" interleave mode, producing duplicate
+    // rows on the ranking page.
+    const padKey = (v: string | number | undefined, fallback: string) => {
+      const n = Number(v);
+      return Number.isFinite(n)
+        ? String(n).padStart(6, "0")
+        : String(v ?? fallback);
+    };
+
     if (viewMode === "best") {
       // Dedup: one row per pair (best PPS window)
       const bestPerPair = new Map<string, PatternRow>();
       for (const row of result) {
-        const a = row.country_a_id ?? row.country_a;
-        const b = row.country_b_id ?? row.country_b;
+        const a = padKey(row.country_a_id, row.country_a);
+        const b = padKey(row.country_b_id, row.country_b);
         const key = a < b ? `${a}|${b}` : `${b}|${a}`;
         const existing = bestPerPair.get(key);
         if (!existing || row.pattern_power_score > existing.pattern_power_score) {
@@ -185,8 +197,8 @@ export default function RankingPage() {
       // Interleave by pair (round-robin)
       const groups = new Map<string, PatternRow[]>();
       for (const row of result) {
-        const a = row.country_a_id ?? row.country_a;
-        const b = row.country_b_id ?? row.country_b;
+        const a = padKey(row.country_a_id, row.country_a);
+        const b = padKey(row.country_b_id, row.country_b);
         const key = a < b ? `${a}|${b}` : `${b}|${a}`;
         let arr = groups.get(key);
         if (!arr) {
@@ -626,13 +638,20 @@ export default function RankingPage() {
           borderColor: "var(--qgi-border)",
         }}
       >
-        {/* Column labels */}
+        {/* Column labels.
+            T14 #307 HIGH fix (2026-04-19): header row gets a min-width so
+            it doesn't collapse the country-pair column on 375px viewports.
+            RankCard rows below inherit the same minWidth pattern. Page
+            body already has overflow-y-auto on the main container so
+            horizontal overflow lets users swipe the table until a
+            dedicated mobile redesign lands. */}
         <div
           className="grid text-[9px] tracking-[0.12em] uppercase px-4 py-2 border-b select-none shrink-0"
           style={{
             gridTemplateColumns: "42px 1fr 240px",
             color: "var(--qgi-text-dim)",
             borderColor: "var(--qgi-border)",
+            minWidth: 640,
           }}
         >
           <span>#</span>
@@ -747,10 +766,14 @@ function RankCard({
   return (
     <button
       onClick={onNavigate}
+      /* T14 #307: minWidth: 640 so the 42 + 1fr + 240 grid keeps its
+         intended shape even on 375px viewports; the page's scroll
+         container absorbs any overflow. */
       className="w-full grid items-center px-3 border-b transition-all hover:bg-[var(--qgi-surface-2)] cursor-pointer group"
       style={{
         gridTemplateColumns: "42px 1fr 240px",
         height: 56,
+        minWidth: 640,
         borderColor: "var(--qgi-border)",
         borderLeft: accentBorder,
       }}

@@ -202,8 +202,16 @@ interface WindowData {
   pattern_power_score: number;
 }
 
+/**
+ * T6 #299 HIGH fix (2026-04-19): previously sent a literal placeholder
+ * `Authorization: Bearer __client__` header on every request. It was a
+ * no-op against `withAuth` in SKIP_AUTH=true dev and would fail hard
+ * against a real Cognito verifier once that lands (Q13 / #343). Until
+ * the real JWT path is wired, just send no Authorization header — the
+ * server uses SKIP_AUTH + dev payload already.
+ */
 async function apiFetch<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: { Authorization: "Bearer __client__" } });
+  const res = await fetch(url);
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   return res.json();
 }
@@ -418,7 +426,15 @@ function Breadcrumb({
 /*  Main component                                                     */
 /* ------------------------------------------------------------------ */
 
-export default function PatternsClient() {
+// T6 #299 HIGH: optional initial top pairs passed in server-side from
+// patterns/page.tsx so we avoid fetching /api/patterns/ranking on mount.
+interface PatternsClientProps {
+  initialTopPairs?: PatternRow[];
+}
+
+export default function PatternsClient({
+  initialTopPairs = [],
+}: PatternsClientProps = {}) {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -450,7 +466,9 @@ export default function PatternsClient() {
   const [showTable, setShowTable] = useState(true);
 
   // S0 landing: top pairs from ranking cache (used for navigateToPattern but NOT shown in S0)
-  const [topPairs, setTopPairs] = useState<PatternRow[]>([]);
+  // T6 #299: seed from server-loaded prop when available — skips the
+  // expensive unconditional /api/patterns/ranking?limit=1000 fetch below.
+  const [topPairs, setTopPairs] = useState<PatternRow[]>(initialTopPairs);
 
   // S2: windows data for the length-range slider experience
   const [allWindows, setAllWindows] = useState<WindowData[]>([]);
@@ -608,18 +626,37 @@ export default function PatternsClient() {
       .finally(() => setSameFollowingLoading(false));
   }, [countryA, countryB]);
 
-  // Fetch top pairs for S0 landing
+  // T6 #299 HIGH: top pairs for S0 landing. Previously fetched 1000 rows
+  // from /api/patterns/ranking on every mount just to display 10 pairs.
+  // Now seeded from `initialTopPairs` server prop (see patterns/page.tsx).
+  // Only fetch if the prop was empty (e.g. fresh env without baked
+  // ranking.json, or caller rendering <PatternsClient /> without props).
   useEffect(() => {
+    if (initialTopPairs.length > 0) return;
     async function fetchTopPairs() {
       try {
-        const res = await fetch("/api/patterns/ranking?page=1&limit=1000", { cache: "no-store" });
+        // Fetch a much smaller page too — previous `limit=1000` was wasteful.
+        const res = await fetch("/api/patterns/ranking?page=1&limit=100", {
+          cache: "no-store",
+        });
         if (res.ok) {
           const data = await res.json();
           const raw: PatternRow[] = data.results ?? [];
+          // Sonnet P1-4: zero-padded numeric-string key so lex-order
+          // matches numeric-order for all WB country IDs.
+          const padKey = (
+            v: string | number | undefined,
+            fallback: string
+          ) => {
+            const n = Number(v);
+            return Number.isFinite(n)
+              ? String(n).padStart(6, "0")
+              : String(v ?? fallback);
+          };
           const bestPerPair = new Map<string, PatternRow>();
           for (const row of raw) {
-            const a = row.country_a_id ?? row.country_a;
-            const b = row.country_b_id ?? row.country_b;
+            const a = padKey(row.country_a_id, row.country_a);
+            const b = padKey(row.country_b_id, row.country_b);
             const key = a < b ? `${a}|${b}` : `${b}|${a}`;
             const existing = bestPerPair.get(key);
             if (!existing || row.pattern_power_score > existing.pattern_power_score) {
@@ -636,7 +673,7 @@ export default function PatternsClient() {
       }
     }
     fetchTopPairs();
-  }, []);
+  }, [initialTopPairs.length]);
 
   // ---- Load pattern detail ----
   const loadPattern = useCallback(
@@ -653,9 +690,10 @@ export default function PatternsClient() {
       setLoading(true);
       setError(null);
       try {
+        // T6 #299 HIGH fix: drop the placeholder Authorization header
+        // (same rationale as apiFetch above).
         const res = await fetch(
-          `/api/patterns/detail?country_a=${encodeURIComponent(ca)}&country_b=${encodeURIComponent(cb)}&start_a=${startA}&start_b=${startB}&length=${len}`,
-          { headers: { Authorization: "Bearer __client__" } }
+          `/api/patterns/detail?country_a=${encodeURIComponent(ca)}&country_b=${encodeURIComponent(cb)}&start_a=${startA}&start_b=${startB}&length=${len}`
         );
         if (!res.ok) {
           if (res.status === 500 || res.status === 504) {
@@ -778,7 +816,7 @@ export default function PatternsClient() {
   }
 
   // ---- Context line ----
-  let contextLine = `214 countries  \u00b7  2.01B patterns  \u00b7  ${topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}`;
+  let contextLine = `197 countries  \u00b7  2.01B patterns  \u00b7  ${topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}`;
   if (browseState === "S1" && countryA) {
     contextLine = `${countryAName || countryA} has patterns with ${partners.length} countries`;
   } else if (browseState === "S2" && countryA && countryB) {
@@ -950,7 +988,7 @@ export default function PatternsClient() {
                 className="flex gap-4 mt-3 text-[10px] font-data tracking-wider"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                <span>214 countries</span>
+                <span>197 countries</span>
                 <span>&middot;</span>
                 <span>2.01B patterns</span>
                 <span>&middot;</span>

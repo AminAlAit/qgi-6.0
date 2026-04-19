@@ -2,10 +2,26 @@ import { loadCountryRisks } from "@/lib/country-risks";
 import { PrecedentsListClient } from "@/components/precedents/PrecedentsListClient";
 import type { Metadata } from "next";
 
+// T19 #312: adds openGraph + twitter so precedents page is shareable.
 export const metadata: Metadata = {
   title: "Precedents Browser — QGI Intelligence",
   description:
     "Browse all country-category precedent combinations ranked by salience score.",
+  alternates: { canonical: "https://qgintelligence.com/precedents" },
+  openGraph: {
+    title: "Precedents Browser — QGI Intelligence",
+    description:
+      "Browse all country-category precedent combinations ranked by salience score.",
+    url: "https://qgintelligence.com/precedents",
+    siteName: "QGI Intelligence",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Precedents Browser — QGI Intelligence",
+    description:
+      "Browse all country-category precedent combinations ranked by salience score.",
+  },
 };
 
 /**

@@ -56,7 +56,13 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
     sortKey === col ? (sortAsc ? "↑" : "↓") : "";
 
   return (
-    <div className="flex flex-col">
+    // T14 #307 HIGH fix (2026-04-19): table was a fixed 7-column grid
+    // totalling ~500px wide. On mobile (375px viewport) columns either
+    // crushed the Indicator name or pushed off-screen. Wrap in
+    // overflow-x-auto with a min-width so users can swipe the table
+    // horizontally on small screens until a full responsive redesign lands.
+    <div className="flex flex-col overflow-x-auto">
+      <div style={{ minWidth: 500 }}>
       {/* Sector filter chips */}
       <div className="flex flex-wrap gap-1.5 px-4 py-2 border-b" style={{ borderColor: "var(--qgi-border)" }}>
         {allSectors.map((s) => (
@@ -184,6 +190,7 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
           </button>
         );
       })}
+      </div>
     </div>
   );
 }
