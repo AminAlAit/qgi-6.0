@@ -281,7 +281,7 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
           label="Highest Salience"
           row={briefing.topSalience}
           metric={briefing.topSalience?.salienceScore.toFixed(3) ?? "--"}
-          sub={`${(briefing.topSalience?.recipeCount ?? 0).toLocaleString()} recipes`}
+          sub={`${(briefing.topSalience?.recipeCount ?? 0).toLocaleString()} precedents`}
         />
         <BriefingCard
           label="Deepest Evidence"
@@ -451,8 +451,8 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
             <InfoTooltip text="Composite score measuring how strongly a category's statistical patterns stand out for this country. Higher = more signal." />
           </span>
           <span className="text-right flex items-center justify-end gap-1">
-            Recipes
-            <InfoTooltip text="Number of historical pattern recipes (indicator-pair correlations) supporting this signal." />
+            Precedents
+            <InfoTooltip text="Number of historical pattern windows (indicator-pair correlations) supporting this signal." />
           </span>
           <span className="text-right">Last Event</span>
           <span className="text-center">Tier</span>

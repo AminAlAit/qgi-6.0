@@ -320,9 +320,27 @@ export function PrecedentDetailClient({
         )}
 
         {/* ============================================================ */}
-        {/*  TOP 5 HISTORICAL ANALOGUES (from baked analogues.json)       */}
+        {/*  TOP 5 HISTORICAL ANALOGUES                                   */}
+        {/*                                                               */}
+        {/*  2026-04-19 (follow-up to #354v3):                           */}
+        {/*  Cards now read from `enrichedAnalogues` instead of the      */}
+        {/*  legacy `analogues` prop. Without this, the card count       */}
+        {/*  (legacy: all 5) could diverge from the timeline row count   */}
+        {/*  (enriched: subset), producing a visibly inconsistent panel  */}
+        {/*  (Bahrain/political_repression showed 5 cards but 3 timeline */}
+        {/*  rows). Using the same source for both guarantees the counts */}
+        {/*  match AND lets us use pair_* data for "View pattern" links. */}
+        {/*                                                               */}
+        {/*  View pattern link priority:                                  */}
+        {/*    1. pair_start_a / pair_start_b / pair_length               */}
+        {/*       (length-L, event-end-aligned window)                    */}
+        {/*    2. best_pattern_start_a / best_pattern_start_b /           */}
+        {/*       best_pattern_length (legacy per-pair best-PPS)          */}
+        {/*    3. disabled — no pattern window data available, so        */}
+        {/*       clicking through would hit "Pattern detail             */}
+        {/*       unavailable". Better to show disabled than lie.        */}
         {/* ============================================================ */}
-        {analogues.length > 0 && (
+        {enrichedAnalogues.length > 0 && (
           <section
             className="rounded-xl p-6"
             style={{
@@ -335,129 +353,152 @@ export function PrecedentDetailClient({
                 className="text-[11px] tracking-widest uppercase font-semibold"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                TOP {analogues.length} HISTORICAL ANALOGUES
-                <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher recipe count = stronger historical signal." />
+                TOP {enrichedAnalogues.length} HISTORICAL ANALOGUES
+                <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher precedent count = stronger historical signal." />
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-              {analogues.map((a, i) => (
-                <div
-                  key={a.country_b_id}
-                  className="rounded-xl p-4 flex flex-col gap-3 transition-colors hover:border-[var(--qgi-accent)]"
-                  style={{
-                    backgroundColor: "var(--qgi-surface)",
-                    border: `1px solid ${i === 0 ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
-                  }}
-                >
-                  {/* Country identity */}
-                  <div className="flex items-center gap-2">
-                    <CountryFlag alpha2={a.alpha2} size={20} />
-                    <div>
-                      <div className="text-xs font-semibold">{a.country_b_name}</div>
-                      <div
-                        className="text-[10px] font-data"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        {a.recipe_count.toLocaleString()} recipes
+              {enrichedAnalogues.map((a, i) => {
+                // Pattern URL — use pair_* (aligned) first, then
+                // best_pattern_* (legacy), else no link at all.
+                const haveAlignedPair =
+                  a.pair_start_a !== undefined &&
+                  a.pair_start_a !== null &&
+                  a.pair_start_b !== undefined &&
+                  a.pair_start_b !== null &&
+                  a.pair_length !== undefined &&
+                  a.pair_length !== null;
+                const haveLegacyPattern =
+                  a.best_pattern_start_a !== undefined &&
+                  a.best_pattern_start_b !== undefined &&
+                  a.best_pattern_length !== undefined;
+
+                let patternHref: string | null = null;
+                if (haveAlignedPair) {
+                  patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.pair_length}&start_a=${a.pair_start_a}&start_b=${a.pair_start_b}`;
+                } else if (haveLegacyPattern) {
+                  patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.best_pattern_length}&start_a=${a.best_pattern_start_a}&start_b=${a.best_pattern_start_b}`;
+                }
+
+                return (
+                  <div
+                    key={a.country_b_id}
+                    className="rounded-xl p-4 flex flex-col gap-3 transition-colors hover:border-[var(--qgi-accent)]"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                      border: `1px solid ${i === 0 ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
+                    }}
+                  >
+                    {/* Country identity */}
+                    <div className="flex items-center gap-2">
+                      <CountryFlag alpha2={a.alpha2} size={20} />
+                      <div>
+                        <div className="text-xs font-semibold">{a.country_b_name}</div>
+                        <div
+                          className="text-[10px] font-data"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {a.recipe_count.toLocaleString()} precedents
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Correlation bar — T5 #298: render signed correlation
-                      with red for negative, cyan for positive. Previously
-                      clamped with Math.min which hid negative values as
-                      4%-width positive bars. */}
-                  <div
-                    className="h-6 rounded flex items-center px-2"
-                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
-                  >
+                    {/* Correlation bar — T5 #298: render signed correlation
+                        with red for negative, cyan for positive. */}
                     <div
-                      className="h-3 rounded"
-                      style={{
-                        width: `${Math.min(100, Math.abs(a.mean_corr) * 100)}%`,
-                        backgroundColor:
-                          a.mean_corr >= 0 ? "var(--qgi-accent)" : "#f87171",
-                        opacity: 0.6,
-                      }}
-                      title={`Mean correlation: ${a.mean_corr.toFixed(3)}${
-                        a.mean_corr < 0 ? " (inverse)" : ""
-                      }`}
-                    />
-                  </div>
+                      className="h-6 rounded flex items-center px-2"
+                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                    >
+                      <div
+                        className="h-3 rounded"
+                        style={{
+                          width: `${Math.min(100, Math.abs(a.mean_corr) * 100)}%`,
+                          backgroundColor:
+                            a.mean_corr >= 0 ? "var(--qgi-accent)" : "#f87171",
+                          opacity: 0.6,
+                        }}
+                        title={`Mean correlation: ${a.mean_corr.toFixed(3)}${
+                          a.mean_corr < 0 ? " (inverse)" : ""
+                        }`}
+                      />
+                    </div>
 
-                  {/* Stats */}
-                  <div
-                    className="space-y-1 text-[11px] font-data"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                  >
-                    <div className="flex justify-between">
-                      <span>Match</span>
-                      <span
-                        className="font-semibold"
-                        style={{ color: "var(--qgi-text)" }}
-                      >
-                        {/* T5 #298: .toFixed(0) rounds decimals like 0.42
-                            to "0" — meaningless. Show 2dp so sub-integer
-                            PPS values read correctly. */}
-                        {a.best_pps.toFixed(2)}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Corr</span>
-                      <span>{(a.mean_corr * 100).toFixed(0)}%</span>
-                    </div>
-                    {a.avg_lead_years != null && (
+                    {/* Stats */}
+                    <div
+                      className="space-y-1 text-[11px] font-data"
+                      style={{ color: "var(--qgi-text-muted)" }}
+                    >
                       <div className="flex justify-between">
-                        <span>Lead</span>
-                        <span>{a.avg_lead_years.toFixed(1)}yr</span>
+                        <span>Match</span>
+                        <span
+                          className="font-semibold"
+                          style={{ color: "var(--qgi-text)" }}
+                        >
+                          {a.best_pps.toFixed(2)}
+                        </span>
                       </div>
-                    )}
-                  </div>
+                      <div className="flex justify-between">
+                        <span>Corr</span>
+                        <span>{(a.mean_corr * 100).toFixed(0)}%</span>
+                      </div>
+                      {a.avg_lead_years != null && (
+                        <div className="flex justify-between">
+                          <span>Lead</span>
+                          <span>{a.avg_lead_years.toFixed(1)}yr</span>
+                        </div>
+                      )}
+                    </div>
 
-                  {/* Action links — two CTAs side-by-side separated by cyan pipe (#351) */}
-                  <div
-                    className="pt-2 mt-auto border-t flex items-center justify-center gap-2"
-                    style={{ borderColor: "var(--qgi-border)" }}
-                  >
-                    <Link
-                      href={`/countries/${a.country_b_id}`}
-                      className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
-                      style={{
-                        color: "var(--qgi-accent)",
-                        outlineColor: "var(--qgi-accent)",
-                      }}
-                      aria-label={`View ${a.country_b_name}'s country profile`}
+                    {/* Action links — two CTAs side-by-side separated by cyan pipe (#351) */}
+                    <div
+                      className="pt-2 mt-auto border-t flex items-center justify-center gap-2"
+                      style={{ borderColor: "var(--qgi-border)" }}
                     >
-                      View country
-                    </Link>
-                    <span
-                      aria-hidden="true"
-                      className="text-[12px] leading-none select-none"
-                      style={{ color: "var(--qgi-accent)" }}
-                    >
-                      |
-                    </span>
-                    <Link
-                      href={
-                        a.best_pattern_length !== undefined &&
-                        a.best_pattern_start_a !== undefined &&
-                        a.best_pattern_start_b !== undefined
-                          ? `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.best_pattern_length}&start_a=${a.best_pattern_start_a}&start_b=${a.best_pattern_start_b}`
-                          : `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`
-                      }
-                      className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
-                      style={{
-                        color: "var(--qgi-accent)",
-                        outlineColor: "var(--qgi-accent)",
-                      }}
-                      aria-label={`View pattern between ${country.name} and ${a.country_b_name}`}
-                    >
-                      View pattern
-                    </Link>
+                      <Link
+                        href={`/countries/${a.country_b_id}`}
+                        className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                        style={{
+                          color: "var(--qgi-accent)",
+                          outlineColor: "var(--qgi-accent)",
+                        }}
+                        aria-label={`View ${a.country_b_name}'s country profile`}
+                      >
+                        View country
+                      </Link>
+                      <span
+                        aria-hidden="true"
+                        className="text-[12px] leading-none select-none"
+                        style={{ color: "var(--qgi-accent)" }}
+                      >
+                        |
+                      </span>
+                      {patternHref ? (
+                        <Link
+                          href={patternHref}
+                          className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                          style={{
+                            color: "var(--qgi-accent)",
+                            outlineColor: "var(--qgi-accent)",
+                          }}
+                          aria-label={`View pattern between ${country.name} and ${a.country_b_name}`}
+                        >
+                          View pattern
+                        </Link>
+                      ) : (
+                        <span
+                          className="text-[10px] tracking-widest cursor-not-allowed"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                          title="No pair-window data available at this panel's canonical pattern length. Timeline shows the 15-year event-anchored approximation for this analogue."
+                          aria-label={`Pattern detail not available for ${a.country_b_name}`}
+                        >
+                          Pattern n/a
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         )}
