@@ -171,21 +171,11 @@ const IconBarChart = () => (
   </svg>
 );
 
-/** ABOUT — person silhouette */
-const IconUser = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.5" />
-    <path
-      d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
 // ─────────────────────────────────────────────────────────────────────────────
 
+// 2026-04-19: "ABOUT" removed from the dashboard sidebar per user — About
+// is a public marketing surface and lives in the landing-page header nav,
+// not mixed with dashboard tools. The IconUser SVG was dropped with it.
 const NAV_ITEMS: ReadonlyArray<{
   label: string;
   href: string;
@@ -220,11 +210,6 @@ const NAV_ITEMS: ReadonlyArray<{
     label: "RANKING",
     href: "/patterns/ranking",
     icon: <IconBarChart />,
-  },
-  {
-    label: "ABOUT",
-    href: "/about",
-    icon: <IconUser />,
   },
 ];
 

@@ -45,8 +45,16 @@ describe("PatternScatter", () => {
 
   it("navigates to Patterns Portal on point click", async () => {
     render(<PatternScatter patterns={PATTERNS} />);
-    // Simulate ECharts click event
-    mockOnEvents.click?.({ value: [10, 22, 0.712, "DEU", "FRA", 2000, 2003] });
+    // Simulate ECharts click event. PatternScatter's data tuple is 9-wide:
+    // [length, num_indexes, pps, country_a, country_b, start_a, start_b,
+    //  country_a_id ?? country_a, country_b_id ?? country_b]
+    // The ID slots (7, 8) are what feed the URL — earlier this session the
+    // component was widened to prefer numeric country_a_id; this test used
+    // to pass 7 values and `caId`/`cbId` destructured to `undefined`,
+    // making the URL "country_a=undefined".
+    mockOnEvents.click?.({
+      value: [10, 22, 0.712, "DEU", "FRA", 2000, 2003, "DEU", "FRA"],
+    });
     expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("country_a=DEU"));
     expect(mockPush).toHaveBeenCalledWith(expect.stringContaining("country_b=FRA"));
   });

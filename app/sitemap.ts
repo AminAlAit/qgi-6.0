@@ -29,7 +29,8 @@ const STATIC_ROUTES: Array<{
   { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
-  { path: "/reports/fsi-qgi-report", changeFrequency: "monthly", priority: 0.6 },
+  // FSI report excluded from sitemap 2026-04-19 — #264 reopened for rework.
+  // Route stays live for inbound links, but not advertised to search engines.
   { path: "/about", changeFrequency: "monthly", priority: 0.4 },
   { path: "/legal", changeFrequency: "monthly", priority: 0.3 },
 ];

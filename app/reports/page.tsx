@@ -85,85 +85,14 @@ export default function ReportsPage() {
 
         {/* Report Cards */}
         <div className="space-y-6">
-          {/* FSI Demo Report */}
-          <div
-            className="rounded-lg border p-6"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              borderColor: "var(--qgi-border)",
-            }}
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div>
-                <h2 className="text-lg font-semibold mb-1">
-                  FSI Risk Analysis — Sample Report
-                </h2>
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  Pattern analysis of the top 50 Fragile States Index countries.
-                  Identifies where QGI agrees with FSI, where QGI sees
-                  &ldquo;sleeper&rdquo; risks FSI doesn&apos;t flag, and structural twins
-                  for the highest-risk nations.
-                </p>
-              </div>
-              <span
-                className="text-[9px] tracking-widest px-2 py-1 rounded shrink-0 ml-4"
-                style={{
-                  backgroundColor: "rgba(52, 211, 153, 0.12)",
-                  color: "#34d399",
-                  border: "1px solid rgba(52, 211, 153, 0.3)",
-                }}
-              >
-                AVAILABLE
-              </span>
-            </div>
+          {/* 2026-04-19: FSI Demo Report hidden per user directive — ticket
+              #264 reopened as "needs rework" (earlier draft did not meet
+              the editorial bar we want to set for QGI Reports). Keeping
+              the route live but unlinked here so any outbound links don't
+              404 until the rewrite ships. Production-ready reports coming
+              from the 5-agent production pipeline will replace this slot. */}
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-              <ReportStat label="Countries" value="50" />
-              <ReportStat label="Indicators" value="69" />
-              <ReportStat label="Pages" value="20-25" />
-              <ReportStat label="Format" value="PDF" />
-            </div>
-
-            <div
-              className="text-xs leading-relaxed p-3 rounded"
-              style={{
-                backgroundColor: "var(--qgi-bg)",
-                color: "var(--qgi-text-dim)",
-              }}
-            >
-              <strong>Sections:</strong> Executive Summary &middot; Agreement Analysis
-              (QGI vs FSI) &middot; Sleeper Countries &middot; Structural Twins &middot;
-              Lead-Time Advantage &middot; Methodology &middot; Call to Action
-            </div>
-
-            <div className="mt-4 flex gap-3">
-              <Link
-                href="/reports/fsi-qgi-report"
-                className="px-4 py-2 rounded text-sm tracking-wide transition-colors"
-                style={{
-                  backgroundColor: "var(--qgi-accent)",
-                  color: "var(--qgi-bg)",
-                }}
-              >
-                Read Full Report
-              </Link>
-              <Link
-                href="/methodology"
-                className="px-4 py-2 rounded text-sm tracking-wide border transition-colors hover:bg-[var(--qgi-surface-2)]"
-                style={{
-                  borderColor: "var(--qgi-border)",
-                  color: "var(--qgi-text-muted)",
-                }}
-              >
-                How QGI builds reports
-              </Link>
-            </div>
-          </div>
-
-          {/* Future report placeholder */}
+          {/* Upcoming report placeholder */}
           <div
             className="rounded-lg border p-6 opacity-50"
             style={{

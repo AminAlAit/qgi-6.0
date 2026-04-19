@@ -234,13 +234,6 @@ export default function AboutPage() {
             >
               Browse country profiles →
             </Link>
-            <Link
-              href="/reports/fsi-qgi-report"
-              className="hover:underline"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              See the FSI demo report →
-            </Link>
           </div>
         </section>
       </div>
