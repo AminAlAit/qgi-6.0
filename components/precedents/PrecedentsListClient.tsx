@@ -66,8 +66,8 @@ const TIER_SHORT: Record<RiskTier, string> = {
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "salience_desc", label: "Salience (high to low)" },
   { value: "salience_asc", label: "Salience (low to high)" },
-  { value: "recipe_desc", label: "Recipe count (high to low)" },
-  { value: "recipe_asc", label: "Recipe count (low to high)" },
+  { value: "recipe_desc", label: "Precedent count (high to low)" },
+  { value: "recipe_asc", label: "Precedent count (low to high)" },
   { value: "country_asc", label: "Country (A-Z)" },
   { value: "country_desc", label: "Country (Z-A)" },
   { value: "category_asc", label: "Category (A-Z)" },

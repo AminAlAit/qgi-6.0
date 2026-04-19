@@ -264,7 +264,7 @@ export default function MethodologyPage() {
             className="text-sm font-semibold mt-6 mb-2"
             style={{ color: "var(--qgi-accent)" }}
           >
-            Layer 3: Precedents (Recipes)
+            Layer 3: Precedents
           </h3>
           <p>
             A Precedent matches a pattern to a known geopolitical event. If Country
@@ -309,10 +309,10 @@ export default function MethodologyPage() {
         <Section id="event-taxonomy" title="Event Taxonomy">
           <p>
             QGI&apos;s event corpus is organized in a four-layer hierarchy that preserves
-            full granularity while remaining scannable. The recipe engine matches patterns
-            to <strong>Layer 3</strong> canonical event types (the actual prediction
-            targets); the layered structure is a navigation aid for the country profile
-            UI.
+            full granularity while remaining scannable. The precedent engine matches
+            patterns to <strong>Layer 3</strong> canonical event types (the actual
+            prediction targets); the layered structure is a navigation aid for the country
+            profile UI.
           </p>
           <LayeredTaxonomyTree />
           <p className="mt-3 text-[11px]" style={{ color: "var(--qgi-text-dim)" }}>
