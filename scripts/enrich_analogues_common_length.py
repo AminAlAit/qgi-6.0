@@ -280,43 +280,70 @@ def enrich(
             canonical_lengths[(subject_id, category)] = L
             block["canonical_length"] = L
 
+            # #354v3 (2026-04-19): NEVER drop analogues. Keep every one
+            # the upstream enricher produced; when no aligned window
+            # exists, leave pair_* fields null and let the frontend fall
+            # back to the event-anchored 15yr approximation (which is
+            # aligned by construction, just not "real" pair data).
+            #
+            # The earlier v2 ran .append only on keeper paths and wrote
+            # the shortened list back — dropping 11,167 analogue rows
+            # across 3,982 (subject, category) blocks system-wide.
+            # Symptom: precedent-detail pages showed 5 analogue CARDS
+            # (read from legacy analogues.json) but the TIMELINE showed
+            # only 3 because the timeline read the destructively-reduced
+            # enriched file. Fix: keep everything, never drop.
             rebuilt: list[dict] = []
             for a in analogues:
+                a_new = dict(a)
                 aid = a.get("country_b_id")
+                # Strip any stale pair_* before re-deciding.
+                for k in (
+                    "pair_length",
+                    "pair_start_a",
+                    "pair_start_b",
+                    "pair_pps",
+                    "pair_avg_corr",
+                    "event_in_window",
+                ):
+                    a_new.pop(k, None)
+
                 if aid is None:
+                    rebuilt.append(a_new)
+                    stats["analogues_kept"] += 1
                     continue
+
                 windows = pair_windows.get(str(aid), {}).get("top", [])
                 chosen = pick_analogue_window(
                     windows, L, a.get("event_year_b"), length_tolerance
                 )
-                if chosen is None:
-                    stats["analogues_dropped"] += 1
-                    continue
-                # Keep every upstream field + overwrite the window fields
-                # with the length-L pick.
-                eyb = a.get("event_year_b")
-                sb = chosen.get("sb")
-                L_chosen = chosen.get("l")
-                event_in_window = (
-                    eyb is not None
-                    and sb is not None
-                    and L_chosen is not None
-                    and sb <= eyb <= sb + L_chosen
-                )
-                if event_in_window:
-                    stats["events_in_window"] += 1
+
+                if chosen is not None:
+                    eyb = a.get("event_year_b")
+                    sb = chosen.get("sb")
+                    L_chosen = chosen.get("l")
+                    event_in_window = (
+                        eyb is not None
+                        and sb is not None
+                        and L_chosen is not None
+                        and sb <= eyb <= sb + L_chosen
+                    )
+                    if event_in_window:
+                        stats["events_in_window"] += 1
+                    else:
+                        stats["events_outside_window"] += 1
+                    a_new["pair_length"] = L_chosen
+                    a_new["pair_start_a"] = chosen.get("sa")
+                    a_new["pair_start_b"] = sb
+                    a_new["pair_pps"] = chosen.get("pps")
+                    a_new["pair_avg_corr"] = chosen.get("ac")
+                    a_new["event_in_window"] = event_in_window
                 else:
-                    stats["events_outside_window"] += 1
-                a_new = dict(a)
-                a_new["pair_length"] = L_chosen
-                a_new["pair_start_a"] = chosen.get("sa")
-                a_new["pair_start_b"] = sb
-                a_new["pair_pps"] = chosen.get("pps")
-                a_new["pair_avg_corr"] = chosen.get("ac")
-                a_new["event_in_window"] = event_in_window
-                # Legacy fields kept for backwards-compatibility during the
-                # frontend rollout (widget will be updated to read the new
-                # fields); remove in a follow-up once the widget lands.
+                    # Null pair_* — frontend falls back to 15yr event-anchor.
+                    stats["analogues_without_aligned_window"] = (
+                        stats.get("analogues_without_aligned_window", 0) + 1
+                    )
+
                 rebuilt.append(a_new)
                 stats["analogues_kept"] += 1
             block["analogues"] = rebuilt
