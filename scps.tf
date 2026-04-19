@@ -2,7 +2,24 @@
 # Applied to member accounts only (management account is exempt from SCPs by design).
 
 locals {
-  member_account_ids = ["555555555555", "666666666666"]
+  # T12 #305 HIGH fix (2026-04-19): SCPs previously attached only to
+  # qgi-legacy + personal-website — the accounts where the pipeline does
+  # NOT run. Staging, QA, and prod had zero region-lock or CloudTrail-
+  # protect enforcement. Added the three active pipeline accounts so the
+  # policies apply where they matter.
+  #
+  # Apply rollout recommendation: `terraform apply` attaches all five at
+  # once; consider targeted apply for staging first
+  # (`-target=aws_organizations_policy_attachment.region_restriction["222222222222"]`
+  # then soak for 24h), then qa, then prod. Reversal is a simple
+  # `aws organizations detach-policy` if a pipeline breaks unexpectedly.
+  member_account_ids = [
+    "555555555555", # qgi-legacy
+    "666666666666", # personal-website
+    "222222222222", # qgi-staging
+    "333333333333", # qgi-qa
+    "444444444444", # qgi-prod
+  ]
 }
 
 # ---------------------------------------------------------------------------
