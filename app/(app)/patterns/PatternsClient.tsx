@@ -191,6 +191,15 @@ interface Partner {
   country_b_id: string;
   country_b_name: string;
   available_lengths: number[];
+  /**
+   * T6 #299 fix (2026-04-19): these fields were previously only read via a
+   * duplicate apiFetch call that fetched the same /api/patterns/partners
+   * endpoint and cast to a wider inline type. Adding them here so the
+   * samePredictorPartners/sameFollowingPartners effects can derive from
+   * the existing `partners` state instead of issuing redundant requests.
+   */
+  alpha2?: string;
+  best_pps?: number;
 }
 
 interface WindowData {
@@ -573,32 +582,35 @@ export default function PatternsClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countryA, countryB, length, yearPair]);
 
-  // Load related partners whenever A or B changes
+  // T6 #299 MEDIUM fix (2026-04-19): previously this effect fetched
+  // `/api/patterns/partners?country_a=${countryA}` — the SAME endpoint
+  // already fetched by the "Load partners when A changes" effect above.
+  // Derive samePredictorPartners from the existing `partners` state
+  // instead of issuing a duplicate network request. The `setSamePredictor
+  // Loading` flag becomes redundant (partners loads in lock-step with
+  // countryA), but kept as `false` so downstream loading-indicator logic
+  // continues to behave.
   useEffect(() => {
-    if (!countryA) { setSamePredictorPartners([]); return; }
-    setSamePredictorLoading(true);
-    apiFetch<Array<{ country_b_id: string; country_b_name: string; alpha2?: string; best_pps?: number; available_lengths: number[] }>>(
-      `/api/patterns/partners?country_a=${encodeURIComponent(countryA)}`
-    )
-      .then((data) => {
-        const excl = countryB;
-        setSamePredictorPartners(
-          data
-            .filter((p) => p.country_b_id !== excl)
-            .slice(0, 3)
-            .map((p) => ({
-              id: p.country_b_id,
-              name: p.country_b_name,
-              alpha2: p.alpha2 ?? ALPHA2_MAP[p.country_b_id] ?? "",
-              pps: p.best_pps ?? 0,
-              lmin: p.available_lengths[0] ?? 0,
-              lmax: p.available_lengths[p.available_lengths.length - 1] ?? 0,
-            }))
-        );
-      })
-      .catch(() => setSamePredictorPartners([]))
-      .finally(() => setSamePredictorLoading(false));
-  }, [countryA, countryB]);
+    if (!countryA || partners.length === 0) {
+      setSamePredictorPartners([]);
+      setSamePredictorLoading(false);
+      return;
+    }
+    setSamePredictorLoading(false);
+    setSamePredictorPartners(
+      partners
+        .filter((p) => p.country_b_id !== countryB)
+        .slice(0, 3)
+        .map((p) => ({
+          id: p.country_b_id,
+          name: p.country_b_name,
+          alpha2: ALPHA2_MAP[p.country_b_id] ?? "",
+          pps: p.best_pps ?? 0,
+          lmin: p.available_lengths[0] ?? 0,
+          lmax: p.available_lengths[p.available_lengths.length - 1] ?? 0,
+        }))
+    );
+  }, [countryA, countryB, partners]);
 
   useEffect(() => {
     if (!countryB) { setSameFollowingPartners([]); return; }
@@ -1545,7 +1557,17 @@ export default function PatternsClient({
                     <div className="flex flex-col items-center gap-3 px-4 lg:px-8">
                       {lag !== 0 && (
                         <div className="flex items-center gap-2 text-[10px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>
-                          <span>&larr; {Math.abs(lag)}yr lag &rarr;</span>
+                          {/* T6 #299 LOW fix (2026-04-19): arrow direction
+                              now reflects the sign of the lag. Positive lag
+                              = predictor before follower (forward →).
+                              Negative lag = follower before predictor
+                              (reverse ←). Previously always rendered "← N →"
+                              regardless of sign, losing the directionality. */}
+                          {lag > 0 ? (
+                            <span>{Math.abs(lag)}yr lag &rarr;</span>
+                          ) : (
+                            <span>&larr; {Math.abs(lag)}yr lag</span>
+                          )}
                         </div>
                       )}
 
@@ -1923,6 +1945,13 @@ export default function PatternsClient({
                               <div className="mb-2 rounded flex items-center justify-center h-16" style={{ backgroundColor: "var(--qgi-surface)" }}>
                                 {s.correlation != null ? (
                                   <div className="w-full px-2">
+                                    {/* T6 #299 MEDIUM fix (2026-04-19):
+                                        correlation bar was `Math.max(4, ...)`
+                                        which gave negative correlations a
+                                        visible 4% positive-width bar. Now
+                                        renders signed: abs() for width,
+                                        red for negative, existing color
+                                        for positive. */}
                                     <div
                                       className="h-2 rounded-full"
                                       style={{ backgroundColor: "var(--qgi-surface-2)" }}
@@ -1930,8 +1959,8 @@ export default function PatternsClient({
                                       <div
                                         className="h-full rounded-full"
                                         style={{
-                                          width: `${Math.max(4, Math.round(s.correlation * 100))}%`,
-                                          backgroundColor: sc,
+                                          width: `${Math.min(100, Math.round(Math.abs(s.correlation) * 100))}%`,
+                                          backgroundColor: s.correlation < 0 ? "#f87171" : sc,
                                           opacity: 0.7,
                                         }}
                                       />

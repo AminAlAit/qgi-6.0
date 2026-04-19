@@ -150,9 +150,19 @@ export default function RankingPage() {
   }
 
   function navigateToPattern(p: PatternRow) {
+    // T6 #299 MEDIUM fix (2026-04-19): /patterns API only accepts numeric
+    // country IDs. Skip rows that lack them + warn rather than falling
+    // back to the country NAME (which produces a malformed URL that 400s
+    // silently — see BaseClient.navigateToPair for the same fix).
+    if (p.country_a_id == null || p.country_b_id == null) {
+      console.warn(
+        `[ranking] Skipping pattern navigation — missing numeric IDs on row ${p.country_a}/${p.country_b}.`
+      );
+      return;
+    }
     const qs = new URLSearchParams({
-      country_a: p.country_a_id ?? p.country_a,
-      country_b: p.country_b_id ?? p.country_b,
+      country_a: String(p.country_a_id),
+      country_b: String(p.country_b_id),
       length: String(p.pattern_length),
       start_a: String(p.start_year_a),
       start_b: String(p.start_year_b),
@@ -255,12 +265,22 @@ export default function RankingPage() {
       });
     }
 
-    // Lead time filter
+    // Lead time filter.
+    // T6 #299 MEDIUM fix (2026-04-19): "Early Warning" previously accepted
+    // ANY pair with gap > 0 — including purely historical pairs where A's
+    // pattern ended decades ago. Tighten to require the pattern is still
+    // running (or recent): `start_year_a + length + 2 >= current_year`.
+    const currentYear = new Date().getFullYear();
     if (leadTimeFilter !== "all") {
       result = result.filter((p) => {
         const gap = p.start_year_b - p.start_year_a;
-        if (leadTimeFilter === "concurrent") return gap === 0;
-        if (leadTimeFilter === "early-warning") return gap > 0;
+        if (leadTimeFilter === "concurrent") return Math.abs(gap) <= 1;
+        if (leadTimeFilter === "early-warning") {
+          // B preceded A AND A's pattern is still running (within 2 years
+          // of the present, which covers the trailing-data normal case).
+          const aEnd = p.start_year_a + p.pattern_length;
+          return gap > 0 && aEnd >= currentYear - 2;
+        }
         return true;
       });
     }
