@@ -81,7 +81,14 @@ export function EventsTimeline({ events, countryName }: Props) {
           className="font-data text-[10px]"
           style={{ color: "var(--qgi-text-muted)" }}
         >
-          {events.length} events (1990–present)
+          {/* T4 #297 HIGH fix (2026-04-19): header previously hardcoded
+              "1990–present". Some curated countries extend to 1932 (Ukraine
+              Holodomor era etc.). Compute bounds from the data. */}
+          {events.length} events
+          {events.length > 0 &&
+            ` (${Math.min(...events.map((e) => e.year))}–${Math.max(
+              ...events.map((e) => e.year)
+            )})`}
         </span>
       </div>
 

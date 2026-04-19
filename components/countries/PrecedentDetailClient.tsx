@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
+import { AnalogueMultiTimeline } from "@/components/countries/AnalogueMultiTimeline";
 import {
   CATEGORY_L1_MAP,
   L1_GROUPS,
@@ -47,6 +48,12 @@ interface AnalogueEntry {
   mean_corr: number;
   best_pps: number;
   avg_lead_years: number | null;
+  /** #352: best-PPS pattern length in years. Added by generate_pair_windows.py. */
+  best_pattern_length?: number;
+  /** #352: subject country's start year in the best pattern (for deep-link to S3 view). */
+  best_pattern_start_a?: number;
+  /** #352: analogue country's start year in the best pattern. */
+  best_pattern_start_b?: number;
 }
 
 interface Props {
@@ -56,6 +63,10 @@ interface Props {
   generatedAt: string | null;
   version: string;
   analogues?: AnalogueEntry[];
+  /** Enriched subject metadata (subject country's own category events). #293 */
+  enrichedSubject?: import("@/lib/types").AnalogueEnrichedSubject | null;
+  /** Enriched analogues with real per-analogue event years. #293 */
+  enrichedAnalogues?: import("@/lib/types").AnalogueEnrichedEntry[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -69,6 +80,8 @@ export function PrecedentDetailClient({
   generatedAt,
   version,
   analogues = [],
+  enrichedSubject,
+  enrichedAnalogues = [],
 }: Props) {
   const tierStyle = TIER_STYLES[country.overall_risk_tier] ?? TIER_STYLES.INDICATIVE;
   const catLabel = formatCategory(category);
@@ -224,7 +237,7 @@ export function PrecedentDetailClient({
               color: "var(--qgi-text)",
             }}
           >
-            {generateNarativeLede(country, category, catLabel, totalRecipes, activeTierCount, maxSalience, salienceColor, signalLabel, lastEventYear)}
+            {generateNarrativeLede(country, category, catLabel, totalRecipes, activeTierCount, maxSalience, salienceColor, signalLabel, lastEventYear)}
           </div>
 
         </section>
@@ -258,6 +271,21 @@ export function PrecedentDetailClient({
 
 
         {/* ============================================================ */}
+        {/*  MULTI-ROW ANALOGUE TIMELINE (ticket #293)                    */}
+        {/* ============================================================ */}
+        {enrichedSubject && enrichedAnalogues.length > 0 && (
+          <section>
+            <AnalogueMultiTimeline
+              subject={enrichedSubject}
+              analogues={enrichedAnalogues}
+              category={category}
+              categoryLabel={catLabel}
+            />
+          </section>
+        )}
+
+
+        {/* ============================================================ */}
         {/*  TOP 5 HISTORICAL ANALOGUES (from baked analogues.json)       */}
         {/* ============================================================ */}
         {analogues.length > 0 && (
@@ -280,9 +308,8 @@ export function PrecedentDetailClient({
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {analogues.map((a, i) => (
-                <Link
+                <div
                   key={a.country_b_id}
-                  href={`/countries/${a.country_b_id}`}
                   className="rounded-xl p-4 flex flex-col gap-3 transition-colors hover:border-[var(--qgi-accent)]"
                   style={{
                     backgroundColor: "var(--qgi-surface)",
@@ -300,15 +327,22 @@ export function PrecedentDetailClient({
                     </div>
                   </div>
 
-                  {/* Correlation bar */}
+                  {/* Correlation bar — T5 #298: render signed correlation
+                      with red for negative, cyan for positive. Previously
+                      clamped with Math.min which hid negative values as
+                      4%-width positive bars. */}
                   <div className="h-6 rounded flex items-center px-2" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
                     <div
                       className="h-3 rounded"
                       style={{
-                        width: `${Math.min(100, a.mean_corr * 100)}%`,
-                        backgroundColor: "var(--qgi-accent)",
+                        width: `${Math.min(100, Math.abs(a.mean_corr) * 100)}%`,
+                        backgroundColor:
+                          a.mean_corr >= 0 ? "var(--qgi-accent)" : "#f87171",
                         opacity: 0.6,
                       }}
+                      title={`Mean correlation: ${a.mean_corr.toFixed(3)}${
+                        a.mean_corr < 0 ? " (inverse)" : ""
+                      }`}
                     />
                   </div>
 
@@ -317,7 +351,10 @@ export function PrecedentDetailClient({
                     <div className="flex justify-between">
                       <span>Match</span>
                       <span className="font-semibold" style={{ color: "var(--qgi-text)" }}>
-                        {a.best_pps.toFixed(0)}
+                        {/* T5 #298: .toFixed(0) rounds decimals like 0.42
+                            to "0" — meaningless. Show 2dp so sub-integer
+                            PPS values read correctly. */}
+                        {a.best_pps.toFixed(2)}
                       </span>
                     </div>
                     <div className="flex justify-between">
@@ -332,13 +369,42 @@ export function PrecedentDetailClient({
                     )}
                   </div>
 
-                  {/* View link */}
-                  <div className="pt-2 mt-auto border-t text-center" style={{ borderColor: "var(--qgi-border)" }}>
-                    <span className="text-[10px] tracking-widest" style={{ color: "var(--qgi-accent)" }}>
-                      View country &rarr;
+                  {/* Action links — two CTAs side-by-side separated by cyan pipe (#351) */}
+                  <div
+                    className="pt-2 mt-auto border-t flex items-center justify-center gap-2"
+                    style={{ borderColor: "var(--qgi-border)" }}
+                  >
+                    <Link
+                      href={`/countries/${a.country_b_id}`}
+                      className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                      style={{ color: "var(--qgi-accent)", outlineColor: "var(--qgi-accent)" }}
+                      aria-label={`View ${a.country_b_name}'s country profile`}
+                    >
+                      View country
+                    </Link>
+                    <span
+                      aria-hidden="true"
+                      className="text-[12px] leading-none select-none"
+                      style={{ color: "var(--qgi-accent)" }}
+                    >
+                      |
                     </span>
+                    <Link
+                      href={
+                        a.best_pattern_length !== undefined &&
+                        a.best_pattern_start_a !== undefined &&
+                        a.best_pattern_start_b !== undefined
+                          ? `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}&length=${a.best_pattern_length}&start_a=${a.best_pattern_start_a}&start_b=${a.best_pattern_start_b}`
+                          : `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`
+                      }
+                      className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                      style={{ color: "var(--qgi-accent)", outlineColor: "var(--qgi-accent)" }}
+                      aria-label={`View pattern between ${country.name} and ${a.country_b_name}`}
+                    >
+                      View pattern
+                    </Link>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </section>
@@ -582,7 +648,7 @@ function MetricCard({
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
 
-function generateNarativeLede(
+function generateNarrativeLede(
   country: CountryRisk,
   category: string,
   catLabel: string,

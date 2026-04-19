@@ -394,7 +394,9 @@ export function CountryProfileClient({
           <TrajectoryChartWithLabels
             trajData={trajectoryData}
             showAll={showAllIndicators}
-            defaultVisibleIndices={new Set([0, 1, 3])}
+            /* T4 #297: header says "Top 3" but the set selected indices
+               0, 1, 3 (i.e. 1st, 2nd, 4th). Corrected to 0, 1, 2. */
+            defaultVisibleIndices={new Set([0, 1, 2])}
           />
         </section>
       )}
@@ -874,7 +876,12 @@ function indicatorTrajectoryOption(
     const color = INDICATOR_COLORS[i % INDICATOR_COLORS.length];
     const z = defaultVisibleIndices.has(i) ? 3 : 1;
 
-    const normalizedAll = normalizeMinMax(ind.data.map((v) => v ?? 0));
+    // T4 #297 HIGH fix (2026-04-19): do NOT coerce nulls to 0 before
+    // normalizing. `normalizeMinMax` already passes nulls through and ECharts
+    // with `connectNulls: false` renders gaps correctly. Coercing nulls to 0
+    // produced false zero-dips for sparse indicators (Lebanon Inflation
+    // 49/67 null years became a floor of 0, not a gap).
+    const normalizedAll = normalizeMinMax(ind.data);
 
     if (ind.predicted_from === undefined) {
       // No predicted split — single solid series

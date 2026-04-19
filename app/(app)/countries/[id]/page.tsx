@@ -2,6 +2,11 @@ import { getCountryRisk, loadCountryRisks } from "@/lib/country-risks";
 import { CountryProfileClient } from "@/components/countries/CountryProfileClient";
 import type { Metadata } from "next";
 
+// T16 #309 HIGH fix: country profiles re-read ~7 baked JSONs on every
+// request. Revalidate hourly (matches the cadence of the pipeline run)
+// so serverless cold-starts don't re-parse megabytes per request.
+export const revalidate = 3600;
+
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -10,9 +15,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
   const country = await getCountryRisk(id);
   const name = country?.name ?? `Country #${id}`;
+  const description = `Risk intelligence profile for ${name}: structural indicator analysis, historical precedents, and analogues from 197 countries of World Bank data.`;
+  const canonical = `https://qgintelligence.com/countries/${id}`;
+  // T19 #312: per-page openGraph + twitter + canonical so country profiles
+  // are share-worthy and indexable as distinct pages (prior metadata only
+  // had title + description, so every country shared the root OG card).
   return {
     title: `${name} — QGI Intelligence`,
-    description: `Risk intelligence profile for ${name} based on historical precedent analysis.`,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      title: `${name} — QGI Intelligence`,
+      description,
+      url: canonical,
+      siteName: "QGI Intelligence",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} — QGI Intelligence`,
+      description,
+    },
   };
 }
 

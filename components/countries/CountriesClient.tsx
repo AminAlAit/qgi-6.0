@@ -77,12 +77,24 @@ function salienceTo100(raw: number): number {
   return Math.min(100, Math.max(0, Math.round((raw / 0.5) * 100)));
 }
 
-/** Country name -> salience file slug (must match filenames in data/salience/) */
+/**
+ * Country name -> salience file slug (must match filenames in data/salience/).
+ *
+ * T3 #296 HIGH fix (2026-04-19): hyphens were being stripped to nothing,
+ * producing "timorleste" and "guineabissau" which miss the correct files
+ * `timor_leste.json` and `guinea_bissau.json`. Convert hyphens to
+ * underscores before the alphanumeric filter.
+ *
+ * A full switch to id-keyed salience data would require regenerating all
+ * 198 files in data/salience/, which is a pipeline-side change — parked
+ * for a future session.
+ */
 function toSlug(name: string): string {
   return name
     .toLowerCase()
     .replace(/^the\s+/, "")         // strip leading "The "
     .replace(/\bof the\b/g, "of")   // "Republic of the Congo" → "Republic of Congo"
+    .replace(/[-–—]/g, "_")         // hyphens + en/em dashes → underscore
     .replace(/\s+/g, "_")
     .replace(/[^a-z0-9_]/g, "");
 }
@@ -104,10 +116,18 @@ function computeOvr(l1Scores: Record<string, number>): number {
   return Math.min(100, Math.max(0, Math.round(ovrRaw)));
 }
 
-/** Get dominant L1 (highest scoring) */
-function getDominantL1(l1Scores: Record<string, number>): L1Id {
-  let best: L1Id = "A";
-  let bestVal = -1;
+/**
+ * Get dominant L1 (highest scoring).
+ *
+ * T3 #296 MEDIUM fix: previously returned "A" (POL) when all scores were
+ * zero (which is the default for every non-curated country with no salience
+ * file), painting every uncurated country with a misleading "POL" label.
+ * Now returns null when no positive score exists; caller renders a neutral
+ * placeholder.
+ */
+function getDominantL1(l1Scores: Record<string, number>): L1Id | null {
+  let best: L1Id | null = null;
+  let bestVal = 0;
   for (const id of L1_IDS) {
     const v = l1Scores[id] ?? 0;
     if (v > bestVal) {
@@ -212,13 +232,31 @@ export function CountriesClient({
     return arr;
   }, [filtered, sortBy]);
 
+  /**
+   * T3 #296 HIGH fix: tier chip counts were computed over unfiltered
+   * `countries` so numbers stayed flat even after the user searched. Now
+   * compute over a search-filtered set (but NOT tier-filtered — otherwise
+   * switching tiers would always show 0 or 1 outside the current tier).
+   */
   const tierCounts = useMemo(() => {
-    const counts: Record<string, number> = { ALL: countries.length };
-    for (const c of countries) {
+    let base = enriched;
+    if (search) {
+      const q = search.toLowerCase();
+      base = base.filter(
+        (c) =>
+          c.name.toLowerCase().includes(q) ||
+          c.alpha_2.toLowerCase().includes(q)
+      );
+    }
+    if (l1Filter) {
+      base = base.filter((c) => c.l1Scores[l1Filter] >= l1MinScore);
+    }
+    const counts: Record<string, number> = { ALL: base.length };
+    for (const c of base) {
       counts[c.overall_risk_tier] = (counts[c.overall_risk_tier] ?? 0) + 1;
     }
     return counts;
-  }, [countries]);
+  }, [enriched, search, l1Filter, l1MinScore]);
 
   const curatedCount = useMemo(
     () => countries.filter((c) => c.curated).length,
@@ -247,12 +285,16 @@ export function CountriesClient({
       <div className="flex flex-col gap-4 mb-6">
         {/* Row 1: Search + Sort */}
         <div className="flex flex-col sm:flex-row gap-3">
+          <label htmlFor="country-search" className="sr-only">
+            Search countries
+          </label>
           <input
+            id="country-search"
             type="text"
             placeholder="Search countries..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="px-4 py-2 rounded border text-sm flex-1 max-w-xs outline-none transition-colors focus:border-[var(--qgi-accent)]"
+            className="px-4 py-2 rounded border text-sm flex-1 max-w-xs outline-none transition-colors focus:border-[var(--qgi-accent)] focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
             style={{
               backgroundColor: "var(--qgi-surface)",
               borderColor: "var(--qgi-border)",
@@ -260,10 +302,14 @@ export function CountriesClient({
             }}
           />
 
+          <label htmlFor="country-sort" className="sr-only">
+            Sort countries
+          </label>
           <select
+            id="country-sort"
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value as SortOption)}
-            className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
+            className="px-3 py-2 rounded border text-xs outline-none cursor-pointer focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
             style={{
               backgroundColor: "var(--qgi-surface)",
               borderColor: "var(--qgi-border)",
@@ -339,10 +385,11 @@ export function CountriesClient({
         </div>
       </div>
 
-      {/* Results count */}
+      {/* Results count — aria-live so screen readers announce filter updates (T15 #308) */}
       <div
         className="text-xs mb-4"
         style={{ color: "var(--qgi-text-dim)" }}
+        aria-live="polite"
       >
         Showing {sorted.length} of {countries.length}
         {l1Filter && (
@@ -383,19 +430,25 @@ export function CountriesClient({
 interface EnrichedCountry extends CountryEntry {
   l1Scores: Record<L1Id, number>;
   ovr: number;
-  dominantL1: L1Id;
+  dominantL1: L1Id | null;
 }
 
 function CountryCard({ country }: { country: EnrichedCountry }) {
   const style = TIER_STYLES[country.overall_risk_tier];
-  const dominantColor = L1_META[country.dominantL1].color;
+  // T3 #296: dominantL1 is null when no salience data — render neutral
+  // colour + "No salience data" label instead of defaulting to "POL".
+  const dominantColor = country.dominantL1
+    ? L1_META[country.dominantL1].color
+    : "var(--qgi-text-dim)";
 
   // Get top category from S-tier
   const topCats = country.tiers?.S?.top_categories ?? [];
   const topCat = topCats[0];
 
   // Top domain label
-  const topDomainLabel = L1_META[country.dominantL1].full;
+  const topDomainLabel = country.dominantL1
+    ? L1_META[country.dominantL1].full
+    : "No salience data";
 
   return (
     <Link
@@ -443,15 +496,29 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
           </div>
         </div>
 
-        {/* Verified badge */}
+        {/* Verified badge — T15 #308: role=img + aria-label so screen readers announce state */}
         <div className="shrink-0" title={country.curated ? "Events curated by QGI analysts" : "Curation pending"}>
           {country.curated ? (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              role="img"
+              aria-label="Curated country — events verified by QGI analysts"
+            >
               <circle cx="12" cy="12" r="10" fill="rgba(52, 211, 153, 0.15)" stroke="#34d399" strokeWidth="1.5" />
               <path d="M8 12.5l2.5 2.5L16 9.5" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           ) : (
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              role="img"
+              aria-label="Uncurated country — event corpus not yet verified"
+            >
               <circle cx="12" cy="12" r="10" fill="rgba(74, 98, 128, 0.15)" stroke="#4a6280" strokeWidth="1.5" />
               <rect x="10.5" y="7" width="3" height="6" rx="0.5" fill="#4a6280" />
               <circle cx="12" cy="16" r="1.5" fill="#4a6280" />

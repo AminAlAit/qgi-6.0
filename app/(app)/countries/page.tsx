@@ -1,38 +1,86 @@
-import fs from "fs";
 import path from "path";
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { CountriesClient } from "@/components/countries/CountriesClient";
+import type { Metadata } from "next";
 
-export const metadata = {
+// T16 #309 HIGH fix: revalidate every hour so we don't re-read 198 files
+// + re-parse the 2.6 MB country-risks.json on every request. The salience
+// files rarely change intra-day.
+export const revalidate = 3600;
+
+// T19 #312: add canonical + openGraph so /countries has a proper social
+// preview rather than inheriting the root layout defaults.
+export const metadata: Metadata = {
   title: "Countries — QGI Intelligence",
-  description: "Browse country risk profiles powered by historical precedent analysis.",
+  description:
+    "Browse country risk profiles powered by historical precedent analysis across 197 countries.",
+  alternates: { canonical: "https://qgintelligence.com/countries" },
+  openGraph: {
+    title: "Countries — QGI Intelligence",
+    description:
+      "Browse country risk profiles powered by historical precedent analysis across 197 countries.",
+    url: "https://qgintelligence.com/countries",
+    siteName: "QGI Intelligence",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Countries — QGI Intelligence",
+    description:
+      "Browse country risk profiles powered by historical precedent analysis.",
+  },
 };
 
-/** Load all salience L1 scores server-side and pass to client. */
-function loadAllSalienceScores(): Record<string, Record<string, number>> {
+/**
+ * Load all salience L1 scores server-side.
+ *
+ * T16 #309 HIGH fix: was `fs.readdirSync` + `fs.readFileSync` in a 198-file
+ * loop on every request — blocked the event loop and dominated TTFB on
+ * /countries. Now uses async `fs/promises`, parallelizes file reads, and
+ * memoizes at module scope keyed by `_index.json` mtime so repeated
+ * requests within an ISR window skip the work entirely.
+ */
+let _salienceCache:
+  | { mtimeMs: number; data: Record<string, Record<string, number>> }
+  | null = null;
+
+async function loadAllSalienceScores(): Promise<
+  Record<string, Record<string, number>>
+> {
+  const fs = await import("fs/promises");
   const salienceDir = path.join(process.cwd(), "data", "salience");
-  const map: Record<string, Record<string, number>> = {};
 
   try {
-    const files = fs.readdirSync(salienceDir);
-    for (const file of files) {
-      if (file === "_index.json" || !file.endsWith(".json")) continue;
-      const slug = file.replace(".json", "");
-      try {
-        const raw = fs.readFileSync(path.join(salienceDir, file), "utf-8");
-        const data = JSON.parse(raw);
-        if (data.l1_scores) {
-          map[slug] = data.l1_scores;
-        }
-      } catch {
-        // Skip malformed files
-      }
+    // Use _index.json mtime as the cache key — salience files are written
+    // as a batch so they share a mtime, and _index.json is always present.
+    const indexStat = await fs.stat(path.join(salienceDir, "_index.json"));
+    if (_salienceCache && _salienceCache.mtimeMs === indexStat.mtimeMs) {
+      return _salienceCache.data;
     }
-  } catch {
-    // Salience dir not available
-  }
 
-  return map;
+    const files = (await fs.readdir(salienceDir)).filter(
+      (f) => f !== "_index.json" && f.endsWith(".json")
+    );
+    const entries = await Promise.all(
+      files.map(async (file) => {
+        try {
+          const raw = await fs.readFile(path.join(salienceDir, file), "utf-8");
+          const data = JSON.parse(raw) as { l1_scores?: Record<string, number> };
+          if (!data.l1_scores) return null;
+          return [file.replace(".json", ""), data.l1_scores] as const;
+        } catch {
+          return null; // skip malformed files
+        }
+      })
+    );
+    const map: Record<string, Record<string, number>> = {};
+    for (const e of entries) if (e) map[e[0]] = e[1];
+
+    _salienceCache = { mtimeMs: indexStat.mtimeMs, data: map };
+    return map;
+  } catch {
+    return _salienceCache?.data ?? {};
+  }
 }
 
 export default async function CountriesPage() {
@@ -71,7 +119,7 @@ export default async function CountriesPage() {
     );
   }
 
-  const salienceMap = loadAllSalienceScores();
+  const salienceMap = await loadAllSalienceScores();
 
   return <CountriesClient countries={countries} salienceMap={salienceMap} />;
 }
