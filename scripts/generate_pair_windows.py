@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """
-generate_pair_windows.py  —  Ticket #352
+generate_pair_windows.py  —  Tickets #352, #358
 
-Runs two Athena queries against qgi_data.patterns and produces two artefacts:
+Runs THREE Athena queries against qgi_data.patterns and produces two artefacts:
 
 1.  data/pair-windows/{country_a_id}.json   (one file per country_a_id)
       keyed by country_b_id, each value has
-        - "top" : top-N windows for that pair (sorted by PPS desc)
+        - "top" : up to TOP_N_PER_PAIR PPS-ranked windows + up to
+                  TOP_K_PER_END_YEAR windows per distinct end-year anchored
+                  to analogue event years (deduplicated, sorted by PPS desc)
         - "hist": length-histogram (length -> count)
       Schema matches what /api/patterns/windows/route.ts expects as the baked
       fallback.
@@ -18,6 +20,28 @@ Runs two Athena queries against qgi_data.patterns and produces two artefacts:
         - best_pattern_length
         - best_pattern_start_a
         - best_pattern_start_b
+
+## #358 change (2026-04-19): event-year-anchored sampling
+
+The #352 version fetched only the top-K PPS-ranked windows per (subject,
+analogue) pair. For subjects like Bahrain, that top-K was dominated by
+windows ending 2021-2027 (the subject's recent trajectory). Old-event
+analogues (Russia/Helsinki 1987) had no window anywhere near their event
+year in the top-K, so the downstream enrichment produced pair_start_b=null
+and the frontend fell back to a 15-year event-anchored approximation.
+
+The fix: add Query 3 which selects the top-K patterns per
+(country_a_id, country_b_id, end_year) triple, across every end-year in
+[1950, CURRENT_YEAR]. Python-side, we load curated-event years per
+country (from qgi-data/events/curated/*.json), then keep only windows
+whose end-year matches an actual event year for the analogue country.
+Downstream consumers (enrich_analogues_common_length.py,
+AnalogueMultiTimeline) pick up the event-aligned windows automatically
+because they're in the same "top" array the script already produces.
+
+Execution is GATED on #241 (FAOSTAT integration) landing — don't run
+until the WB + FAOSTAT combined pattern table is ready, per 2026-04-19
+directive. Code lands dormant until then.
 
 One-shot script — run after any pipeline refresh that updates qgi_data.patterns.
 
@@ -33,9 +57,11 @@ Usage:
 from __future__ import annotations
 import argparse
 import json
+import re
 import time
 import sys
 import os
+from datetime import datetime
 from pathlib import Path
 from collections import defaultdict
 import boto3
@@ -43,6 +69,23 @@ import boto3
 WORKGROUP = "QGI-Lambda-Workgroup"
 DATABASE = "qgi_data"
 TOP_N_PER_PAIR = 20
+
+# #358: in addition to top-N by PPS per pair, also keep top-K windows per
+# (country_a_id, country_b_id, end_year) triple. End-year is start_year_b +
+# length. This ensures that every event year (from curated events) has at
+# least K pattern candidates available for the enrichment script to
+# choose from, eliminating the 15-year event-anchored fallback for rows
+# where the enriched set used to be null.
+TOP_K_PER_END_YEAR = 3
+
+# Earliest event year worth indexing (QGI curated events rarely predate
+# 1950 — pre-WWII coverage is sparse across most countries). Also caps
+# the Athena scan volume.
+EVENT_YEAR_FLOOR = 1950
+# Upper bound: we refuse analogue bars extending past the subject's NOW
+# marker anyway (see enrich_analogues_common_length.py CURRENT_YEAR
+# guard). Keeping the query under this ceiling avoids wasted rows.
+CURRENT_YEAR = datetime.now().year
 
 SQL_TOP_N = f"""
 SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
@@ -63,6 +106,24 @@ SQL_HIST = f"""
 SELECT country_a_id, country_b_id, length, COUNT(*) AS cnt
 FROM {DATABASE}.patterns
 GROUP BY country_a_id, country_b_id, length
+"""
+
+# #358: top-K windows per (a, b, end_year) triple. Restricted to
+# [EVENT_YEAR_FLOOR, CURRENT_YEAR] so the scan stays bounded.
+SQL_TOP_K_PER_END_YEAR = f"""
+SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
+       indicator_count, avg_correlation, pattern_power_score
+FROM (
+  SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
+         indicator_count, avg_correlation, pattern_power_score,
+         ROW_NUMBER() OVER (
+           PARTITION BY country_a_id, country_b_id, (start_year_b + length)
+           ORDER BY pattern_power_score DESC
+         ) AS rn_end
+  FROM {DATABASE}.patterns
+  WHERE (start_year_b + length) BETWEEN {EVENT_YEAR_FLOOR} AND {CURRENT_YEAR}
+)
+WHERE rn_end <= {TOP_K_PER_END_YEAR}
 """
 
 
@@ -117,6 +178,82 @@ def num(s):
             return None
 
 
+# #358: curated-events loader. Same conventions as
+# .tmp/decisions-form/_enrich_analogues.py (sluggify, apply known
+# overrides, strip leading "the_").
+
+_SLUG_OVERRIDES = {
+    "democratic_republic_of_the_congo": "democratic_republic_of_congo",
+    "republic_of_the_congo": "republic_of_congo",
+    "turkey": "turkiye",
+}
+
+
+def _slug(name: str | None) -> str | None:
+    if not name:
+        return None
+    s = name.lower().replace("'", "").replace(",", "").replace(".", "").replace("&", "and")
+    s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
+    return s
+
+
+def load_country_event_years(curated_dir: Path) -> dict[str, set[int]]:
+    """Map country slug → set of event years from qgi-data curated events.
+
+    Returns a mapping like {"rwanda": {1959, 1962, 1994, ...}, ...} which
+    the main() loop uses to filter the (a, b, end_year) result rows to
+    only end-years that correspond to real events for country_b.
+
+    Returns an empty dict (with a warning) if curated_dir is missing —
+    the script still runs but the event-aligned Query 3 pass produces
+    nothing beyond the top-N PPS pass. This keeps the script usable in
+    contexts without the qgi-data sibling repo on disk.
+    """
+    if not curated_dir.is_dir():
+        print(f"[events] curated dir not found: {curated_dir} — skipping event-year index")
+        return {}
+
+    out: dict[str, set[int]] = {}
+    for p in sorted(curated_dir.glob("*.json")):
+        if p.name.startswith("_"):
+            continue
+        try:
+            with p.open("r", encoding="utf-8") as f:
+                events = json.load(f)
+        except Exception as exc:  # noqa: BLE001
+            print(f"[events] skipping {p.name}: {exc}", file=sys.stderr)
+            continue
+        years = set()
+        for e in events if isinstance(events, list) else []:
+            if not isinstance(e, dict):
+                continue
+            y = e.get("year")
+            if isinstance(y, int) and EVENT_YEAR_FLOOR <= y <= CURRENT_YEAR:
+                years.add(y)
+        if years:
+            out[p.stem] = years
+    print(f"[events] loaded event-year index for {len(out)} countries")
+    return out
+
+
+def resolve_country_slug(name: str | None, index: dict[str, set[int]]) -> str | None:
+    """Match a country_b_name to a slug present in the event-year index.
+    Uses the same overrides as the upstream enricher; returns None when
+    no slug matches (script caller skips that row).
+    """
+    s = _slug(name)
+    if not s:
+        return None
+    if s in index:
+        return s
+    if s in _SLUG_OVERRIDES and _SLUG_OVERRIDES[s] in index:
+        return _SLUG_OVERRIDES[s]
+    s2 = re.sub(r"^the_", "", s)
+    if s2 in index:
+        return s2
+    return None
+
+
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--bucket", required=True, help="S3 bucket for Athena query results (e.g. qgi-data-lake-222222222222)")
@@ -128,17 +265,33 @@ def main():
     p.add_argument("--analogues-enriched-path", default=None,
                    help="Path to analogues-enriched.json. Default: qgi-frontend/data/analogues-enriched.json")
     p.add_argument("--dry-run", action="store_true", help="Run queries + compute, but do not write files")
+    p.add_argument(
+        "--curated-events-dir",
+        default=None,
+        help="Dir containing qgi-data curated events JSONs (default: qgi-data/events/curated/ relative to repo root). "
+        "Used by #358 event-year filter. If missing, the event-aligned Query 3 is skipped and the script "
+        "falls back to the #352 top-N-by-PPS-only output.",
+    )
+    p.add_argument(
+        "--skip-event-aligned",
+        action="store_true",
+        help="Skip Query 3 (event-aligned windows per #358). Useful for faster dev iterations "
+        "or when you specifically want the old #352-shape output.",
+    )
     args = p.parse_args()
 
     repo_root = Path(__file__).resolve().parents[2]
     pair_windows_dir = Path(args.pair_windows_dir or (repo_root / "qgi-frontend" / "data" / "pair-windows"))
     analogues_path = Path(args.analogues_path or (repo_root / "qgi-frontend" / "data" / "analogues.json"))
     analogues_enriched_path = Path(args.analogues_enriched_path or (repo_root / "qgi-frontend" / "data" / "analogues-enriched.json"))
+    curated_events_dir = Path(args.curated_events_dir or (repo_root / "qgi-data" / "events" / "curated"))
 
     print(f"repo_root             = {repo_root}")
     print(f"pair_windows_dir      = {pair_windows_dir}")
     print(f"analogues_path        = {analogues_path}")
     print(f"enriched analogues    = {analogues_enriched_path}")
+    print(f"curated_events_dir    = {curated_events_dir}")
+    print(f"skip_event_aligned    = {args.skip_event_aligned}  (#358)")
     print(f"dry_run               = {args.dry_run}")
 
     athena = boto3.client("athena", region_name=args.region)
@@ -191,6 +344,95 @@ def main():
         if None in (l, cnt):
             continue
         out[ca][cb]["hist"][str(int(l))] = int(cnt)
+
+    # ============================
+    # Query 3 (#358): top-K windows per (a, b, end_year) triple, filtered
+    # to end-years matching real curated events for country_b. Merges
+    # into out[ca][cb]["top"] (deduplicated on (l, sa, sb)).
+    # ============================
+    if args.skip_event_aligned:
+        print("\n=== Query 3 skipped (--skip-event-aligned) ===")
+    else:
+        print("\n=== Query 3: event-aligned windows per (a, b, end_year) ===")
+        event_years_by_slug = load_country_event_years(curated_events_dir)
+
+        # Build reverse map: country_b_id → set of event years. Needs the
+        # country_b_name → country_b_id mapping, which lives in the legacy
+        # analogues.json (every country ever surfaced as an analogue has
+        # a (country_b_id, country_b_name) there). Load it once.
+        id_to_event_years: dict[str, set[int]] = {}
+        if analogues_path.exists():
+            with analogues_path.open("r", encoding="utf-8") as f:
+                _legacy = json.load(f)
+            seen_ids: set[str] = set()
+            for _ca, _cats in _legacy.items():
+                for _cat, _entries in _cats.items():
+                    for _entry in _entries:
+                        _cb_id = _entry.get("country_b_id")
+                        _cb_name = _entry.get("country_b_name")
+                        if _cb_id is None or str(_cb_id) in seen_ids:
+                            continue
+                        slug = resolve_country_slug(_cb_name, event_years_by_slug)
+                        if slug is None:
+                            continue
+                        id_to_event_years[str(_cb_id)] = event_years_by_slug[slug]
+                        seen_ids.add(str(_cb_id))
+        print(f"[events] event-year index resolved for {len(id_to_event_years)} analogue country_b_ids")
+
+        event_rows = run_query(athena, SQL_TOP_K_PER_END_YEAR, args.bucket)
+        added = 0
+        skipped_not_event_year = 0
+        skipped_dupe = 0
+        skipped_no_event_data = 0
+        for r in event_rows:
+            ca = str(r.get("country_a_id"))
+            cb = str(r.get("country_b_id"))
+            l = num(r.get("length"))
+            sa = num(r.get("start_year_a"))
+            sb = num(r.get("start_year_b"))
+            ic = num(r.get("indicator_count"))
+            ac = num(r.get("avg_correlation"))
+            pps = num(r.get("pattern_power_score"))
+            if None in (l, sa, sb, ic, ac, pps):
+                continue
+            end_year = int(sb) + int(l)
+            cb_event_years = id_to_event_years.get(cb)
+            if cb_event_years is None:
+                # Country_b has no curated events. Skip — nothing to align to.
+                skipped_no_event_data += 1
+                continue
+            # Keep windows whose end-year is within ±2 of any event year.
+            # The ±2 tolerance matches the enrichment script's end_tolerance.
+            if not any(abs(end_year - ey) <= 2 for ey in cb_event_years):
+                skipped_not_event_year += 1
+                continue
+            entry = {
+                "l": int(l), "sa": int(sa), "sb": int(sb),
+                "ic": int(ic), "ac": float(ac), "pps": float(pps),
+            }
+            # Deduplicate against existing top list (Query 1 may already
+            # have this exact window if it's both PPS-top and event-aligned).
+            existing = out[ca][cb]["top"]
+            if any(
+                e["l"] == entry["l"] and e["sa"] == entry["sa"] and e["sb"] == entry["sb"]
+                for e in existing
+            ):
+                skipped_dupe += 1
+                continue
+            existing.append(entry)
+            added += 1
+
+        # Re-sort each pair's top list by PPS desc (new event-aligned
+        # entries may have lower PPS than the top-N ones, so they go to
+        # the end of the list — but order by PPS for consistency).
+        for ca, partners in out.items():
+            for cb, data in partners.items():
+                data["top"].sort(key=lambda x: -x["pps"])
+
+        print(f"[events] added {added} event-aligned windows to pair-windows output")
+        print(f"[events]   rejected: {skipped_not_event_year} not near any event year")
+        print(f"[events]   rejected: {skipped_dupe} already present (dupe of top-N)")
+        print(f"[events]   rejected: {skipped_no_event_data} country_b has no curated events")
 
     # ============================
     # Write pair-windows files
