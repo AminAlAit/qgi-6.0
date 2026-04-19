@@ -423,20 +423,16 @@ resource "aws_iam_role_policy" "cross_account_ops" {
         Action   = ["dynamodb:Scan", "dynamodb:Query", "dynamodb:DeleteItem"]
         Resource = "arn:aws:dynamodb:${var.region}:${var.aws_account_id}:table/qgi-*"
       },
-      # EC2 — manage indicator fetcher instance
-      {
-        Effect = "Allow"
-        Action = ["ec2:StartInstances", "ec2:StopInstances", "ec2:DescribeInstances",
-        "ec2:DescribeInstanceStatus"]
-        Resource = "*"
-      },
-      # SSM — send commands and check status
-      {
-        Effect = "Allow"
-        Action = ["ssm:SendCommand", "ssm:GetCommandInvocation",
-        "ssm:ListCommandInvocations", "ssm:DescribeInstanceInformation"]
-        Resource = "*"
-      },
+      # T12 #305 HIGH fix (2026-04-19): EC2 + SSM permission blocks removed.
+      # These granted Resource="*" for ec2:StartInstances, ec2:StopInstances,
+      # ssm:SendCommand — broad host-level access that pre-dates the #FAR-1
+      # migration to Fargate Spot. The EC2 indicator-fetcher instance
+      # (targeted by these perms) was deleted in 2026-04-08 and the role
+      # has not needed these capabilities since. Leaving them on was a
+      # dead-permission lateral-movement risk.
+      #
+      # If the indicator fetcher ever needs to talk to a non-Fargate worker
+      # again, scope permissions to that specific resource ARN, not "*".
     ]
   })
 }

@@ -231,8 +231,20 @@ resource "aws_batch_job_definition" "scdi_finder" {
     image   = "${var.management_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-b-scdi-finder:latest"
     command = []
 
-    jobRoleArn      = var.batch_job_role_arn
-    executionRoleArn = var.batch_job_role_arn
+    # T12 #305 HIGH fix (2026-04-19): executionRoleArn was erroneously set
+    # to the task role (batch_job_role_arn). AWS Batch execution role and
+    # task role serve different IAM trust principals — the execution role
+    # is assumed by ECS (or Fargate) to pull the image + ship CloudWatch
+    # logs, while the task role is assumed by the code INSIDE the
+    # container. Conflating them gives the container the image-pull and
+    # logging permissions as well, expanding its blast radius.
+    #
+    # The fargate_execution role already exists in the iam module with the
+    # correct trust (ecs-tasks.amazonaws.com) + AmazonECSTaskExecutionRolePolicy.
+    # Reused here for the scdi-finder Batch job (EC2-backed) — AWS uses
+    # the same trust principal for Batch-on-EC2 and Batch-on-Fargate.
+    jobRoleArn       = var.batch_job_role_arn
+    executionRoleArn = var.fargate_execution_role_arn
 
     resourceRequirements = [
       { type = "VCPU",   value = "2" },
