@@ -3,11 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About — QGI Intelligence",
+  title: "About · QGI Intelligence",
   description:
-    "QGI Intelligence is built by Amin Al-Ait — a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
+    "QGI Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
   openGraph: {
-    title: "About — QGI Intelligence",
+    title: "About · QGI Intelligence",
     description:
       "Meet the founder. QGI Intelligence bridges data engineering and geopolitical risk.",
     url: "https://qgintelligence.com/about",
@@ -22,19 +22,22 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "About — QGI Intelligence",
+    title: "About · QGI Intelligence",
     description: "Meet the founder of QGI Intelligence.",
   },
 };
 
-/* Founder page (Q2 decision — ship with full bio + photo + LinkedIn).
+/* Founder page (Q2 decision, ship with full bio + photo + LinkedIn).
    Bio content provided by Amin in decisions-form 2026-04-18 Q2 comment,
    polished into prose here.
 
-   2026-04-19: moved from `app/(app)/about` → `app/about` so the page
+   2026-04-19: moved from app/(app)/about to app/about so the page
    lives in the PUBLIC marketing surface (no sidebar/dashboard chrome).
    Users landing from the header "About" nav link now see a clean
-   standalone page rather than being dropped into the app shell. */
+   standalone page rather than being dropped into the app shell.
+
+   2026-04-19 (later): purged all em-dashes from the visible bio
+   per user. Copy now uses commas, colons, and period breaks. */
 
 export default function AboutPage() {
   return (
@@ -178,17 +181,17 @@ export default function AboutPage() {
           >
             <p>
               I have always been drawn to two things that rarely meet: the quiet,
-              measurable <em>behavior of countries</em> — the indicators, the
-              trajectories, the trends hiding under the headlines — and the loud, human
-              shape of <em>geopolitics</em> — the crises, the transitions, the inflection
-              points that redraw the map.
+              measurable <em>behavior of countries</em>, the indicators, the trajectories,
+              the trends hiding under the headlines, and the loud, human shape of{" "}
+              <em>geopolitics</em>, the crises, the transitions, the inflection points
+              that redraw the map.
             </p>
             <p>
               My professional path has been data science and data engineering. Building
               pipelines, taming messy telemetry, shipping systems that distill noise into
               signal. For years I wondered whether the craft I practiced every day could
-              bridge into the domain I quietly read about every night — whether
-              cloud-scale data could say something honest about geopolitical risk, without
+              bridge into the domain I quietly read about every night: whether cloud-scale
+              data could say something honest about geopolitical risk, without
               overclaiming, without the pundit reflex.
             </p>
             <p>
@@ -198,14 +201,14 @@ export default function AboutPage() {
               that happened to one country in 1998 sometimes correlate with another
               country&apos;s current path, quietly, decades later. QGI systematically
               finds those correlations at scale, pairs them with a curated historical
-              record, and surfaces <em>precedents</em> — not forecasts — that analysts can
+              record, and surfaces <em>precedents</em>, not forecasts, that analysts can
               examine on the evidence.
             </p>
             <p>
               The product is open-methodology by design. The data foundation is World
               Bank, CC BY 4.0. The backtest numbers are documented, flaws and all. The
-              platform is still expanding — indicators, curated countries, partnerships —
-              and I&apos;m building it in the open, one regeneration at a time.
+              platform is still expanding: indicators, curated countries, partnerships.
+              I&apos;m building it in the open, one regeneration at a time.
             </p>
             <p>
               If any of that resonates, or if you work somewhere QGI could be useful,
