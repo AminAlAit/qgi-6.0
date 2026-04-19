@@ -29,7 +29,7 @@ export const metadata: Metadata = {
  * then pass it to the client component for filtering / sorting / pagination.
  */
 export default async function PrecedentsPage() {
-  let rows: Array<{
+  const rows: Array<{
     countryId: string;
     countryName: string;
     alpha2: string;

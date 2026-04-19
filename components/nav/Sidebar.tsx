@@ -159,11 +159,12 @@ export function Sidebar() {
   // Escape closes, and body scroll-lock while open.
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Close the drawer on route change so navigating via the menu doesn't
-  // leave the overlay sitting on top of the destination page.
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [pathname]);
+  // Close the drawer when the user taps a nav link. We used to do this
+  // via a `useEffect(() => setMobileOpen(false), [pathname])` effect, but
+  // react-hooks/set-state-in-effect flags the unconditional setState as
+  // an anti-pattern (cascading renders). The event-handler path is the
+  // React-preferred way to close a controlled UI surface on navigation.
+  const closeOnNavigate = () => setMobileOpen(false);
 
   // Escape to dismiss.
   useEffect(() => {
@@ -247,6 +248,7 @@ export function Sidebar() {
           GH#251: clickable; in-app sidebar always navigates to /base. */}
       <Link
         href="/base"
+        onClick={closeOnNavigate}
         className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
         style={{ borderColor: "var(--qgi-border)" }}
         title="Go to Base (command center)"
@@ -285,6 +287,7 @@ export function Sidebar() {
             <Link
               key={href}
               href={href}
+              onClick={closeOnNavigate}
               className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
               style={{
                 color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
