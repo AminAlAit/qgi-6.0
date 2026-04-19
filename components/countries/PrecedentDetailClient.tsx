@@ -84,6 +84,12 @@ interface Props {
   enrichedSubject?: import("@/lib/types").AnalogueEnrichedSubject | null;
   /** Enriched analogues with real per-analogue event years. #293 */
   enrichedAnalogues?: import("@/lib/types").AnalogueEnrichedEntry[];
+  /** #354: canonical pattern length L for this (subject, category). */
+  canonicalLength?: number;
+  /** #354: original analogue count before length-L filter (for footnote). */
+  enrichmentOriginalCount?: number;
+  /** #354: count of analogues dropped because no length-L window exists. */
+  enrichmentDroppedCount?: number;
 }
 
 /* ------------------------------------------------------------------ */
@@ -99,6 +105,9 @@ export function PrecedentDetailClient({
   analogues = [],
   enrichedSubject,
   enrichedAnalogues = [],
+  canonicalLength,
+  enrichmentOriginalCount,
+  enrichmentDroppedCount,
 }: Props) {
   const tierStyle = TIER_STYLES[country.overall_risk_tier] ?? TIER_STYLES.INDICATIVE;
   const catLabel = formatCategory(category);
@@ -303,6 +312,9 @@ export function PrecedentDetailClient({
               analogues={enrichedAnalogues}
               category={category}
               categoryLabel={catLabel}
+              canonicalLength={canonicalLength}
+              originalCount={enrichmentOriginalCount}
+              droppedCount={enrichmentDroppedCount}
             />
           </section>
         )}

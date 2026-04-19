@@ -38,8 +38,23 @@ interface Props {
   category: string;
   /** Label form of the category for display (e.g., "Civil War & Insurgency"). */
   categoryLabel: string;
-  /** Approximated lookback window in years (default 15). */
+  /**
+   * #354: canonical pattern length L for this (subject, category).
+   * All analogue rows should use `pair_length ≈ L ± 2`. When not provided
+   * (legacy data or a row missing from the enrichment), falls back to the
+   * patternWindowYears approximation.
+   */
+  canonicalLength?: number;
+  /** Pre-#354 legacy fallback window (default 15 years). */
   patternWindowYears?: number;
+  /**
+   * #354: count of analogues that were dropped because no length-L
+   * pattern existed for them. Surfaced in a footnote when > 0 so users
+   * know the panel isn't cherry-picked.
+   */
+  droppedCount?: number;
+  /** #354: total analogues originally available (before length-L filter). */
+  originalCount?: number;
 }
 
 const DEFAULT_PATTERN_WINDOW = 15;
@@ -60,7 +75,10 @@ export function AnalogueMultiTimeline({
   // category prop reserved for future per-category filtering — suppress lint.
   category: _category,
   categoryLabel,
+  canonicalLength,
   patternWindowYears = DEFAULT_PATTERN_WINDOW,
+  droppedCount = 0,
+  originalCount,
 }: Props) {
   // Filter to analogues that have an event year (from qgi-data enrichment)
   const withEvents = analogues.filter(
@@ -70,23 +88,65 @@ export function AnalogueMultiTimeline({
     (a) => a.event_year_b === null || a.event_year_b === undefined
   );
 
-  // Helper — resolve each analogue's pattern [start, end] (real if #352 fields
-  // present, else 15-yr approximation ending at the event year).
+  /**
+   * #354 Position C: resolve each analogue's pattern [start, end].
+   *
+   * Priority:
+   *   1. `pair_start_b` + `pair_length` — the length-L common window from
+   *      `enrich_analogues_common_length.py` (2026-04-19+). All rows on a
+   *      single panel SHOULD have this and SHOULD share a length ≈ L±2.
+   *   2. `best_pattern_start_b` + `best_pattern_length` — legacy per-pair
+   *      best-PPS window. Kept for backwards compatibility with
+   *      analogues-enriched.json files written before #354.
+   *   3. Event-year-centred approximation — fallback when neither above.
+   */
   const resolveAnaloguePattern = (a: (typeof analogues)[number]) => {
+    if (a.pair_start_b !== undefined && a.pair_length !== undefined) {
+      return {
+        start: a.pair_start_b,
+        end: a.pair_start_b + a.pair_length,
+        length: a.pair_length,
+        isReal: true,
+        isCommonLength: true,
+        eventInWindow: a.event_in_window ?? false,
+        subjectStartA: a.pair_start_a,
+      };
+    }
     if (a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined) {
       return {
         start: a.best_pattern_start_b,
         end: a.best_pattern_start_b + a.best_pattern_length,
+        length: a.best_pattern_length,
         isReal: true,
+        isCommonLength: false,
+        eventInWindow:
+          a.event_year_b !== null &&
+          a.event_year_b !== undefined &&
+          a.event_year_b >= a.best_pattern_start_b &&
+          a.event_year_b <= a.best_pattern_start_b + a.best_pattern_length,
+        subjectStartA: a.best_pattern_start_a,
       };
     }
     const ey = a.event_year_b ?? CURRENT_YEAR;
-    return { start: ey - patternWindowYears, end: ey, isReal: false };
+    return {
+      start: ey - patternWindowYears,
+      end: ey,
+      length: patternWindowYears,
+      isReal: false,
+      isCommonLength: false,
+      eventInWindow: true, // event defines the window by construction
+      subjectStartA: undefined,
+    };
   };
 
   // Whether every analogue has real pattern data (controls the "approx" disclaimer)
   const allReal = withEvents.every(
-    (a) => a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined
+    (a) =>
+      (a.pair_start_b !== undefined && a.pair_length !== undefined) ||
+      (a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined)
+  );
+  const allCommonLength = withEvents.every(
+    (a) => a.pair_start_b !== undefined && a.pair_length !== undefined
   );
 
   // Compute axis range — include event markers + every pattern window + padding
@@ -129,7 +189,18 @@ export function AnalogueMultiTimeline({
   const ticks: number[] = [];
   for (let y = firstTick; y <= maxYear; y += 10) ticks.push(y);
 
-  const subjectStart = CURRENT_YEAR - patternWindowYears;
+  /**
+   * #354: subject window length.
+   *
+   * When `canonicalLength` is available (post-#354 enrichment), the
+   * subject row extends back `canonicalLength` years from NOW. Each
+   * analogue row's subject portion (if we decide to show one per row
+   * later) is `pair_start_a` to `pair_start_a + pair_length`, which
+   * shifts per row — but the single top-level subject bar uses the
+   * canonical length as a representative window.
+   */
+  const subjectWindow = canonicalLength ?? patternWindowYears;
+  const subjectStart = CURRENT_YEAR - subjectWindow;
 
   return (
     <div
@@ -146,11 +217,19 @@ export function AnalogueMultiTimeline({
         <div
           className="text-[9px] tracking-[0.1em] uppercase font-mono"
           style={{ color: "var(--qgi-text-muted)" }}
-          title="Analogue pattern windows from qgi_data.patterns (best-PPS per pair). Event markers from qgi-data/events/curated/. Subject window is a 15-year recent-trajectory approximation."
+          title={
+            allCommonLength
+              ? `All analogue rows share pattern length ~${canonicalLength ?? "L"} years (common-length enforcement per #354). Subject row extends ${subjectWindow} years to NOW.`
+              : allReal
+                ? "Analogue pattern windows from qgi_data.patterns (per-pair best-PPS — lengths vary across rows)."
+                : "Windows ≈ 15yr fallback · Events real (qgi-data)."
+          }
         >
-          {allReal
-            ? "Patterns real (qgi_data.patterns) · Events real (qgi-data)"
-            : "Windows ≈ 15yr fallback · Events real (qgi-data)"}
+          {allCommonLength
+            ? `Common length L=${canonicalLength ?? "?"}yr · Events real`
+            : allReal
+              ? "Patterns real · Events real · Lengths vary"
+              : "Windows ≈ 15yr fallback · Events real"}
         </div>
       </div>
 
@@ -251,6 +330,10 @@ export function AnalogueMultiTimeline({
           const pw = resolveAnaloguePattern(a);
           const patternStart = pw.start;
           const patternEnd = pw.end;
+          // #354: prefer the length-L pair PPS + corr when available, else
+          // fall back to the global best-PPS fields.
+          const displayPps = a.pair_pps ?? a.best_pps;
+          const displayCorr = a.pair_avg_corr ?? a.mean_corr;
           return (
             <g
               key={`analogue-${a.country_b_id}`}
@@ -275,7 +358,8 @@ export function AnalogueMultiTimeline({
                 fill={COLOR_LABEL}
                 letterSpacing="0.08em"
               >
-                corr {(a.mean_corr * 100).toFixed(0)}% · pps {a.best_pps.toFixed(0)}
+                corr {(displayCorr * 100).toFixed(0)}% · pps {displayPps.toFixed(0)} ·{" "}
+                {pw.length}yr
               </text>
 
               {/* Analogue pattern bar — real window from qgi_data.patterns (#352) */}
@@ -302,6 +386,28 @@ export function AnalogueMultiTimeline({
                 {pw.isReal ? "" : "~"}
                 {patternStart}–{patternEnd}
               </text>
+              {/* #354: event-outside-window indicator. When the analogue's
+                  median-year event falls outside its length-L pattern, the
+                  "pattern → event" narrative breaks. Still render the star
+                  for data transparency but flag with a ⚠ glyph + muted
+                  colour so users don't read it as a clean forecast. */}
+              {pw.isReal && !pw.eventInWindow && (
+                <g>
+                  <title>
+                    Event falls outside the pattern window — interpret as retrospective
+                    analogue rather than forward forecast
+                  </title>
+                  <text
+                    x={marginLeft + 4}
+                    y={barHeight / 2 + 4}
+                    fontSize="11"
+                    fontFamily="ui-monospace, monospace"
+                    fill={COLOR_LABEL}
+                  >
+                    ⚠
+                  </text>
+                </g>
+              )}
 
               {/* Event marker (★) at event_year_b — real historical event */}
               <g transform={`translate(${xOf(eventYear)}, ${barHeight / 2})`}>
@@ -413,6 +519,24 @@ export function AnalogueMultiTimeline({
         />
         <LegendEntry color={COLOR_NOW} label={`NOW · ${CURRENT_YEAR}`} isDashed />
       </div>
+
+      {/* #354 footnote: when fewer analogues are shown than originally
+          available (because some had no length-L window), surface the
+          count so users know the panel isn't cherry-picked. */}
+      {droppedCount > 0 && originalCount && (
+        <p
+          className="mt-2 text-[10px] leading-relaxed"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Showing {withEvents.length} of {originalCount} analogues at common length L=
+          {canonicalLength ?? "?"}
+          yr ± 2. {droppedCount} analogue{droppedCount === 1 ? " was" : "s were"} dropped
+          because no pattern of this length exists for their pair with{" "}
+          {subject.country_name}. Their best-PPS matches are at different lengths and
+          aren&apos;t shown to preserve the panel&apos;s length invariant (all rows same
+          L).
+        </p>
+      )}
     </div>
   );
 }
