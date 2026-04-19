@@ -117,7 +117,10 @@ export function BriefingExport({ signal }: Props) {
       style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
     >
       <div className="flex items-center justify-between mb-3">
-        <div className="text-[9px] tracking-[0.15em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+        <div
+          className="text-[9px] tracking-[0.15em] uppercase"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
           Briefing Text
         </div>
         <button

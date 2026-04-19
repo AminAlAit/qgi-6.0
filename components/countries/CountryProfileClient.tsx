@@ -66,7 +66,14 @@ interface Props {
   l2Scores?: Record<string, number> | null;
   trajectoryData?: TrajectoryData | null;
   densityData?: PatternDensityData | null;
-  twins?: Array<{ partner_id: number; partner_name: string; alpha2: string; pattern_count: number; mean_corr: number; best_pps: number }> | null;
+  twins?: Array<{
+    partner_id: number;
+    partner_name: string;
+    alpha2: string;
+    pattern_count: number;
+    mean_corr: number;
+    best_pps: number;
+  }> | null;
 }
 
 export function CountryProfileClient({
@@ -176,10 +183,7 @@ export function CountryProfileClient({
         </div>
 
         {/* Metadata */}
-        <div
-          className="text-right text-[10px]"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
+        <div className="text-right text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
           <div>Scoring: {version}</div>
           {generatedAt && (
             <div>
@@ -209,7 +213,7 @@ export function CountryProfileClient({
       <TaxonomyL1Widget l1Scores={l1Scores} l2Scores={l2Scores} />
 
       {/* ─── L1 vs World Median (from Country V2) ────────────────────── */}
-      {l1Scores && Object.values(l1Scores).some(v => v > 0) && (
+      {l1Scores && Object.values(l1Scores).some((v) => v > 0) && (
         <section
           className="rounded-lg border p-5 mb-6"
           style={{
@@ -229,7 +233,7 @@ export function CountryProfileClient({
               const score = l1Scores[cat.id] ?? 0;
               const delta = score - L1_WORLD_MEDIAN;
               const maxBar = 0.5; // max possible delta for bar scaling
-              const pct = Math.min(100, Math.abs(delta) / maxBar * 100);
+              const pct = Math.min(100, (Math.abs(delta) / maxBar) * 100);
               return (
                 <div key={cat.id} className="flex items-center gap-2">
                   <span
@@ -238,7 +242,10 @@ export function CountryProfileClient({
                   >
                     {cat.short}
                   </span>
-                  <div className="flex-1 h-3 rounded-sm relative" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                  <div
+                    className="flex-1 h-3 rounded-sm relative"
+                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                  >
                     <div
                       className="absolute h-full rounded-sm"
                       style={{
@@ -253,7 +260,8 @@ export function CountryProfileClient({
                     className="text-[10px] w-10 text-right font-data"
                     style={{ color: delta >= 0 ? "#f87171" : "#34d399" }}
                   >
-                    {delta >= 0 ? "+" : ""}{delta.toFixed(2)}
+                    {delta >= 0 ? "+" : ""}
+                    {delta.toFixed(2)}
                   </span>
                 </div>
               );
@@ -263,7 +271,9 @@ export function CountryProfileClient({
       )}
 
       {/* ─── Risk Fingerprint Radar + Structural Twins (V2 promoted) ── */}
-      <div className={`grid grid-cols-1 ${twins && twins.length > 0 ? "lg:grid-cols-2" : ""} gap-6 mb-6`}>
+      <div
+        className={`grid grid-cols-1 ${twins && twins.length > 0 ? "lg:grid-cols-2" : ""} gap-6 mb-6`}
+      >
         {/* Radar Chart */}
         <section
           className="rounded-lg border p-6"
@@ -296,7 +306,10 @@ export function CountryProfileClient({
                   </span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-0.5 border-t border-dashed" style={{ borderColor: "#4a6280" }} />
+                  <div
+                    className="w-4 h-0.5 border-t border-dashed"
+                    style={{ borderColor: "#4a6280" }}
+                  />
                   <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                     World median
                   </span>
@@ -335,22 +348,35 @@ export function CountryProfileClient({
                   href={`/countries/${twin.partner_id}`}
                   className="flex items-center gap-4 p-3 rounded-lg transition-colors hover:opacity-80"
                   style={{
-                    backgroundColor: i === 0 ? "rgba(56, 189, 248, 0.06)" : "var(--qgi-surface-2)",
+                    backgroundColor:
+                      i === 0 ? "rgba(56, 189, 248, 0.06)" : "var(--qgi-surface-2)",
                     border: `1px solid ${i === 0 ? "rgba(56, 189, 248, 0.2)" : "transparent"}`,
                   }}
                 >
                   <CountryFlag alpha2={twin.alpha2} size={22} />
                   <div className="flex-1 min-w-0">
                     <div className="text-sm font-semibold">{twin.partner_name}</div>
-                    <div className="text-[10px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                      {twin.pattern_count.toLocaleString()} patterns &middot; {(twin.mean_corr * 100).toFixed(0)}% avg corr
+                    <div
+                      className="text-[10px] tracking-wider"
+                      style={{ color: "var(--qgi-text-dim)" }}
+                    >
+                      {twin.pattern_count.toLocaleString()} patterns &middot;{" "}
+                      {(twin.mean_corr * 100).toFixed(0)}% avg corr
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="font-data text-lg font-bold" style={{ color: "var(--qgi-accent)" }}>
+                    <div
+                      className="font-data text-lg font-bold"
+                      style={{ color: "var(--qgi-accent)" }}
+                    >
                       {twin.best_pps.toFixed(0)}
                     </div>
-                    <div className="text-[9px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>PPS</div>
+                    <div
+                      className="text-[9px] tracking-widest"
+                      style={{ color: "var(--qgi-text-dim)" }}
+                    >
+                      PPS
+                    </div>
                   </div>
                 </Link>
               ))}
@@ -375,20 +401,23 @@ export function CountryProfileClient({
           <InfoTooltip text="Categories ranked by salience score — combining statistical signal strength with event consequence. Higher salience = stronger signal." />
         </h2>
         <div className="space-y-2">
-          {categoryZScores.filter(c => c.salience >= 0).slice(0, 10).map(({ category, salience, recipe_count }) => (
-            <Link
-              key={category}
-              href={`/countries/${countryId}/${encodeURIComponent(category)}`}
-              className="block transition-opacity hover:opacity-80"
-            >
-              <CategoryBar
-                category={category}
-                salience={salience}
-                recipeCount={recipe_count}
-                maxSalience={categoryZScores[0]?.salience ?? 1}
-              />
-            </Link>
-          ))}
+          {categoryZScores
+            .filter((c) => c.salience >= 0)
+            .slice(0, 10)
+            .map(({ category, salience, recipe_count }) => (
+              <Link
+                key={category}
+                href={`/countries/${countryId}/${encodeURIComponent(category)}`}
+                className="block transition-opacity hover:opacity-80"
+              >
+                <CategoryBar
+                  category={category}
+                  salience={salience}
+                  recipeCount={recipe_count}
+                  maxSalience={categoryZScores[0]?.salience ?? 1}
+                />
+              </Link>
+            ))}
         </div>
         {categoryZScores.length === 0 && (
           <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
@@ -411,7 +440,10 @@ export function CountryProfileClient({
               className="text-[11px] tracking-widest uppercase font-semibold"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              INDICATOR TRAJECTORIES &middot; {showAllIndicators ? `ALL ${trajectoryData.indicators.length}` : "TOP 3"} INDICATORS &middot; {trajectoryData.years[0]}-{trajectoryData.years[trajectoryData.years.length - 1]}
+              INDICATOR TRAJECTORIES &middot;{" "}
+              {showAllIndicators ? `ALL ${trajectoryData.indicators.length}` : "TOP 3"}{" "}
+              INDICATORS &middot; {trajectoryData.years[0]}-
+              {trajectoryData.years[trajectoryData.years.length - 1]}
               <InfoTooltip text="Shows the raw economic story of this country over decades. Each line is a key indicator normalized to 0-100. Red vertical markers show major geopolitical events. Click legend items to show/hide." />
             </h2>
             <div className="flex items-center gap-3">
@@ -419,7 +451,9 @@ export function CountryProfileClient({
                 onClick={() => setShowAllIndicators((v) => !v)}
                 className="px-2.5 py-1 rounded text-[9px] tracking-wider uppercase transition-colors"
                 style={{
-                  backgroundColor: showAllIndicators ? "rgba(56, 189, 248, 0.15)" : "rgba(122, 144, 168, 0.1)",
+                  backgroundColor: showAllIndicators
+                    ? "rgba(56, 189, 248, 0.15)"
+                    : "rgba(122, 144, 168, 0.1)",
                   color: showAllIndicators ? "#38bdf8" : "#7a90a8",
                   border: `1px solid ${showAllIndicators ? "rgba(56, 189, 248, 0.3)" : "rgba(122, 144, 168, 0.2)"}`,
                 }}
@@ -458,12 +492,19 @@ export function CountryProfileClient({
               PATTERN DENSITY (by year)
               <InfoTooltip text="Shows when QGI found structural similarity between this country and others. Clusters of pattern starts indicate periods of high structural alignment." />
             </h2>
-            <span className="text-[11px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[11px] font-data"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               {densityData.total.toLocaleString()} patterns total
             </span>
           </div>
-          <div className="text-[10px] tracking-wider mb-3" style={{ color: "var(--qgi-text-dim)" }}>
-            Years with more pattern starts = more structural similarity to other countries&apos; trajectories.
+          <div
+            className="text-[10px] tracking-wider mb-3"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Years with more pattern starts = more structural similarity to other
+            countries&apos; trajectories.
           </div>
           <div className="h-[240px]">
             <ReactECharts
@@ -500,17 +541,10 @@ export function CountryProfileClient({
               className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors"
               style={{
                 backgroundColor:
-                  activeTier === tier
-                    ? `${TIER_COLORS[tier]}20`
-                    : "transparent",
+                  activeTier === tier ? `${TIER_COLORS[tier]}20` : "transparent",
                 borderColor:
-                  activeTier === tier
-                    ? TIER_COLORS[tier]
-                    : "var(--qgi-border)",
-                color:
-                  activeTier === tier
-                    ? TIER_COLORS[tier]
-                    : "var(--qgi-text-muted)",
+                  activeTier === tier ? TIER_COLORS[tier] : "var(--qgi-border)",
+                color: activeTier === tier ? TIER_COLORS[tier] : "var(--qgi-text-muted)",
               }}
             >
               {tier} &middot; {TIER_LABELS[tier]}
@@ -549,10 +583,7 @@ export function CountryProfileClient({
             </tbody>
           </table>
         ) : (
-          <p
-            className="text-sm py-4"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <p className="text-sm py-4" style={{ color: "var(--qgi-text-dim)" }}>
             No precedent data for this tier.
           </p>
         )}
@@ -585,10 +616,18 @@ export function CountryProfileClient({
                 <table className="w-full text-[11px]">
                   <thead>
                     <tr style={{ color: "var(--qgi-text-dim)" }}>
-                      <th className="text-left py-2 tracking-widest font-normal">CATEGORY</th>
-                      <th className="text-center py-2 tracking-widest font-normal">TIER</th>
-                      <th className="text-right py-2 tracking-widest font-normal">SALIENCE</th>
-                      <th className="text-right py-2 tracking-widest font-normal">RECIPES</th>
+                      <th className="text-left py-2 tracking-widest font-normal">
+                        CATEGORY
+                      </th>
+                      <th className="text-center py-2 tracking-widest font-normal">
+                        TIER
+                      </th>
+                      <th className="text-right py-2 tracking-widest font-normal">
+                        SALIENCE
+                      </th>
+                      <th className="text-right py-2 tracking-widest font-normal">
+                        RECIPES
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -618,14 +657,22 @@ export function CountryProfileClient({
                         </td>
                         <td
                           className="py-2 text-center font-data font-bold"
-                          style={{ color: TIER_COLORS[p.tier] ?? "var(--qgi-text-muted)" }}
+                          style={{
+                            color: TIER_COLORS[p.tier] ?? "var(--qgi-text-muted)",
+                          }}
                         >
                           {p.tier}
                         </td>
-                        <td className="py-2 text-right font-data" style={{ color: "var(--qgi-text)" }}>
+                        <td
+                          className="py-2 text-right font-data"
+                          style={{ color: "var(--qgi-text)" }}
+                        >
                           {p.salience.toFixed(2)}
                         </td>
-                        <td className="py-2 text-right font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                        <td
+                          className="py-2 text-right font-data"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
                           {p.recipes}
                         </td>
                       </tr>
@@ -667,9 +714,8 @@ export function CountryProfileClient({
         className="mt-6 text-[10px] leading-relaxed text-center"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        QGI surfaces economically-grounded risk candidates that analysts should
-        examine. Risk tiers reflect historical precedent density, not
-        probability forecasts.
+        QGI surfaces economically-grounded risk candidates that analysts should examine.
+        Risk tiers reflect historical precedent density, not probability forecasts.
       </p>
     </div>
   );
@@ -691,12 +737,7 @@ function CategoryBar({
   maxSalience: number;
 }) {
   const width = maxSalience > 0 ? Math.max((salience / maxSalience) * 100, 2) : 2;
-  const color =
-    salience >= 1.2
-      ? "#f87171"
-      : salience >= 0.5
-        ? "#fbbf24"
-        : "#38bdf8";
+  const color = salience >= 1.2 ? "#f87171" : salience >= 0.5 ? "#fbbf24" : "#38bdf8";
 
   return (
     <div className="flex items-center gap-3">
@@ -706,7 +747,8 @@ function CategoryBar({
       >
         {formatCategory(category)}
       </div>
-      <div className="flex-1 h-5 relative rounded overflow-hidden"
+      <div
+        className="flex-1 h-5 relative rounded overflow-hidden"
         style={{ backgroundColor: "var(--qgi-surface-2)" }}
       >
         <div
@@ -745,11 +787,7 @@ function PrecedentRow({
 }) {
   const salience = cat.salience_score ?? cat.z_score;
   const sColor =
-    salience >= 1.2
-      ? "#f87171"
-      : salience >= 0.5
-        ? "#fbbf24"
-        : "var(--qgi-text)";
+    salience >= 1.2 ? "#f87171" : salience >= 0.5 ? "#fbbf24" : "var(--qgi-text)";
 
   return (
     <tr
@@ -769,17 +807,11 @@ function PrecedentRow({
           : undefined
       }
     >
-      <td
-        className="py-2 font-data text-xs"
-        style={{ color: "var(--qgi-text-dim)" }}
-      >
+      <td className="py-2 font-data text-xs" style={{ color: "var(--qgi-text-dim)" }}>
         {rank}
       </td>
       <td className="py-2 text-xs">{formatCategory(cat.category)}</td>
-      <td
-        className="py-2 font-data text-xs text-right"
-        style={{ color: sColor }}
-      >
+      <td className="py-2 font-data text-xs text-right" style={{ color: sColor }}>
         {salience.toFixed(2)}
       </td>
       <td
@@ -863,7 +895,14 @@ function radarOption(countryName: string, l1Scores: Record<string, number>) {
 // Indicator Trajectory Chart (V2 promoted)
 // ---------------------------------------------------------------------------
 
-const INDICATOR_COLORS = ["#38bdf8", "#34d399", "#f87171", "#fbbf24", "#a78bfa", "#fb923c"];
+const INDICATOR_COLORS = [
+  "#38bdf8",
+  "#34d399",
+  "#f87171",
+  "#fbbf24",
+  "#a78bfa",
+  "#fb923c",
+];
 
 function normalizeMinMax(data: (number | null)[]): (number | null)[] {
   const nums = data.filter((v): v is number => v !== null && !isNaN(v));
@@ -892,7 +931,7 @@ interface TrajectoryData {
 function indicatorTrajectoryOption(
   trajData: TrajectoryData,
   showAll: boolean,
-  defaultVisibleIndices: Set<number>,
+  defaultVisibleIndices: Set<number>
 ) {
   const legendSelected: Record<string, boolean> = {};
   trajData.indicators.forEach((ind, i) => {
@@ -942,13 +981,9 @@ function indicatorTrajectoryOption(
       const splitIdx = trajData.years.indexOf(ind.predicted_from);
 
       // Historical portion: up to (including) the transition point so lines join
-      const historicalData = normalizedAll.map((v, yi) =>
-        yi <= splitIdx ? v : null
-      );
+      const historicalData = normalizedAll.map((v, yi) => (yi <= splitIdx ? v : null));
       // Predicted portion: from the transition point onward (null before)
-      const predictedData = normalizedAll.map((v, yi) =>
-        yi >= splitIdx ? v : null
-      );
+      const predictedData = normalizedAll.map((v, yi) => (yi >= splitIdx ? v : null));
 
       series.push({
         name: ind.name,
@@ -981,21 +1016,26 @@ function indicatorTrajectoryOption(
         // "predicted" annotation at the transition point
         markPoint: {
           silent: true,
-          data: splitIdx >= 0 ? [{
-            coord: [String(ind.predicted_from), normalizedAll[splitIdx]],
-            symbol: "circle",
-            symbolSize: 6,
-            itemStyle: { color, borderColor: color, opacity: 0.5 },
-            label: {
-              show: true,
-              formatter: "predicted",
-              position: "top" as const,
-              fontSize: 9,
-              fontFamily: "'JetBrains Mono', monospace",
-              color: "#7a90a8",
-              distance: 4,
-            },
-          }] : [],
+          data:
+            splitIdx >= 0
+              ? [
+                  {
+                    coord: [String(ind.predicted_from), normalizedAll[splitIdx]],
+                    symbol: "circle",
+                    symbolSize: 6,
+                    itemStyle: { color, borderColor: color, opacity: 0.5 },
+                    label: {
+                      show: true,
+                      formatter: "predicted",
+                      position: "top" as const,
+                      fontSize: 9,
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: "#7a90a8",
+                      distance: 4,
+                    },
+                  },
+                ]
+              : [],
         },
       });
     }
@@ -1027,7 +1067,11 @@ function indicatorTrajectoryOption(
     legend: {
       top: 0,
       left: "center",
-      textStyle: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      textStyle: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
       itemWidth: 18,
       itemHeight: 2,
       itemGap: 12,
@@ -1035,14 +1079,25 @@ function indicatorTrajectoryOption(
       // Hide the "(predicted)" series from the legend — they inherit visibility
       // from their parent series via the legendSelected map but don't need
       // separate legend entries.
-      formatter: (name: string) => name.endsWith(" (predicted)") ? "" : name,
+      formatter: (name: string) => (name.endsWith(" (predicted)") ? "" : name),
     },
     tooltip: {
       trigger: "axis",
       backgroundColor: "#1e2d42",
       borderColor: "#243347",
-      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
-      formatter: (params: Array<{ seriesName: string; value: number; dataIndex: number; color: string }>) => {
+      textStyle: {
+        color: "#e2e8f0",
+        fontSize: 11,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
+      formatter: (
+        params: Array<{
+          seriesName: string;
+          value: number;
+          dataIndex: number;
+          color: string;
+        }>
+      ) => {
         if (!Array.isArray(params) || params.length === 0) return "";
         const year = trajData.years[params[0].dataIndex];
         let html = `<div style="font-weight:600;margin-bottom:4px">${year}</div>`;
@@ -1057,14 +1112,18 @@ function indicatorTrajectoryOption(
           const raw = trajData.indicators.find((r) => r.name === originalName);
           const rawVal = raw ? raw.data[p.dataIndex] : p.value;
           const unit = raw ? raw.unit : "";
-          const isPredicted = raw?.predicted_from !== undefined &&
+          const isPredicted =
+            raw?.predicted_from !== undefined &&
             trajData.years[p.dataIndex] >= (raw.predicted_from ?? Infinity);
-          const formatted = typeof rawVal === "number" && rawVal > 1000
-            ? rawVal.toLocaleString()
-            : typeof rawVal === "number"
-              ? rawVal.toFixed(1)
-              : rawVal;
-          const predLabel = isPredicted ? ' <span style="opacity:0.6;font-size:9px">(predicted)</span>' : "";
+          const formatted =
+            typeof rawVal === "number" && rawVal > 1000
+              ? rawVal.toLocaleString()
+              : typeof rawVal === "number"
+                ? rawVal.toFixed(1)
+                : rawVal;
+          const predLabel = isPredicted
+            ? ' <span style="opacity:0.6;font-size:9px">(predicted)</span>'
+            : "";
           html += `<div style="display:flex;justify-content:space-between;gap:16px"><span style="color:${p.color}">\u25CF ${originalName}${predLabel}</span><span style="font-weight:600">${formatted} ${unit}</span></div>`;
         });
         return html;
@@ -1074,14 +1133,25 @@ function indicatorTrajectoryOption(
       type: "category",
       data: trajData.years.map(String),
       axisLine: { lineStyle: { color: "#243347" } },
-      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace", interval: 4 },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+        interval: 4,
+      },
       axisTick: { show: false },
     },
     yAxis: {
       type: "value",
-      min: 0, max: 100, splitNumber: 4,
+      min: 0,
+      max: 100,
+      splitNumber: 4,
       axisLine: { show: false },
-      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
       splitLine: { lineStyle: { color: "#243347", width: 1 } },
     },
     series: series.map((s, i) => ({
@@ -1102,20 +1172,28 @@ function TrajectoryChartWithLabels({
 }) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const instRef = useRef<any>(null);
-  const [labelPositions, setLabelPositions] = useState<{ year: number; label: string; x: number; y: number }[]>([]);
+  const [labelPositions, setLabelPositions] = useState<
+    { year: number; label: string; x: number; y: number }[]
+  >([]);
 
-  const onChartReady = useCallback((inst: unknown) => {
-    instRef.current = inst;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const ecInst = inst as any;
-    const eventsToShow = pickSpreadEvents(trajData.events, 5);
-    const positions = eventsToShow.map((e) => {
-      const px = ecInst.convertToPixel({ xAxisIndex: 0 }, String(e.year));
-      const gridRect = ecInst.getModel().getComponent("grid", 0).coordinateSystem.getRect();
-      return { year: e.year, label: e.label, x: px as number, y: gridRect.y as number };
-    });
-    setLabelPositions(positions);
-  }, [trajData.events]);
+  const onChartReady = useCallback(
+    (inst: unknown) => {
+      instRef.current = inst;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const ecInst = inst as any;
+      const eventsToShow = pickSpreadEvents(trajData.events, 5);
+      const positions = eventsToShow.map((e) => {
+        const px = ecInst.convertToPixel({ xAxisIndex: 0 }, String(e.year));
+        const gridRect = ecInst
+          .getModel()
+          .getComponent("grid", 0)
+          .coordinateSystem.getRect();
+        return { year: e.year, label: e.label, x: px as number, y: gridRect.y as number };
+      });
+      setLabelPositions(positions);
+    },
+    [trajData.events]
+  );
 
   return (
     <div className="relative h-[480px]">
@@ -1167,7 +1245,11 @@ function patternDensityOption(densityData: PatternDensityData) {
       trigger: "axis",
       backgroundColor: "#1e2d42",
       borderColor: "#243347",
-      textStyle: { color: "#e2e8f0", fontSize: 11, fontFamily: "'JetBrains Mono', monospace" },
+      textStyle: {
+        color: "#e2e8f0",
+        fontSize: 11,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
       formatter: (params: Array<{ value: number; dataIndex: number }>) => {
         if (!Array.isArray(params) || params.length === 0) return "";
         const yr = densityData.years[params[0].dataIndex];
@@ -1178,25 +1260,35 @@ function patternDensityOption(densityData: PatternDensityData) {
       type: "category",
       data: densityData.years.map(String),
       axisLine: { lineStyle: { color: "#243347" } },
-      axisLabel: { color: "#7a90a8", fontSize: 9, fontFamily: "'JetBrains Mono', monospace", interval: 4 },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 9,
+        fontFamily: "'JetBrains Mono', monospace",
+        interval: 4,
+      },
       axisTick: { show: false },
     },
     yAxis: {
       type: "value",
       axisLine: { show: false },
-      axisLabel: { color: "#7a90a8", fontSize: 10, fontFamily: "'JetBrains Mono', monospace" },
+      axisLabel: {
+        color: "#7a90a8",
+        fontSize: 10,
+        fontFamily: "'JetBrains Mono', monospace",
+      },
       splitLine: { lineStyle: { color: "#243347", width: 1 } },
     },
-    series: [{
-      type: "bar",
-      data: densityData.counts,
-      itemStyle: { color: "#fbbf24", borderRadius: [2, 2, 0, 0] },
-      barMaxWidth: 10,
-      emphasis: { itemStyle: { color: "#fcd34d" } },
-    }],
+    series: [
+      {
+        type: "bar",
+        data: densityData.counts,
+        itemStyle: { color: "#fbbf24", borderRadius: [2, 2, 0, 0] },
+        barMaxWidth: 10,
+        emphasis: { itemStyle: { color: "#fcd34d" } },
+      },
+    ],
   };
 }
-
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -1218,7 +1310,7 @@ function patternDensityOption(densityData: PatternDensityData) {
  */
 function pickSpreadEvents(
   events: { year: number; label: string }[],
-  n: number,
+  n: number
 ): { year: number; label: string }[] {
   if (events.length === 0) return [];
   const sorted = [...events].sort((a, b) => a.year - b.year);
@@ -1269,7 +1361,8 @@ function pickSpreadEvents(
 function getCategoryBreakdown(
   country: CountryRisk
 ): Array<{ category: string; salience: number; z_score: number; recipe_count: number }> {
-  const catMap: Record<string, { sSum: number; zSum: number; rSum: number; n: number }> = {};
+  const catMap: Record<string, { sSum: number; zSum: number; rSum: number; n: number }> =
+    {};
   for (const tierData of Object.values(country.tiers)) {
     for (const cat of tierData.top_categories) {
       if (!catMap[cat.category]) {
@@ -1338,7 +1431,12 @@ function generateSummary(
 function getAllPrecedents(
   country: CountryRisk
 ): Array<{ category: string; tier: string; salience: number; recipes: number }> {
-  const rows: Array<{ category: string; tier: string; salience: number; recipes: number }> = [];
+  const rows: Array<{
+    category: string;
+    tier: string;
+    salience: number;
+    recipes: number;
+  }> = [];
   for (const [tierKey, tierData] of Object.entries(country.tiers)) {
     for (const cat of tierData.top_categories) {
       rows.push({
@@ -1353,7 +1451,5 @@ function getAllPrecedents(
 }
 
 function formatCategory(cat: string): string {
-  return cat
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }

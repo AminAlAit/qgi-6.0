@@ -5,11 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import type { SignalRow } from "@/lib/types";
 import { DualTimeline } from "@/components/signals/DualTimeline";
 import { BriefingExport } from "@/components/signals/BriefingExport";
-import {
-  TierBadge,
-  ConvergenceBadge,
-  PpsValue,
-} from "@/components/design/Badges";
+import { TierBadge, ConvergenceBadge, PpsValue } from "@/components/design/Badges";
 
 function readSignalFromStorage(signalId: string | null): SignalRow | null {
   if (!signalId) return null;
@@ -32,7 +28,10 @@ export function SignalDetailContent() {
 
   if (!signal) {
     return (
-      <div className="flex items-center justify-center h-full text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+      <div
+        className="flex items-center justify-center h-full text-xs tracking-wider"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
         SIGNAL NOT FOUND
       </div>
     );
@@ -61,7 +60,10 @@ export function SignalDetailContent() {
       {/* Title + tier + convergence (#128, #133) */}
       <div>
         <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-xs tracking-[0.2em] uppercase font-semibold" style={{ color: "var(--qgi-accent)" }}>
+          <h1
+            className="text-xs tracking-[0.2em] uppercase font-semibold"
+            style={{ color: "var(--qgi-accent)" }}
+          >
             Signal Detail
           </h1>
           {signal.pattern_tier && <TierBadge tier={signal.pattern_tier} size="sm" />}
@@ -96,7 +98,13 @@ export function SignalDetailContent() {
              present — even though the normalization on line 48 already
              produced a valid 0-100 value. Suffix should appear whenever
              `pps` is a finite number. */
-          value={<PpsValue pps={pps} size="md" showSuffix={pps != null && Number.isFinite(pps)} />}
+          value={
+            <PpsValue
+              pps={pps}
+              size="md"
+              showSuffix={pps != null && Number.isFinite(pps)}
+            />
+          }
         />
         <MetricCard
           label="AVG CORRELATION"
@@ -114,7 +122,10 @@ export function SignalDetailContent() {
         <MetricCard
           label="INDICATORS"
           value={
-            <span className="font-data text-xl font-bold" style={{ color: "var(--qgi-text)" }}>
+            <span
+              className="font-data text-xl font-bold"
+              style={{ color: "var(--qgi-text)" }}
+            >
               {signal.indicator_count}
             </span>
           }
@@ -122,9 +133,15 @@ export function SignalDetailContent() {
         <MetricCard
           label="PATTERN LENGTH"
           value={
-            <span className="font-data text-xl font-bold" style={{ color: "var(--qgi-text)" }}>
+            <span
+              className="font-data text-xl font-bold"
+              style={{ color: "var(--qgi-text)" }}
+            >
               {signal.length}
-              <span className="text-xs font-normal" style={{ color: "var(--qgi-text-dim)" }}>
+              <span
+                className="text-xs font-normal"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
                 {" "}
                 yrs
               </span>
@@ -139,9 +156,15 @@ export function SignalDetailContent() {
       {/* Event category */}
       <div
         className="rounded border p-4"
-        style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
       >
-        <div className="text-[9px] tracking-[0.15em] uppercase mb-3" style={{ color: "var(--qgi-text-dim)" }}>
+        <div
+          className="text-[9px] tracking-[0.15em] uppercase mb-3"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
           Matching Event Category
         </div>
         <span
@@ -164,25 +187,44 @@ export function SignalDetailContent() {
       {signal.median_lead_time !== undefined && signal.median_lead_time !== null && (
         <div
           className="rounded border p-4"
-          style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
         >
-          <div className="text-[9px] tracking-[0.15em] uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+          <div
+            className="text-[9px] tracking-[0.15em] uppercase mb-2"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Forecast Timing
           </div>
           {signal.median_lead_time > 0 ? (
-            <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-              Historical precedents in {signal.country_b_name} preceded their matching events by a median of{" "}
-              <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
+            <p
+              className="text-[11px] leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Historical precedents in {signal.country_b_name} preceded their matching
+              events by a median of{" "}
+              <span
+                className="font-data font-semibold"
+                style={{ color: "var(--qgi-amber)" }}
+              >
                 {signal.median_lead_time} year{signal.median_lead_time === 1 ? "" : "s"}
               </span>
-              {signal.min_lead_time != null && signal.max_lead_time != null && signal.min_lead_time > 0 && (
-                <>
-                  {" "}
-                  (range: {signal.min_lead_time}–{signal.max_lead_time} yrs)
-                </>
-              )}
-              . Projected onto {signal.country_a_name}&apos;s still-running pattern, the implied event window is{" "}
-              <span className="font-data font-semibold" style={{ color: "var(--qgi-amber)" }}>
+              {signal.min_lead_time != null &&
+                signal.max_lead_time != null &&
+                signal.min_lead_time > 0 && (
+                  <>
+                    {" "}
+                    (range: {signal.min_lead_time}–{signal.max_lead_time} yrs)
+                  </>
+                )}
+              . Projected onto {signal.country_a_name}&apos;s still-running pattern, the
+              implied event window is{" "}
+              <span
+                className="font-data font-semibold"
+                style={{ color: "var(--qgi-amber)" }}
+              >
                 ~{signal.end_year_a + signal.median_lead_time}
               </span>
               .
@@ -192,15 +234,20 @@ export function SignalDetailContent() {
                are optional on SignalRow (missing when Athena patterns lack
                enrichment). Fall back to "matching event" / "—" to avoid
                rendering the literal string "undefined". */
-            <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+            <p
+              className="text-[11px] leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
               The matching event in {signal.country_b_name}
               {signal.event_title_b && signal.event_year_b != null ? (
                 <>
-                  {" "}(&quot;{signal.event_title_b}&quot; in {signal.event_year_b})
+                  {" "}
+                  (&quot;{signal.event_title_b}&quot; in {signal.event_year_b})
                 </>
-              ) : null}
-              {" "}co-occurred with the precedent pattern rather than following it. No forward forecast
-              window is projected for {signal.country_a_name} on this signal — the analogue is retrospective.
+              ) : null}{" "}
+              co-occurred with the precedent pattern rather than following it. No forward
+              forecast window is projected for {signal.country_a_name} on this signal —
+              the analogue is retrospective.
             </p>
           )}
         </div>
@@ -209,18 +256,29 @@ export function SignalDetailContent() {
       {/* Explanation */}
       <div
         className="rounded border p-4"
-        style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
       >
-        <div className="text-[9px] tracking-[0.15em] uppercase mb-2" style={{ color: "var(--qgi-text-dim)" }}>
+        <div
+          className="text-[9px] tracking-[0.15em] uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
           How this signal works
         </div>
-        <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-          {signal.country_b_name} and {signal.country_a_name} share a {signal.length}-year pattern of
-          {" "}{signal.indicator_count} correlated indicators ({corrPct}% avg correlation).
-          {" "}{signal.country_b_name}&apos;s pattern started in {signal.start_year_b} and ended in {signal.end_year_b},
-          followed by &quot;{signal.event_title_b}&quot; in {signal.event_year_b}.
-          {" "}{signal.country_a_name}&apos;s matching pattern started in {signal.start_year_a} and ends in {signal.end_year_a} —
-          meaning a similar event (&quot;{signal.event_category.replace(/_/g, " ")}&quot;) may follow.
+        <p
+          className="text-[11px] leading-relaxed"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          {signal.country_b_name} and {signal.country_a_name} share a {signal.length}-year
+          pattern of {signal.indicator_count} correlated indicators ({corrPct}% avg
+          correlation). {signal.country_b_name}&apos;s pattern started in{" "}
+          {signal.start_year_b} and ended in {signal.end_year_b}, followed by &quot;
+          {signal.event_title_b}&quot; in {signal.event_year_b}. {signal.country_a_name}
+          &apos;s matching pattern started in {signal.start_year_a} and ends in{" "}
+          {signal.end_year_a} — meaning a similar event (&quot;
+          {signal.event_category.replace(/_/g, " ")}&quot;) may follow.
         </p>
       </div>
 
@@ -259,7 +317,10 @@ function MetricCard({ label, value }: { label: string; value: React.ReactNode })
       }}
     >
       <div className="mb-1">{value}</div>
-      <div className="text-[8px] tracking-[0.2em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+      <div
+        className="text-[8px] tracking-[0.2em] uppercase"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
         {label}
       </div>
     </div>

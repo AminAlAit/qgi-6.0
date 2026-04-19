@@ -17,10 +17,7 @@ export const GET = withAuth(async (req: NextRequest) => {
   // before we build the query. We still quote-escape what remains.
   const SAFE_COUNTRY_NAME = /^[A-Za-z .,()'\-\u00C0-\u024F\u1E00-\u1EFF]{1,100}$/;
   if (!SAFE_COUNTRY_NAME.test(countryName)) {
-    return NextResponse.json(
-      { error: "Invalid country parameter" },
-      { status: 400 }
-    );
+    return NextResponse.json({ error: "Invalid country parameter" }, { status: 400 });
   }
   const currentYear = new Date().getFullYear();
   const safe = countryName.replace(/'/g, "''");

@@ -4,10 +4,34 @@ import { describe, it, expect, vi } from "vitest";
 import { ScdiTable } from "@/components/patterns/ScdiTable";
 
 const SCDIS = [
-  { index_name: "GDP growth (annual %)", sector: "Economic", org: "World Bank", correlation: 0.92, predicted: false },
-  { index_name: "Population, total", sector: "Demographic", org: "World Bank", correlation: 0.78, predicted: false },
-  { index_name: "Life expectancy at birth, total (years)", sector: "Health", org: "World Bank", correlation: 0.55, predicted: true },
-  { index_name: "Arms imports (SIPRI trend indicator values)", sector: "Military", org: "SIPRI / World Bank", correlation: 0.81, predicted: false },
+  {
+    index_name: "GDP growth (annual %)",
+    sector: "Economic",
+    org: "World Bank",
+    correlation: 0.92,
+    predicted: false,
+  },
+  {
+    index_name: "Population, total",
+    sector: "Demographic",
+    org: "World Bank",
+    correlation: 0.78,
+    predicted: false,
+  },
+  {
+    index_name: "Life expectancy at birth, total (years)",
+    sector: "Health",
+    org: "World Bank",
+    correlation: 0.55,
+    predicted: true,
+  },
+  {
+    index_name: "Arms imports (SIPRI trend indicator values)",
+    sector: "Military",
+    org: "SIPRI / World Bank",
+    correlation: 0.81,
+    predicted: false,
+  },
 ];
 
 describe("ScdiTable", () => {

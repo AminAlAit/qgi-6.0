@@ -23,10 +23,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { ScdiTable } from "@/components/patterns/ScdiTable";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
-import {
-  TRANSFORMATION_LABELS,
-  type Transformation,
-} from "@/lib/transforms";
+import { TRANSFORMATION_LABELS, type Transformation } from "@/lib/transforms";
 import { sectorColor } from "@/lib/design";
 import type { PatternRow } from "@/lib/types";
 import countriesList from "@/data/countries.json";
@@ -100,9 +97,9 @@ function rawPpsColor(pps: number): string {
 }
 
 function corrColor(r: number): string {
-  if (r >= 0.90) return "#f87171";
+  if (r >= 0.9) return "#f87171";
   if (r >= 0.85) return "#fb923c";
-  if (r >= 0.80) return "#fbbf24";
+  if (r >= 0.8) return "#fbbf24";
   return "#7a90a8";
 }
 
@@ -110,7 +107,15 @@ function corrColor(r: number): string {
 /*  PPS inline bar (from V2 prototype)                                 */
 /* ------------------------------------------------------------------ */
 
-function PpsBar({ pps, maxPps, colorFn }: { pps: number; maxPps: number; colorFn?: (v: number) => string }) {
+function PpsBar({
+  pps,
+  maxPps,
+  colorFn,
+}: {
+  pps: number;
+  maxPps: number;
+  colorFn?: (v: number) => string;
+}) {
   const pct = Math.min(100, maxPps > 0 ? (pps / maxPps) * 100 : 0);
   const color = colorFn ? colorFn(pps) : rawPpsColor(pps);
   return (
@@ -269,9 +274,7 @@ function CountryDropdown({
     if (!search) return options;
     const q = search.toLowerCase();
     return options.filter(
-      (c) =>
-        c.name.toLowerCase().includes(q) ||
-        c.alpha2.toLowerCase().includes(q)
+      (c) => c.name.toLowerCase().includes(q) || c.alpha2.toLowerCase().includes(q)
     );
   }, [options, search]);
 
@@ -316,10 +319,7 @@ function CountryDropdown({
         ) : (
           <span>Select country...</span>
         )}
-        <span
-          className="ml-auto text-[10px]"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
+        <span className="ml-auto text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
           {open ? "\u25B2" : "\u25BC"}
         </span>
       </button>
@@ -332,10 +332,7 @@ function CountryDropdown({
             borderColor: "var(--qgi-border)",
           }}
         >
-          <div
-            className="p-2 border-b"
-            style={{ borderColor: "var(--qgi-border)" }}
-          >
+          <div className="p-2 border-b" style={{ borderColor: "var(--qgi-border)" }}>
             <input
               type="text"
               value={search}
@@ -360,10 +357,7 @@ function CountryDropdown({
                 }}
                 className="flex items-center gap-2 w-full px-3 py-2 text-xs transition-colors hover:bg-[var(--qgi-surface-2)]"
                 style={{
-                  color:
-                    value === c.id
-                      ? "var(--qgi-accent)"
-                      : "var(--qgi-text)",
+                  color: value === c.id ? "var(--qgi-accent)" : "var(--qgi-text)",
                 }}
               >
                 <CountryFlag alpha2={c.alpha2} size={14} />
@@ -408,17 +402,13 @@ function Breadcrumb({
     <div className="flex items-center gap-1.5 text-[11px] tracking-wider">
       {segments.map((seg, i) => (
         <span key={i} className="flex items-center gap-1.5">
-          {i > 0 && (
-            <span style={{ color: "var(--qgi-text-dim)" }}>&rsaquo;</span>
-          )}
+          {i > 0 && <span style={{ color: "var(--qgi-text-dim)" }}>&rsaquo;</span>}
           <button
             onClick={() => i < segments.length - 1 && onNavigate(seg.state)}
             className="flex items-center gap-1 px-1.5 py-0.5 rounded transition-colors hover:bg-[var(--qgi-surface-2)]"
             style={{
               color:
-                i === segments.length - 1
-                  ? "var(--qgi-text)"
-                  : "var(--qgi-text-muted)",
+                i === segments.length - 1 ? "var(--qgi-text)" : "var(--qgi-text-muted)",
               cursor: i === segments.length - 1 ? "default" : "pointer",
             }}
           >
@@ -450,9 +440,15 @@ export default function PatternsClient({
   // URL-driven initial state
   const initialA = searchParams.get("country_a") ?? "";
   const initialB = searchParams.get("country_b") ?? "";
-  const initialLength = searchParams.get("length") ? Number(searchParams.get("length")) : "";
-  const initialStartA = searchParams.get("start_a") ? Number(searchParams.get("start_a")) : "";
-  const initialStartB = searchParams.get("start_b") ? Number(searchParams.get("start_b")) : "";
+  const initialLength = searchParams.get("length")
+    ? Number(searchParams.get("length"))
+    : "";
+  const initialStartA = searchParams.get("start_a")
+    ? Number(searchParams.get("start_a"))
+    : "";
+  const initialStartB = searchParams.get("start_b")
+    ? Number(searchParams.get("start_b"))
+    : "";
 
   // ---- Cascade state (inlined from CascadeFilter) ----
   const [apiCountries, setApiCountries] = useState<ApiCountry[]>([]);
@@ -490,9 +486,20 @@ export default function PatternsClient({
   const [scdiAligned, setScdiAligned] = useState(true);
 
   // Related patterns (same predictor partners + same following partners)
-  interface RelatedPartner { id: string; name: string; alpha2: string; pps: number; lmin: number; lmax: number; }
-  const [samePredictorPartners, setSamePredictorPartners] = useState<RelatedPartner[]>([]);
-  const [sameFollowingPartners, setSameFollowingPartners] = useState<RelatedPartner[]>([]);
+  interface RelatedPartner {
+    id: string;
+    name: string;
+    alpha2: string;
+    pps: number;
+    lmin: number;
+    lmax: number;
+  }
+  const [samePredictorPartners, setSamePredictorPartners] = useState<RelatedPartner[]>(
+    []
+  );
+  const [sameFollowingPartners, setSameFollowingPartners] = useState<RelatedPartner[]>(
+    []
+  );
   const [samePredictorLoading, setSamePredictorLoading] = useState(false);
   const [sameFollowingLoading, setSameFollowingLoading] = useState(false);
 
@@ -518,7 +525,9 @@ export default function PatternsClient({
 
   // Load countries once
   useEffect(() => {
-    apiFetch<ApiCountry[]>("/api/countries").then(setApiCountries).catch(() => {});
+    apiFetch<ApiCountry[]>("/api/countries")
+      .then(setApiCountries)
+      .catch(() => {});
   }, []);
 
   // Build dropdown options for Country A (from API countries list, with alpha2)
@@ -613,11 +622,20 @@ export default function PatternsClient({
   }, [countryA, countryB, partners]);
 
   useEffect(() => {
-    if (!countryB) { setSameFollowingPartners([]); return; }
+    if (!countryB) {
+      setSameFollowingPartners([]);
+      return;
+    }
     setSameFollowingLoading(true);
-    apiFetch<Array<{ country_b_id: string; country_b_name: string; alpha2?: string; best_pps?: number; available_lengths: number[] }>>(
-      `/api/patterns/partners?country_a=${encodeURIComponent(countryB)}`
-    )
+    apiFetch<
+      Array<{
+        country_b_id: string;
+        country_b_name: string;
+        alpha2?: string;
+        best_pps?: number;
+        available_lengths: number[];
+      }>
+    >(`/api/patterns/partners?country_a=${encodeURIComponent(countryB)}`)
       .then((data) => {
         const excl = countryA;
         setSameFollowingPartners(
@@ -656,10 +674,7 @@ export default function PatternsClient({
           const raw: PatternRow[] = data.results ?? [];
           // Sonnet P1-4: zero-padded numeric-string key so lex-order
           // matches numeric-order for all WB country IDs.
-          const padKey = (
-            v: string | number | undefined,
-            fallback: string
-          ) => {
+          const padKey = (v: string | number | undefined, fallback: string) => {
             const n = Number(v);
             return Number.isFinite(n)
               ? String(n).padStart(6, "0")
@@ -789,17 +804,16 @@ export default function PatternsClient({
   }, [allWindows]);
 
   const globalMinLen = windowLengths.length > 0 ? windowLengths[0] : 0;
-  const globalMaxLen = windowLengths.length > 0 ? windowLengths[windowLengths.length - 1] : 0;
+  const globalMaxLen =
+    windowLengths.length > 0 ? windowLengths[windowLengths.length - 1] : 0;
 
   const filteredWindows = useMemo(
-    () =>
-      allWindows.filter(
-        (w) => w.length >= lengthMin && w.length <= lengthMax
-      ),
+    () => allWindows.filter((w) => w.length >= lengthMin && w.length <= lengthMax),
     [allWindows, lengthMin, lengthMax]
   );
 
-  const topWindowPps = allWindows.length > 0 ? Math.max(...allWindows.map((w) => w.pattern_power_score)) : 1;
+  const topWindowPps =
+    allWindows.length > 0 ? Math.max(...allWindows.map((w) => w.pattern_power_score)) : 1;
 
   // ---- Breadcrumb segments ----
   const breadcrumbSegments: { label: string; alpha2?: string; state: BrowseState }[] = [
@@ -885,7 +899,9 @@ export default function PatternsClient({
       `PPS:        ${ppsDisplay}`,
       ``,
       `Top indicators:`,
-      ...detail.scdis.slice(0, 5).map((s) => `  - ${s.index_name} (r=${s.correlation.toFixed(2)})`),
+      ...detail.scdis
+        .slice(0, 5)
+        .map((s) => `  - ${s.index_name} (r=${s.correlation.toFixed(2)})`),
       ``,
       `Source: qgintelligence.com/patterns`,
     ];
@@ -923,10 +939,7 @@ export default function PatternsClient({
             onChange={handleCountryAChange}
           />
 
-          <span
-            className="pb-2 text-sm"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="pb-2 text-sm" style={{ color: "var(--qgi-text-dim)" }}>
             &rarr;
           </span>
 
@@ -944,10 +957,7 @@ export default function PatternsClient({
           className="flex items-center gap-2 px-4 py-1.5 border-t"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <Breadcrumb
-            segments={breadcrumbSegments}
-            onNavigate={navigateToState}
-          />
+          <Breadcrumb segments={breadcrumbSegments} onNavigate={navigateToState} />
           <span
             className="ml-auto text-[10px] font-data tracking-wider"
             style={{ color: "var(--qgi-text-dim)" }}
@@ -984,9 +994,9 @@ export default function PatternsClient({
                 className="text-xs leading-relaxed max-w-2xl"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                Explore structural similarities between countries across
-                260 economic indicators and 60+ years of data. Start by
-                selecting a Predictor Country above, or browse the{" "}
+                Explore structural similarities between countries across 260 economic
+                indicators and 60+ years of data. Start by selecting a Predictor Country
+                above, or browse the{" "}
                 <a
                   href="/patterns/ranking"
                   className="underline transition-colors hover:text-[var(--qgi-accent)]"
@@ -1004,7 +1014,11 @@ export default function PatternsClient({
                 <span>&middot;</span>
                 <span>2.01B patterns</span>
                 <span>&middot;</span>
-                <span>{topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}</span>
+                <span>
+                  {topPairs.length > 0
+                    ? `${topPairs.length} ranked pairs in cache`
+                    : "Loading..."}
+                </span>
               </div>
             </div>
 
@@ -1053,7 +1067,10 @@ export default function PatternsClient({
             {/* Partner table */}
             {partners.length === 0 ? (
               <div className="flex items-center justify-center py-12">
-                <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
+                <span
+                  className="font-data text-xs animate-pulse"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
                   Loading partners...
                 </span>
               </div>
@@ -1135,7 +1152,8 @@ export default function PatternsClient({
                   className="text-[10px] tracking-wider"
                   style={{ color: "var(--qgi-text-dim)" }}
                 >
-                  Click any row to see all pattern windows for {countryAName || countryA} + that country.
+                  Click any row to see all pattern windows for {countryAName || countryA}{" "}
+                  + that country.
                 </p>
               </>
             )}
@@ -1163,7 +1181,9 @@ export default function PatternsClient({
                 >
                   {(countryAName || countryA).toUpperCase()}
                 </span>
-                <span style={{ color: "var(--qgi-text-dim)" }}>&mdash;&mdash;&mdash;</span>
+                <span style={{ color: "var(--qgi-text-dim)" }}>
+                  &mdash;&mdash;&mdash;
+                </span>
                 <CountryFlag alpha2={alpha2BVal} size={24} />
                 <span
                   className="text-sm font-semibold tracking-wider"
@@ -1228,16 +1248,20 @@ export default function PatternsClient({
                     )}
 
                     {/* Tick marks for available lengths */}
-                    <div className="flex justify-between mt-1.5 relative" style={{ height: "20px" }}>
+                    <div
+                      className="flex justify-between mt-1.5 relative"
+                      style={{ height: "20px" }}
+                    >
                       {windowLengths.map((len) => (
                         <div
                           key={len}
                           className="flex flex-col items-center"
                           style={{
                             position: "absolute",
-                            left: globalMaxLen > globalMinLen
-                              ? `${((len - globalMinLen) / (globalMaxLen - globalMinLen)) * 100}%`
-                              : "50%",
+                            left:
+                              globalMaxLen > globalMinLen
+                                ? `${((len - globalMinLen) / (globalMaxLen - globalMinLen)) * 100}%`
+                                : "50%",
                             transform: "translateX(-50%)",
                           }}
                         >
@@ -1306,7 +1330,10 @@ export default function PatternsClient({
             {/* Windows table */}
             {windowsLoading ? (
               <div className="flex items-center justify-center py-12">
-                <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
+                <span
+                  className="font-data text-xs animate-pulse"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
                   Loading windows...
                 </span>
               </div>
@@ -1329,11 +1356,17 @@ export default function PatternsClient({
                         }}
                       >
                         <th className="px-3 py-2.5 text-left w-8">#</th>
-                        <th className="px-3 py-2.5 text-left" style={{ color: "var(--qgi-country-a)" }}>
+                        <th
+                          className="px-3 py-2.5 text-left"
+                          style={{ color: "var(--qgi-country-a)" }}
+                        >
                           {(countryAName || countryA).toUpperCase()}
                           <InfoTooltip text="Time window for the Predictor country." />
                         </th>
-                        <th className="px-3 py-2.5 text-left" style={{ color: "var(--qgi-country-b)" }}>
+                        <th
+                          className="px-3 py-2.5 text-left"
+                          style={{ color: "var(--qgi-country-b)" }}
+                        >
                           {(countryBName || countryB).toUpperCase()}
                           <InfoTooltip text="Time window for the Following country." />
                         </th>
@@ -1380,10 +1413,16 @@ export default function PatternsClient({
                             >
                               {idx + 1}
                             </td>
-                            <td className="px-3 py-2.5 font-data" style={{ color: "var(--qgi-country-a)" }}>
+                            <td
+                              className="px-3 py-2.5 font-data"
+                              style={{ color: "var(--qgi-country-a)" }}
+                            >
                               {w.start_year_a}&ndash;{endA}
                             </td>
-                            <td className="px-3 py-2.5 font-data" style={{ color: "var(--qgi-country-b)" }}>
+                            <td
+                              className="px-3 py-2.5 font-data"
+                              style={{ color: "var(--qgi-country-b)" }}
+                            >
                               {w.start_year_b}&ndash;{endB}
                             </td>
                             <td
@@ -1411,9 +1450,7 @@ export default function PatternsClient({
                               className="px-3 py-2.5 text-right font-data"
                               style={{
                                 color:
-                                  lead > 0
-                                    ? "var(--qgi-success)"
-                                    : "var(--qgi-text-dim)",
+                                  lead > 0 ? "var(--qgi-success)" : "var(--qgi-text-dim)",
                               }}
                             >
                               {leadLabel(lead)}
@@ -1451,7 +1488,10 @@ export default function PatternsClient({
         {/* Loading */}
         {loading && (
           <div className="flex-1 flex items-center justify-center py-24">
-            <span className="font-data text-xs animate-pulse" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="font-data text-xs animate-pulse"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Loading pattern...
             </span>
           </div>
@@ -1467,10 +1507,16 @@ export default function PatternsClient({
                 backgroundColor: "var(--qgi-surface)",
               }}
             >
-              <div className="text-[10px] tracking-[0.2em] uppercase mb-2" style={{ color: "var(--qgi-amber)" }}>
+              <div
+                className="text-[10px] tracking-[0.2em] uppercase mb-2"
+                style={{ color: "var(--qgi-amber)" }}
+              >
                 Pattern detail unavailable
               </div>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
                 {error}
               </p>
             </div>
@@ -1480,244 +1526,354 @@ export default function PatternsClient({
         {/* ============================================================ */}
         {/*  V2 PATTERN DETAIL VIEW                                      */}
         {/* ============================================================ */}
-        {detail && !loading && (() => {
-          const meta = detail.metadata;
-          const detailCountryA = meta.country_a;
-          const detailCountryB = meta.country_b;
-          const startA = Number(meta.start_year_a);
-          const startB = Number(meta.start_year_b);
-          const len = Number(meta.pattern_length);
-          const endA = startA + len - 1;
-          const endB = startB + len - 1;
-          const avgCorr = Number(meta.avg_correlation);
-          const ppsRaw = Number(meta.pattern_power_score);
-          const numIdx = Number(meta.num_indexes);
-          const lag = startB - startA;
-          const detailA2A = getAlpha2(undefined, detailCountryA);
-          const detailA2B = getAlpha2(undefined, detailCountryB);
+        {detail &&
+          !loading &&
+          (() => {
+            const meta = detail.metadata;
+            const detailCountryA = meta.country_a;
+            const detailCountryB = meta.country_b;
+            const startA = Number(meta.start_year_a);
+            const startB = Number(meta.start_year_b);
+            const len = Number(meta.pattern_length);
+            const endA = startA + len - 1;
+            const endB = startB + len - 1;
+            const avgCorr = Number(meta.avg_correlation);
+            const ppsRaw = Number(meta.pattern_power_score);
+            const numIdx = Number(meta.num_indexes);
+            const lag = startB - startA;
+            const detailA2A = getAlpha2(undefined, detailCountryA);
+            const detailA2B = getAlpha2(undefined, detailCountryB);
 
-          const isNormalized = ppsRaw <= 1;
-          const gaugePct = isNormalized ? ppsRaw * 100 : Math.min(100, (ppsRaw / 2000) * 100);
-          const ppsDisplay = isNormalized ? ppsRaw.toFixed(2) : Math.round(ppsRaw).toLocaleString();
-          const ppsLbl = isNormalized ? ppsLabel(ppsRaw) : (ppsRaw >= 1500 ? "Very Strong" : ppsRaw >= 1000 ? "Strong" : ppsRaw >= 500 ? "Moderate" : "Weak");
-          const ppsClr = isNormalized ? ppsColor(ppsRaw) : rawPpsColor(ppsRaw);
+            const isNormalized = ppsRaw <= 1;
+            const gaugePct = isNormalized
+              ? ppsRaw * 100
+              : Math.min(100, (ppsRaw / 2000) * 100);
+            const ppsDisplay = isNormalized
+              ? ppsRaw.toFixed(2)
+              : Math.round(ppsRaw).toLocaleString();
+            const ppsLbl = isNormalized
+              ? ppsLabel(ppsRaw)
+              : ppsRaw >= 1500
+                ? "Very Strong"
+                : ppsRaw >= 1000
+                  ? "Strong"
+                  : ppsRaw >= 500
+                    ? "Moderate"
+                    : "Weak";
+            const ppsClr = isNormalized ? ppsColor(ppsRaw) : rawPpsColor(ppsRaw);
 
-          const allYears = [startA, endA, startB, endB, new Date().getFullYear()];
-          const timelineStart = Math.min(...allYears) - 3;
-          const timelineEnd = Math.max(...allYears) + 3;
+            const allYears = [startA, endA, startB, endB, new Date().getFullYear()];
+            const timelineStart = Math.min(...allYears) - 3;
+            const timelineEnd = Math.max(...allYears) + 3;
 
-          const sectorCounts: Record<string, number> = {};
-          for (const s of detail.scdis) {
-            sectorCounts[s.sector] = (sectorCounts[s.sector] ?? 0) + 1;
-          }
+            const sectorCounts: Record<string, number> = {};
+            for (const s of detail.scdis) {
+              sectorCounts[s.sector] = (sectorCounts[s.sector] ?? 0) + 1;
+            }
 
-          return (
-            <div className="p-6 space-y-6">
-              {/* === HERO PATTERN CARD === */}
-              <section
-                className="rounded-xl overflow-hidden"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  border: "1px solid var(--qgi-border)",
-                }}
-              >
-                {/* Early Warning Banner */}
-                {isEarlyWarning && (
-                  <div
-                    className="flex items-center gap-3 px-6 py-2.5 text-xs font-semibold"
-                    style={{ backgroundColor: "rgba(248, 113, 113, 0.12)", borderBottom: "1px solid #f87171" }}
-                  >
-                    <span style={{ color: "#f87171" }}>EARLY WARNING SIGNAL</span>
-                    <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
-                      Predictor country is currently in its historical window
-                    </span>
-                  </div>
-                )}
+            return (
+              <div className="p-6 space-y-6">
+                {/* === HERO PATTERN CARD === */}
+                <section
+                  className="rounded-xl overflow-hidden"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  {/* Early Warning Banner */}
+                  {isEarlyWarning && (
+                    <div
+                      className="flex items-center gap-3 px-6 py-2.5 text-xs font-semibold"
+                      style={{
+                        backgroundColor: "rgba(248, 113, 113, 0.12)",
+                        borderBottom: "1px solid #f87171",
+                      }}
+                    >
+                      <span style={{ color: "#f87171" }}>EARLY WARNING SIGNAL</span>
+                      <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
+                        Predictor country is currently in its historical window
+                      </span>
+                    </div>
+                  )}
 
-                {/* Row 1: Identity + PPS Gauge */}
-                <div className="p-6 lg:p-8">
-                  <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
-                    {/* Country A */}
-                    <div className="flex items-center gap-4">
-                      <CountryFlag alpha2={detailA2A} size={36} />
-                      <div>
-                        <div className="text-lg font-semibold" style={{ color: "var(--qgi-country-a)" }}>
-                          {detailCountryA.toUpperCase()}
-                        </div>
-                        <div className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
-                          {startA} &mdash; {endA}
-                        </div>
-                        <div className="text-[10px] tracking-widest uppercase mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
-                          PREDICTOR
+                  {/* Row 1: Identity + PPS Gauge */}
+                  <div className="p-6 lg:p-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-6 items-center">
+                      {/* Country A */}
+                      <div className="flex items-center gap-4">
+                        <CountryFlag alpha2={detailA2A} size={36} />
+                        <div>
+                          <div
+                            className="text-lg font-semibold"
+                            style={{ color: "var(--qgi-country-a)" }}
+                          >
+                            {detailCountryA.toUpperCase()}
+                          </div>
+                          <div
+                            className="font-data text-xs"
+                            style={{ color: "var(--qgi-text-muted)" }}
+                          >
+                            {startA} &mdash; {endA}
+                          </div>
+                          <div
+                            className="text-[10px] tracking-widest uppercase mt-0.5"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            PREDICTOR
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Center: PPS gauge + stats */}
-                    <div className="flex flex-col items-center gap-3 px-4 lg:px-8">
-                      {lag !== 0 && (
-                        <div className="flex items-center gap-2 text-[10px] tracking-widest" style={{ color: "var(--qgi-text-dim)" }}>
-                          {/* T6 #299 LOW fix (2026-04-19): arrow direction
+                      {/* Center: PPS gauge + stats */}
+                      <div className="flex flex-col items-center gap-3 px-4 lg:px-8">
+                        {lag !== 0 && (
+                          <div
+                            className="flex items-center gap-2 text-[10px] tracking-widest"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {/* T6 #299 LOW fix (2026-04-19): arrow direction
                               now reflects the sign of the lag. Positive lag
                               = predictor before follower (forward →).
                               Negative lag = follower before predictor
                               (reverse ←). Previously always rendered "← N →"
                               regardless of sign, losing the directionality. */}
-                          {lag > 0 ? (
-                            <span>{Math.abs(lag)}yr lag &rarr;</span>
-                          ) : (
-                            <span>&larr; {Math.abs(lag)}yr lag</span>
-                          )}
-                        </div>
-                      )}
+                            {lag > 0 ? (
+                              <span>{Math.abs(lag)}yr lag &rarr;</span>
+                            ) : (
+                              <span>&larr; {Math.abs(lag)}yr lag</span>
+                            )}
+                          </div>
+                        )}
 
-                      {/* PPS gauge bar */}
-                      <div className="w-full max-w-xs">
-                        <div className="flex rounded-full h-4 overflow-hidden relative">
-                          {isNormalized ? (
-                            PPS_QUINTILES.map((q) => (
-                              <div key={q.label} className="h-full" style={{ width: `${(q.max - q.min) * 100}%`, backgroundColor: q.color, opacity: 0.35 }} />
-                            ))
-                          ) : (
-                            [
-                              { min: 0, max: 500, color: "#4a6280" },
-                              { min: 500, max: 1000, color: "#fbbf24" },
-                              { min: 1000, max: 1500, color: "#fb923c" },
-                              { min: 1500, max: 2000, color: "#f87171" },
-                            ].map((q) => (
-                              <div key={q.min} className="h-full" style={{ width: `${((q.max - q.min) / 2000) * 100}%`, backgroundColor: q.color, opacity: 0.35 }} />
-                            ))
-                          )}
-                          <div
-                            className="absolute top-0 h-full w-1 rounded"
-                            style={{ left: `${gaugePct}%`, backgroundColor: "#fff", transform: "translateX(-50%)", boxShadow: "0 0 6px rgba(255,255,255,0.5)" }}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="text-center">
-                        <div className="font-data text-3xl font-bold" style={{ color: ppsClr }}>
-                          {ppsDisplay}
-                        </div>
-                        <div className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
-                          PPS -- {ppsLbl}
-                        </div>
-                      </div>
-
-                      <div className="flex gap-4 text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
-                        <span>{len}yrs</span>
-                        <span>&middot;</span>
-                        <span>{numIdx} indicators</span>
-                        <span>&middot;</span>
-                        <span>avg r {avgCorr.toFixed(3)}</span>
-                      </div>
-                    </div>
-
-                    {/* Country B */}
-                    <div className="flex items-center gap-4 lg:justify-end">
-                      <div className="text-right">
-                        <div className="text-lg font-semibold" style={{ color: "var(--qgi-country-b)" }}>
-                          {detailCountryB.toUpperCase()}
-                        </div>
-                        <div className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
-                          {startB} &mdash; {endB}
-                        </div>
-                        <div className="text-[10px] tracking-widest uppercase mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
-                          FOLLOWING
-                        </div>
-                      </div>
-                      <CountryFlag alpha2={detailA2B} size={36} />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Row 2: Timeline ribbon */}
-                <div className="px-6 lg:px-8 py-5" style={{ backgroundColor: "rgba(0,0,0,0.15)" }}>
-                  <div className="relative h-20">
-                    <div className="absolute top-1/2 left-0 right-0 h-px" style={{ backgroundColor: "var(--qgi-border)" }} />
-
-                    {/* Year labels */}
-                    {Array.from(
-                      new Set(
-                        [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2030]
-                          .filter((y) => y >= timelineStart && y <= timelineEnd)
-                      )
-                    ).map((y) => (
-                      <div
-                        key={y}
-                        className="absolute bottom-0 text-[9px] font-data -translate-x-1/2"
-                        style={{ left: `${yearToPercent(y, timelineStart, timelineEnd)}%`, color: "var(--qgi-text-dim)" }}
-                      >
-                        {y}
-                      </div>
-                    ))}
-
-                    {/* Predictor bar (top) */}
-                    <div
-                      className="absolute h-5 rounded"
-                      style={{
-                        left: `${yearToPercent(startA, timelineStart, timelineEnd)}%`,
-                        width: `${yearToPercent(endA, timelineStart, timelineEnd) - yearToPercent(startA, timelineStart, timelineEnd)}%`,
-                        top: "8px",
-                        backgroundColor: "var(--qgi-country-a)",
-                        opacity: 0.6,
-                      }}
-                    />
-                    <div
-                      className="absolute text-[9px] font-data -translate-x-1/2"
-                      style={{ left: `${yearToPercent((startA + endA) / 2, timelineStart, timelineEnd)}%`, top: "10px", color: "#fff" }}
-                    >
-                      {detailA2A} {startA}-{endA}
-                    </div>
-
-                    {/* Following bar (bottom) */}
-                    <div
-                      className="absolute h-5 rounded"
-                      style={{
-                        left: `${yearToPercent(startB, timelineStart, timelineEnd)}%`,
-                        width: `${yearToPercent(endB, timelineStart, timelineEnd) - yearToPercent(startB, timelineStart, timelineEnd)}%`,
-                        top: "48px",
-                        backgroundColor: "var(--qgi-country-b)",
-                        opacity: 0.6,
-                      }}
-                    />
-                    <div
-                      className="absolute text-[9px] font-data -translate-x-1/2"
-                      style={{ left: `${yearToPercent((startB + endB) / 2, timelineStart, timelineEnd)}%`, top: "50px", color: "#fff" }}
-                    >
-                      {detailA2B} {startB}-{endB}
-                    </div>
-
-                    {/* Today marker */}
-                    {(() => {
-                      const today = new Date().getFullYear();
-                      if (today >= timelineStart && today <= timelineEnd) {
-                        return (
-                          <>
+                        {/* PPS gauge bar */}
+                        <div className="w-full max-w-xs">
+                          <div className="flex rounded-full h-4 overflow-hidden relative">
+                            {isNormalized
+                              ? PPS_QUINTILES.map((q) => (
+                                  <div
+                                    key={q.label}
+                                    className="h-full"
+                                    style={{
+                                      width: `${(q.max - q.min) * 100}%`,
+                                      backgroundColor: q.color,
+                                      opacity: 0.35,
+                                    }}
+                                  />
+                                ))
+                              : [
+                                  { min: 0, max: 500, color: "#4a6280" },
+                                  { min: 500, max: 1000, color: "#fbbf24" },
+                                  { min: 1000, max: 1500, color: "#fb923c" },
+                                  { min: 1500, max: 2000, color: "#f87171" },
+                                ].map((q) => (
+                                  <div
+                                    key={q.min}
+                                    className="h-full"
+                                    style={{
+                                      width: `${((q.max - q.min) / 2000) * 100}%`,
+                                      backgroundColor: q.color,
+                                      opacity: 0.35,
+                                    }}
+                                  />
+                                ))}
                             <div
-                              className="absolute"
-                              style={{ left: `${yearToPercent(today, timelineStart, timelineEnd)}%`, top: "0", bottom: "0", width: "1px", backgroundColor: "#34d399" }}
+                              className="absolute top-0 h-full w-1 rounded"
+                              style={{
+                                left: `${gaugePct}%`,
+                                backgroundColor: "#fff",
+                                transform: "translateX(-50%)",
+                                boxShadow: "0 0 6px rgba(255,255,255,0.5)",
+                              }}
                             />
-                            <div
-                              className="absolute text-[8px] tracking-wider -translate-x-1/2"
-                              style={{ left: `${yearToPercent(today, timelineStart, timelineEnd)}%`, top: "0", color: "#34d399" }}
-                            >
-                              today
-                            </div>
-                          </>
-                        );
-                      }
-                      return null;
-                    })()}
-                  </div>
-                </div>
+                          </div>
+                        </div>
 
-                {/* Row 3: Action buttons */}
-                <div className="p-6 lg:p-8 flex gap-3 flex-wrap">
-                  {["View methodology", "View ranking"].map((label) => (
-                    <a
-                      key={label}
-                      href={label === "View methodology" ? "/methodology" : "/patterns/ranking"}
+                        <div className="text-center">
+                          <div
+                            className="font-data text-3xl font-bold"
+                            style={{ color: ppsClr }}
+                          >
+                            {ppsDisplay}
+                          </div>
+                          <div
+                            className="text-[9px] tracking-widest uppercase"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            PPS -- {ppsLbl}
+                          </div>
+                        </div>
+
+                        <div
+                          className="flex gap-4 text-[10px] font-data"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          <span>{len}yrs</span>
+                          <span>&middot;</span>
+                          <span>{numIdx} indicators</span>
+                          <span>&middot;</span>
+                          <span>avg r {avgCorr.toFixed(3)}</span>
+                        </div>
+                      </div>
+
+                      {/* Country B */}
+                      <div className="flex items-center gap-4 lg:justify-end">
+                        <div className="text-right">
+                          <div
+                            className="text-lg font-semibold"
+                            style={{ color: "var(--qgi-country-b)" }}
+                          >
+                            {detailCountryB.toUpperCase()}
+                          </div>
+                          <div
+                            className="font-data text-xs"
+                            style={{ color: "var(--qgi-text-muted)" }}
+                          >
+                            {startB} &mdash; {endB}
+                          </div>
+                          <div
+                            className="text-[10px] tracking-widest uppercase mt-0.5"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            FOLLOWING
+                          </div>
+                        </div>
+                        <CountryFlag alpha2={detailA2B} size={36} />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Row 2: Timeline ribbon */}
+                  <div
+                    className="px-6 lg:px-8 py-5"
+                    style={{ backgroundColor: "rgba(0,0,0,0.15)" }}
+                  >
+                    <div className="relative h-20">
+                      <div
+                        className="absolute top-1/2 left-0 right-0 h-px"
+                        style={{ backgroundColor: "var(--qgi-border)" }}
+                      />
+
+                      {/* Year labels */}
+                      {Array.from(
+                        new Set(
+                          [1960, 1970, 1980, 1990, 2000, 2010, 2020, 2030].filter(
+                            (y) => y >= timelineStart && y <= timelineEnd
+                          )
+                        )
+                      ).map((y) => (
+                        <div
+                          key={y}
+                          className="absolute bottom-0 text-[9px] font-data -translate-x-1/2"
+                          style={{
+                            left: `${yearToPercent(y, timelineStart, timelineEnd)}%`,
+                            color: "var(--qgi-text-dim)",
+                          }}
+                        >
+                          {y}
+                        </div>
+                      ))}
+
+                      {/* Predictor bar (top) */}
+                      <div
+                        className="absolute h-5 rounded"
+                        style={{
+                          left: `${yearToPercent(startA, timelineStart, timelineEnd)}%`,
+                          width: `${yearToPercent(endA, timelineStart, timelineEnd) - yearToPercent(startA, timelineStart, timelineEnd)}%`,
+                          top: "8px",
+                          backgroundColor: "var(--qgi-country-a)",
+                          opacity: 0.6,
+                        }}
+                      />
+                      <div
+                        className="absolute text-[9px] font-data -translate-x-1/2"
+                        style={{
+                          left: `${yearToPercent((startA + endA) / 2, timelineStart, timelineEnd)}%`,
+                          top: "10px",
+                          color: "#fff",
+                        }}
+                      >
+                        {detailA2A} {startA}-{endA}
+                      </div>
+
+                      {/* Following bar (bottom) */}
+                      <div
+                        className="absolute h-5 rounded"
+                        style={{
+                          left: `${yearToPercent(startB, timelineStart, timelineEnd)}%`,
+                          width: `${yearToPercent(endB, timelineStart, timelineEnd) - yearToPercent(startB, timelineStart, timelineEnd)}%`,
+                          top: "48px",
+                          backgroundColor: "var(--qgi-country-b)",
+                          opacity: 0.6,
+                        }}
+                      />
+                      <div
+                        className="absolute text-[9px] font-data -translate-x-1/2"
+                        style={{
+                          left: `${yearToPercent((startB + endB) / 2, timelineStart, timelineEnd)}%`,
+                          top: "50px",
+                          color: "#fff",
+                        }}
+                      >
+                        {detailA2B} {startB}-{endB}
+                      </div>
+
+                      {/* Today marker */}
+                      {(() => {
+                        const today = new Date().getFullYear();
+                        if (today >= timelineStart && today <= timelineEnd) {
+                          return (
+                            <>
+                              <div
+                                className="absolute"
+                                style={{
+                                  left: `${yearToPercent(today, timelineStart, timelineEnd)}%`,
+                                  top: "0",
+                                  bottom: "0",
+                                  width: "1px",
+                                  backgroundColor: "#34d399",
+                                }}
+                              />
+                              <div
+                                className="absolute text-[8px] tracking-wider -translate-x-1/2"
+                                style={{
+                                  left: `${yearToPercent(today, timelineStart, timelineEnd)}%`,
+                                  top: "0",
+                                  color: "#34d399",
+                                }}
+                              >
+                                today
+                              </div>
+                            </>
+                          );
+                        }
+                        return null;
+                      })()}
+                    </div>
+                  </div>
+
+                  {/* Row 3: Action buttons */}
+                  <div className="p-6 lg:p-8 flex gap-3 flex-wrap">
+                    {["View methodology", "View ranking"].map((label) => (
+                      <a
+                        key={label}
+                        href={
+                          label === "View methodology"
+                            ? "/methodology"
+                            : "/patterns/ranking"
+                        }
+                        className="px-4 py-2 rounded text-[11px] tracking-wider transition-colors"
+                        style={{
+                          backgroundColor: "var(--qgi-surface-2)",
+                          color: "var(--qgi-text-muted)",
+                          border: "1px solid var(--qgi-border)",
+                        }}
+                      >
+                        {label}
+                      </a>
+                    ))}
+                    <button
+                      onClick={exportPatternSummary}
                       className="px-4 py-2 rounded text-[11px] tracking-wider transition-colors"
                       style={{
                         backgroundColor: "var(--qgi-surface-2)",
@@ -1725,431 +1881,637 @@ export default function PatternsClient({
                         border: "1px solid var(--qgi-border)",
                       }}
                     >
-                      {label}
-                    </a>
-                  ))}
+                      Export pattern
+                    </button>
+                  </div>
+                </section>
+
+                {/* === TOOLBAR === */}
+                <div
+                  className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  {/* Transformation selector */}
+                  <select
+                    value={transformation}
+                    onChange={(e) => setTransformation(e.target.value as Transformation)}
+                    className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
+                    style={{
+                      borderColor: "var(--qgi-border)",
+                      color: "var(--qgi-text-muted)",
+                    }}
+                  >
+                    {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
+                      <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
+                        {v}
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* Align toggle */}
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
+                      className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                      style={{
+                        backgroundColor: effectiveAlign
+                          ? "var(--qgi-accent)"
+                          : "var(--qgi-border)",
+                        opacity: startsDiffer ? 0.6 : 1,
+                        cursor: startsDiffer ? "default" : "pointer",
+                      }}
+                      title={
+                        startsDiffer
+                          ? "Auto-aligned: windows at different calendar years"
+                          : "Align to Year 1, Year 2, ..."
+                      }
+                    >
+                      <div
+                        className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+                        style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
+                      />
+                    </button>
+                    <span
+                      className="text-[10px] tracking-wider"
+                      style={{
+                        color: effectiveAlign
+                          ? "var(--qgi-accent)"
+                          : "var(--qgi-text-dim)",
+                      }}
+                    >
+                      {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
+                      {startsDiffer && (
+                        <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>
+                      )}
+                    </span>
+                  </div>
+
+                  <div className="flex-1" />
+
+                  {/* Sector chips */}
+                  <div className="flex gap-2 flex-wrap">
+                    {Object.entries(sectorCounts)
+                      .sort((a, b) => b[1] - a[1])
+                      .map(([s]) => (
+                        <span
+                          key={s}
+                          className="px-2 py-0.5 rounded text-[9px] tracking-wider"
+                          style={{
+                            backgroundColor: `${getSectorColor(s)}18`,
+                            color: getSectorColor(s),
+                            border: `1px solid ${getSectorColor(s)}33`,
+                          }}
+                        >
+                          {s.toUpperCase()}
+                        </span>
+                      ))}
+                  </div>
+
+                  {/* Section toggles */}
+                  <div className="flex gap-2">
+                    <button
+                      onClick={() => setShowTable(!showTable)}
+                      className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                      style={{
+                        borderColor: showTable
+                          ? "var(--qgi-accent)"
+                          : "var(--qgi-border)",
+                        color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                      }}
+                    >
+                      TABLE
+                    </button>
+                    <button
+                      onClick={() => setShowCharts(!showCharts)}
+                      className="text-[10px] tracking-wider px-2 py-1 rounded border"
+                      style={{
+                        borderColor: showCharts
+                          ? "var(--qgi-accent)"
+                          : "var(--qgi-border)",
+                        color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+                      }}
+                    >
+                      CHARTS
+                    </button>
+                  </div>
+
+                  {/* Export CSV */}
                   <button
-                    onClick={exportPatternSummary}
-                    className="px-4 py-2 rounded text-[11px] tracking-wider transition-colors"
+                    onClick={exportCsv}
+                    className="px-3 py-1.5 rounded text-[10px] tracking-wider transition-colors"
                     style={{
                       backgroundColor: "var(--qgi-surface-2)",
                       color: "var(--qgi-text-muted)",
                       border: "1px solid var(--qgi-border)",
                     }}
                   >
-                    Export pattern
-                  </button>
-                </div>
-              </section>
-
-              {/* === TOOLBAR === */}
-              <div
-                className="flex flex-wrap items-center gap-3 p-3 rounded-lg"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  border: "1px solid var(--qgi-border)",
-                }}
-              >
-                {/* Transformation selector */}
-                <select
-                  value={transformation}
-                  onChange={(e) => setTransformation(e.target.value as Transformation)}
-                  className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
-                  style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
-                >
-                  {Object.entries(TRANSFORMATION_LABELS).map(([k, v]) => (
-                    <option key={k} value={k} style={{ backgroundColor: "#162032" }}>
-                      {v}
-                    </option>
-                  ))}
-                </select>
-
-                {/* Align toggle */}
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => !startsDiffer && setAlign(!effectiveAlign)}
-                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                    style={{
-                      backgroundColor: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      opacity: startsDiffer ? 0.6 : 1,
-                      cursor: startsDiffer ? "default" : "pointer",
-                    }}
-                    title={startsDiffer ? "Auto-aligned: windows at different calendar years" : "Align to Year 1, Year 2, ..."}
-                  >
-                    <div
-                      className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
-                      style={{ left: effectiveAlign ? "calc(100% - 14px)" : "2px" }}
-                    />
-                  </button>
-                  <span className="text-[10px] tracking-wider" style={{ color: effectiveAlign ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                    {effectiveAlign ? "Aligned (Year 1-N)" : "Calendar years"}
-                    {startsDiffer && <span style={{ color: "var(--qgi-amber)" }}> (auto)</span>}
-                  </span>
-                </div>
-
-                <div className="flex-1" />
-
-                {/* Sector chips */}
-                <div className="flex gap-2 flex-wrap">
-                  {Object.entries(sectorCounts).sort((a, b) => b[1] - a[1]).map(([s]) => (
-                    <span
-                      key={s}
-                      className="px-2 py-0.5 rounded text-[9px] tracking-wider"
-                      style={{
-                        backgroundColor: `${getSectorColor(s)}18`,
-                        color: getSectorColor(s),
-                        border: `1px solid ${getSectorColor(s)}33`,
-                      }}
-                    >
-                      {s.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Section toggles */}
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setShowTable(!showTable)}
-                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                    style={{
-                      borderColor: showTable ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      color: showTable ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                    }}
-                  >
-                    TABLE
-                  </button>
-                  <button
-                    onClick={() => setShowCharts(!showCharts)}
-                    className="text-[10px] tracking-wider px-2 py-1 rounded border"
-                    style={{
-                      borderColor: showCharts ? "var(--qgi-accent)" : "var(--qgi-border)",
-                      color: showCharts ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
-                    }}
-                  >
-                    CHARTS
+                    Export CSV
                   </button>
                 </div>
 
-                {/* Export CSV */}
-                <button
-                  onClick={exportCsv}
-                  className="px-3 py-1.5 rounded text-[10px] tracking-wider transition-colors"
-                  style={{
-                    backgroundColor: "var(--qgi-surface-2)",
-                    color: "var(--qgi-text-muted)",
-                    border: "1px solid var(--qgi-border)",
-                  }}
-                >
-                  Export CSV
-                </button>
-              </div>
-
-              {/* === MAIN BODY: Charts + Table LEFT / Related Patterns RIGHT === */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
-                {/* ---- Left: SCDI cards + table ---- */}
-                <div className="space-y-6">
-                  {/* === V2 EXPANDABLE SCDI CARDS === */}
-                  {showCharts && (
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-                      {detail.scdis.map((s, i) => {
-                        const isExpanded = expandedScdi === s.index_name;
-                        const sc = getSectorColor(s.sector);
-                        return (
-                          <div
-                            key={s.index_name}
-                            className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
-                            style={{
-                              backgroundColor: `${sc}08`,
-                              border: isExpanded ? `1px solid ${sc}66` : "1px solid var(--qgi-border)",
-                            }}
-                            onClick={() => setExpandedScdi(isExpanded ? null : s.index_name)}
-                          >
-                            <div className="flex items-center justify-between mb-2">
-                              <div className="text-[9px] tracking-wider truncate" style={{ color: "var(--qgi-text-muted)" }} title={s.index_name}>
-                                {s.index_name}
+                {/* === MAIN BODY: Charts + Table LEFT / Related Patterns RIGHT === */}
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
+                  {/* ---- Left: SCDI cards + table ---- */}
+                  <div className="space-y-6">
+                    {/* === V2 EXPANDABLE SCDI CARDS === */}
+                    {showCharts && (
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+                        {detail.scdis.map((s, i) => {
+                          const isExpanded = expandedScdi === s.index_name;
+                          const sc = getSectorColor(s.sector);
+                          return (
+                            <div
+                              key={s.index_name}
+                              className={`rounded-lg p-3 cursor-pointer transition-all hover:border-[var(--qgi-accent)] ${isExpanded ? "col-span-2 lg:col-span-4" : ""}`}
+                              style={{
+                                backgroundColor: `${sc}08`,
+                                border: isExpanded
+                                  ? `1px solid ${sc}66`
+                                  : "1px solid var(--qgi-border)",
+                              }}
+                              onClick={() =>
+                                setExpandedScdi(isExpanded ? null : s.index_name)
+                              }
+                            >
+                              <div className="flex items-center justify-between mb-2">
+                                <div
+                                  className="text-[9px] tracking-wider truncate"
+                                  style={{ color: "var(--qgi-text-muted)" }}
+                                  title={s.index_name}
+                                >
+                                  {s.index_name}
+                                </div>
+                                <span
+                                  className="text-[9px] ml-2 shrink-0"
+                                  style={{ color: "var(--qgi-text-dim)" }}
+                                >
+                                  {isExpanded ? "collapse" : "expand"}
+                                </span>
                               </div>
-                              <span className="text-[9px] ml-2 shrink-0" style={{ color: "var(--qgi-text-dim)" }}>
-                                {isExpanded ? "collapse" : "expand"}
-                              </span>
-                            </div>
 
-                            {isExpanded ? (
-                              <div>
-                                <div className="flex items-center gap-3 mb-2" onClick={(e) => e.stopPropagation()}>
-                                  <button
-                                    onClick={(e) => { e.stopPropagation(); setScdiAligned(!scdiAligned); }}
-                                    className="relative w-8 h-4 rounded-full transition-colors shrink-0"
-                                    style={{ backgroundColor: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-border)" }}
+                              {isExpanded ? (
+                                <div>
+                                  <div
+                                    className="flex items-center gap-3 mb-2"
+                                    onClick={(e) => e.stopPropagation()}
                                   >
-                                    <div className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform" style={{ left: scdiAligned ? "calc(100% - 14px)" : "2px" }} />
-                                  </button>
-                                  <span className="text-[9px] tracking-wider" style={{ color: scdiAligned ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
-                                    {scdiAligned ? `Aligned (Year 1-${len})` : "Calendar years"}
-                                  </span>
+                                    <button
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setScdiAligned(!scdiAligned);
+                                      }}
+                                      className="relative w-8 h-4 rounded-full transition-colors shrink-0"
+                                      style={{
+                                        backgroundColor: scdiAligned
+                                          ? "var(--qgi-accent)"
+                                          : "var(--qgi-border)",
+                                      }}
+                                    >
+                                      <div
+                                        className="absolute top-0.5 w-3 h-3 rounded-full bg-white transition-transform"
+                                        style={{
+                                          left: scdiAligned ? "calc(100% - 14px)" : "2px",
+                                        }}
+                                      />
+                                    </button>
+                                    <span
+                                      className="text-[9px] tracking-wider"
+                                      style={{
+                                        color: scdiAligned
+                                          ? "var(--qgi-accent)"
+                                          : "var(--qgi-text-dim)",
+                                      }}
+                                    >
+                                      {scdiAligned
+                                        ? `Aligned (Year 1-${len})`
+                                        : "Calendar years"}
+                                    </span>
+                                  </div>
+                                  <div className="h-48 mb-2">
+                                    <ReactECharts
+                                      option={{
+                                        backgroundColor: "transparent",
+                                        tooltip: {
+                                          trigger: "axis",
+                                          backgroundColor: "#1e2d42",
+                                          borderColor: "#243347",
+                                          textStyle: { color: "#e2e8f0", fontSize: 10 },
+                                        },
+                                        legend: {
+                                          data: [detailCountryA, detailCountryB],
+                                          top: 0,
+                                          right: 8,
+                                          textStyle: { color: "#7a90a8", fontSize: 9 },
+                                          itemWidth: 12,
+                                          itemHeight: 2,
+                                        },
+                                        grid: {
+                                          top: 30,
+                                          right: 12,
+                                          bottom: 24,
+                                          left: 48,
+                                        },
+                                        xAxis: scdiAligned
+                                          ? {
+                                              type: "category" as const,
+                                              data: Array.from(
+                                                { length: len },
+                                                (_, j) => `Year ${j + 1}`
+                                              ),
+                                              axisLine: {
+                                                lineStyle: { color: "#243347" },
+                                              },
+                                              axisLabel: {
+                                                color: "#4a6280",
+                                                fontSize: 9,
+                                              },
+                                            }
+                                          : {
+                                              type: "value" as const,
+                                              min: Math.min(startA, startB) - 1,
+                                              max: Math.max(endA, endB) + 1,
+                                              axisLine: {
+                                                lineStyle: { color: "#243347" },
+                                              },
+                                              axisLabel: {
+                                                color: "#4a6280",
+                                                fontSize: 9,
+                                                formatter: (v: number) =>
+                                                  String(Math.round(v)),
+                                              },
+                                              splitLine: { show: false },
+                                            },
+                                        yAxis: {
+                                          type: "value",
+                                          scale: true,
+                                          axisLine: { lineStyle: { color: "#243347" } },
+                                          splitLine: { lineStyle: { color: "#1a2a3a" } },
+                                          axisLabel: { color: "#4a6280", fontSize: 9 },
+                                        },
+                                        series: scdiAligned
+                                          ? [
+                                              {
+                                                name: detailCountryA,
+                                                type: "line",
+                                                data: s.values_a,
+                                                lineStyle: { color: "#38bdf8", width: 2 },
+                                                itemStyle: { color: "#38bdf8" },
+                                                symbol: "circle",
+                                                symbolSize: 4,
+                                              },
+                                              {
+                                                name: detailCountryB,
+                                                type: "line",
+                                                data: s.values_b,
+                                                lineStyle: { color: "#fb923c", width: 2 },
+                                                itemStyle: { color: "#fb923c" },
+                                                symbol: "circle",
+                                                symbolSize: 4,
+                                              },
+                                            ]
+                                          : [
+                                              {
+                                                name: detailCountryA,
+                                                type: "line",
+                                                data: s.values_a.map((v, j) => [
+                                                  startA + j,
+                                                  v,
+                                                ]),
+                                                lineStyle: { color: "#38bdf8", width: 2 },
+                                                itemStyle: { color: "#38bdf8" },
+                                                symbol: "circle",
+                                                symbolSize: 4,
+                                              },
+                                              {
+                                                name: detailCountryB,
+                                                type: "line",
+                                                data: s.values_b.map((v, j) => [
+                                                  startB + j,
+                                                  v,
+                                                ]),
+                                                lineStyle: { color: "#fb923c", width: 2 },
+                                                itemStyle: { color: "#fb923c" },
+                                                symbol: "circle",
+                                                symbolSize: 4,
+                                              },
+                                            ],
+                                      }}
+                                      style={{ height: "100%", width: "100%" }}
+                                      notMerge
+                                    />
+                                  </div>
                                 </div>
-                                <div className="h-48 mb-2">
-                                  <ReactECharts
-                                    option={{
-                                      backgroundColor: "transparent",
-                                      tooltip: {
-                                        trigger: "axis",
-                                        backgroundColor: "#1e2d42",
-                                        borderColor: "#243347",
-                                        textStyle: { color: "#e2e8f0", fontSize: 10 },
-                                      },
-                                      legend: {
-                                        data: [detailCountryA, detailCountryB],
-                                        top: 0, right: 8,
-                                        textStyle: { color: "#7a90a8", fontSize: 9 },
-                                        itemWidth: 12, itemHeight: 2,
-                                      },
-                                      grid: { top: 30, right: 12, bottom: 24, left: 48 },
-                                      xAxis: scdiAligned
-                                        ? {
-                                            type: "category" as const,
-                                            data: Array.from({ length: len }, (_, j) => `Year ${j + 1}`),
-                                            axisLine: { lineStyle: { color: "#243347" } },
-                                            axisLabel: { color: "#4a6280", fontSize: 9 },
-                                          }
-                                        : {
-                                            type: "value" as const,
-                                            min: Math.min(startA, startB) - 1,
-                                            max: Math.max(endA, endB) + 1,
-                                            axisLine: { lineStyle: { color: "#243347" } },
-                                            axisLabel: { color: "#4a6280", fontSize: 9, formatter: (v: number) => String(Math.round(v)) },
-                                            splitLine: { show: false },
-                                          },
-                                      yAxis: {
-                                        type: "value",
-                                        scale: true,
-                                        axisLine: { lineStyle: { color: "#243347" } },
-                                        splitLine: { lineStyle: { color: "#1a2a3a" } },
-                                        axisLabel: { color: "#4a6280", fontSize: 9 },
-                                      },
-                                      series: scdiAligned
-                                        ? [
-                                            { name: detailCountryA, type: "line", data: s.values_a, lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                            { name: detailCountryB, type: "line", data: s.values_b, lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                          ]
-                                        : [
-                                            { name: detailCountryA, type: "line", data: s.values_a.map((v, j) => [startA + j, v]), lineStyle: { color: "#38bdf8", width: 2 }, itemStyle: { color: "#38bdf8" }, symbol: "circle", symbolSize: 4 },
-                                            { name: detailCountryB, type: "line", data: s.values_b.map((v, j) => [startB + j, v]), lineStyle: { color: "#fb923c", width: 2 }, itemStyle: { color: "#fb923c" }, symbol: "circle", symbolSize: 4 },
-                                          ],
-                                    }}
-                                    style={{ height: "100%", width: "100%" }}
-                                    notMerge
-                                  />
-                                </div>
-                              </div>
-                            ) : (
-                              <div className="mb-2 rounded flex items-center justify-center h-16" style={{ backgroundColor: "var(--qgi-surface)" }}>
-                                {s.correlation != null ? (
-                                  <div className="w-full px-2">
-                                    {/* T6 #299 MEDIUM fix (2026-04-19):
+                              ) : (
+                                <div
+                                  className="mb-2 rounded flex items-center justify-center h-16"
+                                  style={{ backgroundColor: "var(--qgi-surface)" }}
+                                >
+                                  {s.correlation != null ? (
+                                    <div className="w-full px-2">
+                                      {/* T6 #299 MEDIUM fix (2026-04-19):
                                         correlation bar was `Math.max(4, ...)`
                                         which gave negative correlations a
                                         visible 4% positive-width bar. Now
                                         renders signed: abs() for width,
                                         red for negative, existing color
                                         for positive. */}
-                                    <div
-                                      className="h-2 rounded-full"
-                                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
-                                    >
                                       <div
-                                        className="h-full rounded-full"
+                                        className="h-2 rounded-full"
                                         style={{
-                                          width: `${Math.min(100, Math.round(Math.abs(s.correlation) * 100))}%`,
-                                          backgroundColor: s.correlation < 0 ? "#f87171" : sc,
-                                          opacity: 0.7,
+                                          backgroundColor: "var(--qgi-surface-2)",
                                         }}
-                                      />
+                                      >
+                                        <div
+                                          className="h-full rounded-full"
+                                          style={{
+                                            width: `${Math.min(100, Math.round(Math.abs(s.correlation) * 100))}%`,
+                                            backgroundColor:
+                                              s.correlation < 0 ? "#f87171" : sc,
+                                            opacity: 0.7,
+                                          }}
+                                        />
+                                      </div>
+                                      <div
+                                        className="text-center mt-1.5 font-data text-[9px]"
+                                        style={{ color: sc }}
+                                      >
+                                        r = {s.correlation.toFixed(2)}
+                                      </div>
                                     </div>
-                                    <div className="text-center mt-1.5 font-data text-[9px]" style={{ color: sc }}>
-                                      r = {s.correlation.toFixed(2)}
-                                    </div>
-                                  </div>
-                                ) : null}
+                                  ) : null}
+                                </div>
+                              )}
+
+                              <div className="flex items-center justify-between">
+                                <div
+                                  className="w-1 h-3 rounded-full"
+                                  style={{ backgroundColor: sc }}
+                                />
+                                <span
+                                  className="font-data text-[10px]"
+                                  style={{ color: "var(--qgi-text-muted)" }}
+                                >
+                                  r={s.correlation.toFixed(2)}{" "}
+                                  {s.correlation >= 0.85
+                                    ? "***"
+                                    : s.correlation >= 0.75
+                                      ? "**"
+                                      : "*"}
+                                </span>
                               </div>
-                            )}
-
-                            <div className="flex items-center justify-between">
-                              <div className="w-1 h-3 rounded-full" style={{ backgroundColor: sc }} />
-                              <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-                                r={s.correlation.toFixed(2)} {s.correlation >= 0.85 ? "***" : s.correlation >= 0.75 ? "**" : "*"}
-                              </span>
                             </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
+                          );
+                        })}
+                      </div>
+                    )}
 
-                  {/* === SCDI TABLE === */}
-                  {showTable && (
+                    {/* === SCDI TABLE === */}
+                    {showTable && (
+                      <div
+                        className="rounded-xl overflow-hidden"
+                        style={{
+                          backgroundColor: "var(--qgi-surface)",
+                          border: "1px solid var(--qgi-border)",
+                        }}
+                      >
+                        <div
+                          className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b"
+                          style={{
+                            color: "var(--qgi-text-dim)",
+                            borderColor: "var(--qgi-border)",
+                          }}
+                        >
+                          Indicator Matches ({detail.scdis.length})
+                        </div>
+                        <ScdiTable
+                          scdis={detail.scdis}
+                          onRowSelect={(name) =>
+                            setSelectedIndex(selectedIndex === name ? null : name)
+                          }
+                          selectedIndex={selectedIndex}
+                        />
+                      </div>
+                    )}
+                  </div>
+
+                  {/* ---- Right: Related patterns sidebar ---- */}
+                  <div className="space-y-4">
+                    {/* SAME PREDICTOR panel */}
                     <div
-                      className="rounded-xl overflow-hidden"
+                      className="rounded-xl p-4"
                       style={{
                         backgroundColor: "var(--qgi-surface)",
                         border: "1px solid var(--qgi-border)",
                       }}
                     >
-                      <div className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b" style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}>
-                        Indicator Matches ({detail.scdis.length})
+                      <div className="mb-3">
+                        <div
+                          className="text-[10px] tracking-widest uppercase font-semibold"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          SAME PREDICTOR
+                        </div>
+                        <div
+                          className="text-[9px] tracking-wider"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {detailCountryA} &rarr; others
+                        </div>
                       </div>
-                      <ScdiTable
-                        scdis={detail.scdis}
-                        onRowSelect={(name) => setSelectedIndex(selectedIndex === name ? null : name)}
-                        selectedIndex={selectedIndex}
-                      />
+                      <div className="space-y-2">
+                        {samePredictorLoading ? (
+                          <div
+                            className="text-[9px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            Loading...
+                          </div>
+                        ) : samePredictorPartners.length === 0 ? (
+                          <div
+                            className="text-[9px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            No other partners
+                          </div>
+                        ) : (
+                          samePredictorPartners.map((p) => (
+                            <button
+                              key={p.id}
+                              onClick={() => handleCountryBChange(p.id)}
+                              className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                            >
+                              <div className="flex items-center gap-1 shrink-0">
+                                <CountryFlag alpha2={detailA2A} size={14} />
+                                <span
+                                  className="text-[9px]"
+                                  style={{ color: "var(--qgi-text-dim)" }}
+                                >
+                                  &rarr;
+                                </span>
+                                <CountryFlag alpha2={p.alpha2} size={14} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div
+                                  className="text-[10px] font-data truncate"
+                                  style={{ color: "var(--qgi-text)" }}
+                                >
+                                  {detailCountryA} &rarr; {p.name}
+                                </div>
+                                <div
+                                  className="text-[9px]"
+                                  style={{ color: "var(--qgi-text-dim)" }}
+                                >
+                                  {p.lmin}&ndash;{p.lmax}yr
+                                </div>
+                              </div>
+                              <div
+                                className="font-data text-xs font-bold shrink-0"
+                                style={{ color: "var(--qgi-accent)" }}
+                              >
+                                {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
+                              </div>
+                            </button>
+                          ))
+                        )}
+                      </div>
                     </div>
-                  )}
+
+                    {/* SAME FOLLOWING panel */}
+                    <div
+                      className="rounded-xl p-4"
+                      style={{
+                        backgroundColor: "var(--qgi-surface)",
+                        border: "1px solid var(--qgi-border)",
+                      }}
+                    >
+                      <div className="mb-3">
+                        <div
+                          className="text-[10px] tracking-widest uppercase font-semibold"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          SAME FOLLOWING
+                        </div>
+                        <div
+                          className="text-[9px] tracking-wider"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {detailCountryB} &rarr; others
+                        </div>
+                      </div>
+                      <div className="space-y-2">
+                        {sameFollowingLoading ? (
+                          <div
+                            className="text-[9px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            Loading...
+                          </div>
+                        ) : sameFollowingPartners.length === 0 ? (
+                          <div
+                            className="text-[9px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            No other partners
+                          </div>
+                        ) : (
+                          sameFollowingPartners.map((p) => (
+                            <button
+                              key={p.id}
+                              onClick={() => {
+                                setCountryA(countryB);
+                                handleCountryBChange(p.id);
+                              }}
+                              className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
+                            >
+                              <div className="flex items-center gap-1 shrink-0">
+                                <CountryFlag alpha2={detailA2B} size={14} />
+                                <span
+                                  className="text-[9px]"
+                                  style={{ color: "var(--qgi-text-dim)" }}
+                                >
+                                  &rarr;
+                                </span>
+                                <CountryFlag alpha2={p.alpha2} size={14} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div
+                                  className="text-[10px] font-data truncate"
+                                  style={{ color: "var(--qgi-text)" }}
+                                >
+                                  {detailCountryB} &rarr; {p.name}
+                                </div>
+                                <div
+                                  className="text-[9px]"
+                                  style={{ color: "var(--qgi-text-dim)" }}
+                                >
+                                  {p.lmin}&ndash;{p.lmax}yr
+                                </div>
+                              </div>
+                              <div
+                                className="font-data text-xs font-bold shrink-0"
+                                style={{ color: "var(--qgi-accent)" }}
+                              >
+                                {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
+                              </div>
+                            </button>
+                          ))
+                        )}
+                      </div>
+                    </div>
+
+                    {/* SIMILAR MIX panel (placeholder) */}
+                    <div
+                      className="rounded-xl p-4"
+                      style={{
+                        backgroundColor: "var(--qgi-surface)",
+                        border: "1px dashed var(--qgi-border)",
+                      }}
+                    >
+                      <div className="mb-3">
+                        <div
+                          className="text-[10px] tracking-widest uppercase font-semibold"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          SIMILAR MIX
+                        </div>
+                        <div
+                          className="text-[9px] tracking-wider"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {Object.keys(sectorCounts).slice(0, 3).join(" + ") ||
+                            "indicator composition"}
+                        </div>
+                      </div>
+                      <p
+                        className="text-[9px] leading-relaxed"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
+                        Patterns with similar indicator composition will appear here after
+                        the next pipeline run.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                {/* ---- Right: Related patterns sidebar ---- */}
-                <div className="space-y-4">
-                  {/* SAME PREDICTOR panel */}
-                  <div
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "var(--qgi-surface)",
-                      border: "1px solid var(--qgi-border)",
-                    }}
-                  >
-                    <div className="mb-3">
-                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
-                        SAME PREDICTOR
-                      </div>
-                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                        {detailCountryA} &rarr; others
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      {samePredictorLoading ? (
-                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>Loading...</div>
-                      ) : samePredictorPartners.length === 0 ? (
-                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>No other partners</div>
-                      ) : (
-                        samePredictorPartners.map((p) => (
-                          <button
-                            key={p.id}
-                            onClick={() => handleCountryBChange(p.id)}
-                            className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
-                          >
-                            <div className="flex items-center gap-1 shrink-0">
-                              <CountryFlag alpha2={detailA2A} size={14} />
-                              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
-                              <CountryFlag alpha2={p.alpha2} size={14} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[10px] font-data truncate" style={{ color: "var(--qgi-text)" }}>
-                                {detailCountryA} &rarr; {p.name}
-                              </div>
-                              <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
-                                {p.lmin}&ndash;{p.lmax}yr
-                              </div>
-                            </div>
-                            <div className="font-data text-xs font-bold shrink-0" style={{ color: "var(--qgi-accent)" }}>
-                              {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
-                            </div>
-                          </button>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  {/* SAME FOLLOWING panel */}
-                  <div
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "var(--qgi-surface)",
-                      border: "1px solid var(--qgi-border)",
-                    }}
-                  >
-                    <div className="mb-3">
-                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
-                        SAME FOLLOWING
-                      </div>
-                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                        {detailCountryB} &rarr; others
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      {sameFollowingLoading ? (
-                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>Loading...</div>
-                      ) : sameFollowingPartners.length === 0 ? (
-                        <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>No other partners</div>
-                      ) : (
-                        sameFollowingPartners.map((p) => (
-                          <button
-                            key={p.id}
-                            onClick={() => {
-                              setCountryA(countryB);
-                              handleCountryBChange(p.id);
-                            }}
-                            className="flex items-center gap-2 p-2 rounded w-full transition-colors text-left cursor-pointer hover:bg-[var(--qgi-surface-2)]"
-                          >
-                            <div className="flex items-center gap-1 shrink-0">
-                              <CountryFlag alpha2={detailA2B} size={14} />
-                              <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>&rarr;</span>
-                              <CountryFlag alpha2={p.alpha2} size={14} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[10px] font-data truncate" style={{ color: "var(--qgi-text)" }}>
-                                {detailCountryB} &rarr; {p.name}
-                              </div>
-                              <div className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
-                                {p.lmin}&ndash;{p.lmax}yr
-                              </div>
-                            </div>
-                            <div className="font-data text-xs font-bold shrink-0" style={{ color: "var(--qgi-accent)" }}>
-                              {p.pps > 1 ? Math.round(p.pps) : p.pps.toFixed(2)}
-                            </div>
-                          </button>
-                        ))
-                      )}
-                    </div>
-                  </div>
-
-                  {/* SIMILAR MIX panel (placeholder) */}
-                  <div
-                    className="rounded-xl p-4"
-                    style={{
-                      backgroundColor: "var(--qgi-surface)",
-                      border: "1px dashed var(--qgi-border)",
-                    }}
-                  >
-                    <div className="mb-3">
-                      <div className="text-[10px] tracking-widest uppercase font-semibold" style={{ color: "var(--qgi-text-muted)" }}>
-                        SIMILAR MIX
-                      </div>
-                      <div className="text-[9px] tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
-                        {Object.keys(sectorCounts).slice(0, 3).join(" + ") || "indicator composition"}
-                      </div>
-                    </div>
-                    <p className="text-[9px] leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-                      Patterns with similar indicator composition will appear here after the next pipeline run.
-                    </p>
-                  </div>
-                </div>
+                {/* === METHODOLOGY FOOTER === */}
+                <footer
+                  className="rounded-lg p-4 text-[10px] tracking-wider leading-relaxed"
+                  style={{
+                    backgroundColor: "var(--qgi-surface)",
+                    color: "var(--qgi-text-dim)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  V1.8.1 z-score + RRF &middot; Pearson r &ge; 0.65 &middot; &plusmn;15%
+                  event window &middot; PPS quintiles: very weak &lt;0.50 / weak &lt;0.65
+                  / moderate &lt;0.75 / strong &lt;0.85 / very strong &ge;0.85
+                </footer>
               </div>
-
-              {/* === METHODOLOGY FOOTER === */}
-              <footer
-                className="rounded-lg p-4 text-[10px] tracking-wider leading-relaxed"
-                style={{
-                  backgroundColor: "var(--qgi-surface)",
-                  color: "var(--qgi-text-dim)",
-                  border: "1px solid var(--qgi-border)",
-                }}
-              >
-                V1.8.1 z-score + RRF &middot; Pearson r &ge; 0.65 &middot;
-                &plusmn;15% event window &middot; PPS quintiles: very weak &lt;0.50 / weak &lt;0.65 /
-                moderate &lt;0.75 / strong &lt;0.85 / very strong &ge;0.85
-              </footer>
-            </div>
-          );
-        })()}
+            );
+          })()}
       </div>
     </div>
   );

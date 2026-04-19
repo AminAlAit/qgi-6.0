@@ -68,10 +68,7 @@ export function DashboardClient({ patterns, indexes }: Props) {
           </span>
         )}
         {!hasPatterns && (
-          <span
-            className="ml-4 text-xs"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="ml-4 text-xs" style={{ color: "var(--qgi-text-dim)" }}>
             Connect Athena to load live data
           </span>
         )}
@@ -83,10 +80,7 @@ export function DashboardClient({ patterns, indexes }: Props) {
         style={{ height: "45%", borderColor: "var(--qgi-border)" }}
       >
         {/* Scatter */}
-        <div
-          className="flex-1 border-r p-3"
-          style={{ borderColor: "var(--qgi-border)" }}
-        >
+        <div className="flex-1 border-r p-3" style={{ borderColor: "var(--qgi-border)" }}>
           {hasPatterns ? (
             <PatternScatter patterns={scatterData} />
           ) : (
@@ -126,7 +120,8 @@ export function DashboardClient({ patterns, indexes }: Props) {
             Index Catalogue
             {activeSector && (
               <span style={{ color: "var(--qgi-accent)" }}>
-                {" "}— {activeSector}
+                {" "}
+                — {activeSector}
                 <button
                   onClick={() => setActiveSector(null)}
                   className="ml-2 text-[9px]"

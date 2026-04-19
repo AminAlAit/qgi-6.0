@@ -7,11 +7,17 @@ export const GET = withAuth(async (req: NextRequest) => {
   const country_a = searchParams.get("country_a");
   const country_b = searchParams.get("country_b");
   if (!country_a || !country_b) {
-    return NextResponse.json({ error: "country_a and country_b are required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "country_a and country_b are required" },
+      { status: 400 }
+    );
   }
 
   if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
-    return NextResponse.json({ error: "Invalid country_a or country_b" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid country_a or country_b" },
+      { status: 400 }
+    );
   }
 
   const rows = await runQuery(

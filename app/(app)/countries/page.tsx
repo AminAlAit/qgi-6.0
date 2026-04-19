@@ -26,8 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Countries — QGI Intelligence",
-    description:
-      "Browse country risk profiles powered by historical precedent analysis.",
+    description: "Browse country risk profiles powered by historical precedent analysis.",
   },
 };
 
@@ -40,13 +39,12 @@ export const metadata: Metadata = {
  * memoizes at module scope keyed by `_index.json` mtime so repeated
  * requests within an ISR window skip the work entirely.
  */
-let _salienceCache:
-  | { mtimeMs: number; data: Record<string, Record<string, number>> }
-  | null = null;
+let _salienceCache: {
+  mtimeMs: number;
+  data: Record<string, Record<string, number>>;
+} | null = null;
 
-async function loadAllSalienceScores(): Promise<
-  Record<string, Record<string, number>>
-> {
+async function loadAllSalienceScores(): Promise<Record<string, Record<string, number>>> {
   const fs = await import("fs/promises");
   const salienceDir = path.join(process.cwd(), "data", "salience");
 
@@ -111,8 +109,8 @@ export default async function CountriesPage() {
         >
           <p style={{ color: "var(--qgi-text-muted)" }}>
             Country risk data not yet available. Run{" "}
-            <code className="font-data text-xs">generate_country_risks.py</code>{" "}
-            to generate the data.
+            <code className="font-data text-xs">generate_country_risks.py</code> to
+            generate the data.
           </p>
         </div>
       </div>

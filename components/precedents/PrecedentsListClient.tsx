@@ -4,10 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
-import {
-  CATEGORY_L1_MAP,
-  L1_GROUPS,
-} from "@/lib/category-taxonomy";
+import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -94,9 +91,7 @@ function salienceBand(score: number): string {
 }
 
 function formatCategory(cat: string): string {
-  return cat
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // ---------------------------------------------------------------------------
@@ -106,9 +101,7 @@ function formatCategory(cat: string): string {
 function enrichRows(rows: PrecedentRow[]): EnrichedRow[] {
   return rows.map((r) => {
     const mapping = CATEGORY_L1_MAP[r.category];
-    const l1 = mapping
-      ? L1_GROUPS.find((g) => g.code === mapping.group)
-      : undefined;
+    const l1 = mapping ? L1_GROUPS.find((g) => g.code === mapping.group) : undefined;
     return {
       ...r,
       l1Group: mapping?.group ?? "?",
@@ -145,9 +138,7 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
     const topSalience = [...enriched].sort(
       (a, b) => b.salienceScore - a.salienceScore
     )[0];
-    const topRecipes = [...enriched].sort(
-      (a, b) => b.recipeCount - a.recipeCount
-    )[0];
+    const topRecipes = [...enriched].sort((a, b) => b.recipeCount - a.recipeCount)[0];
     const topRecent = [...enriched]
       .filter((r) => r.lastEventYear != null)
       .sort((a, b) => (b.lastEventYear ?? 0) - (a.lastEventYear ?? 0))[0];
@@ -231,14 +222,10 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
         arr.sort((a, b) => b.category.localeCompare(a.category));
         break;
       case "year_desc":
-        arr.sort(
-          (a, b) => (b.lastEventYear ?? 0) - (a.lastEventYear ?? 0)
-        );
+        arr.sort((a, b) => (b.lastEventYear ?? 0) - (a.lastEventYear ?? 0));
         break;
       case "year_asc":
-        arr.sort(
-          (a, b) => (a.lastEventYear ?? 9999) - (b.lastEventYear ?? 9999)
-        );
+        arr.sort((a, b) => (a.lastEventYear ?? 9999) - (b.lastEventYear ?? 9999));
         break;
     }
     return arr;
@@ -247,10 +234,7 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
   // ── Pagination ─────────────────────────────────────────────────────
   const totalPages = Math.max(1, Math.ceil(sorted.length / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
-  const paginated = sorted.slice(
-    (safePage - 1) * PAGE_SIZE,
-    safePage * PAGE_SIZE
-  );
+  const paginated = sorted.slice((safePage - 1) * PAGE_SIZE, safePage * PAGE_SIZE);
 
   const resetPage = () => setPage(1);
 
@@ -286,12 +270,8 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
             {enriched.length.toLocaleString()} signals monitored
           </span>
         </div>
-        <p
-          className="text-xs mt-1"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          Intelligence feed &mdash; all country-category pairs ranked by
-          salience
+        <p className="text-xs mt-1" style={{ color: "var(--qgi-text-muted)" }}>
+          Intelligence feed &mdash; all country-category pairs ranked by salience
         </p>
       </div>
 
@@ -401,61 +381,44 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
             className="flex rounded-lg border overflow-hidden"
             style={{ borderColor: "var(--qgi-border)" }}
           >
-            {(["ALL", "HIGH", "MODERATE", "INDICATIVE"] as const).map(
-              (tier) => {
-                const active = tierFilter === tier;
-                const hexColor =
-                  tier === "ALL"
-                    ? "#38bdf8"
-                    : TIER_STYLES[tier as RiskTier].text;
-                const cssColor =
-                  tier === "ALL"
-                    ? "var(--qgi-accent)"
-                    : TIER_STYLES[tier as RiskTier].text;
-                const count =
-                  tier === "ALL"
-                    ? tierCounts.ALL ?? 0
-                    : tierCounts[tier] ?? 0;
-                return (
-                  <button
-                    key={tier}
-                    onClick={() => {
-                      setTierFilter(tier === "ALL" ? "ALL" : tier);
-                      resetPage();
-                    }}
-                    className="px-3 py-1.5 text-[10px] tracking-wider uppercase font-semibold transition-colors"
-                    style={{
-                      backgroundColor: active
-                        ? `${hexColor}15`
-                        : "transparent",
-                      color: active ? cssColor : "var(--qgi-text-dim)",
-                      borderRight: "1px solid var(--qgi-border)",
-                    }}
-                  >
-                    {tier === "ALL" ? "ALL" : TIER_SHORT[tier as RiskTier]}{" "}
-                    <span style={{ opacity: 0.7 }}>({count})</span>
-                  </button>
-                );
-              }
-            )}
+            {(["ALL", "HIGH", "MODERATE", "INDICATIVE"] as const).map((tier) => {
+              const active = tierFilter === tier;
+              const hexColor =
+                tier === "ALL" ? "#38bdf8" : TIER_STYLES[tier as RiskTier].text;
+              const cssColor =
+                tier === "ALL" ? "var(--qgi-accent)" : TIER_STYLES[tier as RiskTier].text;
+              const count =
+                tier === "ALL" ? (tierCounts.ALL ?? 0) : (tierCounts[tier] ?? 0);
+              return (
+                <button
+                  key={tier}
+                  onClick={() => {
+                    setTierFilter(tier === "ALL" ? "ALL" : tier);
+                    resetPage();
+                  }}
+                  className="px-3 py-1.5 text-[10px] tracking-wider uppercase font-semibold transition-colors"
+                  style={{
+                    backgroundColor: active ? `${hexColor}15` : "transparent",
+                    color: active ? cssColor : "var(--qgi-text-dim)",
+                    borderRight: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  {tier === "ALL" ? "ALL" : TIER_SHORT[tier as RiskTier]}{" "}
+                  <span style={{ opacity: 0.7 }}>({count})</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Running count */}
-          <span
-            className="text-xs font-data"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Showing {sorted.length.toLocaleString()} of{" "}
-            {enriched.length.toLocaleString()}
+          <span className="text-xs font-data" style={{ color: "var(--qgi-text-dim)" }}>
+            Showing {sorted.length.toLocaleString()} of {enriched.length.toLocaleString()}
             {activeDomains.size > 0 && (
               <span>
                 {" "}
                 &middot;{" "}
                 {[...activeDomains]
-                  .map(
-                    (c) =>
-                      L1_GROUPS.find((g) => g.code === c)?.shortLabel ?? c
-                  )
+                  .map((c) => L1_GROUPS.find((g) => g.code === c)?.shortLabel ?? c)
                   .join(", ")}
               </span>
             )}
@@ -481,12 +444,8 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
             backgroundColor: "var(--qgi-surface-2)",
           }}
         >
-          <span className="flex items-center gap-1">
-            Country
-          </span>
-          <span className="flex items-center gap-1">
-            Category
-          </span>
+          <span className="flex items-center gap-1">Country</span>
+          <span className="flex items-center gap-1">Category</span>
           <span className="text-right flex items-center justify-end gap-1">
             Salience
             <InfoTooltip text="Composite score measuring how strongly a category's statistical patterns stand out for this country. Higher = more signal." />
@@ -547,10 +506,7 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
       {/* ── Pagination ────────────────────────────────────────────────── */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between mt-6">
-          <span
-            className="text-xs font-data"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-xs font-data" style={{ color: "var(--qgi-text-dim)" }}>
             Page {safePage} of {totalPages}
           </span>
           <div className="flex items-center gap-2">
@@ -581,17 +537,10 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
                   className="px-3 py-1.5 rounded text-xs font-data border transition-colors"
                   style={{
                     backgroundColor:
-                      p === safePage
-                        ? "var(--qgi-accent-glow)"
-                        : "transparent",
+                      p === safePage ? "var(--qgi-accent-glow)" : "transparent",
                     borderColor:
-                      p === safePage
-                        ? "var(--qgi-accent)"
-                        : "var(--qgi-border)",
-                    color:
-                      p === safePage
-                        ? "var(--qgi-accent)"
-                        : "var(--qgi-text-muted)",
+                      p === safePage ? "var(--qgi-accent)" : "var(--qgi-border)",
+                    color: p === safePage ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
                   }}
                 >
                   {p}
@@ -660,23 +609,14 @@ function BriefingCard({
           {row.countryName}
         </span>
       </div>
-      <div
-        className="text-xs truncate mb-2"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
+      <div className="text-xs truncate mb-2" style={{ color: "var(--qgi-text-muted)" }}>
         {formatCategory(row.category)}
       </div>
       <div className="flex items-baseline gap-2">
-        <span
-          className="font-data text-2xl font-bold"
-          style={{ color: salColor }}
-        >
+        <span className="font-data text-2xl font-bold" style={{ color: salColor }}>
           {metric}
         </span>
-        <span
-          className="font-data text-[10px]"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
+        <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
           {sub}
         </span>
       </div>
@@ -734,8 +674,7 @@ function HeroRow({
   isLast: boolean;
 }) {
   const salColor = salienceColor(row.salienceScore);
-  const tierStyle =
-    TIER_STYLES[(row.riskTier as RiskTier)] ?? TIER_STYLES.INDICATIVE;
+  const tierStyle = TIER_STYLES[row.riskTier as RiskTier] ?? TIER_STYLES.INDICATIVE;
 
   return (
     <Link
@@ -765,13 +704,10 @@ function HeroRow({
               border: `1px solid ${tierStyle.border}30`,
             }}
           >
-            {TIER_SHORT[(row.riskTier as RiskTier)] ?? "IND"}
+            {TIER_SHORT[row.riskTier as RiskTier] ?? "IND"}
           </span>
         </div>
-        <div
-          className="text-[13px]"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
+        <div className="text-[13px]" style={{ color: "var(--qgi-text-muted)" }}>
           {formatCategory(row.category)}
         </div>
         <div className="flex items-center gap-3">
@@ -781,23 +717,14 @@ function HeroRow({
           >
             {row.l1ShortLabel}
           </span>
-          <span
-            className="font-data text-base font-bold"
-            style={{ color: salColor }}
-          >
+          <span className="font-data text-base font-bold" style={{ color: salColor }}>
             {row.salienceScore.toFixed(3)}
           </span>
-          <span
-            className="font-data text-xs"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
+          <span className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
             {row.recipeCount.toLocaleString()} prec.
           </span>
           {row.lastEventYear && (
-            <span
-              className="font-data text-xs"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
+            <span className="font-data text-xs" style={{ color: "var(--qgi-text-dim)" }}>
               {row.lastEventYear}
             </span>
           )}
@@ -861,7 +788,7 @@ function HeroRow({
                 border: `1px solid ${tierStyle.border}30`,
               }}
             >
-              {TIER_SHORT[(row.riskTier as RiskTier)] ?? "IND"}
+              {TIER_SHORT[row.riskTier as RiskTier] ?? "IND"}
             </span>
           </div>
         </div>
@@ -899,8 +826,7 @@ function StandardRow({
   isLast: boolean;
 }) {
   const salColor = salienceColor(row.salienceScore);
-  const tierStyle =
-    TIER_STYLES[(row.riskTier as RiskTier)] ?? TIER_STYLES.INDICATIVE;
+  const tierStyle = TIER_STYLES[row.riskTier as RiskTier] ?? TIER_STYLES.INDICATIVE;
 
   return (
     <Link
@@ -929,7 +855,7 @@ function StandardRow({
               border: `1px solid ${tierStyle.border}30`,
             }}
           >
-            {TIER_SHORT[(row.riskTier as RiskTier)] ?? "IND"}
+            {TIER_SHORT[row.riskTier as RiskTier] ?? "IND"}
           </span>
         </div>
         <div className="flex items-center gap-3 text-xs">
@@ -985,10 +911,7 @@ function StandardRow({
             </span>
           </div>
           <div className="flex items-center gap-2 min-w-0">
-            <span
-              className="text-xs truncate"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
+            <span className="text-xs truncate" style={{ color: "var(--qgi-text-muted)" }}>
               {formatCategory(row.category)}
             </span>
           </div>
@@ -1019,7 +942,7 @@ function StandardRow({
                 border: `1px solid ${tierStyle.border}30`,
               }}
             >
-              {TIER_SHORT[(row.riskTier as RiskTier)] ?? "IND"}
+              {TIER_SHORT[row.riskTier as RiskTier] ?? "IND"}
             </span>
           </div>
         </div>
@@ -1047,15 +970,8 @@ function StandardRow({
 // Muted row (salience < 0.5)
 // ---------------------------------------------------------------------------
 
-function MutedRow({
-  row,
-  isLast,
-}: {
-  row: EnrichedRow;
-  isLast: boolean;
-}) {
-  const tierStyle =
-    TIER_STYLES[(row.riskTier as RiskTier)] ?? TIER_STYLES.INDICATIVE;
+function MutedRow({ row, isLast }: { row: EnrichedRow; isLast: boolean }) {
+  const tierStyle = TIER_STYLES[row.riskTier as RiskTier] ?? TIER_STYLES.INDICATIVE;
 
   return (
     <Link
@@ -1077,10 +993,7 @@ function MutedRow({
           >
             {row.countryName}
           </span>
-          <span
-            className="text-[11px] truncate"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-[11px] truncate" style={{ color: "var(--qgi-text-dim)" }}>
             {formatCategory(row.category)}
           </span>
           <span
@@ -1152,7 +1065,7 @@ function MutedRow({
                 border: `1px solid ${tierStyle.border}30`,
               }}
             >
-              {TIER_SHORT[(row.riskTier as RiskTier)] ?? "IND"}
+              {TIER_SHORT[row.riskTier as RiskTier] ?? "IND"}
             </span>
           </div>
         </div>

@@ -12,7 +12,9 @@ interface Props {
 export function IndexCatalogue({ indexes, activeSector }: Props) {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
-  const visible = activeSector ? indexes.filter((idx) => idx.sector === activeSector) : indexes;
+  const visible = activeSector
+    ? indexes.filter((idx) => idx.sector === activeSector)
+    : indexes;
 
   return (
     <div className="flex flex-col h-full">

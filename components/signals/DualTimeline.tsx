@@ -60,8 +60,7 @@ export function DualTimeline({ signal }: Props) {
   // surface "event co-occurred with pattern" copy instead. The render
   // site's `impliedEventYearA > signal.end_year_a` guard already FALSEs
   // out when leadYears is 0 or negative, so no render-site change needed.
-  const rawLead =
-    signal.median_lead_time ?? (signal.event_year_b - signal.end_year_b);
+  const rawLead = signal.median_lead_time ?? signal.event_year_b - signal.end_year_b;
   const leadYears = rawLead > 0 ? rawLead : 0;
   const impliedEventYearA = signal.end_year_a + leadYears;
   // When `rawLead <= 0`, `leadYears === 0` and the render-site guard
@@ -91,9 +90,9 @@ export function DualTimeline({ signal }: Props) {
   // reference CSS vars consistently across browsers in all contexts)
   const COLOR_PREDICTOR = "#fb923c"; // country B / precedent (orange)
   const COLOR_FOLLOWING = "#38bdf8"; // country A / active (cyan)
-  const COLOR_EVENT = "#f87171";     // event marker (red)
-  const COLOR_NOW = "#34d399";       // "you are here" (emerald)
-  const COLOR_IMPLIED = "#fbbf24";   // implied prediction (amber)
+  const COLOR_EVENT = "#f87171"; // event marker (red)
+  const COLOR_NOW = "#34d399"; // "you are here" (emerald)
+  const COLOR_IMPLIED = "#fbbf24"; // implied prediction (amber)
   const COLOR_GRID = "#243347";
   const COLOR_AXIS = "#4a6280";
   const COLOR_LABEL = "#7a90a8";
@@ -103,7 +102,10 @@ export function DualTimeline({ signal }: Props) {
       className="rounded border p-4"
       style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
     >
-      <div className="text-[9px] tracking-[0.15em] uppercase mb-3" style={{ color: "var(--qgi-text-dim)" }}>
+      <div
+        className="text-[9px] tracking-[0.15em] uppercase mb-3"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
         Pattern Analogy Timeline
       </div>
       <svg
@@ -165,7 +167,9 @@ export function DualTimeline({ signal }: Props) {
         </text>
 
         {/* Event marker in B */}
-        <g transform={`translate(${xOf(signal.event_year_b)}, ${rowHeightA + barHeight / 2})`}>
+        <g
+          transform={`translate(${xOf(signal.event_year_b)}, ${rowHeightA + barHeight / 2})`}
+        >
           <circle r={7} fill={COLOR_EVENT} />
           <text
             x={0}
@@ -232,7 +236,12 @@ export function DualTimeline({ signal }: Props) {
             <g
               transform={`translate(${xOf(impliedEventYearA)}, ${rowHeightB + barHeight / 2})`}
             >
-              <circle r={6} fill={COLOR_IMPLIED} fillOpacity={0.4} stroke={COLOR_IMPLIED} />
+              <circle
+                r={6}
+                fill={COLOR_IMPLIED}
+                fillOpacity={0.4}
+                stroke={COLOR_IMPLIED}
+              />
               <text
                 x={8}
                 y={4}
@@ -283,7 +292,14 @@ export function DualTimeline({ signal }: Props) {
         {ticks.map((y) => (
           <g key={`tick-${y}`} transform={`translate(${xOf(y)}, ${height - 42})`}>
             <line x1={0} x2={0} y1={0} y2={4} stroke={COLOR_AXIS} />
-            <text x={0} y={16} fontSize="11" fontFamily="monospace" textAnchor="middle" fill={COLOR_LABEL}>
+            <text
+              x={0}
+              y={16}
+              fontSize="11"
+              fontFamily="monospace"
+              textAnchor="middle"
+              fill={COLOR_LABEL}
+            >
               {y}
             </text>
           </g>
@@ -291,7 +307,10 @@ export function DualTimeline({ signal }: Props) {
       </svg>
 
       {/* Legend */}
-      <div className="flex gap-4 items-center mt-3 flex-wrap text-[9px] font-data tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+      <div
+        className="flex gap-4 items-center mt-3 flex-wrap text-[9px] font-data tracking-wider"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
         <LegendDot color={COLOR_PREDICTOR} label="PRECEDENT PATTERN" />
         <LegendDot color={COLOR_EVENT} label="HISTORICAL EVENT" />
         <LegendDot color={COLOR_FOLLOWING} label="ACTIVE PATTERN" />
@@ -302,7 +321,15 @@ export function DualTimeline({ signal }: Props) {
   );
 }
 
-function LegendDot({ color, label, dashed }: { color: string; label: string; dashed?: boolean }) {
+function LegendDot({
+  color,
+  label,
+  dashed,
+}: {
+  color: string;
+  label: string;
+  dashed?: boolean;
+}) {
   return (
     <span className="inline-flex items-center gap-1.5">
       <span

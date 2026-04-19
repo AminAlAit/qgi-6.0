@@ -5,7 +5,12 @@ import { useMemo, useState } from "react";
 import { applyTransformation, type Transformation } from "@/lib/transforms";
 import indexData from "@/data/indexes.json";
 import type { IndexEntry } from "@/lib/types";
-import { pearsonCorrelation, pearsonPValue, formatPValue, significanceLabel } from "@/lib/stats";
+import {
+  pearsonCorrelation,
+  pearsonPValue,
+  formatPValue,
+  significanceLabel,
+} from "@/lib/stats";
 import { correlationColor } from "@/lib/design";
 
 const INDEX_MAP: Record<string, IndexEntry> = Object.fromEntries(
@@ -119,7 +124,14 @@ export function IndexChart({
       // #250: when the chart is aligned (Year-N axis) we annotate each side
       // with its actual calendar year so the cross-time nature of the pattern
       // is obvious (e.g. "Argentina 1995 vs Brazil 1981, both Year 1").
-      formatter: (params: Array<{ seriesName: string; data: [string, number | null] | number | null; axisValue: string; dataIndex: number }>) => {
+      formatter: (
+        params: Array<{
+          seriesName: string;
+          data: [string, number | null] | number | null;
+          axisValue: string;
+          dataIndex: number;
+        }>
+      ) => {
         const axisLabel = params[0]?.axisValue;
         const idx = params[0]?.dataIndex ?? 0;
         const a = params.find((p) => p.seriesName === countryA);
@@ -127,9 +139,15 @@ export function IndexChart({
         const av = Array.isArray(a?.data) ? a.data[1] : (a?.data as number | null);
         const bv = Array.isArray(b?.data) ? b.data[1] : (b?.data as number | null);
         const fmt = (v: number | null | undefined) =>
-          v == null || !Number.isFinite(v) ? "<i style='color:#7a90a8'>missing</i>" : v.toFixed(2);
+          v == null || !Number.isFinite(v)
+            ? "<i style='color:#7a90a8'>missing</i>"
+            : v.toFixed(2);
         const ratio =
-          av != null && bv != null && Number.isFinite(av) && Number.isFinite(bv) && bv !== 0
+          av != null &&
+          bv != null &&
+          Number.isFinite(av) &&
+          Number.isFinite(bv) &&
+          bv !== 0
             ? `<div style='color:#7a90a8;font-size:9px;margin-top:2px'>ratio: ${(av / bv).toFixed(2)}×</div>`
             : "";
         // When the xAxis is "Year N" (align mode), show actual calendar years
@@ -210,7 +228,8 @@ export function IndexChart({
   // OLS regression line for the scatter
   const regressionLine = useMemo(() => {
     if (scatterPoints.length < 2) return null;
-    let sx = 0, sy = 0;
+    let sx = 0,
+      sy = 0;
     for (const [x, y] of scatterPoints) {
       sx += x;
       sy += y;
@@ -317,7 +336,11 @@ export function IndexChart({
       {/* Tab toggle (#125) */}
       <div className="flex gap-1 px-1 pb-1">
         <TabBtn label="LINES" active={tab === "lines"} onClick={() => setTab("lines")} />
-        <TabBtn label="SCATTER" active={tab === "scatter"} onClick={() => setTab("scatter")} />
+        <TabBtn
+          label="SCATTER"
+          active={tab === "scatter"}
+          onClick={() => setTab("scatter")}
+        />
       </div>
       <ReactECharts
         option={tab === "lines" ? linesOption : scatterOption}
@@ -325,7 +348,10 @@ export function IndexChart({
         notMerge
       />
       {meta?.description && (
-        <p className="text-[9px] px-2 pb-1 leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
+        <p
+          className="text-[9px] px-2 pb-1 leading-relaxed"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
           {meta.description}
         </p>
       )}
@@ -333,7 +359,15 @@ export function IndexChart({
   );
 }
 
-function TabBtn({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+function TabBtn({
+  label,
+  active,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
   return (
     <button
       onClick={onClick}

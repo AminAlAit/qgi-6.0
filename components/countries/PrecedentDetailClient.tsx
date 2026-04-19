@@ -5,19 +5,28 @@ import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import { AnalogueMultiTimeline } from "@/components/countries/AnalogueMultiTimeline";
-import {
-  CATEGORY_L1_MAP,
-  L1_GROUPS,
-} from "@/lib/category-taxonomy";
+import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 
 /* ------------------------------------------------------------------ */
 /*  Constants                                                          */
 /* ------------------------------------------------------------------ */
 
 const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
-  HIGH: { bg: "rgba(248, 113, 113, 0.15)", text: "#f87171", border: "rgba(248, 113, 113, 0.3)" },
-  MODERATE: { bg: "rgba(251, 191, 36, 0.15)", text: "#fbbf24", border: "rgba(251, 191, 36, 0.3)" },
-  INDICATIVE: { bg: "rgba(56, 189, 248, 0.15)", text: "#38bdf8", border: "rgba(56, 189, 248, 0.3)" },
+  HIGH: {
+    bg: "rgba(248, 113, 113, 0.15)",
+    text: "#f87171",
+    border: "rgba(248, 113, 113, 0.3)",
+  },
+  MODERATE: {
+    bg: "rgba(251, 191, 36, 0.15)",
+    text: "#fbbf24",
+    border: "rgba(251, 191, 36, 0.3)",
+  },
+  INDICATIVE: {
+    bg: "rgba(56, 189, 248, 0.15)",
+    text: "#38bdf8",
+    border: "rgba(56, 189, 248, 0.3)",
+  },
 };
 
 const PATTERN_TIERS = ["S", "M", "L", "XL"] as const;
@@ -43,7 +52,6 @@ const TIER_COLORS: Record<string, string> = {
   L: "#38bdf8",
   XL: "#a78bfa",
 };
-
 
 /* ------------------------------------------------------------------ */
 /*  Props                                                              */
@@ -100,9 +108,7 @@ export function PrecedentDetailClient({
   const l1Group = l1Mapping
     ? L1_GROUPS.find((g) => g.code === l1Mapping.group)
     : undefined;
-  const l1Eyebrow = l1Group
-    ? `L1-${l1Group.code} ${l1Group.label}`
-    : "Uncategorized";
+  const l1Eyebrow = l1Group ? `L1-${l1Group.code} ${l1Group.label}` : "Uncategorized";
 
   // Gather this category's data across all tiers
   const tierBreakdown = PATTERN_TIERS.map((tier) => {
@@ -115,7 +121,10 @@ export function PrecedentDetailClient({
     .map((t) => t.match)
     .filter((m): m is CategoryScore => m != null);
   const totalRecipes = allMatches.reduce((s, m) => s + m.recipe_count, 0);
-  const maxSalience = Math.max(...allMatches.map((m) => m.salience_score ?? m.z_score), 0);
+  const maxSalience = Math.max(
+    ...allMatches.map((m) => m.salience_score ?? m.z_score),
+    0
+  );
 
   const salienceColor =
     maxSalience >= 1.2 ? "#f87171" : maxSalience >= 0.5 ? "#fbbf24" : "#38bdf8";
@@ -199,10 +208,7 @@ export function PrecedentDetailClient({
                 <h1 className="text-2xl font-semibold tracking-wide">
                   {country.name.toUpperCase()}
                 </h1>
-                <div
-                  className="text-sm mt-1"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
+                <div className="text-sm mt-1" style={{ color: "var(--qgi-text-muted)" }}>
                   {catLabel}
                 </div>
               </div>
@@ -246,9 +252,18 @@ export function PrecedentDetailClient({
               color: "var(--qgi-text)",
             }}
           >
-            {generateNarrativeLede(country, category, catLabel, totalRecipes, activeTierCount, maxSalience, salienceColor, signalLabel, lastEventYear)}
+            {generateNarrativeLede(
+              country,
+              category,
+              catLabel,
+              totalRecipes,
+              activeTierCount,
+              maxSalience,
+              salienceColor,
+              signalLabel,
+              lastEventYear
+            )}
           </div>
-
         </section>
 
         {/* ============================================================ */}
@@ -278,7 +293,6 @@ export function PrecedentDetailClient({
           />
         </section>
 
-
         {/* ============================================================ */}
         {/*  MULTI-ROW ANALOGUE TIMELINE (ticket #293)                    */}
         {/* ============================================================ */}
@@ -292,7 +306,6 @@ export function PrecedentDetailClient({
             />
           </section>
         )}
-
 
         {/* ============================================================ */}
         {/*  TOP 5 HISTORICAL ANALOGUES (from baked analogues.json)       */}
@@ -330,7 +343,10 @@ export function PrecedentDetailClient({
                     <CountryFlag alpha2={a.alpha2} size={20} />
                     <div>
                       <div className="text-xs font-semibold">{a.country_b_name}</div>
-                      <div className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+                      <div
+                        className="text-[10px] font-data"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
                         {a.recipe_count.toLocaleString()} recipes
                       </div>
                     </div>
@@ -340,7 +356,10 @@ export function PrecedentDetailClient({
                       with red for negative, cyan for positive. Previously
                       clamped with Math.min which hid negative values as
                       4%-width positive bars. */}
-                  <div className="h-6 rounded flex items-center px-2" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                  <div
+                    className="h-6 rounded flex items-center px-2"
+                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                  >
                     <div
                       className="h-3 rounded"
                       style={{
@@ -356,10 +375,16 @@ export function PrecedentDetailClient({
                   </div>
 
                   {/* Stats */}
-                  <div className="space-y-1 text-[11px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                  <div
+                    className="space-y-1 text-[11px] font-data"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
                     <div className="flex justify-between">
                       <span>Match</span>
-                      <span className="font-semibold" style={{ color: "var(--qgi-text)" }}>
+                      <span
+                        className="font-semibold"
+                        style={{ color: "var(--qgi-text)" }}
+                      >
                         {/* T5 #298: .toFixed(0) rounds decimals like 0.42
                             to "0" — meaningless. Show 2dp so sub-integer
                             PPS values read correctly. */}
@@ -386,7 +411,10 @@ export function PrecedentDetailClient({
                     <Link
                       href={`/countries/${a.country_b_id}`}
                       className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
-                      style={{ color: "var(--qgi-accent)", outlineColor: "var(--qgi-accent)" }}
+                      style={{
+                        color: "var(--qgi-accent)",
+                        outlineColor: "var(--qgi-accent)",
+                      }}
                       aria-label={`View ${a.country_b_name}'s country profile`}
                     >
                       View country
@@ -407,7 +435,10 @@ export function PrecedentDetailClient({
                           : `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`
                       }
                       className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
-                      style={{ color: "var(--qgi-accent)", outlineColor: "var(--qgi-accent)" }}
+                      style={{
+                        color: "var(--qgi-accent)",
+                        outlineColor: "var(--qgi-accent)",
+                      }}
                       aria-label={`View pattern between ${country.name} and ${a.country_b_name}`}
                     >
                       View pattern
@@ -522,9 +553,7 @@ export function PrecedentDetailClient({
               );
             })}
           </div>
-
         </section>
-
 
         {/* ============================================================ */}
         {/*  METHODOLOGY FOOTER                                           */}
@@ -537,16 +566,10 @@ export function PrecedentDetailClient({
             border: "1px solid var(--qgi-border)",
           }}
         >
-          {version} z-score + RRF &middot; Pattern correlation Pearson r &ge;
-          0.65 &middot; &plusmn;15% event window &middot; Salience &gt; 1.2
-          considered &ldquo;high-signal&rdquo; &middot; Event source:
-          qgi-data/curated
-          {generatedAt && (
-            <>
-              {" "}
-              &middot; Last updated {generatedAt.slice(0, 10)}
-            </>
-          )}
+          {version} z-score + RRF &middot; Pattern correlation Pearson r &ge; 0.65
+          &middot; &plusmn;15% event window &middot; Salience &gt; 1.2 considered
+          &ldquo;high-signal&rdquo; &middot; Event source: qgi-data/curated
+          {generatedAt && <> &middot; Last updated {generatedAt.slice(0, 10)}</>}
         </footer>
 
         {/* ---- Evidence links ---- */}
@@ -565,10 +588,7 @@ export function PrecedentDetailClient({
             >
               View Full Precedent Evidence
             </div>
-            <div
-              className="text-[10px]"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
+            <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
               All active signals for {country.name} with indicator details
             </div>
           </Link>
@@ -586,10 +606,7 @@ export function PrecedentDetailClient({
             >
               Back to {country.name} Profile
             </div>
-            <div
-              className="text-[10px]"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
+            <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
               See all risk categories for this country
             </div>
           </Link>
@@ -600,9 +617,8 @@ export function PrecedentDetailClient({
           className="text-[10px] leading-relaxed text-center"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          QGI surfaces economically-grounded risk candidates that analysts should
-          examine. Risk tiers reflect historical precedent density, not
-          probability forecasts.
+          QGI surfaces economically-grounded risk candidates that analysts should examine.
+          Risk tiers reflect historical precedent density, not probability forecasts.
         </p>
       </div>
     </div>
@@ -653,7 +669,6 @@ function MetricCard({
   );
 }
 
-
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
@@ -667,7 +682,7 @@ function generateNarrativeLede(
   maxSalience: number,
   salienceColor: string,
   signalLabel: string,
-  lastEventYear: number | null,
+  lastEventYear: number | null
 ): React.ReactElement {
   const intensity =
     maxSalience >= 1.5
@@ -687,24 +702,20 @@ function generateNarrativeLede(
 
   return (
     <>
-      {country.name}&apos;s indicators show {intensity} {catLabel.toLowerCase()}{" "}
-      signals with {totalRecipes.toLocaleString()} historical precedent windows{" "}
-      {tierDesc}.
+      {country.name}&apos;s indicators show {intensity} {catLabel.toLowerCase()} signals
+      with {totalRecipes.toLocaleString()} historical precedent windows {tierDesc}.
       {lastEventYear && (
         <>
           {" "}
-          The most recent matching event in the curated database was in{" "}
-          {lastEventYear}.
+          The most recent matching event in the curated database was in {lastEventYear}.
         </>
       )}{" "}
-      QGI flags this as a{" "}
-      <strong style={{ color: salienceColor }}>{signalLabel}</strong> signal.
+      QGI flags this as a <strong style={{ color: salienceColor }}>{signalLabel}</strong>{" "}
+      signal.
     </>
   );
 }
 
 function formatCategory(cat: string): string {
-  return cat
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }

@@ -21,7 +21,9 @@ const FRESHNESS_THRESHOLDS = {
 
 export type FreshnessLevel = "fresh" | "stale" | "overdue" | "unknown";
 
-export function getFreshnessLevel(generatedAt: string | null | undefined): FreshnessLevel {
+export function getFreshnessLevel(
+  generatedAt: string | null | undefined
+): FreshnessLevel {
   if (!generatedAt) return "unknown";
   const generated = new Date(generatedAt).getTime();
   if (Number.isNaN(generated)) return "unknown";

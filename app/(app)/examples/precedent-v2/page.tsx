@@ -99,7 +99,13 @@ const TIER_DATA = [
   { tier: "S", label: "Short (3-8yr)", count: 98, salience: 2.41, color: "#f87171" },
   { tier: "M", label: "Medium (9-20yr)", count: 62, salience: 2.08, color: "#fbbf24" },
   { tier: "L", label: "Long (21-40yr)", count: 21, salience: 1.67, color: "#38bdf8" },
-  { tier: "XL", label: "Institutional (41+yr)", count: 6, salience: 1.23, color: "#a78bfa" },
+  {
+    tier: "XL",
+    label: "Institutional (41+yr)",
+    count: 6,
+    salience: 1.23,
+    color: "#a78bfa",
+  },
 ];
 
 const METRICS = [
@@ -124,8 +130,7 @@ const METRICS = [
   {
     label: "Last Event Year",
     value: "2019",
-    tooltip:
-      "Most recent curated event year among the top analogues for this category.",
+    tooltip: "Most recent curated event year among the top analogues for this category.",
   },
 ];
 
@@ -195,10 +200,7 @@ export default function PrecedentV2Page() {
                 <h1 className="text-2xl font-semibold tracking-wide">
                   {COUNTRY.name.toUpperCase()}
                 </h1>
-                <div
-                  className="text-sm mt-1"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
+                <div className="text-sm mt-1" style={{ color: "var(--qgi-text-muted)" }}>
                   {COUNTRY.category}
                 </div>
               </div>
@@ -217,7 +219,10 @@ export default function PrecedentV2Page() {
                 {COUNTRY.tier}
               </span>
               <div className="text-right">
-                <div className="font-data text-3xl font-bold" style={{ color: "#f87171" }}>
+                <div
+                  className="font-data text-3xl font-bold"
+                  style={{ color: "#f87171" }}
+                >
                   {COUNTRY.salience.toFixed(2)}
                 </div>
                 <div
@@ -239,11 +244,11 @@ export default function PrecedentV2Page() {
               color: "var(--qgi-text)",
             }}
           >
-            Iraq&apos;s conflict indicators since 2003 most strongly mirror
-            Afghanistan (1988-2001), which culminated in a full-scale foreign
-            military intervention in 2001. Four of the five strongest analogues
-            experienced a civil-war-class event within 3 years of pattern end.
-            QGI flags this as a <strong style={{ color: "#f87171" }}>high-density</strong> signal.
+            Iraq&apos;s conflict indicators since 2003 most strongly mirror Afghanistan
+            (1988-2001), which culminated in a full-scale foreign military intervention in
+            2001. Four of the five strongest analogues experienced a civil-war-class event
+            within 3 years of pattern end. QGI flags this as a{" "}
+            <strong style={{ color: "#f87171" }}>high-density</strong> signal.
           </div>
 
           {/* ---- Actions rail ---- */}
@@ -286,7 +291,10 @@ export default function PrecedentV2Page() {
                 </span>
                 <InfoTooltip text={m.tooltip} />
               </div>
-              <div className="font-data text-2xl font-bold" style={{ color: "var(--qgi-text)" }}>
+              <div
+                className="font-data text-2xl font-bold"
+                style={{ color: "var(--qgi-text)" }}
+              >
                 {m.value}
               </div>
             </div>
@@ -304,7 +312,10 @@ export default function PrecedentV2Page() {
             >
               TOP 5 HISTORICAL ANALOGUES
             </h2>
-            <span className="text-[11px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[11px] font-data"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               5 of {COUNTRY.totalAnalogues}
             </span>
           </div>
@@ -347,9 +358,7 @@ export default function PrecedentV2Page() {
                         style={{
                           height: `${Math.max(4, h)}px`,
                           backgroundColor:
-                            j === twin.length - 1
-                              ? "#f87171"
-                              : "var(--qgi-accent)",
+                            j === twin.length - 1 ? "#f87171" : "var(--qgi-accent)",
                           opacity: j === twin.length - 1 ? 1 : 0.4,
                         }}
                       />
@@ -449,7 +458,10 @@ export default function PrecedentV2Page() {
                 >
                   {t.label}
                 </span>
-                <div className="flex-1 h-5 rounded relative" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                <div
+                  className="flex-1 h-5 rounded relative"
+                  style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                >
                   <div
                     className="h-full rounded"
                     style={{
@@ -459,10 +471,16 @@ export default function PrecedentV2Page() {
                     }}
                   />
                 </div>
-                <span className="font-data text-xs w-16 text-right" style={{ color: "var(--qgi-text-muted)" }}>
+                <span
+                  className="font-data text-xs w-16 text-right"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
                   {t.count} prec.
                 </span>
-                <span className="font-data text-xs w-14 text-right" style={{ color: t.color }}>
+                <span
+                  className="font-data text-xs w-14 text-right"
+                  style={{ color: t.color }}
+                >
                   {t.salience.toFixed(2)}
                 </span>
               </div>
@@ -495,7 +513,10 @@ export default function PrecedentV2Page() {
               LEAD-TIME DISTRIBUTION
               <InfoTooltip text="How many years before the actual event did the analogue pattern start flagging? A 3-year lead time means QGI's pattern match began 3 years before Country B's known event. Longer lead times = more advance warning, but also more false-positive risk." />
             </h2>
-            <span className="text-[11px] tracking-wider italic" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[11px] tracking-wider italic"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               &ldquo;How early did QGI flag?&rdquo;
             </span>
           </div>
@@ -509,7 +530,10 @@ export default function PrecedentV2Page() {
                 >
                   {b.years}
                 </span>
-                <div className="flex-1 h-5 rounded relative" style={{ backgroundColor: "var(--qgi-surface-2)" }}>
+                <div
+                  className="flex-1 h-5 rounded relative"
+                  style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                >
                   <div
                     className="h-full rounded"
                     style={{
@@ -533,10 +557,10 @@ export default function PrecedentV2Page() {
             className="mt-5 text-sm leading-relaxed"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Median lead: <strong style={{ color: "var(--qgi-text)" }}>2 years</strong>.
-            Of the {COUNTRY.totalAnalogues} analogue patterns,{" "}
-            <strong style={{ color: "var(--qgi-text)" }}>74%</strong> led the event by
-            3 years or less.
+            Median lead: <strong style={{ color: "var(--qgi-text)" }}>2 years</strong>. Of
+            the {COUNTRY.totalAnalogues} analogue patterns,{" "}
+            <strong style={{ color: "var(--qgi-text)" }}>74%</strong> led the event by 3
+            years or less.
           </div>
         </section>
 
@@ -552,9 +576,9 @@ export default function PrecedentV2Page() {
           }}
         >
           V1.8.1 z-score + RRF &middot; Pattern correlation Pearson r &ge; 0.65 &middot;
-          &plusmn;15% event window &middot; Salience &gt; 1.2 considered &ldquo;high-signal&rdquo;
-          &middot; Event source: qgi-data/curated &middot; 88 countries curated &middot;
-          Last updated 2026-04-13
+          &plusmn;15% event window &middot; Salience &gt; 1.2 considered
+          &ldquo;high-signal&rdquo; &middot; Event source: qgi-data/curated &middot; 88
+          countries curated &middot; Last updated 2026-04-13
         </footer>
       </div>
     </div>

@@ -4,9 +4,18 @@ import { runQuery } from "@/lib/athena";
 import indexData from "@/data/indexes.json";
 
 const indexByNumericId = new Map<number, { name: string; sector: string; org: string }>();
-for (const idx of indexData as { numeric_id: number | null; name: string; sector: string; org: string }[]) {
+for (const idx of indexData as {
+  numeric_id: number | null;
+  name: string;
+  sector: string;
+  org: string;
+}[]) {
   if (idx.numeric_id != null) {
-    indexByNumericId.set(idx.numeric_id, { name: idx.name, sector: idx.sector, org: idx.org });
+    indexByNumericId.set(idx.numeric_id, {
+      name: idx.name,
+      sector: idx.sector,
+      org: idx.org,
+    });
   }
 }
 
@@ -18,11 +27,17 @@ export const GET = withAuth(async (req: NextRequest) => {
   const year_to = searchParams.get("year_to");
 
   if (!country_a || !country_b) {
-    return NextResponse.json({ error: "country_a and country_b are required" }, { status: 400 });
+    return NextResponse.json(
+      { error: "country_a and country_b are required" },
+      { status: 400 }
+    );
   }
 
   if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
-    return NextResponse.json({ error: "Invalid country_a or country_b" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid country_a or country_b" },
+      { status: 400 }
+    );
   }
 
   if (year_from && !Number.isFinite(Number(year_from))) {

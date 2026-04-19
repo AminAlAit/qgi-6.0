@@ -56,7 +56,8 @@ export default function LayeredTaxonomyTree() {
           <Stat value="~12K" label="Event records" sub="Layer 4 (not shown)" />
         </div>
         <div className="mt-3 text-[11px] leading-relaxed">
-          Click a master group to expand its sub-categories. Click a sub-category to see the canonical Layer 3 event types that map into it.
+          Click a master group to expand its sub-categories. Click a sub-category to see
+          the canonical Layer 3 event types that map into it.
         </div>
       </div>
 
@@ -73,9 +74,7 @@ export default function LayeredTaxonomyTree() {
               }}
               className="text-left rounded-lg border p-3 transition-all hover:border-[var(--qgi-accent)]"
               style={{
-                backgroundColor: isOpen
-                  ? "var(--qgi-accent-glow)"
-                  : "var(--qgi-surface)",
+                backgroundColor: isOpen ? "var(--qgi-accent-glow)" : "var(--qgi-surface)",
                 borderTopColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
                 borderRightColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
                 borderBottomColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
@@ -90,7 +89,10 @@ export default function LayeredTaxonomyTree() {
               >
                 {l1.id}
               </div>
-              <div className="text-sm font-medium mt-1" style={{ color: "var(--qgi-text)" }}>
+              <div
+                className="text-sm font-medium mt-1"
+                style={{ color: "var(--qgi-text)" }}
+              >
                 {l1.display_label}
               </div>
               <div className="text-[10px] mt-1" style={{ color: "var(--qgi-text-dim)" }}>
@@ -214,29 +216,18 @@ export default function LayeredTaxonomyTree() {
         className="mt-3 text-[10px] tracking-wide"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        Source: <code className="font-mono">qgi-data/events/taxonomy_hierarchy.json</code> · Generated{" "}
-        {data.generated} · Approved per{" "}
+        Source: <code className="font-mono">qgi-data/events/taxonomy_hierarchy.json</code>{" "}
+        · Generated {data.generated} · Approved per{" "}
         <code className="font-mono">event-taxonomy-layered-design.md</code>
       </div>
     </div>
   );
 }
 
-function Stat({
-  value,
-  label,
-  sub,
-}: {
-  value: string;
-  label: string;
-  sub: string;
-}) {
+function Stat({ value, label, sub }: { value: string; label: string; sub: string }) {
   return (
     <div className="text-center">
-      <div
-        className="font-data text-xl font-bold"
-        style={{ color: "var(--qgi-accent)" }}
-      >
+      <div className="font-data text-xl font-bold" style={{ color: "var(--qgi-accent)" }}>
         {value}
       </div>
       <div className="text-[11px] font-medium" style={{ color: "var(--qgi-text)" }}>

@@ -45,70 +45,67 @@ export default function LegalPage() {
         {/* ─── Disclaimer ──────────────────────────────────────── */}
         <Section title="Risk Disclaimer">
           <p>
-            QGI provides quantitative analytical tools for informational
-            purposes only. QGI scores, risk tiers, precedent analyses, and
-            country profiles are{" "}
-            <strong>not investment advice, financial advice, or political
-            forecasts</strong>.
+            QGI provides quantitative analytical tools for informational purposes only.
+            QGI scores, risk tiers, precedent analyses, and country profiles are{" "}
+            <strong>
+              not investment advice, financial advice, or political forecasts
+            </strong>
+            .
           </p>
           <p>
-            Risk tiers (HIGH, MODERATE, INDICATIVE) reflect historical
-            precedent density in economic indicator data. They do not represent
-            probabilities of future events. Users should not make financial,
-            political, or security decisions based solely on QGI output.
+            Risk tiers (HIGH, MODERATE, INDICATIVE) reflect historical precedent density
+            in economic indicator data. They do not represent probabilities of future
+            events. Users should not make financial, political, or security decisions
+            based solely on QGI output.
           </p>
           <p>
-            QGI surfaces risk candidates that analysts should examine. It does
-            not replace expert judgment, on-the-ground intelligence, or
-            professional advisory services.
+            QGI surfaces risk candidates that analysts should examine. It does not replace
+            expert judgment, on-the-ground intelligence, or professional advisory
+            services.
           </p>
         </Section>
 
         {/* ─── Terms of Service ────────────────────────────────── */}
         <Section title="Terms of Service">
           <p>
-            By accessing qgintelligence.com (&ldquo;the Service&rdquo;), you
-            agree to the following terms. If you do not agree, do not use the
-            Service.
+            By accessing qgintelligence.com (&ldquo;the Service&rdquo;), you agree to the
+            following terms. If you do not agree, do not use the Service.
           </p>
 
           <H3>Use of the Service</H3>
           <p>
-            The Service is provided &ldquo;as is&rdquo; without warranty of any
-            kind, express or implied. QGI does not guarantee the accuracy,
-            completeness, or timeliness of any data, scores, or analyses
-            presented.
+            The Service is provided &ldquo;as is&rdquo; without warranty of any kind,
+            express or implied. QGI does not guarantee the accuracy, completeness, or
+            timeliness of any data, scores, or analyses presented.
           </p>
           <p>
-            You may use QGI data for personal research, academic work, and
-            professional analysis. Systematic redistribution of raw QGI data
-            without attribution is prohibited. Citation format: &ldquo;Source:
-            QGI (qgintelligence.com)&rdquo;.
+            You may use QGI data for personal research, academic work, and professional
+            analysis. Systematic redistribution of raw QGI data without attribution is
+            prohibited. Citation format: &ldquo;Source: QGI (qgintelligence.com)&rdquo;.
           </p>
 
           <H3>Data Sources</H3>
           <p>
-            QGI uses publicly available data from the World Bank (CC BY 4.0),
-            and plans to integrate data from V-Dem Institute (CC BY 4.0),
-            FAOSTAT (CC BY 4.0), ILOSTAT (CC BY 4.0), UNHCR (CC BY 4.0),
-            UCDP (CC BY 4.0), and GDELT (CC0). All source data is properly
-            attributed. QGI&apos;s derived products (SCDIs, Patterns, Precedents,
-            Salience Scores) are original computations.
+            QGI uses publicly available data from the World Bank (CC BY 4.0), and plans to
+            integrate data from V-Dem Institute (CC BY 4.0), FAOSTAT (CC BY 4.0), ILOSTAT
+            (CC BY 4.0), UNHCR (CC BY 4.0), UCDP (CC BY 4.0), and GDELT (CC0). All source
+            data is properly attributed. QGI&apos;s derived products (SCDIs, Patterns,
+            Precedents, Salience Scores) are original computations.
           </p>
 
           <H3>Limitation of Liability</H3>
           <p>
-            QGI shall not be liable for any direct, indirect, incidental,
-            special, or consequential damages arising from the use or inability
-            to use the Service, including but not limited to losses resulting
-            from reliance on QGI scores or analyses.
+            QGI shall not be liable for any direct, indirect, incidental, special, or
+            consequential damages arising from the use or inability to use the Service,
+            including but not limited to losses resulting from reliance on QGI scores or
+            analyses.
           </p>
 
           <H3>Changes to Terms</H3>
           <p>
-            QGI may update these terms at any time. Continued use of the
-            Service after changes constitutes acceptance. Material changes will
-            be noted on this page with the updated date.
+            QGI may update these terms at any time. Continued use of the Service after
+            changes constitutes acceptance. Material changes will be noted on this page
+            with the updated date.
           </p>
         </Section>
 
@@ -116,56 +113,59 @@ export default function LegalPage() {
         <Section title="Privacy Policy">
           <H3>What We Collect</H3>
           <p>
-            QGI collects minimal data. When you use the Service without an
-            account, we collect only anonymized usage analytics (page views,
-            country lookups) through privacy-respecting analytics tools. No
-            cookies are used for tracking.
+            QGI collects minimal data. When you use the Service without an account, we
+            collect only anonymized usage analytics (page views, country lookups) through
+            privacy-respecting analytics tools. No cookies are used for tracking.
           </p>
           <p>
-            If you create an account (via Google OAuth or email), we store your
-            email address and display name for authentication purposes only.
+            If you create an account (via Google OAuth or email), we store your email
+            address and display name for authentication purposes only.
           </p>
 
           <H3>What We Do Not Collect</H3>
           <p>
-            We do not collect personal financial data, location data,
-            advertising identifiers, or any data beyond what is necessary for
-            the Service to function. We do not sell, share, or rent personal
-            data to third parties.
+            We do not collect personal financial data, location data, advertising
+            identifiers, or any data beyond what is necessary for the Service to function.
+            We do not sell, share, or rent personal data to third parties.
           </p>
 
           <H3>Data Storage</H3>
           <p>
-            Account data is stored securely using industry-standard encryption.
-            Analytics data is anonymized and aggregated. All data processing
-            occurs in the EU (eu-central-1 region).
+            Account data is stored securely using industry-standard encryption. Analytics
+            data is anonymized and aggregated. All data processing occurs in the EU
+            (eu-central-1 region).
           </p>
 
           <H3>Your Rights (GDPR)</H3>
           <p>
-            If you are in the European Economic Area, you have the right to
-            access, correct, or delete your personal data. To exercise these
-            rights, contact us at the email below.
+            If you are in the European Economic Area, you have the right to access,
+            correct, or delete your personal data. To exercise these rights, contact us at
+            the email below.
           </p>
 
           <H3>Third-Party Services</H3>
           <p>
-            The Service uses Vercel for hosting, AWS for data processing, and
-            (optionally) Google OAuth for authentication. Each has its own
-            privacy policy.
+            The Service uses Vercel for hosting, AWS for data processing, and (optionally)
+            Google OAuth for authentication. Each has its own privacy policy.
           </p>
         </Section>
 
         {/* ─── Data Attribution ────────────────────────────────── */}
         <Section title="Data Attribution">
           <p>
-            QGI acknowledges the following data providers whose open data
-            makes this platform possible:
+            QGI acknowledges the following data providers whose open data makes this
+            platform possible:
           </p>
-          <ul className="list-disc list-inside space-y-1 mt-3" style={{ color: "var(--qgi-text-muted)" }}>
+          <ul
+            className="list-disc list-inside space-y-1 mt-3"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
             <li>World Bank Open Data — CC BY 4.0</li>
             <li>V-Dem Institute, University of Gothenburg — CC BY 4.0</li>
-            <li>Food and Agriculture Organization of the United Nations (FAOSTAT) — CC BY 4.0</li>
+            <li>
+              Food and Agriculture Organization of the United Nations (FAOSTAT) — CC BY
+              4.0
+            </li>
             <li>International Labour Organization (ILOSTAT) — CC BY 4.0</li>
             <li>UNHCR — The UN Refugee Agency — CC BY 4.0</li>
             <li>Uppsala Conflict Data Program (UCDP), Uppsala University — CC BY 4.0</li>
@@ -176,11 +176,9 @@ export default function LegalPage() {
         {/* ─── Contact ─────────────────────────────────────────── */}
         <Section title="Contact">
           <p>
-            For questions about these terms, data use, or to exercise your
-            data rights, contact:{" "}
-            <span style={{ color: "var(--qgi-accent)" }}>
-              aminalait.de@gmail.com
-            </span>
+            For questions about these terms, data use, or to exercise your data rights,
+            contact:{" "}
+            <span style={{ color: "var(--qgi-accent)" }}>aminalait.de@gmail.com</span>
           </p>
         </Section>
 
@@ -195,13 +193,7 @@ export default function LegalPage() {
   );
 }
 
-function Section({
-  title,
-  children,
-}: {
-  title: string;
-  children: React.ReactNode;
-}) {
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section className="mb-12">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
@@ -217,10 +209,7 @@ function Section({
 
 function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3
-      className="text-sm font-semibold mt-5 mb-1"
-      style={{ color: "var(--qgi-text)" }}
-    >
+    <h3 className="text-sm font-semibold mt-5 mb-1" style={{ color: "var(--qgi-text)" }}>
       {children}
     </h3>
   );

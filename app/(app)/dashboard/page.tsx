@@ -50,9 +50,7 @@ async function fetchTopPairs(): Promise<{
     // digits so lex-order matches numeric-order for all WB country IDs.
     const padKey = (v: string | number | undefined, fallback: string) => {
       const n = Number(v);
-      return Number.isFinite(n)
-        ? String(n).padStart(6, "0")
-        : String(v ?? fallback);
+      return Number.isFinite(n) ? String(n).padStart(6, "0") : String(v ?? fallback);
     };
     const bestPerPair = new Map<string, PatternRow>();
     for (const row of results) {
@@ -92,9 +90,7 @@ async function fetchTopSignals(): Promise<SignalRow[]> {
       typeof json !== "object" ||
       !Array.isArray((json as { results?: unknown }).results)
     ) {
-      console.warn(
-        "[dashboard] recipes-top50.json missing or malformed `results` array"
-      );
+      console.warn("[dashboard] recipes-top50.json missing or malformed `results` array");
       return [];
     }
     return (json as { results: SignalRow[] }).results;
@@ -106,12 +102,11 @@ async function fetchTopSignals(): Promise<SignalRow[]> {
 
 export default async function BasePage() {
   // Don't bring down the page if any single source 500s.
-  const [risksResult, topPairsResult, topSignalsResult] =
-    await Promise.allSettled([
-      loadCountryRisks(),
-      fetchTopPairs(),
-      fetchTopSignals(),
-    ]);
+  const [risksResult, topPairsResult, topSignalsResult] = await Promise.allSettled([
+    loadCountryRisks(),
+    fetchTopPairs(),
+    fetchTopSignals(),
+  ]);
 
   const risks = risksResult.status === "fulfilled" ? risksResult.value : null;
   const topPairs =

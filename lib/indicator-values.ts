@@ -265,10 +265,7 @@ function ingestDdbItem(item: Record<string, AttributeValue>): void {
  * same cache the DDB path uses, so subsequent calls in the same request
  * skip both DDB and Athena.
  */
-async function athenaFallback(
-  indicatorId: string,
-  countryName: string
-): Promise<void> {
+async function athenaFallback(indicatorId: string, countryName: string): Promise<void> {
   // T13 #306 HIGH + Sonnet P1-5 (2026-04-19): sanitize `indicatorId` before
   // interpolation. Original regex was WB-only (`[A-Z0-9]+(\.[A-Z0-9]+)+`)
   // which silently rejected FAOSTAT (`fao_cereal_yield`) and ILOSTAT

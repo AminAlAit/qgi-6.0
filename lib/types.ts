@@ -137,10 +137,15 @@ export interface SignalsResponse {
 
 /**
  * Enriched analogue — produced by `.tmp/decisions-form/_enrich_analogues.py`
- * which reads `qgi-data/events/curated/*.json` directly and picks the
- * median-year event of the matching category as the analogue's signature event.
+ * (for base enrichment) + `qgi-ml/scripts/enrich_analogues_common_length.py`
+ * (for #354 common-length fields). Reads `qgi-data/events/curated/*.json`
+ * directly and picks the median-year event of the matching category as
+ * the analogue's signature event, plus a length-L-aligned pattern window
+ * per (subject, category) so every analogue row on a panel shares the
+ * same pattern length (#354, Position C).
  *
- * Consumed by `components/countries/AnalogueMultiTimeline.tsx` (ticket #293).
+ * Consumed by `components/countries/AnalogueMultiTimeline.tsx`
+ * (tickets #293, #354).
  */
 export interface AnalogueEnrichedEntry {
   country_b_id: number;
@@ -160,11 +165,38 @@ export interface AnalogueEnrichedEntry {
   event_all_years_b: number[] | null;
   /** 'qgi-data' = enriched from curated events; 'missing' = no match found. */
   event_data_source: "qgi-data" | "missing";
-  /** #352: best-PPS pattern length (years). Added by qgi-ml/scripts/generate_pair_windows.py. */
+
+  /**
+   * #354 common-length fields (preferred, populated by
+   * `enrich_analogues_common_length.py` as of 2026-04-19):
+   * every analogue in a (subject, category) block shares `pair_length ≈ canonical_length ± 2`
+   * so the AnalogueMultiTimeline panel is structurally coherent.
+   */
+  /** #354: pattern length in years (all analogues in a panel ≈ canonical_length ± 2). */
+  pair_length?: number;
+  /** #354: subject's start year in the length-L pattern (varies per row, but all lengths are ≈ L). */
+  pair_start_a?: number;
+  /** #354: analogue's start year in the length-L pattern. */
+  pair_start_b?: number;
+  /** #354: PPS of the chosen length-L window. */
+  pair_pps?: number;
+  /** #354: average correlation of the chosen length-L window. */
+  pair_avg_corr?: number;
+  /**
+   * #354: true iff event_year_b falls inside [pair_start_b, pair_start_b + pair_length].
+   * When false, the widget renders a visual "event outside window" flag.
+   */
+  event_in_window?: boolean;
+
+  /**
+   * @deprecated #352: per-pair best-PPS length (independent across analogues).
+   * Kept only for data-migration reading compatibility. Use the `pair_*`
+   * fields above; they enforce the common-length invariant.
+   */
   best_pattern_length?: number;
-  /** #352: subject country's start year in the best-PPS pattern. */
+  /** @deprecated — see `pair_start_a`. */
   best_pattern_start_a?: number;
-  /** #352: analogue country's start year in the best-PPS pattern. */
+  /** @deprecated — see `pair_start_b`. */
   best_pattern_start_b?: number;
 }
 
@@ -183,11 +215,22 @@ export interface AnaloguesEnrichedPayload {
   source: string;
   enriched_count: number;
   total_analogues: number;
+  /**
+   * #354: `enrichment_algorithm` identifies the common-length-v1 pass.
+   * Widget can assert on this before reading the new `pair_*` fields.
+   */
+  enrichment_algorithm?: string;
+  enrichment_length_tolerance?: number;
   countries: {
     [countryId: string]: {
       [category: string]: {
         subject: AnalogueEnrichedSubject;
         analogues: AnalogueEnrichedEntry[];
+        /**
+         * #354: canonical pattern length L for this (subject, category).
+         * All analogue rows on the panel have `pair_length ≈ L ± 2`.
+         */
+        canonical_length?: number;
       };
     };
   };

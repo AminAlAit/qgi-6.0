@@ -18,10 +18,42 @@ import { useEffect, useState } from "react";
 /** DASHBOARD — 2×2 grid of squares: command-center overview */
 const IconDashboard = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect x="1" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="1" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="1" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="9" y="9" width="6" height="6" rx="1" stroke="currentColor" strokeWidth="1.5" />
+    <rect
+      x="1"
+      y="1"
+      width="6"
+      height="6"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="9"
+      y="1"
+      width="6"
+      height="6"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="1"
+      y="9"
+      width="6"
+      height="6"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="9"
+      y="9"
+      width="6"
+      height="6"
+      rx="1"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
   </svg>
 );
 
@@ -30,7 +62,11 @@ const IconGlobe = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
     {/* vertical meridian */}
-    <path d="M8 1.75C8 1.75 5.5 4.5 5.5 8s2.5 6.25 2.5 6.25M8 1.75C8 1.75 10.5 4.5 10.5 8S8 14.25 8 14.25" stroke="currentColor" strokeWidth="1.25" />
+    <path
+      d="M8 1.75C8 1.75 5.5 4.5 5.5 8s2.5 6.25 2.5 6.25M8 1.75C8 1.75 10.5 4.5 10.5 8S8 14.25 8 14.25"
+      stroke="currentColor"
+      strokeWidth="1.25"
+    />
     {/* horizontal equator */}
     <line x1="1.75" y1="8" x2="14.25" y2="8" stroke="currentColor" strokeWidth="1.25" />
   </svg>
@@ -54,8 +90,24 @@ const IconHistory = () => (
       strokeLinejoin="round"
     />
     {/* clock hands: 12 o'clock stem + 3 o'clock hand */}
-    <line x1="8" y1="8" x2="8" y2="5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-    <line x1="8" y1="8" x2="11" y2="8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <line
+      x1="8"
+      y1="8"
+      x2="8"
+      y2="5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    <line
+      x1="8"
+      y1="8"
+      x2="11"
+      y2="8"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
@@ -89,9 +141,33 @@ const IconNetwork = () => (
 /** RANKING — ascending bar chart: power ranking / leaderboard */
 const IconBarChart = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect x="1.5" y="9" width="3" height="5.5" rx="0.5" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="6.5" y="5.5" width="3" height="9" rx="0.5" stroke="currentColor" strokeWidth="1.5" />
-    <rect x="11.5" y="1.5" width="3" height="13" rx="0.5" stroke="currentColor" strokeWidth="1.5" />
+    <rect
+      x="1.5"
+      y="9"
+      width="3"
+      height="5.5"
+      rx="0.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="6.5"
+      y="5.5"
+      width="3"
+      height="9"
+      rx="0.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
+    <rect
+      x="11.5"
+      y="1.5"
+      width="3"
+      height="13"
+      rx="0.5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+    />
   </svg>
 );
 
@@ -99,7 +175,12 @@ const IconBarChart = () => (
 const IconUser = () => (
   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
     <circle cx="8" cy="5.5" r="2.5" stroke="currentColor" strokeWidth="1.5" />
-    <path d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <path
+      d="M2.5 14c0-3 2.5-5 5.5-5s5.5 2 5.5 5"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
   </svg>
 );
 
@@ -146,8 +227,6 @@ const NAV_ITEMS: ReadonlyArray<{
     icon: <IconUser />,
   },
 ];
-
-
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -207,13 +286,42 @@ export function Sidebar() {
       >
         {mobileOpen ? (
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M3 3L13 13M13 3L3 13" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+            <path
+              d="M3 3L13 13M13 3L3 13"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
           </svg>
         ) : (
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <line x1="2.5" y1="4" x2="13.5" y2="4" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-            <line x1="2.5" y1="8" x2="13.5" y2="8" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
-            <line x1="2.5" y1="12" x2="13.5" y2="12" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+            <line
+              x1="2.5"
+              y1="4"
+              x2="13.5"
+              y2="4"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
+            <line
+              x1="2.5"
+              y1="8"
+              x2="13.5"
+              y2="8"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
+            <line
+              x1="2.5"
+              y1="12"
+              x2="13.5"
+              y2="12"
+              stroke="currentColor"
+              strokeWidth="1.75"
+              strokeLinecap="round"
+            />
           </svg>
         )}
       </button>
@@ -239,85 +347,85 @@ export function Sidebar() {
           borderColor: "var(--qgi-border)",
         }}
       >
-      {/* Wordmark — matches the qgintelligence.com domain (#245).
+        {/* Wordmark — matches the qgintelligence.com domain (#245).
           QG (blue) + INTELLIGENCE (grey) reads as "qg-intelligence" the same
           way the URL does.
           Visual: tightened with `gap-1` + negative margin-right on QG so the
           trailing letter-spacing doesn't push "Intelligence" away (the
           0.25em tracking adds ~3px of phantom space after the last letter).
           GH#251: clickable; in-app sidebar always navigates to /base. */}
-      <Link
-        href="/base"
-        onClick={closeOnNavigate}
-        className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
-        style={{ borderColor: "var(--qgi-border)" }}
-        title="Go to Base (command center)"
-      >
-        <span
-          className="font-data text-xs tracking-[0.25em] font-semibold"
-          style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+        <Link
+          href="/base"
+          onClick={closeOnNavigate}
+          className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
+          style={{ borderColor: "var(--qgi-border)" }}
+          title="Go to Base (command center)"
         >
-          QG
-        </span>
-        <span
-          className="text-[10px] tracking-widest uppercase"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          Intelligence
-        </span>
-      </Link>
+          <span
+            className="font-data text-xs tracking-[0.25em] font-semibold"
+            style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+          >
+            QG
+          </span>
+          <span
+            className="text-[10px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            Intelligence
+          </span>
+        </Link>
 
-      {/* Navigation
+        {/* Navigation
           GH#250: longest-prefix-wins active state. Without this, RANKING
           (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
           naive startsWith() matches both. The per-item `active` check below
           picks the deepest NAV_ITEMS href that the current pathname matches. */}
-      <nav className="flex flex-col gap-0.5 px-2 pt-4 flex-1">
-        {NAV_ITEMS.map(({ label, href, icon }) => {
-          const active =
-            pathname === href ||
-            (pathname.startsWith(href + "/") &&
-              !NAV_ITEMS.some(
-                (other) =>
-                  other.href !== href &&
-                  other.href.length > href.length &&
-                  (pathname === other.href || pathname.startsWith(other.href + "/"))
-              ));
-          return (
-            <Link
-              key={href}
-              href={href}
-              onClick={closeOnNavigate}
-              className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
-              style={{
-                color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
-                backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
-              }}
-            >
-              <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
-              {label}
-            </Link>
-          );
-        })}
+        <nav className="flex flex-col gap-0.5 px-2 pt-4 flex-1">
+          {NAV_ITEMS.map(({ label, href, icon }) => {
+            const active =
+              pathname === href ||
+              (pathname.startsWith(href + "/") &&
+                !NAV_ITEMS.some(
+                  (other) =>
+                    other.href !== href &&
+                    other.href.length > href.length &&
+                    (pathname === other.href || pathname.startsWith(other.href + "/"))
+                ));
+            return (
+              <Link
+                key={href}
+                href={href}
+                onClick={closeOnNavigate}
+                className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
+                style={{
+                  color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
+                  backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
+                }}
+              >
+                <span className="flex items-center justify-center w-4 h-4 shrink-0">
+                  {icon}
+                </span>
+                {label}
+              </Link>
+            );
+          })}
+        </nav>
 
-
-      </nav>
-
-      {/* Footer */}
-      <div
-        className="px-5 py-4 border-t text-[10px] tracking-wider"
-        style={{
-          borderColor: "var(--qgi-border)",
-          color: "var(--qgi-text-dim)",
-        }}
-      >
-        QUANTITATIVE
-        <br />
-        GEOPOLITICAL
-        <br />
-        INTELLIGENCE
-      </div>
-    </aside>
+        {/* Footer */}
+        <div
+          className="px-5 py-4 border-t text-[10px] tracking-wider"
+          style={{
+            borderColor: "var(--qgi-border)",
+            color: "var(--qgi-text-dim)",
+          }}
+        >
+          QUANTITATIVE
+          <br />
+          GEOPOLITICAL
+          <br />
+          INTELLIGENCE
+        </div>
+      </aside>
     </>
   );
 }

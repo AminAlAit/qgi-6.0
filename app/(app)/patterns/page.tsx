@@ -52,9 +52,7 @@ async function loadInitialTopPairs(): Promise<PatternRow[]> {
     // pair dedups inconsistently depending on where ids come from.
     const padKey = (v: string | number | undefined, fallback: string) => {
       const n = Number(v);
-      return Number.isFinite(n)
-        ? String(n).padStart(6, "0")
-        : String(v ?? fallback);
+      return Number.isFinite(n) ? String(n).padStart(6, "0") : String(v ?? fallback);
     };
     const bestPerPair = new Map<string, PatternRow>();
     for (const row of rows) {

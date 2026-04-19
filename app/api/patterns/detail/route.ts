@@ -5,10 +5,24 @@ import { getIndicatorValuesBatch, type IndicatorRequest } from "@/lib/indicator-
 import indexData from "@/data/indexes.json";
 
 // Build lookups from numeric_id → metadata and → string ID
-const indexByNumericId = new Map<number, { id: string; name: string; sector: string; org: string }>();
-for (const idx of indexData as { id: string; numeric_id: number | null; name: string; sector: string; org: string }[]) {
+const indexByNumericId = new Map<
+  number,
+  { id: string; name: string; sector: string; org: string }
+>();
+for (const idx of indexData as {
+  id: string;
+  numeric_id: number | null;
+  name: string;
+  sector: string;
+  org: string;
+}[]) {
   if (idx.numeric_id != null) {
-    indexByNumericId.set(idx.numeric_id, { id: idx.id, name: idx.name, sector: idx.sector, org: idx.org });
+    indexByNumericId.set(idx.numeric_id, {
+      id: idx.id,
+      name: idx.name,
+      sector: idx.sector,
+      org: idx.org,
+    });
   }
 }
 
@@ -33,8 +47,13 @@ export const GET = withAuth(async (req: NextRequest) => {
   const startANum = Number(start_a);
   const startBNum = Number(start_b);
 
-  if (!Number.isFinite(aId) || !Number.isFinite(bId) || !Number.isFinite(lenNum) ||
-      !Number.isFinite(startANum) || !Number.isFinite(startBNum)) {
+  if (
+    !Number.isFinite(aId) ||
+    !Number.isFinite(bId) ||
+    !Number.isFinite(lenNum) ||
+    !Number.isFinite(startANum) ||
+    !Number.isFinite(startBNum)
+  ) {
     return NextResponse.json({ error: "Invalid numeric parameter" }, { status: 400 });
   }
 
@@ -82,7 +101,8 @@ export const GET = withAuth(async (req: NextRequest) => {
   // For a 22-indicator pattern this collapses ~44 separate Athena cold
   // starts (3-15s each) into a single sub-second DDB round-trip.
   const requests: IndicatorRequest[] = [];
-  const scdiMeta: Array<{ numId: number; indicatorId?: string; correlation: number }> = [];
+  const scdiMeta: Array<{ numId: number; indicatorId?: string; correlation: number }> =
+    [];
   for (const r of scdiRows) {
     const numId = Number(r.indicator_numeric_id);
     const meta = indexByNumericId.get(numId);

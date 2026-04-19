@@ -98,9 +98,7 @@ export function WorldDotMap({ countries }: Props) {
     return counts;
   }, [countries]);
 
-  const hoveredCountry = hoveredId
-    ? countries.find((c) => c.id === hoveredId)
-    : null;
+  const hoveredCountry = hoveredId ? countries.find((c) => c.id === hoveredId) : null;
 
   return (
     <div
@@ -186,7 +184,10 @@ export function WorldDotMap({ countries }: Props) {
         {REGION_ORDER.map((region) => {
           const group = regionGroups[region];
           return (
-            <div key={region} style={{ display: "flex", flexDirection: "column" as const }}>
+            <div
+              key={region}
+              style={{ display: "flex", flexDirection: "column" as const }}
+            >
               {/* Region label */}
               <div
                 style={{

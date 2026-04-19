@@ -81,8 +81,7 @@ const TIER_VALUES: Record<RiskTier, number> = {
 
 const NO_DATA_COLOR = "#1a2a3a";
 
-const GEOJSON_URL =
-  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+const GEOJSON_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
 // ---------------------------------------------------------------------------
 // QGI name -> GeoJSON name mapping
@@ -96,8 +95,8 @@ const GEOJSON_URL =
 const QGI_TO_GEO: Record<string, string> = {
   "United States": "United States of America",
   "Ivory Coast": "Cote d'Ivoire",
-  "Turkiye": "Turkey",
-  "Czechia": "Czech Republic",
+  Turkiye: "Turkey",
+  Czechia: "Czech Republic",
   "North Macedonia": "Macedonia",
   "Bosnia and Herzegovina": "Bosnia and Herz.",
   "Central African Republic": "Central African Rep.",
@@ -140,9 +139,7 @@ interface Topology {
 
 function topoToGeo(topology: Topology): GeoFeatureCollection {
   const objKey =
-    "countries" in topology.objects
-      ? "countries"
-      : Object.keys(topology.objects)[0];
+    "countries" in topology.objects ? "countries" : Object.keys(topology.objects)[0];
   const obj = topology.objects[objKey];
 
   const { arcs: rawArcs, transform } = topology;
@@ -227,7 +224,11 @@ function clampCoordinates(geometry: { type: string; coordinates: unknown }) {
   function walkCoords(coords: unknown): void {
     if (!Array.isArray(coords)) return;
     // If this is a coordinate pair [lng, lat, ...]
-    if (coords.length >= 2 && typeof coords[0] === "number" && typeof coords[1] === "number") {
+    if (
+      coords.length >= 2 &&
+      typeof coords[0] === "number" &&
+      typeof coords[1] === "number"
+    ) {
       // Wrap longitude to [-180, 180]
       if (coords[0] > 180) coords[0] = coords[0] - 360;
       else if (coords[0] < -180) coords[0] = coords[0] + 360;
@@ -669,10 +670,7 @@ export function WorldMapChart({ countries }: Props) {
         {/* Tier legend */}
         <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           {(["HIGH", "MODERATE", "INDICATIVE"] as RiskTier[]).map((tier) => (
-            <div
-              key={tier}
-              style={{ display: "flex", alignItems: "center", gap: 4 }}
-            >
+            <div key={tier} style={{ display: "flex", alignItems: "center", gap: 4 }}>
               <span
                 style={{
                   display: "inline-block",
@@ -718,10 +716,7 @@ export function WorldMapChart({ countries }: Props) {
         </div>
       ) : (
         <div style={{ height: 250 }}>
-          <ReactEChartsWrapper
-            option={option}
-            onEvents={{ click: handleClick }}
-          />
+          <ReactEChartsWrapper option={option} onEvents={{ click: handleClick }} />
         </div>
       )}
     </div>
@@ -741,9 +736,7 @@ function ReactEChartsWrapper({
   option: Record<string, unknown>;
   onEvents: Record<string, (params: any) => void>;
 }) {
-  const [Component, setComponent] = useState<React.ComponentType<any> | null>(
-    null
-  );
+  const [Component, setComponent] = useState<React.ComponentType<any> | null>(null);
 
   useEffect(() => {
     import("echarts-for-react").then((mod) => {

@@ -62,7 +62,9 @@ export function CountryFlag({
     );
   }
 
-  const FlagComponent = (Flags3x2 as Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>)[code];
+  const FlagComponent = (
+    Flags3x2 as Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>>
+  )[code];
 
   if (!FlagComponent) {
     return (

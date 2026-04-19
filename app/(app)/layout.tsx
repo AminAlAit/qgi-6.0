@@ -16,11 +16,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </a>
       <div className="flex h-full overflow-x-hidden">
         <Sidebar />
-        <main
-          id="main-content"
-          className="flex-1 overflow-y-auto"
-          tabIndex={-1}
-        >
+        <main id="main-content" className="flex-1 overflow-y-auto" tabIndex={-1}>
           {children}
         </main>
       </div>

@@ -55,7 +55,12 @@ async function loadCountryEvents(
       Array<{ year: number; title: string; category: string }>
     >;
     // Match by snake_case country name
-    const key = countryName.toLowerCase().replace(/^the\s+/, "").replace(/\bof the\b/g, "of").replace(/[-\s]+/g, "_").replace(/[^a-z0-9_]/g, "");
+    const key = countryName
+      .toLowerCase()
+      .replace(/^the\s+/, "")
+      .replace(/\bof the\b/g, "of")
+      .replace(/[-\s]+/g, "_")
+      .replace(/[^a-z0-9_]/g, "");
     return allEvents[key] ?? [];
   } catch {
     return [];
@@ -68,13 +73,19 @@ async function loadCountryEvents(
  * salience module in qgi-ml/scripts/salience/.
  * Returns null if no salience file exists for this country yet.
  */
-async function loadCountrySalience(
-  countryName: string
-): Promise<{ l1Scores: Record<string, number>; l2Scores: Record<string, number> } | null> {
+async function loadCountrySalience(countryName: string): Promise<{
+  l1Scores: Record<string, number>;
+  l2Scores: Record<string, number>;
+} | null> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
-    const slug = countryName.toLowerCase().replace(/^the\s+/, "").replace(/\bof the\b/g, "of").replace(/[-\s]+/g, "_").replace(/[^a-z0-9_]/g, "");
+    const slug = countryName
+      .toLowerCase()
+      .replace(/^the\s+/, "")
+      .replace(/\bof the\b/g, "of")
+      .replace(/[-\s]+/g, "_")
+      .replace(/[^a-z0-9_]/g, "");
     const filePath = path.join(process.cwd(), "data", "salience", `${slug}.json`);
     const raw = await fs.readFile(filePath, "utf-8");
     const data = JSON.parse(raw) as {
@@ -90,18 +101,32 @@ async function loadCountrySalience(
 /**
  * Load structural twins from baked data/structural-twins.json.
  */
-async function loadStructuralTwins(
-  countryId: string
-): Promise<Array<{ partner_id: number; partner_name: string; alpha2: string; pattern_count: number; mean_corr: number; best_pps: number }>> {
+async function loadStructuralTwins(countryId: string): Promise<
+  Array<{
+    partner_id: number;
+    partner_name: string;
+    alpha2: string;
+    pattern_count: number;
+    mean_corr: number;
+    best_pps: number;
+  }>
+> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
     const filePath = path.join(process.cwd(), "data", "structural-twins.json");
     const raw = await fs.readFile(filePath, "utf-8");
-    const allTwins = JSON.parse(raw) as Record<string, Array<{
-      partner_id: number; partner_name: string; alpha2: string;
-      pattern_count: number; mean_corr: number; best_pps: number;
-    }>>;
+    const allTwins = JSON.parse(raw) as Record<
+      string,
+      Array<{
+        partner_id: number;
+        partner_name: string;
+        alpha2: string;
+        pattern_count: number;
+        mean_corr: number;
+        best_pps: number;
+      }>
+    >;
     return allTwins[countryId] ?? [];
   } catch {
     return [];
@@ -114,16 +139,40 @@ async function loadStructuralTwins(
 async function loadAnalogues(
   countryId: string,
   category?: string
-): Promise<Record<string, Array<{ country_b_id: number; country_b_name: string; alpha2: string; recipe_count: number; mean_corr: number; best_pps: number; avg_lead_years: number | null }>>> {
+): Promise<
+  Record<
+    string,
+    Array<{
+      country_b_id: number;
+      country_b_name: string;
+      alpha2: string;
+      recipe_count: number;
+      mean_corr: number;
+      best_pps: number;
+      avg_lead_years: number | null;
+    }>
+  >
+> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
     const filePath = path.join(process.cwd(), "data", "analogues.json");
     const raw = await fs.readFile(filePath, "utf-8");
-    const all = JSON.parse(raw) as Record<string, Record<string, Array<{
-      country_b_id: number; country_b_name: string; alpha2: string;
-      recipe_count: number; mean_corr: number; best_pps: number; avg_lead_years: number | null;
-    }>>>;
+    const all = JSON.parse(raw) as Record<
+      string,
+      Record<
+        string,
+        Array<{
+          country_b_id: number;
+          country_b_name: string;
+          alpha2: string;
+          recipe_count: number;
+          mean_corr: number;
+          best_pps: number;
+          avg_lead_years: number | null;
+        }>
+      >
+    >;
     const countryAnalogues = all[countryId] ?? {};
     if (category) {
       const filtered: typeof countryAnalogues = {};
@@ -147,7 +196,10 @@ async function loadPatternDensity(
     const path = await import("path");
     const filePath = path.join(process.cwd(), "data", "pattern-density.json");
     const raw = await fs.readFile(filePath, "utf-8");
-    const all = JSON.parse(raw) as Record<string, { years: number[]; counts: number[]; total: number }>;
+    const all = JSON.parse(raw) as Record<
+      string,
+      { years: number[]; counts: number[]; total: number }
+    >;
     return all[countryId] ?? null;
   } catch {
     return null;
@@ -158,11 +210,14 @@ async function loadPatternDensity(
  * Load indicator trajectories from baked data/indicator-trajectories.json (GH#287).
  * Returns null if the file doesn't exist or this country has no data.
  */
-async function loadIndicatorTrajectories(
-  countryId: string
-): Promise<{
+async function loadIndicatorTrajectories(countryId: string): Promise<{
   years: number[];
-  indicators: { name: string; unit: string; data: (number | null)[]; predicted_from?: number }[];
+  indicators: {
+    name: string;
+    unit: string;
+    data: (number | null)[];
+    predicted_from?: number;
+  }[];
   events: { year: number; label: string }[];
 } | null> {
   try {
@@ -170,11 +225,19 @@ async function loadIndicatorTrajectories(
     const path = await import("path");
     const filePath = path.join(process.cwd(), "data", "indicator-trajectories.json");
     const raw = await fs.readFile(filePath, "utf-8");
-    const all = JSON.parse(raw) as Record<string, {
-      years: number[];
-      indicators: { name: string; unit: string; data: (number | null)[]; predicted_from?: number }[];
-      events: { year: number; label: string }[];
-    }>;
+    const all = JSON.parse(raw) as Record<
+      string,
+      {
+        years: number[];
+        indicators: {
+          name: string;
+          unit: string;
+          data: (number | null)[];
+          predicted_from?: number;
+        }[];
+        events: { year: number; label: string }[];
+      }
+    >;
     return all[countryId] ?? null;
   } catch {
     return null;

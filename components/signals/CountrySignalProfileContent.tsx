@@ -88,18 +88,26 @@ export function CountrySignalProfileContent() {
         >
           Country Signal Profile
         </h1>
-        {payload && <DataFreshness generatedAt={payload.generated_at} label="Live query" />}
+        {payload && (
+          <DataFreshness generatedAt={payload.generated_at} label="Live query" />
+        )}
       </div>
 
-      <p className="text-[11px] leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-        Select a country to see its active signals — patterns where this country is currently
-        following another country&apos;s historical trajectory, with matching events on both sides
-        forming a structural precedent.
+      <p
+        className="text-[11px] leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        Select a country to see its active signals — patterns where this country is
+        currently following another country&apos;s historical trajectory, with matching
+        events on both sides forming a structural precedent.
       </p>
 
       <div
         className="flex gap-2 items-end p-3 rounded border"
-        style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
       >
         <div className="flex flex-col gap-1 flex-1">
           <label
@@ -139,35 +147,56 @@ export function CountrySignalProfileContent() {
 
       <div className="flex-1 overflow-y-auto flex flex-col gap-3">
         {loading ? (
-          <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+          <div
+            className="flex items-center justify-center py-16 text-xs tracking-wider"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             LOADING SIGNALS...
           </div>
         ) : error ? (
-          <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-danger)" }}>
+          <div
+            className="flex items-center justify-center py-16 text-xs tracking-wider"
+            style={{ color: "var(--qgi-danger)" }}
+          >
             {error}
           </div>
         ) : !country ? (
-          <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+          <div
+            className="flex items-center justify-center py-16 text-xs tracking-wider"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             SELECT A COUNTRY TO VIEW ITS SIGNAL PROFILE
           </div>
         ) : signals.length === 0 ? (
-          <div className="flex items-center justify-center py-16 text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+          <div
+            className="flex items-center justify-center py-16 text-xs tracking-wider"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             NO ACTIVE SIGNALS FOR {country.toUpperCase()}
           </div>
         ) : (
           <>
             <div
               className="flex items-center justify-between px-4 py-2 rounded border"
-              style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+              style={{
+                backgroundColor: "var(--qgi-surface)",
+                borderColor: "var(--qgi-border)",
+              }}
             >
               <span className="text-xs font-data" style={{ color: "var(--qgi-text)" }}>
                 {country}
               </span>
               <div className="flex gap-4">
-                <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                <span
+                  className="text-[10px] font-data"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
                   {signals.length} active signal{signals.length !== 1 ? "s" : ""}
                 </span>
-                <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+                <span
+                  className="text-[10px] font-data"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
                   {categories.length} categor{categories.length !== 1 ? "ies" : "y"}
                 </span>
               </div>
@@ -177,7 +206,10 @@ export function CountrySignalProfileContent() {
               <div
                 key={cat}
                 className="rounded border overflow-hidden"
-                style={{ backgroundColor: "var(--qgi-surface)", borderColor: "var(--qgi-border)" }}
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  borderColor: "var(--qgi-border)",
+                }}
               >
                 <div
                   className="flex items-center justify-between px-4 py-2 border-b"
@@ -189,8 +221,12 @@ export function CountrySignalProfileContent() {
                   >
                     {cat.replace(/_/g, " ")}
                   </span>
-                  <span className="text-[9px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
-                    {byCategory[cat].length} precedent{byCategory[cat].length !== 1 ? "s" : ""}
+                  <span
+                    className="text-[9px] font-data"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    {byCategory[cat].length} precedent
+                    {byCategory[cat].length !== 1 ? "s" : ""}
                   </span>
                 </div>
 
@@ -212,10 +248,16 @@ export function CountrySignalProfileContent() {
                   >
                     <div className="flex items-center justify-between mb-1.5">
                       <div className="flex items-center gap-2">
-                        <span className="font-data text-xs" style={{ color: "var(--qgi-country-b)" }}>
+                        <span
+                          className="font-data text-xs"
+                          style={{ color: "var(--qgi-country-b)" }}
+                        >
                           {s.country_b_name}
                         </span>
-                        <span className="text-[9px]" style={{ color: "var(--qgi-text-dim)" }}>
+                        <span
+                          className="text-[9px]"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
                           ({s.start_year_b}–{s.end_year_b})
                         </span>
                       </div>
@@ -234,11 +276,19 @@ export function CountrySignalProfileContent() {
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-3 text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
+                    <div
+                      className="flex items-center gap-3 text-[10px]"
+                      style={{ color: "var(--qgi-text-muted)" }}
+                    >
                       <span className="font-data">{s.length}yr</span>
-                      <span className="font-data">{(s.avg_correlation * 100).toFixed(0)}% corr</span>
+                      <span className="font-data">
+                        {(s.avg_correlation * 100).toFixed(0)}% corr
+                      </span>
                       <span className="font-data">{s.indicator_count} indicators</span>
-                      <span className="truncate max-w-xs" style={{ color: "var(--qgi-text-dim)" }}>
+                      <span
+                        className="truncate max-w-xs"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
                         {s.event_title_b}
                       </span>
                     </div>

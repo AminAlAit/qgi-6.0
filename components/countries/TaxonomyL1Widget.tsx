@@ -49,9 +49,7 @@ type Props = {
 export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
   const [openL1, setOpenL1] = useState<string | null>(null);
 
-  const hasData =
-    l1Scores != null &&
-    Object.values(l1Scores).some((v) => v > 0);
+  const hasData = l1Scores != null && Object.values(l1Scores).some((v) => v > 0);
 
   return (
     <div
@@ -69,10 +67,7 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
           Risk Domains (Layered Taxonomy)
         </h2>
         {!hasData && (
-          <span
-            className="text-[10px]"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
             salience scoring pending
           </span>
         )}
@@ -82,10 +77,10 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
         className="text-[11px] leading-relaxed mb-4"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        These 8 cards summarize recent risk signals across the master taxonomy
-        groups. Each score reflects the <strong>most recent + most impactful
-        event</strong> in that domain (recency-weighted max). Higher = more
-        recent activity. Click a card to see sub-categories.
+        These 8 cards summarize recent risk signals across the master taxonomy groups.
+        Each score reflects the <strong>most recent + most impactful event</strong> in
+        that domain (recency-weighted max). Higher = more recent activity. Click a card to
+        see sub-categories.
       </p>
 
       {/* 8 L1 cards */}
@@ -101,9 +96,7 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
               onClick={() => setOpenL1(isOpen ? null : l1.id)}
               className="text-left rounded border p-2.5 transition-all hover:border-[var(--qgi-accent)]"
               style={{
-                backgroundColor: isOpen
-                  ? "var(--qgi-accent-glow)"
-                  : "var(--qgi-bg)",
+                backgroundColor: isOpen ? "var(--qgi-accent-glow)" : "var(--qgi-bg)",
                 borderTopColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
                 borderRightColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
                 borderBottomColor: isOpen ? "var(--qgi-accent)" : "var(--qgi-border)",
@@ -130,9 +123,13 @@ export default function TaxonomyL1Widget({ l1Scores, l2Scores }: Props) {
               </div>
               {/* #12: tier label beneath the card name */}
               <div className="text-[9px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
-                {tier === "high" ? "Recent activity" :
-                 tier === "moderate" ? "Active (1-3yr)" :
-                 tier === "indicative" ? "Historical only" : "No events"}
+                {tier === "high"
+                  ? "Recent activity"
+                  : tier === "moderate"
+                    ? "Active (1-3yr)"
+                    : tier === "indicative"
+                      ? "Historical only"
+                      : "No events"}
               </div>
             </button>
           );

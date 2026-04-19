@@ -92,9 +92,9 @@ function salienceTo100(raw: number): number {
 function toSlug(name: string): string {
   return name
     .toLowerCase()
-    .replace(/^the\s+/, "")         // strip leading "The "
-    .replace(/\bof the\b/g, "of")   // "Republic of the Congo" → "Republic of Congo"
-    .replace(/[-–—]/g, "_")         // hyphens + en/em dashes → underscore
+    .replace(/^the\s+/, "") // strip leading "The "
+    .replace(/\bof the\b/g, "of") // "Republic of the Congo" → "Republic of Congo"
+    .replace(/[-–—]/g, "_") // hyphens + en/em dashes → underscore
     .replace(/\s+/g, "_")
     .replace(/[^a-z0-9_]/g, "");
 }
@@ -139,9 +139,7 @@ function getDominantL1(l1Scores: Record<string, number>): L1Id | null {
 }
 
 function formatCategory(cat: string): string {
-  return cat
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
+  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // ---------------------------------------------------------------------------
@@ -182,9 +180,7 @@ export function CountriesClient({
     if (search) {
       const q = search.toLowerCase();
       result = result.filter(
-        (c) =>
-          c.name.toLowerCase().includes(q) ||
-          c.alpha_2.toLowerCase().includes(q)
+        (c) => c.name.toLowerCase().includes(q) || c.alpha_2.toLowerCase().includes(q)
       );
     }
     if (tierFilter !== "ALL") {
@@ -243,9 +239,7 @@ export function CountriesClient({
     if (search) {
       const q = search.toLowerCase();
       base = base.filter(
-        (c) =>
-          c.name.toLowerCase().includes(q) ||
-          c.alpha_2.toLowerCase().includes(q)
+        (c) => c.name.toLowerCase().includes(q) || c.alpha_2.toLowerCase().includes(q)
       );
     }
     if (l1Filter) {
@@ -273,11 +267,9 @@ export function CountriesClient({
         >
           Country Intelligence Browser
         </h1>
-        <p
-          className="text-sm"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          {countries.length}&nbsp;countries &middot; {curatedCount}&nbsp;curated &middot; V1.8.1 scoring
+        <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
+          {countries.length}&nbsp;countries &middot; {curatedCount}&nbsp;curated &middot;
+          V1.8.1 scoring
         </p>
       </div>
 
@@ -394,7 +386,8 @@ export function CountriesClient({
         Showing {sorted.length} of {countries.length}
         {l1Filter && (
           <span>
-            {" "}&middot; {L1_META[l1Filter].full} &ge; {l1MinScore}
+            {" "}
+            &middot; {L1_META[l1Filter].full} &ge; {l1MinScore}
           </span>
         )}
       </div>
@@ -462,9 +455,7 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
       }}
     >
       {/* ─── Top strip: OVR + Name + Verified ─── */}
-      <div
-        className="flex items-center gap-2 px-3 pt-3 pb-2"
-      >
+      <div className="flex items-center gap-2 px-3 pt-3 pb-2">
         {/* OVR badge */}
         <div
           className="shrink-0 flex items-center justify-center rounded font-bold text-lg leading-none"
@@ -497,7 +488,10 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
         </div>
 
         {/* Verified badge — T15 #308: role=img + aria-label so screen readers announce state */}
-        <div className="shrink-0" title={country.curated ? "Events curated by QGI analysts" : "Curation pending"}>
+        <div
+          className="shrink-0"
+          title={country.curated ? "Events curated by QGI analysts" : "Curation pending"}
+        >
           {country.curated ? (
             <svg
               width="18"
@@ -507,8 +501,21 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
               role="img"
               aria-label="Curated country — events verified by QGI analysts"
             >
-              <circle cx="12" cy="12" r="10" fill="rgba(52, 211, 153, 0.15)" stroke="#34d399" strokeWidth="1.5" />
-              <path d="M8 12.5l2.5 2.5L16 9.5" stroke="#34d399" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                fill="rgba(52, 211, 153, 0.15)"
+                stroke="#34d399"
+                strokeWidth="1.5"
+              />
+              <path
+                d="M8 12.5l2.5 2.5L16 9.5"
+                stroke="#34d399"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           ) : (
             <svg
@@ -519,7 +526,14 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
               role="img"
               aria-label="Uncurated country — event corpus not yet verified"
             >
-              <circle cx="12" cy="12" r="10" fill="rgba(74, 98, 128, 0.15)" stroke="#4a6280" strokeWidth="1.5" />
+              <circle
+                cx="12"
+                cy="12"
+                r="10"
+                fill="rgba(74, 98, 128, 0.15)"
+                stroke="#4a6280"
+                strokeWidth="1.5"
+              />
               <rect x="10.5" y="7" width="3" height="6" rx="0.5" fill="#4a6280" />
               <circle cx="12" cy="16" r="1.5" fill="#4a6280" />
             </svg>
@@ -566,14 +580,14 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
             const val = country.l1Scores[id];
             const meta = L1_META[id];
             return (
-              <div
-                key={id}
-                className="flex items-center gap-1.5"
-                title={meta.full}
-              >
+              <div key={id} className="flex items-center gap-1.5" title={meta.full}>
                 <span
                   className="text-[10px] font-bold tracking-wide"
-                  style={{ color: meta.color, width: 28, fontFamily: "var(--font-mono, monospace)" }}
+                  style={{
+                    color: meta.color,
+                    width: 28,
+                    fontFamily: "var(--font-mono, monospace)",
+                  }}
                 >
                   {meta.label}
                 </span>
@@ -606,10 +620,7 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
       </div>
 
       {/* ─── Divider ─── */}
-      <div
-        className="mx-3 mb-2"
-        style={{ borderTop: "1px solid var(--qgi-border)" }}
-      />
+      <div className="mx-3 mb-2" style={{ borderTop: "1px solid var(--qgi-border)" }} />
 
       {/* ─── Top domain + category ─── */}
       <div className="px-3 pb-2">
@@ -620,10 +631,7 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
           >
             Top domain
           </span>
-          <span
-            className="text-[10px] font-semibold"
-            style={{ color: dominantColor }}
-          >
+          <span className="text-[10px] font-semibold" style={{ color: dominantColor }}>
             {topDomainLabel}
           </span>
         </div>
@@ -644,10 +652,7 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
             </div>
           </>
         ) : (
-          <div
-            className="text-[10px]"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
             Data accumulating
           </div>
         )}
@@ -694,10 +699,8 @@ function FilterChip({
             ? `${color}20`
             : "var(--qgi-accent-glow)"
           : "transparent",
-        borderColor: active
-          ? color ?? "var(--qgi-accent)"
-          : "var(--qgi-border)",
-        color: active ? color ?? "var(--qgi-accent)" : "var(--qgi-text-muted)",
+        borderColor: active ? (color ?? "var(--qgi-accent)") : "var(--qgi-border)",
+        color: active ? (color ?? "var(--qgi-accent)") : "var(--qgi-text-muted)",
       }}
     >
       {label}

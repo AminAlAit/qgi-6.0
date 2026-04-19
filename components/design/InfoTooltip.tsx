@@ -20,8 +20,16 @@ export function InfoTooltip({ text }: { text: string }) {
         tabIndex={0}
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
-        onClick={(e) => { e.stopPropagation(); setShow(!show); }}
-        onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.stopPropagation(); setShow(!show); } }}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShow(!show);
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.stopPropagation();
+            setShow(!show);
+          }
+        }}
         className="inline-flex items-center justify-center w-3.5 h-3.5 rounded-full text-[8px] font-bold transition-colors cursor-help"
         style={{
           backgroundColor: "var(--qgi-surface-2)",

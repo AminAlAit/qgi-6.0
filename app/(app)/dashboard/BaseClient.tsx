@@ -20,10 +20,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
-import {
-  CONVERGENCE_COLORS,
-  CONVERGENCE_LABELS,
-} from "@/lib/design";
+import { CONVERGENCE_COLORS, CONVERGENCE_LABELS } from "@/lib/design";
 
 const SectorRose = dynamic(
   () => import("@/components/charts/SectorRose").then((m) => m.SectorRose),
@@ -70,10 +67,7 @@ interface Props {
 // Constants
 // ---------------------------------------------------------------------------
 
-const TIER_STYLES: Record<
-  RiskTier,
-  { bg: string; text: string; border: string }
-> = {
+const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
   HIGH: {
     bg: "rgba(248, 113, 113, 0.12)",
     text: "#f87171",
@@ -100,43 +94,190 @@ const REGION_MAP: Record<string, string> = (() => {
   const map: Record<string, string> = {};
   // SSA (excluding North Africa: 12=Algeria, 434=Libya, 504=Morocco → MNA)
   for (const id of [
-    "24", "72", "854", "108", "120", "132", "140", "148", "174", "178",
-    "180", "204", "226", "231", "232", "266", "270", "288", "324", "624",
-    "384", "404", "426", "430", "450", "454", "466", "478", "480",
-    "508", "516", "562", "566", "646", "678", "686", "694", "706",
-    "710", "716", "728", "729", "748", "768", "800", "834", "894",
+    "24",
+    "72",
+    "854",
+    "108",
+    "120",
+    "132",
+    "140",
+    "148",
+    "174",
+    "178",
+    "180",
+    "204",
+    "226",
+    "231",
+    "232",
+    "266",
+    "270",
+    "288",
+    "324",
+    "624",
+    "384",
+    "404",
+    "426",
+    "430",
+    "450",
+    "454",
+    "466",
+    "478",
+    "480",
+    "508",
+    "516",
+    "562",
+    "566",
+    "646",
+    "678",
+    "686",
+    "694",
+    "706",
+    "710",
+    "716",
+    "728",
+    "729",
+    "748",
+    "768",
+    "800",
+    "834",
+    "894",
   ])
     map[id] = "SSA";
   // MNA
   for (const id of [
-    "12", "48", "262", "818", "364", "368", "376", "400", "414", "422", "434",
-    "504", "512", "275", "634", "682", "760", "788", "792", "784", "887",
+    "12",
+    "48",
+    "262",
+    "818",
+    "364",
+    "368",
+    "376",
+    "400",
+    "414",
+    "422",
+    "434",
+    "504",
+    "512",
+    "275",
+    "634",
+    "682",
+    "760",
+    "788",
+    "792",
+    "784",
+    "887",
   ])
     map[id] = "MNA";
   // EAP
   for (const id of [
-    "36", "96", "116", "156", "242", "296", "360", "392", "408", "410",
-    "418", "458", "496", "104", "540", "554", "598", "608", "882",
-    "626", "764", "776", "798", "548",
+    "36",
+    "96",
+    "116",
+    "156",
+    "242",
+    "296",
+    "360",
+    "392",
+    "408",
+    "410",
+    "418",
+    "458",
+    "496",
+    "104",
+    "540",
+    "554",
+    "598",
+    "608",
+    "882",
+    "626",
+    "764",
+    "776",
+    "798",
+    "548",
   ])
     map[id] = "EAP";
   // SAS
-  for (const id of ["4", "50", "64", "356", "144", "462", "524", "586"])
-    map[id] = "SAS";
+  for (const id of ["4", "50", "64", "356", "144", "462", "524", "586"]) map[id] = "SAS";
   // LAC
   for (const id of [
-    "28", "32", "44", "52", "68", "76", "84", "152", "170", "188", "192",
-    "212", "214", "218", "222", "308", "320", "328", "332", "340", "388",
-    "484", "558", "591", "600", "604", "662", "740", "780", "858", "862",
+    "28",
+    "32",
+    "44",
+    "52",
+    "68",
+    "76",
+    "84",
+    "152",
+    "170",
+    "188",
+    "192",
+    "212",
+    "214",
+    "218",
+    "222",
+    "308",
+    "320",
+    "328",
+    "332",
+    "340",
+    "388",
+    "484",
+    "558",
+    "591",
+    "600",
+    "604",
+    "662",
+    "740",
+    "780",
+    "858",
+    "862",
   ])
     map[id] = "LAC";
   // ECA
   for (const id of [
-    "8", "40", "51", "56", "70", "100", "191", "196", "203", "208", "233",
-    "246", "250", "268", "276", "300", "348", "352", "372", "380", "398",
-    "417", "428", "440", "442", "807", "498", "499", "528", "578", "616",
-    "620", "642", "643", "688", "703", "705", "724", "752", "756", "804",
-    "826", "860",
+    "8",
+    "40",
+    "51",
+    "56",
+    "70",
+    "100",
+    "191",
+    "196",
+    "203",
+    "208",
+    "233",
+    "246",
+    "250",
+    "268",
+    "276",
+    "300",
+    "348",
+    "352",
+    "372",
+    "380",
+    "398",
+    "417",
+    "428",
+    "440",
+    "442",
+    "807",
+    "498",
+    "499",
+    "528",
+    "578",
+    "616",
+    "620",
+    "642",
+    "643",
+    "688",
+    "703",
+    "705",
+    "724",
+    "752",
+    "756",
+    "804",
+    "826",
+    "860",
   ])
     map[id] = "ECA";
   return map;
@@ -179,10 +320,7 @@ export function BaseClient({
         generatedAt: null as string | null,
       };
     }
-    const counts = { HIGH: 0, MODERATE: 0, INDICATIVE: 0 } as Record<
-      RiskTier,
-      number
-    >;
+    const counts = { HIGH: 0, MODERATE: 0, INDICATIVE: 0 } as Record<RiskTier, number>;
     for (const c of Object.values(risks.countries)) {
       counts[c.overall_risk_tier] = (counts[c.overall_risk_tier] ?? 0) + 1;
     }
@@ -214,7 +352,7 @@ export function BaseClient({
       if (country.overall_risk_tier !== "HIGH") continue;
       const cats = country.tiers?.S?.top_categories ?? [];
       const top = cats[0];
-      const salience = top ? top.salience_score ?? top.z_score ?? 0 : 0;
+      const salience = top ? (top.salience_score ?? top.z_score ?? 0) : 0;
       rows.push({
         id,
         name: country.name,
@@ -255,8 +393,7 @@ export function BaseClient({
         bestSalience = salience;
         // Check for convergence signals on this country
         const signal = topSignals.find(
-          (s) =>
-            String(s.country_a_id) === id && (s.n_predictors ?? 0) >= 2
+          (s) => String(s.country_a_id) === id && (s.n_predictors ?? 0) >= 2
         );
         const nPred = signal?.n_predictors ?? 0;
         const category = formatCategory(top.category);
@@ -294,7 +431,7 @@ export function BaseClient({
     for (const [id, country] of Object.entries(risks.countries)) {
       const cats = country.tiers?.S?.top_categories ?? [];
       const top = cats[0];
-      const salience = top ? top.salience_score ?? top.z_score ?? 0 : 0;
+      const salience = top ? (top.salience_score ?? top.z_score ?? 0) : 0;
       allCountries.push({
         id,
         name: country.name,
@@ -306,8 +443,7 @@ export function BaseClient({
     if (allCountries.length === 0) return { rising: [], falling: [] };
 
     const sorted = [...allCountries].sort((a, b) => b.salience - a.salience);
-    const median =
-      sorted[Math.floor(sorted.length / 2)]?.salience ?? 0;
+    const median = sorted[Math.floor(sorted.length / 2)]?.salience ?? 0;
 
     const withDeviation = allCountries.map((c) => ({
       ...c,
@@ -330,11 +466,9 @@ export function BaseClient({
     const regionCounts: Record<string, { total: number; high: number }> = {};
     for (const [id, country] of Object.entries(risks.countries)) {
       const region = REGION_MAP[id] ?? "Other";
-      if (!regionCounts[region])
-        regionCounts[region] = { total: 0, high: 0 };
+      if (!regionCounts[region]) regionCounts[region] = { total: 0, high: 0 };
       regionCounts[region].total++;
-      if (country.overall_risk_tier === "HIGH")
-        regionCounts[region].high++;
+      if (country.overall_risk_tier === "HIGH") regionCounts[region].high++;
     }
     return Object.entries(regionCounts)
       .map(([region, counts]) => ({
@@ -446,7 +580,8 @@ export function BaseClient({
     const diffMs = now.getTime() - gen.getTime();
     const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
     let color = "#34d399"; // green
-    if (days > 30) color = "#f87171"; // red
+    if (days > 30)
+      color = "#f87171"; // red
     else if (days > 7) color = "var(--qgi-amber)"; // amber
     return {
       label: days === 0 ? "today" : days === 1 ? "1 day ago" : `${days} days ago`,
@@ -489,9 +624,7 @@ export function BaseClient({
       })
     : "---";
 
-  const generatedShort = stats.generatedAt
-    ? stats.generatedAt.slice(0, 10)
-    : "---";
+  const generatedShort = stats.generatedAt ? stats.generatedAt.slice(0, 10) : "---";
 
   return (
     <div className="flex flex-col h-full overflow-y-auto">
@@ -515,25 +648,17 @@ export function BaseClient({
             BASE
           </span>
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
-          <span style={{ color: "var(--qgi-text-muted)" }}>
-            Cycle: {cycleDate}
-          </span>
+          <span style={{ color: "var(--qgi-text-muted)" }}>Cycle: {cycleDate}</span>
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
-          <span style={{ color: "var(--qgi-text-muted)" }}>
-            Scoring {stats.version}
-          </span>
+          <span style={{ color: "var(--qgi-text-muted)" }}>Scoring {stats.version}</span>
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
-          <span style={{ color: "var(--qgi-text-muted)" }}>
-            {stats.total} countries
-          </span>
+          <span style={{ color: "var(--qgi-text-muted)" }}>{stats.total} countries</span>
         </div>
         <div className="flex items-center gap-2 text-[10px] font-data shrink-0">
           <span style={{ color: "var(--qgi-text-dim)" }}>
             Data as of {generatedShort}
           </span>
-          <span style={{ color: "var(--qgi-text-dim)" }}>
-            ({freshness.label})
-          </span>
+          <span style={{ color: "var(--qgi-text-dim)" }}>({freshness.label})</span>
           <span
             className="inline-block w-2 h-2 rounded-full"
             style={{ backgroundColor: freshness.color }}
@@ -550,10 +675,7 @@ export function BaseClient({
         style={{ backgroundColor: "var(--qgi-border)" }}
       >
         {/* ── Featured Alert Card (left) ──────────────────────────── */}
-        <div
-          className="flex flex-col"
-          style={{ backgroundColor: "var(--qgi-bg)" }}
-        >
+        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b"
             style={{ borderColor: "var(--qgi-border)" }}
@@ -582,10 +704,7 @@ export function BaseClient({
                   >
                     {featuredAlert.name}
                   </div>
-                  <div
-                    className="text-[10px]"
-                    style={{ color: "var(--qgi-text-dim)" }}
-                  >
+                  <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                     {featuredAlert.alpha_2}
                   </div>
                 </div>
@@ -629,10 +748,7 @@ export function BaseClient({
                   {featuredAlert.recipeCount.toLocaleString()} precedents
                 </span>
                 {featuredAlert.nPredictors >= 2 && (
-                  <span
-                    className="font-data text-[10px]"
-                    style={{ color: "#fb923c" }}
-                  >
+                  <span className="font-data text-[10px]" style={{ color: "#fb923c" }}>
                     {featuredAlert.nPredictors} predictors
                   </span>
                 )}
@@ -649,10 +765,7 @@ export function BaseClient({
         </div>
 
         {/* ── Risk Pulse Panel (right) ────────────────────────────── */}
-        <div
-          className="flex flex-col"
-          style={{ backgroundColor: "var(--qgi-bg)" }}
-        >
+        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b"
             style={{ borderColor: "var(--qgi-border)" }}
@@ -721,10 +834,7 @@ export function BaseClient({
               </span>
               <div className="flex gap-1 flex-wrap">
                 {regionData.map((r) => {
-                  const maxHigh = Math.max(
-                    1,
-                    ...regionData.map((rd) => rd.high)
-                  );
+                  const maxHigh = Math.max(1, ...regionData.map((rd) => rd.high));
                   const opacity = Math.max(0.15, r.high / maxHigh);
                   return (
                     <div
@@ -745,10 +855,7 @@ export function BaseClient({
                       <span
                         className="font-data text-[10px] font-bold"
                         style={{
-                          color:
-                            r.high > 0
-                              ? "#f87171"
-                              : "var(--qgi-text-dim)",
+                          color: r.high > 0 ? "#f87171" : "var(--qgi-text-dim)",
                         }}
                       >
                         {r.high}
@@ -811,10 +918,7 @@ export function BaseClient({
               >
                 Watchlist
               </span>
-              <span
-                className="text-[10px] ml-2"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
+              <span className="text-[10px] ml-2" style={{ color: "var(--qgi-text-dim)" }}>
                 Top 10 by S-tier salience
               </span>
             </div>
@@ -834,10 +938,7 @@ export function BaseClient({
               No country risk data
             </div>
           ) : (
-            <ul
-              className="divide-y"
-              style={{ borderColor: "var(--qgi-border)" }}
-            >
+            <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
               {topCountries.map((c, i) => {
                 const style = TIER_STYLES[c.tier];
                 const barWidth = (c.topSalience / maxSalience) * 100;
@@ -881,9 +982,7 @@ export function BaseClient({
                           className="text-[10px] truncate"
                           style={{ color: "var(--qgi-text-dim)" }}
                         >
-                          {c.topCategories
-                            .map((cat) => formatCategory(cat))
-                            .join(", ")}
+                          {c.topCategories.map((cat) => formatCategory(cat)).join(", ")}
                         </div>
                       </div>
                       <span
@@ -929,10 +1028,7 @@ export function BaseClient({
                 Above Median
               </span>
               {outliers.rising.length === 0 ? (
-                <span
-                  className="text-[10px]"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
+                <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                   No data
                 </span>
               ) : (
@@ -971,10 +1067,7 @@ export function BaseClient({
                 Below Median
               </span>
               {outliers.falling.length === 0 ? (
-                <span
-                  className="text-[10px]"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
+                <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                   No data
                 </span>
               ) : (
@@ -1016,10 +1109,7 @@ export function BaseClient({
         style={{ backgroundColor: "var(--qgi-border)" }}
       >
         {/* ── Domain Heatmap (left) ───────────────────────────────── */}
-        <div
-          className="flex flex-col"
-          style={{ backgroundColor: "var(--qgi-bg)" }}
-        >
+        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b"
             style={{ borderColor: "var(--qgi-border)" }}
@@ -1084,10 +1174,7 @@ export function BaseClient({
         </div>
 
         {/* ── Top Convergences (middle) ───────────────────────────── */}
-        <div
-          className="flex flex-col"
-          style={{ backgroundColor: "var(--qgi-bg)" }}
-        >
+        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b flex items-baseline justify-between"
             style={{ borderColor: "var(--qgi-border)" }}
@@ -1117,19 +1204,14 @@ export function BaseClient({
               No convergence signals
             </div>
           ) : (
-            <ul
-              className="divide-y flex-1"
-              style={{ borderColor: "var(--qgi-border)" }}
-            >
+            <ul className="divide-y flex-1" style={{ borderColor: "var(--qgi-border)" }}>
               {topConvergences.map((s, i) => {
-                const convColor =
-                  s.convergence_tier
-                    ? CONVERGENCE_COLORS[s.convergence_tier]
-                    : "#7a90a8";
-                const convLabel =
-                  s.convergence_tier
-                    ? CONVERGENCE_LABELS[s.convergence_tier]
-                    : "Unknown";
+                const convColor = s.convergence_tier
+                  ? CONVERGENCE_COLORS[s.convergence_tier]
+                  : "#7a90a8";
+                const convLabel = s.convergence_tier
+                  ? CONVERGENCE_LABELS[s.convergence_tier]
+                  : "Unknown";
                 return (
                   <li
                     key={`${s.recipe_id ?? i}`}
@@ -1178,10 +1260,7 @@ export function BaseClient({
         </div>
 
         {/* ── Top Pattern Pairs (right) ───────────────────────────── */}
-        <div
-          className="flex flex-col"
-          style={{ backgroundColor: "var(--qgi-bg)" }}
-        >
+        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b flex items-baseline justify-between"
             style={{ borderColor: "var(--qgi-border)" }}
@@ -1208,10 +1287,7 @@ export function BaseClient({
               Pattern data unavailable
             </div>
           ) : (
-            <ul
-              className="divide-y flex-1"
-              style={{ borderColor: "var(--qgi-border)" }}
-            >
+            <ul className="divide-y flex-1" style={{ borderColor: "var(--qgi-border)" }}>
               {topPairs.slice(0, 5).map((p, i) => (
                 <li key={`${p.country_a}-${p.country_b}-${i}`}>
                   <button
@@ -1226,10 +1302,7 @@ export function BaseClient({
                         <span style={{ color: "var(--qgi-country-a)" }}>
                           {p.country_a}
                         </span>
-                        <span
-                          className="mx-1"
-                          style={{ color: "var(--qgi-text-dim)" }}
-                        >
+                        <span className="mx-1" style={{ color: "var(--qgi-text-dim)" }}>
                           &#8594;
                         </span>
                         <span style={{ color: "var(--qgi-country-b)" }}>
@@ -1303,30 +1376,21 @@ export function BaseClient({
             className="text-[10px] transition-transform"
             style={{
               color: "var(--qgi-text-dim)",
-              transform: dataFoundationOpen
-                ? "rotate(90deg)"
-                : "rotate(0deg)",
+              transform: dataFoundationOpen ? "rotate(90deg)" : "rotate(0deg)",
             }}
           >
             &#9654;
           </span>
-          <span
-            className="text-[10px]"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
             Data foundation:
           </span>
           <span
             className="font-data text-[10px]"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            {indexes.length} indicators across{" "}
-            {sectorCounts.length} sectors
+            {indexes.length} indicators across {sectorCounts.length} sectors
           </span>
-          <span
-            className="text-[10px]"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
             &#183;
           </span>
           <span
@@ -1335,10 +1399,7 @@ export function BaseClient({
           >
             Scoring {stats.version}
           </span>
-          <span
-            className="text-[10px]"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
+          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
             &#183;
           </span>
           <span
@@ -1404,14 +1465,8 @@ export function BaseClient({
                 Coverage Summary
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
-                <FooterStat
-                  label="Total indicators"
-                  value={indexes.length.toString()}
-                />
-                <FooterStat
-                  label="Sectors"
-                  value={sectorCounts.length.toString()}
-                />
+                <FooterStat label="Total indicators" value={indexes.length.toString()} />
+                <FooterStat label="Sectors" value={sectorCounts.length.toString()} />
                 <FooterStat
                   label="Pattern pairs"
                   value={totalUniquePairs.toLocaleString()}
@@ -1466,10 +1521,7 @@ function TierSegment({
       title={`${label}: ${count} (${pct.toFixed(0)}%)`}
     >
       {pct >= 12 && (
-        <span
-          className="font-data text-[9px] font-bold"
-          style={{ color }}
-        >
+        <span className="font-data text-[9px] font-bold" style={{ color }}>
           {count}
         </span>
       )}
@@ -1489,10 +1541,7 @@ function MetricTile({
   // T2 #295 cleanup: `isNumber` prop was defined but applied `""` in both
   // branches (dead code). Removed.
   return (
-    <div
-      className="px-3 py-2 rounded"
-      style={{ backgroundColor: "var(--qgi-surface)" }}
-    >
+    <div className="px-3 py-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
       <div className="flex items-center gap-1">
         <span
           className="text-[9px] tracking-wider uppercase"
@@ -1512,13 +1561,7 @@ function MetricTile({
   );
 }
 
-function FooterStat({
-  label,
-  value,
-}: {
-  label: string;
-  value: string;
-}) {
+function FooterStat({ label, value }: { label: string; value: string }) {
   return (
     <div>
       <div

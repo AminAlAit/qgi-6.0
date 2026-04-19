@@ -4,10 +4,27 @@ import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type RankingPayload } from "@/lib/dashboard-cache";
 
 const ALLOWED_SECTORS = new Set([
-  "Agriculture", "Conflict", "Democracy", "Diplomacy", "Economics",
-  "Education", "Energy", "Environment", "Finance", "Governance",
-  "Health", "Human Rights", "Infrastructure", "Labor", "Migration",
-  "Military", "Political", "Population", "Security", "Social", "Trade",
+  "Agriculture",
+  "Conflict",
+  "Democracy",
+  "Diplomacy",
+  "Economics",
+  "Education",
+  "Energy",
+  "Environment",
+  "Finance",
+  "Governance",
+  "Health",
+  "Human Rights",
+  "Infrastructure",
+  "Labor",
+  "Migration",
+  "Military",
+  "Political",
+  "Population",
+  "Security",
+  "Social",
+  "Trade",
 ]);
 
 // Dynamic: requires AWS credentials at runtime, cannot prerender at build time.
@@ -19,7 +36,10 @@ const MAX_LIMIT = 1000;
 export const GET = withAuth(async (req: NextRequest) => {
   const { searchParams } = req.nextUrl;
   const page = Math.max(1, Number(searchParams.get("page") ?? 1));
-  const limit = Math.min(MAX_LIMIT, Math.max(1, Number(searchParams.get("limit") ?? DEFAULT_LIMIT)));
+  const limit = Math.min(
+    MAX_LIMIT,
+    Math.max(1, Number(searchParams.get("limit") ?? DEFAULT_LIMIT))
+  );
   const sector = searchParams.get("sector");
   const min_pps = searchParams.get("min_pps");
   const min_corr = searchParams.get("min_corr");

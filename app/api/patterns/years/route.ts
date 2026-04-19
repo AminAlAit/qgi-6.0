@@ -14,8 +14,11 @@ export const GET = withAuth(async (req: NextRequest) => {
     );
   }
 
-  if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b)) ||
-      !Number.isFinite(Number(length))) {
+  if (
+    !Number.isFinite(Number(country_a)) ||
+    !Number.isFinite(Number(country_b)) ||
+    !Number.isFinite(Number(length))
+  ) {
     return NextResponse.json({ error: "Invalid numeric parameter" }, { status: 400 });
   }
 

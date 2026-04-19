@@ -89,8 +89,8 @@ function betacf(x: number, a: number, b: number): number {
 /** Lanczos approximation of ln(Γ(x)) — accurate to ~1e-15. */
 function logGamma(x: number): number {
   const cof = [
-    76.18009172947146, -86.50532032941677, 24.01409824083091,
-    -1.231739572450155, 0.001208650973866179, -5.395239384953e-6,
+    76.18009172947146, -86.50532032941677, 24.01409824083091, -1.231739572450155,
+    0.001208650973866179, -5.395239384953e-6,
   ];
   let y = x;
   let tmp = x + 5.5;

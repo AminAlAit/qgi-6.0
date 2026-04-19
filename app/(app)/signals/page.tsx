@@ -100,7 +100,12 @@ async function buildSignals() {
           avgSalience: 0,
           maxSalience: 0,
           l1Domain: l1Group
-            ? { code: l1Group.code, label: l1Group.label, shortLabel: l1Group.shortLabel, color: l1Group.color }
+            ? {
+                code: l1Group.code,
+                label: l1Group.label,
+                shortLabel: l1Group.shortLabel,
+                color: l1Group.color,
+              }
             : null,
           tier: "BASELINE",
           regionalDistribution: {},
@@ -141,9 +146,8 @@ async function buildSignals() {
   signals.sort((a, b) => b.maxSalience - a.maxSalience);
 
   // Compute aggregate metadata
-  const totalCountries = new Set(
-    signals.flatMap((s) => s.countries.map((c) => c.id))
-  ).size;
+  const totalCountries = new Set(signals.flatMap((s) => s.countries.map((c) => c.id)))
+    .size;
 
   const tierCounts = { CRITICAL: 0, ELEVATED: 0, BASELINE: 0 };
   for (const s of signals) {
@@ -151,7 +155,17 @@ async function buildSignals() {
   }
 
   // Compute domain activation (country counts per L1 domain)
-  const domainActivation: Record<string, { code: string; label: string; shortLabel: string; color: string; signalCount: number; countryCount: number }> = {};
+  const domainActivation: Record<
+    string,
+    {
+      code: string;
+      label: string;
+      shortLabel: string;
+      color: string;
+      signalCount: number;
+      countryCount: number;
+    }
+  > = {};
   for (const s of signals) {
     if (s.l1Domain) {
       if (!domainActivation[s.l1Domain.code]) {
@@ -167,8 +181,8 @@ async function buildSignals() {
   }
 
   // Sort domain activation by L1 code order (A-H)
-  const sortedDomainActivation = Object.values(domainActivation).sort(
-    (a, b) => a.code.localeCompare(b.code)
+  const sortedDomainActivation = Object.values(domainActivation).sort((a, b) =>
+    a.code.localeCompare(b.code)
   );
 
   return {

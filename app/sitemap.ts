@@ -9,8 +9,7 @@
 import type { MetadataRoute } from "next";
 import { loadCountryRisks } from "@/lib/country-risks";
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://qgintelligence.com";
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://qgintelligence.com";
 
 // Revalidate hourly; this is cheap because loadCountryRisks() is in-process
 // cached and the JSON is ~2.6 MB.

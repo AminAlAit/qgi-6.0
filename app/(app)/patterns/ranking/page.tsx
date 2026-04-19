@@ -44,7 +44,7 @@ type CorrTier = "S" | "A" | "B" | "C";
 
 function getCorrTier(r: number): CorrTier {
   if (r >= 0.85) return "S";
-  if (r >= 0.70) return "A";
+  if (r >= 0.7) return "A";
   if (r >= 0.55) return "B";
   return "C";
 }
@@ -94,7 +94,9 @@ export default function RankingPage() {
   const [minPps, setMinPps] = useState(0);
   const [corrTierFilter, setCorrTierFilter] = useState<CorrTier | null>(null);
   const [patternTierFilter, setPatternTierFilter] = useState<string | null>(null);
-  const [leadTimeFilter, setLeadTimeFilter] = useState<"all" | "concurrent" | "early-warning">("all");
+  const [leadTimeFilter, setLeadTimeFilter] = useState<
+    "all" | "concurrent" | "early-warning"
+  >("all");
   const [minGapYears, setMinGapYears] = useState(0);
   const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
@@ -186,9 +188,7 @@ export default function RankingPage() {
     // rows on the ranking page.
     const padKey = (v: string | number | undefined, fallback: string) => {
       const n = Number(v);
-      return Number.isFinite(n)
-        ? String(n).padStart(6, "0")
-        : String(v ?? fallback);
+      return Number.isFinite(n) ? String(n).padStart(6, "0") : String(v ?? fallback);
     };
 
     if (viewMode === "best") {
@@ -290,11 +290,22 @@ export default function RankingPage() {
 
     // Gap years filter
     if (minGapYears > 0) {
-      result = result.filter((p) => Math.abs(p.start_year_b - p.start_year_a) >= minGapYears);
+      result = result.filter(
+        (p) => Math.abs(p.start_year_b - p.start_year_a) >= minGapYears
+      );
     }
 
     return result;
-  }, [allRows, viewMode, selectedCountries, minPps, corrTierFilter, patternTierFilter, leadTimeFilter, minGapYears]);
+  }, [
+    allRows,
+    viewMode,
+    selectedCountries,
+    minPps,
+    corrTierFilter,
+    patternTierFilter,
+    leadTimeFilter,
+    minGapYears,
+  ]);
 
   // Max PPS for the bar denominator (per current filtered view)
   const maxPps = useMemo(
@@ -379,9 +390,7 @@ export default function RankingPage() {
             className="flex items-center gap-2 text-[10px] tracking-wider"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            {totalUniquePairs != null && (
-              <span>{totalUniquePairs} pairs</span>
-            )}
+            {totalUniquePairs != null && <span>{totalUniquePairs} pairs</span>}
             <span>&middot;</span>
             <span>{allRows.length.toLocaleString()} windows</span>
           </div>
@@ -396,7 +405,8 @@ export default function RankingPage() {
             onClick={() => setViewMode("best")}
             className="px-3 py-1.5 text-[9px] tracking-[0.12em] uppercase transition-colors"
             style={{
-              backgroundColor: viewMode === "best" ? "var(--qgi-surface-2)" : "transparent",
+              backgroundColor:
+                viewMode === "best" ? "var(--qgi-surface-2)" : "transparent",
               color: viewMode === "best" ? "var(--qgi-text)" : "var(--qgi-text-dim)",
               borderRight: "1px solid var(--qgi-border)",
             }}
@@ -407,7 +417,8 @@ export default function RankingPage() {
             onClick={() => setViewMode("all")}
             className="px-3 py-1.5 text-[9px] tracking-[0.12em] uppercase transition-colors"
             style={{
-              backgroundColor: viewMode === "all" ? "var(--qgi-surface-2)" : "transparent",
+              backgroundColor:
+                viewMode === "all" ? "var(--qgi-surface-2)" : "transparent",
               color: viewMode === "all" ? "var(--qgi-text)" : "var(--qgi-text-dim)",
             }}
           >
@@ -477,7 +488,10 @@ export default function RankingPage() {
                       <CountryFlag alpha2={a2} size={12} />
                       <span className="truncate">{name}</span>
                       {isSelected && (
-                        <span className="ml-auto text-[10px]" style={{ color: "var(--qgi-accent)" }}>
+                        <span
+                          className="ml-auto text-[10px]"
+                          style={{ color: "var(--qgi-accent)" }}
+                        >
                           &#10003;
                         </span>
                       )}
@@ -493,7 +507,10 @@ export default function RankingPage() {
 
           {/* Min PPS slider */}
           <div className="flex items-center gap-2">
-            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] tracking-[0.12em] uppercase"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Min PPS
             </span>
             <input
@@ -518,7 +535,10 @@ export default function RankingPage() {
 
           {/* Correlation tier chips */}
           <div className="flex items-center gap-1.5">
-            <span className="text-[9px] tracking-[0.12em] uppercase mr-1" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] tracking-[0.12em] uppercase mr-1"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Corr
             </span>
             {(["S", "A", "B", "C"] as CorrTier[]).map((tier) => (
@@ -528,8 +548,14 @@ export default function RankingPage() {
                 className="px-2 py-0.5 rounded-full text-[10px] font-data font-semibold transition-all"
                 title={CORR_TIER_LABELS[tier]}
                 style={{
-                  backgroundColor: corrTierFilter === tier ? `${CORR_TIER_COLORS[tier]}30` : "transparent",
-                  color: corrTierFilter === tier ? CORR_TIER_COLORS[tier] : "var(--qgi-text-dim)",
+                  backgroundColor:
+                    corrTierFilter === tier
+                      ? `${CORR_TIER_COLORS[tier]}30`
+                      : "transparent",
+                  color:
+                    corrTierFilter === tier
+                      ? CORR_TIER_COLORS[tier]
+                      : "var(--qgi-text-dim)",
                   border: `1px solid ${corrTierFilter === tier ? CORR_TIER_COLORS[tier] : "var(--qgi-border)"}`,
                 }}
               >
@@ -544,7 +570,12 @@ export default function RankingPage() {
           {/* Pattern tier chips (S/M/L/XL) */}
           <div className="flex items-center gap-1.5">
             {(["S", "M", "L", "XL"] as const).map((tier) => {
-              const colors: Record<string, string> = { S: "#f87171", M: "#fbbf24", L: "#38bdf8", XL: "#a78bfa" };
+              const colors: Record<string, string> = {
+                S: "#f87171",
+                M: "#fbbf24",
+                L: "#38bdf8",
+                XL: "#a78bfa",
+              };
               const active = patternTierFilter === tier;
               return (
                 <button
@@ -569,7 +600,10 @@ export default function RankingPage() {
 
           {/* Gap years filter */}
           <div className="flex items-center gap-2">
-            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] tracking-[0.12em] uppercase"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Gap
             </span>
             <input
@@ -581,7 +615,12 @@ export default function RankingPage() {
               className="w-16 accent-[var(--qgi-accent)]"
               title={`Min ${minGapYears}yr gap between A and B start years`}
             />
-            <span className="text-[10px] font-data w-8" style={{ color: minGapYears > 0 ? "var(--qgi-accent)" : "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[10px] font-data w-8"
+              style={{
+                color: minGapYears > 0 ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
+              }}
+            >
               {minGapYears > 0 ? `≥${minGapYears}yr` : "Any"}
             </span>
           </div>
@@ -591,21 +630,28 @@ export default function RankingPage() {
 
           {/* Lead-time toggle */}
           <div className="flex items-center gap-1.5">
-            <span className="text-[9px] tracking-[0.12em] uppercase mr-1" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] tracking-[0.12em] uppercase mr-1"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Lead
             </span>
-            {([
-              { key: "all", label: "All" },
-              { key: "concurrent", label: "Concurrent" },
-              { key: "early-warning", label: "Early Warning" },
-            ] as const).map(({ key, label }) => (
+            {(
+              [
+                { key: "all", label: "All" },
+                { key: "concurrent", label: "Concurrent" },
+                { key: "early-warning", label: "Early Warning" },
+              ] as const
+            ).map(({ key, label }) => (
               <button
                 key={key}
                 onClick={() => setLeadTimeFilter(key)}
                 className="px-2 py-0.5 rounded-full text-[10px] tracking-wider transition-all"
                 style={{
-                  backgroundColor: leadTimeFilter === key ? "var(--qgi-surface-2)" : "transparent",
-                  color: leadTimeFilter === key ? "var(--qgi-text)" : "var(--qgi-text-dim)",
+                  backgroundColor:
+                    leadTimeFilter === key ? "var(--qgi-surface-2)" : "transparent",
+                  color:
+                    leadTimeFilter === key ? "var(--qgi-text)" : "var(--qgi-text-dim)",
                   border: `1px solid ${leadTimeFilter === key ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
                 }}
               >
@@ -618,14 +664,26 @@ export default function RankingPage() {
         {/* Active filter chips */}
         {activeFilterCount > 0 && (
           <div className="flex items-center gap-2 flex-wrap">
-            <span className="text-[9px] tracking-[0.12em] uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] tracking-[0.12em] uppercase"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               Active:
             </span>
             {selectedCountries.map((name) => (
-              <FilterChip key={name} label={name} onRemove={() => setSelectedCountries((prev) => prev.filter((c) => c !== name))} />
+              <FilterChip
+                key={name}
+                label={name}
+                onRemove={() =>
+                  setSelectedCountries((prev) => prev.filter((c) => c !== name))
+                }
+              />
             ))}
             {minPps > 0 && (
-              <FilterChip label={`PPS ${"\u2265"} ${minPps.toLocaleString()}`} onRemove={() => setMinPps(0)} />
+              <FilterChip
+                label={`PPS ${"\u2265"} ${minPps.toLocaleString()}`}
+                onRemove={() => setMinPps(0)}
+              />
             )}
             {corrTierFilter && (
               <FilterChip
@@ -699,7 +757,10 @@ export default function RankingPage() {
             </div>
           ) : processed.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-16 gap-2">
-              <span className="text-xs tracking-wider" style={{ color: "var(--qgi-text-dim)" }}>
+              <span
+                className="text-xs tracking-wider"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
                 NO PATTERNS MATCH
               </span>
               {activeFilterCount > 0 && (
@@ -738,7 +799,8 @@ export default function RankingPage() {
             }}
           >
             <span>
-              #{scrollPosition.start}-{scrollPosition.end} of {processed.length.toLocaleString()}
+              #{scrollPosition.start}-{scrollPosition.end} of{" "}
+              {processed.length.toLocaleString()}
             </span>
             {showBackToTop && (
               <button
@@ -802,10 +864,7 @@ function RankCard({
       }}
     >
       {/* ---- Zone 1: Rank ---- */}
-      <span
-        className="font-data text-sm font-semibold"
-        style={{ color: rankColor }}
-      >
+      <span className="font-data text-sm font-semibold" style={{ color: rankColor }}>
         #{rank}
       </span>
 
@@ -894,10 +953,7 @@ function PpsBar({ pps, maxPps }: { pps: number; maxPps: number }) {
         />
       </div>
       {/* Value */}
-      <span
-        className="font-data text-xs font-semibold text-right w-12"
-        style={{ color }}
-      >
+      <span className="font-data text-xs font-semibold text-right w-12" style={{ color }}>
         {formatted}
       </span>
     </div>
@@ -921,8 +977,7 @@ function CorrelationPill({ r }: { r: number }) {
       }}
       title={CORR_TIER_LABELS[tier]}
     >
-      {pct}%
-      <span className="text-[9px] font-bold">{tier}</span>
+      {pct}%<span className="text-[9px] font-bold">{tier}</span>
     </span>
   );
 }
@@ -951,8 +1006,7 @@ function LeadTimeBadge({ startA, startB }: { startA: number; startB: number }) {
         className="inline-flex items-center gap-0.5 text-[10px] font-data font-semibold"
         style={{ color: "var(--qgi-amber)" }}
       >
-        <span style={{ fontSize: 9 }}>&#8612;</span>
-        +{gap} yr lead
+        <span style={{ fontSize: 9 }}>&#8612;</span>+{gap} yr lead
       </span>
     );
   }

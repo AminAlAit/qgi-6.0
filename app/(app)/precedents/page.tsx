@@ -87,8 +87,8 @@ export default async function PrecedentsPage() {
         >
           <p style={{ color: "var(--qgi-text-muted)" }}>
             Precedent data not yet available. Run{" "}
-            <code className="font-data text-xs">generate_country_risks.py</code>{" "}
-            to generate the data.
+            <code className="font-data text-xs">generate_country_risks.py</code> to
+            generate the data.
           </p>
         </div>
       </div>

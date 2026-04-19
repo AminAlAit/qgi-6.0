@@ -538,9 +538,7 @@ function parseMarkdown(md: string): { html: string; toc: TocEntry[] } {
     if (h2Match) {
       const id = slug(h2Match[1]);
       toc.push({ id, title: h2Match[1] });
-      htmlParts.push(
-        `<h2 class="rpt-h2" id="${id}">${inline(h2Match[1])}</h2>`
-      );
+      htmlParts.push(`<h2 class="rpt-h2" id="${id}">${inline(h2Match[1])}</h2>`);
       i++;
       continue;
     }
@@ -554,7 +552,11 @@ function parseMarkdown(md: string): { html: string; toc: TocEntry[] } {
     // Table
     if (line.includes("|") && line.trim().startsWith("|")) {
       const tableLines: string[] = [];
-      while (i < lines.length && lines[i].includes("|") && lines[i].trim().startsWith("|")) {
+      while (
+        i < lines.length &&
+        lines[i].includes("|") &&
+        lines[i].trim().startsWith("|")
+      ) {
         tableLines.push(lines[i]);
         i++;
       }
@@ -678,10 +680,7 @@ function parseTable(lines: string[]): string {
   const bodyRows = lines.slice(2).map(parseRow);
 
   const thCells = headers
-    .map(
-      (h, idx) =>
-        `<th style="text-align:${aligns[idx] || "left"}">${inline(h)}</th>`
-    )
+    .map((h, idx) => `<th style="text-align:${aligns[idx] || "left"}">${inline(h)}</th>`)
     .join("");
   const tbodyRows = bodyRows
     .map(
@@ -815,10 +814,7 @@ export default function FSIReportPage() {
           </div>
 
           {/* Rendered report */}
-          <div
-            className="rpt-content"
-            dangerouslySetInnerHTML={{ __html: html }}
-          />
+          <div className="rpt-content" dangerouslySetInnerHTML={{ __html: html }} />
 
           {/* Footer */}
           <div

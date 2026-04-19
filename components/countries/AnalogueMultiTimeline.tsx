@@ -46,10 +46,10 @@ const DEFAULT_PATTERN_WINDOW = 15;
 const CURRENT_YEAR = new Date().getFullYear();
 
 // Colors — match lib/design.ts tokens
-const COLOR_SUBJECT = "#38bdf8";        // cyan — the active/subject country
-const COLOR_ANALOGUE = "#fb923c";       // orange — historical analogues
-const COLOR_EVENT = "#f87171";          // red — the event marker
-const COLOR_NOW = "#34d399";            // emerald — "you are here"
+const COLOR_SUBJECT = "#38bdf8"; // cyan — the active/subject country
+const COLOR_ANALOGUE = "#fb923c"; // orange — historical analogues
+const COLOR_EVENT = "#f87171"; // red — the event marker
+const COLOR_NOW = "#34d399"; // emerald — "you are here"
 const COLOR_GRID = "#243347";
 const COLOR_AXIS = "#4a6280";
 const COLOR_LABEL = "#7a90a8";
@@ -63,16 +63,17 @@ export function AnalogueMultiTimeline({
   patternWindowYears = DEFAULT_PATTERN_WINDOW,
 }: Props) {
   // Filter to analogues that have an event year (from qgi-data enrichment)
-  const withEvents = analogues.filter((a) => a.event_year_b !== null && a.event_year_b !== undefined);
-  const withoutEvents = analogues.filter((a) => a.event_year_b === null || a.event_year_b === undefined);
+  const withEvents = analogues.filter(
+    (a) => a.event_year_b !== null && a.event_year_b !== undefined
+  );
+  const withoutEvents = analogues.filter(
+    (a) => a.event_year_b === null || a.event_year_b === undefined
+  );
 
   // Helper — resolve each analogue's pattern [start, end] (real if #352 fields
   // present, else 15-yr approximation ending at the event year).
-  const resolveAnaloguePattern = (a: typeof analogues[number]) => {
-    if (
-      a.best_pattern_start_b !== undefined &&
-      a.best_pattern_length !== undefined
-    ) {
+  const resolveAnaloguePattern = (a: (typeof analogues)[number]) => {
+    if (a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined) {
       return {
         start: a.best_pattern_start_b,
         end: a.best_pattern_start_b + a.best_pattern_length,
@@ -85,14 +86,16 @@ export function AnalogueMultiTimeline({
 
   // Whether every analogue has real pattern data (controls the "approx" disclaimer)
   const allReal = withEvents.every(
-    (a) =>
-      a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined
+    (a) => a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined
   );
 
   // Compute axis range — include event markers + every pattern window + padding
   const allYears: number[] = [CURRENT_YEAR];
   allYears.push(CURRENT_YEAR - patternWindowYears); // subject pattern start approx
-  if (subject.subject_event_year_a !== null && subject.subject_event_year_a !== undefined) {
+  if (
+    subject.subject_event_year_a !== null &&
+    subject.subject_event_year_a !== undefined
+  ) {
     allYears.push(subject.subject_event_year_a);
   }
   withEvents.forEach((a) => {
@@ -117,7 +120,8 @@ export function AnalogueMultiTimeline({
   const rowCount = 1 + withEvents.length + (withoutEvents.length > 0 ? 1 : 0); // subject + analogues + optional "pending" row
   const height = marginTop + rowCount * rowHeight + 84; // + legend + x-axis area
 
-  const xOf = (year: number) => marginLeft + ((year - minYear) / (maxYear - minYear)) * innerWidth;
+  const xOf = (year: number) =>
+    marginLeft + ((year - minYear) / (maxYear - minYear)) * innerWidth;
   const yOf = (rowIdx: number) => marginTop + rowIdx * rowHeight;
 
   // Year ticks every 10 years
@@ -144,7 +148,9 @@ export function AnalogueMultiTimeline({
           style={{ color: "var(--qgi-text-muted)" }}
           title="Analogue pattern windows from qgi_data.patterns (best-PPS per pair). Event markers from qgi-data/events/curated/. Subject window is a 15-year recent-trajectory approximation."
         >
-          {allReal ? "Patterns real (qgi_data.patterns) · Events real (qgi-data)" : "Windows ≈ 15yr fallback · Events real (qgi-data)"}
+          {allReal
+            ? "Patterns real (qgi_data.patterns) · Events real (qgi-data)"
+            : "Windows ≈ 15yr fallback · Events real (qgi-data)"}
         </div>
       </div>
 
@@ -218,7 +224,13 @@ export function AnalogueMultiTimeline({
 
           {/* NOW marker at the right end of the subject bar */}
           <g transform={`translate(${xOf(CURRENT_YEAR)}, ${barHeight / 2})`}>
-            <circle r={5} fill={COLOR_NOW} fillOpacity={0.2} stroke={COLOR_NOW} strokeWidth={1.5} />
+            <circle
+              r={5}
+              fill={COLOR_NOW}
+              fillOpacity={0.2}
+              stroke={COLOR_NOW}
+              strokeWidth={1.5}
+            />
             <text
               x={8}
               y={4}
@@ -240,7 +252,10 @@ export function AnalogueMultiTimeline({
           const patternStart = pw.start;
           const patternEnd = pw.end;
           return (
-            <g key={`analogue-${a.country_b_id}`} transform={`translate(0, ${yOf(rowIdx)})`}>
+            <g
+              key={`analogue-${a.country_b_id}`}
+              transform={`translate(0, ${yOf(rowIdx)})`}
+            >
               <text
                 x={marginLeft - 12}
                 y={barHeight / 2 + 5}
@@ -284,7 +299,8 @@ export function AnalogueMultiTimeline({
                 fill={COLOR_ANALOGUE}
                 fillOpacity={0.85}
               >
-                {pw.isReal ? "" : "~"}{patternStart}–{patternEnd}
+                {pw.isReal ? "" : "~"}
+                {patternStart}–{patternEnd}
               </text>
 
               {/* Event marker (★) at event_year_b — real historical event */}
@@ -311,45 +327,46 @@ export function AnalogueMultiTimeline({
         })}
 
         {/* Pending-data row for analogues without event info (rare; <3%) */}
-        {withoutEvents.length > 0 && (() => {
-          const rowIdx = 1 + withEvents.length;
-          return (
-            <g transform={`translate(0, ${yOf(rowIdx)})`}>
-              <text
-                x={marginLeft - 12}
-                y={barHeight / 2 + 5}
-                fontSize="11"
-                fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
-                textAnchor="end"
-                fill={COLOR_LABEL}
-              >
-                {withoutEvents.length} analogue{withoutEvents.length > 1 ? "s" : ""}
-              </text>
-              <text
-                x={marginLeft - 12}
-                y={barHeight / 2 + 18}
-                fontSize="8.5"
-                fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
-                textAnchor="end"
-                fill={COLOR_LABEL}
-                letterSpacing="0.08em"
-              >
-                event data pending
-              </text>
-              <rect
-                x={marginLeft}
-                y={4}
-                width={innerWidth}
-                height={barHeight - 8}
-                fill="transparent"
-                stroke={COLOR_LABEL}
-                strokeWidth={1}
-                strokeDasharray="3 4"
-                rx={2}
-              />
-            </g>
-          );
-        })()}
+        {withoutEvents.length > 0 &&
+          (() => {
+            const rowIdx = 1 + withEvents.length;
+            return (
+              <g transform={`translate(0, ${yOf(rowIdx)})`}>
+                <text
+                  x={marginLeft - 12}
+                  y={barHeight / 2 + 5}
+                  fontSize="11"
+                  fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
+                  textAnchor="end"
+                  fill={COLOR_LABEL}
+                >
+                  {withoutEvents.length} analogue{withoutEvents.length > 1 ? "s" : ""}
+                </text>
+                <text
+                  x={marginLeft - 12}
+                  y={barHeight / 2 + 18}
+                  fontSize="8.5"
+                  fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
+                  textAnchor="end"
+                  fill={COLOR_LABEL}
+                  letterSpacing="0.08em"
+                >
+                  event data pending
+                </text>
+                <rect
+                  x={marginLeft}
+                  y={4}
+                  width={innerWidth}
+                  height={barHeight - 8}
+                  fill="transparent"
+                  stroke={COLOR_LABEL}
+                  strokeWidth={1}
+                  strokeDasharray="3 4"
+                  rx={2}
+                />
+              </g>
+            );
+          })()}
 
         {/* X-axis */}
         <g transform={`translate(0, ${height - 70})`}>
@@ -384,26 +401,51 @@ export function AnalogueMultiTimeline({
         className="flex gap-4 items-center mt-3 flex-wrap text-[10px] font-mono tracking-wider"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        <LegendEntry color={COLOR_SUBJECT} label={`${subject.country_name?.toUpperCase() ?? "SUBJECT"} — PATTERN STILL UNFOLDING`} />
+        <LegendEntry
+          color={COLOR_SUBJECT}
+          label={`${subject.country_name?.toUpperCase() ?? "SUBJECT"} — PATTERN STILL UNFOLDING`}
+        />
         <LegendEntry color={COLOR_ANALOGUE} label="ANALOGUE — PATTERN ENDED AT EVENT" />
-        <LegendEntry color={COLOR_EVENT} label={`★ ${categoryLabel.toUpperCase()} (REAL EVENT YEAR)`} isStar />
+        <LegendEntry
+          color={COLOR_EVENT}
+          label={`★ ${categoryLabel.toUpperCase()} (REAL EVENT YEAR)`}
+          isStar
+        />
         <LegendEntry color={COLOR_NOW} label={`NOW · ${CURRENT_YEAR}`} isDashed />
       </div>
     </div>
   );
 }
 
-function starPoints(cx: number, cy: number, rOuter: number, rInner: number, points: number): string {
+function starPoints(
+  cx: number,
+  cy: number,
+  rOuter: number,
+  rInner: number,
+  points: number
+): string {
   const pts: string[] = [];
   for (let i = 0; i < points * 2; i++) {
     const r = i % 2 === 0 ? rOuter : rInner;
     const angle = (Math.PI / points) * i - Math.PI / 2;
-    pts.push(`${(cx + r * Math.cos(angle)).toFixed(2)},${(cy + r * Math.sin(angle)).toFixed(2)}`);
+    pts.push(
+      `${(cx + r * Math.cos(angle)).toFixed(2)},${(cy + r * Math.sin(angle)).toFixed(2)}`
+    );
   }
   return pts.join(" ");
 }
 
-function LegendEntry({ color, label, isStar, isDashed }: { color: string; label: string; isStar?: boolean; isDashed?: boolean }) {
+function LegendEntry({
+  color,
+  label,
+  isStar,
+  isDashed,
+}: {
+  color: string;
+  label: string;
+  isStar?: boolean;
+  isDashed?: boolean;
+}) {
   return (
     <span className="inline-flex items-center gap-1.5">
       {isStar ? (

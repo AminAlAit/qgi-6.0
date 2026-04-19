@@ -62,10 +62,7 @@ export default function AboutPage() {
           <h1 className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight">
             Amin Al-Ait
           </h1>
-          <p
-            className="mt-3 text-base"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
+          <p className="mt-3 text-base" style={{ color: "var(--qgi-text-muted)" }}>
             Founder, QGI Intelligence · Cloud Data Engineer
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-3">
@@ -109,48 +106,47 @@ export default function AboutPage() {
           style={{ color: "var(--qgi-text-muted)" }}
         >
           <p>
-            I have always been drawn to two things that rarely meet: the quiet,
-            measurable <em>behavior of countries</em> — the indicators, the
-            trajectories, the trends hiding under the headlines — and the loud,
-            human shape of <em>geopolitics</em> — the crises, the transitions,
-            the inflection points that redraw the map.
+            I have always been drawn to two things that rarely meet: the quiet, measurable{" "}
+            <em>behavior of countries</em> — the indicators, the trajectories, the trends
+            hiding under the headlines — and the loud, human shape of <em>geopolitics</em>{" "}
+            — the crises, the transitions, the inflection points that redraw the map.
           </p>
           <p>
-            My professional path has been data science and data engineering.
-            Building pipelines, taming messy telemetry, shipping systems that
-            distill noise into signal. For years I wondered whether the craft I
-            practiced every day could bridge into the domain I quietly read
-            about every night — whether cloud-scale data could say something
-            honest about geopolitical risk, without overclaiming, without the
-            pundit reflex.
+            My professional path has been data science and data engineering. Building
+            pipelines, taming messy telemetry, shipping systems that distill noise into
+            signal. For years I wondered whether the craft I practiced every day could
+            bridge into the domain I quietly read about every night — whether cloud-scale
+            data could say something honest about geopolitical risk, without overclaiming,
+            without the pundit reflex.
           </p>
           <p>
-            QGI is the answer I arrived at, after six project iterations since
-            2021. The idea is simple, even if the execution took years: every
-            country leaves a structural trace in its economic indicators.
-            Trajectories repeat. Events that happened to one country in 1998
-            sometimes correlate with another country&apos;s current path,
-            quietly, decades later. QGI systematically finds those correlations
-            at scale, pairs them with a curated historical record, and
-            surfaces <em>precedents</em> — not forecasts — that analysts can
-            examine on the evidence.
+            QGI is the answer I arrived at, after six project iterations since 2021. The
+            idea is simple, even if the execution took years: every country leaves a
+            structural trace in its economic indicators. Trajectories repeat. Events that
+            happened to one country in 1998 sometimes correlate with another
+            country&apos;s current path, quietly, decades later. QGI systematically finds
+            those correlations at scale, pairs them with a curated historical record, and
+            surfaces <em>precedents</em> — not forecasts — that analysts can examine on
+            the evidence.
           </p>
           <p>
-            The product is open-methodology by design. The data foundation is
-            World Bank, CC BY 4.0. The backtest numbers are documented, flaws
-            and all. The platform is still expanding — indicators, curated
-            countries, partnerships — and I&apos;m building it in the open,
-            one regeneration at a time.
+            The product is open-methodology by design. The data foundation is World Bank,
+            CC BY 4.0. The backtest numbers are documented, flaws and all. The platform is
+            still expanding — indicators, curated countries, partnerships — and I&apos;m
+            building it in the open, one regeneration at a time.
           </p>
           <p>
-            If any of that resonates, or if you work somewhere QGI could be
-            useful, I&apos;d enjoy hearing from you.
+            If any of that resonates, or if you work somewhere QGI could be useful,
+            I&apos;d enjoy hearing from you.
           </p>
         </div>
       </section>
 
       {/* Footer links */}
-      <section className="mt-12 pt-8 border-t" style={{ borderColor: "var(--qgi-border)" }}>
+      <section
+        className="mt-12 pt-8 border-t"
+        style={{ borderColor: "var(--qgi-border)" }}
+      >
         <div className="flex flex-wrap gap-6 text-sm">
           <Link
             href="/methodology"

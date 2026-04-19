@@ -23,19 +23,37 @@ export const GET = withAuth(async (req: NextRequest) => {
   }
 
   if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
-    return NextResponse.json({ error: "Invalid country_a or country_b" }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid country_a or country_b" },
+      { status: 400 }
+    );
   }
 
   // Try baked per-country file first (instant, zero AWS cost)
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
-    const filePath = path.join(process.cwd(), "data", "pair-windows", `${country_a}.json`);
+    const filePath = path.join(
+      process.cwd(),
+      "data",
+      "pair-windows",
+      `${country_a}.json`
+    );
     const raw = await fs.readFile(filePath, "utf-8");
-    const countryData = JSON.parse(raw) as Record<string, {
-      top: Array<{ l: number; sa: number; sb: number; ic: number; ac: number; pps: number }>;
-      hist: Record<string, number>;
-    }>;
+    const countryData = JSON.parse(raw) as Record<
+      string,
+      {
+        top: Array<{
+          l: number;
+          sa: number;
+          sb: number;
+          ic: number;
+          ac: number;
+          pps: number;
+        }>;
+        hist: Record<string, number>;
+      }
+    >;
     const pairData = countryData[country_b];
     if (pairData) {
       const result = pairData.top.map((w) => ({

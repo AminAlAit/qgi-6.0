@@ -19,10 +19,20 @@ export const GET = withAuth(async (req: NextRequest) => {
     const path = await import("path");
     const indexPath = path.join(process.cwd(), "data", "country-partners-index.json");
     const raw = await fs.readFile(indexPath, "utf-8");
-    const index = JSON.parse(raw) as Record<string, Array<{
-      p: number; n: string; a2: string; w: number; pps: number; c: number;
-      lmin: number; lmax: number; lc: number;
-    }>>;
+    const index = JSON.parse(raw) as Record<
+      string,
+      Array<{
+        p: number;
+        n: string;
+        a2: string;
+        w: number;
+        pps: number;
+        c: number;
+        lmin: number;
+        lmax: number;
+        lc: number;
+      }>
+    >;
     const partners = index[country_a];
     if (partners) {
       const result = partners.map((p) => ({

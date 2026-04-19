@@ -37,20 +37,20 @@ import type { PatternTier, ConvergenceTier } from "@/lib/dashboard-cache";
  * - Governance/Social share the purple family
  */
 export const SECTOR_COLORS: Record<string, string> = {
-  Economic: "#38bdf8",       // sky-400
-  Trade: "#34d399",          // emerald-400
-  Finance: "#93c5fd",        // blue-300
-  Energy: "#fde68a",         // amber-200
-  Military: "#f87171",       // red-400
-  Governance: "#a78bfa",     // violet-400
-  Government: "#c4b5fd",     // violet-300
-  Health: "#fb923c",         // orange-400
-  Demographic: "#fbbf24",    // amber-400
-  Social: "#e879f9",         // fuchsia-400
-  Education: "#22d3ee",      // cyan-400
+  Economic: "#38bdf8", // sky-400
+  Trade: "#34d399", // emerald-400
+  Finance: "#93c5fd", // blue-300
+  Energy: "#fde68a", // amber-200
+  Military: "#f87171", // red-400
+  Governance: "#a78bfa", // violet-400
+  Government: "#c4b5fd", // violet-300
+  Health: "#fb923c", // orange-400
+  Demographic: "#fbbf24", // amber-400
+  Social: "#e879f9", // fuchsia-400
+  Education: "#22d3ee", // cyan-400
   Infrastructure: "#4ade80", // green-400
-  Environment: "#86efac",    // green-300
-  Other: "#7a90a8",          // slate-muted
+  Environment: "#86efac", // green-300
+  Other: "#7a90a8", // slate-muted
 };
 
 /** Safe sector color lookup with fallback to 'Other'. */
@@ -80,9 +80,9 @@ export function sectorChipBg(sector: string | null | undefined): string {
  * Reads from short=red/urgent to long=cool/structural.
  */
 export const TIER_COLORS: Record<PatternTier, string> = {
-  S: "#f87171",  // red-400 — short, urgent, crisis-relevant
-  M: "#fbbf24",  // amber-400 — medium-term, actionable
-  L: "#38bdf8",  // sky-400 — long, structural
+  S: "#f87171", // red-400 — short, urgent, crisis-relevant
+  M: "#fbbf24", // amber-400 — medium-term, actionable
+  L: "#38bdf8", // sky-400 — long, structural
   XL: "#a78bfa", // violet-400 — institutional
 };
 
@@ -109,10 +109,10 @@ export const TIER_LABELS: Record<PatternTier, string> = {
  * match the "dot circles" visual the #133 spec describes.
  */
 export const CONVERGENCE_COLORS: Record<ConvergenceTier, string> = {
-  single: "#4a6280",        // slate-dim — weak
-  emerging: "#fbbf24",      // amber-400 — watching
-  multilateral: "#fb923c",  // orange-400 — serious
-  high: "#f87171",          // red-400 — urgent
+  single: "#4a6280", // slate-dim — weak
+  emerging: "#fbbf24", // amber-400 — watching
+  multilateral: "#fb923c", // orange-400 — serious
+  high: "#f87171", // red-400 — urgent
 };
 
 export function convergenceColor(tier: ConvergenceTier | null | undefined): string {

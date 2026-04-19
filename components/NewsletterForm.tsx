@@ -21,10 +21,7 @@ export default function NewsletterForm() {
       >
         Email aminalait.de@gmail.com
       </a>
-      <p
-        className="text-xs mt-3"
-        style={{ color: "var(--qgi-text-dim)" }}
-      >
+      <p className="text-xs mt-3" style={{ color: "var(--qgi-text-dim)" }}>
         Newsletter launching soon — email to get on the list.
       </p>
     </div>

@@ -32,8 +32,7 @@ export function applyTransformation(values: number[], mode: Transformation): num
 
     case "standardised": {
       const mean = values.reduce((s, v) => s + v, 0) / values.length;
-      const variance =
-        values.reduce((s, v) => s + (v - mean) ** 2, 0) / values.length;
+      const variance = values.reduce((s, v) => s + (v - mean) ** 2, 0) / values.length;
       const std = Math.sqrt(variance);
       if (std === 0) return values.map(() => 0);
       return values.map((v) => (v - mean) / std);

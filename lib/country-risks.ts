@@ -95,9 +95,7 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
   // S3 fallback (production override / fresh pipeline output)
   try {
     const s3 = new S3Client({ region: REGION });
-    const resp = await s3.send(
-      new GetObjectCommand({ Bucket: BUCKET, Key: S3_KEY })
-    );
+    const resp = await s3.send(new GetObjectCommand({ Bucket: BUCKET, Key: S3_KEY }));
     const body = await resp.Body?.transformToString();
     if (body) {
       _cache = parseAndValidate(body);
@@ -116,9 +114,7 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
 /**
  * Get a single country's risk data by country_id.
  */
-export async function getCountryRisk(
-  countryId: string
-): Promise<CountryRisk | null> {
+export async function getCountryRisk(countryId: string): Promise<CountryRisk | null> {
   const data = await loadCountryRisks();
   return data.countries[countryId] ?? null;
 }
@@ -139,8 +135,7 @@ export async function getCountriesSortedByRisk(): Promise<
   return Object.entries(data.countries)
     .map(([id, risk]) => ({ id, ...risk }))
     .sort((a, b) => {
-      const tierDiff =
-        tierOrder[a.overall_risk_tier] - tierOrder[b.overall_risk_tier];
+      const tierDiff = tierOrder[a.overall_risk_tier] - tierOrder[b.overall_risk_tier];
       if (tierDiff !== 0) return tierDiff;
       // Within same tier, sort by max z-score descending
       const maxZA = getMaxSalience(a);

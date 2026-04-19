@@ -41,10 +41,7 @@ interface Props {
 export function EventsTimeline({ events, countryName }: Props) {
   const [expanded, setExpanded] = useState(false);
 
-  const sorted = useMemo(
-    () => [...events].sort((a, b) => b.year - a.year),
-    [events]
-  );
+  const sorted = useMemo(() => [...events].sort((a, b) => b.year - a.year), [events]);
 
   // Group by decade for the mini-chart
   const decades = useMemo(() => {
@@ -105,10 +102,7 @@ export function EventsTimeline({ events, countryName }: Props) {
                 minHeight: 2,
               }}
             />
-            <span
-              className="text-[8px] mt-0.5"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
+            <span className="text-[8px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
               {decade}
             </span>
           </div>
@@ -134,9 +128,7 @@ export function EventsTimeline({ events, countryName }: Props) {
               style={{ backgroundColor: getCategoryColor(event.category) }}
             />
             <div className="flex-1 min-w-0">
-              <div className="text-xs leading-relaxed truncate">
-                {event.title}
-              </div>
+              <div className="text-xs leading-relaxed truncate">{event.title}</div>
               <div
                 className="text-[9px] tracking-wider uppercase"
                 style={{ color: getCategoryColor(event.category) }}
@@ -154,9 +146,7 @@ export function EventsTimeline({ events, countryName }: Props) {
           className="mt-3 text-[10px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
           style={{ color: "var(--qgi-text-muted)" }}
         >
-          {expanded
-            ? "Show less"
-            : `Show all ${sorted.length} events`}
+          {expanded ? "Show less" : `Show all ${sorted.length} events`}
         </button>
       )}
     </section>

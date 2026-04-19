@@ -56,7 +56,10 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
   for (const s of scdis) {
     sectorCounts[s.sector] = (sectorCounts[s.sector] ?? 0) + 1;
   }
-  const sectorData = Object.entries(sectorCounts).map(([name, value]) => ({ name, value }));
+  const sectorData = Object.entries(sectorCounts).map(([name, value]) => ({
+    name,
+    value,
+  }));
 
   return (
     <div className="flex flex-col gap-0">
@@ -64,11 +67,15 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
       {isEarlyWarning && (
         <div
           className="flex items-center gap-3 px-5 py-2.5 text-xs font-semibold"
-          style={{ backgroundColor: "rgba(248, 113, 113, 0.12)", borderBottom: "1px solid #f87171" }}
+          style={{
+            backgroundColor: "rgba(248, 113, 113, 0.12)",
+            borderBottom: "1px solid #f87171",
+          }}
         >
           <span style={{ color: "#f87171" }}>⚡ EARLY WARNING SIGNAL</span>
           <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
-            Predictor country is currently in its historical window — Following country may be entering {meta.country_a}&apos;s past trajectory
+            Predictor country is currently in its historical window — Following country
+            may be entering {meta.country_a}&apos;s past trajectory
           </span>
         </div>
       )}
@@ -83,11 +90,17 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           className="flex flex-col justify-center px-5 py-4 border-r gap-1"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[9px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Predictor
           </span>
           <CountryFlag alpha2={NAME_TO_ALPHA2[meta.country_a] ?? ""} size={28} />
-          <span className="font-data text-xl font-semibold" style={{ color: "var(--qgi-country-a)" }}>
+          <span
+            className="font-data text-xl font-semibold"
+            style={{ color: "var(--qgi-country-a)" }}
+          >
             {meta.country_a}
           </span>
           <span className="text-xs font-data" style={{ color: "var(--qgi-text-muted)" }}>
@@ -100,7 +113,9 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           className="flex flex-col items-center justify-center px-4 py-4 border-r gap-1"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <span className="text-2xl" style={{ color: "var(--qgi-text-dim)" }}>→</span>
+          <span className="text-2xl" style={{ color: "var(--qgi-text-dim)" }}>
+            →
+          </span>
           <span className="font-data text-xs" style={{ color: "var(--qgi-text-muted)" }}>
             {len} yrs
           </span>
@@ -116,14 +131,23 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           className="flex flex-col items-center justify-center px-4 py-2 border-r gap-1"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <span className="text-[9px] tracking-widest uppercase flex items-center" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[9px] tracking-widest uppercase flex items-center"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Pattern Strength
             <InfoTooltip text="Pattern Power Score (PPS) — a composite ranking metric blending correlation strength, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0-2000+." />
           </span>
-          <span className="font-data text-3xl font-semibold" style={{ color: "var(--qgi-amber)" }}>
+          <span
+            className="font-data text-3xl font-semibold"
+            style={{ color: "var(--qgi-amber)" }}
+          >
             {pps.toFixed(3)}
           </span>
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
             {(corr * 100).toFixed(1)}% avg corr · {meta.num_indexes} indicators
           </span>
           {/* Sector rose — needs enough height for labels to render.
@@ -138,11 +162,17 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
           className="flex flex-col justify-center px-5 py-4 border-r gap-1"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[9px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Following
           </span>
           <CountryFlag alpha2={NAME_TO_ALPHA2[meta.country_b] ?? ""} size={28} />
-          <span className="font-data text-xl font-semibold" style={{ color: "var(--qgi-country-b)" }}>
+          <span
+            className="font-data text-xl font-semibold"
+            style={{ color: "var(--qgi-country-b)" }}
+          >
             {meta.country_b}
           </span>
           <span className="text-xs font-data" style={{ color: "var(--qgi-text-muted)" }}>
@@ -152,25 +182,33 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
 
         {/* Col 5: Sector chips */}
         <div className="flex flex-col justify-center px-4 py-4 gap-1.5 overflow-y-auto">
-          <span className="text-[9px] tracking-widest uppercase" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[9px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Sectors
           </span>
-          {sectorData.sort((a, b) => b.value - a.value).map((s) => (
-            <div key={s.name} className="flex items-center gap-2">
-              <span
-                className="text-[9px] rounded px-1.5 py-0.5"
-                style={{
-                  color: sectorColor(s.name),
-                  backgroundColor: sectorChipBg(s.name),
-                }}
-              >
-                {s.name.toUpperCase()}
-              </span>
-              <span className="font-data text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-                {s.value}
-              </span>
-            </div>
-          ))}
+          {sectorData
+            .sort((a, b) => b.value - a.value)
+            .map((s) => (
+              <div key={s.name} className="flex items-center gap-2">
+                <span
+                  className="text-[9px] rounded px-1.5 py-0.5"
+                  style={{
+                    color: sectorColor(s.name),
+                    backgroundColor: sectorChipBg(s.name),
+                  }}
+                >
+                  {s.name.toUpperCase()}
+                </span>
+                <span
+                  className="font-data text-[10px]"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {s.value}
+                </span>
+              </div>
+            ))}
         </div>
       </div>
     </div>

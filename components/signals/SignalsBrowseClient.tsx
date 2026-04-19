@@ -206,11 +206,27 @@ function GlobalPulseBar({
   activeTier: string | null;
   onSetTier: (tier: string | null) => void;
 }) {
-  const tierEntries: Array<{ key: string; count: number; color: string; label: string }> = [
-    { key: "CRITICAL", count: meta.tierCounts.CRITICAL, color: "#f87171", label: "CRITICAL" },
-    { key: "ELEVATED", count: meta.tierCounts.ELEVATED, color: "#fbbf24", label: "ELEVATED" },
-    { key: "BASELINE", count: meta.tierCounts.BASELINE, color: "#38bdf8", label: "BASELINE" },
-  ];
+  const tierEntries: Array<{ key: string; count: number; color: string; label: string }> =
+    [
+      {
+        key: "CRITICAL",
+        count: meta.tierCounts.CRITICAL,
+        color: "#f87171",
+        label: "CRITICAL",
+      },
+      {
+        key: "ELEVATED",
+        count: meta.tierCounts.ELEVATED,
+        color: "#fbbf24",
+        label: "ELEVATED",
+      },
+      {
+        key: "BASELINE",
+        count: meta.tierCounts.BASELINE,
+        color: "#38bdf8",
+        label: "BASELINE",
+      },
+    ];
 
   return (
     <div
@@ -390,7 +406,10 @@ function FilterSortBar({
       {/* Active filter chips */}
       {hasActiveFilters && (
         <div className="flex flex-wrap gap-2 items-center">
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             Active:
           </span>
           {activeDomains.size > 0 && (
@@ -403,11 +422,12 @@ function FilterSortBar({
             <FilterChip label={`Tier: ${activeTier}`} onClear={() => onSetTier(null)} />
           )}
           {activeRegion && (
-            <FilterChip label={`Region: ${activeRegion}`} onClear={() => onSetRegion(null)} />
+            <FilterChip
+              label={`Region: ${activeRegion}`}
+              onClear={() => onSetRegion(null)}
+            />
           )}
-          {search && (
-            <FilterChip label={`"${search}"`} onClear={() => onSearch("")} />
-          )}
+          {search && <FilterChip label={`"${search}"`} onClear={() => onSearch("")} />}
         </div>
       )}
     </div>
@@ -517,10 +537,7 @@ function SignalRow({
               className="inline-block w-2 h-2 rounded-full"
               style={{ backgroundColor: style.dot }}
             />
-            <span
-              className="font-data text-sm font-bold"
-              style={{ color: style.color }}
-            >
+            <span className="font-data text-sm font-bold" style={{ color: style.color }}>
               #{rank}
             </span>
           </div>
@@ -579,21 +596,36 @@ function SignalRow({
           )}
 
           {/* Stats */}
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
             {activeRegion
               ? `${regionFilteredCountries.length} of ${signal.countries.length} countries`
               : `${signal.countries.length} countries`}
           </span>
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             ·
           </span>
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
             {signal.totalRecipes.toLocaleString()} precedent windows
           </span>
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
             ·
           </span>
-          <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+          <span
+            className="text-[10px] font-data"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
             avg {signal.avgSalience.toFixed(1)}
           </span>
         </div>
@@ -601,15 +633,25 @@ function SignalRow({
         {/* Third line: country flag strip */}
         <div className="flex items-center gap-1.5 pl-12 mt-2">
           {topCountries.map((c) => (
-            <span key={c.id} className="inline-flex items-center gap-0.5" title={`${c.name} (${c.salience.toFixed(1)})`}>
+            <span
+              key={c.id}
+              className="inline-flex items-center gap-0.5"
+              title={`${c.name} (${c.salience.toFixed(1)})`}
+            >
               <CountryFlag alpha2={c.alpha_2} size={12} />
-              <span className="text-[9px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+              <span
+                className="text-[9px] font-data"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
                 {c.alpha_2}
               </span>
             </span>
           ))}
           {overflowCount > 0 && (
-            <span className="text-[9px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+            <span
+              className="text-[9px] font-data"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
               +{overflowCount} more
             </span>
           )}
@@ -617,9 +659,7 @@ function SignalRow({
       </button>
 
       {/* Expanded content */}
-      {isExpanded && (
-        <ExpandedContent signal={signal} activeRegion={activeRegion} />
-      )}
+      {isExpanded && <ExpandedContent signal={signal} activeRegion={activeRegion} />}
     </div>
   );
 }
@@ -646,10 +686,7 @@ function ExpandedContent({
   const style = TIER_STYLES[signal.tier];
 
   return (
-    <div
-      className="border-t px-4 py-3"
-      style={{ borderColor: "var(--qgi-border)" }}
-    >
+    <div className="border-t px-4 py-3" style={{ borderColor: "var(--qgi-border)" }}>
       {/* Country list header */}
       <div className="flex items-center justify-between mb-2">
         <span
@@ -664,7 +701,11 @@ function ExpandedContent({
       <div className="space-y-0.5">
         {displayedCountries.map((country, idx) => {
           const cTier =
-            country.salience >= 2.5 ? "CRITICAL" : country.salience >= 1.0 ? "ELEVATED" : "BASELINE";
+            country.salience >= 2.5
+              ? "CRITICAL"
+              : country.salience >= 1.0
+                ? "ELEVATED"
+                : "BASELINE";
           const cStyle = TIER_STYLES[cTier];
           return (
             <Link
@@ -679,9 +720,7 @@ function ExpandedContent({
                 {idx + 1}.
               </span>
               <CountryFlag alpha2={country.alpha_2} size={14} />
-              <span className="text-xs flex-1 truncate">
-                {country.name}
-              </span>
+              <span className="text-xs flex-1 truncate">{country.name}</span>
               {country.curated && (
                 <span
                   className="text-[8px] font-data tracking-wider uppercase px-1 rounded"
@@ -809,9 +848,7 @@ export function SignalsBrowseClient({
 
     // Domain filter
     if (activeDomains.size > 0) {
-      result = result.filter(
-        (s) => s.l1Domain && activeDomains.has(s.l1Domain.code)
-      );
+      result = result.filter((s) => s.l1Domain && activeDomains.has(s.l1Domain.code));
     }
 
     // Tier filter
@@ -821,17 +858,13 @@ export function SignalsBrowseClient({
 
     // Region filter: keep signals that have at least one country in the selected region
     if (activeRegion) {
-      result = result.filter((s) =>
-        s.countries.some((c) => c.region === activeRegion)
-      );
+      result = result.filter((s) => s.countries.some((c) => c.region === activeRegion));
     }
 
     // Search filter
     if (search) {
       const q = search.toLowerCase();
-      result = result.filter((s) =>
-        formatCategory(s.category).toLowerCase().includes(q)
-      );
+      result = result.filter((s) => formatCategory(s.category).toLowerCase().includes(q));
     }
 
     // Sort
@@ -865,8 +898,8 @@ export function SignalsBrowseClient({
           Signals
         </h1>
         <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
-          Early-warning radar. Active risk archetypes ranked by salience, grouped
-          by taxonomy domain.
+          Early-warning radar. Active risk archetypes ranked by salience, grouped by
+          taxonomy domain.
         </p>
       </div>
 

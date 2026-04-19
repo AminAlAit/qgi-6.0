@@ -52,7 +52,10 @@ type LegacyAnalogue = {
 /**
  * Load analogues for a specific country-category from baked analogues.json (legacy).
  */
-async function loadAnalogues(countryId: string, category: string): Promise<LegacyAnalogue[]> {
+async function loadAnalogues(
+  countryId: string,
+  category: string
+): Promise<LegacyAnalogue[]> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
@@ -73,7 +76,10 @@ async function loadAnalogues(countryId: string, category: string): Promise<Legac
 async function loadEnrichedAnalogues(
   countryId: string,
   category: string
-): Promise<{ subject: AnalogueEnrichedSubject | null; analogues: AnalogueEnrichedEntry[] }> {
+): Promise<{
+  subject: AnalogueEnrichedSubject | null;
+  analogues: AnalogueEnrichedEntry[];
+}> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");

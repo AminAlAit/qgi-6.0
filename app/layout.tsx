@@ -52,8 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QGI — Quantitative Geopolitical Intelligence",
-    description:
-      "Historical precedents in economic data across 197 countries.",
+    description: "Historical precedents in economic data across 197 countries.",
     images: ["/og-default.png"],
   },
   robots: {

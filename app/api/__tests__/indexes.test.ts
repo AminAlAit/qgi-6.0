@@ -21,7 +21,9 @@ describe("GET /api/indexes", () => {
     const required = ["id", "name", "sector", "org", "source", "description", "citation"];
     for (const entry of body) {
       for (const field of required) {
-        expect(entry, `Missing field '${field}' in entry ${entry.id}`).toHaveProperty(field);
+        expect(entry, `Missing field '${field}' in entry ${entry.id}`).toHaveProperty(
+          field
+        );
       }
     }
   });

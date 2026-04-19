@@ -238,9 +238,9 @@ export default async function LandingPage() {
             className="mt-6 text-lg leading-relaxed max-w-xl"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            QGI surfaces economically-grounded risk candidates that analysts
-            should examine. We find historical precedents in World Bank data
-            spanning 197 countries and 69 indicators (as of April 2026).
+            QGI surfaces economically-grounded risk candidates that analysts should
+            examine. We find historical precedents in World Bank data spanning 197
+            countries and 69 indicators (as of April 2026).
           </p>
           <div className="mt-8 flex items-center gap-4">
             <Link
@@ -386,10 +386,7 @@ export default async function LandingPage() {
       </section>
 
       {/* ─── Key Differentiators ────────────────────────────────────── */}
-      <section
-        className="border-t"
-        style={{ borderColor: "var(--qgi-border)" }}
-      >
+      <section className="border-t" style={{ borderColor: "var(--qgi-border)" }}>
         <div className="mx-auto max-w-6xl px-6 py-24">
           <h2
             className="text-xs tracking-widest uppercase mb-12"
@@ -446,34 +443,33 @@ export default async function LandingPage() {
               className="text-xl font-medium leading-relaxed mb-6"
               style={{ color: "var(--qgi-text)" }}
             >
-              QGI makes geopolitical risk measurable by finding historical
-              economic precedents at scale.
+              QGI makes geopolitical risk measurable by finding historical economic
+              precedents at scale.
             </p>
             <p
               className="text-sm leading-relaxed mb-4"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Traditional political risk analysis relies on expert judgment,
-              regional specialists, and editorial discretion. QGI takes a
-              different approach: statistical pattern matching across the full
-              historical record of World Bank economic data.
+              Traditional political risk analysis relies on expert judgment, regional
+              specialists, and editorial discretion. QGI takes a different approach:
+              statistical pattern matching across the full historical record of World Bank
+              economic data.
             </p>
             <p
               className="text-sm leading-relaxed mb-6"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              When a country&rsquo;s economic indicators today resemble the
-              trajectory of another country before a known geopolitical event,
-              that is a precedent worth examining — not a prediction, but a
-              structured historical analogue that analysts can evaluate on its
-              merits.
+              When a country&rsquo;s economic indicators today resemble the trajectory of
+              another country before a known geopolitical event, that is a precedent worth
+              examining — not a prediction, but a structured historical analogue that
+              analysts can evaluate on its merits.
             </p>
             <p
               className="text-sm leading-relaxed mb-8"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Built by a Cloud Data Engineer with a passion for quantitative
-              approaches to geopolitical analysis.
+              Built by a Cloud Data Engineer with a passion for quantitative approaches to
+              geopolitical analysis.
             </p>
             <Link
               href="/methodology"
@@ -505,15 +501,10 @@ export default async function LandingPage() {
 
       {/* ─── Primary CTA ────────────────────────────────────────────── */}
       <section className="mx-auto max-w-6xl px-6 py-24 text-center">
-        <h2 className="text-2xl font-semibold mb-4">
-          Start exploring geopolitical risk
-        </h2>
-        <p
-          className="mb-8 max-w-md mx-auto"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          Browse country intelligence profiles built on decades of economic data
-          and historically verified precedents.
+        <h2 className="text-2xl font-semibold mb-4">Start exploring geopolitical risk</h2>
+        <p className="mb-8 max-w-md mx-auto" style={{ color: "var(--qgi-text-muted)" }}>
+          Browse country intelligence profiles built on decades of economic data and
+          historically verified precedents.
         </p>
         <Link
           href="/countries"
@@ -543,10 +534,7 @@ export default async function LandingPage() {
             >
               Stay Updated
             </h2>
-            <p
-              className="text-lg font-medium mb-2"
-              style={{ color: "var(--qgi-text)" }}
-            >
+            <p className="text-lg font-medium mb-2" style={{ color: "var(--qgi-text)" }}>
               Monthly intelligence digest
             </p>
             <p
@@ -554,8 +542,8 @@ export default async function LandingPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Receive the QGI monthly update: new country risk tiers, methodology
-              improvements, and notable precedent matches from the latest pipeline
-              run. No marketing, no noise.
+              improvements, and notable precedent matches from the latest pipeline run. No
+              marketing, no noise.
             </p>
           </div>
           <div className="w-full md:w-auto">
@@ -588,11 +576,10 @@ export default async function LandingPage() {
               className="text-sm leading-relaxed mb-8"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              QGI is actively working with political
-              risk analysts, corporate strategy teams, think tanks, and academics
-              who want structured, data-driven geopolitical intelligence.
-              Reach out to discuss access, custom country reports, or
-              institutional licensing.
+              QGI is actively working with political risk analysts, corporate strategy
+              teams, think tanks, and academics who want structured, data-driven
+              geopolitical intelligence. Reach out to discuss access, custom country
+              reports, or institutional licensing.
             </p>
             <div className="flex flex-col gap-4">
               <a
@@ -773,23 +760,14 @@ function Differentiator({
           {unit}
         </span>
       </div>
-      <p
-        className="text-sm leading-relaxed"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
+      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
         {desc}
       </p>
     </div>
   );
 }
 
-function PrincipleCard({
-  heading,
-  body,
-}: {
-  heading: string;
-  body: string;
-}) {
+function PrincipleCard({ heading, body }: { heading: string; body: string }) {
   return (
     <div
       className="rounded-lg border p-5"
@@ -798,16 +776,10 @@ function PrincipleCard({
         borderColor: "var(--qgi-border)",
       }}
     >
-      <h3
-        className="text-sm font-semibold mb-2"
-        style={{ color: "var(--qgi-text)" }}
-      >
+      <h3 className="text-sm font-semibold mb-2" style={{ color: "var(--qgi-text)" }}>
         {heading}
       </h3>
-      <p
-        className="text-sm leading-relaxed"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
+      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
         {body}
       </p>
     </div>
@@ -816,23 +788,13 @@ function PrincipleCard({
 
 function UseCase({ title, body }: { title: string; body: string }) {
   return (
-    <div
-      className="border-l-2 pl-4 py-1"
-      style={{ borderColor: "var(--qgi-accent)" }}
-    >
-      <h3
-        className="text-sm font-semibold mb-1"
-        style={{ color: "var(--qgi-text)" }}
-      >
+    <div className="border-l-2 pl-4 py-1" style={{ borderColor: "var(--qgi-accent)" }}>
+      <h3 className="text-sm font-semibold mb-1" style={{ color: "var(--qgi-text)" }}>
         {title}
       </h3>
-      <p
-        className="text-sm leading-relaxed"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
+      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
         {body}
       </p>
     </div>
   );
 }
-

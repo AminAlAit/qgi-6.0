@@ -8,7 +8,14 @@
 
 export type Region = "Africa" | "Americas" | "Asia" | "Europe" | "MENA" | "Oceania";
 
-export const REGIONS: Region[] = ["Africa", "Americas", "Asia", "Europe", "MENA", "Oceania"];
+export const REGIONS: Region[] = [
+  "Africa",
+  "Americas",
+  "Asia",
+  "Europe",
+  "MENA",
+  "Oceania",
+];
 
 export const COUNTRY_REGIONS: Record<string, Region> = {
   // ── Africa ────────────────────────────────────────────────────────────

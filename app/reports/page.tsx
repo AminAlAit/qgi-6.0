@@ -72,16 +72,14 @@ export default function ReportsPage() {
           >
             Reports
           </div>
-          <h1 className="text-3xl font-semibold mb-4">
-            Analytical Reports
-          </h1>
+          <h1 className="text-3xl font-semibold mb-4">Analytical Reports</h1>
           <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Pre-computed pattern analyses demonstrating what QGI delivers to
-            risk analysts and institutional clients. Each report is generated
-            from live pipeline data and is fully reproducible.
+            Pre-computed pattern analyses demonstrating what QGI delivers to risk analysts
+            and institutional clients. Each report is generated from live pipeline data
+            and is fully reproducible.
           </p>
         </div>
 
@@ -136,10 +134,9 @@ export default function ReportsPage() {
                 color: "var(--qgi-text-dim)",
               }}
             >
-              <strong>Sections:</strong> Executive Summary &middot; Agreement
-              Analysis (QGI vs FSI) &middot; Sleeper Countries &middot;
-              Structural Twins &middot; Lead-Time Advantage &middot;
-              Methodology &middot; Call to Action
+              <strong>Sections:</strong> Executive Summary &middot; Agreement Analysis
+              (QGI vs FSI) &middot; Sleeper Countries &middot; Structural Twins &middot;
+              Lead-Time Advantage &middot; Methodology &middot; Call to Action
             </div>
 
             <div className="mt-4 flex gap-3">
@@ -177,12 +174,9 @@ export default function ReportsPage() {
             <h2 className="text-lg font-semibold mb-1">
               Regional Risk Brief — Middle East & North Africa
             </h2>
-            <p
-              className="text-sm"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Planned Q3 2026. Regional pattern analysis across 20 MENA
-              countries with cross-border contagion scoring.
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              Planned Q3 2026. Regional pattern analysis across 20 MENA countries with
+              cross-border contagion scoring.
             </p>
           </div>
 
@@ -196,12 +190,9 @@ export default function ReportsPage() {
             <h2 className="text-lg font-semibold mb-1">
               Structural Twins Deep Dive — BRICS+
             </h2>
-            <p
-              className="text-sm"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Planned Q4 2026. Which non-BRICS economies share structural
-              trajectories with the bloc&apos;s members?
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              Planned Q4 2026. Which non-BRICS economies share structural trajectories
+              with the bloc&apos;s members?
             </p>
           </div>
         </div>
@@ -255,10 +246,7 @@ export default function ReportsPage() {
 function ReportStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="text-center">
-      <div
-        className="font-data text-lg font-bold"
-        style={{ color: "var(--qgi-accent)" }}
-      >
+      <div className="font-data text-lg font-bold" style={{ color: "var(--qgi-accent)" }}>
         {value}
       </div>
       <div

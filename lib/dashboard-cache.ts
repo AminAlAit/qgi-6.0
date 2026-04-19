@@ -70,8 +70,16 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
     return parsed;
   } catch (err) {
     if (err instanceof NoSuchKey) return null;
-    const e = err as { name?: string; Code?: string; $metadata?: { httpStatusCode?: number } };
-    if (e.name === "NoSuchKey" || e.Code === "NoSuchKey" || e.$metadata?.httpStatusCode === 404) {
+    const e = err as {
+      name?: string;
+      Code?: string;
+      $metadata?: { httpStatusCode?: number };
+    };
+    if (
+      e.name === "NoSuchKey" ||
+      e.Code === "NoSuchKey" ||
+      e.$metadata?.httpStatusCode === 404
+    ) {
       return null;
     }
     // S3 connection error (no creds in local dev) — return null, let caller fall back
@@ -84,7 +92,11 @@ export async function getDashboardJson<T>(filename: string): Promise<T | null> {
 
 // #122: PatternTier and ConvergenceTier unified in lib/types.ts; re-export for
 // callers that import them from this module.
-import type { PatternTier as _PatternTier, ConvergenceTier as _ConvergenceTier, SignalRow } from "@/lib/types";
+import type {
+  PatternTier as _PatternTier,
+  ConvergenceTier as _ConvergenceTier,
+  SignalRow,
+} from "@/lib/types";
 export type PatternTier = _PatternTier;
 export type ConvergenceTier = _ConvergenceTier;
 

@@ -161,7 +161,11 @@ export function PpsValue({
       {showSuffix && (
         <span
           className="font-normal"
-          style={{ color: "var(--qgi-text-dim)", marginLeft: 2, fontSize: fontSize * 0.75 }}
+          style={{
+            color: "var(--qgi-text-dim)",
+            marginLeft: 2,
+            fontSize: fontSize * 0.75,
+          }}
         >
           /100
         </span>
