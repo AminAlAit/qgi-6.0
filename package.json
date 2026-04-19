@@ -14,7 +14,18 @@
     "format:check": "prettier --check .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "dump:countries": "npx -y tsx scripts/dump-countries.ts"
+    "dump:countries": "npx -y tsx scripts/dump-countries.ts",
+    "prepare": "husky",
+    "typecheck": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{js,jsx,json,md,yml,yaml,css}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@aws-sdk/client-athena": "^3.1022.0",
@@ -41,7 +52,9 @@
     "@vitejs/plugin-react": "^4",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "husky": "^9.1.7",
     "jsdom": "^26",
+    "lint-staged": "^16.4.0",
     "prettier": "^3",
     "tailwindcss": "^4",
     "typescript": "^5",
