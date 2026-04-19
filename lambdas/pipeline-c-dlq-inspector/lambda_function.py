@@ -94,7 +94,19 @@ def lambda_handler(event, context):
     if truly_failed_ids:
         # --- FAILURE MODE ---
         logger.info(f"Identified {len(truly_failed_ids)} countries that are in the DLQ and are missing S3 data: {truly_failed_ids}")
-        ids_string = ', '.join(truly_failed_ids)
+        # T11 #304 HIGH fix (2026-04-19): SQS DLQ messages are
+        # attacker-controlled. Validate each country_id is pure-digit
+        # before interpolating into Athena SQL to close the injection path.
+        safe_ids = [i for i in truly_failed_ids if str(i).isdigit()]
+        if len(safe_ids) != len(truly_failed_ids):
+            logger.warning(
+                f"Rejected {len(truly_failed_ids) - len(safe_ids)} non-digit country_ids from DLQ: "
+                f"{[i for i in truly_failed_ids if not str(i).isdigit()]}"
+            )
+        if not safe_ids:
+            logger.info("No valid country_ids to look up after sanitization.")
+            return {'statusCode': 200, 'body': json.dumps({})}
+        ids_string = ', '.join(safe_ids)
         lookup_query = f"SELECT id, name_1 FROM {DB_NAME}.{COUNTRIES_NAMES_TABLE} WHERE id IN ({ids_string})"
         result_path = run_athena_query(lookup_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
         result_key = result_path.replace(f"s3://{S3_BUCKET}/", "")
@@ -135,7 +147,19 @@ def lambda_handler(event, context):
         
         # 6. Look up names for the unprocessed countries and report
         logger.info(f"Found {len(unprocessed_ids)} countries remaining to be processed.")
-        ids_string = ', '.join(unprocessed_ids)
+        # T11 #304 HIGH fix: same digit-only allowlist for the unprocessed
+        # branch. `unprocessed_ids` derives from set difference with the
+        # DLQ-derived failed set, so attacker input can still reach here.
+        safe_ids = [i for i in unprocessed_ids if str(i).isdigit()]
+        if len(safe_ids) != len(unprocessed_ids):
+            logger.warning(
+                f"Rejected {len(unprocessed_ids) - len(safe_ids)} non-digit country_ids: "
+                f"{[i for i in unprocessed_ids if not str(i).isdigit()]}"
+            )
+        if not safe_ids:
+            logger.info("No valid country_ids to look up after sanitization.")
+            return {'statusCode': 200, 'body': 'All unprocessed ids were non-digit; nothing to report.'}
+        ids_string = ', '.join(safe_ids)
         lookup_query = f"SELECT id, name_1 FROM {DB_NAME}.{COUNTRIES_NAMES_TABLE} WHERE id IN ({ids_string})"
         result_path = run_athena_query(lookup_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
         result_key = result_path.replace(f"s3://{S3_BUCKET}/", "")

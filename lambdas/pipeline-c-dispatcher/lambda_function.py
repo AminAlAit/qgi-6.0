@@ -80,7 +80,22 @@ def lambda_handler(event, context):
         body = obj['Body'].read().decode('utf-8')
         csv_reader = csv.reader(StringIO(body))
         header = next(csv_reader)
-        country_ids = sorted([row[0] for row in csv_reader if row and row[0]], key=int)
+        # T11 #304 HIGH fix (2026-04-19): previously `sorted(..., key=int)`
+        # could crash Phase 4 dispatch silently if any row had non-digit
+        # content (blank line, header duplicate, unexpected string). Guard
+        # with try/except ValueError + log-and-drop rows that don't parse.
+        raw_ids = [row[0] for row in csv_reader if row and row[0]]
+        country_ids = []
+        dropped = []
+        for rid in raw_ids:
+            try:
+                _ = int(rid)
+                country_ids.append(rid)
+            except ValueError:
+                dropped.append(rid)
+        if dropped:
+            logger.warning(f"Dropped {len(dropped)} non-numeric country_ids from Athena result: {dropped[:10]}...")
+        country_ids = sorted(country_ids, key=int)
         logger.info(f"Found {len(country_ids)} country IDs to dispatch.")
 
         logger.info("Cleaning output locations and dropping old tables...")
@@ -122,20 +137,26 @@ def lambda_handler(event, context):
         time.sleep(5)
 
         # 3. Dispatch messages to SQS
+        # T11 #304 HIGH fix (2026-04-19): use an explicit counter that's
+        # initialized to 0 so `dispatched_count` is always bound even when
+        # `country_ids` is empty — previously relied on `enumerate` binding
+        # `count` and would NameError out on an empty list.
         import json as _json
+        dispatched = 0
         for count, country_id in enumerate(country_ids):
             sqs_client.send_message(
                 QueueUrl=SQS_QUEUE_URL,
                 MessageBody=_json.dumps({"country_id": country_id, "run_id": RUN_ID}),
             )
+            dispatched = count + 1
             logger.info(f"Dispatching country ID {country_id} to the SQS queue.")
-            if (count + 1) % 10 == 0:
-                logger.info(f"Dispatched {count + 1} countries to the SQS queue.")
+            if dispatched % 10 == 0:
+                logger.info(f"Dispatched {dispatched} countries to the SQS queue.")
             if event.get("action") == "start_sample":
                 if count > 3:
                     break
-        
-        dispatched_count = count + 1 if event.get("action") == "start_sample" else len(country_ids)
+
+        dispatched_count = dispatched if event.get("action") == "start_sample" else len(country_ids)
         logger.info(f"Successfully dispatched {dispatched_count} countries to the SQS queue.")
 
         # Write completion counter so c-checker can poll without a hard wait

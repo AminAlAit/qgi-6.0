@@ -34,7 +34,16 @@ import boto3
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
-S3_BUCKET = os.environ.get('S3_BUCKET')
+# T11 #304 HIGH fix (2026-04-19): S3_BUCKET was os.environ.get (soft) and
+# its absence would produce `s3://None/query_results/` as the default,
+# failing downstream Athena queries with an opaque NoSuchBucket error.
+# Hard-fail on boot if the mandatory env var is missing.
+try:
+    S3_BUCKET = os.environ['S3_BUCKET']
+except KeyError as e:
+    raise RuntimeError(
+        "Lambda env var S3_BUCKET is required; cannot resolve Athena output location without it."
+    ) from e
 ATHENA_DB = os.environ.get('ATHENA_DATABASE', 'qgi_data')
 ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
 S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', f's3://{S3_BUCKET}/query_results/')
