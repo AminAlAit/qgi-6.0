@@ -1284,8 +1284,18 @@ export default function PatternsClient({
                       ))}
                     </div>
 
-                    {/* Range inputs (stacked, transparent) */}
+                    {/* Dual-thumb range inputs.
+                        T6 #299 fix (2026-04-19): previous implementation
+                        had two stacked opacity-0 inputs with
+                        `pointer-events: auto` on both — every click went
+                        to whichever input was rendered last, so both
+                        thumbs moved together. Fixed via the
+                        `.qgi-dual-thumb-input` class in globals.css,
+                        which disables pointer-events on the input body
+                        and restores it only on the ::thumb pseudo-element.
+                        Each thumb is now independently grabbable. */}
                     <input
+                      aria-label="Minimum pattern length"
                       type="range"
                       min={globalMinLen}
                       max={globalMaxLen}
@@ -1293,10 +1303,11 @@ export default function PatternsClient({
                       onChange={(e) =>
                         setLengthMin(Math.min(Number(e.target.value), lengthMax))
                       }
-                      className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
-                      style={{ pointerEvents: "auto" }}
+                      className="qgi-dual-thumb-input absolute top-0 w-full h-2 bg-transparent appearance-none"
+                      style={{ zIndex: 2 }}
                     />
                     <input
+                      aria-label="Maximum pattern length"
                       type="range"
                       min={globalMinLen}
                       max={globalMaxLen}
@@ -1304,8 +1315,8 @@ export default function PatternsClient({
                       onChange={(e) =>
                         setLengthMax(Math.max(Number(e.target.value), lengthMin))
                       }
-                      className="absolute top-0 w-full h-2 opacity-0 cursor-pointer"
-                      style={{ pointerEvents: "auto" }}
+                      className="qgi-dual-thumb-input absolute top-0 w-full h-2 bg-transparent appearance-none"
+                      style={{ zIndex: 3 }}
                     />
                   </div>
 

@@ -76,3 +76,48 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--qgi-text-dim);
 }
+
+/* ─── Dual-thumb range slider fix (T6 #299, 2026-04-19) ─────────────────
+ * When two <input type="range"> elements are stacked at opacity-0 on the
+ * same track (the dual-thumb pattern), the default full-width hit area
+ * makes them collide — both thumbs move together because the top input
+ * always wins clicks.
+ *
+ * Fix: make the INPUT ITSELF non-interactive (pointer-events: none) but
+ * restore pointer-events on the THUMB pseudo-elements only. The user
+ * can grab the min thumb OR the max thumb independently, and the rest
+ * of the track falls through to whichever input has the mouse-down
+ * focus (the browser's normal slider behavior).
+ *
+ * Opt-in via class `.qgi-dual-thumb-input` so other single-thumb
+ * sliders in the app are unaffected.
+ */
+.qgi-dual-thumb-input {
+  pointer-events: none;
+}
+.qgi-dual-thumb-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--qgi-accent);
+  border: 2px solid var(--qgi-bg);
+  cursor: grab;
+  box-shadow: 0 0 0 1px var(--qgi-accent);
+}
+.qgi-dual-thumb-input::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--qgi-accent);
+  border: 2px solid var(--qgi-bg);
+  cursor: grab;
+  box-shadow: 0 0 0 1px var(--qgi-accent);
+}
+.qgi-dual-thumb-input:active::-webkit-slider-thumb,
+.qgi-dual-thumb-input:active::-moz-range-thumb {
+  cursor: grabbing;
+}
