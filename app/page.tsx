@@ -168,14 +168,10 @@ export default async function LandingPage() {
                 desktop keeps the full set.
                 Not a hamburger — landing is a read-through page, so
                 section anchors are meaningful only in the desktop layout
-                where the header is sticky and visible. */}
-            <a
-              href="#how-it-works"
-              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              How it works
-            </a>
+                where the header is sticky and visible.
+                2026-04-19: removed "How it works" (it was a same-page
+                anchor, unlike Reports/Methodology which are real pages)
+                and added "About" alongside the other real-page links. */}
             <Link
               href="/reports"
               className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
@@ -189,6 +185,13 @@ export default async function LandingPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               Methodology
+            </Link>
+            <Link
+              href="/about"
+              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              About
             </Link>
             <a
               href="#contact"
@@ -583,7 +586,7 @@ export default async function LandingPage() {
             </p>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:contact@qgintelligence.com?subject=Demo%20Request"
+                href="mailto:aminalait.de@gmail.com?subject=Demo%20Request"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110 w-fit"
                 style={{
                   backgroundColor: "var(--qgi-accent)",
@@ -593,11 +596,11 @@ export default async function LandingPage() {
                 Request a Demo
               </a>
               <a
-                href="mailto:contact@qgintelligence.com"
+                href="mailto:aminalait.de@gmail.com"
                 className="text-sm transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                contact@qgintelligence.com
+                aminalait.de@gmail.com
               </a>
             </div>
           </div>
@@ -671,11 +674,11 @@ export default async function LandingPage() {
                 Contact
               </a>
               <a
-                href="mailto:contact@qgintelligence.com"
+                href="mailto:aminalait.de@gmail.com"
                 className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                contact@qgintelligence.com
+                aminalait.de@gmail.com
               </a>
             </div>
           </div>

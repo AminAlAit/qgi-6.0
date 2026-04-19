@@ -8,12 +8,17 @@
  * Analytical point: "These N analogues all experienced this event. The subject
  * country's trajectory resembles theirs — and its pattern is still unfolding."
  *
- * Reference spec — ticket #293 (refined 2026-04-18):
+ * Reference spec — ticket #293 (refined 2026-04-19 per #354v2):
  *
  *   Syria (121)      ├──── SUBJECT PATTERN ────────────────────┤ NOW 2026
- *   Rwanda           ├─── ANALOGUE PATTERN ───┤ ★ 1994
- *   Syria            ├─── ANALOGUE PATTERN ───┤ ★ 2007
+ *   Rwanda           ├─── ANALOGUE PATTERN ───◆ 1994
+ *   Syria            ├─── ANALOGUE PATTERN ───◆ 2007
  *   ...
+ *
+ * Diamond (◆) marks the event year and sits at the analogue pattern's
+ * RIGHT edge by construction — the enrichment forces `pair_start_b +
+ * pair_length ≈ event_year_b` so the pattern-precedes-event visual
+ * narrative holds without drift.
  *
  * Data source: `data/analogues-enriched.json` — produced by `.tmp/decisions-form/_enrich_analogues.py`
  * which reads `qgi-data/events/curated/*.json` directly and picks the median-year
@@ -89,18 +94,28 @@ export function AnalogueMultiTimeline({
   );
 
   /**
-   * #354 Position C: resolve each analogue's pattern [start, end].
+   * #354v2 Position C + end-alignment: resolve each analogue's pattern
+   * [start, end]. Invariant: the resolved pattern MUST end at (or within
+   * ±2 years of) `event_year_b`, so the diamond marker visually sits at
+   * the right edge of the bar.
    *
    * Priority:
-   *   1. `pair_start_b` + `pair_length` — the length-L common window from
-   *      `enrich_analogues_common_length.py` (2026-04-19+). All rows on a
-   *      single panel SHOULD have this and SHOULD share a length ≈ L±2.
-   *   2. `best_pattern_start_b` + `best_pattern_length` — legacy per-pair
-   *      best-PPS window. Kept for backwards compatibility with
-   *      analogues-enriched.json files written before #354.
-   *   3. Event-year-centred approximation — fallback when neither above.
+   *   1. `pair_start_b` + `pair_length` — the length-L, event-end-aligned
+   *      window from `enrich_analogues_common_length.py` v2 (2026-04-19).
+   *      Guaranteed aligned by construction.
+   *   2. `best_pattern_*` — legacy per-pair best-PPS window, USED ONLY
+   *      WHEN IT ALSO ENDS NEAR THE EVENT. The pre-v2 enrichment wrote
+   *      these without alignment checks, so they can drift; we verify
+   *      on-the-fly here and reject if not aligned.
+   *   3. Event-year-anchored fallback: `[event_year - patternWindowYears,
+   *      event_year]`. Guaranteed aligned because defined that way.
    */
+  const END_ALIGNMENT_TOLERANCE = 2;
+
   const resolveAnaloguePattern = (a: (typeof analogues)[number]) => {
+    const eventYear = a.event_year_b;
+
+    // Priority 1: v2 length-L aligned window.
     if (a.pair_start_b !== undefined && a.pair_length !== undefined) {
       return {
         start: a.pair_start_b,
@@ -112,22 +127,31 @@ export function AnalogueMultiTimeline({
         subjectStartA: a.pair_start_a,
       };
     }
-    if (a.best_pattern_start_b !== undefined && a.best_pattern_length !== undefined) {
-      return {
-        start: a.best_pattern_start_b,
-        end: a.best_pattern_start_b + a.best_pattern_length,
-        length: a.best_pattern_length,
-        isReal: true,
-        isCommonLength: false,
-        eventInWindow:
-          a.event_year_b !== null &&
-          a.event_year_b !== undefined &&
-          a.event_year_b >= a.best_pattern_start_b &&
-          a.event_year_b <= a.best_pattern_start_b + a.best_pattern_length,
-        subjectStartA: a.best_pattern_start_a,
-      };
+
+    // Priority 2: legacy best_pattern_* — only if end-aligned on the fly.
+    if (
+      a.best_pattern_start_b !== undefined &&
+      a.best_pattern_length !== undefined &&
+      eventYear !== null &&
+      eventYear !== undefined
+    ) {
+      const legacyEnd = a.best_pattern_start_b + a.best_pattern_length;
+      if (Math.abs(legacyEnd - eventYear) <= END_ALIGNMENT_TOLERANCE) {
+        return {
+          start: a.best_pattern_start_b,
+          end: legacyEnd,
+          length: a.best_pattern_length,
+          isReal: true,
+          isCommonLength: false,
+          eventInWindow: eventYear >= a.best_pattern_start_b && eventYear <= legacyEnd,
+          subjectStartA: a.best_pattern_start_a,
+        };
+      }
+      // else fall through: legacy window doesn't end at event → reject
     }
-    const ey = a.event_year_b ?? CURRENT_YEAR;
+
+    // Priority 3: event-anchored fallback. Guaranteed to end at event.
+    const ey = eventYear ?? CURRENT_YEAR;
     return {
       start: ey - patternWindowYears,
       end: ey,
@@ -409,24 +433,40 @@ export function AnalogueMultiTimeline({
                 </g>
               )}
 
-              {/* Event marker (★) at event_year_b — real historical event */}
-              <g transform={`translate(${xOf(eventYear)}, ${barHeight / 2})`}>
+              {/* #354v2 event marker — diamond at pattern's RIGHT edge.
+                  Visually anchoring the marker to `patternEnd` rather
+                  than `eventYear` guarantees the "pattern → event"
+                  narrative reads cleanly even when the per-pair
+                  end-alignment drifts by 1-2 years due to sparse
+                  pair-windows coverage. The adjacent label still
+                  reports the REAL event year so truth is preserved.
+
+                  Shape: rotated-square diamond (12px across) — a neutral
+                  geometric marker that fits QGI's data-observatory
+                  aesthetic (no star, no achievement glyph). */}
+              <g transform={`translate(${xOf(patternEnd)}, ${barHeight / 2})`}>
                 <polygon
-                  points={starPoints(0, 0, 8, 4, 5)}
+                  points="0,-6 6,0 0,6 -6,0"
                   fill={COLOR_EVENT}
                   stroke={COLOR_EVENT}
-                  strokeWidth={1.5}
+                  strokeWidth={1.25}
                 />
               </g>
               <text
-                x={xOf(eventYear) + 12}
+                x={xOf(patternEnd) + 12}
                 y={barHeight / 2 + 4}
                 fontSize="9.5"
                 fontFamily="ui-monospace, monospace"
                 fill={COLOR_EVENT}
                 fontWeight={600}
               >
-                ★ {eventYear}
+                ◆ {eventYear}
+                {patternEnd !== eventYear && (
+                  <tspan fill={COLOR_LABEL} fontWeight={400}>
+                    {" "}
+                    (pattern ends {patternEnd})
+                  </tspan>
+                )}
               </text>
             </g>
           );
@@ -514,8 +554,8 @@ export function AnalogueMultiTimeline({
         <LegendEntry color={COLOR_ANALOGUE} label="ANALOGUE — PATTERN ENDED AT EVENT" />
         <LegendEntry
           color={COLOR_EVENT}
-          label={`★ ${categoryLabel.toUpperCase()} (REAL EVENT YEAR)`}
-          isStar
+          label={`◆ ${categoryLabel.toUpperCase()} (REAL EVENT YEAR)`}
+          isDiamond
         />
         <LegendEntry color={COLOR_NOW} label={`NOW · ${CURRENT_YEAR}`} isDashed />
       </div>
@@ -541,40 +581,22 @@ export function AnalogueMultiTimeline({
   );
 }
 
-function starPoints(
-  cx: number,
-  cy: number,
-  rOuter: number,
-  rInner: number,
-  points: number
-): string {
-  const pts: string[] = [];
-  for (let i = 0; i < points * 2; i++) {
-    const r = i % 2 === 0 ? rOuter : rInner;
-    const angle = (Math.PI / points) * i - Math.PI / 2;
-    pts.push(
-      `${(cx + r * Math.cos(angle)).toFixed(2)},${(cy + r * Math.sin(angle)).toFixed(2)}`
-    );
-  }
-  return pts.join(" ");
-}
-
 function LegendEntry({
   color,
   label,
-  isStar,
+  isDiamond,
   isDashed,
 }: {
   color: string;
   label: string;
-  isStar?: boolean;
+  isDiamond?: boolean;
   isDashed?: boolean;
 }) {
   return (
     <span className="inline-flex items-center gap-1.5">
-      {isStar ? (
+      {isDiamond ? (
         <svg width={14} height={14} viewBox="-7 -7 14 14" aria-hidden="true">
-          <polygon points={starPoints(0, 0, 6, 3, 5)} fill={color} />
+          <polygon points="0,-5 5,0 0,5 -5,0" fill={color} />
         </svg>
       ) : (
         <span
