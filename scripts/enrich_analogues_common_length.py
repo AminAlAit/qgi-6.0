@@ -51,7 +51,14 @@ Output (in-place rewrite):
 
 import argparse
 import json
+from datetime import datetime
 from pathlib import Path
+
+# Analogue pattern windows must end in the PAST or TODAY — an analogue
+# bar extending into 2027 while the subject's NOW marker is 2026 is
+# visually incoherent ("the historical event happens in the future").
+# Sonnet pre-mortem review flagged 34 such rows in the 2026-04-19 data.
+CURRENT_YEAR = datetime.now().year
 
 
 # Per-pair compact schema from generate_pair_windows.py:
@@ -119,6 +126,9 @@ def best_common_length(
                     continue
                 if abs(w["l"] - L) > length_tolerance:
                     continue
+                # Future-date guard (same as pick_analogue_window).
+                if w["sb"] + w["l"] > CURRENT_YEAR:
+                    continue
                 # When we know the event year, require end-alignment.
                 if eyb is not None:
                     if abs((w["sb"] + w["l"]) - eyb) > end_tolerance:
@@ -180,6 +190,11 @@ def pick_analogue_window(
         if isinstance(w.get("l"), int)
         and w.get("sb") is not None
         and abs(w["l"] - target_L) <= length_tolerance
+        # Drop future-dated windows. An analogue pattern extending past
+        # the current year has no meaningful precedent semantics — the
+        # "historical event" cannot be in the future relative to the
+        # subject's NOW. See review note above.
+        and w["sb"] + w["l"] <= CURRENT_YEAR
     ]
     if not eligible:
         return None
