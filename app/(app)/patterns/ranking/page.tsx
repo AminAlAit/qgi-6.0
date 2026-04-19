@@ -143,8 +143,11 @@ export default function RankingPage() {
     return () => document.removeEventListener("mousedown", handleClick);
   }, []);
 
-  function getAlpha2(idOrName: string | undefined, name: string): string {
-    if (idOrName && ALPHA2_MAP[idOrName]) return ALPHA2_MAP[idOrName];
+  function getAlpha2(idOrName: string | number | undefined, name: string): string {
+    // idOrName widened to accept number (PatternRow.country_a_id is
+    // `string | number` post-T2). Coerce to string for the lookup key.
+    const key = idOrName != null ? String(idOrName) : undefined;
+    if (key && ALPHA2_MAP[key]) return ALPHA2_MAP[key];
     if (NAME_TO_ALPHA2[name]) return NAME_TO_ALPHA2[name];
     return "";
   }
@@ -766,7 +769,7 @@ function RankCard({
   rank: number;
   pattern: PatternRow;
   maxPps: number;
-  getAlpha2: (idOrName: string | undefined, name: string) => string;
+  getAlpha2: (idOrName: string | number | undefined, name: string) => string;
   onNavigate: () => void;
 }) {
   const alpha2A = getAlpha2(p.country_a_id, p.country_a);

@@ -470,8 +470,10 @@ export function BaseClient({
       return;
     }
     const qs = new URLSearchParams({
-      country_a: p.country_a_id,
-      country_b: p.country_b_id,
+      // country_a_id / country_b_id are typed `string | number` post-T2
+      // widening — URLSearchParams only accepts strings.
+      country_a: String(p.country_a_id),
+      country_b: String(p.country_b_id),
       length: String(p.pattern_length),
       start_a: String(p.start_year_a),
       start_b: String(p.start_year_b),
