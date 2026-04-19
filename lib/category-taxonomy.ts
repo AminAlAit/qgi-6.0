@@ -47,6 +47,7 @@ export const CATEGORY_L1_MAP: Record<string, L1Mapping> = {
   democratic_transition:            { group: "A", label: "Political Power & Regime" },
   executive_power_consolidation:    { group: "A", label: "Political Power & Regime" },
   military_coup:                    { group: "A", label: "Political Power & Regime" },
+  coup_attempt_or_succession:       { group: "A", label: "Political Power & Regime" }, // T5 #298 fix: Colombia coup page rendered "Uncategorized"
   transitional_justice:             { group: "A", label: "Political Power & Regime" },
   peacekeeping_and_peace_process:   { group: "A", label: "Political Power & Regime" },
   constitutional_referendum:        { group: "A", label: "Political Power & Regime" }, // legacy slug
@@ -149,20 +150,12 @@ export const CATEGORY_L1_MAP: Record<string, L1Mapping> = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-/** Look up the L1 group for a category slug. Returns undefined if not found. */
-export function getL1ForCategory(category: string): L1Mapping | undefined {
-  return CATEGORY_L1_MAP[category];
-}
+// T13 #306 MEDIUM fix (2026-04-19): `getL1ForCategory` and `getDomainColor`
+// were exported but had ZERO import sites — callers were reaching into
+// CATEGORY_L1_MAP + L1_GROUPS directly. Removed to prevent accidental
+// re-introduction of the duplicated lookup paths.
 
 /** Get the L1Group definition by its code letter. */
 export function getL1Group(code: string): L1Group | undefined {
   return L1_GROUPS.find((g) => g.code === code);
-}
-
-/** Get domain color for a category slug. Falls back to dim grey. */
-export function getDomainColor(category: string): string {
-  const mapping = CATEGORY_L1_MAP[category];
-  if (!mapping) return "#4a6280";
-  const group = L1_GROUPS.find((g) => g.code === mapping.group);
-  return group?.color ?? "#4a6280";
 }

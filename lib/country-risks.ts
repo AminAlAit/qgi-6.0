@@ -63,17 +63,33 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
   const now = Date.now();
   if (_cache && now - _cacheTs < CACHE_TTL) return _cache;
 
+  // T13 #306 MEDIUM fix: validate shape before cast. `as CountryRisksData`
+  // was previously a bare assertion — a corrupt file could silently paint
+  // the entire dashboard with `undefined` countries.
+  const parseAndValidate = (raw: string): CountryRisksData => {
+    const parsed: unknown = JSON.parse(raw);
+    if (
+      !parsed ||
+      typeof parsed !== "object" ||
+      !("countries" in parsed) ||
+      typeof (parsed as { countries: unknown }).countries !== "object"
+    ) {
+      throw new Error("country-risks.json missing `countries` object");
+    }
+    return parsed as CountryRisksData;
+  };
+
   // Try local file first (fast, zero AWS cost, always present in repo)
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
     const filePath = path.join(process.cwd(), "data", "country-risks.json");
     const raw = await fs.readFile(filePath, "utf-8");
-    _cache = JSON.parse(raw) as CountryRisksData;
+    _cache = parseAndValidate(raw);
     _cacheTs = now;
     return _cache;
   } catch {
-    // Local file missing — fall back to S3
+    // Local file missing or malformed — fall back to S3
   }
 
   // S3 fallback (production override / fresh pipeline output)
@@ -84,7 +100,7 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
     );
     const body = await resp.Body?.transformToString();
     if (body) {
-      _cache = JSON.parse(body) as CountryRisksData;
+      _cache = parseAndValidate(body);
       _cacheTs = now;
       return _cache;
     }

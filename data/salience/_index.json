@@ -1,6 +1,6 @@
 {
   "generated": "2026-04-16",
-  "country_count": 198,
+  "country_count": 197,
   "total_events": 13812,
   "decay_lambda": 0.15,
   "guardrails_applied": [
@@ -9,5 +9,6 @@
     "G-3 dual-label note for sanctions_and_arms_embargo",
     "G-4 half-life label fixed (4.6yr not ~5yr)",
     "G-5 layered scores are NEW fields; existing salience_score untouched"
-  ]
+  ],
+  "_fix_note": "T10 #303: 2026-04-19 corrected from 198 to 197; generator was counting _index.json itself"
 }

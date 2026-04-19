@@ -1,8 +1,18 @@
+/**
+ * PatternRow — single pattern window as produced by pipeline-recipe-engine
+ * and consumed by the frontend.
+ *
+ * T2 #295 / T13 #306 type-drift fix (2026-04-19): `country_a_id` /
+ * `country_b_id` now accept `string | number` to tolerate both the baked
+ * JSON shape (stringified in `RankingPayload` per `lib/dashboard-cache.ts`)
+ * and the Athena-path numeric shape. Callers must coerce with `String(x)` or
+ * `Number(x)` at the usage site — do NOT rely on the type alone.
+ */
 export interface PatternRow {
   country_a: string;
   country_b: string;
-  country_a_id?: string;
-  country_b_id?: string;
+  country_a_id?: string | number;
+  country_b_id?: string | number;
   start_year_a: number;
   start_year_b: number;
   pattern_length: number;
@@ -14,7 +24,12 @@ export interface PatternRow {
 
 export interface IndexEntry {
   id: string;
-  numeric_id: number | null;
+  /**
+   * T10 #303 fix (2026-04-19): previously typed `number | null`, but all
+   * 260 entries in `indexes.json` have a non-null numeric_id. Tightened
+   * to `number` so consumers don't need null guards the data never exercises.
+   */
+  numeric_id: number;
   name: string;
   sector: string;
   org: string;
@@ -110,5 +125,70 @@ export type RecipeRow = SignalRow;
  */
 export interface SignalsResponse {
   generated_at: string;
+  /**
+   * T10 #303 fix (2026-04-19): `recipes-top50.json` and `early-warning.json`
+   * carry a top-level `as_of_year` that several callers reference via
+   * `as unknown as` casts. Declared here so downstream consumers don't
+   * drift out of type safety.
+   */
+  as_of_year?: number;
   results: SignalRow[];
+}
+
+/**
+ * Enriched analogue — produced by `.tmp/decisions-form/_enrich_analogues.py`
+ * which reads `qgi-data/events/curated/*.json` directly and picks the
+ * median-year event of the matching category as the analogue's signature event.
+ *
+ * Consumed by `components/countries/AnalogueMultiTimeline.tsx` (ticket #293).
+ */
+export interface AnalogueEnrichedEntry {
+  country_b_id: number;
+  country_b_name: string;
+  alpha2: string;
+  recipe_count: number;
+  mean_corr: number;
+  best_pps: number;
+  avg_lead_years: number | null;
+  /** Year of the median/signature event of the matching category for this analogue country. */
+  event_year_b: number | null;
+  /** Title of the signature event. */
+  event_title_b: string | null;
+  /** [earliest_event_year, latest_event_year] across all events of the category in this country. */
+  event_range_b: [number, number] | null;
+  /** All years with matching-category events for this analogue (reserved for richer timelines later). */
+  event_all_years_b: number[] | null;
+  /** 'qgi-data' = enriched from curated events; 'missing' = no match found. */
+  event_data_source: "qgi-data" | "missing";
+  /** #352: best-PPS pattern length (years). Added by qgi-ml/scripts/generate_pair_windows.py. */
+  best_pattern_length?: number;
+  /** #352: subject country's start year in the best-PPS pattern. */
+  best_pattern_start_a?: number;
+  /** #352: analogue country's start year in the best-PPS pattern. */
+  best_pattern_start_b?: number;
+}
+
+export interface AnalogueEnrichedSubject {
+  country_id: string;
+  country_name: string;
+  subject_event_year_a: number | null;
+  subject_event_title_a: string | null;
+  subject_event_range_a: [number, number] | null;
+  subject_event_all_years_a: number[] | null;
+  subject_slug_resolved: string | null;
+}
+
+export interface AnaloguesEnrichedPayload {
+  generated_at: string;
+  source: string;
+  enriched_count: number;
+  total_analogues: number;
+  countries: {
+    [countryId: string]: {
+      [category: string]: {
+        subject: AnalogueEnrichedSubject;
+        analogues: AnalogueEnrichedEntry[];
+      };
+    };
+  };
 }

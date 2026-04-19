@@ -63,8 +63,23 @@ export const GET = withAuth(async (req: NextRequest) => {
     }
     conditions.push(`sector = '${sector}'`);
   }
-  if (min_pps) conditions.push(`CAST(pattern_power_score AS DOUBLE) >= ${Number(min_pps)}`);
-  if (min_corr) conditions.push(`CAST(avg_correlation AS DOUBLE) >= ${Number(min_corr)}`);
+  // T9 #302 HIGH fix (2026-04-19): `Number()` returns NaN for malformed
+  // input, which Athena then rejects as invalid SQL, surfacing as a 500.
+  // Guard with `Number.isFinite()` and reject bad input as 400 instead.
+  if (min_pps !== null) {
+    const v = Number(min_pps);
+    if (!Number.isFinite(v)) {
+      return NextResponse.json({ error: "Invalid min_pps" }, { status: 400 });
+    }
+    conditions.push(`CAST(pattern_power_score AS DOUBLE) >= ${v}`);
+  }
+  if (min_corr !== null) {
+    const v = Number(min_corr);
+    if (!Number.isFinite(v)) {
+      return NextResponse.json({ error: "Invalid min_corr" }, { status: 400 });
+    }
+    conditions.push(`CAST(avg_correlation AS DOUBLE) >= ${v}`);
+  }
 
   const where = conditions.length > 0 ? `WHERE ${conditions.join(" AND ")}` : "";
 

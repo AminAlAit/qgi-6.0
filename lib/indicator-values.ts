@@ -269,6 +269,25 @@ async function athenaFallback(
   indicatorId: string,
   countryName: string
 ): Promise<void> {
+  // T13 #306 HIGH + Sonnet P1-5 (2026-04-19): sanitize `indicatorId` before
+  // interpolation. Original regex was WB-only (`[A-Z0-9]+(\.[A-Z0-9]+)+`)
+  // which silently rejected FAOSTAT (`fao_cereal_yield`) and ILOSTAT
+  // (`EAP_TEAP_SEX_AGE_RT_A`) IDs that will land with #150. Broadened to
+  // accept letters (upper+lower), digits, underscores, and dots — still
+  // rejects quotes, semicolons, spaces, wildcards, comments, etc.
+  //
+  // TODO(#150, indicator-catalog): once FAOSTAT/ILOSTAT XLSXs land and
+  // indexes.json becomes a true catalog SoT, replace this regex with an
+  // exact `has()` check against the catalog so new providers are opt-in
+  // rather than regex-dodge.
+  if (!/^[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)*$/.test(indicatorId)) {
+    console.warn(
+      `[indicator-values] rejected indicator_id with unexpected shape: ${JSON.stringify(
+        indicatorId
+      )}`
+    );
+    return;
+  }
   const safe = countryName.replace(/'/g, "''");
   const rows = await runQuery(
     `SELECT year, value FROM qgi_data.indicators

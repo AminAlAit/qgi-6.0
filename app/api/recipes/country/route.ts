@@ -10,6 +10,18 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "country parameter required" }, { status: 400 });
   }
 
+  // T9 #302 HIGH fix (2026-04-19): `countryName` was interpolated into
+  // Athena SQL with only quote-escape. Tighten the allowed character set
+  // too — legitimate country names are letters, spaces, periods, commas,
+  // parentheses, apostrophes, hyphens. Anything outside that gets rejected
+  // before we build the query. We still quote-escape what remains.
+  const SAFE_COUNTRY_NAME = /^[A-Za-z .,()'\-\u00C0-\u024F\u1E00-\u1EFF]{1,100}$/;
+  if (!SAFE_COUNTRY_NAME.test(countryName)) {
+    return NextResponse.json(
+      { error: "Invalid country parameter" },
+      { status: 400 }
+    );
+  }
   const currentYear = new Date().getFullYear();
   const safe = countryName.replace(/'/g, "''");
 
@@ -73,10 +85,13 @@ export const GET = withAuth(async (req: NextRequest) => {
       })),
     });
   } catch (err) {
+    // T9 #302 HIGH fix: don't leak raw error messages — they may contain
+    // S3 bucket names, ARNs, or Athena query text. Log server-side and
+    // return a generic 503.
     console.error("Recipe country query failed:", err);
     return NextResponse.json(
-      { error: err instanceof Error ? err.message : "Query failed" },
-      { status: 500 }
+      { error: "Recipe data temporarily unavailable" },
+      { status: 503 }
     );
   }
 });

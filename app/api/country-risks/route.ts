@@ -17,8 +17,12 @@ export async function GET() {
       },
     });
   } catch (err) {
+    // T9 #302 HIGH fix (2026-04-19): don't echo the raw exception message
+    // — it may include S3 bucket names/ARNs. Log server-side, return
+    // generic.
+    console.error("country-risks route failed:", err);
     return NextResponse.json(
-      { error: (err as Error).message },
+      { error: "Country risk data temporarily unavailable" },
       { status: 503 }
     );
   }
