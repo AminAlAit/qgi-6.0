@@ -61,14 +61,30 @@ def _should_skip_sheet(sheet_name: str) -> bool:
     return False
 
 
+# Columns that _parse_sheet handles explicitly (type-coerced). Everything
+# else in the sheet is passed through as-is so provider-specific columns
+# (wb_indicator_code, fao_domain_code, fao_item_code, fao_element_code,
+# fao_unit, vdem_var_name, etc.) flow into the output JSON without a
+# per-provider code change each time we add a new provider.
+_ESSENTIAL_COLUMNS = {'id_string', 'numeric_id', 'name', 'status'}
+
+
 def _parse_sheet(file_content: bytes, sheet_name: str) -> list[dict]:
-    """Parse one sheet into a list of indicator dicts. Raises if essential columns missing."""
+    """Parse one sheet into a list of indicator dicts.
+
+    Essential columns (must be present): ``id_string``, ``numeric_id``,
+    ``name``, ``status``. A row missing ``id_string`` or ``numeric_id``
+    is silently skipped (blank row in the XLSX). All OTHER columns are
+    passed through as-is — provider-specific columns like
+    ``fao_domain_code`` get included without a code change here.
+    """
     df = pd.read_excel(
         io.BytesIO(file_content),
         engine='openpyxl',
         sheet_name=sheet_name,
     )
     df.columns = df.columns.str.strip()
+    passthrough_cols = [c for c in df.columns if c not in _ESSENTIAL_COLUMNS]
 
     indicators = []
     for _, row in df.iterrows():
@@ -82,10 +98,21 @@ def _parse_sheet(file_content: bytes, sheet_name: str) -> list[dict]:
             "name": str(row.get('name', '')).strip(),
             "status": str(row['status']).strip().lower() if not pd.isna(row.get('status')) else "hold",
         }
-        # Optional columns — pass through if present
-        for opt_col in ('category', 'description', 'license', 'hidden_source'):
-            if opt_col in df.columns and not pd.isna(row.get(opt_col)):
-                ind[opt_col] = str(row[opt_col]).strip()
+        # Pass through EVERY non-essential column. Preserves int/float
+        # types for numeric codes (FAOSTAT item codes, V-Dem var numbers)
+        # instead of stringifying them.
+        for col in passthrough_cols:
+            val = row.get(col)
+            if pd.isna(val):
+                continue
+            if isinstance(val, bool):
+                ind[col] = bool(val)
+            elif isinstance(val, (int, float)):
+                # Preserve int shape when the Excel cell round-trips as int
+                as_int = int(val)
+                ind[col] = as_int if as_int == val else float(val)
+            else:
+                ind[col] = str(val).strip()
         indicators.append(ind)
     return indicators
 
@@ -125,6 +152,13 @@ def lambda_handler(event, context):
             provider = _provider_name_for_sheet(sheet_name)
             try:
                 inds = _parse_sheet(file_content, sheet_name)
+                # #240 follow-up: tag each indicator with its provider so
+                # downstream consumers (dispatcher, per-provider Fargate
+                # fetcher routing) don't have to recompute from the
+                # nested `providers` structure. Matches the "catalog.json"
+                # schema from the 2026-04-19 Sonnet storage memo.
+                for ind in inds:
+                    ind["provider"] = provider
                 providers_data[provider] = inds
                 logger.info(f"  Sheet {sheet_name!r} -> provider {provider!r}: {len(inds)} indicators")
             except Exception as e:
