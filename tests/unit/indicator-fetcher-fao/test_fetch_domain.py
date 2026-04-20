@@ -212,7 +212,10 @@ def test_extract_indicator_output_columns_match_wb_contract():
         mod.load_canonical_country_names(),
     )
     assert list(result.columns) == ["country", "year", "value", "source_type", "is_estimate"]
-    assert result["country"].dtype == object   # strings
+    # Accept both legacy ``object`` dtype and the newer pandas
+    # ``StringDtype(na_value=nan)`` — both serialize to the same
+    # Parquet ``string`` logical type and round-trip identically.
+    assert result["country"].dtype == object or str(result["country"].dtype) == "string"
     assert result["year"].dtype.kind == "i"    # integer
     assert result["value"].dtype == "float64"  # F5 force-cast
     assert result["is_estimate"].dtype == bool
@@ -463,8 +466,10 @@ def test_write_parquet_embeds_wb_compatible_columns():
     ]
     assert str(written["value"].dtype) == "float64"
     assert str(written["year"].dtype) == "int64"
-    assert written["is_predicted"].dtype == bool
-    assert written["is_estimate"].dtype == bool
+    # Newer pandas + pyarrow may surface bool as BooleanDtype (masked);
+    # accept both the classic bool and the nullable variant.
+    assert written["is_predicted"].dtype == bool or str(written["is_predicted"].dtype) == "boolean"
+    assert written["is_estimate"].dtype == bool or str(written["is_estimate"].dtype) == "boolean"
     assert (written["is_predicted"] == False).all(), \
         "FAOSTAT is raw data — is_predicted must always be False"
 
@@ -528,7 +533,7 @@ def test_fetch_domain_csv_retries_on_network_error():
 
     with patch.object(mod, "requests") as mock_req:
         mock_req.get = MagicMock(side_effect=[bad, ok])
-        with patch.object(mod, "time"):  # skip real sleep
+        with patch.object(mod.time, "sleep"):  # skip real sleep
             out = mod.fetch_domain_csv("FS")
     assert b"Afghanistan" in out
     assert mock_req.get.call_count == 2
@@ -558,7 +563,7 @@ def test_main_happy_path_writes_success_tracker_and_decrements_counter():
 
     with patch.object(mod, "requests") as mock_req:
         mock_req.get = MagicMock(return_value=ok)
-        with patch.object(mod, "time"):
+        with patch.object(mod.time, "sleep"):
             rc = mod.main()
     assert rc == 0
 
@@ -584,7 +589,7 @@ def test_main_writes_failed_rows_when_download_fails():
 
     with patch.object(mod, "requests") as mock_req:
         mock_req.get = MagicMock(return_value=bad)
-        with patch.object(mod, "time"):
+        with patch.object(mod.time, "sleep"):
             rc = mod.main()
     assert rc == 1  # main signals non-zero on failure
 
@@ -612,7 +617,7 @@ def test_main_with_multiple_indicators_writes_one_row_per_indicator(monkeypatch)
 
     with patch.object(mod, "requests") as mock_req:
         mock_req.get = MagicMock(return_value=ok)
-        with patch.object(mod, "time"):
+        with patch.object(mod.time, "sleep"):
             mod.main()
 
     tracker_ids = [
