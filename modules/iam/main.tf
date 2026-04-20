@@ -53,6 +53,79 @@ resource "aws_iam_role_policy" "github_actions_lambda_deploy" {
 }
 
 # ---------------------------------------------------------------------------
+# GitHub Actions OIDC role — push Phase 1/2 Batch images to this account's ECR
+#
+# Per-account companion to the management-account role of the same name
+# (which pushes to 111111111111 ECR). This staging/QA/prod role allows
+# AminAlAit/qgi-pipeline to push directly to this account's ECR repos so
+# JobDefs can reference local URIs without the cross-account pull dance
+# (#152 Path A is parked — each env owns its own image copies for now).
+#
+# Scoped to all three Phase 1/2 image repos so a stale WB image can be
+# re-pushed later without coming back for IAM changes.
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "github_actions_ecr_push" {
+  name = "github-actions-qgi-ecr-push"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Federated = aws_iam_openid_connect_provider.github_actions.arn }
+      Action    = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+        }
+        StringLike = {
+          "token.actions.githubusercontent.com:sub" = [
+            "repo:AminAlAit/qgi-pipeline:ref:refs/heads/main",
+            "repo:AminAlAit/qgi-pipeline:ref:refs/tags/*",
+          ]
+        }
+      }
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "github_actions_ecr_push" {
+  name = "qgi-ecr-push-policy"
+  role = aws_iam_role.github_actions_ecr_push.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        # ecr:GetAuthorizationToken must be "*" — ECR authZ is account-wide.
+        Effect   = "Allow"
+        Action   = ["ecr:GetAuthorizationToken"]
+        Resource = "*"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "ecr:BatchCheckLayerAvailability",
+          "ecr:BatchGetImage",
+          "ecr:CompleteLayerUpload",
+          "ecr:DescribeRepositories",
+          "ecr:GetDownloadUrlForLayer",
+          "ecr:InitiateLayerUpload",
+          "ecr:PutImage",
+          "ecr:UploadLayerPart",
+        ]
+        Resource = [
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-fao",
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-b-scdi-finder",
+        ]
+      },
+    ]
+  })
+}
+
+# ---------------------------------------------------------------------------
 # Lambda execution role
 # ---------------------------------------------------------------------------
 resource "aws_iam_role" "lambda_execution" {

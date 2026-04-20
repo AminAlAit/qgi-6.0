@@ -97,11 +97,30 @@ resource "aws_cloudwatch_log_group" "scdi_finder" {
 # - eu-central-1 quotas verified (sustained 20/sec, burst 100, 30 vCPU concurrent)
 # ---------------------------------------------------------------------------
 
-# ECR repo for the indicator-fetcher image now lives in the MANAGEMENT
-# account (#152 Path A) alongside scdi-finder. This module pulls it
-# cross-account via the job definition's image URI below. The local
-# `aws_ecr_repository.indicator_fetcher` resource was removed as part
-# of the migration; see the #152 runbook for the one-time image copy.
+# Per-environment ECR repo for the WB indicator-fetcher image.
+#
+# #152 Path A (cross-account pull from the management-account ECR
+# alongside scdi-finder) was attempted and parked. Staging owns its own
+# copy of the WB fetcher image here; the job definition below
+# references it via `${var.aws_account_id}.dkr.ecr.../qgi-pipeline-a-
+# indicator-fetcher:latest`. If we ever resume #152, flip the JobDef's
+# image URI to `${var.management_account_id}...` and `terraform rm`
+# this resource only after the management ECR is primed and a WB
+# fetcher run has succeeded pulling cross-account.
+resource "aws_ecr_repository" "indicator_fetcher" {
+  name                 = "qgi-pipeline-a-indicator-fetcher"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  encryption_configuration {
+    encryption_type = "AES256"
+  }
+
+  tags = var.tags
+}
 
 # Fargate Spot compute environment — no instances, no AMIs, no scaling.
 # Just submits tasks and Fargate provisions micro-VMs on demand.
