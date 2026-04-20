@@ -1155,7 +1155,7 @@ resource "aws_sfn_state_machine" "pipeline" {
           {
             Variable     = "$.mode"
             StringEquals = "post_recipes"
-            Next         = "5b.6. Finalize"
+            Next         = "post_recipes. Inject Defaults"
           },
           {
             Variable     = "$.mode"
@@ -1164,6 +1164,20 @@ resource "aws_sfn_state_machine" "pipeline" {
           }
         ]
         Default = "1a. Fetch Indicators XLSX"
+      }
+
+      # post_recipes: synthesize the $.recipe_list structure that 5b.3
+      # List Formatter would normally produce, so 5b.6 Finalize finds
+      # its expected input ($.recipe_list.partitions_total). The
+      # Finalize Lambda only uses this value for logging, so any
+      # placeholder works — it does not drive control flow.
+      "post_recipes. Inject Defaults" = {
+        Type = "Pass"
+        Result = {
+          partitions_total = "post_recipes_resume"
+        }
+        ResultPath = "$.recipe_list"
+        Next       = "5b.6. Finalize"
       }
 
       # dashboards_only: invoke finalize directly, skip everything else
