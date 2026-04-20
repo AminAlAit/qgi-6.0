@@ -139,7 +139,13 @@ S3_OUTPUT_PREFIX = "pipeline-A-indicator-extractor/output"
 # Country code map lives in qgi-data-synced-to-S3 at a deterministic key
 # so the fetcher doesn't need the qgi-data repo mounted. Produced by
 # qgi-data/scripts/sync_curated_events.py (extended) — see #241.
-COUNTRY_M49_MAP_KEY = "pipeline-A-indicator-extractor/input/country-m49-map.csv"
+# NOTE (2026-04-20): moved out of ``input/`` prefix because the Glue
+# ``qgi_data.countries`` table scans that prefix recursively and
+# fails Phase 5b.4 Seed CTAS with ``INVALID_CAST_ARGUMENT: Cannot
+# cast 'Afghanistan' to INT`` when the m49 map's ``qgi_name`` column
+# lands in Glue's expected ``id`` column position. Keeping this file
+# in ``registries/`` avoids the pollution.
+COUNTRY_M49_MAP_KEY = "pipeline-A-indicator-extractor/registries/country-m49-map.csv"
 
 
 # ---------------------------------------------------------------------------
