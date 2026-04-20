@@ -90,19 +90,62 @@ def tier_threshold(segment_len: int) -> float:
 # #139: Benjamini-Hochberg false discovery rate correction
 # ---------------------------------------------------------------------------
 
-def pearson_pvalues_vectorized(r: np.ndarray, n: np.ndarray) -> np.ndarray:
-    """Two-tailed Pearson p-values from arrays of (r, n).
+def effective_df_for_source_type(n: np.ndarray, source_type: str) -> np.ndarray:
+    """Degrees-of-freedom adjustment for Pearson p-value given indicator provenance.
 
-    n is the segment length used to compute each correlation. df = n - 2.
+    Standard Pearson assumes i.i.d. residuals and uses ``df = n − 2``. For
+    indicators that carry residual autocorrelation — specifically FAOSTAT
+    ``3yr_avg`` series that have been first-differenced by the Phase 1
+    fetcher (#241 F1, commit e810597) — consecutive observations still
+    share 2/3 of the underlying data because the 3-year rolling windows
+    overlap. Naïve df inflates t-statistics, understates p-values, and
+    produces spurious SCDIs that would survive BH-FDR at high rates.
 
-    Vectorised over numpy arrays for performance — applied to the full survivor
-    set at consolidation time, not per (start_a, start_b) pair.
+    MIT reviewer (2026-04-20 final synthesis, ticket #364) recommended a
+    Newey-West / Bartlett-kernel HAC correction. Full HAC requires
+    per-segment autocorrelation computation inside the vectorised
+    p-value path, which blows up the FFT hot path's performance. A
+    closed-form conservative approximation captures the same spirit:
+    for 3yr_avg with overlap L=3, the effective sample size is
+    n_eff ≈ (n − 1) / 3 (three overlapping data points in each window
+    collapse to one independent observation).
+
+    Effective df = n_eff − 2, floored at 1.
+
+    For ``annual``, ``fao_estimate`` (annual variant), or any non-FAO
+    indicator, behavior is unchanged: ``df = n − 2``.
+    """
+    n = np.asarray(n, dtype=float)
+    if source_type == "3yr_avg":
+        # Conservative effective-n per MIT reviewer's bound
+        n_eff = np.maximum((n - 1) / 3.0, 3.0)
+        return np.maximum(n_eff - 2.0, 1.0)
+    return np.maximum(n - 2.0, 1.0)
+
+
+def pearson_pvalues_vectorized(
+    r: np.ndarray,
+    n: np.ndarray,
+    source_type: str = "annual",
+) -> np.ndarray:
+    """Two-tailed Pearson p-values from arrays of (r, n), source-type-aware.
+
+    n is the segment length used to compute each correlation. df is
+    derived from (n, source_type) via ``effective_df_for_source_type()``
+    to honor the residual-autocorrelation adjustment for FAOSTAT
+    ``3yr_avg`` indicators (#364).
+
+    Vectorised over numpy arrays for performance — applied to the full
+    survivor set at consolidation time, not per (start_a, start_b) pair.
+
+    ``source_type`` defaults to ``"annual"`` so existing WB-only callers
+    (which never pass the arg) see unchanged behavior.
     """
     n = np.asarray(n, dtype=float)
     r = np.asarray(r, dtype=float)
     # Clip to avoid division by zero at |r| == 1
     r_safe = np.clip(r, -0.9999999, 0.9999999)
-    df = np.maximum(n - 2.0, 1.0)
+    df = effective_df_for_source_type(n, source_type)
     t = r_safe * np.sqrt(df / (1.0 - r_safe ** 2))
     # Two-tailed: P(|T| >= |t|) where T ~ Student-t(df)
     # 2 * (1 - cdf(|t|, df)) is equivalent to 2 * sf(|t|, df) and avoids
@@ -208,6 +251,27 @@ def run_pipeline():
     indicator_df, countries_df = load_data()
     country_name_to_id = {row["name_1"]: row["id"] for _, row in countries_df.iterrows()}
 
+    # Detect source_type for HAC-aware p-values (#364). FAOSTAT writes
+    # this column per row (always same value for one indicator since
+    # source_type is indicator-wide); WB does not write the column and
+    # all its indicators are single-year direct observations, so we
+    # default to ``annual`` which preserves pre-#364 behavior.
+    if "source_type" in indicator_df.columns and not indicator_df.empty:
+        unique_types = indicator_df["source_type"].dropna().unique()
+        if len(unique_types) == 1:
+            indicator_source_type = str(unique_types[0])
+        else:
+            # Mixed source_types within one indicator — shouldn't happen
+            # post-F4 dedup, but be defensive. Pick the conservative one
+            # (3yr_avg triggers effective-n penalty; annual is permissive).
+            indicator_source_type = "3yr_avg" if "3yr_avg" in unique_types else "annual"
+        logging.info(
+            f"Indicator {INDICATOR_ID} source_type={indicator_source_type!r} "
+            f"— p-values will use {'HAC-adjusted' if indicator_source_type == '3yr_avg' else 'standard'} df"
+        )
+    else:
+        indicator_source_type = "annual"
+
     # 2. Load Indicator Map
     indicator_map = load_indicator_map(S3_BUCKET)
     indicator_numeric_id = indicator_map.get(INDICATOR_ID)
@@ -221,7 +285,12 @@ def run_pipeline():
     logging.info(f"Successfully preprocessed data for {len(preprocessed_data)} countries.")
 
     # 4. Find and save SDCIs using the new parallel, checkpointing method
-    find_and_save_sdcis_parallel(preprocessed_data, country_name_to_id, indicator_numeric_id)
+    find_and_save_sdcis_parallel(
+        preprocessed_data,
+        country_name_to_id,
+        indicator_numeric_id,
+        source_type=indicator_source_type,
+    )
 
     logging.info(f"--- Job for Indicator {INDICATOR_ID}, Country {COUNTRY_A_NAME} completed successfully. ---")
 
@@ -338,9 +407,18 @@ def delete_s3_prefix(bucket: str, prefix: str):
         s3_client.delete_objects(Bucket=bucket, Delete={'Objects': keys_to_delete})
         logging.info(f"Deleted the final batch of {len(keys_to_delete)} temporary files.")
 
-def find_and_save_sdcis_parallel(preprocessed_data: list, country_name_to_id: dict, indicator_numeric_id: int):
+def find_and_save_sdcis_parallel(
+    preprocessed_data: list,
+    country_name_to_id: dict,
+    indicator_numeric_id: int,
+    source_type: str = "annual",
+):
     """
     Orchestrates the parallel processing of country pairs with checkpointing and robust cleanup.
+
+    ``source_type`` is passed through to the BH-FDR p-value computation so
+    FAOSTAT 3yr_avg indicators get HAC-adjusted (effective-n) p-values
+    per #364. Defaults to "annual" for backward-compat with WB-only runs.
     """
     country_a_data = next((c for c in preprocessed_data if c["country"] == COUNTRY_A_NAME), None)
     if not country_a_data:
@@ -434,11 +512,13 @@ def find_and_save_sdcis_parallel(preprocessed_data: list, country_name_to_id: di
             pvals = pearson_pvalues_vectorized(
                 final_df['correlation'].values,
                 final_df['length'].values,
+                source_type=source_type,
             )
             survives = bh_fdr_mask(pvals, BH_FDR_ALPHA)
             final_df = final_df.loc[survives].reset_index(drop=True)
             logging.info(
-                f"BH FDR (alpha={BH_FDR_ALPHA}): {len(final_df)}/{n_before} "
+                f"BH FDR (alpha={BH_FDR_ALPHA}, source_type={source_type!r}): "
+                f"{len(final_df)}/{n_before} "
                 f"SDCIs survived multiple-testing correction"
             )
 
