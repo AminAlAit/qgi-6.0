@@ -271,10 +271,24 @@ def extract_indicator(
     QGI country IDs. Returns a DataFrame with columns:
     ``(country_id, country_name, year, value)``.
 
-    ``indicator_spec`` must have ``item_code`` and ``element_code`` (ints).
+    ``indicator_spec`` must have item + element codes. Both short
+    (``item_code`` / ``element_code``) and XLSX-native long
+    (``fao_item_code`` / ``fao_element_code``) keys are accepted —
+    dispatcher pass-through preserves the XLSX column names verbatim,
+    so the long form is what arrives in practice. The short form is
+    retained for hand-authored smoke tests and legacy payloads.
     """
-    item_code = int(indicator_spec["item_code"])
-    element_code = int(indicator_spec["element_code"])
+    def _coerce(spec: dict, *candidates: str) -> int:
+        for key in candidates:
+            if key in spec and spec[key] is not None:
+                return int(spec[key])
+        raise KeyError(
+            f"Indicator {spec.get('id_string','?')!r} missing required "
+            f"FAOSTAT code: tried {candidates}. Keys present: {list(spec)}"
+        )
+
+    item_code = _coerce(indicator_spec, "item_code", "fao_item_code")
+    element_code = _coerce(indicator_spec, "element_code", "fao_element_code")
 
     subset = df_domain[
         (df_domain["Item Code"] == item_code)
