@@ -529,7 +529,7 @@ def main():
     print("\nComputing baselines...")
     compute_baselines(df, args.bucket, s3_client)
 
-    print("\n✓ Done!")
+    print("\nDone.")  # plain ASCII so Windows cp1252 consoles can encode it
 
 
 if __name__ == '__main__':
