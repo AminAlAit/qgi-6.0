@@ -1662,15 +1662,20 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
+          # NOTE: no ``external_location`` here. QGI-Lambda-Workgroup has
+          # EnforceWorkGroupConfiguration=true which rejects CTAS
+          # submissions that set their own output location. Let Athena
+          # write the staging table into the workgroup's default
+          # location (same as 5b.4 Seed CTAS for the recipes table).
+          # Cleanup is handled by the 5b.10a-drop state which runs
+          # DROP TABLE IF EXISTS before the CREATE.
           QueryString = join("\n", [
             "CREATE TABLE ${var.glue_database_name}.pair_windows_staging",
             "WITH (",
             "  format = 'PARQUET',",
             "  write_compression = 'SNAPPY',",
-            "  external_location = 's3://${var.data_lake_bucket_name}/tmp/pair-windows-staging/',",
             "  partitioned_by = ARRAY['country_a_id']",
-            ")",
-            "AS",
+            ") AS",
             "SELECT country_b_id, length, start_year_a, start_year_b,",
             "       indicator_count, avg_correlation, pattern_power_score,",
             "       country_a_id",
@@ -1682,7 +1687,7 @@ resource "aws_sfn_state_machine" "pipeline" {
             "         ) AS rn",
             "  FROM ${var.glue_database_name}.patterns",
             ")",
-            "WHERE rn <= 200;",
+            "WHERE rn <= 200",
           ])
           WorkGroup             = var.athena_workgroup_name
           QueryExecutionContext = { Database = var.glue_database_name }
