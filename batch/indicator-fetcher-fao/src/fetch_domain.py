@@ -290,9 +290,19 @@ def extract_indicator(
     item_code = _coerce(indicator_spec, "item_code", "fao_item_code")
     element_code = _coerce(indicator_spec, "element_code", "fao_element_code")
 
+    # Compare as strings. FAOSTAT item codes are a mix of pure ints
+    # ("21010") and int-with-letter-suffix ("210401M", "210400TSUB"),
+    # so pandas loads the column as `object` dtype. An `int == object`
+    # comparison silently returns all-False rather than raising, which
+    # bit us during the #241 Phase B smoke test (every indicator looked
+    # like "0 rows matched"). Coercing both sides to str gives reliable
+    # equality and will still work if we later add string-coded
+    # indicators in the catalog.
+    item_code_s = str(item_code)
+    element_code_s = str(element_code)
     subset = df_domain[
-        (df_domain["Item Code"] == item_code)
-        & (df_domain["Element Code"] == element_code)
+        (df_domain["Item Code"].astype(str) == item_code_s)
+        & (df_domain["Element Code"].astype(str) == element_code_s)
     ].copy()
 
     if subset.empty:
@@ -320,7 +330,25 @@ def extract_indicator(
 
     subset["country_id"] = subset["_qgi"].apply(lambda x: x["qgi_country_id"])
     subset["country_name"] = subset["_qgi"].apply(lambda x: x["qgi_name"])
-    subset = subset.rename(columns={"Year": "year", "Value": "value"})
+
+    # Year normalization.
+    #
+    # FAOSTAT domains mix two year encodings:
+    #   * single year: ``Year`` = "2023", ``Year Code`` = 2023
+    #   * 3-year average (FS, some others): ``Year`` = "2000-2002"
+    #     (range string, not int-castable), ``Year Code`` = 20002002
+    #     (concat of start+end).
+    # We use ``Year Code`` as the authoritative numeric year because
+    # it's always integer-castable. For ranges we take the END year
+    # (the last 4 digits) — that matches FAOSTAT's convention of
+    # labelling 3-year averages by their terminal year, and keeps
+    # the Parquet partition layout (``year=YYYY``) stable across
+    # single-year and range indicators.
+    def _end_year_from_code(yc):
+        s = str(int(yc))  # "20002002" or "2023"
+        return int(s[-4:])
+    subset["year"] = subset["Year Code"].apply(_end_year_from_code)
+    subset = subset.rename(columns={"Value": "value"})
     return subset[["country_id", "country_name", "year", "value"]]
 
 
