@@ -1126,14 +1126,23 @@ resource "aws_sfn_state_machine" "pipeline" {
       }
 
       # -----------------------------------------------------------------
-      # #175: Mode routing — decoupled pipeline supports three run modes.
+      # #175: Mode routing — decoupled pipeline supports four run modes.
       #
-      # Input: {"mode": "full"|"recipes_only"|"dashboards_only",
+      # Input: {"mode": "full"|"recipes_only"|"post_recipes"|"dashboards_only",
       #         "force_full_run": bool (optional, default false)}
       #
       # "full" (default): read manifest → completer → SCDI → patterns → recipes → report
-      # "recipes_only":   skip phases 1-4, jump to 5b (recipe engine)
-      # "dashboards_only": just regenerate the 3 dashboard JSONs from current recipes
+      # "recipes_only":   skip phases 1-4, jump to 5b.1 (drop + rebuild recipes table)
+      # "post_recipes":   skip everything up to 5b.5 — assume the recipes table is
+      #                   already fully populated (e.g., previous run died at 5b.7
+      #                   stub Lambda but 5b.5 Map completed). Starts at 5b.6 Finalize
+      #                   and chains naturally through 5b.7 → 5b.8 → 5b.9 → 5b.10 →
+      #                   5c MSCK → 6 Ops Report → Complete. Total wall time ~3-5 min.
+      #                   Added 2026-04-20 after #241 Phase B cycle burned 70-min
+      #                   full re-runs to resume past 5b.5.
+      # "dashboards_only": legacy shortcut — just runs 5b.6 Finalize then 6 Ops Report,
+      #                   skipping 5b.7-10 generators + 5c MSCK. Kept for back-compat
+      #                   but most resume scenarios want "post_recipes" instead.
       # -----------------------------------------------------------------
       "Route by Mode" = {
         Type = "Choice"
@@ -1142,6 +1151,11 @@ resource "aws_sfn_state_machine" "pipeline" {
             Variable     = "$.mode"
             StringEquals = "recipes_only"
             Next         = "5b.1. Drop Recipes Table"
+          },
+          {
+            Variable     = "$.mode"
+            StringEquals = "post_recipes"
+            Next         = "5b.6. Finalize"
           },
           {
             Variable     = "$.mode"
