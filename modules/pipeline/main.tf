@@ -1482,7 +1482,16 @@ resource "aws_sfn_state_machine" "pipeline" {
         # A cleanup Lambda (Catch → StopQueryExecution on survivors)
         # can be added later if the zombie cost is material.
         ToleratedFailurePercentage = 0
-        ResultPath                 = "$.map_results"
+        # #241 Phase B full-pipeline run (2026-04-20): the default
+        # Map ResultPath of "$.map_results" aggregates all 214 per-
+        # country iteration outputs (each containing the full Athena
+        # QueryExecution objects from Drop Partition + Run INSERT,
+        # ~2-5KB per iteration × 214 × 2 outputs ≈ 1-2MB) into the
+        # SF state payload, which exceeds the 256KB service limit.
+        # Downstream 5b.6. Finalize does not read these per-country
+        # outputs (only uses $.recipe_list.partitions_total). Drop
+        # them via ResultPath: null so the payload stays bounded.
+        ResultPath                 = null
         Next                       = "5b.6. Finalize"
       }
 
