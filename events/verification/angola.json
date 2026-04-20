@@ -1,378 +1,338 @@
-{
-  "country": "Angola",
-  "verified_at": "2026-04-19",
-  "agent": "claude-sonnet-4-6 + WebSearch",
-  "total_events": 50,
-  "summary": {
-    "VERIFIED": 43,
-    "UNVERIFIED": 4,
-    "FALSE": 3
+[
+  {
+    "year": 1954,
+    "title": "PLUA Founded â€” First Underground Independence Party",
+    "verdict": "FALSE",
+    "reason": "PLUA (PLUAA) was founded in 1953 by Viriato da Cruz and Matias Miguéis, not 1954. Year off by 1 = FALSE.",
+    "source": "https://en.wikipedia.org/wiki/Party_of_the_United_Struggle_for_Africans_in_Angola"
   },
-  "false_rate_pct": 6.0,
-  "results": [
-    {
-      "year": 1954,
-      "title": "PLUA Founded — First Underground Independence Party",
-      "status": "FALSE",
-      "source": "https://en.wikipedia.org/wiki/Party_of_the_United_Struggle_for_Africans_in_Angola",
-      "note": "PLUA (PLUAA) was founded in 1953 by Viriato da Cruz and Matias Miguéis, not 1954. Year off by 1 = FALSE."
-    },
-    {
-      "year": 1956,
-      "title": "MPLA Founded in Luanda",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/MPLA",
-      "note": "MPLA founded December 10, 1956, from merger of PLUAA and PCA. Agostinho Neto was president but Viriato da Cruz was Secretary-General; event description slightly overstates Neto's founding role but year and core facts correct."
-    },
-    {
-      "year": 1958,
-      "title": "UPA Founded — Bakongo Nationalist Movement",
-      "status": "FALSE",
-      "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_of_Angola",
-      "note": "UPA was not founded in 1958. The predecessor UPNA was founded in 1954; the 1958 event was a renaming from UPNA to UPA to broaden ethnic appeal. Year and framing are materially wrong — founding date is 1954."
-    },
-    {
-      "year": 1961,
-      "title": "Luanda Prison Attack and Bakongo Uprising Launch Armed Struggle",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence",
-      "note": "February 4 prison attack confirmed; March 15 northern uprising confirmed. Casualty estimates (20,000–50,000 Africans) and 50,000 Portuguese troops consistent with sources."
-    },
-    {
-      "year": 1963,
-      "title": "Gulf Oil Begins Offshore Exploration in Cabinda",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "Gulf Oil geological surveys began in 1954; first offshore discovery was in 1966 (Malongo Field). A 1963 exploration phase is plausible but no specific sourced event for that year found; the event description conflates exploration start with discovery."
-    },
-    {
-      "year": 1966,
-      "title": "UNITA Founded by Jonas Savimbi",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/UNITA",
-      "note": "UNITA founded March 13, 1966 at Muangai, Moxico province by Savimbi. Maoist ideology and China training confirmed."
-    },
-    {
-      "year": 1967,
-      "title": "Gulf Oil Strikes Commercial Oil in Cabinda",
-      "status": "FALSE",
-      "source": "https://angola.chevron.com/en/who-we-are/our-history-in-angola",
-      "note": "First offshore discovery was in 1966 (Malongo Field) and first oil production was 1968, not 1967. Year is off and facts don't align precisely."
-    },
-    {
-      "year": 1971,
-      "title": "Commercial Oil Production Begins in Cabinda",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "First oil was produced in 1968, not 1971. Commercial scale production expanded progressively; 1971 as start of commercial production is not confirmed. Likely a year error but exact scale-up date is uncertain."
-    },
-    {
-      "year": 1974,
-      "title": "Carnation Revolution Triggers Angolan Decolonization",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Carnation_Revolution",
-      "note": "April 25, 1974 coup date confirmed; MFA overthrew Estado Novo; Angola granted independence 1975."
-    },
-    {
-      "year": 1975,
-      "title": "Alvor Agreement Signed — Independence Framework",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Alvor_Agreement",
-      "note": "Signed January 15, 1975; set November 11, 1975 independence date; power-sharing framework collapsed into civil war."
-    },
-    {
-      "year": 1975,
-      "title": "Civil War Erupts — Cuban and South African Military Interventions",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola",
-      "note": "Operation Carlota (Cuba for MPLA) and Operation Savannah (South Africa for UNITA/FNLA) confirmed; Cuban intervention decisive in halting SADF advance."
-    },
-    {
-      "year": 1975,
-      "title": "Angola Declares Independence Under MPLA",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence",
-      "note": "MPLA declared People's Republic of Angola on November 11, 1975; Agostinho Neto as first president confirmed."
-    },
-    {
-      "year": 1976,
-      "title": "MPLA Establishes One-Party Marxist-Leninist State",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/MPLA",
-      "note": "MPLA formalized one-party Marxist-Leninist state; FNLA militarily crushed by early 1976 with Cuban support confirmed."
-    },
-    {
-      "year": 1977,
-      "title": "Nito Alves Coup Attempt and Post-Coup Massacres",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1977_Angolan_coup_attempt",
-      "note": "May 27, 1977 coup attempt confirmed; thousands killed in purges confirmed (estimates range 2,000–70,000). MPLA First Congress formalization confirmed."
-    },
-    {
-      "year": 1978,
-      "title": "Cassinga Massacre — South African Paratroopers Kill 600",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Battle_of_Cassinga",
-      "note": "May 4, 1978 confirmed; approximately 759 killed (165 men, 294 women, 300 children) — '600+' figure broadly consistent; SWAPO refugee/military camp confirmed."
-    },
-    {
-      "year": 1977,
-      "title": "Nationalization of Banks and Major Industries",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Angola",
-      "note": "MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation."
-    },
-    {
-      "year": 1979,
-      "title": "Agostinho Neto Dies; Dos Santos Becomes President",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Agostinho_Neto",
-      "note": "Neto died September 10, 1979 in Moscow from cancer; dos Santos succeeded him — all confirmed."
-    },
-    {
-      "year": 1981,
-      "title": "Operation Protea — South Africa's Largest Angola Incursion",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Operation_Protea",
-      "note": "Operation Protea launched August 23, 1981; up to 5,000 SADF troops in Cunene province confirmed."
-    },
-    {
-      "year": 1985,
-      "title": "Reagan Doctrine Formalizes US Military Aid to UNITA",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Reagan_Doctrine",
-      "note": "Clark Amendment repealed 1985; US aid began flowing; Stinger missiles provided in 1986 (event says 1985 — aid approved 1985, Stingers delivered 1986, acceptable). $13 million initial figure is plausible for 1985 tranche."
-    },
-    {
-      "year": 1987,
-      "title": "Battle of Cuito Cuanavale — Largest Battle in Africa Since WWII",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Battle_of_Cuito_Cuanavale",
-      "note": "Battle ran August 14, 1987 – March 23, 1988; largest land battle on African soil since WWII confirmed; Cuba deployed modern weapons; battle brought South Africa to negotiating table confirmed."
-    },
-    {
-      "year": 1988,
-      "title": "New York Accords — Framework for Regional Peace",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)",
-      "note": "Signed December 22, 1988; Angola, Cuba, South Africa; US mediation; Cuban withdrawal timeline confirmed."
-    },
-    {
-      "year": 1990,
-      "title": "MPLA Abandons Marxism-Leninism and Begins Peace Talks",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/MPLA",
-      "note": "MPLA Third Congress December 1990; abandonment of Marxism-Leninism and endorsement of social democracy confirmed; Bicesse talks followed."
-    },
-    {
-      "year": 1991,
-      "title": "Bicesse Accords End First Phase of Civil War",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Bicesse_Accords",
-      "note": "Signed May 31, 1991 in Lisbon (not Portugal broadly); ceasefire, force integration, multiparty elections all confirmed."
-    },
-    {
-      "year": 1992,
-      "title": "Angola's First Multiparty Elections — MPLA Wins",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1992_Angolan_general_election",
-      "note": "September 29–30, 1992 elections confirmed; MPLA won parliamentary vote; Halloween Massacre (October 30–31) confirmed; thousands of UNITA members killed."
-    },
-    {
-      "year": 1993,
-      "title": "Battle of Huambo and UN Sanctions on UNITA",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/55_Day_War",
-      "note": "55-day battle Jan 9–Mar 6, 1993; ~10,000–12,000 killed confirmed; UN Resolution 864 arms/oil/financial sanctions on UNITA confirmed; Clinton recognition of MPLA confirmed."
-    },
-    {
-      "year": 1994,
-      "title": "Lusaka Protocol — Second Peace Agreement Signed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Lusaka_Protocol",
-      "note": "Signed November 20, 1994; UNAVEM III peacekeeping confirmed. Diamond revenue estimates consistent with sources."
-    },
-    {
-      "year": 1994,
-      "title": "Land Mine Crisis — Angola Among World's Most Contaminated Countries",
-      "status": "VERIFIED",
-      "source": "https://www.icbl.org/en/landmine-monitor/2002/angola",
-      "note": "Angola widely recognized as one of world's most mine-affected countries in the 1990s; 10–15 million estimate and civilian casualties confirmed in multiple humanitarian sources."
-    },
-    {
-      "year": 1996,
-      "title": "UNITA Blood Diamonds Fund War; Savimbi Rejects Peace",
-      "status": "VERIFIED",
-      "source": "https://www.globalwitness.org/en/campaigns/conflict-minerals/conflict-diamonds/",
-      "note": "UNITA diamond revenues ($600M–$1B annually) confirmed; Savimbi declined vice-presidential post confirmed; UN Secretary-General warnings about peace collapse documented."
-    },
-    {
-      "year": 1998,
-      "title": "Civil War Resumes — Third Phase Begins",
-      "status": "VERIFIED",
-      "source": "https://www.hrw.org/reports/1999/angola/",
-      "note": "Full-scale civil war resumed December 1998; MPLA declared UNITA terrorist organization; Angola intervened in DRC supporting Kabila confirmed."
-    },
-    {
-      "year": 2000,
-      "title": "Fowler Report Exposes UNITA Diamond and Arms Networks",
-      "status": "VERIFIED",
-      "source": "https://www.un.org/ga/search/view_doc.asp?symbol=S/2000/203",
-      "note": "Fowler Report (UN Panel of Experts) published 2000; named specific individuals; catalyst for Kimberley Process (launched 2003, not 2001 as stated — minor inaccuracy but within acceptable range)."
-    },
-    {
-      "year": 2002,
-      "title": "Savimbi Killed — Civil War Ends with Luena Memorandum",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Jonas_Savimbi",
-      "note": "Savimbi killed February 22, 2002 in Moxico; Luena MOU signed April 4, 2002; ~85,000 UNITA fighters demobilized — all confirmed."
-    },
-    {
-      "year": 2004,
-      "title": "China Grants $2 Billion Oil-Backed Credit Line",
-      "status": "VERIFIED",
-      "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation",
-      "note": "$2 billion Eximbank credit line agreed in March 2004; oil-backed; avoided IMF conditionality confirmed; Block 17 deepwater expansion also confirmed."
-    },
-    {
-      "year": 2003,
-      "title": "Post-War Reconstruction and Chinese Infrastructure Boom Begins",
-      "status": "VERIFIED",
-      "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation",
-      "note": "Post-war reconstruction with Chinese financing and rejection of IMF structural adjustment confirmed; UNITA reconstitution as civilian party confirmed."
-    },
-    {
-      "year": 2005,
-      "title": "Cabinda Separatist Ceasefire and Memorandum of Understanding",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "The MOU was signed in August 2006, not 2005. Year is off by 1 but the description says 'August 2006' internally, creating an inconsistency with the year field. If year field governs, this is borderline; the body correctly states 2006 but the year field says 2005."
-    },
-    {
-      "year": 2006,
-      "title": "Angola Joins OPEC as 12th Member",
-      "status": "VERIFIED",
-      "source": "https://www.opec.org/opec_web/en/about_us/25.htm",
-      "note": "Angola approved for OPEC in 2006, formally joined January 1, 2007 as 12th member confirmed; GDP growth >18% in 2006 confirmed."
-    },
-    {
-      "year": 2008,
-      "title": "Angola Reaches Peak Oil Production of 1.9 Million Barrels Per Day",
-      "status": "VERIFIED",
-      "source": "https://www.eia.gov/international/content/analysis/countries_long/Angola/angola.pdf",
-      "note": "Peak of ~1.9 million bpd in 2008 confirmed; MPLA won ~82% in 2008 parliamentary elections confirmed; IMF standby arrangement sought after oil price collapse confirmed."
-    },
-    {
-      "year": 2009,
-      "title": "New Constitution Centralizes Power in the Presidency",
-      "status": "VERIFIED",
-      "source": "https://www.constituteproject.org/constitution/Angola_2010.pdf",
-      "note": "Constitution adopted January 21, 2010 (drafted 2009); top of winning party list becomes president automatically confirmed; IMF $1.4 billion standby arrangement confirmed."
-    },
-    {
-      "year": 2011,
-      "title": "Arab Spring Inspires Youth Protests; Activists Arrested",
-      "status": "VERIFIED",
-      "source": "https://www.hrw.org/world-report/2012/country-chapters/angola",
-      "note": "Arab Spring-inspired protests in Luanda confirmed; 17 rap musicians/activists arrested March 7, 2011 confirmed; social media organization confirmed."
-    },
-    {
-      "year": 2012,
-      "title": "Isabel dos Santos Appointed to Sonangol Board",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "Isabel dos Santos was appointed as Sonangol CEO/Chair in June 2016, not 2012. In 2012 she was already a prominent businesswoman but the Sonangol appointment was in 2016. Year is materially wrong — however keeping UNVERIFIED rather than FALSE as she may have had an earlier board role; no source confirms a 2012 board appointment."
-    },
-    {
-      "year": 2014,
-      "title": "Oil Price Crash Triggers Severe Fiscal Crisis",
-      "status": "VERIFIED",
-      "source": "https://www.imf.org/en/Publications/CR/Issues/2019/01/14/Angola-2018-Article-IV-Consultation",
-      "note": "Oil price collapsed from $100+ to <$50 in H2 2014; kwanza devaluation; fiscal crisis confirmed."
-    },
-    {
-      "year": 2015,
-      "title": "Thirty-Six Youth Activists Arrested for Book Club",
-      "status": "VERIFIED",
-      "source": "https://www.amnesty.org/en/latest/news/2016/06/angola-book-club-activists-acquitted/",
-      "note": "Activists arrested June 2015 for reading Gene Sharp text; charged with plotting coup. Number varies across sources (15–17 core activists plus others); '36' is a higher bound that some sources cite. Convictions overturned 2016 confirmed."
-    },
-    {
-      "year": 2016,
-      "title": "Angola Enters Technical Recession — Oil Dependency Exposed",
-      "status": "VERIFIED",
-      "source": "https://www.imf.org/en/Publications/CR/Issues/2017/11/29/Angola-2017-Article-IV-Consultation-and-Request-for-an-Extended-Arrangement-under-the-45443",
-      "note": "Angola entered recession 2016; first since end of civil war confirmed; dos Santos announced non-candidacy for 2017 confirmed."
-    },
-    {
-      "year": 2017,
-      "title": "Joao Lourenco Elected President — Dos Santos Steps Down After 38 Years",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Louren%C3%A7o",
-      "note": "MPLA won August 23, 2017 elections; Lourenco sworn in September 26, 2017; dos Santos ruled 38 years confirmed."
-    },
-    {
-      "year": 2018,
-      "title": "Anti-Corruption Campaign: Isabel dos Santos Removed from Sonangol",
-      "status": "VERIFIED",
-      "source": "https://www.transparency.org/en/countries/angola",
-      "note": "Lourenco removed Isabel dos Santos from Sonangol (fired November 2017, confirmed in first acts); IMF Extended Fund Facility ~$3.7 billion confirmed."
-    },
-    {
-      "year": 2020,
-      "title": "Luanda Leaks Expose Isabel dos Santos's $2 Billion Asset Extraction",
-      "status": "VERIFIED",
-      "source": "https://www.icij.org/investigations/luanda-leaks/",
-      "note": "ICIJ published Luanda Leaks January 2020; $2 billion empire confirmed; European banks/professional services confirmed; COVID-19 and oil price collapse in 2020 confirmed."
-    },
-    {
-      "year": 2020,
-      "title": "Angola Restructures Chinese Debt Amid COVID-19 Crisis",
-      "status": "VERIFIED",
-      "source": "https://www.chathamhouse.org/2022/12/response-debt-distress-africa-and-role-china/02-case-studies-chinese-lending-africa",
-      "note": "Three-year moratorium on principal payments (May 2020–May 2023) confirmed; G20 DSSI participation confirmed; COVID-19 lockdown confirmed."
-    },
-    {
-      "year": 2021,
-      "title": "Southern Angola Worst Drought in 40 Years",
-      "status": "VERIFIED",
-      "source": "https://www.wfp.org/news/drought-south-western-angola-drives-severe-hunger",
-      "note": "Worst drought since 1981 (40 years) in Huila, Namibe, Cunene confirmed; 1.3–1.58 million affected; WFP emergency assistance confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "MPLA Narrowly Wins Most Contested Election Since Independence",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2022_Angolan_general_election",
-      "note": "August 24, 2022 elections; MPLA ~51%, UNITA ~44% under Adalberto Costa Junior confirmed; constitutional court ruling accepted; most competitive result in post-war history confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Russia-Ukraine War Windfall and OPEC Tensions",
-      "status": "VERIFIED",
-      "source": "https://www.reuters.com/business/energy/angola-quit-opec-2023-12-21/",
-      "note": "Oil price surge from Ukraine war benefiting Angola confirmed; OPEC quota tensions leading to December 2023 exit confirmed."
-    },
-    {
-      "year": 2023,
-      "title": "Angola Withdraws from OPEC — First African Member to Exit",
-      "status": "VERIFIED",
-      "source": "https://www.aljazeera.com/news/2023/12/21/angola-to-leave-opec-over-disagreement-on-oil-production-quotas",
-      "note": "Angola announced exit December 2023, effective January 1, 2024; first African member to exit; quota dispute over 1.11M bpd ceiling confirmed."
-    },
-    {
-      "year": 2023,
-      "title": "Lobito Trans-African Corridor Project Launched with US-EU Backing",
-      "status": "VERIFIED",
-      "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/09/fact-sheet-the-lobito-trans-africa-corridor/",
-      "note": "US, EU, AfDB support for Lobito Corridor announced September 2023; DRC-Angola Atlantic link confirmed; framed as counter to Chinese infrastructure confirmed."
-    },
-    {
-      "year": 2024,
-      "title": "Angola-US Strategic Partnership Deepens — New Energy Geopolitics",
-      "status": "VERIFIED",
-      "source": "https://www.state.gov/u-s-relations-with-angola/",
-      "note": "Angola-US strategic partnership deepening around Lobito Corridor and critical minerals confirmed; AfDB Annual Meetings in Luanda 2024 confirmed; UNITA under Costa Junior building opposition capacity confirmed."
-    }
-  ]
-}
+  {
+    "year": 1956,
+    "title": "MPLA Founded in Luanda",
+    "verdict": "TRUE",
+    "reason": "MPLA founded December 10, 1956, from merger of PLUAA and PCA. Agostinho Neto was president but Viriato da Cruz was Secretary-General; event description slightly overstates Neto's founding role but year and core facts correct.",
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1958,
+    "title": "UPA Founded â€” Bakongo Nationalist Movement",
+    "verdict": "FALSE",
+    "reason": "UPA was not founded in 1958. The predecessor UPNA was founded in 1954; the 1958 event was a renaming from UPNA to UPA to broaden ethnic appeal. Year and framing are materially wrong — founding date is 1954.",
+    "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_of_Angola"
+  },
+  {
+    "year": 1961,
+    "title": "Luanda Prison Attack and Bakongo Uprising Launch Armed Struggle",
+    "verdict": "TRUE",
+    "reason": "February 4 prison attack confirmed; March 15 northern uprising confirmed. Casualty estimates (20,000–50,000 Africans) and 50,000 Portuguese troops consistent with sources.",
+    "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence"
+  },
+  {
+    "year": 1966,
+    "title": "UNITA Founded by Jonas Savimbi",
+    "verdict": "TRUE",
+    "reason": "UNITA founded March 13, 1966 at Muangai, Moxico province by Savimbi. Maoist ideology and China training confirmed.",
+    "source": "https://en.wikipedia.org/wiki/UNITA"
+  },
+  {
+    "year": 1967,
+    "title": "Gulf Oil Strikes Commercial Oil in Cabinda",
+    "verdict": "FALSE",
+    "reason": "First offshore discovery was in 1966 (Malongo Field) and first oil production was 1968, not 1967. Year is off and facts don't align precisely.",
+    "source": "https://angola.chevron.com/en/who-we-are/our-history-in-angola"
+  },
+  {
+    "year": 1974,
+    "title": "Carnation Revolution Triggers Angolan Decolonization",
+    "verdict": "TRUE",
+    "reason": "April 25, 1974 coup date confirmed; MFA overthrew Estado Novo; Angola granted independence 1975.",
+    "source": "https://en.wikipedia.org/wiki/Carnation_Revolution"
+  },
+  {
+    "year": 1975,
+    "title": "Alvor Agreement Signed â€” Independence Framework",
+    "verdict": "TRUE",
+    "reason": "Signed January 15, 1975; set November 11, 1975 independence date; power-sharing framework collapsed into civil war.",
+    "source": "https://en.wikipedia.org/wiki/Alvor_Agreement"
+  },
+  {
+    "year": 1975,
+    "title": "Civil War Erupts â€” Cuban and South African Military Interventions",
+    "verdict": "TRUE",
+    "reason": "Operation Carlota (Cuba for MPLA) and Operation Savannah (South Africa for UNITA/FNLA) confirmed; Cuban intervention decisive in halting SADF advance.",
+    "source": "https://en.wikipedia.org/wiki/Cuban_intervention_in_Angola"
+  },
+  {
+    "year": 1975,
+    "title": "Angola Declares Independence Under MPLA",
+    "verdict": "TRUE",
+    "reason": "MPLA declared People's Republic of Angola on November 11, 1975; Agostinho Neto as first president confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Angolan_War_of_Independence"
+  },
+  {
+    "year": 1976,
+    "title": "MPLA Establishes One-Party Marxist-Leninist State",
+    "verdict": "TRUE",
+    "reason": "MPLA formalized one-party Marxist-Leninist state; FNLA militarily crushed by early 1976 with Cuban support confirmed.",
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1977,
+    "title": "Nito Alves Coup Attempt and Post-Coup Massacres",
+    "verdict": "TRUE",
+    "reason": "May 27, 1977 coup attempt confirmed; thousands killed in purges confirmed (estimates range 2,000–70,000). MPLA First Congress formalization confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1977_Angolan_coup_attempt"
+  },
+  {
+    "year": 1978,
+    "title": "Cassinga Massacre â€” South African Paratroopers Kill 600",
+    "verdict": "TRUE",
+    "reason": "May 4, 1978 confirmed; approximately 759 killed (165 men, 294 women, 300 children) — '600+' figure broadly consistent; SWAPO refugee/military camp confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Cassinga"
+  },
+  {
+    "year": 1977,
+    "title": "Nationalization of Banks and Major Industries",
+    "verdict": "TRUE",
+    "reason": "MPLA nationalizations of banks and industries in the socialist period are well documented; timing consistent with 1975-1977 socialist consolidation.",
+    "source": "https://en.wikipedia.org/wiki/Angola"
+  },
+  {
+    "year": 1979,
+    "title": "Agostinho Neto Dies; Dos Santos Becomes President",
+    "verdict": "TRUE",
+    "reason": "Neto died September 10, 1979 in Moscow from cancer; dos Santos succeeded him — all confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Agostinho_Neto"
+  },
+  {
+    "year": 1981,
+    "title": "Operation Protea â€” South Africa's Largest Angola Incursion",
+    "verdict": "TRUE",
+    "reason": "Operation Protea launched August 23, 1981; up to 5,000 SADF troops in Cunene province confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Operation_Protea"
+  },
+  {
+    "year": 1985,
+    "title": "Reagan Doctrine Formalizes US Military Aid to UNITA",
+    "verdict": "TRUE",
+    "reason": "Clark Amendment repealed 1985; US aid began flowing; Stinger missiles provided in 1986 (event says 1985 — aid approved 1985, Stingers delivered 1986, acceptable). $13 million initial figure is plausible for 1985 tranche.",
+    "source": "https://en.wikipedia.org/wiki/Reagan_Doctrine"
+  },
+  {
+    "year": 1987,
+    "title": "Battle of Cuito Cuanavale â€” Largest Battle in Africa Since WWII",
+    "verdict": "TRUE",
+    "reason": "Battle ran August 14, 1987 – March 23, 1988; largest land battle on African soil since WWII confirmed; Cuba deployed modern weapons; battle brought South Africa to negotiating table confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Cuito_Cuanavale"
+  },
+  {
+    "year": 1988,
+    "title": "New York Accords â€” Framework for Regional Peace",
+    "verdict": "TRUE",
+    "reason": "Signed December 22, 1988; Angola, Cuba, South Africa; US mediation; Cuban withdrawal timeline confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Tripartite_Accord_(1988)"
+  },
+  {
+    "year": 1990,
+    "title": "MPLA Abandons Marxism-Leninism and Begins Peace Talks",
+    "verdict": "TRUE",
+    "reason": "MPLA Third Congress December 1990; abandonment of Marxism-Leninism and endorsement of social democracy confirmed; Bicesse talks followed.",
+    "source": "https://en.wikipedia.org/wiki/MPLA"
+  },
+  {
+    "year": 1991,
+    "title": "Bicesse Accords End First Phase of Civil War",
+    "verdict": "TRUE",
+    "reason": "Signed May 31, 1991 in Lisbon (not Portugal broadly); ceasefire, force integration, multiparty elections all confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Bicesse_Accords"
+  },
+  {
+    "year": 1992,
+    "title": "Angola's First Multiparty Elections â€” MPLA Wins",
+    "verdict": "TRUE",
+    "reason": "September 29–30, 1992 elections confirmed; MPLA won parliamentary vote; Halloween Massacre (October 30–31) confirmed; thousands of UNITA members killed.",
+    "source": "https://en.wikipedia.org/wiki/1992_Angolan_general_election"
+  },
+  {
+    "year": 1993,
+    "title": "Battle of Huambo and UN Sanctions on UNITA",
+    "verdict": "TRUE",
+    "reason": "55-day battle Jan 9–Mar 6, 1993; ~10,000–12,000 killed confirmed; UN Resolution 864 arms/oil/financial sanctions on UNITA confirmed; Clinton recognition of MPLA confirmed.",
+    "source": "https://en.wikipedia.org/wiki/55_Day_War"
+  },
+  {
+    "year": 1994,
+    "title": "Lusaka Protocol â€” Second Peace Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "Signed November 20, 1994; UNAVEM III peacekeeping confirmed. Diamond revenue estimates consistent with sources.",
+    "source": "https://en.wikipedia.org/wiki/Lusaka_Protocol"
+  },
+  {
+    "year": 1994,
+    "title": "Land Mine Crisis â€” Angola Among World's Most Contaminated Countries",
+    "verdict": "TRUE",
+    "reason": "Angola widely recognized as one of world's most mine-affected countries in the 1990s; 10–15 million estimate and civilian casualties confirmed in multiple humanitarian sources.",
+    "source": "https://www.icbl.org/en/landmine-monitor/2002/angola"
+  },
+  {
+    "year": 1996,
+    "title": "UNITA Blood Diamonds Fund War; Savimbi Rejects Peace",
+    "verdict": "TRUE",
+    "reason": "UNITA diamond revenues ($600M–$1B annually) confirmed; Savimbi declined vice-presidential post confirmed; UN Secretary-General warnings about peace collapse documented.",
+    "source": "https://www.globalwitness.org/en/campaigns/conflict-minerals/conflict-diamonds/"
+  },
+  {
+    "year": 1998,
+    "title": "Civil War Resumes â€” Third Phase Begins",
+    "verdict": "TRUE",
+    "reason": "Full-scale civil war resumed December 1998; MPLA declared UNITA terrorist organization; Angola intervened in DRC supporting Kabila confirmed.",
+    "source": "https://www.hrw.org/reports/1999/angola/"
+  },
+  {
+    "year": 2000,
+    "title": "Fowler Report Exposes UNITA Diamond and Arms Networks",
+    "verdict": "TRUE",
+    "reason": "Fowler Report (UN Panel of Experts) published 2000; named specific individuals; catalyst for Kimberley Process (launched 2003, not 2001 as stated — minor inaccuracy but within acceptable range).",
+    "source": "https://www.un.org/ga/search/view_doc.asp?symbol=S/2000/203"
+  },
+  {
+    "year": 2002,
+    "title": "Savimbi Killed â€” Civil War Ends with Luena Memorandum",
+    "verdict": "TRUE",
+    "reason": "Savimbi killed February 22, 2002 in Moxico; Luena MOU signed April 4, 2002; ~85,000 UNITA fighters demobilized — all confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Jonas_Savimbi"
+  },
+  {
+    "year": 2004,
+    "title": "China Grants $2 Billion Oil-Backed Credit Line",
+    "verdict": "TRUE",
+    "reason": "$2 billion Eximbank credit line agreed in March 2004; oil-backed; avoided IMF conditionality confirmed; Block 17 deepwater expansion also confirmed.",
+    "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation"
+  },
+  {
+    "year": 2003,
+    "title": "Post-War Reconstruction and Chinese Infrastructure Boom Begins",
+    "verdict": "TRUE",
+    "reason": "Post-war reconstruction with Chinese financing and rejection of IMF structural adjustment confirmed; UNITA reconstitution as civilian party confirmed.",
+    "source": "https://www.cgdev.org/publication/china-and-angola-close-political-economic-cooperation"
+  },
+  {
+    "year": 2006,
+    "title": "Angola Joins OPEC as 12th Member",
+    "verdict": "TRUE",
+    "reason": "Angola approved for OPEC in 2006, formally joined January 1, 2007 as 12th member confirmed; GDP growth >18% in 2006 confirmed.",
+    "source": "https://www.opec.org/opec_web/en/about_us/25.htm"
+  },
+  {
+    "year": 2008,
+    "title": "Angola Reaches Peak Oil Production of 1.9 Million Barrels Per Day",
+    "verdict": "TRUE",
+    "reason": "Peak of ~1.9 million bpd in 2008 confirmed; MPLA won ~82% in 2008 parliamentary elections confirmed; IMF standby arrangement sought after oil price collapse confirmed.",
+    "source": "https://www.eia.gov/international/content/analysis/countries_long/Angola/angola.pdf"
+  },
+  {
+    "year": 2009,
+    "title": "New Constitution Centralizes Power in the Presidency",
+    "verdict": "TRUE",
+    "reason": "Constitution adopted January 21, 2010 (drafted 2009); top of winning party list becomes president automatically confirmed; IMF $1.4 billion standby arrangement confirmed.",
+    "source": "https://www.constituteproject.org/constitution/Angola_2010.pdf"
+  },
+  {
+    "year": 2011,
+    "title": "Arab Spring Inspires Youth Protests; Activists Arrested",
+    "verdict": "TRUE",
+    "reason": "Arab Spring-inspired protests in Luanda confirmed; 17 rap musicians/activists arrested March 7, 2011 confirmed; social media organization confirmed.",
+    "source": "https://www.hrw.org/world-report/2012/country-chapters/angola"
+  },
+  {
+    "year": 2014,
+    "title": "Oil Price Crash Triggers Severe Fiscal Crisis",
+    "verdict": "TRUE",
+    "reason": "Oil price collapsed from $100+ to <$50 in H2 2014; kwanza devaluation; fiscal crisis confirmed.",
+    "source": "https://www.imf.org/en/Publications/CR/Issues/2019/01/14/Angola-2018-Article-IV-Consultation"
+  },
+  {
+    "year": 2015,
+    "title": "Thirty-Six Youth Activists Arrested for Book Club",
+    "verdict": "TRUE",
+    "reason": "Activists arrested June 2015 for reading Gene Sharp text; charged with plotting coup. Number varies across sources (15–17 core activists plus others); '36' is a higher bound that some sources cite. Convictions overturned 2016 confirmed.",
+    "source": "https://www.amnesty.org/en/latest/news/2016/06/angola-book-club-activists-acquitted/"
+  },
+  {
+    "year": 2016,
+    "title": "Angola Enters Technical Recession â€” Oil Dependency Exposed",
+    "verdict": "TRUE",
+    "reason": "Angola entered recession 2016; first since end of civil war confirmed; dos Santos announced non-candidacy for 2017 confirmed.",
+    "source": "https://www.imf.org/en/Publications/CR/Issues/2017/11/29/Angola-2017-Article-IV-Consultation-and-Request-for-an-Extended-Arrangement-under-the-45443"
+  },
+  {
+    "year": 2017,
+    "title": "Joao Lourenco Elected President â€” Dos Santos Steps Down After 38 Years",
+    "verdict": "TRUE",
+    "reason": "MPLA won August 23, 2017 elections; Lourenco sworn in September 26, 2017; dos Santos ruled 38 years confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Jo%C3%A3o_Louren%C3%A7o"
+  },
+  {
+    "year": 2018,
+    "title": "Anti-Corruption Campaign: Isabel dos Santos Removed from Sonangol",
+    "verdict": "TRUE",
+    "reason": "Lourenco removed Isabel dos Santos from Sonangol (fired November 2017, confirmed in first acts); IMF Extended Fund Facility ~$3.7 billion confirmed.",
+    "source": "https://www.transparency.org/en/countries/angola"
+  },
+  {
+    "year": 2020,
+    "title": "Luanda Leaks Expose Isabel dos Santos's $2 Billion Asset Extraction",
+    "verdict": "TRUE",
+    "reason": "ICIJ published Luanda Leaks January 2020; $2 billion empire confirmed; European banks/professional services confirmed; COVID-19 and oil price collapse in 2020 confirmed.",
+    "source": "https://www.icij.org/investigations/luanda-leaks/"
+  },
+  {
+    "year": 2020,
+    "title": "Angola Restructures Chinese Debt Amid COVID-19 Crisis",
+    "verdict": "TRUE",
+    "reason": "Three-year moratorium on principal payments (May 2020–May 2023) confirmed; G20 DSSI participation confirmed; COVID-19 lockdown confirmed.",
+    "source": "https://www.chathamhouse.org/2022/12/response-debt-distress-africa-and-role-china/02-case-studies-chinese-lending-africa"
+  },
+  {
+    "year": 2021,
+    "title": "Southern Angola Worst Drought in 40 Years",
+    "verdict": "TRUE",
+    "reason": "Worst drought since 1981 (40 years) in Huila, Namibe, Cunene confirmed; 1.3–1.58 million affected; WFP emergency assistance confirmed.",
+    "source": "https://www.wfp.org/news/drought-south-western-angola-drives-severe-hunger"
+  },
+  {
+    "year": 2022,
+    "title": "MPLA Narrowly Wins Most Contested Election Since Independence",
+    "verdict": "TRUE",
+    "reason": "August 24, 2022 elections; MPLA ~51%, UNITA ~44% under Adalberto Costa Junior confirmed; constitutional court ruling accepted; most competitive result in post-war history confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2022_Angolan_general_election"
+  },
+  {
+    "year": 2022,
+    "title": "Russia-Ukraine War Windfall and OPEC Tensions",
+    "verdict": "TRUE",
+    "reason": "Oil price surge from Ukraine war benefiting Angola confirmed; OPEC quota tensions leading to December 2023 exit confirmed.",
+    "source": "https://www.reuters.com/business/energy/angola-quit-opec-2023-12-21/"
+  },
+  {
+    "year": 2023,
+    "title": "Angola Withdraws from OPEC â€” First African Member to Exit",
+    "verdict": "TRUE",
+    "reason": "Angola announced exit December 2023, effective January 1, 2024; first African member to exit; quota dispute over 1.11M bpd ceiling confirmed.",
+    "source": "https://www.aljazeera.com/news/2023/12/21/angola-to-leave-opec-over-disagreement-on-oil-production-quotas"
+  },
+  {
+    "year": 2023,
+    "title": "Lobito Trans-African Corridor Project Launched with US-EU Backing",
+    "verdict": "TRUE",
+    "reason": "US, EU, AfDB support for Lobito Corridor announced September 2023; DRC-Angola Atlantic link confirmed; framed as counter to Chinese infrastructure confirmed.",
+    "source": "https://www.whitehouse.gov/briefing-room/statements-releases/2023/09/09/fact-sheet-the-lobito-trans-africa-corridor/"
+  },
+  {
+    "year": 2024,
+    "title": "Angola-US Strategic Partnership Deepens â€” New Energy Geopolitics",
+    "verdict": "TRUE",
+    "reason": "Angola-US strategic partnership deepening around Lobito Corridor and critical minerals confirmed; AfDB Annual Meetings in Luanda 2024 confirmed; UNITA under Costa Junior building opposition capacity confirmed.",
+    "source": "https://www.state.gov/u-s-relations-with-angola/"
+  }
+]

@@ -22,6 +22,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 import boto3
@@ -36,6 +37,7 @@ REPO_ROOT = SCRIPT_DIR.parent
 LEGACY_EVENTS_DIR = Path(r"/workspace/qgi\qgi-4.0\data\events")
 SONNET_EVENTS_DIR = REPO_ROOT / "data" / "events" / "batches"
 CURATED_EVENTS_DIR = REPO_ROOT / "events" / "curated"
+VERIFICATION_EVENTS_DIR = REPO_ROOT / "events" / "verification"  # #372 — verdict filter
 
 S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"
@@ -174,7 +176,8 @@ def parse_legacy_events(events_dir: Path) -> list:
 
 
 # ─── Parse Sonnet Events ─────────────────────────────────────────────────
-def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> list:
+def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None,
+                        verdict_index: dict | None = None) -> list:
     """Parse Sonnet JSON batch files.
 
     Per #141: when curated_dir is provided AND a `{country}.json` exists there,
@@ -182,8 +185,29 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> l
     been through the E1-E5 cleanup pass and represent the canonical source.
 
     Curated-only files (no batch counterpart) are also ingested directly.
+
+    Per #372: if verdict_index is provided, events matching a (country_stem, year,
+    title_normalized) key with verdict='FALSE' are DROPPED. TRUE and unverdicted
+    events are kept (unverdicted is non-regressive — pipeline works on partial
+    verification coverage).
     """
     events = []
+    verdict_index = verdict_index or {}
+    filter_stats = {'kept_true': 0, 'kept_unverified': 0, 'dropped_false': 0}
+
+    def should_emit(country_stem: str, year: int, title: str) -> bool:
+        """Return True if the event should be emitted (not filtered by verdict=FALSE)."""
+        key = (country_stem, int(year), _normalize_title(title))
+        verdict = verdict_index.get(key)
+        if verdict == 'FALSE':
+            filter_stats['dropped_false'] += 1
+            return False
+        if verdict == 'TRUE':
+            filter_stats['kept_true'] += 1
+        else:
+            filter_stats['kept_unverified'] += 1
+        return True
+
     curated_files = set()
     if curated_dir and curated_dir.exists():
         curated_files = {f.name for f in curated_dir.glob("*.json")}
@@ -209,11 +233,15 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> l
             derived_country = json_file.stem.replace('_', ' ').title()
             try:
                 for entry in _read_json_with_fallback(actual_file):
+                    year = int(entry.get('year', 0))
+                    title = entry.get('title', '')
+                    if not should_emit(json_file.stem, year, title):
+                        continue
                     country_name = entry.get('country') or derived_country
                     events.append({
                         'country_name': country_name,
-                        'year': int(entry.get('year', 0)),
-                        'title': entry.get('title', ''),
+                        'year': year,
+                        'title': title,
                         'description': entry.get('description', ''),
                         'category': entry.get('category', ''),
                         'source': source_label,
@@ -230,11 +258,15 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> l
             derived_country = curated_file.stem.replace('_', ' ').title()
             try:
                 for entry in _read_json_with_fallback(curated_file):
+                    year = int(entry.get('year', 0))
+                    title = entry.get('title', '')
+                    if not should_emit(curated_file.stem, year, title):
+                        continue
                     country_name = entry.get('country') or derived_country
                     events.append({
                         'country_name': country_name,
-                        'year': int(entry.get('year', 0)),
-                        'title': entry.get('title', ''),
+                        'year': year,
+                        'title': title,
                         'description': entry.get('description', ''),
                         'category': entry.get('category', ''),
                         'source': 'sonnet_curated',
@@ -243,6 +275,10 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None) -> l
                 print(f"WARNING: Failed to parse {curated_file.name}: {e}")
 
     print(f"Parsed {len(events)} Sonnet events ({curated_used} curated + {batches_used} raw batches)")
+    if verdict_index:
+        print(f"Verdict filter (#372): {filter_stats['kept_true']} verified TRUE kept, "
+              f"{filter_stats['dropped_false']} FALSE dropped, "
+              f"{filter_stats['kept_unverified']} unverified kept (fallback)")
     return events
 
 
@@ -252,6 +288,81 @@ def _read_json_with_fallback(path: Path) -> list:
         return json.loads(path.read_text(encoding='utf-8'))
     except UnicodeDecodeError:
         return json.loads(path.read_text(encoding='latin-1'))
+
+
+# ─── Verdict Index (#372) ────────────────────────────────────────────────
+def _normalize_title(title) -> str:
+    """Robust title normalization for (year, title) matching across dirs.
+
+    Strips ALL non-word punctuation so verification files that lost unicode chars
+    to replacement chars (U+FFFD) during a prior corrupted write still match their
+    curated counterparts. Verified 100% match rate on Armenia/Jamaica/Afghanistan/
+    Yemen/Taiwan post-fix.
+    """
+    s = str(title or '').lower()
+    s = re.sub(r'[^\w\s]', ' ', s, flags=re.UNICODE)
+    return ' '.join(s.split())
+
+
+def load_verdict_index(verification_dir: Path) -> dict:
+    """Build {(country_file_stem, year, title_normalized): 'TRUE'|'FALSE'} lookup (#372).
+
+    Handles both the post-split normalized schema ({year, title, verdict, reason})
+    AND the pre-split schemas ({status}, {verified}, {verification_status}). Unverified
+    / UNVERIFIED / missing entries are skipped — they stay in the curated/ fallback.
+
+    Files may be flat list or dict-wrapped with events/results key.
+    """
+    index = {}
+    if not verification_dir.exists():
+        print(f"No verification dir at {verification_dir} — verdict filter disabled")
+        return index
+
+    adjud_fields = ('verdict', 'status', 'verification_status', 'verification_verdict', 'verified')
+    true_labels = {'TRUE', 'VERIFIED'}
+    false_labels = {'FALSE'}
+
+    files_loaded = 0
+    for f in sorted(verification_dir.glob("*.json")):
+        try:
+            data = _read_json_with_fallback(f)
+        except (json.JSONDecodeError, UnicodeDecodeError) as e:
+            print(f"WARNING: verdict load failed for {f.name}: {e}")
+            continue
+
+        if isinstance(data, dict):
+            data = data.get('events') or data.get('results') or []
+        if not isinstance(data, list):
+            continue
+
+        for e in data:
+            if not isinstance(e, dict):
+                continue
+            raw_verdict = None
+            for af in adjud_fields:
+                if af in e and e[af] is not None:
+                    raw_verdict = str(e[af]).strip().upper()
+                    break
+            if raw_verdict is None:
+                continue
+            if raw_verdict in true_labels:
+                verdict = 'TRUE'
+            elif raw_verdict in false_labels:
+                verdict = 'FALSE'
+            else:
+                # UNVERIFIED or unknown → skip (fall through to curated/)
+                continue
+
+            year = e.get('year')
+            title_norm = _normalize_title(e.get('title'))
+            if year is not None and title_norm:
+                index[(f.stem, int(year), title_norm)] = verdict
+        files_loaded += 1
+
+    true_n = sum(1 for v in index.values() if v == 'TRUE')
+    false_n = sum(1 for v in index.values() if v == 'FALSE')
+    print(f"Loaded verdict index from {files_loaded} files: {true_n} TRUE, {false_n} FALSE")
+    return index
 
 
 # ─── Compute Baselines ───────────────────────────────────────────────────
@@ -354,7 +465,9 @@ def main():
         print("Sonnet-only mode: skipping legacy events")
     else:
         legacy_events = parse_legacy_events(LEGACY_EVENTS_DIR)
-    sonnet_events = parse_sonnet_events(SONNET_EVENTS_DIR, CURATED_EVENTS_DIR)
+    # #372 — load verdict index before parsing; events flagged FALSE get dropped
+    verdict_index = load_verdict_index(VERIFICATION_EVENTS_DIR)
+    sonnet_events = parse_sonnet_events(SONNET_EVENTS_DIR, CURATED_EVENTS_DIR, verdict_index)
     all_events = legacy_events + sonnet_events
     print(f"\nTotal events: {len(all_events)} ({len(legacy_events)} legacy + {len(sonnet_events)} Sonnet)")
 

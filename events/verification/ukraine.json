@@ -1,318 +1,303 @@
-{
-  "country": "Ukraine",
-  "verified_at": "2026-04-19",
-  "agent": "claude-sonnet-4-6 + WebSearch",
-  "total": 43,
-  "summary": {
-    "VERIFIED": 41,
-    "UNVERIFIED": 0,
-    "FALSE": 0,
-    "FLAGGED": 2
+[
+  {
+    "year": 1932,
+    "title": "Holodomor: Soviet-Engineered Famine in Ukraine",
+    "verdict": "TRUE",
+    "reason": "Death toll 3.5–7.5M confirmed by multiple scholarly sources. Year 1932 correct (famine 1932–33). Category and framing accurate.",
+    "source": "https://en.wikipedia.org/wiki/Holodomor"
   },
-  "notes": "All 43 events are historically real. Two factual precision issues flagged (see events 3 and 40). No FALSE events. QA-flagged 22-yr gap 1932→1954 is a valid gap in the file — Holodomor (1932) and Crimea transfer (1954) both verify correctly; no WWII or Stalinist-thaw events exist in the file, which is the coverage gap.",
-  "events": [
-    {
-      "year": 1932,
-      "title": "Holodomor: Soviet-Engineered Famine in Ukraine",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Holodomor",
-      "note": "Death toll 3.5–7.5M confirmed by multiple scholarly sources. Year 1932 correct (famine 1932–33). Category and framing accurate."
-    },
-    {
-      "year": 1954,
-      "title": "Crimea Transferred from Russian SFSR to Ukrainian SSR",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Transfer_of_Crimea_to_Ukraine",
-      "note": "Date 19 February 1954 confirmed exactly. 300th anniversary of Pereyaslav framing confirmed."
-    },
-    {
-      "year": 1986,
-      "title": "Chernobyl Nuclear Disaster",
-      "status": "VERIFIED",
-      "flag": "PRECISION",
-      "source": "https://en.wikipedia.org/wiki/Chernobyl_disaster",
-      "note": "Date April 26 1986 confirmed. Evacuation figure '116,000' matches (NRC says 115,000 — acceptable rounding). '$700 billion cleanup cost' is the USC/total-economic-cost estimate, not the direct cleanup cost alone — description should clarify 'total economic cost' not 'cleanup cost'. Flag for editorial review, not a falsehood."
-    },
-    {
-      "year": 1991,
-      "title": "Ukraine Declares Independence from the Soviet Union",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine",
-      "note": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed."
-    },
-    {
-      "year": 1991,
-      "title": "Belovezha Accords: Ukraine Co-Signs Soviet Dissolution",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Belovezha_Accords",
-      "note": "Date December 8 1991, signatories Kravchuk/Yeltsin/Shushkevich confirmed."
-    },
-    {
-      "year": 1994,
-      "title": "Budapest Memorandum: Ukraine Surrenders Nuclear Arsenal",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Budapest_Memorandum",
-      "note": "Date December 5 1994, third-largest arsenal claim, signatories confirmed."
-    },
-    {
-      "year": 1994,
-      "title": "Leonid Kuchma Elected President",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Leonid_Kuchma",
-      "note": "July 1994 runoff vs Kravchuk confirmed."
-    },
-    {
-      "year": 1996,
-      "title": "Ukraine Adopts First Post-Soviet Constitution",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Constitution_of_Ukraine",
-      "note": "June 27–28 1996 overnight session, last post-Soviet state to adopt constitution — confirmed."
-    },
-    {
-      "year": 2000,
-      "title": "Cassette Scandal: Kuchma Implicated in Gongadze Murder",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Cassette_Scandal",
-      "note": "November 2000, Moroz tapes, Gongadze murder — all confirmed."
-    },
-    {
-      "year": 2004,
-      "title": "Orange Revolution: Fraudulent Election Overturned",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Orange_Revolution",
-      "note": "November 2004 fraud, Supreme Court annulment, re-run December 26 with Yushchenko 52% — confirmed."
-    },
-    {
-      "year": 2006,
-      "title": "Verkhovna Rada Recognizes Holodomor as Genocide",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics",
-      "note": "November 2006 law confirmed."
-    },
-    {
-      "year": 2006,
-      "title": "Russia–Ukraine Gas Dispute: First Supply Cutoff",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2005%E2%80%932006_Russia%E2%80%93Ukraine_gas_dispute",
-      "note": "January 1 2006 cutoff, settlement January 4 — confirmed."
-    },
-    {
-      "year": 2008,
-      "title": "Bucharest NATO Summit: Ukraine Denied MAP but Promised Future Membership",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2008_Bucharest_NATO_summit",
-      "note": "April 2008, France/Germany block, 'will become a member' communiqué language — confirmed."
-    },
-    {
-      "year": 2009,
-      "title": "Russia–Ukraine Gas Crisis: 13-Day European Supply Halt",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2009_Russia%E2%80%93Ukraine_gas_dispute",
-      "note": "January 7 2009, 13-day halt, 18 EU countries affected — confirmed."
-    },
-    {
-      "year": 2010,
-      "title": "Yanukovych Elected President on Pro-Russia Platform",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election",
-      "note": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed."
-    },
-    {
-      "year": 2010,
-      "title": "Kharkiv Pact: Russian Black Sea Fleet Lease Extended to 2042",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Kharkiv_Pact",
-      "note": "April 21 2010, 25-year extension for discounted gas — confirmed."
-    },
-    {
-      "year": 2013,
-      "title": "Euromaidan Protests Begin After Yanukovych Rejects EU Agreement",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Euromaidan",
-      "note": "November 21 2013 suspension of EU AA, Maidan protests — confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Revolution of Dignity: Yanukovych Ousted",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity",
-      "note": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Russia Annexes Crimea",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea",
-      "note": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "EU–Ukraine Association Agreement and DCFTA Signed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/European_Union%E2%80%93Ukraine_Association_Agreement",
-      "note": "March 21 (political) and June 27 2014 (economic chapters) signing dates confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Donbas War Begins: Russia-Backed Separatists Seize Eastern Ukraine",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/War_in_Donbas",
-      "note": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "IMF Approves $17.5 Billion Bailout for Ukraine",
-      "status": "VERIFIED",
-      "source": "https://www.imf.org/en/news/articles/2015/09/14/01/49/pr15107",
-      "note": "March 2015 EFF $17.5B confirmed. -14.8% Q4 2014 GDP contraction and NABU condition confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "MH17 Shot Down Over Donbas, 298 Killed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17",
-      "note": "July 17 2014, 298 killed, Buk from 53rd Brigade, JIT/Dutch court conviction — confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Minsk I Ceasefire Agreement Signed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Minsk_agreements",
-      "note": "September 5 2014 Minsk Protocol — confirmed."
-    },
-    {
-      "year": 2015,
-      "title": "Minsk II Agreement Signed Under German–French Mediation",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Minsk_agreements",
-      "note": "February 12 2015, Merkel/Hollande mediation, Debaltseve context — confirmed."
-    },
-    {
-      "year": 2019,
-      "title": "Zelensky Elected President by Landslide",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2019_Ukrainian_presidential_election",
-      "note": "April 21 2019, 73%–25% result — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Russia Launches Full-Scale Invasion of Ukraine",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine",
-      "note": "February 24 2022, multi-axis invasion, Kyiv offensive abandoned by April 1 — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Ukraine Declares General Mobilization",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2022_Ukrainian_mobilization",
-      "note": "February 24 2022 decree, 18–60 male ban — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Russia Captures Zaporizhzhia Nuclear Plant",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis",
-      "note": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Bucha Massacre Revealed: War Crimes Evidence Triggers International Response",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Bucha_massacre",
-      "note": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Mariupol Falls After Azovstal Siege",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol",
-      "note": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "EU Grants Ukraine Candidate Status",
-      "status": "VERIFIED",
-      "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/",
-      "note": "June 23 2022, unanimous European Council vote — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Black Sea Grain Initiative Signed, Unblocking Ukrainian Exports",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative",
-      "note": "July 22 2022, Istanbul signing, three ports confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Kharkiv Counteroffensive: Ukraine Recaptures 12,000 km²",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive",
-      "note": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Ukraine Formally Applies for NATO Membership",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Ukraine%E2%80%93NATO_relations",
-      "note": "September 30 2022, same day as four-oblast annexation announcement — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Russia Illegally Annexes Four Ukrainian Oblasts",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts",
-      "note": "September 30 2022, UN vote 143–5 confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Crimean Bridge Attacked, Partially Destroyed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion",
-      "note": "October 8 2022 truck bomb, two road spans collapsed — confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Ukraine Liberates Kherson City",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Liberation_of_Kherson",
-      "note": "November 11 2022, Russian withdrawal across Dnipro, only regional capital recaptured — confirmed."
-    },
-    {
-      "year": 2023,
-      "title": "2023 Counteroffensive Falls Short of Strategic Objectives",
-      "status": "VERIFIED",
-      "flag": "PRECISION",
-      "source": "https://en.wikipedia.org/wiki/2023_Ukrainian_counteroffensive",
-      "note": "June 2023 launch confirmed. Direction toward Tokmak/Melitopol confirmed. 'Fewer than 100 square miles' is LOW — Wikipedia records ~370 km² (~143 sq mi) by end of offensive. Surovikin lines framing confirmed. Recommend correcting to 'approximately 370 km²'."
-    },
-    {
-      "year": 2024,
-      "title": "Avdiivka Falls to Russian Forces",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Battle_of_Avdiivka_(2023%E2%80%932024)",
-      "note": "February 17 2024 withdrawal order by Syrskyi to avoid encirclement — confirmed. Largest Russian gain since Bakhmut (May 2023) confirmed."
-    },
-    {
-      "year": 2024,
-      "title": "US Congress Approves $61 Billion Ukraine Aid Package After Six-Month Delay",
-      "status": "VERIFIED",
-      "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate",
-      "note": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed."
-    },
-    {
-      "year": 2024,
-      "title": "Ukraine Launches Kursk Incursion into Russian Territory",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2024_Kursk_offensive",
-      "note": "August 6 2024, ~1,000 km² seized, first foreign occupation of Russian territory since WWII — confirmed."
-    },
-    {
-      "year": 2025,
-      "title": "First Direct Ukraine–Russia Peace Talks Since 2022 Held in Istanbul",
-      "status": "VERIFIED",
-      "source": "https://www.pbs.org/newshour/world/ukraine-and-russia-quickly-end-their-latest-round-of-direct-peace-talks-in-istanbul",
-      "note": "May 16 2025 first round confirmed. Second round June 2 2025 confirmed. POW exchanges and no breakthrough confirmed. Trump pressure framing confirmed."
-    }
-  ]
-}
+  {
+    "year": 1954,
+    "title": "Crimea Transferred from Russian SFSR to Ukrainian SSR",
+    "verdict": "TRUE",
+    "reason": "Date 19 February 1954 confirmed exactly. 300th anniversary of Pereyaslav framing confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Transfer_of_Crimea_to_Ukraine"
+  },
+  {
+    "year": 1986,
+    "title": "Chernobyl Nuclear Disaster",
+    "verdict": "TRUE",
+    "reason": "Date April 26 1986 confirmed. Evacuation figure '116,000' matches (NRC says 115,000 — acceptable rounding). '$700 billion cleanup cost' is the USC/total-economic-cost estimate, not the direct cleanup cost alone — description should clarify 'total economic cost' not 'cleanup cost'. Flag for editorial review, not a falsehood.",
+    "source": "https://en.wikipedia.org/wiki/Chernobyl_disaster"
+  },
+  {
+    "year": 1991,
+    "title": "Ukraine Declares Independence from the Soviet Union",
+    "verdict": "TRUE",
+    "reason": "Date August 24 1991, 90.3% referendum result, Kravchuk elected first president — all confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Declaration_of_Independence_of_Ukraine"
+  },
+  {
+    "year": 1991,
+    "title": "Belovezha Accords: Ukraine Co-Signs Soviet Dissolution",
+    "verdict": "TRUE",
+    "reason": "Date December 8 1991, signatories Kravchuk/Yeltsin/Shushkevich confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Belovezha_Accords"
+  },
+  {
+    "year": 1994,
+    "title": "Budapest Memorandum: Ukraine Surrenders Nuclear Arsenal",
+    "verdict": "TRUE",
+    "reason": "Date December 5 1994, third-largest arsenal claim, signatories confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Budapest_Memorandum"
+  },
+  {
+    "year": 1994,
+    "title": "Leonid Kuchma Elected President",
+    "verdict": "TRUE",
+    "reason": "July 1994 runoff vs Kravchuk confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Leonid_Kuchma"
+  },
+  {
+    "year": 1996,
+    "title": "Ukraine Adopts First Post-Soviet Constitution",
+    "verdict": "TRUE",
+    "reason": "June 27–28 1996 overnight session, last post-Soviet state to adopt constitution — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Constitution_of_Ukraine"
+  },
+  {
+    "year": 2000,
+    "title": "Cassette Scandal: Kuchma Implicated in Gongadze Murder",
+    "verdict": "TRUE",
+    "reason": "November 2000, Moroz tapes, Gongadze murder — all confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Cassette_Scandal"
+  },
+  {
+    "year": 2004,
+    "title": "Orange Revolution: Fraudulent Election Overturned",
+    "verdict": "TRUE",
+    "reason": "November 2004 fraud, Supreme Court annulment, re-run December 26 with Yushchenko 52% — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Orange_Revolution"
+  },
+  {
+    "year": 2006,
+    "title": "Verkhovna Rada Recognizes Holodomor as Genocide",
+    "verdict": "TRUE",
+    "reason": "November 2006 law confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Holodomor_in_modern_politics"
+  },
+  {
+    "year": 2006,
+    "title": "Russia–Ukraine Gas Dispute: First Supply Cutoff",
+    "verdict": "TRUE",
+    "reason": "January 1 2006 cutoff, settlement January 4 — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2005%E2%80%932006_Russia%E2%80%93Ukraine_gas_dispute"
+  },
+  {
+    "year": 2008,
+    "title": "Bucharest NATO Summit: Ukraine Denied MAP but Promised Future Membership",
+    "verdict": "TRUE",
+    "reason": "April 2008, France/Germany block, 'will become a member' communiqué language — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2008_Bucharest_NATO_summit"
+  },
+  {
+    "year": 2009,
+    "title": "Russia–Ukraine Gas Crisis: 13-Day European Supply Halt",
+    "verdict": "TRUE",
+    "reason": "January 7 2009, 13-day halt, 18 EU countries affected — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2009_Russia%E2%80%93Ukraine_gas_dispute"
+  },
+  {
+    "year": 2010,
+    "title": "Yanukovych Elected President on Pro-Russia Platform",
+    "verdict": "TRUE",
+    "reason": "February 2010 runoff, 3.5pp margin vs Tymoshenko, deemed free and fair — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2010_Ukrainian_presidential_election"
+  },
+  {
+    "year": 2010,
+    "title": "Kharkiv Pact: Russian Black Sea Fleet Lease Extended to 2042",
+    "verdict": "TRUE",
+    "reason": "April 21 2010, 25-year extension for discounted gas — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Kharkiv_Pact"
+  },
+  {
+    "year": 2013,
+    "title": "Euromaidan Protests Begin After Yanukovych Rejects EU Agreement",
+    "verdict": "TRUE",
+    "reason": "November 21 2013 suspension of EU AA, Maidan protests — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Euromaidan"
+  },
+  {
+    "year": 2014,
+    "title": "Revolution of Dignity: Yanukovych Ousted",
+    "verdict": "TRUE",
+    "reason": "108 protesters/13 police killed Feb 18–20 confirmed. Yanukovych fled night of Feb 21 after signing peace deal — confirmed. Parliament removal confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Revolution_of_Dignity"
+  },
+  {
+    "year": 2014,
+    "title": "Russia Annexes Crimea",
+    "verdict": "TRUE",
+    "reason": "March 16 referendum, March 18 annexation formalized, UN vote 100–11 — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2014_Russian_annexation_of_Crimea"
+  },
+  {
+    "year": 2014,
+    "title": "EU–Ukraine Association Agreement and DCFTA Signed",
+    "verdict": "TRUE",
+    "reason": "March 21 (political) and June 27 2014 (economic chapters) signing dates confirmed.",
+    "source": "https://en.wikipedia.org/wiki/European_Union%E2%80%93Ukraine_Association_Agreement"
+  },
+  {
+    "year": 2014,
+    "title": "Donbas War Begins: Russia-Backed Separatists Seize Eastern Ukraine",
+    "verdict": "TRUE",
+    "reason": "April 2014 ATO launch, 14,000+ deaths by 2022 — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/War_in_Donbas"
+  },
+  {
+    "year": 2014,
+    "title": "IMF Approves $17.5 Billion Bailout for Ukraine",
+    "verdict": "TRUE",
+    "reason": "March 2015 EFF $17.5B confirmed. -14.8% Q4 2014 GDP contraction and NABU condition confirmed.",
+    "source": "https://www.imf.org/en/news/articles/2015/09/14/01/49/pr15107"
+  },
+  {
+    "year": 2014,
+    "title": "MH17 Shot Down Over Donbas, 298 Killed",
+    "verdict": "TRUE",
+    "reason": "July 17 2014, 298 killed, Buk from 53rd Brigade, JIT/Dutch court conviction — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Malaysia_Airlines_Flight_17"
+  },
+  {
+    "year": 2014,
+    "title": "Minsk I Ceasefire Agreement Signed",
+    "verdict": "TRUE",
+    "reason": "September 5 2014 Minsk Protocol — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Minsk_agreements"
+  },
+  {
+    "year": 2015,
+    "title": "Minsk II Agreement Signed Under German–French Mediation",
+    "verdict": "TRUE",
+    "reason": "February 12 2015, Merkel/Hollande mediation, Debaltseve context — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Minsk_agreements"
+  },
+  {
+    "year": 2019,
+    "title": "Zelensky Elected President by Landslide",
+    "verdict": "TRUE",
+    "reason": "April 21 2019, 73%–25% result — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2019_Ukrainian_presidential_election"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Launches Full-Scale Invasion of Ukraine",
+    "verdict": "TRUE",
+    "reason": "February 24 2022, multi-axis invasion, Kyiv offensive abandoned by April 1 — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2022_Russian_invasion_of_Ukraine"
+  },
+  {
+    "year": 2022,
+    "title": "Ukraine Declares General Mobilization",
+    "verdict": "TRUE",
+    "reason": "February 24 2022 decree, 18–60 male ban — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2022_Ukrainian_mobilization"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Captures Zaporizhzhia Nuclear Plant",
+    "verdict": "TRUE",
+    "reason": "March 4 2022, Europe's largest plant, first military occupation of operational nuclear plant — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Zaporizhzhia_Nuclear_Power_Plant_crisis"
+  },
+  {
+    "year": 2022,
+    "title": "Bucha Massacre Revealed: War Crimes Evidence Triggers International Response",
+    "verdict": "TRUE",
+    "reason": "April 2–4 2022, 450+ bodies, ICC investigations — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Bucha_massacre"
+  },
+  {
+    "year": 2022,
+    "title": "Mariupol Falls After Azovstal Siege",
+    "verdict": "TRUE",
+    "reason": "May 20 2022, 86-day siege, 2,439 defenders surrendered — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Siege_of_Mariupol"
+  },
+  {
+    "year": 2022,
+    "title": "EU Grants Ukraine Candidate Status",
+    "verdict": "TRUE",
+    "reason": "June 23 2022, unanimous European Council vote — confirmed.",
+    "source": "https://www.consilium.europa.eu/en/press/press-releases/2022/06/23/european-council-conclusions-on-ukraine-the-membership-applications-of-ukraine-the-republic-of-moldova-and-georgia-western-balkans-and-external-relations-23-june-2022/"
+  },
+  {
+    "year": 2022,
+    "title": "Black Sea Grain Initiative Signed, Unblocking Ukrainian Exports",
+    "verdict": "TRUE",
+    "reason": "July 22 2022, Istanbul signing, three ports confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Black_Sea_Grain_Initiative"
+  },
+  {
+    "year": 2022,
+    "title": "Kharkiv Counteroffensive: Ukraine Recaptures 12,000 km²",
+    "verdict": "TRUE",
+    "reason": "Launched September 6 2022, 12,000 km² recovered including Balakliya/Kupiansk/Izyum — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2022_Kharkiv_counteroffensive"
+  },
+  {
+    "year": 2022,
+    "title": "Ukraine Formally Applies for NATO Membership",
+    "verdict": "TRUE",
+    "reason": "September 30 2022, same day as four-oblast annexation announcement — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Ukraine%E2%80%93NATO_relations"
+  },
+  {
+    "year": 2022,
+    "title": "Russia Illegally Annexes Four Ukrainian Oblasts",
+    "verdict": "TRUE",
+    "reason": "September 30 2022, UN vote 143–5 confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Russian_annexation_of_Donetsk,_Kherson,_Luhansk_and_Zaporizhzhia_oblasts"
+  },
+  {
+    "year": 2022,
+    "title": "Crimean Bridge Attacked, Partially Destroyed",
+    "verdict": "TRUE",
+    "reason": "October 8 2022 truck bomb, two road spans collapsed — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2022_Crimean_Bridge_explosion"
+  },
+  {
+    "year": 2022,
+    "title": "Ukraine Liberates Kherson City",
+    "verdict": "TRUE",
+    "reason": "November 11 2022, Russian withdrawal across Dnipro, only regional capital recaptured — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Liberation_of_Kherson"
+  },
+  {
+    "year": 2023,
+    "title": "2023 Counteroffensive Falls Short of Strategic Objectives",
+    "verdict": "TRUE",
+    "reason": "June 2023 launch confirmed. Direction toward Tokmak/Melitopol confirmed. 'Fewer than 100 square miles' is LOW — Wikipedia records ~370 km² (~143 sq mi) by end of offensive. Surovikin lines framing confirmed. Recommend correcting to 'approximately 370 km²'.",
+    "source": "https://en.wikipedia.org/wiki/2023_Ukrainian_counteroffensive"
+  },
+  {
+    "year": 2024,
+    "title": "Avdiivka Falls to Russian Forces",
+    "verdict": "TRUE",
+    "reason": "February 17 2024 withdrawal order by Syrskyi to avoid encirclement — confirmed. Largest Russian gain since Bakhmut (May 2023) confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Battle_of_Avdiivka_(2023%E2%80%932024)"
+  },
+  {
+    "year": 2024,
+    "title": "US Congress Approves $61 Billion Ukraine Aid Package After Six-Month Delay",
+    "verdict": "TRUE",
+    "reason": "April 20 House vote 311–112, Senate April 23 79–18 — confirmed.",
+    "source": "https://www.pbs.org/newshour/politics/house-passes-new-61-billion-aid-package-for-ukraine-after-long-congressional-stalemate"
+  },
+  {
+    "year": 2024,
+    "title": "Ukraine Launches Kursk Incursion into Russian Territory",
+    "verdict": "TRUE",
+    "reason": "August 6 2024, ~1,000 km² seized, first foreign occupation of Russian territory since WWII — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2024_Kursk_offensive"
+  },
+  {
+    "year": 2025,
+    "title": "First Direct Ukraine–Russia Peace Talks Since 2022 Held in Istanbul",
+    "verdict": "TRUE",
+    "reason": "May 16 2025 first round confirmed. Second round June 2 2025 confirmed. POW exchanges and no breakthrough confirmed. Trump pressure framing confirmed.",
+    "source": "https://www.pbs.org/newshour/world/ukraine-and-russia-quickly-end-their-latest-round-of-direct-peace-talks-in-istanbul"
+  }
+]

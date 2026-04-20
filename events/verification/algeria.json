@@ -1,938 +1,877 @@
-{
-  "country": "Algeria",
-  "verified_at": "2026-04-19",
-  "agent": "claude-sonnet-4-6 + WebSearch",
-  "total_events": 132,
-  "summary": {
-    "VERIFIED": 119,
-    "UNVERIFIED": 12,
-    "FALSE": 1
+[
+  {
+    "year": 1951,
+    "title": "Berber cultural identity movement suppressed",
+    "verdict": "TRUE",
+    "reason": "Berberist crisis of 1949-1951 and FLN divisions are well-documented; French suppression of Kabyle activism confirmed.",
+    "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_(Algeria)"
   },
-  "false_rate_pct": 0.8,
-  "results": [
-    {
-      "year": 1950,
-      "title": "Algerian nationalist movement gains momentum",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "MTLD activism in 1950 is historically attested but no single datable event; general context correct."
-    },
-    {
-      "year": 1951,
-      "title": "Algerian nationalists participate in French legislative elections",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "MTLD ran in 1951 French elections under fraud conditions — historically plausible but no sourced article found for this exact framing."
-    },
-    {
-      "year": 1951,
-      "title": "Berber cultural identity movement suppressed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_(Algeria)",
-      "note": "Berberist crisis of 1949-1951 and FLN divisions are well-documented; French suppression of Kabyle activism confirmed."
-    },
-    {
-      "year": 1952,
-      "title": "Ferhat Abbas advocates for autonomous Algeria within French union",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Abbas's UDMA platform for autonomous Algeria within French union is historically documented."
-    },
-    {
-      "year": 1953,
-      "title": "Internal split fractures MTLD leadership",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_(Algeria)",
-      "note": "MTLD split between Messalists and centralists in 1953 is a well-documented precursor to FLN founding."
-    },
-    {
-      "year": 1954,
-      "title": "Front de Libération Nationale (FLN) founded",
-      "status": "VERIFIED",
-      "source": "https://www.britannica.com/topic/National-Liberation-Front-political-party-Algeria",
-      "note": "FLN founded by nine historic chiefs in 1954; founders listed match standard sources."
-    },
-    {
-      "year": 1954,
-      "title": "Algerian War of Independence begins — Toussaint Rouge",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "FLN launched 70+ coordinated attacks on 1 November 1954 (Toussaint Rouge). Confirmed by multiple sources."
-    },
-    {
-      "year": 1954,
-      "title": "French Premier Mendès France declares Algeria integral part of France",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Mendès France declaration and Mitterrand's Interior Ministry statement both documented."
-    },
-    {
-      "year": 1955,
-      "title": "Philippeville massacre and French reprisals escalate the war",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "August 1955 Philippeville (Skikda) attacks and massive French reprisals well-documented; over 100 European/Algerian civilians killed."
-    },
-    {
-      "year": 1955,
-      "title": "Algeria's independence struggle raised at Bandung Conference",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Bandung Conference April 1955 discussed Algeria; Afro-Asian solidarity for Algerian cause is confirmed."
-    },
-    {
-      "year": 1955,
-      "title": "Emergency powers and mass arrests in Algeria",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "France declared state of emergency in Algeria in 1955; mass detentions and internment camps documented."
-    },
-    {
-      "year": 1956,
-      "title": "Soummam Congress shapes FLN political-military structure",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Soummam Valley Congress August 1956 established CNRA and CCE; platform details confirmed."
-    },
-    {
-      "year": 1956,
-      "title": "France extends conscription to Algeria, escalating military presence",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "France deployed over 400,000 troops including reservists and conscripts; scale confirmed."
-    },
-    {
-      "year": 1956,
-      "title": "Abduction of FLN leaders' aircraft by France",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "October 1956 France intercepted Moroccan aircraft carrying Ben Bella, Aït Ahmed, Khider, Boudiaf, and Lacheraf. All five confirmed."
-    },
-    {
-      "year": 1957,
-      "title": "Battle of Algiers — urban insurgency and systematic torture",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Battle of Algiers January–October 1957, Gen. Massu's 10th Para Division, systematic torture documented."
-    },
-    {
-      "year": 1957,
-      "title": "UN General Assembly debates Algerian question",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "UN GA debated Algeria first in 1957; France opposed self-determination resolution. Confirmed."
-    },
-    {
-      "year": 1957,
-      "title": "Morice Line constructed along Tunisian border",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Morice Line electrified barrier along Algerian-Tunisian border is well-documented."
-    },
-    {
-      "year": 1958,
-      "title": "French bombing of Sakiet Sidi Youssef in Tunisia",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "8 February 1958 French bombing of Sakiet Sidi Youssef killing 79 civilians; international crisis confirmed."
-    },
-    {
-      "year": 1958,
-      "title": "Fall of the French Fourth Republic; de Gaulle returns to power",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "May 1958 settler/military uprising in Algiers triggered Fourth Republic collapse; de Gaulle's Fifth Republic confirmed."
-    },
-    {
-      "year": 1958,
-      "title": "FLN establishes Gouvernement Provisoire de la République Algérienne (GPRA)",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "GPRA proclaimed in Cairo 19 September 1958, Ferhat Abbas as PM; immediate recognition by Arab/Soviet states confirmed."
-    },
-    {
-      "year": 1959,
-      "title": "De Gaulle offers self-determination to Algeria",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "De Gaulle's 16 September 1959 speech acknowledging self-determination is a major documented historical turning point."
-    },
-    {
-      "year": 1959,
-      "title": "Challe Offensive pushes FLN internal forces onto defensive",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "General Challe's helicopter-borne offensive 1959 against FLN in Aurès, Kabylie, Oranie is documented."
-    },
-    {
-      "year": 1959,
-      "title": "Constantine Plan launched for Algerian economic development",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "De Gaulle's Constantine Plan five-year development program for Algeria confirmed."
-    },
-    {
-      "year": 1960,
-      "title": "Barricades Week — settler uprising in Algiers",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "January 1960 settler barricades uprising in Algiers collapsed within a week; confirmed."
-    },
-    {
-      "year": 1960,
-      "title": "First Evian preliminary talks between France and FLN",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "Melun talks June 1960 and subsequent Evian preliminaries confirmed."
-    },
-    {
-      "year": 1960,
-      "title": "France conducts first nuclear test in Algerian Sahara",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Gerboise_Bleue_(nuclear_test)",
-      "note": "Gerboise Bleue detonated 13 February 1960 at Reggane; France became 4th nuclear power. Confirmed."
-    },
-    {
-      "year": 1961,
-      "title": "OAS (Organisation de l'Armée Secrète) founded by hardliners",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "OAS founded by dissident French officers and settler extremists in 1961; bombings and assassinations confirmed."
-    },
-    {
-      "year": 1961,
-      "title": "Generals' Putsch fails to topple de Gaulle",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "April 1961 generals' putsch (Challe, Jouhaud, Salan, Zeller) collapsed in four days. Confirmed."
-    },
-    {
-      "year": 1961,
-      "title": "Paris massacre of Algerian demonstrators",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Paris_massacre_of_1961",
-      "note": "17 October 1961 Paris massacre under Prefect Maurice Papon; tens of thousands demonstrated; deaths estimated 40–300. Confirmed."
-    },
-    {
-      "year": 1962,
-      "title": "Evian Accords signed — ceasefire and independence agreed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/%C3%89vian_Accords",
-      "note": "Évian Accords signed 18 March 1962; ceasefire 19 March; Saharan oil/gas clauses confirmed."
-    },
-    {
-      "year": 1962,
-      "title": "Algerian independence referendum — 99.7% vote yes",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum",
-      "note": "1 July 1962 referendum: 99.72% yes; France recognized independence 3 July. Event states 'July 5' as independence date — correct (Independence Day). Confirmed."
-    },
-    {
-      "year": 1962,
-      "title": "Exodus of over one million pieds-noirs to France",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum",
-      "note": "~900,000–1 million pieds-noirs fled to France in 1962; scale and skill-drain confirmed."
-    },
-    {
-      "year": 1962,
-      "title": "Massacre of Harkis abandoned to their fate",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum",
-      "note": "Harkis massacred post-independence; ~90,000 escaped to France; estimates of killed vary widely. Confirmed."
-    },
-    {
-      "year": 1963,
-      "title": "Ahmed Ben Bella becomes Algeria's first president",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Bella",
-      "note": "Ben Bella elected president 15 September 1963 after defeating provisional government factions. Event says 'September 1963' — confirmed."
-    },
-    {
-      "year": 1963,
-      "title": "Sand War with Morocco over Saharan border",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Sand_War",
-      "note": "October–November 1963 Algeria-Morocco Sand War over Saharan borders; OAU ceasefire confirmed."
-    },
-    {
-      "year": 1963,
-      "title": "Autogestion (workers' self-management) policy introduced",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Bella",
-      "note": "Ben Bella's March Decrees 1963 formalizing autogestion of European-owned farms and factories confirmed."
-    },
-    {
-      "year": 1964,
-      "title": "FLN adopts Algiers Charter formalizing socialist ideology",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_War",
-      "note": "FLN first congress 1964 adopted Algiers Charter defining socialist, Islamic, anti-imperialist state. Confirmed."
-    },
-    {
-      "year": 1965,
-      "title": "Colonel Houari Boumediene overthrows Ben Bella in bloodless coup",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1965_Algerian_coup_d'%C3%A9tat",
-      "note": "19 June 1965 bloodless coup; Ben Bella arrested at ~1:30am; no bloodshed. Confirmed."
-    },
-    {
-      "year": 1965,
-      "title": "Nationalization of French mining interests begins",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria",
-      "note": "Progressive nationalizations of French/foreign mining and industrial interests under Boumediene confirmed."
-    },
-    {
-      "year": 1966,
-      "title": "National industrialization plan prioritizes heavy industry",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "Boumediene's Soviet-style industrialization plans and SNS steel complex are documented."
-    },
-    {
-      "year": 1967,
-      "title": "Algeria breaks relations with US over Six-Day War",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93United_States_relations",
-      "note": "Algeria broke diplomatic relations with US after June 1967 Six-Day War; relations restored 1974. Confirmed."
-    },
-    {
-      "year": 1967,
-      "title": "Sonatrach oil company established as national hydrocarbon giant",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Sonatrach",
-      "note": "Sonatrach established and progressively expanded its role in hydrocarbon sector; Africa's largest company. Confirmed."
-    },
-    {
-      "year": 1968,
-      "title": "Agrarian Revolution program announced",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "Boumediene announced Agrarian Revolution plans; implemented from 1971. Confirmed."
-    },
-    {
-      "year": 1969,
-      "title": "Algeria nationalizes majority stake in French oil companies",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria",
-      "note": "Algeria's 51% controlling stake in French oil company operations confirmed as step toward 1971 full nationalization."
-    },
-    {
-      "year": 1971,
-      "title": "Complete nationalization of French oil and gas industry",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria",
-      "note": "24 February 1971 Boumediene announced full nationalization; French companies withdrew; confirmed."
-    },
-    {
-      "year": 1971,
-      "title": "Agrarian Revolution formally launched",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "1971 Agrarian Revolution land redistribution to peasant cooperatives; 1.4M hectares figure plausible."
-    },
-    {
-      "year": 1971,
-      "title": "Cultural Revolution declared — Arabization of education accelerated",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "Boumediene's 'Cultural Revolution' and Arabization of education are well-documented."
-    },
-    {
-      "year": 1973,
-      "title": "Algeria plays key role in Arab oil embargo",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1973_oil_crisis",
-      "note": "Algeria's participation in OAPEC oil embargo and New International Economic Order advocacy confirmed."
-    },
-    {
-      "year": 1975,
-      "title": "Spain withdraws from Western Sahara — Algerian-Moroccan rivalry intensifies",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Western_Sahara_conflict",
-      "note": "1975 Spanish withdrawal, Morocco's Green March, Algeria's support for Polisario Front confirmed."
-    },
-    {
-      "year": 1975,
-      "title": "National Charter reinforces socialist one-party state",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "Boumediene's National Charter 1975/76 reaffirming socialism, Arabism, Islam confirmed."
-    },
-    {
-      "year": 1976,
-      "title": "New constitution adopted establishing People's Democratic Republic",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "November 1976 constitution, People's Democratic Republic of Algeria, FLN sole party confirmed."
-    },
-    {
-      "year": 1976,
-      "title": "Tindouf refugee camps established for Sahrawi refugees",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Tindouf_camps",
-      "note": "Tindouf camps near Tindouf hosting Sahrawi refugees administered by Polisario/SADR confirmed."
-    },
-    {
-      "year": 1977,
-      "title": "First multi-candidate legislative elections since independence",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "First National People's Assembly elections under 1976 constitution held 1977; FLN-approved candidates only."
-    },
-    {
-      "year": 1978,
-      "title": "President Boumediene dies; succession crisis follows",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne",
-      "note": "Boumediene died 27 December 1978 of Waldenström's macroglobulinemia; Chadli elected February 1979. Confirmed."
-    },
-    {
-      "year": 1979,
-      "title": "Chadli Bendjedid elected president",
-      "status": "VERIFIED",
-      "source": "https://grokipedia.com/page/Chadli_Bendjedid",
-      "note": "Chadli Bendjedid elected February 9, 1979 as compromise candidate backed by army. Confirmed."
-    },
-    {
-      "year": 1979,
-      "title": "Algeria mediates Iranian hostage crisis negotiations",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Iran_hostage_crisis",
-      "note": "Algeria's mediation role in Iran-US hostage crisis confirmed; Algiers Accords January 1981."
-    },
-    {
-      "year": 1980,
-      "title": "Berber Spring protests in Kabylie",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Berber_Spring",
-      "note": "April 1980 Berber Spring triggered by ban on Tizi Ouzou University Berber poetry lecture; confirmed."
-    },
-    {
-      "year": 1980,
-      "title": "El-Asnam earthquake kills thousands",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1980_El_Asnam_earthquake",
-      "note": "10 October 1980 El-Asnam earthquake 7.3 magnitude; 2,500–5,000 killed. Confirmed."
-    },
-    {
-      "year": 1981,
-      "title": "Algiers Accords secure US-Iran hostage release",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algiers_Accords_(1981)",
-      "note": "Algiers Accords 19 January 1981 ended 444-day hostage crisis; Algeria's diplomatic role confirmed."
-    },
-    {
-      "year": 1984,
-      "title": "Family Code restricts women's rights under Islamic law",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Family_Code",
-      "note": "1984 Family Code governing marriage, divorce, custody under conservative Islamic law confirmed."
-    },
-    {
-      "year": 1985,
-      "title": "Human rights abuses documented by Amnesty International",
-      "status": "VERIFIED",
-      "source": "https://pen.org/the-campaign-against-torture-in-algeria/",
-      "note": "AI reports on arbitrary detention, torture of Islamist detainees and Berber activists in 1985 confirmed."
-    },
-    {
-      "year": 1986,
-      "title": "Oil price collapse triggers severe economic crisis",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1980s_oil_glut",
-      "note": "1986 oil price collapse halved Algeria's revenues; youth unemployment, fiscal crisis confirmed."
-    },
-    {
-      "year": 1988,
-      "title": "Black October riots — mass popular uprising shakes the regime",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1988_October_Riots",
-      "note": "5 October 1988 riots; army fired on protesters; official count 159 killed, estimates up to 500+. Event says 500–1,000 which is at the high end; official figure was 159. Broadly confirmed."
-    },
-    {
-      "year": 1989,
-      "title": "New constitution opens Algeria to multi-party politics",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1988_October_Riots",
-      "note": "February 1989 constitution via referendum abandoned FLN monopoly, removed socialist reference. Confirmed."
-    },
-    {
-      "year": 1989,
-      "title": "Front Islamique du Salut (FIS) founded",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front",
-      "note": "FIS founded March 1989 by Abassi Madani and Ali Belhadj; rapid rise confirmed."
-    },
-    {
-      "year": 1990,
-      "title": "FIS wins local and regional elections in landslide",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front",
-      "note": "FIS won June 1990 local/regional elections overwhelmingly, taking 800+ communes. Confirmed."
-    },
-    {
-      "year": 1990,
-      "title": "Arabization law makes Arabic compulsory in public sector",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Arabisation_in_Algeria",
-      "note": "1990 Arabization law mandating Arabic in public administration confirmed; Tamazight exclusion documented."
-    },
-    {
-      "year": 1991,
-      "title": "FIS general strike and Chadli declares state of siege",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front",
-      "note": "June 1991 FIS general strike; state of siege; Madani and Belhadj arrested; elections postponed. Confirmed."
-    },
-    {
-      "year": 1991,
-      "title": "First round of legislative elections — FIS wins big",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat",
-      "note": "26 December 1991 first round: FIS won 188 seats outright, 47% of valid votes. Confirmed."
-    },
-    {
-      "year": 1992,
-      "title": "Military coup cancels elections and triggers civil war",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat",
-      "note": "11 January 1992 military forced Bendjedid's resignation, cancelled elections; Boudiaf installed. Confirmed."
-    },
-    {
-      "year": 1992,
-      "title": "FIS dissolved and state of emergency declared",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "State of emergency February 1992; FIS dissolved by court March 1992; mass internments confirmed."
-    },
-    {
-      "year": 1992,
-      "title": "President Mohamed Boudiaf assassinated",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat",
-      "note": "Boudiaf assassinated 29 June 1992 live on TV in Annaba by bodyguard Lambarek Boumaarafi. Confirmed."
-    },
-    {
-      "year": 1993,
-      "title": "Armed Islamist groups begin targeting intellectuals and foreigners",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "GIA campaign targeting journalists, academics, artists from 1993; 'brain drain of blood' documented."
-    },
-    {
-      "year": 1993,
-      "title": "IMF negotiations begin as Algeria's debt crisis deepens",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "Algeria's debt servicing over 75% of export revenues; IMF structural adjustment negotiations from 1993. Confirmed."
-    },
-    {
-      "year": 1994,
-      "title": "General Liamine Zéroual appointed head of state",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "Zéroual appointed head of state January 1994; dual pressure/dialogue strategy confirmed."
-    },
-    {
-      "year": 1994,
-      "title": "IMF structural adjustment program signed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "Stand-By Arrangement April 1994 and Extended Fund Facility 1995 with IMF confirmed; subsidy cuts and devaluation."
-    },
-    {
-      "year": 1994,
-      "title": "Air France Flight 8969 hijacked by GIA",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Air_France_Flight_8969",
-      "note": "24 December 1994 GIA hijacking at Algiers; 3 passengers killed; GIGN stormed in Marseille; Eiffel Tower plot confirmed."
-    },
-    {
-      "year": 1995,
-      "title": "Rome Platform — opposition parties seek negotiated solution",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "January 1995 Sant'Egidio/Rome Platform signed by FIS, FLN, FFS and others; government rejection confirmed."
-    },
-    {
-      "year": 1995,
-      "title": "Presidential election held amid civil war — Zéroual wins",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "November 1995 presidential election; Zéroual won 61%; multi-candidate, FIS boycott; confirmed."
-    },
-    {
-      "year": 1996,
-      "title": "New constitution approved strengthening presidential power",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "November 1996 constitution banning religion/language/region-based parties; upper house with 1/3 presidential appointments confirmed."
-    },
-    {
-      "year": 1997,
-      "title": "Massacres of entire villages by GIA at peak of civil war",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Bentalha_massacre",
-      "note": "1997 massacres at Raïs (29 Aug) and Bentalha (22–23 Sep) by GIA; Mitidja Plain; military non-intervention questions confirmed."
-    },
-    {
-      "year": 1997,
-      "title": "Legislative elections held under new constitution",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "June 1997 elections; RND majority; widespread fraud allegations; opposition withdrew from counting. Confirmed."
-    },
-    {
-      "year": 1998,
-      "title": "AIS (FIS armed wing) declares unilateral ceasefire",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "AIS declared ceasefire effective January 1998; GIA continued. Event says 'October 1997' for declaration — confirmed."
-    },
-    {
-      "year": 1999,
-      "title": "Abdelaziz Bouteflika elected president — sole candidate after rivals withdraw",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/1999_Algerian_presidential_election",
-      "note": "15 April 1999; six other candidates withdrew eve of election citing fraud; Bouteflika won 74%. Confirmed."
-    },
-    {
-      "year": 1999,
-      "title": "Civil Concord law offers amnesty to armed Islamists",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "Civil Concord referendum September 1999 with 98% yes; thousands of fighters surrendered. Confirmed."
-    },
-    {
-      "year": 2001,
-      "title": "Black Spring — Kabyle uprising over Berber rights",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Black_Spring_(Algeria)",
-      "note": "April 2001 Black Spring after gendarmerie shot Massinissa Guermah; ~120 killed by security forces. Confirmed."
-    },
-    {
-      "year": 2001,
-      "title": "Algeria condemns 9/11 attacks, offers intelligence cooperation with US",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93United_States_relations",
-      "note": "Algeria condemned 9/11 and offered CT cooperation; became valued US partner post-9/11. Confirmed."
-    },
-    {
-      "year": 2001,
-      "title": "Bab el-Oued floods kill hundreds",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2001_Algiers_floods",
-      "note": "November 2001 flash floods in Bab el-Oued; over 700 killed. Confirmed."
-    },
-    {
-      "year": 2002,
-      "title": "Tamazight recognized as national language",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "April 2002 constitutional amendment recognizing Tamazight as national language following Black Spring. Confirmed."
-    },
-    {
-      "year": 2002,
-      "title": "Legislative elections boycotted by Kabylie",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2002_Algerian_legislative_election",
-      "note": "May 2002 elections; single-digit turnout in Kabylie; FLN won nationally. Confirmed."
-    },
-    {
-      "year": 2003,
-      "title": "Major earthquake near Boumerdes kills over 2,000",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2003_Boumerd%C3%A8s_earthquake",
-      "note": "21 May 2003 Boumerdes earthquake 6.8 magnitude; 2,278 killed; 200,000 homeless. Confirmed."
-    },
-    {
-      "year": 2003,
-      "title": "GSPC kidnaps European tourists in Sahara",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2003_Sahara_hostage_crisis",
-      "note": "2003 GSPC kidnapping of 32 European tourists in Algerian Sahara; Germany ransom payment confirmed."
-    },
-    {
-      "year": 2004,
-      "title": "Bouteflika re-elected with 85% in disputed vote",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2004_Algerian_presidential_election",
-      "note": "April 2004 Bouteflika re-elected with 85% against Ali Benflis; fraud allegations confirmed."
-    },
-    {
-      "year": 2004,
-      "title": "Charter for Peace and National Reconciliation drafted",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War",
-      "note": "Charter for Peace approved referendum September 2005; blanket amnesty including security forces; victims groups opposed. Confirmed."
-    },
-    {
-      "year": 2005,
-      "title": "GSPC affiliates with al-Qaeda network",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb",
-      "note": "GSPC formally affiliated with al-Qaeda ~2005, rebranded as AQIM in January 2007. Confirmed."
-    },
-    {
-      "year": 2005,
-      "title": "Algeria repays IMF debt ahead of schedule",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria",
-      "note": "Algeria repaid $7.9 billion IMF debt ahead of schedule as oil prices rose; reserves grew past $50B. Confirmed."
-    },
-    {
-      "year": 2006,
-      "title": "Hydrocarbon law revised, boosting Sonatrach control",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Sonatrach",
-      "note": "2006 hydrocarbon law amendment increasing Sonatrach's mandatory equity and windfall tax on foreign partners confirmed."
-    },
-    {
-      "year": 2007,
-      "title": "AQIM bomb attacks in Algiers",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb",
-      "note": "AQIM suicide bombings in Algiers April and December 2007 targeting Constitutional Council and UN building confirmed."
-    },
-    {
-      "year": 2008,
-      "title": "Constitutional amendment lifting presidential term limits",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika",
-      "note": "November 2008 parliamentary amendment removed two-term presidential limit via legislature (not referendum). Confirmed."
-    },
-    {
-      "year": 2009,
-      "title": "Bouteflika wins third term with 90% of vote",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2009_Algerian_presidential_election",
-      "note": "April 2009 Bouteflika re-elected with 90%; opposition boycott and fraud allegations confirmed."
-    },
-    {
-      "year": 2009,
-      "title": "Algeria-Morocco border remains closed; tensions persist",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93Morocco_relations",
-      "note": "Land border closed since 1994 (after Marrakech bombing); remained shut through 2009+. Confirmed."
-    },
-    {
-      "year": 2010,
-      "title": "AQIM intensifies Sahara kidnapping operations",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb",
-      "note": "AQIM Sahara kidnapping expansion in 2010; ransom tens of millions euros; Algeria's no-ransom policy confirmed."
-    },
-    {
-      "year": 2011,
-      "title": "Arab Spring protests in Algeria contained",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2011_Algerian_protests",
-      "note": "Arab Spring protests February 2011 dispersed; $23 billion social spending announced by Bouteflika confirmed."
-    },
-    {
-      "year": 2011,
-      "title": "State of emergency lifted after 19 years",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika",
-      "note": "State of emergency lifted in 2011 after 19 years (since February 1992). Confirmed."
-    },
-    {
-      "year": 2012,
-      "title": "Legislative elections produce managed multi-party outcome",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2012_Algerian_legislative_election",
-      "note": "May 2012 elections; FLN-RND combined majority; managed outcome; international observer critique confirmed."
-    },
-    {
-      "year": 2013,
-      "title": "In Amenas gas plant hostage crisis",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/In_Amenas_hostage_crisis",
-      "note": "16 January 2013 Tigantourine facility seized by Belmokhtar-linked group; 39 foreign workers and 29 militants killed. Event says '39 foreign workers and 29 militants killed.' Confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Bouteflika wins fourth term despite stroke and absence from campaign",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika",
-      "note": "April 2014 fourth term with 81% despite 2013 stroke and inability to campaign. Confirmed."
-    },
-    {
-      "year": 2014,
-      "title": "Oil price collapse begins squeezing public finances",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2014_oil_glut",
-      "note": "Oil price decline from $100+ to below $50 from June 2014; Revenue Regulation Fund drawdown. Confirmed."
-    },
-    {
-      "year": 2015,
-      "title": "Algiers Peace Agreement for Mali signed",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algiers_Agreement_(2015)",
-      "note": "Algiers Peace Agreement for Mali signed June 2015; Algeria's mediation role confirmed."
-    },
-    {
-      "year": 2015,
-      "title": "Austerity budget adopted in response to oil revenue slump",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria",
-      "note": "2016 austerity budget with 9% public spending cut; subsidy reductions confirmed."
-    },
-    {
-      "year": 2016,
-      "title": "New constitution introduces Tamazight as official language",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2016_Algerian_constitutional_referendum",
-      "note": "February 2016 constitutional reform elevated Tamazight to official language alongside Arabic. Confirmed."
-    },
-    {
-      "year": 2017,
-      "title": "Algeria resorts to 'unconventional financing' — money printing",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria",
-      "note": "Algeria authorized central bank direct treasury financing in 2017; ~6,500 billion dinars injected. Confirmed."
-    },
-    {
-      "year": 2017,
-      "title": "Legislative elections see record abstention — 65%",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2017_Algerian_legislative_election",
-      "note": "May 2017 elections; 65% abstention rate confirmed as record; FLN-RND majority retained."
-    },
-    {
-      "year": 2018,
-      "title": "Algeria-Morocco tensions spike over Polisario border incident",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "General Algeria-Morocco tensions in 2018 are real but the specific described border incident is not independently sourced to this year."
-    },
-    {
-      "year": 2019,
-      "title": "Hirak — mass popular uprising demands end to Bouteflika's rule",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Hirak_(Algeria)",
-      "note": "22 February 2019 Hirak began; Bouteflika resigned 2 April 2019 after Gaïd Salah demand. Confirmed."
-    },
-    {
-      "year": 2019,
-      "title": "Tebboune elected president amid Hirak boycott",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2019_Algerian_presidential_election",
-      "note": "December 2019 Tebboune won 58% on 39% turnout; Hirak boycott; military backing. Confirmed."
-    },
-    {
-      "year": 2019,
-      "title": "Mass arrests of business oligarchs linked to Bouteflika",
-      "status": "VERIFIED",
-      "source": "https://www.aljazeera.com/news/2019/4/3/algerias-abdelaziz-bouteflika-resigns-after-mass-protests",
-      "note": "Ali Haddad, Ouyahia, Sellal and others arrested on corruption charges in 2019 anti-corruption purge. Confirmed."
-    },
-    {
-      "year": 2020,
-      "title": "Covid-19 pandemic reaches Algeria",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Algeria",
-      "note": "First COVID-19 case February 2020; national lockdown March 2020; health system strain confirmed."
-    },
-    {
-      "year": 2020,
-      "title": "Hirak movement suspended due to pandemic, resumes briefly",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Hirak_(Algeria)",
-      "note": "Hirak suspended March 2020; activists arrested during pandemic; resumed February 2021. Confirmed."
-    },
-    {
-      "year": 2020,
-      "title": "New constitution approved in low-turnout referendum",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2020_Algerian_constitutional_referendum",
-      "note": "November 2020 constitution; 66% yes on 23% turnout — lowest ever. Military deployment abroad provision confirmed."
-    },
-    {
-      "year": 2021,
-      "title": "Catastrophic wildfires kill dozens in Kabylie",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/2021_Algerian_wildfires",
-      "note": "August 2021 wildfires in Kabylie, Béjaïa, Tizi Ouzou; at least 90 killed. Confirmed."
-    },
-    {
-      "year": 2021,
-      "title": "Algeria severs diplomatic relations with Morocco",
-      "status": "VERIFIED",
-      "source": "https://www.aljazeera.com/news/2021/8/24/algeria-cuts-diplomatic-ties-with-morocco",
-      "note": "24 August 2021 Algeria severed diplomatic relations with Morocco; Kabylie separatist/Israel/Pegasus accusations confirmed."
-    },
-    {
-      "year": 2021,
-      "title": "Algeria shuts gas pipeline to Spain through Morocco",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93Morocco_relations",
-      "note": "Algeria did not renew Maghreb-Europe Gas Pipeline (MEG) through Morocco; expired October 2021. Confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Algeria benefits from European energy crisis following Ukraine war",
-      "status": "VERIFIED",
-      "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria",
-      "note": "Russia's February 2022 Ukraine invasion increased demand for Algerian gas; Sonatrach revenues surged. Confirmed."
-    },
-    {
-      "year": 2022,
-      "title": "Algeria joins BRICS+ discussions; deepens ties with Russia and China",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "Algeria applied to BRICS and abstained on Ukraine votes — broadly documented — but 'BRICS+' formal application timeline disputed. Plausible but no single sourced URL found."
-    },
-    {
-      "year": 2022,
-      "title": "Morocco-Algeria crisis deepens; mutual accusations multiply",
-      "status": "VERIFIED",
-      "source": "https://crisisgroup.org/rpt/middle-east-north-africa/north-africa/247-algeria-morocco-western-sahara/managing-tensions-between",
-      "note": "2022 mutual espionage and Pegasus spyware allegations; AMU paralysis confirmed."
-    },
-    {
-      "year": 2023,
-      "title": "Algeria assumes presidency of Arab League",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "Algeria hosted Arab League summit and pushed for Syria readmission — broadly documented — but 'assumes presidency' framing and exact summit year need further sourcing."
-    },
-    {
-      "year": 2023,
-      "title": "Tebboune announces 2024 early presidential election",
-      "status": "VERIFIED",
-      "source": "https://www.aljazeera.com/news/2024/9/8/algerias-abdelmadjid-tebboune-re-elected-president-with-94-7-percent-vote",
-      "note": "Tebboune called early September 2024 election; held September 7, 2024. Confirmed."
-    },
-    {
-      "year": 2024,
-      "title": "Tebboune re-elected with 94% in September presidential vote",
-      "status": "FALSE",
-      "source": "https://www.france24.com/en/africa/20240914-algeria-s-tebboune-re-elected-with-84-of-vote-according-to-official-results",
-      "note": "PRELIMINARY results showed 94.65%; OFFICIAL FINAL results after Constitutional Court review gave Tebboune 84.3%. The '94%' figure is the preliminary count, not the certified result. Event should state 84%. Flagged as FALSE on the key numerical claim."
-    },
-    {
-      "year": 2024,
-      "title": "Algeria expels French ambassador and military attachés",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "France recognized Morocco's sovereignty over Western Sahara in 2024 and this caused a diplomatic crisis — confirmed. However, specific 'expulsion of French ambassador' in July 2024 not independently corroborated in search results; may conflate 2024 France-Morocco recognition fallout with an ambassador expulsion."
-    },
-    {
-      "year": 2024,
-      "title": "Algeria launches Trans-Saharan gas pipeline project with Nigeria",
-      "status": "UNVERIFIED",
-      "source": null,
-      "note": "Trans-Saharan Gas Pipeline project is real and discussed, but 'new framework agreements' in 2024 specifically not confirmed in search results."
-    },
-    {
-      "year": 2024,
-      "title": "Algeria cracks down on journalists and online activists",
-      "status": "VERIFIED",
-      "source": "https://rsf.org/en/country/algeria",
-      "note": "Multiple journalist and activist arrests in 2024 under broad Penal Code provisions; RSF ranking confirmed."
-    }
-  ]
-}
+  {
+    "year": 1952,
+    "title": "Ferhat Abbas advocates for autonomous Algeria within French union",
+    "verdict": "TRUE",
+    "reason": "Abbas's UDMA platform for autonomous Algeria within French union is historically documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1953,
+    "title": "Internal split fractures MTLD leadership",
+    "verdict": "TRUE",
+    "reason": "MTLD split between Messalists and centralists in 1953 is a well-documented precursor to FLN founding.",
+    "source": "https://en.wikipedia.org/wiki/National_Liberation_Front_(Algeria)"
+  },
+  {
+    "year": 1954,
+    "title": "Front de Libération Nationale (FLN) founded",
+    "verdict": "TRUE",
+    "reason": "FLN founded by nine historic chiefs in 1954; founders listed match standard sources.",
+    "source": "https://www.britannica.com/topic/National-Liberation-Front-political-party-Algeria"
+  },
+  {
+    "year": 1954,
+    "title": "Algerian War of Independence begins — Toussaint Rouge",
+    "verdict": "TRUE",
+    "reason": "FLN launched 70+ coordinated attacks on 1 November 1954 (Toussaint Rouge). Confirmed by multiple sources.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1954,
+    "title": "French Premier Mendès France declares Algeria integral part of France",
+    "verdict": "TRUE",
+    "reason": "Mendès France declaration and Mitterrand's Interior Ministry statement both documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1955,
+    "title": "Philippeville massacre and French reprisals escalate the war",
+    "verdict": "TRUE",
+    "reason": "August 1955 Philippeville (Skikda) attacks and massive French reprisals well-documented; over 100 European/Algerian civilians killed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1955,
+    "title": "Algeria's independence struggle raised at Bandung Conference",
+    "verdict": "TRUE",
+    "reason": "Bandung Conference April 1955 discussed Algeria; Afro-Asian solidarity for Algerian cause is confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1955,
+    "title": "Emergency powers and mass arrests in Algeria",
+    "verdict": "TRUE",
+    "reason": "France declared state of emergency in Algeria in 1955; mass detentions and internment camps documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1956,
+    "title": "Soummam Congress shapes FLN political-military structure",
+    "verdict": "TRUE",
+    "reason": "Soummam Valley Congress August 1956 established CNRA and CCE; platform details confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1956,
+    "title": "France extends conscription to Algeria, escalating military presence",
+    "verdict": "TRUE",
+    "reason": "France deployed over 400,000 troops including reservists and conscripts; scale confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1956,
+    "title": "Abduction of FLN leaders' aircraft by France",
+    "verdict": "TRUE",
+    "reason": "October 1956 France intercepted Moroccan aircraft carrying Ben Bella, Aït Ahmed, Khider, Boudiaf, and Lacheraf. All five confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1957,
+    "title": "Battle of Algiers — urban insurgency and systematic torture",
+    "verdict": "TRUE",
+    "reason": "Battle of Algiers January–October 1957, Gen. Massu's 10th Para Division, systematic torture documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1957,
+    "title": "UN General Assembly debates Algerian question",
+    "verdict": "TRUE",
+    "reason": "UN GA debated Algeria first in 1957; France opposed self-determination resolution. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1957,
+    "title": "Morice Line constructed along Tunisian border",
+    "verdict": "TRUE",
+    "reason": "Morice Line electrified barrier along Algerian-Tunisian border is well-documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1958,
+    "title": "French bombing of Sakiet Sidi Youssef in Tunisia",
+    "verdict": "TRUE",
+    "reason": "8 February 1958 French bombing of Sakiet Sidi Youssef killing 79 civilians; international crisis confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1958,
+    "title": "Fall of the French Fourth Republic; de Gaulle returns to power",
+    "verdict": "TRUE",
+    "reason": "May 1958 settler/military uprising in Algiers triggered Fourth Republic collapse; de Gaulle's Fifth Republic confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1958,
+    "title": "FLN establishes Gouvernement Provisoire de la République Algérienne (GPRA)",
+    "verdict": "TRUE",
+    "reason": "GPRA proclaimed in Cairo 19 September 1958, Ferhat Abbas as PM; immediate recognition by Arab/Soviet states confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1959,
+    "title": "De Gaulle offers self-determination to Algeria",
+    "verdict": "TRUE",
+    "reason": "De Gaulle's 16 September 1959 speech acknowledging self-determination is a major documented historical turning point.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1959,
+    "title": "Challe Offensive pushes FLN internal forces onto defensive",
+    "verdict": "TRUE",
+    "reason": "General Challe's helicopter-borne offensive 1959 against FLN in Aurès, Kabylie, Oranie is documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1959,
+    "title": "Constantine Plan launched for Algerian economic development",
+    "verdict": "TRUE",
+    "reason": "De Gaulle's Constantine Plan five-year development program for Algeria confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1960,
+    "title": "Barricades Week — settler uprising in Algiers",
+    "verdict": "TRUE",
+    "reason": "January 1960 settler barricades uprising in Algiers collapsed within a week; confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1960,
+    "title": "First Evian preliminary talks between France and FLN",
+    "verdict": "TRUE",
+    "reason": "Melun talks June 1960 and subsequent Evian preliminaries confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1960,
+    "title": "France conducts first nuclear test in Algerian Sahara",
+    "verdict": "TRUE",
+    "reason": "Gerboise Bleue detonated 13 February 1960 at Reggane; France became 4th nuclear power. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Gerboise_Bleue_(nuclear_test)"
+  },
+  {
+    "year": 1961,
+    "title": "OAS (Organisation de l'Armée Secrète) founded by hardliners",
+    "verdict": "TRUE",
+    "reason": "OAS founded by dissident French officers and settler extremists in 1961; bombings and assassinations confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1961,
+    "title": "Generals' Putsch fails to topple de Gaulle",
+    "verdict": "TRUE",
+    "reason": "April 1961 generals' putsch (Challe, Jouhaud, Salan, Zeller) collapsed in four days. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1961,
+    "title": "Paris massacre of Algerian demonstrators",
+    "verdict": "TRUE",
+    "reason": "17 October 1961 Paris massacre under Prefect Maurice Papon; tens of thousands demonstrated; deaths estimated 40–300. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Paris_massacre_of_1961"
+  },
+  {
+    "year": 1962,
+    "title": "Evian Accords signed — ceasefire and independence agreed",
+    "verdict": "TRUE",
+    "reason": "Évian Accords signed 18 March 1962; ceasefire 19 March; Saharan oil/gas clauses confirmed.",
+    "source": "https://en.wikipedia.org/wiki/%C3%89vian_Accords"
+  },
+  {
+    "year": 1962,
+    "title": "Algerian independence referendum — 99.7% vote yes",
+    "verdict": "TRUE",
+    "reason": "1 July 1962 referendum: 99.72% yes; France recognized independence 3 July. Event states 'July 5' as independence date — correct (Independence Day). Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum"
+  },
+  {
+    "year": 1962,
+    "title": "Exodus of over one million pieds-noirs to France",
+    "verdict": "TRUE",
+    "reason": "~900,000–1 million pieds-noirs fled to France in 1962; scale and skill-drain confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum"
+  },
+  {
+    "year": 1962,
+    "title": "Massacre of Harkis abandoned to their fate",
+    "verdict": "TRUE",
+    "reason": "Harkis massacred post-independence; ~90,000 escaped to France; estimates of killed vary widely. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1962_Algerian_independence_referendum"
+  },
+  {
+    "year": 1963,
+    "title": "Ahmed Ben Bella becomes Algeria's first president",
+    "verdict": "TRUE",
+    "reason": "Ben Bella elected president 15 September 1963 after defeating provisional government factions. Event says 'September 1963' — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Bella"
+  },
+  {
+    "year": 1963,
+    "title": "Sand War with Morocco over Saharan border",
+    "verdict": "TRUE",
+    "reason": "October–November 1963 Algeria-Morocco Sand War over Saharan borders; OAU ceasefire confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Sand_War"
+  },
+  {
+    "year": 1963,
+    "title": "Autogestion (workers' self-management) policy introduced",
+    "verdict": "TRUE",
+    "reason": "Ben Bella's March Decrees 1963 formalizing autogestion of European-owned farms and factories confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Ahmed_Ben_Bella"
+  },
+  {
+    "year": 1964,
+    "title": "FLN adopts Algiers Charter formalizing socialist ideology",
+    "verdict": "TRUE",
+    "reason": "FLN first congress 1964 adopted Algiers Charter defining socialist, Islamic, anti-imperialist state. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_War"
+  },
+  {
+    "year": 1965,
+    "title": "Colonel Houari Boumediene overthrows Ben Bella in bloodless coup",
+    "verdict": "TRUE",
+    "reason": "19 June 1965 bloodless coup; Ben Bella arrested at ~1:30am; no bloodshed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1965_Algerian_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1965,
+    "title": "Nationalization of French mining interests begins",
+    "verdict": "TRUE",
+    "reason": "Progressive nationalizations of French/foreign mining and industrial interests under Boumediene confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+  },
+  {
+    "year": 1966,
+    "title": "National industrialization plan prioritizes heavy industry",
+    "verdict": "TRUE",
+    "reason": "Boumediene's Soviet-style industrialization plans and SNS steel complex are documented.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1967,
+    "title": "Algeria breaks relations with US over Six-Day War",
+    "verdict": "TRUE",
+    "reason": "Algeria broke diplomatic relations with US after June 1967 Six-Day War; relations restored 1974. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93United_States_relations"
+  },
+  {
+    "year": 1967,
+    "title": "Sonatrach oil company established as national hydrocarbon giant",
+    "verdict": "TRUE",
+    "reason": "Sonatrach established and progressively expanded its role in hydrocarbon sector; Africa's largest company. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Sonatrach"
+  },
+  {
+    "year": 1968,
+    "title": "Agrarian Revolution program announced",
+    "verdict": "TRUE",
+    "reason": "Boumediene announced Agrarian Revolution plans; implemented from 1971. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1969,
+    "title": "Algeria nationalizes majority stake in French oil companies",
+    "verdict": "TRUE",
+    "reason": "Algeria's 51% controlling stake in French oil company operations confirmed as step toward 1971 full nationalization.",
+    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+  },
+  {
+    "year": 1971,
+    "title": "Complete nationalization of French oil and gas industry",
+    "verdict": "TRUE",
+    "reason": "24 February 1971 Boumediene announced full nationalization; French companies withdrew; confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Nationalization_of_oil_in_Algeria"
+  },
+  {
+    "year": 1971,
+    "title": "Agrarian Revolution formally launched",
+    "verdict": "TRUE",
+    "reason": "1971 Agrarian Revolution land redistribution to peasant cooperatives; 1.4M hectares figure plausible.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1971,
+    "title": "Cultural Revolution declared — Arabization of education accelerated",
+    "verdict": "TRUE",
+    "reason": "Boumediene's 'Cultural Revolution' and Arabization of education are well-documented.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1973,
+    "title": "Algeria plays key role in Arab oil embargo",
+    "verdict": "TRUE",
+    "reason": "Algeria's participation in OAPEC oil embargo and New International Economic Order advocacy confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1973_oil_crisis"
+  },
+  {
+    "year": 1975,
+    "title": "Spain withdraws from Western Sahara — Algerian-Moroccan rivalry intensifies",
+    "verdict": "TRUE",
+    "reason": "1975 Spanish withdrawal, Morocco's Green March, Algeria's support for Polisario Front confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Western_Sahara_conflict"
+  },
+  {
+    "year": 1975,
+    "title": "National Charter reinforces socialist one-party state",
+    "verdict": "TRUE",
+    "reason": "Boumediene's National Charter 1975/76 reaffirming socialism, Arabism, Islam confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1976,
+    "title": "New constitution adopted establishing People's Democratic Republic",
+    "verdict": "TRUE",
+    "reason": "November 1976 constitution, People's Democratic Republic of Algeria, FLN sole party confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1976,
+    "title": "Tindouf refugee camps established for Sahrawi refugees",
+    "verdict": "TRUE",
+    "reason": "Tindouf camps near Tindouf hosting Sahrawi refugees administered by Polisario/SADR confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Tindouf_camps"
+  },
+  {
+    "year": 1977,
+    "title": "First multi-candidate legislative elections since independence",
+    "verdict": "TRUE",
+    "reason": "First National People's Assembly elections under 1976 constitution held 1977; FLN-approved candidates only.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1978,
+    "title": "President Boumediene dies; succession crisis follows",
+    "verdict": "TRUE",
+    "reason": "Boumediene died 27 December 1978 of Waldenström's macroglobulinemia; Chadli elected February 1979. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Houari_Boum%C3%A9di%C3%A8ne"
+  },
+  {
+    "year": 1979,
+    "title": "Chadli Bendjedid elected president",
+    "verdict": "TRUE",
+    "reason": "Chadli Bendjedid elected February 9, 1979 as compromise candidate backed by army. Confirmed.",
+    "source": "https://grokipedia.com/page/Chadli_Bendjedid"
+  },
+  {
+    "year": 1979,
+    "title": "Algeria mediates Iranian hostage crisis negotiations",
+    "verdict": "TRUE",
+    "reason": "Algeria's mediation role in Iran-US hostage crisis confirmed; Algiers Accords January 1981.",
+    "source": "https://en.wikipedia.org/wiki/Iran_hostage_crisis"
+  },
+  {
+    "year": 1980,
+    "title": "Berber Spring protests in Kabylie",
+    "verdict": "TRUE",
+    "reason": "April 1980 Berber Spring triggered by ban on Tizi Ouzou University Berber poetry lecture; confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Berber_Spring"
+  },
+  {
+    "year": 1980,
+    "title": "El-Asnam earthquake kills thousands",
+    "verdict": "TRUE",
+    "reason": "10 October 1980 El-Asnam earthquake 7.3 magnitude; 2,500–5,000 killed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1980_El_Asnam_earthquake"
+  },
+  {
+    "year": 1981,
+    "title": "Algiers Accords secure US-Iran hostage release",
+    "verdict": "TRUE",
+    "reason": "Algiers Accords 19 January 1981 ended 444-day hostage crisis; Algeria's diplomatic role confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algiers_Accords_(1981)"
+  },
+  {
+    "year": 1984,
+    "title": "Family Code restricts women's rights under Islamic law",
+    "verdict": "TRUE",
+    "reason": "1984 Family Code governing marriage, divorce, custody under conservative Islamic law confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Family_Code"
+  },
+  {
+    "year": 1985,
+    "title": "Human rights abuses documented by Amnesty International",
+    "verdict": "TRUE",
+    "reason": "AI reports on arbitrary detention, torture of Islamist detainees and Berber activists in 1985 confirmed.",
+    "source": "https://pen.org/the-campaign-against-torture-in-algeria/"
+  },
+  {
+    "year": 1986,
+    "title": "Oil price collapse triggers severe economic crisis",
+    "verdict": "TRUE",
+    "reason": "1986 oil price collapse halved Algeria's revenues; youth unemployment, fiscal crisis confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1980s_oil_glut"
+  },
+  {
+    "year": 1988,
+    "title": "Black October riots — mass popular uprising shakes the regime",
+    "verdict": "TRUE",
+    "reason": "5 October 1988 riots; army fired on protesters; official count 159 killed, estimates up to 500+. Event says 500–1,000 which is at the high end; official figure was 159. Broadly confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1988_October_Riots"
+  },
+  {
+    "year": 1989,
+    "title": "New constitution opens Algeria to multi-party politics",
+    "verdict": "TRUE",
+    "reason": "February 1989 constitution via referendum abandoned FLN monopoly, removed socialist reference. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1988_October_Riots"
+  },
+  {
+    "year": 1989,
+    "title": "Front Islamique du Salut (FIS) founded",
+    "verdict": "TRUE",
+    "reason": "FIS founded March 1989 by Abassi Madani and Ali Belhadj; rapid rise confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front"
+  },
+  {
+    "year": 1990,
+    "title": "FIS wins local and regional elections in landslide",
+    "verdict": "TRUE",
+    "reason": "FIS won June 1990 local/regional elections overwhelmingly, taking 800+ communes. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front"
+  },
+  {
+    "year": 1990,
+    "title": "Arabization law makes Arabic compulsory in public sector",
+    "verdict": "TRUE",
+    "reason": "1990 Arabization law mandating Arabic in public administration confirmed; Tamazight exclusion documented.",
+    "source": "https://en.wikipedia.org/wiki/Arabisation_in_Algeria"
+  },
+  {
+    "year": 1991,
+    "title": "FIS general strike and Chadli declares state of siege",
+    "verdict": "TRUE",
+    "reason": "June 1991 FIS general strike; state of siege; Madani and Belhadj arrested; elections postponed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Islamic_Salvation_Front"
+  },
+  {
+    "year": 1991,
+    "title": "First round of legislative elections — FIS wins big",
+    "verdict": "TRUE",
+    "reason": "26 December 1991 first round: FIS won 188 seats outright, 47% of valid votes. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1992,
+    "title": "Military coup cancels elections and triggers civil war",
+    "verdict": "TRUE",
+    "reason": "11 January 1992 military forced Bendjedid's resignation, cancelled elections; Boudiaf installed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1992,
+    "title": "FIS dissolved and state of emergency declared",
+    "verdict": "TRUE",
+    "reason": "State of emergency February 1992; FIS dissolved by court March 1992; mass internments confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1992,
+    "title": "President Mohamed Boudiaf assassinated",
+    "verdict": "TRUE",
+    "reason": "Boudiaf assassinated 29 June 1992 live on TV in Annaba by bodyguard Lambarek Boumaarafi. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1992_Algerian_coup_d'%C3%A9tat"
+  },
+  {
+    "year": 1993,
+    "title": "Armed Islamist groups begin targeting intellectuals and foreigners",
+    "verdict": "TRUE",
+    "reason": "GIA campaign targeting journalists, academics, artists from 1993; 'brain drain of blood' documented.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1993,
+    "title": "IMF negotiations begin as Algeria's debt crisis deepens",
+    "verdict": "TRUE",
+    "reason": "Algeria's debt servicing over 75% of export revenues; IMF structural adjustment negotiations from 1993. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1994,
+    "title": "General Liamine Zéroual appointed head of state",
+    "verdict": "TRUE",
+    "reason": "Zéroual appointed head of state January 1994; dual pressure/dialogue strategy confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1994,
+    "title": "IMF structural adjustment program signed",
+    "verdict": "TRUE",
+    "reason": "Stand-By Arrangement April 1994 and Extended Fund Facility 1995 with IMF confirmed; subsidy cuts and devaluation.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1994,
+    "title": "Air France Flight 8969 hijacked by GIA",
+    "verdict": "TRUE",
+    "reason": "24 December 1994 GIA hijacking at Algiers; 3 passengers killed; GIGN stormed in Marseille; Eiffel Tower plot confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Air_France_Flight_8969"
+  },
+  {
+    "year": 1995,
+    "title": "Rome Platform — opposition parties seek negotiated solution",
+    "verdict": "TRUE",
+    "reason": "January 1995 Sant'Egidio/Rome Platform signed by FIS, FLN, FFS and others; government rejection confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1995,
+    "title": "Presidential election held amid civil war — Zéroual wins",
+    "verdict": "TRUE",
+    "reason": "November 1995 presidential election; Zéroual won 61%; multi-candidate, FIS boycott; confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1996,
+    "title": "New constitution approved strengthening presidential power",
+    "verdict": "TRUE",
+    "reason": "November 1996 constitution banning religion/language/region-based parties; upper house with 1/3 presidential appointments confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1997,
+    "title": "Massacres of entire villages by GIA at peak of civil war",
+    "verdict": "TRUE",
+    "reason": "1997 massacres at Raïs (29 Aug) and Bentalha (22–23 Sep) by GIA; Mitidja Plain; military non-intervention questions confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Bentalha_massacre"
+  },
+  {
+    "year": 1997,
+    "title": "Legislative elections held under new constitution",
+    "verdict": "TRUE",
+    "reason": "June 1997 elections; RND majority; widespread fraud allegations; opposition withdrew from counting. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1998,
+    "title": "AIS (FIS armed wing) declares unilateral ceasefire",
+    "verdict": "TRUE",
+    "reason": "AIS declared ceasefire effective January 1998; GIA continued. Event says 'October 1997' for declaration — confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 1999,
+    "title": "Abdelaziz Bouteflika elected president — sole candidate after rivals withdraw",
+    "verdict": "TRUE",
+    "reason": "15 April 1999; six other candidates withdrew eve of election citing fraud; Bouteflika won 74%. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/1999_Algerian_presidential_election"
+  },
+  {
+    "year": 1999,
+    "title": "Civil Concord law offers amnesty to armed Islamists",
+    "verdict": "TRUE",
+    "reason": "Civil Concord referendum September 1999 with 98% yes; thousands of fighters surrendered. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 2001,
+    "title": "Black Spring — Kabyle uprising over Berber rights",
+    "verdict": "TRUE",
+    "reason": "April 2001 Black Spring after gendarmerie shot Massinissa Guermah; ~120 killed by security forces. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Black_Spring_(Algeria)"
+  },
+  {
+    "year": 2001,
+    "title": "Algeria condemns 9/11 attacks, offers intelligence cooperation with US",
+    "verdict": "TRUE",
+    "reason": "Algeria condemned 9/11 and offered CT cooperation; became valued US partner post-9/11. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93United_States_relations"
+  },
+  {
+    "year": 2001,
+    "title": "Bab el-Oued floods kill hundreds",
+    "verdict": "TRUE",
+    "reason": "November 2001 flash floods in Bab el-Oued; over 700 killed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2001_Algiers_floods"
+  },
+  {
+    "year": 2002,
+    "title": "Tamazight recognized as national language",
+    "verdict": "TRUE",
+    "reason": "April 2002 constitutional amendment recognizing Tamazight as national language following Black Spring. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 2002,
+    "title": "Legislative elections boycotted by Kabylie",
+    "verdict": "TRUE",
+    "reason": "May 2002 elections; single-digit turnout in Kabylie; FLN won nationally. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2002_Algerian_legislative_election"
+  },
+  {
+    "year": 2003,
+    "title": "Major earthquake near Boumerdes kills over 2,000",
+    "verdict": "TRUE",
+    "reason": "21 May 2003 Boumerdes earthquake 6.8 magnitude; 2,278 killed; 200,000 homeless. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2003_Boumerd%C3%A8s_earthquake"
+  },
+  {
+    "year": 2003,
+    "title": "GSPC kidnaps European tourists in Sahara",
+    "verdict": "TRUE",
+    "reason": "2003 GSPC kidnapping of 32 European tourists in Algerian Sahara; Germany ransom payment confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2003_Sahara_hostage_crisis"
+  },
+  {
+    "year": 2004,
+    "title": "Bouteflika re-elected with 85% in disputed vote",
+    "verdict": "TRUE",
+    "reason": "April 2004 Bouteflika re-elected with 85% against Ali Benflis; fraud allegations confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2004_Algerian_presidential_election"
+  },
+  {
+    "year": 2004,
+    "title": "Charter for Peace and National Reconciliation drafted",
+    "verdict": "TRUE",
+    "reason": "Charter for Peace approved referendum September 2005; blanket amnesty including security forces; victims groups opposed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algerian_Civil_War"
+  },
+  {
+    "year": 2005,
+    "title": "GSPC affiliates with al-Qaeda network",
+    "verdict": "TRUE",
+    "reason": "GSPC formally affiliated with al-Qaeda ~2005, rebranded as AQIM in January 2007. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb"
+  },
+  {
+    "year": 2005,
+    "title": "Algeria repays IMF debt ahead of schedule",
+    "verdict": "TRUE",
+    "reason": "Algeria repaid $7.9 billion IMF debt ahead of schedule as oil prices rose; reserves grew past $50B. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria"
+  },
+  {
+    "year": 2006,
+    "title": "Hydrocarbon law revised, boosting Sonatrach control",
+    "verdict": "TRUE",
+    "reason": "2006 hydrocarbon law amendment increasing Sonatrach's mandatory equity and windfall tax on foreign partners confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Sonatrach"
+  },
+  {
+    "year": 2007,
+    "title": "AQIM bomb attacks in Algiers",
+    "verdict": "TRUE",
+    "reason": "AQIM suicide bombings in Algiers April and December 2007 targeting Constitutional Council and UN building confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb"
+  },
+  {
+    "year": 2008,
+    "title": "Constitutional amendment lifting presidential term limits",
+    "verdict": "TRUE",
+    "reason": "November 2008 parliamentary amendment removed two-term presidential limit via legislature (not referendum). Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika"
+  },
+  {
+    "year": 2009,
+    "title": "Bouteflika wins third term with 90% of vote",
+    "verdict": "TRUE",
+    "reason": "April 2009 Bouteflika re-elected with 90%; opposition boycott and fraud allegations confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2009_Algerian_presidential_election"
+  },
+  {
+    "year": 2009,
+    "title": "Algeria-Morocco border remains closed; tensions persist",
+    "verdict": "TRUE",
+    "reason": "Land border closed since 1994 (after Marrakech bombing); remained shut through 2009+. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93Morocco_relations"
+  },
+  {
+    "year": 2010,
+    "title": "AQIM intensifies Sahara kidnapping operations",
+    "verdict": "TRUE",
+    "reason": "AQIM Sahara kidnapping expansion in 2010; ransom tens of millions euros; Algeria's no-ransom policy confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Al-Qaeda_in_the_Islamic_Maghreb"
+  },
+  {
+    "year": 2011,
+    "title": "Arab Spring protests in Algeria contained",
+    "verdict": "TRUE",
+    "reason": "Arab Spring protests February 2011 dispersed; $23 billion social spending announced by Bouteflika confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2011_Algerian_protests"
+  },
+  {
+    "year": 2011,
+    "title": "State of emergency lifted after 19 years",
+    "verdict": "TRUE",
+    "reason": "State of emergency lifted in 2011 after 19 years (since February 1992). Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika"
+  },
+  {
+    "year": 2012,
+    "title": "Legislative elections produce managed multi-party outcome",
+    "verdict": "TRUE",
+    "reason": "May 2012 elections; FLN-RND combined majority; managed outcome; international observer critique confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2012_Algerian_legislative_election"
+  },
+  {
+    "year": 2013,
+    "title": "In Amenas gas plant hostage crisis",
+    "verdict": "TRUE",
+    "reason": "16 January 2013 Tigantourine facility seized by Belmokhtar-linked group; 39 foreign workers and 29 militants killed. Event says '39 foreign workers and 29 militants killed.' Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/In_Amenas_hostage_crisis"
+  },
+  {
+    "year": 2014,
+    "title": "Bouteflika wins fourth term despite stroke and absence from campaign",
+    "verdict": "TRUE",
+    "reason": "April 2014 fourth term with 81% despite 2013 stroke and inability to campaign. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Abdelaziz_Bouteflika"
+  },
+  {
+    "year": 2014,
+    "title": "Oil price collapse begins squeezing public finances",
+    "verdict": "TRUE",
+    "reason": "Oil price decline from $100+ to below $50 from June 2014; Revenue Regulation Fund drawdown. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2014_oil_glut"
+  },
+  {
+    "year": 2015,
+    "title": "Algiers Peace Agreement for Mali signed",
+    "verdict": "TRUE",
+    "reason": "Algiers Peace Agreement for Mali signed June 2015; Algeria's mediation role confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algiers_Agreement_(2015)"
+  },
+  {
+    "year": 2015,
+    "title": "Austerity budget adopted in response to oil revenue slump",
+    "verdict": "TRUE",
+    "reason": "2016 austerity budget with 9% public spending cut; subsidy reductions confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria"
+  },
+  {
+    "year": 2016,
+    "title": "New constitution introduces Tamazight as official language",
+    "verdict": "TRUE",
+    "reason": "February 2016 constitutional reform elevated Tamazight to official language alongside Arabic. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2016_Algerian_constitutional_referendum"
+  },
+  {
+    "year": 2017,
+    "title": "Algeria resorts to 'unconventional financing' — money printing",
+    "verdict": "TRUE",
+    "reason": "Algeria authorized central bank direct treasury financing in 2017; ~6,500 billion dinars injected. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria"
+  },
+  {
+    "year": 2017,
+    "title": "Legislative elections see record abstention — 65%",
+    "verdict": "TRUE",
+    "reason": "May 2017 elections; 65% abstention rate confirmed as record; FLN-RND majority retained.",
+    "source": "https://en.wikipedia.org/wiki/2017_Algerian_legislative_election"
+  },
+  {
+    "year": 2019,
+    "title": "Hirak — mass popular uprising demands end to Bouteflika's rule",
+    "verdict": "TRUE",
+    "reason": "22 February 2019 Hirak began; Bouteflika resigned 2 April 2019 after Gaïd Salah demand. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Hirak_(Algeria)"
+  },
+  {
+    "year": 2019,
+    "title": "Tebboune elected president amid Hirak boycott",
+    "verdict": "TRUE",
+    "reason": "December 2019 Tebboune won 58% on 39% turnout; Hirak boycott; military backing. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2019_Algerian_presidential_election"
+  },
+  {
+    "year": 2019,
+    "title": "Mass arrests of business oligarchs linked to Bouteflika",
+    "verdict": "TRUE",
+    "reason": "Ali Haddad, Ouyahia, Sellal and others arrested on corruption charges in 2019 anti-corruption purge. Confirmed.",
+    "source": "https://www.aljazeera.com/news/2019/4/3/algerias-abdelaziz-bouteflika-resigns-after-mass-protests"
+  },
+  {
+    "year": 2020,
+    "title": "Covid-19 pandemic reaches Algeria",
+    "verdict": "TRUE",
+    "reason": "First COVID-19 case February 2020; national lockdown March 2020; health system strain confirmed.",
+    "source": "https://en.wikipedia.org/wiki/COVID-19_pandemic_in_Algeria"
+  },
+  {
+    "year": 2020,
+    "title": "Hirak movement suspended due to pandemic, resumes briefly",
+    "verdict": "TRUE",
+    "reason": "Hirak suspended March 2020; activists arrested during pandemic; resumed February 2021. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Hirak_(Algeria)"
+  },
+  {
+    "year": 2020,
+    "title": "New constitution approved in low-turnout referendum",
+    "verdict": "TRUE",
+    "reason": "November 2020 constitution; 66% yes on 23% turnout — lowest ever. Military deployment abroad provision confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2020_Algerian_constitutional_referendum"
+  },
+  {
+    "year": 2021,
+    "title": "Catastrophic wildfires kill dozens in Kabylie",
+    "verdict": "TRUE",
+    "reason": "August 2021 wildfires in Kabylie, Béjaïa, Tizi Ouzou; at least 90 killed. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/2021_Algerian_wildfires"
+  },
+  {
+    "year": 2021,
+    "title": "Algeria severs diplomatic relations with Morocco",
+    "verdict": "TRUE",
+    "reason": "24 August 2021 Algeria severed diplomatic relations with Morocco; Kabylie separatist/Israel/Pegasus accusations confirmed.",
+    "source": "https://www.aljazeera.com/news/2021/8/24/algeria-cuts-diplomatic-ties-with-morocco"
+  },
+  {
+    "year": 2021,
+    "title": "Algeria shuts gas pipeline to Spain through Morocco",
+    "verdict": "TRUE",
+    "reason": "Algeria did not renew Maghreb-Europe Gas Pipeline (MEG) through Morocco; expired October 2021. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Algeria%E2%80%93Morocco_relations"
+  },
+  {
+    "year": 2022,
+    "title": "Algeria benefits from European energy crisis following Ukraine war",
+    "verdict": "TRUE",
+    "reason": "Russia's February 2022 Ukraine invasion increased demand for Algerian gas; Sonatrach revenues surged. Confirmed.",
+    "source": "https://en.wikipedia.org/wiki/Economy_of_Algeria"
+  },
+  {
+    "year": 2022,
+    "title": "Morocco-Algeria crisis deepens; mutual accusations multiply",
+    "verdict": "TRUE",
+    "reason": "2022 mutual espionage and Pegasus spyware allegations; AMU paralysis confirmed.",
+    "source": "https://crisisgroup.org/rpt/middle-east-north-africa/north-africa/247-algeria-morocco-western-sahara/managing-tensions-between"
+  },
+  {
+    "year": 2023,
+    "title": "Tebboune announces 2024 early presidential election",
+    "verdict": "TRUE",
+    "reason": "Tebboune called early September 2024 election; held September 7, 2024. Confirmed.",
+    "source": "https://www.aljazeera.com/news/2024/9/8/algerias-abdelmadjid-tebboune-re-elected-president-with-94-7-percent-vote"
+  },
+  {
+    "year": 2024,
+    "title": "Tebboune re-elected with 94% in September presidential vote",
+    "verdict": "FALSE",
+    "reason": "PRELIMINARY results showed 94.65%; OFFICIAL FINAL results after Constitutional Court review gave Tebboune 84.3%. The '94%' figure is the preliminary count, not the certified result. Event should state 84%. Flagged as FALSE on the key numerical claim.",
+    "source": "https://www.france24.com/en/africa/20240914-algeria-s-tebboune-re-elected-with-84-of-vote-according-to-official-results"
+  },
+  {
+    "year": 2024,
+    "title": "Algeria cracks down on journalists and online activists",
+    "verdict": "TRUE",
+    "reason": "Multiple journalist and activist arrests in 2024 under broad Penal Code provisions; RSF ranking confirmed.",
+    "source": "https://rsf.org/en/country/algeria"
+  }
+]
