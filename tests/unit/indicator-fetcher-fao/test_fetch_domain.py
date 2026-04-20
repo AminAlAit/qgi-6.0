@@ -213,9 +213,9 @@ def test_extract_indicator_output_columns_match_wb_contract():
     )
     assert list(result.columns) == ["country", "year", "value", "source_type", "is_estimate"]
     # Accept both legacy ``object`` dtype and the newer pandas
-    # ``StringDtype(na_value=nan)`` — both serialize to the same
-    # Parquet ``string`` logical type and round-trip identically.
-    assert result["country"].dtype == object or str(result["country"].dtype) == "string"
+    # ``StringDtype(na_value=nan)`` (repr 'str') — both serialize to
+    # the same Parquet ``string`` logical type and round-trip identically.
+    assert pd.api.types.is_string_dtype(result["country"])
     assert result["year"].dtype.kind == "i"    # integer
     assert result["value"].dtype == "float64"  # F5 force-cast
     assert result["is_estimate"].dtype == bool
