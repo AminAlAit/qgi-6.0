@@ -1,13 +1,16 @@
-"""Tests for the verdict-filter additions to scripts/ingest_events.py (#372).
+"""Tests for the verdict-filter in scripts/ingest_events.py (#372 + #374).
+
+#374 invariant (Amin 2026-04-21): the pipeline ingests ONLY verified-TRUE
+events. FALSE and unverified are both dropped. This is THE rule, not a mode.
 
 Covers:
 - _normalize_title robust to encoding corruption
 - load_verdict_index reads all 5 adjudication field variants
 - load_verdict_index handles raw-list + dict-wrapped (events/results)
 - load_verdict_index skips UNVERIFIED / missing / unknown
-- parse_sonnet_events unions curated + verification and filters FALSE
-- parse_sonnet_events is non-regressive when no verdict_index provided
-- unverified events are kept as fallback (not dropped)
+- parse_sonnet_events keeps ONLY verdict=TRUE events (#374)
+- parse_sonnet_events drops unverified (no fallback)
+- stale_partition_country_ids returns the set to delete from S3
 """
 import json
 import sys
@@ -146,48 +149,92 @@ def curated_dir(tmp_path):
     return d
 
 
-def test_parse_sonnet_events_no_verdict_index_is_non_regressive(tmp_path, curated_dir):
-    """With no verdict_index, behavior matches pre-#372 (all curated events kept)."""
+def test_parse_sonnet_events_no_verdict_index_drops_everything(tmp_path, curated_dir):
+    """#374: With no verdict_index, NO events are kept (strict-only invariant)."""
     batches_dir = tmp_path / "batches"
     events = ingest_events.parse_sonnet_events(batches_dir, curated_dir, verdict_index=None)
-    assert len(events) == 3
-    titles = {e["title"] for e in events}
-    assert titles == {"Real Event", "Fake Event", "Unverified Event"}
+    assert events == []
 
 
-def test_parse_sonnet_events_drops_false(tmp_path, curated_dir):
-    """With a verdict_index, FALSE events are dropped, TRUE kept, unverified kept."""
+def test_parse_sonnet_events_empty_verdict_index_drops_everything(tmp_path, curated_dir):
+    """#374: Empty verdict_index ≡ no verification → zero events ingested."""
+    batches_dir = tmp_path / "batches"
+    events = ingest_events.parse_sonnet_events(batches_dir, curated_dir, verdict_index={})
+    assert events == []
+
+
+def test_parse_sonnet_events_keeps_only_true(tmp_path, curated_dir):
+    """#374: TRUE kept, FALSE dropped, unverified dropped (no fallback)."""
     batches_dir = tmp_path / "batches"
     verdict_index = {
         ("testland", 2020, "real event"): "TRUE",
         ("testland", 2021, "fake event"): "FALSE",
-        # 2022 "unverified event" is not in the index → kept as unverified fallback
+        # 2022 "unverified event" NOT in index → dropped under #374 invariant
     }
     events = ingest_events.parse_sonnet_events(batches_dir, curated_dir, verdict_index=verdict_index)
     titles = {e["title"] for e in events}
-    assert titles == {"Real Event", "Unverified Event"}
+    assert titles == {"Real Event"}
     assert "Fake Event" not in titles
+    assert "Unverified Event" not in titles
 
 
 def test_parse_sonnet_events_heals_encoding_corruption_in_curated(tmp_path):
-    """If the verdict-index title matches the curated title after robust normalization, filter triggers."""
+    """If verdict index title matches curated title after robust normalization, filter triggers."""
     curated = tmp_path / "curated"
     curated.mkdir()
     (curated / "testland.json").write_text(json.dumps([
         {"year": 2020, "title": "PLUA Founded — First Underground",
          "description": "x", "category": "x"}
     ]), encoding="utf-8")
-    # Verdict index uses the corrupted variant (replacement char)
+    # Verdict index uses the corrupted variant (replacement char) + FALSE
     verdict_index = {
         ("testland", 2020, ingest_events._normalize_title(
             "PLUA Founded \ufffd First Underground")): "FALSE",
     }
     events = ingest_events.parse_sonnet_events(tmp_path / "batches", curated, verdict_index)
-    assert events == []  # The only event was filtered
+    assert events == []  # FALSE filtered
 
 
-def test_parse_sonnet_events_unverified_kept_as_fallback(tmp_path, curated_dir):
-    """An empty verdict_index must result in all curated events kept (non-regressive)."""
-    batches_dir = tmp_path / "batches"
-    events = ingest_events.parse_sonnet_events(batches_dir, curated_dir, verdict_index={})
-    assert len(events) == 3
+def test_parse_sonnet_events_true_verdict_with_encoding_corruption_still_kept(tmp_path):
+    """TRUE verdict with encoding-corrupted title should still match healed curated."""
+    curated = tmp_path / "curated"
+    curated.mkdir()
+    (curated / "testland.json").write_text(json.dumps([
+        {"year": 2020, "title": "PLUA Founded — First Underground",
+         "description": "x", "category": "x"}
+    ]), encoding="utf-8")
+    verdict_index = {
+        ("testland", 2020, ingest_events._normalize_title(
+            "PLUA Founded \ufffd First Underground")): "TRUE",
+    }
+    events = ingest_events.parse_sonnet_events(tmp_path / "batches", curated, verdict_index)
+    assert len(events) == 1
+    assert events[0]["title"] == "PLUA Founded — First Underground"
+
+
+# ─── stale_partition_country_ids (#374) ──────────────────────────────
+
+def test_stale_partition_country_ids_basic():
+    """Countries on S3 but not in current DataFrame are stale → returned for deletion."""
+    existing = {1, 2, 3, 4, 5}
+    current = {1, 3}
+    stale = ingest_events.stale_partition_country_ids(existing, current)
+    assert stale == {2, 4, 5}
+
+
+def test_stale_partition_country_ids_no_stale():
+    """Current is a superset → nothing stale."""
+    stale = ingest_events.stale_partition_country_ids({1, 2}, {1, 2, 3})
+    assert stale == set()
+
+
+def test_stale_partition_country_ids_empty_current_deletes_all():
+    """No current events (all unverified) → every existing partition is stale."""
+    stale = ingest_events.stale_partition_country_ids({1, 2, 3}, set())
+    assert stale == {1, 2, 3}
+
+
+def test_stale_partition_country_ids_empty_existing():
+    """No existing partitions → nothing to delete."""
+    stale = ingest_events.stale_partition_country_ids(set(), {1, 2, 3})
+    assert stale == set()

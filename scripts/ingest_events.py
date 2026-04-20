@@ -186,27 +186,32 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None,
 
     Curated-only files (no batch counterpart) are also ingested directly.
 
-    Per #372: if verdict_index is provided, events matching a (country_stem, year,
-    title_normalized) key with verdict='FALSE' are DROPPED. TRUE and unverdicted
-    events are kept (unverdicted is non-regressive — pipeline works on partial
-    verification coverage).
+    **#374 INVARIANT (Amin 2026-04-21):** verified-only ingest. An event is
+    emitted ONLY if its (country_stem, year, title_normalized) key appears in
+    the verdict_index with verdict='TRUE'. FALSE and unverified events are
+    both dropped. The pipeline's scope is defined by verification coverage,
+    not curation coverage — any country or event in output is a direct claim
+    that the data has been fact-checked.
+
+    If verdict_index is None or empty, ZERO events are emitted (strict-only
+    is THE rule, not a mode).
     """
     events = []
     verdict_index = verdict_index or {}
-    filter_stats = {'kept_true': 0, 'kept_unverified': 0, 'dropped_false': 0}
+    filter_stats = {'kept_true': 0, 'dropped_false': 0, 'dropped_unverified': 0}
 
     def should_emit(country_stem: str, year: int, title: str) -> bool:
-        """Return True if the event should be emitted (not filtered by verdict=FALSE)."""
+        """#374: emit only if verdict == TRUE. Drop FALSE and unverified."""
         key = (country_stem, int(year), _normalize_title(title))
         verdict = verdict_index.get(key)
-        if verdict == 'FALSE':
-            filter_stats['dropped_false'] += 1
-            return False
         if verdict == 'TRUE':
             filter_stats['kept_true'] += 1
+            return True
+        if verdict == 'FALSE':
+            filter_stats['dropped_false'] += 1
         else:
-            filter_stats['kept_unverified'] += 1
-        return True
+            filter_stats['dropped_unverified'] += 1
+        return False
 
     curated_files = set()
     if curated_dir and curated_dir.exists():
@@ -275,10 +280,9 @@ def parse_sonnet_events(batches_dir: Path, curated_dir: Path | None = None,
                 print(f"WARNING: Failed to parse {curated_file.name}: {e}")
 
     print(f"Parsed {len(events)} Sonnet events ({curated_used} curated + {batches_used} raw batches)")
-    if verdict_index:
-        print(f"Verdict filter (#372): {filter_stats['kept_true']} verified TRUE kept, "
-              f"{filter_stats['dropped_false']} FALSE dropped, "
-              f"{filter_stats['kept_unverified']} unverified kept (fallback)")
+    print(f"Verified-only filter (#374): {filter_stats['kept_true']} TRUE kept, "
+          f"{filter_stats['dropped_false']} FALSE dropped, "
+          f"{filter_stats['dropped_unverified']} unverified dropped")
     return events
 
 
@@ -363,6 +367,47 @@ def load_verdict_index(verification_dir: Path) -> dict:
     false_n = sum(1 for v in index.values() if v == 'FALSE')
     print(f"Loaded verdict index from {files_loaded} files: {true_n} TRUE, {false_n} FALSE")
     return index
+
+
+# ─── Stale Partition Cleanup (#374) ──────────────────────────────────────
+def stale_partition_country_ids(existing: set, current: set) -> set:
+    """Return the country_ids whose S3 partitions should be deleted.
+
+    Under the #374 verified-only invariant, some countries in the previous
+    ingest may have NO events in this run (if their verification file is
+    missing or all their events are unverified). Their old Parquet partitions
+    still sit on S3 and would serve stale data to Athena. This function
+    returns the set-difference (existing − current) so the caller can delete.
+    """
+    return set(existing) - set(current)
+
+
+def list_existing_event_partition_ids(s3_client, bucket: str) -> set:
+    """List all country_id=N/ prefixes under s3://{bucket}/events/ and return the IDs."""
+    ids = set()
+    paginator = s3_client.get_paginator('list_objects_v2')
+    for page in paginator.paginate(Bucket=bucket, Prefix=S3_EVENTS_PREFIX, Delimiter='/'):
+        for cp in page.get('CommonPrefixes', []):
+            match = re.search(r'country_id=(\d+)/', cp['Prefix'])
+            if match:
+                ids.add(int(match.group(1)))
+    return ids
+
+
+def delete_stale_partitions(s3_client, bucket: str, stale_ids: set) -> int:
+    """Delete all events.parquet objects under events/country_id=N/ for each stale N."""
+    deleted = 0
+    for cid in sorted(stale_ids):
+        prefix = f"{S3_EVENTS_PREFIX}country_id={cid}/"
+        objs = s3_client.list_objects_v2(Bucket=bucket, Prefix=prefix).get('Contents', [])
+        if not objs:
+            continue
+        s3_client.delete_objects(
+            Bucket=bucket,
+            Delete={'Objects': [{'Key': o['Key']} for o in objs]}
+        )
+        deleted += len(objs)
+    return deleted
 
 
 # ─── Compute Baselines ───────────────────────────────────────────────────
@@ -506,7 +551,21 @@ def main():
         print(df['category_normalized'].value_counts().head(10).to_string())
         return
 
-    # 5. Upload to S3 partitioned by country_id
+    # 5a. Delete stale partitions on S3 (#374).
+    # Under verified-only ingest, countries without verification files (or whose
+    # events all dropped out) produce zero rows in df. Their prior Parquet still
+    # sits on S3 and would be served stale — delete before upload.
+    print(f"\nChecking S3 for stale partitions under s3://{args.bucket}/{S3_EVENTS_PREFIX} ...")
+    existing_ids = list_existing_event_partition_ids(s3_client, args.bucket)
+    current_ids = set(df['country_id'].unique().tolist())
+    stale_ids = stale_partition_country_ids(existing_ids, current_ids)
+    print(f"  existing partitions: {len(existing_ids)}, current ingest countries: {len(current_ids)}, "
+          f"stale to delete: {len(stale_ids)}")
+    if stale_ids:
+        deleted = delete_stale_partitions(s3_client, args.bucket, stale_ids)
+        print(f"  deleted {deleted} stale objects across {len(stale_ids)} partitions")
+
+    # 5b. Upload fresh partitions to S3 partitioned by country_id
     print(f"\nUploading to s3://{args.bucket}/{S3_EVENTS_PREFIX} ...")
     uploaded = 0
     for cid, group in df.groupby('country_id'):
