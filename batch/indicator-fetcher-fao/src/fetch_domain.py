@@ -159,6 +159,33 @@ indicator_values_table = dynamodb_resource.Table(INDICATOR_VALUES_TABLE)
 # ---------------------------------------------------------------------------
 
 
+def load_canonical_country_names() -> dict[int, str]:
+    """Return ``{qgi_country_id: canonical_name_1}`` from countries.csv.
+
+    The WB fetcher writes the canonical ``name_1`` column from
+    ``pipeline-A-indicator-extractor/input/countries.csv`` as its
+    Parquet ``country`` column (see ``fetch_one.py`` ``get_country_mapping``).
+    The FAOSTAT fetcher must do the same so the two providers'
+    Parquet outputs share a column contract — Phase 2 SCDI joins on
+    ``country`` (string), not on ``country_id`` (integer).
+
+    If a qgi_country_id appears in the m49 country map but not in
+    countries.csv (shouldn't happen, but defensive), the row is
+    dropped upstream with a WARNING.
+    """
+    key = "pipeline-A-indicator-extractor/input/countries.csv"
+    logger.info(f"Loading canonical country names from s3://{BUCKET}/{key}")
+    obj = s3.get_object(Bucket=BUCKET, Key=key)
+    df = pd.read_csv(BytesIO(obj["Body"].read()))
+    if "id" not in df.columns or "name_1" not in df.columns:
+        raise ValueError(
+            f"countries.csv missing id/name_1 columns. Found: {df.columns.tolist()}"
+        )
+    out = {int(row["id"]): str(row["name_1"]) for _, row in df.iterrows()}
+    logger.info(f"Loaded {len(out)} canonical country names")
+    return out
+
+
 def load_country_map() -> dict[int, dict]:
     """Return ``{fao_area_code: {qgi_country_id, qgi_name, iso_alpha3}}``.
 
@@ -267,10 +294,12 @@ def extract_indicator(
     df_domain: pd.DataFrame,
     indicator_spec: dict,
     country_map: dict[int, dict],
+    canonical_names: dict[int, str],
 ) -> pd.DataFrame:
     """Filter the domain-wide CSV to one indicator's rows and attach
-    QGI country IDs. Returns a DataFrame with columns:
-    ``(country_id, country_name, year, value)``.
+    canonical country names. Returns a DataFrame with columns:
+    ``(country, year, value)`` — matching the WB fetcher's column
+    contract exactly so Phase 2 SCDI is provider-agnostic.
 
     ``indicator_spec`` must have item + element codes. Both short
     (``item_code`` / ``element_code``) and XLSX-native long
@@ -330,7 +359,19 @@ def extract_indicator(
         )
 
     subset["country_id"] = subset["_qgi"].apply(lambda x: x["qgi_country_id"])
-    subset["country_name"] = subset["_qgi"].apply(lambda x: x["qgi_name"])
+    # Canonical country name from countries.csv ``name_1`` — the
+    # authoritative source the WB fetcher uses. Drop rows whose
+    # qgi_country_id is in the m49 map but missing from countries.csv
+    # (structural gap; should not happen in practice but logged).
+    subset["country"] = subset["country_id"].map(canonical_names)
+    missing_canon = subset["country"].isna().sum()
+    if missing_canon:
+        dropped_ids = sorted(subset.loc[subset["country"].isna(), "country_id"].unique().tolist())
+        logger.warning(
+            f"  {missing_canon} rows dropped — qgi_country_ids {dropped_ids[:10]} "
+            f"present in m49 map but missing from countries.csv"
+        )
+        subset = subset.dropna(subset=["country"])
 
     # Year normalization.
     #
@@ -350,6 +391,48 @@ def extract_indicator(
         return int(s[-4:])
     subset["year"] = subset["Year Code"].apply(_end_year_from_code)
     subset = subset.rename(columns={"Value": "value"})
+
+    # F4 — Source-type classification (annual vs 3yr_avg) + provenance flag.
+    #
+    # FAOSTAT bulk CSVs have two orthogonal signals about each row:
+    #   (a) Year shape — derived from ``Year Code`` length:
+    #       * ``annual``  — single-year observation (Year Code = 4 digits)
+    #       * ``3yr_avg`` — 3-year rolling average (Year Code = 8 digits,
+    #         concat of start+end; ``Year`` column is a range like
+    #         "2020-2022"). These have mechanical autocorrelation of
+    #         ~0.67 between neighbouring end-years even in an IID
+    #         series, which Phase 2 Pearson SCDI cannot tell apart
+    #         from real signal.
+    #   (b) Value provenance — ``Flag`` column: ``"E"`` means FAO
+    #       computed this value (model / imputation), blank / other
+    #       means it was directly reported by the country.
+    #
+    # These are INDEPENDENT. An ``annual`` row can be ``fao_estimate``
+    # (e.g., single-year nowcast), and a ``3yr_avg`` row can be
+    # directly reported. We track them as two columns so downstream
+    # code makes the right decisions:
+    #   * First-differencing targets ``3yr_avg`` shape (autocorrelation
+    #     mitigation), regardless of ``is_estimate``
+    #   * Dedup priority on collisions: prefer ``annual`` over ``3yr_avg``
+    #     (shape first); within same shape, prefer reported over estimate.
+    #
+    # (An earlier revision collapsed both into one column with
+    # priority ``annual > fao_estimate > 3yr_avg``. That was wrong —
+    # it silently kept 3yr_avg data UN-differenced whenever the Flag
+    # column was ``"E"``, which is nearly 100% of indicators in the
+    # FS domain. Dry-run surfaced the bug before commit.)
+    _yc_len = subset["Year Code"].astype(str).str.len()
+    subset["source_type"] = _yc_len.map(
+        {4: "annual", 8: "3yr_avg"}
+    ).fillna("3yr_avg")  # unknown length defaults to 3yr_avg (conservative)
+    subset["is_estimate"] = (
+        subset.get("Flag", pd.Series(dtype=str)).astype(str).str.upper() == "E"
+    )
+    logger.info(
+        f"  Source-type mix: "
+        f"shape={subset['source_type'].value_counts().to_dict()}; "
+        f"is_estimate={int(subset['is_estimate'].sum())}/{len(subset)}"
+    )
 
     # Value coercion to numeric.
     #
@@ -420,40 +503,173 @@ def extract_indicator(
     # partitioned table without schema-evolution compromises.
     subset["value"] = numeric.astype("float64")
     subset = subset.dropna(subset=["value"])
-    return subset[["country_id", "country_name", "year", "value"]]
+
+    # F4 — Dedup collisions on (country, year) using source_type + is_estimate.
+    #
+    # When both an annual and a 3yr_avg row exist for the same
+    # (country, year), keep the higher-priority one. Priority order:
+    #   1. ``annual`` beats ``3yr_avg`` (shape-based; the annual row
+    #      is the direct observation and is not inflated by smoothing)
+    #   2. Within same shape: directly reported (is_estimate=False)
+    #      beats FAO-computed (is_estimate=True)
+    #
+    # Ordered categorical sort makes this deterministic and
+    # auditable — expert consensus (UN/MIT/TUM) was unanimous that
+    # the previous sort-by-Year-Code heuristic was fragile to
+    # FAOSTAT API row-order changes.
+    _SHAPE_PRIORITY = ["annual", "3yr_avg"]
+    subset["_sort_shape"] = pd.Categorical(
+        subset["source_type"], categories=_SHAPE_PRIORITY, ordered=True
+    )
+    # is_estimate=False (reported) sorts before True (estimated)
+    subset["_sort_est"] = subset["is_estimate"].astype(int)
+    _before = len(subset)
+    subset = (
+        subset.sort_values(["country", "year", "_sort_shape", "_sort_est"])
+        .drop_duplicates(subset=["country", "year"], keep="first")
+        .drop(columns=["_sort_shape", "_sort_est"])
+    )
+    _dedup = _before - len(subset)
+    if _dedup:
+        logger.info(
+            f"  Dedup: dropped {_dedup} (country, year) collisions "
+            f"(annual preferred over 3yr_avg; reported over estimate)"
+        )
+
+    # F1 — First-difference rolling-average series to break the
+    # mechanical autocorrelation induced by the 3-year smoothing window.
+    #
+    # The three expert reviewers (UN/MIT/TUM) were unanimous that
+    # applying Pearson correlation directly to overlapping-window 3YA
+    # series produces spurious SCDIs — a moving-average over an AR(1)
+    # process inflates lag-1 autocorrelation from φ to (1+2φ)/3 ≈
+    # 0.53 at φ=0.3, well above the SCDI threshold of 0.5 with zero
+    # underlying signal.
+    #
+    # We first-difference PER-COUNTRY so each country's series
+    # becomes year-over-year change. ``annual`` series do NOT need
+    # this transform (they have no induced autocorrelation) — but
+    # note that raw annual levels can still be spuriously correlated
+    # via shared trend. That's a separate concern (deferred to
+    # post-V1 via first-differencing all level indicators + ADF
+    # test per series). For smoke we only diff ``3yr_avg`` rows.
+    _is_3ya = subset["source_type"] == "3yr_avg"
+    if _is_3ya.any():
+        # Apply within each country: sort, diff, drop leading NaN.
+        subset = subset.sort_values(["country", "year"]).reset_index(drop=True)
+        diff_mask = subset["source_type"] == "3yr_avg"
+        subset.loc[diff_mask, "value"] = (
+            subset.loc[diff_mask]
+            .groupby("country")["value"]
+            .diff()
+        )
+        _before_diff = len(subset)
+        subset = subset.dropna(subset=["value"]).reset_index(drop=True)
+        logger.info(
+            f"  First-diff: {diff_mask.sum()} 3yr_avg rows transformed "
+            f"to year-over-year change; {_before_diff - len(subset)} "
+            f"leading-year NaNs dropped"
+        )
+
+    # F2 — Variance floor filter.
+    #
+    # After <X imputation at L/2, some country-series collapse to
+    # near-constant values (e.g., Norway's FIES prevalence stays at
+    # 0.05 across all years after imputation). A series with
+    # std ≈ 0 has undefined Pearson correlation and wastes SCDI
+    # compute. Drop country-groups whose within-series std is below
+    # a small floor. ε = 1e-6 is enough to keep any genuinely varying
+    # series while excluding pure imputation artifacts.
+    _VARIANCE_FLOOR = 1e-6
+    _stds = subset.groupby("country")["value"].transform("std")
+    _flat_mask = _stds.fillna(0) < _VARIANCE_FLOOR
+    n_flat_dropped = int(_flat_mask.sum())
+    if n_flat_dropped:
+        flat_countries = (
+            subset.loc[_flat_mask, "country"].drop_duplicates().head(10).tolist()
+        )
+        logger.info(
+            f"  Variance floor: dropped {n_flat_dropped} rows from "
+            f"{len(flat_countries)}+ flat-series countries "
+            f"(first 10: {flat_countries})"
+        )
+        subset = subset[~_flat_mask].reset_index(drop=True)
+
+    return subset[["country", "year", "value", "source_type", "is_estimate"]]
 
 
 def write_parquet(
     df_indicator: pd.DataFrame,
     indicator_spec: dict,
 ) -> int:
-    """Partition by (year, country_id) and write one Parquet per partition.
+    """Write ONE Parquet per indicator at the WB-compatible path.
 
-    Layout matches the WB fetcher output exactly so Phase 2's Glue
-    crawler + SCDI finder are indifferent to the source provider.
-    Returns the number of Parquet objects written.
+    Layout (#241 Phase B F6, 2026-04-20 rewrite — was partitioned
+    tree, now single file):
+
+        s3://{BUCKET}/pipeline-A-indicator-extractor/output/parquet-completed/{id_string}/{id_string}.parquet
+
+    Schema (must exactly match ``batch/indicator-fetcher/src/fetch_one.py``
+    so Phase 2 SCDI reads both providers identically):
+
+        country      : object (string, canonical name_1 from countries.csv)
+        year         : int64
+        value        : float64
+        is_predicted : bool  (always False for FAOSTAT — raw data, no projections)
+
+    The previous partitioned layout (``parquet/{id}/year=Y/country=C/data.parquet``)
+    was incompatible with the SCDI finder's single-file read pattern
+    (``fetch_one.py`` & ``scdi_finder.py`` load the whole indicator's
+    series in one S3 GET). Returns 1 on successful write, 0 if the
+    DataFrame is empty.
     """
     id_string = indicator_spec["id_string"]
-    written = 0
-    for (year, country_id), grp in df_indicator.groupby(["year", "country_id"]):
-        if grp.empty:
-            continue
-        key = (
-            f"{S3_OUTPUT_PREFIX}/parquet/{id_string}/"
-            f"year={int(year)}/country={int(country_id)}/data.parquet"
-        )
-        # pandas → in-memory Parquet bytes → S3
-        buf = BytesIO()
-        grp[["value"]].to_parquet(buf, index=False)
-        buf.seek(0)
-        s3.put_object(
-            Bucket=BUCKET,
-            Key=key,
-            Body=buf.read(),
-            ContentType="application/octet-stream",
-        )
-        written += 1
-    return written
+    if df_indicator.empty:
+        logger.warning(f"  {id_string}: empty DataFrame — skipping Parquet write")
+        return 0
+
+    # Assemble the WB-compatible schema + FAOSTAT ``source_type``.
+    # ``is_predicted`` is a semantic distinction from the WB completer
+    # Lambda (#148): any indicator value carried forward or forecast
+    # forward has ``is_predicted=True``; raw source data has ``False``.
+    # FAOSTAT bulk downloads are always raw observations, never
+    # projections.
+    #
+    # ``source_type`` (annual / fao_estimate / 3yr_avg [+diffed]) is
+    # FAOSTAT-specific provenance — Phase 2 SCDI ignores this column
+    # silently, but it's part of the Parquet for audit + future
+    # downstream consumers (ops report, ML backtest gates).
+    out = df_indicator.copy()
+    out["year"] = out["year"].astype("int64")
+    out["value"] = out["value"].astype("float64")
+    out["is_predicted"] = False
+    # source_type may be Categorical post-dedup — cast to str for Parquet.
+    if "source_type" in out.columns:
+        out["source_type"] = out["source_type"].astype(str)
+    else:
+        out["source_type"] = "unknown"
+    if "is_estimate" not in out.columns:
+        out["is_estimate"] = False
+    out["is_estimate"] = out["is_estimate"].astype(bool)
+    out = out.sort_values(["country", "year"])[
+        ["country", "year", "value", "is_predicted", "source_type", "is_estimate"]
+    ]
+
+    key = f"{S3_OUTPUT_PREFIX}/parquet-completed/{id_string}/{id_string}.parquet"
+    buf = BytesIO()
+    out.to_parquet(buf, index=False)
+    buf.seek(0)
+    s3.put_object(
+        Bucket=BUCKET,
+        Key=key,
+        Body=buf.read(),
+        ContentType="application/octet-stream",
+    )
+    logger.info(
+        f"  {id_string}: wrote {len(out):,} rows ({out['country'].nunique()} "
+        f"countries × {out['year'].nunique()} years) to s3://{BUCKET}/{key}"
+    )
+    return 1
 
 
 # ---------------------------------------------------------------------------
@@ -528,10 +744,11 @@ def main() -> int:
         return 1
 
     country_map = load_country_map()
+    canonical_names = load_canonical_country_names()
 
     for ind in indicators:
         try:
-            df_ind = extract_indicator(df_domain, ind, country_map)
+            df_ind = extract_indicator(df_domain, ind, country_map, canonical_names)
             written = write_parquet(df_ind, ind)
             write_tracker_row(
                 ind["id_string"],
@@ -541,7 +758,7 @@ def main() -> int:
             )
             logger.info(
                 f"  {ind['id_string']}: {len(df_ind)} rows, "
-                f"{written} Parquet partitions"
+                f"{written} Parquet file(s) written"
             )
         except Exception as exc:  # noqa: BLE001
             logger.error(
