@@ -56,6 +56,7 @@ import json
 import logging
 import os
 import random
+import re
 import sys
 import time
 import traceback
@@ -349,6 +350,76 @@ def extract_indicator(
         return int(s[-4:])
     subset["year"] = subset["Year Code"].apply(_end_year_from_code)
     subset = subset.rename(columns={"Value": "value"})
+
+    # Value coercion to numeric.
+    #
+    # FAOSTAT ``Value`` cells contain a mix of:
+    #   * pure numerics ("87", "29.5") — the common case
+    #   * below-detection-limit sentinels ("<0.1", "<0.5") — LEFT-
+    #     CENSORED observations. Dropping them silently removes
+    #     food-secure countries (Norway, Japan, Singapore) from the
+    #     SCDI graph — a reporting bias the three expert reviewers
+    #     (UN/MIT/TUM) all flagged as unacceptable. Epidemiology
+    #     convention: impute as half the detection limit (0.1 -> 0.05).
+    #   * suppression sentinels ("...", "..") — MNAR (Missing Not At
+    #     Random, typically low-capacity statistical systems or
+    #     confidentiality). Drop with a separate counter so the ops
+    #     report can distinguish data gaps from censoring.
+    #   * unknown flag characters — anything else non-numeric. Drop
+    #     and log so a future FAOSTAT schema change does not
+    #     silently evaporate rows.
+    #
+    # Without this block every Parquet's ``value`` column is written
+    # as object (string) dtype, which Phase 2 SCDI cannot compute
+    # Pearson on. Blocker for the #241 Phase B full pipeline run.
+    raw = subset["value"].astype(str)
+
+    # Pass 1: below-detection ("<0.1") -> half-limit ("0.05"). Do this
+    # BEFORE numeric coercion so these cells survive as real floats.
+    _BELOW_DETECT = raw.str.match(r"^\s*<\s*\d+\.?\d*\s*$", na=False)
+    if _BELOW_DETECT.any():
+        def _half_limit(s: str) -> str:
+            m = re.match(r"^\s*<\s*(\d+\.?\d*)\s*$", s)
+            return str(float(m.group(1)) / 2.0) if m else s
+        subset.loc[_BELOW_DETECT, "value"] = (
+            raw[_BELOW_DETECT].apply(_half_limit)
+        )
+
+    # Pass 2: identify suppression and unknown tokens BEFORE coercion
+    # so we can count them distinctly for ops reporting.
+    numeric = pd.to_numeric(subset["value"], errors="coerce")
+    _NUMERIC_OK = numeric.notna()
+    _SUPPRESSED = (
+        ~_NUMERIC_OK
+        & raw.str.match(r"^\s*\.{2,3}\s*$", na=False)
+    )
+    _UNKNOWN = ~_NUMERIC_OK & ~_SUPPRESSED
+
+    n_below_detect = int(_BELOW_DETECT.sum())
+    n_suppressed = int(_SUPPRESSED.sum())
+    n_unknown = int(_UNKNOWN.sum())
+    logger.info(
+        f"  Value coercion: {n_below_detect} '<X' -> X/2; "
+        f"{n_suppressed} suppressed ('...') dropped; "
+        f"{n_unknown} unknown-flag rows dropped; "
+        f"{int(_NUMERIC_OK.sum())} rows retained as numeric"
+    )
+    if n_unknown:
+        # Log up to 5 examples so a schema change is discoverable.
+        examples = raw[_UNKNOWN].drop_duplicates().head(5).tolist()
+        logger.warning(
+            f"  Unknown non-numeric tokens in Value column "
+            f"(first 5 distinct): {examples}"
+        )
+
+    # Force float64 always — pandas would infer int64 if all remaining
+    # values happen to be integer-valued (e.g., Avg Dietary Energy Supply
+    # Adequacy is whole percentages). WB fetcher writes float64 for every
+    # indicator. Keeping both providers on the same Parquet ``value``
+    # dtype lets Athena UNION WB and FAOSTAT rows in a single Glue
+    # partitioned table without schema-evolution compromises.
+    subset["value"] = numeric.astype("float64")
+    subset = subset.dropna(subset=["value"])
     return subset[["country_id", "country_name", "year", "value"]]
 
 
