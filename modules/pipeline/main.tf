@@ -1662,23 +1662,27 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
-          # NOTE: no ``external_location`` here. QGI-Lambda-Workgroup has
+          # NOTE 1: no ``external_location``. QGI-Lambda-Workgroup has
           # EnforceWorkGroupConfiguration=true which rejects CTAS
           # submissions that set their own output location. Let Athena
           # write the staging table into the workgroup's default
           # location (same as 5b.4 Seed CTAS for the recipes table).
-          # Cleanup is handled by the 5b.10a-drop state which runs
-          # DROP TABLE IF EXISTS before the CREATE.
+          #
+          # NOTE 2: no ``partitioned_by`` either. Athena's Hive writer
+          # caps at 100 open partitions per CTAS; we have 214 countries.
+          # Writing partitioned hit HIVE_TOO_MANY_OPEN_PARTITIONS. Post-
+          # filter (top-200 per pair) the staging table is small —
+          # ~9M rows / ~200MB Parquet — so Map children's full-scan
+          # WHERE country_a_id = X queries run in ~2-3s each regardless.
+          # Idempotency handled by 5b.10a-drop before CREATE.
           QueryString = join("\n", [
             "CREATE TABLE ${var.glue_database_name}.pair_windows_staging",
             "WITH (",
             "  format = 'PARQUET',",
-            "  write_compression = 'SNAPPY',",
-            "  partitioned_by = ARRAY['country_a_id']",
+            "  write_compression = 'SNAPPY'",
             ") AS",
-            "SELECT country_b_id, length, start_year_a, start_year_b,",
-            "       indicator_count, avg_correlation, pattern_power_score,",
-            "       country_a_id",
+            "SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,",
+            "       indicator_count, avg_correlation, pattern_power_score",
             "FROM (",
             "  SELECT *,",
             "         ROW_NUMBER() OVER (",
