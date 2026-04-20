@@ -5,17 +5,24 @@ on:
     paths:
       - 'batch/scdi-finder/**'
       - 'batch/indicator-fetcher/**'
+      - 'batch/indicator-fetcher-fao/**'
   workflow_dispatch:
     inputs:
       image:
         description: 'Which image to rebuild'
         required: true
-        default: 'both'
+        default: 'all'
         type: choice
-        options: [both, scdi-finder, indicator-fetcher]
+        options: [all, scdi-finder, indicator-fetcher, indicator-fetcher-fao]
 
 jobs:
-  build-push:
+  # ------------------------------------------------------------------
+  # Management-account push — scdi-finder + WB indicator-fetcher.
+  # Uses the existing github-actions-qgi-ecr-push role in 111111111111.
+  # WB fetcher is mirrored here for the #152 Path A cross-account pattern
+  # (staging envs may pull from here if a future migration revives it).
+  # ------------------------------------------------------------------
+  build-push-management:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -42,9 +49,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             case "${{ inputs.image }}" in
-              both)              echo "scdi=1" >> "$GITHUB_OUTPUT"; echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
-              scdi-finder)       echo "scdi=1" >> "$GITHUB_OUTPUT" ;;
-              indicator-fetcher) echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
+              all)                   echo "scdi=1" >> "$GITHUB_OUTPUT"; echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
+              scdi-finder)           echo "scdi=1" >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher)     echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher-fao) : ;; # FAO doesn't push to management
             esac
           else
             git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
@@ -60,10 +68,71 @@ jobs:
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/scdi-finder/
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/scdi-finder/
 
-      - name: Build and push indicator-fetcher
+      - name: Build and push indicator-fetcher (WB) — management mirror
         if: steps.changed.outputs.fetcher == '1'
         run: |
           IMAGE_TAG=${GITHUB_SHA::8}
           IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher/
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher/
+
+  # ------------------------------------------------------------------
+  # Staging-account push — WB + FAO fetchers land in 222222222222 ECR
+  # where the Phase 1 JobDefs reference them via ${var.aws_account_id}.
+  # The `github-actions-qgi-ecr-push` role in staging was added in
+  # qgi-infra/modules/iam/main.tf (#241 Phase B), scoped to the three
+  # Phase 1/2 repos.
+  # ------------------------------------------------------------------
+  build-push-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    env:
+      ECR_REGISTRY: 222222222222.dkr.ecr.eu-central-1.amazonaws.com
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-ecr-push
+          aws-region: eu-central-1
+
+      - uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Detect changed image dirs
+        id: changed
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            case "${{ inputs.image }}" in
+              all)                   echo "fetcher=1" >> "$GITHUB_OUTPUT"; echo "fao=1" >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher)     echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
+              indicator-fetcher-fao) echo "fao=1"     >> "$GITHUB_OUTPUT" ;;
+              scdi-finder)           : ;; # scdi-finder lives only in management ECR
+            esac
+          else
+            git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
+            grep -q '^batch/indicator-fetcher/'     /tmp/changed.txt && echo "fetcher=1" >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/indicator-fetcher-fao/' /tmp/changed.txt && echo "fao=1"     >> "$GITHUB_OUTPUT" || true
+          fi
+
+      - name: Build and push indicator-fetcher (WB) — staging
+        if: steps.changed.outputs.fetcher == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher/
+
+      - name: Build and push indicator-fetcher-fao (FAOSTAT) — staging
+        if: steps.changed.outputs.fao == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher-fao
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher-fao/
+          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher-fao/
