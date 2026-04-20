@@ -677,6 +677,13 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
       ATHENA_DATABASE    = var.glue_database_name
       ATHENA_WORKGROUP   = var.athena_workgroup_name
       S3_OUTPUT_LOCATION = local.s3_output_location
+      # #241 Phase B full-pipeline run (2026-04-20) discovered this was
+      # missing: the Lambda writes the ~1.3MB insert-items JSON to S3
+      # at ``recipe-engine/insert-items-{run_id}.json`` (exceeds SF's
+      # 256KB state payload limit so it can't be inlined). Without
+      # S3_BUCKET the put_object was called with Bucket="" which raises
+      # ParamValidationError and failed Main SF at state 5b.3.
+      S3_BUCKET          = var.data_lake_bucket_name
     }
   }
 
