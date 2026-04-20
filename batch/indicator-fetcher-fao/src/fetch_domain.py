@@ -91,13 +91,44 @@ INDICATOR_VALUES_TABLE = os.environ.get(
     "INDICATOR_VALUES_TABLE", "qgi-indicator-values"
 )
 
-# FAOSTAT bulk-download URL template. The canonical path is
-# ``https://bulks-faostat.fao.org/production/{DOMAIN}_E_All_Data_(Normalized).zip``
-# per FAOSTAT's documented bulk-download convention.
+# FAOSTAT bulk-download URL template (updated 2026-04-20 Phase B smoke test).
+#
+# FAOSTAT retired ``https://bulks-faostat.fao.org/production/{DOMAIN_CODE}...``
+# sometime after the original design — both the host and the filename
+# prefix changed. The current (working) path is
+# ``https://fenixservices.fao.org/faostat/static/bulkdownloads/{Domain_Full_Name}_E_All_Data_(Normalized).zip``
+# where ``Domain_Full_Name`` is the human-readable domain name with
+# underscores (e.g. ``Food_Security_Data``, not the short code ``FS``).
+#
+# We keep short codes in the XLSX and map to full names here. If a
+# domain we haven't mapped yet is requested, the fetcher raises a
+# descriptive error pointing at this block. To extend: append to
+# ``_FAO_DOMAIN_FULL_NAMES`` — no code change elsewhere.
 FAO_BULK_URL_TEMPLATE = os.environ.get(
     "FAO_BULK_URL_TEMPLATE",
-    "https://bulks-faostat.fao.org/production/{domain}_E_All_Data_(Normalized).zip",
+    "https://fenixservices.fao.org/faostat/static/bulkdownloads/{domain_full}_E_All_Data_(Normalized).zip",
 )
+
+# Short domain code (as written in the XLSX) → full name used in the
+# FAOSTAT bulk-download URL. Start small; extend as more FAO domains
+# land in the catalog. Extracted from the FAOSTAT bulk-downloads page.
+_FAO_DOMAIN_FULL_NAMES = {
+    "FS":       "Food_Security_Data",       # Suite of Food Security Indicators
+    # Future (verify at https://www.fao.org/faostat/en/#data before use):
+    # "RL":     "Inputs_LandUse",
+    # "RFB":    "FertilizersProduct",        # or Inputs_FertilizersArchive
+    # "TM":     "Trade_DetailedTradeMatrix",
+    # "PP":     "Prices",
+    # "QCL":    "Production_Crops_Livestock",
+    # "GT":     "Emissions_Totals",
+    # "Forestry":"Forestry",
+}
+
+# Browser-like User-Agent — some FAOSTAT CDNs (and many other bulk hosts)
+# block the default ``python-requests/X.Y.Z`` UA.
+_HTTP_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (compatible; QGI-pipeline/1.0; +https://qgintelligence.com)",
+}
 
 JITTER_MIN_S = int(os.environ.get("JITTER_MIN_S", "60"))
 JITTER_MAX_S = int(os.environ.get("JITTER_MAX_S", "300"))
@@ -169,19 +200,29 @@ def _jitter_sleep() -> None:
 def fetch_domain_csv(domain_code: str) -> bytes:
     """Download the FAOSTAT domain ZIP and return the extracted CSV bytes.
 
-    FAOSTAT bulk ZIPs always contain ONE CSV file named
-    ``{DOMAIN}_E_All_Data_(Normalized).csv``. Returns the raw CSV
-    bytes (may be large — 50-200MB).
+    FAOSTAT bulk ZIPs contain at least one main CSV (we select the first
+    non-flags .csv in the ZIP via a heuristic — the filename prefix
+    matches the full domain name, not the short code). Returns the raw
+    CSV bytes (may be large — 50-200MB).
     """
-    url = FAO_BULK_URL_TEMPLATE.format(domain=domain_code)
-    logger.info(f"Downloading FAOSTAT domain {domain_code} from {url}")
+    domain_full = _FAO_DOMAIN_FULL_NAMES.get(domain_code)
+    if domain_full is None:
+        raise RuntimeError(
+            f"Unknown FAOSTAT domain {domain_code!r}. Add it to "
+            f"_FAO_DOMAIN_FULL_NAMES in fetch_domain.py — see the "
+            f"comment above that dict for the FAOSTAT URL convention."
+        )
+    url = FAO_BULK_URL_TEMPLATE.format(domain_full=domain_full)
+    logger.info(
+        f"Downloading FAOSTAT domain {domain_code} (full={domain_full!r}) from {url}"
+    )
     last_exc: Exception | None = None
     for attempt in range(1, MAX_FETCH_ATTEMPTS + 1):
         try:
             # 5-minute timeout — large ZIPs on the FAO CDN can be slow.
             # The Fargate task has a 60-min overall timeout so this is
             # conservatively inside that budget.
-            resp = requests.get(url, timeout=300)
+            resp = requests.get(url, timeout=300, headers=_HTTP_HEADERS)
             resp.raise_for_status()
             logger.info(
                 f"Downloaded {len(resp.content):,} bytes in attempt {attempt}"
