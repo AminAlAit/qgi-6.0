@@ -39,6 +39,9 @@ from datetime import datetime, timezone
 
 import boto3
 
+# #375 — country-risks.json auto-generation at pipeline end
+from country_risks import write_country_risks_json
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -338,11 +341,28 @@ def create_convergence_view():
 
 def write_dashboard_jsons():
     current_year = datetime.now(timezone.utc).year
-    return {
+    results = {
         'ranking': _write_ranking_json(),
         'early_warning': _write_early_warning_json(current_year),
         'recipes_top50': _write_recipes_top50_json(current_year),
     }
+    # #375 — country-risks.json (V1.8.1 scoring) auto-generated at pipeline end
+    try:
+        country_risks_summary = write_country_risks_json(
+            run_query_fn=run_query,
+            rows_fn=_run_query_to_rows,
+            s3_client=s3,
+            bucket=S3_BUCKET,
+            athena_db=ATHENA_DB,
+        )
+        results['country_risks'] = country_risks_summary
+        logger.info(f"country-risks.json: {country_risks_summary}")
+    except Exception as exc:  # noqa: BLE001
+        # Non-fatal: the 3 core dashboard JSONs already landed; country-risks
+        # was added in #375 and shouldn't block the pipeline on regression.
+        logger.exception(f"country-risks.json generation failed: {exc}")
+        results['country_risks'] = {'error': str(exc)}
+    return results
 
 
 def _write_ranking_json():
