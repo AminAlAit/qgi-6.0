@@ -851,6 +851,78 @@ resource "aws_lambda_function" "pair_windows_generator" {
 }
 
 # ---------------------------------------------------------------------------
+# Phase 5b.10b — Pair Windows Enumerator (#369)
+#
+# AFTER the 5b.10a CTAS has materialised ``pair_windows_staging``,
+# this Lambda runs a tiny ``SELECT DISTINCT country_a_id`` query
+# and writes the item array to S3 for the 5b.10c Distributed Map.
+# Wall time <10s; no risk of Lambda timeout.
+#
+# Replaces the legacy ``pair_windows_generator`` pattern of running
+# a full-table window function in-Lambda (900s cap blocked it at
+# ~2B rows during #241 Phase B). Legacy Lambda stays deployed as
+# rollback fallback — delete after 2 successful prod runs of the
+# new pipeline (see #369 migration plan).
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "pair_windows_enumerator" {
+  function_name    = "qgi-pipeline-pair-windows-enumerator"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 60
+  memory_size      = 256
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      S3_BUCKET              = var.data_lake_bucket_name
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Phase 5b.10c child — Pair Windows Writer (#369)
+#
+# Distributed-Map child. Reads ONE country_a_id's partition from
+# ``pair_windows_staging`` (bounded ~42K rows), builds the JSON
+# blob, writes ``dashboard/pair-windows/{country_a_id}.json``.
+# Wall time ~5-10s per invocation. With MaxConcurrency=20 across
+# 214 countries, the full Map completes in ~2 min.
+# ---------------------------------------------------------------------------
+resource "aws_lambda_function" "pair_windows_writer" {
+  function_name    = "qgi-pipeline-pair-windows-writer"
+  handler          = "lambda_function.lambda_handler"
+  timeout          = 300
+  memory_size      = 512
+  runtime          = local.lambda_defaults.runtime
+  architectures    = local.lambda_defaults.architectures
+  filename         = local.lambda_defaults.filename
+  source_code_hash = local.lambda_defaults.source_code_hash
+  role             = local.lambda_defaults.role
+  layers           = local.lambda_defaults.layers
+
+  environment {
+    variables = {
+      ATHENA_DATABASE        = var.glue_database_name
+      ATHENA_WORKGROUP       = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+    }
+  }
+
+  lifecycle { ignore_changes = [filename, source_code_hash] }
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
 # #175: Indicator manifest reader (decoupled pipeline)
 #
 # Reads the fetch manifest from S3 and returns it for the Main SF.
@@ -1565,18 +1637,113 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.structural_twins_output"
         Retry      = local.lambda_retry
-        Next       = "5b.10. Generate Pair Windows"
+        Next       = "5b.10a-drop. Drop Staging Table"
       }
 
-      "5b.10. Generate Pair Windows" = {
+      # #369: Pair windows refactor — replaces the 900s-capped Lambda with
+      # a CTAS + Enumerate + Distributed-Map flow. See the ticket body
+      # for the full design rationale. The legacy pair_windows_generator
+      # Lambda remains deployed (rollback fallback) but is not referenced
+      # by the SF any more.
+      "5b.10a-drop. Drop Staging Table" = {
         Type     = "Task"
-        Resource = aws_lambda_function.pair_windows_generator.arn
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          QueryString           = "DROP TABLE IF EXISTS ${var.glue_database_name}.pair_windows_staging"
+          WorkGroup             = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
+        }
+        ResultPath = "$.pair_windows_drop_output"
+        Next       = "5b.10a. Pair Windows CTAS"
+      }
+
+      "5b.10a. Pair Windows CTAS" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          QueryString = join("\n", [
+            "CREATE TABLE ${var.glue_database_name}.pair_windows_staging",
+            "WITH (",
+            "  format = 'PARQUET',",
+            "  write_compression = 'SNAPPY',",
+            "  external_location = 's3://${var.data_lake_bucket_name}/tmp/pair-windows-staging/',",
+            "  partitioned_by = ARRAY['country_a_id']",
+            ")",
+            "AS",
+            "SELECT country_b_id, length, start_year_a, start_year_b,",
+            "       indicator_count, avg_correlation, pattern_power_score,",
+            "       country_a_id",
+            "FROM (",
+            "  SELECT *,",
+            "         ROW_NUMBER() OVER (",
+            "           PARTITION BY country_a_id, country_b_id",
+            "           ORDER BY pattern_power_score DESC",
+            "         ) AS rn",
+            "  FROM ${var.glue_database_name}.patterns",
+            ")",
+            "WHERE rn <= 200;",
+          ])
+          WorkGroup             = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
+        }
+        ResultPath = "$.pair_windows_ctas_output"
+        Retry = [{
+          ErrorEquals     = ["States.ALL"]
+          IntervalSeconds = 30
+          MaxAttempts     = 1
+          BackoffRate     = 1
+        }]
+        Next = "5b.10b. Enumerate Country A IDs"
+      }
+
+      "5b.10b. Enumerate Country A IDs" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.pair_windows_enumerator.arn
         Parameters = {
           "run_id.$" = "$$.Execution.Name"
         }
-        ResultPath = "$.pair_windows_output"
+        ResultPath = "$.pair_windows_enumerate"
         Retry      = local.lambda_retry
-        Next       = "5c. Athena MSCK recipes"
+        Next       = "5b.10c. Per-Country Pair Windows"
+      }
+
+      "5b.10c. Per-Country Pair Windows" = {
+        Type           = "Map"
+        MaxConcurrency = 20
+        ItemReader = {
+          Resource     = "arn:aws:states:::s3:getObject"
+          ReaderConfig = { InputType = "JSON" }
+          Parameters = {
+            "Bucket.$" = "$.pair_windows_enumerate.items_bucket"
+            "Key.$"    = "$.pair_windows_enumerate.items_key"
+          }
+        }
+        ItemProcessor = {
+          ProcessorConfig = {
+            Mode          = "DISTRIBUTED"
+            ExecutionType = "STANDARD"
+          }
+          StartAt = "Write Pair Windows JSON"
+          States = {
+            "Write Pair Windows JSON" = {
+              Type     = "Task"
+              Resource = aws_lambda_function.pair_windows_writer.arn
+              Retry = [{
+                ErrorEquals     = ["States.ALL"]
+                IntervalSeconds = 10
+                MaxAttempts     = 2
+                BackoffRate     = 2
+              }]
+              End = true
+            }
+          }
+        }
+        ToleratedFailurePercentage = 0
+        # Drop aggregated children output — same lesson as 5b.5 (256KB cap).
+        ResultPath                 = null
+        Next                       = "5c. Athena MSCK recipes"
       }
 
       "5c. Athena MSCK recipes" = {
