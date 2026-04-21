@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "description": "Drama tier weights for event categories. Used by salience_score to rank predictions by 'interestingness'. Tier 1 (1.0) = high-consequence geopolitical events. Tier 4 (0.05) = routine/low-drama. Multiplicative with z-score.",
-    "last_updated": "2026-04-13",
+    "description": "Severity tier weights for event categories. Used by salience_score to rank predictions by 'interestingness'. Tier 1 (1.0) = high-consequence geopolitical events. Tier 4 (0.05) = routine/low-severity. Multiplicative with z-score.",
+    "last_updated": "2026-04-22",
     "total_categories": 141,
-    "note": "141 categories exist due to drift from uncurated events. Many are near-duplicates. A taxonomy cleanup is needed but drama tiers are assigned to ALL existing categories."
+    "note": "141 categories exist due to drift from uncurated events. Many are near-duplicates. A taxonomy cleanup is needed but severity tiers are assigned to ALL existing categories. Renamed from category_drama_tiers.json on 2026-04-22 (#385)."
   },
   "tiers": {
     "1.0": {
