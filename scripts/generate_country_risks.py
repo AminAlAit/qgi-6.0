@@ -171,58 +171,100 @@ def severity_weight(category):
     return SEVERITY_TIERS.get(category, 0.3)
 
 
-def risk_tier_label(top_salience, top_severity_weight):
-    """Convert max salience score + its category severity-weight to a risk tier.
+# Embedded fallback scoring config (mirrors qgi-data/scoring/V1.9.1.json).
+DEFAULT_SCORING_CONFIG = {
+    "_meta": {"scoring_version": "V1.9.1", "schema_version": 1},
+    "thresholds": {
+        "CRISIS_HIGH": 1.4,
+        "REGULAR_HIGH": 2.0,
+        "CRISIS_MODERATE": 1.0,
+        "REGULAR_MODERATE": 1.3,
+    },
+    "composite_rule": {
+        "enabled": True,
+        "min_categories_above_salience": 2,
+        "min_salience_floor": 1.3,
+        "min_severity_for_at_least_one": 0.8,
+    },
+    "default_severity": 0.3,
+}
 
-    Category-stratified tiers (2026-04-19, Sonnet advisor review of #339):
-      - Crisis categories (severity_weight >= 1.0: civil_war_and_insurgency,
-        interstate_war, military_coup, political_violence, terrorist_attack,
-        humanitarian_crisis, etc.) ........................ HIGH at >= 1.4
-      - All other categories ............................. HIGH at >= 1.625
-      - MODERATE (any category) .......................... >= 1.3
-      - INDICATIVE ....................................... below MODERATE
 
-    Rationale: the previous single-threshold cut (1.625/1.1) produced a HIGH
-    list dominated by STABLE DEMOCRACIES with frequent elections (UK, Spain,
-    Australia, Dominica, Saint Lucia, Kiribati) because `elections_and_voting`
-    z-scores inflate on severity_weight=0.6 to hit 1.625. Meanwhile active
-    crises (Syria civil_war sal=1.58, Sudan 1.47, Afghanistan 1.44) sat
-    just below and landed in MODERATE — inverting face validity.
+def load_scoring_config(path=None):
+    """Load scoring config from qgi-data/scoring/V1.9.1.json.
 
-    The category-stratified cut promotes crisis states into HIGH on a lower
-    bar (1.4) because their severity_weight of 1.0 indicates civilian harm,
-    while preserving a stricter bar (1.625) for lower-consequence categories.
-    The MODERATE floor rose to 1.3 because 1.1 produced 126/197 (64%)
-    MODERATE — a tier that broad has no information value.
-
-    Prior single-threshold values documented for audit:
-      - 2026-03: 1.2/0.5 (134 HIGH = 68%) — face-validity failure
-      - 2026-04-18: 1.625/1.1 (30 HIGH / 126 MOD) — electoral-frequency bias
-      - 2026-04-19: category-stratified (~30-40 HIGH expected, ~60 MOD)
-
-    Follow-up research track for V1.9: stratify thresholds by WB income
-    classification (#317).
+    Priority: explicit path -> QGI_SCORING_CONFIG_PATH env var ->
+    qgi-ml/scripts/../../qgi-data/scoring/V1.9.1.json. Silent fallback to
+    DEFAULT_SCORING_CONFIG. Same pattern as load_severity_tiers.
     """
-    # Severity-stratified on BOTH HIGH and MODERATE: crisis categories get a
-    # lower bar at both cuts, because severity_weight already encodes severity.
-    # A Syria civil_war at 1.4 carries more human-harm signal than a Denmark
-    # election at 1.625. Symmetrically, an active-war country at 1.17
-    # (Ukraine, Iran) shouldn't fall to INDICATIVE just because the base
-    # MODERATE threshold is 1.3 — crisis categories keep the old 1.1 floor.
-    #
-    # Sonnet's original proposal used a single MODERATE floor of 1.3; a
-    # dry-run showed that demoted Ukraine + Iran to INDICATIVE, which fails
-    # face validity for political-risk analysts. The stratified MODERATE
-    # keeps them on the watchlist.
-    CRISIS_HIGH_THRESHOLD = 1.4
-    REGULAR_HIGH_THRESHOLD = 1.625
-    CRISIS_MODERATE_THRESHOLD = 1.0
-    REGULAR_MODERATE_THRESHOLD = 1.3
+    candidates = []
+    if path:
+        candidates.append(path)
+    env_path = os.environ.get("QGI_SCORING_CONFIG_PATH")
+    if env_path:
+        candidates.append(env_path)
+    candidates.append(
+        os.path.join(
+            os.path.dirname(__file__),
+            "..", "..",
+            "qgi-data", "scoring", "V1.9.1.json",
+        )
+    )
+    for p in candidates:
+        try:
+            with open(p) as f:
+                return json.load(f)
+        except (FileNotFoundError, OSError):
+            continue
+    return DEFAULT_SCORING_CONFIG
+
+
+def risk_tier_label(category_scores, config=None):
+    """V1.9.1 Fix C — 3-layer hybrid calibration (#377).
+
+    Layer 1: REGULAR_HIGH (severity_weight < 1.0) at 2.0 (raised from 1.625)
+    Layer 2: CRISIS_HIGH (severity_weight >= 1.0) at 1.4
+    Layer 3: Composite promotion — >=2 categories at salience >= 1.3 AND at
+             least one has severity_weight >= 0.8 -> HIGH regardless of L1/L2.
+
+    Args:
+        category_scores: list of {'salience_score', 'severity_tier'} dicts
+                         across ALL tier-lengths (S/M/L/XL). Layer 3 needs the
+                         full list, not just the top-1.
+        config: scoring config dict (mirrors qgi-data/scoring/V1.9.1.json).
+                Falls back to DEFAULT_SCORING_CONFIG if None.
+
+    Prior versions:
+      - V1.8.1 (2026-04-19): 1.625 regular / 1.4 crisis HIGH — still 68% HIGH
+        on some runs (Cape Verde #376 face-validity failure).
+      - V1.9.1 (2026-04-22): this function — expected HIGH share 15-23%.
+    """
+    if config is None:
+        config = DEFAULT_SCORING_CONFIG
+    thresholds = config['thresholds']
+    composite = config.get('composite_rule', {})
+
+    if not category_scores:
+        return "INDICATIVE"
+
+    # Layer 3: composite promotion (check first — overrides Layer 1/2).
+    if composite.get('enabled'):
+        floor = composite['min_salience_floor']
+        min_n = composite['min_categories_above_salience']
+        min_sev = composite['min_severity_for_at_least_one']
+        above = [c for c in category_scores if c['salience_score'] >= floor]
+        if len(above) >= min_n and any(c['severity_tier'] >= min_sev for c in above):
+            return "HIGH"
+
+    # Layer 1/2: stratified thresholds on top (max-salience) category.
+    top = max(category_scores, key=lambda c: c['salience_score'])
+    top_salience = top['salience_score']
+    top_severity_weight = top['severity_tier']
 
     is_crisis = top_severity_weight >= 1.0
-    high_cut = CRISIS_HIGH_THRESHOLD if is_crisis else REGULAR_HIGH_THRESHOLD
+    high_cut = thresholds['CRISIS_HIGH'] if is_crisis else thresholds['REGULAR_HIGH']
     moderate_cut = (
-        CRISIS_MODERATE_THRESHOLD if is_crisis else REGULAR_MODERATE_THRESHOLD
+        thresholds['CRISIS_MODERATE'] if is_crisis else thresholds['REGULAR_MODERATE']
     )
 
     if top_salience >= high_cut:
@@ -368,7 +410,7 @@ def main():
     print("\nBuilding output JSON...")
     output = {
         'generated_at': datetime.now(timezone.utc).isoformat(),
-        'version': 'V1.8.1',
+        'version': 'V1.9.1',
         'scoring': 'z-score per country + RRF ensemble with persistence',
         'tiers': {k: {'min_length': v[0], 'max_length': v[1]} for k, v in TIERS.items()},
         'curated_country_count': len(CURATED_IDS),
@@ -376,6 +418,7 @@ def main():
         'countries': {},
     }
 
+    scoring_config = load_scoring_config()
     for cid, tiers in countries_data.items():
         # Sort each tier's categories by RRF score descending, keep top 10
         country_entry = {
@@ -386,12 +429,11 @@ def main():
             'overall_risk_tier': 'INDICATIVE',
         }
 
-        # Track both the max-salience value AND its category's severity_weight,
-        # because risk_tier_label() is category-stratified as of 2026-04-19.
-        # We scan top-5 per tier (not just top-1) because a country's second
-        # category may outrank its first after severity weighting.
-        max_salience = -999
-        top_severity_weight = 0.3  # default severity for unmapped categories
+        # V1.9.1 Fix C: pass the full cross-tier category list to
+        # risk_tier_label so Layer 3 composite promotion can see all
+        # categories, not just the top-1. Top-5 per tier mirrors the prior
+        # scan; flat list is re-sorted desc for stable behavior.
+        cross_tier_categories = []
         for tier_name in TIERS:
             cats = tiers.get(tier_name, [])
             # Sort by salience_score (z_score × severity_weight) — surfaces interesting predictions
@@ -400,12 +442,13 @@ def main():
                 'top_categories': cats[:10],
             }
             for c in cats[:5]:
-                if c['salience_score'] > max_salience:
-                    max_salience = c['salience_score']
-                    top_severity_weight = c['severity_tier']
-
+                cross_tier_categories.append({
+                    'salience_score': c['salience_score'],
+                    'severity_tier': c['severity_tier'],
+                })
+        cross_tier_categories.sort(key=lambda x: -x['salience_score'])
         country_entry['overall_risk_tier'] = risk_tier_label(
-            max_salience, top_severity_weight
+            cross_tier_categories, scoring_config
         )
         output['countries'][str(cid)] = country_entry
 
