@@ -211,6 +211,24 @@ export default function AboutPage() {
               I&apos;m building it in the open, one regeneration at a time.
             </p>
             <p>
+              The ambition reaches further than the current product. I want QGI to serve
+              the buyers who quietly shape risk decisions, the insurance underwriters, the
+              policy analysts, the sovereign risk teams, the writers who cover political
+              instability for audiences with real budgets. The incumbents who serve them
+              today are expensive, closed, and often inflexible. I believe there is room
+              for something different: data-driven and human-curated at once, transparent
+              rather than authoritative, continually improving against honest benchmarks
+              rather than selling polished certainty.
+            </p>
+            <p>
+              The early numbers are modest and I publish them as they are, including the
+              misses. What I can point to with confidence is a trajectory. The margin by
+              which QGI beats the simplest baseline has grown across three releases, from
+              0.07 to 0.14 to 0.19. The next twelve to eighteen months are about turning
+              that trajectory into something a sophisticated analyst would stake a
+              decision on.
+            </p>
+            <p>
               If any of that resonates, or if you work somewhere QGI could be useful,
               I&apos;d enjoy hearing from you.
             </p>
