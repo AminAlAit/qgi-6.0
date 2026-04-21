@@ -121,7 +121,60 @@ SEVERITY_TIER_WEIGHTS = {
 DEFAULT_SEVERITY_WEIGHT = 0.3  # same as qgi-ml/scripts/generate_country_risks.py
 
 S3_KEY = 'dashboard/country-risks.json'
-VERSION = 'V1.8.1'
+VERSION = 'V1.9.1'
+
+# Embedded fallback scoring config (mirrors qgi-data/scoring/V1.9.1.json).
+# Used if load_scoring_config() cannot find the external config file — ensures
+# Lambda cold-start never fails on missing config. Keep in sync with the JSON.
+DEFAULT_SCORING_CONFIG = {
+    "_meta": {"scoring_version": "V1.9.1", "schema_version": 1},
+    "thresholds": {
+        "CRISIS_HIGH": 1.4,
+        "REGULAR_HIGH": 2.0,
+        "CRISIS_MODERATE": 1.0,
+        "REGULAR_MODERATE": 1.3,
+    },
+    "composite_rule": {
+        "enabled": True,
+        "min_categories_above_salience": 2,
+        "min_salience_floor": 1.3,
+        "min_severity_for_at_least_one": 0.8,
+    },
+    "default_severity": 0.3,
+}
+
+
+def load_scoring_config(path=None):
+    """Load scoring config from qgi-data/scoring/V1.9.1.json.
+
+    Priority:
+      1. Explicit `path` argument
+      2. QGI_SCORING_CONFIG_PATH env var
+      3. qgi-data/scoring/V1.9.1.json resolved relative to repo root
+    Silent fallback to DEFAULT_SCORING_CONFIG if no candidate file exists —
+    same pattern as load_severity_tiers in generate_country_risks.py.
+    """
+    candidates = []
+    if path:
+        candidates.append(path)
+    env_path = os.environ.get("QGI_SCORING_CONFIG_PATH")
+    if env_path:
+        candidates.append(env_path)
+    # Repo-root-relative candidate (qgi-pipeline/lambdas/pipeline-recipe-engine-finalize/ -> ../../../qgi-data/scoring/V1.9.1.json)
+    candidates.append(
+        os.path.join(
+            os.path.dirname(__file__),
+            "..", "..", "..",
+            "qgi-data", "scoring", "V1.9.1.json",
+        )
+    )
+    for p in candidates:
+        try:
+            with open(p) as f:
+                return json.load(f)
+        except (FileNotFoundError, OSError):
+            continue
+    return DEFAULT_SCORING_CONFIG
 
 
 # ---------------------------------------------------------------------------
@@ -173,23 +226,53 @@ def rank_fusion(recipe_preds, persist_preds, k=60):
     }
 
 
-def risk_tier_label(top_salience, top_severity_weight):
-    """Category-stratified risk tier (HIGH / MODERATE / INDICATIVE).
+def risk_tier_label(category_scores, config=None):
+    """Category-stratified risk tier (HIGH / MODERATE / INDICATIVE) — V1.9.1 Fix C.
 
-    Mirrors qgi-ml/scripts/generate_country_risks.py::risk_tier_label exactly.
-    Crisis categories (severity_weight >= 1.0) use a lower threshold at both HIGH
-    and MODERATE cuts; regular categories use the stricter bar. Rationale
-    documented in the source script (#339 Sonnet advisor review).
+    3-layer hybrid calibration (#377):
+      Layer 1: REGULAR_HIGH (severity_weight < 1.0) bar raised to 2.0
+      Layer 2: CRISIS_HIGH (severity_weight >= 1.0) bar stays at 1.4
+      Layer 3: Composite promotion — if >=2 categories at salience >= 1.3 AND
+               at least one of those has severity_weight >= 0.8, promote to
+               HIGH regardless of Layer 1/2 outcome.
+
+    Args:
+        category_scores: list of {'salience_score', 'severity_tier'} dicts for
+                         this country across ALL tier-lengths (S/M/L/XL), ideally
+                         sorted desc by salience. Layer 3 needs the full list,
+                         not just the top.
+        config: scoring config dict (mirrors qgi-data/scoring/V1.9.1.json). If
+                None, falls back to DEFAULT_SCORING_CONFIG.
+
+    Returns:
+        'HIGH' | 'MODERATE' | 'INDICATIVE'
     """
-    CRISIS_HIGH_THRESHOLD = 1.4
-    REGULAR_HIGH_THRESHOLD = 1.625
-    CRISIS_MODERATE_THRESHOLD = 1.0
-    REGULAR_MODERATE_THRESHOLD = 1.3
+    if config is None:
+        config = DEFAULT_SCORING_CONFIG
+    thresholds = config['thresholds']
+    composite = config.get('composite_rule', {})
+
+    if not category_scores:
+        return 'INDICATIVE'
+
+    # Layer 3: composite promotion (check first — overrides Layer 1/2).
+    if composite.get('enabled'):
+        floor = composite['min_salience_floor']
+        min_n = composite['min_categories_above_salience']
+        min_sev = composite['min_severity_for_at_least_one']
+        above = [c for c in category_scores if c['salience_score'] >= floor]
+        if len(above) >= min_n and any(c['severity_tier'] >= min_sev for c in above):
+            return 'HIGH'
+
+    # Layer 1/2: stratified thresholds on top (max-salience) category.
+    top = max(category_scores, key=lambda c: c['salience_score'])
+    top_salience = top['salience_score']
+    top_severity_weight = top['severity_tier']
 
     is_crisis = top_severity_weight >= 1.0
-    high_cut = CRISIS_HIGH_THRESHOLD if is_crisis else REGULAR_HIGH_THRESHOLD
+    high_cut = thresholds['CRISIS_HIGH'] if is_crisis else thresholds['REGULAR_HIGH']
     moderate_cut = (
-        CRISIS_MODERATE_THRESHOLD if is_crisis else REGULAR_MODERATE_THRESHOLD
+        thresholds['CRISIS_MODERATE'] if is_crisis else thresholds['REGULAR_MODERATE']
     )
 
     if top_salience >= high_cut:
@@ -347,6 +430,7 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
         'countries': {},
     }
 
+    scoring_config = load_scoring_config()
     for cid, tiers in countries_data.items():
         country_entry = {
             'name': country_names.get(cid, f'#{cid}'),
@@ -355,16 +439,23 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
             'tiers': {},
             'overall_risk_tier': 'INDICATIVE',
         }
-        max_salience, top_dw = -999, DEFAULT_SEVERITY_WEIGHT
+        # Accumulate flat cross-tier list of {salience_score, severity_tier}
+        # dicts for Layer 3 composite promotion — must see all categories,
+        # not just the top-1. Top-5 per tier mirrors the prior scan.
+        cross_tier_categories = []
         for tier_name in TIERS:
             cats = tiers.get(tier_name, [])
             cats.sort(key=lambda x: -x['salience_score'])
             country_entry['tiers'][tier_name] = {'top_categories': cats[:10]}
             for c in cats[:5]:
-                if c['salience_score'] > max_salience:
-                    max_salience = c['salience_score']
-                    top_dw = c['severity_tier']
-        country_entry['overall_risk_tier'] = risk_tier_label(max_salience, top_dw)
+                cross_tier_categories.append({
+                    'salience_score': c['salience_score'],
+                    'severity_tier': c['severity_tier'],
+                })
+        cross_tier_categories.sort(key=lambda x: -x['salience_score'])
+        country_entry['overall_risk_tier'] = risk_tier_label(
+            cross_tier_categories, scoring_config
+        )
         output['countries'][str(cid)] = country_entry
 
     output['total_countries'] = len(output['countries'])
