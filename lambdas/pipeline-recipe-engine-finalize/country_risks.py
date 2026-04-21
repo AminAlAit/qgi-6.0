@@ -17,9 +17,9 @@ The caller owns the Athena client + workgroup; this module is dependency-
 injected for testability. Pure scoring functions have no AWS dependency and
 are directly unit-testable.
 
-Drama tier weights are EMBEDDED here to avoid a Lambda-time S3 dependency on
-qgi-data/reference/category_drama_tiers.json. If tiers change there, update
-DRAMA_TIER_WEIGHTS below and redeploy. Follow-up ticket: extract to a shared
+Severity tier weights are EMBEDDED here to avoid a Lambda-time S3 dependency on
+qgi-data/reference/category_severity_tiers.json. If tiers change there, update
+SEVERITY_TIER_WEIGHTS below and redeploy. Follow-up ticket: extract to a shared
 module + sync-on-boot loader.
 """
 import json
@@ -42,9 +42,9 @@ CURATED_IDS = frozenset({
     208, 212, 217, 221, 227, 228, 233, 234, 235, 242, 243, 248,
 })
 
-# Embedded drama tier weights. Mirrors qgi-data/reference/category_drama_tiers.json
-# (last synced 2026-04-13). Unknown categories fall through to DEFAULT_DRAMA_WEIGHT.
-DRAMA_TIER_WEIGHTS = {
+# Embedded severity tier weights. Mirrors qgi-data/reference/category_severity_tiers.json
+# (last synced 2026-04-13). Unknown categories fall through to DEFAULT_SEVERITY_WEIGHT.
+SEVERITY_TIER_WEIGHTS = {
     # 1.0 — high-consequence
     'civil_war_and_insurgency': 1.0, 'interstate_war': 1.0, 'military_coup': 1.0,
     'political_violence': 1.0, 'ethnic_and_communal_conflict': 1.0,
@@ -85,7 +85,7 @@ DRAMA_TIER_WEIGHTS = {
     'flood_and_cyclone': 0.4, 'covid19_response': 0.4, 'pandemic_response': 0.4,
     'oil_and_gas': 0.4, 'energy_policy': 0.4, 'energy_export_expansion': 0.4,
     'trade_economic_strategy': 0.4, 'anticorruption_measure': 0.4,
-    # 0.2 — low-drama (abbreviated; most health/env/digital categories)
+    # 0.2 — low-severity (abbreviated; most health/env/digital categories)
     'health_sector_initiative': 0.2, 'health_care_system_reform': 0.2,
     'health_sector_improvement': 0.2, 'healthcare_advancement': 0.2,
     'healthcare_improvement': 0.2, 'healthcare_innovation': 0.2,
@@ -118,7 +118,7 @@ DRAMA_TIER_WEIGHTS = {
     'sustainable_tourism_development': 0.05, 'technological_advancement': 0.05,
     'technological_innovation': 0.05, 'technological_innovation_initiative': 0.05,
 }
-DEFAULT_DRAMA_WEIGHT = 0.3  # same as qgi-ml/scripts/generate_country_risks.py
+DEFAULT_SEVERITY_WEIGHT = 0.3  # same as qgi-ml/scripts/generate_country_risks.py
 
 S3_KEY = 'dashboard/country-risks.json'
 VERSION = 'V1.8.1'
@@ -127,9 +127,9 @@ VERSION = 'V1.8.1'
 # ---------------------------------------------------------------------------
 # Pure scoring functions (unit-testable, no AWS dependency)
 # ---------------------------------------------------------------------------
-def drama_weight(category):
-    """Return the drama tier weight for a category, falling back to default."""
-    return DRAMA_TIER_WEIGHTS.get(category, DEFAULT_DRAMA_WEIGHT)
+def severity_weight(category):
+    """Return the severity tier weight for a category, falling back to default."""
+    return SEVERITY_TIER_WEIGHTS.get(category, DEFAULT_SEVERITY_WEIGHT)
 
 
 def zscore_per_country(preds):
@@ -173,11 +173,11 @@ def rank_fusion(recipe_preds, persist_preds, k=60):
     }
 
 
-def risk_tier_label(top_salience, top_drama_weight):
+def risk_tier_label(top_salience, top_severity_weight):
     """Category-stratified risk tier (HIGH / MODERATE / INDICATIVE).
 
     Mirrors qgi-ml/scripts/generate_country_risks.py::risk_tier_label exactly.
-    Crisis categories (drama_weight >= 1.0) use a lower threshold at both HIGH
+    Crisis categories (severity_weight >= 1.0) use a lower threshold at both HIGH
     and MODERATE cuts; regular categories use the stricter bar. Rationale
     documented in the source script (#339 Sonnet advisor review).
     """
@@ -186,7 +186,7 @@ def risk_tier_label(top_salience, top_drama_weight):
     CRISIS_MODERATE_THRESHOLD = 1.0
     REGULAR_MODERATE_THRESHOLD = 1.3
 
-    is_crisis = top_drama_weight >= 1.0
+    is_crisis = top_severity_weight >= 1.0
     high_cut = CRISIS_HIGH_THRESHOLD if is_crisis else REGULAR_HIGH_THRESHOLD
     moderate_cut = (
         CRISIS_MODERATE_THRESHOLD if is_crisis else REGULAR_MODERATE_THRESHOLD
@@ -328,8 +328,8 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
             countries_data.setdefault(cid, {}).setdefault(tier_name, []).append({
                 'category': cat,
                 'z_score': round(zscored.get((cid, cat), 0), 3),
-                'salience_score': round(zscored.get((cid, cat), 0) * drama_weight(cat), 4),
-                'drama_tier': drama_weight(cat),
+                'salience_score': round(zscored.get((cid, cat), 0) * severity_weight(cat), 4),
+                'severity_tier': severity_weight(cat),
                 'rrf_rank': rank_map.get((cid, cat), 9999),
                 'rrf_score': round(rrf_score, 6),
                 'recipe_count': recipe_counts.get((cid, cat), 0),
@@ -355,7 +355,7 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
             'tiers': {},
             'overall_risk_tier': 'INDICATIVE',
         }
-        max_salience, top_dw = -999, DEFAULT_DRAMA_WEIGHT
+        max_salience, top_dw = -999, DEFAULT_SEVERITY_WEIGHT
         for tier_name in TIERS:
             cats = tiers.get(tier_name, [])
             cats.sort(key=lambda x: -x['salience_score'])
@@ -363,7 +363,7 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
             for c in cats[:5]:
                 if c['salience_score'] > max_salience:
                     max_salience = c['salience_score']
-                    top_dw = c['drama_tier']
+                    top_dw = c['severity_tier']
         country_entry['overall_risk_tier'] = risk_tier_label(max_salience, top_dw)
         output['countries'][str(cid)] = country_entry
 

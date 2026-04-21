@@ -2,7 +2,7 @@
 Unit tests for country_risks.py scoring logic (#375).
 
 Covers:
-- drama_weight lookup (known + unknown categories)
+- severity_weight lookup (known + unknown categories)
 - zscore_per_country (multi-pred countries, single-pred passthrough)
 - rank_fusion (RRF with and without missing keys)
 - risk_tier_label (category-stratified thresholds per #339)
@@ -28,7 +28,7 @@ country_risks = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(country_risks)
 
 
-# ─── drama_weight ─────────────────────────────────────────────────────
+# ─── severity_weight ─────────────────────────────────────────────────────
 
 @pytest.mark.parametrize("category,expected", [
     ("civil_war_and_insurgency", 1.0),
@@ -41,8 +41,8 @@ _spec.loader.exec_module(country_risks)
     ("some_future_category_not_yet_classified", 0.3),  # default
     ("", 0.3),
 ])
-def test_drama_weight(category, expected):
-    assert country_risks.drama_weight(category) == expected
+def test_severity_weight(category, expected):
+    assert country_risks.severity_weight(category) == expected
 
 
 # ─── zscore_per_country ───────────────────────────────────────────────
@@ -209,7 +209,7 @@ def test_compute_country_risks_minimal():
     s_cats = entry['tiers']['S']['top_categories']
     assert len(s_cats) == 1
     assert s_cats[0]['category'] == 'elections_and_voting'
-    assert s_cats[0]['drama_tier'] == 0.6
+    assert s_cats[0]['severity_tier'] == 0.6
     assert entry['overall_risk_tier'] in {'HIGH', 'MODERATE', 'INDICATIVE'}
 
 
