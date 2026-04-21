@@ -18,7 +18,7 @@ export interface CategoryScore {
   category: string;
   z_score: number;
   salience_score: number;
-  drama_tier: number;
+  severity_tier: number;
   rrf_rank: number;
   rrf_score: number;
   recipe_count: number;
