@@ -350,7 +350,7 @@ def write_dashboard_jsons():
     try:
         country_risks_summary = write_country_risks_json(
             run_query_fn=run_query,
-            rows_fn=_run_query_to_rows,
+            rows_fn=_rows_from_query_id,
             s3_client=s3,
             bucket=S3_BUCKET,
             athena_db=ATHENA_DB,
@@ -555,8 +555,13 @@ def _put_dashboard_json(filename, payload):
     logger.info(f"Wrote s3://{S3_BUCKET}/{DASHBOARD_PREFIX}/{filename} ({len(body)} bytes)")
 
 
-def _run_query_to_rows(sql):
-    query_id = run_query(sql)
+def _rows_from_query_id(query_id):
+    """Fetch result rows for an already-executed Athena query.
+
+    Used by write_country_risks_json which follows the protocol
+    `rows_fn(run_query_fn(sql))` — run_query_fn returns a query_id, rows_fn
+    expects a query_id (NOT raw SQL). See country_risks.py callsites.
+    """
     rows = []
     headers = None
     next_token = None
@@ -581,6 +586,12 @@ def _run_query_to_rows(sql):
         if not next_token:
             break
     return rows
+
+
+def _run_query_to_rows(sql):
+    """Convenience: execute sql + return rows. Used by dashboard-JSON builders
+    that construct a query inline and want rows in one call."""
+    return _rows_from_query_id(run_query(sql))
 
 
 def _to_int(value):
