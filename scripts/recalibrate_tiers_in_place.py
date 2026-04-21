@@ -5,7 +5,7 @@ tier logic to an EXISTING country-risks.json, without re-running Athena.
 
 Why: generate_country_risks.py needs staging-account AWS creds to hit
 qgi_data.recipes / qgi_data.events. But the existing baked JSON already
-carries `salience_score` and `drama_tier` for every scored category — which
+carries `salience_score` and `severity_tier` for every scored category — which
 is everything the new risk_tier_label() needs. So we can recompute
 overall_risk_tier offline.
 
@@ -23,12 +23,12 @@ from collections import Counter
 
 
 # Keep this in sync with generate_country_risks.py :: risk_tier_label()
-def risk_tier_label(top_salience: float, top_drama_weight: float) -> str:
+def risk_tier_label(top_salience: float, top_severity_weight: float) -> str:
     CRISIS_HIGH_THRESHOLD = 1.4
     REGULAR_HIGH_THRESHOLD = 1.625
     CRISIS_MODERATE_THRESHOLD = 1.0
     REGULAR_MODERATE_THRESHOLD = 1.3
-    is_crisis = top_drama_weight >= 1.0
+    is_crisis = top_severity_weight >= 1.0
     high_cut = CRISIS_HIGH_THRESHOLD if is_crisis else REGULAR_HIGH_THRESHOLD
     moderate_cut = (
         CRISIS_MODERATE_THRESHOLD if is_crisis else REGULAR_MODERATE_THRESHOLD
@@ -42,9 +42,9 @@ def risk_tier_label(top_salience: float, top_drama_weight: float) -> str:
 
 
 def compute_tier(country_entry: dict) -> tuple[str, float, float, str]:
-    """Return (new_tier, max_salience, drama_weight, top_cat) for a country."""
+    """Return (new_tier, max_salience, severity_weight, top_cat) for a country."""
     max_salience = -999.0
-    top_drama = 0.3
+    top_severity = 0.3
     top_cat = "(none)"
     for _tier_name, tier_block in country_entry.get("tiers", {}).items():
         for c in (tier_block.get("top_categories") or [])[:5]:
@@ -53,12 +53,12 @@ def compute_tier(country_entry: dict) -> tuple[str, float, float, str]:
                 continue
             if sal > max_salience:
                 max_salience = sal
-                top_drama = c.get("drama_tier", 0.3)
+                top_severity = c.get("severity_tier", 0.3)
                 top_cat = c.get("category", "(unknown)")
     return (
-        risk_tier_label(max_salience, top_drama),
+        risk_tier_label(max_salience, top_severity),
         max_salience,
-        top_drama,
+        top_severity,
         top_cat,
     )
 
@@ -79,16 +79,16 @@ def main():
 
     before = Counter()
     after = Counter()
-    flipped = []  # (country_name, old_tier, new_tier, salience, drama, cat)
+    flipped = []  # (country_name, old_tier, new_tier, salience, severity, cat)
 
     for cid, country in data["countries"].items():
         old_tier = country.get("overall_risk_tier", "INDICATIVE")
-        new_tier, sal, drama, cat = compute_tier(country)
+        new_tier, sal, severity, cat = compute_tier(country)
         before[old_tier] += 1
         after[new_tier] += 1
         if new_tier != old_tier:
             flipped.append(
-                (country.get("name", cid), old_tier, new_tier, sal, drama, cat)
+                (country.get("name", cid), old_tier, new_tier, sal, severity, cat)
             )
         country["overall_risk_tier"] = new_tier
 
@@ -96,12 +96,12 @@ def main():
     # the change and we preserve an audit trail.
     # Audit-trail metadata. Sonnet reviewer P0-2 fix (2026-04-19): earlier
     # string omitted the crisis MODERATE floor of 1.0 and would have made
-    # the next diff reader think Ukraine (sal=1.17, drama=1.0) was
+    # the next diff reader think Ukraine (sal=1.17, severity=1.0) was
     # mis-tiered. The logic is symmetric across both cuts.
     data["tier_algorithm"] = (
         "category-stratified-2026-04-19: "
-        "HIGH>=1.4 if drama>=1.0 else 1.625; "
-        "MODERATE>=1.0 if drama>=1.0 else 1.3"
+        "HIGH>=1.4 if severity>=1.0 else 1.625; "
+        "MODERATE>=1.0 if severity>=1.0 else 1.3"
     )
 
     print("\n== Tier distribution ==")
@@ -120,19 +120,19 @@ def main():
 
     if promoted:
         print("Promoted (most severe first):")
-        for name, old, new, sal, drama, cat in sorted(
+        for name, old, new, sal, severity, cat in sorted(
             promoted, key=lambda x: -x[3]
         )[:20]:
             print(
-                f"  {old:>10} -> {new:<10}  {name:<32}  sal={sal:.2f} drama={drama:.1f} ({cat})"
+                f"  {old:>10} -> {new:<10}  {name:<32}  sal={sal:.2f} severity={severity:.1f} ({cat})"
             )
     if demoted:
         print("\nDemoted (least severe first):")
-        for name, old, new, sal, drama, cat in sorted(
+        for name, old, new, sal, severity, cat in sorted(
             demoted, key=lambda x: x[3]
         )[:20]:
             print(
-                f"  {old:>10} -> {new:<10}  {name:<32}  sal={sal:.2f} drama={drama:.1f} ({cat})"
+                f"  {old:>10} -> {new:<10}  {name:<32}  sal={sal:.2f} severity={severity:.1f} ({cat})"
             )
 
     if args.dry_run:

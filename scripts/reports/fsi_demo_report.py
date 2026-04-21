@@ -43,7 +43,7 @@ OUTPUT_PATH = REPO_ROOT / "qgi-docs" / "external" / "reports" / "fsi-demo-april-
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
-HIGH_DRAMA_CATEGORIES = {
+HIGH_SEVERITY_CATEGORIES = {
     "civil_war_and_insurgency",
     "terrorist_attack",
     "mass_protest",
@@ -377,14 +377,14 @@ def compute_max_salience(cdata: dict) -> tuple[float, str, str]:
     return max_sal, top_cat, top_tier
 
 
-def compute_max_drama_salience(cdata: dict) -> tuple[float, str, str]:
-    """Compute max salience for high-drama categories only."""
+def compute_max_severity_salience(cdata: dict) -> tuple[float, str, str]:
+    """Compute max salience for high-severity categories only."""
     max_sal = 0.0
     top_cat = ""
     top_tier = ""
     for tier_name, tier_data in cdata["tiers"].items():
         for cat in tier_data["top_categories"]:
-            if cat["category"] in HIGH_DRAMA_CATEGORIES and cat["salience_score"] > max_sal:
+            if cat["category"] in HIGH_SEVERITY_CATEGORIES and cat["salience_score"] > max_sal:
                 max_sal = cat["salience_score"]
                 top_cat = cat["category"]
                 top_tier = tier_name
@@ -462,7 +462,7 @@ def find_sleeper_countries(
     fsi_cutoff_high: int = 130,
     salience_threshold: float = 0.8,
 ) -> list[dict]:
-    """Find countries with high QGI drama signals but moderate FSI ranking.
+    """Find countries with high QGI severity signals but moderate FSI ranking.
 
     Restricts to FSI ranks between cutoff_low and cutoff_high to focus on
     the meaningful Warning/Elevated range. Very stable countries (FSI 130+)
@@ -482,8 +482,8 @@ def find_sleeper_countries(
         if fsi_row["rank"] <= fsi_cutoff_low or fsi_row["rank"] > fsi_cutoff_high:
             continue
 
-        max_drama_sal, top_drama_cat, top_drama_tier = compute_max_drama_salience(qgi["data"])
-        if max_drama_sal < salience_threshold:
+        max_severity_sal, top_severity_cat, top_severity_tier = compute_max_severity_salience(qgi["data"])
+        if max_severity_sal < salience_threshold:
             continue
 
         max_sal, top_cat, _ = compute_max_salience(qgi["data"])
@@ -496,16 +496,16 @@ def find_sleeper_countries(
             "qgi_id": qgi["id"],
             "alpha_2": a2,
             "max_salience": max_sal,
-            "max_drama_salience": max_drama_sal,
-            "top_drama_category": top_drama_cat,
-            "top_drama_tier": top_drama_tier,
+            "max_severity_salience": max_severity_sal,
+            "top_severity_category": top_severity_cat,
+            "top_severity_tier": top_severity_tier,
             "risk_tier": qgi["overall_risk_tier"],
             "curated": qgi["curated"],
             "top_categories": get_top_categories(qgi["data"], 5),
             "recipe_count": get_total_recipe_count(qgi["data"]),
         })
 
-    sleepers.sort(key=lambda x: -x["max_drama_salience"])
+    sleepers.sort(key=lambda x: -x["max_severity_salience"])
     return sleepers
 
 
@@ -574,10 +574,10 @@ def find_lead_time_cases(
     fsi_historical: dict,
 ) -> list[dict]:
     """
-    Find cases where QGI had high-drama recipe signals for a country
+    Find cases where QGI had high-severity recipe signals for a country
     that subsequently showed FSI deterioration.
 
-    Approximation: if a country has high recipe counts in drama categories
+    Approximation: if a country has high recipe counts in severity categories
     and experienced FSI deterioration, the structural signal was detectable.
     """
     cases = []
@@ -591,8 +591,8 @@ def find_lead_time_cases(
             continue
 
         qgi = alpha2_qgi[a2]
-        max_drama_sal, top_cat, _ = compute_max_drama_salience(qgi["data"])
-        if max_drama_sal < 0.5:
+        max_severity_sal, top_cat, _ = compute_max_severity_salience(qgi["data"])
+        if max_severity_sal < 0.5:
             continue
 
         # Get the FSI trajectory for this country
@@ -608,8 +608,8 @@ def find_lead_time_cases(
             "fsi_delta": det["delta"],
             "fsi_prev_total": det["prev_total"],
             "fsi_curr_total": det["curr_total"],
-            "max_drama_salience": max_drama_sal,
-            "top_drama_category": top_cat,
+            "max_severity_salience": max_severity_sal,
+            "top_severity_category": top_cat,
             "recipe_count": get_total_recipe_count(qgi["data"]),
             "trajectory": trajectory,
         })
@@ -822,9 +822,9 @@ def generate_report(
     w()
     w("**Selection criteria:**")
     w("- FSI rank 41-130 (Warning through Elevated tier; excludes both Alert-tier countries and the most stable states)")
-    w("- QGI max salience >= 0.8 in at least one high-drama category")
+    w("- QGI max salience >= 0.8 in at least one high-severity category")
     w(
-        "- High-drama categories: civil war, terrorist attack, mass protest, "
+        "- High-severity categories: civil war, terrorist attack, mass protest, "
         "political violence, interstate war, ethnic conflict, currency/banking crisis, "
         "economic recession, military coup"
     )
@@ -832,14 +832,14 @@ def generate_report(
 
     if sleepers:
         table(
-            ["FSI Rank", "Country", "FSI Score", "QGI Max Drama Salience", "Top Drama Signal", "QGI Risk Tier", "Recipe Count"],
+            ["FSI Rank", "Country", "FSI Score", "QGI Max Severity Salience", "Top Severity Signal", "QGI Risk Tier", "Recipe Count"],
             [
                 [
                     str(s["fsi_rank"]),
                     s["qgi_name"],
                     f"{s['fsi_total']:.1f}",
-                    f"{s['max_drama_salience']:.2f}",
-                    display_cat(s["top_drama_category"]),
+                    f"{s['max_severity_salience']:.2f}",
+                    display_cat(s["top_severity_category"]),
                     s["risk_tier"],
                     f"{s['recipe_count']:,}",
                 ]
@@ -856,8 +856,8 @@ def generate_report(
             top_cats = s["top_categories"]
             w(f"**{s['qgi_name']}** (FSI #{s['fsi_rank']}, Score: {s['fsi_total']:.1f})")
             w()
-            w(f"- QGI Risk Tier: **{s['risk_tier']}** | Max Drama Salience: **{s['max_drama_salience']:.2f}**")
-            w(f"- Top drama signal: **{display_cat(s['top_drama_category'])}**")
+            w(f"- QGI Risk Tier: **{s['risk_tier']}** | Max Severity Salience: **{s['max_severity_salience']:.2f}**")
+            w(f"- Top severity signal: **{display_cat(s['top_severity_category'])}**")
             cat_parts = [display_cat(c["category"]) + " (" + f"{c['salience_score']:.2f}" + ")" for c in top_cats[:3]]
             w(f"- Top categories: {'; '.join(cat_parts)}")
             w(f"- Total recipe matches: {s['recipe_count']:,}")
@@ -932,7 +932,7 @@ def generate_report(
             deep_dive_candidates.append({
                 **s,
                 "max_salience": s["max_salience"],
-                "top_category": s["top_drama_category"],
+                "top_category": s["top_severity_category"],
                 "top_categories": s["top_categories"],
             })
             break
@@ -1020,15 +1020,15 @@ def generate_report(
         w("### 5.1 FSI Deterioration Events with QGI Structural Signals")
         w()
         table(
-            ["Country", "Deterioration Year", "FSI Delta", "FSI Score (Before -> After)", "QGI Top Drama Signal", "QGI Drama Salience", "QGI Recipe Count"],
+            ["Country", "Deterioration Year", "FSI Delta", "FSI Score (Before -> After)", "QGI Top Severity Signal", "QGI Severity Salience", "QGI Recipe Count"],
             [
                 [
                     c["qgi_name"],
                     str(c["deterioration_year"]),
                     f"+{c['fsi_delta']:.1f}",
                     f"{c['fsi_prev_total']:.1f} -> {c['fsi_curr_total']:.1f}",
-                    display_cat(c["top_drama_category"]),
-                    f"{c['max_drama_salience']:.2f}",
+                    display_cat(c["top_severity_category"]),
+                    f"{c['max_severity_salience']:.2f}",
                     f"{c['recipe_count']:,}",
                 ]
                 for c in lead_time_cases
@@ -1061,8 +1061,8 @@ def generate_report(
                 w(
                     f"- **{c['qgi_name']}**: FSI score ranged from {min_score:.1f} ({min_year}) "
                     f"to {max_score:.1f} ({max_year}) across 2006-2023. QGI detects {c['recipe_count']:,} "
-                    f"recipe matches with strongest signals in {display_cat(c['top_drama_category'])} "
-                    f"(salience: {c['max_drama_salience']:.2f})."
+                    f"recipe matches with strongest signals in {display_cat(c['top_severity_category'])} "
+                    f"(salience: {c['max_severity_salience']:.2f})."
                 )
         w()
         w(

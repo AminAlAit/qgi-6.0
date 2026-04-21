@@ -103,28 +103,28 @@ def rank_fusion(recipe_preds, persist_preds, k=60):
 
 
 # ---------------------------------------------------------------------------
-# Drama tiers (salience-finding: high-consequence events rank higher)
+# Severity tiers (salience-finding: high-consequence events rank higher)
 # ---------------------------------------------------------------------------
-def load_drama_tiers(path=None):
-    """Load category drama tier weights from `category_drama_tiers.json`.
+def load_severity_tiers(path=None):
+    """Load category severity tier weights from `category_severity_tiers.json`.
 
     T17 #310 fix (2026-04-19): the cross-repo relative path
-    `../../qgi-data/reference/category_drama_tiers.json` silently falls
+    `../../qgi-data/reference/category_severity_tiers.json` silently falls
     back to an empty dict if the script is run from a standalone qgi-ml
-    checkout (CI, a single-repo clone, etc.) — collapsing all drama
+    checkout (CI, a single-repo clone, etc.) — collapsing all severity
     weights to 0.3 and wrecking the scoring without any obvious signal.
 
     Priority order:
       1. Explicit `path` argument.
-      2. `QGI_DRAMA_TIERS_PATH` environment variable.
-      3. `../../qgi-data/reference/category_drama_tiers.json` (legacy).
+      2. `QGI_SEVERITY_TIERS_PATH` environment variable.
+      3. `../../qgi-data/reference/category_severity_tiers.json` (legacy).
     """
     import os
 
     candidates = []
     if path:
         candidates.append(path)
-    env_path = os.environ.get("QGI_DRAMA_TIERS_PATH")
+    env_path = os.environ.get("QGI_SEVERITY_TIERS_PATH")
     if env_path:
         candidates.append(env_path)
     candidates.append(
@@ -134,7 +134,7 @@ def load_drama_tiers(path=None):
             "..",
             "qgi-data",
             "reference",
-            "category_drama_tiers.json",
+            "category_severity_tiers.json",
         )
     )
 
@@ -155,27 +155,27 @@ def load_drama_tiers(path=None):
     # would produce a wrong-but-plausible scoring output.
     import sys
     msg = (
-        "  ERROR: category_drama_tiers.json not found on any candidate path. "
+        "  ERROR: category_severity_tiers.json not found on any candidate path. "
         "Tried: " + ", ".join(candidates) + ". "
-        "Pass --drama-tiers-path or set QGI_DRAMA_TIERS_PATH."
+        "Pass --severity-tiers-path or set QGI_SEVERITY_TIERS_PATH."
     )
     print(msg, file=sys.stderr)
     return {}
 
 
-DRAMA_TIERS = load_drama_tiers()
+SEVERITY_TIERS = load_severity_tiers()
 
 
-def drama_weight(category):
-    """Get drama tier weight for a category. Default 0.3 for unmapped categories."""
-    return DRAMA_TIERS.get(category, 0.3)
+def severity_weight(category):
+    """Get severity tier weight for a category. Default 0.3 for unmapped categories."""
+    return SEVERITY_TIERS.get(category, 0.3)
 
 
-def risk_tier_label(top_salience, top_drama_weight):
-    """Convert max salience score + its category drama-weight to a risk tier.
+def risk_tier_label(top_salience, top_severity_weight):
+    """Convert max salience score + its category severity-weight to a risk tier.
 
     Category-stratified tiers (2026-04-19, Sonnet advisor review of #339):
-      - Crisis categories (drama_weight >= 1.0: civil_war_and_insurgency,
+      - Crisis categories (severity_weight >= 1.0: civil_war_and_insurgency,
         interstate_war, military_coup, political_violence, terrorist_attack,
         humanitarian_crisis, etc.) ........................ HIGH at >= 1.4
       - All other categories ............................. HIGH at >= 1.625
@@ -185,12 +185,12 @@ def risk_tier_label(top_salience, top_drama_weight):
     Rationale: the previous single-threshold cut (1.625/1.1) produced a HIGH
     list dominated by STABLE DEMOCRACIES with frequent elections (UK, Spain,
     Australia, Dominica, Saint Lucia, Kiribati) because `elections_and_voting`
-    z-scores inflate on drama_weight=0.6 to hit 1.625. Meanwhile active
+    z-scores inflate on severity_weight=0.6 to hit 1.625. Meanwhile active
     crises (Syria civil_war sal=1.58, Sudan 1.47, Afghanistan 1.44) sat
     just below and landed in MODERATE — inverting face validity.
 
     The category-stratified cut promotes crisis states into HIGH on a lower
-    bar (1.4) because their drama_weight of 1.0 indicates civilian harm,
+    bar (1.4) because their severity_weight of 1.0 indicates civilian harm,
     while preserving a stricter bar (1.625) for lower-consequence categories.
     The MODERATE floor rose to 1.3 because 1.1 produced 126/197 (64%)
     MODERATE — a tier that broad has no information value.
@@ -203,8 +203,8 @@ def risk_tier_label(top_salience, top_drama_weight):
     Follow-up research track for V1.9: stratify thresholds by WB income
     classification (#317).
     """
-    # Drama-stratified on BOTH HIGH and MODERATE: crisis categories get a
-    # lower bar at both cuts, because drama_weight already encodes severity.
+    # Severity-stratified on BOTH HIGH and MODERATE: crisis categories get a
+    # lower bar at both cuts, because severity_weight already encodes severity.
     # A Syria civil_war at 1.4 carries more human-harm signal than a Denmark
     # election at 1.625. Symmetrically, an active-war country at 1.17
     # (Ukraine, Iran) shouldn't fall to INDICATIVE just because the base
@@ -219,7 +219,7 @@ def risk_tier_label(top_salience, top_drama_weight):
     CRISIS_MODERATE_THRESHOLD = 1.0
     REGULAR_MODERATE_THRESHOLD = 1.3
 
-    is_crisis = top_drama_weight >= 1.0
+    is_crisis = top_severity_weight >= 1.0
     high_cut = CRISIS_HIGH_THRESHOLD if is_crisis else REGULAR_HIGH_THRESHOLD
     moderate_cut = (
         CRISIS_MODERATE_THRESHOLD if is_crisis else REGULAR_MODERATE_THRESHOLD
@@ -347,15 +347,15 @@ def main():
                 countries_data[cid][tier_name] = []
 
             z = zscored.get((cid, cat), 0)
-            dw = drama_weight(cat)
-            # salience_score: z-score amplified by drama weight
+            dw = severity_weight(cat)
+            # salience_score: z-score amplified by severity weight
             salience = round(z * dw, 4)
 
             countries_data[cid][tier_name].append({
                 'category': cat,
                 'z_score': round(z, 3),
                 'salience_score': salience,
-                'drama_tier': dw,
+                'severity_tier': dw,
                 'rrf_rank': rank_map.get((cid, cat), 9999),
                 'rrf_score': round(rrf_score, 6),
                 'recipe_count': recipe_counts.get((cid, cat), 0),
@@ -386,15 +386,15 @@ def main():
             'overall_risk_tier': 'INDICATIVE',
         }
 
-        # Track both the max-salience value AND its category's drama_weight,
+        # Track both the max-salience value AND its category's severity_weight,
         # because risk_tier_label() is category-stratified as of 2026-04-19.
         # We scan top-5 per tier (not just top-1) because a country's second
-        # category may outrank its first after drama weighting.
+        # category may outrank its first after severity weighting.
         max_salience = -999
-        top_drama_weight = 0.3  # default drama for unmapped categories
+        top_severity_weight = 0.3  # default severity for unmapped categories
         for tier_name in TIERS:
             cats = tiers.get(tier_name, [])
-            # Sort by salience_score (z_score × drama_weight) — surfaces interesting predictions
+            # Sort by salience_score (z_score × severity_weight) — surfaces interesting predictions
             cats.sort(key=lambda x: -x['salience_score'])
             country_entry['tiers'][tier_name] = {
                 'top_categories': cats[:10],
@@ -402,10 +402,10 @@ def main():
             for c in cats[:5]:
                 if c['salience_score'] > max_salience:
                     max_salience = c['salience_score']
-                    top_drama_weight = c['drama_tier']
+                    top_severity_weight = c['severity_tier']
 
         country_entry['overall_risk_tier'] = risk_tier_label(
-            max_salience, top_drama_weight
+            max_salience, top_severity_weight
         )
         output['countries'][str(cid)] = country_entry
 
