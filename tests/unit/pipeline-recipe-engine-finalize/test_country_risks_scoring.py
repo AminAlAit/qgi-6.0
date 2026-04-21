@@ -242,14 +242,25 @@ def test_load_scoring_config_default_when_no_file():
 
 
 def test_load_scoring_config_reads_real_v191_json():
-    """Explicit path to the real V1.9.1.json loads with expected values."""
+    """Explicit path to the real V1.9.1.json loads with expected values.
+
+    Skips cleanly when qgi-data isn't checked out alongside qgi-pipeline
+    (e.g. single-repo CI job). DEFAULT_SCORING_CONFIG test below covers the
+    embedded-fallback path; this test covers real-file loading when the
+    multi-repo workspace is present.
+    """
     # Resolve from test file location: qgi-pipeline/tests/unit/.../test_*.py
     # up 4 levels to qgi-6.0, then into qgi-data/scoring/V1.9.1.json.
     real_path = (
         Path(__file__).resolve().parent.parent.parent.parent.parent
         / 'qgi-data' / 'scoring' / 'V1.9.1.json'
     )
-    assert real_path.exists(), f"Expected config at {real_path}"
+    if not real_path.exists():
+        pytest.skip(
+            f"qgi-data not checked out alongside qgi-pipeline "
+            f"(tried {real_path}); skipping cross-repo config-load test. "
+            f"DEFAULT_SCORING_CONFIG fallback is covered separately."
+        )
     cfg = country_risks.load_scoring_config(path=str(real_path))
     assert cfg['_meta']['scoring_version'] == 'V1.9.1'
     assert cfg['thresholds']['REGULAR_HIGH'] == 2.0
