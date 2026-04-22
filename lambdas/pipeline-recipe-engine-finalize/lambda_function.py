@@ -108,6 +108,7 @@ COUNTRY_REGIONS = _load_country_regions()
 
 athena = boto3.client('athena')
 s3 = boto3.client('s3')
+cloudwatch = boto3.client('cloudwatch')  # #381 drift metric emission
 
 
 def lambda_handler(event, context):
@@ -354,6 +355,7 @@ def write_dashboard_jsons():
             s3_client=s3,
             bucket=S3_BUCKET,
             athena_db=ATHENA_DB,
+            cloudwatch_client=cloudwatch,  # #381 drift metric emission
         )
         results['country_risks'] = country_risks_summary
         logger.info(f"country-risks.json: {country_risks_summary}")

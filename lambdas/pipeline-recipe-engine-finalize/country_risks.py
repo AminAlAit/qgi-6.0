@@ -462,11 +462,74 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
     return output
 
 
-def write_country_risks_json(run_query_fn, rows_fn, s3_client, bucket, athena_db='qgi_data'):
+def _emit_drift_metrics(cloudwatch_client, payload, body_bytes):
+    """#381 drift monitoring — emit 3 CloudWatch custom metrics after each scoring run.
+
+    Namespace: QGI/Pipeline. Dimension: {ScoringVersion: <version>}.
+
+    Metrics:
+      - HIGH_COUNTRY_COUNT: number of countries in HIGH tier (integer)
+      - MEDIAN_SALIENCE_SCORE: median of each country's max-salience (float)
+      - COUNTRY_RISKS_BYTES: size of the serialized JSON (integer)
+
+    Terraform alarms in qgi-infra/modules/monitoring consume these three metrics.
+    Failures emitting are non-fatal — the scoring run is authoritative, the
+    metric is observability.
+    """
+    if cloudwatch_client is None:
+        return
+    try:
+        tier_counts = Counter(c['overall_risk_tier'] for c in payload['countries'].values())
+        high_count = tier_counts.get('HIGH', 0)
+        per_country_max_sal = []
+        for entry in payload['countries'].values():
+            country_max = -999.0
+            for tier_data in entry.get('tiers', {}).values():
+                for c in tier_data.get('top_categories', []):
+                    s = c.get('salience_score')
+                    if s is not None and s > country_max:
+                        country_max = s
+            if country_max > -999.0:
+                per_country_max_sal.append(country_max)
+        if per_country_max_sal:
+            per_country_max_sal.sort()
+            mid = len(per_country_max_sal) // 2
+            median_sal = (
+                per_country_max_sal[mid]
+                if len(per_country_max_sal) % 2 == 1
+                else 0.5 * (per_country_max_sal[mid - 1] + per_country_max_sal[mid])
+            )
+        else:
+            median_sal = 0.0
+        dims = [{'Name': 'ScoringVersion', 'Value': payload.get('version', 'unknown')}]
+        cloudwatch_client.put_metric_data(
+            Namespace='QGI/Pipeline',
+            MetricData=[
+                {'MetricName': 'HIGH_COUNTRY_COUNT', 'Value': float(high_count),
+                 'Unit': 'Count', 'Dimensions': dims},
+                {'MetricName': 'MEDIAN_SALIENCE_SCORE', 'Value': float(median_sal),
+                 'Unit': 'None', 'Dimensions': dims},
+                {'MetricName': 'COUNTRY_RISKS_BYTES', 'Value': float(body_bytes),
+                 'Unit': 'Bytes', 'Dimensions': dims},
+            ],
+        )
+    except Exception:
+        # Non-fatal — alarm about missing metrics lives at Terraform layer.
+        # Do NOT swallow silently without a log per #409 — log and continue.
+        import logging
+        logging.getLogger(__name__).exception(
+            "drift-metric emit failed (country-risks scoring still authoritative)"
+        )
+
+
+def write_country_risks_json(run_query_fn, rows_fn, s3_client, bucket, athena_db='qgi_data',
+                             cloudwatch_client=None):
     """Top-level entry point called from the finalize Lambda.
 
     Runs the full scoring pipeline, writes the output JSON to S3, and returns
-    a summary dict for logging.
+    a summary dict for logging. Also emits #381 drift metrics to CloudWatch
+    when `cloudwatch_client` is provided (the Lambda passes boto3.client('cloudwatch');
+    unit tests pass None to skip).
     """
     payload = compute_country_risks(run_query_fn, rows_fn, athena_db=athena_db)
     body = json.dumps(payload, ensure_ascii=False).encode('utf-8')
@@ -477,6 +540,7 @@ def write_country_risks_json(run_query_fn, rows_fn, s3_client, bucket, athena_db
         ContentType='application/json',
         CacheControl='public, max-age=300, s-maxage=86400',
     )
+    _emit_drift_metrics(cloudwatch_client, payload, len(body))
     tier_counts = Counter(c['overall_risk_tier'] for c in payload['countries'].values())
     return {
         'countries': payload['total_countries'],
