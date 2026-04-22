@@ -155,3 +155,54 @@ resource "aws_cloudwatch_metric_alarm" "country_risks_bytes_high" {
   ok_actions          = []
   tags                = var.tags
 }
+
+# ---------------------------------------------------------------------------
+# #409 — Silent-failure observability (CaughtExceptionCount)
+#
+# Lambdas emit a count each time they catch-and-continue an exception
+# in a non-critical-looking code path. Dimensions:
+#   - Lambda   (function name, e.g. qgi-pipeline-recipe-engine-finalize)
+#   - Location (logical context key, e.g. write_country_risks_json)
+#
+# Driven by the 2026-04-22 incident: country-risks.json silently stopped
+# regenerating for 2 days because a signature-mismatch exception was
+# caught, logged, and the finalize Lambda still returned 200 to Step
+# Functions. We don't want to turn catch-and-continue into strict-raise
+# (the surrounding steps are genuinely best-effort) — we want an alarm
+# that pages when ANY Lambda's catch rate spikes above zero.
+#
+# This is a single one-alarm-catches-all pattern: sum across all Lambdas
+# and Locations within one hour. Anything >= 1 pages. Pair with CloudWatch
+# Logs Insights for `[ERROR]` / `[EXCEPTION]` in the affected Lambda to
+# triage specifics.
+# ---------------------------------------------------------------------------
+
+resource "aws_cloudwatch_metric_alarm" "caught_exception_any" {
+  alarm_name          = "qgi-caught-exception-any-lambda"
+  alarm_description   = "A QGI pipeline Lambda caught-and-continued an exception (#409). Sums CaughtExceptionCount across ALL (Lambda, Location) pairs in the last hour; any >=1 fires. Check CloudWatch Logs Insights in the affected Lambda for [EXCEPTION] + Location dimension to triage. Driven by 2026-04-22 silent-failure incident; single-event paging so 2-day silent failures cannot recur."
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  threshold           = 1
+  treat_missing_data  = "notBreaching"
+  alarm_actions       = [var.sns_topic_arn]
+  ok_actions          = [var.sns_topic_arn]
+  tags                = var.tags
+
+  # SEARCH-expression alarm: catches all Lambda/Location dimension pairs
+  # emitting CaughtExceptionCount without having to enumerate them in
+  # Terraform. New catch blocks added in qgi-pipeline get covered
+  # automatically on next run.
+  metric_query {
+    id          = "search"
+    expression  = "SEARCH('{QGI/Pipeline,Lambda,Location} MetricName=\"CaughtExceptionCount\"', 'Sum', 3600)"
+    label       = "CaughtExceptionCount per (Lambda, Location)"
+    return_data = false
+  }
+
+  metric_query {
+    id          = "total"
+    expression  = "SUM(METRICS(\"search\"))"
+    label       = "Sum across all Lambdas"
+    return_data = true
+  }
+}
