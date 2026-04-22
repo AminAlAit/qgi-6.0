@@ -9,7 +9,7 @@ Usage:
 Reads:
     - Legacy events:  qgi-4.0/data/events/*.txt
     - Sonnet events:  qgi-pipeline/data/events/batches/*.json
-    - Countries CSV:  s3://{bucket}/pipeline-A-indicator-extractor/input/countries.csv
+    - Countries CSV:  s3://{bucket}/pipeline-A-indicator-extractor/countries/countries.csv
 
 Writes:
     - s3://{bucket}/events/country_id={id}/events.parquet
@@ -42,7 +42,7 @@ VERIFICATION_EVENTS_DIR = REPO_ROOT / "events" / "verification"  # #372 — verd
 S3_EVENTS_PREFIX = "events/"
 S3_BASELINES_PREFIX = "baselines/"
 S3_EVENTS_SOURCE_PREFIX = "events-source/curated/"  # Mirror of local curated/ — source of truth (#141)
-COUNTRIES_KEY = "pipeline-A-indicator-extractor/input/countries.csv"
+COUNTRIES_KEY = "pipeline-A-indicator-extractor/countries/countries.csv"  # #413 canonical path
 CATEGORY_MAPPING_FILE = REPO_ROOT / "events" / "category_mapping.json"
 TRACKING_FILE = REPO_ROOT / "events" / "TRACKING.md"
 
