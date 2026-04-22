@@ -166,6 +166,16 @@ A country is "ready for V1.5.3 pipeline" only when `curated >= 1` AND `verified 
 | estonia | 1 | 1 | 0 | 2026-04-13 | 50 events |
 | north_macedonia | 1 | 1 | 0 | 2026-04-13 | 45 events |
 
+### Added 2026-04-22 session (#408 expansion + dedup pass on Iran/Ukraine/Venezuela)
+
+Closes #408 face-validity misses by expanding the 3 named countries with WebSearch-grounded events and a follow-up dedup/category-cleanup pass. All new events `verified: true` with real source URLs. Original-event verification status preserved (so totals don't all flip to fully verified).
+
+| Country | Generated | Curated | Verified | Last updated | Notes |
+|---------|----------:|--------:|---------:|--------------|-------|
+| iran | 1 | 2 | 2 | 2026-04-22 | 146 → 187 (+41 WebSearch-grounded) → 181 after dedup pass; 84/181 verified (39 new verified, 45 from 2026-04-13 partial preserved) |
+| ukraine | 1 | 2 | 2 | 2026-04-22 | 43 → 67 (+24 conflict-category expansion); 64/67 verified |
+| venezuela | 1 | 2 | 2 | 2026-04-22 | 51 → 71 (+20, rebalanced toward political_repression / banking_and_financial_crisis / humanitarian_crisis); 70/71 verified |
+
 ### Added 2026-04-16 session (38 countries — generated from scratch via Sonnet)
 
 **Batch 1 (5):**

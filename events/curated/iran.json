@@ -1024,26 +1024,10 @@
     "verification_source": null
   },
   {
-    "year": 2017,
-    "title": "ISIS Attacks Tehran Parliament and Khomeini Shrine",
-    "description": "On June 7, 2017, ISIS gunmen and suicide bombers simultaneously attacked the Iranian parliament building and the mausoleum of Ayatollah Khomeini in southern Tehran, killing 17 people. It was the first major ISIS attack inside Iran and the first terrorist attack on the parliament since 1981. Iran blamed Saudi Arabia for providing ISIS with support and used the attack to justify its own regional military operations.",
-    "category": "terrorist_attack",
-    "verified": false,
-    "verification_source": null
-  },
-  {
     "year": 2018,
     "title": "Trump Withdraws from JCPOA; Maximum Pressure Campaign",
     "description": "On May 8, 2018, President Donald Trump unilaterally withdrew the United States from the JCPOA and reimposed US sanctions on Iran, launching what his administration called a 'maximum pressure' campaign. Trump declared the deal insufficient and demanded a broader agreement covering Iran's missile program and regional activities. Iran continued complying with the deal for a year before progressively abandoning its nuclear restrictions.",
     "category": "sanctions_and_arms_embargo",
-    "verified": false,
-    "verification_source": null
-  },
-  {
-    "year": 2018,
-    "title": "Nationwide Economic Protests Erupt Across 80 Cities",
-    "description": "In late December 2017, spontaneous protests over economic grievances — including unemployment, rising prices, and government corruption — erupted in Mashhad and spread rapidly to over 80 cities. The protests, which the authorities said killed 25 people and resulted in 3,700 arrests, were distinct from the 2009 Green Movement in their working-class character and geographic breadth. The government blamed foreign interference while acknowledging underlying economic discontent.",
-    "category": "mass_protest",
     "verified": false,
     "verification_source": null
   },
@@ -1080,14 +1064,6 @@
     "verification_source": null
   },
   {
-    "year": 2020,
-    "title": "Mohsen Fakhrizadeh, Nuclear Scientist, Assassinated",
-    "description": "Mohsen Fakhrizadeh, Iran's top nuclear scientist and the man Western intelligence agencies considered the father of Iran's military nuclear program, was assassinated near Tehran on November 27, 2020, in an ambush using a remote-controlled machine gun. Iran blamed Israel for the killing, and Israeli media reported Mossad's involvement. The assassination followed a series of killings of Iranian nuclear scientists and set back Iran's technical nuclear expertise.",
-    "category": "technology_breakthrough",
-    "verified": false,
-    "verification_source": null
-  },
-  {
     "year": 2021,
     "title": "Ebrahim Raisi Elected President",
     "description": "Hardline judiciary chief Ebrahim Raisi won the presidential election in June 2021 with 62% of the vote in an election where the Guardian Council had disqualified all significant reformist and moderate candidates. Voter turnout was a record low 48.8%, reflecting widespread public apathy and disillusionment. Raisi's election was widely seen as preparation for his eventual succession to the supreme leadership.",
@@ -1116,14 +1092,6 @@
     "title": "Iran and Saudi Arabia Restore Diplomatic Relations via China",
     "description": "In March 2023, Iran and Saudi Arabia signed a China-brokered agreement to restore diplomatic relations, ending a seven-year rupture that began when Saudi Arabia executed Shia cleric Nimr al-Nimr and its embassies were attacked in Iran. The deal was a significant diplomatic coup for Beijing and signaled a recalibration of regional alignments. Embassies reopened and both countries pledged to respect each other's sovereignty.",
     "category": "diplomatic_rupture",
-    "verified": false,
-    "verification_source": null
-  },
-  {
-    "year": 2024,
-    "title": "Iran Launches Direct Missile and Drone Attack on Israel",
-    "description": "On April 13–14, 2024, Iran launched an unprecedented direct attack on Israeli territory, firing over 300 drones and ballistic and cruise missiles in retaliation for an Israeli strike on the Iranian consulate in Damascus that killed senior IRGC officers. It was the first time Iran had attacked Israel directly rather than through proxies. The US, UK, France, and Jordan helped intercept the projectiles, and over 99% were stopped before reaching their targets.",
-    "category": "civil_war_and_insurgency",
     "verified": false,
     "verification_source": null
   },
@@ -1166,5 +1134,317 @@
     "category": "multilateral_agreement",
     "verified": false,
     "verification_source": null
+  },
+  {
+    "year": 1979,
+    "title": "Kurdish Uprising in Mahabad; IRGC Suppresses Komala and KDPI",
+    "description": "Following the Islamic Revolution, Kurdish parties including the Kurdistan Democratic Party of Iran (KDPI) and Komala launched an armed uprising demanding autonomy for Iranian Kurdistan. Khomeini declared jihad against the Kurdish rebels in August 1979. IRGC and Army forces suppressed the uprising in a bloody campaign that killed thousands of fighters and civilians; sporadic insurgency continued through the 1980s.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iranian%E2%80%93Kurdish_conflict"
+  },
+  {
+    "year": 1980,
+    "title": "Khuzestan Arab Insurgency; Arabistan Liberation Front Operations",
+    "description": "The 1979 Khuzestan insurgency — led by the Arab Political and Cultural Organization and the Arabistan Liberation Front — sought autonomy for the Arab-majority Khuzestan oil province. IRGC forces crushed the uprising in a sustained campaign through 1980, killing hundreds of insurgents. The defeat drove the movement underground and fueled Saddam Hussein's justification for invading Iran in September 1980.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/1979_Khuzestan_insurgency"
+  },
+  {
+    "year": 1981,
+    "title": "MEK Assassination Campaign Kills President, Prime Minister, and 72 Officials",
+    "description": "The Mojahedin-e Khalq (MEK) launched a devastating assassination campaign in 1981. On June 28, a bomb destroyed the Islamic Republican Party headquarters during a leadership meeting, killing 72 senior officials including Chief Justice Ayatollah Beheshti and 27 members of parliament. On August 30, a second bombing at a National Security Council meeting killed President Mohammad Ali Rajai and Prime Minister Mohammad Javad Bahonar. The attacks represented the most severe blow to Islamic Republic leadership in its history.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Haft-e_Tir_bombing"
+  },
+  {
+    "year": 1988,
+    "title": "Summer 1988 Prison Massacre: Thousands of Political Prisoners Executed",
+    "description": "Acting on a secret fatwa by Ayatollah Khomeini in July 1988, 'Death Commissions' convened across Iran and summarily executed an estimated 2,800 to 5,000 political prisoners — primarily MEK members and leftists — over approximately five months. Prisoners were given minutes to recant their beliefs; those who refused were hanged in groups. The executions were conducted in secret; families were told nothing and burial sites were hidden in mass graves. In 2024 the UN Special Rapporteur categorized the killings as genocide.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/1988_executions_of_Iranian_political_prisoners"
+  },
+  {
+    "year": 1988,
+    "title": "Iran-Iraq War Humanitarian Catastrophe: Up to One Million Dead",
+    "description": "The eight-year Iran-Iraq War (1980–1988) produced one of the twentieth century's worst humanitarian disasters. An estimated 500,000 to one million combatants were killed, with Iran suffering the majority of casualties. Tens of thousands of Iranian soldiers were killed or permanently disabled by Iraqi chemical weapons including mustard gas and nerve agents. More than two million Iranians were displaced from border regions; the economy lost an estimated $1 trillion. Long-term veterans' health crises persisted for decades.",
+    "category": "humanitarian_crisis",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Iraq_War"
+  },
+  {
+    "year": 1994,
+    "title": "AMIA Bombing in Buenos Aires: Iran-Directed Attack Kills 85",
+    "description": "On July 18, 1994, a suicide car bomb destroyed the Argentine Mutual Israelite Association (AMIA) Jewish community center in Buenos Aires, killing 85 people and wounding over 300 — Argentina's deadliest terrorist attack. In 2024 an Argentine court ruled that Iran's government directed the bombing and that Hezbollah carried it out. Interpol red notices were issued for senior Iranian officials including Intelligence Minister Ali Fallahian and Quds Force commander Ahmad Vahidi. Iran denied responsibility.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/AMIA_bombing"
+  },
+  {
+    "year": 2003,
+    "title": "IRGC Quds Force Deploys to Iraq; Funds and Arms Shia Militias Against US Forces",
+    "description": "Following the US invasion of Iraq in 2003, Iran's Quds Force moved rapidly to build a network of Iranian-trained and Iranian-funded Shia militias — later called 'Special Groups' by US commanders. Key groups including Kata'ib Hezbollah (est. 2003) and Asa'ib Ahl al-Haq (est. 2006) received weapons, training, and monthly stipends. US military officials attributed over 170 American deaths in Iraq to Iranian-supplied explosively-formed penetrators (EFPs) alone, calling it direct Iranian proxy warfare.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iranian_intervention_in_Iraq_(2014%E2%80%93present)"
+  },
+  {
+    "year": 2004,
+    "title": "PJAK Kurdish Insurgency Begins; First Armed Attacks on IRGC in Kurdistan",
+    "description": "The Party of Free Life of Kurdistan (PJAK), a Kurdish separatist group affiliated with Turkey's PKK, launched its first armed operations against Iranian security forces in 2004 in the mountainous border regions of Iranian Kurdistan. PJAK claimed to have killed 100–120 Iranian security forces in 2005 alone. The conflict escalated through the late 2000s, with Iran launching cross-border artillery and drone strikes against PJAK positions in northern Iraq.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict"
+  },
+  {
+    "year": 2005,
+    "title": "Ahvaz Bombings and Khuzestan Arab Unrest; 28 Killed",
+    "description": "Following protests in April 2005 by ethnic Arabs in Ahvaz, Khuzestan, triggered by a leaked government letter describing plans to dilute the Arab population, a wave of bombings swept the province and other Iranian cities. Arab separatist groups claimed responsibility for attacks that killed 28 people. The unrest exposed persistent ethnic grievances in the oil-rich Khuzestan province and prompted a heavy security crackdown on Arab political and cultural organizations.",
+    "category": "ethnic_and_communal_conflict",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2005_Ahvaz_unrest"
+  },
+  {
+    "year": 2009,
+    "title": "Green Movement Crushed: Opposition Leaders Placed Under House Arrest",
+    "description": "After the brutal suppression of mass protests following the disputed June 2009 presidential election — in which security forces killed dozens of protesters and arrested thousands — the Islamic Republic systematically dismantled the Green Movement. In February 2011, reformist presidential candidates Mir Hossein Mousavi and Mehdi Karroubi were placed under extrajudicial house arrest after calling for new protests inspired by the Arab Spring. Neither was ever charged or tried; both remained under house arrest for over a decade.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iranian_Green_Movement"
+  },
+  {
+    "year": 2010,
+    "title": "Israeli-Attributed Assassinations of Iranian Nuclear Scientists Begin",
+    "description": "Between January 2010 and January 2012, at least four Iranian nuclear scientists were killed in targeted assassinations using motorcycle-mounted magnetic bombs in Tehran: Masoud Ali-Mohammadi (January 2010), Majid Shahriari (November 2010), Darioush Rezaeinejad (July 2011), and Mostafa Ahmadi Roshan (January 2012). A fifth scientist, Fereydoon Abbasi, survived an assassination attempt in November 2010. Iran blamed Israel and the US; both denied involvement. The killings were a covert campaign to degrade Iran's nuclear expertise.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Assassinations_of_Iranian_nuclear_scientists"
+  },
+  {
+    "year": 2011,
+    "title": "Iran Launches Major Military Offensive Against PJAK in Kurdistan",
+    "description": "In July 2011, Iranian forces launched the largest military offensive against PJAK Kurdish rebels in years, deploying ground troops and artillery across the Kurdish border region into northern Iraq. After months of intense fighting, Iran announced a ceasefire in September 2011 and claimed victory. PJAK officially suspended armed operations, though low-level clashes resumed in 2016 when the group reinitiated insurgent activities including an attempted close-quarter assassination of an Iranian MP.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict"
+  },
+  {
+    "year": 2011,
+    "title": "Khuzestan 'Day of Rage' Protests; 12–15 Arab Demonstrators Killed",
+    "description": "On April 15, 2011, ethnic Arab demonstrators in Iran's Khuzestan province staged a 'Day of Rage' protest coinciding with the anniversary of the 2005 Ahvaz unrest and reflecting the regional Arab Spring. Security forces fired on protesters over four days; an estimated 12 to 15 demonstrators and one security officer were killed, with many more wounded and arrested. Human Rights Watch called for an independent investigation into the killings, which the Iranian government denied.",
+    "category": "ethnic_and_communal_conflict",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2011_Khuzestan_protests"
+  },
+  {
+    "year": 2012,
+    "title": "IRGC-Hezbollah Bus Bombing in Bulgaria Kills 5 Israeli Tourists",
+    "description": "On July 18, 2012, the eighteenth anniversary of the AMIA bombing, a suicide bomber on a tour bus at Burgas Airport in Bulgaria killed five Israeli tourists and one Bulgarian, wounding 32 others. Bulgarian authorities and the EU concluded that Hezbollah's military wing carried out the attack with Iranian backing. The bombing prompted the European Union to designate Hezbollah's military wing as a terrorist organization in 2013. A Bulgarian court convicted two Hezbollah-linked operatives in 2020.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2012_Burgas_bus_bombing"
+  },
+  {
+    "year": 2013,
+    "title": "IRGC Formally Enters Syrian Civil War; Deploys Thousands of Troops and Hezbollah",
+    "description": "Iran escalated its involvement in Syria's civil war from advisers to direct combat operations in 2013, committing thousands of IRGC personnel and coordinating the deployment of Hezbollah fighters who proved decisive in recapturing strategic towns including Qusair in June 2013. By October 2015 an estimated 7,000 IRGC members were operating in Syria. Iran's intervention preserved Assad's regime and cemented Iranian strategic depth from Tehran to Beirut.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iranian_intervention_in_the_Syrian_civil_war"
+  },
+  {
+    "year": 2017,
+    "title": "Nationwide Economic Protests Spread to 80 Cities; Security Forces Respond with Lethal Force",
+    "description": "In late December 2017 and early January 2018, spontaneous protests against economic hardship, unemployment, and government corruption erupted in Mashhad and spread to over 80 cities in the largest unrest since 2009. Unlike the middle-class Green Movement, protesters were predominantly working class. Security forces killed at least 25 people, arrested approximately 3,700, and used detention, torture, and show trials to suppress the movement. The protests marked a turning point in the breadth of anti-regime sentiment.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2017%E2%80%932018_Iranian_protests"
+  },
+  {
+    "year": 2019,
+    "title": "Jaish al-Adl Suicide Bombing Kills 27 IRGC Personnel in Sistan-Baluchestan",
+    "description": "On February 13, 2019, the Sunni Baluchi militant group Jaish al-Adl detonated a suicide car bomb targeting a bus carrying IRGC personnel on the Zahedan–Kerman highway in Sistan-Baluchestan province, killing 27 Revolutionary Guards and wounding 13. It was the deadliest single attack on IRGC personnel in years. Iran blamed Pakistan for harboring the group, threatening cross-border military action, and later launched missile strikes on alleged Jaish al-Adl positions in Pakistan in January 2024.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Jaish_ul-Adl"
+  },
+  {
+    "year": 2019,
+    "title": "Bloody November: Security Forces Kill ~1,500 During Fuel Price Protests",
+    "description": "When the Iranian government abruptly raised gasoline prices by up to 300% on November 15, 2019, protests erupted within hours across the country. The security response was extraordinarily violent: Reuters reported at least 1,500 protesters killed during the crackdown, while Amnesty International confirmed a minimum of 304 deaths. The government imposed a week-long national internet blackout to conceal the scale of the violence, causing an estimated $1–1.5 billion in economic damage. At least 12,000 people were arrested.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2019%E2%80%932020_Iranian_protests"
+  },
+  {
+    "year": 2020,
+    "title": "COVID-19 Pandemic: Iran Among World's Hardest-Hit Countries; Death Toll Systematically Underreported",
+    "description": "Iran was among the earliest and hardest-hit countries in the COVID-19 pandemic, with its first deaths confirmed on February 19, 2020, likely suppressed to avoid affecting February 21 parliamentary elections. The government's official death toll was widely contradicted by medical experts and leaked health ministry data; senior Iranian medical officials stated the true death toll was three to seven times official figures. Sanctions-induced medicine shortages compounded the crisis, and mass graves in Qom were visible from satellite imagery by late February 2020.",
+    "category": "epidemic_and_pandemic",
+    "verified": true,
+    "verification_source": "https://iranprimer.usip.org/blog/2020/mar/25/timeline-irans-death-toll-covid-19"
+  },
+  {
+    "year": 2021,
+    "title": "Khuzestan Water Crisis Protests; Security Forces Kill at Least 9",
+    "description": "In July 2021 protests erupted in Khuzestan province over a severe water crisis driven by drought, dam mismanagement, and industrial water diversion. The protests, known as the 'Uprising of the Thirsty,' spread to over 20 cities and were met with live fire by security forces. At least nine people were killed in Khuzestan and further deaths occurred in Isfahan during subsequent protests. Human Rights Watch and Amnesty International condemned the lethal crackdown on demonstrators protesting for basic resource access.",
+    "category": "water_crisis",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2021_Iranian_water_protests"
+  },
+  {
+    "year": 2022,
+    "title": "Zahedan 'Bloody Friday': Security Forces Massacre 66–107 Baluchi Protesters",
+    "description": "On September 30, 2022, IRGC and police forces opened fire with live ammunition on protesters gathered outside a police station in Zahedan, Sistan-Baluchestan, killing at least 66 people according to Amnesty International and over 107 including 17 children according to the Center for Human Rights in Iran. The massacre — the deadliest single day of the 2022 protest wave — occurred when Baluchi protesters demanded accountability for the reported rape of a 15-year-old by a local police commander. Security forces fired from rooftops into the crowd.",
+    "category": "ethnic_and_communal_conflict",
+    "verified": true,
+    "verification_source": "https://www.hrw.org/news/2022/12/22/iran-bloody-friday-crackdown-years-deadliest"
+  },
+  {
+    "year": 2022,
+    "title": "Woman, Life, Freedom Uprising: 500+ Killed, 22,000+ Detained, Protesters Executed",
+    "description": "The 'Woman, Life, Freedom' uprising triggered by Mahsa Amini's death in morality police custody on September 16, 2022 became Iran's largest protest movement since the revolution. Security forces killed over 500 protesters, detained more than 22,000 people, and executed at least 10 protesters on charges including 'enmity against God.' The crackdown was disproportionately violent against ethnic minorities — Kurds and Baluchis — whom a UN Fact-Finding Mission found were especially targeted. Mousavi and Karroubi remained under house arrest throughout.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Mahsa_Amini_protests"
+  },
+  {
+    "year": 2023,
+    "title": "Jaish al-Adl Attacks Kill 11 Police Officers in Rask; Iran-Pakistan Missile Exchange Follows",
+    "description": "On December 15, 2023, Jaish al-Adl attacked a police station in Rask, Sistan-Baluchestan, killing 11 officers. On January 16, 2024, Iran launched ballistic missile and drone strikes on alleged Jaish al-Adl headquarters in Pakistan's Balochistan province, killing two children and wounding three others — a major breach of Pakistani sovereignty. Pakistan immediately expelled the Iranian ambassador and launched its own retaliatory strikes inside Iran two days later. The exchange represented the most serious Iran-Pakistan military confrontation in decades.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://www.longwarjournal.org/archives/2024/10/jaish-al-adl-claims-responsibility-for-twin-attacks-in-irans-sistan-and-baluchistan-province.php"
+  },
+  {
+    "year": 2023,
+    "title": "Houthi Red Sea Campaign: Iran Arms and Directs Attacks on Global Shipping",
+    "description": "From November 2023, Iran-backed Houthi forces in Yemen launched hundreds of drone and missile attacks on commercial shipping in the Red Sea in solidarity with Gaza, causing a 90% reduction in container shipping through the Suez route by early 2024. US intelligence confirmed the IRGC Quds Force provided the drones, cruise missiles, and ballistic missiles used in the attacks and stationed trainers and operators in Yemen. The campaign disrupted an estimated 15% of global maritime trade and drew direct US and UK military strikes on Houthi targets.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://www.cfr.org/in-brief/irans-support-houthis-what-know"
+  },
+  {
+    "year": 2024,
+    "title": "Kerman ISIS Bombings Kill 95 at Soleimani Memorial — Deadliest Attack Since 1979",
+    "description": "On January 3, 2024, the fourth anniversary of Qasem Soleimani's killing, two suicide bombers from Islamic State – Khorasan Province (ISIS-K) detonated devices in a crowd of mourners at Soleimani's grave in Kerman, killing at least 95 people and wounding 284 — the deadliest terrorist attack inside Iran since the 1979 revolution. Iran had reportedly received advance warnings from the United States that it did not act upon. Iran blamed the attack on its regional enemies and used it to justify retaliatory strikes in Iraq, Syria, and Pakistan.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2024_Kerman_bombings"
+  },
+  {
+    "year": 2024,
+    "title": "Iran Launches Direct Ballistic Missile Attack on Israel After Damascus Consulate Strike",
+    "description": "On April 1, 2024, an Israeli airstrike on Iran's consulate in Damascus killed seven IRGC officers including two generals. On April 13–14, Iran retaliated with its first-ever direct military attack on Israeli territory, firing over 300 drones, ballistic missiles, and cruise missiles. The US, UK, France, Jordan, and Israel intercepted more than 99% of the projectiles. Israel conducted a limited retaliatory strike on Isfahan days later. The exchange established a direct military confrontation between Iran and Israel, marking a fundamental escalation in their decades-long shadow war.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iran%E2%80%93Israel_war"
+  },
+  {
+    "year": 2025,
+    "title": "Twelve-Day War: Israel Launches Massive Strikes on Iranian Nuclear Sites; 95 Killed",
+    "description": "On June 13, 2025, Israel launched a major preemptive military campaign against Iran's nuclear infrastructure and IRGC leadership, deploying over 200 fighter jets in five waves of strikes targeting approximately 100 sites including Natanz, IRGC bases, and nuclear scientists' locations. Israel killed 30 Iranian generals and 9 nuclear scientists in the opening hours. Iran retaliated with over 500 ballistic missiles over 12 days. US forces joined with precision strikes on Fordow, Natanz, and Arak. A ceasefire brokered by Trump was announced June 24, 2025; hundreds of Iranian civilians were killed in Israeli strikes.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Twelve-Day_War"
+  },
+  {
+    "year": 2019,
+    "title": "Sanctions-Induced Medical Humanitarian Crisis: Six Million Patients Denied Essential Medicines",
+    "description": "By 2019, the reimposition of US maximum pressure sanctions had produced a severe medical humanitarian crisis inside Iran. Imports of medical supplies fell 60% between September 2018 and June 2019. Over six million patients with complex conditions — including hemophilia, multiple sclerosis, thalassemia, epilepsy, and cancer — faced acute drug shortages. Human Rights Watch documented the crisis in a major October 2019 report, concluding that US sanctions were 'seriously harming Iranians' right to health,' despite nominal humanitarian exemptions.",
+    "category": "humanitarian_crisis",
+    "verified": true,
+    "verification_source": "https://www.hrw.org/report/2019/10/29/maximum-pressure/us-economic-sanctions-harm-iranians-right-health"
+  },
+  {
+    "year": 2005,
+    "title": "Ahmadinejad Wins Presidency; Guardian Council Engineers Hardliner Restoration",
+    "description": "The Guardian Council's mass disqualification of reformist candidates in the 2004 parliamentary elections paved the way for Mahmoud Ahmadinejad's engineered presidential victory in June 2005. The hardline Basij and IRGC mobilized their institutional networks to deliver the vote, and independent analysts identified widespread irregularities. The Guardian Council's systematic exclusion of candidates from political competition — repeated in 2021 and 2024 — has been characterized by international human rights bodies as systematic political repression denying citizens free choice of government.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2005_Iranian_presidential_election"
+  },
+  {
+    "year": 1992,
+    "title": "MEK Simultaneously Attacks Iranian Embassies in 13 Countries",
+    "description": "In April 1992, the Mojahedin-e Khalq (MEK), operating from bases in Iraq, orchestrated simultaneous armed assaults on Iranian diplomatic missions in 13 countries, including the Iranian Mission to the United Nations in New York. The operation demonstrated the organization's logistical reach but killed no diplomats and generated more propaganda value than strategic impact. The attacks reinforced Iran's campaign to have the MEK internationally designated as a terrorist organization.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/People%27s_Mojahedin_Organization_of_Iran"
+  },
+  {
+    "year": 2016,
+    "title": "PJAK Resumes Armed Operations Against IRGC After Five-Year Lull",
+    "description": "The Kurdish rebel group PJAK resumed armed operations against IRGC forces in Iranian Kurdistan in 2016 following a five-year period of relative quiescence since the 2011 ceasefire. Activities included ambushes of security personnel and an attempted close-quarter assassination of an Iranian member of parliament. The resumption coincided with renewed Turkish-PKK fighting and reflected PJAK's continued organizational capacity despite Iranian cross-border strikes on its bases in northern Iraq.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Iran%E2%80%93PJAK_conflict"
+  },
+  {
+    "year": 2021,
+    "title": "Guardian Council Disqualifies All Serious Candidates; Raisi Engineered to Presidency",
+    "description": "For the June 2021 presidential election, the Guardian Council disqualified all significant reformist and moderate candidates, including former parliamentary speaker Ali Larijani and former first vice president Eshaq Jahangiri, ensuring hardline judiciary chief Ebrahim Raisi's victory. Voter turnout collapsed to a record-low 48.8%, reflecting mass public disillusionment. Human rights organizations noted that Raisi had been a member of the 'Death Commission' that ordered the 1988 prison massacres, yet faced no accountability.",
+    "category": "political_repression",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/2021_Iranian_presidential_election"
+  },
+  {
+    "year": 2022,
+    "title": "Iran Ethnic Minorities — Kurds, Baluchis, Azeris — Bear Disproportionate Brunt of 2022 Crackdown",
+    "description": "The UN Fact-Finding Mission on Iran's 2022 protests found that ethnic and religious minorities — particularly Kurds and Baluchis — were disproportionately killed, arrested, and subjected to summary executions during the Woman, Life, Freedom crackdown. The Mahsa Amini protests began in Kurdish areas; Zahedan's Bloody Friday massacre targeted Baluchi protesters. Human Rights Watch documented intensified repression of the Azeri minority by 2025, including arrests of cultural activists and forced closure of Azerbaijani-language publications.",
+    "category": "ethnic_and_communal_conflict",
+    "verified": true,
+    "verification_source": "https://www.ohchr.org/en/press-releases/2024/08/minorities-iran-have-been-disproportionally-impacted-ongoing-crackdown"
+  },
+  {
+    "year": 2024,
+    "title": "Jaish al-Adl Kills 16 Soldiers; Iran-Pakistan Cross-Border Crisis",
+    "description": "The killing of 16 Iranian soldiers by Jaish al-Adl in April 2024, compounded by the group's October 2024 twin attacks killing 6 IRGC and law enforcement personnel in Sistan-Baluchestan, exposed the persistent fragility of Iranian state control in its Baluchi southeast. These attacks followed Iran's January 2024 ballistic missile strike on Pakistani territory — itself retaliation for the December 2023 Rask police station attack. The escalation cycle demonstrated that the Baluchi insurgency constitutes a sustained, ongoing armed conflict rather than isolated incidents.",
+    "category": "civil_war_and_insurgency",
+    "verified": true,
+    "verification_source": "https://www.fdd.org/analysis/op_eds/2024/10/01/jaish-al-adl-claims-responsibility-for-twin-attacks-in-irans-sistan-and-baluchistan-province/"
+  },
+  {
+    "year": 2026,
+    "title": "US-Israel Strikes Kill Khamenei; Iran Counter-Strikes Begin",
+    "description": "On February 28, 2026, Israel and the United States launched a second major military campaign against Iran, assassinating Supreme Leader Ali Khamenei and key political figure Ali Larijani. Iran launched counter-strikes against Israel, US military bases across the region, and Arab states hosting US forces. The attacks represented the most severe external military intervention in Iran since the Iran-Iraq War and triggered a multi-front conflict reshaping the regional order.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://commonslibrary.parliament.uk/research-briefings/cbp-10521/"
+  },
+  {
+    "year": 2020,
+    "title": "Fakhrizadeh Assassination: Mossad Kills Iran's Top Nuclear Weapons Scientist",
+    "description": "Mohsen Fakhrizadeh, the father of Iran's military nuclear program and director of what Western intelligence agencies called the AMAD weapons project, was killed on November 27, 2020 near Tehran in an attack using a remote-controlled machine gun mounted on a Nissan pickup truck. Israel's Mossad was identified by Iranian and Israeli media as responsible. The killing followed four previous scientist assassinations attributed to Israel (2010–2012) and set back Iran's nuclear weapons-development expertise by depriving it of its most experienced technical leader.",
+    "category": "foreign_intervention",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Mohsen_Fakhrizadeh"
+  },
+  {
+    "year": 2017,
+    "title": "ISIS-K Attack on Tehran Parliament and Khomeini Shrine Kills 17",
+    "description": "On June 7, 2017, ISIS gunmen and suicide bombers carried out coordinated attacks on the Iranian parliament building and the mausoleum of Ayatollah Khomeini in southern Tehran, killing 17 people and wounding more than 40. It was the first major ISIS attack inside Iran and the first terrorist attack on the parliament since the MEK's 1981 bombing. ISIS's Amaq Agency released video of the attackers inside the parliament. Iran blamed Saudi Arabia for supporting ISIS and used the attack to justify its military operations in Iraq and Syria.",
+    "category": "terrorist_attack",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/June_2017_Tehran_attacks"
+  },
+  {
+    "year": 2015,
+    "title": "Iran Sanctions-Driven Economic Recession: Rial Loses 80%; Inflation Exceeds 40%",
+    "description": "The cumulative effect of US and EU sanctions — including SWIFT exclusion in 2012 and oil export bans — produced a severe economic recession in Iran between 2012 and 2015. The rial lost over 80% of its value; inflation peaked above 40%; oil exports fell by more than half from 2.5 million to under 1 million barrels per day. GDP contracted significantly. The economic crisis drove popular pressure that enabled Rouhani's election and the eventual JCPOA negotiation, demonstrating how the sanctions directly shaped Iran's political and diplomatic choices.",
+    "category": "economic_recession",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/International_sanctions_against_Iran"
+  },
+  {
+    "year": 2024,
+    "title": "Iran Crosses Nuclear Breakout Threshold: Enriches to 60%; Weeks From Weapons-Grade",
+    "description": "By 2024, IAEA reports confirmed Iran was enriching uranium to 60% purity at Natanz and Fordow — one technical step below weapons-grade (90%) — and had accumulated enough fissile material that nuclear breakout time was estimated at under two weeks. Iran had exceeded every JCPOA limit since 2019. Advanced centrifuge cascades were operating at both declared and undisclosed sites. The nuclear impasse was a direct driver of the June 2025 Israeli military campaign that targeted Iran's enrichment infrastructure.",
+    "category": "military_policy_and_reform",
+    "verified": true,
+    "verification_source": "https://en.wikipedia.org/wiki/Nuclear_program_of_Iran"
   }
 ]
