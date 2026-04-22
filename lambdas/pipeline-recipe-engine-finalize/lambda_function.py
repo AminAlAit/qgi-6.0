@@ -108,7 +108,42 @@ COUNTRY_REGIONS = _load_country_regions()
 
 athena = boto3.client('athena')
 s3 = boto3.client('s3')
-cloudwatch = boto3.client('cloudwatch')  # #381 drift metric emission
+cloudwatch = boto3.client('cloudwatch')  # #381 drift + #409 caught-exception metrics
+
+
+def _emit_caught_exception(context_key):
+    """Emit CloudWatch metric for a log-and-continue exception (#409).
+
+    Some catch blocks intentionally log-and-continue for non-fatal steps
+    (e.g. view creation, dashboard sub-writes). Those exceptions still
+    represent operational signal that deserves an alarm when they spike.
+    This helper ensures the occurrence is counted in CloudWatch even
+    when the handler chooses not to re-raise.
+
+    Discovered after 2026-04-22 finalize-Lambda silent-failure incident:
+    country-risks.json silently stopped regenerating for 2 days because
+    a signature-mismatch exception was caught, logged, and the handler
+    still returned 200. See #373 (audit) and #409 (observability).
+    """
+    try:
+        cloudwatch.put_metric_data(
+            Namespace='QGI/Pipeline',
+            MetricData=[{
+                'MetricName': 'CaughtExceptionCount',
+                'Value': 1.0,
+                'Unit': 'Count',
+                'Dimensions': [
+                    {'Name': 'Lambda',
+                     'Value': os.environ.get('AWS_LAMBDA_FUNCTION_NAME', 'unknown')},
+                    {'Name': 'Location', 'Value': context_key},
+                ],
+            }],
+        )
+    except Exception:  # noqa: BLE001 — last-resort; don't shadow original
+        logger.warning(
+            "emit_caught_exception: metric put failed (swallowed) context=%s",
+            context_key,
+        )
 
 
 def lambda_handler(event, context):
@@ -150,6 +185,7 @@ def lambda_handler(event, context):
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"Failed to create convergence view: {exc}")
             convergence_status = f'error: {exc}'
+            _emit_caught_exception('create_convergence_view')
 
     # Step 4: dashboard JSONs (#146)
     dashboard_results = {}
@@ -160,6 +196,7 @@ def lambda_handler(event, context):
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"Failed to write dashboard JSONs: {exc}")
             dashboard_results = {'error': str(exc)}
+            _emit_caught_exception('write_dashboard_jsons')
 
     return {
         'statusCode': 200,
@@ -362,8 +399,12 @@ def write_dashboard_jsons():
     except Exception as exc:  # noqa: BLE001
         # Non-fatal: the 3 core dashboard JSONs already landed; country-risks
         # was added in #375 and shouldn't block the pipeline on regression.
+        # #409: emit CloudWatch metric so the 2026-04-22 silent-failure class
+        # (2 days of missing regeneration before anyone noticed) cannot recur
+        # without an alarm firing.
         logger.exception(f"country-risks.json generation failed: {exc}")
         results['country_risks'] = {'error': str(exc)}
+        _emit_caught_exception('write_country_risks_json')
     return results
 
 

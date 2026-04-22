@@ -115,7 +115,11 @@ def handle_kill(bucket, run_id, chunk_index, reason):
             else:
                 batch_client.terminate_job(jobId=job['id'], reason=reason)
             return True
-        except Exception:
+        except Exception as exc:  # noqa: BLE001 — log-and-continue per #373
+            logger.warning(
+                f"Failed to {'cancel' if job.get('cancel') else 'terminate'} "
+                f"job {job.get('id')!r}: {exc}"
+            )
             return False
 
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as pool:
@@ -138,6 +142,8 @@ def handle_report(job_queue):
             paginator = batch_client.get_paginator('list_jobs')
             for page in paginator.paginate(jobQueue=job_queue, jobStatus=status):
                 remaining += len(page.get('jobSummaryList', []))
-        except Exception:
-            pass
+        except Exception as exc:  # noqa: BLE001 — log-and-continue per #373
+            logger.warning(
+                f"Failed to list jobs in status {status!r} during report: {exc}"
+            )
     return {'remaining_jobs': remaining}
