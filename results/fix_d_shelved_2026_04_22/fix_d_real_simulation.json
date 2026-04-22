@@ -1,0 +1,1919 @@
+{
+  "simulation_type": "REAL Fix D (Athena-backed, full zero-fill)",
+  "n_countries": 261,
+  "n_countries_with_recipes": 86,
+  "n_raw_scores": 7963,
+  "n_category_tier_distributions": 280,
+  "sigma_distribution_fix_d": {
+    "min": 0.0152,
+    "p25": 0.2641,
+    "median": 0.4277,
+    "p75": 0.6523,
+    "max": 1.1421
+  },
+  "v191_tier_distribution": {
+    "HIGH": 33,
+    "INDICATIVE": 28,
+    "MODERATE": 25
+  },
+  "fix_d_sweep": [
+    {
+      "threshold": 0.0,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.1,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.2,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.3,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.4,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.5,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.6,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.7,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.8,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.0,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.1,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.2,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.3,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.4,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.5,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.6,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.7,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.8,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 1.9,
+      "dist": {
+        "HIGH": 86
+      },
+      "high_share_pct": 100.0,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Costa Rica exp=NOT_HIGH got=HIGH"
+      ]
+    },
+    {
+      "threshold": 2.0,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.1,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.2,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.3,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.4,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.5,
+      "dist": {
+        "HIGH": 85,
+        "MODERATE": 1
+      },
+      "high_share_pct": 98.8,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.6,
+      "dist": {
+        "HIGH": 83,
+        "MODERATE": 3
+      },
+      "high_share_pct": 96.5,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.7,
+      "dist": {
+        "HIGH": 83,
+        "MODERATE": 3
+      },
+      "high_share_pct": 96.5,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.8,
+      "dist": {
+        "HIGH": 81,
+        "MODERATE": 5
+      },
+      "high_share_pct": 94.2,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 2.9,
+      "dist": {
+        "HIGH": 79,
+        "MODERATE": 7
+      },
+      "high_share_pct": 91.9,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 3.0,
+      "dist": {
+        "HIGH": 76,
+        "MODERATE": 9,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 88.4,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 3.1,
+      "dist": {
+        "HIGH": 73,
+        "MODERATE": 12,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 84.9,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 3.2,
+      "dist": {
+        "HIGH": 71,
+        "MODERATE": 14,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 82.6,
+      "in_target_band": false,
+      "face_validity": "11/11",
+      "fv_hits": 11,
+      "fv_total": 11,
+      "fv_misses": []
+    },
+    {
+      "threshold": 3.3,
+      "dist": {
+        "HIGH": 68,
+        "MODERATE": 17,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 79.1,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Yemen exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.4,
+      "dist": {
+        "HIGH": 63,
+        "MODERATE": 22,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 73.3,
+      "in_target_band": false,
+      "face_validity": "10/11",
+      "fv_hits": 10,
+      "fv_total": 11,
+      "fv_misses": [
+        "Yemen exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.5,
+      "dist": {
+        "HIGH": 62,
+        "MODERATE": 23,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 72.1,
+      "in_target_band": false,
+      "face_validity": "9/11",
+      "fv_hits": 9,
+      "fv_total": 11,
+      "fv_misses": [
+        "Yemen exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.6,
+      "dist": {
+        "HIGH": 54,
+        "MODERATE": 31,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 62.8,
+      "in_target_band": false,
+      "face_validity": "7/11",
+      "fv_hits": 7,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.7,
+      "dist": {
+        "HIGH": 51,
+        "MODERATE": 34,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 59.3,
+      "in_target_band": false,
+      "face_validity": "7/11",
+      "fv_hits": 7,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.8,
+      "dist": {
+        "HIGH": 45,
+        "MODERATE": 40,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 52.3,
+      "in_target_band": false,
+      "face_validity": "7/11",
+      "fv_hits": 7,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 3.9,
+      "dist": {
+        "MODERATE": 44,
+        "HIGH": 41,
+        "INDICATIVE": 1
+      },
+      "high_share_pct": 47.7,
+      "in_target_band": false,
+      "face_validity": "6/11",
+      "fv_hits": 6,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.0,
+      "dist": {
+        "MODERATE": 45,
+        "INDICATIVE": 3,
+        "HIGH": 38
+      },
+      "high_share_pct": 44.2,
+      "in_target_band": true,
+      "face_validity": "4/11",
+      "fv_hits": 4,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.1,
+      "dist": {
+        "MODERATE": 50,
+        "INDICATIVE": 3,
+        "HIGH": 33
+      },
+      "high_share_pct": 38.4,
+      "in_target_band": true,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.2,
+      "dist": {
+        "MODERATE": 55,
+        "INDICATIVE": 4,
+        "HIGH": 27
+      },
+      "high_share_pct": 31.4,
+      "in_target_band": true,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.3,
+      "dist": {
+        "MODERATE": 57,
+        "INDICATIVE": 5,
+        "HIGH": 24
+      },
+      "high_share_pct": 27.9,
+      "in_target_band": true,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.4,
+      "dist": {
+        "MODERATE": 59,
+        "INDICATIVE": 7,
+        "HIGH": 20
+      },
+      "high_share_pct": 23.3,
+      "in_target_band": false,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.5,
+      "dist": {
+        "MODERATE": 61,
+        "INDICATIVE": 8,
+        "HIGH": 17
+      },
+      "high_share_pct": 19.8,
+      "in_target_band": false,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.6,
+      "dist": {
+        "MODERATE": 62,
+        "INDICATIVE": 10,
+        "HIGH": 14
+      },
+      "high_share_pct": 16.3,
+      "in_target_band": false,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.7,
+      "dist": {
+        "MODERATE": 64,
+        "INDICATIVE": 12,
+        "HIGH": 10
+      },
+      "high_share_pct": 11.6,
+      "in_target_band": false,
+      "face_validity": "2/11",
+      "fv_hits": 2,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.8,
+      "dist": {
+        "MODERATE": 68,
+        "INDICATIVE": 13,
+        "HIGH": 5
+      },
+      "high_share_pct": 5.8,
+      "in_target_band": false,
+      "face_validity": "1/11",
+      "fv_hits": 1,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Ethiopia exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 4.9,
+      "dist": {
+        "MODERATE": 70,
+        "INDICATIVE": 15,
+        "HIGH": 1
+      },
+      "high_share_pct": 1.2,
+      "in_target_band": false,
+      "face_validity": "1/11",
+      "fv_hits": 1,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=MODERATE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Ethiopia exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    },
+    {
+      "threshold": 5.0,
+      "dist": {
+        "MODERATE": 68,
+        "INDICATIVE": 18,
+        "HIGH": 0
+      },
+      "high_share_pct": 0.0,
+      "in_target_band": false,
+      "face_validity": "1/11",
+      "fv_hits": 1,
+      "fv_total": 11,
+      "fv_misses": [
+        "Syria exp=HIGH got=MODERATE",
+        "Somalia exp=HIGH got=MODERATE",
+        "Yemen exp=HIGH got=INDICATIVE",
+        "Afghanistan exp=HIGH got=MODERATE",
+        "Lebanon exp=HIGH got=MODERATE",
+        "Ethiopia exp=HIGH got=MODERATE",
+        "Pakistan exp=HIGH got=MODERATE",
+        "Iran exp=HIGH got=MODERATE",
+        "Ukraine exp=HIGH got=MODERATE",
+        "Venezuela exp=HIGH got=MODERATE"
+      ]
+    }
+  ],
+  "fix_d_recommended_threshold": {
+    "threshold": 4.0,
+    "dist": {
+      "MODERATE": 45,
+      "INDICATIVE": 3,
+      "HIGH": 38
+    },
+    "high_share_pct": 44.2,
+    "in_target_band": true,
+    "face_validity": "4/11",
+    "fv_hits": 4,
+    "fv_total": 11,
+    "fv_misses": [
+      "Syria exp=HIGH got=MODERATE",
+      "Somalia exp=HIGH got=MODERATE",
+      "Yemen exp=HIGH got=MODERATE",
+      "Afghanistan exp=HIGH got=MODERATE",
+      "Lebanon exp=HIGH got=MODERATE",
+      "Iran exp=HIGH got=MODERATE",
+      "Ukraine exp=HIGH got=MODERATE"
+    ]
+  },
+  "fix_d_moderate_ratio": 0.65,
+  "face_validity_comparison": [
+    {
+      "name": "Syria",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 1.668,
+      "fix_d_top_salience": 3.536,
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": false
+    },
+    {
+      "name": "Somalia",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 1.832,
+      "fix_d_top_salience": 3.964,
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "S",
+      "v191_match": true,
+      "fix_d_match": false
+    },
+    {
+      "name": "Yemen",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 2.397,
+      "fix_d_top_salience": 3.208,
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": false
+    },
+    {
+      "name": "Afghanistan",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 1.612,
+      "fix_d_top_salience": 3.887,
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": false
+    },
+    {
+      "name": "Lebanon",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 2.213,
+      "fix_d_top_salience": 3.983,
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": false
+    },
+    {
+      "name": "Ethiopia",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "HIGH",
+      "v191_top_salience": 1.885,
+      "fix_d_top_salience": 4.728,
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "S",
+      "v191_match": true,
+      "fix_d_match": true
+    },
+    {
+      "name": "Pakistan",
+      "expected": "HIGH",
+      "v191_tier": "HIGH",
+      "fix_d_tier": "HIGH",
+      "v191_top_salience": 1.95,
+      "fix_d_top_salience": 4.041,
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": true
+    },
+    {
+      "name": "Iran",
+      "expected": "HIGH",
+      "v191_tier": "MODERATE",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 1.185,
+      "fix_d_top_salience": 3.42,
+      "fix_d_top_cat": "foreign_intervention",
+      "fix_d_top_tier": "XL",
+      "v191_match": false,
+      "fix_d_match": false
+    },
+    {
+      "name": "Ukraine",
+      "expected": "HIGH",
+      "v191_tier": "MODERATE",
+      "fix_d_tier": "MODERATE",
+      "v191_top_salience": 1.096,
+      "fix_d_top_salience": 3.578,
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL",
+      "v191_match": false,
+      "fix_d_match": false
+    },
+    {
+      "name": "Venezuela",
+      "expected": "HIGH",
+      "v191_tier": "INDICATIVE",
+      "fix_d_tier": "HIGH",
+      "v191_top_salience": 1.087,
+      "fix_d_top_salience": 4.091,
+      "fix_d_top_cat": "currency_crisis",
+      "fix_d_top_tier": "XL",
+      "v191_match": false,
+      "fix_d_match": true
+    },
+    {
+      "name": "Costa Rica",
+      "expected": "NOT_HIGH",
+      "v191_tier": "MODERATE",
+      "fix_d_tier": "INDICATIVE",
+      "v191_top_salience": 1.315,
+      "fix_d_top_salience": 1.942,
+      "fix_d_top_cat": "economic_recession",
+      "fix_d_top_tier": "XL",
+      "v191_match": true,
+      "fix_d_match": true
+    }
+  ],
+  "top_categories_by_global_mean": [
+    {
+      "cat": "elections_and_voting",
+      "tier": "L",
+      "mu": 0.7371,
+      "sigma": 1.1421,
+      "n_nonzero": 77,
+      "max": 2.7034
+    },
+    {
+      "cat": "elections_and_voting",
+      "tier": "M",
+      "mu": 0.6894,
+      "sigma": 1.0659,
+      "n_nonzero": 78,
+      "max": 2.6444
+    },
+    {
+      "cat": "constitutional_change",
+      "tier": "L",
+      "mu": 0.6388,
+      "sigma": 1.0043,
+      "n_nonzero": 77,
+      "max": 2.6246
+    },
+    {
+      "cat": "mass_protest",
+      "tier": "L",
+      "mu": 0.5809,
+      "sigma": 0.9659,
+      "n_nonzero": 71,
+      "max": 2.5731
+    },
+    {
+      "cat": "bilateral_treaty",
+      "tier": "L",
+      "mu": 0.49,
+      "sigma": 0.9289,
+      "n_nonzero": 58,
+      "max": 2.5703
+    },
+    {
+      "cat": "government_formation",
+      "tier": "L",
+      "mu": 0.571,
+      "sigma": 0.9724,
+      "n_nonzero": 68,
+      "max": 2.57
+    },
+    {
+      "cat": "terrorist_attack",
+      "tier": "L",
+      "mu": 0.3986,
+      "sigma": 0.8373,
+      "n_nonzero": 49,
+      "max": 2.5605
+    },
+    {
+      "cat": "civil_war_and_insurgency",
+      "tier": "L",
+      "mu": 0.4089,
+      "sigma": 0.8571,
+      "n_nonzero": 50,
+      "max": 2.5559
+    },
+    {
+      "cat": "political_repression",
+      "tier": "L",
+      "mu": 0.5012,
+      "sigma": 0.9126,
+      "n_nonzero": 62,
+      "max": 2.5194
+    },
+    {
+      "cat": "government_formation",
+      "tier": "M",
+      "mu": 0.5493,
+      "sigma": 0.9078,
+      "n_nonzero": 71,
+      "max": 2.5165
+    },
+    {
+      "cat": "democratic_transition",
+      "tier": "L",
+      "mu": 0.4364,
+      "sigma": 0.8099,
+      "n_nonzero": 61,
+      "max": 2.5026
+    },
+    {
+      "cat": "fiscal_policy_change",
+      "tier": "L",
+      "mu": 0.3903,
+      "sigma": 0.8017,
+      "n_nonzero": 52,
+      "max": 2.5004
+    },
+    {
+      "cat": "bilateral_treaty",
+      "tier": "M",
+      "mu": 0.4731,
+      "sigma": 0.8735,
+      "n_nonzero": 60,
+      "max": 2.4869
+    },
+    {
+      "cat": "political_repression",
+      "tier": "M",
+      "mu": 0.509,
+      "sigma": 0.872,
+      "n_nonzero": 68,
+      "max": 2.4868
+    },
+    {
+      "cat": "migration_and_refugees",
+      "tier": "L",
+      "mu": 0.4149,
+      "sigma": 0.8402,
+      "n_nonzero": 52,
+      "max": 2.4847
+    }
+  ],
+  "per_country_summary": [
+    {
+      "name": "Bhutan",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.101,
+      "fix_d_top_salience": 4.955,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "economic_liberalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Argentina",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.485,
+      "fix_d_top_salience": 4.885,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "economic_nationalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Chile",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.333,
+      "fix_d_top_salience": 4.878,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "economic_nationalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Bolivia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.677,
+      "fix_d_top_salience": 4.837,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "water_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Guatemala",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.004,
+      "fix_d_top_salience": 4.837,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "volcanic_eruption",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "South Korea",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.267,
+      "fix_d_top_salience": 4.789,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Niger",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.647,
+      "fix_d_top_salience": 4.766,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Morocco",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.419,
+      "fix_d_top_salience": 4.737,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Ethiopia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.885,
+      "fix_d_top_salience": 4.728,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Ghana",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.715,
+      "fix_d_top_salience": 4.71,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Brazil",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.112,
+      "fix_d_top_salience": 4.688,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Cambodia",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.213,
+      "fix_d_top_salience": 4.626,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "economic_liberalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Mexico",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.316,
+      "fix_d_top_salience": 4.625,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Kenya",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.246,
+      "fix_d_top_salience": 4.611,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Burkina Faso",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.633,
+      "fix_d_top_salience": 4.559,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Tanzania",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.45,
+      "fix_d_top_salience": 4.503,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Nigeria",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.176,
+      "fix_d_top_salience": 4.501,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Mali",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.333,
+      "fix_d_top_salience": 4.481,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Chad",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.024,
+      "fix_d_top_salience": 4.438,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Turkiye",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.427,
+      "fix_d_top_salience": 4.429,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Thailand",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.419,
+      "fix_d_top_salience": 4.382,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "El Salvador",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.666,
+      "fix_d_top_salience": 4.361,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Madagascar",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.433,
+      "fix_d_top_salience": 4.322,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Peru",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.432,
+      "fix_d_top_salience": 4.316,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Burundi",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.363,
+      "fix_d_top_salience": 4.251,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Uganda",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.285,
+      "fix_d_top_salience": 4.24,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Portugal",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.351,
+      "fix_d_top_salience": 4.211,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "India",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.492,
+      "fix_d_top_salience": 4.198,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Israel",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.939,
+      "fix_d_top_salience": 4.197,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Honduras",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.402,
+      "fix_d_top_salience": 4.168,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Mozambique",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.342,
+      "fix_d_top_salience": 4.147,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "foreign_direct_investment",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Rwanda",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.307,
+      "fix_d_top_salience": 4.118,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Myanmar",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.82,
+      "fix_d_top_salience": 4.112,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Venezuela",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.087,
+      "fix_d_top_salience": 4.091,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "currency_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "China",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.146,
+      "fix_d_top_salience": 4.076,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Pakistan",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.95,
+      "fix_d_top_salience": 4.041,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Indonesia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.498,
+      "fix_d_top_salience": 4.019,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "New Zealand",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.116,
+      "fix_d_top_salience": 4.015,
+      "fix_d_tier_at_rec": "HIGH",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "North Korea",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 0.955,
+      "fix_d_top_salience": 3.984,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "economic_nationalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Lebanon",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 2.213,
+      "fix_d_top_salience": 3.983,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Somalia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.832,
+      "fix_d_top_salience": 3.964,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Afghanistan",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.612,
+      "fix_d_top_salience": 3.887,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Eritrea",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.631,
+      "fix_d_top_salience": 3.866,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Cuba",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.033,
+      "fix_d_top_salience": 3.85,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "economic_liberalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Egypt",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.502,
+      "fix_d_top_salience": 3.819,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "currency_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Armenia",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.035,
+      "fix_d_top_salience": 3.794,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "The Democratic Republic of the Congo",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.829,
+      "fix_d_top_salience": 3.788,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "South Sudan",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.495,
+      "fix_d_top_salience": 3.769,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Dominican Republic",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.406,
+      "fix_d_top_salience": 3.737,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Russia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.623,
+      "fix_d_top_salience": 3.735,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Azerbaijan",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.015,
+      "fix_d_top_salience": 3.728,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Tunisia",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.015,
+      "fix_d_top_salience": 3.677,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Hungary",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.649,
+      "fix_d_top_salience": 3.67,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "economic_nationalization",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Philippines",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.091,
+      "fix_d_top_salience": 3.667,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Sudan",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.433,
+      "fix_d_top_salience": 3.591,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Ukraine",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.096,
+      "fix_d_top_salience": 3.578,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Colombia",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.156,
+      "fix_d_top_salience": 3.572,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "volcanic_eruption",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Libya",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.512,
+      "fix_d_top_salience": 3.543,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "foreign_intervention",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Syria",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.668,
+      "fix_d_top_salience": 3.536,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Ivory Coast",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.184,
+      "fix_d_top_salience": 3.52,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "L"
+    },
+    {
+      "name": "United Kingdom",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.759,
+      "fix_d_top_salience": 3.519,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Laos",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.151,
+      "fix_d_top_salience": 3.502,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "currency_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Iran",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.185,
+      "fix_d_top_salience": 3.42,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "foreign_intervention",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Australia",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.496,
+      "fix_d_top_salience": 3.394,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Saudi Arabia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.614,
+      "fix_d_top_salience": 3.315,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "France",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.515,
+      "fix_d_top_salience": 3.31,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "foreign_intervention",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Angola",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.158,
+      "fix_d_top_salience": 3.303,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "resource_conflict",
+      "fix_d_top_tier": "M"
+    },
+    {
+      "name": "United States",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.52,
+      "fix_d_top_salience": 3.301,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "interstate_war",
+      "fix_d_top_tier": "L"
+    },
+    {
+      "name": "Jamaica",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.441,
+      "fix_d_top_salience": 3.225,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "renewable_energy",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Italy",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.595,
+      "fix_d_top_salience": 3.212,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "banking_and_financial_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Yemen",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 2.397,
+      "fix_d_top_salience": 3.208,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "military_coup",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Spain",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.664,
+      "fix_d_top_salience": 3.172,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "poverty_and_inequality_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Algeria",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.068,
+      "fix_d_top_salience": 3.17,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "territorial_disputes",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Bangladesh",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.737,
+      "fix_d_top_salience": 3.094,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "labor_action",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Senegal",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.046,
+      "fix_d_top_salience": 3.033,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "executive_power_consolidation",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Belarus",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.311,
+      "fix_d_top_salience": 3.002,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "foreign_intervention",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Serbia",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 1.517,
+      "fix_d_top_salience": 2.955,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "ethnic_and_communal_conflict",
+      "fix_d_top_tier": "S"
+    },
+    {
+      "name": "Bulgaria",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.201,
+      "fix_d_top_salience": 2.949,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "monetary_policy_change",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Croatia",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.068,
+      "fix_d_top_salience": 2.905,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "banking_and_financial_crisis",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Georgia",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.035,
+      "fix_d_top_salience": 2.84,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "humanitarian_crisis",
+      "fix_d_top_tier": "M"
+    },
+    {
+      "name": "Iraq",
+      "v191_tier": "HIGH",
+      "v191_top_salience": 2.0,
+      "fix_d_top_salience": 2.83,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "political_violence",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.083,
+      "fix_d_top_salience": 2.751,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "territorial_disputes",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Canada",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.105,
+      "fix_d_top_salience": 2.711,
+      "fix_d_tier_at_rec": "MODERATE",
+      "fix_d_top_cat": "political_violence",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Ecuador",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 0.761,
+      "fix_d_top_salience": 2.591,
+      "fix_d_tier_at_rec": "INDICATIVE",
+      "fix_d_top_cat": "civil_war_and_insurgency",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Albania",
+      "v191_tier": "INDICATIVE",
+      "v191_top_salience": 1.091,
+      "fix_d_top_salience": 2.567,
+      "fix_d_tier_at_rec": "INDICATIVE",
+      "fix_d_top_cat": "earthquake",
+      "fix_d_top_tier": "XL"
+    },
+    {
+      "name": "Costa Rica",
+      "v191_tier": "MODERATE",
+      "v191_top_salience": 1.315,
+      "fix_d_top_salience": 1.942,
+      "fix_d_tier_at_rec": "INDICATIVE",
+      "fix_d_top_cat": "economic_recession",
+      "fix_d_top_tier": "XL"
+    }
+  ]
+}
