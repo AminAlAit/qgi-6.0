@@ -126,3 +126,14 @@ module "pipeline" {
 
   tags = local.tags
 }
+
+# ---------------------------------------------------------------------------
+# Monitoring — CloudWatch alarms for V1.9.1 scoring drift (#381)
+# ---------------------------------------------------------------------------
+module "monitoring" {
+  source = "../../modules/monitoring"
+
+  environment   = var.environment
+  sns_topic_arn = module.storage.sns_topic_arn
+  tags          = local.tags
+}

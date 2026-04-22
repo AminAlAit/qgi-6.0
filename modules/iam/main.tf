@@ -224,6 +224,19 @@ resource "aws_iam_role_policy" "lambda_execution" {
         Action   = ["lambda:InvokeFunction"]
         Resource = "arn:aws:lambda:${var.region}:${var.aws_account_id}:function:qgi-*"
       },
+      # CloudWatch metrics — #381 drift monitoring (finalize Lambda emits
+      # HIGH_COUNTRY_COUNT / MEDIAN_SALIENCE_SCORE / COUNTRY_RISKS_BYTES
+      # to QGI/Pipeline namespace).
+      {
+        Effect   = "Allow"
+        Action   = ["cloudwatch:PutMetricData"]
+        Resource = "*"  # CloudWatch PutMetricData requires wildcard; scoped via namespace condition below
+        Condition = {
+          StringEquals = {
+            "cloudwatch:namespace" = "QGI/Pipeline"
+          }
+        }
+      },
       # (#FAR-1) EC2 + SSM perms removed — Phase 1 no longer uses an EC2
       # fetcher instance, so the dispatcher Lambda has no need to start
       # instances or send SSM commands.
