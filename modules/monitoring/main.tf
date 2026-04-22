@@ -177,32 +177,50 @@ resource "aws_cloudwatch_metric_alarm" "country_risks_bytes_high" {
 # triage specifics.
 # ---------------------------------------------------------------------------
 
-resource "aws_cloudwatch_metric_alarm" "caught_exception_any" {
-  alarm_name          = "qgi-caught-exception-any-lambda"
-  alarm_description   = "A QGI pipeline Lambda caught-and-continued an exception (#409). Sums CaughtExceptionCount across ALL (Lambda, Location) pairs in the last hour; any >=1 fires. Check CloudWatch Logs Insights in the affected Lambda for [EXCEPTION] + Location dimension to triage. Driven by 2026-04-22 silent-failure incident; single-event paging so 2-day silent failures cannot recur."
-  comparison_operator = "GreaterThanOrEqualToThreshold"
+# Explicit list of (Lambda, Location) pairs emitting CaughtExceptionCount
+# (#409). When a new _emit_caught_exception() call is added to a Lambda,
+# add its (Lambda, Location) pair here and re-apply.
+#
+# CloudWatch metric alarms don't support SEARCH expressions, so each
+# dimension pair needs its own alarm. (SEARCH works in dashboards, not
+# in PutMetricAlarm.) Keeping the list explicit also means the alarm
+# count matches the catch-block count, which is a useful sanity check
+# during #373-style audits.
+locals {
+  caught_exception_targets = {
+    "finalize-convergence" = {
+      lambda   = "qgi-pipeline-recipe-engine-finalize"
+      location = "create_convergence_view"
+    }
+    "finalize-dashboard" = {
+      lambda   = "qgi-pipeline-recipe-engine-finalize"
+      location = "write_dashboard_jsons"
+    }
+    "finalize-country-risks" = {
+      lambda   = "qgi-pipeline-recipe-engine-finalize"
+      location = "write_country_risks_json"
+    }
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "caught_exception" {
+  for_each = local.caught_exception_targets
+
+  alarm_name        = "qgi-caught-exception-${each.key}"
+  alarm_description = "Lambda ${each.value.lambda} caught-and-continued an exception at Location=${each.value.location} (#409). Driven by 2026-04-22 silent-failure incident (country-risks.json silently stopped regenerating for 2 days). Single-event paging so the same class cannot recur — triage via CloudWatch Logs Insights on the affected Lambda for [EXCEPTION] lines."
+  namespace         = local.namespace
+  metric_name       = "CaughtExceptionCount"
+  dimensions = {
+    Lambda   = each.value.lambda
+    Location = each.value.location
+  }
+  statistic           = "Sum"
+  period              = 3600
   evaluation_periods  = 1
+  comparison_operator = "GreaterThanOrEqualToThreshold"
   threshold           = 1
   treat_missing_data  = "notBreaching"
   alarm_actions       = [var.sns_topic_arn]
   ok_actions          = [var.sns_topic_arn]
   tags                = var.tags
-
-  # SEARCH-expression alarm: catches all Lambda/Location dimension pairs
-  # emitting CaughtExceptionCount without having to enumerate them in
-  # Terraform. New catch blocks added in qgi-pipeline get covered
-  # automatically on next run.
-  metric_query {
-    id          = "search"
-    expression  = "SEARCH('{QGI/Pipeline,Lambda,Location} MetricName=\"CaughtExceptionCount\"', 'Sum', 3600)"
-    label       = "CaughtExceptionCount per (Lambda, Location)"
-    return_data = false
-  }
-
-  metric_query {
-    id          = "total"
-    expression  = "SUM(METRICS(\"search\"))"
-    label       = "Sum across all Lambdas"
-    return_data = true
-  }
 }
