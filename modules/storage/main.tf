@@ -582,7 +582,29 @@ resource "aws_glue_catalog_table" "countries" {
   }
 
   storage_descriptor {
-    location      = "s3://${local.bucket_name}/pipeline-A-indicator-extractor/input/"
+    # #370 — dedicated prefix, not the shared `input/` prefix. The latter
+    # holds countries.csv alongside indicator_map*.csv files whose
+    # 2-column schemas are NOT countries-shaped. Reading the whole
+    # `input/` prefix produced 811 rows instead of 261 (pre-fix) and
+    # created the 2026-04-20 Phase B crash where FAO m49 map values
+    # ("Afghanistan") landed in the id column and broke a later integer
+    # cast in the recipe engine.
+    #
+    # First attempt (2026-04-22) used a file-level URI
+    # (`.../input/countries.csv`). Glue OpenCSVSerde rejected it —
+    # Athena returned 0 rows. Falling back to a dedicated sibling prefix
+    # `pipeline-A-indicator-extractor/countries/` containing ONLY
+    # countries.csv; this prefix is not used for any other pipeline
+    # input, so future uploads cannot pollute it.
+    #
+    # IMPORTANT sync note: the original countries.csv at
+    # `pipeline-A-indicator-extractor/input/countries.csv` is still read
+    # directly (outside Glue) by three Batch containers (scdi-finder,
+    # indicator-fetcher, indicator-fetcher-fao). The file in the new
+    # `countries/` prefix is a COPY. When countries.csv is updated,
+    # both copies must be updated. See pitfalls.md "countries.csv
+    # duplicated locations" for the sync playbook.
+    location      = "s3://${local.bucket_name}/pipeline-A-indicator-extractor/countries/"
     input_format  = "org.apache.hadoop.mapred.TextInputFormat"
     output_format = "org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat"
 
