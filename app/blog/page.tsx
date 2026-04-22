@@ -32,10 +32,10 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
-    slug: "fix-d-meets-the-data",
-    title: "Fix D meets the data",
+    slug: "cross-country-normalization",
+    title: "Cross-country normalization meets the data",
     date: "2026-04-22",
-    dek: "We designed a structural calibration fix. An Athena-backed simulation surfaced three problems before we shipped. Here's the finding, and why we're shelving the release until the data grows.",
+    dek: "We proposed replacing per-country z-score normalization with a cross-country global approach. An Athena-backed simulation surfaced three problems before we shipped. Here's the finding, and why we're shelving V1.9.2 until event-curation coverage grows.",
     tags: ["methodology", "simulation", "V1.9.2"],
   },
   {

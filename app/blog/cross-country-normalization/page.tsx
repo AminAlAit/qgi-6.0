@@ -2,30 +2,30 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Fix D meets the data — QGI Blog",
+  title: "Cross-country normalization meets the data — QGI Blog",
   description:
-    "We designed a structural calibration fix. An Athena-backed simulation surfaced three problems before we shipped. Here's the finding, and why we're shelving the release until our event coverage grows.",
+    "We proposed replacing per-country z-score normalization with a cross-country global approach. An Athena-backed simulation surfaced three problems. Here's the finding, and why we're shelving V1.9.2 until event-curation coverage grows.",
   alternates: {
-    canonical: "https://qgintelligence.com/blog/fix-d-meets-the-data",
+    canonical: "https://qgintelligence.com/blog/cross-country-normalization",
   },
   openGraph: {
-    title: "Fix D meets the data",
+    title: "Cross-country normalization meets the data",
     description:
-      "We designed a structural calibration fix. An Athena-backed simulation surfaced three problems before we shipped. Here's what we found.",
-    url: "https://qgintelligence.com/blog/fix-d-meets-the-data",
+      "We proposed a structural calibration rewrite. An Athena-backed simulation surfaced three problems before we shipped. Here's what we found.",
+    url: "https://qgintelligence.com/blog/cross-country-normalization",
     siteName: "QGI Intelligence",
     type: "article",
     publishedTime: "2026-04-22T00:00:00Z",
   },
   twitter: {
     card: "summary",
-    title: "Fix D meets the data",
+    title: "Cross-country normalization meets the data",
     description:
-      "A structural fix for V1.9.1. An Athena-backed simulation. Three problems. Shelved.",
+      "A proposed rewrite for V1.9.2. An Athena-backed simulation. Three problems. Shelved.",
   },
 };
 
-export default function FixDMeetsDataPost() {
+export default function CrossCountryNormalizationPost() {
   return (
     <div
       className="min-h-full"
@@ -72,15 +72,16 @@ export default function FixDMeetsDataPost() {
             <time dateTime="2026-04-22">2026-04-22</time> · Methodology · V1.9.2
           </div>
           <h1 className="text-4xl font-semibold mb-5 leading-tight">
-            Fix D meets the data
+            Cross-country normalization meets the data
           </h1>
           <p
             className="text-lg leading-relaxed"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            We designed a structural calibration fix. An Athena-backed simulation surfaced
-            three problems before we shipped. Here&apos;s the finding, and why we&apos;re
-            shelving the release until the data grows.
+            We proposed replacing per-country z-score normalization with a cross-country
+            global approach. An Athena-backed simulation surfaced three problems before we
+            shipped. Here&apos;s the finding, and why we&apos;re shelving the release
+            until the data grows.
           </p>
         </div>
 
@@ -97,31 +98,32 @@ export default function FixDMeetsDataPost() {
             >
               previous post
             </Link>{" "}
-            described V1.9.1 as a tactical band-aid, with V1.9.2 (Fix D) as the real
-            structural fix coming in two or three weeks. That V1.9.2 is not going to ship
-            on that timeline. Not because it&apos;s a bad idea — because a simulation we
-            ran today found three problems with it that only show up when you look at real
-            data across enough countries. The release is shelved.
+            described V1.9.1 as a tactical band-aid, with V1.9.2 as the real structural
+            fix coming in two or three weeks. That V1.9.2 is not going to ship on that
+            timeline. Not because the idea is bad — because a simulation we ran today
+            found three problems with it that only show up when you look at real data
+            across enough countries. The release is shelved.
           </p>
 
           <p>This post walks through what we did, what we found, and what it changes.</p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">
-            What Fix D was supposed to do
+            What the rewrite was supposed to do
           </h2>
 
           <p>
-            V1.9.1 shipped with a diagnostic bug: per-country z-score normalization
-            inflated a few signals that didn&apos;t deserve it. Cape Verde&apos;s
-            elections-and-voting signal sat 2.78 standard deviations above Cape
-            Verde&apos;s own other categories — but globally, Cape Verde&apos;s elections
-            activity is ordinary. A small country with one noisy category looked like a
-            crisis; a large country with five elevated categories looked average.
+            V1.9.1 shipped with a diagnostic bug: <em>per-country</em> z-score
+            normalization inflated a few signals that didn&apos;t deserve it. Cape
+            Verde&apos;s elections-and-voting signal sat 2.78 standard deviations above
+            Cape Verde&apos;s own other categories — but globally, Cape Verde&apos;s
+            elections activity is ordinary. A small country with one noisy category looked
+            like a crisis; a large country with five elevated categories looked average.
           </p>
 
           <p>
-            Fix D was supposed to repair the math. Instead of normalizing <em>within</em>{" "}
-            each country, normalize each category <em>across</em> all countries.
+            The proposed V1.9.2 rewrite was to repair the math. Instead of normalizing{" "}
+            <em>within</em> each country, normalize each category <em>across</em> all
+            countries — what we call <strong>cross-country normalization</strong>.
             Syria&apos;s civil war signal gets compared to every country&apos;s civil war
             signal, not to Syria&apos;s own other categories. Under this approach, every
             category lives on the same standardized scale, and a single threshold
@@ -141,11 +143,11 @@ export default function FixDMeetsDataPost() {
           <p>
             A second pass queried Athena directly for raw recipe scores across every
             country in every category, including zeros. This is what the math actually
-            needs. We applied Fix D, swept a single HIGH threshold from 0 to 5 in
-            0.1-point steps, and measured two things: face-validity (do known crisis
-            countries still rank HIGH?) and tier distribution (does HIGH share land in our
-            target 25–45% band?). Total spend: under a dollar in Athena queries. Total
-            time: about thirty minutes.
+            needs. We applied the cross-country normalization, swept a single HIGH
+            threshold from 0 to 5 in 0.1-point steps, and measured two things:
+            face-validity (do known crisis countries still rank HIGH?) and tier
+            distribution (does HIGH share land in our target 25–45% band?). Total spend:
+            under a dollar in Athena queries. Total time: about thirty minutes.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">
@@ -153,10 +155,11 @@ export default function FixDMeetsDataPost() {
           </h2>
 
           <p>
-            Under Fix D, the top of the global salience distribution looks like this:
-            Bhutan (top signal: economic_liberalization from the 1970s), Argentina and
-            Chile (economic_nationalization), Guatemala (volcanic_eruption), South Korea
-            (historical humanitarian_crisis). Syria, Yemen, Afghanistan, Somalia — all
+            Under the cross-country approach, the top of the global salience distribution
+            looks like this: Bhutan (top signal: <code>economic_liberalization</code> from
+            the 1970s), Argentina and Chile (<code>economic_nationalization</code>),
+            Guatemala (<code>volcanic_eruption</code>), South Korea (historical{" "}
+            <code>humanitarian_crisis</code>). Syria, Yemen, Afghanistan, Somalia — all
             with active armed conflict — ranked below them.
           </p>
 
@@ -202,7 +205,7 @@ export default function FixDMeetsDataPost() {
 
           <p>
             Cape Verde, Denmark, and Germany — the false-positive test cases that
-            motivated V1.9.1&apos;s fix and would be the primary validation for Fix D —
+            motivated V1.9.1&apos;s patch and would be the primary validation for V1.9.2 —
             aren&apos;t in the staging recipes table. They filter out because they
             don&apos;t have enough curated events to hit the scoring floor. We cannot
             validate the fix for the exact problem the fix was designed to solve until
@@ -215,12 +218,12 @@ export default function FixDMeetsDataPost() {
 
           <p>
             Venezuela. V1.9.1 scored Venezuela INDICATIVE, which was a known face-validity
-            miss. Fix D flipped Venezuela to HIGH — via <code>currency_crisis</code> at
-            the XL pattern length, with a salience of 4.09. The direction matched our
-            design-doc prediction; the specific driving category was different (we
-            predicted political_repression, not currency_crisis). Fix D picked up the
-            right answer through a slightly different path, which is the kind of thing a
-            simulation is for.
+            miss. The cross-country approach flipped Venezuela to HIGH — via{" "}
+            <code>currency_crisis</code> at the XL pattern length, with a salience of
+            4.09. The direction matched our design-doc prediction; the specific driving
+            category was different (we predicted political_repression, not
+            currency_crisis). The simulation picked up the right answer through a slightly
+            different path, which is the kind of thing a simulation is for.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">
@@ -231,14 +234,14 @@ export default function FixDMeetsDataPost() {
 
           <ul className="list-disc pl-6 space-y-2">
             <li>
-              <strong>Patch Fix D.</strong> Log-transform the raw scores before the
-              z-score calculation (compresses rare-category outliers). Or filter out
-              low-severity categories entirely. Or only score against a whitelist of
-              risk-relevant categories.
+              <strong>Patch cross-country normalization.</strong> Log-transform the raw
+              scores before the z-score calculation (compresses rare-category outliers).
+              Or filter out low-severity categories entirely. Or only score against a
+              whitelist of risk-relevant categories.
             </li>
             <li>
-              <strong>Abandon and escalate to Fix E.</strong> A hierarchical partial
-              pooling model that shrinks small-country scores toward regional priors —
+              <strong>Abandon and escalate to a hierarchical model.</strong> A partial
+              pooling approach that shrinks small-country scores toward regional priors —
               addresses the Cape Verde symptom more directly, but is a larger engineering
               project.
             </li>
@@ -264,7 +267,7 @@ export default function FixDMeetsDataPost() {
             <li>
               The countries we can&apos;t currently test — Cape Verde, Denmark, Germany —
               re-enter the data as curation catches up. Without them, we can&apos;t
-              honestly claim Fix D fixes anything.
+              honestly claim the rewrite fixes anything.
             </li>
             <li>
               Several of the structural patches may turn out to be unnecessary at higher
@@ -290,8 +293,8 @@ export default function FixDMeetsDataPost() {
 
           <p>
             The top priority moves to event curation on Ukraine and Venezuela — the two
-            known V1.9.1 face-validity misses that Fix D was supposed to absorb. Iran
-            stays deferred. These aren&apos;t glamorous; they&apos;re adding verified
+            known V1.9.1 face-validity misses that the rewrite was supposed to absorb.
+            Iran stays deferred. These aren&apos;t glamorous; they&apos;re adding verified
             events per country one batch at a time. They&apos;re also what actually
             unblocks the next iteration.
           </p>
