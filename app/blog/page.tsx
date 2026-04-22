@@ -32,6 +32,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "fix-d-meets-the-data",
+    title: "Fix D meets the data",
+    date: "2026-04-22",
+    dek: "We designed a structural calibration fix. An Athena-backed simulation surfaced three problems before we shipped. Here's the finding, and why we're shelving the release until the data grows.",
+    tags: ["methodology", "simulation", "V1.9.2"],
+  },
+  {
     slug: "margin-over-persistence-trajectory",
     title: "The margin keeps widening",
     date: "2026-04-22",
