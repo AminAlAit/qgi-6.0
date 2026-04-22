@@ -168,9 +168,11 @@ export default function MethodologyPage() {
               </dt>
               <dd>
                 A country-level severity label derived from max salience across all
-                patterns. Category-stratified: crisis categories (civil war, coup,
-                political violence) promote at salience ≥ 1.4; other categories at ≥
-                1.625.
+                patterns, with an additional composite-promotion rule (V1.9.1 Fix C,
+                shipped 2026-04-22). Category-stratified: crisis categories (civil war,
+                coup, political violence) promote at salience ≥ 1.4; other categories at ≥
+                2.0. A country with ≥2 categories at salience ≥ 1.3 and at least one at
+                severity ≥ 0.8 promotes to HIGH regardless.
               </dd>
             </div>
             <div>
