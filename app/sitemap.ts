@@ -28,6 +28,12 @@ const STATIC_ROUTES: Array<{
   { path: "/signals", changeFrequency: "weekly", priority: 0.8 },
   { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
+  {
+    path: "/blog/margin-over-persistence-trajectory",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
   // FSI report excluded from sitemap 2026-04-19 — #264 reopened for rework.
   // Route stays live for inbound links, but not advertised to search engines.

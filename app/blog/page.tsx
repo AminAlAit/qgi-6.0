@@ -1,0 +1,156 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Blog — QGI Intelligence",
+  description:
+    "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
+  alternates: { canonical: "https://qgintelligence.com/blog" },
+  openGraph: {
+    title: "Blog — QGI Intelligence",
+    description:
+      "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
+    url: "https://qgintelligence.com/blog",
+    siteName: "QGI Intelligence",
+    type: "website",
+  },
+  twitter: {
+    card: "summary",
+    title: "Blog — QGI Intelligence",
+    description: "Development notes on building QGI.",
+  },
+};
+
+// Hand-curated post index. New posts get appended here + their own route
+// under app/blog/<slug>/page.tsx. Intentionally no CMS / MDX pipeline yet
+// — shipping something honest beats architecting something grand.
+const POSTS: Array<{
+  slug: string;
+  title: string;
+  date: string;
+  dek: string;
+  tags: string[];
+}> = [
+  {
+    slug: "margin-over-persistence-trajectory",
+    title: "The margin keeps widening",
+    date: "2026-04-22",
+    dek: "V1.8 → V1.8.1 → V1.9 — the gap between QGI and the naïve baseline has grown at every release. Here's why, and what the number does and doesn't prove.",
+    tags: ["methodology", "backtest", "V1.9"],
+  },
+];
+
+export default function BlogIndexPage() {
+  return (
+    <div
+      className="min-h-full"
+      style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <header
+        className="sticky top-0 z-50 border-b backdrop-blur-md"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "rgba(15, 25, 35, 0.85)",
+        }}
+      >
+        <div className="mx-auto max-w-4xl flex items-center justify-between px-6 py-4">
+          <Link href="/" className="flex items-baseline gap-1" title="Home">
+            <span
+              className="font-data text-sm tracking-[0.25em] font-semibold"
+              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+            >
+              QG
+            </span>
+            <span
+              className="text-[11px] tracking-widest uppercase"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Intelligence
+            </span>
+          </Link>
+          <Link
+            href="/countries"
+            className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
+            style={{
+              backgroundColor: "var(--qgi-accent)",
+              color: "var(--qgi-bg)",
+            }}
+          >
+            Explore Countries
+          </Link>
+        </div>
+      </header>
+
+      <article className="mx-auto max-w-4xl px-6 py-16">
+        <div className="mb-12">
+          <div
+            className="text-[10px] tracking-widest uppercase mb-3"
+            style={{ color: "var(--qgi-accent)" }}
+          >
+            Blog
+          </div>
+          <h1 className="text-3xl font-semibold mb-4">Development notes</h1>
+          <p
+            className="text-lg leading-relaxed"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            Honest writeups of what we shipped, what we measured, and what the numbers
+            actually mean. Not a product blog. Not marketing copy. Closer to a lab
+            notebook that happens to be public.
+          </p>
+        </div>
+
+        <ul className="space-y-8">
+          {POSTS.map((p) => (
+            <li
+              key={p.slug}
+              className="border-b pb-8"
+              style={{ borderColor: "var(--qgi-border)" }}
+            >
+              <Link href={`/blog/${p.slug}`} className="group block">
+                <div
+                  className="text-[10px] tracking-wider uppercase mb-2"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  <time dateTime={p.date}>{p.date}</time>
+                  {" · "}
+                  {p.tags.join(" · ")}
+                </div>
+                <h2
+                  className="text-2xl font-semibold mb-3 transition-colors"
+                  style={{ color: "var(--qgi-text)" }}
+                >
+                  <span className="group-hover:underline">{p.title}</span>
+                </h2>
+                <p
+                  className="text-base leading-relaxed"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
+                  {p.dek}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <footer
+          className="mt-16 pt-8 border-t text-sm"
+          style={{
+            borderColor: "var(--qgi-border)",
+            color: "var(--qgi-text-dim)",
+          }}
+        >
+          Want the full technical trail? See{" "}
+          <Link
+            href="/methodology"
+            className="underline"
+            style={{ color: "var(--qgi-accent)" }}
+          >
+            our methodology page
+          </Link>
+          .
+        </footer>
+      </article>
+    </div>
+  );
+}
