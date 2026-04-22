@@ -579,7 +579,15 @@ def main():
     parser.add_argument('--target-precision', type=float, default=0.50, help='Min precision for threshold (V1.7: 50%%)')
     parser.add_argument('--curated-only', action='store_true', help='Filter to 35 curated countries only')
     parser.add_argument('--output', default='backtest_v18_results.json')
+    parser.add_argument('--dump-raw-scores', action='store_true',
+                        help='Also write per-tier (prob, label) pairs to '
+                             '{basename}_raw.json for diagnostic post-hoc '
+                             'analysis (e.g. full PR curves, calibration plots).')
     args = parser.parse_args()
+
+    # V1.9.2 Fix D enabler: capture raw (calibrated prob, label) per tier/phase
+    # when --dump-raw-scores is set. Populated inside the val+test loops below.
+    raw_scores = {t: {'validation': None, 'test': None} for t in TIERS}
 
     athena = get_athena(args)
 
@@ -645,6 +653,11 @@ def main():
 
             m = compute_metrics(y_true, y_cal, threshold)
             tier_metrics_val[tier_name] = m
+
+            if args.dump_raw_scores:
+                raw_scores[tier_name]['validation'] = [
+                    [float(p), int(l)] for p, l in zip(y_cal, y_true)
+                ]
 
             status = "OK" if precision_met else "WARN precision not met"
             base_rate = n_positives / m['n_total'] if m['n_total'] > 0 else 0
@@ -729,6 +742,11 @@ def main():
             m = compute_metrics(y_true, y_cal, threshold)
             tier_metrics_test[tier_name] = m
 
+            if args.dump_raw_scores:
+                raw_scores[tier_name]['test'] = [
+                    [float(p), int(l)] for p, l in zip(y_cal, y_true)
+                ]
+
             print(
                 f"\n  {tier_name}: threshold={threshold} (locked) | "
                 f"F1={m['f1']} | Precision={m['precision']} | "
@@ -797,6 +815,17 @@ def main():
         with open(out_path, 'w') as f:
             json.dump(results, f, indent=2)
         print(f"\nResults saved to {out_path}")
+
+        if args.dump_raw_scores:
+            base, ext = os.path.splitext(out_path)
+            raw_path = f"{base}_raw{ext or '.json'}"
+            raw_payload = {
+                'version': results['version'],
+                'tiers': raw_scores,
+            }
+            with open(raw_path, 'w') as f:
+                json.dump(raw_payload, f)
+            print(f"Raw (prob, label) scores saved to {raw_path}")
 
 
 if __name__ == '__main__':
