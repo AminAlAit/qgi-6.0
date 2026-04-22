@@ -672,172 +672,31 @@ resource "aws_glue_catalog_table" "events" {
 }
 
 # ---------------------------------------------------------------------------
-# Glue — recipes table (Phase 5: pattern-event matches)
 # ---------------------------------------------------------------------------
-resource "aws_glue_catalog_table" "recipes" {
-  name          = "recipes"
-  database_name = aws_glue_catalog_database.qgi_data.name
-  table_type    = "EXTERNAL_TABLE"
-
-  parameters = {
-    "parquet.compress" = "SNAPPY"
-    "classification"   = "parquet"
-    "EXTERNAL"         = "TRUE"
-  }
-
-  storage_descriptor {
-    location      = "s3://${local.bucket_name}/recipes/"
-    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
-    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
-
-    ser_de_info {
-      name                  = "parquet"
-      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
-      parameters = {
-        "serialization.format" = "1"
-      }
-    }
-
-    columns {
-      name = "recipe_id"
-      type = "string"
-    }
-    columns {
-      name = "event_category"
-      type = "string"
-    }
-    columns {
-      name = "pattern_id"
-      type = "string"
-    }
-    columns {
-      name = "country_a_id"
-      type = "smallint"
-    }
-    columns {
-      name = "country_b_id"
-      type = "smallint"
-    }
-    columns {
-      name = "country_a_name"
-      type = "string"
-    }
-    columns {
-      name = "country_b_name"
-      type = "string"
-    }
-    columns {
-      name = "start_year_a"
-      type = "smallint"
-    }
-    columns {
-      name = "start_year_b"
-      type = "smallint"
-    }
-    columns {
-      name = "length"
-      type = "smallint"
-    }
-    columns {
-      name = "avg_correlation"
-      type = "double"
-    }
-    columns {
-      name = "end_year_a"
-      type = "smallint"
-    }
-    columns {
-      name = "end_year_b"
-      type = "smallint"
-    }
-    columns {
-      name = "event_window"
-      type = "smallint"
-    }
-    columns {
-      name = "event_year_a"
-      type = "smallint"
-    }
-    columns {
-      name = "event_year_b"
-      type = "smallint"
-    }
-    columns {
-      name = "event_title_a"
-      type = "string"
-    }
-    columns {
-      name = "event_title_b"
-      type = "string"
-    }
-    columns {
-      name = "indicator_count"
-      type = "bigint"
-    }
-    columns {
-      name = "pattern_power_score"
-      type = "double"
-    }
-    columns {
-      name = "instance_count"
-      type = "bigint"
-    }
-    # #128: Pattern length tier propagated from patterns table.
-    # The recipe-engine CTAS adds p.pattern_tier to the SELECT.
-    columns {
-      name = "pattern_tier"
-      type = "string"
-    }
-    # #129: New normalized 0-100 Pattern Power Score, computed in the recipe
-    # engine CTAS via global maxima broadcast (CROSS JOIN). Replaces the legacy
-    # `pattern_power_score` column for ranking/display. Old column kept for
-    # backward compatibility and debugging.
-    columns {
-      name = "pps"
-      type = "double"
-    }
-    # #134: Forecast timing — median lead time between pattern end and the
-    # historical matched event, computed via approx_percentile across the
-    # un-aggregated raw recipe rows in pipeline-recipe-engine. lead_time_b
-    # is in the PREDICTOR country and is the headline "when?" number;
-    # lead_time_a is kept for symmetry/debugging.
-    columns {
-      name = "median_lead_time_b"
-      type = "smallint"
-    }
-    columns {
-      name = "min_lead_time_b"
-      type = "smallint"
-    }
-    columns {
-      name = "max_lead_time_b"
-      type = "smallint"
-    }
-    columns {
-      name = "median_lead_time_a"
-      type = "smallint"
-    }
-  }
-
-  # #145: recipes is partitioned by country_a_id so that filtered queries
-  # (recipes/country, dashboard top50, etc.) scan ~0.5% of the table instead of 100%.
-  # The recipe-engine Lambda CTAS specifies partitioned_by=ARRAY['country_a_id'] and
-  # writes data to s3://{bucket}/recipes/country_a_id={N}/...
-  partition_keys {
-    name = "country_a_id"
-    type = "smallint"
-  }
-
-  # AWS provider 5.x bug: when this table already exists in AWS (created via Athena CTAS),
-  # the provider tries to set `partition_keys[0].parameters` during refresh but that
-  # attribute doesn't exist in the schema, causing "Invalid address to set" errors.
-  # Athena CTAS writes extra Parameters metadata into the partition column definition
-  # in the Glue catalog — Terraform cannot manage that metadata, so we ignore partition_keys
-  # drift. The partition schema is fixed (country_a_id smallint) and managed at creation time.
-  lifecycle {
-    ignore_changes = [partition_keys]
-  }
-}
+# Glue — recipes table: pipeline-managed, NOT in Terraform (2026-04-22, #410)
+#
+# The recipes table is created + populated by the Phase 5b Layer 2 recipe
+# engine via Athena CTAS (qgi-pipeline/lambdas/pipeline-recipe-engine-*).
+# The pipeline owns the schema + partitions; Terraform does not.
+#
+# A prior version of this module defined aws_glue_catalog_table.recipes
+# with a lifecycle ignore_changes workaround for partition_keys. That
+# resource was never successfully imported into state because the AWS
+# provider 5.x import step trips on:
+#
+#     Error: setting partition_keys:
+#     Invalid address to set: []string{"partition_keys", "0", "parameters"}
+#
+# The provider tries to set partition_keys[0].parameters during refresh,
+# but that attribute is not in the resource schema. A Glue catalog table
+# created via Athena CTAS writes extra Parameters metadata into the
+# partition column definition that Terraform cannot round-trip in 5.x.
+#
+# Re-adoption path (deferred): bump AWS provider to 6.x (separate ticket
+# — breaking-change review needed across all qgi-infra modules), then
+# terraform import module.storage.aws_glue_catalog_table.recipes
+# "<account_id>:qgi_data:recipes". Until then, recipes stays out of state.
+# ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
 # Athena workgroup
