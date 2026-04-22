@@ -193,6 +193,13 @@ export default async function LandingPage() {
             >
               About
             </Link>
+            <Link
+              href="/blog"
+              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Blog
+            </Link>
             <a
               href="#contact"
               className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
@@ -658,6 +665,13 @@ export default async function LandingPage() {
                 style={{ color: "var(--qgi-text-dim)" }}
               >
                 Methodology
+              </Link>
+              <Link
+                href="/blog"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Blog
               </Link>
               <Link
                 href="/legal"
