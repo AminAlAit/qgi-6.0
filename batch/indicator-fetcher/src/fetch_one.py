@@ -99,7 +99,10 @@ MAX_FETCH_ATTEMPTS = int(os.environ.get("MAX_FETCH_ATTEMPTS", "10"))
 # S3 layout
 S3_INPUT_PREFIX = "pipeline-A-indicator-extractor/input"
 S3_OUTPUT_PREFIX = "pipeline-A-indicator-extractor/output"
-COUNTRIES_CSV_KEY = f"{S3_INPUT_PREFIX}/countries.csv"
+# #413 — countries.csv moved to a dedicated prefix after #370 (Glue
+# table pollution fix). Keep S3_INPUT_PREFIX untouched — other Phase 1
+# indicator-map files still live there and this container reads them.
+COUNTRIES_CSV_KEY = "pipeline-A-indicator-extractor/countries/countries.csv"
 
 # ---------------------------------------------------------------------------
 # Boto3 clients (created once per container, reused)

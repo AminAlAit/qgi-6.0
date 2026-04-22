@@ -548,7 +548,12 @@ def load_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
         indicator_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=indicator_key)
         indicator_df = pd.read_parquet(BytesIO(indicator_obj['Body'].read()))
 
-        countries_key = "pipeline-A-indicator-extractor/input/countries.csv"
+        # #413 — canonical path after #370 dual-location consolidation.
+        # Was `pipeline-A-indicator-extractor/input/countries.csv`; moved
+        # because that prefix is a shared Phase 1 input surface where
+        # any new indicator-map CSV can appear, and the Glue table for
+        # this file needed a dedicated non-shared prefix.
+        countries_key = "pipeline-A-indicator-extractor/countries/countries.csv"
         logging.info(f"Loading countries mapping from s3://{S3_BUCKET}/{countries_key}")
         countries_obj = s3_client.get_object(Bucket=S3_BUCKET, Key=countries_key)
         countries_df = pd.read_csv(countries_obj['Body'])

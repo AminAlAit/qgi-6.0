@@ -179,7 +179,11 @@ def load_canonical_country_names() -> dict[int, str]:
     countries.csv (shouldn't happen, but defensive), the row is
     dropped upstream with a WARNING.
     """
-    key = "pipeline-A-indicator-extractor/input/countries.csv"
+    # #413 — canonical path after #370 dual-location consolidation.
+    # Was `pipeline-A-indicator-extractor/input/countries.csv`; moved
+    # to a dedicated prefix because the shared `input/` prefix can
+    # receive any indicator-map CSV (Phase 1 surface).
+    key = "pipeline-A-indicator-extractor/countries/countries.csv"
     logger.info(f"Loading canonical country names from s3://{BUCKET}/{key}")
     obj = s3.get_object(Bucket=BUCKET, Key=key)
     df = pd.read_csv(BytesIO(obj["Body"].read()))
