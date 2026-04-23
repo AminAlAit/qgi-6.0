@@ -110,9 +110,17 @@ def best_common_length(
     if not candidate_lengths:
         return None
 
-    def score_length(L: int) -> tuple[int, float]:
-        """Return (coverage_count, sum_best_pps_among_aligned)."""
-        cov = 0
+    def score_length(L: int) -> tuple[int, int, float]:
+        """Return (aligned_coverage, any_coverage, sum_best_pps).
+
+        Sorts by aligned_coverage first (Tier 1/2 windows), then
+        any_coverage (Tier 3 / pre-coverage-event fallback), then PPS.
+        This keeps the preference for end-aligned windows without
+        penalising (subject, category) blocks where every event pre-dates
+        data coverage (e.g., Russia/China political_repression 1987).
+        """
+        aligned_cov = 0
+        any_cov = 0
         total_pps = 0.0
         for a in analogues:
             aid = a.get("country_b_id")
@@ -120,7 +128,8 @@ def best_common_length(
             if aid is None:
                 continue
             windows = pair_windows_by_analogue.get(str(aid), {}).get("top", [])
-            best = None
+            best_aligned = None
+            best_any = None
             for w in windows:
                 if not isinstance(w.get("l"), int) or w.get("sb") is None:
                     continue
@@ -129,21 +138,28 @@ def best_common_length(
                 # Future-date guard (same as pick_analogue_window).
                 if w["sb"] + w["l"] > CURRENT_YEAR:
                     continue
-                # When we know the event year, require end-alignment.
+                pps = w.get("pps") or 0
+                # Track best window at this L regardless of event alignment.
+                if best_any is None or pps > (best_any.get("pps") or 0):
+                    best_any = w
+                # When we know the event year, also track end-aligned best.
                 if eyb is not None:
-                    if abs((w["sb"] + w["l"]) - eyb) > end_tolerance:
-                        continue
-                if best is None or (w.get("pps") or 0) > (best.get("pps") or 0):
-                    best = w
-            if best is not None:
-                cov += 1
-                total_pps += best.get("pps") or 0
-        return (cov, total_pps)
+                    if abs((w["sb"] + w["l"]) - eyb) <= end_tolerance:
+                        if best_aligned is None or pps > (best_aligned.get("pps") or 0):
+                            best_aligned = w
+            if best_aligned is not None:
+                aligned_cov += 1
+                total_pps += best_aligned.get("pps") or 0
+            elif best_any is not None:
+                any_cov += 1
+                total_pps += best_any.get("pps") or 0
+        return (aligned_cov, any_cov, total_pps)
 
     best_L = max(candidate_lengths, key=score_length)
-    # If the chosen L covers zero analogues (pathological case — no pair
-    # has an end-aligned window at any candidate length), bail.
-    if score_length(best_L)[0] == 0:
+    # If the chosen L covers zero analogues at any tier (pathological case —
+    # no pair has ANY window at this length, aligned or not), bail.
+    sc = score_length(best_L)
+    if sc[0] + sc[1] == 0:
         return None
     return best_L
 
@@ -173,9 +189,10 @@ def pick_analogue_window(
 
       1. Exact: ``sb + l == event_year_b``
       2. Near:  ``|sb + l - event_year_b| <= end_tolerance`` (default 2 yr)
-      3. Drop the analogue (return None) — DO NOT fall back to arbitrary
-         best-PPS window, because that re-introduces the misalignment the
-         fix exists to prevent.
+      3. Best-PPS fallback: used when event_year_b pre-dates data coverage.
+         ``event_in_window`` will be False; AnalogueMultiTimeline shows ⚠.
+         Previously Tier 3 was "drop" — that discarded real pair-window data
+         and forced the 15yr event-anchored approximation instead.
 
     Among windows tied on end-alignment, pick highest PPS.
     """
@@ -225,8 +242,25 @@ def pick_analogue_window(
         )
         return near[0]
 
-    # Tier 3: drop. No window ends close enough to the event.
-    return None
+    # Tier 3: best-PPS fallback for pre-coverage events.
+    #
+    # When event_year_b pre-dates the data coverage window (e.g., Russia
+    # political_repression 1987, China 1987) there is NO window in pair-windows
+    # whose end can align to 1987 — the earliest data starts ~1980 and a
+    # 30-year window ends at 2010 at the earliest. Dropping these analogues
+    # entirely forces the frontend into the 15yr event-anchored approximation
+    # (which is also not end-aligned) and discards the real correlation signal
+    # we have from pair-windows.
+    #
+    # Better: use the best-PPS eligible window. The bar will NOT end at the
+    # event year, so `event_in_window` will be False, and AnalogueMultiTimeline
+    # already renders a ⚠ indicator for those rows. The user sees the real
+    # pair data, not a 15yr approximation, while the transparency flag stays.
+    #
+    # Only apply this when there are eligible windows (i.e. the pair has
+    # real data at this length) — if eligible is empty we already returned
+    # None above.
+    return max(eligible, key=lambda w: w.get("pps") or 0)
 
 
 def enrich(
