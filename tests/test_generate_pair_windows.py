@@ -115,6 +115,28 @@ class TestSlug:
         # ô is outside [a-z0-9], becomes _ then trailing strip
         assert result == "c_te"
 
+    def test_multiple_separators_combined(self):
+        """#422 Bug 4 edge: apostrophe + period + comma together collapse cleanly."""
+        # Real-world name style from UN datasets
+        assert gpw._slug("Korea, Dem. People's Rep.") == "korea_dem_people_s_rep"
+
+    def test_leading_apostrophe_no_dangling_underscore(self):
+        """#422 Bug 4 edge: apostrophe at boundary doesn't leave '_prefix'."""
+        result = gpw._slug("'Leading Apostrophe")
+        assert not result.startswith("_")
+        assert result == "leading_apostrophe"
+
+    def test_trailing_period_no_dangling_underscore(self):
+        """#422 Bug 4 edge: period at end doesn't leave 'suffix_'."""
+        result = gpw._slug("Trailing Period.")
+        assert not result.endswith("_")
+        assert result == "trailing_period"
+
+    def test_apostrophe_and_period_not_double_separator(self):
+        """#422 Bug 4 edge: adjacent separators collapse to ONE underscore."""
+        # "St.'Foo" → "st  foo" via replacements → single _ via re.sub
+        assert gpw._slug("St.'Foo") == "st_foo"
+
 
 # ===========================================================================
 # resolve_country_slug()
