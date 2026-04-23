@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# DEFERRED — no tests per #373.
+# Athena-backed Fix D simulator. Fix D is shelved per #378 until event-
+# curation coverage reaches 190 countries. When that trigger fires, this
+# script is RE-RUN against fresh staging data and may be replaced by a
+# cleaner implementation per Roshani's stats-council review (qgi-docs/
+# methodology/recipes/v1.9.2-design.md). Not worth testing in its
+# current shape — the functional contract will likely change. When the
+# stats council finalizes the design, promote the canonical form to
+# production + add tests at that point.
 """
 V1.9.2 Fix D REAL simulation (Athena-backed, read-only).
 

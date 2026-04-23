@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# THROWAWAY — one-off script, no tests per #373.
+# Ran once (2026-04-19 tier recalibration). V1.9.1 Fix C superseded this
+# logic with the 3-layer hybrid `risk_tier_label()` in generate_country_risks.py
+# and country_risks.py (Lambda copy). Proper way to re-apply tier rules is a
+# full pipeline re-run, not script-side JSON mutation.
 """
 recalibrate_tiers_in_place.py — apply the 2026-04-19 category-stratified
 tier logic to an EXISTING country-risks.json, without re-running Athena.

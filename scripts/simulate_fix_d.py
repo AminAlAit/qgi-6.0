@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# THROWAWAY — no tests per #373.
+# Pre-Athena proxy simulator for V1.9.2 Fix D (shelved per #378).
+# Ran once on 2026-04-22 as a z-of-z approximation; superseded by
+# simulate_fix_d_real.py (Athena-backed). Neither is re-runnable as
+# Fix D itself is shelved until event-curation coverage >=190 per
+# qgi-docs/methodology/recipes/v1.9.2-design.md. Kept for paper trail
+# in qgi-ml/results/fix_d_shelved_2026_04_22/ only.
 """
 V1.9.2 Fix D proxy simulation.
 

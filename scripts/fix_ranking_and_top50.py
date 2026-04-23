@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# THROWAWAY — one-off script, no tests per #373.
+# Ran once (T20 #313 fixes, 2026-04-19). Not intended for re-run; the fixes
+# were absorbed into the proper Lambda generation pipeline on the next run.
+# If the same class of bug ever resurfaces, fix at source (pipeline-recipe-
+# engine-finalize) rather than re-running this script.
 """
 fix_ranking_and_top50.py — in-place fixes for ranking.json + recipes-top50.json.
 
