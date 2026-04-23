@@ -182,10 +182,11 @@ resource "aws_lambda_function" "a_batch_dispatcher" {
       INDICATOR_VALUES_TABLE   = var.indicator_values_table_name
       ATHENA_DATABASE          = var.glue_database_name
       ATHENA_WORKGROUP         = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION   = local.s3_output_location
-      JITTER_MIN_S             = tostring(var.phase1_jitter_min_s)
-      JITTER_MAX_S             = tostring(var.phase1_jitter_max_s)
-      DISPATCH_LIMIT           = tostring(var.dispatch_limit)
+      # #416 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own
+      # output location. Closes the last env-var leak left after #371.
+      JITTER_MIN_S   = tostring(var.phase1_jitter_min_s)
+      JITTER_MAX_S   = tostring(var.phase1_jitter_max_s)
+      DISPATCH_LIMIT = tostring(var.dispatch_limit)
     }
   }
 
