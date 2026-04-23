@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# THROWAWAY — one-off script, no tests per #373.
+# Ran once to rename Turkey → Türkiye across curated event files after the
+# UN formally recognized the Türkiye spelling. The merge is irreversible
+# (curated files overwritten in-place); re-running this script would be
+# a no-op or could corrupt unrelated files. Kept in the repo for audit
+# trail only. Do not re-run.
 """
 merge_turkey_turkiye.py — merge qgi-data/events/curated/turkey.json into
 turkiye.json, then delete turkey.json.
