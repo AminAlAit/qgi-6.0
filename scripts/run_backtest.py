@@ -607,6 +607,80 @@ def stratified_metrics(pairs, y_true, y_pred, group_fn, min_samples=5):
     return result
 
 
+def load_country_id_to_region(athena, bucket, workgroup, regions_yaml_path=None):
+    """Build a {country_id (int) → region (str)} map for #396 per-region F1.
+
+    Steps:
+      1. Query `qgi_data.countries` for (id, alpha_2).
+      2. Load `qgi-data/registries/country_regions.yaml` (YAML structured as
+         REGION: [alpha_2, alpha_2, ...]).
+      3. Invert to alpha_2 → REGION and compose with step 1.
+
+    Returns an empty dict on any failure so callers can no-op the per-region
+    output block (keeping the backtest runnable without the YAML).
+    """
+    from pathlib import Path
+
+    # Locate the YAML: explicit arg → env var → default qgi-data path.
+    candidates = []
+    if regions_yaml_path:
+        candidates.append(Path(regions_yaml_path))
+    env_path = os.environ.get("QGI_COUNTRY_REGIONS_PATH")
+    if env_path:
+        candidates.append(Path(env_path))
+    candidates.append(
+        Path(__file__).resolve().parent.parent.parent
+        / "qgi-data" / "registries" / "country_regions.yaml"
+    )
+
+    yaml_path = next((p for p in candidates if p.exists()), None)
+    if yaml_path is None:
+        print(f"  [per-region] country_regions.yaml not found; skipping", file=sys.stderr)
+        return {}
+
+    # Simple YAML parse — file shape is `REGION:\n  - XX\n  - YY\n`. Avoids
+    # adding a PyYAML dependency (same pattern as the finalize Lambda).
+    alpha2_to_region: dict[str, str] = {}
+    current_region = None
+    with open(yaml_path, "r", encoding="utf-8") as f:
+        for line in f:
+            line = line.rstrip()
+            if not line or line.lstrip().startswith("#"):
+                continue
+            if not line.startswith(" ") and line.endswith(":"):
+                key = line[:-1].strip()
+                # Region codes are 3-letter uppercase (AFR, MEA, EUR, ASI, AMR, OCE).
+                if len(key) == 3 and key.isupper():
+                    current_region = key
+                else:
+                    current_region = None  # skip "version:" etc.
+            elif line.lstrip().startswith("- ") and current_region:
+                code = line.lstrip()[2:].strip()
+                if code:
+                    alpha2_to_region[code.upper()] = current_region
+
+    if not alpha2_to_region:
+        return {}
+
+    # Pull id → alpha_2 from the countries Glue table.
+    rows = run_query(
+        athena,
+        "SELECT id, alpha_2 FROM qgi_data.countries WHERE alpha_2 IS NOT NULL",
+        bucket, workgroup,
+    )
+    id_to_region: dict[int, str] = {}
+    for r in rows:
+        try:
+            cid = int(float(r["id"]))
+        except (ValueError, TypeError):
+            continue
+        alpha2 = (r.get("alpha_2") or "").upper()
+        region = alpha2_to_region.get(alpha2)
+        if region:
+            id_to_region[cid] = region
+    return id_to_region
+
+
 def summarize_per_country_distribution(per_country_metrics, top_k=5):
     """Build the p10/p25/p50/p75/p90 + worst/best summary for #401.
 
@@ -897,12 +971,13 @@ def main():
         beats_persist = agg_f1 > mp['f1']
         print(f"\nV1.8 beats persistence? {'YES' if beats_persist else 'NO'} (AGG F1={agg_f1} vs {mp['f1']})")
 
-        # #400 + #401: per-category and per-country stratified metrics across
-        # the full test set (all tiers combined, each tier contributing its
-        # own thresholded y_pred).
+        # #400 + #401 + #396: per-category / per-country / per-region
+        # stratified metrics across the full test set (all tiers combined,
+        # each tier contributing its own thresholded y_pred).
         metrics_by_category = {}
         per_country_metrics = {}
         per_country_summary = None
+        metrics_by_region = {}
         if all_pairs_test:
             metrics_by_category = stratified_metrics(
                 all_pairs_test, all_y_true_test, all_y_pred_test,
@@ -915,6 +990,21 @@ def main():
                 min_samples=5,
             )
             per_country_summary = summarize_per_country_distribution(per_country_metrics)
+
+            # #396: per-region F1 (AFR/MEA/EUR/ASI/AMR/OCE). Graceful no-op
+            # when the regions map can't be loaded (empty id_to_region dict).
+            id_to_region = load_country_id_to_region(
+                athena, args.bucket, args.workgroup,
+            )
+            if id_to_region:
+                metrics_by_region = stratified_metrics(
+                    all_pairs_test, all_y_true_test, all_y_pred_test,
+                    group_fn=lambda p: id_to_region.get(
+                        int(float(p[0])) if str(p[0]).replace('.', '', 1).isdigit() else p[0],
+                        "UNKNOWN",
+                    ),
+                    min_samples=5,
+                )
 
             if metrics_by_category:
                 # Print top 10 categories by n_gt — surfaces the ones that matter.
@@ -950,6 +1040,22 @@ def main():
                 print(f"  worst 5: {worst_str}")
                 print(f"  best  5: {best_str}")
 
+            # #396: per-region F1 summary
+            if metrics_by_region:
+                print("\n" + "=" * 70)
+                print("TEST — PER-REGION F1 (AFR/MEA/EUR/ASI/AMR/OCE) — #396")
+                print("=" * 70)
+                # Sort by n_gt descending so the rows with most data come first.
+                rows_by_region = sorted(
+                    metrics_by_region.items(),
+                    key=lambda kv: kv[1]['n_gt'], reverse=True,
+                )
+                print_table(
+                    ['Region', 'F1', 'Precision', 'Recall', 'n_gt', 'n_total'],
+                    [[r, m['f1'], m['precision'], m['recall'], m['n_gt'], m['n_total']]
+                     for r, m in rows_by_region],
+                )
+
     # Save results
     if args.mode == 'full':
         results = {
@@ -981,6 +1087,9 @@ def main():
                 # Full per-country map under `per_country_full` for drill-in.
                 'per_country_f1': per_country_summary,
                 'per_country_full': per_country_metrics,
+                # #396: per-region F1 (AFR/MEA/EUR/ASI/AMR/OCE). Empty dict if
+                # country_regions.yaml wasn't resolvable.
+                'aggregate_by_region': metrics_by_region,
             },
         }
         out_path = args.output

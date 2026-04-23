@@ -514,3 +514,107 @@ class TestSummarizePerCountryDistribution:
         # Worst should preserve full metrics
         assert result["worst_k"][0]["precision"] == 0.2
         assert result["worst_k"][0]["n_total"] == 10
+
+
+# ===========================================================================
+# load_country_id_to_region()  — #396 YAML parser
+# ===========================================================================
+
+class TestLoadCountryIdToRegion:
+
+    def _write_yaml(self, tmp_path, content):
+        p = tmp_path / "country_regions.yaml"
+        p.write_text(content, encoding="utf-8")
+        return p
+
+    def test_parses_basic_yaml_structure(self, tmp_path, monkeypatch):
+        """Well-formed YAML with 2 regions produces correct alpha_2 → region map."""
+        yaml = tmp_path / "country_regions.yaml"
+        yaml.write_text(
+            "version: 1\n"
+            "AFR:\n  - KE\n  - NG\n  - ZA\n"
+            "EUR:\n  - DE\n  - FR\n",
+            encoding="utf-8",
+        )
+        # Mock run_query so we don't need Athena.
+        mock_rows = [
+            {"id": "1", "alpha_2": "KE"},
+            {"id": "2", "alpha_2": "DE"},
+            {"id": "3", "alpha_2": "NG"},
+            {"id": "4", "alpha_2": "FR"},
+            {"id": "5", "alpha_2": "US"},  # not in YAML → dropped
+        ]
+        monkeypatch.setattr(rb, "run_query", lambda *a, **kw: mock_rows)
+        result = rb.load_country_id_to_region(
+            athena=None, bucket="b", workgroup="w",
+            regions_yaml_path=str(yaml),
+        )
+        assert result[1] == "AFR"
+        assert result[2] == "EUR"
+        assert result[3] == "AFR"
+        assert result[4] == "EUR"
+        # US wasn't in YAML → not mapped
+        assert 5 not in result
+
+    def test_missing_yaml_returns_empty_dict(self, tmp_path, monkeypatch):
+        """Missing file → empty dict (graceful no-op, no crash)."""
+        monkeypatch.setattr(rb, "run_query", lambda *a, **kw: [])
+        result = rb.load_country_id_to_region(
+            athena=None, bucket="b", workgroup="w",
+            regions_yaml_path=str(tmp_path / "nonexistent.yaml"),
+        )
+        assert result == {}
+
+    def test_skips_version_and_comments(self, tmp_path, monkeypatch):
+        """version: and # comment lines don't pollute the region map."""
+        yaml = tmp_path / "country_regions.yaml"
+        yaml.write_text(
+            "# This is a comment\n"
+            "version: 1\n"
+            "# Another comment\n"
+            "AFR:\n  - KE\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(
+            rb, "run_query",
+            lambda *a, **kw: [{"id": "1", "alpha_2": "KE"}],
+        )
+        result = rb.load_country_id_to_region(
+            athena=None, bucket="b", workgroup="w",
+            regions_yaml_path=str(yaml),
+        )
+        assert result == {1: "AFR"}
+
+    def test_non_region_keys_ignored(self, tmp_path, monkeypatch):
+        """Keys that aren't 3-letter uppercase (e.g. 'metadata:') are skipped."""
+        yaml = tmp_path / "country_regions.yaml"
+        yaml.write_text(
+            "metadata:\n  - FOO\n"
+            "AFR:\n  - KE\n",
+            encoding="utf-8",
+        )
+        monkeypatch.setattr(
+            rb, "run_query",
+            lambda *a, **kw: [{"id": "1", "alpha_2": "KE"}, {"id": "99", "alpha_2": "FOO"}],
+        )
+        result = rb.load_country_id_to_region(
+            athena=None, bucket="b", workgroup="w",
+            regions_yaml_path=str(yaml),
+        )
+        # KE maps to AFR; FOO was under metadata: and should be ignored.
+        assert result[1] == "AFR"
+        assert 99 not in result
+
+    def test_alpha_2_case_insensitive(self, tmp_path, monkeypatch):
+        """Lower-case alpha_2 from Athena still resolves via upper-case YAML."""
+        yaml = tmp_path / "country_regions.yaml"
+        yaml.write_text("AFR:\n  - KE\n", encoding="utf-8")
+        monkeypatch.setattr(
+            rb, "run_query",
+            lambda *a, **kw: [{"id": "1", "alpha_2": "ke"}],
+        )
+        result = rb.load_country_id_to_region(
+            athena=None, bucket="b", workgroup="w",
+            regions_yaml_path=str(yaml),
+        )
+        assert result[1] == "AFR"
