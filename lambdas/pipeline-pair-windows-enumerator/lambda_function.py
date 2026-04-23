@@ -38,7 +38,7 @@ logger.setLevel(logging.INFO)
 S3_BUCKET  = os.environ["S3_BUCKET"]
 ATHENA_DB  = os.environ.get("ATHENA_DATABASE", "qgi_data")
 ATHENA_WG  = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
-ATHENA_OUT = os.environ.get("ATHENA_OUTPUT_LOCATION")
+# #371 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own output location.
 
 athena = boto3.client("athena")
 s3     = boto3.client("s3")
@@ -50,13 +50,15 @@ def _run_query_sync(sql: str) -> str:
     Raises on FAILED / CANCELLED. Poll interval is short (2s) because
     the enumerate query is cheap — should finish within a few seconds.
     """
+    # #371 — ResultConfiguration intentionally omitted; QGI-Lambda-Workgroup has
+    # EnforceWorkGroupConfiguration=true and supplies its own OutputLocation.
+    # Passing one here only works when it matches the workgroup's value
+    # exactly — a latent sync-or-crash trap (same failure class as #369 Fix 7).
     kwargs = {
         "QueryString": sql,
         "QueryExecutionContext": {"Database": ATHENA_DB},
         "WorkGroup": ATHENA_WG,
     }
-    if ATHENA_OUT:
-        kwargs["ResultConfiguration"] = {"OutputLocation": ATHENA_OUT}
 
     qid = athena.start_query_execution(**kwargs)["QueryExecutionId"]
     logger.info(f"Athena query {qid} started: {sql[:80]}...")

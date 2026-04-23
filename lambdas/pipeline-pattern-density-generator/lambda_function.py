@@ -40,7 +40,7 @@ logger.setLevel(logging.INFO)
 S3_BUCKET = os.environ.get('S3_BUCKET')
 ATHENA_DB = os.environ.get('ATHENA_DATABASE', 'qgi_data')
 ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
-ATHENA_OUTPUT = os.environ.get('ATHENA_OUTPUT_LOCATION')
+# #371 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own output location.
 DASHBOARD_PREFIX = 'dashboard'
 OUTPUT_KEY = f'{DASHBOARD_PREFIX}/pattern-density.json'
 
@@ -104,13 +104,13 @@ def lambda_handler(event, context):
 
 def _run_query(sql: str) -> str:
     """Submit Athena query and poll until SUCCEEDED. Returns query execution ID."""
+    # #371 — ResultConfiguration omitted; workgroup enforces its own location.
+    # See #369 Fix 7 for the failure class this pattern avoids.
     kwargs = {
         'QueryString': sql,
         'QueryExecutionContext': {'Database': ATHENA_DB},
         'WorkGroup': ATHENA_WG,
     }
-    if ATHENA_OUTPUT:
-        kwargs['ResultConfiguration'] = {'OutputLocation': ATHENA_OUTPUT}
 
     response = athena.start_query_execution(**kwargs)
     query_id = response['QueryExecutionId']

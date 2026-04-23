@@ -54,7 +54,7 @@ logger.setLevel(logging.INFO)
 S3_BUCKET = os.environ.get("S3_BUCKET")
 ATHENA_DB = os.environ.get("ATHENA_DATABASE", "qgi_data")
 ATHENA_WG = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
-ATHENA_OUTPUT = os.environ.get("ATHENA_OUTPUT_LOCATION")
+# #371 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own output location.
 DASHBOARD_PREFIX = "dashboard/pair-windows"
 TOP_N = 200
 
@@ -202,13 +202,13 @@ def _write_country_file(country_a_id: str, pairs: dict[str, list[dict]]) -> None
 
 def _run_query(sql: str) -> str:
     """Submit Athena query and poll until SUCCEEDED. Returns query execution ID."""
+    # #371 — ResultConfiguration omitted; workgroup enforces its own location.
+    # (Legacy Lambda — slated for deletion per #369; patched for consistency.)
     kwargs = {
         "QueryString": sql,
         "QueryExecutionContext": {"Database": ATHENA_DB},
         "WorkGroup": ATHENA_WG,
     }
-    if ATHENA_OUTPUT:
-        kwargs["ResultConfiguration"] = {"OutputLocation": ATHENA_OUTPUT}
 
     response = athena.start_query_execution(**kwargs)
     query_id = response["QueryExecutionId"]

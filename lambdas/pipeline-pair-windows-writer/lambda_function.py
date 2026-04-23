@@ -53,7 +53,7 @@ logger.setLevel(logging.INFO)
 
 ATHENA_DB  = os.environ.get("ATHENA_DATABASE", "qgi_data")
 ATHENA_WG  = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
-ATHENA_OUT = os.environ.get("ATHENA_OUTPUT_LOCATION")
+# #371 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own output location.
 
 DASHBOARD_PREFIX = "dashboard/pair-windows"
 
@@ -72,13 +72,13 @@ def _run_query_sync(sql: str) -> str:
     Per-country partition scans on the Parquet staging table are fast
     (<10s typical). Poll interval 1s.
     """
+    # #371 — ResultConfiguration omitted; workgroup enforces its own location.
+    # See #369 Fix 7 for the failure class this pattern avoids.
     kwargs = {
         "QueryString": sql,
         "QueryExecutionContext": {"Database": ATHENA_DB},
         "WorkGroup": ATHENA_WG,
     }
-    if ATHENA_OUT:
-        kwargs["ResultConfiguration"] = {"OutputLocation": ATHENA_OUT}
 
     qid = athena.start_query_execution(**kwargs)["QueryExecutionId"]
 
