@@ -190,16 +190,23 @@ _SLUG_OVERRIDES = {
 
 
 def _slug(name: str | None) -> str | None:
-    if not name:
-        return None
-    # #422 Bug 4: apostrophes + periods are token separators, not characters
-    # to delete. "Cote d'Ivoire" must slug to "cote_d_ivoire", not
-    # "cote_divoire" (which would fail to match a curated file named
-    # cote_d_ivoire.json). Commas stay as delete-chars so "Korea, South"
-    # collapses to "korea_south" not "korea__south".
-    s = name.lower().replace("'", " ").replace(",", "").replace(".", " ").replace("&", "and")
-    s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
-    return s
+    """Thin delegate to the canonical shared implementation (#422 Bug 6).
+
+    The transform itself lives in `qgi-ml/shared/slug.py`; this wrapper
+    stays for call-site compatibility (`generate_pair_windows._slug` is
+    referenced by existing tests + `resolve_country_slug` below).
+    """
+    # Import lazily so the module still imports when the shared/ package
+    # is not on sys.path (e.g. during tooling that scans this file in
+    # isolation). The happy path resolves fine because scripts/ is a
+    # sibling of shared/ under qgi-ml/ and tests add the repo root.
+    import sys
+    from pathlib import Path
+    _root = Path(__file__).resolve().parent.parent
+    if str(_root) not in sys.path:
+        sys.path.insert(0, str(_root))
+    from shared.slug import country_slug
+    return country_slug(name)
 
 
 def load_country_event_years(curated_dir: Path) -> dict[str, set[int]]:

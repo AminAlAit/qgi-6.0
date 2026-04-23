@@ -420,6 +420,11 @@ def generate_indicator_trajectories(
     print(f"  Loaded {len(country_id_to_name)} country IDs from country-risks.json")
 
     def name_to_slug(name: str) -> str:
+        # #422 Bug 6 partial: this has diverged semantics from the canonical
+        # `shared.slug.country_slug` (strips leading "the ", collapses
+        # "of the" → "of") — curated-events lookups depend on both. A full
+        # consolidation requires auditing every match site. Left as a
+        # follow-up; shared implementation exists in qgi-ml/shared/slug.py.
         import re
         s = name.lower()
         s = re.sub(r"^the\s+", "", s)
