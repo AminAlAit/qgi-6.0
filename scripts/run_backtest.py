@@ -546,6 +546,104 @@ def build_arrays(preds, ground_truth):
     return y_true, y_scores
 
 
+def build_arrays_with_pairs(preds, ground_truth):
+    """Like build_arrays but also returns the ordered (country_id, category)
+    pair list so callers can compute stratified metrics (#400 per-category,
+    #401 per-country)."""
+    all_pairs = sorted(set(preds.keys()) | ground_truth)
+    y_true = np.array([1 if p in ground_truth else 0 for p in all_pairs])
+    y_scores = np.array([preds.get(p, 0.0) for p in all_pairs])
+    return y_true, y_scores, all_pairs
+
+
+def stratified_metrics(pairs, y_true, y_pred, group_fn, min_samples=5):
+    """Compute per-group F1/precision/recall for any grouping function (#400, #401).
+
+    Takes pre-thresholded `y_pred` (binary 0/1) rather than scores + threshold,
+    so callers that apply per-tier thresholds (the V1.8 backtest does) can
+    accumulate across tiers and still get correct per-group F1.
+
+    Args:
+        pairs:     list of (country_id, category) tuples, aligned with y_true/y_pred
+        y_true:    array-like of 0/1 ground truth labels
+        y_pred:    array-like of 0/1 predictions (already thresholded)
+        group_fn:  callable pair → group key (e.g. lambda p: p[0] for country,
+                   lambda p: p[1] for category)
+        min_samples: groups with fewer total samples than this are dropped from
+                   the output (avoids one-event categories producing noise)
+
+    Returns: dict[group_key] → {f1, precision, recall, n_gt, n_total}.
+    """
+    from collections import defaultdict
+    buckets = defaultdict(lambda: {'y_true': [], 'y_pred': []})
+    for pair, t, p in zip(pairs, y_true, y_pred):
+        key = group_fn(pair)
+        buckets[key]['y_true'].append(int(t))
+        buckets[key]['y_pred'].append(int(p))
+
+    result = {}
+    for key, data in buckets.items():
+        n = len(data['y_true'])
+        if n < min_samples:
+            continue
+        yt = np.array(data['y_true'])
+        yp = np.array(data['y_pred'])
+        tp = int(((yp == 1) & (yt == 1)).sum())
+        fp = int(((yp == 1) & (yt == 0)).sum())
+        fn = int(((yp == 0) & (yt == 1)).sum())
+        precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
+        recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
+        f1 = (
+            2 * precision * recall / (precision + recall)
+            if (precision + recall) > 0 else 0.0
+        )
+        result[key] = {
+            'f1': round(f1, 4),
+            'precision': round(precision, 4),
+            'recall': round(recall, 4),
+            'n_gt': int(yt.sum()),
+            'n_total': n,
+        }
+    return result
+
+
+def summarize_per_country_distribution(per_country_metrics, top_k=5):
+    """Build the p10/p25/p50/p75/p90 + worst/best summary for #401.
+
+    Args:
+        per_country_metrics: dict[country_id] → {f1, precision, recall, n_gt, n_total}
+                             as returned by stratified_metrics() grouped by country.
+        top_k: number of worst/best countries to surface by F1.
+
+    Returns: dict with distribution stats + worst_k/best_k lists, or None if
+             the input is empty.
+    """
+    if not per_country_metrics:
+        return None
+
+    # Sort ascending by F1 so worst is first, best is last.
+    ordered = sorted(per_country_metrics.items(), key=lambda kv: kv[1]['f1'])
+    f1s = [m['f1'] for _, m in ordered]
+    n = len(f1s)
+
+    def pct(p):
+        k = max(0, min(n - 1, int(round(p * (n - 1)))))
+        return f1s[k]
+
+    return {
+        'n_countries': n,
+        'distribution': {
+            'p10': pct(0.10),
+            'p25': pct(0.25),
+            'median': pct(0.50),
+            'p75': pct(0.75),
+            'p90': pct(0.90),
+        },
+        'worst_k': [{'country_id': cid, **m} for cid, m in ordered[:top_k]],
+        'best_k': [{'country_id': cid, **m} for cid, m in ordered[-top_k:][::-1]],
+    }
+
+
 # ---------------------------------------------------------------------------
 # Output helpers
 # ---------------------------------------------------------------------------
@@ -720,6 +818,13 @@ def main():
         persist_test = load_persistence(athena, 2020, args.bucket, args.workgroup, country_ids)
 
         tier_metrics_test = {}
+        # Accumulate (pair, y_true, y_pred) across tiers for per-category /
+        # per-country stratified metrics (#400, #401). y_pred is already
+        # thresholded per-tier so cross-tier aggregation is correct even when
+        # thresholds differ across tiers.
+        all_pairs_test: list = []
+        all_y_true_test: list = []
+        all_y_pred_test: list = []
         for tier_name in TIERS:
             preds = preds_by_tier_test[tier_name]
             if not preds:
@@ -732,7 +837,7 @@ def main():
 
             # V1.8: Rank fusion ensemble with persistence
             preds_fused = rank_fusion_ensemble(preds_zscored, persist_test)
-            y_true, y_scores = build_arrays(preds_fused, gt_test)
+            y_true, y_scores, pairs = build_arrays_with_pairs(preds_fused, gt_test)
 
             # Apply LOCKED Platt params from validation
             a, b = platt_params.get(tier_name, (5.0, -2.5))
@@ -741,6 +846,13 @@ def main():
             threshold = tier_thresholds.get(tier_name, 0.5)
             m = compute_metrics(y_true, y_cal, threshold)
             tier_metrics_test[tier_name] = m
+
+            # #400 + #401: accumulate for stratified metrics post-loop.
+            # y_pred is binary (already thresholded at this tier's threshold).
+            y_pred_tier = (y_cal >= threshold).astype(int)
+            all_pairs_test.extend(pairs)
+            all_y_true_test.extend(y_true.tolist())
+            all_y_pred_test.extend(y_pred_tier.tolist())
 
             if args.dump_raw_scores:
                 raw_scores[tier_name]['test'] = [
@@ -785,6 +897,59 @@ def main():
         beats_persist = agg_f1 > mp['f1']
         print(f"\nV1.8 beats persistence? {'YES' if beats_persist else 'NO'} (AGG F1={agg_f1} vs {mp['f1']})")
 
+        # #400 + #401: per-category and per-country stratified metrics across
+        # the full test set (all tiers combined, each tier contributing its
+        # own thresholded y_pred).
+        metrics_by_category = {}
+        per_country_metrics = {}
+        per_country_summary = None
+        if all_pairs_test:
+            metrics_by_category = stratified_metrics(
+                all_pairs_test, all_y_true_test, all_y_pred_test,
+                group_fn=lambda p: p[1],  # category is the second element
+                min_samples=5,
+            )
+            per_country_metrics = stratified_metrics(
+                all_pairs_test, all_y_true_test, all_y_pred_test,
+                group_fn=lambda p: p[0],  # country_id is the first element
+                min_samples=5,
+            )
+            per_country_summary = summarize_per_country_distribution(per_country_metrics)
+
+            if metrics_by_category:
+                # Print top 10 categories by n_gt — surfaces the ones that matter.
+                top_cats = sorted(
+                    metrics_by_category.items(),
+                    key=lambda kv: kv[1]['n_gt'], reverse=True,
+                )[:10]
+                print("\n" + "=" * 70)
+                print("TEST — PER-CATEGORY F1 (top 10 by ground-truth count) — #400")
+                print("=" * 70)
+                print_table(
+                    ['Category', 'F1', 'Precision', 'Recall', 'n_gt', 'n_total'],
+                    [[c, m['f1'], m['precision'], m['recall'], m['n_gt'], m['n_total']]
+                     for c, m in top_cats],
+                )
+
+            if per_country_summary:
+                print("\n" + "=" * 70)
+                print("TEST — PER-COUNTRY F1 DISTRIBUTION — #401")
+                print("=" * 70)
+                d = per_country_summary['distribution']
+                print(
+                    f"  n={per_country_summary['n_countries']}  "
+                    f"p10={d['p10']}  p25={d['p25']}  median={d['median']}  "
+                    f"p75={d['p75']}  p90={d['p90']}"
+                )
+                worst_str = ", ".join(
+                    f"{r['country_id']}:{r['f1']}" for r in per_country_summary['worst_k']
+                )
+                best_str = ", ".join(
+                    f"{r['country_id']}:{r['f1']}" for r in per_country_summary['best_k']
+                )
+                print(f"  worst 5: {worst_str}")
+                print(f"  best  5: {best_str}")
+
     # Save results
     if args.mode == 'full':
         results = {
@@ -809,6 +974,13 @@ def main():
                 'persistence': mp,
                 'aggregate_f1': agg_f1,
                 'beats_persistence': bool(beats_persist),
+                # #400: F1/precision/recall/n_gt per event category, pooled
+                # across all tiers with each tier's own threshold.
+                'metrics_by_category': metrics_by_category,
+                # #401: distribution stats + worst/best 5 countries by F1.
+                # Full per-country map under `per_country_full` for drill-in.
+                'per_country_f1': per_country_summary,
+                'per_country_full': per_country_metrics,
             },
         }
         out_path = args.output

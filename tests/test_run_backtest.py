@@ -390,3 +390,127 @@ class TestBuildArrays:
         y_true, y_scores = rb.build_arrays(preds, gt)
         assert isinstance(y_true, np.ndarray)
         assert isinstance(y_scores, np.ndarray)
+
+
+# ===========================================================================
+# build_arrays_with_pairs()  — #400 / #401 variant
+# ===========================================================================
+
+class TestBuildArraysWithPairs:
+
+    def test_returns_pairs_aligned_with_arrays(self):
+        preds = {(1, "a"): 0.9, (2, "b"): 0.4}
+        gt = {(1, "a"), (3, "c")}
+        y_true, y_scores, pairs = rb.build_arrays_with_pairs(preds, gt)
+        # Pairs should be the sorted union of prediction + ground-truth keys.
+        assert pairs == sorted({(1, "a"), (2, "b"), (3, "c")})
+        # Arrays aligned to pairs.
+        for p, t, s in zip(pairs, y_true, y_scores):
+            assert t == (1 if p in gt else 0)
+            assert s == pytest.approx(preds.get(p, 0.0))
+
+
+# ===========================================================================
+# stratified_metrics()  — #400 / #401
+# ===========================================================================
+
+class TestStratifiedMetrics:
+
+    def test_groups_by_category(self):
+        # 3 countries, 2 categories. Build y_pred so:
+        #   civil_war: 2 TP out of 2 gt, 0 FP → F1=1.0
+        #   elections: 1 TP out of 2 gt, 1 FP → precision=0.5, recall=0.5, F1=0.5
+        pairs = [
+            (1, "civil_war"), (1, "elections"),
+            (2, "civil_war"), (2, "elections"),
+            (3, "civil_war"), (3, "elections"),
+            (4, "civil_war"), (4, "elections"),
+            (5, "civil_war"), (5, "elections"),
+        ]
+        # Two civil_war positives, both predicted positive (TP×2, FP=0).
+        # Two elections positives, one predicted positive (TP=1, FN=1),
+        # plus one elections false positive (FP=1).
+        y_true = [1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+        y_pred = [1, 1, 1, 0, 0, 1, 0, 0, 0, 0]
+        result = rb.stratified_metrics(
+            pairs, y_true, y_pred, group_fn=lambda p: p[1], min_samples=1,
+        )
+        assert result["civil_war"]["f1"] == pytest.approx(1.0)
+        assert result["civil_war"]["n_gt"] == 2
+        assert result["elections"]["precision"] == pytest.approx(0.5)
+        assert result["elections"]["recall"] == pytest.approx(0.5)
+        assert result["elections"]["f1"] == pytest.approx(0.5)
+
+    def test_groups_by_country(self):
+        # Country 1: perfect (1 TP), Country 2: all wrong (1 FN, 1 FP)
+        pairs = [
+            (1, "a"), (1, "b"),
+            (2, "a"), (2, "b"),
+        ]
+        y_true = [1, 0, 1, 0]
+        y_pred = [1, 0, 0, 1]
+        result = rb.stratified_metrics(
+            pairs, y_true, y_pred, group_fn=lambda p: p[0], min_samples=1,
+        )
+        assert result[1]["f1"] == pytest.approx(1.0)
+        assert result[2]["f1"] == pytest.approx(0.0)
+
+    def test_min_samples_filter_drops_small_groups(self):
+        pairs = [(1, "a")] * 3 + [(2, "b")] * 10
+        y_true = [1, 0, 1] + [1] * 5 + [0] * 5
+        y_pred = [1, 0, 1] + [1] * 5 + [0] * 5
+        result = rb.stratified_metrics(
+            pairs, y_true, y_pred, group_fn=lambda p: p[0], min_samples=5,
+        )
+        assert 1 not in result  # only 3 samples < 5
+        assert 2 in result
+
+    def test_zero_division_safe(self):
+        """Group with zero predictions and zero positives → F1=0, no crash."""
+        pairs = [(1, "a"), (1, "b"), (1, "c"), (1, "d"), (1, "e")]
+        y_true = [0, 0, 0, 0, 0]
+        y_pred = [0, 0, 0, 0, 0]
+        result = rb.stratified_metrics(
+            pairs, y_true, y_pred, group_fn=lambda p: p[0], min_samples=1,
+        )
+        assert result[1]["f1"] == 0.0
+        assert result[1]["precision"] == 0.0
+        assert result[1]["recall"] == 0.0
+
+    def test_empty_inputs_returns_empty(self):
+        result = rb.stratified_metrics([], [], [], group_fn=lambda p: p[0])
+        assert result == {}
+
+
+# ===========================================================================
+# summarize_per_country_distribution()  — #401
+# ===========================================================================
+
+class TestSummarizePerCountryDistribution:
+
+    def test_basic_percentiles_and_top_bottom(self):
+        # 10 countries with F1 evenly spaced 0.1..1.0
+        per_country = {
+            i: {"f1": round(i * 0.1, 1), "precision": 0, "recall": 0, "n_gt": 1, "n_total": 5}
+            for i in range(1, 11)
+        }
+        result = rb.summarize_per_country_distribution(per_country, top_k=3)
+        assert result["n_countries"] == 10
+        assert result["distribution"]["median"] == pytest.approx(0.5) or result["distribution"]["median"] == pytest.approx(0.6)
+        # Worst 3 should be countries 1, 2, 3 (F1 0.1, 0.2, 0.3).
+        assert [r["country_id"] for r in result["worst_k"]] == [1, 2, 3]
+        # Best 3 should be countries 10, 9, 8 (F1 1.0, 0.9, 0.8).
+        assert [r["country_id"] for r in result["best_k"]] == [10, 9, 8]
+
+    def test_empty_input_returns_none(self):
+        assert rb.summarize_per_country_distribution({}) is None
+
+    def test_preserves_country_metrics_in_top_bottom(self):
+        per_country = {
+            "a": {"f1": 0.1, "precision": 0.2, "recall": 0.3, "n_gt": 4, "n_total": 10},
+            "b": {"f1": 0.9, "precision": 0.9, "recall": 0.9, "n_gt": 9, "n_total": 10},
+        }
+        result = rb.summarize_per_country_distribution(per_country, top_k=2)
+        # Worst should preserve full metrics
+        assert result["worst_k"][0]["precision"] == 0.2
+        assert result["worst_k"][0]["n_total"] == 10
