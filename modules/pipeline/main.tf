@@ -169,23 +169,23 @@ resource "aws_lambda_function" "a_batch_dispatcher" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      INDICATORS_KEY         = "pipeline-A-indicator-extractor/input/indicators.json"
-      BATCH_JOB_QUEUE        = var.fetcher_job_queue_arn
-      BATCH_JOB_DEFINITION   = var.fetcher_job_definition_arn
+      S3_BUCKET            = var.data_lake_bucket_name
+      INDICATORS_KEY       = "pipeline-A-indicator-extractor/input/indicators.json"
+      BATCH_JOB_QUEUE      = var.fetcher_job_queue_arn
+      BATCH_JOB_DEFINITION = var.fetcher_job_definition_arn
       # #241 Phase B: per-provider JobDef routing. JSON-encoded. When
       # empty ({}), dispatcher falls back to BATCH_JOB_DEFINITION for
       # every indicator (legacy behaviour preserved).
       BATCH_JOB_DEFINITION_MAP = jsonencode(var.batch_job_definition_map)
-      COUNTER_TABLE          = var.pipeline_a_counter_table_name
-      TRACKER_TABLE          = var.indicator_table_name
-      INDICATOR_VALUES_TABLE = var.indicator_values_table_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
-      JITTER_MIN_S           = tostring(var.phase1_jitter_min_s)
-      JITTER_MAX_S           = tostring(var.phase1_jitter_max_s)
-      DISPATCH_LIMIT         = tostring(var.dispatch_limit)
+      COUNTER_TABLE            = var.pipeline_a_counter_table_name
+      TRACKER_TABLE            = var.indicator_table_name
+      INDICATOR_VALUES_TABLE   = var.indicator_values_table_name
+      ATHENA_DATABASE          = var.glue_database_name
+      ATHENA_WORKGROUP         = var.athena_workgroup_name
+      ATHENA_OUTPUT_LOCATION   = local.s3_output_location
+      JITTER_MIN_S             = tostring(var.phase1_jitter_min_s)
+      JITTER_MAX_S             = tostring(var.phase1_jitter_max_s)
+      DISPATCH_LIMIT           = tostring(var.dispatch_limit)
     }
   }
 
@@ -207,7 +207,7 @@ resource "aws_lambda_function" "a_batch_checker" {
 
   environment {
     variables = {
-      COUNTER_TABLE   = var.pipeline_a_counter_table_name
+      COUNTER_TABLE = var.pipeline_a_counter_table_name
       # #178: scan-count checker reads tracker table instead of counter
       TRACKER_TABLE   = var.indicator_table_name
       DEADMAN_SECONDS = tostring(var.phase1_deadman_seconds)
@@ -683,7 +683,7 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
       # 256KB state payload limit so it can't be inlined). Without
       # S3_BUCKET the put_object was called with Bucket="" which raises
       # ParamValidationError and failed Main SF at state 5b.3.
-      S3_BUCKET          = var.data_lake_bucket_name
+      S3_BUCKET = var.data_lake_bucket_name
     }
   }
 
@@ -745,10 +745,13 @@ resource "aws_lambda_function" "partners_index_generator" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      S3_BUCKET        = var.data_lake_bucket_name
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup
+      # QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true and
+      # supplies its own OutputLocation. Keeping this env var was a
+      # latent landmine (same class as #369 Fix 7).
     }
   }
 
@@ -776,10 +779,13 @@ resource "aws_lambda_function" "pattern_density_generator" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      S3_BUCKET        = var.data_lake_bucket_name
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup
+      # QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true and
+      # supplies its own OutputLocation. Keeping this env var was a
+      # latent landmine (same class as #369 Fix 7).
     }
   }
 
@@ -807,10 +813,13 @@ resource "aws_lambda_function" "structural_twins_generator" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      S3_BUCKET        = var.data_lake_bucket_name
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup
+      # QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true and
+      # supplies its own OutputLocation. Keeping this env var was a
+      # latent landmine (same class as #369 Fix 7).
     }
   }
 
@@ -839,10 +848,13 @@ resource "aws_lambda_function" "pair_windows_generator" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      S3_BUCKET        = var.data_lake_bucket_name
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup
+      # QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true and
+      # supplies its own OutputLocation. Keeping this env var was a
+      # latent landmine (same class as #369 Fix 7).
     }
   }
 
@@ -878,10 +890,13 @@ resource "aws_lambda_function" "pair_windows_enumerator" {
 
   environment {
     variables = {
-      S3_BUCKET              = var.data_lake_bucket_name
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      S3_BUCKET        = var.data_lake_bucket_name
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup
+      # QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true and
+      # supplies its own OutputLocation. Keeping this env var was a
+      # latent landmine (same class as #369 Fix 7).
     }
   }
 
@@ -912,9 +927,10 @@ resource "aws_lambda_function" "pair_windows_writer" {
 
   environment {
     variables = {
-      ATHENA_DATABASE        = var.glue_database_name
-      ATHENA_WORKGROUP       = var.athena_workgroup_name
-      ATHENA_OUTPUT_LOCATION = local.s3_output_location
+      ATHENA_DATABASE  = var.glue_database_name
+      ATHENA_WORKGROUP = var.athena_workgroup_name
+      # #371 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own
+      # OutputLocation. See #369 Fix 7 for the failure class this avoids.
     }
   }
 
@@ -1520,7 +1536,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         Type           = "Map"
         MaxConcurrency = 20
         ItemReader = {
-          Resource     = "arn:aws:states:::s3:getObject"
+          Resource = "arn:aws:states:::s3:getObject"
           ReaderConfig = {
             InputType = "JSON"
           }
@@ -1531,7 +1547,7 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ItemProcessor = {
           ProcessorConfig = {
-            Mode = "DISTRIBUTED"
+            Mode          = "DISTRIBUTED"
             ExecutionType = "STANDARD"
           }
           StartAt = "Drop Partition"
@@ -1591,8 +1607,8 @@ resource "aws_sfn_state_machine" "pipeline" {
         # Downstream 5b.6. Finalize does not read these per-country
         # outputs (only uses $.recipe_list.partitions_total). Drop
         # them via ResultPath: null so the payload stays bounded.
-        ResultPath                 = null
-        Next                       = "5b.6. Finalize"
+        ResultPath = null
+        Next       = "5b.6. Finalize"
       }
 
       "5b.6. Finalize" = {
@@ -1751,8 +1767,8 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ToleratedFailurePercentage = 0
         # Drop aggregated children output — same lesson as 5b.5 (256KB cap).
-        ResultPath                 = null
-        Next                       = "5c. Athena MSCK recipes"
+        ResultPath = null
+        Next       = "5c. Athena MSCK recipes"
       }
 
       "5c. Athena MSCK recipes" = {
