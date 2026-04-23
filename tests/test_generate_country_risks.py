@@ -464,3 +464,36 @@ class TestLoadScoringConfig:
         assert "composite_rule" in cfg
         for key in ("CRISIS_HIGH", "REGULAR_HIGH", "CRISIS_MODERATE", "REGULAR_MODERATE"):
             assert key in cfg["thresholds"], f"Missing threshold key: {key}"
+
+
+# ===========================================================================
+# main() severity-tiers guard — #422 Bug 3
+# ===========================================================================
+
+class TestMainSeverityTiersGuard:
+
+    def test_empty_severity_tiers_raises_runtime_error(self, monkeypatch):
+        """#422 Bug 3: main() must refuse to run when SEVERITY_TIERS is empty.
+
+        Without this guard, every category falls through to severity_weight()'s
+        default 0.3, producing a uniform-salience country-risks.json with no
+        alarm. Same class as the 2026-04-22 finalize-Lambda silent-failure.
+        """
+        monkeypatch.setattr(gcr, "SEVERITY_TIERS", {})
+        monkeypatch.setattr(
+            sys, "argv", ["generate_country_risks.py", "--bucket", "test-bucket"]
+        )
+        with pytest.raises(RuntimeError, match="category_severity_tiers.json"):
+            gcr.main()
+
+    def test_non_empty_severity_tiers_does_not_raise_on_guard(self, monkeypatch):
+        """Non-empty SEVERITY_TIERS passes the guard (any subsequent AWS error is separate)."""
+        monkeypatch.setattr(gcr, "SEVERITY_TIERS", {"civil_war_and_insurgency": 1.0})
+        monkeypatch.setattr(
+            sys, "argv", ["generate_country_risks.py", "--bucket", "test-bucket"]
+        )
+        # Guard should pass. Execution will fail later at boto3/Athena; we only
+        # care that the failure is NOT the guard's RuntimeError.
+        with pytest.raises(Exception) as exc_info:
+            gcr.main()
+        assert "refusing to score" not in str(exc_info.value)

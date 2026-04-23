@@ -286,6 +286,15 @@ def main():
     parser.add_argument('--upload', action='store_true', help='Upload to S3 dashboard/')
     args = parser.parse_args()
 
+    # #422 Bug 3: refuse to score with empty severity weights. Without this
+    # guard, every category falls through to severity_weight()'s default 0.3
+    # and the Lambda silently produces a uniform-salience country-risks.json.
+    if not SEVERITY_TIERS:
+        raise RuntimeError(
+            "category_severity_tiers.json could not be loaded; refusing to score "
+            "with empty severity weights (see T17 #310)."
+        )
+
     athena = boto3.client('athena', region_name=args.region)
     s3 = boto3.client('s3', region_name=args.region)
 
