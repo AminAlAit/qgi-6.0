@@ -173,7 +173,7 @@ Closes #408 face-validity misses by expanding the 3 named countries with WebSear
 | Country | Generated | Curated | Verified | Last updated | Notes |
 |---------|----------:|--------:|---------:|--------------|-------|
 | iran | 1 | 2 | 2 | 2026-04-22 | 146 → 187 (+41 WebSearch-grounded) → 181 after dedup pass; 84/181 verified (39 new verified, 45 from 2026-04-13 partial preserved) |
-| ukraine | 1 | 2 | 2 | 2026-04-22 | 43 → 67 (+24 conflict-category expansion); 64/67 verified |
+| ukraine | 1 | 3 | 3 | 2026-04-22 | 43 → 67 → 85 (+18 round 2 breadth via #421; E5 quality bar held, 9 candidates excluded); 82/85 verified |
 | venezuela | 1 | 2 | 2 | 2026-04-22 | 51 → 71 (+20, rebalanced toward political_repression / banking_and_financial_crisis / humanitarian_crisis); 70/71 verified |
 
 ### Added 2026-04-16 session (38 countries — generated from scratch via Sonnet)
