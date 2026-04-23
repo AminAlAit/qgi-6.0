@@ -71,16 +71,20 @@ class TestSlug:
     def test_spaces_become_underscores(self):
         assert gpw._slug("United States") == "united_states"
 
-    def test_apostrophe_removed(self):
-        # _slug() removes ' entirely (not as a separator), so "d'Ivoire" → "divoire"
-        assert gpw._slug("Cote d'Ivoire") == "cote_divoire"
+    def test_apostrophe_treated_as_separator(self):
+        """#422 Bug 4: apostrophes separate tokens.
+
+        Before the fix, "Cote d'Ivoire" slugged to "cote_divoire" — which
+        would fail to match a curated file named cote_d_ivoire.json.
+        """
+        assert gpw._slug("Cote d'Ivoire") == "cote_d_ivoire"
 
     def test_comma_removed(self):
         assert gpw._slug("Korea, South") == "korea_south"
 
-    def test_period_removed(self):
-        # _slug() removes . entirely (not as a separator), so "U.S.A." → "usa"
-        assert gpw._slug("U.S.A.") == "usa"
+    def test_period_treated_as_separator(self):
+        """#422 Bug 4: periods separate tokens too (U.S.A. → u_s_a)."""
+        assert gpw._slug("U.S.A.") == "u_s_a"
 
     def test_ampersand_becomes_and(self):
         assert gpw._slug("Bosnia & Herzegovina") == "bosnia_and_herzegovina"

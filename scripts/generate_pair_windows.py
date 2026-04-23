@@ -192,7 +192,12 @@ _SLUG_OVERRIDES = {
 def _slug(name: str | None) -> str | None:
     if not name:
         return None
-    s = name.lower().replace("'", "").replace(",", "").replace(".", "").replace("&", "and")
+    # #422 Bug 4: apostrophes + periods are token separators, not characters
+    # to delete. "Cote d'Ivoire" must slug to "cote_d_ivoire", not
+    # "cote_divoire" (which would fail to match a curated file named
+    # cote_d_ivoire.json). Commas stay as delete-chars so "Korea, South"
+    # collapses to "korea_south" not "korea__south".
+    s = name.lower().replace("'", " ").replace(",", "").replace(".", " ").replace("&", "and")
     s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
     return s
 
