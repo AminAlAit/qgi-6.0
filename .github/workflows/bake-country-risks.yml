@@ -1,0 +1,82 @@
+name: Bake country-risks.json from S3
+
+# #417 Option C — triggered by the qgi-frontend-bake-trigger Lambda in the
+# staging AWS account whenever the pipeline publishes a new
+# dashboard/country-risks.json. Pulls the file from S3 via OIDC (read-only
+# on the one key), commits to data/country-risks.json, pushes — Vercel
+# auto-deploys on push.
+#
+# Idempotent: if the file content is unchanged, `git diff` returns non-zero
+# from the exit-code wrapper and we skip the commit + push.
+
+on:
+  workflow_dispatch:
+    inputs:
+      bucket:
+        description: "S3 bucket the file came from (for commit message traceability)"
+        required: false
+        default: "qgi-data-lake-222222222222"
+      key:
+        description: "S3 key"
+        required: false
+        default: "dashboard/country-risks.json"
+      etag:
+        description: "S3 ETag for traceability"
+        required: false
+        default: ""
+      message:
+        description: "Commit message (override)"
+        required: false
+        default: ""
+
+jobs:
+  bake:
+    name: Pull country-risks.json and commit
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # OIDC to AWS
+      contents: write # git commit + push
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          # `persist-credentials: true` (default) is what lets the final
+          # `git push` step work against origin.
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-frontend-s3-read
+          aws-region: eu-central-1
+
+      - name: Pull country-risks.json from S3
+        run: |
+          aws s3 cp \
+            "s3://${{ inputs.bucket }}/${{ inputs.key }}" \
+            data/country-risks.json
+
+      - name: Commit + push if changed
+        run: |
+          git config user.name  "qgi-bake-bot"
+          git config user.email "bake-bot@qgintelligence.com"
+
+          if git diff --quiet data/country-risks.json; then
+            echo "No change in data/country-risks.json — nothing to commit."
+            exit 0
+          fi
+
+          etag="${{ inputs.etag }}"
+          default_msg="chore(data): bake country-risks.json from s3://${{ inputs.bucket }}/${{ inputs.key }}"
+          if [ -n "$etag" ]; then
+            default_msg="$default_msg (etag ${etag:0:8})"
+          fi
+          msg="${{ inputs.message }}"
+          if [ -z "$msg" ]; then
+            msg="$default_msg"
+          fi
+
+          git add data/country-risks.json
+          git commit -m "$msg"
+          git push origin main
