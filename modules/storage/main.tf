@@ -24,7 +24,12 @@ resource "aws_s3_bucket_versioning" "data_lake" {
 resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   bucket = aws_s3_bucket.data_lake.id
 
-  # Athena temp results — expire after 30 days (issue #69)
+  # Athena temp results — expire after 14 days (#419, tightened from
+  # #69's original 30 days). Staging bucket had 594 GB / 48,080 objects
+  # accumulated under this prefix despite the 30-day rule, costing ~\$14/mo
+  # on S3 Standard alone. 14 days covers any reasonable debugging window
+  # (re-reading last week's query results) while trimming the long tail
+  # that nobody revisits. Expected savings: ~\$7/mo per environment.
   rule {
     id     = "expire-query-results"
     status = "Enabled"
@@ -32,7 +37,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
       prefix = "query_results/"
     }
     expiration {
-      days = 30
+      days = 14
     }
   }
 
