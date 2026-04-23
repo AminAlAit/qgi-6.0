@@ -230,7 +230,7 @@ resource "aws_iam_role_policy" "lambda_execution" {
       {
         Effect   = "Allow"
         Action   = ["cloudwatch:PutMetricData"]
-        Resource = "*"  # CloudWatch PutMetricData requires wildcard; scoped via namespace condition below
+        Resource = "*" # CloudWatch PutMetricData requires wildcard; scoped via namespace condition below
         Condition = {
           StringEquals = {
             "cloudwatch:namespace" = "QGI/Pipeline"
@@ -666,5 +666,55 @@ resource "aws_iam_role_policy" "eventbridge_scheduler" {
         ]
       }
     ]
+  })
+}
+
+# ---------------------------------------------------------------------------
+# #417 Option C — OIDC role for qgi-frontend workflow_dispatch
+#
+# The `bake-country-risks.yml` workflow in AminAlAit/qgi-frontend assumes
+# this role via OIDC to pull `dashboard/country-risks.json` from the
+# data-lake bucket. Scope is intentionally narrow: s3:GetObject on the
+# one key, nothing else. The workflow writes the file into its own repo
+# checkout using GITHUB_TOKEN — no S3 write permission needed.
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "github_actions_frontend_s3_read" {
+  name = "github-actions-qgi-frontend-s3-read"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Federated = aws_iam_openid_connect_provider.github_actions.arn }
+      Action    = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+        }
+        StringLike = {
+          # Allow the workflow from main or any workflow_dispatch caller
+          # on the repo. Dispatch events from the Lambda carry a sub like
+          # `repo:AminAlAit/qgi-frontend:ref:refs/heads/main` so matching
+          # main is sufficient.
+          "token.actions.githubusercontent.com:sub" = "repo:AminAlAit/qgi-frontend:ref:refs/heads/main"
+        }
+      }
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "github_actions_frontend_s3_read" {
+  name = "qgi-frontend-s3-read-policy"
+  role = aws_iam_role.github_actions_frontend_s3_read.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect   = "Allow"
+      Action   = ["s3:GetObject"]
+      Resource = "${var.data_lake_bucket_arn}/dashboard/country-risks.json"
+    }]
   })
 }

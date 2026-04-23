@@ -54,14 +54,14 @@ variable "batch_job_definition_arn" {
 # SQS queue URLs and ARNs
 variable "queue_a_main_url" { type = string }
 variable "queue_a_main_arn" { type = string }
-variable "queue_a_dlq_url"  { type = string }
+variable "queue_a_dlq_url" { type = string }
 variable "queue_b_main_url" { type = string }
 variable "queue_b_main_arn" { type = string }
-variable "queue_b_dlq_url"  { type = string }
+variable "queue_b_dlq_url" { type = string }
 variable "queue_c_main_url" { type = string }
 variable "queue_c_main_arn" { type = string }
-variable "queue_c_dlq_url"  { type = string }
-variable "queue_c_dlq_arn"  { type = string }
+variable "queue_c_dlq_url" { type = string }
+variable "queue_c_dlq_arn" { type = string }
 
 variable "completion_table_name" {
   type        = string
