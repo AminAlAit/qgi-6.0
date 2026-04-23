@@ -32,6 +32,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "curation-in-practice",
+    title: "Curation in practice: Iran, Ukraine, Venezuela",
+    date: "2026-04-24",
+    dek: "Three countries, three different gaps in our existing event coverage, three parallel curation passes in one afternoon. What we changed, what we didn't, and why this work sits upstream of every score we publish.",
+    tags: ["methodology", "curation"],
+  },
+  {
     slug: "cross-country-normalization",
     title: "Cross-country normalization meets the data",
     date: "2026-04-22",
