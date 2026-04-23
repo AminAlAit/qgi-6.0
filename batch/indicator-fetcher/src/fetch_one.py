@@ -83,9 +83,7 @@ INDICATOR_VALUES_TABLE = os.environ.get("INDICATOR_VALUES_TABLE", "qgi-indicator
 # Athena (for #149 partition registration)
 ATHENA_DATABASE = os.environ.get("ATHENA_DATABASE", "qgi_data")
 ATHENA_WORKGROUP = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
-ATHENA_OUTPUT_LOCATION = os.environ.get(
-    "ATHENA_OUTPUT_LOCATION", f"s3://{BUCKET}/query_results/"
-)
+# #416 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own location.
 INDICATORS_TABLE_NAME = "indicators"
 
 # Rate-limit jitter window (seconds). Each task sleeps a uniform random
@@ -279,11 +277,12 @@ def register_glue_partition(indicator_id):
         f"LOCATION '{partition_location}'"
     )
     try:
+        # #416 — ResultConfiguration omitted; workgroup enforces its own
+        # OutputLocation. See #371 for the failure class this avoids.
         response = athena.start_query_execution(
             QueryString=sql,
             QueryExecutionContext={"Database": ATHENA_DATABASE},
             WorkGroup=ATHENA_WORKGROUP,
-            ResultConfiguration={"OutputLocation": ATHENA_OUTPUT_LOCATION},
         )
         query_id = response["QueryExecutionId"]
         # Poll briefly — ALTER TABLE is fast

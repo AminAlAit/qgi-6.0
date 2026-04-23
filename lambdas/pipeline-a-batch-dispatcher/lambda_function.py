@@ -80,9 +80,9 @@ INDICATOR_VALUES_TABLE = os.environ.get(
 )
 ATHENA_DATABASE = os.environ.get("ATHENA_DATABASE", "qgi_data")
 ATHENA_WORKGROUP = os.environ.get("ATHENA_WORKGROUP", "QGI-Lambda-Workgroup")
-ATHENA_OUTPUT_LOCATION = os.environ.get(
-    "ATHENA_OUTPUT_LOCATION", f"s3://{S3_BUCKET}/query_results/"
-)
+# #416 — ATHENA_OUTPUT_LOCATION removed; workgroup enforces its own location.
+# No longer forwarded to the indicator-fetcher Fargate container (which also
+# dropped ResultConfiguration per #416).
 
 JITTER_MIN_S = os.environ.get("JITTER_MIN_S", "60")
 JITTER_MAX_S = os.environ.get("JITTER_MAX_S", "300")
@@ -193,7 +193,7 @@ def _build_task_env(
         {"name": "INDICATOR_VALUES_TABLE", "value": INDICATOR_VALUES_TABLE},
         {"name": "ATHENA_DATABASE", "value": ATHENA_DATABASE},
         {"name": "ATHENA_WORKGROUP", "value": ATHENA_WORKGROUP},
-        {"name": "ATHENA_OUTPUT_LOCATION", "value": ATHENA_OUTPUT_LOCATION},
+        # #416 — ATHENA_OUTPUT_LOCATION no longer forwarded; workgroup enforces.
         {"name": "JITTER_MIN_S", "value": str(JITTER_MIN_S)},
         {"name": "JITTER_MAX_S", "value": str(JITTER_MAX_S)},
     ]
