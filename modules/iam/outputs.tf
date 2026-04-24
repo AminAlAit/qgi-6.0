@@ -10,3 +10,7 @@ output "cross_account_ops_role_arn" { value = aws_iam_role.cross_account_ops.arn
 # #FAR-1: Fargate roles for the Phase 1 indicator fetcher
 output "fargate_execution_role_arn" { value = aws_iam_role.fargate_execution.arn }
 output "fargate_indicator_fetcher_task_role_arn" { value = aws_iam_role.fargate_indicator_fetcher_task.arn }
+# #425: Vercel frontend reader — read-only user for live Athena queries.
+# Access keys are generated manually post-apply (not stored in TF state).
+output "vercel_frontend_reader_user_name" { value = aws_iam_user.vercel_frontend_reader.name }
+output "vercel_frontend_reader_user_arn" { value = aws_iam_user.vercel_frontend_reader.arn }
