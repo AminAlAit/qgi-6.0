@@ -5,3 +5,26 @@ __pycache__/
 
 # Local data files (events, SCDIs, etc.) - too large for git
 data/
+
+# Secrets hygiene (#444) — never commit credentials or local editor/IDE config
+.env
+.env.*
+!.env.example
+.claude/launch.json
+.claude/settings.local.json
+.vscode/launch.json
+.vscode/settings.json
+.idea/
+.devcontainer/devcontainer.json.local
+
+# Private keys
+*.pem
+*.key
+*.p12
+id_rsa*
+credentials
+
+# AWS session files
+aws-session.sh
+mgmt-session.sh
+.aws-session.*
