@@ -59,6 +59,16 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // #433: apple-touch-icon + PWA manifest so iOS home-screen save uses
+  // a real QGI-branded icon instead of a low-res auto-crop of the page.
+  icons: {
+    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+  },
+  manifest: "/manifest.webmanifest",
 };
 
 // T19 #312: Organization schema helps Google understand QGI as an entity

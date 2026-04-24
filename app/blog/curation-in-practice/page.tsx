@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Curation in practice: Iran, Ukraine, Venezuela — QGI Blog",
@@ -31,6 +32,12 @@ export default function CurationInPracticePost() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
+      <ArticleJsonLd
+        headline="Curation in practice: Iran, Ukraine, Venezuela"
+        description="Three countries, three different gaps in our existing event coverage, three parallel curation passes in one afternoon."
+        url="https://qgintelligence.com/blog/curation-in-practice"
+        datePublished="2026-04-24T00:00:00Z"
+      />
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
