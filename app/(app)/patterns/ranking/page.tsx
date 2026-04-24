@@ -11,7 +11,7 @@
  * Design reference: ux-redesign-ranking-2026-04-17.md
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { PatternRow } from "@/lib/types";
@@ -77,8 +77,27 @@ interface RankingResponse {
 // ---------------------------------------------------------------------------
 // Main page component
 // ---------------------------------------------------------------------------
+/**
+ * Build the /patterns detail URL for a pattern row, or `null` when the
+ * row lacks numeric country IDs (which the /patterns API requires).
+ * #435 Bug 3: extracted from the old `navigateToPattern` onClick handler
+ * so RankCard can render an `<a href>` that right-click / middle-click /
+ * cmd-click and SEO crawlers can all follow — a `<button onClick>` breaks
+ * all of those.
+ */
+function patternDetailHref(p: PatternRow): string | null {
+  if (p.country_a_id == null || p.country_b_id == null) return null;
+  const qs = new URLSearchParams({
+    country_a: String(p.country_a_id),
+    country_b: String(p.country_b_id),
+    length: String(p.pattern_length),
+    start_a: String(p.start_year_a),
+    start_b: String(p.start_year_b),
+  });
+  return `/patterns?${qs}`;
+}
+
 export default function RankingPage() {
-  const router = useRouter();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Data state
@@ -152,27 +171,6 @@ export default function RankingPage() {
     if (key && ALPHA2_MAP[key]) return ALPHA2_MAP[key];
     if (NAME_TO_ALPHA2[name]) return NAME_TO_ALPHA2[name];
     return "";
-  }
-
-  function navigateToPattern(p: PatternRow) {
-    // T6 #299 MEDIUM fix (2026-04-19): /patterns API only accepts numeric
-    // country IDs. Skip rows that lack them + warn rather than falling
-    // back to the country NAME (which produces a malformed URL that 400s
-    // silently — see BaseClient.navigateToPair for the same fix).
-    if (p.country_a_id == null || p.country_b_id == null) {
-      console.warn(
-        `[ranking] Skipping pattern navigation — missing numeric IDs on row ${p.country_a}/${p.country_b}.`
-      );
-      return;
-    }
-    const qs = new URLSearchParams({
-      country_a: String(p.country_a_id),
-      country_b: String(p.country_b_id),
-      length: String(p.pattern_length),
-      start_a: String(p.start_year_a),
-      start_b: String(p.start_year_b),
-    });
-    router.push(`/patterns?${qs}`);
   }
 
   // ---------------------------------------------------------------------------
@@ -781,7 +779,6 @@ export default function RankingPage() {
                 pattern={p}
                 maxPps={maxPps}
                 getAlpha2={getAlpha2}
-                onNavigate={() => navigateToPattern(p)}
               />
             ))
           )}
@@ -826,13 +823,11 @@ function RankCard({
   pattern: p,
   maxPps,
   getAlpha2,
-  onNavigate,
 }: {
   rank: number;
   pattern: PatternRow;
   maxPps: number;
   getAlpha2: (idOrName: string | number | undefined, name: string) => string;
-  onNavigate: () => void;
 }) {
   const alpha2A = getAlpha2(p.country_a_id, p.country_a);
   const alpha2B = getAlpha2(p.country_b_id, p.country_b);
@@ -848,21 +843,25 @@ function RankCard({
   // Top 3 get a left accent border
   const accentBorder = rank <= 3 ? "3px solid var(--qgi-amber)" : "3px solid transparent";
 
-  return (
-    <button
-      onClick={onNavigate}
-      /* T14 #307: minWidth: 640 so the 42 + 1fr + 240 grid keeps its
-         intended shape even on 375px viewports; the page's scroll
-         container absorbs any overflow. */
-      className="w-full grid items-center px-3 border-b transition-all hover:bg-[var(--qgi-surface-2)] cursor-pointer group"
-      style={{
-        gridTemplateColumns: "42px 1fr 240px",
-        height: 56,
-        minWidth: 640,
-        borderColor: "var(--qgi-border)",
-        borderLeft: accentBorder,
-      }}
-    >
+  // #435 Bug 3: row is now an <a href> (via next/link) instead of <button
+  // onClick>. Browsers now honour right-click "Open in new tab",
+  // middle-click, cmd/ctrl-click, and SEO crawlers can follow the link
+  // for link-equity flow. Rows lacking numeric IDs stay as <div> (no
+  // working link target — same silent-skip behaviour as the old
+  // navigateToPattern guard).
+  const href = patternDetailHref(p);
+  const rowClassName =
+    "w-full grid items-center px-3 border-b transition-all hover:bg-[var(--qgi-surface-2)] group";
+  const rowStyle = {
+    gridTemplateColumns: "42px 1fr 240px",
+    height: 56,
+    minWidth: 640,
+    borderColor: "var(--qgi-border)",
+    borderLeft: accentBorder,
+  } as const;
+
+  const body = (
+    <>
       {/* ---- Zone 1: Rank ---- */}
       <span className="font-data text-sm font-semibold" style={{ color: rankColor }}>
         #{rank}
@@ -915,7 +914,30 @@ function RankCard({
           <CorrelationPill r={p.avg_correlation} />
         </div>
       </div>
-    </button>
+    </>
+  );
+
+  if (href == null) {
+    return (
+      <div
+        className={rowClassName}
+        style={{ ...rowStyle, opacity: 0.6 }}
+        title="Missing numeric country IDs — cannot link to detail view"
+      >
+        {body}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={`${rowClassName} cursor-pointer`}
+      style={rowStyle}
+      prefetch={false}
+    >
+      {body}
+    </Link>
   );
 }
 
