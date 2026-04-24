@@ -6,6 +6,11 @@
  * ux-consult-precedent-detail-2026-04-16.md
  *
  * Hardcoded sample: Iraq -- Civil War and Insurgency
+ *
+ * 2026-04-24: route marked noindex so Google doesn't surface stale
+ * V1.8.1-era prototype content. Full disposition decision (keep / move
+ * / delete) tracked on the QA follow-up ticket. See also: metadata
+ * export below.
  */
 
 import { CountryFlag } from "@/components/design/CountryFlag";

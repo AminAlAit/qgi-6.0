@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "About · QGI Intelligence",
   description:
     "QGI Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
+  alternates: {
+    canonical: "https://qgintelligence.com/about",
+  },
   openGraph: {
     title: "About · QGI Intelligence",
     description:

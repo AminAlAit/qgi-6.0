@@ -269,7 +269,7 @@ export function CountriesClient({
         </h1>
         <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
           {countries.length}&nbsp;countries &middot; {curatedCount}&nbsp;curated &middot;
-          V1.8.1 scoring
+          V1.9.1 scoring
         </p>
       </div>
 

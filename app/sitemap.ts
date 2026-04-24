@@ -34,6 +34,16 @@ const STATIC_ROUTES: Array<{
     changeFrequency: "monthly",
     priority: 0.5,
   },
+  {
+    path: "/blog/cross-country-normalization",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
+    path: "/blog/curation-in-practice",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
   // FSI report excluded from sitemap 2026-04-19 — #264 reopened for rework.
   // Route stays live for inbound links, but not advertised to search engines.

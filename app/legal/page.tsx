@@ -4,6 +4,16 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Legal — QGI Intelligence",
   description: "Privacy Policy, Terms of Service, and disclaimers for QGI.",
+  alternates: {
+    canonical: "https://qgintelligence.com/legal",
+  },
+  openGraph: {
+    title: "Legal — QGI Intelligence",
+    description: "Privacy Policy, Terms of Service, and disclaimers for QGI.",
+    url: "https://qgintelligence.com/legal",
+    siteName: "QGI Intelligence",
+    type: "website",
+  },
 };
 
 export default function LegalPage() {
@@ -178,7 +188,13 @@ export default function LegalPage() {
           <p>
             For questions about these terms, data use, or to exercise your data rights,
             contact:{" "}
-            <span style={{ color: "var(--qgi-accent)" }}>aminalait.de@gmail.com</span>
+            <a
+              href="mailto:aminalait.de@gmail.com"
+              style={{ color: "var(--qgi-accent)" }}
+              className="hover:underline"
+            >
+              aminalait.de@gmail.com
+            </a>
           </p>
         </Section>
 
