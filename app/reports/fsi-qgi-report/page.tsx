@@ -39,7 +39,7 @@ const REPORT_MD = `# Structural Analogy Assessment
 
 **Pre-computed intelligence report -- April 2026**
 
-Prepared for the Fund for Peace | [qgintelligence.com](https://qgintelligence.com)
+Prepared for the [Fund for Peace](https://www.fundforpeace.org/) | [qgintelligence.com](https://qgintelligence.com)
 
 *Classification: Demonstration Report -- Not Commissioned*
 
@@ -47,7 +47,7 @@ Prepared for the Fund for Peace | [qgintelligence.com](https://qgintelligence.co
 
 ## 1. Executive Summary
 
-QGI analyzed the economic trajectories of 126 countries using 2.01 billion computed patterns across 58 World Bank indicators. Cross-referencing QGI's structural risk scores with the Fund for Peace's 2023 Fragile States Index (the latest available dataset), we found the following:
+QGI analyzed the economic trajectories of 126 countries using 2.01 billion computed patterns across 58 [World Bank](https://data.worldbank.org/) indicators. Cross-referencing QGI's structural risk scores with the [Fund for Peace's](https://www.fundforpeace.org/) 2023 [Fragile States Index](https://fragilestatesindex.org/) (the latest available dataset), we found the following:
 
 1. **High agreement on the most fragile states.** Of the FSI's top 15 most fragile countries, 11 also produce elevated structural risk signals in QGI (max salience >= 0.8). QGI's purely quantitative approach converges with FSI's expert-blended methodology on the world's most vulnerable states.
 
@@ -431,7 +431,7 @@ Recipe matches are scored using z-score normalization per country, combined via 
 | :--- | :--- | :--- | :--- |
 | Economic indicators | World Bank Open Data | CC BY 4.0 | 69 indicators, 197 countries, 1960-2024 |
 | Geopolitical events | AI-curated with human verification | QGI proprietary | 198 countries, 1950-2025, 71 event categories |
-| FSI rankings | Fund for Peace (public) | Public data | 179 countries, 2006-2023 |
+| FSI rankings | [Fund for Peace](https://www.fundforpeace.org/) (public) | Public data | 179 countries, 2006-2023 |
 
 ### 6.4 Architectural Decisions
 
@@ -461,7 +461,7 @@ Recipe matches are scored using z-score normalization per country, combined via 
 This report uses the following data sources:
 
 - **QGI country-risks.json** (V1.8.1, generated 2026-04-13): 126 scored countries with salience scores, risk tiers, and recipe counts across 4 time-horizon tiers.
-- **FSI 2023 rankings**: 179 countries ranked by the Fund for Peace's Fragile States Index. The 2023 dataset is the latest available in our archive.
+- **FSI 2023 rankings**: 179 countries ranked by the Fund for Peace's [Fragile States Index](https://fragilestatesindex.org/). The 2023 dataset is the latest available in our archive.
 - **FSI historical data (2006-2023)**: 145 countries with year-over-year FSI total scores, used for deterioration analysis.
 - **QGI salience profiles**: L1/L2 domain-level risk scores for 198 countries.
 
