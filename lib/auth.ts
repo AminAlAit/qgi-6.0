@@ -62,19 +62,28 @@ export function withAuth(
     // unset, dev payload has zero groups — requireGroup("pro") will 403,
     // which is the correct behavior for prod where SKIP_AUTH is set but
     // no real Cognito group membership exists.
-    if (process.env.SKIP_AUTH === "true") {
-      const devGroups = (process.env.SKIP_AUTH_GROUPS ?? "")
-        .split(",")
-        .map((g) => g.trim())
-        .filter(Boolean);
-      return handler(req, {
-        sub: "dev",
-        "cognito:groups": devGroups,
-      } as AuthPayload);
-    }
+    //
+    // Bug fix (#425 follow-up): both branches must share the same
+    // try/catch so AuthError thrown INSIDE the handler (e.g. from
+    // `requireGroup()`) surfaces as a clean 403/401 JSON response
+    // instead of an unhandled 500 with empty body. The original code
+    // had SKIP_AUTH returning `handler(req, ...)` directly, which meant
+    // thrown AuthErrors escaped the wrapper and Next returned HTTP 500.
     try {
-      const payload = await verifyToken(req);
-      return handler(req, payload);
+      let payload: AuthPayload;
+      if (process.env.SKIP_AUTH === "true") {
+        const devGroups = (process.env.SKIP_AUTH_GROUPS ?? "")
+          .split(",")
+          .map((g) => g.trim())
+          .filter(Boolean);
+        payload = {
+          sub: "dev",
+          "cognito:groups": devGroups,
+        } as AuthPayload;
+      } else {
+        payload = await verifyToken(req);
+      }
+      return await handler(req, payload);
     } catch (err) {
       if (err instanceof AuthError) {
         return NextResponse.json({ error: err.message }, { status: err.status });
