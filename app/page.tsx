@@ -30,6 +30,7 @@ import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 export const revalidate = 3600;
 
 type PreviewCountry = {
+  id: string;
   name: string;
   alpha_2: string;
   tier: RiskTier;
@@ -50,7 +51,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
   try {
     const data = await loadCountryRisks();
     const rows: Array<PreviewCountry & { _salience: number }> = [];
-    for (const country of Object.values(data.countries)) {
+    for (const [id, country] of Object.entries(data.countries)) {
       if (country.overall_risk_tier !== "HIGH") continue;
       const cats = country.tiers?.S?.top_categories ?? [];
       const top = cats[0];
@@ -58,6 +59,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
       const salience = top.salience_score ?? top.z_score ?? 0;
       const precedents = top.recipe_count ?? 0;
       rows.push({
+        id, // #432 Bug 1: needed so the hero card wrapper Link can route to /countries/:id
         name: country.name,
         alpha_2: country.alpha_2,
         tier: country.overall_risk_tier,
@@ -73,8 +75,11 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
     return rows.slice(0, 3).map(({ _salience: _s, ...rest }) => rest);
   } catch {
     // Static fallback if country-risks.json is unreachable at build time.
+    // IDs match the canonical World-Bank-aligned numeric IDs in country-risks
+    // so the hero-card Links still route correctly when this branch fires.
     return [
       {
+        id: "217",
         name: "Syria",
         alpha_2: "SY",
         tier: "HIGH",
@@ -83,6 +88,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         signal: "Preview unavailable — pipeline output missing.",
       },
       {
+        id: "212",
         name: "Sudan",
         alpha_2: "SD",
         tier: "HIGH",
@@ -91,6 +97,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         signal: "Preview unavailable — pipeline output missing.",
       },
       {
+        id: "1",
         name: "Afghanistan",
         alpha_2: "AF",
         tier: "HIGH",
@@ -239,10 +246,15 @@ export default async function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {previewCountries.map((c) => {
             const style = TIER_STYLES[c.tier];
+            // #432 Bug 1: hero cards advertised an accent-border hover
+            // affordance but had no click target. Wrap in a Link so the
+            // visual promise (cursor + hover state + "preview" framing)
+            // matches behaviour: tap → /countries/:id.
             return (
-              <div
+              <Link
                 key={c.alpha_2}
-                className="rounded-lg border p-5 transition-colors hover:border-[var(--qgi-accent)]"
+                href={`/countries/${c.id}`}
+                className="block rounded-lg border p-5 transition-colors hover:border-[var(--qgi-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
                 style={{
                   backgroundColor: "var(--qgi-surface)",
                   borderColor: "var(--qgi-border)",
@@ -289,7 +301,7 @@ export default async function LandingPage() {
                 >
                   {c.signal}
                 </p>
-              </div>
+              </Link>
             );
           })}
         </div>
