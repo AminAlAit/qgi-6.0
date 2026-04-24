@@ -1,6 +1,8 @@
 import { getCountryRisk, loadCountryRisks } from "@/lib/country-risks";
 import { CountryProfileClient } from "@/components/countries/CountryProfileClient";
+import { countrySlug } from "@/lib/slug";
 import type { Metadata } from "next";
+import { notFound, redirect } from "next/navigation";
 
 // T16 #309 HIGH fix: country profiles re-read ~7 baked JSONs on every
 // request. Revalidate hourly (matches the cadence of the pipeline run)
@@ -11,8 +13,40 @@ interface Props {
   params: Promise<{ id: string }>;
 }
 
+/**
+ * #426: Resolve a non-numeric `id` (e.g. "syria", "SY", "cape-verde") to
+ * the numeric country ID by checking alpha_2 codes then name slugs. Returns
+ * null when nothing matches so the caller can issue a 404.
+ *
+ * Case-insensitive; accepts hyphenated slugs like "cape-verde" alongside
+ * underscore-canonical form "cape_verde".
+ */
+async function resolveIdOrSlug(id: string): Promise<string | null> {
+  // Fast path: already numeric → return as-is (validity is checked by
+  // the caller via getCountryRisk).
+  if (/^\d+$/.test(id)) return id;
+
+  const data = await loadCountryRisks().catch(() => null);
+  if (!data?.countries) return null;
+
+  const needle = id.toLowerCase().replace(/-/g, "_");
+
+  // Try alpha_2 first (short + cheap).
+  for (const [cid, c] of Object.entries(data.countries)) {
+    if (c.alpha_2?.toLowerCase() === needle) return cid;
+  }
+
+  // Fall back to name slug.
+  for (const [cid, c] of Object.entries(data.countries)) {
+    if (countrySlug(c.name) === needle) return cid;
+  }
+
+  return null;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { id: rawId } = await params;
+  const id = (await resolveIdOrSlug(rawId)) ?? rawId;
   const country = await getCountryRisk(id);
   const name = country?.name ?? `Country #${id}`;
   const description = `Risk intelligence profile for ${name}: structural indicator analysis, historical precedents, and analogues from 197 countries of World Bank data.`;
@@ -245,24 +279,21 @@ async function loadIndicatorTrajectories(countryId: string): Promise<{
 }
 
 export default async function CountryProfilePage({ params }: Props) {
-  const { id } = await params;
+  const { id: rawId } = await params;
+
+  // #426: if id is non-numeric, try slug/alpha_2 resolution → redirect to
+  // the canonical numeric URL. If nothing matches, return a proper 404
+  // (not a soft-404 that echoes user input into the page title).
+  if (!/^\d+$/.test(rawId)) {
+    const resolved = await resolveIdOrSlug(rawId);
+    if (resolved) redirect(`/countries/${resolved}`);
+    notFound();
+  }
+
+  const id = rawId;
   const country = await getCountryRisk(id);
 
-  if (!country) {
-    return (
-      <div className="p-8">
-        <h1
-          className="text-xs tracking-widest uppercase mb-4"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Country Not Found
-        </h1>
-        <p style={{ color: "var(--qgi-text-muted)" }}>
-          No risk data available for country ID {id}.
-        </p>
-      </div>
-    );
-  }
+  if (!country) notFound();
 
   let data;
   try {
