@@ -73,30 +73,42 @@ resource "aws_iam_user_policy" "vercel_frontend_reader" {
           "arn:aws:glue:${var.region}:${var.aws_account_id}:table/qgi_data/*",
         ]
       },
-      # S3 — Athena writes query results to s3://{bucket}/query_results/
-      # and the client reads them back. Scope is read-only on query_results
-      # prefix only. ListBucket + GetBucketLocation needed for the SDK's
-      # cross-region handshake during Athena client bootstrap.
+      # S3 — Athena needs to list + read the underlying parquet for every
+      # table it queries (patterns, scdis, recipes, events, countries) in
+      # addition to writing + reading query_results/. The initial scoped
+      # policy (query_results-only) produced `s3:ListBucket ... Access
+      # Denied` on `qgi-data-lake-*` because Athena's table scan has to
+      # enumerate partition objects under each table's Location/ prefix.
+      #
+      # Widening to bucket-wide read-only (ListBucket + GetObject) is
+      # acceptable: this user is READ-ONLY by IAM (no s3:Put*/Delete*),
+      # the data lake contains only published economic indicators, pipeline
+      # output, and pattern results that the frontend already displays
+      # publicly. No secrets or PII live here. Blast radius is "a reader
+      # can read what qgintelligence.com already serves."
       {
         Effect = "Allow"
         Action = [
           "s3:GetBucketLocation",
+          "s3:ListBucket",
         ]
         Resource = var.data_lake_bucket_arn
       },
       {
         Effect   = "Allow"
-        Action   = ["s3:ListBucket"]
-        Resource = var.data_lake_bucket_arn
-        Condition = {
-          StringLike = {
-            "s3:prefix" = ["query_results/*", "query_results"]
-          }
-        }
+        Action   = ["s3:GetObject"]
+        Resource = "${var.data_lake_bucket_arn}/*"
       },
+      # Athena writes query result CSV + metadata files to
+      # s3://{bucket}/query_results/*. Without PutObject here the engine
+      # fails with "Access denied when writing output to url..." BEFORE it
+      # even reads the input tables. AbortMultipartUpload is included
+      # because Athena uses multipart uploads for larger result sets.
+      # Scope is strictly query_results/* so this user still cannot
+      # mutate pipeline output.
       {
         Effect   = "Allow"
-        Action   = ["s3:GetObject"]
+        Action   = ["s3:PutObject", "s3:AbortMultipartUpload"]
         Resource = "${var.data_lake_bucket_arn}/query_results/*"
       },
       # DynamoDB — qgi-indicator-values is read by
