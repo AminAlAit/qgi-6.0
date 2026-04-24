@@ -27,41 +27,52 @@ export const GET = withAuth(async (req: NextRequest, payload) => {
   const { searchParams } = req.nextUrl;
   const country_a = searchParams.get("country_a");
   const country_b = searchParams.get("country_b");
-  const year_from = searchParams.get("year_from");
-  const year_to = searchParams.get("year_to");
+  const length = searchParams.get("length");
+  const start_year_a = searchParams.get("start_year_a");
+  const start_year_b = searchParams.get("start_year_b");
 
-  if (!country_a || !country_b) {
+  // #425: the original contract accepted only (country_a, country_b)
+  // which returned ALL SCDI rows across every (length, start_year) combo
+  // for that pair (~780K rows for Syria/Turkiye). That exceeded Vercel's
+  // 10s function timeout every time it ran. Scoping to a single pattern
+  // window is the correct contract — SCDIs only make sense in the
+  // context of a specific window — and brings the query to ~5s / ~20
+  // rows. Callers that want cross-window SCDI aggregation should use
+  // /api/patterns/detail (which already returns scoped SCDIs inline).
+  if (!country_a || !country_b || !length || !start_year_a || !start_year_b) {
     return NextResponse.json(
-      { error: "country_a and country_b are required" },
+      {
+        error:
+          "country_a, country_b, length, start_year_a, and start_year_b are required",
+      },
       { status: 400 }
     );
   }
 
-  if (!Number.isFinite(Number(country_a)) || !Number.isFinite(Number(country_b))) {
-    return NextResponse.json(
-      { error: "Invalid country_a or country_b" },
-      { status: 400 }
-    );
-  }
+  const aId = Number(country_a);
+  const bId = Number(country_b);
+  const lenNum = Number(length);
+  const startA = Number(start_year_a);
+  const startB = Number(start_year_b);
 
-  if (year_from && !Number.isFinite(Number(year_from))) {
-    return NextResponse.json({ error: "Invalid year_from" }, { status: 400 });
+  if (
+    !Number.isFinite(aId) ||
+    !Number.isFinite(bId) ||
+    !Number.isFinite(lenNum) ||
+    !Number.isFinite(startA) ||
+    !Number.isFinite(startB)
+  ) {
+    return NextResponse.json({ error: "Invalid numeric parameter" }, { status: 400 });
   }
-  if (year_to && !Number.isFinite(Number(year_to))) {
-    return NextResponse.json({ error: "Invalid year_to" }, { status: 400 });
-  }
-
-  const conditions = [
-    `country_a_id = ${Number(country_a)}`,
-    `country_b_id = ${Number(country_b)}`,
-  ];
-  if (year_from) conditions.push(`start_year_a >= ${Number(year_from)}`);
-  if (year_to) conditions.push(`start_year_a <= ${Number(year_to)}`);
 
   const rows = await runQuery(
     `SELECT indicator_numeric_id, correlation, start_year_a, start_year_b, length
      FROM qgi_data.scdis
-     WHERE ${conditions.join(" AND ")}
+     WHERE country_a_id = ${aId}
+       AND country_b_id = ${bId}
+       AND length = ${lenNum}
+       AND start_year_a = ${startA}
+       AND start_year_b = ${startB}
      ORDER BY CAST(correlation AS DOUBLE) DESC`
   );
 
