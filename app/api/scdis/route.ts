@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "@/lib/auth";
+import { withAuth, requireGroup } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import indexData from "@/data/indexes.json";
 
@@ -19,7 +19,11 @@ for (const idx of indexData as {
   }
 }
 
-export const GET = withAuth(async (req: NextRequest) => {
+export const GET = withAuth(async (req: NextRequest, payload) => {
+  // #445: raw SCDI list (indicator + correlation per pair) is core IP.
+  // Gated to pro plan. In dev, set SKIP_AUTH_GROUPS=pro to exercise the route.
+  requireGroup(payload, "pro");
+
   const { searchParams } = req.nextUrl;
   const country_a = searchParams.get("country_a");
   const country_b = searchParams.get("country_b");

@@ -12,14 +12,42 @@ describe("withAuth", () => {
     vi.stubEnv("SKIP_AUTH", "true");
   });
 
-  it("calls handler with dev payload when SKIP_AUTH=true", async () => {
+  it("calls handler with NO groups when SKIP_AUTH=true and SKIP_AUTH_GROUPS unset (#445)", async () => {
+    // #445: SKIP_AUTH no longer auto-grants "pro". Dev must opt in via
+    // SKIP_AUTH_GROUPS so prod Vercel envs (SKIP_AUTH=true, groups unset)
+    // can't accidentally serve pro-gated data.
+    vi.stubEnv("SKIP_AUTH_GROUPS", "");
     const handler = vi.fn().mockResolvedValue(new Response("ok"));
     const wrapped = withAuth(handler);
     const req = new NextRequest("http://localhost/api/test");
     await wrapped(req);
     expect(handler).toHaveBeenCalledWith(
       req,
-      expect.objectContaining({ sub: "dev", "cognito:groups": ["pro"] })
+      expect.objectContaining({ sub: "dev", "cognito:groups": [] })
+    );
+  });
+
+  it("honors SKIP_AUTH_GROUPS comma-list when SKIP_AUTH=true (#445)", async () => {
+    vi.stubEnv("SKIP_AUTH_GROUPS", "pro,admin");
+    const handler = vi.fn().mockResolvedValue(new Response("ok"));
+    const wrapped = withAuth(handler);
+    const req = new NextRequest("http://localhost/api/test");
+    await wrapped(req);
+    expect(handler).toHaveBeenCalledWith(
+      req,
+      expect.objectContaining({ "cognito:groups": ["pro", "admin"] })
+    );
+  });
+
+  it("trims whitespace + ignores empty entries in SKIP_AUTH_GROUPS", async () => {
+    vi.stubEnv("SKIP_AUTH_GROUPS", " pro , , admin ,");
+    const handler = vi.fn().mockResolvedValue(new Response("ok"));
+    const wrapped = withAuth(handler);
+    const req = new NextRequest("http://localhost/api/test");
+    await wrapped(req);
+    expect(handler).toHaveBeenCalledWith(
+      req,
+      expect.objectContaining({ "cognito:groups": ["pro", "admin"] })
     );
   });
 

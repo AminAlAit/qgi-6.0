@@ -55,9 +55,22 @@ export function withAuth(
   handler: (req: NextRequest, payload: AuthPayload) => Promise<NextResponse>
 ) {
   return async (req: NextRequest): Promise<NextResponse> => {
-    // Skip auth in local dev when SKIP_AUTH=true
+    // Skip auth in local dev when SKIP_AUTH=true. Dev payload's group list
+    // is driven by SKIP_AUTH_GROUPS (comma-separated) so local devs can
+    // opt into pro-gated routes explicitly without the shim silently
+    // granting pro access in production (#445). If SKIP_AUTH_GROUPS is
+    // unset, dev payload has zero groups — requireGroup("pro") will 403,
+    // which is the correct behavior for prod where SKIP_AUTH is set but
+    // no real Cognito group membership exists.
     if (process.env.SKIP_AUTH === "true") {
-      return handler(req, { sub: "dev", "cognito:groups": ["pro"] } as AuthPayload);
+      const devGroups = (process.env.SKIP_AUTH_GROUPS ?? "")
+        .split(",")
+        .map((g) => g.trim())
+        .filter(Boolean);
+      return handler(req, {
+        sub: "dev",
+        "cognito:groups": devGroups,
+      } as AuthPayload);
     }
     try {
       const payload = await verifyToken(req);
