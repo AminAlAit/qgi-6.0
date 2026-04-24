@@ -1,4 +1,5 @@
 import path from "path";
+import { Suspense } from "react";
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { CountriesClient } from "@/components/countries/CountriesClient";
 import type { Metadata } from "next";
@@ -119,5 +120,14 @@ export default async function CountriesPage() {
 
   const salienceMap = await loadAllSalienceScores();
 
-  return <CountriesClient countries={countries} salienceMap={salienceMap} />;
+  // #432 Bug 2: CountriesClient now reads `useSearchParams()` to URL-back
+  // its filter state. Next.js 15+ requires that hook to live inside a
+  // Suspense boundary or the page bails out to a fully client-side
+  // render. The fallback is the static page chrome so the layout
+  // doesn't pop in.
+  return (
+    <Suspense fallback={null}>
+      <CountriesClient countries={countries} salienceMap={salienceMap} />
+    </Suspense>
+  );
 }

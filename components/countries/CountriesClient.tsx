@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { useRouter, useSearchParams } from "next/navigation";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 
@@ -67,6 +68,29 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "alpha_desc", label: "Alphabetical (Z-A)" },
   { value: "curated_first", label: "Curated first" },
 ];
+
+// #432 Bug 2: URL-backed filter state. Defaults match the prior
+// useState defaults so an empty URL (no params) renders the same as
+// before. Param shapes:
+//   q      = search string
+//   tier   = HIGH | MODERATE | INDICATIVE   (omit for ALL)
+//   sort   = ovr_desc | alpha_asc | ...     (omit for tier_desc)
+//   l1     = A..H                            (omit when no L1 filter)
+//   min    = 30..90                          (omit when 50 default)
+// Manually-typed `/countries?tier=HIGH` and copy-paste-share both work.
+const DEFAULT_TIER: RiskTier | "ALL" = "ALL";
+const DEFAULT_SORT: SortOption = "tier_desc";
+const DEFAULT_MIN_SCORE = 50;
+const VALID_TIERS = new Set<RiskTier>(["HIGH", "MODERATE", "INDICATIVE"]);
+const VALID_SORTS = new Set<SortOption>([
+  "tier_desc",
+  "ovr_desc",
+  "ovr_asc",
+  "alpha_asc",
+  "alpha_desc",
+  "curated_first",
+]);
+const VALID_L1: ReadonlySet<string> = new Set(L1_IDS);
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -153,11 +177,58 @@ export function CountriesClient({
   countries: CountryEntry[];
   salienceMap: Record<string, Record<string, number>>;
 }) {
-  const [search, setSearch] = useState("");
-  const [tierFilter, setTierFilter] = useState<RiskTier | "ALL">("ALL");
-  const [sortBy, setSortBy] = useState<SortOption>("tier_desc");
-  const [l1Filter, setL1Filter] = useState<L1Id | null>(null);
-  const [l1MinScore, setL1MinScore] = useState(50);
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // #432 Bug 2: derive initial state from URL so manually-typed
+  // `/countries?tier=HIGH&l1=B` and pasted-shared links both apply
+  // filters on first render. Validation rejects unknown values so a
+  // bad URL silently falls back to defaults instead of crashing.
+  const initialTier = useMemo<RiskTier | "ALL">(() => {
+    const v = searchParams.get("tier");
+    if (v && VALID_TIERS.has(v as RiskTier)) return v as RiskTier;
+    return DEFAULT_TIER;
+  }, [searchParams]);
+  const initialSort = useMemo<SortOption>(() => {
+    const v = searchParams.get("sort");
+    if (v && VALID_SORTS.has(v as SortOption)) return v as SortOption;
+    return DEFAULT_SORT;
+  }, [searchParams]);
+  const initialL1 = useMemo<L1Id | null>(() => {
+    const v = searchParams.get("l1");
+    if (v && VALID_L1.has(v)) return v as L1Id;
+    return null;
+  }, [searchParams]);
+  const initialMin = useMemo(() => {
+    const v = Number(searchParams.get("min"));
+    return Number.isFinite(v) && v >= 30 && v <= 90 ? v : DEFAULT_MIN_SCORE;
+  }, [searchParams]);
+
+  const [search, setSearch] = useState(searchParams.get("q") ?? "");
+  const [tierFilter, setTierFilter] = useState<RiskTier | "ALL">(initialTier);
+  const [sortBy, setSortBy] = useState<SortOption>(initialSort);
+  const [l1Filter, setL1Filter] = useState<L1Id | null>(initialL1);
+  const [l1MinScore, setL1MinScore] = useState(initialMin);
+
+  // Persist filter state into the URL so reload + copy-link both
+  // restore the same view. `router.replace` keeps history clean (each
+  // keystroke in the search box doesn't add a history entry). The
+  // effect runs on every state change; debouncing the search input
+  // is a future polish item.
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (search) params.set("q", search);
+    if (tierFilter !== DEFAULT_TIER) params.set("tier", tierFilter);
+    if (sortBy !== DEFAULT_SORT) params.set("sort", sortBy);
+    if (l1Filter) params.set("l1", l1Filter);
+    if (l1Filter && l1MinScore !== DEFAULT_MIN_SCORE)
+      params.set("min", String(l1MinScore));
+    const qs = params.toString();
+    const target = qs ? `/countries?${qs}` : "/countries";
+    if (target !== `${window.location.pathname}${window.location.search}`) {
+      router.replace(target, { scroll: false });
+    }
+  }, [router, search, tierFilter, sortBy, l1Filter, l1MinScore]);
 
   // Pre-compute OVR and L1 scores for each country
   const enriched = useMemo(() => {
@@ -352,7 +423,14 @@ export function CountriesClient({
               key={id}
               label={L1_META[id].label}
               active={l1Filter === id}
-              onClick={() => setL1Filter(l1Filter === id ? null : id)}
+              onClick={() => {
+                // #432 Bug 3: reset min-score whenever the chip changes
+                // (toggle off, or switch to a different L1) so a strict
+                // ≥90 picked for one domain doesn't silently filter
+                // every other domain to a near-empty list.
+                setL1Filter(l1Filter === id ? null : id);
+                setL1MinScore(50);
+              }}
               color={L1_META[id].color}
             />
           ))}
@@ -637,12 +715,35 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
         </div>
         {topCat ? (
           <>
-            <div
-              className="text-[10px] truncate mb-0.5"
+            {/* #432 Bug 5: top-category text deep-links to the category
+                drill-down. Nested Link inside the outer card Link is
+                technically invalid HTML (anchors can't nest), so we use
+                a `<span>` with onClick + onKeyDown for a11y, and
+                stopPropagation so the outer card's navigation doesn't
+                steal the click. The drill-down route is the strongest
+                page on the site — surfacing it as a discrete link makes
+                the value prop reachable in one click instead of two. */}
+            <span
+              role="link"
+              tabIndex={0}
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location.href = `/countries/${country.id}/${topCat.category}`;
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  window.location.href = `/countries/${country.id}/${topCat.category}`;
+                }
+              }}
+              className="block text-[10px] truncate mb-0.5 cursor-pointer hover:underline"
               style={{ color: "var(--qgi-text-muted)" }}
+              title={`Drill into ${formatCategory(topCat.category)} for ${country.name}`}
             >
               {formatCategory(topCat.category)}
-            </div>
+            </span>
             <div
               className="text-[9px] font-data"
               style={{ color: "var(--qgi-text-dim)" }}

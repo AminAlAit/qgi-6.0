@@ -25,6 +25,20 @@ async function main() {
     return true;
   });
 
+  // #432 Bug 4: Namibia's alpha_2 is `""` in the legacy table because
+  // somewhere upstream a CSV reader is treating the literal string "NA"
+  // as a missing-value sentinel and rewriting it to empty. Frontend
+  // consequence: the country card falls back to the alpha-2 badge
+  // ("??") instead of the Namibian flag.
+  //
+  // Cheap fix here = patch the dumped JSON. Proper fix lives in
+  // qgi-pipeline ingestion (filed under the upstream repo). Do the
+  // same for any other historically NA-collision-prone codes if they
+  // surface (so far only NA is broken).
+  for (const row of unique) {
+    if (row.name === "Namibia" && !row.alpha_2) row.alpha_2 = "NA";
+  }
+
   const out = join(__dirname, "..", "data", "countries.json");
   writeFileSync(out, JSON.stringify(unique, null, 2));
   console.log(`Wrote ${unique.length} countries to ${out}`);
