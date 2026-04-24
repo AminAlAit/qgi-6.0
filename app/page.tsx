@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
+import { LandingHeaderNav } from "@/components/landing/LandingHeaderNav";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 
 /**
@@ -161,63 +162,13 @@ export default async function LandingPage() {
               Intelligence
             </span>
           </Link>
-          <nav className="flex items-center gap-3 sm:gap-6">
-            {/* T14 #307 (2026-04-19) — landing navbar went 5 links + CTA
-                wide; on 375px it wrapped and crushed the logo. On mobile
-                we now show only the methodology shortcut + primary CTA;
-                desktop keeps the full set.
-                Not a hamburger — landing is a read-through page, so
-                section anchors are meaningful only in the desktop layout
-                where the header is sticky and visible.
-                2026-04-19: removed "How it works" (it was a same-page
-                anchor, unlike Reports/Methodology which are real pages)
-                and added "About" alongside the other real-page links. */}
-            <Link
-              href="/reports"
-              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Reports
-            </Link>
-            <Link
-              href="/methodology"
-              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Methodology
-            </Link>
-            <Link
-              href="/about"
-              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              About
-            </Link>
-            <Link
-              href="/blog"
-              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Blog
-            </Link>
-            <a
-              href="#contact"
-              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Contact
-            </a>
-            <Link
-              href="/dashboard"
-              className="text-[10px] sm:text-xs tracking-wider uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-colors whitespace-nowrap"
-              style={{
-                backgroundColor: "var(--qgi-accent)",
-                color: "var(--qgi-bg)",
-              }}
-            >
-              Open Dashboard
-            </Link>
-          </nav>
+          {/* T14 #307 (2026-04-19) + #427 (2026-04-24): landing nav now
+              uses a client component (LandingHeaderNav) with a real
+              hamburger for mobile <md. Previous "hidden md:inline-flex"
+              hid Reports/Blog/Contact on mobile with no fallback — QA
+              sweep 2026-04-24 caught this as the #1 mobile regression.
+              Desktop markup is unchanged. */}
+          <LandingHeaderNav />
         </div>
       </header>
 
