@@ -284,7 +284,16 @@ export default function MethodologyPage() {
         {/* Section 3: Data Sources */}
         <Section id="data-sources" title="Data Sources">
           <p>
-            QGI currently uses 58 economic indicators from the World Bank Open Data
+            QGI currently uses 58 economic indicators from the{" "}
+            <a
+              href="https://data.worldbank.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              World Bank Open Data
+            </a>{" "}
             platform (CC BY 4.0 license), covering:
           </p>
           <ul
@@ -301,9 +310,47 @@ export default function MethodologyPage() {
             <li>Environment: CO2 emissions, renewable energy, forest area</li>
           </ul>
           <p className="mt-3">
-            Additional providers (V-Dem governance indices, FAOSTAT food security, UCDP
-            conflict data, UNHCR displacement data) are being integrated to expand
-            coverage to 150+ indicators.
+            Additional providers being integrated to expand coverage to 150+ indicators:{" "}
+            <a
+              href="https://www.v-dem.net/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              V-Dem
+            </a>{" "}
+            governance indices,{" "}
+            <a
+              href="https://www.fao.org/faostat/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              FAOSTAT
+            </a>{" "}
+            food security,{" "}
+            <a
+              href="https://ucdp.uu.se/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              UCDP
+            </a>{" "}
+            conflict data, and{" "}
+            <a
+              href="https://www.unhcr.org/refugee-statistics/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              UNHCR
+            </a>{" "}
+            displacement data.
           </p>
         </Section>
 
