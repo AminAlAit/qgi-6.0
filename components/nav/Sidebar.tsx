@@ -183,7 +183,7 @@ const NAV_ITEMS: ReadonlyArray<{
 }> = [
   {
     label: "DASHBOARD",
-    href: "/base",
+    href: "/dashboard",
     icon: <IconDashboard />,
   },
   {
@@ -338,13 +338,14 @@ export function Sidebar() {
           Visual: tightened with `gap-1` + negative margin-right on QG so the
           trailing letter-spacing doesn't push "Intelligence" away (the
           0.25em tracking adds ~3px of phantom space after the last letter).
-          GH#251: clickable; in-app sidebar always navigates to /base. */}
+          GH#251: clickable; in-app sidebar navigates to /dashboard
+          (was /base, which just redirects — saves an extra hop per click). */}
         <Link
-          href="/base"
+          href="/dashboard"
           onClick={closeOnNavigate}
           className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)" }}
-          title="Go to Base (command center)"
+          title="Go to Dashboard (command center)"
         >
           <span
             className="font-data text-xs tracking-[0.25em] font-semibold"
