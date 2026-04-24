@@ -55,8 +55,19 @@ function PresentationInner({ children }: { children: React.ReactNode }) {
 }
 
 export function PresentationWrapper({ children }: { children: React.ReactNode }) {
+  // #435: previous fallback was `<>{children}</>` which caused the ENTIRE
+  // page tree to render twice in the streamed HTML — once as the Suspense
+  // fallback and once as the resolved body. Every client-component widget
+  // appeared in `document.body` twice, which broke click-state testing
+  // (two <TaxonomyL1Widget>s with independent useState meant the QA
+  // agent's click landed on a sibling that wasn't being measured).
+  //
+  // `null` fallback is safe: useSearchParams() resolves on the first
+  // client tick and presentation mode is an off-by-default URL param,
+  // so the momentary empty wrapper isn't user-visible. The sidebar +
+  // page content live inside `children`, not inside the fallback.
   return (
-    <Suspense fallback={<>{children}</>}>
+    <Suspense fallback={null}>
       <PresentationInner>{children}</PresentationInner>
     </Suspense>
   );
