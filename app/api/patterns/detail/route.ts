@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { withAuth } from "@/lib/auth";
+import { withAuth, requireGroup } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getIndicatorValuesBatch, type IndicatorRequest } from "@/lib/indicator-values";
 import indexData from "@/data/indexes.json";
@@ -26,7 +26,11 @@ for (const idx of indexData as {
   }
 }
 
-export const GET = withAuth(async (req: NextRequest) => {
+export const GET = withAuth(async (req: NextRequest, payload) => {
+  // #445: full per-pattern detail (SCDI breakdown + indicator time-series)
+  // is core IP. Gated to pro plan. In dev, set SKIP_AUTH_GROUPS=pro.
+  requireGroup(payload, "pro");
+
   const { searchParams } = req.nextUrl;
   const country_a = searchParams.get("country_a");
   const country_b = searchParams.get("country_b");
