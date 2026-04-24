@@ -202,7 +202,7 @@ export default function LegalPage() {
           className="text-[10px] mt-12 text-center"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Last updated: April 2026
+          Last updated: April 24, 2026
         </p>
       </article>
     </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
   title: "Cross-country normalization meets the data — QGI Blog",
@@ -31,6 +32,12 @@ export default function CrossCountryNormalizationPost() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
+      <ArticleJsonLd
+        headline="Cross-country normalization meets the data"
+        description="We proposed replacing per-country z-score normalization with a cross-country global approach. An Athena-backed simulation surfaced three problems before we shipped."
+        url="https://qgintelligence.com/blog/cross-country-normalization"
+        datePublished="2026-04-22T00:00:00Z"
+      />
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
