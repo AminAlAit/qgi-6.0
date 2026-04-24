@@ -1,11 +1,37 @@
 import { getCountryRisk, loadCountryRisks } from "@/lib/country-risks";
 import { PrecedentDetailClient } from "@/components/countries/PrecedentDetailClient";
+import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import type {
   AnaloguesEnrichedPayload,
   AnalogueEnrichedEntry,
   AnalogueEnrichedSubject,
 } from "@/lib/types";
+
+/**
+ * #426: validate the `[category]` URL param against (a) the country's
+ * actual scored categories and (b) the canonical 71-code L3 taxonomy.
+ *
+ * Without this check, `/countries/217/made_up_thing` silently renders a
+ * fabricated page with a HIGH-looking tier badge and zero-value tiles.
+ */
+function isValidCategory(
+  country: { tiers: Record<string, { top_categories: Array<{ category: string }> }> },
+  category: string
+): boolean {
+  // First check: is it in the country's actual scored categories? (Fast + strict.)
+  for (const tier of Object.values(country.tiers ?? {})) {
+    for (const cat of tier.top_categories ?? []) {
+      if (cat.category === category) return true;
+    }
+  }
+  // Second check: is it a known L3 taxonomy code? (A valid category the
+  // country just doesn't happen to have a top signal for — still a real
+  // URL, render the empty state rather than 404.)
+  if (category in CATEGORY_L1_MAP) return true;
+  return false;
+}
 
 interface Props {
   params: Promise<{ id: string; category: string }>;
@@ -147,15 +173,21 @@ async function loadEnrichedAnalogues(
 
 export default async function PrecedentDetailPage({ params }: Props) {
   const { id, category } = await params;
-  const country = await getCountryRisk(id);
 
-  if (!country) {
-    return (
-      <div className="p-8">
-        <p style={{ color: "var(--qgi-text-muted)" }}>Country not found.</p>
-      </div>
-    );
-  }
+  // #426: non-numeric id should never reach this route because the parent
+  // [id] route redirects or 404s first. Defensive: if someone crafts a
+  // direct URL like /countries/syria/civil_war_and_insurgency, 404.
+  if (!/^\d+$/.test(id)) notFound();
+
+  const country = await getCountryRisk(id);
+  if (!country) notFound();
+
+  const decodedCategory = decodeURIComponent(category);
+
+  // #426: validate category before rendering anything. Blocks the
+  // confabulation vector where /countries/217/<anything> silently
+  // produces a HIGH-tier-badged page with auto-generated copy.
+  if (!isValidCategory(country, decodedCategory)) notFound();
 
   let data;
   try {
@@ -164,7 +196,6 @@ export default async function PrecedentDetailPage({ params }: Props) {
     data = null;
   }
 
-  const decodedCategory = decodeURIComponent(category);
   const analogues = await loadAnalogues(id, decodedCategory);
   const enriched = await loadEnrichedAnalogues(id, decodedCategory);
 
