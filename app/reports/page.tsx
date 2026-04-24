@@ -96,12 +96,37 @@ export default function ReportsPage() {
 
         {/* Report Cards */}
         <div className="space-y-6">
-          {/* 2026-04-19: FSI Demo Report hidden per user directive — ticket
-              #264 reopened as "needs rework" (earlier draft did not meet
-              the editorial bar we want to set for QGI Reports). Keeping
-              the route live but unlinked here so any outbound links don't
-              404 until the rewrite ships. Production-ready reports coming
-              from the 5-agent production pipeline will replace this slot. */}
+          {/* 2026-04-24 (#430): FSI demo report re-linked here. Agent 7
+              QA audit verified the report renders fully (27K chars, 9 h2
+              + 19 h3 sections, proper @media print CSS, correct canonical).
+              The #264 "needs rework" concern was editorial polish, not
+              functional — shipping the link back so it's reachable from
+              its own index rather than undiscoverable by direct URL only.
+              Rewrite can ship as /reports/fsi-qgi-report-v2 later without
+              breaking this link. */}
+          <Link
+            href="/reports/fsi-qgi-report"
+            className="block rounded-lg border p-6 transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Demo Report · April 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              FSI × QGI — Fragile-State Pattern Overlay
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              How QGI&apos;s structural-analogue patterns align with Fund for Peace&apos;s
+              Fragile States Index, where they diverge, and what the divergence flags for
+              analysts.
+            </p>
+          </Link>
 
           {/* Upcoming report placeholder */}
           <div

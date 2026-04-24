@@ -45,8 +45,14 @@ const STATIC_ROUTES: Array<{
     priority: 0.5,
   },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
-  // FSI report excluded from sitemap 2026-04-19 — #264 reopened for rework.
-  // Route stays live for inbound links, but not advertised to search engines.
+  // #430 (2026-04-24): FSI demo report re-added to sitemap. Agent 7 QA
+  // audit confirmed it renders fully with proper metadata + print CSS.
+  // Also re-linked from /reports index so it's reachable via normal nav.
+  {
+    path: "/reports/fsi-qgi-report",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
   { path: "/about", changeFrequency: "monthly", priority: 0.4 },
   { path: "/legal", changeFrequency: "monthly", priority: 0.3 },
 ];
