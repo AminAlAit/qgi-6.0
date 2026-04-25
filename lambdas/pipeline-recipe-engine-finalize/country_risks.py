@@ -371,11 +371,14 @@ def compute_country_risks(run_query_fn, rows_fn, athena_db='qgi_data'):
             if p is not None and r.get('country_a_id'):
                 pe[r['country_a_id']] = p
 
-        # Recipe aggregates
+        # Recipe aggregates.
+        # #458: read from recipes_deduped (bullet-6 longest-pattern collapse)
+        # so the count(*) is per (pair, event_year) instead of inflated 3-5x
+        # by nested-length pattern instances of the same event.
         recipes = rows_fn(run_query_fn(
             f"SELECT country_a_id, event_category, count(*) as c, "
             f"avg(avg_correlation) as a, avg(indicator_count) as i "
-            f"FROM {athena_db}.recipes WHERE event_category IS NOT NULL "
+            f"FROM {athena_db}.recipes_deduped WHERE event_category IS NOT NULL "
             f"AND length BETWEEN {lo} AND {hi} "
             f"GROUP BY country_a_id, event_category"
         ))

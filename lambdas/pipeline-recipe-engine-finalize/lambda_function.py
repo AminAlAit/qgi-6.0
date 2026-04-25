@@ -51,6 +51,7 @@ ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
 DASHBOARD_PREFIX = 'dashboard'
 RANKING_LIMIT = 1000
 
+RECIPES_DEDUPED_VIEW_NAME = "recipes_deduped"
 RECIPES_NORMALIZED_VIEW_NAME = "recipes_normalized"
 CONVERGENCE_VIEW_NAME = "recipe_convergence"
 
@@ -173,7 +174,12 @@ def lambda_handler(event, context):
     ]
     logger.info(f"Top categories: {top_categories}")
 
-    # Step 2: recipes_normalized view (#158 follow-up)
+    # Step 2a: recipes_deduped view (#458) — bullet-6 longest-pattern
+    # collapse. Must precede recipes_normalized since the latter now reads
+    # from this view to compute global max over the deduped row set.
+    create_recipes_deduped_view()
+
+    # Step 2b: recipes_normalized view (#158 follow-up)
     create_recipes_normalized_view()
 
     # Step 3: convergence view (#133) — reads from recipes_normalized
@@ -209,6 +215,54 @@ def lambda_handler(event, context):
 
 
 # ---------------------------------------------------------------------------
+# recipes_deduped view — bullet-6 nested-length collapse (#458)
+# ---------------------------------------------------------------------------
+
+def create_recipes_deduped_view():
+    """Collapse same-event nested-length Pattern instances to the longest.
+
+    Today's `qgi_data.recipes` keys recipe_id by
+    (country_a, country_b, start_year_a, length, event_category). When a
+    pair-event has multiple patterns at different lengths that all end at
+    the same event (Saudi-Egypt-2011-len5-civil_war + 2010-len6 + 2009-len7
+    all terminating at the same Saudi 2015 event), each becomes a separate
+    recipe row. The founder's bullet 6 (Majles audit 2026-04-25) says take
+    the longest. The recipe-engine doesn't, so today's instance_count and
+    recipe_count are inflated 3-5x per pair-event.
+
+    This view collapses to the LONGEST per
+    (country_a, country_b, event_year_a, event_year_b, event_category).
+    Tiebreak by pps so the highest-quality row wins when lengths match.
+
+    Downstream consumers (recipes_normalized + country_risks salience SQL +
+    standalone bakers) read from this view instead of recipes directly.
+
+    Superseded by V2.0 #462 (Recipe Aggregation Level-4 table) — when that
+    lands, retire this view. Until then, this is the cheapest fix for the
+    inflation bug that doesn't require a recipe-engine rewrite.
+
+    Requires Athena engine v3 for `SELECT * EXCEPT`. Confirmed live in
+    QGI-Lambda-Workgroup.
+    """
+    sql = f"""
+    CREATE OR REPLACE VIEW {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} AS
+    WITH ranked AS (
+        SELECT *,
+               ROW_NUMBER() OVER (
+                   PARTITION BY country_a_id, country_b_id,
+                                event_year_a, event_year_b, event_category
+                   ORDER BY length DESC, pattern_power_score DESC
+               ) AS rn
+        FROM {ATHENA_DB}.recipes
+    )
+    SELECT * EXCEPT(rn) FROM ranked WHERE rn = 1
+    """
+    logger.info("Creating recipes_deduped view (bullet-6 longest-pattern collapse)")
+    run_query(sql)
+    logger.info(f"View {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} created")
+
+
+# ---------------------------------------------------------------------------
 # recipes_normalized view — global pps normalization (#158 follow-up)
 # ---------------------------------------------------------------------------
 
@@ -221,8 +275,10 @@ def create_recipes_normalized_view():
     partition wrong. This view re-reads the finished recipes table, takes
     the TRUE global max via CROSS JOIN, and rewrites `pps` on the fly.
 
-    Downstream consumers (convergence view + top50 dashboard query) read
-    from this view instead of recipes directly.
+    #458: now reads from `recipes_deduped` (bullet-6 collapse) instead of
+    raw `recipes`, so global max is taken over the deduped row set rather
+    than the inflated set. Downstream consumers (convergence view + top50
+    dashboard query) inherit the dedup automatically through this view.
 
     Requires Athena engine v3 for `SELECT * EXCEPT`. Confirmed live in
     QGI-Lambda-Workgroup.
@@ -249,15 +305,15 @@ def create_recipes_normalized_view():
             ) * 100.0
             AS double
         ) AS pps
-    FROM {ATHENA_DB}.recipes r
+    FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} r
     CROSS JOIN (
         SELECT
             cast(max(instance_count) as double)  AS max_inst,
             cast(max(indicator_count) as double) AS max_ind
-        FROM {ATHENA_DB}.recipes
+        FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME}
     ) g
     """
-    logger.info("Creating recipes_normalized view (global pps)")
+    logger.info("Creating recipes_normalized view (global pps over deduped set)")
     run_query(sql)
     logger.info(f"View {ATHENA_DB}.{RECIPES_NORMALIZED_VIEW_NAME} created")
 
