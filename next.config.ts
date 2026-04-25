@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withSentryConfig } from "@sentry/nextjs";
 
 /**
  * Next.js 16 config.
@@ -29,4 +30,32 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
 };
 
-export default nextConfig;
+/**
+ * Sentry build-time integration (#451).
+ *
+ * Wraps the config so the Sentry webpack plugin runs on Vercel deploys:
+ *  - Uploads source maps to Sentry (gated on SENTRY_AUTH_TOKEN; absent
+ *    locally so dev builds aren't slowed by an auth call that 401s).
+ *  - Tags releases with the git SHA Vercel injects.
+ *  - Tunnels Sentry events through `/monitoring` to dodge ad blockers
+ *    that would otherwise drop client-side error reports — common with
+ *    finance/political analyst audiences who run aggressive blockers.
+ *
+ * `silent: true` so the build log doesn't get a wall of Sentry chatter.
+ */
+const sentryWebpackPluginOptions = {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: true,
+  // Tunnel Sentry events through /monitoring on our own domain. Bypasses
+  // ad blockers + privacy extensions that block sentry.io directly.
+  tunnelRoute: "/monitoring",
+  // Don't fail the build if source-map upload fails (e.g. token rotation
+  // mid-deploy). Errors still flow into Sentry; we just lose source-map
+  // resolution for that release.
+  errorHandler: (err: Error) => {
+    console.warn("[sentry] source-map upload failed (non-fatal):", err.message);
+  },
+};
+
+export default withSentryConfig(nextConfig, sentryWebpackPluginOptions);
