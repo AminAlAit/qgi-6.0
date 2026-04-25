@@ -371,11 +371,17 @@ def enrich(
                     eyb = a.get("event_year_b")
                     sb = chosen.get("sb")
                     L_chosen = chosen.get("l")
+                    # #457 item 8: terminus semantics, not containment.
+                    # Containment (sb <= eyb <= sb + L) silently passed
+                    # Tier-3 fallback rows where the event sits anywhere
+                    # inside a long bar — the "pattern → event" narrative
+                    # only holds when the event lands AT the pattern's end
+                    # (within the END_ALIGNMENT_TOLERANCE used downstream).
                     event_in_window = (
                         eyb is not None
                         and sb is not None
                         and L_chosen is not None
-                        and sb <= eyb <= sb + L_chosen
+                        and abs(eyb - (sb + L_chosen)) <= 2
                     )
                     if event_in_window:
                         stats["events_in_window"] += 1
