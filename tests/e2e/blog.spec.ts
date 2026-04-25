@@ -31,17 +31,28 @@ test.describe("/blog", () => {
     await firstPostLink.click();
     await expect(page).toHaveURL(/\/blog\/[a-z0-9-]+/);
     // Article schema (added in #433) is embedded as <script type="application/ld+json">.
-    const ldJson = await page
-      .locator('script[type="application/ld+json"]')
-      .first()
-      .textContent();
-    expect(ldJson).toBeTruthy();
-    const payload = JSON.parse(ldJson || "{}");
-    // The schema may be Article or an array containing Article (the layout
-    // also injects Organization at the body root). Accept both shapes.
-    const types = Array.isArray(payload)
-      ? payload.map((p) => p["@type"])
-      : [payload["@type"]];
+    // Inspect ALL JSON-LD scripts on the page — the root layout injects an
+    // Organization schema before the Article one, so .first() would find
+    // Organization, not what we're testing for. Aggregate every script's
+    // @type and assert "Article" appears in the union.
+    const scripts = page.locator('script[type="application/ld+json"]');
+    const count = await scripts.count();
+    expect(count).toBeGreaterThan(0);
+    const types: string[] = [];
+    for (let i = 0; i < count; i++) {
+      const content = await scripts.nth(i).textContent();
+      if (!content) continue;
+      try {
+        const payload = JSON.parse(content);
+        if (Array.isArray(payload)) {
+          for (const p of payload) types.push(p["@type"]);
+        } else {
+          types.push(payload["@type"]);
+        }
+      } catch {
+        // Skip malformed JSON-LD blocks (shouldn't happen but defensive)
+      }
+    }
     expect(types).toContain("Article");
   });
 });

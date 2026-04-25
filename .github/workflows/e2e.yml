@@ -42,11 +42,19 @@ jobs:
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: "1"
+          # Mirror Vercel staging: auth disabled + dev grants pro tier so
+          # gated routes return data instead of 403. Without these, the
+          # auth wrapper bounces all data routes to /login and Playwright
+          # waits forever on a redirect.
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
 
       - name: Run Playwright tests
         run: npx playwright test
         env:
           CI: "true"
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
 
       - name: Upload Playwright report on failure
         if: failure()
