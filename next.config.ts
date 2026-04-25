@@ -13,6 +13,13 @@ import type { NextConfig } from "next";
  *    fingerprint from responses (small security hygiene win).
  */
 const nextConfig: NextConfig = {
+  // #440: typed routes promote `<Link href="/...">` to a compile-time
+  // contract. A typo in any internal route (or a stale link to a
+  // deleted page) becomes a build failure instead of a silent runtime
+  // 404 — same regression class #426 was triaging post-hoc; with this
+  // on, those links would never have compiled. Stable in Next 16, no
+  // longer behind `experimental`.
+  typedRoutes: true,
   experimental: {
     optimizePackageImports: ["country-flag-icons", "echarts", "echarts-for-react"],
   },

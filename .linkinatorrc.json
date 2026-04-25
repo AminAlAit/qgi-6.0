@@ -14,7 +14,9 @@
     "twitter\\.com",
     "x\\.com",
     "github\\.com/AminAlAit/.*/issues/[0-9]+#",
-    "^http://localhost:[0-9]+/api/auth/"
+    "^http://localhost:[0-9]+/api/auth/",
+    "^https://qgintelligence\\.com",
+    "^https://qgi-frontend\\.vercel\\.app"
   ],
   "timeout": 10000,
   "retry": true,

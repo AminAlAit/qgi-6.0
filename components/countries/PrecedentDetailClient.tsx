@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
@@ -376,7 +377,11 @@ export function PrecedentDetailClient({
                 // the list view instead gives users something real to
                 // interact with on every click (even if the individual
                 // detail is still being pre-computed).
-                const patternHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`;
+                // #440: same Route cast pattern as patterns/ranking — typed
+                // routes can't pre-validate runtime query strings, but the
+                // path part (`/patterns`) still gets a compile-time check.
+                const patternHref =
+                  `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}` as Route;
 
                 return (
                   <div

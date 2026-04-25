@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import type { Route } from "next";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks";
 import { CountryFlag } from "@/components/design/CountryFlag";
 
@@ -224,7 +225,10 @@ export function CountriesClient({
     if (l1Filter && l1MinScore !== DEFAULT_MIN_SCORE)
       params.set("min", String(l1MinScore));
     const qs = params.toString();
-    const target = qs ? `/countries?${qs}` : "/countries";
+    // #440: cast to Route — typed routes can't statically verify
+    // arbitrary query-string composition. The path part (/countries)
+    // is still pre-validated as a real route.
+    const target: Route = (qs ? `/countries?${qs}` : "/countries") as Route;
     if (target !== `${window.location.pathname}${window.location.search}`) {
       router.replace(target, { scroll: false });
     }
