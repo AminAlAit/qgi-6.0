@@ -354,10 +354,14 @@ def main():
                 pass
 
         # Recipe aggregates
+        # #458: read from recipes_deduped (bullet-6 longest-pattern collapse)
+        # so count(*) reflects unique (pair, event_year) instead of nested-
+        # length pattern instances of the same event. Mirrors the in-pipeline
+        # change in country_risks.py:374-381.
         recipes = run_query(athena,
             f"SELECT country_a_id, event_category, count(*) as c, "
             f"avg(avg_correlation) as a, avg(indicator_count) as i "
-            f"FROM qgi_data.recipes WHERE event_category IS NOT NULL "
+            f"FROM qgi_data.recipes_deduped WHERE event_category IS NOT NULL "
             f"AND length BETWEEN {lo} AND {hi} "
             f"GROUP BY country_a_id, event_category", args.bucket)
 
