@@ -15,8 +15,30 @@ name: E2E (Playwright)
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
+
+# #454: cancel-in-progress so a rapid `git push` doesn't stack 5-min
+# Playwright runs.
+concurrency:
+  group: e2e-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   e2e:

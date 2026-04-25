@@ -19,9 +19,12 @@ name: Synthetic monitoring
 
 on:
   schedule:
-    # Every 15 minutes. GitHub Actions cron is on UTC and runs at
-    # most-roughly-on-time — small drift is fine for a 15-minute beat.
-    - cron: "*/15 * * * *"
+    # Hourly. Original spec was every 15 minutes, but #454 caps Actions
+    # spend at $0/mo on the private Free repo. Hourly = ~1,080 mins/mo;
+    # 15-minute would have been ~4,320 mins/mo and blown the 2,000-min
+    # free tier 2× over. Once #453 unfreezes (Pro upgrade) we can bump
+    # back to 15-minute or 30-minute cadence.
+    - cron: "0 * * * *"
   workflow_dispatch: {}
 
 # Don't pile up runs if a previous one is still going. Only one synthetic

@@ -1,10 +1,35 @@
 name: CI
 
+# #454 cost cap: skip CI for changes that can't break the build (docs,
+# .gitignore, agent prompts). Saves ~30% of monthly Actions minutes on a
+# private Free repo (2,000 min/mo ceiling).
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
+
+# #454: cancel an in-progress CI run on the same branch when a new push
+# arrives. Stops a rapid-fire `git push` from stacking 4 CI runs.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ci:
