@@ -21,6 +21,7 @@ import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
 import { CONVERGENCE_COLORS, CONVERGENCE_LABELS } from "@/lib/design";
+import { TOTAL_COUNTRIES, UN_STATES } from "@/lib/site-stats";
 
 const SectorRose = dynamic(
   () => import("@/components/charts/SectorRose").then((m) => m.SectorRose),
@@ -652,7 +653,15 @@ export function BaseClient({
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
           <span style={{ color: "var(--qgi-text-muted)" }}>Scoring {stats.version}</span>
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
-          <span style={{ color: "var(--qgi-text-muted)" }}>{stats.total} countries</span>
+          {/* #431: disambiguate the three country numbers a curious user
+              hits across the site. Tooltip explains the difference so the
+              numeric drift QA found can't be re-introduced as confusion. */}
+          <span
+            style={{ color: "var(--qgi-text-muted)" }}
+            title={`${stats.total} scored this cycle (countries that cleared the V1.9.1 scoring floor) · ${TOTAL_COUNTRIES} in pipeline scope (qgi_data.countries) · ${UN_STATES} UN-recognized states`}
+          >
+            {stats.total} scored / {TOTAL_COUNTRIES} in scope
+          </span>
         </div>
         <div className="flex items-center gap-2 text-[10px] font-data shrink-0">
           <span style={{ color: "var(--qgi-text-dim)" }}>

@@ -1,6 +1,7 @@
 import { getCountryRisk, loadCountryRisks } from "@/lib/country-risks";
 import { CountryProfileClient } from "@/components/countries/CountryProfileClient";
 import { countrySlug } from "@/lib/slug";
+import { TOTAL_COUNTRIES } from "@/lib/site-stats";
 import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = (await resolveIdOrSlug(rawId)) ?? rawId;
   const country = await getCountryRisk(id);
   const name = country?.name ?? `Country #${id}`;
-  const description = `Risk intelligence profile for ${name}: structural indicator analysis, historical precedents, and analogues from 197 countries of World Bank data.`;
+  const description = `Risk intelligence profile for ${name}: structural indicator analysis, historical precedents, and analogues from ${TOTAL_COUNTRIES} countries of World Bank data.`;
   const canonical = `https://qgintelligence.com/countries/${id}`;
   // T19 #312: per-page openGraph + twitter + canonical so country profiles
   // are share-worthy and indexable as distinct pages (prior metadata only

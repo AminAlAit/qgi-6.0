@@ -27,6 +27,7 @@ import { TRANSFORMATION_LABELS, type Transformation } from "@/lib/transforms";
 import { sectorColor } from "@/lib/design";
 import type { PatternRow } from "@/lib/types";
 import countriesList from "@/data/countries.json";
+import { TOTAL_COUNTRIES, TOTAL_PATTERNS } from "@/lib/site-stats";
 
 const ReactECharts = dynamic(() => import("echarts-for-react"), { ssr: false });
 
@@ -842,7 +843,7 @@ export default function PatternsClient({
   }
 
   // ---- Context line ----
-  let contextLine = `197 countries  \u00b7  2.01B patterns  \u00b7  ${topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}`;
+  let contextLine = `${TOTAL_COUNTRIES} countries  \u00b7  ${TOTAL_PATTERNS} patterns  \u00b7  ${topPairs.length > 0 ? `${topPairs.length} ranked pairs in cache` : "Loading..."}`;
   if (browseState === "S1" && countryA) {
     contextLine = `${countryAName || countryA} has patterns with ${partners.length} countries`;
   } else if (browseState === "S2" && countryA && countryB) {
@@ -1010,9 +1011,9 @@ export default function PatternsClient({
                 className="flex gap-4 mt-3 text-[10px] font-data tracking-wider"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                <span>197 countries</span>
+                <span>{TOTAL_COUNTRIES} countries</span>
                 <span>&middot;</span>
-                <span>2.01B patterns</span>
+                <span>{TOTAL_PATTERNS} patterns</span>
                 <span>&middot;</span>
                 <span>
                   {topPairs.length > 0

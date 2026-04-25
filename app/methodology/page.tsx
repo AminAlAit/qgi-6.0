@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LayeredTaxonomyTree from "@/components/methodology/LayeredTaxonomyTree";
+import {
+  TOTAL_COUNTRIES,
+  TOTAL_INDICATORS,
+  TOTAL_INDICATOR_CATALOG,
+  DATA_VINTAGE_YEAR,
+} from "@/lib/site-stats";
 
 // T8 #301 + T19 #312: full openGraph + twitter + canonical. This is a
 // share-worthy page; previously it rendered a blank social preview card.
@@ -87,9 +93,10 @@ export default function MethodologyPage() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             QGI surfaces economically-grounded risk candidates by finding historical
-            precedents in World Bank data spanning 197 countries and 69 indicators (as of
-            April 2026; we are actively expanding the indicator set and curated country
-            coverage — next update within 90 days). Here is how it works.
+            precedents in World Bank data spanning {TOTAL_COUNTRIES} countries and{" "}
+            {TOTAL_INDICATORS} indicators (data through {DATA_VINTAGE_YEAR}; the indicator
+            catalog has {TOTAL_INDICATOR_CATALOG} entries with the rest queued for
+            ingestion). Here is how it works.
           </p>
         </div>
 
@@ -284,7 +291,7 @@ export default function MethodologyPage() {
         {/* Section 3: Data Sources */}
         <Section id="data-sources" title="Data Sources">
           <p>
-            QGI currently uses 58 economic indicators from the{" "}
+            QGI currently uses {TOTAL_INDICATORS} economic indicators from the{" "}
             <a
               href="https://data.worldbank.org/"
               target="_blank"

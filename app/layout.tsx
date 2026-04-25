@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CANONICAL_SCOPE_SENTENCE, TOTAL_COUNTRIES } from "@/lib/site-stats";
 
 // T16 #309 LOW fix: declare `display: "swap"` so text is visible during
 // webfont download instead of the default "block" FOIT period.
@@ -30,13 +31,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://qgintelligence.com"),
   title: "QGI — Quantitative Geopolitical Intelligence",
-  description:
-    "Historical precedents in economic data across 197 countries and 58 indicators. Risk candidates that analysts should examine.",
+  description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
   alternates: { canonical: "https://qgintelligence.com" },
   openGraph: {
     title: "QGI — Quantitative Geopolitical Intelligence",
-    description:
-      "Historical precedents in economic data across 197 countries and 58 indicators. Risk candidates that analysts should examine.",
+    description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
     url: "https://qgintelligence.com",
     siteName: "QGI Intelligence",
     type: "website",
@@ -52,7 +51,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "QGI — Quantitative Geopolitical Intelligence",
-    description: "Historical precedents in economic data across 197 countries.",
+    description: `Historical precedents in economic data across ${TOTAL_COUNTRIES} countries.`,
     images: ["/og-default.png"],
   },
   robots: {
@@ -80,8 +79,7 @@ const ORGANIZATION_JSON_LD = {
   name: "QGI Intelligence",
   alternateName: "Quantitative Geopolitical Intelligence",
   url: "https://qgintelligence.com",
-  description:
-    "QGI finds historical economic precedents at scale across 197 countries. Risk candidates that analysts should examine, not probability forecasts.",
+  description: `QGI finds historical economic precedents at scale across ${TOTAL_COUNTRIES} countries. Risk candidates that analysts should examine, not probability forecasts.`,
   founder: { "@type": "Person", name: "Amin Al-Ait" },
   sameAs: ["https://www.linkedin.com/in/aminalait/"],
 };
