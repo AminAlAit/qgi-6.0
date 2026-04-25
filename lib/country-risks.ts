@@ -1,51 +1,29 @@
 /**
- * Types and loader for country-risks.json — the pre-computed V1.8.1
+ * Types and loader for country-risks.json — the pre-computed V1.9.1
  * scoring data that powers the Country Intelligence Browser.
  *
  * Schema designed to accommodate future V1.9 XGBoost outputs
  * (calibrated probabilities, SHAP explanations).
+ *
+ * #440: Types are re-exported from `country-risks.schema.ts` so the
+ * Zod schema is the single source of truth. Adding a field anywhere
+ * else is a build error.
  */
 
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
+import {
+  CountryRisksDataSchema,
+  type CountryRisk,
+  type CountryRisksData,
+  type CategoryScore,
+  type RiskTier,
+  type TierData,
+} from "./country-risks.schema";
 
-// ---------------------------------------------------------------------------
-// Types
-// ---------------------------------------------------------------------------
-
-export type RiskTier = "HIGH" | "MODERATE" | "INDICATIVE";
-
-export interface CategoryScore {
-  category: string;
-  z_score: number;
-  salience_score: number;
-  severity_tier: number;
-  rrf_rank: number;
-  rrf_score: number;
-  recipe_count: number;
-  last_event_year: number | null;
-}
-
-export interface TierData {
-  top_categories: CategoryScore[];
-}
-
-export interface CountryRisk {
-  name: string;
-  alpha_2: string;
-  curated: boolean;
-  overall_risk_tier: RiskTier;
-  tiers: Record<string, TierData>;
-}
-
-export interface CountryRisksData {
-  generated_at: string;
-  version: string;
-  scoring: string;
-  tiers: Record<string, { min_length: number; max_length: number }>;
-  curated_country_count: number;
-  total_countries: number;
-  countries: Record<string, CountryRisk>;
-}
+// Re-export the canonical types so existing imports
+// (`import type { ... } from "@/lib/country-risks"`) keep working
+// without every caller switching to `.schema`.
+export type { CountryRisk, CountryRisksData, CategoryScore, RiskTier, TierData };
 
 // ---------------------------------------------------------------------------
 // Loader (S3 with in-memory cache)
@@ -63,20 +41,25 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
   const now = Date.now();
   if (_cache && now - _cacheTs < CACHE_TTL) return _cache;
 
-  // T13 #306 MEDIUM fix: validate shape before cast. `as CountryRisksData`
-  // was previously a bare assertion — a corrupt file could silently paint
-  // the entire dashboard with `undefined` countries.
+  // T13 #306 + #440: validate the whole shape via Zod, not just a
+  // top-level guard. A V1.9.1 → V1.10 schema rename now fails LOUD at
+  // load time (with a precise field-level error message) instead of
+  // softly painting the dashboard with `undefined` once the user clicks
+  // through to a country profile.
   const parseAndValidate = (raw: string): CountryRisksData => {
     const parsed: unknown = JSON.parse(raw);
-    if (
-      !parsed ||
-      typeof parsed !== "object" ||
-      !("countries" in parsed) ||
-      typeof (parsed as { countries: unknown }).countries !== "object"
-    ) {
-      throw new Error("country-risks.json missing `countries` object");
+    const result = CountryRisksDataSchema.safeParse(parsed);
+    if (!result.success) {
+      // Zod's `.message` is human-readable JSON path + reason; stick the
+      // first 5 issues into the error so logs aren't truncated to noise
+      // for a deeply broken payload.
+      const issues = result.error.issues
+        .slice(0, 5)
+        .map((i) => `${i.path.join(".") || "<root>"}: ${i.message}`)
+        .join("; ");
+      throw new Error(`country-risks.json schema mismatch: ${issues}`);
     }
-    return parsed as CountryRisksData;
+    return result.data;
   };
 
   // Try local file first (fast, zero AWS cost, always present in repo)

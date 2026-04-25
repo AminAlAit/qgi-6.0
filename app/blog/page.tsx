@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Route } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
@@ -121,7 +121,7 @@ export default function BlogIndexPage() {
               className="border-b pb-8"
               style={{ borderColor: "var(--qgi-border)" }}
             >
-              <Link href={`/blog/${p.slug}`} className="group block">
+              <Link href={`/blog/${p.slug}` as Route} className="group block">
                 <div
                   className="text-[10px] tracking-wider uppercase mb-2"
                   style={{ color: "var(--qgi-text-dim)" }}

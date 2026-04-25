@@ -12,6 +12,7 @@
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { PatternRow } from "@/lib/types";
@@ -85,7 +86,7 @@ interface RankingResponse {
  * cmd-click and SEO crawlers can all follow — a `<button onClick>` breaks
  * all of those.
  */
-function patternDetailHref(p: PatternRow): string | null {
+function patternDetailHref(p: PatternRow): Route | null {
   if (p.country_a_id == null || p.country_b_id == null) return null;
   const qs = new URLSearchParams({
     country_a: String(p.country_a_id),
@@ -94,7 +95,13 @@ function patternDetailHref(p: PatternRow): string | null {
     start_a: String(p.start_year_a),
     start_b: String(p.start_year_b),
   });
-  return `/patterns?${qs}`;
+  // #440: typed routes promotes `<Link href>` from string to Route. The
+  // /patterns route accepts arbitrary query strings (5 params spelled out
+  // above) — Next's typed-routes generator can't pre-type that surface
+  // because query state is a runtime concern, so we cast the formatted
+  // URL to `Route` once here. The compile-time path check (`/patterns`
+  // is real) still applies.
+  return `/patterns?${qs}` as Route;
 }
 
 export default function RankingPage() {

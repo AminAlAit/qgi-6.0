@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import type { Route } from "next";
 
 // Navigation items.
 // History:
@@ -176,9 +177,13 @@ const IconBarChart = () => (
 // 2026-04-19: "ABOUT" removed from the dashboard sidebar per user — About
 // is a public marketing surface and lives in the landing-page header nav,
 // not mixed with dashboard tools. The IconUser SVG was dropped with it.
+//
+// #440: `href: Route` so typed-routes pre-validates every nav target at
+// build time. Renaming `/precedents` → `/precedence` (or any future
+// re-org) becomes a build error here instead of a 404 in production.
 const NAV_ITEMS: ReadonlyArray<{
   label: string;
-  href: string;
+  href: Route;
   icon: React.ReactNode;
 }> = [
   {
