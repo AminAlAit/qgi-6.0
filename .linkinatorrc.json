@@ -16,7 +16,10 @@
     "github\\.com/AminAlAit/.*/issues/[0-9]+#",
     "^http://localhost:[0-9]+/api/auth/",
     "^https://qgintelligence\\.com",
-    "^https://qgi-frontend\\.vercel\\.app"
+    "^https://qgi-frontend\\.vercel\\.app",
+    "unhcr\\.org",
+    "fundforpeace\\.org",
+    "v-dem\\.net"
   ],
   "timeout": 10000,
   "retry": true,
