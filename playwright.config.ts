@@ -23,6 +23,14 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
   testDir: "./tests/e2e",
+  // #443: the synthetic/ subdir runs on a 15-min cron against
+  // qgintelligence.com via .github/workflows/synthetic.yml. It must
+  // NOT run as part of the regular pre-deploy e2e suite (those run
+  // against localhost / preview URLs and the synthetic asserts would
+  // fail or hit the wrong target). The synthetic workflow invokes
+  // Playwright with an explicit `tests/e2e/synthetic` path that
+  // overrides this ignore.
+  testIgnore: ["**/synthetic/**"],
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
