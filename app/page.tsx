@@ -3,6 +3,12 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
 import { LandingHeaderNav } from "@/components/landing/LandingHeaderNav";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
+import {
+  TOTAL_COUNTRIES,
+  TOTAL_INDICATORS,
+  TOTAL_PATTERNS,
+  DATA_VINTAGE_YEAR,
+} from "@/lib/site-stats";
 
 /**
  * QGI Landing Page — public, static.
@@ -119,7 +125,7 @@ const STEPS = [
   {
     num: "01",
     title: "Detect Indicator Relationships",
-    desc: "We find statistically significant correlations between economic indicators across 197 countries spanning decades of World Bank data.",
+    desc: `We find statistically significant correlations between economic indicators across ${TOTAL_COUNTRIES} countries spanning decades of World Bank data.`,
   },
   {
     num: "02",
@@ -207,8 +213,9 @@ export default async function LandingPage() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             QGI surfaces economically-grounded risk candidates that analysts should
-            examine. We find historical precedents in World Bank data spanning 197
-            countries and 69 indicators (as of April 2026).
+            examine. We find historical precedents in World Bank data spanning{" "}
+            {TOTAL_COUNTRIES} countries and {TOTAL_INDICATORS} indicators (data through{" "}
+            {DATA_VINTAGE_YEAR}).
           </p>
           <div className="mt-8 flex items-center gap-4">
             <Link
@@ -351,9 +358,9 @@ export default async function LandingPage() {
         }}
       >
         <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <Metric value="214" label="Countries Analyzed" />
-          <Metric value="58" label="Economic Indicators" />
-          <Metric value="2.01B" label="Patterns Computed" />
+          <Metric value={String(TOTAL_COUNTRIES)} label="Countries Analyzed" />
+          <Metric value={String(TOTAL_INDICATORS)} label="Economic Indicators" />
+          <Metric value={TOTAL_PATTERNS} label="Patterns Computed" />
           <Metric value="2.2x" label="Lift@50 vs Baseline" />
         </div>
       </section>
@@ -370,9 +377,9 @@ export default async function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Differentiator
               label="Scale"
-              value="2.01B"
+              value={TOTAL_PATTERNS}
               unit="patterns"
-              desc="Computed across 197 countries and 69 economic indicators (as of April 2026). Every pairwise relationship, every historical window, examined."
+              desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} economic indicators (data through ${DATA_VINTAGE_YEAR}). Every pairwise relationship, every historical window, examined.`}
             />
             <Differentiator
               label="Method"

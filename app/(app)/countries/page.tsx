@@ -2,6 +2,7 @@ import path from "path";
 import { Suspense } from "react";
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { CountriesClient } from "@/components/countries/CountriesClient";
+import { TOTAL_COUNTRIES } from "@/lib/site-stats";
 import type { Metadata } from "next";
 
 // T16 #309 HIGH fix: revalidate every hour so we don't re-read 198 files
@@ -13,13 +14,11 @@ export const revalidate = 3600;
 // preview rather than inheriting the root layout defaults.
 export const metadata: Metadata = {
   title: "Countries — QGI Intelligence",
-  description:
-    "Browse country risk profiles powered by historical precedent analysis across 197 countries.",
+  description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,
   alternates: { canonical: "https://qgintelligence.com/countries" },
   openGraph: {
     title: "Countries — QGI Intelligence",
-    description:
-      "Browse country risk profiles powered by historical precedent analysis across 197 countries.",
+    description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,
     url: "https://qgintelligence.com/countries",
     siteName: "QGI Intelligence",
     type: "website",

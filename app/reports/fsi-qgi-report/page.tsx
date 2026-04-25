@@ -415,7 +415,7 @@ The countries above experienced sharp FSI deteriorations (>= 4 points year-over-
 
 QGI (Quantitative Geopolitical Intelligence) is a pattern-based structural risk analysis system. It works in three stages:
 
-1. **SCDI Detection.** For every pair of countries and every World Bank indicator, QGI computes the Pearson correlation coefficient between all possible time-window combinations. Pairs with |R| >= 0.7 are flagged as Structurally Correlated Development Indicators (SCDIs). This produces 14.3 billion SCDIs across 197 countries and 69 indicators (as of April 2026).
+1. **SCDI Detection.** For every pair of countries and every World Bank indicator, QGI computes the Pearson correlation coefficient between all possible time-window combinations. Pairs with |R| >= 0.7 are flagged as Structurally Correlated Development Indicators (SCDIs). This produces 14.3 billion SCDIs across 214 countries and 58 indicators (as of April 2026).
 
 2. **Pattern Aggregation.** SCDIs sharing the same country pair, start years, and window length are grouped into patterns. Each pattern records how many indicators correlate and at what average strength. The system has computed 2.01 billion patterns.
 
@@ -429,7 +429,7 @@ Recipe matches are scored using z-score normalization per country, combined via 
 
 | Data Element | Source | License | Coverage |
 | :--- | :--- | :--- | :--- |
-| Economic indicators | World Bank Open Data | CC BY 4.0 | 69 indicators, 197 countries, 1960-2024 |
+| Economic indicators | World Bank Open Data | CC BY 4.0 | 58 indicators, 214 countries, 1960-2024 |
 | Geopolitical events | AI-curated with human verification | QGI proprietary | 198 countries, 1950-2025, 71 event categories |
 | FSI rankings | [Fund for Peace](https://www.fundforpeace.org/) (public) | Public data | 179 countries, 2006-2023 |
 

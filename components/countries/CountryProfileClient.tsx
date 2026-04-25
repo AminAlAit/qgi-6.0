@@ -5,6 +5,7 @@ import Link from "next/link";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+import { TOTAL_COUNTRIES } from "@/lib/site-stats";
 import TaxonomyL1Widget from "@/components/countries/TaxonomyL1Widget";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
@@ -226,7 +227,9 @@ export function CountryProfileClient({
             style={{ color: "var(--qgi-text-dim)" }}
           >
             L1 vs World Median
-            <InfoTooltip text="Compares this country's risk score in each domain against the median (middle value) across all 197 countries. Red bars mean this country scores HIGHER than most countries in that domain — a stronger risk signal. Green bars mean LOWER than most — less anomalous. The further the bar extends, the more this country deviates from what's typical globally." />
+            <InfoTooltip
+              text={`Compares this country's risk score in each domain against the median (middle value) across all ${TOTAL_COUNTRIES} countries. Red bars mean this country scores HIGHER than most countries in that domain — a stronger risk signal. Green bars mean LOWER than most — less anomalous. The further the bar extends, the more this country deviates from what's typical globally.`}
+            />
           </h2>
           <div className="space-y-1.5">
             {L1_CATEGORIES.map((cat) => {
