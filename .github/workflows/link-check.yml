@@ -16,8 +16,29 @@ name: Link check
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
   pull_request:
     branches: [main]
+    paths-ignore:
+      - "**/*.md"
+      - ".gitignore"
+      - ".claude/**"
+      - "qgi-docs/**"
+      - "**/*.png"
+      - "**/*.jpg"
+      - "LICENSE"
+
+# #454: cancel-in-progress to keep concurrent runs from doubling cost.
+concurrency:
+  group: linkcheck-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   link-check:
