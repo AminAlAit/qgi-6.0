@@ -16,6 +16,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
+    "lhci": "lhci autorun",
+    "linkcheck": "linkinator http://localhost:3000/ --config .linkinatorrc.json",
     "dump:countries": "npx -y tsx scripts/dump-countries.ts",
     "prepare": "husky",
     "typecheck": "tsc --noEmit"
@@ -44,6 +46,7 @@
     "react-dom": "19.2.4"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.59.1",
     "@tailwindcss/postcss": "^4",
     "@testing-library/jest-dom": "^6.9.1",
@@ -58,6 +61,7 @@
     "husky": "^9.1.7",
     "jsdom": "^26",
     "lint-staged": "^16.4.0",
+    "linkinator": "^6.1.5",
     "prettier": "^3",
     "tailwindcss": "^4",
     "typescript": "^5",

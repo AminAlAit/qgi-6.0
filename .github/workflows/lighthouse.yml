@@ -1,0 +1,77 @@
+name: Lighthouse CI
+
+# Audits the production build against perf / a11y / SEO / best-practices
+# budgets so regressions of the kind QA caught on 2026-04-24 (missing h1
+# on /dashboard, 404'd og-default.png, stat-drift in <meta description>)
+# fail in a PR check rather than during a manual sweep.
+#
+# Boots `npm run start` against the build output on the runner and points
+# Lighthouse at it locally — no Vercel preview URL needed, so the check
+# runs on PRs from forks too.
+#
+# Related tickets: #441 (this), #439 (Playwright), #442 (branch protection).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lighthouse:
+    name: Lighthouse audits
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build app
+        run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          # Skip auth on build so the audited routes don't bounce to
+          # /login. Mirrors the Vercel staging configuration.
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
+
+      - name: Start app
+        run: npm run start -- -p 3000 &
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+          SKIP_AUTH: "true"
+          SKIP_AUTH_GROUPS: "pro"
+          PORT: "3000"
+
+      - name: Wait for server
+        run: |
+          for i in $(seq 1 60); do
+            if curl -fsS http://localhost:3000/ -o /dev/null; then
+              echo "Server ready (waited ${i}s)"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Server did not respond within 60s"
+          exit 1
+
+      - name: Run Lighthouse CI
+        run: npx --no -- lhci autorun
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Upload Lighthouse report on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-report
+          path: .lighthouseci/
+          retention-days: 7
