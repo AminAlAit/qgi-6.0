@@ -19,9 +19,21 @@
  */
 import { test, expect, devices } from "@playwright/test";
 
+// Strip the defaultBrowserType from devices["Pixel 5"] before spreading
+// — Playwright forbids setting defaultBrowserType in `test.use()` inside
+// a describe block (it forces a worker re-init per-test, which the
+// runner refuses). Pass viewport + userAgent + isMobile + hasTouch
+// + deviceScaleFactor explicitly; keeps the mobile emulation but
+// avoids the parser error we hit in CI.
+const PIXEL5 = (() => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { defaultBrowserType, ...rest } = devices["Pixel 5"];
+  return rest;
+})();
+
 test.describe("landing mobile nav (#427)", () => {
   test.describe("mobile (Pixel 5)", () => {
-    test.use({ ...devices["Pixel 5"] });
+    test.use(PIXEL5);
 
     test("no horizontal overflow on landing at 393px viewport", async ({ page }) => {
       await page.goto("/");
