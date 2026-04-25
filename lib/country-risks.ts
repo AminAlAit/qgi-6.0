@@ -46,6 +46,12 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
   // load time (with a precise field-level error message) instead of
   // softly painting the dashboard with `undefined` once the user clicks
   // through to a country profile.
+  //
+  // #451: schema-mismatch events are also fired into Sentry with the
+  // first 5 Zod issues attached as extra context. This is the critical
+  // signal a pipeline regen drifted shape — without it we'd see vague
+  // "the dashboard is broken" reports from users instead of an exact
+  // field-level diff.
   const parseAndValidate = (raw: string): CountryRisksData => {
     const parsed: unknown = JSON.parse(raw);
     const result = CountryRisksDataSchema.safeParse(parsed);
@@ -57,7 +63,27 @@ export async function loadCountryRisks(): Promise<CountryRisksData> {
         .slice(0, 5)
         .map((i) => `${i.path.join(".") || "<root>"}: ${i.message}`)
         .join("; ");
-      throw new Error(`country-risks.json schema mismatch: ${issues}`);
+      const err = new Error(`country-risks.json schema mismatch: ${issues}`);
+      // Report to Sentry if it's wired (production). The dynamic import
+      // avoids pulling Sentry into the bundle for environments that
+      // don't have it (local dev), and the try/catch keeps Sentry's
+      // own transport failures from masking the original schema error.
+      if (process.env.SENTRY_DSN) {
+        void import("@sentry/nextjs")
+          .then((Sentry) => {
+            Sentry.captureException(err, {
+              tags: { source: "country-risks-schema" },
+              extra: {
+                first_issues: result.error.issues.slice(0, 5),
+                total_issue_count: result.error.issues.length,
+              },
+            });
+          })
+          .catch(() => {
+            /* Sentry SDK unavailable; original error still propagates */
+          });
+      }
+      throw err;
     }
     return result.data;
   };
