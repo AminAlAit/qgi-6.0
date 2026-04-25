@@ -29,6 +29,13 @@ TAXONOMY_PATH = Path(__file__).resolve().parent.parent / "events" / "taxonomy_hi
 ALLOWED_YEAR_RANGE = (1900, 2030)  # Events can predate WB indicator data (1960+)
 MAX_TITLE_LENGTH = 120
 
+# #434 Mojibake guard: a Ã / â followed by Latin-1-supplement or Unicode
+# punctuation char is the canonical signature of UTF-8 → cp1252 → UTF-8
+# double-encoding. Flagged here so a re-introduction (e.g. a curation
+# tool that mishandles encoding on Windows) fails CI before merge.
+import re as _re_mojibake_module  # noqa: E402  (placed near guard for locality)
+MOJIBAKE_RE = _re_mojibake_module.compile(r"[\u00C3\u00E2][\u00A0-\u00BF\u2010-\u21FF]+")
+
 # Count thresholds
 MIN_EVENTS_PER_COUNTRY = 10
 MAX_RECENCY_RATIO = 0.35  # max fraction of events in 2020-2030 window
@@ -154,6 +161,15 @@ def validate_file(path: Path, valid_categories: set[str] | None = None) -> FileR
             elif len(title) > MAX_TITLE_LENGTH:
                 result.warnings.append(
                     f"{prefix}: title exceeds {MAX_TITLE_LENGTH} chars ({len(title)})"
+                )
+            # #434: reject mojibake titles. Hard error (not warning) — these
+            # are user-visible on country profile pages and a recovery
+            # script ran today against 38 countries to clear ~830 occurrences.
+            if isinstance(title, str) and MOJIBAKE_RE.search(title):
+                result.errors.append(
+                    f"{prefix}: title contains mojibake (UTF-8 → cp1252 → UTF-8 "
+                    f"double-encoding). Run scripts/recover_mojibake.py or fix "
+                    f"the curation source. Sample: {title[:80]!r}"
                 )
 
         # Category

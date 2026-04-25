@@ -117,6 +117,49 @@ def test_title_over_max_length_is_warning_not_error(tmp_path):
     assert any("title" in w or "chars" in w for w in result.warnings)
 
 
+# ─── mojibake guard (#434) ───────────────────────────────────────────────────
+
+
+def test_title_mojibake_is_error(tmp_path):
+    """A double-encoded UTF-8 title (Ã©, â€" et al.) must fail validation."""
+    f = tmp_path / "country.json"
+    # 'GuaidÃ³' = U+0047 U+0075 U+0061 U+0069 U+0064 U+00C3 U+00B3 — the
+    # mojibake form of 'Guaidó'. Real specimens of this exact pattern
+    # were on qgintelligence.com/countries/venezuela before the recovery
+    # script ran on 2026-04-25.
+    bad_title = "Guaid\u00C3\u00B3 Reaches Out to Caracas"
+    _write_events(f, [_valid_event(title=bad_title)] * 12)
+    result = ve.validate_file(f)
+    assert any("mojibake" in e.lower() for e in result.errors), (
+        f"Expected a mojibake error; got errors={result.errors}"
+    )
+
+
+def test_clean_unicode_title_passes(tmp_path):
+    """Real accented chars (é, ñ, ó) must NOT be flagged as mojibake."""
+    f = tmp_path / "country.json"
+    # Same string after recovery — real accented characters.
+    clean_title = "Guaid\u00F3 Reaches Out to Caracas"
+    _write_events(f, [_valid_event(title=clean_title)] * 12)
+    result = ve.validate_file(f)
+    assert not any("mojibake" in e.lower() for e in result.errors), (
+        f"Clean unicode incorrectly flagged: {result.errors}"
+    )
+
+
+def test_em_dash_mojibake_is_error(tmp_path):
+    """The other common mojibake — em-dash via Windows-1252 — must fail."""
+    f = tmp_path / "country.json"
+    # 'â€"' = the cp1252 mojibake of '—'. Real specimens were on
+    # qgintelligence.com/countries/angola before recovery.
+    bad_title = "Treaty Signed \u00E2\u20AC\u201D Diplomatic Reset"
+    _write_events(f, [_valid_event(title=bad_title)] * 12)
+    result = ve.validate_file(f)
+    assert any("mojibake" in e.lower() for e in result.errors), (
+        f"Expected mojibake error for em-dash; got errors={result.errors}"
+    )
+
+
 # ─── category validation ──────────────────────────────────────────────────────
 
 def test_category_non_string_fails(tmp_path):
