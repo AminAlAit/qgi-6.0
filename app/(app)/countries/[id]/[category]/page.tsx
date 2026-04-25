@@ -39,9 +39,24 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id, category } = await params;
+  // #452: validate the category at metadata-generation time too. Without
+  // this guard, /countries/217/made_up_thing renders the not-found body
+  // BUT the head title still reads "Syria — Made Up Thing — QGI
+  // Intelligence" (because generateMetadata runs before the route
+  // handler's notFound()). The fabricated title is a real-but-subtle
+  // SEO + share-card bug that the body fix didn't catch.
   const country = await getCountryRisk(id);
-  const name = country?.name ?? `Country #${id}`;
-  const catLabel = category.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+  const decodedCategory = decodeURIComponent(category);
+  if (!country || !isValidCategory(country, decodedCategory)) {
+    return {
+      title: "Page not found — QGI Intelligence",
+      robots: { index: false, follow: false },
+    };
+  }
+  const name = country.name;
+  const catLabel = decodedCategory
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
   const description = `Precedent analysis for ${catLabel} risk in ${name}. Historical analogues, pattern-length tier breakdown, and evidence from QGI Intelligence.`;
   const canonical = `https://qgintelligence.com/countries/${id}/${category}`;
   // T19 #312: per-page OG + canonical so each precedent detail page has

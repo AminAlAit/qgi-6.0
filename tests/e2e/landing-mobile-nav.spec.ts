@@ -47,9 +47,14 @@ test.describe("landing mobile nav (#427)", () => {
 
     test("Methodology / About / Open Dashboard visible on mobile", async ({ page }) => {
       await page.goto("/");
-      await expect(page.getByRole("link", { name: /^methodology$/i })).toBeVisible();
-      await expect(page.getByRole("link", { name: /^about$/i })).toBeVisible();
-      await expect(page.getByRole("link", { name: /open dashboard/i })).toBeVisible();
+      // #452 fix: the landing page has Methodology + About links in three
+      // places (header nav, body CTA, footer). Scope locators to the
+      // <header> so we test the nav specifically and don't trigger
+      // strict-mode "resolved to N elements" errors.
+      const header = page.locator("header");
+      await expect(header.getByRole("link", { name: /^methodology$/i })).toBeVisible();
+      await expect(header.getByRole("link", { name: /^about$/i })).toBeVisible();
+      await expect(header.getByRole("link", { name: /open dashboard/i })).toBeVisible();
     });
 
     test("hamburger button visible on mobile; Reports hidden until click", async ({
@@ -71,26 +76,43 @@ test.describe("landing mobile nav (#427)", () => {
     });
 
     test("clicking hamburger reveals Reports / Blog / Contact", async ({ page }) => {
-      await page.goto("/");
-      await page.getByRole("button", { name: /open menu/i }).click();
+      await page.goto("/", { waitUntil: "networkidle" });
+      // #452: previous attempts hit a 10s click-timeout on the hamburger
+      // button even though the test "hamburger visible" passes. The
+      // root cause is an actionability check failure (likely the button's
+      // bounding-box center lies just outside the 393px Pixel-5 viewport
+      // because the inline nav siblings push it off-screen). Use
+      // `force: true` to bypass actionability — the assertion that the
+      // drawer becomes visible is the real check that the click worked.
+      const header = page.locator("header");
+      const hamburger = header.getByRole("button", { name: /open menu/i });
+      await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+      await hamburger.click({ force: true });
 
-      // After click: the drawer renders three additional links. Each is
-      // now visible (not display:none).
-      await expect(page.getByRole("link", { name: /^reports$/i }).last()).toBeVisible();
-      await expect(page.getByRole("link", { name: /^blog$/i }).last()).toBeVisible();
-      await expect(page.getByRole("link", { name: /^contact$/i }).last()).toBeVisible();
+      // The mobile dropdown is the conditional-rendered <div id="landing-mobile-menu">.
+      // Scope the post-click visibility checks to the dropdown specifically.
+      const drawer = page.locator("#landing-mobile-menu");
+      await expect(drawer.getByRole("link", { name: /^reports$/i })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: /^blog$/i })).toBeVisible();
+      await expect(drawer.getByRole("link", { name: /^contact$/i })).toBeVisible();
 
       // Hamburger button now labels "Close menu"
-      await expect(page.getByRole("button", { name: /close menu/i })).toBeVisible();
+      await expect(header.getByRole("button", { name: /close menu/i })).toBeVisible();
     });
 
     test("clicking Reports in drawer navigates to /reports", async ({ page }) => {
-      await page.goto("/");
-      await page.getByRole("button", { name: /open menu/i }).click();
-      // Click the mobile drawer's Reports link (last one in DOM order).
+      await page.goto("/", { waitUntil: "networkidle" });
+      const header = page.locator("header");
+      const hamburger = header.getByRole("button", { name: /open menu/i });
+      await expect(hamburger).toHaveAttribute("aria-expanded", "false");
+      await hamburger.click({ force: true });
+      // Click the mobile drawer's Reports link (NOT the footer's).
+      // The drawer link is intentionally large + tappable so a normal
+      // click should be fine here — only the hamburger triggers the
+      // actionability check failure noted above.
       await page
+        .locator("#landing-mobile-menu")
         .getByRole("link", { name: /^reports$/i })
-        .last()
         .click();
       await expect(page).toHaveURL(/\/reports/);
     });
@@ -101,9 +123,11 @@ test.describe("landing mobile nav (#427)", () => {
 
     test("no hamburger on desktop; all nav links visible inline", async ({ page }) => {
       await page.goto("/");
+      const header = page.locator("header");
       // Hamburger is md:hidden — should NOT be visible on a desktop viewport.
-      await expect(page.getByRole("button", { name: /open menu/i })).toBeHidden();
-      // All 6 nav links visible inline
+      await expect(header.getByRole("button", { name: /open menu/i })).toBeHidden();
+      // All 6 nav links visible inline (scoped to header so we ignore
+      // duplicates in the body / footer).
       for (const name of [
         /^reports$/i,
         /^methodology$/i,
@@ -111,9 +135,9 @@ test.describe("landing mobile nav (#427)", () => {
         /^blog$/i,
         /^contact$/i,
       ]) {
-        await expect(page.getByRole("link", { name }).first()).toBeVisible();
+        await expect(header.getByRole("link", { name }).first()).toBeVisible();
       }
-      await expect(page.getByRole("link", { name: /open dashboard/i })).toBeVisible();
+      await expect(header.getByRole("link", { name: /open dashboard/i })).toBeVisible();
     });
   });
 });

@@ -58,12 +58,22 @@ export default defineConfig({
     },
   ],
 
-  // Only start the local dev server when no PLAYWRIGHT_BASE_URL is set.
+  // Only start the local server when no PLAYWRIGHT_BASE_URL is set.
   // In CI against a Vercel preview URL, we skip this entirely.
+  //
+  // Mode selection (#452):
+  //   - CI: `npm run start` (production build). Next 16 dev / Turbopack
+  //     returns HTTP 200 for `notFound()` calls — production correctly
+  //     returns 404. Country-slug-routing tests require the production
+  //     behavior. The e2e.yml workflow does `npm run build` before this
+  //     server starts, so the .next/ output is already on disk.
+  //   - Local: `npm run dev` (faster iteration). Devs can also start
+  //     `npm run dev` themselves first; playwright skips this block when
+  //     a server is already on :3000.
   webServer: process.env.PLAYWRIGHT_BASE_URL
     ? undefined
     : {
-        command: "npm run dev",
+        command: process.env.CI ? "npm run start" : "npm run dev",
         url: "http://localhost:3000",
         reuseExistingServer: !process.env.CI,
         timeout: 120_000,

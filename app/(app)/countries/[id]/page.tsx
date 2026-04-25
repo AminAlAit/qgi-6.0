@@ -49,7 +49,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id: rawId } = await params;
   const id = (await resolveIdOrSlug(rawId)) ?? rawId;
   const country = await getCountryRisk(id);
-  const name = country?.name ?? `Country #${id}`;
+  // #452: an unresolved slug (e.g. /countries/zzznonexistent or
+  // /countries/cape-verde when Cape Verde isn't in the V1.9.1 89-country
+  // dataset) used to render a head title of "Country #zzznonexistent —
+  // QGI Intelligence" — slug literally reflected into the title. The
+  // body fix in #426 didn't cover the metadata path. Return a generic
+  // not-found title + noindex so search engines don't index the
+  // not-found page under the slug-shaped URL.
+  if (!country) {
+    return {
+      title: "Page not found — QGI Intelligence",
+      robots: { index: false, follow: false },
+    };
+  }
+  const name = country.name;
   const description = `Risk intelligence profile for ${name}: structural indicator analysis, historical precedents, and analogues from ${TOTAL_COUNTRIES} countries of World Bank data.`;
   const canonical = `https://qgintelligence.com/countries/${id}`;
   // T19 #312: per-page openGraph + twitter + canonical so country profiles
