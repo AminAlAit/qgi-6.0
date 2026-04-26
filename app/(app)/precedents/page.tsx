@@ -1,82 +1,53 @@
-import { loadCountryRisks } from "@/lib/country-risks";
-import { PrecedentsListClient } from "@/components/precedents/PrecedentsListClient";
+import { loadRecipesAggregated } from "@/lib/recipes-aggregated";
+import { PrecedentsAggregatedListClient } from "@/components/precedents/PrecedentsAggregatedListClient";
 import type { Metadata } from "next";
 
-// T19 #312: adds openGraph + twitter so precedents page is shareable.
+/**
+ * #464 — Precedents index, REFACTORED for V2.0.
+ *
+ * Old page (V1.x) listed ~hundreds of country-category precedent rows.
+ * Per Agent D's UX architecture memo + 2026-04-25 Majles Decision 4
+ * (11-0 unanimous), precedents are now the *Level-4 Recipe* aggregate:
+ * one row per L3 category, sorted by total_instances desc. The
+ * country-vs-recipe leaf moves to /signals/{country}/{slug}.
+ *
+ * Week 2: reads from `data/recipes-aggregated-mock.json`. Week 3 swaps
+ * to the real `qgi_data.recipes_aggregated` table (#462).
+ */
+
 export const metadata: Metadata = {
-  title: "Precedents Browser — QGI Intelligence",
+  title: "Precedents — QGI Intelligence",
   description:
-    "Browse all country-category precedent combinations ranked by salience score.",
+    "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
   alternates: { canonical: "https://qgintelligence.com/precedents" },
   openGraph: {
-    title: "Precedents Browser — QGI Intelligence",
+    title: "Precedents — QGI Intelligence",
     description:
-      "Browse all country-category precedent combinations ranked by salience score.",
+      "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
     url: "https://qgintelligence.com/precedents",
     siteName: "QGI Intelligence",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precedents Browser — QGI Intelligence",
+    title: "Precedents — QGI Intelligence",
     description:
-      "Browse all country-category precedent combinations ranked by salience score.",
+      "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
   },
 };
 
-/**
- * Flatten every country x S-tier category into a single precedent row list,
- * then pass it to the client component for filtering / sorting / pagination.
- */
 export default async function PrecedentsPage() {
-  const rows: Array<{
-    countryId: string;
-    countryName: string;
-    alpha2: string;
-    curated: boolean;
-    riskTier: string;
-    category: string;
-    salienceScore: number;
-    zScore: number;
-    recipeCount: number;
-    lastEventYear: number | null;
-  }> = [];
-  let error: string | null = null;
-
+  let data;
   try {
-    const data = await loadCountryRisks();
-
-    for (const [countryId, country] of Object.entries(data.countries)) {
-      const sTier = country.tiers?.S;
-      if (!sTier?.top_categories?.length) continue;
-
-      for (const cat of sTier.top_categories) {
-        rows.push({
-          countryId,
-          countryName: country.name,
-          alpha2: country.alpha_2,
-          curated: country.curated,
-          riskTier: country.overall_risk_tier ?? "INDICATIVE",
-          category: cat.category,
-          salienceScore: cat.salience_score ?? 0,
-          zScore: cat.z_score ?? 0,
-          recipeCount: cat.recipe_count ?? 0,
-          lastEventYear: cat.last_event_year ?? null,
-        });
-      }
-    }
+    data = await loadRecipesAggregated();
   } catch (err) {
-    error = (err as Error).message;
-  }
-
-  if (error) {
     return (
       <div className="p-8">
         <h1
           className="text-xs tracking-widest uppercase mb-4"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Precedents Browser
+          Precedents
         </h1>
         <div
           className="rounded-lg border p-6"
@@ -86,14 +57,25 @@ export default async function PrecedentsPage() {
           }}
         >
           <p style={{ color: "var(--qgi-text-muted)" }}>
-            Precedent data not yet available. Run{" "}
-            <code className="font-data text-xs">generate_country_risks.py</code> to
-            generate the data.
+            Aggregated recipe data not available: {(err as Error).message}
           </p>
         </div>
       </div>
     );
   }
 
-  return <PrecedentsListClient rows={rows} />;
+  // Sort by total_instances desc, then alphabetical for ties.
+  const sorted = [...data.recipes].sort((a, b) => {
+    const diff = b.total_instances - a.total_instances;
+    if (diff !== 0) return diff;
+    return a.event_category.localeCompare(b.event_category);
+  });
+
+  return (
+    <PrecedentsAggregatedListClient
+      recipes={sorted}
+      generatedAt={data.generated_at}
+      pipelineVersion={data.pipeline_version}
+    />
+  );
 }

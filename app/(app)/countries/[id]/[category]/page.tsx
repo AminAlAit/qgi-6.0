@@ -1,8 +1,10 @@
 import { getCountryRisk, loadCountryRisks } from "@/lib/country-risks";
 import { PrecedentDetailClient } from "@/components/countries/PrecedentDetailClient";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
+import { countrySlug } from "@/lib/slug";
+import { signalCountryRecipeUrl } from "@/lib/recipes-aggregated";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type {
   AnaloguesEnrichedPayload,
   AnalogueEnrichedEntry,
@@ -203,6 +205,26 @@ export default async function PrecedentDetailPage({ params }: Props) {
   // confabulation vector where /countries/217/<anything> silently
   // produces a HIGH-tier-badged page with auto-generated copy.
   if (!isValidCategory(country, decodedCategory)) notFound();
+
+  // #464: this URL is deprecated. Permanent-redirect to the canonical
+  // V2.0 path /signals/{country-slug}/{category}. Preserves all inbound
+  // links from email digests, blog posts, social shares, and the
+  // 50+ /countries/{id}/{cat} URLs already in the sitemap.
+  //
+  // Why redirect instead of dual-rendering: the new /signals/{country}/{slug}
+  // page (when wired to real data in Week 3 via #463) will render
+  // similarity-score-first with the analogue panel as evidence. The old
+  // /countries/{id}/{cat} page is density-first. Two surfaces mean two
+  // mental models for the same data — the Majles consult Decision 4
+  // (11-0) was explicit that signals + countries should be distinct
+  // products, with country/category drilldowns living under signals.
+  const slug = countrySlug(country.name);
+  if (slug) {
+    redirect(signalCountryRecipeUrl(slug, decodedCategory));
+  }
+  // Fallback: if slug resolution somehow fails, render the old page so
+  // we don't 404 a previously-working URL. Should be unreachable in
+  // practice — every country in country-risks.json has a slug-able name.
 
   let data;
   try {
