@@ -614,35 +614,55 @@ def _read_indicator_map_csv():
 
 
 def write_country_recipe_scores():
-    """Phase 5b.6.6 v0.1: Country-vs-Recipe Scoring (weighted indicator coverage).
+    """Phase 5b.6.6 v0.2: Country-vs-Recipe Pearson trajectory similarity.
 
     For each (country, recipe) pair: compute a similarity score in [0,1]
-    based on weighted indicator coverage of the Recipe's fingerprint. Per
-    the design doc at qgi-docs/internal/design/recipe-scoring-architecture.md,
-    this is the v0.1 algorithm — establishes the data plumbing + populates
-    the table so #464's frontend renders SOMETHING for every (country,
-    recipe) pair. v0.2 ships the full Pearson-trajectory algorithm in a
-    follow-up session.
+    via per-indicator Pearson correlation between the country's recent
+    trajectory and the Recipe's reference Pattern instance trajectory.
 
-    v0.1 algorithm:
-        For each fingerprint indicator i in recipe R:
-            - Check if country C has any value for indicator i in the last
-              `canonical_length` years from indicators_completed
-            - If present, contribute weight = fp[i].avg_corr_magnitude
-        similarity_raw = sum(weight[i] for matched i) / sum(weight[i] for all i)
-        coverage_ratio = matched / total_in_fingerprint
-        suppressed = (coverage_ratio < SCORER_MIN_COVERAGE)
+    Replaces v0.1 (weighted indicator coverage) per the design doc at
+    qgi-docs/internal/design/recipe-scoring-architecture.md.
 
-    Calibration (Part B) deferred — similarity_calibrated = similarity_raw
-    until the Platt training script lands. The frontend reads
-    similarity_calibrated, so when calibration ships the column auto-updates
-    on the next pipeline run with no frontend change required.
+    v0.2 algorithm:
+        For each recipe R:
+            Reference = the highest-PPS pattern instance for R in
+                        recipes_deduped (its country_a_id, start_year_a,
+                        length).
+            For each fingerprint indicator i in R (top-K by TF-IDF):
+                ref_traj  = ref_country's values for indicator i over
+                            [ref_start, ref_start + canonical_length]
+                subj_traj = country C's values for indicator i over
+                            [now - canonical_length, now]
+                r_i      = Pearson correlation between ref_traj and
+                           subj_traj, aligned by relative year offset
+                           0…canonical_length-1
+            similarity_raw = sum(|r_i| * weight_i) / sum(weight_i)
+                             where weight_i = fp[i].avg_corr_magnitude
+            coverage_ratio = indicators_with_≥3_aligned_years / fingerprint_size
+            suppressed     = coverage_ratio < SCORER_MIN_COVERAGE
 
-    Eval (Part C) deferred — V2.0-vs-V1.9.1 metrics ship as a separate
-    qgi-ml/scripts/eval_v2_vs_v19.py.
+    Properties:
+    - Real trajectory comparison, not coverage proxy
+    - Per-indicator Pearson, weighted aggregate
+    - Min 3 paired years for a meaningful r
+    - Falls back to suppressed when too few indicators alignable
 
-    Strategy: clear the data S3 prefix on every run, then INSERT INTO the
-    Terraform-defined table. Mirrors write_recipes_aggregated_table().
+    Calibration (Part B) — similarity_calibrated still equals
+    similarity_raw here. The Platt training script
+    qgi-ml/scripts/calibrate_recipe_similarity.py produces
+    per-tier (a, b) → published to S3. Wiring the runtime sigmoid
+    application into this Lambda is a follow-up commit (would JOIN
+    recipes_aggregated for canonical_length, derive tier, look up
+    (a, b), apply sigmoid in the SELECT).
+
+    Performance:
+    - Subject × fingerprint × paired years can be ~270 × 1065 × 18 ≈ 5M
+      rows in the `paired` CTE. Athena handles this but the wall time
+      is the long pole; Lambda 15-min timeout is the budget ceiling.
+    - If the CTAS exceeds budget, promote to Batch (per design doc rec).
+
+    Strategy: clear S3 prefix, INSERT INTO. Mirrors
+    write_recipes_aggregated_table.
     """
     # 1. Read indicator_map from S3 — small file (~270 rows).
     indicator_map = _read_indicator_map_csv()
@@ -701,55 +721,160 @@ def write_country_recipe_scores():
         FROM fp_unnested fp
         JOIN indicator_map im ON im.numeric_id = fp.num_id
     ),
-    -- Currently scoreable countries: anything in the countries reference
-    -- table with both id and name_1 set. The 89 risk-scored countries from
-    -- country-risks.json are a strict subset.
+    -- v0.2: reference pattern instance per recipe — the highest-PPS
+    -- pattern from recipes_deduped. Its country_a + window define the
+    -- "expected trajectory" the subject's recent trajectory is compared
+    -- against per-indicator below.
+    ref_pattern_ranked AS (
+        SELECT
+            rd.event_category,
+            cast(rd.country_a_id as integer) AS ref_country_id,
+            cast(rd.start_year_a as integer) AS ref_start,
+            cast(rd.length as integer) AS ref_length,
+            ROW_NUMBER() OVER (
+                PARTITION BY rd.event_category
+                ORDER BY rd.pattern_power_score DESC
+            ) AS rn
+        FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} rd
+    ),
+    ref_pattern_top AS (
+        SELECT event_category, ref_country_id, ref_start, ref_length
+        FROM ref_pattern_ranked
+        WHERE rn = 1
+    ),
+    -- Country id ↔ name lookup. indicators_completed is keyed by name
+    -- (string), recipes/patterns/scores are keyed by id (smallint) — the
+    -- countries reference table is the bridge.
     countries_indexed AS (
-        SELECT cast(cd.id as smallint) AS country_id, cd.name_1 AS name
+        SELECT cast(cd.id as integer) AS country_id, cd.name_1 AS name
         FROM {ATHENA_DB}.countries cd
         WHERE cd.name_1 IS NOT NULL AND cd.name_1 != ''
           AND cd.id IS NOT NULL AND cd.id != ''
     ),
-    -- The cross join is ~270 countries × ~1065 fingerprint slots ≈ 287K rows.
-    -- The EXISTS hits indicators_completed which is partitioned by indicator_id
-    -- (string), so each subquery scan is bounded to one partition.
-    country_indicator_check AS (
+    -- v0.2: reference trajectory per (recipe, fingerprint indicator).
+    -- Pulls the ref country's values for the fp indicator over the ref
+    -- pattern instance's window. Year offset 0…(L-1) becomes the alignment
+    -- key for the Pearson pairing.
+    ref_values AS (
         SELECT
-            ci.country_id,
             fws.event_category,
+            fws.num_id,
             fws.weight,
             fws.n_in_fp,
             fws.recipe_contains_predicted,
-            EXISTS (
-                SELECT 1 FROM {ATHENA_DB}.indicators_completed ic
-                WHERE ic.indicator_id = fws.id_string
-                  AND ic.country = ci.name
-                  AND ic.year >= year(current_timestamp) - fws.L
-                  AND ic.value IS NOT NULL
-            ) AS present
+            fws.L,
+            ic.year - rpt.ref_start AS year_offset,
+            cast(ic.value as double) AS ref_value
+        FROM fp_with_string fws
+        JOIN ref_pattern_top rpt ON rpt.event_category = fws.event_category
+        JOIN countries_indexed rcn ON rcn.country_id = rpt.ref_country_id
+        JOIN {ATHENA_DB}.indicators_completed ic
+            ON ic.indicator_id = fws.id_string
+           AND ic.country = rcn.name
+           AND ic.year >= rpt.ref_start
+           AND ic.year < rpt.ref_start + fws.L
+           AND ic.value IS NOT NULL
+    ),
+    -- v0.2: subject trajectory per (subject, recipe, fingerprint indicator).
+    -- Pulls each scoreable country's last L years of values for the
+    -- fp indicator. Year offset 0…(L-1) is the relative position in the
+    -- last-L-years window — same scale as ref_values so Pearson pairing
+    -- aligns by position, not absolute year.
+    NOW_YEAR AS (SELECT year(current_timestamp) AS y),
+    subject_values AS (
+        SELECT
+            cast(ci.country_id as smallint) AS subject_id,
+            fws.event_category,
+            fws.num_id,
+            ic.year - (n.y - fws.L) AS year_offset,
+            cast(ic.value as double) AS subj_value
         FROM countries_indexed ci
         CROSS JOIN fp_with_string fws
+        CROSS JOIN NOW_YEAR n
+        JOIN {ATHENA_DB}.indicators_completed ic
+            ON ic.indicator_id = fws.id_string
+           AND ic.country = ci.name
+           AND ic.year >= n.y - fws.L
+           AND ic.year < n.y
+           AND ic.value IS NOT NULL
     ),
+    -- v0.2: pair subject + ref by (event_category, num_id, year_offset).
+    -- Inner join — only year offsets present in BOTH series contribute to
+    -- the Pearson sum. This handles missing-year gracefully without
+    -- introducing imputation bias.
+    paired AS (
+        SELECT
+            sv.subject_id,
+            sv.event_category,
+            sv.num_id,
+            sv.subj_value AS x,
+            rv.ref_value AS y,
+            rv.weight,
+            rv.n_in_fp,
+            rv.recipe_contains_predicted
+        FROM subject_values sv
+        JOIN ref_values rv
+            ON rv.event_category = sv.event_category
+           AND rv.num_id = sv.num_id
+           AND rv.year_offset = sv.year_offset
+    ),
+    -- v0.2: Pearson aggregations per (subject, recipe, indicator).
+    -- HAVING n >= 3: need at least 3 aligned years for a meaningful r.
+    -- Below 3, the indicator drops out of the aggregation entirely.
+    pearson_sums AS (
+        SELECT
+            subject_id, event_category, num_id, weight, n_in_fp,
+            recipe_contains_predicted,
+            COUNT(*) AS n,
+            SUM(x) AS sx, SUM(y) AS sy,
+            SUM(x*y) AS sxy, SUM(x*x) AS sxx, SUM(y*y) AS syy
+        FROM paired
+        GROUP BY subject_id, event_category, num_id, weight, n_in_fp,
+                 recipe_contains_predicted
+        HAVING COUNT(*) >= 3
+    ),
+    r_per_indicator AS (
+        SELECT
+            subject_id, event_category, num_id, weight, n_in_fp,
+            recipe_contains_predicted,
+            -- Pearson r = (n*sxy - sx*sy) / sqrt((n*sxx - sx²)(n*syy - sy²))
+            -- Defensive: when either denominator term is ≤ 0 (constant series),
+            -- emit r=0 instead of NaN — Athena propagates NaN through
+            -- aggregations and we don't want the recipe-level score to NaN
+            -- because of one degenerate indicator series.
+            CASE
+                WHEN (n*sxx - sx*sx) > 0 AND (n*syy - sy*sy) > 0
+                THEN (n*sxy - sx*sy)
+                     / sqrt((n*sxx - sx*sx) * (n*syy - sy*sy))
+                ELSE 0.0
+            END AS r
+        FROM pearson_sums
+    ),
+    -- v0.2: aggregate per (subject, recipe). Weighted mean of |r| with
+    -- weight = avg_corr_magnitude (the recipe's per-indicator importance).
+    -- Indicators with insufficient paired years (<3) silently drop out;
+    -- the coverage_ratio reflects that.
     aggregated AS (
         SELECT
-            country_id,
+            subject_id AS country_id,
             event_category,
-            sum(weight * (CASE WHEN present THEN 1.0 ELSE 0.0 END))
-                / nullif(sum(weight), 0.0) AS similarity_raw,
-            cast(sum(CASE WHEN present THEN 1 ELSE 0 END) as integer) AS indicators_matched,
+            sum(ABS(r) * weight) / nullif(sum(weight), 0.0) AS similarity_raw,
+            cast(count(*) as integer) AS indicators_matched,
             cast(max(n_in_fp) as integer) AS indicators_in_fingerprint,
-            cast(sum(CASE WHEN present THEN 1 ELSE 0 END) as double)
-                / nullif(cast(max(n_in_fp) as double), 0.0) AS coverage_ratio,
+            cast(count(*) as double) / nullif(cast(max(n_in_fp) as double), 0.0)
+                AS coverage_ratio,
             bool_or(recipe_contains_predicted) AS contains_predicted
-        FROM country_indicator_check
-        GROUP BY country_id, event_category
+        FROM r_per_indicator
+        GROUP BY subject_id, event_category
     )
     SELECT
-        country_id,
+        cast(country_id as smallint) AS country_id,
         event_category,
         cast(similarity_raw as real) AS similarity_raw,
-        -- v0.1: similarity_calibrated == similarity_raw. Part B (Platt
-        -- calibration) updates this column on the next pipeline run.
+        -- v0.2: similarity_calibrated == similarity_raw still — Part B
+        -- (Platt) trains (a,b) per tier in qgi-ml/scripts/calibrate_recipe_similarity.py
+        -- and publishes to s3://{bucket}/calibration/recipe_similarity_v{N}/.
+        -- Lambda runtime read + sigmoid application is a follow-up commit.
         cast(similarity_raw as real) AS similarity_calibrated,
         cast(indicators_matched as smallint) AS indicators_matched,
         cast(indicators_in_fingerprint as smallint) AS indicators_in_fingerprint,
@@ -768,7 +893,7 @@ def write_country_recipe_scores():
         cast(NULL as varchar) AS calibration_mapping_version
     FROM aggregated
     """
-    logger.info("Inserting into country_recipe_scores (Phase 5b.6.6 v0.1)")
+    logger.info("Inserting into country_recipe_scores (Phase 5b.6.6 v0.2 Pearson)")
     run_query(sql)
     logger.info(f"Wrote {ATHENA_DB}.{COUNTRY_RECIPE_SCORES_TABLE_NAME}")
 
