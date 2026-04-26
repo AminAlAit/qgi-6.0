@@ -8,6 +8,8 @@
  */
 import type { MetadataRoute } from "next";
 import { loadCountryRisks } from "@/lib/country-risks";
+import { countrySlug } from "@/lib/slug";
+import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://qgintelligence.com";
 
@@ -66,26 +68,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
-  // Country-profile + per-category drill-downs.
+  // #464: V2.0 canonical URLs.
+  //   /precedents/{slug}                — Recipe (one per L3 category)
+  //   /signals/{country-slug}           — country-rolled-up watchlist
+  //   /signals/{country-slug}/{slug}    — country-vs-recipe leaf
+  //   /countries/{id}                   — country profile (unchanged)
+  //   /countries/{id}/{cat}             — DROPPED (301 to /signals/...)
+  //
+  // The old /countries/{id}/{cat} entries are gone because the route
+  // 301-redirects. Search engines should crawl the canonical
+  // /signals/{slug}/{cat} URL — emitting both invites duplicate-content
+  // signals.
+
+  // /precedents/{slug} — one per L3 taxonomy code (71 entries).
+  for (const slug of Object.keys(CATEGORY_L1_MAP)) {
+    entries.push({
+      url: `${BASE_URL}/precedents/${slug}`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    });
+  }
+
+  // Country-profile + signals routes.
   try {
     const data = await loadCountryRisks();
     const lastMod = data.generated_at ? new Date(data.generated_at) : now;
     for (const [id, country] of Object.entries(data.countries)) {
+      // /countries/{id} — country profile (unchanged from V1.x).
       entries.push({
         url: `${BASE_URL}/countries/${id}`,
         lastModified: lastMod,
         changeFrequency: "weekly",
         priority: country.overall_risk_tier === "HIGH" ? 0.7 : 0.5,
       });
-      // Surface top categories per country so search engines can reach
-      // the precedent-detail pages directly.
+
+      const slug = countrySlug(country.name);
+      if (!slug) continue;
+
+      // /signals/{country-slug} — country-rolled-up watchlist.
+      entries.push({
+        url: `${BASE_URL}/signals/${slug}`,
+        lastModified: lastMod,
+        changeFrequency: "weekly",
+        priority: country.overall_risk_tier === "HIGH" ? 0.7 : 0.5,
+      });
+
+      // /signals/{country-slug}/{cat} — top categories per country
+      // (replaces the old /countries/{id}/{cat} entries).
       const seenCats = new Set<string>();
       for (const tier of Object.values(country.tiers)) {
         for (const cat of tier.top_categories.slice(0, 3)) {
           if (seenCats.has(cat.category)) continue;
           seenCats.add(cat.category);
           entries.push({
-            url: `${BASE_URL}/countries/${id}/${cat.category}`,
+            url: `${BASE_URL}/signals/${slug}/${cat.category}`,
             lastModified: lastMod,
             changeFrequency: "weekly",
             priority: 0.4,
