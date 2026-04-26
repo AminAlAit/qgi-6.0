@@ -388,6 +388,13 @@ resource "aws_glue_catalog_table" "scdis" {
       name = "indicator_numeric_id"
       type = "smallint"
     }
+    # #461 (D7 plumbing): true when any year in either segment_a or
+    # segment_b had `is_predicted=true` in indicators_completed. Pre-#461
+    # rows have NULL; downstream consumers must coalesce to false.
+    columns {
+      name = "contains_predicted"
+      type = "boolean"
+    }
   }
 
   partition_keys {
@@ -465,6 +472,13 @@ resource "aws_glue_catalog_table" "patterns" {
     columns {
       name = "pattern_tier"
       type = "string"
+    }
+    # #461 (D7 plumbing): aggregated `OR(scdi.contains_predicted)` across
+    # the SCDIs that contributed to this pattern. Pre-#461 rows have NULL;
+    # the recipe-engine + frontend badge logic coalesces NULL to false.
+    columns {
+      name = "contains_predicted"
+      type = "boolean"
     }
   }
 
