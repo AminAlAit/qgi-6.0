@@ -380,8 +380,24 @@ export function PrecedentDetailClient({
                 // #440: same Route cast pattern as patterns/ranking — typed
                 // routes can't pre-validate runtime query strings, but the
                 // path part (`/patterns`) still gets a compile-time check.
-                const patternHref =
-                  `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}` as Route;
+                //
+                // #457 item 6: deep-link to the specific Pattern instance
+                // when length + start years are known on this analogue
+                // row. PatternsClient (lines 444-451 of PatternsClient.tsx)
+                // reads `length`, `start_a`, `start_b` from the URL and
+                // initializes its detail-mode state. Was deferred earlier
+                // due to /api/patterns/detail cache-miss 500s; #425 fixed
+                // those. Falls back to the list view when pair_* fields
+                // are absent (legacy data without the v2 enrichment).
+                const patternLength = a.pair_length ?? a.best_pattern_length;
+                const patternStartA = a.pair_start_a ?? a.best_pattern_start_a;
+                const patternStartB = a.pair_start_b ?? a.best_pattern_start_b;
+                const baseHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`;
+                const patternHref = (
+                  patternLength != null && patternStartA != null && patternStartB != null
+                    ? `${baseHref}&length=${patternLength}&start_a=${patternStartA}&start_b=${patternStartB}`
+                    : baseHref
+                ) as Route;
 
                 return (
                   <div
