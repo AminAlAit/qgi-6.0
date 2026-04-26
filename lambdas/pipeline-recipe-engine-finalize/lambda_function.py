@@ -287,8 +287,11 @@ def create_recipes_deduped_view():
     lands, retire this view. Until then, this is the cheapest fix for the
     inflation bug that doesn't require a recipe-engine rewrite.
 
-    Requires Athena engine v3 for `SELECT * EXCEPT`. Confirmed live in
-    QGI-Lambda-Workgroup.
+    Outer SELECT enumerates the 27 columns of qgi_data.recipes (26 regular
+    + country_a_id partition key) instead of `SELECT * EXCEPT(rn)`. Athena's
+    Trino dialect does not support `EXCEPT (col)` despite older comments
+    claiming so — confirmed against engine v3 in QGI-Lambda-Workgroup on
+    2026-04-26 with InvalidRequestException ('mismatched input rn').
     """
     sql = f"""
     CREATE OR REPLACE VIEW {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} AS
@@ -301,7 +304,15 @@ def create_recipes_deduped_view():
                ) AS rn
         FROM {ATHENA_DB}.recipes
     )
-    SELECT * EXCEPT(rn) FROM ranked WHERE rn = 1
+    SELECT recipe_id, event_category, pattern_id, country_a_id, country_b_id,
+           country_a_name, country_b_name, start_year_a, start_year_b, length,
+           avg_correlation, end_year_a, end_year_b, event_window,
+           event_year_a, event_year_b, event_title_a, event_title_b,
+           indicator_count, pattern_power_score, instance_count, pattern_tier,
+           median_lead_time_b, min_lead_time_b, max_lead_time_b,
+           median_lead_time_a, pps
+    FROM ranked
+    WHERE rn = 1
     """
     logger.info("Creating recipes_deduped view (bullet-6 longest-pattern collapse)")
     run_query(sql)
