@@ -587,6 +587,106 @@ resource "aws_glue_catalog_table" "indicators_completed" {
 }
 
 # ---------------------------------------------------------------------------
+# Glue — recipes_aggregated table (#462 Fork B Level-4 Recipe object)
+#
+# Phase 5b.6.5 output: one row per L3 event_category (71 rows total). The
+# Recipe-as-aggregated-fingerprint phase the audit found missing — founder's
+# bullets 1, 2, 6 implemented as a real Athena CTAS scanning the deduped
+# recipes view (#458) joined to patterns (for indicator IDs).
+#
+# Per Majles consult Decision 3 (carried OPPOSE 6-5): MVP property list
+# extended from 3 to 11 to satisfy the council's calibration / uncertainty /
+# coverage-bias / provenance pushback. See:
+#   - qgi-docs/internal/majles/2026-04-25_recipe_v2_majles_consult.md
+#     (Decision 3 + Step 4 synthesis)
+#   - qgi-docs/internal/majles/2026-04-25_recipe_audit.md §4 (schema)
+#
+# This table is Terraform-managed (unlike `recipes` which goes through
+# Athena CTAS) — V2.0's first-class object deserves explicit schema
+# control so a producer-side regression fails LOUD on the next pipeline
+# run rather than silently drifting.
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "recipes_aggregated" {
+  name          = "recipes_aggregated"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-recipe-aggregator/output/data/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    # Core spec
+    columns {
+      name = "event_category"
+      type = "string"
+    }
+    columns {
+      name = "canonical_length"
+      type = "smallint"
+    }
+    # Marcus + Roshani: dispersion alongside point estimate.
+    columns {
+      name = "length_distribution"
+      type = "array<struct<length:smallint,count:bigint>>"
+    }
+    # Marcus + Roshani + Kwame: TF-IDF frequency, per-indicator CI, top-K=15.
+    columns {
+      name = "indicator_fingerprint"
+      type = "array<struct<indicator_id:smallint,frequency:float,ci_lower:float,ci_upper:float,avg_corr_magnitude:float,tfidf_score:float>>"
+    }
+    # Amara: surface Eurocentric-data-skew as first-class property.
+    columns {
+      name = "coverage_bias_diagnostic"
+      type = "struct<n_pairs:int,oecd_share:float,regional_concentration:array<struct<region:string,share:float>>>"
+    }
+    columns {
+      name = "total_instances"
+      type = "bigint"
+    }
+    columns {
+      name = "n_distinct_country_pairs"
+      type = "bigint"
+    }
+    # Ciaran: provenance for ops + drift detection.
+    columns {
+      name = "last_recomputed_at"
+      type = "timestamp"
+    }
+    columns {
+      name = "pipeline_version"
+      type = "string"
+    }
+    # Nadia: schema-evolution discipline.
+    columns {
+      name = "schema_version"
+      type = "smallint"
+    }
+    # #461 D7 plumbing inherited.
+    columns {
+      name = "contains_predicted"
+      type = "boolean"
+    }
+  }
+
+  # No partition keys: 71 rows total, partitioning is overkill.
+}
+
+# ---------------------------------------------------------------------------
 # Glue — countries table (reference data, backed by CSV in S3)
 # ---------------------------------------------------------------------------
 resource "aws_glue_catalog_table" "countries" {
