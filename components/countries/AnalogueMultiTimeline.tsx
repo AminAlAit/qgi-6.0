@@ -117,13 +117,21 @@ export function AnalogueMultiTimeline({
 
     // Priority 1: v2 length-L aligned window.
     if (a.pair_start_b !== undefined && a.pair_length !== undefined) {
+      const patternEnd = a.pair_start_b + a.pair_length;
+      // #457 item 8: recompute terminus check defensively. Pipeline-side
+      // `event_in_window` historically used containment semantics
+      // (eyb ∈ [start, end]) which falsely passed Tier-3 fallback rows
+      // where the event sat anywhere inside a long bar. Terminus is the
+      // honest visual narrative: "pattern terminates at the event."
+      const eventInWindow =
+        eventYear != null && Math.abs(eventYear - patternEnd) <= END_ALIGNMENT_TOLERANCE;
       return {
         start: a.pair_start_b,
-        end: a.pair_start_b + a.pair_length,
+        end: patternEnd,
         length: a.pair_length,
         isReal: true,
         isCommonLength: true,
-        eventInWindow: a.event_in_window ?? false,
+        eventInWindow,
         subjectStartA: a.pair_start_a,
       };
     }
@@ -143,7 +151,10 @@ export function AnalogueMultiTimeline({
           length: a.best_pattern_length,
           isReal: true,
           isCommonLength: false,
-          eventInWindow: eventYear >= a.best_pattern_start_b && eventYear <= legacyEnd,
+          // #457 item 8: terminus check matches Priority 1. Inside this
+          // branch the precondition above already guarantees it's true,
+          // but state it explicitly for parity with the v2 path.
+          eventInWindow: Math.abs(eventYear - legacyEnd) <= END_ALIGNMENT_TOLERANCE,
           subjectStartA: a.best_pattern_start_a,
         };
       }
@@ -184,9 +195,19 @@ export function AnalogueMultiTimeline({
   // undefined. Without this guard the legend literally renders "L=?yr".
   const showCommonLengthLabel = allCommonLength && canonicalLength != null;
 
+  // #457 item 2: when the subject country has already had the event for
+  // this category, the synthetic "[NOW − canonicalLength, NOW]" cyan bar
+  // labelled "PATTERN STILL UNFOLDING" is a visual lie — the pattern has
+  // already concluded. Hide the dedicated subject row and surface the
+  // event-already-happened fact as a stat line above the SVG instead.
+  const subjectHadEvent =
+    subject.subject_event_year_a !== null && subject.subject_event_year_a !== undefined;
+
   // Compute axis range — include event markers + every pattern window + padding
   const allYears: number[] = [CURRENT_YEAR];
-  allYears.push(CURRENT_YEAR - patternWindowYears); // subject pattern start approx
+  if (!subjectHadEvent) {
+    allYears.push(CURRENT_YEAR - patternWindowYears); // subject "still unfolding" bar
+  }
   if (
     subject.subject_event_year_a !== null &&
     subject.subject_event_year_a !== undefined
@@ -196,6 +217,13 @@ export function AnalogueMultiTimeline({
   withEvents.forEach((a) => {
     const pw = resolveAnaloguePattern(a);
     allYears.push(pw.start, pw.end);
+    // #457 item 3: per-row subject pattern segment at [pair_start_a, +L].
+    // Each analogue row now renders the SUBJECT's matching segment as a
+    // cyan bar alongside the analogue's orange bar — one small bar per
+    // pair, not one shared rectangle that doesn't match any specific pair.
+    if (a.pair_start_a !== undefined && a.pair_length !== undefined) {
+      allYears.push(a.pair_start_a, a.pair_start_a + a.pair_length);
+    }
     if (a.event_year_b !== null && a.event_year_b !== undefined) {
       allYears.push(a.event_year_b);
     }
@@ -212,7 +240,8 @@ export function AnalogueMultiTimeline({
   const rowHeight = 44;
   const barHeight = 14;
   const innerWidth = width - marginLeft - marginRight;
-  const rowCount = 1 + withEvents.length + (withoutEvents.length > 0 ? 1 : 0); // subject + analogues + optional "pending" row
+  const rowCount =
+    (subjectHadEvent ? 0 : 1) + withEvents.length + (withoutEvents.length > 0 ? 1 : 0);
   const height = marginTop + rowCount * rowHeight + 84; // + legend + x-axis area
 
   const xOf = (year: number) =>
@@ -268,12 +297,29 @@ export function AnalogueMultiTimeline({
         </div>
       </div>
 
+      {/* #457 item 2: subject-already-had-event stat. Replaces the
+          synthetic "PATTERN STILL UNFOLDING" cyan bar that misrepresented
+          the subject's status when the event had already occurred. */}
+      {subjectHadEvent && (
+        <p className="mb-3 text-xs leading-relaxed" style={{ color: "var(--qgi-text)" }}>
+          <strong style={{ color: COLOR_SUBJECT }}>{subject.country_name}</strong> had a{" "}
+          <strong>{categoryLabel}</strong> event in{" "}
+          <strong style={{ color: COLOR_EVENT }}>{subject.subject_event_year_a}</strong>.
+          The analogues below are the historical Pattern instances that backed this
+          recipe.
+        </p>
+      )}
+
       <svg
         viewBox={`0 0 ${width} ${height}`}
         className="w-full h-auto"
         style={{ maxHeight: Math.max(320, height) }}
         role="img"
-        aria-label={`Timeline comparing ${subject.country_name}'s pattern to ${withEvents.length} historical analogues that experienced ${categoryLabel}. Subject pattern extends to ${CURRENT_YEAR}; analogue patterns end at their historical event.`}
+        aria-label={
+          subjectHadEvent
+            ? `Timeline comparing ${withEvents.length} historical analogues that experienced ${categoryLabel}. ${subject.country_name} had its event in ${subject.subject_event_year_a}; analogue rows show the matching pattern segments alongside each historical pattern that backed this recipe.`
+            : `Timeline comparing ${subject.country_name}'s pattern to ${withEvents.length} historical analogues that experienced ${categoryLabel}. Subject pattern extends to ${CURRENT_YEAR}; analogue patterns end at their historical event.`
+        }
       >
         {/* Year grid lines */}
         {ticks.map((y) => (
@@ -288,83 +334,102 @@ export function AnalogueMultiTimeline({
           />
         ))}
 
-        {/* ────── Subject row ────── */}
-        <g transform={`translate(0, ${yOf(0)})`}>
-          <text
-            x={marginLeft - 12}
-            y={barHeight / 2 + 5}
-            fontSize="12"
-            fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
-            fontWeight={700}
-            textAnchor="end"
-            fill={COLOR_SUBJECT}
-          >
-            {subject.country_name?.toUpperCase()}
-          </text>
-          <text
-            x={marginLeft - 12}
-            y={barHeight / 2 + 20}
-            fontSize="9"
-            fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
-            textAnchor="end"
-            fill={COLOR_LABEL}
-            letterSpacing="0.1em"
-          >
-            SUBJECT
-          </text>
+        {/* ────── Subject row (only when subject hasn't had the event — #457 item 2) ────── */}
+        {!subjectHadEvent && (
+          <g transform={`translate(0, ${yOf(0)})`}>
+            <text
+              x={marginLeft - 12}
+              y={barHeight / 2 + 5}
+              fontSize="12"
+              fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
+              fontWeight={700}
+              textAnchor="end"
+              fill={COLOR_SUBJECT}
+            >
+              {subject.country_name?.toUpperCase()}
+            </text>
+            <text
+              x={marginLeft - 12}
+              y={barHeight / 2 + 20}
+              fontSize="9"
+              fontFamily="ui-monospace, Cascadia Mono, Consolas, monospace"
+              textAnchor="end"
+              fill={COLOR_LABEL}
+              letterSpacing="0.1em"
+            >
+              SUBJECT
+            </text>
 
-          {/* Subject pattern bar — extends to NOW, no event marker */}
-          <rect
-            x={xOf(subjectStart)}
-            y={0}
-            width={xOf(CURRENT_YEAR) - xOf(subjectStart)}
-            height={barHeight}
-            fill={COLOR_SUBJECT}
-            fillOpacity={0.18}
-            stroke={COLOR_SUBJECT}
-            strokeWidth={1.5}
-            rx={3}
-          />
-          <text
-            x={(xOf(subjectStart) + xOf(CURRENT_YEAR)) / 2}
-            y={-4}
-            fontSize="9"
-            fontFamily="ui-monospace, monospace"
-            textAnchor="middle"
-            fill={COLOR_SUBJECT}
-          >
-            ~{subjectStart}–{CURRENT_YEAR}
-          </text>
-
-          {/* NOW marker at the right end of the subject bar */}
-          <g transform={`translate(${xOf(CURRENT_YEAR)}, ${barHeight / 2})`}>
-            <circle
-              r={5}
-              fill={COLOR_NOW}
-              fillOpacity={0.2}
-              stroke={COLOR_NOW}
+            {/* Subject pattern bar — extends to NOW, no event marker */}
+            <rect
+              x={xOf(subjectStart)}
+              y={0}
+              width={xOf(CURRENT_YEAR) - xOf(subjectStart)}
+              height={barHeight}
+              fill={COLOR_SUBJECT}
+              fillOpacity={0.18}
+              stroke={COLOR_SUBJECT}
               strokeWidth={1.5}
+              rx={3}
             />
             <text
-              x={8}
-              y={4}
-              fontSize="9.5"
+              x={(xOf(subjectStart) + xOf(CURRENT_YEAR)) / 2}
+              y={-4}
+              fontSize="9"
               fontFamily="ui-monospace, monospace"
-              fill={COLOR_NOW}
-              fontWeight={600}
+              textAnchor="middle"
+              fill={COLOR_SUBJECT}
             >
-              NOW ({CURRENT_YEAR})
+              ~{subjectStart}–{CURRENT_YEAR}
             </text>
+
+            {/* NOW marker at the right end of the subject bar */}
+            <g transform={`translate(${xOf(CURRENT_YEAR)}, ${barHeight / 2})`}>
+              <circle
+                r={5}
+                fill={COLOR_NOW}
+                fillOpacity={0.2}
+                stroke={COLOR_NOW}
+                strokeWidth={1.5}
+              />
+              <text
+                x={8}
+                y={4}
+                fontSize="9.5"
+                fontFamily="ui-monospace, monospace"
+                fill={COLOR_NOW}
+                fontWeight={600}
+              >
+                NOW ({CURRENT_YEAR})
+              </text>
+            </g>
           </g>
-        </g>
+        )}
 
         {/* ────── Analogue rows ────── */}
         {withEvents.map((a, i) => {
-          const rowIdx = i + 1;
+          // #457 item 2: when the subject row is hidden (subject already
+          // had the event), analogue rows start at index 0 instead of 1.
+          const rowIdx = subjectHadEvent ? i : i + 1;
           const eventYear = a.event_year_b as number;
           const pw = resolveAnaloguePattern(a);
           const patternStart = pw.start;
           const patternEnd = pw.end;
+          // #457 item 3: subject pattern segment for THIS pair, drawn
+          // alongside the analogue's pattern. Reads as "your country's
+          // years X-Y align with the analogue's years M-N" — granular
+          // alignment instead of the old shared cyan-to-NOW rectangle
+          // that didn't match any specific pair. Skipped when pair_*
+          // fields are absent (legacy data without v2 enrichment).
+          const hasSubjectSegment =
+            a.pair_start_a !== undefined && a.pair_length !== undefined;
+          const subjectSegStart = a.pair_start_a;
+          const subjectSegEnd =
+            hasSubjectSegment &&
+            a.pair_start_a !== undefined &&
+            a.pair_length !== undefined
+              ? a.pair_start_a + a.pair_length
+              : undefined;
           // #354: prefer the length-L pair PPS + corr when available, else
           // fall back to the global best-PPS fields.
           const displayPps = a.pair_pps ?? a.best_pps;
@@ -396,6 +461,40 @@ export function AnalogueMultiTimeline({
                 corr {(displayCorr * 100).toFixed(0)}% · pps {displayPps.toFixed(0)} ·{" "}
                 {pw.length}yr
               </text>
+
+              {/* #457 item 3: subject pattern segment (cyan), drawn at
+                  this pair's [pair_start_a, pair_start_a + pair_length].
+                  Lighter fill than the analogue bar so it visually reads
+                  as "your country's matching segment" rather than
+                  competing with the analogue's pattern. */}
+              {hasSubjectSegment &&
+                subjectSegStart !== undefined &&
+                subjectSegEnd !== undefined && (
+                  <>
+                    <rect
+                      x={xOf(subjectSegStart)}
+                      y={0}
+                      width={xOf(subjectSegEnd) - xOf(subjectSegStart)}
+                      height={barHeight}
+                      fill={COLOR_SUBJECT}
+                      fillOpacity={0.18}
+                      stroke={COLOR_SUBJECT}
+                      strokeWidth={1}
+                      rx={2}
+                    />
+                    <text
+                      x={(xOf(subjectSegStart) + xOf(subjectSegEnd)) / 2}
+                      y={-4}
+                      fontSize="8.5"
+                      fontFamily="ui-monospace, monospace"
+                      textAnchor="middle"
+                      fill={COLOR_SUBJECT}
+                      fillOpacity={0.85}
+                    >
+                      {subjectSegStart}–{subjectSegEnd}
+                    </text>
+                  </>
+                )}
 
               {/* Analogue pattern bar. Earlier iteration rendered
                   fallback windows (15yr event-anchored approximation)
@@ -453,18 +552,35 @@ export function AnalogueMultiTimeline({
                 </g>
               )}
 
-              {/* #354v2 event marker — diamond at pattern's RIGHT edge.
-                  Visually anchoring the marker to `patternEnd` rather
-                  than `eventYear` guarantees the "pattern → event"
-                  narrative reads cleanly even when the per-pair
-                  end-alignment drifts by 1-2 years due to sparse
-                  pair-windows coverage. The adjacent label still
-                  reports the REAL event year so truth is preserved.
+              {/* #457 item 1: tail line from pattern end to real event
+                  year when they differ (the D4 ±2 grace window). Reads
+                  as "model observed up to here, event happened over
+                  here" — convention from event-aware timelines. */}
+              {patternEnd !== eventYear && (
+                <line
+                  x1={xOf(patternEnd)}
+                  y1={barHeight / 2}
+                  x2={xOf(eventYear)}
+                  y2={barHeight / 2}
+                  stroke={COLOR_LABEL}
+                  strokeWidth={1}
+                  strokeDasharray="2 2"
+                  opacity={0.7}
+                />
+              )}
+
+              {/* #457 item 1: diamond at REAL event year. Previously
+                  anchored to `patternEnd` to keep the marker on the
+                  bar's right edge — but that misrepresented the event
+                  when the pair-window's end and the event year drifted
+                  apart (up to ±2yr per the D4 grace window). With the
+                  tail line above bridging the visual gap, the diamond
+                  can sit at the truth.
 
                   Shape: rotated-square diamond (12px across) — a neutral
                   geometric marker that fits QGI's data-observatory
                   aesthetic (no star, no achievement glyph). */}
-              <g transform={`translate(${xOf(patternEnd)}, ${barHeight / 2})`}>
+              <g transform={`translate(${xOf(eventYear)}, ${barHeight / 2})`}>
                 <polygon
                   points="0,-6 6,0 0,6 -6,0"
                   fill={COLOR_EVENT}
@@ -472,22 +588,27 @@ export function AnalogueMultiTimeline({
                   strokeWidth={1.25}
                 />
               </g>
-              <text
-                x={xOf(patternEnd) + 12}
-                y={barHeight / 2 + 4}
-                fontSize="9.5"
-                fontFamily="ui-monospace, monospace"
-                fill={COLOR_EVENT}
-                fontWeight={600}
-              >
-                ◆ {eventYear}
-                {patternEnd !== eventYear && (
-                  <tspan fill={COLOR_LABEL} fontWeight={400}>
-                    {" "}
-                    (pattern ends {patternEnd})
-                  </tspan>
-                )}
-              </text>
+              {/* #457 item 7: anchor the label "end" when the diamond is
+                  near the right edge so the year text doesn't clip past
+                  the viewBox. Threshold ~80px reserves enough room for
+                  "◆ 1994" at fontSize 9.5. */}
+              {(() => {
+                const labelX = xOf(eventYear);
+                const nearRightEdge = labelX > width - marginRight - 80;
+                return (
+                  <text
+                    x={nearRightEdge ? labelX - 12 : labelX + 12}
+                    y={barHeight / 2 + 4}
+                    fontSize="9.5"
+                    fontFamily="ui-monospace, monospace"
+                    fill={COLOR_EVENT}
+                    fontWeight={600}
+                    textAnchor={nearRightEdge ? "end" : "start"}
+                  >
+                    ◆ {eventYear}
+                  </text>
+                );
+              })()}
             </g>
           );
         })}
@@ -495,7 +616,9 @@ export function AnalogueMultiTimeline({
         {/* Pending-data row for analogues without event info (rare; <3%) */}
         {withoutEvents.length > 0 &&
           (() => {
-            const rowIdx = 1 + withEvents.length;
+            // #457 item 2: pending row index shifts up when the subject
+            // row is hidden because the subject already had the event.
+            const rowIdx = (subjectHadEvent ? 0 : 1) + withEvents.length;
             return (
               <g transform={`translate(0, ${yOf(rowIdx)})`}>
                 <text
@@ -569,7 +692,11 @@ export function AnalogueMultiTimeline({
       >
         <LegendEntry
           color={COLOR_SUBJECT}
-          label={`${subject.country_name?.toUpperCase() ?? "SUBJECT"} — PATTERN STILL UNFOLDING`}
+          label={
+            subjectHadEvent
+              ? `${subject.country_name?.toUpperCase() ?? "SUBJECT"} — MATCHING PATTERN SEGMENT`
+              : `${subject.country_name?.toUpperCase() ?? "SUBJECT"} — PATTERN STILL UNFOLDING`
+          }
         />
         <LegendEntry color={COLOR_ANALOGUE} label="ANALOGUE — PATTERN ENDED AT EVENT" />
         <LegendEntry
@@ -577,7 +704,9 @@ export function AnalogueMultiTimeline({
           label={`◆ ${categoryLabel.toUpperCase()} (REAL EVENT YEAR)`}
           isDiamond
         />
-        <LegendEntry color={COLOR_NOW} label={`NOW · ${CURRENT_YEAR}`} isDashed />
+        {!subjectHadEvent && (
+          <LegendEntry color={COLOR_NOW} label={`NOW · ${CURRENT_YEAR}`} isDashed />
+        )}
       </div>
 
       {/* #354 footnote: when fewer analogues are shown than originally
