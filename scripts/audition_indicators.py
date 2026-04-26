@@ -227,13 +227,27 @@ def tier_for_length(L: int) -> str:
 # Stage 1: per-recipe feature preparation
 # ---------------------------------------------------------------------------
 
-INDICATOR_FEATURE_STATS = ["mean", "std", "last_value", "slope", "change", "n_obs"]
+# Two feature-stat modes (#484 country-identity de-confound):
+#
+# - LEGACY (--no-deconfound): the v0 stats — mean, std, last_value carry raw
+#   level information, which the GBM exploited as a country-identity proxy
+#   (e.g. SP.POP.TOTL "lift" was actually country-size identification).
+#
+# - DECONFOUND (default): scale-invariant stats only. std normalized by
+#   |mean|, slope expressed as relative-rate over the window, change as
+#   percent change. Country identity does not survive these transformations.
+#
+# n_obs is dimensionless and present in both modes.
+INDICATOR_FEATURE_STATS_LEGACY = ["mean", "std", "last_value", "slope", "change", "n_obs"]
+INDICATOR_FEATURE_STATS_DECONF = ["std_norm", "slope_norm", "pct_change", "n_obs"]
+
+EPS = 1e-9
 
 
-def _stats_for_series(years: np.ndarray, values: np.ndarray) -> list[float]:
-    """6-stat summary of an indicator's window for one country."""
+def _stats_legacy(years: np.ndarray, values: np.ndarray) -> list[float]:
+    """v0 stat set — mean/std/last/slope/change/n_obs. Identity-leaky."""
     if values.size == 0:
-        return [np.nan] * len(INDICATOR_FEATURE_STATS)
+        return [np.nan] * len(INDICATOR_FEATURE_STATS_LEGACY)
     mean = float(np.mean(values))
     std = float(np.std(values)) if values.size > 1 else 0.0
     last_value = float(values[-1])
@@ -244,6 +258,40 @@ def _stats_for_series(years: np.ndarray, values: np.ndarray) -> list[float]:
     change = float(values[-1] - values[0])
     n_obs = int(values.size)
     return [mean, std, last_value, slope, change, n_obs]
+
+
+def _stats_deconfound(years: np.ndarray, values: np.ndarray) -> list[float]:
+    """Country-identity de-confounded stat set. All values scale-invariant.
+
+    - std_norm   = std / (|mean| + eps)         coefficient of variation
+    - slope_norm = (slope * window_len) / (|mean| + eps)
+                                                relative total change rate
+    - pct_change = (last - first) / (|first| + eps)   relative total change
+    - n_obs      = sample size                  dimensionless
+    """
+    if values.size == 0:
+        return [np.nan] * len(INDICATOR_FEATURE_STATS_DECONF)
+    mean = float(np.mean(values))
+    std = float(np.std(values)) if values.size > 1 else 0.0
+    abs_mean = abs(mean) + EPS
+    std_norm = std / abs_mean
+
+    if values.size > 1 and np.std(years) > 0:
+        slope = float(np.polyfit(years, values, 1)[0])
+        window_len = float(years.max() - years.min())
+        slope_norm = (slope * window_len) / abs_mean
+    else:
+        slope_norm = 0.0
+
+    abs_first = abs(float(values[0])) + EPS
+    pct_change = float(values[-1] - values[0]) / abs_first
+    n_obs = int(values.size)
+    return [std_norm, slope_norm, pct_change, n_obs]
+
+
+# Selected at runtime via the --deconfound / --no-deconfound CLI flag.
+INDICATOR_FEATURE_STATS = INDICATOR_FEATURE_STATS_DECONF
+_stats_for_series = _stats_deconfound
 
 
 def build_feature_matrix_v2(panel: pd.DataFrame, fingerprint: list[dict],
@@ -517,7 +565,26 @@ def main() -> int:
     p.add_argument("--output-dir", type=Path, required=True)
     p.add_argument("--upload", action="store_true",
                    help="Persist results to qgi_data.indicator_recipe_audit_results (v0.5)")
+    p.add_argument("--no-deconfound", action="store_true",
+                   help="Use the v0 legacy stat set (mean, std, last_value, slope, "
+                        "change, n_obs) instead of the de-confounded stat set "
+                        "(std_norm, slope_norm, pct_change, n_obs). Default is "
+                        "deconfound, which kills the country-identity leakage that "
+                        "inflated v0 AUCs (#484).")
     args = p.parse_args()
+
+    # Switch the stat set BEFORE any feature build calls. This mutates the
+    # module-level INDICATOR_FEATURE_STATS + _stats_for_series binding so that
+    # build_feature_matrix_v2 consults the chosen mode.
+    global INDICATOR_FEATURE_STATS, _stats_for_series
+    if args.no_deconfound:
+        INDICATOR_FEATURE_STATS = INDICATOR_FEATURE_STATS_LEGACY
+        _stats_for_series = _stats_legacy
+        print("[mode] --no-deconfound — LEGACY stat set (identity-leaky baseline)")
+    else:
+        INDICATOR_FEATURE_STATS = INDICATOR_FEATURE_STATS_DECONF
+        _stats_for_series = _stats_deconfound
+        print("[mode] DECONFOUND stat set (scale-invariant, #484 default)")
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
     audit_date = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
