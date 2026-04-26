@@ -1,10 +1,9 @@
 import { loadCountryRisks } from "@/lib/country-risks";
+import { signalCountryUrl, precedentSlugUrl } from "@/lib/recipes-aggregated";
 import {
   loadCountryRecipeScores,
   loadRecipeBySlug,
-  signalCountryUrl,
-  precedentSlugUrl,
-} from "@/lib/recipes-aggregated";
+} from "@/lib/recipes-aggregated-loader";
 import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";

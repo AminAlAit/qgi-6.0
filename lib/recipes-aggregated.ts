@@ -60,27 +60,9 @@ export interface RecipesAggregatedFile {
   recipes: RecipeAggregated[];
 }
 
-/**
- * Load the recipes-aggregated dataset. In Week 2 this reads from the
- * baked mock JSON. In Week 3 a parallel branch will read from
- * `s3://qgi-data-lake/.../recipes_aggregated/` and merge.
- */
-export async function loadRecipesAggregated(): Promise<RecipesAggregatedFile> {
-  const fs = await import("fs/promises");
-  const path = await import("path");
-  const filePath = path.join(process.cwd(), "data", "recipes-aggregated-mock.json");
-  const raw = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(raw) as RecipesAggregatedFile;
-}
-
-export async function loadRecipeBySlug(slug: string): Promise<RecipeAggregated | null> {
-  const data = await loadRecipesAggregated();
-  return data.recipes.find((r) => r.event_category === slug) ?? null;
-}
-
 // ---------------------------------------------------------------------------
-// Country-recipe scores (mock for #463) — co-located here because the same
-// caller usually wants both. Real loader will likewise read from S3.
+// Country-recipe scores (mock for #463) — same file as the recipe types so
+// callers usually wanting both don't have to import twice.
 // ---------------------------------------------------------------------------
 
 export interface CountryRecipeScoresFile {
@@ -91,24 +73,11 @@ export interface CountryRecipeScoresFile {
   scores: Record<string, Record<string, number>>;
 }
 
-export async function loadCountryRecipeScores(): Promise<CountryRecipeScoresFile> {
-  const fs = await import("fs/promises");
-  const path = await import("path");
-  const filePath = path.join(process.cwd(), "data", "country-recipe-scores-mock.json");
-  const raw = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(raw) as CountryRecipeScoresFile;
-}
-
-export async function getCountrySignals(
-  countrySlug: string
-): Promise<Array<{ event_category: string; score: number }>> {
-  const data = await loadCountryRecipeScores();
-  const entry = data.scores[countrySlug];
-  if (!entry) return [];
-  return Object.entries(entry)
-    .map(([event_category, score]) => ({ event_category, score }))
-    .sort((a, b) => b.score - a.score);
-}
+// Loader functions live in `./recipes-aggregated-loader.ts` — that module
+// is poisoned with `import "server-only"` so client components can import
+// the types + URL helpers below without bundling `fs/promises` (which
+// Webpack / Turbopack can't resolve in the browser bundle and 500s the
+// route). See #470 follow-up; bug introduced by the original #464 PR.
 
 // ---------------------------------------------------------------------------
 // URL helpers — keep typed-routes happy in callers.

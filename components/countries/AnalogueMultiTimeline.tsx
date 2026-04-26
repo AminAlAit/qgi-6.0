@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 /**
  * AnalogueMultiTimeline — multi-row shared-axis timeline showing the subject
  * country's pattern extending to the present + each of its top-5 analogues'
@@ -85,6 +87,15 @@ export function AnalogueMultiTimeline({
   droppedCount = 0,
   originalCount,
 }: Props) {
+  // #465 Q2 (progressive disclosure): which analogue's row is currently
+  // expanded to show its non-canonical Pattern instances. null = none.
+  // Expansion renders additional thin stripes WITHIN the row's existing
+  // vertical space (below the canonical bar, above the next row's labels)
+  // so layout doesn't shift — visible at a glance which row is open. Cap
+  // at MAX_SUB_INSTANCES sub-bars to fit the available pixels; remaining
+  // instances accessible via the API or future redesign.
+  const [expandedAnalogueId, setExpandedAnalogueId] = useState<number | null>(null);
+  const MAX_SUB_INSTANCES = 4;
   // Filter to analogues that have an event year (from qgi-data enrichment)
   const withEvents = analogues.filter(
     (a) => a.event_year_b !== null && a.event_year_b !== undefined
@@ -462,6 +473,44 @@ export function AnalogueMultiTimeline({
                 {pw.length}yr
               </text>
 
+              {/* #465 Q2: chevron + click-to-expand when this analogue has
+                  multiple Pattern instances available (pair_instances len
+                  > 1, post-Q2-pipeline data). Rendered as a small "▾ N"
+                  toggle inside the bar area's left margin, so clicking it
+                  doesn't conflict with the bar geometry. Pre-pipeline
+                  data has no pair_instances → toggle hidden, no behavior
+                  change. */}
+              {a.pair_instances && a.pair_instances.length > 1 && (
+                <g
+                  transform={`translate(${marginLeft - 8}, ${barHeight / 2 + 4})`}
+                  onClick={() =>
+                    setExpandedAnalogueId(
+                      expandedAnalogueId === a.country_b_id ? null : a.country_b_id
+                    )
+                  }
+                  style={{ cursor: "pointer" }}
+                >
+                  <title>
+                    {expandedAnalogueId === a.country_b_id ? "Hide" : "Show"}{" "}
+                    {a.pair_instances.length - 1} additional Pattern instance(s) for{" "}
+                    {a.country_b_name}
+                  </title>
+                  {/* Hit target (transparent, larger than visible glyph) */}
+                  <circle r={9} fill="transparent" />
+                  {/* Visible chevron + count */}
+                  <text
+                    fontSize="10"
+                    fontFamily="ui-monospace, monospace"
+                    fill={COLOR_ANALOGUE}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {expandedAnalogueId === a.country_b_id ? "▴" : "▾"}
+                    {a.pair_instances.length}
+                  </text>
+                </g>
+              )}
+
               {/* #457 item 3: subject pattern segment (cyan), drawn at
                   this pair's [pair_start_a, pair_start_a + pair_length].
                   Lighter fill than the analogue bar so it visually reads
@@ -529,6 +578,42 @@ export function AnalogueMultiTimeline({
               >
                 {patternStart}–{patternEnd}
               </text>
+
+              {/* #465 Q2: when this row is expanded, render thin sub-bars
+                  for the non-canonical Pattern instances (skip index 0 —
+                  that's the canonical bar already drawn above). Stacked
+                  below the canonical bar within the row's vertical space
+                  so layout doesn't shift. Cap at MAX_SUB_INSTANCES (4)
+                  to fit; remaining instances accessible via API. Each
+                  sub-bar shows its native length + start_year via title
+                  tooltip — full progressive-disclosure fidelity comes in
+                  v0.2 redesign with proper height management. */}
+              {expandedAnalogueId === a.country_b_id &&
+                a.pair_instances &&
+                a.pair_instances.slice(1, 1 + MAX_SUB_INSTANCES).map((inst, subIdx) => {
+                  const subY = barHeight + 4 + subIdx * 5;
+                  const subEnd = inst.sb + inst.l;
+                  return (
+                    <g key={`sub-${a.country_b_id}-${subIdx}`}>
+                      <title>
+                        Pattern instance #{subIdx + 2}: {inst.sb}–{subEnd}
+                        {" ("}
+                        {inst.l}yr, pps {inst.pps.toFixed(0)}, corr{" "}
+                        {(inst.ac * 100).toFixed(0)}%{")"}
+                      </title>
+                      <rect
+                        x={xOf(inst.sb)}
+                        y={subY}
+                        width={Math.max(2, xOf(subEnd) - xOf(inst.sb))}
+                        height={3}
+                        fill={COLOR_ANALOGUE}
+                        fillOpacity={0.4}
+                        rx={1}
+                      />
+                    </g>
+                  );
+                })}
+
               {/* #354: event-outside-window indicator. When the analogue's
                   median-year event falls outside its length-L pattern, the
                   "pattern → event" narrative breaks. Still render the star
