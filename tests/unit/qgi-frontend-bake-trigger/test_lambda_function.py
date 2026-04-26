@@ -110,7 +110,11 @@ class _FakeResponse:
 
 class TestDispatchWorkflow:
 
-    def test_204_returns_status(self):
+    def test_204_returns_status(self, monkeypatch):
+        # GITHUB_REF is a runner-injected env var on GitHub Actions
+        # (`refs/heads/main`); the Lambda's module-level default of "main"
+        # gets shadowed there. Pin the attribute for deterministic asserts.
+        monkeypatch.setattr(bake_trigger, "GITHUB_REF", "main")
         fake_opener = MagicMock(return_value=_FakeResponse(204))
         status = bake_trigger._dispatch_workflow(
             "token", {"bucket": "b", "key": "k"}, urlopen=fake_opener,
