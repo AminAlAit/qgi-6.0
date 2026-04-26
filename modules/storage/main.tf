@@ -687,6 +687,116 @@ resource "aws_glue_catalog_table" "recipes_aggregated" {
 }
 
 # ---------------------------------------------------------------------------
+# Glue — country_recipe_scores table (#463 Fork B Phase 5b.6.6)
+#
+# One row per (country, event_category) — ~89 × 71 = 6.3K rows total.
+# Output of the Country-vs-Recipe Scoring Lambda: how does this country's
+# current trajectory match the canonical Recipe for this event_category?
+#
+# Per Majles consult Decision 1 (11-0) + Decision 3 calibration requirement
+# (Roshani / Nasrin: "calibration is not optional and is not deferred").
+#
+# Read by:
+# - frontend `/signals/{country}` (all recipes for one country, sorted by score)
+# - frontend `/signals/{country}/{slug}` (single (country, recipe) leaf)
+# - frontend `/precedents/{slug}` ("currently flagged countries" section)
+#
+# No partitioning — table is small enough that full scans cost <0.01¢. The
+# frontend queries are by country_id (signals pages) or event_category
+# (precedents pages); both project well without partitioning.
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "country_recipe_scores" {
+  name          = "country_recipe_scores"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-recipe-scorer/output/data/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "country_id"
+      type = "smallint"
+    }
+    columns {
+      name = "event_category"
+      type = "string"
+    }
+    # Raw similarity in [0, 1] before calibration.
+    columns {
+      name = "similarity_raw"
+      type = "float"
+    }
+    # Calibrated probability in [0, 1] via Platt or isotonic. This is the
+    # number the frontend renders. Roshani's requirement.
+    columns {
+      name = "similarity_calibrated"
+      type = "float"
+    }
+    # Sebastien's partial-coverage tolerance: how many of the fingerprint's
+    # indicators were present in the country's data.
+    columns {
+      name = "indicators_matched"
+      type = "smallint"
+    }
+    columns {
+      name = "indicators_in_fingerprint"
+      type = "smallint"
+    }
+    columns {
+      name = "coverage_ratio"
+      type = "float"
+    }
+    # When coverage < threshold (e.g. 30%), suppressed=true and the
+    # frontend shows "insufficient indicator coverage" rather than a
+    # potentially-misleading score.
+    columns {
+      name = "suppressed"
+      type = "boolean"
+    }
+    columns {
+      name = "suppression_reason"
+      type = "string"
+    }
+    # #461 D7 plumbing inherited from the Recipe.
+    columns {
+      name = "contains_predicted"
+      type = "boolean"
+    }
+    # Ciaran provenance.
+    columns {
+      name = "last_computed_at"
+      type = "timestamp"
+    }
+    columns {
+      name = "pipeline_version"
+      type = "string"
+    }
+    columns {
+      name = "calibration_mapping_version"
+      type = "string"
+    }
+  }
+
+  # No partition keys (~6.3K rows total).
+}
+
+# ---------------------------------------------------------------------------
 # Glue — countries table (reference data, backed by CSV in S3)
 # ---------------------------------------------------------------------------
 resource "aws_glue_catalog_table" "countries" {
