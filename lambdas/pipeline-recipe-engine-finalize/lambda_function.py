@@ -310,7 +310,14 @@ def create_recipes_deduped_view():
            event_year_a, event_year_b, event_title_a, event_title_b,
            indicator_count, pattern_power_score, instance_count, pattern_tier,
            median_lead_time_b, min_lead_time_b, max_lead_time_b,
-           median_lead_time_a, pps
+           median_lead_time_a, pps,
+           -- #461 D7 plumbing: legacy recipes (pre-#461 pipeline run) have no
+           -- contains_predicted column; default false so downstream views and
+           -- the recipes_aggregated CTAS can reference the column without
+           -- erroring on schema-resolution. Once the recipe-engine writer is
+           -- re-run with #461 plumbing, recipes will gain the column and this
+           -- view should be updated to pass it through (tracked in #475).
+           CAST(false AS boolean) AS contains_predicted
     FROM ranked
     WHERE rn = 1
     """
