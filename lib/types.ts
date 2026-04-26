@@ -189,6 +189,16 @@ export interface AnalogueEnrichedEntry {
   event_in_window?: boolean;
 
   /**
+   * #461 (D7 plumbing): true when the underlying Pattern (and the SCDIs that
+   * built it) included any predicted indicator-year via the indicator
+   * completer. Surfaced as a "contains predicted values" badge on the
+   * analogue card so users know the analogue was partly built on forecast
+   * data rather than fully-real observations. False/undefined when absent
+   * (pre-#461 enrichment runs, or pair_* not present at all).
+   */
+  contains_predicted?: boolean;
+
+  /**
    * @deprecated #352: per-pair best-PPS length (independent across analogues).
    * Kept only for data-migration reading compatibility. Use the `pair_*`
    * fields above; they enforce the common-length invariant.
