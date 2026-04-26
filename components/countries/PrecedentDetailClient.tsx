@@ -419,6 +419,24 @@ export function PrecedentDetailClient({
                         >
                           {a.recipe_count.toLocaleString()} precedents
                         </div>
+                        {/* #461 (D7 plumbing): the analogue's underlying
+                            Pattern was built on at least one indicator-year
+                            that came from the indicator completer (forecast),
+                            not raw observations. Surface so users can
+                            interpret the analogue accordingly. */}
+                        {a.contains_predicted && (
+                          <div
+                            className="mt-0.5 inline-block rounded-sm px-1.5 py-0.5 text-[8.5px] font-data tracking-wider uppercase"
+                            style={{
+                              backgroundColor: "rgba(167, 139, 250, 0.12)",
+                              color: "#a78bfa",
+                              border: "1px solid rgba(167, 139, 250, 0.35)",
+                            }}
+                            title="At least one indicator-year underlying this analogue was a forecast (from the indicator completer), not a raw observation. Interpret with that caveat."
+                          >
+                            Includes forecast
+                          </div>
+                        )}
                       </div>
                     </div>
 
