@@ -200,6 +200,20 @@ locals {
       lambda   = "qgi-pipeline-recipe-engine-finalize"
       location = "write_country_risks_json"
     }
+    # #466 Stage A — V2.0 SRE-readiness alarms (Section A item 1 partial coverage).
+    # The Lambda already emits _emit_caught_exception('write_recipes_aggregated_table')
+    # and _emit_caught_exception('write_country_recipe_scores') in pipeline-recipe-
+    # engine-finalize/lambda_function.py — add the alarms so silent-fail of either
+    # writer pages on-call rather than silently emptying the V2.0 tables. Runbook
+    # entries 4 + 5 in qgi-docs/playbooks/v2-recipe-engine.md.
+    "finalize-recipes-aggregated" = {
+      lambda   = "qgi-pipeline-recipe-engine-finalize"
+      location = "write_recipes_aggregated_table"
+    }
+    "finalize-country-recipe-scores" = {
+      lambda   = "qgi-pipeline-recipe-engine-finalize"
+      location = "write_country_recipe_scores"
+    }
   }
 }
 
