@@ -199,6 +199,19 @@ export interface AnalogueEnrichedEntry {
   contains_predicted?: boolean;
 
   /**
+   * #465 Q2 (progressive disclosure): all top-N Pattern instances for this
+   * (subject, analogue) pair, ordered by PPS desc. The first entry mirrors
+   * the canonical `pair_*` fields above (selected as max-PPS per Q4).
+   * AnalogueMultiTimeline renders only the canonical bar by default; on
+   * row hover/click, expands to show all entries stacked.
+   *
+   * Optional + back-compat: when undefined, the component renders the
+   * single canonical bar (pre-Q2 behaviour). New pipeline runs will
+   * populate this; legacy `analogues-enriched.json` snapshots won't.
+   */
+  pair_instances?: PatternInstance[];
+
+  /**
    * @deprecated #352: per-pair best-PPS length (independent across analogues).
    * Kept only for data-migration reading compatibility. Use the `pair_*`
    * fields above; they enforce the common-length invariant.
@@ -208,6 +221,24 @@ export interface AnalogueEnrichedEntry {
   best_pattern_start_a?: number;
   /** @deprecated — see `pair_start_b`. */
   best_pattern_start_b?: number;
+}
+
+/** #465 Q2: a single Pattern instance backing one (subject, analogue) pair. */
+export interface PatternInstance {
+  /** Length in years. */
+  l: number;
+  /** Subject (country_a) start year. */
+  sa: number;
+  /** Analogue (country_b) start year. */
+  sb: number;
+  /** Pattern Power Score. */
+  pps: number;
+  /** Avg correlation magnitude across pattern indicators. */
+  ac: number;
+  /** Indicator count contributing to the pattern. */
+  ic: number;
+  /** #461 D7: any contributing SCDI built on predicted indicator-year? */
+  cp?: boolean;
 }
 
 export interface AnalogueEnrichedSubject {

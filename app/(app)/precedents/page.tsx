@@ -1,4 +1,4 @@
-import { loadRecipesAggregated } from "@/lib/recipes-aggregated";
+import { loadRecipesAggregated } from "@/lib/recipes-aggregated-loader";
 import { PrecedentsAggregatedListClient } from "@/components/precedents/PrecedentsAggregatedListClient";
 import type { Metadata } from "next";
 

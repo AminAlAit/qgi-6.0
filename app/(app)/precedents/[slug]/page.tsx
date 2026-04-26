@@ -1,4 +1,7 @@
-import { loadRecipeBySlug, loadCountryRecipeScores } from "@/lib/recipes-aggregated";
+import {
+  loadRecipeBySlug,
+  loadCountryRecipeScores,
+} from "@/lib/recipes-aggregated-loader";
 import { loadCountryRisks } from "@/lib/country-risks";
 import { PrecedentSlugClient } from "@/components/precedents/PrecedentSlugClient";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
