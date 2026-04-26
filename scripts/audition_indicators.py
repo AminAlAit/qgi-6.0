@@ -184,6 +184,19 @@ def load_countries(ath, bucket, workgroup) -> pd.DataFrame:
     return df
 
 
+def load_indicators_by_provider(ath, bucket, workgroup, provider: str) -> list[str]:
+    """Return distinct indicator_id strings for a given provider (e.g. 'VDEM')."""
+    sql = f"""
+    SELECT DISTINCT indicator_id
+    FROM qgi_data.indicators
+    WHERE provider = '{provider}'
+    """
+    print(f"[athena] indicators with provider='{provider}'")
+    qid = run_athena(ath, sql, bucket, workgroup)
+    rows = athena_fetch_all(ath, qid)
+    return [r[0] for r in rows if r[0]]
+
+
 def load_recipes_aggregated_with_fingerprints(ath, bucket, workgroup) -> list[dict]:
     """Pull event_category, canonical_length, and the indicator_fingerprint
     array (just indicator_id + tfidf_score per element).
@@ -503,15 +516,31 @@ def render_markdown(report: dict, output_path: Path) -> None:
             f"{r['test_auc']:.3f} | {r['top_indicator']} |"
         )
 
-    md.append(f"\n## Per-indicator coverage equity\n")
+    md.append(f"\n## Per-indicator coverage equity (existing fingerprint indicators)\n")
     md.append("| Indicator | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
     md.append("|---|---|---|---|---|---|")
-    for r in sorted(report["per_indicator"], key=lambda r: -r["audition_score"])[:25]:
+    fingerprint_indicators = [r for r in report["per_indicator"] if not r.get("is_candidate")]
+    for r in sorted(fingerprint_indicators, key=lambda r: -r["audition_score"])[:25]:
         md.append(
             f"| {r['indicator_id_string']} | {r['n_countries_with_data']} | "
             f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
             f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
         )
+
+    candidate_indicators = [r for r in report["per_indicator"] if r.get("is_candidate")]
+    if candidate_indicators:
+        md.append(f"\n## CANDIDATE indicators audited (NOT YET in any recipe fingerprint)\n")
+        md.append("These indicators were tested as candidates alongside existing fingerprint members. "
+                  "audition_score reflects their predictive lift across all recipes — informational only "
+                  "(per founder direction, integration is independent of audition).\n")
+        md.append("| Candidate | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
+        md.append("|---|---|---|---|---|---|")
+        for r in sorted(candidate_indicators, key=lambda r: -r["audition_score"]):
+            md.append(
+                f"| {r['indicator_id_string']} | {r['n_countries_with_data']} | "
+                f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
+                f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
+            )
 
     md.append(f"\n## Methodology notes\n")
     md.append("- **Train/holdout:** stratified 80/20 country split per recipe (fixed seed 42)")
@@ -571,6 +600,19 @@ def main() -> int:
                         "(std_norm, slope_norm, pct_change, n_obs). Default is "
                         "deconfound, which kills the country-identity leakage that "
                         "inflated v0 AUCs (#484).")
+    p.add_argument("--candidates-from-provider", default=None,
+                   help="Audit ALL indicators with this provider as candidates "
+                        "alongside each recipe's existing fingerprint indicators. "
+                        "E.g. 'VDEM' adds the 12 V-Dem indicators to every recipe's "
+                        "feature pool. The auditioner reports per-(recipe, candidate) "
+                        "lift, so we can see which V-Dem indicators have predictive "
+                        "lift on which recipes WITHOUT requiring a recipe-engine "
+                        "re-bake. Note: this is a CHEAP, ML-flavored test; for the "
+                        "QGI-aligned pipeline-faithful version, see #480 v1 Tier 1+2.")
+    p.add_argument("--candidate-indicators", default=None,
+                   help="Comma-separated indicator string IDs to audit as "
+                        "candidates (alternative to --candidates-from-provider). "
+                        "E.g. 'v2x_polyarchy,v2x_libdem'.")
     args = p.parse_args()
 
     # Switch the stat set BEFORE any feature build calls. This mutates the
@@ -612,13 +654,30 @@ def main() -> int:
     recipes = load_recipes_aggregated_with_fingerprints(ath, args.bucket, args.workgroup)
     print(f"  recipes_aggregated: {len(recipes)}")
 
-    # Union of all fingerprint indicators we need
+    # Resolve candidate indicators (V-Dem, etc.) from CLI args.
+    candidate_str_ids: list[str] = []
+    if args.candidates_from_provider:
+        candidate_str_ids = load_indicators_by_provider(
+            ath, args.bucket, args.workgroup, args.candidates_from_provider
+        )
+        print(f"  candidates from provider '{args.candidates_from_provider}': "
+              f"{len(candidate_str_ids)} indicators")
+    if args.candidate_indicators:
+        explicit = [s.strip() for s in args.candidate_indicators.split(",") if s.strip()]
+        candidate_str_ids = sorted(set(candidate_str_ids) | set(explicit))
+    candidate_num_ids = {str_to_num[s] for s in candidate_str_ids if s in str_to_num}
+    candidate_set_for_report = set(candidate_num_ids)
+    if candidate_str_ids:
+        print(f"  candidate indicators (resolved to numeric): {sorted(candidate_num_ids)}")
+
+    # Union of all fingerprint + candidate indicators we need from Athena.
     needed_num_ids: set[int] = set()
     for r in recipes:
         for fp in r["fingerprint"]:
             needed_num_ids.add(fp["indicator_id"])
+    needed_num_ids |= candidate_num_ids
     needed_str_ids = [num_to_str[n] for n in needed_num_ids if n in num_to_str]
-    print(f"  fingerprint indicators (union): {len(needed_str_ids)}")
+    print(f"  fingerprint+candidates indicators (union): {len(needed_str_ids)}")
 
     panel = load_indicator_panel(
         ath, args.bucket, args.workgroup, needed_str_ids,
@@ -640,8 +699,17 @@ def main() -> int:
         tier = tier_for_length(cl)
         print(f"  ({i}/{len(recipes)}) {cat} (cl={cl}, tier={tier})", end=" ", flush=True)
 
+        # Augment recipe fingerprint with candidate indicators. Each candidate
+        # gets a synthetic fingerprint entry (tfidf=1.0 placeholder; not used
+        # by the auditioner). De-dup against existing fingerprint members.
+        existing_fp_ids = {fp["indicator_id"] for fp in recipe["fingerprint"]}
+        augmented_fp = list(recipe["fingerprint"]) + [
+            {"indicator_id": cid, "tfidf": 1.0}
+            for cid in sorted(candidate_num_ids - existing_fp_ids)
+        ]
+
         features, feature_cols = build_feature_matrix_v2(
-            panel, recipe["fingerprint"], num_to_str,
+            panel, augmented_fp, num_to_str,
             args.cutoff_year, cl, country_to_id
         )
         if features.empty or not feature_cols:
@@ -714,6 +782,7 @@ def main() -> int:
             "mean_lift": mean_lift,
             "n_recipes_appearing": len(lifts),
             "audition_score": float(audition_score),
+            "is_candidate": n_id in candidate_set_for_report if n_id else False,
         })
 
     print(f"\n[stage 4] rendering reports...")
