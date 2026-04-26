@@ -272,7 +272,6 @@ def enrich(
         payload = json.load(f)
 
     countries = payload.get("countries", {})
-    canonical_lengths: dict[tuple[str, str], int] = {}
     stats = {
         "subjects_processed": 0,
         "categories_processed": 0,
@@ -280,6 +279,9 @@ def enrich(
         "analogues_dropped": 0,
         "events_in_window": 0,
         "events_outside_window": 0,
+        # #471 V2.0 stats
+        "events_overridden_by_max_pps": 0,
+        "analogues_with_pair_instances": 0,
     }
 
     for subject_id, categories in countries.items():
@@ -318,16 +320,12 @@ def enrich(
                 ):
                     a.pop(k, None)
 
-            L = best_common_length(pair_windows, analogues, length_tolerance)
-            if L is None:
-                # No end-aligned length exists across the analogues for
-                # this (subject, category). Frontend will fall back to
-                # pre-enrichment rendering (or show a "no precedent
-                # windows" message, depending on component).
-                stats["categories_no_aligned_L"] = stats.get("categories_no_aligned_L", 0) + 1
-                continue
-            canonical_lengths[(subject_id, category)] = L
-            block["canonical_length"] = L
+            # #471 V2.0 (2026-04-26): the common-length force-fit is
+            # dropped per #465 Q5 — each analogue picks its own native
+            # length window via the inner loop below. The previous
+            # `best_common_length` + `block["canonical_length"] = L` flow
+            # is gone; both `canonical_lengths` and the `categories_no_aligned_L`
+            # stat are dead and removed.
 
             # #354v3 (2026-04-19): NEVER drop analogues. Keep every one
             # the upstream enricher produced; when no aligned window
@@ -367,43 +365,113 @@ def enrich(
                     windows, L, a.get("event_year_b"), length_tolerance
                 )
 
-                if chosen is not None:
-                    eyb = a.get("event_year_b")
-                    sb = chosen.get("sb")
-                    L_chosen = chosen.get("l")
-                    # #457 item 8: terminus semantics, not containment.
-                    # Containment (sb <= eyb <= sb + L) silently passed
-                    # Tier-3 fallback rows where the event sits anywhere
-                    # inside a long bar — the "pattern → event" narrative
-                    # only holds when the event lands AT the pattern's end
-                    # (within the END_ALIGNMENT_TOLERANCE used downstream).
-                    event_in_window = (
-                        eyb is not None
-                        and sb is not None
-                        and L_chosen is not None
-                        and abs(eyb - (sb + L_chosen)) <= 2
-                    )
-                    if event_in_window:
-                        stats["events_in_window"] += 1
-                    else:
-                        stats["events_outside_window"] += 1
-                    a_new["pair_length"] = L_chosen
-                    a_new["pair_start_a"] = chosen.get("sa")
-                    a_new["pair_start_b"] = sb
-                    a_new["pair_pps"] = chosen.get("pps")
-                    a_new["pair_avg_corr"] = chosen.get("ac")
-                    a_new["event_in_window"] = event_in_window
-                    # #461: D7 plumbing — pair_windows now carries `cp`
-                    # (contains_predicted) per window. Surface it on the
-                    # analogue under a clearer name so the frontend type +
-                    # the rendered badge read self-explanatory. False when
-                    # absent (legacy windows pre-#461).
-                    a_new["contains_predicted"] = bool(chosen.get("cp", False))
-                else:
-                    # Null pair_* — frontend falls back to 15yr event-anchor.
+                # #471 V2.0 (Q4 max-PPS event picker + drop force-fit +
+                # populate pair_instances). Replaces the previous
+                # `pick_analogue_window` + common-length flow with
+                # per-analogue independent length + max-PPS event choice.
+                #
+                # Algorithm:
+                #   1. Build the candidate event-year set from event_all_years_b
+                #      (or fall back to event_year_b if the all-years field is
+                #      absent on legacy data).
+                #   2. For each candidate year, find pair-windows whose
+                #      end (sb + l) is within ±2 of that year (terminus
+                #      semantics per #457 item 8) AND ends in the past
+                #      or today (no future-pattern bars).
+                #   3. Pick the candidate year whose best aligned window
+                #      has the highest PPS — this is Q4: "select the
+                #      event that maximizes the recipe's PPS for that
+                #      pair." For single-event analogues this is a no-op
+                #      (one candidate, one pick).
+                #   4. Sort that year's aligned windows by PPS desc; the
+                #      top one becomes the canonical pair_* set
+                #      (back-compat); the full top-N (cap 5) becomes
+                #      pair_instances (Q2 progressive disclosure).
+                #   5. Override event_year_b on the analogue to the chosen
+                #      year (when it differs from the upstream median pick).
+                #   6. Length is no longer force-fit to a common L —
+                #      each analogue keeps its native pair length per Q5.
+                if not windows:
+                    # No pair-window data for this analogue. Frontend falls
+                    # back to 15yr event-anchor on its own.
                     stats["analogues_without_aligned_window"] = (
                         stats.get("analogues_without_aligned_window", 0) + 1
                     )
+                    rebuilt.append(a_new)
+                    stats["analogues_kept"] += 1
+                    continue
+
+                candidate_event_years = a.get("event_all_years_b") or [
+                    a.get("event_year_b")
+                ]
+                candidate_event_years = [
+                    y for y in candidate_event_years if y is not None
+                ]
+                if not candidate_event_years:
+                    rebuilt.append(a_new)
+                    stats["analogues_kept"] += 1
+                    continue
+
+                def _aligned_for(year, _windows=windows):
+                    return [
+                        w for w in _windows
+                        if w.get("sb") is not None
+                        and w.get("l") is not None
+                        and abs((w["sb"] + w["l"]) - year) <= 2
+                        and (w["sb"] + w["l"]) <= CURRENT_YEAR
+                    ]
+
+                best_year = None
+                best_year_top_pps = float("-inf")
+                best_year_aligned: list[dict] = []
+                for y in candidate_event_years:
+                    aligned = _aligned_for(y)
+                    if not aligned:
+                        continue
+                    top_pps = max(w.get("pps", 0.0) for w in aligned)
+                    if top_pps > best_year_top_pps:
+                        best_year_top_pps = top_pps
+                        best_year = y
+                        best_year_aligned = sorted(
+                            aligned, key=lambda w: -w.get("pps", 0.0)
+                        )
+
+                if best_year is None or not best_year_aligned:
+                    # No event-aligned windows for ANY candidate year.
+                    # Null pair_* + leave event_year_b as-is.
+                    stats["analogues_without_aligned_window"] = (
+                        stats.get("analogues_without_aligned_window", 0) + 1
+                    )
+                    rebuilt.append(a_new)
+                    stats["analogues_kept"] += 1
+                    continue
+
+                # Q4: override event_year_b to the max-PPS chosen year.
+                if best_year != a.get("event_year_b"):
+                    stats["events_overridden_by_max_pps"] = (
+                        stats.get("events_overridden_by_max_pps", 0) + 1
+                    )
+                a_new["event_year_b"] = best_year
+
+                # Canonical (back-compat) pair_* fields = the top-PPS instance.
+                canonical = best_year_aligned[0]
+                a_new["pair_length"] = canonical.get("l")
+                a_new["pair_start_a"] = canonical.get("sa")
+                a_new["pair_start_b"] = canonical.get("sb")
+                a_new["pair_pps"] = canonical.get("pps")
+                a_new["pair_avg_corr"] = canonical.get("ac")
+                # event_in_window True by construction — we filtered for
+                # ±2 terminus alignment above.
+                a_new["event_in_window"] = True
+                a_new["contains_predicted"] = bool(canonical.get("cp", False))
+                stats["events_in_window"] += 1
+
+                # #465 Q2: full top-N instances (cap 5) for progressive
+                # disclosure. First entry mirrors pair_*; the rest power
+                # the chevron-expand UI in AnalogueMultiTimeline.
+                a_new["pair_instances"] = best_year_aligned[:5]
+                if len(best_year_aligned) > 1:
+                    stats["analogues_with_pair_instances"] += 1
 
                 rebuilt.append(a_new)
                 stats["analogues_kept"] += 1
@@ -411,7 +479,9 @@ def enrich(
 
     # Note the algorithm version so downstream consumers can detect + fail
     # loudly if they read an old-shape file.
-    payload["enrichment_algorithm"] = "common-length-v2-event-end-aligned (#354, 2026-04-19)"
+    payload["enrichment_algorithm"] = (
+        "v2.0-per-analogue-max-pps-no-force-fit (#471, 2026-04-26)"
+    )
     payload["enrichment_length_tolerance"] = length_tolerance
 
     with open(enriched_path, "w", encoding="utf-8") as f:
