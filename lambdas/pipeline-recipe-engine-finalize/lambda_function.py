@@ -723,12 +723,18 @@ def write_country_recipe_scores():
         FROM (VALUES {map_rows}) AS t(numeric_id, id_string)
     ),
     -- One row per (recipe, fingerprint indicator) — typically 71 × 15 ≈ 1065.
+    -- weight = tfidf_score (per-category indicator importance). The original
+    -- v0.2 design used avg_corr_magnitude, but that field is currently a
+    -- 0.0 placeholder in recipes_aggregated (CTAS TODO requires a 12B-row
+    -- scdis JOIN). tfidf_score is computed in the same CTAS and approximates
+    -- indicator distinctiveness — non-zero, monotone with frequency, and
+    -- avoids the all-NULL similarity_raw outcome of weighted-by-zero.
     fp_unnested AS (
         SELECT
             ra.event_category,
             cast(ra.canonical_length as integer) AS L,
             cast(fp.indicator_id as integer) AS num_id,
-            cast(fp.avg_corr_magnitude as double) AS weight,
+            cast(fp.tfidf_score as double) AS weight,
             cardinality(ra.indicator_fingerprint) AS n_in_fp,
             COALESCE(ra.contains_predicted, FALSE) AS recipe_contains_predicted
         FROM {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME} ra
