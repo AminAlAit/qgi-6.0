@@ -116,11 +116,17 @@ def lambda_handler(event, context):
                         CAST(s.country_a_id AS smallint) AS country_a_id,
                         CAST(s.country_b_id AS smallint) AS country_b_id,
                         -- EXPLICIT CASTING IS THE FIX --
-                        CAST(s.length AS smallint) AS length, 
-                        CAST(s.start_year_a AS smallint) AS start_year_a, 
+                        CAST(s.length AS smallint) AS length,
+                        CAST(s.start_year_a AS smallint) AS start_year_a,
                         CAST(s.start_year_b AS smallint) AS start_year_b,
                         CAST(s.correlation AS double) AS correlation,
-                        CAST(s.indicator_numeric_id AS smallint) AS indicator_numeric_id
+                        CAST(s.indicator_numeric_id AS smallint) AS indicator_numeric_id,
+                        -- #461: D7 plumbing. SCDI's contains_predicted comes from
+                        -- the SCDI finder's per-row OR over segment_a + segment_b.
+                        -- Pre-#461 rows have NULL → coalesce to false so older
+                        -- data behaves as "no predicted values" (the safer
+                        -- assumption for the user-facing badge).
+                        COALESCE(s.contains_predicted, FALSE) AS contains_predicted
                         ---------------------------------
                     FROM {DB_NAME}.{SCDIS_TABLE} s
                     WHERE s.country_a_id = {country_id_str}
@@ -130,7 +136,11 @@ def lambda_handler(event, context):
                         country_a_id, country_b_id, length, start_year_a, start_year_b,
                         COUNT(*) AS indicator_count,
                         AVG(correlation) AS avg_correlation,
-                        array_agg(indicator_numeric_id) as collected_indicator_ids
+                        array_agg(indicator_numeric_id) as collected_indicator_ids,
+                        -- #461: pattern.contains_predicted = OR of the SCDIs it
+                        -- aggregates. If any contributing SCDI carries a
+                        -- predicted year, the pattern does too.
+                        BOOL_OR(contains_predicted) AS contains_predicted
                     FROM patterns_base
                     GROUP BY country_a_id, country_b_id, length, start_year_a, start_year_b
                     HAVING COUNT(*) > 1
@@ -150,7 +160,6 @@ def lambda_handler(event, context):
                     avg_correlation * CAST(length AS double) * indicator_count AS pattern_power_score,
                     collected_indicator_ids AS indicator_numeric_ids,
                     -- #128: pattern_tier (S/M/L/XL). Derived from length, zero-cost.
-                    -- Must be the LAST non-partition column to match the Glue schema column order.
                     CAST(
                         CASE
                             WHEN length BETWEEN 3 AND 8  THEN 'S'
@@ -159,6 +168,9 @@ def lambda_handler(event, context):
                             ELSE 'XL'
                         END
                     AS varchar) AS pattern_tier,
+                    -- #461: must be the LAST non-partition column to match the
+                    -- Glue schema column order added in qgi-infra/modules/storage.
+                    contains_predicted,
                     country_a_id
                 FROM patterns_aggregated
                 """

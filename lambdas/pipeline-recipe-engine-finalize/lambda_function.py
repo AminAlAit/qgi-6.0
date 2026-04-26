@@ -294,6 +294,9 @@ def create_recipes_normalized_view():
         r.pattern_power_score, r.instance_count, r.pattern_tier,
         r.median_lead_time_b, r.min_lead_time_b, r.max_lead_time_b,
         r.median_lead_time_a, r.country_a_id,
+        -- #461: D7 plumbing carries through from recipes_deduped → here →
+        -- convergence view (which reads from this view) → dashboard JSONs.
+        r.contains_predicted,
         cast(
             (
                 0.35 * r.avg_correlation

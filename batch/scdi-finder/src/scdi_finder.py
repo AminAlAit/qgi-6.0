@@ -212,6 +212,14 @@ class SDCI:
     start_year_a: int
     start_year_b: int
     correlation: float
+    # #461 (D7 plumbing): true when ANY year in either segment_a or
+    # segment_b had `is_predicted=true` in indicators_completed. Read
+    # by the pattern synthesizer (Phase C) which OR-aggregates across
+    # contributing SCDIs, then by the recipe engine (Phase 5b) which
+    # inherits from the source pattern, then surfaced on the frontend
+    # as a "contains predicted values" badge so users can interpret
+    # the analogue accordingly.
+    contains_predicted: bool = False
 
 
 def load_indicator_map(bucket: str) -> Dict[str, int]:
@@ -305,6 +313,11 @@ def find_sdcis_with_fft(
 
     values_a = country_a_data["values"]
     values_b = country_b_data["values"]
+    # #461: per-row is_predicted flag from indicators_completed. Falls back
+    # to all-False when the upstream parquet predates D7 (older snapshots)
+    # so the script remains runnable against legacy data.
+    is_predicted_a = country_a_data.get("is_predicted")
+    is_predicted_b = country_b_data.get("is_predicted")
     sdcis = []
 
     if len(values_b) < segment_len:
@@ -337,6 +350,15 @@ def find_sdcis_with_fft(
         # floating point errors and non-zero means.
         sum_z_a = np.sum(norm_segment_a)
 
+        # #461: precompute whether segment_a touches a predicted year.
+        # Done once per (start_a, segment_len); start_b varies inside
+        # the inner loop. False whenever the upstream parquet didn't
+        # carry is_predicted (legacy snapshot).
+        seg_a_predicted = bool(
+            is_predicted_a is not None
+            and np.any(is_predicted_a[start_a : start_a + segment_len])
+        )
+
         for start_b in range(len(correlations)):
             std_b = rolling_std_b[start_b]
             if std_b == 0:
@@ -345,7 +367,7 @@ def find_sdcis_with_fft(
             mean_b = rolling_mean_b[start_b]
 
             # This is Sum(B * Z(A))
-            raw_corr_sum = correlations[start_b] 
+            raw_corr_sum = correlations[start_b]
 
             # This is the correct, numerically stable Pearson formula:
             # (1 / (N * std_b)) * [ Sum(B*Z(A)) - mean_b * Sum(Z(A)) ]
@@ -353,6 +375,11 @@ def find_sdcis_with_fft(
 
 
             if pearson_corr >= threshold:
+                # #461: contains_predicted = OR over segment_a + segment_b.
+                seg_b_predicted = bool(
+                    is_predicted_b is not None
+                    and np.any(is_predicted_b[start_b : start_b + segment_len])
+                )
                 sdcis.append(SDCI(
                     country_a_id=country_name_to_id.get(country_a_data["country"], 0),
                     country_b_id=country_name_to_id.get(country_b_data["country"], 0),
@@ -360,6 +387,7 @@ def find_sdcis_with_fft(
                     correlation= min(1.0,pearson_corr),
                     start_year_a=country_a_data["data"].iloc[start_a]["year"],
                     start_year_b=country_b_data["data"].iloc[start_b]["year"],
+                    contains_predicted=seg_a_predicted or seg_b_predicted,
                 ))
     return sdcis
 
@@ -566,7 +594,13 @@ def preprocess_data(df: pd.DataFrame, countries: list, min_len: int) -> list:
     """
     Prepares data for each country by finding the longest possible continuous
     streak of data, filling at most one NaN if it connects two longer streaks.
+
+    #461: when the upstream parquet (indicators_completed) carries the
+    `is_predicted` column, it is sliced + carried through alongside the
+    `values` array so find_sdcis_with_fft can compute contains_predicted
+    per (segment_a, segment_b) without re-reading the source data.
     """
+    has_predicted_col = "is_predicted" in df.columns
     preprocessed_data = []
     for country in countries:
         country_data = df[df["country"] == country].sort_values("year").reset_index(drop=True)
@@ -574,6 +608,13 @@ def preprocess_data(df: pd.DataFrame, countries: list, min_len: int) -> list:
             continue
 
         values = country_data["value"].values.copy()
+        # #461: aligned is_predicted vector. Pre-completed parquets (legacy
+        # snapshots) skip the column → preprocessed entry is_predicted=None
+        # → find_sdcis_with_fft falls back to contains_predicted=False.
+        is_predicted_full = (
+            country_data["is_predicted"].fillna(False).astype(bool).to_numpy()
+            if has_predicted_col else None
+        )
         not_nan = ~np.isnan(values)
         
         if not np.any(not_nan):
@@ -629,22 +670,34 @@ def preprocess_data(df: pd.DataFrame, countries: list, min_len: int) -> list:
             if np.any(np.isnan(final_values_slice)):
                  continue
 
-            preprocessed_data.append({
+            entry = {
                 "country": country,
                 "data": final_data_slice.reset_index(drop=True),
-                "values": final_values_slice
-            })
+                "values": final_values_slice,
+            }
+            # #461: slice is_predicted alongside values so segment indices
+            # map 1:1. Legacy parquets without the column → key omitted.
+            if is_predicted_full is not None:
+                entry["is_predicted"] = is_predicted_full[
+                    best_streak_start:best_streak_end
+                ].copy()
+            preprocessed_data.append(entry)
             
     return preprocessed_data
 
 def convert_sdcis_to_df(sdcis: List[SDCI]) -> pd.DataFrame:
     """Converts a list of SDCI objects to a memory-optimized DataFrame."""
     if not sdcis: return pd.DataFrame()
-    return pd.DataFrame([sdc.__dict__ for sdc in sdcis]).astype({
+    df = pd.DataFrame([sdc.__dict__ for sdc in sdcis]).astype({
         "country_a_id": "uint16", "country_b_id": "uint16",
         "length": "uint16", "start_year_a": "uint16", "start_year_b": "uint16",
         "correlation": "float32",
     })
+    # #461: contains_predicted carried as boolean. Pandas writes it as
+    # parquet bool, matching the Glue scdis schema added in qgi-infra.
+    if "contains_predicted" in df.columns:
+        df["contains_predicted"] = df["contains_predicted"].astype("bool")
+    return df
 
 if __name__ == "__main__":
     run_pipeline()

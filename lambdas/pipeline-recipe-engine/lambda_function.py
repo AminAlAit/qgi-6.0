@@ -914,7 +914,12 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
                     WHEN p.length BETWEEN 21 AND 40 THEN 'L'
                     ELSE 'XL'
                 END
-            ) AS pattern_tier
+            ) AS pattern_tier,
+            -- #461 (D7 plumbing): inherit from the source pattern. Pre-#461
+            -- patterns have NULL → coalesce to false so the recipe row
+            -- behaves as "no predicted values" — the safer default for the
+            -- user-facing badge in PrecedentDetailClient.
+            COALESCE(p.contains_predicted, FALSE) AS contains_predicted
         FROM qgi_data.patterns p
         INNER JOIN qgi_data.events ea
             ON ea.country_id = p.country_a_id
@@ -959,6 +964,10 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
             arbitrary(indicator_count)       AS indicator_count,
             arbitrary(pattern_power_score)   AS pattern_power_score,
             arbitrary(pattern_tier)          AS pattern_tier,
+            -- #461: recipe.contains_predicted = OR across the pattern
+            -- instances aggregated into this recipe. If any contributing
+            -- pattern carried predicted values, the recipe does too.
+            bool_or(contains_predicted)      AS contains_predicted,
             cast(count(*) as bigint)         AS instance_count,
             -- #134: median lead time = how many years after the pattern ends
             -- did the historic event actually occur.
@@ -1020,6 +1029,12 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
             ) * 100.0
             AS double
         ) AS pps,
+        -- #461: D7 plumbing — final non-partition column. Read by the
+        -- frontend (PrecedentDetailClient) to render a "contains predicted
+        -- values" badge on Recipe instances, so users can interpret the
+        -- analogue knowing whether the underlying SCDIs were built on
+        -- forecast indicator data vs. real observations.
+        r.contains_predicted,
         -- Partition column MUST be last (Athena CTAS requirement, #145)
         r.country_a_id
     FROM recipes_aggregated r
