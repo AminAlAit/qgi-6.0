@@ -891,7 +891,7 @@ def write_country_recipe_scores():
         cast(similarity_raw as real) AS similarity_raw,
         -- v0.2: similarity_calibrated == similarity_raw still — Part B
         -- (Platt) trains (a,b) per tier in qgi-ml/scripts/calibrate_recipe_similarity.py
-        -- and publishes to s3://{bucket}/calibration/recipe_similarity_v{N}/.
+        -- and publishes to s3://(bucket)/calibration/recipe_similarity_vN/.
         -- Lambda runtime read + sigmoid application is a follow-up commit.
         cast(similarity_raw as real) AS similarity_calibrated,
         cast(indicators_matched as smallint) AS indicators_matched,
