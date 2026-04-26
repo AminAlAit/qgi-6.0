@@ -60,6 +60,14 @@ RECIPES_AGGREGATED_S3_PREFIX = "pipeline-recipe-aggregator/output/data/"
 RECIPES_AGGREGATED_SCHEMA_VERSION = 1
 PIPELINE_VERSION = os.environ.get('PIPELINE_VERSION', 'V2.0-dev')
 
+# #463 Fork B: Phase 5b.6.6 Country-vs-Recipe Scoring.
+COUNTRY_RECIPE_SCORES_TABLE_NAME = "country_recipe_scores"
+COUNTRY_RECIPE_SCORES_S3_PREFIX = "pipeline-recipe-scorer/output/data/"
+INDICATOR_MAP_S3_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
+# Coverage threshold below which we suppress the score per Sebastien's
+# partial-coverage tolerance (Decision-1 caveat). Refine post-eval (#463 Part C).
+SCORER_MIN_COVERAGE = 0.30
+
 # ---------------------------------------------------------------------------
 # #170: Country → region map for the convergence score view.
 #
@@ -200,6 +208,24 @@ def lambda_handler(event, context):
             aggregated_status = f'error: {exc}'
             _emit_caught_exception('write_recipes_aggregated_table')
 
+    # Step 2d: country_recipe_scores table (#463 Fork B Phase 5b.6.6 v0.1) —
+    # one row per (country, recipe). Depends on recipes_aggregated being
+    # populated in Step 2c. Skipped on backtest cutoffs (frontend-only
+    # consumer; backtest runs don't publish to the dashboard).
+    scores_status = 'skipped'
+    if cutoff_year is None and aggregated_status == 'ok':
+        try:
+            write_country_recipe_scores()
+            scores_status = 'ok'
+        except Exception as exc:  # noqa: BLE001
+            logger.exception(f"Failed to write country_recipe_scores: {exc}")
+            scores_status = f'error: {exc}'
+            _emit_caught_exception('write_country_recipe_scores')
+    elif cutoff_year is None and aggregated_status != 'ok':
+        # Skip explicitly if upstream failed — the scorer reads from
+        # recipes_aggregated, no point trying.
+        scores_status = f'skipped: aggregated upstream {aggregated_status}'
+
     # Step 3: convergence view (#133) — reads from recipes_normalized
     convergence_status = 'skipped'
     if cutoff_year is None:
@@ -227,6 +253,7 @@ def lambda_handler(event, context):
         'recipes_count': total_recipes,
         'top_categories': top_categories,
         'recipes_aggregated': aggregated_status,
+        'country_recipe_scores': scores_status,
         'convergence_view': convergence_status,
         'dashboard': dashboard_results,
         'partitions_total': partitions_total,
@@ -551,6 +578,199 @@ def write_recipes_aggregated_table():
     logger.info("Inserting into recipes_aggregated (Phase 5b.6.5 Level-4 fingerprints)")
     run_query(sql)
     logger.info(f"Wrote {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}")
+
+
+# ---------------------------------------------------------------------------
+# country_recipe_scores table — Fork B Phase 5b.6.6 (#463), v0.1
+# ---------------------------------------------------------------------------
+
+def _read_indicator_map_csv():
+    """Load the indicator string-id ↔ numeric_id map from S3.
+
+    Mirrors the loader in qgi-pipeline/batch/scdi-finder/src/scdi_finder.py
+    (which reads the same file directly via boto3, not Glue). Returns a
+    dict {numeric_id: id_string}.
+
+    Used by write_country_recipe_scores to inline the mapping into the
+    Athena SQL via a VALUES clause — avoids needing a Glue table for the
+    map (which would have to live in a dedicated S3 prefix away from
+    other CSVs in `pipeline-A-indicator-extractor/input/`).
+    """
+    import csv
+    import io
+    obj = s3.get_object(Bucket=S3_BUCKET, Key=INDICATOR_MAP_S3_KEY)
+    raw = obj['Body'].read().decode('utf-8')
+    reader = csv.DictReader(io.StringIO(raw))
+    out = {}
+    for row in reader:
+        try:
+            num_id = int(row['numeric_id'])
+            id_str = row['id_string'].strip()
+            if id_str:
+                out[num_id] = id_str
+        except (ValueError, KeyError):
+            continue
+    return out
+
+
+def write_country_recipe_scores():
+    """Phase 5b.6.6 v0.1: Country-vs-Recipe Scoring (weighted indicator coverage).
+
+    For each (country, recipe) pair: compute a similarity score in [0,1]
+    based on weighted indicator coverage of the Recipe's fingerprint. Per
+    the design doc at qgi-docs/internal/design/recipe-scoring-architecture.md,
+    this is the v0.1 algorithm — establishes the data plumbing + populates
+    the table so #464's frontend renders SOMETHING for every (country,
+    recipe) pair. v0.2 ships the full Pearson-trajectory algorithm in a
+    follow-up session.
+
+    v0.1 algorithm:
+        For each fingerprint indicator i in recipe R:
+            - Check if country C has any value for indicator i in the last
+              `canonical_length` years from indicators_completed
+            - If present, contribute weight = fp[i].avg_corr_magnitude
+        similarity_raw = sum(weight[i] for matched i) / sum(weight[i] for all i)
+        coverage_ratio = matched / total_in_fingerprint
+        suppressed = (coverage_ratio < SCORER_MIN_COVERAGE)
+
+    Calibration (Part B) deferred — similarity_calibrated = similarity_raw
+    until the Platt training script lands. The frontend reads
+    similarity_calibrated, so when calibration ships the column auto-updates
+    on the next pipeline run with no frontend change required.
+
+    Eval (Part C) deferred — V2.0-vs-V1.9.1 metrics ship as a separate
+    qgi-ml/scripts/eval_v2_vs_v19.py.
+
+    Strategy: clear the data S3 prefix on every run, then INSERT INTO the
+    Terraform-defined table. Mirrors write_recipes_aggregated_table().
+    """
+    # 1. Read indicator_map from S3 — small file (~270 rows).
+    indicator_map = _read_indicator_map_csv()
+    if not indicator_map:
+        raise RuntimeError(
+            f"indicator_map.csv at s3://{S3_BUCKET}/{INDICATOR_MAP_S3_KEY} "
+            f"is empty or unreadable; cannot score without numeric → string id mapping"
+        )
+    logger.info(f"Loaded {len(indicator_map)} indicator IDs from CSV")
+
+    # 2. Clear existing parquet data so re-runs are idempotent.
+    logger.info(f"Clearing s3://{S3_BUCKET}/{COUNTRY_RECIPE_SCORES_S3_PREFIX}")
+    paginator = s3.get_paginator('list_objects_v2')
+    keys_to_delete = []
+    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=COUNTRY_RECIPE_SCORES_S3_PREFIX):
+        for obj in page.get('Contents', []):
+            keys_to_delete.append({'Key': obj['Key']})
+            if len(keys_to_delete) >= 1000:
+                s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+                keys_to_delete = []
+    if keys_to_delete:
+        s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+
+    # 3. Build inline VALUES clause for the indicator_map. Athena accepts
+    # up to 1024 rows in a single VALUES; ~270 fits comfortably. Escape
+    # single-quotes defensively even though indicator IDs shouldn't have any.
+    map_rows = ", ".join(
+        f"({nid}, '{sid.replace(chr(39), chr(39)+chr(39))}')"
+        for nid, sid in sorted(indicator_map.items())
+    )
+
+    # 4. INSERT INTO. Column order MUST match the Terraform-owned Glue
+    # schema (qgi-infra/modules/storage/main.tf
+    # aws_glue_catalog_table.country_recipe_scores). Failure to match is
+    # an Athena type error — fails loud, not silent.
+    sql = f"""
+    INSERT INTO {ATHENA_DB}.{COUNTRY_RECIPE_SCORES_TABLE_NAME}
+    WITH indicator_map AS (
+        SELECT numeric_id, id_string
+        FROM (VALUES {map_rows}) AS t(numeric_id, id_string)
+    ),
+    -- One row per (recipe, fingerprint indicator) — typically 71 × 15 ≈ 1065.
+    fp_unnested AS (
+        SELECT
+            ra.event_category,
+            cast(ra.canonical_length as integer) AS L,
+            cast(fp.indicator_id as integer) AS num_id,
+            cast(fp.avg_corr_magnitude as double) AS weight,
+            cardinality(ra.indicator_fingerprint) AS n_in_fp,
+            COALESCE(ra.contains_predicted, FALSE) AS recipe_contains_predicted
+        FROM {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME} ra
+        CROSS JOIN UNNEST(ra.indicator_fingerprint) AS u(fp)
+    ),
+    fp_with_string AS (
+        SELECT fp.*, im.id_string
+        FROM fp_unnested fp
+        JOIN indicator_map im ON im.numeric_id = fp.num_id
+    ),
+    -- Currently scoreable countries: anything in the countries reference
+    -- table with both id and name_1 set. The 89 risk-scored countries from
+    -- country-risks.json are a strict subset.
+    countries_indexed AS (
+        SELECT cast(cd.id as smallint) AS country_id, cd.name_1 AS name
+        FROM {ATHENA_DB}.countries cd
+        WHERE cd.name_1 IS NOT NULL AND cd.name_1 != ''
+          AND cd.id IS NOT NULL AND cd.id != ''
+    ),
+    -- The cross join is ~270 countries × ~1065 fingerprint slots ≈ 287K rows.
+    -- The EXISTS hits indicators_completed which is partitioned by indicator_id
+    -- (string), so each subquery scan is bounded to one partition.
+    country_indicator_check AS (
+        SELECT
+            ci.country_id,
+            fws.event_category,
+            fws.weight,
+            fws.n_in_fp,
+            fws.recipe_contains_predicted,
+            EXISTS (
+                SELECT 1 FROM {ATHENA_DB}.indicators_completed ic
+                WHERE ic.indicator_id = fws.id_string
+                  AND ic.country = ci.name
+                  AND ic.year >= year(current_timestamp) - fws.L
+                  AND ic.value IS NOT NULL
+            ) AS present
+        FROM countries_indexed ci
+        CROSS JOIN fp_with_string fws
+    ),
+    aggregated AS (
+        SELECT
+            country_id,
+            event_category,
+            sum(weight * (CASE WHEN present THEN 1.0 ELSE 0.0 END))
+                / nullif(sum(weight), 0.0) AS similarity_raw,
+            cast(sum(CASE WHEN present THEN 1 ELSE 0 END) as integer) AS indicators_matched,
+            cast(max(n_in_fp) as integer) AS indicators_in_fingerprint,
+            cast(sum(CASE WHEN present THEN 1 ELSE 0 END) as double)
+                / nullif(cast(max(n_in_fp) as double), 0.0) AS coverage_ratio,
+            bool_or(recipe_contains_predicted) AS contains_predicted
+        FROM country_indicator_check
+        GROUP BY country_id, event_category
+    )
+    SELECT
+        country_id,
+        event_category,
+        cast(similarity_raw as real) AS similarity_raw,
+        -- v0.1: similarity_calibrated == similarity_raw. Part B (Platt
+        -- calibration) updates this column on the next pipeline run.
+        cast(similarity_raw as real) AS similarity_calibrated,
+        cast(indicators_matched as smallint) AS indicators_matched,
+        cast(indicators_in_fingerprint as smallint) AS indicators_in_fingerprint,
+        cast(coverage_ratio as real) AS coverage_ratio,
+        coverage_ratio < {SCORER_MIN_COVERAGE} AS suppressed,
+        CASE WHEN coverage_ratio < {SCORER_MIN_COVERAGE}
+            THEN 'insufficient indicator coverage ('
+                 || cast(indicators_matched as varchar) || '/'
+                 || cast(indicators_in_fingerprint as varchar)
+                 || ' — minimum {int(SCORER_MIN_COVERAGE * 100)}%)'
+            ELSE cast(NULL as varchar)
+        END AS suppression_reason,
+        contains_predicted,
+        cast(current_timestamp as timestamp) AS last_computed_at,
+        '{PIPELINE_VERSION}' AS pipeline_version,
+        cast(NULL as varchar) AS calibration_mapping_version
+    FROM aggregated
+    """
+    logger.info("Inserting into country_recipe_scores (Phase 5b.6.6 v0.1)")
+    run_query(sql)
+    logger.info(f"Wrote {ATHENA_DB}.{COUNTRY_RECIPE_SCORES_TABLE_NAME}")
 
 
 # ---------------------------------------------------------------------------
