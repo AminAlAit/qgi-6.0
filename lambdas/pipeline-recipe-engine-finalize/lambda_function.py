@@ -54,6 +54,11 @@ RANKING_LIMIT = 1000
 RECIPES_DEDUPED_VIEW_NAME = "recipes_deduped"
 RECIPES_NORMALIZED_VIEW_NAME = "recipes_normalized"
 CONVERGENCE_VIEW_NAME = "recipe_convergence"
+# #462 Fork B: Phase 5b.6.5 Recipe Aggregation Level-4 table.
+RECIPES_AGGREGATED_TABLE_NAME = "recipes_aggregated"
+RECIPES_AGGREGATED_S3_PREFIX = "pipeline-recipe-aggregator/output/data/"
+RECIPES_AGGREGATED_SCHEMA_VERSION = 1
+PIPELINE_VERSION = os.environ.get('PIPELINE_VERSION', 'V2.0-dev')
 
 # ---------------------------------------------------------------------------
 # #170: Country → region map for the convergence score view.
@@ -175,12 +180,25 @@ def lambda_handler(event, context):
     logger.info(f"Top categories: {top_categories}")
 
     # Step 2a: recipes_deduped view (#458) — bullet-6 longest-pattern
-    # collapse. Must precede recipes_normalized since the latter now reads
-    # from this view to compute global max over the deduped row set.
+    # collapse. Must precede recipes_normalized + recipes_aggregated since
+    # both read from this view.
     create_recipes_deduped_view()
 
     # Step 2b: recipes_normalized view (#158 follow-up)
     create_recipes_normalized_view()
+
+    # Step 2c: recipes_aggregated table (#462 Fork B Phase 5b.6.5) — Level-4
+    # Recipe object, one row per L3 event_category. Runs after the deduped
+    # view exists; independent of recipes_normalized + convergence.
+    aggregated_status = 'skipped'
+    if cutoff_year is None:
+        try:
+            write_recipes_aggregated_table()
+            aggregated_status = 'ok'
+        except Exception as exc:  # noqa: BLE001
+            logger.exception(f"Failed to write recipes_aggregated: {exc}")
+            aggregated_status = f'error: {exc}'
+            _emit_caught_exception('write_recipes_aggregated_table')
 
     # Step 3: convergence view (#133) — reads from recipes_normalized
     convergence_status = 'skipped'
@@ -208,6 +226,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'recipes_count': total_recipes,
         'top_categories': top_categories,
+        'recipes_aggregated': aggregated_status,
         'convergence_view': convergence_status,
         'dashboard': dashboard_results,
         'partitions_total': partitions_total,
@@ -319,6 +338,219 @@ def create_recipes_normalized_view():
     logger.info("Creating recipes_normalized view (global pps over deduped set)")
     run_query(sql)
     logger.info(f"View {ATHENA_DB}.{RECIPES_NORMALIZED_VIEW_NAME} created")
+
+
+# ---------------------------------------------------------------------------
+# recipes_aggregated table — Fork B Phase 5b.6.5 (#462)
+# ---------------------------------------------------------------------------
+
+def write_recipes_aggregated_table():
+    """Phase 5b.6.5: produce qgi_data.recipes_aggregated (Level-4 Recipe object).
+
+    One row per L3 event_category (~71 rows total). The
+    Recipe-as-aggregated-fingerprint phase the audit found missing.
+
+    Strategy: the Glue table is Terraform-owned (qgi-infra/modules/storage),
+    so we can't use Athena CTAS (it would conflict on the table definition).
+    Instead: clear the data prefix in S3, then INSERT INTO. Idempotent
+    because the prefix wipe runs every cycle.
+
+    Schema (per Majles consult Decision 3, extended from 3 to 11 properties):
+      - event_category, canonical_length, length_distribution
+      - indicator_fingerprint (top-15 by TF-IDF + Wilson 95% CI)
+      - coverage_bias_diagnostic (n_pairs + OECD share + regional concentration)
+      - total_instances, n_distinct_country_pairs
+      - last_recomputed_at, pipeline_version, schema_version
+      - contains_predicted (#461 D7 plumbing inherited)
+
+    REFINEMENTS DEFERRED (TODO markers in the SQL):
+      - avg_corr_magnitude per indicator: requires join back to scdis;
+        emits 0.0 placeholder for now. Followup ticket TBD.
+      - coverage_bias_diagnostic OECD/region shares: emits placeholder 0.0
+        + empty array for now. Requires countries-table join with OECD list +
+        region map. Followup once the SQL pattern stabilises.
+
+    Cost: scans recipes_deduped (~400K rows post-#458 dedup) joined to
+    patterns (~few-GB). Should complete sub-2-min in QGI-Lambda-Workgroup.
+    """
+    # 1. Clear existing data so re-runs are idempotent.
+    logger.info(f"Clearing s3://{S3_BUCKET}/{RECIPES_AGGREGATED_S3_PREFIX}")
+    paginator = s3.get_paginator('list_objects_v2')
+    keys_to_delete = []
+    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=RECIPES_AGGREGATED_S3_PREFIX):
+        for obj in page.get('Contents', []):
+            keys_to_delete.append({'Key': obj['Key']})
+            if len(keys_to_delete) >= 1000:
+                s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+                keys_to_delete = []
+    if keys_to_delete:
+        s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+
+    # 2. INSERT INTO. Column order MUST match the Terraform-owned Glue
+    # schema (qgi-infra/modules/storage/main.tf aws_glue_catalog_table.recipes_aggregated).
+    sql = f"""
+    INSERT INTO {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}
+    WITH recipes_with_pattern AS (
+        -- Join deduped recipes to patterns to recover indicator IDs.
+        SELECT
+            rd.event_category,
+            rd.recipe_id,
+            rd.country_a_id,
+            rd.country_b_id,
+            rd.length,
+            COALESCE(rd.contains_predicted, FALSE) AS contains_predicted,
+            p.indicator_numeric_ids
+        FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} rd
+        INNER JOIN {ATHENA_DB}.patterns p ON p.pattern_id = rd.pattern_id
+    ),
+    -- Per-category point estimates.
+    category_basics AS (
+        SELECT
+            event_category,
+            cast(approx_percentile(cast(length as double), 0.5) as smallint) AS canonical_length,
+            cast(count(distinct recipe_id) as bigint) AS total_instances,
+            cast(count(distinct cast(country_a_id as varchar) || '-' || cast(country_b_id as varchar)) as bigint) AS n_distinct_country_pairs,
+            bool_or(contains_predicted) AS contains_predicted
+        FROM recipes_with_pattern
+        GROUP BY event_category
+    ),
+    -- Length histogram per category.
+    length_dist_rows AS (
+        SELECT event_category, length, cast(count(distinct recipe_id) as bigint) AS cnt
+        FROM recipes_with_pattern
+        GROUP BY event_category, length
+    ),
+    length_distributions AS (
+        SELECT
+            event_category,
+            array_agg(
+                cast(row(cast(length as smallint), cnt)
+                     as row(length smallint, count bigint))
+                ORDER BY length
+            ) AS length_distribution
+        FROM length_dist_rows
+        GROUP BY event_category
+    ),
+    -- Per-indicator unnest for fingerprint.
+    indicator_unnest AS (
+        SELECT event_category, recipe_id, indicator_id
+        FROM recipes_with_pattern
+        CROSS JOIN UNNEST(indicator_numeric_ids) AS t(indicator_id)
+    ),
+    indicator_counts AS (
+        SELECT
+            event_category,
+            indicator_id,
+            count(distinct recipe_id) AS recipes_with_indicator
+        FROM indicator_unnest
+        GROUP BY event_category, indicator_id
+    ),
+    recipes_per_category AS (
+        SELECT event_category, count(distinct recipe_id) AS n_recipes
+        FROM recipes_with_pattern
+        GROUP BY event_category
+    ),
+    total_recipes AS (
+        SELECT count(distinct recipe_id) AS n_total FROM recipes_with_pattern
+    ),
+    -- Indicator metrics: frequency + TF-IDF + Wilson 95% CI on the proportion.
+    -- Wilson formula: z=1.96, z²=3.8416. center=(p+z²/2n)/(1+z²/n);
+    -- margin=z*sqrt(p(1-p)/n + z²/(4n²))/(1+z²/n).
+    indicator_with_n AS (
+        SELECT
+            ic.event_category,
+            ic.indicator_id,
+            cast(ic.recipes_with_indicator as double) AS k_d,
+            cast(rpc.n_recipes as double) AS n_d,
+            cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double) AS p,
+            cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double)
+                * ln(cast(tr.n_total as double) / cast(ic.recipes_with_indicator as double)) AS tfidf
+        FROM indicator_counts ic
+        JOIN recipes_per_category rpc ON rpc.event_category = ic.event_category
+        CROSS JOIN total_recipes tr
+    ),
+    indicator_with_ci AS (
+        SELECT
+            event_category,
+            indicator_id,
+            p AS frequency,
+            tfidf,
+            -- Wilson denominators / numerators broken out for readability.
+            greatest(0.0,
+                ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
+                - (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
+            ) AS ci_lower,
+            least(1.0,
+                ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
+                + (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
+            ) AS ci_upper,
+            -- TODO #462 follow-up: avg correlation magnitude per indicator
+            -- requires joining back to scdis. 0.0 placeholder for now.
+            0.0 AS avg_corr_magnitude
+        FROM indicator_with_n
+    ),
+    indicator_ranked AS (
+        SELECT *,
+            row_number() OVER (PARTITION BY event_category ORDER BY tfidf DESC) AS rn
+        FROM indicator_with_ci
+    ),
+    indicator_fingerprints AS (
+        SELECT
+            event_category,
+            array_agg(
+                cast(row(
+                    cast(indicator_id as smallint),
+                    cast(frequency as real),
+                    cast(ci_lower as real),
+                    cast(ci_upper as real),
+                    cast(avg_corr_magnitude as real),
+                    cast(tfidf as real)
+                ) as row(
+                    indicator_id smallint,
+                    frequency real,
+                    ci_lower real,
+                    ci_upper real,
+                    avg_corr_magnitude real,
+                    tfidf_score real
+                ))
+                ORDER BY tfidf DESC
+            ) AS indicator_fingerprint
+        FROM indicator_ranked
+        WHERE rn <= 15
+        GROUP BY event_category
+    )
+    -- Final SELECT — column order matches the Terraform Glue schema.
+    SELECT
+        cb.event_category,
+        cb.canonical_length,
+        ld.length_distribution,
+        ifp.indicator_fingerprint,
+        -- TODO #462 follow-up: compute oecd_share + regional_concentration
+        -- via JOIN to qgi_data.countries (alpha_2) + OECD/region maps.
+        -- Emits placeholder n_pairs (real) + 0.0 oecd_share + empty array
+        -- for now so downstream consumers can already read the field.
+        cast(row(
+            cast(cb.n_distinct_country_pairs as int),
+            cast(0.0 as real),
+            cast(array[] as array<row(region varchar, share real)>)
+        ) as row(
+            n_pairs int,
+            oecd_share real,
+            regional_concentration array<row(region varchar, share real)>
+        )) AS coverage_bias_diagnostic,
+        cb.total_instances,
+        cb.n_distinct_country_pairs,
+        cast(current_timestamp as timestamp) AS last_recomputed_at,
+        '{PIPELINE_VERSION}' AS pipeline_version,
+        cast({RECIPES_AGGREGATED_SCHEMA_VERSION} as smallint) AS schema_version,
+        cb.contains_predicted
+    FROM category_basics cb
+    LEFT JOIN length_distributions ld ON ld.event_category = cb.event_category
+    LEFT JOIN indicator_fingerprints ifp ON ifp.event_category = cb.event_category
+    """
+    logger.info("Inserting into recipes_aggregated (Phase 5b.6.5 Level-4 fingerprints)")
+    run_query(sql)
+    logger.info(f"Wrote {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}")
 
 
 # ---------------------------------------------------------------------------
