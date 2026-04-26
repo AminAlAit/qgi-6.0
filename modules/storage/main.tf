@@ -527,6 +527,16 @@ resource "aws_glue_catalog_table" "indicators" {
       name = "value"
       type = "double"
     }
+    # #348 V-Dem integration (#485): per-row provider attribution.
+    # Legacy parquet (pre-#485) does not have this column; Athena returns
+    # NULL for those rows. New writes (V-Dem ingest #487, future provider
+    # ingestion scripts) populate "WB" / "FAO" / "VDEM" / "ILO" / "UCDP".
+    # Backfill of legacy NULL rows happens implicitly on the next full
+    # pipeline regeneration from source.
+    columns {
+      name = "provider"
+      type = "string"
+    }
   }
 
   partition_keys {
