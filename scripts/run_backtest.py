@@ -751,6 +751,13 @@ def main():
     parser.add_argument('--target-precision', type=float, default=0.50, help='Min precision for threshold (V1.7: 50%%)')
     parser.add_argument('--curated-only', action='store_true', help='Filter to 35 curated countries only')
     parser.add_argument('--output', default='backtest_v18_results.json')
+    # #463 Part C completion: export per-pair predictions as JSONL so the
+    # V2.0-vs-V1.9.1 eval (qgi-ml/scripts/eval_v2_vs_v19.py) has a fixture
+    # to score V2.0 against without re-running the full backtest. One JSON
+    # per line: {country_a_id, event_category, tier, system, y_cal, y_true,
+    # cutoff_year}. systems: "v1.9.1" (per-tier rows), "persistence".
+    parser.add_argument('--dump-pairs-jsonl', default=None,
+                        help='Path to write per-pair predictions JSONL (#463 Part C eval fixture)')
     parser.add_argument('--dump-raw-scores', action='store_true',
                         help='Also write per-tier (prob, label) pairs to '
                              '{basename}_raw.json for diagnostic post-hoc '
@@ -899,6 +906,11 @@ def main():
         all_pairs_test: list = []
         all_y_true_test: list = []
         all_y_pred_test: list = []
+        # #463 Part C: per-pair predictions for V2.0-vs-V1.9.1 eval fixture.
+        # One record per (pair, tier, system) so eval_v2_vs_v19.py can compare
+        # V1.9.1's salience-derived calibrated score against V2.0's recipe
+        # similarity for the same 649 pairs at 2020 cutoff.
+        pair_records: list[dict] = []
         for tier_name in TIERS:
             preds = preds_by_tier_test[tier_name]
             if not preds:
@@ -928,6 +940,18 @@ def main():
             all_y_true_test.extend(y_true.tolist())
             all_y_pred_test.extend(y_pred_tier.tolist())
 
+            # #463 Part C: collect per-pair records for the eval fixture.
+            for (country_id, category), yc, yt in zip(pairs, y_cal, y_true):
+                pair_records.append({
+                    "country_a_id": country_id,
+                    "event_category": category,
+                    "tier": tier_name,
+                    "system": "v1.9.1",
+                    "y_cal": float(yc),
+                    "y_true": int(yt),
+                    "cutoff_year": args.cutoff,
+                })
+
             if args.dump_raw_scores:
                 raw_scores[tier_name]['test'] = [
                     [float(p), int(l)] for p, l in zip(y_cal, y_true)
@@ -942,6 +966,30 @@ def main():
         # Persistence baseline
         y_true_p, y_scores_p = build_arrays(persist_test, gt_test)
         mp = compute_metrics(y_true_p, y_scores_p, 0.3)
+
+        # #463 Part C: persistence baseline rows for the eval fixture.
+        # Build a parallel pair list since build_arrays doesn't return one;
+        # mirror its sort order.
+        all_pairs_persist = sorted(set(persist_test.keys()) | gt_test)
+        for (country_id, category), yp, yt in zip(all_pairs_persist, y_scores_p, y_true_p):
+            pair_records.append({
+                "country_a_id": country_id,
+                "event_category": category,
+                "tier": "all",  # persistence is single-pass, not tiered
+                "system": "persistence",
+                "y_cal": float(yp),
+                "y_true": int(yt),
+                "cutoff_year": args.cutoff,
+            })
+
+        # #463 Part C: write the per-pair fixture JSONL when --dump-pairs-jsonl
+        # is supplied. One JSON per line (canonical JSONL format) so the
+        # eval reader can stream-parse instead of loading the whole file.
+        if args.dump_pairs_jsonl:
+            with open(args.dump_pairs_jsonl, 'w', encoding='utf-8') as jf:
+                for rec in pair_records:
+                    jf.write(json.dumps(rec) + "\n")
+            print(f"\n  Wrote {len(pair_records)} per-pair records to {args.dump_pairs_jsonl}")
 
         # Aggregate
         print("\n" + "=" * 70)

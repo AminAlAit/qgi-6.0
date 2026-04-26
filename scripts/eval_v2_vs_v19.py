@@ -112,6 +112,77 @@ def margin_over_persistence(system_metric: float, persistence_metric: float) -> 
 
 
 # ---------------------------------------------------------------------------
+# Per-pair fixture loader (#463 Part C completion, 2026-04-26)
+# ---------------------------------------------------------------------------
+
+def load_pairs_jsonl(path: Path) -> list[dict]:
+    """Read the per-pair predictions JSONL emitted by run_backtest.py
+    --dump-pairs-jsonl. Each line is one (pair, tier, system, y_cal, y_true).
+
+    Returns the full list; callers filter by system.
+    """
+    out = []
+    with path.open("r", encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line:
+                continue
+            out.append(json.loads(line))
+    return out
+
+
+def metrics_from_pairs(records: list[dict], system_name: str) -> ScoringMetrics:
+    """Compute precision-at-K, recall-at-K, Brier from per-pair records.
+
+    Aggregates across tiers (one prediction per pair, taking the highest
+    y_cal across the pair's tier rows — matches the per-tier-threshold logic
+    in run_backtest where each tier produces independent predictions).
+    """
+    # Filter to system + collapse tiers per (country_a_id, event_category):
+    # take max y_cal across tier rows for the same pair.
+    by_pair: dict[tuple, tuple[float, int]] = {}
+    for r in records:
+        if r.get("system") != system_name:
+            continue
+        key = (r["country_a_id"], r["event_category"])
+        yc = float(r["y_cal"])
+        yt = int(r["y_true"])
+        if key not in by_pair or yc > by_pair[key][0]:
+            by_pair[key] = (yc, yt)
+
+    if not by_pair:
+        return ScoringMetrics(
+            system=system_name,
+            precision_at_10=float("nan"), precision_at_50=float("nan"),
+            precision_at_100=float("nan"), recall_at_10=float("nan"),
+            recall_at_50=float("nan"), recall_at_100=float("nan"),
+            brier_score=float("nan"), margin_over_persistence=float("nan"),
+            n_predictions=0, coverage=0.0,
+            notes=f"NO RECORDS for system={system_name!r} in fixture",
+        )
+
+    items = sorted(by_pair.items(), key=lambda kv: -kv[1][0])
+    y_true_sorted = [v[1] == 1 for _, v in items]
+    y_cal_all = [v[0] for _, v in items]
+    y_true_all = [v[1] == 1 for _, v in items]
+
+    return ScoringMetrics(
+        system=system_name,
+        precision_at_10=precision_at_k(y_true_sorted, 10),
+        precision_at_50=precision_at_k(y_true_sorted, 50),
+        precision_at_100=precision_at_k(y_true_sorted, 100),
+        recall_at_10=recall_at_k(y_true_sorted, 10),
+        recall_at_50=recall_at_k(y_true_sorted, 50),
+        recall_at_100=recall_at_k(y_true_sorted, 100),
+        brier_score=brier_score(y_true_all, y_cal_all),
+        margin_over_persistence=0.0,  # filled by caller after both systems read
+        n_predictions=len(by_pair),
+        coverage=1.0,
+        notes=f"Computed from per-pair fixture: {len(by_pair)} unique pairs",
+    )
+
+
+# ---------------------------------------------------------------------------
 # V1.9.1 baseline loader — reads aggregate metrics from backtest_results.json.
 # ---------------------------------------------------------------------------
 
@@ -378,13 +449,30 @@ def main():
                    help="Directory to write eval_report.md + raw_metrics.json")
     p.add_argument("--bucket", type=str, default=None,
                    help="S3 bucket for V2.0 Athena queries. If absent, runs in design-validation mode (V2.0 columns PENDING).")
+    p.add_argument("--pairs-jsonl", type=Path, default=None,
+                   help="Per-pair backtest fixture from run_backtest.py --dump-pairs-jsonl. "
+                        "When supplied, computes V1.9.1 + persistence metrics from per-pair "
+                        "data (precision-at-K, Brier) instead of falling back to aggregate cache.")
     args = p.parse_args()
 
-    persistence, v19 = load_v19_baseline(args.baseline_json)
+    # #463 Part C: prefer per-pair fixture when supplied; fall back to
+    # aggregate cache when only --baseline-json is given.
+    if args.pairs_jsonl and args.pairs_jsonl.exists():
+        records = load_pairs_jsonl(args.pairs_jsonl)
+        persistence = metrics_from_pairs(records, "persistence")
+        v19 = metrics_from_pairs(records, "v1.9.1")
+        # Compute margin-over-persistence using Brier (lower-better; margin
+        # is persistence_brier - v19_brier, positive = v19 wins).
+        if not _is_nan(persistence.brier_score) and not _is_nan(v19.brier_score):
+            v19.margin_over_persistence = persistence.brier_score - v19.brier_score
+    else:
+        persistence, v19 = load_v19_baseline(args.baseline_json)
 
     if args.bucket:
-        # TODO: implement Athena query path for V2.0 once #463 Parts A v0.2 + B ship
-        # and the backtest set is exported as a fixture (or re-derivable).
+        # TODO: implement Athena query path for V2.0 once #463 Parts A v0.2 + B ship.
+        # The pairs fixture from --pairs-jsonl will provide the (country_id, category)
+        # set to score against; V2.0's similarity-calibrated value comes from
+        # qgi_data.country_recipe_scores via the bucket's Athena workgroup.
         print("WARNING: --bucket supplied but V2.0 Athena scoring not yet implemented. Falling back to PENDING.", flush=True)
     v20 = load_v20_metrics_stub()
 
