@@ -89,10 +89,13 @@ CURRENT_YEAR = datetime.now().year
 
 SQL_TOP_N = f"""
 SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
-       indicator_count, avg_correlation, pattern_power_score
+       indicator_count, avg_correlation, pattern_power_score,
+       -- #461: D7 plumbing carried forward into pair_windows.json so the
+       -- frontend can render a "contains predicted values" badge per pair.
+       COALESCE(contains_predicted, FALSE) AS contains_predicted
 FROM (
   SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
-         indicator_count, avg_correlation, pattern_power_score,
+         indicator_count, avg_correlation, pattern_power_score, contains_predicted,
          ROW_NUMBER() OVER (
            PARTITION BY country_a_id, country_b_id
            ORDER BY pattern_power_score DESC
@@ -112,10 +115,12 @@ GROUP BY country_a_id, country_b_id, length
 # [EVENT_YEAR_FLOOR, CURRENT_YEAR] so the scan stays bounded.
 SQL_TOP_K_PER_END_YEAR = f"""
 SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
-       indicator_count, avg_correlation, pattern_power_score
+       indicator_count, avg_correlation, pattern_power_score,
+       -- #461: D7 plumbing — see SQL_TOP_N.
+       COALESCE(contains_predicted, FALSE) AS contains_predicted
 FROM (
   SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
-         indicator_count, avg_correlation, pattern_power_score,
+         indicator_count, avg_correlation, pattern_power_score, contains_predicted,
          ROW_NUMBER() OVER (
            PARTITION BY country_a_id, country_b_id, (start_year_b + length)
            ORDER BY pattern_power_score DESC
@@ -327,10 +332,14 @@ def main():
         ic = num(r.get("indicator_count"))
         ac = num(r.get("avg_correlation"))
         pps = num(r.get("pattern_power_score"))
+        # #461: D7 plumbing — Athena returns "true"/"false" string for boolean.
+        # Default to False on parse failure so legacy rows pre-#461 read as
+        # "no predicted values" (the safer default for the user-facing badge).
+        cp = str(r.get("contains_predicted", "")).lower() == "true"
         if None in (l, sa, sb, ic, ac, pps):
             continue
         entry = {"l": int(l), "sa": int(sa), "sb": int(sb), "ic": int(ic),
-                 "ac": float(ac), "pps": float(pps)}
+                 "ac": float(ac), "pps": float(pps), "cp": cp}
         out[ca][cb]["top"].append(entry)
 
     # Sort each top list DESC by pps (paranoia — should already be DESC from SQL)
@@ -418,9 +427,12 @@ def main():
             if not any(abs(end_year - ey) <= 2 for ey in cb_event_years):
                 skipped_not_event_year += 1
                 continue
+            # #461: D7 plumbing — same pattern as Query 1 above.
+            cp = str(r.get("contains_predicted", "")).lower() == "true"
             entry = {
                 "l": int(l), "sa": int(sa), "sb": int(sb),
                 "ic": int(ic), "ac": float(ac), "pps": float(pps),
+                "cp": cp,
             }
             # Deduplicate against existing top list (Query 1 may already
             # have this exact window if it's both PPS-top and event-aligned).

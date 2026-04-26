@@ -393,6 +393,12 @@ def enrich(
                     a_new["pair_pps"] = chosen.get("pps")
                     a_new["pair_avg_corr"] = chosen.get("ac")
                     a_new["event_in_window"] = event_in_window
+                    # #461: D7 plumbing — pair_windows now carries `cp`
+                    # (contains_predicted) per window. Surface it on the
+                    # analogue under a clearer name so the frontend type +
+                    # the rendered badge read self-explanatory. False when
+                    # absent (legacy windows pre-#461).
+                    a_new["contains_predicted"] = bool(chosen.get("cp", False))
                 else:
                     # Null pair_* — frontend falls back to 15yr event-anchor.
                     stats["analogues_without_aligned_window"] = (
