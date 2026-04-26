@@ -32,6 +32,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "recipe-rebuild-level-4",
+    title: "What we mean when we say 'Recipe'",
+    date: "2026-04-26",
+    dek: "The word 'Recipe' on our methodology page has been doing more rhetorical work than the code. Here is the gap, why it opened, and what the V2.0 rebuild changes.",
+    tags: ["methodology", "V2.0"],
+  },
+  {
     slug: "curation-in-practice",
     title: "Curation in practice: Iran, Ukraine, Venezuela",
     date: "2026-04-24",
