@@ -253,7 +253,15 @@ def tier_for_length(L: int) -> str:
 #
 # n_obs is dimensionless and present in both modes.
 INDICATOR_FEATURE_STATS_LEGACY = ["mean", "std", "last_value", "slope", "change", "n_obs"]
-INDICATOR_FEATURE_STATS_DECONF = ["std_norm", "slope_norm", "pct_change", "n_obs"]
+INDICATOR_FEATURE_STATS_DECONF = [
+    "std_norm", "slope_norm", "pct_change", "n_obs",
+    "autocorr_1", "frac_missing",  # #493 item 4 (added 2026-04-27)
+]
+# #493 item 10 — minimum n_obs to compute slope/autocorr meaningfully on
+# tier-S recipes (canonical_length 3-8). Below this, those stats are NaN
+# (later filled with 0.0 in fit_and_score) rather than fabricated from
+# under-determined fits.
+MIN_OBS_FOR_DYNAMICS = 3
 
 EPS = 1e-9
 
@@ -274,33 +282,62 @@ def _stats_legacy(years: np.ndarray, values: np.ndarray) -> list[float]:
     return [mean, std, last_value, slope, change, n_obs]
 
 
-def _stats_deconfound(years: np.ndarray, values: np.ndarray) -> list[float]:
+def _stats_deconfound(years: np.ndarray, values: np.ndarray,
+                      window_total_years: int | None = None) -> list[float]:
     """Country-identity de-confounded stat set. All values scale-invariant.
 
-    - std_norm   = std / (|mean| + eps)         coefficient of variation
-    - slope_norm = (slope * window_len) / (|mean| + eps)
-                                                relative total change rate
-    - pct_change = (last - first) / (|first| + eps)   relative total change
-    - n_obs      = sample size                  dimensionless
+    - std_norm     = std / (|mean| + eps)               coefficient of variation
+    - slope_norm   = (slope * window_len) / (|mean| + eps)
+                                                        relative total change rate
+    - pct_change   = (last - first) / (|first| + eps)   relative total change
+    - n_obs        = sample size                        dimensionless
+    - autocorr_1   = lag-1 Pearson autocorrelation      trending vs noisy (#493 item 4)
+    - frac_missing = (window_total - n_obs) / window_total  data-density signal
+
+    #493 item 10: when n_obs < MIN_OBS_FOR_DYNAMICS, slope_norm + pct_change +
+    autocorr_1 return NaN (then filled with 0.0 in fit_and_score) rather
+    than a fabricated value from a 2-point regression on tier-S recipes.
     """
-    if values.size == 0:
+    n_obs = int(values.size)
+    if n_obs == 0:
         return [np.nan] * len(INDICATOR_FEATURE_STATS_DECONF)
+
     mean = float(np.mean(values))
-    std = float(np.std(values)) if values.size > 1 else 0.0
+    std = float(np.std(values)) if n_obs > 1 else 0.0
     abs_mean = abs(mean) + EPS
     std_norm = std / abs_mean
 
-    if values.size > 1 and np.std(years) > 0:
+    if n_obs >= MIN_OBS_FOR_DYNAMICS and np.std(years) > 0:
         slope = float(np.polyfit(years, values, 1)[0])
         window_len = float(years.max() - years.min())
         slope_norm = (slope * window_len) / abs_mean
+        # autocorr_1 — Pearson r of value[t] with value[t-1].
+        x = values[:-1]
+        y = values[1:]
+        if np.std(x) > EPS and np.std(y) > EPS:
+            autocorr_1 = float(np.corrcoef(x, y)[0, 1])
+        else:
+            autocorr_1 = 0.0
+        abs_first = abs(float(values[0])) + EPS
+        pct_change = float(values[-1] - values[0]) / abs_first
     else:
-        slope_norm = 0.0
+        # Under-determined — emit NaN. fillna(0) in fit_and_score takes over.
+        slope_norm = float("nan")
+        autocorr_1 = float("nan")
+        pct_change = float("nan")
 
-    abs_first = abs(float(values[0])) + EPS
-    pct_change = float(values[-1] - values[0]) / abs_first
-    n_obs = int(values.size)
-    return [std_norm, slope_norm, pct_change, n_obs]
+    # #493 item 4 — frac_missing: how much of the canonical_length window
+    # is data-poor. Caller passes window_total_years (= canonical_length);
+    # if not provided, fall back to year-span observed.
+    if window_total_years and window_total_years > 0:
+        frac_missing = max(0.0, 1.0 - (n_obs / float(window_total_years)))
+    elif n_obs > 0:
+        observed_span = max(1, int(years.max() - years.min()) + 1)
+        frac_missing = max(0.0, 1.0 - (n_obs / float(observed_span)))
+    else:
+        frac_missing = 1.0
+
+    return [std_norm, slope_norm, pct_change, n_obs, autocorr_1, frac_missing]
 
 
 # Selected at runtime via the --deconfound / --no-deconfound CLI flag.
@@ -358,9 +395,19 @@ def build_feature_matrix_v2(panel: pd.DataFrame, fingerprint: list[dict],
             if slc.empty:
                 stats = [np.nan] * len(INDICATOR_FEATURE_STATS)
             else:
-                stats = _stats_for_series(
-                    slc["year"].to_numpy(), slc["value"].to_numpy()
-                )
+                # Pass canonical_length so frac_missing is computed
+                # against the recipe's intended window, not just observed span.
+                # _stats_legacy ignores the 3rd arg; _stats_deconfound uses it.
+                try:
+                    stats = _stats_for_series(
+                        slc["year"].to_numpy(), slc["value"].to_numpy(),
+                        canonical_length,
+                    )
+                except TypeError:
+                    # Legacy stat fn doesn't take canonical_length
+                    stats = _stats_for_series(
+                        slc["year"].to_numpy(), slc["value"].to_numpy()
+                    )
             for stat_name, val in zip(INDICATOR_FEATURE_STATS, stats):
                 row[f"ind{fp['indicator_id']}__{stat_name}"] = val
         feature_rows.append(row)
@@ -375,6 +422,54 @@ def attach_target(features: pd.DataFrame, gt: pd.DataFrame, event_category: str)
     out = features.merge(cat_gt, on="country_id", how="left")
     out["y"] = out["y_post_cutoff"].fillna(0).astype(int)
     return out.drop(columns=["y_post_cutoff"])
+
+
+# #493 item 1 — MNAR-risk flagging.
+# Computes |Pearson r| between (indicator_is_missing, target y) per
+# (recipe, indicator). Threshold 0.3 → MNAR-risk flag = True. Catches
+# the "data exists ≈ country is stable" leakage that inflates AUC for
+# indicators like SP.POP.TOTL on sport_and_international_event.
+MNAR_THRESHOLD = 0.3
+
+
+def compute_mnar_per_indicator(labeled: pd.DataFrame, fingerprint: list[dict],
+                               num_to_str: dict[int, str]
+                               ) -> dict[int, float]:
+    """Returns {indicator_numeric_id → |Pearson r| of (is_missing, y)}.
+
+    is_missing per country = whether ALL of this indicator's stat columns
+    are NaN before fillna (i.e., the country had no data for the indicator
+    in the canonical_length window). The is_missing signal is computed
+    against the n_obs column, which is 0 (or NaN) when no data existed.
+    """
+    out: dict[int, float] = {}
+    y = labeled["y"].to_numpy()
+    if y.sum() < 2 or (1 - y).sum() < 2:
+        return out
+    y_std = float(np.std(y))
+    if y_std < EPS:
+        return out
+
+    for fp in fingerprint:
+        n_id = fp["indicator_id"]
+        if n_id not in num_to_str:
+            continue
+        # Use the n_obs column (always present in both stat sets) as a
+        # proxy for "did data exist for this indicator in this country."
+        # n_obs is 0 (post-fillna) or NaN (pre-fillna) when missing.
+        col = f"ind{n_id}__n_obs"
+        if col not in labeled.columns:
+            continue
+        # is_missing = 1 if n_obs is NaN OR 0
+        n_obs_vals = labeled[col].to_numpy()
+        # Match up with the row order of y
+        is_missing = np.where(np.isnan(n_obs_vals) | (n_obs_vals == 0), 1.0, 0.0)
+        if np.std(is_missing) < EPS:
+            # No variance — either all missing or none missing
+            continue
+        r = float(np.corrcoef(is_missing, y)[0, 1])
+        out[n_id] = abs(r)
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -539,9 +634,10 @@ def render_markdown(report: dict, output_path: Path) -> None:
     md.append(f"\n## Per-recipe summary\n")
     md.append("Test AUC column shows point estimate + 90% bootstrap CI on the holdout. "
               "Wide CIs (>0.20 spread) indicate the AUC is unstable on this small holdout — "
-              "treat the point estimate with skepticism (#498).\n")
-    md.append("| Recipe | Tier | n_total | n_pos | pos_rate | n_train | n_test | Test AUC [90% CI] | Top contributor |")
-    md.append("|---|---|---|---|---|---|---|---|---|")
+              "treat the point estimate with skepticism (#498). MNAR column shows count of "
+              "fingerprint indicators flagged for missingness-correlates-with-outcome (#493 item 1).\n")
+    md.append("| Recipe | Tier | n_total | n_pos | pos_rate | n_train | n_test | Test AUC [90% CI] | MNAR | Top contributor |")
+    md.append("|---|---|---|---|---|---|---|---|---|---|")
     for r in report["per_recipe"]:
         n_total = r.get("n_total", "—")
         n_pos = r.get("n_pos", "—")
@@ -556,36 +652,66 @@ def render_markdown(report: dict, output_path: Path) -> None:
             auc_str = f"{r['test_auc']:.3f} [{ci_low:.3f}, {ci_high:.3f}]"
         else:
             auc_str = f"{r['test_auc']:.3f}"
+        n_mnar = r.get("n_mnar_flagged", 0)
+        mnar_str = f"⚠ {n_mnar}" if n_mnar > 0 else "0"
         md.append(
             f"| {r['event_category']} | {r['tier']} | {n_total} | {n_pos} | "
             f"{pos_rate} | {r['n_train']} | {r['n_test']} | "
-            f"{auc_str} | {r['top_indicator']} |"
+            f"{auc_str} | {mnar_str} | {r['top_indicator']} |"
         )
 
-    md.append(f"\n## Per-indicator coverage equity (existing fingerprint indicators)\n")
-    md.append("| Indicator | Provider | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
-    md.append("|---|---|---|---|---|---|---|")
+    md.append(f"\n## Per-indicator scorecard (existing fingerprint indicators)\n")
+    md.append("3-column scorecard view (#493 item 5): lift, coverage, evenness shown separately. "
+              "MNAR column flags indicators where missingness correlates with outcome — treat their "
+              "lift as suspect (#493 item 1).\n")
+    md.append("| Indicator | Provider | Lift | Coverage | Evenness | MNAR | n_recipes | audition_score |")
+    md.append("|---|---|---|---|---|---|---|---|")
     fingerprint_indicators = [r for r in report["per_indicator"] if not r.get("is_candidate")]
     for r in sorted(fingerprint_indicators, key=lambda r: -r["audition_score"])[:25]:
+        mnar_str = f"⚠ {r.get('max_mnar_r', 0):.2f}" if r.get("mnar_risk") else f"{r.get('max_mnar_r', 0):.2f}"
         md.append(
-            f"| {r['indicator_id_string']} | {r.get('provider', '—')} | {r['n_countries_with_data']} | "
-            f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
-            f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
+            f"| {r['indicator_id_string']} | {r.get('provider', '—')} | "
+            f"{r['mean_lift']:.4f} | {r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
+            f"{mnar_str} | {r['n_recipes_appearing']} | **{r['audition_score']:.4f}** |"
         )
 
     candidate_indicators = [r for r in report["per_indicator"] if r.get("is_candidate")]
     if candidate_indicators:
-        md.append(f"\n## CANDIDATE indicators audited (NOT YET in any recipe fingerprint)\n")
-        md.append("These indicators were tested as candidates alongside existing fingerprint members. "
-                  "audition_score reflects their predictive lift across all recipes — informational only "
-                  "(per founder direction, integration is independent of audition).\n")
-        md.append("| Candidate | Provider | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
-        md.append("|---|---|---|---|---|---|---|")
+        md.append(f"\n## CANDIDATE indicators scorecard (NOT YET in any recipe fingerprint)\n")
+        md.append("3-column scorecard: lift × coverage × evenness shown separately. "
+                  "audition_score = product, but separate columns reveal high-lift / lower-coverage indicators "
+                  "that the multiplicative score hides (#493 item 5). Per founder direction, integration is "
+                  "independent of audition.\n")
+        md.append("| Candidate | Provider | Lift | Coverage | Evenness | MNAR | n_recipes | audition_score |")
+        md.append("|---|---|---|---|---|---|---|---|")
         for r in sorted(candidate_indicators, key=lambda r: -r["audition_score"]):
+            mnar_str = f"⚠ {r.get('max_mnar_r', 0):.2f}" if r.get("mnar_risk") else f"{r.get('max_mnar_r', 0):.2f}"
             md.append(
-                f"| {r['indicator_id_string']} | {r.get('provider', '—')} | {r['n_countries_with_data']} | "
-                f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
-                f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
+                f"| {r['indicator_id_string']} | {r.get('provider', '—')} | "
+                f"{r['mean_lift']:.4f} | {r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
+                f"{mnar_str} | {r['n_recipes_appearing']} | **{r['audition_score']:.4f}** |"
+            )
+
+    # #493 item 6 — rank stability vs prior baseline (if --baseline-report provided)
+    if report.get("rank_stability"):
+        md.append(f"\n## Rank stability vs prior audit (#493 item 6)\n")
+        md.append(f"Baseline: `{report['rank_stability']['baseline_path']}`\n")
+        md.append("Per-recipe Kendall's tau on top-3 indicator rank-order vs baseline. "
+                  "tau=1 means same ranking; tau<0.3 means major reshuffle (treat with skepticism).\n")
+        md.append("| Recipe | Baseline top-3 | New top-3 | Kendall's τ | Verdict |")
+        md.append("|---|---|---|---|---|")
+        for entry in sorted(report["rank_stability"]["per_recipe"], key=lambda e: e.get("tau", 0)):
+            tau = entry.get("tau")
+            verdict = (
+                "STABLE" if tau is not None and tau >= 0.5
+                else "MIXED" if tau is not None and tau >= 0.0
+                else "RESHUFFLED" if tau is not None
+                else "n/a"
+            )
+            tau_str = f"{tau:.2f}" if tau is not None else "—"
+            md.append(
+                f"| {entry['event_category']} | {', '.join(entry['baseline_top'])} | "
+                f"{', '.join(entry['new_top'])} | {tau_str} | {verdict} |"
             )
 
     md.append(f"\n## Methodology notes\n")
@@ -604,6 +730,139 @@ def render_markdown(report: dict, output_path: Path) -> None:
     md.append(f"- Total countries (denominator): {TOTAL_COUNTRIES}")
 
     output_path.write_text("\n".join(md), encoding="utf-8")
+
+
+def compute_rank_stability(new_report: dict, baseline_path: Path) -> dict:
+    """#493 item 6 — Kendall's tau on per-recipe top-K indicator ranks vs baseline.
+
+    Returns {"baseline_path": str, "per_recipe": [{event_category, baseline_top,
+    new_top, tau}, ...]}. tau is None when either side has < 2 indicators or
+    no overlap.
+    """
+    if not baseline_path.exists():
+        return {"baseline_path": str(baseline_path), "per_recipe": [],
+                "note": f"baseline not found at {baseline_path}"}
+    baseline = json.loads(baseline_path.read_text(encoding="utf-8"))
+    base_idx = {r["event_category"]: r for r in baseline["per_recipe"]}
+    new_idx = {r["event_category"]: r for r in new_report["per_recipe"]}
+    common = sorted(set(base_idx) & set(new_idx))
+    K = 3
+
+    def top_k_ordered(record: dict) -> list[str]:
+        # `indicator_lift` is dict[indicator_string -> lift]. Take top K by lift.
+        items = sorted(record.get("indicator_lift", {}).items(), key=lambda kv: -kv[1])
+        return [k for k, _ in items[:K]]
+
+    def kendall_tau_partial(a: list[str], b: list[str]) -> float | None:
+        """Kendall's tau on the union of indicators ranked by appearance order.
+        Indicators not in a list get rank K+1 (= max + 1)."""
+        union = list(set(a) | set(b))
+        if len(union) < 2:
+            return None
+
+        def ranks(lst: list[str]) -> dict[str, float]:
+            r = {x: i + 1 for i, x in enumerate(lst)}
+            for x in union:
+                if x not in r:
+                    r[x] = K + 1
+            return r
+
+        ra = ranks(a)
+        rb = ranks(b)
+        n = len(union)
+        concordant = discordant = 0
+        for i in range(n):
+            for j in range(i + 1, n):
+                xa, xb = ra[union[i]] - ra[union[j]], rb[union[i]] - rb[union[j]]
+                if xa * xb > 0:
+                    concordant += 1
+                elif xa * xb < 0:
+                    discordant += 1
+        denom = concordant + discordant
+        if denom == 0:
+            return None
+        return (concordant - discordant) / denom
+
+    per_recipe = []
+    for cat in common:
+        base_top = top_k_ordered(base_idx[cat])
+        new_top = top_k_ordered(new_idx[cat])
+        tau = kendall_tau_partial(base_top, new_top)
+        per_recipe.append({
+            "event_category": cat,
+            "baseline_top": base_top,
+            "new_top": new_top,
+            "tau": tau,
+        })
+    return {"baseline_path": str(baseline_path), "per_recipe": per_recipe}
+
+
+def upload_audit_results_to_glue(report: dict, bucket: str, region: str) -> None:
+    """#493 item 9 — persist this audit run's per-(indicator, recipe) cells
+    to the Glue table qgi_data.indicator_recipe_audit_results.
+
+    Writes parquet to:
+      s3://{bucket}/audition-results/audit_date_partition={YYYY-MM-DD}/{audit_date}.parquet
+
+    Glue table is auto-discovered via MSCK REPAIR. Schema (per design doc
+    qgi-docs/internal/design/indicator-recipe-auditioner.md §Persistence):
+      indicator_id_string, provider, event_category, predictive_lift,
+      coverage_share, regional_evenness, audition_score,
+      mnar_max_r, mnar_risk, n_countries_with_data, n_train, n_test,
+      test_auc, auc_ci_low, auc_ci_high, audit_date, git_sha, pipeline_version
+    """
+    s3 = boto3.client("s3", region_name=region)
+    cells = []
+    audit_date = report["audit_date"]
+    git_sha = report.get("git_sha", "unknown")
+    pipeline_version = report.get("pipeline_version", "v0")
+
+    # Index per_indicator by string id for fast lookup
+    ind_idx = {r["indicator_id_string"]: r for r in report["per_indicator"]}
+
+    for recipe in report["per_recipe"]:
+        cat = recipe["event_category"]
+        for ind_str, lift in recipe.get("indicator_lift", {}).items():
+            meta = ind_idx.get(ind_str, {})
+            cells.append({
+                "indicator_id_string": ind_str,
+                "provider": meta.get("provider", "?"),
+                "event_category": cat,
+                "predictive_lift": float(lift),
+                "coverage_share": float(meta.get("coverage_share", 0.0)),
+                "regional_evenness": float(meta.get("regional_evenness", 0.0)),
+                "audition_score": float(meta.get("audition_score", 0.0)),
+                "mnar_max_r": float(meta.get("max_mnar_r", 0.0)),
+                "mnar_risk": bool(meta.get("mnar_risk", False)),
+                "n_countries_with_data": int(meta.get("n_countries_with_data", 0)),
+                "n_train": int(recipe.get("n_train", 0)),
+                "n_test": int(recipe.get("n_test", 0)),
+                "test_auc": float(recipe.get("test_auc") or 0.0),
+                "auc_ci_low": float(recipe.get("auc_ci_low") or 0.0),
+                "auc_ci_high": float(recipe.get("auc_ci_high") or 0.0),
+                "audit_date": audit_date,
+                "git_sha": git_sha,
+                "pipeline_version": pipeline_version,
+            })
+    if not cells:
+        print("[upload] no cells to persist; skipping")
+        return
+
+    df = pd.DataFrame(cells)
+    audit_date_partition = audit_date[:10]  # YYYY-MM-DD
+    table = pa.Table.from_pandas(df, preserve_index=False)
+    buf = pa.BufferOutputStream()
+    pq.write_table(table, buf, compression="snappy")
+    safe_audit_id = audit_date.replace(":", "-").replace(".", "-")
+    key = (
+        f"audition-results/audit_date_partition={audit_date_partition}/"
+        f"{safe_audit_id}.parquet"
+    )
+    s3.put_object(Bucket=bucket, Key=key, Body=buf.getvalue().to_pybytes())
+    print(f"[upload] wrote {len(cells)} cells → s3://{bucket}/{key}")
+    print("[upload] NOTE: Glue catalog table `qgi_data.indicator_recipe_audit_results` "
+          "must exist (Terraform-defined) and `MSCK REPAIR TABLE` run for the new "
+          "partition to register. See qgi-infra/modules/storage/main.tf.")
 
 
 def render_csv(report: dict, output_path: Path) -> None:
@@ -659,6 +918,11 @@ def main() -> int:
                    help="Comma-separated indicator string IDs to audit as "
                         "candidates (alternative to --candidates-from-provider). "
                         "E.g. 'v2x_polyarchy,v2x_libdem'.")
+    p.add_argument("--baseline-report", type=Path, default=None,
+                   help="Path to a prior audition_report.json. When provided, "
+                        "the new report includes a rank-stability section "
+                        "(Kendall's tau on per-recipe top-3 indicators) per "
+                        "#493 item 6. Skip if no prior baseline is available.")
     args = p.parse_args()
 
     # Switch the stat set BEFORE any feature build calls. This mutates the
@@ -738,6 +1002,7 @@ def main() -> int:
     print(f"\n[stage 1+2] per-recipe modeling...")
     per_recipe_records: list[dict] = []
     indicator_lift_accumulator: dict[int, list[float]] = defaultdict(list)
+    indicator_mnar_accumulator: dict[int, list[float]] = defaultdict(list)
 
     for i, recipe in enumerate(recipes, 1):
         cat = recipe["event_category"]
@@ -776,6 +1041,11 @@ def main() -> int:
             print(f"→ ERROR: {e}")
             continue
 
+        # #493 item 1 — MNAR-risk per (recipe, indicator).
+        # NB: must be computed BEFORE fit_and_score's fillna(0.0) — but we
+        # already have the labeled DataFrame in pre-fillna state here. Good.
+        mnar_by_num = compute_mnar_per_indicator(labeled, augmented_fp, num_to_str)
+
         # Map "ind123" prefix back to numeric id
         ind_lift_by_num: dict[int, float] = {}
         for prefix, lift in ind_lift.items():
@@ -787,6 +1057,13 @@ def main() -> int:
             if n in num_to_str
         }
         top_ind = max(ind_lift_by_str.items(), key=lambda kv: kv[1])[0] if ind_lift_by_str else "—"
+
+        # MNAR map by string id for the report
+        mnar_by_str: dict[str, float] = {
+            num_to_str[n]: r for n, r in mnar_by_num.items()
+            if n in num_to_str
+        }
+        n_mnar_flagged = sum(1 for r in mnar_by_num.values() if r >= MNAR_THRESHOLD)
 
         per_recipe_records.append({
             "event_category": cat,
@@ -801,10 +1078,15 @@ def main() -> int:
             "auc_ci_high": auc_high,
             "indicator_lift": ind_lift_by_str,
             "top_indicator": top_ind,
+            "mnar_per_indicator": mnar_by_str,
+            "n_mnar_flagged": n_mnar_flagged,
         })
 
         for n_id, lift in ind_lift_by_num.items():
             indicator_lift_accumulator[n_id].append(lift)
+        # accumulate MNAR per indicator (for per-indicator rollup)
+        for n_id, mnar_r in mnar_by_num.items():
+            indicator_mnar_accumulator[n_id].append(mnar_r)
 
         ci_str = f"[{auc_low:.3f},{auc_high:.3f}]" if not np.isnan(auc_low) else "[—]"
         print(f"→ AUC={test_auc:.3f} {ci_str} top={top_ind}")
@@ -835,6 +1117,12 @@ def main() -> int:
         n_id = str_to_num.get(sid)
         lifts = indicator_lift_accumulator.get(n_id, [])
         mean_lift = float(np.mean(lifts)) if lifts else 0.0
+        # #493 item 1 — MNAR rollup. mean of |r| across recipes; flagged if
+        # max across recipes hit MNAR_THRESHOLD.
+        mnar_rs = indicator_mnar_accumulator.get(n_id, [])
+        mean_mnar_r = float(np.mean(mnar_rs)) if mnar_rs else 0.0
+        max_mnar_r = float(np.max(mnar_rs)) if mnar_rs else 0.0
+        n_recipes_mnar_flagged = sum(1 for r in mnar_rs if r >= MNAR_THRESHOLD)
         audition_score = mean_lift * row["coverage_share"] * row["regional_evenness"]
         per_indicator.append({
             "indicator_id_string": sid,
@@ -847,6 +1135,11 @@ def main() -> int:
             "n_recipes_appearing": len(lifts),
             "audition_score": float(audition_score),
             "is_candidate": n_id in candidate_set_for_report if n_id else False,
+            # #493 item 1 — MNAR signal
+            "mean_mnar_r": mean_mnar_r,
+            "max_mnar_r": max_mnar_r,
+            "n_recipes_mnar_flagged": n_recipes_mnar_flagged,
+            "mnar_risk": max_mnar_r >= MNAR_THRESHOLD,
         })
 
     print(f"\n[stage 4] rendering reports...")
@@ -874,6 +1167,11 @@ def main() -> int:
         "per_indicator": per_indicator,
     }
 
+    # #493 item 6 — rank stability vs prior baseline
+    if args.baseline_report:
+        print(f"[stage 4a] computing rank stability vs {args.baseline_report}")
+        report["rank_stability"] = compute_rank_stability(report, args.baseline_report)
+
     md_path = args.output_dir / "audition_report.md"
     csv_path = args.output_dir / "audition_cells.csv"
     json_path = args.output_dir / "audition_report.json"
@@ -885,7 +1183,12 @@ def main() -> int:
     print(f"  wrote {json_path}")
 
     if args.upload:
-        print("[stage 5] persistence to indicator_recipe_audit_results — pending v0.5")
+        # #493 item 9 — persist to qgi_data.indicator_recipe_audit_results
+        print("[stage 5] persisting to qgi_data.indicator_recipe_audit_results")
+        try:
+            upload_audit_results_to_glue(report, args.bucket, args.region)
+        except Exception as e:
+            print(f"[upload] WARN: persistence failed (non-fatal): {e}")
 
     return 0
 
