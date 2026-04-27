@@ -6,6 +6,8 @@ import {
 } from "@/lib/recipes-aggregated-loader";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { RciBadge } from "@/components/design/RciBadge";
+import { getRecipeConfidence } from "@/lib/recipe-confidence";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -74,6 +76,7 @@ export default async function SignalCountryRecipePage({ params }: Props) {
   const recipe = await loadRecipeBySlug(slug);
   const scoresFile = await loadCountryRecipeScores().catch(() => null);
   const score = scoresFile?.scores[country]?.[slug] ?? null;
+  const confidence = getRecipeConfidence(slug);
 
   const label = formatCategory(slug);
   const l1 = CATEGORY_L1_MAP[slug];
@@ -110,11 +113,14 @@ export default async function SignalCountryRecipePage({ params }: Props) {
         <div className="flex items-start gap-4 flex-wrap">
           <CountryFlag alpha2={resolved.alpha_2} size={40} />
           <div className="flex-1 min-w-0">
-            <div
-              className="text-[10px] tracking-widest uppercase mb-1"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              {l1 ? `L1-${l1.group}` : ""} Signal
+            <div className="flex items-center gap-3 mb-1 flex-wrap">
+              <div
+                className="text-[10px] tracking-widest uppercase"
+                style={{ color: "var(--qgi-accent)" }}
+              >
+                {l1 ? `L1-${l1.group}` : ""} Signal
+              </div>
+              <RciBadge entry={confidence} size="sm" />
             </div>
             <h1 className="text-3xl font-semibold leading-tight">
               {resolved.name} — {label}

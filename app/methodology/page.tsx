@@ -7,6 +7,7 @@ import {
   TOTAL_INDICATOR_CATALOG,
   DATA_VINTAGE_YEAR,
 } from "@/lib/site-stats";
+import { getRciAggregate } from "@/lib/recipe-confidence";
 
 // T8 #301 + T19 #312: full openGraph + twitter + canonical. This is a
 // share-worthy page; previously it rendered a blank social preview card.
@@ -34,8 +35,15 @@ export const metadata: Metadata = {
 /**
  * Public methodology page — no auth required.
  * Critical for credibility (every user persona asks for it).
+ *
+ * Per #482 vague-public framing: the per-category confidence section
+ * uses tier counts from the RCI aggregate, but does NOT expose the
+ * formula, the RCI numeric value, or any threshold (0.50 / 0.20 / etc).
+ * The same constraint applies to the RciBadge tooltip on
+ * /precedents/{slug} and /signals/{country}/{slug}.
  */
 export default function MethodologyPage() {
+  const rciAggregate = getRciAggregate();
   return (
     <div
       className="min-h-full"
@@ -529,6 +537,12 @@ export default function MethodologyPage() {
             in decision-theory pipelines.
           </p>
 
+          {/* Per-category confidence — replaces the prior statistical-hygiene
+              block. Uses the audit aggregate produced by
+              `qgi-ml/scripts/audition_indicators.py` (#481). Founder
+              direction: report tier counts, do NOT expose the formula or
+              thresholds. The badge on /precedents/{slug} and
+              /signals/{country}/{slug} renders the same rating per recipe. */}
           <div
             className="mt-5 rounded border p-4"
             style={{
@@ -538,16 +552,45 @@ export default function MethodologyPage() {
           >
             <div
               className="text-[10px] tracking-[0.15em] uppercase mb-2 font-mono"
-              style={{ color: "var(--qgi-text-dim)" }}
+              style={{ color: "var(--qgi-accent)" }}
             >
-              Statistical hygiene — multiple-testing correction
+              Per-category confidence
             </div>
-            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
-              SCDI detection applies Benjamini-Hochberg FDR correction (p &lt; 0.05)
-              across all pairwise correlation tests per country_a to control the
-              false-discovery rate under the scale of ~14.3B pairwise tests. Without
-              BH-FDR, this many tests would produce thousands of spurious correlations by
-              chance alone.
+            <p className="text-sm">
+              Not every event category has the same evidence base. We grade each recipe on
+              whether its historical track record actually supports flagging countries
+              today — combining backtest accuracy on holdout data, the number of confirmed
+              historical events available to learn from, and how complete the underlying
+              indicator coverage is for that recipe.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4">
+              <ConfidenceTallyCard
+                label="High"
+                count={rciAggregate.byTier.GREEN}
+                color="#34d399"
+              />
+              <ConfidenceTallyCard
+                label="Moderate"
+                count={rciAggregate.byTier.YELLOW}
+                color="#fbbf24"
+              />
+              <ConfidenceTallyCard
+                label="Low"
+                count={rciAggregate.byTier.RED}
+                color="#f87171"
+              />
+              <ConfidenceTallyCard
+                label="Insufficient"
+                count={rciAggregate.byTier.INSUFFICIENT}
+                color="#7a90a8"
+              />
+            </div>
+            <p className="mt-3 text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+              {rciAggregate.total} recipes scored against the holdout set. The badge shown
+              on every Precedent and Signal page reflects this per-category rating. Treat
+              low-confidence and insufficient-data categories with skepticism, especially
+              when the underlying signal relies on indicators with sparse coverage in the
+              country of interest.
             </p>
           </div>
         </Section>
@@ -767,6 +810,41 @@ function MetricCard({
       <div className="text-xs font-medium mt-1">{label}</div>
       <div className="text-[10px] mt-0.5" style={{ color: "var(--qgi-text-dim)" }}>
         {note}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * #482 — confidence-tally card for the methodology page. Same color
+ * palette as RciBadge so users see one consistent visual story across
+ * every page that surfaces per-recipe confidence.
+ */
+function ConfidenceTallyCard({
+  label,
+  count,
+  color,
+}: {
+  label: string;
+  count: number;
+  color: string;
+}) {
+  return (
+    <div
+      className="rounded-lg border p-3 text-center"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div className="font-data text-2xl font-bold tabular-nums" style={{ color }}>
+        {count}
+      </div>
+      <div
+        className="text-[10px] uppercase tracking-wider mt-1"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {label}
       </div>
     </div>
   );
