@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { RciBadge } from "@/components/design/RciBadge";
 import { signalCountryRecipeUrl, type RecipeAggregated } from "@/lib/recipes-aggregated";
+import { getRecipeConfidence } from "@/lib/recipe-confidence";
 import indexesData from "@/data/indexes.json";
 
 // #470 item 2 (option c per Sonnet consult): build a numeric_id → name
@@ -52,6 +54,7 @@ const TIER_COLORS: Record<string, string> = {
 
 export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
   const label = formatCategory(recipe.event_category);
+  const confidence = getRecipeConfidence(recipe.event_category);
 
   // Length distribution stats for the dispersion narrative.
   const lengths = recipe.length_distribution;
@@ -83,11 +86,14 @@ export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
 
         {/* Hero */}
         <div>
-          <div
-            className="text-[10px] tracking-widest uppercase mb-2"
-            style={{ color: "var(--qgi-accent)" }}
-          >
-            Recipe · L3 category
+          <div className="flex items-center gap-3 mb-2 flex-wrap">
+            <div
+              className="text-[10px] tracking-widest uppercase"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Recipe · L3 category
+            </div>
+            <RciBadge entry={confidence} size="sm" />
           </div>
           <h1 className="text-3xl font-semibold leading-tight mb-2">{label}</h1>
           <p
