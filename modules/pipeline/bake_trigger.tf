@@ -115,6 +115,14 @@ resource "aws_lambda_permission" "frontend_bake_trigger_s3" {
 resource "aws_s3_bucket_notification" "data_lake" {
   bucket = var.data_lake_bucket_name
 
+  # #494 step 6: enable EventBridge forwarding so S3 ObjectCreated
+  # events on the bucket reach the `qgi-vdem-zip-uploaded` rule
+  # (defined in modules/pipeline/vdem.tf). Without this flag, the
+  # rule will never fire even though the rule's event_pattern
+  # matches. EventBridge forwarding is bucket-wide; the rule's
+  # filter narrows it to the vdem-staging/incoming/*.zip prefix.
+  eventbridge = true
+
   lambda_function {
     id                  = "frontend-bake-trigger"
     lambda_function_arn = aws_lambda_function.frontend_bake_trigger.arn

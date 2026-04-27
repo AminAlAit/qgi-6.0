@@ -124,6 +124,15 @@ module "pipeline" {
   }
   pipeline_a_counter_table_name = module.storage.pipeline_a_counter_table_name
 
+  # #494 step 6: V-Dem annual-refresh pipeline. Reuses the shared
+  # `fetcher` job queue (Fargate Spot) and adds its own Batch JobDef
+  # (defined in module.batch.qgi_vdem_ingest_*). The pipeline module
+  # creates the SF state machine + EventBridge trigger + SNS + Lambda
+  # in modules/pipeline/vdem.tf.
+  vdem_batch_job_definition_arn = module.batch.qgi_vdem_ingest_job_definition_arn
+  # `fetcher_job_queue_arn` is already passed above for the WB/FAO
+  # dispatcher; the V-Dem SF reuses the same value.
+
   tags = local.tags
 }
 

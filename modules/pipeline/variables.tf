@@ -142,3 +142,22 @@ variable "tags" {
   type    = map(string)
   default = {}
 }
+
+# ---------------------------------------------------------------------------
+# #494 step 6: V-Dem annual-refresh pipeline inputs
+# ---------------------------------------------------------------------------
+
+variable "vdem_batch_job_definition_arn" {
+  type        = string
+  description = "ARN of the qgi-vdem-ingest Batch JobDefinition (#494). Defined in modules/batch/vdem.tf and threaded through the staging/qa/prod environments via module.batch.qgi_vdem_ingest_job_definition_arn output."
+}
+
+# Note: `fetcher_job_queue_arn` is declared earlier in this file (line ~90,
+# from #FAR-1). #494 V-Dem reuses that same shared queue — no separate
+# variable needed.
+
+variable "ops_email_address" {
+  type        = string
+  default     = "contact@qgintelligence.com"
+  description = "SNS subscription email for V-Dem ingest pipeline notifications. Founder direction (2026-04-27): contact@qgintelligence.com is the ops inbox; not aminalait.de@gmail.com (personal)."
+}
