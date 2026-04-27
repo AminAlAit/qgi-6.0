@@ -697,6 +697,62 @@ resource "aws_glue_catalog_table" "recipes_aggregated" {
 }
 
 # ---------------------------------------------------------------------------
+# Glue — pattern_indicator_lookup table (#495 cost-reduction)
+#
+# A thin projection of qgi_data.patterns containing only
+# (pattern_id, indicator_numeric_ids) — ~50 MB compressed vs 64 GB for the
+# full patterns table. The recipe-engine CTAS uses this as the JOIN target
+# for the recipes_deduped → patterns join, replacing the 64 GB full-table
+# scan with a ~50 MB scan (~90% cost reduction per invocation).
+#
+# Built by build_pattern_indicator_lookup_table() in
+# pipeline-recipe-engine-finalize/lambda_function.py, which:
+#   1. Clears s3://…/pattern-indicator-lookup/parquet/
+#   2. INSERT INTO SELECT pattern_id, indicator_numeric_ids FROM patterns
+#   3. Guarded by the same 60-min idempotency window as recipes_aggregated
+#
+# No partition key: the table is tiny (one row per pattern — estimated
+# ~500K rows at 50 MB total). Full-table scans on the lookup are cheap;
+# no partition pruning benefit.
+# ---------------------------------------------------------------------------
+resource "aws_glue_catalog_table" "pattern_indicator_lookup" {
+  name          = "pattern_indicator_lookup"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pattern-indicator-lookup/parquet/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "pattern_id"
+      type = "string"
+    }
+    columns {
+      name = "indicator_numeric_ids"
+      type = "array<smallint>"
+    }
+  }
+
+  # No partition keys: the full table is ~50 MB; full scans are negligible.
+}
+
+# ---------------------------------------------------------------------------
 # Glue — country_recipe_scores table (#463 Fork B Phase 5b.6.6)
 #
 # One row per (country, event_category) — ~89 × 71 = 6.3K rows total.
