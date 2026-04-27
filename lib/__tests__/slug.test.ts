@@ -15,6 +15,16 @@ describe("countrySlug", () => {
     expect(countrySlug("Cote d'Ivoire")).toBe("cote_d_ivoire");
   });
 
+  it("transliterates Latin-1 diacritics to ASCII (#470 item 5)", () => {
+    // Without NFKD normalization these would lose the accented char
+    // entirely (Côte → c_te, São → s_o), breaking the sitemap +
+    // 308-redirect path for the 4 countries with non-ASCII names.
+    expect(countrySlug("Côte d'Ivoire")).toBe("cote_d_ivoire");
+    expect(countrySlug("São Tomé and Príncipe")).toBe("sao_tome_and_principe");
+    expect(countrySlug("Türkiye")).toBe("turkiye");
+    expect(countrySlug("Curaçao")).toBe("curacao");
+  });
+
   it("treats periods as token separators", () => {
     expect(countrySlug("U.S.A.")).toBe("u_s_a");
   });
@@ -49,8 +59,13 @@ describe("countrySlug", () => {
     expect(countrySlug("Sao Tome and Principe")).toBe("sao_tome_and_principe");
   });
 
-  it("non-ASCII chars are treated as separators", () => {
-    expect(countrySlug("Côte")).toBe("c_te");
+  // #470 item 5: this previously asserted the OLD bug-as-feature
+  // ("Côte" → "c_te" because the é was stripped). Updated to assert
+  // the new (correct) transliteration behavior — covered above by the
+  // "transliterates Latin-1 diacritics to ASCII" test, but kept this
+  // case for parity with its pre-#470 form.
+  it("non-ASCII chars are transliterated, not stripped", () => {
+    expect(countrySlug("Côte")).toBe("cote");
   });
 });
 

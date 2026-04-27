@@ -129,6 +129,30 @@ export async function getCountryRisk(countryId: string): Promise<CountryRisk | n
 }
 
 /**
+ * #470 item 3: shared lookup for the V2.0 `/signals/{country-slug}/...`
+ * routes — resolves a country slug (e.g. "yemen") back to the
+ * `{id, ...CountryRisk}` row by matching `countrySlug(name)` across the
+ * dataset.
+ *
+ * Promoted out of `app/(app)/signals/[country]/page.tsx` +
+ * `app/(app)/signals/[country]/[slug]/page.tsx` where it was duplicated.
+ *
+ * Returns null when no match — callers issue notFound() at that point.
+ */
+export async function resolveCountryBySlug(
+  slug: string
+): Promise<({ id: string } & CountryRisk) | null> {
+  const { countrySlug } = await import("./slug");
+  const data = await loadCountryRisks();
+  for (const [id, c] of Object.entries(data.countries)) {
+    if (countrySlug(c.name) === slug) {
+      return { id, ...c };
+    }
+  }
+  return null;
+}
+
+/**
  * Get all countries sorted by risk tier (HIGH first) then by max z-score descending.
  */
 export async function getCountriesSortedByRisk(): Promise<

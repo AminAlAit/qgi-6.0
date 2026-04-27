@@ -4,7 +4,7 @@ import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import { countrySlug } from "@/lib/slug";
 import { signalCountryRecipeUrl } from "@/lib/recipes-aggregated";
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type {
   AnaloguesEnrichedPayload,
   AnalogueEnrichedEntry,
@@ -220,7 +220,12 @@ export default async function PrecedentDetailPage({ params }: Props) {
   // products, with country/category drilldowns living under signals.
   const slug = countrySlug(country.name);
   if (slug) {
-    redirect(signalCountryRecipeUrl(slug, decodedCategory));
+    // #470 item 4: 308 (permanent) instead of 307 (temporary). The /signals/...
+    // URL is the canonical V2.0 home for this content; the redirect is intended
+    // to live indefinitely so external inbound links + search-engine crawlers
+    // can update their indexes against the new URL. Next.js's `redirect()`
+    // emits 307 by default; `permanentRedirect()` emits 308.
+    permanentRedirect(signalCountryRecipeUrl(slug, decodedCategory));
   }
   // Fallback: if slug resolution somehow fails, render the old page so
   // we don't 404 a previously-working URL. Should be unreachable in
