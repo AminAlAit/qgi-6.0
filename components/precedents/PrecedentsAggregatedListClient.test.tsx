@@ -188,6 +188,108 @@ describe("PrecedentsAggregatedListClient — RCI integration", () => {
     expect(optionTexts).toContain("Category (A-Z)");
   });
 
+  // ----- PR #10 review follow-up tests -----
+  // These cover gaps the Sonnet review surfaced after the original PR
+  // merged: the within-tier sort tie-break logic, multi-tier filter
+  // OR-semantics, and the mobile <RciBadge> render path.
+
+  it("within-tier sort uses RCI numeric desc as secondary key (review-#11 finding 1)", () => {
+    // Four GREEN recipes (all tier=GREEN in the v0.5 audit data):
+    //   economic_recession        rci 0.78  inst 1
+    //   fiscal_policy_change      rci 0.61  inst 999
+    //   migration_and_refugees    rci 0.54  inst 50
+    //   bilateral_treaty          rci 0.53  inst 200
+    //
+    // RCI values are all distinct so this test exclusively exercises
+    // the rci-as-secondary contract — the order would invert if
+    // total_instances were primary. The tertiary tie-break
+    // (total_instances when rci is equal) is exercised separately
+    // below.
+    const recipes = [
+      makeRecipe("fiscal_policy_change", 999),
+      makeRecipe("bilateral_treaty", 200),
+      makeRecipe("migration_and_refugees", 50),
+      makeRecipe("economic_recession", 1),
+    ];
+    render(
+      <PrecedentsAggregatedListClient
+        recipes={recipes}
+        generatedAt={generatedAt}
+        pipelineVersion={pipelineVersion}
+      />
+    );
+    const econ = screen.getAllByText("Economic Recession")[0];
+    const fiscal = screen.getAllByText("Fiscal Policy Change")[0];
+    const migration = screen.getAllByText("Migration And Refugees")[0];
+    const bilateral = screen.getAllByText("Bilateral Treaty")[0];
+    // Confirm DOM order: econ (0.78) < fiscal (0.61) < migration (0.54) < bilateral (0.53)
+    expect(econ.compareDocumentPosition(fiscal) & Node.DOCUMENT_POSITION_FOLLOWING).toBe(
+      Node.DOCUMENT_POSITION_FOLLOWING
+    );
+    expect(
+      fiscal.compareDocumentPosition(migration) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(
+      migration.compareDocumentPosition(bilateral) & Node.DOCUMENT_POSITION_FOLLOWING
+    ).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
+  });
+
+  it("multi-tier filter behaves as OR within the tier axis", () => {
+    // Two recipes — one GREEN, one INSUFFICIENT. Activating BOTH chips
+    // (High + Insufficient) should keep both rows visible. With AND
+    // semantics the result would be empty (no row is two tiers at once);
+    // with OR semantics both rows pass, locking the design contract.
+    const recipes = [
+      makeRecipe("economic_recession", 100), // GREEN
+      makeRecipe("nonsense_event_xyz", 100), // INSUFFICIENT
+    ];
+    render(
+      <PrecedentsAggregatedListClient
+        recipes={recipes}
+        generatedAt={generatedAt}
+        pipelineVersion={pipelineVersion}
+      />
+    );
+    fireEvent.click(screen.getByTitle(/High confidence \(\d+ recipes\)/i));
+    // After only High: only GREEN row visible.
+    expect(screen.queryByText("Nonsense Event Xyz")).toBeNull();
+    // Activate Insufficient too — both rows visible (OR within axis).
+    fireEvent.click(screen.getByTitle(/Insufficient confidence \(\d+ recipes\)/i));
+    expect(screen.getAllByText("Economic Recession").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Nonsense Event Xyz").length).toBeGreaterThan(0);
+  });
+
+  it("renders the RciBadge in the mobile-only row layout (review-#11 finding 2)", () => {
+    // The component renders BOTH a desktop grid (`hidden md:grid`) and
+    // a mobile flex column (`md:hidden`). The desktop layout already
+    // renders the badge (covered by other tests); this asserts that
+    // the mobile path also includes a chip — otherwise mobile users
+    // would lose the at-a-glance confidence signal.
+    //
+    // Resilience note (PR #11 review): we use `querySelectorAll` and
+    // check that ANY of the `.md:hidden` blocks contains the badge,
+    // rather than scoping to the first match. If a future refactor
+    // adds another mobile-only element above the row (e.g. a mobile
+    // header strip), the first-match approach would silently target
+    // it; the any-match approach passes as long as the badge appears
+    // in at least one mobile block on the page.
+    const { container } = render(
+      <PrecedentsAggregatedListClient
+        recipes={[makeRecipe("economic_recession", 100)]}
+        generatedAt={generatedAt}
+        pipelineVersion={pipelineVersion}
+      />
+    );
+    const mobileBlocks = container.querySelectorAll(".md\\:hidden");
+    expect(mobileBlocks.length).toBeGreaterThan(0);
+    // jsdom doesn't apply Tailwind; elements exist in the DOM
+    // regardless of CSS visibility, so we can search inside them.
+    const anyMobileContainsBadge = Array.from(mobileBlocks).some((el) =>
+      el.textContent?.includes("High confidence")
+    );
+    expect(anyMobileContainsBadge).toBe(true);
+  });
+
   it("composes domain + tier filters multiplicatively (intersection)", () => {
     // economic_recession is L1=Economic, GREEN.
     // nonsense_event_xyz is uncategorized, INSUFFICIENT.

@@ -63,6 +63,13 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 // Tier-order map keeps GREEN at the top, INSUFFICIENT at the bottom of
 // the confidence sort. This is the founder's "INSUFFICIENT rows fall
 // to the bottom otherwise the page leads with grays" rule.
+//
+// PR #10 review follow-up: the confidence sort relies on
+// `Array.prototype.sort` being stable to preserve the within-tier order
+// when secondary keys (rci, total_instances) tie. Stable sort has been
+// guaranteed by the spec since ECMAScript 2019 (Chrome 70+, Firefox 70+,
+// Safari 12+, Node 12+) — every browser/runtime QGI supports. Documented
+// here so future contributors don't reach for a sort-stability polyfill.
 const TIER_ORDER: Record<RciTier, number> = {
   GREEN: 0,
   YELLOW: 1,
@@ -287,7 +294,20 @@ export function PrecedentsAggregatedListClient({
           only the recipes worth trusting." Sits beneath the domain
           strip so domain + tier compose multiplicatively (intersection,
           not union). Chip count uses the unfiltered tier population so
-          the strip's labels remain stable while the user is filtering. */}
+          the strip's labels remain stable while the user is filtering.
+          Within the tier axis itself, multiple active chips behave as
+          OR (a row passes if its tier is in `activeTiers`).
+
+          PR #10 review follow-up: the strip header gets an InfoTooltip
+          for parity with the Confidence column header. Touch-device
+          users without hover get the same explanation either way. */}
+      <div
+        className="flex items-center gap-2 mb-1 text-[10px] tracking-widest uppercase"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        Filter by confidence
+        <InfoTooltip text="How well each recipe's historical track record supports flagging countries today — combines backtest accuracy on holdout data, sample size, and indicator coverage. Tap or hover any chip to filter; multiple chips compose as OR within this strip." />
+      </div>
       <div className="flex gap-2 flex-wrap mb-4">
         {TIER_FILTERS.map((t) => {
           const active = activeTiers.has(t.tier);
