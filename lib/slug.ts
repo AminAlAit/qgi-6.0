@@ -16,8 +16,17 @@
  */
 export function countrySlug(name: string | null | undefined): string | null {
   if (!name) return null;
+  // #470 item 5: transliterate Latin-1 diacritics to ASCII before the
+  // [^a-z0-9]+ collapse below. Without this, "Côte d'Ivoire" produced
+  // "c_te_d_ivoire" (é stripped, not transliterated) — breaking the
+  // sitemap + 308-redirect path for the 4 countries with non-ASCII names.
+  // NFKD normalization splits each accented char into its base + combining
+  // diacritical mark; the ̀-ͯ regex strips the marks.
+  // Result: "Côte d'Ivoire" → "Cote d'Ivoire" → "cote_d_ivoire" → matches
+  // the qgi-data/events/curated/cote_d_ivoire.json filename convention.
+  const transliterated = name.normalize("NFKD").replace(/[̀-ͯ]/g, "");
   // #422 Bug 4: apostrophes + periods are token separators, not delete-chars.
-  const withSeparators = name
+  const withSeparators = transliterated
     .toLowerCase()
     .replace(/'/g, " ")
     .replace(/,/g, "")

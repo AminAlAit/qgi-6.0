@@ -3,6 +3,19 @@
 import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { signalCountryRecipeUrl, type RecipeAggregated } from "@/lib/recipes-aggregated";
+import indexesData from "@/data/indexes.json";
+
+// #470 item 2 (option c per Sonnet consult): build a numeric_id → name
+// lookup once at module load. indexes.json is the curated indicator
+// catalog (260 entries, ~2 KB), already imported elsewhere in the
+// frontend. Lookup is O(1) per render. See [#473](https://github.com/AminAlAit/qgi-aws-tf/issues/473) for the FAOSTAT
+// trigger that would push us to a Glue JOIN or a CI-enforced sync.
+const INDICATOR_NAME_BY_ID = new Map<number, string>();
+for (const idx of indexesData as Array<{ numeric_id: number; name: string }>) {
+  if (typeof idx.numeric_id === "number" && idx.name) {
+    INDICATOR_NAME_BY_ID.set(idx.numeric_id, idx.name);
+  }
+}
 
 /**
  * #464 — `/precedents/{slug}` client. Renders one Recipe (one L3 category):
@@ -157,49 +170,63 @@ export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
             frequency given the {recipe.total_instances.toLocaleString()}-instance sample.
           </div>
           <div className="space-y-2">
-            {recipe.indicator_fingerprint.map((ind) => (
-              <div key={ind.indicator_id} className="flex items-center gap-3 text-[12px]">
-                <div className="w-48 truncate">{ind.indicator_name}</div>
+            {recipe.indicator_fingerprint.map((ind) => {
+              // #470 item 2: prefer the lookup, fall back to the inline
+              // name (back-compat for legacy mock data), final fallback to
+              // the raw ID so the row never renders as "undefined".
+              const displayName =
+                INDICATOR_NAME_BY_ID.get(ind.indicator_id) ??
+                ind.indicator_name ??
+                `Indicator ${ind.indicator_id}`;
+              return (
                 <div
-                  className="flex-1 h-4 rounded-sm relative"
-                  style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                  key={ind.indicator_id}
+                  className="flex items-center gap-3 text-[12px]"
                 >
-                  {/* CI bounds (lighter) */}
+                  <div className="w-48 truncate" title={displayName}>
+                    {displayName}
+                  </div>
                   <div
-                    className="absolute h-full rounded-sm"
-                    style={{
-                      left: `${ind.ci_lower * 100}%`,
-                      width: `${(ind.ci_upper - ind.ci_lower) * 100}%`,
-                      backgroundColor: "var(--qgi-accent)",
-                      opacity: 0.25,
-                    }}
-                  />
-                  {/* Point estimate (darker) */}
+                    className="flex-1 h-4 rounded-sm relative"
+                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                  >
+                    {/* CI bounds (lighter) */}
+                    <div
+                      className="absolute h-full rounded-sm"
+                      style={{
+                        left: `${ind.ci_lower * 100}%`,
+                        width: `${(ind.ci_upper - ind.ci_lower) * 100}%`,
+                        backgroundColor: "var(--qgi-accent)",
+                        opacity: 0.25,
+                      }}
+                    />
+                    {/* Point estimate (darker) */}
+                    <div
+                      className="absolute h-full rounded-sm"
+                      style={{
+                        left: `${Math.max(0, (ind.frequency - 0.005) * 100)}%`,
+                        width: `1%`,
+                        backgroundColor: "var(--qgi-accent)",
+                        opacity: 0.95,
+                      }}
+                    />
+                  </div>
                   <div
-                    className="absolute h-full rounded-sm"
-                    style={{
-                      left: `${Math.max(0, (ind.frequency - 0.005) * 100)}%`,
-                      width: `1%`,
-                      backgroundColor: "var(--qgi-accent)",
-                      opacity: 0.95,
-                    }}
-                  />
+                    className="w-16 text-right tabular-nums font-data"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {(ind.frequency * 100).toFixed(0)}%
+                  </div>
+                  <div
+                    className="w-20 text-right tabular-nums font-data text-[10px]"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                    title={`95% CI: ${(ind.ci_lower * 100).toFixed(0)}–${(ind.ci_upper * 100).toFixed(0)}%`}
+                  >
+                    ±{((ind.ci_upper - ind.ci_lower) * 50).toFixed(0)}pp
+                  </div>
                 </div>
-                <div
-                  className="w-16 text-right tabular-nums font-data"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  {(ind.frequency * 100).toFixed(0)}%
-                </div>
-                <div
-                  className="w-20 text-right tabular-nums font-data text-[10px]"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                  title={`95% CI: ${(ind.ci_lower * 100).toFixed(0)}–${(ind.ci_upper * 100).toFixed(0)}%`}
-                >
-                  ±{((ind.ci_upper - ind.ci_lower) * 50).toFixed(0)}pp
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </Section>
 

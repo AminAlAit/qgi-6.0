@@ -1,7 +1,6 @@
-import { loadCountryRisks } from "@/lib/country-risks";
+import { resolveCountryBySlug } from "@/lib/country-risks";
 import { signalCountryRecipeUrl } from "@/lib/recipes-aggregated";
 import { getCountrySignals } from "@/lib/recipes-aggregated-loader";
-import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import Link from "next/link";
@@ -24,16 +23,6 @@ interface Props {
 
 function formatCategory(cat: string): string {
   return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-async function resolveCountryBySlug(slug: string) {
-  const data = await loadCountryRisks();
-  for (const [id, c] of Object.entries(data.countries)) {
-    if (countrySlug(c.name) === slug) {
-      return { id, ...c };
-    }
-  }
-  return null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

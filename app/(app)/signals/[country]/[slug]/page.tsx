@@ -1,10 +1,9 @@
-import { loadCountryRisks } from "@/lib/country-risks";
+import { resolveCountryBySlug } from "@/lib/country-risks";
 import { signalCountryUrl, precedentSlugUrl } from "@/lib/recipes-aggregated";
 import {
   loadCountryRecipeScores,
   loadRecipeBySlug,
 } from "@/lib/recipes-aggregated-loader";
-import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import Link from "next/link";
@@ -16,7 +15,8 @@ import type { Metadata } from "next";
  * leaf: how does THIS country's trajectory match the canonical Recipe
  * for THIS event_category?
  *
- * Replaces the old `/countries/{id}/{cat}` (which now 301-redirects here).
+ * Replaces the old `/countries/{id}/{cat}` (which now 308-redirects here
+ * via permanentRedirect — #470 item 4).
  *
  * Week 2: similarity score is a placeholder from
  * `country-recipe-scores-mock.json`. Real V2.0 score from
@@ -31,16 +31,6 @@ interface Props {
 
 function formatCategory(cat: string): string {
   return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-async function resolveCountryBySlug(slug: string) {
-  const data = await loadCountryRisks();
-  for (const [id, c] of Object.entries(data.countries)) {
-    if (countrySlug(c.name) === slug) {
-      return { id, ...c };
-    }
-  }
-  return null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

@@ -18,7 +18,13 @@ export interface LengthBucket {
 
 export interface IndicatorFingerprintEntry {
   indicator_id: number;
-  indicator_name: string;
+  /** #470 item 2 (closed via option (c) per Sonnet consult): the future
+   * Glue table stores indicator_id only — names live in
+   * `data/indexes.json` (260 curated entries, 1-to-1 with smallint IDs).
+   * Optional here for back-compat with mock data that still populates it;
+   * frontend always resolves via lookup at render time. See [#473](https://github.com/AminAlAit/qgi-aws-tf/issues/473)
+   * for the FAOSTAT/ILOSTAT trigger that would change this. */
+  indicator_name?: string;
   /** Share of recipes-in-category that include this indicator (0..1). */
   frequency: number;
   /** 95% CI lower bound for frequency. */
@@ -27,6 +33,10 @@ export interface IndicatorFingerprintEntry {
   ci_upper: number;
   /** Average |Pearson| across the recipes that contain this indicator. */
   avg_corr_magnitude: number;
+  /** #470 item 1: TF-IDF score that drives the top-K=15 ranking in the
+   * Glue table. Mirrored here so the Week-3 Athena swap is a one-line
+   * change to the loader rather than a schema fork. */
+  tfidf_score: number;
 }
 
 export interface RegionShare {

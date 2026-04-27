@@ -141,6 +141,10 @@ interface IndicatorFingerprintEntry {
   ci_lower: number;
   ci_upper: number;
   avg_corr_magnitude: number;
+  /** #470 item 1: TF-IDF score that drives the top-K=15 ranking. Auto-
+   * computed by `withTfidf()` below from frequency assuming N_total = 71
+   * recipes. Absent from hand-curated entries — added during serialization. */
+  tfidf_score?: number;
 }
 
 interface RegionShare {
@@ -767,6 +771,26 @@ const output: RecipesAggregatedFile = {
   pipeline_version: "mock-v0",
   recipes: all,
 };
+
+// #470 item 1: post-process every fingerprint entry to compute tfidf_score
+// from its frequency. Real data ships tfidf from the Athena CTAS (#462);
+// the mock approximates it as freq * log(N_total / freq*N_total) which
+// preserves the descending-by-tfidf ranking the frontend expects.
+const N_TOTAL = 71; // L3 categories
+function withTfidf(e: IndicatorFingerprintEntry): IndicatorFingerprintEntry {
+  if (e.tfidf_score !== undefined) return e;
+  const freq = Math.max(0.001, Math.min(1, e.frequency));
+  const idfDenom = Math.max(1, Math.round(freq * N_TOTAL));
+  const tfidf = freq * Math.log(N_TOTAL / idfDenom);
+  return { ...e, tfidf_score: Number(tfidf.toFixed(4)) };
+}
+for (const recipe of all) {
+  recipe.indicator_fingerprint = recipe.indicator_fingerprint
+    .map(withTfidf)
+    // The Glue table orders by tfidf desc per #462; mirror here so
+    // frontend doesn't need to re-sort on read.
+    .sort((a, b) => (b.tfidf_score ?? 0) - (a.tfidf_score ?? 0));
+}
 
 const outPath = join(ROOT, "data", "recipes-aggregated-mock.json");
 writeFileSync(outPath, JSON.stringify(output, null, 2));
