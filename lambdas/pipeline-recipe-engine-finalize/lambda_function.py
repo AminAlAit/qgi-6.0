@@ -195,13 +195,19 @@ def lambda_handler(event, context):
     # Step 2b: recipes_normalized view (#158 follow-up)
     create_recipes_normalized_view()
 
+    # #496 idempotency: per-table force flags from event payload.
+    # Default false → idempotency guard kicks in (skip if recently rebuilt).
+    # Pass true to override (e.g. for explicit re-bake during debugging).
+    force_aggregated = bool(event.get('force_rebake_aggregated', False))
+    force_scores = bool(event.get('force_rebake_scores', False))
+
     # Step 2c: recipes_aggregated table (#462 Fork B Phase 5b.6.5) — Level-4
     # Recipe object, one row per L3 event_category. Runs after the deduped
     # view exists; independent of recipes_normalized + convergence.
     aggregated_status = 'skipped'
     if cutoff_year is None:
         try:
-            write_recipes_aggregated_table()
+            write_recipes_aggregated_table(force=force_aggregated)
             aggregated_status = 'ok'
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"Failed to write recipes_aggregated: {exc}")
@@ -215,7 +221,7 @@ def lambda_handler(event, context):
     scores_status = 'skipped'
     if cutoff_year is None and aggregated_status == 'ok':
         try:
-            write_country_recipe_scores()
+            write_country_recipe_scores(force=force_scores)
             scores_status = 'ok'
         except Exception as exc:  # noqa: BLE001
             logger.exception(f"Failed to write country_recipe_scores: {exc}")
@@ -389,7 +395,55 @@ def create_recipes_normalized_view():
 # recipes_aggregated table — Fork B Phase 5b.6.5 (#462)
 # ---------------------------------------------------------------------------
 
-def write_recipes_aggregated_table():
+def _check_idempotency_skip(table_name: str, force: bool,
+                            timestamp_col: str = "last_recomputed_at",
+                            window_minutes: int = 60) -> bool:
+    """#496 idempotency guard. Returns True if we should skip the heavy CTAS.
+
+    Skips when the target table's max(timestamp_col) is younger than
+    `window_minutes`, unless `force` is True. Prevents accidental re-runs
+    during debug iteration from costing $0.95/scan apiece (#496 origin:
+    April 26 2026 cost spike — 8 sequential invocations at $7.21 total).
+
+    timestamp_col defaults to "last_recomputed_at" (recipes_aggregated);
+    pass "last_computed_at" for country_recipe_scores.
+    """
+    if force:
+        logger.info(f"[idempotency] {table_name}: force=True, proceeding")
+        return False
+    try:
+        # Use start_query_execution + get_query_results directly (run_query
+        # raises on FAILED, but here we want to gracefully handle the
+        # "table empty" case).
+        sql = f"SELECT cast(max({timestamp_col}) as varchar) AS recent FROM {ATHENA_DB}.{table_name}"
+        check_id = run_query(sql)
+        result = athena.get_query_results(QueryExecutionId=check_id)
+        rows = result["ResultSet"]["Rows"]
+        if len(rows) <= 1:
+            return False
+        recent_str = rows[1]["Data"][0].get("VarCharValue")
+        if not recent_str:
+            return False
+        recent_ts = datetime.fromisoformat(recent_str.replace(" ", "T"))
+        if recent_ts.tzinfo is None:
+            recent_ts = recent_ts.replace(tzinfo=timezone.utc)
+        age_min = (datetime.now(timezone.utc) - recent_ts).total_seconds() / 60.0
+        if age_min < window_minutes:
+            logger.info(
+                f"[idempotency] {table_name}: last_recomputed_at is {age_min:.1f}min ago "
+                f"(< {window_minutes}min window); SKIPPING. "
+                f"Pass event.force_rebake_aggregated/scores=true to override."
+            )
+            return True
+        logger.info(f"[idempotency] {table_name}: last write {age_min:.1f}min ago, proceeding")
+    except Exception as exc:  # noqa: BLE001
+        # Any failure (table missing, query error, etc.) → don't skip; let
+        # the caller's normal CTAS path run and surface the real issue.
+        logger.warning(f"[idempotency] {table_name} check failed: {exc}; proceeding without skip")
+    return False
+
+
+def write_recipes_aggregated_table(force: bool = False):
     """Phase 5b.6.5: produce qgi_data.recipes_aggregated (Level-4 Recipe object).
 
     One row per L3 event_category (~71 rows total). The
@@ -418,6 +472,10 @@ def write_recipes_aggregated_table():
     Cost: scans recipes_deduped (~400K rows post-#458 dedup) joined to
     patterns (~few-GB). Should complete sub-2-min in QGI-Lambda-Workgroup.
     """
+    # 0. #496 idempotency guard — short-circuit if table was just rebuilt.
+    if _check_idempotency_skip(RECIPES_AGGREGATED_TABLE_NAME, force=force):
+        return
+
     # 1. Clear existing data so re-runs are idempotent.
     logger.info(f"Clearing s3://{S3_BUCKET}/{RECIPES_AGGREGATED_S3_PREFIX}")
     paginator = s3.get_paginator('list_objects_v2')
@@ -631,7 +689,7 @@ def _read_indicator_map_csv():
     return out
 
 
-def write_country_recipe_scores():
+def write_country_recipe_scores(force: bool = False):
     """Phase 5b.6.6 v0.2: Country-vs-Recipe Pearson trajectory similarity.
 
     For each (country, recipe) pair: compute a similarity score in [0,1]
@@ -682,6 +740,13 @@ def write_country_recipe_scores():
     Strategy: clear S3 prefix, INSERT INTO. Mirrors
     write_recipes_aggregated_table.
     """
+    # 0. #496 idempotency guard — short-circuit if table was just rebuilt.
+    if _check_idempotency_skip(
+        COUNTRY_RECIPE_SCORES_TABLE_NAME, force=force,
+        timestamp_col="last_computed_at",
+    ):
+        return
+
     # 1. Read indicator_map from S3 — small file (~270 rows).
     indicator_map = _read_indicator_map_csv()
     if not indicator_map:
