@@ -3,16 +3,29 @@
 ingest_vdem.py — V-Dem Country-Year ingestion (#487, V-Dem #4 of 6 under #348).
 
 Reads a V-Dem v15+ Country-Year CSV (downloaded manually from v-dem.net
-because their site has a click-through), filters to the 12 curated
-indicators (VD-01..VD-12 per `qgi-docs/methodology/indicator-catalog-detailed.md`),
-applies the country-name mapping (`registries/vdem_country_map.yaml`),
-pivots wide → long, and writes per-indicator parquet partitions to the
+because their site has a click-through), filters to the curated V-Dem
+indicators (currently 39: VD-01..VD-39 per
+`qgi-docs/methodology/indicator-catalog-detailed.md`), applies the
+country-name mapping (`registries/vdem_country_map.yaml`), pivots
+wide → long, and writes per-indicator parquet partitions to the
 data lake's `pipeline-A-indicator-extractor/output/parquet/` location.
 
 Each row in the output is `(country, year, value, provider='VDEM',
 indicator_id=v2x_*)`. The `provider` column was added to
 `qgi_data.indicators` in #485 — legacy WB/FAO rows are NULL there until
 the next full pipeline regeneration.
+
+**Indicator selection is XLSX-driven** (#494 step 2, 2026-04-28). The
+script reads the active V-Dem indicator list from the
+`vdem_indicators` sheet of `qgi-data/indicators/control-surface.xlsx`
+at runtime — same pattern WB indicators use today via the
+`phase_2_indicators` sheet. Adding/removing a V-Dem indicator is a
+spreadsheet edit reviewable in a PR diff, not a code change to this
+script.
+
+Filter contract: rows with `status == "process"` are ingested; rows
+with `status == "hold"` are skipped (mirrors how WB's active/hold
+distinction works).
 
 Manual download flow (annual):
   1. Visit https://v-dem.net/data/the-v-dem-dataset/
@@ -25,22 +38,33 @@ Usage:
       --bucket qgi-data-lake-222222222222 \\
       --workgroup QGI-Lambda-Workgroup \\
       --region eu-central-1 \\
+      [--xlsx-path /path/to/control-surface.xlsx]   # default: ../indicators/control-surface.xlsx
       [--dry-run]   # validate transform, skip S3 writes
       [--repair]    # also run MSCK REPAIR TABLE qgi_data.indicators
+
+Container deployment (#494 step 4 Batch image): the Dockerfile COPYs
+`indicators/control-surface.xlsx` into `/app/indicators/` and sets
+`INDICATOR_CATALOG_XLSX_PATH=/app/indicators/control-surface.xlsx` so
+the script discovers the catalog without --xlsx-path being passed
+explicitly.
 
 Anti-patterns (per design doc qgi-docs/internal/design/v-dem-integration.md):
   - Don't make this a Lambda. Annual cadence — manual run is fine.
   - Don't fork into a separate qgi_data.indicators_vdem table — single table.
-  - Don't pre-emptively ingest V-Dem indicators outside VD-01..VD-12.
+  - Don't hardcode the indicator list back into this file — the XLSX is the
+    source of truth (#494 step 2). Adding a V-Dem indicator means editing
+    the spreadsheet, not editing this script.
 """
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 import time
 from pathlib import Path
 
 import boto3
+import openpyxl
 import pandas as pd
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -50,69 +74,90 @@ import yaml
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 COUNTRY_MAP_FILE = REPO_ROOT / "registries" / "vdem_country_map.yaml"
+DEFAULT_XLSX_PATH = REPO_ROOT / "indicators" / "control-surface.xlsx"
+XLSX_ENV_VAR = "INDICATOR_CATALOG_XLSX_PATH"
 
 S3_PARQUET_PREFIX = "pipeline-A-indicator-extractor/output/parquet"
 
-# 12 curated indicators per indicator-catalog-detailed.md (VD-01..VD-12).
-# Order here matches the catalog. The numeric IDs (276..287) live in
-# the indicator_map.csv in S3 (#486 ship); this script writes the
-# string-id partitions so Athena's `qgi_data.indicators` partition key
-# (which is string-typed) keys on these directly.
-VDEM_INDICATORS = [
-    "v2x_polyarchy",       # VD-01 Electoral Democracy Index
-    "v2x_libdem",          # VD-02 Liberal Democracy Index
-    "v2x_jucon",           # VD-03 Judicial Constraints on Executive
-    "v2xlg_legcon",        # VD-04 Legislative Constraints on Executive
-    "v2csreprss",          # VD-05 Civil Society Repression
-    "v2cacamps",           # VD-06 Political Polarization
-    "v2excrptps",          # VD-07 Executive Corruption
-    "v2x_freexp_altinf",   # VD-08 Freedom of Expression
-    "v2x_partip",          # VD-09 Political Participation
-    "v2x_regime",          # VD-10 Regime Type (categorical 0-3)
-    "v2stfisccap",         # VD-11 Fiscal Capacity (substitutes for v2stcapacity,
-                           #       which was renamed/retired in V-Dem v16; the
-                           #       Reach-of-State cluster v2strenadm/v2stcritapparm
-                           #       are alternative state-capacity proxies, but
-                           #       v2stfisccap is the single closest match to the
-                           #       "tax + service delivery" intent of the original
-                           #       VD-11. indicator_map.csv on S3 was updated
-                           #       2026-04-26 to map v2stfisccap → 286.
-    "v2x_clphy",           # VD-12 Physical Violence Index
-    # ---------------------------------------------------------------------
-    # Tier 2 expansion (#492, ingested 2026-04-27): VD-13..VD-39 — 27 more
-    # V-Dem indicators recommended by Sonnet (acting as QGI representative)
-    # to fill recipe-family gaps the WB+FAO substrate can't measure.
-    # See qgi-docs/methodology/indicator-catalog-detailed.md §V-Dem for the
-    # full per-indicator rationale.
-    # ---------------------------------------------------------------------
-    "v2clkill",            # VD-13 Freedom from Political Killings
-    "v2cltort",            # VD-14 Freedom from Torture
-    "v2x_clpol",           # VD-15 Political Civil Liberties Index
-    "v2x_clpriv",          # VD-16 Private Civil Liberties Index
-    "v2mecenefm",          # VD-17 Print/Broadcast Media Censorship
-    "v2x_corr",            # VD-18 Political Corruption Index (system-wide)
-    "v2jureform",          # VD-19 Judicial Reform Attempts
-    "v2lgbicam",           # VD-20 Bicameralism (structural moderator)
-    "v2exl_legitlead",     # VD-21 Legitimacy of Political Leadership
-    "v2exremhog",          # VD-22 Head of Government Removal Mechanism
-    "v2xeg_eqprotec",      # VD-23 Equal Protection Index
-    "v2cseeorgs",          # VD-24 CSO Entry/Exit Freedom
-    "v2csprtcpt",          # VD-25 Civil Society Participatory Environment ★
-    "v2x_gender",          # VD-26 Women's Political Empowerment Index
-    "v2pepwrgen",          # VD-27 Power Distributed by Gender
-    "v2pepwrsoc",          # VD-28 Power Distributed by Socioeconomic Position
-    "v2pepwrort",          # VD-29 Power Distributed by Sexual Orientation
-    "v2pepwrses",          # VD-30 Power Distributed by Social Group (Ethnic) ★
-    "v2x_neopat",          # VD-31 Neopatrimonialism Index
-    "v2xel_frefair",       # VD-32 Free and Fair Elections Index
-    "v2elintmon",          # VD-33 International Election Monitoring
-    "v2ex_hosw",           # VD-34 Head of State — Who Holds Power
-    "v2exaphogp",          # VD-35 Appointment of Head of Government
-    "v2svdomaut",          # VD-36 Domestic Autonomy / Sovereignty
-    "v2x_rule",            # VD-37 Rule of Law Index ★
-    "v2lgqstexp",          # VD-38 Legislature Questions Officials in Practice
-    "v2psprlnks",          # VD-39 Party Linkages to Voters
-]
+VDEM_SHEET_NAME = "vdem_indicators"
+ACTIVE_STATUS = "process"  # rows with this status get ingested; "hold" is skipped
+
+
+def resolve_xlsx_path(cli_path: Path | None) -> Path:
+    """Resolve the indicator-catalog XLSX path. Precedence:
+       1. --xlsx-path CLI override
+       2. INDICATOR_CATALOG_XLSX_PATH env var (Batch container path)
+       3. Default: <repo_root>/indicators/control-surface.xlsx
+    """
+    if cli_path is not None:
+        return cli_path
+    env_path = os.environ.get(XLSX_ENV_VAR)
+    if env_path:
+        return Path(env_path)
+    return DEFAULT_XLSX_PATH
+
+
+def load_vdem_indicators_from_xlsx(xlsx_path: Path) -> list[str]:
+    """Load the active V-Dem id_string list from `control-surface.xlsx`.
+
+    Reads the `vdem_indicators` sheet, filters to rows with
+    `status == ACTIVE_STATUS` (default "process"), and returns id_strings
+    in sheet order. Sheet order is meaningful — it preserves the VD-XX
+    catalog ordering documented in indicator-catalog-detailed.md, so
+    downstream summaries / logs read in a stable order.
+
+    Header expected: id_string, numeric_id, name, status, category, description.
+    See `qgi-data/tests/test_control_surface_schema.py` for the schema
+    contract this loader depends on.
+    """
+    if not xlsx_path.exists():
+        raise FileNotFoundError(
+            f"indicator catalog XLSX not found at {xlsx_path}. "
+            f"Override with --xlsx-path or set ${XLSX_ENV_VAR}."
+        )
+    wb = openpyxl.load_workbook(xlsx_path, read_only=True, data_only=True)
+    if VDEM_SHEET_NAME not in wb.sheetnames:
+        raise ValueError(
+            f"sheet {VDEM_SHEET_NAME!r} missing from {xlsx_path}. "
+            f"Ensure indicators/control-surface.xlsx has the "
+            f"{VDEM_SHEET_NAME!r} sheet — see scripts/add_vdem_sheet.py "
+            f"for the expected schema (the script itself is # THROWAWAY "
+            f"per #373 and is not safely re-runnable on a populated XLSX)."
+        )
+    ws = wb[VDEM_SHEET_NAME]
+
+    indicators: list[str] = []
+    skipped_hold: list[str] = []
+    for i, row in enumerate(ws.iter_rows(values_only=True)):
+        if i == 0:
+            continue  # header
+        if row is None or row[0] is None:
+            continue  # empty trailer row
+        id_string, _numeric_id, _name, status, _category, _description = row
+        if status == ACTIVE_STATUS:
+            indicators.append(id_string)
+        else:
+            skipped_hold.append(id_string)
+
+    if not indicators:
+        raise ValueError(
+            f"no V-Dem indicators with status={ACTIVE_STATUS!r} found in "
+            f"{xlsx_path}. Spreadsheet may have drifted — run the schema "
+            f"test to investigate: python -m pytest tests/test_control_surface_schema.py"
+        )
+
+    # Log held + skipped indicators so an empty production set is visibly
+    # empty (vs silently empty from a status-typo or a future status value
+    # like 'deprecated' that the loader doesn't recognise). Catches bugs
+    # the schema test's status vocabulary check would also flag — but
+    # this surface is closer to the actual ingest, so the log lands in
+    # the operator's terminal during the annual run.
+    if skipped_hold:
+        print(
+            f"[init] skipped {len(skipped_hold)} held V-Dem indicators: "
+            f"{skipped_hold}"
+        )
+    return indicators
 
 
 def load_country_map(path: Path) -> tuple[dict[str, str], set[str], set[str]]:
@@ -124,14 +169,18 @@ def load_country_map(path: Path) -> tuple[dict[str, str], set[str], set[str]]:
     return mappings, drop, watch
 
 
-def load_vdem_csv(path: Path) -> pd.DataFrame:
+def load_vdem_csv(path: Path, indicators: list[str]) -> pd.DataFrame:
     """Read V-Dem CSV with only the columns we need.
 
     V-Dem v15+ uses 'country_text_id' (alpha-3) and 'year' as the row keys.
-    We add the 12 indicator columns by name. Extras are dropped at read
+    We add the indicator columns by name. Extras are dropped at read
     time to keep memory under ~50MB.
+
+    `indicators` is the active V-Dem id_string list loaded from the
+    `vdem_indicators` sheet of `control-surface.xlsx` via
+    `load_vdem_indicators_from_xlsx`.
     """
-    needed_cols = ["country_text_id", "year", "country_name"] + VDEM_INDICATORS
+    needed_cols = ["country_text_id", "year", "country_name"] + indicators
     print(f"[load] reading V-Dem CSV: {path}")
     df = pd.read_csv(path, usecols=needed_cols, low_memory=False)
     print(f"[load] {len(df):,} rows × {len(df.columns)} columns")
@@ -172,14 +221,17 @@ def normalize_countries(df: pd.DataFrame, mappings: dict[str, str],
     return df
 
 
-def pivot_to_long(df: pd.DataFrame) -> pd.DataFrame:
+def pivot_to_long(df: pd.DataFrame, indicators: list[str]) -> pd.DataFrame:
     """Wide CSV → long format. Output columns:
         country (string), year (int32), value (float64), provider (string),
         indicator_id (string — partition key on Athena side).
+
+    `indicators` is the active V-Dem id_string list (XLSX-driven, see
+    `load_vdem_indicators_from_xlsx`).
     """
-    keep = ["country", "year"] + VDEM_INDICATORS
+    keep = ["country", "year"] + indicators
     long_df = df[keep].melt(
-        id_vars=["country", "year"], value_vars=VDEM_INDICATORS,
+        id_vars=["country", "year"], value_vars=indicators,
         var_name="indicator_id", value_name="value"
     )
     # Drop NULL values — V-Dem has many missing cells (e.g. state_capacity
@@ -261,6 +313,11 @@ def main() -> int:
     p.add_argument("--country-map", type=Path, default=COUNTRY_MAP_FILE,
                    help="Override the V-Dem country map YAML path "
                         "(default: qgi-data/registries/vdem_country_map.yaml)")
+    p.add_argument("--xlsx-path", type=Path, default=None,
+                   help=f"Override the indicator-catalog XLSX path. "
+                        f"Default precedence: --xlsx-path > "
+                        f"${XLSX_ENV_VAR} env var > "
+                        f"{DEFAULT_XLSX_PATH}.")
     p.add_argument("--dry-run", action="store_true",
                    help="Validate transform end-to-end without S3 writes or MSCK")
     p.add_argument("--repair", action="store_true",
@@ -274,16 +331,29 @@ def main() -> int:
         print(f"[error] country map not found: {args.country_map}", file=sys.stderr)
         return 1
 
+    # Load the active V-Dem indicator list from the XLSX. The schema test
+    # in tests/test_control_surface_schema.py guards the contract this
+    # loader depends on; if it has drifted, the loader raises before we
+    # touch the V-Dem CSV.
+    xlsx_path = resolve_xlsx_path(args.xlsx_path)
+    try:
+        indicators = load_vdem_indicators_from_xlsx(xlsx_path)
+    except (FileNotFoundError, ValueError) as e:
+        print(f"[error] {e}", file=sys.stderr)
+        return 1
+    print(f"[init] indicator catalog: {len(indicators)} active V-Dem indicators "
+          f"loaded from {xlsx_path}")
+
     mappings, drop_set, watch_set = load_country_map(args.country_map)
     print(f"[init] country map: {len(mappings)} mappings, {len(drop_set)} drop, {len(watch_set)} watch")
 
-    df = load_vdem_csv(args.vdem_csv_path)
+    df = load_vdem_csv(args.vdem_csv_path, indicators)
     df = normalize_countries(df, mappings, drop_set, watch_set)
-    long_df = pivot_to_long(df)
+    long_df = pivot_to_long(df, indicators)
 
     counts = upload_per_indicator_parquet(long_df, args.bucket, args.region, args.dry_run)
     print(f"\n[summary] per-indicator row counts:")
-    for ind in VDEM_INDICATORS:
+    for ind in indicators:
         print(f"  {ind:25s} {counts.get(ind, 0):>7,d} rows")
 
     if args.repair and not args.dry_run:
