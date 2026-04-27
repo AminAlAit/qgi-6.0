@@ -304,3 +304,36 @@ andorra, monaco, san_marino, liechtenstein, vatican_city (European microstates);
 antigua_and_barbuda, barbados, dominica, grenada, saint_kitts_and_nevis, saint_lucia, saint_vincent_and_the_grenadines, belize (Caribbean + Central America);
 nauru, palau, marshall_islands, micronesia, kiribati, samoa, solomon_islands, tonga, tuvalu, vanuatu (Pacific);
 sao_tome_and_principe, seychelles (small islands)
+
+## 2026-04-27 — 15-country verification batch (target: 150+ verified)
+
+15 Sonnet+WebSearch agents in parallel, each verifying the curated event list of one country (~80 events average). Per-event verdict TRUE / FALSE / PARTIAL with reason + source URL. Results in `qgi-data/events/verification/{country}.json`.
+
+**Aggregate:** 1,201 events verified, 986 TRUE / 202 PARTIAL / 13 FALSE (82.1% TRUE, 16.8% PARTIAL, 1.1% FALSE).
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | PARTIAL | FALSE | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| south_africa | 1 | 1 | 2 | 2026-04-27 | 154 | 149 | 5 | 0 | 96.8% |
+| jordan | 1 | 1 | 1 | 2026-04-27 | 106 | 97 | 8 | 1 | 91.5% |
+| united_arab_emirates | 1 | 1 | 1 | 2026-04-27 | 105 | 62 | 41 | 2 | 59.0% |
+| vietnam | 1 | 1 | 1 | 2026-04-27 | 79 | 71 | 8 | 0 | 89.9% |
+| papua_new_guinea | 1 | 1 | 1 | 2026-04-27 | 78 | 70 | 8 | 0 | 89.7% |
+| netherlands | 1 | 1 | 1 | 2026-04-27 | 73 | 56 | 17 | 0 | 76.7% |
+| malawi | 1 | 1 | 1 | 2026-04-27 | 71 | 66 | 5 | 0 | 93.0% |
+| malaysia | 1 | 1 | 1 | 2026-04-27 | 71 | 53 | 16 | 2 | 74.6% |
+| germany | 1 | 1 | 1 | 2026-04-27 | 69 | 57 | 12 | 0 | 82.6% |
+| timor_leste | 1 | 1 | 1 | 2026-04-27 | 69 | 61 | 8 | 0 | 88.4% |
+| paraguay | 1 | 1 | 1 | 2026-04-27 | 68 | 45 | 23 | 0 | 66.2% |
+| guinea | 1 | 1 | 1 | 2026-04-27 | 67 | 48 | 16 | 3 | 71.6% |
+| zambia | 1 | 1 | 1 | 2026-04-27 | 65 | 51 | 13 | 1 | 78.5% |
+| liberia | 1 | 1 | 1 | 2026-04-27 | 64 | 50 | 10 | 4 | 78.1% |
+| palestine | 1 | 1 | 1 | 2026-04-27 | 62 | 50 | 12 | 0 | 80.6% |
+
+**Cumulative:** verified country count is now **104 / 197 curated (53%)**. Per founder direction (memory `feedback_pipeline_run_threshold.md`): need **150+ verified** before next full pipeline run; **46 more verifications still required** (~3 more rounds of 15-agent batches).
+
+**Notable findings:**
+- South Africa is the gold-standard curation in this batch (96.8% TRUE on 154 events).
+- UAE has the worst verification rate (59% TRUE / 39% PARTIAL) — heavy date-drift; flag for re-curation.
+- Liberia has the most outright fabrications/wrongness (4 FALSE on 64 events / 6.3%).
+- Most PARTIAL verdicts are date drifts off-by-1-to-3-years rather than wrong events. Pattern: curators correctly identified events but reached for approximate dates.
+- Jordan despite the 2026-04-07 fabricated-flags incident — the underlying CONTENT is mostly correct; only the prior agent's claimed verifications were lies.
