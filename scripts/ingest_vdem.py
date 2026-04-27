@@ -69,8 +69,49 @@ VDEM_INDICATORS = [
     "v2x_freexp_altinf",   # VD-08 Freedom of Expression
     "v2x_partip",          # VD-09 Political Participation
     "v2x_regime",          # VD-10 Regime Type (categorical 0-3)
-    "v2stcapacity",        # VD-11 State Capacity
+    "v2stfisccap",         # VD-11 Fiscal Capacity (substitutes for v2stcapacity,
+                           #       which was renamed/retired in V-Dem v16; the
+                           #       Reach-of-State cluster v2strenadm/v2stcritapparm
+                           #       are alternative state-capacity proxies, but
+                           #       v2stfisccap is the single closest match to the
+                           #       "tax + service delivery" intent of the original
+                           #       VD-11. indicator_map.csv on S3 was updated
+                           #       2026-04-26 to map v2stfisccap → 286.
     "v2x_clphy",           # VD-12 Physical Violence Index
+    # ---------------------------------------------------------------------
+    # Tier 2 expansion (#492, ingested 2026-04-27): VD-13..VD-39 — 27 more
+    # V-Dem indicators recommended by Sonnet (acting as QGI representative)
+    # to fill recipe-family gaps the WB+FAO substrate can't measure.
+    # See qgi-docs/methodology/indicator-catalog-detailed.md §V-Dem for the
+    # full per-indicator rationale.
+    # ---------------------------------------------------------------------
+    "v2clkill",            # VD-13 Freedom from Political Killings
+    "v2cltort",            # VD-14 Freedom from Torture
+    "v2x_clpol",           # VD-15 Political Civil Liberties Index
+    "v2x_clpriv",          # VD-16 Private Civil Liberties Index
+    "v2mecenefm",          # VD-17 Print/Broadcast Media Censorship
+    "v2x_corr",            # VD-18 Political Corruption Index (system-wide)
+    "v2jureform",          # VD-19 Judicial Reform Attempts
+    "v2lgbicam",           # VD-20 Bicameralism (structural moderator)
+    "v2exl_legitlead",     # VD-21 Legitimacy of Political Leadership
+    "v2exremhog",          # VD-22 Head of Government Removal Mechanism
+    "v2xeg_eqprotec",      # VD-23 Equal Protection Index
+    "v2cseeorgs",          # VD-24 CSO Entry/Exit Freedom
+    "v2csprtcpt",          # VD-25 Civil Society Participatory Environment ★
+    "v2x_gender",          # VD-26 Women's Political Empowerment Index
+    "v2pepwrgen",          # VD-27 Power Distributed by Gender
+    "v2pepwrsoc",          # VD-28 Power Distributed by Socioeconomic Position
+    "v2pepwrort",          # VD-29 Power Distributed by Sexual Orientation
+    "v2pepwrses",          # VD-30 Power Distributed by Social Group (Ethnic) ★
+    "v2x_neopat",          # VD-31 Neopatrimonialism Index
+    "v2xel_frefair",       # VD-32 Free and Fair Elections Index
+    "v2elintmon",          # VD-33 International Election Monitoring
+    "v2ex_hosw",           # VD-34 Head of State — Who Holds Power
+    "v2exaphogp",          # VD-35 Appointment of Head of Government
+    "v2svdomaut",          # VD-36 Domestic Autonomy / Sovereignty
+    "v2x_rule",            # VD-37 Rule of Law Index ★
+    "v2lgqstexp",          # VD-38 Legislature Questions Officials in Practice
+    "v2psprlnks",          # VD-39 Party Linkages to Voters
 ]
 
 
