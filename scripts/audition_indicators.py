@@ -508,21 +508,29 @@ def render_markdown(report: dict, output_path: Path) -> None:
     md.append(f"- Mean audition_score: **{report['mean_audition_score']:.3f}** (predictive_lift × coverage_share × regional_evenness)")
 
     md.append(f"\n## Per-recipe summary\n")
-    md.append("| Recipe | Tier | n_train | n_test | Test AUC | Top contributor |")
-    md.append("|---|---|---|---|---|---|")
+    md.append("| Recipe | Tier | n_total | n_pos | pos_rate | n_train | n_test | Test AUC | Top contributor |")
+    md.append("|---|---|---|---|---|---|---|---|---|")
     for r in report["per_recipe"]:
+        n_total = r.get("n_total", "—")
+        n_pos = r.get("n_pos", "—")
+        pos_rate = (
+            f"{(r['n_pos'] / r['n_total']):.3f}"
+            if r.get("n_total") and r.get("n_pos") is not None
+            else "—"
+        )
         md.append(
-            f"| {r['event_category']} | {r['tier']} | {r['n_train']} | {r['n_test']} | "
+            f"| {r['event_category']} | {r['tier']} | {n_total} | {n_pos} | "
+            f"{pos_rate} | {r['n_train']} | {r['n_test']} | "
             f"{r['test_auc']:.3f} | {r['top_indicator']} |"
         )
 
     md.append(f"\n## Per-indicator coverage equity (existing fingerprint indicators)\n")
-    md.append("| Indicator | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
-    md.append("|---|---|---|---|---|---|")
+    md.append("| Indicator | Provider | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
+    md.append("|---|---|---|---|---|---|---|")
     fingerprint_indicators = [r for r in report["per_indicator"] if not r.get("is_candidate")]
     for r in sorted(fingerprint_indicators, key=lambda r: -r["audition_score"])[:25]:
         md.append(
-            f"| {r['indicator_id_string']} | {r['n_countries_with_data']} | "
+            f"| {r['indicator_id_string']} | {r.get('provider', '—')} | {r['n_countries_with_data']} | "
             f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
             f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
         )
@@ -533,11 +541,11 @@ def render_markdown(report: dict, output_path: Path) -> None:
         md.append("These indicators were tested as candidates alongside existing fingerprint members. "
                   "audition_score reflects their predictive lift across all recipes — informational only "
                   "(per founder direction, integration is independent of audition).\n")
-        md.append("| Candidate | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
-        md.append("|---|---|---|---|---|---|")
+        md.append("| Candidate | Provider | n_countries | coverage_share | regional_evenness | mean_lift_across_recipes | audition_score |")
+        md.append("|---|---|---|---|---|---|---|")
         for r in sorted(candidate_indicators, key=lambda r: -r["audition_score"]):
             md.append(
-                f"| {r['indicator_id_string']} | {r['n_countries_with_data']} | "
+                f"| {r['indicator_id_string']} | {r.get('provider', '—')} | {r['n_countries_with_data']} | "
                 f"{r['coverage_share']:.3f} | {r['regional_evenness']:.3f} | "
                 f"{r['mean_lift']:.4f} | **{r['audition_score']:.4f}** |"
             )
@@ -765,6 +773,20 @@ def main() -> int:
         panel, country_to_alpha2, alpha2_to_region
     )
 
+    # Pull provider attribution per indicator (#493 item 8). Single Athena
+    # query joins to qgi_data.indicators.provider (column added in #485).
+    # Legacy WB+FAO rows return NULL until next pipeline regen; default to "?".
+    provider_qid = run_athena(
+        ath,
+        "SELECT DISTINCT indicator_id, provider FROM qgi_data.indicators",
+        args.bucket, args.workgroup,
+    )
+    provider_rows = athena_fetch_all(ath, provider_qid)
+    provider_by_string_id: dict[str, str] = {}
+    for ind_id, provider in provider_rows:
+        if ind_id:
+            provider_by_string_id[ind_id] = provider or "?"
+
     # Combine: per-indicator audition_score = mean_lift × coverage_share × regional_evenness
     per_indicator: list[dict] = []
     for _, row in coverage_df.iterrows():
@@ -776,6 +798,7 @@ def main() -> int:
         per_indicator.append({
             "indicator_id_string": sid,
             "indicator_numeric_id": n_id,
+            "provider": provider_by_string_id.get(sid, "?"),
             "n_countries_with_data": int(row["n_countries_with_data"]),
             "coverage_share": float(row["coverage_share"]),
             "regional_evenness": float(row["regional_evenness"]),
