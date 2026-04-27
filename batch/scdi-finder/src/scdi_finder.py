@@ -32,7 +32,6 @@ import boto3
 import pandas as pd
 import numpy as np
 from scipy import signal
-from scipy import stats  # #139: BH FDR uses scipy.stats.t for Pearson p-values
 import psutil # For getting CPU count
 
 
@@ -46,14 +45,14 @@ MIN_LENGTH = int(os.environ.get('MIN_LENGTH', 3))
 # Set to a value below the lowest tier threshold (0.82) so it never overrides them.
 CORRELATION_THRESHOLD = float(os.environ.get('CORRELATION_THRESHOLD', 0.5))
 
-# #139: Benjamini-Hochberg false discovery rate correction.
-# At V1.5.3 scale (~50 indicators × 200 countries) the multiple-comparison
-# noise floor is manageable, but with the planned indicator expansion to ~700
-# indicators (FAOSTAT + ILOSTAT + WB+) we expect ~14M correlation tests per
-# job. At p<0.05 that's ~700K spurious correlations by chance alone — BH is
-# a defensive screen on the candidates that passed the |r| pre-filter.
-BH_FDR_ENABLED = os.environ.get('BH_FDR_ENABLED', 'true').lower() in ('true', '1', 'yes')
-BH_FDR_ALPHA = float(os.environ.get('BH_FDR_ALPHA', 0.05))
+# #502 (2026-04-27): Benjamini-Hochberg / FDR multiple-testing correction
+# is removed per founder hard veto (`feedback_no_fdr_correction.md`). QGI
+# is screening candidates for downstream investigation, not making point
+# claims that need bounded false-discovery rates. Spurious correlations
+# are filtered downstream via Phase C/D pattern aggregation requiring
+# COUNT >= 2 indicators per country pair, plus recipe binding to events.
+# Do NOT re-add BH/FDR / Bonferroni / any multiple-testing correction
+# here without explicit founder direction; closes #356.
 
 # #128: Tier-aware Pearson thresholds. Pattern length stratification (D-decision
 # 2026-04-06): short patterns capture specific causal mechanisms and demand a
@@ -84,114 +83,6 @@ def tier_threshold(segment_len: int) -> float:
         t = TIER_THRESHOLD_XL
     # Honour the legacy global floor in case it is set higher than the tier value
     return max(t, CORRELATION_THRESHOLD)
-
-
-# ---------------------------------------------------------------------------
-# #139: Benjamini-Hochberg false discovery rate correction
-# ---------------------------------------------------------------------------
-
-def effective_df_for_source_type(n: np.ndarray, source_type: str) -> np.ndarray:
-    """Degrees-of-freedom adjustment for Pearson p-value given indicator provenance.
-
-    Standard Pearson assumes i.i.d. residuals and uses ``df = n − 2``. For
-    indicators that carry residual autocorrelation — specifically FAOSTAT
-    ``3yr_avg`` series that have been first-differenced by the Phase 1
-    fetcher (#241 F1, commit e810597) — consecutive observations still
-    share 2/3 of the underlying data because the 3-year rolling windows
-    overlap. Naïve df inflates t-statistics, understates p-values, and
-    produces spurious SCDIs that would survive BH-FDR at high rates.
-
-    MIT reviewer (2026-04-20 final synthesis, ticket #364) recommended a
-    Newey-West / Bartlett-kernel HAC correction. Full HAC requires
-    per-segment autocorrelation computation inside the vectorised
-    p-value path, which blows up the FFT hot path's performance. A
-    closed-form conservative approximation captures the same spirit:
-    for 3yr_avg with overlap L=3, the effective sample size is
-    n_eff ≈ (n − 1) / 3 (three overlapping data points in each window
-    collapse to one independent observation).
-
-    Effective df = n_eff − 2, floored at 1.
-
-    For ``annual``, ``fao_estimate`` (annual variant), or any non-FAO
-    indicator, behavior is unchanged: ``df = n − 2``.
-    """
-    n = np.asarray(n, dtype=float)
-    if source_type == "3yr_avg":
-        # Conservative effective-n per MIT reviewer's bound
-        n_eff = np.maximum((n - 1) / 3.0, 3.0)
-        return np.maximum(n_eff - 2.0, 1.0)
-    return np.maximum(n - 2.0, 1.0)
-
-
-def pearson_pvalues_vectorized(
-    r: np.ndarray,
-    n: np.ndarray,
-    source_type: str = "annual",
-) -> np.ndarray:
-    """Two-tailed Pearson p-values from arrays of (r, n), source-type-aware.
-
-    n is the segment length used to compute each correlation. df is
-    derived from (n, source_type) via ``effective_df_for_source_type()``
-    to honor the residual-autocorrelation adjustment for FAOSTAT
-    ``3yr_avg`` indicators (#364).
-
-    Vectorised over numpy arrays for performance — applied to the full
-    survivor set at consolidation time, not per (start_a, start_b) pair.
-
-    ``source_type`` defaults to ``"annual"`` so existing WB-only callers
-    (which never pass the arg) see unchanged behavior.
-    """
-    n = np.asarray(n, dtype=float)
-    r = np.asarray(r, dtype=float)
-    # Clip to avoid division by zero at |r| == 1
-    r_safe = np.clip(r, -0.9999999, 0.9999999)
-    df = effective_df_for_source_type(n, source_type)
-    t = r_safe * np.sqrt(df / (1.0 - r_safe ** 2))
-    # Two-tailed: P(|T| >= |t|) where T ~ Student-t(df)
-    # 2 * (1 - cdf(|t|, df)) is equivalent to 2 * sf(|t|, df) and avoids
-    # cancellation error in the cdf tail.
-    return 2.0 * stats.t.sf(np.abs(t), df)
-
-
-def bh_fdr_mask(pvalues: np.ndarray, alpha: float) -> np.ndarray:
-    """Benjamini-Hochberg multiple-testing correction at level alpha.
-
-    Returns a boolean mask of which p-values survive. Mathematically:
-        Sort p-values ascending: p_(1) <= p_(2) <= ... <= p_(m)
-        Find the largest k such that p_(k) <= (k/m) * alpha
-        Reject H_0 for the smallest k tests
-
-    The 'm' here is the number of survivors of the upstream |r| pre-filter,
-    NOT the total number of tests considered. The pre-filter is the primary
-    screen; BH is the secondary screen for spurious survivors. Using the
-    full test count would over-correct catastrophically because the
-    pre-filter already eliminates ~99% of tests as obvious noise.
-
-    For ablation experiments, BH_FDR_ENABLED can be turned off entirely.
-    """
-    pvalues = np.asarray(pvalues, dtype=float)
-    m = len(pvalues)
-    if m == 0:
-        return np.zeros(0, dtype=bool)
-
-    sorted_idx = np.argsort(pvalues)
-    sorted_p = pvalues[sorted_idx]
-    ranks = np.arange(1, m + 1, dtype=float)
-    critical = ranks * (alpha / m)
-
-    pass_sorted = sorted_p <= critical
-    if not pass_sorted.any():
-        return np.zeros(m, dtype=bool)
-
-    # Largest k such that p_(k) <= critical[k]; reject all tests up to and including k.
-    max_k = int(np.where(pass_sorted)[0].max())
-    survives_sorted = np.zeros(m, dtype=bool)
-    survives_sorted[: max_k + 1] = True
-
-    # Map back to original order
-    survives = np.zeros(m, dtype=bool)
-    survives[sorted_idx] = survives_sorted
-    return survives
 
 
 s3_client = boto3.client('s3')
@@ -259,27 +150,6 @@ def run_pipeline():
     indicator_df, countries_df = load_data()
     country_name_to_id = {row["name_1"]: row["id"] for _, row in countries_df.iterrows()}
 
-    # Detect source_type for HAC-aware p-values (#364). FAOSTAT writes
-    # this column per row (always same value for one indicator since
-    # source_type is indicator-wide); WB does not write the column and
-    # all its indicators are single-year direct observations, so we
-    # default to ``annual`` which preserves pre-#364 behavior.
-    if "source_type" in indicator_df.columns and not indicator_df.empty:
-        unique_types = indicator_df["source_type"].dropna().unique()
-        if len(unique_types) == 1:
-            indicator_source_type = str(unique_types[0])
-        else:
-            # Mixed source_types within one indicator — shouldn't happen
-            # post-F4 dedup, but be defensive. Pick the conservative one
-            # (3yr_avg triggers effective-n penalty; annual is permissive).
-            indicator_source_type = "3yr_avg" if "3yr_avg" in unique_types else "annual"
-        logging.info(
-            f"Indicator {INDICATOR_ID} source_type={indicator_source_type!r} "
-            f"— p-values will use {'HAC-adjusted' if indicator_source_type == '3yr_avg' else 'standard'} df"
-        )
-    else:
-        indicator_source_type = "annual"
-
     # 2. Load Indicator Map
     indicator_map = load_indicator_map(S3_BUCKET)
     indicator_numeric_id = indicator_map.get(INDICATOR_ID)
@@ -297,7 +167,6 @@ def run_pipeline():
         preprocessed_data,
         country_name_to_id,
         indicator_numeric_id,
-        source_type=indicator_source_type,
     )
 
     logging.info(f"--- Job for Indicator {INDICATOR_ID}, Country {COUNTRY_A_NAME} completed successfully. ---")
@@ -439,14 +308,9 @@ def find_and_save_sdcis_parallel(
     preprocessed_data: list,
     country_name_to_id: dict,
     indicator_numeric_id: int,
-    source_type: str = "annual",
 ):
     """
     Orchestrates the parallel processing of country pairs with checkpointing and robust cleanup.
-
-    ``source_type`` is passed through to the BH-FDR p-value computation so
-    FAOSTAT 3yr_avg indicators get HAC-adjusted (effective-n) p-values
-    per #364. Defaults to "annual" for backward-compat with WB-only runs.
     """
     country_a_data = next((c for c in preprocessed_data if c["country"] == COUNTRY_A_NAME), None)
     if not country_a_data:
@@ -530,25 +394,12 @@ def find_and_save_sdcis_parallel(
         if 'country_a_id' in final_df.columns:
             final_df = final_df.drop(columns=['country_a_id'])
 
-        # #139: apply Benjamini-Hochberg FDR correction across all survivors
-        # of the upstream |r| pre-filter, scoped to this entire job (one
-        # country_a × one indicator across all country_b × all segment_lens).
-        # Computes p-values from (correlation, length) on the fly so no
-        # checkpoint format change is needed.
-        if BH_FDR_ENABLED and len(final_df) > 0:
-            n_before = len(final_df)
-            pvals = pearson_pvalues_vectorized(
-                final_df['correlation'].values,
-                final_df['length'].values,
-                source_type=source_type,
-            )
-            survives = bh_fdr_mask(pvals, BH_FDR_ALPHA)
-            final_df = final_df.loc[survives].reset_index(drop=True)
-            logging.info(
-                f"BH FDR (alpha={BH_FDR_ALPHA}, source_type={source_type!r}): "
-                f"{len(final_df)}/{n_before} "
-                f"SDCIs survived multiple-testing correction"
-            )
+        # #502: BH-FDR removed per founder veto. Survivors of the
+        # tier-aware |r| floor (TIER_THRESHOLD_S/M/L/XL, see #128) are
+        # the canonical SCDI output. Spurious correlations are filtered
+        # downstream via Phase C/D pattern aggregation requiring
+        # COUNT >= 2 indicators per country pair, plus recipe binding
+        # to events.
 
         # Add the indicator_numeric_id column
         final_df['indicator_numeric_id'] = indicator_numeric_id
