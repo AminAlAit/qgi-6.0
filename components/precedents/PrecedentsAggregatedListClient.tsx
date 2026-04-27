@@ -3,8 +3,14 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
+import { RciBadge } from "@/components/design/RciBadge";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { precedentSlugUrl, type RecipeAggregated } from "@/lib/recipes-aggregated";
+import {
+  getRecipeConfidence,
+  type RciTier,
+  type RecipeConfidenceEntry,
+} from "@/lib/recipe-confidence";
 
 /**
  * #464 — Recipe-aggregate precedents browser. One row per L3 category;
@@ -14,22 +20,63 @@ import { precedentSlugUrl, type RecipeAggregated } from "@/lib/recipes-aggregate
  *
  * V1.x's per-(country, category) browser was the wrong unit per Agent D's
  * memo — those drilldowns now live on /signals/{country}/{slug}.
+ *
+ * #481 follow-up (2026-04-27, founder direction): RCI surfaced as a
+ * Confidence column + tier filter chips + new default sort. Founder
+ * scans the index to triage which recipes to investigate; "should I
+ * trust this recipe" needs to be answerable at-a-glance, not only on
+ * the slug page. Sort by confidence is now the default; INSUFFICIENT
+ * rows fall to the bottom; total_instances is the secondary tie-break.
  */
 
-type SortOption = "instances_desc" | "instances_asc" | "alpha_asc" | "alpha_desc";
+type SortOption =
+  | "confidence_desc"
+  | "confidence_asc"
+  | "instances_desc"
+  | "instances_asc"
+  | "alpha_asc"
+  | "alpha_desc";
 
 interface EnrichedRecipe extends RecipeAggregated {
   l1Group: string;
   l1Label: string;
   l1ShortLabel: string;
   l1Color: string;
+  // #481 follow-up: RCI fields denormalised into the row so we don't
+  // re-look up per render. The full confidence entry is also carried
+  // so the row's <RciBadge> gets the diagnostic tooltip without an
+  // extra getRecipeConfidence() call.
+  tier: RciTier;
+  rci: number | null;
+  confidenceEntry: RecipeConfidenceEntry;
 }
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: "confidence_desc", label: "Confidence (high to low)" },
+  { value: "confidence_asc", label: "Confidence (low to high)" },
   { value: "instances_desc", label: "Evidence depth (high to low)" },
   { value: "instances_asc", label: "Evidence depth (low to high)" },
   { value: "alpha_asc", label: "Category (A-Z)" },
   { value: "alpha_desc", label: "Category (Z-A)" },
+];
+
+// Tier-order map keeps GREEN at the top, INSUFFICIENT at the bottom of
+// the confidence sort. This is the founder's "INSUFFICIENT rows fall
+// to the bottom otherwise the page leads with grays" rule.
+const TIER_ORDER: Record<RciTier, number> = {
+  GREEN: 0,
+  YELLOW: 1,
+  RED: 2,
+  INSUFFICIENT: 3,
+};
+
+// Tier filter strip — same pattern as the domain strip, but for RCI
+// confidence. Order in the array is the order on screen.
+const TIER_FILTERS: { tier: RciTier; label: string; color: string }[] = [
+  { tier: "GREEN", label: "High", color: "#34d399" },
+  { tier: "YELLOW", label: "Moderate", color: "#fbbf24" },
+  { tier: "RED", label: "Low", color: "#f87171" },
+  { tier: "INSUFFICIENT", label: "Insufficient", color: "#7a90a8" },
 ];
 
 function formatCategory(cat: string): string {
@@ -39,12 +86,16 @@ function formatCategory(cat: string): string {
 function enrich(recipe: RecipeAggregated): EnrichedRecipe {
   const mapping = CATEGORY_L1_MAP[recipe.event_category];
   const l1 = mapping ? L1_GROUPS.find((g) => g.code === mapping.group) : undefined;
+  const confidenceEntry = getRecipeConfidence(recipe.event_category);
   return {
     ...recipe,
     l1Group: mapping?.group ?? "?",
     l1Label: mapping?.label ?? "Uncategorized",
     l1ShortLabel: l1?.shortLabel ?? "Other",
     l1Color: l1?.color ?? "#4a6280",
+    tier: confidenceEntry.tier,
+    rci: confidenceEntry.rci,
+    confidenceEntry,
   };
 }
 
@@ -66,11 +117,26 @@ export function PrecedentsAggregatedListClient({
 
   const [search, setSearch] = useState("");
   const [activeDomains, setActiveDomains] = useState<Set<string>>(new Set());
-  const [sortBy, setSortBy] = useState<SortOption>("instances_desc");
+  const [activeTiers, setActiveTiers] = useState<Set<RciTier>>(new Set());
+  // #481 follow-up: confidence_desc is the new default. "Should I trust
+  // this recipe" beats "how much evidence backs this recipe" as the
+  // first question users ask on this page (founder, 2026-04-27).
+  const [sortBy, setSortBy] = useState<SortOption>("confidence_desc");
 
   const domainCounts = useMemo(() => {
     const c: Record<string, number> = {};
     for (const r of enriched) c[r.l1Group] = (c[r.l1Group] ?? 0) + 1;
+    return c;
+  }, [enriched]);
+
+  const tierCounts = useMemo(() => {
+    const c: Record<RciTier, number> = {
+      GREEN: 0,
+      YELLOW: 0,
+      RED: 0,
+      INSUFFICIENT: 0,
+    };
+    for (const r of enriched) c[r.tier] += 1;
     return c;
   }, [enriched]);
 
@@ -89,12 +155,38 @@ export function PrecedentsAggregatedListClient({
     if (activeDomains.size > 0) {
       result = result.filter((r) => activeDomains.has(r.l1Group));
     }
+    if (activeTiers.size > 0) {
+      result = result.filter((r) => activeTiers.has(r.tier));
+    }
     return result;
-  }, [enriched, search, activeDomains]);
+  }, [enriched, search, activeDomains, activeTiers]);
 
   const sorted = useMemo(() => {
     const arr = [...filtered];
     switch (sortBy) {
+      case "confidence_desc":
+        // Tier-major (GREEN above INSUFFICIENT), RCI numeric desc within
+        // tier when both rows have a value, total_instances desc as the
+        // final tie-break. Stable for tier-bucket grouping in the UI.
+        arr.sort((a, b) => {
+          const tierDelta = TIER_ORDER[a.tier] - TIER_ORDER[b.tier];
+          if (tierDelta !== 0) return tierDelta;
+          if (a.rci !== null && b.rci !== null && a.rci !== b.rci) {
+            return b.rci - a.rci;
+          }
+          return b.total_instances - a.total_instances;
+        });
+        break;
+      case "confidence_asc":
+        arr.sort((a, b) => {
+          const tierDelta = TIER_ORDER[b.tier] - TIER_ORDER[a.tier];
+          if (tierDelta !== 0) return tierDelta;
+          if (a.rci !== null && b.rci !== null && a.rci !== b.rci) {
+            return a.rci - b.rci;
+          }
+          return a.total_instances - b.total_instances;
+        });
+        break;
       case "instances_desc":
         arr.sort((a, b) => b.total_instances - a.total_instances);
         break;
@@ -116,6 +208,15 @@ export function PrecedentsAggregatedListClient({
       const next = new Set(prev);
       if (next.has(code)) next.delete(code);
       else next.add(code);
+      return next;
+    });
+  };
+
+  const toggleTier = (tier: RciTier) => {
+    setActiveTiers((prev) => {
+      const next = new Set(prev);
+      if (next.has(tier)) next.delete(tier);
+      else next.add(tier);
       return next;
     });
   };
@@ -148,7 +249,7 @@ export function PrecedentsAggregatedListClient({
       </div>
 
       {/* Domain filter strip */}
-      <div className="flex gap-2 flex-wrap mb-4">
+      <div className="flex gap-2 flex-wrap mb-3">
         {L1_GROUPS.map((g) => {
           const active = activeDomains.has(g.code);
           const count = domainCounts[g.code] ?? 0;
@@ -171,6 +272,46 @@ export function PrecedentsAggregatedListClient({
         {activeDomains.size > 0 && (
           <button
             onClick={() => setActiveDomains(new Set())}
+            className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors"
+            style={{
+              borderColor: "var(--qgi-border)",
+              color: "var(--qgi-text-dim)",
+            }}
+          >
+            Clear
+          </button>
+        )}
+      </div>
+
+      {/* #481 follow-up: tier filter strip — quick triage for "show
+          only the recipes worth trusting." Sits beneath the domain
+          strip so domain + tier compose multiplicatively (intersection,
+          not union). Chip count uses the unfiltered tier population so
+          the strip's labels remain stable while the user is filtering. */}
+      <div className="flex gap-2 flex-wrap mb-4">
+        {TIER_FILTERS.map((t) => {
+          const active = activeTiers.has(t.tier);
+          const count = tierCounts[t.tier];
+          if (count === 0) return null;
+          return (
+            <button
+              key={t.tier}
+              onClick={() => toggleTier(t.tier)}
+              className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-all"
+              style={{
+                backgroundColor: active ? `${t.color}18` : "transparent",
+                borderColor: active ? t.color : "var(--qgi-border)",
+                color: active ? t.color : "var(--qgi-text-muted)",
+              }}
+              title={`${t.label} confidence (${count} recipes)`}
+            >
+              {t.label} ({count})
+            </button>
+          );
+        })}
+        {activeTiers.size > 0 && (
+          <button
+            onClick={() => setActiveTiers(new Set())}
             className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors"
             style={{
               borderColor: "var(--qgi-border)",
@@ -232,7 +373,7 @@ export function PrecedentsAggregatedListClient({
         <div
           className="hidden md:grid items-center px-4 py-2.5 text-[10px] tracking-widest uppercase"
           style={{
-            gridTemplateColumns: "2fr 1fr 110px 110px 90px",
+            gridTemplateColumns: "2fr 1fr 130px 110px 110px 90px",
             color: "var(--qgi-text-dim)",
             borderBottom: "1px solid var(--qgi-border)",
             backgroundColor: "var(--qgi-surface-2)",
@@ -240,6 +381,10 @@ export function PrecedentsAggregatedListClient({
         >
           <span>Category</span>
           <span>Domain</span>
+          <span className="flex items-center gap-1">
+            Confidence
+            <InfoTooltip text="How well this recipe's historical track record supports flagging countries today — combines backtest accuracy on holdout data, sample size, and indicator coverage. Hover any badge for diagnostic numbers." />
+          </span>
           <span className="text-right flex items-center justify-end gap-1">
             Instances
             <InfoTooltip text="Number of historical country-pair instances backing this recipe (post-dedup, per #458 bullet 6)." />
@@ -358,6 +503,9 @@ function RecipeRow({
           >
             {row.l1ShortLabel}
           </span>
+          {/* #481 follow-up: confidence chip on mobile too — same
+              decision-relevant signal that desktop gets via the column. */}
+          <RciBadge entry={row.confidenceEntry} size="xs" />
         </div>
         <div className="flex items-center gap-3 text-xs">
           <span style={{ color: "var(--qgi-text-muted)" }}>
@@ -390,7 +538,7 @@ function RecipeRow({
       {/* Desktop */}
       <div
         className="hidden md:grid items-center px-4 py-3"
-        style={{ gridTemplateColumns: "2fr 1fr 110px 110px 90px" }}
+        style={{ gridTemplateColumns: "2fr 1fr 130px 110px 110px 90px" }}
       >
         <div className="flex flex-col gap-1 min-w-0">
           <span
@@ -411,6 +559,13 @@ function RecipeRow({
           style={{ color: row.l1Color }}
         >
           {row.l1ShortLabel}
+        </span>
+        {/* #481 follow-up: Confidence cell. Hover surfaces the
+            diagnostic tooltip (Holdout AUC + 95% CI, sample size,
+            MNAR flag count) without leaking the RCI numeric value
+            or formula — per #482 vague-public direction. */}
+        <span>
+          <RciBadge entry={row.confidenceEntry} size="xs" />
         </span>
         <span
           className="text-right font-data text-base font-bold"
