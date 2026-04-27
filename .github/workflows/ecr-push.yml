@@ -6,6 +6,7 @@ on:
       - 'batch/scdi-finder/**'
       - 'batch/indicator-fetcher/**'
       - 'batch/indicator-fetcher-fao/**'
+      - 'batch/qgi-vdem-ingest/**'
   workflow_dispatch:
     inputs:
       image:
@@ -13,7 +14,7 @@ on:
         required: true
         default: 'all'
         type: choice
-        options: [all, scdi-finder, indicator-fetcher, indicator-fetcher-fao]
+        options: [all, scdi-finder, indicator-fetcher, indicator-fetcher-fao, qgi-vdem-ingest]
 
 jobs:
   # ------------------------------------------------------------------
@@ -110,15 +111,17 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             case "${{ inputs.image }}" in
-              all)                   echo "fetcher=1" >> "$GITHUB_OUTPUT"; echo "fao=1" >> "$GITHUB_OUTPUT" ;;
+              all)                   echo "fetcher=1" >> "$GITHUB_OUTPUT"; echo "fao=1" >> "$GITHUB_OUTPUT"; echo "vdem=1" >> "$GITHUB_OUTPUT" ;;
               indicator-fetcher)     echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
               indicator-fetcher-fao) echo "fao=1"     >> "$GITHUB_OUTPUT" ;;
+              qgi-vdem-ingest)       echo "vdem=1"    >> "$GITHUB_OUTPUT" ;;
               scdi-finder)           : ;; # scdi-finder lives only in management ECR
             esac
           else
             git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
             grep -q '^batch/indicator-fetcher/'     /tmp/changed.txt && echo "fetcher=1" >> "$GITHUB_OUTPUT" || true
             grep -q '^batch/indicator-fetcher-fao/' /tmp/changed.txt && echo "fao=1"     >> "$GITHUB_OUTPUT" || true
+            grep -q '^batch/qgi-vdem-ingest/'       /tmp/changed.txt && echo "vdem=1"    >> "$GITHUB_OUTPUT" || true
           fi
 
       - name: Build and push indicator-fetcher (WB) — staging
@@ -136,3 +139,54 @@ jobs:
           IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher-fao
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher-fao/
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher-fao/
+
+      # ----------------------------------------------------------------
+      # qgi-vdem-ingest (#494 step 4) — staging only.
+      # The Dockerfile expects three artifacts in batch/qgi-vdem-ingest/_staged/
+      # that come from the qgi-data repo at build time:
+      #   _staged/ingest_vdem.py
+      #   _staged/vdem_country_map.yaml
+      #   _staged/control-surface.xlsx
+      # We check out qgi-data alongside the qgi-pipeline checkout and copy
+      # them into place. Pinned to qgi-data:main here — the next ingest
+      # release will pick up whatever is on main at build time. If we ever
+      # need stricter version pinning, swap `ref: main` for a SHA.
+      # ----------------------------------------------------------------
+      - name: Check out qgi-data (V-Dem build only)
+        if: steps.changed.outputs.vdem == '1'
+        uses: actions/checkout@v4
+        with:
+          repository: AminAlAit/qgi-data
+          ref: main
+          path: __qgi-data
+          fetch-depth: 1
+
+      - name: Stage qgi-data assets + capture SHA for traceability label
+        if: steps.changed.outputs.vdem == '1'
+        id: stage_vdem
+        run: |
+          mkdir -p batch/qgi-vdem-ingest/_staged
+          cp __qgi-data/scripts/ingest_vdem.py            batch/qgi-vdem-ingest/_staged/ingest_vdem.py
+          cp __qgi-data/registries/vdem_country_map.yaml  batch/qgi-vdem-ingest/_staged/vdem_country_map.yaml
+          cp __qgi-data/indicators/control-surface.xlsx   batch/qgi-vdem-ingest/_staged/control-surface.xlsx
+          ls -lh batch/qgi-vdem-ingest/_staged/
+          # PR #8 review item 2: stamp the qgi-data commit SHA into the
+          # image as a LABEL so a built image is traceable back to the
+          # exact qgi-data version it bundles. The qgi-pipeline GITHUB_SHA
+          # alone doesn't carry this info.
+          QGI_DATA_SHA=$(git -C __qgi-data rev-parse HEAD)
+          echo "qgi_data_sha=$QGI_DATA_SHA" >> "$GITHUB_OUTPUT"
+          echo "[stage] qgi-data version: $QGI_DATA_SHA"
+
+      - name: Build and push qgi-vdem-ingest — staging
+        if: steps.changed.outputs.vdem == '1'
+        run: |
+          IMAGE_TAG=${GITHUB_SHA::8}
+          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-vdem-ingest
+          QGI_DATA_SHA=${{ steps.stage_vdem.outputs.qgi_data_sha }}
+          docker buildx build --platform linux/arm64 \
+            --build-arg QGI_DATA_SHA="$QGI_DATA_SHA" \
+            -t $IMAGE_REPO:$IMAGE_TAG --push batch/qgi-vdem-ingest/
+          docker buildx build --platform linux/arm64 \
+            --build-arg QGI_DATA_SHA="$QGI_DATA_SHA" \
+            -t $IMAGE_REPO:latest      --push batch/qgi-vdem-ingest/

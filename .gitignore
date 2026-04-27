@@ -28,3 +28,7 @@ credentials
 aws-session.sh
 mgmt-session.sh
 .aws-session.*
+
+# Cross-repo artifacts staged at docker-build time (#494 step 4).
+# Populated by CI or by `stage-qgi-data-assets.sh` for local builds.
+batch/qgi-vdem-ingest/_staged/
