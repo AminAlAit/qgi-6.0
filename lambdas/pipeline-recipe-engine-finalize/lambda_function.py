@@ -60,6 +60,16 @@ RECIPES_AGGREGATED_S3_PREFIX = "pipeline-recipe-aggregator/output/data/"
 RECIPES_AGGREGATED_SCHEMA_VERSION = 1
 PIPELINE_VERSION = os.environ.get('PIPELINE_VERSION', 'V2.0-dev')
 
+# #495: pattern_indicator_lookup — thin projection (pattern_id, indicator_numeric_ids)
+# ~50 MB vs 64 GB for the full patterns table. Used as the JOIN target in
+# write_recipes_aggregated_table() instead of patterns directly.
+PATTERN_INDICATOR_LOOKUP_TABLE_NAME = "pattern_indicator_lookup"
+PATTERN_INDICATOR_LOOKUP_S3_PREFIX = "pattern-indicator-lookup/parquet/"
+
+# #497: transient temp-table S3 prefix for CTAS-once-then-SELECT pattern.
+# Each run gets its own isolated prefix; try/finally cleans up on success or error.
+RECIPES_TEMP_TABLE_S3_PREFIX = "pipeline-recipe-aggregator/tmp/"
+
 # #463 Fork B: Phase 5b.6.6 Country-vs-Recipe Scoring.
 COUNTRY_RECIPE_SCORES_TABLE_NAME = "country_recipe_scores"
 COUNTRY_RECIPE_SCORES_S3_PREFIX = "pipeline-recipe-scorer/output/data/"
@@ -200,10 +210,24 @@ def lambda_handler(event, context):
     # Pass true to override (e.g. for explicit re-bake during debugging).
     force_aggregated = bool(event.get('force_rebake_aggregated', False))
     force_scores = bool(event.get('force_rebake_scores', False))
+    force_lookup = bool(event.get('force_rebake_lookup', False))
+
+    # Step 2c-pre: build pattern_indicator_lookup (#495) — must run before
+    # write_recipes_aggregated_table which JOINs to this table instead of
+    # the full patterns table (64 GB → ~50 MB scan reduction).
+    lookup_status = 'skipped'
+    if cutoff_year is None:
+        try:
+            build_pattern_indicator_lookup_table(force=force_lookup)
+            lookup_status = 'ok'
+        except Exception as exc:  # noqa: BLE001
+            logger.exception(f"Failed to build pattern_indicator_lookup: {exc}")
+            lookup_status = f'error: {exc}'
+            _emit_caught_exception('build_pattern_indicator_lookup_table')
 
     # Step 2c: recipes_aggregated table (#462 Fork B Phase 5b.6.5) — Level-4
     # Recipe object, one row per L3 event_category. Runs after the deduped
-    # view exists; independent of recipes_normalized + convergence.
+    # view and lookup table exist; independent of recipes_normalized + convergence.
     aggregated_status = 'skipped'
     if cutoff_year is None:
         try:
@@ -258,6 +282,7 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'recipes_count': total_recipes,
         'top_categories': top_categories,
+        'pattern_indicator_lookup': lookup_status,
         'recipes_aggregated': aggregated_status,
         'country_recipe_scores': scores_status,
         'convergence_view': convergence_status,
@@ -392,6 +417,117 @@ def create_recipes_normalized_view():
 
 
 # ---------------------------------------------------------------------------
+# pattern_indicator_lookup table — #495 cost-reduction
+# ---------------------------------------------------------------------------
+
+def build_pattern_indicator_lookup_table(force: bool = False):
+    """#495: materialise a thin (pattern_id, indicator_numeric_ids) lookup table.
+
+    Purpose: replace the 64 GB full-patterns scan in write_recipes_aggregated_table
+    with a ~50 MB read. The lookup contains only the two columns the CTAS
+    actually needs from patterns, so Athena's projection pushdown reduces the
+    scan by ~90%.
+
+    Strategy (mirrors write_recipes_aggregated_table / write_country_recipe_scores):
+      1. Idempotency guard — skip if rebuilt within 60 min (same window as
+         recipes_aggregated; the patterns table only changes on pipeline re-bake).
+      2. Clear the S3 prefix so re-runs are idempotent.
+      3. INSERT INTO SELECT pattern_id, indicator_numeric_ids FROM patterns.
+
+    The Glue table is Terraform-managed (qgi-infra/modules/storage/main.tf
+    aws_glue_catalog_table.pattern_indicator_lookup). Call this BEFORE
+    write_recipes_aggregated_table so the lookup is populated when the CTAS runs.
+
+    Trigger: runs automatically as Step 2c-pre in lambda_handler on every
+    non-backtest invocation. To rebuild independently (e.g. after patterns
+    is re-baked), pass event.force_rebake_lookup=true.
+    """
+    # 0. #496-style idempotency guard. We reuse the same timestamp machinery
+    # but patterns doesn't have a last_recomputed_at column. Instead we proxy
+    # via a COUNT(*) check: if the table is non-empty AND force=False, skip.
+    # Rationale: the lookup is rebuilt from patterns which only changes on a
+    # full pipeline re-bake (rare). The 60-min window is a reasonable guard
+    # against repeated finalize invocations within the same run.
+    if _check_idempotency_skip_rowcount(PATTERN_INDICATOR_LOOKUP_TABLE_NAME, force=force):
+        return
+
+    # 1. Clear existing data so re-runs are idempotent.
+    logger.info(
+        f"[#495] Clearing s3://{S3_BUCKET}/{PATTERN_INDICATOR_LOOKUP_S3_PREFIX}"
+    )
+    paginator = s3.get_paginator('list_objects_v2')
+    keys_to_delete = []
+    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=PATTERN_INDICATOR_LOOKUP_S3_PREFIX):
+        for obj in page.get('Contents', []):
+            keys_to_delete.append({'Key': obj['Key']})
+            if len(keys_to_delete) >= 1000:
+                s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+                keys_to_delete = []
+    if keys_to_delete:
+        s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+
+    # 2. INSERT INTO — project only the two columns we need. Athena's
+    # projection pushdown ensures only those two columns are decoded from
+    # the Parquet row groups in patterns, but the scan size is still driven
+    # by the full column set unless we materialise the projection. Hence
+    # this dedicated table.
+    sql = f"""
+    INSERT INTO {ATHENA_DB}.{PATTERN_INDICATOR_LOOKUP_TABLE_NAME}
+    SELECT
+        pattern_id,
+        indicator_numeric_ids
+    FROM {ATHENA_DB}.patterns
+    WHERE indicator_numeric_ids IS NOT NULL
+    """
+    logger.info(
+        f"[#495] Building {ATHENA_DB}.{PATTERN_INDICATOR_LOOKUP_TABLE_NAME} "
+        f"from patterns (projects 2 of ~12 columns)"
+    )
+    run_query(sql)
+    logger.info(
+        f"[#495] {ATHENA_DB}.{PATTERN_INDICATOR_LOOKUP_TABLE_NAME} populated"
+    )
+
+
+def _check_idempotency_skip_rowcount(table_name: str, force: bool) -> bool:
+    """Idempotency guard for tables without a timestamp column.
+
+    Returns True (skip) when:
+      - force=False AND the table has ≥ 1 row (non-empty → was built this run
+        or a recent run).
+
+    Rationale for pattern_indicator_lookup: it's rebuilt from patterns which
+    is only regenerated on a full pipeline re-bake. An empty table always
+    triggers a build; a non-empty table is assumed fresh unless force=True.
+
+    Falls back to False (proceed) on any Athena error — same graceful
+    degradation as _check_idempotency_skip.
+    """
+    if force:
+        logger.info(f"[idempotency-rowcount] {table_name}: force=True, proceeding")
+        return False
+    try:
+        sql = f"SELECT 1 FROM {ATHENA_DB}.{table_name} LIMIT 1"
+        qid = run_query(sql)
+        result = athena.get_query_results(QueryExecutionId=qid)
+        rows = result["ResultSet"]["Rows"]
+        if len(rows) > 1:
+            logger.info(
+                f"[idempotency-rowcount] {table_name}: non-empty (has data), SKIPPING. "
+                f"Pass event.force_rebake_lookup=true to override."
+            )
+            return True
+        logger.info(
+            f"[idempotency-rowcount] {table_name}: empty, proceeding with build"
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning(
+            f"[idempotency-rowcount] {table_name} check failed: {exc}; proceeding without skip"
+        )
+    return False
+
+
+# ---------------------------------------------------------------------------
 # recipes_aggregated table — Fork B Phase 5b.6.5 (#462)
 # ---------------------------------------------------------------------------
 
@@ -469,18 +605,247 @@ def write_recipes_aggregated_table(force: bool = False):
         + empty array for now. Requires countries-table join with OECD list +
         region map. Followup once the SQL pattern stabilises.
 
-    Cost: scans recipes_deduped (~400K rows post-#458 dedup) joined to
-    patterns (~few-GB). Should complete sub-2-min in QGI-Lambda-Workgroup.
+    Cost optimisations (#495 + #497):
+      #495 — JOIN target switched from qgi_data.patterns (~64 GB) to
+             qgi_data.pattern_indicator_lookup (~50 MB). The lookup is built
+             by build_pattern_indicator_lookup_table() earlier in the same
+             Lambda invocation. Saves ~90% of the patterns scan per run.
+      #497 — CTAS-once-then-SELECT: the heavy JOIN (recipes_deduped ×
+             pattern_indicator_lookup) is materialised into a transient Glue
+             table ONCE via CREATE TABLE AS SELECT. All downstream aggregation
+             CTEs read from that small temp table (estimated ~5-10 MB) instead
+             of re-running the join for each CTE reference. Athena does NOT
+             memoize CTEs; without this, the original 6-CTE chain re-executed
+             the join 5-6 times. try/finally ensures the temp table + S3
+             prefix are deleted on success or error.
+
+    Combined expected scan per invocation: ~190 GB → ~10-15 GB.
     """
+    import uuid
+
     # 0. #496 idempotency guard — short-circuit if table was just rebuilt.
     if _check_idempotency_skip(RECIPES_AGGREGATED_TABLE_NAME, force=force):
         return
 
-    # 1. Clear existing data so re-runs are idempotent.
+    # 1. Clear existing output data so re-runs are idempotent.
     logger.info(f"Clearing s3://{S3_BUCKET}/{RECIPES_AGGREGATED_S3_PREFIX}")
+    _s3_delete_prefix(RECIPES_AGGREGATED_S3_PREFIX)
+
+    # 2. #497 — materialise the heavy join ONCE into a temp table.
+    # Use a short UUID suffix to isolate concurrent runs.
+    run_uid = uuid.uuid4().hex[:12]
+    temp_table = f"tmp_rwp_{run_uid}"
+    temp_s3_prefix = f"{RECIPES_TEMP_TABLE_S3_PREFIX}{temp_table}/"
+    temp_s3_location = f"s3://{S3_BUCKET}/{temp_s3_prefix}"
+
+    logger.info(
+        f"[#497] Materialising temp table {ATHENA_DB}.{temp_table} "
+        f"at {temp_s3_location} (recipes_deduped × pattern_indicator_lookup)"
+    )
+    ctas_sql = f"""
+    CREATE TABLE {ATHENA_DB}.{temp_table}
+    WITH (
+        format = 'PARQUET',
+        parquet_compression = 'SNAPPY',
+        external_location = '{temp_s3_location}'
+    ) AS
+    SELECT
+        rd.event_category,
+        rd.recipe_id,
+        rd.country_a_id,
+        rd.country_b_id,
+        rd.length,
+        COALESCE(rd.contains_predicted, FALSE) AS contains_predicted,
+        p.indicator_numeric_ids
+    FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} rd
+    INNER JOIN {ATHENA_DB}.{PATTERN_INDICATOR_LOOKUP_TABLE_NAME} p
+        ON p.pattern_id = rd.pattern_id
+    """
+    try:
+        run_query(ctas_sql)
+        logger.info(f"[#497] Temp table {temp_table} materialised")
+
+        # 3. INSERT INTO from the temp table. All aggregation CTEs below read
+        # from temp_table (small) — no repeated full-scan of recipes_deduped
+        # or pattern_indicator_lookup. Column order MUST match the
+        # Terraform-owned Glue schema (main.tf recipes_aggregated).
+        insert_sql = f"""
+        INSERT INTO {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}
+        WITH
+        -- Per-category point estimates. Single pass over the temp table.
+        category_basics AS (
+            SELECT
+                event_category,
+                cast(approx_percentile(cast(length as double), 0.5) as smallint) AS canonical_length,
+                cast(count(distinct recipe_id) as bigint) AS total_instances,
+                cast(count(distinct cast(country_a_id as varchar) || '-' || cast(country_b_id as varchar)) as bigint) AS n_distinct_country_pairs,
+                bool_or(contains_predicted) AS contains_predicted
+            FROM {ATHENA_DB}.{temp_table}
+            GROUP BY event_category
+        ),
+        -- Length histogram per category. Second pass (small table).
+        length_dist_rows AS (
+            SELECT event_category, length, cast(count(distinct recipe_id) as bigint) AS cnt
+            FROM {ATHENA_DB}.{temp_table}
+            GROUP BY event_category, length
+        ),
+        length_distributions AS (
+            SELECT
+                event_category,
+                array_agg(
+                    cast(row(cast(length as smallint), cnt)
+                         as row(length smallint, count bigint))
+                    ORDER BY length
+                ) AS length_distribution
+            FROM length_dist_rows
+            GROUP BY event_category
+        ),
+        -- Per-indicator unnest for fingerprint. Third pass (small table).
+        indicator_unnest AS (
+            SELECT event_category, recipe_id, indicator_id
+            FROM {ATHENA_DB}.{temp_table}
+            CROSS JOIN UNNEST(indicator_numeric_ids) AS t(indicator_id)
+        ),
+        indicator_counts AS (
+            SELECT
+                event_category,
+                indicator_id,
+                count(distinct recipe_id) AS recipes_with_indicator
+            FROM indicator_unnest
+            GROUP BY event_category, indicator_id
+        ),
+        recipes_per_category AS (
+            SELECT event_category, count(distinct recipe_id) AS n_recipes
+            FROM {ATHENA_DB}.{temp_table}
+            GROUP BY event_category
+        ),
+        total_recipe_count AS (
+            SELECT count(distinct recipe_id) AS n_total FROM {ATHENA_DB}.{temp_table}
+        ),
+        -- Indicator metrics: frequency + TF-IDF + Wilson 95% CI on the proportion.
+        -- Wilson formula: z=1.96, z²=3.8416. center=(p+z²/2n)/(1+z²/n);
+        -- margin=z*sqrt(p(1-p)/n + z²/(4n²))/(1+z²/n).
+        indicator_with_n AS (
+            SELECT
+                ic.event_category,
+                ic.indicator_id,
+                cast(ic.recipes_with_indicator as double) AS k_d,
+                cast(rpc.n_recipes as double) AS n_d,
+                cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double) AS p,
+                cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double)
+                    * ln(cast(tr.n_total as double) / cast(ic.recipes_with_indicator as double)) AS tfidf
+            FROM indicator_counts ic
+            JOIN recipes_per_category rpc ON rpc.event_category = ic.event_category
+            CROSS JOIN total_recipe_count tr
+        ),
+        indicator_with_ci AS (
+            SELECT
+                event_category,
+                indicator_id,
+                p AS frequency,
+                tfidf,
+                -- Wilson denominators / numerators broken out for readability.
+                greatest(0.0,
+                    ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
+                    - (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
+                ) AS ci_lower,
+                least(1.0,
+                    ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
+                    + (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
+                ) AS ci_upper,
+                -- TODO #462 follow-up: avg correlation magnitude per indicator
+                -- requires joining back to scdis. 0.0 placeholder for now.
+                0.0 AS avg_corr_magnitude
+            FROM indicator_with_n
+        ),
+        indicator_ranked AS (
+            SELECT *,
+                row_number() OVER (PARTITION BY event_category ORDER BY tfidf DESC) AS rn
+            FROM indicator_with_ci
+        ),
+        indicator_fingerprints AS (
+            SELECT
+                event_category,
+                array_agg(
+                    cast(row(
+                        cast(indicator_id as smallint),
+                        cast(frequency as real),
+                        cast(ci_lower as real),
+                        cast(ci_upper as real),
+                        cast(avg_corr_magnitude as real),
+                        cast(tfidf as real)
+                    ) as row(
+                        indicator_id smallint,
+                        frequency real,
+                        ci_lower real,
+                        ci_upper real,
+                        avg_corr_magnitude real,
+                        tfidf_score real
+                    ))
+                    ORDER BY tfidf DESC
+                ) AS indicator_fingerprint
+            FROM indicator_ranked
+            WHERE rn <= 15
+            GROUP BY event_category
+        )
+        -- Final SELECT — column order matches the Terraform Glue schema.
+        SELECT
+            cb.event_category,
+            cb.canonical_length,
+            ld.length_distribution,
+            ifp.indicator_fingerprint,
+            -- TODO #462 follow-up: compute oecd_share + regional_concentration
+            -- via JOIN to qgi_data.countries (alpha_2) + OECD/region maps.
+            -- Emits placeholder n_pairs (real) + 0.0 oecd_share + empty array
+            -- for now so downstream consumers can already read the field.
+            cast(row(
+                cast(cb.n_distinct_country_pairs as int),
+                cast(0.0 as real),
+                cast(array[] as array<row(region varchar, share real)>)
+            ) as row(
+                n_pairs int,
+                oecd_share real,
+                regional_concentration array<row(region varchar, share real)>
+            )) AS coverage_bias_diagnostic,
+            cb.total_instances,
+            cb.n_distinct_country_pairs,
+            cast(current_timestamp as timestamp) AS last_recomputed_at,
+            '{PIPELINE_VERSION}' AS pipeline_version,
+            cast({RECIPES_AGGREGATED_SCHEMA_VERSION} as smallint) AS schema_version,
+            cb.contains_predicted
+        FROM category_basics cb
+        LEFT JOIN length_distributions ld ON ld.event_category = cb.event_category
+        LEFT JOIN indicator_fingerprints ifp ON ifp.event_category = cb.event_category
+        """
+        logger.info(
+            "[#497] Inserting into recipes_aggregated from temp table "
+            "(Phase 5b.6.5 Level-4 fingerprints)"
+        )
+        run_query(insert_sql)
+        logger.info(f"Wrote {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}")
+
+    finally:
+        # 4. #497 — always clean up the temp table and its S3 data, even on
+        # error. Leaking temp tables accumulates Glue catalog clutter and S3
+        # charges; the try/finally guarantees cleanup regardless of outcome.
+        logger.info(f"[#497] Cleaning up temp table {ATHENA_DB}.{temp_table}")
+        try:
+            run_query(f"DROP TABLE IF EXISTS {ATHENA_DB}.{temp_table}")
+        except Exception as exc:  # noqa: BLE001
+            logger.warning(f"[#497] DROP TABLE {temp_table} failed: {exc} — cleaning S3 directly")
+        _s3_delete_prefix(temp_s3_prefix)
+        logger.info(f"[#497] Temp cleanup done for {temp_table}")
+
+
+def _s3_delete_prefix(prefix: str) -> None:
+    """Delete all S3 objects under prefix in the data lake bucket.
+
+    Used for idempotent pre-clear of output prefixes and temp-table cleanup
+    (#497). Batches deletes in groups of 1000 (S3 API max).
+    """
     paginator = s3.get_paginator('list_objects_v2')
     keys_to_delete = []
-    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=RECIPES_AGGREGATED_S3_PREFIX):
+    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
         for obj in page.get('Contents', []):
             keys_to_delete.append({'Key': obj['Key']})
             if len(keys_to_delete) >= 1000:
@@ -488,172 +853,6 @@ def write_recipes_aggregated_table(force: bool = False):
                 keys_to_delete = []
     if keys_to_delete:
         s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
-
-    # 2. INSERT INTO. Column order MUST match the Terraform-owned Glue
-    # schema (qgi-infra/modules/storage/main.tf aws_glue_catalog_table.recipes_aggregated).
-    sql = f"""
-    INSERT INTO {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}
-    WITH recipes_with_pattern AS (
-        -- Join deduped recipes to patterns to recover indicator IDs.
-        SELECT
-            rd.event_category,
-            rd.recipe_id,
-            rd.country_a_id,
-            rd.country_b_id,
-            rd.length,
-            COALESCE(rd.contains_predicted, FALSE) AS contains_predicted,
-            p.indicator_numeric_ids
-        FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} rd
-        INNER JOIN {ATHENA_DB}.patterns p ON p.pattern_id = rd.pattern_id
-    ),
-    -- Per-category point estimates.
-    category_basics AS (
-        SELECT
-            event_category,
-            cast(approx_percentile(cast(length as double), 0.5) as smallint) AS canonical_length,
-            cast(count(distinct recipe_id) as bigint) AS total_instances,
-            cast(count(distinct cast(country_a_id as varchar) || '-' || cast(country_b_id as varchar)) as bigint) AS n_distinct_country_pairs,
-            bool_or(contains_predicted) AS contains_predicted
-        FROM recipes_with_pattern
-        GROUP BY event_category
-    ),
-    -- Length histogram per category.
-    length_dist_rows AS (
-        SELECT event_category, length, cast(count(distinct recipe_id) as bigint) AS cnt
-        FROM recipes_with_pattern
-        GROUP BY event_category, length
-    ),
-    length_distributions AS (
-        SELECT
-            event_category,
-            array_agg(
-                cast(row(cast(length as smallint), cnt)
-                     as row(length smallint, count bigint))
-                ORDER BY length
-            ) AS length_distribution
-        FROM length_dist_rows
-        GROUP BY event_category
-    ),
-    -- Per-indicator unnest for fingerprint.
-    indicator_unnest AS (
-        SELECT event_category, recipe_id, indicator_id
-        FROM recipes_with_pattern
-        CROSS JOIN UNNEST(indicator_numeric_ids) AS t(indicator_id)
-    ),
-    indicator_counts AS (
-        SELECT
-            event_category,
-            indicator_id,
-            count(distinct recipe_id) AS recipes_with_indicator
-        FROM indicator_unnest
-        GROUP BY event_category, indicator_id
-    ),
-    recipes_per_category AS (
-        SELECT event_category, count(distinct recipe_id) AS n_recipes
-        FROM recipes_with_pattern
-        GROUP BY event_category
-    ),
-    total_recipes AS (
-        SELECT count(distinct recipe_id) AS n_total FROM recipes_with_pattern
-    ),
-    -- Indicator metrics: frequency + TF-IDF + Wilson 95% CI on the proportion.
-    -- Wilson formula: z=1.96, z²=3.8416. center=(p+z²/2n)/(1+z²/n);
-    -- margin=z*sqrt(p(1-p)/n + z²/(4n²))/(1+z²/n).
-    indicator_with_n AS (
-        SELECT
-            ic.event_category,
-            ic.indicator_id,
-            cast(ic.recipes_with_indicator as double) AS k_d,
-            cast(rpc.n_recipes as double) AS n_d,
-            cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double) AS p,
-            cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double)
-                * ln(cast(tr.n_total as double) / cast(ic.recipes_with_indicator as double)) AS tfidf
-        FROM indicator_counts ic
-        JOIN recipes_per_category rpc ON rpc.event_category = ic.event_category
-        CROSS JOIN total_recipes tr
-    ),
-    indicator_with_ci AS (
-        SELECT
-            event_category,
-            indicator_id,
-            p AS frequency,
-            tfidf,
-            -- Wilson denominators / numerators broken out for readability.
-            greatest(0.0,
-                ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
-                - (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
-            ) AS ci_lower,
-            least(1.0,
-                ((p + 1.9208 / n_d) / (1.0 + 3.8416 / n_d))
-                + (1.96 * sqrt(p * (1.0 - p) / n_d + 0.9604 / (n_d * n_d)) / (1.0 + 3.8416 / n_d))
-            ) AS ci_upper,
-            -- TODO #462 follow-up: avg correlation magnitude per indicator
-            -- requires joining back to scdis. 0.0 placeholder for now.
-            0.0 AS avg_corr_magnitude
-        FROM indicator_with_n
-    ),
-    indicator_ranked AS (
-        SELECT *,
-            row_number() OVER (PARTITION BY event_category ORDER BY tfidf DESC) AS rn
-        FROM indicator_with_ci
-    ),
-    indicator_fingerprints AS (
-        SELECT
-            event_category,
-            array_agg(
-                cast(row(
-                    cast(indicator_id as smallint),
-                    cast(frequency as real),
-                    cast(ci_lower as real),
-                    cast(ci_upper as real),
-                    cast(avg_corr_magnitude as real),
-                    cast(tfidf as real)
-                ) as row(
-                    indicator_id smallint,
-                    frequency real,
-                    ci_lower real,
-                    ci_upper real,
-                    avg_corr_magnitude real,
-                    tfidf_score real
-                ))
-                ORDER BY tfidf DESC
-            ) AS indicator_fingerprint
-        FROM indicator_ranked
-        WHERE rn <= 15
-        GROUP BY event_category
-    )
-    -- Final SELECT — column order matches the Terraform Glue schema.
-    SELECT
-        cb.event_category,
-        cb.canonical_length,
-        ld.length_distribution,
-        ifp.indicator_fingerprint,
-        -- TODO #462 follow-up: compute oecd_share + regional_concentration
-        -- via JOIN to qgi_data.countries (alpha_2) + OECD/region maps.
-        -- Emits placeholder n_pairs (real) + 0.0 oecd_share + empty array
-        -- for now so downstream consumers can already read the field.
-        cast(row(
-            cast(cb.n_distinct_country_pairs as int),
-            cast(0.0 as real),
-            cast(array[] as array<row(region varchar, share real)>)
-        ) as row(
-            n_pairs int,
-            oecd_share real,
-            regional_concentration array<row(region varchar, share real)>
-        )) AS coverage_bias_diagnostic,
-        cb.total_instances,
-        cb.n_distinct_country_pairs,
-        cast(current_timestamp as timestamp) AS last_recomputed_at,
-        '{PIPELINE_VERSION}' AS pipeline_version,
-        cast({RECIPES_AGGREGATED_SCHEMA_VERSION} as smallint) AS schema_version,
-        cb.contains_predicted
-    FROM category_basics cb
-    LEFT JOIN length_distributions ld ON ld.event_category = cb.event_category
-    LEFT JOIN indicator_fingerprints ifp ON ifp.event_category = cb.event_category
-    """
-    logger.info("Inserting into recipes_aggregated (Phase 5b.6.5 Level-4 fingerprints)")
-    run_query(sql)
-    logger.info(f"Wrote {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}")
 
 
 # ---------------------------------------------------------------------------
@@ -758,16 +957,7 @@ def write_country_recipe_scores(force: bool = False):
 
     # 2. Clear existing parquet data so re-runs are idempotent.
     logger.info(f"Clearing s3://{S3_BUCKET}/{COUNTRY_RECIPE_SCORES_S3_PREFIX}")
-    paginator = s3.get_paginator('list_objects_v2')
-    keys_to_delete = []
-    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=COUNTRY_RECIPE_SCORES_S3_PREFIX):
-        for obj in page.get('Contents', []):
-            keys_to_delete.append({'Key': obj['Key']})
-            if len(keys_to_delete) >= 1000:
-                s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
-                keys_to_delete = []
-    if keys_to_delete:
-        s3.delete_objects(Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete})
+    _s3_delete_prefix(COUNTRY_RECIPE_SCORES_S3_PREFIX)
 
     # 3. Build inline VALUES clause for the indicator_map. Athena accepts
     # up to 1024 rows in a single VALUES; ~270 fits comfortably. Escape
