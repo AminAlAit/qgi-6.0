@@ -54,6 +54,7 @@ MIN_TOTAL = 30
 MIN_POS = 5
 HOLDOUT_FRAC = 0.20
 PERM_REPEATS = 10
+BOOTSTRAP_REPEATS = 200  # #493 item 3 — bootstrap AUC CI on holdout
 RANDOM_SEED = 42
 
 
@@ -394,7 +395,7 @@ def fit_and_score(features: pd.DataFrame, feature_cols: list[str],
 
     # Need both classes in stratified split
     if y.sum() < 2 or (1 - y).sum() < 2:
-        return float("nan"), {}, len(X), 0
+        return float("nan"), float("nan"), float("nan"), {}, len(X), 0
 
     sss = StratifiedShuffleSplit(
         n_splits=1, test_size=HOLDOUT_FRAC, random_state=random_state
@@ -404,7 +405,7 @@ def fit_and_score(features: pd.DataFrame, feature_cols: list[str],
     y_train, y_test = y[train_idx], y[test_idx]
 
     if y_test.sum() < 1 or (1 - y_test).sum() < 1:
-        return float("nan"), {}, len(X_train), len(X_test)
+        return float("nan"), float("nan"), float("nan"), {}, len(X_train), len(X_test)
 
     model = GradientBoostingClassifier(
         n_estimators=80, max_depth=3, learning_rate=0.05,
@@ -412,13 +413,41 @@ def fit_and_score(features: pd.DataFrame, feature_cols: list[str],
     )
     model.fit(X_train, y_train)
 
-    # Test AUC
+    # Test AUC + bootstrap CI (#493 item 3 — addresses #498).
+    # n_test=44 with 64 features makes the AUC point estimate noisy.
+    # Bootstrap resamples the holdout 200x, gives 90% CI bands.
     proba = model.predict_proba(X_test)[:, 1]
+    from sklearn.metrics import roc_auc_score
     if len(np.unique(y_test)) < 2:
         test_auc = float("nan")
+        auc_low = float("nan")
+        auc_high = float("nan")
     else:
-        from sklearn.metrics import roc_auc_score
         test_auc = float(roc_auc_score(y_test, proba))
+        # Bootstrap: 200 stratified resamples of the holdout, recompute AUC
+        # on each. Stratified ensures every resample has both classes; an
+        # unstratified resample of n=44 with low pos_rate would frequently
+        # land in pure-class draws (AUC undefined).
+        rng = np.random.default_rng(random_state)
+        pos_idx = np.where(y_test == 1)[0]
+        neg_idx = np.where(y_test == 0)[0]
+        boot_aucs = []
+        for _ in range(BOOTSTRAP_REPEATS):
+            # Stratified resample: same n_pos, same n_neg as holdout
+            pos_resample = rng.choice(pos_idx, size=len(pos_idx), replace=True)
+            neg_resample = rng.choice(neg_idx, size=len(neg_idx), replace=True)
+            idx = np.concatenate([pos_resample, neg_resample])
+            try:
+                boot_aucs.append(roc_auc_score(y_test[idx], proba[idx]))
+            except ValueError:
+                # Should not happen with stratified resample, but guard anyway
+                continue
+        if boot_aucs:
+            auc_low = float(np.percentile(boot_aucs, 5))    # 90% CI
+            auc_high = float(np.percentile(boot_aucs, 95))
+        else:
+            auc_low = float("nan")
+            auc_high = float("nan")
 
     # Permutation importance on holdout
     pi = permutation_importance(
@@ -434,7 +463,7 @@ def fit_and_score(features: pd.DataFrame, feature_cols: list[str],
     for col, imp in importances.items():
         prefix = col.split("__", 1)[0]  # "ind123" ← "ind123__last_value"
         per_indicator[prefix] += max(0.0, imp)  # only positive lift counts
-    return test_auc, dict(per_indicator), len(X_train), len(X_test)
+    return test_auc, auc_low, auc_high, dict(per_indicator), len(X_train), len(X_test)
 
 
 # ---------------------------------------------------------------------------
@@ -508,7 +537,10 @@ def render_markdown(report: dict, output_path: Path) -> None:
     md.append(f"- Mean audition_score: **{report['mean_audition_score']:.3f}** (predictive_lift × coverage_share × regional_evenness)")
 
     md.append(f"\n## Per-recipe summary\n")
-    md.append("| Recipe | Tier | n_total | n_pos | pos_rate | n_train | n_test | Test AUC | Top contributor |")
+    md.append("Test AUC column shows point estimate + 90% bootstrap CI on the holdout. "
+              "Wide CIs (>0.20 spread) indicate the AUC is unstable on this small holdout — "
+              "treat the point estimate with skepticism (#498).\n")
+    md.append("| Recipe | Tier | n_total | n_pos | pos_rate | n_train | n_test | Test AUC [90% CI] | Top contributor |")
     md.append("|---|---|---|---|---|---|---|---|---|")
     for r in report["per_recipe"]:
         n_total = r.get("n_total", "—")
@@ -518,10 +550,16 @@ def render_markdown(report: dict, output_path: Path) -> None:
             if r.get("n_total") and r.get("n_pos") is not None
             else "—"
         )
+        ci_low = r.get("auc_ci_low")
+        ci_high = r.get("auc_ci_high")
+        if ci_low is not None and not (isinstance(ci_low, float) and np.isnan(ci_low)):
+            auc_str = f"{r['test_auc']:.3f} [{ci_low:.3f}, {ci_high:.3f}]"
+        else:
+            auc_str = f"{r['test_auc']:.3f}"
         md.append(
             f"| {r['event_category']} | {r['tier']} | {n_total} | {n_pos} | "
             f"{pos_rate} | {r['n_train']} | {r['n_test']} | "
-            f"{r['test_auc']:.3f} | {r['top_indicator']} |"
+            f"{auc_str} | {r['top_indicator']} |"
         )
 
     md.append(f"\n## Per-indicator coverage equity (existing fingerprint indicators)\n")
@@ -731,7 +769,7 @@ def main() -> int:
             continue
 
         try:
-            test_auc, ind_lift, n_train, n_test = fit_and_score(
+            test_auc, auc_low, auc_high, ind_lift, n_train, n_test = fit_and_score(
                 labeled, feature_cols
             )
         except Exception as e:
@@ -759,6 +797,8 @@ def main() -> int:
             "n_train": n_train,
             "n_test": n_test,
             "test_auc": test_auc,
+            "auc_ci_low": auc_low,
+            "auc_ci_high": auc_high,
             "indicator_lift": ind_lift_by_str,
             "top_indicator": top_ind,
         })
@@ -766,7 +806,8 @@ def main() -> int:
         for n_id, lift in ind_lift_by_num.items():
             indicator_lift_accumulator[n_id].append(lift)
 
-        print(f"→ AUC={test_auc:.3f} top={top_ind}")
+        ci_str = f"[{auc_low:.3f},{auc_high:.3f}]" if not np.isnan(auc_low) else "[—]"
+        print(f"→ AUC={test_auc:.3f} {ci_str} top={top_ind}")
 
     print(f"\n[stage 3] coverage equity...")
     coverage_df = compute_indicator_coverage(
