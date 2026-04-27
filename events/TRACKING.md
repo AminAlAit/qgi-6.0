@@ -337,3 +337,25 @@ sao_tome_and_principe, seychelles (small islands)
 - Liberia has the most outright fabrications/wrongness (4 FALSE on 64 events / 6.3%).
 - Most PARTIAL verdicts are date drifts off-by-1-to-3-years rather than wrong events. Pattern: curators correctly identified events but reached for approximate dates.
 - Jordan despite the 2026-04-07 fabricated-flags incident — the underlying CONTENT is mostly correct; only the prior agent's claimed verifications were lies.
+
+## 2026-04-27 — 6-country verification batch (geopolitically prioritized)
+
+6 Sonnet+WebSearch agents in parallel, each verifying one geopolitically significant unverified country. Results in `qgi-data/events/verification/{country}.json`.
+
+**Aggregate:** 348 events verified, 287 TRUE / 57 PARTIAL / 4 FALSE (82.5% TRUE, 16.4% PARTIAL, 1.1% FALSE).
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | PARTIAL | FALSE | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| greece | 1 | 1 | 1 | 2026-04-27 | 65 | 55 | 10 | 0 | 84.6% |
+| austria | 1 | 1 | 1 | 2026-04-27 | 64 | 50 | 11 | 3 | 78.1% |
+| sweden | 1 | 1 | 1 | 2026-04-27 | 62 | 49 | 13 | 0 | 79.0% |
+| poland | 1 | 1 | 1 | 2026-04-27 | 59 | 50 | 8 | 1 | 84.7% |
+| kazakhstan | 1 | 1 | 1 | 2026-04-27 | 53 | 45 | 8 | 0 | 84.9% |
+| singapore | 1 | 1 | 1 | 2026-04-27 | 45 | 38 | 7 | 0 | 84.4% |
+
+**Cumulative:** verified country count is now **110 / 197 curated (56%)**. **40 more verifications still required to cross the 150-mark threshold** (memory: feedback_pipeline_run_threshold.md). ~3 more 15-agent rounds.
+
+**Notable findings:**
+- Austria has the worst verification rate in this batch (78.1% TRUE / 4.7% FALSE) — joins Liberia and Guinea as countries with notable curation problems. 4 outright FALSE entries warrant a re-curation pass (similar to UAE, #499).
+- Greece, Kazakhstan, Singapore, Poland all at 84%+ TRUE — clean curations with mostly off-by-1-year date drifts on PARTIAL.
+- Pattern across both 2026-04-27 batches (15 + 6 = 21 countries): curators get events RIGHT, dates approximate. Date drift consistently dominates PARTIAL verdicts.
