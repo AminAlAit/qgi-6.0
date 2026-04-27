@@ -692,6 +692,25 @@ def render_markdown(report: dict, output_path: Path) -> None:
                 f"{mnar_str} | {r['n_recipes_appearing']} | **{r['audition_score']:.4f}** |"
             )
 
+    # #493 item 2 — rolling-window CV stability section (if multi-fold)
+    has_multifold = any(r.get("n_folds", 1) > 1 for r in report["per_recipe"])
+    if has_multifold:
+        md.append(f"\n## Rolling-window CV stability per recipe (#493 item 2)\n")
+        md.append("Each recipe was scored across multiple cutoff years. AUC range across folds "
+                  "is the stability indicator: STABLE (<0.10), MIXED (0.10-0.20), UNSTABLE (>0.20).\n")
+        md.append("| Recipe | Tier | Folds | AUC median | AUC range [min, max] | Stability |")
+        md.append("|---|---|---|---|---|---|")
+        for r in sorted(report["per_recipe"], key=lambda r: r.get("auc_range", 0)):
+            n_folds = r.get("n_folds", 1)
+            if n_folds <= 1:
+                continue
+            md.append(
+                f"| {r['event_category']} | {r['tier']} | {n_folds} | "
+                f"{r['test_auc']:.3f} | "
+                f"[{r.get('auc_min', 0):.3f}, {r.get('auc_max', 0):.3f}] "
+                f"(Δ={r.get('auc_range', 0):.3f}) | {r.get('stability', 'n/a')} |"
+            )
+
     # #493 item 6 — rank stability vs prior baseline (if --baseline-report provided)
     if report.get("rank_stability"):
         md.append(f"\n## Rank stability vs prior audit (#493 item 6)\n")
@@ -923,6 +942,12 @@ def main() -> int:
                         "the new report includes a rank-stability section "
                         "(Kendall's tau on per-recipe top-3 indicators) per "
                         "#493 item 6. Skip if no prior baseline is available.")
+    p.add_argument("--rolling-cv-cutoffs", default=None,
+                   help="Comma-separated cutoff years for rolling-window CV "
+                        "(#493 item 2). E.g. '2014,2016,2018,2020' runs the "
+                        "auditioner 4 times, each with a different cutoff, "
+                        "and reports per-recipe AUC stability across folds. "
+                        "Without this flag, single-cutoff path runs (default).")
     args = p.parse_args()
 
     # Switch the stat set BEFORE any feature build calls. This mutates the
@@ -989,107 +1014,164 @@ def main() -> int:
     needed_str_ids = [num_to_str[n] for n in needed_num_ids if n in num_to_str]
     print(f"  fingerprint+candidates indicators (union): {len(needed_str_ids)}")
 
+    # #493 item 2 — rolling-window CV. If --rolling-cv-cutoffs is specified,
+    # run the recipe loop once per cutoff. Default: single cutoff (legacy path).
+    cutoffs: list[int] = []
+    if args.rolling_cv_cutoffs:
+        try:
+            cutoffs = sorted(set(int(c.strip()) for c in args.rolling_cv_cutoffs.split(",") if c.strip()))
+        except ValueError as e:
+            raise SystemExit(f"--rolling-cv-cutoffs must be comma-separated ints: {e}")
+        if not cutoffs:
+            raise SystemExit("--rolling-cv-cutoffs parsed empty")
+    else:
+        cutoffs = [args.cutoff_year]
+
+    # Panel covers the union of all fold windows so we don't re-query per cutoff.
+    panel_lo = min(cutoffs) - args.max_canonical_length
+    panel_hi = max(cutoffs)
     panel = load_indicator_panel(
-        ath, args.bucket, args.workgroup, needed_str_ids,
-        args.cutoff_year - args.max_canonical_length, args.cutoff_year
+        ath, args.bucket, args.workgroup, needed_str_ids, panel_lo, panel_hi
     )
-    print(f"  panel rows: {len(panel)}")
+    print(f"  panel rows: {len(panel)}  (years {panel_lo}..{panel_hi})")
+    print(f"  rolling-CV cutoffs: {cutoffs}")
 
-    gt = load_event_ground_truth(ath, args.bucket, args.workgroup,
-                                 args.cutoff_year, args.end_year)
-    print(f"  ground truth rows: {len(gt)}")
-
-    print(f"\n[stage 1+2] per-recipe modeling...")
-    per_recipe_records: list[dict] = []
+    print(f"\n[stage 1+2] per-recipe modeling ({len(cutoffs)} fold{'s' if len(cutoffs)>1 else ''})")
+    # recipe_fold_records[event_category] = list of per-fold dicts
+    recipe_fold_records: dict[str, list[dict]] = defaultdict(list)
     indicator_lift_accumulator: dict[int, list[float]] = defaultdict(list)
     indicator_mnar_accumulator: dict[int, list[float]] = defaultdict(list)
 
-    for i, recipe in enumerate(recipes, 1):
-        cat = recipe["event_category"]
-        cl = recipe["canonical_length"]
-        tier = tier_for_length(cl)
-        print(f"  ({i}/{len(recipes)}) {cat} (cl={cl}, tier={tier})", end=" ", flush=True)
+    for fold_idx, cutoff in enumerate(cutoffs, 1):
+        if len(cutoffs) > 1:
+            print(f"\n[fold {fold_idx}/{len(cutoffs)}] cutoff={cutoff}")
+        gt = load_event_ground_truth(ath, args.bucket, args.workgroup,
+                                     cutoff, args.end_year)
+        print(f"  ground truth rows: {len(gt)}")
 
-        # Augment recipe fingerprint with candidate indicators. Each candidate
-        # gets a synthetic fingerprint entry (tfidf=1.0 placeholder; not used
-        # by the auditioner). De-dup against existing fingerprint members.
-        existing_fp_ids = {fp["indicator_id"] for fp in recipe["fingerprint"]}
-        augmented_fp = list(recipe["fingerprint"]) + [
-            {"indicator_id": cid, "tfidf": 1.0}
-            for cid in sorted(candidate_num_ids - existing_fp_ids)
-        ]
+        for i, recipe in enumerate(recipes, 1):
+            cat = recipe["event_category"]
+            cl = recipe["canonical_length"]
+            tier = tier_for_length(cl)
+            print(f"  ({i}/{len(recipes)}) {cat} (cl={cl}, tier={tier})", end=" ", flush=True)
 
-        features, feature_cols = build_feature_matrix_v2(
-            panel, augmented_fp, num_to_str,
-            args.cutoff_year, cl, country_to_id
-        )
-        if features.empty or not feature_cols:
-            print("→ SKIP (no features)")
-            continue
-        labeled = attach_target(features, gt, cat)
-        n_total = len(labeled)
-        n_pos = int(labeled["y"].sum())
-        if n_total < MIN_TOTAL or n_pos < MIN_POS:
-            print(f"→ SKIP (n_total={n_total}, n_pos={n_pos})")
-            continue
+            existing_fp_ids = {fp["indicator_id"] for fp in recipe["fingerprint"]}
+            augmented_fp = list(recipe["fingerprint"]) + [
+                {"indicator_id": cid, "tfidf": 1.0}
+                for cid in sorted(candidate_num_ids - existing_fp_ids)
+            ]
 
-        try:
-            test_auc, auc_low, auc_high, ind_lift, n_train, n_test = fit_and_score(
-                labeled, feature_cols
+            features, feature_cols = build_feature_matrix_v2(
+                panel, augmented_fp, num_to_str,
+                cutoff, cl, country_to_id
             )
-        except Exception as e:
-            print(f"→ ERROR: {e}")
+            if features.empty or not feature_cols:
+                print("→ SKIP (no features)")
+                continue
+            labeled = attach_target(features, gt, cat)
+            n_total = len(labeled)
+            n_pos = int(labeled["y"].sum())
+            if n_total < MIN_TOTAL or n_pos < MIN_POS:
+                print(f"→ SKIP (n_total={n_total}, n_pos={n_pos})")
+                continue
+
+            try:
+                test_auc, auc_low, auc_high, ind_lift, n_train, n_test = fit_and_score(
+                    labeled, feature_cols
+                )
+            except Exception as e:
+                print(f"→ ERROR: {e}")
+                continue
+
+            mnar_by_num = compute_mnar_per_indicator(labeled, augmented_fp, num_to_str)
+
+            ind_lift_by_num: dict[int, float] = {}
+            for prefix, lift in ind_lift.items():
+                ind_lift_by_num[int(prefix.replace("ind", ""))] = lift
+            ind_lift_by_str: dict[str, float] = {
+                num_to_str[n]: lift for n, lift in ind_lift_by_num.items()
+                if n in num_to_str
+            }
+            top_ind = max(ind_lift_by_str.items(), key=lambda kv: kv[1])[0] if ind_lift_by_str else "—"
+            mnar_by_str: dict[str, float] = {
+                num_to_str[n]: r for n, r in mnar_by_num.items()
+                if n in num_to_str
+            }
+            n_mnar_flagged = sum(1 for r in mnar_by_num.values() if r >= MNAR_THRESHOLD)
+
+            recipe_fold_records[cat].append({
+                "cutoff_year": cutoff,
+                "tier": tier,
+                "canonical_length": cl,
+                "n_total": n_total,
+                "n_pos": n_pos,
+                "n_train": n_train,
+                "n_test": n_test,
+                "test_auc": test_auc,
+                "auc_ci_low": auc_low,
+                "auc_ci_high": auc_high,
+                "indicator_lift": ind_lift_by_str,
+                "top_indicator": top_ind,
+                "mnar_per_indicator": mnar_by_str,
+                "n_mnar_flagged": n_mnar_flagged,
+            })
+            for n_id, lift in ind_lift_by_num.items():
+                indicator_lift_accumulator[n_id].append(lift)
+            for n_id, mnar_r in mnar_by_num.items():
+                indicator_mnar_accumulator[n_id].append(mnar_r)
+
+            ci_str = f"[{auc_low:.3f},{auc_high:.3f}]" if not np.isnan(auc_low) else "[—]"
+            print(f"→ AUC={test_auc:.3f} {ci_str} top={top_ind}")
+
+    # Aggregate per-recipe across folds. For single-cutoff: list has 1 entry,
+    # aggregation is a passthrough. For multi-cutoff: median AUC across folds,
+    # range as stability indicator, full fold list preserved.
+    per_recipe_records: list[dict] = []
+    for cat, folds in recipe_fold_records.items():
+        if not folds:
             continue
-
-        # #493 item 1 — MNAR-risk per (recipe, indicator).
-        # NB: must be computed BEFORE fit_and_score's fillna(0.0) — but we
-        # already have the labeled DataFrame in pre-fillna state here. Good.
-        mnar_by_num = compute_mnar_per_indicator(labeled, augmented_fp, num_to_str)
-
-        # Map "ind123" prefix back to numeric id
-        ind_lift_by_num: dict[int, float] = {}
-        for prefix, lift in ind_lift.items():
-            ind_lift_by_num[int(prefix.replace("ind", ""))] = lift
-
-        # Per-indicator string for reporting
-        ind_lift_by_str: dict[str, float] = {
-            num_to_str[n]: lift for n, lift in ind_lift_by_num.items()
-            if n in num_to_str
-        }
-        top_ind = max(ind_lift_by_str.items(), key=lambda kv: kv[1])[0] if ind_lift_by_str else "—"
-
-        # MNAR map by string id for the report
-        mnar_by_str: dict[str, float] = {
-            num_to_str[n]: r for n, r in mnar_by_num.items()
-            if n in num_to_str
-        }
-        n_mnar_flagged = sum(1 for r in mnar_by_num.values() if r >= MNAR_THRESHOLD)
-
+        valid_aucs = [f["test_auc"] for f in folds if not np.isnan(f["test_auc"])]
+        if not valid_aucs:
+            continue
+        median_auc = float(np.median(valid_aucs))
+        auc_min = float(np.min(valid_aucs))
+        auc_max = float(np.max(valid_aucs))
+        auc_range = auc_max - auc_min
+        # Pick the median fold as the "primary" for top-contributor + lift dict
+        # (sort by abs distance to median AUC).
+        primary = min(folds, key=lambda f: abs((f["test_auc"] or 0) - median_auc))
+        # Stability classification (#493 item 2 verdict)
+        if len(valid_aucs) <= 1:
+            stability = "n/a"
+        elif auc_range < 0.10:
+            stability = "STABLE"
+        elif auc_range < 0.20:
+            stability = "MIXED"
+        else:
+            stability = "UNSTABLE"
         per_recipe_records.append({
             "event_category": cat,
-            "tier": tier,
-            "canonical_length": cl,
-            "n_total": n_total,
-            "n_pos": n_pos,
-            "n_train": n_train,
-            "n_test": n_test,
-            "test_auc": test_auc,
-            "auc_ci_low": auc_low,
-            "auc_ci_high": auc_high,
-            "indicator_lift": ind_lift_by_str,
-            "top_indicator": top_ind,
-            "mnar_per_indicator": mnar_by_str,
-            "n_mnar_flagged": n_mnar_flagged,
+            "tier": primary["tier"],
+            "canonical_length": primary["canonical_length"],
+            "n_total": primary["n_total"],
+            "n_pos": primary["n_pos"],
+            "n_train": primary["n_train"],
+            "n_test": primary["n_test"],
+            "test_auc": median_auc,           # backward-compat: used as point estimate
+            "auc_ci_low": primary["auc_ci_low"],   # CI of the median fold
+            "auc_ci_high": primary["auc_ci_high"],
+            "indicator_lift": primary["indicator_lift"],
+            "top_indicator": primary["top_indicator"],
+            "mnar_per_indicator": primary["mnar_per_indicator"],
+            "n_mnar_flagged": primary["n_mnar_flagged"],
+            # Rolling-CV additions:
+            "fold_aucs": valid_aucs,
+            "auc_min": auc_min,
+            "auc_max": auc_max,
+            "auc_range": auc_range,
+            "n_folds": len(valid_aucs),
+            "stability": stability,
         })
-
-        for n_id, lift in ind_lift_by_num.items():
-            indicator_lift_accumulator[n_id].append(lift)
-        # accumulate MNAR per indicator (for per-indicator rollup)
-        for n_id, mnar_r in mnar_by_num.items():
-            indicator_mnar_accumulator[n_id].append(mnar_r)
-
-        ci_str = f"[{auc_low:.3f},{auc_high:.3f}]" if not np.isnan(auc_low) else "[—]"
-        print(f"→ AUC={test_auc:.3f} {ci_str} top={top_ind}")
 
     print(f"\n[stage 3] coverage equity...")
     coverage_df = compute_indicator_coverage(
