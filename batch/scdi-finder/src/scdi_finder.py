@@ -45,6 +45,25 @@ MIN_LENGTH = int(os.environ.get('MIN_LENGTH', 3))
 # Set to a value below the lowest tier threshold (0.82) so it never overrides them.
 CORRELATION_THRESHOLD = float(os.environ.get('CORRELATION_THRESHOLD', 0.5))
 
+# #509 (2026-04-28): hard year cutoff for SCDI search. V-Dem v16 brought
+# 1789-2025 coverage to qgi_data.indicators (#494 close-out). Without a
+# cutoff, the SCDI finder would burn ~10x more compute on pre-1960
+# V-Dem segments that are analytically uninformative for QGI's
+# "find modern precedent for modern event" use case (V-Dem's pre-1960
+# coverage is sparse and methodologically discontinuous — coders
+# backfill from historical records, confidence drops at depth).
+#
+# Filter is applied at the COMPUTE layer in load_data() BEFORE
+# preprocess_data finds the longest continuous streak per country.
+# The data lake preserves all rows back to 1789; they just don't
+# participate in SCDI search.
+#
+# WB / FAO indicators (already 1960+) see no row drops — this filter
+# is effectively a V-Dem-specific cost guard. Ablation researchers
+# can dial the cutoff back via the MIN_YEAR_CUTOFF env var without
+# a code change.
+MIN_YEAR_CUTOFF = int(os.environ.get('MIN_YEAR_CUTOFF', 1960))
+
 # #502 (2026-04-27): Benjamini-Hochberg / FDR multiple-testing correction
 # is removed per founder hard veto (`feedback_no_fdr_correction.md`). QGI
 # is screening candidates for downstream investigation, not making point
@@ -69,6 +88,65 @@ TIER_THRESHOLD_S  = float(os.environ.get('TIER_THRESHOLD_S',  0.88))
 TIER_THRESHOLD_M  = float(os.environ.get('TIER_THRESHOLD_M',  0.85))
 TIER_THRESHOLD_L  = float(os.environ.get('TIER_THRESHOLD_L',  0.82))
 TIER_THRESHOLD_XL = float(os.environ.get('TIER_THRESHOLD_XL', 0.82))
+
+
+def apply_year_cutoff(df: pd.DataFrame, min_year: int) -> pd.DataFrame:
+    """Drop rows with year < min_year (#509).
+
+    Returns a new DataFrame (`.copy()`); the caller's reference is
+    unchanged. If `year` column is missing, returns the input unchanged
+    with a warning (defensive against a future schema drift in
+    indicators_completed).
+
+    ## Side-effect: streak-bridging
+
+    Because this filter runs BEFORE preprocess_data's longest-streak
+    finder, dropping pre-cutoff rows can BRIDGE pre-existing gaps in
+    the post-cutoff data. Example: a country with values 1900-2020
+    but a NaN gap at 1955-1965 had two streaks under the old logic
+    (1900-1954 and 1966-2020). Post-cutoff: only the 1965+ portion
+    of the 2nd block survives, leaving a single contiguous 1966-2020
+    block — gap removed by the cutoff truncation, not by imputation.
+    This extends the analyzable streak length and is desirable for
+    SCDI search.
+
+    For V-Dem indicators specifically (which have sparse pre-1960
+    coverage AND post-1960 continuous coverage), this is essentially
+    free streak length.
+
+    Future researchers tweaking MIN_YEAR_CUTOFF should be aware that
+    a less aggressive cutoff (e.g., 1900) would surface gaps that
+    are currently hidden by the 1960 truncation.
+
+    ## Cost impact
+
+    Up to ~10x reduction in SCDI compute for V-Dem indicators
+    (236-year span → 65-year span). For WB / FAO indicators that are
+    already 1960+, this is a strict no-op (zero rows dropped, same
+    compute as before). The ~10x figure is V-Dem-specific.
+    """
+    if "year" not in df.columns:
+        logging.warning(
+            f"[year_cutoff] 'year' column missing — skipping cutoff. "
+            f"Available columns: {list(df.columns)}"
+        )
+        return df
+    before = len(df)
+    out = df[df["year"] >= min_year].copy()
+    after = len(out)
+    dropped = before - after
+    if dropped == 0:
+        logging.info(
+            f"[year_cutoff] {before:,} rows all >= {min_year} (no-op). "
+            f"Indicator {INDICATOR_ID} has no pre-{min_year} coverage."
+        )
+    else:
+        logging.info(
+            f"[year_cutoff] {before:,} -> {after:,} rows after applying "
+            f"year >= {min_year} cutoff (dropped {dropped:,} rows = "
+            f"{100*dropped/before:.1f}% pre-{min_year})"
+        )
+    return out
 
 
 def tier_threshold(segment_len: int) -> float:
@@ -149,6 +227,14 @@ def run_pipeline():
     # 1. Load data from S3
     indicator_df, countries_df = load_data()
     country_name_to_id = {row["name_1"]: row["id"] for _, row in countries_df.iterrows()}
+
+    # 1b. #509 (2026-04-28): apply MIN_YEAR_CUTOFF to filter pre-1960
+    # rows. V-Dem v16 brought 1789-2025 coverage, but pre-1960 data is
+    # analytically uninformative for QGI's "find modern precedent" use
+    # case AND massively expands the SCDI search space. Filter applies
+    # BEFORE preprocess_data finds the longest streak per country, so
+    # the streak-finder operates only on cutoff-eligible years.
+    indicator_df = apply_year_cutoff(indicator_df, MIN_YEAR_CUTOFF)
 
     # 2. Load Indicator Map
     indicator_map = load_indicator_map(S3_BUCKET)
