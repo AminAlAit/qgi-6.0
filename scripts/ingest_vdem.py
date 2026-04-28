@@ -10,10 +10,11 @@ country-name mapping (`registries/vdem_country_map.yaml`), pivots
 wide → long, and writes per-indicator parquet partitions to the
 data lake's `pipeline-A-indicator-extractor/output/parquet/` location.
 
-Each row in the output is `(country, year, value, provider='VDEM',
-indicator_id=v2x_*)`. The `provider` column was added to
-`qgi_data.indicators` in #485 — legacy WB/FAO rows are NULL there until
-the next full pipeline regeneration.
+Each row in the output is `(country, year, value, provider='VDEM')`,
+with `indicator_id` carried as the bare path component (no Hive
+`indicator_id=` prefix — see #510, 2026-04-28). The `provider` column
+was added to `qgi_data.indicators` in #485 — legacy WB/FAO rows are
+NULL there until the next full pipeline regeneration.
 
 **Indicator selection is XLSX-driven** (#494 step 2, 2026-04-28). The
 script reads the active V-Dem indicator list from the
@@ -253,7 +254,18 @@ def upload_per_indicator_parquet(df: pd.DataFrame, bucket: str, region: str,
     """Group by indicator_id, write each as parquet to its own partition.
 
     Path: s3://{bucket}/pipeline-A-indicator-extractor/output/parquet/
-          indicator_id={ind}/{ind}.parquet
+          {ind}/{ind}.parquet
+
+    **Bare layout** (#510 fix, 2026-04-28): we used to write Hive-style
+    `indicator_id={ind}/{ind}.parquet` paths. That layout doesn't match
+    the WB/FAO sibling pattern and the Phase A completer + Phase B SCDI
+    orchestrator wouldn't discover V-Dem indicators. Switching to bare
+    `{ind}/{ind}.parquet` so V-Dem joins the same auto-discovery flow
+    WB/FAO use:
+      - Phase 1.5 completer iterates `output/parquet/` for indicators
+        in BARE layout, writes `output/parquet-completed/{ind}/{ind}.parquet`
+      - Phase 2 SCDI orchestrator scans `output/parquet-completed/` and
+        treats each subdir name as the indicator_id
 
     Existing parquet at the same key is OVERWRITTEN (idempotent re-runs).
     Other indicators (WB, FAO) live in their own partitions and are not
@@ -262,7 +274,7 @@ def upload_per_indicator_parquet(df: pd.DataFrame, bucket: str, region: str,
     s3 = boto3.client("s3", region_name=region)
     counts: dict[str, int] = {}
     for ind, sub in df.groupby("indicator_id"):
-        key = f"{S3_PARQUET_PREFIX}/indicator_id={ind}/{ind}.parquet"
+        key = f"{S3_PARQUET_PREFIX}/{ind}/{ind}.parquet"
         # Drop the partition column before writing (Athena reads it from path)
         write_df = sub.drop(columns=["indicator_id"]).reset_index(drop=True)
         # Schema: country (string), year (int32), value (float64), provider (string)
