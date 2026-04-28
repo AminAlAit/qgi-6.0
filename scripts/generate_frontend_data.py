@@ -307,6 +307,12 @@ def generate_analogues(athena, workgroup: str, database: str, frontend_dir: Path
     """GH#280: Generate analogues.json — top 5 historical analogues per (country, category)."""
     print("\n=== Generating analogues.json (GH#280) ===")
 
+    # #521 Fork B follow-up: read from recipes_deduped (bullet-6 longest-pattern
+    # collapse view, #458) instead of qgi_data.recipes directly. Without this,
+    # nested-length pattern instances (e.g. Saudi 2011/2010/2009 each match a
+    # 3-yr/2-yr/1-yr pattern) inflate `recipe_count` by 3-5x. The view is a
+    # strict subset of the table — same column shape, only fewer rows — so
+    # downstream JSON consumers don't change.
     query = """
     WITH ranked AS (
         SELECT
@@ -322,7 +328,7 @@ def generate_analogues(athena, workgroup: str, database: str, frontend_dir: Path
                 PARTITION BY country_a_id, event_category
                 ORDER BY COUNT(*) DESC, MAX(pps) DESC
             ) AS rn
-        FROM qgi_data.recipes
+        FROM qgi_data.recipes_deduped
         GROUP BY country_a_id, event_category, country_b_id, country_b_name
     )
     SELECT country_a_id, event_category, country_b_id, country_b_name,
