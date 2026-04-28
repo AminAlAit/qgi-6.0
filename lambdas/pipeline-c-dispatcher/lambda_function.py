@@ -104,11 +104,19 @@ def lambda_handler(event, context):
 
         # Create the main patterns table (WITH pattern_id, WITHOUT indicator_ids)
         logger.info(f"Creating shell table: {PATTERNS_TABLE_NAME}")
-        # NOTE: pattern_tier MUST be the last non-partition column to match
-        # the SELECT column order in pipeline-c-worker. Adding #128's
-        # pattern_tier column to the worker query without adding it here
-        # was the real cause of #108's Phase C stall — every INSERT failed
-        # with TYPE_MISMATCH, no counter increments, loop forever.
+        # NOTE: this column list MUST match the SELECT column order emitted
+        # by pipeline-c-worker, including the partition column at the end.
+        # History of regressions:
+        #   #108 — pipeline-c-worker added pattern_tier (#128) but this
+        #          dispatcher's CREATE TABLE wasn't updated → Phase C stall,
+        #          every INSERT failed with TYPE_MISMATCH, no counter
+        #          increments, infinite retries.
+        #   #512 — pipeline-c-worker added contains_predicted (#461) and
+        #          qgi-infra/modules/storage was updated, but this
+        #          dispatcher was missed again → identical symptom.
+        # The schema-parity test in
+        # tests/unit/pipeline-c-dispatcher/test_dispatcher_worker_schema_parity.py
+        # now fails CI if these two column lists ever drift again.
         create_patterns_query = f"""
         CREATE EXTERNAL TABLE `{DB_NAME}`.`{PATTERNS_TABLE_NAME}` (
           `pattern_id` string,
@@ -120,7 +128,8 @@ def lambda_handler(event, context):
           `avg_correlation` double,
           `pattern_power_score` double,
           `indicator_numeric_ids` array<smallint>,
-          `pattern_tier` string
+          `pattern_tier` string,
+          `contains_predicted` boolean
         )
         PARTITIONED BY (`country_a_id` smallint)
         STORED AS PARQUET
