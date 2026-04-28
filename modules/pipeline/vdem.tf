@@ -425,11 +425,17 @@ resource "aws_cloudwatch_event_rule" "vdem_zip_uploaded" {
         name = [var.data_lake_bucket_name]
       }
       object = {
-        # Only fire on .zip files in the incoming/ prefix; ignore
-        # the unzipped/ side-channel and any non-zip uploads
+        # EventBridge content-filtering only allows ONE match expression
+        # per match-list element ("Only one key allowed in match
+        # expression" error if you nest prefix + suffix together).
+        # Use prefix-only — the `vdem-staging/incoming/` prefix is
+        # dedicated to V-Dem uploads, so any object dropped there is
+        # meant for this pipeline. Non-ZIP objects (e.g., a stray PDF)
+        # would still trigger the rule but the unzip Lambda raises
+        # UnzipError, which routes through SF NotifyFailure → SNS, and
+        # the operator gets an actionable email.
         key = [{
           prefix = "vdem-staging/incoming/"
-          suffix = ".zip"
         }]
       }
     }
