@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import LayeredTaxonomyTree from "@/components/methodology/LayeredTaxonomyTree";
+import StatCards from "@/components/methodology/StatCards";
+import Glossary from "@/components/methodology/Glossary";
+import VerificationFlow from "@/components/methodology/VerificationFlow";
+import TaxonomyHorizontalTree from "@/components/methodology/TaxonomyHorizontalTree";
 import {
   TOTAL_COUNTRIES,
   TOTAL_INDICATORS,
@@ -101,18 +104,26 @@ export default function MethodologyPage() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             QGI surfaces economically-grounded risk candidates by finding historical
-            precedents in World Bank data spanning {TOTAL_COUNTRIES} countries and{" "}
-            {TOTAL_INDICATORS} indicators (data through {DATA_VINTAGE_YEAR}; the indicator
-            catalog has {TOTAL_INDICATOR_CATALOG} entries with the rest queued for
-            ingestion). Here is how it works.
+            precedents in open-data trajectories spanning {TOTAL_COUNTRIES} countries and{" "}
+            {TOTAL_INDICATORS}+ indicators (data through {DATA_VINTAGE_YEAR}; the
+            indicator catalog has {TOTAL_INDICATOR_CATALOG} entries with the rest queued
+            for ingestion). Here is how it works.
           </p>
         </div>
 
-        {/* T21 #314 (Alex s1+s2): Key Terms box — non-experts couldn't
-            parse "SCDI", "PPS", "salience", "rank fusion" without a
-            glossary. Collapsible <details> avoids pushing methodology
-            content below the fold while still surfacing the glossary to
-            first-time readers. */}
+        {/* Stat cards — concrete numbers up-front (replaces brochure feel) */}
+        <StatCards />
+
+        {/* Glossary with inline visuals — 5 core terms, non-collapsed.
+            Operational terms (Length Tier, Risk Tier, Salience, Rank Fusion,
+            Pattern Depth) live in the collapsible block below for readers
+            who want to drill in. */}
+        <Glossary />
+
+        {/* T21 #314 (Alex s1+s2): the operational terms still need a home.
+            Now collapsible-by-default below the visual glossary so first-time
+            readers see the 5 core terms without scroll, and operational
+            details are one click away when needed. */}
         <details
           className="mb-10 rounded-lg border"
           style={{
@@ -125,47 +136,18 @@ export default function MethodologyPage() {
             style={{ color: "var(--qgi-text)" }}
           >
             <span style={{ color: "var(--qgi-accent)" }}>▸</span>
-            Key Terms Glossary
+            Operational terms
             <span
               className="text-[10px] font-normal tracking-wider"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              (click to expand)
+              (Length Tier · Risk Tier · Salience · Rank Fusion · Pattern Depth)
             </span>
           </summary>
           <dl
             className="px-5 pb-5 pt-1 text-sm leading-relaxed grid gap-3"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            <div>
-              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
-                SCDI — Statistically Correlated Development Indicator
-              </dt>
-              <dd>
-                A pair of country-indicator trajectories with strong Pearson correlation
-                (|r| ≥ 0.5) over a shared window. The building block of every pattern.
-              </dd>
-            </div>
-            <div>
-              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
-                Pattern
-              </dt>
-              <dd>
-                A bundle of 3+ SCDIs between the same two countries, over the same time
-                window. Patterns carry a Pattern Power Score (PPS) that rolls correlation,
-                indicator count, and window length into a single 0–100 quality metric.
-              </dd>
-            </div>
-            <div>
-              <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
-                Precedent
-              </dt>
-              <dd>
-                A pattern whose predictor country experienced a known geopolitical event
-                within a forward window after the pattern ended. The event is recorded in
-                QGI&apos;s curated event corpus.
-              </dd>
-            </div>
             <div>
               <dt className="font-semibold" style={{ color: "var(--qgi-text)" }}>
                 Pattern Length Tier (S / M / L / XL)
@@ -296,56 +278,73 @@ export default function MethodologyPage() {
           </DataBox>
         </Section>
 
+        {/* Verification flow — answer the AI-hallucination skeptic up-front,
+            before the user gets to data sources. Three-stage Fetch → Curate
+            → Verify with the same worked example (2008 Iceland) shown at
+            every stage. */}
+        <VerificationFlow />
+
         {/* Section 3: Data Sources */}
         <Section id="data-sources" title="Data Sources">
           <p>
-            QGI currently uses {TOTAL_INDICATORS} economic indicators from the{" "}
-            <a
-              href="https://data.worldbank.org/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              World Bank Open Data
-            </a>{" "}
-            platform (CC BY 4.0 license), covering:
+            QGI currently ingests <strong>104 indicators</strong> across three open-data
+            providers:
           </p>
           <ul
             className="list-disc list-inside space-y-1 mt-3"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            <li>Macroeconomic: GDP, GNI, inflation, trade balance</li>
-            <li>Fiscal: government debt, tax revenue, expenditure</li>
-            <li>Financial: credit to private sector, reserves, FDI</li>
-            <li>Military: military expenditure, armed forces, arms trade</li>
-            <li>Social: unemployment, education enrollment, health</li>
-            <li>Governance: World Governance Indicators (6 dimensions)</li>
-            <li>Infrastructure: electricity access, internet, mobile</li>
-            <li>Environment: CO2 emissions, renewable energy, forest area</li>
+            <li>
+              <a
+                href="https://data.worldbank.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                World Bank Open Data
+              </a>{" "}
+              — 60 indicators (macroeconomic, fiscal, financial, military, social,
+              governance, infrastructure, environment). CC BY 4.0.
+            </li>
+            <li>
+              <a
+                href="https://www.v-dem.net/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                V-Dem
+              </a>{" "}
+              v16 — 39 indicators (electoral democracy, civil liberties, executive
+              constraints, judicial independence, polyarchy index).
+            </li>
+            <li>
+              <a
+                href="https://www.fao.org/faostat/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                FAOSTAT
+              </a>{" "}
+              — 5 indicators (food security, agricultural production, undernourishment).
+            </li>
           </ul>
           <p className="mt-3">
-            Additional providers being integrated to expand coverage to 150+ indicators:{" "}
+            Additional providers queued for integration:{" "}
             <a
-              href="https://www.v-dem.net/"
+              href="https://ilostat.ilo.org/"
               target="_blank"
               rel="noopener noreferrer"
               className="underline hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text)" }}
             >
-              V-Dem
+              ILOSTAT
             </a>{" "}
-            governance indices,{" "}
-            <a
-              href="https://www.fao.org/faostat/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              FAOSTAT
-            </a>{" "}
-            food security,{" "}
+            (labour),{" "}
             <a
               href="https://ucdp.uu.se/"
               target="_blank"
@@ -355,7 +354,7 @@ export default function MethodologyPage() {
             >
               UCDP
             </a>{" "}
-            conflict data, and{" "}
+            (conflict), and{" "}
             <a
               href="https://www.unhcr.org/refugee-statistics/"
               target="_blank"
@@ -365,26 +364,55 @@ export default function MethodologyPage() {
             >
               UNHCR
             </a>{" "}
-            displacement data.
+            (displacement).
           </p>
         </Section>
 
-        {/* Section: Event Taxonomy */}
-        <Section id="event-taxonomy" title="Event Taxonomy">
-          <p>
-            QGI&apos;s event corpus is organized in a four-layer hierarchy that preserves
-            full granularity while remaining scannable. The precedent engine matches
-            patterns to <strong>Layer 3</strong> canonical event types (the actual
-            prediction targets); the layered structure is a navigation aid for the country
-            profile UI.
+        {/* Section: Event Taxonomy — replaces the legacy LayeredTaxonomyTree
+            with a horizontal L→R dendrogram. Default view shows 8 master
+            groups → 52 sub-categories; click a sub-category to reveal its
+            Layer 3 leaves. */}
+        <p
+          id="event-taxonomy-intro"
+          className="text-sm leading-relaxed mt-12 mb-3"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          QGI&apos;s event corpus is organized in a four-layer hierarchy that preserves
+          full granularity while remaining scannable. The precedent engine matches
+          patterns to <strong>Layer 3</strong> canonical event types (the actual
+          prediction targets); the layered structure is a navigation aid for the country
+          profile UI.
+        </p>
+        <TaxonomyHorizontalTree />
+
+        {/* Browse-all-events sub-page link */}
+        <section
+          id="all-events"
+          className="mb-12 mt-10 rounded-lg border p-5"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <h3 className="text-sm font-semibold mb-2">Layer 4 — every verified event</h3>
+          <p
+            className="text-sm leading-relaxed mb-4"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            The individual event records — searchable, filterable, and linked to their
+            verification source URL.
           </p>
-          <LayeredTaxonomyTree />
-          <p className="mt-3 text-[11px]" style={{ color: "var(--qgi-text-dim)" }}>
-            Layer 4 — the individual event records themselves (13,812 events across 197
-            countries as of April 2026) — is surfaced on the per-country profile pages,
-            not in this overview.
-          </p>
-        </Section>
+          <Link
+            href="/methodology/events"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded text-sm tracking-wide transition-colors"
+            style={{
+              backgroundColor: "var(--qgi-accent)",
+              color: "var(--qgi-bg)",
+            }}
+          >
+            Browse all verified events →
+          </Link>
+        </section>
 
         {/* Section 4: Scoring */}
         <Section id="scoring" title="How Scoring Works">
