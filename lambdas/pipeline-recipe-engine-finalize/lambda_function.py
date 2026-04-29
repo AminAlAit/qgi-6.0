@@ -599,11 +599,20 @@ def write_recipes_aggregated_table(force: bool = False):
       - contains_predicted (#461 D7 plumbing inherited)
 
     REFINEMENTS DEFERRED (TODO markers in the SQL):
-      - avg_corr_magnitude per indicator: requires join back to scdis;
-        emits 0.0 placeholder for now. Followup ticket TBD.
-      - coverage_bias_diagnostic OECD/region shares: emits placeholder 0.0
-        + empty array for now. Requires countries-table join with OECD list +
-        region map. Followup once the SQL pattern stabilises.
+      - avg_corr_magnitude per indicator: requires join back to scdis (~12B
+        rows); emits 0.0 placeholder for now. Scorer falls back to
+        tfidf_score as the Pearson weight (commit 656e143). Tracked under
+        a follow-up to #519.
+      - coverage_bias_diagnostic.regional_concentration: emits empty array.
+        Requires a 200-row alpha_3 → UN-region inline VALUES. The frontend
+        gates rendering on `length > 0` so this is hidden, not "0" — no
+        user-visible regression. Tracked under a follow-up to #519.
+
+    REFINEMENTS LIVE:
+      - coverage_bias_diagnostic.oecd_share (#519): now computed from
+        recipe pairs JOIN qgi_data.countries → 38-member OECD VALUES
+        clause. Replaces the previous 0.0 placeholder which was rendered
+        on /signals/{country}/{slug} as "0%".
 
     Cost optimisations (#495 + #497):
       #495 — JOIN target switched from qgi_data.patterns (~64 GB) to
@@ -787,6 +796,48 @@ def write_recipes_aggregated_table(force: bool = False):
             FROM indicator_ranked
             WHERE rn <= 15
             GROUP BY event_category
+        ),
+        -- #519: OECD share of recipe-pair countries per event_category.
+        -- Each recipe instance has a (country_a_id, country_b_id) pair. We
+        -- count BOTH countries (UNION ALL) so a recipe with one OECD member
+        -- contributes 0.5 to the share, not 1.0. Sources: temp_table for the
+        -- pairs, qgi_data.countries for alpha_3 lookup, inline VALUES for
+        -- OECD membership (38 members as of 2026-04; Costa Rica joined 2021,
+        -- Colombia 2020, Lithuania 2018).
+        recipe_country_unnested AS (
+            SELECT event_category, recipe_id, country_a_id AS country_id
+                FROM {ATHENA_DB}.{temp_table}
+            UNION ALL
+            SELECT event_category, recipe_id, country_b_id AS country_id
+                FROM {ATHENA_DB}.{temp_table}
+        ),
+        oecd_members(alpha_3) AS (VALUES
+            ('AUS'), ('AUT'), ('BEL'), ('CAN'), ('CHL'), ('COL'), ('CRI'),
+            ('CZE'), ('DNK'), ('EST'), ('FIN'), ('FRA'), ('DEU'), ('GRC'),
+            ('HUN'), ('ISL'), ('IRL'), ('ISR'), ('ITA'), ('JPN'), ('KOR'),
+            ('LVA'), ('LTU'), ('LUX'), ('MEX'), ('NLD'), ('NZL'), ('NOR'),
+            ('POL'), ('PRT'), ('SVK'), ('SVN'), ('ESP'), ('SWE'), ('CHE'),
+            ('TUR'), ('GBR'), ('USA')
+        ),
+        recipe_country_with_oecd AS (
+            SELECT
+                rcu.event_category,
+                CASE WHEN o.alpha_3 IS NOT NULL THEN 1 ELSE 0 END AS is_oecd
+            FROM recipe_country_unnested rcu
+            -- qgi_data.countries is OpenCSVSerde-backed: all columns are
+            -- string typed, so we explicit-cast `id` to integer here to
+            -- match the predicate type. Same pattern used in
+            -- pipeline-recipe-engine/lambda_function.py L939.
+            LEFT JOIN qgi_data.countries c ON cast(c.id as integer) = rcu.country_id
+            LEFT JOIN oecd_members o ON o.alpha_3 = c.alpha_3
+        ),
+        oecd_shares AS (
+            SELECT
+                event_category,
+                cast(sum(is_oecd) as double) / nullif(cast(count(*) as double), 0)
+                    AS oecd_share
+            FROM recipe_country_with_oecd
+            GROUP BY event_category
         )
         -- Final SELECT — column order matches the Terraform Glue schema.
         SELECT
@@ -794,13 +845,13 @@ def write_recipes_aggregated_table(force: bool = False):
             cb.canonical_length,
             ld.length_distribution,
             ifp.indicator_fingerprint,
-            -- TODO #462 follow-up: compute oecd_share + regional_concentration
-            -- via JOIN to qgi_data.countries (alpha_2) + OECD/region maps.
-            -- Emits placeholder n_pairs (real) + 0.0 oecd_share + empty array
-            -- for now so downstream consumers can already read the field.
+            -- #519: oecd_share now computed from recipe pairs × OECD VALUES.
+            -- regional_concentration still emits empty array — frontend gates
+            -- rendering on `length > 0` so this is hidden, not "wrong". Tracked
+            -- as #519 follow-up.
             cast(row(
                 cast(cb.n_distinct_country_pairs as int),
-                cast(0.0 as real),
+                cast(coalesce(os.oecd_share, 0.0) as real),
                 cast(array[] as array<row(region varchar, share real)>)
             ) as row(
                 n_pairs int,
@@ -816,6 +867,7 @@ def write_recipes_aggregated_table(force: bool = False):
         FROM category_basics cb
         LEFT JOIN length_distributions ld ON ld.event_category = cb.event_category
         LEFT JOIN indicator_fingerprints ifp ON ifp.event_category = cb.event_category
+        LEFT JOIN oecd_shares os ON os.event_category = cb.event_category
         """
         logger.info(
             "[#497] Inserting into recipes_aggregated from temp table "
