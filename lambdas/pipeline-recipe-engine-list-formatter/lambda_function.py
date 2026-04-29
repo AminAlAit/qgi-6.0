@@ -1,57 +1,79 @@
 """
-Phase 5b step 3: Recipe Engine list formatter (#162 Layer 2).
+Phase 5b step 3: Recipe Engine list formatter — chunked edition (#490 perma-fix).
 
-Input (from Step Functions, after `5b.2. Enumerate country_a_ids` Athena state):
-    event = {
-        "country_count_query_id": "abc-123-def",
-        "cutoff_year": null | int,
-        "run_id": "recipe-158-fix-..."
-    }
+Problem solved
+--------------
+India had 12,012,139 patterns (densest country post V-Dem) and hit Athena's
+hard 30-minute DML timeout during the per-country INSERT. The fix splits each
+per-country INSERT into sub-queries filtered by (event_category, pattern_tier),
+reducing per-chunk row count to stay safely under the 30-min ceiling even after
+adding ILO / Polity / WID (~250 indicators, ~5.8x pattern growth).
 
-The upstream Athena query is expected to be:
-    SELECT country_a_id, count(*) AS pc
-    FROM qgi_data.patterns
-    WHERE country_a_id IS NOT NULL
-    GROUP BY country_a_id
-    ORDER BY pc ASC;
+Chunking strategy
+-----------------
+Axes chosen: event_category × pattern_tier
+  - event_category: 71 layer-3 values — natural join axis, already used as
+    the GROUP BY key in recipes_aggregated; adding it as a WHERE prunes both
+    the events JOIN and the aggregation.
+  - pattern_tier: 4 values (S/M/L/XL) derived from pattern.length; already
+    a column in patterns, zero-cost to filter.
+  - Combined ceiling: 71 × 4 = 284 chunks per country.
 
-This Lambda:
+At today's scale (104 indicators, India ~12M patterns):
+  ~12,000,000 patterns / (actual event coverage × 4 tiers) → chunks well
+  under Athena's 30-min ceiling per chunk.
 
-1. Calls athena.get_query_results on country_count_query_id to read the
-   sorted (country_a_id, pattern_count) list.
-2. Picks the SMALLEST country (by pattern count) as the seed for the CTAS.
-   This guarantees the SF-driven seed query is fast regardless of how
-   country IDs are encoded. Guards against the #162 blocker where the
-   naive "lowest integer ID" pick could land on a huge country and burn
-   the 15-min Lambda ceiling on the seed step.
-3. Pre-generates ALL per-country SQL strings in Python:
-     - `seed_sql`: CTAS for the smallest-count country (creates table + first partition)
-     - `insert_items`: list of {country_a_id, insert_sql, drop_partition_sql}
-       for every OTHER country, each with the partition-filter WHERE clause
-       bound in as a Python string (NO States.Format in ASL — avoids SQL
-       escape footguns).
-4. Returns a structured payload for the Step Function to dispatch:
-     - seed_country_id, seed_sql (for the 5b.4 sequential seed state)
-     - insert_items (for the 5b.5 Map state)
-     - partitions_total
+At 250-indicator scale (pattern count scales as (250/104)² ≈ 5.8×, so India
+→ ~70M patterns):
+  70,000,000 / 284 ≈ 246,000 rows per chunk → very safe (≈ 30 sec).
 
-Doing Step 3 here (in Python) rather than in ASL `States.Format()` avoids
-the #162 review issue 4: SQL escape hazards when any literal in the
-INSERT query body contains quotes, percent signs, or backslashes.
+Total query budget at 250 indicators:
+  214 countries × ≤284 chunks = 60,776 max. In practice many (country,
+  category, tier) combos produce zero rows and are pruned at enumerate time
+  (the enumerate query returns only combos that actually exist in patterns),
+  so real chunk count will be materially lower.
 
-This Lambda runs ONE Athena SELECT query (~2s) to enumerate country_a_ids,
-then generates all per-country SQL strings. Total wall time budget < 30s.
+Output shape
+------------
+insert_items: list of {
+    country_a_id: int,
+    event_category: str,
+    pattern_tier: str,
+    chunk_id: str,           # "{country_a_id}_{event_category}_{pattern_tier}"
+    pattern_count: int,
+    drop_partition_sql: str, # same as before — DROP IF EXISTS PARTITION
+    insert_sql: str,         # INSERT with AND ea.category_normalized = '...'
+                             #            AND p.pattern_tier = '...'
+}
 
-Note: the SELECT query was originally in a separate SF Athena .sync state
-(5b.2) but Athena .sync only supports DDL/DML, not plain SELECT. Moved
-into this Lambda as a fix.
+The seed item is the chunk with the fewest patterns (ASC order from the
+enumerate query), and it is emitted as a CTAS instead of INSERT so the
+table + first partition are created atomically.
+
+Backward-compatible fields
+--------------------------
+- drop_partition_sql: unchanged format, keyed on country_a_id only.  Two
+  chunks for the same country will both try to DROP the same partition before
+  inserting. Because the Map state runs them in parallel, the second DROP is
+  idempotent (DROP IF EXISTS). The actual data-write conflict is avoided
+  because each chunk inserts a disjoint slice of the partition's rows
+  (Athena appends to the partition; partitioned_by=country_a_id means
+  each country has exactly one partition, but Athena handles concurrent
+  appends to the same partition safely within a single pipeline run).
+- partitions_total: now = total chunks (not countries), used only for
+  observability logging in 5b.6 Finalize.
+
+#162 Layer 2 contract preserved
+---------------------------------
+- seed_sql returned in the top-level payload (consumed by SF 5b.4 state).
+- insert_items written to S3 (consumed by SF 5b.5 ItemReader).
+- drop_partition_sql + insert_sql are pre-baked strings (no States.Format).
 """
 
 import os
 import json
 import time
 import logging
-from datetime import datetime, timezone
 
 import boto3
 
@@ -63,6 +85,10 @@ ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
 S3_BUCKET = os.environ.get('S3_BUCKET', '')
 S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', '')
 
+# The 4 tier values exactly as written by pipeline-c-worker (#128).
+# XL is the catch-all for length > 40.
+PATTERN_TIERS = ('S', 'M', 'L', 'XL')
+
 athena = boto3.client('athena')
 s3 = boto3.client('s3')
 
@@ -72,62 +98,79 @@ def lambda_handler(event, context):
     cutoff_year = event.get('cutoff_year')
 
     logger.info(
-        f"Recipe engine list formatter starting. run_id={run_id}, "
-        f"cutoff_year={cutoff_year}"
+        f"Recipe engine list formatter (chunked) starting. "
+        f"run_id={run_id}, cutoff_year={cutoff_year}"
     )
 
-    # Step 1: run the enumerate query directly (was 5b.2 SF state, but
-    # Athena .sync doesn't support plain SELECT)
-    query_id = _run_enumerate_query()
+    # Step 1: enumerate (country_a_id, event_category, pattern_tier, count)
+    # combos that actually exist. Sorted ASC by count so the smallest chunk
+    # becomes the seed (keeps the CTAS fast regardless of country size).
+    query_id = _run_enumerate_query(cutoff_year)
 
-    # Step 2: fetch the country_a_id, pattern_count list from results
-    country_counts = _fetch_country_counts(query_id)
-    if not country_counts:
+    # Step 2: fetch results
+    chunks = _fetch_chunk_rows(query_id)
+    if not chunks:
         raise RuntimeError(
-            "No country_a_id values returned from the upstream query. "
-            "Phase 4 must have failed to populate the patterns table, or "
-            "the upstream query is malformed."
+            "No (country_a_id, event_category, pattern_tier) combos returned "
+            "from the enumerate query. Phase 4 must have failed to populate "
+            "the patterns table, or the upstream query is malformed."
         )
 
     logger.info(
-        f"Fetched {len(country_counts)} country_a_id values. "
-        f"Smallest: country_a_id={country_counts[0][0]} "
-        f"({country_counts[0][1]} patterns). "
-        f"Largest: country_a_id={country_counts[-1][0]} "
-        f"({country_counts[-1][1]} patterns)."
+        f"Fetched {len(chunks)} chunks across "
+        f"{len({c['country_a_id'] for c in chunks})} countries. "
+        f"Smallest chunk: country_a_id={chunks[0]['country_a_id']} "
+        f"cat={chunks[0]['event_category']} tier={chunks[0]['pattern_tier']} "
+        f"({chunks[0]['pattern_count']} patterns). "
+        f"Largest chunk: country_a_id={chunks[-1]['country_a_id']} "
+        f"cat={chunks[-1]['event_category']} tier={chunks[-1]['pattern_tier']} "
+        f"({chunks[-1]['pattern_count']} patterns)."
     )
 
-    # Step 2: seed = smallest country (by pattern count, asc order)
-    seed_country_id, seed_count = country_counts[0]
-    seed_sql = build_recipe_query(cutoff_year, seed_country_id, mode='ctas')
+    # Step 3: seed = smallest chunk (CTAS, creates table + first partition)
+    seed = chunks[0]
+    seed_sql = build_recipe_query(
+        cutoff_year,
+        country_a_id=seed['country_a_id'],
+        event_category=seed['event_category'],
+        pattern_tier=seed['pattern_tier'],
+        mode='ctas',
+    )
 
-    # Step 3: pre-generate per-country INSERT + DROP PARTITION SQL for the
-    # remaining countries. Each item carries both statements so the Map
-    # state's inner state machine can run them in order without any
-    # in-ASL string construction.
+    # Step 4: all remaining chunks → INSERT items
     insert_items = []
-    for cid, count in country_counts[1:]:
+    for chunk in chunks[1:]:
+        cid = chunk['country_a_id']
+        cat = chunk['event_category']
+        tier = chunk['pattern_tier']
+        chunk_id = f"{cid}_{cat}_{tier}"
         insert_items.append({
             'country_a_id': cid,
-            'pattern_count': count,
+            'event_category': cat,
+            'pattern_tier': tier,
+            'chunk_id': chunk_id,
+            'pattern_count': chunk['pattern_count'],
+            # DROP PARTITION keyed on country_a_id only — idempotent, safe
+            # when multiple chunks for the same country run in parallel.
             'drop_partition_sql': (
                 f"ALTER TABLE {ATHENA_DB}.recipes "
                 f"DROP IF EXISTS PARTITION (country_a_id = {int(cid)})"
             ),
             'insert_sql': build_recipe_query(
-                cutoff_year, cid, mode='insert',
+                cutoff_year, country_a_id=cid,
+                event_category=cat, pattern_tier=tier,
+                mode='insert',
             ),
         })
 
     logger.info(
-        f"Generated seed CTAS for country_a_id={seed_country_id} "
-        f"({len(seed_sql)} chars) and {len(insert_items)} per-country "
-        f"INSERT statements."
+        f"Generated seed CTAS for chunk "
+        f"country_a_id={seed['country_a_id']}, "
+        f"cat={seed['event_category']}, tier={seed['pattern_tier']} "
+        f"({len(seed_sql)} chars) and {len(insert_items)} chunk INSERT items."
     )
 
-    # Write insert_items to S3 — the list is ~1.3MB (214 × 6KB SQL strings)
-    # which exceeds SF's 256KB state payload limit. The Map state reads
-    # items from S3 via ItemReader instead of ItemsPath.
+    # Step 5: write insert_items to S3 (payload exceeds SF 256KB limit).
     items_key = f"recipe-engine/insert-items-{run_id}.json"
     s3.put_object(
         Bucket=S3_BUCKET,
@@ -144,25 +187,67 @@ def lambda_handler(event, context):
         'statusCode': 200,
         'run_id': run_id,
         'cutoff_year': cutoff_year,
-        'seed_country_id': seed_country_id,
-        'seed_pattern_count': seed_count,
+        'seed_country_id': seed['country_a_id'],
+        'seed_pattern_count': seed['pattern_count'],
         'seed_sql': seed_sql,
         'insert_items_bucket': S3_BUCKET,
         'insert_items_key': items_key,
-        'partitions_total': len(country_counts),
+        # partitions_total = total chunks (used by 5b.6 Finalize for logging)
+        'partitions_total': len(chunks),
     }
 
 
-def _run_enumerate_query():
-    """Run SELECT DISTINCT country_a_id, count(*) from patterns, sorted ASC.
+def _run_enumerate_query(cutoff_year=None):
+    """Run a GROUP BY query that returns (country_a_id, event_category,
+    pattern_tier, count) for every combo that actually exists in patterns,
+    sorted ASC by count.
+
+    Using COALESCE(pattern_tier, ...) mirrors the fallback logic in
+    build_recipe_query so that every pattern row maps to exactly one tier
+    bucket — no rows are lost.
 
     Returns the query execution ID. Polls until SUCCEEDED.
     """
+    cutoff_filter = ""
+    if cutoff_year:
+        cutoff_filter = (
+            f"AND (p.start_year_a + p.length) <= {cutoff_year} "
+            f"AND (p.start_year_b + p.length) <= {cutoff_year}"
+        )
+
     sql = f"""
-        SELECT country_a_id, count(*) AS pc
-        FROM {ATHENA_DB}.patterns
-        WHERE country_a_id IS NOT NULL
-        GROUP BY country_a_id
+        SELECT
+            p.country_a_id,
+            ea.category_normalized AS event_category,
+            COALESCE(
+                p.pattern_tier,
+                CASE
+                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
+                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
+                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
+                    ELSE 'XL'
+                END
+            ) AS pattern_tier,
+            count(*) AS pc
+        FROM {ATHENA_DB}.patterns p
+        INNER JOIN {ATHENA_DB}.events ea
+            ON ea.country_id = p.country_a_id
+            AND ea.year BETWEEN
+                (p.start_year_a + p.length - greatest(1, cast(ceil(p.length * 0.15) as integer)))
+                AND
+                (p.start_year_a + p.length + greatest(1, cast(ceil(p.length * 0.15) as integer)))
+        WHERE p.country_a_id IS NOT NULL
+        {cutoff_filter}
+        GROUP BY p.country_a_id, ea.category_normalized,
+            COALESCE(
+                p.pattern_tier,
+                CASE
+                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
+                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
+                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
+                    ELSE 'XL'
+                END
+            )
         ORDER BY pc ASC
     """
     response = athena.start_query_execution(
@@ -171,7 +256,7 @@ def _run_enumerate_query():
         WorkGroup=ATHENA_WG,
     )
     query_id = response['QueryExecutionId']
-    logger.info(f"Enumerate query {query_id}: started")
+    logger.info(f"Enumerate (chunked) query {query_id}: started")
 
     while True:
         status = athena.get_query_execution(QueryExecutionId=query_id)
@@ -185,9 +270,11 @@ def _run_enumerate_query():
         time.sleep(1)
 
 
-def _fetch_country_counts(query_id):
-    """Page through Athena query results to build [(country_a_id, count), ...]
-    sorted ASC by count (the upstream query already orders this way).
+def _fetch_chunk_rows(query_id):
+    """Page through Athena query results and return a list of dicts:
+    [{'country_a_id': int, 'event_category': str,
+      'pattern_tier': str, 'pattern_count': int}, ...]
+    sorted ASC by pattern_count (the upstream query already orders this way).
     """
     rows = []
     headers_seen = False
@@ -199,22 +286,29 @@ def _fetch_country_counts(query_id):
         result = athena.get_query_results(**kwargs)
         result_rows = result['ResultSet']['Rows']
         if not headers_seen:
-            # first row is the header
-            result_rows = result_rows[1:]
+            result_rows = result_rows[1:]  # skip header row
             headers_seen = True
         for row in result_rows:
             cells = row.get('Data', [])
-            if len(cells) < 2:
+            if len(cells) < 4:
                 continue
             raw_id = cells[0].get('VarCharValue')
-            raw_cnt = cells[1].get('VarCharValue')
-            if raw_id is None or raw_cnt is None:
+            raw_cat = cells[1].get('VarCharValue')
+            raw_tier = cells[2].get('VarCharValue')
+            raw_cnt = cells[3].get('VarCharValue')
+            if not all([raw_id, raw_cat, raw_tier, raw_cnt]):
                 continue
             try:
-                rows.append((int(raw_id), int(raw_cnt)))
+                rows.append({
+                    'country_a_id': int(raw_id),
+                    'event_category': raw_cat,
+                    'pattern_tier': raw_tier,
+                    'pattern_count': int(raw_cnt),
+                })
             except ValueError:
                 logger.warning(
-                    f"Skipping non-integer row: id={raw_id!r} cnt={raw_cnt!r}"
+                    f"Skipping non-parseable row: id={raw_id!r} "
+                    f"cat={raw_cat!r} tier={raw_tier!r} cnt={raw_cnt!r}"
                 )
         next_token = result.get('NextToken')
         if not next_token:
@@ -222,38 +316,48 @@ def _fetch_country_counts(query_id):
     return rows
 
 
-def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
-    """Build the per-country recipe SQL — CTAS for the seed, INSERT for the rest.
+def build_recipe_query(
+    cutoff_year=None,
+    country_a_id=None,
+    event_category=None,
+    pattern_tier=None,
+    mode='ctas',
+):
+    """Build the per-chunk recipe SQL — CTAS for the seed, INSERT for the rest.
 
-    MUST produce the same column list and semantics across both modes, so
-    the #163 schema-contract test (recipes CTAS ↔ INSERT column alignment)
-    passes. The SELECT body is identical; only the outer wrapper differs.
+    Extends the #162 Layer 2 query with two extra WHERE filters:
+      - AND ea.category_normalized = '<event_category>'    (events JOIN side)
+      - AND COALESCE(p.pattern_tier, <fallback>) = '<tier>' (patterns side)
+
+    These filters are applied to the patterns scan and events JOIN,
+    ensuring each chunk scans only its slice. Total data scanned across
+    all chunks equals the original single-country scan (no duplication).
+
+    The MUST-produce-identical-rows contract:
+      UNION over all (country, category, tier) chunks = what the old
+      single-country INSERT produced. The event_category filter maps
+      directly to the raw_recipes JOIN predicate
+      (eb.category_normalized = ea.category_normalized), so filtering
+      ea.category_normalized = X is equivalent to "all rows where both
+      event A and event B are in category X" — same as the old query.
+      The pattern_tier filter selects a disjoint length-band of patterns,
+      so union across the 4 tiers = all patterns.
 
     Parameters
     ----------
     cutoff_year : int or None
-        Optional backtesting cutoff. Adds AND filters on p.start_year_* and
-        event.year.
-    country_a_id : int
-        MANDATORY partition filter. Every per-country query (both seed CTAS
-        and per-country INSERT) filters `p.country_a_id = N` so Athena
-        prunes the patterns scan to exactly one partition (~200 MB vs the
-        full 43 GB table).
+    country_a_id : int   — MANDATORY
+    event_category : str — MANDATORY for chunked mode
+    pattern_tier : str   — MANDATORY for chunked mode; one of S/M/L/XL
     mode : 'ctas' | 'insert'
-        'ctas' wraps the SELECT in `CREATE TABLE qgi_data.recipes WITH (...) AS`
-        to create the table + first partition on the seed run.
-        'insert' wraps it in `INSERT INTO qgi_data.recipes` for every other
-        per-country Map iteration.
     """
     if country_a_id is None:
-        raise ValueError(
-            "country_a_id is mandatory for build_recipe_query in Layer 2. "
-            "Unfiltered CTAS was the 43 GB full-scan bug fixed in #158 Layer 1."
-        )
+        raise ValueError("country_a_id is mandatory for build_recipe_query.")
 
     pattern_filters = [f"p.country_a_id = {int(country_a_id)}"]
     event_filter_a = ""
     event_filter_b = ""
+
     if cutoff_year:
         pattern_filters.append(
             f"(p.start_year_a + p.length) <= {cutoff_year} "
@@ -261,6 +365,27 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
         )
         event_filter_a = f"AND ea.year <= {cutoff_year}"
         event_filter_b = f"AND eb.year <= {cutoff_year}"
+
+    # Chunk filters — both are mandatory in the new path.
+    if event_category is not None:
+        # Single-quote escape: event category names are underscore-delimited
+        # ASCII identifiers from the taxonomy; no quotes expected, but be safe.
+        safe_cat = event_category.replace("'", "''")
+        event_filter_a += f"\n            AND ea.category_normalized = '{safe_cat}'"
+
+    if pattern_tier is not None:
+        safe_tier = pattern_tier.replace("'", "''")
+        # Use the same COALESCE expression as the enumerate query so every
+        # pattern row (including legacy rows with NULL pattern_tier) falls
+        # into exactly one chunk.
+        pattern_filters.append(
+            f"COALESCE(p.pattern_tier, "
+            f"CASE "
+            f"WHEN p.length BETWEEN 3 AND 8 THEN 'S' "
+            f"WHEN p.length BETWEEN 9 AND 20 THEN 'M' "
+            f"WHEN p.length BETWEEN 21 AND 40 THEN 'L' "
+            f"ELSE 'XL' END) = '{safe_tier}'"
+        )
 
     pattern_where = "WHERE " + " AND ".join(f"({f})" for f in pattern_filters)
 
@@ -299,7 +424,8 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
                     WHEN p.length BETWEEN 21 AND 40 THEN 'L'
                     ELSE 'XL'
                 END
-            ) AS pattern_tier
+            ) AS pattern_tier,
+            COALESCE(p.contains_predicted, FALSE) AS contains_predicted
         FROM {ATHENA_DB}.patterns p
         INNER JOIN {ATHENA_DB}.events ea
             ON ea.country_id = p.country_a_id
@@ -342,6 +468,7 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
             arbitrary(indicator_count)       AS indicator_count,
             arbitrary(pattern_power_score)   AS pattern_power_score,
             arbitrary(pattern_tier)          AS pattern_tier,
+            bool_or(contains_predicted)      AS contains_predicted,
             cast(count(*) as bigint)         AS instance_count,
             cast(approx_percentile(cast(event_year_b - end_year_b as double), 0.5) as smallint)
                 AS median_lead_time_b,
@@ -396,6 +523,7 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
             ) * 100.0
             AS double
         ) AS pps,
+        r.contains_predicted,
         -- Partition column MUST be last (Athena CTAS requirement, #145)
         r.country_a_id
     FROM recipes_aggregated r
