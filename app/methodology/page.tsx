@@ -674,19 +674,6 @@ export default function MethodologyPage() {
               behind the current year. The most recent complete data year is usually 2
               years ago.
             </li>
-            <li>
-              <strong>Economic indicators only:</strong> QGI does not currently
-              incorporate political event data, social media sentiment, or conflict
-              databases. Events driven by personality politics, external military
-              intervention, or sudden natural disasters may not show in economic
-              trajectories.
-            </li>
-            <li>
-              <strong>Category breadth:</strong> Some event categories (e.g.,
-              &ldquo;government formation&rdquo;) are broad. A government formation could
-              mean a routine election or a post-coup transition. Category specificity is
-              being improved.
-            </li>
           </ul>
         </Section>
 
