@@ -251,13 +251,18 @@ def test_cutoff_year_threaded_into_sql():
 
 
 # ---------------------------------------------------------------------------
-# Test 6: DROP PARTITION SQL is keyed on country_a_id only (idempotent)
+# Test 6: drop_partition_sql is a no-op (post 2026-04-29 fix)
 # ---------------------------------------------------------------------------
 
-def test_drop_partition_sql_shape():
-    """drop_partition_sql must be keyed on country_a_id only, not (country, cat, tier).
-    Two chunks for the same country must produce identical drop_partition_sql so
-    the second DROP is idempotent.
+def test_drop_partition_sql_is_noop():
+    """Per 2026-04-29 SF-run failure: per-chunk DROP PARTITION caused
+    glue:BatchDeletePartition concurrency contention when N chunks for the
+    same country fanned out in parallel. The fix: emit a `SELECT 1` no-op,
+    since the SF state `5b.1 Drop Recipes Table` already drops the whole
+    `recipes` table before the Map state runs and `5b.4 Seed CTAS` recreates
+    it fresh.
+
+    All non-seed chunks must have drop_partition_sql == 'SELECT 1'.
     """
     chunks = [
         (5, "elections_and_voting", "S", 1),
@@ -265,26 +270,18 @@ def test_drop_partition_sql_shape():
         (10, "economic_recession", "L", 200),
     ]
     mod, s3_mock = _load_module(chunks)
-    result = mod.lambda_handler({"run_id": "test"}, None)
-
-    drops = [item['drop_partition_sql'] for item in s3_mock._captured_items]
-
-    # Both chunks for country_a_id=5 should have identical DROP SQL
-    items_for_5 = [i for i in s3_mock._captured_items if i['country_a_id'] == 5]
-    if len(items_for_5) >= 2:
-        assert items_for_5[0]['drop_partition_sql'] == items_for_5[1]['drop_partition_sql'], (
-            "Two chunks for the same country must have identical drop_partition_sql"
-        )
+    mod.lambda_handler({"run_id": "test"}, None)
 
     for item in s3_mock._captured_items:
-        cid = item['country_a_id']
         sql = item['drop_partition_sql']
-        assert f"country_a_id = {cid}" in sql
-        assert "DROP IF EXISTS PARTITION" in sql
-        # Must NOT contain event_category or pattern_tier
-        assert item['event_category'] not in sql, (
-            f"drop_partition_sql for {cid} must not contain event_category"
+        assert sql == "SELECT 1", (
+            f"drop_partition_sql must be the SELECT 1 no-op (chunk {item['chunk_id']}); "
+            f"got {sql!r}. Per-chunk Glue partition deletes cause AccessDenied "
+            f"contention under parallel fan-out."
         )
+        # Must NOT contain DDL — that's the actual fix.
+        assert "DROP" not in sql.upper()
+        assert "PARTITION" not in sql.upper()
 
 
 # ---------------------------------------------------------------------------
