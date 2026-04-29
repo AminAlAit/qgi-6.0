@@ -150,12 +150,20 @@ def lambda_handler(event, context):
             'pattern_tier': tier,
             'chunk_id': chunk_id,
             'pattern_count': chunk['pattern_count'],
-            # DROP PARTITION keyed on country_a_id only — idempotent, safe
-            # when multiple chunks for the same country run in parallel.
-            'drop_partition_sql': (
-                f"ALTER TABLE {ATHENA_DB}.recipes "
-                f"DROP IF EXISTS PARTITION (country_a_id = {int(cid)})"
-            ),
+            # NO-OP DROP: the SF state `5b.1 Drop Recipes Table` already
+            # dropped the whole `recipes` table before the Map state began,
+            # and `5b.4 Seed CTAS` recreated it fresh. Per-chunk
+            # `DROP PARTITION IF EXISTS` is redundant *and* dangerous —
+            # when N chunks for the same country fan out in parallel, all
+            # N try to call `glue:BatchDeletePartition` on the same
+            # country_a_id partition. Glue surfaces the contention as
+            # AccessDeniedException (misleading; the IAM role has the
+            # permission but Glue throttles concurrent partition deletes).
+            # Discovered 2026-04-29 in vdem-510-recipes-chunked-v2 SF run.
+            # Replacing with a `SELECT 1` no-op — the SF Map state's
+            # Athena task still gets a query to run, but it completes in
+            # ~50ms and never touches Glue.
+            'drop_partition_sql': "SELECT 1",
             'insert_sql': build_recipe_query(
                 cutoff_year, country_a_id=cid,
                 event_category=cat, pattern_tier=tier,
