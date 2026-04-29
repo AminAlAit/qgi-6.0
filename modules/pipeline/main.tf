@@ -1478,7 +1478,7 @@ resource "aws_sfn_state_machine" "pipeline" {
       #   5b.2 Enumerate country_ids  (Athena .sync, sorted by pattern count)
       #   5b.3 List Formatter Lambda  (parse results, pre-gen SQL strings)
       #   5b.4 Seed CTAS              (Athena .sync, smallest country)
-      #   5b.5 Map per-country INSERT (Athena .sync × 20, idempotent)
+      #   5b.5 Map per-country INSERT (Athena .sync × 80, idempotent)
       #   5b.6 Finalize Lambda        (views + dashboard JSONs)
       # -----------------------------------------------------------------
 
@@ -1534,8 +1534,14 @@ resource "aws_sfn_state_machine" "pipeline" {
       }
 
       "5b.5. Per-Country INSERTs" = {
-        Type           = "Map"
-        MaxConcurrency = 20
+        Type = "Map"
+        # MaxConcurrency 20 → 80 per #533 (smart-chunking, 2026-04-29):
+        # the previous chunking iteration emitted ~15K chunks at uniform
+        # (event_category × pattern_tier) shape; smart-chunking reduces
+        # to ~3-5K but still benefits from higher fan-out under Athena's
+        # 150-concurrent-DML account quota. 80 leaves ~70 headroom for
+        # enumerate queries, retries, and ad-hoc Athena traffic.
+        MaxConcurrency = 80
         ItemReader = {
           Resource = "arn:aws:states:::s3:getObject"
           ReaderConfig = {
