@@ -183,6 +183,21 @@ def test_recipe_country_pair_unnest_uses_union_all():
     )
 
 
+def test_countries_join_present():
+    """A regression that drops the JOIN to `qgi_data.countries` (e.g., a
+    refactor that tries to derive OECD membership from a different source)
+    breaks the alpha_3 lookup silently. Pin the JOIN explicitly. The pattern
+    matches the explicit-cast convention used elsewhere in the codebase
+    (cast(c.id as integer)).
+    """
+    text = _read_source()
+    assert "LEFT JOIN qgi_data.countries c ON cast(c.id as integer) = rcu.country_id" in text, (
+        "Expected `LEFT JOIN qgi_data.countries c ON cast(c.id as integer) = rcu.country_id` "
+        "in the recipe_country_with_oecd CTE. Without this JOIN, alpha_3 is unbound "
+        "and the OECD VALUES JOIN matches nothing → all is_oecd = 0."
+    )
+
+
 def test_oecd_share_division_handles_empty_categories():
     """The OECD-share formula must be `sum(is_oecd) / nullif(count(*), 0)` —
     `nullif` guards against divide-by-zero on event_categories with no

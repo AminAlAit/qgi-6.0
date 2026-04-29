@@ -824,7 +824,11 @@ def write_recipes_aggregated_table(force: bool = False):
                 rcu.event_category,
                 CASE WHEN o.alpha_3 IS NOT NULL THEN 1 ELSE 0 END AS is_oecd
             FROM recipe_country_unnested rcu
-            LEFT JOIN qgi_data.countries c ON c.id = rcu.country_id
+            -- qgi_data.countries is OpenCSVSerde-backed: all columns are
+            -- string typed, so we explicit-cast `id` to integer here to
+            -- match the predicate type. Same pattern used in
+            -- pipeline-recipe-engine/lambda_function.py L939.
+            LEFT JOIN qgi_data.countries c ON cast(c.id as integer) = rcu.country_id
             LEFT JOIN oecd_members o ON o.alpha_3 = c.alpha_3
         ),
         oecd_shares AS (
