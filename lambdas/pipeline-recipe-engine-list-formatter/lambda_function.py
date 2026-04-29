@@ -89,6 +89,40 @@ S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', '')
 # XL is the catch-all for length > 40.
 PATTERN_TIERS = ('S', 'M', 'L', 'XL')
 
+# ─── Smart-chunking thresholds (#533) ────────────────────────────────────────
+# Per-country pattern_count buckets that decide chunking shape. Discovered
+# 2026-04-29 in vdem-510-recipes-chunked-v3 SF run: uniform chunking emitted
+# 15,031 chunks, ~80% from tiny countries that don't need fan-out at all.
+#
+# At ~10K patterns/min Athena throughput (extrapolated from India's 12M
+# patterns / 30:38 timeout), each chunk should comfortably finish in <15min
+# (50% safety margin under the 30-min DML wall). The boundaries below give
+# each tier roughly that headroom at TODAY's scale (104 indicators); they
+# scale through ~250 indicators before re-tuning.
+#
+# Tier 4 is reserved (decade-bucket axis) for countries whose (category, tier)
+# slice itself exceeds the wall — currently no country does (India at 12M /
+# 284 ≈ 42K patterns/chunk in Tier 3). Add a second enumerate query keyed on
+# `start_year_a / 10` when a country first crosses the threshold.
+TIER1_MAX_PATTERNS = 100_000     # below: single INSERT, no chunking
+TIER2_MAX_PATTERNS = 1_000_000   # below: chunk by event_category only
+TIER3_MAX_PATTERNS = 10_000_000  # below: chunk by (event_category, pattern_tier)
+# Tier 4 above TIER3_MAX_PATTERNS: future axis (decade-bucket); for now Tier 4
+# countries fall through to Tier 3 chunking with a warning logged.
+
+
+def classify_country_tier(total_pattern_count: int) -> str:
+    """Return 'tier1' / 'tier2' / 'tier3' / 'tier4' based on the country's
+    total pattern count. See module-level threshold comments for rationale.
+    """
+    if total_pattern_count < TIER1_MAX_PATTERNS:
+        return 'tier1'
+    if total_pattern_count < TIER2_MAX_PATTERNS:
+        return 'tier2'
+    if total_pattern_count < TIER3_MAX_PATTERNS:
+        return 'tier3'
+    return 'tier4'
+
 athena = boto3.client('athena')
 s3 = boto3.client('s3')
 
@@ -116,19 +150,105 @@ def lambda_handler(event, context):
             "the patterns table, or the upstream query is malformed."
         )
 
+    # Step 2.5: aggregate per country, classify each country's tier, emit
+    # adaptively-shaped chunks. See module-level threshold comments (#533).
+    country_totals: dict[int, int] = {}
+    for c in chunks:
+        country_totals[c['country_a_id']] = (
+            country_totals.get(c['country_a_id'], 0) + c['pattern_count']
+        )
+    country_tiers: dict[int, str] = {
+        cid: classify_country_tier(total)
+        for cid, total in country_totals.items()
+    }
+    tier_distribution = {
+        t: sum(1 for tt in country_tiers.values() if tt == t)
+        for t in ('tier1', 'tier2', 'tier3', 'tier4')
+    }
     logger.info(
-        f"Fetched {len(chunks)} chunks across "
-        f"{len({c['country_a_id'] for c in chunks})} countries. "
-        f"Smallest chunk: country_a_id={chunks[0]['country_a_id']} "
+        f"Fetched {len(chunks)} (country, cat, tier) combos across "
+        f"{len(country_totals)} countries. Tier distribution: {tier_distribution}. "
+        f"Smallest combo: country_a_id={chunks[0]['country_a_id']} "
         f"cat={chunks[0]['event_category']} tier={chunks[0]['pattern_tier']} "
         f"({chunks[0]['pattern_count']} patterns). "
-        f"Largest chunk: country_a_id={chunks[-1]['country_a_id']} "
+        f"Largest combo: country_a_id={chunks[-1]['country_a_id']} "
         f"cat={chunks[-1]['event_category']} tier={chunks[-1]['pattern_tier']} "
         f"({chunks[-1]['pattern_count']} patterns)."
     )
 
-    # Step 3: seed = smallest chunk (CTAS, creates table + first partition)
-    seed = chunks[0]
+    # Build adaptive chunks per country. emit_chunks is the deduplicated
+    # list of {country_a_id, event_category|None, pattern_tier|None,
+    # pattern_count} dicts for the SF Map state. Sorted ASC by pattern
+    # count so the smallest chunk lands as the seed CTAS.
+    emit_chunks: list[dict] = []
+
+    # Group raw enumerate results by country
+    by_country: dict[int, list[dict]] = {}
+    for c in chunks:
+        by_country.setdefault(c['country_a_id'], []).append(c)
+
+    for cid, country_combos in by_country.items():
+        tier = country_tiers[cid]
+        country_total = country_totals[cid]
+
+        if tier == 'tier1':
+            # No chunking: 1 INSERT per country with no category/tier filter.
+            emit_chunks.append({
+                'country_a_id': cid,
+                'event_category': None,
+                'pattern_tier': None,
+                'pattern_count': country_total,
+            })
+        elif tier == 'tier2':
+            # Aggregate combos by category; emit 1 chunk per (country, category).
+            by_cat: dict[str, int] = {}
+            for combo in country_combos:
+                by_cat[combo['event_category']] = (
+                    by_cat.get(combo['event_category'], 0)
+                    + combo['pattern_count']
+                )
+            for cat, count in by_cat.items():
+                emit_chunks.append({
+                    'country_a_id': cid,
+                    'event_category': cat,
+                    'pattern_tier': None,
+                    'pattern_count': count,
+                })
+        else:
+            # Tier 3 (and Tier 4 for now — see module-level comment): emit
+            # the raw enumerate combos as-is. (Tier 4's decade-bucket axis
+            # is a future extension; today no (country, cat, tier) chunk
+            # exceeds the 30-min ceiling at India's 12M-pattern scale.)
+            if tier == 'tier4':
+                logger.warning(
+                    f"country_a_id={cid} has {country_total} patterns — "
+                    f"Tier-4 (decade-bucket axis) is not yet implemented; "
+                    f"falling through to Tier-3 (event_category × pattern_tier). "
+                    f"Monitor this country's chunk runtimes — if any exceeds "
+                    f"25min, file a follow-up to ship the decade axis."
+                )
+            for combo in country_combos:
+                emit_chunks.append({
+                    'country_a_id': cid,
+                    'event_category': combo['event_category'],
+                    'pattern_tier': combo['pattern_tier'],
+                    'pattern_count': combo['pattern_count'],
+                })
+
+    # Sort ASC by pattern count so the smallest chunk becomes the seed CTAS.
+    emit_chunks.sort(key=lambda c: c['pattern_count'])
+
+    logger.info(
+        f"Smart-chunking emitted {len(emit_chunks)} chunks "
+        f"(was {len(chunks)} before tier-classification — "
+        f"{(1 - len(emit_chunks) / max(len(chunks), 1)) * 100:.1f}% reduction)."
+    )
+
+    # Step 3: seed = smallest emitted chunk (CTAS, creates table + first
+    # partition). Uses build_recipe_query with the chunk's possibly-None
+    # category/tier — the function's existing `if X is not None` conditionals
+    # produce a single-INSERT shape for Tier-1 seeds. Verified by tests.
+    seed = emit_chunks[0]
     seed_sql = build_recipe_query(
         cutoff_year,
         country_a_id=seed['country_a_id'],
@@ -139,30 +259,28 @@ def lambda_handler(event, context):
 
     # Step 4: all remaining chunks → INSERT items
     insert_items = []
-    for chunk in chunks[1:]:
+    for chunk in emit_chunks[1:]:
         cid = chunk['country_a_id']
-        cat = chunk['event_category']
-        tier = chunk['pattern_tier']
-        chunk_id = f"{cid}_{cat}_{tier}"
+        cat = chunk['event_category']  # may be None for Tier-1 chunks
+        tier = chunk['pattern_tier']   # may be None for Tier-1 / Tier-2 chunks
+        # chunk_id encodes the chunk's filter shape — None → '*' for legibility
+        chunk_id = (
+            f"{cid}_"
+            f"{cat if cat is not None else '*'}_"
+            f"{tier if tier is not None else '*'}"
+        )
         insert_items.append({
             'country_a_id': cid,
             'event_category': cat,
             'pattern_tier': tier,
             'chunk_id': chunk_id,
             'pattern_count': chunk['pattern_count'],
-            # NO-OP DROP: the SF state `5b.1 Drop Recipes Table` already
-            # dropped the whole `recipes` table before the Map state began,
-            # and `5b.4 Seed CTAS` recreated it fresh. Per-chunk
-            # `DROP PARTITION IF EXISTS` is redundant *and* dangerous —
-            # when N chunks for the same country fan out in parallel, all
-            # N try to call `glue:BatchDeletePartition` on the same
-            # country_a_id partition. Glue surfaces the contention as
-            # AccessDeniedException (misleading; the IAM role has the
-            # permission but Glue throttles concurrent partition deletes).
-            # Discovered 2026-04-29 in vdem-510-recipes-chunked-v2 SF run.
-            # Replacing with a `SELECT 1` no-op — the SF Map state's
-            # Athena task still gets a query to run, but it completes in
-            # ~50ms and never touches Glue.
+            # NO-OP DROP per #14 (a42b178): the SF state `5b.1 Drop Recipes
+            # Table` already dropped the whole `recipes` table before the
+            # Map state began, and `5b.4 Seed CTAS` recreated it fresh.
+            # Per-chunk `DROP PARTITION IF EXISTS` was redundant *and*
+            # dangerous (parallel Glue:BatchDeletePartition contention).
+            # SELECT 1 keeps the SF schema unchanged while never touching Glue.
             'drop_partition_sql': "SELECT 1",
             'insert_sql': build_recipe_query(
                 cutoff_year, country_a_id=cid,
@@ -200,8 +318,12 @@ def lambda_handler(event, context):
         'seed_sql': seed_sql,
         'insert_items_bucket': S3_BUCKET,
         'insert_items_key': items_key,
-        # partitions_total = total chunks (used by 5b.6 Finalize for logging)
-        'partitions_total': len(chunks),
+        # partitions_total = total emitted chunks after smart-chunking
+        # (1 seed + N insert items). Used by 5b.6 Finalize for logging.
+        'partitions_total': len(emit_chunks),
+        # tier_distribution surfaces the size-tier classification for ops
+        # observability — first place to look if a future run looks slow.
+        'tier_distribution': tier_distribution,
     }
 
 

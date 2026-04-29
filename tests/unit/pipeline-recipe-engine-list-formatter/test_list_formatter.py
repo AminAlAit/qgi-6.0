@@ -164,16 +164,26 @@ def test_seed_is_smallest_chunk():
 # ---------------------------------------------------------------------------
 
 def test_all_inserts_have_chunk_filters():
-    """Every generated INSERT must contain country, category, AND tier filter."""
+    """Tier-3 INSERTs contain country, category, AND tier filters.
+
+    Pattern counts kept above TIER2_MAX_PATTERNS (1M) so all chunks classify
+    as Tier-3 and retain the full filter triple. Smaller counts would
+    classify as Tier-1/2 and intentionally drop some filters — that
+    behaviour is verified separately by test_tier1_country_emits_one_chunk
+    and test_tier2_country_chunks_by_category_only below.
+    """
+    # Each combo > 1M patterns → these countries land in Tier-3 (and Tier-3
+    # uses the full event_category × pattern_tier shape, with all 3 filters
+    # in every chunk's INSERT SQL).
     chunks = [
-        (5, "elections_and_voting", "S", 1),
-        (10, "mass_protest", "M", 100),
-        (20, "economic_recession", "L", 200),
+        (5, "elections_and_voting", "S", 1_500_000),
+        (10, "mass_protest", "M", 1_500_000),
+        (20, "economic_recession", "L", 2_500_000),
     ]
     mod, s3_mock = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
-    # Seed also has filters
+    # Seed also has filters (it's the smallest Tier-3 chunk: country 5).
     assert "p.country_a_id = 5" in result['seed_sql']
     assert "elections_and_voting" in result['seed_sql']
     assert "'S'" in result['seed_sql']
@@ -411,16 +421,213 @@ def test_single_chunk_input():
 # ---------------------------------------------------------------------------
 
 def test_chunk_id_format():
-    """Each insert item must carry a chunk_id = '{country_a_id}_{cat}_{tier}'."""
+    """chunk_id format: '{cid}_{cat or *}_{tier or *}'.
+
+    Tier-1 chunks use '*' for cat and tier (filters omitted from SQL).
+    Tier-2 chunks use '*' for tier. Tier-3+ uses the full triple.
+    """
     chunks = [
-        (1, "elections_and_voting", "S", 5),
-        (2, "mass_protest", "M", 10),
+        (1, "elections_and_voting", "S", 5),       # tier-1 country (only 5 patterns)
+        (2, "mass_protest", "M", 10),              # tier-1 country
     ]
     mod, s3_mock = _load_module(chunks)
     mod.lambda_handler({"run_id": "test"}, None)
 
     for item in s3_mock._captured_items:
-        expected = f"{item['country_a_id']}_{item['event_category']}_{item['pattern_tier']}"
+        cat = item['event_category'] if item['event_category'] is not None else '*'
+        tier = item['pattern_tier'] if item['pattern_tier'] is not None else '*'
+        expected = f"{item['country_a_id']}_{cat}_{tier}"
         assert item['chunk_id'] == expected, (
             f"chunk_id mismatch: expected {expected!r}, got {item['chunk_id']!r}"
         )
+
+
+# ===========================================================================
+# Smart-chunking tests (#533) — added 2026-04-29
+# ===========================================================================
+
+def test_tier1_country_emits_one_chunk():
+    """Country with <100K patterns emits a single combined chunk with
+    no event_category or pattern_tier filter (single INSERT shape).
+    """
+    # 3 combos for one country, summing to 75K patterns (Tier-1)
+    chunks = [
+        (5, "elections_and_voting", "S", 25_000),
+        (5, "mass_protest", "M", 25_000),
+        (5, "economic_recession", "L", 25_000),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    result = mod.lambda_handler({"run_id": "test"}, None)
+
+    # Total emitted chunks for country 5 = 1 (just the seed)
+    # 0 insert items because the seed IS the only chunk
+    assert result['partitions_total'] == 1
+    assert s3_mock._captured_items == []
+
+    # Seed has country filter only — no category, no tier
+    seed_sql = result['seed_sql']
+    assert "p.country_a_id = 5" in seed_sql
+    # Tier-1 has neither event_category nor pattern_tier filter
+    assert "ea.category_normalized = '" not in seed_sql, (
+        "Tier-1 seed must not have event_category filter"
+    )
+    assert "= 'S'" not in seed_sql and "= 'M'" not in seed_sql and "= 'L'" not in seed_sql, (
+        "Tier-1 seed must not have pattern_tier filter"
+    )
+
+    # tier_distribution surfaces the classification
+    assert result['tier_distribution']['tier1'] == 1
+    assert result['tier_distribution']['tier2'] == 0
+    assert result['tier_distribution']['tier3'] == 0
+
+
+def test_tier2_country_chunks_by_category_only():
+    """Country with 100K-1M patterns chunks by event_category, not by tier.
+
+    Each emitted chunk has event_category filter but NO pattern_tier filter.
+    """
+    # 6 combos for country 5: 3 categories × 2 tiers each. Sum = 600K (Tier-2)
+    chunks = [
+        (5, "elections_and_voting", "S", 100_000),
+        (5, "elections_and_voting", "M", 100_000),
+        (5, "mass_protest", "S", 100_000),
+        (5, "mass_protest", "M", 100_000),
+        (5, "economic_recession", "S", 100_000),
+        (5, "economic_recession", "M", 100_000),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    result = mod.lambda_handler({"run_id": "test"}, None)
+
+    # 3 distinct categories → 3 chunks total (1 seed + 2 inserts)
+    assert result['partitions_total'] == 3
+    assert len(s3_mock._captured_items) == 2
+
+    # All emitted chunks have event_category set, pattern_tier = None
+    all_items = [{'event_category': 'elections_and_voting', 'pattern_tier': None}]  # seed (smallest)
+    for item in s3_mock._captured_items:
+        assert item['event_category'] is not None, (
+            f"Tier-2 chunk must have event_category set: got {item}"
+        )
+        assert item['pattern_tier'] is None, (
+            f"Tier-2 chunk must have pattern_tier=None: got {item}"
+        )
+        # SQL must have category filter, no tier filter
+        sql = item['insert_sql']
+        assert "ea.category_normalized = '" in sql
+        assert "COALESCE(p.pattern_tier" not in sql, (
+            f"Tier-2 INSERT SQL must not have COALESCE pattern_tier filter: {sql[:200]}"
+        )
+
+    assert result['tier_distribution']['tier2'] == 1
+    assert result['tier_distribution']['tier3'] == 0
+
+
+def test_tier3_country_chunks_by_category_and_tier():
+    """Country with 1M-10M patterns chunks by (event_category, pattern_tier)
+    — preserves the original chunked-perma-fix shape (#13). Regression test.
+    """
+    # 4 combos for country 5: 2 categories × 2 tiers. Sum = 4M (Tier-3)
+    chunks = [
+        (5, "elections_and_voting", "S", 1_000_000),
+        (5, "elections_and_voting", "M", 1_000_000),
+        (5, "mass_protest", "S", 1_000_000),
+        (5, "mass_protest", "M", 1_000_000),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    result = mod.lambda_handler({"run_id": "test"}, None)
+
+    # 4 distinct (cat, tier) combos → 4 chunks
+    assert result['partitions_total'] == 4
+    assert len(s3_mock._captured_items) == 3
+
+    for item in s3_mock._captured_items:
+        assert item['event_category'] is not None
+        assert item['pattern_tier'] is not None
+        sql = item['insert_sql']
+        assert "ea.category_normalized = '" in sql
+        assert "COALESCE(p.pattern_tier" in sql
+
+    assert result['tier_distribution']['tier3'] == 1
+
+
+def test_tier4_country_falls_through_to_tier3_with_warning(caplog):
+    """Country with >10M patterns falls through to Tier-3 chunking until the
+    decade-bucket axis is implemented. A warning is logged so ops notices.
+    """
+    import logging
+    # 4 combos for country 5: 2 cat × 2 tier. Sum = 50M (Tier-4)
+    chunks = [
+        (5, "elections_and_voting", "S", 12_000_000),
+        (5, "elections_and_voting", "M", 12_000_000),
+        (5, "mass_protest", "S", 13_000_000),
+        (5, "mass_protest", "M", 13_000_000),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    with caplog.at_level(logging.WARNING):
+        result = mod.lambda_handler({"run_id": "test"}, None)
+
+    # Tier-4 falls through to Tier-3 shape (4 chunks here)
+    assert result['partitions_total'] == 4
+    assert result['tier_distribution']['tier4'] == 1
+
+    # The warning must reference Tier-4 explicitly so a future ops engineer
+    # finds it via grep when chunk runtimes start dragging.
+    warning_messages = [r.message for r in caplog.records if r.levelname == "WARNING"]
+    assert any("Tier-4" in msg for msg in warning_messages), (
+        f"Expected a Tier-4 fall-through warning; got {warning_messages}"
+    )
+
+
+def test_tier_boundary_99k_at_tier1():
+    """A country with exactly 99,999 patterns total classifies as Tier-1
+    and emits a single chunk with no category/tier filters.
+    """
+    # Single country, 99,999 patterns total (Tier-1)
+    chunks = [
+        (1, "elections_and_voting", "S", 33_333),
+        (1, "mass_protest", "M", 33_333),
+        (1, "economic_recession", "L", 33_333),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    result = mod.lambda_handler({"run_id": "test"}, None)
+
+    assert result['tier_distribution']['tier1'] == 1
+    assert result['tier_distribution']['tier2'] == 0
+    assert result['partitions_total'] == 1
+    assert result['seed_country_id'] == 1
+    assert result['seed_pattern_count'] == 99_999
+    # Seed SQL has no category, no tier filter
+    assert "ea.category_normalized = '" not in result['seed_sql']
+    assert "COALESCE(p.pattern_tier" not in result['seed_sql']
+
+
+def test_tier_boundary_100k_at_tier2():
+    """A country with exactly 100,000 patterns total classifies as Tier-2
+    and emits one chunk per category.
+
+    Pin the boundary cutoff explicitly so a future refactor doesn't
+    silently shift the threshold.
+    """
+    # Single country, 100,002 patterns total (just over the boundary, Tier-2)
+    chunks = [
+        (1, "elections_and_voting", "S", 33_334),
+        (1, "mass_protest", "M", 33_334),
+        (1, "economic_recession", "L", 33_334),
+    ]
+    mod, s3_mock = _load_module(chunks)
+    result = mod.lambda_handler({"run_id": "test"}, None)
+
+    assert result['tier_distribution']['tier1'] == 0
+    assert result['tier_distribution']['tier2'] == 1
+    # 3 distinct categories → 3 chunks (1 seed + 2 inserts)
+    assert result['partitions_total'] == 3
+    assert len(s3_mock._captured_items) == 2
+
+    # All emitted chunks (seed + inserts) have category set, tier = None
+    assert "ea.category_normalized = '" in result['seed_sql']
+    # Seed Tier-2 SQL must NOT have COALESCE pattern_tier filter
+    assert "COALESCE(p.pattern_tier" not in result['seed_sql']
+
+    for item in s3_mock._captured_items:
+        assert item['event_category'] is not None
+        assert item['pattern_tier'] is None
