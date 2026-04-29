@@ -662,11 +662,19 @@ resource "aws_lambda_function" "recipe_engine" {
 # Max wall time: ~10 seconds.
 # ---------------------------------------------------------------------------
 resource "aws_lambda_function" "recipe_engine_list_formatter" {
-  function_name    = "qgi-pipeline-recipe-engine-list-formatter"
-  handler          = "lambda_function.lambda_handler"
-  timeout          = 60
-  memory_size      = 256
-  runtime          = local.lambda_defaults.runtime
+  function_name = "qgi-pipeline-recipe-engine-list-formatter"
+  handler       = "lambda_function.lambda_handler"
+  # timeout 60s → 900s + memory 256MB → 512MB per #533 (smart-chunking,
+  # 2026-04-29). The Lambda now (a) runs an Athena enumerate query that
+  # scans patterns × events and can take 4-6 min on the 12M-pattern
+  # India case, then (b) builds the chunk list with up to ~5K items
+  # including pre-baked SQL strings. Discovered when SF v3 + v4 timed
+  # out at 60s waiting for the enumerate query. Lambda max is 900s; we
+  # use the full max for safety. Memory bumped because the chunk-list
+  # serialization holds ~17 MB JSON in memory before S3 PUT.
+  timeout       = 900
+  memory_size   = 512
+  runtime       = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
