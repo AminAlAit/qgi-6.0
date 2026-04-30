@@ -101,8 +101,18 @@ jobs:
 
             echo "Deploying $AWS_NAME..."
             WORK=$(mktemp -d)
-            cp "$LAMBDA_DIR"/*.py "$WORK"/
-            [ -f "$LAMBDA_DIR/indicators.yaml" ] && cp "$LAMBDA_DIR/indicators.yaml" "$WORK/" || true
+            # Bundle the whole Lambda dir, not just *.py — catches sibling
+            # modules (#536: country_risks.py was the trigger), JSON configs,
+            # SQL templates, etc. Exclude test/cache artifacts and the
+            # requirements file (pip-installed separately below).
+            rsync -a "$LAMBDA_DIR/" "$WORK/" \
+              --exclude '__pycache__/' \
+              --exclude '.pytest_cache/' \
+              --exclude 'test_*.py' \
+              --exclude '*_test.py' \
+              --exclude 'tests/' \
+              --exclude '*.zip' \
+              --exclude 'requirements.txt'
             if [ -f "$LAMBDA_DIR/requirements.txt" ] && [ -s "$LAMBDA_DIR/requirements.txt" ]; then
               pip install -q -r "$LAMBDA_DIR/requirements.txt" \
                 --platform manylinux2014_aarch64 \
@@ -129,3 +139,79 @@ jobs:
 
           echo "Summary: deployed=$DEPLOYED skipped=$SKIPPED failed=$FAILED"
           [ "$FAILED" -eq 0 ] || exit 1
+
+      # #536 Layer 2: post-deploy verification. Fails LOUDLY if any deployed
+      # Lambda's LastModified predates this workflow's commit timestamp —
+      # catches "runner_id=0" silent failures, partial deploys, IAM drift.
+      - name: Verify deploys actually landed
+        if: success()
+        run: |
+          # Floor timestamp = the time we expect deployed Lambdas to be newer
+          # than. For push events: head_commit.timestamp. For workflow_dispatch
+          # (no commit context): GITHUB_RUN_STARTED_AT (per Sonnet review on PR
+          # #16 — more accurate than an arbitrary "5 minutes ago").
+          DEPLOY_FLOOR_TS="${{ github.event.head_commit.timestamp }}"
+          if [ -z "$DEPLOY_FLOOR_TS" ]; then
+            DEPLOY_FLOOR_TS="$GITHUB_RUN_STARTED_AT"
+            echo "::warning::head_commit.timestamp empty (likely workflow_dispatch); using run-started $DEPLOY_FLOOR_TS"
+          fi
+          echo "Deploy floor timestamp: $DEPLOY_FLOOR_TS"
+
+          # Normalize both timestamps to YYYY-MM-DDTHH:MM:SS to dodge the
+          # AWS '.000+0000' vs GitHub 'Z' suffix divergence at character 19
+          # (per Sonnet review on PR #16 — without normalization, lex compare
+          # is structurally unsound and produces same-second false positives).
+          normalize_ts() {
+            echo "$1" | sed -E 's/\.[0-9]+(Z|[+-][0-9:]+)?$//; s/Z$//; s/[+-][0-9:]+$//'
+          }
+          FLOOR_NORM=$(normalize_ts "$DEPLOY_FLOOR_TS")
+
+          # Re-derive CHANGED the same way as the deploy step.
+          # KNOWN GAP (#536 follow-up): on workflow_dispatch with
+          # deploy_all=false, github.event.before is unset and BEFORE falls
+          # back to HEAD~1 — the verify step then checks the wrong set of
+          # Lambdas (last commit's diff, not the user-intended re-deploy
+          # target). For manual re-deploys, prefer deploy_all=true.
+          if [ "${{ inputs.deploy_all }}" = "true" ]; then
+            CHANGED=$(ls lambdas/)
+          else
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              BEFORE="HEAD~1"
+              if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+                echo "::warning::workflow_dispatch + deploy_all=false: verify step may check the wrong Lambda set. Prefer deploy_all=true for manual re-deploys."
+              fi
+            fi
+            CHANGED=$(git diff --name-only "$BEFORE" HEAD \
+              | grep '^lambdas/' | cut -d/ -f2 | sort -u)
+          fi
+
+          DRIFT=0
+          for NAME in $CHANGED; do
+            [ -f "lambdas/$NAME/lambda_function.py" ] || continue
+            [ "$NAME" = "pipeline-c-poc" ] && continue
+            AWS_NAME="qgi-$NAME"
+            LAST_MOD=$(aws lambda get-function-configuration \
+              --function-name "$AWS_NAME" \
+              --query 'LastModified' --output text 2>/dev/null) || {
+              # Distinguish "function vanished post-deploy" (real drift) from
+              # "we never created it" (deploy step would have set FAILED).
+              # Either way the deploy step's pre-flight check would have
+              # caught it, so here we treat as drift not silent skip.
+              echo "::error::$AWS_NAME — get-function-configuration failed; treating as drift"
+              DRIFT=$((DRIFT + 1))
+              continue
+            }
+            LAST_MOD_NORM=$(normalize_ts "$LAST_MOD")
+            if [[ "$LAST_MOD_NORM" < "$FLOOR_NORM" ]]; then
+              echo "::error::$AWS_NAME LastModified=$LAST_MOD predates commit floor $DEPLOY_FLOOR_TS — deploy did NOT land"
+              DRIFT=$((DRIFT + 1))
+            else
+              echo "✓ $AWS_NAME LastModified=$LAST_MOD"
+            fi
+          done
+
+          if [ "$DRIFT" -gt 0 ]; then
+            echo "::error::$DRIFT Lambda(s) failed to deploy. See #536 for runbook."
+            exit 1
+          fi
