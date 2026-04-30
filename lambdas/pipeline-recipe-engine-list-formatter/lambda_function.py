@@ -1,73 +1,65 @@
 """
-Phase 5b step 3: Recipe Engine list formatter — chunked edition (#490 perma-fix).
+Phase 5b step 3: Recipe Engine list formatter — finer length-axis edition (#534).
 
-Problem solved
---------------
-India had 12,012,139 patterns (densest country post V-Dem) and hit Athena's
-hard 30-minute DML timeout during the per-country INSERT. The fix splits each
-per-country INSERT into sub-queries filtered by (event_category, pattern_tier),
-reducing per-chunk row count to stay safely under the 30-min ceiling even after
-adding ILO / Polity / WID (~250 indicators, ~5.8x pattern growth).
+History
+-------
+#490 (2026-04-29) introduced chunked INSERTs to clear Athena's 30-min DML wall.
+#533 (2026-04-29) added size-tiered per-country chunking (Tier-1/2/3/4) so
+tiny countries skip per-chunk overhead.
+#534 (2026-04-30) replaces the 4-bucket pattern_tier (S/M/L/XL) chunking axis
+with a 12-bucket length axis (5-year-wide bands: b03_07, b08_12, ..., b58_plus).
+This gives ~3× finer granularity along the length dimension, cutting projected
+megachunk runtime ~3× at 200-indicator scale (#510 follow-up).
 
 Chunking strategy
 -----------------
-Axes chosen: event_category × pattern_tier
+Axes available: event_category × length_bucket
   - event_category: 71 layer-3 values — natural join axis, already used as
-    the GROUP BY key in recipes_aggregated; adding it as a WHERE prunes both
-    the events JOIN and the aggregation.
-  - pattern_tier: 4 values (S/M/L/XL) derived from pattern.length; already
-    a column in patterns, zero-cost to filter.
-  - Combined ceiling: 71 × 4 = 284 chunks per country.
+    the GROUP BY key in recipes_aggregated.
+  - length_bucket: 12 values (b03_07 .. b58_plus) derived from p.length.
+    5-year-wide bands except b58_plus catch-all for length >= 58.
+  - Combined ceiling: 71 × 12 = 852 chunks per Tier-3+ country.
 
-At today's scale (104 indicators, India ~12M patterns):
-  ~12,000,000 patterns / (actual event coverage × 4 tiers) → chunks well
-  under Athena's 30-min ceiling per chunk.
+Country tiers (size-tiered chunking, unchanged from #533):
+  Tier-1 (<100K patterns post-JOIN): 1 INSERT per country, no filter.
+  Tier-2 (100K - 1M):  chunk by event_category only.
+  Tier-3 (1M - 10M):   chunk by (event_category × length_bucket).
+  Tier-4 (>10M):       falls through to Tier-3; flagged as monitoring target.
 
-At 250-indicator scale (pattern count scales as (250/104)² ≈ 5.8×, so India
-→ ~70M patterns):
-  70,000,000 / 284 ≈ 246,000 rows per chunk → very safe (≈ 30 sec).
+Note on tier boundary calibration
+---------------------------------
+The 100K/1M/10M boundaries were set against JOIN-inflated post-enumerate counts
+(see #534 ticket). Real underlying pattern volumes are ~5-50× smaller after
+Athena Parquet predicate pushdown (empirically verified 2026-04-29 by shadow
+query of the largest chunk: 263M reported, 22 MB actual scan, 76 s wall-clock
+vs 30-min ceiling). At today's scale this means most countries fall through to
+Tier-3+ — which is SAFE (everyone gets max granularity) but produces a skewed
+tier_distribution. Recalibration is tracked separately as a #534 follow-up.
 
-Total query budget at 250 indicators:
-  214 countries × ≤284 chunks = 60,776 max. In practice many (country,
-  category, tier) combos produce zero rows and are pruned at enumerate time
-  (the enumerate query returns only combos that actually exist in patterns),
-  so real chunk count will be materially lower.
+Recipe-identity contract preserved
+----------------------------------
+recipe_id = country_a + country_b + start_year_a + length + event_category.
+Splitting on length_bucket (a recipe_id component, since pattern_tier S/M/L/XL
+was itself derived from length) produces strictly disjoint recipes — no recipe
+spans two chunks. GROUP BY recipe_id aggregation is per-recipe-local. Output
+recipes table is byte-identical to the unchunked baseline, modulo PPS values
+(chunk-local global_stats normalization, accepted upstream — see #532).
+
+The output recipe row STILL contains a `pattern_tier` column (S/M/L/XL),
+computed from `length` via the existing CASE in raw_recipes — the frontend
+schema is untouched. length_bucket is purely an internal chunking dimension.
 
 Output shape
 ------------
 insert_items: list of {
     country_a_id: int,
-    event_category: str,
-    pattern_tier: str,
-    chunk_id: str,           # "{country_a_id}_{event_category}_{pattern_tier}"
+    event_category: str | None,    # None for Tier-1 (no chunking)
+    length_bucket: str | None,     # None for Tier-1 / Tier-2
+    chunk_id: str,                 # "{cid}_{cat or *}_{bucket or *}"
     pattern_count: int,
-    drop_partition_sql: str, # same as before — DROP IF EXISTS PARTITION
-    insert_sql: str,         # INSERT with AND ea.category_normalized = '...'
-                             #            AND p.pattern_tier = '...'
+    drop_partition_sql: str,       # 'SELECT 1' no-op (#14)
+    insert_sql: str,               # INSERT with WHERE filters from this chunk's axes
 }
-
-The seed item is the chunk with the fewest patterns (ASC order from the
-enumerate query), and it is emitted as a CTAS instead of INSERT so the
-table + first partition are created atomically.
-
-Backward-compatible fields
---------------------------
-- drop_partition_sql: unchanged format, keyed on country_a_id only.  Two
-  chunks for the same country will both try to DROP the same partition before
-  inserting. Because the Map state runs them in parallel, the second DROP is
-  idempotent (DROP IF EXISTS). The actual data-write conflict is avoided
-  because each chunk inserts a disjoint slice of the partition's rows
-  (Athena appends to the partition; partitioned_by=country_a_id means
-  each country has exactly one partition, but Athena handles concurrent
-  appends to the same partition safely within a single pipeline run).
-- partitions_total: now = total chunks (not countries), used only for
-  observability logging in 5b.6 Finalize.
-
-#162 Layer 2 contract preserved
----------------------------------
-- seed_sql returned in the top-level payload (consumed by SF 5b.4 state).
-- insert_items written to S3 (consumed by SF 5b.5 ItemReader).
-- drop_partition_sql + insert_sql are pre-baked strings (no States.Format).
 """
 
 import os
@@ -85,30 +77,86 @@ ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
 S3_BUCKET = os.environ.get('S3_BUCKET', '')
 S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', '')
 
-# The 4 tier values exactly as written by pipeline-c-worker (#128).
-# XL is the catch-all for length > 40.
-PATTERN_TIERS = ('S', 'M', 'L', 'XL')
+# ─── Length-bucket axis (#534) ─────────────────────────────────────────────
+# 12 buckets, each 5 years wide except the b58_plus catch-all. Pattern lengths
+# in this pipeline start at 3 (the SCDI minimum) and run up to ~120 (full V-Dem
+# historical span). The SQL CASE expression and Python length_to_bucket() must
+# stay in lockstep — see test_length_to_bucket_python_matches_sql for the
+# regression guard.
+LENGTH_BUCKETS = (
+    'b03_07', 'b08_12', 'b13_17', 'b18_22', 'b23_27', 'b28_32',
+    'b33_37', 'b38_42', 'b43_47', 'b48_52', 'b53_57', 'b58_plus',
+)
 
-# ─── Smart-chunking thresholds (#533) ────────────────────────────────────────
-# Per-country pattern_count buckets that decide chunking shape. Discovered
-# 2026-04-29 in vdem-510-recipes-chunked-v3 SF run: uniform chunking emitted
-# 15,031 chunks, ~80% from tiny countries that don't need fan-out at all.
-#
-# At ~10K patterns/min Athena throughput (extrapolated from India's 12M
-# patterns / 30:38 timeout), each chunk should comfortably finish in <15min
-# (50% safety margin under the 30-min DML wall). The boundaries below give
-# each tier roughly that headroom at TODAY's scale (104 indicators); they
-# scale through ~250 indicators before re-tuning.
-#
-# Tier 4 is reserved (decade-bucket axis) for countries whose (category, tier)
-# slice itself exceeds the wall — currently no country does (India at 12M /
-# 284 ≈ 42K patterns/chunk in Tier 3). Add a second enumerate query keyed on
-# `start_year_a / 10` when a country first crosses the threshold.
+# Reverse mapping: bucket → (min_length_inclusive, max_length_inclusive).
+# b58_plus is unbounded above; we use a large sentinel so SQL BETWEEN works.
+BUCKET_RANGES = {
+    'b03_07':   (3,  7),
+    'b08_12':   (8,  12),
+    'b13_17':   (13, 17),
+    'b18_22':   (18, 22),
+    'b23_27':   (23, 27),
+    'b28_32':   (28, 32),
+    'b33_37':   (33, 37),
+    'b38_42':   (38, 42),
+    'b43_47':   (43, 47),
+    'b48_52':   (48, 52),
+    'b53_57':   (53, 57),
+    'b58_plus': (58, 999999),
+}
+
+# SQL CASE expression that maps p.length to a length_bucket label. Used in
+# both the enumerate query (for GROUP BY) and the chunk INSERTs (no — the
+# INSERT uses a simpler `length BETWEEN lo AND hi` filter, see
+# build_recipe_query). Keep this in sync with length_to_bucket() below.
+LENGTH_BUCKET_CASE_SQL = """
+            CASE
+                WHEN p.length < 3 THEN 'b03_07'
+                WHEN p.length BETWEEN 3 AND 7 THEN 'b03_07'
+                WHEN p.length BETWEEN 8 AND 12 THEN 'b08_12'
+                WHEN p.length BETWEEN 13 AND 17 THEN 'b13_17'
+                WHEN p.length BETWEEN 18 AND 22 THEN 'b18_22'
+                WHEN p.length BETWEEN 23 AND 27 THEN 'b23_27'
+                WHEN p.length BETWEEN 28 AND 32 THEN 'b28_32'
+                WHEN p.length BETWEEN 33 AND 37 THEN 'b33_37'
+                WHEN p.length BETWEEN 38 AND 42 THEN 'b38_42'
+                WHEN p.length BETWEEN 43 AND 47 THEN 'b43_47'
+                WHEN p.length BETWEEN 48 AND 52 THEN 'b48_52'
+                WHEN p.length BETWEEN 53 AND 57 THEN 'b53_57'
+                ELSE 'b58_plus'
+            END
+"""
+
+
+def length_to_bucket(length: int) -> str:
+    """Map a pattern length (in years) to its 5-year-wide bucket label.
+
+    Mirrors LENGTH_BUCKET_CASE_SQL exactly — any change in one MUST be
+    reflected in the other (regression-tested).
+
+    Length < 3 is theoretically impossible (SCDI floor) but defaults to the
+    smallest bucket for safety. Length >= 58 falls into the b58_plus catch-all.
+    """
+    if length < 3:
+        return 'b03_07'
+    if length >= 58:
+        return 'b58_plus'
+    bin_start = 3 + ((length - 3) // 5) * 5
+    bin_end = bin_start + 4
+    return f'b{bin_start:02d}_{bin_end:02d}'
+
+
+# ─── Smart-chunking thresholds (#533, calibration TODO #534-followup) ──────
+# Per-country pattern_count buckets that decide chunking shape. These count
+# JOIN-inflated pattern_counts from the enumerate query (NOT raw pattern rows
+# — recalibration to underlying counts is a #534 follow-up).
 TIER1_MAX_PATTERNS = 100_000     # below: single INSERT, no chunking
 TIER2_MAX_PATTERNS = 1_000_000   # below: chunk by event_category only
-TIER3_MAX_PATTERNS = 10_000_000  # below: chunk by (event_category, pattern_tier)
-# Tier 4 above TIER3_MAX_PATTERNS: future axis (decade-bucket); for now Tier 4
-# countries fall through to Tier 3 chunking with a warning logged.
+TIER3_MAX_PATTERNS = 10_000_000  # below: chunk by (event_category, length_bucket)
+# Tier 4 above TIER3_MAX_PATTERNS: future axis (e.g., decade buckets); for now
+# Tier 4 falls through to Tier 3 chunking with a warning logged. With #534's
+# 12-bucket length axis, even Tier-4 countries get ~10× finer granularity than
+# pre-#534, so the urgency of a 4th axis has dropped significantly.
 
 
 def classify_country_tier(total_pattern_count: int) -> str:
@@ -123,6 +171,7 @@ def classify_country_tier(total_pattern_count: int) -> str:
         return 'tier3'
     return 'tier4'
 
+
 athena = boto3.client('athena')
 s3 = boto3.client('s3')
 
@@ -132,11 +181,11 @@ def lambda_handler(event, context):
     cutoff_year = event.get('cutoff_year')
 
     logger.info(
-        f"Recipe engine list formatter (chunked) starting. "
+        f"Recipe engine list formatter (#534 length-bucket edition) starting. "
         f"run_id={run_id}, cutoff_year={cutoff_year}"
     )
 
-    # Step 1: enumerate (country_a_id, event_category, pattern_tier, count)
+    # Step 1: enumerate (country_a_id, event_category, length_bucket, count)
     # combos that actually exist. Sorted ASC by count so the smallest chunk
     # becomes the seed (keeps the CTAS fast regardless of country size).
     query_id = _run_enumerate_query(cutoff_year)
@@ -145,7 +194,7 @@ def lambda_handler(event, context):
     chunks = _fetch_chunk_rows(query_id)
     if not chunks:
         raise RuntimeError(
-            "No (country_a_id, event_category, pattern_tier) combos returned "
+            "No (country_a_id, event_category, length_bucket) combos returned "
             "from the enumerate query. Phase 4 must have failed to populate "
             "the patterns table, or the upstream query is malformed."
         )
@@ -166,18 +215,18 @@ def lambda_handler(event, context):
         for t in ('tier1', 'tier2', 'tier3', 'tier4')
     }
     logger.info(
-        f"Fetched {len(chunks)} (country, cat, tier) combos across "
+        f"Fetched {len(chunks)} (country, cat, length_bucket) combos across "
         f"{len(country_totals)} countries. Tier distribution: {tier_distribution}. "
         f"Smallest combo: country_a_id={chunks[0]['country_a_id']} "
-        f"cat={chunks[0]['event_category']} tier={chunks[0]['pattern_tier']} "
+        f"cat={chunks[0]['event_category']} bucket={chunks[0]['length_bucket']} "
         f"({chunks[0]['pattern_count']} patterns). "
         f"Largest combo: country_a_id={chunks[-1]['country_a_id']} "
-        f"cat={chunks[-1]['event_category']} tier={chunks[-1]['pattern_tier']} "
+        f"cat={chunks[-1]['event_category']} bucket={chunks[-1]['length_bucket']} "
         f"({chunks[-1]['pattern_count']} patterns)."
     )
 
     # Build adaptive chunks per country. emit_chunks is the deduplicated
-    # list of {country_a_id, event_category|None, pattern_tier|None,
+    # list of {country_a_id, event_category|None, length_bucket|None,
     # pattern_count} dicts for the SF Map state. Sorted ASC by pattern
     # count so the smallest chunk lands as the seed CTAS.
     emit_chunks: list[dict] = []
@@ -192,11 +241,11 @@ def lambda_handler(event, context):
         country_total = country_totals[cid]
 
         if tier == 'tier1':
-            # No chunking: 1 INSERT per country with no category/tier filter.
+            # No chunking: 1 INSERT per country with no category/bucket filter.
             emit_chunks.append({
                 'country_a_id': cid,
                 'event_category': None,
-                'pattern_tier': None,
+                'length_bucket': None,
                 'pattern_count': country_total,
             })
         elif tier == 'tier2':
@@ -211,27 +260,26 @@ def lambda_handler(event, context):
                 emit_chunks.append({
                     'country_a_id': cid,
                     'event_category': cat,
-                    'pattern_tier': None,
+                    'length_bucket': None,
                     'pattern_count': count,
                 })
         else:
             # Tier 3 (and Tier 4 for now — see module-level comment): emit
-            # the raw enumerate combos as-is. (Tier 4's decade-bucket axis
-            # is a future extension; today no (country, cat, tier) chunk
-            # exceeds the 30-min ceiling at India's 12M-pattern scale.)
+            # the raw enumerate combos as-is, one chunk per (cat × bucket).
             if tier == 'tier4':
                 logger.warning(
                     f"country_a_id={cid} has {country_total} patterns — "
-                    f"Tier-4 (decade-bucket axis) is not yet implemented; "
-                    f"falling through to Tier-3 (event_category × pattern_tier). "
-                    f"Monitor this country's chunk runtimes — if any exceeds "
-                    f"25min, file a follow-up to ship the decade axis."
+                    f"Tier-4 (further axis like decade buckets) is not yet "
+                    f"implemented; falling through to Tier-3 (event_category "
+                    f"× length_bucket = {len(country_combos)} chunks). With "
+                    f"#534's 12-bucket length axis, individual chunks should "
+                    f"still be tractable; monitor runtimes."
                 )
             for combo in country_combos:
                 emit_chunks.append({
                     'country_a_id': cid,
                     'event_category': combo['event_category'],
-                    'pattern_tier': combo['pattern_tier'],
+                    'length_bucket': combo['length_bucket'],
                     'pattern_count': combo['pattern_count'],
                 })
 
@@ -246,14 +294,14 @@ def lambda_handler(event, context):
 
     # Step 3: seed = smallest emitted chunk (CTAS, creates table + first
     # partition). Uses build_recipe_query with the chunk's possibly-None
-    # category/tier — the function's existing `if X is not None` conditionals
+    # category/bucket — the function's existing `if X is not None` conditionals
     # produce a single-INSERT shape for Tier-1 seeds. Verified by tests.
     seed = emit_chunks[0]
     seed_sql = build_recipe_query(
         cutoff_year,
         country_a_id=seed['country_a_id'],
         event_category=seed['event_category'],
-        pattern_tier=seed['pattern_tier'],
+        length_bucket=seed['length_bucket'],
         mode='ctas',
     )
 
@@ -261,18 +309,18 @@ def lambda_handler(event, context):
     insert_items = []
     for chunk in emit_chunks[1:]:
         cid = chunk['country_a_id']
-        cat = chunk['event_category']  # may be None for Tier-1 chunks
-        tier = chunk['pattern_tier']   # may be None for Tier-1 / Tier-2 chunks
+        cat = chunk['event_category']    # may be None for Tier-1 chunks
+        bucket = chunk['length_bucket']  # may be None for Tier-1 / Tier-2 chunks
         # chunk_id encodes the chunk's filter shape — None → '*' for legibility
         chunk_id = (
             f"{cid}_"
             f"{cat if cat is not None else '*'}_"
-            f"{tier if tier is not None else '*'}"
+            f"{bucket if bucket is not None else '*'}"
         )
         insert_items.append({
             'country_a_id': cid,
             'event_category': cat,
-            'pattern_tier': tier,
+            'length_bucket': bucket,
             'chunk_id': chunk_id,
             'pattern_count': chunk['pattern_count'],
             # NO-OP DROP per #14 (a42b178): the SF state `5b.1 Drop Recipes
@@ -284,7 +332,7 @@ def lambda_handler(event, context):
             'drop_partition_sql': "SELECT 1",
             'insert_sql': build_recipe_query(
                 cutoff_year, country_a_id=cid,
-                event_category=cat, pattern_tier=tier,
+                event_category=cat, length_bucket=bucket,
                 mode='insert',
             ),
         })
@@ -292,7 +340,7 @@ def lambda_handler(event, context):
     logger.info(
         f"Generated seed CTAS for chunk "
         f"country_a_id={seed['country_a_id']}, "
-        f"cat={seed['event_category']}, tier={seed['pattern_tier']} "
+        f"cat={seed['event_category']}, bucket={seed['length_bucket']} "
         f"({len(seed_sql)} chars) and {len(insert_items)} chunk INSERT items."
     )
 
@@ -329,12 +377,8 @@ def lambda_handler(event, context):
 
 def _run_enumerate_query(cutoff_year=None):
     """Run a GROUP BY query that returns (country_a_id, event_category,
-    pattern_tier, count) for every combo that actually exists in patterns,
+    length_bucket, count) for every combo that actually exists in patterns,
     sorted ASC by count.
-
-    Using COALESCE(pattern_tier, ...) mirrors the fallback logic in
-    build_recipe_query so that every pattern row maps to exactly one tier
-    bucket — no rows are lost.
 
     Returns the query execution ID. Polls until SUCCEEDED.
     """
@@ -349,15 +393,7 @@ def _run_enumerate_query(cutoff_year=None):
         SELECT
             p.country_a_id,
             ea.category_normalized AS event_category,
-            COALESCE(
-                p.pattern_tier,
-                CASE
-                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                    ELSE 'XL'
-                END
-            ) AS pattern_tier,
+            {LENGTH_BUCKET_CASE_SQL.strip()} AS length_bucket,
             count(*) AS pc
         FROM {ATHENA_DB}.patterns p
         INNER JOIN {ATHENA_DB}.events ea
@@ -369,15 +405,7 @@ def _run_enumerate_query(cutoff_year=None):
         WHERE p.country_a_id IS NOT NULL
         {cutoff_filter}
         GROUP BY p.country_a_id, ea.category_normalized,
-            COALESCE(
-                p.pattern_tier,
-                CASE
-                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                    ELSE 'XL'
-                END
-            )
+            {LENGTH_BUCKET_CASE_SQL.strip()}
         ORDER BY pc ASC
     """
     response = athena.start_query_execution(
@@ -386,7 +414,7 @@ def _run_enumerate_query(cutoff_year=None):
         WorkGroup=ATHENA_WG,
     )
     query_id = response['QueryExecutionId']
-    logger.info(f"Enumerate (chunked) query {query_id}: started")
+    logger.info(f"Enumerate (length-bucket) query {query_id}: started")
 
     while True:
         status = athena.get_query_execution(QueryExecutionId=query_id)
@@ -403,7 +431,7 @@ def _run_enumerate_query(cutoff_year=None):
 def _fetch_chunk_rows(query_id):
     """Page through Athena query results and return a list of dicts:
     [{'country_a_id': int, 'event_category': str,
-      'pattern_tier': str, 'pattern_count': int}, ...]
+      'length_bucket': str, 'pattern_count': int}, ...]
     sorted ASC by pattern_count (the upstream query already orders this way).
     """
     rows = []
@@ -424,21 +452,21 @@ def _fetch_chunk_rows(query_id):
                 continue
             raw_id = cells[0].get('VarCharValue')
             raw_cat = cells[1].get('VarCharValue')
-            raw_tier = cells[2].get('VarCharValue')
+            raw_bucket = cells[2].get('VarCharValue')
             raw_cnt = cells[3].get('VarCharValue')
-            if not all([raw_id, raw_cat, raw_tier, raw_cnt]):
+            if not all([raw_id, raw_cat, raw_bucket, raw_cnt]):
                 continue
             try:
                 rows.append({
                     'country_a_id': int(raw_id),
                     'event_category': raw_cat,
-                    'pattern_tier': raw_tier,
+                    'length_bucket': raw_bucket,
                     'pattern_count': int(raw_cnt),
                 })
             except ValueError:
                 logger.warning(
                     f"Skipping non-parseable row: id={raw_id!r} "
-                    f"cat={raw_cat!r} tier={raw_tier!r} cnt={raw_cnt!r}"
+                    f"cat={raw_cat!r} bucket={raw_bucket!r} cnt={raw_cnt!r}"
                 )
         next_token = result.get('NextToken')
         if not next_token:
@@ -450,36 +478,32 @@ def build_recipe_query(
     cutoff_year=None,
     country_a_id=None,
     event_category=None,
-    pattern_tier=None,
+    length_bucket=None,
     mode='ctas',
 ):
     """Build the per-chunk recipe SQL — CTAS for the seed, INSERT for the rest.
 
-    Extends the #162 Layer 2 query with two extra WHERE filters:
-      - AND ea.category_normalized = '<event_category>'    (events JOIN side)
-      - AND COALESCE(p.pattern_tier, <fallback>) = '<tier>' (patterns side)
+    Filters applied to the patterns scan / events JOIN (each chunk scans only
+    its slice; total scan across all chunks equals the original single-country
+    scan with no duplication):
+      - AND p.country_a_id = N                              (mandatory)
+      - AND ea.category_normalized = '<event_category>'    (Tier-2+ only)
+      - AND p.length BETWEEN lo AND hi                      (Tier-3+ only)
 
-    These filters are applied to the patterns scan and events JOIN,
-    ensuring each chunk scans only its slice. Total data scanned across
-    all chunks equals the original single-country scan (no duplication).
-
-    The MUST-produce-identical-rows contract:
-      UNION over all (country, category, tier) chunks = what the old
-      single-country INSERT produced. The event_category filter maps
-      directly to the raw_recipes JOIN predicate
-      (eb.category_normalized = ea.category_normalized), so filtering
-      ea.category_normalized = X is equivalent to "all rows where both
-      event A and event B are in category X" — same as the old query.
-      The pattern_tier filter selects a disjoint length-band of patterns,
-      so union across the 4 tiers = all patterns.
+    The recipe-identity contract holds because recipe_id includes
+    {country_a, country_b, start_year_a, length, event_category} — splitting
+    on length (a recipe_id component) produces strictly disjoint recipes.
+    GROUP BY recipe_id is per-recipe-local; same answer regardless of chunking.
+    Output recipe row STILL has pattern_tier (S/M/L/XL) column, derived from
+    length via the existing CASE expression in the raw_recipes CTE.
 
     Parameters
     ----------
-    cutoff_year : int or None
-    country_a_id : int   — MANDATORY
-    event_category : str — MANDATORY for chunked mode
-    pattern_tier : str   — MANDATORY for chunked mode; one of S/M/L/XL
-    mode : 'ctas' | 'insert'
+    cutoff_year   : int | None
+    country_a_id  : int          — MANDATORY
+    event_category: str | None   — None for Tier-1 only
+    length_bucket : str | None   — None for Tier-1 / Tier-2; one of LENGTH_BUCKETS
+    mode          : 'ctas' | 'insert'
     """
     if country_a_id is None:
         raise ValueError("country_a_id is mandatory for build_recipe_query.")
@@ -496,26 +520,26 @@ def build_recipe_query(
         event_filter_a = f"AND ea.year <= {cutoff_year}"
         event_filter_b = f"AND eb.year <= {cutoff_year}"
 
-    # Chunk filters — both are mandatory in the new path.
+    # Chunk filters — both optional in the new path (Tier-1/2 may omit).
     if event_category is not None:
         # Single-quote escape: event category names are underscore-delimited
         # ASCII identifiers from the taxonomy; no quotes expected, but be safe.
         safe_cat = event_category.replace("'", "''")
         event_filter_a += f"\n            AND ea.category_normalized = '{safe_cat}'"
 
-    if pattern_tier is not None:
-        safe_tier = pattern_tier.replace("'", "''")
-        # Use the same COALESCE expression as the enumerate query so every
-        # pattern row (including legacy rows with NULL pattern_tier) falls
-        # into exactly one chunk.
-        pattern_filters.append(
-            f"COALESCE(p.pattern_tier, "
-            f"CASE "
-            f"WHEN p.length BETWEEN 3 AND 8 THEN 'S' "
-            f"WHEN p.length BETWEEN 9 AND 20 THEN 'M' "
-            f"WHEN p.length BETWEEN 21 AND 40 THEN 'L' "
-            f"ELSE 'XL' END) = '{safe_tier}'"
-        )
+    if length_bucket is not None:
+        if length_bucket not in BUCKET_RANGES:
+            raise ValueError(
+                f"Unknown length_bucket: {length_bucket!r}. "
+                f"Valid: {LENGTH_BUCKETS!r}"
+            )
+        lo, hi = BUCKET_RANGES[length_bucket]
+        if length_bucket == 'b58_plus':
+            # Open-ended upper bound — use >= rather than BETWEEN to avoid
+            # leaning on the 999999 sentinel (and keep the query plan clean).
+            pattern_filters.append(f"p.length >= {lo}")
+        else:
+            pattern_filters.append(f"p.length BETWEEN {lo} AND {hi}")
 
     pattern_where = "WHERE " + " AND ".join(f"({f})" for f in pattern_filters)
 
