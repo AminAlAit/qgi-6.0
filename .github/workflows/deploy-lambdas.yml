@@ -101,8 +101,17 @@ jobs:
 
             echo "Deploying $AWS_NAME..."
             WORK=$(mktemp -d)
-            cp "$LAMBDA_DIR"/*.py "$WORK"/
-            [ -f "$LAMBDA_DIR/indicators.yaml" ] && cp "$LAMBDA_DIR/indicators.yaml" "$WORK/" || true
+            # Bundle the whole Lambda dir, not just *.py — catches sibling
+            # modules (#536: country_risks.py was the trigger), JSON configs,
+            # SQL templates, etc. Exclude test/cache artifacts and the
+            # requirements file (pip-installed separately below).
+            rsync -a "$LAMBDA_DIR/" "$WORK/" \
+              --exclude '__pycache__/' \
+              --exclude '.pytest_cache/' \
+              --exclude 'test_*.py' \
+              --exclude '*_test.py' \
+              --exclude 'tests/' \
+              --exclude 'requirements.txt'
             if [ -f "$LAMBDA_DIR/requirements.txt" ] && [ -s "$LAMBDA_DIR/requirements.txt" ]; then
               pip install -q -r "$LAMBDA_DIR/requirements.txt" \
                 --platform manylinux2014_aarch64 \
@@ -129,3 +138,50 @@ jobs:
 
           echo "Summary: deployed=$DEPLOYED skipped=$SKIPPED failed=$FAILED"
           [ "$FAILED" -eq 0 ] || exit 1
+
+      # #536 Layer 2: post-deploy verification. Fails LOUDLY if any deployed
+      # Lambda's LastModified predates this workflow's commit timestamp —
+      # catches "runner_id=0" silent failures, partial deploys, IAM drift.
+      - name: Verify deploys actually landed
+        if: success()
+        run: |
+          DEPLOY_FLOOR_TS="${{ github.event.head_commit.timestamp }}"
+          if [ -z "$DEPLOY_FLOOR_TS" ]; then
+            DEPLOY_FLOOR_TS=$(date -u -d '5 minutes ago' '+%Y-%m-%dT%H:%M:%SZ')
+            echo "::warning::head_commit.timestamp empty (likely workflow_dispatch); using $DEPLOY_FLOOR_TS as floor"
+          fi
+          echo "Deploy floor timestamp: $DEPLOY_FLOOR_TS"
+
+          # Re-derive CHANGED the same way as the deploy step
+          if [ "${{ inputs.deploy_all }}" = "true" ]; then
+            CHANGED=$(ls lambdas/)
+          else
+            BEFORE="${{ github.event.before }}"
+            if [ -z "$BEFORE" ] || [ "$BEFORE" = "0000000000000000000000000000000000000000" ]; then
+              BEFORE="HEAD~1"
+            fi
+            CHANGED=$(git diff --name-only "$BEFORE" HEAD \
+              | grep '^lambdas/' | cut -d/ -f2 | sort -u)
+          fi
+
+          DRIFT=0
+          for NAME in $CHANGED; do
+            [ -f "lambdas/$NAME/lambda_function.py" ] || continue
+            [ "$NAME" = "pipeline-c-poc" ] && continue
+            AWS_NAME="qgi-$NAME"
+            LAST_MOD=$(aws lambda get-function-configuration \
+              --function-name "$AWS_NAME" \
+              --query 'LastModified' --output text 2>/dev/null) || continue
+            # ISO 8601 string comparison works because both are UTC-Z
+            if [[ "$LAST_MOD" < "$DEPLOY_FLOOR_TS" ]]; then
+              echo "::error::$AWS_NAME LastModified=$LAST_MOD predates commit $DEPLOY_FLOOR_TS — deploy did NOT land"
+              DRIFT=$((DRIFT + 1))
+            else
+              echo "✓ $AWS_NAME LastModified=$LAST_MOD"
+            fi
+          done
+
+          if [ "$DRIFT" -gt 0 ]; then
+            echo "::error::$DRIFT Lambda(s) failed to deploy. See #536 for runbook."
+            exit 1
+          fi
