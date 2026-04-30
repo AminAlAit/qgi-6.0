@@ -649,14 +649,25 @@ def write_recipes_aggregated_table(force: bool = False):
 
     logger.info(
         f"[#497] Materialising temp table {ATHENA_DB}.{temp_table} "
-        f"at {temp_s3_location} (recipes_deduped × pattern_indicator_lookup)"
+        f"(recipes_deduped × pattern_indicator_lookup). "
+        f"Data lands in workgroup default (query_results/) per #545."
     )
+    # #545: removed `external_location` from the CTAS. The QGI-Lambda-Workgroup
+    # has EnforceWorkGroupConfiguration=true with a centralized OutputLocation —
+    # any per-query override (including CTAS external_location) is rejected with
+    # "InvalidRequestException: ... submitted with an 'external_location' property
+    # to an Athena Workgroup that enforces a centralized output location".
+    # Pre-#545 this killed the whole recipes_aggregated population step silently.
+    # Trade-off: temp-table Parquet now lands in query_results/ (workgroup default).
+    # The DROP TABLE in `finally:` still removes the Glue catalog entry; orphaned
+    # Parquet in query_results/ is cleaned by the bucket's lifecycle policy.
+    # The _s3_delete_prefix(temp_s3_prefix) call below becomes a no-op (no data
+    # at that prefix anymore) but is kept for back-compat.
     ctas_sql = f"""
     CREATE TABLE {ATHENA_DB}.{temp_table}
     WITH (
         format = 'PARQUET',
-        parquet_compression = 'SNAPPY',
-        external_location = '{temp_s3_location}'
+        parquet_compression = 'SNAPPY'
     ) AS
     SELECT
         rd.event_category,
