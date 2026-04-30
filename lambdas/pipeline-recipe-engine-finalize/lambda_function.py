@@ -661,8 +661,9 @@ def write_recipes_aggregated_table(force: bool = False):
     # Trade-off: temp-table Parquet now lands in query_results/ (workgroup default).
     # The DROP TABLE in `finally:` still removes the Glue catalog entry; orphaned
     # Parquet in query_results/ is cleaned by the bucket's lifecycle policy.
-    # The _s3_delete_prefix(temp_s3_prefix) call below becomes a no-op (no data
-    # at that prefix anymore) but is kept for back-compat.
+    # The _s3_delete_prefix(temp_s3_prefix) call in `finally:` is now dead
+    # code (data lands in query_results/, not at temp_s3_prefix); retained
+    # to avoid churn this PR. Cleanable in a follow-up if desired.
     ctas_sql = f"""
     CREATE TABLE {ATHENA_DB}.{temp_table}
     WITH (
