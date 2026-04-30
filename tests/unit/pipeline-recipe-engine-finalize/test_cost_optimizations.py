@@ -360,6 +360,36 @@ class TestWriteRecipesAggregatedTempTable:
             "DROP TABLE not found in Athena calls after successful run"
         )
 
+    def test_ctas_has_no_external_location(self, monkeypatch):
+        """#545 regression guard: external_location must NOT appear in the CTAS.
+
+        Tonight's pipeline run silently dropped recipes_aggregated to 0 rows
+        because the CTAS specified `external_location = '{temp_s3_location}'`
+        but the QGI-Lambda-Workgroup has EnforceWorkGroupConfiguration=true
+        with a centralized OutputLocation. Athena rejected the CTAS with
+        InvalidRequestException; the Lambda's outer try/except swallowed it.
+
+        This test fails fast if external_location is reintroduced — a future
+        engineer or refactor must consciously address the workgroup conflict.
+        """
+        athena_mock = self._make_combined_athena_mock(insert_raises=False)
+        s3_mock = _make_s3_mock_empty()
+        monkeypatch.setattr(mod, "athena", athena_mock)
+        monkeypatch.setattr(mod, "s3", s3_mock)
+
+        mod.write_recipes_aggregated_table(force=False)
+
+        all_sqls = [s for _, s in athena_mock._qids]
+        ctas_sqls = [s for s in all_sqls if "CREATE TABLE" in s.upper()]
+        assert ctas_sqls, "Expected at least one CTAS query"
+        for ctas in ctas_sqls:
+            assert "external_location" not in ctas.lower(), (
+                "#545 regression: `external_location` reintroduced into a CTAS. "
+                "QGI-Lambda-Workgroup enforces centralized OutputLocation and "
+                "rejects per-query overrides. Either remove external_location "
+                "or relax EnforceWorkGroupConfiguration on the workgroup."
+            )
+
     def test_drop_table_called_on_insert_failure(self, monkeypatch):
         """DROP TABLE must be called even when INSERT INTO fails (try/finally)."""
         athena_mock = self._make_combined_athena_mock(insert_raises=True)
