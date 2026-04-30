@@ -359,3 +359,56 @@ sao_tome_and_principe, seychelles (small islands)
 - Austria has the worst verification rate in this batch (78.1% TRUE / 4.7% FALSE) — joins Liberia and Guinea as countries with notable curation problems. 4 outright FALSE entries warrant a re-curation pass (similar to UAE, #499).
 - Greece, Kazakhstan, Singapore, Poland all at 84%+ TRUE — clean curations with mostly off-by-1-year date drifts on PARTIAL.
 - Pattern across both 2026-04-27 batches (15 + 6 = 21 countries): curators get events RIGHT, dates approximate. Date drift consistently dominates PARTIAL verdicts.
+
+## 2026-04-30 — Turkmenistan frontier-states verification pass
+
+Single Sonnet+WebSearch agent verifying the curated Turkmenistan event list as part of QGI's Central Asia / post-Soviet neutralist coverage push. Every event web-searched individually. Corrections applied in-place to `curated/turkmenistan.json`.
+
+| Country | Generated | Curated | Verified | Last updated | Events (final) | Notes |
+|---|---|---|---|---|---:|---|
+| turkmenistan | 1 | 1 | 1 | 2026-04-30 | 39 | 39 verified; 0 dropped; 5 corrections (year/title/description): dual-citizenship year 2004→2003, Galkynysh year 2009→2011, 2008 constitution title fixed (was "bicameral" — actually unicameral), Freedom House score 2→1, TAPI ceremony title/description precision. All 39 events verified=true with real source URLs. |
+
+**Cumulative:** verified country count is now **111 / 197 curated (56%)**. **39 more verifications still required to cross the 150-mark threshold.**
+
+**Notable findings (Turkmenistan-specific):**
+- Closed information environment confirmed: primary sources are Wikipedia, Eurasianet, RFERL, HRW, Britannica, VOA, UN digital library — all accessible and reliable for major events.
+- Five factual errors caught: (1) dual citizenship year was 2004 in file, actually 2003; (2) Galkynysh "second largest" confirmation was 2011 not 2009 (2009 was only 4th-5th); (3) 2008 constitution created unicameral Mejlis, not bicameral as titled; (4) Freedom House 2025 score is 1/100 (below North Korea), not 2/100; (5) China Development Bank loan for Galkynysh was $4B, not $3B.
+- Zero fabricated events detected — all 39 correspond to real, verifiable historical occurrences.
+- High-confidence category assignments throughout (regime personality cult, gas pipeline diplomacy, succession politics all well-sourced).
+
+## 2026-04-30 — Mauritania frontier-states verification pass (West Africa / Sahel)
+
+Single Sonnet+WebSearch agent verifying the curated Mauritania event list (42 events input, 42 output) as part of QGI's West Africa / Sahel coverage push. Every event web-searched individually (1-2 searches per event). Corrections applied in-place to `curated/mauritania.json`.
+
+| Country | Generated | Curated | Verified | Last updated | Events (final) | Notes |
+|---|---|---|---|---|---:|---|
+| mauritania | 1 | 1 | 1 | 2026-04-30 | 42 | 41 verified=true, 1 tagged UNVERIFIED (2000 coup attempt); 0 dropped; 12 corrections applied (see below). |
+
+**Cumulative:** verified country count is now **112 / 197 curated (57%)**. **38 more verifications still required to cross the 150-mark threshold.**
+
+**Corrections applied (12 total):**
+1. Event 3 — year corrected 1993→1991; title/description corrected: bilateral aid suspended in 1991 (not 1993); 1993 was GSP trade revocation; category changed `bilateral_treaty`→`sanctions_and_arms_embargo`.
+2. Event 7 (2000 failed coup) — tagged `verified: false`, `verification_source: "UNVERIFIED — no contemporaneous sources found..."`. No sources confirm a June 2000 coup; most likely confused with the June 2003 attempt.
+3. Event 8 (Chinguetti discovery) — category corrected `economic_growth_milestone`→`oil_and_gas`.
+4. Event 11 (GSPC Lemgheity) — category corrected `political_violence`→`terrorist_attack`.
+5. Event 12 (2005 coup) — category corrected `government_formation`→`military_coup`.
+6. Event 14 (Chinguetti first oil) — category corrected `economic_growth_milestone`→`oil_and_gas`.
+7. Event 21 (Israel severance) — category corrected `bilateral_treaty`→`diplomatic_rupture`.
+8. Event 23 (2011 AQIM last attack) — description corrected: attack was Bassiknou July 5 (not Nema February); category corrected `military_policy_and_reform`→`terrorist_attack`.
+9. Event 27 (IRA 2014) — description corrected: removed conflated 2016 "13 members / 15 years" details; corrected to Biram Dah Abeid's November 2014 arrest/2-year sentence.
+10. Event 28 (2015 anti-slavery law) — category corrected `constitutional_change`→`human_rights_reform`; description updated with correct 20-year penalty cap.
+11. Event 29 (2015 drought) — food insecurity figure corrected from "600,000" to "1.25-1.3 million" per FAO/IPC reporting.
+12. Event 33 (2019 internet shutdown) — duration corrected from "weeks-long" to "10-day"; category/title confirmed.
+13. Event 34 (Abdel Aziz 2020 arrest) — category corrected `government_formation`→`political_corruption`.
+14. Event 38 (Abdel Aziz 2023 conviction) — overstatement corrected: "first in West Africa" → "one of the few former heads of state in Africa"; category corrected `government_formation`→`transitional_justice`.
+15. Event 39 (2023 drought) — food insecurity figure corrected from "900,000" to "~500,000 acutely food insecure" per IFRC/IPC data.
+16. Various categories: GTA FID and first gas corrected to `oil_and_gas`; G5 Sahel events corrected to `multilateral_agreement`.
+
+**Notable findings (Mauritania-specific):**
+- Strong event selection overall — no fabricated events detected; all 42 correspond to real, verifiable historical occurrences.
+- Key systematic errors: (1) economic energy events mislabeled as `economic_growth_milestone` rather than `oil_and_gas`; (2) coups mislabeled as `government_formation` or `political_violence` rather than `military_coup`; (3) legislative acts mislabeled as `constitutional_change`.
+- The 2000 "failed coup" event lacks contemporaneous sourcing and is almost certainly a confusion with the June 2003 attempt — flagged UNVERIFIED.
+- The 2011 event description had the wrong location (Nema vs. Bassiknou), wrong month (February vs. July), and wrong category — triple correction applied.
+- The IRA 2014 event conflated two distinct historical events (Biram's 2014 arrest and the unrelated 2016 prosecution of 13 activists) — separated and corrected.
+- Year error on US aid suspension (1993 vs. 1991) reflects a common confabulation pattern — the 1993 action was different in nature (GSP trade) from the 1991 bilateral aid cut.
+- Sahel drought figures (both 2015 and 2023 events) were significantly underestimated in the original curation — corrected to FAO/IPC numbers.
