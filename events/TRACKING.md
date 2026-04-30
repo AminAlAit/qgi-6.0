@@ -123,6 +123,7 @@ A country is "ready for V1.5.3 pipeline" only when `curated >= 1` AND `verified 
 | thailand | 1 | 0 | 0 | 2026-04-07 |  |
 | tunisia | 1 | 1 | 0 | 2026-04-07 | curated 135→106 |
 | turkey | 1 | 1 | 0 | 2026-04-07 | curated 147→97 |
+| turkmenistan | 1 | 1 | 1 | 2026-04-30 | curated 39 events; fully verified (39/39): 32 TRUE, 4 UNCERTAIN, 3 FALSE |
 | ukraine | 1 | 1 | 1 | 2026-04-07 | NO source batch — generated via Sonnet+WebSearch (43 events, real Wikipedia URLs). First country with verified=1 |
 | united_arab_emirates | 1 | 1 | 0 | 2026-04-07 | curated 163→105 |
 | united_kingdom | 1 | 0 | 0 | 2026-04-07 |  |
@@ -215,7 +216,7 @@ Closes #408 face-validity misses by expanding the 3 named countries with WebSear
 | guinea | 1 | 0 | 0 | 2026-04-16 | 67 events |
 | liberia | 1 | 0 | 0 | 2026-04-16 | 64 events; auto-remap applied (4 invalid categories) |
 | sierra_leone | 1 | 0 | 0 | 2026-04-16 | 60 events |
-| togo | 1 | 0 | 0 | 2026-04-16 | 64 events |
+| togo | 1 | 0 | 1 | 2026-04-30 | 64 events, fully verified |
 | benin | 1 | 0 | 0 | 2026-04-16 | 54 events; auto-remap applied (8 invalid categories) |
 | democratic_republic_of_congo | 1 | 0 | 0 | 2026-04-16 | 86 events; auto-remap applied (19 invalid categories) |
 | republic_of_congo | 1 | 0 | 0 | 2026-04-16 | 63 events; re-run with strict prompt (first run had 9 invalid categories) |
@@ -355,7 +356,103 @@ sao_tome_and_principe, seychelles (small islands)
 
 **Cumulative:** verified country count is now **110 / 197 curated (56%)**. **40 more verifications still required to cross the 150-mark threshold** (memory: feedback_pipeline_run_threshold.md). ~3 more 15-agent rounds.
 
+## 2026-04-30 — Turkmenistan single-country verification (canonical re-run)
+
+Replaces an earlier incorrect-workflow pass. Full 39-event re-verification from scratch via WebSearch.
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | UNCERTAIN | FALSE | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| turkmenistan | 1 | 1 | 1 | 2026-04-30 | 39 | 32 | 4 | 3 | 82.1% |
+
+**Notable FALSE flags:**
+- 2008 constitution described as creating a "bicameral legislature" — factually wrong; the 2008 constitution dissolved the Halk Maslahaty and produced a unicameral Mejlis (bicameral didn't come until 2020).
+- 2025 Freedom House event claims score of "2 out of 100" and ranks Turkmenistan "below North Korea" — actual score is 1/100; North Korea scored 3/100 so the directional comparison is inverted.
+
+**Notable UNCERTAIN flags:**
+- 2004 dual citizenship event: protocol signed April 2003, not 2004; implementation contested through 2010.
+- 2009 Galkynysh "second largest" confirmation: 2008 audit ranked it 4th-5th; the second-largest confirmation came from 2011-2013 audits.
+- 2021 Berdimuhamedow "Hero for a third time": Arkadag/parliamentary chairmanship confirmed; third Hero medal unverified in accessible sources.
+
+**Cumulative verified: 111 / ~197 curated (56%).**
+
 **Notable findings:**
 - Austria has the worst verification rate in this batch (78.1% TRUE / 4.7% FALSE) — joins Liberia and Guinea as countries with notable curation problems. 4 outright FALSE entries warrant a re-curation pass (similar to UAE, #499).
 - Greece, Kazakhstan, Singapore, Poland all at 84%+ TRUE — clean curations with mostly off-by-1-year date drifts on PARTIAL.
 - Pattern across both 2026-04-27 batches (15 + 6 = 21 countries): curators get events RIGHT, dates approximate. Date drift consistently dominates PARTIAL verdicts.
+
+## 2026-04-30 — Mauritania canonical verification (42 events, re-run from scratch)
+
+Single Sonnet+WebSearch canonical verification pass on all 42 curated Mauritania events, replacing the deprecated inline-flag workflow. Every event web-searched at least once; results in `qgi-data/events/verification/mauritania.json`.
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | UNCERTAIN | FALSE | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| mauritania | 1 | 1 | 1 | 2026-04-30 | 42 | 37 | 5 | 0 | 88.1% |
+
+**Cumulative verified: 112 / ~197 curated (57%).**
+
+**Notable findings (Mauritania):**
+- The 2000 "Failed Coup" (UNCERTAIN): no contemporaneous sources confirm a June 2000 coup attempt; the major documented attempt was June 2003. Likely a year attribution error in curation.
+- The 2011 "Nema suicide bombing in February 2011" (UNCERTAIN): the Nema barracks car bomb was August 2010; the last AQIM attack inside Mauritania was a December 2011 kidnapping in Adel Bagrou, not a February 2011 bombing in Nema.
+- The 2014 "IRA 13 members sentenced to up to 15 years" (UNCERTAIN): this matches a 2016 incident; the 2014 Biram arrest resulted in 2-year sentences issued January 2015.
+- The 2015 drought "600,000 food insecure" (UNCERTAIN): general food crisis pattern confirmed but the exact 600,000 figure for 2015 specifically is unverified.
+- The 2023 drought "900,000 food insecure" (UNCERTAIN): 2023 Harmonized Framework estimated closer to 500,000 for Mauritania's lean season; 900,000 not confirmed.
+- No outright FALSE events: all 42 events are either genuinely verified (TRUE) or have uncertain/misattributed details (UNCERTAIN). Mauritania's curated events are factually real; the UNCERTAIN flags are year/detail attribution errors, not fabrications.
+
+## 2026-04-30 — Slovenia verification (single country, Balkans/EU-success-story push)
+
+1 Sonnet+WebSearch agent verifying all 42 curated Slovenia events. Results in `qgi-data/events/verification/slovenia.json`.
+
+**Aggregate:** 42 events verified, 41 TRUE / 0 FALSE / 1 UNCERTAIN (97.6% TRUE, 0% FALSE, 2.4% UNCERTAIN).
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | FALSE | UNCERTAIN | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| slovenia | 1 | 1 | 1 | 2026-04-30 | 42 | 41 | 0 | 1 | 97.6% |
+
+**Cumulative verified: 113 / ~197 curated (57%).**
+
+**Notable findings:**
+- Slovenia is the cleanest curation in the entire verification campaign (97.6% TRUE on 42 events), surpassing South Africa (96.8%).
+- No outright FALSE verdicts: every event describes a real occurrence correctly attributed to Slovenia.
+- 1 UNCERTAIN verdict: 2025 NLB privatization completion — the state has held 25%+1 share since the 2018-2019 IPO and no confirmed sub-25% divestiture was found in searches; claim unverifiable.
+- Patria conviction year 2014 labelled TRUE with clarification: original conviction June 2013, confirmed by higher court April 2014; curated year is defensible.
+- Refugee route numbers (2015): sources vary from 419,000 to 477,000 transiting; "nearly half a million" is accurate.
+- Water right amendment (2016): correctly stated as first EU country to enshrine drinking water access in constitution in this specific manner.
+
+## 2026-04-30 — Togo canonical verification (64 events, West Africa autocratic-continuity push)
+
+Single Sonnet+WebSearch canonical verification pass on all 64 curated Togo events. Every event web-searched at least once. Results in `qgi-data/events/verification/togo.json`.
+
+| Country | Generated | Curated | Verified | Last updated | Events | TRUE | UNCERTAIN | FALSE | TRUE% |
+|---|---|---|---|---|---:|---:|---:|---:|---:|
+| togo | 1 | 0 | 1 | 2026-04-30 | 64 | 56 | 4 | 4 | 87.5% |
+
+**Cumulative verified: 114 / ~197 curated (58%).**
+
+**Notable FALSE flags:**
+- 2008 "EU Aid Resumes": EU aid resumed in 2007, not 2008; 14-year suspension (1993-2007) is accurate but year is wrong.
+- 2019 "Legislative Elections — UNIR Retains Supermajority": elections held December 20, 2018 (not 2019); confirmed by IPU Parline.
+- 2016 "West Africa's Largest Solar Plant Opens Near Lomé": plant opened June 2021 in Blitta (267 km from Lomé), built by AMEA Power with West African/Abu Dhabi financing — not EIB-financed and not 2016.
+- 2019 "Togo Elected to UN Security Council Non-Permanent Seat": Togo's Security Council term was 2012-2013 (elected October 2011), not 2020-2021 as stated.
+- 2018 "Constitutional Amendment Offers Prospective Term Limits": vote was May 2019, not 2018; description accurate otherwise.
+- 2021 "State of Emergency Declared in Savanes Region": formal state of emergency declared June 2022, not 2021.
+
+**Notable UNCERTAIN flags:**
+- Wagner Group contacts (2022): no credible sourced reporting found.
+- Phosphate exports "highest in a decade" (2023): surge confirmed but decade-high claim unverifiable.
+- ECOWAS/AU criticism of 2024 constitutional reform: criticism was mild and both bodies ultimately commended the April 2024 elections.
+- High Commission for Human Rights 1991: specific institution not confirmed in available sources.
+
+---
+
+## Reconciliation 2026-04-30 (end-of-day)
+
+Verified-file count on disk vs prior cumulative tracking lines diverged because the 40 stranded files from earlier today's batch were never committed (rescued tonight in PR #6). The cumulative lines above reflect agents' partial views.
+
+**Reconciled cumulative: 154 / ~197 curated (78%).**
+
+Composition:
+- 110 pre-rescue, already committed
+- +40 stranded files rescued in PR #6 (commit `12a87ed3`)
+- +4 from tonight's canonical batch: Mauritania (37/5/0), Turkmenistan (32/4/3), Slovenia (41/0/1), Togo (56/4/4)
+
+Threshold status: 154 ≥ 150 ✓ (per `feedback_pipeline_run_threshold.md`). Pipeline-run unblock-conditions remain satisfied.
