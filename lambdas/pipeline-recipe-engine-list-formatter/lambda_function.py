@@ -89,9 +89,19 @@ LENGTH_BUCKETS = (
 )
 
 # Reverse mapping: bucket → (min_length_inclusive, max_length_inclusive).
-# b58_plus is unbounded above; we use a large sentinel so SQL BETWEEN works.
+#
+# Note (#534 Sonnet review CR-1): b03_07's lower bound is 0, not 3, even
+# though SCDI floor is 3 by design. The enumerate query's CASE has a
+# defensive `WHEN p.length < 3 THEN 'b03_07'` rule; if any sub-floor
+# pattern slips through, the INSERT filter `p.length BETWEEN 0 AND 7`
+# catches it instead of silently dropping the row. Defense-in-depth.
+#
+# b58_plus is unbounded above and special-cased in build_recipe_query to
+# emit `p.length >= 58` rather than BETWEEN — keeps the query plan clean.
+# The high upper-bound here is dead documentation (never substituted into
+# any SQL); the tuple shape is preserved for symmetry.
 BUCKET_RANGES = {
-    'b03_07':   (3,  7),
+    'b03_07':   (0,  7),
     'b08_12':   (8,  12),
     'b13_17':   (13, 17),
     'b18_22':   (18, 22),
@@ -102,7 +112,7 @@ BUCKET_RANGES = {
     'b43_47':   (43, 47),
     'b48_52':   (48, 52),
     'b53_57':   (53, 57),
-    'b58_plus': (58, 999999),
+    'b58_plus': (58, None),  # upper bound unused — see >= filter in build_recipe_query
 }
 
 # SQL CASE expression that maps p.length to a length_bucket label. Used in

@@ -118,6 +118,9 @@ def _load_module(chunks):
     """Load list-formatter with mocked athena + s3 clients.
 
     chunks: list of (country_a_id, event_category, length_bucket, count)
+
+    Returns (mod, s3_mock, athena_mock) — athena_mock exposed so tests can
+    inspect the SQL sent to start_query_execution (#534 Sonnet review CR-2).
     """
     athena_mock = MagicMock()
     athena_mock.start_query_execution.return_value = {"QueryExecutionId": "q-enum-1"}
@@ -159,7 +162,7 @@ def _load_module(chunks):
         mod = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(mod)
         mod.time.sleep = lambda *_: None
-    return mod, s3_mock
+    return mod, s3_mock, athena_mock
 
 
 def _load_module_no_chunks():
@@ -177,7 +180,7 @@ def test_seed_is_smallest_chunk():
         (42, "mass_protest", "b13_17", 200),
         (1,  "economic_recession", "b58_plus", 50_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['seed_country_id'] == 99, (
@@ -199,14 +202,14 @@ def test_tier3_inserts_have_all_chunk_filters():
         (10, "mass_protest",         "b13_17", 1_500_000),
         (20, "economic_recession",   "b23_27", 2_500_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     # Seed is the smallest Tier-3 chunk
     assert "p.country_a_id = 5" in result['seed_sql']
     assert "elections_and_voting" in result['seed_sql']
-    # b03_07 → length BETWEEN 3 AND 7
-    assert "p.length BETWEEN 3 AND 7" in result['seed_sql']
+    # b03_07 → length BETWEEN 0 AND 7 (covers sub-floor defensive case per CR-1)
+    assert "p.length BETWEEN 0 AND 7" in result['seed_sql']
 
     for item in s3_mock._captured_items:
         cid = item['country_a_id']
@@ -244,7 +247,7 @@ def test_seed_is_ctas_and_rest_are_insert():
         (10, "mass_protest",         "b13_17", 100),
         (20, "economic_recession",   "b23_27", 200),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert "CREATE TABLE" in result['seed_sql']
@@ -260,7 +263,7 @@ def test_seed_is_ctas_and_rest_are_insert():
 # ===========================================================================
 
 def test_empty_chunk_list_raises():
-    mod, _ = _load_module([])
+    mod, _, _ = _load_module([])
     with pytest.raises(RuntimeError) as exc_info:
         mod.lambda_handler({"run_id": "test"}, None)
     msg = str(exc_info.value).lower()
@@ -276,7 +279,7 @@ def test_cutoff_year_threaded_into_sql():
         (5,  "elections_and_voting", "b03_07", 1),
         (10, "mass_protest",         "b13_17", 100),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test", "cutoff_year": 2020}, None)
 
     assert "2020" in result['seed_sql'], "seed SQL missing cutoff_year filter"
@@ -296,7 +299,7 @@ def test_drop_partition_sql_is_noop():
         (5, "mass_protest",         "b13_17", 50),
         (10, "economic_recession",  "b23_27", 200),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     mod.lambda_handler({"run_id": "test"}, None)
 
     for item in s3_mock._captured_items:
@@ -321,7 +324,7 @@ def test_partitions_total_equals_chunk_count():
         (20, "economic_recession",   "b23_27", 200),
         (30, "military_coup",        "b58_plus", 300),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     # All Tier-1 (each country has <100K patterns) → 1 chunk per country
@@ -422,7 +425,7 @@ def test_ctas_and_insert_same_select_columns():
 
 def test_single_chunk_input():
     chunks = [(42, "elections_and_voting", "b03_07", 99)]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['seed_country_id'] == 42
@@ -446,7 +449,7 @@ def test_chunk_id_format():
         (1, "elections_and_voting", "b03_07", 5),    # tier-1 country
         (2, "mass_protest",         "b13_17", 10),   # tier-1 country
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     mod.lambda_handler({"run_id": "test"}, None)
 
     for item in s3_mock._captured_items:
@@ -471,7 +474,7 @@ def test_tier1_country_emits_one_chunk():
         (5, "mass_protest",         "b13_17", 25_000),
         (5, "economic_recession",   "b23_27", 25_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['partitions_total'] == 1
@@ -512,7 +515,7 @@ def test_tier2_country_chunks_by_category_only():
         (5, "economic_recession",   "b03_07", 100_000),
         (5, "economic_recession",   "b13_17", 100_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     # 3 distinct categories → 3 chunks total
@@ -547,7 +550,7 @@ def test_tier3_country_chunks_by_category_and_bucket():
         (5, "mass_protest",         "b03_07", 1_000_000),
         (5, "mass_protest",         "b13_17", 1_000_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['partitions_total'] == 4
@@ -575,7 +578,7 @@ def test_tier4_country_falls_through_to_tier3_with_warning(caplog):
         (5, "mass_protest",         "b03_07", 13_000_000),
         (5, "mass_protest",         "b13_17", 13_000_000),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     with caplog.at_level(logging.WARNING):
         result = mod.lambda_handler({"run_id": "test"}, None)
 
@@ -598,7 +601,7 @@ def test_tier_boundary_99k_at_tier1():
         (1, "mass_protest",         "b13_17", 33_333),
         (1, "economic_recession",   "b23_27", 33_333),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['tier_distribution']['tier1'] == 1
@@ -615,7 +618,7 @@ def test_tier_boundary_100k_at_tier2():
         (1, "mass_protest",         "b13_17", 33_334),
         (1, "economic_recession",   "b23_27", 33_334),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
     assert result['tier_distribution']['tier1'] == 0
@@ -654,12 +657,15 @@ def test_tier_boundary_100k_at_tier2():
     (52, 'b48_52'),
     (53, 'b53_57'),
     (57, 'b53_57'),
-    # Upper catch-all
+    # Upper catch-all (incl. very large lengths beyond test 19's range, per Sonnet N-4)
     (58, 'b58_plus'),
     (100, 'b58_plus'),
     (120, 'b58_plus'),
-    # Below floor (defensive — shouldn't happen in practice)
+    (200, 'b58_plus'),
+    (500, 'b58_plus'),
+    # Below floor (defensive — shouldn't happen in practice; per Sonnet N-3)
     (0, 'b03_07'),
+    (1, 'b03_07'),
     (2, 'b03_07'),
 ])
 def test_length_to_bucket_boundaries(length, expected):
@@ -710,7 +716,9 @@ def test_length_to_bucket_python_matches_sql_case():
                 return rule[3]
         return sql_else_label
 
-    for length in range(0, 121):
+    # Range extended to 0..200 per Sonnet N-4 (V-Dem can produce patterns up
+    # to ~150y; large-length consistency is documented).
+    for length in range(0, 201):
         py_label = mod.length_to_bucket(length)
         sql_label = sql_lookup(length)
         assert py_label == sql_label, (
@@ -722,6 +730,35 @@ def test_length_to_bucket_python_matches_sql_case():
 # ===========================================================================
 # Test 20: b58_plus uses '>=' filter (open-ended), not BETWEEN
 # ===========================================================================
+
+def test_b03_07_filter_covers_sub_floor_lengths():
+    """Per Sonnet review CR-1: the b03_07 INSERT filter must use
+    `BETWEEN 0 AND 7`, not `BETWEEN 3 AND 7`. The enumerate query's CASE
+    has a defensive `WHEN p.length < 3 THEN 'b03_07'` clause; if any
+    sub-floor pattern slips through (say a corruption upstream), the
+    INSERT must catch it instead of silently dropping the row.
+
+    Defense-in-depth: in steady state, length<3 cannot occur (SCDI floor),
+    but if it ever did, we'd want loud rather than quiet.
+    """
+    mod = _load_module_no_chunks()
+
+    sql = mod.build_recipe_query(
+        country_a_id=1,
+        event_category='elections_and_voting',
+        length_bucket='b03_07',
+        mode='insert',
+    )
+    assert "p.length BETWEEN 0 AND 7" in sql, (
+        "b03_07 INSERT filter must include sub-floor lengths (BETWEEN 0 AND 7), "
+        "not BETWEEN 3 AND 7. Otherwise rows enumerated as b03_07 with length<3 "
+        "would be silently dropped."
+    )
+    # Negative regression — the old (3,7) filter must not be present:
+    assert "p.length BETWEEN 3 AND 7" not in sql, (
+        "Stale filter 'BETWEEN 3 AND 7' detected — should be 'BETWEEN 0 AND 7'."
+    )
+
 
 def test_b58_plus_uses_gte_filter():
     """b58_plus is the unbounded catch-all bucket. The SQL filter must use
@@ -839,22 +876,36 @@ def test_invalid_length_bucket_raises():
 def test_enumerate_query_uses_length_bucket_case():
     """The enumerate query (which emits the chunks list) must group by
     length_bucket via the LENGTH_BUCKET_CASE_SQL expression — not by the
-    legacy pattern_tier (S/M/L/XL).
+    legacy pattern_tier (S/M/L/XL). Inspect the actual SQL sent to Athena
+    via start_query_execution to verify (#534 Sonnet review CR-2).
     """
     chunks = [(1, "elections_and_voting", "b03_07", 1)]
-    mod, _ = _load_module(chunks)
-    # We can't easily inspect the SQL sent to start_query_execution without
-    # plumbing through the mock, but we can verify the CASE constant has the
-    # right shape and is what build_recipe_query / enumerate use.
-    assert "b03_07" in mod.LENGTH_BUCKET_CASE_SQL
-    assert "b58_plus" in mod.LENGTH_BUCKET_CASE_SQL
-    # Old pattern_tier labels should NOT appear in the chunking-axis CASE:
-    case_sql = mod.LENGTH_BUCKET_CASE_SQL
-    # (S/M/L/XL still appear in raw_recipes for the output column — that's
-    # build_recipe_query, not the enumerate's chunking CASE. Verify by
-    # checking the chunking CASE has no S/M/L/XL strings.)
+    mod, _, athena_mock = _load_module(chunks)
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # The Lambda calls start_query_execution exactly once for the enumerate
+    # query. Inspect that call's SQL string.
+    assert athena_mock.start_query_execution.call_count >= 1, (
+        "enumerate query must invoke start_query_execution"
+    )
+    enum_call = athena_mock.start_query_execution.call_args_list[0]
+    enum_sql = enum_call.kwargs['QueryString']
+
+    # The CASE expression for length_bucket must be substituted into both
+    # SELECT and GROUP BY (Presto/Athena does not support alias references
+    # in GROUP BY, so the CASE appears twice).
+    assert mod.LENGTH_BUCKET_CASE_SQL.strip() in enum_sql, (
+        "Enumerate query must contain the LENGTH_BUCKET_CASE_SQL expression "
+        "embedded for length_bucket grouping. SQL was:\n" + enum_sql[:1000]
+    )
+    # Both representative buckets must appear:
+    assert "b03_07" in enum_sql
+    assert "b58_plus" in enum_sql
+    # GROUP BY must include length_bucket grouping:
+    assert "GROUP BY" in enum_sql
+    # Chunking CASE must NOT use legacy S/M/L/XL labels:
     for old_label in ("'S'", "'M'", "'L'", "'XL'"):
-        assert old_label not in case_sql, (
+        assert old_label not in mod.LENGTH_BUCKET_CASE_SQL, (
             f"Chunking CASE expression must not reference legacy pattern_tier "
             f"label {old_label} — that's the output recipe schema, not the "
             f"chunking axis."
@@ -900,7 +951,7 @@ def test_chunk_dict_schema():
         (5, "elections_and_voting", "b03_07", 100),
         (5, "mass_protest",         "b13_17", 200),
     ]
-    mod, s3_mock = _load_module(chunks)
+    mod, s3_mock, _ = _load_module(chunks)
     mod.lambda_handler({"run_id": "test"}, None)
 
     expected_keys = {
