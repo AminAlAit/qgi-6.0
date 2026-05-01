@@ -1,30 +1,47 @@
 import { resolveCountryBySlug } from "@/lib/country-risks";
-import { signalCountryUrl, precedentSlugUrl } from "@/lib/recipes-aggregated";
+import {
+  signalCountryUrl,
+  precedentSlugUrl,
+  type RecipeAggregated,
+} from "@/lib/recipes-aggregated";
 import {
   loadCountryRecipeScores,
   loadRecipeBySlug,
 } from "@/lib/recipes-aggregated-loader";
-import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
+import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { RciBadge } from "@/components/design/RciBadge";
 import { getRecipeConfidence } from "@/lib/recipe-confidence";
+import { SignalFingerprintPanel } from "@/components/signals/SignalFingerprintPanel";
+import { SignalAnaloguesTable } from "@/components/signals/SignalAnaloguessTable";
+import type { AnalogueEntry } from "@/components/signals/SignalAnaloguessTable";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { promises as fs } from "fs";
+import path from "path";
 
 /**
- * #464 — `/signals/{country-slug}/{recipe-slug}`. Country-vs-Recipe
- * leaf: how does THIS country's trajectory match the canonical Recipe
- * for THIS event_category?
+ * /signals/{country-slug}/{recipe-slug} — Persona-redesigned leaf page.
  *
- * Replaces the old `/countries/{id}/{cat}` (which now 308-redirects here
- * via permanentRedirect — #470 item 4).
+ * Redesigned by Yuki Takahashi-Rowe (Product) + Dr. Lena Hadid-Marchetti
+ * (UX-stats) on 2026-05-01 (feat/signals-redesign-personas-20260501).
  *
- * Week 2: similarity score is a placeholder from
- * `country-recipe-scores-mock.json`. Real V2.0 score from
- * `qgi_data.country_recipe_scores` lands in Week 3 (#463). Until then,
- * the analogue panel still consumes today's `analogues-enriched.json`
- * (no shape change), so the UI degrades gracefully.
+ * Key panels:
+ *   1. Hero: flag, title, RCI badge, similarity score with semantic tier label
+ *   2. Recipe metadata stripe: canonical length, instances, pairs, OECD share,
+ *      pattern window (event range from analogues subject data)
+ *   3. Fingerprint panel: top-8 indicators by TF-IDF as horizontal bars with
+ *      Wilson CI whiskers
+ *   4. CTA: link to full Recipe (/precedents/[slug])
+ *   5. Historical analogues table: ranked by PPS, event_in_window highlighted
+ *   6. Coverage bias note: collapsible diagnostic footer
+ *
+ * Data sources (all baked into repo, no auth required):
+ *   - data/country-recipe-scores.json — similarity score
+ *   - data/recipes-aggregated.json — fingerprint + recipe metadata
+ *   - data/recipe-confidence.json — RCI tier
+ *   - data/analogues-enriched.json — historical analogues
  */
 
 interface Props {
@@ -33,6 +50,69 @@ interface Props {
 
 function formatCategory(cat: string): string {
   return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/** Semantic label for the similarity score — Yuki's "3-second scan" layer. */
+function similarityLabel(score: number): { label: string; color: string } {
+  if (score >= 0.75) return { label: "Strong alignment", color: "#f87171" };
+  if (score >= 0.55) return { label: "Partial alignment", color: "#fbbf24" };
+  if (score >= 0.35) return { label: "Weak signal", color: "#7a90a8" };
+  return { label: "Below threshold", color: "#4a6280" };
+}
+
+/** Load analogues-enriched.json and look up (countryId, category). */
+async function loadAnalogues(
+  countryId: string,
+  category: string
+): Promise<{
+  analogues: AnalogueEntry[];
+  subjectEventRange: [number, number] | null;
+  subjectEventYear: number | null;
+  subjectEventTitle: string | null;
+}> {
+  try {
+    const filePath = path.join(process.cwd(), "data", "analogues-enriched.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const data = JSON.parse(raw) as {
+      countries: Record<
+        string,
+        Record<
+          string,
+          {
+            subject: {
+              subject_event_year_a?: number;
+              subject_event_title_a?: string;
+              subject_event_range_a?: [number, number];
+            };
+            analogues: AnalogueEntry[];
+            canonical_length?: number;
+          }
+        >
+      >;
+    };
+    const entry = data.countries[countryId]?.[category];
+    if (!entry) {
+      return {
+        analogues: [],
+        subjectEventRange: null,
+        subjectEventYear: null,
+        subjectEventTitle: null,
+      };
+    }
+    return {
+      analogues: entry.analogues ?? [],
+      subjectEventRange: entry.subject.subject_event_range_a ?? null,
+      subjectEventYear: entry.subject.subject_event_year_a ?? null,
+      subjectEventTitle: entry.subject.subject_event_title_a ?? null,
+    };
+  } catch {
+    return {
+      analogues: [],
+      subjectEventRange: null,
+      subjectEventYear: null,
+      subjectEventTitle: null,
+    };
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -45,7 +125,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   const label = formatCategory(slug);
-  const description = `${c.name}'s trajectory match against the canonical ${label} Recipe — similarity score, fingerprint coverage, historical analogues.`;
+  const description = `${c.name}'s trajectory match against the canonical ${label} Recipe — similarity score, fingerprint indicators, and historical analogues.`;
   const canonical = `https://qgintelligence.com/signals/${country}/${slug}`;
   return {
     title: `${c.name} — ${label} Signal — QGI Intelligence`,
@@ -73,21 +153,30 @@ export default async function SignalCountryRecipePage({ params }: Props) {
   if (!resolved) notFound();
   if (!(slug in CATEGORY_L1_MAP)) notFound();
 
-  const recipe = await loadRecipeBySlug(slug);
-  const scoresFile = await loadCountryRecipeScores().catch(() => null);
+  // Load all data in parallel
+  const [recipe, scoresFile, analogueData] = await Promise.all([
+    loadRecipeBySlug(slug),
+    loadCountryRecipeScores().catch(() => null),
+    loadAnalogues(resolved.id, slug),
+  ]);
+
   const score = scoresFile?.scores[country]?.[slug] ?? null;
   const confidence = getRecipeConfidence(slug);
-
   const label = formatCategory(slug);
   const l1 = CATEGORY_L1_MAP[slug];
+  const l1Group = L1_GROUPS.find((g) => g.code === l1?.group);
+  const simInfo = score != null ? similarityLabel(score) : null;
+
+  const { analogues, subjectEventRange, subjectEventYear, subjectEventTitle } =
+    analogueData;
 
   return (
     <div
-      className="min-h-screen p-6 lg:p-10"
+      className="min-h-screen p-4 md:p-6 lg:p-10"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      <div className="max-w-5xl mx-auto space-y-8">
-        {/* Breadcrumb */}
+      <div className="max-w-5xl mx-auto space-y-6">
+        {/* ── Breadcrumb ─────────────────────────────────────────────────── */}
         <div
           className="text-[11px] tracking-wider"
           style={{ color: "var(--qgi-text-dim)" }}
@@ -109,58 +198,128 @@ export default async function SignalCountryRecipePage({ params }: Props) {
           <span style={{ color: "var(--qgi-text-muted)" }}>{label}</span>
         </div>
 
-        {/* Hero */}
-        <div className="flex items-start gap-4 flex-wrap">
-          <CountryFlag alpha2={resolved.alpha_2} size={40} />
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-3 mb-1 flex-wrap">
-              <div
-                className="text-[10px] tracking-widest uppercase"
-                style={{ color: "var(--qgi-accent)" }}
-              >
-                {l1 ? `L1-${l1.group}` : ""} Signal
+        {/* ── Hero ───────────────────────────────────────────────────────── */}
+        <div
+          className="rounded-lg border p-5 md:p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4">
+            {/* Left: identity */}
+            <div className="flex items-start gap-4 flex-1 min-w-0">
+              <CountryFlag
+                alpha2={resolved.alpha_2}
+                size={40}
+                countryName={resolved.name}
+              />
+              <div className="flex-1 min-w-0">
+                {/* Domain chip + RCI */}
+                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                  {l1Group && (
+                    <span
+                      className="text-[9px] tracking-widest uppercase px-2 py-0.5 rounded font-semibold"
+                      style={{
+                        color: l1Group.color,
+                        backgroundColor: `${l1Group.color}18`,
+                        border: `1px solid ${l1Group.color}40`,
+                      }}
+                    >
+                      {l1Group.shortLabel} · L1-{l1Group.code}
+                    </span>
+                  )}
+                  <RciBadge entry={confidence} size="sm" />
+                </div>
+                <h1 className="text-2xl md:text-3xl font-semibold leading-tight">
+                  {resolved.name}
+                  <span
+                    className="mx-2 font-light"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    —
+                  </span>
+                  {label}
+                </h1>
+                {/* Subject event context */}
+                {subjectEventTitle && subjectEventYear && (
+                  <p
+                    className="mt-1.5 text-[11px] leading-snug"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    Reference event:{" "}
+                    <span style={{ color: "var(--qgi-text)" }}>{subjectEventTitle}</span>{" "}
+                    <span style={{ color: "var(--qgi-text-dim)" }}>
+                      ({subjectEventYear})
+                    </span>
+                  </p>
+                )}
               </div>
-              <RciBadge entry={confidence} size="sm" />
             </div>
-            <h1 className="text-3xl font-semibold leading-tight">
-              {resolved.name} — {label}
-            </h1>
-          </div>
-          <div className="text-right">
+
+            {/* Right: similarity score block */}
             <div
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
+              className="flex-shrink-0 text-right sm:text-right flex flex-col items-end"
+              style={{ minWidth: 120 }}
             >
-              Similarity
+              <div
+                className="text-[9px] tracking-widest uppercase mb-1"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Recipe Similarity
+              </div>
+              {score != null ? (
+                <>
+                  <div
+                    className="text-4xl font-semibold font-data leading-none"
+                    style={{ color: simInfo?.color ?? "var(--qgi-text)" }}
+                  >
+                    {score.toFixed(2)}
+                  </div>
+                  <div
+                    className="text-[10px] tracking-wider mt-1 font-semibold uppercase"
+                    style={{ color: simInfo?.color ?? "var(--qgi-text)" }}
+                  >
+                    {simInfo?.label}
+                  </div>
+                </>
+              ) : (
+                <div
+                  className="text-3xl font-semibold font-data"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  —
+                </div>
+              )}
+              {score == null && (
+                <div className="text-[9px] mt-1" style={{ color: "var(--qgi-text-dim)" }}>
+                  Score suppressed
+                </div>
+              )}
             </div>
+          </div>
+
+          {/* Score suppressed explanation */}
+          {score == null && (
             <div
-              className="text-3xl font-semibold font-data"
+              className="mt-4 p-3 rounded text-[11px]"
               style={{
-                color:
-                  score == null
-                    ? "var(--qgi-text-muted)"
-                    : score >= 0.7
-                      ? "#f87171"
-                      : score >= 0.4
-                        ? "#fbbf24"
-                        : "var(--qgi-text-muted)",
+                backgroundColor: "rgba(74,98,128,0.15)",
+                borderLeft: "3px solid var(--qgi-text-dim)",
+                color: "var(--qgi-text-muted)",
               }}
             >
-              {score == null ? "—" : score.toFixed(2)}
+              Similarity score is not available for this country-recipe pair. This may
+              indicate insufficient indicator coverage in the pipeline for this
+              combination.
             </div>
-            <div
-              className="text-[9px] tracking-widest uppercase mt-1"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              MOCK · #463 wires real
-            </div>
-          </div>
+          )}
         </div>
 
-        {/* Recipe context */}
+        {/* ── Recipe Metadata Stripe ─────────────────────────────────────── */}
         {recipe && (
           <div
-            className="rounded-lg border p-6"
+            className="rounded-lg border p-4 md:p-5"
             style={{
               backgroundColor: "var(--qgi-surface)",
               borderColor: "var(--qgi-border)",
@@ -170,75 +329,227 @@ export default async function SignalCountryRecipePage({ params }: Props) {
               className="text-[10px] tracking-widest uppercase mb-3"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Recipe context
+              Recipe Context
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-              <div>
-                <div
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{ color: "var(--qgi-text-muted)" }}
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <StatCell
+                label="Canonical Length"
+                value={`${recipe.canonical_length}yr`}
+                hint="Median window length across all recipe instances"
+              />
+              <StatCell
+                label="Total Instances"
+                value={recipe.total_instances.toLocaleString()}
+                hint="Number of country-year windows in the recipe corpus"
+              />
+              <StatCell
+                label="Distinct Pairs"
+                value={recipe.n_distinct_country_pairs.toLocaleString()}
+                hint="Unique country pairs contributing to this recipe"
+              />
+              <StatCell
+                label="OECD Share"
+                value={`${(recipe.coverage_bias_diagnostic.oecd_share * 100).toFixed(0)}%`}
+                hint="Share of recipe instances from OECD countries — lower = more globally representative"
+              />
+            </div>
+
+            {/* Pattern window context line */}
+            <div
+              className="mt-4 pt-3 text-[11px] flex flex-wrap gap-x-4 gap-y-1"
+              style={{
+                borderTop: "1px solid var(--qgi-border)",
+                color: "var(--qgi-text-muted)",
+              }}
+            >
+              <span>
+                <span style={{ color: "var(--qgi-text-dim)" }}>Pattern window:</span>{" "}
+                <span
+                  className="font-data font-semibold"
+                  style={{ color: "var(--qgi-text)" }}
                 >
-                  Canonical length
-                </div>
-                <div className="text-xl font-semibold font-data">
                   {recipe.canonical_length}yr
-                </div>
-              </div>
-              <div>
-                <div
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{ color: "var(--qgi-text-muted)" }}
+                </span>{" "}
+                canonical
+              </span>
+              {subjectEventRange && (
+                <span>
+                  <span style={{ color: "var(--qgi-text-dim)" }}>
+                    {resolved.name} event range:
+                  </span>{" "}
+                  <span
+                    className="font-data font-semibold"
+                    style={{ color: "var(--qgi-text)" }}
+                  >
+                    {subjectEventRange[0]}–{subjectEventRange[1]}
+                  </span>{" "}
+                  <span style={{ color: "var(--qgi-text-dim)" }}>
+                    ({subjectEventRange[1] - subjectEventRange[0]}yr span)
+                  </span>
+                </span>
+              )}
+              {recipe.contains_predicted && (
+                <span
+                  className="inline-flex items-center gap-1"
+                  style={{ color: "var(--qgi-warning)" }}
                 >
-                  Total instances
-                </div>
-                <div className="text-xl font-semibold font-data">
-                  {recipe.total_instances.toLocaleString()}
-                </div>
-              </div>
-              <div>
-                <div
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{ color: "var(--qgi-text-muted)" }}
+                  <span>⚠</span>
+                  <span className="text-[9px] tracking-wider uppercase">
+                    Contains predicted values
+                  </span>
+                </span>
+              )}
+              {!recipe.contains_predicted && (
+                <span
+                  className="inline-flex items-center gap-1"
+                  style={{ color: "var(--qgi-success)" }}
                 >
-                  Distinct pairs
-                </div>
-                <div className="text-xl font-semibold font-data">
-                  {recipe.n_distinct_country_pairs}
-                </div>
-              </div>
-              <div>
-                <div
-                  className="text-[10px] uppercase tracking-wider"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  OECD share
-                </div>
-                <div className="text-xl font-semibold font-data">
-                  {(recipe.coverage_bias_diagnostic.oecd_share * 100).toFixed(0)}%
-                </div>
-              </div>
-            </div>
-            <div className="mt-4">
-              <Link
-                href={precedentSlugUrl(slug)}
-                className="text-[11px] tracking-widest uppercase hover:text-[var(--qgi-accent)] transition-colors"
-                style={{ color: "var(--qgi-accent)" }}
-              >
-                See full Recipe →
-              </Link>
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ backgroundColor: "var(--qgi-success)", opacity: 0.8 }}
+                  />
+                  <span className="text-[9px] tracking-wider uppercase">
+                    Observed data only
+                  </span>
+                </span>
+              )}
             </div>
           </div>
         )}
 
-        <p
-          className="text-[11px] leading-relaxed"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Mock data — real similarity score ships in Week 3 (#463). Analogue panel will be
-          wired in once {recipe ? `${slug}` : "this category"} is in
-          `analogues-enriched.json` (today&apos;s pipeline output — unchanged).
-        </p>
+        {/* ── Fingerprint Panel ─────────────────────────────────────────── */}
+        {recipe && recipe.indicator_fingerprint.length > 0 && (
+          <SignalFingerprintPanel fingerprint={recipe.indicator_fingerprint} />
+        )}
+
+        {/* ── CTA to full Recipe ────────────────────────────────────────── */}
+        <div className="flex items-center justify-between flex-wrap gap-3">
+          <p className="text-[11px]" style={{ color: "var(--qgi-text-muted)" }}>
+            Want the full global picture for this event pattern?
+          </p>
+          <Link
+            href={precedentSlugUrl(slug)}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded border text-[11px] tracking-wider uppercase font-semibold transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{
+              borderColor: "var(--qgi-accent)",
+              color: "var(--qgi-accent)",
+            }}
+          >
+            See full Recipe
+            <span aria-hidden="true">→</span>
+          </Link>
+        </div>
+
+        {/* ── Historical Analogues ──────────────────────────────────────── */}
+        <SignalAnaloguesTable analogues={analogues} subjectCountryName={resolved.name} />
+
+        {/* ── Coverage Bias Note ────────────────────────────────────────── */}
+        {recipe && <CoverageBiasNote recipe={recipe} />}
       </div>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components (page-local, no need to extract to files)
+// ---------------------------------------------------------------------------
+
+function StatCell({
+  label,
+  value,
+  hint,
+}: {
+  label: string;
+  value: string;
+  hint?: string;
+}) {
+  return (
+    <div title={hint}>
+      <div
+        className="text-[9px] uppercase tracking-wider mb-0.5"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        {label}
+      </div>
+      <div
+        className="text-xl font-semibold font-data"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {value}
+      </div>
+    </div>
+  );
+}
+
+function CoverageBiasNote({
+  recipe,
+}: {
+  recipe: Pick<RecipeAggregated, "coverage_bias_diagnostic" | "last_recomputed_at">;
+}) {
+  const { n_pairs, oecd_share, regional_concentration } = recipe.coverage_bias_diagnostic;
+
+  return (
+    <details
+      className="rounded-lg border group"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <summary
+        className="px-5 py-3 text-[10px] tracking-widest uppercase cursor-pointer list-none flex items-center gap-2"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        <span
+          className="transition-transform group-open:rotate-90 inline-block"
+          aria-hidden="true"
+        >
+          ▶
+        </span>
+        Coverage Bias Diagnostic
+      </summary>
+      <div
+        className="px-5 pb-4 text-[11px] space-y-2"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        <p>
+          This Recipe is built from{" "}
+          <span className="font-data font-semibold" style={{ color: "var(--qgi-text)" }}>
+            {n_pairs.toLocaleString()}
+          </span>{" "}
+          country pairs.{" "}
+          <span
+            className="font-data"
+            style={{
+              color: oecd_share > 0.5 ? "var(--qgi-warning)" : "var(--qgi-text)",
+            }}
+          >
+            {(oecd_share * 100).toFixed(0)}%
+          </span>{" "}
+          are OECD countries
+          {oecd_share > 0.5 ? (
+            <span style={{ color: "var(--qgi-warning)" }}>
+              {" "}
+              — above 50% OECD share; interpret with caution for non-OECD contexts.
+            </span>
+          ) : (
+            " — globally representative coverage."
+          )}
+        </p>
+        {regional_concentration.length > 0 && (
+          <p>
+            Regional concentration:{" "}
+            {regional_concentration
+              .map((r) => `${r.region} (${(r.share * 100).toFixed(0)}%)`)
+              .join(", ")}
+            .
+          </p>
+        )}
+        <p style={{ color: "var(--qgi-text-dim)" }}>
+          Last recomputed: {recipe.last_recomputed_at}
+        </p>
+      </div>
+    </details>
   );
 }
