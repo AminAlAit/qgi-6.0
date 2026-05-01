@@ -125,20 +125,23 @@ export async function loadTrajectoryPanelData(
   canonicalLength: number
 ): Promise<TrajectoryPanelData | null> {
   try {
-    // Step 1: Pick top-4 fingerprint indicators (already sorted by tfidf_score desc
-    // in the baked JSON, but sort defensively).
-    const topN = [...fingerprint]
+    // Step 1: Pick top-N=4 fingerprint indicators that we can actually query
+    // for. Critical: filter THEN slice (not slice-then-filter), otherwise
+    // unmapped indicators (e.g. V-Dem additions not yet in indexes.json
+    // per #550) consume slots and leave the panel with fewer than 4 cards.
+    // We need the string indicator_id to query qgi_data.indicators_completed
+    // (Athena table is partitioned by indicator_id), so unmapped numeric_ids
+    // genuinely cannot fetch trajectory data — but we should backfill from
+    // lower-ranked indicators that DO resolve so the 2x2 panel stays full.
+    const resolved = [...fingerprint]
       .sort((a, b) => b.tfidf_score - a.tfidf_score)
-      .slice(0, 4);
-
-    // Resolve numeric_id → string indicator_id; drop unknown indicators.
-    const resolved = topN
       .map((fp) => ({
         numericId: fp.indicator_id,
         indicatorId: resolveIndicatorId(fp.indicator_id),
         indicatorName: resolveIndicatorName(fp.indicator_id),
       }))
-      .filter((r) => r.indicatorId !== null) as Array<{
+      .filter((r) => r.indicatorId !== null)
+      .slice(0, 4) as Array<{
       numericId: number;
       indicatorId: string;
       indicatorName: string;

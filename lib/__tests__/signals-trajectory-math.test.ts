@@ -163,6 +163,86 @@ describe("z-score normalization invariants", () => {
     ).toBe(false); // 5 observed (1 predicted) → sufficient
   });
 
+  // -------------------------------------------------------------------------
+  // Top-N indicator selection (filter-then-slice). Mirrors the logic in
+  // lib/signals-trajectory.ts:loadTrajectoryPanelData step 1. Keep in sync.
+  //
+  // Bug it guards against: when an unmapped indicator (V-Dem #165 per #550)
+  // appears in the raw top-N, slice-then-filter leaves the panel with 3 cards
+  // instead of 4. Filter-then-slice backfills from lower-ranked-but-resolvable
+  // indicators so the 2x2 grid stays full.
+  // -------------------------------------------------------------------------
+
+  function selectTopResolved(
+    fingerprint: Array<{ indicator_id: number; tfidf_score: number }>,
+    resolveId: (n: number) => string | null,
+    n: number = 4
+  ): Array<{ numericId: number; indicatorId: string }> {
+    return [...fingerprint]
+      .sort((a, b) => b.tfidf_score - a.tfidf_score)
+      .map((fp) => ({
+        numericId: fp.indicator_id,
+        indicatorId: resolveId(fp.indicator_id),
+      }))
+      .filter((r) => r.indicatorId !== null)
+      .slice(0, n) as Array<{ numericId: number; indicatorId: string }>;
+  }
+
+  it("selects 4 cards even when an unmapped indicator is in the raw top-N", () => {
+    // Mirrors the actual terrorist_attack fingerprint: 4th-best by tfidf is
+    // V-Dem #165 (unmapped per #550). Filter-then-slice backfills with #5
+    // (GDP) so the panel renders 4 cards, not 3.
+    const fingerprint = [
+      { indicator_id: 1, tfidf_score: 5.84 },
+      { indicator_id: 4, tfidf_score: 4.54 },
+      { indicator_id: 14, tfidf_score: 4.33 },
+      { indicator_id: 165, tfidf_score: 3.86 }, // unmapped
+      { indicator_id: 5, tfidf_score: 3.38 }, // backfill
+    ];
+    const resolve = (id: number): string | null => {
+      const map: Record<number, string> = {
+        1: "SP.POP.TOTL",
+        4: "SP.DYN.LE00.IN",
+        14: "SH.DYN.MORT",
+        5: "NY.GDP.MKTP.CD",
+      };
+      return map[id] ?? null;
+    };
+    const result = selectTopResolved(fingerprint, resolve);
+    expect(result).toHaveLength(4);
+    expect(result.map((r) => r.numericId)).toEqual([1, 4, 14, 5]);
+    expect(result.every((r) => r.indicatorId !== null)).toBe(true);
+  });
+
+  it("returns empty array when no indicators resolve", () => {
+    const fingerprint = [{ indicator_id: 999, tfidf_score: 5 }];
+    const result = selectTopResolved(fingerprint, () => null);
+    expect(result).toHaveLength(0);
+  });
+
+  it("returns fewer than N when fewer than N indicators resolve", () => {
+    const fingerprint = [
+      { indicator_id: 1, tfidf_score: 5 },
+      { indicator_id: 999, tfidf_score: 4 },
+      { indicator_id: 998, tfidf_score: 3 },
+    ];
+    const result = selectTopResolved(fingerprint, (id) =>
+      id === 1 ? "SP.POP.TOTL" : null
+    );
+    expect(result).toHaveLength(1);
+    expect(result[0].numericId).toBe(1);
+  });
+
+  it("respects sort order even when raw fingerprint is shuffled", () => {
+    const fingerprint = [
+      { indicator_id: 14, tfidf_score: 4.33 },
+      { indicator_id: 1, tfidf_score: 5.84 },
+      { indicator_id: 4, tfidf_score: 4.54 },
+    ];
+    const result = selectTopResolved(fingerprint, () => "any");
+    expect(result.map((r) => r.numericId)).toEqual([1, 4, 14]);
+  });
+
   it("years-from-end mapping: index i → yearsFromEnd = i - (patternLength - 1)", () => {
     // For a 10-year pattern, index 0 → -9, index 9 → 0, index 11 → +2.
     const patternLength = 10;
