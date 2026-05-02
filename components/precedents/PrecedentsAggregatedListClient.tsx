@@ -405,7 +405,7 @@ export function PrecedentsAggregatedListClient({
           </span>
           <span className="text-right flex items-center justify-end gap-1">
             Instances
-            <InfoTooltip text="Number of historical country-pair instances backing this recipe (post-dedup, per #458 bullet 6)." />
+            <InfoTooltip text="Number of unique historical country-pair instances backing this recipe. Repeated pair instances are counted once." />
           </span>
           <span className="text-right flex items-center justify-end gap-1">
             Length
