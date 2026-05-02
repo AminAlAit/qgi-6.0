@@ -540,36 +540,17 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
         maxWidth: 300,
       }}
     >
-      {/* ─── Top strip: Dominant-lens badge + Name + Verified ─── */}
-      {/* AS1 Majles 2026-05-01 / TODO-7 #571 / #574 fix: replaced V1.5.3-era
-          manufactured OVR (geomean of L1 salience) — that 0-100 number had
-          no upstream source and broke R10 continuity.
-          2026-05-02 v2: founder caught HIGH-over-HIGH redundancy with the
-          Tier pill below. Badge now shows the DOMINANT L1 short code (POL /
-          CON / GOV / etc.) — tier color encodes severity (matching the
-          Tier pill), badge text encodes WHICH risk lens dominates. New info,
-          no redundancy. R10 continuity = POL on card → POL section dominant
-          on /countries/[id]. */}
+      {/* ─── Top strip: Name + Verified ─── */}
+      {/* History:
+          - V1.5.3-era: top-left "OVR" badge showing manufactured 0-100
+            geomean (#574 ghost cleanup, AS1 vote 2026-05-01).
+          - 2026-05-02 v2: badge text -> dominant L1 short code (POL/ECO/CON)
+            to avoid HIGH-over-HIGH with Tier pill below.
+          - 2026-05-02 v3 (this fix): badge removed entirely. Tier conveyed
+            by the HIGH/MODERATE/INDICATIVE pill below; dominant L1
+            conveyed by the "TOP DOMAIN: Political Power" line below the
+            score grid. Top-left badge was redundant with both. */}
       <div className="flex items-center gap-2 px-3 pt-3 pb-2">
-        {/* Dominant-lens badge — color = tier severity, text = dominant L1 */}
-        <div
-          className="shrink-0 flex items-center justify-center rounded font-bold leading-none"
-          style={{
-            width: 40,
-            height: 40,
-            border: `2px solid ${style.text}`,
-            color: style.text,
-            backgroundColor: style.bg,
-            fontFamily: "var(--font-mono, monospace)",
-            fontSize: 12,
-            letterSpacing: "0.05em",
-          }}
-          title={`${country.overall_risk_tier} tier · dominant lens: ${country.dominantL1 ? L1_META[country.dominantL1].full : "no salience data"}`}
-          aria-label={`${country.overall_risk_tier} tier, dominant risk lens ${country.dominantL1 ? L1_META[country.dominantL1].full : "unknown"}`}
-        >
-          {country.dominantL1 ? L1_META[country.dominantL1].label : "—"}
-        </div>
-
         {/* Name + alpha2 */}
         <div className="flex-1 min-w-0">
           <div
