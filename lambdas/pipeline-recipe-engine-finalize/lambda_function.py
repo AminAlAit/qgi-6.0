@@ -79,6 +79,43 @@ INDICATOR_MAP_S3_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
 SCORER_MIN_COVERAGE = 0.30
 
 # ---------------------------------------------------------------------------
+# A3 Cascade: M1 + M2 + M3 methodology fixes (Ihsa I1 vote 2026-05-02)
+# ---------------------------------------------------------------------------
+# - M1: corr-weighted MEDIAN canonical_length (was unweighted approx_percentile)
+# - M2: ≥0.75 SCDI hard cut (founder picked, gentler than 0.90 alternative)
+# - M3: corr-weighted FINGERPRINT (TF-IDF uses sum of |avg_correlation| for
+#       term frequency; Wilson CI keeps unweighted recipe counts so the
+#       binomial-CI semantic stays valid)
+#
+# Implementation reads `avg_correlation` from recipes_deduped (per-recipe).
+# Trino approx_percentile(value, weight, percentage) supports the weighted form.
+# The threshold is env-overridable for backtest sweeps; default matches the
+# Ihsa I1 lock.
+#
+# IMPORTANT for future maintainers (per strict review 2026-05-03):
+# Phase 0b stationarity audit (#582) found that 64-92% of random country
+# pairs on I(1) indicators correlate at ≥0.75 SPURIOUSLY (Granger-Newbold
+# construction). The M2 cut alone does NOT protect against unit-root
+# contamination. Detrending of I(1) indicators is implemented in the
+# auditioner (#585 Phase C, qgi-ml). Pipeline-side detrending of I(1) at
+# SCDI scan time is gated on Ihsa I5 (out of scope for this PR).
+#
+# M3 is unconditionally weighted in v1 (per Ihsa I1 lock). No ablation flag.
+# The parallel-run validation gate compares OLD corpus vs NEW corpus, not
+# weighted vs unweighted within the new corpus. If a future ablation backtest
+# is needed, introduce a SQL branch then — don't pre-bake a dead env flag.
+def _load_scdi_m2_threshold() -> float:
+    raw = os.environ.get('SCDI_M2_THRESHOLD', '0.75')
+    try:
+        return float(raw)
+    except ValueError as e:
+        raise RuntimeError(
+            f"SCDI_M2_THRESHOLD env var must be a parseable float, got {raw!r}. "
+            f"This is the M2 hard-cut threshold per Ihsa I1 (default 0.75)."
+        ) from e
+SCDI_M2_THRESHOLD = _load_scdi_m2_threshold()
+
+# ---------------------------------------------------------------------------
 # #170: Country → region map for the convergence score view.
 #
 # Canonical source of truth: qgi-data/registries/country_regions.yaml
@@ -676,11 +713,21 @@ def write_recipes_aggregated_table(force: bool = False):
         rd.country_a_id,
         rd.country_b_id,
         rd.length,
+        -- A3 cascade M1+M3: avg_correlation projected for use as the weight
+        -- in canonical_length weighted-median (M1) AND TF-IDF weighted term
+        -- frequency (M3). Source: recipes_deduped per-recipe correlation.
+        rd.avg_correlation,
         COALESCE(rd.contains_predicted, FALSE) AS contains_predicted,
         p.indicator_numeric_ids
     FROM {ATHENA_DB}.{RECIPES_DEDUPED_VIEW_NAME} rd
     INNER JOIN {ATHENA_DB}.{PATTERN_INDICATOR_LOOKUP_TABLE_NAME} p
         ON p.pattern_id = rd.pattern_id
+    -- A3 cascade M2: hard cut on |avg_correlation| ≥ {SCDI_M2_THRESHOLD}
+    -- (Ihsa I1 vote 2026-05-02; founder picked 0.75 over 0.90 alternative).
+    -- Filtering after dedup so we keep the longest pattern per (country, event)
+    -- but drop those whose correlation magnitude is too weak to be a reliable
+    -- pattern. Threshold env-overridable for backtest sweeps.
+    WHERE abs(rd.avg_correlation) >= {SCDI_M2_THRESHOLD}
     """
     try:
         run_query(ctas_sql)
@@ -694,10 +741,25 @@ def write_recipes_aggregated_table(force: bool = False):
         INSERT INTO {ATHENA_DB}.{RECIPES_AGGREGATED_TABLE_NAME}
         WITH
         -- Per-category point estimates. Single pass over the temp table.
+        -- A3 cascade M1: canonical_length is the CORRELATION-WEIGHTED median
+        -- of pattern lengths within the category (Ihsa I1 vote 2026-05-02).
+        -- Trino approx_percentile(value, weight, percentage) requires a
+        -- POSITIVE double weight. The temp_table CTAS above filters
+        -- WHERE abs(avg_correlation) >= 0.75 (M2), so all rows here have
+        -- weight >= 0.75 > 0. NULL avg_correlation is excluded by that
+        -- filter as well (NULL >= 0.75 is unknown → row dropped).
+        -- Therefore: M1 is correctness-coupled to M2 firing first.
+        -- Future maintainers: do NOT remove the M2 filter without also
+        -- adding a `WHERE avg_correlation IS NOT NULL AND avg_correlation != 0`
+        -- guard here.
         category_basics AS (
             SELECT
                 event_category,
-                cast(approx_percentile(cast(length as double), 0.5) as smallint) AS canonical_length,
+                cast(approx_percentile(
+                    cast(length as double),
+                    abs(cast(avg_correlation as double)),
+                    0.5
+                ) as smallint) AS canonical_length,
                 cast(count(distinct recipe_id) as bigint) AS total_instances,
                 cast(count(distinct cast(country_a_id as varchar) || '-' || cast(country_b_id as varchar)) as bigint) AS n_distinct_country_pairs,
                 bool_or(contains_predicted) AS contains_predicted
@@ -722,39 +784,63 @@ def write_recipes_aggregated_table(force: bool = False):
             GROUP BY event_category
         ),
         -- Per-indicator unnest for fingerprint. Third pass (small table).
+        -- A3 cascade M3: project avg_correlation through the unnest so each
+        -- (recipe × indicator) row carries the recipe's correlation magnitude
+        -- as a weight for downstream TF-IDF.
         indicator_unnest AS (
-            SELECT event_category, recipe_id, indicator_id
+            SELECT event_category, recipe_id, indicator_id,
+                   abs(cast(avg_correlation as double)) AS w
             FROM {ATHENA_DB}.{temp_table}
             CROSS JOIN UNNEST(indicator_numeric_ids) AS t(indicator_id)
         ),
+        -- A3 cascade M3: dual aggregations.
+        -- (a) UNWEIGHTED count is preserved for Wilson 95% CI — the binomial
+        --     CI semantic only works on integer trial counts; keeping it
+        --     unweighted is the right call for downstream confidence display.
+        -- (b) WEIGHTED sum drives TF-IDF — the correlation-weighted version
+        --     of "term frequency" rewards indicators that appear in
+        --     high-correlation recipes within the category.
         indicator_counts AS (
             SELECT
                 event_category,
                 indicator_id,
-                count(distinct recipe_id) AS recipes_with_indicator
+                count(distinct recipe_id) AS recipes_with_indicator,
+                sum(w) AS recipes_with_indicator_weighted
             FROM indicator_unnest
             GROUP BY event_category, indicator_id
         ),
         recipes_per_category AS (
-            SELECT event_category, count(distinct recipe_id) AS n_recipes
+            SELECT event_category,
+                   count(distinct recipe_id) AS n_recipes,
+                   sum(abs(cast(avg_correlation as double))) AS n_recipes_weighted
             FROM {ATHENA_DB}.{temp_table}
             GROUP BY event_category
         ),
         total_recipe_count AS (
-            SELECT count(distinct recipe_id) AS n_total FROM {ATHENA_DB}.{temp_table}
+            SELECT count(distinct recipe_id) AS n_total,
+                   sum(abs(cast(avg_correlation as double))) AS n_total_weighted
+            FROM {ATHENA_DB}.{temp_table}
         ),
         -- Indicator metrics: frequency + TF-IDF + Wilson 95% CI on the proportion.
         -- Wilson formula: z=1.96, z²=3.8416. center=(p+z²/2n)/(1+z²/n);
         -- margin=z*sqrt(p(1-p)/n + z²/(4n²))/(1+z²/n).
+        --
+        -- A3 cascade M3 (Ihsa I1 vote 2026-05-02): TF-IDF uses the WEIGHTED
+        -- aggregations (n_d_weighted, k_d_weighted) so indicators co-occurring
+        -- with high-correlation recipes get higher TF. The Wilson CI keeps
+        -- the unweighted (k_d, n_d) so the binomial-CI math stays valid.
         indicator_with_n AS (
             SELECT
                 ic.event_category,
                 ic.indicator_id,
                 cast(ic.recipes_with_indicator as double) AS k_d,
                 cast(rpc.n_recipes as double) AS n_d,
+                -- Unweighted proportion p — used by Wilson CI only.
                 cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double) AS p,
-                cast(ic.recipes_with_indicator as double) / cast(rpc.n_recipes as double)
-                    * ln(cast(tr.n_total as double) / cast(ic.recipes_with_indicator as double)) AS tfidf
+                -- Weighted TF-IDF: TF = sum(|r|) / sum(category |r|);
+                -- IDF = ln(total weight / indicator weight).
+                (ic.recipes_with_indicator_weighted / rpc.n_recipes_weighted)
+                    * ln(tr.n_total_weighted / ic.recipes_with_indicator_weighted) AS tfidf
             FROM indicator_counts ic
             JOIN recipes_per_category rpc ON rpc.event_category = ic.event_category
             CROSS JOIN total_recipe_count tr
