@@ -216,6 +216,35 @@ const NAV_ITEMS: ReadonlyArray<{
     href: "/patterns/ranking",
     icon: <IconBarChart />,
   },
+  // Sard Majles S-First decision (2026-05-01) + founder vote (2026-05-02):
+  // ship two sibling V2 pages of the merged Discover Patterns design so
+  // founder can compare layouts before a definitive merge.
+  // R7 (originals stay live): PATTERNS + RANKING above remain functional.
+  // Spec: qgi-docs/internal/majles/2026-05-01_S-First_patterns_ranking_merge.md
+  {
+    label: "DISCOVER A (TABS)",
+    href: "/discover-patterns-a" as Route,
+    icon: <IconNetwork />,
+  },
+  {
+    label: "DISCOVER B (FACETS)",
+    href: "/discover-patterns-b" as Route,
+    icon: <IconBarChart />,
+  },
+  // Sard Majles S-Country decision (2026-05-02) + founder vote: ship two
+  // sibling V2 pages of /countries (delta version dropped per Tomás
+  // ship-blocker on data dependency). R7: /countries above stays live.
+  // Spec: qgi-docs/internal/majles/2026-05-02_S-Country_country_profile_redesign.md
+  {
+    label: "COUNTRIES V2 (TABLE)",
+    href: "/countries-v2-table" as Route,
+    icon: <IconGlobe />,
+  },
+  {
+    label: "COUNTRIES V2 (NARRATIVE)",
+    href: "/countries-v2-narrative" as Route,
+    icon: <IconGlobe />,
+  },
 ];
 
 export function Sidebar() {
