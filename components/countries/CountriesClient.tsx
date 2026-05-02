@@ -540,15 +540,18 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
         maxWidth: 300,
       }}
     >
-      {/* ─── Top strip: Composite-tier badge + Name + Verified ─── */}
+      {/* ─── Top strip: Dominant-lens badge + Name + Verified ─── */}
       {/* AS1 Majles 2026-05-01 / TODO-7 #571 / #574 fix: replaced V1.5.3-era
-          manufactured OVR (geomean of L1 salience) with the upstream
-          Composite tier — derived from country.overall_risk_tier. The 0-100
-          number had no upstream source and broke R10 continuity (buyers
-          couldn't get to its explanation on the country page). Tier label
-          is the actual pipeline output. */}
+          manufactured OVR (geomean of L1 salience) — that 0-100 number had
+          no upstream source and broke R10 continuity.
+          2026-05-02 v2: founder caught HIGH-over-HIGH redundancy with the
+          Tier pill below. Badge now shows the DOMINANT L1 short code (POL /
+          CON / GOV / etc.) — tier color encodes severity (matching the
+          Tier pill), badge text encodes WHICH risk lens dominates. New info,
+          no redundancy. R10 continuity = POL on card → POL section dominant
+          on /countries/[id]. */}
       <div className="flex items-center gap-2 px-3 pt-3 pb-2">
-        {/* Composite-tier badge */}
+        {/* Dominant-lens badge — color = tier severity, text = dominant L1 */}
         <div
           className="shrink-0 flex items-center justify-center rounded font-bold leading-none"
           style={{
@@ -558,13 +561,13 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
             color: style.text,
             backgroundColor: style.bg,
             fontFamily: "var(--font-mono, monospace)",
-            fontSize: country.overall_risk_tier === "HIGH" ? 12 : 11,
-            letterSpacing: "0.04em",
+            fontSize: 12,
+            letterSpacing: "0.05em",
           }}
-          title={`Composite risk tier: ${country.overall_risk_tier}`}
-          aria-label={`Composite risk tier: ${country.overall_risk_tier}`}
+          title={`${country.overall_risk_tier} tier · dominant lens: ${country.dominantL1 ? L1_META[country.dominantL1].full : "no salience data"}`}
+          aria-label={`${country.overall_risk_tier} tier, dominant risk lens ${country.dominantL1 ? L1_META[country.dominantL1].full : "unknown"}`}
         >
-          {TIER_SHORT[country.overall_risk_tier]}
+          {country.dominantL1 ? L1_META[country.dominantL1].label : "—"}
         </div>
 
         {/* Name + alpha2 */}
