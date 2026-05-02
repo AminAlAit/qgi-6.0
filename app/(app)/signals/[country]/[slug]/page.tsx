@@ -9,6 +9,7 @@ import {
   loadRecipeBySlug,
 } from "@/lib/recipes-aggregated-loader";
 import { loadTrajectoryPanelData } from "@/lib/signals-trajectory";
+import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { RciBadge } from "@/components/design/RciBadge";
@@ -182,11 +183,16 @@ export default async function SignalCountryRecipePage({ params }: Props) {
 
   // Load trajectory data after recipe is resolved (we need fingerprint + canonical_length).
   // Runs as a separate async operation that degrades gracefully to null.
+  //
+  // M5 phase 1 (2026-05-01): filter Demographic 3 from the fingerprint BEFORE
+  // it drives which trajectories are loaded. Otherwise the top-4 trajectory
+  // slots get wasted on Population / Life Expectancy curves that look
+  // monotonic and contribute no risk signal.
   const trajectoryData = recipe
     ? await loadTrajectoryPanelData(
         resolved.name,
         slug,
-        recipe.indicator_fingerprint,
+        filterDemographic3(recipe.indicator_fingerprint),
         recipe.canonical_length
       ).catch(() => null)
     : null;
