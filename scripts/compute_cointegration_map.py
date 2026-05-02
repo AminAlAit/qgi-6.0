@@ -300,19 +300,13 @@ def westerlund_gt(
     # standardization and does not consume them.
     _ = rng_seed
     _ = bootstrap_reps
-    # v1 ECM design matrix hardcodes lag length = 1 (single Δx contemporaneous
-    # term, no Δx_{t-j} lags). The `lags` parameter is preserved for v2 API
-    # compat. Warn loudly if a caller passes lags > 1 so the stored
-    # pipeline_config doesn't misrepresent the actual specification used.
-    if lags != 1:
-        warnings.warn(
-            f"westerlund_gt: lags={lags} requested but v1 ECM hardcodes lag=1 "
-            f"(single Δx contemporaneous term). The `lags` parameter will be "
-            f"recorded in pipeline_config but does not affect the design matrix "
-            f"in v1. Lag-augmented ECM is a v2 enhancement.",
-            UserWarning,
-            stacklevel=2,
-        )
+    # ECM design matrix supports `lags` parameter:
+    #   lags=1 (default) -> Δx_t contemporaneous only (original v1 behavior)
+    #   lags=2           -> Δx_t + Δx_{t-1}  (sensitivity check)
+    #   lags=p           -> Δx_t + Δx_{t-1} + ... + Δx_{t-(p-1)} (p total Δx terms)
+    # No leads (Δx_{t+j}) — Westerlund's symmetric leads are deferred to v2.
+    if lags < 1:
+        raise ValueError(f"westerlund_gt: lags must be >= 1, got {lags}")
 
     countries = sorted(set(indicator_panel["country"].unique())
                        & set(event_series["country"].unique()))
@@ -354,9 +348,36 @@ def westerlund_gt(
             x_lag = x[:-1]             # length T-1
             dx = np.diff(x)            # length T-1
 
-            # ECM design: const, y_lag, x_lag, dx (one Δx contemporaneous term)
-            # Lag terms beyond j=0 omitted in v1; lags param reserved for v2.
-            X_design = np.column_stack([np.ones_like(dy), y_lag, x_lag, dx])
+            # ECM design: const, y_lag, x_lag, plus `lags` Δx terms
+            # (Δx_t, Δx_{t-1}, ..., Δx_{t-(lags-1)}). When lags > 1, we shift
+            # rows accordingly and drop the first (lags-1) rows so all columns
+            # align. T_eff = (T-1) - (lags-1) = T - lags. Need T_eff >= 4 for
+            # OLS to have any df.
+            n_dx_terms = lags
+            T_minus_1 = len(dy)
+            T_eff = T_minus_1 - (lags - 1)
+            if T_eff < 4 or n_dx_terms + 3 > T_eff:
+                continue
+
+            # Build dx columns: Δx_t (column 0), Δx_{t-1} (column 1), ...
+            # Per strict purist review 2026-05-03: removed redundant
+            # `if j > 0 else None` guard — the else branch only runs when j > 0
+            # by construction, so the guard was dead code.
+            dx_cols = []
+            for j in range(n_dx_terms):
+                if j == 0:
+                    dx_cols.append(dx[(lags - 1):])
+                else:
+                    dx_cols.append(dx[(lags - 1 - j):-j])
+            # Trim base columns to T_eff length
+            dy_t = dy[(lags - 1):]
+            y_lag_t = y_lag[(lags - 1):]
+            x_lag_t = x_lag[(lags - 1):]
+            X_design = np.column_stack(
+                [np.ones_like(dy_t), y_lag_t, x_lag_t] + dx_cols
+            )
+            dy = dy_t  # rebind so OLS below uses the trimmed response
+
             # Skip if design matrix is rank-deficient (e.g., x is constant)
             if np.linalg.matrix_rank(X_design) < X_design.shape[1]:
                 continue

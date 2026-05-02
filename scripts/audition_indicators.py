@@ -345,17 +345,132 @@ INDICATOR_FEATURE_STATS = INDICATOR_FEATURE_STATS_DECONF
 _stats_for_series = _stats_deconfound
 
 
+# ---------------------------------------------------------------------------
+# #585 Phase C — diff-based stats for I(1) indicators
+# ---------------------------------------------------------------------------
+#
+# Per Majles Al Ihsa I3 (2026-05-02): for indicators classified as I(1) by
+# the CIPS panel stationarity audit (#582), compute features on the
+# first-differenced series rather than levels. This removes the unit-root
+# spurious-correlation contamination identified in Phase 0b (87.7% spurious
+# pass-through under raw Z-scoring → 5% under first-differencing).
+#
+# Implementation: same 6 stats as the deconfound stat set, but applied to
+# np.diff(values) rather than values themselves. Column names are prefixed
+# with "diff_" so they don't collide with level features in the GBM.
+#
+# Architecture (post-I3 + post-#588): default behavior (--detrend-method none)
+# is unchanged. Under --detrend-method=first-diff, I(1) indicators receive
+# diff features; stationary indicators retain level features. The override
+# list (cells where both level AND diff are emitted) is currently empty per
+# the triple-confirmation analysis post-#588, so dual-output is dormant in
+# v1 but the code path is present for v2 expansion via #586.
+
+DETREND_METHODS: tuple[str, ...] = ("none", "first-diff")
+
+INDICATOR_FEATURE_STATS_DIFF: list[str] = [
+    "diff_std_norm", "diff_slope_norm", "diff_pct_change", "diff_n_obs",
+    "diff_autocorr_1", "diff_frac_missing",
+]
+
+
+def _stats_first_diff(years: np.ndarray, values: np.ndarray,
+                      window_total_years: int | None = None) -> list[float]:
+    """Compute deconfound-style stats on the first-differenced series.
+
+    Returns 6 values in the same order as INDICATOR_FEATURE_STATS_DIFF.
+    NaN values are caller's responsibility to fill (fit_and_score uses fillna(0)).
+
+    Mathematical equivalence: this is _stats_deconfound applied to np.diff(values),
+    with the year axis shifted to match (years[1:]). The output stats describe
+    properties of year-over-year *changes* rather than levels — std of changes,
+    slope of changes (i.e., acceleration), pct change of changes, etc.
+
+    Note on diff_frac_missing: window_total_years is passed unchanged to
+    _stats_deconfound, but differencing reduces the series length by 1.
+    For canonical_length=25 with full coverage, diff_frac_missing returns
+    1 - (24/25) = 0.04 instead of 0.0. This is a small constant systematic
+    offset (~1/canonical_length) that's the same for every fully-covered I(1)
+    series and therefore non-discriminating in the GBM. Documented as a known
+    minor cosmetic property; not a defect.
+    """
+    if values.size < 2:
+        return [np.nan] * len(INDICATOR_FEATURE_STATS_DIFF)
+    diffs = np.diff(values)
+    diff_years = years[1:]
+    # Reuse the deconfound stat machinery — diff_std_norm has same formula as
+    # std_norm, just on differences.
+    return _stats_deconfound(diff_years, diffs, window_total_years)
+
+
+def load_regimes_set(regimes_path: Path) -> set[str]:
+    """Return the set of indicator_id_strings classified as I(1).
+
+    Reads `qgi-data/reference/indicator-regimes.json` (produced by Phase 0c).
+    The full envelope has a `regimes.i1` array of indicator_id_strings.
+    """
+    if not regimes_path.exists():
+        raise FileNotFoundError(f"--regimes-path not found: {regimes_path}")
+    data = json.loads(regimes_path.read_text(encoding="utf-8"))
+    regimes = data.get("regimes", {}) or {}
+    return set(regimes.get("i1", []) or [])
+
+
+def load_cointegration_overrides(coint_path: Path) -> set[tuple[str, str]]:
+    """Return the set of (indicator_id_string, recipe_category) cells flagged
+    as cointegrated in the cointegration map.
+
+    Per Ihsa I3 + Roshani follow-up + #588 indicator-basket revision, this
+    set is currently EMPTY (0 cells survive triple-confirmation + basket
+    revision). The function is preserved for v2 expansion via #586 where
+    Roshani's flexible-rule framework will re-populate it via EB hyperprior
+    dominance OR causal-documentation mechanism (NOT cointegration evidence
+    per Roshani's lags=3 pivot).
+    """
+    if coint_path is None or not coint_path.exists():
+        return set()
+    data = json.loads(coint_path.read_text(encoding="utf-8"))
+    cells = data.get("cells", {}) or {}
+    out: set[tuple[str, str]] = set()
+    for cell_key, cell in cells.items():
+        if "::" not in cell_key:
+            continue
+        ind_id, recipe = cell_key.split("::", 1)
+        if cell.get("verdict") == "cointegrated":
+            out.add((ind_id, recipe))
+    return out
+
+
 def build_feature_matrix_v2(panel: pd.DataFrame, fingerprint: list[dict],
                             num_to_str: dict[int, str],
                             cutoff_year: int, canonical_length: int,
-                            country_to_id: dict[str, int]) -> tuple[pd.DataFrame, list[str]]:
+                            country_to_id: dict[str, int],
+                            detrend_method: str = "none",
+                            i1_set: set[str] | None = None) -> tuple[pd.DataFrame, list[str]]:
     """Build (country_id × feature) DataFrame for one recipe.
 
     Window: [cutoff_year - canonical_length, cutoff_year].
-    Features per indicator: mean/std/last_value/slope/change/n_obs (6 each).
+
+    Default behavior (detrend_method='none', i1_set=None): emits 6 level-based
+    features per indicator (INDICATOR_FEATURE_STATS — currently the deconfound
+    set). This matches all prior audition_indicators.py runs bit-for-bit.
+
+    With detrend_method='first-diff' AND i1_set provided: indicators in i1_set
+    receive 6 ADDITIONAL diff-based features (INDICATOR_FEATURE_STATS_DIFF),
+    yielding 12 total features per I(1) indicator. Stationary indicators are
+    unchanged (6 features each). Per Majles Al Ihsa I3 (2026-05-02).
+
+    Backward-compat guarantee: any caller that does NOT pass detrend_method
+    and i1_set sees identical output to the pre-Phase-C function. Tests
+    exercise this in test_audition_detrend.py::test_default_args_match_legacy.
     """
     window_start = cutoff_year - canonical_length
     window_end = cutoff_year
+
+    # Normalize detrend params
+    detrend_active = (detrend_method == "first-diff" and i1_set is not None)
+    if i1_set is None:
+        i1_set = set()
 
     # Filter panel to fingerprint indicators + window
     fp_str_ids = [num_to_str[fp["indicator_id"]] for fp in fingerprint
@@ -375,8 +490,16 @@ def build_feature_matrix_v2(panel: pd.DataFrame, fingerprint: list[dict],
     for fp in fingerprint:
         if fp["indicator_id"] not in num_to_str:
             continue
+        nid = fp["indicator_id"]
+        sid = num_to_str[nid]
+        is_i1 = detrend_active and (sid in i1_set)
+        # Always emit level features (matches pre-Phase-C behavior)
         for stat in INDICATOR_FEATURE_STATS:
-            feature_cols.append(f"ind{fp['indicator_id']}__{stat}")
+            feature_cols.append(f"ind{nid}__{stat}")
+        # Additionally emit diff features for I(1) indicators when detrending
+        if is_i1:
+            for stat in INDICATOR_FEATURE_STATS_DIFF:
+                feature_cols.append(f"ind{nid}__{stat}")
 
     # Build per-country feature rows
     countries = sorted(pw["country"].unique())
@@ -390,26 +513,32 @@ def build_feature_matrix_v2(panel: pd.DataFrame, fingerprint: list[dict],
         for fp in fingerprint:
             if fp["indicator_id"] not in num_to_str:
                 continue
-            sid = num_to_str[fp["indicator_id"]]
+            nid = fp["indicator_id"]
+            sid = num_to_str[nid]
+            is_i1 = detrend_active and (sid in i1_set)
             slc = cdata[cdata["indicator_id"] == sid].sort_values("year")
             if slc.empty:
-                stats = [np.nan] * len(INDICATOR_FEATURE_STATS)
+                lvl_stats = [np.nan] * len(INDICATOR_FEATURE_STATS)
+                diff_stats = [np.nan] * len(INDICATOR_FEATURE_STATS_DIFF) if is_i1 else None
             else:
+                years_arr = slc["year"].to_numpy()
+                vals_arr = slc["value"].to_numpy()
                 # Pass canonical_length so frac_missing is computed
                 # against the recipe's intended window, not just observed span.
                 # _stats_legacy ignores the 3rd arg; _stats_deconfound uses it.
                 try:
-                    stats = _stats_for_series(
-                        slc["year"].to_numpy(), slc["value"].to_numpy(),
-                        canonical_length,
-                    )
+                    lvl_stats = _stats_for_series(years_arr, vals_arr, canonical_length)
                 except TypeError:
-                    # Legacy stat fn doesn't take canonical_length
-                    stats = _stats_for_series(
-                        slc["year"].to_numpy(), slc["value"].to_numpy()
-                    )
-            for stat_name, val in zip(INDICATOR_FEATURE_STATS, stats):
-                row[f"ind{fp['indicator_id']}__{stat_name}"] = val
+                    lvl_stats = _stats_for_series(years_arr, vals_arr)
+                if is_i1:
+                    diff_stats = _stats_first_diff(years_arr, vals_arr, canonical_length)
+                else:
+                    diff_stats = None
+            for stat_name, val in zip(INDICATOR_FEATURE_STATS, lvl_stats):
+                row[f"ind{nid}__{stat_name}"] = val
+            if is_i1 and diff_stats is not None:
+                for stat_name, val in zip(INDICATOR_FEATURE_STATS_DIFF, diff_stats):
+                    row[f"ind{nid}__{stat_name}"] = val
         feature_rows.append(row)
 
     df = pd.DataFrame(feature_rows)
@@ -948,7 +1077,31 @@ def main() -> int:
                         "auditioner 4 times, each with a different cutoff, "
                         "and reports per-recipe AUC stability across folds. "
                         "Without this flag, single-cutoff path runs (default).")
+    p.add_argument("--detrend-method", default="none", choices=DETREND_METHODS,
+                   help="Detrending method for I(1) indicators (#585 Phase C, "
+                        "Ihsa I3 lock 2026-05-02). 'none' (default): existing "
+                        "behavior, level features only for all indicators. "
+                        "'first-diff': for I(1) indicators (per --regimes-path), "
+                        "emit BOTH level AND first-diff features (12 features "
+                        "per I(1) indicator instead of 6). Stationary indicators "
+                        "are unchanged. Required when first-diff: --regimes-path. "
+                        "See qgi-docs/internal/majles/2026-05-02_Ihsa_I3_cointegration_results.md")
+    p.add_argument("--regimes-path", type=Path, default=None,
+                   help="Path to indicator-regimes.json (Phase 0c output, #582). "
+                        "Required when --detrend-method=first-diff.")
+    p.add_argument("--cointegration-map-path", type=Path, default=None,
+                   help="Path to cointegration-map.json (Phase B output, #585). "
+                        "Optional. Currently informational only — override list "
+                        "is empty per Ihsa I3 + #588 triple-confirmation analysis. "
+                        "v2 (#586) will use this differently per Roshani's pivot.")
     args = p.parse_args()
+
+    # Validate Phase C flag combinations
+    if args.detrend_method == "first-diff" and args.regimes_path is None:
+        raise SystemExit(
+            "--detrend-method=first-diff requires --regimes-path "
+            "(indicator-regimes.json from #582 Phase 0c)"
+        )
 
     # Switch the stat set BEFORE any feature build calls. This mutates the
     # module-level INDICATOR_FEATURE_STATS + _stats_for_series binding so that
@@ -971,6 +1124,24 @@ def main() -> int:
         ).decode().strip()
     except Exception:
         git_sha = "unknown"
+
+    # #585 Phase C: load I(1) indicator set if detrending.
+    # The cointegration map is read for operator visibility (count of override
+    # cells in run logs) but NOT consumed by v1 — the v1 override list is
+    # empty per Ihsa I3 + #588 triple-confirmation analysis. v2 (#586) will
+    # wire up consumption via Roshani's flexible-rule framework.
+    i1_set: set[str] = set()
+    if args.detrend_method == "first-diff":
+        i1_set = load_regimes_set(args.regimes_path)
+        print(f"[detrend] first-diff active for {len(i1_set)} I(1) indicators "
+              f"from {args.regimes_path}")
+        if args.cointegration_map_path:
+            # Load + log count only. v1 does not consume the override set;
+            # #586 v2 will. No assignment kept around to confuse maintainers.
+            n_coint_overrides = len(load_cointegration_overrides(args.cointegration_map_path))
+            print(f"[detrend] cointegration overrides: {n_coint_overrides} cells "
+                  f"(v1: informational only — empty per Ihsa I3 + post-#588; "
+                  f"v2 #586 will wire consumption)")
 
     s3 = boto3.client("s3", region_name=args.region)
     ath = boto3.client("athena", region_name=args.region)
@@ -1063,7 +1234,9 @@ def main() -> int:
 
             features, feature_cols = build_feature_matrix_v2(
                 panel, augmented_fp, num_to_str,
-                cutoff, cl, country_to_id
+                cutoff, cl, country_to_id,
+                detrend_method=args.detrend_method,
+                i1_set=i1_set if args.detrend_method == "first-diff" else None,
             )
             if features.empty or not feature_cols:
                 print("→ SKIP (no features)")
