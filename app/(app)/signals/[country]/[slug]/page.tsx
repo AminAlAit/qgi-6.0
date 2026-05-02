@@ -8,11 +8,14 @@ import {
   loadCountryRecipeScores,
   loadRecipeBySlug,
 } from "@/lib/recipes-aggregated-loader";
+import { loadTrajectoryPanelData } from "@/lib/signals-trajectory";
+import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { RciBadge } from "@/components/design/RciBadge";
 import { getRecipeConfidence } from "@/lib/recipe-confidence";
 import { SignalFingerprintPanel } from "@/components/signals/SignalFingerprintPanel";
+import { SignalTrajectoryPanel } from "@/components/signals/SignalTrajectoryPanel";
 import { SignalAnaloguesTable } from "@/components/signals/SignalAnaloguessTable";
 import type { AnalogueEntry } from "@/components/signals/SignalAnaloguessTable";
 import Link from "next/link";
@@ -22,10 +25,20 @@ import { promises as fs } from "fs";
 import path from "path";
 
 /**
+ * ISR: cache this page for 1 hour. Athena queries in loadTrajectoryPanelData
+ * are expensive on cold start (~2-4s); ISR ensures only the first visitor per
+ * hour pays that cost. Graceful degradation means the page still renders even
+ * if Athena times out — the trajectory panel shows "unavailable" instead of
+ * causing a 500.
+ */
+export const revalidate = 3600;
+
+/**
  * /signals/{country-slug}/{recipe-slug} — Persona-redesigned leaf page.
  *
  * Redesigned by Yuki Takahashi-Rowe (Product) + Dr. Lena Hadid-Marchetti
  * (UX-stats) on 2026-05-01 (feat/signals-redesign-personas-20260501).
+ * Trajectory panel added 2026-05-01 (feat/signals-trajectory-plots-20260501).
  *
  * Key panels:
  *   1. Hero: flag, title, RCI badge, similarity score with semantic tier label
@@ -33,15 +46,22 @@ import path from "path";
  *      pattern window (event range from analogues subject data)
  *   3. Fingerprint panel: top-8 indicators by TF-IDF as horizontal bars with
  *      Wilson CI whiskers
- *   4. CTA: link to full Recipe (/precedents/[slug])
- *   5. Historical analogues table: ranked by PPS, event_in_window highlighted
- *   6. Coverage bias note: collapsible diagnostic footer
+ *   4. Indicator Trajectory Panel (NEW): top-4 fingerprint indicators plotted
+ *      as z-scored trajectories (years-from-pattern-end axis) with canonical
+ *      reference overlay from the highest-PPS recipe instance. Predicted values
+ *      shown as dashed line. ISR-cached for 1h; degrades gracefully if Athena
+ *      is unavailable.
+ *   5. CTA: link to full Recipe (/precedents/[slug])
+ *   6. Historical analogues table: ranked by PPS, event_in_window highlighted
+ *   7. Coverage bias note: collapsible diagnostic footer
  *
- * Data sources (all baked into repo, no auth required):
+ * Data sources:
  *   - data/country-recipe-scores.json — similarity score
  *   - data/recipes-aggregated.json — fingerprint + recipe metadata
  *   - data/recipe-confidence.json — RCI tier
  *   - data/analogues-enriched.json — historical analogues
+ *   - Athena qgi_data.indicators_completed — country + reference trajectories
+ *   - Athena qgi_data.recipes — top-PPS recipe instance for canonical reference
  */
 
 interface Props {
@@ -153,12 +173,29 @@ export default async function SignalCountryRecipePage({ params }: Props) {
   if (!resolved) notFound();
   if (!(slug in CATEGORY_L1_MAP)) notFound();
 
-  // Load all data in parallel
+  // Load all data in parallel. Trajectory data hits Athena — it's
+  // wrapped in a .catch() so it never blocks the page render.
   const [recipe, scoresFile, analogueData] = await Promise.all([
     loadRecipeBySlug(slug),
     loadCountryRecipeScores().catch(() => null),
     loadAnalogues(resolved.id, slug),
   ]);
+
+  // Load trajectory data after recipe is resolved (we need fingerprint + canonical_length).
+  // Runs as a separate async operation that degrades gracefully to null.
+  //
+  // M5 phase 1 (2026-05-01): filter Demographic 3 from the fingerprint BEFORE
+  // it drives which trajectories are loaded. Otherwise the top-4 trajectory
+  // slots get wasted on Population / Life Expectancy curves that look
+  // monotonic and contribute no risk signal.
+  const trajectoryData = recipe
+    ? await loadTrajectoryPanelData(
+        resolved.name,
+        slug,
+        filterDemographic3(recipe.indicator_fingerprint),
+        recipe.canonical_length
+      ).catch(() => null)
+    : null;
 
   const score = scoresFile?.scores[country]?.[slug] ?? null;
   const confidence = getRecipeConfidence(slug);
@@ -421,6 +458,18 @@ export default async function SignalCountryRecipePage({ params }: Props) {
         {/* ── Fingerprint Panel ─────────────────────────────────────────── */}
         {recipe && recipe.indicator_fingerprint.length > 0 && (
           <SignalFingerprintPanel fingerprint={recipe.indicator_fingerprint} />
+        )}
+
+        {/* ── Indicator Trajectory Panel ────────────────────────────────── */}
+        {/* Inserted between Fingerprint and Analogues per Yuki+Lena design.
+            Renders even when trajectoryData=null — the component handles
+            the graceful "unavailable" fallback internally. */}
+        {recipe && (
+          <SignalTrajectoryPanel
+            data={trajectoryData}
+            countryName={resolved.name}
+            eventCategory={slug}
+          />
         )}
 
         {/* ── CTA to full Recipe ────────────────────────────────────────── */}

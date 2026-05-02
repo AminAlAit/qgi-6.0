@@ -5,6 +5,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { RciBadge } from "@/components/design/RciBadge";
 import { signalCountryRecipeUrl, type RecipeAggregated } from "@/lib/recipes-aggregated";
 import { getRecipeConfidence } from "@/lib/recipe-confidence";
+import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 import indexesData from "@/data/indexes.json";
 
 // #470 item 2 (option c per Sonnet consult): build a numeric_id → name
@@ -167,74 +168,85 @@ export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
         )}
 
         {/* Indicator fingerprint */}
-        <Section
-          title={`Indicator fingerprint (top ${recipe.indicator_fingerprint.length})`}
-        >
-          <div className="text-[11px] mb-3" style={{ color: "var(--qgi-text-muted)" }}>
-            Indicators ranked by TF-IDF — frequency × inverse-recipe-frequency. Confidence
-            intervals (95%) reflect the binomial uncertainty in each indicator&apos;s
-            frequency given the {recipe.total_instances.toLocaleString()}-instance sample.
-          </div>
-          <div className="space-y-2">
-            {recipe.indicator_fingerprint.map((ind) => {
-              // #470 item 2: prefer the lookup, fall back to the inline
-              // name (back-compat for legacy mock data), final fallback to
-              // the raw ID so the row never renders as "undefined".
-              const displayName =
-                INDICATOR_NAME_BY_ID.get(ind.indicator_id) ??
-                ind.indicator_name ??
-                `Indicator ${ind.indicator_id}`;
-              return (
-                <div
-                  key={ind.indicator_id}
-                  className="flex items-center gap-3 text-[12px]"
-                >
-                  <div className="w-48 truncate" title={displayName}>
-                    {displayName}
-                  </div>
-                  <div
-                    className="flex-1 h-4 rounded-sm relative"
-                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
-                  >
-                    {/* CI bounds (lighter) */}
+        {/* M5 phase 1 (Asas Majles 2026-05-01): Demographic 3 (Population /
+            Life Expectancy / Mortality under-5) suppressed from display per
+            #573 substrate-effect investigation + #577 posterior-weight matrix
+            roadmap. See lib/demographic-3-suppression.ts for full rationale. */}
+        {(() => {
+          const visibleFingerprint = filterDemographic3(recipe.indicator_fingerprint);
+          return (
+            <Section title={`Indicator fingerprint (top ${visibleFingerprint.length})`}>
+              <div
+                className="text-[11px] mb-3"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                Indicators ranked by TF-IDF — frequency × inverse-recipe-frequency.
+                Confidence intervals (95%) reflect the binomial uncertainty in each
+                indicator&apos;s frequency given the{" "}
+                {recipe.total_instances.toLocaleString()}-instance sample.
+              </div>
+              <div className="space-y-2">
+                {visibleFingerprint.map((ind) => {
+                  // #470 item 2: prefer the lookup, fall back to the inline
+                  // name (back-compat for legacy mock data), final fallback to
+                  // the raw ID so the row never renders as "undefined".
+                  const displayName =
+                    INDICATOR_NAME_BY_ID.get(ind.indicator_id) ??
+                    ind.indicator_name ??
+                    `Indicator ${ind.indicator_id}`;
+                  return (
                     <div
-                      className="absolute h-full rounded-sm"
-                      style={{
-                        left: `${ind.ci_lower * 100}%`,
-                        width: `${(ind.ci_upper - ind.ci_lower) * 100}%`,
-                        backgroundColor: "var(--qgi-accent)",
-                        opacity: 0.25,
-                      }}
-                    />
-                    {/* Point estimate (darker) */}
-                    <div
-                      className="absolute h-full rounded-sm"
-                      style={{
-                        left: `${Math.max(0, (ind.frequency - 0.005) * 100)}%`,
-                        width: `1%`,
-                        backgroundColor: "var(--qgi-accent)",
-                        opacity: 0.95,
-                      }}
-                    />
-                  </div>
-                  <div
-                    className="w-16 text-right tabular-nums font-data"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                  >
-                    {(ind.frequency * 100).toFixed(0)}%
-                  </div>
-                  <div
-                    className="w-20 text-right tabular-nums font-data text-[10px]"
-                    style={{ color: "var(--qgi-text-dim)" }}
-                    title={`95% CI: ${(ind.ci_lower * 100).toFixed(0)}–${(ind.ci_upper * 100).toFixed(0)}%`}
-                  >
-                    ±{((ind.ci_upper - ind.ci_lower) * 50).toFixed(0)}pp
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </Section>
+                      key={ind.indicator_id}
+                      className="flex items-center gap-3 text-[12px]"
+                    >
+                      <div className="w-48 truncate" title={displayName}>
+                        {displayName}
+                      </div>
+                      <div
+                        className="flex-1 h-4 rounded-sm relative"
+                        style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                      >
+                        {/* CI bounds (lighter) */}
+                        <div
+                          className="absolute h-full rounded-sm"
+                          style={{
+                            left: `${ind.ci_lower * 100}%`,
+                            width: `${(ind.ci_upper - ind.ci_lower) * 100}%`,
+                            backgroundColor: "var(--qgi-accent)",
+                            opacity: 0.25,
+                          }}
+                        />
+                        {/* Point estimate (darker) */}
+                        <div
+                          className="absolute h-full rounded-sm"
+                          style={{
+                            left: `${Math.max(0, (ind.frequency - 0.005) * 100)}%`,
+                            width: `1%`,
+                            backgroundColor: "var(--qgi-accent)",
+                            opacity: 0.95,
+                          }}
+                        />
+                      </div>
+                      <div
+                        className="w-16 text-right tabular-nums font-data"
+                        style={{ color: "var(--qgi-text-muted)" }}
+                      >
+                        {(ind.frequency * 100).toFixed(0)}%
+                      </div>
+                      <div
+                        className="w-20 text-right tabular-nums font-data text-[10px]"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                        title={`95% CI: ${(ind.ci_lower * 100).toFixed(0)}–${(ind.ci_upper * 100).toFixed(0)}%`}
+                      >
+                        ±{((ind.ci_upper - ind.ci_lower) * 50).toFixed(0)}pp
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </Section>
+          );
+        })()}
 
         {/* Coverage bias */}
         <Section title="Coverage bias diagnostic">
