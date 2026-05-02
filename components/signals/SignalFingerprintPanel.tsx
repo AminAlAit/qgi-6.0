@@ -14,6 +14,7 @@
  */
 import { useState } from "react";
 import type { IndicatorFingerprintEntry } from "@/lib/recipes-aggregated";
+import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 
 interface Props {
   fingerprint: IndicatorFingerprintEntry[];
@@ -82,8 +83,12 @@ function Bar({ entry, maxFreq }: { entry: IndicatorFingerprintEntry; maxFreq: nu
 export function SignalFingerprintPanel({ fingerprint }: Props) {
   const [expanded, setExpanded] = useState(false);
 
+  // M5 phase 1 (Asas Majles 2026-05-01): suppress Demographic 3 from display
+  // per #573 substrate-effect investigation. See lib/demographic-3-suppression.ts.
+  const filtered = filterDemographic3(fingerprint);
+
   // Sort by tfidf_score desc (already sorted in data, but be safe)
-  const sorted = [...fingerprint].sort((a, b) => b.tfidf_score - a.tfidf_score);
+  const sorted = [...filtered].sort((a, b) => b.tfidf_score - a.tfidf_score);
   const maxFreq = Math.max(...sorted.map((e) => e.frequency), 1);
 
   const desktopEntries = sorted.slice(0, DESKTOP_LIMIT);
@@ -144,7 +149,7 @@ export function SignalFingerprintPanel({ fingerprint }: Props) {
         }}
       >
         Bar width = frequency of indicator in recipe corpus. Error band = Wilson 95%
-        confidence interval. Top {DESKTOP_LIMIT} of {fingerprint.length} indicators shown.
+        confidence interval. Top {DESKTOP_LIMIT} of {filtered.length} indicators shown.
       </div>
     </div>
   );

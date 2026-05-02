@@ -117,10 +117,8 @@ export function PrecedentsAggregatedListClient({
 }) {
   const enriched = useMemo(() => recipes.map(enrich), [recipes]);
 
-  const maxInstances = useMemo(
-    () => Math.max(...enriched.map((r) => r.total_instances), 1),
-    [enriched]
-  );
+  // #568 (2026-05-02): maxInstances was only used to feed the InstanceBar
+  // ratio. Bar removed, so the prop and the memo go too.
 
   const [search, setSearch] = useState("");
   const [activeDomains, setActiveDomains] = useState<Set<string>>(new Set());
@@ -424,7 +422,6 @@ export function PrecedentsAggregatedListClient({
           <RecipeRow
             key={row.event_category}
             row={row}
-            maxInstances={maxInstances}
             isLast={idx === sorted.length - 1}
           />
         ))}
@@ -451,47 +448,12 @@ export function PrecedentsAggregatedListClient({
 // Row
 // ---------------------------------------------------------------------------
 
-function InstanceBar({
-  value,
-  max,
-  color,
-  width = 80,
-}: {
-  value: number;
-  max: number;
-  color: string;
-  width?: number;
-}) {
-  const pct = Math.min(100, (value / max) * 100);
-  return (
-    <div
-      className="rounded-full overflow-hidden"
-      style={{
-        width,
-        height: 3,
-        backgroundColor: "var(--qgi-surface-2)",
-      }}
-    >
-      <div
-        className="h-full rounded-full transition-all"
-        style={{
-          width: `${pct}%`,
-          backgroundColor: color,
-        }}
-      />
-    </div>
-  );
-}
+// #568 (2026-05-02): InstanceBar removed entirely. Post-V-Dem the
+// value/maxInstances ratio collapsed near zero across all categories
+// (one outlier dominating, rest invisible). Founder direction: remove.
+// Numbers cells now carry the same instance-count info more legibly.
 
-function RecipeRow({
-  row,
-  maxInstances,
-  isLast,
-}: {
-  row: EnrichedRecipe;
-  maxInstances: number;
-  isLast: boolean;
-}) {
+function RecipeRow({ row, isLast }: { row: EnrichedRecipe; isLast: boolean }) {
   const oecd = row.coverage_bias_diagnostic.oecd_share;
   // Coverage colour: low oecd = green (broad), high = amber (narrow)
   const coverageColor = oecd <= 0.2 ? "#3FBF8F" : oecd <= 0.45 ? "#fbbf24" : "#f87171";
@@ -547,12 +509,11 @@ function RecipeRow({
             </span>
           </span>
         </div>
-        <InstanceBar
-          value={row.total_instances}
-          max={maxInstances}
-          color={row.l1Color}
-          width={180}
-        />
+        {/* #568 (2026-05-02): InstanceBar removed. Post-V-Dem the
+            value/maxInstances ratio went near-zero across all categories
+            (one outlier dragging the bar's visual contrast to noise).
+            Founder direction: remove rather than keep visually
+            insignificant chrome. Numbers above carry the same info. */}
       </div>
 
       {/* Desktop */}
@@ -567,12 +528,10 @@ function RecipeRow({
           >
             {formatCategory(row.event_category)}
           </span>
-          <InstanceBar
-            value={row.total_instances}
-            max={maxInstances}
-            color={row.l1Color}
-            width={120}
-          />
+          {/* #568 (2026-05-02): InstanceBar removed. Post-V-Dem the bar
+              ratio went near-zero across all categories — visually noise
+              without information. Numbers cell on the right carries the
+              same instance count more legibly. */}
         </div>
         <span
           className="text-[11px] tracking-wider uppercase font-medium"

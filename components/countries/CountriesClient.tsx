@@ -24,8 +24,8 @@ type L1Id = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H";
 
 type SortOption =
   | "tier_desc"
-  | "ovr_desc"
-  | "ovr_asc"
+  | "intensity_desc"
+  | "intensity_asc"
   | "alpha_asc"
   | "alpha_desc"
   | "curated_first";
@@ -63,8 +63,8 @@ const TIER_FILTERS: RiskTier[] = ["HIGH", "MODERATE", "INDICATIVE"];
 
 const SORT_OPTIONS: { value: SortOption; label: string }[] = [
   { value: "tier_desc", label: "Risk tier (default)" },
-  { value: "ovr_desc", label: "Overall score (high to low)" },
-  { value: "ovr_asc", label: "Overall score (low to high)" },
+  { value: "intensity_desc", label: "Composite intensity (high to low)" },
+  { value: "intensity_asc", label: "Composite intensity (low to high)" },
   { value: "alpha_asc", label: "Alphabetical (A-Z)" },
   { value: "alpha_desc", label: "Alphabetical (Z-A)" },
   { value: "curated_first", label: "Curated first" },
@@ -75,7 +75,9 @@ const SORT_OPTIONS: { value: SortOption; label: string }[] = [
 // before. Param shapes:
 //   q      = search string
 //   tier   = HIGH | MODERATE | INDICATIVE   (omit for ALL)
-//   sort   = ovr_desc | alpha_asc | ...     (omit for tier_desc)
+//   sort   = intensity_desc | alpha_asc | ...    (omit for tier_desc)
+//          (was ovr_desc before #574 V1.5.3 ghost cleanup; old URL aliases
+//           silently fall back to tier_desc default via VALID_SORTS check)
 //   l1     = A..H                            (omit when no L1 filter)
 //   min    = 30..90                          (omit when 50 default)
 // Manually-typed `/countries?tier=HIGH` and copy-paste-share both work.
@@ -85,8 +87,8 @@ const DEFAULT_MIN_SCORE = 50;
 const VALID_TIERS = new Set<RiskTier>(["HIGH", "MODERATE", "INDICATIVE"]);
 const VALID_SORTS = new Set<SortOption>([
   "tier_desc",
-  "ovr_desc",
-  "ovr_asc",
+  "intensity_desc",
+  "intensity_asc",
   "alpha_asc",
   "alpha_desc",
   "curated_first",
@@ -124,21 +126,21 @@ function toSlug(name: string): string {
     .replace(/[^a-z0-9_]/g, "");
 }
 
-/** Compute OVR from L1 scores (Option B from the design doc — geo mean of top 4 with breadth bonus) */
-function computeOvr(l1Scores: Record<string, number>): number {
-  const scores = L1_IDS.map((id) => salienceTo100(l1Scores[id] ?? 0));
-  const sorted = [...scores].sort((a, b) => b - a);
-  const top4 = sorted.slice(0, 4);
-
-  // Geometric mean of top 4 (add 1 to avoid zero-product, then subtract)
-  const product = top4.reduce((acc, v) => acc * (v + 1), 1);
-  const geoMean = Math.pow(product, 1 / 4) - 1;
-
-  // Breadth bonus: fraction of L1s >= 50
-  const breadth = scores.filter((s) => s >= 50).length / 8;
-  const ovrRaw = geoMean * (0.85 + 0.3 * breadth);
-
-  return Math.min(100, Math.max(0, Math.round(ovrRaw)));
+/**
+ * Composite intensity = sum of L1 scores. Used ONLY for in-list ordering
+ * (sort key + tiebreaker within tiers). Never displayed as a number to
+ * the user — that was the V1.5.3-era OVR ghost (TODO-7 #571 / #574 / AS1
+ * Majles 2026-05-01). The user-facing aggregate is the upstream tier
+ * label (HIGH / MODERATE / INDICATIVE) on the badge, derived from
+ * `country.overall_risk_tier`.
+ *
+ * Future: when per-L1 tier labels are produced upstream, this becomes
+ * "Composite tier" = max(L1_tier) per AS1 vote.
+ */
+function compositeIntensity(l1Scores: Record<L1Id, number>): number {
+  let sum = 0;
+  for (const id of L1_IDS) sum += l1Scores[id] ?? 0;
+  return sum;
 }
 
 /**
@@ -234,7 +236,7 @@ export function CountriesClient({
     }
   }, [router, search, tierFilter, sortBy, l1Filter, l1MinScore]);
 
-  // Pre-compute OVR and L1 scores for each country
+  // Pre-compute L1 scores + composite intensity (sort key only) for each country
   const enriched = useMemo(() => {
     return countries.map((c) => {
       const slug = toSlug(c.name);
@@ -243,9 +245,9 @@ export function CountriesClient({
       for (const id of L1_IDS) {
         l1Scores[id] = salienceTo100(rawL1[id] ?? 0);
       }
-      const ovr = computeOvr(rawL1);
+      const intensity = compositeIntensity(l1Scores);
       const dominantL1 = getDominantL1(rawL1);
-      return { ...c, l1Scores, ovr, dominantL1 };
+      return { ...c, l1Scores, intensity, dominantL1 };
     });
   }, [countries, salienceMap]);
 
@@ -273,11 +275,11 @@ export function CountriesClient({
     const tierOrder: Record<RiskTier, number> = { HIGH: 0, MODERATE: 1, INDICATIVE: 2 };
 
     switch (sortBy) {
-      case "ovr_desc":
-        arr.sort((a, b) => b.ovr - a.ovr);
+      case "intensity_desc":
+        arr.sort((a, b) => b.intensity - a.intensity);
         break;
-      case "ovr_asc":
-        arr.sort((a, b) => a.ovr - b.ovr);
+      case "intensity_asc":
+        arr.sort((a, b) => a.intensity - b.intensity);
         break;
       case "alpha_asc":
         arr.sort((a, b) => a.name.localeCompare(b.name));
@@ -288,7 +290,7 @@ export function CountriesClient({
       case "curated_first":
         arr.sort((a, b) => {
           if (a.curated !== b.curated) return a.curated ? -1 : 1;
-          return b.ovr - a.ovr;
+          return b.intensity - a.intensity;
         });
         break;
       case "tier_desc":
@@ -296,7 +298,7 @@ export function CountriesClient({
         arr.sort((a, b) => {
           const td = tierOrder[a.overall_risk_tier] - tierOrder[b.overall_risk_tier];
           if (td !== 0) return td;
-          return b.ovr - a.ovr;
+          return b.intensity - a.intensity;
         });
         break;
     }
@@ -504,7 +506,9 @@ export function CountriesClient({
 
 interface EnrichedCountry extends CountryEntry {
   l1Scores: Record<L1Id, number>;
-  ovr: number;
+  /** Composite intensity = sum of L1 scores. Sort key + tiebreaker only,
+   *  never shown to the user. Replaces the V1.5.3-era OVR (#574, AS1 vote). */
+  intensity: number;
   dominantL1: L1Id | null;
 }
 
@@ -536,11 +540,17 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
         maxWidth: 300,
       }}
     >
-      {/* ─── Top strip: OVR + Name + Verified ─── */}
+      {/* ─── Top strip: Composite-tier badge + Name + Verified ─── */}
+      {/* AS1 Majles 2026-05-01 / TODO-7 #571 / #574 fix: replaced V1.5.3-era
+          manufactured OVR (geomean of L1 salience) with the upstream
+          Composite tier — derived from country.overall_risk_tier. The 0-100
+          number had no upstream source and broke R10 continuity (buyers
+          couldn't get to its explanation on the country page). Tier label
+          is the actual pipeline output. */}
       <div className="flex items-center gap-2 px-3 pt-3 pb-2">
-        {/* OVR badge */}
+        {/* Composite-tier badge */}
         <div
-          className="shrink-0 flex items-center justify-center rounded font-bold text-lg leading-none"
+          className="shrink-0 flex items-center justify-center rounded font-bold leading-none"
           style={{
             width: 40,
             height: 40,
@@ -548,9 +558,13 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
             color: style.text,
             backgroundColor: style.bg,
             fontFamily: "var(--font-mono, monospace)",
+            fontSize: country.overall_risk_tier === "HIGH" ? 12 : 11,
+            letterSpacing: "0.04em",
           }}
+          title={`Composite risk tier: ${country.overall_risk_tier}`}
+          aria-label={`Composite risk tier: ${country.overall_risk_tier}`}
         >
-          {country.ovr}
+          {TIER_SHORT[country.overall_risk_tier]}
         </div>
 
         {/* Name + alpha2 */}
