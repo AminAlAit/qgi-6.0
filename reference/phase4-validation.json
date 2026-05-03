@@ -1,0 +1,603 @@
+{
+  "schema_version": 1,
+  "generated": "2026-05-03T12:42:59.602053+00:00",
+  "method": "anomaly_score = sum over (indicator in event_category) of |z_score| * weight. AUC computed per event_category against y_post_cutoff. ECE computed on per-category-min-max-scaled predictions, 10 bins.",
+  "method_caveats": [
+    "Imbalanced ground truth bias: ground truth excludes (country, event_category) cells where the country never had ANY event of that category (pre or post cutoff). High-base-rate categories (e.g. bilateral_treaty ~0.72) suppress discrimination signal. Mean AUC is therefore a LOWER bound on per-cell predictive power.",
+    "Reliability diagram is cross-category and reflects category-base-rate mixing, NOT per-category calibration. Bin-level event_rate values mix cells from categories with very different base rates. ECE here measures aggregate miscalibration, not per-category.",
+    "Scoring formula uses |z_score| (magnitude), losing direction. An indicator that predicts events when HIGH (e.g. debt-to-GDP) is treated identically to one that predicts events when LOW (e.g. democracy index). Signed scoring is methodology v2.",
+    "No baseline comparison: a uniform-weight or random-weight baseline AUC would tell us whether low AUC is caused by the weights being noise or by the scoring formula being the bottleneck. Tracked as follow-up ticket #598."
+  ],
+  "config": {
+    "cutoff_year": 2014,
+    "end_year": 2025,
+    "zscore_window_years": 5,
+    "n_ece_bins": 10
+  },
+  "summary": {
+    "n_event_categories": 70,
+    "n_event_categories_with_auc": 68,
+    "n_predictions": 12250,
+    "mean_auc": 0.5048740498812206,
+    "median_auc": 0.5022321428571428,
+    "n_auc_above_0_55": 24,
+    "n_auc_above_0_65": 8,
+    "ece": 0.23568511225671682,
+    "decision": "REVISIT",
+    "decision_rationale": "mean AUC 0.505 <= 0.55 \u2014 weights do not predict events better than random. Check methodology before downstream use."
+  },
+  "per_event_category_auc": [
+    {
+      "event_category": "agricultural_policy",
+      "n_countries": 65,
+      "n_positive": 11,
+      "n_negative": 54,
+      "auc": 0.5505050505050505
+    },
+    {
+      "event_category": "banking_and_financial_crisis",
+      "n_countries": 48,
+      "n_positive": 16,
+      "n_negative": 32,
+      "auc": 0.341796875
+    },
+    {
+      "event_category": "bilateral_treaty",
+      "n_countries": 130,
+      "n_positive": 94,
+      "n_negative": 36,
+      "auc": 0.5490543735224586
+    },
+    {
+      "event_category": "civil_war_and_insurgency",
+      "n_countries": 89,
+      "n_positive": 40,
+      "n_negative": 49,
+      "auc": 0.573469387755102
+    },
+    {
+      "event_category": "climate_agreement",
+      "n_countries": 14,
+      "n_positive": 12,
+      "n_negative": 2,
+      "auc": 1.0
+    },
+    {
+      "event_category": "constitutional_change",
+      "n_countries": 137,
+      "n_positive": 61,
+      "n_negative": 76,
+      "auc": 0.52351164797239
+    },
+    {
+      "event_category": "cultural_and_heritage",
+      "n_countries": 59,
+      "n_positive": 16,
+      "n_negative": 43,
+      "auc": 0.4781976744186046
+    },
+    {
+      "event_category": "currency_crisis",
+      "n_countries": 41,
+      "n_positive": 11,
+      "n_negative": 30,
+      "auc": 0.4484848484848485
+    },
+    {
+      "event_category": "decentralization_and_federalism",
+      "n_countries": 20,
+      "n_positive": 3,
+      "n_negative": 17,
+      "auc": 0.6862745098039216
+    },
+    {
+      "event_category": "democratic_transition",
+      "n_countries": 124,
+      "n_positive": 32,
+      "n_negative": 92,
+      "auc": 0.45312500000000006
+    },
+    {
+      "event_category": "digital_policy",
+      "n_countries": 11,
+      "n_positive": 3,
+      "n_negative": 8,
+      "auc": 0.5833333333333333
+    },
+    {
+      "event_category": "diplomatic_rupture",
+      "n_countries": 65,
+      "n_positive": 40,
+      "n_negative": 25,
+      "auc": 0.582
+    },
+    {
+      "event_category": "drought_and_famine",
+      "n_countries": 19,
+      "n_positive": 10,
+      "n_negative": 9,
+      "auc": 0.7333333333333333
+    },
+    {
+      "event_category": "earthquake",
+      "n_countries": 11,
+      "n_positive": 4,
+      "n_negative": 7,
+      "auc": 0.5714285714285714
+    },
+    {
+      "event_category": "economic_growth_milestone",
+      "n_countries": 47,
+      "n_positive": 13,
+      "n_negative": 34,
+      "auc": 0.5294117647058825
+    },
+    {
+      "event_category": "economic_liberalization",
+      "n_countries": 57,
+      "n_positive": 4,
+      "n_negative": 53,
+      "auc": 0.2358490566037736
+    },
+    {
+      "event_category": "economic_nationalization",
+      "n_countries": 39,
+      "n_positive": 5,
+      "n_negative": 34,
+      "auc": 0.5705882352941176
+    },
+    {
+      "event_category": "economic_recession",
+      "n_countries": 118,
+      "n_positive": 54,
+      "n_negative": 64,
+      "auc": 0.6412037037037037
+    },
+    {
+      "event_category": "economic_recovery",
+      "n_countries": 21,
+      "n_positive": 9,
+      "n_negative": 12,
+      "auc": 0.4444444444444445
+    },
+    {
+      "event_category": "education_and_research",
+      "n_countries": 21,
+      "n_positive": 2,
+      "n_negative": 19,
+      "auc": 0.26315789473684215
+    },
+    {
+      "event_category": "education_reform",
+      "n_countries": 16,
+      "n_positive": 3,
+      "n_negative": 13,
+      "auc": 0.41025641025641024
+    },
+    {
+      "event_category": "elections_and_voting",
+      "n_countries": 133,
+      "n_positive": 111,
+      "n_negative": 22,
+      "auc": 0.3251433251433251
+    },
+    {
+      "event_category": "energy_policy",
+      "n_countries": 69,
+      "n_positive": 42,
+      "n_negative": 27,
+      "auc": 0.42239858906525574
+    },
+    {
+      "event_category": "environmental_policy",
+      "n_countries": 75,
+      "n_positive": 42,
+      "n_negative": 33,
+      "auc": 0.47763347763347763
+    },
+    {
+      "event_category": "epidemic_and_pandemic",
+      "n_countries": 110,
+      "n_positive": 105,
+      "n_negative": 5,
+      "auc": 0.36
+    },
+    {
+      "event_category": "ethnic_and_communal_conflict",
+      "n_countries": 43,
+      "n_positive": 13,
+      "n_negative": 30,
+      "auc": 0.5282051282051282
+    },
+    {
+      "event_category": "executive_power_consolidation",
+      "n_countries": 53,
+      "n_positive": 10,
+      "n_negative": 43,
+      "auc": 0.2976744186046512
+    },
+    {
+      "event_category": "fiscal_policy_change",
+      "n_countries": 124,
+      "n_positive": 76,
+      "n_negative": 48,
+      "auc": 0.587171052631579
+    },
+    {
+      "event_category": "flood_and_cyclone",
+      "n_countries": 63,
+      "n_positive": 32,
+      "n_negative": 31,
+      "auc": 0.42338709677419356
+    },
+    {
+      "event_category": "foreign_aid_and_development",
+      "n_countries": 35,
+      "n_positive": 10,
+      "n_negative": 25,
+      "auc": 0.356
+    },
+    {
+      "event_category": "foreign_direct_investment",
+      "n_countries": 39,
+      "n_positive": 15,
+      "n_negative": 24,
+      "auc": 0.5805555555555555
+    },
+    {
+      "event_category": "foreign_intervention",
+      "n_countries": 75,
+      "n_positive": 17,
+      "n_negative": 58,
+      "auc": 0.6480730223123732
+    },
+    {
+      "event_category": "government_formation",
+      "n_countries": 129,
+      "n_positive": 75,
+      "n_negative": 54,
+      "auc": 0.6165432098765432
+    },
+    {
+      "event_category": "human_rights_reform",
+      "n_countries": 84,
+      "n_positive": 40,
+      "n_negative": 44,
+      "auc": 0.42045454545454547
+    },
+    {
+      "event_category": "human_rights_violation",
+      "n_countries": 84,
+      "n_positive": 35,
+      "n_negative": 49,
+      "auc": 0.6034985422740525
+    },
+    {
+      "event_category": "humanitarian_crisis",
+      "n_countries": 28,
+      "n_positive": 11,
+      "n_negative": 17,
+      "auc": 0.4010695187165776
+    },
+    {
+      "event_category": "industrial_policy",
+      "n_countries": 16,
+      "n_positive": 4,
+      "n_negative": 12,
+      "auc": 0.4375
+    },
+    {
+      "event_category": "infrastructure_project",
+      "n_countries": 112,
+      "n_positive": 58,
+      "n_negative": 54,
+      "auc": 0.5846104725415071
+    },
+    {
+      "event_category": "interstate_war",
+      "n_countries": 53,
+      "n_positive": 15,
+      "n_negative": 38,
+      "auc": 0.38333333333333336
+    },
+    {
+      "event_category": "labor_action",
+      "n_countries": 41,
+      "n_positive": 6,
+      "n_negative": 35,
+      "auc": 0.4142857142857143
+    },
+    {
+      "event_category": "mass_protest",
+      "n_countries": 125,
+      "n_positive": 78,
+      "n_negative": 47,
+      "auc": 0.4326241134751774
+    },
+    {
+      "event_category": "migration_and_refugees",
+      "n_countries": 99,
+      "n_positive": 65,
+      "n_negative": 34,
+      "auc": 0.5651583710407241
+    },
+    {
+      "event_category": "military_coup",
+      "n_countries": 72,
+      "n_positive": 15,
+      "n_negative": 57,
+      "auc": 0.4783625730994152
+    },
+    {
+      "event_category": "military_policy_and_reform",
+      "n_countries": 72,
+      "n_positive": 27,
+      "n_negative": 45,
+      "auc": 0.6592592592592592
+    },
+    {
+      "event_category": "monetary_policy_change",
+      "n_countries": 45,
+      "n_positive": 11,
+      "n_negative": 34,
+      "auc": 0.41711229946524064
+    },
+    {
+      "event_category": "multilateral_agreement",
+      "n_countries": 102,
+      "n_positive": 48,
+      "n_negative": 54,
+      "auc": 0.5439814814814815
+    },
+    {
+      "event_category": "natural_disaster",
+      "n_countries": 46,
+      "n_positive": 32,
+      "n_negative": 14,
+      "auc": 0.5044642857142857
+    },
+    {
+      "event_category": "oil_and_gas",
+      "n_countries": 24,
+      "n_positive": 13,
+      "n_negative": 11,
+      "auc": 0.3706293706293707
+    },
+    {
+      "event_category": "peacekeeping_and_peace_process",
+      "n_countries": 82,
+      "n_positive": 35,
+      "n_negative": 47,
+      "auc": 0.6237082066869302
+    },
+    {
+      "event_category": "political_corruption",
+      "n_countries": 87,
+      "n_positive": 45,
+      "n_negative": 42,
+      "auc": 0.37883597883597886
+    },
+    {
+      "event_category": "political_repression",
+      "n_countries": 106,
+      "n_positive": 44,
+      "n_negative": 62,
+      "auc": 0.4585777126099707
+    },
+    {
+      "event_category": "political_violence",
+      "n_countries": 94,
+      "n_positive": 33,
+      "n_negative": 61,
+      "auc": 0.53899652260308
+    },
+    {
+      "event_category": "poverty_and_inequality_crisis",
+      "n_countries": 23,
+      "n_positive": 12,
+      "n_negative": 11,
+      "auc": 0.5151515151515151
+    },
+    {
+      "event_category": "public_health_reform",
+      "n_countries": 17,
+      "n_positive": 8,
+      "n_negative": 9,
+      "auc": 0.6666666666666667
+    },
+    {
+      "event_category": "regional_integration",
+      "n_countries": 81,
+      "n_positive": 22,
+      "n_negative": 59,
+      "auc": 0.4745762711864407
+    },
+    {
+      "event_category": "religious_and_social_movement",
+      "n_countries": 30,
+      "n_positive": 10,
+      "n_negative": 20,
+      "auc": 0.275
+    },
+    {
+      "event_category": "renewable_energy",
+      "n_countries": 7,
+      "n_positive": 6,
+      "n_negative": 1,
+      "auc": 0.5
+    },
+    {
+      "event_category": "resource_conflict",
+      "n_countries": 29,
+      "n_positive": 12,
+      "n_negative": 17,
+      "auc": 0.6666666666666667
+    },
+    {
+      "event_category": "sanctions_and_arms_embargo",
+      "n_countries": 59,
+      "n_positive": 29,
+      "n_negative": 30,
+      "auc": 0.5471264367816092
+    },
+    {
+      "event_category": "social_policy_reform",
+      "n_countries": 39,
+      "n_positive": 17,
+      "n_negative": 22,
+      "auc": 0.6229946524064172
+    },
+    {
+      "event_category": "sport_and_international_event",
+      "n_countries": 41,
+      "n_positive": 12,
+      "n_negative": 29,
+      "auc": 0.41379310344827586
+    },
+    {
+      "event_category": "technology_breakthrough",
+      "n_countries": 20,
+      "n_positive": 7,
+      "n_negative": 13,
+      "auc": 0.48351648351648346
+    },
+    {
+      "event_category": "territorial_disputes",
+      "n_countries": 62,
+      "n_positive": 24,
+      "n_negative": 38,
+      "auc": 0.3486842105263158
+    },
+    {
+      "event_category": "terrorist_attack",
+      "n_countries": 69,
+      "n_positive": 32,
+      "n_negative": 37,
+      "auc": 0.542652027027027
+    },
+    {
+      "event_category": "trade_agreement",
+      "n_countries": 56,
+      "n_positive": 21,
+      "n_negative": 35,
+      "auc": 0.3904761904761904
+    },
+    {
+      "event_category": "trade_dispute",
+      "n_countries": 13,
+      "n_positive": 9,
+      "n_negative": 4,
+      "auc": 0.7777777777777778
+    },
+    {
+      "event_category": "transitional_justice",
+      "n_countries": 60,
+      "n_positive": 21,
+      "n_negative": 39,
+      "auc": 0.43101343101343104
+    },
+    {
+      "event_category": "urban_development",
+      "n_countries": 4,
+      "n_positive": 3,
+      "n_negative": 1,
+      "auc": null
+    },
+    {
+      "event_category": "volcanic_eruption",
+      "n_countries": 5,
+      "n_positive": 3,
+      "n_negative": 2,
+      "auc": 0.6666666666666666
+    },
+    {
+      "event_category": "water_crisis",
+      "n_countries": 4,
+      "n_positive": 4,
+      "n_negative": 0,
+      "auc": null
+    }
+  ],
+  "reliability_diagram": [
+    {
+      "bin_lo": 0.0,
+      "bin_hi": 0.1,
+      "n": 767,
+      "mean_prediction": 0.05213119384879973,
+      "event_rate": 0.42633637548891784,
+      "abs_calibration_gap": 0.3742051816401181
+    },
+    {
+      "bin_lo": 0.1,
+      "bin_hi": 0.2,
+      "n": 837,
+      "mean_prediction": 0.14519829589979716,
+      "event_rate": 0.47072879330943845,
+      "abs_calibration_gap": 0.3255304974096413
+    },
+    {
+      "bin_lo": 0.2,
+      "bin_hi": 0.30000000000000004,
+      "n": 665,
+      "mean_prediction": 0.24533675829380333,
+      "event_rate": 0.4781954887218045,
+      "abs_calibration_gap": 0.23285873042800118
+    },
+    {
+      "bin_lo": 0.30000000000000004,
+      "bin_hi": 0.4,
+      "n": 624,
+      "mean_prediction": 0.35107455073626914,
+      "event_rate": 0.4407051282051282,
+      "abs_calibration_gap": 0.08963057746885905
+    },
+    {
+      "bin_lo": 0.4,
+      "bin_hi": 0.5,
+      "n": 408,
+      "mean_prediction": 0.4475898559749748,
+      "event_rate": 0.4632352941176471,
+      "abs_calibration_gap": 0.015645438142672274
+    },
+    {
+      "bin_lo": 0.5,
+      "bin_hi": 0.6000000000000001,
+      "n": 279,
+      "mean_prediction": 0.54634025277976,
+      "event_rate": 0.4910394265232975,
+      "abs_calibration_gap": 0.05530082625646243
+    },
+    {
+      "bin_lo": 0.6000000000000001,
+      "bin_hi": 0.7000000000000001,
+      "n": 210,
+      "mean_prediction": 0.6443279697413238,
+      "event_rate": 0.46190476190476193,
+      "abs_calibration_gap": 0.18242320783656185
+    },
+    {
+      "bin_lo": 0.7000000000000001,
+      "bin_hi": 0.8,
+      "n": 143,
+      "mean_prediction": 0.7447547060910702,
+      "event_rate": 0.34265734265734266,
+      "abs_calibration_gap": 0.40209736343372754
+    },
+    {
+      "bin_lo": 0.8,
+      "bin_hi": 0.9,
+      "n": 52,
+      "mean_prediction": 0.8459665344132168,
+      "event_rate": 0.46153846153846156,
+      "abs_calibration_gap": 0.3844280728747552
+    },
+    {
+      "bin_lo": 0.9,
+      "bin_hi": 1.0,
+      "n": 106,
+      "mean_prediction": 0.9840710549363002,
+      "event_rate": 0.4528301886792453,
+      "abs_calibration_gap": 0.5312408662570549
+    }
+  ]
+}
