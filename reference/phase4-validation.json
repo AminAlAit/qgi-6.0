@@ -1,7 +1,13 @@
 {
   "schema_version": 1,
-  "generated": "2026-05-03T12:35:27.878223+00:00",
+  "generated": "2026-05-03T12:42:59.602053+00:00",
   "method": "anomaly_score = sum over (indicator in event_category) of |z_score| * weight. AUC computed per event_category against y_post_cutoff. ECE computed on per-category-min-max-scaled predictions, 10 bins.",
+  "method_caveats": [
+    "Imbalanced ground truth bias: ground truth excludes (country, event_category) cells where the country never had ANY event of that category (pre or post cutoff). High-base-rate categories (e.g. bilateral_treaty ~0.72) suppress discrimination signal. Mean AUC is therefore a LOWER bound on per-cell predictive power.",
+    "Reliability diagram is cross-category and reflects category-base-rate mixing, NOT per-category calibration. Bin-level event_rate values mix cells from categories with very different base rates. ECE here measures aggregate miscalibration, not per-category.",
+    "Scoring formula uses |z_score| (magnitude), losing direction. An indicator that predicts events when HIGH (e.g. debt-to-GDP) is treated identically to one that predicts events when LOW (e.g. democracy index). Signed scoring is methodology v2.",
+    "No baseline comparison: a uniform-weight or random-weight baseline AUC would tell us whether low AUC is caused by the weights being noise or by the scoring formula being the bottleneck. Tracked as follow-up ticket #598."
+  ],
   "config": {
     "cutoff_year": 2014,
     "end_year": 2025,
@@ -16,7 +22,9 @@
     "median_auc": 0.5022321428571428,
     "n_auc_above_0_55": 24,
     "n_auc_above_0_65": 8,
-    "ece": 0.23568511225671682
+    "ece": 0.23568511225671682,
+    "decision": "REVISIT",
+    "decision_rationale": "mean AUC 0.505 <= 0.55 \u2014 weights do not predict events better than random. Check methodology before downstream use."
   },
   "per_event_category_auc": [
     {
@@ -515,17 +523,17 @@
       "bin_lo": 0.0,
       "bin_hi": 0.1,
       "n": 767,
-      "mean_prediction": 0.052131193848799745,
+      "mean_prediction": 0.05213119384879973,
       "event_rate": 0.42633637548891784,
-      "abs_calibration_gap": 0.37420518164011807
+      "abs_calibration_gap": 0.3742051816401181
     },
     {
       "bin_lo": 0.1,
       "bin_hi": 0.2,
       "n": 837,
-      "mean_prediction": 0.1451982958997972,
+      "mean_prediction": 0.14519829589979716,
       "event_rate": 0.47072879330943845,
-      "abs_calibration_gap": 0.32553049740964124
+      "abs_calibration_gap": 0.3255304974096413
     },
     {
       "bin_lo": 0.2,
@@ -563,9 +571,9 @@
       "bin_lo": 0.6000000000000001,
       "bin_hi": 0.7000000000000001,
       "n": 210,
-      "mean_prediction": 0.6443279697413237,
+      "mean_prediction": 0.6443279697413238,
       "event_rate": 0.46190476190476193,
-      "abs_calibration_gap": 0.18242320783656174
+      "abs_calibration_gap": 0.18242320783656185
     },
     {
       "bin_lo": 0.7000000000000001,
@@ -579,9 +587,9 @@
       "bin_lo": 0.8,
       "bin_hi": 0.9,
       "n": 52,
-      "mean_prediction": 0.845966534413217,
+      "mean_prediction": 0.8459665344132168,
       "event_rate": 0.46153846153846156,
-      "abs_calibration_gap": 0.38442807287475544
+      "abs_calibration_gap": 0.3844280728747552
     },
     {
       "bin_lo": 0.9,
