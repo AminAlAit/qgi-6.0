@@ -263,3 +263,60 @@ def test_reliability_diagram_n_per_bin_sums_to_input():
     ece, rel = mod.compute_ece_and_reliability(scored, gt, n_bins=10)
     total_in_bins = sum(b["n"] for b in rel)
     assert total_in_bins == 50
+
+
+# ===========================================================================
+# Baseline weight builders (#598)
+# ===========================================================================
+
+def test_uniform_baseline_replaces_all_weights_with_one():
+    """build_uniform_baseline sets every weight to 1.0, preserves rest."""
+    weights_df = pd.DataFrame([
+        {"indicator_numeric_id": 1, "event_category": "X", "weight": 0.123, "extra": "keep"},
+        {"indicator_numeric_id": 2, "event_category": "Y", "weight": 0.456, "extra": "alsokeep"},
+    ])
+    out = mod.build_uniform_baseline(weights_df)
+    assert (out["weight"] == 1.0).all()
+    # Other columns preserved
+    assert list(out["indicator_numeric_id"]) == [1, 2]
+    assert list(out["event_category"]) == ["X", "Y"]
+    assert list(out["extra"]) == ["keep", "alsokeep"]
+    # Original df not mutated
+    assert weights_df["weight"].iloc[0] == 0.123
+
+
+def test_random_baseline_is_deterministic_with_seed():
+    """Same seed → same random weights (reproducibility)."""
+    weights_df = pd.DataFrame([
+        {"indicator_numeric_id": i, "event_category": "X", "weight": 0.5}
+        for i in range(20)
+    ])
+    out_a = mod.build_random_baseline(weights_df, seed=42)
+    out_b = mod.build_random_baseline(weights_df, seed=42)
+    pd.testing.assert_series_equal(out_a["weight"], out_b["weight"])
+
+    # Different seed → different draws
+    out_c = mod.build_random_baseline(weights_df, seed=99)
+    assert not (out_a["weight"] == out_c["weight"]).all(), \
+        "different seeds should produce different random draws"
+
+
+def test_random_baseline_weights_in_unit_interval():
+    """All random weights in [0, 1]."""
+    weights_df = pd.DataFrame([
+        {"indicator_numeric_id": i, "event_category": "X", "weight": 0.5}
+        for i in range(100)
+    ])
+    out = mod.build_random_baseline(weights_df, seed=7)
+    assert (out["weight"] >= 0.0).all()
+    assert (out["weight"] <= 1.0).all()
+
+
+def test_baselines_preserve_row_count():
+    """Both baselines return the same number of rows as input."""
+    weights_df = pd.DataFrame([
+        {"indicator_numeric_id": i, "event_category": "X", "weight": 0.5}
+        for i in range(42)
+    ])
+    assert len(mod.build_uniform_baseline(weights_df)) == 42
+    assert len(mod.build_random_baseline(weights_df, seed=0)) == 42

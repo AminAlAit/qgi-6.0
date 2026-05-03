@@ -94,6 +94,10 @@ ZSCORE_WINDOW_YEARS = 5
 # ECE binning: 10 equal-width bins on [0, 1] after min-max scaling.
 N_ECE_BINS = 10
 
+# Default seed for the random-weight baseline (#598). Fixed so re-runs
+# of the same validation report reproduce identical baseline AUCs.
+DEFAULT_BASELINE_SEED = 42
+
 
 # ---------------------------------------------------------------------------
 # Load the weight matrix
@@ -109,6 +113,79 @@ def load_weight_matrix() -> pd.DataFrame:
     print(f"  weight-matrix: {len(df)} rows ({d['n_full_eb_prior']} full EB, "
           f"{sum(df['used_fallback'])} fallback)")
     return df
+
+
+def build_uniform_baseline(weights_df: pd.DataFrame) -> pd.DataFrame:
+    """Replace every row's weight with 1.0, keeping the same (event_category,
+    indicator_numeric_id) coverage.
+
+    Tests the scoring formula in isolation. If uniform_AUC ≈ treatment_AUC,
+    the |z_score| × weight formula is doing all the work and the EB priors
+    contribute nothing. If uniform_AUC < treatment_AUC, the priors carry
+    real signal. Filed as #598.
+    """
+    out = weights_df.copy()
+    out["weight"] = 1.0
+    return out
+
+
+def build_random_baseline(weights_df: pd.DataFrame, seed: int) -> pd.DataFrame:
+    """Replace every row's weight with a uniform random sample from [0, 1].
+
+    Tests against pure noise. Random_AUC near 0.5 (and treatment_AUC also
+    near 0.5) is the worst-case signal — the methodology produces no
+    discrimination above chance.
+
+    Seed is fixed (default 42) so re-runs reproduce identical baseline
+    AUCs. Caller can override via --baseline-seed.
+    """
+    rng = np.random.default_rng(seed)
+    out = weights_df.copy()
+    out["weight"] = rng.uniform(0.0, 1.0, size=len(out))
+    return out
+
+
+def evaluate_weights(
+    weights_df: pd.DataFrame, zscores: pd.DataFrame,
+    country_id_to_str: dict, num_to_api: dict, gt: pd.DataFrame,
+    label: str,
+) -> dict:
+    """Run the full Phase 4 evaluation pipeline (score → per-category AUC →
+    ECE + reliability) on a weights DataFrame and return the summary dict.
+
+    Used for both the regular weight matrix and the baseline (uniform /
+    random) variants. The same scoring formula is used in all cases — only
+    the weights differ — which means any AUC delta is attributable to the
+    weights, not the formula.
+    """
+    print(f"\n[evaluate: {label}]")
+    scored = score_country_event(weights_df, zscores, country_id_to_str, num_to_api)
+    per_cat = compute_per_category_auc(scored, gt)
+    aucs_real = [c["auc"] for c in per_cat if c["auc"] is not None]
+    if aucs_real:
+        mean_auc = float(np.mean(aucs_real))
+        median_auc = float(np.median(aucs_real))
+        n_above_0_55 = sum(1 for a in aucs_real if a > 0.55)
+        n_above_0_65 = sum(1 for a in aucs_real if a > 0.65)
+    else:
+        mean_auc = median_auc = float("nan")
+        n_above_0_55 = n_above_0_65 = 0
+    ece, reliability = compute_ece_and_reliability(scored, gt)
+    print(f"  {label}: mean_auc={mean_auc:.4f}  median_auc={median_auc:.4f}  "
+          f"ece={ece:.4f}  n_categories_with_auc={len(aucs_real)}/{len(per_cat)}")
+    return {
+        "label": label,
+        "n_event_categories": len(per_cat),
+        "n_event_categories_with_auc": len(aucs_real),
+        "n_predictions": len(scored),
+        "mean_auc": mean_auc,
+        "median_auc": median_auc,
+        "n_auc_above_0_55": n_above_0_55,
+        "n_auc_above_0_65": n_above_0_65,
+        "ece": ece,
+        "per_event_category_auc": per_cat,
+        "reliability_diagram": reliability,
+    }
 
 
 # ---------------------------------------------------------------------------
@@ -291,7 +368,12 @@ def compute_ece_and_reliability(scored: pd.DataFrame, gt: pd.DataFrame,
 # Main
 # ---------------------------------------------------------------------------
 
-def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEAR) -> None:
+def main(
+    cutoff_year: int = DEFAULT_CUTOFF_YEAR,
+    end_year: int = DEFAULT_END_YEAR,
+    with_baselines: bool = False,
+    baseline_seed: int = DEFAULT_BASELINE_SEED,
+) -> None:
     print(f"[1] Loading weight matrix ({WEIGHT_MATRIX_JSON.name})")
     weights_df = load_weight_matrix()
 
@@ -337,38 +419,47 @@ def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEA
     zscores = compute_country_zscores(panel, cutoff_year)
     print(f"  z-scored cells: {len(zscores):,}")
 
-    print(f"\n[5] Scoring per (country, event_category)")
-    scored = score_country_event(weights_df, zscores, country_id_to_str, num_to_api)
-    print(f"  scored cells: {len(scored):,}")
+    print(f"\n[5] Evaluating weight matrices")
+    treatment = evaluate_weights(
+        weights_df, zscores, country_id_to_str, num_to_api, gt,
+        label="treatment_phase3_weights",
+    )
+    mean_auc = treatment["mean_auc"]
+    n_above_0_55 = treatment["n_auc_above_0_55"]
+    n_above_0_65 = treatment["n_auc_above_0_65"]
+    median_auc = treatment["median_auc"]
+    aucs_real = [c["auc"] for c in treatment["per_event_category_auc"] if c["auc"] is not None]
+    ece = treatment["ece"]
+    reliability = treatment["reliability_diagram"]
+    per_cat = treatment["per_event_category_auc"]
 
-    print(f"\n[6] Computing per-event-category AUC")
-    per_cat = compute_per_category_auc(scored, gt)
-    aucs_real = [c["auc"] for c in per_cat if c["auc"] is not None]
-    if aucs_real:
-        mean_auc = float(np.mean(aucs_real))
-        median_auc = float(np.median(aucs_real))
-        n_above_0_55 = sum(1 for a in aucs_real if a > 0.55)
-        n_above_0_65 = sum(1 for a in aucs_real if a > 0.65)
-    else:
-        mean_auc = median_auc = float("nan")
-        n_above_0_55 = n_above_0_65 = 0
-    print(f"  computable AUCs: {len(aucs_real)}/{len(per_cat)}")
-    print(f"  mean AUC: {mean_auc:.4f}  median AUC: {median_auc:.4f}")
-    print(f"  AUC > 0.55: {n_above_0_55}  AUC > 0.65: {n_above_0_65}")
+    baseline_uniform = None
+    baseline_random = None
+    if with_baselines:
+        baseline_uniform = evaluate_weights(
+            build_uniform_baseline(weights_df), zscores,
+            country_id_to_str, num_to_api, gt,
+            label="baseline_uniform",
+        )
+        baseline_random = evaluate_weights(
+            build_random_baseline(weights_df, seed=baseline_seed), zscores,
+            country_id_to_str, num_to_api, gt,
+            label=f"baseline_random_seed{baseline_seed}",
+        )
 
-    print(f"\n[7] Computing ECE + reliability diagram")
-    ece, reliability = compute_ece_and_reliability(scored, gt)
-    print(f"  ECE: {ece:.4f}")
-    print(f"  reliability bins (non-empty):")
+    # Reliability diagram log (treatment only — baselines' reliability is
+    # in the JSON but printing all 3 to stdout is noisy.)
+    print(f"\n[6] Treatment reliability bins (non-empty):")
     for b in reliability:
         if b["n"] > 0:
             print(f"    [{b['bin_lo']:.2f}, {b['bin_hi']:.2f}]  n={b['n']:>4d}  "
                   f"pred={b['mean_prediction']:.3f}  event_rate={b['event_rate']:.3f}  "
                   f"gap={b['abs_calibration_gap']:.3f}")
 
-    print(f"\n[8] Writing {OUTPUT_JSON}")
+    print(f"\n[7] Writing {OUTPUT_JSON}")
     # Resolve decision before writing JSON (so consumers don't re-implement the
-    # threshold logic). Sonnet review 2026-05-03 flagged this as MINOR #6.
+    # threshold logic). Sonnet review 2026-05-03 (Phase 4 v0.1) flagged this
+    # as MINOR #6.
     if not np.isfinite(mean_auc):
         decision = "INSUFFICIENT_DATA"
         decision_rationale = (
@@ -391,8 +482,24 @@ def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEA
             f"than random. Check methodology before downstream use."
         )
 
+    # When baselines are computed AND treatment_AUC is below the random
+    # baseline, that is a STRONGER REVISIT signal than just "below 0.55"
+    # — it means the scoring formula plus weights produces predictions
+    # WORSE than coin flips drawn from a hat. Sonnet review 2026-05-03
+    # (Phase 4 v0.2) flagged this as MINOR #2.
+    if (baseline_random is not None
+            and np.isfinite(mean_auc)
+            and np.isfinite(baseline_random["mean_auc"])
+            and mean_auc < baseline_random["mean_auc"]):
+        decision_rationale += (
+            f" Treatment AUC ({mean_auc:.3f}) is BELOW the random-weight "
+            f"baseline ({baseline_random['mean_auc']:.3f}); this is a "
+            f"strong signal that the scoring formula — not the weights "
+            f"— is the bottleneck."
+        )
+
     output = {
-        "schema_version": 1,
+        "schema_version": 2,  # bumped 2026-05-03 (#598): added baselines (uniform + random)
         "generated": datetime.now(timezone.utc).isoformat(),
         "method": (
             "anomaly_score = sum over (indicator in event_category) of "
@@ -415,21 +522,19 @@ def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEA
             "An indicator that predicts events when HIGH (e.g. debt-to-GDP) "
             "is treated identically to one that predicts events when LOW "
             "(e.g. democracy index). Signed scoring is methodology v2.",
-            "No baseline comparison: a uniform-weight or random-weight baseline "
-            "AUC would tell us whether low AUC is caused by the weights being "
-            "noise or by the scoring formula being the bottleneck. Tracked as "
-            "follow-up ticket #598.",
         ],
         "config": {
             "cutoff_year": cutoff_year,
             "end_year": end_year,
             "zscore_window_years": ZSCORE_WINDOW_YEARS,
             "n_ece_bins": N_ECE_BINS,
+            "with_baselines": with_baselines,
+            "baseline_seed": baseline_seed if with_baselines else None,
         },
         "summary": {
             "n_event_categories": len(per_cat),
             "n_event_categories_with_auc": len(aucs_real),
-            "n_predictions": len(scored),
+            "n_predictions": treatment["n_predictions"],
             "mean_auc": mean_auc,
             "median_auc": median_auc,
             "n_auc_above_0_55": n_above_0_55,
@@ -441,6 +546,38 @@ def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEA
         "per_event_category_auc": per_cat,
         "reliability_diagram": reliability,
     }
+
+    # Baselines (#598): when --with-baselines fires, attach the uniform and
+    # random-weight evaluation summaries as top-level keys. The treatment-vs-
+    # baseline comparison is what tells us whether the EB priors carry signal.
+    # Both baseline blocks include n_predictions so the Ihsa-convening
+    # sanity check (same pipeline, different weights → same n_predictions)
+    # is mechanical, not manual. Sonnet review (MINOR #3, Phase 4 v0.2).
+    if baseline_uniform is not None:
+        output["baseline_uniform"] = {
+            "mean_auc": baseline_uniform["mean_auc"],
+            "median_auc": baseline_uniform["median_auc"],
+            "ece": baseline_uniform["ece"],
+            "n_predictions": baseline_uniform["n_predictions"],
+            "n_event_categories_with_auc": baseline_uniform["n_event_categories_with_auc"],
+            "n_auc_above_0_55": baseline_uniform["n_auc_above_0_55"],
+            "n_auc_above_0_65": baseline_uniform["n_auc_above_0_65"],
+            "per_event_category_auc": baseline_uniform["per_event_category_auc"],
+            "reliability_diagram": baseline_uniform["reliability_diagram"],
+        }
+    if baseline_random is not None:
+        output["baseline_random"] = {
+            "seed": baseline_seed,
+            "mean_auc": baseline_random["mean_auc"],
+            "median_auc": baseline_random["median_auc"],
+            "ece": baseline_random["ece"],
+            "n_predictions": baseline_random["n_predictions"],
+            "n_event_categories_with_auc": baseline_random["n_event_categories_with_auc"],
+            "n_auc_above_0_55": baseline_random["n_auc_above_0_55"],
+            "n_auc_above_0_65": baseline_random["n_auc_above_0_65"],
+            "per_event_category_auc": baseline_random["per_event_category_auc"],
+            "reliability_diagram": baseline_random["reliability_diagram"],
+        }
     OUTPUT_JSON.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(f"    wrote validation report")
 
@@ -450,8 +587,27 @@ def main(cutoff_year: int = DEFAULT_CUTOFF_YEAR, end_year: int = DEFAULT_END_YEA
 
 if __name__ == "__main__":
     import argparse
-    p = argparse.ArgumentParser()
+    p = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
+    )
     p.add_argument("--cutoff-year", type=int, default=DEFAULT_CUTOFF_YEAR)
     p.add_argument("--end-year", type=int, default=DEFAULT_END_YEAR)
+    p.add_argument("--with-baselines", action="store_true",
+                   help="Run uniform-weight and random-weight baselines alongside "
+                        "the regular Phase 3 weights. Output JSON gets top-level "
+                        "`baseline_uniform` and `baseline_random` keys with the "
+                        "same shape as `summary`. This is the comparison the "
+                        "post-Phase-4 Ihsa convening uses to decide whether the "
+                        "weights carry signal vs the scoring formula being the "
+                        "bottleneck (#598). To force a refresh of the baselines, "
+                        "delete or rename `weight-matrix.json` and re-bake.")
+    p.add_argument("--baseline-seed", type=int, default=DEFAULT_BASELINE_SEED,
+                   help=f"Seed for the random-weight baseline (default {DEFAULT_BASELINE_SEED}). "
+                        "Fixed for reproducibility.")
     args = p.parse_args()
-    main(cutoff_year=args.cutoff_year, end_year=args.end_year)
+    main(
+        cutoff_year=args.cutoff_year,
+        end_year=args.end_year,
+        with_baselines=args.with_baselines,
+        baseline_seed=args.baseline_seed,
+    )
