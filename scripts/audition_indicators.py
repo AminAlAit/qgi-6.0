@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import io
 import json
 import subprocess
@@ -148,6 +149,70 @@ def load_indicator_panel(ath, bucket, workgroup, indicator_ids: list[str],
     df = pd.DataFrame(rows, columns=["country", "year", "indicator_id", "value"])
     df["year"] = df["year"].astype(int)
     df["value"] = df["value"].astype(float)
+    return df
+
+
+def _panel_cache_key(indicator_ids: list[str], start_year: int, end_year: int) -> str:
+    """Stable hash of the panel-query inputs.
+
+    The cache key MUST be:
+      - Order-independent on `indicator_ids` (caller passes a list, but
+        two equivalent panels should share a cache entry regardless of
+        input ordering).
+      - Duplicate-independent: ['VD-01', 'VD-01'] and ['VD-01'] produce
+        the same Athena result (the SQL `IN` clause de-duplicates),
+        so they MUST share a cache entry. `set()` handles both at once.
+
+    Sonnet review 2026-05-03 caught the duplicate-collision case: a stray
+    duplicate from upstream would have caused a cache miss on the
+    second call despite returning identical data.
+    """
+    payload = json.dumps(
+        {"ids": sorted(set(indicator_ids)), "lo": int(start_year), "hi": int(end_year)},
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()[:16]
+
+
+def _load_panel_with_cache(
+    ath, bucket: str, workgroup: str,
+    indicator_ids: list[str], start_year: int, end_year: int,
+    cache_dir: "Path | None" = None,
+) -> pd.DataFrame:
+    """Load panel with optional disk cache (#596).
+
+    When cache_dir is None: behavior is identical to load_indicator_panel
+    (the default path — Athena pull every invocation).
+
+    When cache_dir is provided:
+      - Compute a stable hash of (sorted indicator_ids, start_year, end_year)
+      - If {cache_dir}/panel_{hash}.parquet exists → load from disk, log hit
+      - Else → load_indicator_panel, write cache, log miss
+
+    Cache files are parquet (Snappy, pyarrow engine pinned) for fast
+    reload. Engine is pinned on BOTH read and write to keep dtype
+    semantics identical across cache hit/miss — fastparquet has slightly
+    different integer/timestamp handling and we want zero drift even if
+    a future image swaps the default. Sonnet review 2026-05-03 flagged
+    this as a latent risk.
+    """
+    if cache_dir is None:
+        return load_indicator_panel(ath, bucket, workgroup, indicator_ids, start_year, end_year)
+
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    key = _panel_cache_key(indicator_ids, start_year, end_year)
+    cache_path = cache_dir / f"panel_{key}.parquet"
+
+    if cache_path.exists():
+        df = pd.read_parquet(cache_path, engine="pyarrow")
+        print(f"[panel-cache HIT]  {cache_path.name}  ({len(df):,} rows; "
+              f"saved Athena pull for {len(indicator_ids)} indicators × "
+              f"{end_year - start_year + 1} years)")
+        return df
+
+    df = load_indicator_panel(ath, bucket, workgroup, indicator_ids, start_year, end_year)
+    df.to_parquet(cache_path, index=False, compression="snappy", engine="pyarrow")
+    print(f"[panel-cache MISS] {cache_path.name}  (wrote {len(df):,} rows for next run)")
     return df
 
 
@@ -1094,6 +1159,15 @@ def main() -> int:
                         "Optional. Currently informational only — override list "
                         "is empty per Ihsa I3 + #588 triple-confirmation analysis. "
                         "v2 (#586) will use this differently per Roshani's pivot.")
+    p.add_argument("--local-cache-dir", type=Path, default=None,
+                   help="If set, cache the indicator panel parquet to this "
+                        "directory keyed by hash of (needed_str_ids, panel_lo, "
+                        "panel_hi). Subsequent invocations with matching inputs "
+                        "skip the Athena pull entirely (#596 — saves S3 GETs + "
+                        "Athena scan cost across multi-run sessions like Phase 4 "
+                        "validation sweeps). Cache hits log a message; misses "
+                        "fall through to load_indicator_panel and write the cache "
+                        "for next time. Cache is opt-in; default behavior unchanged.")
     args = p.parse_args()
 
     # Validate Phase C flag combinations
@@ -1201,8 +1275,9 @@ def main() -> int:
     # Panel covers the union of all fold windows so we don't re-query per cutoff.
     panel_lo = min(cutoffs) - args.max_canonical_length
     panel_hi = max(cutoffs)
-    panel = load_indicator_panel(
-        ath, args.bucket, args.workgroup, needed_str_ids, panel_lo, panel_hi
+    panel = _load_panel_with_cache(
+        ath, args.bucket, args.workgroup, needed_str_ids, panel_lo, panel_hi,
+        cache_dir=args.local_cache_dir,
     )
     print(f"  panel rows: {len(panel)}  (years {panel_lo}..{panel_hi})")
     print(f"  rolling-CV cutoffs: {cutoffs}")
