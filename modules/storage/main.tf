@@ -73,24 +73,106 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
       days_after_initiation = 1
     }
   }
+
+  # #597: S3 server access logs land in s3-access-logs/ (self-logging).
+  # 7 days is enough for post-hoc forensics on cost spikes and security
+  # events. Server access logs are FREE to generate; the storage cost
+  # for 7 days at typical QGI request rates is trivial (~10-50 MB/day).
+  rule {
+    id     = "expire-access-logs"
+    status = "Enabled"
+    filter {
+      prefix = "s3-access-logs/"
+    }
+    expiration {
+      days = 7
+    }
+  }
 }
 
-# Allow management account to write to this bucket (for legacy data sync)
+# #597: S3 server access logging — enables post-hoc forensics on cost
+# spikes (which IAM principal opened how many objects in which prefix
+# at what hour). The May 2 2026 GET spike ($9.44 in one day) was
+# diagnosable only via Cost Explorer aggregates — couldn't attribute
+# the 22M GETs to a specific principal without these logs.
+#
+# Self-logging pattern: target_bucket = source_bucket. AWS prevents
+# infinite recursion (server access logs do NOT generate access log
+# events themselves). The s3-access-logs/ prefix has its own 7-day
+# lifecycle rule above to keep storage bounded.
+#
+# Cost: log generation is free, but the resulting PUTs and storage
+# incur standard S3 charges. Estimate at QGI's current request rate:
+# ~$2-5/month total (PUTs dominate; storage capped by 7-day expiry).
+# This is intentionally a small cost in exchange for incident
+# attribution — without these logs, we couldn't tell who triggered
+# the May 2 spike. The paid S3 Request Metrics filter is NOT enabled
+# (separate cost line); daily request-count visibility comes from
+# S3 Storage Lens free tier (ticket #594).
+#
+# Retention rationale (7 days): chosen for cost containment and
+# because the upstream cause (#592 SCDI fragmentation) explains the
+# bulk of cost spikes. If a future incident requires a longer
+# forensic window, bump to 30d in the lifecycle rule above — storage
+# stays trivial.
+#
+# Permission path: server access logging requires the logging service
+# principal (logging.s3.amazonaws.com) to write to the target prefix.
+# Default delivery uses the log-delivery-write canned ACL, but our
+# bucket has block_public_acls=true + ignore_public_acls=true (see
+# aws_s3_bucket_public_access_block below) — that ACL grant is
+# silently rejected. We instead grant the permission via bucket
+# policy below (modern ACL-free path with aws:SourceAccount guard).
+resource "aws_s3_bucket_logging" "data_lake" {
+  bucket        = aws_s3_bucket.data_lake.id
+  target_bucket = aws_s3_bucket.data_lake.id
+  target_prefix = "s3-access-logs/"
+
+  # Ensure the bucket policy is in place before logging is enabled,
+  # otherwise the first batch of log deliveries fails until the
+  # policy lands. Terraform usually orders this correctly via
+  # implicit dependency on the bucket, but be explicit.
+  depends_on = [aws_s3_bucket_policy.data_lake_cross_account]
+}
+
+# Allow management account to write to this bucket (for legacy data
+# sync) AND allow the S3 logging service principal to deliver server
+# access logs to the s3-access-logs/ prefix (#597). Both statements
+# live in one policy to keep policy management contained.
 resource "aws_s3_bucket_policy" "data_lake_cross_account" {
   bucket = aws_s3_bucket.data_lake.id
 
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Sid       = "AllowManagementAccountSync"
-      Effect    = "Allow"
-      Principal = { AWS = "arn:aws:iam::${var.management_account_id}:root" }
-      Action    = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
-      Resource = [
-        aws_s3_bucket.data_lake.arn,
-        "${aws_s3_bucket.data_lake.arn}/*"
-      ]
-    }]
+    Statement = [
+      {
+        Sid       = "AllowManagementAccountSync"
+        Effect    = "Allow"
+        Principal = { AWS = "arn:aws:iam::${var.management_account_id}:root" }
+        Action    = ["s3:PutObject", "s3:GetObject", "s3:ListBucket"]
+        Resource = [
+          aws_s3_bucket.data_lake.arn,
+          "${aws_s3_bucket.data_lake.arn}/*"
+        ]
+      },
+      {
+        # #597: ACL-free log delivery path. block_public_acls=true on
+        # the bucket would otherwise silently prevent the canned ACL
+        # path used by default S3 server access logging. The
+        # aws:SourceAccount condition prevents cross-account log
+        # injection (AWS best practice since 2023).
+        Sid       = "AllowS3LogDelivery"
+        Effect    = "Allow"
+        Principal = { Service = "logging.s3.amazonaws.com" }
+        Action    = "s3:PutObject"
+        Resource  = "${aws_s3_bucket.data_lake.arn}/s3-access-logs/*"
+        Condition = {
+          StringEquals = {
+            "aws:SourceAccount" = var.aws_account_id
+          }
+        }
+      }
+    ]
   })
 }
 
