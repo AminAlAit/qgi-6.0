@@ -1177,3 +1177,106 @@ resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge" {
 #   aws athena update-work-group --work-group QGI-Lambda-Workgroup \
 #     --configuration-updates '{"ResultReuseConfiguration":{"ResultReuseByAgeConfiguration":{"Enabled":true,"MaxAgeInMinutes":1440}}}'
 # Reduces Athena scan costs when Batch jobs re-query the same data (#109 P1-6).
+
+# ---------------------------------------------------------------------------
+# #594: Daily S3 cost alert via AWS Budgets (FREE: 2 budgets/account allowed)
+# ---------------------------------------------------------------------------
+#
+# May 2 2026 had a $10.14 S3 cost spike that was completely invisible until
+# the bill arrived 24+ hours later. This budget alerts the moment Cost
+# Explorer detects S3 spend > $3 in a single day, giving us same-day signal
+# vs. the prior end-of-week surprise.
+#
+# Why AWS Budgets instead of CloudWatch alarm on S3 request count:
+#   - The alarm path requires S3 Storage Lens Advanced tier (~$0.36/mo for
+#     1.8M-object bucket) since the FREE Storage Lens tier does not expose
+#     GetRequests/PutRequests/AllRequests. Founder constraint is explicitly
+#     ZERO new ongoing cost — Budgets is the only $0 path that catches the
+#     spike same-day. (Sonnet research 2026-05-03 documented full trade-off.)
+#   - Budgets alerts on dollar cost (the actual harm signal), not request
+#     count. More directly actionable.
+#   - 2 budgets per account are FREE; we use 1.
+#
+# Threshold rationale: $3/day picks up the May 2 incident ($10.14) cleanly
+# and stays above QGI's typical daily S3 spend of ~$0.30. Tunable via
+# var if needed for QA/prod.
+#
+# Latency: Cost Explorer cost data lags ~12-24h. The budget fires when AWS
+# detects daily spend crossing the threshold — typically next-morning
+# rather than real-time. This is the same lag we'd get from CloudWatch
+# request metrics anyway (S3 request metrics are also daily).
+
+resource "aws_sns_topic" "cost_alerts" {
+  name         = "qgi-${var.environment}-cost-alerts"
+  display_name = "QGI Cost Alerts"
+  tags         = var.tags
+}
+
+# Permission for AWS Budgets to publish to this SNS topic. Without this,
+# Budgets' Publish call is silently denied — Budgets does NOT surface a
+# permission error in the console; alarms simply don't fire.
+#
+# The aws:SourceAccount condition prevents the confused-deputy attack
+# (per AWS 2023+ guidance for Budgets→SNS). Without it, a Budget in any
+# AWS account could legitimately publish to this topic if they happen
+# to know its ARN. Mirrors the pattern used by AllowS3LogDelivery
+# above for the access-logs prefix.
+resource "aws_sns_topic_policy" "cost_alerts" {
+  arn = aws_sns_topic.cost_alerts.arn
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Sid       = "AllowBudgetsToPublish"
+      Effect    = "Allow"
+      Principal = { Service = "budgets.amazonaws.com" }
+      Action    = "SNS:Publish"
+      Resource  = aws_sns_topic.cost_alerts.arn
+      Condition = {
+        StringEquals = {
+          "aws:SourceAccount" = var.aws_account_id
+        }
+      }
+    }]
+  })
+}
+
+# Daily S3 cost budget. Fires SNS notification when single-day actual spend
+# crosses $3. Uses ACTUAL (not forecasted) so we react to real charges,
+# not predictions (FORECASTED would create false positives on bursty
+# pipeline runs).
+resource "aws_budgets_budget" "s3_daily" {
+  name         = "qgi-${var.environment}-s3-daily"
+  budget_type  = "COST"
+  limit_amount = "3.00"
+  limit_unit   = "USD"
+  time_unit    = "DAILY"
+
+  cost_filter {
+    name   = "Service"
+    values = ["Amazon Simple Storage Service"]
+  }
+
+  notification {
+    comparison_operator = "GREATER_THAN"
+    # 100% of the $3.00 limit = fires at >= $3.00 actual spend.
+    # Threshold is a PERCENTAGE of limit_amount, not a raw dollar value.
+    threshold                 = 100
+    threshold_type            = "PERCENTAGE"
+    notification_type         = "ACTUAL"
+    subscriber_sns_topic_arns = [aws_sns_topic.cost_alerts.arn]
+  }
+
+  tags = var.tags
+
+  # Topic policy must be attached BEFORE Budgets tries to publish.
+  # Terraform cannot infer this from the topic-arn reference alone
+  # (the policy is a side-effect on the topic, not a return value).
+  depends_on = [aws_sns_topic_policy.cost_alerts]
+}
+
+# To get email or other notifications when this fires, add an
+# aws_sns_topic_subscription pointing at contact@qgintelligence.com (the QGI
+# ops alarm inbox per .claude/memory). Subscriptions require email
+# confirmation outside Terraform — left out of this module to avoid
+# imperatively triggering confirmation flows. Add per-environment in the
+# environments/*/main.tf if desired.
