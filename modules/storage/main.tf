@@ -24,12 +24,16 @@ resource "aws_s3_bucket_versioning" "data_lake" {
 resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   bucket = aws_s3_bucket.data_lake.id
 
-  # Athena temp results — expire after 14 days (#419, tightened from
-  # #69's original 30 days). Staging bucket had 594 GB / 48,080 objects
-  # accumulated under this prefix despite the 30-day rule, costing ~\$14/mo
-  # on S3 Standard alone. 14 days covers any reasonable debugging window
-  # (re-reading last week's query results) while trimming the long tail
-  # that nobody revisits. Expected savings: ~\$7/mo per environment.
+  # Athena temp results — expire after 1 day (#593, tightened from #419's
+  # 14 days, which itself was tightened from #69's 30 days). May 2026 S3
+  # cost-spike forensic (cost spike occurred 2026-05-02; forensic run
+  # 2026-05-03) revealed: median file size in this prefix is 100 BYTES
+  # (Athena workgroup metadata), with thousands of tiny files
+  # accumulating per script session. Athena CSV results are never
+  # re-read after the originating session ends — the 14-day window was
+  # pure cost overhead with no operational benefit. 1 day covers any
+  # reasonable in-session re-fetch window. The `pipeline-B-scdi-finder/`
+  # fragmentation problem is a separate ticket (#592 + #595).
   rule {
     id     = "expire-query-results"
     status = "Enabled"
@@ -37,7 +41,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
       prefix = "query_results/"
     }
     expiration {
-      days = 14
+      days = 1
     }
   }
 
