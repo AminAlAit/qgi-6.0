@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated": "2026-05-03T13:33:24.378840+00:00",
+  "generated": "2026-05-03T13:39:14.386259+00:00",
   "method": "anomaly_score = sum over (indicator in event_category) of |z_score| * weight. AUC computed per event_category against y_post_cutoff. ECE computed on per-category-min-max-scaled predictions, 10 bins.",
   "method_caveats": [
     "Imbalanced ground truth bias: ground truth excludes (country, event_category) cells where the country never had ANY event of that category (pre or post cutoff). High-base-rate categories (e.g. bilateral_treaty ~0.72) suppress discrimination signal. Mean AUC is therefore a LOWER bound on per-cell predictive power.",
@@ -25,7 +25,7 @@
     "n_auc_above_0_65": 8,
     "ece": 0.23568511225671682,
     "decision": "REVISIT",
-    "decision_rationale": "mean AUC 0.505 <= 0.55 \u2014 weights do not predict events better than random. Check methodology before downstream use."
+    "decision_rationale": "mean AUC 0.505 <= 0.55 \u2014 weights do not predict events better than random. Check methodology before downstream use. Treatment AUC (0.505) is BELOW the random-weight baseline (0.508); this is a strong signal that the scoring formula \u2014 not the weights \u2014 is the bottleneck."
   },
   "per_event_category_auc": [
     {
@@ -605,6 +605,7 @@
     "mean_auc": 0.5017822300474198,
     "median_auc": 0.4939903846153846,
     "ece": 0.2287060348947601,
+    "n_predictions": 12250,
     "n_event_categories_with_auc": 68,
     "n_auc_above_0_55": 25,
     "n_auc_above_0_65": 8,
@@ -1188,6 +1189,7 @@
     "mean_auc": 0.5076633506847257,
     "median_auc": 0.5,
     "ece": 0.236760839930753,
+    "n_predictions": 12250,
     "n_event_categories_with_auc": 68,
     "n_auc_above_0_55": 22,
     "n_auc_above_0_65": 9,
