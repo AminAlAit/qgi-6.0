@@ -743,21 +743,43 @@ def write_recipes_aggregated_table(force: bool = False):
         -- Per-category point estimates. Single pass over the temp table.
         -- A3 cascade M1: canonical_length is the CORRELATION-WEIGHTED median
         -- of pattern lengths within the category (Ihsa I1 vote 2026-05-02).
-        -- Trino approx_percentile(value, weight, percentage) requires a
-        -- POSITIVE double weight. The temp_table CTAS above filters
-        -- WHERE abs(avg_correlation) >= 0.75 (M2), so all rows here have
-        -- weight >= 0.75 > 0. NULL avg_correlation is excluded by that
-        -- filter as well (NULL >= 0.75 is unknown → row dropped).
-        -- Therefore: M1 is correctness-coupled to M2 firing first.
-        -- Future maintainers: do NOT remove the M2 filter without also
-        -- adding a `WHERE avg_correlation IS NOT NULL AND avg_correlation != 0`
-        -- guard here.
+        --
+        -- Trino approx_percentile(value, weight, percentage) requires
+        -- weight >= 1 (the function treats weight as a per-item count and
+        -- raises INVALID_FUNCTION_ARGUMENT at runtime if any weight < 1).
+        -- After the M2 filter abs(avg_correlation) >= 0.75 in the temp
+        -- table, every weight is in [0.75, 1.0] — every row would crash.
+        -- We multiply by 100.0 to lift weights into [75, 100]. Because
+        -- approx_percentile uses weights as RELATIVE counts, scaling
+        -- every weight by the same constant is mathematically a no-op:
+        -- the weighted median is unchanged. The *100.0 is purely a
+        -- runtime-constraint workaround, not a methodology change.
+        --
+        -- Headroom: the minimum safe multiplier at threshold T is
+        -- ceil(1.0 / T) (at T=0.75 the minimum is 2; at T=0.10 it is
+        -- 10). With multiplier=100 the M2 threshold can safely drop as
+        -- low as 0.01 (=> 0.01 * 100 = 1) without violating weight>=1.
+        -- If the threshold is ever lowered below 0.01, this multiplier
+        -- MUST be raised in lockstep — otherwise the SQL silently
+        -- crashes the moment any |corr| in the data falls below 0.01.
+        --
+        -- Caught by smoke test 2026-05-03 (qid 0d1be98a). The unit tests
+        -- in tests/unit/pipeline-recipe-engine-finalize/ inspect SQL
+        -- source text and could not have caught this — it is a Trino
+        -- runtime constraint not visible from the SQL alone.
+        --
+        -- Correctness coupling (still holds): M1 weighted-median is
+        -- valid only when M2 has fired. NULL avg_correlation is excluded
+        -- by M2 (NULL >= 0.75 is unknown → row dropped). Future
+        -- maintainers: do NOT remove the M2 filter without also adding
+        -- `WHERE avg_correlation IS NOT NULL AND avg_correlation != 0`
+        -- here.
         category_basics AS (
             SELECT
                 event_category,
                 cast(approx_percentile(
                     cast(length as double),
-                    abs(cast(avg_correlation as double)),
+                    abs(cast(avg_correlation as double)) * 100.0,
                     0.5
                 ) as smallint) AS canonical_length,
                 cast(count(distinct recipe_id) as bigint) AS total_instances,

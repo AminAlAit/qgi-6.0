@@ -184,16 +184,47 @@ def test_m2_filter_present_in_temp_table_ctas():
 
 
 def test_m1_weighted_approx_percentile_present():
-    """M1: canonical_length must use 3-arg approx_percentile(value, weight, 0.5)."""
+    """M1: canonical_length must use 3-arg approx_percentile(value, weight, 0.5)
+    with the weight scaled by 100.0.
+
+    THIS TEST IS ALSO THE REGRESSION GUARD for the *100.0 scaling. Removing
+    the `* 100.0` from the source causes the pattern below not to match,
+    and this test fails. There is no separate negative-form guard — Sonnet
+    review 2026-05-03 caught that a [^)]*? guard would silently no-op
+    against the multi-line SQL, so the positive form does the work.
+
+    Why *100.0 is required:
+
+      Trino's approx_percentile requires weight >= 1 (treats weight as a
+      per-item count and raises INVALID_FUNCTION_ARGUMENT at runtime if
+      any weight is below 1). After the M2 filter abs(avg_correlation) >=
+      0.75, every row's weight is in [0.75, 1.0] — every row would crash.
+      The *100.0 lifts weights into [75, 100]. Scaling all weights by the
+      same constant is a mathematical no-op for weighted percentile
+      (uses ratios), but is required to satisfy the runtime constraint.
+
+    Caught by smoke test 2026-05-03 (qid 0d1be98a) — the SQL would have
+    crashed Greenlight 5 without the *100.0. The unit tests in this file
+    cannot catch a Trino *runtime* constraint by source-text inspection
+    alone; the staging smoke is the only path that finds it. This test
+    pins the source to the *post-fix* form so a future maintainer can't
+    remove the *100.0 without breaking CI.
+    """
     pattern = (
         r"approx_percentile\s*\(\s*\n?\s*"
         r"cast\s*\(\s*length\s+as\s+double\s*\)\s*,\s*\n?\s*"
-        r"abs\s*\(\s*cast\s*\(\s*avg_correlation\s+as\s+double\s*\)\s*\)\s*,\s*\n?\s*"
+        r"abs\s*\(\s*cast\s*\(\s*avg_correlation\s+as\s+double\s*\)\s*\)\s*\*\s*100\.0\s*,\s*\n?\s*"
         r"0\.5\s*\n?\s*\)"
     )
     assert re.search(pattern, _LAMBDA_SOURCE, re.IGNORECASE), (
-        "M1 weighted approx_percentile not found. Expected:\n"
-        "  approx_percentile(cast(length as double), abs(cast(avg_correlation as double)), 0.5)"
+        "M1 weighted approx_percentile (with *100.0 scaling) not found. Expected:\n"
+        "  approx_percentile(\n"
+        "      cast(length as double),\n"
+        "      abs(cast(avg_correlation as double)) * 100.0,\n"
+        "      0.5\n"
+        "  )\n"
+        "The *100.0 satisfies Trino's weight>=1 runtime constraint. Removing\n"
+        "it will cause the lambda to crash at runtime once the SQL hits Athena."
     )
 
 
