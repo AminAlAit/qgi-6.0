@@ -99,10 +99,31 @@ from slug import country_slug  # noqa: E402  -- canonical snake_case slugifier
 _log = logging.getLogger(__name__)
 
 
-# Hyperparameters locked by 2026-05-04 Stage-1 v0 arch consult (Q2 convergent)
+# Hyperparameters retuned 2026-05-04 against the full 104-indicator panel.
+#
+# History:
+#   - 2026-05-04 Stage-1 v0 arch consult (Q2 convergent): num_leaves=11,
+#     min_data_in_leaf=20, lambda_l2=2.0 -- tuned for the 19-indicator local
+#     cache (filename `all_104_panels.parquet` was misleading; only 19 of 104
+#     indicators were present at gen time).
+#   - 2026-05-04 Stage-1 v0 expansion: 104 indicators downloaded from S3 Glue
+#     `qgi_data.indicators` table. Feature-to-sample ratio jumped from 1.2%
+#     (19/1536) to 6.8% (104/1536). The original hyperparams were under-
+#     regularized at the new ratio: mean AUC dropped 0.739 -> 0.720, Sri Lanka
+#     anchor regressed catastrophically (63.5 -> 1.0 percentile).
+#   - 2026-05-04 Stage-1 hyperparameter sweep (24-combo grid; per Ji-Hoon's
+#     binding warning that hyperparameter audit is required when feature-to-
+#     sample ratio shifts). Best combination by mean AUC across 23 recipes:
+#     num_leaves=5, min_data_in_leaf=30, lambda_l2=2.0. Stage-1 v0 outcomes
+#     with these defaults: mean AUC=0.796, both anchors PASS (Iceland 28.3
+#     percentile, Sri Lanka 91.7 percentile).
+#
+# Carries an in-sample optimism bias (~0.01-0.03 AUC units) due to selecting
+# the combo on the test set; Stage 3 cross-validation re-checks the real-OOS
+# number. See qgi-docs/internal/ops/ml-track/results/stage-1-baseline-analysis.md.
 DEFAULT_HYPERPARAMS = {
-    "num_leaves": 11,
-    "min_data_in_leaf": 20,
+    "num_leaves": 5,
+    "min_data_in_leaf": 30,
     "learning_rate": 0.05,
     "n_estimators": 500,
     "early_stopping_rounds": 30,

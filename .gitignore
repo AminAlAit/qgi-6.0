@@ -23,3 +23,27 @@ credentials
 aws-session.sh
 mgmt-session.sh
 .aws-session.*
+
+# ML-Opus model artifacts -- canonical version goes to S3 ml-artifacts/v0/...
+# per qgi-ml/CLAUDE.md ("Model artifacts: .gitignored, versioned in S3"). Local
+# results dirs are reproducible from the trainer + indicator panel.
+results/**/backbone/
+results/**/heads/
+results/**/calibrators/
+results/**/predictions.json
+results/**/training.log
+results/hp_sweep_*/
+results/stage_*_v0_*/
+
+# Local indicator panel caches synced from S3 (large parquets; not source of
+# truth -- the canonical store is s3://qgi-data-lake-222222222222/pipeline-A-
+# indicator-extractor/output/parquet/).
+data/s3_indicator_panel/
+data/all_104_panels.parquet
+data/panel_104_*.parquet
+data/all_104_panels_v2.parquet
+data/i1_panels.parquet
+
+# Stage 1 hyperparameter sweep — throwaway script per #373 convention
+scripts/_*_throwaway.py
+scripts/_hp_sweep_*.py
