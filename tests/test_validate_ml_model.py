@@ -104,6 +104,30 @@ def test_bootstrap_auc_ci_rejects_invalid_confidence():
         v.bootstrap_auc_ci(np.array([0.5]), np.array([1]), confidence=1.5)
 
 
+def test_bootstrap_auc_ci_returns_delta_vs_baseline():
+    """Per spec F2: 'AUC delta vs naive base-rate classifier' -- baseline_auc=0.5
+    by default; impl returns delta_point + delta_ci_low/high."""
+    preds = np.array([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+    labels = np.array([0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
+    out = v.bootstrap_auc_ci(preds, labels, n_bootstrap=200, seed=0, baseline_auc=0.5)
+    assert out["baseline_auc"] == 0.5
+    assert out["delta_point"] == out["auc_point"] - 0.5
+    # CI on delta is just CI on AUC shifted by -0.5
+    assert abs(out["delta_ci_low"] - (out["auc_ci_low"] - 0.5)) < 1e-9
+    assert abs(out["delta_ci_high"] - (out["auc_ci_high"] - 0.5)) < 1e-9
+    # Method recorded for Stage 1 BCa upgrade audit trail
+    assert out["method"] == "percentile"
+
+
+def test_bootstrap_auc_ci_custom_baseline():
+    """Caller can compare to a backbone or multi-task v0 baseline AUC."""
+    preds = np.array([0.1, 0.2, 0.8, 0.9])
+    labels = np.array([0, 0, 1, 1])
+    out = v.bootstrap_auc_ci(preds, labels, n_bootstrap=100, seed=0, baseline_auc=0.7)
+    assert out["baseline_auc"] == 0.7
+    assert abs(out["delta_point"] - (out["auc_point"] - 0.7)) < 1e-9
+
+
 # ---------- compute_ece_and_reliability ----------
 
 
@@ -257,6 +281,42 @@ def test_evaluate_anchor_case_sentinel_returns_deferred():
     preds = [_mk_pred("Norway", 2020, "civil_war_and_insurgency", 0.1)]
     out = v.evaluate_anchor_case(case, preds)
     assert out["status"] == "DEFERRED_TO_STAGE_1"
+
+
+def test_evaluate_anchor_case_rank_stability_not_yet_implemented():
+    """Venezuela case 6 (rank stability) requires multi-version comparison;
+    documented as NOT_YET_IMPLEMENTED in v1, not silently SKIPPED."""
+    case = {
+        "id": 6, "country": "Venezuela", "recipe": "economic_recession",
+        "expected_rank_volatility_max": 0.10,
+        # No expected_rank_band
+    }
+    out = v.evaluate_anchor_case(case, [])
+    assert out["status"] == "NOT_YET_IMPLEMENTED"
+    assert out["expected_rank_volatility_max"] == 0.10
+    assert "multi-version" in out["reason"]
+
+
+def test_evaluate_anchor_case_multi_row_window_takes_mean(caplog):
+    """When a country appears multiple times in a multi-year window, take
+    mean probability + log a warning so Stage 1 can confirm aggregation choice."""
+    case = {
+        "id": 99, "country": "Venezuela", "recipe": "economic_recession",
+        "year_window": [2018, 2020],  # multi-year
+        "expected_rank_band": [0.5, 1.0],
+    }
+    preds = [
+        _mk_pred("Venezuela", 2018, "economic_recession", 0.6),
+        _mk_pred("Venezuela", 2019, "economic_recession", 0.8),
+        _mk_pred("Venezuela", 2020, "economic_recession", 0.9),
+    ] + [_mk_pred(f"c{i}", 2019, "economic_recession", i * 0.005) for i in range(50)]
+    with caplog.at_level("WARNING", logger="validate_ml_model"):
+        out = v.evaluate_anchor_case(case, preds)
+    # Should use mean probability across Venezuela's 3 rows
+    assert out["country_prob_aggregation"] == "mean"
+    assert abs(out["country_prob"] - (0.6 + 0.8 + 0.9) / 3) < 1e-9
+    # Warning emitted
+    assert any("3 prediction rows" in r.message for r in caplog.records)
 
 
 # ---------- evaluate_anchor_battery ----------
