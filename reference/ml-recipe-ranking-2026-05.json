@@ -1,0 +1,2131 @@
+{
+  "schema_version": 1,
+  "generated_for_stage": "ml-track stage-0 pre-registration",
+  "training_window": [
+    2014,
+    2025
+  ],
+  "weights": {
+    "A": 0.35,
+    "B": 0.25,
+    "C": 0.25,
+    "D": 0.15
+  },
+  "hard_gate": {
+    "min_n_positive": 8
+  },
+  "factor_d_params": {
+    "top_n": 20,
+    "divisor": 5,
+    "min_shared_indicators": 3
+  },
+  "factor_c_divisor": 10,
+  "n_categories_total": 71,
+  "n_categories_excluded_by_hard_gate": 7,
+  "n_indicators_in_sector_map": 142,
+  "sources": {
+    "category_mapping_path": "qgi-data\\events\\taxonomy_hierarchy.json",
+    "category_mapping_sha256": "89e3b29aaf57bbacd7d6a6c5dc0c445b6eb9348e3dd649751aa281e95f0e9c20",
+    "indicator_sectors_path": "qgi-data\\reference\\indicator-sectors.json",
+    "indicator_sectors_sha256": "2cdb01c4fa1e009cc8786bcd613859c211e3b0d679149ecf9ba304109e0566bf",
+    "events_curated_dir": "qgi-data\\events\\curated",
+    "events_curated_n_files": 197,
+    "events_curated_state_hash_in_window": "bdd324b8afb8d02f9e66d5e788bd4850cd89ad2641474f477b05521b7ee58dae",
+    "events_in_window": 4132
+  },
+  "notes": [
+    "Factor C uses SECTOR PROXY -- direction-of-effect annotations not yet present in catalog.",
+    "F5 head_class is a hint, not a binding contract; Stage 2 may revert survival -> GBM via Rule F3.",
+    "Excluded categories (n_positive < 8) are listed at the bottom with rank=None.",
+    "B=0.0 categories indicate gradient definitions; revisit at next Majles convening."
+  ],
+  "ranking": [
+    {
+      "rank": 1,
+      "category_id": "elections_and_voting",
+      "layer1_id": "A",
+      "layer2_id": "A1",
+      "layer3_label": "Electoral Politics",
+      "n_positive": 413,
+      "n_positive_verified": 42,
+      "A": 1.0,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 1.0,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "NELDA",
+        "IFES",
+        "V-Dem v2xel_frefair"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 40,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 2,
+      "category_id": "epidemic_and_pandemic",
+      "layer1_id": "G",
+      "layer2_id": "G3",
+      "layer3_label": "Epidemic & Pandemic",
+      "n_positive": 179,
+      "n_positive_verified": 20,
+      "A": 0.4334,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.7717,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "WHO",
+        "EM-DAT"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "FOOD_RES"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 3,
+      "category_id": "mass_protest",
+      "layer1_id": "E",
+      "layer2_id": "E1",
+      "layer3_label": "Mass Protest",
+      "n_positive": 132,
+      "n_positive_verified": 24,
+      "A": 0.3196,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7619,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "ACLED protests",
+        "Mass Mobilization Database"
+      ],
+      "relevant_sectors": [
+        "SOC_MOBIL",
+        "REPRESSION",
+        "LABOR_SOC",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 65,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 4,
+      "category_id": "constitutional_change",
+      "layer1_id": "A",
+      "layer2_id": "A3",
+      "layer3_label": "Constitutional Change",
+      "n_positive": 120,
+      "n_positive_verified": 12,
+      "A": 0.2906,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7517,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "CCP (Comparative Constitutions Project)"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 31,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 5,
+      "category_id": "civil_war_and_insurgency",
+      "layer1_id": "B",
+      "layer2_id": "B2",
+      "layer3_label": "Civil War & Insurgency",
+      "n_positive": 119,
+      "n_positive_verified": 36,
+      "A": 0.2881,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7508,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UCDP intrastate conflict onset"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "REPRESSION",
+        "GOV_INST",
+        "DISPLACE"
+      ],
+      "n_relevant_indicators": 53,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 6,
+      "category_id": "migration_and_refugees",
+      "layer1_id": "E",
+      "layer2_id": "E6",
+      "layer3_label": "Migration & Refugees",
+      "n_positive": 114,
+      "n_positive_verified": 23,
+      "A": 0.276,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7466,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UNHCR refugee statistics"
+      ],
+      "relevant_sectors": [
+        "DISPLACE",
+        "CONFLICT",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 36,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 7,
+      "category_id": "multilateral_agreement",
+      "layer1_id": "F",
+      "layer2_id": "F2",
+      "layer3_label": "Multilateral Agreements",
+      "n_positive": 95,
+      "n_positive_verified": 15,
+      "A": 0.23,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7305,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UN treaty database"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 8,
+      "category_id": "peacekeeping_and_peace_process",
+      "layer1_id": "A",
+      "layer2_id": "A8",
+      "layer3_label": "Peacekeeping & Peace Process",
+      "n_positive": 80,
+      "n_positive_verified": 13,
+      "A": 0.1937,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7178,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UCDP PA-X peace agreement database"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "CONFLICT"
+      ],
+      "n_relevant_indicators": 33,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 9,
+      "category_id": "terrorist_attack",
+      "layer1_id": "B",
+      "layer2_id": "B3",
+      "layer3_label": "Terrorism & Extremism",
+      "n_positive": 73,
+      "n_positive_verified": 15,
+      "A": 0.1768,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7119,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "GTD",
+        "ACLED"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 21,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 10,
+      "category_id": "bilateral_treaty",
+      "layer1_id": "F",
+      "layer2_id": "F1",
+      "layer3_label": "Bilateral Treaties",
+      "n_positive": 214,
+      "n_positive_verified": 24,
+      "A": 0.5182,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7064,
+      "F2": 3,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "QGI internal curation; news-derived"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 11,
+      "category_id": "government_formation",
+      "layer1_id": "A",
+      "layer2_id": "A2",
+      "layer3_label": "Government Formation",
+      "n_positive": 210,
+      "n_positive_verified": 31,
+      "A": 0.5085,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.703,
+      "F2": 3,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 31,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 12,
+      "category_id": "territorial_disputes",
+      "layer1_id": "F",
+      "layer2_id": "F4",
+      "layer3_label": "Territorial Disputes",
+      "n_positive": 62,
+      "n_positive_verified": 11,
+      "A": 0.1501,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7025,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "ICOW Territorial Claims"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "CONFLICT"
+      ],
+      "n_relevant_indicators": 33,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 13,
+      "category_id": "political_violence",
+      "layer1_id": "B",
+      "layer2_id": "B6",
+      "layer3_label": "Political Violence",
+      "n_positive": 61,
+      "n_positive_verified": 7,
+      "A": 0.1477,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.7017,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UCDP one-sided violence",
+        "ACLED"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "REPRESSION",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 14,
+      "category_id": "regional_integration",
+      "layer1_id": "F",
+      "layer2_id": "F5",
+      "layer3_label": "Regional Integration",
+      "n_positive": 54,
+      "n_positive_verified": 4,
+      "A": 0.1308,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6958,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "EU/AU/ASEAN accession lists"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "ECON_FISC",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 57,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 15,
+      "category_id": "sanctions_and_arms_embargo",
+      "layer1_id": "D",
+      "layer2_id": "D7",
+      "layer3_label": "Trade & Investment",
+      "n_positive": 52,
+      "n_positive_verified": 12,
+      "A": 0.1259,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6941,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "GSDB Global Sanctions Database",
+        "SIPRI arms embargo"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "ECON_FISC",
+        "CONFLICT"
+      ],
+      "n_relevant_indicators": 47,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 16,
+      "category_id": "economic_recession",
+      "layer1_id": "D",
+      "layer2_id": "D2",
+      "layer3_label": "Economic Recession & Austerity",
+      "n_positive": 83,
+      "n_positive_verified": 10,
+      "A": 0.201,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.6903,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "IMF WEO NGDP_RPCH contraction"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 17,
+      "category_id": "climate_agreement",
+      "layer1_id": "H",
+      "layer2_id": "H3",
+      "layer3_label": "Climate Agreements",
+      "n_positive": 45,
+      "n_positive_verified": 2,
+      "A": 0.109,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6881,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UNFCCC NDC database"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 25,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 18,
+      "category_id": "humanitarian_crisis",
+      "layer1_id": "G",
+      "layer2_id": "G4",
+      "layer3_label": "Humanitarian Crisis",
+      "n_positive": 43,
+      "n_positive_verified": 9,
+      "A": 0.1041,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6864,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UNOCHA",
+        "IOM"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "DISPLACE",
+        "FOOD_RES"
+      ],
+      "n_relevant_indicators": 38,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 19,
+      "category_id": "foreign_intervention",
+      "layer1_id": "B",
+      "layer2_id": "B4",
+      "layer3_label": "Foreign Military Intervention",
+      "n_positive": 42,
+      "n_positive_verified": 13,
+      "A": 0.1017,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6856,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "COW intervention dataset",
+        "UCDP"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "DIPLO_GEO"
+      ],
+      "n_relevant_indicators": 33,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 20,
+      "category_id": "trade_agreement",
+      "layer1_id": "D",
+      "layer2_id": "D7",
+      "layer3_label": "Trade & Investment",
+      "n_positive": 42,
+      "n_positive_verified": 11,
+      "A": 0.1017,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6856,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "WTO RTA database"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "DIPLO_GEO"
+      ],
+      "n_relevant_indicators": 35,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 21,
+      "category_id": "interstate_war",
+      "layer1_id": "B",
+      "layer2_id": "B1",
+      "layer3_label": "Interstate War",
+      "n_positive": 35,
+      "n_positive_verified": 2,
+      "A": 0.0847,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6797,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UCDP",
+        "COW"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "DIPLO_GEO",
+        "DISPLACE"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 22,
+      "category_id": "banking_and_financial_crisis",
+      "layer1_id": "D",
+      "layer2_id": "D1",
+      "layer3_label": "Currency & Banking Crisis",
+      "n_positive": 34,
+      "n_positive_verified": 6,
+      "A": 0.0823,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6788,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "Laeven-Valencia"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 23,
+      "category_id": "military_coup",
+      "layer1_id": "A",
+      "layer2_id": "A6",
+      "layer3_label": "Military Coup",
+      "n_positive": 34,
+      "n_positive_verified": 3,
+      "A": 0.0823,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6788,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "Powell-Thyne coup database",
+        "Marshall CSP"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "GOV_INST",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 24,
+      "category_id": "democratic_transition",
+      "layer1_id": "A",
+      "layer2_id": "A4",
+      "layer3_label": "Democratic Transition",
+      "n_positive": 33,
+      "n_positive_verified": 5,
+      "A": 0.0799,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.678,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "V-Dem v2x_regime category transitions",
+        "Polity"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 40,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 25,
+      "category_id": "drought_and_famine",
+      "layer1_id": "G",
+      "layer2_id": "G2",
+      "layer3_label": "Drought & Famine",
+      "n_positive": 28,
+      "n_positive_verified": 1,
+      "A": 0.0678,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6737,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "FEWS-NET IPC",
+        "EM-DAT"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 30,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 26,
+      "category_id": "ethnic_and_communal_conflict",
+      "layer1_id": "B",
+      "layer2_id": "B5",
+      "layer3_label": "Ethnic & Communal Violence",
+      "n_positive": 27,
+      "n_positive_verified": 7,
+      "A": 0.0654,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6729,
+      "F2": 2,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "UCDP non-state",
+        "ACLED"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "REPRESSION",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 30,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 27,
+      "category_id": "natural_disaster",
+      "layer1_id": "G",
+      "layer2_id": "G1",
+      "layer3_label": "Natural Disaster",
+      "n_positive": 59,
+      "n_positive_verified": 12,
+      "A": 0.1429,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.67,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "EM-DAT (catch-all)"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 28,
+      "category_id": "trade_dispute",
+      "layer1_id": "D",
+      "layer2_id": "D7",
+      "layer3_label": "Trade & Investment",
+      "n_positive": 23,
+      "n_positive_verified": 1,
+      "A": 0.0557,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6695,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "WTO disputes database"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "DIPLO_GEO"
+      ],
+      "n_relevant_indicators": 35,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 29,
+      "category_id": "currency_crisis",
+      "layer1_id": "D",
+      "layer2_id": "D1",
+      "layer3_label": "Currency & Banking Crisis",
+      "n_positive": 21,
+      "n_positive_verified": 5,
+      "A": 0.0508,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6678,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "Laeven-Valencia"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 30,
+      "category_id": "flood_and_cyclone",
+      "layer1_id": "G",
+      "layer2_id": "G1",
+      "layer3_label": "Natural Disaster",
+      "n_positive": 55,
+      "n_positive_verified": 3,
+      "A": 0.1332,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.6666,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "EM-DAT",
+        "IBTrACS"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 31,
+      "category_id": "earthquake",
+      "layer1_id": "G",
+      "layer2_id": "G1",
+      "layer3_label": "Natural Disaster",
+      "n_positive": 10,
+      "n_positive_verified": 1,
+      "A": 0.0242,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6585,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "EM-DAT",
+        "USGS"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 32,
+      "category_id": "volcanic_eruption",
+      "layer1_id": "G",
+      "layer2_id": "G1",
+      "layer3_label": "Natural Disaster",
+      "n_positive": 10,
+      "n_positive_verified": 1,
+      "A": 0.0242,
+      "B": 1.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6585,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "EM-DAT",
+        "Smithsonian GVP"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 33,
+      "category_id": "political_corruption",
+      "layer1_id": "C",
+      "layer2_id": "C2",
+      "layer3_label": "Political Corruption",
+      "n_positive": 109,
+      "n_positive_verified": 23,
+      "A": 0.2639,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6174,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation; TI CPI is gradient"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 45,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 34,
+      "category_id": "political_repression",
+      "layer1_id": "C",
+      "layer2_id": "C1",
+      "layer3_label": "Political Repression",
+      "n_positive": 98,
+      "n_positive_verified": 19,
+      "A": 0.2373,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.6081,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "REPRESSION",
+        "GOV_INST",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 40,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 35,
+      "category_id": "human_rights_violation",
+      "layer1_id": "C",
+      "layer2_id": "C3",
+      "layer3_label": "Human Rights Violations",
+      "n_positive": 83,
+      "n_positive_verified": 20,
+      "A": 0.201,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5953,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation; CIRI/HRMI gradients"
+      ],
+      "relevant_sectors": [
+        "REPRESSION",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 31,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 36,
+      "category_id": "fiscal_policy_change",
+      "layer1_id": "D",
+      "layer2_id": "D3",
+      "layer3_label": "Fiscal & Monetary Policy",
+      "n_positive": 116,
+      "n_positive_verified": 7,
+      "A": 0.2809,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.5933,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 14,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 37,
+      "category_id": "diplomatic_rupture",
+      "layer1_id": "F",
+      "layer2_id": "F3",
+      "layer3_label": "Diplomatic Rupture",
+      "n_positive": 80,
+      "n_positive_verified": 6,
+      "A": 0.1937,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5928,
+      "F2": 3,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "QGI internal curation; news-derived"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "CONFLICT"
+      ],
+      "n_relevant_indicators": 33,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 38,
+      "category_id": "energy_policy",
+      "layer1_id": "H",
+      "layer2_id": "H1",
+      "layer3_label": "Energy Policy & Resources",
+      "n_positive": 74,
+      "n_positive_verified": 13,
+      "A": 0.1792,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5877,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 39,
+      "category_id": "human_rights_reform",
+      "layer1_id": "C",
+      "layer2_id": "C4",
+      "layer3_label": "Human Rights Reform",
+      "n_positive": 73,
+      "n_positive_verified": 6,
+      "A": 0.1768,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5869,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "REPRESSION",
+        "GOV_INST",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 40,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 40,
+      "category_id": "military_policy_and_reform",
+      "layer1_id": "C",
+      "layer2_id": "C5",
+      "layer3_label": "Military Policy & Security Reform",
+      "n_positive": 70,
+      "n_positive_verified": 6,
+      "A": 0.1695,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5843,
+      "F2": 1,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 34,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 41,
+      "category_id": "transitional_justice",
+      "layer1_id": "A",
+      "layer2_id": "A7",
+      "layer3_label": "Transitional Justice",
+      "n_positive": 59,
+      "n_positive_verified": 7,
+      "A": 0.1429,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.575,
+      "F2": 1,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "REPRESSION",
+        "GOV_INST",
+        "CONFLICT"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 42,
+      "category_id": "environmental_policy",
+      "layer1_id": "H",
+      "layer2_id": "H2",
+      "layer3_label": "Environmental Policy",
+      "n_positive": 56,
+      "n_positive_verified": 5,
+      "A": 0.1356,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5725,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "FOOD_RES"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 43,
+      "category_id": "infrastructure_project",
+      "layer1_id": "H",
+      "layer2_id": "H5",
+      "layer3_label": "Infrastructure & Urban Development",
+      "n_positive": 52,
+      "n_positive_verified": 7,
+      "A": 0.1259,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5691,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 44,
+      "category_id": "oil_and_gas",
+      "layer1_id": "H",
+      "layer2_id": "H1",
+      "layer3_label": "Energy Policy & Resources",
+      "n_positive": 44,
+      "n_positive_verified": 0,
+      "A": 0.1065,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5623,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 45,
+      "category_id": "executive_power_consolidation",
+      "layer1_id": "A",
+      "layer2_id": "A5",
+      "layer3_label": "Executive Power Consolidation",
+      "n_positive": 38,
+      "n_positive_verified": 13,
+      "A": 0.092,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5572,
+      "F2": 2,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "GOV_INST",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 31,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 46,
+      "category_id": "economic_growth_milestone",
+      "layer1_id": "D",
+      "layer2_id": "D6",
+      "layer3_label": "Economic Recovery & Growth",
+      "n_positive": 34,
+      "n_positive_verified": 2,
+      "A": 0.0823,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5538,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 43,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 47,
+      "category_id": "economic_recovery",
+      "layer1_id": "D",
+      "layer2_id": "D6",
+      "layer3_label": "Economic Recovery & Growth",
+      "n_positive": 31,
+      "n_positive_verified": 2,
+      "A": 0.0751,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5513,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 48,
+      "category_id": "foreign_aid_and_development",
+      "layer1_id": "D",
+      "layer2_id": "D8",
+      "layer3_label": "Foreign Aid & Development",
+      "n_positive": 23,
+      "n_positive_verified": 6,
+      "A": 0.0557,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5445,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "OECD DAC flows; no event canon"
+      ],
+      "relevant_sectors": [
+        "DIPLO_GEO",
+        "ECON_FISC",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 49,
+      "category_id": "resource_conflict",
+      "layer1_id": "H",
+      "layer2_id": "H4",
+      "layer3_label": "Resource Conflict",
+      "n_positive": 20,
+      "n_positive_verified": 1,
+      "A": 0.0484,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5419,
+      "F2": 1,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation; partial UCDP overlap"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 32,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 50,
+      "category_id": "religious_and_social_movement",
+      "layer1_id": "E",
+      "layer2_id": "E5",
+      "layer3_label": "Religious & Social Movements",
+      "n_positive": 19,
+      "n_positive_verified": 1,
+      "A": 0.046,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5411,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "SOC_MOBIL",
+        "REPRESSION"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 51,
+      "category_id": "public_health_reform",
+      "layer1_id": "E",
+      "layer2_id": "E3",
+      "layer3_label": "Social Policy Reform",
+      "n_positive": 18,
+      "n_positive_verified": 1,
+      "A": 0.0436,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5403,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "LABOR_SOC",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 29,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 52,
+      "category_id": "foreign_direct_investment",
+      "layer1_id": "D",
+      "layer2_id": "D7",
+      "layer3_label": "Trade & Investment",
+      "n_positive": 15,
+      "n_positive_verified": 0,
+      "A": 0.0363,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5377,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "UNCTAD flow data; no event canon"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "DIPLO_GEO"
+      ],
+      "n_relevant_indicators": 35,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 53,
+      "category_id": "economic_liberalization",
+      "layer1_id": "D",
+      "layer2_id": "D4",
+      "layer3_label": "Economic Liberalization",
+      "n_positive": 11,
+      "n_positive_verified": 1,
+      "A": 0.0266,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5343,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "LABOR_SOC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 54,
+      "category_id": "agricultural_policy",
+      "layer1_id": "H",
+      "layer2_id": "H9",
+      "layer3_label": "Agricultural Policy",
+      "n_positive": 10,
+      "n_positive_verified": 0,
+      "A": 0.0242,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5335,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 30,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 55,
+      "category_id": "cyberattack",
+      "layer1_id": "H",
+      "layer2_id": "H7",
+      "layer3_label": "Digital & Technology",
+      "n_positive": 8,
+      "n_positive_verified": 3,
+      "A": 0.0194,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.5318,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation; CSIS Significant Cyber Incidents partial"
+      ],
+      "relevant_sectors": [
+        "CONFLICT",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 16,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 56,
+      "category_id": "monetary_policy_change",
+      "layer1_id": "D",
+      "layer2_id": "D3",
+      "layer3_label": "Fiscal & Monetary Policy",
+      "n_positive": 25,
+      "n_positive_verified": 4,
+      "A": 0.0605,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.8,
+      "S": 0.5162,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 3,
+      "head_class": "discrete-time hazard (DeepHit-lite)",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 14,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 57,
+      "category_id": "social_policy_reform",
+      "layer1_id": "E",
+      "layer2_id": "E3",
+      "layer3_label": "Social Policy Reform",
+      "n_positive": 23,
+      "n_positive_verified": 1,
+      "A": 0.0557,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.6,
+      "S": 0.4845,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "LABOR_SOC",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 34,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 58,
+      "category_id": "labor_action",
+      "layer1_id": "E",
+      "layer2_id": "E2",
+      "layer3_label": "Labor Action",
+      "n_positive": 10,
+      "n_positive_verified": 2,
+      "A": 0.0242,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.6,
+      "S": 0.4735,
+      "F2": 2,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation; ILO TIPS spotty"
+      ],
+      "relevant_sectors": [
+        "LABOR_SOC",
+        "SOC_MOBIL"
+      ],
+      "n_relevant_indicators": 34,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 59,
+      "category_id": "poverty_and_inequality_crisis",
+      "layer1_id": "E",
+      "layer2_id": "E4",
+      "layer3_label": "Poverty & Inequality",
+      "n_positive": 17,
+      "n_positive_verified": 3,
+      "A": 0.0412,
+      "B": 0.0,
+      "C": 1.0,
+      "D": 1.0,
+      "S": 0.4144,
+      "F2": 0,
+      "F3": 0,
+      "F4": 0,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "Gradient definition; no canonical onset"
+      ],
+      "relevant_sectors": [
+        "LABOR_SOC",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 39,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 60,
+      "category_id": "technology_breakthrough",
+      "layer1_id": "H",
+      "layer2_id": "H7",
+      "layer3_label": "Digital & Technology",
+      "n_positive": 22,
+      "n_positive_verified": 5,
+      "A": 0.0533,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.8,
+      "S": 0.3636,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 61,
+      "category_id": "renewable_energy",
+      "layer1_id": "H",
+      "layer2_id": "H1",
+      "layer3_label": "Energy Policy & Resources",
+      "n_positive": 20,
+      "n_positive_verified": 0,
+      "A": 0.0484,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.8,
+      "S": 0.3619,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 1,
+      "head_class": "standard GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 62,
+      "category_id": "sport_and_international_event",
+      "layer1_id": "H",
+      "layer2_id": "H8",
+      "layer3_label": "Cultural & Heritage",
+      "n_positive": 19,
+      "n_positive_verified": 4,
+      "A": 0.046,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.8,
+      "S": 0.3611,
+      "F2": 3,
+      "F3": 2,
+      "F4": 2,
+      "survival_eligible": true,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 63,
+      "category_id": "cultural_and_heritage",
+      "layer1_id": "H",
+      "layer2_id": "H8",
+      "layer3_label": "Cultural & Heritage",
+      "n_positive": 16,
+      "n_positive_verified": 2,
+      "A": 0.0387,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.8,
+      "S": 0.3586,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": 64,
+      "category_id": "digital_policy",
+      "layer1_id": "H",
+      "layer2_id": "H7",
+      "layer3_label": "Digital & Technology",
+      "n_positive": 14,
+      "n_positive_verified": 0,
+      "A": 0.0339,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.8,
+      "S": 0.3569,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 2,
+      "head_class": "asymmetric-loss GBM",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": false
+    },
+    {
+      "rank": null,
+      "category_id": "decentralization_and_federalism",
+      "layer1_id": "A",
+      "layer2_id": "A3",
+      "layer3_label": "Constitutional Change",
+      "n_positive": 7,
+      "n_positive_verified": 1,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.0,
+      "S": 0.375,
+      "F2": 2,
+      "F3": 2,
+      "F4": 1,
+      "survival_eligible": true,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 22,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "economic_nationalization",
+      "layer1_id": "D",
+      "layer2_id": "D5",
+      "layer3_label": "Economic Nationalization",
+      "n_positive": 7,
+      "n_positive_verified": 0,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.0,
+      "S": 0.375,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "GOV_INST"
+      ],
+      "n_relevant_indicators": 36,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "education_and_research",
+      "layer1_id": "H",
+      "layer2_id": "H6",
+      "layer3_label": "Education & Knowledge",
+      "n_positive": 2,
+      "n_positive_verified": 1,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.0,
+      "S": 0.225,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "education_reform",
+      "layer1_id": "H",
+      "layer2_id": "H6",
+      "layer3_label": "Education & Knowledge",
+      "n_positive": 3,
+      "n_positive_verified": 0,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 0.4,
+      "D": 0.0,
+      "S": 0.225,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 4,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "industrial_policy",
+      "layer1_id": "D",
+      "layer2_id": "D7",
+      "layer3_label": "Trade & Investment",
+      "n_positive": 7,
+      "n_positive_verified": 0,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.0,
+      "S": 0.375,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "ECON_FISC",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "urban_development",
+      "layer1_id": "H",
+      "layer2_id": "H5",
+      "layer3_label": "Infrastructure & Urban Development",
+      "n_positive": 5,
+      "n_positive_verified": 0,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.0,
+      "S": 0.375,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "STRUCT_DEV",
+        "ECON_FISC"
+      ],
+      "n_relevant_indicators": 18,
+      "excluded_by_hard_gate": true
+    },
+    {
+      "rank": null,
+      "category_id": "water_crisis",
+      "layer1_id": "G",
+      "layer2_id": "G5",
+      "layer3_label": "Water & Resource Crisis",
+      "n_positive": 7,
+      "n_positive_verified": 1,
+      "A": 0.0,
+      "B": 0.5,
+      "C": 1.0,
+      "D": 0.0,
+      "S": 0.375,
+      "F2": 1,
+      "F3": 1,
+      "F4": 1,
+      "survival_eligible": false,
+      "F5": 0,
+      "head_class": "excluded",
+      "label_source_examples": [
+        "QGI internal curation"
+      ],
+      "relevant_sectors": [
+        "FOOD_RES",
+        "STRUCT_DEV"
+      ],
+      "n_relevant_indicators": 20,
+      "excluded_by_hard_gate": true
+    }
+  ]
+}
