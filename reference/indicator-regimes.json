@@ -1,0 +1,955 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-05-02T22:58:55Z",
+  "source": "qgi-ml/results/stationarity_audit_2026_05_02/stationarity_full_report.json",
+  "audit_method": "CIPS (Pesaran 2007 Cross-sectionally Augmented IPS), case II (intercept, no trend)",
+  "critical_value_5pct": -2.11,
+  "critical_value_10pct": -2.03,
+  "critical_value_1pct": -2.27,
+  "aggregate_verdict": "FULL_AUDIT_CONFIRMED",
+  "pct_i1_or_marginal": 36.5,
+  "regimes_summary": {
+    "n_stationary": 66,
+    "n_marginal": 9,
+    "n_i1": 27,
+    "n_total": 102
+  },
+  "regimes": {
+    "stationary": [
+      "AG.PRD.FOOD.XD",
+      "BM.KLT.DINV.WD.GD.ZS",
+      "BM.TRF.PWKR.CD.DT",
+      "BN.CAB.XOKA.GD.ZS",
+      "BX.KLT.DINV.WD.GD.ZS",
+      "DT.TDS.DECT.EX.ZS",
+      "EG.ELC.ACCS.RU.ZS",
+      "EG.ELC.ACCS.UR.ZS",
+      "FI.RES.TOTL.MO",
+      "FP.CPI.TOTL.ZG",
+      "FR.INR.LEND",
+      "GC.DOD.TOTL.GD.ZS",
+      "GC.XPN.TOTL.GD.ZS",
+      "MS.MIL.MPRT.KD",
+      "MS.MIL.TOTL.TF.ZS",
+      "MS.MIL.XPND.GD.ZS",
+      "MS.MIL.XPRT.KD",
+      "NE.CON.GOVT.ZS",
+      "NE.GDI.TOTL.ZS",
+      "NE.IMP.GNFS.ZS",
+      "NV.AGR.TOTL.ZS",
+      "NV.SRV.TOTL.ZS",
+      "NY.GDP.DEFL.KD.ZG",
+      "NY.GDP.MKTP.KD.ZG",
+      "PV.EST",
+      "SH.DYN.MORT",
+      "SI.POV.GINI",
+      "SM.POP.NETM",
+      "SM.POP.RHCR.EO",
+      "SP.DYN.LE00.IN",
+      "TX.VAL.TECH.MF.ZS",
+      "VA.EST",
+      "VC.BTL.DETH",
+      "VC.IDP.NWDS",
+      "v2clkill",
+      "v2cltort",
+      "v2cseeorgs",
+      "v2csprtcpt",
+      "v2csreprss",
+      "v2elintmon",
+      "v2ex_hosw",
+      "v2exaphogp",
+      "v2exremhog",
+      "v2jureform",
+      "v2lgbicam",
+      "v2lgqstexp",
+      "v2mecenefm",
+      "v2pepwrgen",
+      "v2pepwrort",
+      "v2pepwrses",
+      "v2pepwrsoc",
+      "v2psprlnks",
+      "v2stfisccap",
+      "v2svdomaut",
+      "v2x_clphy",
+      "v2x_clpol",
+      "v2x_clpriv",
+      "v2x_gender",
+      "v2x_jucon",
+      "v2x_libdem",
+      "v2x_partip",
+      "v2x_polyarchy",
+      "v2x_regime",
+      "v2xeg_eqprotec",
+      "v2xel_frefair",
+      "v2xlg_legcon"
+    ],
+    "marginal": [
+      "DT.DOD.DECT.GN.ZS",
+      "GC.REV.XGRT.GD.ZS",
+      "GC.TAX.TOTL.GD.ZS",
+      "GE.EST",
+      "NE.CON.PRVT.ZS",
+      "NE.EXP.GNFS.ZS",
+      "NV.IND.MANF.ZS",
+      "RL.EST",
+      "v2x_freexp_altinf"
+    ],
+    "i1": [
+      "CC.EST",
+      "EG.IMP.CONS.ZS",
+      "EN.GHG.CO2.PC.CE.AR5",
+      "FI.RES.TOTL.CD",
+      "FM.LBL.BMNY.GD.ZS",
+      "IT.CEL.SETS.P2",
+      "IT.NET.USER.ZS",
+      "NE.EXP.GNFS.CD",
+      "NE.IMP.GNFS.CD",
+      "NV.IND.TOTL.ZS",
+      "NY.GDP.MKTP.CD",
+      "NY.GDP.MKTP.KD",
+      "NY.GDP.PCAP.CD",
+      "NY.GNP.PCAP.CD",
+      "RQ.EST",
+      "SE.PRM.ENRR",
+      "SL.EMP.TOTL.SP.ZS",
+      "SL.TLF.CACT.FE.ZS",
+      "SL.UEM.1524.ZS",
+      "SL.UEM.TOTL.ZS",
+      "SP.POP.TOTL",
+      "v2cacamps",
+      "v2excrptps",
+      "v2exl_legitlead",
+      "v2x_corr",
+      "v2x_neopat",
+      "v2x_rule"
+    ]
+  },
+  "indicators": [
+    {
+      "id": "CC.EST",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.8633318519977589,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "EG.IMP.CONS.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.9955766971608846,
+      "n_countries": 141,
+      "t_years": 34
+    },
+    {
+      "id": "EN.GHG.CO2.PC.CE.AR5",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.328412144223517,
+      "n_countries": 201,
+      "t_years": 55
+    },
+    {
+      "id": "FI.RES.TOTL.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.883855021604478,
+      "n_countries": 180,
+      "t_years": 65
+    },
+    {
+      "id": "FM.LBL.BMNY.GD.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.4282379457994625,
+      "n_countries": 165,
+      "t_years": 65
+    },
+    {
+      "id": "IT.CEL.SETS.P2",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.8805218058603115,
+      "n_countries": 212,
+      "t_years": 53
+    },
+    {
+      "id": "IT.NET.USER.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -0.9567665901761069,
+      "n_countries": 207,
+      "t_years": 36
+    },
+    {
+      "id": "NE.EXP.GNFS.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.3734830045017796,
+      "n_countries": 188,
+      "t_years": 65
+    },
+    {
+      "id": "NE.IMP.GNFS.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.6784714646670862,
+      "n_countries": 188,
+      "t_years": 65
+    },
+    {
+      "id": "NV.IND.TOTL.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.9456242652696856,
+      "n_countries": 206,
+      "t_years": 65
+    },
+    {
+      "id": "NY.GDP.MKTP.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.352999080541856,
+      "n_countries": 211,
+      "t_years": 65
+    },
+    {
+      "id": "NY.GDP.MKTP.KD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -0.7623278375097053,
+      "n_countries": 209,
+      "t_years": 65
+    },
+    {
+      "id": "NY.GDP.PCAP.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.3963359341448431,
+      "n_countries": 211,
+      "t_years": 65
+    },
+    {
+      "id": "NY.GNP.PCAP.CD",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.003283242510077,
+      "n_countries": 205,
+      "t_years": 63
+    },
+    {
+      "id": "RQ.EST",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.9556091276179013,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "SE.PRM.ENRR",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.96565336292955,
+      "n_countries": 205,
+      "t_years": 56
+    },
+    {
+      "id": "SL.EMP.TOTL.SP.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.0610225047632933,
+      "n_countries": 186,
+      "t_years": 35
+    },
+    {
+      "id": "SL.TLF.CACT.FE.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.4805849442204133,
+      "n_countries": 186,
+      "t_years": 36
+    },
+    {
+      "id": "SL.UEM.1524.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.5349057019053858,
+      "n_countries": 186,
+      "t_years": 35
+    },
+    {
+      "id": "SL.UEM.TOTL.ZS",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.7203721212636027,
+      "n_countries": 186,
+      "t_years": 35
+    },
+    {
+      "id": "SP.POP.TOTL",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": 0.10557691968781763,
+      "n_countries": 215,
+      "t_years": 65
+    },
+    {
+      "id": "v2cacamps",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.6542042265717665,
+      "n_countries": 175,
+      "t_years": 126
+    },
+    {
+      "id": "v2excrptps",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -2.026412420163843,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2exl_legitlead",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.871313164693021,
+      "n_countries": 175,
+      "t_years": 124
+    },
+    {
+      "id": "v2x_corr",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.9769190032963813,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_neopat",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.9019376337521174,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_rule",
+      "regime": "i1",
+      "action": "first-diff",
+      "cips": -1.7692146597164915,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "DT.DOD.DECT.GN.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.0644901140895136,
+      "n_countries": 120,
+      "t_years": 55
+    },
+    {
+      "id": "GC.REV.XGRT.GD.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.0313776142172433,
+      "n_countries": 156,
+      "t_years": 53
+    },
+    {
+      "id": "GC.TAX.TOTL.GD.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.07644701338993,
+      "n_countries": 156,
+      "t_years": 53
+    },
+    {
+      "id": "GE.EST",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.0647028927504882,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "NE.CON.PRVT.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.0862938846104035,
+      "n_countries": 184,
+      "t_years": 65
+    },
+    {
+      "id": "NE.EXP.GNFS.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.047519330447503,
+      "n_countries": 187,
+      "t_years": 65
+    },
+    {
+      "id": "NV.IND.MANF.ZS",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.0816714137388654,
+      "n_countries": 201,
+      "t_years": 65
+    },
+    {
+      "id": "RL.EST",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.031360155319836,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "v2x_freexp_altinf",
+      "regime": "marginal",
+      "action": "keep",
+      "cips": -2.094072603278655,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "AG.PRD.FOOD.XD",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1375267183272695,
+      "n_countries": 195,
+      "t_years": 62
+    },
+    {
+      "id": "BM.KLT.DINV.WD.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -4.443036944087405,
+      "n_countries": 181,
+      "t_years": 55
+    },
+    {
+      "id": "BM.TRF.PWKR.CD.DT",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3808140323.762261,
+      "n_countries": 199,
+      "t_years": 55
+    },
+    {
+      "id": "BN.CAB.XOKA.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.8178671739645447,
+      "n_countries": 197,
+      "t_years": 65
+    },
+    {
+      "id": "BX.KLT.DINV.WD.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -4.024079773503573,
+      "n_countries": 198,
+      "t_years": 55
+    },
+    {
+      "id": "DT.TDS.DECT.EX.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.0217922872064533,
+      "n_countries": 117,
+      "t_years": 55
+    },
+    {
+      "id": "EG.ELC.ACCS.RU.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -124955945242.563,
+      "n_countries": 154,
+      "t_years": 34
+    },
+    {
+      "id": "EG.ELC.ACCS.UR.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.136696620517243,
+      "n_countries": 166,
+      "t_years": 34
+    },
+    {
+      "id": "FI.RES.TOTL.MO",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.415643608654672,
+      "n_countries": 176,
+      "t_years": 65
+    },
+    {
+      "id": "FP.CPI.TOTL.ZG",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -6.18442251326323,
+      "n_countries": 190,
+      "t_years": 65
+    },
+    {
+      "id": "FR.INR.LEND",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -444743411392.90875,
+      "n_countries": 147,
+      "t_years": 65
+    },
+    {
+      "id": "GC.DOD.TOTL.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1222188551843186,
+      "n_countries": 78,
+      "t_years": 38
+    },
+    {
+      "id": "GC.XPN.TOTL.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.122043317637715,
+      "n_countries": 155,
+      "t_years": 53
+    },
+    {
+      "id": "MS.MIL.MPRT.KD",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.932632688641814,
+      "n_countries": 166,
+      "t_years": 65
+    },
+    {
+      "id": "MS.MIL.TOTL.TF.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.745987818863018,
+      "n_countries": 171,
+      "t_years": 31
+    },
+    {
+      "id": "MS.MIL.XPND.GD.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.4007628089160904,
+      "n_countries": 163,
+      "t_years": 65
+    },
+    {
+      "id": "MS.MIL.XPRT.KD",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.5600513270990453,
+      "n_countries": 60,
+      "t_years": 65
+    },
+    {
+      "id": "NE.CON.GOVT.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.2150879336406795,
+      "n_countries": 181,
+      "t_years": 65
+    },
+    {
+      "id": "NE.GDI.TOTL.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.7062973260988903,
+      "n_countries": 181,
+      "t_years": 65
+    },
+    {
+      "id": "NE.IMP.GNFS.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.428757207929338,
+      "n_countries": 187,
+      "t_years": 65
+    },
+    {
+      "id": "NV.AGR.TOTL.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.706067835006982,
+      "n_countries": 203,
+      "t_years": 65
+    },
+    {
+      "id": "NV.SRV.TOTL.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.274709907338283,
+      "n_countries": 203,
+      "t_years": 65
+    },
+    {
+      "id": "NY.GDP.DEFL.KD.ZG",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -4.5094724454017285,
+      "n_countries": 211,
+      "t_years": 64
+    },
+    {
+      "id": "NY.GDP.MKTP.KD.ZG",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -5.405279589067343,
+      "n_countries": 212,
+      "t_years": 64
+    },
+    {
+      "id": "PV.EST",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.4889656772730753,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "SH.DYN.MORT",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -4.427170880252034,
+      "n_countries": 195,
+      "t_years": 65
+    },
+    {
+      "id": "SI.POV.GINI",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.711388297633988,
+      "n_countries": 110,
+      "t_years": 63
+    },
+    {
+      "id": "SM.POP.NETM",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.349846351682811,
+      "n_countries": 215,
+      "t_years": 66
+    },
+    {
+      "id": "SM.POP.RHCR.EO",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -500785828.7507784,
+      "n_countries": 195,
+      "t_years": 65
+    },
+    {
+      "id": "SP.DYN.LE00.IN",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.3089334838270217,
+      "n_countries": 215,
+      "t_years": 65
+    },
+    {
+      "id": "TX.VAL.TECH.MF.ZS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.70308874471008,
+      "n_countries": 172,
+      "t_years": 18
+    },
+    {
+      "id": "VA.EST",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.152536327040329,
+      "n_countries": 204,
+      "t_years": 25
+    },
+    {
+      "id": "VC.BTL.DETH",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.4630030365974003,
+      "n_countries": 56,
+      "t_years": 36
+    },
+    {
+      "id": "VC.IDP.NWDS",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -9.199497354751063,
+      "n_countries": 134,
+      "t_years": 16
+    },
+    {
+      "id": "v2clkill",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -9001543654674.076,
+      "n_countries": 171,
+      "t_years": 237
+    },
+    {
+      "id": "v2cltort",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.207427045552008,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2cseeorgs",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.296590321615834,
+      "n_countries": 174,
+      "t_years": 237
+    },
+    {
+      "id": "v2csprtcpt",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1823138225234313,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2csreprss",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.122606390088514,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2elintmon",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -20767857811636.766,
+      "n_countries": 143,
+      "t_years": 124
+    },
+    {
+      "id": "v2ex_hosw",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.3196961671442633,
+      "n_countries": 121,
+      "t_years": 237
+    },
+    {
+      "id": "v2exaphogp",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.2575918132261896,
+      "n_countries": 66,
+      "t_years": 237
+    },
+    {
+      "id": "v2exremhog",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2305534314600.4634,
+      "n_countries": 134,
+      "t_years": 237
+    },
+    {
+      "id": "v2jureform",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.8501439031281928,
+      "n_countries": 175,
+      "t_years": 126
+    },
+    {
+      "id": "v2lgbicam",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3962755673066.879,
+      "n_countries": 158,
+      "t_years": 237
+    },
+    {
+      "id": "v2lgqstexp",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -5.772418301825639,
+      "n_countries": 167,
+      "t_years": 237
+    },
+    {
+      "id": "v2mecenefm",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.305926087748766,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2pepwrgen",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1124898419233777,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2pepwrort",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.3888678344553105,
+      "n_countries": 169,
+      "t_years": 126
+    },
+    {
+      "id": "v2pepwrses",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.2384216574909597,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2pepwrsoc",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1167975995982187,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2psprlnks",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -10120650514071.363,
+      "n_countries": 173,
+      "t_years": 237
+    },
+    {
+      "id": "v2stfisccap",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.2902532360199137,
+      "n_countries": 168,
+      "t_years": 237
+    },
+    {
+      "id": "v2svdomaut",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.913768861090624,
+      "n_countries": 172,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_clphy",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.316526469330927,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_clpol",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.129833869200962,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_clpriv",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.0938042190743715,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_gender",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.168112628091906,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_jucon",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.1547997397227427,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_libdem",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.129137266971493,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_partip",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.2006696056617607,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_polyarchy",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.358645401272388,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2x_regime",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -150520675827953.6,
+      "n_countries": 159,
+      "t_years": 126
+    },
+    {
+      "id": "v2xeg_eqprotec",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2.3894390083953647,
+      "n_countries": 175,
+      "t_years": 237
+    },
+    {
+      "id": "v2xel_frefair",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -3.1679092080168965,
+      "n_countries": 173,
+      "t_years": 237
+    },
+    {
+      "id": "v2xlg_legcon",
+      "regime": "stationary",
+      "action": "keep",
+      "cips": -2103066999503.2263,
+      "n_countries": 175,
+      "t_years": 237
+    }
+  ],
+  "notes": [
+    "Per Majles Al Ihsa I1 (2026-05-02), founder-greenlit Phase 0c full audit",
+    "Action 'first-diff' = compute Pearson correlations on first-differenced Z-scored series",
+    "Action 'keep' = compute Pearson correlations on raw Z-scored level series (current behavior)",
+    "MARGINAL indicators treated as stationary (action=keep) in v1 per conservative call; revisit in v2",
+    "Pipeline-side application gated on Ihsa I5 (production SCDI pipeline detrending decision)",
+    "Auditioner-side application: ticket #585 (in flight)",
+    "2026-05-03 (#588 revision): dropped FB.AST.NPER.ZS (sparse coverage, fragile cointegration verdict) and SP.DYN.TFRT.IN (global-trend confound; pending replacement by SP.URB.GROW once ingested). I(1) count: 29 -> 27.",
+    "2026-05-03 (#588 pending): SP.URB.GROW (Roshani replacement for fertility) and UCDP_BD_BEST (Kwame pick) need ingestion via pipeline-A-indicator-extractor before they can be added to the basket. Filed as separate tickets."
+  ]
+}
