@@ -290,7 +290,7 @@ def test_load_category_taxonomy_returns_layer3_to_ancestors(tmp_path):
         }],
     }), encoding="utf-8")
     tax = crr.load_category_taxonomy(cat_path)
-    assert tax == {"x_one": {"layer1_id": "X", "layer2_id": "X1", "layer3_label": "X One"}}
+    assert tax == {"x_one": {"layer1_id": "X", "layer2_id": "X1", "layer2_label": "X One"}}
 
 
 def test_load_category_taxonomy_real_file_is_71():
@@ -340,10 +340,12 @@ def test_assign_head_class_survival_when_eligible_and_dense():
     assert "DeepHit" in label
 
 
-def test_assign_head_class_asymmetric_when_rare_class():
+def test_assign_head_class_asymmetric_with_survival_deferred_label():
+    # Survival-eligible but n_positive in [8,20) -> rare-class GBM, deferred label.
     f5, label = crr.assign_head_class(survival_eligible=True, n_positive=19)
     assert f5 == 2
     assert "asymmetric" in label
+    assert "deferred" in label  # explicit "survival deferred until n>=20" hint
 
 
 def test_assign_head_class_standard_gbm_when_dense_but_not_eligible():
@@ -355,6 +357,8 @@ def test_assign_head_class_standard_gbm_when_dense_but_not_eligible():
 def test_assign_head_class_asymmetric_when_rare_and_not_eligible():
     f5, label = crr.assign_head_class(survival_eligible=False, n_positive=10)
     assert f5 == 2
+    assert "asymmetric" in label
+    assert "deferred" not in label  # not survival-eligible -> no deferred hint
 
 
 def test_survival_subfactors_table_covers_all_71_categories():
@@ -439,8 +443,57 @@ def test_compute_recipe_rubric_hard_gate_applied(synthetic_inputs):
     assert by_cat["civil_war_and_insurgency"]["excluded_by_hard_gate"] is True
     assert by_cat["civil_war_and_insurgency"]["rank"] is None
     assert by_cat["civil_war_and_insurgency"]["A"] == 0.0
+    # Per spec: hard-gated recipes get S=0.0 (not B+C+D residual).
+    assert by_cat["civil_war_and_insurgency"]["S"] == 0.0
     assert by_cat["elections_and_voting"]["excluded_by_hard_gate"] is False
     assert by_cat["elections_and_voting"]["rank"] is not None
+    assert by_cat["elections_and_voting"]["S"] > 0
+
+
+def test_compute_recipe_rubric_uses_verified_only_for_gate(tmp_path):
+    """All curated events count for n_positive_total; only verified gate Factor A.
+
+    Setup: 12 unique (country, year) for 'elections_and_voting' but only 3 verified.
+    Verified-only -> n=3 < 8 -> hard-gated.
+    """
+    curated = tmp_path / "curated"
+    curated.mkdir()
+    events = [
+        {"year": 2014 + i, "category": "elections_and_voting", "verified": (i < 3)}
+        for i in range(12)
+    ]
+    (curated / "atlantis.json").write_text(json.dumps(events), encoding="utf-8")
+
+    cat_path = tmp_path / "category_mapping.json"
+    cat_path.write_text(json.dumps({
+        "version": "1.0",
+        "layer1": [{
+            "id": "A", "label": "Politics", "definition": "x", "color_hint": "#0",
+            "layer2": [{"id": "A1", "label": "Elections", "definition": "x",
+                        "layer3": ["elections_and_voting"]}],
+        }],
+    }), encoding="utf-8")
+
+    sec_path = tmp_path / "indicator-sectors.json"
+    sec_path.write_text(json.dumps({
+        "schema_version": 1,
+        "indicator_to_sector": {f"X-{i}": {"sector": "GOV_INST"} for i in range(20)},
+    }), encoding="utf-8")
+
+    payload = crr.compute_recipe_rubric(
+        curated_dir=curated,
+        category_mapping_path=cat_path,
+        indicator_sectors_path=sec_path,
+        window=(2014, 2025),
+    )
+    by_cat = {r["category_id"]: r for r in payload["ranking"]}
+    e = by_cat["elections_and_voting"]
+    assert e["n_positive_total"] == 12
+    assert e["n_positive_verified"] == 3
+    assert e["excluded_by_hard_gate"] is True  # verified < 8
+    assert e["A"] == 0.0
+    assert e["S"] == 0.0
+    assert e["rank"] is None
 
 
 def test_compute_recipe_rubric_ranking_is_descending(synthetic_inputs):
