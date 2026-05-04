@@ -276,12 +276,14 @@ def _mk_pred(country: str, year: int, recipe: str, p: float, label: int = 0) -> 
 
 
 def test_evaluate_anchor_case_pass_when_country_in_band():
+    """Production predictions use snake_case country slugs; anchor case carries
+    country_slug; matching is on the slug."""
     case = {
         "id": 1, "country": "Malta", "country_slug": "malta",
         "recipe": "military_coup",
         "expected_rank_band": [0.0, 0.30],
     }
-    preds = [_mk_pred("Malta", 2020, "military_coup", 0.05)]
+    preds = [_mk_pred("malta", 2020, "military_coup", 0.05)]
     preds += [_mk_pred(f"c{i}", 2020, "military_coup", 0.5 + i * 0.01) for i in range(50)]
     out = v.evaluate_anchor_case(case, preds)
     assert out["status"] == "PASS"
@@ -295,7 +297,7 @@ def test_evaluate_anchor_case_fail_when_country_outside_band():
         "expected_rank_band": [0.0, 0.30],
     }
     # Malta gets a high prediction (above 30th percentile)
-    preds = [_mk_pred("Malta", 2020, "military_coup", 0.95)]
+    preds = [_mk_pred("malta", 2020, "military_coup", 0.95)]
     preds += [_mk_pred(f"c{i}", 2020, "military_coup", i * 0.005) for i in range(50)]
     out = v.evaluate_anchor_case(case, preds)
     assert out["status"] == "FAIL"

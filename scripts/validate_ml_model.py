@@ -405,6 +405,12 @@ def evaluate_anchor_case(
     """
     case_id = case["id"]
     country = case["country"]
+    # Predictions JSON uses snake_case country slugs (per qgi-ml/shared/slug.py)
+    # in production. The anchor case JSON in qgi-data carries both "country"
+    # (display) and "country_slug" (matching). When `country_slug` is provided
+    # use it; otherwise fall back to the raw `country` value (test fixtures /
+    # legacy callers pass display names directly without slugification).
+    match_country = case.get("country_slug") or country
     expected_band = case.get("expected_rank_band")
     # Rank-stability case (Venezuela id=6): not implemented in v1; documented
     # gap for Stage 1.
@@ -430,12 +436,12 @@ def evaluate_anchor_case(
                 "status": "SKIPPED",
                 "reason": "no predictions for this recipe (or window)",
             }
-        country_rows = [p for p in relevant if p.get("country") == country]
+        country_rows = [p for p in relevant if p.get("country") == match_country]
         if not country_rows:
             return {
                 "case_id": case_id, "country": country, "recipe": recipe,
                 "status": "SKIPPED",
-                "reason": f"no predictions for country {country!r} in this recipe (or window)",
+                "reason": f"no predictions for country {match_country!r} (slug) in this recipe (or window)",
             }
         if len(country_rows) > 1:
             # Multi-row case (multi-year window or duplicate predictions). Take
