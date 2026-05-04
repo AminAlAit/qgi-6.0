@@ -249,6 +249,105 @@ def test_momentum_rejects_lookback_below_2():
         fe.momentum(long, lookback_years=1)
 
 
+def test_momentum_does_not_bleed_across_indicators():
+    """REGRESSION TEST for the bug Sonnet caught: prior implementation grouped
+    only on 'country' for the diff() call, which leaked momentum across
+    indicator boundaries within a country. The fix groups on
+    (country, indicator_id) for both the rolling-mean and the diff."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2018, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2019, "indicator_id": "A", "value": 2.0},
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 3.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 4.0},
+        # Indicator B at a totally different scale; if momentum bled across,
+        # the diff at the A->B boundary row would be a meaningless cross-
+        # indicator delta involving values like 100 - mean_A.
+        {"country": "x", "year": 2018, "indicator_id": "B", "value": 100.0},
+        {"country": "x", "year": 2019, "indicator_id": "B", "value": 110.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 120.0},
+        {"country": "x", "year": 2021, "indicator_id": "B", "value": 130.0},
+    ])
+    out = fe.momentum(long, lookback_years=2)
+    a_mom = out[out["indicator_id"] == "A__momentum"].sort_values("year").reset_index(drop=True)
+    b_mom = out[out["indicator_id"] == "B__momentum"].sort_values("year").reset_index(drop=True)
+    # A rolling-mean(2): 2018=NaN, 2019=1.5, 2020=2.5, 2021=3.5; diffs: NaN, NaN, 1.0, 1.0
+    # B rolling-mean(2): 2018=NaN, 2019=105, 2020=115, 2021=125; diffs: NaN, NaN, 10.0, 10.0
+    assert math.isclose(a_mom[a_mom["year"] == 2020]["value"].iloc[0], 1.0, abs_tol=1e-9)
+    assert math.isclose(a_mom[a_mom["year"] == 2021]["value"].iloc[0], 1.0, abs_tol=1e-9)
+    assert math.isclose(b_mom[b_mom["year"] == 2020]["value"].iloc[0], 10.0, abs_tol=1e-9)
+    assert math.isclose(b_mom[b_mom["year"] == 2021]["value"].iloc[0], 10.0, abs_tol=1e-9)
+
+
+def test_rolling_zscore_independent_per_country():
+    """Per-country independence: country a's z-score should NOT use country b's values."""
+    long = pd.DataFrame([
+        {"country": "a", "year": 2018, "indicator_id": "X", "value": 1.0},
+        {"country": "a", "year": 2019, "indicator_id": "X", "value": 2.0},
+        {"country": "a", "year": 2020, "indicator_id": "X", "value": 3.0},
+        {"country": "b", "year": 2018, "indicator_id": "X", "value": 1000.0},
+        {"country": "b", "year": 2019, "indicator_id": "X", "value": 1001.0},
+        {"country": "b", "year": 2020, "indicator_id": "X", "value": 1002.0},
+    ])
+    out = fe.rolling_zscore(long, window_years=3)
+    z = out[out["indicator_id"] == "X__zscore"]
+    a_z_2020 = z[(z["country"] == "a") & (z["year"] == 2020)]["value"].iloc[0]
+    b_z_2020 = z[(z["country"] == "b") & (z["year"] == 2020)]["value"].iloc[0]
+    # If country bled, b's 2020 z would be huge (1002 vs combined-mean ~500).
+    # With per-country windows, both z's are bounded by a single-series ramp.
+    assert abs(a_z_2020) < 5.0
+    assert abs(b_z_2020) < 5.0
+
+
+def test_first_difference_single_observation_yields_nan():
+    """Edge case: a country with only one observation must produce NaN value."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 5.0},
+    ])
+    out = fe.first_difference(long, indicator_ids=["A"])
+    diffed = out[out["indicator_id"] == "A__diff"]
+    assert len(diffed) == 1
+    assert pd.isna(diffed.iloc[0]["value"])
+
+
+def test_missingness_indicator_coverage_excludes_structural_absence():
+    """In `indicator_coverage` mode, an indicator covering only 2018 should
+    NOT be flagged missing for 2019/2020 (those are structural non-collection,
+    not MNAR-within-coverage)."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2018, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2018, "indicator_id": "B", "value": 5.0},
+        {"country": "x", "year": 2019, "indicator_id": "B", "value": 6.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 7.0},
+    ])
+    grid_out = fe.missingness_indicators(long, indicator_ids=["A"], universe="panel_grid")
+    cov_out = fe.missingness_indicators(long, indicator_ids=["A"], universe="indicator_coverage")
+    # panel_grid: 3 cells (2018-2020); 2018 observed (=0), 2019/2020 missing (=1)
+    grid_a = grid_out[grid_out["indicator_id"] == "A__missing"]
+    assert len(grid_a) == 3
+    assert grid_a["value"].sum() == 2.0
+    # indicator_coverage: A's window = [2018, 2018]; only 2018 is in scope
+    cov_a = cov_out[cov_out["indicator_id"] == "A__missing"]
+    assert len(cov_a) == 1
+    assert cov_a.iloc[0]["value"] == 0.0
+
+
+def test_missingness_indicators_rejects_invalid_universe():
+    long = pd.DataFrame([{"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0}])
+    with pytest.raises(ValueError, match="universe must be"):
+        fe.missingness_indicators(long, universe="bogus_mode")
+
+
+def test_pivot_to_wide_warns_on_duplicate_rows():
+    """Data-quality issues should surface to callers via a warning, not silent absorption."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 99.0},  # duplicate
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 5.0},
+    ])
+    with pytest.warns(UserWarning, match="duplicate"):
+        fe.pivot_to_wide(long)
+
+
 # ---------- cross_indicator_ratios ----------
 
 
