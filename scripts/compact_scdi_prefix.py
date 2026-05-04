@@ -9,9 +9,10 @@ For each `country_a_id={N}/` partition under the source prefix:
     handled by the s3fs filesystem).
   - Concatenate into a single Arrow Table.
   - Write one `data.parquet` per partition to the target prefix (Snappy).
-  - Originals are NOT deleted (copy-to-new-prefix variant per founder
-    approval 2026-05-03). The separate delete_scdi_originals.py runs
-    only after the verification window passes.
+  - Originals are NOT deleted, ever (founder override 2026-05-04: the
+    original `pipeline-B-scdi-finder/scdis/` prefix is retained
+    indefinitely as permanent rollback insurance). The companion
+    delete_scdi_originals.py is DEPRECATED and must not be run.
 
 Memory budget (verified by dry-run 2026-05-03 against staging):
   Largest country partition has ~150M rows. Each SCDI row is ~20 bytes
