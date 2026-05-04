@@ -438,7 +438,7 @@ resource "aws_glue_catalog_table" "scdis" {
   }
 
   storage_descriptor {
-    location      = "s3://${local.bucket_name}/pipeline-B-scdi-finder/scdis/"
+    location      = "s3://${local.bucket_name}/pipeline-B-scdi-finder/scdis-compacted/"
     input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
     output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
 
