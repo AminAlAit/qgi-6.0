@@ -3,14 +3,21 @@
 Stage 1 v0 Multi-Task Baseline Trainer
 =======================================
 
-Two-stage modular architecture per qgi-docs/internal/ops/ml-track/06-modular-architecture.md:
+Two-stage modular architecture per qgi-docs/internal/ops/ml-track/06-modular-architecture.md.
+Founder integration on the 2026-05-04 Stage-1 v0 arch consult: original spec
+intent is BOTH backbone + heads. The pragmatic v0 implementation uses K
+binary boosters with shared hyperparameters as the backbone equivalent
+(true multi-output objective with shared trees in a single LightGBM call
+is non-trivial; the shared-regularization-regime preserves the audit story
+without label-density-skew that pure multiclassova would impose).
 
-    Stage A (BACKBONE):
-        Train a single LightGBM with `objective='multiclassova'` on the K
-        priority recipes simultaneously. Each recipe is a one-vs-all binary
-        target sharing trees with the other K-1 recipes. The backbone learns
-        feature splits that are useful across recipes (Kwame's "shared
-        backbone" claim).
+    Stage A (BACKBONE -- K binary boosters with shared hyperparameters):
+        Train K independent binary LightGBM boosters (one per priority
+        recipe), all using the IDENTICAL hyperparameters and regularization
+        regime. Each booster gets its recipe-specific scale_pos_weight.
+        The "shared backbone" claim therefore means uniform model class +
+        regularization across all heads, not literal shared trees.
+        Stage 2 may revisit with a custom multi-output objective.
 
     Stage B (PER-RECIPE HEADS):
         Extract leaf-index features from the backbone (each tree -> one
@@ -49,7 +56,8 @@ Inputs:
                       eligible from rubric)
 
 Outputs:
-    <output-dir>/backbone.lgbm                  LightGBM Booster (saved as text)
+    <output-dir>/backbone/<recipe>.lgbm         LightGBM Booster (native text format,
+                                                portable across Python/lgbm versions)
     <output-dir>/heads/<recipe>.pkl             pickle of LogisticRegression
     <output-dir>/calibrators/<recipe>.json      Beta calibrator params
     <output-dir>/metadata.json                  ModelMetadata schema
@@ -231,31 +239,25 @@ def train_backbone(
     X_val: np.ndarray,
     Y_val_multilabel: np.ndarray,
     hyperparams: dict[str, Any],
-) -> Any:
-    """Train multiclassova LightGBM backbone.
+    seed: int = 0,
+) -> list[Any]:
+    """Train K binary LightGBM boosters with shared hyperparameters (backbone).
 
     Y_train_multilabel: shape (n_samples, K) of {0, 1} labels for K recipes.
-    Returns: trained LightGBM Booster.
+    Returns: list of K trained LightGBM Boosters.
 
-    Note: LightGBM doesn't have a native multi-label objective with shared
-    trees in a single training call. The pragmatic workaround is to flatten
-    the multi-label target by emitting K separate "task" rows per observation
-    -- but that loses the shared-tree property. The cleanest implementation
-    of "shared trees + multi-label" is to instead train one binary booster
-    per recipe sequentially, sharing the same hyperparameters (giving up
-    literal tree-sharing but preserving the audit story of "same model
-    family with same regularization across all heads").
+    True multi-label objective with shared trees in a single LightGBM call
+    is non-trivial. The K-independent-binary-boosters pattern with IDENTICAL
+    hyperparameters and regularization regime (and per-recipe scale_pos_weight)
+    serves as the "backbone equivalent" -- the audit story is "uniform model
+    class + regularization across all heads," not literal tree-sharing.
+    Per-recipe leaf-index features extracted downstream feed into the
+    LogisticRegression heads as the shared-embedding interface to Stage 2.
 
-    For Stage 1 v0 we adopt this latter pattern: K binary boosters with
-    shared hyperparameters serve as the "backbone equivalent." Leaf-index
-    features extracted from each booster feed into the per-recipe head
-    LogisticRegression. The "shared backbone" claim therefore means
-    "uniform model class + hyperparameters," not literal shared trees --
-    a narrower but defensible claim per Ji-Hoon's audit-independence
-    argument and Kwame's pre-registration-discipline argument both.
+    `seed` flows into LightGBM's `seed`, `bagging_seed`, and `feature_fraction_seed`
+    so the entire training is byte-deterministic on identical input.
 
-    Future Stage 2 work may revisit and implement true multi-output
-    boosting via a custom objective; out of scope for v0.
+    Future Stage 2 may revisit with a custom multi-output objective.
     """
     import lightgbm as lgb
 
@@ -280,6 +282,12 @@ def train_backbone(
             "bagging_fraction": hyperparams["bagging_fraction"],
             "bagging_freq": hyperparams["bagging_freq"],
             "verbose": hyperparams["verbose"],
+            # Determinism: pin every seed LightGBM uses so byte-identical runs
+            # are guaranteed (per pre-registration reproducibility infrastructure).
+            "seed": seed + k,
+            "bagging_seed": seed + k,
+            "feature_fraction_seed": seed + k,
+            "deterministic": True,
         }
         train_set = lgb.Dataset(X_train, label=y_train_k)
         val_set = lgb.Dataset(X_val, label=y_val_k, reference=train_set)
@@ -463,11 +471,10 @@ def run_training(
     if not recipe_ids:
         raise ValueError("no eligible recipes; check ranking_path or recipes_filter")
 
-    # 2. Labels
-    full_window = (test_year_min - (test_year_min - 1900),  # use train-window lower bound from ranking
-                   test_year_max)
-    # Use the rubric's training window: 2014-2025
-    label_window = (2014, test_year_max)
+    # 2. Labels — use the rubric's training window: 2014 → test_year_max
+    # (pre-registration §3 locks 2014-2025 as the relevant labeling window).
+    LABEL_WINDOW_LOWER = 2014  # fixed by pre-registration §3
+    label_window = (LABEL_WINDOW_LOWER, test_year_max)
     labels = load_event_labels(events_dir, recipe_ids, label_window, verified_only=True)
 
     # 3. Features
@@ -508,7 +515,7 @@ def run_training(
     # 5. Backbone
     _log.info("training backbone: K=%d recipes, n_train=%d, n_test=%d, n_features=%d",
               len(label_cols), len(train_df), len(test_df), len(feature_cols))
-    boosters = train_backbone(X_train, Y_train, X_test, Y_test, hp)
+    boosters = train_backbone(X_train, Y_train, X_test, Y_test, hp, seed=seed)
 
     # 6. Leaf features
     leaf_train = extract_leaf_features(boosters, X_train)
@@ -528,9 +535,13 @@ def run_training(
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    # Save backbone (K boosters as pickle list)
-    with (output_dir / "backbone.pkl").open("wb") as f:
-        pickle.dump(boosters, f)
+    # Save backbone — one .lgbm file per booster in native LightGBM text
+    # format (portable across Python/lgbm versions; pickle is fragile).
+    backbone_dir = output_dir / "backbone"
+    backbone_dir.mkdir(exist_ok=True)
+    for k, booster in enumerate(boosters):
+        rid = label_cols[k]
+        booster.save_model(str(backbone_dir / f"{rid}.lgbm"))
 
     # Save per-recipe heads
     heads_dir = output_dir / "heads"
