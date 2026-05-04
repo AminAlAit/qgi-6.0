@@ -236,6 +236,85 @@ def compute_ece_and_reliability(
     return {"ece": float(ece_acc), "n_bins": n_bins, "reliability_diagram": bins}
 
 
+def compute_ece_bootstrap_diagnostic(
+    predictions: np.ndarray,
+    labels: np.ndarray,
+    n_bins: int = 10,
+    n_bootstrap: int = 1000,
+    seed: int = 0,
+) -> dict[str, Any]:
+    """Bootstrap diagnostic for ECE — captures sampling variability of the
+    in-sample ECE estimate.
+
+    Per founder tie-break on 2026-05-04 calibration policy consult:
+    the F1 falsification gate uses the in-sample ECE (option a) from
+    compute_ece_and_reliability, but this bootstrap distribution is reported
+    side-by-side as a transparency diagnostic showing how shaky each recipe's
+    ECE point estimate is in the small-N regime.
+
+    Method: resample (predictions, labels) with replacement n_bootstrap
+    times; compute ECE on each resample; return distribution summary
+    including Ji-Hoon's preferred 75th-percentile (a slightly-pessimistic
+    single number that absorbs ~1-3 percentile points of in-sample bias).
+
+    Note: this bootstrap captures SAMPLING variability of the ECE estimate
+    on the test set's existing calibrated predictions; it does NOT refit
+    the Beta calibrator per resample (which would also capture
+    calibration-fit variability). Refit-per-resample is a Stage 2 upgrade
+    candidate per Ji-Hoon's full POV (filed at qgi-docs/internal/majles/
+    in-progress/2026-05-04_Ihsa_stage_1_calibration_jihoon.md). For the
+    Stage 1 v0 diagnostic this simpler form is sufficient.
+    """
+    predictions = np.asarray(predictions, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+    n = len(predictions)
+    if n == 0:
+        return {
+            "n_bootstrap": n_bootstrap, "n_valid_resamples": 0,
+            "ece_bootstrap_mean": float("nan"),
+            "ece_bootstrap_median": float("nan"),
+            "ece_bootstrap_p25": float("nan"),
+            "ece_bootstrap_p75": float("nan"),
+            "ece_bootstrap_p95": float("nan"),
+            "ece_bootstrap_min": float("nan"),
+            "ece_bootstrap_max": float("nan"),
+            "method": "resample_only",
+        }
+    rng = np.random.default_rng(seed)
+    eces: list[float] = []
+    for _ in range(n_bootstrap):
+        idx = rng.integers(0, n, size=n)
+        out = compute_ece_and_reliability(predictions[idx], labels[idx], n_bins=n_bins)
+        e = out["ece"]
+        if not (isinstance(e, float) and math.isnan(e)):
+            eces.append(float(e))
+    if not eces:
+        return {
+            "n_bootstrap": n_bootstrap, "n_valid_resamples": 0,
+            "ece_bootstrap_mean": float("nan"),
+            "ece_bootstrap_median": float("nan"),
+            "ece_bootstrap_p25": float("nan"),
+            "ece_bootstrap_p75": float("nan"),
+            "ece_bootstrap_p95": float("nan"),
+            "ece_bootstrap_min": float("nan"),
+            "ece_bootstrap_max": float("nan"),
+            "method": "resample_only",
+        }
+    arr = np.array(eces, dtype=float)
+    return {
+        "n_bootstrap": n_bootstrap,
+        "n_valid_resamples": len(eces),
+        "ece_bootstrap_mean": float(arr.mean()),
+        "ece_bootstrap_median": float(np.percentile(arr, 50)),
+        "ece_bootstrap_p25": float(np.percentile(arr, 25)),
+        "ece_bootstrap_p75": float(np.percentile(arr, 75)),
+        "ece_bootstrap_p95": float(np.percentile(arr, 95)),
+        "ece_bootstrap_min": float(arr.min()),
+        "ece_bootstrap_max": float(arr.max()),
+        "method": "resample_only",
+    }
+
+
 # ---------- Brier decomposition (Component 4) ----------
 
 
@@ -463,12 +542,20 @@ def run_validation(
             by_recipe[rid].append(p)
     oos_per_recipe: dict[str, Any] = {}
     cal_per_recipe: dict[str, Any] = {}
+    cal_bootstrap_per_recipe: dict[str, Any] = {}
     brier_per_recipe: dict[str, Any] = {}
     for rid, rows in by_recipe.items():
         preds = np.array([r["predicted_probability"] for r in rows], dtype=float)
         labels = np.array([r["label"] for r in rows], dtype=int)
         oos_per_recipe[rid] = bootstrap_auc_ci(preds, labels, n_bootstrap=n_bootstrap, seed=seed)
+        # Calibration: F1 GATE uses in-sample ECE (option a per founder
+        # tie-break 2026-05-04). Bootstrap distribution reported alongside
+        # as transparency diagnostic (option c, repurposed as side-by-side
+        # rather than gate input).
         cal_per_recipe[rid] = compute_ece_and_reliability(preds, labels, n_bins=n_bins)
+        cal_bootstrap_per_recipe[rid] = compute_ece_bootstrap_diagnostic(
+            preds, labels, n_bins=n_bins, n_bootstrap=n_bootstrap, seed=seed,
+        )
         brier_per_recipe[rid] = compute_brier_decomposition(preds, labels, n_bins=n_bins)
     anchor_results = (
         evaluate_anchor_battery(predictions, anchor_battery)
@@ -485,7 +572,16 @@ def run_validation(
         "params": {"n_bootstrap": n_bootstrap, "n_bins": n_bins, "seed": seed},
         "components": {
             "oos_by_time": {"per_recipe": oos_per_recipe},
-            "calibration": {"per_recipe": cal_per_recipe},
+            "calibration": {
+                "per_recipe": cal_per_recipe,
+                "per_recipe_bootstrap_diagnostic": cal_bootstrap_per_recipe,
+                "gate_uses": "in_sample_ece (option a per founder tie-break 2026-05-04)",
+                "diagnostic_only": (
+                    "per_recipe_bootstrap_diagnostic — sampling-variability of in-sample ECE; "
+                    "75th percentile is Ji-Hoon's preferred conservative number for transparency, "
+                    "NOT applied to the F1 0.08 gate"
+                ),
+            },
             "brier": {"per_recipe": brier_per_recipe},
             "anchor_battery": anchor_results,
         },
