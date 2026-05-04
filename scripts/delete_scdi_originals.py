@@ -1,8 +1,19 @@
 """
-delete_scdi_originals.py — delete the original scdis/ prefix after the
-verification window passes.
+delete_scdi_originals.py — DEPRECATED 2026-05-04 (founder override).
 
-# THROWAWAY — run ONCE, week 2, AFTER verification window.
+DO NOT RUN. The original `pipeline-B-scdi-finder/scdis/` prefix is
+retained indefinitely as permanent rollback insurance for the #592
+compaction. The Glue table `qgi_data.scdis` is repointed to the
+compacted prefix; the originals stay in S3 untouched.
+
+This script's `main()` short-circuits with a refusal regardless of
+flags. The implementation is preserved below for historical reference
+and in case the override is reversed in a future founder decision.
+
+Live spec: `qgi-docs/internal/ops/cascade-track/phase-5-v0.0.md`
+("Originals retention" section).
+
+# THROWAWAY — DEPRECATED, do not run.
 
 Hard prereqs (verify all before running with --confirm-delete):
   1. Compaction script ran successfully and verify_scdi_compaction.py
@@ -62,7 +73,17 @@ def count_rows_in_prefix(s3fs_: s3fs.S3FileSystem, bucket: str, prefix: str) -> 
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(
+    print(
+        "DEPRECATED 2026-05-04 (founder override): the original "
+        "pipeline-B-scdi-finder/scdis/ prefix is retained indefinitely. "
+        "This script will not run. See "
+        "qgi-docs/internal/ops/cascade-track/phase-5-v0.0.md "
+        "'Originals retention' for the live spec.",
+        file=sys.stderr,
+    )
+    return 2
+
+    parser = argparse.ArgumentParser(  # noqa: F841 — preserved historical impl below
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--bucket", required=True)
