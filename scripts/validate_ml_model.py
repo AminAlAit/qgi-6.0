@@ -58,14 +58,17 @@ from __future__ import annotations
 import argparse
 import datetime as _dt
 import json
+import logging
 import math
 import sys
 from collections import defaultdict
 from dataclasses import asdict
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any
 
 import numpy as np
+
+_log = logging.getLogger(__name__)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_ANCHORS = REPO_ROOT / "qgi-data" / "reference" / "anchor-case-battery.json"
@@ -120,10 +123,33 @@ def bootstrap_auc_ci(
     n_bootstrap: int = 1000,
     confidence: float = 0.95,
     seed: int = 0,
+    baseline_auc: float = 0.5,
 ) -> dict[str, Any]:
-    """Bootstrap 95% CI on AUC via resampling with replacement.
+    """Bootstrap CI on AUC + delta-vs-baseline (per spec F2 falsification rule).
 
-    Returns {auc_point, auc_ci_low, auc_ci_high, n, n_bootstrap, n_valid_resamples}.
+    Spec 05-recipe-prioritization-rubric.md Rule F2: "Bootstrap 95% CI on
+    OOS-by-time AUC delta vs naive base-rate classifier does NOT exclude 0".
+    A naive constant predictor has AUC=0.5 by the rank-statistic definition
+    (all observations tied -> averaged ranks -> 0.5 regardless of class balance).
+    The default baseline_auc=0.5 implements this; callers comparing to a
+    backbone or multi-task-v0 baseline pass that baseline's AUC instead.
+
+    Returns:
+        auc_point          point estimate of AUC
+        auc_ci_low/high    raw CI on AUC (informational)
+        delta_point        AUC - baseline_auc
+        delta_ci_low/high  CI on (AUC_resample - baseline_auc)  <- F2 check
+        baseline_auc       the value subtracted
+        ...
+
+    Stage 2 falsification check: `delta_ci_low > 0` (and point >= 0.57 for F2).
+
+    Method: percentile bootstrap. Acceptable as Stage 0 scaffold per Sonnet
+    review 2026-05-04; BCa (bias-corrected accelerated) bootstrap is a Stage 1
+    upgrade candidate -- ~5x more compute but more defensible for skewed
+    sampling distributions in small-N imbalanced recipes. To be confirmed
+    with Ji-Hoon in a Stage 1 mini-consult before Stage 2 falsification
+    decisions go live.
     """
     predictions = np.asarray(predictions, dtype=float)
     labels = np.asarray(labels, dtype=int)
@@ -140,19 +166,29 @@ def bootstrap_auc_ci(
             aucs.append(a)
     if not aucs:
         ci_low = ci_high = float("nan")
+        delta_ci_low = delta_ci_high = float("nan")
     else:
         lo_pct = (1 - confidence) / 2 * 100
         hi_pct = (1 + confidence) / 2 * 100
         ci_low = float(np.percentile(aucs, lo_pct))
         ci_high = float(np.percentile(aucs, hi_pct))
+        deltas = [a - baseline_auc for a in aucs]
+        delta_ci_low = float(np.percentile(deltas, lo_pct))
+        delta_ci_high = float(np.percentile(deltas, hi_pct))
+    delta_point = float("nan") if math.isnan(point) else point - baseline_auc
     return {
         "auc_point": point,
         "auc_ci_low": ci_low,
         "auc_ci_high": ci_high,
+        "baseline_auc": baseline_auc,
+        "delta_point": delta_point,
+        "delta_ci_low": delta_ci_low,
+        "delta_ci_high": delta_ci_high,
         "confidence": confidence,
         "n": n,
         "n_bootstrap": n_bootstrap,
         "n_valid_resamples": len(aucs),
+        "method": "percentile",  # Stage 1 may upgrade to "BCa"
     }
 
 
@@ -210,11 +246,16 @@ def compute_brier_decomposition(
 ) -> dict[str, Any]:
     """Decompose Brier score into reliability / resolution / uncertainty.
 
-    BS = uncertainty - resolution + reliability
+    Standard Murphy-Winkler (1977) decomposition:
+
+        BS = reliability - resolution + uncertainty
+
     Where:
-      uncertainty = p * (1 - p), p = base rate
-      resolution  = sum_b (n_b/N) * (predicted_mean_b - p)^2
-      reliability = sum_b (n_b/N) * (predicted_mean_b - observed_rate_b)^2
+        uncertainty = p * (1 - p)        p = base rate (irreducible noise)
+        reliability = sum_b (n_b/N) * (predicted_mean_b - observed_rate_b)^2
+                      penalty for miscalibration
+        resolution  = sum_b (n_b/N) * (predicted_mean_b - p)^2
+                      reward for spreading predictions away from base rate
     """
     predictions = np.asarray(predictions, dtype=float)
     labels = np.asarray(labels, dtype=int)
@@ -262,21 +303,39 @@ def evaluate_anchor_case(
 ) -> dict[str, Any]:
     """Evaluate a single anchor case.
 
-    For point cases (single recipe + country): compute the country's
-    percentile rank within that recipe's prediction distribution and check
-    whether it falls in expected_rank_band.
+    For point cases (single recipe + country + expected_rank_band): compute
+    the country's percentile rank within that recipe's prediction distribution
+    and check whether it falls in expected_rank_band.
+
+    For rank-stability cases (expected_rank_volatility_max, e.g. Venezuela
+    case 6): NOT YET IMPLEMENTED -- requires comparing rank across model
+    versions, which is a multi-run interface. Returns a documented
+    NOT_YET_IMPLEMENTED status. Stage 1 implements when multi-version
+    comparison is available.
 
     For sentinel cases (recipe_sentinel + resolves_to_layer1): a placeholder
     result indicating the test is composable but requires layer1 lookup
     (Stage 1 will populate this based on the recipe-rubric output).
 
     Returns:
-      {case_id, country, recipe_or_sentinel, status: PASS/FAIL/SKIPPED,
+      {case_id, country, recipe_or_sentinel, status: PASS/FAIL/SKIPPED/
+       DEFERRED_TO_STAGE_1/NOT_YET_IMPLEMENTED,
        observed_percentile (if PASS/FAIL), expected_rank_band, reason}
     """
     case_id = case["id"]
     country = case["country"]
     expected_band = case.get("expected_rank_band")
+    # Rank-stability case (Venezuela id=6): not implemented in v1; documented
+    # gap for Stage 1.
+    if "expected_rank_volatility_max" in case and expected_band is None:
+        return {
+            "case_id": case_id, "country": country,
+            "recipe": case.get("recipe"),
+            "status": "NOT_YET_IMPLEMENTED",
+            "reason": "rank-stability test requires multi-version comparison; "
+                      "Stage 1 implements when prior validation reports are available",
+            "expected_rank_volatility_max": case["expected_rank_volatility_max"],
+        }
     if "recipe" in case:
         recipe = case["recipe"]
         year_window = case.get("year_window")
@@ -297,13 +356,35 @@ def evaluate_anchor_case(
                 "status": "SKIPPED",
                 "reason": f"no predictions for country {country!r} in this recipe (or window)",
             }
-        sorted_preds = sorted(p["predicted_probability"] for p in relevant)
-        country_prob = country_rows[0]["predicted_probability"]
+        if len(country_rows) > 1:
+            # Multi-row case (multi-year window or duplicate predictions). Take
+            # the MEAN probability across rows; warn so Stage 1 can decide if
+            # this aggregation is correct (max may be more appropriate for
+            # "did the model ever rank country X high in the window?").
+            _log.warning(
+                "anchor case id=%s: %d prediction rows for country %s recipe %s; "
+                "taking mean probability across the window. Stage 1 should "
+                "confirm this aggregation is desired.",
+                case_id, len(country_rows), country, recipe,
+            )
+            country_prob = float(np.mean([r["predicted_probability"] for r in country_rows]))
+            country_prob_aggregation = "mean"
+        else:
+            country_prob = country_rows[0]["predicted_probability"]
+            country_prob_aggregation = "single_row"
+        # For multi-row windows, also collapse the relevant pool by country
+        # (mean probability per country) so the percentile rank is meaningful.
+        if year_window is not None and (year_window[0] != year_window[1]):
+            by_country: dict[str, list[float]] = defaultdict(list)
+            for p in relevant:
+                by_country[p["country"]].append(p["predicted_probability"])
+            sorted_preds = sorted(float(np.mean(v)) for v in by_country.values())
+        else:
+            sorted_preds = sorted(p["predicted_probability"] for p in relevant)
         # Percentile rank: fraction of countries with strictly lower probability
         n_below = sum(1 for v in sorted_preds if v < country_prob)
         n_total = len(sorted_preds)
         percentile = n_below / n_total if n_total > 0 else float("nan")
-        # Pass if within expected_rank_band
         pass_fail = (
             "PASS" if expected_band[0] <= percentile <= expected_band[1] else "FAIL"
         )
@@ -312,6 +393,7 @@ def evaluate_anchor_case(
             "status": pass_fail,
             "observed_percentile": percentile,
             "country_prob": country_prob,
+            "country_prob_aggregation": country_prob_aggregation,
             "expected_rank_band": expected_band,
             "n_total": n_total,
         }
@@ -352,6 +434,9 @@ def evaluate_anchor_battery(
         "n_active_skipped": sum(1 for r in active_results if r.get("status") == "SKIPPED"),
         "n_active_deferred_to_stage_1": sum(
             1 for r in active_results if r.get("status") == "DEFERRED_TO_STAGE_1"
+        ),
+        "n_active_not_yet_implemented": sum(
+            1 for r in active_results if r.get("status") == "NOT_YET_IMPLEMENTED"
         ),
         "n_deferred_by_hard_gate": len(deferred_results),
     }
