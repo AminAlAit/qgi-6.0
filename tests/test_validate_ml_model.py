@@ -206,7 +206,11 @@ def test_ece_bootstrap_handles_empty_input():
 
 
 def test_run_validation_includes_bootstrap_diagnostic_alongside_gate():
-    """Founder tie-break compromise: gate uses in-sample ECE; diagnostic reported alongside."""
+    """Founder tie-break compromise: gate uses in-sample ECE; diagnostic reported alongside.
+
+    Asserts the happy path: a balanced 50-row sample with 20 resamples should
+    produce 20 valid resamples (no degenerate single-class draws).
+    """
     rng = np.random.default_rng(0)
     preds_list = []
     for i in range(50):
@@ -225,6 +229,8 @@ def test_run_validation_includes_bootstrap_diagnostic_alongside_gate():
     # Diagnostic has the bootstrap fields
     diag = cal["per_recipe_bootstrap_diagnostic"]["test_recipe"]
     assert "ece_bootstrap_p75" in diag
+    # Happy-path resample count: 20 requested, 20 succeeded (balanced 50-row pool)
+    assert diag["n_valid_resamples"] == 20
 
 
 # ---------- compute_brier_decomposition ----------
