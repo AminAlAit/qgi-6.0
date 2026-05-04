@@ -105,6 +105,10 @@ def test_ml_output_score_key_rejects_implausible_year():
     "with\nnewline",
     "with\ttab",
     "",
+    "C:windows_drive",  # Windows drive-letter colon must be blocked
+    "C:\\absolute\\path",
+    ":leading_colon",
+    "trailing:",
 ])
 def test_check_id_rejects_bad_input(bad):
     with pytest.raises(ValueError):
@@ -313,21 +317,26 @@ def test_snapshot_training_data_raises_on_missing_indicator(tmp_path):
 # ---------- S3Backend smoke tests (no real AWS calls) ----------
 
 
-def test_s3_backend_lazy_imports_boto3():
-    """If boto3 is installed in this env, S3Backend constructs OK."""
+def test_s3_backend_lazy_imports_boto3(monkeypatch):
+    """S3Backend imports boto3+botocore on init. Mock client construction so the
+    test doesn't depend on AWS credentials in CI (NoCredentialsError + similar)."""
     try:
         import boto3  # noqa: F401
     except ImportError:
         pytest.skip("boto3 not installed in this env")
+    import boto3 as _boto3
+    monkeypatch.setattr(_boto3, "client", lambda *a, **kw: object())
     backend = mr.S3Backend(bucket="qgi-data-lake-test", region="eu-central-1")
     assert backend.bucket == "qgi-data-lake-test"
     assert backend.region == "eu-central-1"
+    assert backend._client is not None
 
 
-def test_s3_backend_uri_format():
+def test_s3_backend_uri_format(monkeypatch):
     try:
-        import boto3  # noqa: F401
+        import boto3 as _boto3
     except ImportError:
         pytest.skip("boto3 not installed in this env")
+    monkeypatch.setattr(_boto3, "client", lambda *a, **kw: object())
     backend = mr.S3Backend(bucket="my-bucket")
     assert backend.uri("a/b.bin") == "s3://my-bucket/a/b.bin"
