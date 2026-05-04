@@ -31,7 +31,6 @@ from __future__ import annotations
 import datetime as _dt
 import hashlib
 import json
-import shutil
 import subprocess
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
@@ -106,13 +105,18 @@ class S3Backend:
     def __init__(self, bucket: str = DEFAULT_BUCKET, region: str = DEFAULT_REGION) -> None:
         try:
             import boto3
+            import botocore.exceptions
         except ImportError as err:  # pragma: no cover - exercised manually
             raise RuntimeError(
-                "boto3 is required for S3Backend; install with `pip install boto3`."
+                "boto3 + botocore are required for S3Backend; install with `pip install boto3`."
             ) from err
         self.bucket = bucket
         self.region = region
         self._client = boto3.client("s3", region_name=region)
+        # Capture the canonical ClientError class so .exists() can catch it without
+        # depending on `client.exceptions.ClientError` (which is unreliable across
+        # boto3 versions).
+        self._client_error_cls = botocore.exceptions.ClientError
 
     def write_bytes(self, key: str, content: bytes) -> str:
         self._client.put_object(Bucket=self.bucket, Key=key, Body=content)
@@ -126,10 +130,11 @@ class S3Backend:
         try:
             self._client.head_object(Bucket=self.bucket, Key=key)
             return True
-        except self._client.exceptions.ClientError as err:
-            if err.response["Error"]["Code"] in ("404", "NoSuchKey"):
+        except self._client_error_cls as err:
+            code = err.response.get("Error", {}).get("Code", "")
+            if code in ("404", "NoSuchKey", "NotFound"):
                 return False
-            raise
+            raise  # 403 / 500 / other -- bubble up
 
     def list_keys(self, prefix: str) -> list[str]:
         paginator = self._client.get_paginator("list_objects_v2")
@@ -173,10 +178,16 @@ def ml_output_score_key(recipe_id: str, year: int) -> str:
 
 
 def _check_id(value: str, label: str) -> None:
-    """Reject path-traversal attempts and obviously-bad IDs."""
+    """Reject path-traversal attempts and obviously-bad IDs.
+
+    Forbidden tokens cover: directory traversal (..), POSIX/Windows path
+    separators (/ \\), whitespace (space, newline, tab), and the Windows drive-
+    letter colon (:) which would otherwise let "C:secret" through unchallenged
+    on Windows hosts.
+    """
     if not isinstance(value, str) or not value:
         raise ValueError(f"{label} must be a non-empty str; got {value!r}")
-    bad = ("..", "/", "\\", " ", "\n", "\t")
+    bad = ("..", "/", "\\", ":", " ", "\n", "\t")
     for tok in bad:
         if tok in value:
             raise ValueError(f"{label} contains forbidden token {tok!r}: {value!r}")
@@ -295,7 +306,10 @@ class ModelMetadata:
     notes: list[str] = field(default_factory=list)
 
     def to_json_bytes(self) -> bytes:
-        return (json.dumps(asdict(self), indent=2, sort_keys=False) + "\n").encode("utf-8")
+        # sort_keys=True ensures byte-identical serialization regardless of how
+        # the caller constructed nested dicts (e.g., hyperparameters insertion
+        # order). Reproducibility-critical per Ji-Hoon.
+        return (json.dumps(asdict(self), indent=2, sort_keys=True) + "\n").encode("utf-8")
 
 
 # ---------- Public registry operations ----------
@@ -320,6 +334,11 @@ def register_model(
         raise ValueError(
             "metadata.recipe_id / metadata.run_id must match the registration call args"
         )
+    # NOTE: metadata.training_data_snapshot_run_id is intentionally NOT cross-
+    # checked against run_id -- a model can legitimately reference an earlier
+    # snapshot's run_id (e.g., when re-training on the same training data with
+    # a different model class). Caller is responsible for passing the right
+    # snapshot reference.
     model_artifact_local_path = Path(model_artifact_local_path)
     if not model_artifact_local_path.is_file():
         raise FileNotFoundError(f"model artifact not found: {model_artifact_local_path}")
