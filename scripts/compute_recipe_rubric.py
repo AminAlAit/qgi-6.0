@@ -11,20 +11,26 @@ Formula (per Layer-3 event category r):
 
     S(r) = 0.35 * A(r) + 0.25 * B(r) + 0.25 * C(r) + 0.15 * D(r)
 
-with HARD GATE: if n_positive(r) < 8 across the 2014-2025 training window,
-A(r) = 0 and the recipe is excluded (S=0, rank None).
+with HARD GATE: if n_positive_verified(r) < 8 across the 2014-2025 training
+window, A(r) = 0 and the recipe is excluded (S=0, rank=None).
+
+Verified-only n_positive (per Kwame's spec language and founder decision
+2026-05-04): the gate counts unique (country, year) pairs whose curated
+events carry verified=True. Unverified events are reported as
+n_positive_total for transparency but do NOT enter the gate or Factor A.
 
 Factor definitions:
-    A — Ground-Truth Density. Unique (country, year) pairs per category in
-        [2014, 2025] / max across all 71 categories.
+    A — Ground-Truth Density. Unique VERIFIED (country, year) pairs per
+        category in [2014, 2025] / max across all 71 categories.
     B — Label Clarity. 1.0 (external dataset binary onset), 0.5 (QGI-internal),
         0.0 (graded/ambiguous). Manual lookup per category, sourced from the
         canonical event-source manifest.
     C — Directional Indicator Coverage. Until cascade-Opus's Phase 5 v0.1a
         annotation sprint produces direction-of-effect annotations, this script
-        falls back to the SECTOR PROXY: count indicators whose sector
-        (qgi-data/reference/indicator-sectors.json) is in the relevance map for
-        this recipe / 10, capped at 1.0.
+        falls back to the SECTOR PROXY: count indicators whose sector (per
+        qgi-data/reference/indicator-sectors.json -- note: the Stage 0 spec
+        cites qgi-docs/methodology/ but the canonical file lives in qgi-data/)
+        is in the relevance map for this recipe / 10, capped at 1.0.
     D — Cross-Recipe Pooling Utility. Iterative: compute S' = 0.35A + 0.25B +
         0.25C, identify top-20 by S', then for each r count other r' in top-20
         sharing >=3 indicators in the same sector / 5, capped at 1.0.
@@ -350,7 +356,6 @@ SURVIVAL_SUB_FACTORS: dict[str, tuple[int, int, int]] = {
     "sport_and_international_event": (3, 2, 2),
     "agricultural_policy": (1, 1, 1),
     "water_crisis": (1, 1, 1),
-    "public_health_reform": (1, 1, 1),
     "poverty_and_inequality_crisis": (0, 0, 0),  # gradient
 }
 
@@ -361,9 +366,9 @@ class RecipeRubricRow:
     category_id: str
     layer1_id: str
     layer2_id: str
-    layer3_label: str
-    n_positive: int
-    n_positive_verified: int
+    layer2_label: str
+    n_positive_verified: int  # gates Factor A; Kwame's spec language
+    n_positive_total: int     # all curated (verified + unverified) — transparency
     A: float
     B: float
     C: float
@@ -405,9 +410,11 @@ def _safe_relative(path: Path, root: Path) -> str:
 
 
 def load_category_taxonomy(category_mapping_path: Path) -> dict[str, dict[str, str]]:
-    """Return category_id -> {layer1_id, layer2_id, layer3_label}.
+    """Return category_id -> {layer1_id, layer2_id, layer2_label}.
 
     Reads the layer1 -> layer2 -> layer3 hierarchy and inverts to layer3 -> ancestors.
+    The label stored is the L2 label because the taxonomy file does not carry
+    distinct L3 labels (L3 entries are bare string IDs).
     """
     mapping = json.loads(category_mapping_path.read_text(encoding="utf-8"))
     out: dict[str, dict[str, str]] = {}
@@ -426,7 +433,7 @@ def load_category_taxonomy(category_mapping_path: Path) -> dict[str, dict[str, s
                 out[l3] = {
                     "layer1_id": l1_id,
                     "layer2_id": l2_id,
-                    "layer3_label": l2_label,
+                    "layer2_label": l2_label,
                 }
     return out
 
@@ -583,13 +590,27 @@ def compute_factor_d(
 
 
 def assign_head_class(survival_eligible: bool, n_positive: int) -> tuple[int, str]:
-    """Return (F5_score, head_class_label)."""
+    """Return (F5_score, head_class_label).
+
+    Per spec 05-recipe-prioritization-rubric.md F5 table:
+      3 — survival head warranted (survival_eligible AND n_positive >= 20)
+      2 — asymmetric-loss GBM (rare class, n_positive < 20)
+      1 — standard GBM (n_positive >= 20 but not survival-eligible)
+      0 — excluded by hard gate (n_positive < 8)
+
+    Survival-eligible recipes with n_positive in [8, 20) get F5=2 with a
+    label that explicitly notes the survival-deferred state -- they will
+    be reconsidered for survival heads if n_positive grows past 20 in
+    a future mandate cycle (per the re-entry-of-falsified-recipes protocol).
+    """
     if n_positive < HARD_GATE_MIN_N_POSITIVE:
         return 0, "excluded"
     if survival_eligible and n_positive >= 20:
         return 3, "discrete-time hazard (DeepHit-lite)"
     if n_positive < 20:
-        return 2, "asymmetric-loss GBM"
+        if survival_eligible:
+            return 2, "asymmetric-loss GBM (rare-class; survival deferred until n>=20)"
+        return 2, "asymmetric-loss GBM (rare-class)"
     return 1, "standard GBM"
 
 
@@ -610,28 +631,31 @@ def compute_recipe_rubric(
     indicator_sector_map = load_indicator_sector_map(indicator_sectors_path)
     events = load_curated_events(curated_dir)
 
-    n_pos = count_n_positive(events, window)
+    # Per Kwame's spec language ("Count VERIFIED positive country-year occurrences"),
+    # the HARD GATE and Factor A normalization use verified-only counts. The
+    # all-curated count (n_positive_total) is reported as a transparency field.
+    n_pos_total = count_n_positive(events, window)
     n_pos_verified = count_n_positive(events, window, verified_only=True)
 
     # Use the taxonomy as source of truth for "all 71 categories" -- include
     # zero-coverage ones too so the founder sees gaps.
     all_categories = sorted(taxonomy.keys())
-    max_n = max((n_pos.get(c, 0) for c in all_categories), default=0)
+    max_n = max((n_pos_verified.get(c, 0) for c in all_categories), default=0)
 
     # Pass 1: A, B, C, pre-D score
     rows: dict[str, dict[str, Any]] = {}
     excluded: set[str] = set()
     for cat in all_categories:
-        n = n_pos.get(cat, 0)
         n_v = n_pos_verified.get(cat, 0)
-        a, gated = compute_factor_a(n, max_n)
+        n_t = n_pos_total.get(cat, 0)
+        a, gated = compute_factor_a(n_v, max_n)
         b, src = compute_factor_b(cat)
         c, sectors, n_inds = compute_factor_c(cat, indicator_sector_map)
         if gated:
             excluded.add(cat)
         rows[cat] = {
-            "n_positive": n,
             "n_positive_verified": n_v,
+            "n_positive_total": n_t,
             "A": a, "B": b, "C": c,
             "label_source_examples": src,
             "relevant_sectors": sectors,
@@ -650,24 +674,28 @@ def compute_recipe_rubric(
     for cat in all_categories:
         r = rows[cat]
         d = d_scores.get(cat, 0.0)
-        s = (
-            WEIGHTS["A"] * r["A"]
-            + WEIGHTS["B"] * r["B"]
-            + WEIGHTS["C"] * r["C"]
-            + WEIGHTS["D"] * d
-        )
+        # Per spec: hard-gated recipes have S=0 (excluded from ML track).
+        if r["excluded_by_hard_gate"]:
+            s = 0.0
+        else:
+            s = (
+                WEIGHTS["A"] * r["A"]
+                + WEIGHTS["B"] * r["B"]
+                + WEIGHTS["C"] * r["C"]
+                + WEIGHTS["D"] * d
+            )
         f2, f3, f4 = survival_subfactors(cat)
         survival_eligible = (f2 + f3 + f4) >= 5
-        f5, head_class = assign_head_class(survival_eligible, r["n_positive"])
-        meta = taxonomy.get(cat, {"layer1_id": "?", "layer2_id": "?", "layer3_label": cat})
+        f5, head_class = assign_head_class(survival_eligible, r["n_positive_verified"])
+        meta = taxonomy.get(cat, {"layer1_id": "?", "layer2_id": "?", "layer2_label": cat})
         final_rows.append(RecipeRubricRow(
             rank=None,  # filled after sort
             category_id=cat,
             layer1_id=meta["layer1_id"],
             layer2_id=meta["layer2_id"],
-            layer3_label=meta["layer3_label"],
-            n_positive=r["n_positive"],
+            layer2_label=meta["layer2_label"],
             n_positive_verified=r["n_positive_verified"],
+            n_positive_total=r["n_positive_total"],
             A=round(r["A"], 4), B=round(r["B"], 4),
             C=round(r["C"], 4), D=round(d, 4),
             S=round(s, 4),
@@ -726,25 +754,43 @@ def compute_recipe_rubric(
             ),
             "events_curated_state_hash_in_window": corpus_state_hash,
             "events_in_window": len(triples),
+            "structural_break_audit_present": _structural_break_audit_path().exists(),
         },
         "notes": [
+            "HARD GATE + Factor A use VERIFIED-only n_positive (Kwame's spec language).",
+            "n_positive_total field reports all-curated count for transparency.",
             "Factor C uses SECTOR PROXY -- direction-of-effect annotations not yet present in catalog.",
             "F5 head_class is a hint, not a binding contract; Stage 2 may revert survival -> GBM via Rule F3.",
-            "Excluded categories (n_positive < 8) are listed at the bottom with rank=None.",
+            "Hard-gated recipes (n_positive_verified < 8) carry rank=None and S=0.0 per spec.",
             "B=0.0 categories indicate gradient definitions; revisit at next Majles convening.",
-        ],
+            "B=0.5 for human_rights / corruption / repression categories: gradient indices like CIRI/HRMI"
+            " are externally maintained but continuous, not binary onsets. 2026-05-04 Stage-0 consult"
+            " (Kwame + Ji-Hoon) converged STRICT: B=1.0 only for binary external events.",
+        ] + (
+            [] if _structural_break_audit_path().exists()
+            else ["structural-break-audit-2026-05.json absent at gen time -- C and "
+                  "feature-engineering refinements deferred until cascade-Opus ships it."]
+        ),
         "ranking": [asdict(r) for r in ordered],
     }
     return payload
 
 
+def _structural_break_audit_path() -> Path:
+    return REPO_ROOT / "qgi-data" / "reference" / "structural-break-audit-2026-05.json"
+
+
 def render_summary(payload: dict[str, Any], top_k: int = 25) -> str:
-    """Return a plain-text top-K summary table for stdout / founder review."""
+    """Return a plain-text top-K summary table for stdout / founder review.
+
+    Columns: n+v = n_positive_verified (gates the rubric); n+t = n_positive_total
+    (all curated, for transparency).
+    """
     lines: list[str] = []
     lines.append(
         f"Recipe rubric  -- {payload['n_categories_total']} categories total, "
         f"{payload['n_categories_excluded_by_hard_gate']} excluded by hard gate "
-        f"(n_positive < {payload['hard_gate']['min_n_positive']})."
+        f"(n_positive_verified < {payload['hard_gate']['min_n_positive']})."
     )
     lines.append(
         f"Weights: A={payload['weights']['A']} B={payload['weights']['B']} "
@@ -753,7 +799,7 @@ def render_summary(payload: dict[str, Any], top_k: int = 25) -> str:
     lines.append(f"Training window: {payload['training_window']}")
     lines.append("")
     header = (
-        f"{'#':>3}  {'category':<38} {'n+':>4} {'A':>5} {'B':>4} {'C':>4} {'D':>4} "
+        f"{'#':>3}  {'category':<38} {'n+v':>4} {'n+t':>4} {'A':>5} {'B':>4} {'C':>4} {'D':>4} "
         f"{'S':>6} {'F5':>2}  head_class"
     )
     lines.append(header)
@@ -763,16 +809,16 @@ def render_summary(payload: dict[str, Any], top_k: int = 25) -> str:
             continue
         lines.append(
             f"{r['rank']:>3}  {r['category_id']:<38} "
-            f"{r['n_positive']:>4} "
+            f"{r['n_positive_verified']:>4} {r['n_positive_total']:>4} "
             f"{r['A']:>5.3f} {r['B']:>4.2f} {r['C']:>4.2f} {r['D']:>4.2f} "
             f"{r['S']:>6.4f} {r['F5']:>2}  {r['head_class']}"
         )
     excluded = [r for r in payload["ranking"] if r["excluded_by_hard_gate"]]
     if excluded:
         lines.append("")
-        lines.append(f"Excluded by hard gate (n_positive < {payload['hard_gate']['min_n_positive']}):")
+        lines.append(f"Excluded by hard gate (n_positive_verified < {payload['hard_gate']['min_n_positive']}):")
         for r in excluded:
-            lines.append(f"  {r['category_id']:<38} n+={r['n_positive']}")
+            lines.append(f"  {r['category_id']:<38} n+v={r['n_positive_verified']:>4}  n+t={r['n_positive_total']:>4}")
     return "\n".join(lines)
 
 
