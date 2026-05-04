@@ -85,12 +85,16 @@ import pandas as pd
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 _SRC_DIR = REPO_ROOT / "qgi-ml" / "src"
+_SHARED_DIR = REPO_ROOT / "qgi-ml" / "shared"
 if str(_SRC_DIR) not in sys.path:
     sys.path.insert(0, str(_SRC_DIR))
+if str(_SHARED_DIR) not in sys.path:
+    sys.path.insert(0, str(_SHARED_DIR))
 
 import feature_engineering as fe  # noqa: E402
 from beta_calibration import BetaCalibrator  # noqa: E402
 import ml_registry as mr  # noqa: E402
+from slug import country_slug  # noqa: E402  -- canonical snake_case slugifier
 
 _log = logging.getLogger(__name__)
 
@@ -216,6 +220,16 @@ def build_feature_panel(
 
     # Restrict to canonical 4 columns
     long = long[["country", "year", "indicator_id", "value"]].copy()
+
+    # Normalize country names to snake_case slugs (matches qgi-data/events/
+    # curated/<slug>.json filenames + the labels DataFrame). The panel may
+    # use Title Case ("Afghanistan") or commas ("Korea, South") -- slugify
+    # to align with labels before merging downstream.
+    long["country"] = long["country"].map(country_slug)
+    n_unmapped = long["country"].isna().sum()
+    if n_unmapped > 0:
+        _log.warning("dropped %d rows with unmappable country names", n_unmapped)
+        long = long.dropna(subset=["country"]).reset_index(drop=True)
 
     # Feature engineering pipeline
     long = fe.first_difference(long)
