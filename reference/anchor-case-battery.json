@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "generated": "2026-05-04",
+  "generated_for_stage": "ml-track stage-0 pre-registration",
+  "purpose": "Regression-suite anchor cases per qgi-docs/internal/ops/ml-track/07-validation-framework.md Component 6. Read by qgi-ml/scripts/validate_ml_model.py at every training run; records pass/fail per case.",
+  "important_caveat": "Anchor battery is a REGRESSION SUITE, not validation (Kwame's binding warning). Passing all 8 means the model didn't break on known cases; it does NOT mean the methodology is correct. External claims must distinguish regression-test results from validation results.",
+  "n_cases": 8,
+  "cases": [
+    {
+      "id": 1,
+      "country": "Malta",
+      "country_slug": "malta",
+      "recipe": "military_coup",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [0.0, 0.30],
+      "rationale": "Small island democracy with no military coup history; consistently low coup risk under any defensible methodology. Headline anchor (DECISION v2 + v3)."
+    },
+    {
+      "id": 2,
+      "country": "Iceland",
+      "country_slug": "iceland",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [0.0, 0.30],
+      "rationale": "Stable Nordic democracy with no civil war or insurgency history; should rank near-zero on conflict categories."
+    },
+    {
+      "id": 3,
+      "country": "Norway",
+      "country_slug": "norway",
+      "recipe_layer1": "B",
+      "recipe": "any_conflict_category",
+      "test_type": "boring_country_floor",
+      "expected_behavior": "bottom_quintile_all_conflict",
+      "expected_rank_band": [0.0, 0.20],
+      "rationale": "Globally-considered stable democracy; should sit in the bottom quintile across ALL Layer-1=B (Conflict & Political Violence) recipes simultaneously. Tests cross-recipe consistency for boring-country prediction."
+    },
+    {
+      "id": 4,
+      "country": "Tunisia",
+      "country_slug": "tunisia",
+      "recipe": "democratic_transition",
+      "year_window": [2010, 2011],
+      "test_type": "true_positive_recovery",
+      "expected_behavior": "top_half_in_window",
+      "expected_rank_band": [0.5, 1.0],
+      "rationale": "Tunisia 2010-2011 democratic transition (Arab Spring) is a documented true positive. Model should rank Tunisia in the top half on transition risk during this window."
+    },
+    {
+      "id": 5,
+      "country": "Sri Lanka",
+      "country_slug": "sri_lanka",
+      "recipe": "economic_recession",
+      "year_window": [2022, 2022],
+      "test_type": "true_positive_non_conflict",
+      "expected_behavior": "top_half_in_window",
+      "expected_rank_band": [0.5, 1.0],
+      "rationale": "Sri Lanka 2022 economic crisis (sovereign default + IMF intervention) is a documented true positive on a non-conflict recipe. Tests that the model catches economic-domain true positives, not just conflict-domain ones."
+    },
+    {
+      "id": 6,
+      "country": "Venezuela",
+      "country_slug": "venezuela",
+      "recipe": "economic_recession",
+      "test_type": "rank_stability",
+      "expected_behavior": "stable_rank_across_versions",
+      "expected_rank_volatility_max": 0.10,
+      "rationale": "Venezuela has long-standing economic instability; rank should be stable across model versions (volatility < 10 percentile points). Tests that minor methodology tweaks don't shake well-known-fragile-state predictions."
+    },
+    {
+      "id": 7,
+      "country": "Switzerland",
+      "country_slug": "switzerland",
+      "recipe_layer1": "B",
+      "recipe": "any_conflict_category",
+      "test_type": "stable_state_floor",
+      "expected_behavior": "never_above_median",
+      "expected_rank_band": [0.0, 0.50],
+      "rationale": "Stable European democracy; should never rank above median on any Layer-1=B (Conflict) recipe. Tests cross-recipe consistency for stable-state floor."
+    },
+    {
+      "id": 8,
+      "country": "Yemen",
+      "country_slug": "yemen",
+      "recipe_layer1": "B",
+      "recipe": "any_3_plus_conflict_categories",
+      "test_type": "failed_state_recovery",
+      "expected_behavior": "top_quartile_on_3_or_more_conflict_recipes",
+      "expected_rank_band": [0.75, 1.0],
+      "min_recipes_in_band": 3,
+      "rationale": "Yemen has documented multi-front conflict (civil war + terrorism + foreign intervention + humanitarian crisis). Model should rank Yemen in the top quartile on at least 3 distinct conflict-family Layer-1=B recipes simultaneously. Somalia is an alternative anchor."
+    }
+  ],
+  "alternative_anchors": {
+    "case_8_alternative": {
+      "country": "Somalia",
+      "country_slug": "somalia",
+      "rationale": "Same expected behavior as Yemen; either may be used; both can be checked together for redundancy."
+    }
+  },
+  "policy_notes": [
+    "Per Kwame's warning: passing all 8 anchors does NOT validate the methodology. It is a regression suite that catches obvious failure modes (e.g., a model that ranks Norway as high-coup-risk).",
+    "Per Component 6 / DECISION v3: validation script computes pass/fail per case automatically and emits a per-case rank + score. No BH/FDR correction applies to anchor results -- they are regression tests, not hypothesis tests.",
+    "Per founder addendum (note 2): Malta-Military-Coup alone is one data point. The 8-case battery formalizes 'multiple test cases that together stress the methodology from different angles'.",
+    "Country slugs follow qgi-ml/shared/slug.py convention (lowercase, underscore-delimited; matches qgi-data/events/curated/<slug>.json filenames)."
+  ],
+  "schema_notes": [
+    "expected_rank_band is a percentile interval [low, high] in [0, 1] over the country distribution for the named recipe (lower = lower risk).",
+    "expected_rank_volatility_max is the maximum allowed rank-percentile delta across model versions for rank-stability cases.",
+    "min_recipes_in_band is required for failed-state cases checking simultaneous high rank across multiple recipes.",
+    "year_window restricts the test to specific years for time-windowed true-positive cases."
+  ]
+}
