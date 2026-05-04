@@ -40,11 +40,15 @@ Design notes:
 """
 from __future__ import annotations
 
+import logging
+import warnings
 from pathlib import Path
 from typing import Any, Iterable
 
 import numpy as np
 import pandas as pd
+
+_log = logging.getLogger(__name__)
 
 
 # Required panel columns (canonical long format)
@@ -95,6 +99,7 @@ def read_indicators(
     for iid in indicator_ids:
         p = panel_dir / iid / f"{iid}.parquet"
         if not p.is_file():
+            _log.warning("indicator parquet not found, skipping: %s", p)
             continue
         df = pd.read_parquet(p)
         if "indicator_id" not in df.columns:
@@ -116,6 +121,16 @@ def pivot_to_wide(long_df: pd.DataFrame) -> pd.DataFrame:
     _check_long_schema(long_df)
     if long_df.empty:
         return pd.DataFrame()
+    # Detect duplicate (country, year, indicator) rows BEFORE pivot so data bugs
+    # surface to callers instead of being silently absorbed by aggfunc="first".
+    dup_mask = long_df.duplicated(subset=["country", "year", "indicator_id"], keep=False)
+    if dup_mask.any():
+        n_dup = int(dup_mask.sum())
+        warnings.warn(
+            f"pivot_to_wide: {n_dup} duplicate (country, year, indicator_id) rows; "
+            f"keeping first value per group. Investigate upstream curation.",
+            stacklevel=2,
+        )
     wide = long_df.pivot_table(
         index=["country", "year"],
         columns="indicator_id",
@@ -180,9 +195,15 @@ def rolling_zscore(
     """Per-country per-indicator rolling Z-score.
 
     For each (country, indicator), compute rolling mean and std over the
-    most recent `window_years` years (inclusive of current year) and emit
+    most recent `window_years` years (INCLUSIVE of current year) and emit
     z = (value - mean) / std. Emits a derived indicator named `<id>__zscore`.
     Years with fewer than 2 prior observations get NaN.
+
+    Window-inclusive-of-current-year is the standard ML-feature regime: at
+    prediction time T the model knows the value at T (it's the input), so
+    normalizing using that value is not data leakage. If a fully-anticipatory
+    feature is needed (z computed without seeing year T), shift the panel by
+    one year before calling this function.
     """
     if window_years < 2:
         raise ValueError(f"window_years must be >= 2; got {window_years}")
@@ -192,13 +213,14 @@ def rolling_zscore(
     target_ids = set(indicator_ids) if indicator_ids is not None else set(long_df["indicator_id"].unique())
     target = long_df.loc[long_df["indicator_id"].isin(target_ids)].copy()
     other = long_df.loc[~long_df["indicator_id"].isin(target_ids)].copy()
-    target = target.sort_values(["country", "indicator_id", "year"])
+    # Sort + reset index ensures rolling/groupby alignment is unambiguous.
+    target = target.sort_values(["country", "indicator_id", "year"]).reset_index(drop=True)
     grp = target.groupby(["country", "indicator_id"])["value"]
     rolling_mean = grp.transform(lambda s: s.rolling(window_years, min_periods=2).mean())
     rolling_std = grp.transform(lambda s: s.rolling(window_years, min_periods=2).std())
     z = (target["value"] - rolling_mean) / rolling_std
     # Replace inf/-inf (zero std → divide by zero) with NaN — informative absence
-    target["value"] = z.replace([float("inf"), float("-inf")], pd.NA)
+    target["value"] = z.replace([float("inf"), float("-inf")], np.nan)
     target["indicator_id"] = target["indicator_id"] + SUFFIX_ZSCORE
     return pd.concat([other, target], ignore_index=True)
 
@@ -212,7 +234,8 @@ def momentum(
 
     Captures medium-term trend acceleration / deceleration. Differs from
     first_difference (raw YoY) in smoothing the baseline. Output indicator
-    suffix `__momentum`.
+    suffix `__momentum`. Computed PER (country, indicator) — does NOT bleed
+    across indicators at country boundaries.
     """
     if lookback_years < 2:
         raise ValueError(f"lookback_years must be >= 2; got {lookback_years}")
@@ -222,10 +245,16 @@ def momentum(
     target_ids = set(indicator_ids) if indicator_ids is not None else set(long_df["indicator_id"].unique())
     target = long_df.loc[long_df["indicator_id"].isin(target_ids)].copy()
     other = long_df.loc[~long_df["indicator_id"].isin(target_ids)].copy()
-    target = target.sort_values(["country", "indicator_id", "year"])
+    target = target.sort_values(["country", "indicator_id", "year"]).reset_index(drop=True)
+    # Rolling mean per (country, indicator) -- both groupby keys so no bleed.
     grp = target.groupby(["country", "indicator_id"])["value"]
     rolling_mean = grp.transform(lambda s: s.rolling(lookback_years, min_periods=2).mean())
-    target["value"] = rolling_mean.groupby(target["country"], group_keys=False).diff()
+    # Diff the rolling mean ALSO per (country, indicator) -- prior bug grouped
+    # only on country, which produced cross-indicator deltas at indicator
+    # boundaries within a country.
+    target["value"] = rolling_mean.groupby(
+        [target["country"], target["indicator_id"]], group_keys=False
+    ).diff()
     target["indicator_id"] = target["indicator_id"] + SUFFIX_MOMENTUM
     return pd.concat([other, target], ignore_index=True)
 
@@ -273,7 +302,7 @@ def cross_indicator_ratios(
 def missingness_indicators(
     long_df: pd.DataFrame,
     indicator_ids: Iterable[str] | None = None,
-    full_country_year_grid: bool = True,
+    universe: str = "panel_grid",
 ) -> pd.DataFrame:
     """Emit binary missingness flags per indicator (Roshani's MNAR mitigation).
 
@@ -282,24 +311,53 @@ def missingness_indicators(
     was missing in that cell, else value=0.0. Derived indicator name is
     `<id>__missing`.
 
-    full_country_year_grid: if True (default), considers the cross-product of
-    all observed (country, year) pairs as the universe -- so a country-year
-    with no row at all for the indicator counts as "missing". If False, only
-    flags rows already present with NaN value.
+    universe parameter controls what counts as a "missingness candidate":
+
+    * "panel_grid" (default): cross-product of all observed (country, year)
+      pairs across the FULL panel. A country-year with no row at all for
+      the indicator counts as missing -- INCLUDES structural non-collection
+      (e.g., indicator only ingested for 1990-2010 but panel has rows
+      through 2025; the 2011-2025 cells are flagged missing).
+
+    * "indicator_coverage": cross-product of (country, year) pairs only
+      within the indicator's observed coverage window (per-indicator min/
+      max year). Excludes structural non-collection -- only flags within-
+      coverage NaN cells. More faithful MNAR signal at the cost of not
+      flagging structural absence (which may itself be predictive).
+
+    * "rows_only": flag only rows already present with NaN value (legacy
+      behavior; tightest scope).
+
+    Per-indicator coverage mode is methodology-relevant per Roshani's binding
+    requirement: structural non-collection vs MNAR-within-collection are
+    different signals. Default is "panel_grid" because the FACT of structural
+    non-collection is also informative (regimes blocking external coders).
+    Stage 1 may flip the default if validation shows structural-collection
+    artifacts dominate the signal.
     """
+    if universe not in ("panel_grid", "indicator_coverage", "rows_only"):
+        raise ValueError(
+            f"universe must be panel_grid / indicator_coverage / rows_only; got {universe!r}"
+        )
     _check_long_schema(long_df)
     if long_df.empty:
         return long_df.copy()
     universe_ids = set(indicator_ids) if indicator_ids is not None else set(long_df["indicator_id"].unique())
     out_frames: list[pd.DataFrame] = [long_df.copy()]
-    if full_country_year_grid:
-        country_years = long_df[["country", "year"]].drop_duplicates()
+    panel_country_years = long_df[["country", "year"]].drop_duplicates()
     for iid in universe_ids:
         ind_rows = long_df.loc[long_df["indicator_id"] == iid, ["country", "year", "value"]]
-        if full_country_year_grid:
-            merged = country_years.merge(ind_rows, on=["country", "year"], how="left")
-        else:
+        if universe == "rows_only" or ind_rows.empty:
             merged = ind_rows.copy()
+        elif universe == "indicator_coverage":
+            year_min, year_max = ind_rows["year"].min(), ind_rows["year"].max()
+            ind_window = panel_country_years.loc[
+                (panel_country_years["year"] >= year_min)
+                & (panel_country_years["year"] <= year_max)
+            ]
+            merged = ind_window.merge(ind_rows, on=["country", "year"], how="left")
+        else:  # panel_grid (default)
+            merged = panel_country_years.merge(ind_rows, on=["country", "year"], how="left")
         # Missing if value is NaN
         flag = merged["value"].isna().astype(float)
         derived = pd.DataFrame({
@@ -333,6 +391,10 @@ def multiple_imputation_mice(
     of the three MNAR mitigation paths. Apply BEFORE training, after the
     missingness_indicators features have been computed (so the binary "fact
     of absence" is preserved as a separate feature).
+
+    Note: integer-typed indicator columns may be silently upcast to float64
+    during imputation since IterativeImputer outputs float arrays. This is
+    expected behavior, not an error.
     """
     if wide_df.empty:
         return wide_df.copy()
