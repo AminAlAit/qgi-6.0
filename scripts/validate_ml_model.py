@@ -285,9 +285,9 @@ def compute_ece_bootstrap_diagnostic(
     for _ in range(n_bootstrap):
         idx = rng.integers(0, n, size=n)
         out = compute_ece_and_reliability(predictions[idx], labels[idx], n_bins=n_bins)
-        e = out["ece"]
-        if not (isinstance(e, float) and math.isnan(e)):
-            eces.append(float(e))
+        e = float(out["ece"])
+        if not np.isnan(e):  # numpy-idiomatic; works for python float and np.float
+            eces.append(e)
     if not eces:
         return {
             "n_bootstrap": n_bootstrap, "n_valid_resamples": 0,
@@ -301,14 +301,16 @@ def compute_ece_bootstrap_diagnostic(
             "method": "resample_only",
         }
     arr = np.array(eces, dtype=float)
+    # np.quantile is the modern idiom (numpy >= 1.22); units consistent with
+    # the summary key names (p25, p75, etc. are quantile fractions, not %).
     return {
         "n_bootstrap": n_bootstrap,
         "n_valid_resamples": len(eces),
         "ece_bootstrap_mean": float(arr.mean()),
-        "ece_bootstrap_median": float(np.percentile(arr, 50)),
-        "ece_bootstrap_p25": float(np.percentile(arr, 25)),
-        "ece_bootstrap_p75": float(np.percentile(arr, 75)),
-        "ece_bootstrap_p95": float(np.percentile(arr, 95)),
+        "ece_bootstrap_median": float(np.quantile(arr, 0.50)),
+        "ece_bootstrap_p25": float(np.quantile(arr, 0.25)),
+        "ece_bootstrap_p75": float(np.quantile(arr, 0.75)),
+        "ece_bootstrap_p95": float(np.quantile(arr, 0.95)),
         "ece_bootstrap_min": float(arr.min()),
         "ece_bootstrap_max": float(arr.max()),
         "method": "resample_only",
