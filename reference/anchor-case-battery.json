@@ -3,7 +3,7 @@
   "generated": "2026-05-04",
   "generated_for_stage": "ml-track stage-0 pre-registration",
   "purpose": "Regression-suite anchor cases per qgi-docs/internal/ops/ml-track/07-validation-framework.md Component 6. Read by qgi-ml/scripts/validate_ml_model.py at every training run; records pass/fail per case.",
-  "important_caveat": "Anchor battery is a REGRESSION SUITE, not validation (Kwame's binding warning). Passing all 8 means the model didn't break on known cases; it does NOT mean the methodology is correct. External claims must distinguish regression-test results from validation results.",
+  "important_caveat": "Anchor battery is a REGRESSION SUITE, not validation (Kwame's binding warning). Passing all 6 active cases (in this mandate; 2 deferred -- see deferred_cases) means the model didn't break on known cases; it does NOT mean the methodology is correct. External claims must distinguish regression-test results from validation results.",
   "n_active_cases_in_current_mandate": 6,
   "n_deferred_cases_in_current_mandate": 2,
   "active_cases": [
