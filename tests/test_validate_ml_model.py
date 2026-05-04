@@ -169,6 +169,70 @@ def test_ece_handles_empty_input():
     assert np.isnan(out["ece"])
 
 
+# ---------- compute_ece_bootstrap_diagnostic ----------
+
+
+def test_ece_bootstrap_returns_distribution_summary():
+    """Bootstrap diagnostic surfaces 25th/median/75th/95th/min/max + mean."""
+    rng = np.random.default_rng(0)
+    preds = rng.uniform(0, 1, size=200)
+    labels = (rng.uniform(0, 1, size=200) < preds).astype(int)
+    out = v.compute_ece_bootstrap_diagnostic(preds, labels, n_bootstrap=100, seed=0)
+    for key in ("ece_bootstrap_mean", "ece_bootstrap_median",
+                "ece_bootstrap_p25", "ece_bootstrap_p75",
+                "ece_bootstrap_p95", "ece_bootstrap_min", "ece_bootstrap_max",
+                "n_bootstrap", "n_valid_resamples", "method"):
+        assert key in out
+    # Distribution sanity: min <= p25 <= median <= p75 <= p95 <= max
+    assert out["ece_bootstrap_min"] <= out["ece_bootstrap_p25"] <= out["ece_bootstrap_median"]
+    assert out["ece_bootstrap_median"] <= out["ece_bootstrap_p75"] <= out["ece_bootstrap_p95"]
+    assert out["ece_bootstrap_p95"] <= out["ece_bootstrap_max"]
+
+
+def test_ece_bootstrap_deterministic_with_seed():
+    """Same seed -> same bootstrap distribution summary."""
+    preds = np.linspace(0.05, 0.95, 200)
+    labels = (preds > 0.5).astype(int)
+    a = v.compute_ece_bootstrap_diagnostic(preds, labels, n_bootstrap=50, seed=42)
+    b = v.compute_ece_bootstrap_diagnostic(preds, labels, n_bootstrap=50, seed=42)
+    assert a["ece_bootstrap_p75"] == b["ece_bootstrap_p75"]
+    assert a["ece_bootstrap_mean"] == b["ece_bootstrap_mean"]
+
+
+def test_ece_bootstrap_handles_empty_input():
+    out = v.compute_ece_bootstrap_diagnostic(np.array([]), np.array([]), n_bootstrap=10)
+    assert np.isnan(out["ece_bootstrap_p75"])
+    assert out["n_valid_resamples"] == 0
+
+
+def test_run_validation_includes_bootstrap_diagnostic_alongside_gate():
+    """Founder tie-break compromise: gate uses in-sample ECE; diagnostic reported alongside.
+
+    Asserts the happy path: a balanced 50-row sample with 20 resamples should
+    produce 20 valid resamples (no degenerate single-class draws).
+    """
+    rng = np.random.default_rng(0)
+    preds_list = []
+    for i in range(50):
+        preds_list.append({
+            "country": f"c{i}", "year": 2024, "recipe_id": "test_recipe",
+            "predicted_probability": float(rng.random()),
+            "label": int(rng.integers(0, 2)),
+        })
+    out = v.run_validation(predictions=preds_list, anchor_battery=None,
+                           n_bootstrap=20, seed=0)
+    cal = out["components"]["calibration"]
+    assert "per_recipe" in cal  # gate input (option a)
+    assert "per_recipe_bootstrap_diagnostic" in cal  # diagnostic (option c)
+    assert "gate_uses" in cal
+    assert "in_sample_ece" in cal["gate_uses"]
+    # Diagnostic has the bootstrap fields
+    diag = cal["per_recipe_bootstrap_diagnostic"]["test_recipe"]
+    assert "ece_bootstrap_p75" in diag
+    # Happy-path resample count: 20 requested, 20 succeeded (balanced 50-row pool)
+    assert diag["n_valid_resamples"] == 20
+
+
 # ---------- compute_brier_decomposition ----------
 
 
