@@ -140,7 +140,9 @@ def test_run_training_produces_all_artifacts(synthetic_setup):
     )
     out = synthetic_setup["output_dir"]
     # Artifacts exist
-    assert (out / "backbone.pkl").is_file()
+    assert (out / "backbone").is_dir()
+    backbone_files = list((out / "backbone").glob("*.lgbm"))
+    assert len(backbone_files) >= 1  # at least one booster saved in native lgbm format
     assert (out / "predictions.json").is_file()
     # Heads + calibrators exist for at least some recipes
     head_files = list((out / "heads").glob("*.pkl"))
