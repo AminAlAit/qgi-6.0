@@ -451,7 +451,7 @@ resource "aws_lambda_function" "b_scdi_finder" {
     variables = {
       S3_BUCKET             = var.data_lake_bucket_name
       S3_INPUT_PREFIX       = "pipeline-A-indicator-extractor/output/parquet-completed/"
-      S3_OUTPUT_PREFIX      = "pipeline-B-scdi-finder/scdis"
+      S3_OUTPUT_PREFIX      = "pipeline-B-scdi-finder/scdis-compacted"
       MIN_LENGTH            = "3"
       CORRELATION_THRESHOLD = "0.5"
     }
