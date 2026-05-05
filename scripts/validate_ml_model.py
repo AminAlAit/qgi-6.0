@@ -552,9 +552,23 @@ def run_validation(
     cal_per_recipe: dict[str, Any] = {}
     cal_bootstrap_per_recipe: dict[str, Any] = {}
     brier_per_recipe: dict[str, Any] = {}
+    recipe_counts_per_recipe: dict[str, Any] = {}
     for rid, rows in by_recipe.items():
         preds = np.array([r["predicted_probability"] for r in rows], dtype=float)
         labels = np.array([r["label"] for r in rows], dtype=int)
+        # Per-recipe sample counts on the test set. n_pos_test feeds the
+        # F5 head-class assignment rubric (HARD GATE: n_positive_verified
+        # < 8 → recipe excluded). Surfaced here so Stage 2 walks can read
+        # it directly from the canonical validation JSON without
+        # rebuilding test-set tallies.
+        n_test = int(labels.size)
+        n_pos_test = int((labels == 1).sum())
+        recipe_counts_per_recipe[rid] = {
+            "n_test": n_test,
+            "n_pos_test": n_pos_test,
+            "n_neg_test": n_test - n_pos_test,
+            "positive_rate": (n_pos_test / n_test) if n_test else 0.0,
+        }
         oos_per_recipe[rid] = bootstrap_auc_ci(preds, labels, n_bootstrap=n_bootstrap, seed=seed)
         # Calibration: F1 GATE uses in-sample ECE (option a per founder
         # tie-break 2026-05-04). Bootstrap distribution reported alongside
@@ -592,6 +606,15 @@ def run_validation(
             },
             "brier": {"per_recipe": brier_per_recipe},
             "anchor_battery": anchor_results,
+            "recipe_counts": {
+                "per_recipe": recipe_counts_per_recipe,
+                "purpose": (
+                    "Per-recipe test-set sample counts. n_pos_test is "
+                    "the F5 rubric HARD GATE input (n_pos < 8 -> recipe "
+                    "excluded from head-class assignment per "
+                    "qgi-docs/internal/ops/ml-track/06-modular-architecture.md)."
+                ),
+            },
         },
         "components_implemented_v1": [1, 3, 4, 6],
         "components_deferred": {
