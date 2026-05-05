@@ -1,7 +1,9 @@
 """Stage 2 walk-runner: walks ONE recipe end-to-end.
 
 Per pre-registration `qgi-docs/internal/ops/ml-track/
-stage-2-walk-prereg-elections.md` (commit `dae7741`).
+stage-2-walk-prereg-elections-v2.md` (commit `d321fde`, supersedes
+v1 `dae7741`). v2 locks forward-1y label semantics for both
+DeepHit-lite + LR baseline.
 
 Pipeline:
 1. Load rubric metadata for `--recipe-id`
@@ -149,7 +151,7 @@ def main() -> int:  # noqa: PLR0915, C901 — top-level orchestration is intenti
     ).reset_index()
     label_wide.columns.name = None
 
-    # 5. Merge + OOS-by-time split
+    # 5. Merge + OOS-by-time split + v2 forward-1y label join
     merged = feature_panel.merge(label_wide, on=["country", "year"], how="inner")
     if merged.empty:
         print("ERROR: empty feature+label merge; check country naming + year coverage", file=sys.stderr)
@@ -159,21 +161,46 @@ def main() -> int:  # noqa: PLR0915, C901 — top-level orchestration is intenti
         print(f"ERROR: label column {args.recipe_id} missing from merged frame", file=sys.stderr)
         return 2
 
+    # v2 forward-1y label semantics per qgi-docs commit d321fde:
+    # - LR baseline + F-rules use label_{t+1} for row at year t
+    # - DeepHit-lite already uses forward labels via build_forward_targets
+    # - Test rows where label_{t+1} is unobservable (year t = TEST_YEAR_MAX) are EXCLUDED
+    forward_label_col = f"{args.recipe_id}__forward1"
+    shift_table = merged[["country", "year", args.recipe_id]].copy()
+    shift_table["year"] = shift_table["year"] - 1  # so year_{t-1} carries label_{t}
+    shift_table = shift_table.rename(columns={args.recipe_id: forward_label_col})
+    merged = merged.merge(shift_table, on=["country", "year"], how="left")
+
+    # Drop rows where forward label is unobservable (NaN). Train rows at
+    # year=2021 keep observable forward labels (label_{2022}); test rows at
+    # year=2025 are dropped (no label_{2026}).
+    n_pre_drop = len(merged)
+    merged = merged.dropna(subset=[forward_label_col]).reset_index(drop=True)
+    merged[forward_label_col] = merged[forward_label_col].astype(int)
+    _log(f"[walk] v2 forward-label filter: {n_pre_drop} -> {len(merged)} rows "
+         f"(dropped {n_pre_drop - len(merged)} rows missing label_{{t+1}})", quiet=args.quiet)
+
     train_mask = merged["year"] <= TRAIN_YEAR_MAX
     test_mask = (merged["year"] >= TEST_YEAR_MIN) & (merged["year"] <= TEST_YEAR_MAX)
     train_df = merged[train_mask].reset_index(drop=True)
     test_df = merged[test_mask].reset_index(drop=True)
 
     feature_cols = [c for c in merged.columns
-                    if c not in ("country", "year", args.recipe_id)]
+                    if c not in ("country", "year", args.recipe_id, forward_label_col)]
     X_train_features = train_df[feature_cols].to_numpy(dtype=float)
     X_test_features = test_df[feature_cols].to_numpy(dtype=float)
-    y_train_label = train_df[args.recipe_id].fillna(0).astype(int).to_numpy()
-    y_test_label = test_df[args.recipe_id].fillna(0).astype(int).to_numpy()
+    # v1 labels (contemporaneous) — kept for reference / sample-count tracking
+    y_train_label_v1 = train_df[args.recipe_id].fillna(0).astype(int).to_numpy()
+    y_test_label_v1 = test_df[args.recipe_id].fillna(0).astype(int).to_numpy()
+    # v2 labels (forward-1y) — used for training + F-rule evaluation
+    y_train_label = train_df[forward_label_col].astype(int).to_numpy()
+    y_test_label = test_df[forward_label_col].astype(int).to_numpy()
     _log(f"[walk] train={len(train_df)} rows, test={len(test_df)} rows, "
          f"n_features={len(feature_cols)}", quiet=args.quiet)
-    _log(f"[walk] n_pos_train={int(y_train_label.sum())}, "
-         f"n_pos_test={int(y_test_label.sum())}", quiet=args.quiet)
+    _log(f"[walk] v2 forward labels: n_pos_train={int(y_train_label.sum())}, "
+         f"n_pos_test={int(y_test_label.sum())} "
+         f"(v1 contemp would have been: n_pos_train={int(y_train_label_v1.sum())}, "
+         f"n_pos_test={int(y_test_label_v1.sum())})", quiet=args.quiet)
 
     # 6. Leaf features via Stage 1 trainer's helper
     _log("[walk] extracting leaf features (all 23 backbones)...", quiet=args.quiet)
@@ -191,9 +218,15 @@ def main() -> int:  # noqa: PLR0915, C901 — top-level orchestration is intenti
     _log(f"[walk] one-hot shape: train={leaf_train_oh.shape}", quiet=args.quiet)
 
     # 8. Forward targets for DeepHit-lite (max_horizon=4)
+    # IMPORTANT: pass the FULL merged frame's contemporaneous labels (not
+    # the v2 forward column) -- build_forward_targets already shifts by t.
+    # Use the contemporaneous label_{t} from the full merged frame so the
+    # internal lookup can resolve label_{t+1}, label_{t+2}, etc., for
+    # train rows up to TRAIN_YEAR_MAX. data_year_max=TRAIN_YEAR_MAX masks
+    # bins where forward label would land in the test window (≥ 2022).
     _log("[walk] building forward targets...", quiet=args.quiet)
     Y_train_forward, mask_train_forward = build_forward_targets(
-        train_df.assign(label=y_train_label),
+        train_df.assign(label=y_train_label_v1),  # contemp label for trainer's lookup
         country_col="country", year_col="year", label_col="label",
         max_horizon=DeepHitLiteConfig().max_horizon,
         data_year_max=TRAIN_YEAR_MAX,  # train fold cannot peek at test labels
