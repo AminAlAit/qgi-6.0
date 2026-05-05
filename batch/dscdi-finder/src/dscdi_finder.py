@@ -41,7 +41,7 @@ References:
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Literal
 
@@ -238,22 +238,31 @@ class DSCDIResult:
     """Outputs of run_dscdi_pass for one indicator.
 
     `primary` is the substrate Stage C ships to Phase 6.
-    `baseline_undemeaned` is stored for ablation when indicator is Class A;
-    it is None for Class B and C indicators (no demeaning, so no separate
-    baseline needed — primary IS the undemeaned correlation).
+    `baseline_undemeaned` is stored for ablation when indicator is Class A
+    AND demeaning was actually attempted; it is None for Class B/C
+    indicators (no demeaning, so primary IS the undemeaned correlation)
+    AND for the NY.GDP.MKTP.KD.ZG special case (Class A but demeaning
+    suppressed because the indicator is already a growth rate).
 
-    `pairwise_correlation_matrix` is the country×country correlation
-    table from the primary pass. `mean_abs_pairwise_corr` is the
-    diagnostic Priya specified: if > 0.25 for Class A, demeaning is
-    insufficient and Phase 6 EB needs an architecture note.
+    `mean_abs_pairwise_corr` is the diagnostic Priya specified: if > 0.25
+    for Class A WITH demeaning attempted, demeaning is insufficient and
+    Phase 6 EB needs an architecture note.
+
+    `demeaning_applied` distinguishes "Class A but suppressed by special
+    case" (False; Phase 6 must handle CSD risk via different mechanism)
+    from "Class B/C — no demeaning expected" (also False but for different
+    reason — see `disposition.indicator_class`). For Phase 6 ablation
+    consumers: a True value means baseline_undemeaned is populated and
+    demeaning_insufficient is meaningful.
     """
     indicator_id: str
     disposition: IndicatorDisposition
     primary: pd.DataFrame  # country×country Pearson correlation
-    baseline_undemeaned: pd.DataFrame | None  # only for Class A
+    baseline_undemeaned: pd.DataFrame | None  # only for Class A with demeaning_applied
     mean_abs_pairwise_corr: float
     demeaning_insufficient: bool
     n_countries: int
+    demeaning_applied: bool
 
 
 def run_dscdi_pass(
@@ -271,9 +280,26 @@ def run_dscdi_pass(
       4. For Class B/C and the NY.GDP.MKTP.KD.ZG special case: compute
          primary pairwise correlation on transformed series; baseline = None.
       5. Compute mean abs pairwise correlation (excluding diagonal) on primary.
-      6. Flag demeaning_insufficient if Class A primary mean_abs > threshold.
+      6. Flag demeaning_insufficient if Class A WITH demeaning applied AND
+         primary mean_abs > threshold.
 
-    Returns: DSCDIResult.
+    Args:
+        indicator_id: ingested indicator id_string (e.g., "v2x_libdem").
+        panel: wide panel (rows=year, cols=country).
+        audit_classification: from Stage A v2 audit JSON.
+        min_obs: minimum number of POST-TRANSFORMATION observations a
+            country must have to participate. For first_diff and log_diff,
+            the transformation produces NaN at t=0, so a country with N
+            raw observations contributes N-1 transformed observations. A
+            country with exactly `min_obs` raw observations is therefore
+            EXCLUDED for first_diff/log_diff indicators; you need
+            `min_obs + 1` raw observations to pass the filter. This
+            matches the Stage A audit's filtering convention
+            (qgi-ml/scripts/run_i5_substrate_audit.py also filters on
+            transformed-observation count for diff tests).
+
+    Returns: DSCDIResult with `demeaning_applied` indicating whether the
+        two-pass demeaning ran (True for Class A non-OUTLIER_NO_TRANSFORM).
     """
     disposition = resolve_disposition(indicator_id, audit_classification)
     transformed = transform_panel(panel, disposition.transform)
@@ -314,6 +340,7 @@ def run_dscdi_pass(
         mean_abs_pairwise_corr=mean_abs,
         demeaning_insufficient=demeaning_insufficient,
         n_countries=len(keep),
+        demeaning_applied=apply_demeaning,
     )
 
 
@@ -322,6 +349,12 @@ def _pairwise_pearson(panel: pd.DataFrame) -> pd.DataFrame:
 
     Uses pandas' .corr() which is NaN-pairwise-aware: each pair uses only
     overlapping non-null years. Diagonal is 1.0 by construction.
+
+    `min_periods=4` matches the SCDI finder's pattern-length floor
+    (qgi-pipeline/batch/scdi-finder/src/scdi_finder.py uses MIN_LENGTH=3
+    raw → 4 paired observations after the dropna intersect). Pairs with
+    fewer overlapping observations get NaN correlation, which the
+    pairwise diagnostic ignores via _mean_abs_pairwise_off_diagonal.
     """
     return panel.corr(method="pearson", min_periods=4)
 
@@ -411,6 +444,7 @@ def build_diagnostic_report(
             "audit_classification": r.disposition.classification,
             "n_countries": r.n_countries,
             "mean_abs_pairwise_corr": round(r.mean_abs_pairwise_corr, 6),
+            "demeaning_applied": r.demeaning_applied,
             "demeaning_insufficient": r.demeaning_insufficient,
         }
     return {

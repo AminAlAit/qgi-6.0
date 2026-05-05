@@ -228,6 +228,7 @@ def test_run_dscdi_pass_class_a_returns_baseline_and_primary():
     panel = _wide_panel(n_years=30, n_countries=15)
     result = mod.run_dscdi_pass("v2x_libdem", panel, "I(1)")
     assert result.disposition.indicator_class == "A"
+    assert result.demeaning_applied is True
     assert result.baseline_undemeaned is not None
     assert result.primary is not None
     assert result.baseline_undemeaned.shape == result.primary.shape
@@ -243,6 +244,7 @@ def test_run_dscdi_pass_class_b_no_baseline():
     panel = _wide_panel(n_years=30, n_countries=15)
     result = mod.run_dscdi_pass("RL.EST", panel, "I(1)")
     assert result.disposition.indicator_class == "B"
+    assert result.demeaning_applied is False
     assert result.baseline_undemeaned is None
 
 
@@ -250,16 +252,20 @@ def test_run_dscdi_pass_class_c_no_baseline():
     panel = _wide_panel(n_years=30, n_countries=15)
     result = mod.run_dscdi_pass("AG.LND.AGRI.ZS", panel, "I(1)")
     assert result.disposition.indicator_class == "C"
+    assert result.demeaning_applied is False
     assert result.baseline_undemeaned is None
 
 
 def test_run_dscdi_pass_growth_rate_no_demeaning():
     """NY.GDP.MKTP.KD.ZG: Class A doc, but demeaning suppressed (it's already
-    a growth rate)."""
+    a growth rate). demeaning_applied=False distinguishes this from
+    'demeaning succeeded' for the Phase 6 ablation consumer."""
     panel = _wide_panel(n_years=30, n_countries=15)
     result = mod.run_dscdi_pass("NY.GDP.MKTP.KD.ZG", panel, "I(0)")
     assert result.disposition.indicator_class == "A"
-    assert result.baseline_undemeaned is None  # demeaning suppressed
+    assert result.demeaning_applied is False  # suppressed; not "succeeded"
+    assert result.baseline_undemeaned is None
+    assert result.demeaning_insufficient is False  # cannot fire when not applied
 
 
 def test_run_dscdi_pass_population_log_diff_with_demeaning():
@@ -276,30 +282,65 @@ def test_run_dscdi_pass_population_log_diff_with_demeaning():
 
 
 def test_run_dscdi_pass_pairwise_diagnostic_threshold():
-    """Stage C exit gate (Priya): mean abs > 0.25 → demeaning_insufficient flag."""
-    # Construct a Class A panel where demeaning leaves residual high correlation.
-    # Hard to engineer precisely; use a panel with strong common factor that
-    # demeaning DOES remove → result should NOT flag.
+    """Stage C exit gate (Priya): mean abs > 0.25 → demeaning_insufficient flag.
+
+    Negative path: a panel with a single dominant common factor — demeaning
+    removes it cleanly, residuals are nearly independent, demeaning IS
+    sufficient (flag = False)."""
     n_years = 30
     common = np.cumsum(RNG.standard_normal(n_years))  # shared trend
     panel_data = {}
     for i in range(15):
-        # Each country = common factor + small idiosyncratic noise
         panel_data[f"C{i:02d}"] = common + 0.1 * RNG.standard_normal(n_years)
     panel = pd.DataFrame(panel_data, index=range(2000, 2000 + n_years))
     result = mod.run_dscdi_pass("v2x_libdem", panel, "I(1)")
-    # After demeaning the common factor, residuals should have low correlation
     assert result.disposition.indicator_class == "A"
+    assert result.demeaning_applied is True
     assert result.baseline_undemeaned is not None
-    # Baseline (undemeaned) should be high correlation; primary (demeaned) low
     baseline_mean_abs = mod._mean_abs_pairwise_off_diagonal(
         result.baseline_undemeaned
     )
-    assert baseline_mean_abs > 0.5, (
-        f"baseline should show high CSD before demeaning; got {baseline_mean_abs}"
-    )
-    # Primary (demeaned) should be much lower
+    assert baseline_mean_abs > 0.5
+    # Demeaning IS sufficient for single-factor case
     assert result.mean_abs_pairwise_corr < baseline_mean_abs
+    assert result.demeaning_insufficient is False
+
+
+def test_run_dscdi_pass_demeaning_insufficient_positive_path():
+    """Positive path for the exit-gate flag: construct a panel where
+    demeaning does NOT bring residual correlation below 0.25.
+
+    Strategy: TWO orthogonal common factors. Global demeaning subtracts
+    the cross-sectional mean (a noisy estimate of factor 1), leaving
+    factor 2's structure intact in the residuals → high pairwise
+    correlation persists → flag fires.
+    """
+    n_years = 40
+    # Factor 1: shared trend across ALL countries (gets removed by demeaning)
+    factor_1 = np.cumsum(RNG.standard_normal(n_years))
+    # Factor 2: a region-block factor — half the countries share it,
+    # the other half DO NOT. Subtracting cross-sectional mean cannot
+    # remove a factor that affects only half the panel; residuals in
+    # group A remain correlated with each other (and anti-correlated
+    # with group B residuals).
+    factor_2 = np.cumsum(RNG.standard_normal(n_years))
+    panel_data = {}
+    for i in range(10):
+        # Group A: factor_1 + 3*factor_2 + tiny noise
+        panel_data[f"A{i:02d}"] = factor_1 + 3.0 * factor_2 + 0.05 * RNG.standard_normal(n_years)
+    for i in range(10):
+        # Group B: factor_1 - 3*factor_2 + tiny noise (opposite loading)
+        panel_data[f"B{i:02d}"] = factor_1 - 3.0 * factor_2 + 0.05 * RNG.standard_normal(n_years)
+    panel = pd.DataFrame(panel_data, index=range(2000, 2000 + n_years))
+    result = mod.run_dscdi_pass("v2x_libdem", panel, "I(1)")
+    # The flag should fire because Group A and Group B residuals after
+    # demeaning still have strong (anti-)correlation from factor_2.
+    assert result.demeaning_applied is True
+    assert result.mean_abs_pairwise_corr > 0.25, (
+        f"expected mean_abs > 0.25 (insufficient); got "
+        f"{result.mean_abs_pairwise_corr}"
+    )
+    assert result.demeaning_insufficient is True
 
 
 def test_run_dscdi_pass_min_obs_filter():
@@ -399,6 +440,25 @@ def test_diagnostic_report_shape():
     assert "v2x_libdem" in report["indicators"]
     assert report["indicators"]["v2x_libdem"]["indicator_class"] == "A"
     assert report["indicators"]["RL.EST"]["indicator_class"] == "B"
+    # Phase 6 ablation distinguishes "demeaning attempted" from "Class B/C"
+    assert report["indicators"]["v2x_libdem"]["demeaning_applied"] is True
+    assert report["indicators"]["RL.EST"]["demeaning_applied"] is False
+    assert report["indicators"]["AG.LND.AGRI.ZS"]["demeaning_applied"] is False
+
+
+def test_diagnostic_report_distinguishes_no_transform_outlier():
+    """NY.GDP.MKTP.KD.ZG is Class A but demeaning_applied=False (special
+    case suppression). Phase 6 must be able to tell this apart from a
+    Class B/C indicator which is also demeaning_applied=False but for a
+    different reason. The report exposes both fields so the consumer can
+    reason about the combination."""
+    panel = _wide_panel(n_years=30, n_countries=15)
+    result = mod.run_dscdi_pass("NY.GDP.MKTP.KD.ZG", panel, "I(0)")
+    report = mod.build_diagnostic_report([result])
+    record = report["indicators"]["NY.GDP.MKTP.KD.ZG"]
+    assert record["indicator_class"] == "A"  # Class A by spec
+    assert record["demeaning_applied"] is False  # but suppressed
+    assert record["transform"] == "pass_through"
 
 
 def test_diagnostic_report_counts_demeaning_insufficient():
