@@ -152,3 +152,96 @@ resource "aws_ecr_repository_policy" "indicator_fetcher" {
   repository = aws_ecr_repository.indicator_fetcher.name
   policy     = data.aws_iam_policy_document.indicator_fetcher_ecr.json
 }
+
+# ---------------------------------------------------------------------------
+# qgi-pipeline-b-dscdi-finder (Phase 5 v0.0b Stage F preflight) — TF-managed
+#
+# DSCDI = Detrended Similar-Country Dynamic Indicator. Companion to scdi-finder;
+# additive scope per the 2026-05-04 founder amendment + 2026-05-05 unanimous
+# 6-way mini-Majles CSD reconvene DECISION. Greenfield repo (TF-managed from
+# the start; not hand-built like scdi-finder), so the resource policy follows
+# the indicator-fetcher pattern (data + aws_ecr_repository_policy).
+# ---------------------------------------------------------------------------
+
+resource "aws_ecr_repository" "dscdi_finder" {
+  name                 = "qgi-pipeline-b-dscdi-finder"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = {
+    Project     = "qgi"
+    Environment = "shared"
+    ManagedBy   = "terraform"
+    Owner       = "amin.al-ait"
+  }
+}
+
+resource "aws_ecr_lifecycle_policy" "dscdi_finder" {
+  repository = aws_ecr_repository.dscdi_finder.name
+
+  policy = jsonencode({
+    rules = [{
+      rulePriority = 1
+      description  = "Keep last 10 images"
+      selection = {
+        tagStatus   = "any"
+        countType   = "imageCountMoreThan"
+        countNumber = 10
+      }
+      action = {
+        type = "expire"
+      }
+    }]
+  })
+}
+
+data "aws_iam_policy_document" "dscdi_finder_ecr" {
+  # GitHub Actions push access — same role as scdi-finder + indicator-fetcher.
+  # Repo policy authorizes; role-level inline policy
+  # (qgi_ecr_push_dscdi_finder in iam_oidc_roles.tf) grants the push actions.
+  statement {
+    sid    = "GitHubActionsPush"
+    effect = "Allow"
+    principals {
+      type        = "AWS"
+      identifiers = [aws_iam_role.qgi_ecr_push.arn]
+    }
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart",
+    ]
+  }
+
+  # Cross-account pull access — staging only at this stage. QA + prod will
+  # be added when the multi-environment Stage F rollout fires (post end-of-
+  # cascade-mandate authorization).
+  statement {
+    sid    = "CrossAccountECSPull"
+    effect = "Allow"
+    principals {
+      type = "AWS"
+      identifiers = [
+        # Staging (222222222222) — both roles may be used for ECR pull
+        "arn:aws:iam::222222222222:role/qgi-ecs-instance-role",
+        "arn:aws:iam::222222222222:role/qgi-batch-job-role",
+      ]
+    }
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
+      "ecr:GetDownloadUrlForLayer",
+    ]
+  }
+}
+
+resource "aws_ecr_repository_policy" "dscdi_finder" {
+  repository = aws_ecr_repository.dscdi_finder.name
+  policy     = data.aws_iam_policy_document.dscdi_finder_ecr.json
+}

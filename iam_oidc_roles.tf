@@ -126,7 +126,7 @@ data "aws_iam_policy_document" "qgi_ecr_assume" {
 resource "aws_iam_role" "qgi_ecr_push" {
   name               = "github-actions-qgi-ecr-push"
   assume_role_policy = data.aws_iam_policy_document.qgi_ecr_assume.json
-  description        = "OIDC role for AminAlAit/qgi-pipeline GitHub Actions - ECR push for scdi-finder"
+  description        = "OIDC role for AminAlAit/qgi-pipeline GitHub Actions - ECR push (scdi-finder, indicator-fetcher, dscdi-finder)"
 
   tags = {
     Project = "qgi"
@@ -175,6 +175,47 @@ resource "aws_iam_role_policy" "qgi_ecr_push_indicator_fetcher" {
   name   = "ECRPushIndicatorFetcher"
   role   = aws_iam_role.qgi_ecr_push.id
   policy = data.aws_iam_policy_document.qgi_ecr_push_indicator_fetcher.json
+}
+
+# ---------------------------------------------------------------------------
+# qgi-pipeline — ECR push for dscdi-finder (Phase 5 v0.0b Stage F preflight)
+# Separate inline policy following the indicator-fetcher pattern, so we can
+# ship this TF-managed without touching the hand-managed
+# GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess policy (which stays scoped
+# to scdi-finder only).
+# ---------------------------------------------------------------------------
+
+data "aws_iam_policy_document" "qgi_ecr_push_dscdi_finder" {
+  statement {
+    sid    = "ECRAuth"
+    effect = "Allow"
+    actions = [
+      "ecr:GetAuthorizationToken",
+    ]
+    resources = ["*"]
+  }
+
+  statement {
+    sid    = "ECRPushDSCDIFinder"
+    effect = "Allow"
+    actions = [
+      "ecr:BatchCheckLayerAvailability",
+      "ecr:CompleteLayerUpload",
+      "ecr:GetDownloadUrlForLayer",
+      "ecr:InitiateLayerUpload",
+      "ecr:PutImage",
+      "ecr:UploadLayerPart",
+    ]
+    resources = [
+      aws_ecr_repository.dscdi_finder.arn,
+    ]
+  }
+}
+
+resource "aws_iam_role_policy" "qgi_ecr_push_dscdi_finder" {
+  name   = "ECRPushDSCDIFinder"
+  role   = aws_iam_role.qgi_ecr_push.id
+  policy = data.aws_iam_policy_document.qgi_ecr_push_dscdi_finder.json
 }
 
 # ---------------------------------------------------------------------------
