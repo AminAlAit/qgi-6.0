@@ -500,8 +500,19 @@ resource "aws_glue_catalog_table" "scdis" {
 # `is_demeaned` column. Class B (WGI-pre-normalized) and Class C (idiosyncratic)
 # indicators are single-pass with `is_demeaned=false`.
 #
-# Schema mirrors `scdis` plus two columns that drive Phase 6 ablation queries
-# and downstream EB framework architecture-note logic:
+# Schema is INTENTIONALLY NARROWER than `scdis`. SCDI is a windowed-segment
+# search (FFT cross-correlation finds time-shifted analogues with specific
+# segment lengths and start years). DSCDI is fundamentally different: it
+# computes a single full-panel pairwise Pearson correlation across all
+# common years per country pair. There is no segment, no window, no time
+# shift. Therefore the SCDI columns `length`, `start_year_a`, `start_year_b`
+# are SEMANTICALLY MEANINGLESS for DSCDI and are NOT in this schema. (Earlier
+# Stage D drafts inherited these columns by copy-paste; they were dropped
+# 2026-05-06 as part of the Stage F preflight per the 6-way mini-Majles
+# methodology DECISION.)
+#
+# Two columns drive Phase 6 ablation queries and downstream EB framework
+# architecture-note logic:
 #   - `is_demeaned`: false for baseline (Pass 1) or Class B/C; true for
 #     primary demeaned output (Pass 2). Phase 6 reads only `is_demeaned=true`
 #     for the canonical DSCDI substrate; the `is_demeaned=false` rows are
@@ -548,18 +559,6 @@ resource "aws_glue_catalog_table" "dscdis" {
       type = "smallint"
     }
     columns {
-      name = "length"
-      type = "smallint"
-    }
-    columns {
-      name = "start_year_a"
-      type = "smallint"
-    }
-    columns {
-      name = "start_year_b"
-      type = "smallint"
-    }
-    columns {
       name = "correlation"
       type = "float"
     }
@@ -585,6 +584,114 @@ resource "aws_glue_catalog_table" "dscdis" {
   partition_keys {
     name = "country_a_id"
     type = "smallint"
+  }
+}
+
+# ---------------------------------------------------------------------------
+# Glue — dscdi_indicator_manifest table (Phase 5 v0.0b Stage F preflight)
+# ---------------------------------------------------------------------------
+# One row per indicator processed by dscdi-finder. This is the Phase 6 EB
+# framework's queryable substrate-quality surface — distinguishes the 4
+# Class A demeaning_insufficient flagged indicators (FP.CPI.TOTL.ZG,
+# NY.GDP.PCAP.CD, SH.DYN.MORT, SP.POP.TOTL per Stage E results) from the
+# 105 indicators where the substrate is clean.
+#
+# Without this manifest, Phase 6 would have to either hardcode the flagged
+# indicator IDs (brittle) or recompute mean_abs_pairwise_corr per indicator
+# from the dscdis correlation rows at query time (expensive).
+#
+# Table is UNPARTITIONED. Each dscdi-finder Batch job writes a single 1-row
+# Parquet file at `s3://{bucket}/pipeline-B-dscdi-finder/manifest/{indicator_id}.parquet`.
+# Athena reads all files at the location prefix unioned. 109 indicators →
+# 109 small files → ~10 KB total. No partition discovery needed; dots in
+# indicator IDs (e.g., `FP.CPI.TOTL.ZG`) are valid in plain S3 object keys
+# (only Hive partition VALUES are sensitive to dots).
+#
+# References:
+#   - DSCDIResult dataclass: qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py
+#   - Stage E completion report: qgi-docs/internal/ops/cascade-track/results/phase-5-v0.0b-stage-e-completion.md
+resource "aws_glue_catalog_table" "dscdi_indicator_manifest" {
+  name          = "dscdi_indicator_manifest"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-B-dscdi-finder/manifest/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "indicator_id"
+      type = "string"
+    }
+    # from result.disposition.indicator_class on the DSCDIResult dataclass
+    # (qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py — entrypoint
+    # flattens this when constructing the manifest row).
+    columns {
+      name = "indicator_class"
+      type = "string"
+    }
+    # from result.disposition.transform (same indirection note as above)
+    columns {
+      name = "transform"
+      type = "string"
+    }
+    # bigint matches pandas int64 default for Python int columns; avoids
+    # silent type drift when Athena/Glue reads the Parquet output.
+    columns {
+      name = "n_countries"
+      type = "bigint"
+    }
+    # double (not float) so the Priya Stage C exit-gate threshold value
+    # (0.25 boundary) is stored at full pandas float64 precision and
+    # not silently downcast to FLOAT32 on Athena read. This is a
+    # diagnostic-gate scalar, not a raw correlation value; precision
+    # matters for Phase 6 architecture-note decisions.
+    columns {
+      name = "mean_abs_pairwise_corr"
+      type = "double"
+    }
+    columns {
+      name = "demeaning_applied"
+      type = "boolean"
+    }
+    # Priya's Stage C exit gate flag — true when mean_abs_pairwise_corr
+    # post-demeaning > 0.25 (Class A only; surfaces the 4 flagged indicators).
+    columns {
+      name = "demeaning_insufficient"
+      type = "boolean"
+    }
+    # Reason demeaning was suppressed for an otherwise-Class-A indicator
+    # (e.g., "no_transform_outlier" for NY.GDP.MKTP.KD.ZG which is already
+    # a differenced series). Nullable string.
+    #
+    # PRODUCER CONTRACT: This column is derived AT WRITE TIME by the
+    # dscdi-finder entrypoint (PR-3, qgi-pipeline) from indicator_id
+    # membership in `OUTLIER_NO_TRANSFORM` / `OUTLIER_LOG_DIFFERENCE` etc.
+    # `DSCDIResult` does not have a `suppressed_reason` field directly —
+    # the dataclass exposes `demeaning_applied` (boolean), and the
+    # entrypoint encodes the reason. PR-3 must include a unit test
+    # asserting `suppressed_reason = 'no_transform_outlier'` for
+    # NY.GDP.MKTP.KD.ZG and `suppressed_reason IS NULL` for indicators
+    # where demeaning was actually applied.
+    columns {
+      name = "suppressed_reason"
+      type = "string"
+    }
   }
 }
 

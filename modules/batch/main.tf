@@ -469,13 +469,25 @@ resource "aws_batch_job_definition" "dscdi_finder" {
       { name = "S3_BUCKET",            value = var.data_lake_bucket_name },
       { name = "S3_INPUT_PREFIX",      value = "pipeline-A-indicator-extractor/output/parquet-completed/" },
       { name = "S3_OUTPUT_PREFIX",     value = "pipeline-B-dscdi-finder/dscdis" },
+      # MANIFEST_S3_PREFIX (Stage F preflight 2026-05-06): per-indicator
+      # diagnostic manifest written by the entrypoint as a single 1-row
+      # Parquet at {prefix}{indicator_id}.parquet. The Glue table
+      # `qgi_data.dscdi_indicator_manifest` (defined in modules/storage/main.tf)
+      # is the Phase 6 EB framework's queryable substrate-quality surface.
+      # Trailing slash on the value: the entrypoint joins `{prefix}{indicator_id}.parquet`
+      # directly without re-adding a separator, matching the Glue table's
+      # location attribute.
+      { name = "MANIFEST_S3_PREFIX",   value = "pipeline-B-dscdi-finder/manifest/" },
       # AUDIT_JSON_S3_KEY: the Stage A v2 audit JSON the writer reads to
       # determine per-indicator transformation + Class A/B/C assignment.
       # Path-as-string allows future audit revisions (e.g., post-CIPS
       # 2026-06-04) to be wired without redeploying the container.
       { name = "AUDIT_JSON_S3_KEY",    value = "reference/indicator-stationarity-audit-v2.json" },
       { name = "MIN_LENGTH",           value = "3" },
-      { name = "CORRELATION_THRESHOLD", value = "0.5" },
+      # CORRELATION_THRESHOLD intentionally absent — DSCDI computes the full
+      # pairwise Pearson matrix per the 6-way mini-Majles methodology DECISION
+      # (no thresholding, no windowed segments). Earlier Stage D drafts copied
+      # the SCDI threshold env var by mistake; removed 2026-05-06.
     ]
 
     logConfiguration = {
