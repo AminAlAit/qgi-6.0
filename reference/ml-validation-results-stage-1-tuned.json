@@ -61,6 +61,594 @@
           "recipe_sentinel": "any_3_plus_conflict_categories",
           "resolves_to_layer1": "B",
           "status": "DEFERRED_TO_STAGE_1"
+        },
+        {
+          "case_id": 9,
+          "country": "Ukraine",
+          "country_prob": 0.00912036209685874,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.85,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.7916666666666666,
+          "recipe": "foreign_intervention",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 10,
+          "country": "Sudan",
+          "country_prob": 0.03232080800381072,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8958333333333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "PASS"
+        },
+        {
+          "case_id": 11,
+          "country": "Myanmar",
+          "country_prob": 0.009785067456791943,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.609375,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 12,
+          "country": "Lebanon",
+          "country_prob": 4.506665858219453e-06,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.6,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.14583333333333334,
+          "recipe": "economic_recession",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 13,
+          "country": "Iran",
+          "country_prob": 0.010126663811946643,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.734375,
+          "recipe": "mass_protest",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 14,
+          "country": "Bangladesh",
+          "country_prob": 0.03295064065770736,
+          "country_prob_aggregation": "single_row",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.96875,
+          "recipe": "mass_protest",
+          "status": "PASS"
+        },
+        {
+          "case_id": 15,
+          "country": "Nigeria",
+          "country_prob": 1.427937570627438e-05,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.6,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.4791666666666667,
+          "recipe": "terrorist_attack",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 16,
+          "country": "Israel",
+          "country_prob": 0.006632104405237975,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.5729166666666666,
+          "recipe": "foreign_intervention",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 17,
+          "country": "Yemen",
+          "country_prob": 0.0008201144247936588,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.22916666666666666,
+          "recipe": "humanitarian_crisis",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 18,
+          "country": "Argentina",
+          "country_prob": 0.005664107453488269,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.71875,
+          "recipe": "economic_recession",
+          "status": "PASS"
+        },
+        {
+          "case_id": 19,
+          "country": "Denmark",
+          "country_prob": 0.011699419734572284,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.7643229166666666,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 20,
+          "country": "Japan",
+          "country_prob": 0.00612774267546622,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.6302083333333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 21,
+          "country": "Costa Rica",
+          "country_prob": 0.0019568496425296823,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.3463541666666667,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 22,
+          "country": "Singapore",
+          "country_prob": 0.006761696514846876,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.7799479166666666,
+          "recipe": "mass_protest",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 23,
+          "country": "New Zealand",
+          "country_prob": 4.8037041327900104e-08,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.19010416666666666,
+          "recipe": "terrorist_attack",
+          "status": "PASS"
+        },
+        {
+          "case_id": 24,
+          "country": "Uruguay",
+          "country_prob": 0.001477886236119203,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.32421875,
+          "recipe": "political_repression",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 25,
+          "country": "Luxembourg",
+          "country_prob": 0.013059722756140958,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.25
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.7903645833333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 26,
+          "country": "Botswana",
+          "country_prob": 0.002337816637064902,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.3932291666666667,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 27,
+          "country": "Russia",
+          "country_prob": 0.012361265724575205,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.85,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.9375,
+          "recipe": "sanctions_and_arms_embargo",
+          "status": "PASS"
+        },
+        {
+          "case_id": 28,
+          "country": "Russia",
+          "country_prob": 0.016510388331443318,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.85,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.9375,
+          "recipe": "foreign_intervention",
+          "status": "PASS"
+        },
+        {
+          "case_id": 29,
+          "country": "China",
+          "country_prob": 0.013051466165375798,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8958333333333334,
+          "recipe": "territorial_disputes",
+          "status": "PASS"
+        },
+        {
+          "case_id": 30,
+          "country": "Belarus",
+          "country_prob": 0.004734794576543735,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.6,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.5572916666666666,
+          "recipe": "political_repression",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 31,
+          "country": "Egypt",
+          "country_prob": 0.003813399920143871,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.6510416666666666,
+          "recipe": "economic_recession",
+          "status": "PASS"
+        },
+        {
+          "case_id": 32,
+          "country": "Ghana",
+          "country_prob": 1.3087351377950039e-06,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.6,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.08333333333333333,
+          "recipe": "economic_recession",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 33,
+          "country": "Pakistan",
+          "country_prob": 0.00612268674987002,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.75,
+          "recipe": "economic_recession",
+          "status": "PASS"
+        },
+        {
+          "case_id": 34,
+          "country": "Turkiye",
+          "country_prob": 3.923524227253766e-07,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.03125,
+          "recipe": "economic_recession",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 35,
+          "country": "Haiti",
+          "country_prob": 0.00947649919868779,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8645833333333334,
+          "recipe": "humanitarian_crisis",
+          "status": "PASS"
+        },
+        {
+          "case_id": 36,
+          "country": "Burkina Faso",
+          "country_prob": 0.00045450889814016164,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.6,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8177083333333334,
+          "recipe": "terrorist_attack",
+          "status": "PASS"
+        },
+        {
+          "case_id": 37,
+          "country": "Turkiye",
+          "country_prob": 0.01131460393145386,
+          "country_prob_aggregation": "single_row",
+          "expected_rank_band": [
+            0.75,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8541666666666666,
+          "recipe": "natural_disaster",
+          "status": "PASS"
+        },
+        {
+          "case_id": 38,
+          "country": "El Salvador",
+          "country_prob": 0.018779845160687907,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.5,
+            1.0
+          ],
+          "n_total": 192,
+          "observed_percentile": 0.8645833333333334,
+          "recipe": "political_repression",
+          "status": "PASS"
+        },
+        {
+          "case_id": 39,
+          "country": "Norway",
+          "country_prob": 0.017917327884019542,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.25
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.8294270833333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 40,
+          "country": "Switzerland",
+          "country_prob": 0.02927157054418353,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.25
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.87890625,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 41,
+          "country": "Sweden",
+          "country_prob": 0.005519420216987404,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.609375,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 42,
+          "country": "Finland",
+          "country_prob": 0.0054341247712102626,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.6067708333333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 43,
+          "country": "Netherlands",
+          "country_prob": 0.012079401237580513,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.7682291666666666,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 44,
+          "country": "Australia",
+          "country_prob": 2.958228748423675e-07,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.3450520833333333,
+          "recipe": "terrorist_attack",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 45,
+          "country": "Canada",
+          "country_prob": 5.646324565394334e-06,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.6302083333333334,
+          "recipe": "terrorist_attack",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 46,
+          "country": "South Korea",
+          "country_prob": 0.004248552795515394,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.5403645833333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 47,
+          "country": "Estonia",
+          "country_prob": 0.008084901409403442,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.7018229166666666,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 48,
+          "country": "Mauritius",
+          "country_prob": 0.005013872857542834,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.5794270833333334,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 49,
+          "country": "Bhutan",
+          "country_prob": 0.001958548979157097,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.4270833333333333,
+          "recipe": "political_repression",
+          "status": "FAIL"
+        },
+        {
+          "case_id": 50,
+          "country": "Chile",
+          "country_prob": 0.0038764317262952545,
+          "country_prob_aggregation": "mean",
+          "expected_rank_band": [
+            0.0,
+            0.3
+          ],
+          "n_total": 768,
+          "observed_percentile": 0.51953125,
+          "recipe": "civil_war_and_insurgency",
+          "status": "FAIL"
         }
       ],
       "deferred": [
@@ -79,11 +667,11 @@
           "status": "DEFERRED_BY_HARD_GATE"
         }
       ],
-      "n_active": 6,
+      "n_active": 48,
       "n_active_deferred_to_stage_1": 3,
-      "n_active_fail": 0,
+      "n_active_fail": 29,
       "n_active_not_yet_implemented": 1,
-      "n_active_pass": 2,
+      "n_active_pass": 15,
       "n_active_skipped": 0,
       "n_deferred_by_hard_gate": 2
     },
@@ -2880,7 +3468,7 @@
     4,
     6
   ],
-  "generated_at_utc": "2026-05-04T18:59:01.105303+00:00",
+  "generated_at_utc": "2026-05-05T09:45:22.433448+00:00",
   "model_metadata_uri": "C:\\Users\\Amin\\Desktop\\trojan\\qgi-6.0-ml\\qgi-ml\\results\\hp_sweep_5_30_2",
   "n_predictions": 17664,
   "n_recipes": 23,
@@ -2890,11 +3478,11 @@
     "seed": 0
   },
   "schema_version": 1,
-  "validation_run_id": "2026-05-04T185901Z_validation",
+  "validation_run_id": "2026-05-05T094522Z_validation",
   "validation_script_fingerprint": {
     "file_sha256": "05732ab8e3b206b347870ad24fb5a75201e7e99a28b05b6a373c7b9edaaa7f8a",
-    "fingerprinted_at_utc": "2026-05-04T18:58:38.069002+00:00",
-    "git_commit_sha": "6ae86c57b07badd2f8a03eec0c5d31feb1fe184c",
+    "fingerprinted_at_utc": "2026-05-05T09:45:02.623765+00:00",
+    "git_commit_sha": "b8c128bef58e6e9f18018c76ba13639935a19c16",
     "git_dirty": true,
     "script_path": "C:\\Users\\Amin\\Desktop\\trojan\\qgi-6.0-ml\\qgi-ml\\scripts\\validate_ml_model.py"
   }
