@@ -1,10 +1,10 @@
 {
   "schema_version": 2,
   "generated": "2026-05-04",
-  "generated_for_stage": "ml-track stage-2 regression suite (expanded from stage-0 pre-registration)",
+  "generated_for_stage": "ml-track stage-2 regression suite + reported anchor health metrics (expanded from stage-0 pre-registration)",
   "purpose": "Regression-suite anchor cases per qgi-docs/internal/ops/ml-track/07-validation-framework.md Component 6. Read by qgi-ml/scripts/validate_ml_model.py at every training run; records pass/fail per case.",
-  "important_caveat": "Anchor battery is a REGRESSION SUITE, not validation (Kwame's binding warning). Passing all 48 active cases (in this mandate; 2 deferred -- see deferred_cases) means the model didn't break on known cases; it does NOT mean the methodology is correct. External claims must distinguish regression-test results from validation results.",
-  "n_active_cases_in_current_mandate": 48,
+  "important_caveat": "Anchor battery is a REGRESSION SUITE, not validation (Kwame's binding warning). Passing all active anchors (in this mandate; 2 deferred -- see deferred_cases) means the model didn't break on known cases; it does NOT mean the methodology is correct. External claims must distinguish regression-test results from validation results.",
+  "n_active_cases_in_current_mandate": 98,
   "n_deferred_cases_in_current_mandate": 2,
   "active_cases": [
     {
@@ -732,6 +732,816 @@
         0.3
       ],
       "rationale": "Post-1990 stable democracy; no civil-war history. Bottom 30 percent expected on civil_war_and_insurgency. Latin America stable-state floor."
+    },
+    {
+      "id": 51,
+      "country": "Sri Lanka",
+      "country_slug": "sri_lanka",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2023
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Sri Lanka's 2022 economic + political collapse triggered widespread food/fuel/medicine shortages; UN-flagged humanitarian emergency. Top quartile expected."
+    },
+    {
+      "id": 52,
+      "country": "Pakistan",
+      "country_slug": "pakistan",
+      "recipe": "natural_disaster",
+      "year_window": [
+        2022,
+        2023
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "2022 Pakistan floods (1/3 of country submerged); 2023 monsoon flooding follow-on. Top quartile expected on natural_disaster."
+    },
+    {
+      "id": 53,
+      "country": "Niger",
+      "country_slug": "niger",
+      "recipe": "executive_power_consolidation",
+      "year_window": [
+        2023,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "July 2023 military coup deposed elected president; junta consolidation through 2024. Top quartile expected."
+    },
+    {
+      "id": 54,
+      "country": "Gabon",
+      "country_slug": "gabon",
+      "recipe": "executive_power_consolidation",
+      "year_window": [
+        2023,
+        2024
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "August 2023 coup ended Bongo dynasty; transitional government 2023-24. Top quartile expected."
+    },
+    {
+      "id": 55,
+      "country": "Tunisia",
+      "country_slug": "tunisia",
+      "recipe": "executive_power_consolidation",
+      "year_window": [
+        2022,
+        2024
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Saied's 2021 self-coup + 2022 referendum constitution + 2024 election sweep consolidation. Top quartile expected."
+    },
+    {
+      "id": 56,
+      "country": "Venezuela",
+      "country_slug": "venezuela",
+      "recipe": "political_repression",
+      "year_window": [
+        2024,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "2024 election crackdown post-Maduro disputed result; opposition arrests + protest suppression. Top quartile expected."
+    },
+    {
+      "id": 57,
+      "country": "Cuba",
+      "country_slug": "cuba",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_half_in_window",
+      "expected_rank_band": [
+        0.5,
+        1.0
+      ],
+      "rationale": "Multi-year economic + food/medicine shortage crisis (post-pandemic + sanctions). Top half expected."
+    },
+    {
+      "id": 58,
+      "country": "Hungary",
+      "country_slug": "hungary",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_40pct_in_window",
+      "expected_rank_band": [
+        0.6,
+        1.0
+      ],
+      "rationale": "Orb\u00e1n's continued press/judicial constraints + Sovereignty Protection Office 2023; V-Dem flags democratic backsliding. Top 40% expected (not top quartile -- repression severity is moderate by global standards)."
+    },
+    {
+      "id": 59,
+      "country": "China",
+      "country_slug": "china",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Sustained Xinjiang/Tibet/HK repression; 2022-2025 ongoing. Top quartile expected."
+    },
+    {
+      "id": 60,
+      "country": "North Korea",
+      "country_slug": "north_korea",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_decile_in_window",
+      "expected_rank_band": [
+        0.9,
+        1.0
+      ],
+      "rationale": "Most-repressive regime by every index. Top decile expected."
+    },
+    {
+      "id": 61,
+      "country": "Saudi Arabia",
+      "country_slug": "saudi_arabia",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "MBS-era crackdowns continue; women's rights activists, dissidents abroad. Top quartile expected."
+    },
+    {
+      "id": 62,
+      "country": "Mexico",
+      "country_slug": "mexico",
+      "recipe": "terrorist_attack",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_40pct_in_window",
+      "expected_rank_band": [
+        0.6,
+        1.0
+      ],
+      "rationale": "Cartel violence reaches terror-threshold per Global Terrorism Index 2022-2024. Top 40% expected."
+    },
+    {
+      "id": 63,
+      "country": "Somalia",
+      "country_slug": "somalia",
+      "recipe": "terrorist_attack",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Al-Shabaab persistent; consistently top-5 on Global Terrorism Index. Top quartile expected."
+    },
+    {
+      "id": 64,
+      "country": "Mali",
+      "country_slug": "mali",
+      "recipe": "civil_war_and_insurgency",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Sahel insurgency + multiple coups + Wagner/Russian intervention. Top quartile expected."
+    },
+    {
+      "id": 65,
+      "country": "Democratic Republic of the Congo",
+      "country_slug": "democratic_republic_of_the_congo",
+      "recipe": "civil_war_and_insurgency",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Eastern DRC M23 conflict + multi-armed-group dynamics throughout 2022-25. Top quartile expected."
+    },
+    {
+      "id": 66,
+      "country": "Mozambique",
+      "country_slug": "mozambique",
+      "recipe": "civil_war_and_insurgency",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_half_in_window",
+      "expected_rank_band": [
+        0.5,
+        1.0
+      ],
+      "rationale": "Cabo Delgado insurgency continues. Top half expected."
+    },
+    {
+      "id": 67,
+      "country": "Ethiopia",
+      "country_slug": "ethiopia",
+      "recipe": "civil_war_and_insurgency",
+      "year_window": [
+        2022,
+        2023
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Tigray war (formal end Nov 2022) + Amhara/Oromia insurgencies follow-on. Top quartile expected."
+    },
+    {
+      "id": 68,
+      "country": "Myanmar",
+      "country_slug": "myanmar",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Post-coup civil war + displacement; UN-flagged humanitarian crisis 2022-25. Top quartile expected."
+    },
+    {
+      "id": 69,
+      "country": "Afghanistan",
+      "country_slug": "afghanistan",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_decile_in_window",
+      "expected_rank_band": [
+        0.9,
+        1.0
+      ],
+      "rationale": "Taliban-era economic collapse + women's rights crisis + food insecurity. UN-flagged severe. Top decile expected."
+    },
+    {
+      "id": 70,
+      "country": "Russia",
+      "country_slug": "russia",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Post-2022 invasion crackdown: foreign agents law, dissident prosecutions, media closures. Top quartile expected."
+    },
+    {
+      "id": 71,
+      "country": "Egypt",
+      "country_slug": "egypt",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Sisi-era detentions + press constraints continue 2022-25. Top quartile expected."
+    },
+    {
+      "id": 72,
+      "country": "Turkiye",
+      "country_slug": "turkiye",
+      "recipe": "political_repression",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_40pct_in_window",
+      "expected_rank_band": [
+        0.6,
+        1.0
+      ],
+      "rationale": "Erdo\u011fan-era judicial constraints, journalist prosecutions, opposition harassment. Top 40% expected."
+    },
+    {
+      "id": 73,
+      "country": "Yemen",
+      "country_slug": "yemen",
+      "recipe": "civil_war_and_insurgency",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Multi-year civil war continues. Houthi vs internationally-recognized govt vs regional proxies. Top quartile."
+    },
+    {
+      "id": 74,
+      "country": "Israel",
+      "country_slug": "israel",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2023,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Gaza humanitarian crisis Oct 2023 onward; UN-flagged severe. Top quartile expected. Note: humanitarian_crisis recipe is directional-agnostic in QGI methodology (the recipe captures crisis presence at the country level regardless of which actor is the driver); this case codes Israel under that interpretation."
+    },
+    {
+      "id": 75,
+      "country": "Lebanon",
+      "country_slug": "lebanon",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "true_positive_ongoing_event",
+      "expected_behavior": "top_quartile_in_window",
+      "expected_rank_band": [
+        0.75,
+        1.0
+      ],
+      "rationale": "Multi-year currency collapse + food/medicine/electricity shortages + 2024 Israel-Hezbollah escalation. Top quartile expected."
+    },
+    {
+      "id": 76,
+      "country": "Germany",
+      "country_slug": "germany",
+      "recipe": "economic_recession",
+      "year_window": [
+        2022,
+        2024
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "G7 economy with stable institutions; 2022-24 saw mild contraction but no full recession by NBER standards. Bottom 30% expected on economic_recession (filling ticket #603 gap)."
+    },
+    {
+      "id": 77,
+      "country": "Singapore",
+      "country_slug": "singapore",
+      "recipe": "economic_recession",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Resilient growth through 2022-25; AAA sovereign rating. Bottom 30% expected on economic_recession (#603 gap)."
+    },
+    {
+      "id": 78,
+      "country": "Switzerland",
+      "country_slug": "switzerland",
+      "recipe": "foreign_intervention",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_25th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.25
+      ],
+      "rationale": "Constitutionally neutral; no foreign interventions ever. Bottom 25% expected on foreign_intervention (#603 gap)."
+    },
+    {
+      "id": 79,
+      "country": "Sweden",
+      "country_slug": "sweden",
+      "recipe": "foreign_intervention",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "No active foreign interventions; NATO accession 2024 is membership not military projection. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 80,
+      "country": "Iceland",
+      "country_slug": "iceland",
+      "recipe": "foreign_intervention",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_25th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.25
+      ],
+      "rationale": "No standing army; never conducts foreign interventions. Bottom 25% expected (#603 gap)."
+    },
+    {
+      "id": 81,
+      "country": "Norway",
+      "country_slug": "norway",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Stable Nordic; food/health-secure; high HDI. Bottom 30% expected on humanitarian_crisis (#603 gap)."
+    },
+    {
+      "id": 82,
+      "country": "Japan",
+      "country_slug": "japan",
+      "recipe": "humanitarian_crisis",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "G7 economy; no humanitarian-crisis-grade events. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 83,
+      "country": "New Zealand",
+      "country_slug": "new_zealand",
+      "recipe": "sanctions_and_arms_embargo",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Not a target of multilateral sanctions. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 84,
+      "country": "Australia",
+      "country_slug": "australia",
+      "recipe": "sanctions_and_arms_embargo",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Not sanctioned. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 85,
+      "country": "Canada",
+      "country_slug": "canada",
+      "recipe": "sanctions_and_arms_embargo",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Not sanctioned. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 86,
+      "country": "Costa Rica",
+      "country_slug": "costa_rica",
+      "recipe": "territorial_disputes",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "No active territorial disputes; abolished military in 1948. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 87,
+      "country": "Iceland",
+      "country_slug": "iceland",
+      "recipe": "territorial_disputes",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_25th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.25
+      ],
+      "rationale": "Island geography; no land-border disputes. Bottom 25% expected (#603 gap)."
+    },
+    {
+      "id": 88,
+      "country": "Uruguay",
+      "country_slug": "uruguay",
+      "recipe": "natural_disaster",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Low natural-disaster incidence; no major earthquakes/typhoons/floods 2022-25. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 89,
+      "country": "Ireland",
+      "country_slug": "ireland",
+      "recipe": "natural_disaster",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Low natural-disaster incidence. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 90,
+      "country": "Finland",
+      "country_slug": "finland",
+      "recipe": "natural_disaster",
+      "year_window": [
+        2022,
+        2025
+      ],
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Low natural-disaster incidence. Bottom 30% expected (#603 gap)."
+    },
+    {
+      "id": 91,
+      "country": "Malta",
+      "country_slug": "malta",
+      "recipe": "political_repression",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Stable EU democracy; Freedom House Free. Bottom 30% expected on political_repression."
+    },
+    {
+      "id": 92,
+      "country": "Cyprus",
+      "country_slug": "cyprus",
+      "recipe": "political_repression",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "EU member; democratic governance. Bottom 30% expected."
+    },
+    {
+      "id": 93,
+      "country": "Slovenia",
+      "country_slug": "slovenia",
+      "recipe": "political_repression",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Stable EU democracy. Bottom 30% expected."
+    },
+    {
+      "id": 94,
+      "country": "Portugal",
+      "country_slug": "portugal",
+      "recipe": "political_repression",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_25th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.25
+      ],
+      "rationale": "High civil-liberties scores; Freedom House Free. Bottom 25% expected."
+    },
+    {
+      "id": 95,
+      "country": "Lithuania",
+      "country_slug": "lithuania",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "EU/NATO member; stable democracy; no civil-war history since independence. Bottom 30% expected."
+    },
+    {
+      "id": 96,
+      "country": "Latvia",
+      "country_slug": "latvia",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "EU/NATO; stable democracy. Bottom 30% expected."
+    },
+    {
+      "id": 97,
+      "country": "Slovakia",
+      "country_slug": "slovakia",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Stable EU democracy. Bottom 30% expected."
+    },
+    {
+      "id": 98,
+      "country": "Czech Republic",
+      "country_slug": "czech_republic",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Stable EU democracy. Bottom 30% expected."
+    },
+    {
+      "id": 99,
+      "country": "Spain",
+      "country_slug": "spain",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "Mature democracy; Catalan independence movement is political not armed. Bottom 30% expected."
+    },
+    {
+      "id": 100,
+      "country": "Italy",
+      "country_slug": "italy",
+      "recipe": "civil_war_and_insurgency",
+      "test_type": "high_confidence_negative",
+      "expected_behavior": "below_30th_percentile",
+      "expected_rank_band": [
+        0.0,
+        0.3
+      ],
+      "rationale": "G7 + EU; mature democracy. Bottom 30% expected."
     }
   ],
   "deferred_cases": [
@@ -776,7 +1586,8 @@
     "Cases 1 (Malta-military_coup) and 4 (Tunisia-democratic_transition) are DEFERRED in this mandate because their recipes hard-gated under verified-only n_positive. They re-enter when verification rate raises n+v above the gate threshold -- not by re-curation, by re-verification.",
     "Schema v2 (2026-05-04, this revision): split into active_cases + deferred_cases per Sonnet review; sentinel strings now carry resolves_to_layer1 + resolution_logic; case 8 alternative_country promoted into the case object; case 6 Venezuela bounded to year_window 2015-2023; case 7 Switzerland tightened from 0.50 to 0.35.",
     "2026-05-04 EXPANSION: 18 anchors added (cases 9-26). 10 documented true-positive cases in the 2022-2025 test window (Ukraine, Sudan, Myanmar, Lebanon, Iran, Bangladesh, Nigeria, Israel, Yemen, Argentina). 8 high-confidence-negative cases across stable democracies (Denmark, Japan, Costa Rica, Singapore, New Zealand, Uruguay, Luxembourg, Botswana). Total active = 24, deferred = 2. Designed for Stage 2 walk -- richer regression-suite signal than the original 6/2.",
-    "2026-05-04 ROUND 2 EXPANSION (cases 27-50): 12 more true positives + 12 more true negatives. Recipe diversity now spans civil_war_and_insurgency, mass_protest, foreign_intervention, terrorist_attack, humanitarian_crisis, economic_recession, sanctions_and_arms_embargo, territorial_disputes, political_repression, natural_disaster. Regional coverage spans MENA, Sub-Saharan Africa, Latin America, South Asia, East Asia, Europe, Anglosphere. Total active = 48, deferred = 2, GRAND TOTAL = 50. Designed for Stage 2 walk's expanded falsification surface."
+    "2026-05-04 ROUND 2 EXPANSION (cases 27-50): 12 more true positives + 12 more true negatives. Recipe diversity now spans civil_war_and_insurgency, mass_protest, foreign_intervention, terrorist_attack, humanitarian_crisis, economic_recession, sanctions_and_arms_embargo, territorial_disputes, political_repression, natural_disaster. Regional coverage spans MENA, Sub-Saharan Africa, Latin America, South Asia, East Asia, Europe, Anglosphere. Total active = 48, deferred = 2, GRAND TOTAL = 50. Designed for Stage 2 walk's expanded falsification surface.",
+    "2026-05-05 ROUND 3 EXPANSION (cases 51-100): 25 more true positives + 25 more true negatives. Targets recipe-coverage gaps from ticket #603 (economic_recession TN, foreign_intervention TN, humanitarian_crisis TN, sanctions TN, territorial_disputes TN, natural_disaster TN). 100-anchor battery is the FINAL cap per founder mandate 2026-05-05. Total active = 98, deferred = 2. New REPORTED-only metrics tracked alongside: ADS (Anchor Drift Score), AHR (Anchor Hit Rate), AHI (Anchor Health Index = AHR * (1 - ADS))."
   ],
   "schema_notes": [
     "expected_rank_band is a percentile interval [low, high] in [0, 1] over the country distribution for the named recipe (lower = lower risk).",
