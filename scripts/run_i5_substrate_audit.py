@@ -49,7 +49,6 @@ import argparse
 import json
 import sys
 import time
-import traceback
 from pathlib import Path
 from typing import Any
 
@@ -130,14 +129,19 @@ def classify_indicator_adf_fallback(panel: pd.DataFrame) -> dict[str, Any]:
     n_countries = len(countries)
     rejected_at_level = 0
     rejected_at_diff = 0
-    countries_tested = 0
-    min_obs_required = 8  # ADF needs at least ~8 obs to be meaningful
+    countries_tested_at_level = 0
+    countries_tested_at_diff = 0
+    # Min obs raised from 8 to 15 per Stage B Sonnet review: with autolag="AIC"
+    # and regression="c", statsmodels at nobs=8 fits ~0 lags with negligible
+    # degrees of freedom and returns near-meaningless p-values. 15 is a
+    # standard practitioner floor for annual-data ADF.
+    min_obs_required = 15
 
     for country in countries:
         series = panel[country].dropna()
         if len(series) < min_obs_required:
             continue
-        countries_tested += 1
+        countries_tested_at_level += 1
         # Level test
         try:
             p_level = adfuller(series, autolag="AIC", regression="c")[1]
@@ -145,10 +149,11 @@ def classify_indicator_adf_fallback(panel: pd.DataFrame) -> dict[str, Any]:
             p_level = 1.0
         if p_level < P_REJECT:
             rejected_at_level += 1
-        # First-difference test
+        # First-difference test (only counted in diff denominator if it actually runs)
         diffed = series.diff().dropna()
         if len(diffed) < min_obs_required:
             continue
+        countries_tested_at_diff += 1
         try:
             p_diff = adfuller(diffed, autolag="AIC", regression="c")[1]
         except Exception:
@@ -156,32 +161,42 @@ def classify_indicator_adf_fallback(panel: pd.DataFrame) -> dict[str, Any]:
         if p_diff < P_REJECT:
             rejected_at_diff += 1
 
-    if countries_tested == 0:
+    if countries_tested_at_level == 0:
         return {
             "classification": "insufficient_data",
-            "n_countries_tested": 0,
+            "n_countries_tested_at_level": 0,
+            "n_countries_tested_at_diff": 0,
             "n_countries_total": n_countries,
             "frac_rejected_at_level": None,
             "frac_rejected_at_diff": None,
             "test": "per_country_adf",
         }
 
-    frac_level = rejected_at_level / countries_tested
-    frac_diff = rejected_at_diff / countries_tested
+    frac_level = rejected_at_level / countries_tested_at_level
+    frac_diff = (
+        rejected_at_diff / countries_tested_at_diff
+        if countries_tested_at_diff > 0 else 0.0
+    )
 
-    # Classification logic
+    # Classification logic — I(2)_or_higher branch now also requires that
+    # frac_level is not high (i.e., the level series is also non-stationary).
+    # Without this guard, a heterogeneous panel (40% reject at level, 25%
+    # reject at diff) was misclassified as I(2). The ambiguous branch now
+    # catches those cases.
     if frac_level >= ADF_FRAC_THRESHOLDS["I(0)_strong"]:
         cls = "I(0)"
     elif frac_diff >= ADF_FRAC_THRESHOLDS["I(0)_strong"]:
         cls = "I(1)"
-    elif frac_diff < ADF_FRAC_THRESHOLDS["I(2)_strong"]:
+    elif (frac_diff < ADF_FRAC_THRESHOLDS["I(2)_strong"]
+          and frac_level < ADF_FRAC_THRESHOLDS["I(2)_strong"]):
         cls = "I(2)_or_higher"
     else:
         cls = "ambiguous"
 
     return {
         "classification": cls,
-        "n_countries_tested": countries_tested,
+        "n_countries_tested_at_level": countries_tested_at_level,
+        "n_countries_tested_at_diff": countries_tested_at_diff,
         "n_countries_total": n_countries,
         "frac_rejected_at_level": round(frac_level, 4),
         "frac_rejected_at_diff": round(frac_diff, 4),
@@ -197,8 +212,6 @@ def main() -> int:
                         help="Path to write audit JSON")
     parser.add_argument("--limit", type=int, default=None,
                         help="Only audit first N indicators (for smoke test)")
-    parser.add_argument("--include-uncurated", action="store_true", default=True,
-                        help="Audit uncurated indicators too (default: yes)")
     args = parser.parse_args()
 
     s3 = boto3.client("s3")
@@ -225,7 +238,8 @@ def main() -> int:
         if panel is None:
             results[ind_id] = {
                 "classification": "load_failed",
-                "n_countries_tested": 0,
+                "n_countries_tested_at_level": 0,
+                "n_countries_tested_at_diff": 0,
                 "n_countries_total": 0,
                 "test": None,
                 "error": "panel could not be loaded",
@@ -237,7 +251,8 @@ def main() -> int:
         except Exception as exc:
             results[ind_id] = {
                 "classification": "test_failed",
-                "n_countries_tested": 0,
+                "n_countries_tested_at_level": 0,
+                "n_countries_tested_at_diff": 0,
                 "n_countries_total": len(panel.columns),
                 "test": "per_country_adf",
                 "error": f"{type(exc).__name__}: {exc}",
