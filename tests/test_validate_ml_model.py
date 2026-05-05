@@ -437,7 +437,38 @@ def test_run_validation_emits_full_payload_shape():
         assert recipe in out["components"]["oos_by_time"]["per_recipe"]
         assert recipe in out["components"]["calibration"]["per_recipe"]
         assert recipe in out["components"]["brier"]["per_recipe"]
+        assert recipe in out["components"]["recipe_counts"]["per_recipe"]
     assert out["components"]["anchor_battery"] is None  # no anchors passed
+    assert "recipe_counts" in out["components"]  # canonical completeness check
+
+
+def test_run_validation_includes_recipe_counts_with_n_pos_test():
+    """recipe_counts per-recipe section surfaces n_pos_test for F5 rubric."""
+    preds_list = [
+        # Recipe `r1`: 12 positives out of 30 → above F5 hard gate (>= 8)
+        *(
+            {"country": f"c{i}", "year": 2024, "recipe_id": "r1",
+             "predicted_probability": 0.5, "label": (1 if i < 12 else 0)}
+            for i in range(30)
+        ),
+        # Recipe `r2`: 5 positives out of 20 → below F5 hard gate
+        *(
+            {"country": f"c{i}", "year": 2024, "recipe_id": "r2",
+             "predicted_probability": 0.5, "label": (1 if i < 5 else 0)}
+            for i in range(20)
+        ),
+    ]
+    out = v.run_validation(predictions=preds_list, anchor_battery=None, n_bootstrap=10, seed=0)
+    counts = out["components"]["recipe_counts"]["per_recipe"]
+    assert counts["r1"]["n_pos_test"] == 12
+    assert counts["r1"]["n_test"] == 30
+    assert counts["r1"]["n_neg_test"] == 18
+    assert counts["r1"]["positive_rate"] == pytest.approx(12 / 30)
+    assert counts["r2"]["n_pos_test"] == 5
+    assert counts["r2"]["n_test"] == 20
+    # purpose string mentions F5 hard gate threshold for downstream readability.
+    assert "F5" in out["components"]["recipe_counts"]["purpose"]
+    assert "n_pos" in out["components"]["recipe_counts"]["purpose"]
 
 
 def test_run_validation_includes_anchors_when_provided():
