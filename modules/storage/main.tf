@@ -490,6 +490,105 @@ resource "aws_glue_catalog_table" "scdis" {
 }
 
 # ---------------------------------------------------------------------------
+# Glue — dscdis table (Phase 5 v0.0b Stage D output of dscdi-finder Batch job)
+# ---------------------------------------------------------------------------
+# DSCDI = Detrended Similar-Country Dynamic Indicator. Per the Phase 5 v0.0b
+# unanimous CSD reconvene DECISION 2026-05-05, this table is ADDITIVE alongside
+# scdis (not a replacement). The 6-way mini-Majles agreed on a two-pass
+# computation for severe-CSD global-arc indicators (Class A): an undemeaned
+# baseline and a common-factor-demeaned primary output, distinguished by the
+# `is_demeaned` column. Class B (WGI-pre-normalized) and Class C (idiosyncratic)
+# indicators are single-pass with `is_demeaned=false`.
+#
+# Schema mirrors `scdis` plus two columns that drive Phase 6 ablation queries
+# and downstream EB framework architecture-note logic:
+#   - `is_demeaned`: false for baseline (Pass 1) or Class B/C; true for
+#     primary demeaned output (Pass 2). Phase 6 reads only `is_demeaned=true`
+#     for the canonical DSCDI substrate; the `is_demeaned=false` rows are
+#     preserved for Miriam's three-substrate ablation (SCDI + ADF-DSCDI-
+#     undemeaned + ADF-DSCDI-demeaned).
+#   - `indicator_class`: 'A' / 'B' / 'C' per the Stage C input spec taxonomy.
+#     Allows Phase 6 to filter / stratify by class without rejoining to the
+#     class-assignment manifest at query time.
+#
+# Glue table is created here at Stage D; the underlying S3 prefix is empty
+# until Stage F (deferred to end-of-cascade-mandate test-run authorization).
+# Athena queries against `qgi_data.dscdis` will return zero rows until then,
+# which is the correct behavior — code that reads from this table must
+# tolerate empty results during the cascade window. See:
+#   - Stage C input spec: qgi-docs/internal/ops/cascade-track/phase-5-v0.0b-stage-c-input-spec.md
+#   - CSD reconvene DECISION: qgi-docs/internal/majles/in-progress/2026-05-05_Ihsa_phase5-v0-0b-csd-reconvene_DECISION.md
+#   - DSCDI module (the writer's library): qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py
+resource "aws_glue_catalog_table" "dscdis" {
+  name          = "dscdis"
+  database_name = aws_glue_catalog_database.qgi_data.name
+  table_type    = "EXTERNAL_TABLE"
+
+  parameters = {
+    "parquet.compress" = "SNAPPY"
+    "classification"   = "parquet"
+    "EXTERNAL"         = "TRUE"
+  }
+
+  storage_descriptor {
+    location      = "s3://${local.bucket_name}/pipeline-B-dscdi-finder/dscdis/"
+    input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+    output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+    ser_de_info {
+      name                  = "parquet"
+      serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+      parameters = {
+        "serialization.format" = "1"
+      }
+    }
+
+    columns {
+      name = "country_b_id"
+      type = "smallint"
+    }
+    columns {
+      name = "length"
+      type = "smallint"
+    }
+    columns {
+      name = "start_year_a"
+      type = "smallint"
+    }
+    columns {
+      name = "start_year_b"
+      type = "smallint"
+    }
+    columns {
+      name = "correlation"
+      type = "float"
+    }
+    columns {
+      name = "indicator_numeric_id"
+      type = "smallint"
+    }
+    columns {
+      name = "contains_predicted"
+      type = "boolean"
+    }
+    # Stage D additions (per CSD reconvene DECISION):
+    columns {
+      name = "is_demeaned"
+      type = "boolean"
+    }
+    columns {
+      name = "indicator_class"
+      type = "string"
+    }
+  }
+
+  partition_keys {
+    name = "country_a_id"
+    type = "smallint"
+  }
+}
+
+# ---------------------------------------------------------------------------
 # Glue — patterns table (output of Phase C / pattern synthesizer)
 # ---------------------------------------------------------------------------
 resource "aws_glue_catalog_table" "patterns" {

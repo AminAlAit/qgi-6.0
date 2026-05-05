@@ -81,6 +81,15 @@ resource "aws_cloudwatch_log_group" "scdi_finder" {
   tags              = var.tags
 }
 
+# Phase 5 v0.0b Stage D: log group for dscdi-finder Batch job. Created at
+# Stage D so it exists before the first DSCDI Batch job submission at
+# Stage F (deferred to end-of-cascade-mandate test-run authorization).
+resource "aws_cloudwatch_log_group" "dscdi_finder" {
+  name              = "/aws/batch/qgi-dscdi-finder"
+  retention_in_days = 30
+  tags              = var.tags
+}
+
 # ---------------------------------------------------------------------------
 # Phase 1 indicator fetcher — Fargate Spot (#FAR-1)
 #
@@ -401,6 +410,80 @@ resource "aws_batch_job_definition" "scdi_finder" {
         "awslogs-group"         = "/aws/batch/qgi-scdi-finder"
         "awslogs-region"        = var.region
         "awslogs-stream-prefix" = "scdi"
+      }
+    }
+  })
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Batch job definition — dscdi-finder (Phase 5 v0.0b Stage D)
+# ---------------------------------------------------------------------------
+# DSCDI = Detrended Similar-Country Dynamic Indicator. Per the Phase 5 v0.0b
+# unanimous CSD reconvene DECISION 2026-05-05, this Batch job runs ALONGSIDE
+# scdi-finder (additive, not replacement). It uses the same indicator-panel
+# input but applies the two-pass DSCDI algorithm: per-class transformation
+# (first-diff for I(1), log-diff for SP.POP.TOTL, pass-through for I(0)) +
+# common-factor demeaning for Class A (severe-CSD global-arc) indicators.
+#
+# Image is BUILT BUT NOT YET PUBLISHED at Stage D — the dscdi-finder ECR
+# repository will be populated when the Stage F authorization fires. The
+# `:latest` tag below resolves at apply time; AWS Batch tolerates a
+# missing image in the job definition (only fails at job submission).
+#
+# Job definition is registered at Stage D so the Step Functions or manual
+# job-submission orchestration in Stage F has a target. No jobs are
+# submitted at Stage D.
+#
+# The DSCDI module (qgi-pipeline/batch/dscdi-finder/src/dscdi_finder.py,
+# merged via qgi-pipeline#22 on 2026-05-05) is the core methodology code.
+# The eventual Batch container will wrap this module with env-var-driven
+# main() + S3 input/output orchestration mirroring scdi-finder's pattern.
+#
+# Resource sizing matches scdi-finder (2 vCPU / 4 GB RAM) per per-indicator
+# job convention. Adjustable when Stage F's actual workload is benchmarked.
+#
+# References:
+#   - Stage C input spec: qgi-docs/internal/ops/cascade-track/phase-5-v0.0b-stage-c-input-spec.md
+#   - CSD reconvene DECISION: qgi-docs/internal/majles/in-progress/2026-05-05_Ihsa_phase5-v0-0b-csd-reconvene_DECISION.md
+resource "aws_batch_job_definition" "dscdi_finder" {
+  name = "dscdi-finder-job"
+  type = "container"
+
+  platform_capabilities = ["EC2"]
+
+  container_properties = jsonencode({
+    image   = "${var.management_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-pipeline-b-dscdi-finder:latest"
+    command = []
+
+    jobRoleArn       = var.batch_job_role_arn
+    executionRoleArn = var.fargate_execution_role_arn
+
+    resourceRequirements = [
+      { type = "VCPU",   value = "2" },
+      { type = "MEMORY", value = "4096" },
+    ]
+
+    environment = [
+      { name = "S3_BUCKET",            value = var.data_lake_bucket_name },
+      { name = "S3_INPUT_PREFIX",      value = "pipeline-A-indicator-extractor/output/parquet-completed/" },
+      { name = "S3_OUTPUT_PREFIX",     value = "pipeline-B-dscdi-finder/dscdis" },
+      # AUDIT_JSON_S3_KEY: the Stage A v2 audit JSON the writer reads to
+      # determine per-indicator transformation + Class A/B/C assignment.
+      # Path-as-string allows future audit revisions (e.g., post-CIPS
+      # 2026-06-04) to be wired without redeploying the container.
+      { name = "AUDIT_JSON_S3_KEY",    value = "reference/indicator-stationarity-audit-v2.json" },
+      { name = "MIN_LENGTH",           value = "3" },
+      { name = "CORRELATION_THRESHOLD", value = "0.5" },
+    ]
+
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/aws/batch/qgi-dscdi-finder"
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "dscdi"
       }
     }
   })
