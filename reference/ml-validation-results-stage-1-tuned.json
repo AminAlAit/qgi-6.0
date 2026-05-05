@@ -3450,6 +3450,149 @@
           "n_valid_resamples": 1000
         }
       }
+    },
+    "recipe_counts": {
+      "per_recipe": {
+        "bilateral_treaty": {
+          "n_neg_test": 755,
+          "n_pos_test": 13,
+          "n_test": 768,
+          "positive_rate": 0.016927083333333332
+        },
+        "civil_war_and_insurgency": {
+          "n_neg_test": 756,
+          "n_pos_test": 12,
+          "n_test": 768,
+          "positive_rate": 0.015625
+        },
+        "constitutional_change": {
+          "n_neg_test": 764,
+          "n_pos_test": 4,
+          "n_test": 768,
+          "positive_rate": 0.005208333333333333
+        },
+        "economic_recession": {
+          "n_neg_test": 766,
+          "n_pos_test": 2,
+          "n_test": 768,
+          "positive_rate": 0.0026041666666666665
+        },
+        "elections_and_voting": {
+          "n_neg_test": 754,
+          "n_pos_test": 14,
+          "n_test": 768,
+          "positive_rate": 0.018229166666666668
+        },
+        "energy_policy": {
+          "n_neg_test": 758,
+          "n_pos_test": 10,
+          "n_test": 768,
+          "positive_rate": 0.013020833333333334
+        },
+        "epidemic_and_pandemic": {
+          "n_neg_test": 766,
+          "n_pos_test": 2,
+          "n_test": 768,
+          "positive_rate": 0.0026041666666666665
+        },
+        "executive_power_consolidation": {
+          "n_neg_test": 765,
+          "n_pos_test": 3,
+          "n_test": 768,
+          "positive_rate": 0.00390625
+        },
+        "foreign_intervention": {
+          "n_neg_test": 762,
+          "n_pos_test": 6,
+          "n_test": 768,
+          "positive_rate": 0.0078125
+        },
+        "government_formation": {
+          "n_neg_test": 755,
+          "n_pos_test": 13,
+          "n_test": 768,
+          "positive_rate": 0.016927083333333332
+        },
+        "human_rights_violation": {
+          "n_neg_test": 761,
+          "n_pos_test": 7,
+          "n_test": 768,
+          "positive_rate": 0.009114583333333334
+        },
+        "humanitarian_crisis": {
+          "n_neg_test": 765,
+          "n_pos_test": 3,
+          "n_test": 768,
+          "positive_rate": 0.00390625
+        },
+        "mass_protest": {
+          "n_neg_test": 764,
+          "n_pos_test": 4,
+          "n_test": 768,
+          "positive_rate": 0.005208333333333333
+        },
+        "migration_and_refugees": {
+          "n_neg_test": 758,
+          "n_pos_test": 10,
+          "n_test": 768,
+          "positive_rate": 0.013020833333333334
+        },
+        "multilateral_agreement": {
+          "n_neg_test": 761,
+          "n_pos_test": 7,
+          "n_test": 768,
+          "positive_rate": 0.009114583333333334
+        },
+        "natural_disaster": {
+          "n_neg_test": 765,
+          "n_pos_test": 3,
+          "n_test": 768,
+          "positive_rate": 0.00390625
+        },
+        "peacekeeping_and_peace_process": {
+          "n_neg_test": 765,
+          "n_pos_test": 3,
+          "n_test": 768,
+          "positive_rate": 0.00390625
+        },
+        "political_corruption": {
+          "n_neg_test": 761,
+          "n_pos_test": 7,
+          "n_test": 768,
+          "positive_rate": 0.009114583333333334
+        },
+        "political_repression": {
+          "n_neg_test": 762,
+          "n_pos_test": 6,
+          "n_test": 768,
+          "positive_rate": 0.0078125
+        },
+        "sanctions_and_arms_embargo": {
+          "n_neg_test": 764,
+          "n_pos_test": 4,
+          "n_test": 768,
+          "positive_rate": 0.005208333333333333
+        },
+        "territorial_disputes": {
+          "n_neg_test": 766,
+          "n_pos_test": 2,
+          "n_test": 768,
+          "positive_rate": 0.0026041666666666665
+        },
+        "terrorist_attack": {
+          "n_neg_test": 766,
+          "n_pos_test": 2,
+          "n_test": 768,
+          "positive_rate": 0.0026041666666666665
+        },
+        "trade_agreement": {
+          "n_neg_test": 762,
+          "n_pos_test": 6,
+          "n_test": 768,
+          "positive_rate": 0.0078125
+        }
+      },
+      "purpose": "Per-recipe test-set sample counts. n_pos_test is the F5 rubric HARD GATE input (n_pos < 8 -> recipe excluded from head-class assignment per qgi-docs/internal/ops/ml-track/06-modular-architecture.md)."
     }
   },
   "components_deferred": {
@@ -3468,7 +3611,7 @@
     4,
     6
   ],
-  "generated_at_utc": "2026-05-05T09:45:22.433448+00:00",
+  "generated_at_utc": "2026-05-05T10:26:40.114675+00:00",
   "model_metadata_uri": "C:\\Users\\Amin\\Desktop\\trojan\\qgi-6.0-ml\\qgi-ml\\results\\hp_sweep_5_30_2",
   "n_predictions": 17664,
   "n_recipes": 23,
@@ -3478,11 +3621,11 @@
     "seed": 0
   },
   "schema_version": 1,
-  "validation_run_id": "2026-05-05T094522Z_validation",
+  "validation_run_id": "2026-05-05T102640Z_validation",
   "validation_script_fingerprint": {
-    "file_sha256": "05732ab8e3b206b347870ad24fb5a75201e7e99a28b05b6a373c7b9edaaa7f8a",
-    "fingerprinted_at_utc": "2026-05-05T09:45:02.623765+00:00",
-    "git_commit_sha": "b8c128bef58e6e9f18018c76ba13639935a19c16",
+    "file_sha256": "c6c35ff4b00b12e30c2a1b5264c787ea5ee842aab5b242fbde1913e5123e97c2",
+    "fingerprinted_at_utc": "2026-05-05T10:26:12.960740+00:00",
+    "git_commit_sha": "f95c77fe6437e6923568420b3a0bc48ef8f6c4db",
     "git_dirty": true,
     "script_path": "C:\\Users\\Amin\\Desktop\\trojan\\qgi-6.0-ml\\qgi-ml\\scripts\\validate_ml_model.py"
   }
