@@ -60,36 +60,39 @@ CATALOG_REL_PATH = "qgi-docs/methodology/indicator-catalog-detailed.md"
 ALLOW_LIST_REL_PATH = "qgi-data/reference/indicator-allow-list.json"
 INDICATOR_MAP_S3_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
 
-# Strict catalog-row regex. Captures:
-#   group 1: catalog code (e.g. WB-01, VD-12)
-#   group 2: API code (column 2, must match WB-style dotted code OR
-#            V-Dem-style snake_case identifier — both restricted to
-#            [A-Za-z0-9._] which excludes spaces / parens / commas
-#            present in descriptive UCDP/GDELT/etc. names)
-CATALOG_ROW_RE = re.compile(
-    r"^\| ([A-Z]+-[A-Z0-9]+) \| ([A-Za-z0-9._]+) \|"
-)
+# Catalog row regex — matches any row whose first column is a catalog code
+# (e.g. WB-01, VD-12, FA-01, UC-03). Group 2 captures column 2 raw, which
+# may be either a clean API code (WB/V-Dem) or a descriptive name (FA/UC/
+# IL/GD/etc. where the catalog code itself is the ingester id_string).
+CATALOG_ROW_RE = re.compile(r"^\| ([A-Z]+-[A-Z0-9]+) \| ([^|]+?) \|")
+# Sub-regex to detect API-code-shaped column 2 (no spaces/parens/commas).
+API_CODE_RE = re.compile(r"^[A-Za-z0-9._]+$")
 
 # Repo-root anchor: this script lives at qgi-ml/scripts/, so root is parents[2].
 SCRIPT_PATH = Path(__file__).resolve()
 REPO_ROOT = SCRIPT_PATH.parents[2]
 
 
-def parse_catalog(catalog_path: Path) -> list[tuple[str, str]]:
-    """Return [(catalog_code, api_code), ...] sorted by catalog_code.
+def parse_catalog(catalog_path: Path) -> list[tuple[str, str | None]]:
+    """Return [(catalog_code, api_code_or_None), ...] sorted by catalog_code.
 
-    Only rows where column 2 is a clean API code are returned. Rows
-    where column 2 is a descriptive name (UCDP, GDELT, etc.) are
-    filtered by the regex.
+    For each catalog row, captures the catalog code (e.g. `FA-01`) and
+    column 2 if it's a clean API code (e.g. `VC.BTL.DETH`); otherwise
+    returns None for column 2. The downstream join logic decides whether
+    to look up by API code (column 2) or by catalog code (column 1) when
+    column 2 is descriptive text.
     """
     if not catalog_path.exists():
         raise FileNotFoundError(f"Catalog not found at {catalog_path}")
-    rows: list[tuple[str, str]] = []
+    rows: list[tuple[str, str | None]] = []
     with catalog_path.open(encoding="utf-8") as fh:
         for line in fh:
             m = CATALOG_ROW_RE.match(line)
             if m:
-                rows.append((m.group(1), m.group(2)))
+                catalog_code = m.group(1)
+                col2 = m.group(2).strip()
+                api_code = col2 if API_CODE_RE.match(col2) else None
+                rows.append((catalog_code, api_code))
     rows.sort(key=lambda r: r[0])
     return rows
 
@@ -110,23 +113,38 @@ def fetch_indicator_map(bucket: str) -> dict[str, int]:
 
 
 def build_allow_list(
-    catalog: list[tuple[str, str]], id_to_num: dict[str, int]
-) -> tuple[list[int], list[tuple[str, str]], list[tuple[str, str]]]:
+    catalog: list[tuple[str, str | None]], id_to_num: dict[str, int]
+) -> tuple[list[int], list[tuple[str, str]], list[tuple[str, str | None]]]:
     """Return (sorted_numeric_ids, resolved_pairs, unresolved_pairs).
 
-    resolved_pairs = catalog rows whose API code IS in indicator_map.
-    unresolved_pairs = catalog rows whose API code is NOT in indicator_map
-        (these are catalog entries waiting on provider ingestion).
+    Two-path lookup per catalog row:
+    - If column 2 is an API code (e.g. `VC.BTL.DETH`) and that code is
+      in indicator_map → resolved as (catalog_code, api_code).
+    - Else if the catalog code itself (e.g. `FA-01`) is in indicator_map
+      (i.e. ingester uses the catalog code as id_string) → resolved as
+      (catalog_code, catalog_code).
+    - Else → unresolved (curated catalog entry, provider not yet ingested).
+
+    The second path covers FA/UC/IL/GD/etc. where the catalog markdown's
+    column 2 is a descriptive name and the ingester writes parquet under
+    a directory named after the catalog code.
     """
     resolved: list[tuple[str, str]] = []
-    unresolved: list[tuple[str, str]] = []
+    unresolved: list[tuple[str, str | None]] = []
     nums: set[int] = set()
     for cat_code, api_code in catalog:
-        if api_code in id_to_num:
+        # Path 1: API code (column 2) lookup
+        if api_code is not None and api_code in id_to_num:
             resolved.append((cat_code, api_code))
             nums.add(id_to_num[api_code])
-        else:
-            unresolved.append((cat_code, api_code))
+            continue
+        # Path 2: catalog code (column 1) lookup — for FA/UC/IL/GD/etc.
+        if cat_code in id_to_num:
+            resolved.append((cat_code, cat_code))
+            nums.add(id_to_num[cat_code])
+            continue
+        # Neither path matched — provider not ingested yet
+        unresolved.append((cat_code, api_code))
     return sorted(nums), resolved, unresolved
 
 
@@ -202,8 +220,11 @@ def main() -> int:
     catalog_sha256 = hashlib.sha256(raw_catalog_bytes).hexdigest()
 
     catalog = parse_catalog(catalog_path)
-    print(f"  parsed {len(catalog)} rows with parseable API codes "
-          "(of 142 total catalog entries)", file=sys.stderr)
+    n_with_api = sum(1 for _, api in catalog if api is not None)
+    n_without_api = len(catalog) - n_with_api
+    print(f"  parsed {len(catalog)} catalog rows "
+          f"({n_with_api} with API codes, {n_without_api} with descriptive "
+          "names — Path 2 candidates)", file=sys.stderr)
 
     print(f"Fetching indicator_map: s3://{args.bucket}/{INDICATOR_MAP_S3_KEY}",
           file=sys.stderr)
