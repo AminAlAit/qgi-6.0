@@ -5,12 +5,14 @@ on:
     branches: [main]
     paths:
       - 'lambdas/**'
+      - 'batch/**'
       - 'tests/**'
       - 'requirements-test.txt'
       - '.github/workflows/test.yml'
   pull_request:
     paths:
       - 'lambdas/**'
+      - 'batch/**'
       - 'tests/**'
       - 'requirements-test.txt'
 
