@@ -9,12 +9,37 @@
   },
   "counts": {
     "catalog_entries_total": 142,
-    "catalog_entries_with_api_code": 61,
-    "catalog_entries_resolved_to_numeric_id": 61,
-    "catalog_entries_pending_ingestion": 0,
-    "numeric_ids_in_allow_list": 61
+    "catalog_entries_with_api_code": 142,
+    "catalog_entries_resolved_to_numeric_id": 66,
+    "catalog_entries_pending_ingestion": 76,
+    "numeric_ids_in_allow_list": 66
   },
   "resolved": [
+    {
+      "catalog_code": "FA-01",
+      "api_code": "FA-01",
+      "numeric_id": 1001
+    },
+    {
+      "catalog_code": "FA-02",
+      "api_code": "FA-02",
+      "numeric_id": 1002
+    },
+    {
+      "catalog_code": "FA-03",
+      "api_code": "FA-03",
+      "numeric_id": 1003
+    },
+    {
+      "catalog_code": "FA-04",
+      "api_code": "FA-04",
+      "numeric_id": 1004
+    },
+    {
+      "catalog_code": "FA-05",
+      "api_code": "FA-05",
+      "numeric_id": 1005
+    },
     {
       "catalog_code": "VD-01",
       "api_code": "v2x_polyarchy",
@@ -321,7 +346,312 @@
       "numeric_id": 117
     }
   ],
-  "unresolved_pending_ingestion": [],
+  "unresolved_pending_ingestion": [
+    {
+      "catalog_code": "FA-06",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-07",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-08",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-09",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-10",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-11",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-12",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-13",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-14",
+      "api_code": null
+    },
+    {
+      "catalog_code": "FA-15",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-05",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-06",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-07",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-08",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-09",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-10",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-11",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-12",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-13",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-14",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-15",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-16",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-17",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-18",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-19",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-20",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-21",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-22",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-23",
+      "api_code": null
+    },
+    {
+      "catalog_code": "GD-24",
+      "api_code": null
+    },
+    {
+      "catalog_code": "ID-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "ID-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "ID-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-05",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-06",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-07",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-08",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-09",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-10",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-11",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-12",
+      "api_code": null
+    },
+    {
+      "catalog_code": "IL-13",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-05",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-06",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OE-07",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OW-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "OW-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UC-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UC-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UC-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UC-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-05",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-06",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UD-07",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-01",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-02",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-03",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-04",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-05",
+      "api_code": null
+    },
+    {
+      "catalog_code": "UN-06",
+      "api_code": null
+    }
+  ],
   "allow_list_numeric_ids": [
     60,
     69,
@@ -383,6 +713,11 @@
     311,
     312,
     313,
-    314
+    314,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005
   ]
 }
