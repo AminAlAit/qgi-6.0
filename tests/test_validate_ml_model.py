@@ -489,3 +489,235 @@ def test_run_validation_includes_anchors_when_provided():
     }
     out = v.run_validation(predictions=preds, anchor_battery=battery, n_bootstrap=20, seed=0)
     assert out["components"]["anchor_battery"]["n_active"] == 1
+
+
+# ---------- New REPORTED-only predictive metrics (founder ratification 2026-05-05) ----------
+
+
+class TestComputeAucPr:
+    def test_perfect_ranking_returns_1(self):
+        preds = np.array([0.1, 0.2, 0.8, 0.9])
+        labels = np.array([0, 0, 1, 1])
+        assert v.compute_auc_pr(preds, labels) == pytest.approx(1.0)
+
+    def test_inverse_ranking_low_ap(self):
+        preds = np.array([0.9, 0.8, 0.2, 0.1])
+        labels = np.array([0, 0, 1, 1])
+        # AP for inverse ranking is base rate (= 0.5 here for 50/50)
+        ap = v.compute_auc_pr(preds, labels)
+        assert ap < 0.6
+
+    def test_random_ap_near_base_rate(self):
+        rng = np.random.default_rng(0)
+        n = 1000
+        preds = rng.random(n)
+        labels = rng.integers(0, 2, n)
+        ap = v.compute_auc_pr(preds, labels)
+        base_rate = labels.mean()
+        # AP for random predictions ≈ base rate
+        assert abs(ap - base_rate) < 0.10
+
+    def test_no_positives_returns_nan(self):
+        assert np.isnan(v.compute_auc_pr(np.array([0.1, 0.5]), np.array([0, 0])))
+
+    def test_empty_returns_nan(self):
+        assert np.isnan(v.compute_auc_pr(np.array([]), np.array([])))
+
+    def test_shape_mismatch_raises(self):
+        with pytest.raises(ValueError, match="shape mismatch"):
+            v.compute_auc_pr(np.array([0.1, 0.2]), np.array([0, 0, 1]))
+
+    def test_imbalanced_class_handles_correctly(self):
+        # 5 positives in 100 → base rate 0.05; perfect signal
+        labels = np.zeros(100, dtype=int)
+        labels[-5:] = 1
+        preds = labels.astype(float) * 0.9 + 0.05
+        ap = v.compute_auc_pr(preds, labels)
+        assert ap > 0.95
+
+
+class TestComputeLogLoss:
+    def test_perfect_predictions(self):
+        preds = np.array([0.001, 0.001, 0.999, 0.999])
+        labels = np.array([0, 0, 1, 1])
+        ll = v.compute_log_loss(preds, labels)
+        # Near-perfect predictions yield very small log loss
+        assert ll < 0.01
+
+    def test_constant_at_50_pct(self):
+        preds = np.full(100, 0.5)
+        labels = np.array([0] * 50 + [1] * 50)
+        ll = v.compute_log_loss(preds, labels)
+        # log(0.5) for both classes = log(2) ≈ 0.693
+        assert ll == pytest.approx(np.log(2.0), abs=1e-6)
+
+    def test_confident_wrong_high_loss(self):
+        preds = np.array([0.99, 0.99, 0.01, 0.01])
+        labels = np.array([0, 0, 1, 1])
+        ll = v.compute_log_loss(preds, labels)
+        # Confidently wrong → log loss should be very high
+        assert ll > 4.0
+
+    def test_clipping_prevents_inf(self):
+        # Predictions of exactly 0 or 1 with wrong label would give -inf without clipping
+        preds = np.array([0.0, 1.0])
+        labels = np.array([1, 0])  # both confidently wrong
+        ll = v.compute_log_loss(preds, labels)
+        assert np.isfinite(ll)
+        assert ll > 30  # near log(1e15) ≈ 34.5
+
+    def test_empty_returns_nan(self):
+        assert np.isnan(v.compute_log_loss(np.array([]), np.array([])))
+
+    def test_shape_mismatch_raises(self):
+        with pytest.raises(ValueError, match="shape mismatch"):
+            v.compute_log_loss(np.array([0.1]), np.array([0, 1]))
+
+
+class TestComputeBrierSkillScore:
+    def test_perfect_predictions_bss_1(self):
+        preds = np.array([0.0, 0.0, 1.0, 1.0])
+        labels = np.array([0, 0, 1, 1])
+        assert v.compute_brier_skill_score(preds, labels) == pytest.approx(1.0)
+
+    def test_constant_at_base_rate_bss_0(self):
+        # Always predict 0.5 with 50/50 labels: Brier = 0.25 = uncertainty
+        preds = np.full(10, 0.5)
+        labels = np.array([0] * 5 + [1] * 5)
+        bss = v.compute_brier_skill_score(preds, labels)
+        # BSS = 1 - (0.25 / 0.25) = 0.0
+        assert bss == pytest.approx(0.0)
+
+    def test_worse_than_baseline_negative_bss(self):
+        # Inverse-correlated predictions: very wrong
+        preds = np.array([0.99, 0.99, 0.01, 0.01])
+        labels = np.array([0, 0, 1, 1])
+        bss = v.compute_brier_skill_score(preds, labels)
+        # base_rate=0.5, baseline brier = 0.25; model brier ≈ 0.97; BSS ≈ -2.88
+        assert bss < -2.0
+
+    def test_all_one_class_returns_nan(self):
+        preds = np.array([0.5, 0.5, 0.5])
+        labels = np.array([0, 0, 0])  # all-zero → base_rate=0 → undefined
+        assert np.isnan(v.compute_brier_skill_score(preds, labels))
+
+    def test_empty_returns_nan(self):
+        assert np.isnan(v.compute_brier_skill_score(np.array([]), np.array([])))
+
+
+class TestComputeAnchorDriftMetrics:
+    def _make_anchor_results(self, *cases):
+        return {"active": list(cases), "deferred": [],
+                "n_active": len(cases), "n_active_pass": 0,
+                "n_active_fail": 0, "n_active_skipped": 0,
+                "n_active_deferred_to_stage_1": 0,
+                "n_active_not_yet_implemented": 0}
+
+    def test_all_pass_yields_perfect_ahi(self):
+        cases = [
+            {"id": 1, "status": "PASS", "observed_percentile": 0.85,
+             "expected_rank_band": [0.75, 1.0]},
+            {"id": 2, "status": "PASS", "observed_percentile": 0.10,
+             "expected_rank_band": [0.0, 0.30]},
+        ]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        assert out["ads"] == 0.0
+        assert out["ahr"] == 1.0
+        assert out["ahi"] == 1.0
+        assert out["n_evaluable"] == 2
+
+    def test_one_fail_below_band(self):
+        cases = [
+            {"id": 1, "status": "FAIL", "observed_percentile": 0.10,
+             "expected_rank_band": [0.75, 1.0]},  # drift = -0.65
+        ]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        assert out["ads"] == pytest.approx(0.65)
+        assert out["ahr"] == 0.0
+        assert out["ahi"] == 0.0
+        assert out["per_case_drifts"][0]["signed_drift"] == pytest.approx(-0.65)
+
+    def test_mixed_pass_fail_composite(self):
+        cases = [
+            {"id": 1, "status": "PASS", "observed_percentile": 0.85,
+             "expected_rank_band": [0.75, 1.0]},  # drift = 0
+            {"id": 2, "status": "FAIL", "observed_percentile": 0.50,
+             "expected_rank_band": [0.0, 0.30]},  # drift = +0.20
+            {"id": 3, "status": "PASS", "observed_percentile": 0.20,
+             "expected_rank_band": [0.0, 0.30]},  # drift = 0
+            {"id": 4, "status": "FAIL", "observed_percentile": 0.10,
+             "expected_rank_band": [0.75, 1.0]},  # drift = -0.65
+        ]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        # ADS = mean of (0, 0.20, 0, 0.65) = 0.2125
+        assert out["ads"] == pytest.approx(0.2125)
+        # AHR = 2/4 = 0.5
+        assert out["ahr"] == pytest.approx(0.5)
+        # AHI = 0.5 * (1 - 0.2125) = 0.39375
+        assert out["ahi"] == pytest.approx(0.5 * (1 - 0.2125))
+
+    def test_deferred_and_nyi_excluded(self):
+        cases = [
+            {"id": 1, "status": "PASS", "observed_percentile": 0.85,
+             "expected_rank_band": [0.75, 1.0]},
+            {"id": 2, "status": "DEFERRED_TO_STAGE_1"},
+            {"id": 3, "status": "NOT_YET_IMPLEMENTED"},
+            {"id": 4, "status": "SKIPPED"},
+        ]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        assert out["n_evaluable"] == 1
+        assert out["n_excluded_non_evaluable"] == 3
+        assert out["ahi"] == 1.0
+
+    def test_no_evaluable_returns_nan(self):
+        cases = [{"id": 1, "status": "DEFERRED_TO_STAGE_1"}]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        assert np.isnan(out["ads"])
+        assert np.isnan(out["ahr"])
+        assert np.isnan(out["ahi"])
+
+    def test_invalid_input_yields_nan(self):
+        out = v.compute_anchor_drift_metrics(None)
+        assert np.isnan(out["ads"])
+
+    def test_pp_units_in_output(self):
+        cases = [
+            {"id": 1, "status": "FAIL", "observed_percentile": 0.50,
+             "expected_rank_band": [0.0, 0.30]},  # drift = +0.20 = 20pp
+        ]
+        out = v.compute_anchor_drift_metrics(self._make_anchor_results(*cases))
+        assert out["ads_pct_pp"] == pytest.approx(20.0)
+        assert out["ahr_pct"] == 0.0
+
+
+def test_run_validation_includes_predictive_metrics_and_anchor_drift():
+    """Verifies the new components.predictive_metrics + components.
+    anchor_drift_metrics sections are emitted by run_validation."""
+    rng = np.random.default_rng(0)
+    preds_list = [
+        {"country": f"c{i}", "year": 2024, "recipe_id": "r1",
+         "predicted_probability": float(rng.random()),
+         "label": int(rng.integers(0, 2))}
+        for i in range(50)
+    ]
+    battery = {
+        "active_cases": [{
+            "id": 99, "country": "c0", "recipe": "r1",
+            "expected_rank_band": [0.0, 0.30],
+        }],
+        "deferred_cases": [],
+    }
+    out = v.run_validation(predictions=preds_list, anchor_battery=battery,
+                           n_bootstrap=10, seed=0)
+    # New predictive metrics section
+    assert "predictive_metrics" in out["components"]
+    pm = out["components"]["predictive_metrics"]["per_recipe"]["r1"]
+    assert "auc_pr" in pm
+    assert "brier_skill_score" in pm
+    assert "log_loss" in pm
+    # New anchor drift section
+    assert "anchor_drift_metrics" in out["components"]
+    adm = out["components"]["anchor_drift_metrics"]
+    assert "ads" in adm
+    assert "ahr" in adm
+    assert "ahi" in adm

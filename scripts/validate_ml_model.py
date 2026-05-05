@@ -82,6 +82,195 @@ if str(_SRC_DIR) not in sys.path:
 # ---------- AUC + bootstrap CI (Component 1) ----------
 
 
+def compute_auc_pr(predictions: np.ndarray, labels: np.ndarray) -> float:
+    """Average Precision (PR-AUC) — rank discrimination on the rare-event axis.
+
+    Better than ROC-AUC for class-imbalanced settings (QGI's positive
+    rates are ~0.3-1.8% per recipe). Computed via the standard
+    sum-of-(R_k - R_{k-1}) * P_k formulation, sklearn-equivalent.
+
+    Returns NaN if labels are all one class.
+    """
+    predictions = np.asarray(predictions, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+    if predictions.shape != labels.shape:
+        msg = f"shape mismatch: {predictions.shape} vs {labels.shape}"
+        raise ValueError(msg)
+    n_pos = int((labels == 1).sum())
+    if predictions.size == 0 or n_pos == 0:
+        return float("nan")
+    # Sort descending by predictions, stable.
+    order = np.argsort(-predictions, kind="mergesort")
+    sorted_labels = labels[order]
+    tp = np.cumsum(sorted_labels)
+    fp = np.cumsum(1 - sorted_labels)
+    denom = tp + fp
+    # Avoid 0/0 at the very first row if it's a true positive: precision = 1.
+    precision = np.where(denom > 0, tp / np.maximum(denom, 1), 0.0)
+    recall = tp / n_pos
+    # AP = sum_k (R_k - R_{k-1}) * P_k, with R_0 = 0
+    recall_diff = np.diff(recall, prepend=0.0)
+    ap = float((precision * recall_diff).sum())
+    return ap
+
+
+def compute_log_loss(
+    predictions: np.ndarray,
+    labels: np.ndarray,
+    *,
+    eps: float = 1e-15,
+) -> float:
+    """Cross-entropy loss. Penalizes confident wrong predictions.
+
+    AUC ignores how confident wrong predictions are; log-loss exposes
+    overconfident misses (the failure mode that matters most for
+    buyer trust — confidently wrong is worse than humble wrong).
+
+    Predictions are clipped to [eps, 1-eps] for numerical stability.
+    Returns NaN if input is empty.
+    """
+    predictions = np.asarray(predictions, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+    if predictions.shape != labels.shape:
+        msg = f"shape mismatch: {predictions.shape} vs {labels.shape}"
+        raise ValueError(msg)
+    if predictions.size == 0:
+        return float("nan")
+    p = np.clip(predictions, eps, 1.0 - eps)
+    ll = -float(np.mean(labels * np.log(p) + (1 - labels) * np.log(1.0 - p)))
+    return ll
+
+
+def compute_brier_skill_score(
+    predictions: np.ndarray,
+    labels: np.ndarray,
+) -> float:
+    """Brier Skill Score — Brier improvement vs base-rate baseline.
+
+    BSS = 1 - (Brier_model / Brier_baseline)
+        where Brier_baseline = base_rate * (1 - base_rate)
+              (= Brier of always predicting base_rate)
+
+    BSS = 1 → perfect; BSS = 0 → no better than predicting the base
+    rate; BSS < 0 → worse than the base-rate baseline. Makes raw
+    Brier numerically interpretable.
+
+    Returns NaN if base_rate is 0 or 1 (denominator undefined) or
+    input is empty.
+    """
+    predictions = np.asarray(predictions, dtype=float)
+    labels = np.asarray(labels, dtype=int)
+    if predictions.shape != labels.shape:
+        msg = f"shape mismatch: {predictions.shape} vs {labels.shape}"
+        raise ValueError(msg)
+    if predictions.size == 0:
+        return float("nan")
+    base_rate = float(labels.mean())
+    brier_baseline = base_rate * (1.0 - base_rate)
+    if brier_baseline <= 0.0:
+        return float("nan")
+    brier_model = float(((predictions - labels) ** 2).mean())
+    return 1.0 - (brier_model / brier_baseline)
+
+
+def compute_anchor_drift_metrics(
+    anchor_results: dict,
+) -> dict:
+    """Compute Anchor Drift Score (ADS) + Anchor Hit Rate (AHR) + Anchor
+    Health Index (AHI) from an anchor-battery evaluation payload.
+
+    Per founder spec (2026-05-05):
+    - For each anchor case (PASS or FAIL only — DEFERRED / NYI / SKIPPED
+      excluded): compute |drift| = signed distance from observed_rank
+      to expected_rank_band, in [0, 1].
+    - **ADS** (Anchor Drift Score) = mean(|drift|) across all evaluable
+      anchors. Lower is better. Range [0, 1] (in pp = ADS × 100).
+    - **AHR** (Anchor Hit Rate) = count(|drift| = 0) / N_evaluable.
+      Higher is better. Range [0, 1].
+    - **AHI** (Anchor Health Index) = AHR × (1 - ADS). Composite.
+      Range [0, 1]. Higher = better. Both factors must be high for AHI
+      to be high (multiplicative penalty).
+
+    REPORTED only (not gated). Surfaces per founder ratification
+    2026-05-05.
+
+    Parameters
+    ----------
+    anchor_results : dict
+        The output of `evaluate_anchor_battery(...)` — must contain an
+        `active` key with per-case payloads. Each payload has `verdict`,
+        `observed_percentile`, `expected_rank_band`.
+
+    Returns
+    -------
+    dict with: ads, ahr, ahi, n_evaluable, n_excluded_non_evaluable,
+        per_case_drifts (list of (id, signed_drift) for transparency).
+    """
+    if not isinstance(anchor_results, dict):
+        return {
+            "ads": float("nan"), "ahr": float("nan"), "ahi": float("nan"),
+            "n_evaluable": 0, "n_excluded_non_evaluable": 0,
+            "per_case_drifts": [],
+        }
+    active = anchor_results.get("active") or []
+    drifts: list[tuple[Any, float]] = []
+    n_excluded = 0
+    for case in active:
+        # `evaluate_anchor_case` emits `status`, but downstream readers
+        # may have written `verdict` historically. Accept either.
+        status = case.get("status") or case.get("verdict")
+        if status not in ("PASS", "FAIL"):
+            n_excluded += 1
+            continue
+        observed = case.get("observed_percentile")
+        band = case.get("expected_rank_band")
+        if observed is None or band is None or len(band) != 2:
+            n_excluded += 1
+            continue
+        low, high = float(band[0]), float(band[1])
+        obs = float(observed)
+        # signed drift: 0 in band; negative if below; positive if above
+        if low <= obs <= high:
+            signed = 0.0
+        elif obs < low:
+            signed = obs - low  # negative
+        else:
+            signed = obs - high  # positive
+        drifts.append((case.get("id"), signed))
+
+    n_eval = len(drifts)
+    if n_eval == 0:
+        return {
+            "ads": float("nan"), "ahr": float("nan"), "ahi": float("nan"),
+            "n_evaluable": 0, "n_excluded_non_evaluable": n_excluded,
+            "per_case_drifts": [],
+        }
+    abs_drifts = [abs(d) for _, d in drifts]
+    ads = float(sum(abs_drifts) / n_eval)
+    n_in_band = sum(1 for d in abs_drifts if d == 0.0)
+    ahr = float(n_in_band / n_eval)
+    ahi = float(ahr * (1.0 - ads))
+    return {
+        "ads": ads,
+        "ahr": ahr,
+        "ahi": ahi,
+        "ads_pct_pp": float(ads * 100.0),
+        "ahr_pct": float(ahr * 100.0),
+        "ahi_pct": float(ahi * 100.0),
+        "n_evaluable": n_eval,
+        "n_excluded_non_evaluable": n_excluded,
+        "per_case_drifts": [
+            {"id": cid, "signed_drift": float(d)} for cid, d in drifts
+        ],
+        "policy": (
+            "REPORTED only, not gated. ADS = mean |drift| across "
+            "evaluable anchors (PASS/FAIL only); AHR = fraction in-band; "
+            "AHI = AHR * (1 - ADS) composite. Founder ratification "
+            "2026-05-05."
+        ),
+    }
+
+
 def compute_auc(predictions: np.ndarray, labels: np.ndarray) -> float:
     """ROC-AUC computed via the rank statistic.
 
@@ -553,6 +742,7 @@ def run_validation(
     cal_bootstrap_per_recipe: dict[str, Any] = {}
     brier_per_recipe: dict[str, Any] = {}
     recipe_counts_per_recipe: dict[str, Any] = {}
+    predictive_metrics_per_recipe: dict[str, Any] = {}
     for rid, rows in by_recipe.items():
         preds = np.array([r["predicted_probability"] for r in rows], dtype=float)
         labels = np.array([r["label"] for r in rows], dtype=int)
@@ -579,9 +769,25 @@ def run_validation(
             preds, labels, n_bins=n_bins, n_bootstrap=n_bootstrap, seed=seed,
         )
         brier_per_recipe[rid] = compute_brier_decomposition(preds, labels, n_bins=n_bins)
+        # New REPORTED-only predictive metrics per founder ratification
+        # 2026-05-05: AUC-PR (rare-event rank discrimination), BSS (Brier
+        # vs base-rate baseline), Log Loss (penalizes confident-wrong).
+        # Not gated; complement existing AUC + ECE + Brier on the
+        # dashboard.
+        predictive_metrics_per_recipe[rid] = {
+            "auc_pr": compute_auc_pr(preds, labels),
+            "brier_skill_score": compute_brier_skill_score(preds, labels),
+            "log_loss": compute_log_loss(preds, labels),
+        }
     anchor_results = (
         evaluate_anchor_battery(predictions, anchor_battery)
         if anchor_battery is not None else None
+    )
+    # Anchor Drift Score / Hit Rate / Health Index — REPORTED only,
+    # not gated. Per founder ratification 2026-05-05. Higher AHI = better.
+    anchor_drift_metrics = (
+        compute_anchor_drift_metrics(anchor_results)
+        if anchor_results is not None else None
     )
     return {
         "schema_version": 1,
@@ -606,6 +812,18 @@ def run_validation(
             },
             "brier": {"per_recipe": brier_per_recipe},
             "anchor_battery": anchor_results,
+            "anchor_drift_metrics": anchor_drift_metrics,
+            "predictive_metrics": {
+                "per_recipe": predictive_metrics_per_recipe,
+                "purpose": (
+                    "REPORTED-only predictive-power metrics (not gated). "
+                    "auc_pr = Average Precision (rank discrimination on "
+                    "rare-event axis); brier_skill_score = Brier vs base- "
+                    "rate baseline (1=perfect, 0=naive, <0=worse); "
+                    "log_loss = cross-entropy (penalizes confident wrong "
+                    "predictions). Founder ratification 2026-05-05."
+                ),
+            },
             "recipe_counts": {
                 "per_recipe": recipe_counts_per_recipe,
                 "purpose": (
