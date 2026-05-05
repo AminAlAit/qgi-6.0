@@ -220,8 +220,11 @@ def main() -> int:
     catalog_sha256 = hashlib.sha256(raw_catalog_bytes).hexdigest()
 
     catalog = parse_catalog(catalog_path)
-    print(f"  parsed {len(catalog)} rows with parseable API codes "
-          "(of 142 total catalog entries)", file=sys.stderr)
+    n_with_api = sum(1 for _, api in catalog if api is not None)
+    n_without_api = len(catalog) - n_with_api
+    print(f"  parsed {len(catalog)} catalog rows "
+          f"({n_with_api} with API codes, {n_without_api} with descriptive "
+          "names — Path 2 candidates)", file=sys.stderr)
 
     print(f"Fetching indicator_map: s3://{args.bucket}/{INDICATOR_MAP_S3_KEY}",
           file=sys.stderr)
