@@ -273,7 +273,7 @@ resource "aws_iam_instance_profile" "ecs_instance" {
 }
 
 # ---------------------------------------------------------------------------
-# AWS Batch — job role (ECS task role for the scdi-finder container)
+# AWS Batch — job role (ECS task role for scdi-finder and dscdi-finder containers)
 # ---------------------------------------------------------------------------
 resource "aws_iam_role" "batch_job" {
   name = "qgi-batch-job-role"
@@ -298,9 +298,12 @@ resource "aws_iam_role_policy" "batch_job" {
     Version = "2012-10-17"
     Statement = [
       # S3 — data lake
+      # s3:DeleteObject added 2026-05-06 (Phase 5 v0.0b Stage F preflight) for
+      # cleanup-pattern parity with scdi-finder; defensive add for any future
+      # checkpoint cleanup the dscdi-finder entrypoint might use.
       {
         Effect   = "Allow"
-        Action   = ["s3:GetObject", "s3:PutObject", "s3:ListBucket", "s3:GetBucketLocation"]
+        Action   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject", "s3:ListBucket", "s3:GetBucketLocation"]
         Resource = [var.data_lake_bucket_arn, "${var.data_lake_bucket_arn}/*"]
       },
       # ECR — pull image from management account
@@ -311,10 +314,21 @@ resource "aws_iam_role_policy" "batch_job" {
         Action   = ["ecr:GetAuthorizationToken"]
         Resource = "*"
       },
+      # Resource expanded to a list 2026-05-06 (Phase 5 v0.0b Stage F preflight)
+      # to add qgi-pipeline-b-dscdi-finder. NOTE: For EC2-backed Batch, the
+      # actual image pull is performed by the ECS agent on the host instance
+      # using the ECS instance role (qgi-ecs-instance-role). The management-
+      # account ECR resource policy (qgi-aws-tf, aws_ecr_repository_policy
+      # for qgi-pipeline-b-dscdi-finder) is what actually grants pull access
+      # to this staging account. This statement keeps the task role's IAM
+      # scope accurate but does NOT gate runtime image pulls.
       {
-        Effect   = "Allow"
-        Action   = ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability"]
-        Resource = "arn:aws:ecr:${var.region}:${var.management_account_id}:repository/qgi-pipeline-b-scdi-finder"
+        Effect = "Allow"
+        Action = ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability"]
+        Resource = [
+          "arn:aws:ecr:${var.region}:${var.management_account_id}:repository/qgi-pipeline-b-scdi-finder",
+          "arn:aws:ecr:${var.region}:${var.management_account_id}:repository/qgi-pipeline-b-dscdi-finder",
+        ]
       },
       # CloudWatch Logs — Batch job logging
       {
