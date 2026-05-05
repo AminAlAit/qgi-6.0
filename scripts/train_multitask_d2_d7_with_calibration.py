@@ -55,6 +55,7 @@ for _p in (str(SRC_ROOT), str(SCRIPTS_ROOT), str(SHARED_ROOT), str(REPO_ROOT)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
+from beta_calibration import BetaCalibrator  # noqa: E402
 from heads.multitask import MultiTaskHead, MultiTaskHeadConfig  # noqa: E402
 from train_multitask_v0 import (  # noqa: E402
     build_feature_panel,
@@ -63,6 +64,23 @@ from train_multitask_v0 import (  # noqa: E402
     load_priority_recipes,
 )
 from walk.calibrate import IsotonicCalibrator, stratified_train_cal_split  # noqa: E402
+
+
+def _make_calibrator_factory(method: str):
+    """Returns a fit_and_predict callable consistent across methods."""
+    if method == "beta":
+        def beta_fit_predict(cal_raw, cal_labels, test_raw):
+            cal = BetaCalibrator.fit(cal_raw, cal_labels)
+            return cal.predict(test_raw)
+        return beta_fit_predict
+    elif method == "isotonic":
+        def iso_fit_predict(cal_raw, cal_labels, test_raw):
+            cal = IsotonicCalibrator()
+            cal.fit(cal_raw, cal_labels)
+            return cal.predict(test_raw)
+        return iso_fit_predict
+    else:
+        raise ValueError(f"Unknown calibration method: {method}")
 
 LABEL_WINDOW_LOWER = 2014
 TRAIN_YEAR_MAX = 2021
@@ -83,6 +101,9 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--max-epochs", type=int, default=100)
     p.add_argument("--n-bootstrap", type=int, default=50,
                    help="Calibrator bootstrap iterations for posterior intervals")
+    p.add_argument("--calibration-method", choices=["isotonic", "beta"], default="beta",
+                   help="Calibration method. Beta is the production default (smooth, "
+                        "no step ties). Isotonic supported for diagnostic comparison.")
     p.add_argument("--quiet", action="store_true")
     return p.parse_args()
 
@@ -99,13 +120,15 @@ def _bootstrap_calibrator_predictions(
     *,
     n_bootstrap: int,
     seed: int,
+    method: str = "beta",
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
-    """Bootstrap the cal-fold; refit isotonic per resample; predict
+    """Bootstrap the cal-fold; refit calibrator per resample; predict
     on test. Returns (mean, ci_lower, ci_upper, std) per test cell.
 
     Cluster: bootstrap is on (raw, label) pairs; preserves cal-fold size.
     Confidence: 95%.
     """
+    fit_predict = _make_calibrator_factory(method)
     rng = np.random.default_rng(seed)
     n_cal = len(cal_raw)
     boot_preds: list[np.ndarray] = []
@@ -114,9 +137,7 @@ def _bootstrap_calibrator_predictions(
         cal_resampled_raw = cal_raw[idx]
         cal_resampled_lab = cal_labels[idx]
         try:
-            cal = IsotonicCalibrator()
-            cal.fit(cal_resampled_raw, cal_resampled_lab)
-            preds = cal.predict(test_raw)
+            preds = fit_predict(cal_resampled_raw, cal_resampled_lab, test_raw)
             boot_preds.append(preds)
         except (ValueError, RuntimeError):
             continue
@@ -226,22 +247,27 @@ def main() -> int:  # noqa: PLR0915, C901
             calibrated_test_ci_hi[:, k] = test_raw_k
             continue
 
-        # CANONICAL prediction: SINGLE isotonic fit on the full cal-fold.
+        # CANONICAL prediction: SINGLE calibrator fit on the full cal-fold.
         # This preserves monotonicity with raw_test (necessary so anchor
         # ranks computed across countries are stable). The per-recipe
         # bootstrap below ONLY drives CI bounds (uncertainty), NOT the
-        # canonical prediction value. Caught at integration time:
-        # bootstrap-mean breaks monotonicity since different resamples
-        # reorder near-tie values; using bootstrap-mean as canonical
-        # would degrade AHI vs raw despite improving ECE.
-        canonical_cal = IsotonicCalibrator()
-        canonical_cal.fit(cal_raw_k, cal_labels_k)
-        calibrated_test_mean[:, k] = canonical_cal.predict(test_raw_k)
+        # canonical prediction value. Bootstrap-mean breaks monotonicity
+        # since different resamples reorder near-tie values; using
+        # bootstrap-mean as canonical would degrade AHI vs raw despite
+        # improving ECE. (Caught at integration time, 2026-05-06.)
+        #
+        # Beta is the production default: smooth function, no step ties.
+        # Isotonic supported via --calibration-method=isotonic for
+        # diagnostic comparison; both pass F1 ECE gate but Beta is
+        # marginally better on AHI (26.68 vs 25.64 in 2026-05-06 sweep).
+        fit_predict = _make_calibrator_factory(args.calibration_method)
+        calibrated_test_mean[:, k] = fit_predict(cal_raw_k, cal_labels_k, test_raw_k)
 
         # Uncertainty: bootstrap calibrator B times for CI bounds only.
         _, lo, hi, std = _bootstrap_calibrator_predictions(
             cal_raw_k, cal_labels_k, test_raw_k,
             n_bootstrap=args.n_bootstrap, seed=args.seed + k,
+            method=args.calibration_method,
         )
         calibrated_test_ci_lo[:, k] = lo
         calibrated_test_ci_hi[:, k] = hi
@@ -271,9 +297,9 @@ def main() -> int:  # noqa: PLR0915, C901
         "model_metadata_uri": str(output_dir),
         "predictions": predictions,
         "metadata": {
-            "model_kind": "multitask_head_d2_with_d7_isotonic_calibration",
+            "model_kind": f"multitask_head_d2_with_d7_{args.calibration_method}_calibration",
             "calibration": {
-                "method": "isotonic_per_recipe",
+                "method": f"{args.calibration_method}_per_recipe",
                 "n_bootstrap": args.n_bootstrap,
                 "ci_level": 0.95,
                 "ci_lower_percentile": 2.5,
