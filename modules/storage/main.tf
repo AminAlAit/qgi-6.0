@@ -88,6 +88,42 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
       days = 7
     }
   }
+
+  # #623 (Sonnet audit 2026-05-07): scdi-finder Batch job intermediate writes.
+  #
+  # pipeline-B-scdi-finder/tmp/ — per-indicator per-country Parquet files
+  # written by the scdi-finder Batch job BEFORE compaction. Once the job
+  # compacts output into scdis-compacted/, tmp/ files are dead weight with
+  # zero business value. The Glue `scdis` table reads ONLY from
+  # scdis-compacted/ (see aws_glue_catalog_table.scdis storage_descriptor
+  # location above). As of the 2026-05-07 S3 audit these objects numbered
+  # 1,632,851 — 91% of the entire bucket's object count. 3-day expiry gives
+  # the Batch job ample runway: typical end-to-end scdi-finder run is < 1 day.
+  rule {
+    id     = "expire-scdi-tmp"
+    status = "Enabled"
+    filter {
+      prefix = "pipeline-B-scdi-finder/tmp/"
+    }
+    expiration {
+      days = 3
+    }
+  }
+
+  # #623 (Sonnet review 2026-05-07): NO lifecycle rule for the uncompacted
+  # `pipeline-B-scdi-finder/scdis/` prefix.
+  #
+  # The 2026-05-07 audit flagged 18,115 objects (~67 GB) at this prefix as
+  # "dead weight" because the Glue scdis table reads from scdis-compacted/
+  # only. However, the founder override on 2026-05-04 mandates that these
+  # originals be RETAINED INDEFINITELY as rollback insurance. The mandate
+  # is documented in:
+  #   - qgi-ml/scripts/compact_scdi_prefix.py (docstring lines 13-15)
+  #   - qgi-ml/scripts/delete_scdi_originals.py (deprecated, hard-blocked)
+  #
+  # Adding a lifecycle rule here would silently violate that policy. If the
+  # retention mandate is ever reversed, expire-scdi-raw can land in a
+  # follow-up PR with the founder override documented in this comment.
 }
 
 # #597: S3 server access logging — enables post-hoc forensics on cost
