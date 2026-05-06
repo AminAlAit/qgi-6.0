@@ -169,7 +169,21 @@ export async function loadTrajectoryPanelData(
     const canonicalRecipe = getCanonicalRecipeFromBaked(recipe, COUNTRY_BY_ID);
 
     // Step 3: Fetch subject country trajectory for all resolved indicators.
-    const indicatorIdList = resolved.map((r) => `'${r.indicatorId}'`).join(",");
+    // #626 (Sonnet audit 2026-05-07): SORT before joining to make the SQL
+    // string deterministic. Without sorting, two Vercel serverless instances
+    // can build slightly different SQL strings for the same indicator set
+    // (because `resolved` ordering depends on the fingerprint's tfidf
+    // ordering, which can permute between instances). Different SQL string
+    // = different unstable_cache key = independent Athena execution per
+    // instance. Direct evidence (2026-05-07): 8 consecutive Vietnam queries
+    // with the same 4 indicator IDs in 8 different orders, all
+    // `Reused: false`. Sorting restores cache effectiveness — the SQL
+    // result is order-independent (rows returned regardless of IN() order;
+    // ORDER BY indicator_id, year already re-sorts the output).
+    const indicatorIdList = resolved
+      .map((r) => `'${r.indicatorId}'`)
+      .sort()
+      .join(",");
     const subjectRows = await fetchCountryTrajectory(countryName, indicatorIdList);
 
     // Step 4: If we have a canonical recipe, fetch its country_b trajectory.
