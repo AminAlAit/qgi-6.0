@@ -74,12 +74,22 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
     }
   }
 
-  # #597: S3 server access logs land in s3-access-logs/ (self-logging).
-  # 7 days is enough for post-hoc forensics on cost spikes and security
-  # events. Server access logs are FREE to generate; the storage cost
-  # for 7 days at typical QGI request rates is trivial (~10-50 MB/day).
+  # #627 (Sonnet audit 2026-05-07): S3 server access logs MOVED to a
+  # dedicated bucket (aws_s3_bucket.access_logs). New logs no longer
+  # land here; see aws_s3_bucket.access_logs / lifecycle / logging below.
+  #
+  # Transitional rule for the ~119K legacy log files (37 GB) that
+  # accumulated under s3-access-logs/ before the relocation. Keeping the
+  # 7-day expiry on the legacy prefix lets them age out naturally.
+  # Without this rule the legacy files would be permanently orphaned —
+  # the original `expire-access-logs` rule covered them, and removing
+  # it without a replacement would silently regress storage cost on
+  # the very prefix this PR set out to clean up.
+  #
+  # Remove this rule in a follow-up PR once a Storage Lens / S3
+  # Inventory report confirms the prefix is empty (~7 days post-apply).
   rule {
-    id     = "expire-access-logs"
+    id     = "expire-legacy-access-logs"
     status = "Enabled"
     filter {
       prefix = "s3-access-logs/"
@@ -126,49 +136,161 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   # follow-up PR with the founder override documented in this comment.
 }
 
-# #597: S3 server access logging — enables post-hoc forensics on cost
-# spikes (which IAM principal opened how many objects in which prefix
-# at what hour). The May 2 2026 GET spike ($9.44 in one day) was
-# diagnosable only via Cost Explorer aggregates — couldn't attribute
-# the 22M GETs to a specific principal without these logs.
+# #597 + #627 (Sonnet audit 2026-05-07): S3 server access logging.
 #
-# Self-logging pattern: target_bucket = source_bucket. AWS prevents
-# infinite recursion (server access logs do NOT generate access log
-# events themselves). The s3-access-logs/ prefix has its own 7-day
-# lifecycle rule above to keep storage bounded.
+# Original rationale (#597): logs enable post-hoc forensics on cost
+# spikes — which IAM principal opened how many objects in which prefix.
+# The May 2 2026 GET spike ($9.44 in one day) was diagnosable only via
+# Cost Explorer aggregates without these logs.
+#
+# Architecture (#627, 2026-05-07): logs are now delivered to a DEDICATED
+# `aws_s3_bucket.access_logs` bucket (qgi-access-logs-{account_id}),
+# NOT self-logged into the data lake. The old self-logging pattern
+# polluted the data lake with 119,375 access log files (37 GB at peak)
+# which inflated object-count metrics and complicated cost attribution.
+# AWS recommends target_bucket != source for production buckets.
 #
 # Cost: log generation is free, but the resulting PUTs and storage
-# incur standard S3 charges. Estimate at QGI's current request rate:
-# ~$2-5/month total (PUTs dominate; storage capped by 7-day expiry).
-# This is intentionally a small cost in exchange for incident
-# attribution — without these logs, we couldn't tell who triggered
-# the May 2 spike. The paid S3 Request Metrics filter is NOT enabled
-# (separate cost line); daily request-count visibility comes from
-# S3 Storage Lens free tier (ticket #594).
+# incur standard S3 charges (now on the dedicated bucket — separated
+# from primary data cost attribution). Estimate ~$2-5/month total;
+# storage capped by the 7-day lifecycle rule on the access_logs bucket.
+# The paid S3 Request Metrics filter is NOT enabled; daily
+# request-count visibility comes from S3 Storage Lens free tier (#594).
 #
-# Retention rationale (7 days): chosen for cost containment and
-# because the upstream cause (#592 SCDI fragmentation) explains the
-# bulk of cost spikes. If a future incident requires a longer
-# forensic window, bump to 30d in the lifecycle rule above — storage
-# stays trivial.
+# Retention rationale (7 days): chosen for cost containment and because
+# the upstream cause (#592 SCDI fragmentation) explains the bulk of
+# cost spikes. If a future incident requires a longer forensic window,
+# bump to 30d in the lifecycle rule on `aws_s3_bucket_lifecycle_configuration.access_logs` —
+# storage stays trivial.
+#
+# Legacy logs: 119K files at the OLD `s3-access-logs/` prefix on this
+# bucket are aged out by the `expire-legacy-access-logs` rule above
+# (transitional, removable in a follow-up PR once the prefix confirms empty).
 #
 # Permission path: server access logging requires the logging service
 # principal (logging.s3.amazonaws.com) to write to the target prefix.
 # Default delivery uses the log-delivery-write canned ACL, but our
 # bucket has block_public_acls=true + ignore_public_acls=true (see
-# aws_s3_bucket_public_access_block below) — that ACL grant is
-# silently rejected. We instead grant the permission via bucket
-# policy below (modern ACL-free path with aws:SourceAccount guard).
+# aws_s3_bucket_public_access_block) — that ACL grant is silently
+# rejected. We instead grant the permission via the access_logs
+# bucket's resource policy (`aws_s3_bucket_policy.access_logs`) with
+# the modern ACL-free path: aws:SourceAccount + aws:SourceArn guard.
 resource "aws_s3_bucket_logging" "data_lake" {
   bucket        = aws_s3_bucket.data_lake.id
-  target_bucket = aws_s3_bucket.data_lake.id
-  target_prefix = "s3-access-logs/"
+  target_bucket = aws_s3_bucket.access_logs.id
+  target_prefix = "qgi-data-lake/"
 
-  # Ensure the bucket policy is in place before logging is enabled,
-  # otherwise the first batch of log deliveries fails until the
-  # policy lands. Terraform usually orders this correctly via
-  # implicit dependency on the bucket, but be explicit.
-  depends_on = [aws_s3_bucket_policy.data_lake_cross_account]
+  # #627 (Sonnet audit 2026-05-07): retargeted from self → dedicated
+  # access_logs bucket. The old self-logging architecture polluted the
+  # data lake with 119K log files (37 GB) at peak. The dedicated bucket
+  # has its own 7-day lifecycle rule and a tighter bucket policy
+  # (logging service principal only). Object-count and cost-attribution
+  # metrics for the data lake are now clean.
+  depends_on = [aws_s3_bucket_policy.access_logs]
+}
+
+# ---------------------------------------------------------------------------
+# #627 (Sonnet audit 2026-05-07): dedicated S3 server access logs bucket
+# ---------------------------------------------------------------------------
+# Replaces the old self-logging pattern (data lake → data lake). Reasons:
+#
+#  1. Pollution: at the May 5 peak the data lake held 65,848 access log
+#     files (28.5 GB) on a single day. They expired after 7 days but
+#     during retention they inflated object-count metrics, complicated
+#     Cost Explorer attribution, and made any LIST operation against the
+#     primary data prefixes more expensive.
+#  2. Best practice: AWS recommends the target bucket be different from
+#     the source for production buckets so that access-log delivery
+#     never competes with user reads/writes for the same key namespace.
+#  3. Cleaner forensics: scdi-finder partition scans no longer surface
+#     access log keys in their query plans.
+#
+# Bucket name: qgi-access-logs-{aws_account_id}. Same naming convention
+# as the data lake. No `prevent_destroy` because losing logs is
+# acceptable; lifecycle keeps storage bounded at 7 days.
+resource "aws_s3_bucket" "access_logs" {
+  bucket = "qgi-access-logs-${var.aws_account_id}"
+  tags   = var.tags
+
+  # Forensic data may be the only evidence of a live incident in
+  # progress. Mirroring the data_lake bucket's prevent_destroy ensures
+  # symmetric durability protection — accidental `terraform destroy`
+  # cannot wipe forensic logs mid-investigation.
+  lifecycle {
+    prevent_destroy = true
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "access_logs" {
+  bucket = aws_s3_bucket.access_logs.id
+
+  rule {
+    id     = "expire-logs"
+    status = "Enabled"
+    filter {}
+    expiration {
+      days = 7
+    }
+  }
+
+  # Abort orphaned multipart uploads — defensive; log delivery doesn't
+  # use multipart but a future tooling change might.
+  rule {
+    id     = "abort-incomplete-uploads"
+    status = "Enabled"
+    filter {}
+    abort_incomplete_multipart_upload {
+      days_after_initiation = 1
+    }
+  }
+}
+
+# Block public access. Logs contain IP addresses + IAM ARNs of every
+# caller — they must never be world-readable.
+resource "aws_s3_bucket_public_access_block" "access_logs" {
+  bucket                  = aws_s3_bucket.access_logs.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
+}
+
+# Bucket policy: grant the S3 logging service principal write access,
+# scoped to the qgi-data-lake/ prefix and this account only. ACL-free
+# pattern (block_public_acls=true blocks the canned-ACL path that S3
+# uses by default; we substitute a policy-based grant).
+#
+# This policy is INTENTIONALLY pinned to a single source bucket via
+# `aws:SourceArn = aws_s3_bucket.data_lake.arn`. The target_prefix
+# convention (`qgi-data-lake/`) was chosen so that future logging
+# sources can land here under their own prefix (e.g. `qgi-ml-artifacts/`
+# if that bucket ever gets server access logging). To extend coverage,
+# add a SECOND statement with that source's ARN — do NOT relax the
+# SourceArn condition (which would risk cross-bucket log injection
+# from any compromised principal in this account).
+resource "aws_s3_bucket_policy" "access_logs" {
+  bucket = aws_s3_bucket.access_logs.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "AllowS3LogDelivery"
+        Effect    = "Allow"
+        Principal = { Service = "logging.s3.amazonaws.com" }
+        Action    = "s3:PutObject"
+        Resource  = "${aws_s3_bucket.access_logs.arn}/qgi-data-lake/*"
+        Condition = {
+          StringEquals = {
+            "aws:SourceAccount" = var.aws_account_id
+            # ARN of the source bucket — prevents a foreign bucket in
+            # this account from delivering its logs here.
+            "aws:SourceArn" = aws_s3_bucket.data_lake.arn
+          }
+        }
+      }
+    ]
+  })
 }
 
 # Allow management account to write to this bucket (for legacy data
@@ -191,23 +313,11 @@ resource "aws_s3_bucket_policy" "data_lake_cross_account" {
           "${aws_s3_bucket.data_lake.arn}/*"
         ]
       },
-      {
-        # #597: ACL-free log delivery path. block_public_acls=true on
-        # the bucket would otherwise silently prevent the canned ACL
-        # path used by default S3 server access logging. The
-        # aws:SourceAccount condition prevents cross-account log
-        # injection (AWS best practice since 2023).
-        Sid       = "AllowS3LogDelivery"
-        Effect    = "Allow"
-        Principal = { Service = "logging.s3.amazonaws.com" }
-        Action    = "s3:PutObject"
-        Resource  = "${aws_s3_bucket.data_lake.arn}/s3-access-logs/*"
-        Condition = {
-          StringEquals = {
-            "aws:SourceAccount" = var.aws_account_id
-          }
-        }
-      }
+      # #627 (Sonnet audit 2026-05-07): the old AllowS3LogDelivery
+      # statement was REMOVED from this policy because access logs are
+      # now delivered to the dedicated `aws_s3_bucket.access_logs`
+      # bucket. The ACL-free log-delivery grant lives in
+      # `aws_s3_bucket_policy.access_logs` instead.
     ]
   })
 }
@@ -1508,7 +1618,7 @@ resource "aws_sns_topic" "cost_alerts" {
 # (per AWS 2023+ guidance for Budgets→SNS). Without it, a Budget in any
 # AWS account could legitimately publish to this topic if they happen
 # to know its ARN. Mirrors the pattern used by AllowS3LogDelivery
-# above for the access-logs prefix.
+# on aws_s3_bucket_policy.access_logs (in the same module, #627).
 resource "aws_sns_topic_policy" "cost_alerts" {
   arn = aws_sns_topic.cost_alerts.arn
   policy = jsonencode({
