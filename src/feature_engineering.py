@@ -60,6 +60,13 @@ SUFFIX_ZSCORE = "__zscore"
 SUFFIX_MOMENTUM = "__momentum"
 SUFFIX_RATIO_SEP = "__div__"
 SUFFIX_MISSING = "__missing"
+# Phase D D5 trajectory features (pre-reg: stage-2-d5-walk-methodology-prereg.md)
+SUFFIX_ACCELERATION = "__accel"
+
+
+def _suffix_multi_year_diff(lookback: int) -> str:
+    """D5 multi-year difference suffix: `__diff3y`, `__diff5y`, etc."""
+    return f"__diff{lookback}y"
 
 
 # ---------- Validation helper ----------
@@ -256,6 +263,86 @@ def momentum(
         [target["country"], target["indicator_id"]], group_keys=False
     ).diff()
     target["indicator_id"] = target["indicator_id"] + SUFFIX_MOMENTUM
+    return pd.concat([other, target], ignore_index=True)
+
+
+# ---------- Phase D D5 trajectory features ----------
+# Per qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md
+# (commit 925dc42). NEW transforms use STRICT consecutive-non-null (per
+# imputation policy point 2): a delta where any required value is NaN
+# produces NaN, NOT an interpolated value. This is the natural pandas
+# .diff() / .shift() behavior — no special handling needed; documenting
+# explicitly so a future reader doesn't introduce min_periods relaxation.
+
+
+def multi_year_difference(
+    long_df: pd.DataFrame,
+    lookback_years: int,
+    indicator_ids: Iterable[str] | None = None,
+) -> pd.DataFrame:
+    """Per-country per-indicator multi-year difference (delta_N(t) = v(t) - v(t-N)).
+
+    D5 trajectory feature. For lookback_years=3, output indicator suffix
+    `__diff3y`; for 5, `__diff5y`; etc. The first `lookback_years` rows of
+    each (country, indicator) group get NaN.
+
+    Strict consecutive-non-null per D5 imputation policy: if v(t-N) is NaN,
+    the result is NaN (not interpolated). pandas `.diff(N)` already does this.
+
+    Distinct from first_difference (which is N=1) and from momentum (which
+    diffs a rolling mean, not raw values).
+    """
+    if lookback_years < 1:
+        raise ValueError(f"lookback_years must be >= 1; got {lookback_years}")
+    _check_long_schema(long_df)
+    if long_df.empty:
+        return long_df.copy()
+    target_ids = set(indicator_ids) if indicator_ids is not None else set(long_df["indicator_id"].unique())
+    out = long_df.copy()
+    target_mask = out["indicator_id"].isin(target_ids)
+    target = out.loc[target_mask].copy()
+    other = out.loc[~target_mask].copy()
+    target = target.sort_values(["country", "indicator_id", "year"])
+    target["value"] = target.groupby(["country", "indicator_id"])["value"].diff(lookback_years)
+    target["indicator_id"] = target["indicator_id"] + _suffix_multi_year_diff(lookback_years)
+    return pd.concat([other, target], ignore_index=True)
+
+
+def acceleration(
+    long_df: pd.DataFrame,
+    indicator_ids: Iterable[str] | None = None,
+) -> pd.DataFrame:
+    """Per-country per-indicator second difference (acceleration).
+
+    D5 trajectory feature. Captures inflection / change-in-rate-of-change.
+    Computed as v(t) - 2*v(t-1) + v(t-2), equivalent to the first difference
+    OF the first difference. Output suffix `__accel`. The first 2 rows of
+    each (country, indicator) group get NaN.
+
+    Strict consecutive-non-null per D5 imputation policy: requires v(t),
+    v(t-1), v(t-2) all non-null; if any is NaN, result is NaN.
+
+    Mathematically: accel(t) = diff(v, 1)(t) - diff(v, 1)(t-1)
+                            = (v(t) - v(t-1)) - (v(t-1) - v(t-2))
+                            = v(t) - 2*v(t-1) + v(t-2)
+    """
+    _check_long_schema(long_df)
+    if long_df.empty:
+        return long_df.copy()
+    target_ids = set(indicator_ids) if indicator_ids is not None else set(long_df["indicator_id"].unique())
+    out = long_df.copy()
+    target_mask = out["indicator_id"].isin(target_ids)
+    target = out.loc[target_mask].copy()
+    other = out.loc[~target_mask].copy()
+    target = target.sort_values(["country", "indicator_id", "year"])
+    # Apply diff twice per (country, indicator); pandas .diff() preserves NaN
+    # propagation, so strict consecutive-non-null is satisfied automatically.
+    grp = target.groupby(["country", "indicator_id"])["value"]
+    first_diff = grp.diff()
+    target["value"] = first_diff.groupby(
+        [target["country"], target["indicator_id"]], group_keys=False
+    ).diff()
+    target["indicator_id"] = target["indicator_id"] + SUFFIX_ACCELERATION
     return pd.concat([other, target], ignore_index=True)
 
 

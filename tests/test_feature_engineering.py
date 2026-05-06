@@ -459,3 +459,237 @@ def test_mice_raises_without_country_year():
     bad = pd.DataFrame({"A": [1.0, 2.0]})
     with pytest.raises(ValueError, match="country.*year"):
         fe.multiple_imputation_mice(bad)
+
+
+# ---------- Phase D D5 trajectory features ----------
+# Per qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md
+
+
+# multi_year_difference --------------------------------------------------------
+
+
+def test_multi_year_difference_3y_correct_values():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 10.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 12.0},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 15.0},
+        {"country": "x", "year": 2023, "indicator_id": "A", "value": 17.0},
+        {"country": "x", "year": 2024, "indicator_id": "A", "value": 22.0},
+    ])
+    out = fe.multi_year_difference(long, lookback_years=3, indicator_ids=["A"])
+    diffed = out[out["indicator_id"] == "A__diff3y"].sort_values("year").reset_index(drop=True)
+    # First 3 rows NaN, then v(t) - v(t-3)
+    assert pd.isna(diffed.iloc[0]["value"])
+    assert pd.isna(diffed.iloc[1]["value"])
+    assert pd.isna(diffed.iloc[2]["value"])
+    assert diffed.iloc[3]["value"] == 17.0 - 10.0  # 2023 - 2020
+    assert diffed.iloc[4]["value"] == 22.0 - 12.0  # 2024 - 2021
+
+
+def test_multi_year_difference_5y_first_5_years_nan():
+    rows = [{"country": "x", "year": 2020 + i, "indicator_id": "A", "value": float(i)}
+            for i in range(8)]
+    long = pd.DataFrame(rows)
+    out = fe.multi_year_difference(long, lookback_years=5, indicator_ids=["A"])
+    diffed = out[out["indicator_id"] == "A__diff5y"].sort_values("year").reset_index(drop=True)
+    # First 5 rows NaN
+    for i in range(5):
+        assert pd.isna(diffed.iloc[i]["value"])
+    # Year 2025: v(2025) - v(2020) = 5 - 0 = 5
+    assert diffed.iloc[5]["value"] == 5.0
+
+
+def test_multi_year_difference_strict_consecutive_non_null():
+    """Per D5 imputation policy: NaN at one of the lookback positions
+    propagates to the diff; NOT interpolated. Two checks:
+    (1) NaN at v(t-N) → result NaN at year t
+    (2) NaN at v(t) → result NaN at year t (trivially)
+    Critically, the test must place the NaN at a position the diff actually
+    READS (t or t-N), not at an irrelevant interior year."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": float("nan")},  # v(t-3) for 2023 lookup
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 12.0},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 15.0},
+        {"country": "x", "year": 2023, "indicator_id": "A", "value": 17.0},  # v(t)
+        {"country": "x", "year": 2024, "indicator_id": "A", "value": float("nan")},  # v(t)
+        {"country": "x", "year": 2025, "indicator_id": "A", "value": 25.0},  # diff = v(2025)-v(2022) = 25-15 = 10
+    ])
+    out = fe.multi_year_difference(long, lookback_years=3, indicator_ids=["A"])
+    diffed = out[out["indicator_id"] == "A__diff3y"].sort_values("year").reset_index(drop=True)
+    # 2023: needs v(2023)=17, v(2020)=NaN → result NaN (strict consecutive-non-null)
+    assert pd.isna(diffed.iloc[3]["value"]), \
+        "NaN at v(t-N) must propagate to diff result; got non-null"
+    # 2024: needs v(2024)=NaN, v(2021)=12 → result NaN (NaN at v(t))
+    assert pd.isna(diffed.iloc[4]["value"]), \
+        "NaN at v(t) must propagate to diff result; got non-null"
+    # 2025: needs v(2025)=25, v(2022)=15 → both non-null → result 10
+    assert diffed.iloc[5]["value"] == 10.0
+
+
+def test_multi_year_difference_preserves_per_country_isolation():
+    """Per-country per-indicator isolation: country x's 2023 diff should NOT
+    look back into country y's data even when concatenated. Uses dense
+    annual panel matching the convention of first_difference."""
+    rows = []
+    for c, base, slope in [("x", 10.0, 1.0), ("y", 100.0, 1.5)]:
+        for i, y in enumerate(range(2020, 2024)):
+            rows.append({"country": c, "year": y, "indicator_id": "A",
+                         "value": base + i * slope})
+    long = pd.DataFrame(rows)
+    out = fe.multi_year_difference(long, lookback_years=3, indicator_ids=["A"])
+    diffed = out[out["indicator_id"] == "A__diff3y"]
+    by_country_2023 = diffed[diffed["year"] == 2023].set_index("country")["value"]
+    # x: v(2023)=13, v(2020)=10 → 3.0
+    # y: v(2023)=104.5, v(2020)=100 → 4.5
+    assert by_country_2023.loc["x"] == 3.0
+    assert by_country_2023.loc["y"] == 4.5
+
+
+def test_multi_year_difference_rejects_lookback_below_1():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+    ])
+    with pytest.raises(ValueError, match="lookback_years must be >= 1"):
+        fe.multi_year_difference(long, lookback_years=0)
+
+
+def test_multi_year_difference_passes_through_non_targeted():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 5.0},
+    ])
+    out = fe.multi_year_difference(long, lookback_years=3, indicator_ids=["A"])
+    b_rows = out[out["indicator_id"] == "B"]
+    assert len(b_rows) == 1
+    assert b_rows.iloc[0]["value"] == 5.0
+
+
+def test_multi_year_difference_handles_empty():
+    out = fe.multi_year_difference(pd.DataFrame(columns=["country", "year", "indicator_id", "value"]),
+                                    lookback_years=3)
+    assert out.empty
+
+
+def test_multi_year_difference_default_applies_to_all_indicators():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2023, "indicator_id": "A", "value": 4.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 5.0},
+        {"country": "x", "year": 2023, "indicator_id": "B", "value": 11.0},
+    ])
+    out = fe.multi_year_difference(long, lookback_years=3)
+    out_ids = set(out["indicator_id"])
+    assert "A__diff3y" in out_ids
+    assert "B__diff3y" in out_ids
+
+
+# acceleration -----------------------------------------------------------------
+
+
+def test_acceleration_correct_second_difference():
+    """accel(t) = v(t) - 2*v(t-1) + v(t-2)."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 10.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 13.0},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 17.0},
+        {"country": "x", "year": 2023, "indicator_id": "A", "value": 20.0},
+    ])
+    out = fe.acceleration(long, indicator_ids=["A"])
+    accel = out[out["indicator_id"] == "A__accel"].sort_values("year").reset_index(drop=True)
+    # First 2 rows NaN
+    assert pd.isna(accel.iloc[0]["value"])
+    assert pd.isna(accel.iloc[1]["value"])
+    # 2022: 17 - 2*13 + 10 = 17 - 26 + 10 = 1 (decel: growth slowed from +3 to +4)
+    # Actually: (17-13) - (13-10) = 4 - 3 = 1
+    assert accel.iloc[2]["value"] == 1.0
+    # 2023: (20-17) - (17-13) = 3 - 4 = -1
+    assert accel.iloc[3]["value"] == -1.0
+
+
+def test_acceleration_constant_series_yields_zero():
+    """A perfectly linear series has zero acceleration."""
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020 + i, "indicator_id": "A", "value": 10.0 + i * 5}
+        for i in range(5)
+    ])
+    out = fe.acceleration(long, indicator_ids=["A"])
+    accel = out[out["indicator_id"] == "A__accel"].sort_values("year")
+    # Years 2022-2024 should all be 0 (linear growth)
+    non_nan = accel.dropna(subset=["value"])
+    assert all(non_nan["value"] == 0.0)
+
+
+def test_acceleration_strict_consecutive_non_null_propagates_nan():
+    """If any of v(t), v(t-1), v(t-2) is NaN, accel is NaN."""
+    import numpy as np
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 10.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": np.nan},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 17.0},
+        {"country": "x", "year": 2023, "indicator_id": "A", "value": 20.0},
+        {"country": "x", "year": 2024, "indicator_id": "A", "value": 25.0},
+    ])
+    out = fe.acceleration(long, indicator_ids=["A"])
+    accel = out[out["indicator_id"] == "A__accel"].sort_values("year").reset_index(drop=True)
+    # 2022: needs v(2022), v(2021)=NaN, v(2020) → NaN
+    assert pd.isna(accel.iloc[2]["value"])
+    # 2023: needs v(2023), v(2022), v(2021)=NaN → NaN
+    assert pd.isna(accel.iloc[3]["value"])
+    # 2024: needs v(2024), v(2023), v(2022) — all non-null
+    # accel = (25-20) - (20-17) = 5 - 3 = 2
+    assert accel.iloc[4]["value"] == 2.0
+
+
+def test_acceleration_per_country_isolation():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 10.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 12.0},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 16.0},
+        {"country": "y", "year": 2020, "indicator_id": "A", "value": 100.0},
+        {"country": "y", "year": 2021, "indicator_id": "A", "value": 110.0},
+        {"country": "y", "year": 2022, "indicator_id": "A", "value": 130.0},
+    ])
+    out = fe.acceleration(long, indicator_ids=["A"])
+    accel = out[out["indicator_id"] == "A__accel"]
+    accel_2022 = accel[accel["year"] == 2022].set_index("country")["value"]
+    # x: (16-12) - (12-10) = 4 - 2 = 2
+    assert accel_2022.loc["x"] == 2.0
+    # y: (130-110) - (110-100) = 20 - 10 = 10
+    assert accel_2022.loc["y"] == 10.0
+
+
+def test_acceleration_handles_empty():
+    out = fe.acceleration(pd.DataFrame(columns=["country", "year", "indicator_id", "value"]))
+    assert out.empty
+
+
+def test_acceleration_passes_through_non_targeted():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 5.0},
+    ])
+    out = fe.acceleration(long, indicator_ids=["A"])
+    b_rows = out[out["indicator_id"] == "B"]
+    assert len(b_rows) == 1
+    assert b_rows.iloc[0]["value"] == 5.0
+
+
+def test_acceleration_default_applies_to_all_indicators():
+    long = pd.DataFrame([
+        {"country": "x", "year": 2020, "indicator_id": "A", "value": 1.0},
+        {"country": "x", "year": 2021, "indicator_id": "A", "value": 2.0},
+        {"country": "x", "year": 2022, "indicator_id": "A", "value": 3.0},
+        {"country": "x", "year": 2020, "indicator_id": "B", "value": 5.0},
+        {"country": "x", "year": 2021, "indicator_id": "B", "value": 8.0},
+        {"country": "x", "year": 2022, "indicator_id": "B", "value": 14.0},
+    ])
+    out = fe.acceleration(long)
+    out_ids = set(out["indicator_id"])
+    assert "A__accel" in out_ids
+    assert "B__accel" in out_ids
+
+
+def test_suffix_multi_year_diff_helper():
+    assert fe._suffix_multi_year_diff(3) == "__diff3y"
+    assert fe._suffix_multi_year_diff(5) == "__diff5y"
+    assert fe._suffix_multi_year_diff(10) == "__diff10y"

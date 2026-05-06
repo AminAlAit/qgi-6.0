@@ -235,3 +235,80 @@ def test_run_training_raises_on_missing_recipe_filter(synthetic_setup):
             output_dir=synthetic_setup["output_dir"],
             recipes_filter=["non_existent_recipe"],
         )
+
+
+# ---------- Phase D D5 build_feature_panel test ----------
+# Per qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md.
+
+
+def test_build_feature_panel_d2_default_first_diff_only(synthetic_setup):
+    """D2 default: only `__diff` features in the wide panel; backward-compatible
+    with all existing callers (apply_d5_features defaults to False)."""
+    wide = t.build_feature_panel(synthetic_setup["panel_path"], train_year_max=2021)
+    feature_cols = [c for c in wide.columns if c not in ("country", "year")]
+    suffix_counts = {}
+    for col in feature_cols:
+        for suffix in ["__diff3y", "__diff5y", "__accel", "__momentum", "__zscore", "__diff"]:
+            if col.endswith(suffix):
+                suffix_counts[suffix] = suffix_counts.get(suffix, 0) + 1
+                break
+    # D2 default: ONLY `__diff` columns; no D5 trajectory features
+    assert "__diff" in suffix_counts
+    assert "__momentum" not in suffix_counts
+    assert "__zscore" not in suffix_counts
+    assert "__diff3y" not in suffix_counts
+    assert "__diff5y" not in suffix_counts
+    assert "__accel" not in suffix_counts
+
+
+def test_build_feature_panel_d5_emits_six_feature_classes(synthetic_setup):
+    """D5: 6 feature classes per original indicator (`__diff`, `__momentum`,
+    `__zscore`, `__diff3y`, `__diff5y`, `__accel`). Original raw rows dropped."""
+    wide = t.build_feature_panel(synthetic_setup["panel_path"], train_year_max=2021,
+                                  apply_d5_features=True)
+    feature_cols = [c for c in wide.columns if c not in ("country", "year")]
+    suffix_counts = {}
+    for col in feature_cols:
+        # Find the LAST trajectory suffix (so __diff doesn't shadow __diff3y)
+        matched = None
+        for suffix in ["__diff3y", "__diff5y", "__accel", "__momentum", "__zscore", "__diff"]:
+            if col.endswith(suffix):
+                matched = suffix
+                break  # most-specific match wins via ordering
+        if matched:
+            suffix_counts[matched] = suffix_counts.get(matched, 0) + 1
+    # Synthetic setup has 3 indicators, so each feature class should produce 3 columns.
+    expected_classes = {"__diff", "__momentum", "__zscore", "__diff3y", "__diff5y", "__accel"}
+    assert set(suffix_counts.keys()) == expected_classes, (
+        f"missing feature classes: {expected_classes - set(suffix_counts.keys())}"
+    )
+    # Each class produces exactly N_indicators columns
+    for cls, count in suffix_counts.items():
+        assert count == 3, f"class {cls} has {count} cols, expected 3"
+    # No raw original-indicator columns survived (e.g., 'IND-A' alone)
+    raw_originals = {"IND-A", "IND-B", "IND-C"}
+    surviving = raw_originals & set(feature_cols)
+    assert not surviving, f"D5 must drop raw originals; found: {surviving}"
+
+
+def test_build_feature_panel_d5_input_dim_grows_6x_vs_d2(synthetic_setup):
+    """D5 input dimension is approximately 6x D2 baseline (one feature class
+    per original indicator under D2; six under D5). Per pre-reg
+    'input dimension grows ~5-6x'.
+
+    Exact 6x ratio holds on this synthetic fixture (12 years of dense data,
+    no all-NaN columns). On a real production panel with very-short-history
+    indicators, some D5 feature columns may be all-NaN and dropped by
+    pivot_to_wide implicitly, producing a ratio slightly below 6. This test
+    is a regression-detection check on the synthetic fixture, NOT a
+    production-accuracy assertion.
+    """
+    wide_d2 = t.build_feature_panel(synthetic_setup["panel_path"], train_year_max=2021)
+    wide_d5 = t.build_feature_panel(synthetic_setup["panel_path"], train_year_max=2021,
+                                     apply_d5_features=True)
+    n_d2 = len([c for c in wide_d2.columns if c not in ("country", "year")])
+    n_d5 = len([c for c in wide_d5.columns if c not in ("country", "year")])
+    assert n_d5 == n_d2 * 6, (
+        f"D5 should produce 6x D2 features on this synthetic fixture "
+        f"(got D2={n_d2}, D5={n_d5}, ratio={n_d5/n_d2:.2f}x)"
+    )
