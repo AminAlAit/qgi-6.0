@@ -13,6 +13,11 @@ terraform {
       source  = "hashicorp/tls"
       version = "~> 4.0"
     }
+    # #625: required by storage module's null_resource.athena_result_reuse
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }
   }
 }
 
