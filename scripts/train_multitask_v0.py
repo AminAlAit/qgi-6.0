@@ -212,16 +212,41 @@ def load_event_labels(
 def build_feature_panel(
     panel_source: Path,
     train_year_max: int,
+    apply_d5_features: bool = False,
 ) -> pd.DataFrame:
     """Read the indicator panel and apply feature engineering.
 
     Returns wide-format DataFrame with one row per (country, year) and
     one column per (engineered) indicator.
 
-    First-differencing applied to all indicators (conservative until cascade
-    Phase 5 v0.0b CIPS audit lands per pre-registration §9 deviation 4).
-    Rolling z-score (window=3) and momentum (lookback=5) added.
-    Missingness flags appended via missingness_indicators (panel_grid universe).
+    Default (D2 baseline behavior, unchanged from prior callers):
+    First-differencing applied to all indicators.
+
+    With `apply_d5_features=True` (per qgi-docs/internal/ops/ml-track/
+    stage-2-d5-walk-methodology-prereg.md, commit 925dc42): also adds
+    momentum (lookback=5), rolling z-score (window=3), 3-year delta,
+    5-year delta, and acceleration features. Each NEW transform applies
+    to ORIGINAL indicators (not to derived `__diff` rows), so the D5
+    panel contains 6 feature classes per original indicator: `__diff`,
+    `__momentum`, `__zscore`, `__diff3y`, `__diff5y`, `__accel`.
+
+    D5 imputation policy is enforced by the underlying transforms:
+    NEW transforms (`__diff3y`, `__diff5y`, `__accel`) use strict
+    consecutive-non-null (NaN propagates); EXISTING transforms inherit
+    their existing nullability semantics (`min_periods=2` for zscore).
+
+    Note on `train_year_max`: this parameter is accepted for API
+    compatibility with all upstream callers (`run_loco_diagnosis.py`,
+    `run_stage_3_audit.py`, `run_shap_fingerprint.py`, etc.) but
+    `build_feature_panel` does NOT filter by year. The train/test split
+    is performed by the caller after merging features with labels;
+    passing `train_year_max` here is a forward-looking placeholder for
+    a future leak-prevention check at panel-build time.
+
+    Note on duplicate (country, year, indicator_id) rows: this function
+    relies on the final `pivot_to_wide` call to detect and warn on
+    duplicates. The D5 fresh-copy composition path does NOT introduce
+    duplicates (each derived class has unique `<id>__<suffix>`).
     """
     if panel_source.is_file() and panel_source.suffix == ".parquet":
         long = pd.read_parquet(panel_source)
@@ -252,14 +277,68 @@ def build_feature_panel(
         _log.warning("dropped %d rows with unmappable country names", n_unmapped)
         long = long.dropna(subset=["country"]).reset_index(drop=True)
 
-    # Feature engineering pipeline
-    long = fe.first_difference(long)
-    # Skip rolling_zscore + momentum + missingness_indicators on first cut to
-    # keep v0 simple; add back if AUC is too low. This is in-line with "ship
-    # the simplest defensible architecture first" (Kwame's pre-registration
-    # discipline argument).
-    # NOTE: revisit after Stage 1 baseline AUC is observed; if margin is
-    # narrow, layer more features.
+    if apply_d5_features:
+        # D5: each transform consumes/renames its target rows, so to produce
+        # 6 feature classes from the same originals we apply each transform
+        # to a FRESH COPY and concat all derived rows. This avoids the
+        # composition pitfall where transform N sees no matching IDs because
+        # transforms 1..N-1 already renamed them.
+        #
+        # Memory: 6× DataFrame copies of `original_long`. At QGI's current
+        # ~100k-row panel scale this is ~15-30 MB additional memory and is
+        # acceptable. If a future panel becomes substantially larger,
+        # consider in-place transforms with an immutable `original_long`
+        # reference rather than 6 copies.
+        original_long = long.copy()
+        original_ids = sorted(set(long["indicator_id"].unique()))
+        _log.info("D5: applying trajectory features to %d original indicators", len(original_ids))
+
+        derived_pieces = [
+            fe.first_difference(original_long.copy(), indicator_ids=original_ids),
+            fe.momentum(original_long.copy(), lookback_years=5, indicator_ids=original_ids),
+            fe.rolling_zscore(original_long.copy(), window_years=3, indicator_ids=original_ids),
+            fe.multi_year_difference(original_long.copy(), lookback_years=3, indicator_ids=original_ids),
+            fe.multi_year_difference(original_long.copy(), lookback_years=5, indicator_ids=original_ids),
+            fe.acceleration(original_long.copy(), indicator_ids=original_ids),
+        ]
+        # Each piece contains: the piece's derived rows + (when called with
+        # indicator_ids=original_ids covering ALL indicators) zero
+        # pass-through rows. The dedup filter below is defensive: it drops
+        # any rows whose indicator_id is still in the original list,
+        # preserving only the renamed derived rows. This handles the
+        # edge case where a future change uses a partial indicator_ids
+        # list and the transforms emit pass-through rows.
+        long = pd.concat(derived_pieces, ignore_index=True)
+        before = len(long)
+        long = long[~long["indicator_id"].isin(original_ids)].reset_index(drop=True)
+        _log.info("D5: dropped %d untransformed-original rows; kept %d derived rows",
+                  before - len(long), len(long))
+
+        # PRE-REG COMPLIANCE GUARD (D5 imputation policy point 5):
+        # The pre-reg requires that NaN values in the head's input vector
+        # be forwarded as zero with a paired missingness flag
+        # (`<feature>__missing`). That substitution-and-flagging step
+        # operates on the HEAD INPUT VECTOR (post-pivot, pre-train), NOT
+        # on the long panel produced here. It is the responsibility of
+        # the D5 training pipeline (forthcoming Step 4 PR) to enforce
+        # this policy. This function emits the wide panel with NaN values
+        # intact; the caller MUST apply the missingness-flag substitution
+        # before feeding the head.
+        #
+        # If a future caller invokes build_feature_panel with
+        # apply_d5_features=True and skips the missingness-flag step,
+        # they will silently violate the D5 pre-reg. The Step 4 training
+        # PR will add a runtime assertion that flags are present in the
+        # head input.
+    else:
+        # D2 baseline: first_difference all indicators (existing behavior).
+        long = fe.first_difference(long)
+        # Skip rolling_zscore + momentum + missingness_indicators on first cut to
+        # keep v0 simple; add back if AUC is too low. This is in-line with "ship
+        # the simplest defensible architecture first" (Kwame's pre-registration
+        # discipline argument).
+        # NOTE: revisit after Stage 1 baseline AUC is observed; if margin is
+        # narrow, layer more features.
 
     wide = fe.pivot_to_wide(long)
     return wide
