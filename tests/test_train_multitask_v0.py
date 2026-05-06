@@ -312,3 +312,40 @@ def test_build_feature_panel_d5_input_dim_grows_6x_vs_d2(synthetic_setup):
         f"D5 should produce 6x D2 features on this synthetic fixture "
         f"(got D2={n_d2}, D5={n_d5}, ratio={n_d5/n_d2:.2f}x)"
     )
+
+
+def test_run_training_d5_end_to_end_completes(synthetic_setup):
+    """D5 training pipeline completes without crashing on synthetic data.
+
+    Regression check that the apply_d5_features=True path through
+    run_training doesn't break: builds D5 panel, trains backbones on
+    expanded feature space, extracts leaves, fits heads, emits predictions.
+    Not a quality test (synthetic data has no real signal) — purely a
+    plumbing regression check that the pre-registered D5 architecture
+    flag plumbs correctly through every stage.
+    """
+    summary = t.run_training(
+        ranking_path=synthetic_setup["ranking_path"],
+        events_dir=synthetic_setup["events_dir"],
+        panel_source=synthetic_setup["panel_path"],
+        output_dir=synthetic_setup["output_dir"] / "d5_run",
+        apply_d5_features=True,
+    )
+    # Pipeline produced predictions
+    pred_path = synthetic_setup["output_dir"] / "d5_run" / "predictions.json"
+    assert pred_path.exists()
+    pred_payload = json.loads(pred_path.read_text(encoding="utf-8"))
+    preds = pred_payload.get("predictions", [])
+    assert len(preds) > 0
+    # Each prediction has the canonical schema
+    for p in preds[:3]:
+        assert "country" in p
+        assert "year" in p
+        assert "recipe_id" in p
+        assert "predicted_probability" in p
+    # All predicted probabilities bounded [0, 1] (pipeline correctness invariant)
+    assert all(0.0 <= p["predicted_probability"] <= 1.0 for p in preds), \
+        "predicted_probability must be in [0, 1] (calibration / sigmoid output)"
+    # Summary dict has expected key from run_training
+    assert "n_recipes_trained" in summary, \
+        f"summary should report n_recipes_trained; got keys: {list(summary.keys())}"
