@@ -67,6 +67,16 @@ interface RecipeAggregated {
   n_distinct_country_pairs: number;
   last_recomputed_at: string;
   contains_predicted: boolean;
+  /** Top-PPS canonical recipe metadata (#624). null when no canonical row exists. */
+  canonical_country_b_id: string | null;
+  canonical_country_b_name: string | null;
+  canonical_start_year_b: number | null;
+}
+
+interface CanonicalRecipeRow {
+  event_category: string;
+  country_b_id: string;
+  start_year_b: number;
 }
 
 interface RecipesAggregatedFile {
@@ -187,13 +197,93 @@ function parseCoverageBias(s: string): CoverageBiasDiagnostic {
   };
 }
 
+/**
+ * #624: Build a country_id → country_name lookup so the bake script can
+ * resolve country_b_id (smallint) to a human-readable name without firing
+ * a JOIN against qgi_data.countries at frontend page-load time.
+ *
+ * Reads from data/countries.json (already baked in repo).
+ */
+function buildCountryMap(): Map<string, string> {
+  const COUNTRIES_PATH = join(process.cwd(), "data", "countries.json");
+  const file = JSON.parse(readFileSync(COUNTRIES_PATH, "utf-8")) as Array<{
+    id: string | number;
+    name: string;
+  }>;
+  const m = new Map<string, string>();
+  for (const c of file) {
+    m.set(String(c.id), c.name);
+  }
+  return m;
+}
+
+/**
+ * #624: Fetch the top-PPS canonical recipe per event_category from
+ * qgi_data.recipes. Used to bake `canonical_country_b_id`,
+ * `canonical_country_b_name`, `canonical_start_year_b` into
+ * recipes-aggregated.json so the frontend's signals trajectory panel does
+ * NOT have to query qgi_data.recipes WHERE event_category='X' at every
+ * page load (that query lacks partition pushdown — recipes is partitioned
+ * by country_a_id — and scans all 154 partitions per execution).
+ */
+async function fetchCanonicalRecipes(
+  client: AthenaClient
+): Promise<Map<string, CanonicalRecipeRow>> {
+  const sql = `
+    WITH ranked AS (
+      SELECT
+        event_category,
+        cast(country_b_id as varchar) AS country_b_id,
+        cast(start_year_b as varchar) AS start_year_b,
+        ROW_NUMBER() OVER (
+          PARTITION BY event_category
+          ORDER BY pattern_power_score DESC
+        ) AS rn
+      FROM ${DB}.recipes
+    )
+    SELECT event_category, country_b_id, start_year_b
+    FROM ranked
+    WHERE rn = 1
+  `;
+  console.log("[bake-recipes-aggregated] Fetching canonical recipes (#624)...");
+  const rows = await runQuery(client, sql);
+  console.log(`[bake-recipes-aggregated] Got ${rows.length} canonical recipe rows`);
+  const m = new Map<string, CanonicalRecipeRow>();
+  for (const [event_category, country_b_id, start_year_b] of rows) {
+    m.set(event_category, {
+      event_category,
+      country_b_id,
+      start_year_b: Number(start_year_b),
+    });
+  }
+  return m;
+}
+
 async function main() {
   console.log("[bake-recipes-aggregated] Connecting to Athena...");
   const client = new AthenaClient({ region: REGION });
   const indicatorMap = buildIndicatorMap();
+  const countryMap = buildCountryMap();
   console.log(
     `[bake-recipes-aggregated] Loaded ${indicatorMap.size} indicator name mappings from indexes.json`
   );
+  console.log(
+    `[bake-recipes-aggregated] Loaded ${countryMap.size} country name mappings from countries.json`
+  );
+
+  // #624: Fetch canonical recipes BEFORE the main aggregation query so we
+  // can attach them to each output row. Failure here is non-fatal: we
+  // proceed with null canonical fields rather than blocking the bake.
+  let canonicalMap: Map<string, CanonicalRecipeRow>;
+  try {
+    canonicalMap = await fetchCanonicalRecipes(client);
+  } catch (err) {
+    console.warn(
+      "[bake-recipes-aggregated] Canonical recipe fetch failed; proceeding with null fields:",
+      err
+    );
+    canonicalMap = new Map();
+  }
 
   // Sort by total_instances DESC so high-salience recipes appear first.
   // Complex types (array<struct>, struct) are serialised via
@@ -238,6 +328,16 @@ async function main() {
     ] = r;
     pipelineVersion = pipeline_version;
     schemaVersion = Number(schema_version);
+    // #624: attach the canonical recipe fields (top-PPS recipe row for
+    // this event_category) so the frontend trajectory panel can read
+    // them from the baked JSON instead of running an unpartitioned
+    // scan of qgi_data.recipes per page load.
+    const canonical = canonicalMap.get(event_category);
+    const canonical_country_b_id = canonical?.country_b_id ?? null;
+    const canonical_country_b_name = canonical_country_b_id
+      ? (countryMap.get(canonical_country_b_id) ?? null)
+      : null;
+    const canonical_start_year_b = canonical?.start_year_b ?? null;
     return {
       event_category,
       canonical_length: Number(canonical_length),
@@ -248,6 +348,9 @@ async function main() {
       n_distinct_country_pairs: Number(n_distinct_country_pairs),
       last_recomputed_at,
       contains_predicted: contains_predicted === "true",
+      canonical_country_b_id,
+      canonical_country_b_name,
+      canonical_start_year_b,
     };
   });
 

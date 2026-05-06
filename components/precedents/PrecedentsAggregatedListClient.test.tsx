@@ -42,6 +42,10 @@ function makeRecipe(
       regional_concentration: [],
     },
     last_recomputed_at: "2026-04-27T20:00:00Z",
+    // #624 canonical fields — null for test fixtures that don't exercise them
+    canonical_country_b_id: null,
+    canonical_country_b_name: null,
+    canonical_start_year_b: null,
   };
 }
 
