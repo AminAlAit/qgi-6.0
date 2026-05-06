@@ -20,7 +20,7 @@ CREATE EXTERNAL TABLE `qgi_data`.`scdis` (
 )
 PARTITIONED BY (`country_a_id` smallint)
 STORED AS PARQUET
-LOCATION 's3://qgi-data-lake-111111111111/pipeline-B-scdi-finder/scdis/'
+LOCATION 's3://qgi-data-lake-111111111111/pipeline-B-scdi-finder/scdis-compacted/'
 TBLPROPERTIES ('parquet.compress'='SNAPPY');
 
 -- Refresh partitions after a Pipeline B run:
