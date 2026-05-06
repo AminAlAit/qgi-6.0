@@ -188,13 +188,17 @@ export default async function SignalCountryRecipePage({ params }: Props) {
   // it drives which trajectories are loaded. Otherwise the top-4 trajectory
   // slots get wasted on Population / Life Expectancy curves that look
   // monotonic and contribute no risk signal.
+  // #624: pass the full RecipeAggregated so loadTrajectoryPanelData can
+  // read pre-baked canonical_country_b_id/name/start_year_b instead of
+  // running an unpartitioned Athena scan against qgi_data.recipes.
+  // Demographic-3 suppression still applied to the fingerprint here so
+  // the top-4 trajectory slots don't get wasted on Population / Life
+  // Expectancy curves (M5 phase 1, 2026-05-01).
   const trajectoryData = recipe
-    ? await loadTrajectoryPanelData(
-        resolved.name,
-        slug,
-        filterDemographic3(recipe.indicator_fingerprint),
-        recipe.canonical_length
-      ).catch(() => null)
+    ? await loadTrajectoryPanelData(resolved.name, {
+        ...recipe,
+        indicator_fingerprint: filterDemographic3(recipe.indicator_fingerprint),
+      }).catch(() => null)
     : null;
 
   const score = scoresFile?.scores[country]?.[slug] ?? null;

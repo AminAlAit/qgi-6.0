@@ -28,7 +28,14 @@ import { runQuery } from "@/lib/athena";
 import indexData from "@/data/indexes.json";
 import countriesData from "@/data/countries.json";
 import type { IndexEntry } from "@/lib/types";
-import type { IndicatorFingerprintEntry } from "@/lib/recipes-aggregated";
+import type {
+  IndicatorFingerprintEntry,
+  RecipeAggregated,
+} from "@/lib/recipes-aggregated";
+import {
+  getCanonicalRecipeFromBaked,
+  type CanonicalRecipeRow,
+} from "@/lib/signals-trajectory-canonical";
 
 // ---------------------------------------------------------------------------
 // Country id → name lookup from baked countries.json
@@ -117,12 +124,17 @@ export interface TrajectoryPanelData {
 /**
  * Load all data needed for the trajectory panel.
  * Returns null on any fatal error — component renders graceful fallback.
+ *
+ * #624: Signature changed from `(country, slug, fingerprint, canonicalLength)`
+ * to `(country, recipe)`. The full RecipeAggregated record is required so
+ * that the canonical recipe metadata (country_b, start_year_b) can be
+ * read from the pre-baked JSON instead of via a per-page-load Athena
+ * query. Callers already have the RecipeAggregated in scope when they
+ * invoke this function.
  */
 export async function loadTrajectoryPanelData(
   countryName: string,
-  eventCategory: string,
-  fingerprint: IndicatorFingerprintEntry[],
-  canonicalLength: number
+  recipe: RecipeAggregated
 ): Promise<TrajectoryPanelData | null> {
   try {
     // Step 1: Pick top-N=4 fingerprint indicators that we can actually query
@@ -133,7 +145,7 @@ export async function loadTrajectoryPanelData(
     // (Athena table is partitioned by indicator_id), so unmapped numeric_ids
     // genuinely cannot fetch trajectory data — but we should backfill from
     // lower-ranked indicators that DO resolve so the 2x2 panel stays full.
-    const resolved = [...fingerprint]
+    const resolved = [...recipe.indicator_fingerprint]
       .sort((a, b) => b.tfidf_score - a.tfidf_score)
       .map((fp) => ({
         numericId: fp.indicator_id,
@@ -149,19 +161,16 @@ export async function loadTrajectoryPanelData(
 
     if (resolved.length === 0) return null;
 
-    // Step 2: Find the top-PPS recipe instance for this event_category
-    // (from qgi_data.recipes, not the aggregated table).
-    const canonicalRecipePromise = fetchCanonicalRecipe(eventCategory);
+    // Step 2 (#624): Read the canonical recipe metadata from the pre-baked
+    // RecipeAggregated record. This replaces the previous unpartitioned
+    // Athena scan of qgi_data.recipes WHERE event_category='X' (which
+    // touched all 154 country_a_id partitions per call). Pass the module-
+    // level COUNTRY_BY_ID so the country_b_name fallback works.
+    const canonicalRecipe = getCanonicalRecipeFromBaked(recipe, COUNTRY_BY_ID);
 
     // Step 3: Fetch subject country trajectory for all resolved indicators.
     const indicatorIdList = resolved.map((r) => `'${r.indicatorId}'`).join(",");
-    const subjectTrajectoryPromise = fetchCountryTrajectory(countryName, indicatorIdList);
-
-    // Wait for both to resolve in parallel.
-    const [canonicalRecipe, subjectRows] = await Promise.all([
-      canonicalRecipePromise,
-      subjectTrajectoryPromise,
-    ]);
+    const subjectRows = await fetchCountryTrajectory(countryName, indicatorIdList);
 
     // Step 4: If we have a canonical recipe, fetch its country_b trajectory.
     let referenceRows: RawIndicatorRow[] = [];
@@ -173,7 +182,7 @@ export async function loadTrajectoryPanelData(
     }
 
     // Step 5: Build per-indicator aligned series.
-    const patternLength = canonicalRecipe?.length ?? canonicalLength;
+    const patternLength = canonicalRecipe?.length ?? recipe.canonical_length;
     const refEndYear = canonicalRecipe
       ? canonicalRecipe.start_year_b + canonicalRecipe.length - 1
       : null;
@@ -238,44 +247,10 @@ interface RawIndicatorRow {
   is_predicted: boolean;
 }
 
-interface CanonicalRecipeRow {
-  country_b_id: string;
-  country_b_name: string;
-  start_year_b: number;
-  length: number;
-}
-
-async function fetchCanonicalRecipe(
-  eventCategory: string
-): Promise<CanonicalRecipeRow | null> {
-  try {
-    const safe = eventCategory.replace(/'/g, "''");
-    // Query matches the founder's canonical spec:
-    // SELECT ... country_b_id, start_year_b, length FROM qgi_data.recipes
-    // ORDER BY pattern_power_score DESC LIMIT 1
-    const rows = await runQuery(
-      `SELECT country_b_id, start_year_b, length
-       FROM qgi_data.recipes
-       WHERE event_category = '${safe}'
-       ORDER BY pattern_power_score DESC
-       LIMIT 1`
-    );
-    if (rows.length === 0) return null;
-    const row = rows[0];
-    const countryBId = row.country_b_id ?? "";
-    // Resolve name from baked countries.json — avoids a second join query.
-    const countryBName = COUNTRY_BY_ID.get(countryBId) ?? `Country ${countryBId}`;
-    return {
-      country_b_id: countryBId,
-      country_b_name: countryBName,
-      start_year_b: parseInt(row.start_year_b, 10),
-      length: parseInt(row.length, 10),
-    };
-  } catch (err) {
-    console.warn("[signals-trajectory] fetchCanonicalRecipe failed:", err);
-    return null;
-  }
-}
+// #624 strict-review F1: getCanonicalRecipeFromBaked + CanonicalRecipeRow
+// were extracted to `lib/signals-trajectory-canonical.ts` so vitest tests
+// import the real production function instead of an inlined copy that
+// could drift. The pure logic has zero AWS/server dependency.
 
 async function fetchCountryTrajectory(
   countryName: string,

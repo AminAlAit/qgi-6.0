@@ -61,6 +61,22 @@ export interface RecipeAggregated {
   n_distinct_country_pairs: number;
   last_recomputed_at: string;
   contains_predicted: boolean;
+  /**
+   * Top-PPS canonical recipe metadata (#624). Pre-baked at pipeline time
+   * to avoid a per-page-load Athena query against the unpartitioned
+   * `event_category` predicate of `qgi_data.recipes` (which scans all 154
+   * country_a_id partitions).
+   *
+   * Optional (`?:`) because older `recipes-aggregated.json` files baked
+   * before #624 don't have these keys at all — `JSON.parse` produces
+   * `undefined`, not `null`, for absent keys. Required-but-nullable would
+   * mislead consumers into thinking `null` is the only "missing" sentinel.
+   * Strict consumers should use `??` or truthy checks (both handle
+   * undefined and null).
+   */
+  canonical_country_b_id?: string | null;
+  canonical_country_b_name?: string | null;
+  canonical_start_year_b?: number | null;
 }
 
 export interface RecipesAggregatedFile {
