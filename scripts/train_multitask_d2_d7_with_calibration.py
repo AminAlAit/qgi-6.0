@@ -104,6 +104,14 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--calibration-method", choices=["isotonic", "beta"], default="beta",
                    help="Calibration method. Beta is the production default (smooth, "
                         "no step ties). Isotonic supported for diagnostic comparison.")
+    p.add_argument("--apply-d5-features", action="store_true",
+                   help="Enable Phase D D5 trajectory features in build_feature_panel. "
+                        "Requires the D5 pre-reg "
+                        "(qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md, "
+                        "commit 925dc42) and the tier pre-reg "
+                        "(stage-2-tier-threshold-prereg.md, commit 2c87f06) to be in force. "
+                        "Adds momentum, rolling z-score, multi-year deltas, and acceleration "
+                        "features (~6x input dim).")
     p.add_argument("--quiet", action="store_true")
     return p.parse_args()
 
@@ -175,8 +183,15 @@ def main() -> int:  # noqa: PLR0915, C901
         index=["country", "year"], columns="recipe_id", values="label", aggfunc="first",
     ).reset_index()
     label_wide.columns.name = None
+    if args.apply_d5_features:
+        _log("[d2d7] D5 mode: applying trajectory features (momentum, zscore, "
+             "diff3y, diff5y, accel)...", quiet=args.quiet)
     _log("[d2d7] building feature panel...", quiet=args.quiet)
-    feature_panel = build_feature_panel(args.panel, train_year_max=TRAIN_YEAR_MAX)
+    feature_panel = build_feature_panel(args.panel, train_year_max=TRAIN_YEAR_MAX,
+                                         apply_d5_features=args.apply_d5_features)
+    n_feat_cols = len([c for c in feature_panel.columns if c not in ("country", "year")])
+    _log(f"[d2d7] feature panel: {len(feature_panel)} rows × {n_feat_cols} feature columns "
+         f"({'D5' if args.apply_d5_features else 'D2'} mode)", quiet=args.quiet)
     merged = feature_panel.merge(label_wide, on=["country", "year"], how="inner")
 
     train_mask = merged["year"] <= TRAIN_YEAR_MAX
@@ -202,6 +217,40 @@ def main() -> int:  # noqa: PLR0915, C901
     encoder.fit(leaf_train)
     leaf_train_oh = encoder.transform(leaf_train).astype(np.float32)
     leaf_test_oh = encoder.transform(leaf_test).astype(np.float32)
+
+    # PRE-REG COMPLIANCE GUARD (D5 imputation policy point 5):
+    # The pre-reg requires that the head input vector contain no NaN values
+    # — every feature must be either a real value or zero-with-paired-flag.
+    # Under the current architecture, the head consumes ONE-HOT-ENCODED LEAF
+    # INDICES (not raw features), so by construction the head input has no
+    # NaN values: leaf indices are integers, and one-hot encoding produces
+    # only {0, 1} float entries. The policy is therefore trivially satisfied
+    # by the architecture; this assertion encodes that invariant so any
+    # future architectural change that exposes raw features to the head
+    # would fail the assertion and force the implementer to add explicit
+    # zero+flag substitution per the pre-reg.
+    if args.apply_d5_features:
+        n_train_nan = int(np.isnan(leaf_train_oh).sum())
+        n_test_nan = int(np.isnan(leaf_test_oh).sum())
+        if n_train_nan != 0 or n_test_nan != 0:
+            raise RuntimeError(
+                f"D5 pre-reg compliance: head input vector contains NaN "
+                f"(train={n_train_nan}, test={n_test_nan}). The D5 imputation "
+                f"policy point 5 requires zero-substitution + paired __missing "
+                f"flag for any NaN reaching the head. The current architecture "
+                f"feeds one-hot leaf encodings (which should be NaN-free by "
+                f"construction); a NaN here indicates an architectural change "
+                f"that violates the pre-reg. See "
+                f"qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md "
+                f"point 5 for the policy."
+            )
+        # Also report NaN fraction at the BACKBONE input — informational,
+        # not a violation (LightGBM handles NaN natively per the pre-reg).
+        backbone_train_nan_frac = float(np.isnan(X_train).sum()) / max(X_train.size, 1)
+        backbone_test_nan_frac = float(np.isnan(X_test).sum()) / max(X_test.size, 1)
+        _log(f"[d2d7] D5 backbone NaN fraction: train={backbone_train_nan_frac:.3f}, "
+             f"test={backbone_test_nan_frac:.3f} (handled natively by LightGBM per "
+             f"D5 pre-reg policy point 4)", quiet=args.quiet)
 
     # 5. Stratified train/cal split (anchor on max-positives recipe)
     n_pos_per_recipe = Y_train.sum(axis=0)

@@ -314,22 +314,22 @@ def build_feature_panel(
         _log.info("D5: dropped %d untransformed-original rows; kept %d derived rows",
                   before - len(long), len(long))
 
-        # PRE-REG COMPLIANCE GUARD (D5 imputation policy point 5):
+        # PRE-REG COMPLIANCE NOTE (D5 imputation policy point 5):
         # The pre-reg requires that NaN values in the head's input vector
         # be forwarded as zero with a paired missingness flag
-        # (`<feature>__missing`). That substitution-and-flagging step
-        # operates on the HEAD INPUT VECTOR (post-pivot, pre-train), NOT
-        # on the long panel produced here. It is the responsibility of
-        # the D5 training pipeline (forthcoming Step 4 PR) to enforce
-        # this policy. This function emits the wide panel with NaN values
-        # intact; the caller MUST apply the missingness-flag substitution
-        # before feeding the head.
+        # (`<feature>__missing`). That enforcement happens at the head's
+        # input vector (post-pivot, post-leaf-extraction), NOT in this
+        # function — see scripts/train_multitask_d2_d7_with_calibration.py
+        # for the runtime assertion that fires if NaN reaches the head.
+        # Under the current architecture (head consumes one-hot leaf
+        # encodings, not raw features) the policy is trivially satisfied
+        # by construction; the assertion encodes the invariant so any
+        # future architectural change exposing raw features to the head
+        # would fail loudly.
         #
-        # If a future caller invokes build_feature_panel with
-        # apply_d5_features=True and skips the missingness-flag step,
-        # they will silently violate the D5 pre-reg. The Step 4 training
-        # PR will add a runtime assertion that flags are present in the
-        # head input.
+        # This function emits the wide panel with NaN values intact;
+        # LightGBM (the backbone) handles NaN natively per pre-reg
+        # imputation policy point 4.
     else:
         # D2 baseline: first_difference all indicators (existing behavior).
         long = fe.first_difference(long)
@@ -561,6 +561,7 @@ def run_training(
     test_year_max: int = DEFAULT_TEST_YEAR_MAX,
     hyperparams: dict[str, Any] | None = None,
     seed: int = 0,
+    apply_d5_features: bool = False,
 ) -> dict[str, Any]:
     """End-to-end Stage 1 v0 training. Returns summary dict.
 
@@ -592,7 +593,11 @@ def run_training(
     labels = load_event_labels(events_dir, recipe_ids, label_window, verified_only=True)
 
     # 3. Features
-    features = build_feature_panel(panel_source, train_year_max)
+    features = build_feature_panel(panel_source, train_year_max,
+                                    apply_d5_features=apply_d5_features)
+    if apply_d5_features:
+        n_feat = len([c for c in features.columns if c not in ("country", "year")])
+        _log.info("D5 mode: feature panel has %d feature columns", n_feat)
 
     # 4. Merge: labels has (country, year, recipe_id, label); features has wide
     # (country, year, indicator_cols). Pivot labels to (country, year) x recipe.
@@ -714,6 +719,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--test-year-min", type=int, default=DEFAULT_TEST_YEAR_MIN)
     parser.add_argument("--test-year-max", type=int, default=DEFAULT_TEST_YEAR_MAX)
     parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--apply-d5-features", action="store_true",
+                        help="Enable Phase D D5 trajectory features (~6x input dim). "
+                             "Requires the D5 pre-reg "
+                             "(qgi-docs/internal/ops/ml-track/stage-2-d5-walk-methodology-prereg.md, "
+                             "commit 925dc42) and tier pre-reg (commit 2c87f06) to be in force. "
+                             "Produces D5 backbones suitable for downstream "
+                             "train_multitask_d2_d7_with_calibration.py --apply-d5-features.")
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -729,6 +741,7 @@ def main(argv: list[str] | None = None) -> int:
         test_year_min=args.test_year_min,
         test_year_max=args.test_year_max,
         seed=args.seed,
+        apply_d5_features=args.apply_d5_features,
     )
     print(json.dumps(summary, indent=2))
     return 0
