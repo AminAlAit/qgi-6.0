@@ -74,6 +74,22 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
     }
   }
 
+  # #630 (Sonnet audit 2026-05-07): S3 Inventory daily reports.
+  # The aws_s3_bucket_inventory.data_lake resource (defined later in this
+  # file) writes Parquet snapshots of bucket composition into
+  # s3-inventory/. 30-day expiry keeps the rolling history bounded;
+  # older snapshots stop being useful for cost-trend analysis past ~30d.
+  rule {
+    id     = "expire-s3-inventory"
+    status = "Enabled"
+    filter {
+      prefix = "s3-inventory/"
+    }
+    expiration {
+      days = 30
+    }
+  }
+
   # #627 (Sonnet audit 2026-05-07): S3 server access logs MOVED to a
   # dedicated bucket (aws_s3_bucket.access_logs). New logs no longer
   # land here; see aws_s3_bucket.access_logs / lifecycle / logging below.
@@ -318,6 +334,31 @@ resource "aws_s3_bucket_policy" "data_lake_cross_account" {
       # now delivered to the dedicated `aws_s3_bucket.access_logs`
       # bucket. The ACL-free log-delivery grant lives in
       # `aws_s3_bucket_policy.access_logs` instead.
+      {
+        # #630 (Sonnet review 2026-05-07): S3 Inventory delivery requires
+        # an explicit bucket-policy grant when block_public_acls=true
+        # (the canned-ACL path used by default Inventory delivery is
+        # silently rejected by the public-access block, same mechanism
+        # that affected #597 server access logging). Without this
+        # statement, aws_s3_bucket_inventory.data_lake applies cleanly
+        # but the inventory NEVER delivers — silent failure, no console
+        # error. The s3:x-amz-acl condition mirrors the AWS-recommended
+        # tightening: ensures the delivery call sets the bucket-owner-
+        # full-control ACL header, preventing any other s3.amazonaws.com
+        # action from using this statement to write arbitrary objects.
+        Sid       = "AllowS3InventoryDelivery"
+        Effect    = "Allow"
+        Principal = { Service = "s3.amazonaws.com" }
+        Action    = "s3:PutObject"
+        Resource  = "${aws_s3_bucket.data_lake.arn}/s3-inventory/*"
+        Condition = {
+          StringEquals = {
+            "aws:SourceAccount" = var.aws_account_id
+            "aws:SourceArn"     = aws_s3_bucket.data_lake.arn
+            "s3:x-amz-acl"      = "bucket-owner-full-control"
+          }
+        }
+      }
     ]
   })
 }
@@ -1678,3 +1719,54 @@ resource "aws_budgets_budget" "s3_daily" {
 # confirmation outside Terraform — left out of this module to avoid
 # imperatively triggering confirmation flows. Add per-environment in the
 # environments/*/main.tf if desired.
+
+
+# ---------------------------------------------------------------------------
+# #630 (Sonnet audit 2026-05-07): S3 Inventory
+# ---------------------------------------------------------------------------
+# Daily Parquet snapshot of the data lake bucket (key, size, storage class,
+# last-modified, etag). Catches new object-count hotspots BEFORE they become
+# cost spikes — which was exactly how the May 5 audit found the 1.63M
+# objects under pipeline-B-scdi-finder/tmp/.
+#
+# Cost: ~$0.0025 per 1M objects/day. At 1.78M objects = ~$0.005/day = ~$0.15/month.
+# Plus minor Parquet storage (~$0.01/month for 30 days at small report size).
+#
+# The output will be queryable via Athena once a Glue table is defined
+# for the inventory output (NOT in this PR — schema depends on actual
+# delivered Parquet structure; add in a follow-up after the first
+# inventory report lands). Until then, the example query below will
+# fail with "Table not found"; the inventory WILL deliver, just won't
+# be queryable via Athena yet. Once the Glue table exists:
+#
+#   SELECT regexp_extract(key, '^([^/]+/)') AS top_prefix, COUNT(*) AS n
+#   FROM qgi_data.s3_inventory_data_lake
+#   WHERE dt = cast(current_date as varchar)
+#   GROUP BY 1 ORDER BY n DESC LIMIT 20;
+#
+# We send the inventory output INTO the data lake bucket itself under
+# s3-inventory/, then expire it via a new lifecycle rule (30 days). This
+# avoids a separate bucket; the inventory keys are flat Parquet files
+# whose presence does not pollute primary-data prefixes.
+resource "aws_s3_bucket_inventory" "data_lake" {
+  bucket = aws_s3_bucket.data_lake.id
+  name   = "daily-inventory"
+
+  included_object_versions = "Current"
+
+  schedule {
+    frequency = "Daily"
+  }
+
+  destination {
+    bucket {
+      format     = "Parquet"
+      bucket_arn = aws_s3_bucket.data_lake.arn
+      prefix     = "s3-inventory/"
+      account_id = var.aws_account_id
+    }
+  }
+
+  optional_fields = ["Size", "LastModifiedDate", "StorageClass", "ETag"]
+}
+
