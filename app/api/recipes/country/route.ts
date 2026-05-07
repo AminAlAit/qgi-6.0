@@ -1,6 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
+import countriesData from "@/data/countries.json";
+
+interface CountryEntry {
+  id: string;
+  name: string;
+  alpha_2: string;
+}
+
+// #629 (Sonnet audit 2026-05-07): pre-built country-name → ID map from the
+// baked countries.json. Replaces the per-request Athena scan of
+// qgi_data.countries (which has no partition key, so each call was a
+// full-table scan). Lookup is case-insensitive to match the prior SQL's
+// `LOWER(name_1) = LOWER(...)` semantics.
+const COUNTRY_BY_LOWER_NAME: Map<string, string> = new Map(
+  (countriesData as CountryEntry[]).map((c) => [c.name.toLowerCase(), c.id])
+);
 
 export const GET = withAuth(async (req: NextRequest) => {
   const { searchParams } = req.nextUrl;
@@ -20,20 +36,26 @@ export const GET = withAuth(async (req: NextRequest) => {
     return NextResponse.json({ error: "Invalid country parameter" }, { status: 400 });
   }
   const currentYear = new Date().getFullYear();
-  const safe = countryName.replace(/'/g, "''");
 
   try {
-    // First resolve the country name to an ID
-    const countryRows = await runQuery(
-      `SELECT CAST(id AS INTEGER) AS cid FROM qgi_data.countries
-       WHERE LOWER(name_1) = LOWER('${safe}') LIMIT 1`
-    );
-
-    if (countryRows.length === 0) {
+    // #629: resolve country name → ID from baked countries.json instead
+    // of querying qgi_data.countries (full-table scan, no partition key).
+    // This eliminates one Athena query per /api/recipes/country call —
+    // ~50% reduction in this route's S3 cost. The countries.json file is
+    // already committed to the repo and refreshed by the same pipeline
+    // that generates indexes.json.
+    const lookupKey = countryName.toLowerCase();
+    const countryIdString = COUNTRY_BY_LOWER_NAME.get(lookupKey);
+    if (countryIdString == null) {
       return NextResponse.json([]);
     }
-
-    const countryId = countryRows[0].cid;
+    const countryId = parseInt(countryIdString, 10);
+    if (isNaN(countryId)) {
+      // Defensive: if countries.json ever ships a non-numeric id, the
+      // SQL interpolation below would silently break. Fall through to
+      // empty result rather than embedding a malformed predicate.
+      return NextResponse.json([]);
+    }
 
     // #129: recipes is pre-deduplicated at source — no MAX(...) GROUP BY needed.
     // #145: country_a_id is now a partition key, so this WHERE clause prunes
