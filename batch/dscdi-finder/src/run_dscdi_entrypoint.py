@@ -220,17 +220,24 @@ def _matrix_to_long(
     # `future_stack=True` adopts pandas 2.1+ semantics (the legacy
     # `dropna=True` arg is deprecated and the new path matches our
     # intent: keep NaN, then drop explicitly so the behavior is visible).
+    #
+    # rename_axis BEFORE stack: production panels are pivoted from a
+    # long frame with `pivot_table(columns="country", ...)`, which sets
+    # BOTH the index name AND the columns axis name to "country" on the
+    # subsequent panel.corr() result. Stacking + reset_index then tries
+    # to insert two columns both called "country" and raises
+    # `ValueError: cannot insert country, already exists`. Synthetic
+    # test panels avoided this because they were built with
+    # `pd.DataFrame(data, index=...)` without a named columns axis —
+    # see test gap closed in tests/unit/dscdi-finder/conftest.py.
     long_form = (
-        corr_matrix.stack(future_stack=True)
-        .dropna()
-        .reset_index()
-        .rename(
-            columns={
-                "level_0": "country_a_label",
-                "level_1": "country_b_label",
-                0: "correlation",
-            }
+        corr_matrix.rename_axis(
+            index="country_a_label", columns="country_b_label"
         )
+        .stack(future_stack=True)
+        .dropna()
+        .rename("correlation")
+        .reset_index()
     )
 
     # Drop self-correlation (always 1.0 for non-NaN diagonal cells)

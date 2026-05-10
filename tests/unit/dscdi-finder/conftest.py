@@ -106,6 +106,13 @@ def make_synthetic_panel(
     common time trend + small per-country noise. Designed so the
     correlation structure is largely common-factor (high pairwise corr
     pre-demeaning, low post-demeaning).
+
+    Both axes carry names ("year", "country") to match what production
+    panels look like — production panels come from
+    `df.pivot_table(index="year", columns="country", ...)` which names
+    both axes from the source columns. The 2026-05-10 Stage F smoke run
+    surfaced a _matrix_to_long bug that ONLY reproduced with a named
+    columns axis, so the fixture must mirror production.
     """
     import numpy as np
 
@@ -116,7 +123,9 @@ def make_synthetic_panel(
     for c in countries:
         idiosyncratic = rng.normal(0, 0.3, n_years)
         data[c] = common_trend + idiosyncratic
-    return pd.DataFrame(data, index=pd.Index(years, name="year"))
+    panel = pd.DataFrame(data, index=pd.Index(years, name="year"))
+    panel.columns.name = "country"
+    return panel
 
 
 def make_long_panel_parquet(

@@ -85,6 +85,70 @@ def test_load_panel_pivots_long_to_wide(entrypoint_mod, populated_s3):
     assert set(panel.columns) == set(COUNTRIES_DEFAULT)
     # 30 default years (1990..2019)
     assert len(panel) == 30
+    # Both axes named — production panels come from
+    # `df.pivot_table(columns="country", ...)` which sets the columns
+    # axis name. _matrix_to_long depends on this contract; see the
+    # 2026-05-10 Stage F smoke regression test below.
+    assert panel.columns.name == "country"
+
+
+# ---------------------------------------------------------------------------
+# Test 2b — _matrix_to_long handles a corr matrix with both axes named
+# (regression for the 2026-05-10 Stage F smoke run failure)
+# ---------------------------------------------------------------------------
+
+def test_matrix_to_long_handles_named_axes(entrypoint_mod):
+    """Regression: _matrix_to_long must not crash when both axes are named.
+
+    Stage F smoke run on 2026-05-10 (job 69fd0374, indicator v2x_libdem)
+    crashed with `ValueError: cannot insert country, already exists`
+    because:
+      1. load_panel pivots with `pivot_table(columns="country", ...)`
+         which names the panel's columns axis "country"
+      2. panel.corr() inherits that name on BOTH index and columns of
+         the resulting square matrix
+      3. _matrix_to_long.stack().reset_index() then tries to insert two
+         columns both called "country"
+
+    The fix uses `rename_axis(index=..., columns=...)` BEFORE the stack
+    so the resulting MultiIndex level names are unique. This test fixes
+    the input to match the production shape (both axes named) and would
+    have caught the bug pre-merge.
+    """
+    countries = ["A", "B", "C", "D"]
+    countries_map = {c: i + 1 for i, c in enumerate(countries)}
+
+    # Match production: square matrix with both axes named "country"
+    # (what panel.corr() returns when the panel was pivot_table'd).
+    corr = pd.DataFrame(
+        [[1.0, 0.8, 0.6, 0.4],
+         [0.8, 1.0, 0.5, 0.3],
+         [0.6, 0.5, 1.0, 0.2],
+         [0.4, 0.3, 0.2, 1.0]],
+        index=pd.Index(countries, name="country"),
+        columns=pd.Index(countries, name="country"),
+    )
+
+    # Should not raise
+    out = entrypoint_mod._matrix_to_long(corr, countries_map)
+
+    # 4 countries → 4*3 = 12 directed pairs (self excluded)
+    assert len(out) == 12
+    assert set(out.columns) == {"country_a_id", "country_b_id", "correlation"}
+    assert out["country_a_id"].dtype == np.uint16
+    assert out["country_b_id"].dtype == np.uint16
+    assert out["correlation"].dtype == np.float32
+
+    # Value spot-check: the (A=1, B=2) pair must carry corr=0.8 from the
+    # source matrix (pins the country-a vs country-b mapping so a future
+    # refactor that transposes the stack would fail loudly).
+    ab = out[(out["country_a_id"] == 1) & (out["country_b_id"] == 2)]
+    assert len(ab) == 1
+    assert ab["correlation"].iloc[0] == pytest.approx(0.8, rel=1e-5)
+    # Symmetric: (A=2, B=1) also exists and has the same correlation
+    ba = out[(out["country_a_id"] == 2) & (out["country_b_id"] == 1)]
+    assert len(ba) == 1
+    assert ba["correlation"].iloc[0] == pytest.approx(0.8, rel=1e-5)
 
 
 # ---------------------------------------------------------------------------
@@ -381,6 +445,7 @@ def test_manifest_demeaning_insufficient_flag_propagates(
         idiosyncratic = rng.normal(0, 0.05, n_years)
         data[c] = weight_a * factor_a + weight_b * factor_b + idiosyncratic
     panel = pd.DataFrame(data, index=pd.Index(range(1990, 1990 + n_years), name="year"))
+    panel.columns.name = "country"  # match production-shaped pivot_table output
 
     result = dscdi_finder_mod.run_dscdi_pass(
         indicator_id="v2x_libdem", panel=panel, audit_classification="I(1)",
