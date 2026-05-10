@@ -1,0 +1,665 @@
+module.iam.data.tls_certificate.github_actions: Reading...
+module.monitoring.data.archive_file.alarm_formatter_placeholder: Reading...
+module.pipeline.data.archive_file.placeholder: Reading...
+module.monitoring.data.archive_file.alarm_formatter_placeholder: Read complete after 0s [id=a981668f8773a5857285d8e08d6d0a3577f7ef25]
+module.pipeline.data.archive_file.placeholder: Read complete after 0s [id=c6a631da22d70f460978f79809b309c8eb4b4a80]
+module.batch.data.aws_vpc.default: Reading...
+module.batch.aws_ecr_repository.indicator_fetcher_fao: Refreshing state... [id=qgi-pipeline-a-indicator-fetcher-fao]
+module.batch.aws_cloudwatch_log_group.indicator_fetcher: Refreshing state... [id=/aws/batch/qgi-indicator-fetcher]
+module.batch.aws_ecr_repository.indicator_fetcher: Refreshing state... [id=qgi-pipeline-a-indicator-fetcher]
+module.storage.aws_glue_catalog_database.qgi_data: Refreshing state... [id=222222222222:qgi_data]
+module.pipeline.aws_iam_role.vdem_unzip: Refreshing state... [id=qgi-vdem-unzip-role]
+module.storage.aws_dynamodb_table.indicator_updates: Refreshing state... [id=qgi-indicator-updates]
+module.iam.aws_iam_role.batch_job: Refreshing state... [id=qgi-batch-job-role]
+module.monitoring.data.aws_region.current: Reading...
+module.monitoring.data.aws_region.current: Read complete after 0s [id=eu-central-1]
+module.pipeline.aws_iam_role.vdem_eventbridge_target: Refreshing state... [id=qgi-vdem-eventbridge-target-role]
+module.iam.data.tls_certificate.github_actions: Read complete after 1s [id=d54ffc5863e92be116e7b1bebdacdafbdb976744]
+module.batch.data.aws_subnets.default: Reading...
+module.iam.aws_iam_role.stepfunctions: Refreshing state... [id=qgi-stepfunctions-execution-role]
+module.batch.aws_ecr_repository.qgi_vdem_ingest: Refreshing state... [id=qgi-pipeline-a-vdem-ingest]
+module.storage.aws_sqs_queue.a_dlq: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-a-dlq]
+module.monitoring.aws_cloudwatch_metric_alarm.country_risks_bytes_low: Refreshing state... [id=qgi-v191-country-risks-bytes-out-of-band-low]
+module.iam.aws_iam_role.eventbridge_scheduler: Refreshing state... [id=qgi-eventbridge-scheduler-role]
+module.monitoring.aws_iam_role.alarm_formatter: Refreshing state... [id=qgi-sns-alarm-formatter-role]
+module.batch.data.aws_subnets.default: Read complete after 0s [id=eu-central-1]
+module.storage.aws_sqs_queue.b_dlq: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-b-dlq]
+module.batch.aws_cloudwatch_log_group.indicator_fetcher_fao: Refreshing state... [id=/aws/batch/qgi-indicator-fetcher-fao]
+module.pipeline.aws_iam_role.frontend_bake_trigger: Refreshing state... [id=qgi-frontend-bake-trigger-role]
+module.iam.aws_iam_user.vercel_frontend_reader: Refreshing state... [id=qgi-frontend-vercel-reader]
+module.iam.aws_iam_role.fargate_indicator_fetcher_task: Refreshing state... [id=qgi-fargate-indicator-fetcher-task-role]
+module.batch.data.aws_vpc.default: Read complete after 0s [id=vpc-0718fc328730f548c]
+module.storage.aws_sqs_queue.c_dlq: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-c-dlq]
+module.storage.aws_dynamodb_table.completion_counters: Refreshing state... [id=qgi-completion-counters]
+module.storage.aws_dynamodb_table.pipeline_a_counter: Refreshing state... [id=qgi-pipeline-a-counter]
+module.storage.aws_sns_topic.cost_alerts: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-staging-cost-alerts]
+module.pipeline.aws_sns_topic.vdem_ingest_status: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-vdem-ingest-status]
+module.pipeline.aws_iam_role.vdem_state_machine: Refreshing state... [id=qgi-vdem-state-machine-role]
+module.storage.aws_athena_workgroup.qgi: Refreshing state... [id=QGI-Lambda-Workgroup]
+module.iam.aws_iam_role.ecs_instance: Refreshing state... [id=qgi-ecs-instance-role]
+module.iam.aws_iam_role.cross_account_ops: Refreshing state... [id=qgi-cross-account-ops]
+module.pipeline.aws_cloudwatch_log_group.vdem_state_machine: Refreshing state... [id=/aws/states/qgi-vdem-ingest-on-upload]
+module.batch.aws_cloudwatch_log_group.scdi_finder: Refreshing state... [id=/aws/batch/qgi-scdi-finder]
+module.storage.aws_dynamodb_table.indicator_values: Refreshing state... [id=qgi-indicator-values]
+module.storage.aws_sns_topic.pipeline_notifications: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-monthly-updates]
+module.batch.aws_cloudwatch_log_group.qgi_vdem_ingest: Refreshing state... [id=/aws/batch/qgi-vdem-ingest]
+module.storage.aws_s3_bucket.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.monitoring.aws_cloudwatch_metric_alarm.country_risks_bytes_high: Refreshing state... [id=qgi-v191-country-risks-bytes-out-of-band-high]
+module.iam.aws_iam_role.lambda_execution: Refreshing state... [id=qgi-lambda-execution-role]
+module.pipeline.aws_secretsmanager_secret.github_frontend_dispatch_pat: Refreshing state... [id=arn:aws:secretsmanager:eu-central-1:222222222222:secret:qgi-github-frontend-dispatch-pat-kX04yu]
+module.iam.aws_iam_role.fargate_execution: Refreshing state... [id=qgi-fargate-execution-role]
+module.pipeline.aws_cloudwatch_log_group.vdem_unzip: Refreshing state... [id=/aws/lambda/qgi-vdem-unzip]
+module.iam.aws_iam_openid_connect_provider.github_actions: Refreshing state... [id=arn:aws:iam::222222222222:oidc-provider/token.actions.githubusercontent.com]
+module.storage.aws_glue_catalog_table.country_recipe_scores: Refreshing state... [id=222222222222:qgi_data:country_recipe_scores]
+module.storage.aws_glue_catalog_table.scdis: Refreshing state... [id=222222222222:qgi_data:scdis]
+module.storage.aws_glue_catalog_table.patterns: Refreshing state... [id=222222222222:qgi_data:patterns]
+module.storage.aws_glue_catalog_table.indicators_completed: Refreshing state... [id=222222222222:qgi_data:indicators_completed]
+module.storage.aws_glue_catalog_table.countries: Refreshing state... [id=222222222222:qgi_data:countries]
+module.storage.aws_glue_catalog_table.indicators: Refreshing state... [id=222222222222:qgi_data:indicators]
+module.storage.aws_glue_catalog_table.recipes_aggregated: Refreshing state... [id=222222222222:qgi_data:recipes_aggregated]
+module.storage.aws_glue_catalog_table.pattern_indicator_lookup: Refreshing state... [id=222222222222:qgi_data:pattern_indicator_lookup]
+module.storage.aws_glue_catalog_table.events: Refreshing state... [id=222222222222:qgi_data:events]
+module.storage.aws_sqs_queue.b_main: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-b-main-queue]
+module.storage.aws_sqs_queue.a_main: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-a-main-queue]
+module.batch.data.aws_security_group.default: Reading...
+module.storage.aws_sqs_queue.c_main: Refreshing state... [id=https://sqs.eu-central-1.amazonaws.com/222222222222/qgi-pipeline-c-main-queue]
+module.storage.aws_sns_topic_policy.cost_alerts: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-staging-cost-alerts]
+module.pipeline.aws_sns_topic_subscription.vdem_ingest_status_email: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-vdem-ingest-status:01136d92-86f4-40ba-ae68-564fe1392a42]
+module.monitoring.aws_iam_role_policy.alarm_formatter: Refreshing state... [id=qgi-sns-alarm-formatter-role:terraform-20260423135224159100000001]
+module.monitoring.aws_lambda_function.alarm_formatter: Refreshing state... [id=qgi-sns-alarm-formatter]
+module.storage.aws_cloudwatch_metric_alarm.indicator_values_write_surge: Refreshing state... [id=qgi-indicator-values-write-surge]
+module.storage.aws_cloudwatch_metric_alarm.athena_processed_bytes_surge: Refreshing state... [id=qgi-athena-processed-bytes-surge]
+module.iam.aws_iam_role.github_actions_frontend_s3_read: Refreshing state... [id=github-actions-qgi-frontend-s3-read]
+module.iam.aws_iam_role.github_actions_ecr_push: Refreshing state... [id=github-actions-qgi-ecr-push]
+module.iam.aws_iam_role.github_actions_lambda_deploy: Refreshing state... [id=github-actions-qgi-lambda-deploy]
+module.pipeline.aws_iam_role_policy.frontend_bake_trigger: Refreshing state... [id=qgi-frontend-bake-trigger-role:terraform-20260426104751081500000002]
+module.batch.data.aws_security_group.default: Read complete after 0s [id=sg-09e9e9f291583585e]
+module.iam.aws_iam_role_policy_attachment.ecs_instance_container_service: Refreshing state... [id=qgi-ecs-instance-role-20260330085025193800000001]
+module.iam.aws_iam_instance_profile.ecs_instance: Refreshing state... [id=qgi-ecs-instance-role]
+module.iam.aws_iam_role_policy.cross_account_ops: Refreshing state... [id=qgi-cross-account-ops:qgi-cross-account-ops-policy]
+module.iam.aws_iam_role_policy_attachment.fargate_execution_managed: Refreshing state... [id=qgi-fargate-execution-role-20260407222931029400000001]
+module.storage.aws_budgets_budget.s3_daily: Refreshing state... [id=222222222222:qgi-staging-s3-daily]
+module.batch.aws_batch_compute_environment.fetcher_fargate_spot: Refreshing state... [id=qgi-pipeline-a-fetcher-fargate-spot]
+module.storage.aws_s3_bucket_lifecycle_configuration.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.storage.aws_s3_bucket_policy.data_lake_cross_account: Refreshing state... [id=qgi-data-lake-222222222222]
+module.storage.aws_s3_bucket_versioning.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.storage.aws_s3_bucket_public_access_block.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.monitoring.aws_cloudwatch_metric_alarm.high_country_count_low: Refreshing state... [id=qgi-v191-high-country-count-out-of-band-low]
+module.monitoring.aws_cloudwatch_metric_alarm.high_country_count_high: Refreshing state... [id=qgi-v191-high-country-count-out-of-band-high]
+module.monitoring.aws_cloudwatch_metric_alarm.median_salience_low: Refreshing state... [id=qgi-v191-median-salience-out-of-band-low]
+module.monitoring.aws_cloudwatch_metric_alarm.caught_exception["finalize-country-recipe-scores"]: Refreshing state... [id=qgi-caught-exception-finalize-country-recipe-scores]
+module.monitoring.aws_cloudwatch_metric_alarm.caught_exception["finalize-convergence"]: Refreshing state... [id=qgi-caught-exception-finalize-convergence]
+module.monitoring.aws_cloudwatch_metric_alarm.caught_exception["finalize-dashboard"]: Refreshing state... [id=qgi-caught-exception-finalize-dashboard]
+module.monitoring.aws_cloudwatch_metric_alarm.caught_exception["finalize-country-risks"]: Refreshing state... [id=qgi-caught-exception-finalize-country-risks]
+module.monitoring.aws_cloudwatch_metric_alarm.caught_exception["finalize-recipes-aggregated"]: Refreshing state... [id=qgi-caught-exception-finalize-recipes-aggregated]
+module.monitoring.aws_cloudwatch_metric_alarm.median_salience_high: Refreshing state... [id=qgi-v191-median-salience-out-of-band-high]
+module.storage.aws_s3_bucket_logging.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.monitoring.aws_sns_topic_subscription.alarm_formatter: Refreshing state... [id=arn:aws:sns:eu-central-1:222222222222:qgi-monthly-updates:8bb89400-985c-4503-9072-221279da5c80]
+module.monitoring.aws_lambda_permission.alarm_formatter_sns: Refreshing state... [id=AllowExecutionFromSNS]
+module.batch.aws_batch_job_definition.qgi_vdem_ingest: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-definition/qgi-vdem-ingest-job:1]
+module.batch.aws_batch_job_definition.indicator_fetcher: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-definition/qgi-indicator-fetcher-job:6]
+module.batch.aws_batch_job_definition.indicator_fetcher_fao: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-definition/qgi-indicator-fetcher-fao-job:1]
+module.batch.aws_batch_job_queue.fetcher: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-queue/qgi-pipeline-a-fetcher-queue]
+module.iam.aws_iam_role_policy.github_actions_ecr_push: Refreshing state... [id=github-actions-qgi-ecr-push:qgi-ecr-push-policy]
+module.pipeline.aws_iam_role_policy.vdem_unzip: Refreshing state... [id=qgi-vdem-unzip-role:qgi-vdem-unzip-policy]
+module.batch.aws_batch_job_definition.scdi_finder: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-definition/scdi-finder-job:6]
+module.pipeline.aws_cloudwatch_event_rule.vdem_zip_uploaded: Refreshing state... [id=qgi-vdem-zip-uploaded]
+module.iam.aws_iam_role_policy.github_actions_frontend_s3_read: Refreshing state... [id=github-actions-qgi-frontend-s3-read:qgi-frontend-s3-read-policy]
+module.iam.aws_iam_role_policy.stepfunctions: Refreshing state... [id=qgi-stepfunctions-execution-role:qgi-stepfunctions-policy]
+module.iam.aws_iam_user_policy.vercel_frontend_reader: Refreshing state... [id=qgi-frontend-vercel-reader:qgi-frontend-vercel-reader-policy]
+module.iam.aws_iam_role_policy.lambda_execution: Refreshing state... [id=qgi-lambda-execution-role:qgi-lambda-policy]
+module.iam.aws_iam_role_policy.fargate_indicator_fetcher_task: Refreshing state... [id=qgi-fargate-indicator-fetcher-task-role:qgi-fargate-indicator-fetcher-task-policy]
+module.iam.aws_iam_role_policy.batch_job: Refreshing state... [id=qgi-batch-job-role:qgi-batch-job-policy]
+module.iam.aws_iam_role_policy.github_actions_lambda_deploy: Refreshing state... [id=github-actions-qgi-lambda-deploy:qgi-lambda-deploy-policy]
+module.pipeline.aws_lambda_function.batch_job_terminator: Refreshing state... [id=qgi-batch-job-terminator]
+module.pipeline.aws_lambda_function.b_dispatcher: Refreshing state... [id=qgi-pipeline-b-dispatcher]
+module.pipeline.aws_lambda_function.a_batch_checker: Refreshing state... [id=qgi-pipeline-a-batch-checker]
+module.pipeline.aws_lambda_function.structural_twins_generator: Refreshing state... [id=qgi-pipeline-structural-twins-generator]
+module.pipeline.aws_lambda_function.pair_windows_enumerator: Refreshing state... [id=qgi-pipeline-pair-windows-enumerator]
+module.pipeline.aws_lambda_function.frontend_bake_trigger: Refreshing state... [id=qgi-frontend-bake-trigger]
+module.pipeline.aws_lambda_function.recipe_engine: Refreshing state... [id=qgi-pipeline-recipe-engine]
+module.pipeline.aws_lambda_function.indicator_manifest_reader: Refreshing state... [id=qgi-pipeline-indicator-manifest-reader]
+module.pipeline.aws_lambda_function.recipe_engine_list_formatter: Refreshing state... [id=qgi-pipeline-recipe-engine-list-formatter]
+module.pipeline.aws_lambda_function.a_completer: Refreshing state... [id=qgi-pipeline-a-completer]
+module.pipeline.aws_lambda_function.c_worker: Refreshing state... [id=qgi-pipeline-c-worker]
+module.pipeline.aws_lambda_function.a_batch_failure_handler: Refreshing state... [id=qgi-pipeline-a-batch-failure-handler]
+module.pipeline.aws_lambda_function.c_dlq_inspector: Refreshing state... [id=qgi-pipeline-c-dlq-inspector]
+module.pipeline.aws_lambda_function.a_sheet_fetcher: Refreshing state... [id=qgi-pipeline-a-sheet-fetcher]
+module.pipeline.aws_lambda_function.ops_janitor: Refreshing state... [id=qgi-pipeline-ops-janitor]
+module.pipeline.aws_lambda_function.ops_dlq_scanner: Refreshing state... [id=qgi-pipeline-ops-dlq-scanner]
+module.pipeline.aws_lambda_function.pair_windows_generator: Refreshing state... [id=qgi-pipeline-pair-windows-generator]
+module.pipeline.aws_lambda_function.recipe_engine_finalize: Refreshing state... [id=qgi-pipeline-recipe-engine-finalize]
+module.pipeline.aws_lambda_function.partners_index_generator: Refreshing state... [id=qgi-pipeline-partners-index-generator]
+module.pipeline.aws_lambda_function.b_orchestrator: Refreshing state... [id=qgi-pipeline-b-scdi-finder-batch-orchestrator]
+module.pipeline.aws_lambda_function.b_scdi_finder: Refreshing state... [id=qgi-pipeline-b-scdi-finder]
+module.pipeline.aws_lambda_function.pattern_density_generator: Refreshing state... [id=qgi-pipeline-pattern-density-generator]
+module.pipeline.aws_lambda_function.c_checker: Refreshing state... [id=qgi-pipeline-c-checker]
+module.pipeline.aws_lambda_function.c_dispatcher: Refreshing state... [id=qgi-pipeline-c-dispatcher]
+module.pipeline.aws_lambda_function.pair_windows_writer: Refreshing state... [id=qgi-pipeline-pair-windows-writer]
+module.pipeline.aws_lambda_function.vdem_unzip: Refreshing state... [id=qgi-vdem-unzip]
+module.batch.aws_batch_compute_environment.scdi_spot: Refreshing state... [id=qgi-pipeline-b-spot-environment]
+module.pipeline.aws_sfn_state_machine.batch_job_terminator: Refreshing state... [id=arn:aws:states:eu-central-1:222222222222:stateMachine:qgi-batch-job-terminator]
+module.pipeline.aws_lambda_permission.frontend_bake_trigger_s3: Refreshing state... [id=AllowExecutionFromS3]
+module.pipeline.aws_lambda_event_source_mapping.c_worker_sqs: Refreshing state... [id=f38a011b-1927-4366-abae-7f43e2bb34e8]
+module.pipeline.aws_lambda_event_source_mapping.c_dlq_inspector_sqs: Refreshing state... [id=b020763b-0bf0-493c-825e-71e050491f3f]
+module.batch.aws_batch_job_queue.scdi: Refreshing state... [id=arn:aws:batch:eu-central-1:222222222222:job-queue/qgi-pipeline-b-high-priority-queue]
+module.pipeline.aws_lambda_function.a_reporter: Refreshing state... [id=qgi-pipeline-a-reporter]
+module.pipeline.aws_s3_bucket_notification.data_lake: Refreshing state... [id=qgi-data-lake-222222222222]
+module.pipeline.aws_cloudwatch_event_rule.a_batch_fetcher_failed: Refreshing state... [id=qgi-pipeline-a-batch-fetcher-failed]
+module.pipeline.aws_lambda_function.a_batch_dispatcher: Refreshing state... [id=qgi-pipeline-a-batch-dispatcher]
+module.pipeline.aws_lambda_function.ops_batch_checker: Refreshing state... [id=qgi-pipeline-ops-batch-checker]
+module.pipeline.aws_lambda_permission.allow_eventbridge_failure_handler: Refreshing state... [id=AllowEventBridgeInvokeFailureHandler]
+module.pipeline.aws_cloudwatch_event_target.a_batch_failure_handler: Refreshing state... [id=qgi-pipeline-a-batch-fetcher-failed-terraform-20260418014157115300000001]
+module.pipeline.aws_sfn_state_machine.vdem_ingest_on_upload: Refreshing state... [id=arn:aws:states:eu-central-1:222222222222:stateMachine:qgi-vdem-ingest-on-upload]
+module.pipeline.aws_iam_role_policy.vdem_state_machine: Refreshing state... [id=qgi-vdem-state-machine-role:qgi-vdem-state-machine-policy]
+module.pipeline.aws_sfn_state_machine.fetch_pipeline: Refreshing state... [id=arn:aws:states:eu-central-1:222222222222:stateMachine:qgi-indicator-data-refresher]
+module.pipeline.aws_iam_role_policy.vdem_eventbridge_target: Refreshing state... [id=qgi-vdem-eventbridge-target-role:qgi-vdem-eventbridge-target-policy]
+module.pipeline.aws_cloudwatch_event_target.vdem_zip_uploaded: Refreshing state... [id=qgi-vdem-zip-uploaded-terraform-20260427235909129500000001]
+module.pipeline.aws_sfn_state_machine.pipeline: Refreshing state... [id=arn:aws:states:eu-central-1:222222222222:stateMachine:qgi-indicator-monthly-updater]
+module.pipeline.aws_scheduler_schedule.fetch_monthly: Refreshing state... [id=default/qgi-indicator-data-refresher-1st]
+module.iam.aws_iam_role_policy.eventbridge_scheduler: Refreshing state... [id=qgi-eventbridge-scheduler-role:qgi-eventbridge-scheduler-policy]
+module.pipeline.aws_scheduler_schedule.monthly: Refreshing state... [id=default/qgi-indicator-monthly-updater-1st]
+
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+
+Terraform will perform the following actions:
+
+  # module.batch.aws_batch_job_definition.dscdi_finder will be created
+  + resource "aws_batch_job_definition" "dscdi_finder" {
+      + arn                        = (known after apply)
+      + arn_prefix                 = (known after apply)
+      + container_properties       = jsonencode(
+            {
+              + command              = []
+              + environment          = [
+                  + {
+                      + name  = "S3_BUCKET"
+                      + value = "qgi-data-lake-222222222222"
+                    },
+                  + {
+                      + name  = "S3_INPUT_PREFIX"
+                      + value = "pipeline-A-indicator-extractor/output/parquet-completed/"
+                    },
+                  + {
+                      + name  = "S3_OUTPUT_PREFIX"
+                      + value = "pipeline-B-dscdi-finder/dscdis"
+                    },
+                  + {
+                      + name  = "MANIFEST_S3_PREFIX"
+                      + value = "pipeline-B-dscdi-finder/manifest/"
+                    },
+                  + {
+                      + name  = "AUDIT_JSON_S3_KEY"
+                      + value = "reference/indicator-stationarity-audit-v2.json"
+                    },
+                  + {
+                      + name  = "MIN_LENGTH"
+                      + value = "3"
+                    },
+                ]
+              + executionRoleArn     = "arn:aws:iam::222222222222:role/qgi-fargate-execution-role"
+              + image                = "111111111111.dkr.ecr.eu-central-1.amazonaws.com/qgi-pipeline-b-dscdi-finder:latest"
+              + jobRoleArn           = "arn:aws:iam::222222222222:role/qgi-batch-job-role"
+              + logConfiguration     = {
+                  + logDriver = "awslogs"
+                  + options   = {
+                      + awslogs-group         = "/aws/batch/qgi-dscdi-finder"
+                      + awslogs-region        = "eu-central-1"
+                      + awslogs-stream-prefix = "dscdi"
+                    }
+                }
+              + resourceRequirements = [
+                  + {
+                      + type  = "VCPU"
+                      + value = "2"
+                    },
+                  + {
+                      + type  = "MEMORY"
+                      + value = "4096"
+                    },
+                ]
+            }
+        )
+      + deregister_on_new_revision = true
+      + id                         = (known after apply)
+      + name                       = "dscdi-finder-job"
+      + platform_capabilities      = [
+          + "EC2",
+        ]
+      + propagate_tags             = false
+      + revision                   = (known after apply)
+      + tags                       = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+      + tags_all                   = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+      + type                       = "container"
+    }
+
+  # module.batch.aws_cloudwatch_log_group.dscdi_finder will be created
+  + resource "aws_cloudwatch_log_group" "dscdi_finder" {
+      + arn               = (known after apply)
+      + id                = (known after apply)
+      + log_group_class   = (known after apply)
+      + name              = "/aws/batch/qgi-dscdi-finder"
+      + name_prefix       = (known after apply)
+      + retention_in_days = 30
+      + skip_destroy      = false
+      + tags              = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+      + tags_all          = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+    }
+
+  # module.iam.aws_iam_role_policy.batch_job will be updated in-place
+  ~ resource "aws_iam_role_policy" "batch_job" {
+        id     = "qgi-batch-job-role:qgi-batch-job-policy"
+        name   = "qgi-batch-job-policy"
+      ~ policy = jsonencode(
+          ~ {
+              ~ Statement = [
+                  ~ {
+                      ~ Action   = [
+                            # (1 unchanged element hidden)
+                            "s3:PutObject",
+                          + "s3:DeleteObject",
+                            "s3:ListBucket",
+                            # (1 unchanged element hidden)
+                        ]
+                        # (2 unchanged attributes hidden)
+                    },
+                    {
+                        Action   = [
+                            "ecr:GetAuthorizationToken",
+                        ]
+                        Effect   = "Allow"
+                        Resource = "*"
+                    },
+                  ~ {
+                      ~ Resource = "arn:aws:ecr:eu-central-1:111111111111:repository/qgi-pipeline-b-scdi-finder" -> [
+                          + "arn:aws:ecr:eu-central-1:111111111111:repository/qgi-pipeline-b-scdi-finder",
+                          + "arn:aws:ecr:eu-central-1:111111111111:repository/qgi-pipeline-b-dscdi-finder",
+                        ]
+                        # (2 unchanged attributes hidden)
+                    },
+                    {
+                        Action   = [
+                            "logs:CreateLogGroup",
+                            "logs:CreateLogStream",
+                            "logs:PutLogEvents",
+                        ]
+                        Effect   = "Allow"
+                        Resource = "arn:aws:logs:*:222222222222:log-group:/aws/batch/*"
+                    },
+                ]
+                # (1 unchanged attribute hidden)
+            }
+        )
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.storage.aws_glue_catalog_table.dscdi_indicator_manifest will be created
+  + resource "aws_glue_catalog_table" "dscdi_indicator_manifest" {
+      + arn           = (known after apply)
+      + catalog_id    = (known after apply)
+      + database_name = "qgi_data"
+      + id            = (known after apply)
+      + name          = "dscdi_indicator_manifest"
+      + parameters    = {
+          + "EXTERNAL"         = "TRUE"
+          + "classification"   = "parquet"
+          + "parquet.compress" = "SNAPPY"
+        }
+      + table_type    = "EXTERNAL_TABLE"
+
+      + storage_descriptor {
+          + input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+          + location      = "s3://qgi-data-lake-222222222222/pipeline-B-dscdi-finder/manifest/"
+          + output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+          + columns {
+              + name = "indicator_id"
+              + type = "string"
+            }
+          + columns {
+              + name = "indicator_class"
+              + type = "string"
+            }
+          + columns {
+              + name = "transform"
+              + type = "string"
+            }
+          + columns {
+              + name = "n_countries"
+              + type = "bigint"
+            }
+          + columns {
+              + name = "mean_abs_pairwise_corr"
+              + type = "double"
+            }
+          + columns {
+              + name = "demeaning_applied"
+              + type = "boolean"
+            }
+          + columns {
+              + name = "demeaning_insufficient"
+              + type = "boolean"
+            }
+          + columns {
+              + name = "suppressed_reason"
+              + type = "string"
+            }
+
+          + ser_de_info {
+              + name                  = "parquet"
+              + parameters            = {
+                  + "serialization.format" = "1"
+                }
+              + serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+            }
+        }
+    }
+
+  # module.storage.aws_glue_catalog_table.dscdis will be created
+  + resource "aws_glue_catalog_table" "dscdis" {
+      + arn           = (known after apply)
+      + catalog_id    = (known after apply)
+      + database_name = "qgi_data"
+      + id            = (known after apply)
+      + name          = "dscdis"
+      + parameters    = {
+          + "EXTERNAL"         = "TRUE"
+          + "classification"   = "parquet"
+          + "parquet.compress" = "SNAPPY"
+        }
+      + table_type    = "EXTERNAL_TABLE"
+
+      + partition_keys {
+          + name = "country_a_id"
+          + type = "smallint"
+        }
+
+      + storage_descriptor {
+          + input_format  = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat"
+          + location      = "s3://qgi-data-lake-222222222222/pipeline-B-dscdi-finder/dscdis/"
+          + output_format = "org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat"
+
+          + columns {
+              + name = "country_b_id"
+              + type = "smallint"
+            }
+          + columns {
+              + name = "correlation"
+              + type = "float"
+            }
+          + columns {
+              + name = "indicator_numeric_id"
+              + type = "smallint"
+            }
+          + columns {
+              + name = "contains_predicted"
+              + type = "boolean"
+            }
+          + columns {
+              + name = "is_demeaned"
+              + type = "boolean"
+            }
+          + columns {
+              + name = "indicator_class"
+              + type = "string"
+            }
+
+          + ser_de_info {
+              + name                  = "parquet"
+              + parameters            = {
+                  + "serialization.format" = "1"
+                }
+              + serialization_library = "org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe"
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket.access_logs will be created
+  + resource "aws_s3_bucket" "access_logs" {
+      + acceleration_status         = (known after apply)
+      + acl                         = (known after apply)
+      + arn                         = (known after apply)
+      + bucket                      = "qgi-access-logs-222222222222"
+      + bucket_domain_name          = (known after apply)
+      + bucket_prefix               = (known after apply)
+      + bucket_regional_domain_name = (known after apply)
+      + force_destroy               = false
+      + hosted_zone_id              = (known after apply)
+      + id                          = (known after apply)
+      + object_lock_enabled         = (known after apply)
+      + policy                      = (known after apply)
+      + region                      = (known after apply)
+      + request_payer               = (known after apply)
+      + tags                        = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+      + tags_all                    = {
+          + "Environment" = "staging"
+          + "ManagedBy"   = "terraform"
+          + "Owner"       = "amin.al-ait"
+          + "Project"     = "qgi"
+        }
+      + website_domain              = (known after apply)
+      + website_endpoint            = (known after apply)
+    }
+
+  # module.storage.aws_s3_bucket_inventory.data_lake will be created
+  + resource "aws_s3_bucket_inventory" "data_lake" {
+      + bucket                   = "qgi-data-lake-222222222222"
+      + enabled                  = true
+      + id                       = (known after apply)
+      + included_object_versions = "Current"
+      + name                     = "daily-inventory"
+      + optional_fields          = [
+          + "ETag",
+          + "LastModifiedDate",
+          + "Size",
+          + "StorageClass",
+        ]
+
+      + destination {
+          + bucket {
+              + account_id = "222222222222"
+              + bucket_arn = "arn:aws:s3:::qgi-data-lake-222222222222"
+              + format     = "Parquet"
+              + prefix     = "s3-inventory/"
+            }
+        }
+
+      + schedule {
+          + frequency = "Daily"
+        }
+    }
+
+  # module.storage.aws_s3_bucket_lifecycle_configuration.access_logs will be created
+  + resource "aws_s3_bucket_lifecycle_configuration" "access_logs" {
+      + bucket                                 = (known after apply)
+      + expected_bucket_owner                  = (known after apply)
+      + id                                     = (known after apply)
+      + transition_default_minimum_object_size = "all_storage_classes_128K"
+
+      + rule {
+          + id     = "expire-logs"
+          + status = "Enabled"
+
+          + expiration {
+              + days                         = 7
+              + expired_object_delete_marker = false
+            }
+
+          + filter {
+            }
+        }
+      + rule {
+          + id     = "abort-incomplete-uploads"
+          + status = "Enabled"
+
+          + abort_incomplete_multipart_upload {
+              + days_after_initiation = 1
+            }
+
+          + filter {
+            }
+        }
+    }
+
+  # module.storage.aws_s3_bucket_lifecycle_configuration.data_lake will be updated in-place
+  ~ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
+        id                                     = "qgi-data-lake-222222222222"
+        # (2 unchanged attributes hidden)
+
+      ~ rule {
+          ~ id     = "expire-access-logs" -> "expire-s3-inventory"
+            # (1 unchanged attribute hidden)
+
+          ~ expiration {
+              ~ days                         = 7 -> 30
+                # (1 unchanged attribute hidden)
+            }
+
+          ~ filter {
+              ~ prefix = "s3-access-logs/" -> "s3-inventory/"
+            }
+        }
+      + rule {
+          + id     = "expire-legacy-access-logs"
+          + status = "Enabled"
+
+          + expiration {
+              + days                         = 7
+              + expired_object_delete_marker = false
+            }
+
+          + filter {
+              + prefix = "s3-access-logs/"
+            }
+        }
+      + rule {
+          + id     = "expire-scdi-tmp"
+          + status = "Enabled"
+
+          + expiration {
+              + days                         = 3
+              + expired_object_delete_marker = false
+            }
+
+          + filter {
+              + prefix = "pipeline-B-scdi-finder/tmp/"
+            }
+        }
+
+        # (3 unchanged blocks hidden)
+    }
+
+  # module.storage.aws_s3_bucket_logging.data_lake will be updated in-place
+  ~ resource "aws_s3_bucket_logging" "data_lake" {
+        id            = "qgi-data-lake-222222222222"
+      ~ target_bucket = "qgi-data-lake-222222222222" -> (known after apply)
+      ~ target_prefix = "s3-access-logs/" -> "qgi-data-lake/"
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.storage.aws_s3_bucket_policy.access_logs will be created
+  + resource "aws_s3_bucket_policy" "access_logs" {
+      + bucket = (known after apply)
+      + id     = (known after apply)
+      + policy = (known after apply)
+    }
+
+  # module.storage.aws_s3_bucket_policy.data_lake_cross_account will be updated in-place
+  ~ resource "aws_s3_bucket_policy" "data_lake_cross_account" {
+        id     = "qgi-data-lake-222222222222"
+      ~ policy = jsonencode(
+          ~ {
+              ~ Statement = [
+                    {
+                        Action    = [
+                            "s3:PutObject",
+                            "s3:GetObject",
+                            "s3:ListBucket",
+                        ]
+                        Effect    = "Allow"
+                        Principal = {
+                            AWS = "arn:aws:iam::111111111111:root"
+                        }
+                        Resource  = [
+                            "arn:aws:s3:::qgi-data-lake-222222222222",
+                            "arn:aws:s3:::qgi-data-lake-222222222222/*",
+                        ]
+                        Sid       = "AllowManagementAccountSync"
+                    },
+                  ~ {
+                      ~ Condition = {
+                          ~ StringEquals = {
+                              + "aws:SourceArn"     = "arn:aws:s3:::qgi-data-lake-222222222222"
+                              + "s3:x-amz-acl"      = "bucket-owner-full-control"
+                                # (1 unchanged attribute hidden)
+                            }
+                        }
+                      ~ Principal = {
+                          ~ Service = "logging.s3.amazonaws.com" -> "s3.amazonaws.com"
+                        }
+                      ~ Resource  = "arn:aws:s3:::qgi-data-lake-222222222222/s3-access-logs/*" -> "arn:aws:s3:::qgi-data-lake-222222222222/s3-inventory/*"
+                      ~ Sid       = "AllowS3LogDelivery" -> "AllowS3InventoryDelivery"
+                        # (2 unchanged attributes hidden)
+                    },
+                ]
+                # (1 unchanged attribute hidden)
+            }
+        )
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.storage.aws_s3_bucket_public_access_block.access_logs will be created
+  + resource "aws_s3_bucket_public_access_block" "access_logs" {
+      + block_public_acls       = true
+      + block_public_policy     = true
+      + bucket                  = (known after apply)
+      + id                      = (known after apply)
+      + ignore_public_acls      = true
+      + restrict_public_buckets = true
+    }
+
+  # module.storage.null_resource.athena_result_reuse will be created
+  + resource "null_resource" "athena_result_reuse" {
+      + id       = (known after apply)
+      + triggers = {
+          + "ttl_minutes"    = "60"
+          + "workgroup_name" = "QGI-Lambda-Workgroup"
+        }
+    }
+
+Plan: 10 to add, 4 to change, 0 to destroy.
+
+─────────────────────────────────────────────────────────────────────────────
+
+Saved the plan to: session-a.tfplan
+
+To perform exactly these actions, run the following command to apply:
+    terraform apply "session-a.tfplan"
