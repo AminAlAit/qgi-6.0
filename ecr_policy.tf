@@ -36,6 +36,14 @@ data "aws_iam_policy_document" "scdi_finder_ecr" {
   # Cross-account pull access for QGI pipeline environments
   # ECS uses executionRoleArn (qgi-batch-job-role) for image pulls when set.
   # Also allow the ECS instance role as a fallback.
+  #
+  # NOTE 2026-05-10: this TF data block is currently DRIFTED from the live
+  # scdi-finder repo policy (which uses account-root principals for 3 accts
+  # qa+staging+prod, hand-built 2025-09). Applying this block as-is would
+  # NARROW QA + prod scdi-finder pull access. Out of scope for the current
+  # Stage F unblock — to be addressed in a follow-up PR that imports the
+  # live policy and aligns to the :root pattern across all qgi mgmt-account
+  # ECR repos. See AWS expert consult 2026-05-10.
   statement {
     sid    = "CrossAccountECSPull"
     effect = "Allow"
@@ -222,15 +230,21 @@ data "aws_iam_policy_document" "dscdi_finder_ecr" {
   # Cross-account pull access — staging only at this stage. QA + prod will
   # be added when the multi-environment Stage F rollout fires (post end-of-
   # cascade-mandate authorization).
+  #
+  # Account-root principal pattern (AWS principal-engineer best practice).
+  # The earlier named-role list (qgi-ecs-instance-role + qgi-batch-job-role)
+  # missed qgi-fargate-execution-role — the role Batch actually uses for
+  # cross-account image pulls — and caused the 2026-05-10 Stage F smoke
+  # failure (CannotPullImageManifestError, job a64f5dfa). See AWS expert
+  # consult 2026-05-10 + scdi_finder_ecr above for the rationale and the
+  # consumer-side IAM-simulator pre-flight check.
   statement {
-    sid    = "CrossAccountECSPull"
+    sid    = "CrossAccountECRPull"
     effect = "Allow"
     principals {
       type = "AWS"
       identifiers = [
-        # Staging (222222222222) — both roles may be used for ECR pull
-        "arn:aws:iam::222222222222:role/qgi-ecs-instance-role",
-        "arn:aws:iam::222222222222:role/qgi-batch-job-role",
+        "arn:aws:iam::222222222222:root", # staging
       ]
     }
     actions = [
