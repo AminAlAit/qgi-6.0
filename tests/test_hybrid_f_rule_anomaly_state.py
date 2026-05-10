@@ -102,13 +102,51 @@ def test_dispatch_marks_territorial_disputes_as_f_rule_anomaly():
 
 
 def test_dispatch_exactly_two_f_rule_anomalies():
-    """Exactly 2 recipes have f_rule_anomaly=True per the Stage 5 paper finding."""
+    """Exactly 2 recipes have f_rule_anomaly=True per the Stage 5 paper finding.
+
+    Also asserts the locked_recipes() count is the expected 14 — this guards
+    against a silent regression where a recipe is moved out of the LOCKED set
+    (and therefore out of `locked_recipes()`), which would let an
+    f_rule_anomaly count change pass undetected.
+    """
     dispatch = load_dispatch()
-    anomalies = [r for r in dispatch.locked_recipes() if dispatch.has_f_rule_anomaly(r)]
+    locked = dispatch.locked_recipes()
+    assert len(locked) == 14, (
+        f"Expected 14 LOCKED recipes per hybrid pre-reg; got {len(locked)}. "
+        f"A recipe being moved out of the LOCKED set would let the "
+        f"f_rule_anomaly count silently pass even if a new anomaly is "
+        f"introduced. Any change to the LOCKED set requires Majles "
+        f"re-pre-registration."
+    )
+    anomalies = [r for r in locked if dispatch.has_f_rule_anomaly(r)]
     assert sorted(anomalies) == ["epidemic_and_pandemic", "territorial_disputes"], (
         f"Expected exactly 2 f_rule_anomaly recipes (epidemic_and_pandemic + "
         f"territorial_disputes); got {sorted(anomalies)}. Any change to this "
         f"set requires Majles re-pre-registration."
+    )
+
+
+def test_dispatch_negative_lock_human_rights_violation_no_anomaly():
+    """Negative lock: human_rights_violation has n_pos_loco=1 + D5-assigned
+    but f_rule_anomaly is False (in-sample F2 passes for this recipe under D5).
+
+    Per Sonnet PR #42 review N4: without this negative lock, a future JSON
+    edit flipping human_rights_violation's f_rule_anomaly to True would not
+    be caught by the count test alone (which expects 2 anomalies; 3 would
+    fail loudly, but a 2-flip swap would not).
+    """
+    dispatch = load_dispatch()
+    a = dispatch.assignment_for("human_rights_violation")
+    # Confirm the structural setup that makes this a meaningful negative lock
+    assert a.architecture == "D5"
+    assert a.n_pos_loco == 1
+    assert a.advisory_only is True  # n_pos=1 → ADVISORY-ONLY
+    # The negative lock itself
+    assert a.f_rule_anomaly is False, (
+        "human_rights_violation must NOT be flagged f_rule_anomaly per "
+        "Stage 5 paper finding (in-sample F2 passes under D5 with AUC 0.8378). "
+        "If you're seeing this fail, a JSON edit may have incorrectly added "
+        "the flag — requires Majles re-pre-registration."
     )
 
 
@@ -220,12 +258,35 @@ def test_epidemic_and_pandemic_f1_still_passes_under_d5():
     )
 
 
-def test_territorial_disputes_f1_still_passes_under_d5():
+def test_territorial_disputes_f1_uninformative_under_degenerate_predictions():
+    """F1 ECE is UNINFORMATIVE for territorial_disputes under D5.
+
+    Per Sonnet PR #42 review B1: when predictions collapse to ~0 across all
+    test cells (territorial_disputes D5: max prob 1.91e-6; both positives at
+    exactly 0.0), the ECE statistic is vacuously low — every observation
+    falls into the first bin (lo=0.0), so ECE ≈ |observed_rate − 0| =
+    n_pos/n ≈ 0.003. This passes ECE ≤ 0.08 trivially but tells you nothing
+    about calibration quality.
+
+    A Stage 4 reader could misread "F1 passes" as a genuine calibration
+    green light. To avoid that misleading framing, this test does NOT assert
+    a numerical ECE bound. Instead it documents the degenerate state as the
+    Stage 5 paper does: ECE is technically below threshold but the
+    discrimination metric (test_territorial_disputes_in_sample_f2_fails_
+    under_d5) is the operative falsification disclosure.
+
+    The degenerate-predictions lock is in
+    test_territorial_disputes_in_sample_f2_fails_under_d5 (asserts
+    probs.max() < 1e-3). That test is the operative lock on the disclosed
+    state.
+    """
     preds = _load_d5_predictions()
     rps = [p for p in preds if p["recipe_id"] == "territorial_disputes"]
     if not rps:
         pytest.skip("territorial_disputes not in D5 predictions")
     probs = np.array([p["predicted_probability"] for p in rps])
-    labels = np.array([p["label"] for p in rps])
-    ece = compute_ece(probs, labels, n_bins=10)
-    assert ece <= 0.08
+    # Just confirm the degenerate state; do NOT assert on ECE
+    assert probs.max() < 1e-3, (
+        "territorial_disputes D5 predictions should be degenerate (near-zero); "
+        "if max prob is meaningful, the disclosed state has changed."
+    )
