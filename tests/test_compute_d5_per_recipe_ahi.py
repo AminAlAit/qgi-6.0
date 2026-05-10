@@ -96,11 +96,16 @@ def test_per_recipe_partition_includes_recipes_with_zero_evaluable(d5_anchor_res
     informative only if it's truly never an anchor target.
     """
     per_recipe = compute_per_recipe_metrics(d5_anchor_results)
-    # Every recipe in the active anchor list (with `recipe` field set)
-    # must appear in per_recipe.
+    # Every recipe in the active anchor list (with `recipe` field set
+    # to a non-empty string) must appear in per_recipe. The partition
+    # function uses `case.get("recipe") or "__unrecipe__"` (truthy
+    # check) which routes BOTH None AND empty-string into the
+    # synthetic key. To match that semantics here we use the same
+    # truthy check so empty-string recipes (if any ever appear) don't
+    # falsely trip the "silent drop bug" assertion.
     active = d5_anchor_results["active"]
     recipes_with_field = {
-        c.get("recipe") for c in active if c.get("recipe") is not None
+        c.get("recipe") for c in active if c.get("recipe")  # truthy
     }
     for r in recipes_with_field:
         assert r in per_recipe, (

@@ -199,15 +199,17 @@ def format_per_recipe_markdown(
     lines.append(
         "|---|---|---|---|---|---|"
     )
-    # Sort: recipes with n_evaluable > 0 first by AHI desc; then
-    # n_evaluable=0 alphabetically.
+    # Sort: recipes with n_evaluable > 0 first by AHI desc, ties broken
+    # by recipe name ascending (deterministic across Python releases);
+    # then n_evaluable=0 alphabetically.
     def _sort_key(item):
         recipe, m = item
         n = m["n_evaluable"]
         if n == 0:
             return (1, recipe, 0.0)
-        # negate ahi so descending order falls out of ascending sort
-        return (0, "", -float(m["ahi"]))
+        # negate ahi so descending order falls out of ascending sort;
+        # recipe name is the deterministic tie-break on equal AHI.
+        return (0, -float(m["ahi"]), recipe)
     for recipe, m in sorted(per_recipe.items(), key=_sort_key):
         if m["n_evaluable"] == 0:
             ahi_str = ahr_str = ads_str = "—"
