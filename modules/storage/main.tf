@@ -1565,57 +1565,20 @@ resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge" {
   tags = var.tags
 }
 
-# #625 (Sonnet audit 2026-05-07): Athena query result reuse with 60-min TTL.
+# #625 / #632 (2026-05-10): Athena workgroup-level result reuse via
+# `update-work-group` does NOT exist in the AWS API. The original #625
+# null_resource that called `aws athena update-work-group --configuration-updates
+# '{"ResultReuseConfiguration":...}'` was based on a misunderstanding —
+# verified against AWS CLI 2.15.50 + botocore 1.40.x: `ResultReuseConfiguration`
+# is not a valid `ConfigurationUpdates` key.
 #
-# The AWS provider 5.x does not expose `result_reuse_configuration` on
-# `aws_athena_workgroup`. We invoke the AWS CLI via null_resource on every
-# apply to keep the workgroup setting in sync with this TF module.
+# `ResultReuseConfiguration` is a PER-QUERY parameter on `StartQueryExecution`,
+# not a workgroup-level default. The actual cost-saving fix lives in the
+# frontend (qgi-frontend/lib/athena.ts:runQuery) — see #632 for the followup
+# ticket that proposes adding the per-query parameter to all callers.
 #
-# Without result reuse: two Vercel serverless instances firing the same
-# SQL within an hour each re-execute against S3 data. With reuse: the
-# second hit reads a cached result file. Athena auto-invalidates when
-# partitions change, so this is correctness-safe.
-#
-# 60-minute TTL matches the frontend ISR `revalidate = 3600` window. The
-# 8 consecutive identical Vietnam queries observed 2026-05-07 (each
-# `ReusedPreviousResult: false`) directly motivated this change.
-#
-# Trigger: re-runs whenever the workgroup name OR the TTL changes.
-#
-# Cost saving: 60-90% reduction in redundant Athena executions for repeated
-# queries on stable tables (recipes, patterns, indicators_completed).
-#
-# Replaces ticket #109 P1-6 (which proposed 24h TTL for Batch reuse — 60min
-# is more conservative and aligns with Vercel ISR). Once the AWS provider
-# adds native support, swap this null_resource for the inline TF block.
-resource "null_resource" "athena_result_reuse" {
-  triggers = {
-    workgroup_name = aws_athena_workgroup.qgi.name
-    ttl_minutes    = "60"
-    # NOTE on console drift: the trigger values are static, so this
-    # resource only re-runs when the workgroup or TTL changes — NOT
-    # when someone disables result reuse via the AWS console
-    # out-of-band. If drift becomes a real concern, add `timestamp()`
-    # to triggers to force re-apply on every plan (at the cost of a
-    # spurious plan diff every run). For now the explicit verification
-    # in the test plan covers post-apply confirmation.
-  }
-
-  # Force bash interpreter so this works on Windows dev machines.
-  # cmd.exe doesn't handle the single-quoted JSON literal correctly;
-  # bash (Git Bash on Windows, /bin/bash on Linux/Mac CI) does. The
-  # interpreter array makes the platform behavior explicit and avoids
-  # silent divergence between local apply and CI apply.
-  provisioner "local-exec" {
-    interpreter = ["/bin/bash", "-c"]
-    command     = <<-EOT
-      aws athena update-work-group \
-        --work-group ${aws_athena_workgroup.qgi.name} \
-        --region ${var.region} \
-        --configuration-updates '{"ResultReuseConfiguration":{"ResultReuseByAgeConfiguration":{"Enabled":true,"MaxAgeInMinutes":60}}}'
-    EOT
-  }
-}
+# This block was the broken null_resource. Removed 2026-05-10 so future
+# `terraform apply` runs do not retry the failing local-exec.
 
 # ---------------------------------------------------------------------------
 # #594: Daily S3 cost alert via AWS Budgets (FREE: 2 budgets/account allowed)
