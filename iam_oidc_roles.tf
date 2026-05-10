@@ -200,7 +200,9 @@ data "aws_iam_policy_document" "qgi_ecr_push_dscdi_finder" {
     effect = "Allow"
     actions = [
       "ecr:BatchCheckLayerAvailability",
+      "ecr:BatchGetImage",
       "ecr:CompleteLayerUpload",
+      "ecr:DescribeImages",
       "ecr:GetDownloadUrlForLayer",
       "ecr:InitiateLayerUpload",
       "ecr:PutImage",
