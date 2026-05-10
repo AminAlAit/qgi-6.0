@@ -773,3 +773,427 @@ def test_apply_591_filter_none_allow_ids_passes_through_with_warning():
     ])
     out = mod.apply_591_filter(weights_df, allow_ids=None)
     assert len(out) == 2
+
+
+# ===========================================================================
+# v4 NEW (Phase 5 v0.1a Step 3): anchor-case battery
+# ===========================================================================
+
+def _make_scored_fixture(rows):
+    """Helper: build a scored DataFrame from rows of
+    (country_str, event_category, anomaly_score, n_indicators_used)."""
+    return pd.DataFrame([
+        {"country_id": i, "country_str": r[0], "event_category": r[1],
+         "anomaly_score": r[2], "n_indicators_used": r[3]}
+        for i, r in enumerate(rows, 1)
+    ])
+
+
+def test_load_anchor_battery_missing_file_returns_none(tmp_path):
+    """Missing battery file → warn + return None (anchor cases are
+    regression suite, not a hard-blocker)."""
+    out = mod.load_anchor_battery(path=tmp_path / "nope.json")
+    assert out is None
+
+
+def test_load_anchor_battery_parses_schema(tmp_path):
+    """Round-trip a minimal battery JSON."""
+    import json
+    p = tmp_path / "battery.json"
+    p.write_text(json.dumps({
+        "schema_version": 1,
+        "cases": [
+            {"case_id": 1, "country": "X", "event_categories": ["y"],
+             "test_type": "t", "predicate": {"type": "percentile_below",
+                                              "threshold": 0.3},
+             "phase_gate": "v0.1a", "in_evaluation_universe": True,
+             "evaluation_scope": "per_arm"},
+        ],
+    }))
+    out = mod.load_anchor_battery(path=p)
+    assert out is not None
+    assert len(out["cases"]) == 1
+
+
+def test_compute_percentile_ascending_basis():
+    """Verify the rank-basis convention: ASCENDING by anomaly_score,
+    so HIGHEST anomaly_score → HIGHEST percentile = HIGHEST predicted risk.
+    Matches the JSON's rank_basis spec (PR #35 T1 fix)."""
+    scored = _make_scored_fixture([
+        ("A", "X", 1.0, 5),
+        ("B", "X", 2.0, 5),
+        ("C", "X", 3.0, 5),
+        ("D", "X", 4.0, 5),
+    ])
+    out = mod._compute_percentile_per_category(scored)
+    # D has highest anomaly_score → highest percentile (1.0)
+    # A has lowest anomaly_score → lowest percentile (0.25)
+    a = out[out["country_str"] == "A"]["risk_percentile"].iloc[0]
+    d = out[out["country_str"] == "D"]["risk_percentile"].iloc[0]
+    assert a < d, "A (lowest score) must have LOWER percentile than D (highest score)"
+    assert a == 0.25  # rank 1 / n=4
+    assert d == 1.0   # rank 4 / n=4
+
+
+def test_eval_predicate_percentile_below_pass():
+    """Country with anomaly_score in the bottom 30% passes the
+    percentile_below 0.30 predicate."""
+    scored = _make_scored_fixture([
+        ("Malta", "military_coup", 1.0, 5),  # lowest score → lowest percentile
+        ("Other", "military_coup", 2.0, 5),
+        ("Other2", "military_coup", 3.0, 5),
+        ("Other3", "military_coup", 4.0, 5),
+        ("Other4", "military_coup", 5.0, 5),
+    ])
+    case = {
+        "case_id": 1, "country": "Malta",
+        "event_categories": ["military_coup"], "test_type": "neg",
+        "in_evaluation_universe": True, "evaluation_scope": "per_arm",
+        "phase_gate": "Phase 6",
+        "predicate": {"type": "percentile_below", "threshold": 0.30},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Malta percentile = 1/5 = 0.20, which is < 0.30 → PASS
+    assert result["passed"] is True
+    assert "PASS" in result["reason"]
+
+
+def test_eval_predicate_percentile_below_fail():
+    """Country above 30th percentile fails percentile_below 0.30."""
+    scored = _make_scored_fixture([
+        ("Malta", "military_coup", 5.0, 5),  # HIGHEST score → top percentile
+        ("Other", "military_coup", 1.0, 5),
+        ("Other2", "military_coup", 2.0, 5),
+        ("Other3", "military_coup", 3.0, 5),
+        ("Other4", "military_coup", 4.0, 5),
+    ])
+    case = {
+        "case_id": 1, "country": "Malta",
+        "event_categories": ["military_coup"], "test_type": "neg",
+        "in_evaluation_universe": True, "evaluation_scope": "per_arm",
+        "phase_gate": "Phase 6",
+        "predicate": {"type": "percentile_below", "threshold": 0.30},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Malta percentile = 1.0, which is NOT < 0.30 → FAIL
+    assert result["passed"] is False
+    assert "FAIL" in result["reason"]
+
+
+def test_eval_predicate_percentile_above_satisfies_any():
+    """case 5 (Sri Lanka) — predicate_satisfies_any=True: passes if
+    ANY of the categories is above the threshold."""
+    # Sri Lanka is above 50th percentile on currency_crisis but not the others
+    scored = pd.DataFrame([
+        {"country_id": 1, "country_str": "Sri Lanka", "event_category": "economic_recession",
+         "anomaly_score": 1.0, "n_indicators_used": 5},
+        {"country_id": 1, "country_str": "Sri Lanka", "event_category": "currency_crisis",
+         "anomaly_score": 5.0, "n_indicators_used": 5},  # HIGH
+        {"country_id": 1, "country_str": "Sri Lanka", "event_category": "banking_and_financial_crisis",
+         "anomaly_score": 1.5, "n_indicators_used": 5},
+        # 4 other countries on each category
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 6) for ec in ["economic_recession", "currency_crisis",
+                                          "banking_and_financial_crisis"]],
+    ])
+    case = {
+        "case_id": 5, "country": "Sri Lanka",
+        "event_categories": ["economic_recession", "currency_crisis",
+                             "banking_and_financial_crisis"],
+        "test_type": "pos", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate_satisfies_any": True,
+        "predicate": {"type": "percentile_above", "threshold": 0.50},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Currency_crisis Sri Lanka percentile = 5/5 = 1.0 ≥ 0.5 → PASS via any
+    assert result["passed"] is True
+
+
+def test_eval_predicate_rank_floor_all_categories_pass():
+    """Norway must be below 0.20 percentile on ALL 3 conflict categories."""
+    scored = pd.DataFrame([
+        # Norway with lowest score on all 3 categories
+        *[{"country_id": 1, "country_str": "Norway", "event_category": ec,
+           "anomaly_score": 0.1, "n_indicators_used": 5}
+          for ec in ["civil_war_and_insurgency", "military_coup", "terrorist_attack"]],
+        # 9 other countries with higher scores on each category
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 11) for ec in ["civil_war_and_insurgency",
+                                            "military_coup", "terrorist_attack"]],
+    ])
+    case = {
+        "case_id": 3, "country": "Norway",
+        "event_categories": ["civil_war_and_insurgency", "military_coup", "terrorist_attack"],
+        "test_type": "floor", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "rank_floor_all_categories", "threshold": 0.20},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Norway is at rank 1/10 = 0.1 on all 3 categories, all < 0.20 → PASS
+    assert result["passed"] is True
+
+
+def test_eval_predicate_rank_floor_all_categories_fail_on_breach():
+    """One category breach → whole case FAILS."""
+    scored = pd.DataFrame([
+        # Norway is LOW on cat1 + cat2 but HIGH (breaches floor) on cat3
+        {"country_id": 1, "country_str": "Norway", "event_category": "cat1",
+         "anomaly_score": 0.1, "n_indicators_used": 5},
+        {"country_id": 1, "country_str": "Norway", "event_category": "cat2",
+         "anomaly_score": 0.1, "n_indicators_used": 5},
+        {"country_id": 1, "country_str": "Norway", "event_category": "cat3",
+         "anomaly_score": 99.0, "n_indicators_used": 5},  # BREACH
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 11) for ec in ["cat1", "cat2", "cat3"]],
+    ])
+    case = {
+        "case_id": 3, "country": "Norway",
+        "event_categories": ["cat1", "cat2", "cat3"],
+        "test_type": "floor", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "rank_floor_all_categories", "threshold": 0.20},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    assert result["passed"] is False
+    assert "cat3" in result["reason"]  # breach category named
+
+
+def test_eval_predicate_multi_category_count_above_pass():
+    """Yemen above 0.75 on >= 3 of the listed categories."""
+    # Yemen at HIGH scores on cat1, cat2, cat3; LOW on cat4
+    scored = pd.DataFrame([
+        *[{"country_id": 1, "country_str": "Yemen", "event_category": ec,
+           "anomaly_score": 10.0, "n_indicators_used": 5}
+          for ec in ["cat1", "cat2", "cat3"]],
+        {"country_id": 1, "country_str": "Yemen", "event_category": "cat4",
+         "anomaly_score": 0.1, "n_indicators_used": 5},
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 11) for ec in ["cat1", "cat2", "cat3", "cat4"]],
+    ])
+    case = {
+        "case_id": 8, "country": "Yemen",
+        "event_categories": ["cat1", "cat2", "cat3", "cat4"],
+        "test_type": "failed_state", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "multi_category_count_above",
+                      "threshold": 0.75, "min_categories": 3},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Yemen above 0.75 on 3 of 4 categories → PASS (>= 3 required)
+    assert result["passed"] is True
+
+
+def test_eval_predicate_universe_outside_returns_passed_none():
+    """T3 from strict review: in_evaluation_universe=false → passed=None."""
+    pdf = _make_scored_fixture([("Other", "X", 1.0, 5)])
+    pdf = mod._compute_percentile_per_category(pdf)
+    case = {
+        "case_id": 1, "country": "Malta",
+        "event_categories": ["military_coup"], "test_type": "neg",
+        "in_evaluation_universe": False, "evaluation_scope": "per_arm",
+        "phase_gate": "Phase 6",
+        "predicate": {"type": "percentile_below", "threshold": 0.30},
+    }
+    result = mod._eval_predicate(case, pdf)
+    assert result["passed"] is None
+    assert "outside_evaluation_universe" in result["reason"]
+
+
+def test_eval_predicate_cross_arm_scope_returns_passed_none():
+    """T4: evaluation_scope=cross_arm → passed=None (skip in per-arm)."""
+    pdf = _make_scored_fixture([("Venezuela", "X", 1.0, 5)])
+    pdf = mod._compute_percentile_per_category(pdf)
+    case = {
+        "case_id": 6, "country": "Venezuela",
+        "event_categories": ["X"], "test_type": "stability",
+        "in_evaluation_universe": True, "evaluation_scope": "cross_arm",
+        "phase_gate": "v0.1a",
+        "predicate": {"type": "rank_stability_across_versions",
+                      "max_percentile_delta": 0.15, "comparison_arms": ["D", "A"]},
+    }
+    result = mod._eval_predicate(case, pdf)
+    assert result["passed"] is None
+    assert "cross_arm" in result["reason"]
+
+
+def test_evaluate_anchor_cases_aggregates():
+    """evaluate_anchor_cases returns one result per case from the battery."""
+    battery = {
+        "cases": [
+            {"case_id": 1, "country": "Malta",
+             "event_categories": ["military_coup"], "test_type": "neg",
+             "in_evaluation_universe": False, "evaluation_scope": "per_arm",
+             "phase_gate": "Phase 6",
+             "predicate": {"type": "percentile_below", "threshold": 0.30}},
+            {"case_id": 3, "country": "Norway",
+             "event_categories": ["X"], "test_type": "floor",
+             "in_evaluation_universe": True, "evaluation_scope": "per_arm",
+             "phase_gate": "v0.1a",
+             "predicate": {"type": "rank_floor_all_categories", "threshold": 0.20}},
+        ],
+    }
+    scored = pd.DataFrame([
+        {"country_id": 1, "country_str": "Norway", "event_category": "X",
+         "anomaly_score": 0.1, "n_indicators_used": 5},
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": "X",
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 11)],
+    ])
+    results = mod.evaluate_anchor_cases(scored, battery)
+    assert len(results) == 2
+    # Case 1 (Malta) outside universe → None
+    assert results[0]["passed"] is None
+    # Case 3 (Norway) at percentile 0.1 < 0.20 → True
+    assert results[1]["passed"] is True
+
+
+def test_evaluate_anchor_cases_none_battery_returns_empty():
+    """If battery is None, return empty list (regression suite is optional)."""
+    out = mod.evaluate_anchor_cases(pd.DataFrame(), None)
+    assert out == []
+
+
+def test_country_fallback_both_yemen_and_somalia_insufficient_returns_none():
+    """T2 strict-review fix: when BOTH primary and fallback are insufficient,
+    the for-else branch fires and returns passed=None with a clear reason.
+    This is the production-likely path because Somalia is outside the
+    countries_100.json universe (case 8 spec note).
+    """
+    # Yemen only on 1 category (< 3 required); Somalia entirely absent
+    scored = pd.DataFrame([
+        {"country_id": 1, "country_str": "Yemen", "event_category": "cat1",
+         "anomaly_score": 10.0, "n_indicators_used": 5},
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 8) for ec in ["cat1", "cat2", "cat3"]],
+    ])
+    case = {
+        "case_id": 8, "country": "Yemen",
+        "country_alternatives": ["Somalia"],
+        "country_fallback_rule": {
+            "min_categories_with_data": 3,
+            "min_n_countries_per_category": 5,
+        },
+        "event_categories": ["cat1", "cat2", "cat3"],
+        "test_type": "failed_state", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "multi_category_count_above",
+                      "threshold": 0.50, "min_categories": 3},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Both primary insufficient and Somalia outside scored → passed=None
+    assert result["passed"] is None
+    assert "insufficient" in result["reason"] or "fallback" in result["reason"]
+
+
+def test_eval_predicate_percentile_above_satisfies_any_false():
+    """T3 strict-review fix: percentile_above with satisfies_any=False
+    (case 4 single-category Tunisia path) — only the first category in
+    the list is evaluated; needs to exceed the threshold."""
+    scored = pd.DataFrame([
+        {"country_id": 1, "country_str": "Tunisia",
+         "event_category": "democratic_transition",
+         "anomaly_score": 10.0, "n_indicators_used": 5},  # HIGH
+        *[{"country_id": i, "country_str": f"C{i}",
+           "event_category": "democratic_transition",
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(2, 6)],
+    ])
+    case = {
+        "case_id": 4, "country": "Tunisia",
+        "event_categories": ["democratic_transition"],
+        "test_type": "pos", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        # No predicate_satisfies_any key → defaults to False (single-category path)
+        "predicate": {"type": "percentile_above", "threshold": 0.50},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Tunisia at rank 5/5 = 1.0 percentile > 0.50 → PASS
+    assert result["passed"] is True
+
+
+def test_eval_predicate_strict_boundary_at_threshold_fails():
+    """T1 + T3 strict-review fix: predicates use STRICT comparison
+    (< for below, > for above). A country EXACTLY at the threshold
+    boundary is on the FAIL side for both directions.
+    """
+    # n=4 so rank/n gives exact 0.25, 0.50, 0.75, 1.00 percentiles
+    scored = _make_scored_fixture([
+        ("C1", "X", 1.0, 5),  # percentile = 0.25
+        ("C2", "X", 2.0, 5),  # percentile = 0.50 (median)
+        ("C3", "X", 3.0, 5),  # percentile = 0.75
+        ("C4", "X", 4.0, 5),  # percentile = 1.00 (top)
+    ])
+    pdf = mod._compute_percentile_per_category(scored)
+
+    # percentile_above 0.50: C2 at exactly 0.50 → FAIL (strict >)
+    case_above = {
+        "case_id": 99, "country": "C2", "event_categories": ["X"],
+        "test_type": "boundary", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "percentile_above", "threshold": 0.50},
+    }
+    result = mod._eval_predicate(case_above, pdf)
+    assert result["passed"] is False, "country at exactly threshold must FAIL percentile_above"
+
+    # percentile_below 0.25: C1 at exactly 0.25 → FAIL (strict <)
+    case_below = {
+        "case_id": 99, "country": "C1", "event_categories": ["X"],
+        "test_type": "boundary", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "percentile_below", "threshold": 0.25},
+    }
+    result = mod._eval_predicate(case_below, pdf)
+    assert result["passed"] is False, "country at exactly threshold must FAIL percentile_below"
+
+
+def test_country_fallback_yemen_to_somalia_when_yemen_insufficient():
+    """Yemen → Somalia fallback when Yemen has insufficient data."""
+    # Yemen present only in 2 categories; Somalia in 5
+    scored = pd.DataFrame([
+        # Yemen on 2 categories only (insufficient: < 3)
+        {"country_id": 1, "country_str": "Yemen", "event_category": "cat1",
+         "anomaly_score": 10.0, "n_indicators_used": 5},
+        {"country_id": 1, "country_str": "Yemen", "event_category": "cat2",
+         "anomaly_score": 10.0, "n_indicators_used": 5},
+        # Somalia on 5 categories (sufficient: >= 3)
+        *[{"country_id": 2, "country_str": "Somalia", "event_category": ec,
+           "anomaly_score": 10.0, "n_indicators_used": 5}
+          for ec in ["cat1", "cat2", "cat3", "cat4", "cat5"]],
+        # Other countries to give each category enough cells (n>=5)
+        *[{"country_id": i, "country_str": f"C{i}", "event_category": ec,
+           "anomaly_score": float(i), "n_indicators_used": 5}
+          for i in range(3, 9) for ec in ["cat1", "cat2", "cat3", "cat4", "cat5"]],
+    ])
+    case = {
+        "case_id": 8, "country": "Yemen",
+        "country_alternatives": ["Somalia"],
+        "country_fallback_rule": {
+            "min_categories_with_data": 3,
+            "min_n_countries_per_category": 5,
+        },
+        "event_categories": ["cat1", "cat2", "cat3", "cat4", "cat5"],
+        "test_type": "failed_state", "in_evaluation_universe": True,
+        "evaluation_scope": "per_arm", "phase_gate": "v0.1a",
+        "predicate": {"type": "multi_category_count_above",
+                      "threshold": 0.50, "min_categories": 3},
+    }
+    pdf = mod._compute_percentile_per_category(scored)
+    result = mod._eval_predicate(case, pdf)
+    # Should fall back to Somalia (3+ categories with data)
+    assert result["country_resolved_to"] == "Somalia"
+    # Somalia is above the threshold on enough categories → PASS
+    assert result["passed"] is True
