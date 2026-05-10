@@ -131,6 +131,7 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 WEIGHT_MATRIX_JSON = ROOT / "qgi-data" / "reference" / "weight-matrix.json"
 DIRECTIONS_JSON = ROOT / "qgi-data" / "reference" / "indicator-directions.json"
 ALLOW_LIST_JSON = ROOT / "qgi-data" / "reference" / "indicator-allow-list.json"
+ANCHOR_BATTERY_JSON = ROOT / "qgi-data" / "reference" / "cascade-anchor-case-battery.json"
 OUTPUT_JSON_LEGACY = ROOT / "qgi-data" / "reference" / "phase4-validation.json"
 OUTPUT_JSON_TEMPLATE = "phase4-validation-arm{arm}.json"
 
@@ -310,6 +311,7 @@ def evaluate_weights(
     directions: dict[str, int] | None = None,
     bootstrap_resamples: int = DEFAULT_BOOTSTRAP_RESAMPLES,
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
+    anchor_battery: dict | None = None,
 ) -> dict:
     """Run the full evaluation pipeline (score → per-category AUC + CI →
     stratified-by-coverage AUC → per-category ECE + reliability +
@@ -351,10 +353,16 @@ def evaluate_weights(
     per_cat_ece = compute_per_category_ece(scored, gt)
     # Legacy v3 cross-category ECE retained for backward-compat consumers.
     ece, reliability = compute_ece_and_reliability(scored, gt)
+    # v4 Step 3: anchor-case battery (regression suite, not validation).
+    anchor_results = evaluate_anchor_cases(scored, anchor_battery)
+    n_anchor_pass = sum(1 for r in anchor_results if r["passed"] is True)
+    n_anchor_fail = sum(1 for r in anchor_results if r["passed"] is False)
+    n_anchor_skip = sum(1 for r in anchor_results if r["passed"] is None)
     print(f"  {label}: mean_auc={mean_auc:.4f}  median_auc={median_auc:.4f}  "
           f"ece={ece:.4f}  n_categories_with_auc={len(aucs_real)}/{len(per_cat)}  "
           f"stratified[ds={stratified['data_sufficient']['mean_auc']:.4f}/tc="
-          f"{stratified['thin_coverage']['mean_auc']:.4f}]")
+          f"{stratified['thin_coverage']['mean_auc']:.4f}]  "
+          f"anchors[pass={n_anchor_pass}/fail={n_anchor_fail}/skip={n_anchor_skip}]")
     return {
         "label": label,
         "n_event_categories": len(per_cat),
@@ -370,6 +378,13 @@ def evaluate_weights(
         # v4 NEW additions
         "stratified_auc": stratified,
         "per_event_category_ece": per_cat_ece,
+        # v4 Step 3 anchor battery (None-tolerant — empty list if no battery loaded)
+        "anchor_case_battery": {
+            "n_pass": n_anchor_pass,
+            "n_fail": n_anchor_fail,
+            "n_skip": n_anchor_skip,
+            "cases": anchor_results,
+        },
     }
 
 
@@ -777,6 +792,280 @@ def compute_per_category_ece(
     return out
 
 
+def load_anchor_battery(path: Path = ANCHOR_BATTERY_JSON) -> dict:
+    """v4 NEW (Phase 5 v0.1a Step 3). Load cascade-anchor-case-battery.json.
+
+    Returns the full parsed JSON object so callers have access to the
+    schema metadata + cases. Missing-file behavior: returns None and
+    warns; the per-arm evaluation continues without anchor-case results
+    (anchor cases are a regression suite, not a hard-blocker).
+    """
+    if not path.exists():
+        print(f"  [WARN] {path.name} not found — anchor-case battery skipped. "
+              f"Anchor results will be absent from the per-arm output JSON.")
+        return None
+    d = json.loads(path.read_text(encoding="utf-8"))
+    print(f"  anchor-case-battery: {len(d.get('cases', []))} cases "
+          f"(schema_v{d.get('schema_version')})")
+    return d
+
+
+def _compute_percentile_per_category(scored: pd.DataFrame) -> pd.DataFrame:
+    """Compute predicted-risk percentile per (country, event_category).
+
+    Per the anchor-battery `rank_basis` convention (cascade-anchor-case-
+    battery.json `evaluation_semantics.rank_basis`): ASCENDING by
+    anomaly_score, so:
+      - percentile = rank / n_countries  (rank starts at 1)
+      - percentile = 0.05 = bottom 5% (least predicted-risk)
+      - percentile = 0.95 = top 5%    (most predicted-risk)
+
+    Under the v4 risk-direction convention (PR #43 B1 fix), HIGH
+    anomaly_score = HIGH event probability. So HIGH percentile = HIGH
+    predicted risk. All anchor predicates assume this convention.
+    """
+    out = scored.copy()
+    # Rank ascending: lowest anomaly_score → rank 1 → low percentile.
+    out["risk_rank"] = out.groupby("event_category")["anomaly_score"].rank(
+        method="average", ascending=True,
+    )
+    out["n_in_category"] = out.groupby("event_category")["country_str"].transform("count")
+    out["risk_percentile"] = out["risk_rank"] / out["n_in_category"]
+    return out
+
+
+def _eval_predicate(case: dict, percentile_df: pd.DataFrame) -> dict:
+    """Evaluate a single anchor case against the percentile_df.
+
+    Returns: {case_id, country, country_resolved_to, event_categories,
+              test_type, evaluation_scope, phase_gate, predicate_type,
+              actual_values, passed, reason}
+
+    `passed` semantics:
+      - True  : case passes the predicate
+      - False : case fails the predicate
+      - None  : case cannot be evaluated (universe gap, cross-arm
+                scope, or primary+fallback both insufficient)
+    """
+    case_id = case["case_id"]
+    country = case["country"]
+    test_type = case["test_type"]
+    scope = case.get("evaluation_scope", "per_arm")
+    phase_gate = case["phase_gate"]
+    pred = case["predicate"]
+    pred_type = pred["type"]
+    base = {
+        "case_id": case_id,
+        "country": country,
+        "country_resolved_to": None,
+        "event_categories": case["event_categories"],
+        "test_type": test_type,
+        "evaluation_scope": scope,
+        "phase_gate": phase_gate,
+        "predicate_type": pred_type,
+        "actual_values": None,
+        "passed": None,
+        "reason": "",
+    }
+
+    # Universe-gap guard (T3 from strict review).
+    if case.get("in_evaluation_universe") is False:
+        base["reason"] = (
+            f"country_outside_evaluation_universe (in_evaluation_universe=false; "
+            f"see case.universe_note)"
+        )
+        return base
+
+    # Cross-arm scope guard (T4 from strict review).
+    if scope == "cross_arm":
+        base["reason"] = (
+            "evaluation_scope=cross_arm; computed in step 5 cross-arm comparison, "
+            "not per-arm evaluation"
+        )
+        return base
+
+    # Per-arm evaluation.
+    cats = case["event_categories"]
+    sub = percentile_df[
+        (percentile_df["country_str"] == country)
+        & (percentile_df["event_category"].isin(cats))
+    ]
+
+    # Country-fallback rule for case 8 (Yemen → Somalia).
+    if case.get("country_alternatives") and not _country_has_sufficient_data(
+        sub, cats, case.get("country_fallback_rule", {})
+    ):
+        # Primary insufficient; try alternatives in order.
+        for alt in case["country_alternatives"]:
+            alt_sub = percentile_df[
+                (percentile_df["country_str"] == alt)
+                & (percentile_df["event_category"].isin(cats))
+            ]
+            if not alt_sub.empty and _country_has_sufficient_data(
+                alt_sub, cats, case.get("country_fallback_rule", {})
+            ):
+                sub = alt_sub
+                base["country_resolved_to"] = alt
+                break
+        else:
+            base["reason"] = (
+                "primary country has insufficient data on >=3 categories "
+                "(n_countries < 5 per category) AND fallback alternative(s) "
+                "either insufficient or outside evaluation universe"
+            )
+            return base
+    else:
+        base["country_resolved_to"] = country
+
+    if sub.empty:
+        base["reason"] = (
+            f"no rows in scored data for country={country} on any of "
+            f"event_categories={cats}. Country may be missing from the "
+            f"weight-matrix coverage or event ground truth."
+        )
+        return base
+
+    # Collect per-category percentiles (the actual_values payload).
+    actual_values = {
+        row["event_category"]: float(row["risk_percentile"])
+        for _, row in sub.iterrows()
+    }
+    base["actual_values"] = actual_values
+
+    # Dispatch by predicate type.
+    if pred_type == "percentile_below":
+        threshold = pred["threshold"]
+        # Single-category test (cases 1, 2 use this with one category)
+        cat = cats[0]
+        if cat not in actual_values:
+            base["reason"] = f"event_category {cat} not in scored data for {country}"
+            return base
+        actual = actual_values[cat]
+        passed = actual < threshold
+        base["passed"] = bool(passed)
+        base["reason"] = (
+            f"{country} percentile on {cat} = {actual:.4f}; "
+            f"threshold = below {threshold:.2f} → {'PASS' if passed else 'FAIL'}"
+        )
+
+    elif pred_type == "percentile_above":
+        threshold = pred["threshold"]
+        # Cases 4, 5: case 5 uses predicate_satisfies_any=True (any of
+        # the 3 economic categories above threshold passes); case 4 has
+        # a single category.
+        # T1 strict-review fix: use strict `>` for "above" predicates to
+        # match the strict `<` used by "below" predicates. The boundary
+        # itself is on the FAIL side for both directions — matching the
+        # JSON spec text "above the 50th percentile" (strict) and the
+        # "below the 30th percentile" (strict).
+        any_pass = case.get("predicate_satisfies_any", False)
+        if any_pass:
+            passes = [v > threshold for v in actual_values.values()]
+            passed = any(passes)
+            base["passed"] = bool(passed)
+            base["reason"] = (
+                f"{country} percentiles = {actual_values}; "
+                f"threshold = above {threshold:.2f} (satisfies_any) → "
+                f"{'PASS' if passed else 'FAIL'} "
+                f"({sum(passes)}/{len(passes)} categories above threshold)"
+            )
+        else:
+            cat = cats[0]
+            if cat not in actual_values:
+                base["reason"] = f"event_category {cat} not in scored data for {country}"
+                return base
+            actual = actual_values[cat]
+            passed = actual > threshold
+            base["passed"] = bool(passed)
+            base["reason"] = (
+                f"{country} percentile on {cat} = {actual:.4f}; "
+                f"threshold = above {threshold:.2f} → {'PASS' if passed else 'FAIL'}"
+            )
+
+    elif pred_type == "rank_floor_all_categories":
+        threshold = pred["threshold"]
+        # ALL categories must be below threshold
+        breaches = {c: v for c, v in actual_values.items() if v >= threshold}
+        passed = len(breaches) == 0
+        base["passed"] = bool(passed)
+        if passed:
+            max_p = max(actual_values.values()) if actual_values else 0.0
+            base["reason"] = (
+                f"{country} max percentile across {len(actual_values)} categories "
+                f"= {max_p:.4f}; threshold = floor below {threshold:.2f} on ALL → PASS"
+            )
+        else:
+            base["reason"] = (
+                f"{country} BREACHES floor on {len(breaches)} categories: "
+                f"{breaches}; threshold = below {threshold:.2f} on ALL → FAIL"
+            )
+
+    elif pred_type == "multi_category_count_above":
+        threshold = pred["threshold"]
+        min_categories = pred["min_categories"]
+        # T1: strict `>` per the JSON spec text "above the 75th percentile"
+        above = [c for c, v in actual_values.items() if v > threshold]
+        passed = len(above) >= min_categories
+        base["passed"] = bool(passed)
+        base["reason"] = (
+            f"{country} above {threshold:.2f} on {len(above)} of "
+            f"{len(actual_values)} categories ({above}); "
+            f"threshold = at least {min_categories} → {'PASS' if passed else 'FAIL'}"
+        )
+
+    elif pred_type == "rank_stability_across_versions":
+        # Cross-arm scope; should have been caught above. Defensive.
+        base["reason"] = (
+            "rank_stability_across_versions is cross-arm; should not reach "
+            "per-arm evaluation. This is a bug — case was missing "
+            "evaluation_scope=cross_arm in the JSON."
+        )
+        return base
+
+    else:
+        base["reason"] = f"unknown predicate type: {pred_type}"
+        return base
+
+    return base
+
+
+def _country_has_sufficient_data(
+    sub: pd.DataFrame, cats: list, fallback_rule: dict,
+) -> bool:
+    """Yemen→Somalia fallback rule: country must have at least
+    `min_categories_with_data` categories with `n_in_category >=
+    min_n_countries_per_category` (T5 from strict review — threshold
+    lifted from prose to structured data).
+    """
+    if not fallback_rule:
+        return not sub.empty
+    min_cats = fallback_rule.get("min_categories_with_data", 1)
+    min_n = fallback_rule.get("min_n_countries_per_category", 1)
+    qualifying = sub[sub["n_in_category"] >= min_n]
+    return qualifying["event_category"].nunique() >= min_cats
+
+
+def evaluate_anchor_cases(scored: pd.DataFrame, battery: dict | None) -> list[dict]:
+    """v4 NEW (Phase 5 v0.1a Step 3). Evaluate the 8-case anchor battery
+    against the per-arm scored output.
+
+    Returns a list of per-case result dicts (see _eval_predicate for the
+    schema). When battery is None (file missing), returns empty list +
+    a warning was already printed by load_anchor_battery.
+    """
+    if battery is None:
+        return []
+    if scored.empty:
+        return [
+            {**{k: None for k in ("actual_values", "passed")},
+             "case_id": c["case_id"], "country": c["country"],
+             "reason": "scored DataFrame is empty"}
+            for c in battery.get("cases", [])
+        ]
+    percentile_df = _compute_percentile_per_category(scored)
+    return [_eval_predicate(case, percentile_df) for case in battery.get("cases", [])]
+
+
 def compute_ece_and_reliability(scored: pd.DataFrame, gt: pd.DataFrame,
                                  n_bins: int = N_ECE_BINS) -> tuple[float, list[dict]]:
     """Min-max-scale anomaly_score to [0, 1] WITHIN EACH event_category
@@ -883,6 +1172,12 @@ def main(
             )
         weights_df = apply_591_filter(weights_df, allow_ids)
 
+    # v4 Step 3: anchor-case battery (regression suite). Optional — if
+    # missing, anchor results are absent from the output (NOT a fatal
+    # error; anchor cases are documentation/regression, not gating).
+    print(f"  Loading anchor-case battery ({ANCHOR_BATTERY_JSON.name})")
+    anchor_battery = load_anchor_battery()
+
     needed_num_ids = sorted(weights_df["indicator_numeric_id"].unique().tolist())
     print(f"  indicators in weight matrix (post-filter): {len(needed_num_ids)}")
 
@@ -931,6 +1226,7 @@ def main(
         label=f"treatment_arm{ablation_arm}",
         use_signed_scoring=use_signed_scoring, directions=directions,
         bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
+        anchor_battery=anchor_battery,
     )
     mean_auc = treatment["mean_auc"]
     n_above_0_55 = treatment["n_auc_above_0_55"]
@@ -944,12 +1240,18 @@ def main(
     baseline_uniform = None
     baseline_random = None
     if with_baselines:
+        # T5 strict-review fix: anchor battery is about treatment
+        # methodology (does the formula correctly handle Malta, Norway,
+        # etc.) — "Norway fails the floor under uniform weights" is
+        # uninformative because the formula is what we're ablating.
+        # Skip anchor evaluation for baselines.
         baseline_uniform = evaluate_weights(
             build_uniform_baseline(weights_df), zscores,
             country_id_to_str, num_to_api, gt,
             label="baseline_uniform",
             use_signed_scoring=use_signed_scoring, directions=directions,
             bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
+            anchor_battery=None,
         )
         baseline_random = evaluate_weights(
             build_random_baseline(weights_df, seed=baseline_seed), zscores,
@@ -957,6 +1259,7 @@ def main(
             label=f"baseline_random_seed{baseline_seed}",
             use_signed_scoring=use_signed_scoring, directions=directions,
             bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
+            anchor_battery=None,
         )
 
     # Reliability diagram log (treatment only — baselines' reliability is
@@ -1097,6 +1400,9 @@ def main(
         # v4 NEW top-level keys
         "stratified_auc": treatment["stratified_auc"],
         "per_event_category_ece": treatment["per_event_category_ece"],
+        # v4 Step 3 anchor-case battery (regression suite per
+        # cascade-anchor-case-battery.json; Kwame's warning: passing != validation)
+        "anchor_case_battery": treatment["anchor_case_battery"],
     }
 
     # Baselines (#598): when --with-baselines fires, attach the uniform and
