@@ -109,6 +109,16 @@ resource "aws_iam_role_policy" "github_actions_ecr_push" {
           "ecr:BatchCheckLayerAvailability",
           "ecr:BatchGetImage",
           "ecr:CompleteLayerUpload",
+          # DescribeImages is the sibling read used during the buildx
+          # manifest-merge step (BatchGetImage covers HEAD; DescribeImages
+          # covers list/lookup). Mirrors the same 8-action set on the
+          # management-account ECRPushIndicatorFetcher + ECRPushDSCDIFinder
+          # policies in qgi-aws-tf — see #635 for the sibling-policy drift
+          # audit. The staging policy already had BatchGetImage so the
+          # buildx 403 the management-account dscdi-finder hit on 2026-05-10
+          # (run 25408279393) would not reproduce here, but DescribeImages
+          # is needed to keep the 4 sibling policies semantically aligned.
+          "ecr:DescribeImages",
           "ecr:DescribeRepositories",
           "ecr:GetDownloadUrlForLayer",
           "ecr:InitiateLayerUpload",
@@ -118,6 +128,15 @@ resource "aws_iam_role_policy" "github_actions_ecr_push" {
         Resource = [
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher",
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-indicator-fetcher-fao",
+          # qgi-pipeline-a-vdem-ingest: created in modules/batch/vdem.tf line 21,
+          # pushed to by .github/workflows/ecr-push.yml in qgi-pipeline (the
+          # same workflow that pushes the 3 other repos). Missing from this
+          # Resource list is the second latent issue of #635 class — surfaced
+          # by the PR #23 strict review. Without it, next push to
+          # batch/qgi-vdem-ingest/** 403s with AccessDenied on the repo ARN
+          # (different symptom than the buildx manifest HEAD failure mode,
+          # but same root cause: sibling-policy/sibling-resource drift).
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-vdem-ingest",
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-b-scdi-finder",
         ]
       },
