@@ -1,58 +1,52 @@
 # ---------------------------------------------------------------------------
 # ECR — QGI pipeline container images (management account)
 #
-# Two repos live here:
-#   1. qgi-pipeline-b-scdi-finder       — Phase 2 SCDI finder (EC2 Batch)
-#   2. qgi-pipeline-a-indicator-fetcher — Phase 1 Fargate Spot fetcher (#FAR-1)
+# One repo's policy lives here:
+#   1. qgi-pipeline-b-scdi-finder — Phase 2 SCDI finder (EC2 Batch)
 #
-# Consolidated in management per #152 Path A (previously the fetcher repo
-# lived in the staging account which blocked CI cross-account pushes).
+# The repo itself is hand-built (not imported into TF state); we only
+# manage its repository policy. dscdi-finder lives in this file too —
+# its TF-managed repo + policy are further down.
 #
-# For scdi-finder the ECR repo itself is hand-built (not imported into TF
-# state); we only manage its repository policy here. For indicator-fetcher
-# the repo IS TF-managed since we're creating it greenfield during the
-# migration.
+# (indicator-fetcher mgmt-mirror was deleted 2026-05-11 per #635 closure;
+# Phase 1 fetchers now live per-environment in staging-account ECR
+# managed by qgi-infra, see tombstone block below.)
 # ---------------------------------------------------------------------------
 
 data "aws_iam_policy_document" "scdi_finder_ecr" {
-  # GitHub Actions push access (qgi-pipeline repo, main branch)
-  statement {
-    sid    = "GitHubActionsPush"
-    effect = "Allow"
-    principals {
-      type        = "AWS"
-      identifiers = [aws_iam_role.qgi_ecr_push.arn]
-    }
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-    ]
-  }
-
-  # Cross-account pull access for QGI pipeline environments
-  # ECS uses executionRoleArn (qgi-batch-job-role) for image pulls when set.
-  # Also allow the ECS instance role as a fallback.
+  # Cross-account pull access for QGI pipeline environments using
+  # account-root principals (per AWS expert consult 2026-05-10 + #661
+  # reconcile). The 3-account-root pattern was hand-built 2025-09; this
+  # TF block now matches that live policy exactly so terraform plan
+  # no-ops on this resource.
   #
-  # NOTE 2026-05-10: this TF data block is currently DRIFTED from the live
-  # scdi-finder repo policy (which uses account-root principals for 3 accts
-  # qa+staging+prod, hand-built 2025-09). Applying this block as-is would
-  # NARROW QA + prod scdi-finder pull access. Out of scope for the current
-  # Stage F unblock — to be addressed in a follow-up PR that imports the
-  # live policy and aligns to the :root pattern across all qgi mgmt-account
-  # ECR repos. See AWS expert consult 2026-05-10.
+  # Push access is intentionally NOT in this repo policy. The GHA OIDC
+  # role `github-actions-qgi-ecr-push` is authorized to push to
+  # scdi-finder via the IAM policy
+  # `GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess` — the policy
+  # *document* itself is hand-built in the AWS console (predates this
+  # TF repo), but the policy-to-role *attachment* is TF-managed via
+  # `aws_iam_role_policy_attachment.qgi_ecr_push` in iam_oidc_roles.tf.
+  # Push grant lives at the IAM role-side (managed-policy attachment),
+  # not at the repo-policy side. dscdi-finder (further down) uses a
+  # different pattern — its push grant lives on the role's inline
+  # `ECRPushDSCDIFinder` policy.
+  #
+  # Why account-root identifiers rather than specific role ARNs: any
+  # principal in qa / staging / prod with `ecr:BatchGetImage` etc in
+  # its own IAM policy can pull from this repo. Tightening to specific
+  # role ARNs (the previous TF source) was both more brittle (every new
+  # Fargate role would need an update) and never deployed (live policy
+  # has used :root since 2025-09).
   statement {
-    sid    = "CrossAccountECSPull"
+    sid    = "AllowCrossAccountPull"
     effect = "Allow"
     principals {
       type = "AWS"
       identifiers = [
-        # Staging (222222222222) — both roles may be used for ECR pull
-        "arn:aws:iam::222222222222:role/qgi-ecs-instance-role",
-        "arn:aws:iam::222222222222:role/qgi-batch-job-role",
+        "arn:aws:iam::444444444444:root", # prod
+        "arn:aws:iam::222222222222:root", # staging
+        "arn:aws:iam::333333333333:root", # qa
       ]
     }
     actions = [
