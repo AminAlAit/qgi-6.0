@@ -139,53 +139,24 @@ resource "aws_iam_role_policy_attachment" "qgi_ecr_push" {
 }
 
 # ---------------------------------------------------------------------------
-# qgi-pipeline — ECR push for indicator-fetcher (#152 Path A, #FAR-1)
-# Separate inline policy so we can ship this TF-managed without touching
-# the hand-managed GitHubActionsECR-QGI-pB-SCDI-Finder-PushAccess policy.
+# ECRPushIndicatorFetcher — DELETED 2026-05-11 (#635 closure)
+#
+# This inline policy was added under #152 Path A to authorize the GHA
+# OIDC role `github-actions-qgi-ecr-push` to push the indicator-fetcher
+# image to a management-account mirror of the staging ECR repo. Path A
+# was effectively parked: the runtime path settled on staging-account
+# ECR (qgi-infra/modules/iam/main.tf `github_actions_ecr_push` role),
+# which now covers the indicator-fetcher repo with the same 8-action
+# push subset including ecr:BatchGetImage + ecr:DescribeImages (PR #23,
+# merged 2026-05-11).
+#
+# Live AWS state at deletion: the policy was NEVER actually attached to
+# the role (verified via `aws iam list-role-policies --role-name
+# github-actions-qgi-ecr-push` → only `ECRPushDSCDIFinder` present), so
+# this deletion is source-only — no AWS-side resource to detach.
+#
+# See the matching deletion in ecr_policy.tf for the full rationale.
 # ---------------------------------------------------------------------------
-
-data "aws_iam_policy_document" "qgi_ecr_push_indicator_fetcher" {
-  statement {
-    sid    = "ECRAuth"
-    effect = "Allow"
-    actions = [
-      "ecr:GetAuthorizationToken",
-    ]
-    resources = ["*"]
-  }
-
-  statement {
-    sid    = "ECRPushIndicatorFetcher"
-    effect = "Allow"
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      # Buildx publishes OCI attestation manifests (provenance/SBOM) by
-      # default since v0.10 and HEAD-checks the manifest namespace via
-      # BatchGetImage; DescribeImages is the sibling read used during
-      # the manifest-merge step. Without both, `docker buildx build
-      # --push` 403s on the manifest HEAD even with all the write
-      # actions present. Mirrors the same pair on ECRPushDSCDIFinder
-      # (PR #634, 2026-05-10) — see #635 for the sibling-policy drift
-      # audit that caught this gap.
-      "ecr:BatchGetImage",
-      "ecr:CompleteLayerUpload",
-      "ecr:DescribeImages",
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-    ]
-    resources = [
-      aws_ecr_repository.indicator_fetcher.arn,
-    ]
-  }
-}
-
-resource "aws_iam_role_policy" "qgi_ecr_push_indicator_fetcher" {
-  name   = "ECRPushIndicatorFetcher"
-  role   = aws_iam_role.qgi_ecr_push.id
-  policy = data.aws_iam_policy_document.qgi_ecr_push_indicator_fetcher.json
-}
 
 # ---------------------------------------------------------------------------
 # qgi-pipeline — ECR push for dscdi-finder (Phase 5 v0.0b Stage F preflight)
