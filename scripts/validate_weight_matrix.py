@@ -312,6 +312,7 @@ def evaluate_weights(
     bootstrap_resamples: int = DEFAULT_BOOTSTRAP_RESAMPLES,
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
     anchor_battery: dict | None = None,
+    strata_threshold: int = STRATA_INDICATOR_COUNT_THRESHOLD,
 ) -> dict:
     """Run the full evaluation pipeline (score → per-category AUC + CI →
     stratified-by-coverage AUC → per-category ECE + reliability +
@@ -348,7 +349,13 @@ def evaluate_weights(
         mean_auc = median_auc = float("nan")
         n_above_0_55 = n_above_0_65 = 0
     # v4: stratified AUC by n_indicators_used.
-    stratified = compute_stratified_auc(scored, gt)
+    # v5 (T2 / #666): strata_threshold is configurable for the γ-stage
+    # sensitivity sweep.
+    stratified = compute_stratified_auc(scored, gt, strata_threshold=strata_threshold)
+    # v5 (T2 / #666): per-threshold stratum sensitivity table at {3, 5, 7, 10, 15}.
+    # Transparency artifact for the γ-stage Majles deliberation; not a decision
+    # artifact (Miriam's N=30 hard floor is the gate).
+    stratum_sensitivity = compute_stratum_sensitivity(scored, gt)
     # v4: per-category ECE.
     per_cat_ece = compute_per_category_ece(scored, gt)
     # Legacy v3 cross-category ECE retained for backward-compat consumers.
@@ -378,6 +385,8 @@ def evaluate_weights(
         # v4 NEW additions
         "stratified_auc": stratified,
         "per_event_category_ece": per_cat_ece,
+        # v5 NEW (T2 / #666): γ-stage transparency artifact.
+        "stratum_sensitivity": stratum_sensitivity,
         # v4 Step 3 anchor battery (None-tolerant — empty list if no battery loaded)
         "anchor_case_battery": {
             "n_pass": n_anchor_pass,
@@ -667,17 +676,27 @@ def compute_per_category_auc_with_ci(
     return out
 
 
-def compute_stratified_auc(scored: pd.DataFrame, gt: pd.DataFrame) -> dict:
-    """v4 NEW. Stratified AUC by n_indicators_used.
+def compute_stratified_auc(
+    scored: pd.DataFrame, gt: pd.DataFrame,
+    strata_threshold: int = STRATA_INDICATOR_COUNT_THRESHOLD,
+) -> dict:
+    """v4 NEW (v5 amended for v0.2 γ-stage). Stratified AUC by n_indicators_used.
 
     Splits cells into:
-      - "data-sufficient" stratum: n_indicators_used >= STRATA_THRESHOLD
-      - "thin-coverage" stratum:   n_indicators_used <  STRATA_THRESHOLD
+      - "data-sufficient" stratum: n_indicators_used >= strata_threshold
+      - "thin-coverage" stratum:   n_indicators_used <  strata_threshold
 
     Within each stratum, compute per-category AUC the same way as
     compute_per_category_auc, then summarize. This isolates whether the
     weight-matrix signal is concentrated in well-covered categories
     (Miriam's RECONVENE concern from the post-Phase-4 DECISION v2).
+
+    v5 (T2 / #666): `strata_threshold` is now a parameter (was a module-
+    level constant). Phase 5 v0.2 charter requires this to be configurable
+    via the --strata-threshold CLI flag so γ-stage can run a sensitivity
+    sweep at thresholds {3, 5, 7, 10, 15}. The module-level constant
+    STRATA_INDICATOR_COUNT_THRESHOLD remains as the default for v3/v4-era
+    callers; new code passes `strata_threshold` explicitly.
 
     Returns:
       {"threshold": int,
@@ -689,7 +708,7 @@ def compute_stratified_auc(scored: pd.DataFrame, gt: pd.DataFrame) -> dict:
     merged = scored.merge(gt, on=["country_id", "event_category"], how="inner")
     if merged.empty:
         return {
-            "threshold": STRATA_INDICATOR_COUNT_THRESHOLD,
+            "threshold": strata_threshold,
             "data_sufficient": {"n_cells": 0, "n_categories": 0,
                                 "mean_auc": float("nan"),
                                 "median_auc": float("nan"),
@@ -700,10 +719,10 @@ def compute_stratified_auc(scored: pd.DataFrame, gt: pd.DataFrame) -> dict:
                               "per_event_category_auc": []},
         }
 
-    out = {"threshold": STRATA_INDICATOR_COUNT_THRESHOLD}
+    out = {"threshold": strata_threshold}
     for label, mask in [
-        ("data_sufficient", merged["n_indicators_used"] >= STRATA_INDICATOR_COUNT_THRESHOLD),
-        ("thin_coverage",   merged["n_indicators_used"] <  STRATA_INDICATOR_COUNT_THRESHOLD),
+        ("data_sufficient", merged["n_indicators_used"] >= strata_threshold),
+        ("thin_coverage",   merged["n_indicators_used"] <  strata_threshold),
     ]:
         sub = merged.loc[mask]
         per_cat = []
@@ -730,6 +749,90 @@ def compute_stratified_auc(scored: pd.DataFrame, gt: pd.DataFrame) -> dict:
             "per_event_category_auc": per_cat,
         }
     return out
+
+
+# Pre-registered γ-stage sensitivity sweep thresholds. Phase 5 v0.2 charter
+# (Roshani A3 + Miriam A2): emit cell counts + mean AUC at each of these
+# thresholds so the convening can see what rule v2 WOULD HAVE said at
+# alternative cuts. This is a TRANSPARENCY artifact, not a decision artifact —
+# the falsification gate uses Miriam's N=30 hard floor regardless. The sweep
+# exists so post-hoc-rationalization risk is visible.
+STRATUM_SENSITIVITY_THRESHOLDS = (3, 5, 7, 10, 15)
+
+
+def compute_stratum_sensitivity(
+    scored: pd.DataFrame, gt: pd.DataFrame,
+    thresholds: tuple[int, ...] = STRATUM_SENSITIVITY_THRESHOLDS,
+) -> dict:
+    """v5 NEW (T2 / #666). Per-threshold stratum cardinality + mean AUC.
+
+    For each threshold N in `thresholds`, count cells where n_indicators_used
+    >= N and compute the mean per-category AUC restricted to those cells.
+    Output structure mirrors compute_stratified_auc's "data_sufficient"
+    branch, one entry per threshold.
+
+    Phase 5 v0.2 charter (γ-stage / T4): runs at thresholds {3, 5, 7, 10, 15}
+    to produce the sensitivity table the Majles inspects at the γ decision
+    gate (T5). The sensitivity table is a transparency artifact only — the
+    falsification rule v2 evaluates at Miriam's N=30 hard floor regardless
+    of what the table shows.
+
+    Returns:
+      {"thresholds_swept": [3, 5, 7, 10, 15],
+       "entries": [
+         {"threshold": 3, "n_cells": int, "n_categories": int,
+          "mean_auc": float, "median_auc": float},
+         ...
+       ]}
+
+    Semantics note (PR #56 review fix 1):
+      `n_categories` counts event_category groups PRESENT in the stratum
+      (i.e. groups with at least one cell at n_indicators_used >= N).
+      It is NOT the count of categories that contribute to `mean_auc` —
+      categories with < 5 cells, all-same-label, or AUC-undefined are
+      counted in `n_categories` but skipped in the mean. This matches
+      compute_stratified_auc's `n_categories` convention; do not change
+      one without changing the other.
+    """
+    merged = scored.merge(gt, on=["country_id", "event_category"], how="inner")
+    entries: list[dict] = []
+
+    for N in thresholds:
+        if merged.empty:
+            entries.append({
+                "threshold": int(N),
+                "n_cells": 0, "n_categories": 0,
+                "mean_auc": float("nan"), "median_auc": float("nan"),
+            })
+            continue
+
+        mask = merged["n_indicators_used"] >= N
+        sub = merged.loc[mask]
+        per_cat_aucs: list[float] = []
+        n_categories = 0
+        for ec, grp in sub.groupby("event_category"):
+            n_categories += 1
+            y = grp["y_post_cutoff"].values
+            pred = grp["anomaly_score"].values
+            if len(grp) < 5 or y.sum() == 0 or y.sum() == len(y):
+                continue
+            try:
+                per_cat_aucs.append(float(roc_auc_score(y, pred)))
+            except Exception:
+                continue
+
+        entries.append({
+            "threshold": int(N),
+            "n_cells": int(mask.sum()),
+            "n_categories": n_categories,
+            "mean_auc": float(np.mean(per_cat_aucs)) if per_cat_aucs else float("nan"),
+            "median_auc": float(np.median(per_cat_aucs)) if per_cat_aucs else float("nan"),
+        })
+
+    return {
+        "thresholds_swept": list(thresholds),
+        "entries": entries,
+    }
 
 
 def compute_per_category_ece(
@@ -1128,6 +1231,7 @@ def main(
     ablation_arm: str = DEFAULT_ABLATION_ARM,
     bootstrap_resamples: int = DEFAULT_BOOTSTRAP_RESAMPLES,
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
+    strata_threshold: int = STRATA_INDICATOR_COUNT_THRESHOLD,
 ) -> None:
     if ablation_arm not in ABLATION_ARMS:
         raise ValueError(
@@ -1227,6 +1331,7 @@ def main(
         use_signed_scoring=use_signed_scoring, directions=directions,
         bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
         anchor_battery=anchor_battery,
+        strata_threshold=strata_threshold,
     )
     mean_auc = treatment["mean_auc"]
     n_above_0_55 = treatment["n_auc_above_0_55"]
@@ -1252,6 +1357,7 @@ def main(
             use_signed_scoring=use_signed_scoring, directions=directions,
             bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
             anchor_battery=None,
+            strata_threshold=strata_threshold,
         )
         baseline_random = evaluate_weights(
             build_random_baseline(weights_df, seed=baseline_seed), zscores,
@@ -1260,6 +1366,7 @@ def main(
             use_signed_scoring=use_signed_scoring, directions=directions,
             bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
             anchor_battery=None,
+            strata_threshold=strata_threshold,
         )
 
     # Reliability diagram log (treatment only — baselines' reliability is
@@ -1332,7 +1439,7 @@ def main(
             "AUC computed per event_category against y_post_cutoff with "
             f"bootstrap 95% CI ({DEFAULT_BOOTSTRAP_RESAMPLES} resamples). "
             "Stratified AUC by n_indicators_used (threshold "
-            f"{STRATA_INDICATOR_COUNT_THRESHOLD}). ECE computed per category "
+            f"{strata_threshold}). ECE computed per category "
             f"and cross-category ({N_ECE_BINS} bins, min-max-scaled)."
         ),
         "method_caveats": [
@@ -1381,7 +1488,7 @@ def main(
             "apply_591_filter": apply_filter,
             "bootstrap_resamples": bootstrap_resamples,
             "bootstrap_seed": bootstrap_seed,
-            "strata_indicator_count_threshold": STRATA_INDICATOR_COUNT_THRESHOLD,
+            "strata_indicator_count_threshold": strata_threshold,
         },
         "summary": {
             "n_event_categories": len(per_cat),
@@ -1400,6 +1507,11 @@ def main(
         # v4 NEW top-level keys
         "stratified_auc": treatment["stratified_auc"],
         "per_event_category_ece": treatment["per_event_category_ece"],
+        # v5 NEW (T2 / #666 / Phase 5 v0.2 charter A2): γ-stage transparency
+        # artifact — per-threshold cardinality + mean AUC across {3,5,7,10,15}.
+        # NOT a decision artifact (the falsification rule v2 evaluates at the
+        # N=30 hard floor regardless of which thresholds the table populates).
+        "stratum_sensitivity": treatment["stratum_sensitivity"],
         # v4 Step 3 anchor-case battery (regression suite per
         # cascade-anchor-case-battery.json; Kwame's warning: passing != validation)
         "anchor_case_battery": treatment["anchor_case_battery"],
@@ -1481,6 +1593,22 @@ if __name__ == "__main__":
     p.add_argument("--bootstrap-seed", type=int, default=DEFAULT_BOOTSTRAP_SEED,
                    help=f"Seed for bootstrap resampling (default {DEFAULT_BOOTSTRAP_SEED}). "
                         "Fixed for reproducibility.")
+    p.add_argument("--strata-threshold", type=int,
+                   default=STRATA_INDICATOR_COUNT_THRESHOLD,
+                   help=f"v5 (T2 / #666 / Phase 5 v0.2 charter A2). "
+                        f"n_indicators_used cutoff that splits a (country, "
+                        f"event_category) cell into the `data_sufficient` vs "
+                        f"`thin_coverage` stratum for the `stratified_auc` "
+                        f"block (default {STRATA_INDICATOR_COUNT_THRESHOLD}). "
+                        f"Used by the γ-stage sensitivity sweep — re-run the "
+                        f"script once per threshold in {{3, 5, 7, 10, 15}} to "
+                        f"populate the per-threshold table. The `stratum_"
+                        f"sensitivity` top-level output (which lists ALL "
+                        f"thresholds in {{3, 5, 7, 10, 15}}) is computed in a "
+                        f"single pass regardless of this flag — the flag only "
+                        f"controls which threshold the *stratified_auc* and "
+                        f"*config.strata_indicator_count_threshold* fields "
+                        f"reflect.")
     args = p.parse_args()
     main(
         cutoff_year=args.cutoff_year,
@@ -1490,4 +1618,5 @@ if __name__ == "__main__":
         ablation_arm=args.ablation_arm,
         bootstrap_resamples=args.bootstrap_resamples,
         bootstrap_seed=args.bootstrap_seed,
+        strata_threshold=args.strata_threshold,
     )
