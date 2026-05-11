@@ -200,3 +200,76 @@ def test_build_allow_list_mixed_real_world_shape():
 ])
 def test_api_code_re_classification(col2: str, is_api_code: bool):
     assert bool(gen.API_CODE_RE.match(col2)) == is_api_code
+
+
+# ---------------------------------------------------------------------------
+# build_json_payload — single-pass resolution (#600 Finding 4)
+# ---------------------------------------------------------------------------
+
+def test_build_json_payload_resolves_numeric_ids_inline():
+    """Regression for the two-pass seam: build_json_payload must
+    populate resolved[].numeric_id at construction time, not leave it
+    None for a separate pass to fill. Reason: a future caller that
+    forgets the second call would silently emit numeric_id=null in the
+    metadata for every resolved row."""
+    resolved = [("WB-01", "VC.BTL.DETH"), ("VD-02", "v2x_polyarchy")]
+    unresolved = [("UC-01", "ucdp_battle_deaths_pending")]
+    id_to_num = {
+        "VC.BTL.DETH": 1001,
+        "v2x_polyarchy": 1002,
+    }
+
+    payload = gen.build_json_payload(
+        bucket="test-bucket",
+        catalog_rows_total=142,
+        resolved=resolved,
+        unresolved=unresolved,
+        numeric_ids=[1001, 1002],
+        catalog_sha256="abc123",
+        id_to_num=id_to_num,
+    )
+
+    # Every resolved entry has its numeric_id filled in
+    for entry in payload["resolved"]:
+        assert entry["numeric_id"] is not None, (
+            f"build_json_payload left numeric_id=None on resolved entry "
+            f"{entry['catalog_code']!r}; the two-pass seam is back"
+        )
+    # Verify the actual values
+    by_catalog = {e["catalog_code"]: e["numeric_id"] for e in payload["resolved"]}
+    assert by_catalog == {"WB-01": 1001, "VD-02": 1002}
+    # Unresolved entries don't get a numeric_id (pending ingestion)
+    assert all("numeric_id" not in u
+               for u in payload["unresolved_pending_ingestion"])
+
+
+def test_build_json_payload_raises_on_missing_id_mapping():
+    """If id_to_num is missing an api_code that's in `resolved`, the
+    function must raise KeyError loudly — silent None-fill would be
+    the pre-fix behavior we're trying to eliminate."""
+    resolved = [("WB-01", "VC.BTL.DETH"), ("VD-02", "v2x_polyarchy")]
+    id_to_num = {"VC.BTL.DETH": 1001}  # v2x_polyarchy intentionally missing
+
+    with pytest.raises(KeyError, match="v2x_polyarchy"):
+        gen.build_json_payload(
+            bucket="test-bucket",
+            catalog_rows_total=142,
+            resolved=resolved,
+            unresolved=[],
+            numeric_ids=[1001],
+            catalog_sha256="abc123",
+            id_to_num=id_to_num,
+        )
+
+
+def test_fill_resolved_numeric_ids_helper_removed():
+    """The standalone fill_resolved_numeric_ids() helper was removed in
+    #600 Finding 4 to collapse the two-pass seam. If a future change
+    re-introduces it (e.g. by re-splitting the function), this test
+    fails and forces the reviewer to revisit whether the seam is
+    justified."""
+    assert not hasattr(gen, "fill_resolved_numeric_ids"), (
+        "fill_resolved_numeric_ids() was deliberately removed in #600 "
+        "Finding 4. If re-introducing it, either delete this test with "
+        "justification OR re-think the single-pass design."
+    )
