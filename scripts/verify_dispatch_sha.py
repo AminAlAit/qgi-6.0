@@ -1,4 +1,4 @@
-"""F-H-1 item 4 — deploy-time dispatch SHA verification (skeleton).
+"""F-H-1 item 4 — deploy-time dispatch SHA + invariants verification.
 
 Per qgi-docs/internal/ops/ml-track/stage-2-hybrid-d2-d5-walk-methodology-prereg.md
 (commit 7db3596) F-H-1 item 4:
@@ -8,33 +8,27 @@ Per qgi-docs/internal/ops/ml-track/stage-2-hybrid-d2-d5-walk-methodology-prereg.
     the latest pre-reg-merged commit's expected SHA. Mismatch blocks
     deploy."
 
-This script is the **skeleton** for that deploy-time check. The
-expected SHA constant below is computed from the dispatch JSON at the
-hybrid pre-reg merge commit (qgi-docs `7db3596`) and pinned here. Any
-amendment to the dispatch table requires:
+This script implements the deploy-time check. Two-step gate:
+
+1. SHA pin check: runtime dispatch SHA must equal EXPECTED_DISPATCH_SHA
+   (pinned below to the post-KI-2 amendment state).
+2. Invariant assertions: dispatch table must satisfy the F-H-1 / F-H-3
+   structural invariants (`assert_dispatch_invariants`).
+
+Any amendment to the dispatch table requires:
 
 1. A NEW pre-reg amendment per F-H-4 (Lakatosian guard);
 2. Rotation of EXPECTED_DISPATCH_SHA below to match the new dispatch JSON;
 3. The amendment commit chronologically PRECEDING any production walk
    under the new dispatch (per F-H-4 amendment constraint 1).
 
-**Usage (Stage 4 deploy pipeline integration):**
+**Usage (CI + deploy pipeline):**
 
-    # In the deploy CI step, before any production walk:
+    # On every push to main, every PR, and every deploy:
     python scripts/verify_dispatch_sha.py
 
-    # Exits 0 if dispatch SHA matches expected; exits 1 with a clear
-    # error message if not (CI fails; deploy blocks).
-
-**Status:** This script is operational for the current dispatch JSON.
-The full Stage 4 deploy-pipeline integration (CI step wiring, alerting,
-rotation playbook for amendments) is queued for the Stage 4 deploy PR.
-This stub closes the F-H-1 item 4 TODO in `src/hybrid_dispatch.py`.
-
-Acceptance criteria for the future Stage 4 deploy PR:
-1. CI workflow runs this script before any production prediction job
-2. Failed verification creates a P0 alert + blocks the deploy
-3. EXPECTED_DISPATCH_SHA rotation is part of every F-H-4 amendment PR
+    # Exits 0 if both checks pass; exits 1 with a clear error message
+    # if either fails (CI fails; deploy blocks).
 """
 from __future__ import annotations
 
@@ -45,12 +39,17 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 if str(REPO_ROOT / "src") not in sys.path:
     sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from hybrid_dispatch import load_dispatch  # noqa: E402
+from hybrid_dispatch import assert_dispatch_invariants, load_dispatch  # noqa: E402
 
 # ============================================================================
 # EXPECTED_DISPATCH_SHA — the SHA-256 of the canonical hybrid dispatch JSON
-# at the most recent pre-reg-merged commit (currently 7db3596 hybrid pre-reg
-# + 38efed3 dispatch infra PR + 500e3f1 catalog annotation PR).
+# at the most recent pre-reg-merged amendment commit.
+#
+# Pinned to the post-KI-2 amendment state:
+#   - hybrid pre-reg base:  qgi-docs commit 7db3596
+#   - KI-2 amendment:       qgi-docs commit d4c6c37 (#64; territorial_disputes
+#                           FALSIFIED per Majles 2026-05-11 3-1 vote);
+#                           qgi-ml commit c1379ce (#48; dispatch JSON change)
 #
 # This value MUST be rotated whenever the dispatch JSON content changes,
 # and the rotation MUST be part of a NEW pre-reg amendment per F-H-4.
@@ -60,50 +59,67 @@ from hybrid_dispatch import load_dispatch  # noqa: E402
 #
 # To compute the current SHA for rotation:
 #    python -c "from hybrid_dispatch import load_dispatch; print(load_dispatch().sha256)"
+#
+# NOTE: this is NOT `sha256sum config/hybrid_architecture_dispatch.json`. The
+# canonical SHA is computed over the JSON re-serialized with sorted keys +
+# compact separators (see HybridDispatch.sha256), so it is invariant to
+# whitespace and key-order changes in the file on disk. The CI test
+# `test_expected_sha_matches_current_dispatch_json` validates the round-trip.
 # ============================================================================
-EXPECTED_DISPATCH_SHA = "DEFERRED_TO_STAGE_4_DEPLOY_PR"
+EXPECTED_DISPATCH_SHA = "55de0c76914fea94cbecb99a1e80cefbc49bd3b61e5ca956dac4ceb2869c0f97"
 
 
 def verify() -> tuple[bool, str]:
-    """Compare runtime dispatch SHA against the pre-reg-pinned expected SHA.
+    """Compare runtime dispatch SHA against the pre-reg-pinned expected SHA
+    AND assert F-H-1 / F-H-3 structural invariants on the dispatch table.
 
     Returns
     -------
     (ok, message) : tuple
-        ok=True if the SHAs match; ok=False otherwise. The message is a
-        human-readable description suitable for CI log + alert payload.
+        ok=True if BOTH the SHAs match AND the invariants hold; ok=False
+        otherwise. The message is a human-readable description suitable
+        for CI log + alert payload.
     """
-    if EXPECTED_DISPATCH_SHA == "DEFERRED_TO_STAGE_4_DEPLOY_PR":
-        return False, (
-            "F-H-1 item 4 verification is in skeleton state. "
-            "EXPECTED_DISPATCH_SHA is not yet pinned to a pre-reg-merged "
-            "commit. This is the expected state until the Stage 4 deploy "
-            "pipeline PR lands. Once that PR pins the SHA, this verifier "
-            "becomes operational. Until then, production walks must "
-            "manually verify the dispatch SHA in a runbook step."
-        )
-
     dispatch = load_dispatch()
     runtime_sha = dispatch.sha256
-    if runtime_sha == EXPECTED_DISPATCH_SHA:
-        return True, (
-            f"OK: dispatch SHA matches expected ({runtime_sha[:16]}...). "
-            f"F-H-1 item 4 deploy-time verification passes."
+    if runtime_sha != EXPECTED_DISPATCH_SHA:
+        return False, (
+            f"FAIL: dispatch SHA mismatch.\n"
+            f"  Expected (pre-reg pinned):  {EXPECTED_DISPATCH_SHA}\n"
+            f"  Runtime (config/hybrid_architecture_dispatch.json): {runtime_sha}\n"
+            f"\n"
+            f"This deploy is BLOCKED per F-H-1 item 4. The dispatch JSON has "
+            f"been modified since the last pre-reg amendment. Either:\n"
+            f"  (a) Revert the dispatch JSON to the pre-reg-merged state, OR\n"
+            f"  (b) File a new pre-reg amendment per F-H-4 + rotate "
+            f"EXPECTED_DISPATCH_SHA in scripts/verify_dispatch_sha.py to "
+            f"match the new dispatch SHA.\n"
+            f"\n"
+            f"A bare dispatch JSON edit without F-H-4 amendment is a pre-reg "
+            f"integrity violation and should be blocked at PR review."
         )
-    return False, (
-        f"FAIL: dispatch SHA mismatch.\n"
-        f"  Expected (pre-reg pinned):  {EXPECTED_DISPATCH_SHA}\n"
-        f"  Runtime (config/hybrid_architecture_dispatch.json): {runtime_sha}\n"
-        f"\n"
-        f"This deploy is BLOCKED per F-H-1 item 4. The dispatch JSON has "
-        f"been modified since the last pre-reg amendment. Either:\n"
-        f"  (a) Revert the dispatch JSON to the pre-reg-merged state, OR\n"
-        f"  (b) File a new pre-reg amendment per F-H-4 + rotate "
-        f"EXPECTED_DISPATCH_SHA in scripts/verify_dispatch_sha.py to "
-        f"match the new dispatch SHA.\n"
-        f"\n"
-        f"A bare dispatch JSON edit without F-H-4 amendment is a pre-reg "
-        f"integrity violation and should be blocked at PR review."
+
+    try:
+        assert_dispatch_invariants(dispatch)
+    except AssertionError as exc:
+        return False, (
+            f"FAIL: dispatch invariant violation.\n"
+            f"  Runtime SHA matches EXPECTED ({runtime_sha[:16]}...), but the "
+            f"dispatch table fails an F-H-1 / F-H-3 structural invariant:\n"
+            f"\n"
+            f"  {exc}\n"
+            f"\n"
+            f"This deploy is BLOCKED. The dispatch JSON encodes a state that "
+            f"violates the pre-reg's structural contract — the SHA pin alone "
+            f"would have let this through, but the runtime assertion caught "
+            f"it. Fix the dispatch JSON to satisfy the invariant, OR file a "
+            f"pre-reg amendment per F-H-4 if the invariant itself must change."
+        )
+
+    return True, (
+        f"OK: dispatch SHA matches expected ({runtime_sha[:16]}...) AND all "
+        f"F-H-1 / F-H-3 structural invariants hold. Deploy-time verification "
+        f"passes."
     )
 
 
