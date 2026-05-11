@@ -159,7 +159,17 @@ data "aws_iam_policy_document" "qgi_ecr_push_indicator_fetcher" {
     effect = "Allow"
     actions = [
       "ecr:BatchCheckLayerAvailability",
+      # Buildx publishes OCI attestation manifests (provenance/SBOM) by
+      # default since v0.10 and HEAD-checks the manifest namespace via
+      # BatchGetImage; DescribeImages is the sibling read used during
+      # the manifest-merge step. Without both, `docker buildx build
+      # --push` 403s on the manifest HEAD even with all the write
+      # actions present. Mirrors the same pair on ECRPushDSCDIFinder
+      # (PR #634, 2026-05-10) — see #635 for the sibling-policy drift
+      # audit that caught this gap.
+      "ecr:BatchGetImage",
       "ecr:CompleteLayerUpload",
+      "ecr:DescribeImages",
       "ecr:GetDownloadUrlForLayer",
       "ecr:InitiateLayerUpload",
       "ecr:PutImage",
