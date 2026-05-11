@@ -62,7 +62,7 @@
       "architecture": "D2",
       "backbone_dir": "results/d2_d7_canonical_2026_05/backbone",
       "predictions_canonical": "qgi-data/reference/d2-d7-beta-validation-results-2026-05.json",
-      "loco_auc": 0.6330,
+      "loco_auc": 0.633,
       "n_pos_loco": 6,
       "tier": "MODERATE",
       "assignment_confidence": "HIGH",
@@ -154,18 +154,6 @@
       "f_rule_anomaly": false,
       "notes": "Highest n_pos_test in the LOCKed set."
     },
-    "territorial_disputes": {
-      "architecture": "D5",
-      "backbone_dir": "results/d5_backbones_2026_05_07/backbone",
-      "predictions_canonical": "qgi-data/reference/d5-d7-beta-validation-results-2026-05-07.json",
-      "loco_auc": 0.6780,
-      "n_pos_loco": 2,
-      "tier": "MODERATE",
-      "assignment_confidence": "LOW",
-      "advisory_only": false,
-      "f_rule_anomaly": true,
-      "notes": "F-rule anomaly: in-sample F2 degenerate under D5 (predictions collapse to near-zero; both positives at 0.0). LOCO drives tier. Composite-signal only per Stage 5 disclosure."
-    },
     "mass_protest": {
       "architecture": "D5",
       "backbone_dir": "results/d5_backbones_2026_05_07/backbone",
@@ -188,16 +176,27 @@
     "political_corruption",
     "political_repression",
     "sanctions_and_arms_embargo",
+    "territorial_disputes",
     "trade_agreement"
   ],
   "metadata": {
-    "n_locked": 14,
-    "n_falsified": 9,
+    "n_locked": 13,
+    "n_falsified": 10,
     "n_strong": 6,
-    "n_moderate": 6,
+    "n_moderate": 5,
     "n_marginal": 2,
     "n_advisory_only": 4,
-    "n_f_rule_anomaly": 2,
-    "comment": "n_locked + n_falsified = 23 (total D2-eligible recipes). F-rule anomaly recipes (epidemic_and_pandemic, territorial_disputes) are flagged for pending Majles clarification but remain LOCKED at their LOCO-derived tier."
-  }
+    "n_f_rule_anomaly": 1,
+    "comment": "n_locked + n_falsified = 23 (total D2-eligible recipes). Per KI-2 Majles amendment 2026-05-11 (Option C carried 3-1; Priya dissent for Option B): territorial_disputes FALSIFIED under hybrid due to degenerate D5 predictions (max 1.91e-6 across 768 cells; AHI = 1.0000 is an artifact, not strength). epidemic_and_pandemic retains LOCKED STRONG with f_rule_anomaly flag (LOCO 0.8824 genuine; F2 anomaly disclosed via inherited ADVISORY-ONLY)."
+  },
+  "amendments": [
+    {
+      "date": "2026-05-11",
+      "amendment_id": "KI-2",
+      "change": "FALSIFY territorial_disputes under hybrid (degenerate predictions). LOCKed count 14 → 13.",
+      "majles_vote": "Option C carried 3-1 (Kwame, Ji-Hoon, Nasrin for C; Priya for B logged as dissent)",
+      "pre_reg_amendment_commit": "TBD (this commit + sister qgi-docs amendment commit)",
+      "reference": "qgi-docs/internal/majles/in-progress/2026-05-11_ml_majles_stage_5_and_frontend_shipping.md Topic 3"
+    }
+  ]
 }
