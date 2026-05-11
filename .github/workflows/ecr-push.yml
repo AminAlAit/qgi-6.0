@@ -19,10 +19,15 @@ on:
 
 jobs:
   # ------------------------------------------------------------------
-  # Management-account push — scdi-finder + WB indicator-fetcher.
+  # Management-account push — scdi-finder + dscdi-finder only.
   # Uses the existing github-actions-qgi-ecr-push role in 111111111111.
-  # WB fetcher is mirrored here for the #152 Path A cross-account pattern
-  # (staging envs may pull from here if a future migration revives it).
+  # Phase 1 fetchers (indicator-fetcher, fao, vdem-ingest) push to
+  # staging-account ECR only (see build-push-staging job below). The
+  # #152 Path A WB-fetcher management mirror was parked in 2025-Q4 and
+  # the TF source describing it was deleted in qgi-aws-tf PR #660
+  # (2026-05-11). Phase 2 B-stage images (scdi/dscdi-finder) correctly
+  # stay here because they're stateless compute pulled cross-account
+  # by staging + qa + prod from a shared-services ECR. See #635 + #663.
   # ------------------------------------------------------------------
   build-push-management:
     runs-on: ubuntu-latest
@@ -51,18 +56,17 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             case "${{ inputs.image }}" in
-              all)                   echo "scdi=1" >> "$GITHUB_OUTPUT"; echo "dscdi=1" >> "$GITHUB_OUTPUT"; echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
+              all)                   echo "scdi=1" >> "$GITHUB_OUTPUT"; echo "dscdi=1" >> "$GITHUB_OUTPUT" ;;
               scdi-finder)           echo "scdi=1"    >> "$GITHUB_OUTPUT" ;;
               dscdi-finder)          echo "dscdi=1"   >> "$GITHUB_OUTPUT" ;;
-              indicator-fetcher)     echo "fetcher=1" >> "$GITHUB_OUTPUT" ;;
-              indicator-fetcher-fao) : ;; # FAO doesn't push to management
-              qgi-vdem-ingest)       : ;; # V-Dem doesn't push to management
+              indicator-fetcher)     : ;; # Phase 1 fetchers push to staging only — see build-push-staging
+              indicator-fetcher-fao) : ;; # ditto
+              qgi-vdem-ingest)       : ;; # ditto
             esac
           else
             git diff --name-only HEAD~1 HEAD > /tmp/changed.txt
             grep -q '^batch/scdi-finder/'       /tmp/changed.txt && echo "scdi=1"    >> "$GITHUB_OUTPUT" || true
             grep -q '^batch/dscdi-finder/'      /tmp/changed.txt && echo "dscdi=1"   >> "$GITHUB_OUTPUT" || true
-            grep -q '^batch/indicator-fetcher/' /tmp/changed.txt && echo "fetcher=1" >> "$GITHUB_OUTPUT" || true
           fi
 
       - name: Build and push scdi-finder
@@ -81,13 +85,6 @@ jobs:
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/dscdi-finder/
           docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/dscdi-finder/
 
-      - name: Build and push indicator-fetcher (WB) — management mirror
-        if: steps.changed.outputs.fetcher == '1'
-        run: |
-          IMAGE_TAG=${GITHUB_SHA::8}
-          IMAGE_REPO=$ECR_REGISTRY/qgi-pipeline-a-indicator-fetcher
-          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:$IMAGE_TAG --push batch/indicator-fetcher/
-          docker buildx build --platform linux/arm64 -t $IMAGE_REPO:latest      --push batch/indicator-fetcher/
 
   # ------------------------------------------------------------------
   # Staging-account push — WB + FAO fetchers land in 222222222222 ECR
