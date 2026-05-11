@@ -5,6 +5,11 @@ import os
 import time
 import uuid
 
+# #558: pattern_tier S/M/L/XL bucketing — single source of truth at
+# lambdas/_shared/pattern_tier.py. The deploy workflow copies _shared/
+# into each Lambda's bundle before zipping.
+from _shared.pattern_tier import pattern_tier_case_sql
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -160,14 +165,8 @@ def lambda_handler(event, context):
                     avg_correlation * CAST(length AS double) * indicator_count AS pattern_power_score,
                     collected_indicator_ids AS indicator_numeric_ids,
                     -- #128: pattern_tier (S/M/L/XL). Derived from length, zero-cost.
-                    CAST(
-                        CASE
-                            WHEN length BETWEEN 3 AND 8  THEN 'S'
-                            WHEN length BETWEEN 9 AND 20 THEN 'M'
-                            WHEN length BETWEEN 21 AND 40 THEN 'L'
-                            ELSE 'XL'
-                        END
-                    AS varchar) AS pattern_tier,
+                    -- #558: SQL expression centralized in _shared/pattern_tier.py
+                    CAST({pattern_tier_case_sql("length")} AS varchar) AS pattern_tier,
                     -- #461: must be the LAST non-partition column to match the
                     -- Glue schema column order added in qgi-infra/modules/storage.
                     contains_predicted,

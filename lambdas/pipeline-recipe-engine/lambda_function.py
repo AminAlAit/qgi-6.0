@@ -29,6 +29,11 @@ import time
 import logging
 from datetime import datetime, timezone
 
+# #558: pattern_tier S/M/L/XL bucketing — single source of truth at
+# lambdas/_shared/pattern_tier.py. The deploy workflow copies _shared/
+# into each Lambda's bundle before zipping.
+from _shared.pattern_tier import pattern_tier_case_sql
+
 import boto3
 
 logger = logging.getLogger()
@@ -567,13 +572,8 @@ def _write_ranking_json():
                p.indicator_count AS num_indexes, p.avg_correlation, p.pattern_power_score,
                CAST(p.country_a_id AS VARCHAR) AS country_a_id,
                CAST(p.country_b_id AS VARCHAR) AS country_b_id,
-               COALESCE(p.pattern_tier,
-                   CASE
-                       WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                       WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                       WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                       ELSE 'XL'
-                   END) AS pattern_tier,
+               -- #558: pattern_tier SQL centralized in _shared/pattern_tier.py
+               COALESCE(p.pattern_tier, {pattern_tier_case_sql("p.length")}) AS pattern_tier,
                ROW_NUMBER() OVER (ORDER BY p.pattern_power_score DESC) AS rn
         FROM qgi_data.patterns p
         LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
@@ -620,13 +620,8 @@ def _write_early_warning_json(current_year):
            p.start_year_a, p.start_year_b, p.length AS pattern_length,
            p.avg_correlation, p.pattern_power_score,
            p.indicator_count AS num_indexes,
-           COALESCE(p.pattern_tier,
-               CASE
-                   WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                   WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                   WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                   ELSE 'XL'
-               END) AS pattern_tier
+           -- #558: pattern_tier SQL centralized in _shared/pattern_tier.py
+           COALESCE(p.pattern_tier, {pattern_tier_case_sql("p.length")}) AS pattern_tier
     FROM qgi_data.patterns p
     LEFT JOIN c ca ON ca.id = CAST(p.country_a_id AS VARCHAR)
     LEFT JOIN c cb ON cb.id = CAST(p.country_b_id AS VARCHAR)
@@ -906,15 +901,8 @@ def build_recipe_query(cutoff_year=None, country_a_id=None, mode='ctas'):
             p.indicator_count,
             p.pattern_power_score,
             -- #128: tier with length-derived fallback for legacy rows
-            COALESCE(
-                p.pattern_tier,
-                CASE
-                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                    ELSE 'XL'
-                END
-            ) AS pattern_tier,
+            -- #558: pattern_tier SQL centralized in _shared/pattern_tier.py
+            COALESCE(p.pattern_tier, {pattern_tier_case_sql("p.length")}) AS pattern_tier,
             -- #461 (D7 plumbing): inherit from the source pattern. Pre-#461
             -- patterns have NULL → coalesce to false so the recipe row
             -- behaves as "no predicted values" — the safer default for the
