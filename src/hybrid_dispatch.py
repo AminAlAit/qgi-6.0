@@ -281,22 +281,14 @@ def load_dispatch(path: Path | None = None) -> HybridDispatch:
 # must compare the dispatch-table SHA against the latest pre-reg-merged
 # commit's expected SHA. Mismatch blocks deploy."
 #
-# This is INTENTIONALLY DEFERRED to a Stage 4 deployment-pipeline PR because
-# (a) the pre-reg does not require the deploy check to land in the same PR as
-# the loader, and (b) there is no Stage 4 deployment pipeline yet. Acceptance
-# criteria for the deferred PR:
-#   1. Hardcode the expected dispatch SHA derived from this commit's
-#      hybrid_architecture_dispatch.json (compute via `HybridDispatch(...).sha256`)
-#   2. The deploy script raises an error and aborts if the runtime dispatch
-#      SHA differs from the expected SHA
-#   3. The expected SHA is rotated together with any future dispatch-table
-#      amendment via a NEW pre-reg amendment per F-H-4
+# ACTIVE — implemented in scripts/verify_dispatch_sha.py and wired into CI
+# via .github/workflows/verify-dispatch-sha.yml (ticket #648, 2026-05-11).
+# The deploy script runs both the SHA pin check AND assert_dispatch_invariants
+# below; either failing blocks deploy. Rotation procedure: every dispatch JSON
+# amendment must update EXPECTED_DISPATCH_SHA in the deploy script in the same
+# PR as a NEW F-H-4 pre-reg amendment.
 #
-# Until that PR lands, production walks MUST manually verify the dispatch
-# SHA in a runbook step. The runtime_log_entry() emits the SHA for forensic
-# inspection.
-#
-# Tracking: this should be opened as a GitHub issue once Stage 4 starts.
+# runtime_log_entry() still emits the SHA for forensic inspection.
 
 
 def assert_dispatch_invariants(dispatch: HybridDispatch) -> None:

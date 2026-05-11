@@ -1,0 +1,55 @@
+name: Verify dispatch SHA + invariants
+
+# F-H-1 item 4 deploy-time gate per ticket #648. Runs the SHA pin check + the
+# F-H-1 / F-H-3 structural invariants on every push to main, every PR that
+# touches dispatch-relevant code, and on workflow_dispatch (deploy callsite).
+#
+# Failure blocks the deploy. Rotation of EXPECTED_DISPATCH_SHA is governed by
+# F-H-4 (Lakatosian guard): every change to the constant must accompany a
+# pre-reg amendment + the same-PR dispatch JSON edit.
+#
+# Scope: minimal stdlib + pytest. The deploy gate itself only needs Python
+# stdlib + the in-repo hybrid_dispatch module. The two test files in scope
+# (test_verify_dispatch_sha.py + test_hybrid_dispatch.py) are pure-stdlib
+# unit tests. test_hybrid_f_rule_anomaly_state.py is a methodology-regression
+# test pulling numpy/sklearn/cohort_calibration — out of scope for the deploy
+# gate; belongs in a separate methodology-regression workflow when one lands.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'config/hybrid_architecture_dispatch.json'
+      - 'src/hybrid_dispatch.py'
+      - 'scripts/verify_dispatch_sha.py'
+      - 'tests/test_verify_dispatch_sha.py'
+      - 'tests/test_hybrid_dispatch.py'
+      - '.github/workflows/verify-dispatch-sha.yml'
+  pull_request:
+    paths:
+      - 'config/hybrid_architecture_dispatch.json'
+      - 'src/hybrid_dispatch.py'
+      - 'scripts/verify_dispatch_sha.py'
+      - 'tests/test_verify_dispatch_sha.py'
+      - 'tests/test_hybrid_dispatch.py'
+      - '.github/workflows/verify-dispatch-sha.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Install pytest
+        run: pip install -q pytest
+      - name: Verify dispatch SHA + invariants (deploy gate)
+        run: python scripts/verify_dispatch_sha.py
+      - name: Run dispatch + verifier tests
+        run: |
+          python -m pytest \
+            tests/test_verify_dispatch_sha.py \
+            tests/test_hybrid_dispatch.py \
+            -v
