@@ -261,6 +261,18 @@ const NAV_ITEMS: ReadonlyArray<{
     href: "/precedents-v2-b" as Route,
     icon: <IconHistory />,
   },
+  // #655 sister to #645: country-keyed V2 signals routes shipped 2026-05-12.
+  // Same Q14:A + Q27:B pattern as precedents-v2 entries above.
+  {
+    label: "SIGNALS V2 (A — TUFTE)",
+    href: "/signals-v2-a" as Route,
+    icon: <IconSignal />,
+  },
+  {
+    label: "SIGNALS V2 (B — LLOYD'S)",
+    href: "/signals-v2-b" as Route,
+    icon: <IconSignal />,
+  },
 ];
 
 export function Sidebar() {
