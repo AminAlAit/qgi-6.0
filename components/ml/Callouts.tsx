@@ -75,14 +75,18 @@ const LEVEL_COLORS: Record<CalloutLevel, { fg: string; bg: string; border: strin
     border: "var(--qgi-border)",
   },
   warning: {
-    // Amber range — caution, not danger
-    fg: "#a16207", // amber-700
+    // Amber range — caution, not danger. fg pinned to amber-800 (not -700)
+    // for WCAG AA contrast vs amber-100 bg (4.42:1 on amber-700 misses
+    // the 4.5 threshold; amber-800 clears at ~6.7:1).
+    fg: "#854d0e", // amber-800
     bg: "#fef3c7", // amber-100
     border: "#fbbf24", // amber-400
   },
   critical: {
-    // Deeper amber — MUST-NOT but still NOT red (Nasrin's rule)
-    fg: "#854d0e", // amber-800
+    // Deepest amber — MUST-NOT but still NOT red (Nasrin's rule). Bumped
+    // to amber-900 to maintain visual differentiation from `warning` after
+    // the WCAG AA contrast fix moved `warning.fg` from amber-700 to -800.
+    fg: "#78350f", // amber-900
     bg: "#fde68a", // amber-200
     border: "#d97706", // amber-600
   },
@@ -284,10 +288,17 @@ export function NotMeasuredHint({
   reason: string | null;
 }) {
   if (status !== "not_measured") return null;
+  // The bake's reason field already starts with "Not measured —"
+  // (extract_tear_sheets builds it as f"{head} — {reason}"). Strip that
+  // prefix before rendering so the on-screen text doesn't say
+  // "Not measured — Not measured — ..." twice.
+  const trimmedReason = reason ? reason.replace(/^Not measured\s*—\s*/i, "") : null;
   const body = (
     <>
       <em>Not measured</em>
-      {reason && <span className="text-[var(--qgi-text-dim)]"> — {reason}</span>}
+      {trimmedReason && (
+        <span className="text-[var(--qgi-text-dim)]"> — {trimmedReason}</span>
+      )}
     </>
   );
   if (style === "tufte") {

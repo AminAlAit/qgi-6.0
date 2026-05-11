@@ -189,6 +189,23 @@ describe("NotMeasuredHint", () => {
     ).toBeInTheDocument();
   });
 
+  it("strips duplicate 'Not measured —' prefix from reason", () => {
+    // Regression: bake produces reason="Not measured — no anchor cases..."
+    // and the callout title also says "Not measured". Without prefix-strip
+    // the on-screen text reads "Not measured — Not measured — no anchor..."
+    const { container } = render(
+      <NotMeasuredHint
+        style="lloyds"
+        status="not_measured"
+        reason="Not measured — no anchor cases in v2 regression suite"
+      />
+    );
+    const text = container.textContent ?? "";
+    // The body shouldn't contain "Not measured — Not measured"
+    expect(text).not.toMatch(/Not measured\s*—\s*Not measured/);
+    expect(text).toContain("no anchor cases in v2 regression suite");
+  });
+
   it("renders 'Anchor AHI: Not measured' title on Lloyd's variant", () => {
     render(
       <NotMeasuredHint

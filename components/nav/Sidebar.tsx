@@ -245,6 +245,22 @@ const NAV_ITEMS: ReadonlyArray<{
     href: "/countries-v2-narrative" as Route,
     icon: <IconGlobe />,
   },
+  // Frontend resurfacing cycle 2026-05-11 (Q4 + Q21 + Q27): ship the top-4
+  // LOCKed ML recipes onto NEW /precedents-v2-{a,b} routes (Tufte + Lloyd's
+  // caveat variants). Per Q14:A, both variants get their own sidebar slot
+  // (4 total V2 slots: precedents A/B + signals A/B; signals slots added in
+  // #655). R7: /precedents above stays live.
+  // Spec: qgi-docs/internal/ops/ml-track/frontend-resurfacing-plan-2026-05-11.md
+  {
+    label: "PRECEDENTS V2 (A — TUFTE)",
+    href: "/precedents-v2-a" as Route,
+    icon: <IconHistory />,
+  },
+  {
+    label: "PRECEDENTS V2 (B — LLOYD'S)",
+    href: "/precedents-v2-b" as Route,
+    icon: <IconHistory />,
+  },
 ];
 
 export function Sidebar() {

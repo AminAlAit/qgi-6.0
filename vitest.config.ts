@@ -16,6 +16,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "."),
+      // Stub Next.js's `server-only` package — vitest can't resolve it
+      // because the package's TS module declaration is consumed only by
+      // the Next compiler. Tests run in a Node environment anyway, so
+      // the runtime-guard purpose is satisfied without it.
+      "server-only": path.resolve(__dirname, "vitest.server-only-stub.ts"),
     },
   },
 });
