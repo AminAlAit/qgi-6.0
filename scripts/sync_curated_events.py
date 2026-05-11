@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
-Sync curated events JSONs and TRACKING.md to S3 (#141, follow-up to curation work).
+Sync curated events JSONs, verification JSONs, and TRACKING.md to S3 (#141 / #541).
 
 This is the SOURCE-OF-TRUTH sync — fast, no Athena, no Parquet rebuild.
 Use this after every `clean and verify the events of [country]` pass to push
-the local curated/{country}.json up to S3 so other machines / CI / Lambdas can read it.
+the local curated/{country}.json + verification/{country}.json up to S3 so
+other machines / CI / Lambdas can read it.
 
 Bidirectional:
-  --upload   (default) push local → S3
-  --download         pull S3 → local (for fresh clones / new dev machines)
+  --upload   (default) push local -> S3
+  --download         pull S3 -> local (for fresh clones / new dev machines)
 
 The pipeline's heavy ingest_events.py reads the SAME local curated/ directory
 on its next run and rebuilds Parquet from there. Run that separately when you
@@ -21,6 +22,7 @@ Usage:
 
 S3 layout:
     s3://{bucket}/events-source/curated/{country}.json
+    s3://{bucket}/events-source/verification/{country}.json
     s3://{bucket}/events-source/TRACKING.md
 """
 import argparse
@@ -30,17 +32,29 @@ from pathlib import Path
 import boto3
 from botocore.exceptions import ClientError
 
+# Force UTF-8 stdout on Windows so OK/ERROR markers and country names with
+# non-ASCII characters render without UnicodeEncodeError under cp1252.
+# Belt-and-braces alongside the ASCII-only marker change below (#541 bug 3).
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+
 SCRIPT_DIR = Path(__file__).parent
 REPO_ROOT = SCRIPT_DIR.parent
 CURATED_DIR = REPO_ROOT / "events" / "curated"
-TRACKING_FILE = REPO_ROOT / "data" / "events" / "TRACKING.md"
+VERIFICATION_DIR = REPO_ROOT / "events" / "verification"
+# TRACKING.md sits next to the events/ subdir, not under it (see CLAUDE.md +
+# the qgi-data repo layout). The previous `REPO_ROOT / "data" / "events" /
+# "TRACKING.md"` path is a holdover from the qgi-pipeline-era layout and was
+# the silent reason TRACKING.md never reached S3 from this script (#541 bug 1).
+TRACKING_FILE = REPO_ROOT / "events" / "TRACKING.md"
 
 S3_PREFIX = "events-source/curated/"
+S3_VERIFICATION_PREFIX = "events-source/verification/"
 S3_TRACKING_KEY = "events-source/TRACKING.md"
 
 
 def upload(s3, bucket: str, dry_run: bool) -> None:
-    """Push local curated/ + TRACKING.md to S3."""
+    """Push local curated/ + verification/ + TRACKING.md to S3."""
     if not CURATED_DIR.exists():
         print(f"ERROR: {CURATED_DIR} does not exist")
         sys.exit(1)
@@ -57,7 +71,27 @@ def upload(s3, bucket: str, dry_run: bool) -> None:
             str(f), bucket, key,
             ExtraArgs={'ContentType': 'application/json'},
         )
-        print(f"  ✓ {f.name}")
+        print(f"  OK {f.name}")
+
+    # verification/ — canonical schema introduced in #372; the previous
+    # version of this script silently skipped it, forcing every after-
+    # curation flow to `aws s3 sync` directly (#541 bug 2).
+    if VERIFICATION_DIR.exists():
+        verif_files = sorted(VERIFICATION_DIR.glob("*.json"))
+        print(f"Uploading {len(verif_files)} verification files to s3://{bucket}/{S3_VERIFICATION_PREFIX}")
+        for f in verif_files:
+            key = f"{S3_VERIFICATION_PREFIX}{f.name}"
+            if dry_run:
+                print(f"  [dry-run] {f.name} -> s3://{bucket}/{key}")
+                continue
+            s3.upload_file(
+                str(f), bucket, key,
+                ExtraArgs={'ContentType': 'application/json'},
+            )
+            print(f"  OK {f.name}")
+    else:
+        verif_files = []
+        print(f"  WARNING: {VERIFICATION_DIR} not found, skipping verification sync")
 
     if TRACKING_FILE.exists():
         if dry_run:
@@ -67,33 +101,53 @@ def upload(s3, bucket: str, dry_run: bool) -> None:
                 str(TRACKING_FILE), bucket, S3_TRACKING_KEY,
                 ExtraArgs={'ContentType': 'text/markdown'},
             )
-            print(f"  ✓ TRACKING.md")
+            print(f"  OK TRACKING.md")
     else:
         print(f"  WARNING: {TRACKING_FILE} not found, skipping")
 
-    print(f"Done. Uploaded {len(files)} files{' (dry-run)' if dry_run else ''}.")
+    print(f"Done. Uploaded {len(files)} curated + {len(verif_files)} verification files"
+          f"{' (dry-run)' if dry_run else ''}.")
 
 
 def download(s3, bucket: str, dry_run: bool) -> None:
-    """Pull S3 → local curated/ + TRACKING.md (for fresh clones)."""
+    """Pull S3 -> local curated/ + verification/ + TRACKING.md (for fresh clones)."""
     CURATED_DIR.mkdir(parents=True, exist_ok=True)
+    VERIFICATION_DIR.mkdir(parents=True, exist_ok=True)
 
     paginator = s3.get_paginator('list_objects_v2')
-    keys = []
+
+    curated_keys = []
     for page in paginator.paginate(Bucket=bucket, Prefix=S3_PREFIX):
         for obj in page.get('Contents', []):
             if obj['Key'].endswith('.json'):
-                keys.append(obj['Key'])
+                curated_keys.append(obj['Key'])
 
-    print(f"Downloading {len(keys)} curated files from s3://{bucket}/{S3_PREFIX}")
-    for key in keys:
+    print(f"Downloading {len(curated_keys)} curated files from s3://{bucket}/{S3_PREFIX}")
+    for key in curated_keys:
         filename = key.rsplit('/', 1)[-1]
         local = CURATED_DIR / filename
         if dry_run:
             print(f"  [dry-run] s3://{bucket}/{key} -> {local}")
             continue
         s3.download_file(bucket, key, str(local))
-        print(f"  ✓ {filename}")
+        print(f"  OK {filename}")
+
+    verification_keys = []
+    for page in paginator.paginate(Bucket=bucket, Prefix=S3_VERIFICATION_PREFIX):
+        for obj in page.get('Contents', []):
+            if obj['Key'].endswith('.json'):
+                verification_keys.append(obj['Key'])
+
+    print(f"Downloading {len(verification_keys)} verification files from "
+          f"s3://{bucket}/{S3_VERIFICATION_PREFIX}")
+    for key in verification_keys:
+        filename = key.rsplit('/', 1)[-1]
+        local = VERIFICATION_DIR / filename
+        if dry_run:
+            print(f"  [dry-run] s3://{bucket}/{key} -> {local}")
+            continue
+        s3.download_file(bucket, key, str(local))
+        print(f"  OK {filename}")
 
     # Tracking file
     if dry_run:
@@ -101,14 +155,15 @@ def download(s3, bucket: str, dry_run: bool) -> None:
     else:
         try:
             s3.download_file(bucket, S3_TRACKING_KEY, str(TRACKING_FILE))
-            print(f"  ✓ TRACKING.md")
+            print(f"  OK TRACKING.md")
         except ClientError as e:
             if e.response['Error']['Code'] == '404':
                 print(f"  WARNING: TRACKING.md not in S3 yet, skipping")
             else:
                 raise
 
-    print(f"Done. Downloaded {len(keys)} files{' (dry-run)' if dry_run else ''}.")
+    print(f"Done. Downloaded {len(curated_keys)} curated + {len(verification_keys)} "
+          f"verification files{' (dry-run)' if dry_run else ''}.")
 
 
 def main():
