@@ -1,9 +1,14 @@
 {
   "schema_version": 1,
   "generated": "2026-05-03",
-  "source": "Majles Al Ihsa consultation 2026-05-03 \u2014 Miriam Oduya-Schwarzkopf (#19, Stats 3 / Empirical Bayes / hierarchical priors)",
+  "source": "Majles Al Ihsa consultation 2026-05-03 — Miriam Oduya-Schwarzkopf (#19, Stats 3 / Empirical Bayes / hierarchical priors)",
   "purpose": "indicator-to-sector mapping for Empirical Bayes hyperprior estimation. The (sector x L1) cells determine which indicators share a Beta(alpha(s,L1), beta(s,L1)) prior. Wrong cells -> wrong pooling -> wrong shrinkage.",
-  "n_indicators": 142,
+  "cohort_counts": {
+    "n_indicators_in_taxonomy": 142,
+    "n_indicators_currently_ingested": 109,
+    "n_indicators_with_direction_annotations": 104,
+    "cohort_glossary": "n_indicators_in_taxonomy: planned/curated catalog scope at the time of generation (this file). Includes future not-yet-ingested indicators. n_indicators_currently_ingested: indicators with rows in qgi_data.scdis (source-of-truth: indicator-stationarity-audit-v2.json, 109 results as of 2026-05-11). n_indicators_with_direction_annotations: indicators with a curated direction (+1/0/-1) for signed-scoring in Phase 5 (source-of-truth: indicator-directions.json, 104 entries as of 2026-05-11). These three cohorts are NOT stale snapshots of the same number; they are three different populations. Coverage delta from build_indicator_directions.py: audited=109 in_directions=104 covered=87 audited_but_missing=22 in_directions_but_not_audited=17. Reconciliation work tracked at #653."
+  },
   "n_sectors": 10,
   "sectors": {
     "CONFLICT": {
@@ -18,12 +23,12 @@
     },
     "GOV_INST": {
       "name": "Governance & Institutional Quality",
-      "definition": "Indicators measuring how effectively formal political and legal institutions function \u2014 democracy indices, rule of law, judicial independence, electoral process, legislative constraints.",
+      "definition": "Indicators measuring how effectively formal political and legal institutions function — democracy indices, rule of law, judicial independence, electoral process, legislative constraints.",
       "n_indicators": 22
     },
     "REPRESSION": {
       "name": "State Repression & Civil Liberties",
-      "definition": "Indicators measuring the degree to which the state suppresses physical, political, or expressive freedom of its population \u2014 torture, killings, censorship, repression of civil society.",
+      "definition": "Indicators measuring the degree to which the state suppresses physical, political, or expressive freedom of its population — torture, killings, censorship, repression of civil society.",
       "n_indicators": 9
     },
     "ECON_FISC": {
@@ -43,12 +48,12 @@
     },
     "DIPLO_GEO": {
       "name": "Diplomatic & Geopolitical Signal",
-      "definition": "Indicators capturing how countries relate to each other through events, media coverage, and the internationalization of conflict \u2014 primarily GDELT-derived news-event aggregates plus sovereignty indicators.",
+      "definition": "Indicators capturing how countries relate to each other through events, media coverage, and the internationalization of conflict — primarily GDELT-derived news-event aggregates plus sovereignty indicators.",
       "n_indicators": 21
     },
     "SOC_MOBIL": {
       "name": "Social Mobilization & Identity",
-      "definition": "Indicators measuring organized citizen action, political participation, power distribution across social groups, and gender/ethnic inclusion \u2014 the substrate for mass protest and social reform events.",
+      "definition": "Indicators measuring organized citizen action, political participation, power distribution across social groups, and gender/ethnic inclusion — the substrate for mass protest and social reform events.",
       "n_indicators": 9
     },
     "STRUCT_DEV": {
@@ -59,7 +64,7 @@
   },
   "known_weaknesses": [
     "DIPLO_GEO contains 21 indicators with substantial within-sector correlation (multiple GDELT facets of the same media-coverage process). Likely violates Beta exchangeability. Phase 4 surfaces this as high posterior variance; fix is to split into DIPLO_MEDIA + DIPLO_STRUCT.",
-    "STRUCT_DEV has only 4 indicators \u2014 below comfortable EB floor. Defensible because the 4 share a genuinely distinct (near-flat) frequency profile that would corrupt other sectors if pooled. Phase 4 test: compare STRUCT_DEV EB prior to flat Beta(1,1) \u2014 if no measurable shrinkage improvement, dissolve and reassign WB-06/WB-07 to GOV_INST and UD-05/UD-06 to LABOR_SOC."
+    "STRUCT_DEV has only 4 indicators — below comfortable EB floor. Defensible because the 4 share a genuinely distinct (near-flat) frequency profile that would corrupt other sectors if pooled. Phase 4 test: compare STRUCT_DEV EB prior to flat Beta(1,1) — if no measurable shrinkage improvement, dissolve and reassign WB-06/WB-07 to GOV_INST and UD-05/UD-06 to LABOR_SOC."
   ],
   "indicator_to_sector": {
     "WB-01": {
@@ -100,7 +105,7 @@
     "WB-09": {
       "sector": "ECON_FISC",
       "confidence": "medium",
-      "rationale": "Banking_crisis link decisive \u2014 co-varies with NPLs and bank assets more than with youth unemployment. Borderline with LABOR_SOC."
+      "rationale": "Banking_crisis link decisive — co-varies with NPLs and bank assets more than with youth unemployment. Borderline with LABOR_SOC."
     },
     "WB-10": {
       "sector": "ECON_FISC",
@@ -130,7 +135,7 @@
     "WB-P1": {
       "sector": "LABOR_SOC",
       "confidence": "high",
-      "rationale": "Remittances received \u2014 household income at population scale (recipient side of WB-08)."
+      "rationale": "Remittances received — household income at population scale (recipient side of WB-08)."
     },
     "WB-P2": {
       "sector": "DISPLACE",
@@ -238,7 +243,7 @@
     "VD-16": {
       "sector": "REPRESSION",
       "confidence": "medium",
-      "rationale": "Property-rights/freedom-of-movement collapse \u2192 migration. State withdrawal of rights, not citizen-organized action."
+      "rationale": "Property-rights/freedom-of-movement collapse → migration. State withdrawal of rights, not citizen-organized action."
     },
     "VD-17": {
       "sector": "REPRESSION",
@@ -345,7 +350,7 @@
     "FA-03": {
       "sector": "FOOD_RES",
       "confidence": "high",
-      "rationale": "Food price volatility \u2014 supply-chain phenomenon, not sovereign balance-sheet. Co-varies with FA-01/FA-14, not WB-13."
+      "rationale": "Food price volatility — supply-chain phenomenon, not sovereign balance-sheet. Co-varies with FA-01/FA-14, not WB-13."
     },
     "FA-04": {
       "sector": "FOOD_RES",
@@ -414,12 +419,12 @@
     "UN-05": {
       "sector": "DISPLACE",
       "confidence": "medium",
-      "rationale": "Voluntary returns mirror UN-01/UN-03 with lag \u2014 same country-level conditions drive both."
+      "rationale": "Voluntary returns mirror UN-01/UN-03 with lag — same country-level conditions drive both."
     },
     "UN-06": {
       "sector": "DISPLACE",
       "confidence": "medium",
-      "rationale": "Stateless persons \u2014 chronic sub-stock of displacement, not active repression event. Borderline with REPRESSION."
+      "rationale": "Stateless persons — chronic sub-stock of displacement, not active repression event. Borderline with REPRESSION."
     },
     "ID-01": {
       "sector": "CONFLICT",
@@ -507,7 +512,7 @@
     "UD-05": {
       "sector": "STRUCT_DEV",
       "confidence": "high",
-      "rationale": "Mean years of schooling \u2014 slow-moving human capital stock; does not spike with crises."
+      "rationale": "Mean years of schooling — slow-moving human capital stock; does not spike with crises."
     },
     "UD-06": {
       "sector": "STRUCT_DEV",
@@ -582,7 +587,7 @@
     "GD-07": {
       "sector": "DIPLO_GEO",
       "confidence": "high",
-      "rationale": "GDELT protest counts are media-coverage artifacts (50\u00d7 source duplication), not ground-truth mobilization. Co-varies with GD-04/GD-15, not VD-25/VD-28."
+      "rationale": "GDELT protest counts are media-coverage artifacts (50× source duplication), not ground-truth mobilization. Co-varies with GD-04/GD-15, not VD-25/VD-28."
     },
     "GD-08": {
       "sector": "DIPLO_GEO",
@@ -611,7 +616,7 @@
     "GD-14": {
       "sector": "CONFLICT",
       "confidence": "medium",
-      "rationale": "Material conflict events are the 'hard signal' GDELT indicator \u2014 actual fighting. Co-varies with WB-01/UC-01 more than with GD-02 diplomatic score."
+      "rationale": "Material conflict events are the 'hard signal' GDELT indicator — actual fighting. Co-varies with WB-01/UC-01 more than with GD-02 diplomatic score."
     },
     "GD-15": {
       "sector": "DIPLO_GEO",
