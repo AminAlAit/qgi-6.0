@@ -69,6 +69,14 @@ import logging
 
 import boto3
 
+# #558: pattern_tier S/M/L/XL bucketing — single source of truth at
+# lambdas/_shared/pattern_tier.py. The deploy workflow copies _shared/
+# into each Lambda's bundle before zipping. NOTE: this is distinct
+# from the 12-bucket LENGTH_BUCKETS axis defined below (#534) — the
+# 12-bucket axis is for chunking strategy; pattern_tier is the
+# user-facing 4-tier label.
+from _shared.pattern_tier import pattern_tier_case_sql
+
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
@@ -580,15 +588,8 @@ def build_recipe_query(
             eb.title as event_title_b,
             p.indicator_count,
             p.pattern_power_score,
-            COALESCE(
-                p.pattern_tier,
-                CASE
-                    WHEN p.length BETWEEN 3 AND 8  THEN 'S'
-                    WHEN p.length BETWEEN 9 AND 20 THEN 'M'
-                    WHEN p.length BETWEEN 21 AND 40 THEN 'L'
-                    ELSE 'XL'
-                END
-            ) AS pattern_tier,
+            -- #558: pattern_tier SQL centralized in _shared/pattern_tier.py
+            COALESCE(p.pattern_tier, {pattern_tier_case_sql("p.length")}) AS pattern_tier,
             COALESCE(p.contains_predicted, FALSE) AS contains_predicted
         FROM {ATHENA_DB}.patterns p
         INNER JOIN {ATHENA_DB}.events ea
