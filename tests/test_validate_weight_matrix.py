@@ -12,7 +12,9 @@ Generated: 2026-05-03
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
+import types
 from pathlib import Path
 
 import numpy as np
@@ -1197,3 +1199,484 @@ def test_country_fallback_yemen_to_somalia_when_yemen_insufficient():
     assert result["country_resolved_to"] == "Somalia"
     # Somalia is above the threshold on enough categories → PASS
     assert result["passed"] is True
+
+
+# ===========================================================================
+# #637 m3: bootstrap + stratification edge case coverage
+# ===========================================================================
+
+def test_auc_bootstrap_ci_n_zero_input_returns_none():
+    """m3.2 — explicit guard: empty input arrays return (None, None, [])."""
+    y = np.array([], dtype=int)
+    pred = np.array([], dtype=float)
+    lo, hi, aucs = mod._auc_bootstrap_ci(
+        y, pred, n_resamples=100, seed=0, alpha=0.05,
+    )
+    assert lo is None
+    assert hi is None
+    assert aucs == []
+
+
+def test_auc_bootstrap_ci_width_non_increasing_with_more_resamples():
+    """m3.1 — CI width must not expand as n_resamples grows on the same
+    fixture. The percentile CI is a monotonically-stabilizing estimator,
+    so 100 → 1000 → 5000 should produce widths in roughly non-increasing
+    order (small upward jitter < 0.02 allowed because the inner quantile
+    estimate has its own sampling variance, but the trend must be
+    decreasing or flat)."""
+    rng = np.random.default_rng(2026)
+    n = 80
+    y = rng.integers(0, 2, size=n)
+    # Pred correlated with y → finite, non-degenerate AUC
+    pred = y + rng.normal(0, 0.6, size=n)
+
+    widths = []
+    for n_resamples in (100, 1000, 5000):
+        lo, hi, _ = mod._auc_bootstrap_ci(
+            y, pred, n_resamples=n_resamples, seed=42, alpha=0.05,
+        )
+        assert lo is not None and hi is not None
+        widths.append(hi - lo)
+
+    # 100 → 1000: width may shrink dramatically
+    # 1000 → 5000: width should be roughly stable (further shrinking is
+    # diminishing returns). Allow small upward jitter from inner sampling.
+    assert widths[1] <= widths[0] + 0.05, (
+        f"CI width grew substantially 100 → 1000: {widths[0]} → {widths[1]}"
+    )
+    assert widths[2] <= widths[1] + 0.02, (
+        f"CI width grew substantially 1000 → 5000: {widths[1]} → {widths[2]}"
+    )
+
+
+def test_stratified_auc_single_stratum_all_data_sufficient():
+    """m3.3 — when ALL cells have n_indicators_used >= STRATA_THRESHOLD,
+    the thin_coverage stratum is empty (n_cells=0, NaN aucs). The
+    data_sufficient stratum carries the entire signal."""
+    threshold = mod.STRATA_INDICATOR_COUNT_THRESHOLD
+    rows = []
+    for i in range(20):
+        rows.append({
+            "country_id": i, "event_category": "X",
+            "anomaly_score": float(i),
+            "n_indicators_used": threshold + 1,  # all >= threshold
+        })
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 10)}
+        for i in range(20)
+    ])
+    out = mod.compute_stratified_auc(scored, gt)
+
+    assert out["data_sufficient"]["n_cells"] == 20
+    assert out["thin_coverage"]["n_cells"] == 0
+    assert out["thin_coverage"]["n_categories"] == 0
+    # Empty stratum: clean NaN, not crash
+    assert np.isnan(out["thin_coverage"]["mean_auc"])
+    assert np.isnan(out["thin_coverage"]["median_auc"])
+    assert out["thin_coverage"]["per_event_category_auc"] == []
+    # Data-sufficient: actual signal (perfect discrimination at i>=10 boundary)
+    assert out["data_sufficient"]["mean_auc"] == 1.0
+
+
+def test_stratified_auc_single_stratum_all_thin_coverage():
+    """m3.3 — symmetric case: when ALL cells are below the threshold,
+    data_sufficient is empty and thin_coverage carries the signal.
+    This is the v0.1a ablation's actual real-world reading (≥10/10
+    stratum had 0 cells in the 2026-05-11 production run)."""
+    threshold = mod.STRATA_INDICATOR_COUNT_THRESHOLD
+    rows = []
+    for i in range(20):
+        rows.append({
+            "country_id": i, "event_category": "X",
+            "anomaly_score": float(i),
+            "n_indicators_used": max(1, threshold - 5),  # all < threshold
+        })
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 10)}
+        for i in range(20)
+    ])
+    out = mod.compute_stratified_auc(scored, gt)
+
+    assert out["thin_coverage"]["n_cells"] == 20
+    assert out["data_sufficient"]["n_cells"] == 0
+    assert out["data_sufficient"]["n_categories"] == 0
+    assert np.isnan(out["data_sufficient"]["mean_auc"])
+    assert np.isnan(out["data_sufficient"]["median_auc"])
+    assert out["data_sufficient"]["per_event_category_auc"] == []
+
+
+def test_per_category_ece_zero_variance_scores_falls_back_to_half():
+    """m3.4 — when a category has all-identical anomaly_score values
+    (span = max - min = 0), pred_scaled falls back to 0.5 for every cell.
+    All scaled predictions land in the middle bin; ECE is measured against
+    the 0.5 baseline (which equals |0.5 - base_rate|)."""
+    # 10 cells, all with score = 1.7. Half are positive (base rate = 0.5).
+    scored = pd.DataFrame([
+        {"country_id": i, "event_category": "FLAT",
+         "anomaly_score": 1.7, "n_indicators_used": 5}
+        for i in range(10)
+    ])
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "FLAT",
+         "y_post_cutoff": int(i < 5)}  # base rate exactly 0.5
+        for i in range(10)
+    ])
+    out = mod.compute_per_category_ece(scored, gt)
+
+    assert len(out) == 1
+    row = out[0]
+    assert row["event_category"] == "FLAT"
+    assert row["n_cells"] == 10
+    # pred_scaled = 0.5 fallback; base rate = 0.5 → ECE = 0
+    assert row["ece"] == pytest.approx(0.0, abs=1e-9)
+
+    # All 10 predictions land in a single bin (the bin straddling 0.5);
+    # the rest are empty.
+    non_empty = [b for b in row["reliability_diagram"] if b["n"] > 0]
+    assert len(non_empty) == 1
+    assert non_empty[0]["n"] == 10
+    assert non_empty[0]["mean_prediction"] == pytest.approx(0.5, abs=1e-9)
+    assert non_empty[0]["event_rate"] == pytest.approx(0.5, abs=1e-9)
+    assert non_empty[0]["abs_calibration_gap"] == pytest.approx(0.0, abs=1e-9)
+
+
+def test_per_category_ece_zero_variance_asymmetric_base_rate():
+    """m3.4 (extended) — same fallback as above, but with an asymmetric
+    base rate (0.8). ECE should equal |0.5 - 0.8| = 0.3 because every
+    prediction is forced to 0.5 by the zero-span guard, but events occur
+    at 80%."""
+    scored = pd.DataFrame([
+        {"country_id": i, "event_category": "FLAT",
+         "anomaly_score": 3.14, "n_indicators_used": 5}
+        for i in range(10)
+    ])
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "FLAT",
+         "y_post_cutoff": int(i < 8)}  # 8/10 positive
+        for i in range(10)
+    ])
+    out = mod.compute_per_category_ece(scored, gt)
+    assert len(out) == 1
+    assert out[0]["ece"] == pytest.approx(0.3, abs=1e-9)
+
+
+# ===========================================================================
+# #637 m2: end-to-end main() arm equivalence test
+# ===========================================================================
+
+def _build_main_fixture(tmp_path, *, n_countries=30, n_indicators=4,
+                       n_categories=3, weight_matrix=True,
+                       directions=True, allow_list=True, anchor_battery=True):
+    """Build a self-contained fixture for main() end-to-end testing.
+
+    Writes the 4 reference JSONs under tmp_path/qgi-data/reference/ and
+    returns a dict with the in-memory loader stubs the test will
+    monkeypatch in.
+
+    The fixture is deliberately small: 30 synthetic countries, 4
+    indicators, 3 event_categories. The point is to verify SCHEMA and
+    BRANCHING of main() (output keys, legacy alias, decision rationale,
+    config block), not statistical realism. Real AUC/ECE values are
+    exercised by the function-level tests above.
+    """
+    ref_dir = tmp_path / "qgi-data" / "reference"
+    ref_dir.mkdir(parents=True, exist_ok=True)
+
+    api_codes = [f"IND_{i:02d}" for i in range(n_indicators)]
+    event_categories = [f"cat_{c}" for c in range(n_categories)]
+
+    # weight-matrix.json
+    weights_rows = []
+    for nid, api in enumerate(api_codes, start=1):
+        for ec in event_categories:
+            weights_rows.append({
+                "indicator_numeric_id": nid,
+                "indicator_catalog_id": f"X-{nid:02d}",
+                "event_category": ec,
+                "sector": "test_sector",
+                "L1": "L1_test",
+                "weight": 0.5,
+                "used_fallback": False,
+            })
+    if weight_matrix:
+        (ref_dir / "weight-matrix.json").write_text(json.dumps({
+            "schema_version": 3,
+            "generated": "2026-01-01T00:00:00+00:00",
+            "n_full_eb_prior": len(weights_rows),
+            "weights": weights_rows,
+        }), encoding="utf-8")
+
+    # indicator-directions.json
+    if directions:
+        (ref_dir / "indicator-directions.json").write_text(json.dumps({
+            "schema_version": 1, "generated": "2026-01-01T00:00:00+00:00",
+            "directions": [
+                {"api_code": api, "direction": 1 if i % 2 == 0 else -1,
+                 "tag": "[lit-only]", "justification": "test"}
+                for i, api in enumerate(api_codes)
+            ],
+        }), encoding="utf-8")
+
+    # indicator-allow-list.json
+    if allow_list:
+        (ref_dir / "indicator-allow-list.json").write_text(json.dumps({
+            "schema_version": 1,
+            "allow_list_numeric_ids": list(range(1, n_indicators + 1)),
+        }), encoding="utf-8")
+
+    # cascade-anchor-case-battery.json — minimal (empty cases list).
+    # Tests anchor_case_battery wiring without exercising predicate logic.
+    if anchor_battery:
+        (ref_dir / "cascade-anchor-case-battery.json").write_text(json.dumps({
+            "schema_version": 1, "generated": "2026-01-01T00:00:00+00:00",
+            "evaluation_semantics": {"rank_basis": "ascending"},
+            "cases": [],
+        }), encoding="utf-8")
+
+    # Synthetic panel: each (country, indicator) has a value at every
+    # year in the z-score window. Use a deterministic spread per
+    # country so z-scores aren't all zero.
+    panel_rows = []
+    for cid in range(1, n_countries + 1):
+        for api in api_codes:
+            for y in range(2014 - mod.ZSCORE_WINDOW_YEARS + 1, 2015):
+                panel_rows.append({
+                    "country": str(cid), "year": y,
+                    "indicator_id": api,
+                    "value": float(cid + (y - 2014)),
+                })
+    panel = pd.DataFrame(panel_rows)
+    panel["country_id"] = panel["country"].astype(int)
+
+    # Synthetic ground truth: cell (country, category) gets y=1 iff
+    # country_id is even and category is cat_0.
+    gt_rows = []
+    for cid in range(1, n_countries + 1):
+        for ec in event_categories:
+            gt_rows.append({
+                "country_id": cid, "event_category": ec,
+                "y_post_cutoff": int(cid % 2 == 0 and ec == "cat_0"),
+            })
+    gt = pd.DataFrame(gt_rows)
+
+    # Countries lookup
+    countries = pd.DataFrame([
+        {"country_id": cid, "name": f"Country_{cid:02d}"}
+        for cid in range(1, n_countries + 1)
+    ])
+
+    # num_to_api
+    num_to_api = {nid: api for nid, api in enumerate(api_codes, start=1)}
+
+    return {
+        "ref_dir": ref_dir, "panel": panel, "gt": gt, "countries": countries,
+        "num_to_api": num_to_api,
+    }
+
+
+def _install_main_monkeypatches(monkeypatch, tmp_path, fixture):
+    """Wire fixture loaders into the script module, redirect ROOT-derived
+    paths to tmp_path, and stub the boto3 + creds boundary so main() never
+    touches Athena. Used by all m2 main()-end-to-end tests."""
+    ref_dir = fixture["ref_dir"]
+    monkeypatch.setattr(mod, "WEIGHT_MATRIX_JSON", ref_dir / "weight-matrix.json")
+    monkeypatch.setattr(mod, "DIRECTIONS_JSON", ref_dir / "indicator-directions.json")
+    monkeypatch.setattr(mod, "ALLOW_LIST_JSON", ref_dir / "indicator-allow-list.json")
+    monkeypatch.setattr(mod, "ANCHOR_BATTERY_JSON", ref_dir / "cascade-anchor-case-battery.json")
+    monkeypatch.setattr(mod, "OUTPUT_JSON_LEGACY", ref_dir / "phase4-validation.json")
+    monkeypatch.setattr(mod, "ROOT", tmp_path)
+
+    # The loader functions capture their default `path=` argument at
+    # def-time, so simply patching the module-level constants above is
+    # not sufficient — main() calls e.g. `load_allow_list()` without
+    # args. Wrap each loader to inject the patched path explicitly.
+    real_load_allow_list = mod.load_allow_list
+    real_load_directions = mod.load_direction_annotations
+    real_load_anchor = mod.load_anchor_battery
+    monkeypatch.setattr(mod, "load_allow_list",
+                        lambda path=None: real_load_allow_list(
+                            ref_dir / "indicator-allow-list.json"))
+    monkeypatch.setattr(mod, "load_direction_annotations",
+                        lambda path=None: real_load_directions(
+                            ref_dir / "indicator-directions.json"))
+    monkeypatch.setattr(mod, "load_anchor_battery",
+                        lambda path=None: real_load_anchor(
+                            ref_dir / "cascade-anchor-case-battery.json"))
+
+    # Stub Athena boundary: creds file read + boto3.Session.
+    creds_dir = tmp_path / "creds"
+    creds_dir.mkdir(parents=True, exist_ok=True)
+    creds_path = creds_dir / "staging_creds.json"
+    creds_path.write_text(json.dumps({
+        "ak": "test_ak", "sk": "test_sk", "st": "test_st",
+    }), encoding="utf-8")
+
+    # Patch the hard-coded staging-creds path inside main(). main()
+    # constructs the path locally as `Path(r"C:/...")`, so we can't
+    # redirect via setattr. Instead, monkeypatch Path itself to return
+    # our test path when called with the staging-creds string. Cleaner
+    # alternative: monkeypatch Path.read_text on the specific path.
+    real_read_text = Path.read_text
+    test_creds_text = creds_path.read_text(encoding="utf-8")
+
+    def _stub_read_text(self, *args, **kwargs):
+        if "staging_creds.json" in str(self):
+            return test_creds_text
+        return real_read_text(self, *args, **kwargs)
+
+    monkeypatch.setattr(Path, "read_text", _stub_read_text)
+
+    # Stub boto3.Session so no real AWS call ever fires
+    class _StubSession:
+        def __init__(self, **_kwargs):
+            pass
+
+        def client(self, _service):
+            return object()  # never used; loaders are stubbed too
+
+    monkeypatch.setattr(mod, "boto3", types.SimpleNamespace(Session=_StubSession))
+
+    # Stub the loader functions — they're the only consumers of the
+    # boto3 client. After this, main() runs purely on the fixture.
+    monkeypatch.setattr(mod.au, "load_indicator_panel",
+                        lambda *a, **k: fixture["panel"])
+    monkeypatch.setattr(mod.au, "load_event_ground_truth",
+                        lambda *a, **k: fixture["gt"])
+    monkeypatch.setattr(mod.au, "load_countries",
+                        lambda *a, **k: fixture["countries"])
+    monkeypatch.setattr(mod.eb, "load_numeric_to_api",
+                        lambda *a, **k: fixture["num_to_api"])
+
+
+def test_main_end_to_end_arm_D_writes_legacy_alias(monkeypatch, tmp_path):
+    """m2 — D-arm end-to-end. Verifies:
+    - output JSON's schema_version == 4
+    - output's ablation_arm == "D" and ablation_arm_config is unsigned/no-filter
+    - legacy alias `phase4-validation.json` IS written for the D-arm
+    - summary keys are present and finite
+    """
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D",
+        # Small bootstrap so the test is fast
+        bootstrap_resamples=50,
+    )
+
+    # Per-arm output written
+    out_path = fixture["ref_dir"] / "phase4-validation-armD.json"
+    assert out_path.exists(), f"per-arm output not written: {out_path}"
+    out = json.loads(out_path.read_text(encoding="utf-8"))
+    assert out["schema_version"] == 4
+    assert out["ablation_arm"] == "D"
+    assert out["ablation_arm_config"] == {
+        "use_signed_scoring": False,
+        "apply_591_filter": False,
+    }
+
+    # Legacy alias is written for D-arm
+    legacy_path = fixture["ref_dir"] / "phase4-validation.json"
+    assert legacy_path.exists(), (
+        "legacy phase4-validation.json alias must be written for D-arm "
+        "(v3 backward-compat contract)"
+    )
+    legacy = json.loads(legacy_path.read_text(encoding="utf-8"))
+    assert legacy["ablation_arm"] == "D"
+    assert legacy["schema_version"] == 4
+
+    # Summary keys present (per the v4 schema; values may be NaN on small
+    # synthetic fixtures where AUC is undefined, but the keys must exist)
+    summary = out["summary"]
+    for k in ("n_event_categories", "n_event_categories_with_auc",
+              "n_predictions", "mean_auc", "median_auc",
+              "n_auc_above_0_55", "n_auc_above_0_65", "ece",
+              "decision", "decision_rationale"):
+        assert k in summary, f"missing summary key: {k}"
+
+    # v4-specific top-level keys
+    for k in ("stratified_auc", "per_event_category_ece",
+              "anchor_case_battery", "method_caveats", "config"):
+        assert k in out, f"missing top-level key: {k}"
+
+
+def test_main_end_to_end_arm_A_does_not_write_legacy_alias(monkeypatch, tmp_path):
+    """m2 — A-arm (signed × #591 filter) must NOT write the legacy alias.
+    Only the per-arm output is written. Verifies the alias guard at the
+    bottom of main() correctly branches on ablation_arm == "D"."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="A", bootstrap_resamples=50,
+    )
+
+    out_path = fixture["ref_dir"] / "phase4-validation-armA.json"
+    assert out_path.exists()
+    out = json.loads(out_path.read_text(encoding="utf-8"))
+    assert out["ablation_arm"] == "A"
+    assert out["ablation_arm_config"] == {
+        "use_signed_scoring": True,
+        "apply_591_filter": True,
+    }
+
+    # Legacy alias must NOT be written for A-arm
+    legacy_path = fixture["ref_dir"] / "phase4-validation.json"
+    assert not legacy_path.exists(), (
+        "legacy alias must only be written for the D-arm; non-D arms "
+        "would overwrite the v3 baseline reference"
+    )
+
+
+def test_main_end_to_end_arm_A_requires_directions(monkeypatch, tmp_path):
+    """m2 — A-arm hard-errors when directions JSON is absent (strict-
+    review M4 regression: silent fallback to D-behavior is forbidden)."""
+    fixture = _build_main_fixture(tmp_path, directions=False)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    with pytest.raises(FileNotFoundError, match="direction annotations"):
+        mod.main(
+            cutoff_year=2014, end_year=2025, with_baselines=False,
+            ablation_arm="A", bootstrap_resamples=50,
+        )
+
+
+def test_main_end_to_end_arm_C_requires_allow_list(monkeypatch, tmp_path):
+    """m2 — C-arm hard-errors when allow-list JSON is absent. Same
+    contract as the A-arm directions requirement."""
+    fixture = _build_main_fixture(tmp_path, allow_list=False)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    with pytest.raises(FileNotFoundError, match="#591 allow-list"):
+        mod.main(
+            cutoff_year=2014, end_year=2025, with_baselines=False,
+            ablation_arm="C", bootstrap_resamples=50,
+        )
+
+
+def test_main_end_to_end_v3_backward_compat_keys_present(monkeypatch, tmp_path):
+    """m2 — D-arm output preserves all v3-era top-level keys that
+    downstream consumers depend on (per_event_category_auc, reliability_
+    diagram, ece, decision/decision_rationale). v4 adds keys, never
+    removes them."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=50,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    # Frozen v3-era keys
+    v3_keys = {
+        "schema_version", "generated", "method", "config", "summary",
+        "per_event_category_auc", "reliability_diagram",
+    }
+    missing = v3_keys - set(out.keys())
+    assert not missing, f"v3 backward-compat keys missing: {missing}"
