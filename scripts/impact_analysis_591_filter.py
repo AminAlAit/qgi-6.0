@@ -3,9 +3,13 @@ impact_analysis_591_filter.py — measure how many distinct indicator IDs
 in qgi_data.recipes_aggregated.indicator_fingerprint would be filtered
 out by the #591 allow-list-of-61.
 
-# THROWAWAY — pre-merge measurement for Phase 5 v0.0 Step 5. Decides
-# whether the Majles needs to reconvene before merging the lambda change
-# (per founder rubric: 1 = ship, 2 = ship + Sonnet audit, 3 = HALT).
+Recurring CI regression role (per Phase 5 v0.0 Step 5 spec): this
+script is invoked post-deploy on the staging recipes_aggregated table
+to verify that the indicator_fingerprint distribution does not drift
+outside the #591 allow-list-of-61 vocabulary. The original "1 = ship,
+2 = ship + Sonnet audit, 3 = HALT" rubric (Phase 5 v0.0 merge gate)
+was a one-shot pre-merge use; the script has since graduated to a
+recurring tool. THROWAWAY tag removed per #600 Finding 3.
 
 Output: distinct indicator_id count in current fingerprint × per-event-
 category breakdown × subset analysis vs allow-list. Joins to
@@ -36,18 +40,34 @@ DEFAULT_WORKGROUP = "QGI-Lambda-Workgroup"
 INDICATOR_MAP_S3_KEY = "pipeline-A-indicator-extractor/input/indicator_map.csv"
 
 
-def athena_query(client, workgroup: str, sql: str) -> list[list[str]]:
+def athena_query(
+    client, workgroup: str, sql: str, max_poll_iterations: int = 300,
+) -> list[list[str]]:
+    """Run an Athena query and return rows. Polls with a hard iteration
+    cap so a stuck-in-RUNNING query doesn't hang the script forever
+    (recurring CI role per #600 Finding 5). Default cap: 300 iterations
+    × 1.5s = ~7.5 minutes — generous for the ~71-row recipes_aggregated
+    table this script reads."""
     qid = client.start_query_execution(
         QueryString=sql,
         QueryExecutionContext={"Database": GLUE_DB},
         WorkGroup=workgroup,
     )["QueryExecutionId"]
-    while True:
+    state = "UNKNOWN"
+    s = None
+    for _ in range(max_poll_iterations):
         time.sleep(1.5)
         s = client.get_query_execution(QueryExecutionId=qid)["QueryExecution"]
         state = s["Status"]["State"]
         if state in ("SUCCEEDED", "FAILED", "CANCELLED"):
             break
+    else:
+        raise TimeoutError(
+            f"Athena {qid} still in state {state!r} after "
+            f"{max_poll_iterations} poll iterations "
+            f"(~{max_poll_iterations * 1.5:.0f}s). Aborting to avoid hang. "
+            f"SQL: {sql[:300]}"
+        )
     if state != "SUCCEEDED":
         raise RuntimeError(f"Athena {qid} {state}: "
                            f"{s['Status'].get('StateChangeReason', '')}\n{sql[:300]}")

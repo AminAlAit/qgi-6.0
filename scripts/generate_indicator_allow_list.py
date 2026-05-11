@@ -155,8 +155,19 @@ def build_json_payload(
     unresolved: list[tuple[str, str]],
     numeric_ids: list[int],
     catalog_sha256: str,
+    id_to_num: dict[str, int],
 ) -> dict:
-    """Build the deterministic JSON payload."""
+    """Build the deterministic JSON payload.
+
+    `id_to_num` is required so the `resolved[].numeric_id` field is
+    populated at construction time. Previously a separate
+    `fill_resolved_numeric_ids()` patched these in a second pass, but
+    that left a seam where a caller forgetting the second call would
+    write metadata with `numeric_id: null` for every resolved row
+    (the load-bearing `allow_list_numeric_ids` field was unaffected
+    so the bug would be metadata-only — but still confusing). #600
+    Finding 4 collapsed the two-pass into one.
+    """
     return {
         "schema_version": 1,
         "generator": "qgi-ml/scripts/generate_indicator_allow_list.py",
@@ -184,7 +195,7 @@ def build_json_payload(
             "numeric_ids_in_allow_list": len(numeric_ids),
         },
         "resolved": [
-            {"catalog_code": cc, "api_code": ac, "numeric_id": None}
+            {"catalog_code": cc, "api_code": ac, "numeric_id": id_to_num[ac]}
             for cc, ac in resolved
         ],
         "unresolved_pending_ingestion": [
@@ -192,12 +203,6 @@ def build_json_payload(
         ],
         "allow_list_numeric_ids": numeric_ids,
     }
-
-
-def fill_resolved_numeric_ids(payload: dict, id_to_num: dict[str, int]) -> None:
-    """Populate the numeric_id field on each resolved entry post-build."""
-    for entry in payload["resolved"]:
-        entry["numeric_id"] = id_to_num[entry["api_code"]]
 
 
 def main() -> int:
@@ -246,8 +251,8 @@ def main() -> int:
         unresolved=unresolved,
         numeric_ids=numeric_ids,
         catalog_sha256=catalog_sha256,
+        id_to_num=id_to_num,
     )
-    fill_resolved_numeric_ids(payload, id_to_num)
 
     rendered = json.dumps(payload, indent=2, sort_keys=False) + "\n"
 
