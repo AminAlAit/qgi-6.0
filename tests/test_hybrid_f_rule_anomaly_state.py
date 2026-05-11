@@ -1,23 +1,35 @@
-"""Regression tests locking the in-sample F2 anomaly state for the 2 hybrid
+"""Regression tests locking the in-sample F2 anomaly state for the hybrid
 recipes flagged in `stage-2-hybrid-d2-d5-walk-methodology-prereg.md` and the
 Stage 5 paper Section 4 (qgi-docs PR #50).
 
-Two recipes earn their hybrid tier via LOCO under D5-assigned architecture
-but FAIL in-sample F2 under D5:
-  - `epidemic_and_pandemic` (STRONG tier via LOCO 0.8824; in-sample F2 fails)
-  - `territorial_disputes` (MODERATE tier via LOCO 0.6780; in-sample F2 fails;
-    additionally, predictions collapse to near-zero — see Stage 5 paper)
+**Current state (post-KI-2 amendment 2026-05-11):** ONE LOCKed recipe carries
+the f_rule_anomaly flag:
+  - `epidemic_and_pandemic` (STRONG tier via LOCO 0.8824; in-sample F2 fails;
+    retained LOCKed with f_rule_anomaly via inherited ADVISORY-ONLY).
+
+**Pre-amendment historical state (pre-KI-2):** TWO LOCKed recipes carried the
+flag. `territorial_disputes` was the second (MODERATE tier via LOCO 0.6780;
+predictions degenerated to near-zero under D5; AHI = 1.0000 was an artifact
+not strength). **KI-2 Majles amendment 2026-05-11 (Option C carried 3-1;
+Priya dissent for Option B logged) FALSIFIED `territorial_disputes` under
+hybrid.** Hybrid LOCKed count dropped 14 → 13.
+
+The empirical-state tests for `territorial_disputes` (test_territorial_-
+disputes_in_sample_f2_fails_under_d5 + test_territorial_disputes_f1_-
+uninformative_under_degenerate_predictions) are RETAINED in this module
+as historical documentation of WHY the recipe was FALSIFIED — they
+exercise the predictions JSON directly (not the dispatch table) and
+should remain green as long as the D5 predictions artifact is unchanged.
 
 The hybrid pre-reg F-H-1 places production predictions on the assigned
-architecture but does NOT explicitly resolve which F-rule set applies
-under hybrid (D2 walk's F1+F2 vs D5 walk's F-D5-x). This is a flagged
-Majles agenda item; pending resolution, the dispatch table marks both
-recipes with `f_rule_anomaly: true` and Stage 5 disclosure treats them
-as composite-signal only.
+architecture. KI-2 resolved the hybrid F-rule applicability ambiguity for
+the territorial_disputes case (FALSIFY); for epidemic_and_pandemic the
+ambiguity is operatively resolved by the inherited ADVISORY-ONLY
+restriction (n_pos_LOCO=1 per F-H-3 post-KI-1).
 
-These tests lock the disclosed state so that a future model retrain
-or pipeline change cannot accidentally "fix" the anomaly without
-explicit Majles re-pre-registration.
+These tests lock the disclosed state so that a future model retrain or
+pipeline change cannot accidentally "fix" the anomaly without explicit
+Majles re-pre-registration.
 """
 from __future__ import annotations
 
