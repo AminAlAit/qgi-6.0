@@ -1680,3 +1680,234 @@ def test_main_end_to_end_v3_backward_compat_keys_present(monkeypatch, tmp_path):
     }
     missing = v3_keys - set(out.keys())
     assert not missing, f"v3 backward-compat keys missing: {missing}"
+
+
+# ===========================================================================
+# v5 NEW (T2 / #666 / Phase 5 v0.2 charter A2):
+#   γ-stage instrumentation — configurable strata threshold + sensitivity sweep
+# ===========================================================================
+
+def test_compute_stratified_auc_accepts_strata_threshold_param():
+    """v5 — `compute_stratified_auc` accepts a `strata_threshold` kwarg
+    that overrides the module-level default. The threshold is reflected
+    in the output's "threshold" field, and stratum membership flips when
+    the kwarg moves above/below n_indicators_used.
+    """
+    rows = [
+        {"country_id": i, "event_category": "X",
+         "anomaly_score": float(i), "n_indicators_used": 7}
+        for i in range(10)
+    ]
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 5)}
+        for i in range(10)
+    ])
+
+    # threshold=5 ⇒ all 10 cells (n=7 each) land in data_sufficient
+    out_lo = mod.compute_stratified_auc(scored, gt, strata_threshold=5)
+    assert out_lo["threshold"] == 5
+    assert out_lo["data_sufficient"]["n_cells"] == 10
+    assert out_lo["thin_coverage"]["n_cells"] == 0
+
+    # threshold=10 ⇒ all 10 cells land in thin_coverage
+    out_hi = mod.compute_stratified_auc(scored, gt, strata_threshold=10)
+    assert out_hi["threshold"] == 10
+    assert out_hi["data_sufficient"]["n_cells"] == 0
+    assert out_hi["thin_coverage"]["n_cells"] == 10
+
+
+def test_compute_stratified_auc_default_threshold_unchanged():
+    """v5 — when `strata_threshold` is not passed, behavior matches the
+    pre-v5 module default (v4 backward-compat)."""
+    rows = [
+        {"country_id": i, "event_category": "X",
+         "anomaly_score": float(i),
+         "n_indicators_used": 15 if i < 5 else 3}
+        for i in range(10)
+    ]
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 5)}
+        for i in range(10)
+    ])
+    out = mod.compute_stratified_auc(scored, gt)
+    assert out["threshold"] == mod.STRATA_INDICATOR_COUNT_THRESHOLD
+    # With default threshold=10: cells with n=15 are sufficient, n=3 are thin.
+    assert out["data_sufficient"]["n_cells"] == 5
+    assert out["thin_coverage"]["n_cells"] == 5
+
+
+def test_stratum_sensitivity_thresholds_constant():
+    """v5 — the module exposes the canonical γ-sweep tuple {3, 5, 7, 10, 15}
+    as STRATUM_SENSITIVITY_THRESHOLDS. This is the locked γ-stage transparency
+    set per Phase 5 v0.2 charter §γ. Changing it requires a charter amendment.
+    """
+    assert mod.STRATUM_SENSITIVITY_THRESHOLDS == (3, 5, 7, 10, 15)
+
+
+def test_compute_stratum_sensitivity_returns_per_threshold_rows():
+    """v5 — `compute_stratum_sensitivity` returns one entry per threshold
+    in the sweep, each carrying n_cells, n_categories, mean_auc, median_auc."""
+    # 30 cells with n_indicators_used varying from 1..30. Half positive
+    # so AUC is computable per threshold.
+    rows = [
+        {"country_id": i, "event_category": "X",
+         "anomaly_score": float(i),
+         "n_indicators_used": i + 1}
+        for i in range(30)
+    ]
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 15)}
+        for i in range(30)
+    ])
+
+    out = mod.compute_stratum_sensitivity(scored, gt)
+    assert out["thresholds_swept"] == [3, 5, 7, 10, 15]
+    assert len(out["entries"]) == 5
+    for entry in out["entries"]:
+        for k in ("threshold", "n_cells", "n_categories",
+                  "mean_auc", "median_auc"):
+            assert k in entry, f"missing key {k} in entry {entry}"
+        assert entry["threshold"] in (3, 5, 7, 10, 15)
+
+    # n_cells in data_sufficient stratum decreases monotonically as
+    # threshold rises (fewer cells clear the higher bar).
+    n_cells_by_threshold = {e["threshold"]: e["n_cells"] for e in out["entries"]}
+    assert n_cells_by_threshold[3] >= n_cells_by_threshold[5]
+    assert n_cells_by_threshold[5] >= n_cells_by_threshold[7]
+    assert n_cells_by_threshold[7] >= n_cells_by_threshold[10]
+    assert n_cells_by_threshold[10] >= n_cells_by_threshold[15]
+
+
+def test_compute_stratum_sensitivity_handles_empty_input():
+    """v5 — empty scored/gt → 5 entries, each with n_cells=0 and NaN
+    mean/median AUCs. Mirrors the empty-input contract of
+    compute_stratified_auc."""
+    scored = pd.DataFrame(columns=["country_id", "event_category",
+                                   "anomaly_score", "n_indicators_used"])
+    gt = pd.DataFrame(columns=["country_id", "event_category", "y_post_cutoff"])
+    out = mod.compute_stratum_sensitivity(scored, gt)
+    assert len(out["entries"]) == 5
+    for entry in out["entries"]:
+        assert entry["n_cells"] == 0
+        assert entry["n_categories"] == 0
+
+
+def test_compute_stratum_sensitivity_accepts_custom_thresholds():
+    """v5 — caller can override the sweep set. (Used by tests; in
+    production the γ-sweep is always {3,5,7,10,15} per the charter.)"""
+    rows = [
+        {"country_id": i, "event_category": "X",
+         "anomaly_score": float(i), "n_indicators_used": 8}
+        for i in range(10)
+    ]
+    scored = pd.DataFrame(rows)
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 5)}
+        for i in range(10)
+    ])
+    out = mod.compute_stratum_sensitivity(scored, gt, thresholds=(2, 4))
+    assert out["thresholds_swept"] == [2, 4]
+    assert len(out["entries"]) == 2
+
+
+def test_evaluate_weights_surfaces_stratum_sensitivity():
+    """v5 — `evaluate_weights` now surfaces `stratum_sensitivity` in its
+    return dict alongside `stratified_auc`."""
+    fixture = _build_evaluate_weights_minimal_fixture()
+    out = mod.evaluate_weights(
+        fixture["weights_df"], fixture["zscores"],
+        fixture["country_id_to_str"], fixture["num_to_api"], fixture["gt"],
+        label="treatment",
+        bootstrap_resamples=20,
+    )
+    assert "stratum_sensitivity" in out
+    assert out["stratum_sensitivity"]["thresholds_swept"] == [3, 5, 7, 10, 15]
+
+
+def test_evaluate_weights_threads_strata_threshold_to_stratified_auc():
+    """v5 — `evaluate_weights(strata_threshold=N)` flows N into the
+    `stratified_auc` block's threshold field."""
+    fixture = _build_evaluate_weights_minimal_fixture()
+    out = mod.evaluate_weights(
+        fixture["weights_df"], fixture["zscores"],
+        fixture["country_id_to_str"], fixture["num_to_api"], fixture["gt"],
+        label="treatment",
+        bootstrap_resamples=20,
+        strata_threshold=5,
+    )
+    assert out["stratified_auc"]["threshold"] == 5
+
+
+def _build_evaluate_weights_minimal_fixture():
+    """Build the smallest fixture that exercises evaluate_weights end-to-end
+    without Athena. Inline construction so the test doesn't depend on
+    tmp_path/monkeypatch. 1 indicator, 6 countries, 1 event_category.
+
+    Schema matches what compute_country_zscores produces upstream:
+      zscores columns: country (str), indicator_id (api_code), value, z_score
+    score_country_event then renames indicator_id → api_code and joins
+    against weights_df via num_to_api.
+    """
+    weights_df = pd.DataFrame([
+        {"indicator_numeric_id": 100, "event_category": "X", "weight": 1.0},
+    ])
+    zscores = pd.DataFrame([
+        {"country": f"C{i}", "indicator_id": "I100",
+         "value": float(i), "z_score": float(i - 2.5)}
+        for i in range(6)
+    ])
+    country_id_to_str = {i: f"C{i}" for i in range(6)}
+    num_to_api = {100: "I100"}
+    gt = pd.DataFrame([
+        {"country_id": i, "event_category": "X", "y_post_cutoff": int(i >= 3)}
+        for i in range(6)
+    ])
+    return {
+        "weights_df": weights_df,
+        "zscores": zscores,
+        "country_id_to_str": country_id_to_str,
+        "num_to_api": num_to_api,
+        "gt": gt,
+    }
+
+
+def test_main_end_to_end_surfaces_stratum_sensitivity_in_output(monkeypatch, tmp_path):
+    """v5 — top-level `stratum_sensitivity` key is in the per-arm output
+    JSON (D-arm, no baselines). Asserts the γ-stage transparency artifact
+    is wired all the way from compute_stratum_sensitivity → evaluate_weights
+    → output dict."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert "stratum_sensitivity" in out
+    assert out["stratum_sensitivity"]["thresholds_swept"] == [3, 5, 7, 10, 15]
+    assert len(out["stratum_sensitivity"]["entries"]) == 5
+
+
+def test_main_end_to_end_strata_threshold_reflected_in_config(monkeypatch, tmp_path):
+    """v5 — `main(strata_threshold=N)` propagates N into
+    `config.strata_indicator_count_threshold` and into the
+    `stratified_auc.threshold` field of the output JSON."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+        strata_threshold=7,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert out["config"]["strata_indicator_count_threshold"] == 7
+    assert out["stratified_auc"]["threshold"] == 7
