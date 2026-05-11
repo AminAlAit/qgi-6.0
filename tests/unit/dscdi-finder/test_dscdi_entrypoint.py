@@ -594,3 +594,93 @@ def test_manifest_mean_abs_pairwise_corr_is_float64(
     df = pd.read_parquet(BytesIO(obj["Body"].read()))
 
     assert df["mean_abs_pairwise_corr"].dtype == np.float64
+
+
+# ---------------------------------------------------------------------------
+# Test 17 — writer-side indicator_class vocabulary assertion (#613 Flag 1)
+# ---------------------------------------------------------------------------
+
+def test_write_pairwise_output_rejects_invalid_indicator_class(
+    entrypoint_mod, populated_s3, dscdi_finder_mod
+):
+    """write_pairwise_output must raise ValueError when indicator_class
+    contains values outside the {A, B, C} vocabulary.
+
+    Glue/Hive Metastore doesn't support CHECK constraints natively, and
+    the IndicatorClass Literal["A", "B", "C"] in dscdi_finder.py is a
+    type-check-time guarantee only (Python doesn't enforce Literal at
+    runtime). The runtime assertion in write_pairwise_output is the
+    canonical enforcement point — without it, a future writer bug
+    emitting 'a' / 'Class A' / '' / NaN would silently mis-filter
+    downstream Athena queries like `WHERE indicator_class = 'A'`.
+    """
+    _, bucket = populated_s3
+    panel = make_synthetic_panel(COUNTRIES_DEFAULT[:4])
+    country_map = {c: i for i, c in enumerate(COUNTRIES_DEFAULT[:4], 1)}
+
+    result = dscdi_finder_mod.run_dscdi_pass(
+        indicator_id="v2x_libdem", panel=panel, audit_classification="I(1)"
+    )
+    output = entrypoint_mod.build_pairwise_rows(result, 1001, country_map)
+    # Corrupt one row's indicator_class — simulate a future writer bug
+    output.loc[0, "indicator_class"] = "a"  # lowercase variant
+
+    with pytest.raises(ValueError, match="indicator_class"):
+        entrypoint_mod.write_pairwise_output(
+            output, bucket, "dscdis", "v2x_libdem"
+        )
+
+
+def test_write_pairwise_output_rejects_multiple_invalid_indicator_classes(
+    entrypoint_mod, populated_s3, dscdi_finder_mod
+):
+    """When several rows carry different invalid values, the error must
+    list all of them sorted so the reporter sees the full vocabulary
+    drift, not just the first one encountered."""
+    _, bucket = populated_s3
+    panel = make_synthetic_panel(COUNTRIES_DEFAULT[:5])
+    country_map = {c: i for i, c in enumerate(COUNTRIES_DEFAULT[:5], 1)}
+
+    result = dscdi_finder_mod.run_dscdi_pass(
+        indicator_id="v2x_libdem", panel=panel, audit_classification="I(1)"
+    )
+    output = entrypoint_mod.build_pairwise_rows(result, 1001, country_map)
+    output.loc[0, "indicator_class"] = "Class A"
+    output.loc[1, "indicator_class"] = ""
+    output.loc[2, "indicator_class"] = "a"
+
+    with pytest.raises(ValueError) as exc_info:
+        entrypoint_mod.write_pairwise_output(
+            output, bucket, "dscdis", "v2x_libdem"
+        )
+    msg = str(exc_info.value)
+    # All three bad values should appear in the error
+    assert "Class A" in msg
+    assert "'a'" in msg or '"a"' in msg or " a" in msg  # tolerate repr formatting
+    # indicator_id should be in the message for log triage
+    assert "v2x_libdem" in msg
+
+
+def test_write_pairwise_output_accepts_canonical_classes(
+    entrypoint_mod, populated_s3, dscdi_finder_mod
+):
+    """Sanity guard: the happy path (Class A demeaned + undemeaned rows)
+    must not be broken by the new assertion."""
+    client, bucket = populated_s3
+    panel = make_synthetic_panel(COUNTRIES_DEFAULT[:4])
+    country_map = {c: i for i, c in enumerate(COUNTRIES_DEFAULT[:4], 1)}
+
+    result = dscdi_finder_mod.run_dscdi_pass(
+        indicator_id="v2x_libdem", panel=panel, audit_classification="I(1)"
+    )
+    output = entrypoint_mod.build_pairwise_rows(result, 1001, country_map)
+    # Cover all three canonical classes — the writer might emit any
+    # mix in production, so the assertion must accept the full vocabulary
+    output.loc[0, "indicator_class"] = "A"
+    output.loc[1, "indicator_class"] = "B"
+    output.loc[2, "indicator_class"] = "C"
+
+    n_files = entrypoint_mod.write_pairwise_output(
+        output, bucket, "dscdis", "v2x_libdem"
+    )
+    assert n_files >= 1

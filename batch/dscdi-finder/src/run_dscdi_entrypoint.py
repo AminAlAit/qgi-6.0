@@ -312,6 +312,9 @@ def build_pairwise_rows(
 # ---------------------------------------------------------------------------
 # Section 7 — Write pairwise output partitioned by country_a_id
 # ---------------------------------------------------------------------------
+_VALID_INDICATOR_CLASSES = frozenset({"A", "B", "C"})
+
+
 def write_pairwise_output(
     output: pd.DataFrame, bucket: str, prefix: str, indicator_id: str
 ) -> int:
@@ -325,6 +328,23 @@ def write_pairwise_output(
             f"no files written"
         )
         return 0
+
+    # Writer-side runtime assertion (Flag 1 of #613). The IndicatorClass
+    # Literal["A", "B", "C"] in dscdi_finder.py is a type-check-time guarantee
+    # only; Python doesn't enforce Literal at runtime, so a future writer bug
+    # emitting "a" / "Class A" / "" / numpy.nan would silently mis-filter
+    # downstream Athena queries (WHERE indicator_class = 'A'). Glue/Hive
+    # Metastore doesn't support CHECK constraints natively, so this is the
+    # canonical enforcement point.
+    bad_classes = sorted(
+        set(output["indicator_class"].astype(str).unique()) - _VALID_INDICATOR_CLASSES
+    )
+    if bad_classes:
+        raise ValueError(
+            f"writer emitted indicator_class values outside the {{A, B, C}} "
+            f"vocabulary: {bad_classes}. Glue/Athena downstream filters will "
+            f"silently exclude these rows. Indicator: {indicator_id}."
+        )
 
     n_files = 0
     for country_a_id, group in output.groupby("country_a_id"):
