@@ -90,19 +90,22 @@ def test_dispatch_invariants_pass(dispatch: HybridDispatch) -> None:
     assert_dispatch_invariants(dispatch)
 
 
-def test_dispatch_has_14_locked_recipes(dispatch: HybridDispatch) -> None:
-    """Per hybrid pre-reg: 14 LOCKED recipes (6 STRONG + 6 MODERATE + 2 MARGINAL)."""
+def test_dispatch_has_13_locked_recipes(dispatch: HybridDispatch) -> None:
+    """Per hybrid pre-reg post-KI-2 amendment 2026-05-11: 13 LOCKED recipes
+    (6 STRONG + 5 MODERATE + 2 MARGINAL). territorial_disputes FALSIFIED.
+    """
     locked = dispatch.locked_recipes()
-    assert len(locked) == 14
+    assert len(locked) == 13
     assert len(dispatch.recipes_by_tier("STRONG")) == 6
-    assert len(dispatch.recipes_by_tier("MODERATE")) == 6
+    assert len(dispatch.recipes_by_tier("MODERATE")) == 5
     assert len(dispatch.recipes_by_tier("MARGINAL")) == 2
 
 
 def test_dispatch_architecture_split(dispatch: HybridDispatch) -> None:
-    """Hybrid: 7 D2-assigned + 7 D5-assigned = 14 LOCKs."""
+    """Hybrid post-KI-2: 7 D2-assigned + 6 D5-assigned = 13 LOCKs
+    (territorial_disputes was D5-assigned; FALSIFIED 2026-05-11)."""
     assert len(dispatch.recipes_by_architecture("D2")) == 7
-    assert len(dispatch.recipes_by_architecture("D5")) == 7
+    assert len(dispatch.recipes_by_architecture("D5")) == 6
 
 
 def test_dispatch_advisory_only_count(dispatch: HybridDispatch) -> None:
@@ -116,18 +119,18 @@ def test_dispatch_advisory_only_count(dispatch: HybridDispatch) -> None:
 
 
 def test_dispatch_f_rule_anomaly_count(dispatch: HybridDispatch) -> None:
-    """Per Stage 5 paper finding: exactly 2 recipes have F-rule anomaly under D5
-    (epidemic_and_pandemic, territorial_disputes)."""
+    """Per Stage 5 paper finding post-KI-2 amendment 2026-05-11: exactly 1
+    recipe has F-rule anomaly under D5 (epidemic_and_pandemic).
+    territorial_disputes was previously flagged but is now FALSIFIED."""
     anomalies = [r for r in dispatch.locked_recipes() if dispatch.has_f_rule_anomaly(r)]
-    assert sorted(anomalies) == sorted([
-        "epidemic_and_pandemic", "territorial_disputes",
-    ])
+    assert sorted(anomalies) == ["epidemic_and_pandemic"]
 
 
 def test_dispatch_falsified_count(dispatch: HybridDispatch) -> None:
-    """9 D2-eligible recipes are FALSIFIED (not LOCKed); 14 LOCKed + 9 FALSIFIED = 23 total."""
+    """10 D2-eligible recipes are FALSIFIED (not LOCKed) post-KI-2 amendment;
+    13 LOCKed + 10 FALSIFIED = 23 total."""
     falsified = dispatch.falsified_recipes()
-    assert len(falsified) == 9
+    assert len(falsified) == 10
     assert len(dispatch.locked_recipes()) + len(falsified) == 23
 
 
@@ -165,7 +168,7 @@ def test_dispatch_runtime_log_entry_complete(dispatch: HybridDispatch) -> None:
     assert "hybrid_dispatch_sha256" in log
     assert "pre_reg_lineage" in log
     assert "per_recipe_assignment" in log
-    assert len(log["per_recipe_assignment"]) == 14
+    assert len(log["per_recipe_assignment"]) == 13  # post-KI-2 (territorial_disputes FALSIFIED)
     # Spot-check one entry — verify F-H-1 item 3 fields all present
     mp = log["per_recipe_assignment"]["mass_protest"]
     assert mp["architecture"] == "D5"
