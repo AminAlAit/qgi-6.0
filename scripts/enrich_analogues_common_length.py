@@ -361,14 +361,19 @@ def enrich(
                     continue
 
                 windows = pair_windows.get(str(aid), {}).get("top", [])
-                chosen = pick_analogue_window(
-                    windows, L, a.get("event_year_b"), length_tolerance
-                )
 
                 # #471 V2.0 (Q4 max-PPS event picker + drop force-fit +
                 # populate pair_instances). Replaces the previous
                 # `pick_analogue_window` + common-length flow with
                 # per-analogue independent length + max-PPS event choice.
+                # #559 fix (2026-05-11): the legacy `chosen =
+                # pick_analogue_window(windows, L, ...)` call that sat
+                # here was removed — `L` was no longer defined after
+                # the V1 `best_common_length()` call was dropped from
+                # the enrich() flow, so the line raised
+                # `UnboundLocalError` whenever exercised. The result
+                # was also never read; the V2.0 per-year loop below
+                # recomputes every alignment decision from scratch.
                 #
                 # Algorithm:
                 #   1. Build the candidate event-year set from event_all_years_b
@@ -412,12 +417,19 @@ def enrich(
                     stats["analogues_kept"] += 1
                     continue
 
-                def _aligned_for(year, _windows=windows):
+                # #561 fix (2026-05-11): the ±2 terminus-alignment
+                # tolerance was hardcoded here; wire to length_tolerance
+                # (also surfaced via --tolerance CLI flag, default 2)
+                # so a single knob controls both length-band and
+                # terminus-band tolerance consistently. The previous
+                # hardcoded literal made the methodology assumption
+                # invisible to callers.
+                def _aligned_for(year, _windows=windows, _tol=length_tolerance):
                     return [
                         w for w in _windows
                         if w.get("sb") is not None
                         and w.get("l") is not None
-                        and abs((w["sb"] + w["l"]) - year) <= 2
+                        and abs((w["sb"] + w["l"]) - year) <= _tol
                         and (w["sb"] + w["l"]) <= CURRENT_YEAR
                     ]
 
@@ -490,12 +502,13 @@ def enrich(
     print(f"\n== Enrichment stats ==")
     for k, v in stats.items():
         print(f"  {k:<30} {v}")
-    print(f"\nCanonical length distribution (top 10):")
-    length_counts: dict[int, int] = {}
-    for L in canonical_lengths.values():
-        length_counts[L] = length_counts.get(L, 0) + 1
-    for L, count in sorted(length_counts.items(), key=lambda x: -x[1])[:10]:
-        print(f"  L={L:>3}: {count} (subject, category) pairs")
+    # #559 fix (2026-05-11): the canonical-length distribution block that
+    # used to print here iterated `canonical_lengths.values()` — a dict
+    # the V1 code populated alongside `block["canonical_length"] = L`.
+    # Both the dict and the per-block canonical_length write were removed
+    # in the V2.0 refactor (per Q5: no force-fit), so the loop iterated
+    # an undefined name. Block deleted; per-analogue pair_length is
+    # already visible in the enrichment payload and in pair_instances.
 
     return 0
 
