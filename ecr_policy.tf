@@ -69,97 +69,38 @@ resource "aws_ecr_repository_policy" "scdi_finder" {
 }
 
 # ---------------------------------------------------------------------------
-# qgi-pipeline-a-indicator-fetcher (#FAR-1) — TF-managed ECR repo
+# qgi-pipeline-a-indicator-fetcher — DELETED 2026-05-11 (#635 closure)
+#
+# Originally added under #152 Path A (consolidate ECR push targets in the
+# management account). Path A was effectively parked: by 2025-Q4 the
+# qgi-pipeline ecr-push.yml workflow was pushing the indicator-fetcher
+# image to BOTH the management mirror AND the staging-account ECR, and
+# the live runtime path settled on the staging-account repo (managed by
+# qgi-infra/modules/batch/main.tf and authorized by qgi-infra/modules/
+# iam/main.tf's `github_actions_ecr_push` role). The management-account
+# mirror never had consumers in production.
+#
+# Today (2026-05-11) the management-account ECR repo
+# `qgi-pipeline-a-indicator-fetcher` does NOT exist in AWS — verified
+# via `aws ecr describe-repositories --repository-names
+# qgi-pipeline-a-indicator-fetcher` → RepositoryNotFoundException.
+# The TF source described an intended state that AWS never reached.
+#
+# Deleting this block + the matching `ECRPushIndicatorFetcher` inline
+# policy in iam_oidc_roles.tf eliminates ~92 lines of dead Path-A
+# debris and removes the 3 phantom CREATE diffs from `terraform plan`.
+# The promised permission from #635 is already satisfied by the
+# staging-account push policy in qgi-infra (PR #23, merged 2026-05-11,
+# includes ecr:BatchGetImage + ecr:DescribeImages).
+#
+# Architectural rationale (2026-05-11 architecture review): Phase 1
+# fetchers are per-environment data jobs and SHOULD live in each
+# environment's local ECR (qgi-infra owns those). Phase 2 B-stage
+# Batch images (scdi-finder, dscdi-finder) are stateless compute that
+# runs identically across all environments and CORRECTLY lives in
+# management as a shared-services ECR with cross-account pull. The
+# split is principled, not accidental.
 # ---------------------------------------------------------------------------
-
-resource "aws_ecr_repository" "indicator_fetcher" {
-  name                 = "qgi-pipeline-a-indicator-fetcher"
-  image_tag_mutability = "MUTABLE"
-
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-
-  # No force_delete — we want TF to refuse if someone tries to rip this
-  # out without first emptying the repo or re-applying the workflow.
-
-  tags = {
-    Project     = "qgi"
-    Environment = "shared"
-    ManagedBy   = "terraform"
-    Owner       = "amin.al-ait"
-  }
-}
-
-resource "aws_ecr_lifecycle_policy" "indicator_fetcher" {
-  repository = aws_ecr_repository.indicator_fetcher.name
-
-  policy = jsonencode({
-    rules = [{
-      rulePriority = 1
-      description  = "Keep last 10 images"
-      selection = {
-        tagStatus   = "any"
-        countType   = "imageCountMoreThan"
-        countNumber = 10
-      }
-      action = {
-        type = "expire"
-      }
-    }]
-  })
-}
-
-data "aws_iam_policy_document" "indicator_fetcher_ecr" {
-  # GitHub Actions push access — same role as scdi-finder; role-level
-  # policy (below) grants the push actions, repo policy authorizes them.
-  statement {
-    sid    = "GitHubActionsPush"
-    effect = "Allow"
-    principals {
-      type        = "AWS"
-      identifiers = [aws_iam_role.qgi_ecr_push.arn]
-    }
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:CompleteLayerUpload",
-      "ecr:GetDownloadUrlForLayer",
-      "ecr:InitiateLayerUpload",
-      "ecr:PutImage",
-      "ecr:UploadLayerPart",
-    ]
-  }
-
-  # Cross-account pull access for all three QGI pipeline environments
-  statement {
-    sid    = "CrossAccountFargatePull"
-    effect = "Allow"
-    principals {
-      type = "AWS"
-      identifiers = [
-        # Staging
-        "arn:aws:iam::222222222222:role/qgi-fargate-execution-role",
-        "arn:aws:iam::222222222222:role/qgi-fargate-indicator-fetcher-task-role",
-        # QA (will be active once #90 follow-on lands)
-        "arn:aws:iam::333333333333:role/qgi-fargate-execution-role",
-        "arn:aws:iam::333333333333:role/qgi-fargate-indicator-fetcher-task-role",
-        # Prod
-        "arn:aws:iam::444444444444:role/qgi-fargate-execution-role",
-        "arn:aws:iam::444444444444:role/qgi-fargate-indicator-fetcher-task-role",
-      ]
-    }
-    actions = [
-      "ecr:BatchCheckLayerAvailability",
-      "ecr:BatchGetImage",
-      "ecr:GetDownloadUrlForLayer",
-    ]
-  }
-}
-
-resource "aws_ecr_repository_policy" "indicator_fetcher" {
-  repository = aws_ecr_repository.indicator_fetcher.name
-  policy     = data.aws_iam_policy_document.indicator_fetcher_ecr.json
-}
 
 # ---------------------------------------------------------------------------
 # qgi-pipeline-b-dscdi-finder (Phase 5 v0.0b Stage F preflight) — TF-managed
