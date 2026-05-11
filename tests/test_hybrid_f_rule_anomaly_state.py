@@ -91,37 +91,53 @@ def test_dispatch_marks_epidemic_and_pandemic_as_f_rule_anomaly():
     )
 
 
-def test_dispatch_marks_territorial_disputes_as_f_rule_anomaly():
+def test_dispatch_marks_territorial_disputes_as_falsified():
+    """Per KI-2 Majles amendment 2026-05-11 (Option C carried 3-1):
+    territorial_disputes is FALSIFIED under hybrid due to degenerate D5
+    predictions. It must appear in the falsified list, NOT in assignments.
+
+    Replaces the prior test_dispatch_marks_territorial_disputes_as_f_rule_anomaly
+    which assumed the recipe was LOCKED with anomaly flag.
+    """
     dispatch = load_dispatch()
-    a = dispatch.assignment_for("territorial_disputes")
-    assert a.f_rule_anomaly is True, (
-        "territorial_disputes must be flagged f_rule_anomaly=True in the "
-        "dispatch table until Majles resolves the hybrid F-rule applicability "
-        "ambiguity."
+    falsified = dispatch.falsified_recipes()
+    assert "territorial_disputes" in falsified, (
+        "territorial_disputes must be in the falsified list per KI-2 "
+        "Majles amendment 2026-05-11. If you're seeing this fail, a dispatch "
+        "edit may have moved the recipe back to assignments without "
+        "re-pre-registration."
+    )
+    locked = dispatch.locked_recipes()
+    assert "territorial_disputes" not in locked, (
+        "territorial_disputes must NOT be in the LOCKED set per KI-2 "
+        "amendment. Recipe is FALSIFIED under hybrid."
     )
 
 
-def test_dispatch_exactly_two_f_rule_anomalies():
-    """Exactly 2 recipes have f_rule_anomaly=True per the Stage 5 paper finding.
+def test_dispatch_exactly_one_f_rule_anomaly():
+    """Exactly 1 recipe (epidemic_and_pandemic) has f_rule_anomaly=True
+    after KI-2 amendment 2026-05-11 dropped territorial_disputes from the
+    LOCKED set via FALSIFICATION.
 
-    Also asserts the locked_recipes() count is the expected 14 — this guards
-    against a silent regression where a recipe is moved out of the LOCKED set
-    (and therefore out of `locked_recipes()`), which would let an
-    f_rule_anomaly count change pass undetected.
+    Also asserts the locked_recipes() count is the expected 13 — this guards
+    against a silent regression where a recipe is moved into/out of the
+    LOCKED set, which would let an f_rule_anomaly count change pass
+    undetected.
     """
     dispatch = load_dispatch()
     locked = dispatch.locked_recipes()
-    assert len(locked) == 14, (
-        f"Expected 14 LOCKED recipes per hybrid pre-reg; got {len(locked)}. "
-        f"A recipe being moved out of the LOCKED set would let the "
+    assert len(locked) == 13, (
+        f"Expected 13 LOCKED recipes per hybrid pre-reg (post-KI-2 amendment "
+        f"2026-05-11 — territorial_disputes FALSIFIED); got {len(locked)}. "
+        f"A recipe being moved into or out of the LOCKED set would let the "
         f"f_rule_anomaly count silently pass even if a new anomaly is "
         f"introduced. Any change to the LOCKED set requires Majles "
         f"re-pre-registration."
     )
     anomalies = [r for r in locked if dispatch.has_f_rule_anomaly(r)]
-    assert sorted(anomalies) == ["epidemic_and_pandemic", "territorial_disputes"], (
-        f"Expected exactly 2 f_rule_anomaly recipes (epidemic_and_pandemic + "
-        f"territorial_disputes); got {sorted(anomalies)}. Any change to this "
+    assert sorted(anomalies) == ["epidemic_and_pandemic"], (
+        f"Expected exactly 1 f_rule_anomaly recipe (epidemic_and_pandemic) "
+        f"after KI-2 amendment; got {sorted(anomalies)}. Any change to this "
         f"set requires Majles re-pre-registration."
     )
 
@@ -226,16 +242,27 @@ def test_epidemic_and_pandemic_loco_strong_tier_via_dispatch():
     assert a.advisory_only is True
 
 
-def test_territorial_disputes_loco_moderate_tier_via_dispatch():
-    """territorial_disputes MODERATE via LOCO; dispatch reflects this."""
+def test_territorial_disputes_not_in_assignments_post_ki2():
+    """Per KI-2 Majles amendment 2026-05-11 (Option C carried 3-1):
+    territorial_disputes is FALSIFIED under hybrid; recipe MUST NOT appear
+    in dispatch.assignments (would mean it's a LOCKed candidate again).
+
+    Replaces test_territorial_disputes_loco_moderate_tier_via_dispatch which
+    asserted MODERATE-tier-via-dispatch — that assertion is no longer
+    operative because the recipe is no longer in production assignments.
+    """
     dispatch = load_dispatch()
-    a = dispatch.assignment_for("territorial_disputes")
-    assert a.tier == "MODERATE"
-    assert 0.60 <= a.loco_auc < 0.75  # MODERATE tier range
-    # Not ADVISORY-ONLY (n_pos_loco=2 escapes F-H-3 operative carveout)
-    assert a.advisory_only is False
-    # But IS flagged for f_rule_anomaly
-    assert a.f_rule_anomaly is True
+    locked = dispatch.locked_recipes()
+    assert "territorial_disputes" not in locked, (
+        "territorial_disputes must NOT be in dispatch.assignments / "
+        "locked_recipes() post-KI-2 amendment. Recipe is FALSIFIED under "
+        "hybrid."
+    )
+    # Defensive: also confirm calling assignment_for() raises (since the
+    # recipe isn't in assignments). This locks the contract that consumer
+    # code can't get a stale RecipeAssignment for territorial_disputes.
+    with pytest.raises(KeyError):
+        dispatch.assignment_for("territorial_disputes")
 
 
 # ---- F1 (calibration) still passes — these are F2-only anomalies -------------
