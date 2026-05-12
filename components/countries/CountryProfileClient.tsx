@@ -377,8 +377,9 @@ export function CountryProfileClient({
                     <div
                       className="text-[9px] tracking-widest"
                       style={{ color: "var(--qgi-text-dim)" }}
+                      title="Pattern Power Score — strength + persistence + breadth"
                     >
-                      PPS
+                      SCORE
                     </div>
                   </div>
                 </Link>

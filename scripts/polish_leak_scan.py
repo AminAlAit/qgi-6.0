@@ -55,6 +55,20 @@ SKIP_PATH_FRAGMENTS = (
 )
 SKIP_SUFFIXES = (".test.tsx", ".test.ts", ".spec.tsx", ".spec.ts")
 
+# Methodology / disclosure paths — these are "show our work" venues where
+# technical vocabulary IS the content. Scanning them produces noise; the
+# legitimate fixes are in product surfaces (V1/V2 detail pages, dashboards,
+# filter chrome, etc.). Treat these as out-of-scope.
+METHODOLOGY_PATH_FRAGMENTS = (
+    "/app/blog/",
+    "/app/methodology/",
+    "/app/(app)/examples/",
+    # Next.js API route handlers — server-side JSON, never JSX. SQL strings
+    # inside template literals create false-positive `>`/`<` matches when the
+    # DOTALL JSX-text regex sees SQL operators as tag boundaries.
+    "/app/api/",
+)
+
 
 # ============================================================================
 # Leak detectors
@@ -175,9 +189,19 @@ EM_DASH_THRESHOLD = 8  # per file; above this, flag as AI-tell density
 # ============================================================================
 
 # Capture text between JSX tag boundaries: > THIS TEXT <
-# Note: this includes children that are interpolations — we don't try to
-# resolve those; we accept some noise.
-JSX_TEXT_RE = re.compile(r">([^<>{]+?)<")
+# DOTALL so the capture spans newlines — multi-line JSX content like
+#     <div ...>
+#       LOCO AUC
+#     </div>
+# is otherwise invisible to per-line scanning (Sonnet review #2 finding).
+# Exclusions:
+#   `{` — JSX expression boundary, would capture JS code
+#   `;` — statement terminator, only appears in JS/TS code (never in JSX
+#         text content). Without this, TS generics like `useState<string>`
+#         (closing `>`) match against the next `useState<...>` (opening `<`)
+#         with intervening JS code as "captured text". Real-world example:
+#         CountryProfileClient.tsx l.94 captured TS statement body.
+JSX_TEXT_RE = re.compile(r">([^<>{;]+?)<", re.DOTALL)
 
 # Capture attribute values that render as user-facing strings.
 JSX_ATTR_RE = re.compile(
@@ -206,12 +230,36 @@ JSDOC_BLOCK_END_RE = re.compile(r"\*/\s*$")
 # Inline-on-same-line block comment: /* ... */ within a single line.
 INLINE_BLOCK_COMMENT_RE = re.compile(r"/\*.*?\*/")
 
-# JSX <code>...</code> and <pre>...</pre> blocks — intentional technical
-# disclosures (schema slugs, file paths, code identifiers) shown verbatim
-# in blog posts and inline disclosure prose. These are NEVER leaks; they
-# are the explicit "show our work" content. Strip from a line before
-# scanning for jargon/slugs.
-CODE_PRE_INLINE_RE = re.compile(r"<(code|pre)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+# JSX <code>...</code>, <pre>...</pre>, and <footer>...</footer> blocks —
+# all intentional technical-disclosure venues:
+#   <code>/<pre> show schema slugs, file paths, code identifiers verbatim
+#     in blog posts and inline disclosure prose.
+#   <footer> by QGI convention carries the methodology disclosure line
+#     ("V1.8.1 z-score + RRF · Pearson r ≥ 0.65 · PPS quintiles..."). Terse
+#     acronym-dense by design; analyst context implied by venue.
+# All NEVER leaks. Strip before scanning for jargon/slugs.
+CODE_PRE_INLINE_RE = re.compile(
+    r"<(code|pre|footer)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL
+)
+
+
+def _strip_preserving_newlines(text: str, pattern: re.Pattern[str]) -> str:
+    """Replace each pattern match with its newline count so file positions
+    (and therefore line numbers via newline-count math) are preserved."""
+
+    def replacer(m: re.Match[str]) -> str:
+        return "\n" * m.group(0).count("\n")
+
+    return pattern.sub(replacer, text)
+
+
+# Multi-line aware skip-region patterns. Strip in this order:
+#   1. JSDoc /* ... */ blocks across lines
+#   2. <code>...</code> / <pre>...</pre> across lines
+#   3. // line comments
+# All three preserve newlines so subsequent line numbers stay correct.
+JSDOC_MULTILINE_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
+LINE_COMMENT_RE = re.compile(r"(?m)^[ \t]*//[^\n]*$")
 
 
 def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
@@ -220,43 +268,51 @@ def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
     kind ∈ {'jsx-text', 'jsx-attr', 'template', 'string-literal'}.
 
     Excludes:
-      - Lines inside `//` line comments
-      - Lines inside `/* */` block comments (multi-line aware)
-      - Inline `/* ... */` segments on a single line (stripped before scan)
-      - JSX `<code>...</code>` and `<pre>...</pre>` content (intentional
-        technical disclosures — schema slugs, file paths, code identifiers
-        deliberately shown verbatim in blog posts and inline `<code>` spans)
+      - `//` line comments
+      - `/* */` block comments (multi-line aware)
+      - JSX `<code>...</code>` and `<pre>...</pre>` content across lines
+        (intentional technical disclosures — schema slugs, file paths,
+        code identifiers deliberately shown verbatim in blog posts and
+        inline `<code>` spans)
 
-    Heuristic, not perfect. Operates per-line via splitlines() — multi-line
-    JSX text content is captured as separate fragments per line. See
-    docstring at top of file for full caveats.
+    JSX-text capture uses re.DOTALL so multi-line content like
+        <div ...>
+          LOCO AUC
+        </div>
+    is caught (per Sonnet review #2 finding — per-line scan missed this).
+    Line numbers are computed from match position, pointing at the line
+    where the captured TEXT begins (not where the `>` is).
+
+    Heuristic, not perfect. See top-of-file docstring for caveats.
     """
     try:
-        text = file_path.read_text(encoding="utf-8")
+        raw = file_path.read_text(encoding="utf-8")
     except (UnicodeDecodeError, OSError):
         return
-    in_block_comment = False
+
+    # Strip skip-regions (multi-line aware), preserving newlines for line math.
+    text = _strip_preserving_newlines(raw, JSDOC_MULTILINE_RE)
+    text = _strip_preserving_newlines(text, CODE_PRE_INLINE_RE)
+    text = LINE_COMMENT_RE.sub("", text)  # ^...$ via (?m) — newlines preserved
+
+    # --- JSX text (multi-line aware): > THIS TEXT <
+    for m in JSX_TEXT_RE.finditer(text):
+        captured = m.group(1)
+        frag = captured.strip()
+        if not frag or frag.startswith("//"):
+            continue
+        # Line number = where the first non-whitespace character of the
+        # captured content starts (not the `>` itself, which may be on the
+        # previous line for multi-line content).
+        content_start = m.start(1)
+        leading_ws_len = len(captured) - len(captured.lstrip())
+        text_start = content_start + leading_ws_len
+        line_no = text[:text_start].count("\n") + 1
+        yield line_no, "jsx-text", frag
+
+    # --- Per-line patterns: attribute values, template literals, string literals.
+    # These are JSX-syntactically line-local; multi-line DOTALL would over-match.
     for line_no, line in enumerate(text.splitlines(), 1):
-        # Track multi-line /* ... */ comments
-        if in_block_comment:
-            if JSDOC_BLOCK_END_RE.search(line):
-                in_block_comment = False
-            continue
-        if JSDOC_BLOCK_START_RE.search(line) and not JSDOC_BLOCK_END_RE.search(line):
-            in_block_comment = True
-            continue
-        if COMMENT_LINE_RE.match(line):
-            continue
-        # Strip inline block comments (single-line /* ... */ payloads)
-        line = INLINE_BLOCK_COMMENT_RE.sub("", line)
-        # Strip <code>...</code> and <pre>...</pre> inline JSX — intentional
-        # technical disclosures, not leaks. Done BEFORE JSX text extraction
-        # so the > THIS < heuristic does not see the slug-bearing text.
-        line = CODE_PRE_INLINE_RE.sub("", line)
-        for m in JSX_TEXT_RE.finditer(line):
-            frag = m.group(1).strip()
-            if frag and not frag.startswith("//"):
-                yield line_no, "jsx-text", frag
         for m in JSX_ATTR_RE.finditer(line):
             attr, val = m.group(1), m.group(2)
             yield line_no, f"jsx-attr:{attr}", val
@@ -379,6 +435,10 @@ def should_skip(path: Path) -> bool:
     if any(frag in p for frag in SKIP_PATH_FRAGMENTS):
         return True
     if any(p.endswith(suf) for suf in SKIP_SUFFIXES):
+        return True
+    # Methodology / blog / examples are intentional disclosure venues —
+    # technical vocab there is content, not leak. Skip wholesale.
+    if any(frag in p for frag in METHODOLOGY_PATH_FRAGMENTS):
         return True
     return False
 

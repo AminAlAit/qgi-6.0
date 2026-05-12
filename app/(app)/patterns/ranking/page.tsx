@@ -510,13 +510,14 @@ export default function RankingPage() {
           {/* Divider */}
           <div className="w-px h-5" style={{ backgroundColor: "var(--qgi-border)" }} />
 
-          {/* Min PPS slider */}
+          {/* Min Pattern-Power-Score slider */}
           <div className="flex items-center gap-2">
             <span
               className="text-[9px] tracking-[0.12em] uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
+              title="Minimum Pattern Power Score — strength + persistence + breadth"
             >
-              Min PPS
+              Min Score
             </span>
             <input
               type="range"
@@ -961,8 +962,9 @@ function PpsBar({ pps, maxPps }: { pps: number; maxPps: number }) {
       <span
         className="text-[9px] uppercase tracking-wider shrink-0"
         style={{ color: "var(--qgi-text-dim)" }}
+        title="Pattern Power Score — strength + persistence + breadth"
       >
-        PPS
+        Score
       </span>
       {/* Track */}
       <div

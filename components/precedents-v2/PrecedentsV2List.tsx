@@ -174,8 +174,9 @@ function RecipeRow({
               <span
                 className="font-data font-semibold text-[10px] uppercase tracking-wide"
                 style={{ color: "#a16207" }}
+                title="Composite-only signal — sole positive in held-out partition. Do not use as a primary signal for standalone pricing; only as one component of a composite score."
               >
-                ADVISORY-ONLY
+                Composite-only
               </span>
             )}
             {recipe.f_rule_anomaly_flag && (
@@ -201,14 +202,16 @@ function RecipeRow({
           <div
             className="font-data text-[10px] tracking-wide uppercase"
             style={{ color: "var(--qgi-text-dim)" }}
+            title="Discrimination score on countries the model never saw during training (0.5 = chance, 1.0 = perfect)"
           >
-            LOCO AUC
+            Out-of-country
           </div>
           <div
             className="font-data text-[10px] mt-1"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            n_pos = {recipe.n_pos_loco}
+            {recipe.n_pos_loco} held-out positive
+            {recipe.n_pos_loco === 1 ? "" : "s"}
           </div>
         </div>
       </div>

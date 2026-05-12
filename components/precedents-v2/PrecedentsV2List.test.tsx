@@ -96,7 +96,7 @@ describe("PrecedentsV2List", () => {
     expect(screen.getByText("Tufte-style footnote variant →")).toBeInTheDocument();
   });
 
-  it("shows ADVISORY-ONLY label when flag is set", () => {
+  it("shows composite-only label when advisory-only flag is set", () => {
     render(
       <PrecedentsV2List
         recipes={[
@@ -108,7 +108,7 @@ describe("PrecedentsV2List", () => {
         totalLocked={13}
       />
     );
-    expect(screen.getByText("ADVISORY-ONLY")).toBeInTheDocument();
+    expect(screen.getByText("Composite-only")).toBeInTheDocument();
   });
 
   it("renders generated_at and model_version in footer", () => {

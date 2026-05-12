@@ -47,8 +47,7 @@ export default function DiscoverPatternsTabsScaffold() {
         </h1>
         <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
           Two-tab merger of /patterns and /patterns/ranking (default tab = ranking; second
-          tab = pattern explorer). Yuki Takahashi-Rowe&apos;s recommendation per Sard
-          Majles S-First (2026-05-01) — matches the Bloomberg/EIU buyer mental model of
+          tab = pattern explorer). Matches the Bloomberg/EIU buyer mental model of
           browse-vs-detail separation.
         </p>
       </header>
