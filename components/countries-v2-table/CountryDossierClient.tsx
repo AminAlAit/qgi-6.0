@@ -501,7 +501,7 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
               color: "var(--qgi-text-dim)",
             }}
           >
-            — percentile rank within global distribution (MOCK)
+            — percentile rank within global distribution (preview)
           </span>
         </SectionLabel>
         <Card>
@@ -515,11 +515,11 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
             })}
           </div>
           <p className="text-[9px] mt-4" style={{ color: "var(--qgi-text-dim)" }}>
-            Tufte school: bar position = percentile rank within global L1 distribution.
-            Higher = more salient than peers on that dimension. Countries with {"<"}4
-            unique L1 values (M11 caveat #580) will show compressed bars until corpus
-            enrichment. Values above are MOCK — will be computed from per-L1 salience
-            scores once data integration lands.
+            Bar position = percentile rank within global L1 distribution. Higher = more
+            salient than peers on that dimension. Countries with {"<"}4 unique L1 values
+            will show compressed bars until corpus enrichment. Values above are preview
+            data — will be computed from per-L1 salience scores once data integration
+            lands.
           </p>
         </Card>
       </section>
@@ -529,11 +529,11 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
       {/* ------------------------------------------------------------------ */}
       <section className="mb-8">
         <SectionLabel>
-          ML recipe coverage — 13 LOCKed recipes (post-KI-2, 2026-05-11){" "}
+          ML recipe coverage — 13 validated recipes{" "}
           <span
             style={{ fontVariantCaps: "normal", textTransform: "none", letterSpacing: 0 }}
           >
-            AHI values MOCK
+            anchor-stability values are preview data
           </span>
         </SectionLabel>
         <div
@@ -595,7 +595,7 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
                           className="font-data text-[9px] mt-0.5"
                           style={{ color: "#a16207" }}
                         >
-                          ADVISORY-ONLY
+                          Composite-only
                         </div>
                       )}
                     </td>
@@ -676,7 +676,7 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
           <span
             style={{ fontVariantCaps: "normal", textTransform: "none", letterSpacing: 0 }}
           >
-            — MOCK
+            — preview data
           </span>
         </SectionLabel>
         <Card>
@@ -739,7 +739,7 @@ export function CountryDossierClient({ countryId, countryData, mlStack }: Props)
           <span
             style={{ fontVariantCaps: "normal", textTransform: "none", letterSpacing: 0 }}
           >
-            — MOCK (pending V-Dem / World Bank integration)
+            — preview data (pending V-Dem / World Bank integration)
           </span>
         </SectionLabel>
         <div

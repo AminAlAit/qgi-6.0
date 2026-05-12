@@ -329,7 +329,7 @@ export function DiscoverPatternsTabs({
             border: "1px solid #fbbf2440",
           }}
         >
-          MOCK DATA
+          PREVIEW DATA
         </span>
         Design evaluation only. Pattern data from{" "}
         <span className="font-data">data/discover-patterns-mock.json</span>. Live
@@ -481,7 +481,7 @@ function PatternCard({
               className="text-[9px] tracking-wider uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Out-of-country AUC
+              Out-of-country
             </span>
             <span
               className="font-data text-[11px] font-semibold"
