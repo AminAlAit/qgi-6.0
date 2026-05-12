@@ -187,6 +187,14 @@ JSX_ATTR_RE = re.compile(
 # Capture template-literal user text inside curly braces. Best-effort.
 JSX_TEMPLATE_RE = re.compile(r"\{`([^`]+)`\}")
 
+# ${...} JS interpolations inside template literals are evaluated as code,
+# not rendered as literal text. The user sees the EVALUATED value, never
+# the field-path syntax. Strip these from captured template fragments so
+# `${recipe.coverage_bias_diagnostic.oecd_share}` doesn't get flagged as
+# a snake_case-in-display leak. (Simple regex — no nested-brace support;
+# none of the QGI codebase uses nested braces in template interpolations.)
+JS_INTERP_RE = re.compile(r"\$\{[^}]*\}")
+
 # Capture string-literal text inside curly braces: {"foo"} or {'foo'}
 JSX_STRING_LITERAL_RE = re.compile(r"\{[\"']([^\"']+)[\"']\}")
 
@@ -253,7 +261,10 @@ def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
             attr, val = m.group(1), m.group(2)
             yield line_no, f"jsx-attr:{attr}", val
         for m in JSX_TEMPLATE_RE.finditer(line):
-            yield line_no, "template", m.group(1)
+            # Strip ${...} JS interpolations — only literal text is rendered.
+            literal = JS_INTERP_RE.sub("", m.group(1)).strip()
+            if literal:
+                yield line_no, "template", literal
         for m in JSX_STRING_LITERAL_RE.finditer(line):
             yield line_no, "string-literal", m.group(1)
 
