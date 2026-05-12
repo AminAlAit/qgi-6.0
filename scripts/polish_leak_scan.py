@@ -96,13 +96,17 @@ JARGON_TERMS: list[tuple[str, str]] = [
     (r"\bDeepHit\b", "Internal model name. Buyer-facing: 'survival model'."),
     (r"\bisotonic\b", "Internal calibration method. Either explain or hide."),
     (r"\bbootstrap CI\b", "Acceptable but worth glossing: 'uncertainty range from resampling'"),
-    (r"\bD[25]\b(?=\s*architecture|\s+head)", "Internal architecture label. Relabel or hide."),
+    (r"\bD[25]\b(?=\s+(?:architecture|head))", "Internal architecture label. Relabel or hide."),
     (r"\bhybrid D2/D5\b", "Internal architecture name. Buyer-facing: 'hybrid prediction architecture'"),
     (r"\bpre-reg\b", "Internal preregistration term. Hide or relabel 'methodology lock'"),
     (r"\bLakatosian\b", "Internal methodology vocabulary. Hide from buyer prose."),
     (r"\bauditioner\b", "Internal QGI term. Hide."),
-    (r"\bAsas|Sard|Ihsa|Bina|Tasweeq|Tijara\b", "Internal Majles persona group name. Hide entirely."),
+    (r"\b(?:Asas|Sard|Ihsa|Bina|Tasweeq|Tijara)\b", "Internal Majles persona group name. Hide entirely."),
     (r"\bMajles\b", "Internal advisory-council term. Hide from buyer prose."),
+]
+# Pre-compile JARGON regexes at module load (hot-loop perf fix per Sonnet review).
+JARGON_COMPILED: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(p), s) for p, s in JARGON_TERMS
 ]
 
 
@@ -117,6 +121,10 @@ INDICATOR_PATTERNS: list[tuple[str, str]] = [
     (r"\b[A-Z0-9.]+__(diff|lag|zscore|change|delta|momentum)\b", "Engineered-feature code — replace with plain-English label"),
     # Sometimes shows up as standalone token
     (r"\b__diff\b|\b__lag\b", "Feature-transform suffix leaked. Convert to plain English."),
+]
+# Pre-compile INDICATOR regexes at module load (hot-loop perf fix per Sonnet review).
+INDICATOR_COMPILED: list[tuple[re.Pattern[str], str]] = [
+    (re.compile(p), s) for p, s in INDICATOR_PATTERNS
 ]
 
 
@@ -187,12 +195,33 @@ COMMENT_LINE_RE = re.compile(r"^\s*//")
 JSDOC_BLOCK_START_RE = re.compile(r"^\s*/\*")
 JSDOC_BLOCK_END_RE = re.compile(r"\*/\s*$")
 
+# Inline-on-same-line block comment: /* ... */ within a single line.
+INLINE_BLOCK_COMMENT_RE = re.compile(r"/\*.*?\*/")
+
+# JSX <code>...</code> and <pre>...</pre> blocks — intentional technical
+# disclosures (schema slugs, file paths, code identifiers) shown verbatim
+# in blog posts and inline disclosure prose. These are NEVER leaks; they
+# are the explicit "show our work" content. Strip from a line before
+# scanning for jargon/slugs.
+CODE_PRE_INLINE_RE = re.compile(r"<(code|pre)\b[^>]*>.*?</\1>", re.IGNORECASE | re.DOTALL)
+
 
 def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
     """Yield (line_number, kind, text) for probable user-facing text fragments.
 
     kind ∈ {'jsx-text', 'jsx-attr', 'template', 'string-literal'}.
-    Skips lines inside `//` comments and `/* */` blocks (best-effort).
+
+    Excludes:
+      - Lines inside `//` line comments
+      - Lines inside `/* */` block comments (multi-line aware)
+      - Inline `/* ... */` segments on a single line (stripped before scan)
+      - JSX `<code>...</code>` and `<pre>...</pre>` content (intentional
+        technical disclosures — schema slugs, file paths, code identifiers
+        deliberately shown verbatim in blog posts and inline `<code>` spans)
+
+    Heuristic, not perfect. Operates per-line via splitlines() — multi-line
+    JSX text content is captured as separate fragments per line. See
+    docstring at top of file for full caveats.
     """
     try:
         text = file_path.read_text(encoding="utf-8")
@@ -210,6 +239,12 @@ def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
             continue
         if COMMENT_LINE_RE.match(line):
             continue
+        # Strip inline block comments (single-line /* ... */ payloads)
+        line = INLINE_BLOCK_COMMENT_RE.sub("", line)
+        # Strip <code>...</code> and <pre>...</pre> inline JSX — intentional
+        # technical disclosures, not leaks. Done BEFORE JSX text extraction
+        # so the > THIS < heuristic does not see the slug-bearing text.
+        line = CODE_PRE_INLINE_RE.sub("", line)
         for m in JSX_TEXT_RE.finditer(line):
             frag = m.group(1).strip()
             if frag and not frag.startswith("//"):
@@ -257,9 +292,8 @@ def detect_leaks_in_fragment(file_rel: str, line_no: int, frag: str) -> Iterator
             suggestion=f"'{token}' looks like an internal identifier — replace with display label",
         )
 
-    # --- Indicator codes
-    for pattern_str, suggestion in INDICATOR_PATTERNS:
-        pattern = re.compile(pattern_str)
+    # --- Indicator codes (pre-compiled patterns; perf fix per Sonnet review)
+    for pattern, suggestion in INDICATOR_COMPILED:
         for m in pattern.finditer(frag):
             yield Leak(
                 file=file_rel,
@@ -269,9 +303,8 @@ def detect_leaks_in_fragment(file_rel: str, line_no: int, frag: str) -> Iterator
                 suggestion=suggestion,
             )
 
-    # --- Methodology jargon
-    for pattern_str, suggestion in JARGON_TERMS:
-        pattern = re.compile(pattern_str)
+    # --- Methodology jargon (pre-compiled patterns; perf fix per Sonnet review)
+    for pattern, suggestion in JARGON_COMPILED:
         for m in pattern.finditer(frag):
             yield Leak(
                 file=file_rel,
