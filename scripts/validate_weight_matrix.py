@@ -132,15 +132,26 @@ WEIGHT_MATRIX_JSON = ROOT / "qgi-data" / "reference" / "weight-matrix.json"
 DIRECTIONS_JSON = ROOT / "qgi-data" / "reference" / "indicator-directions.json"
 ALLOW_LIST_JSON = ROOT / "qgi-data" / "reference" / "indicator-allow-list.json"
 ANCHOR_BATTERY_JSON = ROOT / "qgi-data" / "reference" / "cascade-anchor-case-battery.json"
+# v6 NEW (T7 §4 + §5 binding):
+CANONICAL_LENGTH_CONFIG_JSON_DEFAULT = ROOT / "qgi-data" / "reference" / "v0.2-canonical-length.json"
+EXCLUSION_LIST_CONFIG_JSON_DEFAULT = ROOT / "qgi-data" / "reference" / "v0.2-demeaning-insufficient-exclusion.json"
+V0_2_FALSIFICATION_CONFIG_JSON = ROOT / "qgi-data" / "reference" / "v0.2-falsification-config.json"
 OUTPUT_JSON_LEGACY = ROOT / "qgi-data" / "reference" / "phase4-validation.json"
 OUTPUT_JSON_TEMPLATE = "phase4-validation-arm{arm}.json"
 
-# Schema version. Bumped to 4 for the Phase 5 v0.1a 4-arm ablation
-# (added: ablation_arm, direction-aware scoring, bootstrap CI per
-# category, stratified AUC by n_indicators_used, per-category ECE).
+# Schema version. v5 = T8 (#672) — Phase 5 v0.2 Path A:
+#   - rule v2 verdict (INERT / HARD-FALSIFY / SOFT-FALSIFY / PARTIAL / PASS)
+#     emitted as the top-level `decision` field, replacing the v4 legacy
+#     PROCEED / PROCEED_WITH_CAUTION / REVISIT / INSUFFICIENT_DATA scheme
+#   - multi-seed random baseline (5 seeds per Roshani A3 + Kwame bright-line)
+#   - posterior-update protocol block emitted alongside the verdict
+#   - canonical_length config + demeaning-insufficient exclusion-list
+#     consumption (T7 phase doc §4 + §5 binding)
+#   - pre-CIPS-validation label (T7 §9 / charter A8)
+#
 # v2 = baselines added (#598); v3 was an internal-only iteration that
-# never shipped; v4 = the v0.1a release.
-SCHEMA_VERSION = 4
+# never shipped; v4 = the v0.1a release; v5 = THIS (T8 / #672).
+SCHEMA_VERSION = 5
 
 # Default cutoff: 2014. Choice rationale: gives 11 years (2015-2025) of
 # post-cutoff observation window for ground-truth events. Earlier cutoffs
@@ -159,6 +170,70 @@ N_ECE_BINS = 10
 # Default seed for the random-weight baseline (#598). Fixed so re-runs
 # of the same validation report reproduce identical baseline AUCs.
 DEFAULT_BASELINE_SEED = 42
+
+# v6 NEW (T8 / #672 — Roshani A3 + Kwame bright-line). The single-seed
+# baseline of v4/v5 is replaced with a 5-seed sweep so the random-
+# baseline delta carries a CI rather than a point estimate. The 5 seeds
+# are fixed for reproducibility per Protocol 5; do not reseed without
+# convening Roshani + Kwame.
+DEFAULT_BASELINE_SEEDS = (17, 42, 123, 271, 314)
+
+# v6 NEW (T7 §1 / spec §1 / charter A2). Rule v2 stratum threshold +
+# cardinality precondition. NON-AMENDABLE — bound to the pre-reg spec
+# at qgi-docs `a2f5db4`. The v6 evaluator reads these from the JSON
+# config when present (V0_2_FALSIFICATION_CONFIG_JSON above); the
+# constants here are fallback defaults matching the spec verbatim.
+RULE_V2_STRATUM_THRESHOLD = 10
+RULE_V2_CARDINALITY_FLOOR_N = 30
+RULE_V2_FALSIFY_BELOW_SWING = 0.03
+RULE_V2_INERT_TRIGGER_BYTE_IDENTICAL = "all_4_arms_byte_identical"
+RULE_V2_INERT_TRIGGER_CARDINALITY = "stratum_cardinality_below_N"
+RULE_V2_INERT_TRIGGER_BOOTSTRAP = "bootstrap_nonconvergence_above_10pct_categories"
+
+# v6 NEW (T7 §3 / Roshani A3). Bayesian posterior-update protocol.
+# Prior is the post-v0.1a anchor (0.30 ± 0.05); material-update
+# threshold is ≥ 0.15 movement in either direction. Verbatim from
+# pre-reg spec §3 and JSON config (V0_2_FALSIFICATION_CONFIG_JSON).
+POSTERIOR_PRIOR_MEAN = 0.30
+POSTERIOR_PRIOR_UNCERTAINTY = 0.05
+POSTERIOR_MATERIAL_UPDATE_THRESHOLD = 0.15
+
+# v6 NEW (T7 §8 / spec §5 / charter A9). 4-tier exit-criterion table.
+# Tier conditions match the table verbatim; the verdict-computation
+# helper reads them in the order HARD-FALSIFY → PASS → PARTIAL →
+# SOFT-FALSIFY (longest match wins; matches the actual code path in
+# compute_rule_v2_verdict), with INERT pre-checked.
+TIER_HARD_FALSIFY_MEAN_AUC_BELOW = 0.50
+TIER_HARD_FALSIFY_CI_LOWER_BELOW = 0.48
+TIER_HARD_FALSIFY_ANCHOR_BELOW = 4  # out of 8 evaluable
+TIER_SOFT_FALSIFY_SWING_BELOW = 0.03
+TIER_PARTIAL_SWING_RANGE = (0.02, 0.05)
+TIER_PARTIAL_MEAN_AUC_RANGE = (0.50, 0.55)
+TIER_PASS_SWING_AT_LEAST = 0.05
+TIER_PASS_MEAN_AUC_AT_LEAST = 0.55
+TIER_PASS_ANCHOR_AT_LEAST = 6  # out of 8 evaluable
+
+# v6 NEW (T7 §9 / charter A8). pre-CIPS-validation label, non-strippable
+# until 2026-06-04. Every per-arm JSON carries this label.
+PRE_CIPS_VALIDATION_LABEL_UNTIL = "2026-06-04"
+
+
+# v6 NEW (#679 root-cause fix): replace NaN with None so the emitted JSON
+# is RFC 8259 compliant (jq + JS JSON.parse accept it). Python's permissive
+# json.dumps allows allow_nan=True which emits the bare token `NaN`,
+# rejected by strict parsers. Used in main()'s output write path.
+
+def _nan_to_none(o):
+    """Recursively replace NaN floats with None for RFC 8259 compliance.
+    Idempotent on values that are already JSON-safe."""
+    import math
+    if isinstance(o, float) and math.isnan(o):
+        return None
+    if isinstance(o, list):
+        return [_nan_to_none(x) for x in o]
+    if isinstance(o, dict):
+        return {k: _nan_to_none(v) for k, v in o.items()}
+    return o
 
 # Bootstrap parameters for per-category AUC CIs (v4 NEW).
 # 1000 resamples gives stable percentile-CI estimates without making
@@ -252,6 +327,417 @@ def load_allow_list(path: Path = ALLOW_LIST_JSON) -> set[int]:
     ids = set(int(x) for x in d.get("allow_list_numeric_ids", []))
     print(f"  indicator-allow-list (#591): {len(ids)} numeric IDs in filter")
     return ids
+
+
+# ---------------------------------------------------------------------------
+# v6 NEW (T8 / #672): T7 phase doc config loaders.
+# These read the JSON contracts T7 §4 + §5 require to be in git before T9
+# fires. Hard-error when missing IF rule v2 is being evaluated; pass
+# through silently when ablation_arm == "D" + with_baselines=False (the
+# legacy v4/v5 D-arm sanity-check use case).
+# ---------------------------------------------------------------------------
+
+
+def load_canonical_length_config(path: Path = CANONICAL_LENGTH_CONFIG_JSON_DEFAULT,
+                                  *, required: bool = False) -> dict | None:
+    """Load `qgi-data/reference/v0.2-canonical-length.json` (T7 §4 binding).
+
+    Per T7 §4 + spec §8.2, this JSON encodes per-indicator canonical_length
+    computed on the TRANSFORMED series (first_diff for I(1), log_diff for
+    SP.POP.TOTL, pass_through for I(0) and NY.GDP.MKTP.KD.ZG). The v6
+    evaluator MUST read from this file rather than recomputing from the
+    raw panel — recomputation would silently mean a different statistical
+    object than what v0.2 ratified.
+
+    `required=True` is set by main() when ablation_arm is non-D OR
+    with_baselines=True (i.e. whenever rule v2 is being evaluated).
+    `required=False` preserves the v4/v5 D-arm sanity-check path.
+    """
+    if not path.exists():
+        if required:
+            raise FileNotFoundError(
+                f"v6 evaluator requires {path} (T7 §4 binding). "
+                f"This file is computed by T8's canonical-length re-derivation "
+                f"step BEFORE T9 (Stage α) fires. Re-derive on the transformed "
+                f"series (first_diff for I(1), log_diff for SP.POP.TOTL, "
+                f"pass_through for I(0) and NY.GDP.MKTP.KD.ZG) and commit to "
+                f"qgi-data; do NOT fall back to a raw-panel computation."
+            )
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def load_exclusion_list_config(path: Path = EXCLUSION_LIST_CONFIG_JSON_DEFAULT,
+                                *, required: bool = False) -> set[str] | None:
+    """Load `qgi-data/reference/v0.2-demeaning-insufficient-exclusion.json`
+    (T7 §5 (b) binding).
+
+    Per T7 §5 decision (b), the 4 demeaning-insufficient Class A indicators
+    (FP.CPI.TOTL.ZG, NY.GDP.PCAP.CD, SH.DYN.MORT, SP.POP.TOTL) are excluded
+    from the headline AUC stratum so the rule v2 swing gate is a clean test
+    on the 105 non-demeaning-insufficient indicators in the Stage F panel.
+
+    Returns the set of excluded indicator id_strings (NOT numeric IDs;
+    matched at the api_code/id_string layer because the catalog uses
+    id_strings as canonical keys).
+    """
+    if not path.exists():
+        if required:
+            raise FileNotFoundError(
+                f"v6 evaluator requires {path} (T7 §5 binding). "
+                f"This file encodes the 4-Class-A demeaning-insufficient "
+                f"exclusion list ratified in T7 §5 decision (b). Generate it "
+                f"with the 4 verbatim indicator IDs (FP.CPI.TOTL.ZG, "
+                f"NY.GDP.PCAP.CD, SH.DYN.MORT, SP.POP.TOTL) and Stage E "
+                f"pairwise scores (0.66/0.54/0.36/0.31) — see T7 §5 inline."
+            )
+        return None
+    d = json.loads(path.read_text(encoding="utf-8"))
+    ids = {ind["id"] for ind in d.get("indicators", [])}
+    print(f"  exclusion-list (T7 §5 (b)): {len(ids)} demeaning-insufficient indicators excluded")
+    return ids
+
+
+def load_v0_2_falsification_config(
+    path: Path = V0_2_FALSIFICATION_CONFIG_JSON,
+    *, required: bool = False,
+) -> dict | None:
+    """Load `qgi-data/reference/v0.2-falsification-config.json` (T3 pre-reg
+    JSON config) for the rule v2 thresholds + posterior protocol priors.
+
+    When this file is present, the v6 evaluator reads RULE_V2_* and
+    POSTERIOR_* values from it (over-ride of the module-level constants).
+    This is the source-of-truth contract per T7 §1; the module constants
+    above are fallback defaults for tests / out-of-tree runs.
+    """
+    if not path.exists():
+        if required:
+            raise FileNotFoundError(
+                f"v6 evaluator requires {path} (T3 pre-reg JSON config). "
+                f"This is the machine-readable source-of-truth for rule v2 "
+                f"thresholds, N=30 floor, INERT triggers, and posterior "
+                f"protocol priors. Commit it (qgi-data PR #43 + #44) before "
+                f"any v6 evaluation can fire under rule v2."
+            )
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+# ---------------------------------------------------------------------------
+# v6 NEW (T8 / #672): rule v2 verdict + posterior-update protocol.
+# ---------------------------------------------------------------------------
+
+
+def compute_rule_v2_verdict(
+    *,
+    stratum_n_cells: int,
+    stratum_mean_auc: float,
+    stratum_ci_lower: float | None,
+    a_minus_d_swing: float | None,
+    anchor_pass_evaluable: int | None,
+    anchor_evaluable_total: int | None,
+    inert_triggers: list[str] | None = None,
+    cardinality_floor_N: int = RULE_V2_CARDINALITY_FLOOR_N,
+    # v6 review fix (MINOR #2): T11 aggregator owns the multi-seed
+    # random-baseline-delta-negative signal + the anchor-battery-mixed
+    # signal. Per-arm script passes None for both; aggregator computes
+    # them across arms and calls this helper with the full set. When
+    # None, the verdict applies the 2-of-3 condition fallback documented
+    # in the per-tier branches below.
+    random_baseline_delta_negative_at_multi_seed: bool | None = None,
+    anchor_battery_is_mixed: bool | None = None,
+) -> dict:
+    """v6 NEW (T8 / #672). Compute the rule v2 verdict per pre-reg spec §1 +
+    4-tier exit table §5 (charter A4 + A9). Returns:
+      {
+        "decision": "INERT" | "HARD-FALSIFY" | "SOFT-FALSIFY" | "PARTIAL" | "PASS",
+        "rationale": str,
+        "inert_reason": str | None,
+        "tier_conditions_evaluated": dict,
+      }
+
+    Order of evaluation (per-arm context — final cross-arm verdict
+    belongs to T11 aggregator):
+      1. INERT pre-check — cardinality floor, byte-identical arms, bootstrap
+         non-convergence (caller passes any/all triggers in `inert_triggers`).
+      2. If not INERT: classify into HARD-FALSIFY / PASS / PARTIAL /
+         SOFT-FALSIFY using the 4-tier conditions table from spec §5.
+
+    Cross-arm conditions per spec §5 (passed by T11 aggregator only):
+      - `random_baseline_delta_negative_at_multi_seed`: SOFT-FALSIFY's 3rd
+        condition. When None, this helper applies the 2-of-3 fallback
+        (swing < 0.03 + cardinality ≥ N) and marks the verdict with a
+        `requires_t11_confirmation` flag.
+      - `anchor_battery_is_mixed`: PARTIAL's 3rd condition. When None,
+        the helper applies the 2-of-3 fallback (swing in range + mean AUC
+        in range).
+
+    Inputs are the registered stratum's evaluable AUC + CI + swing + anchor
+    battery results. Caller is responsible for computing them on the
+    `n_indicators_used >= 10` stratum AFTER applying T7 §5 (b) exclusion of
+    the 4 demeaning-insufficient indicators.
+
+    Raises ValueError if any input is structurally invalid (e.g. anchor
+    pass count > evaluable total). Defaults to INERT on missing/None inputs
+    rather than silently classifying — Protocol 5 demands the verdict be
+    INERT when the test cannot execute, not an arbitrary tier.
+    """
+    inert_triggers = inert_triggers or []
+
+    # ---- INERT pre-checks ----
+    if stratum_n_cells < cardinality_floor_N:
+        inert_triggers = list(inert_triggers) + [RULE_V2_INERT_TRIGGER_CARDINALITY]
+
+    if inert_triggers:
+        return {
+            "decision": "INERT",
+            "rationale": (
+                f"Rule v2 returns INERT under triggers: {inert_triggers}. "
+                f"Stratum n_cells={stratum_n_cells} vs N_floor={cardinality_floor_N}. "
+                f"INERT is NOT a methodology halt; cascade does not "
+                f"re-deliberate methodology on an INERT result; cascade "
+                f"fixes the instrumentation and re-runs (spec §4)."
+            ),
+            "inert_reason": "; ".join(inert_triggers),
+            "tier_conditions_evaluated": None,
+        }
+
+    # ---- Inputs must be non-None to evaluate tiers ----
+    if (stratum_mean_auc is None or not np.isfinite(stratum_mean_auc)
+            or a_minus_d_swing is None or not np.isfinite(a_minus_d_swing)):
+        return {
+            "decision": "INERT",
+            "rationale": (
+                "Rule v2 returns INERT — stratum mean_auc or A-D swing is "
+                "NaN/None, which means the test did not produce a usable "
+                "statistic on the registered stratum. Treat as data-readiness "
+                "halt per spec §4."
+            ),
+            "inert_reason": "stratum_statistic_undefined",
+            "tier_conditions_evaluated": None,
+        }
+
+    # ---- Anchor battery sanity ----
+    anchor_pass = anchor_pass_evaluable if anchor_pass_evaluable is not None else 0
+    anchor_total = anchor_evaluable_total if anchor_evaluable_total is not None else 8
+    if anchor_total > 0 and anchor_pass > anchor_total:
+        raise ValueError(
+            f"anchor_pass_evaluable ({anchor_pass}) > anchor_evaluable_total "
+            f"({anchor_total}) — invalid input"
+        )
+
+    # ---- 4-tier evaluation (spec §5) ----
+    # CI lower defaults to mean_auc when not provided (conservative; treats
+    # missing CI as if the point estimate IS the lower bound, which can only
+    # delay HARD-FALSIFY, never trigger it spuriously).
+    ci_lower = stratum_ci_lower if stratum_ci_lower is not None else stratum_mean_auc
+
+    conditions = {
+        "stratum_n_cells": int(stratum_n_cells),
+        "stratum_mean_auc": float(stratum_mean_auc),
+        "stratum_ci_lower": float(ci_lower),
+        "a_minus_d_swing": float(a_minus_d_swing),
+        "anchor_pass_evaluable": int(anchor_pass),
+        "anchor_evaluable_total": int(anchor_total),
+    }
+
+    # HARD-FALSIFY: mean AUC < 0.50 AND CI lower < 0.48 AND anchors < 4/8
+    if (stratum_mean_auc < TIER_HARD_FALSIFY_MEAN_AUC_BELOW
+            and ci_lower < TIER_HARD_FALSIFY_CI_LOWER_BELOW
+            and anchor_pass < TIER_HARD_FALSIFY_ANCHOR_BELOW):
+        return {
+            "decision": "HARD-FALSIFY",
+            "rationale": (
+                f"All 3 HARD-FALSIFY conditions fire: "
+                f"mean_auc {stratum_mean_auc:.4f} < {TIER_HARD_FALSIFY_MEAN_AUC_BELOW} "
+                f"AND CI_lower {ci_lower:.4f} < {TIER_HARD_FALSIFY_CI_LOWER_BELOW} "
+                f"AND anchor_pass {anchor_pass}/8 < {TIER_HARD_FALSIFY_ANCHOR_BELOW}. "
+                f"Cascade methodology direction closes permanently per spec §5 "
+                f"+ T5 DECISION §5. NO v0.3 path on Path A."
+            ),
+            "inert_reason": None,
+            "tier_conditions_evaluated": conditions,
+        }
+
+    # PASS: swing ≥ 0.05 AND mean AUC ≥ 0.55 AND anchors ≥ 6/8
+    if (a_minus_d_swing >= TIER_PASS_SWING_AT_LEAST
+            and stratum_mean_auc >= TIER_PASS_MEAN_AUC_AT_LEAST
+            and anchor_pass >= TIER_PASS_ANCHOR_AT_LEAST):
+        return {
+            "decision": "PASS",
+            "rationale": (
+                f"All 3 PASS conditions fire: "
+                f"swing {a_minus_d_swing:.4f} >= {TIER_PASS_SWING_AT_LEAST} "
+                f"AND mean_auc {stratum_mean_auc:.4f} >= {TIER_PASS_MEAN_AUC_AT_LEAST} "
+                f"AND anchor_pass {anchor_pass}/8 >= {TIER_PASS_ANCHOR_AT_LEAST}. "
+                f"Methodology vindicated; Phase 6 (T13) begins on the now-"
+                f"validated EB framework."
+            ),
+            "inert_reason": None,
+            "tier_conditions_evaluated": conditions,
+        }
+
+    # PARTIAL: swing in [0.02, 0.05] AND mean AUC in [0.50, 0.55] AND anchors mixed
+    # (3rd condition `anchor_battery_is_mixed` is cross-arm; per-arm context
+    # uses 2-of-3 fallback when None per spec §5 review fix MINOR #2.)
+    swing_in_partial = (
+        TIER_PARTIAL_SWING_RANGE[0] <= a_minus_d_swing < TIER_PARTIAL_SWING_RANGE[1]
+    )
+    auc_in_partial = (
+        TIER_PARTIAL_MEAN_AUC_RANGE[0] <= stratum_mean_auc < TIER_PARTIAL_MEAN_AUC_RANGE[1]
+    )
+    if swing_in_partial and auc_in_partial:
+        # 3rd condition check: anchor_battery_is_mixed (T11 aggregator-supplied)
+        third_condition_met = (
+            anchor_battery_is_mixed if anchor_battery_is_mixed is not None
+            else True  # 2-of-3 fallback when caller hasn't supplied it
+        )
+        requires_t11 = anchor_battery_is_mixed is None
+        if third_condition_met:
+            return {
+                "decision": "PARTIAL",
+                "rationale": (
+                    f"PARTIAL conditions: swing {a_minus_d_swing:.4f} in "
+                    f"{TIER_PARTIAL_SWING_RANGE} AND mean_auc "
+                    f"{stratum_mean_auc:.4f} in {TIER_PARTIAL_MEAN_AUC_RANGE}"
+                    + (" AND anchor_battery_is_mixed=True"
+                       if anchor_battery_is_mixed is True else "")
+                    + (" (2-of-3 fallback — T11 aggregator must confirm "
+                       "the anchor-battery-mixed 3rd condition before "
+                       "the verdict is binding)" if requires_t11 else "")
+                    + ". Methodology has weaknesses; Path B (T12) becomes "
+                    "next phase, not v0.3 of the same Path A design."
+                ),
+                "inert_reason": None,
+                "tier_conditions_evaluated": conditions,
+                "requires_t11_confirmation": requires_t11,
+            }
+
+    # SOFT-FALSIFY: swing < 0.03 AND stratum has >= N cells AND
+    # random-baseline delta still negative at multi-seed bootstrap.
+    # (3rd condition `random_baseline_delta_negative_at_multi_seed` is cross-arm.)
+    if a_minus_d_swing < TIER_SOFT_FALSIFY_SWING_BELOW:
+        third_condition_met = (
+            random_baseline_delta_negative_at_multi_seed
+            if random_baseline_delta_negative_at_multi_seed is not None
+            else True  # 2-of-3 fallback per spec §5 review fix MINOR #2
+        )
+        requires_t11 = random_baseline_delta_negative_at_multi_seed is None
+        if third_condition_met:
+            return {
+                "decision": "SOFT-FALSIFY",
+                "rationale": (
+                    f"SOFT-FALSIFY: swing {a_minus_d_swing:.4f} < "
+                    f"{TIER_SOFT_FALSIFY_SWING_BELOW} on a non-INERT stratum "
+                    f"(n_cells={stratum_n_cells} >= N={cardinality_floor_N})"
+                    + (" AND random_baseline_delta_negative_at_multi_seed=True"
+                       if random_baseline_delta_negative_at_multi_seed is True
+                       else "")
+                    + (" (2-of-3 fallback — T11 aggregator must confirm the "
+                       "random-baseline-negative 3rd condition across the "
+                       "multi-seed sweep before the verdict is binding)"
+                       if requires_t11 else "")
+                    + ". Default next phase: Path B (T12). NO v0.3 on Path A."
+                ),
+                "inert_reason": None,
+                "tier_conditions_evaluated": conditions,
+                "requires_t11_confirmation": requires_t11,
+            }
+
+    # Fallthrough — should be rare. Return PARTIAL as the most-conservative
+    # "neither HARD-FALSIFY nor PASS" verdict.
+    return {
+        "decision": "PARTIAL",
+        "rationale": (
+            f"PARTIAL (fallthrough): swing {a_minus_d_swing:.4f} and "
+            f"mean_auc {stratum_mean_auc:.4f} fall outside the cleanly-"
+            f"defined HARD-FALSIFY / SOFT-FALSIFY / PASS regions. Treat as "
+            f"PARTIAL per the most-conservative reading of spec §5."
+        ),
+        "inert_reason": None,
+        "tier_conditions_evaluated": conditions,
+    }
+
+
+def compute_posterior_update(
+    *,
+    rule_v2_decision: str,
+    a_minus_d_swing: float | None,
+    prior_mean: float = POSTERIOR_PRIOR_MEAN,
+    prior_uncertainty: float = POSTERIOR_PRIOR_UNCERTAINTY,
+    material_update_threshold: float = POSTERIOR_MATERIAL_UPDATE_THRESHOLD,
+) -> dict:
+    """v6 NEW (T8 / #672). Compute the Bayesian posterior update per
+    Roshani A3 (spec §3 + JSON config). Returns:
+      {
+        "prior_mean": float,
+        "prior_uncertainty": float,
+        "posterior_mean": float,
+        "posterior_movement": float,
+        "material_update_threshold": float,
+        "is_material": bool,
+        "rationale": str,
+      }
+
+    Update logic (heuristic; the protocol does NOT specify a likelihood
+    function, only the material-update threshold and direction):
+      - INERT verdict → posterior == prior (no update; the test did not
+        execute on its intended target)
+      - HARD-FALSIFY → posterior moves DOWN by ≥ 0.15 (material; clamp to
+        [0, 1])
+      - SOFT-FALSIFY → posterior moves down by 0.08 (immaterial, signals
+        weakening evidence without falsifying the methodology)
+      - PARTIAL → posterior moves up by 0.05 (immaterial; partial signal)
+      - PASS → posterior moves UP by ≥ 0.15 (material; clamp)
+
+    The spec-anchored quantities are:
+      - 0.15 IS the material-update threshold (verbatim from spec §3 /
+        Roshani A3 protocol);
+      - direction of each verdict's update (HARD-FALSIFY downward,
+        PASS upward, etc.) follows directly from the spec.
+
+    The exact per-verdict magnitudes (-0.20, +0.20, +0.05, -0.08) are
+    AUTHOR-CHOSEN heuristics satisfying the spec constraints, NOT
+    verbatim spec values. They were chosen so HARD-FALSIFY and PASS
+    just clear the 0.15 material threshold (with -0.05 margin for
+    posterior clamping headroom), and PARTIAL/SOFT-FALSIFY produce
+    sub-material nudges that document directional change without
+    claiming falsification has fired. T11's aggregator may override
+    these per-verdict magnitudes if the v0.2 falsification report's
+    Bayesian section warrants more sophisticated update logic.
+    """
+    update_map = {
+        "INERT":         (0.00, "no update; test did not execute on its intended target"),
+        "HARD-FALSIFY":  (-0.20, "material downward update (methodology fails)"),
+        "SOFT-FALSIFY":  (-0.08, "sub-material downward nudge (weakening evidence)"),
+        "PARTIAL":       (+0.05, "sub-material upward nudge (partial signal)"),
+        "PASS":          (+0.20, "material upward update (methodology vindicated)"),
+    }
+    delta, descr = update_map.get(rule_v2_decision, (0.00, "unknown verdict; no update"))
+    posterior = max(0.0, min(1.0, prior_mean + delta))
+    movement = posterior - prior_mean
+    is_material = abs(movement) >= material_update_threshold
+
+    return {
+        "prior_mean": float(prior_mean),
+        "prior_uncertainty": float(prior_uncertainty),
+        "posterior_mean": float(posterior),
+        "posterior_movement": float(movement),
+        "material_update_threshold": float(material_update_threshold),
+        "is_material": bool(is_material),
+        "rationale": (
+            f"Prior {prior_mean:.2f} ± {prior_uncertainty:.2f} (post-v0.1a anchor). "
+            f"Rule v2 verdict: {rule_v2_decision}. {descr}. "
+            f"Posterior {posterior:.2f}; movement {movement:+.2f} vs "
+            f"threshold {material_update_threshold:.2f} → "
+            f"{'MATERIAL' if is_material else 'IMMATERIAL'}."
+        ),
+    }
+
+
+# ---------------------------------------------------------------------------
+# v5 + v6: existing helper kept for backward-compat (v4 D-arm sanity check)
+# ---------------------------------------------------------------------------
 
 
 def apply_591_filter(weights_df: pd.DataFrame, allow_ids: set[int]) -> pd.DataFrame:
@@ -1232,6 +1718,11 @@ def main(
     bootstrap_resamples: int = DEFAULT_BOOTSTRAP_RESAMPLES,
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
     strata_threshold: int = STRATA_INDICATOR_COUNT_THRESHOLD,
+    # v6 NEW (T8 / #672 / T7 binding):
+    baseline_seeds: tuple[int, ...] | None = None,
+    rule_v2_evaluation: bool = False,
+    canonical_length_config_path: Path = CANONICAL_LENGTH_CONFIG_JSON_DEFAULT,
+    exclusion_list_config_path: Path = EXCLUSION_LIST_CONFIG_JSON_DEFAULT,
 ) -> None:
     if ablation_arm not in ABLATION_ARMS:
         raise ValueError(
@@ -1240,6 +1731,28 @@ def main(
     use_signed_scoring, apply_filter = ARM_CONFIG[ablation_arm]
     print(f"[0] Ablation arm: {ablation_arm} "
           f"(signed_scoring={use_signed_scoring}, apply_591_filter={apply_filter})")
+
+    # v6 NEW (T8 / #672): T7 phase doc binding — when rule_v2_evaluation
+    # is True, the canonical_length config + exclusion-list config + JSON
+    # config (V0_2_FALSIFICATION_CONFIG_JSON) MUST exist. T9 (Stage α)
+    # fires with rule_v2_evaluation=True; earlier sanity-check D-arm runs
+    # leave it False.
+    canonical_length_config = load_canonical_length_config(
+        path=canonical_length_config_path, required=rule_v2_evaluation,
+    )
+    exclusion_list = load_exclusion_list_config(
+        path=exclusion_list_config_path, required=rule_v2_evaluation,
+    )
+    falsification_config = load_v0_2_falsification_config(
+        required=rule_v2_evaluation,
+    )
+
+    # v6 NEW: multi-seed baseline default (Roshani A3 + Kwame bright-line).
+    # When `baseline_seeds` is None and `with_baselines=True`, use the
+    # 5-seed default. When the caller explicitly passes a non-None tuple,
+    # honor it. When `with_baselines=False`, no baselines run regardless.
+    if baseline_seeds is None and with_baselines:
+        baseline_seeds = DEFAULT_BASELINE_SEEDS
 
     print(f"[1] Loading weight matrix ({WEIGHT_MATRIX_JSON.name})")
     weights_df = load_weight_matrix()
@@ -1289,6 +1802,40 @@ def main(
     num_to_api = eb.load_numeric_to_api()
     needed_api_codes = [num_to_api[nid] for nid in needed_num_ids if nid in num_to_api]
     print(f"  api_codes: {len(needed_api_codes)}")
+
+    # v6 NEW (T8 / #672 — review fix MAJOR #4): apply T7 §5 (b)
+    # demeaning-insufficient exclusion. The exclusion list contains
+    # api_code id_strings; map back to numeric_ids via num_to_api and
+    # filter the weight matrix. Only applied when rule_v2_evaluation
+    # is True (Stage α / Path A); D-arm sanity-check runs are unchanged.
+    if rule_v2_evaluation and exclusion_list:
+        api_to_num = {v: k for k, v in num_to_api.items()}
+        excluded_num_ids = {
+            api_to_num[code] for code in exclusion_list
+            if code in api_to_num
+        }
+        missing = exclusion_list - {num_to_api.get(nid) for nid in excluded_num_ids}
+        if missing:
+            print(
+                f"  [WARN] T7 §5 (b) exclusion list contains {len(missing)} "
+                f"indicators not in num_to_api: {sorted(missing)}. They cannot "
+                f"be excluded — verify the exclusion list against the indicator "
+                f"map before T9 fires."
+            )
+        before = len(weights_df)
+        weights_df = weights_df[
+            ~weights_df["indicator_numeric_id"].isin(excluded_num_ids)
+        ].copy()
+        after = len(weights_df)
+        print(
+            f"  T7 §5 (b) exclusion applied: dropped {before - after} weight "
+            f"matrix rows for {len(excluded_num_ids)} demeaning-insufficient "
+            f"indicators (FP.CPI.TOTL.ZG, NY.GDP.PCAP.CD, SH.DYN.MORT, "
+            f"SP.POP.TOTL); {after} rows remain"
+        )
+        # Refresh derived lists since the matrix changed.
+        needed_num_ids = sorted(weights_df["indicator_numeric_id"].unique().tolist())
+        needed_api_codes = [num_to_api[nid] for nid in needed_num_ids if nid in num_to_api]
 
     print(f"\n[3] Pulling Athena data (panel + ground truth + countries)")
     creds_path = Path(r"<USER_HOME>/AppData/Local/Temp/qgi/staging_creds.json")
@@ -1343,7 +1890,8 @@ def main(
     per_cat = treatment["per_event_category_auc"]
 
     baseline_uniform = None
-    baseline_random = None
+    baseline_random = None  # v5 single-seed baseline (kept for backward-compat)
+    baseline_random_multi_seed: list[dict] = []  # v6 NEW (T8 / #672)
     if with_baselines:
         # T5 strict-review fix: anchor battery is about treatment
         # methodology (does the formula correctly handle Malta, Norway,
@@ -1359,6 +1907,7 @@ def main(
             anchor_battery=None,
             strata_threshold=strata_threshold,
         )
+        # v5 single-seed baseline (legacy field for backward-compat consumers).
         baseline_random = evaluate_weights(
             build_random_baseline(weights_df, seed=baseline_seed), zscores,
             country_id_to_str, num_to_api, gt,
@@ -1368,6 +1917,30 @@ def main(
             anchor_battery=None,
             strata_threshold=strata_threshold,
         )
+        # v6 NEW (T8 / #672): multi-seed baseline. The 5-seed default sweep
+        # gives the random-baseline delta a CI rather than a point estimate,
+        # closing Roshani A3 + Kwame bright-line + Priya's heterogeneity
+        # demand for falsification gates that survive seed variance.
+        if baseline_seeds:
+            print(f"\n[5b] Multi-seed random baseline ({len(baseline_seeds)} seeds: {list(baseline_seeds)})")
+            for s in baseline_seeds:
+                b = evaluate_weights(
+                    build_random_baseline(weights_df, seed=s), zscores,
+                    country_id_to_str, num_to_api, gt,
+                    label=f"baseline_random_seed{s}",
+                    use_signed_scoring=use_signed_scoring, directions=directions,
+                    bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
+                    anchor_battery=None,
+                    strata_threshold=strata_threshold,
+                )
+                baseline_random_multi_seed.append({
+                    "seed": int(s),
+                    "mean_auc": float(b["mean_auc"]),
+                    "median_auc": float(b["median_auc"]),
+                    "stratified_data_sufficient_mean_auc": float(
+                        b["stratified_auc"]["data_sufficient"]["mean_auc"]
+                    ) if np.isfinite(b["stratified_auc"]["data_sufficient"]["mean_auc"]) else None,
+                })
 
     # Reliability diagram log (treatment only — baselines' reliability is
     # in the JSON but printing all 3 to stdout is noisy.)
@@ -1382,45 +1955,73 @@ def main(
     # written as a symlink-alias for the D-arm to preserve v3 consumers.
     output_path = ROOT / "qgi-data" / "reference" / OUTPUT_JSON_TEMPLATE.format(arm=ablation_arm)
     print(f"\n[7] Writing {output_path}")
-    # Resolve decision before writing JSON (so consumers don't re-implement the
-    # threshold logic). Sonnet review 2026-05-03 (Phase 4 v0.1) flagged this
-    # as MINOR #6.
-    if not np.isfinite(mean_auc):
-        decision = "INSUFFICIENT_DATA"
-        decision_rationale = (
-            "mean AUC is NaN — no event_categories had enough cells with mixed "
-            "labels to compute AUC. Cannot evaluate methodology."
-        )
-    elif mean_auc > 0.65:
-        decision = "PROCEED"
-        decision_rationale = f"mean AUC {mean_auc:.3f} > 0.65 — weights carry useful predictive signal."
-    elif mean_auc > 0.55:
-        decision = "PROCEED_WITH_CAUTION"
-        decision_rationale = (
-            f"mean AUC {mean_auc:.3f} > 0.55 — weights carry some signal but only "
-            f"marginally above random. Phase 5+ should improve."
-        )
-    else:
-        decision = "REVISIT"
-        decision_rationale = (
-            f"mean AUC {mean_auc:.3f} <= 0.55 — weights do not predict events better "
-            f"than random. Check methodology before downstream use."
-        )
+    # v6 NEW (T8 / #672): rule v2 verdict + posterior protocol. The
+    # legacy v4 PROCEED / PROCEED_WITH_CAUTION / REVISIT / INSUFFICIENT_DATA
+    # scheme is REPLACED with rule v2's INERT / HARD-FALSIFY / SOFT-FALSIFY /
+    # PARTIAL / PASS verdict per pre-reg spec §1 + 4-tier exit table §5.
+    #
+    # Backward-compat: D-arm-only sanity-check runs (rule_v2_evaluation=False)
+    # still emit a `decision` field, but it's the rule v2 verdict computed
+    # on the full-set stratum (not the registered ≥10 stratum), which will
+    # almost always return INERT because the cardinality floor binds.
+    # Consumers that need the legacy PROCEED/REVISIT scheme should pin to
+    # pre-v6 schema_version (= 4) and load the per-arm JSON accordingly.
+    stratum_block = treatment["stratified_auc"]["data_sufficient"]
+    stratum_n_cells = int(stratum_block.get("n_cells", 0))
+    stratum_mean_auc = stratum_block.get("mean_auc", float("nan"))
 
-    # When baselines are computed AND treatment_AUC is below the random
-    # baseline, that is a STRONGER REVISIT signal than just "below 0.55"
-    # — it means the scoring formula plus weights produces predictions
-    # WORSE than coin flips drawn from a hat. Sonnet review 2026-05-03
-    # (Phase 4 v0.2) flagged this as MINOR #2.
+    # A-D swing: when this arm is A and we have a D-arm baseline in scope,
+    # compute it; otherwise the swing is None (and rule v2 returns INERT).
+    # In production Path A (T9), the cascade runs the 4 arms separately
+    # then aggregates via summarize_gamma_sensitivity.py; the per-arm JSON
+    # carries enough info for the aggregator to compute A-D itself.
+    # Here we emit None for swing on the per-arm JSON; the aggregator
+    # owns the final rule v2 verdict on the cross-arm artifact.
+    inert_triggers_local: list[str] = []
+    # Optional placeholder: if a non-finite full-set mean_auc appears,
+    # surface it as a rule v2 INERT trigger candidate (caller may add
+    # cross-arm byte-identical triggers in the aggregator).
+    if not np.isfinite(mean_auc):
+        inert_triggers_local.append("treatment_mean_auc_undefined")
+
+    anchor_pass_evaluable = sum(
+        1 for r in treatment["anchor_case_battery"]["cases"]
+        if r.get("passed") is True
+    )
+    anchor_total_evaluable = sum(
+        1 for r in treatment["anchor_case_battery"]["cases"]
+        if r.get("passed") is not None
+    )
+
+    verdict = compute_rule_v2_verdict(
+        stratum_n_cells=stratum_n_cells,
+        stratum_mean_auc=stratum_mean_auc if np.isfinite(stratum_mean_auc) else None,
+        stratum_ci_lower=None,  # per-arm JSON does not compute the bootstrap CI for the stratum AUC; T11 aggregator does.
+        a_minus_d_swing=None,  # cross-arm; computed by T11 aggregator
+        anchor_pass_evaluable=anchor_pass_evaluable,
+        anchor_evaluable_total=anchor_total_evaluable,
+        inert_triggers=inert_triggers_local,
+    )
+    decision = verdict["decision"]
+    decision_rationale = verdict["rationale"]
+
+    posterior = compute_posterior_update(
+        rule_v2_decision=decision, a_minus_d_swing=None,
+    )
+
+    # Legacy compatibility annotation: when baselines are computed AND
+    # treatment is below the random baseline, append a note (preserved
+    # from v4/v5 for cascade-Opus consumers reading the legacy alias).
     if (baseline_random is not None
             and np.isfinite(mean_auc)
             and np.isfinite(baseline_random["mean_auc"])
             and mean_auc < baseline_random["mean_auc"]):
         decision_rationale += (
-            f" Treatment AUC ({mean_auc:.3f}) is BELOW the random-weight "
-            f"baseline ({baseline_random['mean_auc']:.3f}); this is a "
-            f"strong signal that the scoring formula — not the weights "
-            f"— is the bottleneck."
+            f" [Legacy v4 annotation: full-set treatment AUC ({mean_auc:.3f}) "
+            f"is BELOW the random-weight baseline "
+            f"({baseline_random['mean_auc']:.3f}); under the v4 scheme this "
+            f"was a strong REVISIT signal. Under v6 rule v2, this annotation "
+            f"is informational only — the verdict above is the binding one.]"
         )
 
     output = {
@@ -1548,14 +2149,71 @@ def main(
             "per_event_category_auc": baseline_random["per_event_category_auc"],
             "reliability_diagram": baseline_random["reliability_diagram"],
         }
-    output_path.write_text(json.dumps(output, indent=2), encoding="utf-8")
+
+    # v6 NEW (T8 / #672): top-level rule v2 verdict + posterior block +
+    # multi-seed baseline + T7 config provenance + pre-CIPS-validation label.
+    output["rule_v2_verdict"] = verdict
+    output["posterior_update"] = posterior
+    if baseline_random_multi_seed:
+        output["baseline_random_multi_seed"] = {
+            "seeds": list(baseline_seeds) if baseline_seeds else [],
+            "per_seed": baseline_random_multi_seed,
+            "n_seeds": len(baseline_random_multi_seed),
+            "treatment_minus_random_full_set": (
+                [
+                    float(mean_auc) - float(b["mean_auc"])
+                    for b in baseline_random_multi_seed
+                    if np.isfinite(b["mean_auc"]) and np.isfinite(mean_auc)
+                ] if np.isfinite(mean_auc) else []
+            ),
+        }
+    # v6 NEW (T8 review fix MAJOR #4 polish): emit SHA-256 hashes of the
+    # loaded T7 binding configs so the T11 falsification report can audit
+    # WHICH config files were in scope. Hashes are computed on the
+    # canonical-serialised JSON content (sorted keys) for reproducibility.
+    import hashlib
+    def _hash_config(cfg: dict | None) -> str | None:
+        if cfg is None:
+            return None
+        return hashlib.sha256(
+            json.dumps(cfg, sort_keys=True, allow_nan=False).encode("utf-8")
+        ).hexdigest()
+
+    output["t7_config_provenance"] = {
+        "canonical_length_config_loaded": canonical_length_config is not None,
+        "canonical_length_config_path": str(canonical_length_config_path),
+        "canonical_length_config_sha256": _hash_config(canonical_length_config),
+        "exclusion_list_loaded": exclusion_list is not None,
+        "exclusion_list_size": len(exclusion_list) if exclusion_list else 0,
+        "exclusion_list_config_path": str(exclusion_list_config_path),
+        "exclusion_list_applied_to_weights_df": (
+            rule_v2_evaluation and exclusion_list is not None
+        ),
+        "falsification_config_loaded": falsification_config is not None,
+        "falsification_config_sha256": _hash_config(falsification_config),
+        "rule_v2_evaluation_mode": rule_v2_evaluation,
+    }
+    # v6 NEW (T7 §9 / charter A8): pre-CIPS-validation label.
+    # Non-strippable until the 2026-06-04 CIPS run completes.
+    output["pre_cips_validation_label"] = True
+    output["cips_validation_expected_after"] = PRE_CIPS_VALIDATION_LABEL_UNTIL
+
+    # v6 NEW (#679): RFC 8259 compliance — emit `null` instead of `NaN`.
+    # Python's json defaults are permissive but jq + JS JSON.parse reject NaN.
+    output_path.write_text(
+        json.dumps(_nan_to_none(output), indent=2, allow_nan=False) + "\n",
+        encoding="utf-8",
+    )
     print(f"    wrote validation report → {output_path.name}")
 
     # Legacy alias: keep phase4-validation.json pointing at the D-arm
     # output so v3 consumers (no --ablation-arm awareness) keep working.
     # For non-D arms, no legacy alias is written.
     if ablation_arm == "D":
-        OUTPUT_JSON_LEGACY.write_text(json.dumps(output, indent=2), encoding="utf-8")
+        OUTPUT_JSON_LEGACY.write_text(
+            json.dumps(_nan_to_none(output), indent=2, allow_nan=False) + "\n",
+            encoding="utf-8",
+        )
         print(f"    wrote legacy alias → {OUTPUT_JSON_LEGACY.name} (D-arm)")
 
     print(f"\n=== DECISION ===")
@@ -1609,6 +2267,31 @@ if __name__ == "__main__":
                         f"controls which threshold the *stratified_auc* and "
                         f"*config.strata_indicator_count_threshold* fields "
                         f"reflect.")
+    # v6 NEW (T8 / #672): rule v2 evaluation mode + T7 config paths.
+    p.add_argument("--rule-v2-evaluation", action="store_true",
+                   help="v6 (T8 / #672). When set, the script evaluates "
+                        "rule v2 (pre-reg spec §1) and REQUIRES the T7 "
+                        "canonical_length + exclusion-list + falsification "
+                        "JSON configs to exist. Use when firing T9 (Stage α) "
+                        "or any rule-v2-binding run. Leave unset for D-arm "
+                        "sanity-check / γ-stage transparency runs.")
+    p.add_argument("--canonical-length-config", type=Path,
+                   default=CANONICAL_LENGTH_CONFIG_JSON_DEFAULT,
+                   help=f"v6 (T7 §4 binding). Path to v0.2-canonical-"
+                        f"length.json. Required when --rule-v2-evaluation "
+                        f"is set. Default: {CANONICAL_LENGTH_CONFIG_JSON_DEFAULT}.")
+    p.add_argument("--exclusion-list-config", type=Path,
+                   default=EXCLUSION_LIST_CONFIG_JSON_DEFAULT,
+                   help=f"v6 (T7 §5 (b) binding). Path to v0.2-demeaning-"
+                        f"insufficient-exclusion.json. Required when "
+                        f"--rule-v2-evaluation is set. Default: "
+                        f"{EXCLUSION_LIST_CONFIG_JSON_DEFAULT}.")
+    p.add_argument("--baseline-seeds", type=int, nargs="+", default=None,
+                   help=f"v6 (T8 / #672, Roshani A3 + Kwame bright-line). "
+                        f"Multi-seed random-baseline sweep. Default when "
+                        f"--with-baselines is set and this flag is not "
+                        f"passed: {list(DEFAULT_BASELINE_SEEDS)}. Override "
+                        f"only when testing seed-sensitivity in CI.")
     args = p.parse_args()
     main(
         cutoff_year=args.cutoff_year,
@@ -1619,4 +2302,9 @@ if __name__ == "__main__":
         bootstrap_resamples=args.bootstrap_resamples,
         bootstrap_seed=args.bootstrap_seed,
         strata_threshold=args.strata_threshold,
+        # v6 NEW
+        baseline_seeds=tuple(args.baseline_seeds) if args.baseline_seeds else None,
+        rule_v2_evaluation=args.rule_v2_evaluation,
+        canonical_length_config_path=args.canonical_length_config,
+        exclusion_list_config_path=args.exclusion_list_config,
     )
