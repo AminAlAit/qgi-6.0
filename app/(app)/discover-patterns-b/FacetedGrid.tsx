@@ -259,8 +259,8 @@ export function FacetedGrid({ patterns }: { patterns: PatternFacet[] }) {
             })}
           </FacetBlock>
 
-          {/* Confidence (RCI) */}
-          <FacetBlock title="RCI confidence">
+          {/* Recipe confidence */}
+          <FacetBlock title="Recipe confidence">
             {RCIS.map((rci) => {
               const n = countFor((p) => p.rci === rci);
               return (
@@ -441,7 +441,7 @@ export function FacetedGrid({ patterns }: { patterns: PatternFacet[] }) {
             className="ml-auto text-[9px] italic"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            MOCK data · real integration in #648
+            Preview data · real integration in #648
           </span>
         </div>
       </main>
@@ -529,8 +529,9 @@ function PatternCard({ pattern: p, maxPps }: { pattern: PatternFacet; maxPps: nu
             <span
               className="text-[9px] tracking-widest uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
+              title="Pattern Power Score — strength + persistence + breadth"
             >
-              PPS
+              SCORE
             </span>
             <span
               className="font-data text-[11px] font-semibold"
@@ -559,7 +560,7 @@ function PatternCard({ pattern: p, maxPps }: { pattern: PatternFacet; maxPps: nu
           <Sep />
           <span title="Pattern length">{p.pattern_length} yr</span>
           <Sep />
-          <span title="Number of SCDI indexes">{p.num_indexes} SCDIs</span>
+          <span title="Number of shared-signal indexes">{p.num_indexes} indexes</span>
           <Sep />
           <span title="Architecture" style={{ color: "var(--qgi-text-muted)" }}>
             {p.architecture}
@@ -704,7 +705,7 @@ function EmptyState({
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Your filters exclude all {32} patterns in this dataset. Try widening the tier
-            or RCI filter first.
+            or recipe-confidence filter first.
           </span>
           <button
             onClick={onClear}

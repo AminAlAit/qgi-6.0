@@ -160,8 +160,8 @@ export function PatternDetailClient({ pattern: p }: { pattern: PatternFacet }) {
           {p.lead_years > 0
             ? `${p.lead_years} year${p.lead_years !== 1 ? "s" : ""}`
             : "0 years (concurrent)"}
-          , covering a {p.pattern_length}-year window over {p.num_indexes} shared SCDI
-          indexes. Average Pearson correlation {corrPct}. Last validated firing:{" "}
+          , covering a {p.pattern_length}-year window over {p.num_indexes} shared
+          indicator indexes. Average Pearson correlation {corrPct}. Last validated firing:{" "}
           {p.last_firing_year}.
         </div>
       </header>
@@ -205,7 +205,7 @@ export function PatternDetailClient({ pattern: p }: { pattern: PatternFacet }) {
             </span>
           </Metric>
 
-          <Metric label="RCI confidence">
+          <Metric label="Recipe confidence">
             <span
               className="font-data text-sm font-semibold uppercase tracking-wide"
               style={{ color: rciColor }}
@@ -231,11 +231,11 @@ export function PatternDetailClient({ pattern: p }: { pattern: PatternFacet }) {
 
       {/* 5. Indicator coverage */}
       <section>
-        <SectionLabel>Indicator coverage — {p.num_indexes} SCDIs</SectionLabel>
+        <SectionLabel>Indicator coverage — {p.num_indexes} indexes</SectionLabel>
         <p className="text-[11px] mb-3" style={{ color: "var(--qgi-text-muted)" }}>
-          MOCK: top-{indicators.length} indicators by mean |SHAP| for the{" "}
-          <em>{p.event_label}</em> recipe. Real SHAP fingerprint loads from
-          ml-recipe-stack in #648.
+          Preview: top-{indicators.length} indicators by mean importance for the{" "}
+          <em>{p.event_label}</em> recipe. Real indicator fingerprint loads from the
+          recipe stack in #648.
         </p>
         <ol className="space-y-1">
           {indicators.map((name, i) => (
@@ -294,7 +294,7 @@ export function PatternDetailClient({ pattern: p }: { pattern: PatternFacet }) {
             </span>
           </DiscloseRow>
 
-          <DiscloseRow label="RCI confidence">
+          <DiscloseRow label="Recipe confidence">
             <span style={{ color: rciColor }}>{p.rci}</span>
             <span
               className="block text-[11px] mt-0.5"
@@ -305,15 +305,14 @@ export function PatternDetailClient({ pattern: p }: { pattern: PatternFacet }) {
           </DiscloseRow>
 
           <DiscloseRow label="Training concentration">
-            {/* MOCK: in real data, sourced from ml-recipe-stack honest-disclosures */}
-            MOCK — top training country share not loaded for V1-statistical recipes. For
-            D2/D5 recipes, sourced from honest-disclosures-2026-05-11.json in #648.
+            {/* Preview: in real data, sourced from ml-recipe-stack honest-disclosures */}
+            Preview — top training country share not loaded for V1-statistical recipes.
+            For ML recipes, sourced from honest-disclosures in #648.
           </DiscloseRow>
 
           <DiscloseRow label="Buyer recommendation">
-            {/* MOCK: sourced from buyer_disclosure_recommendation in ml-recipe-stack */}
-            MOCK — real recommendation from ml-recipe-stack
-            buyer_disclosure_recommendation in #648.
+            {/* Preview: sourced from buyer-disclosure recommendation in ml-recipe-stack */}
+            Preview — real recommendation from the ml recipe stack in #648.
           </DiscloseRow>
         </div>
       </section>

@@ -185,7 +185,12 @@ KNOWN_RECIPE_SLUGS = {
 # --- AI-tell markers
 MOCK_MARKERS = re.compile(r"\b(MOCK|TODO|FIXME|XXX|HACK|DEFERRED_TO_)\b")
 EM_DASH = "—"  # U+2014
-EM_DASH_THRESHOLD = 8  # per file; above this, flag as AI-tell density
+# Threshold tuned upward (was 8) after triage on countries-v2-narrative scaffold:
+# legitimate narrative prose with parenthetical em-dashes (Tomás-style editorial
+# voice) tripped the 8-threshold at ~9 em-dashes/page. AI-tell density is closer
+# to ~15+/file when present (em-dashes paragraph-cadence pattern). Real prose
+# with editorial em-dashes for parenthetical breaks should not flag.
+EM_DASH_THRESHOLD = 15
 
 
 # ============================================================================
