@@ -10,6 +10,8 @@ import {
   type CalloutStyle,
 } from "@/components/ml/Callouts";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { getIndicatorLabel } from "@/lib/indicator-labels";
+import { rewriteRecipeSlugsInProse } from "@/lib/recipe-narrative";
 
 /**
  * V2 precedent detail page — single ML recipe tear-sheet.
@@ -41,15 +43,35 @@ export function PrecedentsV2Detail({
   caveatStyle,
   generatedAt,
   paperHref,
+  slugMap,
 }: {
   recipe: MlRecipeEntry;
   caveatStyle: CalloutStyle;
   generatedAt: string;
   /** External href to the Stage 5 paper Section 4 anchor for this recipe. */
   paperHref: string;
+  /**
+   * Optional full slug → display-name map for cross-recipe references in
+   * prose. When omitted, falls back to just THIS recipe's slug → its own
+   * display name (which still covers the common case of the bake's
+   * opening word).
+   */
+  slugMap?: Record<string, string>;
 }) {
   const variantLetter: "a" | "b" = caveatStyle === "tufte" ? "a" : "b";
   const tierColor = TIER_COLORS[recipe.tier];
+  // Build effective slug map: full map if provided, else self-only fallback.
+  const effectiveSlugMap = slugMap ?? {
+    [recipe.recipe_id]: recipe.display_name,
+  };
+  const cleanedNarrative = rewriteRecipeSlugsInProse(
+    recipe.mechanism_narrative,
+    effectiveSlugMap
+  );
+  const cleanedRecommendation = rewriteRecipeSlugsInProse(
+    recipe.buyer_disclosure_recommendation,
+    effectiveSlugMap
+  );
   return (
     <article className="p-8 max-w-3xl mx-auto">
       <BreadcrumbNav variantLetter={variantLetter} />
@@ -193,7 +215,7 @@ export function PrecedentsV2Detail({
           Mechanism
         </h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
-          {recipe.mechanism_narrative}
+          {cleanedNarrative}
         </p>
       </section>
 
@@ -206,7 +228,7 @@ export function PrecedentsV2Detail({
           Buyer-disclosure recommendation
         </h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
-          <MarkdownBoldText text={recipe.buyer_disclosure_recommendation} />
+          <MarkdownBoldText text={cleanedRecommendation} />
         </p>
       </section>
 
@@ -226,7 +248,12 @@ export function PrecedentsV2Detail({
             >
               <th className="py-2 pr-4 font-normal">#</th>
               <th className="py-2 pr-4 font-normal">Indicator</th>
-              <th className="py-2 pr-4 font-normal text-right">|SHAP|</th>
+              <th
+                className="py-2 pr-4 font-normal text-right"
+                title="Mean absolute SHAP value — how much this indicator moves the model's prediction across the training set"
+              >
+                Importance
+              </th>
               <th className="py-2 font-normal">Note</th>
             </tr>
           </thead>
@@ -240,10 +267,11 @@ export function PrecedentsV2Detail({
                   {tk.rank}
                 </td>
                 <td
-                  className="py-2 pr-4 font-data text-xs"
+                  className="py-2 pr-4 text-xs"
                   style={{ color: "var(--qgi-text)" }}
+                  title={tk.indicator_id}
                 >
-                  {tk.indicator_id}
+                  {getIndicatorLabel(tk.indicator_id)}
                 </td>
                 <td
                   className="py-2 pr-4 font-data text-right"
@@ -252,12 +280,17 @@ export function PrecedentsV2Detail({
                   {tk.mean_abs_shap.toFixed(4)}
                 </td>
                 <td
-                  className="py-2 font-data text-xs"
+                  className="py-2 text-xs"
                   style={{
                     color: tk.fixed_effect_suspect ? "#a16207" : "var(--qgi-text-dim)",
                   }}
+                  title={
+                    tk.fixed_effect_suspect
+                      ? "This indicator may be acting as a country-level identifier (picking up time-invariant country characteristics) rather than a true causal signal — interpret with country-specific bias caveat. Fixed-effect suspect."
+                      : undefined
+                  }
                 >
-                  {tk.fixed_effect_suspect ? "fixed-effect suspect" : ""}
+                  {tk.fixed_effect_suspect ? "Possible country bias" : ""}
                 </td>
               </tr>
             ))}
@@ -277,7 +310,7 @@ export function PrecedentsV2Detail({
           <ul className="text-sm space-y-2">
             {recipe.open_followups.map((f, i) => (
               <li key={i} style={{ color: "var(--qgi-text)" }}>
-                {f}
+                {rewriteRecipeSlugsInProse(f, effectiveSlugMap)}
               </li>
             ))}
           </ul>

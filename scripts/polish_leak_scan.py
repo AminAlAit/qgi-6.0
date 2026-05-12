@@ -489,6 +489,119 @@ def iter_scan_files() -> Iterator[Path]:
 
 
 # ============================================================================
+# Data-file scanning (JSON values that flow into JSX expressions)
+# ============================================================================
+# Phase A1.5 addition (per founder feedback 2026-05-12): the source-string
+# scanner missed leaks where raw data values are rendered via {x.field}
+# JSX expressions. Specifically:
+#   - `top_k_indicators[].indicator_id` = "VC.BTL.DETH__diff" → renders raw
+#   - `mechanism_narrative` opening with `recipe_id` slug → "civil_war..."
+# To catch these, scan known data JSON files for string values that
+# contain leak-prone tokens. Field names are tagged so triage knows
+# which renderer downstream needs the relabel.
+DATA_SCAN_PATHS = [
+    REPO_ROOT / "data" / "ml-recipe-stack.json",
+    REPO_ROOT / "data" / "discover-patterns-mock.json",
+    REPO_ROOT / "data" / "patterns-facets-mock.json",
+]
+# Fields whose values are PURE identifiers — used for URL slugs, React
+# keys, file paths, version strings. SKIP these entirely; their values
+# are technical by design and the rendering layer is what matters.
+# (If a renderer mistakenly puts `{x.recipe_id}` as visible text, that
+# leak is caught by the source-code scan AT the component layer, not
+# by us flagging the JSON value.)
+SKIP_IDENTIFIER_FIELDS = {
+    "recipe_id",
+    "indicator_id",
+    "anchor_id",
+    "paper_section_anchor",
+    "id",
+    "numeric_id",
+    "model_version",
+    "path",
+    "consumer_path",
+    "dispatch_sha",
+    "generated_at",
+    "generation_timestamp",
+    "slug",
+    # JSON-metadata convention: dev-facing comments inside JSON files.
+    # Never rendered to users.
+    "_comment",
+    "note",
+    "_notes",
+    "comment",
+}
+# Fields whose values are URL slug arrays / metadata pointers — they
+# contain recipe slugs by design, no leak.
+SKIP_METADATA_PATH_PATTERNS = (
+    "metadata.top_4_recipes",
+    "metadata.locked_recipes",
+    "metadata.source_artifacts",
+)
+
+
+def scan_json_value(
+    file_rel: str, json_path: str, value: object
+) -> Iterator[Leak]:
+    """Recursively walk a JSON value, yielding leaks for string fields
+    that contain detector-positive tokens.
+
+    `json_path` is the dotted path to the current value (e.g.
+    `recipes[0].top_k_indicators[2].indicator_id`).
+    """
+    if isinstance(value, dict):
+        for k, v in value.items():
+            child_path = f"{json_path}.{k}" if json_path else k
+            yield from scan_json_value(file_rel, child_path, v)
+    elif isinstance(value, list):
+        for i, v in enumerate(value):
+            child_path = f"{json_path}[{i}]"
+            yield from scan_json_value(file_rel, child_path, v)
+    elif isinstance(value, str):
+        # The leaf string. Determine the field name (last `.` segment,
+        # stripped of `[N]` indices).
+        field = json_path.rsplit(".", 1)[-1]
+        field_clean = field.split("[")[0]
+        # Skip pure-identifier fields — used for URL slugs, React keys,
+        # file paths. Their values are technical by design; leaks only
+        # matter at the rendering layer (caught by the source-code scan).
+        if field_clean in SKIP_IDENTIFIER_FIELDS:
+            return
+        # Skip metadata pointer paths (URL slug arrays, source-artifact
+        # path lists) — these legitimately contain recipe slugs.
+        for skip_pattern in SKIP_METADATA_PATH_PATTERNS:
+            if json_path.startswith(skip_pattern):
+                return
+        # Run the standard text-content detectors on the value. Reuse
+        # detect_leaks_in_fragment by passing the value as the fragment.
+        for leak in detect_leaks_in_fragment(file_rel, 0, value):
+            # Tag the JSON path in the snippet so triage knows where it landed.
+            yield Leak(
+                file=file_rel,
+                line=0,
+                leak_type=f"data-{leak.leak_type}",
+                snippet=f"{json_path}: {leak.snippet}",
+                suggestion=leak.suggestion,
+            )
+
+
+def iter_data_leaks() -> Iterator[Leak]:
+    """Scan known data JSON files for leak-prone field values."""
+    import json
+
+    for path in DATA_SCAN_PATHS:
+        if not path.exists():
+            continue
+        try:
+            with path.open(encoding="utf-8") as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, OSError):
+            continue
+        file_rel = str(path.relative_to(REPO_ROOT)).replace("\\", "/")
+        yield from scan_json_value(file_rel, "", data)
+
+
+# ============================================================================
 # Main
 # ============================================================================
 
@@ -502,6 +615,11 @@ def main() -> int:
         for line_no, _kind, frag in iter_text_fragments(file_path):
             all_leaks.extend(detect_leaks_in_fragment(file_rel, line_no, frag))
         all_leaks.extend(detect_em_dash_density(file_path, file_rel))
+
+    # Phase A1.5: scan data/*.json for values that flow into JSX
+    # expressions ({x.indicator_id}, {x.mechanism_narrative}, etc.).
+    # These are leaks the source-string scanner misses entirely.
+    all_leaks.extend(iter_data_leaks())
 
     # ----- CSV output --------------------------------------------------------
     csv_path = OUTPUT_DIR / "polish-scan.csv"

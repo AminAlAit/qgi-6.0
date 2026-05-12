@@ -11,6 +11,7 @@ import {
   type CalloutStyle,
 } from "@/components/ml/Callouts";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { rewriteRecipeSlugsInProse } from "@/lib/recipe-narrative";
 
 /**
  * V2 signal detail page — single (country, recipe) tear-sheet.
@@ -40,6 +41,7 @@ export function SignalsV2Detail({
   caveatStyle,
   generatedAt,
   paperHref,
+  slugMap,
 }: {
   recipe: MlRecipeEntry;
   country: string;
@@ -50,9 +52,20 @@ export function SignalsV2Detail({
   caveatStyle: CalloutStyle;
   generatedAt: string;
   paperHref: string;
+  /** Full 13-recipe slug → display-name map for cross-recipe prose rewrite. */
+  slugMap?: Record<string, string>;
 }) {
   const variantLetter: "a" | "b" = caveatStyle === "tufte" ? "a" : "b";
   const tierColor = TIER_COLORS[recipe.tier];
+  // Cross-recipe slug rewrite: use full map if available, else fall back
+  // to this recipe's slug → its own display name.
+  const effectiveSlugMap = slugMap ?? {
+    [recipe.recipe_id]: recipe.display_name,
+  };
+  const cleanedNarrative = rewriteRecipeSlugsInProse(
+    recipe.mechanism_narrative,
+    effectiveSlugMap
+  );
   return (
     <article className="p-8 max-w-3xl mx-auto">
       <BreadcrumbNav
@@ -242,7 +255,7 @@ export function SignalsV2Detail({
           Mechanism
         </h2>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
-          {recipe.mechanism_narrative}
+          {cleanedNarrative}
         </p>
       </section>
 
