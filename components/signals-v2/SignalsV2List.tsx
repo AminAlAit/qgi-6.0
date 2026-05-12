@@ -4,7 +4,7 @@ import Link from "next/link";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import type { CalloutStyle } from "@/components/ml/Callouts";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks.schema";
-import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import type { BuyerMlRecipe } from "@/lib/buyer-view";
 import { countrySlug } from "@/lib/slug";
 
 /**
@@ -37,7 +37,8 @@ export function SignalsV2List({
   defaultRecipeSlug,
 }: {
   countries: Array<{ id: string } & CountryRisk>;
-  topRecipes: MlRecipeEntry[];
+  /** Buyer-shaped top-4 recipes (currently just for count display). */
+  topRecipes: BuyerMlRecipe[];
   caveatStyle: CalloutStyle;
   generatedAt: string;
   modelVersion: string;

@@ -1,5 +1,6 @@
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { PrecedentsV2List } from "@/components/precedents-v2/PrecedentsV2List";
+import { toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 
 /**
@@ -31,16 +32,19 @@ export const metadata: Metadata = {
 export default async function PrecedentsV2APage() {
   try {
     const stack = await loadMlRecipeStack();
-    // Filter to the top-4 ship list per Majles 2026-05-11 Topic 5
-    const topFour = stack.recipes.filter((r) =>
+    // Transform RAW recipes through buyer-view so prose is jargon-clean,
+    // indicator IDs friendly, and the type system rejects raw at component
+    // boundaries. `toBuyerViewList` builds the slug map from the full stack
+    // before mapping so cross-recipe references in prose rewrite correctly.
+    const buyerStack = toBuyerViewList(stack.recipes);
+    const topFour = buyerStack.filter((r) =>
       stack.metadata.top_4_recipes.includes(r.recipe_id)
     );
     // model_version is per-recipe but identical across the top-4 in the
     // current bake (all share dispatch_sha). Take the first.
     const modelVersion = topFour[0]?.model_version ?? "v1.0";
-    // TODO(qgi-ml bake): expose `n_total_locked` in stack.metadata so the
-    // list copy stays honest when future Majles amendments change the
-    // total LOCKed count. 13 is the post-KI-2 amendment value (2026-05-11).
+    // TODO(qgi-ml bake): expose `n_total_validated` in stack.metadata so the
+    // list copy stays honest when future amendments change the total.
     const totalLocked = 13;
     return (
       <PrecedentsV2List

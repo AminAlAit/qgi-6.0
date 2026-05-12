@@ -10,7 +10,7 @@ import {
   NotMeasuredHint,
   type CalloutStyle,
 } from "@/components/ml/Callouts";
-import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import type { BuyerMlRecipe } from "@/lib/buyer-view";
 
 /**
  * V2 signal detail page — single (country, recipe) tear-sheet.
@@ -25,7 +25,7 @@ import type { MlRecipeEntry } from "@/lib/recipes-ml";
  * top-4 LOCKed recipes for the same country.
  */
 
-const TIER_COLORS: Record<MlRecipeEntry["tier"], string> = {
+const TIER_COLORS: Record<BuyerMlRecipe["tier"], string> = {
   STRONG: "#22c55e",
   MODERATE: "#fbbf24",
   MARGINAL: "#a3a3a3",
@@ -41,12 +41,12 @@ export function SignalsV2Detail({
   generatedAt,
   paperHref,
 }: {
-  recipe: MlRecipeEntry;
+  recipe: BuyerMlRecipe;
   country: string;
   countryAlpha2: string;
   countrySlugStr: string;
   /** All top-4 recipes for the recipe-switcher; passed from the page. */
-  topRecipes: MlRecipeEntry[];
+  topRecipes: BuyerMlRecipe[];
   caveatStyle: CalloutStyle;
   generatedAt: string;
   paperHref: string;
@@ -79,8 +79,12 @@ export function SignalsV2Detail({
           >
             {recipe.tier}
           </span>
-          <span className="font-data text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-            {recipe.architecture} architecture · Assignment confidence{" "}
+          <span
+            className="font-data text-xs"
+            style={{ color: "var(--qgi-text-dim)" }}
+            title={`Architecture code: ${recipe.architecture_raw}`}
+          >
+            {recipe.architecture_label} · Assignment confidence{" "}
             {recipe.assignment_confidence}
           </span>
         </div>
