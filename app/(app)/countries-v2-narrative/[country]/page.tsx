@@ -198,7 +198,7 @@ export default async function CountryNarrativePage({
               border: "1px solid var(--qgi-warning)30",
             }}
           >
-            MOCK template (no authored copy)
+            Preview template (no authored copy)
           </span>
         )}
       </nav>
@@ -401,8 +401,8 @@ export default async function CountryNarrativePage({
                     className="text-sm leading-relaxed pl-6"
                     style={{ color: "var(--qgi-text-dim)" }}
                   >
-                    {/* MOCK: template narrative for non-authored categories */}
-                    MOCK template — in production, a sentence explaining what the{" "}
+                    {/* Preview: template narrative for non-authored categories */}
+                    Preview template — in production, a sentence explaining what the{" "}
                     <em>{cat.category.replace(/_/g, " ")}</em> signal means for {name}{" "}
                     would be generated here. This category&apos;s salience score is{" "}
                     {cat.salience_score.toFixed(3)}, computed from {cat.recipe_count}{" "}
@@ -652,12 +652,12 @@ export default async function CountryNarrativePage({
               className="text-sm leading-relaxed"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              {/* MOCK: template peer paragraph */}
-              MOCK template — in production, peer countries with similar structural risk
-              profiles would be identified here, with a narrative paragraph explaining
-              what makes the comparison meaningful. The V1 Country Intelligence Browser
-              already surfaces analogue countries (countries whose historical indicator
-              trajectories most closely match {name}&apos;s current profile).
+              {/* Preview: template peer paragraph */}
+              Preview template — in production, peer countries with similar structural
+              risk profiles would be identified here, with a narrative paragraph
+              explaining what makes the comparison meaningful. The V1 Country Intelligence
+              Browser already surfaces analogue countries (countries whose historical
+              indicator trajectories most closely match {name}&apos;s current profile).
             </p>
           )}
         </div>

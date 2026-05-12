@@ -186,7 +186,7 @@ export default async function PatternDetailPage({
               border: "1px solid #fbbf2440",
             }}
           >
-            MOCK
+            PREVIEW
           </span>
         </div>
         <h1 className="text-2xl font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
@@ -228,9 +228,9 @@ export default async function PatternDetailPage({
       {/* ================================================================== */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8">
         <StatCard
-          label="Out-of-country AUC"
+          label="Out-of-country"
           value={pattern.loco_auc.toFixed(3)}
-          sub="LOCO validation"
+          sub="held-out validation"
           color={
             pattern.loco_auc >= 0.8
               ? "#34d399"
@@ -311,7 +311,7 @@ export default async function PatternDetailPage({
               className="ml-2 text-[9px] font-data normal-case tracking-normal"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              (MOCK — 4 synthetic windows)
+              (preview — 4 synthetic windows)
             </span>
           </h2>
           <div
