@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { SignalsV2Detail } from "./SignalsV2Detail";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { toBuyerView, type BuyerMlRecipe } from "@/lib/buyer-view";
 
-function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
+function makeRawRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
   return {
     recipe_id: "civil_war_and_insurgency",
     display_name: "Civil war and insurgency",
@@ -40,6 +41,10 @@ function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
     model_version: "v1.0",
     ...overrides,
   };
+}
+
+function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): BuyerMlRecipe {
+  return toBuyerView(makeRawRecipe(overrides));
 }
 
 describe("SignalsV2Detail", () => {

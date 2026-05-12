@@ -2,26 +2,26 @@
 
 import Link from "next/link";
 import { InterpretationHintBadge, type CalloutStyle } from "@/components/ml/Callouts";
-import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import type { BuyerMlRecipe } from "@/lib/buyer-view";
 
 /**
- * V2 precedents list — top-4 LOCKed ML recipes per Majles 2026-05-11 Topic 5.
+ * V2 precedents list — top-4 validated ML recipes.
  *
- * Style variant is passed in as `caveatStyle`:
+ * Consumes `BuyerMlRecipe[]` (NOT raw `MlRecipeEntry[]`) — buyer-view
+ * transform handles all relabeling. This component just lays out rows.
+ *
+ * Style variant via `caveatStyle`:
  * - `tufte` → `/precedents-v2-a` (footnote-style caveats)
  * - `lloyds` → `/precedents-v2-b` (full-width banner caveats)
- *
- * Both variants render the same recipe rows and the same Asas-derived
- * interpretation_hint badges; they differ only in chrome.
  */
 
-const TIER_RANK: Record<MlRecipeEntry["tier"], number> = {
+const TIER_RANK: Record<BuyerMlRecipe["tier"], number> = {
   STRONG: 0,
   MODERATE: 1,
   MARGINAL: 2,
 };
 
-const TIER_COLORS: Record<MlRecipeEntry["tier"], string> = {
+const TIER_COLORS: Record<BuyerMlRecipe["tier"], string> = {
   STRONG: "#22c55e", // green-500
   MODERATE: "#fbbf24", // amber-400
   MARGINAL: "#a3a3a3", // neutral-400
@@ -34,13 +34,13 @@ export function PrecedentsV2List({
   modelVersion,
   totalLocked,
 }: {
-  recipes: MlRecipeEntry[];
+  /** Buyer-shaped recipes from `toBuyerViewList(stack.recipes)` at the page level. */
+  recipes: BuyerMlRecipe[];
   caveatStyle: CalloutStyle;
   generatedAt: string;
   modelVersion: string;
-  /** Total LOCKed recipes in the dispatch (currently 13 post-KI-2). The
-   *  list page shows N of M; pass from the page handler so the copy stays
-   *  honest when future Majles amendments change the LOCKed count. */
+  /** Total validated recipes in the dispatch. List shows N of M; pass
+   *  from the page handler so the copy stays honest as the count evolves. */
   totalLocked: number;
 }) {
   // Tier-ordered then alphabetical for deterministic layout
@@ -67,7 +67,7 @@ export function PrecedentsV2List({
           {recipes.length} of {totalLocked} validated). Each card carries the
           buyer-disclosure metrics the Lloyd&apos;s actuarial framework requires:
           out-of-country discrimination, in-sample calibration, training-concentration
-          disclosure, and an Asas mini-Majles interpretation hint.{" "}
+          disclosure, and a recipe-classification hint.{" "}
           {caveatStyle === "tufte" ? (
             <span className="italic">
               This is the Tufte-style variant — caveats render as footnote annotations.{" "}
@@ -132,7 +132,7 @@ function RecipeRow({
   recipe,
   caveatStyle,
 }: {
-  recipe: MlRecipeEntry;
+  recipe: BuyerMlRecipe;
   caveatStyle: CalloutStyle;
 }) {
   // Next.js typed-routes wants statically-resolvable hrefs; build the
@@ -167,8 +167,9 @@ function RecipeRow({
             <span
               className="font-data text-[10px]"
               style={{ color: "var(--qgi-text-dim)" }}
+              title={`Architecture code: ${recipe.architecture_raw}`}
             >
-              {recipe.architecture} architecture
+              {recipe.architecture_label}
             </span>
             {recipe.advisory_only_flag && (
               <span

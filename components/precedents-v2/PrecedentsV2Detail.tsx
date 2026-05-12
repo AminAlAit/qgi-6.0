@@ -9,28 +9,28 @@ import {
   NotMeasuredHint,
   type CalloutStyle,
 } from "@/components/ml/Callouts";
-import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import type { BuyerMlRecipe } from "@/lib/buyer-view";
 
 /**
  * V2 precedent detail page — single ML recipe tear-sheet.
  *
- * Renders all buyer-disclosure metrics from the bake script output. Caveat
- * presentation switches on `caveatStyle`:
- * - `tufte` → footnote-style annotations adjacent to the claims
+ * Consumes `BuyerMlRecipe` (NOT raw `MlRecipeEntry`) — the typed buyer-view
+ * boundary handles all relabeling (slug rewrite, indicator labels, jargon,
+ * architecture name). This component just lays out clean fields.
+ *
+ * Caveat presentation switches on `caveatStyle`:
+ * - `tufte` → footnote-style annotations adjacent to claims
  * - `lloyds` → full-width banner callouts above/below claim blocks
  *
- * Both variants render the same numeric content + the same interpretation
- * hint badge (with Ji-Hoon's parenthetical for engagement_signal).
- *
  * Per resurfacing plan §caveat presentation rules:
- * - "Not measured" AHI must be EXPLICIT TEXT (Nasrin's binding rule)
- * - ADVISORY-ONLY wired even when no current top-4 triggers
+ * - "Not measured" anchor stability must be EXPLICIT TEXT (Nasrin's binding rule)
+ * - Composite-only signal wired even when no current top-4 triggers
  * - F-rule anomaly wired even when no current top-4 triggers
  * - Methodology cross-refs: Section 5 prominent + Section 4 collapsible
- *   + pre-reg footer
+ *   + methodology-lock footer
  */
 
-const TIER_COLORS: Record<MlRecipeEntry["tier"], string> = {
+const TIER_COLORS: Record<BuyerMlRecipe["tier"], string> = {
   STRONG: "#22c55e",
   MODERATE: "#fbbf24",
   MARGINAL: "#a3a3a3",
@@ -42,10 +42,11 @@ export function PrecedentsV2Detail({
   generatedAt,
   paperHref,
 }: {
-  recipe: MlRecipeEntry;
+  /** Buyer-shaped recipe. The page-level loader transforms raw via `toBuyerView()`. */
+  recipe: BuyerMlRecipe;
   caveatStyle: CalloutStyle;
   generatedAt: string;
-  /** External href to the Stage 5 paper Section 4 anchor for this recipe. */
+  /** External href to the methodology paper anchor for this recipe. */
   paperHref: string;
 }) {
   const variantLetter: "a" | "b" = caveatStyle === "tufte" ? "a" : "b";
@@ -66,8 +67,12 @@ export function PrecedentsV2Detail({
           >
             {recipe.tier}
           </span>
-          <span className="font-data text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-            {recipe.architecture} architecture · Assignment confidence{" "}
+          <span
+            className="font-data text-xs"
+            style={{ color: "var(--qgi-text-dim)" }}
+            title={`Architecture code: ${recipe.architecture_raw}`}
+          >
+            {recipe.architecture_label} · Assignment confidence{" "}
             {recipe.assignment_confidence}
           </span>
         </div>
@@ -145,7 +150,7 @@ export function PrecedentsV2Detail({
         )}
       </section>
 
-      {/* Anchor AHI — measured value or Not-measured hint */}
+      {/* Anchor stability — measured value or Not-measured hint */}
       <section className="mb-8">
         <h2
           className="text-xs tracking-widest uppercase mb-3"
@@ -184,7 +189,7 @@ export function PrecedentsV2Detail({
         )}
       </section>
 
-      {/* Mechanism narrative — full text */}
+      {/* Mechanism narrative — full text (already jargon-cleaned by buyer-view) */}
       <section className="mb-8">
         <h2
           className="text-xs tracking-widest uppercase mb-3"
@@ -197,7 +202,7 @@ export function PrecedentsV2Detail({
         </p>
       </section>
 
-      {/* Buyer-disclosure recommendation */}
+      {/* Buyer-disclosure recommendation (already jargon-cleaned by buyer-view) */}
       <section className="mb-8">
         <h2
           className="text-xs tracking-widest uppercase mb-3"
@@ -210,13 +215,13 @@ export function PrecedentsV2Detail({
         </p>
       </section>
 
-      {/* Top-K SHAP indicator fingerprint */}
+      {/* Top indicators — friendly labels from buyer-view */}
       <section className="mb-8">
         <h2
           className="text-xs tracking-widest uppercase mb-3"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Top SHAP indicators
+          Top indicators
         </h2>
         <table className="w-full text-sm" data-testid="topk-table">
           <thead>
@@ -226,38 +231,49 @@ export function PrecedentsV2Detail({
             >
               <th className="py-2 pr-4 font-normal">#</th>
               <th className="py-2 pr-4 font-normal">Indicator</th>
-              <th className="py-2 pr-4 font-normal text-right">|SHAP|</th>
+              <th
+                className="py-2 pr-4 font-normal text-right"
+                title="Mean absolute SHAP value — how much this indicator moves the model's prediction across the training set"
+              >
+                Importance
+              </th>
               <th className="py-2 font-normal">Note</th>
             </tr>
           </thead>
           <tbody>
-            {recipe.top_k_indicators.map((tk) => (
-              <tr key={tk.rank} style={{ borderTop: "1px solid var(--qgi-border)" }}>
+            {recipe.indicators.map((ind) => (
+              <tr key={ind.rank} style={{ borderTop: "1px solid var(--qgi-border)" }}>
                 <td
                   className="py-2 pr-4 font-data"
                   style={{ color: "var(--qgi-text-dim)" }}
                 >
-                  {tk.rank}
+                  {ind.rank}
                 </td>
                 <td
-                  className="py-2 pr-4 font-data text-xs"
+                  className="py-2 pr-4 text-xs"
                   style={{ color: "var(--qgi-text)" }}
+                  title={ind.raw_id}
                 >
-                  {tk.indicator_id}
+                  {ind.label}
                 </td>
                 <td
                   className="py-2 pr-4 font-data text-right"
                   style={{ color: "var(--qgi-text)" }}
                 >
-                  {tk.mean_abs_shap.toFixed(4)}
+                  {ind.importance.toFixed(4)}
                 </td>
                 <td
-                  className="py-2 font-data text-xs"
+                  className="py-2 text-xs"
                   style={{
-                    color: tk.fixed_effect_suspect ? "#a16207" : "var(--qgi-text-dim)",
+                    color: ind.country_bias_caveat ? "#a16207" : "var(--qgi-text-dim)",
                   }}
+                  title={
+                    ind.country_bias_caveat
+                      ? "This indicator may be acting as a country-level identifier (picking up time-invariant country characteristics) rather than a true causal signal — interpret with country-specific bias caveat. Fixed-effect suspect."
+                      : undefined
+                  }
                 >
-                  {tk.fixed_effect_suspect ? "fixed-effect suspect" : ""}
+                  {ind.country_bias_caveat ?? ""}
                 </td>
               </tr>
             ))}
@@ -265,7 +281,7 @@ export function PrecedentsV2Detail({
         </table>
       </section>
 
-      {/* Open follow-ups */}
+      {/* Open follow-ups (already jargon-cleaned by buyer-view) */}
       {recipe.open_followups.length > 0 && (
         <section className="mb-8">
           <h2
@@ -290,7 +306,7 @@ export function PrecedentsV2Detail({
           className="cursor-pointer text-xs tracking-widest uppercase mb-2"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Methodology cross-ref (Stage 5 paper §4)
+          Methodology cross-ref (paper §4)
         </summary>
         <p
           className="text-sm leading-relaxed mt-3"
@@ -306,7 +322,7 @@ export function PrecedentsV2Detail({
             className="underline"
             style={{ color: "var(--qgi-text)" }}
           >
-            Open Stage 5 §4 (external) →
+            Open paper §4 (external) →
           </a>
         </p>
       </details>
@@ -346,13 +362,9 @@ export function PrecedentsV2Detail({
 }
 
 /**
- * Minimal markdown-bold renderer. Splits the input on `**...**` pairs and
- * wraps the inner text in `<strong>`. Keeps escaping simple (no nested
- * formatting, no links, no italic) — the bake script preserves exactly
- * one level of bold and no other markdown.
- *
- * This is intentionally NOT a full markdown parser. If the disclosure copy
- * grows to need lists / links / italics, swap to `react-markdown`.
+ * Minimal markdown-bold renderer. Splits input on `**...**` and wraps the
+ * inner text in `<strong>`. Bake writes at most one level of bold; no other
+ * markdown. Swap to `react-markdown` if disclosure copy needs more.
  */
 function MarkdownBoldText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -404,8 +416,6 @@ function Metric({
 }
 
 function BreadcrumbNav({ variantLetter }: { variantLetter: "a" | "b" }) {
-  // Next.js typed-routes wants a literal-route string; the
-  // ternary keeps each branch statically resolvable.
   return (
     <nav
       className="mb-4 text-xs"

@@ -1,6 +1,7 @@
 import { resolveCountryBySlug } from "@/lib/country-risks";
 import { loadMlRecipeBySlug, loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { SignalsV2Detail } from "@/components/signals-v2/SignalsV2Detail";
+import { toBuyerView, toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -29,13 +30,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   const canonical = `https://qgintelligence.com/signals-v2-a/${country}/${slug}`;
+  const buyer = toBuyerView(recipe);
   return {
-    title: `${c.name} · ${recipe.display_name} — V2 Signal (Tufte) — QGI Intelligence`,
-    description: `${recipe.display_name} ML recipe context for ${c.name}: ${recipe.tier} tier, out-of-country score ${recipe.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
+    title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte) — QGI Intelligence`,
+    description: `${buyer.display_name} ML recipe context for ${c.name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
     alternates: { canonical },
     openGraph: {
-      title: `${c.name} · ${recipe.display_name} — V2 Signal (Tufte)`,
-      description: `${recipe.tier} tier · ${recipe.architecture} architecture · out-of-country score ${recipe.loco_auc.toFixed(3)}.`,
+      title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte)`,
+      description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",
       type: "article",
@@ -50,17 +52,22 @@ export default async function SignalsV2ASlugPage({ params }: Props) {
     loadMlRecipeStack(),
   ]);
   if (!c) notFound();
-  const recipe = stack.recipes.find((r) => r.recipe_id === slug);
-  if (!recipe || !stack.metadata.top_4_recipes.includes(recipe.recipe_id)) {
+  const raw = stack.recipes.find((r) => r.recipe_id === slug);
+  if (!raw || !stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     notFound();
   }
-  const topRecipes = stack.recipes.filter((r) =>
+  // Buyer-view: full stack → buyer-shaped list (slug map built once), then
+  // pick this recipe + the top-4 for the switcher.
+  const buyerStack = toBuyerViewList(stack.recipes);
+  const buyer = buyerStack.find((r) => r.recipe_id === slug);
+  if (!buyer) notFound();
+  const topRecipes = buyerStack.filter((r) =>
     stack.metadata.top_4_recipes.includes(r.recipe_id)
   );
-  const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${recipe.paper_section_anchor}`;
+  const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${buyer.paper_section_anchor}`;
   return (
     <SignalsV2Detail
-      recipe={recipe}
+      recipe={buyer}
       country={c.name}
       countryAlpha2={c.alpha_2}
       countrySlugStr={country}

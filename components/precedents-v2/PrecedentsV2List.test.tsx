@@ -2,8 +2,9 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { PrecedentsV2List } from "./PrecedentsV2List";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { toBuyerView, type BuyerMlRecipe } from "@/lib/buyer-view";
 
-function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
+function makeRawRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
   return {
     recipe_id: "civil_war_and_insurgency",
     display_name: "Civil war and insurgency",
@@ -40,6 +41,10 @@ function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
     model_version: "v1.0-abc1234 (2026-05-11)",
     ...overrides,
   };
+}
+
+function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): BuyerMlRecipe {
+  return toBuyerView(makeRawRecipe(overrides));
 }
 
 describe("PrecedentsV2List", () => {

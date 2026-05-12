@@ -2,8 +2,10 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { PrecedentsV2Detail } from "./PrecedentsV2Detail";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { toBuyerView, type BuyerMlRecipe } from "@/lib/buyer-view";
 
-function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
+/** Build a raw `MlRecipeEntry` fixture. */
+function makeRawRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
   return {
     recipe_id: "civil_war_and_insurgency",
     display_name: "Civil war and insurgency",
@@ -53,6 +55,15 @@ function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): MlRecipeEntry {
     model_version: "v1.0-abc1234 (2026-05-11)",
     ...overrides,
   };
+}
+
+/**
+ * Convenience: build a raw fixture and pass it through `toBuyerView` so
+ * tests exercise the actual production code path. The buyer-view
+ * transform cleans prose / shapes indicators / relabels architecture.
+ */
+function makeRecipe(overrides: Partial<MlRecipeEntry> = {}): BuyerMlRecipe {
+  return toBuyerView(makeRawRecipe(overrides));
 }
 
 describe("PrecedentsV2Detail", () => {
@@ -171,7 +182,7 @@ describe("PrecedentsV2Detail", () => {
     }
   });
 
-  it("renders top-K indicator table with fixed-effect-suspect note", () => {
+  it("renders indicator table with friendly labels + country-bias note", () => {
     render(
       <PrecedentsV2Detail
         recipe={makeRecipe()}
@@ -180,9 +191,21 @@ describe("PrecedentsV2Detail", () => {
         paperHref="https://example.com/paper"
       />
     );
-    expect(screen.getByText("VC.BTL.DETH__diff")).toBeInTheDocument();
-    expect(screen.getByText("PV.EST__diff")).toBeInTheDocument();
-    expect(screen.getByText("fixed-effect suspect")).toBeInTheDocument();
+    // Indicator IDs rendered as friendly labels via buyer-view transform.
+    expect(
+      screen.getByText("Battle-related deaths (number of people) (year-over-year change)")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Political Stability and Absence of Violence/Terrorism (estimate) (year-over-year change)"
+      )
+    ).toBeInTheDocument();
+    // Raw IDs must NOT appear as visible text.
+    expect(screen.queryByText("VC.BTL.DETH__diff")).not.toBeInTheDocument();
+    expect(screen.queryByText("PV.EST__diff")).not.toBeInTheDocument();
+    // Fixed-effect translated to buyer-facing caveat.
+    expect(screen.getByText("Possible country bias")).toBeInTheDocument();
+    expect(screen.queryByText("fixed-effect suspect")).not.toBeInTheDocument();
   });
 
   it("includes the model_version in footer", () => {
@@ -197,7 +220,7 @@ describe("PrecedentsV2Detail", () => {
     expect(screen.getByText("v1.0-abc1234 (2026-05-11)")).toBeInTheDocument();
   });
 
-  it("provides Stage 5 paper anchor link", () => {
+  it("provides methodology paper anchor link", () => {
     render(
       <PrecedentsV2Detail
         recipe={makeRecipe()}
@@ -206,7 +229,7 @@ describe("PrecedentsV2Detail", () => {
         paperHref="https://example.com/paper#section-4-civil_war_and_insurgency"
       />
     );
-    const link = screen.getByText(/Open Stage 5/);
+    const link = screen.getByText(/Open paper/);
     expect(link.closest("a")?.getAttribute("href")).toContain(
       "section-4-civil_war_and_insurgency"
     );

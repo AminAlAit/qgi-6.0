@@ -1,5 +1,6 @@
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { PrecedentsV2List } from "@/components/precedents-v2/PrecedentsV2List";
+import { toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 
 /**
@@ -29,13 +30,13 @@ export const metadata: Metadata = {
 export default async function PrecedentsV2BPage() {
   try {
     const stack = await loadMlRecipeStack();
-    const topFour = stack.recipes.filter((r) =>
+    const buyerStack = toBuyerViewList(stack.recipes);
+    const topFour = buyerStack.filter((r) =>
       stack.metadata.top_4_recipes.includes(r.recipe_id)
     );
     const modelVersion = topFour[0]?.model_version ?? "v1.0";
     // TODO(qgi-ml bake): see /precedents-v2-a/page.tsx — replace this
-    // hardcoded value with stack.metadata.n_total_locked once the bake
-    // exposes it.
+    // hardcoded value with stack.metadata.n_total_validated once exposed.
     const totalLocked = 13;
     return (
       <PrecedentsV2List

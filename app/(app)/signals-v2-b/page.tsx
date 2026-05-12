@@ -1,6 +1,7 @@
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { SignalsV2List } from "@/components/signals-v2/SignalsV2List";
+import { toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 
 /**
@@ -33,7 +34,8 @@ export default async function SignalsV2BPage() {
       loadMlRecipeStack(),
       getCountriesSortedByRisk(),
     ]);
-    const topRecipes = stack.recipes.filter((r) =>
+    const buyerStack = toBuyerViewList(stack.recipes);
+    const topRecipes = buyerStack.filter((r) =>
       stack.metadata.top_4_recipes.includes(r.recipe_id)
     );
     const modelVersion = topRecipes[0]?.model_version ?? "v1.0";
