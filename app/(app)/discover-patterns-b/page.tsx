@@ -1,122 +1,66 @@
 /**
  * DISCOVER PATTERNS — V2.2 (Facets)
  *
- * Sard Majles S-First decision (2026-05-01):
- * Elif Şahin-Moreau (Information Design Tufte) + Tomás Drahovský-Osei (UI
- * craft) recommended "C (faceted filter strip + drawer/inline detail)" —
- * the data is the same set, the lenses are filter combinations; tabs hide
- * structure where facets reveal it. Tomás specified Datadog-style drawer
- * over inline expansion to keep ranked list as persistent anchor.
+ * Elif Şahin-Moreau variant. Sard Majles S-First decision (2026-05-01):
+ * Facets reveal structure where tabs hide it. The user filters a
+ * comprehensive small-multiples grid; they do not navigate between modes.
  *
- * Founder direction (2026-05-02):
- * Ship BOTH the tabs variant AND the facets variant as sibling V2 pages.
- * Plurality on facets (2.5 vs 1.5 vs 1) — facets is the leading candidate
- * but founder wants empirical comparison.
+ * Design principles (Tufte-first):
+ *   1. Data-ink priority. Every pixel earns its place.
+ *   2. Small-multiples grid (20-32 cards) as the permanent center.
+ *      Tabs would serialize a structure that is naturally parallel.
+ *   3. Facet column is left-anchored — persistent, spatial, not modal.
+ *   4. Sparklines in grid cells: correlation trajectory over 7 points.
+ *      No chartjunk. No axes on sparklines — the shape IS the message.
+ *   5. Sort control in the grid header, not buried in a filter.
+ *   6. Click-through to /[slug] for the full data dossier.
  *
- * Implementation status: SCAFFOLD — design spec locked, layout chrome in
- * place. Data integration is the next session's work.
- *
- * Tomás's hard requirements (must satisfy before ship): see V2.1 file.
+ * Data: MOCK (patterns-facets-mock.json). Real data integration in #648.
  *
  * Decision file:
  *   qgi-docs/internal/majles/2026-05-01_S-First_patterns_ranking_merge.md
  */
-import Link from "next/link";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import { FacetedGrid } from "./FacetedGrid";
+import type { PatternFacet } from "./types";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Discover Patterns — V2 Facets — QGI Intelligence",
   robots: { index: false, follow: false },
 };
 
-export default function DiscoverPatternsFacetsScaffold() {
+// MOCK: loaded server-side from baked JSON; real data integration in #648.
+async function loadPatterns(): Promise<PatternFacet[]> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "patterns-facets-mock.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const json = JSON.parse(raw) as { patterns: PatternFacet[] };
+    return json.patterns ?? [];
+  } catch {
+    return [];
+  }
+}
+
+export const revalidate = 3600;
+
+export default async function DiscoverPatternsFacetsPage() {
+  const patterns = await loadPatterns();
+
   return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      <header className="mb-8">
+    <Suspense
+      fallback={
         <div
-          className="text-[10px] tracking-widest uppercase mb-2"
+          className="flex items-center justify-center h-full text-[10px] tracking-widest uppercase"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          V2 design exploration · Sibling B (facets)
+          Loading patterns…
         </div>
-        <h1 className="text-2xl font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          Discover Patterns — Facets variant
-        </h1>
-        <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
-          Faceted filter strip with drawer-on-row-click. Persistent leaderboard anchor;
-          pattern detail expands into a side drawer (Datadog model). Facets reveal
-          structure where tabs hide it.
-        </p>
-      </header>
-
-      <section
-        className="rounded-lg border p-6 mb-8"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2 className="text-sm font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          Implementation status
-        </h2>
-        <ul
-          className="text-xs space-y-2 list-disc list-inside"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          <li>
-            <strong>Locked:</strong> design pattern (facets + drawer), name (Discover
-            Patterns), nav slot, R10 continuity rules
-          </li>
-          <li>
-            <strong>Pending:</strong> data integration (unified leaderboard backed by
-            RANKING data + facet filters from PATTERNS data), Tomás hard requirements,
-            Sunita R11 cognitive walkthrough
-          </li>
-        </ul>
-      </section>
-
-      <section
-        className="rounded-lg border p-6"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2 className="text-sm font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          While V2 is in progress, use the originals
-        </h2>
-        <div className="flex flex-col sm:flex-row gap-3 text-sm">
-          <Link
-            href="/patterns/ranking"
-            className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text)",
-            }}
-          >
-            → /patterns/ranking
-          </Link>
-          <Link
-            href="/patterns"
-            className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text)",
-            }}
-          >
-            → /patterns
-          </Link>
-          <Link
-            href="/discover-patterns-a"
-            className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-accent)",
-              color: "var(--qgi-accent)",
-            }}
-          >
-            ↔ Compare with V2.1 (tabs)
-          </Link>
-        </div>
-      </section>
-    </div>
+      }
+    >
+      <FacetedGrid patterns={patterns} />
+    </Suspense>
   );
 }
