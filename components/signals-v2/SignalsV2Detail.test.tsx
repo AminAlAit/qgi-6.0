@@ -155,7 +155,7 @@ describe("SignalsV2Detail", () => {
 
   it("provides the cross-style variant switch link", () => {
     render(<SignalsV2Detail {...baseProps} caveatStyle="tufte" />);
-    const link = screen.getByText(/Switch to Lloyd/);
+    const link = screen.getByText(/Switch to banner view/);
     expect(link.closest("a")?.getAttribute("href")).toBe(
       "/signals-v2-b/syria/civil_war_and_insurgency"
     );

@@ -10,6 +10,7 @@ import {
   type CalloutStyle,
 } from "@/components/ml/Callouts";
 import type { BuyerMlRecipe } from "@/lib/buyer-view";
+import { SectionLabel } from "@/components/v2/SectionLabel";
 
 /**
  * V2 precedent detail page — single ML recipe tear-sheet.
@@ -104,13 +105,8 @@ export function PrecedentsV2Detail({
           border: "1px solid var(--qgi-border)",
         }}
       >
-        <h2
-          className="text-xs tracking-widest uppercase mb-4"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Metrics
-        </h2>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3" data-testid="metrics-grid">
+        <SectionLabel>Discrimination</SectionLabel>
+        <div className="grid grid-cols-2 gap-6 mb-6" data-testid="metrics-grid">
           <Metric
             label="Out-of-country"
             value={recipe.loco_auc.toFixed(4)}
@@ -123,26 +119,14 @@ export function PrecedentsV2Detail({
             sub={`95% CI [${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
             tooltip="Discrimination score on the training partition. F2 AUC weights recall more than precision (5x)."
           />
-          <Metric
-            label="Calibration error"
-            value={recipe.in_sample_f1_ece.toFixed(4)}
-            sub="overall"
-            tooltip="Average gap between predicted probability and observed frequency, in-sample. 0 = perfectly calibrated. ECE."
-          />
-          <Metric
-            label="Calibration — high tier"
-            value={recipe.ece_high_cohort.toFixed(4)}
-            sub="binding fragile-state cohort"
-          />
-          <Metric
-            label="Calibration — mid tier"
-            value={recipe.ece_mid_cohort.toFixed(4)}
-          />
-          <Metric
-            label="Calibration — low tier"
-            value={recipe.ece_low_cohort.toFixed(4)}
-          />
         </div>
+        <SectionLabel title="Average gap between predicted probability and observed frequency, in-sample. 0 = perfectly calibrated. ECE.">
+          Calibration error{" "}
+          <span style={{ color: "var(--qgi-text-muted)" }}>
+            (target &lt; 0.02; &gt; 0.05 = unreliable)
+          </span>
+        </SectionLabel>
+        <CalibrationTable recipe={recipe} />
         {recipe.zero_positive_cohort_flag && (
           <p className="text-xs mt-4" style={{ color: "var(--qgi-text-dim)" }}>
             Zero-positive cohort: {recipe.zero_positive_cohort_flag}
@@ -152,34 +136,11 @@ export function PrecedentsV2Detail({
 
       {/* Anchor stability — measured value or Not-measured hint */}
       <section className="mb-8">
-        <h2
-          className="text-xs tracking-widest uppercase mb-3"
-          style={{ color: "var(--qgi-text-dim)" }}
-          title="Anchor Health Index — robustness of the recipe to held-out anchor events"
-        >
+        <SectionLabel title="Anchor Health Index — robustness of the recipe to held-out anchor events">
           Anchor stability (per-recipe)
-        </h2>
+        </SectionLabel>
         {recipe.anchor_ahi_value !== null ? (
-          <div
-            className="rounded-lg p-4"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              border: "1px solid var(--qgi-border)",
-            }}
-          >
-            <span
-              className="font-data text-2xl font-semibold"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              {recipe.anchor_ahi_value.toFixed(4)}
-            </span>
-            <span
-              className="font-data text-xs ml-3"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              measured
-            </span>
-          </div>
+          <AnchorStabilityValue value={recipe.anchor_ahi_value} />
         ) : (
           <NotMeasuredHint
             style={caveatStyle}
@@ -191,12 +152,7 @@ export function PrecedentsV2Detail({
 
       {/* Mechanism narrative — full text (already jargon-cleaned by buyer-view) */}
       <section className="mb-8">
-        <h2
-          className="text-xs tracking-widest uppercase mb-3"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Mechanism
-        </h2>
+        <SectionLabel>Mechanism</SectionLabel>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
           {recipe.mechanism_narrative}
         </p>
@@ -204,12 +160,7 @@ export function PrecedentsV2Detail({
 
       {/* Buyer-disclosure recommendation (already jargon-cleaned by buyer-view) */}
       <section className="mb-8">
-        <h2
-          className="text-xs tracking-widest uppercase mb-3"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Buyer-disclosure recommendation
-        </h2>
+        <SectionLabel>Buyer-disclosure recommendation</SectionLabel>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
           <MarkdownBoldText text={recipe.buyer_disclosure_recommendation} />
         </p>
@@ -217,16 +168,11 @@ export function PrecedentsV2Detail({
 
       {/* Top indicators — friendly labels from buyer-view */}
       <section className="mb-8">
-        <h2
-          className="text-xs tracking-widest uppercase mb-3"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Top indicators
-        </h2>
+        <SectionLabel>Top indicators</SectionLabel>
         <table className="w-full text-sm" data-testid="topk-table">
           <thead>
             <tr
-              className="text-left text-xs uppercase tracking-wide"
+              className="text-left text-[10px] tracking-wide"
               style={{ color: "var(--qgi-text-dim)" }}
             >
               <th className="py-2 pr-4 font-normal">#</th>
@@ -284,12 +230,7 @@ export function PrecedentsV2Detail({
       {/* Open follow-ups (already jargon-cleaned by buyer-view) */}
       {recipe.open_followups.length > 0 && (
         <section className="mb-8">
-          <h2
-            className="text-xs tracking-widest uppercase mb-3"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Open follow-ups
-          </h2>
+          <SectionLabel>Open follow-ups</SectionLabel>
           <ul className="text-sm space-y-2">
             {recipe.open_followups.map((f, i) => (
               <li key={i} style={{ color: "var(--qgi-text)" }}>
@@ -303,7 +244,7 @@ export function PrecedentsV2Detail({
       {/* §4-collapsible methodology cross-ref (lazy-loaded via external link) */}
       <details className="mb-6" data-testid="methodology-collapsible">
         <summary
-          className="cursor-pointer text-xs tracking-widest uppercase mb-2"
+          className="cursor-pointer text-[11px] tracking-wide mb-2 font-medium"
           style={{ color: "var(--qgi-text-dim)" }}
         >
           Methodology cross-ref (paper §4)
@@ -342,8 +283,7 @@ export function PrecedentsV2Detail({
           Generated <span className="font-data">{generatedAt}</span>.
         </p>
         <p>
-          Reading the {caveatStyle === "tufte" ? "Tufte-footnote" : "Lloyd's-banner"}{" "}
-          variant.{" "}
+          {caveatStyle === "tufte" ? "Compact view" : "Banner view"}.{" "}
           <Link
             href={
               caveatStyle === "tufte"
@@ -353,7 +293,7 @@ export function PrecedentsV2Detail({
             className="underline"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            Switch to {caveatStyle === "tufte" ? "Lloyd's banner" : "Tufte footnote"} →
+            Switch to {caveatStyle === "tufte" ? "banner view" : "compact view"} →
           </Link>
         </p>
       </footer>
@@ -394,23 +334,131 @@ function Metric({
 }) {
   return (
     <div>
+      {/* Value is the primary glyph — Tufte-style data-ink priority. */}
       <div
-        className="font-data text-lg font-semibold"
+        className="font-data text-3xl font-semibold leading-tight"
         style={{ color: "var(--qgi-text)" }}
       >
         {value}
       </div>
-      <div className="text-xs" style={{ color: "var(--qgi-text-dim)" }} title={tooltip}>
+      {/* Label muted: 11px tracked sentence-case. */}
+      <div
+        className="text-[11px] tracking-wide mt-1"
+        style={{ color: "var(--qgi-text-dim)" }}
+        title={tooltip}
+      >
         {label}
       </div>
       {sub && (
         <div
           className="text-[10px] font-data mt-0.5"
-          style={{ color: "var(--qgi-text-dim)" }}
+          style={{ color: "var(--qgi-text-muted)" }}
         >
           {sub}
         </div>
       )}
+    </div>
+  );
+}
+
+/**
+ * Tier-stratified calibration error table. Per Phase A2 (Elif P0): replaces
+ * 4 stacked metric tiles that repeated "Calibration —" prefix 4× wasting
+ * data-ink. Compact 4-row inline table.
+ */
+function CalibrationTable({ recipe }: { recipe: BuyerMlRecipe }) {
+  const rows: Array<{ tier: string; value: number; note?: string }> = [
+    { tier: "Overall", value: recipe.in_sample_f1_ece },
+    {
+      tier: "High",
+      value: recipe.ece_high_cohort,
+      note: "fragile-state cohort",
+    },
+    { tier: "Mid", value: recipe.ece_mid_cohort },
+    { tier: "Low", value: recipe.ece_low_cohort },
+  ];
+  return (
+    <table
+      className="w-full text-sm font-data"
+      data-testid="calibration-table"
+      style={{ borderCollapse: "collapse" }}
+    >
+      <tbody>
+        {rows.map((r) => {
+          const status = r.value <= 0.02 ? "good" : r.value <= 0.05 ? "warn" : "bad";
+          const valueColor =
+            status === "good"
+              ? "var(--qgi-text)"
+              : status === "warn"
+                ? "#a16207"
+                : "#b91c1c";
+          return (
+            <tr key={r.tier} style={{ borderTop: "1px solid var(--qgi-border)" }}>
+              <td
+                className="py-1.5 pr-4 text-xs"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                {r.tier}
+                {r.note && (
+                  <span
+                    className="text-[10px] ml-2"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {r.note}
+                  </span>
+                )}
+              </td>
+              <td
+                className="py-1.5 text-right tabular-nums"
+                style={{ color: valueColor }}
+              >
+                {r.value.toFixed(4)}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
+}
+
+/**
+ * Anchor stability value display with scale-anchor context. Per Phase A2
+ * (Yuki/Sipho convergent): "0.1052 measured" is a number with no threshold
+ * — buyers can't tell if it's good or bad without it. Apply Sipho's
+ * suggested thresholds: < 0.15 = stable, 0.15-0.25 = caution, > 0.25 =
+ * unstable. Colored dot signals status without crowding.
+ */
+function AnchorStabilityValue({ value }: { value: number }) {
+  const status: "stable" | "caution" | "unstable" =
+    value <= 0.15 ? "stable" : value <= 0.25 ? "caution" : "unstable";
+  const statusColor =
+    status === "stable" ? "#16a34a" : status === "caution" ? "#a16207" : "#b91c1c";
+  const statusLabel =
+    status === "stable" ? "stable" : status === "caution" ? "caution" : "unstable";
+  return (
+    <div className="flex items-baseline gap-3">
+      <span
+        className="font-data text-3xl font-semibold leading-tight tabular-nums"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {value.toFixed(4)}
+      </span>
+      <span
+        className="inline-flex items-center gap-1.5 text-[11px] tracking-wide"
+        style={{ color: statusColor }}
+        title="Backtest variance across held-out anchor folds. Thresholds: < 0.15 stable; 0.15–0.25 caution; > 0.25 unstable."
+      >
+        <span
+          aria-hidden="true"
+          className="inline-block w-1.5 h-1.5 rounded-full"
+          style={{ backgroundColor: statusColor }}
+        />
+        {statusLabel}
+      </span>
+      <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-muted)" }}>
+        threshold 0.15 stable / 0.25 unstable
+      </span>
     </div>
   );
 }

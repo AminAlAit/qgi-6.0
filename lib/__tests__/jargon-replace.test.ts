@@ -91,9 +91,11 @@ describe("replaceJargonInProse — architecture with context", () => {
     );
   });
 
-  it("D2 architecture → level-features model", () => {
+  it("D2 architecture → level-features model + article injection", () => {
+    // Phase A2: preposition "under" triggers article-injection, producing
+    // grammatical "under the level-features model".
     expect(replaceJargonInProse("under D2 architecture")).toBe(
-      "under level-features model"
+      "under the level-features model"
     );
   });
 });
@@ -141,9 +143,43 @@ describe("replaceJargonInProse — internal status words", () => {
     );
   });
 
-  it("FALSIFIED → removed from production (bare D2 also rewritten)", () => {
+  it("bare LOCK → validated recipe (Phase A2 4-persona finding)", () => {
+    expect(replaceJargonInProse("the flagship LOCK")).toBe(
+      "the flagship validated recipe"
+    );
+  });
+
+  it("LOCKed and bare LOCK in same string both rewrite", () => {
+    expect(replaceJargonInProse("LOCKed recipes including the flagship LOCK")).toBe(
+      "validated recipes including the flagship validated recipe"
+    );
+  });
+
+  it("FALSIFIED → removed from production (bare D2 also rewritten + article)", () => {
     expect(replaceJargonInProse("Under D2, this recipe was FALSIFIED on F2.")).toBe(
-      "Under level-features model, this recipe was removed from production on F2."
+      "Under the level-features model, this recipe was removed from production on F2."
+    );
+  });
+});
+
+describe("replaceJargonInProse — apposition + article cleanup (Phase A2)", () => {
+  it("'trend-features model trajectory features were' (post-rewrite) → singular subject + 'was'", () => {
+    // Phase A2: also fixes subject-verb agreement (plural "features were"
+    // → singular "model was").
+    expect(
+      replaceJargonInProse("The D5 trajectory features were within hysteresis.")
+    ).toBe("The trend-features model was within hysteresis.");
+  });
+
+  it("'so level-features model is preserved' → 'so the level-features model is preserved'", () => {
+    expect(replaceJargonInProse("so level-features model is preserved.")).toBe(
+      "so the level-features model is preserved."
+    );
+  });
+
+  it("'so D2 is preserved' → 'so the level-features model is preserved'", () => {
+    expect(replaceJargonInProse("so D2 is preserved.")).toBe(
+      "so the level-features model is preserved."
     );
   });
 });
