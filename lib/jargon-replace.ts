@@ -96,6 +96,35 @@ const JARGON_REPLACEMENTS: ReadonlyArray<readonly [RegExp, string]> = [
   // so "ABCD2" or "D24" don't match.
   [/\bD2\b(?!\.)/g, "level-features model"],
   [/\bD5\b(?!\.)/g, "trend-features model"],
+  // Apposition residue from the bare-D2/D5 rewrite: "D5 trajectory features"
+  // first becomes "trend-features model trajectory features" via the bare-D5
+  // replacement; the appositive duplicates the model name. The replacement
+  // ALSO fixes subject-verb agreement: "trajectory features were" (plural
+  // subject) becomes "trend-features model was" (singular subject + verb).
+  // 4-persona walkthrough Phase A2 finding (Ingrid, Yuki, Sipho, Elif).
+  [/\btrend-features model trajectory features\s+were\b/g, "trend-features model was"],
+  [/\btrend-features model trajectory features\s+are\b/g, "trend-features model is"],
+  [/\btrend-features model trajectory features\b/g, "trend-features model"],
+  [/\blevel-features model level features\s+were\b/g, "level-features model was"],
+  [/\blevel-features model level features\s+are\b/g, "level-features model is"],
+  [/\blevel-features model level features\b/g, "level-features model"],
+  // Article-injection helper for post-rewrite grammar: bare "level-features
+  // model" / "trend-features model" needs a definite article when used as a
+  // subject (only when preceded by sentence-connective / preposition). Two
+  // passes — first the connectives that put the model in subject position,
+  // then bare prepositions.
+  [
+    /\b(so|and|but|then|then,|which is why|why)\s+(level-features model|trend-features model)\b(?!\s+(?:was|is|were|are|baseline|rescue|trajectory))/g,
+    "$1 the $2",
+  ],
+  [
+    /\b(Under|under|With|with|By|by|For|for|From|from)\s+(level-features model|trend-features model)\b/g,
+    "$1 the $2",
+  ],
+  [
+    /\b(so|and|but|then|then,)\s+(level-features model|trend-features model)\s+(is|was)\b/g,
+    "$1 the $2 $3",
+  ],
 
   // ============================================================
   // 5. Composite metric names (must come BEFORE bare AUC)
@@ -122,6 +151,12 @@ const JARGON_REPLACEMENTS: ReadonlyArray<readonly [RegExp, string]> = [
   // 7. Internal status / process words
   // ============================================================
   [/\bLOCKed\b/g, "validated"],
+  // Bare "LOCK" (e.g. "the flagship LOCK") + plural "LOCKs" — 4-persona
+  // Phase A2 finding. `(?!ed)` so we don't collide with `LOCKed` (already
+  // handled above). Plural form `LOCKs` won't match `\bLOCK\b` (the trailing
+  // `s` joins via word-char boundary), so handle plural separately.
+  [/\bLOCKs\b/g, "validated recipes"],
+  [/\bLOCK\b(?!ed)/g, "validated recipe"],
   [/\bFALSIFIED\b/g, "removed from production"],
   [/\bDEFERRED\b/g, "planned"],
   [/\bLEAK\b/g, ""],

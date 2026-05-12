@@ -85,7 +85,7 @@ describe("PrecedentsV2List", () => {
         totalLocked={13}
       />
     );
-    expect(screen.getByText("Lloyd's-style banner variant →")).toBeInTheDocument();
+    expect(screen.getByText("Banner view →")).toBeInTheDocument();
   });
 
   it("renders cross-link to Tufte variant on Lloyd's page", () => {
@@ -98,7 +98,7 @@ describe("PrecedentsV2List", () => {
         totalLocked={13}
       />
     );
-    expect(screen.getByText("Tufte-style footnote variant →")).toBeInTheDocument();
+    expect(screen.getByText("Compact view →")).toBeInTheDocument();
   });
 
   it("shows composite-only label when advisory-only flag is set", () => {

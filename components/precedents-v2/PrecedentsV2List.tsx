@@ -70,25 +70,24 @@ export function PrecedentsV2List({
           disclosure, and a recipe-classification hint.{" "}
           {caveatStyle === "tufte" ? (
             <span className="italic">
-              This is the Tufte-style variant — caveats render as footnote annotations.{" "}
+              Compact view — caveats render as inline footnote annotations.{" "}
               <Link
                 href="/precedents-v2-b"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
-                Lloyd&apos;s-style banner variant →
+                Banner view →
               </Link>
             </span>
           ) : (
             <span className="italic">
-              This is the Lloyd&apos;s-style variant — caveats render as full-width
-              banners.{" "}
+              Banner view — caveats render as full-width prominent banners.{" "}
               <Link
                 href="/precedents-v2-a"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
-                Tufte-style footnote variant →
+                Compact view →
               </Link>
             </span>
           )}

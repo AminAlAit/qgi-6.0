@@ -132,6 +132,6 @@ describe("SignalsV2List", () => {
         defaultRecipeSlug="civil_war_and_insurgency"
       />
     );
-    expect(screen.getByText("Lloyd's-style banner variant →")).toBeInTheDocument();
+    expect(screen.getByText("Banner view →")).toBeInTheDocument();
   });
 });
