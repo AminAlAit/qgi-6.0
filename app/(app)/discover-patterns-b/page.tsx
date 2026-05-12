@@ -43,9 +43,8 @@ export default function DiscoverPatternsFacetsScaffold() {
         </h1>
         <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
           Faceted filter strip with drawer-on-row-click. Persistent leaderboard anchor;
-          pattern detail expands into a side drawer (Datadog model). Elif Şahin-Moreau +
-          Tomás Drahovský-Osei&apos;s pick per Sard Majles S-First (2026-05-01) — facets
-          reveal structure where tabs hide it.
+          pattern detail expands into a side drawer (Datadog model). Facets reveal
+          structure where tabs hide it.
         </p>
       </header>
 

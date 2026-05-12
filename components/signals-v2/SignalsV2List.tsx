@@ -59,7 +59,7 @@ export function SignalsV2List({
           ML-derived country signals
         </p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-          Pick a country to view the top-4 LOCKed ML recipes (currently{" "}
+          Pick a country to view the top-4 validated ML recipes (currently{" "}
           {topRecipes.length}) against that country&apos;s context. Per-(country, recipe)
           firing scores arrive in a future bake; today this lists countries sorted by V1
           overall risk tier as the entry point. Detail pages show the recipe tear-sheet +

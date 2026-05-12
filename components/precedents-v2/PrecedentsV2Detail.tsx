@@ -107,27 +107,36 @@ export function PrecedentsV2Detail({
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3" data-testid="metrics-grid">
           <Metric
-            label="LOCO AUC"
+            label="Out-of-country"
             value={recipe.loco_auc.toFixed(4)}
-            sub={`n_pos = ${recipe.n_pos_loco}`}
+            sub={`${recipe.n_pos_loco} held-out positive${recipe.n_pos_loco === 1 ? "" : "s"}`}
+            tooltip="Discrimination score on countries the model never saw during training (0.5 = chance, 1.0 = perfect). LOCO AUC."
           />
           <Metric
-            label="In-sample F2 AUC"
+            label="In-sample"
             value={recipe.in_sample_f2_auc.toFixed(4)}
-            sub={`[${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
+            sub={`95% CI [${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
+            tooltip="Discrimination score on the training partition. F2 AUC weights recall more than precision (5x)."
           />
           <Metric
-            label="In-sample F1 ECE"
+            label="Calibration error"
             value={recipe.in_sample_f1_ece.toFixed(4)}
             sub="overall"
+            tooltip="Average gap between predicted probability and observed frequency, in-sample. 0 = perfectly calibrated. ECE."
           />
           <Metric
-            label="Cohort ECE — high"
+            label="Calibration — high tier"
             value={recipe.ece_high_cohort.toFixed(4)}
             sub="binding fragile-state cohort"
           />
-          <Metric label="Cohort ECE — mid" value={recipe.ece_mid_cohort.toFixed(4)} />
-          <Metric label="Cohort ECE — low" value={recipe.ece_low_cohort.toFixed(4)} />
+          <Metric
+            label="Calibration — mid tier"
+            value={recipe.ece_mid_cohort.toFixed(4)}
+          />
+          <Metric
+            label="Calibration — low tier"
+            value={recipe.ece_low_cohort.toFixed(4)}
+          />
         </div>
         {recipe.zero_positive_cohort_flag && (
           <p className="text-xs mt-4" style={{ color: "var(--qgi-text-dim)" }}>
@@ -141,8 +150,9 @@ export function PrecedentsV2Detail({
         <h2
           className="text-xs tracking-widest uppercase mb-3"
           style={{ color: "var(--qgi-text-dim)" }}
+          title="Anchor Health Index — robustness of the recipe to held-out anchor events"
         >
-          Anchor AHI (per-recipe)
+          Anchor stability (per-recipe)
         </h2>
         {recipe.anchor_ahi_value !== null ? (
           <div
@@ -286,9 +296,9 @@ export function PrecedentsV2Detail({
           className="text-sm leading-relaxed mt-3"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Full tear-sheet with cohort-stratified calibration table, pre-reg-anchored
-          architecture rule, and replication signature lives in the Stage 5
-          buyer-disclosure paper.{" "}
+          Full tear-sheet with cohort-stratified calibration table, methodology-locked
+          architecture rule, and replication signature lives in the buyer-disclosure
+          paper.{" "}
           <a
             href={paperHref}
             target="_blank"
@@ -358,7 +368,18 @@ function MarkdownBoldText({ text }: { text: string }) {
   );
 }
 
-function Metric({ label, value, sub }: { label: string; value: string; sub?: string }) {
+function Metric({
+  label,
+  value,
+  sub,
+  tooltip,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  /** Native `title` tooltip — buyer-facing label glosses for analyst readers. */
+  tooltip?: string;
+}) {
   return (
     <div>
       <div
@@ -367,7 +388,7 @@ function Metric({ label, value, sub }: { label: string; value: string; sub?: str
       >
         {value}
       </div>
-      <div className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+      <div className="text-xs" style={{ color: "var(--qgi-text-dim)" }} title={tooltip}>
         {label}
       </div>
       {sub && (

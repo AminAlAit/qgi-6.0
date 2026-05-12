@@ -31,11 +31,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `https://qgintelligence.com/signals-v2-a/${country}/${slug}`;
   return {
     title: `${c.name} · ${recipe.display_name} — V2 Signal (Tufte) — QGI Intelligence`,
-    description: `${recipe.display_name} ML recipe context for ${c.name}: ${recipe.tier} tier, LOCO ${recipe.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
+    description: `${recipe.display_name} ML recipe context for ${c.name}: ${recipe.tier} tier, out-of-country score ${recipe.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
     alternates: { canonical },
     openGraph: {
       title: `${c.name} · ${recipe.display_name} — V2 Signal (Tufte)`,
-      description: `${recipe.tier} tier · ${recipe.architecture} architecture · LOCO ${recipe.loco_auc.toFixed(3)}.`,
+      description: `${recipe.tier} tier · ${recipe.architecture} architecture · out-of-country score ${recipe.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",
       type: "article",
