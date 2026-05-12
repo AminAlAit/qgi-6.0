@@ -385,7 +385,7 @@ export function CountriesV2TableClient({ countries }: { countries: CountryEntry[
           <p className="text-xs mt-1" style={{ color: "var(--qgi-text-dim)" }}>
             {sorted.length} of {augmented.length} countries ·{" "}
             <span style={{ color: "var(--qgi-text-muted)" }}>
-              activity + ML coverage + trend are MOCK data
+              activity + ML coverage + trend are preview data
             </span>
           </p>
         </div>
