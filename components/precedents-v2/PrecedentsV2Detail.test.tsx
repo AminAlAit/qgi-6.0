@@ -70,7 +70,7 @@ describe("PrecedentsV2Detail", () => {
     );
   });
 
-  it("renders the metric grid with LOCO + F2 + ECE values", () => {
+  it("renders the metric grid with out-of-country + in-sample + calibration values", () => {
     render(
       <PrecedentsV2Detail
         recipe={makeRecipe()}
@@ -81,7 +81,7 @@ describe("PrecedentsV2Detail", () => {
     );
     expect(screen.getByText("0.7686")).toBeInTheDocument();
     expect(screen.getByText("0.8840")).toBeInTheDocument();
-    expect(screen.getByText("[0.794, 0.942]")).toBeInTheDocument();
+    expect(screen.getByText("95% CI [0.794, 0.942]")).toBeInTheDocument();
   });
 
   it("renders concentration caveat when share is in caution range", () => {
@@ -128,7 +128,7 @@ describe("PrecedentsV2Detail", () => {
     expect(screen.getByText("0.1052")).toBeInTheDocument();
   });
 
-  it("renders ADVISORY-ONLY callout when flag is set", () => {
+  it("renders composite-only callout when advisory-only flag is set", () => {
     render(
       <PrecedentsV2Detail
         recipe={makeRecipe({ advisory_only_flag: true, n_pos_loco: 1 })}
@@ -137,7 +137,7 @@ describe("PrecedentsV2Detail", () => {
         paperHref="https://example.com/paper"
       />
     );
-    expect(screen.getByText("ADVISORY-ONLY (F-H-3)")).toBeInTheDocument();
+    expect(screen.getByText("Composite-only signal")).toBeInTheDocument();
   });
 
   it("renders F-rule anomaly callout when flag is set", () => {

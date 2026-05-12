@@ -107,27 +107,33 @@ export function PrecedentsV2Detail({
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3" data-testid="metrics-grid">
           <Metric
-            label="LOCO AUC"
+            label="Out-of-country"
             value={recipe.loco_auc.toFixed(4)}
-            sub={`n_pos = ${recipe.n_pos_loco}`}
+            sub={`${recipe.n_pos_loco} held-out positive${recipe.n_pos_loco === 1 ? "" : "s"}`}
           />
           <Metric
-            label="In-sample F2 AUC"
+            label="In-sample"
             value={recipe.in_sample_f2_auc.toFixed(4)}
-            sub={`[${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
+            sub={`95% CI [${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
           />
           <Metric
-            label="In-sample F1 ECE"
+            label="Calibration error"
             value={recipe.in_sample_f1_ece.toFixed(4)}
             sub="overall"
           />
           <Metric
-            label="Cohort ECE — high"
+            label="Calibration — high tier"
             value={recipe.ece_high_cohort.toFixed(4)}
             sub="binding fragile-state cohort"
           />
-          <Metric label="Cohort ECE — mid" value={recipe.ece_mid_cohort.toFixed(4)} />
-          <Metric label="Cohort ECE — low" value={recipe.ece_low_cohort.toFixed(4)} />
+          <Metric
+            label="Calibration — mid tier"
+            value={recipe.ece_mid_cohort.toFixed(4)}
+          />
+          <Metric
+            label="Calibration — low tier"
+            value={recipe.ece_low_cohort.toFixed(4)}
+          />
         </div>
         {recipe.zero_positive_cohort_flag && (
           <p className="text-xs mt-4" style={{ color: "var(--qgi-text-dim)" }}>

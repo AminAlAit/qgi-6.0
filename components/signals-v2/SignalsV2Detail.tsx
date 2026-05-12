@@ -174,17 +174,17 @@ export function SignalsV2Detail({
         </h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3" data-testid="metrics-grid">
           <Metric
-            label="LOCO AUC"
+            label="Out-of-country"
             value={recipe.loco_auc.toFixed(4)}
-            sub={`n_pos = ${recipe.n_pos_loco}`}
+            sub={`${recipe.n_pos_loco} held-out positive${recipe.n_pos_loco === 1 ? "" : "s"}`}
           />
           <Metric
-            label="In-sample F2 AUC"
+            label="In-sample"
             value={recipe.in_sample_f2_auc.toFixed(4)}
-            sub={`[${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
+            sub={`95% CI [${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
           />
           <Metric
-            label="In-sample F1 ECE"
+            label="Calibration error"
             value={recipe.in_sample_f1_ece.toFixed(4)}
             sub="overall"
           />

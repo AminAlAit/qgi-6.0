@@ -54,20 +54,25 @@ describe("LloydsCallout", () => {
 // ---------------------------------------------------------------------------
 
 describe("AdvisoryOnlyCallout", () => {
-  it("renders ADVISORY-ONLY text on Tufte variant", () => {
+  it("renders composite-only callout on Tufte variant", () => {
     render(<AdvisoryOnlyCallout style="tufte" nPosLoco={1} />);
-    expect(screen.getByText(/ADVISORY-ONLY/)).toBeInTheDocument();
-    expect(screen.getByText(/n_pos_LOCO = 1/)).toBeInTheDocument();
+    expect(screen.getByText(/Composite-only/)).toBeInTheDocument();
+    expect(screen.getByText(/1 held-out positive/)).toBeInTheDocument();
   });
 
-  it("renders ADVISORY-ONLY title on Lloyd's variant", () => {
+  it("renders composite-only title on Lloyd's variant", () => {
     render(<AdvisoryOnlyCallout style="lloyds" nPosLoco={1} />);
-    expect(screen.getByText("ADVISORY-ONLY (F-H-3)")).toBeInTheDocument();
+    expect(screen.getByText("Composite-only signal")).toBeInTheDocument();
   });
 
   it("defaults nPosLoco to 1 when not provided", () => {
     render(<AdvisoryOnlyCallout style="tufte" />);
-    expect(screen.getByText(/n_pos_LOCO = 1/)).toBeInTheDocument();
+    expect(screen.getByText(/1 held-out positive/)).toBeInTheDocument();
+  });
+
+  it("renders plural 'positives' when nPosLoco > 1", () => {
+    render(<AdvisoryOnlyCallout style="tufte" nPosLoco={3} />);
+    expect(screen.getByText(/3 held-out positives/)).toBeInTheDocument();
   });
 });
 
@@ -206,7 +211,7 @@ describe("NotMeasuredHint", () => {
     expect(text).toContain("no anchor cases in v2 regression suite");
   });
 
-  it("renders 'Anchor AHI: Not measured' title on Lloyd's variant", () => {
+  it("renders 'Anchor stability: not yet measured' title on Lloyd's variant", () => {
     render(
       <NotMeasuredHint
         style="lloyds"
@@ -214,7 +219,7 @@ describe("NotMeasuredHint", () => {
         reason="remediation = v3 anchor battery"
       />
     );
-    expect(screen.getByText("Anchor AHI: Not measured")).toBeInTheDocument();
+    expect(screen.getByText("Anchor stability: not yet measured")).toBeInTheDocument();
     expect(screen.getByText(/remediation = v3 anchor battery/)).toBeInTheDocument();
   });
 

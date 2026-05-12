@@ -188,18 +188,19 @@ export function AdvisoryOnlyCallout({
 }) {
   const body = (
     <>
-      <strong>ADVISORY-ONLY:</strong> this recipe has{" "}
-      <span className="font-data">n_pos_LOCO = {nPosLoco ?? 1}</span> in the held-out
-      partition (sole-positive). Per Stage 5 §F-H-3 buyer-disclosure rule, do not use as
-      primary signal for standalone risk pricing — only as one component of a composite
-      score.
+      <strong>Composite-only signal:</strong> this recipe has{" "}
+      <span className="font-data">
+        {nPosLoco ?? 1} held-out positive{(nPosLoco ?? 1) === 1 ? "" : "s"}
+      </span>
+      . Per buyer-disclosure rule, do not use as a primary signal for standalone risk
+      pricing — only as one component of a composite score.
     </>
   );
   if (style === "tufte") {
     return <TufteCallout level="warning">{body}</TufteCallout>;
   }
   return (
-    <LloydsCallout level="warning" title="ADVISORY-ONLY (F-H-3)">
+    <LloydsCallout level="warning" title="Composite-only signal">
       {body}
     </LloydsCallout>
   );
@@ -305,7 +306,7 @@ export function NotMeasuredHint({
     return <TufteCallout level="info">{body}</TufteCallout>;
   }
   return (
-    <LloydsCallout level="info" title="Anchor AHI: Not measured">
+    <LloydsCallout level="info" title="Anchor stability: not yet measured">
       <span className="font-semibold italic">{body}</span>
     </LloydsCallout>
   );

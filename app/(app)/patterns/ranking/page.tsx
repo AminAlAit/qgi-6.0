@@ -686,7 +686,7 @@ export default function RankingPage() {
             ))}
             {minPps > 0 && (
               <FilterChip
-                label={`PPS ${"\u2265"} ${minPps.toLocaleString()}`}
+                label={`Score ${"\u2265"} ${minPps.toLocaleString()}`}
                 onRemove={() => setMinPps(0)}
               />
             )}
