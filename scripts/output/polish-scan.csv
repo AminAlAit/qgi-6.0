@@ -1,0 +1,50 @@
+file,line,leak_type,snippet,suggestion
+app/(app)/countries/page.tsx,112,snake_case-identifier-in-display,generate_country_risks.py,'generate_country_risks' looks like an internal identifier — replace with display label
+app/(app)/discover-patterns-a/[slug]/page.tsx,231,methodology-jargon,Out-of-country AUC,Discrimination score — explain in plain English or use 'discrimination'
+app/(app)/discover-patterns-b/FacetedGrid.tsx,263,methodology-jargon,RCI confidence,Recipe Confidence Index — gloss inline on first use
+app/(app)/discover-patterns-b/FacetedGrid.tsx,562,methodology-jargon,Number of SCDI indexes,Statistical Cross-Discovery Index — gloss inline on first use
+app/(app)/discover-patterns-b/[slug]/PatternDetailClient.tsx,208,methodology-jargon,RCI confidence,Recipe Confidence Index — gloss inline on first use
+app/(app)/discover-patterns-b/[slug]/PatternDetailClient.tsx,297,methodology-jargon,RCI confidence,Recipe Confidence Index — gloss inline on first use
+app/(app)/patterns/ranking/page.tsx,689,methodology-jargon,"PPS ${""\u2265""} ${minPp…",Pattern Power Score — gloss inline on first use
+app/(app)/signals/[country]/[slug]/page.tsx,394,snake_case-identifier-in-display,${(recipe.coverage_bias_diagnostic.oecd_share * 100).t…,'coverage_bias_diagnostic' looks like an internal identifier — replace with display label
+app/blog/cross-country-normalization/page.tsx,169,recipe-slug-in-display,humanitarian_crisis,Replace 'humanitarian_crisis' with title-case display: 'Humanitarian crisis'
+app/blog/cross-country-normalization/page.tsx,178,recipe-slug-in-display,civil_war_and_insurgency,Replace 'civil_war_and_insurgency' with title-case display: 'Civil war and insurgency'
+app/blog/curation-in-practice/page.tsx,142,recipe-slug-in-display,political_repression,Replace 'political_repression' with title-case display: 'Political repression'
+app/blog/curation-in-practice/page.tsx,144,recipe-slug-in-display,humanitarian_crisis,Replace 'humanitarian_crisis' with title-case display: 'Humanitarian crisis'
+app/blog/curation-in-practice/page.tsx,178,recipe-slug-in-display,civil_war_and_insurgency,Replace 'civil_war_and_insurgency' with title-case display: 'Civil war and insurgency'
+app/blog/curation-in-practice/page.tsx,178,recipe-slug-in-display,bilateral_treaty,Replace 'bilateral_treaty' with title-case display: 'Bilateral treaty'
+app/blog/curation-in-practice/page.tsx,179,recipe-slug-in-display,political_repression,Replace 'political_repression' with title-case display: 'Political repression'
+app/blog/curation-in-practice/page.tsx,180,recipe-slug-in-display,foreign_intervention,Replace 'foreign_intervention' with title-case display: 'Foreign intervention'
+app/blog/curation-in-practice/page.tsx,194,recipe-slug-in-display,civil_war_and_insurgency,Replace 'civil_war_and_insurgency' with title-case display: 'Civil war and insurgency'
+app/blog/curation-in-practice/page.tsx,195,recipe-slug-in-display,foreign_intervention,Replace 'foreign_intervention' with title-case display: 'Foreign intervention'
+app/blog/curation-in-practice/page.tsx,202,recipe-slug-in-display,political_repression,Replace 'political_repression' with title-case display: 'Political repression'
+app/blog/curation-in-practice/page.tsx,202,snake_case-identifier-in-display,banking_and_financial_crisis,'banking_and_financial_crisis' looks like an internal identifier — replace with display label
+app/blog/curation-in-practice/page.tsx,203,recipe-slug-in-display,humanitarian_crisis,Replace 'humanitarian_crisis' with title-case display: 'Humanitarian crisis'
+app/blog/curation-in-practice/page.tsx,279,recipe-slug-in-display,political_repression,Replace 'political_repression' with title-case display: 'Political repression'
+app/blog/margin-over-persistence-trajectory/page.tsx,276,snake_case-identifier-in-display,qgi-ml/backtest_v19_results.json,'backtest_v19_results' looks like an internal identifier — replace with display label
+app/blog/margin-over-persistence-trajectory/page.tsx,277,snake_case-identifier-in-display,qgi-ml/scripts/plot_pr_curve.py,'plot_pr_curve' looks like an internal identifier — replace with display label
+components/dashboard/Leaderboard.tsx,37,methodology-jargon,PPS,Pattern Power Score — gloss inline on first use
+components/ml/Callouts.tsx,191,methodology-jargon,ADVISORY-ONLY:,Internal pricing-gate term. Buyer-facing version: 'composite-signal only'
+components/ml/Callouts.tsx,202,methodology-jargon,ADVISORY-ONLY (F-H-3),Internal F-H-N rule reference. Hide or convert to user-facing phrasing.
+components/ml/Callouts.tsx,202,methodology-jargon,ADVISORY-ONLY (F-H-3),Internal pricing-gate term. Buyer-facing version: 'composite-signal only'
+components/ml/Callouts.tsx,308,methodology-jargon,Anchor AHI: Not measured,Anchor Health Index — gloss inline; or use 'anchor stability'
+components/precedents-v2/PrecedentsV2Detail.tsx,110,methodology-jargon,LOCO AUC,Leave-one-country-out (out-of-country) — gloss inline on first use
+components/precedents-v2/PrecedentsV2Detail.tsx,110,methodology-jargon,LOCO AUC,Discrimination score — explain in plain English or use 'discrimination'
+components/precedents-v2/PrecedentsV2Detail.tsx,112,methodology-jargon,n_pos = ${recipe.n_pos_lo…,Internal metric (positive-class count). Hide or relabel.
+components/precedents-v2/PrecedentsV2Detail.tsx,112,methodology-jargon,n_pos = ${recipe.n_pos_loco},Internal metric (positive-class count). Hide or relabel.
+components/precedents-v2/PrecedentsV2Detail.tsx,115,methodology-jargon,In-sample F2 AUC,Discrimination score — explain in plain English or use 'discrimination'
+components/precedents-v2/PrecedentsV2Detail.tsx,117,snake_case-identifier-in-display,"[${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${reci…",'in_sample_f2_ci_lower' looks like an internal identifier — replace with display label
+components/precedents-v2/PrecedentsV2Detail.tsx,117,snake_case-identifier-in-display,"…Fixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]",'in_sample_f2_ci_upper' looks like an internal identifier — replace with display label
+components/precedents-v2/PrecedentsV2Detail.tsx,120,methodology-jargon,In-sample F1 ECE,Calibration error — explain inline or relabel 'calibration gap'
+components/precedents-v2/PrecedentsV2Detail.tsx,125,methodology-jargon,Cohort ECE — high,Calibration error — explain inline or relabel 'calibration gap'
+components/precedents-v2/PrecedentsV2Detail.tsx,129,methodology-jargon,Cohort ECE — mid,Calibration error — explain inline or relabel 'calibration gap'
+components/precedents-v2/PrecedentsV2Detail.tsx,130,methodology-jargon,Cohort ECE — low,Calibration error — explain inline or relabel 'calibration gap'
+components/precedents/PrecedentSlugClient.tsx,121,snake_case-identifier-in-display,${(recipe.coverage_bias_diagnostic.oecd_share * 100).t…,'coverage_bias_diagnostic' looks like an internal identifier — replace with display label
+components/signals-v2/SignalsV2Detail.tsx,177,methodology-jargon,LOCO AUC,Leave-one-country-out (out-of-country) — gloss inline on first use
+components/signals-v2/SignalsV2Detail.tsx,177,methodology-jargon,LOCO AUC,Discrimination score — explain in plain English or use 'discrimination'
+components/signals-v2/SignalsV2Detail.tsx,179,methodology-jargon,n_pos = ${recipe.n_pos_lo…,Internal metric (positive-class count). Hide or relabel.
+components/signals-v2/SignalsV2Detail.tsx,179,methodology-jargon,n_pos = ${recipe.n_pos_loco},Internal metric (positive-class count). Hide or relabel.
+components/signals-v2/SignalsV2Detail.tsx,182,methodology-jargon,In-sample F2 AUC,Discrimination score — explain in plain English or use 'discrimination'
+components/signals-v2/SignalsV2Detail.tsx,184,snake_case-identifier-in-display,"[${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${reci…",'in_sample_f2_ci_lower' looks like an internal identifier — replace with display label
+components/signals-v2/SignalsV2Detail.tsx,184,snake_case-identifier-in-display,"…Fixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]",'in_sample_f2_ci_upper' looks like an internal identifier — replace with display label
+components/signals-v2/SignalsV2Detail.tsx,187,methodology-jargon,In-sample F1 ECE,Calibration error — explain inline or relabel 'calibration gap'
