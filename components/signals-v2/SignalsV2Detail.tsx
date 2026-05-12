@@ -101,7 +101,7 @@ export function SignalsV2Detail({
       >
         <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
           <strong>Per-country firing score:</strong> not yet baked. The recipe metrics
-          below are global (out-of-country LOCO across the 30-country held-out panel). A
+          below are global (out-of-country, across the 30-country held-out panel). A
           future bake will surface per-(country, year) probability for {country} against
           this recipe.
         </p>
@@ -258,9 +258,9 @@ export function SignalsV2Detail({
           className="text-sm leading-relaxed mt-3"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Full tear-sheet with cohort-stratified calibration table, pre-reg-anchored
-          architecture rule, and replication signature lives in the Stage 5
-          buyer-disclosure paper.{" "}
+          Full tear-sheet with cohort-stratified calibration table, methodology-locked
+          architecture rule, and replication signature lives in the buyer-disclosure
+          paper.{" "}
           <a
             href={paperHref}
             target="_blank"

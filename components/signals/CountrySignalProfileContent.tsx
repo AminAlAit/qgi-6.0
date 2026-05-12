@@ -272,7 +272,9 @@ export function CountrySignalProfileContent() {
                                 : "var(--qgi-success)",
                         }}
                       >
-                        PPS {s.pattern_power_score.toFixed(1)}
+                        <span title="Pattern Power Score — strength + persistence + breadth">
+                          Score {s.pattern_power_score.toFixed(1)}
+                        </span>
                       </span>
                     </div>
 

@@ -253,7 +253,7 @@ export function ConcentrationAlertCallout({
     <>
       Top-1 training country accounts for{" "}
       <span className="font-data font-semibold">{(share * 100).toFixed(1)}%</span> of the
-      LOCO partition. Recipe predictions in {country}-adjacent country-years should be
+      held-out partition. Recipe predictions in {country}-adjacent country-years should be
       interpreted with the training-distribution caveat.
     </>
   );

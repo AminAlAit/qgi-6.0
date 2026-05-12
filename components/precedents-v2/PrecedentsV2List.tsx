@@ -63,11 +63,11 @@ export function PrecedentsV2List({
           ML-derived precedent recipes
         </p>
         <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-          Top-4 LOCKed recipes from the hybrid D2/D5 architecture ({recipes.length} of{" "}
-          {totalLocked} LOCKed; post-KI-2 amendment 2026-05-11). Each card carries the
+          Top-4 validated recipes from the hybrid prediction architecture (
+          {recipes.length} of {totalLocked} validated). Each card carries the
           buyer-disclosure metrics the Lloyd&apos;s actuarial framework requires:
-          out-of-country LOCO discrimination, in-sample calibration,
-          training-concentration disclosure, and an Asas mini-Majles interpretation hint.{" "}
+          out-of-country discrimination, in-sample calibration, training-concentration
+          disclosure, and an Asas mini-Majles interpretation hint.{" "}
           {caveatStyle === "tufte" ? (
             <span className="italic">
               This is the Tufte-style variant — caveats render as footnote annotations.{" "}

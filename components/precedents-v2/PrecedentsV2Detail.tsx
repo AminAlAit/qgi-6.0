@@ -296,9 +296,9 @@ export function PrecedentsV2Detail({
           className="text-sm leading-relaxed mt-3"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Full tear-sheet with cohort-stratified calibration table, pre-reg-anchored
-          architecture rule, and replication signature lives in the Stage 5
-          buyer-disclosure paper.{" "}
+          Full tear-sheet with cohort-stratified calibration table, methodology-locked
+          architecture rule, and replication signature lives in the buyer-disclosure
+          paper.{" "}
           <a
             href={paperHref}
             target="_blank"

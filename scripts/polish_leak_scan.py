@@ -148,7 +148,11 @@ INDICATOR_COMPILED: list[tuple[re.Pattern[str], str]] = [
 # recipe slugs. Avoids matching variable names by requiring the token to
 # appear inside text content (not as identifier).
 SLUG_LIKE = re.compile(
-    r"\b([a-z][a-z0-9]+(?:_[a-z][a-z0-9]+){2,})\b"
+    # Negative lookbehind `(?<!\.)`: exclude matches preceded by `.` because
+    # `obj.field_name` is a JS field access, not display text. Real-world
+    # false positive: `existing.pattern_power_score)` inside a ternary
+    # captured between `}` and `{` JSX boundaries.
+    r"(?<!\.)\b([a-z][a-z0-9]+(?:_[a-z][a-z0-9]+){2,})\b"
 )
 # Known recipe slugs — flagged with high confidence
 KNOWN_RECIPE_SLUGS = {
@@ -188,20 +192,31 @@ EM_DASH_THRESHOLD = 8  # per file; above this, flag as AI-tell density
 # JSX text extraction (heuristic)
 # ============================================================================
 
-# Capture text between JSX tag boundaries: > THIS TEXT <
-# DOTALL so the capture spans newlines — multi-line JSX content like
+# Capture text between JSX boundaries. Boundary characters: < > { }
+# (tag boundaries + JSX-expression boundaries). Text "fragments" are any
+# stretch of non-boundary chars sandwiched between an opening boundary
+# (`>` tag close or `}` expression close) and a closing boundary (`<` tag
+# open or `{` expression open).
+#
+# DOTALL so capture spans newlines — multi-line JSX content like
 #     <div ...>
 #       LOCO AUC
 #     </div>
 # is otherwise invisible to per-line scanning (Sonnet review #2 finding).
-# Exclusions:
-#   `{` — JSX expression boundary, would capture JS code
-#   `;` — statement terminator, only appears in JS/TS code (never in JSX
-#         text content). Without this, TS generics like `useState<string>`
-#         (closing `>`) match against the next `useState<...>` (opening `<`)
-#         with intervening JS code as "captured text". Real-world example:
-#         CountryProfileClient.tsx l.94 captured TS statement body.
-JSX_TEXT_RE = re.compile(r">([^<>{;]+?)<", re.DOTALL)
+#
+# `;` exclusion: statement terminator, only appears in JS/TS code (never in
+# JSX text content). Without this, TS generics like `useState<string>` close
+# bracket `>` matches against the next `useState<...>` open `<` with the
+# intervening JS statement body as "captured text". Real-world example:
+# CountryProfileClient.tsx l.94 captured TS statement body.
+#
+# Why both `[>}]` start and `[<{]` end: real JSX text often gets interrupted
+# by inline JSX expressions like `for {country}`. With only `>...<`, the
+# fragment AFTER the `{country}` (e.g. " against this recipe.") would be
+# missed because the `}` of the expression is followed by text not `<`.
+# Real-world example: SignalsV2Detail.tsx l.104 LOCO leak hidden behind
+# `for {country} against`.
+JSX_TEXT_RE = re.compile(r"[>}]([^<>{};]+?)[<{]", re.DOTALL)
 
 # Capture attribute values that render as user-facing strings.
 JSX_ATTR_RE = re.compile(
@@ -261,6 +276,16 @@ def _strip_preserving_newlines(text: str, pattern: re.Pattern[str]) -> str:
 JSDOC_MULTILINE_RE = re.compile(r"/\*.*?\*/", re.DOTALL)
 LINE_COMMENT_RE = re.compile(r"(?m)^[ \t]*//[^\n]*$")
 
+# Heuristic JS-code detection. The broadened JSX_TEXT_RE (which captures
+# from `}` to `{` for fragments split by inline JSX expressions) also picks
+# up JS code stretches between `} ... {` braces in things like ternaries,
+# arrow function bodies, and object literals. None of those contain real
+# user-facing prose. If the captured fragment contains any of these JS
+# syntactic markers it is JS, not text. Real-world false-positive examples:
+#   existing.pattern_power_score) (ternary RHS between } and {)
+#   a.best_pattern_length !== undefined && b.best_pattern_length !== undef…
+JS_CODE_MARKERS_RE = re.compile(r"===|!==|&&|\|\||=>|\?\.|!=\s|==\s")
+
 
 def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
     """Yield (line_number, kind, text) for probable user-facing text fragments.
@@ -295,11 +320,16 @@ def iter_text_fragments(file_path: Path) -> Iterator[tuple[int, str, str]]:
     text = _strip_preserving_newlines(text, CODE_PRE_INLINE_RE)
     text = LINE_COMMENT_RE.sub("", text)  # ^...$ via (?m) — newlines preserved
 
-    # --- JSX text (multi-line aware): > THIS TEXT <
+    # --- JSX text (multi-line aware): > THIS TEXT < (also } TEXT { boundaries)
     for m in JSX_TEXT_RE.finditer(text):
         captured = m.group(1)
         frag = captured.strip()
         if not frag or frag.startswith("//"):
+            continue
+        # Heuristic: drop captures that look like JS code (ternary RHS,
+        # arrow function body, object-literal value). They contain syntactic
+        # markers that never appear in real user-facing prose.
+        if JS_CODE_MARKERS_RE.search(frag):
             continue
         # Line number = where the first non-whitespace character of the
         # captured content starts (not the `>` itself, which may be on the

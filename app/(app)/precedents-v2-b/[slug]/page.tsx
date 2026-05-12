@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonical = `https://qgintelligence.com/precedents-v2-b/${slug}`;
   return {
     title: `${recipe.display_name} — V2 Recipe (Lloyd's) — QGI Intelligence`,
-    description: `${recipe.display_name}: ${recipe.tier} tier, LOCO ${recipe.loco_auc.toFixed(3)} (n_pos = ${recipe.n_pos_loco}). Stage 5 buyer-disclosure tear-sheet with Lloyd's banner caveats.`,
+    description: `${recipe.display_name}: ${recipe.tier} tier, out-of-country score ${recipe.loco_auc.toFixed(3)} (${recipe.n_pos_loco} held-out positive${recipe.n_pos_loco === 1 ? "" : "s"}). Buyer-disclosure tear-sheet with Lloyd's banner caveats.`,
     alternates: { canonical },
     openGraph: {
       title: `${recipe.display_name} — V2 Recipe (Lloyd's)`,
-      description: `${recipe.tier} tier · ${recipe.architecture} architecture · LOCO ${recipe.loco_auc.toFixed(3)}.`,
+      description: `${recipe.tier} tier · ${recipe.architecture} architecture · out-of-country score ${recipe.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",
       type: "article",

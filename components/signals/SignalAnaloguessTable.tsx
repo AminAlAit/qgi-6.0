@@ -241,7 +241,7 @@ export function SignalAnaloguesTable({ analogues, subjectCountryName }: Props) {
           color: "var(--qgi-text-dim)",
         }}
       >
-        PPS = Pattern Power Score (higher = stronger structural match). Lead years =
+        Score = Pattern Power Score (higher = stronger structural match). Lead years =
         median time from pattern end to event in the precedent country. Negative lead =
         event co-occurred with pattern. Showing top {sorted.length} of {analogues.length}{" "}
         analogues.
