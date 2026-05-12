@@ -2510,3 +2510,155 @@ def test_v6_exclusion_list_applied_filters_weights_df(monkeypatch, tmp_path):
     # Critical: the MAJOR #4 fix means the exclusion was APPLIED to weights_df,
     # not just loaded.
     assert p["exclusion_list_applied_to_weights_df"] is True
+
+
+# ===========================================================================
+# v6.5 NEW (T8.5 / Tariq adjudication 2026-05-12):
+#   apply_transform_layer — transform-dispatch consumption before z-scoring
+# ===========================================================================
+
+
+def _dispatch_config(indicators: dict) -> dict:
+    """Helper to build a minimal canonical_length_config dict for tests."""
+    return {
+        "schema_version": 1,
+        "indicators": indicators,
+    }
+
+
+def test_apply_transform_layer_first_diff_drops_first_year_per_country():
+    """For an I(1) indicator with `first_diff` transform, the first
+    observation per (country, indicator) drops; remaining values equal
+    raw[t] - raw[t-1]."""
+    panel = pd.DataFrame([
+        {"country": "USA", "year": 2010, "indicator_id": "IND_I1", "value": 100.0},
+        {"country": "USA", "year": 2011, "indicator_id": "IND_I1", "value": 105.0},
+        {"country": "USA", "year": 2012, "indicator_id": "IND_I1", "value": 113.0},
+        {"country": "DEU", "year": 2010, "indicator_id": "IND_I1", "value": 50.0},
+        {"country": "DEU", "year": 2011, "indicator_id": "IND_I1", "value": 60.0},
+        {"country": "DEU", "year": 2012, "indicator_id": "IND_I1", "value": 75.0},
+    ])
+    config = _dispatch_config({
+        "IND_I1": {"transform": "first_diff", "demean_applied": False,
+                   "canonical_length_value": 1},
+    })
+    out = mod.apply_transform_layer(panel, config)
+    # 2010 rows drop for both countries; 4 rows remain
+    assert len(out) == 4
+    # USA 2011: 105 - 100 = 5; USA 2012: 113 - 105 = 8
+    usa = out[out["country"] == "USA"].sort_values("year").reset_index(drop=True)
+    assert usa.loc[0, "value"] == 5.0
+    assert usa.loc[1, "value"] == 8.0
+    # DEU 2011: 60 - 50 = 10; DEU 2012: 75 - 60 = 15
+    deu = out[out["country"] == "DEU"].sort_values("year").reset_index(drop=True)
+    assert deu.loc[0, "value"] == 10.0
+    assert deu.loc[1, "value"] == 15.0
+
+
+def test_apply_transform_layer_pass_through_preserves_surgical_overrides():
+    """The 2 T7 §6 surgical-override indicators (FP.CPI.TOTL.ZG,
+    NY.GDP.PCAP.CD) have transform='pass_through' in the dispatch table
+    (per their flipped I(0) effective_classification on the demeaned
+    substrate). Verify rows are unchanged when transform=pass_through.
+
+    NOTE: demean_applied=True for both these indicators per the dispatch
+    table, so values WILL change due to demeaning — but no rows drop and
+    the per-country temporal structure is preserved."""
+    panel = pd.DataFrame([
+        {"country": "USA", "year": 2010, "indicator_id": "FP.CPI.TOTL.ZG", "value": 3.0},
+        {"country": "USA", "year": 2011, "indicator_id": "FP.CPI.TOTL.ZG", "value": 4.0},
+        {"country": "DEU", "year": 2010, "indicator_id": "FP.CPI.TOTL.ZG", "value": 1.0},
+        {"country": "DEU", "year": 2011, "indicator_id": "FP.CPI.TOTL.ZG", "value": 2.0},
+    ])
+    # Surgical override → pass_through, demean=True (per the actual config)
+    config = _dispatch_config({
+        "FP.CPI.TOTL.ZG": {"transform": "pass_through", "demean_applied": True,
+                           "canonical_length_value": 2},
+    })
+    out = mod.apply_transform_layer(panel, config)
+    # No rows lost (pass_through doesn't drop, demean doesn't drop)
+    assert len(out) == 4
+    # 2010 cross-section mean = (3+1)/2 = 2 → USA: 3-2=1, DEU: 1-2=-1
+    # 2011 cross-section mean = (4+2)/2 = 3 → USA: 4-3=1, DEU: 2-3=-1
+    usa_2010 = out[(out["country"] == "USA") & (out["year"] == 2010)]["value"].iloc[0]
+    usa_2011 = out[(out["country"] == "USA") & (out["year"] == 2011)]["value"].iloc[0]
+    deu_2010 = out[(out["country"] == "DEU") & (out["year"] == 2010)]["value"].iloc[0]
+    deu_2011 = out[(out["country"] == "DEU") & (out["year"] == 2011)]["value"].iloc[0]
+    assert usa_2010 == pytest.approx(1.0)
+    assert usa_2011 == pytest.approx(1.0)
+    assert deu_2010 == pytest.approx(-1.0)
+    assert deu_2011 == pytest.approx(-1.0)
+
+
+def test_apply_transform_layer_log_diff_handles_sp_pop_totl():
+    """SP.POP.TOTL uses log_diff (OUTLIER_LOG_DIFFERENCE in the
+    pipeline). Verify the log-difference computation."""
+    panel = pd.DataFrame([
+        {"country": "USA", "year": 2010, "indicator_id": "SP.POP.TOTL", "value": 300.0e6},
+        {"country": "USA", "year": 2011, "indicator_id": "SP.POP.TOTL", "value": 303.0e6},
+    ])
+    config = _dispatch_config({
+        "SP.POP.TOTL": {"transform": "log_diff", "demean_applied": False,
+                        "canonical_length_value": 6},
+    })
+    out = mod.apply_transform_layer(panel, config)
+    # log(303/300) = log(1.01) ≈ 0.00995
+    assert len(out) == 1
+    assert out.iloc[0]["value"] == pytest.approx(np.log(303.0e6 / 300.0e6), rel=1e-9)
+
+
+def test_rule_v2_evaluation_rejects_null_canonical_length_values(
+    monkeypatch, tmp_path
+):
+    """Tariq §5.2 step iii: under rule_v2_evaluation=True, the v6 script
+    MUST refuse to fire if any canonical_length_value is null. The
+    null-rejection assertion is the load-bearing check that the
+    recipe-aggregator pass actually ran before T9 fires."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    # Write configs into fixture dir. canonical_length has a null value.
+    canon = fixture["ref_dir"] / "v0.2-canonical-length.json"
+    canon.write_text(json.dumps({
+        "schema_version": 1,
+        "indicators": {
+            "IND_00": {"transform": "first_diff", "demean_applied": False,
+                       "canonical_length_value": None},
+        },
+    }))
+    fals = fixture["ref_dir"] / "v0.2-falsification-config.json"
+    fals.write_text('{"schema_version": 1}')
+    excl = fixture["ref_dir"] / "v0.2-demeaning-insufficient-exclusion.json"
+    excl.write_text(json.dumps({"indicators": []}))
+
+    with pytest.raises(ValueError, match="null canonical_length_value"):
+        mod.main(
+            cutoff_year=2014, end_year=2025, with_baselines=False,
+            ablation_arm="D", bootstrap_resamples=20,
+            rule_v2_evaluation=True,
+            canonical_length_config_path=canon,
+            exclusion_list_config_path=excl,
+        )
+
+
+def test_v6_5_transform_layer_applied_provenance_field(monkeypatch, tmp_path):
+    """T8.5 §5.4 reviewer-checklist item: the per-arm JSON's
+    `t7_config_provenance` block carries a `transform_layer_applied`
+    field that records whether the panel was transformed before
+    z-scoring. False under D-arm sanity-check; True under
+    rule_v2_evaluation. T11 must cite this to disambiguate raw-panel
+    vs transformed-panel runs."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    p = out["t7_config_provenance"]
+    assert "transform_layer_applied" in p
+    # D-arm sanity-check run (rule_v2_evaluation=False): transform_layer NOT applied
+    assert p["transform_layer_applied"] is False
