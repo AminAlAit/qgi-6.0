@@ -50,12 +50,19 @@ export default async function PrecedentsV2ASlugPage({ params }: Props) {
     notFound();
   }
   const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${recipe.paper_section_anchor}`;
+  // Full slug → display-name map so cross-recipe slug references in prose
+  // (e.g. mechanism narrative mentioning "elections_and_voting" while
+  // rendering civil_war page) get rewritten too.
+  const slugMap: Record<string, string> = Object.fromEntries(
+    stack.recipes.map((r) => [r.recipe_id, r.display_name])
+  );
   return (
     <PrecedentsV2Detail
       recipe={recipe}
       caveatStyle="tufte"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
+      slugMap={slugMap}
     />
   );
 }

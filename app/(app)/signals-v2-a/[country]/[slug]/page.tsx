@@ -58,6 +58,9 @@ export default async function SignalsV2ASlugPage({ params }: Props) {
     stack.metadata.top_4_recipes.includes(r.recipe_id)
   );
   const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${recipe.paper_section_anchor}`;
+  const slugMap: Record<string, string> = Object.fromEntries(
+    stack.recipes.map((r) => [r.recipe_id, r.display_name])
+  );
   return (
     <SignalsV2Detail
       recipe={recipe}
@@ -68,6 +71,7 @@ export default async function SignalsV2ASlugPage({ params }: Props) {
       caveatStyle="tufte"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
+      slugMap={slugMap}
     />
   );
 }

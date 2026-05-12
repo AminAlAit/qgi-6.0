@@ -171,7 +171,7 @@ describe("PrecedentsV2Detail", () => {
     }
   });
 
-  it("renders top-K indicator table with fixed-effect-suspect note", () => {
+  it("renders top-K indicator table with friendly labels + country-bias note", () => {
     render(
       <PrecedentsV2Detail
         recipe={makeRecipe()}
@@ -180,9 +180,21 @@ describe("PrecedentsV2Detail", () => {
         paperHref="https://example.com/paper"
       />
     );
-    expect(screen.getByText("VC.BTL.DETH__diff")).toBeInTheDocument();
-    expect(screen.getByText("PV.EST__diff")).toBeInTheDocument();
-    expect(screen.getByText("fixed-effect suspect")).toBeInTheDocument();
+    // Indicator IDs must be relabeled to friendly names (not VC.BTL.DETH__diff)
+    expect(
+      screen.getByText("Battle-related deaths (number of people) (year-over-year change)")
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        "Political Stability and Absence of Violence/Terrorism (estimate) (year-over-year change)"
+      )
+    ).toBeInTheDocument();
+    // Raw IDs must NOT appear as visible text (still in title attr for analyst recovery)
+    expect(screen.queryByText("VC.BTL.DETH__diff")).not.toBeInTheDocument();
+    expect(screen.queryByText("PV.EST__diff")).not.toBeInTheDocument();
+    // Fixed-effect note relabeled
+    expect(screen.getByText("Possible country bias")).toBeInTheDocument();
+    expect(screen.queryByText("fixed-effect suspect")).not.toBeInTheDocument();
   });
 
   it("includes the model_version in footer", () => {

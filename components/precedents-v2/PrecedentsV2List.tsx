@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { InterpretationHintBadge, type CalloutStyle } from "@/components/ml/Callouts";
 import type { MlRecipeEntry } from "@/lib/recipes-ml";
+import { rewriteRecipeSlugsInProse } from "@/lib/recipe-narrative";
 
 /**
  * V2 precedents list — top-4 LOCKed ML recipes per Majles 2026-05-11 Topic 5.
@@ -189,7 +190,9 @@ function RecipeRow({
             {recipe.display_name}
           </h2>
           <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-dim)" }}>
-            {recipe.mechanism_narrative_excerpt}
+            {rewriteRecipeSlugsInProse(recipe.mechanism_narrative_excerpt, {
+              [recipe.recipe_id]: recipe.display_name,
+            })}
           </p>
         </div>
         <div className="text-right">
