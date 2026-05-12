@@ -884,6 +884,110 @@ def evaluate_weights(
 
 
 # ---------------------------------------------------------------------------
+# v6.5 NEW (T8.5 / Tariq adjudication 2026-05-12):
+#   apply_transform_layer — consume the canonical_length_config dispatch
+#   table to transform the raw panel BEFORE z-scoring. Without this, the v6
+#   evaluator runs against the v0.1a raw substrate even though T5 ratified
+#   Path A on the Stage F transformed substrate (Protocol-5 breach against
+#   charter A6). Tariq §5.2 implementation-grade scope.
+# ---------------------------------------------------------------------------
+
+
+def apply_transform_layer(panel: pd.DataFrame,
+                           canonical_length_config: dict) -> pd.DataFrame:
+    """Apply the v0.2 transform chain to the raw indicator panel.
+
+    Per the v0.2-canonical-length.json dispatch table (T7 §4 + charter A6):
+      - first_diff for I(1) / ambiguous / I(2)_or_higher indicators
+      - log_diff for SP.POP.TOTL (OUTLIER_LOG_DIFFERENCE)
+      - pass_through for I(0) + NY.GDP.MKTP.KD.ZG + the 2 T7 §6 surgical-
+        override indicators (FP.CPI.TOTL.ZG, NY.GDP.PCAP.CD as I(0) on
+        the demeaned substrate)
+      - cross-section demean (subtract per-year cross-country mean) for
+        Class A indicators (demean_applied=True in dispatch)
+
+    Args:
+      panel: long-format DataFrame with columns (country, year,
+        indicator_id, value) from au.load_indicator_panel
+      canonical_length_config: parsed v0.2-canonical-length.json dict
+        with "indicators" map keyed by api_code (indicator_id)
+
+    Returns: long-format DataFrame, same columns. Rows lost to first_diff
+    (the earliest year per (country, indicator) pair) are dropped.
+    Indicators NOT in the dispatch table are passed through unchanged
+    with a warning (defensive: should not happen if the dispatch table
+    covers the 109 Stage F indicators and the panel only queries those).
+    """
+    dispatch = canonical_length_config["indicators"]
+
+    transformed_parts: list[pd.DataFrame] = []
+    n_dropped_unknown = 0
+    n_dropped_diff = 0
+    by_transform: dict[str, int] = {}
+
+    for ind_id, ind_panel in panel.groupby("indicator_id"):
+        ind_panel = ind_panel.sort_values(["country", "year"]).reset_index(drop=True)
+        spec = dispatch.get(ind_id)
+        if spec is None:
+            # Indicator not in dispatch table — pass through with warning.
+            # Shouldn't happen in production (T9 queries Stage F indicators
+            # the dispatch covers), but defensive against weight-matrix
+            # indicators outside the audit set.
+            print(f"  [WARN] {ind_id} not in canonical_length_config dispatch; "
+                  f"passing through unchanged")
+            n_dropped_unknown += 1
+            transformed_parts.append(ind_panel)
+            continue
+
+        transform = spec["transform"]
+        demean = spec["demean_applied"]
+        by_transform[transform] = by_transform.get(transform, 0) + 1
+
+        if transform == "pass_through":
+            out = ind_panel.copy()
+        elif transform == "first_diff":
+            out = ind_panel.copy()
+            out["value"] = out.groupby("country")["value"].diff()
+            before = len(out)
+            out = out.dropna(subset=["value"]).reset_index(drop=True)
+            n_dropped_diff += before - len(out)
+        elif transform == "log_diff":
+            out = ind_panel.copy()
+            # log of non-positive values produces NaN; .diff() handles
+            # the row-1-NaN naturally.
+            positive = out.where(out["value"] > 0)
+            out["value"] = np.log(positive["value"]).groupby(out["country"]).diff()
+            before = len(out)
+            out = out.dropna(subset=["value"]).reset_index(drop=True)
+            n_dropped_diff += before - len(out)
+        else:
+            raise ValueError(
+                f"unknown transform {transform!r} in dispatch table for "
+                f"indicator {ind_id}"
+            )
+
+        if demean:
+            # Subtract per-year cross-country mean. NaN-safe via groupby-transform.
+            out["value"] = out["value"] - out.groupby("year")["value"].transform("mean")
+
+        transformed_parts.append(out)
+
+    if not transformed_parts:
+        return panel.iloc[0:0].copy()
+
+    result = pd.concat(transformed_parts, ignore_index=True)
+    print(f"  transform layer applied: {len(panel):,} -> {len(result):,} rows")
+    print(f"    by transform: {by_transform}")
+    if n_dropped_diff:
+        print(f"    rows lost to first/log-differencing: {n_dropped_diff:,} "
+              f"(expected; first year per (country, indicator) drops)")
+    if n_dropped_unknown:
+        print(f"    indicators not in dispatch (passed through): "
+              f"{n_dropped_unknown}")
+    return result
+
+
+# ---------------------------------------------------------------------------
 # Compute z-scored indicator panel
 # ---------------------------------------------------------------------------
 
@@ -1740,6 +1844,28 @@ def main(
     canonical_length_config = load_canonical_length_config(
         path=canonical_length_config_path, required=rule_v2_evaluation,
     )
+    # v6.5 (T8.5 / Tariq §5.2 step iii): under rule_v2_evaluation, reject
+    # a half-populated dispatch table. The recipe-aggregator pass must
+    # have filled canonical_length_value for every indicator before T9
+    # fires; without this assertion, the failure mode is silent (the
+    # transform-layer code happily uses transform + demean fields and
+    # never reads canonical_length_value, so a null value would not
+    # trigger any other error — but the absence of values means the
+    # recipe-aggregator pass did not run, which means the values used
+    # downstream are stale or missing).
+    if rule_v2_evaluation and canonical_length_config:
+        null_values = [
+            ind for ind, cfg in canonical_length_config["indicators"].items()
+            if cfg.get("canonical_length_value") is None
+        ]
+        if null_values:
+            raise ValueError(
+                f"v0.2-canonical-length.json has {len(null_values)} indicators "
+                f"with null canonical_length_value (sample: {null_values[:5]}). "
+                f"T8.5 requires the recipe-aggregator pipeline pass to populate "
+                f"these BEFORE T9 fires. See JSON `binding_clause` field for "
+                f"context."
+            )
     exclusion_list = load_exclusion_list_config(
         path=exclusion_list_config_path, required=rule_v2_evaluation,
     )
@@ -1848,12 +1974,30 @@ def main(
     )
     ath = sess.client("athena")
 
-    panel_lo = cutoff_year - ZSCORE_WINDOW_YEARS + 1
+    # v6.5 (T8.5 / Tariq §5.2): under rule_v2_evaluation we'll apply
+    # the transform layer post-pull. first_diff / log_diff drop the
+    # earliest year per (country, indicator), so widen the panel window
+    # by 1 year to preserve ZSCORE_WINDOW_YEARS observations after the
+    # differencing operation.
+    if rule_v2_evaluation and canonical_length_config:
+        panel_lo = cutoff_year - ZSCORE_WINDOW_YEARS  # widened: drop 1 year via diff
+    else:
+        panel_lo = cutoff_year - ZSCORE_WINDOW_YEARS + 1
     panel = au.load_indicator_panel(
         ath, "qgi-data-lake-222222222222", "QGI-Lambda-Workgroup",
         needed_api_codes, panel_lo, cutoff_year,
     )
     print(f"  indicator panel: {len(panel):,} rows ({panel_lo}..{cutoff_year})")
+
+    # v6.5 (T8.5 / Tariq §5.2 step ii): apply transform layer BEFORE
+    # z-scoring. This brings the v6 evaluator into conformance with
+    # charter A6 (canonical_length re-derivation on transformed series)
+    # and T5 Bridge B5+'s ratified routing to Path A on Stage F.
+    # Gated on rule_v2_evaluation so the v4/v5 D-arm sanity-check path
+    # is unchanged.
+    if rule_v2_evaluation and canonical_length_config:
+        print(f"\n[3b] Applying v0.2 transform layer (T8.5 / Tariq §5.2)")
+        panel = apply_transform_layer(panel, canonical_length_config)
 
     gt = au.load_event_ground_truth(
         ath, "qgi-data-lake-222222222222", "QGI-Lambda-Workgroup",
@@ -2192,6 +2336,15 @@ def main(
         "falsification_config_loaded": falsification_config is not None,
         "falsification_config_sha256": _hash_config(falsification_config),
         "rule_v2_evaluation_mode": rule_v2_evaluation,
+        # v6.5 NEW (T8.5 / Tariq §5.4): transform layer provenance.
+        # Records whether the panel was transformed (first_diff / log_diff /
+        # pass_through + optional demean) per the canonical_length_config
+        # dispatch BEFORE z-scoring. False under D-arm sanity-check mode;
+        # True under rule_v2_evaluation. T11 falsification report MUST
+        # cite this field to disambiguate raw-panel vs transformed-panel runs.
+        "transform_layer_applied": (
+            rule_v2_evaluation and canonical_length_config is not None
+        ),
     }
     # v6 NEW (T7 §9 / charter A8): pre-CIPS-validation label.
     # Non-strippable until the 2026-06-04 CIPS run completes.
