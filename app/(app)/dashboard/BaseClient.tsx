@@ -1356,8 +1356,9 @@ export function BaseClient({
                     <span
                       className="font-data text-[10px] font-semibold shrink-0"
                       style={{ color: "var(--qgi-amber)" }}
+                      title="Pattern Power Score — strength + persistence + breadth"
                     >
-                      PPS {p.pattern_power_score.toFixed(0)}
+                      Score {p.pattern_power_score.toFixed(0)}
                     </span>
                   </button>
                 </li>

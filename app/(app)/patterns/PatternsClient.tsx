@@ -850,7 +850,7 @@ export default function PatternsClient({
     contextLine = `${countryAName || countryA} + ${countryBName || countryB}: ${allWindows.length} windows  \u00b7  lengths ${globalMinLen}-${globalMaxLen} years`;
   } else if (browseState === "S3" && detail) {
     const meta = detail.metadata;
-    contextLine = `${meta.pattern_length} years  \u00b7  ${meta.num_indexes} indicators  \u00b7  PPS ${Number(meta.pattern_power_score) <= 1 ? Number(meta.pattern_power_score).toFixed(2) : Math.round(Number(meta.pattern_power_score))}`;
+    contextLine = `${meta.pattern_length} years  \u00b7  ${meta.num_indexes} indicators  \u00b7  Score ${Number(meta.pattern_power_score) <= 1 ? Number(meta.pattern_power_score).toFixed(2) : Math.round(Number(meta.pattern_power_score))}`;
   }
 
   // ---- Export helpers ----
@@ -897,7 +897,7 @@ export default function PatternsClient({
       `Length:     ${meta.pattern_length} years`,
       `Indicators: ${meta.num_indexes}`,
       `Avg Corr:   ${Number(meta.avg_correlation).toFixed(3)}`,
-      `PPS:        ${ppsDisplay}`,
+      `Score:      ${ppsDisplay}`,
       ``,
       `Top indicators:`,
       ...detail.scdis
@@ -1199,7 +1199,7 @@ export default function PatternsClient({
               >
                 {windowsLoading
                   ? "Loading windows..."
-                  : `${allWindows.length} pattern windows \u00b7 ${windowLengths.length} unique lengths \u00b7 best PPS ${Math.round(topWindowPps)}`}
+                  : `${allWindows.length} pattern windows \u00b7 ${windowLengths.length} unique lengths \u00b7 best Score ${Math.round(topWindowPps)}`}
               </div>
             </div>
 
@@ -1395,8 +1395,8 @@ export default function PatternsClient({
                           <InfoTooltip text="Average Pearson correlation." />
                         </th>
                         <th className="px-3 py-2.5 text-left pl-6">
-                          PPS
-                          <InfoTooltip text="Pattern Power Score." />
+                          SCORE
+                          <InfoTooltip text="Pattern Power Score — strength + persistence + breadth." />
                         </th>
                         <th className="px-3 py-2.5 text-right">
                           LEAD
@@ -1711,8 +1711,9 @@ export default function PatternsClient({
                           <div
                             className="text-[9px] tracking-widest uppercase"
                             style={{ color: "var(--qgi-text-dim)" }}
+                            title="Pattern Power Score — strength + persistence + breadth"
                           >
-                            PPS -- {ppsLbl}
+                            SCORE -- {ppsLbl}
                           </div>
                         </div>
 

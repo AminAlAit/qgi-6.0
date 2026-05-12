@@ -46,7 +46,7 @@ export function PatternScatter({ patterns }: Props) {
         return [
           `<b style="color:#38bdf8">${ca}</b> → <b style="color:#fb923c">${cb}</b>`,
           `Duration: ${len} yrs &nbsp;|&nbsp; Indexes: ${idx}`,
-          `PPS: <span style="color:#f59e0b">${Number(pps).toFixed(3)}</span>`,
+          `Score: <span style="color:#f59e0b">${Number(pps).toFixed(3)}</span>`,
           `${sya}–${Number(sya) + Number(len) - 1} / ${syb}–${Number(syb) + Number(len) - 1}`,
         ].join("<br/>");
       },

@@ -96,7 +96,7 @@ describe("PrecedentsV2List", () => {
     expect(screen.getByText("Tufte-style footnote variant →")).toBeInTheDocument();
   });
 
-  it("shows ADVISORY-ONLY label when flag is set", () => {
+  it("shows composite-only label when advisory-only flag is set", () => {
     render(
       <PrecedentsV2List
         recipes={[
@@ -108,7 +108,7 @@ describe("PrecedentsV2List", () => {
         totalLocked={13}
       />
     );
-    expect(screen.getByText("ADVISORY-ONLY")).toBeInTheDocument();
+    expect(screen.getByText("Composite-only")).toBeInTheDocument();
   });
 
   it("renders generated_at and model_version in footer", () => {
@@ -128,7 +128,7 @@ describe("PrecedentsV2List", () => {
     expect(footer?.textContent).toContain("v1.0-abc1234 (2026-05-11)");
   });
 
-  it("renders 'of 13 LOCKed' with correct whitespace", () => {
+  it("renders 'of 13 validated' with correct whitespace", () => {
     // Regression test for JSX whitespace-collapse bug ("4of 13" vs "4 of 13")
     render(
       <PrecedentsV2List
@@ -139,8 +139,8 @@ describe("PrecedentsV2List", () => {
         totalLocked={13}
       />
     );
-    const paragraph = screen.getByText(/LOCKed recipes from the hybrid/);
-    expect(paragraph.textContent).toMatch(/\(2 of 13 LOCKed/);
+    const paragraph = screen.getByText(/validated recipes from the hybrid/);
+    expect(paragraph.textContent).toMatch(/\(2 of 13 validated/);
     expect(paragraph.textContent).not.toMatch(/\(2of 13/);
   });
 });

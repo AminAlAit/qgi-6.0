@@ -188,18 +188,19 @@ export function AdvisoryOnlyCallout({
 }) {
   const body = (
     <>
-      <strong>ADVISORY-ONLY:</strong> this recipe has{" "}
-      <span className="font-data">n_pos_LOCO = {nPosLoco ?? 1}</span> in the held-out
-      partition (sole-positive). Per Stage 5 §F-H-3 buyer-disclosure rule, do not use as
-      primary signal for standalone risk pricing — only as one component of a composite
-      score.
+      <strong>Composite-only signal:</strong> this recipe has{" "}
+      <span className="font-data">
+        {nPosLoco ?? 1} held-out positive{(nPosLoco ?? 1) === 1 ? "" : "s"}
+      </span>
+      . Per buyer-disclosure rule, do not use as a primary signal for standalone risk
+      pricing — only as one component of a composite score.
     </>
   );
   if (style === "tufte") {
     return <TufteCallout level="warning">{body}</TufteCallout>;
   }
   return (
-    <LloydsCallout level="warning" title="ADVISORY-ONLY (F-H-3)">
+    <LloydsCallout level="warning" title="Composite-only signal">
       {body}
     </LloydsCallout>
   );
@@ -252,7 +253,7 @@ export function ConcentrationAlertCallout({
     <>
       Top-1 training country accounts for{" "}
       <span className="font-data font-semibold">{(share * 100).toFixed(1)}%</span> of the
-      LOCO partition. Recipe predictions in {country}-adjacent country-years should be
+      held-out partition. Recipe predictions in {country}-adjacent country-years should be
       interpreted with the training-distribution caveat.
     </>
   );
@@ -305,7 +306,7 @@ export function NotMeasuredHint({
     return <TufteCallout level="info">{body}</TufteCallout>;
   }
   return (
-    <LloydsCallout level="info" title="Anchor AHI: Not measured">
+    <LloydsCallout level="info" title="Anchor stability: not yet measured">
       <span className="font-semibold italic">{body}</span>
     </LloydsCallout>
   );
@@ -361,9 +362,9 @@ export function InterpretationHintBadge({
 export function FRuleAnomalyCallout({ style }: { style: CalloutStyle }) {
   const body = (
     <>
-      In-sample F2 falls below threshold under the assigned architecture; tier status
-      rests on out-of-country LOCO discrimination alone. Buyer- disclosure caveat: do not
-      cite the tier label without this anomaly disclosed.
+      In-sample fit falls below threshold under the assigned architecture; tier status
+      rests on out-of-country discrimination alone. Buyer-disclosure caveat: do not cite
+      the tier label without this anomaly disclosed.
     </>
   );
   if (style === "tufte") {
