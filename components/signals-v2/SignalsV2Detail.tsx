@@ -177,27 +177,31 @@ export function SignalsV2Detail({
             label="Out-of-country"
             value={recipe.loco_auc.toFixed(4)}
             sub={`${recipe.n_pos_loco} held-out positive${recipe.n_pos_loco === 1 ? "" : "s"}`}
+            tooltip="Discrimination score on countries the model never saw during training (0.5 = chance, 1.0 = perfect). LOCO AUC."
           />
           <Metric
             label="In-sample"
             value={recipe.in_sample_f2_auc.toFixed(4)}
             sub={`95% CI [${recipe.in_sample_f2_ci_lower.toFixed(3)}, ${recipe.in_sample_f2_ci_upper.toFixed(3)}]`}
+            tooltip="Discrimination score on the training partition. F2 AUC weights recall more than precision (5x)."
           />
           <Metric
             label="Calibration error"
             value={recipe.in_sample_f1_ece.toFixed(4)}
             sub="overall"
+            tooltip="Average gap between predicted probability and observed frequency, in-sample. 0 = perfectly calibrated. ECE."
           />
         </div>
       </section>
 
-      {/* Anchor AHI */}
+      {/* Anchor stability (per-recipe AHI) */}
       <section className="mb-8">
         <h2
           className="text-xs tracking-widest uppercase mb-3"
           style={{ color: "var(--qgi-text-dim)" }}
+          title="Anchor Health Index — robustness of the recipe to held-out anchor events"
         >
-          Anchor AHI (per-recipe)
+          Anchor stability (per-recipe)
         </h2>
         {recipe.anchor_ahi_value !== null ? (
           <div
@@ -306,7 +310,18 @@ export function SignalsV2Detail({
   );
 }
 
-function Metric({ label, value, sub }: { label: string; value: string; sub?: string }) {
+function Metric({
+  label,
+  value,
+  sub,
+  tooltip,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  /** Native `title` tooltip — buyer-facing label glosses for analyst readers. */
+  tooltip?: string;
+}) {
   return (
     <div>
       <div
@@ -315,7 +330,7 @@ function Metric({ label, value, sub }: { label: string; value: string; sub?: str
       >
         {value}
       </div>
-      <div className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
+      <div className="text-xs" style={{ color: "var(--qgi-text-dim)" }} title={tooltip}>
         {label}
       </div>
       {sub && (

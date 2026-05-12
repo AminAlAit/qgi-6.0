@@ -362,9 +362,9 @@ export function InterpretationHintBadge({
 export function FRuleAnomalyCallout({ style }: { style: CalloutStyle }) {
   const body = (
     <>
-      In-sample F2 falls below threshold under the assigned architecture; tier status
-      rests on out-of-country LOCO discrimination alone. Buyer- disclosure caveat: do not
-      cite the tier label without this anomaly disclosed.
+      In-sample fit falls below threshold under the assigned architecture; tier status
+      rests on out-of-country discrimination alone. Buyer-disclosure caveat: do not cite
+      the tier label without this anomaly disclosed.
     </>
   );
   if (style === "tufte") {

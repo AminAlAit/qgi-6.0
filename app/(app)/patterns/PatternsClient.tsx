@@ -1395,8 +1395,8 @@ export default function PatternsClient({
                           <InfoTooltip text="Average Pearson correlation." />
                         </th>
                         <th className="px-3 py-2.5 text-left pl-6">
-                          PPS
-                          <InfoTooltip text="Pattern Power Score." />
+                          SCORE
+                          <InfoTooltip text="Pattern Power Score — strength + persistence + breadth." />
                         </th>
                         <th className="px-3 py-2.5 text-right">
                           LEAD

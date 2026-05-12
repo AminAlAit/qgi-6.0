@@ -280,7 +280,7 @@ describe("InterpretationHintBadge", () => {
 describe("FRuleAnomalyCallout", () => {
   it("renders the F-rule anomaly disclosure on Tufte", () => {
     render(<FRuleAnomalyCallout style="tufte" />);
-    expect(screen.getByText(/In-sample F2 falls below threshold/)).toBeInTheDocument();
+    expect(screen.getByText(/In-sample fit falls below threshold/)).toBeInTheDocument();
   });
 
   it("renders title on Lloyd's variant", () => {
