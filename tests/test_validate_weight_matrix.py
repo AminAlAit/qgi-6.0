@@ -1552,7 +1552,7 @@ def _install_main_monkeypatches(monkeypatch, tmp_path, fixture):
 
 def test_main_end_to_end_arm_D_writes_legacy_alias(monkeypatch, tmp_path):
     """m2 — D-arm end-to-end. Verifies:
-    - output JSON's schema_version == 4
+    - output JSON's schema_version matches the current SCHEMA_VERSION constant
     - output's ablation_arm == "D" and ablation_arm_config is unsigned/no-filter
     - legacy alias `phase4-validation.json` IS written for the D-arm
     - summary keys are present and finite
@@ -1571,7 +1571,11 @@ def test_main_end_to_end_arm_D_writes_legacy_alias(monkeypatch, tmp_path):
     out_path = fixture["ref_dir"] / "phase4-validation-armD.json"
     assert out_path.exists(), f"per-arm output not written: {out_path}"
     out = json.loads(out_path.read_text(encoding="utf-8"))
-    assert out["schema_version"] == 4
+    # v6 (T8): schema_version follows mod.SCHEMA_VERSION rather than the
+    # literal 4 from v4. The v4-era D-arm sanity-check path is preserved
+    # in v6 (no canonical-length/exclusion config required for D-arm-
+    # without-baselines), but the schema number bumps with the script.
+    assert out["schema_version"] == mod.SCHEMA_VERSION
     assert out["ablation_arm"] == "D"
     assert out["ablation_arm_config"] == {
         "use_signed_scoring": False,
@@ -1586,7 +1590,7 @@ def test_main_end_to_end_arm_D_writes_legacy_alias(monkeypatch, tmp_path):
     )
     legacy = json.loads(legacy_path.read_text(encoding="utf-8"))
     assert legacy["ablation_arm"] == "D"
-    assert legacy["schema_version"] == 4
+    assert legacy["schema_version"] == mod.SCHEMA_VERSION
 
     # Summary keys present (per the v4 schema; values may be NaN on small
     # synthetic fixtures where AUC is undefined, but the keys must exist)
@@ -1911,3 +1915,598 @@ def test_main_end_to_end_strata_threshold_reflected_in_config(monkeypatch, tmp_p
                      .read_text(encoding="utf-8"))
     assert out["config"]["strata_indicator_count_threshold"] == 7
     assert out["stratified_auc"]["threshold"] == 7
+
+
+# ===========================================================================
+# v6 NEW (T8 / #672 / Phase 5 v0.2 Path A):
+#   rule v2 verdict + posterior-update protocol + config loaders +
+#   multi-seed baseline
+# ===========================================================================
+
+
+def test_v6_schema_version_is_5():
+    """T8 bumps SCHEMA_VERSION from 4 to 5. v6 output JSONs carry the
+    rule v2 verdict + posterior block; pre-T8 v4 consumers will see a
+    new schema version and can refuse to parse if they don't understand
+    it."""
+    assert mod.SCHEMA_VERSION == 5
+
+
+def test_v6_rule_v2_constants_match_pre_reg():
+    """T8 hard-codes rule v2 thresholds matching pre-reg spec `a2f5db4`.
+    Any drift requires a Majles convening per Roshani §3 + Kwame §1.
+    Tripwire: if these constants change without the JSON config also
+    being updated, T9 fires with a divergent gate."""
+    assert mod.RULE_V2_STRATUM_THRESHOLD == 10
+    assert mod.RULE_V2_CARDINALITY_FLOOR_N == 30
+    assert mod.RULE_V2_FALSIFY_BELOW_SWING == 0.03
+
+
+def test_v6_posterior_priors_match_pre_reg():
+    """Roshani A3 posterior protocol: prior 0.30 ± 0.05, material update
+    threshold 0.15. Verbatim from pre-reg spec §3."""
+    assert mod.POSTERIOR_PRIOR_MEAN == 0.30
+    assert mod.POSTERIOR_PRIOR_UNCERTAINTY == 0.05
+    assert mod.POSTERIOR_MATERIAL_UPDATE_THRESHOLD == 0.15
+
+
+def test_v6_default_baseline_seeds_are_5():
+    """Roshani A3 + Kwame bright-line: ≥5 seeds. Tuple is fixed for
+    reproducibility; reseeding requires Majles convening per Protocol 5."""
+    assert mod.DEFAULT_BASELINE_SEEDS == (17, 42, 123, 271, 314)
+    assert len(mod.DEFAULT_BASELINE_SEEDS) == 5
+
+
+# ---------------------------------------------------------------------------
+# compute_rule_v2_verdict
+# ---------------------------------------------------------------------------
+
+def test_verdict_inert_when_stratum_below_cardinality_floor():
+    """Stratum cardinality < N_floor → INERT, no further evaluation."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=10,  # below floor of 30
+        stratum_mean_auc=0.6, stratum_ci_lower=0.55,
+        a_minus_d_swing=0.10, anchor_pass_evaluable=6,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "INERT"
+    assert "stratum_cardinality_below_N" in out["inert_reason"]
+    assert out["tier_conditions_evaluated"] is None
+
+
+def test_verdict_inert_when_caller_provides_byte_identical_trigger():
+    """Caller-provided INERT trigger (e.g. all-4-arms-byte-identical)
+    fires INERT even when cardinality passes."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.6, stratum_ci_lower=0.55,
+        a_minus_d_swing=0.10, anchor_pass_evaluable=6,
+        anchor_evaluable_total=8,
+        inert_triggers=[mod.RULE_V2_INERT_TRIGGER_BYTE_IDENTICAL],
+    )
+    assert out["decision"] == "INERT"
+    assert "all_4_arms_byte_identical" in out["inert_reason"]
+
+
+def test_verdict_inert_when_stratum_statistic_undefined():
+    """NaN mean_auc or swing → INERT (not arbitrary tier classification)."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=float("nan"),
+        stratum_ci_lower=float("nan"),
+        a_minus_d_swing=0.10, anchor_pass_evaluable=6,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "INERT"
+    assert "undefined" in out["inert_reason"]
+
+
+def test_verdict_hard_falsify_all_3_conditions():
+    """HARD-FALSIFY: mean AUC < 0.50 AND CI lower < 0.48 AND anchors < 4/8."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.45, stratum_ci_lower=0.40,
+        a_minus_d_swing=0.01, anchor_pass_evaluable=2,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "HARD-FALSIFY"
+    assert "permanently" in out["rationale"].lower() or "permanent" in out["rationale"].lower()
+
+
+def test_verdict_hard_falsify_requires_all_3_not_just_2():
+    """If only 2 of 3 HARD-FALSIFY conditions fire, NOT HARD-FALSIFY
+    (single-seed thin-evidence collapse protection per spec §5)."""
+    # mean AUC < 0.50 AND CI lower < 0.48 BUT anchors 5/8 (>= 4)
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.45, stratum_ci_lower=0.40,
+        a_minus_d_swing=0.01, anchor_pass_evaluable=5,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] != "HARD-FALSIFY"
+    assert out["decision"] == "SOFT-FALSIFY"  # swing < 0.03, non-INERT stratum
+
+
+def test_verdict_pass_all_3_conditions():
+    """PASS: swing >= 0.05 AND mean AUC >= 0.55 AND anchors >= 6/8."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.60, stratum_ci_lower=0.55,
+        a_minus_d_swing=0.08, anchor_pass_evaluable=7,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "PASS"
+
+
+def test_verdict_pass_requires_all_3_not_just_2():
+    """If only 2 of 3 PASS conditions fire, NOT PASS."""
+    # swing 0.08 + mean_auc 0.60 BUT anchors only 5/8 (< 6)
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.60, stratum_ci_lower=0.55,
+        a_minus_d_swing=0.08, anchor_pass_evaluable=5,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] != "PASS"
+
+
+def test_verdict_partial_swing_and_auc_in_range():
+    """PARTIAL: swing in [0.02, 0.05) AND mean AUC in [0.50, 0.55)."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.52, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.04, anchor_pass_evaluable=4,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "PARTIAL"
+
+
+def test_verdict_soft_falsify_swing_below_threshold():
+    """SOFT-FALSIFY: swing < 0.03 on a non-INERT stratum (default tier)."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.52, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.01, anchor_pass_evaluable=5,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "SOFT-FALSIFY"
+
+
+def test_verdict_raises_on_invalid_anchor_inputs():
+    """anchor_pass > anchor_evaluable_total is structurally invalid."""
+    with pytest.raises(ValueError, match="anchor_pass"):
+        mod.compute_rule_v2_verdict(
+            stratum_n_cells=100,
+            stratum_mean_auc=0.55, stratum_ci_lower=0.52,
+            a_minus_d_swing=0.04,
+            anchor_pass_evaluable=10,
+            anchor_evaluable_total=8,
+        )
+
+
+# ---------------------------------------------------------------------------
+# compute_posterior_update
+# ---------------------------------------------------------------------------
+
+def test_posterior_unchanged_on_inert():
+    """INERT verdict produces no update — posterior == prior."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="INERT", a_minus_d_swing=None,
+    )
+    assert out["posterior_mean"] == pytest.approx(0.30, abs=1e-9)
+    assert out["posterior_movement"] == pytest.approx(0.0, abs=1e-9)
+    assert out["is_material"] is False
+
+
+def test_posterior_material_update_on_hard_falsify():
+    """HARD-FALSIFY produces a material downward update (≥0.15 magnitude,
+    direction negative)."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="HARD-FALSIFY", a_minus_d_swing=0.0,
+    )
+    assert out["posterior_movement"] < -0.15
+    assert out["is_material"] is True
+    assert out["posterior_mean"] < out["prior_mean"]
+
+
+def test_posterior_material_update_on_pass():
+    """PASS produces a material upward update (≥0.15 magnitude, positive)."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="PASS", a_minus_d_swing=0.08,
+    )
+    assert out["posterior_movement"] > 0.15
+    assert out["is_material"] is True
+    assert out["posterior_mean"] > out["prior_mean"]
+
+
+def test_posterior_immaterial_on_partial():
+    """PARTIAL produces a sub-material upward nudge."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="PARTIAL", a_minus_d_swing=0.03,
+    )
+    assert 0.0 < out["posterior_movement"] < 0.15
+    assert out["is_material"] is False
+
+
+def test_posterior_immaterial_on_soft_falsify():
+    """SOFT-FALSIFY produces a sub-material downward nudge."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="SOFT-FALSIFY", a_minus_d_swing=0.01,
+    )
+    assert -0.15 < out["posterior_movement"] < 0.0
+    assert out["is_material"] is False
+
+
+def test_posterior_clamps_to_unit_interval():
+    """Posterior must stay in [0, 1] even with extreme priors."""
+    out = mod.compute_posterior_update(
+        rule_v2_decision="HARD-FALSIFY", a_minus_d_swing=0.0,
+        prior_mean=0.10,  # Already low; HARD-FALSIFY would push below 0
+    )
+    assert 0.0 <= out["posterior_mean"] <= 1.0
+
+
+# ---------------------------------------------------------------------------
+# load_canonical_length_config / load_exclusion_list_config / load_v0_2_falsification_config
+# ---------------------------------------------------------------------------
+
+def test_load_canonical_length_config_missing_file_optional(tmp_path):
+    """When required=False (D-arm sanity-check path), missing file
+    returns None silently."""
+    out = mod.load_canonical_length_config(
+        path=tmp_path / "missing.json", required=False,
+    )
+    assert out is None
+
+
+def test_load_canonical_length_config_missing_file_required_raises(tmp_path):
+    """When required=True (any rule-v2 evaluation), missing file is
+    a hard error per T7 §4 binding."""
+    with pytest.raises(FileNotFoundError, match="T7 §4 binding"):
+        mod.load_canonical_length_config(
+            path=tmp_path / "missing.json", required=True,
+        )
+
+
+def test_load_canonical_length_config_present(tmp_path):
+    """Present file is loaded and returned as a dict."""
+    p = tmp_path / "v0.2-canonical-length.json"
+    p.write_text('{"schema_version": 1, "indicators": {}}')
+    out = mod.load_canonical_length_config(path=p, required=True)
+    assert out["schema_version"] == 1
+
+
+def test_load_exclusion_list_config_missing_file_optional(tmp_path):
+    out = mod.load_exclusion_list_config(
+        path=tmp_path / "missing.json", required=False,
+    )
+    assert out is None
+
+
+def test_load_exclusion_list_config_missing_file_required_raises(tmp_path):
+    with pytest.raises(FileNotFoundError, match="T7 §5 binding"):
+        mod.load_exclusion_list_config(
+            path=tmp_path / "missing.json", required=True,
+        )
+
+
+def test_load_exclusion_list_config_extracts_indicator_ids(tmp_path):
+    """Returns the SET of `id` fields from `indicators` array — used to
+    filter the weight matrix at scoring time per T7 §5 (b)."""
+    p = tmp_path / "v0.2-demeaning-insufficient-exclusion.json"
+    p.write_text(json.dumps({
+        "exclusion_basis": "amendment A7 / phase-5-v0.2.md §5 decision (b)",
+        "indicators": [
+            {"id": "FP.CPI.TOTL.ZG", "stage_e_score": 0.66},
+            {"id": "NY.GDP.PCAP.CD", "stage_e_score": 0.54},
+            {"id": "SH.DYN.MORT", "stage_e_score": 0.36},
+            {"id": "SP.POP.TOTL", "stage_e_score": 0.31},
+        ],
+    }))
+    out = mod.load_exclusion_list_config(path=p, required=True)
+    assert out == {"FP.CPI.TOTL.ZG", "NY.GDP.PCAP.CD", "SH.DYN.MORT", "SP.POP.TOTL"}
+
+
+def test_load_v0_2_falsification_config_missing_file_optional(tmp_path):
+    out = mod.load_v0_2_falsification_config(
+        path=tmp_path / "missing.json", required=False,
+    )
+    assert out is None
+
+
+def test_load_v0_2_falsification_config_missing_file_required_raises(tmp_path):
+    with pytest.raises(FileNotFoundError, match="T3 pre-reg JSON config"):
+        mod.load_v0_2_falsification_config(
+            path=tmp_path / "missing.json", required=True,
+        )
+
+
+# ---------------------------------------------------------------------------
+# v6 main() end-to-end contract
+# ---------------------------------------------------------------------------
+
+def test_v6_main_emits_rule_v2_verdict_and_posterior(monkeypatch, tmp_path):
+    """End-to-end: D-arm sanity-check run emits the v6 top-level
+    `rule_v2_verdict` + `posterior_update` blocks even without
+    --rule-v2-evaluation, because the verdict is computed on every run."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert "rule_v2_verdict" in out
+    assert "decision" in out["rule_v2_verdict"]
+    assert out["rule_v2_verdict"]["decision"] in (
+        "INERT", "HARD-FALSIFY", "SOFT-FALSIFY", "PARTIAL", "PASS",
+    )
+    assert "posterior_update" in out
+    assert "posterior_mean" in out["posterior_update"]
+
+
+def test_v6_main_emits_pre_cips_validation_label(monkeypatch, tmp_path):
+    """T7 §9 / charter A8: every per-arm JSON carries the non-strippable
+    pre-CIPS-validation label until 2026-06-04."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert out["pre_cips_validation_label"] is True
+    assert out["cips_validation_expected_after"] == "2026-06-04"
+
+
+def test_v6_main_output_is_rfc_8259_compliant(monkeypatch, tmp_path):
+    """#679 root-cause fix: emitted JSON must NOT contain bare NaN
+    tokens. Re-parse with allow_nan=False to verify strict compliance."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    raw = (fixture["ref_dir"] / "phase4-validation-armD.json").read_text(
+        encoding="utf-8"
+    )
+    # If `NaN` (bare token) is present, json.loads with parse_constant
+    # set to a raising callable will fail. The default parse_constant
+    # accepts NaN/Infinity; we override to verify strict RFC 8259.
+    def _reject_nan_inf(token):
+        raise ValueError(f"non-RFC-8259 token {token!r} found in output")
+    json.loads(raw, parse_constant=_reject_nan_inf)
+    assert "NaN" not in raw
+
+
+def test_v6_main_t7_config_provenance_block_present(monkeypatch, tmp_path):
+    """v6 output carries `t7_config_provenance` block recording whether
+    each binding config was loaded. Useful for the T11 falsification
+    report's audit trail."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    p = out["t7_config_provenance"]
+    for key in ("canonical_length_config_loaded", "canonical_length_config_path",
+                "exclusion_list_loaded", "exclusion_list_size",
+                "exclusion_list_config_path", "falsification_config_loaded",
+                "rule_v2_evaluation_mode"):
+        assert key in p, f"missing t7_config_provenance key: {key}"
+    # In a D-arm sanity-check run, the rule_v2_evaluation mode is False
+    assert p["rule_v2_evaluation_mode"] is False
+
+
+def test_v6_main_rule_v2_evaluation_mode_requires_configs(monkeypatch, tmp_path):
+    """When `rule_v2_evaluation=True`, missing T7 configs are a hard
+    error per the T7 §4 + §5 binding."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    # Configs intentionally NOT created in tmp_path/qgi-data/reference/
+    with pytest.raises(FileNotFoundError, match="T7 §4 binding|T3 pre-reg|T7 §5 binding"):
+        mod.main(
+            cutoff_year=2014, end_year=2025, with_baselines=False,
+            ablation_arm="D", bootstrap_resamples=20,
+            rule_v2_evaluation=True,
+            canonical_length_config_path=tmp_path / "missing-canon.json",
+            exclusion_list_config_path=tmp_path / "missing-excl.json",
+        )
+
+
+def test_v6_main_multi_seed_baseline_block_when_with_baselines(monkeypatch, tmp_path):
+    """When --with-baselines is set, the v6 output carries the
+    multi-seed baseline block with the default 5 seeds."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=True,
+        ablation_arm="D", bootstrap_resamples=20,
+        # Use 2 seeds for speed; the 5-seed default is exercised in the
+        # constants test above.
+        baseline_seeds=(17, 42),
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert "baseline_random_multi_seed" in out
+    assert out["baseline_random_multi_seed"]["seeds"] == [17, 42]
+    assert out["baseline_random_multi_seed"]["n_seeds"] == 2
+    assert len(out["baseline_random_multi_seed"]["per_seed"]) == 2
+
+
+def test_v6_nan_to_none_helper():
+    """_nan_to_none is the load-bearing JSON-emission helper for #679.
+    Pin its semantics: NaN floats → None; non-NaN floats unchanged;
+    nested dicts/lists recursed."""
+    nan = float("nan")
+    out = mod._nan_to_none({
+        "a": 1.0,
+        "b": nan,
+        "c": [1, nan, {"d": nan, "e": 2}],
+        "f": "string",
+        "g": None,
+    })
+    assert out["a"] == 1.0
+    assert out["b"] is None
+    assert out["c"] == [1, None, {"d": None, "e": 2}]
+    assert out["f"] == "string"
+    assert out["g"] is None
+
+
+# ---------------------------------------------------------------------------
+# v6 review-fix tests: MAJOR #4 (exclusion-list consumption) + MINOR #2
+# (SOFT-FALSIFY / PARTIAL 3rd-condition fallback flag)
+# ---------------------------------------------------------------------------
+
+def test_v6_soft_falsify_2_of_3_fallback_flags_t11_confirmation():
+    """When the random-baseline-delta-negative 3rd condition is not
+    supplied (per-arm context), the verdict carries
+    `requires_t11_confirmation=True` so the T11 aggregator knows the
+    verdict is provisional pending the cross-arm signal."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.51, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.01, anchor_pass_evaluable=5,
+        anchor_evaluable_total=8,
+        random_baseline_delta_negative_at_multi_seed=None,
+    )
+    assert out["decision"] == "SOFT-FALSIFY"
+    assert out.get("requires_t11_confirmation") is True
+
+
+def test_v6_soft_falsify_3_of_3_no_t11_flag():
+    """When T11 supplies the 3rd condition (negative=True), no flag is
+    set; the verdict is binding."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.51, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.01, anchor_pass_evaluable=5,
+        anchor_evaluable_total=8,
+        random_baseline_delta_negative_at_multi_seed=True,
+    )
+    assert out["decision"] == "SOFT-FALSIFY"
+    assert out.get("requires_t11_confirmation") is False
+
+
+def test_v6_partial_2_of_3_fallback_flags_t11_confirmation():
+    """PARTIAL with anchor_battery_is_mixed=None → fallback + flag."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.52, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.04, anchor_pass_evaluable=4,
+        anchor_evaluable_total=8,
+        anchor_battery_is_mixed=None,
+    )
+    assert out["decision"] == "PARTIAL"
+    assert out.get("requires_t11_confirmation") is True
+
+
+def test_v6_partial_3_of_3_no_t11_flag():
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.52, stratum_ci_lower=0.49,
+        a_minus_d_swing=0.04, anchor_pass_evaluable=4,
+        anchor_evaluable_total=8,
+        anchor_battery_is_mixed=True,
+    )
+    assert out["decision"] == "PARTIAL"
+    assert out.get("requires_t11_confirmation") is False
+
+
+def test_v6_pass_swing_at_exact_0_05_boundary():
+    """Boundary semantics check: swing == 0.05 must route to PASS,
+    NOT PARTIAL. PARTIAL upper bound is `< 0.05` (strict)."""
+    out = mod.compute_rule_v2_verdict(
+        stratum_n_cells=100,
+        stratum_mean_auc=0.60, stratum_ci_lower=0.55,
+        a_minus_d_swing=0.05,  # exactly the PASS lower bound
+        anchor_pass_evaluable=7,
+        anchor_evaluable_total=8,
+    )
+    assert out["decision"] == "PASS"
+
+
+def test_v6_t7_config_provenance_carries_sha256_hashes(monkeypatch, tmp_path):
+    """v6 review fix: t7_config_provenance now carries SHA-256 hashes
+    of the canonical_length and falsification configs so the T11
+    falsification report's audit trail can verify config integrity."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    p = out["t7_config_provenance"]
+    # Hashes are None when config not loaded (D-arm sanity-check path)
+    # but the KEYS must exist.
+    assert "canonical_length_config_sha256" in p
+    assert "falsification_config_sha256" in p
+    # exclusion_list_applied_to_weights_df is the NEW field tracking
+    # whether T7 §5 (b) exclusion was actually applied (vs just loaded).
+    assert "exclusion_list_applied_to_weights_df" in p
+    # D-arm sanity-check run: rule_v2_evaluation=False → exclusion NOT applied
+    assert p["exclusion_list_applied_to_weights_df"] is False
+
+
+def test_v6_exclusion_list_applied_filters_weights_df(monkeypatch, tmp_path):
+    """v6 review fix MAJOR #4: when rule_v2_evaluation=True AND
+    exclusion_list_config is present, the weights_df is filtered to
+    drop demeaning-insufficient indicators BEFORE evaluate_weights()."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    # Write a canonical-length-config + falsification-config + exclusion
+    # list into the fixture's reference dir so rule_v2_evaluation=True
+    # doesn't hard-error.
+    canon = fixture["ref_dir"] / "v0.2-canonical-length.json"
+    canon.write_text('{"schema_version": 1, "indicators": {}}')
+    fals = fixture["ref_dir"] / "v0.2-falsification-config.json"
+    fals.write_text('{"schema_version": 1}')
+    excl = fixture["ref_dir"] / "v0.2-demeaning-insufficient-exclusion.json"
+    # Use a fixture indicator id_string to actually drop rows. The
+    # fixture builder creates indicators named IND_00, IND_01, etc.
+    # via _build_main_fixture; we'll exclude IND_00.
+    excl.write_text(json.dumps({
+        "indicators": [{"id": "IND_00", "stage_e_score": 0.99}],
+    }))
+
+    # Monkeypatch the loaders to read from the fixture's reference dir
+    # (otherwise they try the default ROOT path).
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+        rule_v2_evaluation=True,
+        canonical_length_config_path=canon,
+        exclusion_list_config_path=excl,
+    )
+
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    p = out["t7_config_provenance"]
+    assert p["rule_v2_evaluation_mode"] is True
+    assert p["exclusion_list_loaded"] is True
+    assert p["exclusion_list_size"] == 1
+    # Critical: the MAJOR #4 fix means the exclusion was APPLIED to weights_df,
+    # not just loaded.
+    assert p["exclusion_list_applied_to_weights_df"] is True
