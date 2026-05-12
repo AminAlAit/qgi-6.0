@@ -1,126 +1,80 @@
 /**
- * COUNTRIES V2 — Table variant (small-multiples)
+ * /countries-v2-table — Dense analyst table variant (Sard Majles S-Country 2026-05-02)
  *
- * Sard Majles S-Country decision (2026-05-02):
- * Pure small-multiples table (Elif Şahin-Moreau / Rodrigo Vasconcelos-Kwok /
- * Tomás Drahovský-Osei recommendation) — 1 row per country, each row has
- * 8 micro-bars (one per L1) showing percentile-position-within-distribution.
- * Tufte school: maximum data density per pixel. Power-user friendly.
+ * Design: Elif Şahin-Moreau (Tufte data-ink, small-multiples) +
+ *         Rodrigo Vasconcelos-Kwok (FT/Bloomberg terminal density)
  *
- * Founder direction (2026-05-02):
- * Ship 2 sibling V2 pages of /countries (delta version dropped — Tomás
- * ship-blocker on data dependency). Founder picks after R8 local preview.
+ * Approach: 156-row sortable/filterable table, 1 row per country.
+ * Columns: Country, Tier, Top category, Activity, ML coverage, Trend, Updated.
+ * Sort: header click = single-column sort; shift-click = multi-column sort.
+ * Filter: tier button-group, region select, ML coverage threshold, activity threshold.
+ * Tier color on the tier cell only; everything else monochrome.
+ * Per-row click → /countries-v2-table/[country] (dense dossier).
  *
- * Implementation status: SCAFFOLD — design spec locked.
- * Pending: data integration, R11 cognitive walkthrough, mobile responsive.
+ * Power-user assumption. No tooltips on obvious columns.
+ * Small-multiples sparklines for the trend column (Tufte school).
  *
- * Cross-decision dependencies (locked Phase 3 + 4 outcomes):
- *   - Composite tier display = max(L1) badge (NOT manufactured OVR)
- *   - Calibration intervals: methodology page + /countries/[id] only, not browse
- *   - Citation furniture: hover-only (clean surface)
- *   - Per-L1 small-multiples = the badge per row (color = tier severity,
- *     bar position = percentile within global L1 distribution)
- *   - Demographic 3 already suppressed from fingerprints via Phase 5 Stage A
+ * Data source: country-risks.json (156 countries) + mock overlays.
+ * Implementation status: MOCK FILL — pre-decision preview.
  *
- * Decision file:
- *   qgi-docs/internal/majles/2026-05-02_S-Country_country_profile_redesign.md
+ * Cross-decision dependencies (locked Phase 3 + 4):
+ *   - Composite tier = max(L1) badge (NOT manufactured OVR)
+ *   - Per-L1 percentile micro-bars per Sard S-Country direction
+ *   - ML coverage = count of 13 LOCKed recipes with measured AHI (MOCK: 0-4)
+ *   - Calibration intervals: /countries/[id] only, not browse surface
+ *   - No demographic-3 column (suppressed Phase 5 Stage A)
  */
-import Link from "next/link";
+import { Suspense } from "react";
+import { getCountriesSortedByRisk } from "@/lib/country-risks";
+import { CountriesV2TableClient } from "@/components/countries-v2-table/CountriesV2TableClient";
+import type { Metadata } from "next";
 
-export const metadata = {
+export const revalidate = 3600;
+
+export const metadata: Metadata = {
   title: "Countries V2 — Table — QGI Intelligence",
+  description:
+    "Dense analyst table — 156 countries, sortable by tier, ML coverage, activity, and trend. Tufte small-multiples variant.",
   robots: { index: false, follow: false },
 };
 
-export default function CountriesV2TableScaffold() {
-  return (
-    <div className="max-w-5xl mx-auto px-6 py-12">
-      <header className="mb-8">
-        <div
-          className="text-[10px] tracking-widest uppercase mb-2"
+export default async function CountriesV2TablePage() {
+  let countries: Awaited<ReturnType<typeof getCountriesSortedByRisk>> = [];
+  let loadError: string | null = null;
+
+  try {
+    countries = await getCountriesSortedByRisk();
+  } catch (err) {
+    loadError = (err as Error).message;
+  }
+
+  if (loadError) {
+    return (
+      <div className="p-8 max-w-5xl mx-auto">
+        <h1
+          className="text-xs tracking-widest uppercase mb-4"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          V2 design exploration · Sibling A (small-multiples table)
-        </div>
-        <h1 className="text-2xl font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          Countries V2 — Table variant
+          Countries V2 — Table
         </h1>
-        <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
-          1 row per country with 8 per-L1 percentile micro-bars. Tufte school — maximum
-          data density. Replaces the FIFA-card pattern per AS1 + S-Country majles
-          direction. Power-user friendly: scannable, comparable across countries at a
-          glance.
-        </p>
-      </header>
-
-      <section
-        className="rounded-lg border p-6 mb-8"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2 className="text-sm font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          Implementation status
-        </h2>
-        <ul
-          className="text-xs space-y-2 list-disc list-inside"
-          style={{ color: "var(--qgi-text-muted)" }}
+        <div
+          className="rounded-lg p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+          }}
         >
-          <li>
-            <strong>Locked:</strong> small-multiples shape, per-L1 percentile encoding,
-            Composite tier badge (max L1), no calibration intervals on browse, hover-only
-            citations
-          </li>
-          <li>
-            <strong>Pending:</strong> data integration (compute per-L1 percentile rank for
-            each country), Tomás hard requirements (loading/empty/keyboard/microcopy +
-            WCAG once #579 lands), Sunita R11 cognitive walkthrough (3-5 sub-agents),
-            mobile responsive
-          </li>
-          <li>
-            <strong>M11 L1-score caveat (#580 + 2026-05-02 investigation):</strong> until
-            severity scores are added to curated events, ~25 countries (incl. India) have
-            ≤4 unique L1 values. The percentile micro-bars will reflect this compression
-            honestly — buyers will see uniform bars for those countries until corpus
-            enrichment lands.
-          </li>
-        </ul>
-      </section>
-
-      <section
-        className="rounded-lg border p-6"
-        style={{
-          backgroundColor: "var(--qgi-surface)",
-          borderColor: "var(--qgi-border)",
-        }}
-      >
-        <h2 className="text-sm font-semibold mb-3" style={{ color: "var(--qgi-text)" }}>
-          While V2 is in progress, use the originals
-        </h2>
-        <div className="flex flex-col sm:flex-row gap-3 text-sm">
-          <Link
-            href="/countries"
-            className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text)",
-            }}
-          >
-            → /countries (current FIFA-card)
-          </Link>
-          <Link
-            href="/countries-v2-narrative"
-            className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-accent)",
-              color: "var(--qgi-accent)",
-            }}
-          >
-            ↔ Compare with V2 Narrative variant
-          </Link>
+          <p className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
+            Country data unavailable: {loadError}
+          </p>
         </div>
-      </section>
-    </div>
+      </div>
+    );
+  }
+
+  return (
+    <Suspense fallback={null}>
+      <CountriesV2TableClient countries={countries} />
+    </Suspense>
   );
 }
