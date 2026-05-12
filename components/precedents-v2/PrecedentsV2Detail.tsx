@@ -400,12 +400,17 @@ function CalibrationTable({ recipe }: { recipe: BuyerMlRecipe }) {
               >
                 {r.tier}
                 {r.note && (
-                  <span
-                    className="text-[10px] ml-2"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                  >
-                    {r.note}
-                  </span>
+                  <>
+                    {/* Explicit text-node space — innerText concat artifact
+                        fix per Phase A2 (margin-left only provides visual
+                        space). */}{" "}
+                    <span
+                      className="text-[10px]"
+                      style={{ color: "var(--qgi-text-muted)" }}
+                    >
+                      {r.note}
+                    </span>
+                  </>
                 )}
               </td>
               <td
