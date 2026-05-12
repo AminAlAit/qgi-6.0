@@ -34,8 +34,15 @@ export function Leaderboard({ patterns }: Props) {
       >
         <span className="flex-1">PREDICTOR</span>
         <span className="flex-1">FOLLOWING</span>
-        <span className="w-16 text-right">PPS</span>
-        <span className="w-10 text-right">YRS</span>
+        <span
+          className="w-16 text-right"
+          title="Pattern Power Score — strength + persistence + breadth"
+        >
+          SCORE
+        </span>
+        <span className="w-10 text-right" title="Years of pattern history">
+          YRS
+        </span>
       </div>
       <div className="flex-1 overflow-y-auto">
         {patterns.map((p, i) => (
