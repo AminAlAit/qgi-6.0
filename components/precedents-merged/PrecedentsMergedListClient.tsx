@@ -701,7 +701,16 @@ function DisclosureStrip() {
       The 4 above passed ML adjudication: blind walk-forward backtest, calibration audit,
       4-pillar lock rubric. The 64 below are statistical correlations that have{" "}
       <strong>not</strong> been adjudicated yet — promotion candidates, not verified
-      predictions.
+      predictions.{" "}
+      {/* Brief cross-family handoff: "See related ranked patterns →" → /patterns
+          (Family 4 brief locked /patterns?sort=loco_auc, was /patterns/ranking). */}
+      <Link
+        href={"/patterns?sort=loco_auc" as Route}
+        className="underline underline-offset-2 hover:text-[var(--qgi-text)] transition-colors"
+        style={{ color: "rgba(245, 158, 11, 0.95)" }}
+      >
+        See related ranked patterns →
+      </Link>
     </div>
   );
 }
