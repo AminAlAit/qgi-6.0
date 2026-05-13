@@ -7,10 +7,11 @@ import type { Metadata } from "next";
 /**
  * /signals-merged — Preview-only route for A3 merger brief Family 3.
  *
- * Build PR #1 of 5 (incremental cadence, founder-gated cutover at PR #5):
- *   - PR #1 (this): route scaffold + Lloyd's banner + filter strip + 71-row
+ * Build PR #2 of 5 (incremental cadence, founder-gated cutover at PR #5):
+ *   - PR #1: route scaffold + Lloyd's banner + filter strip + 71-row
  *     aggregated table with tier vocabulary unified to HIGH/MODERATE/INDICATIVE
- *   - PR #2: "5 firing now" curated band + domain activation strip
+ *   - PR #2 (this): "5 firing now" curated band + 8-domain activation
+ *     strip rendered above the master list
  *   - PR #3: per-country watchlist /signals-merged/[country]
  *   - PR #4: per-(country, recipe) leaf with split-render by lineage
  *   - PR #5 (founder-gated): kill 4 V2 routes + /signals/country picker;
@@ -182,12 +183,42 @@ export default async function SignalsMergedPage() {
   // hourly along with the underlying snapshot.
   const generatedDate = new Date().toISOString().slice(0, 10);
 
+  // PR #2 — Domain activation strip data. For each of the 8 L1 groups,
+  // count: (a) how many categories with tier ≥ MODERATE belong to that
+  // L1; (b) the unique-country set those firing categories cover. REAL
+  // data — no preview chip on this widget.
+  const domainActivation: Array<{
+    code: string;
+    label: string;
+    shortLabel: string;
+    color: string;
+    n_categories: number;
+    n_countries: number;
+  }> = L1_GROUPS.map((g) => {
+    const firingForGroup = signals.filter(
+      (s) => s.l1?.code === g.code && (s.tier === "HIGH" || s.tier === "MODERATE")
+    );
+    const countrySet = new Set<string>();
+    for (const s of firingForGroup) {
+      for (const c of s.top_countries) countrySet.add(c.id);
+    }
+    return {
+      code: g.code,
+      label: g.label,
+      shortLabel: g.shortLabel,
+      color: g.color,
+      n_categories: firingForGroup.length,
+      n_countries: countrySet.size,
+    };
+  });
+
   return (
     <SignalsMergedListClient
       signals={signals}
       tierCounts={tierCounts}
       totalCountries={totalCountries}
       generatedDate={generatedDate}
+      domainActivation={domainActivation}
     />
   );
 }
