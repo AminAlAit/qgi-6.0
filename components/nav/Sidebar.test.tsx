@@ -16,17 +16,34 @@ describe("Sidebar", () => {
     expect(screen.getByText("Intelligence")).toBeInTheDocument();
   });
 
-  it("renders all nav items", () => {
+  it("renders all family group headers", () => {
     render(<Sidebar />);
-    // Current sidebar (2026-04-19): DASHBOARD, COUNTRIES, PRECEDENTS,
-    // SIGNALS, PATTERNS, RANKING. "ABOUT" was moved out to the public
-    // navbar; older "ACTIVE SIGNALS" / "COUNTRY PROFILE" labels were
-    // renamed to SIGNALS / COUNTRIES during #121/#248.
-    expect(screen.getByText("DASHBOARD")).toBeInTheDocument();
-    expect(screen.getByText("COUNTRIES")).toBeInTheDocument();
-    expect(screen.getByText("PRECEDENTS")).toBeInTheDocument();
-    expect(screen.getByText("SIGNALS")).toBeInTheDocument();
-    expect(screen.getByText("PATTERNS")).toBeInTheDocument();
-    expect(screen.getByText("RANKING")).toBeInTheDocument();
+    // 2026-05-13 (A3 Family 1 PR #4): nav refactored from flat 15-item list
+    // into family-grouped sections. The flat-list `RANKING` label is gone
+    // — it's now an item ("Power ranking") inside the Patterns group.
+    // Dashboard is the only standalone top-level entry.
+    expect(screen.getByText("Dashboard")).toBeInTheDocument();
+    expect(screen.getByText("Countries")).toBeInTheDocument();
+    expect(screen.getByText("Precedents")).toBeInTheDocument();
+    expect(screen.getByText("Signals")).toBeInTheDocument();
+    expect(screen.getByText("Patterns")).toBeInTheDocument();
+  });
+
+  it("renders the merged Precedents preview entry with a PREVIEW chip", () => {
+    render(<Sidebar />);
+    // A3 Family 1 PR #4: merged-preview surface is reachable from the
+    // sidebar so founder can compare V1 / V2-A / V2-B / Merged side-by-side
+    // before PR #5 cutover.
+    expect(screen.getByText("Merged preview")).toBeInTheDocument();
+  });
+
+  it("tags V1 routes LIVE and V2 + Merged routes PREVIEW via NavChip", () => {
+    render(<Sidebar />);
+    // PR #4 introduces trial-period chip badges. Multiple LIVE + PREVIEW
+    // chips appear across the family groups — getAllByText asserts both
+    // states are surfaced without binding to specific counts (which evolve
+    // as families merge).
+    expect(screen.getAllByText("LIVE").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("PREVIEW").length).toBeGreaterThan(0);
   });
 });

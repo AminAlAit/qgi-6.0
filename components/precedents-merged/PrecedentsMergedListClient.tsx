@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
@@ -317,9 +317,29 @@ export function PrecedentsMergedListClient({
   // (set, not single-slug) so a reader can compare two mechanism cells without
   // collapsing one to read the other.
   const [expandedSlugs, setExpandedSlugs] = useState<Set<string>>(new Set());
-  // PR #3 — "How to read this" preamble dismissibility. Session-scoped (no
-  // localStorage in this PR; PR #4 adds persistence).
+  // PR #3 + PR #4 — "How to read this" preamble dismissibility.
+  // localStorage persistence ships in PR #4 (Tomás hard requirement). The
+  // initial render must NOT read localStorage (SSR/CSR hydration mismatch);
+  // we hydrate the dismissed state in a useEffect after first paint.
   const [preambleDismissed, setPreambleDismissed] = useState(false);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    try {
+      if (window.localStorage.getItem("precedents-merged.preamble.dismissed") === "1") {
+        setPreambleDismissed(true);
+      }
+    } catch {
+      // Private mode / quota errors — preamble stays visible. Fine.
+    }
+  }, []);
+  const dismissPreamble = () => {
+    setPreambleDismissed(true);
+    try {
+      window.localStorage.setItem("precedents-merged.preamble.dismissed", "1");
+    } catch {
+      /* see note above */
+    }
+  };
 
   const toggleExpanded = (slug: string) => {
     setExpandedSlugs((prev) => {
@@ -451,13 +471,20 @@ export function PrecedentsMergedListClient({
         <HowToReadThis
           validatedCount={heroRecipes.length}
           statCount={catalogueRows.length}
-          onDismiss={() => setPreambleDismissed(true)}
+          onDismiss={dismissPreamble}
         />
       )}
 
       {/* ============== Filter strip ============== */}
-      {/* Domain chips */}
-      <div className="flex gap-2 flex-wrap mb-3">
+      {/* Domain chips. PR #4: role="group" + aria-pressed on each chip,
+          horizontal scroll-snap on mobile so the strip doesn't wrap awkwardly
+          on narrow viewports (brief mobile rule: filter chips horizontal
+          scroll with snap). */}
+      <div
+        role="group"
+        aria-label="Filter by domain"
+        className="flex gap-2 flex-wrap mb-3 md:overflow-visible overflow-x-auto md:snap-none snap-x snap-mandatory"
+      >
         {L1_GROUPS.map((g) => {
           const active = activeDomains.has(g.code);
           const count = domainCounts[g.code] ?? 0;
@@ -466,7 +493,8 @@ export function PrecedentsMergedListClient({
             <button
               key={g.code}
               onClick={() => toggleDomain(g.code)}
-              className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-all"
+              aria-pressed={active}
+              className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-all shrink-0 snap-start md:snap-align-none"
               style={{
                 backgroundColor: active ? `${g.color}18` : "transparent",
                 borderColor: active ? g.color : "var(--qgi-border)",
@@ -493,8 +521,13 @@ export function PrecedentsMergedListClient({
 
       {/* Lineage + sort + search */}
       <div className="flex flex-col sm:flex-row gap-3 mb-4 items-stretch sm:items-center flex-wrap">
-        {/* Lineage chip group */}
-        <div className="flex items-center gap-1.5">
+        {/* Lineage chip group. PR #4: role="radiogroup" since lineage is
+            single-select (vs domain chips which are multi-select). */}
+        <div
+          role="radiogroup"
+          aria-label="Filter by lineage"
+          className="flex items-center gap-1.5"
+        >
           <span
             className="text-[9px] tracking-widest uppercase mr-1"
             style={{ color: "var(--qgi-text-dim)" }}
@@ -504,6 +537,8 @@ export function PrecedentsMergedListClient({
           {(["ALL", "ML", "STAT"] as const).map((f) => (
             <button
               key={f}
+              role="radio"
+              aria-checked={lineageFilter === f}
               onClick={() => setLineageFilter(f)}
               className="px-2.5 py-1 rounded-full text-[10px] tracking-wider uppercase font-data font-semibold transition-all"
               style={{
@@ -662,7 +697,14 @@ export function PrecedentsMergedListClient({
           // applied per-row via lineage.
           <>
             {displayMixed.length === 0 ? (
-              <EmptyState />
+              <EmptyState
+                search={search}
+                activeDomains={activeDomains}
+                lineageFilter={lineageFilter}
+                onClearSearch={() => setSearch("")}
+                onClearDomains={() => setActiveDomains(new Set())}
+                onClearLineage={() => setLineageFilter("ALL")}
+              />
             ) : (
               displayMixed.map((row, idx) => (
                 <Fragment key={`${row.lineage}-${row.slug}`}>
@@ -751,7 +793,16 @@ export function PrecedentsMergedListClient({
               </>
             )}
 
-            {displayHero.length === 0 && displayCatalogue.length === 0 && <EmptyState />}
+            {displayHero.length === 0 && displayCatalogue.length === 0 && (
+              <EmptyState
+                search={search}
+                activeDomains={activeDomains}
+                lineageFilter={lineageFilter}
+                onClearSearch={() => setSearch("")}
+                onClearDomains={() => setActiveDomains(new Set())}
+                onClearLineage={() => setLineageFilter("ALL")}
+              />
+            )}
           </>
         )}
       </div>
@@ -832,6 +883,10 @@ function ZoneHeader({ label, accent }: { label: string; accent: string }) {
 function DisclosureStrip() {
   return (
     <div
+      // PR #4: role="note" + aria-label per brief ARIA section (the strip is
+      // a methodology disclosure callout, not a list item or table row).
+      role="note"
+      aria-label="Methodology disclosure"
       className="px-4 py-3 text-xs leading-relaxed border-y"
       style={{
         backgroundColor: "rgba(245, 158, 11, 0.06)",
@@ -865,10 +920,78 @@ function DisclosureStrip() {
   );
 }
 
-function EmptyState() {
+/**
+ * PR #4 — smart empty state. Brief: "state WHY + offer one-click widening
+ * with auto-detection of the narrowest active filter." Brief sample bound
+ * specific filter combos to specific copy; here we synthesize a useful
+ * one-click-widen CTA per active filter so the state stays honest no matter
+ * which combination produces 0 results.
+ */
+function EmptyState({
+  search,
+  activeDomains,
+  lineageFilter,
+  onClearSearch,
+  onClearDomains,
+  onClearLineage,
+}: {
+  search: string;
+  activeDomains: Set<string>;
+  lineageFilter: "ALL" | "ML" | "STAT";
+  onClearSearch: () => void;
+  onClearDomains: () => void;
+  onClearLineage: () => void;
+}) {
+  // Active filter summary — used to surface WHY this state is empty.
+  const parts: string[] = [];
+  if (lineageFilter !== "ALL") parts.push(`lineage=${lineageFilter}`);
+  if (activeDomains.size > 0) parts.push(`domain=${Array.from(activeDomains).join("+")}`);
+  if (search) parts.push(`search="${search}"`);
+  const summary = parts.length > 0 ? parts.join(" · ") : "(no filters)";
+
   return (
-    <div className="text-center py-12 text-sm" style={{ color: "var(--qgi-text-dim)" }}>
-      No recipes match your filters.
+    <div className="text-center py-12 px-4" role="status" aria-live="polite">
+      <p className="text-sm mb-2" style={{ color: "var(--qgi-text)" }}>
+        No recipes match these filters.
+      </p>
+      <p className="text-[11px] font-data mb-4" style={{ color: "var(--qgi-text-dim)" }}>
+        Active: {summary}
+      </p>
+      {/* One-click widening — surface a button per active filter so the
+          user can clear the narrowest one without scrolling back to the
+          chip strip. */}
+      <div className="flex items-center justify-center gap-2 flex-wrap">
+        {lineageFilter !== "ALL" && (
+          <button
+            type="button"
+            onClick={onClearLineage}
+            className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
+          >
+            Clear lineage filter →
+          </button>
+        )}
+        {activeDomains.size > 0 && (
+          <button
+            type="button"
+            onClick={onClearDomains}
+            className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
+          >
+            Clear domain filter →
+          </button>
+        )}
+        {search && (
+          <button
+            type="button"
+            onClick={onClearSearch}
+            className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
+          >
+            Clear search →
+          </button>
+        )}
+      </div>
     </div>
   );
 }
