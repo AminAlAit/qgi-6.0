@@ -1,13 +1,13 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import type { RecipeAggregated } from "@/lib/recipes-aggregated";
-import { precedentSlugUrl } from "@/lib/recipes-aggregated";
 import { getRecipeConfidence, type RciTier } from "@/lib/recipe-confidence";
 import type { BuyerMlRecipe } from "@/lib/buyer-view";
+import { getTierTooltip } from "@/components/precedents-merged/TierPillTooltip";
 
 /**
  * Merged Precedents shell — Build PR #1 of 5 (A3 Family 1 merger brief).
@@ -96,12 +96,71 @@ interface MergedRow {
   total_instances: number;
   canonical_length: number;
   oecd_share: number;
-  /** Detail link until PR #2 lands. Hero → V2-B; catalogue → V1. */
+  /** PR #3: distinct country pairs — surfaced inside expanded mechanism cell + "What we're still testing" entries. */
+  n_distinct_country_pairs: number;
+  /** PR #3: click-to-expand 120w mechanism prose.
+   *  - Hero rows: from `BuyerMlRecipe.mechanism_narrative` (buyer-cleaned).
+   *  - Catalogue rows: template-synthesized from recipe metadata.
+   *  Per founder #683 decision: ship now with template fallback; #683 will
+   *  upgrade hero prose to hand-curated 120w per Ingrid voice template. */
+  mechanism_text: string;
+  /** PR #2 shipped `/precedents-merged/[slug]` split-render — both lineages now
+   *  route to the merged dossier. The "View dossier →" link inside the
+   *  expanded mechanism cell uses this path. */
   detail_href: Route;
 }
 
 function formatCategory(slug: string): string {
   return slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/**
+ * PR #3 — spell out small numbers (≤10) for Ingrid voice copy. Brief register
+ * is Foreign Affairs-style prose — numerals look like dashboard chrome inside
+ * a sentence-flow paragraph. Falls back to numeric for larger values.
+ */
+function spellOutSmallNumber(n: number): string {
+  const words = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+  ];
+  return n >= 0 && n <= 10 ? words[n] : n.toLocaleString();
+}
+
+/**
+ * PR #3: synthesize a Stat-catalogue mechanism cell from recipe data.
+ * Template fallback per brief — catalogue rows ship with auto-generated
+ * prose (NOT gated by #683). #683 hand-curates hero rows; catalogue rows
+ * stay templated even post-#683 unless individually promoted.
+ */
+function buildStatMechanismText(recipe: RecipeAggregated): string {
+  const top = recipe.indicator_fingerprint
+    .slice(0, 3)
+    .map((i) => i.indicator_name ?? `indicator ${i.indicator_id}`)
+    .filter((s) => s && s !== "indicator undefined")
+    .join(", ");
+  const oecd = Math.round(recipe.coverage_bias_diagnostic.oecd_share * 100);
+  const coverageNote =
+    oecd > 50
+      ? `Coverage skews toward OECD countries (${oecd}%); interpret with caution for non-OECD contexts.`
+      : `Coverage is globally representative (${oecd}% OECD).`;
+  const topPart = top
+    ? `The most common indicator signals are ${top}.`
+    : `The indicator fingerprint is still being characterized.`;
+  return (
+    `A ${recipe.canonical_length}-year pattern observed across ${recipe.total_instances.toLocaleString()} ` +
+    `historical instances spanning ${recipe.n_distinct_country_pairs.toLocaleString()} distinct country pairs. ` +
+    `${topPart} ${coverageNote} Statistical screen-positive — not yet ML-adjudicated.`
+  );
 }
 
 function buildHeroRow(
@@ -126,7 +185,16 @@ function buildHeroRow(
     total_instances: agg.total_instances,
     canonical_length: agg.canonical_length,
     oecd_share: agg.coverage_bias_diagnostic.oecd_share,
-    detail_href: `/precedents-v2-b/${recipe.recipe_id}` as Route,
+    n_distinct_country_pairs: agg.n_distinct_country_pairs,
+    // Hero mechanism prose comes pre-cleaned via BuyerMlRecipe transform
+    // (jargon-replaced + slug-rewritten). Falls back to the excerpt if the
+    // full narrative is empty in this bake.
+    mechanism_text:
+      recipe.mechanism_narrative || recipe.mechanism_narrative_excerpt || "",
+    // PR #2 ships /precedents-merged/[slug] split-render — route both lineages
+    // there. V1 + V2-A + V2-B remain reachable independently until PR #5
+    // cutover.
+    detail_href: `/precedents-merged/${recipe.recipe_id}` as Route,
   };
 }
 
@@ -148,7 +216,9 @@ function buildCatalogueRow(recipe: RecipeAggregated): MergedRow {
     total_instances: recipe.total_instances,
     canonical_length: recipe.canonical_length,
     oecd_share: recipe.coverage_bias_diagnostic.oecd_share,
-    detail_href: precedentSlugUrl(recipe.event_category),
+    n_distinct_country_pairs: recipe.n_distinct_country_pairs,
+    mechanism_text: buildStatMechanismText(recipe),
+    detail_href: `/precedents-merged/${recipe.event_category}` as Route,
   };
 }
 
@@ -243,6 +313,22 @@ export function PrecedentsMergedListClient({
   const [sortCol, setSortCol] = useState<SortColumn>("tier");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [mixZones, setMixZones] = useState(false);
+  // PR #3 — click-to-expand state. Multiple rows can be expanded simultaneously
+  // (set, not single-slug) so a reader can compare two mechanism cells without
+  // collapsing one to read the other.
+  const [expandedSlugs, setExpandedSlugs] = useState<Set<string>>(new Set());
+  // PR #3 — "How to read this" preamble dismissibility. Session-scoped (no
+  // localStorage in this PR; PR #4 adds persistence).
+  const [preambleDismissed, setPreambleDismissed] = useState(false);
+
+  const toggleExpanded = (slug: string) => {
+    setExpandedSlugs((prev) => {
+      const next = new Set(prev);
+      if (next.has(slug)) next.delete(slug);
+      else next.add(slug);
+      return next;
+    });
+  };
 
   // Apply filters
   const matchesFilters = (r: MergedRow): boolean => {
@@ -304,6 +390,17 @@ export function PrecedentsMergedListClient({
     return c;
   }, [heroRows, catalogueRows]);
 
+  // PR #3 — "What we're still testing" candidate set. Brief: catalogue rows
+  // where the predictive signal isn't there yet (LOW + INSUFFICIENT RCI tiers
+  // are the screen-positive-but-not-validated cases). Collapsed by default.
+  const stillTestingRows = useMemo(
+    () =>
+      catalogueRows
+        .filter((r) => r.tier_label === "LOW" || r.tier_label === "INSUFFICIENT")
+        .sort((a, b) => a.display_name.localeCompare(b.display_name)),
+    [catalogueRows]
+  );
+
   const toggleDomain = (code: string) => {
     setActiveDomains((prev) => {
       const next = new Set(prev);
@@ -341,6 +438,22 @@ export function PrecedentsMergedListClient({
           {modelVersion} · {totalLocked} adjudicated
         </span>
       </div>
+
+      {/* ============== Lede (Ingrid, brief verbatim) ============== */}
+      <Lede
+        validatedCount={heroRecipes.length}
+        statCount={catalogueRows.length}
+        totalCount={totalRows}
+      />
+
+      {/* ============== "How to read this" preamble (dismissible) ============== */}
+      {!preambleDismissed && (
+        <HowToReadThis
+          validatedCount={heroRecipes.length}
+          statCount={catalogueRows.length}
+          onDismiss={() => setPreambleDismissed(true)}
+        />
+      )}
 
       {/* ============== Filter strip ============== */}
       {/* Domain chips */}
@@ -552,11 +665,23 @@ export function PrecedentsMergedListClient({
               <EmptyState />
             ) : (
               displayMixed.map((row, idx) => (
-                <RecipeRowComponent
-                  key={`${row.lineage}-${row.slug}`}
-                  row={row}
-                  isLast={idx === displayMixed.length - 1}
-                />
+                <Fragment key={`${row.lineage}-${row.slug}`}>
+                  <RecipeRowComponent
+                    row={row}
+                    isLast={
+                      idx === displayMixed.length - 1 && !expandedSlugs.has(row.slug)
+                    }
+                    hero={row.lineage === "ML"}
+                    expanded={expandedSlugs.has(row.slug)}
+                    onToggle={() => toggleExpanded(row.slug)}
+                  />
+                  {expandedSlugs.has(row.slug) && (
+                    <ExpandedMechanismCell
+                      row={row}
+                      isLast={idx === displayMixed.length - 1}
+                    />
+                  )}
+                </Fragment>
               ))
             )}
           </>
@@ -570,15 +695,27 @@ export function PrecedentsMergedListClient({
                   label={`Hero · ${displayHero.length} ML-validated`}
                   accent="#22c55e"
                 />
-                {displayHero.map((row, idx) => (
-                  <RecipeRowComponent
-                    key={`hero-${row.slug}`}
-                    row={row}
-                    isLast={false}
-                    hero
-                    showBottomBorder={idx < displayHero.length - 1}
-                  />
-                ))}
+                {displayHero.map((row, idx) => {
+                  const isLastInZone = idx === displayHero.length - 1;
+                  const isExpanded = expandedSlugs.has(row.slug);
+                  return (
+                    <Fragment key={`hero-${row.slug}`}>
+                      <RecipeRowComponent
+                        row={row}
+                        isLast={false}
+                        hero
+                        // Keep the divider when expanded (mechanism cell sits below
+                        // the row inside the same zone); drop it on the last hero
+                        // row only when NOT expanded (the disclosure strip's own
+                        // top-border takes over).
+                        showBottomBorder={!isLastInZone || isExpanded}
+                        expanded={isExpanded}
+                        onToggle={() => toggleExpanded(row.slug)}
+                      />
+                      {isExpanded && <ExpandedMechanismCell row={row} isLast={false} />}
+                    </Fragment>
+                  );
+                })}
               </>
             )}
 
@@ -594,13 +731,23 @@ export function PrecedentsMergedListClient({
                   label={`Catalogue · ${displayCatalogue.length} statistical`}
                   accent="#94a3b8"
                 />
-                {displayCatalogue.map((row, idx) => (
-                  <RecipeRowComponent
-                    key={`cat-${row.slug}`}
-                    row={row}
-                    isLast={idx === displayCatalogue.length - 1}
-                  />
-                ))}
+                {displayCatalogue.map((row, idx) => {
+                  const isLastInZone = idx === displayCatalogue.length - 1;
+                  const isExpanded = expandedSlugs.has(row.slug);
+                  return (
+                    <Fragment key={`cat-${row.slug}`}>
+                      <RecipeRowComponent
+                        row={row}
+                        isLast={isLastInZone && !isExpanded}
+                        expanded={isExpanded}
+                        onToggle={() => toggleExpanded(row.slug)}
+                      />
+                      {isExpanded && (
+                        <ExpandedMechanismCell row={row} isLast={isLastInZone} />
+                      )}
+                    </Fragment>
+                  );
+                })}
               </>
             )}
 
@@ -608,6 +755,9 @@ export function PrecedentsMergedListClient({
           </>
         )}
       </div>
+
+      {/* ============== "What we're still testing" (Ingrid + Sipho) ============== */}
+      {stillTestingRows.length > 0 && <WhatWereStillTesting rows={stillTestingRows} />}
 
       {/* ============== Footer ============== */}
       <p className="text-[10px] mt-4 font-data" style={{ color: "var(--qgi-text-dim)" }}>
@@ -728,11 +878,15 @@ function RecipeRowComponent({
   isLast,
   hero = false,
   showBottomBorder = true,
+  expanded = false,
+  onToggle,
 }: {
   row: MergedRow;
   isLast: boolean;
   hero?: boolean;
   showBottomBorder?: boolean;
+  expanded?: boolean;
+  onToggle?: () => void;
 }) {
   const covColor = coverageColor(row.oecd_share);
   const lineageColors =
@@ -746,10 +900,31 @@ function RecipeRowComponent({
       ? "1px solid var(--qgi-border)"
       : "none";
 
+  // PR #3: row is a clickable trigger that toggles the inline mechanism
+  // cell. The detail-page link moves inside ExpandedMechanismCell ("View
+  // dossier →"). aria-expanded + aria-controls wire to the cell's id.
+  //
+  // PR #3 Sonnet review B1 fix: <button> cannot contain <div> per the HTML
+  // spec (button is phrasing content; the row's mobile + desktop layouts use
+  // block-level divs). The brief's ARIA section prescribed the right shape:
+  // role="button" + tabIndex={0} + keydown handler on a <div> wrapper, which
+  // supports the same a11y semantics without violating the content model.
+  const panelId = `mechanism-${row.lineage}-${row.slug}`;
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onToggle?.();
+    }
+  };
   return (
-    <Link
-      href={row.detail_href}
-      className="block transition-colors hover:bg-[var(--qgi-surface-2)] group"
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={onToggle}
+      onKeyDown={handleKeyDown}
+      aria-expanded={expanded}
+      aria-controls={panelId}
+      className="block w-full text-left transition-colors hover:bg-[var(--qgi-surface-2)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] group cursor-pointer"
       style={{
         borderBottom,
         borderLeft: hero ? "3px solid #22c55e" : `3px solid ${row.l1_color}`,
@@ -894,7 +1069,220 @@ function RecipeRowComponent({
           {Math.round(row.oecd_share * 100)}%
         </span>
       </div>
-    </Link>
+    </div>
+  );
+}
+
+/**
+ * PR #3 — Lede paragraph (Ingrid voice, brief verbatim).
+ *
+ * Brief copy at qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+ * §"Lede (Ingrid)". Numbers ({validatedCount} / {statCount} / {totalCount})
+ * substitute live counts so the prose stays honest if the recipe count
+ * drifts between bakes — brief locked the SHAPE, not literal "72/4/68".
+ */
+function Lede({
+  validatedCount,
+  statCount,
+  totalCount,
+}: {
+  validatedCount: number;
+  statCount: number;
+  totalCount: number;
+}) {
+  return (
+    <section className="mb-4 max-w-[68ch]">
+      <p className="text-base leading-relaxed" style={{ color: "var(--qgi-text)" }}>
+        A precedent is a previous event that resembles a current one closely enough to
+        inform a forecast. This page catalogues {totalCount.toLocaleString()} of them:{" "}
+        {validatedCount} validated recipes the model can predict above chance, and{" "}
+        {statCount.toLocaleString()} statistical patterns it has identified but cannot yet
+        predict reliably. The difference matters and we explain it.
+      </p>
+    </section>
+  );
+}
+
+/**
+ * PR #3 — "How to read this" preamble (Ingrid voice, brief verbatim).
+ * Dismissible. Session-scoped state in PR #3; PR #4 adds localStorage
+ * persistence per Tomás hard requirement.
+ */
+function HowToReadThis({
+  validatedCount,
+  statCount,
+  onDismiss,
+}: {
+  validatedCount: number;
+  statCount: number;
+  onDismiss: () => void;
+}) {
+  return (
+    <section
+      className="mb-6 max-w-[68ch] rounded-lg border p-4 relative"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+      aria-label="How to read this page"
+    >
+      <button
+        type="button"
+        onClick={onDismiss}
+        className="absolute top-2 right-2 px-1.5 py-0.5 rounded text-[10px] tracking-wider uppercase transition-colors hover:bg-[var(--qgi-surface-2)]"
+        style={{ color: "var(--qgi-text-dim)" }}
+        aria-label="Dismiss preamble"
+        title="Hide for this session"
+      >
+        Dismiss ×
+      </button>
+      <div
+        className="text-[10px] tracking-widest uppercase mb-2 font-semibold"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        How to read this
+      </div>
+      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
+        {/* PR #3 Sonnet review wording fix: brief copy is "The four cards
+            below" — restored verbatim (spell-out small numbers via helper)
+            and dropped the "above the methodology disclosure" qualifier I
+            had added. */}
+        The {spellOutSmallNumber(validatedCount)}{" "}
+        {validatedCount === 1 ? "card" : "cards"} below are the recipes we underwrite.
+        Click any row to see the mechanism — what&apos;s actually happening when these
+        patterns appear. Beneath them sits the full catalogue:{" "}
+        {statCount.toLocaleString()} additional patterns we&apos;ve measured but
+        haven&apos;t validated. Sort, filter, compare. The table is where you go to
+        understand what we&apos;re still working on.
+      </p>
+    </section>
+  );
+}
+
+/**
+ * PR #3 — Expanded mechanism cell. Sits inline below the row when expanded.
+ * Brief: full-width 120-word mechanism prose (Ingrid voice template — 3
+ * movements). Hero rows get hand-curated prose post-#683; catalogue rows
+ * ship with template fallback per founder #683 decision.
+ *
+ * Deferred to a future PR:
+ *   - Inline country-name links inside the mechanism prose (brief: country
+ *     names always linked per style-guide rule)
+ *   - "{n} countries firing now →" pill (brief: ML rows only)
+ */
+function ExpandedMechanismCell({ row, isLast }: { row: MergedRow; isLast: boolean }) {
+  const panelId = `mechanism-${row.lineage}-${row.slug}`;
+  return (
+    <div
+      id={panelId}
+      role="region"
+      aria-label={`Mechanism for ${row.display_name}`}
+      className="px-6 py-5"
+      style={{
+        backgroundColor: "var(--qgi-surface-2)",
+        borderBottom: isLast ? "none" : "1px solid var(--qgi-border)",
+        borderLeft:
+          row.lineage === "ML" ? "3px solid #22c55e" : `3px solid ${row.l1_color}`,
+      }}
+    >
+      <div
+        className="text-[10px] tracking-widest uppercase mb-2"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        Mechanism · {row.display_name}
+      </div>
+      <p
+        className="text-sm leading-relaxed max-w-[68ch]"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {row.mechanism_text || (
+          <span style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
+            Mechanism prose is being curated for this recipe; expected with the next bake.
+          </span>
+        )}
+      </p>
+      <div className="mt-4 flex items-center gap-4 flex-wrap">
+        <Link
+          href={row.detail_href}
+          className="text-[11px] tracking-wider uppercase hover:text-[var(--qgi-accent)] transition-colors font-semibold"
+          style={{ color: "var(--qgi-accent)" }}
+        >
+          View dossier →
+        </Link>
+        <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          {row.lineage === "ML"
+            ? "Hand-curated prose ships with #683 bake; current text is the buyer-cleaned excerpt."
+            : "Auto-generated from recipe data; #683 may upgrade if this recipe is promoted to the ML hero zone."}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/**
+ * PR #3 — "What we're still testing" `<details>` collapsed by default.
+ * Brief: "These are patterns where the statistical signal is real but the
+ * predictive signal isn't yet." Per-recipe entries — 3 sentences (what /
+ * what's wrong / what would unblock), italicised recipe name, Granta
+ * register.
+ *
+ * Filter: catalogue rows where tier ∈ {LOW, INSUFFICIENT} — the
+ * screen-positive-but-not-validated cases that justify being listed here.
+ * Sorted alphabetically (deterministic).
+ */
+function WhatWereStillTesting({ rows }: { rows: MergedRow[] }) {
+  return (
+    <details
+      // PR #3 Sonnet review B2 fix: `group` class enables `group-open:` on
+      // descendants (Tailwind reads the [open] attribute via the group).
+      className="group mt-8 rounded-lg border"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <summary
+        className="cursor-pointer px-5 py-3 text-[10px] tracking-widest uppercase font-semibold flex items-center gap-2"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        <span
+          className="transition-transform inline-block group-open:rotate-90"
+          aria-hidden="true"
+        >
+          ▶
+        </span>
+        What we&apos;re still testing
+        <span
+          className="font-data ml-2 normal-case tracking-normal"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          ({rows.length} {rows.length === 1 ? "recipe" : "recipes"})
+        </span>
+      </summary>
+      <div
+        className="px-5 pb-5 pt-2 text-sm leading-relaxed max-w-[68ch]"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        <p className="mb-4">
+          These are patterns where the statistical signal is real but the predictive
+          signal isn&apos;t yet — usually because the country sample is thin, the
+          historical window misses a regime change, or the indicator set we&apos;re
+          matching against is incomplete. We list them publicly because withholding them
+          would misrepresent what the model knows.
+        </p>
+        {rows.map((row) => (
+          <p key={row.slug} className="mb-3 last:mb-0">
+            <em style={{ color: "var(--qgi-text)" }}>{row.display_name}.</em>{" "}
+            {row.total_instances.toLocaleString()} historical instances across{" "}
+            {row.n_distinct_country_pairs.toLocaleString()} distinct country pairs, but
+            confidence sits at {row.tier_label.toLowerCase()} — the statistical screen
+            passes, the predictive screen does not. Until we have enough confirmed
+            positives in a held-out cohort to backtest this fingerprint, it stays in this
+            section.
+          </p>
+        ))}
+      </div>
+    </details>
   );
 }
 
@@ -915,7 +1303,10 @@ function TierPill({
         color,
         border: `1px solid ${color}40`,
       }}
-      title={`${label} tier — ${method === "ML" ? "ML adjudication" : "Statistical correlation"} rubric`}
+      // PR #2 follow-up F1: wire to Sipho's verbatim 7-rung tooltip copy
+      // module instead of a generic placeholder. getTierTooltip resolves the
+      // MODERATE collision via method suffix.
+      title={getTierTooltip(label, method)}
     >
       {label}
       <span
