@@ -287,6 +287,8 @@ export function PrecedentsMergedListClient({
   pipelineVersion,
   modelVersion,
   totalLocked,
+  countryLinkMap = {},
+  firingCountByMlSlug = {},
 }: {
   heroRecipes: BuyerMlRecipe[];
   heroAggregatedBySlug: Record<string, RecipeAggregated>;
@@ -295,6 +297,16 @@ export function PrecedentsMergedListClient({
   pipelineVersion: string;
   modelVersion: string;
   totalLocked: number;
+  /** PR #4.5 — lowercase country-name → ISO slug (for inline mechanism-cell
+   *  country-name links per brief style-guide rule). Empty when
+   *  country-risks load failed; mechanism cells still render, just without
+   *  the inline `<Link>` wrapping. */
+  countryLinkMap?: Record<string, string>;
+  /** PR #4.5 — count of countries with a measured similarity score per
+   *  ML-hero recipe slug. Drives the "{n} countries firing now →" pill on
+   *  ML rows (cross-family handoff to /signals?recipe={slug} per brief).
+   *  Empty when country-recipe-scores load failed. */
+  firingCountByMlSlug?: Record<string, number>;
 }) {
   // Build unified row arrays once.
   const heroRows = useMemo(
@@ -721,6 +733,10 @@ export function PrecedentsMergedListClient({
                     <ExpandedMechanismCell
                       row={row}
                       isLast={idx === displayMixed.length - 1}
+                      countryLinkMap={countryLinkMap}
+                      firingCount={
+                        row.lineage === "ML" ? firingCountByMlSlug[row.slug] : undefined
+                      }
                     />
                   )}
                 </Fragment>
@@ -754,7 +770,14 @@ export function PrecedentsMergedListClient({
                         expanded={isExpanded}
                         onToggle={() => toggleExpanded(row.slug)}
                       />
-                      {isExpanded && <ExpandedMechanismCell row={row} isLast={false} />}
+                      {isExpanded && (
+                        <ExpandedMechanismCell
+                          row={row}
+                          isLast={false}
+                          countryLinkMap={countryLinkMap}
+                          firingCount={firingCountByMlSlug[row.slug]}
+                        />
+                      )}
                     </Fragment>
                   );
                 })}
@@ -785,7 +808,14 @@ export function PrecedentsMergedListClient({
                         onToggle={() => toggleExpanded(row.slug)}
                       />
                       {isExpanded && (
-                        <ExpandedMechanismCell row={row} isLast={isLastInZone} />
+                        <ExpandedMechanismCell
+                          row={row}
+                          isLast={isLastInZone}
+                          countryLinkMap={countryLinkMap}
+                          // Catalogue rows are STAT lineage — firingCount stays
+                          // undefined and the pill won't render.
+                          firingCount={undefined}
+                        />
                       )}
                     </Fragment>
                   );
@@ -1293,8 +1323,75 @@ function HowToReadThis({
  *     names always linked per style-guide rule)
  *   - "{n} countries firing now →" pill (brief: ML rows only)
  */
-function ExpandedMechanismCell({ row, isLast }: { row: MergedRow; isLast: boolean }) {
+/**
+ * PR #4.5 — linkify country names inside prose. Brief style-guide rule:
+ * "country names always linked" inside mechanism cells. Walks the prose
+ * once with a single combined regex (alternation, longest-first so multi-
+ * word names like "United Arab Emirates" match before "United"), and
+ * splits the text into a React.ReactNode[] of plain strings + `<Link>`s.
+ *
+ * Returns the original string as a 1-element array if the map is empty
+ * (graceful degradation when country-risks failed to load server-side).
+ */
+function linkifyCountries(
+  text: string,
+  countryMap: Record<string, string>
+): React.ReactNode[] {
+  if (!text) return [text];
+  const names = Object.keys(countryMap);
+  if (names.length === 0) return [text];
+  // Longest-first so "United Arab Emirates" doesn't get shadowed by
+  // "United" in the alternation. Regex-escape each name so country names
+  // with punctuation (e.g. "Côte d'Ivoire") match literally.
+  const sorted = [...names].sort((a, b) => b.length - a.length);
+  const escaped = sorted.map((n) => n.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  const pattern = new RegExp(`\\b(${escaped.join("|")})\\b`, "gi");
+
+  const out: React.ReactNode[] = [];
+  let lastIdx = 0;
+  let match: RegExpExecArray | null;
+  while ((match = pattern.exec(text)) !== null) {
+    if (match.index > lastIdx) out.push(text.slice(lastIdx, match.index));
+    const matched = match[0];
+    const slug = countryMap[matched.toLowerCase()];
+    if (slug) {
+      out.push(
+        <Link
+          key={`${match.index}-${matched}`}
+          href={`/countries/${slug}` as Route}
+          className="underline underline-offset-2 hover:text-[var(--qgi-accent)] transition-colors"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          {matched}
+        </Link>
+      );
+    } else {
+      out.push(matched);
+    }
+    lastIdx = match.index + matched.length;
+  }
+  if (lastIdx < text.length) out.push(text.slice(lastIdx));
+  return out;
+}
+
+function ExpandedMechanismCell({
+  row,
+  isLast,
+  countryLinkMap,
+  firingCount,
+}: {
+  row: MergedRow;
+  isLast: boolean;
+  /** PR #4.5: lowercase country-name → ISO slug. Empty map = no linkification. */
+  countryLinkMap: Record<string, string>;
+  /** PR #4.5: ML-row firing count. Undefined for Stat rows (pill hidden). */
+  firingCount: number | undefined;
+}) {
   const panelId = `mechanism-${row.lineage}-${row.slug}`;
+  const linkifiedProse = useMemo(
+    () => linkifyCountries(row.mechanism_text, countryLinkMap),
+    [row.mechanism_text, countryLinkMap]
+  );
   return (
     <div
       id={panelId}
@@ -1318,7 +1415,9 @@ function ExpandedMechanismCell({ row, isLast }: { row: MergedRow; isLast: boolea
         className="text-sm leading-relaxed max-w-[68ch]"
         style={{ color: "var(--qgi-text)" }}
       >
-        {row.mechanism_text || (
+        {row.mechanism_text ? (
+          linkifiedProse
+        ) : (
           <span style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
             Mechanism prose is being curated for this recipe; expected with the next bake.
           </span>
@@ -1332,6 +1431,23 @@ function ExpandedMechanismCell({ row, isLast }: { row: MergedRow; isLast: boolea
         >
           View dossier →
         </Link>
+        {/* PR #4.5: "{n} countries firing now →" pill — brief cross-family
+            handoff. ML rows only; renders only when firing_count > 0. Routes
+            to filtered Signals master per Family 3 brief locked URL shape. */}
+        {row.lineage === "ML" && firingCount !== undefined && firingCount > 0 && (
+          <Link
+            href={`/signals?recipe=${row.slug}` as Route}
+            className="inline-flex items-center gap-1 text-[10px] tracking-wider uppercase font-data font-semibold px-2 py-0.5 rounded transition-colors hover:opacity-80"
+            style={{
+              backgroundColor: "rgba(248, 113, 113, 0.10)",
+              color: "#f87171",
+              border: "1px solid rgba(248, 113, 113, 0.30)",
+            }}
+            title="Filtered Signals view — countries with active similarity score for this recipe"
+          >
+            {firingCount} {firingCount === 1 ? "country" : "countries"} firing now →
+          </Link>
+        )}
         <span className="text-[10px] font-data" style={{ color: "var(--qgi-text-dim)" }}>
           {row.lineage === "ML"
             ? "Hand-curated prose ships with #683 bake; current text is the buyer-cleaned excerpt."
