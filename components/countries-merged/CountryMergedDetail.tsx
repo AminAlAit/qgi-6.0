@@ -66,6 +66,28 @@ function formatCategory(slug: string): string {
   return slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
+export interface MlMatrixRow {
+  recipe_id: string;
+  display_name: string;
+  architecture_label: string;
+  loco_auc: number;
+  /** Expected Calibration Error overall (calibration band, REAL data). */
+  ece_overall: number;
+  /** Per-country AHI (preview value; null = "no anchor in battery yet"). */
+  ahi_preview: number | null;
+  /** Per-country global percentile (preview value; null when no anchor). */
+  pct_preview: number | null;
+  has_anchor: boolean;
+}
+
+export interface StructuralPeer {
+  slug: string;
+  name: string;
+  alpha_2: string;
+  tier: string;
+  similarity: number;
+}
+
 export function CountryMergedDetail({
   iso,
   name,
@@ -74,6 +96,10 @@ export function CountryMergedDetail({
   tier,
   l1Rows,
   top3,
+  mlRows = [],
+  mlCovCount = 0,
+  mlMatrixDefaultExpanded = false,
+  structuralPeers = [],
 }: {
   iso: string;
   name: string;
@@ -94,6 +120,14 @@ export function CountryMergedDetail({
     salience_score: number;
     l1_group: string | null;
   }>;
+  /** PR #4 — ML coverage matrix rows (currently top-4 LOCKed). */
+  mlRows?: ReadonlyArray<MlMatrixRow>;
+  /** PR #4 — count of rows with anchor coverage (drives the default
+   *  expansion gate per brief Section 4). */
+  mlCovCount?: number;
+  mlMatrixDefaultExpanded?: boolean;
+  /** PR #4 — structural-peer cohort (top-5 by L1-profile similarity). */
+  structuralPeers?: ReadonlyArray<StructuralPeer>;
 }) {
   const tierMeta = TIER_META[tier];
   // Highlighted L1 groups — the codes that contain a top-3 driving category.
@@ -212,6 +246,20 @@ export function CountryMergedDetail({
           ))}
         </div>
       </section>
+
+      {/* ============== Section 4 — ML recipe coverage matrix (Marcus flagship) ============== */}
+      {mlRows.length > 0 && (
+        <MlCoverageMatrix
+          rows={mlRows}
+          covCount={mlCovCount}
+          defaultExpanded={mlMatrixDefaultExpanded}
+        />
+      )}
+
+      {/* ============== Section 5 — Structural peers ============== */}
+      {structuralPeers.length > 0 && (
+        <StructuralPeers peers={structuralPeers} subjectName={name} />
+      )}
 
       {/* ============== Cross-family handoffs footer ============== */}
       <footer
@@ -363,6 +411,324 @@ function WhatsHappeningHere({
           methodology
         </Link>{" "}
         for how composites and salience are computed.
+      </p>
+    </section>
+  );
+}
+
+/**
+ * PR #4 — Section 4 ML recipe coverage matrix (Marcus flagship). Brief
+ * §"Section 4": 7-col table × 13 LOCKed recipes. Currently top-4 set
+ * (the only recipes with stable buyer-view metrics); expands to full 13
+ * post-KI-2 roster lock.
+ *
+ * Columns: Recipe · Architecture · LOCO AUC · Calibration · AHI · Pctile · Status
+ *
+ * Expansion default per brief 7th-vote: expanded when ≥1 anchor measured
+ * in the top-4 set (proxy for ≥3/13 on the full LOCKed set). Uses native
+ * <details> so server-render works (no client state).
+ */
+function MlCoverageMatrix({
+  rows,
+  covCount,
+  defaultExpanded,
+}: {
+  rows: ReadonlyArray<MlMatrixRow>;
+  covCount: number;
+  defaultExpanded: boolean;
+}) {
+  return (
+    <section className="mb-8" aria-labelledby="ml-matrix-heading">
+      <details
+        className="group rounded-lg border"
+        open={defaultExpanded}
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <summary
+          className="cursor-pointer px-4 py-3 flex items-center gap-2 flex-wrap"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          <span
+            id="ml-matrix-heading"
+            className="text-[10px] tracking-widest uppercase font-semibold"
+          >
+            ML recipe coverage
+          </span>
+          <span
+            className="text-[9px] font-data normal-case tracking-normal"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            ({covCount} of {rows.length} validated recipes measured)
+          </span>
+          <span
+            className="font-data text-[9px] tracking-widest uppercase px-1.5 py-0.5 rounded ml-2"
+            style={{
+              color: "rgba(251, 191, 36, 0.95)",
+              backgroundColor: "rgba(251, 191, 36, 0.12)",
+              border: "1px solid rgba(251, 191, 36, 0.30)",
+            }}
+            title="Anchor stability + Global percentile are preview values until the sibling bake ships per-country anchor data. Discrimination + Calibration are REAL."
+          >
+            Preview
+          </span>
+          <span
+            className="ml-auto text-[10px] tracking-wider transition-transform group-open:rotate-90"
+            aria-hidden="true"
+          >
+            ▶
+          </span>
+        </summary>
+        <div className="border-t" style={{ borderColor: "var(--qgi-border)" }}>
+          <div
+            className="hidden md:grid items-center px-4 py-2 text-[10px] tracking-widest uppercase"
+            style={{
+              gridTemplateColumns: "2fr 110px 70px 70px 70px 60px 90px",
+              gap: 8,
+              color: "var(--qgi-text-dim)",
+              backgroundColor: "var(--qgi-surface-2)",
+              borderBottom: "1px solid var(--qgi-border)",
+            }}
+          >
+            <span>Recipe</span>
+            <span>Architecture</span>
+            <span
+              className="text-right"
+              title="Discrimination (out-of-country): probability the recipe ranks a positive case above a negative one on countries never seen during training. 0.5 = chance, 1.0 = perfect."
+            >
+              Discrim.
+            </span>
+            <span
+              className="text-right"
+              title="Calibration error: average gap between predicted probability and observed frequency. 0 = perfectly calibrated; <0.02 target; >0.05 unreliable."
+            >
+              Calibration
+            </span>
+            <span
+              className="text-right"
+              title="Anchor stability for this country (preview value): how robust the recipe is to held-out anchor events. Higher = more stable."
+            >
+              Anchor
+            </span>
+            <span
+              className="text-right"
+              title="Global percentile rank for this recipe's anchor stability on this country (preview value)."
+            >
+              Pctile
+            </span>
+            <span>Status</span>
+          </div>
+          {rows.map((r, idx) => (
+            <div
+              key={r.recipe_id}
+              className="grid items-center px-4 py-2.5 gap-2"
+              style={{
+                gridTemplateColumns: "2fr 110px 70px 70px 70px 60px 90px",
+                borderBottom:
+                  idx === rows.length - 1 ? "none" : "1px solid var(--qgi-border)",
+              }}
+              title={
+                r.has_anchor
+                  ? "Measured anchor for this country (preview value)"
+                  : "No anchor case in v2 regression suite for this recipe yet"
+              }
+            >
+              <span className="text-sm truncate" style={{ color: "var(--qgi-text)" }}>
+                {r.display_name}
+              </span>
+              <span
+                className="font-data text-[10px]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                {r.architecture_label}
+              </span>
+              <span
+                className="font-data text-[11px] tabular-nums text-right"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                {r.loco_auc.toFixed(3)}
+              </span>
+              <span
+                className="font-data text-[11px] tabular-nums text-right"
+                style={{
+                  color:
+                    r.ece_overall <= 0.02
+                      ? "#34d399"
+                      : r.ece_overall <= 0.05
+                        ? "var(--qgi-text-muted)"
+                        : "#fbbf24",
+                }}
+              >
+                {r.ece_overall.toFixed(3)}
+              </span>
+              <span
+                className="font-data text-[11px] tabular-nums text-right"
+                style={{
+                  color:
+                    r.ahi_preview !== null
+                      ? "var(--qgi-text-muted)"
+                      : "var(--qgi-text-dim)",
+                }}
+              >
+                {r.ahi_preview !== null ? r.ahi_preview.toFixed(2) : "—"}
+              </span>
+              <span
+                className="font-data text-[10px] tabular-nums text-right"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                {r.pct_preview !== null ? `${r.pct_preview}p` : "—"}
+              </span>
+              <span>
+                <StatusChip measured={r.has_anchor} />
+              </span>
+            </div>
+          ))}
+          <div
+            className="px-4 py-2 text-[10px]"
+            style={{
+              color: "var(--qgi-text-dim)",
+              backgroundColor: "var(--qgi-surface-2)",
+              borderTop: "1px solid var(--qgi-border)",
+            }}
+          >
+            Discrimination (out-of-country) + Calibration error from ml-recipe-stack
+            (real). Per-country Anchor stability + Global percentile: preview values until
+            anchor battery v3 ships (qgi-ml follow-up).{" "}
+            <Link
+              href={"/methodology" as Route}
+              className="underline underline-offset-2"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              How to read this →
+            </Link>
+          </div>
+        </div>
+      </details>
+    </section>
+  );
+}
+
+function StatusChip({ measured }: { measured: boolean }) {
+  if (measured) {
+    return (
+      <span
+        className="font-data text-[10px] tracking-widest uppercase px-1.5 py-0.5 rounded"
+        style={{
+          color: "#22c55e",
+          backgroundColor: "rgba(34, 197, 94, 0.10)",
+          border: "1px solid rgba(34, 197, 94, 0.30)",
+        }}
+      >
+        measured
+      </span>
+    );
+  }
+  return (
+    <span
+      className="font-data text-[10px] tracking-widest uppercase px-1.5 py-0.5 rounded"
+      style={{
+        color: "var(--qgi-text-dim)",
+        border: "1px solid var(--qgi-border)",
+      }}
+      title="No anchor case in v2 regression suite for this recipe yet"
+    >
+      no anchor
+    </span>
+  );
+}
+
+/**
+ * PR #4 — Section 5 Structural peers. Brief title: "Countries that look most
+ * like {country} today" (Ingrid rename from "Structural Twins"). Top-5 by
+ * cosine similarity on the 8-dim L1 salience vector. REAL data — no
+ * Preview chip.
+ */
+function StructuralPeers({
+  peers,
+  subjectName,
+}: {
+  peers: ReadonlyArray<StructuralPeer>;
+  subjectName: string;
+}) {
+  return (
+    <section className="mb-8" aria-labelledby="peers-heading">
+      <h2
+        id="peers-heading"
+        className="text-[10px] tracking-widest uppercase mb-3"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        Countries that look most like {subjectName} today
+        <span
+          className="ml-2 text-[9px] font-data normal-case tracking-normal"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          (top 5 by L1 risk-profile similarity)
+        </span>
+      </h2>
+      <div
+        className="rounded-lg border overflow-hidden"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        {peers.map((peer, idx) => {
+          const peerTierMeta = TIER_META[peer.tier as RiskTier];
+          const simPct = Math.round(peer.similarity * 100);
+          return (
+            <Link
+              key={peer.slug}
+              href={`/countries-merged/${peer.slug}` as Route}
+              className="grid items-center gap-3 px-4 py-3 transition-colors hover:bg-[var(--qgi-surface-2)] group"
+              style={{
+                gridTemplateColumns: "32px 1fr 110px 1fr 64px",
+                borderBottom:
+                  idx === peers.length - 1 ? "none" : "1px solid var(--qgi-border)",
+                borderLeft: `3px solid ${peerTierMeta?.color ?? "var(--qgi-border)"}`,
+              }}
+            >
+              <CountryFlag alpha2={peer.alpha_2} size={14} />
+              <span
+                className="text-sm group-hover:text-[var(--qgi-accent)] transition-colors font-medium"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                {peer.name}
+              </span>
+              {peerTierMeta && <TierPill meta={peerTierMeta} />}
+              <div
+                className="rounded-sm overflow-hidden"
+                style={{
+                  backgroundColor: "var(--qgi-border)",
+                  height: 4,
+                }}
+                role="img"
+                aria-label={`Similarity: ${simPct}%`}
+                title="Cosine similarity on 8-dim L1 risk-profile vectors. Higher = more similar risk fingerprint."
+              >
+                <div
+                  style={{
+                    width: `${simPct}%`,
+                    height: "100%",
+                    backgroundColor: "#38bdf8",
+                    borderRadius: 2,
+                  }}
+                />
+              </div>
+              <span
+                className="font-data text-[11px] tabular-nums text-right"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                {simPct}%
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+      <p className="text-[10px] mt-2" style={{ color: "var(--qgi-text-dim)" }}>
+        Similarity computed on the 8-dim L1 risk-profile vector (max-salience per L1
+        group, cosine similarity). REAL data.
       </p>
     </section>
   );
