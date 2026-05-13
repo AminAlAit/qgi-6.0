@@ -638,9 +638,10 @@ function EmptyState({
 
 function CountryRowComponent({ row, isLast }: { row: CountryRow; isLast: boolean }) {
   const meta = TIER_META[row.tier];
-  // Detail-link routing until PR #3 lands /countries-merged/[iso]:
-  // route to existing V1 /countries/[iso] which is still live.
-  const detailHref = `/countries/${row.slug}` as Route;
+  // PR #3 shipped /countries-merged/[iso] split-render — route rows there.
+  // V1 /countries/[iso] remains reachable until PR #5 cutover via the
+  // sidebar V1 entry + the detail-page footer cross-link.
+  const detailHref = `/countries-merged/${row.slug}` as Route;
   return (
     <Link
       href={detailHref}
