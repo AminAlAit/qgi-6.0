@@ -1,6 +1,11 @@
-import { loadRecipesAggregated } from "@/lib/recipes-aggregated-loader";
+import {
+  loadRecipesAggregated,
+  loadCountryRecipeScores,
+} from "@/lib/recipes-aggregated-loader";
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
+import { loadCountryRisks } from "@/lib/country-risks";
 import { toBuyerViewList } from "@/lib/buyer-view";
+import { countrySlug } from "@/lib/slug";
 import { PrecedentsMergedListClient } from "@/components/precedents-merged/PrecedentsMergedListClient";
 import type { Metadata } from "next";
 
@@ -43,6 +48,9 @@ export default async function PrecedentsMergedPage() {
       loadMlRecipeStack(),
     ]);
   } catch (err) {
+    // PR #4.5 note: country-risks + country-recipe-scores load below (in the
+    // non-throwing path) via .catch(() => null), so partial-data failure
+    // there degrades gracefully without taking the page down.
     return (
       <div className="p-8 max-w-3xl mx-auto">
         <h1
@@ -81,6 +89,47 @@ export default async function PrecedentsMergedPage() {
   // Lookup map for hero-row aggregated joins.
   const aggregatedBySlug = new Map(aggregated.recipes.map((r) => [r.event_category, r]));
 
+  // PR #4.5 — load country index + country-recipe-scores for the two
+  // mechanism-cell features the brief locked but earlier PRs deferred:
+  //   1. Inline country-name links inside mechanism prose (style-guide rule)
+  //   2. "{n} countries firing now →" pill on ML hero rows (cross-family
+  //      handoff to /signals?recipe={slug})
+  // Both load with graceful fallback (null/empty) so the page renders even
+  // if either file is missing on this deploy.
+  const [risksFile, scoresFile] = await Promise.all([
+    loadCountryRisks().catch(() => null),
+    loadCountryRecipeScores().catch(() => null),
+  ]);
+
+  // Country-name → ISO slug map for inline linkification. Keyed on
+  // lower-case name for case-insensitive matching (regex applies /i flag
+  // anyway, but lowercase keys give O(1) lookup post-match). Only countries
+  // with a resolvable slug make it in — falsy slugs are skipped.
+  const countryLinkMap: Record<string, string> = {};
+  if (risksFile) {
+    for (const c of Object.values(risksFile.countries)) {
+      const slug = countrySlug(c.name);
+      if (!slug) continue;
+      countryLinkMap[c.name.toLowerCase()] = slug;
+    }
+  }
+
+  // Firing-count per ML recipe = number of countries with a non-null
+  // similarity score in country-recipe-scores.json for that recipe slug.
+  // Matches the V1 PrecedentSlugClient definition of "flagged country"
+  // (any country with a measured score, regardless of magnitude).
+  // Returns 0 for recipes with no entries — the pill renders only when > 0.
+  const firingCountByMlSlug: Record<string, number> = {};
+  if (scoresFile) {
+    for (const slug of heroSlugs) {
+      let count = 0;
+      for (const byRecipe of Object.values(scoresFile.scores)) {
+        if (typeof byRecipe[slug] === "number") count++;
+      }
+      firingCountByMlSlug[slug] = count;
+    }
+  }
+
   return (
     <PrecedentsMergedListClient
       heroRecipes={heroRecipes}
@@ -103,6 +152,10 @@ export default async function PrecedentsMergedPage() {
       // that lives on /precedents-v2-{a,b}/page.tsx). Post-KI-2 amendment
       // 2026-05-11: 13 LOCKed.
       totalLocked={13}
+      // PR #4.5 props (defaults to empty so the client still renders if
+      // either source file is unavailable on this deploy).
+      countryLinkMap={countryLinkMap}
+      firingCountByMlSlug={firingCountByMlSlug}
     />
   );
 }
