@@ -242,6 +242,14 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
         href: "/countries-v2-narrative" as Route,
         badge: "PREVIEW",
       },
+      // A3 Family 2 merger preview (Build PR #1-4). PR #5 cutover will kill
+      // V1 + V2-Table + V2-Narrative above and promote Merged → /countries
+      // canonical (PRIMARY). Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+      {
+        label: "Merged preview",
+        href: "/countries-merged" as Route,
+        badge: "PREVIEW",
+      },
     ],
   },
   {

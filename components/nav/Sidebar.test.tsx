@@ -29,12 +29,15 @@ describe("Sidebar", () => {
     expect(screen.getByText("Patterns")).toBeInTheDocument();
   });
 
-  it("renders the merged Precedents preview entry with a PREVIEW chip", () => {
+  it("renders Merged preview entries across families", () => {
     render(<Sidebar />);
-    // A3 Family 1 PR #4: merged-preview surface is reachable from the
-    // sidebar so founder can compare V1 / V2-A / V2-B / Merged side-by-side
-    // before PR #5 cutover.
-    expect(screen.getByText("Merged preview")).toBeInTheDocument();
+    // A3 merger previews surface in their family groups so the founder can
+    // compare V1 / V2 / Merged side-by-side before PR #5 cutover. Family 1
+    // (Precedents) shipped its merged-preview entry in PR #4; Family 2
+    // (Countries) added one in its PR #1. Each subsequent family adds its
+    // own — getAllByText keeps the assertion future-proof as the count
+    // grows (4 total once all families' PR #1 lands).
+    expect(screen.getAllByText("Merged preview").length).toBeGreaterThanOrEqual(1);
   });
 
   it("tags V1 routes LIVE and V2 + Merged routes PREVIEW via NavChip", () => {
