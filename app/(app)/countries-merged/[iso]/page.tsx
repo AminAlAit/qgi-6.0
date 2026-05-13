@@ -1,8 +1,26 @@
-import { resolveCountryBySlug } from "@/lib/country-risks";
+import { loadCountryRisks, resolveCountryBySlug } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
+import { toBuyerViewList } from "@/lib/buyer-view";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
+import { countrySlug } from "@/lib/slug";
 import { CountryMergedDetail } from "@/components/countries-merged/CountryMergedDetail";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+// PR #4 — deterministic seeded RNG (mirrors the list-page seedRng in
+// CountriesMergedListClient). Used to fabricate per-country/per-recipe AHI
+// + global-percentile values until #648 sibling bake ships per-country
+// anchor stability scores.
+function seededRng(seed: string): () => number {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
+  }
+  return () => {
+    h = Math.imul(16807, h) | 0;
+    return (h >>> 0) / 0xffffffff;
+  };
+}
 
 /**
  * /countries-merged/[iso] — Detail page for the merged Countries shell.
@@ -124,6 +142,114 @@ export default async function CountryMergedDetailPage({ params }: Props) {
     salience: l1Salience[g.code] ?? null,
   }));
 
+  // PR #4 — ML recipe coverage matrix (Marcus flagship). Brief Section 4:
+  //   7 cols × 13 LOCKed recipes (Recipe / Architecture / LOCO AUC /
+  //   Calibration band / AHI this country / Global percentile / Status)
+  //
+  //   - Recipe + Architecture + LOCO AUC: REAL data from ml-recipe-stack.
+  //   - Calibration band: REAL ECE from ml-recipe-stack.
+  //   - AHI (this country) + Global percentile: deterministic preview
+  //     values seeded on (country.id, recipe.recipe_id) until #648 sibling
+  //     bake ships per-country anchor stability.
+  //   - Status: derived — `measured` when AHI value present; `no anchor`
+  //     otherwise.
+  //
+  //   Expansion policy: brief says expanded by default when ml_cov ≥ 3/13.
+  //   ml_cov is the count of recipes with a non-null `anchor_ahi_value` in
+  //   the bake. Since the bake currently has many null AHI values, we use
+  //   a deterministic preview heuristic per country to decide expansion
+  //   default — see `mlCoverageGate` below.
+  const mlStack = await loadMlRecipeStack().catch(() => null);
+  const mlRows = mlStack
+    ? toBuyerViewList(mlStack.recipes)
+        .filter((r) => mlStack.metadata.top_4_recipes.includes(r.recipe_id))
+        // PR #4 keeps the matrix on the top-4 set; PR #5+ can expand to all 13
+        // once the LOCKed-set roster stabilises post-KI-2.
+        .map((r) => {
+          // Deterministic preview: seed on (country, recipe) for stable
+          // SSR/CSR values until #648 ships per-country AHI.
+          const rngAhi = seededRng(`ahi:${country.id}:${r.recipe_id}`);
+          const rngPct = seededRng(`pct:${country.id}:${r.recipe_id}`);
+          const ahi_preview = Math.round(rngAhi() * 100) / 100; // 0..1, 2dp
+          const pct_preview = Math.round(rngPct() * 100); // 0..100
+          const has_anchor = ahi_preview >= 0.1; // ~90% have an "anchor"
+          return {
+            recipe_id: r.recipe_id,
+            display_name: r.display_name,
+            architecture_label: r.architecture_label,
+            loco_auc: r.loco_auc,
+            ece_overall: r.ece_overall, // calibration band (REAL)
+            ahi_preview: has_anchor ? ahi_preview : null,
+            pct_preview: has_anchor ? pct_preview : null,
+            has_anchor,
+          };
+        })
+    : [];
+  const mlCovCount = mlRows.filter((r) => r.has_anchor).length;
+  // Brief expansion gate: ≥3/13 = expanded; <3/13 = collapsed.
+  // Operating on the top-4 set here (until #648), the threshold scales
+  // proportionally — ≥1/4 (i.e. any coverage at all) flips to expanded.
+  // Once the full 13 ships, this gate compares against 3.
+  const mlMatrixDefaultExpanded = mlCovCount >= 1;
+
+  // PR #4 — structural peers (Section 5). Brief: "Countries that look most
+  // like {country} today" — top-5 by L1-profile similarity. We compute a
+  // simple cosine-like similarity on the 8-dim L1 salience vector
+  // (excluding the subject country itself). REAL data — no MOCK chip.
+  const allData = await loadCountryRisks().catch(() => null);
+  let structuralPeers: Array<{
+    slug: string;
+    name: string;
+    alpha_2: string;
+    tier: string;
+    similarity: number;
+  }> = [];
+  if (allData) {
+    const selfVec = L1_GROUPS.map((g) => l1Salience[g.code] ?? 0);
+    const selfMag = Math.sqrt(selfVec.reduce((acc, v) => acc + v * v, 0));
+    const peerSims: Array<{
+      slug: string;
+      name: string;
+      alpha_2: string;
+      tier: string;
+      similarity: number;
+    }> = [];
+    if (selfMag > 0) {
+      for (const [peerId, peer] of Object.entries(allData.countries)) {
+        if (peerId === country.id) continue; // skip self
+        const peerSlug = countrySlug(peer.name);
+        if (!peerSlug) continue;
+        // Build peer L1 salience vector (same logic as subject).
+        const peerL1: Record<string, number> = {};
+        for (const tierData of Object.values(peer.tiers)) {
+          for (const cat of tierData.top_categories) {
+            const mapping = CATEGORY_L1_MAP[cat.category];
+            if (!mapping) continue;
+            const score = cat.salience_score ?? cat.z_score ?? 0;
+            const prev = peerL1[mapping.group] ?? -Infinity;
+            if (score > prev) peerL1[mapping.group] = score;
+          }
+        }
+        const peerVec = L1_GROUPS.map((g) => peerL1[g.code] ?? 0);
+        const peerMag = Math.sqrt(peerVec.reduce((acc, v) => acc + v * v, 0));
+        if (peerMag === 0) continue;
+        // Cosine similarity — bounded [-1, 1]; for non-negative salience,
+        // bounded [0, 1].
+        const dot = selfVec.reduce((acc, v, i) => acc + v * peerVec[i], 0);
+        const similarity = dot / (selfMag * peerMag);
+        peerSims.push({
+          slug: peerSlug,
+          name: peer.name,
+          alpha_2: peer.alpha_2,
+          tier: peer.overall_risk_tier,
+          similarity,
+        });
+      }
+      peerSims.sort((a, b) => b.similarity - a.similarity);
+      structuralPeers = peerSims.slice(0, 5);
+    }
+  }
+
   return (
     <CountryMergedDetail
       iso={iso}
@@ -133,6 +259,10 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       tier={country.overall_risk_tier}
       l1Rows={l1Rows}
       top3={top3}
+      mlRows={mlRows}
+      mlCovCount={mlCovCount}
+      mlMatrixDefaultExpanded={mlMatrixDefaultExpanded}
+      structuralPeers={structuralPeers}
     />
   );
 }
