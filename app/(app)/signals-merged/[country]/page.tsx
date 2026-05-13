@@ -138,7 +138,7 @@ export default async function SignalsMergedCountryPage({ params }: Props) {
       slug={country}
       countryName={c.name}
       alpha2={c.alpha_2}
-      countryTier={c.overall_risk_tier}
+      countryTier={c.overall_risk_tier as SignalTier}
       rows={rows}
       tierCounts={tierCounts}
       generatedDate={generatedDate}
