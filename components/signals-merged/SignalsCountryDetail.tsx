@@ -88,18 +88,6 @@ function sortRows(
   return arr;
 }
 
-/**
- * Country-tier badge color rules — match the Country/Signal tier vocab.
- * V1 stores country tier as "1"/"2"/"3" strings; we map to HIGH/MOD/IND
- * for visual parity with the per-signal rungs (brief 7th-vote uniform
- * vocabulary).
- */
-function mapCountryTierToSignalTier(t: string): SignalTier {
-  if (t === "1") return "HIGH";
-  if (t === "2") return "MODERATE";
-  return "INDICATIVE";
-}
-
 export function SignalsCountryDetail({
   slug,
   countryName,
@@ -113,8 +101,12 @@ export function SignalsCountryDetail({
   slug: string;
   countryName: string;
   alpha2: string;
-  /** "1" | "2" | "3" — V1 overall_risk_tier; mapped to HIGH/MOD/IND. */
-  countryTier: string;
+  /**
+   * V1 overall_risk_tier — already in HIGH/MODERATE/INDICATIVE vocabulary
+   * per country-risks.schema.ts RiskTierSchema. Brief 7th-vote unified
+   * country + signal vocab, so indexes TIER_META directly.
+   */
+  countryTier: SignalTier;
   rows: CountrySignalRow[];
   tierCounts: Record<SignalTier, number>;
   generatedDate: string;
@@ -169,8 +161,7 @@ export function SignalsCountryDetail({
     });
   };
 
-  const countryTierAsSignalTier = mapCountryTierToSignalTier(countryTier);
-  const heroTierMeta = TIER_META[countryTierAsSignalTier];
+  const heroTierMeta = TIER_META[countryTier];
   const firingTotal = tierCounts.HIGH + tierCounts.MODERATE;
 
   return (
@@ -393,6 +384,7 @@ export function SignalsCountryDetail({
         {/* Search */}
         <input
           type="text"
+          aria-label="Search category or L1 domain"
           placeholder="Search category or L1..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -421,7 +413,7 @@ export function SignalsCountryDetail({
               color: "var(--qgi-text-muted)",
             }}
           >
-            <option value="salience">Alignment</option>
+            <option value="salience">Alignment (salience-z proxy)</option>
             <option value="tier">Tier</option>
             <option value="category">Category (A→Z)</option>
           </select>
