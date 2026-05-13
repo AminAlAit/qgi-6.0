@@ -177,11 +177,17 @@ export default async function SignalsMergedPage() {
   >;
   for (const s of signals) tierCounts[s.tier]++;
 
+  // Computed server-side so the "Currently firing — {date}" eyebrow is
+  // hydration-stable. Anchored to revalidate=3600 so the date refreshes
+  // hourly along with the underlying snapshot.
+  const generatedDate = new Date().toISOString().slice(0, 10);
+
   return (
     <SignalsMergedListClient
       signals={signals}
       tierCounts={tierCounts}
       totalCountries={totalCountries}
+      generatedDate={generatedDate}
     />
   );
 }

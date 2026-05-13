@@ -80,10 +80,10 @@ function sortRows(rows: SignalRow[], col: SortColumn, dir: SortDir): SignalRow[]
       arr.sort((a, b) => mul * (TIER_ORDER[a.tier] - TIER_ORDER[b.tier]));
       break;
     case "max_salience":
-      arr.sort((a, b) => mul * (b.max_salience - a.max_salience));
+      arr.sort((a, b) => mul * (a.max_salience - b.max_salience));
       break;
     case "firing_count":
-      arr.sort((a, b) => mul * (b.firing_count - a.firing_count));
+      arr.sort((a, b) => mul * (a.firing_count - b.firing_count));
       break;
   }
   return arr;
@@ -93,10 +93,13 @@ export function SignalsMergedListClient({
   signals,
   tierCounts,
   totalCountries,
+  generatedDate,
 }: {
   signals: SignalRow[];
   tierCounts: Record<SignalTier, number>;
   totalCountries: number;
+  /** ISO yyyy-mm-dd, computed server-side for hydration stability. */
+  generatedDate: string;
 }) {
   const [search, setSearch] = useState("");
   const [tierFilter, setTierFilter] = useState<"ALL" | SignalTier>("ALL");
@@ -146,7 +149,6 @@ export function SignalsMergedListClient({
     });
   };
 
-  const today = new Date().toISOString().slice(0, 10);
   const firingTotal = tierCounts.HIGH + tierCounts.MODERATE; // categories above background
 
   return (
@@ -157,7 +159,7 @@ export function SignalsMergedListClient({
           className="text-[10px] tracking-widest uppercase mb-1"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Currently firing — {today}
+          Currently firing — {generatedDate}
         </div>
         <h1
           className="text-2xl font-semibold leading-snug"
@@ -337,6 +339,16 @@ export function SignalsMergedListClient({
               color: "var(--qgi-text-muted)",
               minWidth: 36,
             }}
+            title={
+              sortDir === "asc"
+                ? "Ascending — click to flip to descending"
+                : "Descending — click to flip to ascending"
+            }
+            aria-label={
+              sortDir === "asc"
+                ? "Sort direction ascending; click to flip to descending"
+                : "Sort direction descending; click to flip to ascending"
+            }
           >
             {sortDir === "asc" ? "↑" : "↓"}
           </button>
