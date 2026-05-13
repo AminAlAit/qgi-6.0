@@ -181,99 +181,154 @@ const IconBarChart = () => (
 // #440: `href: Route` so typed-routes pre-validates every nav target at
 // build time. Renaming `/precedents` → `/precedence` (or any future
 // re-org) becomes a build error here instead of a 404 in production.
-const NAV_ITEMS: ReadonlyArray<{
+//
+// 2026-05-13 (A3 Family 1 Build PR #4): refactored from flat 15-item nav
+// into family-grouped sections with chip badges (LIVE / PREVIEW). The
+// merged Precedents preview surface needed its own nav slot (founder
+// request); flat list was already cluttered with 4 V2 routes; grouping
+// makes the V1/V2/Merged side-by-side comparison legible. Chip badges
+// surface the trial-period state at a glance. Cutover (PR #5) will kill
+// V1 + V2 preview entries and promote the merged route to PRIMARY status.
+
+/** Trial-period status chip. PRIMARY is reserved for the post-cutover
+ *  canonical surface; LIVE = production V1; PREVIEW = V2 + merged previews. */
+type NavBadge = "LIVE" | "PREVIEW" | "PRIMARY";
+
+interface NavItem {
+  label: string;
+  href: Route;
+  badge: NavBadge;
+}
+
+interface NavGroup {
+  /** Group header label (sentence-case, never tracked uppercase). */
+  label: string;
+  icon: React.ReactNode;
+  items: ReadonlyArray<NavItem>;
+}
+
+interface NavStandalone {
+  type: "standalone";
   label: string;
   href: Route;
   icon: React.ReactNode;
-}> = [
+  badge: NavBadge;
+}
+
+type NavEntry = NavGroup | NavStandalone;
+
+const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
-    label: "DASHBOARD",
+    type: "standalone",
+    label: "Dashboard",
     href: "/dashboard",
     icon: <IconDashboard />,
+    badge: "LIVE",
   },
   {
-    label: "COUNTRIES",
-    href: "/countries",
+    label: "Countries",
     icon: <IconGlobe />,
+    items: [
+      { label: "Country browser", href: "/countries", badge: "LIVE" },
+      // Sard Majles S-Country (2026-05-02) sibling previews. R7: /countries
+      // above stays LIVE. Spec: qgi-docs/internal/majles/2026-05-02_S-Country_country_profile_redesign.md
+      {
+        label: "V2 — Table",
+        href: "/countries-v2-table" as Route,
+        badge: "PREVIEW",
+      },
+      {
+        label: "V2 — Narrative",
+        href: "/countries-v2-narrative" as Route,
+        badge: "PREVIEW",
+      },
+    ],
   },
   {
-    label: "PRECEDENTS",
-    href: "/precedents",
+    label: "Precedents",
     icon: <IconHistory />,
+    items: [
+      { label: "Recipe catalogue", href: "/precedents", badge: "LIVE" },
+      // Frontend resurfacing cycle 2026-05-11 (#645 + Q14:A): top-4 LOCKed
+      // ML recipes on Tufte (A) + Lloyd's (B) caveat-style siblings.
+      // Spec: qgi-docs/internal/ops/ml-track/frontend-resurfacing-plan-2026-05-11.md
+      {
+        label: "V2 — Tufte",
+        href: "/precedents-v2-a" as Route,
+        badge: "PREVIEW",
+      },
+      {
+        label: "V2 — Lloyd's",
+        href: "/precedents-v2-b" as Route,
+        badge: "PREVIEW",
+      },
+      // A3 Family 1 merger preview (PR #1-4 of the incremental build). PR #5
+      // cutover will kill V1 + V2-A + V2-B above and promote Merged → /precedents
+      // canonical (PRIMARY). Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+      {
+        label: "Merged preview",
+        href: "/precedents-merged" as Route,
+        badge: "PREVIEW",
+      },
+    ],
   },
   {
-    label: "SIGNALS",
-    href: "/signals",
+    label: "Signals",
     icon: <IconSignal />,
+    items: [
+      { label: "Active signals", href: "/signals", badge: "LIVE" },
+      // #655 country-keyed V2 signals (2026-05-12), sister to #645.
+      {
+        label: "V2 — Tufte",
+        href: "/signals-v2-a" as Route,
+        badge: "PREVIEW",
+      },
+      {
+        label: "V2 — Lloyd's",
+        href: "/signals-v2-b" as Route,
+        badge: "PREVIEW",
+      },
+    ],
   },
   {
-    label: "PATTERNS",
-    href: "/patterns",
+    label: "Patterns",
     icon: <IconNetwork />,
-  },
-  {
-    label: "RANKING",
-    href: "/patterns/ranking",
-    icon: <IconBarChart />,
-  },
-  // Sard Majles S-First decision (2026-05-01) + founder vote (2026-05-02):
-  // ship two sibling V2 pages of the merged Discover Patterns design so
-  // founder can compare layouts before a definitive merge.
-  // R7 (originals stay live): PATTERNS + RANKING above remain functional.
-  // Spec: qgi-docs/internal/majles/2026-05-01_S-First_patterns_ranking_merge.md
-  {
-    label: "DISCOVER A (TABS)",
-    href: "/discover-patterns-a" as Route,
-    icon: <IconNetwork />,
-  },
-  {
-    label: "DISCOVER B (FACETS)",
-    href: "/discover-patterns-b" as Route,
-    icon: <IconBarChart />,
-  },
-  // Sard Majles S-Country decision (2026-05-02) + founder vote: ship two
-  // sibling V2 pages of /countries (delta version dropped per Tomás
-  // ship-blocker on data dependency). R7: /countries above stays live.
-  // Spec: qgi-docs/internal/majles/2026-05-02_S-Country_country_profile_redesign.md
-  {
-    label: "COUNTRIES V2 (TABLE)",
-    href: "/countries-v2-table" as Route,
-    icon: <IconGlobe />,
-  },
-  {
-    label: "COUNTRIES V2 (NARRATIVE)",
-    href: "/countries-v2-narrative" as Route,
-    icon: <IconGlobe />,
-  },
-  // Frontend resurfacing cycle 2026-05-11 (Q4 + Q21 + Q27): ship the top-4
-  // LOCKed ML recipes onto NEW /precedents-v2-{a,b} routes (Tufte + Lloyd's
-  // caveat variants). Per Q14:A, both variants get their own sidebar slot
-  // (4 total V2 slots: precedents A/B + signals A/B; signals slots added in
-  // #655). R7: /precedents above stays live.
-  // Spec: qgi-docs/internal/ops/ml-track/frontend-resurfacing-plan-2026-05-11.md
-  {
-    label: "PRECEDENTS V2 (A — TUFTE)",
-    href: "/precedents-v2-a" as Route,
-    icon: <IconHistory />,
-  },
-  {
-    label: "PRECEDENTS V2 (B — LLOYD'S)",
-    href: "/precedents-v2-b" as Route,
-    icon: <IconHistory />,
-  },
-  // #655 sister to #645: country-keyed V2 signals routes shipped 2026-05-12.
-  // Same Q14:A + Q27:B pattern as precedents-v2 entries above.
-  {
-    label: "SIGNALS V2 (A — TUFTE)",
-    href: "/signals-v2-a" as Route,
-    icon: <IconSignal />,
-  },
-  {
-    label: "SIGNALS V2 (B — LLOYD'S)",
-    href: "/signals-v2-b" as Route,
-    icon: <IconSignal />,
+    items: [
+      { label: "Pattern atlas", href: "/patterns", badge: "LIVE" },
+      { label: "Power ranking", href: "/patterns/ranking", badge: "LIVE" },
+      // Sard Majles S-First (2026-05-01): tabs + facets sibling previews of
+      // the merged Discover Patterns design.
+      // Spec: qgi-docs/internal/majles/2026-05-01_S-First_patterns_ranking_merge.md
+      {
+        label: "Discover — Tabs",
+        href: "/discover-patterns-a" as Route,
+        badge: "PREVIEW",
+      },
+      {
+        label: "Discover — Facets",
+        href: "/discover-patterns-b" as Route,
+        badge: "PREVIEW",
+      },
+    ],
   },
 ];
+
+/** Flatten the structure to the leaf-route list — used by the
+ *  longest-prefix-wins active-state algorithm so a deep pathname like
+ *  /precedents-merged/civil_war_and_insurgency highlights the right item. */
+function collectNavItems(): NavItem[] {
+  const all: NavItem[] = [];
+  for (const entry of NAV_STRUCTURE) {
+    if ("type" in entry) {
+      all.push({ label: entry.label, href: entry.href, badge: entry.badge });
+    } else {
+      all.push(...entry.items);
+    }
+  }
+  return all;
+}
+
+const FLAT_NAV_ITEMS = collectNavItems();
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -426,35 +481,33 @@ export function Sidebar() {
         {/* Navigation
           GH#250: longest-prefix-wins active state. Without this, RANKING
           (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
-          naive startsWith() matches both. The per-item `active` check below
-          picks the deepest NAV_ITEMS href that the current pathname matches. */}
-        <nav className="flex flex-col gap-0.5 px-2 pt-4 flex-1">
-          {NAV_ITEMS.map(({ label, href, icon }) => {
-            const active =
-              pathname === href ||
-              (pathname.startsWith(href + "/") &&
-                !NAV_ITEMS.some(
-                  (other) =>
-                    other.href !== href &&
-                    other.href.length > href.length &&
-                    (pathname === other.href || pathname.startsWith(other.href + "/"))
-                ));
+          naive startsWith() matches both. `isActiveRoute` picks the
+          deepest leaf href that the current pathname matches.
+          2026-05-13 (A3 Family 1 PR #4): refactored to family-grouped
+          sections; the active-state algorithm operates on the flattened
+          leaf list (FLAT_NAV_ITEMS) so it stays unaware of group structure. */}
+        <nav className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto">
+          {NAV_STRUCTURE.map((entry) => {
+            if ("type" in entry) {
+              return (
+                <NavLeafLink
+                  key={entry.href}
+                  label={entry.label}
+                  href={entry.href}
+                  icon={entry.icon}
+                  badge={entry.badge}
+                  pathname={pathname}
+                  onClick={closeOnNavigate}
+                />
+              );
+            }
             return (
-              <Link
-                key={href}
-                href={href}
-                onClick={closeOnNavigate}
-                className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
-                style={{
-                  color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
-                  backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
-                }}
-              >
-                <span className="flex items-center justify-center w-4 h-4 shrink-0">
-                  {icon}
-                </span>
-                {label}
-              </Link>
+              <NavGroupSection
+                key={entry.label}
+                group={entry}
+                pathname={pathname}
+                onLinkClick={closeOnNavigate}
+              />
             );
           })}
         </nav>
@@ -475,5 +528,150 @@ export function Sidebar() {
         </div>
       </aside>
     </>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Sub-components for the family-grouped nav (A3 Family 1 PR #4)
+// ---------------------------------------------------------------------------
+
+/** Longest-prefix-wins active-state check (per-leaf, group-unaware). */
+function isActiveRoute(pathname: string, href: Route): boolean {
+  if (pathname === href) return true;
+  if (!pathname.startsWith(href + "/")) return false;
+  // A deeper leaf in the same family wins (e.g. /patterns/ranking outranks
+  // /patterns when the user is on /patterns/ranking).
+  return !FLAT_NAV_ITEMS.some(
+    (other) =>
+      other.href !== href &&
+      other.href.length > href.length &&
+      (pathname === other.href || pathname.startsWith(other.href + "/"))
+  );
+}
+
+/** Standalone top-level nav link (Dashboard). Keeps the icon-leading layout
+ *  the flat nav had — visually distinct from grouped items so the eye still
+ *  reads it as the page's command-center entry, not as a family member. */
+function NavLeafLink({
+  label,
+  href,
+  icon,
+  badge,
+  pathname,
+  onClick,
+}: {
+  label: string;
+  href: Route;
+  icon: React.ReactNode;
+  badge: NavBadge;
+  pathname: string;
+  onClick: () => void;
+}) {
+  const active = isActiveRoute(pathname, href);
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
+      style={{
+        color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
+        backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
+      }}
+    >
+      <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
+      <span className="flex-1 uppercase">{label}</span>
+      <NavChip badge={badge} />
+    </Link>
+  );
+}
+
+/** Family section header + child links. Non-collapsible in PR #4 — clean
+ *  visual grouping without state cost. Collapsible expansion can ship as
+ *  a follow-up if founder finds the sidebar too tall. */
+function NavGroupSection({
+  group,
+  pathname,
+  onLinkClick,
+}: {
+  group: NavGroup;
+  pathname: string;
+  onLinkClick: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-0.5">
+      {/* Group header — small uppercase tracked, dim. Icon at left. */}
+      <div
+        className="flex items-center gap-3 px-3 py-1.5"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        <span className="flex items-center justify-center w-4 h-4 shrink-0">
+          {group.icon}
+        </span>
+        <span className="text-[10px] tracking-widest uppercase font-semibold">
+          {group.label}
+        </span>
+      </div>
+      {/* Indented item rows — no per-item icon (group icon does the job). */}
+      <div className="flex flex-col gap-0.5">
+        {group.items.map((item) => {
+          const active = isActiveRoute(pathname, item.href);
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={onLinkClick}
+              className="flex items-center gap-2 pl-10 pr-3 py-1.5 rounded text-xs tracking-wide transition-colors"
+              style={{
+                color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
+                backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
+              }}
+            >
+              <span className="flex-1 truncate">{item.label}</span>
+              <NavChip badge={item.badge} />
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+/** Trial-period status chip. Three states:
+ *  - LIVE: production V1 surface (neutral slate)
+ *  - PREVIEW: V2 + merged-preview routes (amber)
+ *  - PRIMARY: reserved for post-cutover canonical surface (blue/accent)
+ */
+function NavChip({ badge }: { badge: NavBadge }) {
+  const colors: Record<NavBadge, { fg: string; bg: string; border: string }> = {
+    LIVE: {
+      fg: "#94a3b8",
+      bg: "rgba(148, 163, 184, 0.12)",
+      border: "rgba(148, 163, 184, 0.30)",
+    },
+    PREVIEW: {
+      fg: "#fbbf24",
+      bg: "rgba(251, 191, 36, 0.12)",
+      border: "rgba(251, 191, 36, 0.35)",
+    },
+    PRIMARY: {
+      fg: "var(--qgi-accent)",
+      bg: "var(--qgi-accent-glow)",
+      border: "var(--qgi-accent)",
+    },
+  };
+  const c = colors[badge];
+  return (
+    <span
+      className="inline-flex items-center font-data text-[8px] tracking-widest uppercase px-1 py-0.5 rounded font-semibold shrink-0"
+      style={{
+        color: c.fg,
+        backgroundColor: c.bg,
+        border: `1px solid ${c.border}`,
+      }}
+      // Keep the chip semantic for screen readers but visually compact.
+      aria-label={`${badge} surface`}
+    >
+      {badge}
+    </span>
   );
 }
