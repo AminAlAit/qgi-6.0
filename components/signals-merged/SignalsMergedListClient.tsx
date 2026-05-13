@@ -7,25 +7,28 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { countrySlug } from "@/lib/slug";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
 import type { SignalRow, SignalTier } from "@/app/(app)/signals-merged/page";
+import { FIRING_SIGNALS } from "./mockFiringSignals";
 
 /**
- * Merged Signals list shell — Build PR #1 of 5 (A3 Family 3 merger brief).
+ * Merged Signals list shell — Build PR #2 of 5 (A3 Family 3 merger brief).
  *
  * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
  *   (Family 3 — Signals)
  *
- * Scope of PR #1:
+ * Scope of PR #2 (incremental over PR #1):
+ *   - "5 firing now" curated band pinned above the filter strip with
+ *     Sipho's `[Editor's pick · week of {date}]` label
+ *   - 8-domain activation strip rendered above the table — one chip per
+ *     L1 with categories-firing + countries-firing counts
+ *
+ * Carried over from PR #1:
  *   - H1 "Signals" + eyebrow "Currently firing — {date}" + 1-line metric
  *     strip (live tier counts)
  *   - Lloyd's-style methodology disclosure banner
- *   - Filter strip: search + tier buttons + domain multi-select + lineage
- *     filter + curated-only toggle (skeleton — lineage filtering arrives
- *     with the ML-recipe join in PR #4)
+ *   - Filter strip: search + tier buttons + domain multi-select
  *   - 71-row main table with 5 cols (CATEGORY · TIER · MAX SALIENCE ·
  *     COUNTRIES FIRING · TOP COUNTRIES)
  *
- * Deferred to PR #2: "5 firing now" curated band; full 7-col table
- * (LINEAGE pill, regional distribution sparkbar)
  * Deferred to PR #3: per-country watchlist /signals-merged/[country]
  * Deferred to PR #4: per-(country, recipe) leaf with split-render by lineage
  * Deferred to PR #5 (founder-gated): cutover
@@ -89,17 +92,31 @@ function sortRows(rows: SignalRow[], col: SortColumn, dir: SortDir): SignalRow[]
   return arr;
 }
 
+export interface DomainActivation {
+  code: string;
+  label: string;
+  shortLabel: string;
+  color: string;
+  /** Count of categories with tier ≥ MODERATE mapped to this L1. */
+  n_categories: number;
+  /** Unique-country count across this L1's firing categories (top-3 per cat). */
+  n_countries: number;
+}
+
 export function SignalsMergedListClient({
   signals,
   tierCounts,
   totalCountries,
   generatedDate,
+  domainActivation,
 }: {
   signals: SignalRow[];
   tierCounts: Record<SignalTier, number>;
   totalCountries: number;
   /** ISO yyyy-mm-dd, computed server-side for hydration stability. */
   generatedDate: string;
+  /** Per-L1 activation counts — REAL data. PR #2. */
+  domainActivation: DomainActivation[];
 }) {
   const [search, setSearch] = useState("");
   const [tierFilter, setTierFilter] = useState<"ALL" | SignalTier>("ALL");
@@ -175,6 +192,9 @@ export function SignalsMergedListClient({
           {totalCountries} countries · v1.9.1 scoring
         </p>
       </div>
+
+      {/* ============== "5 firing now" curated band — PR #2 ============== */}
+      <FiringNowBand signals={signals} generatedDate={generatedDate} />
 
       {/* ============== Lloyd's methodology disclosure banner ============== */}
       <div
@@ -358,6 +378,9 @@ export function SignalsMergedListClient({
           Showing {sorted.length} of {signals.length}
         </span>
       </div>
+
+      {/* ============== Domain activation strip — PR #2 ============== */}
+      <DomainActivationStrip domains={domainActivation} />
 
       {/* ============== Table ============== */}
       <div
@@ -560,5 +583,261 @@ function SignalRowComponent({ row, isLast }: { row: SignalRow; isLast: boolean }
         </div>
       </div>
     </Link>
+  );
+}
+
+// ============================================================================
+// PR #2 — "5 firing now" curated band
+// ----------------------------------------------------------------------------
+// Pinned story-cards above the filter strip. Selection is editorial (5
+// hand-picked entries with Ingrid-voice movement narratives from
+// `mockFiringSignals.ts`). The band joins the curated entries against the
+// live aggregate to surface tier-as-of-this-bake; rows missing from the
+// aggregate are dropped silently (e.g., if a category retires).
+// ============================================================================
+
+function FiringNowBand({
+  signals,
+  generatedDate,
+}: {
+  signals: SignalRow[];
+  generatedDate: string;
+}) {
+  const byCategory = useMemo(() => {
+    const m = new Map<string, SignalRow>();
+    for (const s of signals) m.set(s.category, s);
+    return m;
+  }, [signals]);
+
+  const cards = useMemo(() => {
+    return FIRING_SIGNALS.map((f) => {
+      const live = byCategory.get(f.category);
+      return live ? { firing: f, live } : null;
+    }).filter((x): x is NonNullable<typeof x> => x !== null);
+  }, [byCategory]);
+
+  if (cards.length === 0) return null;
+
+  return (
+    <section
+      aria-label="Firing now — editor's pick"
+      className="mb-5 rounded-lg border overflow-hidden"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div
+        className="px-4 py-2 flex items-center justify-between"
+        style={{
+          backgroundColor: "var(--qgi-surface-2)",
+          borderBottom: "1px solid var(--qgi-border)",
+        }}
+      >
+        <span
+          className="text-[9px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          [Editor&apos;s pick · week of {generatedDate}]
+        </span>
+        <span
+          className="text-[9px] tracking-widest uppercase"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          5 firing now
+        </span>
+      </div>
+      <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
+        {cards.map(({ firing, live }) => {
+          const meta = TIER_META[live.tier];
+          const detailHref = `/signals?recipe=${live.category}` as Route;
+          return (
+            <li key={firing.category} style={{ borderColor: "var(--qgi-border)" }}>
+              <Link
+                href={detailHref}
+                className="px-4 py-3 grid items-start gap-x-3 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
+                style={{
+                  gridTemplateColumns: "minmax(0, 1.4fr) 90px minmax(0, 2.5fr) 140px",
+                }}
+              >
+                {/* Category + L1 chip */}
+                <div className="min-w-0">
+                  <div
+                    className="text-sm font-medium leading-tight truncate"
+                    style={{ color: "var(--qgi-text)" }}
+                    title={firing.display_name}
+                  >
+                    {firing.display_name}
+                  </div>
+                  {live.l1 && (
+                    <div
+                      className="inline-flex items-center mt-1 px-1.5 py-0.5 rounded text-[9px] tracking-widest uppercase font-semibold"
+                      style={{
+                        backgroundColor: `${live.l1.color}14`,
+                        color: live.l1.color,
+                      }}
+                    >
+                      {live.l1.shortLabel}
+                    </div>
+                  )}
+                </div>
+
+                {/* Tier pill */}
+                <div
+                  className="text-[10px] tracking-wider uppercase font-semibold font-data text-center px-2 py-1 rounded"
+                  title={meta.tooltip}
+                  style={{
+                    backgroundColor: meta.bg,
+                    color: meta.color,
+                    border: `1px solid ${meta.border}`,
+                  }}
+                >
+                  {meta.label}
+                </div>
+
+                {/* Movement narrative (Ingrid voice) */}
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
+                  {firing.movement}
+                </p>
+
+                {/* Top countries chip strip */}
+                <div className="flex flex-wrap gap-1 justify-end">
+                  {firing.top_countries.map((c) => (
+                    <span
+                      key={c.alpha_2}
+                      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px]"
+                      style={{
+                        backgroundColor: "var(--qgi-surface-2)",
+                        border: "1px solid var(--qgi-border)",
+                        color: "var(--qgi-text-muted)",
+                      }}
+                    >
+                      <CountryFlag alpha2={c.alpha_2} size={12} countryName={c.name} />
+                      <span className="whitespace-nowrap">{c.name}</span>
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
+// ============================================================================
+// PR #2 — Domain activation strip
+// ----------------------------------------------------------------------------
+// 8-cell L1-domain band rendered above the master list. Each cell shows
+// (a) categories firing in this domain at tier ≥ MODERATE, (b) unique
+// country count across those firing categories. REAL data — no preview chip.
+// ============================================================================
+
+function DomainActivationStrip({ domains }: { domains: DomainActivation[] }) {
+  const maxN = Math.max(1, ...domains.map((d) => d.n_categories));
+  return (
+    <section
+      aria-label="Domain activation"
+      className="mb-3 rounded-lg border overflow-hidden"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div
+        className="px-3 py-1.5 flex items-center justify-between"
+        style={{
+          backgroundColor: "var(--qgi-surface-2)",
+          borderBottom: "1px solid var(--qgi-border)",
+        }}
+      >
+        <span
+          className="text-[9px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          Domain activation
+        </span>
+        <span
+          className="text-[9px] tracking-widest uppercase"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          categories firing ≥ MODERATE · 8 L1 domains
+        </span>
+      </div>
+      <div
+        className="grid"
+        style={{
+          gridTemplateColumns: `repeat(${domains.length}, minmax(0, 1fr))`,
+        }}
+      >
+        {domains.map((d, idx) => {
+          const heightPct = (d.n_categories / maxN) * 100;
+          const isLast = idx === domains.length - 1;
+          return (
+            <div
+              key={d.code}
+              className="px-3 py-2"
+              style={{
+                borderRight: isLast ? undefined : "1px solid var(--qgi-border)",
+              }}
+              title={`${d.label} — ${d.n_categories} ${d.n_categories === 1 ? "category" : "categories"} firing across ≥${d.n_countries} ${d.n_countries === 1 ? "country" : "countries"} (sampled from top-3 firing per category; true panel reach may be higher)`}
+            >
+              <div
+                className="text-[9px] tracking-widest uppercase font-semibold mb-1.5"
+                style={{ color: d.color }}
+              >
+                {d.shortLabel}
+              </div>
+              {/* Mini activation bar */}
+              <div
+                className="rounded-sm overflow-hidden mb-1.5"
+                style={{
+                  height: 4,
+                  backgroundColor: "var(--qgi-surface-2)",
+                }}
+              >
+                <div
+                  style={{
+                    width: `${heightPct}%`,
+                    height: "100%",
+                    backgroundColor: d.color,
+                    transition: "width 220ms ease-out",
+                  }}
+                />
+              </div>
+              <div className="flex items-baseline gap-1 font-data tabular-nums">
+                <span
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--qgi-text)" }}
+                >
+                  {d.n_categories}
+                </span>
+                <span
+                  className="text-[9px] tracking-widest uppercase"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  cat
+                </span>
+              </div>
+              <div className="flex items-baseline gap-1 font-data tabular-nums">
+                <span className="text-[11px]" style={{ color: "var(--qgi-text-muted)" }}>
+                  ≥{d.n_countries}
+                </span>
+                <span
+                  className="text-[9px] tracking-widest uppercase"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  cty
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </section>
   );
 }
