@@ -317,6 +317,11 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
         href: "/discover-patterns-b" as Route,
         badge: "PREVIEW",
       },
+      {
+        label: "Merged preview",
+        href: "/patterns-merged" as Route,
+        badge: "PREVIEW",
+      },
     ],
   },
 ];
