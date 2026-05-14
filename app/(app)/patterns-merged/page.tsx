@@ -86,9 +86,7 @@ export default async function PatternsMergedPage() {
   // deferred to PR #4 alongside the grid layout toggle.
   const rows: PatternsMergedRow[] = raw.slice(0, 250).map((p, i) => ({
     ...p,
-    window_tier: mapPatternTier(
-      (p as PatternRow & { pattern_tier?: string }).pattern_tier
-    ),
+    window_tier: mapPatternTier(p.pattern_tier),
     row_key: `${p.country_a}-${p.country_b}-${p.start_year_a}-${i}`,
   }));
 
