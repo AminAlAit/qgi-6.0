@@ -5,11 +5,14 @@ import type { Metadata } from "next";
 /**
  * /patterns-merged — Preview-only route for A3 merger brief Family 4.
  *
- * Build PR #1 of 5 (incremental cadence, founder-gated cutover at PR #5):
- *   - PR #1 (this): route scaffold + Foreign Affairs lede + "What this
- *     doesn't mean" callout + Lloyd's banner + preset chips + 5-col
- *     rows-layout table over the top patterns
- *   - PR #2: faceted left rail + lineage/architecture facets + sort header
+ * Build PR #2 of 5 (incremental cadence, founder-gated cutover at PR #5):
+ *   - PR #1: route scaffold + Foreign Affairs lede + "What this doesn't
+ *     mean" callout + Lloyd's banner + preset chips + 5-col rows-layout
+ *     table over the top patterns
+ *   - PR #2 (this): persistent left facet rail (Window-tier moved from
+ *     filter strip + Country multi-select + Architecture/RCI/L1/Region/
+ *     Falsification-status preview-placeholder facets) + 6-tier
+ *     vocabulary disclosure strip
  *   - PR #3: per-pattern detail page /patterns-merged/[slug]
  *   - PR #4: flagship section (sparkline column + RCI dot per row + cross-
  *     family handoffs)
@@ -79,8 +82,8 @@ async function loadRanking(): Promise<PatternRow[]> {
 
 export default async function PatternsMergedPage() {
   const raw = await loadRanking();
-  // PR #1 surfaces the top 250 unique pattern instances. The full faceted
-  // table (with virtual-scroll over the full ranking) lands in PR #2.
+  // PR #2: still capped at 250; virtual-scroll over the full ranking is
+  // deferred to PR #4 alongside the grid layout toggle.
   const rows: PatternsMergedRow[] = raw.slice(0, 250).map((p, i) => ({
     ...p,
     window_tier: mapPatternTier(
@@ -123,6 +126,19 @@ export default async function PatternsMergedPage() {
 
   const generatedDate = new Date().toISOString().slice(0, 10);
 
+  // PR #2 — country list for the multi-select facet. Sorted by frequency
+  // desc so the heaviest-firing countries surface first in the dropdown.
+  const countryFreq = new Map<string, number>();
+  for (const r of rows) {
+    countryFreq.set(r.country_a, (countryFreq.get(r.country_a) ?? 0) + 1);
+    countryFreq.set(r.country_b, (countryFreq.get(r.country_b) ?? 0) + 1);
+  }
+  const countryOptions: Array<{ name: string; count: number }> = Array.from(
+    countryFreq.entries()
+  )
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
   return (
     <PatternsMergedListClient
       rows={rows}
@@ -130,6 +146,7 @@ export default async function PatternsMergedPage() {
       uniquePairCount={uniquePairs.size}
       yearRange={{ first: firstYear, last: lastYear }}
       generatedDate={generatedDate}
+      countryOptions={countryOptions}
     />
   );
 }
