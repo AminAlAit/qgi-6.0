@@ -520,9 +520,13 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
   const meta = TIER_META[row.window_tier];
   const aSlug = countrySlug(row.country_a) ?? row.country_a.toLowerCase();
   const bSlug = countrySlug(row.country_b) ?? row.country_b.toLowerCase();
-  // PR #3 will introduce /patterns-merged/[slug] detail pages; for now we
-  // route to V1 /patterns?focus={a}-{b}-{startA} as a stub.
-  const detailHref = `/patterns?focus=${aSlug}-${bSlug}-${row.start_year_a}` as Route;
+  // PR #3 — /patterns-merged/[slug] detail page is live. Slug shape
+  // `{a-slug}-{b-slug}-{start_year_a}-{start_year_b}` matches
+  // generateStaticParams. Both year fields are required to disambiguate
+  // same-pair windows that share start_year_a — without start_year_b the
+  // slug collides across 53 of 64 unique pairs in the current ranking.
+  const detailHref =
+    `/patterns-merged/${aSlug}-${bSlug}-${row.start_year_a}-${row.start_year_b}` as Route;
   return (
     <li>
       <Link

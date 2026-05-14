@@ -20,6 +20,8 @@ export interface PatternRow {
   pattern_power_score: number;
   num_indexes: number;
   predicted: boolean;
+  /** Pattern window tier — raw S/M/L/XL classification from the pipeline. */
+  pattern_tier?: "S" | "M" | "L" | "XL";
 }
 
 export interface IndexEntry {
