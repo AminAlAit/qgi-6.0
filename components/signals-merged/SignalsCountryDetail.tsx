@@ -604,9 +604,8 @@ function CountrySignalRowComponent({
   countrySlug: string;
 }) {
   const meta = TIER_META[row.tier];
-  // Detail link routes to V1 filtered view as a stub until PR #4 lands
-  // /signals-merged/[country]/[slug] leaf pages.
-  const detailHref = `/signals?country=${countrySlug}&recipe=${row.category}` as Route;
+  // PR #4 — leaf page lives at /signals-merged/[country]/[slug] now.
+  const detailHref = `/signals-merged/${countrySlug}/${row.category}` as Route;
 
   return (
     <li>
