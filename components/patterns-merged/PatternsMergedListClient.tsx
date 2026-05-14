@@ -10,30 +10,30 @@ import type {
 } from "@/app/(app)/patterns-merged/page";
 
 /**
- * Merged Patterns list shell — Build PR #2 of 5 (A3 Family 4 merger brief).
+ * Merged Patterns list shell — Build PR #4 of 5 (A3 Family 4 merger brief).
  *
  * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
  *   (Family 4 — Patterns)
  *
- * Scope of PR #2 (incremental over PR #1):
- *   - **Persistent left facet rail (220px)** with Window-tier facet moved
- *     out of the top filter strip + Country multi-select facet (REAL data,
- *     searchable) + 5 preview-placeholder facets for the remaining brief-
- *     required lineage taxonomy (Architecture / Falsification status / RCI
- *     / L1 / Region) chipped `Preview` until the ranking.json schema
- *     carries those columns
- *   - **Tier-vocabulary disclosure strip** — dismissible. 6 tier systems
- *     quick-reference per brief §1087-1098
- *   - Mobile fallback: the rail folds beneath the table at <lg breakpoint
+ * Scope of PR #4 (incremental over PR #1-3):
+ *   - **Sparkline column** — 80×24px SVG per row, 7-point correlation
+ *     trajectory deterministically seeded on row identity (preview data
+ *     until ranking.json carries per-window trajectory series)
+ *   - **Recipe-confidence dot** — small color-coded indicator per row
+ *     (preview placeholder until ranking.json carries the column)
+ *   - **Layout toggle** — rows ↔ grid switcher in the table header per
+ *     brief lines 1116-1125. `rows` is the Yuki/Ingrid scan-optimised
+ *     1100×90 default; `grid` is the Elif/Marcus 280×180 dense card.
  *
- * Carried over from PR #1:
+ * Carried over from PR #1-3:
  *   - Foreign Affairs hero + "What this doesn't mean" callout + Lloyd's
- *     banner + Preset chip strip + 5-col rows-layout table
+ *     banner + Preset chip strip + Facet rail + Tier-vocab strip + 5-col
+ *     rows-layout table
  *
- * Deferred to PR #3: per-pattern detail /patterns-merged/[slug]
- * Deferred to PR #4: sparkline column + RCI dot + cross-family handoffs
- *                    + grid layout toggle
- * Deferred to PR #5 (founder-gated): cutover
+ * Deferred to PR #5 (founder-gated): cutover.
+ * Deferred to follow-up PRs: ECharts trajectory chart on detail page,
+ * mechanism narrative band, historical analogues table, coverage bias
+ * diagnostic, recipe-switcher, methodology cross-ref.
  */
 
 const TIER_META: Record<
@@ -164,6 +164,7 @@ export function PatternsMergedListClient({
   const [sortCol, setSortCol] = useState<SortColumn>("pattern_power_score");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
   const [vocabDismissed, setVocabDismissed] = useState(false);
+  const [layout, setLayout] = useState<"rows" | "grid">("rows");
 
   const filtered = useMemo(() => {
     return rows.filter((r) => {
@@ -334,7 +335,7 @@ export function PatternsMergedListClient({
             className="text-[9px] tracking-widest uppercase self-center"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            (Preview — chip filter wires up in PR #4)
+            (Preview — chip filter wire-up coming soon)
           </span>
         )}
       </div>
@@ -442,6 +443,41 @@ export function PatternsMergedListClient({
           </div>
 
           {/* ============== Table ============== */}
+          {/* Layout toggle bar — PR #4 */}
+          <div className="flex items-center justify-end mb-2 gap-1.5">
+            <span
+              className="text-[9px] tracking-widest uppercase mr-1"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Layout
+            </span>
+            <div
+              role="radiogroup"
+              aria-label="Layout"
+              className="inline-flex rounded border overflow-hidden"
+              style={{ borderColor: "var(--qgi-border)" }}
+            >
+              {(["rows", "grid"] as const).map((l) => {
+                const active = layout === l;
+                return (
+                  <button
+                    key={l}
+                    role="radio"
+                    aria-checked={active}
+                    onClick={() => setLayout(l)}
+                    className="px-2.5 py-1 text-[10px] tracking-wider uppercase font-data font-semibold transition-colors"
+                    style={{
+                      backgroundColor: active ? "var(--qgi-surface-2)" : "transparent",
+                      color: active ? "var(--qgi-text)" : "var(--qgi-text-muted)",
+                    }}
+                  >
+                    {l}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <div
             className="rounded-lg border overflow-hidden"
             style={{
@@ -449,21 +485,25 @@ export function PatternsMergedListClient({
               borderColor: "var(--qgi-border)",
             }}
           >
-            <div
-              className="hidden md:grid items-center px-4 py-2.5 text-[10px] tracking-widest uppercase gap-x-2"
-              style={{
-                gridTemplateColumns: "2.5fr 90px 100px 110px 90px",
-                color: "var(--qgi-text-dim)",
-                borderBottom: "1px solid var(--qgi-border)",
-                backgroundColor: "var(--qgi-surface-2)",
-              }}
-            >
-              <span>Country pair</span>
-              <span>Window</span>
-              <span className="text-right">Correlation</span>
-              <span className="text-right">Power</span>
-              <span className="text-right">Length</span>
-            </div>
+            {layout === "rows" && (
+              <div
+                className="hidden md:grid items-center px-4 py-2.5 text-[10px] tracking-widest uppercase gap-x-2"
+                style={{
+                  gridTemplateColumns: "2.5fr 90px 100px 110px 90px 90px 24px",
+                  color: "var(--qgi-text-dim)",
+                  borderBottom: "1px solid var(--qgi-border)",
+                  backgroundColor: "var(--qgi-surface-2)",
+                }}
+              >
+                <span>Country pair</span>
+                <span>Window</span>
+                <span className="text-right">Correlation</span>
+                <span className="text-right">Power</span>
+                <span className="text-right">Length</span>
+                <span>Trajectory</span>
+                <span title="Recipe confidence indicator — preview">RC</span>
+              </div>
+            )}
 
             {sorted.length === 0 ? (
               <div
@@ -490,12 +530,23 @@ export function PatternsMergedListClient({
                   </button>
                 )}
               </div>
-            ) : (
+            ) : layout === "rows" ? (
               <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
                 {sorted.map((row, idx) => (
                   <PatternRowComponent key={row.row_key} row={row} rank={idx + 1} />
                 ))}
               </ul>
+            ) : (
+              <div
+                className="p-3 grid gap-3"
+                style={{
+                  gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+                }}
+              >
+                {sorted.map((row, idx) => (
+                  <PatternGridCard key={row.row_key} row={row} rank={idx + 1} />
+                ))}
+              </div>
             )}
           </div>
 
@@ -516,8 +567,7 @@ export function PatternsMergedListClient({
   );
 }
 
-function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: number }) {
-  const meta = TIER_META[row.window_tier];
+function buildDetailHref(row: PatternsMergedRow): Route {
   const aSlug = countrySlug(row.country_a) ?? row.country_a.toLowerCase();
   const bSlug = countrySlug(row.country_b) ?? row.country_b.toLowerCase();
   // PR #3 — /patterns-merged/[slug] detail page is live. Slug shape
@@ -525,15 +575,19 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
   // generateStaticParams. Both year fields are required to disambiguate
   // same-pair windows that share start_year_a — without start_year_b the
   // slug collides across 53 of 64 unique pairs in the current ranking.
-  const detailHref =
-    `/patterns-merged/${aSlug}-${bSlug}-${row.start_year_a}-${row.start_year_b}` as Route;
+  return `/patterns-merged/${aSlug}-${bSlug}-${row.start_year_a}-${row.start_year_b}` as Route;
+}
+
+function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: number }) {
+  const meta = TIER_META[row.window_tier];
+  const detailHref = buildDetailHref(row);
   return (
     <li>
       <Link
         href={detailHref}
         className="px-4 py-3 grid items-center gap-x-2 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
         style={{
-          gridTemplateColumns: "2.5fr 90px 100px 110px 90px",
+          gridTemplateColumns: "2.5fr 90px 100px 110px 90px 90px 24px",
         }}
       >
         <div className="flex items-center gap-2 min-w-0">
@@ -609,6 +663,12 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         >
           {row.pattern_length}y
         </div>
+
+        {/* Sparkline — PR #4 preview data */}
+        <Sparkline row={row} />
+
+        {/* Recipe-confidence dot — PR #4 preview placeholder */}
+        <RciDot row={row} />
       </Link>
     </li>
   );
@@ -911,5 +971,205 @@ function FacetPlaceholder({ label, tooltip }: { label: string; tooltip: string }
         Preview
       </span>
     </div>
+  );
+}
+
+// ============================================================================
+// PR #4 — Sparkline component
+// ----------------------------------------------------------------------------
+// 7-point trajectory rendered as a small SVG line. The series is
+// deterministically seeded on (country_a, country_b, start_year_a) so SSR
+// and CSR produce identical output (no hydration mismatch). When the
+// ranking pipeline ships a real per-window trajectory, swap the seeded
+// values for the bake series here.
+// ============================================================================
+function seededTrajectory(seed: string, base: number, n = 7): number[] {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
+  }
+  const out: number[] = [];
+  for (let i = 0; i < n; i++) {
+    h = (Math.imul(16807, h) | 0) >>> 0;
+    // Bias around `base` with a small wobble; preserves the overall scale.
+    const wobble = ((h % 200) - 100) / 1000; // -0.10..+0.10
+    out.push(Math.max(0, Math.min(1, base + wobble)));
+  }
+  return out;
+}
+
+function Sparkline({ row }: { row: PatternsMergedRow }) {
+  const series = seededTrajectory(
+    `${row.country_a}-${row.country_b}-${row.start_year_a}`,
+    row.avg_correlation
+  );
+  const w = 80;
+  const h = 24;
+  const min = Math.min(...series);
+  const max = Math.max(...series);
+  const range = max - min || 1;
+  const stride = w / (series.length - 1);
+  const points = series
+    .map((v, i) => {
+      const x = i * stride;
+      const y = h - 2 - ((v - min) / range) * (h - 4);
+      return `${x.toFixed(1)},${y.toFixed(1)}`;
+    })
+    .join(" ");
+  const last = series[series.length - 1];
+  const first = series[0];
+  const stroke = last >= first ? "#22c55e" : "#f87171";
+  return (
+    <span
+      title={`Preview trajectory — 7-point correlation series seeded on row identity. Real series wires up when ranking.json carries per-window trajectories.`}
+    >
+      <svg
+        width={w}
+        height={h}
+        viewBox={`0 0 ${w} ${h}`}
+        role="img"
+        aria-label="Pattern trajectory sparkline (preview)"
+        style={{ display: "block" }}
+      >
+        <polyline
+          fill="none"
+          stroke={stroke}
+          strokeWidth={1.4}
+          strokeLinejoin="round"
+          strokeLinecap="round"
+          points={points}
+        />
+      </svg>
+    </span>
+  );
+}
+
+// ============================================================================
+// PR #4 — Recipe-confidence dot
+// ----------------------------------------------------------------------------
+// Preview placeholder until ranking.json carries an `rci` field. Color
+// drawn from a small seeded hash of row identity so the dots stabilise on
+// SSR/CSR. Tooltip names the rung honestly as a preview.
+// ============================================================================
+const RCI_PREVIEW_RUNGS = [
+  { color: "#22c55e", label: "GREEN preview" },
+  { color: "#fbbf24", label: "YELLOW preview" },
+  { color: "#f87171", label: "RED preview" },
+  { color: "#94a3b8", label: "INSUFFICIENT preview" },
+];
+
+function RciDot({ row }: { row: PatternsMergedRow }) {
+  const seed = `${row.country_a}-${row.country_b}-${row.start_year_a}`;
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) {
+    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
+  }
+  const rung = RCI_PREVIEW_RUNGS[Math.abs(h) % RCI_PREVIEW_RUNGS.length];
+  return (
+    <span
+      aria-label={`Recipe confidence: ${rung.label}`}
+      title={`Recipe confidence: ${rung.label}. Wires up to real bake data when ranking.json carries the column.`}
+      style={{
+        display: "inline-block",
+        width: 10,
+        height: 10,
+        borderRadius: 999,
+        backgroundColor: rung.color,
+      }}
+    />
+  );
+}
+
+// ============================================================================
+// PR #4 — Grid layout card
+// ----------------------------------------------------------------------------
+// V2-B-derived 5-zone density card (Elif/Marcus mode). Same data surfaces
+// as the rows layout but compressed to ~280×180; sparkline mid-cell rather
+// than as a separate column.
+// ============================================================================
+function PatternGridCard({ row, rank }: { row: PatternsMergedRow; rank: number }) {
+  const meta = TIER_META[row.window_tier];
+  const detailHref = buildDetailHref(row);
+  return (
+    <Link
+      href={detailHref}
+      className="block rounded-lg border p-3 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
+      style={{
+        backgroundColor: "var(--qgi-surface-2)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      <div className="flex items-start justify-between gap-2 mb-2">
+        <div className="min-w-0 flex-1">
+          <div
+            className="text-[9px] tracking-widest uppercase font-data tabular-nums mb-0.5"
+            style={{
+              color: rank <= 3 ? "rgba(245, 158, 11, 0.85)" : "var(--qgi-text-dim)",
+            }}
+          >
+            #{rank}
+          </div>
+          <div
+            className="text-sm font-medium leading-tight"
+            style={{ color: "var(--qgi-text)" }}
+          >
+            {row.country_a}{" "}
+            <span style={{ color: "var(--qgi-text-dim)" }} aria-hidden="true">
+              →
+            </span>{" "}
+            {row.country_b}
+          </div>
+          <div
+            className="text-[10px] font-data tabular-nums mt-0.5"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            {row.start_year_a}–{row.start_year_b} · {row.pattern_length}y
+          </div>
+        </div>
+        <div className="flex items-start gap-1 shrink-0">
+          <span
+            className="text-[9px] tracking-wider uppercase font-semibold font-data text-center px-1.5 py-0.5 rounded"
+            title={meta.tooltip}
+            style={{
+              backgroundColor: meta.bg,
+              color: meta.color,
+              border: `1px solid ${meta.border}`,
+            }}
+          >
+            {meta.label}
+          </span>
+          <RciDot row={row} />
+        </div>
+      </div>
+
+      <div className="mb-2">
+        <Sparkline row={row} />
+      </div>
+
+      <div className="flex items-baseline justify-between gap-2 font-data tabular-nums">
+        <div className="min-w-0">
+          <div
+            className="text-[9px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Correlation
+          </div>
+          <div className="text-sm font-semibold" style={{ color: "var(--qgi-text)" }}>
+            {(row.avg_correlation * 100).toFixed(1)}%
+          </div>
+        </div>
+        <div className="min-w-0 text-right">
+          <div
+            className="text-[9px] tracking-widest uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Power
+          </div>
+          <div className="text-sm font-semibold" style={{ color: "var(--qgi-text)" }}>
+            {row.pattern_power_score.toFixed(0)}
+          </div>
+        </div>
+      </div>
+    </Link>
   );
 }
