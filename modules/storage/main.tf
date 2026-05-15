@@ -55,6 +55,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
     expiration {
       days = 1
     }
+    # #620 review nit: keep noncurrent storage on this high-churn prefix
+    # bounded to 1 day so DELETEs against a versioned bucket don't inherit
+    # the bucket-wide 90-day noncurrent rule. Without this, every Athena
+    # query-result expiration would accumulate a 90-day-retained noncurrent
+    # version — a meaningful cost on the highest-churn prefix in the bucket.
+    noncurrent_version_expiration {
+      noncurrent_days = 1
+    }
   }
 
   # #160: Quarantined parquet files — forensic backups from forced reruns.
@@ -145,6 +153,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
     }
     expiration {
       days = 3
+    }
+    # #620 review nit: high-churn tmp/ prefix — bound noncurrent retention
+    # to 3 days so DELETEs don't inherit the bucket-wide 90-day rule. The
+    # scdi-finder Batch job is the largest object-creator in the bucket
+    # (1.6M objects at peak per #623); keeping noncurrent at parity with
+    # current expiry avoids a meaningful cost regression post-versioning.
+    noncurrent_version_expiration {
+      noncurrent_days = 3
     }
   }
 
