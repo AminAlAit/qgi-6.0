@@ -67,11 +67,13 @@ export interface SignalRow {
 export default async function SignalsMergedPage() {
   let signals: SignalRow[] = [];
   let totalCountries = 0;
+  let bakeGeneratedAt: string | null = null;
   let loadError: string | null = null;
 
   try {
     const data = await loadCountryRisks();
     totalCountries = Object.keys(data.countries).length;
+    bakeGeneratedAt = data.generated_at ?? null;
 
     // Aggregation mirrors V1's buildSignals(): for each country, dedupe
     // per-category to the highest-salience entry across all tier windows,
@@ -177,10 +179,13 @@ export default async function SignalsMergedPage() {
   >;
   for (const s of signals) tierCounts[s.tier]++;
 
-  // Computed server-side so the "Currently firing — {date}" eyebrow is
-  // hydration-stable. Anchored to revalidate=3600 so the date refreshes
-  // hourly along with the underlying snapshot.
-  const generatedDate = new Date().toISOString().slice(0, 10);
+  // PR-iv (2026-05-15) — surface the real bake `generated_at` from
+  // country-risks.json (Flavor A fix). Falls back to request-time if
+  // the load failed pre-snapshot. Anchored to revalidate=3600 so the
+  // date refreshes hourly along with the underlying snapshot.
+  const generatedDate = bakeGeneratedAt
+    ? bakeGeneratedAt.slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   // PR #2 — Domain activation strip data. For each of the 8 L1 groups,
   // count: (a) how many categories with tier ≥ MODERATE belong to that
