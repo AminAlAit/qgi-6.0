@@ -69,7 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: `${buyer.display_name} — QGI Intelligence`,
       description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}).`,
-      // No robots override — indexable at canonical URL post-cutover.
+      // #699: explicit canonical so the V3 detail isn't a "duplicate of /"
+      alternates: { canonical: `/precedents/${slug}` },
     };
   }
   // Fall back to Stat-catalogue path.
@@ -86,6 +87,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${label} — QGI Intelligence`,
     description,
+    // #699: explicit canonical.
+    alternates: { canonical: `/precedents/${slug}` },
   };
 }
 

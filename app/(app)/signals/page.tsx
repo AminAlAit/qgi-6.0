@@ -34,7 +34,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Signals — QGI Intelligence",
   description:
-    "Preview of the merged Signals shell — 71 risk categories aggregated across 156 countries with lineage-aware tier vocabulary. Cutover from V1 + V2 routes pending founder sign-off.",
+    "71 risk categories aggregated across 156 countries with lineage-aware tier vocabulary (HIGH / MODERATE / INDICATIVE).",
+  // #699: explicit canonical (was inheriting "/" from root layout).
+  alternates: { canonical: "/signals" },
 };
 
 export const revalidate = 3600;

@@ -45,6 +45,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `What's firing on ${c.name} — Signals — QGI Intelligence`,
     description: `Per-country signals watchlist for ${c.name} — risk categories aggregated across all tier windows with lineage-aware vocabulary.`,
+    // #699: explicit canonical.
+    alternates: { canonical: `/signals/${country}` },
   };
 }
 
