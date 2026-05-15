@@ -467,6 +467,107 @@ class TestLoadScoringConfig:
 
 
 # ===========================================================================
+# #201 Refinement 3: compute_per_category_caps()
+# ===========================================================================
+
+class TestComputePerCategoryCaps:
+
+    def _countries_data_from_pairs(self, pairs):
+        """Helper: convert [(cid, tier, category, salience), ...] to nested dict."""
+        out = {}
+        for cid, tier, cat, salience in pairs:
+            out.setdefault(cid, {}).setdefault(tier, []).append({
+                'category': cat,
+                'salience_score': salience,
+                'severity_tier': 0.5,
+                'recipe_count': 10,
+            })
+        return out
+
+    def test_uncapped_when_below_min_observations(self):
+        """A category with fewer than min_observations entries is uncapped."""
+        # 5 countries × 1 tier × 1 category = 5 observations on civil_war
+        pairs = [(i, 'S', 'civil_war_and_insurgency', float(i)) for i in range(5)]
+        data = self._countries_data_from_pairs(pairs)
+        caps = gcr.compute_per_category_caps(data, percentile=0.95, min_observations=20)
+        assert caps['civil_war_and_insurgency'] is None
+
+    def test_capped_when_above_min_observations(self):
+        """A category with 20+ entries gets a numeric cap at p95."""
+        # 25 countries × 1 tier × 1 category = 25 observations
+        pairs = [(i, 'S', 'mass_protest', float(i)) for i in range(25)]
+        data = self._countries_data_from_pairs(pairs)
+        caps = gcr.compute_per_category_caps(data, percentile=0.95, min_observations=20)
+        # Sorted scores: [0, 1, 2, ..., 24]. p95 idx = round(0.95 * 24) = 23.
+        # scores_sorted[23] = 23.0
+        assert caps['mass_protest'] == 23.0
+
+    def test_p100_returns_max(self):
+        """Percentile 1.0 returns the maximum observation."""
+        pairs = [(i, 'S', 'fiscal_policy', float(i)) for i in range(30)]
+        data = self._countries_data_from_pairs(pairs)
+        caps = gcr.compute_per_category_caps(data, percentile=1.0, min_observations=20)
+        assert caps['fiscal_policy'] == 29.0
+
+    def test_per_category_independence(self):
+        """Two categories compute caps independently."""
+        # 30 entries each for civil_war (high range) and elections (low range)
+        pairs = [(i, 'S', 'civil_war_and_insurgency', float(i + 100)) for i in range(30)]
+        pairs += [(i, 'S', 'elections_and_voting', float(i)) for i in range(30)]
+        data = self._countries_data_from_pairs(pairs)
+        caps = gcr.compute_per_category_caps(data, percentile=0.95, min_observations=20)
+        # Different distributions → different caps
+        assert caps['civil_war_and_insurgency'] > caps['elections_and_voting']
+        assert caps['civil_war_and_insurgency'] == 128.0  # idx round(0.95*29)=28; scores[28]=128
+        assert caps['elections_and_voting'] == 28.0
+
+
+class TestApplyPerCategoryCaps:
+
+    def test_clips_above_cap_in_place(self):
+        """salience_score above cap is clipped to cap; below cap untouched."""
+        data = {
+            1: {'S': [
+                {'category': 'civil_war_and_insurgency', 'salience_score': 5.0,
+                 'severity_tier': 1.0, 'recipe_count': 10},
+                {'category': 'civil_war_and_insurgency', 'salience_score': 0.5,
+                 'severity_tier': 1.0, 'recipe_count': 10},
+            ]},
+        }
+        caps = {'civil_war_and_insurgency': 2.0}
+        clipped = gcr.apply_per_category_caps(data, caps)
+        assert clipped == 1  # only the 5.0 row clipped
+        assert data[1]['S'][0]['salience_score'] == 2.0  # clipped to cap
+        assert data[1]['S'][1]['salience_score'] == 0.5  # untouched
+
+    def test_none_cap_is_noop(self):
+        """A None cap (insufficient observations) doesn't clip anything."""
+        data = {
+            1: {'S': [
+                {'category': 'rare_event', 'salience_score': 100.0,
+                 'severity_tier': 1.0, 'recipe_count': 1},
+            ]},
+        }
+        caps = {'rare_event': None}
+        clipped = gcr.apply_per_category_caps(data, caps)
+        assert clipped == 0
+        assert data[1]['S'][0]['salience_score'] == 100.0  # unchanged
+
+    def test_unknown_category_skipped(self):
+        """Salience for a category absent from the caps dict is left alone."""
+        data = {
+            1: {'S': [
+                {'category': 'novel_category', 'salience_score': 99.0,
+                 'severity_tier': 0.5, 'recipe_count': 10},
+            ]},
+        }
+        caps = {}  # novel_category not in caps
+        clipped = gcr.apply_per_category_caps(data, caps)
+        assert clipped == 0
+        assert data[1]['S'][0]['salience_score'] == 99.0
+
+
+# ===========================================================================
 # main() severity-tiers guard — #422 Bug 3
 # ===========================================================================
 
