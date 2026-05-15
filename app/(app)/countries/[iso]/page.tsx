@@ -210,9 +210,43 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   const mlMatrixDefaultExpanded = mlCovCount >= 1;
 
   // PR #4 — structural peers (Section 5). Brief: "Countries that look most
-  // like {country} today" — top-5 by L1-profile similarity. We compute a
-  // simple cosine-like similarity on the 8-dim L1 salience vector
-  // (excluding the subject country itself). REAL data — no MOCK chip.
+  // like {country} today" — top-5 by L1-profile similarity.
+  //
+  // #717 (2026-05-16) — face-validity fix. The prior implementation
+  // computed cosine similarity on the 8-dim L1 salience vector with
+  // missing dimensions zero-filled. Because most countries have only
+  // 2-4 active L1 domains (the remaining 4-6 dims are silently zero on
+  // BOTH sides), cosine collapsed to "how aligned are countries on the
+  // 1-2 dimensions they happen to share" — producing degenerate matches
+  // like Germany≈Qatar 0.98, Lithuania≈Ghana 0.98, Vietnam≈Saudi Arabia
+  // 0.96. Multiple 2026-05-15 persona tests (James/FT + Dmitri/HF +
+  // Marcus/CRO) bounced off the panel on first sight; all three called
+  // it a dealbreaker.
+  //
+  // The fix is a two-gate filter + intersection-only cosine, composed
+  // with the Jaccard overlap:
+  //   1. Jaccard ≥ 0.5 on active-L1 sets (must share at least half their
+  //      risk fingerprint to be considered a peer)
+  //   2. intersection length ≥ 3 (must share at least 3 active L1
+  //      dimensions; eliminates the 1-dimension-coincidence pairs)
+  //   3. cosine on the intersection only (no zero-fill on missing dims;
+  //      missing data is now "drop" not "match-zero-with-zero")
+  //   4. composite = jaccard × cosine (structural-overlap × intensity-
+  //      similarity, so a 3-dim 0.99-cosine match scores below a 6-dim
+  //      0.85-cosine match — more shared structure dominates pure
+  //      angular alignment in a low-dim space)
+  //   5. Math.max(0, score) defensive clamp on salience values to avoid
+  //      negative salience feeding the intersection cosine (would
+  //      produce non-monotone composite scores)
+  //
+  // Face-validity assertions encoded in tests:
+  //   - Germany's top-5 must contain ≥3 of {UK, France, Netherlands,
+  //     Belgium, Switzerland, Austria, Sweden, Denmark} (no Persian Gulf
+  //     states)
+  //   - Vietnam's top-5 must contain ≥2 of {Thailand, Indonesia,
+  //     Philippines, Malaysia, Cambodia, China}
+  //   - Lithuania's top-5 does not contain Ghana
+  //
   // Uses `allData` hoisted at the top of the function (PR-iv) to ensure
   // peers and subject share the same bake snapshot.
   let structuralPeers: Array<{
@@ -223,8 +257,10 @@ export default async function CountryMergedDetailPage({ params }: Props) {
     similarity: number;
   }> = [];
   if (allData) {
-    const selfVec = L1_GROUPS.map((g) => l1Salience[g.code] ?? 0);
-    const selfMag = Math.sqrt(selfVec.reduce((acc, v) => acc + v * v, 0));
+    // Subject's active L1 set (positive-salience dimensions only).
+    const selfActive = new Set(
+      Object.keys(l1Salience).filter((k) => Math.max(0, l1Salience[k] ?? 0) > 0)
+    );
     const peerSims: Array<{
       slug: string;
       name: string;
@@ -232,7 +268,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       tier: string;
       similarity: number;
     }> = [];
-    if (selfMag > 0) {
+    if (selfActive.size >= 3) {
       for (const [peerId, peer] of Object.entries(allData.countries)) {
         if (peerId === country.id) continue; // skip self
         const peerSlug = countrySlug(peer.name);
@@ -248,13 +284,29 @@ export default async function CountryMergedDetailPage({ params }: Props) {
             if (score > prev) peerL1[mapping.group] = score;
           }
         }
-        const peerVec = L1_GROUPS.map((g) => peerL1[g.code] ?? 0);
-        const peerMag = Math.sqrt(peerVec.reduce((acc, v) => acc + v * v, 0));
-        if (peerMag === 0) continue;
-        // Cosine similarity — bounded [-1, 1]; for non-negative salience,
-        // bounded [0, 1].
-        const dot = selfVec.reduce((acc, v, i) => acc + v * peerVec[i], 0);
-        const similarity = dot / (selfMag * peerMag);
+        // Peer's active L1 set.
+        const peerActive = new Set(
+          Object.keys(peerL1).filter((k) => Math.max(0, peerL1[k] ?? 0) > 0)
+        );
+        // Gate 1: Jaccard ≥ 0.5 — structural overlap.
+        const intersection = [...selfActive].filter((k) => peerActive.has(k));
+        const union = new Set([...selfActive, ...peerActive]);
+        if (union.size === 0) continue;
+        const jaccard = intersection.length / union.size;
+        if (jaccard < 0.5) continue;
+        // Gate 2: ≥3 shared active L1s — eliminate 1-2-dim coincidences.
+        if (intersection.length < 3) continue;
+        // Intersection-only cosine on positive-clamped salience values.
+        const va = intersection.map((k) => Math.max(0, l1Salience[k] ?? 0));
+        const vb = intersection.map((k) => Math.max(0, peerL1[k] ?? 0));
+        const dot = va.reduce((acc, v, i) => acc + v * vb[i], 0);
+        const ma = Math.sqrt(va.reduce((acc, v) => acc + v * v, 0));
+        const mb = Math.sqrt(vb.reduce((acc, v) => acc + v * v, 0));
+        if (ma === 0 || mb === 0) continue;
+        // Composite: Jaccard structural overlap × intersection cosine.
+        // Bounded [0, 1]. A 3-dim match with cosine 0.99 scores 0.5×0.99 =
+        // 0.495; a 6-dim match with cosine 0.85 scores 0.75×0.85 = 0.638.
+        const similarity = jaccard * (dot / (ma * mb));
         peerSims.push({
           slug: peerSlug,
           name: peer.name,
