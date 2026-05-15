@@ -139,7 +139,17 @@ V0_2_FALSIFICATION_CONFIG_JSON = ROOT / "qgi-data" / "reference" / "v0.2-falsifi
 OUTPUT_JSON_LEGACY = ROOT / "qgi-data" / "reference" / "phase4-validation.json"
 OUTPUT_JSON_TEMPLATE = "phase4-validation-arm{arm}.json"
 
-# Schema version. v5 = T8 (#672) — Phase 5 v0.2 Path A:
+# Schema version. v6 = T12 #692 — Phase 5 v0.2 Path B input substrate:
+#   - optional `per_cell` block (under --emit-per-cell flag) carrying the
+#     per-(country_id, event_category) anomaly_score tensor that Path B's
+#     partial-pooling evaluator (validate_weight_matrix_bayes.py) consumes.
+#     Per qgi-docs `ca77505` §3.1 (post-6-seat-Majles amendment 2026-05-15):
+#     response variable is anomaly_score, not AUC (AUC undefined at
+#     single-observation granularity).
+#   - Backward-compatible additive: every v5 field preserved verbatim;
+#     `per_cell` is omitted (or None) when --emit-per-cell is not set.
+#
+# v5 = T8 (#672) — Phase 5 v0.2 Path A:
 #   - rule v2 verdict (INERT / HARD-FALSIFY / SOFT-FALSIFY / PARTIAL / PASS)
 #     emitted as the top-level `decision` field, replacing the v4 legacy
 #     PROCEED / PROCEED_WITH_CAUTION / REVISIT / INSUFFICIENT_DATA scheme
@@ -150,8 +160,8 @@ OUTPUT_JSON_TEMPLATE = "phase4-validation-arm{arm}.json"
 #   - pre-CIPS-validation label (T7 §9 / charter A8)
 #
 # v2 = baselines added (#598); v3 was an internal-only iteration that
-# never shipped; v4 = the v0.1a release; v5 = THIS (T8 / #672).
-SCHEMA_VERSION = 5
+# never shipped; v4 = the v0.1a release; v5 = T8 / #672; v6 = THIS (T12 #692).
+SCHEMA_VERSION = 6
 
 # Default cutoff: 2014. Choice rationale: gives 11 years (2015-2025) of
 # post-cutoff observation window for ground-truth events. Earlier cutoffs
@@ -789,6 +799,52 @@ def build_random_baseline(weights_df: pd.DataFrame, seed: int) -> pd.DataFrame:
     return out
 
 
+def _build_per_cell_block(scored: pd.DataFrame) -> dict:
+    """v6 NEW (T12 #692 / Path B input substrate).
+
+    Emit the per-(country_id, event_category) anomaly_score tensor as a
+    JSON-serialisable block. The Path B partial-pooling evaluator
+    (`validate_weight_matrix_bayes.py`) consumes this via the
+    `prep_cells_from_arm_jsons` helper and pivots to
+    (n_arms, n_countries, n_categories) shape.
+
+    Schema:
+      {
+        "schema_version": 1,
+        "n_cells": <int>,
+        "n_indicators_used_min": <int>,
+        "n_indicators_used_max": <int>,
+        "n_indicators_used_median": <float>,
+        "cells": [
+          {"country_id": <int>, "event_category": <str>,
+           "anomaly_score": <float>, "n_indicators_used": <int>}, ...
+        ]
+      }
+
+    Per spec `ca77505` §3.1 (post-6-seat-Majles amendment 2026-05-15): this
+    is the per-cell `anomaly_score` (NOT AUC; AUC undefined at single-
+    observation granularity). Cells are emitted directly from
+    `score_country_event`'s aggregated DataFrame; no further transformation.
+    """
+    cells = []
+    for _, row in scored.iterrows():
+        cells.append({
+            "country_id": int(row["country_id"]),
+            "event_category": str(row["event_category"]),
+            "anomaly_score": float(row["anomaly_score"]),
+            "n_indicators_used": int(row["n_indicators_used"]),
+        })
+    n_used = scored["n_indicators_used"].values
+    return {
+        "schema_version": 1,
+        "n_cells": int(len(scored)),
+        "n_indicators_used_min": int(n_used.min()) if len(n_used) else 0,
+        "n_indicators_used_max": int(n_used.max()) if len(n_used) else 0,
+        "n_indicators_used_median": float(np.median(n_used)) if len(n_used) else float("nan"),
+        "cells": cells,
+    }
+
+
 def evaluate_weights(
     weights_df: pd.DataFrame, zscores: pd.DataFrame,
     country_id_to_str: dict, num_to_api: dict, gt: pd.DataFrame,
@@ -799,6 +855,7 @@ def evaluate_weights(
     bootstrap_seed: int = DEFAULT_BOOTSTRAP_SEED,
     anchor_battery: dict | None = None,
     strata_threshold: int = STRATA_INDICATOR_COUNT_THRESHOLD,
+    emit_per_cell: bool = False,
 ) -> dict:
     """Run the full evaluation pipeline (score → per-category AUC + CI →
     stratified-by-coverage AUC → per-category ECE + reliability +
@@ -880,6 +937,13 @@ def evaluate_weights(
             "n_skip": n_anchor_skip,
             "cases": anchor_results,
         },
+        # v6 NEW (T12 #692 / Path B input substrate): per-cell anomaly_score
+        # tensor for the partial-pooling model at qgi-ml/scripts/
+        # validate_weight_matrix_bayes.py. Emitted as a list of records so
+        # the JSON is human-readable and the downstream prep_cells_from_arm_jsons
+        # helper can pivot to (n_arms, n_countries, n_categories) shape.
+        # Spec: qgi-docs `ca77505` §3.1 (post-6-seat amendment 2026-05-15).
+        "per_cell": _build_per_cell_block(scored) if emit_per_cell else None,
     }
 
 
@@ -1827,6 +1891,11 @@ def main(
     rule_v2_evaluation: bool = False,
     canonical_length_config_path: Path = CANONICAL_LENGTH_CONFIG_JSON_DEFAULT,
     exclusion_list_config_path: Path = EXCLUSION_LIST_CONFIG_JSON_DEFAULT,
+    # v6 NEW (T12 #692): emit per-(country_id, event_category) anomaly_score
+    # tensor for Path B's partial-pooling evaluator. When True, the output
+    # JSON gains a top-level `per_cell` block. Default False preserves
+    # backward-compat with v5 consumers.
+    emit_per_cell: bool = False,
 ) -> None:
     if ablation_arm not in ABLATION_ARMS:
         raise ValueError(
@@ -2023,6 +2092,7 @@ def main(
         bootstrap_resamples=bootstrap_resamples, bootstrap_seed=bootstrap_seed,
         anchor_battery=anchor_battery,
         strata_threshold=strata_threshold,
+        emit_per_cell=emit_per_cell,
     )
     mean_auc = treatment["mean_auc"]
     n_above_0_55 = treatment["n_auc_above_0_55"]
@@ -2262,6 +2332,15 @@ def main(
         "anchor_case_battery": treatment["anchor_case_battery"],
     }
 
+    # v6 NEW (T12 #692): per-cell anomaly_score tensor for Path B's
+    # partial-pooling evaluator. Only emitted when --emit-per-cell is set;
+    # backward-compat with v5 consumers preserved (key absent in v5-style
+    # output). Per qgi-docs `ca77505` §3.1 (post-6-seat-Majles amendment
+    # 2026-05-15): the response variable for Path B is anomaly_score, not
+    # AUC, because ROC-AUC is undefined at single-observation granularity.
+    if emit_per_cell and treatment.get("per_cell") is not None:
+        output["per_cell"] = treatment["per_cell"]
+
     # Baselines (#598): when --with-baselines fires, attach the uniform and
     # random-weight evaluation summaries as top-level keys. The treatment-vs-
     # baseline comparison is what tells us whether the EB priors carry signal.
@@ -2445,6 +2524,14 @@ if __name__ == "__main__":
                         f"--with-baselines is set and this flag is not "
                         f"passed: {list(DEFAULT_BASELINE_SEEDS)}. Override "
                         f"only when testing seed-sensitivity in CI.")
+    p.add_argument("--emit-per-cell", action="store_true",
+                   help="v6 NEW (T12 #692). Emit the per-(country_id, "
+                        "event_category) anomaly_score tensor under a "
+                        "top-level `per_cell` block in the output JSON. "
+                        "Required for Path B's partial-pooling evaluator "
+                        "(validate_weight_matrix_bayes.py). Schema "
+                        "version bumps to 6 when this flag is set. "
+                        "Backward-compatible: omitted → v5-equivalent output.")
     args = p.parse_args()
     main(
         cutoff_year=args.cutoff_year,
@@ -2460,4 +2547,5 @@ if __name__ == "__main__":
         rule_v2_evaluation=args.rule_v2_evaluation,
         canonical_length_config_path=args.canonical_length_config,
         exclusion_list_config_path=args.exclusion_list_config,
+        emit_per_cell=args.emit_per_cell,
     )
