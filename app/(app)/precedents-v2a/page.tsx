@@ -4,12 +4,12 @@ import { toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 
 /**
- * /precedents-v2-a — Tufte-style variant of the V2 ML precedents index.
+ * /precedents-v2a — Tufte-style variant of the V2 ML precedents index.
  *
  * Per resurfacing plan Q4 + Q21 (4 distinct V2 routes; both list + detail
  * variants in both Tufte and Lloyd's caveat styles), this page renders the
  * top-4 LOCKed ML recipes with footnote-style caveats. Sister page at
- * `/precedents-v2-b` renders the same data with full-width banner caveats.
+ * `/precedents-v2b` renders the same data with full-width banner caveats.
  *
  * Reads `data/ml-recipe-stack.json` (#643 bake output) at SSR time.
  */
@@ -17,13 +17,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Precedents V2 (Tufte) — QGI Intelligence",
   description:
-    "Top-4 ML-derived precedent recipes with footnote-style buyer-disclosure caveats. Tufte variant of the V2 precedents browser; Lloyd's banner variant at /precedents-v2-b.",
-  alternates: { canonical: "https://qgintelligence.com/precedents-v2-a" },
+    "Top-4 ML-derived precedent recipes with footnote-style buyer-disclosure caveats. Tufte variant of the V2 precedents browser; Lloyd's banner variant at /precedents-v2b.",
+  alternates: { canonical: "https://qgintelligence.com/precedents-v2a" },
   openGraph: {
     title: "Precedents V2 (Tufte) — QGI Intelligence",
     description:
       "Top-4 ML-derived precedent recipes with footnote-style buyer-disclosure caveats.",
-    url: "https://qgintelligence.com/precedents-v2-a",
+    url: "https://qgintelligence.com/precedents-v2a",
     siteName: "QGI Intelligence",
     type: "website",
   },

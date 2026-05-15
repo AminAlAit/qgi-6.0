@@ -87,7 +87,7 @@ describe("SignalsV2List", () => {
     expect(grid.children).toHaveLength(3);
   });
 
-  it("country card link goes to /signals-v2-a/{slug}/{defaultRecipe}", () => {
+  it("country card link goes to /signals-v2a/{slug}/{defaultRecipe}", () => {
     render(
       <SignalsV2List
         countries={[makeCountry({ id: "1", name: "Syria" })]}
@@ -101,11 +101,11 @@ describe("SignalsV2List", () => {
     const grid = screen.getByTestId("country-grid");
     const link = grid.querySelector("a");
     expect(link?.getAttribute("href")).toBe(
-      "/signals-v2-a/syria/civil_war_and_insurgency"
+      "/signals-v2a/syria/civil_war_and_insurgency"
     );
   });
 
-  it("country card link goes to /signals-v2-b/... for Lloyd's variant", () => {
+  it("country card link goes to /signals-v2b/... for Lloyd's variant", () => {
     render(
       <SignalsV2List
         countries={[makeCountry({ id: "1", name: "Germany" })]}
@@ -118,7 +118,7 @@ describe("SignalsV2List", () => {
     );
     const grid = screen.getByTestId("country-grid");
     const link = grid.querySelector("a");
-    expect(link?.getAttribute("href")).toBe("/signals-v2-b/germany/bilateral_treaty");
+    expect(link?.getAttribute("href")).toBe("/signals-v2b/germany/bilateral_treaty");
   });
 
   it("renders the variant cross-link", () => {

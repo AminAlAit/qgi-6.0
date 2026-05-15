@@ -18,7 +18,7 @@ import { countrySlug } from "@/lib/slug";
  * recipe) firing scores in a future cycle, this list page rewires to rank
  * countries by firing strength instead of V1 overall_risk_tier.
  *
- * The detail route `/signals-v2-{a,b}/[country]/[slug]` accepts ANY top-4
+ * The detail route `/signals-v2{a,b}/[country]/[slug]` accepts ANY top-4
  * recipe — the breadcrumb on the detail page exposes recipe-switching.
  */
 
@@ -70,7 +70,7 @@ export function SignalsV2List({
             <span className="italic">
               Compact view — caveats render as inline footnote annotations.{" "}
               <Link
-                href="/signals-v2-b"
+                href="/signals-v2b"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
@@ -81,7 +81,7 @@ export function SignalsV2List({
             <span className="italic">
               Banner view — caveats render as full-width prominent banners.{" "}
               <Link
-                href="/signals-v2-a"
+                href="/signals-v2a"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
@@ -143,8 +143,8 @@ function CountryCard({
   if (!cSlug) return null;
   const href =
     caveatStyle === "tufte"
-      ? (`/signals-v2-a/${cSlug}/${defaultRecipeSlug}` as const)
-      : (`/signals-v2-b/${cSlug}/${defaultRecipeSlug}` as const);
+      ? (`/signals-v2a/${cSlug}/${defaultRecipeSlug}` as const)
+      : (`/signals-v2b/${cSlug}/${defaultRecipeSlug}` as const);
   const tierColor = TIER_COLORS[country.overall_risk_tier];
   return (
     <Link

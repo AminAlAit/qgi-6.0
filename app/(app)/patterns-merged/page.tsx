@@ -19,7 +19,7 @@ import type { Metadata } from "next";
  *   - PR #5 (founder-gated): kill 2 V2 routes (V2-A + V2-B) + /patterns/
  *     ranking; alias /patterns-merged → /patterns canonical
  *
- * V1 /patterns + V2-A /discover-patterns-a + V2-B /discover-patterns-b
+ * V1 /patterns + V2-A /patterns-v2a + V2-B /patterns-v2b
  * remain LIVE alongside the merged preview so the founder can compare
  * side-by-side until cutover.
  *

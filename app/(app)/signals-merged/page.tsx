@@ -17,7 +17,7 @@ import type { Metadata } from "next";
  *   - PR #5 (founder-gated): kill 4 V2 routes + /signals/country picker;
  *     alias /signals-merged → /signals canonical
  *
- * V1 (/signals) + V2-A (/signals-v2-a) + V2-B (/signals-v2-b) remain LIVE
+ * V1 (/signals) + V2-A (/signals-v2a) + V2-B (/signals-v2b) remain LIVE
  * alongside the merged preview so the founder can compare side-by-side
  * until cutover.
  *

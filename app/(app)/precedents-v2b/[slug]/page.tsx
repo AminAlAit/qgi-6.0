@@ -5,14 +5,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 /**
- * /precedents-v2-a/[slug] — Tufte-style variant of a V2 ML recipe tear-sheet.
+ * /precedents-v2b/[slug] — Lloyd's-style variant of a V2 ML recipe tear-sheet.
  *
- * Per resurfacing plan Q21 + #656 DECISION: render the per-recipe disclosure
- * stack with footnote-style caveats. Sister at /precedents-v2-b/[slug]
- * renders the same data with banner caveats.
- *
- * notFound() for any slug not in the top-4 ship list (currently 4 routes
- * are statically reachable). Vercel will 404 for unknown slugs.
+ * Identical data + structure to /precedents-v2a/[slug]; caveats render as
+ * full-width banners instead of footnotes.
  */
 
 interface Props {
@@ -28,15 +24,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       robots: { index: false, follow: false },
     };
   }
-  const canonical = `https://qgintelligence.com/precedents-v2-a/${slug}`;
-  // Transform once for metadata strings (buyer-clean architecture label).
+  const canonical = `https://qgintelligence.com/precedents-v2b/${slug}`;
   const buyer = toBuyerView(recipe);
   return {
-    title: `${buyer.display_name} — V2 Recipe (Tufte) — QGI Intelligence`,
-    description: `${buyer.display_name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}). Buyer-disclosure tear-sheet with Tufte footnote caveats.`,
+    title: `${buyer.display_name} — V2 Recipe (Lloyd's) — QGI Intelligence`,
+    description: `${buyer.display_name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}). Buyer-disclosure tear-sheet with Lloyd's banner caveats.`,
     alternates: { canonical },
     openGraph: {
-      title: `${buyer.display_name} — V2 Recipe (Tufte)`,
+      title: `${buyer.display_name} — V2 Recipe (Lloyd's)`,
       description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",
@@ -45,29 +40,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function PrecedentsV2ASlugPage({ params }: Props) {
+export default async function PrecedentsV2BSlugPage({ params }: Props) {
   const { slug } = await params;
   const stack = await loadMlRecipeStack();
   const raw = stack.recipes.find((r) => r.recipe_id === slug);
   if (!raw || !stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     notFound();
   }
-  // Buyer-view transform: prose jargon-cleaned, indicators friendly,
-  // architecture relabeled. Full 13-recipe slug map for cross-references.
   const slugMap = buildSlugMap(stack.recipes);
   const buyer = toBuyerView(raw, slugMap);
   const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${buyer.paper_section_anchor}`;
   return (
     <PrecedentsV2Detail
       recipe={buyer}
-      caveatStyle="tufte"
+      caveatStyle="lloyds"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
     />
   );
 }
 
-// Pre-generate the top-4 slugs at build time
 export async function generateStaticParams() {
   const stack = await loadMlRecipeStack();
   return stack.metadata.top_4_recipes.map((slug) => ({ slug }));

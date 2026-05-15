@@ -6,11 +6,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 /**
- * /signals-v2-a/[country]/[slug] — Tufte-style (country, recipe) tear-sheet.
+ * /signals-v2b/[country]/[slug] — Lloyd's-style (country, recipe) tear-sheet.
  *
- * MVP-shallow (#655 founder pick 2026-05-12): page exists; recipe metrics
- * are global (not country-specific). Country slug in header + recipe-
- * switcher in breadcrumb let users navigate the 4-recipe space.
+ * Identical data + structure to /signals-v2a/[country]/[slug]; caveats
+ * render as full-width banners instead of footnotes.
  */
 
 interface Props {
@@ -29,14 +28,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       robots: { index: false, follow: false },
     };
   }
-  const canonical = `https://qgintelligence.com/signals-v2-a/${country}/${slug}`;
+  const canonical = `https://qgintelligence.com/signals-v2b/${country}/${slug}`;
   const buyer = toBuyerView(recipe);
   return {
-    title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte) — QGI Intelligence`,
-    description: `${buyer.display_name} ML recipe context for ${c.name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
+    title: `${c.name} · ${buyer.display_name} — V2 Signal (Lloyd's) — QGI Intelligence`,
+    description: `${buyer.display_name} ML recipe context for ${c.name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (global). Lloyd's banner variant.`,
     alternates: { canonical },
     openGraph: {
-      title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte)`,
+      title: `${c.name} · ${buyer.display_name} — V2 Signal (Lloyd's)`,
       description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",
@@ -45,7 +44,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function SignalsV2ASlugPage({ params }: Props) {
+export default async function SignalsV2BSlugPage({ params }: Props) {
   const { country, slug } = await params;
   const [c, stack] = await Promise.all([
     resolveCountryBySlug(country),
@@ -56,8 +55,6 @@ export default async function SignalsV2ASlugPage({ params }: Props) {
   if (!raw || !stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     notFound();
   }
-  // Buyer-view: full stack → buyer-shaped list (slug map built once), then
-  // pick this recipe + the top-4 for the switcher.
   const buyerStack = toBuyerViewList(stack.recipes);
   const buyer = buyerStack.find((r) => r.recipe_id === slug);
   if (!buyer) notFound();
@@ -72,7 +69,7 @@ export default async function SignalsV2ASlugPage({ params }: Props) {
       countryAlpha2={c.alpha_2}
       countrySlugStr={country}
       topRecipes={topRecipes}
-      caveatStyle="tufte"
+      caveatStyle="lloyds"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
     />

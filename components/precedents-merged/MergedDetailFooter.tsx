@@ -39,7 +39,7 @@ export function MergedDetailFooter({
   const siblingHref: Route =
     lineage === "ML"
       ? (`/precedents/${slug}` as Route)
-      : (`/precedents-v2-b/${slug}` as Route);
+      : (`/precedents-v2b/${slug}` as Route);
   const siblingLabel =
     lineage === "ML"
       ? "See the unadjudicated statistical signal this recipe was promoted from →"

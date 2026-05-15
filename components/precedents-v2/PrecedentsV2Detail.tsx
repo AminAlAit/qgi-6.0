@@ -287,8 +287,8 @@ export function PrecedentsV2Detail({
           <Link
             href={
               caveatStyle === "tufte"
-                ? (`/precedents-v2-b/${recipe.recipe_id}` as const)
-                : (`/precedents-v2-a/${recipe.recipe_id}` as const)
+                ? (`/precedents-v2b/${recipe.recipe_id}` as const)
+                : (`/precedents-v2a/${recipe.recipe_id}` as const)
             }
             className="underline"
             style={{ color: "var(--qgi-text-dim)" }}
@@ -476,7 +476,7 @@ function BreadcrumbNav({ variantLetter }: { variantLetter: "a" | "b" }) {
       aria-label="Back navigation"
     >
       <Link
-        href={variantLetter === "a" ? "/precedents-v2-a" : "/precedents-v2-b"}
+        href={variantLetter === "a" ? "/precedents-v2a" : "/precedents-v2b"}
         className="underline"
         style={{ color: "var(--qgi-text-dim)" }}
       >

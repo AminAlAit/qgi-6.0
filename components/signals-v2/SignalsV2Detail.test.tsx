@@ -117,15 +117,15 @@ describe("SignalsV2Detail", () => {
     const links = Array.from(switcher.querySelectorAll("a")).map((a) =>
       a.getAttribute("href")
     );
-    expect(links).toContain("/signals-v2-a/syria/multilateral_agreement");
-    expect(links).toContain("/signals-v2-a/syria/bilateral_treaty");
+    expect(links).toContain("/signals-v2a/syria/multilateral_agreement");
+    expect(links).toContain("/signals-v2a/syria/bilateral_treaty");
   });
 
-  it("recipe-switcher links go to /signals-v2-b/... on Lloyd's", () => {
+  it("recipe-switcher links go to /signals-v2b/... on Lloyd's", () => {
     render(<SignalsV2Detail {...baseProps} caveatStyle="lloyds" />);
     const switcher = screen.getByTestId("recipe-switcher");
     const link = switcher.querySelector("a");
-    expect(link?.getAttribute("href")).toMatch(/^\/signals-v2-b\/syria\//);
+    expect(link?.getAttribute("href")).toMatch(/^\/signals-v2b\/syria\//);
   });
 
   it("renders metric grid", () => {
@@ -157,7 +157,7 @@ describe("SignalsV2Detail", () => {
     render(<SignalsV2Detail {...baseProps} caveatStyle="tufte" />);
     const link = screen.getByText(/Switch to banner view/);
     expect(link.closest("a")?.getAttribute("href")).toBe(
-      "/signals-v2-b/syria/civil_war_and_insurgency"
+      "/signals-v2b/syria/civil_war_and_insurgency"
     );
   });
 });

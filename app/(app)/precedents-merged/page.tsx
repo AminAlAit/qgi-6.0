@@ -19,13 +19,13 @@ import type { Metadata } from "next";
  *   - PR #4: ARIA + mobile + loading/empty states + follow-up tickets
  *   - PR #5 (founder-gated): kill V1 + 4 V2 routes; alias /precedents-merged → /precedents canonical
  *
- * V1 (/precedents) + V2-A (/precedents-v2-a) + V2-B (/precedents-v2-b) stay
+ * V1 (/precedents) + V2-A (/precedents-v2a) + V2-B (/precedents-v2b) stay
  * alive until PR #5 lands so the founder can preview the merged shell live
  * alongside the existing surfaces before cutover.
  *
  * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
  * Detail-link strategy until PR #2 ships:
- *   - ML hero rows → /precedents-v2-b/[slug] (Lloyd's banner — Phase A2 polished)
+ *   - ML hero rows → /precedents-v2b/[slug] (Lloyd's banner — Phase A2 polished)
  *   - Stat catalogue rows → /precedents/[slug] (V1 detail)
  *   - Replaced in PR #2 with /precedents-merged/[slug] split-render
  */
@@ -149,7 +149,7 @@ export default async function PrecedentsMergedPage() {
       modelVersion={heroRecipes[0]?.model_version ?? "v1.0"}
       // Total adjudicated recipes in the current ML dispatch. Hardcoded here
       // until #643 bake exposes `metadata.n_total_validated` (the same TODO
-      // that lives on /precedents-v2-{a,b}/page.tsx). Post-KI-2 amendment
+      // that lives on /precedents-v2{a,b}/page.tsx). Post-KI-2 amendment
       // 2026-05-11: 13 LOCKed.
       totalLocked={13}
       // PR #4.5 props (defaults to empty so the client still renders if
