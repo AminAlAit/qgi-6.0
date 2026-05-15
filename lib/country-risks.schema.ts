@@ -36,6 +36,18 @@ export const TierDataSchema = z.object({
   top_categories: z.array(CategoryScoreSchema),
 });
 
+// #721 (2026-05-16) — QGI Risk Score: 0-100 percentile rank of the
+// country's max salience across the bake's cohort. Lives ALONGSIDE
+// salience (does NOT replace it). Strict ordinal interpretation —
+// NOT a probability. See `qgi-docs/internal/ops/qgi-risk-score-majles-
+// 2026-05-16.md` for full spec.
+//
+// All four fields are `.nullable()` because insufficient-coverage
+// countries get `null` rather than coerced to 0/50. Existing JSONs
+// baked before this field landed parse cleanly via `.optional()`.
+export const QgiRiskScoreCoverageFlagSchema = z.enum(["ok", "insufficient"]);
+export type QgiRiskScoreCoverageFlag = z.infer<typeof QgiRiskScoreCoverageFlagSchema>;
+
 export const CountryRiskSchema = z.object({
   name: z.string(),
   alpha_2: z.string(),
@@ -44,6 +56,13 @@ export const CountryRiskSchema = z.object({
   // Tiers are S/M/L/XL but the file may add new keys; Record<string, ...>
   // keeps the schema forward-compatible.
   tiers: z.record(z.string(), TierDataSchema),
+  // #721 — QGI Risk Score per country. Optional because earlier bakes
+  // pre-#721 don't carry them; nullable because insufficient-data
+  // countries hold `null`.
+  qgi_risk_score_0_100: z.number().int().min(0).max(100).nullable().optional(),
+  qgi_risk_score_ci_low: z.number().int().min(0).max(100).nullable().optional(),
+  qgi_risk_score_ci_high: z.number().int().min(0).max(100).nullable().optional(),
+  coverage_flag: QgiRiskScoreCoverageFlagSchema.optional(),
 });
 
 export const CountryRisksDataSchema = z.object({
@@ -63,6 +82,12 @@ export const CountryRisksDataSchema = z.object({
   curated_country_count: z.number(),
   total_countries: z.number(),
   countries: z.record(z.string(), CountryRiskSchema),
+  // #721 — QGI Risk Score metadata. All optional because pre-#721 bakes
+  // didn't carry them.
+  qgi_risk_score_version: z.string().optional(),
+  qgi_risk_score_cohort_n: z.number().int().min(0).optional(),
+  qgi_risk_score_method: z.string().optional(),
+  qgi_risk_score_baked_at: z.string().optional(),
 });
 
 // Re-derive the TS types from the schemas so the two never drift.
