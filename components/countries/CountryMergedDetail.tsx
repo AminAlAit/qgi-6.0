@@ -162,9 +162,7 @@ export function CountryMergedDetail({
         <div
           className="text-[10px] tracking-widest uppercase mb-1"
           style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Merged preview · cutover pending sign-off
-        </div>
+        ></div>
         <div className="flex items-center gap-3 flex-wrap">
           <CountryFlag alpha2={alpha_2} size={36} countryName={name} />
           <h1
@@ -317,9 +315,7 @@ export function CountryMergedDetail({
             Methodology →
           </Link>
           {" · "}
-          <span style={{ color: "var(--qgi-text-muted)" }}>
-            Preview shell — V1 + V2-Table + V2-Narrative detail pages remain reachable.
-          </span>
+          <span style={{ color: "var(--qgi-text-muted)" }}></span>
         </p>
       </footer>
     </article>

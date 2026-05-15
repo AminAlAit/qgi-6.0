@@ -253,9 +253,7 @@ export function CountriesMergedListClient({
         <div
           className="text-[10px] tracking-widest uppercase mb-1"
           style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Merged preview · cutover pending sign-off
-        </div>
+        ></div>
         <h1
           className="text-2xl font-semibold leading-snug"
           style={{ color: "var(--qgi-text)" }}
@@ -474,11 +472,6 @@ export function CountriesMergedListClient({
         >
           Methodology →
         </Link>
-        {" · "}
-        <span style={{ color: "var(--qgi-text-muted)" }}>
-          Preview shell — V1 + V2-Table + V2-Narrative remain live until founder cutover
-          (PR #5).
-        </span>
       </p>
     </div>
   );
@@ -592,6 +585,12 @@ function EmptyState({
   if (curatedOnly) parts.push("curated=only");
   if (search) parts.push(`search="${search}"`);
   const summary = parts.length > 0 ? parts.join(" · ") : "(no filters)";
+  // PR-vii (2026-05-15) — added "Clear all filters" when 2+ filters are
+  // active. The per-filter buttons remain for one-at-a-time recovery, but
+  // when both search and another filter are non-default, users expect a
+  // single CTA to escape. The QA agent flagged this as a UX gap.
+  const activeCount =
+    (tierFilter !== "ALL" ? 1 : 0) + (curatedOnly ? 1 : 0) + (search ? 1 : 0);
   return (
     <div className="text-center py-12 px-4" role="status" aria-live="polite">
       <p className="text-sm mb-2" style={{ color: "var(--qgi-text)" }}>
@@ -601,6 +600,23 @@ function EmptyState({
         Active: {summary}
       </p>
       <div className="flex items-center justify-center gap-2 flex-wrap">
+        {activeCount >= 2 && (
+          <button
+            type="button"
+            onClick={() => {
+              onClearTier();
+              onClearCurated();
+              onClearSearch();
+            }}
+            className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors hover:bg-[var(--qgi-surface-2)]"
+            style={{
+              borderColor: "var(--qgi-accent)",
+              color: "var(--qgi-accent)",
+            }}
+          >
+            Clear all filters →
+          </button>
+        )}
         {tierFilter !== "ALL" && (
           <button
             type="button"
@@ -618,7 +634,7 @@ function EmptyState({
             className="px-3 py-1.5 rounded text-[10px] tracking-wider uppercase border transition-colors hover:bg-[var(--qgi-surface-2)]"
             style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
           >
-            Show all countries →
+            Show curated + uncurated →
           </button>
         )}
         {search && (

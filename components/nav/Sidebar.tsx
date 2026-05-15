@@ -401,10 +401,18 @@ export function Sidebar() {
         />
       )}
 
+      {/* PR-vii (2026-05-15) — aria-label="Site navigation" on the
+          landmark wrapper. Pointer-events guard during the slide-in
+          transition prevents a click on the hamburger from passing
+          through to the link beneath while the drawer is translating
+          in (was navigating users to /precedents on mobile tap). */}
       <aside
         id="qgi-sidebar-drawer"
+        aria-label="Site navigation"
         className={`flex flex-col w-56 shrink-0 border-r fixed md:static inset-y-0 left-0 z-50 transition-transform duration-200 md:translate-x-0 ${
-          mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+          mobileOpen
+            ? "translate-x-0 pointer-events-auto"
+            : "-translate-x-full md:translate-x-0 pointer-events-none md:pointer-events-auto"
         }`}
         style={{
           backgroundColor: "var(--qgi-surface)",
@@ -448,7 +456,10 @@ export function Sidebar() {
           2026-05-13 (A3 Family 1 PR #4): refactored to family-grouped
           sections; the active-state algorithm operates on the flattened
           leaf list (FLAT_NAV_ITEMS) so it stays unaware of group structure. */}
-        <nav className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto">
+        <nav
+          aria-label="Main navigation"
+          className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto"
+        >
           {NAV_STRUCTURE.map((entry) => {
             if ("type" in entry) {
               return (
@@ -534,7 +545,8 @@ function NavLeafLink({
     <Link
       href={href}
       onClick={onClick}
-      className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors"
+      aria-current={active ? "page" : undefined}
+      className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
         backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",

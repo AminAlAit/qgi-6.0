@@ -63,6 +63,8 @@ export default async function PrecedentsV2ASlugPage({ params }: Props) {
       caveatStyle="tufte"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
+      backHref="/precedents-v2a"
+      backLabel="← Back to V2 precedents list (Tufte)"
     />
   );
 }

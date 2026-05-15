@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (raw && stack && stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     const buyer = toBuyerView(raw);
     return {
-      title: `${buyer.display_name} — Merged Preview — QGI Intelligence`,
-      description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}). Merged-preview detail page.`,
+      title: `${buyer.display_name} — QGI Intelligence`,
+      description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}).`,
       // No robots override — indexable at canonical URL post-cutover.
     };
   }
@@ -81,10 +81,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const recipe = await loadRecipeBySlug(slug).catch(() => null);
   const label = formatCategory(slug);
   const description = recipe
-    ? `Historical recipe for ${label}: ${recipe.total_instances} instances, canonical pattern length ${recipe.canonical_length} years. Statistical lineage — not yet ML-adjudicated. Merged-preview detail page.`
-    : `Historical recipe for ${label}. Merged-preview detail page.`;
+    ? `Historical recipe for ${label}: ${recipe.total_instances} instances, canonical pattern length ${recipe.canonical_length} years. Statistical lineage — not yet ML-adjudicated.`
+    : `Historical recipe for ${label}.`;
   return {
-    title: `${label} — Merged Preview — QGI Intelligence`,
+    title: `${label} — QGI Intelligence`,
     description,
   };
 }
@@ -133,7 +133,7 @@ export default async function PrecedentsMergedSlugPage({ params }: Props) {
           generatedAt={stack.metadata.generated_at}
           paperHref={paperHref}
         />
-        <MergedDetailFooter lineage="ML" slug={slug} />
+        <MergedDetailFooter lineage="ML" />
       </>
     );
   }
@@ -192,7 +192,7 @@ export default async function PrecedentsMergedSlugPage({ params }: Props) {
   return (
     <>
       <PrecedentSlugClient recipe={recipe} flaggedCountries={flaggedCountries} />
-      <MergedDetailFooter lineage="STAT" slug={slug} />
+      <MergedDetailFooter lineage="STAT" />
     </>
   );
 }

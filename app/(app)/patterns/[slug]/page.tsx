@@ -94,8 +94,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: `${row.country_a} → ${row.country_b} — Patterns — Merged Preview — QGI Intelligence`,
-    description: `Per-pattern detail for ${row.country_a} → ${row.country_b}: a ${row.pattern_length}-year window starting ${row.start_year_a} on ${row.num_indexes} shared indicators (avg correlation ${(row.avg_correlation * 100).toFixed(1)}%). Preview shell, Family 4 build phase.`,
+    title: `${row.country_a} → ${row.country_b} — Patterns — QGI Intelligence`,
+    description: `Per-pattern detail for ${row.country_a} → ${row.country_b}: a ${row.pattern_length}-year window starting ${row.start_year_a} on ${row.num_indexes} shared indicators (avg correlation ${(row.avg_correlation * 100).toFixed(1)}%).`,
   };
 }
 

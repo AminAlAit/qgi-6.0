@@ -56,6 +56,8 @@ export default async function PrecedentsV2BSlugPage({ params }: Props) {
       caveatStyle="lloyds"
       generatedAt={stack.metadata.generated_at}
       paperHref={paperHref}
+      backHref="/precedents-v2b"
+      backLabel="← Back to V2 precedents list (Lloyd's)"
     />
   );
 }

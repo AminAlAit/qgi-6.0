@@ -24,7 +24,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Countries — Merged Preview — QGI Intelligence",
+  title: "Countries — QGI Intelligence",
   description:
     "Preview of the merged Countries shell — 156-country risk browser with Lloyd's-style methodology disclosure + Ingrid voice copy. Cutover from V1 + 2 V2 routes pending founder sign-off.",
 };
@@ -47,7 +47,7 @@ export default async function CountriesMergedPage() {
           className="text-xs tracking-widest uppercase mb-4"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Countries — Merged Preview
+          Countries
         </h1>
         <div
           className="rounded-lg p-6"

@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Route } from "next";
 
 /**
- * Cross-family handoff footer for /precedents/[slug] (Build PR #2).
+ * Cross-family handoff footer for /precedents/[slug].
  *
  * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
  *   section: "Cross-family handoffs"
@@ -12,43 +12,17 @@ import type { Route } from "next";
  * cross-references; this footer adds the BRIEF-mandated cross-family links
  * that don't fit cleanly inside either existing component.
  *
- * Handoffs implemented in this PR (#2):
- *   - Sibling lineage link (ML ↔ Stat) — "See the unadjudicated statistical
- *     signal this recipe was promoted from →" (or reverse).
- *   - Methodology ranked-patterns link — "See related ranked patterns →"
- *     pointing at /patterns?sort=loco_auc (Family 4 brief locked target;
- *     was /patterns/ranking before Family 4 killed that route).
- *
- * Deferred to PR #3:
- *   - Country names inline-linked inside the mechanism cell (mechanism cell
- *     is built in PR #3).
- *   - "{n} countries firing now →" pill (lives inside mechanism cell).
+ * PR-vii (2026-05-15) — sibling-link removal:
+ *   Post-cutover, ML and STAT lineages share the same /precedents/{slug}
+ *   URL; the page.tsx picks the template based on whether the slug is in
+ *   the top-4 LOCKed set. The "sibling lineage" link from PR #2 was a
+ *   pre-cutover artifact (it pointed at /precedents-v2b/{slug} for the
+ *   STAT path and at /precedents/{slug} itself for the ML path — a
+ *   circular self-link). Removed both. The lineage chip in the wrapped
+ *   detail already communicates which lineage is rendering.
  */
 
-export function MergedDetailFooter({
-  lineage,
-  slug,
-}: {
-  lineage: "ML" | "STAT";
-  slug: string;
-}) {
-  // Sibling lineage cross-link. For now the sibling is the V1 or V2 route
-  // (until PR #5 cutover deletes those). Once cutover lands, the sibling
-  // collapses to the same /precedents/[slug] URL — the lineage
-  // pivot becomes a state toggle inside this shell rather than a route hop.
-  const siblingHref: Route =
-    lineage === "ML"
-      ? (`/precedents/${slug}` as Route)
-      : (`/precedents-v2b/${slug}` as Route);
-  const siblingLabel =
-    lineage === "ML"
-      ? "See the unadjudicated statistical signal this recipe was promoted from →"
-      : "See the ML-validated version of this recipe →";
-  // For STAT rows the ML sibling only exists if this recipe is in the top-4
-  // LOCKed set. PR #2 renders the link unconditionally; PR #3 will gate it
-  // on actual ML coverage when the mechanism cell ships its full lineage
-  // routing logic.
-
+export function MergedDetailFooter({ lineage }: { lineage: "ML" | "STAT" }) {
   return (
     <section
       className="max-w-3xl mx-auto px-6 lg:px-8 py-6 mt-4 border-t"
@@ -65,13 +39,6 @@ export function MergedDetailFooter({
       </div>
       <div className="flex flex-col gap-2 text-sm">
         <Link
-          href={siblingHref}
-          className="hover:text-[var(--qgi-accent)] transition-colors"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          {siblingLabel}
-        </Link>
-        <Link
           href={"/patterns?sort=loco_auc" as Route}
           className="hover:text-[var(--qgi-accent)] transition-colors"
           style={{ color: "var(--qgi-text-muted)" }}
@@ -87,8 +54,7 @@ export function MergedDetailFooter({
         </Link>
       </div>
       <p className="text-[10px] mt-4 font-data" style={{ color: "var(--qgi-text-dim)" }}>
-        Merged preview · {lineage === "ML" ? "ML-adjudicated" : "Statistical screen"}{" "}
-        lineage · cutover pending sign-off
+        {lineage === "ML" ? "ML-adjudicated" : "Statistical screen"} lineage
       </p>
     </section>
   );

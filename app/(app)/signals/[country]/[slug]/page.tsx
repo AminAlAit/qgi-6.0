@@ -69,8 +69,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
   const display = displayNameFor(slug);
   return {
-    title: `${c.name} — ${display} — Signals — Merged Preview — QGI Intelligence`,
-    description: `Per-country, per-recipe signal leaf for ${c.name} on ${display}. Preview shell — Family 3 build phase.`,
+    title: `${c.name} — ${display} — Signals — QGI Intelligence`,
+    description: `Per-country, per-recipe signal leaf for ${c.name} on ${display}.`,
   };
 }
 
