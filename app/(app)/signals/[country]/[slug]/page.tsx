@@ -71,6 +71,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${c.name} — ${display} — Signals — QGI Intelligence`,
     description: `Per-country, per-recipe signal leaf for ${c.name} on ${display}.`,
+    // #699: explicit canonical.
+    alternates: { canonical: `/signals/${country}/${slug}` },
   };
 }
 

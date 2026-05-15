@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
 import { LandingHeaderNav } from "@/components/landing/LandingHeaderNav";
@@ -9,6 +10,14 @@ import {
   TOTAL_PATTERNS,
   DATA_VINTAGE_YEAR,
 } from "@/lib/site-stats";
+
+// #699 (2026-05-15): explicit home canonical. Pre-fix, the root layout
+// declared the canonical for every child page (so all V3 routes told
+// Google "I am a duplicate of /"); root canonical removed and each route
+// now sets its own. Home page declares "/" explicitly.
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 /**
  * QGI Landing Page — public, static.

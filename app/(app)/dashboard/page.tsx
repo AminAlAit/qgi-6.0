@@ -33,7 +33,12 @@ export const metadata = {
   title: "Dashboard — QGI Intelligence",
   description:
     "QGI command center. Consolidated view of countries, signals, patterns, and precedents — the front door to the deeper family pages.",
+  // #699: explicit canonical (was inheriting "/" from root layout).
+  alternates: { canonical: "/dashboard" },
 };
+
+// P1 from #699 audit: align with sibling V3 family pages' ISR cadence.
+export const revalidate = 3600;
 
 /**
  * Load top pattern pairs directly from baked ranking.json.

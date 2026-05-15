@@ -15,7 +15,10 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "Countries — QGI Intelligence",
   description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,
-  alternates: { canonical: "https://qgintelligence.com/countries-v1" },
+  // #699: canonical points to V3 counterpart; explicit noindex (defense in
+  // depth atop robots.ts Disallow).
+  alternates: { canonical: "/countries" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Countries — QGI Intelligence",
     description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,

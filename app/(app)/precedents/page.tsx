@@ -33,7 +33,10 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Precedents — QGI Intelligence",
   description:
-    "Preview of the merged Precedents shell — 4 ML-validated hero recipes + methodology disclosure strip + 64-recipe statistical catalogue. Cutover from V1 + V2 routes pending founder sign-off.",
+    "Browse the 71 historical event-category recipes — 4 ML-validated hero recipes + statistical-screen catalogue, ranked by evidence depth.",
+  // #699 (2026-05-15): explicit canonical so this V3 route is not
+  // confused for a duplicate of the home page.
+  alternates: { canonical: "/precedents" },
 };
 
 export const revalidate = 3600;

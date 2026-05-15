@@ -8,7 +8,10 @@ export const metadata: Metadata = {
   title: "Patterns — QGI Intelligence",
   description:
     "Explore statistically-significant indicator patterns between country pairs. Discover which economies walked the same trajectory.",
-  alternates: { canonical: "https://qgintelligence.com/patterns-v1" },
+  // #699: canonical points to V3 counterpart; explicit noindex (defense in
+  // depth atop robots.ts Disallow).
+  alternates: { canonical: "/patterns" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Patterns — QGI Intelligence",
     description:

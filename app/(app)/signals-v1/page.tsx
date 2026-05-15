@@ -8,7 +8,10 @@ export const metadata = {
   title: "Signals — QGI Intelligence",
   description:
     "Early-warning radar — browse active risk signals by domain, severity, and geography.",
-  alternates: { canonical: "https://qgintelligence.com/signals-v1" },
+  // #699: canonical points to V3 counterpart; explicit noindex (defense in
+  // depth atop robots.ts Disallow).
+  alternates: { canonical: "/signals" },
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Signals — QGI Intelligence",
     description:
