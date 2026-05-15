@@ -7,7 +7,6 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { countrySlug } from "@/lib/slug";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
 import type { SignalRow, SignalTier } from "@/app/(app)/signals/page";
-import { FIRING_SIGNALS } from "./mockFiringSignals";
 
 /**
  * Merged Signals list shell — Build PR #2 of 5 (A3 Family 3 merger brief).
@@ -593,15 +592,47 @@ function SignalRowComponent({ row, isLast }: { row: SignalRow; isLast: boolean }
 }
 
 // ============================================================================
-// PR #2 — "5 firing now" curated band
+// "Firing now" band — data-derived, top 5 by max_salience
 // ----------------------------------------------------------------------------
-// Pinned story-cards above the filter strip. Selection is editorial (5
-// hand-picked entries with Ingrid-voice movement narratives from
-// `mockFiringSignals.ts`). The band joins the curated entries against the
-// live aggregate to surface tier-as-of-this-bake; rows missing from the
-// aggregate are dropped silently (e.g., if a category retires).
+// #719 (2026-05-16) — pre-fix this band read hand-authored entries from
+// `./mockFiringSignals.ts`. All 5 captions had drifted from the current
+// bake. Fix: derive entirely from the SignalRow[] the page already
+// builds. See FiringNowBand docstring for full context.
 // ============================================================================
 
+/**
+ * #719 (2026-05-16) — fully data-derived.
+ *
+ * Pre-fix this component read 5 hand-authored entries from
+ * `./mockFiringSignals.ts`. Persona test 2026-05-15 (Marcus / CRO)
+ * surfaced a credibility dealbreaker: every single one of the 5
+ * captions diverged from the current bake. The most visible:
+ *
+ *   Caption claimed "Turkey, Egypt, and Pakistan now share a similar
+ *   fiscal-distress signature to historical 1997-class precedents"
+ *   alongside a MODERATE tier pill — while the live data showed
+ *   Currency Crisis at 0.523σ INDICATIVE (4 firing countries, none
+ *   of them Turkey / Egypt / Pakistan).
+ *
+ * Audit (2026-05-16): 5/5 mockFiringSignals entries diverged from
+ * canonical. Root cause: hand-authored prose seeded against a
+ * pre-V1.9.1 bake; never regenerated when the V1.9.1 bake landed.
+ *
+ * Fix: drop the mock array entirely. Derive the band live from the
+ * SignalRow[] the page already builds: pick the 5 highest-salience
+ * categories that fire above INDICATIVE; render display_name + live
+ * tier + auto-prose ("Firing on N countries; leading: X") + the
+ * top_countries chip strip from live data.
+ *
+ * Result: no drift surface remains. The band can never contradict
+ * its adjacent table because both read the same SignalRow source.
+ *
+ * Deferred follow-up: a future hand-curated editorial layer
+ * (qgi-data weekly JSON the original brief envisioned) can ride
+ * ALONGSIDE this band as a separate "Editorial commentary" section,
+ * with its own CI lint asserting cross-checked claims. Until that
+ * exists, the data-derived band is the entire firing-now surface.
+ */
 function FiringNowBand({
   signals,
   generatedDate,
@@ -609,24 +640,21 @@ function FiringNowBand({
   signals: SignalRow[];
   generatedDate: string;
 }) {
-  const byCategory = useMemo(() => {
-    const m = new Map<string, SignalRow>();
-    for (const s of signals) m.set(s.category, s);
-    return m;
-  }, [signals]);
-
   const cards = useMemo(() => {
-    return FIRING_SIGNALS.map((f) => {
-      const live = byCategory.get(f.category);
-      return live ? { firing: f, live } : null;
-    }).filter((x): x is NonNullable<typeof x> => x !== null);
-  }, [byCategory]);
+    // Take the top 5 by max_salience that ALSO fire above INDICATIVE.
+    // INDICATIVE means "background-level firing" by tier definition;
+    // it doesn't belong in a "firing now" curated band.
+    return [...signals]
+      .filter((s) => s.tier !== "INDICATIVE")
+      .sort((a, b) => b.max_salience - a.max_salience)
+      .slice(0, 5);
+  }, [signals]);
 
   if (cards.length === 0) return null;
 
   return (
     <section
-      aria-label="Firing now — editor's pick"
+      aria-label="Firing now — top categories from current bake"
       className="mb-5 rounded-lg border overflow-hidden"
       style={{
         backgroundColor: "var(--qgi-surface)",
@@ -643,21 +671,21 @@ function FiringNowBand({
         <span
           className="text-[9px] tracking-widest uppercase font-semibold"
           style={{ color: "var(--qgi-text-muted)" }}
+          title="Computed live from the current bake. Top 5 categories by max-salience that fire above INDICATIVE. No editorial prose; data-derived only."
         >
-          [Editor&apos;s pick · week of {generatedDate}]
+          [Verified data · week of {generatedDate}]
         </span>
         <span
           className="text-[9px] tracking-widest uppercase"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          5 firing now
+          {cards.length} firing now
         </span>
       </div>
       <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
-        {cards.map(({ firing, live }) => {
+        {cards.map((live) => {
           const meta = TIER_META[live.tier];
-          // PR-vii — route to the highest-salience country's leaf, same
-          // pattern as master-list rows.
+          // Route to the highest-salience country's leaf.
           const cardTopCountry = live.top_countries[0];
           const cardTopSlug = cardTopCountry
             ? (countrySlug(cardTopCountry.name) ?? cardTopCountry.alpha_2.toLowerCase())
@@ -667,8 +695,25 @@ function FiringNowBand({
               ? `/signals/${cardTopSlug}/${live.category}`
               : `/signals?recipe=${live.category}`
           ) as Route;
+          // Auto-derived prose — purely data-driven, no editorial license.
+          // Format: "Firing on {N} countries; leading: {country1} at {salience}σ."
+          const leadCountry = live.top_countries[0];
+          const otherCount = Math.max(0, live.firing_count - 1);
+          const derivedProse = leadCountry
+            ? `Firing on ${live.firing_count} ${
+                live.firing_count === 1 ? "country" : "countries"
+              } in the current bake; ${leadCountry.name} leads at ${leadCountry.salience.toFixed(
+                2
+              )}σ${
+                otherCount > 0
+                  ? `, with ${otherCount} other ${otherCount === 1 ? "country" : "countries"} also above the firing threshold.`
+                  : "."
+              }`
+            : `Firing on ${live.firing_count} ${
+                live.firing_count === 1 ? "country" : "countries"
+              } in the current bake.`;
           return (
-            <li key={firing.category} style={{ borderColor: "var(--qgi-border)" }}>
+            <li key={live.category} style={{ borderColor: "var(--qgi-border)" }}>
               <Link
                 href={detailHref}
                 className="px-4 py-3 grid items-start gap-x-3 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
@@ -681,9 +726,9 @@ function FiringNowBand({
                   <div
                     className="text-sm font-medium leading-tight truncate"
                     style={{ color: "var(--qgi-text)" }}
-                    title={firing.display_name}
+                    title={live.display_name}
                   >
-                    {firing.display_name}
+                    {live.display_name}
                   </div>
                   {live.l1 && (
                     <div
@@ -711,17 +756,17 @@ function FiringNowBand({
                   {meta.label}
                 </div>
 
-                {/* Movement narrative (Ingrid voice) */}
+                {/* Auto-derived data prose */}
                 <p
                   className="text-xs leading-relaxed"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
-                  {firing.movement}
+                  {derivedProse}
                 </p>
 
-                {/* Top countries chip strip */}
+                {/* Top countries chip strip — same data as the prose's "leading" claim. */}
                 <div className="flex flex-wrap gap-1 justify-end">
-                  {firing.top_countries.map((c) => (
+                  {live.top_countries.map((c) => (
                     <span
                       key={c.alpha_2}
                       className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[10px]"
