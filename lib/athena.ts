@@ -60,6 +60,21 @@ async function _runQueryUncached(
       QueryExecutionContext: { Database: database },
       WorkGroup: WORKGROUP,
       ResultConfiguration: { OutputLocation: OUTPUT_LOCATION },
+      // #625 (rescoped post #632): per-query result reuse with a 60-min
+      // TTL. The workgroup-level `ResultReuseConfiguration` approach in the
+      // original ticket was wrong — Athena only accepts this on each
+      // `StartQueryExecution` call, not on `UpdateWorkGroup`. Adding it here
+      // means: identical SQL fired within 60min returns Athena's cached
+      // result, costing $0 and skipping the data scan. This layers under
+      // the 10-min `unstable_cache` above — when Next's cache misses (cold
+      // serverless instance, HMR, restart), Athena's per-query reuse still
+      // catches it.
+      ResultReuseConfiguration: {
+        ResultReuseByAgeConfiguration: {
+          Enabled: true,
+          MaxAgeInMinutes: 60,
+        },
+      },
     })
   );
   if (!QueryExecutionId) throw new Error("No QueryExecutionId returned");
