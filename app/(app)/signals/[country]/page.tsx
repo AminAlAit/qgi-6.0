@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: `What's firing on ${c.name} — Signals — Merged Preview — QGI Intelligence`,
-    description: `Per-country signals watchlist for ${c.name} — risk categories aggregated across all tier windows with lineage-aware vocabulary. Preview shell, Family 3 build phase.`,
+    title: `What's firing on ${c.name} — Signals — QGI Intelligence`,
+    description: `Per-country signals watchlist for ${c.name} — risk categories aggregated across all tier windows with lineage-aware vocabulary.`,
   };
 }
 

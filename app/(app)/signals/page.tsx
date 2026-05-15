@@ -32,7 +32,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Signals — Merged Preview — QGI Intelligence",
+  title: "Signals — QGI Intelligence",
   description:
     "Preview of the merged Signals shell — 71 risk categories aggregated across 156 countries with lineage-aware tier vocabulary. Cutover from V1 + V2 routes pending founder sign-off.",
 };
@@ -155,7 +155,7 @@ export default async function SignalsMergedPage() {
           className="text-xs tracking-widest uppercase mb-4"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Signals — Merged Preview
+          Signals
         </h1>
         <div
           className="rounded-lg p-6"

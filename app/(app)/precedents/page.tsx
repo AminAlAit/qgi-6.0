@@ -31,7 +31,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Precedents — Merged Preview — QGI Intelligence",
+  title: "Precedents — QGI Intelligence",
   description:
     "Preview of the merged Precedents shell — 4 ML-validated hero recipes + methodology disclosure strip + 64-recipe statistical catalogue. Cutover from V1 + V2 routes pending founder sign-off.",
 };
@@ -56,7 +56,7 @@ export default async function PrecedentsMergedPage() {
           className="text-xs tracking-widest uppercase mb-4"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Precedents — Merged Preview
+          Precedents
         </h1>
         <div
           className="rounded-lg p-6"

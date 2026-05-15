@@ -15,6 +15,7 @@
 import { useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import type { Route } from "next";
 import { useRouter } from "next/navigation";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
@@ -1010,7 +1011,8 @@ export function BaseClient({
               className="text-[9px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              All {stats.high} high-risk countries &#8594;
+              All {stats.high}
+              {" high-risk countries →"}
             </Link>
           </div>
           {topCountries.length === 0 ? (
@@ -1306,46 +1308,54 @@ export function BaseClient({
                 const convLabel = s.convergence_tier
                   ? CONVERGENCE_LABELS[s.convergence_tier]
                   : "Unknown";
+                // PR-vii (2026-05-15) — convergence rows had hover-highlight
+                // but no link wrapper, so users clicked and nothing happened.
+                // Route to /precedents/{event_category} (recipe detail page);
+                // event_category is the L3 taxonomy slug, same shape that
+                // /precedents/[slug] resolves.
+                const rowHref = `/precedents/${s.event_category}` as Route;
                 return (
-                  <li
-                    key={`${s.recipe_id ?? i}`}
-                    className="px-4 py-2 hover:bg-[var(--qgi-surface-2)] transition-colors"
-                  >
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <span
-                        className="text-[11px] font-medium truncate"
-                        style={{ color: "var(--qgi-text)" }}
-                      >
-                        {s.country_a_name}
-                      </span>
-                      <span
-                        className="text-[9px] px-1.5 py-0.5 rounded shrink-0"
-                        style={{
-                          backgroundColor: `${convColor}20`,
-                          color: convColor,
-                          border: `1px solid ${convColor}30`,
-                        }}
-                        title={convLabel}
-                      >
-                        {s.n_predictors ?? 0}p
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span
-                        className="text-[10px] truncate"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        {formatCategory(s.event_category)}
-                      </span>
-                      {s.median_lead_time != null && (
+                  <li key={`${s.recipe_id ?? i}`}>
+                    <Link
+                      href={rowHref}
+                      className="block px-4 py-2 hover:bg-[var(--qgi-surface-2)] transition-colors"
+                    >
+                      <div className="flex items-center gap-2 mb-0.5">
                         <span
-                          className="font-data text-[9px] shrink-0"
+                          className="text-[11px] font-medium truncate"
+                          style={{ color: "var(--qgi-text)" }}
+                        >
+                          {s.country_a_name}
+                        </span>
+                        <span
+                          className="text-[9px] px-1.5 py-0.5 rounded shrink-0"
+                          style={{
+                            backgroundColor: `${convColor}20`,
+                            color: convColor,
+                            border: `1px solid ${convColor}30`,
+                          }}
+                          title={convLabel}
+                        >
+                          {s.n_predictors ?? 0}p
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="text-[10px] truncate"
                           style={{ color: "var(--qgi-text-dim)" }}
                         >
-                          {s.median_lead_time}yr lead
+                          {formatCategory(s.event_category)}
                         </span>
-                      )}
-                    </div>
+                        {s.median_lead_time != null && (
+                          <span
+                            className="font-data text-[9px] shrink-0"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {s.median_lead_time}yr lead
+                          </span>
+                        )}
+                      </div>
+                    </Link>
                   </li>
                 );
               })}
@@ -1470,7 +1480,7 @@ export function BaseClient({
           color: "var(--qgi-text-dim)",
         }}
       >
-        V{stats.version} scoring · Data as of {generatedShort} · Tier vocabulary: HIGH /
+        {stats.version} scoring · Data as of {generatedShort} · Tier vocabulary: HIGH /
         MODERATE / INDICATIVE ·{" "}
         <Link
           href="/methodology"

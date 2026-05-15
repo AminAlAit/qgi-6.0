@@ -35,7 +35,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Patterns — Merged Preview — QGI Intelligence",
+  title: "Patterns — QGI Intelligence",
   description:
     "Preview of the merged Patterns shell — country-pair pattern instances aggregated across 156 countries × 13 locked recipes × 60 years of data. Cutover from V1 + V2 routes pending founder sign-off.",
 };

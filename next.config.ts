@@ -47,25 +47,18 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
-      // Patterns V2: drop the V1-era "discover-patterns" prefix
+      // Patterns V2: drop the V1-era "discover-patterns" prefix.
+      // PR-vii (2026-05-15) — :slug* sub-route redirects removed; their
+      // destinations (patterns-v2a/[slug], patterns-v2b/[slug]) don't exist
+      // as dynamic Next routes, so the old redirect chained 308 → 404.
       {
         source: "/discover-patterns-a",
         destination: "/patterns-v2a",
         permanent: true,
       },
       {
-        source: "/discover-patterns-a/:slug*",
-        destination: "/patterns-v2a/:slug*",
-        permanent: true,
-      },
-      {
         source: "/discover-patterns-b",
         destination: "/patterns-v2b",
-        permanent: true,
-      },
-      {
-        source: "/discover-patterns-b/:slug*",
-        destination: "/patterns-v2b/:slug*",
         permanent: true,
       },
       // Signals V2: drop the internal hyphen

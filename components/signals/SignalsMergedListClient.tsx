@@ -316,6 +316,7 @@ export function SignalsMergedListClient({
         {/* Search */}
         <input
           type="text"
+          aria-label="Search category or L1 domain"
           placeholder="Search category or domain..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -437,9 +438,7 @@ export function SignalsMergedListClient({
           Methodology →
         </Link>
         {" · "}
-        <span style={{ color: "var(--qgi-text-muted)" }}>
-          Preview shell — V1 + V2-A + V2-B routes remain live until founder cutover.
-        </span>
+        <span style={{ color: "var(--qgi-text-muted)" }}></span>
       </p>
     </div>
   );
@@ -447,10 +446,17 @@ export function SignalsMergedListClient({
 
 function SignalRowComponent({ row, isLast }: { row: SignalRow; isLast: boolean }) {
   const meta = TIER_META[row.tier];
-  // Detail-link routing until PR #3 lands /signals/[country]:
-  // for now point at the V1 signals master (filtered by recipe slug) so
-  // the row remains clickable.
-  const detailHref = `/signals?recipe=${row.category}` as Route;
+  // PR-vii (2026-05-15) — route to the highest-salience country's leaf
+  // page for this signal. Falls back to the V1 master with recipe filter
+  // when the row has no countries (defensive; shouldn't happen in current
+  // data shape but the fallback keeps the row non-broken).
+  const topCountry = row.top_countries[0];
+  const topSlug = topCountry
+    ? (countrySlug(topCountry.name) ?? topCountry.alpha_2.toLowerCase())
+    : null;
+  const detailHref = (
+    topSlug ? `/signals/${topSlug}/${row.category}` : `/signals?recipe=${row.category}`
+  ) as Route;
   return (
     <Link
       href={detailHref}
@@ -650,7 +656,17 @@ function FiringNowBand({
       <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
         {cards.map(({ firing, live }) => {
           const meta = TIER_META[live.tier];
-          const detailHref = `/signals?recipe=${live.category}` as Route;
+          // PR-vii — route to the highest-salience country's leaf, same
+          // pattern as master-list rows.
+          const cardTopCountry = live.top_countries[0];
+          const cardTopSlug = cardTopCountry
+            ? (countrySlug(cardTopCountry.name) ?? cardTopCountry.alpha_2.toLowerCase())
+            : null;
+          const detailHref = (
+            cardTopSlug
+              ? `/signals/${cardTopSlug}/${live.category}`
+              : `/signals?recipe=${live.category}`
+          ) as Route;
           return (
             <li key={firing.category} style={{ borderColor: "var(--qgi-border)" }}>
               <Link

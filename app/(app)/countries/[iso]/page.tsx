@@ -65,8 +65,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
   return {
-    title: `${c.name} · Tier ${c.overall_risk_tier} — Merged Preview — QGI Intelligence`,
-    description: `Country risk profile for ${c.name}: Tier ${c.overall_risk_tier} (${c.curated ? "curated" : "uncurated"} event history). Merged preview shell — Family 2 build phase.`,
+    title: `${c.name} · Tier ${c.overall_risk_tier} — QGI Intelligence`,
+    description: `Country risk profile for ${c.name}: Tier ${c.overall_risk_tier} (${c.curated ? "curated" : "uncurated"} event history). Country profile.`,
   };
 }
 

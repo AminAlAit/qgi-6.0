@@ -455,9 +455,7 @@ export function PrecedentsMergedListClient({
           <div
             className="text-[10px] tracking-widest uppercase mb-1"
             style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Merged preview · cutover pending sign-off
-          </div>
+          ></div>
           <h1
             className="text-[11px] tracking-[0.15em] uppercase font-semibold"
             style={{ color: "var(--qgi-text-dim)" }}
@@ -841,13 +839,16 @@ export function PrecedentsMergedListClient({
       {stillTestingRows.length > 0 && <WhatWereStillTesting rows={stillTestingRows} />}
 
       {/* ============== Footer ============== */}
+      {/* PR-vii (2026-05-15): replaced `new Date(generatedAt).toLocaleString()`
+          with a fixed YYYY-MM-DD slice. `toLocaleString()` produces different
+          output server-side (Node default locale) vs client-side (browser
+          locale), which triggered React hydration warnings + an HMR cycle
+          in dev. The bake `generated_at` is already an ISO 8601 string;
+          slicing the first 10 chars yields the same value across all
+          runtimes. Also dropped the "Preview shell ... PR #5 cutover"
+          chrome — cutover already landed via PR #54. */}
       <p className="text-[10px] mt-4 font-data" style={{ color: "var(--qgi-text-dim)" }}>
-        Generated {new Date(generatedAt).toLocaleString()} · pipeline {pipelineVersion}
-        {" · "}
-        <span style={{ color: "var(--qgi-text-muted)" }}>
-          Preview shell — V1 + V2-A + V2-B routes remain live until founder cutover (PR
-          #5).
-        </span>
+        Generated {generatedAt.slice(0, 10)} · pipeline {pipelineVersion}
       </p>
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import type { Route } from "next";
 import {
   AdvisoryOnlyCallout,
   ConcentrationAlertCallout,
@@ -42,6 +43,14 @@ export function PrecedentsV2Detail({
   caveatStyle,
   generatedAt,
   paperHref,
+  /**
+   * PR-vii (2026-05-15) — back-link target. The V3 canonical caller
+   * (/precedents/[slug]) passes "/precedents"; V2 archive callers pass
+   * "/precedents-v2a" or "/precedents-v2b". Defaults to canonical so a
+   * forgotten caller still gets correct routing.
+   */
+  backHref = "/precedents",
+  backLabel = "← Back to precedents",
 }: {
   /** Buyer-shaped recipe. The page-level loader transforms raw via `toBuyerView()`. */
   recipe: BuyerMlRecipe;
@@ -49,12 +58,13 @@ export function PrecedentsV2Detail({
   generatedAt: string;
   /** External href to the methodology paper anchor for this recipe. */
   paperHref: string;
+  backHref?: string;
+  backLabel?: string;
 }) {
-  const variantLetter: "a" | "b" = caveatStyle === "tufte" ? "a" : "b";
   const tierColor = TIER_COLORS[recipe.tier];
   return (
     <article className="p-8 max-w-3xl mx-auto">
-      <BreadcrumbNav variantLetter={variantLetter} />
+      <BreadcrumbNav backHref={backHref} backLabel={backLabel} />
 
       <header className="mb-6">
         <div className="flex items-center gap-2 mb-2">
@@ -468,7 +478,7 @@ function AnchorStabilityValue({ value }: { value: number }) {
   );
 }
 
-function BreadcrumbNav({ variantLetter }: { variantLetter: "a" | "b" }) {
+function BreadcrumbNav({ backHref, backLabel }: { backHref: string; backLabel: string }) {
   return (
     <nav
       className="mb-4 text-xs"
@@ -476,11 +486,11 @@ function BreadcrumbNav({ variantLetter }: { variantLetter: "a" | "b" }) {
       aria-label="Back navigation"
     >
       <Link
-        href={variantLetter === "a" ? "/precedents-v2a" : "/precedents-v2b"}
+        href={backHref as Route}
         className="underline"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        ← Back to V2 precedents list
+        {backLabel}
       </Link>
     </nav>
   );

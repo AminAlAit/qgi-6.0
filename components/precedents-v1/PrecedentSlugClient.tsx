@@ -360,14 +360,6 @@ export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
             </div>
           </Section>
         )}
-
-        <p
-          className="text-[11px] leading-relaxed"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Mock data — schema mirrors `qgi_data.recipes_aggregated` (#462). Real values
-          land Week 3 once the next pipeline run produces the table.
-        </p>
       </div>
     </div>
   );
