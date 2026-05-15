@@ -415,6 +415,7 @@ def test_prep_helper_deterministic_label_ordering(tmp_path):
     assert r1.country_labels == r2.country_labels
     assert r1.category_labels == r2.category_labels
     assert r1.arm_labels == r2.arm_labels
+    assert r1.sector_labels == r2.sector_labels  # FU-1 from Sonnet review of PR #65
     # Country labels should be sorted: "1", "2", "3"
     assert r1.country_labels == ["1", "2", "3"]
     # Category labels should be sorted alphabetically
