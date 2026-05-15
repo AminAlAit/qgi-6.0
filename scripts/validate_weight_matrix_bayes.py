@@ -142,6 +142,32 @@ R_HAT_THRESHOLD = 1.01
 N_EFF_THRESHOLD = 400
 DIVERGENCE_THRESHOLD_PCT = 0.001   # < 0.1 % of post-warmup samples
 E_BFMI_THRESHOLD = 0.3
+# J-§3.1 (Ji-Hoon round-2 non-blocking rec from 2026-05-14, ratified
+# MANDATORY at 2026-05-15 6-seat Majles + pinned at qgi-data
+# `b059cd6` (v0.2-bayes-sweep-config.json `treedepth_saturation_rate_max_threshold`)):
+# treedepth saturation is a hidden failure mode at max_treedepth=12 — the
+# sampler hits the depth ceiling rather than converging. Flag if > 1 %.
+TREEDEPTH_SATURATION_THRESHOLD = 0.01
+
+# F-1 (Sonnet review of PR #60; Kwame round-2 reclassified from polish to
+# pre-registration-discipline gap; Ji-Hoon real-data ratification MANDATORY):
+# compute_diagnostics's R-hat / n_eff gate must cover ALL 9 sampled RVs,
+# not just the 4 named in the day-1 scaffold. The 272-element
+# country_intercept_raw block is the precise funnel-failure site that
+# non-centered parameterisation prevents; excluding it from the gate
+# means a chain breakdown there silently passes while the headline params
+# look fine. Verbatim from Ji-Hoon round-2 §3.1 audit:
+DIAGNOSTIC_VAR_NAMES = (
+    "mu",
+    "tau_arm",
+    "sigma_sector",
+    "alpha_sector",
+    "sigma_cat",
+    "beta_cat_raw",
+    "sigma_country",
+    "country_intercept_raw",
+    "sigma",
+)
 
 # Per-chain seeds. Pinned so smoke-test results reproduce across runs;
 # real-data run uses these same seeds unless the trio convenes to change.
@@ -354,16 +380,34 @@ def sample_posterior(model, *, draws: int = N_DRAWS, tune: int = N_TUNE,
     return idata
 
 
-def compute_diagnostics(idata) -> dict:
-    """Extract the §3.1 diagnostic suite ratified by Ji-Hoon #21.
+def compute_diagnostics(idata, *, var_names: tuple[str, ...] | None = None) -> dict:
+    """Extract the §3.1 diagnostic suite ratified by Ji-Hoon #21, with the
+    F-1 (Sonnet) + J-§3.1 (Ji-Hoon) extensions ratified MANDATORY by the
+    2026-05-15 6-seat Majles (qgi-aws-tf#691).
 
     Returns a dict with the named thresholds and PASS/FAIL per diagnostic
     so the smoke-test output (and the eventual real-data run) can be
     grepped by the PR-description / reviewer / regression-fixture pipeline.
+
+    Diagnostic suite covers ALL 9 sampled RVs by default (per F-1):
+        mu, tau_arm, sigma_sector, alpha_sector, sigma_cat, beta_cat_raw,
+        sigma_country, country_intercept_raw, sigma
+    The country_intercept_raw block (272 params at K=272) is the precise
+    funnel-failure site that non-centered parameterisation prevents;
+    excluding it from the R-hat / n_eff gate silently passes a chain
+    breakdown there. Override `var_names` only for diagnostic-mode runs
+    where the trio explicitly accepts a narrower sweep.
+
+    Treedepth saturation rate (J-§3.1) flags the hidden failure mode at
+    max_treedepth=12 where the sampler hits the depth ceiling rather than
+    converging. Threshold pinned at 1 % (Ji-Hoon round-2 ratified by the
+    6-seat as MANDATORY; matches `treedepth_saturation_rate_max_threshold`
+    at qgi-data `b059cd6`).
     """
     import arviz as az  # local import
 
-    summary = az.summary(idata, var_names=["mu", "tau_arm", "alpha_sector", "sigma"])
+    diag_vars = list(var_names) if var_names is not None else list(DIAGNOSTIC_VAR_NAMES)
+    summary = az.summary(idata, var_names=diag_vars)
     max_r_hat = float(summary["r_hat"].max())
     min_n_eff = float(summary["ess_bulk"].min())
 
@@ -377,6 +421,23 @@ def compute_diagnostics(idata) -> dict:
     e_bfmi = az.bfmi(idata)
     min_e_bfmi = float(np.min(e_bfmi))
 
+    # J-§3.1 treedepth saturation rate. PyMC emits the per-iteration tree
+    # depth at `sample_stats.tree_depth` (xarray DataArray over chains x
+    # draws). A draw "saturates" when tree_depth == max_treedepth (PyMC
+    # internally clamps; saturation is a near-divergence signal).
+    if "tree_depth" in sample_stats.data_vars:
+        max_observed_treedepth = int(sample_stats.tree_depth.max().item())
+        n_saturated = int((sample_stats.tree_depth >= MAX_TREEDEPTH).sum().item())
+        treedepth_saturation_rate = (
+            n_saturated / n_post_warmup if n_post_warmup else float("nan")
+        )
+    else:
+        # Older PyMC versions or sampler backends may not emit tree_depth;
+        # emit NaN and a FAIL verdict so the trio's PR review surfaces it.
+        max_observed_treedepth = -1
+        n_saturated = -1
+        treedepth_saturation_rate = float("nan")
+
     return {
         "max_r_hat": max_r_hat,
         "min_n_eff": min_n_eff,
@@ -384,17 +445,32 @@ def compute_diagnostics(idata) -> dict:
         "divergence_pct": divergence_pct,
         "min_e_bfmi": min_e_bfmi,
         "n_post_warmup_samples": n_post_warmup,
+        # J-§3.1 NEW (6-seat ratified MANDATORY):
+        "max_observed_treedepth": max_observed_treedepth,
+        "n_treedepth_saturated": n_saturated,
+        "treedepth_saturation_rate": treedepth_saturation_rate,
+        # F-1: report which variables were covered by the R-hat / n_eff gate
+        "var_names_in_gate": diag_vars,
         "thresholds": {
             "r_hat_max": R_HAT_THRESHOLD,
             "n_eff_min": N_EFF_THRESHOLD,
             "divergence_pct_max": DIVERGENCE_THRESHOLD_PCT,
             "e_bfmi_min": E_BFMI_THRESHOLD,
+            "treedepth_saturation_rate_max": TREEDEPTH_SATURATION_THRESHOLD,
         },
         "verdicts": {
             "r_hat": "PASS" if max_r_hat < R_HAT_THRESHOLD else "FAIL",
             "n_eff": "PASS" if min_n_eff > N_EFF_THRESHOLD else "FAIL",
             "divergences": "PASS" if divergence_pct < DIVERGENCE_THRESHOLD_PCT else "FAIL",
             "e_bfmi": "PASS" if min_e_bfmi > E_BFMI_THRESHOLD else "FAIL",
+            # NaN comparisons return False; FAIL means we couldn't measure,
+            # which is itself a fail per Ji-Hoon round-2 — better to halt
+            # the run than fly blind.
+            "treedepth_saturation": (
+                "PASS" if (not np.isnan(treedepth_saturation_rate)
+                           and treedepth_saturation_rate < TREEDEPTH_SATURATION_THRESHOLD)
+                else "FAIL"
+            ),
         },
     }
 
@@ -676,11 +752,18 @@ def run_smoke_test() -> dict:
 
     _log("computing 94% HDI on tau_arm[A] - tau_arm[D] (the Path B headline metric)...")
     tau_arm_samples = idata.posterior["tau_arm"]
-    a_minus_d = tau_arm_samples.sel(arm="A") - tau_arm_samples.sel(arm="D")
+    # F-3 (Sonnet review of PR #60; ratified MANDATORY at 2026-05-15 6-seat):
+    # xarray subtraction does not reliably preserve the DataArray `.name`
+    # attribute across versions. Without the explicit .rename, ArviZ ≥ 0.16
+    # may key the returned Dataset under "x" or raise KeyError. Renaming
+    # to "tau_arm_A_minus_D" makes the downstream lookup deterministic.
+    a_minus_d = (
+        tau_arm_samples.sel(arm="A") - tau_arm_samples.sel(arm="D")
+    ).rename("tau_arm_A_minus_D")
     hdi_94 = az.hdi(a_minus_d, hdi_prob=0.94)
-    # arviz's hdi returns a DataArray; extract the two endpoints
-    hdi_low = float(hdi_94["tau_arm"].sel(hdi="lower").item())
-    hdi_high = float(hdi_94["tau_arm"].sel(hdi="higher").item())
+    # arviz's hdi returns a Dataset keyed by the input DataArray's name
+    hdi_low = float(hdi_94["tau_arm_A_minus_D"].sel(hdi="lower").item())
+    hdi_high = float(hdi_94["tau_arm_A_minus_D"].sel(hdi="higher").item())
     posterior_mean_a_minus_d = float(a_minus_d.mean().item())
     _log(f"posterior tau_arm[A]-tau_arm[D]: mean={posterior_mean_a_minus_d:+.4f}, "
          f"94% HDI=[{hdi_low:+.4f}, {hdi_high:+.4f}] (DGP planted +0.04)")
