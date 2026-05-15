@@ -11,8 +11,8 @@ import type { BuyerMlRecipe } from "@/lib/buyer-view";
  * transform handles all relabeling. This component just lays out rows.
  *
  * Style variant via `caveatStyle`:
- * - `tufte` → `/precedents-v2-a` (footnote-style caveats)
- * - `lloyds` → `/precedents-v2-b` (full-width banner caveats)
+ * - `tufte` → `/precedents-v2a` (footnote-style caveats)
+ * - `lloyds` → `/precedents-v2b` (full-width banner caveats)
  */
 
 const TIER_RANK: Record<BuyerMlRecipe["tier"], number> = {
@@ -72,7 +72,7 @@ export function PrecedentsV2List({
             <span className="italic">
               Compact view — caveats render as inline footnote annotations.{" "}
               <Link
-                href="/precedents-v2-b"
+                href="/precedents-v2b"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
@@ -83,7 +83,7 @@ export function PrecedentsV2List({
             <span className="italic">
               Banner view — caveats render as full-width prominent banners.{" "}
               <Link
-                href="/precedents-v2-a"
+                href="/precedents-v2a"
                 className="underline"
                 style={{ color: "var(--qgi-text)" }}
               >
@@ -138,8 +138,8 @@ function RecipeRow({
   // href via a ternary on caveatStyle so each branch is literal.
   const href =
     caveatStyle === "tufte"
-      ? (`/precedents-v2-a/${recipe.recipe_id}` as const)
-      : (`/precedents-v2-b/${recipe.recipe_id}` as const);
+      ? (`/precedents-v2a/${recipe.recipe_id}` as const)
+      : (`/precedents-v2b/${recipe.recipe_id}` as const);
   const tierColor = TIER_COLORS[recipe.tier];
   return (
     <Link

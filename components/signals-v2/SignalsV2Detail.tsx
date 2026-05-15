@@ -17,7 +17,7 @@ import { SectionLabel } from "@/components/v2/SectionLabel";
  * V2 signal detail page — single (country, recipe) tear-sheet.
  *
  * MVP-shallow scope (#655 founder pick 2026-05-12): renders the same
- * recipe-level metrics as `/precedents-v2-{a,b}/[slug]` plus a country
+ * recipe-level metrics as `/precedents-v2{a,b}/[slug]` plus a country
  * header. The country slug doesn't drive any per-(country, year) firing
  * score today — that's a future bake. The page exists as the URL surface
  * + buyer-disclosure caveat surface; per-country probability comes later.
@@ -135,8 +135,8 @@ export function SignalsV2Detail({
             .map((r) => {
               const href =
                 caveatStyle === "tufte"
-                  ? (`/signals-v2-a/${countrySlugStr}/${r.recipe_id}` as const)
-                  : (`/signals-v2-b/${countrySlugStr}/${r.recipe_id}` as const);
+                  ? (`/signals-v2a/${countrySlugStr}/${r.recipe_id}` as const)
+                  : (`/signals-v2b/${countrySlugStr}/${r.recipe_id}` as const);
               return (
                 <Link
                   key={r.recipe_id}
@@ -273,8 +273,8 @@ export function SignalsV2Detail({
           <Link
             href={
               caveatStyle === "tufte"
-                ? (`/signals-v2-b/${countrySlugStr}/${recipe.recipe_id}` as const)
-                : (`/signals-v2-a/${countrySlugStr}/${recipe.recipe_id}` as const)
+                ? (`/signals-v2b/${countrySlugStr}/${recipe.recipe_id}` as const)
+                : (`/signals-v2a/${countrySlugStr}/${recipe.recipe_id}` as const)
             }
             className="underline"
             style={{ color: "var(--qgi-text-dim)" }}
@@ -378,7 +378,7 @@ function BreadcrumbNav({
       aria-label="Back navigation"
     >
       <Link
-        href={variantLetter === "a" ? "/signals-v2-a" : "/signals-v2-b"}
+        href={variantLetter === "a" ? "/signals-v2a" : "/signals-v2b"}
         className="underline"
         style={{ color: "var(--qgi-text-dim)" }}
       >

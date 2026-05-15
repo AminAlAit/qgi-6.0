@@ -4,9 +4,9 @@ import { toBuyerViewList } from "@/lib/buyer-view";
 import type { Metadata } from "next";
 
 /**
- * /precedents-v2-b — Lloyd's-style variant of the V2 ML precedents index.
+ * /precedents-v2b — Lloyd's-style variant of the V2 ML precedents index.
  *
- * Identical data + structure to /precedents-v2-a; caveats render as
+ * Identical data + structure to /precedents-v2a; caveats render as
  * full-width banners (Lloyd's actuarial readability) instead of footnotes.
  *
  * Reads `data/ml-recipe-stack.json` (#643 bake output) at SSR time.
@@ -15,13 +15,13 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Precedents V2 (Lloyd's) — QGI Intelligence",
   description:
-    "Top-4 ML-derived precedent recipes with banner-style buyer-disclosure caveats. Lloyd's variant of the V2 precedents browser; Tufte footnote variant at /precedents-v2-a.",
-  alternates: { canonical: "https://qgintelligence.com/precedents-v2-b" },
+    "Top-4 ML-derived precedent recipes with banner-style buyer-disclosure caveats. Lloyd's variant of the V2 precedents browser; Tufte footnote variant at /precedents-v2a.",
+  alternates: { canonical: "https://qgintelligence.com/precedents-v2b" },
   openGraph: {
     title: "Precedents V2 (Lloyd's) — QGI Intelligence",
     description:
       "Top-4 ML-derived precedent recipes with banner-style buyer-disclosure caveats.",
-    url: "https://qgintelligence.com/precedents-v2-b",
+    url: "https://qgintelligence.com/precedents-v2b",
     siteName: "QGI Intelligence",
     type: "website",
   },
@@ -35,7 +35,7 @@ export default async function PrecedentsV2BPage() {
       stack.metadata.top_4_recipes.includes(r.recipe_id)
     );
     const modelVersion = topFour[0]?.model_version ?? "v1.0";
-    // TODO(qgi-ml bake): see /precedents-v2-a/page.tsx — replace this
+    // TODO(qgi-ml bake): see /precedents-v2a/page.tsx — replace this
     // hardcoded value with stack.metadata.n_total_validated once exposed.
     const totalLocked = 13;
     return (

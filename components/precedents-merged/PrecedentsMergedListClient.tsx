@@ -25,7 +25,7 @@ import { getTierTooltip } from "@/components/precedents-merged/TierPillTooltip";
  *     + sort column dropdown + mix-zones toggle
  *
  * Deferred to PR #2: detail page (/precedents-merged/[slug]) — hero rows
- * currently link to /precedents-v2-b/[slug] (Lloyd's banner), catalogue
+ * currently link to /precedents-v2b/[slug] (Lloyd's banner), catalogue
  * rows link to /precedents/[slug] (V1).
  *
  * Deferred to PR #3: click-to-expand 120w mechanism cell, "What we're still

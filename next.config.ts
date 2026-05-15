@@ -28,6 +28,90 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   poweredByHeader: false,
+  /**
+   * PR-ii (2026-05-15) — V2 route consistent naming.
+   *
+   * The previous V2 routes used inconsistent naming (`/discover-patterns-a`
+   * for Patterns vs `/precedents-v2-a` for Precedents). Renamed to a
+   * uniform `{family}-v2{variant}` scheme so a future reader can read the
+   * URL and know the family + variant without checking the brief.
+   *
+   * 308 permanent redirects from the old paths preserve any bookmark or
+   * external inbound link. Status 308 (vs 301) keeps the HTTP method on
+   * the follow — irrelevant for these GET-only routes today, but the
+   * safer default.
+   *
+   * These redirects can be removed once external links to the old paths
+   * are confirmed gone (search for inbound traffic in Vercel analytics
+   * after 90 days; safe to drop if zero).
+   */
+  async redirects() {
+    return [
+      // Patterns V2: drop the V1-era "discover-patterns" prefix
+      {
+        source: "/discover-patterns-a",
+        destination: "/patterns-v2a",
+        permanent: true,
+      },
+      {
+        source: "/discover-patterns-a/:slug*",
+        destination: "/patterns-v2a/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/discover-patterns-b",
+        destination: "/patterns-v2b",
+        permanent: true,
+      },
+      {
+        source: "/discover-patterns-b/:slug*",
+        destination: "/patterns-v2b/:slug*",
+        permanent: true,
+      },
+      // Signals V2: drop the internal hyphen
+      {
+        source: "/signals-v2-a",
+        destination: "/signals-v2a",
+        permanent: true,
+      },
+      {
+        source: "/signals-v2-a/:path*",
+        destination: "/signals-v2a/:path*",
+        permanent: true,
+      },
+      {
+        source: "/signals-v2-b",
+        destination: "/signals-v2b",
+        permanent: true,
+      },
+      {
+        source: "/signals-v2-b/:path*",
+        destination: "/signals-v2b/:path*",
+        permanent: true,
+      },
+      // Precedents V2: drop the internal hyphen
+      {
+        source: "/precedents-v2-a",
+        destination: "/precedents-v2a",
+        permanent: true,
+      },
+      {
+        source: "/precedents-v2-a/:slug*",
+        destination: "/precedents-v2a/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/precedents-v2-b",
+        destination: "/precedents-v2b",
+        permanent: true,
+      },
+      {
+        source: "/precedents-v2-b/:slug*",
+        destination: "/precedents-v2b/:slug*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 /**

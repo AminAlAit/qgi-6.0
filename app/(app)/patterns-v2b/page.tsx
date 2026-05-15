@@ -106,7 +106,7 @@ export default function DiscoverPatternsFacetsScaffold() {
             → /patterns
           </Link>
           <Link
-            href="/discover-patterns-a"
+            href="/patterns-v2a"
             className="px-4 py-2 rounded border transition-colors hover:bg-[var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-accent)",
