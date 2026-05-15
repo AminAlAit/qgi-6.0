@@ -1,6 +1,9 @@
 __pycache__/
 *.pyc
 
+# Path B (T12 #676) venv — heavy deps (pymc + numpyro + arviz); not committed
+.venv-path-b/
+
 # Secrets hygiene (#444) — never commit credentials or local editor/IDE config
 .env
 .env.*
