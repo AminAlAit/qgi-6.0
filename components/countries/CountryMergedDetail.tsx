@@ -88,6 +88,22 @@ export interface StructuralPeer {
   similarity: number;
 }
 
+/**
+ * #721 (2026-05-16) — QGI Risk Score buyer-facing surface.
+ *
+ * Optional; absent when the bake didn't compute a score (older bakes)
+ * or when the country has insufficient coverage. Spec:
+ * qgi-docs/internal/ops/qgi-risk-score-majles-2026-05-16.md
+ *
+ * STRICT ORDINAL — NOT A PROBABILITY. Tooltip copy must reflect this.
+ */
+export interface QgiRiskScore {
+  score: number | null;
+  ci_low: number | null;
+  ci_high: number | null;
+  coverage_flag: "ok" | "insufficient";
+}
+
 export function CountryMergedDetail({
   iso,
   name,
@@ -100,6 +116,7 @@ export function CountryMergedDetail({
   mlCovCount = 0,
   mlMatrixDefaultExpanded = false,
   structuralPeers = [],
+  riskScore,
 }: {
   iso: string;
   name: string;
@@ -128,6 +145,9 @@ export function CountryMergedDetail({
   mlMatrixDefaultExpanded?: boolean;
   /** PR #4 — structural-peer cohort (top-5 by L1-profile similarity). */
   structuralPeers?: ReadonlyArray<StructuralPeer>;
+  /** #721 Step 2 — QGI Risk Score (0-100 percentile rank). Optional;
+   *  hero renders gracefully without it. */
+  riskScore?: QgiRiskScore;
 }) {
   const tierMeta = TIER_META[tier];
   // Highlighted L1 groups — the codes that contain a top-3 driving category.
@@ -158,35 +178,52 @@ export function CountryMergedDetail({
       </nav>
 
       {/* ============== Hero ============== */}
+      {/*
+        #721 (2026-05-16) — QGI Risk Score promoted to hero per Majles
+        2026-05-16 synthesis. Tier pill DEMOTED to a secondary chip
+        beside the score (was the H1's tagline). H1 drops "· Tier X"
+        suffix — the name stands alone. Risk Score gets a dedicated
+        right-side tile (3xl numeral + Sipho [Verified data] eyebrow +
+        CI range below). When riskScore is absent or insufficient, the
+        tier pill rides at its prior visual weight as a graceful
+        fallback. See `RiskScoreHeroTile` for the score-rendering
+        component.
+      */}
       <header className="mb-6">
-        <div
-          className="text-[10px] tracking-widest uppercase mb-1"
-          style={{ color: "var(--qgi-text-dim)" }}
-        ></div>
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="flex items-start gap-4 flex-wrap">
           <CountryFlag alpha2={alpha_2} size={36} countryName={name} />
-          <h1
-            className="text-3xl font-semibold leading-tight"
-            style={{ color: "var(--qgi-text)" }}
-          >
-            {name} · Tier {tier}
-          </h1>
-          <TierPill meta={tierMeta} />
-        </div>
-        {curated && (
-          <div className="mt-2">
-            <span
-              className="font-data text-[10px] tracking-wide uppercase px-2 py-0.5 rounded"
-              style={{
-                color: "var(--qgi-text-muted)",
-                border: "1px solid var(--qgi-border)",
-              }}
-              title="Curated event history available — full timeline reachable via the events section (PR #4)"
+          <div className="flex-1 min-w-0">
+            <h1
+              className="text-3xl font-semibold leading-tight"
+              style={{ color: "var(--qgi-text)" }}
             >
-              Curated event history
-            </span>
+              {name}
+            </h1>
+            <div className="flex items-center gap-2 mt-2 flex-wrap">
+              <TierPill meta={tierMeta} />
+              {curated && (
+                <span
+                  className="font-data text-[10px] tracking-wide uppercase px-2 py-0.5 rounded"
+                  style={{
+                    color: "var(--qgi-text-muted)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                  title="Curated event history available — full timeline reachable via the events section."
+                >
+                  Curated event history
+                </span>
+              )}
+            </div>
           </div>
-        )}
+          {riskScore && riskScore.coverage_flag === "ok" && (
+            <RiskScoreHeroTile
+              score={riskScore.score}
+              ciLow={riskScore.ci_low}
+              ciHigh={riskScore.ci_high}
+              tierMeta={tierMeta}
+            />
+          )}
+        </div>
       </header>
 
       {/* ============== Lloyd's tier banner (Section 1 of brief) ============== */}
@@ -339,6 +376,73 @@ function TierPill({ meta }: { meta: (typeof TIER_META)[RiskTier] }) {
     >
       {meta.label}
     </span>
+  );
+}
+
+/**
+ * QGI Risk Score hero tile (#721 Step 2).
+ *
+ * Visual primary on the country detail page hero — 3xl numeral with
+ * /100 suffix, Sipho `[Verified data]` eyebrow, CI range tucked below.
+ *
+ * STRICT ORDINAL — NOT A PROBABILITY. Tooltip copy says so verbatim;
+ * methodology page §"QGI Risk Score" has the long-form explanation.
+ *
+ * Color flows from the country's tier (border accent only — the
+ * numeral itself stays in primary text color so the score is the
+ * dominant glyph regardless of tier).
+ */
+function RiskScoreHeroTile({
+  score,
+  ciLow,
+  ciHigh,
+  tierMeta,
+}: {
+  score: number | null;
+  ciLow: number | null;
+  ciHigh: number | null;
+  tierMeta: (typeof TIER_META)[RiskTier];
+}) {
+  if (score === null) return null;
+  const ciSpan = ciLow !== null && ciHigh !== null ? `${ciLow}–${ciHigh}` : null;
+  return (
+    <div
+      className="flex flex-col items-end shrink-0 px-4 py-2 rounded-lg"
+      style={{
+        backgroundColor: tierMeta.bg,
+        border: `1px solid ${tierMeta.border}`,
+        borderTopWidth: 2,
+        borderTopColor: tierMeta.color,
+      }}
+      title="QGI Risk Score: 0–100 percentile rank of this country's max-salience signal across the current bake's cohort. This is a percentile rank, NOT a probability. Higher scores indicate stronger structural-precedent match, not higher chance of a future event. See /methodology#qgi-risk-score."
+    >
+      <span
+        className="text-[9px] tracking-widest uppercase font-semibold mb-0.5"
+        style={{ color: "var(--qgi-text-dim)" }}
+      >
+        [Verified data] QGI Risk Score
+      </span>
+      <div className="flex items-baseline gap-1">
+        <span
+          className="text-4xl font-semibold leading-none font-data tabular-nums"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          {score}
+        </span>
+        <span className="text-sm font-data" style={{ color: "var(--qgi-text-dim)" }}>
+          /100
+        </span>
+      </div>
+      {ciSpan && (
+        <span
+          className="text-[10px] mt-1 font-data tabular-nums"
+          style={{ color: "var(--qgi-text-muted)" }}
+          title={`95% bootstrap confidence interval: ${ciSpan} of 100. Bootstrap resamples the bake's cohort 1000 times with a deterministic seed.`}
+        >
+          95% CI {ciSpan}
+        </span>
+      )}
+    </div>
   );
 }
 
