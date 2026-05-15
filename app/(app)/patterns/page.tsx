@@ -1,38 +1,65 @@
-import { Suspense } from "react";
-import type { Metadata } from "next";
-import PatternsClient from "./PatternsClient";
+import { PatternsMergedListClient } from "@/components/patterns/PatternsMergedListClient";
 import type { PatternRow } from "@/lib/types";
+import type { Metadata } from "next";
 
-// T19 #312: patterns discovery page metadata. Previously shared root title.
+/**
+ * /patterns — Preview-only route for A3 merger brief Family 4.
+ *
+ * Build PR #2 of 5 (incremental cadence, founder-gated cutover at PR #5):
+ *   - PR #1: route scaffold + Foreign Affairs lede + "What this doesn't
+ *     mean" callout + Lloyd's banner + preset chips + 5-col rows-layout
+ *     table over the top patterns
+ *   - PR #2 (this): persistent left facet rail (Window-tier moved from
+ *     filter strip + Country multi-select + Architecture/RCI/L1/Region/
+ *     Falsification-status preview-placeholder facets) + 6-tier
+ *     vocabulary disclosure strip
+ *   - PR #3: per-pattern detail page /patterns/[slug]
+ *   - PR #4: flagship section (sparkline column + RCI dot per row + cross-
+ *     family handoffs)
+ *   - PR #5 (founder-gated): kill 2 V2 routes (V2-A + V2-B) + /patterns/
+ *     ranking; alias /patterns → /patterns canonical
+ *
+ * V1 /patterns + V2-A /patterns-v2a + V2-B /patterns-v2b
+ * remain LIVE alongside the merged preview so the founder can compare
+ * side-by-side until cutover.
+ *
+ * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+ *   (Family 4 — Patterns section lines ~1052-1290)
+ *
+ * Tier vocabulary on Patterns is the WIDEST of the 4 families — 6 distinct
+ * tier systems (PPS-band, CorrTier S/A/B/C, Pattern-window S/M/L/XL-win,
+ * Evidence-strength STRONG/MODERATE/MARGINAL, RCI GREEN/YELLOW/RED/INSUFF,
+ * Country-tier HIGH/MODERATE/INDICATIVE). PR #1 surfaces the
+ * Pattern-window vocabulary on the table; the full disclosure-strip lands
+ * in PR #2 alongside the facet rail.
+ */
+
 export const metadata: Metadata = {
-  title: "Patterns — QGI Intelligence",
+  title: "Patterns — Merged Preview — QGI Intelligence",
   description:
-    "Explore statistically-significant indicator patterns between country pairs. Discover which economies walked the same trajectory.",
-  alternates: { canonical: "https://qgintelligence.com/patterns" },
-  openGraph: {
-    title: "Patterns — QGI Intelligence",
-    description:
-      "Explore statistically-significant indicator patterns between country pairs.",
-    url: "https://qgintelligence.com/patterns",
-    siteName: "QGI Intelligence",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Patterns — QGI Intelligence",
-    description:
-      "Explore statistically-significant indicator patterns between country pairs.",
-  },
+    "Preview of the merged Patterns shell — country-pair pattern instances aggregated across 156 countries × 13 locked recipes × 60 years of data. Cutover from V1 + V2 routes pending founder sign-off.",
 };
 
-// T6 #299 + T16 #309 HIGH: the S0 landing pane shows top 10 unique pairs.
-// Previously the client fetched `/api/patterns/ranking?limit=1000` on mount
-// to compute them, pulling 1000 rows over the wire just to display 10.
-// Read the baked ranking.json server-side and pass top 10 as an initial
-// prop — identical data, zero client fetch, zero Athena cost.
 export const revalidate = 3600;
 
-async function loadInitialTopPairs(): Promise<PatternRow[]> {
+export type PatternWindowTier = "S-win" | "M-win" | "L-win" | "XL-win";
+
+/** Map raw `pattern_tier` from ranking.json to brief-aligned cross-family vocab. */
+function mapPatternTier(raw: string | undefined): PatternWindowTier {
+  if (raw === "XL") return "XL-win";
+  if (raw === "L") return "L-win";
+  if (raw === "M") return "M-win";
+  return "S-win";
+}
+
+export interface PatternsMergedRow extends PatternRow {
+  /** Brief-renamed Pattern-window vocab — S-win/M-win/L-win/XL-win. */
+  window_tier: PatternWindowTier;
+  /** Server-derived stable key for React lists. */
+  row_key: string;
+}
+
+async function loadRanking(): Promise<PatternRow[]> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
@@ -46,46 +73,77 @@ async function loadInitialTopPairs(): Promise<PatternRow[]> {
     ) {
       return [];
     }
-    const rows: PatternRow[] = (json as { results: PatternRow[] }).results;
-    // Sonnet P1-4 fix (2026-04-19): zero-padded numeric-string key so
-    // "10|2" vs "2|10" dedup matches numeric ordering. Otherwise the same
-    // pair dedups inconsistently depending on where ids come from.
-    const padKey = (v: string | number | undefined, fallback: string) => {
-      const n = Number(v);
-      return Number.isFinite(n) ? String(n).padStart(6, "0") : String(v ?? fallback);
-    };
-    const bestPerPair = new Map<string, PatternRow>();
-    for (const row of rows) {
-      const a = padKey(row.country_a_id, row.country_a);
-      const b = padKey(row.country_b_id, row.country_b);
-      const key = a < b ? `${a}|${b}` : `${b}|${a}`;
-      const existing = bestPerPair.get(key);
-      if (!existing || row.pattern_power_score > existing.pattern_power_score) {
-        bestPerPair.set(key, row);
-      }
-    }
-    return Array.from(bestPerPair.values())
-      .sort((a, b) => b.pattern_power_score - a.pattern_power_score)
-      .slice(0, 10);
+    return (json as { results: PatternRow[] }).results;
   } catch {
     return [];
   }
 }
 
-export default async function PatternsPage() {
-  const initialTopPairs = await loadInitialTopPairs();
+export default async function PatternsMergedPage() {
+  const raw = await loadRanking();
+  // PR #2: still capped at 250; virtual-scroll over the full ranking is
+  // deferred to PR #4 alongside the grid layout toggle.
+  const rows: PatternsMergedRow[] = raw.slice(0, 250).map((p, i) => ({
+    ...p,
+    window_tier: mapPatternTier(p.pattern_tier),
+    row_key: `${p.country_a}-${p.country_b}-${p.start_year_a}-${i}`,
+  }));
+
+  // Tier counts for the metric strip.
+  const tierCounts: Record<PatternWindowTier, number> = {
+    "S-win": 0,
+    "M-win": 0,
+    "L-win": 0,
+    "XL-win": 0,
+  };
+  for (const r of rows) tierCounts[r.window_tier]++;
+
+  // Unique pair count (country_a + country_b combos) — mirrors the metric
+  // strip the brief specifies. Pattern instances repeat with shifted
+  // windows; unique pairs are the meaningful "what's in the corpus" count.
+  const uniquePairs = new Set<string>();
+  for (const r of rows) uniquePairs.add(`${r.country_a}|${r.country_b}`);
+
+  // Earliest + latest start years across the surfaced window (server-derived
+  // for the eyebrow line so it stays hydration-stable).
+  let firstYear = Infinity;
+  let lastYear = -Infinity;
+  for (const r of rows) {
+    firstYear = Math.min(firstYear, r.start_year_a, r.start_year_b);
+    lastYear = Math.max(
+      lastYear,
+      r.start_year_a + r.pattern_length,
+      r.start_year_b + r.pattern_length
+    );
+  }
+  if (firstYear === Infinity) {
+    firstYear = 1960;
+    lastYear = 2026;
+  }
+
+  const generatedDate = new Date().toISOString().slice(0, 10);
+
+  // PR #2 — country list for the multi-select facet. Sorted by frequency
+  // desc so the heaviest-firing countries surface first in the dropdown.
+  const countryFreq = new Map<string, number>();
+  for (const r of rows) {
+    countryFreq.set(r.country_a, (countryFreq.get(r.country_a) ?? 0) + 1);
+    countryFreq.set(r.country_b, (countryFreq.get(r.country_b) ?? 0) + 1);
+  }
+  const countryOptions: Array<{ name: string; count: number }> = Array.from(
+    countryFreq.entries()
+  )
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
+
   return (
-    <Suspense
-      fallback={
-        <div
-          className="flex items-center justify-center h-full text-xs tracking-wider"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          LOADING…
-        </div>
-      }
-    >
-      <PatternsClient initialTopPairs={initialTopPairs} />
-    </Suspense>
+    <PatternsMergedListClient
+      rows={rows}
+      tierCounts={tierCounts}
+      uniquePairCount={uniquePairs.size}
+      yearRange={{ first: firstYear, last: lastYear }}
+      generatedDate={generatedDate}
+      countryOptions={countryOptions}
+    />
   );
 }

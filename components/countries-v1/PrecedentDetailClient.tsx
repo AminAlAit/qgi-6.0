@@ -1,0 +1,799 @@
+"use client";
+
+import Link from "next/link";
+import type { Route } from "next";
+import type { CountryRisk, RiskTier, CategoryScore } from "@/lib/country-risks";
+import { CountryFlag } from "@/components/design/CountryFlag";
+import { InfoTooltip } from "@/components/design/InfoTooltip";
+import { AnalogueMultiTimeline } from "@/components/countries-v1/AnalogueMultiTimeline";
+import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
+
+/* ------------------------------------------------------------------ */
+/*  Constants                                                          */
+/* ------------------------------------------------------------------ */
+
+const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }> = {
+  HIGH: {
+    bg: "rgba(248, 113, 113, 0.15)",
+    text: "#f87171",
+    border: "rgba(248, 113, 113, 0.3)",
+  },
+  MODERATE: {
+    bg: "rgba(251, 191, 36, 0.15)",
+    text: "#fbbf24",
+    border: "rgba(251, 191, 36, 0.3)",
+  },
+  INDICATIVE: {
+    bg: "rgba(56, 189, 248, 0.15)",
+    text: "#38bdf8",
+    border: "rgba(56, 189, 248, 0.3)",
+  },
+};
+
+const PATTERN_TIERS = ["S", "M", "L", "XL"] as const;
+const TIER_LABELS: Record<string, string> = {
+  S: "Short (3-8yr)",
+  M: "Medium (9-20yr)",
+  L: "Long (21-40yr)",
+  XL: "Institutional (41+yr)",
+};
+
+// T21 #314 (Alex s1): human-readable per-tier tooltips so the single-letter
+// tabs have narrative meaning — "what kind of historical horizon is this?"
+const TIER_TOOLTIPS: Record<string, string> = {
+  S: "Short-horizon patterns (3–8 years). Captures policy cycles, election cycles, commodity shocks, and near-term crises. Most sensitive to recent events; highest signal-to-noise for current trajectories.",
+  M: "Medium-horizon patterns (9–20 years). Captures leadership eras, post-war transitions, commodity super-cycles, and structural reform periods. Good balance of recency and durability.",
+  L: "Long-horizon patterns (21–40 years). Captures post-colonial trajectories, democratic consolidation, multi-decade economic transformations (Asian tiger rises, etc). Low year-to-year noise; emphasizes durable structural similarity.",
+  XL: "Institutional patterns (41+ years). Captures civilizational parallels — full regime cycles, empire transitions, multi-generational structural lock-ins. Fewer pairs available; interpret with historical humility.",
+};
+
+const TIER_COLORS: Record<string, string> = {
+  S: "#f87171",
+  M: "#fbbf24",
+  L: "#38bdf8",
+  XL: "#a78bfa",
+};
+
+/* ------------------------------------------------------------------ */
+/*  Props                                                              */
+/* ------------------------------------------------------------------ */
+
+interface AnalogueEntry {
+  country_b_id: number;
+  country_b_name: string;
+  alpha2: string;
+  recipe_count: number;
+  mean_corr: number;
+  best_pps: number;
+  avg_lead_years: number | null;
+  /** #352: best-PPS pattern length in years. Added by generate_pair_windows.py. */
+  best_pattern_length?: number;
+  /** #352: subject country's start year in the best pattern (for deep-link to S3 view). */
+  best_pattern_start_a?: number;
+  /** #352: analogue country's start year in the best pattern. */
+  best_pattern_start_b?: number;
+}
+
+interface Props {
+  countryId: string;
+  country: CountryRisk;
+  category: string;
+  generatedAt: string | null;
+  version: string;
+  analogues?: AnalogueEntry[];
+  /** Enriched subject metadata (subject country's own category events). #293 */
+  enrichedSubject?: import("@/lib/types").AnalogueEnrichedSubject | null;
+  /** Enriched analogues with real per-analogue event years. #293 */
+  enrichedAnalogues?: import("@/lib/types").AnalogueEnrichedEntry[];
+  /** #354: canonical pattern length L for this (subject, category). */
+  canonicalLength?: number;
+  /** #354: original analogue count before length-L filter (for footnote). */
+  enrichmentOriginalCount?: number;
+  /** #354: count of analogues dropped because no length-L window exists. */
+  enrichmentDroppedCount?: number;
+}
+
+/* ------------------------------------------------------------------ */
+/*  Main Component                                                     */
+/* ------------------------------------------------------------------ */
+
+export function PrecedentDetailClient({
+  countryId,
+  country,
+  category,
+  generatedAt,
+  version,
+  analogues = [],
+  enrichedSubject,
+  enrichedAnalogues = [],
+  canonicalLength,
+  enrichmentOriginalCount,
+  enrichmentDroppedCount,
+}: Props) {
+  const tierStyle = TIER_STYLES[country.overall_risk_tier] ?? TIER_STYLES.INDICATIVE;
+  const catLabel = formatCategory(category);
+
+  // L1 taxonomy lookup
+  const l1Mapping = CATEGORY_L1_MAP[category];
+  const l1Group = l1Mapping
+    ? L1_GROUPS.find((g) => g.code === l1Mapping.group)
+    : undefined;
+  const l1Eyebrow = l1Group ? `L1-${l1Group.code} ${l1Group.label}` : "Uncategorized";
+
+  // Gather this category's data across all tiers
+  const tierBreakdown = PATTERN_TIERS.map((tier) => {
+    const cats = country.tiers?.[tier]?.top_categories ?? [];
+    const match = cats.find((c) => c.category === category);
+    return { tier, match };
+  });
+
+  const allMatches = tierBreakdown
+    .map((t) => t.match)
+    .filter((m): m is CategoryScore => m != null);
+  const totalRecipes = allMatches.reduce((s, m) => s + m.recipe_count, 0);
+  const maxSalience = Math.max(
+    ...allMatches.map((m) => m.salience_score ?? m.z_score),
+    0
+  );
+
+  const salienceColor =
+    maxSalience >= 1.2 ? "#f87171" : maxSalience >= 0.5 ? "#fbbf24" : "#38bdf8";
+  const signalLabel =
+    maxSalience >= 1.2 ? "high-density" : maxSalience >= 0.5 ? "elevated" : "baseline";
+
+  const activeTierCount = allMatches.length;
+  const lastEventYear = allMatches.reduce<number | null>((best, m) => {
+    if (m.last_event_year == null) return best;
+    if (best == null) return m.last_event_year;
+    return m.last_event_year > best ? m.last_event_year : best;
+  }, null);
+
+  // Build tier-breakdown bar data
+  const tierBarData = tierBreakdown
+    .filter((t) => t.match != null)
+    .map((t) => ({
+      tier: t.tier,
+      label: TIER_LABELS[t.tier],
+      count: t.match!.recipe_count,
+      salience: t.match!.salience_score ?? t.match!.z_score,
+      color: TIER_COLORS[t.tier],
+    }));
+  const maxTierCount = Math.max(...tierBarData.map((t) => t.count), 1);
+
+  return (
+    <div
+      className="min-h-screen p-6 lg:p-10"
+      style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <div className="max-w-7xl mx-auto space-y-8">
+        {/* ---- Breadcrumb ---- */}
+        <div
+          className="text-[11px] tracking-wider"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          <Link
+            href="/countries-v1"
+            className="transition-colors hover:text-[var(--qgi-accent)]"
+          >
+            Countries
+          </Link>
+          {" / "}
+          <Link
+            href={`/countries-v1/${countryId}`}
+            className="transition-colors hover:text-[var(--qgi-accent)]"
+          >
+            {country.name}
+          </Link>
+          {" / "}
+          {l1Group && (
+            <>
+              <span>{l1Group.label}</span>
+              {" / "}
+            </>
+          )}
+          <span style={{ color: "var(--qgi-text-muted)" }}>{catLabel}</span>
+        </div>
+
+        {/* ============================================================ */}
+        {/*  HERO HEADER                                                 */}
+        {/* ============================================================ */}
+        <section
+          className="rounded-xl p-6 lg:p-8"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+          }}
+        >
+          <div className="flex flex-wrap items-start justify-between gap-6">
+            {/* Left: identity */}
+            <div className="flex items-center gap-4">
+              <CountryFlag alpha2={country.alpha_2} size={40} />
+              <div>
+                <div
+                  className="text-[10px] tracking-widest uppercase mb-1"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  {l1Eyebrow}
+                </div>
+                <h1 className="text-2xl font-semibold tracking-wide">
+                  {country.name.toUpperCase()}
+                </h1>
+                <div className="text-sm mt-1" style={{ color: "var(--qgi-text-muted)" }}>
+                  {catLabel}
+                </div>
+              </div>
+            </div>
+
+            {/* Right: tier badge + salience score */}
+            <div className="flex items-center gap-6">
+              <span
+                className="px-3 py-1.5 rounded text-[11px] tracking-widest font-semibold"
+                style={{
+                  backgroundColor: tierStyle.bg,
+                  color: tierStyle.text,
+                  border: `1px solid ${tierStyle.border}`,
+                }}
+              >
+                {country.overall_risk_tier}
+              </span>
+              <div className="text-right">
+                <div
+                  className="font-data text-3xl font-bold"
+                  style={{ color: salienceColor }}
+                >
+                  {maxSalience.toFixed(2)}
+                </div>
+                <div
+                  className="text-[10px] tracking-wider"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  SALIENCE
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ---- Narrative lede ---- */}
+          <div
+            className="mt-6 p-5 rounded-lg text-sm leading-relaxed"
+            style={{
+              backgroundColor: "var(--qgi-surface-2)",
+              borderLeft: "3px solid var(--qgi-accent)",
+              color: "var(--qgi-text)",
+            }}
+          >
+            {generateNarrativeLede(
+              country,
+              category,
+              catLabel,
+              totalRecipes,
+              activeTierCount,
+              maxSalience,
+              salienceColor,
+              signalLabel,
+              lastEventYear
+            )}
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/*  KEY METRICS ROW                                              */}
+        {/* ============================================================ */}
+        <section className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <MetricCard
+            label="Precedent Windows"
+            value={totalRecipes.toLocaleString()}
+            tooltip="Total number of historical analogue patterns linking this country to others in this category."
+          />
+          <MetricCard
+            label="Peak Salience"
+            value={maxSalience.toFixed(2)}
+            color={salienceColor}
+            tooltip="Maximum salience score across all pattern tiers. Scores above 1.2 are considered high-signal."
+          />
+          <MetricCard
+            label="Active Tiers"
+            value={`${activeTierCount} / 4`}
+            tooltip="Number of pattern-length tiers (S/M/L/XL) with at least one active precedent window."
+          />
+          <MetricCard
+            label="Last Event Year"
+            value={lastEventYear?.toString() ?? "\u2014"}
+            tooltip="Most recent curated event year among the top analogues for this category."
+          />
+        </section>
+
+        {/* ============================================================ */}
+        {/*  MULTI-ROW ANALOGUE TIMELINE (ticket #293)                    */}
+        {/* ============================================================ */}
+        {enrichedSubject && enrichedAnalogues.length > 0 && (
+          <section>
+            <AnalogueMultiTimeline
+              subject={enrichedSubject}
+              analogues={enrichedAnalogues}
+              category={category}
+              categoryLabel={catLabel}
+              canonicalLength={canonicalLength}
+              originalCount={enrichmentOriginalCount}
+              droppedCount={enrichmentDroppedCount}
+            />
+          </section>
+        )}
+
+        {/* ============================================================ */}
+        {/*  TOP 5 HISTORICAL ANALOGUES                                   */}
+        {/*                                                               */}
+        {/*  2026-04-19 (follow-up to #354v3):                           */}
+        {/*  Cards now read from `enrichedAnalogues` instead of the      */}
+        {/*  legacy `analogues` prop. Without this, the card count       */}
+        {/*  (legacy: all 5) could diverge from the timeline row count   */}
+        {/*  (enriched: subset), producing a visibly inconsistent panel  */}
+        {/*  (Bahrain/political_repression showed 5 cards but 3 timeline */}
+        {/*  rows). Using the same source for both guarantees the counts */}
+        {/*  match AND lets us use pair_* data for "View pattern" links. */}
+        {/*                                                               */}
+        {/*  View pattern link priority:                                  */}
+        {/*    1. pair_start_a / pair_start_b / pair_length               */}
+        {/*       (length-L, event-end-aligned window)                    */}
+        {/*    2. best_pattern_start_a / best_pattern_start_b /           */}
+        {/*       best_pattern_length (legacy per-pair best-PPS)          */}
+        {/*    3. disabled — no pattern window data available, so        */}
+        {/*       clicking through would hit "Pattern detail             */}
+        {/*       unavailable". Better to show disabled than lie.        */}
+        {/* ============================================================ */}
+        {enrichedAnalogues.length > 0 && (
+          <section
+            className="rounded-xl p-6"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+            }}
+          >
+            <div className="flex items-baseline justify-between mb-4">
+              <h2
+                className="text-[11px] tracking-widest uppercase font-semibold"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                TOP {enrichedAnalogues.length} HISTORICAL ANALOGUES
+                <InfoTooltip text="Countries whose economic trajectories most closely preceded this same event category. Higher precedent count = stronger historical signal." />
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              {enrichedAnalogues.map((a, i) => {
+                // View pattern — always routes to the country-pair
+                // browse view (no specific window in the URL). The
+                // Patterns page loads the full list of patterns between
+                // the two countries from /api/patterns/windows; user
+                // picks from there.
+                //
+                // Earlier attempt passed `length` + `start_a` +
+                // `start_b` derived from pair_* or best_pattern_*. That
+                // sent users straight to /api/patterns/detail, which is
+                // a live-fetched endpoint that 500s on cache miss and
+                // rendered as "Pattern detail unavailable" — a
+                // confidence-destroying UX for any analogue whose
+                // specific window hadn't been pre-computed. Routing to
+                // the list view instead gives users something real to
+                // interact with on every click (even if the individual
+                // detail is still being pre-computed).
+                // #440: same Route cast pattern as patterns/ranking — typed
+                // routes can't pre-validate runtime query strings, but the
+                // path part (`/patterns-v1`) still gets a compile-time check.
+                //
+                // #457 item 6: deep-link to the specific Pattern instance
+                // when length + start years are known on this analogue
+                // row. PatternsClient (lines 444-451 of PatternsClient.tsx)
+                // reads `length`, `start_a`, `start_b` from the URL and
+                // initializes its detail-mode state. Was deferred earlier
+                // due to /api/patterns/detail cache-miss 500s; #425 fixed
+                // those. Falls back to the list view when pair_* fields
+                // are absent (legacy data without the v2 enrichment).
+                const patternLength = a.pair_length ?? a.best_pattern_length;
+                const patternStartA = a.pair_start_a ?? a.best_pattern_start_a;
+                const patternStartB = a.pair_start_b ?? a.best_pattern_start_b;
+                const baseHref = `/patterns?country_a=${encodeURIComponent(countryId)}&country_b=${encodeURIComponent(String(a.country_b_id))}`;
+                const patternHref = (
+                  patternLength != null && patternStartA != null && patternStartB != null
+                    ? `${baseHref}&length=${patternLength}&start_a=${patternStartA}&start_b=${patternStartB}`
+                    : baseHref
+                ) as Route;
+
+                return (
+                  <div
+                    key={a.country_b_id}
+                    className="rounded-xl p-4 flex flex-col gap-3 transition-colors hover:border-[var(--qgi-accent)]"
+                    style={{
+                      backgroundColor: "var(--qgi-surface)",
+                      border: `1px solid ${i === 0 ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
+                    }}
+                  >
+                    {/* Country identity */}
+                    <div className="flex items-center gap-2">
+                      <CountryFlag alpha2={a.alpha2} size={20} />
+                      <div>
+                        <div className="text-xs font-semibold">{a.country_b_name}</div>
+                        <div
+                          className="text-[10px] font-data"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {a.recipe_count.toLocaleString()} precedents
+                        </div>
+                        {/* #461 (D7 plumbing): the analogue's underlying
+                            Pattern was built on at least one indicator-year
+                            that came from the indicator completer (forecast),
+                            not raw observations. Surface so users can
+                            interpret the analogue accordingly. */}
+                        {a.contains_predicted && (
+                          <div
+                            className="mt-0.5 inline-block rounded-sm px-1.5 py-0.5 text-[8.5px] font-data tracking-wider uppercase"
+                            style={{
+                              backgroundColor: "rgba(167, 139, 250, 0.12)",
+                              color: "#a78bfa",
+                              border: "1px solid rgba(167, 139, 250, 0.35)",
+                            }}
+                            title="At least one indicator-year underlying this analogue was a forecast (from the indicator completer), not a raw observation. Interpret with that caveat."
+                          >
+                            Includes forecast
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Correlation bar — T5 #298: render signed correlation
+                        with red for negative, cyan for positive. */}
+                    <div
+                      className="h-6 rounded flex items-center px-2"
+                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                    >
+                      <div
+                        className="h-3 rounded"
+                        style={{
+                          width: `${Math.min(100, Math.abs(a.mean_corr) * 100)}%`,
+                          backgroundColor:
+                            a.mean_corr >= 0 ? "var(--qgi-accent)" : "#f87171",
+                          opacity: 0.6,
+                        }}
+                        title={`Mean correlation: ${a.mean_corr.toFixed(3)}${
+                          a.mean_corr < 0 ? " (inverse)" : ""
+                        }`}
+                      />
+                    </div>
+
+                    {/* Stats */}
+                    <div
+                      className="space-y-1 text-[11px] font-data"
+                      style={{ color: "var(--qgi-text-muted)" }}
+                    >
+                      <div className="flex justify-between">
+                        <span>Match</span>
+                        <span
+                          className="font-semibold"
+                          style={{ color: "var(--qgi-text)" }}
+                        >
+                          {a.best_pps.toFixed(2)}
+                        </span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Corr</span>
+                        <span>{(a.mean_corr * 100).toFixed(0)}%</span>
+                      </div>
+                      {a.avg_lead_years != null && (
+                        <div className="flex justify-between">
+                          <span>Lead</span>
+                          <span>{a.avg_lead_years.toFixed(1)}yr</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Action links — two CTAs side-by-side separated by cyan pipe (#351) */}
+                    <div
+                      className="pt-2 mt-auto border-t flex items-center justify-center gap-2"
+                      style={{ borderColor: "var(--qgi-border)" }}
+                    >
+                      <Link
+                        href={`/countries-v1/${a.country_b_id}`}
+                        className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                        style={{
+                          color: "var(--qgi-accent)",
+                          outlineColor: "var(--qgi-accent)",
+                        }}
+                        aria-label={`View ${a.country_b_name}'s country profile`}
+                      >
+                        View country
+                      </Link>
+                      <span
+                        aria-hidden="true"
+                        className="text-[12px] leading-none select-none"
+                        style={{ color: "var(--qgi-accent)" }}
+                      >
+                        |
+                      </span>
+                      <Link
+                        href={patternHref}
+                        className="text-[10px] tracking-widest hover:brightness-125 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 rounded"
+                        style={{
+                          color: "var(--qgi-accent)",
+                          outlineColor: "var(--qgi-accent)",
+                        }}
+                        aria-label={`View patterns between ${country.name} and ${a.country_b_name}`}
+                      >
+                        View pattern
+                      </Link>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* ============================================================ */}
+        {/*  TIER BREAKDOWN BARS                                          */}
+        {/* ============================================================ */}
+        <section
+          className="rounded-xl p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+          }}
+        >
+          <h2
+            className="text-[11px] tracking-widest uppercase font-semibold mb-5"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            PATTERN LENGTH DISTRIBUTION
+            <InfoTooltip text="Distribution of pattern lengths (in years) across all precedent windows for this country/category. Short patterns (3-8yr) detect policy cycles; long patterns (21+yr) detect structural trajectories. A wide spread means the signal is robust across time horizons." />
+          </h2>
+
+          <div className="space-y-3">
+            {PATTERN_TIERS.map((tier) => {
+              const bar = tierBarData.find((b) => b.tier === tier);
+              const color = TIER_COLORS[tier];
+              const label = TIER_LABELS[tier];
+
+              if (!bar) {
+                return (
+                  <div key={tier} className="flex items-center gap-4">
+                    <span
+                      className="w-6 text-center font-data text-xs font-bold"
+                      style={{ color }}
+                    >
+                      {tier}
+                    </span>
+                    <span
+                      className="w-32 text-[10px] tracking-wider flex items-center gap-1"
+                      style={{ color: "var(--qgi-text-dim)" }}
+                    >
+                      {label}
+                      <InfoTooltip text={TIER_TOOLTIPS[tier]} />
+                    </span>
+                    <div
+                      className="flex-1 h-5 rounded"
+                      style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                    />
+                    <span
+                      className="font-data text-xs w-16 text-right"
+                      style={{ color: "var(--qgi-text-dim)" }}
+                    >
+                      --
+                    </span>
+                    <span
+                      className="font-data text-xs w-14 text-right"
+                      style={{ color: "var(--qgi-text-dim)" }}
+                    >
+                      --
+                    </span>
+                  </div>
+                );
+              }
+
+              return (
+                <div key={tier} className="flex items-center gap-4">
+                  <span
+                    className="w-6 text-center font-data text-xs font-bold"
+                    style={{ color: bar.color }}
+                  >
+                    {bar.tier}
+                  </span>
+                  <span
+                    className="w-32 text-[10px] tracking-wider"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    {bar.label}
+                  </span>
+                  <div
+                    className="flex-1 h-5 rounded relative"
+                    style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                  >
+                    <div
+                      className="h-full rounded"
+                      style={{
+                        width: `${(bar.count / maxTierCount) * 100}%`,
+                        backgroundColor: bar.color,
+                        opacity: 0.7,
+                      }}
+                    />
+                  </div>
+                  <span
+                    className="font-data text-xs w-16 text-right"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {bar.count.toLocaleString()} prec.
+                  </span>
+                  <span
+                    className="font-data text-xs w-14 text-right"
+                    style={{ color: bar.color }}
+                  >
+                    {bar.salience.toFixed(2)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/*  METHODOLOGY FOOTER                                           */}
+        {/* ============================================================ */}
+        <footer
+          className="rounded-lg p-4 text-[10px] tracking-wider leading-relaxed"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            color: "var(--qgi-text-dim)",
+            border: "1px solid var(--qgi-border)",
+          }}
+        >
+          {version} z-score + RRF &middot; Pattern correlation Pearson r &ge; 0.65
+          &middot; &plusmn;15% event window &middot; Salience &gt; 1.2 considered
+          &ldquo;high-signal&rdquo; &middot; Event source: qgi-data/curated
+          {generatedAt && <> &middot; Last updated {generatedAt.slice(0, 10)}</>}
+        </footer>
+
+        {/* ---- Evidence links ---- */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <Link
+            href={`/signals-v1/country?country=${encodeURIComponent(country.name)}`}
+            className="block rounded-lg p-4 text-center transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-xs tracking-wider uppercase mb-1"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              View Full Precedent Evidence
+            </div>
+            <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+              All active signals for {country.name} with indicator details
+            </div>
+          </Link>
+          <Link
+            href={`/countries-v1/${countryId}`}
+            className="block rounded-lg p-4 text-center transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-xs tracking-wider uppercase mb-1"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Back to {country.name} Profile
+            </div>
+            <div className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+              See all risk categories for this country
+            </div>
+          </Link>
+        </div>
+
+        {/* ---- Honest framing ---- */}
+        <p
+          className="text-[10px] leading-relaxed text-center"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          QGI surfaces economically-grounded risk candidates that analysts should examine.
+          Risk tiers reflect historical precedent density, not probability forecasts.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Sub-components                                                     */
+/* ------------------------------------------------------------------ */
+
+/* ---- Metric Card (V2 style: left-aligned, large value) ---------- */
+
+function MetricCard({
+  label,
+  value,
+  color,
+  tooltip,
+}: {
+  label: string;
+  value: string;
+  color?: string;
+  tooltip: string;
+}) {
+  return (
+    <div
+      className="rounded-lg p-4"
+      style={{
+        backgroundColor: "var(--qgi-surface)",
+        border: "1px solid var(--qgi-border)",
+      }}
+    >
+      <div className="flex items-center gap-1 mb-2">
+        <span
+          className="text-[10px] tracking-widest uppercase"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          {label}
+        </span>
+        <InfoTooltip text={tooltip} />
+      </div>
+      <div
+        className="font-data text-2xl font-bold"
+        style={{ color: color ?? "var(--qgi-text)" }}
+      >
+        {value}
+      </div>
+    </div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Helpers                                                            */
+/* ------------------------------------------------------------------ */
+
+function generateNarrativeLede(
+  country: CountryRisk,
+  category: string,
+  catLabel: string,
+  totalRecipes: number,
+  activeTierCount: number,
+  maxSalience: number,
+  salienceColor: string,
+  signalLabel: string,
+  lastEventYear: number | null
+): React.ReactElement {
+  const intensity =
+    maxSalience >= 1.5
+      ? "strong"
+      : maxSalience >= 1.0
+        ? "elevated"
+        : maxSalience >= 0.5
+          ? "moderate"
+          : "weak";
+
+  const tierDesc =
+    activeTierCount === 4
+      ? "across all four pattern length tiers"
+      : activeTierCount === 1
+        ? "in one pattern length tier"
+        : `across ${activeTierCount} pattern length tiers`;
+
+  return (
+    <>
+      {country.name}&apos;s indicators show {intensity} {catLabel.toLowerCase()} signals
+      with {totalRecipes.toLocaleString()} historical precedent windows {tierDesc}.
+      {lastEventYear && (
+        <>
+          {" "}
+          The most recent matching event in the curated database was in {lastEventYear}.
+        </>
+      )}{" "}
+      QGI flags this as a <strong style={{ color: salienceColor }}>{signalLabel}</strong>{" "}
+      signal.
+    </>
+  );
+}
+
+function formatCategory(cat: string): string {
+  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}

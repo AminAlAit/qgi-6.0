@@ -233,7 +233,7 @@ type NavEntry = NavGroup | NavStandalone;
  * anymore. They remain LIVE in the routing tree — reachable by typing the
  * URL — but are no longer surfaced in nav. PR-iii will rename:
  *   /countries (V1)         → /countries-v1
- *   /countries-merged (V3)  → /countries
+ *   /countries (V3)  → /countries
  *   (same shape for Precedents / Signals / Patterns)
  * and at that moment the hrefs below flip to the unsuffixed canonical.
  */
@@ -248,28 +248,28 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
     label: "Precedents",
-    href: "/precedents-merged" as Route,
+    href: "/precedents" as Route,
     icon: <IconHistory />,
     badge: "LIVE",
   },
   {
     type: "standalone",
     label: "Countries",
-    href: "/countries-merged" as Route,
+    href: "/countries" as Route,
     icon: <IconGlobe />,
     badge: "LIVE",
   },
   {
     type: "standalone",
     label: "Signals",
-    href: "/signals-merged" as Route,
+    href: "/signals" as Route,
     icon: <IconSignal />,
     badge: "LIVE",
   },
   {
     type: "standalone",
     label: "Patterns",
-    href: "/patterns-merged" as Route,
+    href: "/patterns" as Route,
     icon: <IconNetwork />,
     badge: "LIVE",
   },
@@ -277,7 +277,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
 
 /** Flatten the structure to the leaf-route list — used by the
  *  longest-prefix-wins active-state algorithm so a deep pathname like
- *  /precedents-merged/civil_war_and_insurgency highlights the right item. */
+ *  /precedents/civil_war_and_insurgency highlights the right item. */
 function collectNavItems(): NavItem[] {
   const all: NavItem[] = [];
   for (const entry of NAV_STRUCTURE) {

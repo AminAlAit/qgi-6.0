@@ -24,9 +24,19 @@ const STATIC_ROUTES: Array<{
   priority: number;
 }> = [
   { path: "/", changeFrequency: "weekly", priority: 1.0 },
+  // V3 canonical family pages — public-facing landing surfaces.
+  // PR-iii (2026-05-15): these URLs now serve the V3 (formerly -merged)
+  // shells. Legacy V1 lives at `-v1` and is `Disallow`'d in robots.ts.
+  //
+  // NOTE: /dashboard intentionally NOT listed — current dashboard still
+  // carries `robots: { index: false }` (transitional state until PR-vi
+  // redesigns it as QGI's landing page). When PR-vi flips it to
+  // indexable, add `{ path: "/dashboard", changeFrequency: "weekly", priority: 0.95 }`.
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
   { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
-  { path: "/patterns/ranking", changeFrequency: "weekly", priority: 0.8 },
+  // /patterns/ranking REMOVED — V1-only route, now 308 → /patterns-v1/ranking
+  // which is Disallow'd. V3 sorts via /patterns?sort= query params (URL
+  // query state, not a static route).
   { path: "/signals", changeFrequency: "weekly", priority: 0.8 },
   { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
