@@ -187,6 +187,13 @@ DEFAULT_SCORING_CONFIG = {
         "min_severity_for_at_least_one": 0.8,
     },
     "default_severity": 0.3,
+    # #201 refinements (2026-05-15) — see qgi-data/scoring/V1.9.1.json.
+    # Refinement 1 (raise HIGH to 1.5) was SUPERSEDED by V1.9.1's
+    # severity-stratified thresholds above. Refinement 2 (min recipe count
+    # gate) + Refinement 3 (per-category cap) close the gap.
+    "min_recipe_count": 5,
+    "category_salience_cap_percentile": 0.95,
+    "category_salience_cap_min_observations": 20,
 }
 
 
@@ -217,6 +224,75 @@ def load_scoring_config(path=None):
         except (FileNotFoundError, OSError):
             continue
     return DEFAULT_SCORING_CONFIG
+
+
+def compute_per_category_caps(countries_data, percentile=0.95, min_observations=20):
+    """#201 Refinement 3: per-category salience cap from p95 of observed scores.
+
+    For each L3 event_category, compute the Nth percentile salience_score
+    across all (country, tier) observations. Categories with fewer than
+    `min_observations` non-null entries are LEFT UNCAPPED — small-sample p95
+    is dominated by the single outlier we'd want to clip, which is
+    counterproductive.
+
+    The cap dampens runaway categories (the original motivation in #201:
+    "Prevents civil_war_and_insurgency from monopolizing the top-N across
+    all countries"). It does NOT alter the underlying z-scores, only the
+    salience contribution passed downstream to risk_tier_label and the
+    display ranking.
+
+    Args:
+        countries_data: {cid: {tier_name: [{'category', 'salience_score',
+                        ...}, ...], ...}, ...} from the tier loop.
+        percentile: 0.95 by default (95th percentile).
+        min_observations: minimum non-null salience values required before a
+                        cap is computed. Default 20.
+
+    Returns:
+        dict {category: cap_value_or_None}. Categories with insufficient
+        data map to None (uncapped).
+    """
+    cat_saliences = {}
+    for cid, tiers in countries_data.items():
+        for tier_name, cats in tiers.items():
+            for c in cats:
+                cat = c.get('category')
+                if cat is None:
+                    continue
+                cat_saliences.setdefault(cat, []).append(c['salience_score'])
+
+    caps = {}
+    for cat, scores in cat_saliences.items():
+        if len(scores) < min_observations:
+            caps[cat] = None
+            continue
+        scores_sorted = sorted(scores)
+        # Linear-interpolation-free percentile (good enough for clipping).
+        idx = int(round(percentile * (len(scores_sorted) - 1)))
+        caps[cat] = scores_sorted[idx]
+    return caps
+
+
+def apply_per_category_caps(countries_data, caps):
+    """Clip each (country, tier, category) salience_score at its category cap.
+
+    In-place mutation of countries_data. None caps are no-ops.
+
+    Returns:
+        int: total number of salience_score values that were clipped.
+    """
+    clipped = 0
+    for cid, tiers in countries_data.items():
+        for tier_name, cats in tiers.items():
+            for c in cats:
+                cat = c.get('category')
+                cap = caps.get(cat)
+                if cap is None:
+                    continue
+                if c['salience_score'] > cap:
+                    c['salience_score'] = round(cap, 4)
+                    clipped += 1
+    return clipped
 
 
 def risk_tier_label(category_scores, config=None):
@@ -432,6 +508,32 @@ def main():
     }
 
     scoring_config = load_scoring_config()
+
+    # #201 Refinement 3: per-category salience cap (p95 across countries).
+    # Applied BEFORE the country loop so the capped salience_scores feed
+    # both the top_categories display and the risk_tier_label tier promotion.
+    cap_pct = scoring_config.get('category_salience_cap_percentile', 0.95)
+    cap_min_obs = scoring_config.get('category_salience_cap_min_observations', 20)
+    if cap_pct and cap_pct < 1.0:
+        caps = compute_per_category_caps(
+            countries_data,
+            percentile=cap_pct,
+            min_observations=cap_min_obs,
+        )
+        clipped = apply_per_category_caps(countries_data, caps)
+        capped_cats = [c for c, v in caps.items() if v is not None]
+        print(
+            f"\nPer-category cap (#201 R3): clipped {clipped} salience values "
+            f"across {len(capped_cats)} categories at p{int(cap_pct * 100)} "
+            f"({len(caps) - len(capped_cats)} categories left uncapped due to <{cap_min_obs} obs)"
+        )
+
+    # #201 Refinement 2: minimum recipe count gate for cross_tier_categories.
+    # Thin categories (recipe_count < min_recipe_count) don't promote a
+    # country to HIGH/MODERATE via the risk_tier_label decision, but they
+    # still appear in the display top_categories so users see the raw data.
+    min_recipe_count = scoring_config.get('min_recipe_count', 5)
+
     for cid, tiers in countries_data.items():
         # Sort each tier's categories by RRF score descending, keep top 10
         country_entry = {
@@ -446,6 +548,12 @@ def main():
         # risk_tier_label so Layer 3 composite promotion can see all
         # categories, not just the top-1. Top-5 per tier mirrors the prior
         # scan; flat list is re-sorted desc for stable behavior.
+        #
+        # #201 Refinement 2 (2026-05-15): skip categories with recipe_count
+        # below min_recipe_count from cross_tier_categories. Thin categories
+        # still appear in the display top_categories — only the risk-tier
+        # promotion decision filters them out. Prevents a 2-recipe outlier
+        # in demographic_pressure from pushing a country to HIGH.
         cross_tier_categories = []
         for tier_name in TIERS:
             cats = tiers.get(tier_name, [])
@@ -455,6 +563,8 @@ def main():
                 'top_categories': cats[:10],
             }
             for c in cats[:5]:
+                if c.get('recipe_count', 0) < min_recipe_count:
+                    continue
                 cross_tier_categories.append({
                     'salience_score': c['salience_score'],
                     'severity_tier': c['severity_tier'],
