@@ -26,7 +26,9 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Countries — QGI Intelligence",
   description:
-    "Preview of the merged Countries shell — 156-country risk browser with Lloyd's-style methodology disclosure + Ingrid voice copy. Cutover from V1 + 2 V2 routes pending founder sign-off.",
+    "Browse 156 countries ranked by structural risk across 71 event categories, with Lloyd's-style methodology disclosure.",
+  // #699: explicit canonical (was inheriting "/" from root layout).
+  alternates: { canonical: "/countries" },
 };
 
 export const revalidate = 3600;

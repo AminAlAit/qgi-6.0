@@ -67,6 +67,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${c.name} · Tier ${c.overall_risk_tier} — QGI Intelligence`,
     description: `Country risk profile for ${c.name}: Tier ${c.overall_risk_tier} (${c.curated ? "curated" : "uncurated"} event history). Country profile.`,
+    // #699: explicit canonical so the V3 detail isn't a "duplicate of /"
+    alternates: { canonical: `/countries/${iso}` },
   };
 }
 

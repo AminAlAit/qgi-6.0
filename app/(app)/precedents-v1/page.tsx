@@ -19,7 +19,15 @@ export const metadata: Metadata = {
   title: "Precedents — QGI Intelligence",
   description:
     "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
-  alternates: { canonical: "https://qgintelligence.com/precedents-v1" },
+  // #699 (2026-05-15): pre-fix, this V1 page declared canonical pointing
+  // at itself while robots.ts Disallow'd the V1 prefix — contradictory
+  // (Google keeps the URL as canonical but refuses to crawl, hurting V3
+  // indexing). Post-fix: canonical points to the V3 counterpart so any
+  // crawl that reaches V1 (direct URL only — V1 not in sidebar) attributes
+  // the content to /precedents.
+  alternates: { canonical: "/precedents" },
+  // Explicit noindex on top of robots.ts Disallow (defense in depth).
+  robots: { index: false, follow: false },
   openGraph: {
     title: "Precedents — QGI Intelligence",
     description:

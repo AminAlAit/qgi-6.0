@@ -25,14 +25,18 @@ const geistMono = Geist_Mono({
  *   routes override with more specific art when available.
  * - `robots` default-allowed. Per-route opt-outs happen in their own
  *   metadata.
- * - `alternates.canonical` prevents duplicate-content dilution between
- *   qgintelligence.com and qgi-frontend.vercel.app.
+ * - **NO `alternates.canonical` at root** — #699 regression fix (2026-05-15):
+ *   the root canonical inherited to every child page that didn't explicitly
+ *   override, so V3 routes (`/precedents`, `/countries`, etc.) all told
+ *   Google "I am a duplicate of https://qgintelligence.com" — the exact
+ *   bug PR-iii's V3 cutover was supposed to fix. Each route now declares
+ *   its own canonical in its own metadata; the home page (`app/page.tsx`)
+ *   declares `canonical: "/"` explicitly.
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://qgintelligence.com"),
   title: "QGI — Quantitative Geopolitical Intelligence",
   description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
-  alternates: { canonical: "https://qgintelligence.com" },
   openGraph: {
     title: "QGI — Quantitative Geopolitical Intelligence",
     description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
