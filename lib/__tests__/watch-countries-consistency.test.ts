@@ -98,7 +98,7 @@ describe("WATCH_COUNTRIES — editorial band consistency with canonical bake (#7
     // until a tier-history field ships.
     const tierHistoryPhrases = [
       /\bmoved from \w+ to \w+/i,
-      /(HIGH|MODERATE|INDICATIVE)\s*[→→]\s*(HIGH|MODERATE|INDICATIVE)/,
+      /(HIGH|MODERATE|INDICATIVE)\s*→\s*(HIGH|MODERATE|INDICATIVE)/,
       /\bshifted (?:up|down) to\b/i,
       /\bjumped from\b/i,
       /\bescalated from\b/i,
