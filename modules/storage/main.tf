@@ -17,7 +17,19 @@ resource "aws_s3_bucket" "data_lake" {
 resource "aws_s3_bucket_versioning" "data_lake" {
   bucket = aws_s3_bucket.data_lake.id
   versioning_configuration {
-    status = "Disabled"
+    # #620 (2026-05-15): Enabled before Stage F authorizes a Batch role
+    # with s3:DeleteObject on this bucket. Without versioning, a single
+    # bug in a delete-eligible job is unrecoverable from S3 alone
+    # (rebuild from upstream APIs is feasible but slow and exhausts
+    # provider quota). With versioning, a `DELETE` only marks the object
+    # version as deleted — the prior version remains restorable until
+    # the noncurrent-expiry lifecycle rule (90 days) ages it out.
+    #
+    # Caveat: enabling on a bucket with existing objects means those
+    # objects' version-id is "null" forever. New writes get real version
+    # IDs from this point onward. This is acceptable — we're protecting
+    # against future bug-induced deletes, not historical data loss.
+    status = "Enabled"
   }
 }
 
@@ -150,6 +162,22 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   # Adding a lifecycle rule here would silently violate that policy. If the
   # retention mandate is ever reversed, expire-scdi-raw can land in a
   # follow-up PR with the founder override documented in this comment.
+
+  # #620 (2026-05-15): Noncurrent version expiry — pairs with versioning
+  # being Enabled above. Without this rule, every DELETE accumulates a
+  # noncurrent version forever (storage cost would balloon). 90 days is
+  # a generous recovery window: long enough that an accidental delete
+  # discovered weeks later is still restorable; short enough that
+  # storage cost stays bounded. Bucket-wide filter ({}) so the rule
+  # applies regardless of prefix.
+  rule {
+    id     = "expire-noncurrent-versions"
+    status = "Enabled"
+    filter {}
+    noncurrent_version_expiration {
+      noncurrent_days = 90
+    }
+  }
 }
 
 # #597 + #627 (Sonnet audit 2026-05-07): S3 server access logging.
