@@ -105,7 +105,7 @@ export function SignalAnaloguesTable({ analogues, subjectCountryName }: Props) {
             >
               {[
                 "Precedent Country",
-                "PPS",
+                "Score",
                 "Corr",
                 "Lead Yrs",
                 "Pattern",
