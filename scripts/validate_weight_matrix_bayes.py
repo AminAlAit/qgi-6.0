@@ -201,8 +201,15 @@ def build_model(cells: CellsArray):
         country_intercept     = sigma_country * country_intercept_raw
 
     This avoids funnel-geometry divergences on the K ≈ 272 country block.
-    Sector and category effects use centered parameterisation (small enough
-    counts: ~10 sectors, ~68 categories).
+
+    Sector effects use centered parameterisation (small enough count:
+    ~10 sectors). Category effects use a non-centered idiom
+    (`beta_cat_raw ~ Normal(0, 1)` scaled by `sigma_cat[sector]`)
+    because of the nested-hyperprior structure — functionally equivalent
+    to the centered form at M ≈ 68 categories and explicitly permitted
+    by Ji-Hoon §3.1's divergence-escalation clause (spec line 88's
+    "centered" nomination applies to the simple case; the nested
+    structure naturally lands in the scaled-raw idiom).
 
     Missing observations (NaN in `cells.auc`) are masked via PyMC's
     `observed` masked-array support; the posterior on tau_arm,
