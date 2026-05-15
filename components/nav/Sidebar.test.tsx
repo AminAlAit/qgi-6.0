@@ -16,37 +16,47 @@ describe("Sidebar", () => {
     expect(screen.getByText("Intelligence")).toBeInTheDocument();
   });
 
-  it("renders all family group headers", () => {
+  it("renders the 5 flat top-level entries (Dashboard + 4 families)", () => {
     render(<Sidebar />);
-    // 2026-05-13 (A3 Family 1 PR #4): nav refactored from flat 15-item list
-    // into family-grouped sections. The flat-list `RANKING` label is gone
-    // — it's now an item ("Power ranking") inside the Patterns group.
-    // Dashboard is the only standalone top-level entry.
+    // 2026-05-15 PR-i flat restructure: sidebar is now 5 standalone entries,
+    // no group headers, no V1/V2 sub-entries. The 4 family routes point at
+    // the (still `-merged`-named) canonical V3 shells; PR-iii will rename
+    // those URLs to unsuffixed canonical and flip V1 to `-v1`.
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
-    expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Precedents")).toBeInTheDocument();
+    expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Signals")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
   });
 
-  it("renders Merged preview entries across families", () => {
+  it("does NOT render any legacy V1 / V2 sub-entries", () => {
     render(<Sidebar />);
-    // A3 merger previews surface in their family groups so the founder can
-    // compare V1 / V2 / Merged side-by-side before PR #5 cutover. Family 1
-    // (Precedents) shipped its merged-preview entry in PR #4; Family 2
-    // (Countries) added one in its PR #1. Each subsequent family adds its
-    // own — getAllByText keeps the assertion future-proof as the count
-    // grows (4 total once all families' PR #1 lands).
-    expect(screen.getAllByText("Merged preview").length).toBeGreaterThanOrEqual(1);
+    // These were the V1 + V2 family sub-entries removed in PR-i. The routes
+    // remain reachable by direct URL but are no longer in nav.
+    const removed = [
+      "Country browser",
+      "Recipe catalogue",
+      "Active signals",
+      "Pattern atlas",
+      "Power ranking",
+      "V2 — Table",
+      "V2 — Narrative",
+      "V2 — Tufte",
+      "V2 — Lloyd's",
+      "Discover — Tabs",
+      "Discover — Facets",
+      "Merged preview",
+    ];
+    for (const label of removed) {
+      expect(screen.queryByText(label)).not.toBeInTheDocument();
+    }
   });
 
-  it("tags V1 routes LIVE and V2 + Merged routes PREVIEW via NavChip", () => {
+  it("renders only LIVE chips (no PREVIEW labels after flat restructure)", () => {
     render(<Sidebar />);
-    // PR #4 introduces trial-period chip badges. Multiple LIVE + PREVIEW
-    // chips appear across the family groups — getAllByText asserts both
-    // states are surfaced without binding to specific counts (which evolve
-    // as families merge).
-    expect(screen.getAllByText("LIVE").length).toBeGreaterThan(0);
-    expect(screen.getAllByText("PREVIEW").length).toBeGreaterThan(0);
+    // All 5 entries are surfaced as LIVE in the new top-level. PREVIEW chips
+    // were attached to the V1/V2 sub-entries which no longer appear in nav.
+    expect(screen.getAllByText("LIVE").length).toBe(5);
+    expect(screen.queryByText("PREVIEW")).not.toBeInTheDocument();
   });
 });

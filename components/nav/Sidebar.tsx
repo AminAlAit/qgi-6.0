@@ -13,6 +13,12 @@ import type { Route } from "next";
 //   not a "dashboard of legacy panels." Routed at /base; /dashboard kept as a
 //   redirect for outstanding bookmarks.
 // - 2026-04-17: Unicode placeholder icons replaced with inline SVGs (#icon-redesign).
+// - 2026-05-15: Flat 5-entry restructure (PR-i of resurfacing cutover). V1 +
+//   V2 family sub-entries removed from the sidebar — the routes remain
+//   reachable by direct URL but are no longer surfaced in nav. The 4 family
+//   entries point at the (current-name) `-merged` routes; PR-iii will rename
+//   those to canonical (`/countries`, etc.) atomically with the V1→`-v1`
+//   rename, so the sidebar hrefs here will update one more time then.
 
 // ── Inline SVG icons (16×16, currentColor, no external deps) ──────────────
 
@@ -217,6 +223,20 @@ interface NavStandalone {
 
 type NavEntry = NavGroup | NavStandalone;
 
+/**
+ * PR-i of the resurfacing cutover (2026-05-15) — sidebar flattened to a
+ * 5-entry top-level list: Dashboard + 4 family canonicals.
+ *
+ * Legacy V1 (Country browser / Recipe catalogue / Active signals / Pattern
+ * atlas / Power ranking) and V2 (Table / Narrative / Tufte / Lloyd's /
+ * Discover — Tabs / Discover — Facets) routes are NOT in the sidebar
+ * anymore. They remain LIVE in the routing tree — reachable by typing the
+ * URL — but are no longer surfaced in nav. PR-iii will rename:
+ *   /countries (V1)         → /countries-v1
+ *   /countries-merged (V3)  → /countries
+ *   (same shape for Precedents / Signals / Patterns)
+ * and at that moment the hrefs below flip to the unsuffixed canonical.
+ */
 const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
@@ -226,103 +246,32 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     badge: "LIVE",
   },
   {
-    label: "Countries",
-    icon: <IconGlobe />,
-    items: [
-      { label: "Country browser", href: "/countries", badge: "LIVE" },
-      // Sard Majles S-Country (2026-05-02) sibling previews. R7: /countries
-      // above stays LIVE. Spec: qgi-docs/internal/majles/2026-05-02_S-Country_country_profile_redesign.md
-      {
-        label: "V2 — Table",
-        href: "/countries-v2-table" as Route,
-        badge: "PREVIEW",
-      },
-      {
-        label: "V2 — Narrative",
-        href: "/countries-v2-narrative" as Route,
-        badge: "PREVIEW",
-      },
-      // A3 Family 2 merger preview (Build PR #1-4). PR #5 cutover will kill
-      // V1 + V2-Table + V2-Narrative above and promote Merged → /countries
-      // canonical (PRIMARY). Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
-      {
-        label: "Merged preview",
-        href: "/countries-merged" as Route,
-        badge: "PREVIEW",
-      },
-    ],
-  },
-  {
+    type: "standalone",
     label: "Precedents",
+    href: "/precedents-merged" as Route,
     icon: <IconHistory />,
-    items: [
-      { label: "Recipe catalogue", href: "/precedents", badge: "LIVE" },
-      // Frontend resurfacing cycle 2026-05-11 (#645 + Q14:A): top-4 LOCKed
-      // ML recipes on Tufte (A) + Lloyd's (B) caveat-style siblings.
-      // Spec: qgi-docs/internal/ops/ml-track/frontend-resurfacing-plan-2026-05-11.md
-      {
-        label: "V2 — Tufte",
-        href: "/precedents-v2-a" as Route,
-        badge: "PREVIEW",
-      },
-      {
-        label: "V2 — Lloyd's",
-        href: "/precedents-v2-b" as Route,
-        badge: "PREVIEW",
-      },
-      // A3 Family 1 merger preview (PR #1-4 of the incremental build). PR #5
-      // cutover will kill V1 + V2-A + V2-B above and promote Merged → /precedents
-      // canonical (PRIMARY). Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
-      {
-        label: "Merged preview",
-        href: "/precedents-merged" as Route,
-        badge: "PREVIEW",
-      },
-    ],
+    badge: "LIVE",
   },
   {
+    type: "standalone",
+    label: "Countries",
+    href: "/countries-merged" as Route,
+    icon: <IconGlobe />,
+    badge: "LIVE",
+  },
+  {
+    type: "standalone",
     label: "Signals",
+    href: "/signals-merged" as Route,
     icon: <IconSignal />,
-    items: [
-      { label: "Active signals", href: "/signals", badge: "LIVE" },
-      // #655 country-keyed V2 signals (2026-05-12), sister to #645.
-      {
-        label: "V2 — Tufte",
-        href: "/signals-v2-a" as Route,
-        badge: "PREVIEW",
-      },
-      {
-        label: "V2 — Lloyd's",
-        href: "/signals-v2-b" as Route,
-        badge: "PREVIEW",
-      },
-    ],
+    badge: "LIVE",
   },
   {
+    type: "standalone",
     label: "Patterns",
+    href: "/patterns-merged" as Route,
     icon: <IconNetwork />,
-    items: [
-      { label: "Pattern atlas", href: "/patterns", badge: "LIVE" },
-      { label: "Power ranking", href: "/patterns/ranking", badge: "LIVE" },
-      // Sard Majles S-First (2026-05-01): tabs + facets sibling previews of
-      // the merged Discover Patterns design.
-      // Spec: qgi-docs/internal/majles/2026-05-01_S-First_patterns_ranking_merge.md
-      {
-        label: "Discover — Tabs",
-        href: "/discover-patterns-a" as Route,
-        badge: "PREVIEW",
-      },
-      {
-        label: "Discover — Facets",
-        href: "/discover-patterns-b" as Route,
-        badge: "PREVIEW",
-      },
-      {
-        label: "Merged preview",
-        href: "/patterns-merged" as Route,
-        badge: "PREVIEW",
-      },
-    ],
+    badge: "LIVE",
   },
 ];
 
@@ -562,9 +511,9 @@ function isActiveRoute(pathname: string, href: Route): boolean {
   );
 }
 
-/** Standalone top-level nav link (Dashboard). Keeps the icon-leading layout
- *  the flat nav had — visually distinct from grouped items so the eye still
- *  reads it as the page's command-center entry, not as a family member. */
+/** Top-level nav link (icon + label + badge). PR-i (2026-05-15) flat
+ *  restructure made this the renderer for all 5 sidebar entries — the
+ *  group/family distinction is gone, so every entry uses this shape. */
 function NavLeafLink({
   label,
   href,
