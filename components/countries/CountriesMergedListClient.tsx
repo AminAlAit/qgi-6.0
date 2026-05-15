@@ -934,9 +934,11 @@ function PreviewHeaderChip() {
  * driving-category z-score moved >0.5.
  */
 function WatchBand() {
-  // Render the brief's locked tier-movement badge format for entries where
-  // current_tier differs from previous_tier. Color flows from the current
-  // tier (where the country lives now), not from the previous.
+  // #716 (2026-05-16) — `previous_tier` field removed from WatchCountry
+  // type because the tier-jump claims were unverifiable (no tier-history
+  // in the bake to source them from). The brief's "tier moved from X to Y"
+  // badge format is dropped from this band until a tier-history bake ships.
+  // Each row now shows: flag · name · current tier (matches canonical JSON).
   const weekOf = "13 May 2026"; // updated weekly by editorial bake
   return (
     <section
@@ -978,7 +980,9 @@ function WatchBand() {
       <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
         {WATCH_COUNTRIES.map((c) => {
           const meta = TIER_META[c.current_tier];
-          const tierMoved = c.previous_tier && c.previous_tier !== c.current_tier;
+          // #716: tier-movement badge removed. The previous "INDICATIVE →
+          // MODERATE" arrow rendered against an unverifiable previous_tier
+          // and caused list-vs-detail-page tier contradiction (Germany).
           return (
             <li key={c.slug}>
               <Link
@@ -994,19 +998,6 @@ function WatchBand() {
                     {c.display_name}
                   </span>
                   <TierPill meta={meta} />
-                  {tierMoved && (
-                    <span
-                      className="font-data text-[9px] tracking-wider uppercase px-1.5 py-0.5 rounded"
-                      style={{
-                        color: meta.color,
-                        backgroundColor: meta.bg,
-                        border: `1px solid ${meta.border}`,
-                      }}
-                      title={`Tier moved from ${c.previous_tier} to ${c.current_tier}`}
-                    >
-                      {c.previous_tier} → {c.current_tier}
-                    </span>
-                  )}
                   <span
                     className="font-data text-[9px] tracking-wide uppercase ml-auto"
                     style={{ color: "var(--qgi-text-dim)" }}
