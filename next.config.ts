@@ -110,6 +110,74 @@ const nextConfig: NextConfig = {
         destination: "/precedents-v2b/:slug*",
         permanent: true,
       },
+
+      // ─── PR-iii (2026-05-15) — V3 -merged → canonical + V1 → -v1 ────────
+      //
+      // The atomic canonical rename. V3 now serves the unsuffixed canonical
+      // URLs; V1 lives at -v1; bookmarks at the old -merged paths 308 here.
+      //
+      // V1 sub-routes that conflict with V3 (e.g. /patterns/ranking and
+      // /signals/country which V3 does NOT serve) get explicit redirects
+      // to their -v1 archive locations so old bookmarks don't 404.
+      //
+      // V1 BASE paths (/precedents, /countries, /signals, /patterns) are
+      // NOT redirected — they're the new canonical V3 URLs now. Anyone
+      // bookmarking V1's base path lands on V3 (intentional cutover).
+      // To explicitly access V1, use the -v1 suffix.
+
+      // V3 -merged URLs → canonical (for any external link still using -merged)
+      {
+        source: "/precedents-merged",
+        destination: "/precedents",
+        permanent: true,
+      },
+      {
+        source: "/precedents-merged/:slug*",
+        destination: "/precedents/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/countries-merged",
+        destination: "/countries",
+        permanent: true,
+      },
+      {
+        source: "/countries-merged/:path*",
+        destination: "/countries/:path*",
+        permanent: true,
+      },
+      {
+        source: "/signals-merged",
+        destination: "/signals",
+        permanent: true,
+      },
+      {
+        source: "/signals-merged/:path*",
+        destination: "/signals/:path*",
+        permanent: true,
+      },
+      {
+        source: "/patterns-merged",
+        destination: "/patterns",
+        permanent: true,
+      },
+      {
+        source: "/patterns-merged/:slug*",
+        destination: "/patterns/:slug*",
+        permanent: true,
+      },
+
+      // V1 sub-routes that have NO V3 counterpart — preserved at -v1
+      {
+        source: "/patterns/ranking",
+        destination: "/patterns-v1/ranking",
+        permanent: true,
+      },
+      {
+        source: "/signals/country",
+        destination: "/signals-v1/country",
+        permanent: true,
+      },
     ];
   },
 };

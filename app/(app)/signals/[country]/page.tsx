@@ -1,207 +1,146 @@
-import { resolveCountryBySlug } from "@/lib/country-risks";
-import { signalCountryRecipeUrl } from "@/lib/recipes-aggregated";
-import { getCountrySignals } from "@/lib/recipes-aggregated-loader";
-import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
-import { CountryFlag } from "@/components/design/CountryFlag";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { loadCountryRisks, resolveCountryBySlug } from "@/lib/country-risks";
+import { countrySlug } from "@/lib/slug";
+import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
+import { SignalsCountryDetail } from "@/components/signals/SignalsCountryDetail";
+import type { CategoryScore } from "@/lib/country-risks";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 /**
- * #464 — `/signals/{country-slug}`. Country-rolled-up watchlist:
- * every signal firing on this country, sortable. Default sort:
- * similarity score desc.
+ * /signals/[country] — Per-country watchlist for Family 3 of A3 merger brief.
  *
- * Week 2: similarity scores are placeholders from
- * `data/country-recipe-scores-mock.json`. Week 3 swaps to the real
- * `qgi_data.country_recipe_scores` table (#463) without route changes.
+ * Build PR #3 of 5 (founder-gated cutover at PR #5):
+ *   - PR #1: route scaffold + filter strip + 71-row table
+ *   - PR #2: 5 firing now band + 8-domain activation strip
+ *   - PR #3 (this): per-country watchlist with Ingrid lede + sortable
+ *     category table + tier + lineage (skeleton) + alignment placeholder
+ *   - PR #4: per-(country, recipe) leaf with split-render by lineage
+ *   - PR #5 (founder-gated): cutover
+ *
+ * V1 /signals?country={slug} and V2 routes remain LIVE alongside this
+ * merged preview until founder approval.
+ *
+ * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+ *   (Family 3 — Signals / per-country composition)
+ *
+ * Note on `alignment`: the brief specifies an `[Illustrative placeholder
+ * — pending Q4 2026 bake]` chip on the ALIGNMENT column until #463 ships
+ * per-country alignment scores. For PR #3 we surface salience-z as the
+ * alignment proxy (consistent with V1 buildSignals) and chip the column
+ * header with `[Preview]` until the bake lands. No mock numbers introduced.
  */
 
 interface Props {
   params: Promise<{ country: string }>;
 }
 
-function formatCategory(cat: string): string {
-  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { country } = await params;
-  const c = await resolveCountryBySlug(country);
+  const c = await resolveCountryBySlug(country).catch(() => null);
   if (!c) {
     return {
-      title: "Page not found — QGI Intelligence",
-      robots: { index: false, follow: false },
+      title: "Country not found — QGI Intelligence",
     };
   }
-  const description = `Active signals on ${c.name}: every Recipe currently firing, ranked by similarity to the historical fingerprint.`;
-  const canonical = `https://qgintelligence.com/signals/${country}`;
   return {
-    title: `${c.name} — Signals — QGI Intelligence`,
-    description,
-    alternates: { canonical },
-    openGraph: {
-      title: `${c.name} — Signals`,
-      description,
-      url: canonical,
-      siteName: "QGI Intelligence",
-      type: "website",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${c.name} — Signals`,
-      description,
-    },
+    title: `What's firing on ${c.name} — Signals — Merged Preview — QGI Intelligence`,
+    description: `Per-country signals watchlist for ${c.name} — risk categories aggregated across all tier windows with lineage-aware vocabulary. Preview shell, Family 3 build phase.`,
   };
 }
 
-export default async function SignalCountryPage({ params }: Props) {
-  const { country } = await params;
-  const resolved = await resolveCountryBySlug(country);
-  if (!resolved) notFound();
+export const revalidate = 3600;
 
-  const signals = await getCountrySignals(country).catch(() => []);
+export type SignalTier = "HIGH" | "MODERATE" | "INDICATIVE";
+
+function tierForSalience(maxSalience: number): SignalTier {
+  if (maxSalience >= 2.5) return "HIGH";
+  if (maxSalience >= 1.0) return "MODERATE";
+  return "INDICATIVE";
+}
+
+export interface CountrySignalRow {
+  category: string;
+  display_name: string;
+  tier: SignalTier;
+  /** Max salience for this category in this country across all tier windows. */
+  salience: number;
+  /** L1 group metadata; null when the category isn't in CATEGORY_L1_MAP. */
+  l1: L1Group | null;
+}
+
+// Pre-render every country slug at build time. Unknown slugs fall to
+// notFound() at runtime via resolveCountryBySlug returning null.
+export async function generateStaticParams() {
+  const data = await loadCountryRisks().catch(() => null);
+  if (!data) return [];
+  const slugs: { country: string }[] = [];
+  for (const c of Object.values(data.countries)) {
+    const slug = countrySlug(c.name);
+    if (slug) slugs.push({ country: slug });
+  }
+  return slugs;
+}
+
+export default async function SignalsMergedCountryPage({ params }: Props) {
+  const { country } = await params;
+  const c = await resolveCountryBySlug(country).catch(() => null);
+  if (!c) notFound();
+
+  // Per-category max-salience for this country, deduped across the S/M/L/XL
+  // tier windows (mirrors V1 buildSignals dedup pattern).
+  const perCategoryBest = new Map<string, CategoryScore>();
+  for (const tierBlock of Object.values(c.tiers ?? {})) {
+    for (const cat of tierBlock.top_categories ?? []) {
+      const sal = cat.salience_score ?? cat.z_score ?? 0;
+      const existing = perCategoryBest.get(cat.category);
+      const existingSal = existing
+        ? (existing.salience_score ?? existing.z_score ?? 0)
+        : -Infinity;
+      if (sal > existingSal) perCategoryBest.set(cat.category, cat);
+    }
+  }
+
+  const rows: CountrySignalRow[] = Array.from(perCategoryBest.values()).map(
+    (cat): CountrySignalRow => {
+      const sal = cat.salience_score ?? cat.z_score ?? 0;
+      const mapping = CATEGORY_L1_MAP[cat.category];
+      const l1 = mapping
+        ? (L1_GROUPS.find((g) => g.code === mapping.group) ?? null)
+        : null;
+      return {
+        category: cat.category,
+        display_name: cat.category
+          .replace(/_/g, " ")
+          .replace(/\b\w/g, (ch) => ch.toUpperCase()),
+        tier: tierForSalience(sal),
+        salience: sal,
+        l1,
+      };
+    }
+  );
+
+  // Default ordering: max salience desc (highest-firing first).
+  rows.sort((a, b) => b.salience - a.salience);
+
+  const tierCounts = { HIGH: 0, MODERATE: 0, INDICATIVE: 0 } as Record<
+    SignalTier,
+    number
+  >;
+  for (const r of rows) tierCounts[r.tier]++;
+
+  // Computed server-side for hydration stability.
+  const generatedDate = new Date().toISOString().slice(0, 10);
 
   return (
-    <div
-      className="min-h-screen p-6 lg:p-10"
-      style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
-    >
-      <div className="max-w-5xl mx-auto space-y-8">
-        {/* Breadcrumb */}
-        <div
-          className="text-[11px] tracking-wider"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          <Link
-            href="/signals"
-            className="transition-colors hover:text-[var(--qgi-accent)]"
-          >
-            Signals
-          </Link>
-          {" / "}
-          <span style={{ color: "var(--qgi-text-muted)" }}>{resolved.name}</span>
-        </div>
-
-        {/* Header */}
-        <div className="flex items-center gap-3">
-          <CountryFlag alpha2={resolved.alpha_2} size={40} />
-          <div>
-            <div
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Active Signals
-            </div>
-            <h1 className="text-3xl font-semibold leading-tight">{resolved.name}</h1>
-          </div>
-          <div className="ml-auto text-right">
-            <div
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Country tier
-            </div>
-            <div
-              className="text-lg font-semibold font-data"
-              style={{
-                color:
-                  resolved.overall_risk_tier === "HIGH"
-                    ? "#f87171"
-                    : resolved.overall_risk_tier === "MODERATE"
-                      ? "#fbbf24"
-                      : "#38bdf8",
-              }}
-            >
-              {resolved.overall_risk_tier}
-            </div>
-          </div>
-        </div>
-
-        {/* Signals table */}
-        {signals.length === 0 ? (
-          <div
-            className="rounded-lg border p-6 text-center"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-            }}
-          >
-            No active signals. Mock-data scope only — real similarity scores wire up in
-            Week 3 with #463.
-          </div>
-        ) : (
-          <div
-            className="rounded-lg border overflow-hidden"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              borderColor: "var(--qgi-border)",
-            }}
-          >
-            <table className="w-full text-sm">
-              <thead>
-                <tr
-                  className="text-[10px] tracking-widest uppercase font-data"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  <th className="text-left p-4">Recipe</th>
-                  <th className="text-right p-4">Similarity</th>
-                  <th className="text-right p-4 hidden md:table-cell">L1</th>
-                </tr>
-              </thead>
-              <tbody>
-                {signals.map((s) => {
-                  const label = formatCategory(s.event_category);
-                  const l1 = CATEGORY_L1_MAP[s.event_category];
-                  return (
-                    <tr
-                      key={s.event_category}
-                      className="border-t transition-colors hover:bg-[var(--qgi-surface-2)]"
-                      style={{ borderColor: "var(--qgi-border)" }}
-                    >
-                      <td className="p-4">
-                        <Link
-                          href={signalCountryRecipeUrl(country, s.event_category)}
-                          className="hover:text-[var(--qgi-accent)] transition-colors"
-                        >
-                          {label}
-                        </Link>
-                      </td>
-                      <td
-                        className="p-4 text-right font-data font-semibold"
-                        style={{
-                          color:
-                            s.score >= 0.7
-                              ? "#f87171"
-                              : s.score >= 0.4
-                                ? "#fbbf24"
-                                : "var(--qgi-text-muted)",
-                        }}
-                      >
-                        {s.score.toFixed(2)}
-                      </td>
-                      <td
-                        className="p-4 text-right hidden md:table-cell text-[10px] tracking-widest uppercase font-data"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        {l1?.group ?? "—"}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        )}
-
-        <p
-          className="text-[11px] leading-relaxed"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          Mock data — real similarity scores ship in Week 3 (#463). Sorted by score desc.
-        </p>
-      </div>
-    </div>
+    <SignalsCountryDetail
+      slug={country}
+      countryName={c.name}
+      alpha2={c.alpha_2}
+      countryTier={c.overall_risk_tier as SignalTier}
+      rows={rows}
+      tierCounts={tierCounts}
+      generatedDate={generatedDate}
+      curated={c.curated}
+    />
   );
 }

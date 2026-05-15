@@ -1,221 +1,223 @@
-import { loadCountryRisks, type CategoryScore } from "@/lib/country-risks";
-import { SignalsBrowseClient } from "@/components/signals/SignalsBrowseClient";
+import { loadCountryRisks } from "@/lib/country-risks";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
-import { COUNTRY_REGIONS, type Region } from "@/lib/regions";
-
-// T19 #312: adds openGraph + twitter so signals page is shareable.
-export const metadata = {
-  title: "Signals — QGI Intelligence",
-  description:
-    "Early-warning radar — browse active risk signals by domain, severity, and geography.",
-  alternates: { canonical: "https://qgintelligence.com/signals" },
-  openGraph: {
-    title: "Signals — QGI Intelligence",
-    description:
-      "Early-warning radar — browse active risk signals by domain, severity, and geography.",
-    url: "https://qgintelligence.com/signals",
-    siteName: "QGI Intelligence",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Signals — QGI Intelligence",
-    description:
-      "Early-warning radar — browse active risk signals by domain, severity, and geography.",
-  },
-};
-
-/** Salience tier thresholds (per-signal maxSalience). */
-function getSalienceTier(maxSalience: number): "CRITICAL" | "ELEVATED" | "BASELINE" {
-  if (maxSalience >= 2.5) return "CRITICAL";
-  if (maxSalience >= 1.0) return "ELEVATED";
-  return "BASELINE";
-}
+import { SignalsMergedListClient } from "@/components/signals/SignalsMergedListClient";
+import type { CategoryScore } from "@/lib/country-risks";
+import type { Metadata } from "next";
 
 /**
- * Aggregate country-risks data by category to create enriched Signal profiles
- * with L1 domain mapping, tier classification, and regional distribution.
+ * /signals — Preview-only route for A3 merger brief Family 3.
+ *
+ * Build PR #2 of 5 (incremental cadence, founder-gated cutover at PR #5):
+ *   - PR #1: route scaffold + Lloyd's banner + filter strip + 71-row
+ *     aggregated table with tier vocabulary unified to HIGH/MODERATE/INDICATIVE
+ *   - PR #2 (this): "5 firing now" curated band + 8-domain activation
+ *     strip rendered above the master list
+ *   - PR #3: per-country watchlist /signals/[country]
+ *   - PR #4: per-(country, recipe) leaf with split-render by lineage
+ *   - PR #5 (founder-gated): kill 4 V2 routes + /signals/country picker;
+ *     alias /signals → /signals canonical
+ *
+ * V1 (/signals) + V2-A (/signals-v2a) + V2-B (/signals-v2b) remain LIVE
+ * alongside the merged preview so the founder can compare side-by-side
+ * until cutover.
+ *
+ * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+ *   (Family 3 — Signals section)
+ *
+ * Tier vocabulary: brief 7th-vote unified CRITICAL/ELEVATED/BASELINE →
+ * HIGH/MODERATE/INDICATIVE for Countries + Signals. Thresholds preserved
+ * from V1 buildSignals (salience ≥ 2.5 = HIGH, ≥ 1.0 = MODERATE, else
+ * INDICATIVE). Per-family source quantity disclosed via tier-pill hover
+ * tooltip (Sipho's "vocabulary belongs to QUANTITY not page" rule).
  */
-async function buildSignals() {
-  const data = await loadCountryRisks();
-  const signalMap: Record<
-    string,
-    {
-      category: string;
-      countries: Array<{
-        id: string;
-        name: string;
-        alpha_2: string;
-        salience: number;
-        recipes: number;
-        curated: boolean;
-        region: Region | "Unknown";
-      }>;
-      totalRecipes: number;
-      avgSalience: number;
-      maxSalience: number;
-      l1Domain: { code: string; label: string; shortLabel: string; color: string } | null;
-      tier: "CRITICAL" | "ELEVATED" | "BASELINE";
-      regionalDistribution: Record<string, number>;
-    }
-  > = {};
 
-  for (const [id, country] of Object.entries(data.countries)) {
-    // T7 #300 HIGH fix (Elena s2, 2026-04-19): previously read ONLY
-    // S-tier (3-8yr pattern length) categories. This excluded every M/L/XL
-    // signal from the signals discovery surface — a professional risk
-    // analyst looking for 10-year or 25-year structural trajectories saw
-    // nothing. Now merge all tier categories, keeping the highest salience
-    // entry per (country, category) tuple.
-    const perCategoryBest = new Map<string, CategoryScore>();
-    for (const tierBlock of Object.values(country.tiers ?? {})) {
-      for (const c of tierBlock.top_categories ?? []) {
-        const sal = c.salience_score ?? c.z_score ?? 0;
-        const existing = perCategoryBest.get(c.category);
-        const existingSal = existing
-          ? (existing.salience_score ?? existing.z_score ?? 0)
-          : -Infinity;
-        if (sal > existingSal) perCategoryBest.set(c.category, c);
-      }
-    }
-    const cats = Array.from(perCategoryBest.values());
-    for (const cat of cats) {
-      // T7 #300 MEDIUM fix: default to 0 when both salience_score and
-      // z_score are missing. Previously produced NaN downstream via
-      // `.toFixed(1)` on undefined.
-      const salience = cat.salience_score ?? cat.z_score ?? 0;
-      const region = COUNTRY_REGIONS[country.alpha_2?.toUpperCase()] ?? "Unknown";
+export const metadata: Metadata = {
+  title: "Signals — Merged Preview — QGI Intelligence",
+  description:
+    "Preview of the merged Signals shell — 71 risk categories aggregated across 156 countries with lineage-aware tier vocabulary. Cutover from V1 + V2 routes pending founder sign-off.",
+};
 
-      if (!signalMap[cat.category]) {
-        // Look up L1 domain
-        const l1Mapping = CATEGORY_L1_MAP[cat.category];
-        const l1Group = l1Mapping
-          ? L1_GROUPS.find((g: L1Group) => g.code === l1Mapping.group)
-          : undefined;
+export const revalidate = 3600;
 
-        signalMap[cat.category] = {
-          category: cat.category,
-          countries: [],
-          totalRecipes: 0,
-          avgSalience: 0,
-          maxSalience: 0,
-          l1Domain: l1Group
-            ? {
-                code: l1Group.code,
-                label: l1Group.label,
-                shortLabel: l1Group.shortLabel,
-                color: l1Group.color,
-              }
-            : null,
-          tier: "BASELINE",
-          regionalDistribution: {},
-        };
-      }
+export type SignalTier = "HIGH" | "MODERATE" | "INDICATIVE";
 
-      signalMap[cat.category].countries.push({
-        id,
-        name: country.name,
-        alpha_2: country.alpha_2,
-        salience,
-        recipes: cat.recipe_count,
-        curated: country.curated,
-        region,
-      });
-      signalMap[cat.category].totalRecipes += cat.recipe_count;
-
-      // Track regional distribution
-      const regionKey = region as string;
-      signalMap[cat.category].regionalDistribution[regionKey] =
-        (signalMap[cat.category].regionalDistribution[regionKey] ?? 0) + 1;
-    }
-  }
-
-  // Compute averages, tiers, and sort countries within each signal
-  const signals = Object.values(signalMap).map((s) => {
-    s.countries.sort((a, b) => b.salience - a.salience);
-    s.avgSalience =
-      s.countries.length > 0
-        ? s.countries.reduce((sum, c) => sum + c.salience, 0) / s.countries.length
-        : 0;
-    s.maxSalience = s.countries[0]?.salience ?? 0;
-    s.tier = getSalienceTier(s.maxSalience);
-    return s;
-  });
-
-  // Sort signals by max salience descending
-  signals.sort((a, b) => b.maxSalience - a.maxSalience);
-
-  // Compute aggregate metadata
-  const totalCountries = new Set(signals.flatMap((s) => s.countries.map((c) => c.id)))
-    .size;
-
-  const tierCounts = { CRITICAL: 0, ELEVATED: 0, BASELINE: 0 };
-  for (const s of signals) {
-    tierCounts[s.tier]++;
-  }
-
-  // Compute domain activation (country counts per L1 domain)
-  const domainActivation: Record<
-    string,
-    {
-      code: string;
-      label: string;
-      shortLabel: string;
-      color: string;
-      signalCount: number;
-      countryCount: number;
-    }
-  > = {};
-  for (const s of signals) {
-    if (s.l1Domain) {
-      if (!domainActivation[s.l1Domain.code]) {
-        domainActivation[s.l1Domain.code] = {
-          ...s.l1Domain,
-          signalCount: 0,
-          countryCount: 0,
-        };
-      }
-      domainActivation[s.l1Domain.code].signalCount++;
-      domainActivation[s.l1Domain.code].countryCount += s.countries.length;
-    }
-  }
-
-  // Sort domain activation by L1 code order (A-H)
-  const sortedDomainActivation = Object.values(domainActivation).sort((a, b) =>
-    a.code.localeCompare(b.code)
-  );
-
-  return {
-    signals,
-    meta: {
-      totalSignals: signals.length,
-      totalCountries,
-      tierCounts,
-      domainActivation: sortedDomainActivation,
-      version: data.version,
-      generatedAt: data.generated_at,
-      curatedCount: data.curated_country_count,
-    },
-  };
+/** Brief 7th-vote: unified tier rung. V1 thresholds preserved. */
+function tierForSalience(maxSalience: number): SignalTier {
+  if (maxSalience >= 2.5) return "HIGH";
+  if (maxSalience >= 1.0) return "MODERATE";
+  return "INDICATIVE";
 }
 
-export default async function SignalsBrowsePage() {
-  let result: Awaited<ReturnType<typeof buildSignals>> | null = null;
-  let error: string | null = null;
+export interface SignalRow {
+  category: string;
+  display_name: string;
+  tier: SignalTier;
+  /** Per-category max salience across all firing countries. */
+  max_salience: number;
+  /** Mean salience across firing countries. */
+  avg_salience: number;
+  /** Number of countries with non-zero salience for this category. */
+  firing_count: number;
+  /** Top-3 countries by salience. */
+  top_countries: Array<{ id: string; name: string; alpha_2: string; salience: number }>;
+  /** L1 group metadata; null when category isn't in CATEGORY_L1_MAP. */
+  l1: L1Group | null;
+}
+
+export default async function SignalsMergedPage() {
+  let signals: SignalRow[] = [];
+  let totalCountries = 0;
+  let loadError: string | null = null;
 
   try {
-    result = await buildSignals();
+    const data = await loadCountryRisks();
+    totalCountries = Object.keys(data.countries).length;
+
+    // Aggregation mirrors V1's buildSignals(): for each country, dedupe
+    // per-category to the highest-salience entry across all tier windows,
+    // then aggregate per-category across countries.
+    const signalMap = new Map<
+      string,
+      {
+        category: string;
+        countries: SignalRow["top_countries"];
+        totalSal: number;
+        maxSal: number;
+      }
+    >();
+    for (const [id, country] of Object.entries(data.countries)) {
+      const perCategoryBest = new Map<string, CategoryScore>();
+      for (const tierBlock of Object.values(country.tiers ?? {})) {
+        for (const c of tierBlock.top_categories ?? []) {
+          const sal = c.salience_score ?? c.z_score ?? 0;
+          const existing = perCategoryBest.get(c.category);
+          const existingSal = existing
+            ? (existing.salience_score ?? existing.z_score ?? 0)
+            : -Infinity;
+          if (sal > existingSal) perCategoryBest.set(c.category, c);
+        }
+      }
+      for (const cat of perCategoryBest.values()) {
+        const sal = cat.salience_score ?? cat.z_score ?? 0;
+        let entry = signalMap.get(cat.category);
+        if (!entry) {
+          entry = {
+            category: cat.category,
+            countries: [],
+            totalSal: 0,
+            maxSal: 0,
+          };
+          signalMap.set(cat.category, entry);
+        }
+        entry.countries.push({
+          id,
+          name: country.name,
+          alpha_2: country.alpha_2,
+          salience: sal,
+        });
+        entry.totalSal += sal;
+        if (sal > entry.maxSal) entry.maxSal = sal;
+      }
+    }
+
+    signals = Array.from(signalMap.values()).map((s): SignalRow => {
+      s.countries.sort((a, b) => b.salience - a.salience);
+      const mapping = CATEGORY_L1_MAP[s.category];
+      const l1 = mapping
+        ? (L1_GROUPS.find((g) => g.code === mapping.group) ?? null)
+        : null;
+      return {
+        category: s.category,
+        display_name: s.category
+          .replace(/_/g, " ")
+          .replace(/\b\w/g, (c) => c.toUpperCase()),
+        tier: tierForSalience(s.maxSal),
+        max_salience: s.maxSal,
+        avg_salience: s.countries.length > 0 ? s.totalSal / s.countries.length : 0,
+        firing_count: s.countries.length,
+        top_countries: s.countries.slice(0, 3),
+        l1,
+      };
+    });
+    // Sort by max salience desc — default order brings the most-elevated
+    // categories to the top.
+    signals.sort((a, b) => b.max_salience - a.max_salience);
   } catch (err) {
-    error = (err as Error).message;
+    loadError = (err as Error).message;
   }
 
-  if (error || !result) {
+  if (loadError) {
     return (
-      <div className="p-8">
-        <p style={{ color: "var(--qgi-text-muted)" }}>Signal data not available.</p>
+      <div className="p-8 max-w-3xl mx-auto">
+        <h1
+          className="text-xs tracking-widest uppercase mb-4"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Signals — Merged Preview
+        </h1>
+        <div
+          className="rounded-lg p-6"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+          }}
+        >
+          <p style={{ color: "var(--qgi-text-muted)" }}>
+            Signal data not available: {loadError}
+          </p>
+        </div>
       </div>
     );
   }
 
-  return <SignalsBrowseClient signals={result.signals} meta={result.meta} />;
+  // Tier counts for the metric strip ("{n} of 71 categories firing").
+  const tierCounts = { HIGH: 0, MODERATE: 0, INDICATIVE: 0 } as Record<
+    SignalTier,
+    number
+  >;
+  for (const s of signals) tierCounts[s.tier]++;
+
+  // Computed server-side so the "Currently firing — {date}" eyebrow is
+  // hydration-stable. Anchored to revalidate=3600 so the date refreshes
+  // hourly along with the underlying snapshot.
+  const generatedDate = new Date().toISOString().slice(0, 10);
+
+  // PR #2 — Domain activation strip data. For each of the 8 L1 groups,
+  // count: (a) how many categories with tier ≥ MODERATE belong to that
+  // L1; (b) the unique-country set those firing categories cover. REAL
+  // data — no preview chip on this widget.
+  const domainActivation: Array<{
+    code: string;
+    label: string;
+    shortLabel: string;
+    color: string;
+    n_categories: number;
+    n_countries: number;
+  }> = L1_GROUPS.map((g) => {
+    const firingForGroup = signals.filter(
+      (s) => s.l1?.code === g.code && (s.tier === "HIGH" || s.tier === "MODERATE")
+    );
+    const countrySet = new Set<string>();
+    for (const s of firingForGroup) {
+      for (const c of s.top_countries) countrySet.add(c.id);
+    }
+    return {
+      code: g.code,
+      label: g.label,
+      shortLabel: g.shortLabel,
+      color: g.color,
+      n_categories: firingForGroup.length,
+      n_countries: countrySet.size,
+    };
+  });
+
+  return (
+    <SignalsMergedListClient
+      signals={signals}
+      tierCounts={tierCounts}
+      totalCountries={totalCountries}
+      generatedDate={generatedDate}
+      domainActivation={domainActivation}
+    />
+  );
 }
