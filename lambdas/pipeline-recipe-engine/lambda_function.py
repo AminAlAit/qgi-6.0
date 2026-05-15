@@ -52,7 +52,30 @@ except KeyError as e:
 ATHENA_DB = os.environ.get('ATHENA_DATABASE', 'qgi_data')
 ATHENA_WG = os.environ.get('ATHENA_WORKGROUP', 'QGI-Lambda-Workgroup')
 S3_OUTPUT = os.environ.get('S3_OUTPUT_LOCATION', f's3://{S3_BUCKET}/query_results/')
-RECIPES_PREFIX = 'recipes'
+
+# #622 (2026-05-15): Relocate `qgi_data.recipes` table data out of
+# `query_results/`. The prior CTAS-without-external_location pattern made
+# Athena write recipe parquet files to `query_results/tables/<uuid>/...`
+# under the workgroup's enforced output location. That prefix has a 1-day
+# expiry rule (#593), so every Lambda re-run hit the cycle:
+#   DROP TABLE → CTAS to query_results/tables/<NEW uuid>/ → S3 expires it in
+#   1 day → next run drops the (now-empty) table → re-CTAS → repeat
+# Forensic: dominated May 2-5 cost spikes (~$13/day, 99.6% of GETs against
+# the most recent query_results/tables/<uuid>/ partition).
+#
+# Why not CTAS with `external_location`? Workgroup
+# `QGI-Lambda-Workgroup` has `EnforceWorkGroupConfiguration=true`, which
+# rejects per-query result-location overrides at submission. Same blocker
+# documented in #545. Relaxing workgroup enforcement was rejected there
+# on org-wide cost-guard grounds.
+#
+# Fix: Lambda creates a permanent external table at a stable, NON-expiring
+# prefix (this constant). Subsequent INSERT INTO calls write to the same
+# LOCATION. No more 1-day expiry crossing path; no more re-CTAS cycle.
+#
+# clean_recipes() (below) deletes the parquet files at this prefix BEFORE
+# the DDL+INSERT round, so each run starts clean.
+RECIPES_PREFIX = 'pipeline-recipe-engine/output/recipes'
 DASHBOARD_PREFIX = 'dashboard'
 RANKING_LIMIT = 1000  # pre-compute top 1000 unfiltered patterns; route falls back to Athena for filtered requests
 
@@ -133,13 +156,68 @@ def lambda_handler(event, context):
 
     logger.info(f"Recipe Engine starting. run_id={run_id}, cutoff_year={cutoff_year}")
 
-    # 1. Clean old recipe output
+    # 1. Clean old recipe output (parquet files at the stable external prefix)
     clean_recipes()
 
-    # 2. Drop old recipes table if exists
+    # 2. Drop old recipes table registration. Data files are already deleted
+    #    above; this drops the catalog entry so step 3 can recreate it at
+    #    the new external LOCATION.
     run_query("DROP TABLE IF EXISTS qgi_data.recipes;")
 
-    # 3. Enumerate country_a_id partitions from patterns (#158)
+    # 3. #622 (2026-05-15): Register external table at the new stable
+    #    prefix BEFORE inserts begin. Replaces the old CTAS-on-first-partition
+    #    pattern which silently created the table at
+    #    `query_results/tables/<uuid>/` (1-day expiry trap; see RECIPES_PREFIX
+    #    comment above).
+    #
+    #    Schema is hand-maintained to match what `build_recipe_query` SELECT
+    #    produces — kept in lockstep here. If the SELECT shape changes, this
+    #    DDL must change with it. The CI smoke test should catch type mismatch
+    #    by running one INSERT INTO against staging.
+    create_table_sql = f"""
+    CREATE EXTERNAL TABLE qgi_data.recipes (
+        recipe_id            string,
+        event_category       string,
+        pattern_id           bigint,
+        country_b_id         smallint,
+        country_a_name       string,
+        country_b_name       string,
+        start_year_a         smallint,
+        start_year_b         smallint,
+        length               smallint,
+        avg_correlation      double,
+        end_year_a           smallint,
+        end_year_b           smallint,
+        event_window         smallint,
+        event_year_a         smallint,
+        event_year_b         smallint,
+        event_title_a        string,
+        event_title_b        string,
+        indicator_count      smallint,
+        pattern_power_score  double,
+        pattern_tier         string,
+        median_lead_time_b   smallint,
+        min_lead_time_b      smallint,
+        max_lead_time_b      smallint,
+        median_lead_time_a   smallint,
+        pps                  double,
+        contains_predicted   boolean,
+        instance_count       bigint
+    )
+    PARTITIONED BY (country_a_id smallint)
+    STORED AS PARQUET
+    LOCATION 's3://{S3_BUCKET}/{RECIPES_PREFIX}/'
+    TBLPROPERTIES (
+        'classification'      = 'parquet',
+        'parquet.compression' = 'SNAPPY'
+    );
+    """
+    logger.info(
+        f"Creating recipes external table at s3://{S3_BUCKET}/{RECIPES_PREFIX}/"
+    )
+    run_query(create_table_sql)
+
+    # 4. Enumerate country_a_id partitions from patterns (#158)
     country_ids = get_patterns_country_a_ids()
     if not country_ids:
         raise RuntimeError(
@@ -148,17 +226,16 @@ def lambda_handler(event, context):
         )
     logger.info(f"Found {len(country_ids)} country_a_id partitions in patterns")
 
-    # 4. Create recipes table + first partition via a single-country CTAS.
-    #    This creates the table shell with the exact schema the SELECT produces
-    #    (no hand-maintained column list) and populates one partition worth of
-    #    data. Scans only the first country's patterns partition (~200 MB).
+    # 5. INSERT INTO for first partition. Pre-#622 this was a CTAS that
+    #    doubled as table creation. Now the table already exists from step 3
+    #    above — every partition runs through INSERT INTO uniformly.
     first_id = country_ids[0]
-    ctas_sql = build_recipe_query(cutoff_year, country_a_id=first_id)
+    first_insert_sql = build_recipe_query(cutoff_year, country_a_id=first_id, mode='insert')
     logger.info(
-        f"Running CTAS for first partition country_a_id={first_id} "
-        f"({len(ctas_sql)} chars)"
+        f"Running INSERT INTO for first partition country_a_id={first_id} "
+        f"({len(first_insert_sql)} chars)"
     )
-    run_query(ctas_sql)
+    run_query(first_insert_sql)
 
     # 5. Fan out INSERT INTO queries for remaining country_a_id partitions.
     remaining_ids = country_ids[1:]

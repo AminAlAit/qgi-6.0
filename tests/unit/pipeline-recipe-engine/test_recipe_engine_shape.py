@@ -202,67 +202,86 @@ def _load_module(fake_athena):
 
 
 # ---------------------------------------------------------------------------
-# Test 1: CTAS is split into per-country queries (one CTAS + N-1 INSERTs)
+# Test 1: every partition runs through INSERT INTO; table created via DDL once
 # ---------------------------------------------------------------------------
 
-def test_splits_ctas_into_per_country_inserts():
-    """With 3 distinct country_a_id values, the Recipe Engine must submit
-    exactly 1 CTAS (for the first id) and 2 INSERT INTO queries (for the
-    remaining ids) — NOT a single full-table CTAS.
+def test_splits_writes_into_per_country_inserts():
+    """With 3 distinct country_a_id values, the Recipe Engine must submit:
+      - exactly 1 CREATE EXTERNAL TABLE DDL (registers the table at the
+        stable `pipeline-recipe-engine/output/recipes/` location — #622)
+      - exactly 3 INSERT INTO queries, one per partition
 
-    This is the headline regression guard: if anyone ever reverts to the
-    pre-#158 single-CTAS shape, this test fails immediately.
+    Pre-#622 the first partition went through a CTAS that doubled as table
+    creation; that landed data at `query_results/tables/<uuid>/` which has
+    a 1-day expiry trap. The fix relocates the table to a stable prefix
+    via DDL, then INSERTs all partitions uniformly.
+
+    The #158 regression guard (no monolithic full-scan CTAS) is still
+    enforced: zero `CREATE TABLE qgi_data.recipes AS` (CTAS) queries.
     """
     fake = FakeAthena(distinct_country_ids=[1, 2, 3])
     mod, _s3 = _load_module(fake)
     mod.lambda_handler({"run_id": "test"}, None)
 
     queries = [sql for _qid, sql in fake.started_queries]
-    ctas_queries = [q for q in queries if "CREATE TABLE qgi_data.recipes" in q]
+    create_external_queries = [q for q in queries if "CREATE EXTERNAL TABLE qgi_data.recipes" in q]
+    ctas_queries = [q for q in queries if "CREATE TABLE qgi_data.recipes" in q and "AS" in q]
     insert_queries = [q for q in queries if "INSERT INTO qgi_data.recipes" in q]
 
-    assert len(ctas_queries) == 1, (
-        f"expected exactly 1 CTAS (shell + first partition), got "
-        f"{len(ctas_queries)}. Regression toward pre-#158 full-scan shape."
+    assert len(create_external_queries) == 1, (
+        f"expected exactly 1 CREATE EXTERNAL TABLE DDL (#622), got "
+        f"{len(create_external_queries)}."
     )
-    assert len(insert_queries) == 2, (
-        f"expected 2 per-country INSERTs for remaining ids (2 and 3), "
+    assert len(ctas_queries) == 0, (
+        f"expected 0 CTAS (regression to pre-#622 query_results/tables/<uuid>/ "
+        f"leak), got {len(ctas_queries)}."
+    )
+    assert len(insert_queries) == 3, (
+        f"expected 3 per-country INSERTs (one per partition), "
         f"got {len(insert_queries)}."
     )
-    # Bonus: no CTAS without a country_a_id filter should ever be submitted
-    for q in ctas_queries:
-        assert "p.country_a_id = " in q, (
-            "CTAS must include a partition filter (country_a_id). "
-            "Unfiltered CTAS is the 43 GB full-scan bug."
+
+    # The CREATE EXTERNAL TABLE DDL must point at the stable non-expiring
+    # prefix — regression guard against the 1-day-expiry leak.
+    for q in create_external_queries:
+        assert "pipeline-recipe-engine/output/recipes" in q, (
+            "CREATE EXTERNAL TABLE LOCATION must be the stable "
+            "`pipeline-recipe-engine/output/recipes/` prefix. Reverting to "
+            "`query_results/...` reintroduces the 1-day-expiry data-loss "
+            "leak documented in #622."
         )
 
 
 # ---------------------------------------------------------------------------
-# Test 2: every per-country query carries a WHERE p.country_a_id = N filter
+# Test 2: every per-country INSERT carries a WHERE p.country_a_id = N filter
 # ---------------------------------------------------------------------------
 
 def test_per_country_insert_contains_partition_filter():
-    """Every CTAS and INSERT query submitted by the Recipe Engine must
-    contain `p.country_a_id = <N>` — that is the literal partition filter
-    Athena needs for partition pruning. This test fails loudly if anyone
-    drops it while refactoring the SELECT body.
+    """Every INSERT query submitted by the Recipe Engine must contain
+    `p.country_a_id = <N>` — that is the literal partition filter Athena
+    needs for partition pruning. This test fails loudly if anyone drops it
+    while refactoring the SELECT body.
+
+    Post-#622 there are no CTAS queries; the DDL has no partition filter
+    (it's schema-only) so it's excluded from the assertion.
     """
     fake = FakeAthena(distinct_country_ids=[7, 42, 99, 214])
     mod, _s3 = _load_module(fake)
     mod.lambda_handler({"run_id": "test"}, None)
 
-    recipe_writing_queries = [
+    insert_queries = [
         sql for _qid, sql in fake.started_queries
-        if "CREATE TABLE qgi_data.recipes" in sql
-        or "INSERT INTO qgi_data.recipes" in sql
+        if "INSERT INTO qgi_data.recipes" in sql
     ]
-    assert len(recipe_writing_queries) == 4
+    assert len(insert_queries) == 4, (
+        f"expected 4 INSERTs for 4 partitions, got {len(insert_queries)}."
+    )
 
     observed_ids = set()
-    for q in recipe_writing_queries:
+    for q in insert_queries:
         m = re.search(r"p\.country_a_id\s*=\s*(\d+)", q)
         assert m is not None, (
-            f"Recipe query missing partition filter 'p.country_a_id = N'. "
+            f"INSERT missing partition filter 'p.country_a_id = N'. "
             f"This is the #158 regression guard. Query head: {q[:200]!r}"
         )
         observed_ids.add(int(m.group(1)))
@@ -358,12 +377,14 @@ def test_concurrency_limit_respected():
     mod, _s3 = _load_module(fake)
     mod.lambda_handler({"run_id": "test"}, None)
 
-    # 50 countries → 1 CTAS (first) + 49 INSERTs
+    # Post-#622: 50 countries → 1 DDL + 50 INSERTs (every partition runs
+    # through INSERT INTO uniformly; the table is pre-created via
+    # CREATE EXTERNAL TABLE before the first partition).
     insert_count = sum(
         1 for _qid, sql in fake.started_queries
         if "INSERT INTO qgi_data.recipes" in sql
     )
-    assert insert_count == 49, f"expected 49 INSERTs, got {insert_count}"
+    assert insert_count == 50, f"expected 50 INSERTs, got {insert_count}"
 
     # The invariant: at no point should more than 20 INSERTs have been in flight
     assert fake.max_in_flight <= 20, (
