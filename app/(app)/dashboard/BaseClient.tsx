@@ -62,6 +62,12 @@ interface Props {
   totalUniquePairs: number;
   topSignals: SignalRow[];
   taxonomy: TaxonomyData;
+  // PR-vi (2026-05-15) — Majles-verdict props for the four-family band.
+  signalsHighCount: number;
+  signalsModerateCount: number;
+  signalsTotalCount: number;
+  mlValidatedCount: number;
+  totalLocked: number;
 }
 
 // ---------------------------------------------------------------------------
@@ -304,6 +310,12 @@ export function BaseClient({
   totalUniquePairs,
   topSignals,
   taxonomy,
+  // PR-vi — Majles-verdict props
+  signalsHighCount,
+  signalsModerateCount,
+  signalsTotalCount,
+  mlValidatedCount,
+  totalLocked,
 }: Props) {
   const router = useRouter();
   const [dataFoundationOpen, setDataFoundationOpen] = useState(false);
@@ -630,7 +642,7 @@ export function BaseClient({
   return (
     <div className="flex flex-col h-full overflow-y-auto">
       {/* ================================================================
-          ZONE 1: STATUS BAR (40px)
+          SECTION 1: MASTHEAD STRIP (40px) — PR-vi
           ================================================================ */}
       <div
         className="px-4 py-2 border-b shrink-0 flex items-center justify-between gap-4"
@@ -642,13 +654,6 @@ export function BaseClient({
         }}
       >
         <div className="flex items-center gap-2 text-[10px] font-data">
-          <span
-            className="tracking-[0.25em] uppercase"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            BASE
-          </span>
-          <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
           <span style={{ color: "var(--qgi-text-muted)" }}>Cycle: {cycleDate}</span>
           <span style={{ color: "var(--qgi-text-dim)" }}>&#183;</span>
           <span style={{ color: "var(--qgi-text-muted)" }}>Scoring {stats.version}</span>
@@ -672,9 +677,81 @@ export function BaseClient({
             className="inline-block w-2 h-2 rounded-full"
             style={{ backgroundColor: freshness.color }}
             title={`Freshness: ${freshness.label}`}
+            aria-label={`Data freshness: ${freshness.label}`}
+            role="img"
           />
         </div>
       </div>
+
+      {/* ================================================================
+          SECTION 2: PAGE HEADER + LEDE + "WHAT THIS DOESN'T MEAN" — PR-vi
+          ================================================================ */}
+      <div
+        className="px-4 lg:px-6 py-5 border-b shrink-0"
+        style={{ borderColor: "var(--qgi-border)" }}
+      >
+        <h1
+          className="text-3xl font-semibold tracking-tight mb-2"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          Dashboard
+        </h1>
+        <p
+          className="text-sm leading-relaxed max-w-[68ch] mb-3"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          QGI tracks political risk across {stats.total} countries, using historical
+          precedent to identify where signals most closely resemble known instability
+          patterns.
+        </p>
+        <details
+          role="note"
+          aria-label="Methodology note"
+          className="text-xs max-w-[68ch]"
+        >
+          <summary
+            className="cursor-pointer select-none inline-flex items-center gap-1.5"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            <span
+              className="font-semibold tracking-wide uppercase text-[10px]"
+              style={{ color: "var(--qgi-amber)" }}
+            >
+              What this doesn&apos;t mean
+            </span>
+            <span style={{ color: "var(--qgi-text-dim)" }}>(expand)</span>
+          </summary>
+          <p
+            className="mt-2 pl-3 border-l-2 leading-relaxed"
+            style={{
+              color: "var(--qgi-text-muted)",
+              borderColor: "rgba(245, 158, 11, 0.4)",
+            }}
+          >
+            A HIGH classification means the country&apos;s indicator profile most closely
+            resembles known historical instability precedents — it is not a prediction
+            that an event will occur. The pages reached from here report model output
+            reviewed for editorial release, not forecasts.
+          </p>
+        </details>
+      </div>
+
+      {/* ================================================================
+          SECTION 3: FOUR-FAMILY SUMMARY BAND — PR-vi (the core new element)
+          One dominant number per family. Each card is a clickable CTA into
+          the deeper family page. Numbers come from the same JSONs the family
+          pages use — zero new data sources, zero Athena hits.
+          ================================================================ */}
+      <FourFamilyBand
+        countriesHigh={stats.high}
+        signalsHighCount={signalsHighCount}
+        signalsModerateCount={signalsModerateCount}
+        signalsTotalCount={signalsTotalCount}
+        topPair={topPairs[0] ?? null}
+        totalUniquePairs={totalUniquePairs}
+        mlValidatedCount={mlValidatedCount}
+        totalLocked={totalLocked}
+      />
 
       {/* ================================================================
           ZONE 2: SITUATION SUMMARY
@@ -719,6 +796,7 @@ export function BaseClient({
                 </div>
                 <span
                   className="text-[9px] tracking-wider font-semibold px-2 py-0.5 rounded shrink-0"
+                  aria-label={`Risk tier: ${featuredAlert.tier}`}
                   style={{
                     backgroundColor: TIER_STYLES[featuredAlert.tier].bg,
                     color: TIER_STYLES[featuredAlert.tier].text,
@@ -762,6 +840,17 @@ export function BaseClient({
                   </span>
                 )}
               </div>
+              {/* PR-vi: lineage caption per Majles spec (Marcus dissent
+                  resolution + voice rules). Methodology integrity — prevents
+                  the algorithmic selection from being mis-read as an
+                  editorial endorsement of the country. */}
+              <p
+                className="text-[10px] italic mt-2"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Algorithmically selected — highest-signal curated country in the current
+                bake.
+              </p>
             </Link>
           ) : (
             <div
@@ -875,29 +964,10 @@ export function BaseClient({
               </div>
             </div>
 
-            {/* Headline metrics */}
-            <div className="grid grid-cols-2 gap-2">
-              <MetricTile
-                label="S-tier signals"
-                value={headlineMetrics.sTierSignals}
-                tooltip="Count of categories with active precedent matches across all HIGH-risk countries."
-              />
-              <MetricTile
-                label="Countries rising"
-                value={headlineMetrics.risingSalience}
-                tooltip="Countries with top salience above 1.5 threshold."
-              />
-              <MetricTile
-                label="Peak salience"
-                value={headlineMetrics.peakSalience.toFixed(2)}
-                tooltip="Highest single-category salience score across all countries."
-              />
-              <MetricTile
-                label="Convergences"
-                value={headlineMetrics.activeConvergences}
-                tooltip="Signals backed by 2 or more independent predictor countries."
-              />
-            </div>
+            {/* PR-vi: 4 MetricTiles removed — replaced by the FourFamilyBand
+                above. The `MetricTile` helper component is retained at the
+                bottom of this file in case the Risk Pulse panel needs it
+                again, but no callers remain on the Dashboard. */}
           </div>
         </div>
       </div>
@@ -905,12 +975,16 @@ export function BaseClient({
       {/* World map removed per owner request (2026-04-18) */}
 
       {/* ================================================================
-          ZONE 3: INTELLIGENCE GRID
+          SECTION 5: INTELLIGENCE GRID — Watchlist + Salience Spread — PR-vi
           ================================================================ */}
-      <div
+      <section
+        aria-labelledby="watchlist-heading"
         className="grid grid-cols-1 lg:grid-cols-5 gap-px shrink-0"
         style={{ backgroundColor: "var(--qgi-border)" }}
       >
+        <h2 id="watchlist-heading" className="sr-only">
+          Watchlist and salience spread
+        </h2>
         {/* ── Watchlist (left, 3/5 width) ─────────────────────────── */}
         <div
           className="lg:col-span-3 flex flex-col"
@@ -928,7 +1002,7 @@ export function BaseClient({
                 Watchlist
               </span>
               <span className="text-[10px] ml-2" style={{ color: "var(--qgi-text-dim)" }}>
-                Top 10 by S-tier salience
+                Top 10 by peak salience
               </span>
             </div>
             <Link
@@ -1022,9 +1096,9 @@ export function BaseClient({
                 className="text-[9px] tracking-[0.25em] uppercase"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                Outliers
+                Salience Spread
               </span>
-              <InfoTooltip text="Countries whose salience deviates most from the median. Will show delta-based 'Movers' once historical data is available." />
+              <InfoTooltip text="Countries whose salience deviates most from the median in the current bake. This is a cross-sectional spread, not a time-series delta — it does not indicate change since a previous bake." />
             </div>
           </div>
           <div className="flex-1 px-4 py-2">
@@ -1108,81 +1182,92 @@ export function BaseClient({
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* ================================================================
-          ZONE 4: SIGNAL LANDSCAPE (3-column)
+          SECTION 6: SIGNAL + PATTERN SNAPSHOT (2-column) — PR-vi
+          Domain Heatmap zone removed per Majles verdict — moved to the
+          /signals page where the 8-domain activation strip lives with
+          real data (signals/page.tsx PR #2).
           ================================================================ */}
-      <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-px shrink-0"
+      <section
+        aria-labelledby="signal-snapshot-heading"
+        className="grid grid-cols-1 md:grid-cols-2 gap-px shrink-0"
         style={{ backgroundColor: "var(--qgi-border)" }}
       >
-        {/* ── Domain Heatmap (left) ───────────────────────────────── */}
-        <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
-          <div
-            className="px-4 py-2 border-b"
-            style={{ borderColor: "var(--qgi-border)" }}
-          >
-            <span
-              className="text-[9px] tracking-[0.25em] uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
+        <h2 id="signal-snapshot-heading" className="sr-only">
+          Signal and pattern snapshot
+        </h2>
+        {/* PR-vi: Domain Heatmap column removed. The conditional block is kept
+            empty and unreachable below — the legacy heatmap loop is dead. */}
+        {false && (
+          <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
+            <div
+              className="px-4 py-2 border-b"
+              style={{ borderColor: "var(--qgi-border)" }}
             >
-              Domain Heatmap
-            </span>
-            <InfoTooltip text="Count of countries where each L1 taxonomy domain appears in the top 3 S-tier categories." />
-          </div>
-          <div className="px-4 py-2 flex-1">
-            {domainHeatmap.length === 0 ? (
-              <div
-                className="text-[10px] py-4 text-center"
+              <span
+                className="text-[9px] tracking-[0.25em] uppercase"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                No domain data
-              </div>
-            ) : (
-              <ul className="space-y-1.5">
-                {domainHeatmap.map((d) => {
-                  const barWidth = (d.count / maxDomainCount) * 100;
-                  return (
-                    <li key={d.id} className="flex items-center gap-2">
-                      <span
-                        className="inline-block w-2 h-2 rounded-full shrink-0"
-                        style={{ backgroundColor: d.color }}
-                      />
-                      <span
-                        className="text-[10px] w-28 shrink-0 truncate"
-                        style={{ color: "var(--qgi-text-muted)" }}
-                      >
-                        {d.id} {d.label}
-                      </span>
-                      <div
-                        className="flex-1 h-3 rounded overflow-hidden"
-                        style={{ backgroundColor: "var(--qgi-surface-2)" }}
-                      >
-                        <div
-                          className="h-full rounded transition-all"
-                          style={{
-                            width: `${barWidth}%`,
-                            backgroundColor: d.color,
-                            opacity: 0.6,
-                          }}
+                Domain Heatmap
+              </span>
+              <InfoTooltip text="Count of countries where each L1 taxonomy domain appears in the top 3 S-tier categories." />
+            </div>
+            <div className="px-4 py-2 flex-1">
+              {domainHeatmap.length === 0 ? (
+                <div
+                  className="text-[10px] py-4 text-center"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  No domain data
+                </div>
+              ) : (
+                <ul className="space-y-1.5">
+                  {domainHeatmap.map((d) => {
+                    const barWidth = (d.count / maxDomainCount) * 100;
+                    return (
+                      <li key={d.id} className="flex items-center gap-2">
+                        <span
+                          className="inline-block w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: d.color }}
                         />
-                      </div>
-                      <span
-                        className="font-data text-[10px] w-6 text-right shrink-0"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        {d.count}
-                      </span>
-                    </li>
-                  );
-                })}
-              </ul>
-            )}
+                        <span
+                          className="text-[10px] w-28 shrink-0 truncate"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          {d.id} {d.label}
+                        </span>
+                        <div
+                          className="flex-1 h-3 rounded overflow-hidden"
+                          style={{ backgroundColor: "var(--qgi-surface-2)" }}
+                        >
+                          <div
+                            className="h-full rounded transition-all"
+                            style={{
+                              width: `${barWidth}%`,
+                              backgroundColor: d.color,
+                              opacity: 0.6,
+                            }}
+                          />
+                        </div>
+                        <span
+                          className="font-data text-[10px] w-6 text-right shrink-0"
+                          style={{ color: "var(--qgi-text-dim)" }}
+                        >
+                          {d.count}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
           </div>
-        </div>
+        )}
+        {/* /PR-vi: end dead Domain Heatmap block */}
 
-        {/* ── Top Convergences (middle) ───────────────────────────── */}
+        {/* ── Top Convergences (left, was middle) ─────────────────── */}
         <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
             className="px-4 py-2 border-b flex items-baseline justify-between"
@@ -1301,6 +1386,9 @@ export function BaseClient({
                 <li key={`${p.country_a}-${p.country_b}-${i}`}>
                   <button
                     onClick={() => navigateToPair(p)}
+                    aria-disabled={
+                      !p.country_a_id || !p.country_b_id ? "true" : undefined
+                    }
                     className="w-full text-left flex items-center gap-3 px-4 py-2 transition-colors hover:bg-[var(--qgi-surface-2)]"
                   >
                     <div className="flex-1 min-w-0">
@@ -1366,139 +1454,170 @@ export function BaseClient({
             </ul>
           )}
         </div>
-      </div>
+      </section>
 
       {/* ================================================================
-          ZONE 5: DATA FOUNDATION (collapsed by default)
+          SECTION 7: FOOTER DISCLOSURE — PR-vi
+          Single-line footer with bake date + scoring version + methodology
+          link. Replaces the old Data Foundation accordion (moved to the
+          dedicated /methodology page per Majles verdict).
           ================================================================ */}
-      <div
-        className="border-t shrink-0"
+      <footer
+        className="border-t shrink-0 px-4 lg:px-6 py-3 text-[10px] tracking-wider"
         style={{
           borderColor: "var(--qgi-border)",
           backgroundColor: "var(--qgi-bg)",
+          color: "var(--qgi-text-dim)",
         }}
       >
-        <button
-          onClick={() => setDataFoundationOpen(!dataFoundationOpen)}
-          className="w-full px-4 py-3 flex items-center gap-3 text-left hover:bg-[var(--qgi-surface-2)] transition-colors"
+        V{stats.version} scoring · Data as of {generatedShort} · Tier vocabulary: HIGH /
+        MODERATE / INDICATIVE ·{" "}
+        <Link
+          href="/methodology"
+          className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
         >
-          <span
-            className="text-[10px] transition-transform"
-            style={{
-              color: "var(--qgi-text-dim)",
-              transform: dataFoundationOpen ? "rotate(90deg)" : "rotate(0deg)",
-            }}
-          >
-            &#9654;
-          </span>
-          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-            Data foundation:
-          </span>
-          <span
-            className="font-data text-[10px]"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            {indexes.length} indicators across {sectorCounts.length} sectors
-          </span>
-          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-            &#183;
-          </span>
-          <span
-            className="font-data text-[10px]"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            Scoring {stats.version}
-          </span>
-          <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
-            &#183;
-          </span>
-          <span
-            className="font-data text-[10px]"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            Last pipeline: {generatedShort}
-          </span>
-          <span className="flex-1" />
-          <Link
-            href="/methodology#data-sources"
-            className="text-[9px] tracking-wider hover:text-[var(--qgi-accent)] transition-colors"
-            style={{ color: "var(--qgi-text-dim)" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            Methodology &#8594;
-          </Link>
-        </button>
+          Methodology &amp; known limitations &#8594;
+        </Link>
+      </footer>
 
-        {dataFoundationOpen && (
-          <div
-            className="grid grid-cols-1 lg:grid-cols-3 gap-px border-t"
-            style={{
-              borderColor: "var(--qgi-border)",
-              backgroundColor: "var(--qgi-border)",
-            }}
+      {/* ================================================================
+          LEGACY ZONE 5: DATA FOUNDATION (PR-vi: dead block, retained for
+          potential future re-enable; rendering gated to never run)
+          ================================================================ */}
+      {false && (
+        <div
+          className="border-t shrink-0"
+          style={{
+            borderColor: "var(--qgi-border)",
+            backgroundColor: "var(--qgi-bg)",
+          }}
+        >
+          <button
+            onClick={() => setDataFoundationOpen(!dataFoundationOpen)}
+            className="w-full px-4 py-3 flex items-center gap-3 text-left hover:bg-[var(--qgi-surface-2)] transition-colors"
           >
-            {/* Sector rose */}
-            <div
-              className="flex flex-col min-h-0"
-              style={{ backgroundColor: "var(--qgi-bg)" }}
+            <span
+              className="text-[10px] transition-transform"
+              style={{
+                color: "var(--qgi-text-dim)",
+                transform: dataFoundationOpen ? "rotate(90deg)" : "rotate(0deg)",
+              }}
             >
-              <div
-                className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b"
-                style={{
-                  color: "var(--qgi-text-dim)",
-                  borderColor: "var(--qgi-border)",
-                }}
-              >
-                Indicators by Sector
-              </div>
-              <div className="h-[200px]">
-                <SectorRose
-                  data={sectorCounts}
-                  activeSector={null}
-                  onSectorClick={() => {}}
-                />
-              </div>
-            </div>
+              &#9654;
+            </span>
+            <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+              Data foundation:
+            </span>
+            <span
+              className="font-data text-[10px]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              {indexes.length} indicators across {sectorCounts.length} sectors
+            </span>
+            <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+              &#183;
+            </span>
+            <span
+              className="font-data text-[10px]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Scoring {stats.version}
+            </span>
+            <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
+              &#183;
+            </span>
+            <span
+              className="font-data text-[10px]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Last pipeline: {generatedShort}
+            </span>
+            <span className="flex-1" />
+            <Link
+              href="/methodology#data-sources"
+              className="text-[9px] tracking-wider hover:text-[var(--qgi-accent)] transition-colors"
+              style={{ color: "var(--qgi-text-dim)" }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              Methodology &#8594;
+            </Link>
+          </button>
 
-            {/* Stats grid */}
+          {dataFoundationOpen && (
             <div
-              className="lg:col-span-2 flex flex-col"
-              style={{ backgroundColor: "var(--qgi-bg)" }}
+              className="grid grid-cols-1 lg:grid-cols-3 gap-px border-t"
+              style={{
+                borderColor: "var(--qgi-border)",
+                backgroundColor: "var(--qgi-border)",
+              }}
             >
+              {/* Sector rose */}
               <div
-                className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b"
-                style={{
-                  color: "var(--qgi-text-dim)",
-                  borderColor: "var(--qgi-border)",
-                }}
+                className="flex flex-col min-h-0"
+                style={{ backgroundColor: "var(--qgi-bg)" }}
               >
-                Coverage Summary
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
-                <FooterStat label="Total indicators" value={indexes.length.toString()} />
-                <FooterStat label="Sectors" value={sectorCounts.length.toString()} />
-                <FooterStat
-                  label="Pattern pairs"
-                  value={totalUniquePairs.toLocaleString()}
-                />
-                <FooterStat
-                  label="Curated countries"
-                  value={`${stats.curated} / ${stats.total}`}
-                />
-              </div>
-              <div className="px-4 pb-3">
-                <Link
-                  href="/methodology#data-sources"
-                  className="text-[10px] tracking-wider hover:text-[var(--qgi-accent)] transition-colors"
-                  style={{ color: "var(--qgi-text-dim)" }}
+                <div
+                  className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b"
+                  style={{
+                    color: "var(--qgi-text-dim)",
+                    borderColor: "var(--qgi-border)",
+                  }}
                 >
-                  Full indicator catalogue &#8594;
-                </Link>
+                  Indicators by Sector
+                </div>
+                <div className="h-[200px]">
+                  <SectorRose
+                    data={sectorCounts}
+                    activeSector={null}
+                    onSectorClick={() => {}}
+                  />
+                </div>
+              </div>
+
+              {/* Stats grid */}
+              <div
+                className="lg:col-span-2 flex flex-col"
+                style={{ backgroundColor: "var(--qgi-bg)" }}
+              >
+                <div
+                  className="text-[9px] tracking-[0.25em] uppercase px-4 py-2 border-b"
+                  style={{
+                    color: "var(--qgi-text-dim)",
+                    borderColor: "var(--qgi-border)",
+                  }}
+                >
+                  Coverage Summary
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4">
+                  <FooterStat
+                    label="Total indicators"
+                    value={indexes.length.toString()}
+                  />
+                  <FooterStat label="Sectors" value={sectorCounts.length.toString()} />
+                  <FooterStat
+                    label="Pattern pairs"
+                    value={totalUniquePairs.toLocaleString()}
+                  />
+                  <FooterStat
+                    label="Curated countries"
+                    value={`${stats.curated} / ${stats.total}`}
+                  />
+                </div>
+                <div className="px-4 pb-3">
+                  <Link
+                    href="/methodology#data-sources"
+                    className="text-[10px] tracking-wider hover:text-[var(--qgi-accent)] transition-colors"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    Full indicator catalogue &#8594;
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
+      {/* /PR-vi: end dead Data Foundation block */}
     </div>
   );
 }
@@ -1592,4 +1711,187 @@ function FooterStat({ label, value }: { label: string; value: string }) {
 
 function formatCategory(cat: string): string {
   return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+// ===========================================================================
+// PR-vi (2026-05-15) — Four-family summary band
+// ---------------------------------------------------------------------------
+// Section 3 of the Dashboard. One dominant number per V3 family, each card
+// is a clickable CTA into the deeper family page.
+//
+// E1 fallback rule (per Majles engineering pre-flight): when the signals
+// HIGH count is < 3, the Signals card shows (n_high + n_moderate) in amber
+// labeled "risk categories at elevated signal levels" instead of red "{n}
+// firing HIGH". This prevents the masthead from rendering a misleading "1"
+// in HIGH color when only one category clears the strict z >= 2.5 threshold.
+// ===========================================================================
+
+function FourFamilyBand({
+  countriesHigh,
+  signalsHighCount,
+  signalsModerateCount,
+  signalsTotalCount,
+  topPair,
+  totalUniquePairs,
+  mlValidatedCount,
+  totalLocked,
+}: {
+  countriesHigh: number;
+  signalsHighCount: number;
+  signalsModerateCount: number;
+  signalsTotalCount: number;
+  topPair: PatternRow | null;
+  totalUniquePairs: number;
+  mlValidatedCount: number;
+  totalLocked: number;
+}) {
+  // E1 fallback rule.
+  const signalsUseHigh = signalsHighCount >= 3;
+  const signalsNumber = signalsUseHigh
+    ? signalsHighCount
+    : signalsHighCount + signalsModerateCount;
+  const signalsLabel = signalsUseHigh
+    ? "risk categories firing HIGH"
+    : "risk categories at elevated signal levels";
+  const signalsColor = signalsUseHigh ? "#f87171" : "var(--qgi-amber)";
+
+  return (
+    <section
+      aria-label="QGI family summary"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px shrink-0 border-b"
+      style={{
+        backgroundColor: "var(--qgi-border)",
+        borderColor: "var(--qgi-border)",
+      }}
+    >
+      {/* Countries card */}
+      <Link
+        href="/countries"
+        className="flex flex-col px-4 lg:px-6 py-5 transition-colors hover:bg-[var(--qgi-surface-2)]"
+        style={{ backgroundColor: "var(--qgi-bg)" }}
+      >
+        <span
+          className="text-[9px] tracking-[0.25em] uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Countries
+        </span>
+        <span
+          className="font-data text-4xl font-bold leading-none mb-1.5 tabular-nums"
+          style={{ color: "#f87171" }}
+        >
+          {countriesHigh}
+        </span>
+        <span className="text-xs" style={{ color: "var(--qgi-text-muted)" }}>
+          countries at elevated risk
+        </span>
+        <span
+          className="text-[10px] tracking-wider mt-3 transition-colors"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          See all HIGH countries &#8594;
+        </span>
+      </Link>
+
+      {/* Signals card */}
+      <Link
+        href="/signals"
+        className="flex flex-col px-4 lg:px-6 py-5 transition-colors hover:bg-[var(--qgi-surface-2)]"
+        style={{ backgroundColor: "var(--qgi-bg)" }}
+      >
+        <span
+          className="text-[9px] tracking-[0.25em] uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Signals
+        </span>
+        <span
+          className="font-data text-4xl font-bold leading-none mb-1.5 tabular-nums"
+          style={{ color: signalsColor }}
+        >
+          {signalsNumber}
+        </span>
+        <span className="text-xs" style={{ color: "var(--qgi-text-muted)" }}>
+          {signalsLabel}
+        </span>
+        <span
+          className="text-[10px] tracking-wider mt-3"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          See all {signalsTotalCount}
+          {" risk categories →"}
+        </span>
+      </Link>
+
+      {/* Patterns card */}
+      <Link
+        href="/patterns"
+        className="flex flex-col px-4 lg:px-6 py-5 transition-colors hover:bg-[var(--qgi-surface-2)]"
+        style={{ backgroundColor: "var(--qgi-bg)" }}
+      >
+        <span
+          className="text-[9px] tracking-[0.25em] uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Patterns
+        </span>
+        <span
+          className="font-data text-4xl font-bold leading-none mb-1.5 tabular-nums"
+          style={{ color: "var(--qgi-accent)" }}
+        >
+          {topPair ? topPair.pattern_power_score.toFixed(0) : "—"}
+        </span>
+        <span className="text-xs leading-snug" style={{ color: "var(--qgi-text-muted)" }}>
+          {topPair ? (
+            <>
+              {topPair.country_a} → {topPair.country_b} · {topPair.pattern_length}y ·{" "}
+              {(topPair.avg_correlation * 100).toFixed(0)}% corr
+            </>
+          ) : (
+            "top pattern pair"
+          )}
+        </span>
+        <span
+          className="text-[10px] tracking-wider mt-3"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          See all {totalUniquePairs}
+          {" pairs →"}
+        </span>
+      </Link>
+
+      {/* Precedents card */}
+      <Link
+        href="/precedents"
+        className="flex flex-col px-4 lg:px-6 py-5 transition-colors hover:bg-[var(--qgi-surface-2)]"
+        style={{ backgroundColor: "var(--qgi-bg)" }}
+      >
+        <span
+          className="text-[9px] tracking-[0.25em] uppercase mb-2"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Precedents
+        </span>
+        <span
+          className="font-data text-4xl font-bold leading-none mb-1.5 tabular-nums"
+          style={{ color: "var(--qgi-accent)" }}
+        >
+          {mlValidatedCount}
+          <span className="text-2xl font-normal" style={{ color: "var(--qgi-text-dim)" }}>
+            {" "}
+            / {totalLocked}
+          </span>
+        </span>
+        <span className="text-xs" style={{ color: "var(--qgi-text-muted)" }}>
+          ML-validated recipes / locked set
+        </span>
+        <span
+          className="text-[10px] tracking-wider mt-3"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          See all recipes &#8594;
+        </span>
+      </Link>
+    </section>
+  );
 }

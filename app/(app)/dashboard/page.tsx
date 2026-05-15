@@ -1,17 +1,38 @@
 import { loadCountryRisks } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { BaseClient } from "./BaseClient";
 import indexData from "@/data/indexes.json";
 import taxonomyData from "@/data/taxonomy_hierarchy.json";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 
-// T19 #312: /dashboard is a redirect alias for /base — public via SKIP_AUTH
-// for now, but not the canonical landing for outside visitors. Explicitly
-// de-indexed so search engines surface /base instead.
+/**
+ * PR-vi (2026-05-15) — Dashboard redesigned per JTBD Majles verdict.
+ *
+ * Dashboard is QGI's canonical front door — the "simple to use" landing
+ * surface. The 4 family pages (/precedents, /countries, /signals,
+ * /patterns) are the "deep to explore" surface beneath.
+ *
+ * Old `robots: noindex` removed: Dashboard is now indexable. The /base
+ * legacy slug-route (if any) should redirect here or carry its own
+ * noindex; this page is the canonical entry point.
+ *
+ * No new data loaders — every section reads from the existing baked
+ * JSONs that the V3 family pages already use:
+ *   - country-risks.json  → tier counts + watchlist + outliers + featured
+ *   - ranking.json        → top pattern pairs
+ *   - recipes-top50.json  → top convergences
+ *   - ml-recipe-stack.json → Precedents card validated-count
+ *
+ * Added in this PR:
+ *   - loadMlRecipeStack() call for the Precedents card
+ *   - Server-side signals HIGH + MODERATE aggregation (mirrors logic
+ *     from /signals/page.tsx; could be extracted to lib/ if a third
+ *     consumer ever needs it)
+ */
 export const metadata = {
   title: "Dashboard — QGI Intelligence",
   description:
-    "QGI command center. Situation summary, watchlist, signal landscape, and data foundation.",
-  robots: { index: false, follow: true },
+    "QGI command center. Consolidated view of countries, signals, patterns, and precedents — the front door to the deeper family pages.",
 };
 
 /**
@@ -100,13 +121,54 @@ async function fetchTopSignals(): Promise<SignalRow[]> {
   }
 }
 
-export default async function BasePage() {
+/**
+ * PR-vi — server-side signals aggregation for the four-family band.
+ *
+ * Mirrors `app/(app)/signals/page.tsx` buildSignals() logic: for each
+ * country, dedupe per-category to the highest-salience entry across
+ * S/M/L/XL windows; then count categories where max-salience-z >= 2.5
+ * (HIGH rung) or 1.0..2.5 (MODERATE rung).
+ *
+ * Returns the two counts the Section 3 Signals card needs. The
+ * `n_high < 3` fallback rule (E1) is applied at render time in
+ * BaseClient — this function returns both counts unconditionally.
+ *
+ * 13 locked recipes per ML Stage 4 pre-registration (qgi-docs/internal/
+ * ops/ml-track/FINAL-RESULTS.md). Update only if pre-registration is
+ * revised by founder+ML-Opus.
+ */
+function aggregateSignalsTierCounts(
+  risks: Awaited<ReturnType<typeof loadCountryRisks>> | null
+): { n_high: number; n_moderate: number; n_total: number } {
+  if (!risks) return { n_high: 0, n_moderate: 0, n_total: 0 };
+  const perCategory = new Map<string, number>();
+  for (const country of Object.values(risks.countries)) {
+    for (const tierBlock of Object.values(country.tiers ?? {})) {
+      for (const c of tierBlock.top_categories ?? []) {
+        const sal = c.salience_score ?? c.z_score ?? 0;
+        const prev = perCategory.get(c.category) ?? -Infinity;
+        if (sal > prev) perCategory.set(c.category, sal);
+      }
+    }
+  }
+  let n_high = 0;
+  let n_moderate = 0;
+  for (const sal of perCategory.values()) {
+    if (sal >= 2.5) n_high++;
+    else if (sal >= 1.0) n_moderate++;
+  }
+  return { n_high, n_moderate, n_total: perCategory.size };
+}
+
+export default async function DashboardPage() {
   // Don't bring down the page if any single source 500s.
-  const [risksResult, topPairsResult, topSignalsResult] = await Promise.allSettled([
-    loadCountryRisks(),
-    fetchTopPairs(),
-    fetchTopSignals(),
-  ]);
+  const [risksResult, topPairsResult, topSignalsResult, mlStackResult] =
+    await Promise.allSettled([
+      loadCountryRisks(),
+      fetchTopPairs(),
+      fetchTopSignals(),
+      loadMlRecipeStack(),
+    ]);
 
   const risks = risksResult.status === "fulfilled" ? risksResult.value : null;
   const topPairs =
@@ -115,8 +177,19 @@ export default async function BasePage() {
       : { pairs: [], totalUniquePairs: 0 };
   const topSignals =
     topSignalsResult.status === "fulfilled" ? topSignalsResult.value : [];
+  const mlStack = mlStackResult.status === "fulfilled" ? mlStackResult.value : null;
 
   const indexes = indexData as IndexEntry[];
+
+  // PR-vi Section 3 (Signals card) — server-side aggregation.
+  const signalsTierCounts = aggregateSignalsTierCounts(risks);
+
+  // PR-vi Section 3 (Precedents card) — counts.
+  const mlValidatedCount = mlStack?.metadata.top_4_recipes.length ?? 0;
+  // 13 locked recipes per ML Stage 4 pre-registration (qgi-docs/internal/
+  // ops/ml-track/FINAL-RESULTS.md). Update only if pre-registration is
+  // revised by founder+ML-Opus.
+  const TOTAL_LOCKED = 13;
 
   return (
     <BaseClient
@@ -126,6 +199,12 @@ export default async function BasePage() {
       totalUniquePairs={topPairs.totalUniquePairs}
       topSignals={topSignals}
       taxonomy={taxonomyData}
+      // PR-vi Majles-verdict props
+      signalsHighCount={signalsTierCounts.n_high}
+      signalsModerateCount={signalsTierCounts.n_moderate}
+      signalsTotalCount={signalsTierCounts.n_total}
+      mlValidatedCount={mlValidatedCount}
+      totalLocked={TOTAL_LOCKED}
     />
   );
 }
