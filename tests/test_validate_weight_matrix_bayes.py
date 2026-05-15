@@ -74,6 +74,26 @@ def test_diagnostic_thresholds_locked_at_ratified_values():
     assert mod.N_EFF_THRESHOLD == 400, "Ji-Hoon §3.1"
     assert mod.DIVERGENCE_THRESHOLD_PCT == 0.001, "Ji-Hoon §3.1 (< 0.1 %)"
     assert mod.E_BFMI_THRESHOLD == 0.3, "Ji-Hoon §3.1"
+    assert mod.TREEDEPTH_SATURATION_THRESHOLD == 0.01, \
+        "Ji-Hoon J-§3.1: < 1 % treedepth saturation (was non-blocking 2026-05-14; " \
+        "MANDATORY 2026-05-15 6-seat); pinned at v0.2-bayes-sweep-config.json"
+
+
+def test_diagnostic_var_names_covers_all_9_sampled_rvs():
+    """F-1 from Sonnet review of PR #60; Kwame round-2 reclassified from
+    polish to pre-registration-discipline gap; Ji-Hoon real-data ratification
+    MANDATORY: compute_diagnostics's R-hat / n_eff gate must include the
+    272-element country_intercept_raw block (the funnel-failure site) plus
+    all hyperprior scales — otherwise a chain breakdown there silently
+    passes the gate. Any future shrinkage of DIAGNOSTIC_VAR_NAMES requires
+    a fresh Majles convening per Kwame round-2 ruling."""
+    expected = {
+        "mu", "tau_arm", "sigma_sector", "alpha_sector", "sigma_cat",
+        "beta_cat_raw", "sigma_country", "country_intercept_raw", "sigma",
+    }
+    assert set(mod.DIAGNOSTIC_VAR_NAMES) == expected, \
+        f"DIAGNOSTIC_VAR_NAMES drift; got {set(mod.DIAGNOSTIC_VAR_NAMES)}, " \
+        f"expected {expected}"
 
 
 def test_chain_seeds_are_at_least_n_chains():
@@ -455,3 +475,149 @@ def test_cli_requires_one_mode():
 def test_cli_rejects_both_modes():
     with pytest.raises(SystemExit):
         mod._main(["--smoke", "--prep-only"])
+
+
+# ===========================================================================
+# compute_diagnostics — F-1 + J-§3.1 extensions (no NUTS; hand-built idata)
+#
+# These tests build a minimal arviz InferenceData by hand so we can exercise
+# compute_diagnostics() without invoking PyMC sampling. They run in pytest
+# (default Python env) because arviz is light enough to be available in the
+# default env, but they DO import arviz — guarded with importorskip so CI
+# without arviz installed degrades gracefully.
+# ===========================================================================
+
+def _build_mock_idata(*, n_chains: int = 2, n_draws: int = 100,
+                      tree_depth_values: list[int] | None = None,
+                      n_divergences: int = 0):
+    """Build a minimal arviz InferenceData carrying just enough structure
+    for compute_diagnostics to exercise. PyMC's actual idata has many more
+    groups, but compute_diagnostics only reads:
+      - posterior (var_names indexed)
+      - sample_stats.draw / .chain / .diverging / .tree_depth / .energy
+
+    Note: R-hat and n_eff are derived from the posterior values, not passed
+    in — arviz.summary() computes them. Future test authors exercising FAIL
+    branches for those diagnostics should construct posterior arrays that
+    produce the target r_hat/ess_bulk (e.g., chain-correlated draws).
+    """
+    az = pytest.importorskip("arviz")
+    xr = pytest.importorskip("xarray")
+
+    posterior = {}
+    for var in mod.DIAGNOSTIC_VAR_NAMES:
+        # Per-var posterior: shape (chain, draw). Drawn from a tight
+        # normal so summary stats look healthy by default.
+        posterior[var] = xr.DataArray(
+            np.random.default_rng(42).normal(0, 1, size=(n_chains, n_draws)),
+            dims=["chain", "draw"],
+        )
+    posterior_ds = xr.Dataset(posterior)
+
+    tree_depth_arr = (
+        np.full((n_chains, n_draws), tree_depth_values, dtype=int)
+        if isinstance(tree_depth_values, int)
+        else np.array(tree_depth_values).reshape(n_chains, n_draws)
+        if tree_depth_values is not None
+        else np.full((n_chains, n_draws), 8, dtype=int)  # well below max_treedepth=12
+    )
+    sample_stats = xr.Dataset({
+        "diverging": xr.DataArray(
+            np.concatenate([
+                np.ones(n_divergences, dtype=int),
+                np.zeros(n_chains * n_draws - n_divergences, dtype=int),
+            ]).reshape(n_chains, n_draws),
+            dims=["chain", "draw"],
+        ),
+        "tree_depth": xr.DataArray(tree_depth_arr, dims=["chain", "draw"]),
+        # arviz.bfmi() needs `energy` to compute E-BFMI. Use a mildly-noisy
+        # series so the per-chain BFMI is well-defined and > 0.3 by default.
+        "energy": xr.DataArray(
+            np.random.default_rng(43).normal(100, 1, size=(n_chains, n_draws)),
+            dims=["chain", "draw"],
+        ),
+    })
+    return az.InferenceData(posterior=posterior_ds, sample_stats=sample_stats)
+
+
+def test_compute_diagnostics_emits_treedepth_saturation_fields():
+    """J-§3.1: compute_diagnostics must emit max_observed_treedepth,
+    n_treedepth_saturated, treedepth_saturation_rate, and a verdict."""
+    pytest.importorskip("arviz")
+    pytest.importorskip("xarray")
+    idata = _build_mock_idata(tree_depth_values=8)  # well below MAX_TREEDEPTH
+    diag = mod.compute_diagnostics(idata)
+    assert "max_observed_treedepth" in diag
+    assert "n_treedepth_saturated" in diag
+    assert "treedepth_saturation_rate" in diag
+    assert "treedepth_saturation" in diag["verdicts"]
+    # Healthy run: depth=8 < max_treedepth=12 → no saturation
+    assert diag["max_observed_treedepth"] == 8
+    assert diag["n_treedepth_saturated"] == 0
+    assert diag["treedepth_saturation_rate"] == 0.0
+    assert diag["verdicts"]["treedepth_saturation"] == "PASS"
+
+
+def test_compute_diagnostics_flags_treedepth_saturation_at_threshold():
+    """J-§3.1: > 1 % saturated → FAIL verdict."""
+    pytest.importorskip("arviz")
+    pytest.importorskip("xarray")
+    # 2 chains × 100 draws = 200 total. Saturate 3 of them = 1.5 % > 1 %.
+    saturated = [12] * 3 + [8] * 197
+    idata = _build_mock_idata(tree_depth_values=saturated)
+    diag = mod.compute_diagnostics(idata)
+    assert diag["n_treedepth_saturated"] == 3
+    assert diag["treedepth_saturation_rate"] == 0.015
+    assert diag["verdicts"]["treedepth_saturation"] == "FAIL"
+
+
+def test_compute_diagnostics_var_names_in_gate_defaults_to_all_9():
+    """F-1: by default, compute_diagnostics gates ALL 9 sampled RVs.
+    The output dict carries `var_names_in_gate` for audit-trail purposes."""
+    pytest.importorskip("arviz")
+    pytest.importorskip("xarray")
+    idata = _build_mock_idata()
+    diag = mod.compute_diagnostics(idata)
+    assert set(diag["var_names_in_gate"]) == set(mod.DIAGNOSTIC_VAR_NAMES)
+    # And specifically the funnel-failure site:
+    assert "country_intercept_raw" in diag["var_names_in_gate"]
+
+
+def test_compute_diagnostics_var_names_override():
+    """F-1: callers can override var_names (e.g., for narrower diagnostic
+    sweeps) but the override is recorded in the output for audit traceability."""
+    pytest.importorskip("arviz")
+    pytest.importorskip("xarray")
+    idata = _build_mock_idata()
+    # Use a SUBSET of the default vars — arviz will only summarise those.
+    custom = ("mu", "tau_arm")
+    diag = mod.compute_diagnostics(idata, var_names=custom)
+    assert tuple(diag["var_names_in_gate"]) == custom
+
+
+def test_compute_diagnostics_treedepth_missing_fails_safe():
+    """If sample_stats has no tree_depth (older PyMC backend), the
+    treedepth verdict is FAIL — better to halt than fly blind."""
+    az = pytest.importorskip("arviz")
+    xr = pytest.importorskip("xarray")
+    # Build idata WITHOUT tree_depth
+    posterior = {
+        var: xr.DataArray(np.zeros((2, 50)), dims=["chain", "draw"])
+        for var in mod.DIAGNOSTIC_VAR_NAMES
+    }
+    sample_stats = xr.Dataset({
+        "diverging": xr.DataArray(np.zeros((2, 50), dtype=int), dims=["chain", "draw"]),
+        "energy": xr.DataArray(
+            np.random.default_rng(43).normal(100, 1, size=(2, 50)),
+            dims=["chain", "draw"],
+        ),
+    })
+    idata = az.InferenceData(
+        posterior=xr.Dataset(posterior),
+        sample_stats=sample_stats,
+    )
+    diag = mod.compute_diagnostics(idata)
+    assert diag["max_observed_treedepth"] == -1
+    assert diag["n_treedepth_saturated"] == -1
+    assert np.isnan(diag["treedepth_saturation_rate"])
+    assert diag["verdicts"]["treedepth_saturation"] == "FAIL"
