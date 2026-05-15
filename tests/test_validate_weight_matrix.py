@@ -1924,12 +1924,17 @@ def test_main_end_to_end_strata_threshold_reflected_in_config(monkeypatch, tmp_p
 # ===========================================================================
 
 
-def test_v6_schema_version_is_5():
-    """T8 bumps SCHEMA_VERSION from 4 to 5. v6 output JSONs carry the
-    rule v2 verdict + posterior block; pre-T8 v4 consumers will see a
-    new schema version and can refuse to parse if they don't understand
-    it."""
-    assert mod.SCHEMA_VERSION == 5
+def test_schema_version_is_6():
+    """T12 #692 bumps SCHEMA_VERSION from 5 to 6 to mark the optional
+    `per_cell` block emission for Path B's partial-pooling evaluator.
+    Per qgi-docs `ca77505` §3.1 (post-6-seat-Majles amendment 2026-05-15):
+    response variable is anomaly_score, not AUC, because ROC-AUC is
+    undefined at single-observation granularity. Backward-compat: when
+    --emit-per-cell is NOT set, output is functionally equivalent to v5.
+
+    Previous canary (v5, T8 / #672): rule v2 verdict + multi-seed
+    baseline + posterior-update protocol — all preserved verbatim in v6."""
+    assert mod.SCHEMA_VERSION == 6
 
 
 def test_v6_rule_v2_constants_match_pre_reg():
@@ -2662,3 +2667,139 @@ def test_v6_5_transform_layer_applied_provenance_field(monkeypatch, tmp_path):
     assert "transform_layer_applied" in p
     # D-arm sanity-check run (rule_v2_evaluation=False): transform_layer NOT applied
     assert p["transform_layer_applied"] is False
+
+
+# =============================================================================
+# v6.6 NEW (T12 #692): --emit-per-cell flag tests
+#
+# Per qgi-docs `ca77505` §3.1 (post-6-seat-Majles amendment 2026-05-15):
+# Path A v6.6 emits the per-(country_id, event_category) anomaly_score tensor
+# under a top-level `per_cell` block when --emit-per-cell is set. Path B's
+# partial-pooling evaluator (`validate_weight_matrix_bayes.py`) consumes it
+# via the `prep_cells_from_arm_jsons` helper. Backward-compat: when the flag
+# is NOT set, the output JSON is v5-equivalent (no `per_cell` key).
+# =============================================================================
+
+
+def test_build_per_cell_block_schema():
+    """The per_cell block has the documented top-level schema fields."""
+    scored = pd.DataFrame({
+        "country_id": [1, 1, 2, 2],
+        "event_category": ["civil_war", "monetary_policy", "civil_war", "monetary_policy"],
+        "anomaly_score": [0.5, -0.3, 1.2, 0.0],
+        "n_indicators_used": [10, 5, 8, 12],
+    })
+    block = mod._build_per_cell_block(scored)
+    assert block["schema_version"] == 1
+    assert block["n_cells"] == 4
+    assert block["n_indicators_used_min"] == 5
+    assert block["n_indicators_used_max"] == 12
+    assert block["n_indicators_used_median"] == 9.0  # median of (5, 8, 10, 12)
+    assert isinstance(block["cells"], list)
+    assert len(block["cells"]) == 4
+
+
+def test_build_per_cell_block_cell_record_shape():
+    """Each cell record carries the four required fields with correct types."""
+    scored = pd.DataFrame({
+        "country_id": [42],
+        "event_category": ["civil_war"],
+        "anomaly_score": [1.234],
+        "n_indicators_used": [7],
+    })
+    block = mod._build_per_cell_block(scored)
+    cell = block["cells"][0]
+    assert set(cell.keys()) == {"country_id", "event_category",
+                                "anomaly_score", "n_indicators_used"}
+    assert cell["country_id"] == 42
+    assert cell["event_category"] == "civil_war"
+    assert cell["anomaly_score"] == 1.234
+    assert cell["n_indicators_used"] == 7
+    # Types are JSON-serialisable Python primitives (int/str/float), not numpy
+    assert type(cell["country_id"]) is int
+    assert type(cell["event_category"]) is str
+    assert type(cell["anomaly_score"]) is float
+    assert type(cell["n_indicators_used"]) is int
+
+
+def test_build_per_cell_block_empty_input():
+    """Empty scored DataFrame produces a well-formed empty block (no crash)."""
+    scored = pd.DataFrame({
+        "country_id": pd.Series([], dtype=int),
+        "event_category": pd.Series([], dtype=str),
+        "anomaly_score": pd.Series([], dtype=float),
+        "n_indicators_used": pd.Series([], dtype=int),
+    })
+    block = mod._build_per_cell_block(scored)
+    assert block["n_cells"] == 0
+    assert block["cells"] == []
+    assert block["n_indicators_used_min"] == 0
+    assert block["n_indicators_used_max"] == 0
+
+
+def test_main_emit_per_cell_off_no_per_cell_key(tmp_path, monkeypatch):
+    """v6.6 backward-compat: when --emit-per-cell is NOT set, the output
+    JSON does NOT have a `per_cell` key. This keeps v5 consumers
+    unsurprised."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+        emit_per_cell=False,  # explicit default
+    )
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert "per_cell" not in out
+
+
+def test_main_emit_per_cell_on_emits_per_cell_block(tmp_path, monkeypatch):
+    """When --emit-per-cell is set, the output JSON gains a top-level
+    `per_cell` block with the documented schema."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+        emit_per_cell=True,
+    )
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    assert "per_cell" in out
+    pc = out["per_cell"]
+    assert pc["schema_version"] == 1
+    assert pc["n_cells"] >= 0  # fixture may drop all rows via country_id mapping
+    assert isinstance(pc["cells"], list)
+    # Spot-check cell record shape IF any cells exist (fixture-dependent)
+    if pc["cells"]:
+        first = pc["cells"][0]
+        assert set(first.keys()) == {"country_id", "event_category",
+                                     "anomaly_score", "n_indicators_used"}
+
+
+def test_main_emit_per_cell_preserves_v5_fields(tmp_path, monkeypatch):
+    """The --emit-per-cell flag is ADDITIVE — every v5 top-level field
+    is present unchanged in the v6.6 output. Kwame gate 4 (forward-compat)."""
+    fixture = _build_main_fixture(tmp_path)
+    _install_main_monkeypatches(monkeypatch, tmp_path, fixture)
+
+    mod.main(
+        cutoff_year=2014, end_year=2025, with_baselines=False,
+        ablation_arm="D", bootstrap_resamples=20,
+        emit_per_cell=True,
+    )
+    out = json.loads((fixture["ref_dir"] / "phase4-validation-armD.json")
+                     .read_text(encoding="utf-8"))
+    # Spot-check that every v5 top-level key is still present
+    for v5_key in (
+        "schema_version", "generated", "ablation_arm", "ablation_arm_config",
+        "method", "config", "summary",
+        "per_event_category_auc", "reliability_diagram",
+        "stratified_auc", "per_event_category_ece",
+        "stratum_sensitivity", "anchor_case_battery",
+    ):
+        assert v5_key in out, f"v5 key {v5_key!r} missing from v6.6 output"
+    # And the new v6.6 key
+    assert "per_cell" in out
