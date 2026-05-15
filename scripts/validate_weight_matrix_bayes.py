@@ -1,42 +1,46 @@
 """
-Phase 5 v0.2 Path B — hierarchical-Bayes partial-pooling evaluator (T12 day-1 scaffold).
+Phase 5 v0.2 Path B — hierarchical-Bayes partial-pooling evaluator.
 
-This is the Bayesian sibling of `validate_weight_matrix.py` (v6.5, the
-frequentist Path A evaluator at qgi-ml `d26b4e3`). Path A returned INERT
-4/4 on Stage F substrate at T9 (#673, qgi-data `0f8aeed`); the
-falsification report (T11, qgi-docs `dfe2cd4`, ratified 5/5 at `3b9221c`)
-fired Path B per two pre-registered triggers (Kwame T5 §2 first-execution
-affirmation + Priya T7 §3 anchor-battery auto-trigger). This module is
-the queue-ready implementation that T12 (#676) exercises against the
-Path A run artifacts.
+Bayesian sibling of `validate_weight_matrix.py` (Path A, v6.6 with
+--emit-per-cell). Path A returned INERT 4/4 on Stage F substrate at T9
+(#673, qgi-data `0f8aeed`); the falsification report (T11, qgi-docs
+`dfe2cd4`, ratified 5/5 at `3b9221c`) fired Path B per two pre-registered
+triggers (Kwame T5 §2 first-execution affirmation + Priya T7 §3
+anchor-battery auto-trigger).
 
 The contract is the Path B implementation spec at
-`qgi-docs/internal/ops/cascade-track/phase-5-v0.2-path-b-architecture.md`
-(commit `ca77505`, ratified 3/3 unanimous on 2026-05-14 by Priya #22,
-Kwame #11, Ji-Hoon #21). Sign-offs preserved at:
-  - c:/tmp/v0.2-T12-ratification/signoff_priya.md
-  - c:/tmp/v0.2-T12-ratification/signoff_kwame.md
-  - c:/tmp/v0.2-T12-ratification/signoff_jihoon.md
+`qgi-docs/internal/ops/cascade-track/phase-5-v0.2-path-b-architecture.md`.
+The spec was ratified at T10 commit `ca77505` (2026-05-14, 3/3 trio
+sign-off) and AMENDED at commit `0db64f9` (2026-05-15, 6-seat Majles
+unanimous SIGN-OFF on the response-variable shift `auc` → `anomaly_score`
+plus surgical re-derivations of §2.1, §2.4, §2.5, §3.1, and a new §5.2
+Path-B-internal closure protocol).
 
-What this scaffold does (day-1 deliverable):
+Ratification trail:
+  - 2026-05-14 3-seat: c:/tmp/v0.2-T12-ratification/signoff_{priya,kwame,jihoon}.md
+  - 2026-05-15 5-seat: c:/tmp/v0.2-T12-convergence/signoff_*.md
+  - 2026-05-15 6-seat: c:/tmp/v0.2-T12-6seat/signoff_*.md
+  - Closure tickets: qgi-aws-tf #684, #691, #692
+
+What this evaluator does:
   - Builds the PyMC partial-pooling model per spec §1 with priors per §2
-  - Generates a synthetic cell-level AUC panel for smoke-testing
-  - Runs NUTS with the §3.1 sampling config and emits the §3.1 diagnostics
-  - Provides a real-data prep helper that converts the four T9 per-arm
-    JSONs into the model's (n_arms, n_countries, n_categories) input shape
+  - Generates a synthetic cell-level anomaly_score panel for smoke-testing
+  - Loads real per-cell anomaly_score tensors from Path A v6.6 sidecar JSONs
+    (`phase4-validation-arm{A,B,C,D}-v6.json` at qgi-data `14ebded`)
+  - Runs NUTS with the §3.1 sampling config and emits §3.1 diagnostics
 
-What this scaffold does NOT do (deferred to the T12 trio re-convening on
-real data, per spec §3.1 and the Priya/Kwame/Ji-Hoon 2026-05-14 sign-offs):
-  - Run MCMC against real T9 cell-level AUCs. The trio convenes for prior
-    justification + sampling sign-off before that fires.
-  - Execute the §2.5 sensitivity sweep (3×3×4 = 36 configurations across
-    tau_arm scale, HalfCauchy scale, mu centring). The sweep config space
-    must first be pinned in a JSON config — see TODO(kwame-T12-§2.5) below.
+What this evaluator does NOT do (deferred per Kwame K-§2.5 pre-registration
+gate ordering on the trio's real-data feature branch):
+  - Execute the §2.5 sensitivity sweep (3×3×4 = 36 configurations) — sweep
+    config is pinned at qgi-data/reference/v0.2-bayes-sweep-config.json
+    (qgi-data `b059cd6`); MCMC against real data runs that 36-cell sweep
+    plus the smoke-test gate per Ji-Hoon Move 1 round-2
   - Emit a Path B falsification verdict. The verdict gate is the 94% HDI
-    on `tau_arm[A] − tau_arm[D]`, read against spec §5 routing conditions.
+    on `tau_arm[A] − tau_arm[D]`, read against spec §5.2 routing thresholds
+    (Miriam Move 3 / `0db64f9`)
 
-Model statement (verbatim from spec §1):
-    auc[arm, country, category] ~ Normal(
+Model statement (amended spec §1, qgi-docs `0db64f9`):
+    anomaly_score[arm, country, category] ~ Normal(
         mu
         + tau_arm[arm]
         + alpha_sector[sector(category)]
@@ -45,22 +49,23 @@ Model statement (verbatim from spec §1):
         sigma
     )
 
-Priors (verbatim from spec §2, ratified 3/3 on 2026-05-14):
-    tau_arm[arm]         ~ Normal(0, 0.05)                     # §2.1
-    sigma_*              ~ HalfCauchy(0.05)                    # §2.2
-    beta_cat[c]          ~ Normal(0, sigma_cat[sector(c)])     # §2.3 nested
-    mu                   ~ Normal(0.30, 0.05)                  # §2.4 deliberately mis-centered
+Priors (amended spec §2, qgi-docs `0db64f9`):
+    tau_arm[arm]         ~ Normal(0, 0.30)                     # §2.1 (was 0.05 AUC; k=5.72)
+    sigma_*              ~ HalfCauchy(0.05)                    # §2.2 INVARIANT
+    beta_cat[c]          ~ Normal(0, sigma_cat[sector(c)])     # §2.3 INVARIANT nested
+    mu                   ~ Normal(0.168, 0.263)                # §2.4 empirical-Bayes
 
-# TODO(kwame-T12-§2.5): pin sweep config to
-# qgi-data/reference/v0.2-bayes-sweep-config.json before MCMC runs
-# against real data. Non-blocking for day-1 scaffold; load-bearing
-# for the eventual T12 trio re-convening on real data.
+Empirical anchors: qgi-data/reference/v0.2-anomaly-score-empirical-range.json
+(qgi-data `1a4bff5`):
+  - signed pooled (arms A/B): P5..P95 = [-0.610, +0.535]; k = 5.72
+  - unsigned pooled (C/D): P5..P95 = [+0.045, +1.020]; k = 4.87
+  - cross-arm pooled: mu_empirical=0.1676, sigma_empirical=0.5257
 
-Sampling config (§3.1, ratified by Ji-Hoon #21):
+Sampling config (§3.1 ratified by Ji-Hoon #21; INVARIANT under amendment):
   4 chains × 2000 iter post-warmup, warmup 1000, target_accept=0.95,
   max_treedepth=12, per-chain seeds set explicitly.
 
-Diagnostics (§3.1, ratified by Ji-Hoon #21):
+Diagnostics (§3.1 ratified by Ji-Hoon #21):
   R-hat < 1.01, n_eff > 400, divergences < 0.1 %, E-BFMI > 0.3,
   trace-plot non-stationarity inspection on country block.
 
@@ -68,8 +73,9 @@ Usage:
     # Smoke test (synthetic data; no real-data dependency):
     python qgi-ml/scripts/validate_weight_matrix_bayes.py --smoke
 
-    # Real-data prep helper (loads T9 per-arm JSONs, returns cells array;
-    # does NOT run MCMC — that's gated on the trio re-convening):
+    # Real-data prep helper (loads Path A v6.6 sidecars, returns cells array;
+    # does NOT run MCMC — that's gated on the trio's final prior-justification
+    # sign-off on the merged amendment):
     python qgi-ml/scripts/validate_weight_matrix_bayes.py --prep-only
 """
 from __future__ import annotations
@@ -78,6 +84,7 @@ import argparse
 import hashlib
 import json
 import sys
+from collections import OrderedDict
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -92,9 +99,12 @@ if TYPE_CHECKING:  # pragma: no cover
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
-# Path A run artifacts (input to the prep helper).
+# Path A v6.6 run artifacts (input to the prep helper). Sidecar variant
+# `-v6.json` carries the per-cell `anomaly_score` tensor; the v5 originals
+# at `phase4-validation-arm{A,B,C,D}.json` (qgi-data `0f8aeed`) are T11
+# falsification substrate and Protocol-5 against amendment.
 ARM_JSON_PATHS = {
-    arm: ROOT / "qgi-data" / "reference" / f"phase4-validation-arm{arm}.json"
+    arm: ROOT / "qgi-data" / "reference" / f"phase4-validation-arm{arm}-v6.json"
     for arm in ("A", "B", "C", "D")
 }
 
@@ -106,20 +116,21 @@ ARM_JSON_PATHS = {
 L1_MAPPING_JSON = ROOT / "qgi-data" / "reference" / "event-category-l1-mapping.json"
 
 # Schema version for the Path B evaluator JSON output. Distinct from the
-# Path A SCHEMA_VERSION (v5 at validate_weight_matrix.py); Path B starts
-# at v1 because the output structure is different (posterior HDIs, not
-# rule v2 verdicts).
+# Path A SCHEMA_VERSION; Path B starts at v1 because the output structure
+# is different (posterior HDIs, not rule v2 verdicts).
 PATH_B_SCHEMA_VERSION = 1
 
-# Priors — locked at T10 commit ca77505 + 2026-05-14 trio ratification.
-# Amending any of these constants requires a new Majles convening with
-# Priya #22, Kwame #11, and Ji-Hoon #21 present per spec §2 line 66.
-TAU_ARM_PRIOR_SCALE = 0.05         # §2.1
-HALF_CAUCHY_SCALE = 0.05           # §2.2 (sigma_sector, sigma_cat[s], sigma_country, sigma)
-MU_PRIOR_CENTER = 0.30             # §2.4 — deliberately mis-centered (defended at spec line 74)
-MU_PRIOR_SCALE = 0.05              # §2.4
+# Priors — amended at qgi-docs `0db64f9` per the 2026-05-15 6-seat Majles
+# convening (qgi-aws-tf#691). Amending any of these constants requires a
+# new Majles convening with Priya #22, Kwame #11, Ji-Hoon #21, plus
+# Roshani #18 (§2.4 author) and Miriam #14 (§5.2 author) where their
+# work is impacted, per the §2 line 66 binding clause as amended.
+TAU_ARM_PRIOR_SCALE = 0.30         # §2.1 amended (was 0.05 AUC-calibrated); 0.05 × k=5.72 → 0.286 → 0.30
+HALF_CAUCHY_SCALE = 0.05           # §2.2 INVARIANT (Ji-Hoon Move 1 round-2 scale-invariance ruling)
+MU_PRIOR_CENTER = 0.168            # §2.4 amended (was 0.30 AUC-mixture); empirical-Bayes mu_empirical=0.1676
+MU_PRIOR_SCALE = 0.263             # §2.4 amended (was 0.05); 0.5 × sigma_empirical=0.5257
 
-# Sampling config — §3.1, ratified by Ji-Hoon #21.
+# Sampling config — §3.1, ratified by Ji-Hoon #21; INVARIANT under amendment.
 N_CHAINS = 4
 N_TUNE = 1000
 N_DRAWS = 2000
@@ -141,10 +152,21 @@ CHAIN_SEEDS = (17, 42, 123, 271)
 class CellsArray:
     """The (n_arms, n_countries, n_categories) input the model fits against.
 
-    `auc` is the cell-level ROC-AUC per (arm, country, category); cells
-    with undefined AUC (no positives, no negatives, or below the Phase 4
+    `anomaly_score` is the cell-level anomaly score per (arm, country, category)
+    emitted by Path A v6.6's `--emit-per-cell` flag (see
+    `qgi-ml/scripts/validate_weight_matrix.py` SCHEMA_VERSION=6); cells
+    with undefined score (no indicators contributing, or below the Phase 4
     minimum-observation gate) are NaN — PyMC's Normal likelihood with
     explicit NaN masking handles missing observations natively (spec §1).
+
+    **Naming history:** at T10 spec commit `ca77505` the field was named
+    `auc` per the original Path B response-variable spec. The 2026-05-15
+    6-seat Majles convening (qgi-aws-tf#691) renamed the response variable
+    to `anomaly_score` because ROC-AUC is mathematically undefined at
+    single-observation granularity (Path A emits one anomaly_score per
+    cell; AUC requires a distribution). The amended T10 spec at qgi-docs
+    `0db64f9` §1 reflects the rename verbatim; this dataclass field
+    follows.
 
     `arm_labels`, `country_labels`, `category_labels` preserve the
     ordering for downstream interpretation of posterior summaries.
@@ -153,7 +175,7 @@ class CellsArray:
     category index maps to one sector index in [0, n_sectors).
     """
 
-    auc: np.ndarray  # shape (n_arms, n_countries, n_categories)
+    anomaly_score: np.ndarray  # shape (n_arms, n_countries, n_categories)
     arm_labels: list[str]
     country_labels: list[str]
     category_labels: list[str]
@@ -179,12 +201,14 @@ class CellsArray:
     def sha256_provenance(self) -> str:
         """SHA-256 of the cells array per spec §3.4 reproducibility block.
 
-        The full input contract is `auc` shape + values + label ordering +
-        sector mapping. Reviewer verifies this hash matches the T9 output
-        the model claims to fit against.
+        The full input contract is `anomaly_score` shape + values + label
+        ordering + sector mapping. Reviewer verifies this hash matches the
+        Path A v6.6 sidecars at qgi-data/reference/phase4-validation-arm
+        {A,B,C,D}-v6.json (qgi-data `14ebded`) that the implementation
+        claims to fit against.
         """
         hasher = hashlib.sha256()
-        hasher.update(np.ascontiguousarray(self.auc, dtype=np.float64).tobytes())
+        hasher.update(np.ascontiguousarray(self.anomaly_score, dtype=np.float64).tobytes())
         hasher.update("|".join(self.arm_labels).encode("utf-8"))
         hasher.update("|".join(self.country_labels).encode("utf-8"))
         hasher.update("|".join(self.category_labels).encode("utf-8"))
@@ -194,7 +218,7 @@ class CellsArray:
 
 
 def build_model(cells: CellsArray):
-    """Build the PyMC partial-pooling model per spec §1.
+    """Build the PyMC partial-pooling model per amended spec §1.
 
     Country block uses NON-CENTERED parameterisation (spec §3.1):
         country_intercept_raw ~ Normal(0, 1)
@@ -211,54 +235,58 @@ def build_model(cells: CellsArray):
     "centered" nomination applies to the simple case; the nested
     structure naturally lands in the scaled-raw idiom).
 
-    Missing observations (NaN in `cells.auc`) are masked via PyMC's
-    `observed` masked-array support; the posterior on tau_arm,
+    Missing observations (NaN in `cells.anomaly_score`) are masked via
+    PyMC's `observed` masked-array support; the posterior on tau_arm,
     alpha_sector, beta_cat, country_intercept updates from observed cells
     only — exactly the property that lets the model borrow strength
     across the sparse high-coverage / low-coverage tail (Priya T5 POV).
     """
     import pymc as pm  # local import — heavy dependency, only needed when fitting
 
-    # Flatten cells to long form: each row is one observed AUC with its
-    # (arm, country, category, sector) indices. PyMC handles the missing
+    # Flatten cells to long form: each row is one observed anomaly_score with
+    # its (arm, country, category, sector) indices. PyMC handles the missing
     # cells via the mask in `observed`, so we flatten EVERY cell (including
     # NaNs) and let PyMC's automatic-imputation pathway absorb them.
-    n_arms, n_countries, n_categories = cells.auc.shape
-    arm_idx, country_idx, category_idx = np.indices(cells.auc.shape)
+    n_arms, n_countries, n_categories = cells.anomaly_score.shape
+    arm_idx, country_idx, category_idx = np.indices(cells.anomaly_score.shape)
     arm_idx_flat = arm_idx.ravel()
     country_idx_flat = country_idx.ravel()
     category_idx_flat = category_idx.ravel()
     sector_idx_flat = cells.sector_idx_for_category[category_idx_flat]
-    auc_flat = cells.auc.ravel()
-    observed = np.ma.masked_invalid(auc_flat)
+    score_flat = cells.anomaly_score.ravel()
+    observed = np.ma.masked_invalid(score_flat)
 
     coords = {
         "arm": cells.arm_labels,
         "country": cells.country_labels,
         "category": cells.category_labels,
         "sector": cells.sector_labels,
-        "obs_id": np.arange(auc_flat.size),
+        "obs_id": np.arange(score_flat.size),
     }
 
     with pm.Model(coords=coords) as model:
-        # §2.4: deliberately mis-centered at 0.30 to force lift onto
-        # tau_arm / alpha_sector / country_intercept rather than absorb
-        # into mu (spec line 74 defends this).
+        # §2.4 amended (Roshani Move 2): empirical-Bayes weakly-informative
+        # prior on mu, anchored at cross-arm pooled mean from
+        # qgi-data/reference/v0.2-anomaly-score-empirical-range.json. The
+        # mis-centering identification gambit is retired under anomaly_score
+        # response (no canonical null at 0.50); arm-D unsigned-floor pins mu
+        # structurally instead.
         mu = pm.Normal("mu", mu=MU_PRIOR_CENTER, sigma=MU_PRIOR_SCALE)
 
-        # §2.1: tau_arm — the parameter of interest. The 94% HDI on
-        # tau_arm[A] - tau_arm[D] is the Path B falsification metric.
+        # §2.1 amended (Priya Move 1): tau_arm scale 0.30 in anomaly_score
+        # units (was 0.05 AUC; k=5.72 signed pooled). The 94% HDI on
+        # tau_arm[A] - tau_arm[D] is the Path B falsification metric (§5.2.1).
         tau_arm = pm.Normal("tau_arm", mu=0.0, sigma=TAU_ARM_PRIOR_SCALE, dims="arm")
 
-        # §2.2 + §2.3: sector and category hyperpriors. Sector-level
-        # alpha is shared across categories; sigma_cat is sector-specific
-        # to allow civil_war (high heterogeneity) and monetary_policy
-        # (low heterogeneity) different shrinkage targets.
+        # §2.2 + §2.3 INVARIANT (Ji-Hoon Move 1 round-2 scale-invariance ruling):
+        # sector and category hyperpriors. Sector-level alpha shared across
+        # categories; sigma_cat sector-specific to allow civil_war (high
+        # heterogeneity) vs monetary_policy (low) different shrinkage.
         sigma_sector = pm.HalfCauchy("sigma_sector", beta=HALF_CAUCHY_SCALE)
         alpha_sector = pm.Normal("alpha_sector", mu=0.0, sigma=sigma_sector, dims="sector")
         sigma_cat = pm.HalfCauchy("sigma_cat", beta=HALF_CAUCHY_SCALE, dims="sector")
         beta_cat_raw = pm.Normal("beta_cat_raw", mu=0.0, sigma=1.0, dims="category")
-        # Nested: each category's beta is scaled by its own sector's sigma_cat
+        # Nested: each category's beta scaled by its own sector's sigma_cat
         beta_cat = pm.Deterministic(
             "beta_cat",
             beta_cat_raw * sigma_cat[cells.sector_idx_for_category],
@@ -288,7 +316,7 @@ def build_model(cells: CellsArray):
             + beta_cat[category_idx_flat]
             + country_intercept[country_idx_flat]
         )
-        pm.Normal("auc_obs", mu=mean, sigma=sigma, observed=observed, dims="obs_id")
+        pm.Normal("anomaly_score_obs", mu=mean, sigma=sigma, observed=observed, dims="obs_id")
 
     return model
 
@@ -405,7 +433,7 @@ def make_synthetic_cells(*, n_countries: int = 30, n_categories: int = 12,
     true_country_intercept = rng.normal(0, 0.05, size=n_countries)
     true_sigma = 0.03
 
-    auc = np.full((4, n_countries, n_categories), np.nan)
+    scores = np.full((4, n_countries, n_categories), np.nan)
     for arm in range(4):
         for country in range(n_countries):
             for category in range(n_categories):
@@ -417,14 +445,14 @@ def make_synthetic_cells(*, n_countries: int = 30, n_categories: int = 12,
                     + true_beta_cat[category]
                     + true_country_intercept[country]
                 )
-                auc[arm, country, category] = rng.normal(mean, true_sigma)
+                scores[arm, country, category] = rng.normal(mean, true_sigma)
 
     # Drop `missing_rate` fraction to NaN, simulating the sparse panel
-    mask = rng.random(auc.shape) < missing_rate
-    auc[mask] = np.nan
+    mask = rng.random(scores.shape) < missing_rate
+    scores[mask] = np.nan
 
     return CellsArray(
-        auc=auc,
+        anomaly_score=scores,
         arm_labels=arm_labels,
         country_labels=country_labels,
         category_labels=category_labels,
@@ -447,44 +475,140 @@ def load_l1_mapping() -> dict[str, str]:
     return data.get("mapping", data)
 
 
-def prep_cells_from_arm_jsons(arm_paths: dict[str, Path] | None = None) -> CellsArray:
-    """Convert the four T9 per-arm JSONs into a CellsArray.
+def _sector_for_category(category: str, l1_mapping: dict[str, str]) -> str:
+    """Resolve a category to its sector via the L1 mapping.
 
-    Real-data prep helper. The T9 JSONs at qgi-data `0f8aeed`
-    (`phase4-validation-arm{A,B,C,D}.json`) carry per-cell AUC under
-    `per_cell` entries (shape varies by stratum cardinality); this helper
-    flattens them into the (n_arms, n_countries, n_categories) grid that
-    the partial-pooling model consumes.
+    If the category is not in the mapping, the category itself is returned
+    as a 1-category sector — degraded but well-formed (the partial-pooling
+    model still runs; the sector hyperprior just has no peers to pool
+    across for that category). The trio's PR review verifies the L1 mapping
+    is complete before MCMC fires.
+    """
+    return l1_mapping.get(category, category)
 
-    This day-1 scaffold ships a STUB implementation that the T12 trio's
-    actual run replaces with the full extraction logic. Stub returns a
-    CellsArray with NaN-only AUC so smoke tests can exercise the
-    code path without depending on real T9 structure.
 
-    The trio's real-data PR will:
-      1. Walk each arm JSON's `per_cell` entries
-      2. Pivot to the (country, category) grid for that arm
-      3. Stack the 4 arm grids into the 3D cells array
-      4. Apply the canonical_length filter from
-         qgi-data/reference/v0.2-canonical-length.json
-      5. Apply the 4-indicator exclusion list from
-         qgi-data/reference/v0.2-demeaning-insufficient-exclusion.json
-      6. Load the L1 mapping at L1_MAPPING_JSON
+def prep_cells_from_arm_jsons(
+    arm_paths: dict[str, Path] | None = None,
+    l1_mapping: dict[str, str] | None = None,
+) -> CellsArray:
+    """Convert the four Path A v6.6 sidecar JSONs into a CellsArray.
+
+    Loads `per_cell.cells` lists from each per-arm v6 sidecar JSON
+    (default: `qgi-data/reference/phase4-validation-arm{A,B,C,D}-v6.json`
+    at qgi-data `14ebded`), pivots each arm's flat list to a (country,
+    category) grid, stacks the 4 arm grids into a 3D tensor with shape
+    (n_arms, n_countries, n_categories), and returns it as a CellsArray
+    consumable by `build_model`.
+
+    **Cell semantics** (post-amendment spec §1, qgi-docs `0db64f9`):
+    each cell is a per-(arm, country, event_category) `anomaly_score`
+    emitted by Path A v6.6's `--emit-per-cell` flag. Cells missing for
+    an arm (a (country, category) pair that didn't appear in that arm's
+    cells list — typically because n_indicators_used was 0) are NaN;
+    PyMC's automatic-imputation pathway absorbs them. Per Priya's T5 POV
+    citation in spec §1: "a hierarchical-Bayes model does not need 30
+    cells in a stratum because it borrows strength across cells."
+
+    **Universe construction:** the (country, category) grid is the union
+    of all four arms' cells. This guarantees a single consistent grid
+    across arms (each arm's `per_cell.cells` list has the same length —
+    12,250 at qgi-data `14ebded` — but the helper does not assume
+    cross-arm cell-set equality; it constructs the union for robustness).
+
+    **Sector derivation:** each category resolves to a sector via the L1
+    mapping at `L1_MAPPING_JSON`. If `l1_mapping` is None, this helper
+    loads the file via `load_l1_mapping()`. Categories not in the
+    mapping become 1-category sectors (degraded but well-formed; the
+    trio's PR review verifies the mapping is complete before MCMC fires).
+
+    Args:
+        arm_paths: dict mapping arm letter to JSON path. Default:
+            ARM_JSON_PATHS pointing at qgi-data v6 sidecars.
+        l1_mapping: dict mapping event_category to sector_name. Default:
+            loaded via load_l1_mapping().
+
+    Returns:
+        A CellsArray with shape (4, n_countries, n_categories) where
+        each cell carries the per-arm anomaly_score (or NaN for missing).
+
+    Raises:
+        FileNotFoundError: if any arm's JSON is missing.
+        KeyError: if an arm JSON doesn't carry a `per_cell` block (i.e.,
+            wasn't generated with --emit-per-cell).
     """
     paths = arm_paths if arm_paths is not None else ARM_JSON_PATHS
     missing = [arm for arm, p in paths.items() if not p.exists()]
     if missing:
         raise FileNotFoundError(
-            f"Missing per-arm JSONs for arms {missing}; expected at {paths}. "
-            "Run T9 first (or use --smoke for synthetic data)."
+            f"Missing per-arm v6 sidecar JSONs for arms {missing}; expected at {paths}. "
+            "Run Path A v6.6 first with --emit-per-cell, or use --smoke for synthetic data."
         )
-    # TODO(t12-trio): replace this stub with the full extraction described
-    # in the docstring above. Day-1 scaffold returns a placeholder so the
-    # CLI exists end-to-end.
-    raise NotImplementedError(
-        "prep_cells_from_arm_jsons is a stub in the day-1 scaffold. The T12 "
-        "trio re-convening on real data lands the full extraction. Use "
-        "make_synthetic_cells() for smoke testing the model scaffold."
+
+    # Load each arm JSON + extract the per_cell.cells list.
+    arm_letters = sorted(paths.keys())  # canonical order A, B, C, D
+    arm_cells: dict[str, list[dict]] = {}
+    for arm in arm_letters:
+        with paths[arm].open(encoding="utf-8") as fh:
+            data = json.load(fh)
+        if "per_cell" not in data:
+            raise KeyError(
+                f"Arm {arm} JSON at {paths[arm]} has no 'per_cell' block. "
+                "Re-run Path A v6.6 with --emit-per-cell flag."
+            )
+        arm_cells[arm] = data["per_cell"]["cells"]
+
+    # Build the union universe of (country_id, event_category) pairs across
+    # all 4 arms. OrderedDict preserves first-seen order which is stable
+    # given canonical arm iteration.
+    country_set: OrderedDict[int, None] = OrderedDict()
+    category_set: OrderedDict[str, None] = OrderedDict()
+    for arm in arm_letters:
+        for cell in arm_cells[arm]:
+            country_set[int(cell["country_id"])] = None
+            category_set[str(cell["event_category"])] = None
+
+    # Sort for deterministic ordering across runs.
+    country_labels = [str(cid) for cid in sorted(country_set.keys())]
+    country_id_to_idx = {int(c): i for i, c in enumerate(country_labels)}
+    category_labels = sorted(category_set.keys())
+    category_to_idx = {c: i for i, c in enumerate(category_labels)}
+
+    n_countries = len(country_labels)
+    n_categories = len(category_labels)
+
+    # Pivot each arm to the (country, category) grid; stack into 3D.
+    score_tensor = np.full((4, n_countries, n_categories), np.nan, dtype=np.float64)
+    for arm_idx, arm in enumerate(arm_letters):
+        for cell in arm_cells[arm]:
+            cid = int(cell["country_id"])
+            cat = str(cell["event_category"])
+            score = cell["anomaly_score"]
+            # Float-cast guards against numpy-typed JSON values; None becomes NaN.
+            score_tensor[arm_idx, country_id_to_idx[cid], category_to_idx[cat]] = (
+                float(score) if score is not None else np.nan
+            )
+
+    # Derive sector labels + sector_idx_for_category via the L1 mapping.
+    if l1_mapping is None:
+        l1_mapping = load_l1_mapping()
+    sector_for_category = [_sector_for_category(cat, l1_mapping) for cat in category_labels]
+    # Stable-ordered unique sector list (preserves first-seen order from category iteration).
+    sector_seen: OrderedDict[str, None] = OrderedDict()
+    for s in sector_for_category:
+        sector_seen[s] = None
+    sector_labels = list(sector_seen.keys())
+    sector_to_idx = {s: i for i, s in enumerate(sector_labels)}
+    sector_idx_for_category = np.array(
+        [sector_to_idx[s] for s in sector_for_category], dtype=np.int64
+    )
+
+    return CellsArray(
+        anomaly_score=score_tensor,
+        arm_labels=arm_letters,
+        country_labels=country_labels,
+        category_labels=category_labels,
+        sector_labels=sector_labels,
+        sector_idx_for_category=sector_idx_for_category,
     )
 
 
@@ -516,8 +640,8 @@ def run_smoke_test() -> dict:
     cells = make_synthetic_cells(n_countries=30, n_categories=12, n_sectors=4)
     cells_hash = cells.sha256_provenance()
 
-    _log(f"cells shape: {cells.auc.shape}")
-    _log(f"non-NaN cells: {int(np.sum(~np.isnan(cells.auc)))}/{cells.auc.size}")
+    _log(f"cells shape: {cells.anomaly_score.shape}")
+    _log(f"non-NaN cells: {int(np.sum(~np.isnan(cells.anomaly_score)))}/{cells.anomaly_score.size}")
     _log(f"cells SHA-256: {cells_hash}")
 
     _log("building PyMC partial-pooling model (compiling pytensor graph)...")
@@ -568,8 +692,8 @@ def run_smoke_test() -> dict:
         "started_at": started_at,
         "finished_at": finished_at,
         "cells": {
-            "shape": list(cells.auc.shape),
-            "n_non_nan": int(np.sum(~np.isnan(cells.auc))),
+            "shape": list(cells.anomaly_score.shape),
+            "n_non_nan": int(np.sum(~np.isnan(cells.anomaly_score))),
             "sha256": cells_hash,
         },
         "true_tau_a_minus_d_dgp": 0.04,  # planted ground truth from make_synthetic_cells
@@ -600,8 +724,8 @@ def run_smoke_test() -> dict:
             "mu_center": MU_PRIOR_CENTER,
             "mu_scale": MU_PRIOR_SCALE,
         },
-        "spec_commit": "ca77505 (qgi-docs/internal/ops/cascade-track/phase-5-v0.2-path-b-architecture.md)",
-        "ratification": "3/3 unanimous 2026-05-14 (Priya #22, Kwame #11, Ji-Hoon #21)",
+        "spec_commit": "0db64f9 (qgi-docs amended T10; was ca77505)",
+        "ratification": "6/6 unanimous 2026-05-15 (Priya #22, Roshani #18, Ji-Hoon #21, Miriam #14, Tariq #20, Kwame #11)",
     }
 
     return result
@@ -609,14 +733,15 @@ def run_smoke_test() -> dict:
 
 def _main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
-        description="Phase 5 v0.2 Path B evaluator (T12 day-1 scaffold)"
+        description="Phase 5 v0.2 Path B partial-pooling evaluator"
     )
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument("--smoke", action="store_true",
                        help="Run end-to-end smoke test on synthetic data")
     group.add_argument("--prep-only", action="store_true",
-                       help="Load real T9 per-arm JSONs and print cells-array shape; "
-                            "does NOT run MCMC (gated on T12 trio re-convening)")
+                       help="Load real Path A v6.6 sidecar JSONs and print "
+                            "cells-array shape; does NOT run MCMC (gated on "
+                            "T12 trio's final prior-justification sign-off)")
     parser.add_argument("--output-json", type=Path, default=None,
                         help="Optional path to write the smoke-test result JSON")
     args = parser.parse_args(argv)
@@ -631,8 +756,13 @@ def _main(argv: list[str] | None = None) -> int:
         return 0 if all_pass else 1
 
     if args.prep_only:
-        cells = prep_cells_from_arm_jsons()  # stub: raises NotImplementedError
-        print(f"cells shape: {cells.auc.shape}")
+        cells = prep_cells_from_arm_jsons()
+        print(f"cells shape: {cells.anomaly_score.shape}")
+        print(f"n_countries: {cells.n_countries}")
+        print(f"n_categories: {cells.n_categories}")
+        print(f"n_sectors: {cells.n_sectors}")
+        print(f"non-NaN cells: {int(np.sum(~np.isnan(cells.anomaly_score)))}/{cells.anomaly_score.size}")
+        print(f"SHA-256 provenance: {cells.sha256_provenance()}")
         return 0
 
     return 2  # unreachable due to required mutually-exclusive group
