@@ -66,6 +66,16 @@ def test_chain_seeds_are_at_least_n_chains():
     assert len(mod.CHAIN_SEEDS) >= mod.N_CHAINS, "need one seed per chain"
 
 
+def test_chain_seeds_pinned_at_ratified_values():
+    """Ji-Hoon §3.4: per-chain seeds are the carry-over from Roshani's A3
+    baseline set. Closing the F-4 gap from Sonnet review of PR #60: the
+    length-only test above doesn't catch a silent value swap. Any future
+    change to these specific values must come paired with a Majles
+    re-convening, just like the prior constants. See qgi-aws-tf#684."""
+    assert mod.CHAIN_SEEDS == (17, 42, 123, 271), \
+        "CHAIN_SEEDS drift from ratified Ji-Hoon §3.4 values"
+
+
 def test_schema_version_starts_at_one():
     """Path B is a distinct output family from Path A (rule v2 verdicts);
     the schema versions are independent and Path B starts at v1."""
