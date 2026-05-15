@@ -83,6 +83,10 @@ export async function generateStaticParams() {
 
 export default async function SignalsMergedCountryPage({ params }: Props) {
   const { country } = await params;
+  // PR-iv (2026-05-15) — load full payload so we can surface the real bake
+  // `generated_at` (Flavor A fix). resolveCountryBySlug runs against the
+  // same in-memory cache so this isn't a duplicate file read.
+  const data = await loadCountryRisks().catch(() => null);
   const c = await resolveCountryBySlug(country).catch(() => null);
   if (!c) notFound();
 
@@ -128,8 +132,11 @@ export default async function SignalsMergedCountryPage({ params }: Props) {
   >;
   for (const r of rows) tierCounts[r.tier]++;
 
-  // Computed server-side for hydration stability.
-  const generatedDate = new Date().toISOString().slice(0, 10);
+  // Real bake date — Flavor A fix (PR-iv). Falls back to request-time
+  // if the load failed.
+  const generatedDate = data?.generated_at
+    ? data.generated_at.slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   return (
     <SignalsCountryDetail

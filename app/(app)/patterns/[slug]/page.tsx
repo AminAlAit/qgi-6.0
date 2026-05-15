@@ -41,7 +41,12 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-async function loadRanking(): Promise<PatternRow[]> {
+interface RankingPayload {
+  results: PatternRow[];
+  generated_at?: string;
+}
+
+async function loadRanking(): Promise<RankingPayload> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
@@ -53,11 +58,14 @@ async function loadRanking(): Promise<PatternRow[]> {
       typeof json !== "object" ||
       !Array.isArray((json as { results?: unknown }).results)
     ) {
-      return [];
+      return { results: [] };
     }
-    return (json as { results: PatternRow[] }).results;
+    return {
+      results: (json as { results: PatternRow[] }).results,
+      generated_at: (json as { generated_at?: string }).generated_at,
+    };
   } catch {
-    return [];
+    return { results: [] };
   }
 }
 
@@ -77,7 +85,8 @@ function resolveBySlug(slug: string, rows: ReadonlyArray<PatternRow>): PatternRo
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const rows = await loadRanking();
+  const payload = await loadRanking();
+  const rows = payload.results;
   const row = resolveBySlug(slug, rows);
   if (!row) {
     return {
@@ -93,7 +102,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const rows = await loadRanking();
+  const payload = await loadRanking();
+  const rows = payload.results;
   // Pre-render the top 100 patterns. Anything beyond falls through to
   // notFound() at runtime if directly URL-typed.
   const params: { slug: string }[] = [];
@@ -116,14 +126,18 @@ function mapPatternTier(raw: string | undefined): PatternWindowTier {
 
 export default async function PatternDetailPage({ params }: Props) {
   const { slug } = await params;
-  const rows = await loadRanking();
+  const payload = await loadRanking();
+  const rows = payload.results;
   const row = resolveBySlug(slug, rows);
   if (!row) notFound();
 
   const tier = mapPatternTier(row.pattern_tier);
   const aSlug = countrySlug(row.country_a) ?? row.country_a.toLowerCase();
   const bSlug = countrySlug(row.country_b) ?? row.country_b.toLowerCase();
-  const generatedDate = new Date().toISOString().slice(0, 10);
+  // PR-iv — real bake date (Flavor A).
+  const generatedDate = payload.generated_at
+    ? payload.generated_at.slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   return (
     <PatternMergedDetail

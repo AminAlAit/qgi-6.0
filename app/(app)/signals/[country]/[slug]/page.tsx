@@ -109,6 +109,9 @@ export interface LeafMlPanel {
 
 export default async function SignalsLeafPage({ params }: Props) {
   const { country, slug } = await params;
+  // PR-iv (2026-05-15) — load full payload so we can surface the real bake
+  // `generated_at` in the leaf footer (Flavor A fix).
+  const data = await loadCountryRisks().catch(() => null);
   const c = await resolveCountryBySlug(country).catch(() => null);
   if (!c) notFound();
 
@@ -157,7 +160,9 @@ export default async function SignalsLeafPage({ params }: Props) {
 
   const display = displayNameFor(slug);
   const tier = tierForSalience(maxSalience);
-  const generatedDate = new Date().toISOString().slice(0, 10);
+  const generatedDate = data?.generated_at
+    ? data.generated_at.slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   return (
     <SignalsLeafDetail

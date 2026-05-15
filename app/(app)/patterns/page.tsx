@@ -59,7 +59,12 @@ export interface PatternsMergedRow extends PatternRow {
   row_key: string;
 }
 
-async function loadRanking(): Promise<PatternRow[]> {
+interface RankingPayload {
+  results: PatternRow[];
+  generated_at?: string;
+}
+
+async function loadRanking(): Promise<RankingPayload> {
   try {
     const fs = await import("fs/promises");
     const path = await import("path");
@@ -71,16 +76,20 @@ async function loadRanking(): Promise<PatternRow[]> {
       typeof json !== "object" ||
       !Array.isArray((json as { results?: unknown }).results)
     ) {
-      return [];
+      return { results: [] };
     }
-    return (json as { results: PatternRow[] }).results;
+    return {
+      results: (json as { results: PatternRow[] }).results,
+      generated_at: (json as { generated_at?: string }).generated_at,
+    };
   } catch {
-    return [];
+    return { results: [] };
   }
 }
 
 export default async function PatternsMergedPage() {
-  const raw = await loadRanking();
+  const payload = await loadRanking();
+  const raw = payload.results;
   // PR #2: still capped at 250; virtual-scroll over the full ranking is
   // deferred to PR #4 alongside the grid layout toggle.
   const rows: PatternsMergedRow[] = raw.slice(0, 250).map((p, i) => ({
@@ -121,7 +130,12 @@ export default async function PatternsMergedPage() {
     lastYear = 2026;
   }
 
-  const generatedDate = new Date().toISOString().slice(0, 10);
+  // PR-iv (2026-05-15) — surface the real bake date from ranking.json
+  // (Flavor A fix). Falls back to request-time if the payload lacks the
+  // timestamp (older bakes pre-#430).
+  const generatedDate = payload.generated_at
+    ? payload.generated_at.slice(0, 10)
+    : new Date().toISOString().slice(0, 10);
 
   // PR #2 — country list for the multi-select facet. Sorted by frequency
   // desc so the heaviest-firing countries surface first in the dropdown.

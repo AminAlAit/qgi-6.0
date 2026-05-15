@@ -89,6 +89,13 @@ export async function generateStaticParams() {
 
 export default async function CountryMergedDetailPage({ params }: Props) {
   const { iso } = await params;
+  // PR-iv (2026-05-15) — load the full payload once at the top of the
+  // request. `resolveCountryBySlug` reads the same in-memory cache, so
+  // we still get a single file read. Hoisting also guarantees the
+  // structural-peers section (below) operates on the same snapshot as
+  // the subject country (was a latent risk before this hoist when the
+  // two loadCountryRisks calls could theoretically race a cache eviction).
+  const allData = await loadCountryRisks().catch(() => null);
   const country = await resolveCountryBySlug(iso).catch(() => null);
   if (!country) notFound();
 
@@ -163,21 +170,31 @@ export default async function CountryMergedDetailPage({ params }: Props) {
         .filter((r) => mlStack.metadata.top_4_recipes.includes(r.recipe_id))
         // PR #4 keeps the matrix on the top-4 set; PR #5+ can expand to all 13
         // once the LOCKed-set roster stabilises post-KI-2.
+        //
+        // PR-iv (2026-05-15) Flavor A audit:
+        //   - `ahi_preview` was seeded preview for every recipe; replaced with
+        //     real `anchor_ahi_value` from ml-recipe-stack.json (currently
+        //     present for 1 of 4 top recipes — civil_war_and_insurgency).
+        //     Null AHI rows now render "—" + per-row Preview chip
+        //     (the column-level chip stays as a header advisory).
+        //   - `pct_preview` (global percentile) stays seeded — the bake
+        //     doesn't ship this field; still Flavor B.
+        //   - Both fields are scoped per-recipe, not per-country. True
+        //     per-country anchor stability still requires #648 bake.
         .map((r) => {
-          // Deterministic preview: seed on (country, recipe) for stable
-          // SSR/CSR values until #648 ships per-country AHI.
-          const rngAhi = seededRng(`ahi:${country.id}:${r.recipe_id}`);
           const rngPct = seededRng(`pct:${country.id}:${r.recipe_id}`);
-          const ahi_preview = Math.round(rngAhi() * 100) / 100; // 0..1, 2dp
           const pct_preview = Math.round(rngPct() * 100); // 0..100
-          const has_anchor = ahi_preview >= 0.1; // ~90% have an "anchor"
+          // Real AHI from the validated recipe set — null when the bake
+          // hasn't measured anchor stability for this recipe yet.
+          const real_ahi = r.anchor_ahi_value;
+          const has_anchor = real_ahi !== null;
           return {
             recipe_id: r.recipe_id,
             display_name: r.display_name,
             architecture_label: r.architecture_label,
             loco_auc: r.loco_auc,
             ece_overall: r.ece_overall, // calibration band (REAL)
-            ahi_preview: has_anchor ? ahi_preview : null,
+            ahi_preview: real_ahi, // PR-iv: real value, null where unmeasured
             pct_preview: has_anchor ? pct_preview : null,
             has_anchor,
           };
@@ -194,7 +211,8 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   // like {country} today" — top-5 by L1-profile similarity. We compute a
   // simple cosine-like similarity on the 8-dim L1 salience vector
   // (excluding the subject country itself). REAL data — no MOCK chip.
-  const allData = await loadCountryRisks().catch(() => null);
+  // Uses `allData` hoisted at the top of the function (PR-iv) to ensure
+  // peers and subject share the same bake snapshot.
   let structuralPeers: Array<{
     slug: string;
     name: string;
