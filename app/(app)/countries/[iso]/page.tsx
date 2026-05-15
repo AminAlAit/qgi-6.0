@@ -320,6 +320,19 @@ export default async function CountryMergedDetailPage({ params }: Props) {
     }
   }
 
+  // #721 Step 2 — pass QGI Risk Score to the detail component. Fields
+  // are `.optional()` in the schema so countries from older bakes
+  // (pre-2026-05-16) gracefully render the prior hero (tier pill only).
+  const riskScore =
+    country.qgi_risk_score_0_100 !== undefined && country.coverage_flag !== undefined
+      ? {
+          score: country.qgi_risk_score_0_100,
+          ci_low: country.qgi_risk_score_ci_low ?? null,
+          ci_high: country.qgi_risk_score_ci_high ?? null,
+          coverage_flag: country.coverage_flag,
+        }
+      : undefined;
+
   return (
     <CountryMergedDetail
       iso={iso}
@@ -333,6 +346,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       mlCovCount={mlCovCount}
       mlMatrixDefaultExpanded={mlMatrixDefaultExpanded}
       structuralPeers={structuralPeers}
+      riskScore={riskScore}
     />
   );
 }
