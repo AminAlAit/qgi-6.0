@@ -489,3 +489,124 @@ def test_convergence_and_top50_read_from_normalized_view():
         "top50 dashboard query must read from recipes_normalized, "
         "not recipes, so r.pps is globally normalized"
     )
+
+
+# ---------------------------------------------------------------------------
+# Test 8 (#622 review nit): DDL column list MUST match build_recipe_query
+# final SELECT projection exactly (positional INSERT INTO).
+# ---------------------------------------------------------------------------
+
+def test_ddl_matches_select_projection():
+    """The CREATE EXTERNAL TABLE DDL in lambda_handler step 3 and the final
+    SELECT projection in build_recipe_query(mode='insert') must have the
+    SAME column names in the SAME order.
+
+    Positional INSERT INTO means a single column reorder or skipped column
+    silently corrupts every recipe row downstream. The 2026-05-15 PR review
+    of #622 caught two type mismatches AND an 8-column reorder at positions
+    20-27 — this test is the regression guard so that drift can't happen
+    again at PR time.
+    """
+    fake = FakeAthena(distinct_country_ids=[1])
+    mod, _s3 = _load_module(fake)
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    queries = [sql for _qid, sql in fake.started_queries]
+    ddl_queries = [
+        q for q in queries if "CREATE EXTERNAL TABLE qgi_data.recipes" in q
+    ]
+    insert_queries = [q for q in queries if "INSERT INTO qgi_data.recipes" in q]
+    assert len(ddl_queries) == 1
+    assert len(insert_queries) >= 1
+    ddl_sql = ddl_queries[0]
+    insert_sql = insert_queries[0]
+
+    # Extract DDL column names — everything between the first `(` and the
+    # closing `)` before PARTITIONED BY. Drop the partition key (it lives
+    # in PARTITIONED BY, not in the column list).
+    paren_open = ddl_sql.index("(")
+    partitioned_idx = ddl_sql.index("PARTITIONED BY")
+    body = ddl_sql[paren_open + 1:partitioned_idx]
+    # Take the substring up to the matching close-paren before PARTITIONED BY
+    body = body.rsplit(")", 1)[0]
+    ddl_columns = []
+    for line in body.split(","):
+        line = line.strip()
+        if not line:
+            continue
+        # First token is the column name
+        col = line.split()[0]
+        ddl_columns.append(col)
+
+    # Extract INSERT INTO ... SELECT projection. The SELECT we want is the
+    # final top-level one (after the CTE WITH ... AS chain).
+    select_match = re.search(
+        r"FROM\s+recipes_aggregated\s+r\s+CROSS JOIN\s+global_stats\s+g\s*",
+        insert_sql,
+    )
+    assert select_match is not None, "could not find final SELECT FROM clause"
+    select_keyword_idx = insert_sql.rfind("SELECT", 0, select_match.start())
+    projection_block = insert_sql[select_keyword_idx + len("SELECT"):select_match.start()]
+
+    # Strip line comments first (--...EOL). This avoids the multi-line-chunk
+    # trap where a chunk starts with a comment but contains a real column on
+    # a later line.
+    projection_block = re.sub(r"--[^\n]*", "", projection_block)
+
+    # Now split by top-level commas. The `cast(... AS double) AS pps` form
+    # has internal commas inside the cast — but with str.split, those break
+    # the chunk into pieces. Track depth across parens to keep the cast as
+    # one chunk.
+    chunks = []
+    depth = 0
+    buf = []
+    for ch in projection_block:
+        if ch == "(":
+            depth += 1
+            buf.append(ch)
+        elif ch == ")":
+            depth -= 1
+            buf.append(ch)
+        elif ch == "," and depth == 0:
+            chunks.append("".join(buf))
+            buf = []
+        else:
+            buf.append(ch)
+    if buf:
+        chunks.append("".join(buf))
+
+    select_columns = []
+    for raw in chunks:
+        line = raw.strip()
+        if not line:
+            continue
+        # `r.<name>` form → take <name>
+        m = re.search(r"\br\.(\w+)\b", line)
+        if m and re.fullmatch(r"r\.\w+", line):
+            select_columns.append(m.group(1))
+            continue
+        # `<expr> AS <alias>` form → take alias (case-insensitive AS).
+        # Match the LAST AS in the chunk (innermost cast(... AS double) AS pps
+        # → we want pps, not double).
+        as_matches = list(re.finditer(r"\bAS\s+(\w+)", line, re.IGNORECASE))
+        if as_matches:
+            select_columns.append(as_matches[-1].group(1))
+            continue
+        # Bare identifier
+        m = re.fullmatch(r"\s*(\w+)\s*", line)
+        if m:
+            select_columns.append(m.group(1))
+
+    # The final column in the SELECT is `r.country_a_id` (the partition).
+    # Exclude it from the comparison — it lives in PARTITIONED BY, not in
+    # the column list of the EXTERNAL TABLE DDL.
+    if select_columns and select_columns[-1] == "country_a_id":
+        select_columns = select_columns[:-1]
+
+    assert ddl_columns == select_columns, (
+        f"DDL column order/names do NOT match final SELECT projection.\n"
+        f"This breaks positional INSERT INTO. The 2026-05-15 #622 PR review "
+        f"caught this twice — keep DDL and SELECT in lockstep.\n"
+        f"DDL ({len(ddl_columns)}):    {ddl_columns}\n"
+        f"SELECT ({len(select_columns)}): {select_columns}"
+    )

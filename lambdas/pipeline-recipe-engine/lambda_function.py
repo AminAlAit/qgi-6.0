@@ -174,11 +174,20 @@ def lambda_handler(event, context):
     #    produces — kept in lockstep here. If the SELECT shape changes, this
     #    DDL must change with it. The CI smoke test should catch type mismatch
     #    by running one INSERT INTO against staging.
+    # IMPORTANT: column order + types MUST match `build_recipe_query`
+    # final SELECT exactly (positional INSERT INTO). Reviewer flagged the
+    # initial draft for two type mismatches (pattern_id, indicator_count)
+    # and an 8-column reorder at positions 20-27 — verified against the
+    # patterns Glue table at qgi-infra/modules/storage/main.tf:912-953:
+    #   pattern_id is `string` (not bigint)
+    #   indicator_count is `bigint` (not smallint)
+    # See test_recipe_engine_shape.test_ddl_matches_select_projection
+    # for the parity regression guard.
     create_table_sql = f"""
     CREATE EXTERNAL TABLE qgi_data.recipes (
         recipe_id            string,
         event_category       string,
-        pattern_id           bigint,
+        pattern_id           string,
         country_b_id         smallint,
         country_a_name       string,
         country_b_name       string,
@@ -193,16 +202,16 @@ def lambda_handler(event, context):
         event_year_b         smallint,
         event_title_a        string,
         event_title_b        string,
-        indicator_count      smallint,
+        indicator_count      bigint,
         pattern_power_score  double,
+        instance_count       bigint,
         pattern_tier         string,
         median_lead_time_b   smallint,
         min_lead_time_b      smallint,
         max_lead_time_b      smallint,
         median_lead_time_a   smallint,
         pps                  double,
-        contains_predicted   boolean,
-        instance_count       bigint
+        contains_predicted   boolean
     )
     PARTITIONED BY (country_a_id smallint)
     STORED AS PARQUET
