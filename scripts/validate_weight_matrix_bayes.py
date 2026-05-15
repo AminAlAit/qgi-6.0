@@ -745,7 +745,9 @@ def run_smoke_test() -> dict:
     _log(f"diagnostics: max_r_hat={diagnostics['max_r_hat']:.4f}, "
          f"min_n_eff={diagnostics['min_n_eff']:.1f}, "
          f"divergences={diagnostics['n_divergences']}, "
-         f"min_e_bfmi={diagnostics['min_e_bfmi']:.3f}")
+         f"min_e_bfmi={diagnostics['min_e_bfmi']:.3f}, "
+         f"treedepth_saturation_rate={diagnostics['treedepth_saturation_rate']:.4f} "
+         f"({diagnostics['verdicts']['treedepth_saturation']})")
 
     # Headline posterior: tau_arm[A] - tau_arm[D] HDI
     import arviz as az  # local import

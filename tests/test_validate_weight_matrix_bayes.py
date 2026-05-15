@@ -489,13 +489,17 @@ def test_cli_rejects_both_modes():
 
 def _build_mock_idata(*, n_chains: int = 2, n_draws: int = 100,
                       tree_depth_values: list[int] | None = None,
-                      r_hat: float = 1.005, n_eff: float = 500.0,
                       n_divergences: int = 0):
     """Build a minimal arviz InferenceData carrying just enough structure
     for compute_diagnostics to exercise. PyMC's actual idata has many more
     groups, but compute_diagnostics only reads:
       - posterior (var_names indexed)
-      - sample_stats.draw / .chain / .diverging / .tree_depth
+      - sample_stats.draw / .chain / .diverging / .tree_depth / .energy
+
+    Note: R-hat and n_eff are derived from the posterior values, not passed
+    in — arviz.summary() computes them. Future test authors exercising FAIL
+    branches for those diagnostics should construct posterior arrays that
+    produce the target r_hat/ess_bulk (e.g., chain-correlated draws).
     """
     az = pytest.importorskip("arviz")
     xr = pytest.importorskip("xarray")
