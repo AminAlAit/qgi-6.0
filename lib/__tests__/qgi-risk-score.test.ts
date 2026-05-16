@@ -22,9 +22,11 @@ const parsed = CountryRisksDataSchema.parse(countryRisksJson);
 
 describe("QGI Risk Score Step 1 bake (#721)", () => {
   it("top-level metadata present", () => {
-    // #728 bumped version to v2 (added per-recipe block). v1 was the
-    // country-level-only era.
-    expect(parsed.qgi_risk_score_version).toMatch(/^v[12]$/);
+    // Version timeline:
+    //   v1 — #721 country-level only
+    //   v2 — #728 added per-recipe block
+    //   v3 — #729 Step 1.5 (calibration carry + CI widening + correlation matrix)
+    expect(parsed.qgi_risk_score_version).toMatch(/^v[1-9][0-9]*$/);
     expect(parsed.qgi_risk_score_cohort_n).toBeTypeOf("number");
     expect(parsed.qgi_risk_score_cohort_n).toBeGreaterThan(0);
     expect(parsed.qgi_risk_score_method).toBe("percentile-rank-of-max-salience");
@@ -77,6 +79,81 @@ describe("QGI Risk Score Step 1 bake (#721)", () => {
         70
       );
     }
+  });
+
+  it("#729 Step 1.5: cohort_n_recipe surfaced on every per-recipe entry", () => {
+    // Roshani's veto — every per-recipe tile must carry cohort_n alongside
+    // the score so N=58 (multilateral_agreement) and N=127 (bilateral_treaty)
+    // don't render as commensurable.
+    if (parsed.qgi_risk_score_version !== "v3") return;
+    for (const c of Object.values(parsed.countries)) {
+      const block = c.qgi_risk_score_by_recipe;
+      if (!block) continue;
+      for (const [rid, entry] of Object.entries(block)) {
+        if (entry === null) continue;
+        expect(
+          entry.cohort_n_recipe,
+          `${c.name}/${rid}: cohort_n_recipe must be present`
+        ).toBeTypeOf("number");
+        expect(entry.cohort_n_recipe).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("#729 Step 1.5: calibration carry present on every per-recipe entry when ml-recipe-stack was loaded", () => {
+    // Kwame's veto — recipe-level ECE + LOCO_AUC + advisory flags must
+    // ride with the score so buyers know underlying reliability.
+    if (parsed.qgi_risk_score_version !== "v3") return;
+    for (const c of Object.values(parsed.countries)) {
+      const block = c.qgi_risk_score_by_recipe;
+      if (!block) continue;
+      for (const [rid, entry] of Object.entries(block)) {
+        if (entry === null) continue;
+        // recipe_ece / recipe_loco_auc may be null (if upstream is null)
+        // but the keys must be PRESENT — that's the calibration-carry contract.
+        expect(
+          "recipe_ece" in entry,
+          `${c.name}/${rid}: recipe_ece key must be present (carry)`
+        ).toBe(true);
+        expect(
+          "recipe_loco_auc" in entry,
+          `${c.name}/${rid}: recipe_loco_auc key must be present (carry)`
+        ).toBe(true);
+        expect(
+          "recipe_f_rule_advisory_flag" in entry,
+          `${c.name}/${rid}: advisory flag key must be present (carry)`
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("#729 Step 1.5: recipe-recipe Spearman correlation matrix is 4×4, symmetric, diag=1", () => {
+    // Dmitri's hard gate — published at bake time so quants can residualize.
+    if (parsed.qgi_risk_score_version !== "v3") return;
+    const matrix = parsed.qgi_risk_score_per_recipe_correlation_matrix;
+    expect(matrix, "correlation matrix top-level field present").toBeDefined();
+    const recipes = parsed.qgi_risk_score_per_recipe_recipes!;
+    for (const ra of recipes) {
+      expect(matrix![ra], `row for ${ra} present`).toBeDefined();
+      for (const rb of recipes) {
+        const cell = matrix![ra][rb];
+        if (ra === rb) {
+          expect(cell, `diag[${ra}] = 1`).toBe(1);
+        } else if (cell !== null) {
+          // Symmetric: matrix[ra][rb] === matrix[rb][ra]
+          expect(matrix![rb][ra], `symmetric ${ra},${rb}`).toBe(cell);
+          // Bounded [-1, 1]
+          expect(cell).toBeGreaterThanOrEqual(-1);
+          expect(cell).toBeLessThanOrEqual(1);
+        }
+      }
+    }
+  });
+
+  it("#729 Step 1.5: small-cohort CI widening params disclosed", () => {
+    if (parsed.qgi_risk_score_version !== "v3") return;
+    expect(parsed.qgi_risk_score_small_cohort_ci_threshold).toBe(80);
+    expect(parsed.qgi_risk_score_small_cohort_ci_widen_factor).toBe(1.5);
   });
 
   it("every 'ok' country has all 3 score fields non-null and in [0, 100]", () => {
