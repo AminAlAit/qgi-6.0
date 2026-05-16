@@ -140,22 +140,13 @@ export default async function PrecedentsMergedSlugPage({ params }: Props) {
     const leaderboardEntries: LeaderboardEntry[] = [];
     let leaderboardCohortN: number | undefined;
     if (risksData) {
-      const perRecipeCohorts = (
-        risksData as unknown as {
-          qgi_risk_score_per_recipe_cohort_n?: Record<string, number>;
-        }
-      ).qgi_risk_score_per_recipe_cohort_n;
-      leaderboardCohortN = perRecipeCohorts?.[slug];
+      // Sonnet N-1 fix: schema already types both fields (see
+      // lib/country-risks.schema.ts) — drop the `as unknown as` casts that
+      // PR #71 used for methodology-page-side reads, keep parity with the
+      // strip side which uses direct access.
+      leaderboardCohortN = risksData.qgi_risk_score_per_recipe_cohort_n?.[slug];
       for (const [cid, c] of Object.entries(risksData.countries)) {
-        const perRecipe = (
-          c as unknown as {
-            qgi_risk_score_by_recipe?: Record<
-              string,
-              { score: number; ci_low: number; ci_high: number } | null
-            >;
-          }
-        ).qgi_risk_score_by_recipe;
-        const entry = perRecipe?.[slug];
+        const entry = c.qgi_risk_score_by_recipe?.[slug];
         if (!entry) continue;
         leaderboardEntries.push({
           countryId: cid,
