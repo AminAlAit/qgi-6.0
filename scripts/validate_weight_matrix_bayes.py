@@ -139,11 +139,22 @@ HALF_CAUCHY_SCALE = 0.05           # §2.2 INVARIANT (Ji-Hoon Move 1 round-2 sca
 MU_PRIOR_CENTER = 0.168            # §2.4 amended (was 0.30 AUC-mixture); empirical-Bayes mu_empirical=0.1676
 MU_PRIOR_SCALE = 0.263             # §2.4 amended (was 0.05); 0.5 × sigma_empirical=0.5257
 
-# Sampling config — §3.1, ratified by Ji-Hoon #21; INVARIANT under amendment.
+# Sampling config — §3.1, ratified by Ji-Hoon #21.
+# Geometry block (n_chains, n_tune, n_draws, max_treedepth, non-centered
+# parameterization on country_intercept_raw + beta_cat_raw) is INVARIANT
+# under amendment per the 2026-05-15 6-seat Majles response-variable shift
+# (Ji-Hoon Move 1 round-2 ratification).
+#
+# 2026-05-16 sampler-hyperparameter amendment (3-seat trio at qgi-aws-tf#744):
+# TARGET_ACCEPT raised 0.95 → 0.99 to clear the v6 baseline's triple-FAIL
+# diagnostic (R-hat 1.02, n_eff 388, divergences 1.89%). Authority: 3-seat
+# trio (Priya #22 + Kwame #11 + Ji-Hoon #21) per Ji-Hoon §3.1-author ruling
+# that target_accept is sampler-hyperparameter, not geometry. Sign-offs at
+# c:/tmp/v0.2-T12-sampler-amendment/signoff_{priya,kwame,jihoon}.md.
 N_CHAINS = 4
 N_TUNE = 1000
 N_DRAWS = 2000
-TARGET_ACCEPT = 0.95
+TARGET_ACCEPT = 0.99    # §3.1 amended 2026-05-16 (was 0.95); 3-seat ratified at #744
 MAX_TREEDEPTH = 12
 
 # Diagnostic thresholds — §3.1, ratified by Ji-Hoon #21.
