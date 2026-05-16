@@ -443,9 +443,13 @@ export default function RankingPage() {
         }}
       >
         <div className="flex items-center gap-3 flex-wrap">
-          {/* Country search */}
+          {/* Country search — #741 PR-c: sr-only label per WCAG 1.3.1 */}
           <div className="relative">
+            <label htmlFor="patterns-v1-ranking-country-search" className="sr-only">
+              Search country
+            </label>
             <input
+              id="patterns-v1-ranking-country-search"
               ref={countryInputRef}
               type="text"
               value={countrySearch}

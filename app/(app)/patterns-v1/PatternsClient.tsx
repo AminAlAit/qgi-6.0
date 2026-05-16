@@ -17,7 +17,7 @@
  * - Cascade strip: only Predictor + Following dropdowns (no Duration/Window)
  */
 
-import { useState, useCallback, useEffect, useMemo, useRef } from "react";
+import { useState, useCallback, useEffect, useId, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ScdiTable } from "@/components/patterns-v1/ScdiTable";
@@ -265,6 +265,11 @@ function CountryDropdown({
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
   const ref = useRef<HTMLDivElement>(null);
+  // #741 PR-c (2026-05-17): unique id per CountryDropdown instance so the
+  // <label htmlFor> + <input id> association doesn't collide when the
+  // page renders multiple CountryDropdowns (Country A + Country B
+  // pickers on the same /patterns-v1 page).
+  const searchInputId = useId();
 
   const selected = useMemo(
     () => options.find((o) => o.id === value) ?? null,
@@ -334,7 +339,15 @@ function CountryDropdown({
           }}
         >
           <div className="p-2 border-b" style={{ borderColor: "var(--qgi-border)" }}>
+            {/* #741 PR-c: sr-only label per WCAG 1.3.1. Label text includes
+                the CountryDropdown's `label` prop ("Country A" / "Country B")
+                so screen readers can disambiguate the two pickers on the
+                same page. */}
+            <label htmlFor={searchInputId} className="sr-only">
+              Search {label}
+            </label>
             <input
+              id={searchInputId}
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -1907,8 +1920,12 @@ export default function PatternsClient({
                     border: "1px solid var(--qgi-border)",
                   }}
                 >
-                  {/* Transformation selector */}
+                  {/* Transformation selector — #741 PR-c: sr-only label per WCAG 1.3.1 */}
+                  <label htmlFor="patterns-v1-transformation" className="sr-only">
+                    Indicator transformation
+                  </label>
                   <select
+                    id="patterns-v1-transformation"
                     value={transformation}
                     onChange={(e) => setTransformation(e.target.value as Transformation)}
                     className="text-[10px] rounded border px-2 py-1 bg-transparent outline-none focus:border-[var(--qgi-accent)]"
