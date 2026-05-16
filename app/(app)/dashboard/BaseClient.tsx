@@ -686,12 +686,22 @@ export function BaseClient({
 
       {/* ================================================================
           SECTION 2: PAGE HEADER + LEDE + "WHAT THIS DOESN'T MEAN" — PR-vi
+
+          #738 item 4 fix (2026-05-16): WCAG 1.3.1 (Info & Relationships).
+          Section 2 was a plain <div> while Sections 3/4/5 had <section
+          aria-labelledby> wrappers. Screen-reader landmark navigation
+          (rotor / F6) would skip the dashboard's primary header + lede
+          + methodology note. Wrapped in <section aria-labelledby> with
+          the h1 as the labelledby target so AT users hear "Dashboard,
+          region" when jumping here.
           ================================================================ */}
-      <div
+      <section
+        aria-labelledby="dashboard-header"
         className="px-4 lg:px-6 py-5 border-b shrink-0"
         style={{ borderColor: "var(--qgi-border)" }}
       >
         <h1
+          id="dashboard-header"
           className="text-3xl font-semibold tracking-tight mb-2"
           style={{ color: "var(--qgi-text)" }}
         >
@@ -735,7 +745,7 @@ export function BaseClient({
             reviewed for editorial release, not forecasts.
           </p>
         </details>
-      </div>
+      </section>
 
       {/* ================================================================
           SECTION 3: FOUR-FAMILY SUMMARY BAND — PR-vi (the core new element)
@@ -1392,75 +1402,93 @@ export function BaseClient({
             </div>
           ) : (
             <ul className="divide-y flex-1" style={{ borderColor: "var(--qgi-border)" }}>
-              {topPairs.slice(0, 5).map((p, i) => (
-                <li key={`${p.country_a}-${p.country_b}-${i}`}>
-                  <button
-                    onClick={() => navigateToPair(p)}
-                    aria-disabled={
-                      !p.country_a_id || !p.country_b_id ? "true" : undefined
-                    }
-                    className="w-full text-left flex items-center gap-3 px-4 py-2 transition-colors hover:bg-[var(--qgi-surface-2)]"
-                  >
-                    <div className="flex-1 min-w-0">
-                      <div
-                        className="text-[11px] font-medium truncate"
-                        style={{ color: "var(--qgi-text)" }}
-                      >
-                        <span style={{ color: "var(--qgi-country-a)" }}>
-                          {p.country_a}
-                        </span>
-                        <span className="mx-1" style={{ color: "var(--qgi-text-dim)" }}>
-                          &#8594;
-                        </span>
-                        <span style={{ color: "var(--qgi-country-b)" }}>
-                          {p.country_b}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2 mt-0.5">
-                        <span
-                          className="text-[10px]"
-                          style={{ color: "var(--qgi-text-dim)" }}
-                        >
-                          {p.pattern_length}-yr
-                        </span>
-                        {/* Inline correlation bar */}
-                        <div
-                          className="h-1.5 w-12 rounded overflow-hidden"
-                          style={{
-                            backgroundColor: "var(--qgi-surface-2)",
-                          }}
-                        >
-                          <div
-                            className="h-full rounded"
-                            style={{
-                              width: `${p.avg_correlation * 100}%`,
-                              backgroundColor:
-                                p.avg_correlation >= 0.8
-                                  ? "#34d399"
-                                  : p.avg_correlation >= 0.6
-                                    ? "var(--qgi-amber)"
-                                    : "#7a90a8",
-                            }}
-                          />
-                        </div>
-                        <span
-                          className="font-data text-[9px]"
-                          style={{ color: "var(--qgi-text-dim)" }}
-                        >
-                          {(p.avg_correlation * 100).toFixed(0)}%
-                        </span>
-                      </div>
-                    </div>
-                    <span
-                      className="font-data text-[10px] font-semibold shrink-0"
-                      style={{ color: "var(--qgi-amber)" }}
-                      title="Pattern Power Score — strength + persistence + breadth"
+              {topPairs.slice(0, 5).map((p, i) => {
+                // #738 item 5 fix (2026-05-16, WCAG 4.1.2): pre-fix
+                // pattern was aria-disabled="true" while leaving the
+                // button focusable + clickable (navigateToPair no-ops
+                // internally). Screen readers announced "dimmed" but
+                // keyboard users could still Tab to + activate it,
+                // and sighted users had no visual cue. Switched to
+                // native `disabled` which:
+                //  - Removes the button from tab order
+                //  - Prevents click events at the browser level
+                //  - Gets announced as truly unavailable by AT
+                //  - Composes with the disabled: tailwind variant for
+                //    visual dimming
+                const isMissingIds = !p.country_a_id || !p.country_b_id;
+                return (
+                  <li key={`${p.country_a}-${p.country_b}-${i}`}>
+                    <button
+                      onClick={() => navigateToPair(p)}
+                      disabled={isMissingIds}
+                      title={
+                        isMissingIds
+                          ? "Pattern detail unavailable — pair lacks numeric IDs in this bake"
+                          : undefined
+                      }
+                      className="w-full text-left flex items-center gap-3 px-4 py-2 transition-colors hover:bg-[var(--qgi-surface-2)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                     >
-                      Score {p.pattern_power_score.toFixed(0)}
-                    </span>
-                  </button>
-                </li>
-              ))}
+                      <div className="flex-1 min-w-0">
+                        <div
+                          className="text-[11px] font-medium truncate"
+                          style={{ color: "var(--qgi-text)" }}
+                        >
+                          <span style={{ color: "var(--qgi-country-a)" }}>
+                            {p.country_a}
+                          </span>
+                          <span className="mx-1" style={{ color: "var(--qgi-text-dim)" }}>
+                            &#8594;
+                          </span>
+                          <span style={{ color: "var(--qgi-country-b)" }}>
+                            {p.country_b}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span
+                            className="text-[10px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {p.pattern_length}-yr
+                          </span>
+                          {/* Inline correlation bar */}
+                          <div
+                            className="h-1.5 w-12 rounded overflow-hidden"
+                            style={{
+                              backgroundColor: "var(--qgi-surface-2)",
+                            }}
+                          >
+                            <div
+                              className="h-full rounded"
+                              style={{
+                                width: `${p.avg_correlation * 100}%`,
+                                backgroundColor:
+                                  p.avg_correlation >= 0.8
+                                    ? "#34d399"
+                                    : p.avg_correlation >= 0.6
+                                      ? "var(--qgi-amber)"
+                                      : "#7a90a8",
+                              }}
+                            />
+                          </div>
+                          <span
+                            className="font-data text-[9px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {(p.avg_correlation * 100).toFixed(0)}%
+                          </span>
+                        </div>
+                      </div>
+                      <span
+                        className="font-data text-[10px] font-semibold shrink-0"
+                        style={{ color: "var(--qgi-amber)" }}
+                        title="Pattern Power Score — strength + persistence + breadth"
+                      >
+                        Score {p.pattern_power_score.toFixed(0)}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
             </ul>
           )}
         </div>
