@@ -32,6 +32,13 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "burkina-faso-mali-car-precedent",
+    title: "Burkina Faso's risk signature mirrors Mali 2010-2012 and CAR 2011-2013",
+    date: "2026-05-16",
+    dek: "Five risk domains light up together on Burkina Faso in our current bake. The same combination preceded the 2012 Mali coup and the 2013 Central African Republic collapse. What that structural resemblance means — and what it doesn't.",
+    tags: ["field-note", "precedent", "Sahel"],
+  },
+  {
     slug: "recipe-rebuild-level-4",
     title: "What we mean when we say 'Recipe'",
     date: "2026-04-26",
