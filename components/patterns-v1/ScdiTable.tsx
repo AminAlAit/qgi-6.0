@@ -116,24 +116,34 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
           <button onClick={() => toggleSort("index_name")} className="text-left">
             INDICATOR {SortIndicator({ col: "index_name" })}
           </button>
-          <button
-            onClick={() => toggleSort("sector")}
-            className="text-left flex items-center gap-0.5"
-          >
-            SECTOR {SortIndicator({ col: "sector" })}
+          {/*
+           * #738 item 2 fix (2026-05-16, WCAG 4.1.2): InfoTooltip used to
+           * be nested inside the sort <button>. Even though InfoTooltip
+           * renders its trigger as `<span role="button">` (not a real
+           * <button> element — pre-empting React's hydration error from
+           * #567), nesting two interactive controls — one of them with
+           * `role="button"` — fails 4.1.2's "no nested interactive
+           * descendants" guidance and causes some screen readers to
+           * double-announce the role on focus. Restructured into a
+           * sibling flex container: <button> + <InfoTooltip> stand
+           * side-by-side, each independently focusable + accessible.
+           */}
+          <span className="flex items-center gap-0.5">
+            <button onClick={() => toggleSort("sector")} className="text-left">
+              SECTOR {SortIndicator({ col: "sector" })}
+            </button>
             <InfoTooltip text="The macro-sector this indicator measures (Economic, Demographic, Health, Governance, Infrastructure, etc.). Used for sector-coverage scoring and rose-chart filtering." />
-          </button>
+          </span>
           <span className="flex items-center gap-0.5">
             SOURCE
             <InfoTooltip text="The data provider that publishes this indicator. Currently mostly World Bank; FAOSTAT, V-Dem, ILOSTAT being added." />
           </span>
-          <button
-            onClick={() => toggleSort("correlation")}
-            className="text-right flex items-center justify-end gap-0.5"
-          >
-            R {SortIndicator({ col: "correlation" })}
+          <span className="flex items-center justify-end gap-0.5">
+            <button onClick={() => toggleSort("correlation")} className="text-right">
+              R {SortIndicator({ col: "correlation" })}
+            </button>
             <InfoTooltip text="Pearson correlation coefficient between Country A's and Country B's value series for this indicator across the pattern window. Ranges -1 to +1. Closer to +/-1 = tighter linear relationship." />
-          </button>
+          </span>
           <span className="text-right flex items-center justify-end gap-0.5">
             N
             <InfoTooltip text="Number of matched data points (years) used to compute R. Patterns with low N are statistically weaker even at high R." />
