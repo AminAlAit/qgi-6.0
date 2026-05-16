@@ -194,6 +194,55 @@ athena = boto3.client('athena')
 s3 = boto3.client('s3')
 
 
+def _s3_delete_prefix(prefix: str) -> None:
+    """Delete all S3 objects under the given prefix in the data-lake bucket.
+
+    Used pre-DDL to clear any stale partition files at
+    RECIPES_STABLE_PREFIX so `CREATE EXTERNAL TABLE IF NOT EXISTS` (SF
+    state 5b.3a) attaches to a CLEAN prefix and the downstream INSERTs
+    don't duplicate rows from a prior run's partitions.
+
+    Mirrors the canonical paginated-delete helper in
+    `pipeline-recipe-engine-finalize/lambda_function.py:1037-1052`.
+    Batches deletes in groups of 1000 (S3 API max).
+
+    Idempotent: returns silently on an empty prefix.
+
+    Why this lives HERE (not in SF as a separate Lambda state):
+    Adding a dedicated Lambda + SF state for a 200ms paginated-delete
+    would add ~1s of cold-start + state-transition overhead per run.
+    The list-formatter already has the S3 client and the stable-prefix
+    constant. Calling it inline is the cheapest correct option.
+
+    Race-safety: this Lambda runs once per pipeline run as the first
+    interactive step in Phase 5b (5b.3, immediately after 5b.1 DROP).
+    There's no concurrent writer at this point in the workflow — the
+    paginated-delete-then-INSERT-INTO sequence is single-threaded by
+    the SF state ordering.
+    """
+    paginator = s3.get_paginator('list_objects_v2')
+    keys_to_delete = []
+    total_deleted = 0
+    for page in paginator.paginate(Bucket=S3_BUCKET, Prefix=prefix):
+        for obj in page.get('Contents', []):
+            keys_to_delete.append({'Key': obj['Key']})
+            if len(keys_to_delete) >= 1000:
+                s3.delete_objects(
+                    Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete}
+                )
+                total_deleted += len(keys_to_delete)
+                keys_to_delete = []
+    if keys_to_delete:
+        s3.delete_objects(
+            Bucket=S3_BUCKET, Delete={'Objects': keys_to_delete}
+        )
+        total_deleted += len(keys_to_delete)
+    logger.info(
+        f"Cleared s3://{S3_BUCKET}/{prefix} — deleted {total_deleted} objects "
+        f"(pre-DDL clean per #622)."
+    )
+
+
 def lambda_handler(event, context):
     run_id = event.get('run_id', 'manual')
     cutoff_year = event.get('cutoff_year')
@@ -203,9 +252,26 @@ def lambda_handler(event, context):
         f"run_id={run_id}, cutoff_year={cutoff_year}"
     )
 
+    # #622 (2026-05-16): clear the stable S3 prefix BEFORE generating
+    # ddl_sql. Sequence guarantees:
+    #   1. 5b.1 DROP TABLE — removes Glue catalog entry only (Athena
+    #      DROP doesn't touch S3 files).
+    #   2. THIS LAMBDA STEP 0 — paginated-delete every object under
+    #      pipeline-recipe-engine/output/recipes/. Without this step,
+    #      stale partition files from prior runs survive at the stable
+    #      prefix, get re-attached by 5b.3a's `CREATE EXTERNAL TABLE
+    #      IF NOT EXISTS`, and downstream INSERTs append on top of
+    #      them — producing duplicate rows after the 2nd pipeline run.
+    #      This is the data-correctness fix Sonnet review on qgi-infra
+    #      PR #25 surfaced as BLOCK-level.
+    #   3. 5b.3a (qgi-infra) — CREATE EXTERNAL TABLE IF NOT EXISTS at
+    #      the now-empty stable prefix.
+    #   4. 5b.4 + 5b.5 — INSERT INTO writes fresh partitions.
+    _s3_delete_prefix(RECIPES_STABLE_PREFIX)
+
     # Step 1: enumerate (country_a_id, event_category, length_bucket, count)
     # combos that actually exist. Sorted ASC by count so the smallest chunk
-    # becomes the seed (keeps the CTAS fast regardless of country size).
+    # becomes the seed (keeps the INSERT fast regardless of country size).
     query_id = _run_enumerate_query(cutoff_year)
 
     # Step 2: fetch results
@@ -314,7 +380,7 @@ def lambda_handler(event, context):
     )
 
     # Step 3: seed = smallest emitted chunk. Post-#622 (2026-05-16) this is
-    # an INSERT INTO (not CTAS) — the new SF state `5b.2 Create External
+    # an INSERT INTO (not CTAS) — the new SF state `5b.3a Create External
     # Table` runs the DDL emitted as `ddl_sql` below, creating the table
     # at the stable prefix `s3://{bucket}/{RECIPES_STABLE_PREFIX}`.
     # The previous CTAS path landed data in `query_results/tables/<uuid>/`
@@ -411,7 +477,7 @@ def lambda_handler(event, context):
         'seed_country_id': seed['country_a_id'],
         'seed_pattern_count': seed['pattern_count'],
         'seed_sql': seed_sql,
-        # #622: DDL string consumed by SF state `5b.2 Create External
+        # #622: DDL string consumed by SF state `5b.3a Create External
         # Table` to create the recipes table at the stable prefix
         # before the seed INSERT runs.
         'ddl_sql': ddl_sql,
@@ -765,7 +831,7 @@ def build_recipe_query(
 # the May 2-5 cost spikes — see qgi-aws-tf#622, #739).
 #
 # The Lambda emits the DDL alongside seed_sql / insert_items so SF state
-# `5b.2 Create External Table` can execute it BEFORE 5b.4 Seed INSERT.
+# `5b.3a Create External Table` can execute it BEFORE 5b.4 Seed INSERT.
 # DDL is co-located with the SELECT-list it must match, so schema-drift
 # between INSERT shape and table definition is caught at test time
 # (test_ddl_select_column_parity) rather than at runtime.
@@ -814,7 +880,7 @@ RECIPES_COLUMNS = (
 def build_external_table_ddl(s3_bucket):
     """Build the CREATE EXTERNAL TABLE DDL for `qgi_data.recipes`.
 
-    Run by the new SF state `5b.2 Create External Table` (between
+    Run by the new SF state `5b.3a Create External Table` (between
     `5b.1 Drop Recipes Table` and `5b.3 List Formatter`'s downstream
     seed INSERT). Uses IF NOT EXISTS so re-runs after a partial-success
     are idempotent — the 5b.1 DROP cleared the table, the new DDL is the

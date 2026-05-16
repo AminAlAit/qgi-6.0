@@ -1135,6 +1135,90 @@ def test_seed_chunk_pattern_count_guard_raises_on_oversized_seed():
     )
 
 
+def test_pre_ddl_s3_cleanup_clears_stable_prefix():
+    """#622 (Sonnet review on qgi-infra PR #25, BLOCK-level data-correctness
+    fix): the Lambda must call _s3_delete_prefix(RECIPES_STABLE_PREFIX)
+    before generating ddl_sql.
+
+    Without the pre-clean, every re-run accumulates partition files at
+    the stable prefix → 5b.3a CREATE EXTERNAL TABLE IF NOT EXISTS
+    re-attaches the old files → downstream INSERTs add new partitions
+    on top → duplicate rows after the 2nd run. The cost-leak fix would
+    introduce a data-correctness regression.
+
+    The fix lives in this Lambda (not a new SF state) to avoid a
+    cold-start + state-transition cost (~1s/run) for a 200ms paginated
+    delete. The Lambda already has the S3 client + the stable-prefix
+    constant.
+    """
+    # Mock the paginator to return 2 pages × 3 stale objects so we
+    # exercise both the per-page accumulator AND the final flush.
+    chunks = [(5, "elections_and_voting", "b03_07", 100)]
+    mod, s3_mock, _ = _load_module(chunks)
+
+    # Simulate 6 stale objects across 2 pages from list_objects_v2.
+    stale_keys = [
+        {"Key": f"pipeline-recipe-engine/output/recipes/country_a_id={i}/p-{i}.parquet"}
+        for i in range(1, 7)
+    ]
+    pages = [{"Contents": stale_keys[:3]}, {"Contents": stale_keys[3:]}]
+
+    paginator_mock = MagicMock()
+    paginator_mock.paginate.return_value = pages
+    s3_mock.get_paginator.return_value = paginator_mock
+
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # The paginator was acquired for list_objects_v2.
+    s3_mock.get_paginator.assert_called_with("list_objects_v2")
+    # paginate was called with the stable prefix.
+    paginator_mock.paginate.assert_called_once_with(
+        Bucket="test-bucket",
+        Prefix=mod.RECIPES_STABLE_PREFIX,
+    )
+    # delete_objects was invoked at least once with the stable-prefix keys.
+    delete_calls = [c for c in s3_mock.delete_objects.call_args_list]
+    assert delete_calls, (
+        "Expected s3.delete_objects to be called for pre-DDL cleanup; "
+        "got zero invocations. Without this, recipes table will accumulate "
+        "duplicate rows across pipeline runs."
+    )
+    deleted_keys = []
+    for call in delete_calls:
+        objects = call.kwargs.get("Delete", {}).get("Objects", [])
+        deleted_keys.extend(o["Key"] for o in objects)
+    assert len(deleted_keys) == 6, (
+        f"Expected 6 stale keys deleted, got {len(deleted_keys)}: {deleted_keys}"
+    )
+    for k in deleted_keys:
+        assert k.startswith(mod.RECIPES_STABLE_PREFIX), (
+            f"delete_objects targeted a key outside the stable prefix: {k!r}"
+        )
+
+
+def test_pre_ddl_s3_cleanup_handles_empty_prefix():
+    """First-ever pipeline run: the stable prefix has zero objects.
+    The cleanup must complete silently — no delete_objects call (S3
+    API rejects empty Delete lists)."""
+    chunks = [(5, "elections_and_voting", "b03_07", 100)]
+    mod, s3_mock, _ = _load_module(chunks)
+
+    # Empty pages — first run.
+    paginator_mock = MagicMock()
+    paginator_mock.paginate.return_value = [{"Contents": []}]
+    s3_mock.get_paginator.return_value = paginator_mock
+
+    # Should not raise.
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # delete_objects MUST NOT be called when there's nothing to delete
+    # (S3 rejects empty Delete.Objects lists).
+    assert s3_mock.delete_objects.call_count == 0, (
+        "Expected zero delete_objects calls on an empty prefix; "
+        f"got {s3_mock.delete_objects.call_count}."
+    )
+
+
 def test_seed_chunk_pattern_count_guard_passes_on_healthy_seed():
     """Boundary: a seed at 5M (exactly AT the guard) passes; the
     guard fires only on STRICTLY GREATER. Documents that the guard
