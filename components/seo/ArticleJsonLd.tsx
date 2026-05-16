@@ -6,7 +6,32 @@
  * per-post via the Next.js layout convention rather than wrapped in a
  * Provider; blog posts are static + short + benefit from deterministic
  * SSR output.
+ *
+ * #734 (2026-05-16) — author defaults to **Organization (QGI Intelligence)**
+ * not Person. The previous default was a hard-coded Person attribution
+ * for Amin Al-Ait, which leaked into the structured data Google + LLMs
+ * scrape — particularly visible on the first pipeline-derived blog post
+ * (Burkina Faso, #733). Personal-bylined pieces can still pass an
+ * explicit `author={...}` override.
  */
+
+export type ArticleAuthor =
+  | {
+      type: "Organization";
+      name: string;
+      url?: string;
+    }
+  | {
+      type: "Person";
+      name: string;
+      url?: string;
+    };
+
+const DEFAULT_AUTHOR: ArticleAuthor = {
+  type: "Organization",
+  name: "QGI Intelligence",
+  url: "https://qgintelligence.com",
+};
 
 interface ArticleJsonLdProps {
   headline: string;
@@ -14,6 +39,10 @@ interface ArticleJsonLdProps {
   url: string;
   datePublished: string; // ISO 8601
   imageUrl?: string; // absolute URL; falls back to /og-default.png
+  /** Optional override for the structured-data author attribution.
+   *  Default: Organization (QGI Intelligence). Pass a Person variant
+   *  only for explicitly personally-bylined pieces. */
+  author?: ArticleAuthor;
 }
 
 export function ArticleJsonLd({
@@ -22,7 +51,13 @@ export function ArticleJsonLd({
   url,
   datePublished,
   imageUrl,
+  author = DEFAULT_AUTHOR,
 }: ArticleJsonLdProps) {
+  const authorPayload = {
+    "@type": author.type,
+    name: author.name,
+    ...(author.url ? { url: author.url } : {}),
+  };
   const payload = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -31,11 +66,7 @@ export function ArticleJsonLd({
     url,
     datePublished,
     dateModified: datePublished,
-    author: {
-      "@type": "Person",
-      name: "Amin Al-Ait",
-      url: "https://qgintelligence.com/about",
-    },
+    author: authorPayload,
     publisher: {
       "@type": "Organization",
       name: "QGI Intelligence",
