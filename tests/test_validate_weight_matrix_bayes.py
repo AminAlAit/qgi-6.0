@@ -140,10 +140,15 @@ def test_arm_json_paths_point_at_v6_sidecars():
 def test_root_resolves_to_monorepo_with_qgi_data_sibling():
     """N-3 (Sonnet review of #60; optional polish per #684): module-load
     assertion ensures ROOT/qgi-data exists. If the script is moved or the
-    repo is checked out without sibling qgi-data, the assert fires at
+    repo is checked out without sibling qgi-data, the assertion fires at
     import time rather than later at ARM_JSON_PATHS construction or at
     prep_cells_from_arm_jsons call. This test pins that the resolution
     works in the canonical multi-repo monorepo layout.
+
+    Companion: test_root_assertion_fires_when_qgi_data_missing exercises
+    the negative branch (Sonnet review of #70 N-1: positive-pin alone is
+    a tautology since module-load already fired the assertion before
+    this test runs).
     """
     assert (mod.ROOT / "qgi-data").is_dir(), (
         "ROOT/qgi-data missing; the module-load assertion at "
@@ -151,6 +156,40 @@ def test_root_resolves_to_monorepo_with_qgi_data_sibling():
     )
     assert (mod.ROOT / "qgi-ml").is_dir(), "ROOT/qgi-ml sibling expected in monorepo"
     assert (mod.ROOT / "qgi-docs").is_dir(), "ROOT/qgi-docs sibling expected in monorepo"
+
+
+def test_root_assertion_fires_when_qgi_data_missing(tmp_path, monkeypatch):
+    """N-1 (Sonnet review of #70): negative-branch test for the ROOT
+    assertion at validate_weight_matrix_bayes.py:106. The positive-pin
+    test above is a tautology since module-load fires the assert before
+    pytest runs. This test reloads the module under a faked __file__
+    that resolves to a tmp_path with NO sibling qgi-data dir, confirming
+    the runtime invariant actually fires.
+
+    Companion N-2 fix: assertion replaced with explicit `raise RuntimeError`
+    so `python -O` doesn't strip it. This test verifies the RuntimeError
+    surfaces correctly.
+    """
+    import importlib.util as _util
+
+    # Build a fake script path 3 levels under tmp_path so
+    # Path(__file__).resolve().parent.parent.parent == tmp_path
+    fake_script_dir = tmp_path / "fake-qgi-ml" / "scripts"
+    fake_script_dir.mkdir(parents=True)
+    fake_script = fake_script_dir / "validate_weight_matrix_bayes.py"
+
+    # Copy the real script's source so module body runs verbatim
+    real_script_text = (
+        Path(__file__).resolve().parent.parent / "scripts" /
+        "validate_weight_matrix_bayes.py"
+    ).read_text(encoding="utf-8")
+    fake_script.write_text(real_script_text, encoding="utf-8")
+
+    # NO qgi-data sibling created — assertion must fire on load.
+    spec = _util.spec_from_file_location("vwmb_negative_branch_test", fake_script)
+    fake_mod = _util.module_from_spec(spec)
+    with pytest.raises(RuntimeError, match="ROOT resolution failed"):
+        spec.loader.exec_module(fake_mod)
 
 
 # ===========================================================================
