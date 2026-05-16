@@ -5,7 +5,7 @@ import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { countrySlug } from "@/lib/slug";
 import { CountryMergedDetail } from "@/components/countries/CountryMergedDetail";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 
 // PR #4 — deterministic seeded RNG (mirrors the list-page seedRng in
 // CountriesMergedListClient). Used to fabricate per-country/per-recipe AHI
@@ -115,8 +115,10 @@ export default async function CountryMergedDetailPage({ params }: Props) {
     const numericMatch = allData.countries[iso];
     if (numericMatch) {
       const canonicalSlug = countrySlug(numericMatch.name);
+      // Defense-in-depth: `canonicalSlug !== iso` guard. countrySlug()
+      // produces alpha-only slugs from country names, so a numeric `iso`
+      // can never equal the canonical slug in real data. Belt + suspenders.
       if (canonicalSlug && canonicalSlug !== iso) {
-        const { permanentRedirect } = await import("next/navigation");
         permanentRedirect(`/countries/${canonicalSlug}`);
       }
       // Attach the id so the shape matches what `resolveCountryBySlug`
