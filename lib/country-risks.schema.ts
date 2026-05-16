@@ -52,11 +52,23 @@ export type QgiRiskScoreCoverageFlag = z.infer<typeof QgiRiskScoreCoverageFlagSc
 // level score shape; emitted per top-4 LOCKed recipe. Null when the
 // country has no top_category match for that recipe (i.e., the recipe
 // is not in the country's signal profile).
+//
+// #729 Step 1.5 — Majles enrichments (all optional for back-compat with
+// v2 bakes):
+//   - `cohort_n_recipe`: Roshani's veto — must be glanceable beside score
+//   - `recipe_ece` / `recipe_loco_auc` / advisory flags: Kwame's veto —
+//     calibration metrics carried alongside score so buyers know reliability
 export const QgiRiskScorePerRecipeEntrySchema = z.object({
   score: z.number().int().min(0).max(100),
   ci_low: z.number().int().min(0).max(100),
   ci_high: z.number().int().min(0).max(100),
   coverage_flag: QgiRiskScoreCoverageFlagSchema,
+  // #729 Step 1.5 enrichments — optional for back-compat
+  cohort_n_recipe: z.number().int().min(0).optional(),
+  recipe_ece: z.number().nullable().optional(),
+  recipe_loco_auc: z.number().nullable().optional(),
+  recipe_f_rule_advisory_flag: z.boolean().optional(),
+  recipe_f_rule_anomaly_flag: z.boolean().optional(),
 });
 export type QgiRiskScorePerRecipeEntry = z.infer<typeof QgiRiskScorePerRecipeEntrySchema>;
 
@@ -111,6 +123,17 @@ export const CountryRisksDataSchema = z.object({
     .record(z.string(), z.number().int().min(0))
     .optional(),
   qgi_risk_score_per_recipe_recipes: z.array(z.string()).optional(),
+  // #729 Step 1.5 — Dmitri's recipe-recipe Spearman correlation matrix,
+  // surfaced so quants can residualize properly. 4×4 record-of-records;
+  // self-correlation = 1.0; cells where shared-country count < min_pairs
+  // are null. Spearman ∈ [-1, 1].
+  qgi_risk_score_per_recipe_correlation_matrix: z
+    .record(z.string(), z.record(z.string(), z.number().min(-1).max(1).nullable()))
+    .optional(),
+  qgi_risk_score_per_recipe_min_pairs: z.number().int().min(2).optional(),
+  // #729 Step 1.5 — Roshani's small-N CI widening parameters (audit trail)
+  qgi_risk_score_small_cohort_ci_threshold: z.number().int().min(0).optional(),
+  qgi_risk_score_small_cohort_ci_widen_factor: z.number().min(1).optional(),
 });
 
 // Re-derive the TS types from the schemas so the two never drift.
