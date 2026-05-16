@@ -161,22 +161,67 @@ def route_verdict_against_5_2_2(
     anchor_battery_pass_count: int,
 ) -> dict:
     """Route the posterior result against the §5.2.2 4-tier exit table
-    (Miriam Move 3, qgi-docs `0db64f9`):
+    (Miriam Move 3, qgi-docs `0db64f9` verbatim):
 
-      HARD-FALSIFY: HDI straddles zero AND P(swing > 0.05) < 5%
-      SOFT-FALSIFY: HDI straddles zero AND P(swing > 0.05) ∈ [5%, 25%]
-      PARTIAL: HDI excludes zero AND lower bound < 0.10 OR anchor 3/8-5/8
-      PASS: HDI lower bound ≥ 0.10 AND anchor ≥ 6/8
+      HARD-FALSIFY: 94% HDI straddles zero AND P(swing > 0.05) < 0.05
+                    AND anchor ≤ 2/8 evaluable pass
+      SOFT-FALSIFY: 94% HDI straddles zero AND P(swing > 0.05) ∈ [0.05, 0.25]
+                    AND anchor ≤ 2/8 evaluable pass
+      PARTIAL:      94% HDI does NOT straddle zero AND lower bound < 0.10
+                    (methodology-favoring direction); OR anchor 3-5/8 mixed
+      PASS:         94% HDI lower bound ≥ 0.10 anomaly_score units
+                    AND anchor ≥ 6/8 evaluable pass
+
+    **§5.2.5 silent-corner protocol (this function's responsibility):**
+    The spec's PARTIAL/PASS tiers assume HDI is on the methodology-favoring
+    side of zero (lower bound > 0). The spec is SILENT on:
+      (a) HDI entirely negative (anti-methodology direction; methodology
+          arm A below null baseline arm D)
+      (b) HDI straddles zero with P(swing > 0.05) > 0.25 (geometrically
+          unlikely but not strictly excluded under fat-tailed posteriors)
+
+    Per the verdict-routing template (qgi-docs `5fc0980`) §2.3 step 2
+    last branch + the Sonnet-ratified Protocol-5 fidelity ruling, the
+    silent corners route to "INCONSISTENT" with mandatory escalation
+    to fresh 6-seat. The driver does NOT invent literal HARD-FALSIFY
+    routing for the entirely-negative case even though the substantive
+    read is anti-methodology — that is a 6-seat call, not a driver call.
 
     Returns dict with `tier`, `tier_definition`, `consequence`.
     """
     hdi_straddles_zero = (hdi_low <= 0) and (hdi_high >= 0)
+    hdi_entirely_negative = (hdi_high < 0)
+
+    if hdi_entirely_negative:
+        # §5.2.5 silent corner (a): HDI entirely on the anti-methodology
+        # side. Spec is silent; substantive read is HARD-FALSIFY-direction
+        # but the routing call is 6-seat per Protocol-5 fidelity.
+        return {
+            "tier": "INCONSISTENT-anti-methodology",
+            "tier_definition": (
+                "94% HDI entirely below zero (entirely anti-methodology "
+                "direction; methodology arm A below null baseline arm D). "
+                "Spec §5.2.2 is silent on this corner; substantive read is "
+                "HARD-FALSIFY-direction but routing requires 6-seat per "
+                "spec §5.2.5 silent-corner protocol."
+            ),
+            "consequence": (
+                "Escalate to fresh 6-seat Majles. Convening reads the "
+                "posterior magnitude + anchor-battery breakdown and rules "
+                "among: (a) ratify HARD-FALSIFY-by-conscience close (route "
+                "to T14 / #678), (b) ratify INERT (substrate-vs-methodology "
+                "decomposition push to ML track), (c) re-execute Path B with "
+                "Tariq A6/A7/A8 substrate refinement."
+            ),
+            "anchor_battery_required": "informational",
+            "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
+        }
 
     if hdi_straddles_zero:
         if posterior_prob_swing_gt_005 < 0.05:
             return {
                 "tier": "HARD-FALSIFY",
-                "tier_definition": "94% HDI straddles zero AND P(swing > 0.05) < 5%",
+                "tier_definition": "94% HDI straddles zero AND P(swing > 0.05) < 0.05",
                 "consequence": "Methodology direction closes on Path B. Route to T14 / #678.",
                 "anchor_battery_required": "≤ 2/8 pass",
                 "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
@@ -184,38 +229,49 @@ def route_verdict_against_5_2_2(
         elif 0.05 <= posterior_prob_swing_gt_005 <= 0.25:
             return {
                 "tier": "SOFT-FALSIFY",
-                "tier_definition": "94% HDI straddles zero AND P(swing > 0.05) ∈ [5%, 25%]",
+                "tier_definition": "94% HDI straddles zero AND P(swing > 0.05) ∈ [0.05, 0.25]",
                 "consequence": "Halt Path B; ML track absorbs methodology load.",
                 "anchor_battery_required": "≤ 2/8 pass",
                 "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
             }
         else:
-            # P > 25% but HDI still straddles zero → PARTIAL
+            # §5.2.5 silent corner (b): HDI straddles zero with P > 0.25.
+            # Per verdict template §2.3 step 2 last branch, route to
+            # INCONSISTENT-routing-anomaly with mandatory escalation. This
+            # is NOT spec-PARTIAL — PARTIAL requires HDI to EXCLUDE zero
+            # in the methodology-favoring direction.
             return {
-                "tier": "PARTIAL",
+                "tier": "INCONSISTENT-routing-anomaly",
                 "tier_definition": (
-                    "94% HDI straddles zero but P(swing > 0.05) > 25% "
-                    "(unusual: HDI is wide but posterior mass favors positive swing)"
+                    "94% HDI straddles zero AND P(swing > 0.05) > 0.25. "
+                    "Spec §5.2.2 is silent on this corner; geometrically "
+                    "unlikely combination but not strictly excluded under "
+                    "fat-tailed posteriors. Route to 6-seat per spec §5.2.5 "
+                    "silent-corner protocol."
                 ),
-                "consequence": "Escalate to fresh 6-seat convening.",
-                "anchor_battery_required": "3/8 – 5/8 mixed",
+                "consequence": "Escalate to fresh 6-seat convening (spec-silent corner).",
+                "anchor_battery_required": "informational",
                 "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
             }
 
-    # HDI excludes zero
+    # HDI does NOT straddle zero AND is in the methodology-favoring
+    # direction (HDI_low > 0 here, since hdi_entirely_negative was
+    # handled above). This is the case the spec's PARTIAL/PASS branches
+    # were written to handle.
     if hdi_low < 0.10:
         return {
             "tier": "PARTIAL",
             "tier_definition": (
-                "94% HDI excludes zero BUT lower bound < 0.10 anomaly_score units, "
-                "OR anchor battery 3/8 – 5/8 mixed"
+                "94% HDI excludes zero (methodology-favoring direction) "
+                "BUT lower bound < 0.10 anomaly_score units, OR anchor "
+                "battery 3/8 – 5/8 mixed"
             ),
             "consequence": "Escalate to fresh 6-seat convening.",
             "anchor_battery_required": "3/8 – 5/8 mixed",
             "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
         }
 
-    # HDI lower bound ≥ 0.10
+    # HDI lower bound ≥ 0.10 in methodology-favoring direction
     if anchor_battery_pass_count >= 6:
         return {
             "tier": "PASS",
@@ -395,16 +451,45 @@ def run_single_config(mod, cells, config: dict, *,
 def _load_anchor_country_ids(cells, anchor_battery_json_path: Path) -> list[int]:
     """Load the 8 anchor-case country_ids from cascade-anchor-case-battery.json.
 
-    Path B's §5.2.3 uses the same anchor cohort as Path A — they appear as
-    country_id integers in cells.country_labels (which are str-of-int)."""
+    Path B's §5.2.3 uses the same anchor cohort as Path A — but the
+    cells country_labels are str(int) country_ids and the anchor JSON
+    carries country NAMES (Malta, Iceland, Norway, Tunisia, Sri Lanka,
+    Venezuela, Switzerland, Yemen). Resolving name→id requires a
+    qgi-data country-master-list mapping that does not yet exist as a
+    standalone reference (Path A v6.6's sidecars carry the resolved
+    Path-A-specific percentile-rank verdict but not the name→id table).
+
+    **Wire-in DEFERRED** to a follow-up ticket post-v7 ratification
+    (filed at qgi-aws-tf#743 follow-up). The §5.2.2 routing in the
+    verdict template handles "informational anchor battery" by routing
+    on posterior-only when anchor is null — so v7 can fire without
+    this and still produce a §5.2.2-honor-eligible verdict.
+
+    Current behavior: read the anchor JSON (correctly using the
+    `anchor_cases` top-level key — the previous `cases` key was wrong),
+    print the count of cases the driver would route once name→id is
+    wired, and return an empty list so the MCMC fires anyway.
+    """
     if not anchor_battery_json_path.exists():
         print(f"  WARNING: anchor-case-battery.json not found at {anchor_battery_json_path}; using empty anchor list", flush=True)
         return []
     with anchor_battery_json_path.open(encoding="utf-8") as fh:
         data = json.load(fh)
-    # Battery has `cases` array; each case has `country_id`
-    cases = data.get("cases", [])
-    return [int(c["country_id"]) for c in cases if "country_id" in c]
+    # Battery has top-level `anchor_cases` array (NOT `cases`); each case
+    # has `country` (NAME, str) not `country_id` (int). Name→id resolver
+    # is a TODO — see docstring above.
+    cases = data.get("anchor_cases", [])
+    n_cases = len(cases)
+    print(
+        f"  anchor battery: {n_cases} cases declared in JSON; "
+        f"name→country_id resolver NOT YET WIRED (deferred follow-up); "
+        f"routing on posterior-only per spec §5.2.2 informational-anchor branch",
+        flush=True,
+    )
+    # Return empty list — keeps the MCMC firing without runtime errors.
+    # When name→id is wired in the follow-up PR, replace this with the
+    # resolved country_id list.
+    return []
 
 
 def main():
