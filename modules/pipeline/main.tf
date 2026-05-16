@@ -670,10 +670,27 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
   # India case, then (b) builds the chunk list with up to ~5K items
   # including pre-baked SQL strings. Discovered when SF v3 + v4 timed
   # out at 60s waiting for the enumerate query. Lambda max is 900s; we
-  # use the full max for safety. Memory bumped because the chunk-list
-  # serialization holds ~17 MB JSON in memory before S3 PUT.
+  # use the full max for safety.
+  #
+  # #739 (2026-05-16): memory 512 → 2048 MB. Pipeline data growth
+  # between May 11 and May 16 raised the post-JOIN chunk count from
+  # ~5K to ~41K (smart-chunking now emits 40,972 INSERT items across
+  # ~200 countries; country 100 alone reports 891M patterns post-JOIN).
+  # Each chunk's INSERT SQL is ~6KB → ~245MB of JSON strings, plus
+  # Python dict overhead, plus json.dumps peak doubles memory. The
+  # first cost-leak verify run OOM'd at Max Memory Used: 510 / 512 MB
+  # (99.6%) during the s3.put_object call after smart-chunking
+  # completed. 2048 MB gives ~4× headroom and lets json.dumps complete
+  # cleanly. Bumped via CLI first (`aws lambda update-function-
+  # configuration`) to unblock the test run; TF source updated here so
+  # the value persists across future `terraform apply` runs.
+  #
+  # Structural follow-up (separate ticket): stream insert_items to S3
+  # in batches rather than materializing the full list in memory.
+  # Would reduce memory pressure back to ~50-100 MB regardless of
+  # chunk count. Until then this memory bump is the operating budget.
   timeout          = 900
-  memory_size      = 512
+  memory_size      = 2048
   runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
