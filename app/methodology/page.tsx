@@ -4,6 +4,7 @@ import StatCards from "@/components/methodology/StatCards";
 import Glossary from "@/components/methodology/Glossary";
 import VerificationFlow from "@/components/methodology/VerificationFlow";
 import TaxonomyHorizontalTree from "@/components/methodology/TaxonomyHorizontalTree";
+import { RecipeCorrelationMatrix } from "@/components/methodology/RecipeCorrelationMatrix";
 import {
   TOTAL_COUNTRIES,
   TOTAL_INDICATORS,
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
  * The same constraint applies to the RciBadge tooltip on
  * /precedents/{slug} and /signals/{country}/{slug}.
  */
-export default function MethodologyPage() {
+export default async function MethodologyPage() {
   const rciAggregate = getRciAggregate();
   return (
     <div
@@ -621,6 +622,14 @@ export default function MethodologyPage() {
               country of interest.
             </p>
           </div>
+
+          {/* #731 (2026-05-16) — Per-recipe Risk Score recipe-recipe correlation
+              matrix. Renders live from country-risks.json so the matrix
+              stays accurate as bakes evolve. Placed inside the Validation
+              section because methodological-honesty disclosure is what it
+              is. Renders nothing if the bake doesn't carry the matrix (pre-#729
+              Step 1.5 bakes) — graceful degradation. */}
+          <RecipeCorrelationMatrix />
         </Section>
 
         {/* Section 6: Pattern Tiers */}
