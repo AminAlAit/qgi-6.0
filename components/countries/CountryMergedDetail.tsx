@@ -104,6 +104,33 @@ export interface QgiRiskScore {
   coverage_flag: "ok" | "insufficient";
 }
 
+/**
+ * #729 (2026-05-16) — Per-recipe Precedent Match entry. Mirrors the
+ * country-level shape + carries cohort_n + calibration metrics from the
+ * ML stack. Optional fields land in v3 bakes (#729 Step 1.5).
+ *
+ * Distinct NAME from the aggregate: Ingrid's veto — "Precedent Match"
+ * avoids the "risk-of-event" misread that "Risk Score per recipe" invites.
+ */
+export interface QgiPerRecipeEntry {
+  score: number;
+  ci_low: number;
+  ci_high: number;
+  coverage_flag: "ok" | "insufficient";
+  cohort_n_recipe?: number;
+  recipe_ece?: number | null;
+  recipe_loco_auc?: number | null;
+  recipe_f_rule_advisory_flag?: boolean;
+  recipe_f_rule_anomaly_flag?: boolean;
+}
+
+function formatRecipeDisplayName(id: string): string {
+  return id
+    .replace(/_and_/g, " & ")
+    .replace(/_/g, " ")
+    .replace(/^\w/, (c) => c.toUpperCase());
+}
+
 export function CountryMergedDetail({
   iso,
   name,
@@ -117,6 +144,7 @@ export function CountryMergedDetail({
   mlMatrixDefaultExpanded = false,
   structuralPeers = [],
   riskScore,
+  perRecipe,
 }: {
   iso: string;
   name: string;
@@ -148,6 +176,10 @@ export function CountryMergedDetail({
   /** #721 Step 2 — QGI Risk Score (0-100 percentile rank). Optional;
    *  hero renders gracefully without it. */
   riskScore?: QgiRiskScore;
+  /** #729 Step 2 — per-recipe Precedent Match block (record keyed by recipe id,
+   *  null per recipe when the country has no top_category match). Optional;
+   *  hidden when absent (pre-#728 bakes). */
+  perRecipe?: Record<string, QgiPerRecipeEntry | null> | undefined;
 }) {
   const tierMeta = TIER_META[tier];
   // Highlighted L1 groups — the codes that contain a top-3 driving category.
@@ -241,6 +273,18 @@ export function CountryMergedDetail({
           {TIER_BANNER_COPY[tier].replace("{country}", name)}
         </p>
       </section>
+
+      {/* ============== Precedent Match strip (#729 Step 2) ============== */}
+      {/*
+        Per-recipe Precedent Match decomposition of the hero QGI Risk Score.
+        Yuki's spec: Section 2 below hero, horizontal mini-bar-chart, 4 rows,
+        single neutral palette, cohort_n visible glyph (Roshani's veto).
+        Renders nothing if the bake doesn't carry the per-recipe block
+        (graceful degradation for pre-#728 bakes).
+      */}
+      {perRecipe && Object.values(perRecipe).some((v) => v !== null) && (
+        <PrecedentMatchStrip perRecipe={perRecipe} />
+      )}
 
       {/* ============== Section "What's happening here" (Ingrid) ============== */}
       <WhatsHappeningHere name={name} tier={tier} top3={top3} />
@@ -442,6 +486,216 @@ function RiskScoreHeroTile({
           95% CI {ciSpan}
         </span>
       )}
+    </div>
+  );
+}
+
+/**
+ * Precedent Match strip (#729 Step 2) — per-recipe percentile-rank
+ * decomposition of the country-level QGI Risk Score.
+ *
+ * Per the 2026-05-16 per-recipe Majles:
+ *  - Yuki: horizontal mini-bar-chart, 4 rows, single neutral palette
+ *    (opacity-graded intensity), cohort_n visible glyph on every row
+ *  - Roshani: cohort_n MUST be visible (not just hover); CI shown wider
+ *    when small-cohort widening kicked in upstream
+ *  - Ingrid: name is "Precedent Match" (NOT "Risk Score per recipe"),
+ *    avoids the "probability of event" misread
+ *  - Marcus: null rows shown EXPLICITLY (hatched bar + "—"), never hidden
+ *  - Kwame: calibration metrics surfaced in tooltip (recipe ECE / LOCO AUC
+ *    / advisory flag) so buyers know underlying reliability
+ *  - STRICT ORDINAL: tooltip says "percentile rank, NOT a probability"
+ */
+function PrecedentMatchStrip({
+  perRecipe,
+}: {
+  perRecipe: Record<string, QgiPerRecipeEntry | null>;
+}) {
+  // Stable ordering — top-4 LOCKed recipes in their canonical sequence so
+  // the strip reads the same on every country (Yuki's grid-discipline rule).
+  const orderedRecipes = [
+    "civil_war_and_insurgency",
+    "multilateral_agreement",
+    "elections_and_voting",
+    "bilateral_treaty",
+  ];
+  const recipesPresent = orderedRecipes.filter((r) => r in perRecipe);
+  if (recipesPresent.length === 0) return null;
+
+  return (
+    <section aria-labelledby="precedent-match-heading" className="mb-6">
+      <div className="mb-3 flex items-baseline justify-between flex-wrap gap-2">
+        <h2
+          id="precedent-match-heading"
+          className="text-[11px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Precedent Match ({recipesPresent.length} recipes)
+        </h2>
+        <span
+          className="text-[10px]"
+          style={{ color: "var(--qgi-text-dim)" }}
+          title="Each bar is a percentile-rank score (0-100) of this country against the cohort of countries firing on that recipe. NOT a probability."
+        >
+          [Verified data] Per-recipe decomposition of the country score
+        </span>
+      </div>
+
+      <div
+        className="rounded-lg border overflow-hidden"
+        style={{
+          backgroundColor: "var(--qgi-surface)",
+          borderColor: "var(--qgi-border)",
+        }}
+      >
+        <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
+          {recipesPresent.map((rid) => {
+            const entry = perRecipe[rid];
+            return (
+              <li key={rid}>
+                <PrecedentMatchRow recipeId={rid} entry={entry} />
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      <p className="text-[10px] mt-2" style={{ color: "var(--qgi-text-dim)" }}>
+        Each row ranks this country against the cohort firing on that recipe. Higher =
+        stronger pattern resemblance, not a probability of the event. Where a country has
+        no top_category match for a recipe, the row is rendered as &ldquo;—&rdquo;.
+      </p>
+    </section>
+  );
+}
+
+function PrecedentMatchRow({
+  recipeId,
+  entry,
+}: {
+  recipeId: string;
+  entry: QgiPerRecipeEntry | null;
+}) {
+  const displayName = formatRecipeDisplayName(recipeId);
+  if (entry === null) {
+    return (
+      <div
+        className="px-4 py-2.5 grid items-center gap-3"
+        style={{ gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 2fr) 90px" }}
+        title={`No top_category match for ${displayName} in this country.`}
+      >
+        <div
+          className="text-sm font-medium truncate"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          {displayName}
+        </div>
+        <div
+          className="h-2 rounded"
+          style={{
+            background:
+              "repeating-linear-gradient(45deg, var(--qgi-surface-2), var(--qgi-surface-2) 4px, transparent 4px, transparent 8px)",
+            border: "1px solid var(--qgi-border)",
+            opacity: 0.5,
+          }}
+          aria-label="No score for this recipe"
+        />
+        <div
+          className="text-right font-data text-sm"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          —
+        </div>
+      </div>
+    );
+  }
+
+  // Score bar: opacity-graded intensity. Score 0 → 20% opacity; 100 → 100%.
+  const fillPct = Math.max(0, Math.min(100, entry.score));
+  const opacity = 0.25 + 0.75 * (entry.score / 100);
+  const ciSpan = `${entry.ci_low}–${entry.ci_high}`;
+  const cohortN = entry.cohort_n_recipe;
+
+  // Tooltip: strict-ordinal + calibration metrics if present (Kwame's veto).
+  const tooltipParts: string[] = [];
+  tooltipParts.push(
+    `${displayName}: Precedent Match ${entry.score}/100. Percentile rank within the cohort of ${cohortN ?? "?"} countries firing on this recipe.`
+  );
+  tooltipParts.push("NOT a probability the event will occur.");
+  if (entry.recipe_loco_auc !== null && entry.recipe_loco_auc !== undefined) {
+    tooltipParts.push(`Recipe out-of-country AUC: ${entry.recipe_loco_auc.toFixed(3)}.`);
+  }
+  if (entry.recipe_ece !== null && entry.recipe_ece !== undefined) {
+    tooltipParts.push(`Calibration error (ECE): ${entry.recipe_ece.toFixed(3)}.`);
+  }
+  if (entry.recipe_f_rule_advisory_flag) {
+    tooltipParts.push("F-rule ADVISORY: treat as provisional.");
+  }
+  const tooltip = tooltipParts.join(" ");
+
+  return (
+    <div
+      className="px-4 py-2.5 grid items-center gap-3"
+      style={{ gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 2fr) 90px" }}
+      title={tooltip}
+    >
+      <div className="min-w-0">
+        <div
+          className="text-sm font-medium truncate"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          {displayName}
+          {entry.recipe_f_rule_advisory_flag && (
+            <span
+              className="ml-2 inline-flex items-center px-1.5 py-0.5 rounded text-[9px] tracking-wider uppercase font-data"
+              style={{
+                color: "#fbbf24",
+                backgroundColor: "rgba(251,191,36,0.10)",
+                border: "1px solid rgba(251,191,36,0.35)",
+              }}
+              title="F-rule ADVISORY — treat this recipe's score as provisional."
+            >
+              Advisory
+            </span>
+          )}
+        </div>
+        {cohortN !== undefined && (
+          <div
+            className="text-[10px] font-data tabular-nums mt-0.5"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            N={cohortN}
+          </div>
+        )}
+      </div>
+      <div
+        className="relative h-2 rounded"
+        style={{ backgroundColor: "var(--qgi-surface-2)" }}
+      >
+        <div
+          className="absolute inset-y-0 left-0 rounded"
+          style={{
+            width: `${fillPct}%`,
+            backgroundColor: "var(--qgi-text)",
+            opacity,
+          }}
+          aria-label={`Precedent Match score: ${entry.score} of 100`}
+        />
+      </div>
+      <div className="text-right">
+        <div
+          className="font-data tabular-nums text-sm font-semibold"
+          style={{ color: "var(--qgi-text)" }}
+        >
+          {entry.score}
+        </div>
+        <div
+          className="text-[9px] font-data tabular-nums mt-0.5"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          [{ciSpan}]
+        </div>
+      </div>
     </div>
   );
 }
