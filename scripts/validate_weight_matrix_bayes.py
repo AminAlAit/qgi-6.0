@@ -99,6 +99,15 @@ if TYPE_CHECKING:  # pragma: no cover
 
 ROOT = Path(__file__).resolve().parent.parent.parent
 
+# N-3 (Sonnet review of #60; optional polish per #684): catch a wrong-root
+# resolution at module load instead of with a cryptic FileNotFoundError
+# later at ARM_JSON_PATHS construction or at runtime in prep_cells.
+assert (ROOT / "qgi-data").is_dir(), (
+    f"ROOT resolution failed: expected sibling 'qgi-data/' under {ROOT}, "
+    f"but it is missing. Run this script from a clone of the multi-repo "
+    f"monorepo with qgi-ml, qgi-data, qgi-docs as siblings."
+)
+
 # Path A v6.6 run artifacts (input to the prep helper). Sidecar variant
 # `-v6.json` carries the per-cell `anomaly_score` tensor; the v5 originals
 # at `phase4-validation-arm{A,B,C,D}.json` (qgi-data `0f8aeed`) are T11

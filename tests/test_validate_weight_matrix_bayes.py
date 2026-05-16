@@ -127,6 +127,22 @@ def test_arm_json_paths_point_at_v6_sidecars():
             f"ARM_JSON_PATHS[{arm}] must point at v6 sidecar, not v5 original"
 
 
+def test_root_resolves_to_monorepo_with_qgi_data_sibling():
+    """N-3 (Sonnet review of #60; optional polish per #684): module-load
+    assertion ensures ROOT/qgi-data exists. If the script is moved or the
+    repo is checked out without sibling qgi-data, the assert fires at
+    import time rather than later at ARM_JSON_PATHS construction or at
+    prep_cells_from_arm_jsons call. This test pins that the resolution
+    works in the canonical multi-repo monorepo layout.
+    """
+    assert (mod.ROOT / "qgi-data").is_dir(), (
+        "ROOT/qgi-data missing; the module-load assertion at "
+        "validate_weight_matrix_bayes.py should have fired before reaching this test"
+    )
+    assert (mod.ROOT / "qgi-ml").is_dir(), "ROOT/qgi-ml sibling expected in monorepo"
+    assert (mod.ROOT / "qgi-docs").is_dir(), "ROOT/qgi-docs sibling expected in monorepo"
+
+
 # ===========================================================================
 # make_synthetic_cells — shape, dtype, NaN structure
 # ===========================================================================
