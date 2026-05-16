@@ -325,8 +325,15 @@ export function CountriesMergedListClient({
           })}
         </div>
 
-        {/* Search */}
+        {/* Search — #741 (2026-05-17): sr-only label per WCAG 1.3.1.
+            (Sonnet review on PR #86 caught this — the first edit pass
+            on this file added the Sort label but missed the search
+            label. Adding here as the BLOCK fix.) */}
+        <label htmlFor="countries-merged-search" className="sr-only">
+          Search country
+        </label>
         <input
+          id="countries-merged-search"
           type="text"
           placeholder="Search country..."
           value={search}
