@@ -86,6 +86,10 @@ def enumerate_sweep_grid(sweep_cfg: dict) -> list[dict]:
                         mu_c == axes["mu_center"]["baseline_value"]
                     ),
                 })
+    # Sonnet pace-decision 2026-05-16: reorder baseline FIRST so it
+    # completes even under a tight ceiling. The §5.2.2 verdict requires
+    # baseline; sweep-stability check works on whatever else completes.
+    configs.sort(key=lambda c: (not c["is_baseline"]))
     return configs
 
 
