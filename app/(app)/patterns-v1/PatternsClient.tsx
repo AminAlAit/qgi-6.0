@@ -67,7 +67,7 @@ function getCountryName(id: string): string {
 /* ------------------------------------------------------------------ */
 
 const PPS_QUINTILES = [
-  { label: "Very weak", min: 0, max: 0.5, color: "#4a6280" },
+  { label: "Very weak", min: 0, max: 0.5, color: "#8aa6be" },
   { label: "Weak", min: 0.5, max: 0.65, color: "#7a90a8" },
   { label: "Moderate", min: 0.65, max: 0.75, color: "#fbbf24" },
   { label: "Strong", min: 0.75, max: 0.85, color: "#fb923c" },
@@ -87,7 +87,7 @@ function ppsColor(pps: number): string {
   if (pps >= 0.75) return "#fb923c";
   if (pps >= 0.65) return "#fbbf24";
   if (pps >= 0.5) return "#7a90a8";
-  return "#4a6280";
+  return "#8aa6be";
 }
 
 function rawPpsColor(pps: number): string {
@@ -1674,7 +1674,7 @@ export default function PatternsClient({
                                   />
                                 ))
                               : [
-                                  { min: 0, max: 500, color: "#4a6280" },
+                                  { min: 0, max: 500, color: "#8aa6be" },
                                   { min: 500, max: 1000, color: "#fbbf24" },
                                   { min: 1000, max: 1500, color: "#fb923c" },
                                   { min: 1500, max: 2000, color: "#f87171" },
@@ -2138,7 +2138,7 @@ export default function PatternsClient({
                                                 lineStyle: { color: "#243347" },
                                               },
                                               axisLabel: {
-                                                color: "#4a6280",
+                                                color: "#8aa6be",
                                                 fontSize: 9,
                                               },
                                             }
@@ -2150,7 +2150,7 @@ export default function PatternsClient({
                                                 lineStyle: { color: "#243347" },
                                               },
                                               axisLabel: {
-                                                color: "#4a6280",
+                                                color: "#8aa6be",
                                                 fontSize: 9,
                                                 formatter: (v: number) =>
                                                   String(Math.round(v)),
@@ -2162,7 +2162,7 @@ export default function PatternsClient({
                                           scale: true,
                                           axisLine: { lineStyle: { color: "#243347" } },
                                           splitLine: { lineStyle: { color: "#1a2a3a" } },
-                                          axisLabel: { color: "#4a6280", fontSize: 9 },
+                                          axisLabel: { color: "#8aa6be", fontSize: 9 },
                                         },
                                         series: scdiAligned
                                           ? [

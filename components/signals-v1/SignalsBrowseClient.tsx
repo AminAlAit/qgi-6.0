@@ -73,7 +73,7 @@ const TIER_STYLES = {
     label: "ELEVATED",
   },
   BASELINE: {
-    color: "#4a6280",
+    color: "#8aa6be",
     borderWidth: 2,
     bgWash: "transparent",
     dot: "#38bdf8",
@@ -505,7 +505,7 @@ function SignalRow({
   activeRegion: string | null;
 }) {
   const style = TIER_STYLES[signal.tier];
-  const domainColor = signal.l1Domain?.color ?? "#4a6280";
+  const domainColor = signal.l1Domain?.color ?? "#8aa6be";
   const topCountries = signal.countries.slice(0, 6);
   const overflowCount = signal.countries.length - 6;
 

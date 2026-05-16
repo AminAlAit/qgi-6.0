@@ -31,10 +31,14 @@
      pre-fix muted), so both tokens are moved together.
 
      Variable bump covers 624 call sites of var(--qgi-text-dim) + 442 of
-     var(--qgi-text-muted). A separate follow-up will replace ~34 remaining
-     hard-coded `#4a6280` literals (lib/design.ts, signals-v1, charts,
-     countries-v1, patterns-v1) with var() references — those bypass this
-     token bump until manually rewritten. */
+     var(--qgi-text-muted). The 34 hard-coded `#4a6280` literals in chart
+     configs / SVG attrs / palette constants (which can't use var()) were
+     bumped to `#8aa6be` in #737 (PR #82, 2026-05-16). The two `#4a6280`
+     references remaining in this file are the historical-note literals
+     on lines 21 and (this line); those are intentional documentation,
+     not active values. A vitest regression guard at
+     `lib/__tests__/no-hardcoded-text-dim.test.ts` fails CI if a new
+     occurrence appears outside globals.css. */
   --qgi-text-muted: #9ab0c4; /* secondary / label text — 6.22:1 vs --qgi-surface-2 (AA, worst case) */
   --qgi-text-dim: #8aa6be; /* tertiary / placeholder — 5.49:1 vs --qgi-surface-2 (AA, worst case) */
 

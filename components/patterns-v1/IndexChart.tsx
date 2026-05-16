@@ -170,7 +170,7 @@ export function IndexChart({
       type: "category",
       data: xAxisA,
       axisLine: { lineStyle: { color: "#243347" } },
-      axisLabel: { color: "#4a6280", fontSize: 9 },
+      axisLabel: { color: "#8aa6be", fontSize: 9 },
       splitLine: { show: false },
     },
     yAxis: {
@@ -178,7 +178,7 @@ export function IndexChart({
       scale: true,
       axisLine: { lineStyle: { color: "#243347" } },
       splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#4a6280", fontSize: 9 },
+      axisLabel: { color: "#8aa6be", fontSize: 9 },
     },
     series: [
       {
@@ -287,7 +287,7 @@ export function IndexChart({
       nameTextStyle: { color: "#7a90a8", fontSize: 9 },
       axisLine: { lineStyle: { color: "#243347" } },
       splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#4a6280", fontSize: 9 },
+      axisLabel: { color: "#8aa6be", fontSize: 9 },
     },
     yAxis: {
       type: "value",
@@ -298,7 +298,7 @@ export function IndexChart({
       nameTextStyle: { color: "#7a90a8", fontSize: 9 },
       axisLine: { lineStyle: { color: "#243347" } },
       splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#4a6280", fontSize: 9 },
+      axisLabel: { color: "#8aa6be", fontSize: 9 },
     },
     series: [
       {
