@@ -259,7 +259,7 @@ def test_seed_is_insert_and_ddl_is_emitted():
 
     # #622: DDL is emitted as a separate top-level field so SF state
     # 5b.2 can run CREATE EXTERNAL TABLE before the seed INSERT.
-    assert 'ddl_sql' in result, "Lambda must emit ddl_sql field for SF 5b.2"
+    assert 'ddl_sql' in result, "Lambda must emit ddl_sql field for SF 5b.3a"
     assert "CREATE EXTERNAL TABLE" in result['ddl_sql']
     assert "qgi_data.recipes" in result['ddl_sql']
     # The DDL must point at the stable prefix (not query_results/tables/).
