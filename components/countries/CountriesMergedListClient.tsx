@@ -355,13 +355,16 @@ export function CountriesMergedListClient({
 
         {/* Sort */}
         <div className="flex items-center gap-1.5 ml-auto">
-          <span
+          {/* #741: visible "Sort" span -> <label htmlFor> (click-to-focus) */}
+          <label
+            htmlFor="countries-merged-sort"
             className="text-[9px] tracking-widest uppercase"
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Sort
-          </span>
+          </label>
           <select
+            id="countries-merged-sort"
             value={sortCol}
             onChange={(e) => setSortCol(e.target.value as SortColumn)}
             className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
