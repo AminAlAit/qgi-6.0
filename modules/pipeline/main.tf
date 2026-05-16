@@ -672,9 +672,9 @@ resource "aws_lambda_function" "recipe_engine_list_formatter" {
   # out at 60s waiting for the enumerate query. Lambda max is 900s; we
   # use the full max for safety. Memory bumped because the chunk-list
   # serialization holds ~17 MB JSON in memory before S3 PUT.
-  timeout       = 900
-  memory_size   = 512
-  runtime       = local.lambda_defaults.runtime
+  timeout          = 900
+  memory_size      = 512
+  runtime          = local.lambda_defaults.runtime
   architectures    = local.lambda_defaults.architectures
   filename         = local.lambda_defaults.filename
   source_code_hash = local.lambda_defaults.source_code_hash
@@ -1485,7 +1485,8 @@ resource "aws_sfn_state_machine" "pipeline" {
       #   5b.1 DROP TABLE recipes     (Athena .sync)
       #   5b.2 Enumerate country_ids  (Athena .sync, sorted by pattern count)
       #   5b.3 List Formatter Lambda  (parse results, pre-gen SQL strings)
-      #   5b.4 Seed CTAS              (Athena .sync, smallest country)
+      #   5b.3a Create External Table  (Athena .sync, DDL from Lambda — #622)
+      #   5b.4 Seed INSERT             (Athena .sync, INSERT INTO smallest chunk)
       #   5b.5 Map per-country INSERT (Athena .sync × 80, idempotent)
       #   5b.6 Finalize Lambda        (views + dashboard JSONs)
       # -----------------------------------------------------------------
@@ -1519,10 +1520,70 @@ resource "aws_sfn_state_machine" "pipeline" {
         }
         ResultPath = "$.recipe_list"
         Retry      = local.lambda_retry
-        Next       = "5b.4. Seed CTAS"
+        # #622 (2026-05-16) — Lambda now emits $.recipe_list.ddl_sql
+        # alongside seed_sql. The new state 5b.3a runs the DDL to
+        # create the recipes EXTERNAL TABLE at the stable prefix
+        # BEFORE the seed INSERT writes to it.
+        Next = "5b.3a. Create External Table"
       }
 
-      "5b.4. Seed CTAS" = {
+      # ---------------------------------------------------------------
+      # 5b.3a (#622, 2026-05-16): Create EXTERNAL TABLE recipes at the
+      # stable S3 prefix s3://{bucket}/pipeline-recipe-engine/output/recipes/.
+      #
+      # WHY THIS STATE EXISTS
+      # ---------------------
+      # Pre-fix: 5b.4 ran `CREATE TABLE recipes AS SELECT ...` (CTAS),
+      # which lands data at `query_results/tables/<uuid>/` with 1-day
+      # S3 expiry. Every Lambda re-run cycled DROP -> CTAS -> expire ->
+      # re-CTAS, dominating the May 2-5 cost spike (~$13/day).
+      #
+      # Post-fix: this state CREATEs the table at the stable prefix
+      # FIRST, then 5b.4 (now "Seed INSERT") writes the seed chunk
+      # via INSERT INTO. The same stable prefix is used by the Map
+      # state INSERTs in 5b.5 — so every partition lives under one
+      # known location with NO 1-day expiry.
+      #
+      # SCHEMA AUTHORITY
+      # ----------------
+      # The 27-column DDL is generated INSIDE the Lambda
+      # (lambdas/pipeline-recipe-engine-list-formatter/lambda_function.py
+      # build_external_table_ddl) and emitted as $.recipe_list.ddl_sql.
+      # Co-locating DDL with the SELECT-list eliminates cross-repo
+      # schema-drift risk — a vitest-style regression guard
+      # (test_ddl_select_column_parity) catches any divergence at
+      # test time.
+      #
+      # IDEMPOTENCY
+      # -----------
+      # DDL uses `CREATE EXTERNAL TABLE IF NOT EXISTS`. 5b.1 DROPs the
+      # table before this state runs; on a partial-retry the IF NOT
+      # EXISTS handles the case where this state succeeded but a later
+      # state failed — re-running this is harmless.
+      "5b.3a. Create External Table" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::athena:startQueryExecution.sync"
+        Parameters = {
+          "QueryString.$"       = "$.recipe_list.ddl_sql"
+          WorkGroup             = var.athena_workgroup_name
+          QueryExecutionContext = { Database = var.glue_database_name }
+          ResultConfiguration   = { OutputLocation = local.s3_output_location }
+        }
+        ResultPath = "$.create_external_table_output"
+        Retry = [{
+          ErrorEquals     = ["States.ALL"]
+          IntervalSeconds = 5
+          MaxAttempts     = 2
+          BackoffRate     = 2
+        }]
+        Next = "5b.4. Seed INSERT"
+      }
+
+      # #622 (2026-05-16): renamed from "5b.4. Seed CTAS". The SQL
+      # emitted by the Lambda's $.recipe_list.seed_sql now contains
+      # INSERT INTO (mode='insert') instead of CREATE TABLE AS SELECT.
+      # State name updated to reflect actual behavior.
+      "5b.4. Seed INSERT" = {
         Type     = "Task"
         Resource = "arn:aws:states:::athena:startQueryExecution.sync"
         Parameters = {
@@ -1531,6 +1592,9 @@ resource "aws_sfn_state_machine" "pipeline" {
           QueryExecutionContext = { Database = var.glue_database_name }
           ResultConfiguration   = { OutputLocation = local.s3_output_location }
         }
+        # ResultPath kept as $.seed_ctas_output for backward-compat
+        # with any downstream consumer/log query that grep'd for that
+        # key. Comment marks the historical name.
         ResultPath = "$.seed_ctas_output"
         Retry = [{
           ErrorEquals     = ["States.ALL"]
@@ -1697,7 +1761,9 @@ resource "aws_sfn_state_machine" "pipeline" {
           # EnforceWorkGroupConfiguration=true which rejects CTAS
           # submissions that set their own output location. Let Athena
           # write the staging table into the workgroup's default
-          # location (same as 5b.4 Seed CTAS for the recipes table).
+          # location (same as 5b.4 Seed INSERT for the recipes table —
+          # post-#622 — though that one INSERTs into a stable-prefix
+          # EXTERNAL TABLE so query_results doesn't accumulate uuids).
           #
           # NOTE 2: no ``partitioned_by`` either. Athena's Hive writer
           # caps at 100 open partitions per CTAS; we have 214 countries.
