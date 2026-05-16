@@ -374,9 +374,15 @@ export function PatternsMergedListClient({
         <div className="min-w-0">
           {/* ============== Filter strip — PR #2 trimmed (rail owns the tier facet) ============== */}
           <div className="flex flex-col sm:flex-row gap-3 mb-4 items-stretch sm:items-center flex-wrap">
+            {/* #741: replace aria-label with proper sr-only <label htmlFor>
+                for WCAG 1.3.1 + 4.1.2. aria-label dropped to avoid
+                double-announce per accname-1.2 §4.3. */}
+            <label htmlFor="patterns-merged-search" className="sr-only">
+              Search country pair
+            </label>
             <input
+              id="patterns-merged-search"
               type="text"
-              aria-label="Search country pair"
               placeholder="Search country pair..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -388,16 +394,19 @@ export function PatternsMergedListClient({
             />
 
             <div className="flex items-center gap-1">
-              <span
+              {/* #741: visible "Sort" span -> <label htmlFor> for click-to-focus.
+                  aria-label removed from <select> to avoid double-announce. */}
+              <label
+                htmlFor="patterns-merged-sort"
                 className="text-[9px] tracking-widest uppercase mr-1"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
                 Sort
-              </span>
+              </label>
               <select
+                id="patterns-merged-sort"
                 value={sortCol}
                 onChange={(e) => setSortCol(e.target.value as SortColumn)}
-                aria-label="Sort by"
                 className="px-2 py-1.5 rounded border bg-transparent text-[11px]"
                 style={{
                   backgroundColor: "var(--qgi-surface)",
@@ -858,9 +867,13 @@ function FacetRail({
 
       {/* Country — REAL data, multi-select searchable */}
       <FacetSection label="Country">
+        {/* #741: aria-label -> sr-only <label htmlFor> for WCAG 1.3.1 */}
+        <label htmlFor="patterns-merged-country-search" className="sr-only">
+          Search countries
+        </label>
         <input
+          id="patterns-merged-country-search"
           type="text"
-          aria-label="Search countries"
           placeholder="Search…"
           value={countrySearch}
           onChange={(e) => setCountrySearch(e.target.value)}

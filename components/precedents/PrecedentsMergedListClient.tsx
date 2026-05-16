@@ -591,8 +591,12 @@ export function PrecedentsMergedListClient({
           ))}
         </div>
 
-        {/* Search */}
+        {/* Search — #741 (2026-05-16): sr-only label association for WCAG 1.3.1 + 4.1.2 */}
+        <label htmlFor="precedents-merged-search" className="sr-only">
+          Search categories or domains
+        </label>
         <input
+          id="precedents-merged-search"
           type="text"
           placeholder="Search categories or domains..."
           value={search}
@@ -607,13 +611,18 @@ export function PrecedentsMergedListClient({
 
         {/* Sort column */}
         <div className="flex items-center gap-1.5">
-          <span
+          {/* #741: existing visible "Sort" span -> <label htmlFor> so the
+              association is programmatic AND clicking the label focuses
+              the select. Visual rendering unchanged. */}
+          <label
+            htmlFor="precedents-merged-sort"
             className="text-[9px] tracking-widest uppercase"
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Sort
-          </span>
+          </label>
           <select
+            id="precedents-merged-sort"
             value={sortCol}
             onChange={(e) => setSortCol(e.target.value as SortColumn)}
             className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
