@@ -118,6 +118,37 @@ test.describe("landing mobile nav (#427)", () => {
     });
   });
 
+  test.describe("skip-link (#738 item 1, WCAG 2.4.1)", () => {
+    test.use({ viewport: { width: 1280, height: 720 } });
+
+    test("skip-link exists, hidden by default, becomes visible on focus, lands on <main>", async ({
+      page,
+    }) => {
+      await page.goto("/");
+      const skip = page.getByRole("link", { name: /^skip to content$/i });
+
+      // (a) Exists in DOM.
+      await expect(skip).toHaveCount(1);
+      await expect(skip).toHaveAttribute("href", "#main-content");
+
+      // (b) Visually hidden initially (sr-only): zero or near-zero
+      //     bounding box. sr-only uses 1×1 clipped, so toBeVisible would
+      //     return false in Playwright's default visibility model.
+      await expect(skip).not.toBeVisible();
+
+      // (c) After programmatic focus the focus:not-sr-only utility
+      //     promotes it to visible (focus:fixed positions it at top-left).
+      await skip.focus();
+      await expect(skip).toBeVisible();
+
+      // (d) Target landmark exists with tabIndex=-1 so the link can hand
+      //     focus to it without polluting normal tab order.
+      const mainLandmark = page.locator("main#main-content");
+      await expect(mainLandmark).toHaveCount(1);
+      await expect(mainLandmark).toHaveAttribute("tabindex", "-1");
+    });
+  });
+
   test.describe("desktop (1280x720)", () => {
     test.use({ viewport: { width: 1280, height: 720 } });
 
