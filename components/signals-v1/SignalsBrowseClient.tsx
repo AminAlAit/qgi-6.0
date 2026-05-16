@@ -329,8 +329,12 @@ function FilterSortBar({
   return (
     <div className="mb-4 space-y-2">
       <div className="flex flex-wrap gap-3 items-center">
-        {/* Search */}
+        {/* Search — #741 (2026-05-16): sr-only label per WCAG 1.3.1 */}
+        <label htmlFor="signals-v1-search" className="sr-only">
+          Search signals
+        </label>
         <input
+          id="signals-v1-search"
           type="text"
           placeholder="Search signals..."
           value={search}
@@ -344,7 +348,11 @@ function FilterSortBar({
         />
 
         {/* Tier filter */}
+        <label htmlFor="signals-v1-tier" className="sr-only">
+          Filter by tier
+        </label>
         <select
+          id="signals-v1-tier"
           value={activeTier ?? ""}
           onChange={(e) => onSetTier(e.target.value || null)}
           className="px-3 py-1.5 rounded border text-[11px] font-data tracking-wider uppercase outline-none cursor-pointer"
@@ -361,7 +369,11 @@ function FilterSortBar({
         </select>
 
         {/* Region filter */}
+        <label htmlFor="signals-v1-region" className="sr-only">
+          Filter by region
+        </label>
         <select
+          id="signals-v1-region"
           value={activeRegion ?? ""}
           onChange={(e) => onSetRegion(e.target.value || null)}
           className="px-3 py-1.5 rounded border text-[11px] font-data tracking-wider outline-none cursor-pointer"

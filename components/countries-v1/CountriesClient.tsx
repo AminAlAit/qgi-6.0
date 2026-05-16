@@ -441,22 +441,29 @@ export function CountriesClient({
             />
           ))}
           {l1Filter && (
-            <select
-              value={l1MinScore}
-              onChange={(e) => setL1MinScore(Number(e.target.value))}
-              className="ml-2 px-2 py-1 rounded border text-[10px]"
-              style={{
-                backgroundColor: "var(--qgi-surface)",
-                borderColor: "var(--qgi-border)",
-                color: "var(--qgi-text-muted)",
-              }}
-            >
-              {[30, 40, 50, 60, 70, 80, 90].map((v) => (
-                <option key={v} value={v}>
-                  &ge; {v}
-                </option>
-              ))}
-            </select>
+            <>
+              {/* #741 (2026-05-16): sr-only label for the L1 min-score select */}
+              <label htmlFor="country-l1-min-score" className="sr-only">
+                Minimum {l1Filter} salience score
+              </label>
+              <select
+                id="country-l1-min-score"
+                value={l1MinScore}
+                onChange={(e) => setL1MinScore(Number(e.target.value))}
+                className="ml-2 px-2 py-1 rounded border text-[10px]"
+                style={{
+                  backgroundColor: "var(--qgi-surface)",
+                  borderColor: "var(--qgi-border)",
+                  color: "var(--qgi-text-muted)",
+                }}
+              >
+                {[30, 40, 50, 60, 70, 80, 90].map((v) => (
+                  <option key={v} value={v}>
+                    &ge; {v}
+                  </option>
+                ))}
+              </select>
+            </>
           )}
         </div>
       </div>

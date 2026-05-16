@@ -341,9 +341,13 @@ export function PrecedentsAggregatedListClient({
         )}
       </div>
 
-      {/* Filter bar */}
+      {/* Filter bar — #741 (2026-05-16): sr-only labels per WCAG 1.3.1 */}
       <div className="flex flex-col sm:flex-row gap-3 mb-4">
+        <label htmlFor="precedents-v1-agg-search" className="sr-only">
+          Search categories or domains
+        </label>
         <input
+          id="precedents-v1-agg-search"
           type="text"
           placeholder="Search categories or domains..."
           value={search}
@@ -355,7 +359,11 @@ export function PrecedentsAggregatedListClient({
             color: "var(--qgi-text)",
           }}
         />
+        <label htmlFor="precedents-v1-agg-sort" className="sr-only">
+          Sort precedents
+        </label>
         <select
+          id="precedents-v1-agg-sort"
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value as SortOption)}
           className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
