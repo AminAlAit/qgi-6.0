@@ -77,7 +77,7 @@ function similarityLabel(score: number): { label: string; color: string } {
   if (score >= 0.75) return { label: "Strong alignment", color: "#f87171" };
   if (score >= 0.55) return { label: "Partial alignment", color: "#fbbf24" };
   if (score >= 0.35) return { label: "Weak signal", color: "#7a90a8" };
-  return { label: "Below threshold", color: "#4a6280" };
+  return { label: "Below threshold", color: "#8aa6be" };
 }
 
 /** Load analogues-enriched.json and look up (countryId, category). */
@@ -345,7 +345,7 @@ export default async function SignalCountryRecipePage({ params }: Props) {
             <div
               className="mt-4 p-3 rounded text-[11px]"
               style={{
-                backgroundColor: "rgba(74,98,128,0.15)",
+                backgroundColor: "rgba(138,166,190,0.15)",
                 borderLeft: "3px solid var(--qgi-text-dim)",
                 color: "var(--qgi-text-muted)",
               }}

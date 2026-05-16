@@ -94,7 +94,7 @@ export function DualTimeline({ signal }: Props) {
   const COLOR_NOW = "#34d399"; // "you are here" (emerald)
   const COLOR_IMPLIED = "#fbbf24"; // implied prediction (amber)
   const COLOR_GRID = "#243347";
-  const COLOR_AXIS = "#4a6280";
+  const COLOR_AXIS = "#8aa6be";
   const COLOR_LABEL = "#7a90a8";
 
   return (

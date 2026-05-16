@@ -73,7 +73,7 @@ const COLOR_ANALOGUE = "#fb923c"; // orange — historical analogues
 const COLOR_EVENT = "#f87171"; // red — the event marker
 const COLOR_NOW = "#34d399"; // emerald — "you are here"
 const COLOR_GRID = "#243347";
-const COLOR_AXIS = "#4a6280";
+const COLOR_AXIS = "#8aa6be";
 const COLOR_LABEL = "#7a90a8";
 
 export function AnalogueMultiTimeline({
