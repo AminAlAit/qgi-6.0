@@ -12,16 +12,19 @@
  *   (d)   label is in DOM (toBeAttached); visibility intentionally not
  *         asserted — most are sr-only, conditional renders may vary.
  *
- * Four routes covered:
- *   /precedents-v1       components/precedents-v1/PrecedentsListClient
- *   /precedents-v1?agg=1 components/precedents-v1/PrecedentsAggregatedListClient
- *   /countries-v1        components/countries-v1/CountriesClient
- *   /signals-v1          components/signals-v1/SignalsBrowseClient
+ * Three routes covered:
+ *   /precedents-v1   components/precedents-v1/PrecedentsAggregatedListClient
+ *                    (the only component mounted by app/(app)/precedents-v1/page.tsx;
+ *                    PrecedentsListClient is currently orphaned — labels added in
+ *                    PR #87 for defense-in-depth if it's ever re-wired, but the
+ *                    spec doesn't reach it. Filed as a follow-up to delete or
+ *                    re-mount.)
+ *   /countries-v1    components/countries-v1/CountriesClient
+ *   /signals-v1      components/signals-v1/SignalsBrowseClient
  *
- * Note: PrecedentsListClient vs PrecedentsAggregatedListClient are
- * usually selected by a tab control on the same V1 page (`agg` query
- * param or similar). The test loads the aggregated variant via a
- * distinct path/query so the AggregatedListClient renders.
+ * #741 PR-b Sonnet review (2026-05-17) caught the misaligned spec target —
+ * `/precedents-v1` mounts AggregatedListClient (ids `precedents-v1-agg-*`),
+ * NOT PrecedentsListClient (ids `precedents-v1-*`). Updated below.
  */
 import { test, expect } from "@playwright/test";
 
@@ -31,20 +34,17 @@ type Route = { path: string; readyLocator: string; filters: Filter[] };
 const ROUTES: Route[] = [
   {
     path: "/precedents-v1",
-    readyLocator: "#precedents-v1-search",
+    // app/(app)/precedents-v1/page.tsx mounts AggregatedListClient
+    // exclusively — its ids are `precedents-v1-agg-*`.
+    readyLocator: "#precedents-v1-agg-search",
     filters: [
       {
-        id: "precedents-v1-search",
-        expectedLabel: /search country, category, or domain/i,
+        id: "precedents-v1-agg-search",
+        expectedLabel: /search categories or domains/i,
       },
-      { id: "precedents-v1-sort", expectedLabel: /sort precedents/i },
+      { id: "precedents-v1-agg-sort", expectedLabel: /sort precedents/i },
     ],
   },
-  // PrecedentsAggregatedListClient: served when the aggregated variant
-  // is selected. If the route uses a different path/tab pattern, update
-  // here. Current convention: `/precedents-v1` defaults to PrecedentsList;
-  // a tab/route param flips to PrecedentsAggregatedList. Skipping for
-  // now if the locator never attaches.
   {
     path: "/countries-v1",
     readyLocator: "#country-search",
