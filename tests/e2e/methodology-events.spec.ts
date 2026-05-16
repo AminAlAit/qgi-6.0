@@ -45,6 +45,13 @@ test.describe("methodology/events filter labels (#738 item 3, WCAG 1.3.1 + 4.1.2
       const input = page.locator(`#${id}`);
       await expect(input).toHaveCount(1);
 
+      // (a.1) `aria-label` MUST be absent — double-naming
+      //       (label + aria-label) causes aria-label to win precedence
+      //       per accname-1.2 §4.3, which silently negates the <label>
+      //       association we just established. This negative assertion
+      //       pins the regression path.
+      await expect(input).not.toHaveAttribute("aria-label", /.+/);
+
       // (b) <label for="..."> exists pointing at the input.
       const label = page.locator(`label[for="${id}"]`);
       await expect(label).toHaveCount(1);
@@ -56,14 +63,18 @@ test.describe("methodology/events filter labels (#738 item 3, WCAG 1.3.1 + 4.1.2
     });
   }
 
-  test("filter labels are visually hidden (sr-only) but accessible to AT", async ({
+  test("filter labels are visually hidden (sr-only) but in the DOM/AT tree", async ({
     page,
   }) => {
     // sr-only utility renders width:1px / height:1px / clip-rect — not
     // visible to sighted users but present in the accessibility tree.
-    // Playwright's toBeVisible() returns false on these.
+    // toBeAttached() pins "is in the DOM" (distinguishes from
+    // display:none which would also pass not.toBeVisible());
+    // toBeVisible() is checked separately to confirm the sr-only
+    // visual-hiding is still in effect.
     for (const { id } of FILTERS) {
       const label = page.locator(`label[for="${id}"]`);
+      await expect(label).toBeAttached();
       await expect(label).not.toBeVisible();
     }
   });
