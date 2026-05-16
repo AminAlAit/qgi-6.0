@@ -96,6 +96,19 @@ TOP_4_LOCKED_RECIPES = (
     "bilateral_treaty",
 )
 
+# #729 / Majles per-recipe Step 1.5 (2026-05-16) — Roshani's veto on small-N
+# bootstrap: widen the 95% CI by 1.5× when cohort_n is below this threshold.
+# Honest hedge against bootstrap-bias-at-small-N. multilateral_agreement
+# (N=58) is the current cohort hitting this gate.
+SMALL_COHORT_CI_THRESHOLD = 80
+SMALL_COHORT_CI_WIDEN_FACTOR = 1.5
+
+# #729 / Majles per-recipe Step 1.5 — Dmitri's hard gate: a quant treating
+# 4 scores as iid signals when they're 0.7 correlated blows up a book.
+# Spearman correlation requires ≥ this many countries with valid scores on
+# BOTH recipes in a pair to publish a number (else null).
+MIN_CORRELATION_PAIRS = 5
+
 
 # ---------------------------------------------------------------------------
 # Per-country max-salience extraction
@@ -182,6 +195,67 @@ def percentile_rank(value: float, cohort: list[float]) -> int:
     return pct
 
 
+def widen_ci_for_small_cohort(
+    score: int,
+    ci_low: int,
+    ci_high: int,
+    cohort_n: int,
+    threshold: int = SMALL_COHORT_CI_THRESHOLD,
+    factor: float = SMALL_COHORT_CI_WIDEN_FACTOR,
+) -> tuple[int, int]:
+    """#729 — Roshani's small-cohort CI widening (2026-05-16).
+
+    Widens the bootstrap 95% CI by `factor` (default 1.5×) when the cohort
+    is small (default N < 80). Bootstrap CI at small N tends to be over-
+    confident (bias toward narrow intervals on resampling), so widening is
+    the honest hedge documented in the Majles spec.
+
+    Clamps to [0, 100] after widening to preserve the 0-100 contract.
+    """
+    if cohort_n >= threshold:
+        return ci_low, ci_high
+    new_low = max(0, round(score - factor * (score - ci_low)))
+    new_high = min(100, round(score + factor * (ci_high - score)))
+    return new_low, new_high
+
+
+def compute_ranks(values: list[float]) -> list[float]:
+    """Fractional ranks (mid-rank for ties), the standard Spearman convention."""
+    n = len(values)
+    indexed = sorted(enumerate(values), key=lambda x: x[1])
+    ranks = [0.0] * n
+    i = 0
+    while i < n:
+        j = i
+        while j + 1 < n and indexed[j + 1][1] == indexed[i][1]:
+            j += 1
+        avg_rank = (i + j) / 2 + 1  # 1-indexed, mid-rank
+        for k in range(i, j + 1):
+            ranks[indexed[k][0]] = avg_rank
+        i = j + 1
+    return ranks
+
+
+def spearman_correlation(x: list[float], y: list[float]) -> float | None:
+    """Spearman rank correlation. Returns None if degenerate.
+
+    Computes Pearson correlation of the fractional ranks of x and y. Returns
+    None for empty inputs, mismatched lengths, or zero-variance ranks.
+    """
+    if len(x) != len(y) or len(x) < 2:
+        return None
+    rx = compute_ranks(x)
+    ry = compute_ranks(y)
+    mx = sum(rx) / len(rx)
+    my = sum(ry) / len(ry)
+    num = sum((a - mx) * (b - my) for a, b in zip(rx, ry))
+    dx = math.sqrt(sum((a - mx) ** 2 for a in rx))
+    dy = math.sqrt(sum((b - my) ** 2 for b in ry))
+    if dx == 0 or dy == 0:
+        return None
+    return num / (dx * dy)
+
+
 def bootstrap_ci(
     value: float,
     cohort: list[float],
@@ -225,7 +299,32 @@ def main() -> int:
         default="all",
         help="Rank cohort: 'all' (default) or 'curated' (curated=True only)",
     )
+    ap.add_argument(
+        "--ml-recipe-stack",
+        default=None,
+        help="Path to ml-recipe-stack.json (for Step 1.5 calibration carry — recipe ECE, LOCO AUC, advisory flag). Optional; per-recipe entries omit calibration fields when absent.",
+    )
     args = ap.parse_args()
+
+    # #729 Step 1.5 — load ML recipe-stack for calibration carry per Kwame's veto.
+    ml_recipe_calibration: dict[str, dict] = {}
+    if args.ml_recipe_stack:
+        stack_path = pathlib.Path(args.ml_recipe_stack)
+        if stack_path.exists():
+            with open(stack_path, "r", encoding="utf-8") as f:
+                ml_stack = json.load(f)
+            for r in ml_stack.get("recipes", []):
+                rid = r.get("recipe_id")
+                if rid in TOP_4_LOCKED_RECIPES:
+                    ml_recipe_calibration[rid] = {
+                        "recipe_ece": r.get("ece_overall"),
+                        "recipe_loco_auc": r.get("loco_auc"),
+                        "recipe_f_rule_advisory_flag": bool(r.get("advisory_only_flag", False)),
+                        "recipe_f_rule_anomaly_flag": bool(r.get("f_rule_anomaly_flag", False)),
+                    }
+            print(f"Loaded ML calibration for {len(ml_recipe_calibration)} recipes from {stack_path}")
+        else:
+            print(f"WARNING: --ml-recipe-stack path not found: {stack_path}; calibration carry skipped", file=sys.stderr)
 
     in_path = pathlib.Path(args.input)
     out_path = pathlib.Path(args.output)
@@ -312,6 +411,14 @@ def main() -> int:
 
     # Per-country emit: a `qgi_risk_score_by_recipe` block keyed by recipe_id
     # with score/ci_low/ci_high/coverage_flag per Majles spec parity.
+    # #729 Step 1.5 enrichments applied per-entry:
+    #   - Roshani's small-N CI widening (1.5× when cohort < 80)
+    #   - Kwame's calibration carry (recipe_ece, recipe_loco_auc, advisory flag)
+    #   - cohort_n_recipe surfaced per-entry (Roshani's veto — must be glanceable
+    #     beside the score, not just hover-only)
+    per_recipe_score_by_country: dict[str, dict[str, int]] = {
+        r: {} for r in TOP_4_LOCKED_RECIPES
+    }
     for cid, c in countries.items():
         by_recipe: dict[str, dict | None] = {}
         for recipe_id in TOP_4_LOCKED_RECIPES:
@@ -323,22 +430,66 @@ def main() -> int:
             sal, _rc = entry
             r_score = percentile_rank(sal, cohort_for_recipe)
             r_ci_low, r_ci_high = bootstrap_ci(sal, cohort_for_recipe)
-            by_recipe[recipe_id] = {
+            # #729 Step 1.5 — Roshani's small-N CI widening
+            r_ci_low, r_ci_high = widen_ci_for_small_cohort(
+                r_score, r_ci_low, r_ci_high, per_recipe_cohort_n[recipe_id]
+            )
+            entry_emit: dict = {
                 "score": r_score,
                 "ci_low": r_ci_low,
                 "ci_high": r_ci_high,
                 "coverage_flag": "ok",
+                # #729 Step 1.5 — Roshani's per-tile cohort_n surfacing
+                "cohort_n_recipe": per_recipe_cohort_n[recipe_id],
             }
+            # #729 Step 1.5 — Kwame's calibration carry (only if loaded)
+            calibration = ml_recipe_calibration.get(recipe_id)
+            if calibration is not None:
+                entry_emit.update(calibration)
+            by_recipe[recipe_id] = entry_emit
+            # Stash for the correlation matrix pass below
+            per_recipe_score_by_country[recipe_id][cid] = r_score
         c["qgi_risk_score_by_recipe"] = by_recipe
 
+    # ---------- Pass 3.6: recipe-recipe Spearman correlation matrix (#729) --
+    # Dmitri's hard gate: a quant treating 4 scores as iid signals when they
+    # share regime-stress factors blows up a book. Publish the 4×4 Spearman
+    # matrix so portfolio decisions can residualize correctly.
+    #
+    # Computed over countries with VALID scores on BOTH recipes in each pair
+    # (pairwise complete observations). Self-correlation = 1.0; cell = null
+    # when fewer than MIN_CORRELATION_PAIRS shared countries.
+    correlation_matrix: dict[str, dict[str, float | None]] = {}
+    for ra in TOP_4_LOCKED_RECIPES:
+        correlation_matrix[ra] = {}
+        for rb in TOP_4_LOCKED_RECIPES:
+            if ra == rb:
+                correlation_matrix[ra][rb] = 1.0
+                continue
+            shared = set(per_recipe_score_by_country[ra].keys()) & set(
+                per_recipe_score_by_country[rb].keys()
+            )
+            if len(shared) < MIN_CORRELATION_PAIRS:
+                correlation_matrix[ra][rb] = None
+                continue
+            xs = [per_recipe_score_by_country[ra][cid] for cid in shared]
+            ys = [per_recipe_score_by_country[rb][cid] for cid in shared]
+            corr = spearman_correlation(xs, ys)
+            correlation_matrix[ra][rb] = round(corr, 3) if corr is not None else None
+
     # ---------- Pass 4: top-level metadata ----------------------------------
-    data["qgi_risk_score_version"] = "v2"  # #728 bump: added per-recipe field
+    data["qgi_risk_score_version"] = "v3"  # #729 bump: Step 1.5 enrichments
     data["qgi_risk_score_cohort_n"] = cohort_n
     data["qgi_risk_score_method"] = "percentile-rank-of-max-salience"
     data["qgi_risk_score_baked_at"] = datetime.now(timezone.utc).isoformat()
     # #728: per-recipe cohort sizes (one entry per top-4 LOCKed recipe).
     data["qgi_risk_score_per_recipe_cohort_n"] = per_recipe_cohort_n
     data["qgi_risk_score_per_recipe_recipes"] = list(TOP_4_LOCKED_RECIPES)
+    # #729 Step 1.5 — Dmitri's correlation matrix
+    data["qgi_risk_score_per_recipe_correlation_matrix"] = correlation_matrix
+    data["qgi_risk_score_per_recipe_min_pairs"] = MIN_CORRELATION_PAIRS
+    data["qgi_risk_score_small_cohort_ci_threshold"] = SMALL_COHORT_CI_THRESHOLD
+    data["qgi_risk_score_small_cohort_ci_widen_factor"] = SMALL_COHORT_CI_WIDEN_FACTOR
 
     # ---------- Pass 5: write back ------------------------------------------
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -360,7 +511,21 @@ def main() -> int:
     print()
     print("Per-recipe cohort sizes:")
     for recipe_id, n in per_recipe_cohort_n.items():
-        print(f"  {recipe_id}: N={n}")
+        widened = "(CI widened 1.5×)" if n < SMALL_COHORT_CI_THRESHOLD else ""
+        print(f"  {recipe_id}: N={n} {widened}")
+    # #729 Step 1.5 sanity report
+    print()
+    print("Recipe-recipe Spearman correlation matrix:")
+    print(f"  {'':<28}" + " ".join(f"{r[:8]:>8}" for r in TOP_4_LOCKED_RECIPES))
+    for ra in TOP_4_LOCKED_RECIPES:
+        row = "  " + f"{ra[:28]:<28}"
+        for rb in TOP_4_LOCKED_RECIPES:
+            cell = correlation_matrix[ra][rb]
+            row += f" {cell:>8.3f}" if cell is not None else f" {'—':>8}"
+        print(row)
+    if ml_recipe_calibration:
+        print()
+        print(f"Calibration metrics carried for {len(ml_recipe_calibration)} recipes.")
     return 0
 
 
