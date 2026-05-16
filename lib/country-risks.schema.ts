@@ -48,6 +48,18 @@ export const TierDataSchema = z.object({
 export const QgiRiskScoreCoverageFlagSchema = z.enum(["ok", "insufficient"]);
 export type QgiRiskScoreCoverageFlag = z.infer<typeof QgiRiskScoreCoverageFlagSchema>;
 
+// #728 (2026-05-16) — per-recipe Risk Score bundle. Mirrors the country-
+// level score shape; emitted per top-4 LOCKed recipe. Null when the
+// country has no top_category match for that recipe (i.e., the recipe
+// is not in the country's signal profile).
+export const QgiRiskScorePerRecipeEntrySchema = z.object({
+  score: z.number().int().min(0).max(100),
+  ci_low: z.number().int().min(0).max(100),
+  ci_high: z.number().int().min(0).max(100),
+  coverage_flag: QgiRiskScoreCoverageFlagSchema,
+});
+export type QgiRiskScorePerRecipeEntry = z.infer<typeof QgiRiskScorePerRecipeEntrySchema>;
+
 export const CountryRiskSchema = z.object({
   name: z.string(),
   alpha_2: z.string(),
@@ -63,6 +75,11 @@ export const CountryRiskSchema = z.object({
   qgi_risk_score_ci_low: z.number().int().min(0).max(100).nullable().optional(),
   qgi_risk_score_ci_high: z.number().int().min(0).max(100).nullable().optional(),
   coverage_flag: QgiRiskScoreCoverageFlagSchema.optional(),
+  // #728 — per-recipe Risk Score. Record keyed by recipe_id (top-4
+  // LOCKed). Null per recipe when the country has no top_category for it.
+  qgi_risk_score_by_recipe: z
+    .record(z.string(), QgiRiskScorePerRecipeEntrySchema.nullable())
+    .optional(),
 });
 
 export const CountryRisksDataSchema = z.object({
@@ -88,6 +105,12 @@ export const CountryRisksDataSchema = z.object({
   qgi_risk_score_cohort_n: z.number().int().min(0).optional(),
   qgi_risk_score_method: z.string().optional(),
   qgi_risk_score_baked_at: z.string().optional(),
+  // #728 — per-recipe Risk Score metadata. Cohort N per recipe (cohorts
+  // are recipe-specific subsets); recipe list (the top-4 LOCKed).
+  qgi_risk_score_per_recipe_cohort_n: z
+    .record(z.string(), z.number().int().min(0))
+    .optional(),
+  qgi_risk_score_per_recipe_recipes: z.array(z.string()).optional(),
 });
 
 // Re-derive the TS types from the schemas so the two never drift.
