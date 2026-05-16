@@ -344,7 +344,7 @@ function CountryDropdown({
                 so screen readers can disambiguate the two pickers on the
                 same page. */}
             <label htmlFor={searchInputId} className="sr-only">
-              Search {label} countries
+              Search {label}
             </label>
             <input
               id={searchInputId}
