@@ -112,6 +112,7 @@ export async function RecipeCorrelationMatrix() {
           <thead>
             <tr>
               <th
+                scope="col"
                 className="text-left px-3 py-2 text-[11px] tracking-wider uppercase font-semibold"
                 style={{
                   color: "var(--qgi-text-dim)",
@@ -123,6 +124,7 @@ export async function RecipeCorrelationMatrix() {
               {recipes.map((r) => (
                 <th
                   key={r}
+                  scope="col"
                   className="text-right px-3 py-2 text-[11px] tracking-wider uppercase font-semibold font-data"
                   style={{
                     color: "var(--qgi-text-dim)",
@@ -137,15 +139,16 @@ export async function RecipeCorrelationMatrix() {
           <tbody>
             {recipes.map((ra) => (
               <tr key={ra}>
-                <td
-                  className="px-3 py-2 font-medium"
+                <th
+                  scope="row"
+                  className="text-left px-3 py-2 font-medium"
                   style={{
                     color: "var(--qgi-text)",
                     borderBottom: "1px solid var(--qgi-border)",
                   }}
                 >
                   {formatRecipeDisplayName(ra)}
-                </td>
+                </th>
                 {recipes.map((rb) => {
                   const cell = matrix[ra]?.[rb] ?? null;
                   return (
@@ -205,7 +208,7 @@ export async function RecipeCorrelationMatrix() {
         Spearman rank correlation across countries with valid scores on both recipes in
         each pair. Cells where fewer than {minPairs} countries share both recipes are
         shown as &ldquo;—&rdquo;. Self-correlation is 1 by definition. Re-computed every
-        bake; updates when the locked- recipe roster changes.
+        bake; updates when the locked-recipe roster changes.
       </p>
     </section>
   );
