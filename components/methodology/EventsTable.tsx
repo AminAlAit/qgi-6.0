@@ -131,7 +131,21 @@ export default function EventsTable() {
         </div>
       </div>
 
-      {/* Filters */}
+      {/*
+       * Filters — WCAG 1.3.1 + 4.1.2 fix (#738 item 3, 2026-05-16).
+       *
+       * Pre-fix: each input/select had only `placeholder` text for context,
+       * which fails 1.3.1 (Info and Relationships) because placeholder is
+       * not a programmatic label. aria-label was added as a partial
+       * mitigation but only satisfies 4.1.2.
+       *
+       * Post-fix: each filter input has an explicit visually-hidden
+       * `<label htmlFor>` + `id` pair. The label is the canonical text;
+       * placeholder remains as the visible hint for sighted users.
+       * aria-label has been removed since the proper label association
+       * makes it redundant (and double-naming can cause screen-reader
+       * verbosity).
+       */}
       <div
         className="rounded-lg border p-3 mb-4 flex flex-wrap gap-2 items-center"
         style={{
@@ -139,7 +153,11 @@ export default function EventsTable() {
           backgroundColor: "var(--qgi-surface)",
         }}
       >
+        <label htmlFor="events-search" className="sr-only">
+          Search event titles
+        </label>
         <input
+          id="events-search"
           type="text"
           placeholder="Search title…"
           value={search}
@@ -147,7 +165,6 @@ export default function EventsTable() {
             setSearch(e.target.value);
             setPage(0);
           }}
-          aria-label="Search event titles"
           disabled={loading}
           className="flex-1 min-w-[160px] text-xs px-3 py-2 rounded outline-none disabled:opacity-50"
           style={{
@@ -156,13 +173,16 @@ export default function EventsTable() {
             border: "1px solid var(--qgi-border)",
           }}
         />
+        <label htmlFor="events-country" className="sr-only">
+          Filter by country
+        </label>
         <select
+          id="events-country"
           value={country}
           onChange={(e) => {
             setCountry(e.target.value);
             setPage(0);
           }}
-          aria-label="Filter by country"
           disabled={loading}
           className="text-xs px-3 py-2 rounded outline-none disabled:opacity-50"
           style={{
@@ -178,13 +198,16 @@ export default function EventsTable() {
             </option>
           ))}
         </select>
+        <label htmlFor="events-category" className="sr-only">
+          Filter by category
+        </label>
         <select
+          id="events-category"
           value={category}
           onChange={(e) => {
             setCategory(e.target.value);
             setPage(0);
           }}
-          aria-label="Filter by category"
           disabled={loading}
           className="text-xs px-3 py-2 rounded outline-none disabled:opacity-50"
           style={{
@@ -200,7 +223,11 @@ export default function EventsTable() {
             </option>
           ))}
         </select>
+        <label htmlFor="events-year-min" className="sr-only">
+          Earliest year
+        </label>
         <input
+          id="events-year-min"
           type="number"
           placeholder="Year ≥"
           value={yearMin}
@@ -208,7 +235,6 @@ export default function EventsTable() {
             setYearMin(e.target.value);
             setPage(0);
           }}
-          aria-label="Earliest year"
           disabled={loading}
           className="text-xs px-3 py-2 rounded outline-none w-24 disabled:opacity-50"
           style={{
@@ -217,7 +243,11 @@ export default function EventsTable() {
             border: "1px solid var(--qgi-border)",
           }}
         />
+        <label htmlFor="events-year-max" className="sr-only">
+          Latest year
+        </label>
         <input
+          id="events-year-max"
           type="number"
           placeholder="Year ≤"
           value={yearMax}
@@ -225,7 +255,6 @@ export default function EventsTable() {
             setYearMax(e.target.value);
             setPage(0);
           }}
-          aria-label="Latest year"
           disabled={loading}
           className="text-xs px-3 py-2 rounded outline-none w-24 disabled:opacity-50"
           style={{
