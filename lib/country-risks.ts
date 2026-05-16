@@ -138,15 +138,58 @@ export async function getCountryRisk(countryId: string): Promise<CountryRisk | n
  * `app/(app)/signals/[country]/[slug]/page.tsx` where it was duplicated.
  *
  * Returns null when no match — callers issue notFound() at that point.
+ *
+ * #715 (2026-05-16) — common-name slug aliases. The canonical bake uses
+ * names like "Turkiye" / "Myanmar" / "Timor-Leste" — readers / journalists
+ * type "turkey" / "burma" / "east_timor". Without an alias layer, those
+ * URLs 404. Persona test 2026-05-15 (James/FT, Dmitri/HF) bounced on this.
+ *
+ * The alias map is a complement to the route-level numeric-ID accept
+ * (#714 fix). Together they cover the two common 404 paths: typed
+ * common name + dashboard numeric ID. Slugs remain canonical.
  */
+const COMMON_NAME_ALIASES: Record<string, string> = {
+  // Country names where the canonical bake spelling differs from the
+  // common-English name a reader is likely to type.
+  turkey: "turkiye",
+  burma: "myanmar",
+  east_timor: "timor_leste",
+  czech_republic: "czechia",
+  swaziland: "eswatini",
+  cape_verde: "cabo_verde",
+  // DRC variants (canonical is verbose "The Democratic Republic of the Congo"
+  // → slug "the_democratic_republic_of_the_congo")
+  drc: "the_democratic_republic_of_the_congo",
+  dr_congo: "the_democratic_republic_of_the_congo",
+  democratic_republic_of_the_congo: "the_democratic_republic_of_the_congo",
+  congo_kinshasa: "the_democratic_republic_of_the_congo",
+  // Short abbreviations
+  uk: "united_kingdom",
+  usa: "united_states",
+  us: "united_states",
+  uae: "united_arab_emirates",
+};
+
 export async function resolveCountryBySlug(
   slug: string
 ): Promise<({ id: string } & CountryRisk) | null> {
   const { countrySlug } = await import("./slug");
   const data = await loadCountryRisks();
+  // Direct canonical match.
   for (const [id, c] of Object.entries(data.countries)) {
     if (countrySlug(c.name) === slug) {
       return { id, ...c };
+    }
+  }
+  // #715 — alias fallback. If the requested slug is a known common-name
+  // alias, retry with the canonical form. Single lookup; no recursion
+  // (alias values must point to canonical slugs, never other aliases).
+  const aliased = COMMON_NAME_ALIASES[slug];
+  if (aliased) {
+    for (const [id, c] of Object.entries(data.countries)) {
+      if (countrySlug(c.name) === aliased) {
+        return { id, ...c };
+      }
     }
   }
   return null;
