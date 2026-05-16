@@ -13,6 +13,10 @@ import { PrecedentsV2Detail } from "@/components/precedents-v2/PrecedentsV2Detai
 // PR-iii renamed V1 components to the -v1 suffix.
 import { PrecedentSlugClient } from "@/components/precedents-v1/PrecedentSlugClient";
 import { MergedDetailFooter } from "@/components/precedents/MergedDetailFooter";
+import {
+  PrecedentMatchLeaderboard,
+  type LeaderboardEntry,
+} from "@/components/precedents/PrecedentMatchLeaderboard";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -126,6 +130,40 @@ export default async function PrecedentsMergedSlugPage({ params }: Props) {
     const slugMap = buildSlugMap(stack.recipes);
     const buyer = toBuyerView(mlRaw, slugMap);
     const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${buyer.paper_section_anchor}`;
+    // #729 Step 2 (precedents side) — build the top-N countries by Precedent
+    // Match for this recipe. Reciprocal of the per-recipe strip on
+    // /countries/[iso]. Hidden when fewer than MIN_LEADERBOARD_COUNT
+    // countries score on this recipe (pre-#728 bakes; recipe absent from
+    // per-recipe block; or a recipe that never landed in any country's
+    // top_categories).
+    const risksData = await loadCountryRisks().catch(() => null);
+    const leaderboardEntries: LeaderboardEntry[] = [];
+    let leaderboardCohortN: number | undefined;
+    if (risksData) {
+      // Sonnet N-1 fix: schema already types both fields (see
+      // lib/country-risks.schema.ts) — drop the `as unknown as` casts that
+      // PR #71 used for methodology-page-side reads, keep parity with the
+      // strip side which uses direct access.
+      leaderboardCohortN = risksData.qgi_risk_score_per_recipe_cohort_n?.[slug];
+      for (const [cid, c] of Object.entries(risksData.countries)) {
+        const entry = c.qgi_risk_score_by_recipe?.[slug];
+        if (!entry) continue;
+        leaderboardEntries.push({
+          countryId: cid,
+          countryName: c.name,
+          alpha_2: c.alpha_2,
+          score: entry.score,
+          ci_low: entry.ci_low,
+          ci_high: entry.ci_high,
+        });
+      }
+      // Sort descending by score; ties broken by CI lower bound (more
+      // certain wins).
+      leaderboardEntries.sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        return b.ci_low - a.ci_low;
+      });
+    }
     return (
       <>
         <PrecedentsV2Detail
@@ -135,6 +173,12 @@ export default async function PrecedentsMergedSlugPage({ params }: Props) {
           caveatStyle="lloyds"
           generatedAt={stack.metadata.generated_at}
           paperHref={paperHref}
+        />
+        <PrecedentMatchLeaderboard
+          recipeId={slug}
+          recipeDisplayName={buyer.display_name}
+          entries={leaderboardEntries}
+          cohortN={leaderboardCohortN}
         />
         <MergedDetailFooter lineage="ML" />
       </>
