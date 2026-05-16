@@ -623,6 +623,59 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
+          {/* #729 Step 3 (2026-05-16) — Aggregate vs per-recipe narrative.
+              Introduces "QGI Risk Score" (country-level) and "Precedent
+              Match" (per-recipe) before the live correlation matrix below.
+              Voice rule (Ingrid + Sipho): leads with what the reader sees
+              on the country / precedent pages, not the technique. */}
+          <section
+            className="mt-8 mb-8"
+            aria-labelledby="aggregate-vs-per-recipe-heading"
+          >
+            <h3
+              id="aggregate-vs-per-recipe-heading"
+              className="text-sm font-semibold mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              The two scores you&apos;ll see — QGI Risk Score and Precedent Match
+            </h3>
+            <p className="text-sm leading-relaxed mb-3">
+              Every country page shows two related numbers, both bounded 0&ndash;100. The
+              first is the country-level <strong>QGI Risk Score</strong>, a single
+              percentile rank summarising how strongly the country&apos;s salience signal
+              compares against the bake&apos;s cohort. The second is{" "}
+              <strong>Precedent Match</strong>, a four-row decomposition showing where
+              that aggregate score is coming from: how strongly the country&apos;s
+              indicator trajectory matches each of the four ML-locked precedent recipes
+              individually.
+            </p>
+            <p className="text-sm leading-relaxed mb-3">
+              The aggregate compresses; the decomposition reveals. A country with an
+              aggregate of 80 and a Precedent Match of 99 on bilateral treaty (and 44 on
+              elections) tells you a different story than a country with an aggregate of
+              80 and roughly even scores across the four recipes. Both stories are useful
+              in different contexts, so we publish both.
+            </p>
+            <p className="text-sm leading-relaxed mb-3">
+              <strong>Both are percentile ranks, not probabilities.</strong> A Precedent
+              Match of 99 on bilateral treaty means the country sits at the 99th
+              percentile of structural similarity to QGI&apos;s bilateral-treaty recipe
+              among countries that fire on it. It does <em>not</em> mean a 99% chance of a
+              bilateral treaty event occurring. Probability calibration is the scope of
+              QGI&apos;s future Forecast model, which will be a separate field with its
+              own validation gates.
+            </p>
+            <p className="text-sm leading-relaxed mb-3">
+              The Precedent Match score for any specific recipe ranks the country against
+              a recipe-specific cohort: countries with at least five matched recipes on
+              that category. The cohort sizes differ across recipes (currently between ~60
+              and ~130 countries), so the cohort N is shown alongside the score on every
+              page. A 96 on multilateral agreement (cohort N=58) and a 99 on bilateral
+              treaty (cohort N=127) live on different reference distributions; the
+              published N lets the reader compare like with like.
+            </p>
+          </section>
+
           {/* #731 (2026-05-16) — Per-recipe Risk Score recipe-recipe correlation
               matrix. Renders live from country-risks.json so the matrix
               stays accurate as bakes evolve. Placed inside the Validation
