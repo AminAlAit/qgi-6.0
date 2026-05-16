@@ -333,6 +333,11 @@ export default async function CountryMergedDetailPage({ params }: Props) {
         }
       : undefined;
 
+  // #729 Step 2 — per-recipe Precedent Match strip data. Optional same as
+  // riskScore; pre-#728-Step-1 bakes don't carry the block. The strip is
+  // hidden when the country has no per-recipe scores at all (all-null).
+  const perRecipe = country.qgi_risk_score_by_recipe;
+
   return (
     <CountryMergedDetail
       iso={iso}
@@ -347,6 +352,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       mlMatrixDefaultExpanded={mlMatrixDefaultExpanded}
       structuralPeers={structuralPeers}
       riskScore={riskScore}
+      perRecipe={perRecipe}
     />
   );
 }
