@@ -212,33 +212,92 @@ def test_inconsistent_routing_anomaly_p_gt_025_while_straddling():
 # Anchor loader contract (#743 follow-up DEFERRED but JSON-key fix in place)
 # ============================================================================
 
-def test_anchor_loader_returns_empty_with_deferred_warning(tmp_path, capsys):
-    """The driver's anchor loader correctly reads `anchor_cases` (NOT `cases`)
-    as the top-level key, prints a 'deferred follow-up' message, and returns
-    empty list so MCMC fires without runtime error.
-
-    The full name→country_id resolver is a separate follow-up post-v7."""
+def _make_anchor_json(tmp_path, cases):
+    """Test helper — writes a minimal cascade-anchor-case-battery.json shape."""
     import json as _json
-    fake_json = tmp_path / "cascade-anchor-case-battery.json"
-    fake_json.write_text(_json.dumps({
+    p = tmp_path / "cascade-anchor-case-battery.json"
+    p.write_text(_json.dumps({
         "schema_version": 1,
-        "anchor_cases": [
-            {"case_id": 1, "country": "Malta"},
-            {"case_id": 4, "country": "Tunisia"},
-            {"case_id": 5, "country": "Sri Lanka"},
-        ],
+        "cases": cases,
     }), encoding="utf-8")
+    return p
 
-    cells_stub = MagicMock()
-    result = driver._load_anchor_country_ids(cells_stub, fake_json)
 
-    assert result == []  # deferred — empty list, MCMC fires
+def _make_cells_stub(country_ids):
+    """Test helper — cells stub with country_labels = str(int) for each id."""
+    cells = MagicMock()
+    cells.country_labels = [str(cid) for cid in country_ids]
+    return cells
+
+
+def test_anchor_loader_resolves_in_universe_cases(tmp_path, capsys):
+    """post-qgi-data#54: anchor JSON has top-level `cases` (NOT
+    `anchor_cases`) array with `country_id` integer field per case.
+    Resolver returns in-universe + cells-present ids."""
+    p = _make_anchor_json(tmp_path, [
+        {"case_id": 1, "country": "Malta", "country_id": 134,
+         "in_evaluation_universe": False},
+        {"case_id": 4, "country": "Tunisia", "country_id": 227,
+         "in_evaluation_universe": True},
+        {"case_id": 5, "country": "Sri Lanka", "country_id": 211,
+         "in_evaluation_universe": True},
+        {"case_id": 8, "country": "Yemen", "country_id": 248,
+         "in_evaluation_universe": True},
+    ])
+    cells = _make_cells_stub([227, 211, 248, 100, 50])  # 3 anchors in cells
+    result = driver._load_anchor_country_ids(cells, p)
+    assert sorted(result) == [211, 227, 248]
     captured = capsys.readouterr()
-    assert "3 cases declared" in captured.out
-    assert "deferred" in captured.out.lower() or "not yet wired" in captured.out.lower()
+    assert "3 in-universe" in captured.out
+    assert "1 out-of-universe" in captured.out
 
 
-def test_anchor_loader_missing_file_returns_empty(tmp_path, capsys):
+def test_anchor_loader_skips_out_of_universe(tmp_path):
+    """in_evaluation_universe=false → skip per Phase 6 gate."""
+    p = _make_anchor_json(tmp_path, [
+        {"case_id": 1, "country": "Malta", "country_id": 134,
+         "in_evaluation_universe": False},
+        {"case_id": 2, "country": "Iceland", "country_id": 99,
+         "in_evaluation_universe": False},
+        {"case_id": 3, "country": "Norway", "country_id": 165,
+         "in_evaluation_universe": True},
+    ])
+    cells = _make_cells_stub([134, 99, 165])  # all 3 in cells
+    result = driver._load_anchor_country_ids(cells, p)
+    assert result == [165]  # only Norway (in-universe)
+
+
+def test_anchor_loader_skips_missing_from_cells(tmp_path, capsys):
+    """in-universe anchor whose country_id is NOT in cells → skip with warning."""
+    p = _make_anchor_json(tmp_path, [
+        {"case_id": 4, "country": "Tunisia", "country_id": 227,
+         "in_evaluation_universe": True},
+        {"case_id": 5, "country": "Sri Lanka", "country_id": 211,
+         "in_evaluation_universe": True},
+    ])
+    cells = _make_cells_stub([227])  # only Tunisia in cells; Sri Lanka missing
+    result = driver._load_anchor_country_ids(cells, p)
+    assert result == [227]
+    captured = capsys.readouterr()
+    assert "1 missing from v6 cells" in captured.out
+    assert "Sri Lanka" in captured.out
+
+
+def test_anchor_loader_warns_on_missing_country_id_field(tmp_path, capsys):
+    """Case without country_id field → skip + warn (qgi-data#54 enrichment expected)."""
+    p = _make_anchor_json(tmp_path, [
+        {"case_id": 4, "country": "Tunisia",
+         "in_evaluation_universe": True},  # NO country_id
+    ])
+    cells = _make_cells_stub([227])
+    result = driver._load_anchor_country_ids(cells, p)
+    assert result == []
+    captured = capsys.readouterr()
+    assert "missing country_id" in captured.out
+    assert "qgi-data#54" in captured.out
+
+
+def test_anchor_loader_missing_file_returns_empty(tmp_path):
     """Missing anchor JSON should not raise; emit warning + empty list."""
     missing_path = tmp_path / "nonexistent.json"
     cells_stub = MagicMock()
