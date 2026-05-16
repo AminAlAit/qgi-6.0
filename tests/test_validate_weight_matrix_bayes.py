@@ -61,12 +61,22 @@ def test_priors_locked_at_amended_values():
 
 
 def test_sampling_config_locked_at_ratified_values():
-    """§3.1 sampling config INVARIANT under amendment (Ji-Hoon Move 1 round-2)."""
-    assert mod.N_CHAINS == 4, "spec §3.1"
-    assert mod.N_TUNE == 1000, "spec §3.1"
-    assert mod.N_DRAWS == 2000, "spec §3.1"
-    assert mod.TARGET_ACCEPT == 0.95, "spec §3.1"
-    assert mod.MAX_TREEDEPTH == 12, "spec §3.1"
+    """§3.1 sampling config geometry block INVARIANT under amendment
+    (Ji-Hoon Move 1 round-2 + 2026-05-16 3-seat ratification at qgi-aws-tf#744
+    which raised target_accept 0.95 → 0.99 to clear v6 divergence triple-FAIL).
+
+    Amending any of these values requires a new convening:
+      - n_chains / n_tune / n_draws / max_treedepth: 3-seat OR 6-seat
+        depending on amendment scope (Ji-Hoon §3.1-author call)
+      - target_accept: 3-seat (per #744 Ji-Hoon spec-authority ruling that
+        target_accept is sampler-hyperparameter, not geometry)
+    """
+    assert mod.N_CHAINS == 4, "spec §3.1 geometry INVARIANT"
+    assert mod.N_TUNE == 1000, "spec §3.1 geometry INVARIANT"
+    assert mod.N_DRAWS == 2000, "spec §3.1 geometry INVARIANT"
+    assert mod.TARGET_ACCEPT == 0.99, \
+        "spec §3.1 amended 2026-05-16 at qgi-aws-tf#744 (was 0.95)"
+    assert mod.MAX_TREEDEPTH == 12, "spec §3.1 geometry INVARIANT"
 
 
 def test_diagnostic_thresholds_locked_at_ratified_values():
