@@ -172,9 +172,10 @@ def route_verdict_against_5_2_2(
       PASS:         94% HDI lower bound ≥ 0.10 anomaly_score units
                     AND anchor ≥ 6/8 evaluable pass
 
-    **§5.2.5 silent-corner protocol (this function's responsibility):**
-    The spec's PARTIAL/PASS tiers assume HDI is on the methodology-favoring
-    side of zero (lower bound > 0). The spec is SILENT on:
+    **Verdict-template §2.3 silent-corner branches (this function's
+    responsibility):** The spec's PARTIAL/PASS tiers assume HDI is on
+    the methodology-favoring side of zero (lower bound > 0). The spec
+    §5.2.2 4-tier table is SILENT on two corner cases:
       (a) HDI entirely negative (anti-methodology direction; methodology
           arm A below null baseline arm D)
       (b) HDI straddles zero with P(swing > 0.05) > 0.25 (geometrically
@@ -183,17 +184,31 @@ def route_verdict_against_5_2_2(
     Per the verdict-routing template (qgi-docs `5fc0980`) §2.3 step 2
     last branch + the Sonnet-ratified Protocol-5 fidelity ruling, the
     silent corners route to "INCONSISTENT" with mandatory escalation
-    to fresh 6-seat. The driver does NOT invent literal HARD-FALSIFY
-    routing for the entirely-negative case even though the substantive
-    read is anti-methodology — that is a 6-seat call, not a driver call.
+    to fresh 6-seat. (Spec §5.2.5 is the historical-clause section
+    preserving the Path A pre-reg protocol verbatim; the silent-corner
+    escalation authority comes from the verdict template, not §5.2.5.)
+    The driver does NOT invent literal HARD-FALSIFY routing for the
+    entirely-negative case even though the substantive read is
+    anti-methodology — that is a 6-seat call, not a driver call.
 
     Returns dict with `tier`, `tier_definition`, `consequence`.
     """
+    # Note on boundary conventions:
+    # - hdi_straddles_zero uses NON-STRICT <= and >= (inclusive).
+    #   Verdict template §2.3 step 1 uses STRICT (< 0 AND > 0). Inclusive
+    #   is the conservative choice: hdi_high == 0 exactly (measure-zero in
+    #   practice) routes to straddle/HARD-FALSIFY rather than to PARTIAL.
+    # - hdi_entirely_negative uses STRICT < 0 on hdi_high — i.e. the boundary
+    #   hdi_high == 0 falls to straddles_zero, NOT to entirely-negative.
+    #   This is intentional: hdi_high == 0 is geometrically the boundary case
+    #   between straddle and entirely-negative, and we prefer to route it
+    #   through the spec's HARD-FALSIFY check (which has explicit P-threshold
+    #   logic) rather than to the silent-corner escalation.
     hdi_straddles_zero = (hdi_low <= 0) and (hdi_high >= 0)
     hdi_entirely_negative = (hdi_high < 0)
 
     if hdi_entirely_negative:
-        # §5.2.5 silent corner (a): HDI entirely on the anti-methodology
+        # verdict-template §2.3 silent corner (a): HDI entirely on the anti-methodology
         # side. Spec is silent; substantive read is HARD-FALSIFY-direction
         # but the routing call is 6-seat per Protocol-5 fidelity.
         return {
@@ -203,7 +218,7 @@ def route_verdict_against_5_2_2(
                 "direction; methodology arm A below null baseline arm D). "
                 "Spec §5.2.2 is silent on this corner; substantive read is "
                 "HARD-FALSIFY-direction but routing requires 6-seat per "
-                "spec §5.2.5 silent-corner protocol."
+                "verdict template §2.3 silent-corner branch."
             ),
             "consequence": (
                 "Escalate to fresh 6-seat Majles. Convening reads the "
@@ -235,7 +250,7 @@ def route_verdict_against_5_2_2(
                 "anchor_battery_actual": f"{anchor_battery_pass_count}/8",
             }
         else:
-            # §5.2.5 silent corner (b): HDI straddles zero with P > 0.25.
+            # verdict-template §2.3 silent corner (b): HDI straddles zero with P > 0.25.
             # Per verdict template §2.3 step 2 last branch, route to
             # INCONSISTENT-routing-anomaly with mandatory escalation. This
             # is NOT spec-PARTIAL — PARTIAL requires HDI to EXCLUDE zero
@@ -246,8 +261,8 @@ def route_verdict_against_5_2_2(
                     "94% HDI straddles zero AND P(swing > 0.05) > 0.25. "
                     "Spec §5.2.2 is silent on this corner; geometrically "
                     "unlikely combination but not strictly excluded under "
-                    "fat-tailed posteriors. Route to 6-seat per spec §5.2.5 "
-                    "silent-corner protocol."
+                    "fat-tailed posteriors. Route to 6-seat per verdict "
+                    "template §2.3 silent-corner branch."
                 ),
                 "consequence": "Escalate to fresh 6-seat convening (spec-silent corner).",
                 "anchor_battery_required": "informational",
