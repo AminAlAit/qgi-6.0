@@ -9,16 +9,34 @@
   --qgi-border: #243347; /* subtle borders */
 
   /* Text */
-  --qgi-text: #e2e8f0; /* primary text — 12.6:1 vs --qgi-bg (AAA) */
-  --qgi-text-muted: #7a90a8; /* secondary / label text — 5.35:1 vs --qgi-bg (AA) */
-  /* #706 (2026-05-16) — WCAG 1.4.3 fix. Pre-fix value `#4a6280` failed AA
-     on all 3 dark surfaces (2.77:1 vs --qgi-bg, 2.59:1 vs --qgi-surface,
-     2.22:1 vs --qgi-surface-2). New value passes AA on all three:
-     4.91:1 vs --qgi-bg, 4.61:1 vs --qgi-surface, 4.13:1 vs --qgi-surface-2.
-     The token is used in ~250 call sites; bumping the variable lights up
-     all of them in one edit. Visually: noticeably brighter than the old
-     dim grey but still clearly subordinate to muted and primary. */
-  --qgi-text-dim: #83a0b8; /* tertiary / placeholder — 4.13:1+ vs darkest surface (AA) */
+  --qgi-text: #e2e8f0; /* primary text — 14.39:1 vs --qgi-bg (AAA), 11.29:1 vs --qgi-surface-2 (AAA) */
+  /* #706 (2026-05-16) — WCAG 1.4.3 fix. Paired bump of both --qgi-text-muted
+     and --qgi-text-dim to pass AA 4.5:1 on all three dark surfaces (bg,
+     surface, surface-2) while preserving the semantic hierarchy
+     text > muted > dim.
+
+     Pre-fix:
+       muted #7a90a8 — 5.39 / 4.96 / 4.23:1 (bg / surface / surface-2)
+         — failed AA on surface-2 (the worst-case surface).
+       dim   #4a6280 — 2.83 / 2.60 / 2.22:1
+         — failed AA on every surface.
+
+     Post-fix:
+       muted #9ab0c4 — 7.93 / 7.29 / 6.22:1 (AA+ on all three).
+       dim   #8aa6be — 6.99 / 6.43 / 5.49:1 (AA on all three with margin).
+
+     Hierarchy preserved: L(text)=0.80 > L(muted)=0.42 > L(dim)=0.36 — a
+     simple variable-bump fix would have inverted muted vs dim (pre-fix dim
+     was darker than muted; an AA-compliant dim alone would be BRIGHTER than
+     pre-fix muted), so both tokens are moved together.
+
+     Variable bump covers 624 call sites of var(--qgi-text-dim) + 442 of
+     var(--qgi-text-muted). A separate follow-up will replace ~34 remaining
+     hard-coded `#4a6280` literals (lib/design.ts, signals-v1, charts,
+     countries-v1, patterns-v1) with var() references — those bypass this
+     token bump until manually rewritten. */
+  --qgi-text-muted: #9ab0c4; /* secondary / label text — 6.22:1 vs --qgi-surface-2 (AA, worst case) */
+  --qgi-text-dim: #8aa6be; /* tertiary / placeholder — 5.49:1 vs --qgi-surface-2 (AA, worst case) */
 
   /* Accent — electric blue (primary interactive) */
   --qgi-accent: #38bdf8;
