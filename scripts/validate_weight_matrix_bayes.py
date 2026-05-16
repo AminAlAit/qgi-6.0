@@ -102,11 +102,16 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 # N-3 (Sonnet review of #60; optional polish per #684): catch a wrong-root
 # resolution at module load instead of with a cryptic FileNotFoundError
 # later at ARM_JSON_PATHS construction or at runtime in prep_cells.
-assert (ROOT / "qgi-data").is_dir(), (
-    f"ROOT resolution failed: expected sibling 'qgi-data/' under {ROOT}, "
-    f"but it is missing. Run this script from a clone of the multi-repo "
-    f"monorepo with qgi-ml, qgi-data, qgi-docs as siblings."
-)
+#
+# 2026-05-17 N-2 follow-up (Sonnet review of #70): use explicit RuntimeError
+# instead of `assert` — `python -O` strips assert statements, which would
+# silently disable this runtime-invariant check. RuntimeError survives -O.
+if not (ROOT / "qgi-data").is_dir():
+    raise RuntimeError(
+        f"ROOT resolution failed: expected sibling 'qgi-data/' under {ROOT}, "
+        f"but it is missing. Run this script from a clone of the multi-repo "
+        f"monorepo with qgi-ml, qgi-data, qgi-docs as siblings."
+    )
 
 # Path A v6.6 run artifacts (input to the prep helper). Sidecar variant
 # `-v6.json` carries the per-cell `anomaly_score` tensor; the v5 originals
