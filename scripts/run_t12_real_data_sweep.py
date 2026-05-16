@@ -548,8 +548,9 @@ def _load_anchor_country_ids(cells, anchor_battery_json_path: Path) -> list[int]
             f"per qgi-data#54 enrichment.",
             flush=True,
         )
-    if missing_from_cells:
+    if out_of_universe:
         print(f"  out-of-universe: {out_of_universe}", flush=True)
+    if missing_from_cells:
         print(f"  missing-from-cells: {missing_from_cells}", flush=True)
 
     return in_universe
