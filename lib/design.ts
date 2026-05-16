@@ -109,7 +109,7 @@ export const TIER_LABELS: Record<PatternTier, string> = {
  * match the "dot circles" visual the #133 spec describes.
  */
 export const CONVERGENCE_COLORS: Record<ConvergenceTier, string> = {
-  single: "#4a6280", // slate-dim — weak
+  single: "#8aa6be", // slate-dim — weak
   emerging: "#fbbf24", // amber-400 — watching
   multilateral: "#fb923c", // orange-400 — serious
   high: "#f87171", // red-400 — urgent

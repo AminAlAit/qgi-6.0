@@ -311,7 +311,7 @@ export function CountryProfileClient({
                 <div className="flex items-center gap-2">
                   <div
                     className="w-4 h-0.5 border-t border-dashed"
-                    style={{ borderColor: "#4a6280" }}
+                    style={{ borderColor: "#8aa6be" }}
                   />
                   <span className="text-[10px]" style={{ color: "var(--qgi-text-dim)" }}>
                     World median
@@ -870,7 +870,7 @@ function radarOption(countryName: string, l1Scores: Record<string, number>) {
           {
             value: medians,
             name: "World Median",
-            lineStyle: { type: "dashed" as const, color: "#4a6280", width: 1.5 },
+            lineStyle: { type: "dashed" as const, color: "#8aa6be", width: 1.5 },
             areaStyle: { color: "transparent" },
             symbol: "none",
           },
@@ -1050,8 +1050,8 @@ function indicatorTrajectoryOption(
     type: "line",
     data: trajData.years.map(() => 50),
     smooth: false,
-    lineStyle: { width: 1, color: "#4a628060", type: [4, 4] as unknown as string },
-    itemStyle: { color: "#4a628060" },
+    lineStyle: { width: 1, color: "#8aa6be60", type: [4, 4] as unknown as string },
+    itemStyle: { color: "#8aa6be60" },
     symbol: "none",
     z: 0,
   });

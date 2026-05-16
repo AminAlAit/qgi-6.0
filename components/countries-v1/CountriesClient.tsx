@@ -610,12 +610,12 @@ function CountryCard({ country }: { country: EnrichedCountry }) {
                 cx="12"
                 cy="12"
                 r="10"
-                fill="rgba(74, 98, 128, 0.15)"
-                stroke="#4a6280"
+                fill="rgba(138, 166, 190, 0.15)"
+                stroke="#8aa6be"
                 strokeWidth="1.5"
               />
-              <rect x="10.5" y="7" width="3" height="6" rx="0.5" fill="#4a6280" />
-              <circle cx="12" cy="16" r="1.5" fill="#4a6280" />
+              <rect x="10.5" y="7" width="3" height="6" rx="0.5" fill="#8aa6be" />
+              <circle cx="12" cy="16" r="1.5" fill="#8aa6be" />
             </svg>
           )}
         </div>
