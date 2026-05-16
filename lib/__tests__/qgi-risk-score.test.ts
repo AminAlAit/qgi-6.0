@@ -22,7 +22,9 @@ const parsed = CountryRisksDataSchema.parse(countryRisksJson);
 
 describe("QGI Risk Score Step 1 bake (#721)", () => {
   it("top-level metadata present", () => {
-    expect(parsed.qgi_risk_score_version).toBe("v1");
+    // #728 bumped version to v2 (added per-recipe block). v1 was the
+    // country-level-only era.
+    expect(parsed.qgi_risk_score_version).toMatch(/^v[12]$/);
     expect(parsed.qgi_risk_score_cohort_n).toBeTypeOf("number");
     expect(parsed.qgi_risk_score_cohort_n).toBeGreaterThan(0);
     expect(parsed.qgi_risk_score_method).toBe("percentile-rank-of-max-salience");
@@ -30,6 +32,51 @@ describe("QGI Risk Score Step 1 bake (#721)", () => {
     expect(new Date(parsed.qgi_risk_score_baked_at!).toISOString()).toMatch(
       /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/
     );
+  });
+
+  it("#728 per-recipe metadata present in v2+ bakes", () => {
+    if (parsed.qgi_risk_score_version === "v1") return;
+    expect(parsed.qgi_risk_score_per_recipe_recipes).toBeDefined();
+    expect(parsed.qgi_risk_score_per_recipe_cohort_n).toBeDefined();
+    const recipes = parsed.qgi_risk_score_per_recipe_recipes!;
+    const cohorts = parsed.qgi_risk_score_per_recipe_cohort_n!;
+    expect(recipes.length).toBeGreaterThan(0);
+    for (const r of recipes) {
+      expect(cohorts[r]).toBeTypeOf("number");
+      expect(cohorts[r]).toBeGreaterThan(0);
+    }
+  });
+
+  it("#728 every country has a qgi_risk_score_by_recipe block keyed by the top-4 recipes", () => {
+    if (parsed.qgi_risk_score_version === "v1") return;
+    const recipes = parsed.qgi_risk_score_per_recipe_recipes!;
+    for (const c of Object.values(parsed.countries)) {
+      expect(
+        c.qgi_risk_score_by_recipe,
+        `${c.name}: missing per-recipe block`
+      ).toBeDefined();
+      const block = c.qgi_risk_score_by_recipe!;
+      for (const r of recipes) {
+        expect(r in block, `${c.name}: missing recipe key ${r}`).toBe(true);
+        const entry = block[r];
+        if (entry !== null) {
+          expect(entry.score).toBeGreaterThanOrEqual(0);
+          expect(entry.score).toBeLessThanOrEqual(100);
+          expect(entry.coverage_flag).toBe("ok");
+        }
+      }
+    }
+  });
+
+  it("#728 face-validity: Syria scores >=70 on civil_war_and_insurgency", () => {
+    if (parsed.qgi_risk_score_version === "v1") return;
+    const syria = Object.values(parsed.countries).find((c) => c.name === "Syria");
+    const entry = syria?.qgi_risk_score_by_recipe?.["civil_war_and_insurgency"];
+    if (entry) {
+      expect(entry.score, "Syria civil_war_and_insurgency >= 70").toBeGreaterThanOrEqual(
+        70
+      );
+    }
   });
 
   it("every 'ok' country has all 3 score fields non-null and in [0, 100]", () => {
