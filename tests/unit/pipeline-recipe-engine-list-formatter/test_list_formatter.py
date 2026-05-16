@@ -1038,7 +1038,14 @@ def test_ddl_select_column_parity():
     )
     for col in canonical_select_data_columns:
         # Each appears either as `r.<col>` or `AS <col>` (e.g. pps).
-        present = (f" r.{col}" in sql) or (f"AS {col}" in sql) or (f"AS {col}," in sql)
+        # Use word-boundary regex (not substring) so a future column named
+        # e.g. `recipe_id_extra` doesn't substring-match `recipe_id` and
+        # mask a real drift (Sonnet review N-1, 2026-05-16).
+        col_esc = re.escape(col)
+        present = (
+            bool(re.search(rf"\br\.{col_esc}\b", sql))
+            or bool(re.search(rf"\bAS\s+{col_esc}\b", sql))
+        )
         assert present, (
             f"Canonical column {col!r} not found in built INSERT SQL — "
             "the SELECT body has drifted from the canonical 27-column "

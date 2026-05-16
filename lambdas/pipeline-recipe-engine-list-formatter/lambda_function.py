@@ -301,7 +301,10 @@ def lambda_handler(event, context):
                     'pattern_count': combo['pattern_count'],
                 })
 
-    # Sort ASC by pattern count so the smallest chunk becomes the seed CTAS.
+    # Sort ASC by pattern count so the smallest chunk becomes the seed
+    # INSERT (was seed CTAS pre-#622, but the smallest-chunk-as-seed
+    # invariant is unchanged — the SQL emitted just happens to be
+    # INSERT INTO now rather than CREATE TABLE AS).
     emit_chunks.sort(key=lambda c: c['pattern_count'])
 
     logger.info(
@@ -527,9 +530,17 @@ def build_recipe_query(
     country_a_id=None,
     event_category=None,
     length_bucket=None,
-    mode='ctas',
+    mode='insert',
 ):
-    """Build the per-chunk recipe SQL — CTAS for the seed, INSERT for the rest.
+    """Build the per-chunk recipe SQL.
+
+    Post-#622 (2026-05-16) the production seed path emits INSERT INTO
+    instead of CTAS — see SF state 5b.4 (formerly "Seed CTAS", now
+    "Seed INSERT") and the new 5b.3a "Create External Table" state
+    that runs the DDL emitted at $.recipe_list.ddl_sql. The default
+    `mode='insert'` reflects the new path; `mode='ctas'` is retained
+    for backward-compat with any out-of-band tooling that still calls
+    this function with the explicit CTAS flag.
 
     Filters applied to the patterns scan / events JOIN (each chunk scans only
     its slice; total scan across all chunks equals the original single-country
