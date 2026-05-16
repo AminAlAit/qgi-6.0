@@ -238,10 +238,11 @@ def test_tier3_inserts_have_all_chunk_filters():
 
 
 # ===========================================================================
-# Test 3: seed is CTAS, rest are INSERT
+# Test 3: seed is INSERT (post-#622, was CTAS pre-2026-05-16), rest are INSERT
+# DDL is emitted alongside as the ddl_sql output field
 # ===========================================================================
 
-def test_seed_is_ctas_and_rest_are_insert():
+def test_seed_is_insert_and_ddl_is_emitted():
     chunks = [
         (5,  "elections_and_voting", "b03_07", 1),
         (10, "mass_protest",         "b13_17", 100),
@@ -250,9 +251,22 @@ def test_seed_is_ctas_and_rest_are_insert():
     mod, s3_mock, _ = _load_module(chunks)
     result = mod.lambda_handler({"run_id": "test"}, None)
 
-    assert "CREATE TABLE" in result['seed_sql']
-    assert "INSERT INTO" not in result['seed_sql']
+    # #622: seed is now INSERT INTO, not CTAS. The cost-leak relocation
+    # flipped this. CREATE TABLE must NOT appear in seed_sql — that was
+    # the pattern that landed data in query_results/tables/<uuid>/.
+    assert "INSERT INTO" in result['seed_sql']
+    assert "CREATE TABLE" not in result['seed_sql']
 
+    # #622: DDL is emitted as a separate top-level field so SF state
+    # 5b.2 can run CREATE EXTERNAL TABLE before the seed INSERT.
+    assert 'ddl_sql' in result, "Lambda must emit ddl_sql field for SF 5b.3a"
+    assert "CREATE EXTERNAL TABLE" in result['ddl_sql']
+    assert "qgi_data.recipes" in result['ddl_sql']
+    # The DDL must point at the stable prefix (not query_results/tables/).
+    assert "pipeline-recipe-engine/output/recipes/" in result['ddl_sql']
+    assert "query_results/tables" not in result['ddl_sql']
+
+    # All Map-state inserts are also INSERT INTO (unchanged from pre-#622).
     for item in s3_mock._captured_items:
         assert "INSERT INTO" in item['insert_sql']
         assert "CREATE TABLE" not in item['insert_sql']
@@ -430,7 +444,13 @@ def test_single_chunk_input():
 
     assert result['seed_country_id'] == 42
     assert result['seed_pattern_count'] == 99
-    assert "CREATE TABLE" in result['seed_sql']
+    # #622: seed is INSERT INTO (was CTAS pre-2026-05-16).
+    assert "INSERT INTO" in result['seed_sql']
+    assert "CREATE TABLE" not in result['seed_sql']
+    # #622: DDL is emitted even on a single-chunk run so SF state 5b.2
+    # has something to execute on the first build.
+    assert 'ddl_sql' in result
+    assert "CREATE EXTERNAL TABLE" in result['ddl_sql']
     assert s3_mock._captured_items == []
     assert result['partitions_total'] == 1
 
@@ -572,11 +592,16 @@ def test_tier3_country_chunks_by_category_and_bucket():
 
 def test_tier4_country_falls_through_to_tier3_with_warning(caplog):
     import logging
+    # 4 chunks × 3M each = 12M total → Tier-4 classification (>10M).
+    # Per-chunk sizes intentionally kept < 5M to stay under the seed
+    # pattern_count guard added in #622 — the test is asserting tier
+    # CLASSIFICATION, not chunk size. (Pre-#622 these were 12-13M
+    # synthetic numbers that tripped the new guard.)
     chunks = [
-        (5, "elections_and_voting", "b03_07", 12_000_000),
-        (5, "elections_and_voting", "b13_17", 12_000_000),
-        (5, "mass_protest",         "b03_07", 13_000_000),
-        (5, "mass_protest",         "b13_17", 13_000_000),
+        (5, "elections_and_voting", "b03_07", 3_000_000),
+        (5, "elections_and_voting", "b13_17", 3_000_000),
+        (5, "mass_protest",         "b03_07", 3_000_000),
+        (5, "mass_protest",         "b13_17", 3_000_000),
     ]
     mod, s3_mock, _ = _load_module(chunks)
     with caplog.at_level(logging.WARNING):
@@ -967,3 +992,244 @@ def test_chunk_dict_schema():
             "Chunk metadata must not carry pattern_tier (replaced by length_bucket "
             "in #534). pattern_tier remains a column in OUTPUT recipe rows only."
         )
+
+
+# ===========================================================================
+# Test 24 (#622, 2026-05-16): DDL column list matches the SELECT column list
+# ===========================================================================
+
+def test_ddl_select_column_parity():
+    """The CREATE EXTERNAL TABLE DDL column names+order MUST match the
+    SELECT in build_recipe_query exactly.
+
+    If they ever drift, Athena will fail every INSERT INTO with a cryptic
+    schema-mismatch error at runtime. This test catches the drift at
+    test time — the highest-value regression guard on the #622 fix.
+
+    Cross-check against the existing test_ctas_and_insert_same_select_columns
+    list (the canonical 27 SELECT columns + country_a_id partition).
+    """
+    mod = _load_module_no_chunks()
+
+    # 1. DDL column list (source of truth, no partition column).
+    ddl_columns = [name for name, _ctype in mod.RECIPES_COLUMNS]
+
+    # 2. Canonical 27-data-column list (mirrors test 10's shared_columns,
+    #    minus the trailing country_a_id partition). Hardcoded here as the
+    #    source-of-truth contract — if a future PR changes the SELECT, both
+    #    this list and RECIPES_COLUMNS must update in lockstep.
+    canonical_select_data_columns = [
+        'recipe_id', 'event_category', 'pattern_id', 'country_b_id',
+        'country_a_name', 'country_b_name', 'start_year_a', 'start_year_b',
+        'length', 'avg_correlation', 'end_year_a', 'end_year_b',
+        'event_window', 'event_year_a', 'event_year_b',
+        'event_title_a', 'event_title_b', 'indicator_count',
+        'pattern_power_score', 'instance_count', 'pattern_tier',
+        'median_lead_time_b', 'min_lead_time_b', 'max_lead_time_b',
+        'median_lead_time_a', 'pps', 'contains_predicted',
+    ]
+
+    # 3. Sanity: every canonical column appears in the actual SELECT SQL.
+    sql = mod.build_recipe_query(
+        country_a_id=1,
+        event_category='elections_and_voting',
+        length_bucket='b03_07',
+        mode='insert',
+    )
+    for col in canonical_select_data_columns:
+        # Each appears either as `r.<col>` or `AS <col>` (e.g. pps).
+        # Use word-boundary regex (not substring) so a future column named
+        # e.g. `recipe_id_extra` doesn't substring-match `recipe_id` and
+        # mask a real drift (Sonnet review N-1, 2026-05-16).
+        col_esc = re.escape(col)
+        present = (
+            bool(re.search(rf"\br\.{col_esc}\b", sql))
+            or bool(re.search(rf"\bAS\s+{col_esc}\b", sql))
+        )
+        assert present, (
+            f"Canonical column {col!r} not found in built INSERT SQL — "
+            "the SELECT body has drifted from the canonical 27-column "
+            "contract. Update canonical_select_data_columns OR fix "
+            "build_recipe_query."
+        )
+
+    # 4. DDL must list every canonical column in the exact same order.
+    assert len(ddl_columns) == len(canonical_select_data_columns) == 27, (
+        f"Column count: DDL={len(ddl_columns)}, "
+        f"canonical={len(canonical_select_data_columns)}. Expected 27 each."
+    )
+    assert ddl_columns == canonical_select_data_columns, (
+        f"DDL/SELECT column ORDER drift:\n"
+        f"  canonical SELECT: {canonical_select_data_columns}\n"
+        f"  RECIPES_COLUMNS:  {ddl_columns}\n"
+        f"Update RECIPES_COLUMNS or the SELECT to match — Athena INSERT "
+        f"will fail on schema mismatch otherwise."
+    )
+
+
+# ===========================================================================
+# Test 25 (#622): DDL points at the stable S3 prefix, NOT query_results
+# ===========================================================================
+
+def test_ddl_uses_stable_prefix_not_query_results():
+    """The whole point of #622 — the DDL LOCATION must be the stable
+    s3://{bucket}/pipeline-recipe-engine/output/recipes/ prefix.
+
+    The pre-fix CTAS landed data at query_results/tables/<uuid>/ with
+    1-day S3 expiry, which caused every Lambda re-run to cycle
+    DROP -> CTAS -> expire -> re-CTAS, dominating the May 2-5 cost
+    spike (~$13/day, 99.6% of GETs against the most recent uuid dir).
+    """
+    mod = _load_module_no_chunks()
+    ddl = mod.build_external_table_ddl(s3_bucket='qgi-data-lake-staging')
+
+    assert "LOCATION 's3://qgi-data-lake-staging/pipeline-recipe-engine/output/recipes/'" in ddl, (
+        f"DDL missing the stable-prefix LOCATION clause. Full DDL:\n{ddl}"
+    )
+    assert "query_results/tables" not in ddl, (
+        "DDL must NOT reference query_results/tables/ — that's the 1-day-"
+        "expiry trap that caused the #622 cost leak."
+    )
+    assert "PARTITIONED BY (country_a_id smallint)" in ddl, (
+        "DDL must declare country_a_id as the partition column "
+        "(matches the patterns table partitioning)."
+    )
+    assert "STORED AS PARQUET" in ddl
+    assert "CREATE EXTERNAL TABLE IF NOT EXISTS qgi_data.recipes" in ddl, (
+        "DDL must use CREATE EXTERNAL TABLE IF NOT EXISTS for idempotency."
+    )
+    # Convention parity with the other QGI external tables
+    # (qgi-infra/modules/storage/main.tf uses parquet.compress + EXTERNAL=TRUE).
+    assert "'parquet.compress' = 'SNAPPY'" in ddl
+    assert "'EXTERNAL' = 'TRUE'" in ddl
+
+
+# ===========================================================================
+# Test 26 (#622): seed chunk pattern_count guard
+# ===========================================================================
+
+def test_seed_chunk_pattern_count_guard_raises_on_oversized_seed():
+    """Defense-in-depth: if the smart-chunking math ever degrades and
+    routes a Tier-3+ slice through the seed slot, fail fast rather than
+    silently OOM-ing the Athena query 30 minutes later.
+
+    The chunks list is sorted ASC by pattern_count (line 305), so a
+    healthy seed is far below the 5M guard. This guard fires only on a
+    pathological regression — the largest production-observed chunk
+    runs at 76s wall-clock for 263M reported rows (2026-04-29 calibration).
+    """
+    # Single chunk with pattern_count > guard (5M).
+    chunks = [(5, "elections_and_voting", "b03_07", 10_000_000)]
+    mod, _, _ = _load_module(chunks)
+
+    with pytest.raises(RuntimeError) as exc_info:
+        mod.lambda_handler({"run_id": "test"}, None)
+
+    msg = str(exc_info.value)
+    assert "Seed chunk pattern_count=10000000" in msg
+    assert "smart-chunking" in msg, (
+        "Guard error message should explain the failure mode."
+    )
+    assert "30-min Athena DML wall" in msg, (
+        "Guard error message should reference the consequence."
+    )
+
+
+def test_pre_ddl_s3_cleanup_clears_stable_prefix():
+    """#622 (Sonnet review on qgi-infra PR #25, BLOCK-level data-correctness
+    fix): the Lambda must call _s3_delete_prefix(RECIPES_STABLE_PREFIX)
+    before generating ddl_sql.
+
+    Without the pre-clean, every re-run accumulates partition files at
+    the stable prefix → 5b.3a CREATE EXTERNAL TABLE IF NOT EXISTS
+    re-attaches the old files → downstream INSERTs add new partitions
+    on top → duplicate rows after the 2nd run. The cost-leak fix would
+    introduce a data-correctness regression.
+
+    The fix lives in this Lambda (not a new SF state) to avoid a
+    cold-start + state-transition cost (~1s/run) for a 200ms paginated
+    delete. The Lambda already has the S3 client + the stable-prefix
+    constant.
+    """
+    # Mock the paginator to return 2 pages × 3 stale objects so we
+    # exercise both the per-page accumulator AND the final flush.
+    chunks = [(5, "elections_and_voting", "b03_07", 100)]
+    mod, s3_mock, _ = _load_module(chunks)
+
+    # Simulate 6 stale objects across 2 pages from list_objects_v2.
+    stale_keys = [
+        {"Key": f"pipeline-recipe-engine/output/recipes/country_a_id={i}/p-{i}.parquet"}
+        for i in range(1, 7)
+    ]
+    pages = [{"Contents": stale_keys[:3]}, {"Contents": stale_keys[3:]}]
+
+    paginator_mock = MagicMock()
+    paginator_mock.paginate.return_value = pages
+    s3_mock.get_paginator.return_value = paginator_mock
+
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # The paginator was acquired for list_objects_v2.
+    s3_mock.get_paginator.assert_called_with("list_objects_v2")
+    # paginate was called with the stable prefix.
+    paginator_mock.paginate.assert_called_once_with(
+        Bucket="test-bucket",
+        Prefix=mod.RECIPES_STABLE_PREFIX,
+    )
+    # delete_objects was invoked at least once with the stable-prefix keys.
+    delete_calls = [c for c in s3_mock.delete_objects.call_args_list]
+    assert delete_calls, (
+        "Expected s3.delete_objects to be called for pre-DDL cleanup; "
+        "got zero invocations. Without this, recipes table will accumulate "
+        "duplicate rows across pipeline runs."
+    )
+    deleted_keys = []
+    for call in delete_calls:
+        objects = call.kwargs.get("Delete", {}).get("Objects", [])
+        deleted_keys.extend(o["Key"] for o in objects)
+    assert len(deleted_keys) == 6, (
+        f"Expected 6 stale keys deleted, got {len(deleted_keys)}: {deleted_keys}"
+    )
+    for k in deleted_keys:
+        assert k.startswith(mod.RECIPES_STABLE_PREFIX), (
+            f"delete_objects targeted a key outside the stable prefix: {k!r}"
+        )
+
+
+def test_pre_ddl_s3_cleanup_handles_empty_prefix():
+    """First-ever pipeline run: the stable prefix has zero objects.
+    The cleanup must complete silently — no delete_objects call (S3
+    API rejects empty Delete lists)."""
+    chunks = [(5, "elections_and_voting", "b03_07", 100)]
+    mod, s3_mock, _ = _load_module(chunks)
+
+    # Empty pages — first run.
+    paginator_mock = MagicMock()
+    paginator_mock.paginate.return_value = [{"Contents": []}]
+    s3_mock.get_paginator.return_value = paginator_mock
+
+    # Should not raise.
+    mod.lambda_handler({"run_id": "test"}, None)
+
+    # delete_objects MUST NOT be called when there's nothing to delete
+    # (S3 rejects empty Delete.Objects lists).
+    assert s3_mock.delete_objects.call_count == 0, (
+        "Expected zero delete_objects calls on an empty prefix; "
+        f"got {s3_mock.delete_objects.call_count}."
+    )
+
+
+def test_seed_chunk_pattern_count_guard_passes_on_healthy_seed():
+    """Boundary: a seed at 5M (exactly AT the guard) passes; the
+    guard fires only on STRICTLY GREATER. Documents that the guard
+    threshold is intentionally generous to avoid false alarms on
+    realistic Tier-3+ countries.
+    """
+    chunks = [
+        (5, "elections_and_voting", "b03_07", 5_000_000),  # exactly at guard
+        (5, "mass_protest", "b13_17", 6_000_000),
+    ]
+    mod, _, _ = _load_module(chunks)
+    # Should NOT raise.
+    result = mod.lambda_handler({"run_id": "test"}, None)
+    assert result['seed_pattern_count'] == 5_000_000
