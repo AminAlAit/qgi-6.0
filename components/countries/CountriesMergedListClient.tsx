@@ -325,8 +325,15 @@ export function CountriesMergedListClient({
           })}
         </div>
 
-        {/* Search */}
+        {/* Search — #741 (2026-05-17): sr-only label per WCAG 1.3.1.
+            (Sonnet review on PR #86 caught this — the first edit pass
+            on this file added the Sort label but missed the search
+            label. Adding here as the BLOCK fix.) */}
+        <label htmlFor="countries-merged-search" className="sr-only">
+          Search country
+        </label>
         <input
+          id="countries-merged-search"
           type="text"
           placeholder="Search country..."
           value={search}
@@ -355,13 +362,16 @@ export function CountriesMergedListClient({
 
         {/* Sort */}
         <div className="flex items-center gap-1.5 ml-auto">
-          <span
+          {/* #741: visible "Sort" span -> <label htmlFor> (click-to-focus) */}
+          <label
+            htmlFor="countries-merged-sort"
             className="text-[9px] tracking-widest uppercase"
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Sort
-          </span>
+          </label>
           <select
+            id="countries-merged-sort"
             value={sortCol}
             onChange={(e) => setSortCol(e.target.value as SortColumn)}
             className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
