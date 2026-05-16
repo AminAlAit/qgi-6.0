@@ -304,6 +304,7 @@ def compute_anchor_battery(idata, country_labels: list[str],
 
 def run_single_config(mod, cells, config: dict, *,
                       n_chains: int, n_draws: int, n_tune: int,
+                      n_cores: int,
                       anchor_country_ids: list[int]) -> dict:
     """Run NUTS for a single sweep configuration; return diagnostics + posterior summary."""
     import arviz as az  # local import
@@ -330,7 +331,7 @@ def run_single_config(mod, cells, config: dict, *,
             draws=n_draws,
             tune=n_tune,
             chains=n_chains,
-            cores=n_chains,
+            cores=n_cores,
             random_seed=list(mod.CHAIN_SEEDS[:n_chains]),
             target_accept=mod.TARGET_ACCEPT,
             nuts={"max_treedepth": mod.MAX_TREEDEPTH},
@@ -418,6 +419,12 @@ def main():
                         help="Override module N_DRAWS (default: production ratified)")
     parser.add_argument("--n-tune", type=int, default=None,
                         help="Override module N_TUNE (default: production ratified)")
+    parser.add_argument("--n-cores", type=int, default=None,
+                        help="Override default chain parallelism. Default = n_chains "
+                             "(parallel). Set to 1 to run chains sequentially in a "
+                             "single process — workaround for cold-start multiprocess "
+                             "pipe race on arm64 AL2023 per Sonnet pace-decision-2 "
+                             "abort signal (2026-05-16).")
     args = parser.parse_args()
 
     mod = _load_bayes_module()
@@ -425,6 +432,7 @@ def main():
     n_chains = args.n_chains or mod.N_CHAINS
     n_draws = args.n_draws or mod.N_DRAWS
     n_tune = args.n_tune or mod.N_TUNE
+    n_cores = args.n_cores if args.n_cores is not None else n_chains
 
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -466,6 +474,7 @@ def main():
             result = run_single_config(
                 mod, cells, config,
                 n_chains=n_chains, n_draws=n_draws, n_tune=n_tune,
+                n_cores=n_cores,
                 anchor_country_ids=anchor_country_ids,
             )
             per_config_results.append(result)
