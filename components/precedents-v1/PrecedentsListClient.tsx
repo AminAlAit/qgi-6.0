@@ -336,9 +336,13 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
 
       {/* ── Filter bar ────────────────────────────────────────────────── */}
       <div className="flex flex-col gap-3 mb-4">
-        {/* Search + Sort */}
+        {/* Search + Sort — #741 (2026-05-16): sr-only labels per WCAG 1.3.1 */}
         <div className="flex flex-col sm:flex-row gap-3">
+          <label htmlFor="precedents-v1-search" className="sr-only">
+            Search country, category, or domain
+          </label>
           <input
+            id="precedents-v1-search"
             type="text"
             placeholder="Search country, category, or domain..."
             value={search}
@@ -354,7 +358,11 @@ export function PrecedentsListClient({ rows }: { rows: PrecedentRow[] }) {
             }}
           />
 
+          <label htmlFor="precedents-v1-sort" className="sr-only">
+            Sort precedents
+          </label>
           <select
+            id="precedents-v1-sort"
             value={sortBy}
             onChange={(e) => {
               setSortBy(e.target.value as SortOption);
