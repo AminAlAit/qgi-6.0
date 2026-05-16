@@ -310,17 +310,34 @@ def lambda_handler(event, context):
         f"{(1 - len(emit_chunks) / max(len(chunks), 1)) * 100:.1f}% reduction)."
     )
 
-    # Step 3: seed = smallest emitted chunk (CTAS, creates table + first
-    # partition). Uses build_recipe_query with the chunk's possibly-None
-    # category/bucket — the function's existing `if X is not None` conditionals
-    # produce a single-INSERT shape for Tier-1 seeds. Verified by tests.
+    # Step 3: seed = smallest emitted chunk. Post-#622 (2026-05-16) this is
+    # an INSERT INTO (not CTAS) — the new SF state `5b.2 Create External
+    # Table` runs the DDL emitted as `ddl_sql` below, creating the table
+    # at the stable prefix `s3://{bucket}/{RECIPES_STABLE_PREFIX}`.
+    # The previous CTAS path landed data in `query_results/tables/<uuid>/`
+    # with 1-day expiry, driving the May 2-5 cost spikes (~$13/day GETs).
+    #
+    # The seed-chunk pattern_count guard protects against future
+    # degradations of the smart-chunking math sending a Tier-3+ slice
+    # through the seed slot — that would expose the seed INSERT to
+    # Athena's 30-min DML wall. The chunks list is sorted ASC at line
+    # 305 so a healthy seed is far below 100K.
     seed = emit_chunks[0]
+    if seed['pattern_count'] > SEED_CHUNK_PATTERN_COUNT_GUARD:
+        raise RuntimeError(
+            f"Seed chunk pattern_count={seed['pattern_count']} exceeds the "
+            f"guard ({SEED_CHUNK_PATTERN_COUNT_GUARD}); the smart-chunking "
+            f"math has degraded. Seed chunk metadata: country_a_id="
+            f"{seed['country_a_id']}, event_category={seed['event_category']!r}, "
+            f"length_bucket={seed['length_bucket']!r}. Refusing to emit a "
+            "seed INSERT that risks the 30-min Athena DML wall."
+        )
     seed_sql = build_recipe_query(
         cutoff_year,
         country_a_id=seed['country_a_id'],
         event_category=seed['event_category'],
         length_bucket=seed['length_bucket'],
-        mode='ctas',
+        mode='insert',
     )
 
     # Step 4: all remaining chunks → INSERT items
@@ -355,11 +372,20 @@ def lambda_handler(event, context):
             ),
         })
 
+    # #622 (2026-05-16): generate the DDL inline so the SF state can run
+    # CREATE EXTERNAL TABLE before the seed INSERT lands. DDL is
+    # co-located with the SELECT-list it must match — schema drift is
+    # caught at test time via test_ddl_select_column_parity, not at run
+    # time via a cryptic Athena schema-mismatch error.
+    ddl_sql = build_external_table_ddl(S3_BUCKET)
+
     logger.info(
-        f"Generated seed CTAS for chunk "
+        f"Generated seed INSERT for chunk "
         f"country_a_id={seed['country_a_id']}, "
         f"cat={seed['event_category']}, bucket={seed['length_bucket']} "
-        f"({len(seed_sql)} chars) and {len(insert_items)} chunk INSERT items."
+        f"({len(seed_sql)} chars), DDL ({len(ddl_sql)} chars) at stable "
+        f"prefix s3://{S3_BUCKET}/{RECIPES_STABLE_PREFIX}, and "
+        f"{len(insert_items)} chunk INSERT items."
     )
 
     # Step 5: write insert_items to S3 (payload exceeds SF 256KB limit).
@@ -382,6 +408,10 @@ def lambda_handler(event, context):
         'seed_country_id': seed['country_a_id'],
         'seed_pattern_count': seed['pattern_count'],
         'seed_sql': seed_sql,
+        # #622: DDL string consumed by SF state `5b.2 Create External
+        # Table` to create the recipes table at the stable prefix
+        # before the seed INSERT runs.
+        'ddl_sql': ddl_sql,
         'insert_items_bucket': S3_BUCKET,
         'insert_items_key': items_key,
         # partitions_total = total emitted chunks after smart-chunking
@@ -696,6 +726,13 @@ def build_recipe_query(
     """
 
     if mode == 'ctas':
+        # NOTE (#622, 2026-05-16): the 'ctas' mode is retained for
+        # backward-compat but is no longer used by the production path —
+        # the seed chunk flips to 'insert' after the new SF 5b.2 state
+        # creates the external table at the stable prefix. Live SF
+        # workflows that still reference build_recipe_query(mode='ctas')
+        # land at query_results/tables/<uuid>/ with 1-day expiry, which
+        # caused the $13/day cost leak.
         return f"""
         CREATE TABLE {ATHENA_DB}.recipes
         WITH (
@@ -709,3 +746,105 @@ def build_recipe_query(
         return f"INSERT INTO {ATHENA_DB}.recipes\n{select_body}".strip()
     else:
         raise ValueError(f"Unknown build_recipe_query mode: {mode!r}")
+
+
+# ─── #622 (2026-05-16) ──────────────────────────────────────────────────────
+# Stable S3 prefix for the recipes table (replaces the CTAS-into-
+# query_results/tables/<uuid>/ pattern that had 1-day expiry and drove
+# the May 2-5 cost spikes — see qgi-aws-tf#622, #739).
+#
+# The Lambda emits the DDL alongside seed_sql / insert_items so SF state
+# `5b.2 Create External Table` can execute it BEFORE 5b.4 Seed INSERT.
+# DDL is co-located with the SELECT-list it must match, so schema-drift
+# between INSERT shape and table definition is caught at test time
+# (test_ddl_select_column_parity) rather than at runtime.
+RECIPES_STABLE_PREFIX = "pipeline-recipe-engine/output/recipes/"
+
+# Recipes-table schema. ORDER MUST MATCH the SELECT in build_recipe_query
+# exactly. Types are derived from the source-table schemas defined in
+# qgi-infra/modules/storage/main.tf (patterns / events / countries), plus
+# the explicit CASTs in the SELECT body. See
+# test_ddl_select_column_parity for the regression guard that catches
+# any drift between this list and the SELECT.
+#
+# Partition column `country_a_id` (smallint) is NOT in this list — it
+# lives in the partitioned-by clause of the DDL.
+RECIPES_COLUMNS = (
+    ('recipe_id',           'string'),     # concat(...) -> string
+    ('event_category',      'string'),     # events.category_normalized
+    ('pattern_id',          'string'),     # patterns.pattern_id
+    ('country_b_id',        'smallint'),   # patterns.country_b_id
+    ('country_a_name',      'string'),     # countries.name_1
+    ('country_b_name',      'string'),     # countries.name_1
+    ('start_year_a',        'smallint'),   # patterns.start_year_a
+    ('start_year_b',        'smallint'),   # patterns.start_year_b
+    ('length',              'smallint'),   # patterns.length
+    ('avg_correlation',     'double'),     # patterns.avg_correlation
+    ('end_year_a',          'smallint'),   # cast(... as smallint)
+    ('end_year_b',          'smallint'),   # cast(... as smallint)
+    ('event_window',        'smallint'),   # cast(... as smallint)
+    ('event_year_a',        'smallint'),   # events.year
+    ('event_year_b',        'smallint'),   # events.year
+    ('event_title_a',       'string'),     # events.title
+    ('event_title_b',       'string'),     # events.title
+    ('indicator_count',     'bigint'),     # patterns.indicator_count
+    ('pattern_power_score', 'double'),     # patterns.pattern_power_score
+    ('instance_count',      'bigint'),     # cast(count(*) as bigint)
+    ('pattern_tier',        'string'),     # _shared/pattern_tier
+    ('median_lead_time_b',  'smallint'),   # cast(... as smallint)
+    ('min_lead_time_b',     'smallint'),   # cast(... as smallint)
+    ('max_lead_time_b',     'smallint'),   # cast(... as smallint)
+    ('median_lead_time_a',  'smallint'),   # cast(... as smallint)
+    ('pps',                 'double'),     # cast(... as double)
+    ('contains_predicted',  'boolean'),    # patterns.contains_predicted
+)
+
+
+def build_external_table_ddl(s3_bucket):
+    """Build the CREATE EXTERNAL TABLE DDL for `qgi_data.recipes`.
+
+    Run by the new SF state `5b.2 Create External Table` (between
+    `5b.1 Drop Recipes Table` and `5b.3 List Formatter`'s downstream
+    seed INSERT). Uses IF NOT EXISTS so re-runs after a partial-success
+    are idempotent — the 5b.1 DROP cleared the table, the new DDL is the
+    only writer in this scope. Pinned LOCATION at the stable prefix
+    avoids the query_results/tables/<uuid>/ 1-day-expiry trap that
+    caused #622.
+
+    Parameters
+    ----------
+    s3_bucket : str
+        The data-lake bucket (caller-supplied so this stays env-agnostic
+        across staging / qa / prod accounts).
+    """
+    col_defs = ",\n      ".join(f"{name} {ctype}" for name, ctype in RECIPES_COLUMNS)
+    return f"""
+    CREATE EXTERNAL TABLE IF NOT EXISTS {ATHENA_DB}.recipes (
+      {col_defs}
+    )
+    PARTITIONED BY (country_a_id smallint)
+    STORED AS PARQUET
+    LOCATION 's3://{s3_bucket}/{RECIPES_STABLE_PREFIX}'
+    TBLPROPERTIES (
+      'parquet.compress' = 'SNAPPY',
+      'classification' = 'parquet',
+      'EXTERNAL' = 'TRUE'
+    )
+    """.strip()
+
+
+# Safety guard: a seed chunk that ends up > this row-count threshold means
+# the smart-chunking math has degraded and we'd be exposing the INSERT to
+# the 30-min Athena DML wall risk on a country at Tier-3+ size (India /
+# China territory).
+#
+# Calibration: 2026-04-29 production observation captured a 263M reported-
+# count chunk completing in ~76s wall-clock (linear extrapolation: 1M ≈
+# 0.3s, 5M ≈ 1.5s, 10M ≈ 3s — all well below the 30-min DML wall).
+# So 5M is comfortably below the actual scale ceiling but above the
+# realistic seed size of a properly-chunked Tier-3 country (with 71×12 =
+# 852 shards, even a 10M-row country averages 12k rows per shard; the
+# smallest shard becomes the seed). Triggers only on a pathological
+# smart-chunking regression where the seed picks up an unsplit big
+# slice. Fails fast rather than silently OOM-ing 30 minutes later.
+SEED_CHUNK_PATTERN_COUNT_GUARD = 5_000_000
