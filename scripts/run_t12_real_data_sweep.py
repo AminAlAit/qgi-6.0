@@ -466,45 +466,93 @@ def run_single_config(mod, cells, config: dict, *,
 def _load_anchor_country_ids(cells, anchor_battery_json_path: Path) -> list[int]:
     """Load the 8 anchor-case country_ids from cascade-anchor-case-battery.json.
 
-    Path B's §5.2.3 uses the same anchor cohort as Path A — but the
-    cells country_labels are str(int) country_ids and the anchor JSON
-    carries country NAMES (Malta, Iceland, Norway, Tunisia, Sri Lanka,
-    Venezuela, Switzerland, Yemen). Resolving name→id requires a
-    qgi-data country-master-list mapping that does not yet exist as a
-    standalone reference (Path A v6.6's sidecars carry the resolved
-    Path-A-specific percentile-rank verdict but not the name→id table).
+    Path B's §5.2.3 uses the same anchor cohort as Path A:
+    Malta, Iceland, Norway, Tunisia, Sri Lanka, Venezuela, Switzerland,
+    Yemen. The source-of-truth JSON top-level array is `cases` (NOT
+    `anchor_cases` — that was a confused reading of the v6 sidecar's
+    `anchor_case_battery.cases` resolved-results structure).
 
-    **Wire-in DEFERRED** to a follow-up ticket post-v7 ratification
-    (filed at qgi-aws-tf#743 follow-up). The §5.2.2 routing in the
-    verdict template handles "informational anchor battery" by routing
-    on posterior-only when anchor is null — so v7 can fire without
-    this and still produce a §5.2.2-honor-eligible verdict.
+    **Country_id wired post-2026-05-16** per qgi-data#54: each case
+    now carries a `country_id` integer field (resolved from the
+    canonical pipeline-A countries.csv master), matching the
+    country_id values that the v6 cells tensor uses to index countries.
 
-    Current behavior: read the anchor JSON (correctly using the
-    `anchor_cases` top-level key — the previous `cases` key was wrong),
-    print the count of cases the driver would route once name→id is
-    wired, and return an empty list so the MCMC fires anyway.
+    Only in-universe cases are returned; cases with
+    `in_evaluation_universe == false` (Malta #1, Iceland #2 at v0.1a)
+    are skipped per the JSON's universe_note — they will count toward
+    the §5.2.3 denominator only when the universe flag flips at Phase 6.
+
+    Args:
+        cells: CellsArray (used to validate country_ids are in
+            cells.country_labels for graceful degradation if a v6
+            sidecar dropped a country).
+        anchor_battery_json_path: path to qgi-data/reference/
+            cascade-anchor-case-battery.json (qgi-data `45cf568` or later
+            for the country_id-enriched version).
+
+    Returns:
+        list of integer country_ids for the in-universe anchor cases
+        whose IDs are present in cells.country_labels. Empty list if
+        the JSON is missing or schema-incompatible.
     """
     if not anchor_battery_json_path.exists():
-        print(f"  WARNING: anchor-case-battery.json not found at {anchor_battery_json_path}; using empty anchor list", flush=True)
+        print(
+            f"  WARNING: anchor-case-battery.json not found at "
+            f"{anchor_battery_json_path}; using empty anchor list",
+            flush=True,
+        )
         return []
     with anchor_battery_json_path.open(encoding="utf-8") as fh:
         data = json.load(fh)
-    # Battery has top-level `anchor_cases` array (NOT `cases`); each case
-    # has `country` (NAME, str) not `country_id` (int). Name→id resolver
-    # is a TODO — see docstring above.
-    cases = data.get("anchor_cases", [])
-    n_cases = len(cases)
+    cases = data.get("cases", [])
+    n_total = len(cases)
+
+    # Build set of cells country_ids (labels are str(int))
+    cells_country_ids = set()
+    for label in cells.country_labels:
+        try:
+            cells_country_ids.add(int(label))
+        except (ValueError, TypeError):
+            pass
+
+    in_universe = []
+    out_of_universe = []
+    missing_id_field = []
+    missing_from_cells = []
+    for case in cases:
+        cid = case.get("country_id")
+        country = case.get("country", "<unknown>")
+        if cid is None:
+            missing_id_field.append(country)
+            continue
+        if not case.get("in_evaluation_universe", True):
+            out_of_universe.append(f"{country}({cid})")
+            continue
+        if int(cid) not in cells_country_ids:
+            missing_from_cells.append(f"{country}({cid})")
+            continue
+        in_universe.append(int(cid))
+
     print(
-        f"  anchor battery: {n_cases} cases declared in JSON; "
-        f"name→country_id resolver NOT YET WIRED (deferred follow-up); "
-        f"routing on posterior-only per spec §5.2.2 informational-anchor branch",
+        f"  anchor battery: {n_total} cases declared; "
+        f"{len(in_universe)} in-universe + resolvable; "
+        f"{len(out_of_universe)} out-of-universe (Phase 6 gate); "
+        f"{len(missing_from_cells)} missing from v6 cells; "
+        f"{len(missing_id_field)} missing country_id field",
         flush=True,
     )
-    # Return empty list — keeps the MCMC firing without runtime errors.
-    # When name→id is wired in the follow-up PR, replace this with the
-    # resolved country_id list.
-    return []
+    if missing_id_field:
+        print(
+            f"  WARNING: missing country_id on: {missing_id_field}. "
+            f"Update qgi-data/reference/cascade-anchor-case-battery.json "
+            f"per qgi-data#54 enrichment.",
+            flush=True,
+        )
+    if missing_from_cells:
+        print(f"  out-of-universe: {out_of_universe}", flush=True)
+        print(f"  missing-from-cells: {missing_from_cells}", flush=True)
+
+    return in_universe
 
 
 def main():
