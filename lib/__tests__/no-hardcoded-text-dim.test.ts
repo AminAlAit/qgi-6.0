@@ -16,17 +16,22 @@ import { describe, it, expect } from "vitest";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-const ROOTS = ["app", "components", "lib"];
+// Walk every source root where this slate could plausibly hide. tests/
+// + scripts/ + e2e specs are included so a future bake script or
+// Playwright spec can't sneak the pre-#706 color back into the tree.
+const ROOTS = ["app", "components", "lib", "tests", "scripts"];
 const EXTS = new Set([".ts", ".tsx", ".js", ".jsx", ".css", ".mjs", ".cjs"]);
 
 // globals.css holds two intentional historical references in the #706
 // fix's comment block (lines 21 + 35 as of 2026-05-16). Those are
 // documentation, not active values. The test file itself is also
 // allowlisted because the regex literal would otherwise trip the guard
-// (#737 self-detection edge case).
+// (#737 self-detection edge case). Entries use forward slashes so the
+// match works on Windows dev boxes (PR #82 nit fix); the loop
+// normalizes every walked path before checking.
 const ALLOWLIST = new Set([
-  join("app", "globals.css"),
-  join("lib", "__tests__", "no-hardcoded-text-dim.test.ts"),
+  "app/globals.css",
+  "lib/__tests__/no-hardcoded-text-dim.test.ts",
 ]);
 
 function walk(dir: string, acc: string[] = []): string[] {
@@ -51,8 +56,10 @@ describe("#737 regression guard — no hard-coded #4a6280", () => {
     for (const root of ROOTS) {
       const files = walk(root);
       for (const file of files) {
+        // Normalize to forward-slash so allowlist hits the same string
+        // whether the runner is Linux CI or a Windows dev box.
         const rel = file.replace(/\\/g, "/");
-        if (ALLOWLIST.has(file) || ALLOWLIST.has(rel)) continue;
+        if (ALLOWLIST.has(rel)) continue;
         const text = readFileSync(file, "utf8");
         const hexHit = /#4a6280/i.test(text);
         const rgbHit = /\brgba?\(\s*74\s*,\s*98\s*,\s*128/i.test(text);
