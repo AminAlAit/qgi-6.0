@@ -18,3 +18,11 @@
 pymc==5.16.*
 numpyro==0.15.*
 arviz==0.18.*
+
+# N-4 (Sonnet review of #60; #684): jax/jaxlib pinned alongside numpyro.
+# PR #60 surfaced the numpyro==0.15 / jax import mismatch (pjit_p not
+# exported in current jax); pinning the pair prevents §3.2 fallback from
+# silently breaking at install. Patch-exact pins live in
+# requirements-path-b.lock.txt (PR #66, 2026-05-15).
+jax==0.7.*
+jaxlib==0.7.*
