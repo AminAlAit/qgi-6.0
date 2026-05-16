@@ -9,9 +9,16 @@
   --qgi-border: #243347; /* subtle borders */
 
   /* Text */
-  --qgi-text: #e2e8f0; /* primary text */
-  --qgi-text-muted: #7a90a8; /* secondary / label text */
-  --qgi-text-dim: #4a6280; /* disabled / placeholder */
+  --qgi-text: #e2e8f0; /* primary text — 12.6:1 vs --qgi-bg (AAA) */
+  --qgi-text-muted: #7a90a8; /* secondary / label text — 5.35:1 vs --qgi-bg (AA) */
+  /* #706 (2026-05-16) — WCAG 1.4.3 fix. Pre-fix value `#4a6280` failed AA
+     on all 3 dark surfaces (2.77:1 vs --qgi-bg, 2.59:1 vs --qgi-surface,
+     2.22:1 vs --qgi-surface-2). New value passes AA on all three:
+     4.91:1 vs --qgi-bg, 4.61:1 vs --qgi-surface, 4.13:1 vs --qgi-surface-2.
+     The token is used in ~250 call sites; bumping the variable lights up
+     all of them in one edit. Visually: noticeably brighter than the old
+     dim grey but still clearly subordinate to muted and primary. */
+  --qgi-text-dim: #83a0b8; /* tertiary / placeholder — 4.13:1+ vs darkest surface (AA) */
 
   /* Accent — electric blue (primary interactive) */
   --qgi-accent: #38bdf8;
