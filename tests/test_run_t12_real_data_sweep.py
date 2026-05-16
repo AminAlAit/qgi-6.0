@@ -179,6 +179,21 @@ def test_inconsistent_anti_methodology_boundary():
     assert v["tier"] == "INCONSISTENT-anti-methodology"
 
 
+def test_boundary_hdi_high_at_zero_routes_to_straddle():
+    """Boundary: hdi_high == 0 exactly. Per the driver's documented
+    convention, this falls to hdi_straddles_zero (inclusive), NOT to
+    hdi_entirely_negative (strict). Measure-zero in practice but pinning
+    the contract per Sonnet review N-2 of qgi-ml#73."""
+    v = driver.route_verdict_against_5_2_2(
+        posterior_mean=-0.02, hdi_low=-0.04, hdi_high=0.0,
+        posterior_prob_swing_gt_005=0.0,
+        anchor_battery_pass_count=1,
+    )
+    # Straddles + P < 0.05 → HARD-FALSIFY (spec branch), NOT silent corner
+    assert v["tier"] == "HARD-FALSIFY"
+    assert "INCONSISTENT" not in v["tier"]
+
+
 def test_inconsistent_routing_anomaly_p_gt_025_while_straddling():
     """Edge case: HDI straddles zero AND P > 0.25. Spec is silent;
     must route to INCONSISTENT-routing-anomaly per §5.2.5, NOT to
