@@ -378,10 +378,13 @@ export function SignalsCountryDetail({
           })}
         </div>
 
-        {/* Search */}
+        {/* Search — #741 (2026-05-16): sr-only <label htmlFor> per WCAG 1.3.1 */}
+        <label htmlFor="signals-country-detail-search" className="sr-only">
+          Search category or L1 domain
+        </label>
         <input
+          id="signals-country-detail-search"
           type="text"
-          aria-label="Search category or L1 domain"
           placeholder="Search category or L1..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -394,13 +397,16 @@ export function SignalsCountryDetail({
 
         {/* Sort */}
         <div className="flex items-center gap-1">
-          <span
+          {/* #741: visible "Sort" span -> <label htmlFor> for click-to-focus */}
+          <label
+            htmlFor="signals-country-detail-sort"
             className="text-[9px] tracking-widest uppercase mr-1"
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Sort
-          </span>
+          </label>
           <select
+            id="signals-country-detail-sort"
             value={sortCol}
             onChange={(e) => setSortCol(e.target.value as SortColumn)}
             className="px-2 py-1.5 rounded border bg-transparent text-[11px]"

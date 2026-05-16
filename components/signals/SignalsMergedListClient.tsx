@@ -312,10 +312,14 @@ export function SignalsMergedListClient({
           })}
         </div>
 
-        {/* Search */}
+        {/* Search — #741 (2026-05-16): sr-only <label htmlFor> replaces
+            aria-label per WCAG 1.3.1 + accname-1.2 §4.3 (no double-naming). */}
+        <label htmlFor="signals-merged-search" className="sr-only">
+          Search category or L1 domain
+        </label>
         <input
+          id="signals-merged-search"
           type="text"
-          aria-label="Search category or L1 domain"
           placeholder="Search category or domain..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -329,13 +333,16 @@ export function SignalsMergedListClient({
 
         {/* Sort */}
         <div className="flex items-center gap-1.5 ml-auto">
-          <span
+          {/* #741: visible "Sort" span -> <label htmlFor> for click-to-focus */}
+          <label
+            htmlFor="signals-merged-sort"
             className="text-[9px] tracking-widest uppercase"
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Sort
-          </span>
+          </label>
           <select
+            id="signals-merged-sort"
             value={sortCol}
             onChange={(e) => setSortCol(e.target.value as SortColumn)}
             className="px-3 py-2 rounded border text-xs outline-none cursor-pointer"
