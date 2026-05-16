@@ -355,7 +355,7 @@ function TrajectoryChart({
               p.value != null ? p.value.toFixed(2) + "σ" : "—"
             }</span>`;
           });
-        return `<div style='font-family:monospace;font-size:10px'><div style='color:#4a6280;font-size:9px;margin-bottom:2px'>Year ${xLabels[idx] ?? "?"} from pattern end</div>${lines.join("<br/>")}</div>`;
+        return `<div style='font-family:monospace;font-size:10px'><div style='color:#8aa6be;font-size:9px;margin-bottom:2px'>Year ${xLabels[idx] ?? "?"} from pattern end</div>${lines.join("<br/>")}</div>`;
       },
     },
     grid: { top: 8, right: 8, bottom: 28, left: 42 },
@@ -364,7 +364,7 @@ function TrajectoryChart({
       data: xLabels,
       axisLine: { lineStyle: { color: "#243347" } },
       axisLabel: {
-        color: "#4a6280",
+        color: "#8aa6be",
         fontSize: 8,
         interval: Math.floor(xLabels.length / 5),
         formatter: (val: string) => (val === "0" ? "0 ←end" : val),
@@ -379,10 +379,10 @@ function TrajectoryChart({
       type: "value",
       scale: true,
       name: "σ",
-      nameTextStyle: { color: "#4a6280", fontSize: 8 },
+      nameTextStyle: { color: "#8aa6be", fontSize: 8 },
       axisLine: { lineStyle: { color: "#243347" } },
       splitLine: { lineStyle: { color: "#1a2a3a" } },
-      axisLabel: { color: "#4a6280", fontSize: 8 },
+      axisLabel: { color: "#8aa6be", fontSize: 8 },
     },
     series: [
       // Canonical reference — faint amber overlay, no markers.
@@ -401,7 +401,7 @@ function TrajectoryChart({
               markLine: {
                 silent: true,
                 symbol: "none",
-                lineStyle: { color: "#4a6280", type: "dotted" as const, width: 1 },
+                lineStyle: { color: "#8aa6be", type: "dotted" as const, width: 1 },
                 data: [{ xAxis: "0", name: "Pattern end" }],
                 label: { show: false },
               },

@@ -107,7 +107,7 @@ function enrichRows(rows: PrecedentRow[]): EnrichedRow[] {
       l1Group: mapping?.group ?? "?",
       l1Label: mapping?.label ?? "Uncategorized",
       l1ShortLabel: l1?.shortLabel ?? "Other",
-      l1Color: l1?.color ?? "#4a6280",
+      l1Color: l1?.color ?? "#8aa6be",
     };
   });
 }
