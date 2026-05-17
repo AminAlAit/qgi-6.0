@@ -173,7 +173,8 @@
       "properties": {
         "fpca_component_scores": {
           "type": "array",
-          "items": {"type": "number"}
+          "items": {"type": "number"},
+          "description": "LKJ posterior mean of μ_r in FPCA score space (the Bayesian prototype location). Per Sonnet B4 (2026-05-17): NOT the near-zero training-score sample mean."
         },
         "fpca_cumulative_variance_explained": {
           "type": "number",
@@ -187,7 +188,12 @@
         },
         "posterior_cov_diag": {
           "type": "array",
-          "items": {"type": "number", "minimum": 0.0}
+          "items": {"type": "number", "minimum": 0.0},
+          "description": "Per-time-step diagonal of the trajectory-space Mahalanobis denominator. Per Sonnet B5 + Priya adjudication (2026-05-17): back-projected LKJ posterior-mean Σ_r through V_r then Phi."
+        },
+        "cov_diag_source": {
+          "type": "string",
+          "description": "Provenance tag for posterior_cov_diag (Lloyd's audit surface). Expected value: 'posterior_mean_lkj_back_projected'. Optional for backwards compatibility with pre-B5 emissions."
         }
       }
     },

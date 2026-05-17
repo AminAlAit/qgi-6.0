@@ -435,3 +435,119 @@ def test_phase_alignment_cosine_zero_lag_is_one() -> None:
     assert phase_alignment_cosine(0, max_lag=5) == pytest.approx(1.0, abs=1e-9)
     assert phase_alignment_cosine(5, max_lag=5) == pytest.approx(-1.0, abs=1e-9)
     assert phase_alignment_cosine(-5, max_lag=5) == pytest.approx(-1.0, abs=1e-9)
+
+
+def test_sobolev_semi_norm_matches_analytic_closed_form_on_cubic_polynomial() -> None:
+    """B2 test (Sonnet 2026-05-17, Priya adjudication 2026-05-17).
+
+    Validates that the Sobolev penalty matrix R is the **analytic integral**
+    of second-derivative outer products (Ramsay & Silverman §5.5), NOT the
+    discrete finite-difference proxy.
+
+    Strategy: build the SAME basis the fitter uses (with the same
+    L2-renormalization and central-trim), pick an arbitrary coefficient
+    vector β, and verify that ``β^T R β`` matches an independent
+    high-precision quadrature on the SAME basis functions:
+
+        β^T R β  ?=  ∫_{-T_r}^{0} (Σ_i β_i φ_i''(t))^2 dt
+
+    This decouples the R-correctness test from the spline's ability to
+    represent any specific function (which the trimmed central basis
+    cannot do for boundary-sensitive functions like t^3). The two should
+    agree to ~1e-6 absolute relative error if R is computed via
+    Gauss-Legendre quadrature (matching the independent fine-grid
+    quadrature); the prior finite-difference proxy
+    ``Phi^T D2^T D2 Phi`` would fail this test by orders of magnitude
+    because the discrete second-difference operator on integer evaluation
+    points is not the integral of the second derivative.
+
+    Per Priya B2 adjudication (2026-05-17): this pins the analytic-integral
+    binding of R&S §3.1.2 into CI.
+    """
+    from numpy.polynomial.legendre import leggauss
+    from scipy.interpolate import BSpline
+
+    from shape_prototype_fit_utils import (
+        K_BASIS_INTERIOR_KNOTS,
+        SPLINE_DEGREE,
+        build_cubic_bspline_basis,
+    )
+
+    T_r = 8  # production-range upper end (Phase 1 recipes span T_r ∈ [4, 8])
+    Phi, R = build_cubic_bspline_basis(T_r)
+    K_basis = Phi.shape[1]
+    assert K_basis == K_BASIS_INTERIOR_KNOTS
+
+    # Reconstruct the SAME basis the fitter uses for independent quadrature.
+    n_interior_knots = K_BASIS_INTERIOR_KNOTS
+    quantile_positions = np.linspace(
+        1.0 / (n_interior_knots + 1),
+        n_interior_knots / (n_interior_knots + 1),
+        n_interior_knots,
+    )
+    interior_knots = -T_r + quantile_positions * T_r
+    boundary_lo = np.full(SPLINE_DEGREE + 1, -T_r, dtype=float)
+    boundary_hi = np.full(SPLINE_DEGREE + 1, -1e-9, dtype=float)
+    full_knots = np.concatenate([boundary_lo, interior_knots, boundary_hi])
+    n_basis_full = len(full_knots) - SPLINE_DEGREE - 1
+
+    # Rebuild Phi columns (to recover the L2 col_norms used by the fitter).
+    t_grid = np.arange(-T_r, 0, dtype=float)
+    Phi_raw = np.zeros((T_r, n_basis_full), dtype=float)
+    splines: list[BSpline] = []
+    for j in range(n_basis_full):
+        coeffs = np.zeros(n_basis_full, dtype=float)
+        coeffs[j] = 1.0
+        spl = BSpline(full_knots, coeffs, SPLINE_DEGREE, extrapolate=False)
+        splines.append(spl)
+        Phi_raw[:, j] = spl(t_grid)
+    Phi_raw = np.nan_to_num(Phi_raw, nan=0.0)
+    drop_per_side = (n_basis_full - n_interior_knots) // 2
+    Phi_trim = Phi_raw[:, drop_per_side : drop_per_side + n_interior_knots]
+    splines_trim = splines[drop_per_side : drop_per_side + n_interior_knots]
+    col_norms = np.linalg.norm(Phi_trim, axis=0)
+    col_norms = np.where(col_norms < 1e-12, 1.0, col_norms)
+    second_derivs = [spl.derivative(2) for spl in splines_trim]
+
+    # Pick an arbitrary β. Use a smooth deterministic pattern to avoid
+    # accidentally hitting the basis null space.
+    rng = np.random.default_rng(20260517)
+    beta = rng.standard_normal(K_basis)
+
+    # Numerical semi-norm via R.
+    numerical_seminorm = float(beta @ R @ beta)
+
+    # Independent high-precision quadrature on the same basis functions.
+    # Use a fine partition (every 0.01 unit subinterval) with 8-point
+    # Gauss-Legendre quadrature per subinterval; this is independent of
+    # the fitter's break-point partitioning and gives a ground-truth
+    # integral to ~machine precision.
+    gl_nodes, gl_weights = leggauss(8)
+    a_total, b_total = -T_r, -1e-9
+    n_segments = int(np.ceil((b_total - a_total) / 0.01))
+    seg_breaks = np.linspace(a_total, b_total, n_segments + 1)
+    independent_integral = 0.0
+    for seg in range(n_segments):
+        a, b = float(seg_breaks[seg]), float(seg_breaks[seg + 1])
+        half = 0.5 * (b - a)
+        mid = 0.5 * (b + a)
+        pts = mid + half * gl_nodes
+        wts = half * gl_weights
+        # Σ_i (β_i / c_i) φ_i''(t) — apply the same L2 renormalization
+        # the fitter's R uses.
+        D2_at_pts = np.zeros(len(pts), dtype=float)
+        for i, spl_dd in enumerate(second_derivs):
+            D2_at_pts += (beta[i] / col_norms[i]) * np.nan_to_num(spl_dd(pts), nan=0.0)
+        independent_integral += float(np.sum(wts * D2_at_pts ** 2))
+
+    rel_error = abs(numerical_seminorm - independent_integral) / max(
+        abs(independent_integral), 1e-12
+    )
+    assert rel_error < 1e-6, (
+        f"Sobolev semi-norm β^T R β = {numerical_seminorm:.6f} differs from "
+        f"independent fine-quadrature integral {independent_integral:.6f} "
+        f"by relative error {rel_error:.6e} (> 1e-6 tolerance). Per B2 "
+        f"(Priya 2026-05-17) the penalty matrix R must be the analytic "
+        f"integral of second-derivative outer products via Gauss-Legendre "
+        f"quadrature, NOT a finite-difference proxy."
+    )

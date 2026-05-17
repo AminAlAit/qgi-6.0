@@ -23,6 +23,7 @@ from dataclasses import dataclass
 from typing import Final
 
 import numpy as np
+from numpy.polynomial.legendre import leggauss
 from scipy.interpolate import BSpline
 from scipy.linalg import eigh
 
@@ -62,28 +63,56 @@ def build_cubic_bspline_basis(
 ) -> tuple[np.ndarray, np.ndarray]:
     """Construct a cubic B-spline basis matrix and Sobolev penalty matrix.
 
-    Per §3.1.2 binding: K_basis = 8 interior knots placed at quantiles of
-    [-T_r, 0]. Returns the evaluated basis matrix Phi (T_r x K_basis) and
-    the second-derivative penalty matrix R used as the Sobolev inner-product
-    metric for FPCA.
+    Per §3.1.2 binding (Ramsay & Silverman ch. 8): K_basis = 8 interior knots
+    on [-T_r, 0]. This implementation uses **equispaced (uniform-fraction)
+    knot placement**, which equals data-quantile placement only on the
+    integer grid ``t in {-T_r, ..., -1}`` (the production trajectory grid;
+    on that grid uniform-fraction == empirical-quantile by construction).
+    If irregular sampling is ever introduced (e.g. monthly or event-time
+    grids), this implementation MUST be revisited and the quantile route
+    re-derived. An assertion at function entry pins the integer-grid
+    invariant.
+
+    The Sobolev penalty matrix R is computed as the **analytic integral**
+    per Priya's adjudication of Sonnet B2 (2026-05-17):
+    ``R_{ij} = ∫ φ_i''(t) φ_j''(t) dt`` over [-T_r, 0] via
+    ``scipy.interpolate.BSpline.derivative(2)`` plus 8-point Gauss-Legendre
+    quadrature on each knot subinterval. This matches the canonical
+    Ramsay & Silverman §5.5 definition by direct citation; the prior
+    finite-difference proxy diverged from the analytic integral at the
+    production scale (T_r ∈ [4, 8]).
 
     Args:
         T_r: Canonical length (number of integer year offsets in the
-            trajectory window, t in {-T_r, ..., -1}).
+            trajectory window, t in {-T_r, ..., -1}). MUST be an integer >= 4.
         n_interior_knots: Per spec, 8. Exposed for testability but spec-binding.
 
     Returns:
         (Phi, R) where:
           Phi: (T_r, n_interior_knots) evaluated basis matrix. Row i is
             phi_1..phi_K evaluated at t = -T_r + i.
-          R: (n_interior_knots, n_interior_knots) penalty matrix
-            (integral of second-derivative outer products); the metric
-            used in FPCA's Sobolev inner product.
+          R: (n_interior_knots, n_interior_knots) Sobolev penalty matrix
+            (analytic integral of second-derivative outer products via
+            Gauss-Legendre quadrature); the metric used in FPCA's Sobolev
+            inner product.
 
     Raises:
         ValueError: if T_r < 4 (basis cannot interpolate fewer than 4 points
             with a cubic spline + 8 interior knots while remaining stable).
+        AssertionError: if T_r is not an integer (uniform-fraction knots
+            equal quantile knots only on the integer grid; non-integer T_r
+            invalidates the binding equivalence and must trigger a spec
+            revisit).
     """
+    # Per B1 (Sonnet review 2026-05-17): pin the integer-grid invariant.
+    # Uniform-fraction knot placement equals empirical-quantile placement
+    # iff the sampling grid is integer-spaced; production trajectories use
+    # ``t in {-T_r, ..., -1}`` with unit step. Any deviation invalidates
+    # the docstring's binding equivalence.
+    assert isinstance(T_r, (int, np.integer)) and not isinstance(T_r, bool), (
+        f"T_r must be an integer (uniform-fraction == quantile knots only on "
+        f"the integer grid); got type {type(T_r).__name__}={T_r!r}."
+    )
     if T_r < 4:
         raise ValueError(
             f"T_r={T_r} is too short for cubic spline basis; minimum is 4. "
@@ -98,9 +127,11 @@ def build_cubic_bspline_basis(
     # Evaluation grid: integer year offsets in [-T_r, -1].
     t_grid = np.arange(-T_r, 0, dtype=float)  # length T_r
 
-    # Quantile-spaced interior knots on (-T_r, 0). Use linspace on quantiles
-    # 1/(K+1), ..., K/(K+1) for evenly-spaced quantile positions, deterministic
-    # across calls.
+    # Equispaced (uniform-fraction) interior knots on (-T_r, 0). Use linspace
+    # on fractions 1/(K+1), ..., K/(K+1) for evenly-spaced positions,
+    # deterministic across calls. On the integer grid t in {-T_r, ..., -1}
+    # this coincides with empirical-quantile knot placement; see docstring
+    # B1 note on irregular-grid divergence.
     quantile_positions = np.linspace(
         1.0 / (n_interior_knots + 1),
         n_interior_knots / (n_interior_knots + 1),
@@ -151,17 +182,59 @@ def build_cubic_bspline_basis(
     col_norms = np.where(col_norms < 1e-12, 1.0, col_norms)
     Phi = Phi / col_norms[np.newaxis, :]
 
-    # Penalty matrix R: second-difference proxy (discrete second-derivative
-    # in coefficient space). For cubic splines the integrated squared second
-    # derivative reduces to a banded matrix; we use the second-difference
-    # form Phi^T D2^T D2 Phi as a stable, dimensionally-correct proxy on the
-    # integer grid (Ramsay & Silverman ch. 5, equation 5.13 discrete form).
-    D2 = np.zeros((Phi.shape[0] - 2, Phi.shape[0]))
-    for i in range(D2.shape[0]):
-        D2[i, i] = 1.0
-        D2[i, i + 1] = -2.0
-        D2[i, i + 2] = 1.0
-    R = Phi.T @ (D2.T @ D2) @ Phi
+    # Penalty matrix R: analytic integral R_{ij} = ∫ φ_i''(t) φ_j''(t) dt
+    # over [-T_r, 0] per §3.1.2 binding (Ramsay & Silverman §5.5, ch. 8).
+    # Implemented via scipy.interpolate.BSpline.derivative(2) plus 8-point
+    # Gauss-Legendre quadrature on each knot subinterval. This is exact for
+    # polynomials up to degree 15; cubic-spline second derivatives are
+    # piecewise linear, so 2-point would suffice — 8-point is for robustness
+    # at corner cases. Per Priya's B2 adjudication (2026-05-17): this
+    # replaces the prior finite-difference proxy that diverged from the
+    # cited R&S canonical definition at production scale.
+    R = np.zeros((Phi.shape[1], Phi.shape[1]), dtype=float)
+    # Build the n_basis_full second-derivative B-splines once.
+    second_derivs: list[BSpline] = []
+    n_basis_full = len(full_knots) - SPLINE_DEGREE - 1
+    for j in range(n_basis_full):
+        coeffs = np.zeros(n_basis_full, dtype=float)
+        coeffs[j] = 1.0
+        spl = BSpline(full_knots, coeffs, SPLINE_DEGREE, extrapolate=False)
+        second_derivs.append(spl.derivative(2))
+    # Apply same central-trim as Phi for index consistency.
+    if n_basis_full > n_interior_knots:
+        second_derivs = second_derivs[drop_per_side : drop_per_side + n_interior_knots]
+    # Account for the L2-renormalization applied to Phi: the basis functions
+    # φ_j used in the analytic integral are the SAME functions whose discrete
+    # evaluations were L2-normalized in Phi. To keep R consistent with that
+    # scaling, divide each second-derivative spline output by the same col_norm.
+    inv_col_norms = 1.0 / col_norms  # broadcast factor per basis column
+
+    # Gauss-Legendre 8-point quadrature per knot subinterval.
+    gl_nodes, gl_weights = leggauss(8)
+    # Unique sorted break points inside [-T_r, 0).
+    break_points = np.unique(full_knots)
+    break_points = break_points[(break_points >= -T_r) & (break_points < 0)]
+    if break_points.size == 0 or break_points[0] > -T_r:
+        break_points = np.concatenate([[-T_r], break_points])
+    if break_points[-1] < -1e-9:
+        break_points = np.concatenate([break_points, [-1e-9]])
+
+    for k_seg in range(len(break_points) - 1):
+        a, b = float(break_points[k_seg]), float(break_points[k_seg + 1])
+        if b - a <= 0.0:
+            continue
+        half = 0.5 * (b - a)
+        mid = 0.5 * (b + a)
+        pts = mid + half * gl_nodes  # mapped quadrature nodes
+        wts = half * gl_weights
+        # Evaluate all kept second-derivative basis functions at pts and
+        # apply the same L2 renormalization Phi used.
+        D2_vals = np.zeros((len(pts), len(second_derivs)), dtype=float)
+        for j, spl_dd in enumerate(second_derivs):
+            D2_vals[:, j] = np.nan_to_num(spl_dd(pts), nan=0.0)
+        D2_vals = D2_vals * inv_col_norms[np.newaxis, :]
+        # Accumulate the outer-product integral.
+        R += (D2_vals * wts[:, np.newaxis]).T @ D2_vals
 
     # Symmetrize + add tiny ridge for positive-definiteness in the eigendecomp
     # used by FPCA.
@@ -310,8 +383,16 @@ def fit_fpca(
 
     Per §3.1.2 binding equation: scores s_c = V_r^T R (beta_c - bar_beta_r).
     The FPCA is computed by solving the generalized eigenvalue problem
-    Cov(beta) v = lambda R^-1 v which under the Sobolev metric reduces to a
-    standard eigenvalue problem after a whitening transform with R^{1/2}.
+
+        Cov(beta) v = lambda R v
+
+    where R is the **positive-definite metric** (the Sobolev penalty matrix,
+    NOT its inverse). Under this convention ``scipy.linalg.eigh(cov, R)``
+    returns eigenvectors V satisfying ``V^T R V = I`` (R-orthonormality),
+    and the per-instance scores ``s_c = V^T R (beta_c - bar_beta_r)`` are
+    consistent with that normalization. Per Sonnet B3 (2026-05-17) the
+    earlier docstring stated ``R^{-1}`` which was wrong; implementation
+    was already correct.
 
     Args:
         beta_matrix: (N_r, K_basis * K_indicators) stacked per-instance
@@ -348,10 +429,11 @@ def fit_fpca(
     cov = (beta_centered.T @ beta_centered) / max(N_r - 1, 1)
     cov = 0.5 * (cov + cov.T)  # symmetrize
 
-    # Generalized eigenproblem: cov v = lambda R^{-1} v
-    # <=> R^{1/2} cov R^{1/2} (R^{-1/2} v) = lambda (R^{-1/2} v).
-    # Use scipy.linalg.eigh with R as the metric to solve directly.
-    # eigh(A, B) returns eigenvalues ascending; reverse for descending.
+    # Generalized eigenproblem: cov v = lambda R v (R as positive-definite
+    # metric, NOT its inverse — see docstring B3 correction).
+    # scipy.linalg.eigh(A, B) solves A v = lambda B v; here A=cov, B=R.
+    # Returned eigenvectors V satisfy V^T R V = I.
+    # eigh returns eigenvalues ascending; reverse for descending.
     try:
         eigvals_asc, eigvecs_asc = eigh(cov, R)
     except np.linalg.LinAlgError as exc:
@@ -537,14 +619,18 @@ def dtw_distance(
     path_lags: list[int] = []
     while i > 0 and j > 0:
         path_lags.append(j - i)
-        # Move to predecessor with min cost.
-        candidates = [
-            (D[i - 1, j - 1], i - 1, j - 1),
-            (D[i - 1, j], i - 1, j),
-            (D[i, j - 1], i, j - 1),
-        ]
-        candidates.sort(key=lambda c: c[0])
-        _, i, j = candidates[0]
+        # Move to predecessor with min cost. Per N3 (Sonnet 2026-05-17):
+        # np.argmin is clearer than list.sort on the hot path.
+        cand_costs = np.array(
+            [D[i - 1, j - 1], D[i - 1, j], D[i, j - 1]], dtype=float
+        )
+        cand_indices = (
+            (i - 1, j - 1),
+            (i - 1, j),
+            (i, j - 1),
+        )
+        choice = int(np.argmin(cand_costs))
+        i, j = cand_indices[choice]
 
     if path_lags:
         # Use the median lag along the warping path as the representative

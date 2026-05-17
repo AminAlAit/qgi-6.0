@@ -128,8 +128,26 @@ def _git_commit_sha() -> str:
 
 
 def _sha256_of_dataframe(df: pd.DataFrame) -> str:
-    """Stable SHA-256 over a DataFrame for training-data-snapshot provenance."""
-    serialized = df.to_csv(index=False).encode("utf-8")
+    """Stable SHA-256 over a DataFrame for training-data-snapshot provenance.
+
+    Per N7 (Sonnet 2026-05-17): Parquet (Arrow) serialization for stable
+    cross-pandas-version hashing. CSV float formatting differs across pandas
+    versions and introduces non-determinism in the provenance hash; Parquet's
+    columnar binary representation is pinned by the Arrow spec.
+
+    Falls back to CSV if Parquet (pyarrow / fastparquet) is unavailable
+    (e.g. test environments without optional deps); fallback emits the same
+    contract but loses cross-version stability.
+    """
+    import io
+
+    try:
+        buf = io.BytesIO()
+        df.to_parquet(buf, index=False)
+        serialized = buf.getvalue()
+    except (ImportError, ValueError):
+        # Graceful fallback for environments without a parquet engine.
+        serialized = df.to_csv(index=False).encode("utf-8")
     return hashlib.sha256(serialized).hexdigest()
 
 
@@ -338,7 +356,7 @@ def fit_recipe_fpca(
         )
 
     # --- Bayesian generative model on FPCA scores (§3.1.3) ------------------
-    diagnostics, posterior_mu = _fit_bayesian_posterior(
+    diagnostics, posterior_mu, Sigma_r_posterior_mean = _fit_bayesian_posterior(
         scores=fpca.scores[:, : fpca.selected_M_r],
         target_accept=target_accept,
         n_chains=n_chains,
@@ -351,7 +369,7 @@ def fit_recipe_fpca(
     # Refit at higher target_accept on a single divergence (§3.1.3).
     if not diagnostics.divergence_gate_pass and diagnostics.n_divergences == 1:
         audit.append("single divergence -> refitting at target_accept=0.99")
-        diagnostics, posterior_mu = _fit_bayesian_posterior(
+        diagnostics, posterior_mu, Sigma_r_posterior_mean = _fit_bayesian_posterior(
             scores=fpca.scores[:, : fpca.selected_M_r],
             target_accept=TARGET_ACCEPT_REFIT,
             n_chains=n_chains,
@@ -401,25 +419,58 @@ def fit_recipe_fpca(
     V_r = fpca.V[:, : fpca.selected_M_r]
     bar_beta_inferred = fpca.beta_mean + V_r @ posterior_mu
 
+    # Per B5 (Sonnet 2026-05-17, Priya adjudication Option C): the
+    # Mahalanobis denominator must be the BAYESIAN posterior-mean covariance
+    # of Σ_r from the §3.1.3 LKJ + Half-Cauchy hierarchical model, back-
+    # projected through V_r (FPCA → basis-coefficient space) and Phi
+    # (basis-coefficient → trajectory space). This replaces the prior
+    # frequentist empirical sample variance (np.var(block_trajs, ddof=1))
+    # which discarded the LKJ regularization and biased shape_similarity
+    # systematically toward "less similar" for sparse recipes.
+    #
+    # Per B4 (Sonnet 2026-05-17): `fpca_component_scores` now stores
+    # `posterior_mu` — the LKJ posterior mean of μ_r (the Bayesian
+    # prototype location in FPCA score space) — NOT the near-zero
+    # sample-mean of training scores.
+    fpca_component_scores_value = [
+        float(x) for x in np.asarray(posterior_mu).tolist()[: fpca.selected_M_r]
+    ]
     per_indicator_signature: dict[str, dict[str, Any]] = {}
     for k, iid in enumerate(indicator_ids):
         coef_slice = bar_beta_inferred[k * K_basis : (k + 1) * K_basis]
         traj = Phi @ coef_slice
-        # Diagonal covariance per indicator: per-time-step variance of the
-        # instance-level basis projections for that indicator block.
-        block_betas = beta_matrix[:, k * K_basis : (k + 1) * K_basis]
-        block_trajs = (Phi @ block_betas.T).T  # (N_r, T_r)
-        cov_diag_per_time = np.var(block_trajs, axis=0, ddof=1)
+        # B5: back-project the LKJ posterior-mean Σ_r through V_r (block
+        # slice for this indicator) into basis-coefficient covariance space,
+        # then forward-project through Phi into trajectory time-step space.
+        # The rank-M_r FPCA truncation means the null-space mass is zero by
+        # construction, so this is the full Bayesian posterior covariance
+        # contribution within the retained FPCA subspace.
+        V_r_block = V_r[k * K_basis : (k + 1) * K_basis, :]  # (K_basis, M_r)
+        Sigma_beta_k = V_r_block @ Sigma_r_posterior_mean @ V_r_block.T  # (K_basis, K_basis)
+        Sigma_traj_k = Phi @ Sigma_beta_k @ Phi.T  # (T_r, T_r)
+        cov_diag_per_time = np.diag(Sigma_traj_k)
+        # Defensive floor at 0 — Σ_r is positive-semi-definite by LKJ
+        # construction, but the rank-M_r truncation can produce near-zero
+        # diagonal entries; the kernel-side max(cov_diag, 1e-9) floor is
+        # preserved upstream of this output.
+        cov_diag_per_time = np.maximum(cov_diag_per_time, 0.0)
         per_indicator_signature[iid] = {
-            "fpca_component_scores": [
-                float(x) for x in fpca.scores.mean(axis=0).tolist()[: fpca.selected_M_r]
-            ],
+            # B4: prototype location in FPCA score space is the LKJ
+            # posterior mean of μ_r (not the near-zero training-score mean).
+            # Same value across indicators since μ_r is a recipe-level
+            # quantity (the score axis is shared across the K_indicators
+            # block-stacked coefficients).
+            "fpca_component_scores": fpca_component_scores_value,
             "fpca_cumulative_variance_explained": float(
                 fpca.cumulative_variance[fpca.selected_M_r - 1]
             ),
             "fpca_basis": f"cubic_spline_K{K_basis}",
             "posterior_mean_trajectory": [float(x) for x in traj.tolist()],
             "posterior_cov_diag": [float(x) for x in cov_diag_per_time.tolist()],
+            # B5: provenance tag making the Bayesian source of the variance
+            # object visible to Lloyd's actuarial review without reading
+            # the fitter source.
+            "cov_diag_source": "posterior_mean_lkj_back_projected",
         }
 
     # --- LOIO posterior-predictive coverage (§3.5.4) ------------------------
@@ -508,9 +559,13 @@ def _fit_bayesian_posterior(
     M_r = scores.shape[1]
     with pm.Model() as model:
         # Per §3.1.3 priors.
+        # Per N1 (Sonnet 2026-05-17): the prior standalone `sigma` HalfCauchy
+        # was redundant — `LKJCholeskyCov.sd_dist` already supplies an
+        # independent HalfCauchy on the scales internally. Removed to keep
+        # the diagnostic summary clean (R-hat / ESS no longer inflated by a
+        # parameter the likelihood ignored).
         tau = pm.HalfCauchy("tau", beta=1.0)
         mu = pm.Normal("mu", mu=0.0, sigma=tau, shape=M_r)
-        sigma = pm.HalfCauchy("sigma", beta=1.0, shape=M_r)
         chol, _, _ = pm.LKJCholeskyCov(
             "chol",
             n=M_r,
@@ -518,7 +573,6 @@ def _fit_bayesian_posterior(
             sd_dist=pm.HalfCauchy.dist(beta=1.0, shape=M_r),
             compute_corr=True,
         )
-        Sigma_chol = chol  # noqa: F841 — retained for clarity in the model graph
         pm.MvNormal(
             "obs",
             mu=mu,
@@ -542,14 +596,43 @@ def _fit_bayesian_posterior(
             cores=1,  # sequential by default for laptop-scale reproducibility
         )
 
-    summary = az.summary(idata, var_names=["mu", "tau", "sigma"], kind="diagnostics")
+    # var_names excludes the removed standalone "sigma" per N1.
+    summary = az.summary(idata, var_names=["mu", "tau"], kind="diagnostics")
     rhat_values = summary["r_hat"].values
     ess_values = summary["ess_bulk"].values
     n_divergences = int(idata.sample_stats["diverging"].sum().values)
     diagnostics = evaluate_sampler_diagnostics(rhat_values, ess_values, n_divergences)
 
     posterior_mu = idata.posterior["mu"].mean(dim=["chain", "draw"]).values
-    return diagnostics, posterior_mu
+
+    # Per B5 (Sonnet 2026-05-17, Priya adjudication 2026-05-17 Option C):
+    # extract per-draw LKJ-implied Σ_r posterior samples from the Cholesky
+    # factor stored in idata.posterior["chol"], reconstruct Σ_r per draw via
+    # L @ L^T, and return the posterior-mean covariance. Downstream code
+    # back-projects this through V_r and Phi to obtain the trajectory-space
+    # Mahalanobis denominator that §3.5.1 binds.
+    chol_arr = idata.posterior["chol"].values  # may be (chain, draw, M_r*(M_r+1)/2) packed or (chain, draw, M_r, M_r)
+    if chol_arr.ndim == 3:
+        # Packed lower-triangular (chain, draw, n_pack); unpack to (chain, draw, M_r, M_r).
+        n_chain, n_draw, n_pack = chol_arr.shape
+        chol_flat_packed = chol_arr.reshape(-1, n_pack)
+        tril_idx = np.tril_indices(M_r)
+        chol_flat = np.zeros((chol_flat_packed.shape[0], M_r, M_r), dtype=float)
+        chol_flat[:, tril_idx[0], tril_idx[1]] = chol_flat_packed
+    elif chol_arr.ndim == 4:
+        chol_flat = chol_arr.reshape(-1, M_r, M_r)
+    else:
+        raise ValueError(
+            f"Unexpected idata.posterior['chol'] ndim={chol_arr.ndim}; "
+            f"expected packed-tri (3) or full-matrix (4)."
+        )
+    # Σ_r per draw = L L^T; average over draws.
+    Sigma_r_draws = np.einsum("dij,dkj->dik", chol_flat, chol_flat)  # (D, M_r, M_r)
+    Sigma_r_posterior_mean = Sigma_r_draws.mean(axis=0)  # (M_r, M_r)
+    # Symmetrize defensively (numerical noise from einsum).
+    Sigma_r_posterior_mean = 0.5 * (Sigma_r_posterior_mean + Sigma_r_posterior_mean.T)
+
+    return diagnostics, posterior_mu, Sigma_r_posterior_mean
 
 
 def _loio_coverage_loop(
