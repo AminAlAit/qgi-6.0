@@ -2,6 +2,121 @@ import type { NextConfig } from "next";
 import { withSentryConfig } from "@sentry/nextjs";
 
 /**
+ * #748 PR-3 (#751) — Retired precedent slugs (2026-05-17).
+ *
+ * Per the founder's L10525 directive and the ratified Majles brief at
+ * `qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-17-precedents-revised.md`
+ * §4 — every non-LOCKed precedent slug 301-redirects to `/precedents`.
+ * Reasoning (orchestrator synthesis, no tie):
+ *   - 404 disqualified by Tomás and Marcus: prior bake links were
+ *     public; serving 404 looks like loss of artifact, not deliberate
+ *     retirement.
+ *   - `/methodology` deep-link disqualified by Sipho and Ingrid: asks
+ *     the reader to figure out why their bookmark broke.
+ *   - 301 to `/precedents` keeps the reader inside the family, signals
+ *     deliberate retirement to crawlers, and lets the index header's
+ *     "currently validated" copy do the explanation work.
+ *
+ * EXPLICIT LIST (not a wildcard) so adding a future LOCKed slug
+ * requires a deliberate removal from this list. The 4 LOCKed slugs —
+ * civil_war_and_insurgency, multilateral_agreement, elections_and_voting,
+ * bilateral_treaty — are NOT in this list and continue to render via
+ * `/precedents/[slug]`.
+ *
+ * Source: keys of CATEGORY_L1_MAP in `lib/category-taxonomy.ts` minus
+ * the 4 LOCKed slugs from `data/ml-recipe-stack.json metadata.top_4_recipes`.
+ * 86 entries; bake from 2026-05-17.
+ */
+const RETIRED_PRECEDENT_SLUGS = [
+  "government_formation",
+  "constitutional_change",
+  "decentralization_and_federalism",
+  "democratic_transition",
+  "executive_power_consolidation",
+  "military_coup",
+  "coup_attempt_or_succession",
+  "transitional_justice",
+  "peacekeeping_and_peace_process",
+  "constitutional_referendum",
+  "interstate_war",
+  "terrorist_attack",
+  "foreign_intervention",
+  "ethnic_and_communal_conflict",
+  "political_violence",
+  "ceasefire_agreement",
+  "west_bank_violence",
+  "israeli_military_operation",
+  "rocket_attack",
+  "political_repression",
+  "political_corruption",
+  "human_rights_violation",
+  "human_rights_reform",
+  "military_policy_and_reform",
+  "currency_crisis",
+  "banking_and_financial_crisis",
+  "economic_recession",
+  "fiscal_policy_change",
+  "monetary_policy_change",
+  "economic_liberalization",
+  "economic_nationalization",
+  "economic_recovery",
+  "economic_growth_milestone",
+  "economic_growth",
+  "trade_agreement",
+  "trade_dispute",
+  "foreign_direct_investment",
+  "industrial_policy",
+  "sanctions_and_arms_embargo",
+  "foreign_aid_and_development",
+  "economic_struggle",
+  "economic_crisi",
+  "economic_reform",
+  "mass_protest",
+  "labor_action",
+  "social_policy_reform",
+  "public_health_reform",
+  "poverty_and_inequality_crisis",
+  "religious_and_social_movement",
+  "migration_and_refugees",
+  "political_unrest",
+  "social_program",
+  "diplomatic_rupture",
+  "territorial_disputes",
+  "regional_integration",
+  "diplomatic_effort",
+  "international_diplomacy",
+  "earthquake",
+  "flood_and_cyclone",
+  "volcanic_eruption",
+  "natural_disaster",
+  "drought_and_famine",
+  "epidemic_and_pandemic",
+  "humanitarian_crisis",
+  "water_crisis",
+  "pandemic_response",
+  "humanitarian_crisi",
+  "energy_policy",
+  "oil_and_gas",
+  "renewable_energy",
+  "environmental_policy",
+  "climate_agreement",
+  "resource_conflict",
+  "infrastructure_project",
+  "urban_development",
+  "education_reform",
+  "education_and_research",
+  "digital_policy",
+  "technology_breakthrough",
+  "cyberattack",
+  "cultural_and_heritage",
+  "sport_and_international_event",
+  "agricultural_policy",
+  "environmental_effort",
+  "infrastructure_development",
+  "cultural_heritage",
+];
+
+/**
  * Next.js 16 config.
  *
  * T16 #309 (2026-04-19) — performance tuning:
@@ -171,6 +286,19 @@ const nextConfig: NextConfig = {
         destination: "/signals-v1/country",
         permanent: true,
       },
+
+      // ─── #748 PR-3 (2026-05-17) — Retired precedent slugs ─────────
+      //
+      // Every non-LOCKed precedent slug 301-redirects to `/precedents`
+      // per the founder's L10525 directive. Generated from the
+      // `RETIRED_PRECEDENT_SLUGS` constant above so the explicit list
+      // stays auditable. Adding a future LOCKed slug requires
+      // REMOVING it from this list, not adding a special case here.
+      ...RETIRED_PRECEDENT_SLUGS.map((slug) => ({
+        source: `/precedents/${slug}`,
+        destination: "/precedents",
+        permanent: true,
+      })),
     ];
   },
 };
