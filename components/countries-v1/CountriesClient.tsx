@@ -228,9 +228,17 @@ export function CountriesClient({
       params.set("min", String(l1MinScore));
     const qs = params.toString();
     // #440: cast to Route — typed routes can't statically verify
-    // arbitrary query-string composition. The path part (/countries)
+    // arbitrary query-string composition. The path part (/countries-v1)
     // is still pre-validated as a real route.
-    const target: Route = (qs ? `/countries?${qs}` : "/countries-v1") as Route;
+    //
+    // #714 (persona-test, 2026-05-17): pre-fix this branch read
+    // `/countries?${qs}` — i.e. a filter change on /countries-v1
+    // silently navigated the user to the V3 /countries route. That
+    // cross-route hop is part of the "tab drift" Dmitri/Fatima
+    // reported. The base path must remain /countries-v1 in both
+    // branches; the PR-#5 cutover is the correct retirement vehicle,
+    // not a stealth filter-sync re-route.
+    const target: Route = (qs ? `/countries-v1?${qs}` : "/countries-v1") as Route;
     if (target !== `${window.location.pathname}${window.location.search}`) {
       router.replace(target, { scroll: false });
     }

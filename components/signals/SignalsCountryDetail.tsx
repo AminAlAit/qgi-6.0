@@ -706,8 +706,20 @@ function ledeText({
   }
 
   // Curated voice — Ingrid 3-movement
+  //
+  // #719 residual (persona-test, 2026-05-17): the prior sentence
+  // claimed the signal "has held across S/M/L/XL tier windows in
+  // this bake, indicating the signal is structural rather than
+  // episode-bound." That assertion cannot be sourced from the
+  // current SignalRow shape (no `by_window` field exists in the
+  // bake). It rendered unconditionally regardless of whether the
+  // top category actually fired across all four windows or just
+  // one — same drift class as the deleted "1997-class precedents"
+  // caption. Per Ingrid: when copy can't be data-bound, remove the
+  // claim. Re-add when (and only when) the bake emits per-window
+  // firing data and the conditional can verify it.
   if (curated) {
-    return `${countryName} enters this week with ${firing} ${firing === 1 ? "category" : "categories"} firing above the baseline rung, the most pronounced being ${topName} at ${topScore}σ in the ${topL1} domain. The shape of activity has held across S/M/L/XL tier windows in this bake, indicating the signal is structural rather than episode-bound. None of these are predictions in isolation; this page reports model output reviewed for editorial release, not probabilistic forecasts of recurrence.`;
+    return `${countryName} enters this week with ${firing} ${firing === 1 ? "category" : "categories"} firing above the baseline rung, the most pronounced being ${topName} at ${topScore}σ in the ${topL1} domain. None of these are predictions in isolation; this page reports model output reviewed for editorial release, not probabilistic forecasts of recurrence.`;
   }
 
   // Preview-template fallback
