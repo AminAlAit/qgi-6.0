@@ -179,6 +179,26 @@ describe("CountriesMergedListClient — #780 search-alias", () => {
     expect(screen.getByRole("link", { name: /Turkiye/ })).toBeInTheDocument();
   });
 
+  it("Editor's Pick section is hidden on active search (#789 Aisha R5)", async () => {
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Mexico", "MX"), makeCountry("Turkiye", "TR")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    // Empty search: Editor's Pick visible (aria-label "5 countries to watch this week").
+    expect(screen.getByLabelText(/5 countries to watch this week/i)).toBeInTheDocument();
+
+    // Active search: Editor's Pick gone.
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "Mex");
+    expect(
+      screen.queryByLabelText(/5 countries to watch this week/i)
+    ).not.toBeInTheDocument();
+  });
+
   it("a non-alias query continues to match by name substring", async () => {
     const user = userEvent.setup();
     render(
