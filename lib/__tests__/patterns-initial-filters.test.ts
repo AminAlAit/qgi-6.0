@@ -130,3 +130,81 @@ describe("resolvePatternsInitialFilters — #781", () => {
     expect(out.tierFilter).toEqual(["L-win"]);
   });
 });
+
+describe("resolvePatternsInitialFilters — #786 R5 defect cluster", () => {
+  // #786(b) — alpha_2 ISO codes (Karl/Eurasia R5)
+  const ALPHA2: ReadonlyMap<string, string> = new Map([
+    ["IR", "Iran"],
+    ["KR", "South Korea"],
+    ["TR", "Turkiye"],
+    ["BR", "Brazil"],
+  ]);
+
+  it("(b) resolves country_a / country_b ISO alpha_2 codes via the alpha2ToName map", () => {
+    const out = resolvePatternsInitialFilters(
+      { country_a: "IR", country_b: "KR" },
+      ROWS,
+      ALPHA2
+    );
+    expect(out.countryFilter.sort()).toEqual(["Iran", "South Korea"]);
+  });
+
+  it("(b) alpha_2 lookup is case-insensitive (lowercase 'tr' resolves to Turkiye)", () => {
+    const out = resolvePatternsInitialFilters({ country_a: "tr" }, ROWS, ALPHA2);
+    expect(out.countryFilter).toEqual(["Turkiye"]);
+  });
+
+  it("(b) when the alpha2 map is omitted, ISO codes fall back to numeric-ID resolution (no match)", () => {
+    const out = resolvePatternsInitialFilters({ country_a: "IR" }, ROWS);
+    expect(out.countryFilter).toEqual([]);
+  });
+
+  it("(b) numeric IDs still resolve when the alpha2 map is provided (alpha2 path checked first, numeric fallback)", () => {
+    const out = resolvePatternsInitialFilters({ country_a: "31" }, ROWS, ALPHA2);
+    expect(out.countryFilter).toEqual(["Iran"]);
+  });
+
+  it("(c) `?country=X&country=Y` (repeated keys) produces 2 chips, not 1 (Mei-Lin R5)", () => {
+    const out = resolvePatternsInitialFilters({ country: ["Mexico", "Colombia"] }, ROWS);
+    expect(out.countryFilter.sort()).toEqual(["Colombia", "Mexico"]);
+  });
+
+  it("(c) mixed repeated + CSV form is flattened", () => {
+    const out = resolvePatternsInitialFilters(
+      { country: ["Mexico,Colombia", "Brazil"] },
+      ROWS
+    );
+    expect(out.countryFilter.sort()).toEqual(["Brazil", "Colombia", "Mexico"]);
+  });
+
+  it("(d) `?sort=pattern_power_score` sets sortCol", () => {
+    const out = resolvePatternsInitialFilters({ sort: "pattern_power_score" }, ROWS);
+    expect(out.sortCol).toBe("pattern_power_score");
+  });
+
+  it("(d) `?sort=loco_auc` aliases to pattern_power_score (back-compat with precedent dossier cross-refs)", () => {
+    const out = resolvePatternsInitialFilters({ sort: "loco_auc" }, ROWS);
+    expect(out.sortCol).toBe("pattern_power_score");
+  });
+
+  it("(d) invalid sort values are silently dropped, leaving sortCol undefined", () => {
+    const out = resolvePatternsInitialFilters({ sort: "BOGUS" }, ROWS);
+    expect(out.sortCol).toBeUndefined();
+  });
+
+  it("(d) `?dir=asc` sets sortDir", () => {
+    const out = resolvePatternsInitialFilters({ dir: "asc" }, ROWS);
+    expect(out.sortDir).toBe("asc");
+  });
+
+  it("(d) invalid sort directions are silently dropped", () => {
+    const out = resolvePatternsInitialFilters({ dir: "wat" }, ROWS);
+    expect(out.sortDir).toBeUndefined();
+  });
+
+  it("empty params still produce undefined sortCol/sortDir (don't override client defaults)", () => {
+    const out = resolvePatternsInitialFilters({}, ROWS);
+    expect(out.sortCol).toBeUndefined();
+    expect(out.sortDir).toBeUndefined();
+  });
+});

@@ -8,41 +8,33 @@ import type { PatternRow } from "@/lib/types";
  */
 export type PatternWindowTier = "S-win" | "M-win" | "L-win" | "XL-win";
 
+/** Valid sort columns — matches `PatternsMergedListClient` SortColumn union. */
+export type PatternsSortColumn =
+  | "pattern_power_score"
+  | "avg_correlation"
+  | "pattern_length"
+  | "window_tier";
+
+export type PatternsSortDir = "asc" | "desc";
+
 /**
- * #781 — initial filter state seeded from URL on the server. The
+ * #781 + #786 — initial filter state seeded from URL on the server. The
  * client component uses these for `useState` initializers.
  */
 export interface PatternsInitialFilters {
   search: string;
-  /** Country names — seeded from CSV `country=` and numeric
-   *  `country_a` / `country_b` mapped to names server-side. */
+  /** Country names — seeded from CSV `country=`, repeated keys
+   *  `?country=X&country=Y`, numeric `country_a`/`country_b` mapped
+   *  to names server-side, and ISO alpha_2 codes (when the alpha_2
+   *  map is provided). */
   countryFilter: string[];
   tierFilter: PatternWindowTier[];
+  /** #786(d) — initial sort column from URL `?sort=`. Falls back to
+   *  the client component's default when undefined. */
+  sortCol?: PatternsSortColumn;
+  sortDir?: PatternsSortDir;
 }
 
-/**
- * #781 — URL → initial filter resolver for `/patterns`.
- *
- * Lives in `lib/` so the page component (which can only export the
- * App-Router-sanctioned exports — `default`, `metadata`, etc.) doesn't
- * have to inline this and Vitest can exercise it directly.
- *
- * Schemes honored (all optional):
- *   - `q`         — search seed.
- *   - `country`   — comma-separated country NAMES → countryFilter.
- *   - `country_a` — numeric WB ID; looked up against `rows` to map id
- *                   → name; folded into countryFilter.
- *   - `country_b` — same.
- *   - `tier`      — comma-separated window tiers (S-win/M-win/L-win/
- *                   XL-win); invalid values dropped silently.
- *
- * Karl Henriksen / Eurasia Group (persona-test Round 4 2026-05-17)
- * hit this: `/patterns?country_a=31&country_b=208…` URLs constructed
- * by `dashboard/BaseClient.tsx`, `countries-v1/PrecedentDetailClient
- * .tsx`, `charts/PatternScatter.tsx`, and the V1 ranking page landed
- * on the unfiltered default list because the V3 route ignored URL
- * params entirely.
- */
 const WINDOW_TIERS: ReadonlySet<PatternWindowTier> = new Set([
   "S-win",
   "M-win",
@@ -50,12 +42,38 @@ const WINDOW_TIERS: ReadonlySet<PatternWindowTier> = new Set([
   "XL-win",
 ]);
 
+const SORT_COLUMNS: ReadonlySet<PatternsSortColumn> = new Set([
+  "pattern_power_score",
+  "avg_correlation",
+  "pattern_length",
+  "window_tier",
+]);
+
+/**
+ * Legacy sort-key aliases. Multiple precedent + country page cross-refs
+ * (e.g., `MergedDetailFooter.tsx:42`, `PrecedentMergedDossier.tsx:478`,
+ * `CountryMergedDetail.tsx:385`) construct `?sort=loco_auc` — but
+ * `loco_auc` is a recipe-level metric, not a per-pattern column.
+ * Closest pattern equivalent is `pattern_power_score`. Map for back-
+ * compat instead of silently dropping. Caught by Mei-Lin + Roberto in
+ * persona-test Round 5 (2026-05-17).
+ */
+const SORT_ALIASES: Readonly<Record<string, PatternsSortColumn>> = {
+  loco_auc: "pattern_power_score",
+};
+
+const SORT_DIRS: ReadonlySet<PatternsSortDir> = new Set(["asc", "desc"]);
+
 export type PatternsSearchParams = {
   q?: string | string[];
   country?: string | string[];
   country_a?: string | string[];
   country_b?: string | string[];
   tier?: string | string[];
+  /** #786(d) — sort column name. May be one of `PatternsSortColumn` or
+   *  a legacy alias from `SORT_ALIASES`. */
+  sort?: string | string[];
+  dir?: string | string[];
 };
 
 function firstOf(v: string | string[] | undefined): string | undefined {
@@ -63,49 +81,109 @@ function firstOf(v: string | string[] | undefined): string | undefined {
   return v;
 }
 
+/**
+ * #786(c) — handle both `?country=X,Y` (CSV) and `?country=X&country=Y`
+ * (repeated keys, the RFC-compliant form `URLSearchParams.getAll()`
+ * produces). Mei-Lin (World Bank R5) hit this: typed URL with two
+ * repeated keys collapsed to one chip via the old `firstOf` path.
+ */
+function flattenCsvOrRepeated(v: string | string[] | undefined): string[] {
+  if (!v) return [];
+  const arr = Array.isArray(v) ? v : [v];
+  const out: string[] = [];
+  for (const raw of arr) {
+    for (const piece of raw.split(",")) {
+      const t = piece.trim();
+      if (t) out.push(t);
+    }
+  }
+  return out;
+}
+
+/**
+ * #786(b) — accept ISO alpha_2 codes (e.g., `TR`) on `country_a`/
+ * `country_b`. The patterns row data carries WB numeric IDs + name
+ * strings, NOT alpha_2 codes; so the page passes an optional
+ * alpha_2 → name map (sourced from `loadCountryRisks().countries`).
+ * Karl (Eurasia R5) shared URLs in ISO form with colleagues; the
+ * filter silently no-op'd.
+ */
+function looksLikeAlpha2(s: string): boolean {
+  return /^[A-Za-z]{2}$/.test(s);
+}
+
 export function resolvePatternsInitialFilters(
   params: PatternsSearchParams,
   rows: ReadonlyArray<
     Pick<PatternRow, "country_a" | "country_b" | "country_a_id" | "country_b_id">
-  >
+  >,
+  /** #786(b) — optional alpha_2 → country-name map for ISO-code
+   *  resolution. When omitted, `country_a=TR`-style URLs silently
+   *  fall back to the numeric-ID lookup (which won't match a 2-letter
+   *  code) — same behavior as pre-#786. */
+  alpha2ToName?: ReadonlyMap<string, string>
 ): PatternsInitialFilters {
   const search = firstOf(params.q) ?? "";
 
   const countryFilter = new Set<string>();
-  const countryCsv = firstOf(params.country);
-  if (countryCsv) {
-    for (const raw of countryCsv.split(",")) {
-      const name = raw.trim();
-      if (name) countryFilter.add(name);
-    }
+
+  // (c) — CSV + repeated keys for the `country` param
+  for (const name of flattenCsvOrRepeated(params.country)) {
+    countryFilter.add(name);
   }
-  const ca = firstOf(params.country_a);
-  const cb = firstOf(params.country_b);
-  if (ca || cb) {
+
+  // (b) — string OR numeric `country_a` / `country_b`
+  const caRaw = firstOf(params.country_a);
+  const cbRaw = firstOf(params.country_b);
+  for (const idOrCode of [caRaw, cbRaw]) {
+    if (!idOrCode) continue;
+    // ISO alpha_2 → name (when map available)
+    if (alpha2ToName && looksLikeAlpha2(idOrCode)) {
+      const name = alpha2ToName.get(idOrCode.toUpperCase());
+      if (name) {
+        countryFilter.add(name);
+        continue;
+      }
+    }
+    // Numeric WB ID → look up via rows
     for (const r of rows) {
       const aId = r.country_a_id != null ? String(r.country_a_id) : "";
       const bId = r.country_b_id != null ? String(r.country_b_id) : "";
-      if (ca && (aId === ca || bId === ca)) {
-        countryFilter.add(aId === ca ? r.country_a : r.country_b);
-      }
-      if (cb && (aId === cb || bId === cb)) {
-        countryFilter.add(aId === cb ? r.country_a : r.country_b);
+      if (aId === idOrCode || bId === idOrCode) {
+        countryFilter.add(aId === idOrCode ? r.country_a : r.country_b);
+        break;
       }
     }
   }
 
   const tierFilter: PatternWindowTier[] = [];
-  const tierCsv = firstOf(params.tier);
-  if (tierCsv) {
-    for (const raw of tierCsv.split(",")) {
-      const t = raw.trim() as PatternWindowTier;
-      if (WINDOW_TIERS.has(t)) tierFilter.push(t);
+  for (const t of flattenCsvOrRepeated(params.tier)) {
+    if (WINDOW_TIERS.has(t as PatternWindowTier)) {
+      tierFilter.push(t as PatternWindowTier);
     }
+  }
+
+  // (d) — sort column + dir from URL with alias support
+  let sortCol: PatternsSortColumn | undefined;
+  const sortRaw = firstOf(params.sort);
+  if (sortRaw) {
+    if (SORT_COLUMNS.has(sortRaw as PatternsSortColumn)) {
+      sortCol = sortRaw as PatternsSortColumn;
+    } else if (sortRaw in SORT_ALIASES) {
+      sortCol = SORT_ALIASES[sortRaw];
+    }
+  }
+  let sortDir: PatternsSortDir | undefined;
+  const dirRaw = firstOf(params.dir);
+  if (dirRaw && SORT_DIRS.has(dirRaw as PatternsSortDir)) {
+    sortDir = dirRaw as PatternsSortDir;
   }
 
   return {
     search,
     countryFilter: Array.from(countryFilter),
     tierFilter,
+    sortCol,
+    sortDir,
   };
 }
