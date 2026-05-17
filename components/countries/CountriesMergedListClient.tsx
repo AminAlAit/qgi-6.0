@@ -338,6 +338,17 @@ export function CountriesMergedListClient({
           placeholder="Search country..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
+          // #758 (persona-test, 2026-05-17): James/FT reported the
+          // first click on this input was eaten ("click target
+          // disappeared before input registered"). Couldn't repro in
+          // dev; Sebastien's investigation flagged two production-
+          // only suspects — Chrome autofill UI stealing focus on
+          // first tap, and the (app) layout's Suspense boundary
+          // resolving mid-click on cold ISR. `autoComplete="off"`
+          // is the zero-cost defensive hardening for the autofill
+          // hypothesis; the Suspense restructure is filed as a
+          // follow-up (production-only repro needed first).
+          autoComplete="off"
           className="px-4 py-2 rounded border text-sm flex-1 max-w-md outline-none transition-colors focus:border-[var(--qgi-accent)]"
           style={{
             backgroundColor: "var(--qgi-surface)",
