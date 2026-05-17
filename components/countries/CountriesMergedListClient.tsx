@@ -471,7 +471,16 @@ export function CountriesMergedListClient({
       </div>
 
       {/* ============== "5 countries to watch" curated band (PR #2) ============== */}
-      <WatchBand />
+      {/* #789 (Aisha R5 2026-05-17) — hide on active search. Aisha typed
+          "Turkey" in /countries; search resolved correctly via #780, but
+          the Editor's Pick section persisted above the filtered match
+          and dominated the viewport. "A journalist who does not notice
+          the '1 of 156' counter would think the search returned no
+          results." Hide-on-search is the cleanest disambiguation —
+          tier-filter and curated-only filters also leave it visible,
+          since those don't have the same "the filter found nothing"
+          confusion class. */}
+      {!search && <WatchBand />}
 
       {/* ============== Table ============== */}
       <div
