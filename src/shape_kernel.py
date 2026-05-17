@@ -175,11 +175,17 @@ def _extract_indicator_trajectory(
 
     baseline_years = list(range(end_year - T_r - 20, end_year - T_r))
     baseline_vals = [year_to_value[y] for y in baseline_years if y in year_to_value and np.isfinite(year_to_value[y])]
-    if len(baseline_vals) == 0:
+    # Per N6 (Sonnet 2026-05-17): require at least 3 baseline years at kernel
+    # time. With <3 points the sample SD is degenerate (n=1 -> 0; n=2 -> highly
+    # unstable) and the per-country z-score floors to 1e-6, producing extreme
+    # z-scores; this matches the training-time `<20` BASELINE_TOO_SHORT intent
+    # at the kernel boundary (training drops the instance; kernel raises).
+    if len(baseline_vals) < 3:
         raise SubstrateInsufficientError(
             f"country={country_id!r} indicator={indicator_id!r}: pre-window "
-            f"baseline empty. Per §3.2.2 BASELINE_TOO_SHORT routes to "
-            f"fallback at training time; at kernel time it raises."
+            f"baseline has only {len(baseline_vals)} finite year(s); kernel "
+            f"requires >= 3 (training-time gate is BASELINE_TOO_SHORT at <20). "
+            f"Per §3.2.2: at kernel time, BASELINE_TOO_SHORT raises."
         )
 
     return np.asarray(alignment_vals, dtype=float), np.asarray(baseline_vals, dtype=float)
