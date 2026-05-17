@@ -8,8 +8,8 @@
  */
 import type { MetadataRoute } from "next";
 import { loadCountryRisks } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { countrySlug } from "@/lib/slug";
-import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://qgintelligence.com";
 
@@ -84,25 +84,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   // #464: V2.0 canonical URLs.
-  //   /precedents/{slug}                — Recipe (one per L3 category)
+  //   /precedents/{slug}                — Recipe (one per LOCKed ML recipe)
   //   /signals/{country-slug}           — country-rolled-up watchlist
   //   /signals/{country-slug}/{slug}    — country-vs-recipe leaf
   //   /countries/{id}                   — country profile (unchanged)
   //   /countries/{id}/{cat}             — DROPPED (301 to /signals/...)
   //
-  // The old /countries/{id}/{cat} entries are gone because the route
-  // 301-redirects. Search engines should crawl the canonical
-  // /signals/{slug}/{cat} URL — emitting both invites duplicate-content
-  // signals.
-
-  // /precedents/{slug} — one per L3 taxonomy code (71 entries).
-  for (const slug of Object.keys(CATEGORY_L1_MAP)) {
-    entries.push({
-      url: `${BASE_URL}/precedents/${slug}`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.6,
-    });
+  // #748 PR-3 (2026-05-17) — `/precedents/{slug}` now emits ONLY the 4
+  // LOCKed ML slugs per the founder's L10525 directive ("All other
+  // recipes/precedents, other than those 4 must be removed from view").
+  // The other ~86 retired slugs 301-redirect to `/precedents` via
+  // `next.config.ts RETIRED_PRECEDENT_SLUGS`. Emitting them in the
+  // sitemap would invite Google to surface URLs that redirect — bad
+  // for crawl budget + indexed-URL hygiene.
+  try {
+    const stack = await loadMlRecipeStack();
+    for (const slug of stack.metadata.top_4_recipes) {
+      entries.push({
+        url: `${BASE_URL}/precedents/${slug}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        // Higher priority than the previous 0.6 across 71 entries —
+        // these are the only validated precedents, deserve more
+        // crawl-budget weight.
+        priority: 0.8,
+      });
+    }
+  } catch {
+    // If ml-recipe-stack.json is unreachable at build time, ship the
+    // sitemap without the precedent slugs rather than failing entirely.
   }
 
   // Country-profile + signals routes.

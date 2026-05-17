@@ -716,6 +716,34 @@ export default async function MethodologyPage() {
         </Section>
 
         {/* Section 7: Limitations */}
+        {/*
+          #748 PR-3 (2026-05-17) — Catalogue retirement anchor.
+
+          Per the ratified Majles brief (`merger-brief-2026-05-17-precedents-revised.md` §4)
+          and Sipho's audit-trail rule: when `/precedents` collapsed to
+          the four LOCKed ML recipes, the ~86 statistical-only recipes
+          stopped surfacing on the public index. This anchor names the
+          retirement for any reader who lands here from a redirected
+          bookmark (every retired slug now 301s to `/precedents`).
+        */}
+        <Section id="catalogue-retirement" title="Catalogue retirement note">
+          <p
+            className="text-sm leading-relaxed mb-3"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            Earlier bakes surfaced a statistical &ldquo;catalogue&rdquo; of about 86
+            historical precedent recipes that had cleared the screen floor but not the
+            full lock rubric (out-of-country discrimination, calibration audit, anchor
+            stability). They have been retired from the public index. The four recipes
+            currently appearing at <Link href="/precedents">/precedents</Link> are those
+            that have completed adjudication end-to-end on this bake. The retired recipes
+            remain measured inside the pipeline; they may re-enter the index in a future
+            bake if they pass the lock rubric. Until then, any URL of the form{" "}
+            <code>/precedents/&lt;retired_slug&gt;</code> redirects to the index so the
+            reader lands on the live content rather than a broken bookmark.
+          </p>
+        </Section>
+
         <Section id="limitations" title="Limitations">
           <ul
             className="list-disc list-inside space-y-2"
