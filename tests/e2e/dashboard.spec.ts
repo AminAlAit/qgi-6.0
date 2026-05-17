@@ -162,23 +162,23 @@ test.describe("/dashboard", () => {
     expect(countryCount).toBeLessThanOrEqual(250);
   });
 
-  // ── Assertion 5: "What this doesn't mean" details element ────────────────
+  // ── Assertion 5: "What this doesn't mean" callout (always-visible) ───────
 
-  test('"What this doesn\'t mean" details element has role="note" and aria-label="Methodology note"', async ({
+  test('"What this doesn\'t mean" callout has role="note" and aria-label="Methodology note"', async ({
     page,
   }) => {
     await page.goto("/dashboard");
 
-    // The <details role="note" aria-label="Methodology note"> element is
-    // server-rendered in Section 2.
-    const detailsEl = page.locator('details[role="note"][aria-label="Methodology note"]');
-    await expect(detailsEl).toBeVisible({ timeout: 15_000 });
+    // Tour-design (2026-05-18): converted from collapsed `<details>` to
+    // always-visible `<aside role="note">` per Helena R5 + 4-persona
+    // convergence — disclosure was universally missed when collapsed.
+    const noteEl = page.locator('aside[role="note"][aria-label="Methodology note"]');
+    await expect(noteEl).toBeVisible({ timeout: 15_000 });
 
-    // Verify the summary trigger has the "What this doesn't mean" label.
-    const summary = detailsEl.locator("summary");
-    await expect(summary).toBeVisible();
-    const summaryText = (await summary.textContent()) ?? "";
-    expect(summaryText).toMatch(/what this doesn.t mean/i);
+    // The "What this doesn't mean" header label is rendered as a plain
+    // div (no <summary> toggle) inside the callout.
+    const noteText = (await noteEl.textContent()) ?? "";
+    expect(noteText).toMatch(/what this doesn.t mean/i);
   });
 
   // ── Assertion 6: Four-family band CTAs link to correct V3 family pages ───

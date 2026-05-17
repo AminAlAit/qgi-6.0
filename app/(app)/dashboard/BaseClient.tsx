@@ -736,25 +736,21 @@ export function BaseClient({
           precedent to identify where signals most closely resemble known instability
           patterns.
         </p>
-        <details
-          role="note"
-          aria-label="Methodology note"
-          className="text-xs max-w-[68ch]"
-        >
-          <summary
-            className="cursor-pointer select-none inline-flex items-center gap-1.5"
-            style={{ color: "var(--qgi-text-dim)" }}
+        {/* Tour-design (2026-05-18): per Helena R5 + 4-persona convergence,
+            this disclosure was collapsed-by-default behind `<details>` and
+            universally missed by first-visit citation-class users. Surfaced
+            as always-visible above-fold callout. Same content, same `role="note"`
+            + aria-label preserved for screen readers; the `<summary>` toggle
+            is removed. */}
+        <aside role="note" aria-label="Methodology note" className="text-xs max-w-[68ch]">
+          <div
+            className="font-semibold tracking-wide uppercase text-[10px] mb-1"
+            style={{ color: "var(--qgi-amber)" }}
           >
-            <span
-              className="font-semibold tracking-wide uppercase text-[10px]"
-              style={{ color: "var(--qgi-amber)" }}
-            >
-              What this doesn&apos;t mean
-            </span>
-            <span style={{ color: "var(--qgi-text-dim)" }}>(expand)</span>
-          </summary>
+            What this doesn&apos;t mean
+          </div>
           <p
-            className="mt-2 pl-3 border-l-2 leading-relaxed"
+            className="pl-3 border-l-2 leading-relaxed"
             style={{
               color: "var(--qgi-text-muted)",
               borderColor: "rgba(245, 158, 11, 0.4)",
@@ -765,7 +761,7 @@ export function BaseClient({
             that an event will occur. The pages reached from here report model output
             reviewed for editorial release, not forecasts.
           </p>
-        </details>
+        </aside>
       </section>
 
       {/* ================================================================
