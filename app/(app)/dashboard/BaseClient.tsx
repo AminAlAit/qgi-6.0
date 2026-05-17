@@ -69,6 +69,10 @@ interface Props {
   signalsTotalCount: number;
   mlValidatedCount: number;
   totalLocked: number;
+  // PR-4 (#752) — only these slugs have live detail pages. Top
+  // Convergences filters by this set so every row resolves to a real
+  // /precedents/{slug} page instead of 308-redirecting to the index.
+  lockedRecipeSlugs: string[];
 }
 
 // ---------------------------------------------------------------------------
@@ -317,6 +321,7 @@ export function BaseClient({
   signalsTotalCount,
   mlValidatedCount,
   totalLocked,
+  lockedRecipeSlugs,
 }: Props) {
   const router = useRouter();
   const [dataFoundationOpen, setDataFoundationOpen] = useState(false);
@@ -534,12 +539,27 @@ export function BaseClient({
   const maxDomainCount = Math.max(1, ...domainHeatmap.map((d) => d.count));
 
   // ── Top convergence signals ─────────────────────────────────────
+  // PR-4 (AminAlAit/qgi-aws-tf#752): filter to LOCKed slugs only.
+  //
+  // Two reasons working together:
+  //  1. Non-LOCKed event_categories now 308-redirect to /precedents
+  //     (index) per AminAlAit/qgi-aws-tf#751, so surfacing them as row
+  //     links would be a UX dead end.
+  //  2. Per founder mandate (#748, transcript 2026-05-15) only the 4
+  //     LOCKed ML recipes are in view across the site. Statistically
+  //     valid convergence signals in non-LOCKed categories (e.g.
+  //     `other`, `human_rights_reform`) are intentionally suppressed
+  //     here — this is by design, not a bug. If/when more recipes
+  //     LOCK, they'll appear automatically because the filter is
+  //     driven by mlStack.metadata.top_4_recipes.
+  const lockedSlugSet = useMemo(() => new Set(lockedRecipeSlugs), [lockedRecipeSlugs]);
   const topConvergences = useMemo(() => {
     return topSignals
       .filter((s) => (s.n_predictors ?? 0) >= 2)
+      .filter((s) => lockedSlugSet.has(s.event_category))
       .sort((a, b) => (b.composite_sort_key ?? 0) - (a.composite_sort_key ?? 0))
       .slice(0, 5);
-  }, [topSignals]);
+  }, [topSignals, lockedSlugSet]);
 
   // ── Headline metrics ───────────────────────────────────────────
   const headlineMetrics = useMemo(() => {

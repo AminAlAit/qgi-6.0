@@ -196,6 +196,11 @@ export default async function DashboardPage() {
   // revised by founder+ML-Opus.
   const TOTAL_LOCKED = 13;
 
+  // PR-4 (#752) — Top Convergences panel filters to LOCKed-only so it
+  // never surfaces a recipe whose detail page has been retired (would
+  // 308 to /precedents per #751).
+  const lockedRecipeSlugs = mlStack?.metadata.top_4_recipes ?? [];
+
   return (
     <BaseClient
       risks={risks}
@@ -210,6 +215,7 @@ export default async function DashboardPage() {
       signalsTotalCount={signalsTierCounts.n_total}
       mlValidatedCount={mlValidatedCount}
       totalLocked={TOTAL_LOCKED}
+      lockedRecipeSlugs={lockedRecipeSlugs}
     />
   );
 }
