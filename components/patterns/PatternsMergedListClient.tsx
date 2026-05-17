@@ -170,8 +170,14 @@ export function PatternsMergedListClient({
     () => new Set(initialFilters?.countryFilter ?? [])
   );
   const [activePreset, setActivePreset] = useState<string | null>(null);
-  const [sortCol, setSortCol] = useState<SortColumn>("pattern_power_score");
-  const [sortDir, setSortDir] = useState<SortDir>("desc");
+  // #786(d) — initial sort state from URL `?sort=`/`?dir=`, falls back
+  // to PPS-desc when the URL is silent.
+  const [sortCol, setSortCol] = useState<SortColumn>(
+    (initialFilters?.sortCol as SortColumn | undefined) ?? "pattern_power_score"
+  );
+  const [sortDir, setSortDir] = useState<SortDir>(
+    (initialFilters?.sortDir as SortDir | undefined) ?? "desc"
+  );
   const [vocabDismissed, setVocabDismissed] = useState(false);
   const [layout, setLayout] = useState<"rows" | "grid">("rows");
 
@@ -188,8 +194,19 @@ export function PatternsMergedListClient({
       }
       if (tierFilter.size > 0 && !tierFilter.has(r.window_tier)) return false;
       if (countryFilter.size > 0) {
-        if (!countryFilter.has(r.country_a) && !countryFilter.has(r.country_b)) {
-          return false;
+        // #786(a) — AND-intersect, not OR-union. A pair row matches only
+        // when EVERY country in the filter is one of the row's two
+        // countries. Editorial expectation per Karl (Eurasia R5), Helena
+        // (Brookings R5), Mei-Lin (World Bank R5): selecting Turkiye +
+        // Iran means "patterns where BOTH appear" — the analogue search,
+        // not a country-browse fallback. Single-country degenerates to
+        // OR (the lone country must appear on one side). 3+ countries
+        // returns 0 rows by definition since each pair-row has 2 sides
+        // — the empty state is the honest answer.
+        for (const wanted of countryFilter) {
+          if (r.country_a !== wanted && r.country_b !== wanted) {
+            return false;
+          }
         }
       }
       return true;
