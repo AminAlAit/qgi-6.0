@@ -4,6 +4,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
 import { LandingHeaderNav } from "@/components/landing/LandingHeaderNav";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
+import { countrySlug } from "@/lib/slug";
 import {
   TOTAL_COUNTRIES,
   TOTAL_INDICATORS,
@@ -46,6 +47,11 @@ export const revalidate = 3600;
 
 type PreviewCountry = {
   id: string;
+  /** #759 (2026-05-17): canonical slug for use in the preview-card Link
+   *  href. Linking by id (numeric) works (the [iso] page redirects), but
+   *  serves users an extra 308 hop and produces ugly URLs in tab titles
+   *  + share previews. Slug is resolved server-side from country.name. */
+  slug: string;
   name: string;
   alpha_2: string;
   tier: RiskTier;
@@ -73,8 +79,15 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
       if (!top) continue;
       const salience = top.salience_score ?? top.z_score ?? 0;
       const precedents = top.recipe_count ?? 0;
+      // #759 (2026-05-17): resolve slug server-side so the preview-card
+      // Link href can route directly to /countries/:slug instead of
+      // /countries/:id → 308 → /countries/:slug. Fall back to the
+      // numeric id rather than dropping the country entirely if the
+      // slug helper can't produce one (the [iso] route accepts both).
+      const slug = countrySlug(country.name) ?? id;
       rows.push({
-        id, // #432 Bug 1: needed so the hero card wrapper Link can route to /countries/:id
+        id, // kept for analytics / tracking
+        slug,
         name: country.name,
         alpha_2: country.alpha_2,
         tier: country.overall_risk_tier,
@@ -95,6 +108,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
     return [
       {
         id: "217",
+        slug: "the_syrian_arab_republic",
         name: "Syria",
         alpha_2: "SY",
         tier: "HIGH",
@@ -104,6 +118,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
       },
       {
         id: "212",
+        slug: "sudan",
         name: "Sudan",
         alpha_2: "SD",
         tier: "HIGH",
@@ -113,6 +128,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
       },
       {
         id: "1",
+        slug: "afghanistan",
         name: "Afghanistan",
         alpha_2: "AF",
         tier: "HIGH",
@@ -298,7 +314,7 @@ export default async function LandingPage() {
               return (
                 <Link
                   key={c.alpha_2}
-                  href={`/countries/${c.id}`}
+                  href={`/countries/${c.slug}`}
                   className="block rounded-lg border p-5 transition-colors hover:border-[var(--qgi-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
                   style={{
                     backgroundColor: "var(--qgi-surface)",

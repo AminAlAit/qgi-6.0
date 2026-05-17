@@ -21,6 +21,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { InfoTooltip } from "@/components/design/InfoTooltip";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import type { CountryRisksData, RiskTier } from "@/lib/country-risks";
+import { countrySlug } from "@/lib/slug";
 import { CONVERGENCE_COLORS, CONVERGENCE_LABELS } from "@/lib/design";
 import { TOTAL_COUNTRIES, UN_STATES } from "@/lib/site-stats";
 
@@ -806,7 +807,7 @@ export function BaseClient({
           </div>
           {featuredAlert ? (
             <Link
-              href={`/countries/${featuredAlert.id}`}
+              href={`/countries/${countrySlug(featuredAlert.name) ?? featuredAlert.id}`}
               className="flex-1 px-4 py-3 transition-colors hover:bg-[var(--qgi-surface-2)] relative"
               style={{
                 borderLeft: `3px solid ${TIER_STYLES[featuredAlert.tier].border}`,
@@ -1060,7 +1061,7 @@ export function BaseClient({
                 return (
                   <li key={c.id}>
                     <Link
-                      href={`/countries/${c.id}`}
+                      href={`/countries/${countrySlug(c.name) ?? c.id}`}
                       className="flex items-center gap-3 px-4 py-2 transition-colors hover:bg-[var(--qgi-surface-2)] relative"
                     >
                       {/* Salience bar background */}
@@ -1151,7 +1152,7 @@ export function BaseClient({
                   {outliers.rising.map((c) => (
                     <li key={c.id}>
                       <Link
-                        href={`/countries/${c.id}`}
+                        href={`/countries/${countrySlug(c.name) ?? c.id}`}
                         className="flex items-center gap-2 py-1 transition-colors hover:bg-[var(--qgi-surface-2)] rounded px-2 -mx-2"
                       >
                         <CountryFlag alpha2={c.alpha_2} size={12} />
@@ -1190,7 +1191,7 @@ export function BaseClient({
                   {outliers.falling.map((c) => (
                     <li key={c.id}>
                       <Link
-                        href={`/countries/${c.id}`}
+                        href={`/countries/${countrySlug(c.name) ?? c.id}`}
                         className="flex items-center gap-2 py-1 transition-colors hover:bg-[var(--qgi-surface-2)] rounded px-2 -mx-2"
                       >
                         <CountryFlag alpha2={c.alpha_2} size={12} />

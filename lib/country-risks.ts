@@ -158,11 +158,17 @@ const COMMON_NAME_ALIASES: Record<string, string> = {
   swaziland: "eswatini",
   cape_verde: "cabo_verde",
   // DRC variants (canonical is verbose "The Democratic Republic of the Congo"
-  // → slug "the_democratic_republic_of_the_congo")
+  // → slug "the_democratic_republic_of_the_congo"). Hyphen variants like
+  // `dr-congo` are normalized to `dr_congo` by `resolveCountryBySlug`
+  // before this map is consulted.
   drc: "the_democratic_republic_of_the_congo",
   dr_congo: "the_democratic_republic_of_the_congo",
   democratic_republic_of_the_congo: "the_democratic_republic_of_the_congo",
   congo_kinshasa: "the_democratic_republic_of_the_congo",
+  // #759: persona test 2026-05-17 (Fatima/UNDP) pasted `congo-dem-rep`
+  // from a WhatsApp link → normalize → `congo_dem_rep`. Add explicit
+  // alias since `countrySlug()` doesn't produce that abbreviation.
+  congo_dem_rep: "the_democratic_republic_of_the_congo",
   // Short abbreviations
   uk: "united_kingdom",
   usa: "united_states",
@@ -175,16 +181,25 @@ export async function resolveCountryBySlug(
 ): Promise<({ id: string } & CountryRisk) | null> {
   const { countrySlug } = await import("./slug");
   const data = await loadCountryRisks();
+  // #759 (persona-test 2026-05-17) — normalize hyphen → underscore +
+  // lowercase first. External linkers (WhatsApp / Slack / search engines
+  // / hand-typed URLs) overwhelmingly produce hyphen-separated slugs
+  // (`dr-congo`, `north-korea`, `democratic-republic-of-the-congo`) but
+  // `countrySlug()` produces underscore-separated canonical slugs from
+  // the baked country names. Persona test 2026-05-17 had Fatima/UNDP
+  // and James/FT both 404 on hyphen-variant URLs that would have matched
+  // a canonical slug under a one-character substitution.
+  const normalized = slug.toLowerCase().replace(/-/g, "_");
   // Direct canonical match.
   for (const [id, c] of Object.entries(data.countries)) {
-    if (countrySlug(c.name) === slug) {
+    if (countrySlug(c.name) === normalized) {
       return { id, ...c };
     }
   }
   // #715 — alias fallback. If the requested slug is a known common-name
   // alias, retry with the canonical form. Single lookup; no recursion
   // (alias values must point to canonical slugs, never other aliases).
-  const aliased = COMMON_NAME_ALIASES[slug];
+  const aliased = COMMON_NAME_ALIASES[normalized];
   if (aliased) {
     for (const [id, c] of Object.entries(data.countries)) {
       if (countrySlug(c.name) === aliased) {
