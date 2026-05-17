@@ -227,29 +227,38 @@ export function CountryMergedDetail({
         component.
       */}
       <header className="mb-6">
-        <div className="flex items-start gap-4 flex-wrap">
-          <CountryFlag alpha2={alpha_2} size={36} countryName={name} />
-          <div className="flex-1 min-w-0">
-            <h1
-              className="text-3xl font-semibold leading-tight"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              {name}
-            </h1>
-            <div className="flex items-center gap-2 mt-2 flex-wrap">
-              <TierPill meta={tierMeta} />
-              {curated && (
-                <span
-                  className="font-data text-[10px] tracking-wide uppercase px-2 py-0.5 rounded"
-                  style={{
-                    color: "var(--qgi-text-muted)",
-                    border: "1px solid var(--qgi-border)",
-                  }}
-                  title="Curated event history available — full timeline reachable via the events section."
-                >
-                  Curated event history
-                </span>
-              )}
+        {/* #755 (persona-test 2026-05-17, Fatima/UNDP iPhone 14 / 390px):
+            long country names ("The Democratic Republic of the Congo")
+            collapsed the H1 column to ~33px when the score tile occupied
+            the right side at mobile, forcing the H1 to wrap across 6
+            lines and overlap with the tile. Restructure the row to
+            stack vertically below `md`: flag + name + tier on one row,
+            score tile on its own row. Desktop layout (≥md) unchanged. */}
+        <div className="flex flex-col md:flex-row md:items-start gap-3 md:gap-4">
+          <div className="flex items-start gap-4 min-w-0 md:flex-1">
+            <CountryFlag alpha2={alpha_2} size={36} countryName={name} />
+            <div className="flex-1 min-w-0">
+              <h1
+                className="text-3xl font-semibold leading-tight break-words"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                {name}
+              </h1>
+              <div className="flex items-center gap-2 mt-2 flex-wrap">
+                <TierPill meta={tierMeta} />
+                {curated && (
+                  <span
+                    className="font-data text-[10px] tracking-wide uppercase px-2 py-0.5 rounded"
+                    style={{
+                      color: "var(--qgi-text-muted)",
+                      border: "1px solid var(--qgi-border)",
+                    }}
+                    title="Curated event history available — full timeline reachable via the events section."
+                  >
+                    Curated event history
+                  </span>
+                )}
+              </div>
             </div>
           </div>
           {riskScore && riskScore.coverage_flag === "ok" && (
@@ -589,8 +598,11 @@ function PrecedentMatchRow({
         style={{ gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 2fr) 90px" }}
         title={`No top_category match for ${displayName} in this country.`}
       >
+        {/* #756 (persona-test 2026-05-17, Fatima/UNDP iPhone 14): truncating
+            recipe names to ~12 characters ("Multilatera...", "Civil war &...")
+            makes the table illegible on mobile. Allow 2-line wrap instead. */}
         <div
-          className="text-sm font-medium truncate"
+          className="text-sm font-medium break-words leading-tight"
           style={{ color: "var(--qgi-text-dim)" }}
         >
           {displayName}
@@ -645,8 +657,12 @@ function PrecedentMatchRow({
       title={tooltip}
     >
       <div className="min-w-0">
+        {/* #756 (persona-test 2026-05-17, Fatima/UNDP iPhone 14): allow
+            the recipe name to wrap to multiple lines on mobile instead
+            of truncating. The constrained `minmax(0, 1.4fr)` column at
+            390px viewport produced "Multilatera..." which is illegible. */}
         <div
-          className="text-sm font-medium truncate"
+          className="text-sm font-medium break-words leading-tight"
           style={{ color: "var(--qgi-text)" }}
         >
           {displayName}
