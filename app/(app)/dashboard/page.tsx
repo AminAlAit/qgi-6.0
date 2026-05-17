@@ -4,6 +4,7 @@ import { BaseClient } from "./BaseClient";
 import indexData from "@/data/indexes.json";
 import taxonomyData from "@/data/taxonomy_hierarchy.json";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
+import { canonicalPairKey } from "@/lib/canonical-pair";
 
 /**
  * PR-vi (2026-05-15) — Dashboard redesigned per JTBD Majles verdict.
@@ -67,22 +68,15 @@ async function fetchTopPairs(): Promise<{
       return { pairs: [], totalUniquePairs: 0 };
     }
     const results: PatternRow[] = (json as { results: PatternRow[] }).results;
-    // Dedupe by pair, keep best PPS per pair.
-    //
-    // T2 #295 + Sonnet P1-4 fix (2026-04-19): coerce to a zero-padded
-    // numeric string for key comparison. Bare `String()` produces
-    // `"10" < "2"` (lexicographic — "1" < "2"), which orders pairs
-    // differently from any caller that compares numerically. Pad to 6
-    // digits so lex-order matches numeric-order for all WB country IDs.
-    const padKey = (v: string | number | undefined, fallback: string) => {
-      const n = Number(v);
-      return Number.isFinite(n) ? String(n).padStart(6, "0") : String(v ?? fallback);
-    };
+    // Dedupe by canonical (order-insensitive, numeric-padded) pair key,
+    // keeping best PPS per pair. The key shape is the single source of
+    // truth at `lib/canonical-pair.ts` — same helper used by /patterns
+    // and /api/patterns/ranking. Per Opus-4.7 review on PR #100
+    // (Findings 2.2 + 2.3): centralizing eliminated a three-way
+    // divergence that produced the #777 "9 pairs vs 4 pairs" mismatch.
     const bestPerPair = new Map<string, PatternRow>();
     for (const row of results) {
-      const a = padKey(row.country_a_id, row.country_a);
-      const b = padKey(row.country_b_id, row.country_b);
-      const key = a < b ? `${a}|${b}` : `${b}|${a}`;
+      const key = canonicalPairKey(row);
       const existing = bestPerPair.get(key);
       if (!existing || row.pattern_power_score > existing.pattern_power_score) {
         bestPerPair.set(key, row);

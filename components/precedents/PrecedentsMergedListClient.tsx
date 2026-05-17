@@ -7,6 +7,7 @@ import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import type { RecipeAggregated } from "@/lib/recipes-aggregated";
 import type { BuyerMlRecipe } from "@/lib/buyer-view";
 import { getTierTooltip } from "@/components/precedents/TierPillTooltip";
+import { formatPipelineVersion } from "@/lib/pipeline-version";
 
 /**
  * Precedents index — #748 PR-1 (#749), 2026-05-17.
@@ -246,8 +247,14 @@ export function PrecedentsMergedListClient({
             style={{ color: "var(--qgi-text-dim)" }}
             title={`Generated ${generatedAt}`}
           >
-            v{pipelineVersion} · {rows.length} currently validated · model {modelVersion}{" "}
-            · bake {bakeDate}
+            {/* #776 (persona-test R3): centralized formatter in
+                `lib/pipeline-version.ts` strips engineer suffixes
+                (`-dev`, `-baked`, `-rc`, `-beta`, `-alpha`) so the
+                executive reader sees `v2.0`, not `vV2.0-dev`. See the
+                lib file for behavior + the Marcus quote that motivated
+                the rule. */}
+            {formatPipelineVersion(pipelineVersion)} · {rows.length} currently validated ·
+            model {modelVersion} · bake {bakeDate}
           </div>
         </div>
         <p

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { withAuth } from "@/lib/auth";
 import { runQuery } from "@/lib/athena";
 import { getDashboardJson, type RankingPayload } from "@/lib/dashboard-cache";
+import { canonicalPairKey } from "@/lib/canonical-pair";
 
 const ALLOWED_SECTORS = new Set([
   "Agriculture",
@@ -53,12 +54,14 @@ export const GET = withAuth(async (req: NextRequest) => {
     const cached = await getDashboardJson<RankingPayload>("ranking.json");
     if (cached) {
       // Return ALL raw results — dedup is now a client-side toggle.
-      // Count unique pairs for the header stat.
+      // Count unique pairs for the header stat using the centralized
+      // canonical-pair key (`lib/canonical-pair.ts`). Same helper as
+      // /dashboard and /patterns; eliminates the three-way divergence
+      // Opus-4.7 flagged on PR #100 (Finding 2.3) — this surface was
+      // the only one that wasn't numerically padded.
       const pairSet = new Set<string>();
       for (const row of cached.results) {
-        const a = row.country_a_id ?? row.country_a;
-        const b = row.country_b_id ?? row.country_b;
-        pairSet.add(a < b ? `${a}|${b}` : `${b}|${a}`);
+        pairSet.add(canonicalPairKey(row));
       }
       return NextResponse.json(
         {
