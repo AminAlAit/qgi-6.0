@@ -739,9 +739,9 @@ export function BaseClient({
         {/* Tour-design (2026-05-18): per Helena R5 + 4-persona convergence,
             this disclosure was collapsed-by-default behind `<details>` and
             universally missed by first-visit citation-class users. Surfaced
-            as always-visible above-fold callout. Same content, same `role="note"`
-            + aria-label preserved for screen readers; the `<summary>` toggle
-            is removed. */}
+            as always-visible above-fold callout. `role="note"` is intentional
+            (overrides the implicit `complementary` landmark with `note` —
+            consistent with the site's existing pattern). */}
         <aside role="note" aria-label="Methodology note" className="text-xs max-w-[68ch]">
           <div
             className="font-semibold tracking-wide uppercase text-[10px] mb-1"
@@ -750,7 +750,7 @@ export function BaseClient({
             What this doesn&apos;t mean
           </div>
           <p
-            className="pl-3 border-l-2 leading-relaxed"
+            className="mt-2 pl-3 border-l-2 leading-relaxed"
             style={{
               color: "var(--qgi-text-muted)",
               borderColor: "rgba(245, 158, 11, 0.4)",
