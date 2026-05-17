@@ -365,6 +365,13 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   // hidden when the country has no per-recipe scores at all (all-null).
   const perRecipe = country.qgi_risk_score_by_recipe;
 
+  // #757 (persona-test 2026-05-17): surface bake date alongside the
+  // "Auto-generated" status chip in WhatsHappeningHere. The dataset's
+  // top-level `generated_at` is an ISO-8601 timestamp; we keep only the
+  // YYYY-MM-DD date portion for the chip (timezone + sub-second precision
+  // is noise at this granularity).
+  const bakeDate = allData?.generated_at ? allData.generated_at.slice(0, 10) : undefined;
+
   return (
     <CountryMergedDetail
       iso={iso}
@@ -380,6 +387,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       structuralPeers={structuralPeers}
       riskScore={riskScore}
       perRecipe={perRecipe}
+      bakeDate={bakeDate}
     />
   );
 }
