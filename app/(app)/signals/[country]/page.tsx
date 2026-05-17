@@ -3,7 +3,7 @@ import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
 import { SignalsCountryDetail } from "@/components/signals/SignalsCountryDetail";
 import type { CategoryScore } from "@/lib/country-risks";
-import type { Metadata, Route } from "next";
+import type { Metadata } from "next";
 import { notFound, redirect } from "next/navigation";
 
 /**
@@ -116,8 +116,7 @@ export default async function SignalsMergedCountryPage({ params }: Props) {
   if (!c) {
     // #788 — category slug typed as a country slug → redirect to the
     // cross-country aggregated view.
-    const target = maybeCategoryRedirect(country);
-    if (target) redirect(target as Route);
+    if (maybeCategoryRedirect(country)) redirect("/signals");
     notFound();
   }
 
