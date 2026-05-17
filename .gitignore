@@ -50,3 +50,9 @@ data/i1_panels.parquet
 # Stage 1 hyperparameter sweep — throwaway script per #373 convention
 scripts/_*_throwaway.py
 scripts/_hp_sweep_*.py
+
+# Per-indicator parquets synced from S3 (local mirror; not source of truth)
+data/parquet_panels/
+# Backup of subset panel pre-full-S3-sync
+data/all_104_panels.parquet.SUBSET_BACKUP
+
