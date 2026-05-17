@@ -266,19 +266,23 @@ export function PrecedentsMergedListClient({
           walk-forward backtest, calibration audit, four-pillar lock. They are below. Each
           one carries the statistical substrate it was promoted from, inside its dossier.
         </p>
-        <details className="text-xs max-w-[68ch] mb-2">
-          <summary
-            className="cursor-pointer select-none inline-flex items-center gap-1.5"
-            style={{ color: "var(--qgi-text-dim)" }}
+        {/* Tour-design (2026-05-18): per Helena/Karl/Roberto R5 + universal
+            5-persona observation, these two disclosures were collapsed-by-
+            default behind `<details>` and universally missed. Now always-
+            visible above-fold callouts. `role="note"` is intentional
+            (overrides implicit `complementary` landmark with `note` —
+            consistent with the site's existing pattern). */}
+        <aside
+          role="note"
+          aria-label="How to read this"
+          className="text-xs max-w-[68ch] mb-2"
+        >
+          <div
+            className="font-semibold tracking-wide uppercase text-[10px] mb-1"
+            style={{ color: "var(--qgi-amber)" }}
           >
-            <span
-              className="font-semibold tracking-wide uppercase text-[10px]"
-              style={{ color: "var(--qgi-amber)" }}
-            >
-              How to read this
-            </span>
-            <span style={{ color: "var(--qgi-text-dim)" }}>(expand)</span>
-          </summary>
+            How to read this
+          </div>
           <p
             className="mt-2 pl-3 border-l-2 leading-relaxed"
             style={{
@@ -292,20 +296,18 @@ export function PrecedentsMergedListClient({
             when these patterns appear, and which historical instances anchor the claim.
             The catalogue of unvalidated patterns has moved to the methodology page.
           </p>
-        </details>
-        <details className="text-xs max-w-[68ch]">
-          <summary
-            className="cursor-pointer select-none inline-flex items-center gap-1.5"
-            style={{ color: "var(--qgi-text-dim)" }}
+        </aside>
+        <aside
+          role="note"
+          aria-label="What this doesn't mean"
+          className="text-xs max-w-[68ch]"
+        >
+          <div
+            className="font-semibold tracking-wide uppercase text-[10px] mb-1"
+            style={{ color: "var(--qgi-amber)" }}
           >
-            <span
-              className="font-semibold tracking-wide uppercase text-[10px]"
-              style={{ color: "var(--qgi-amber)" }}
-            >
-              What this doesn&apos;t mean
-            </span>
-            <span style={{ color: "var(--qgi-text-dim)" }}>(expand)</span>
-          </summary>
+            What this doesn&apos;t mean
+          </div>
           <p
             className="mt-2 pl-3 border-l-2 leading-relaxed"
             style={{
@@ -318,7 +320,7 @@ export function PrecedentsMergedListClient({
             been measured; many have not yet held. None of those appear here. The
             methodology page documents what was retired and why.
           </p>
-        </details>
+        </aside>
       </header>
 
       {/* ─── Filter strip ─────────────────────────────────────────── */}
