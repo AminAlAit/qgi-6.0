@@ -21,6 +21,7 @@ import {
   GetQueryExecutionCommand,
   GetQueryResultsCommand,
 } from "@aws-sdk/client-athena";
+import { buildIndicatorNameLookup } from "../lib/indicator-numeric-supplement";
 
 const REGION = "eu-central-1";
 const DB = "qgi_data";
@@ -136,12 +137,17 @@ function buildIndicatorMap(): Map<number, string> {
   // indexes.json is a flat array of {id, numeric_id, name, sector, org, ...}.
   // recipes_aggregated.indicator_fingerprint stores the smallint numeric_id;
   // we map back to the human-readable name for the frontend.
+  //
+  // The supplement at `lib/indicator-numeric-supplement.ts` covers
+  // legacy numeric_ids (e.g. 165 = pre-dedup SP.DYN.TFRT.IN) and the
+  // 20 V-Dem variables (numeric_ids 276–307) that aren't in
+  // indexes.json. Without it the bake writes "(unknown N)" into the
+  // frontend JSON. See that file for the root-cause write-up.
   const file = JSON.parse(readFileSync(INDEXES, "utf-8")) as IndicatorIndexFile;
-  const m = new Map<number, string>();
-  for (const e of file) {
-    m.set(Number(e.numeric_id), e.name);
-  }
-  return m;
+  const base: Array<readonly [number, string]> = file.map(
+    (e) => [Number(e.numeric_id), e.name] as const
+  );
+  return buildIndicatorNameLookup(base);
 }
 
 function parseLengthDistribution(s: string): LengthBucket[] {
