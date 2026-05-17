@@ -126,6 +126,22 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       country = { id: iso, ...numericMatch };
     }
   }
+
+  // #759 (persona-test 2026-05-17) — canonical-URL polish for hyphen
+  // variants. `resolveCountryBySlug` was extended in this PR with
+  // hyphen→underscore normalization (lib/country-risks.ts) so it now
+  // resolves `/countries/dr-congo` to the DRC entry by normalizing to
+  // `dr_congo` → COMMON_NAME_ALIASES → canonical. That keeps the route
+  // from 404ing. The 308 below additionally rewrites the URL bar to
+  // the canonical underscore slug so bookmarks, analytics, and the
+  // sitemap stay consistent.
+  if (country && /-/.test(iso)) {
+    const canonicalSlug = countrySlug(country.name);
+    if (canonicalSlug && canonicalSlug !== iso) {
+      permanentRedirect(`/countries/${canonicalSlug}`);
+    }
+  }
+
   if (!country) notFound();
 
   // Per-L1 max salience for the country (REAL data — drives the Section 3
