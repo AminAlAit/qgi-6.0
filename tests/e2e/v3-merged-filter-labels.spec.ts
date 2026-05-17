@@ -28,13 +28,13 @@ type Route = { path: string; readyLocator: string; filters: Filter[] };
 const ROUTES: Route[] = [
   {
     path: "/precedents",
-    // The list-strip uses these ids; the page is ready once any of them
-    // is in the DOM. Use the search input as the ready signal.
+    // #748 PR-1 (2026-05-17) — page now ships 4 LOCKed ML rows with no
+    // sort dropdown (column-header click sort) and a more generic
+    // "Search precedents" label. The `precedents-merged-sort` <select>
+    // and its sr-only label were removed; the search label changed from
+    // "Search categories or domains" to "Search precedents".
     readyLocator: "#precedents-merged-search",
-    filters: [
-      { id: "precedents-merged-search", expectedLabel: /search categories or domains/i },
-      { id: "precedents-merged-sort", expectedLabel: /^sort$/i },
-    ],
+    filters: [{ id: "precedents-merged-search", expectedLabel: /search precedents/i }],
   },
   {
     path: "/countries",

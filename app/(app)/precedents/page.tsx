@@ -3,39 +3,31 @@ import {
   loadCountryRecipeScores,
 } from "@/lib/recipes-aggregated-loader";
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
-import { loadCountryRisks } from "@/lib/country-risks";
 import { toBuyerViewList } from "@/lib/buyer-view";
-import { countrySlug } from "@/lib/slug";
 import { PrecedentsMergedListClient } from "@/components/precedents/PrecedentsMergedListClient";
 import type { Metadata } from "next";
 
 /**
- * /precedents — Preview-only route for A3 merger brief Family 1.
+ * /precedents — #748 PR-1 (#749), 2026-05-17.
  *
- * Build PR #1 of 5 (incremental cadence, founder-gated cutover at PR #5):
- *   - PR #1 (this): route scaffold + data layer + soft-partition + filter strip + 7-col sortable table
- *   - PR #2: detail page (/precedents/[slug]) with split-render by lineage
- *   - PR #3: click-to-expand mechanism cell + "What we're still testing" collapsible
- *   - PR #4: ARIA + mobile + loading/empty states + follow-up tickets
- *   - PR #5 (founder-gated): kill V1 + 4 V2 routes; alias /precedents → /precedents canonical
+ * Per the revised merger brief
+ * `qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-17-precedents-revised.md`,
+ * this loader now passes ONLY the LOCKed ML hero recipes to the client.
+ * The statistical catalogue is removed from view per the founder's L10525
+ * directive ("All other recipes/precedents, other than those 4 must be
+ * removed from view"). The catalogue's retirement note lives at
+ * `/methodology#catalogue-retirement` (added in PR-3).
  *
- * V1 (/precedents) + V2-A (/precedents-v2a) + V2-B (/precedents-v2b) stay
- * alive until PR #5 lands so the founder can preview the merged shell live
- * alongside the existing surfaces before cutover.
- *
- * Brief: qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
- * Detail-link strategy until PR #2 ships:
- *   - ML hero rows → /precedents-v2b/[slug] (Lloyd's banner — Phase A2 polished)
- *   - Stat catalogue rows → /precedents/[slug] (V1 detail)
- *   - Replaced in PR #2 with /precedents/[slug] split-render
+ * Sequenced PRs:
+ *   - PR-2 (#750) — merged dossier template at /precedents/[slug]
+ *   - PR-3 (#751) — retired-slug redirects + sitemap/robots cleanup
+ *   - PR-4 (#752) — internal-link sweep + blog/nav consistency
  */
 
 export const metadata: Metadata = {
   title: "Precedents — QGI Intelligence",
   description:
-    "Browse the 71 historical event-category recipes — 4 ML-validated hero recipes + statistical-screen catalogue, ranked by evidence depth.",
-  // #699 (2026-05-15): explicit canonical so this V3 route is not
-  // confused for a duplicate of the home page.
+    "The recipes the model can predict above chance — each adjudicated end-to-end through blind walk-forward backtest, calibration audit, and the four-pillar lock rubric.",
   alternates: { canonical: "/precedents" },
 };
 
@@ -50,9 +42,6 @@ export default async function PrecedentsMergedPage() {
       loadMlRecipeStack(),
     ]);
   } catch (err) {
-    // PR #4.5 note: country-risks + country-recipe-scores load below (in the
-    // non-throwing path) via .catch(() => null), so partial-data failure
-    // there degrades gracefully without taking the page down.
     return (
       <div className="p-8 max-w-3xl mx-auto">
         <h1
@@ -76,87 +65,50 @@ export default async function PrecedentsMergedPage() {
     );
   }
 
-  // Buyer-view the full stack first (slug map built once); then partition.
+  // Buyer-view the full ML stack first (slug map built once); then keep
+  // only the LOCKed top-4. The 4-row constraint is enforced by the bake's
+  // `metadata.top_4_recipes` allowlist — adding a fifth requires a new
+  // bake AND a re-convening of the Family 1 Majles to ratify the new
+  // dossier layout.
   const buyerStack = toBuyerViewList(mlStack.recipes);
   const heroRecipes = buyerStack.filter((r) =>
     mlStack.metadata.top_4_recipes.includes(r.recipe_id)
   );
 
-  // Catalogue = aggregated recipes whose event_category is NOT in the ML
-  // hero top-4 set. Brief: each event_category appears in exactly one zone.
-  // Hero rows are joined to their aggregated entry below for INSTANCES /
-  // LENGTH / COVERAGE so the 7-col table has uniform metrics across zones.
-  const heroSlugs = new Set(heroRecipes.map((r) => r.recipe_id));
-  const catalogue = aggregated.recipes.filter((r) => !heroSlugs.has(r.event_category));
-  // Lookup map for hero-row aggregated joins.
+  // Lookup the matching aggregated entries for the 4 LOCKed slugs. Hero
+  // recipes WITHOUT an aggregated counterpart are a data-integrity bug
+  // (LOCK promotion is gated on the stat substrate) — surface as a
+  // skipped row in the client rather than crash the page.
   const aggregatedBySlug = new Map(aggregated.recipes.map((r) => [r.event_category, r]));
-
-  // PR #4.5 — load country index + country-recipe-scores for the two
-  // mechanism-cell features the brief locked but earlier PRs deferred:
-  //   1. Inline country-name links inside mechanism prose (style-guide rule)
-  //   2. "{n} countries firing now →" pill on ML hero rows (cross-family
-  //      handoff to /signals?recipe={slug})
-  // Both load with graceful fallback (null/empty) so the page renders even
-  // if either file is missing on this deploy.
-  const [risksFile, scoresFile] = await Promise.all([
-    loadCountryRisks().catch(() => null),
-    loadCountryRecipeScores().catch(() => null),
-  ]);
-
-  // Country-name → ISO slug map for inline linkification. Keyed on
-  // lower-case name for case-insensitive matching (regex applies /i flag
-  // anyway, but lowercase keys give O(1) lookup post-match). Only countries
-  // with a resolvable slug make it in — falsy slugs are skipped.
-  const countryLinkMap: Record<string, string> = {};
-  if (risksFile) {
-    for (const c of Object.values(risksFile.countries)) {
-      const slug = countrySlug(c.name);
-      if (!slug) continue;
-      countryLinkMap[c.name.toLowerCase()] = slug;
-    }
+  const heroAggregatedBySlug: Record<string, (typeof aggregated.recipes)[number]> = {};
+  for (const r of heroRecipes) {
+    const agg = aggregatedBySlug.get(r.recipe_id);
+    if (agg) heroAggregatedBySlug[r.recipe_id] = agg;
   }
 
-  // Firing-count per ML recipe = number of countries with a non-null
-  // similarity score in country-recipe-scores.json for that recipe slug.
-  // Matches the V1 PrecedentSlugClient definition of "flagged country"
-  // (any country with a measured score, regardless of magnitude).
-  // Returns 0 for recipes with no entries — the pill renders only when > 0.
+  // Cross-family firing-count: how many countries are currently flagged on
+  // each LOCKed recipe in the latest score bake. Surfaced inline next to
+  // the recipe name as a "· {n} firing" pill. Loads with graceful fallback
+  // (empty map) so the page renders even if the score file is missing.
+  const scoresFile = await loadCountryRecipeScores().catch(() => null);
   const firingCountByMlSlug: Record<string, number> = {};
   if (scoresFile) {
-    for (const slug of heroSlugs) {
+    for (const r of heroRecipes) {
       let count = 0;
       for (const byRecipe of Object.values(scoresFile.scores)) {
-        if (typeof byRecipe[slug] === "number") count++;
+        if (typeof byRecipe[r.recipe_id] === "number") count++;
       }
-      firingCountByMlSlug[slug] = count;
+      firingCountByMlSlug[r.recipe_id] = count;
     }
   }
 
   return (
     <PrecedentsMergedListClient
       heroRecipes={heroRecipes}
-      heroAggregatedBySlug={Object.fromEntries(
-        heroRecipes
-          .map((r) => {
-            const agg = aggregatedBySlug.get(r.recipe_id);
-            return agg ? [r.recipe_id, agg] : null;
-          })
-          .filter(
-            (kv): kv is [string, (typeof aggregated.recipes)[number]] => kv !== null
-          )
-      )}
-      catalogue={catalogue}
+      heroAggregatedBySlug={heroAggregatedBySlug}
       generatedAt={aggregated.generated_at}
       pipelineVersion={aggregated.pipeline_version}
       modelVersion={heroRecipes[0]?.model_version ?? "v1.0"}
-      // Total adjudicated recipes in the current ML dispatch. Hardcoded here
-      // until #643 bake exposes `metadata.n_total_validated` (the same TODO
-      // that lives on /precedents-v2{a,b}/page.tsx). Post-KI-2 amendment
-      // 2026-05-11: 13 LOCKed.
-      totalLocked={13}
-      // PR #4.5 props (defaults to empty so the client still renders if
-      // either source file is unavailable on this deploy).
-      countryLinkMap={countryLinkMap}
       firingCountByMlSlug={firingCountByMlSlug}
     />
   );
