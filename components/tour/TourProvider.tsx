@@ -71,6 +71,11 @@ export function TourProvider() {
     const manualLaunch = window.localStorage.getItem("qgi-tour-launch") === "manual";
     if (manualLaunch) {
       window.localStorage.removeItem("qgi-tour-launch");
+      // Sonnet review F2: zero-step routes (e.g., /blog/foo) silently
+      // failed before — clicking "Take the tour" set run=true but the
+      // early-return at the bottom of the function meant Joyride never
+      // rendered. Guard here so the state stays consistent.
+      if (pageSteps.length === 0) return;
       // Defer state updates by a tick so we don't trigger a cascading
       // render inside the effect body (react-hooks/set-state-in-effect).
       const t = window.setTimeout(() => {
@@ -131,6 +136,10 @@ export function TourProvider() {
       }}
       // v3 — per-step defaults live in `options`. Colors, button visibility,
       // skip/progress flags moved here from the v2 top-level props.
+      // Sonnet review F1: v3's default `buttons` array omits 'skip'; without
+      // it the locale.skip entry is dead and `status === "skipped"` is
+      // unreachable. Re-add 'skip' so users have an escape hatch besides
+      // the X close (per the convergence spec's intent).
       options={{
         arrowColor: "var(--qgi-surface)",
         backgroundColor: "var(--qgi-surface)",
@@ -139,6 +148,7 @@ export function TourProvider() {
         textColor: "var(--qgi-text)",
         zIndex: 9999,
         showProgress: true,
+        buttons: ["back", "skip", "close", "primary"],
       }}
       styles={{
         tooltip: {
