@@ -233,14 +233,21 @@ export function CountriesMergedListClient({
     // that already rescued URL access in #715/#759) and compare slug-
     // vs-slug — robust to hyphens in canonical names like "Timor-Leste"
     // that broke the naive `aliased.replace(/_/g, " ")` substring check.
-    const q = search.toLowerCase();
+    //
+    // #787 (R5 2026-05-17) — extend with NFKD diacritic stripping so
+    // non-English endonyms typed with native accents ("Brésil", "España",
+    // "Égypte") route through the same alias path. Mirrors the same
+    // normalization `resolveCountryBySlug` does server-side.
+    const stripDiacritics = (s: string): string =>
+      s.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "");
+    const q = stripDiacritics(search);
     const aliasKey = q.replace(/\s+/g, "_");
     const aliasedSlug = COMMON_NAME_ALIASES[aliasKey];
 
     return rows.filter((r) => {
       if (search) {
         if (
-          !r.name.toLowerCase().includes(q) &&
+          !stripDiacritics(r.name).includes(q) &&
           !r.alpha_2.toLowerCase().includes(q) &&
           !(aliasedSlug && countrySlug(r.name) === aliasedSlug)
         ) {

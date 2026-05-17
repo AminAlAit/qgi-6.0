@@ -174,6 +174,78 @@ export const COMMON_NAME_ALIASES: Readonly<Record<string, string>> = {
   usa: "united_states",
   us: "united_states",
   uae: "united_arab_emirates",
+
+  // #787 (2026-05-17 R5) — non-English endonyms for the most-
+  // searched countries. Helena (Brookings, Brazilian-American) typed
+  // "brasil" on /countries and got 0 results; Roberto (Munich Re,
+  // Italian) typed "brasile" — same outcome. Multilingual analysts at
+  // Bank / reinsurance / international-journalism segments default to
+  // their native language. Coverage is intentionally MVP — major
+  // European languages on heavy-traffic countries. Long tail (Slavic /
+  // Asian / Arabic) deferred to a structured data source (Unicode
+  // CLDR / ISO 3166 multilingual table) per the #787 ticket discussion.
+  //
+  // All keys are ASCII-only / lowercase / underscore-separated — the
+  // diacritic-stripping NFKD normalization at the top of
+  // `resolveCountryBySlug` (and `CountriesMergedListClient` search)
+  // converts "Brésil" → "bresil" and "Egipto" → "egipto" before this
+  // map is consulted, so the keys don't need to carry accents.
+
+  // Brazil
+  brasil: "brazil", // PT/ES
+  brasile: "brazil", // IT
+  bresil: "brazil", // FR (Brésil → diacritic-stripped)
+  brasilien: "brazil", // DE
+  // Germany
+  deutschland: "germany",
+  allemagne: "germany",
+  alemania: "germany",
+  germania: "germany",
+  alemanha: "germany",
+  tyskland: "germany",
+  // France
+  francia: "france",
+  frankreich: "france",
+  franca: "france", // França (PT) → diacritic-stripped
+  // Italy
+  italia: "italy",
+  italie: "italy",
+  italien: "italy",
+  // Spain
+  espana: "spain", // España → diacritic-stripped
+  espanha: "spain",
+  espagne: "spain",
+  spagna: "spain",
+  spanien: "spain",
+  // China
+  chine: "china",
+  cina: "china",
+  // Japan
+  japon: "japan",
+  giappone: "japan",
+  japao: "japan", // Japão → diacritic-stripped
+  // Russia
+  russie: "russia",
+  russland: "russia",
+  rusia: "russia",
+  // Egypt
+  egipto: "egypt",
+  egypte: "egypt", // Égypte → diacritic-stripped
+  egitto: "egypt",
+  agypten: "egypt", // Ägypten → diacritic-stripped
+  // Mexico
+  mexique: "mexico",
+  messico: "mexico",
+  // India
+  inde: "india",
+  indien: "india",
+  // Saudi Arabia
+  arabia_saudita: "saudi_arabia",
+  arabie_saoudite: "saudi_arabia",
+  saudi_arabien: "saudi_arabia",
+  // South Korea (canonical slug TBD post-bake; aliases here on
+  // assumption of `south_korea` canonical form)
+  coree_du_sud: "south_korea", // Corée du Sud → diacritic-stripped
 };
 
 export async function resolveCountryBySlug(
@@ -189,7 +261,19 @@ export async function resolveCountryBySlug(
   // the baked country names. Persona test 2026-05-17 had Fatima/UNDP
   // and James/FT both 404 on hyphen-variant URLs that would have matched
   // a canonical slug under a one-character substitution.
-  const normalized = slug.toLowerCase().replace(/-/g, "_");
+  //
+  // #787 (R5 2026-05-17) — also strip diacritics via NFKD so non-English
+  // endonyms typed with their native accents ("Brésil", "España",
+  // "Égypte") match the ASCII-only alias keys below. Mirrors the same
+  // NFKD normalization that `countrySlug()` applies to canonical bake
+  // names (so "Türkiye" → "turkiye"). Helena + Roberto (R5) hit this:
+  // typing "brasile" returned 0 results because the alias key didn't
+  // exist; now both diacritic and ASCII forms route through one path.
+  const normalized = slug
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "")
+    .toLowerCase()
+    .replace(/-/g, "_");
   // Direct canonical match.
   for (const [id, c] of Object.entries(data.countries)) {
     if (countrySlug(c.name) === normalized) {
