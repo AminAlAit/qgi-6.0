@@ -721,9 +721,18 @@ function FiringNowBand({
               } in the current bake.`;
           return (
             <li key={live.category} style={{ borderColor: "var(--qgi-border)" }}>
+              {/* #754 (persona-test 2026-05-17, Fatima/UNDP iPhone 14 / 390px):
+                  the prior fixed 4-column grid (1.4fr / 90px / 2.5fr / 140px)
+                  consumed ~280px in fixed widths + gaps, leaving the
+                  description column ~33px wide on mobile — the prose then
+                  wrapped one-word-per-line for ~12 lines. Fix: render as a
+                  flex column below `md` (so children stack vertically and
+                  the prose has full width to flow); promote to the 4-column
+                  grid at ≥md. The inline `gridTemplateColumns` is inert on
+                  mobile because `display: flex` overrides `display: grid`. */}
               <Link
                 href={detailHref}
-                className="px-4 py-3 grid items-start gap-x-3 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
+                className="px-4 py-3 flex flex-col gap-2 md:grid md:items-start md:gap-x-3 md:gap-y-0 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
                 style={{
                   gridTemplateColumns: "minmax(0, 1.4fr) 90px minmax(0, 2.5fr) 140px",
                 }}
