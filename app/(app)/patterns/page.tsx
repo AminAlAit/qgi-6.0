@@ -2,6 +2,7 @@ import { PatternsMergedListClient } from "@/components/patterns/PatternsMergedLi
 import type { PatternRow } from "@/lib/types";
 import type { Metadata } from "next";
 import { canonicalPairKey } from "@/lib/canonical-pair";
+import { loadCountryRisks } from "@/lib/country-risks";
 import {
   resolvePatternsInitialFilters,
   type PatternsSearchParams,
@@ -173,10 +174,25 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
 
   // #781 — pass the FULL corpus (`payload.results`) not the sliced
   // top-250 `rows`. Otherwise a `?country_a=NN` ID for a country
-  // outside the visible window silently drops to no-match. Iran
-  // (id=31) is Karl's exact URL but lives below row 250 in the current
-  // ranking — caught by Opus-4.7 review (Finding 1).
-  const initialFilters = resolvePatternsInitialFilters(params, payload.results);
+  // outside the visible window silently drops to no-match.
+  //
+  // #786(b) — build an alpha_2 → country-name map from the country-
+  // risks bake so URLs like `?country_a=TR` resolve to "Turkiye".
+  // Karl (Eurasia R5) shared URLs in ISO-code form; the V3 list
+  // silently no-op'd. Fail-safe: if the load throws or the bake
+  // doesn't carry alpha_2, the alpha2 path is skipped and behavior
+  // falls back to numeric-ID resolution.
+  const countryRisks = await loadCountryRisks().catch(() => null);
+  const alpha2ToName = countryRisks
+    ? new Map(
+        Object.values(countryRisks.countries).map((c) => [c.alpha_2, c.name] as const)
+      )
+    : undefined;
+  const initialFilters = resolvePatternsInitialFilters(
+    params,
+    payload.results,
+    alpha2ToName
+  );
 
   return (
     <PatternsMergedListClient
