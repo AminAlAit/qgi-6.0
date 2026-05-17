@@ -426,7 +426,7 @@ export function SignalsLeafDetail({
           </Link>
           {mlPanel && (
             <Link
-              href={`/precedents/${mlPanel.recipe.paper_section_anchor}` as Route}
+              href={`/precedents/${mlPanel.recipe.recipe_id}` as Route}
               className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
               style={{
                 borderColor: "var(--qgi-border)",
