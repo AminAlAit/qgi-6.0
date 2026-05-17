@@ -1,5 +1,6 @@
 import { Sidebar } from "@/components/nav/Sidebar";
 import { PresentationWrapper } from "@/components/nav/PresentationWrapper";
+import { TourProvider } from "@/components/tour/TourProvider";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -20,6 +21,10 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
+      {/* Tour-design 2026-05-18 — auto-fire on first visit (cookie-persisted),
+          manual re-trigger from the sidebar "Take the tour" link. Content
+          authored from 5-persona convergence. */}
+      <TourProvider />
     </PresentationWrapper>
   );
 }
