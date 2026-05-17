@@ -1,18 +1,8 @@
-import {
-  loadRecipeBySlug,
-  loadCountryRecipeScores,
-} from "@/lib/recipes-aggregated-loader";
+import { loadRecipeBySlug } from "@/lib/recipes-aggregated-loader";
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { loadCountryRisks } from "@/lib/country-risks";
 import { buildSlugMap, toBuyerView } from "@/lib/buyer-view";
-import { CATEGORY_L1_MAP } from "@/lib/category-taxonomy";
-import { countrySlug } from "@/lib/slug";
-import { PrecedentsV2Detail } from "@/components/precedents-v2/PrecedentsV2Detail";
-// V1 component reused inside the canonical /precedents/[slug] page —
-// originally lived at @/components/precedents/PrecedentSlugClient before
-// PR-iii renamed V1 components to the -v1 suffix.
-import { PrecedentSlugClient } from "@/components/precedents-v1/PrecedentSlugClient";
-import { MergedDetailFooter } from "@/components/precedents/MergedDetailFooter";
+import { PrecedentMergedDossier } from "@/components/precedents/PrecedentMergedDossier";
 import {
   PrecedentMatchLeaderboard,
   type LeaderboardEntry,
@@ -21,41 +11,27 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 /**
- * /precedents/[slug] — Detail page for the merged Precedents shell.
+ * /precedents/[slug] — Merged dossier detail page.
  *
- * Build PR #2 of 5 (A3 Family 1). Brief:
- *   qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-13.md
+ * #748 PR-2 (#750), 2026-05-17. Per the ratified Majles brief at
+ * `qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-17-precedents-revised.md`
+ * §3 — single merged-dossier template for all four LOCKed ML recipes.
+ * Single scroll, no tabs, no toggle, no template-switching. Fuses the
+ * V2 detail's adjudication block (Tier + OOC AUC + calibration + anchor)
+ * with the V1 detail's statistical substrate (PPS + instances + OECD +
+ * indicator fingerprint).
  *
- * Split-render by recipe lineage (brief section "Detail page composition"):
- *   - ML-validated lineage (top-4 in ml-recipe-stack.json) →
- *       Template A (PrecedentsV2Detail) — preserves Phase A2 layout
- *       (discrimination + calibration + anchor stability + indicators).
- *       Banner caveat style only — variant switch removed per brief.
- *   - Statistical-only lineage (the other 64 categories) →
- *       Template B (PrecedentSlugClient) — preserves V1 layout
- *       (canonical length + indicator fingerprint + coverage bias +
- *       currently-flagged countries).
+ * Routing:
+ *   - Slug in top_4_recipes (LOCKed ML) → render PrecedentMergedDossier
+ *   - Anything else → notFound() for now; PR-3 (#751) adds 301 redirects
+ *     from the ~64 retired stat-only slugs to /precedents.
  *
- * Both lineages get the MergedDetailFooter wrapper which adds:
- *   - Sibling lineage cross-link (ML ↔ Stat)
- *   - "See related ranked patterns →" → /patterns?sort=loco_auc
- *     (Family 4 brief locked target — was /patterns/ranking)
- *   - "How we validated this →" → /methodology
- *
- * Deferred to PR #3:
- *   - Click-to-expand 120w mechanism cell
- *   - "What we're still testing" <details> collapsible (list page)
- *   - "How to read this" preamble + lede (list page)
- *   - Country-name inline links inside mechanism cell
- *   - "{n} countries firing now →" pill inside mechanism cell
+ * Supersedes the 2026-05-13 split-render that mismatched the founder's
+ * L10525 directive.
  */
 
 interface Props {
   params: Promise<{ slug: string }>;
-}
-
-function formatCategory(cat: string): string {
-  return cat.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
 // ---------------------------------------------------------------------------
@@ -64,182 +40,120 @@ function formatCategory(cat: string): string {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  // Try ML lineage first. If the slug is in the top-4 LOCKed set, use the
-  // ML metadata path (richer display_name + tier + LOCO).
   const stack = await loadMlRecipeStack().catch(() => null);
   const raw = stack?.recipes.find((r) => r.recipe_id === slug) ?? null;
   if (raw && stack && stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     const buyer = toBuyerView(raw);
     return {
       title: `${buyer.display_name} — QGI Intelligence`,
-      description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}).`,
-      // #699: explicit canonical so the V3 detail isn't a "duplicate of /"
+      description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(
+        3
+      )} (${buyer.n_pos_loco} held-out positive${
+        buyer.n_pos_loco === 1 ? "" : "s"
+      }). Merged dossier with the statistical substrate it was promoted from.`,
       alternates: { canonical: `/precedents/${slug}` },
     };
   }
-  // Fall back to Stat-catalogue path.
-  if (!(slug in CATEGORY_L1_MAP)) {
-    return {
-      title: "Page not found — QGI Intelligence",
-    };
-  }
-  const recipe = await loadRecipeBySlug(slug).catch(() => null);
-  const label = formatCategory(slug);
-  const description = recipe
-    ? `Historical recipe for ${label}: ${recipe.total_instances} instances, canonical pattern length ${recipe.canonical_length} years. Statistical lineage — not yet ML-adjudicated.`
-    : `Historical recipe for ${label}.`;
+  // Non-LOCKed slug — PR-3 will turn this into a 301 redirect, but we
+  // still need a metadata return value for the notFound() fallback.
   return {
-    title: `${label} — QGI Intelligence`,
-    description,
-    // #699: explicit canonical.
-    alternates: { canonical: `/precedents/${slug}` },
+    title: "Page not found — QGI Intelligence",
+    robots: { index: false, follow: false },
   };
 }
 
 // ---------------------------------------------------------------------------
-// generateStaticParams — pre-render top-4 ML slugs + every Stat catalogue
-// slug at build time. Unknown slugs fall through to notFound() at runtime.
+// generateStaticParams — only the 4 LOCKed slugs render now (per the
+// founder directive "all other recipes/precedents must be removed from
+// view"). The non-LOCKed slugs are handled by the PR-3 redirect map; until
+// then they fall through to notFound() at request time.
 // ---------------------------------------------------------------------------
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const stack = await loadMlRecipeStack().catch(() => null);
   const mlSlugs = stack?.metadata.top_4_recipes ?? [];
-  const statSlugs = Object.keys(CATEGORY_L1_MAP);
-  // Union the two — overlap is fine (Next dedupes static params by slug).
-  return Array.from(new Set([...mlSlugs, ...statSlugs])).map((slug) => ({ slug }));
+  return mlSlugs.map((slug) => ({ slug }));
 }
 
 // ---------------------------------------------------------------------------
 // Page
 // ---------------------------------------------------------------------------
 
-export default async function PrecedentsMergedSlugPage({ params }: Props) {
+export default async function PrecedentDetailPage({ params }: Props) {
   const { slug } = await params;
 
-  // ML lineage takes precedence: if the slug is in the top-4 LOCKed set,
-  // render Template A. Otherwise fall to Template B (Stat catalogue).
+  // Load the ML stack and confirm this slug is in the LOCKed set.
   const stack = await loadMlRecipeStack().catch(() => null);
   const mlRaw = stack?.recipes.find((r) => r.recipe_id === slug) ?? null;
-  const isMlHero =
+  const isLocked =
     !!mlRaw && !!stack && stack.metadata.top_4_recipes.includes(mlRaw.recipe_id);
 
-  if (isMlHero && mlRaw && stack) {
-    // Template A — ML lineage detail (preserves Phase A2 layout).
-    // Buyer-view transform: prose jargon-cleaned, indicators friendly,
-    // architecture relabeled. Full slug map for cross-recipe references.
-    const slugMap = buildSlugMap(stack.recipes);
-    const buyer = toBuyerView(mlRaw, slugMap);
-    const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${buyer.paper_section_anchor}`;
-    // #729 Step 2 (precedents side) — build the top-N countries by Precedent
-    // Match for this recipe. Reciprocal of the per-recipe strip on
-    // /countries/[iso]. Hidden when fewer than MIN_LEADERBOARD_COUNT
-    // countries score on this recipe (pre-#728 bakes; recipe absent from
-    // per-recipe block; or a recipe that never landed in any country's
-    // top_categories).
-    const risksData = await loadCountryRisks().catch(() => null);
-    const leaderboardEntries: LeaderboardEntry[] = [];
-    let leaderboardCohortN: number | undefined;
-    if (risksData) {
-      // Sonnet N-1 fix: schema already types both fields (see
-      // lib/country-risks.schema.ts) — drop the `as unknown as` casts that
-      // PR #71 used for methodology-page-side reads, keep parity with the
-      // strip side which uses direct access.
-      leaderboardCohortN = risksData.qgi_risk_score_per_recipe_cohort_n?.[slug];
-      for (const [cid, c] of Object.entries(risksData.countries)) {
-        const entry = c.qgi_risk_score_by_recipe?.[slug];
-        if (!entry) continue;
-        leaderboardEntries.push({
-          countryId: cid,
-          countryName: c.name,
-          alpha_2: c.alpha_2,
-          score: entry.score,
-          ci_low: entry.ci_low,
-          ci_high: entry.ci_high,
-        });
-      }
-      // Sort descending by score; ties broken by CI lower bound (more
-      // certain wins).
-      leaderboardEntries.sort((a, b) => {
-        if (b.score !== a.score) return b.score - a.score;
-        return b.ci_low - a.ci_low;
+  // Non-LOCKed slug — bail. PR-3 (#751) will replace this with a 301
+  // redirect from the ~64 retired stat-only slugs to /precedents. Until
+  // PR-3 ships, the catalogue links are dead (and that's intentional:
+  // the founder's L10525 directive removed them from view).
+  if (!isLocked || !mlRaw || !stack) {
+    notFound();
+  }
+
+  // Buyer-view transform of the ML recipe (jargon-cleaned, indicators
+  // friendly, architecture relabeled).
+  const slugMap = buildSlugMap(stack.recipes);
+  const buyer = toBuyerView(mlRaw, slugMap);
+
+  // Statistical substrate — RecipeAggregated row for the same
+  // event_category. This is the merge that the previous brief lost:
+  // ML adjudication + Stats substrate inside one dossier, not two
+  // separate pages. Every LOCKed recipe MUST have a substrate row
+  // (LOCK promotion is gated on stat data); if it's missing, the bake
+  // is broken — surface as 404 so it's visible.
+  const substrate = await loadRecipeBySlug(slug).catch(() => null);
+  if (!substrate) notFound();
+
+  // Paper-anchor href for the methodology cross-ref footer link.
+  const paperHref = `https://github.com/AminAlAit/qgi-docs/blob/main/methodology/stage-5-buyer-disclosure-methodology-paper.md#${buyer.paper_section_anchor}`;
+
+  // Cross-family leaderboard — top countries currently scoring on this
+  // recipe (Spec §3.1 section 8). Reciprocal of the per-recipe strip
+  // on /countries/[iso]. Hidden when fewer than MIN_LEADERBOARD_COUNT
+  // countries score on this recipe.
+  const risksData = await loadCountryRisks().catch(() => null);
+  const leaderboardEntries: LeaderboardEntry[] = [];
+  let leaderboardCohortN: number | undefined;
+  if (risksData) {
+    leaderboardCohortN = risksData.qgi_risk_score_per_recipe_cohort_n?.[slug];
+    for (const [cid, c] of Object.entries(risksData.countries)) {
+      const entry = c.qgi_risk_score_by_recipe?.[slug];
+      if (!entry) continue;
+      leaderboardEntries.push({
+        countryId: cid,
+        countryName: c.name,
+        alpha_2: c.alpha_2,
+        score: entry.score,
+        ci_low: entry.ci_low,
+        ci_high: entry.ci_high,
       });
     }
-    return (
-      <>
-        <PrecedentsV2Detail
-          recipe={buyer}
-          // Banner caveats per the brief decision: "Variant switch removed;
-          // compact A killed; banner-only on detail."
-          caveatStyle="lloyds"
-          generatedAt={stack.metadata.generated_at}
-          paperHref={paperHref}
-        />
+    leaderboardEntries.sort((a, b) => {
+      if (b.score !== a.score) return b.score - a.score;
+      return b.ci_low - a.ci_low;
+    });
+  }
+
+  return (
+    <PrecedentMergedDossier
+      recipe={buyer}
+      substrate={substrate}
+      generatedAt={stack.metadata.generated_at}
+      paperHref={paperHref}
+      leaderboardSlot={
         <PrecedentMatchLeaderboard
           recipeId={slug}
           recipeDisplayName={buyer.display_name}
           entries={leaderboardEntries}
           cohortN={leaderboardCohortN}
         />
-        <MergedDetailFooter lineage="ML" />
-      </>
-    );
-  }
-
-  // Template B — Stat catalogue detail (preserves V1 layout).
-  // Validate against the canonical L3 taxonomy — guards against typos and
-  // unknown slugs landing on a confusingly-empty page.
-  if (!(slug in CATEGORY_L1_MAP)) notFound();
-  const recipe = await loadRecipeBySlug(slug);
-  if (!recipe) notFound();
-
-  // Currently-flagged countries cross-reference (V1 baseline behavior).
-  // Read country-recipe-scores + country-risks to build the per-country
-  // similarity-score list that the V1 component renders.
-  const scoresFile = await loadCountryRecipeScores().catch(() => null);
-  const risksFile = await loadCountryRisks().catch(() => null);
-  const slugToCountry = new Map<
-    string,
-    { id: string; name: string; alpha_2: string; tier: string }
-  >();
-  if (risksFile) {
-    for (const [id, c] of Object.entries(risksFile.countries)) {
-      const s = countrySlug(c.name);
-      if (!s) continue;
-      slugToCountry.set(s, {
-        id,
-        name: c.name,
-        alpha_2: c.alpha_2,
-        tier: c.overall_risk_tier,
-      });
-    }
-  }
-  const flaggedCountries: Array<{
-    countrySlug: string;
-    name: string;
-    alpha_2: string;
-    score: number;
-    tier: string;
-  }> = [];
-  if (scoresFile) {
-    for (const [cSlug, byRecipe] of Object.entries(scoresFile.scores)) {
-      const score = byRecipe[slug];
-      if (typeof score !== "number") continue;
-      const meta = slugToCountry.get(cSlug);
-      flaggedCountries.push({
-        countrySlug: cSlug,
-        name: meta?.name ?? formatCategory(cSlug),
-        alpha_2: meta?.alpha_2 ?? "",
-        score,
-        tier: meta?.tier ?? "INDICATIVE",
-      });
-    }
-    flaggedCountries.sort((a, b) => b.score - a.score);
-  }
-
-  return (
-    <>
-      <PrecedentSlugClient recipe={recipe} flaggedCountries={flaggedCountries} />
-      <MergedDetailFooter lineage="STAT" />
-    </>
+      }
+    />
   );
 }
