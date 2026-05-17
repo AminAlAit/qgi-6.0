@@ -485,6 +485,26 @@ export function Sidebar() {
           })}
         </nav>
 
+        {/* Tour-design 2026-05-18 — manual re-trigger for the in-product
+            tour. Sets a localStorage flag and reloads; TourProvider picks
+            it up and forces a tour start regardless of the dismiss cookie. */}
+        <button
+          type="button"
+          onClick={() => {
+            if (typeof window === "undefined") return;
+            window.localStorage.setItem("qgi-tour-launch", "manual");
+            window.location.reload();
+          }}
+          className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left"
+          style={{
+            borderColor: "var(--qgi-border)",
+            color: "var(--qgi-text-muted)",
+            backgroundColor: "transparent",
+          }}
+        >
+          ✨ Take the tour
+        </button>
+
         {/* Footer */}
         <div
           className="px-5 py-4 border-t text-[10px] tracking-wider"
