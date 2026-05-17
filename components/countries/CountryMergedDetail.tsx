@@ -145,12 +145,17 @@ export function CountryMergedDetail({
   structuralPeers = [],
   riskScore,
   perRecipe,
+  bakeDate,
 }: {
   iso: string;
   name: string;
   alpha_2: string;
   curated: boolean;
   tier: RiskTier;
+  /** ISO-8601 date (YYYY-MM-DD) of the bake that produced this country's
+   *  scores. Surfaced in the "What's happening here" status chip so the
+   *  reader knows the data vintage without hunting for it. */
+  bakeDate?: string;
   l1Rows: ReadonlyArray<{
     code: string;
     label: string;
@@ -287,7 +292,7 @@ export function CountryMergedDetail({
       )}
 
       {/* ============== Section "What's happening here" (Ingrid) ============== */}
-      <WhatsHappeningHere name={name} tier={tier} top3={top3} />
+      <WhatsHappeningHere name={name} tier={tier} top3={top3} bakeDate={bakeDate} />
 
       {/* ============== Section "What this doesn't mean" ============== */}
       <WhatThisDoesntMean name={name} />
@@ -717,15 +722,27 @@ function WhatsHappeningHere({
   name,
   tier,
   top3,
+  bakeDate,
 }: {
   name: string;
   tier: RiskTier;
   top3: ReadonlyArray<{ category: string; salience_score: number }>;
+  /** ISO-8601 date (YYYY-MM-DD) of the country-risks bake that produced
+   *  this narrative's underlying salience scores. */
+  bakeDate?: string;
 }) {
   const top1 = top3[0] ? formatCategory(top3[0].category) : "—";
+  // #757 (persona-test 2026-05-17): 3 personas (Marcus / James / Fatima)
+  // independently read the prior "Preview template" amber chip as "this
+  // page is unfinished — don't cite it." The narrative IS auto-generated
+  // (deterministic template against signals data, not editorial copy);
+  // the chip should disclose that *without* reading as a not-yet-shipped
+  // status. Neutral status chip + visible bake date conveys data vintage
+  // and authorship class in one breath.
+  const statusLabel = bakeDate ? `Auto-generated · Bake ${bakeDate}` : "Auto-generated";
   return (
     <section className="mb-8" aria-labelledby="whats-happening-heading">
-      <div className="flex items-center gap-2 mb-3">
+      <div className="flex items-center gap-2 mb-3 flex-wrap">
         <h2
           id="whats-happening-heading"
           className="text-[10px] tracking-widest uppercase"
@@ -736,13 +753,13 @@ function WhatsHappeningHere({
         <span
           className="font-data text-[9px] tracking-widest uppercase px-1.5 py-0.5 rounded"
           style={{
-            color: "rgba(251, 191, 36, 0.95)",
-            backgroundColor: "rgba(251, 191, 36, 0.12)",
-            border: "1px solid rgba(251, 191, 36, 0.30)",
+            color: "var(--qgi-text-muted)",
+            backgroundColor: "var(--qgi-surface-2)",
+            border: "1px solid var(--qgi-border)",
           }}
-          title="Preview template — country-specific authored copy lands when qgi-data ships per-country authored-narrative JSON"
+          title="This summary is deterministically generated from the country's signals data, not editorially authored. Per-country authored copy lands when qgi-data ships per-country authored-narrative JSON."
         >
-          Preview template
+          {statusLabel}
         </span>
       </div>
       <p
