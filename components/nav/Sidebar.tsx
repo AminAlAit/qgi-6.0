@@ -614,7 +614,19 @@ function NavGroupSection({
  *  - LIVE: production V1 surface (neutral slate)
  *  - PREVIEW: V2 + merged-preview routes (amber)
  *  - PRIMARY: reserved for post-cutover canonical surface (blue/accent)
+ *
+ * #790 (Aisha R5 2026-05-17) — without a tooltip / legend, "LIVE" reads
+ * to a first-visit analyst as a meaningless design choice or a hidden-
+ * meaning status indicator. Each badge state now carries a one-line
+ * `title` so hovering surfaces the meaning. (Pure hover tooltip — no
+ * extra DOM, no aria changes; the existing aria-label is preserved.)
  */
+const BADGE_TOOLTIP: Record<NavBadge, string> = {
+  LIVE: "Production route — current bake data.",
+  PREVIEW: "Preview / V2 route — alongside the production surface during cutover.",
+  PRIMARY: "Primary canonical surface (post-cutover).",
+};
+
 function NavChip({ badge }: { badge: NavBadge }) {
   const colors: Record<NavBadge, { fg: string; bg: string; border: string }> = {
     LIVE: {
@@ -644,6 +656,7 @@ function NavChip({ badge }: { badge: NavBadge }) {
       }}
       // Keep the chip semantic for screen readers but visually compact.
       aria-label={`${badge} surface`}
+      title={BADGE_TOOLTIP[badge]}
     >
       {badge}
     </span>
