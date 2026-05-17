@@ -268,9 +268,10 @@ export function PrecedentsMergedListClient({
         </p>
         {/* Tour-design (2026-05-18): per Helena/Karl/Roberto R5 + universal
             5-persona observation, these two disclosures were collapsed-by-
-            default behind `<details>` and universally missed by citation-
-            class users. The "How to read this" + "What this doesn't mean"
-            disclosures are now always-visible above-fold callouts. */}
+            default behind `<details>` and universally missed. Now always-
+            visible above-fold callouts. `role="note"` is intentional
+            (overrides implicit `complementary` landmark with `note` —
+            consistent with the site's existing pattern). */}
         <aside
           role="note"
           aria-label="How to read this"
@@ -283,7 +284,7 @@ export function PrecedentsMergedListClient({
             How to read this
           </div>
           <p
-            className="pl-3 border-l-2 leading-relaxed"
+            className="mt-2 pl-3 border-l-2 leading-relaxed"
             style={{
               color: "var(--qgi-text-muted)",
               borderColor: "rgba(245, 158, 11, 0.4)",
@@ -308,7 +309,7 @@ export function PrecedentsMergedListClient({
             What this doesn&apos;t mean
           </div>
           <p
-            className="pl-3 border-l-2 leading-relaxed"
+            className="mt-2 pl-3 border-l-2 leading-relaxed"
             style={{
               color: "var(--qgi-text-muted)",
               borderColor: "rgba(245, 158, 11, 0.4)",
