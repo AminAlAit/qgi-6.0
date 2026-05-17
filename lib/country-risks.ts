@@ -148,7 +148,7 @@ export async function getCountryRisk(countryId: string): Promise<CountryRisk | n
  * (#714 fix). Together they cover the two common 404 paths: typed
  * common name + dashboard numeric ID. Slugs remain canonical.
  */
-const COMMON_NAME_ALIASES: Record<string, string> = {
+export const COMMON_NAME_ALIASES: Readonly<Record<string, string>> = {
   // Country names where the canonical bake spelling differs from the
   // common-English name a reader is likely to type.
   turkey: "turkiye",
