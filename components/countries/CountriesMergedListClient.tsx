@@ -277,11 +277,39 @@ export function CountriesMergedListClient({
         </p>
       </div>
 
-      {/* ============== Lloyd's methodology disclosure banner ============== */}
-      <LloydsBanner />
-
-      {/* ============== "What this doesn't mean" callout ============== */}
-      <WhatThisDoesntMean />
+      {/* ============== Pre-list disclosure blocks ============== */}
+      {/* #761 (persona-test 2026-05-17): on 390×844 mobile viewports the
+          Lloyd's banner + WhatThisDoesntMean callout together consumed
+          ~400px of vertical space, pushing the first country row to
+          y≈790 (just 54px of viewport remaining). Founder reported
+          the page as visually empty on first paint because the list
+          appeared to be missing. Fix: inline disclosure on desktop
+          (≥md, unchanged); collapsible <details> summary chip on
+          mobile (<md, default-closed). Disclosure stays one tap
+          away; the list moves above the fold. */}
+      <div className="hidden md:block">
+        <LloydsBanner />
+        <WhatThisDoesntMean />
+      </div>
+      <details
+        className="md:hidden mb-4 rounded-lg border"
+        style={{
+          borderColor: "rgba(245, 158, 11, 0.25)",
+          backgroundColor: "rgba(245, 158, 11, 0.06)",
+        }}
+      >
+        <summary
+          className="cursor-pointer list-none px-3 py-2 text-[10px] font-semibold tracking-wide uppercase flex items-center gap-2"
+          style={{ color: "rgba(245, 158, 11, 0.95)" }}
+        >
+          <span aria-hidden="true">▸</span>
+          Methodology + caveats (tap to expand)
+        </summary>
+        <div className="px-3 pb-3 pt-1">
+          <LloydsBanner />
+          <WhatThisDoesntMean />
+        </div>
+      </details>
 
       {/* ============== Filter strip ============== */}
       <div className="flex flex-col sm:flex-row gap-3 mb-4 items-stretch sm:items-center flex-wrap">
