@@ -59,4 +59,14 @@ describe("Sidebar", () => {
     expect(screen.getAllByText("LIVE").length).toBe(5);
     expect(screen.queryByText("PREVIEW")).not.toBeInTheDocument();
   });
+
+  it("LIVE chips carry a hover tooltip explaining the meaning (#790 Aisha R5)", () => {
+    render(<Sidebar />);
+    const liveChips = screen.getAllByText("LIVE");
+    // Every LIVE chip's `title` attribute is the explanation. Aisha (R5)
+    // flagged the badge as a meaningless design choice without it.
+    for (const chip of liveChips) {
+      expect(chip).toHaveAttribute("title", "Production route — current bake data.");
+    }
+  });
 });
