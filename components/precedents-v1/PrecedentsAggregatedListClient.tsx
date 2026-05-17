@@ -11,6 +11,7 @@ import {
   type RciTier,
   type RecipeConfidenceEntry,
 } from "@/lib/recipe-confidence";
+import { formatPipelineVersion } from "@/lib/pipeline-version";
 
 /**
  * #464 — Recipe-aggregate precedents browser. One row per L3 category;
@@ -242,7 +243,8 @@ export function PrecedentsAggregatedListClient({
             style={{ color: "var(--qgi-text-dim)" }}
           >
             {enriched.length.toLocaleString()} recipes
-            <span className="mx-2 opacity-50">|</span>v{pipelineVersion}
+            <span className="mx-2 opacity-50">|</span>
+            {formatPipelineVersion(pipelineVersion)}
           </span>
         </div>
         <p className="text-xs mt-1 max-w-2xl" style={{ color: "var(--qgi-text-muted)" }}>
@@ -446,7 +448,8 @@ export function PrecedentsAggregatedListClient({
 
       {/* Footer */}
       <p className="text-[10px] mt-4 font-data" style={{ color: "var(--qgi-text-dim)" }}>
-        Generated {new Date(generatedAt).toLocaleString()} · pipeline {pipelineVersion}
+        Generated {new Date(generatedAt).toLocaleString()} · pipeline{" "}
+        {formatPipelineVersion(pipelineVersion)}
       </p>
     </div>
   );

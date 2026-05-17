@@ -1,6 +1,7 @@
 import { PatternsMergedListClient } from "@/components/patterns/PatternsMergedListClient";
 import type { PatternRow } from "@/lib/types";
 import type { Metadata } from "next";
+import { canonicalPairKey } from "@/lib/canonical-pair";
 
 /**
  * /patterns — Preview-only route for A3 merger brief Family 4.
@@ -109,11 +110,18 @@ export default async function PatternsMergedPage() {
   };
   for (const r of rows) tierCounts[r.window_tier]++;
 
-  // Unique pair count (country_a + country_b combos) — mirrors the metric
-  // strip the brief specifies. Pattern instances repeat with shifted
-  // windows; unique pairs are the meaningful "what's in the corpus" count.
+  // Unique pair count over the FULL `payload.results` corpus, using the
+  // canonical (sorted, numeric-padded) pair key from
+  // `lib/canonical-pair.ts`. Same helper used by `/dashboard` and
+  // `/api/patterns/ranking` so all three surfaces report identical
+  // counts. Per Opus-4.7 review on PR #100 (Findings 2.2 + 2.3):
+  // centralizing this eliminated a three-way divergence that produced
+  // the #777 mismatch Marcus surfaced ("9 pairs" on /dashboard vs
+  // "4 unique pairs" here).
   const uniquePairs = new Set<string>();
-  for (const r of rows) uniquePairs.add(`${r.country_a}|${r.country_b}`);
+  for (const r of payload.results) {
+    uniquePairs.add(canonicalPairKey(r));
+  }
 
   // Earliest + latest start years across the surfaced window (server-derived
   // for the eyebrow line so it stays hydration-stable).
