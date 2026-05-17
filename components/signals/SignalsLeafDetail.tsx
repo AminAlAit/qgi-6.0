@@ -436,16 +436,12 @@ export function SignalsLeafDetail({
               See full recipe → /precedents
             </Link>
           )}
-          <Link
-            href={`/precedents?recipe=${categorySlug}` as Route}
-            className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-            }}
-          >
-            Historical precedents →
-          </Link>
+          {/* PR-4 (#752): the old `Historical precedents → /precedents?recipe={cat}`
+              link was removed. The /precedents index no longer honours a
+              `?recipe=` query (PR-1 collapsed the catalogue to the 4 LOCKed
+              ML recipes); for non-LOCKed categories there is no per-recipe
+              detail page to link to, so the CTA was a dead end. LOCKed
+              recipes are reachable via the `See full recipe` link above. */}
         </div>
       </section>
 

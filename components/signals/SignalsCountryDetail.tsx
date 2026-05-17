@@ -559,16 +559,12 @@ export function SignalsCountryDetail({
           >
             Country profile →
           </Link>
-          <Link
-            href={`/precedents?country=${slug}` as Route}
-            className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
-            style={{
-              borderColor: "var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-            }}
-          >
-            Historical precedents →
-          </Link>
+          {/* PR-4 (#752): the old `Historical precedents → /precedents?country={slug}`
+              CTA was removed. The /precedents index no longer honours a
+              `?country=` query (PR-1 collapsed the catalogue to the 4 LOCKed
+              ML recipes), so the link landed on an unfiltered index. The
+              `Country profile →` CTA above already covers country-scoped
+              navigation. */}
           <Link
             href={"/signals" as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
