@@ -6,6 +6,7 @@ import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
+import { COMMON_NAME_ALIASES } from "@/lib/country-risks";
 import type { CountryRisk, RiskTier } from "@/lib/country-risks.schema";
 import { WATCH_COUNTRIES } from "@/components/countries/mockWatchCountries";
 
@@ -225,10 +226,24 @@ export function CountriesMergedListClient({
   const [sortDir, setSortDir] = useState<SortDir>("asc");
 
   const filtered = useMemo(() => {
+    // #780 (Karl/Eurasia, R4 2026-05-17) — typed "Turkey" returned zero
+    // hits because the canonical bake name is "Turkiye". Same hole for
+    // Burma/Czech Republic/Swaziland/USA/UK/UAE/DRC/East Timor and
+    // friends. Consult COMMON_NAME_ALIASES (the single source of truth
+    // that already rescued URL access in #715/#759) and compare slug-
+    // vs-slug — robust to hyphens in canonical names like "Timor-Leste"
+    // that broke the naive `aliased.replace(/_/g, " ")` substring check.
+    const q = search.toLowerCase();
+    const aliasKey = q.replace(/\s+/g, "_");
+    const aliasedSlug = COMMON_NAME_ALIASES[aliasKey];
+
     return rows.filter((r) => {
       if (search) {
-        const q = search.toLowerCase();
-        if (!r.name.toLowerCase().includes(q) && !r.alpha_2.toLowerCase().includes(q)) {
+        if (
+          !r.name.toLowerCase().includes(q) &&
+          !r.alpha_2.toLowerCase().includes(q) &&
+          !(aliasedSlug && countrySlug(r.name) === aliasedSlug)
+        ) {
           return false;
         }
       }
