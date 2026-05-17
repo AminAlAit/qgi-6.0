@@ -4,7 +4,11 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { countrySlug } from "@/lib/slug";
-import type { PatternWindowTier, PatternsMergedRow } from "@/app/(app)/patterns/page";
+import type { PatternsMergedRow } from "@/app/(app)/patterns/page";
+import type {
+  PatternWindowTier,
+  PatternsInitialFilters,
+} from "@/lib/patterns-initial-filters";
 
 /**
  * Merged Patterns list shell — Build PR #4 of 5 (A3 Family 4 merger brief).
@@ -145,6 +149,7 @@ export function PatternsMergedListClient({
   yearRange,
   generatedDate,
   countryOptions,
+  initialFilters,
 }: {
   rows: PatternsMergedRow[];
   tierCounts: Record<PatternWindowTier, number>;
@@ -153,10 +158,17 @@ export function PatternsMergedListClient({
   generatedDate: string;
   /** Country names sorted by firing-frequency desc — PR #2 facet. */
   countryOptions: Array<{ name: string; count: number }>;
+  /** #781 — URL-seeded initial filter state (server-resolved). Defaults
+   *  to empty when the page is reached without query params. */
+  initialFilters?: PatternsInitialFilters;
 }) {
-  const [search, setSearch] = useState("");
-  const [tierFilter, setTierFilter] = useState<Set<PatternWindowTier>>(new Set());
-  const [countryFilter, setCountryFilter] = useState<Set<string>>(new Set());
+  const [search, setSearch] = useState<string>(initialFilters?.search ?? "");
+  const [tierFilter, setTierFilter] = useState<Set<PatternWindowTier>>(
+    () => new Set(initialFilters?.tierFilter ?? [])
+  );
+  const [countryFilter, setCountryFilter] = useState<Set<string>>(
+    () => new Set(initialFilters?.countryFilter ?? [])
+  );
   const [activePreset, setActivePreset] = useState<string | null>(null);
   const [sortCol, setSortCol] = useState<SortColumn>("pattern_power_score");
   const [sortDir, setSortDir] = useState<SortDir>("desc");
