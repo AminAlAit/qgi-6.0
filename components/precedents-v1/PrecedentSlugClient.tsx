@@ -7,18 +7,26 @@ import { signalCountryRecipeUrl, type RecipeAggregated } from "@/lib/recipes-agg
 import { getRecipeConfidence } from "@/lib/recipe-confidence";
 import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 import indexesData from "@/data/indexes.json";
+import {
+  buildIndicatorNameLookup,
+  isBakedUnknown,
+} from "@/lib/indicator-numeric-supplement";
 
 // #470 item 2 (option c per Sonnet consult): build a numeric_id → name
 // lookup once at module load. indexes.json is the curated indicator
 // catalog (260 entries, ~2 KB), already imported elsewhere in the
 // frontend. Lookup is O(1) per render. See [#473](https://github.com/AminAlAit/qgi-aws-tf/issues/473) for the FAOSTAT
 // trigger that would push us to a Glue JOIN or a CI-enforced sync.
-const INDICATOR_NAME_BY_ID = new Map<number, string>();
-for (const idx of indexesData as Array<{ numeric_id: number; name: string }>) {
-  if (typeof idx.numeric_id === "number" && idx.name) {
-    INDICATOR_NAME_BY_ID.set(idx.numeric_id, idx.name);
-  }
-}
+//
+// 2026-05-17: same supplement-overlay as the V3 dossier — V1 reads the
+// same `recipes-aggregated.json`, so it had the identical "(unknown N)"
+// symptom for the 21 legacy ids. See lib/indicator-numeric-supplement.ts
+// for the root-cause write-up.
+const INDICATOR_NAME_BY_ID = buildIndicatorNameLookup(
+  (indexesData as Array<{ numeric_id: number; name: string }>)
+    .filter((idx) => typeof idx.numeric_id === "number" && idx.name)
+    .map((idx) => [idx.numeric_id, idx.name] as const)
+);
 
 /**
  * #464 — `/precedents-v1/{slug}` client. Renders one Recipe (one L3 category):
@@ -187,12 +195,16 @@ export function PrecedentSlugClient({ recipe, flaggedCountries }: Props) {
               </div>
               <div className="space-y-2">
                 {visibleFingerprint.map((ind) => {
-                  // #470 item 2: prefer the lookup, fall back to the inline
-                  // name (back-compat for legacy mock data), final fallback to
-                  // the raw ID so the row never renders as "undefined".
+                  // Prefer the catalog lookup (indexes.json + numeric
+                  // supplement). Fall through to the baked
+                  // `indicator_name` only when it isn't the bake script's
+                  // `(unknown N)` placeholder, otherwise surface a
+                  // generic `Indicator N` rather than the raw placeholder.
+                  const fromCatalog = INDICATOR_NAME_BY_ID.get(ind.indicator_id);
+                  const bakedName = ind.indicator_name;
                   const displayName =
-                    INDICATOR_NAME_BY_ID.get(ind.indicator_id) ??
-                    ind.indicator_name ??
+                    fromCatalog ??
+                    (bakedName && !isBakedUnknown(bakedName) ? bakedName : undefined) ??
                     `Indicator ${ind.indicator_id}`;
                   return (
                     <div

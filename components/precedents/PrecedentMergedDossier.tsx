@@ -14,6 +14,10 @@ import { filterDemographic3 } from "@/lib/demographic-3-suppression";
 import type { BuyerMlRecipe } from "@/lib/buyer-view";
 import type { RecipeAggregated } from "@/lib/recipes-aggregated";
 import indexesData from "@/data/indexes.json";
+import {
+  buildIndicatorNameLookup,
+  isBakedUnknown,
+} from "@/lib/indicator-numeric-supplement";
 
 /**
  * #748 PR-2 (#750) — Merged precedent dossier (2026-05-17).
@@ -62,12 +66,17 @@ import indexesData from "@/data/indexes.json";
 // O(1) per render)
 // ---------------------------------------------------------------------------
 
-const INDICATOR_NAME_BY_ID = new Map<number, string>();
-for (const idx of indexesData as Array<{ numeric_id: number; name: string }>) {
-  if (typeof idx.numeric_id === "number" && idx.name) {
-    INDICATOR_NAME_BY_ID.set(idx.numeric_id, idx.name);
-  }
-}
+// Base: indexes.json (curated 259-entry catalog).
+// Overlay: indicator-numeric-supplement (21 legacy ids the Athena
+// recipes_aggregated bake still emits but indexes.json no longer
+// covers — see lib/indicator-numeric-supplement.ts for the root-cause
+// write-up). The supplement only fills gaps; it never overwrites
+// indexes.json entries.
+const INDICATOR_NAME_BY_ID = buildIndicatorNameLookup(
+  (indexesData as Array<{ numeric_id: number; name: string }>)
+    .filter((idx) => typeof idx.numeric_id === "number" && idx.name)
+    .map((idx) => [idx.numeric_id, idx.name] as const)
+);
 
 // ---------------------------------------------------------------------------
 // Tier colors (ML rubric)
@@ -788,9 +797,15 @@ function IndicatorFingerprintRows({
     <div className="space-y-2">
       {rows.map((ind, i) => {
         const rank = startRank + i;
+        // Resolution priority: curated catalog (indexes.json + supplement)
+        // > baked name (if not the "(unknown N)" placeholder) > generic.
+        // Guarding against `isBakedUnknown` keeps a future bake-script
+        // gap from leaking the raw placeholder string to readers.
+        const fromCatalog = INDICATOR_NAME_BY_ID.get(ind.indicator_id);
+        const bakedName = ind.indicator_name;
         const displayName =
-          INDICATOR_NAME_BY_ID.get(ind.indicator_id) ??
-          ind.indicator_name ??
+          fromCatalog ??
+          (bakedName && !isBakedUnknown(bakedName) ? bakedName : undefined) ??
           `Indicator ${ind.indicator_id}`;
         const ciSpread = ind.ci_upper - ind.ci_lower;
         return (
