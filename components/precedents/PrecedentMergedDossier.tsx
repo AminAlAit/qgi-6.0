@@ -331,7 +331,6 @@ export function PrecedentMergedDossier({
             <Metric
               label="Total instances"
               value={substrate.total_instances.toLocaleString()}
-              sub={`${substrate.canonical_length}-year canonical length`}
             />
             <Metric
               label="Distinct country pairs"
@@ -693,35 +692,47 @@ function AnchorStabilityValue({ value }: { value: number }) {
  * slugs, render the centerline only with a `[Calibration band: bake
  * pending]` inline label.").
  *
- * We render a Sipho `[Verified — pending]`-shaped notice and the
- * canonical_length / total_instances as the centerline context.
+ * Renders a Sipho `[Verified — pending]`-shaped chip plus the substrate's
+ * instance count as the centerline context — no canonical_length number.
+ * (2026-05-17 founder directive: canonical_length is hidden from the
+ * four LOCKed precedents until/unless the bake ships a real calibration
+ * band. The numeric still lives on `substrate.canonical_length` for
+ * back-end consumers and the bake script.)
  */
 function PpsBand({ substrate }: { substrate: RecipeAggregated }) {
-  // The aggregated schema doesn't include PPS yet — surface the
-  // canonical_length and instance count as the substrate's centerline
-  // narrative. When the bake adds a PPS centerline + uncertainty band,
-  // this component swaps to a proper interval renderer.
+  // Dashed-border placeholder block — signals "data ships here in a
+  // future bake" with proper visual weight. Per Sonnet PR-94 nit:
+  // collapsing the prior `text-2xl` centerline (which used
+  // canonical_length, now hidden per founder directive) into two
+  // muted elements left the section reading like a placeholder for a
+  // placeholder. A dashed-border bake-pending block is the honest
+  // semantic — "data ships here in a future bake" — and gives the
+  // section the structural anchor it needs.
   return (
-    <div className="flex items-baseline gap-3 flex-wrap">
+    <div
+      className="rounded-md px-4 py-4 flex items-center justify-between gap-4 flex-wrap"
+      style={{
+        backgroundColor: "var(--qgi-surface-2)",
+        border: "1px dashed var(--qgi-border)",
+      }}
+      title="Calibration uncertainty band will populate when the next bake ships the field. The 95% bootstrap CI replaces this placeholder once available."
+    >
+      <div className="flex flex-col gap-0.5">
+        <span
+          className="text-[9px] tracking-widest uppercase font-semibold"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          Calibration band
+        </span>
+        <span className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
+          Bake pending — populates with a 95% bootstrap CI in the next bake
+        </span>
+      </div>
       <span
-        className="font-data text-2xl font-semibold leading-tight tabular-nums"
-        style={{ color: "var(--qgi-text)" }}
+        className="font-data text-[11px] tabular-nums"
+        style={{ color: "var(--qgi-text-dim)" }}
       >
-        {substrate.canonical_length}y
-      </span>
-      <span className="text-xs" style={{ color: "var(--qgi-text-muted)" }}>
-        canonical length across {substrate.total_instances.toLocaleString()} instances
-      </span>
-      <span
-        className="text-[9px] tracking-wider uppercase rounded px-1.5 py-0.5 ml-auto"
-        style={{
-          color: "var(--qgi-text-muted)",
-          backgroundColor: "var(--qgi-surface-2)",
-          border: "1px solid var(--qgi-border)",
-        }}
-        title="Calibration uncertainty band will populate when the next bake ships the field. The centerline is canonical_length × total_instances; the band is the 95% bootstrap CI."
-      >
-        Calibration band: bake pending
+        across {substrate.total_instances.toLocaleString()} instances
       </span>
     </div>
   );

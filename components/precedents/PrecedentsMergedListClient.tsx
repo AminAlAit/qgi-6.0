@@ -26,9 +26,17 @@ import { getTierTooltip } from "@/components/precedents/TierPillTooltip";
  *   - Drop the DOMAIN column (folded into a small L1 chip in the recipe cell
  *     per Yuki's synthesis: cell-level chip beats a redundant column at 4 rows)
  *
- * What renders now: 4 rows, one per LOCKed ML recipe. 6 columns: RECIPE
+ * What renders now: 4 rows, one per LOCKed ML recipe. 5 columns: RECIPE
  * (display name + 2-line mechanism excerpt + inline L1 chip) / TIER /
- * INSTANCES / LENGTH / COVERAGE / CTA (View dossier →).
+ * INSTANCES / COVERAGE / CTA (View dossier →).
+ *
+ * 2026-05-17 follow-up: LENGTH column dropped per founder directive
+ * ("remove all canonical lengths from the 4 precedents; hide them
+ * elegantly"). Removed: LENGTH <th>/<td>, the "length" sort case, and
+ * `canonical_length` from the local HeroRow type (it was only used to
+ * render the dropped column). The underlying RecipeAggregated and the
+ * Athena/bake schemas are untouched — `substrate.canonical_length` is
+ * still available to any future component that needs it.
  *
  * Filter strip is minimal: search input + domain chips (only L1 groups
  * actually represented in the 4 rows — synthesizer rule, no empty chips).
@@ -68,7 +76,6 @@ interface HeroRow {
   tier: BuyerMlRecipe["tier"];
   tier_rank: number;
   total_instances: number;
-  canonical_length: number;
   oecd_share: number;
   /** First ~22 words of the buyer-cleaned mechanism narrative, for the
    *  2-line inline excerpt under the recipe name (Tomás synthesizer rule —
@@ -92,7 +99,7 @@ function makeMechanismExcerpt(text: string, maxWords = 22): string {
   return words.slice(0, maxWords).join(" ") + "…";
 }
 
-type SortCol = "tier" | "instances" | "length" | "coverage" | "alpha";
+type SortCol = "tier" | "instances" | "coverage" | "alpha";
 type SortDir = "asc" | "desc";
 
 // ---------------------------------------------------------------------------
@@ -133,7 +140,6 @@ export function PrecedentsMergedListClient({
           tier: r.tier,
           tier_rank: ML_TIER_RANK[r.tier],
           total_instances: agg.total_instances,
-          canonical_length: agg.canonical_length,
           oecd_share: agg.coverage_bias_diagnostic.oecd_share,
           mechanism_excerpt: makeMechanismExcerpt(
             r.mechanism_narrative || r.mechanism_narrative_excerpt || ""
@@ -190,9 +196,6 @@ export function PrecedentsMergedListClient({
         break;
       case "instances":
         arr.sort((a, b) => sign * (a.total_instances - b.total_instances));
-        break;
-      case "length":
-        arr.sort((a, b) => sign * (a.canonical_length - b.canonical_length));
         break;
       case "coverage":
         arr.sort((a, b) => sign * (a.oecd_share - b.oecd_share));
@@ -399,12 +402,6 @@ export function PrecedentsMergedListClient({
                 Instances{sortIndicator("instances")}
               </th>
               <th
-                className="text-right px-4 py-3 font-normal cursor-pointer hover:text-[var(--qgi-text)] w-20"
-                onClick={() => toggleSort("length")}
-              >
-                Length{sortIndicator("length")}
-              </th>
-              <th
                 className="text-right px-4 py-3 font-normal cursor-pointer hover:text-[var(--qgi-text)] w-28"
                 onClick={() => toggleSort("coverage")}
               >
@@ -417,7 +414,7 @@ export function PrecedentsMergedListClient({
             {sorted.length === 0 ? (
               <tr>
                 <td
-                  colSpan={6}
+                  colSpan={5}
                   className="px-4 py-8 text-center text-xs"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
@@ -485,12 +482,6 @@ export function PrecedentsMergedListClient({
                     style={{ color: "var(--qgi-text)" }}
                   >
                     {r.total_instances.toLocaleString()}
-                  </td>
-                  <td
-                    className="px-4 py-4 text-right font-data tabular-nums align-top"
-                    style={{ color: "var(--qgi-text)" }}
-                  >
-                    {r.canonical_length}y
                   </td>
                   <td
                     className="px-4 py-4 text-right font-data tabular-nums align-top"
