@@ -2,6 +2,11 @@ import { PatternsMergedListClient } from "@/components/patterns/PatternsMergedLi
 import type { PatternRow } from "@/lib/types";
 import type { Metadata } from "next";
 import { canonicalPairKey } from "@/lib/canonical-pair";
+import {
+  resolvePatternsInitialFilters,
+  type PatternsSearchParams,
+  type PatternWindowTier,
+} from "@/lib/patterns-initial-filters";
 
 /**
  * /patterns — Preview-only route for A3 merger brief Family 4.
@@ -43,9 +48,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/patterns" },
 };
 
-export const revalidate = 3600;
-
-export type PatternWindowTier = "S-win" | "M-win" | "L-win" | "XL-win";
+// #781: `searchParams`-reading makes this segment dynamic; the prior
+// `revalidate = 3600` ISR setting was a no-op once URL state landed.
+// Pattern data is read from a bundled JSON, so the per-request cost is
+// a local `fs.readFile` — acceptable for the analyst-facing surface.
 
 /** Map raw `pattern_tier` from ranking.json to brief-aligned cross-family vocab. */
 function mapPatternTier(raw: string | undefined): PatternWindowTier {
@@ -90,7 +96,12 @@ async function loadRanking(): Promise<RankingPayload> {
   }
 }
 
-export default async function PatternsMergedPage() {
+interface PageProps {
+  searchParams: Promise<PatternsSearchParams>;
+}
+
+export default async function PatternsMergedPage({ searchParams }: PageProps) {
+  const params = await searchParams;
   const payload = await loadRanking();
   const raw = payload.results;
   // PR #2: still capped at 250; virtual-scroll over the full ranking is
@@ -160,6 +171,13 @@ export default async function PatternsMergedPage() {
     .map(([name, count]) => ({ name, count }))
     .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name));
 
+  // #781 — pass the FULL corpus (`payload.results`) not the sliced
+  // top-250 `rows`. Otherwise a `?country_a=NN` ID for a country
+  // outside the visible window silently drops to no-match. Iran
+  // (id=31) is Karl's exact URL but lives below row 250 in the current
+  // ranking — caught by Opus-4.7 review (Finding 1).
+  const initialFilters = resolvePatternsInitialFilters(params, payload.results);
+
   return (
     <PatternsMergedListClient
       rows={rows}
@@ -168,6 +186,7 @@ export default async function PatternsMergedPage() {
       yearRange={{ first: firstYear, last: lastYear }}
       generatedDate={generatedDate}
       countryOptions={countryOptions}
+      initialFilters={initialFilters}
     />
   );
 }
