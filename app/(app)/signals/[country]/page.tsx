@@ -4,7 +4,25 @@ import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonom
 import { SignalsCountryDetail } from "@/components/signals/SignalsCountryDetail";
 import type { CategoryScore } from "@/lib/country-risks";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+
+/**
+ * #788 (Helena R5 2026-05-17) — when a user lands on `/signals/{slug}`
+ * with a slug that is a known CATEGORY (not a country), the old
+ * behavior was a misleading 404 titled "Country not found." The
+ * `[country]` dynamic segment swallowed the category slug as if it
+ * were a country. The disambiguation: if the slug resolves to no
+ * country AND IS in CATEGORY_L1_MAP, redirect to `/signals` — the
+ * cross-country aggregated view, which already ranks all 71
+ * categories. This is closest to Helena's stated preference ("show
+ * me all countries firing on that category") without building a new
+ * route. Future: a `/signals?category={slug}` highlight could deep-
+ * link to the row.
+ */
+function maybeCategoryRedirect(slug: string): string | null {
+  const normalized = slug.toLowerCase().replace(/-/g, "_");
+  return normalized in CATEGORY_L1_MAP ? "/signals" : null;
+}
 
 /**
  * /signals/[country] — Per-country watchlist for Family 3 of A3 merger brief.
@@ -38,6 +56,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { country } = await params;
   const c = await resolveCountryBySlug(country).catch(() => null);
   if (!c) {
+    // #788 — if the slug is a category, the page handler will redirect.
+    // Use a non-misleading title that doesn't crash the metadata.
+    if (maybeCategoryRedirect(country)) {
+      return { title: "Signals — QGI Intelligence" };
+    }
     return {
       title: "Country not found — QGI Intelligence",
     };
@@ -90,7 +113,12 @@ export default async function SignalsMergedCountryPage({ params }: Props) {
   // same in-memory cache so this isn't a duplicate file read.
   const data = await loadCountryRisks().catch(() => null);
   const c = await resolveCountryBySlug(country).catch(() => null);
-  if (!c) notFound();
+  if (!c) {
+    // #788 — category slug typed as a country slug → redirect to the
+    // cross-country aggregated view.
+    if (maybeCategoryRedirect(country)) redirect("/signals");
+    notFound();
+  }
 
   // Per-category max-salience for this country, deduped across the S/M/L/XL
   // tier windows (mirrors V1 buildSignals dedup pattern).
