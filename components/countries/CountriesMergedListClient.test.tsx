@@ -99,6 +99,86 @@ describe("CountriesMergedListClient — #780 search-alias", () => {
     expect(screen.queryByRole("link", { name: /Mexico/ })).not.toBeInTheDocument();
   });
 
+  it("typing 'brasil' (Portuguese endonym) surfaces 'Brazil' (#787 R5 Helena)", async () => {
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Brazil", "BR"), makeCountry("Mexico", "MX")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "brasil");
+
+    expect(screen.getByRole("link", { name: /Brazil/ })).toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /Mexico/ })).not.toBeInTheDocument();
+  });
+
+  it("typing 'brasile' (Italian endonym) surfaces 'Brazil' (#787 R5 Roberto)", async () => {
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Brazil", "BR"), makeCountry("Mexico", "MX")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "brasile");
+
+    expect(screen.getByRole("link", { name: /Brazil/ })).toBeInTheDocument();
+  });
+
+  it("typing 'Brésil' (French endonym with diacritic) surfaces 'Brazil' (#787 NFKD normalization)", async () => {
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Brazil", "BR"), makeCountry("Mexico", "MX")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "Brésil");
+
+    expect(screen.getByRole("link", { name: /Brazil/ })).toBeInTheDocument();
+  });
+
+  it("typing 'Italia' (IT endonym) surfaces 'Italy' (#787)", async () => {
+    // Avoids the watchlist-overlap caveat: Germany / Syria / Iran / Venezuela
+    // / Georgia all render in the Editor's Pick section regardless of
+    // search (#789 unrelated bug). Italy is NOT in mockWatchCountries
+    // so the test asserts a single link cleanly.
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Italy", "IT"), makeCountry("Mexico", "MX")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "Italia");
+
+    expect(screen.getByRole("link", { name: /Italy/ })).toBeInTheDocument();
+  });
+
+  it("typing diacritic-form 'Türkiye' matches without accent (NFKD strip on the search side)", async () => {
+    const user = userEvent.setup();
+    render(
+      <CountriesMergedListClient
+        countries={[makeCountry("Turkiye", "TR"), makeCountry("Mexico", "MX")]}
+        tierCounts={tierCounts}
+      />
+    );
+
+    const searchBox = screen.getByPlaceholderText(/Search/i);
+    await user.type(searchBox, "Türkiye");
+
+    expect(screen.getByRole("link", { name: /Turkiye/ })).toBeInTheDocument();
+  });
+
   it("a non-alias query continues to match by name substring", async () => {
     const user = userEvent.setup();
     render(
