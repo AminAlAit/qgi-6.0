@@ -104,13 +104,14 @@ def test_compute_shape_features_signature_matches_prereg() -> None:
     ]
 
 
-def test_compute_shape_features_raises_not_implemented_in_chunk_a() -> None:
-    """Chunk A: the math is not landed; calling raises NotImplementedError.
+def test_compute_shape_features_rejects_none_prototype_in_chunk_b() -> None:
+    """Chunk B: the math is landed; ``None`` prototype raises the binding error.
 
-    Chunk B replaces this test with behavior assertions; the API-signature
-    tests above survive both chunks.
+    Replaces Chunk A's ``NotImplementedError`` assertion. The API-signature
+    tests above survive both chunks; the math + behavior tests live in
+    `tests/test_shape_kernel_math.py`.
     """
-    with pytest.raises(NotImplementedError, match="Chunk B"):
+    with pytest.raises(ShapePrototypeMissingError, match="None"):
         compute_shape_features(
             country_id="VEN",
             recipe_id="mass_protest",
