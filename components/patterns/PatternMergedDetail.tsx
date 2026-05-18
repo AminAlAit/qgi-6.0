@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import type { PatternRow } from "@/lib/types";
 import type { PatternWindowTier } from "@/app/(app)/patterns/[slug]/page";
-import { formatBakeMonthYear } from "@/lib/format-bake-date";
+import { formatDataThrough } from "@/lib/format-bake-date";
 
 /**
  * Merged Patterns per-pattern detail — Build PR #3 of 5 (A3 Family 4).
@@ -467,8 +467,7 @@ export function PatternMergedDetail({
         className="text-[10px] tracking-widest uppercase text-center"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        V1.9.1 scoring · Data through{" "}
-        {formatBakeMonthYear(generatedDate) || generatedDate} ·{" "}
+        V1.9.1 scoring · {formatDataThrough(generatedDate)} ·{" "}
         <Link href={"/methodology" as Route} className="underline underline-offset-2">
           Methodology →
         </Link>
