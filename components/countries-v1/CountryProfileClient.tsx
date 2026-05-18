@@ -1410,7 +1410,7 @@ function generateSummary(
   const totalPrecedents = categories.reduce((sum, c) => sum + c.recipe_count, 0);
 
   let summary = `${country.name}'s economic indicators show ${tierDesc} risk signals. `;
-  summary += `The strongest signal is in ${topName} (${top.recipe_count} historical precedent windows). `;
+  summary += `The strongest signal is in ${topName} (${top.recipe_count} historical matches). `;
 
   if (topCats.length >= 2) {
     const secondName = formatCategory(topCats[1].category);
@@ -1421,7 +1421,7 @@ function generateSummary(
     summary += ". ";
   }
 
-  summary += `Across all categories, ${totalPrecedents.toLocaleString()} precedent windows were identified — `;
+  summary += `Across all categories, ${totalPrecedents.toLocaleString()} historical matches were identified — `;
   summary += `meaning ${country.name}'s trajectory matches historical trajectories of countries that experienced these event types.`;
 
   return summary;

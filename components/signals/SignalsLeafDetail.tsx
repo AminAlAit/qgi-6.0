@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
+import { formatBakeMonthYear } from "@/lib/format-bake-date";
 import type { L1Group } from "@/lib/category-taxonomy";
 import type {
   LeafMlPanel,
@@ -449,7 +450,8 @@ export function SignalsLeafDetail({
         className="text-[10px] tracking-widest uppercase text-center"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        V1.9.1 scoring · Generated {generatedDate} ·{" "}
+        V1.9.1 scoring · Data through{" "}
+        {formatBakeMonthYear(generatedDate) || generatedDate} ·{" "}
         <Link href={"/methodology" as Route} className="underline underline-offset-2">
           Methodology →
         </Link>

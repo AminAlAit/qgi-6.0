@@ -626,7 +626,7 @@ function SignalRow({
             className="text-[10px] font-data"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            {signal.totalRecipes.toLocaleString()} precedent windows
+            {signal.totalRecipes.toLocaleString()} historical matches
           </span>
           <span
             className="text-[10px] font-data"
