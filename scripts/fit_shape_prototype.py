@@ -73,7 +73,9 @@ from shape_prototype_fit_utils import (  # noqa: E402
     NormalizationResult,
     build_cubic_bspline_basis,
     evaluate_sampler_diagnostics,
+    extract_gp_posterior_signature,
     fit_fpca,
+    fit_gp_fallback,
     loio_coverage,
     per_country_z_score,
     project_to_basis_coefficients,
@@ -157,6 +159,248 @@ def _canonical_sha(payload: dict[str, Any]) -> str:
     clone["metadata"]["file_sha256"] = ""
     canonical = json.dumps(clone, sort_keys=True, separators=(",", ":"))
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+# ---- Per-recipe GP fallback fitting (§3.1.4) --------------------------------
+
+
+def fit_recipe_gp_fallback(
+    indicator_panel: pd.DataFrame,
+    positive_instances: pd.DataFrame,
+    indicator_ids: list[str],
+    T_r: int,
+    *,
+    target_accept: float = TARGET_ACCEPT_DEFAULT,
+    n_chains: int = 4,
+    n_tune: int = 1000,
+    n_draws: int = 1000,
+    random_seed: int = 12345,
+) -> tuple[FittedPrototype, dict[str, Any]]:
+    """Run the §3.1.4 hierarchical-Bayes + GP fallback fit.
+
+    Called when:
+      (a) N_r < 10 historical positive instances (§3.1.5 floor), OR
+      (b) FPCA fit failed (FPCA variance target not reached, or NUTS gates
+          failed after refit at target_accept=0.99), OR
+      (c) ``--force-fallback`` CLI flag was set by the operator.
+
+    Applies the same §3.1.3 MCMC acceptance gates:
+      - All R-hat ≤ 1.01
+      - ESS ≥ 400 on every parameter
+      - Zero divergences → refit at target_accept=0.99 on a single divergence
+      - Persistent divergences → raises (fallback's fallback does not exist;
+        the recipe is genuinely un-fittable under current methodology)
+
+    Returns a (FittedPrototype, raw-arrays) tuple with fit_method set to
+    "hierarchical_bayes_gp_fallback" and per_indicator_signature populated
+    from the GP posterior per extract_gp_posterior_signature.
+
+    Args:
+        indicator_panel: long-format pandas DataFrame (country_id, year,
+            indicator_id, value).
+        positive_instances: DataFrame with (country_id, event_year).
+        indicator_ids: ordered list of indicator codes.
+        T_r: canonical length (Tariq v1 emit).
+        target_accept: NUTS target accept rate (0.95 default, 0.99 on refit).
+        n_chains: number of HMC chains.
+        n_tune: warmup iterations per chain.
+        n_draws: post-warmup sampling iterations per chain.
+        random_seed: master seed for the sampler.
+
+    Returns:
+        (FittedPrototype, raw-arrays dict).
+
+    Raises:
+        RuntimeError: if the GP fallback NUTS sampler has persistent divergences
+            after refitting at target_accept=0.99. The recipe is un-fittable
+            under the current methodology; no further fallback exists.
+    """
+    audit: list[str] = []
+    start = time.time()
+    K_indicators = len(indicator_ids)
+
+    # --- Compute per-indicator cross-country median SD for sigma_floor ------
+    median_sd_by_indicator: dict[str, float] = {}
+    for iid in indicator_ids:
+        sd_list: list[float] = []
+        for row in positive_instances.itertuples(index=False):
+            country_id = row.country_id
+            event_year = int(row.event_year)
+            mask = (
+                (indicator_panel["country_id"] == country_id)
+                & (indicator_panel["indicator_id"] == iid)
+                & (indicator_panel["year"] >= event_year - T_r - 20)
+                & (indicator_panel["year"] < event_year - T_r)
+            )
+            vals = indicator_panel.loc[mask, "value"].astype(float).values
+            if len(vals) >= 2:
+                sd_list.append(float(np.std(vals, ddof=1)))
+        median_sd_by_indicator[iid] = float(np.median(sd_list)) if sd_list else 1.0
+
+    # --- Build per-instance normalized trajectory tensor (N_r, T_r, K) ----
+    trajectory_rows: list[np.ndarray] = []  # each: (T_r, K_indicators)
+    dropped_instances: list[tuple[str, int, str]] = []
+
+    for row in positive_instances.itertuples(index=False):
+        country_id = row.country_id
+        event_year = int(row.event_year)
+        per_indicator_trajs: list[np.ndarray] = []
+        instance_ok = True
+
+        for iid in indicator_ids:
+            # Alignment window.
+            mask_align = (
+                (indicator_panel["country_id"] == country_id)
+                & (indicator_panel["indicator_id"] == iid)
+                & (indicator_panel["year"] >= event_year - T_r)
+                & (indicator_panel["year"] < event_year)
+            )
+            sub_align = (
+                indicator_panel.loc[mask_align, ["year", "value"]]
+                .sort_values("year")
+                .reset_index(drop=True)
+            )
+            if len(sub_align) != T_r:
+                dropped_instances.append(
+                    (country_id, event_year, f"alignment_incomplete_{iid}")
+                )
+                instance_ok = False
+                break
+
+            # Pre-window baseline.
+            mask_base = (
+                (indicator_panel["country_id"] == country_id)
+                & (indicator_panel["indicator_id"] == iid)
+                & (indicator_panel["year"] >= event_year - T_r - 20)
+                & (indicator_panel["year"] < event_year - T_r)
+            )
+            sub_base = indicator_panel.loc[mask_base, "value"].astype(float).values
+            if len(sub_base) < 20:
+                dropped_instances.append(
+                    (country_id, event_year, f"BASELINE_TOO_SHORT_{iid}")
+                )
+                instance_ok = False
+                break
+
+            norm: NormalizationResult = per_country_z_score(
+                raw_trajectory=sub_align["value"].astype(float).values,
+                pre_window_baseline=sub_base,
+                median_sd_for_floor=median_sd_by_indicator.get(iid),
+            )
+            per_indicator_trajs.append(norm.y_normalized)
+
+        if instance_ok:
+            trajectory_rows.append(np.stack(per_indicator_trajs, axis=1))  # (T_r, K)
+
+    audit.append(f"instances_loaded={len(trajectory_rows)} dropped={len(dropped_instances)}")
+    if dropped_instances:
+        audit.append(f"first_drop_reason_sample={dropped_instances[:3]}")
+
+    N_r = len(trajectory_rows)
+
+    if N_r == 0:
+        wall_time = time.time() - start
+        raise RuntimeError(
+            f"GP fallback: zero usable instances after filtering "
+            f"(dropped={len(dropped_instances)}). Cannot fit any model."
+        )
+
+    # Stack to (N_r, T_r, K_indicators).
+    trajectories = np.stack(trajectory_rows, axis=0)
+    audit.append(f"gp_fallback: trajectories_shape={trajectories.shape}")
+
+    # --- Run GP fallback fit (§3.1.4) ----------------------------------------
+    gp_result = fit_gp_fallback(
+        trajectories,
+        K_indicators,
+        T_r,
+        n_chains=n_chains,
+        n_tune=n_tune,
+        n_draws=n_draws,
+        target_accept=target_accept,
+        seed=random_seed,
+    )
+    diagnostics = gp_result.sampler_diagnostics
+    audit.append(
+        f"gp_sampler: rhat_max={diagnostics.rhat_max:.4f} "
+        f"ess_min={diagnostics.ess_min:.1f} div={diagnostics.n_divergences}"
+    )
+
+    # Single divergence → refit at higher target_accept (§3.1.3 imported by
+    # §3.1.4 by reference).
+    if not diagnostics.divergence_gate_pass and diagnostics.n_divergences == 1:
+        audit.append("gp_fallback: single divergence -> refitting at target_accept=0.99")
+        gp_result = fit_gp_fallback(
+            trajectories,
+            K_indicators,
+            T_r,
+            n_chains=n_chains,
+            n_tune=n_tune,
+            n_draws=n_draws,
+            target_accept=TARGET_ACCEPT_REFIT,
+            seed=random_seed + 1,
+        )
+        diagnostics = gp_result.sampler_diagnostics
+        audit.append(
+            f"gp_refit: rhat_max={diagnostics.rhat_max:.4f} "
+            f"ess_min={diagnostics.ess_min:.1f} div={diagnostics.n_divergences}"
+        )
+
+    # Persistent divergences → raise (no further fallback exists).
+    if not diagnostics.all_pass:
+        wall_time = time.time() - start
+        raise RuntimeError(
+            f"GP fallback persistent NUTS failure after refit. "
+            f"rhat_max={diagnostics.rhat_max:.4f}, "
+            f"ess_min={diagnostics.ess_min:.1f}, "
+            f"n_divergences={diagnostics.n_divergences}. "
+            f"Recipe is un-fittable under §3.1.4 methodology. "
+            f"N_r={N_r}, T_r={T_r}, K_indicators={K_indicators}."
+        )
+
+    # --- Extract per-indicator posterior signature ---------------------------
+    signatures_list = extract_gp_posterior_signature(
+        gp_result,
+        T_r=T_r,
+        K_indicators=K_indicators,
+        indicator_ids=list(indicator_ids),
+    )
+    per_indicator_signature: dict[str, dict[str, Any]] = {
+        iid: sig for iid, sig in zip(indicator_ids, signatures_list)
+    }
+
+    wall_time = time.time() - start
+
+    return (
+        FittedPrototype(
+            recipe_id="",  # filled by caller
+            indicator_ids=list(indicator_ids),
+            T_r=T_r,
+            n_training_positives=N_r,
+            fit_method="hierarchical_bayes_gp_fallback",
+            fit_method_commit_sha=_git_commit_sha(),
+            per_indicator_signature=per_indicator_signature,
+            sampler_diagnostics={
+                "rhat_max": diagnostics.rhat_max,
+                "ess_min": diagnostics.ess_min,
+                "n_divergences": diagnostics.n_divergences,
+                "target_accept": target_accept,
+                "n_chains": n_chains,
+                "n_tune": n_tune,
+                "n_draws": n_draws,
+            },
+            loio_coverage_at_nominal_80=0.0,  # LOIO via GP is deferred (Chunk B.2.1)
+            fallback_required=False,  # fallback succeeded; not a placeholder
+            fallback_reason="",
+            fpca_M_r=None,
+            fpca_cumulative_variance=0.0,
+            wall_time_seconds=wall_time,
+            training_data_snapshot_sha256=_sha256_of_dataframe(indicator_panel),
+            training_data_snapshot_s3_path="local-laptop-scale",
+            audit_log=audit,
+        ),
+        {"trajectories": trajectories},
+    )
 
 
 # ---- Per-recipe FPCA fitting (§3.1.2 + §3.1.3) ------------------------------
@@ -811,6 +1055,20 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--n-tune", type=int, default=1000)
     parser.add_argument("--n-draws", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=12345)
+    parser.add_argument(
+        "--force-fallback",
+        action="store_true",
+        default=False,
+        help=(
+            "Skip the primary FPCA path entirely and run the §3.1.4 GP fallback "
+            "directly. Useful for testing the fallback path on a recipe that "
+            "would otherwise pass the FPCA primary. Chunk C.3 uses this flag to "
+            "re-fit the Phase 1 trio (civil_war_and_insurgency, economic_recession, "
+            "foreign_intervention) after the fallback was confirmed working in "
+            "Chunk B.2. Does NOT change the lock JSON fit_method field (it will "
+            "correctly be 'hierarchical_bayes_gp_fallback')."
+        ),
+    )
     args = parser.parse_args(argv)
 
     panel_path = args.indicator_panel
@@ -821,32 +1079,104 @@ def main(argv: list[str] | None = None) -> int:
     positives = pd.read_csv(args.positive_instances)
     indicator_ids = [s.strip() for s in args.indicator_ids.split(",") if s.strip()]
 
-    prototype, _ = fit_recipe_fpca(
-        panel,
-        positives,
-        indicator_ids,
-        args.T_r,
+    sampler_kwargs = dict(
         target_accept=args.target_accept,
         n_chains=args.n_chains,
         n_tune=args.n_tune,
         n_draws=args.n_draws,
         random_seed=args.seed,
     )
-    prototype.recipe_id = args.recipe
 
-    logger.info("audit:\n  %s", "\n  ".join(prototype.audit_log))
-    logger.info("fallback_required=%s reason=%s", prototype.fallback_required, prototype.fallback_reason)
-    logger.info("wall_time=%.2fs", prototype.wall_time_seconds)
-
-    if prototype.fallback_required:
-        logger.warning(
-            "Recipe %s requires fallback path (§3.1.4). Chunk B.2 implements; "
-            "this Chunk B run emits the recipe block with empty signature "
-            "and fit_method=hierarchical_bayes_gp_fallback as a placeholder.",
+    if args.force_fallback:
+        # Operator explicitly requested the §3.1.4 GP fallback path.
+        logger.info(
+            "--force-fallback set: skipping FPCA primary, running §3.1.4 GP "
+            "fallback directly for recipe %s.",
             args.recipe,
         )
-        # Still emit the block so the operator has a record; downstream
-        # Chunk B.2 will populate the signature.
+        try:
+            prototype, _ = fit_recipe_gp_fallback(
+                panel,
+                positives,
+                indicator_ids,
+                args.T_r,
+                **sampler_kwargs,
+            )
+            prototype.recipe_id = args.recipe
+            logger.info("GP fallback (--force-fallback): SUCCESS")
+        except RuntimeError as exc:
+            logger.error(
+                "GP fallback failed for recipe %s: %s", args.recipe, exc
+            )
+            return 1
+    else:
+        # Normal path: try FPCA primary; route to GP fallback if needed.
+        prototype, _ = fit_recipe_fpca(
+            panel,
+            positives,
+            indicator_ids,
+            args.T_r,
+            **sampler_kwargs,
+        )
+        prototype.recipe_id = args.recipe
+
+        logger.info("audit:\n  %s", "\n  ".join(prototype.audit_log))
+        logger.info(
+            "primary path: fallback_required=%s reason=%r",
+            prototype.fallback_required,
+            prototype.fallback_reason,
+        )
+        logger.info("wall_time=%.2fs (primary)", prototype.wall_time_seconds)
+
+        if prototype.fallback_required:
+            # Primary path failed or N_r < 10 → run real §3.1.4 GP fallback.
+            logger.info(
+                "Recipe %s routing to §3.1.4 GP fallback (reason: %s).",
+                args.recipe,
+                prototype.fallback_reason,
+            )
+            try:
+                prototype, _ = fit_recipe_gp_fallback(
+                    panel,
+                    positives,
+                    indicator_ids,
+                    args.T_r,
+                    **sampler_kwargs,
+                )
+                prototype.recipe_id = args.recipe
+                logger.info(
+                    "GP fallback SUCCESS: fit_method=%s n_training_positives=%d "
+                    "wall_time=%.2fs",
+                    prototype.fit_method,
+                    prototype.n_training_positives,
+                    prototype.wall_time_seconds,
+                )
+            except RuntimeError as exc:
+                logger.error(
+                    "GP fallback persistent failure for recipe %s: %s. "
+                    "Recipe is un-fittable under §3.1.4. No further fallback "
+                    "exists. Emitting the partial FPCA placeholder so the "
+                    "lock file has a record; operator must investigate.",
+                    args.recipe,
+                    exc,
+                )
+                # Re-emit the original placeholder with the fallback_reason
+                # updated to include the GP failure reason.
+                prototype.fallback_reason = (
+                    f"GP_FALLBACK_ALSO_FAILED: {exc}"
+                )
+        else:
+            logger.info(
+                "FPCA primary SUCCESS: fit_method=%s M_r=%s cumvar=%.4f "
+                "wall_time=%.2fs",
+                prototype.fit_method,
+                prototype.fpca_M_r,
+                prototype.fpca_cumulative_variance,
+                prototype.wall_time_seconds,
+            )
+
+    logger.info("audit:\n  %s", "\n  ".join(prototype.audit_log))
+    logger.info("wall_time=%.2fs", prototype.wall_time_seconds)
 
     emit_to_lock_file(
         prototype,
