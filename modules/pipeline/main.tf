@@ -1229,7 +1229,12 @@ resource "aws_sfn_state_machine" "pipeline" {
 
   definition = jsonencode({
     Comment = "QGI Monthly Pipeline — stages 0-6"
-    StartAt = "0. Janitor"
+    # TimeoutSeconds = 14400 (4h) per qgi-aws-tf#805 + cost-incident-2026-05-16
+    # post-mortem. Historic full bake completes <4h (#241, #533); 17h is
+    # pathological. A timed-out execution is much cheaper to restart than
+    # the $139 burn of the 2026-05-16 incident.
+    TimeoutSeconds = 14400
+    StartAt        = "0. Janitor"
     States = {
       "0. Janitor" = {
         Type       = "Task"
@@ -1624,13 +1629,15 @@ resource "aws_sfn_state_machine" "pipeline" {
 
       "5b.5. Per-Country INSERTs" = {
         Type = "Map"
-        # MaxConcurrency 20 → 80 per #533 (smart-chunking, 2026-04-29):
-        # the previous chunking iteration emitted ~15K chunks at uniform
-        # (event_category × pattern_tier) shape; smart-chunking reduces
-        # to ~3-5K but still benefits from higher fan-out under Athena's
-        # 150-concurrent-DML account quota. 80 leaves ~70 headroom for
-        # enumerate queries, retries, and ad-hoc Athena traffic.
-        MaxConcurrency = 80
+        # MaxConcurrency 80 → 40 per qgi-aws-tf#805 (cost-incident-2026-05-16).
+        # Prior history: 20 → 80 per #533 (smart-chunking, 2026-04-29). The
+        # 2026-05-16 incident showed that even with per-query 50 GB caps on
+        # QGI-Lambda-Workgroup, 80-way fanout × ~3,000 chunks = 11.17 TB
+        # aggregate scan and 17.5h wall-clock. Halving to 40 doubles wall
+        # time but halves peak Athena DML pressure + halves the cost rate.
+        # Still well under the 150-concurrent-DML account quota; leaves
+        # ~110 headroom for enumerate queries, retries, ad-hoc Athena.
+        MaxConcurrency = 40
         ItemReader = {
           Resource = "arn:aws:states:::s3:getObject"
           ReaderConfig = {

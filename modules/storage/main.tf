@@ -1565,6 +1565,59 @@ resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge" {
   tags = var.tags
 }
 
+# ---------------------------------------------------------------------------
+# qgi-aws-tf#806 (cost-incident-2026-05-16 follow-up): clone the Athena
+# bytes-scanned alarm for the `primary` workgroup + add an SFN execution-
+# duration alarm.
+#
+# Layer B of the 2026-05-16 forensic: the `primary` workgroup had no per-query
+# cap (closed by #802 + CLI apply 2026-05-18). This alarm is the secondary
+# detection layer — it fires when `primary` scans > 100 GB in a 5-min window
+# regardless of whether the workgroup cap is enforced.
+#
+# The SFN duration alarm is the missing piece from the 2026-05-16 incident:
+# the qgi-indicator-monthly-updater "cost-leak-verify-2gb" run took 17.5h
+# with no alarm at any "this is taking too long" threshold. 2h is half of
+# the new top-level TimeoutSeconds=14400 (4h) from #805 — gives a warning
+# before the hard kill.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge_primary" {
+  alarm_name          = "qgi-athena-processed-bytes-surge-primary"
+  alarm_description   = "Triggers when the Athena `primary` workgroup scans more than 100GB in a 5-min window. See qgi-aws-tf#806 (cost-incident-2026-05-16) — secondary detection layer beyond the per-query cap on `primary` from #802."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  metric_name         = "ProcessedBytes"
+  namespace           = "AWS/Athena"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 100 * 1024 * 1024 * 1024 # 100 GiB
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    WorkGroup  = "primary"
+    QueryState = "SUCCEEDED"
+  }
+
+  # Routes to cost_alerts (the alert path founder reads), NOT pipeline_notifications.
+  alarm_actions = [aws_sns_topic.cost_alerts.arn]
+  ok_actions    = [aws_sns_topic.cost_alerts.arn]
+
+  tags = var.tags
+}
+
+# SFN duration alarm dropped per Sonnet TF review of qgi-infra#26:
+# `AWS/States ExecutionTime` is a TERMINAL metric — CloudWatch only emits
+# it when an execution completes. A 2h threshold cannot fire DURING a
+# pathological 17h run; the alarm would stay GREEN until completion, by
+# which point `TimeoutSeconds=14400` (#805) has already killed the run
+# at hour 4. The alarm as originally written defended against nothing
+# that TimeoutSeconds doesn't already handle.
+#
+# Real in-flight monitoring would require a Lambda heartbeat polling
+# `aws stepfunctions list-executions --status-filter RUNNING` and
+# emitting a custom CloudWatch metric every 15 min. Filed as a follow-up
+# to #806 — not in this PR. TimeoutSeconds is the binding guard for now.
+
 # #625 / #632 (2026-05-10): Athena workgroup-level result reuse via
 # `update-work-group` does NOT exist in the AWS API. The original #625
 # null_resource that called `aws athena update-work-group --configuration-updates
@@ -1627,18 +1680,41 @@ resource "aws_sns_topic_policy" "cost_alerts" {
   arn = aws_sns_topic.cost_alerts.arn
   policy = jsonencode({
     Version = "2012-10-17"
-    Statement = [{
-      Sid       = "AllowBudgetsToPublish"
-      Effect    = "Allow"
-      Principal = { Service = "budgets.amazonaws.com" }
-      Action    = "SNS:Publish"
-      Resource  = aws_sns_topic.cost_alerts.arn
-      Condition = {
-        StringEquals = {
-          "aws:SourceAccount" = var.aws_account_id
+    Statement = [
+      {
+        Sid       = "AllowBudgetsToPublish"
+        Effect    = "Allow"
+        Principal = { Service = "budgets.amazonaws.com" }
+        Action    = "SNS:Publish"
+        Resource  = aws_sns_topic.cost_alerts.arn
+        Condition = {
+          StringEquals = {
+            "aws:SourceAccount" = var.aws_account_id
+          }
+        }
+      },
+      {
+        # qgi-aws-tf#806 — let CloudWatch alarms publish to cost_alerts.
+        # Without this, the athena_processed_bytes_surge_primary alarm (and
+        # any future cost-routed alarm) would silently fail with AccessDenied
+        # from the topic policy while showing ALARM state in CloudWatch —
+        # the EXACT trap from the 2026-05-16 incident (broken alert path).
+        # Cost Anomaly Detection (added 2026-05-18 via CLI; #804) also uses
+        # `costalerts.amazonaws.com`, but that statement was added via the
+        # CLI apply and lives drift-only in this file. Will be reconciled
+        # when the live state is imported into Terraform in a follow-up.
+        Sid       = "AllowCloudWatchToPublish"
+        Effect    = "Allow"
+        Principal = { Service = "cloudwatch.amazonaws.com" }
+        Action    = "SNS:Publish"
+        Resource  = aws_sns_topic.cost_alerts.arn
+        Condition = {
+          StringEquals = {
+            "aws:SourceAccount" = var.aws_account_id
+          }
         }
       }
-    }]
+    ]
   })
 }
 
