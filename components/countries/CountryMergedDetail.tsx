@@ -2,8 +2,10 @@ import Link from "next/link";
 import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import type { RiskTier } from "@/lib/country-risks.schema";
-import { formatBakeMonthYear } from "@/lib/format-bake-date";
+import { formatBakeMonthYear, daysSinceBake } from "@/lib/format-bake-date";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
+
+const VINTAGE_STALENESS_DAYS = 30;
 
 /**
  * Country merged-detail page — Build PR #3 of 5 (A3 Family 2 merger brief).
@@ -288,6 +290,46 @@ export function CountryMergedDetail({
           )}
         </div>
       </header>
+
+      {/* ============== Data-vintage chip ============== */}
+      {/* Auto-triggered chip when the bake is more than 30 days old. Fatima
+          R3 (Mali) + Roberto R5 — fast-moving political/credit situations
+          where citing month-old indicator data without disclosure is a
+          publication / underwriting hazard. Date-math guard inside the
+          helper returns null for unknown/future dates, suppressing the
+          chip in those cases. No founder decision per bake — ships once
+          and works forever. */}
+      {(() => {
+        const age = daysSinceBake(bakeDate);
+        if (age === null || age <= VINTAGE_STALENESS_DAYS) return null;
+        const monthYear = formatBakeMonthYear(bakeDate);
+        return (
+          <aside
+            role="note"
+            aria-label="Data vintage"
+            className="mb-4 rounded-md px-3 py-2 max-w-[68ch] flex items-start gap-2 text-xs leading-relaxed"
+            style={{
+              backgroundColor: "rgba(245, 158, 11, 0.08)",
+              border: "1px solid rgba(245, 158, 11, 0.30)",
+              color: "var(--qgi-text-muted)",
+            }}
+          >
+            <span
+              aria-hidden="true"
+              className="font-semibold tracking-wide uppercase text-[10px] shrink-0"
+              style={{ color: "rgba(245, 158, 11, 0.95)" }}
+            >
+              Data vintage
+            </span>
+            <span>
+              Scores reflect indicator data through{" "}
+              {monthYear || (bakeDate ?? "an earlier bake")} ({age} days ago). Real-world
+              events since are not captured — interpret with care for fast-moving
+              situations.
+            </span>
+          </aside>
+        );
+      })()}
 
       {/* ============== Lloyd's tier banner (Section 1 of brief) ============== */}
       <section
