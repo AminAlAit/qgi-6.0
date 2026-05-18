@@ -3,6 +3,7 @@ import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import type { RiskTier } from "@/lib/country-risks.schema";
 import { formatBakeMonthYear } from "@/lib/format-bake-date";
+import { L1_GROUPS } from "@/lib/category-taxonomy";
 
 /**
  * Country merged-detail page — Build PR #3 of 5 (A3 Family 2 merger brief).
@@ -87,6 +88,21 @@ export interface StructuralPeer {
   alpha_2: string;
   tier: string;
   similarity: number;
+  /**
+   * Gates Rank 6 — per-dimension contribution to the cosine similarity.
+   * Each entry is one of the L1 dimensions in the shared (intersection)
+   * set, sorted by contribution descending. Sums to the raw cosine
+   * (before the Jaccard structural-overlap factor). Top 3-5 shown in
+   * the "Why this match?" expander; the rest collapse into "+N more."
+   *
+   * Optional for backward compatibility with bakes/callers that don't
+   * compute it; expander falls back to the cosine number alone.
+   */
+  breakdown?: ReadonlyArray<{
+    code: string;
+    label: string;
+    contribution_pct: number;
+  }>;
 }
 
 /**
@@ -1094,52 +1110,124 @@ function StructuralPeers({
         {peers.map((peer, idx) => {
           const peerTierMeta = TIER_META[peer.tier as RiskTier];
           const simPct = Math.round(peer.similarity * 100);
+          const breakdown = peer.breakdown ?? [];
+          const isLast = idx === peers.length - 1;
           return (
-            <Link
+            <div
               key={peer.slug}
-              href={`/countries/${peer.slug}` as Route}
-              className="grid items-center gap-3 px-4 py-3 transition-colors hover:bg-[var(--qgi-surface-2)] group"
               style={{
-                gridTemplateColumns: "32px 1fr 110px 1fr 64px",
-                borderBottom:
-                  idx === peers.length - 1 ? "none" : "1px solid var(--qgi-border)",
+                borderBottom: isLast ? "none" : "1px solid var(--qgi-border)",
                 borderLeft: `3px solid ${peerTierMeta?.color ?? "var(--qgi-border)"}`,
               }}
             >
-              <CountryFlag alpha2={peer.alpha_2} size={14} />
-              <span
-                className="text-sm group-hover:text-[var(--qgi-accent)] transition-colors font-medium"
-                style={{ color: "var(--qgi-text)" }}
-              >
-                {peer.name}
-              </span>
-              {peerTierMeta && <TierPill meta={peerTierMeta} />}
-              <div
-                className="rounded-sm overflow-hidden"
+              <Link
+                href={`/countries/${peer.slug}` as Route}
+                className="grid items-center gap-3 px-4 py-3 transition-colors hover:bg-[var(--qgi-surface-2)] group"
                 style={{
-                  backgroundColor: "var(--qgi-border)",
-                  height: 4,
+                  gridTemplateColumns: "32px 1fr 110px 1fr 64px",
                 }}
-                role="img"
-                aria-label={`Similarity: ${simPct}%`}
-                title="Cosine similarity on 8-dim L1 risk-profile vectors. Higher = more similar risk fingerprint."
               >
+                <CountryFlag alpha2={peer.alpha_2} size={14} />
+                <span
+                  className="text-sm group-hover:text-[var(--qgi-accent)] transition-colors font-medium"
+                  style={{ color: "var(--qgi-text)" }}
+                >
+                  {peer.name}
+                </span>
+                {peerTierMeta && <TierPill meta={peerTierMeta} />}
                 <div
+                  className="rounded-sm overflow-hidden"
                   style={{
-                    width: `${simPct}%`,
-                    height: "100%",
-                    backgroundColor: "#38bdf8",
-                    borderRadius: 2,
+                    backgroundColor: "var(--qgi-border)",
+                    height: 4,
                   }}
-                />
-              </div>
-              <span
-                className="font-data text-[11px] tabular-nums text-right"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                {simPct}%
-              </span>
-            </Link>
+                  role="img"
+                  aria-label={`Similarity: ${simPct}%`}
+                  title="Cosine similarity on 8-dim L1 risk-profile vectors. Higher = more similar risk fingerprint."
+                >
+                  <div
+                    style={{
+                      width: `${simPct}%`,
+                      height: "100%",
+                      backgroundColor: "#38bdf8",
+                      borderRadius: 2,
+                    }}
+                  />
+                </div>
+                <span
+                  className="font-data text-[11px] tabular-nums text-right"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
+                  {simPct}%
+                </span>
+              </Link>
+              {/* Gates Rank 6 — "Why this match?" expander. Per-dimension
+                  breakdown computed in page.tsx alongside the cosine.
+                  Mitigates the #717 face-validity issue (cosine on sparse
+                  L1 vectors) by showing the user which dimensions are
+                  actually driving each peer pairing. Server-rendered
+                  `<details>` — no client state needed. */}
+              {breakdown.length > 0 && (
+                <details className="px-4 pb-3">
+                  <summary
+                    className="cursor-pointer select-none text-[10px] tracking-wider uppercase font-data inline-flex items-center gap-1.5"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    Why this match?
+                    <span style={{ color: "var(--qgi-text-dim)" }}>
+                      (per-dimension breakdown)
+                    </span>
+                  </summary>
+                  <ul
+                    className="mt-2 pl-3 border-l-2 space-y-1"
+                    style={{ borderColor: "var(--qgi-border)" }}
+                  >
+                    {breakdown.slice(0, 5).map((b) => {
+                      const l1Color =
+                        L1_GROUPS.find((g) => g.code === b.code)?.color ??
+                        "var(--qgi-text-dim)";
+                      return (
+                        <li
+                          key={b.code}
+                          className="flex items-center gap-2 text-[11px]"
+                          style={{ color: "var(--qgi-text-muted)" }}
+                        >
+                          <span
+                            className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+                            style={{ backgroundColor: l1Color }}
+                            aria-hidden="true"
+                          />
+                          <span className="flex-1 truncate">{b.label}</span>
+                          <span
+                            className="font-data tabular-nums"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            {b.contribution_pct}%
+                          </span>
+                        </li>
+                      );
+                    })}
+                    {breakdown.length > 5 && (
+                      <li
+                        className="text-[10px]"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
+                        + {breakdown.length - 5} more dimension
+                        {breakdown.length - 5 === 1 ? "" : "s"}
+                      </li>
+                    )}
+                  </ul>
+                  <p
+                    className="text-[10px] mt-2"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    Each % is that dimension&apos;s contribution to the cosine similarity.
+                    A high % on a single dimension means the match is narrow; an even
+                    spread means the countries share a broad structural fingerprint.
+                  </p>
+                </details>
+              )}
+            </div>
           );
         })}
       </div>
