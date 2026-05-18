@@ -109,7 +109,12 @@ export const TIER_LABELS: Record<PatternTier, string> = {
  * match the "dot circles" visual the #133 spec describes.
  */
 export const CONVERGENCE_COLORS: Record<ConvergenceTier, string> = {
-  single: "#8aa6be", // slate-dim — weak
+  // #740 (2026-05-18): swapped from slate-dim (#8aa6be) to neutral gray
+  // (Tailwind gray-400). PR #82's a11y bump made the single tier visually
+  // competitive with the warm tiers 2-4; gray-400 keeps AA (≥ 4.5:1 on all
+  // three dark surfaces) while restoring the "barely-there weak signal"
+  // semantic — less chroma = less attention-pull at equivalent luminance.
+  single: "#9ca3af", // gray-400 — barely-there weak signal
   emerging: "#fbbf24", // amber-400 — watching
   multilateral: "#fb923c", // orange-400 — serious
   high: "#f87171", // red-400 — urgent

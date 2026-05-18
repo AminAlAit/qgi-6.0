@@ -188,6 +188,12 @@ export function CountryMergedDetail({
     category: string;
     salience_score: number;
     l1_group: string | null;
+    /** #696 — recipe_count from the bake. Categories with recipe_count < 5
+     *  did NOT drive the country's risk tier (#201 recipe-count gate
+     *  excludes them from cross_tier_categories). UI surfaces them with
+     *  an "evidence-thin" marker so a reader doesn't assume the visible
+     *  salience caused the tier badge. */
+    recipe_count: number;
   }>;
   /** PR #4 — ML coverage matrix rows (currently top-4 LOCKed). */
   mlRows?: ReadonlyArray<MlMatrixRow>;
@@ -280,12 +286,13 @@ export function CountryMergedDetail({
               </div>
             </div>
           </div>
-          {riskScore && riskScore.coverage_flag === "ok" && (
+          {riskScore && (
             <RiskScoreHeroTile
               score={riskScore.score}
               ciLow={riskScore.ci_low}
               ciHigh={riskScore.ci_high}
               tierMeta={tierMeta}
+              coverageFlag={riskScore.coverage_flag}
             />
           )}
         </div>
@@ -536,14 +543,61 @@ function RiskScoreHeroTile({
   ciLow,
   ciHigh,
   tierMeta,
+  coverageFlag,
 }: {
   score: number | null;
   ciLow: number | null;
   ciHigh: number | null;
   tierMeta: (typeof TIER_META)[RiskTier];
+  coverageFlag: "ok" | "insufficient";
 }) {
-  if (score === null) return null;
+  // #727 NIT-1 (2026-05-18): insufficient coverage no longer silently
+  // hides the tile — render an AFFIRMATIVE "—" + hatched fill +
+  // "Insufficient coverage" disclosure per spec §6 (Marcus / Roshani
+  // cross-cutting warning #1: "NEVER coerce to 0/50; must SAY
+  // insufficient").
+  if (coverageFlag === "insufficient" || score === null) {
+    return (
+      <div
+        role="status"
+        aria-label="QGI Risk Score: insufficient coverage. The current bake did not produce a stable percentile rank for this country because too few peer countries have comparable data. This is an honest disclosure, not a zero score."
+        className="flex flex-col items-end shrink-0 px-4 py-2 rounded-lg"
+        style={{
+          backgroundColor: "var(--qgi-surface-2)",
+          border: "1px dashed var(--qgi-border)",
+          backgroundImage:
+            "repeating-linear-gradient(45deg, transparent 0 4px, rgba(255,255,255,0.025) 4px 5px)",
+        }}
+        title="QGI Risk Score is not available for this country in the current bake because it has insufficient cohort coverage (too few peer countries with comparable data to compute a stable percentile rank). This is an honest disclosure, not a 0 score."
+      >
+        <span
+          className="text-[9px] tracking-widest uppercase font-semibold mb-0.5"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          QGI Risk Score
+        </span>
+        <div className="flex items-baseline gap-1">
+          <span
+            className="text-4xl font-semibold leading-none font-data tabular-nums"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            —
+          </span>
+        </div>
+        <span className="text-[10px] mt-1" style={{ color: "var(--qgi-text-muted)" }}>
+          Insufficient coverage
+        </span>
+      </div>
+    );
+  }
   const ciSpan = ciLow !== null && ciHigh !== null ? `${ciLow}–${ciHigh}` : null;
+  // #727 NIT-2 (2026-05-18): score=0 renders in neutral gray with the
+  // "lowest observed" microcopy per spec §6 — so the reader doesn't
+  // confuse "0" with "missing data". score=100 already has the 2px
+  // tier-color top border; spec also wants a saturation footnote, added
+  // below the CI when present.
+  const isFloor = score === 0;
+  const isCeiling = score === 100;
   return (
     <div
       className="flex flex-col items-end shrink-0 px-4 py-2 rounded-lg"
@@ -551,7 +605,7 @@ function RiskScoreHeroTile({
         backgroundColor: tierMeta.bg,
         border: `1px solid ${tierMeta.border}`,
         borderTopWidth: 2,
-        borderTopColor: tierMeta.color,
+        borderTopColor: isFloor ? "var(--qgi-border)" : tierMeta.color,
       }}
       title="QGI Risk Score: 0–100 percentile rank of this country's max-salience signal across the current bake's cohort. This is a percentile rank, NOT a probability. Higher scores indicate stronger structural-precedent match, not higher chance of a future event. See /methodology#qgi-risk-score."
     >
@@ -564,7 +618,9 @@ function RiskScoreHeroTile({
       <div className="flex items-baseline gap-1">
         <span
           className="text-4xl font-semibold leading-none font-data tabular-nums"
-          style={{ color: "var(--qgi-text)" }}
+          style={{
+            color: isFloor ? "var(--qgi-text-dim)" : "var(--qgi-text)",
+          }}
         >
           {score}
         </span>
@@ -579,6 +635,20 @@ function RiskScoreHeroTile({
           title={`95% bootstrap confidence interval: ${ciSpan} of 100. Bootstrap resamples the bake's cohort 1000 times with a deterministic seed.`}
         >
           95% CI {ciSpan}
+        </span>
+      )}
+      {isFloor && (
+        <span className="text-[10px] mt-0.5" style={{ color: "var(--qgi-text-muted)" }}>
+          Among lowest observed
+        </span>
+      )}
+      {isCeiling && (
+        <span
+          className="text-[10px] mt-0.5"
+          style={{ color: "var(--qgi-text-muted)" }}
+          title="Score saturates at the 100th percentile when this country's max-salience signal is at or above the cohort's strongest observed value. Cohort-relative ceiling, not an absolute risk maximum."
+        >
+          Saturated (cohort ceiling)
         </span>
       )}
     </div>
@@ -823,7 +893,13 @@ function WhatsHappeningHere({
 }: {
   name: string;
   tier: RiskTier;
-  top3: ReadonlyArray<{ category: string; salience_score: number }>;
+  top3: ReadonlyArray<{
+    category: string;
+    salience_score: number;
+    /** #696 — recipe_count gate (#201): categories with n<5 didn't drive
+     *  the tier badge. Surface as honest disclosure. */
+    recipe_count: number;
+  }>;
   /** ISO-8601 date (YYYY-MM-DD) of the country-risks bake that produced
    *  this narrative's underlying salience scores. */
   bakeDate?: string;
@@ -887,6 +963,40 @@ function WhatsHappeningHere({
         </Link>{" "}
         for how composites and salience are computed.
       </p>
+      {/* #696 — affirmative disclosure for evidence-thin top categories.
+          Categories with recipe_count < 5 are excluded from the
+          cross_tier_categories list that drives risk_tier_label (#201
+          recipe-count gate), so a reader seeing them in the top-3 prose
+          above might wrongly assume they caused the tier promotion.
+          When any of top3 are thin, list them so the disclosure is
+          AFFIRMATIVE (Marcus/Roshani: "NEVER coerce to invisible"). */}
+      {top3.some((c) => c.recipe_count > 0 && c.recipe_count < 5) && (
+        <p
+          className="mt-3 text-[11px] leading-relaxed max-w-[68ch]"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          <span
+            className="font-data text-[9px] tracking-widest uppercase mr-1.5 px-1.5 py-0.5 rounded"
+            style={{
+              backgroundColor: "var(--qgi-surface-2)",
+              border: "1px dashed var(--qgi-border)",
+              color: "var(--qgi-text-dim)",
+            }}
+            title="Categories with fewer than 5 ML-locked recipes are excluded from the cross-tier list that drives the risk-tier badge — they're shown for transparency but did not promote this country."
+          >
+            Evidence-thin
+          </span>
+          {top3
+            .filter((c) => c.recipe_count > 0 && c.recipe_count < 5)
+            .map((c, i, arr) => (
+              <span key={c.category}>
+                {formatCategory(c.category).toLowerCase()} (n={c.recipe_count})
+                {i < arr.length - 1 ? ", " : ""}
+              </span>
+            ))}{" "}
+          did not drive the tier badge — flagged for transparency.
+        </p>
+      )}
     </section>
   );
 }
