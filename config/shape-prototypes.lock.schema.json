@@ -193,7 +193,16 @@
         },
         "cov_diag_source": {
           "type": "string",
-          "description": "Provenance tag for posterior_cov_diag (Lloyd's audit surface). Expected value: 'posterior_mean_lkj_back_projected'. Optional for backwards compatibility with pre-B5 emissions."
+          "description": "Provenance tag for posterior_cov_diag (Lloyd's audit surface). Expected value: 'posterior_mean_lkj_back_projected' (FPCA primary) or 'posterior_gp_f_r_empirical_cov_diag' (GP fallback). Optional for backwards compatibility with pre-B5 emissions."
+        },
+        "gp_fallback_variant": {
+          "type": "string",
+          "enum": ["v2_no_instance_gp"],
+          "description": "F-H-4-A1 amendment provenance (qgi-docs 2026-05-18, 8-seat ratified). Present only on GP-fallback indicator signatures. 'v2_no_instance_gp' = post-amendment §3.1.4 model without g_c^(k). If a future amendment restores g_c^(k) on Linux/WSL2 substrate, a new variant value will be enumerated."
+        },
+        "gp_fallback_amendment": {
+          "type": "string",
+          "description": "F-H-4 amendment ID under which this GP-fallback prototype was fit. Expected value: 'F-H-4-A1' for post-2026-05-18 GP-fallback emissions. Optional for backwards compatibility with pre-amendment emissions (which never reached fit completion due to PyTensor kernel-argument crash)."
         }
       }
     },
