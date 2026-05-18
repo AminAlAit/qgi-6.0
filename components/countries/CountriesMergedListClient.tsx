@@ -1056,6 +1056,16 @@ function WatchBand() {
           Preview · hand-selected
         </span>
       </header>
+      {/* Gates-doc Rank 18 (Roberto R5 walkthrough): the section reads as
+          algorithmic ranking to first-visit users. One sentence inline so
+          analysts don't conflate "to watch" with "highest-ranked." */}
+      <p
+        className="px-4 pt-3 pb-1 text-[11px] leading-relaxed"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        Editor&apos;s pick — hand-selected for the week, not the highest-ranked by
+        composite tier. Use the full table below for ranked output.
+      </p>
 
       <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
         {WATCH_COUNTRIES.map((c) => {
