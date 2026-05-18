@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { countrySlug } from "@/lib/slug";
+import { formatDataThrough } from "@/lib/format-bake-date";
 import type { PatternsMergedRow } from "@/app/(app)/patterns/page";
 import type {
   PatternWindowTier,
@@ -589,7 +590,7 @@ export function PatternsMergedListClient({
             className="mt-3 text-[10px] tracking-widest uppercase text-center"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            V1.9.1 scoring · Generated {generatedDate} ·{" "}
+            V1.9.1 scoring · {formatDataThrough(generatedDate)} ·{" "}
             <Link href={"/methodology" as Route} className="underline underline-offset-2">
               Methodology →
             </Link>
