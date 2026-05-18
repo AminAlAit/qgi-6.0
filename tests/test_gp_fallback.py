@@ -7,9 +7,10 @@ under fallback uses "posterior kernel-induced covariance in place of Σ_r").
 Test design:
   - Fast synthetic tests (small N, T_r ≤ 5, 2 chains × 200 iter) to stay
     well under the 60-second budget.
-  - GP sampler tests are marked @pytest.mark.slow (they still run in 30-60s
-    with the reduced settings but wall-time can exceed the fast-suite budget
-    on slower machines or under heavy CI load).
+  - GP sampler tests are marked @pytest.mark.slow. Post-F-H-4-A1
+    (qgi-docs 2026-05-18, 8-seat ratified), the simplified model fits
+    faster than the pre-amendment two-GP variant; in Python interpreter
+    mode on Windows expect minutes per slow test, not seconds.
   - Schema-compliance tests are fast (no NUTS).
 
 Lakatosian guard: no BH/FDR introduced here (§3.6 veto operative).
@@ -153,7 +154,12 @@ def test_build_gp_fallback_model_returns_pymc_model() -> None:
 
 
 def test_build_gp_fallback_model_variable_names() -> None:
-    """Model has the expected per-indicator variables per §3.1.4."""
+    """Model has the expected per-indicator variables per §3.1.4 post-F-H-4-A1.
+
+    Per qgi-docs F-H-4-A1 amendment (2026-05-18, 8-seat ratified 8/8): the
+    instance-level GP g_c^(k) and its hyperpriors (alpha_inst, ell_inst) are
+    removed. Only recipe-level GP + observation noise remain per indicator.
+    """
     from shape_prototype_fit_utils import build_gp_fallback_model
 
     K = 2
@@ -164,11 +170,17 @@ def test_build_gp_fallback_model_variable_names() -> None:
     for k in range(K):
         assert f"alpha_recipe_{k}" in var_names, f"Missing alpha_recipe_{k}"
         assert f"ell_recipe_{k}" in var_names, f"Missing ell_recipe_{k}"
-        assert f"alpha_inst_{k}" in var_names, f"Missing alpha_inst_{k}"
-        assert f"ell_inst_{k}" in var_names, f"Missing ell_inst_{k}"
         assert f"sigma_eps_{k}" in var_names, f"Missing sigma_eps_{k}"
         assert f"f_r_{k}" in var_names, f"Missing f_r_{k}"
-        assert f"g_c_{k}" in var_names, f"Missing g_c_{k}"
+        # F-H-4-A1: instance-level GP removed.
+        assert f"alpha_inst_{k}" not in var_names, f"Unexpected alpha_inst_{k} (should be removed per F-H-4-A1)"
+        assert f"ell_inst_{k}" not in var_names, f"Unexpected ell_inst_{k} (should be removed per F-H-4-A1)"
+        assert f"g_c_{k}" not in var_names, f"Unexpected g_c_{k} (should be removed per F-H-4-A1)"
+    # Total scalar free variables = 3 per indicator (alpha_recipe, ell_recipe, sigma_eps)
+    # + 1 vector per indicator (f_r_k of length T_r). For K=2: 6 scalars + 2 vectors.
+    # This keeps the model well under PyTensor's Python-mode kernel argument limit.
+    n_scalar_vars = sum(1 for v in model.free_RVs if v.name.startswith(("alpha_", "ell_", "sigma_")))
+    assert n_scalar_vars == 3 * K, f"Expected {3 * K} scalar hyperprior vars, got {n_scalar_vars}"
 
 
 def test_build_gp_fallback_model_shape_mismatch_raises() -> None:
@@ -246,6 +258,9 @@ def test_extract_gp_posterior_signature_structure() -> None:
         # cov_diag must be >= 0 (§3.5.1 Mahalanobis denominator; §4.2 floor).
         assert all(v >= 0.0 for v in sig["posterior_cov_diag"])
         assert sig["cov_diag_source"] == "posterior_gp_f_r_empirical_cov_diag"
+        # F-H-4-A1 provenance fields (qgi-docs 2026-05-18, 8-seat ratified).
+        assert sig["gp_fallback_variant"] == "v2_no_instance_gp"
+        assert sig["gp_fallback_amendment"] == "F-H-4-A1"
 
 
 def test_posterior_cov_diag_is_gp_posterior_not_empirical_variance() -> None:
