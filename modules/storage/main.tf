@@ -1699,10 +1699,6 @@ resource "aws_sns_topic_policy" "cost_alerts" {
         # any future cost-routed alarm) would silently fail with AccessDenied
         # from the topic policy while showing ALARM state in CloudWatch —
         # the EXACT trap from the 2026-05-16 incident (broken alert path).
-        # Cost Anomaly Detection (added 2026-05-18 via CLI; #804) also uses
-        # `costalerts.amazonaws.com`, but that statement was added via the
-        # CLI apply and lives drift-only in this file. Will be reconciled
-        # when the live state is imported into Terraform in a follow-up.
         Sid       = "AllowCloudWatchToPublish"
         Effect    = "Allow"
         Principal = { Service = "cloudwatch.amazonaws.com" }
@@ -1713,6 +1709,21 @@ resource "aws_sns_topic_policy" "cost_alerts" {
             "aws:SourceAccount" = var.aws_account_id
           }
         }
+      },
+      {
+        # qgi-aws-tf#804 — let AWS Cost Anomaly Detection publish to cost_alerts.
+        # The Cost Anomaly monitor + subscription were created via CLI on
+        # 2026-05-18 (live in account 222222222222 as
+        # arn:aws:ce::222222222222:anomalymonitor/24d55ff2-... and
+        # arn:aws:ce::222222222222:anomalysubscription/c01e1ff6-...).
+        # Codifying the principal here so subsequent Terraform applies on the
+        # topic policy don't overwrite it. The monitor + subscription
+        # themselves remain drift-only pending import (follow-up to #810).
+        Sid       = "AllowCostAnomalyDetectionToPublish"
+        Effect    = "Allow"
+        Principal = { Service = "costalerts.amazonaws.com" }
+        Action    = "SNS:Publish"
+        Resource  = aws_sns_topic.cost_alerts.arn
       }
     ]
   })
