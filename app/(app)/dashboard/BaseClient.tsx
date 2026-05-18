@@ -1093,9 +1093,9 @@ export function BaseClient({
             </div>
 
             {/* PR-vi: 4 MetricTiles removed — replaced by the FourFamilyBand
-                above. The `MetricTile` helper component is retained at the
-                bottom of this file in case the Risk Pulse panel needs it
-                again, but no callers remain on the Dashboard. */}
+                above. (#686C, 2026-05-18: the orphaned MetricTile helper
+                that lingered at the bottom of this file has been deleted —
+                no callers remained 3 days after the cutover.) */}
           </div>
         </div>
       </div>
@@ -1606,7 +1606,7 @@ export function BaseClient({
                       <span
                         className="font-data text-[10px] font-semibold shrink-0"
                         style={{ color: "var(--qgi-amber)" }}
-                        title="Pattern Power Score — strength + persistence + breadth"
+                        title="Pattern strength — composite of correlation, persistence, and breadth"
                       >
                         Score {p.pattern_power_score.toFixed(0)}
                       </span>
@@ -1817,38 +1817,6 @@ function TierSegment({
           {count}
         </span>
       )}
-    </div>
-  );
-}
-
-function MetricTile({
-  label,
-  value,
-  tooltip,
-}: {
-  label: string;
-  value: string | number;
-  tooltip: string;
-}) {
-  // T2 #295 cleanup: `isNumber` prop was defined but applied `""` in both
-  // branches (dead code). Removed.
-  return (
-    <div className="px-3 py-2 rounded" style={{ backgroundColor: "var(--qgi-surface)" }}>
-      <div className="flex items-center gap-1">
-        <span
-          className="text-[9px] tracking-wider uppercase"
-          style={{ color: "var(--qgi-text-dim)" }}
-        >
-          {label}
-        </span>
-        <InfoTooltip text={tooltip} />
-      </div>
-      <div
-        className="font-data text-lg font-semibold mt-0.5"
-        style={{ color: "var(--qgi-amber)" }}
-      >
-        {value}
-      </div>
     </div>
   );
 }

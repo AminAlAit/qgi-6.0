@@ -311,10 +311,9 @@ export function PatternsMergedListClient({
         </span>
         <p className="text-xs leading-relaxed max-w-[68ch]">
           Patterns shown are output from QGI&apos;s pattern-matching pipeline. Pattern
-          Power Score (PPS) is a composite of correlation strength + persistence + breadth
-          — not a predictive probability. Window-tier labels (S-win / M-win / L-win /
-          XL-win) reflect canonical pattern length only. Methodology and known
-          limitations:{" "}
+          strength is a composite of correlation, persistence, and breadth — not a
+          predictive probability. Window-tier labels (S-win / M-win / L-win / XL-win)
+          reflect canonical pattern length only. Methodology and known limitations:{" "}
           <Link
             href={"/methodology" as Route}
             className="underline underline-offset-2"
@@ -444,7 +443,7 @@ export function PatternsMergedListClient({
                   color: "var(--qgi-text-muted)",
                 }}
               >
-                <option value="pattern_power_score">Pattern Power Score</option>
+                <option value="pattern_power_score">Pattern strength</option>
                 <option value="avg_correlation">Correlation</option>
                 <option value="pattern_length">Pattern length</option>
                 <option value="window_tier">Window tier</option>
@@ -534,7 +533,7 @@ export function PatternsMergedListClient({
                 <span>Country pair</span>
                 <span>Window</span>
                 <span className="text-right">Correlation</span>
-                <span className="text-right">Power</span>
+                <span className="text-right">Strength</span>
                 <span className="text-right">Length</span>
                 <span>Trajectory</span>
                 <span title="Recipe confidence indicator — preview">RC</span>
@@ -695,7 +694,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         <div
           className="text-right text-sm font-data tabular-nums"
           style={{ color: "var(--qgi-text)" }}
-          title="Pattern Power Score (PPS) — composite ranking metric. Bake formula: avg_correlation × pattern_length (years) × indicator_count. NOT a probability, NOT a calibrated forecast — use as a sort key only. For sovereign-credit work, lean on the correlation coefficient and window length as the substantive inputs."
+          title="Pattern strength — composite ranking metric. Bake formula: average correlation × pattern length (years) × indicator count. NOT a probability, NOT a calibrated forecast — use as a sort key only. For sovereign-credit work, lean on the correlation coefficient and window length as the substantive inputs."
         >
           {row.pattern_power_score.toFixed(0)}
         </div>
@@ -757,7 +756,7 @@ function TierVocabularyStrip({ onDismiss }: { onDismiss: () => void }) {
             }}
           >
             <li>
-              <span className="font-semibold">Pattern Power Score</span>: composite 0–2500
+              <span className="font-semibold">Pattern strength</span>: composite 0–2500
             </li>
             <li>
               <span className="font-semibold">Correlation tier</span>: Pearson |r|

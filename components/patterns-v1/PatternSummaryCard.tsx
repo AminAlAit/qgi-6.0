@@ -136,7 +136,7 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Pattern Strength
-            <InfoTooltip text="Pattern Power Score (PPS) — a composite ranking metric blending correlation strength, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0-2000+." />
+            <InfoTooltip text="Pattern strength — a composite ranking metric blending correlation, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0–2000+." />
           </span>
           <span
             className="font-data text-3xl font-semibold"

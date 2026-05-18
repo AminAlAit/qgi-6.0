@@ -323,8 +323,8 @@ export function PrecedentMergedDossier({
             (excellent); the band below is the PPS sort-key bootstrap CI,
             not a model-calibration claim." */}
         <div className="mb-6">
-          <SectionLabel title="Pattern Power Score — the composite quality metric the screen ranks on. Centerline is the recipe's observed value; band would show the 95% bootstrap CI when available. Distinct from the model calibration error (ECE) shown above.">
-            PPS bootstrap CI{" "}
+          <SectionLabel title="Pattern strength — the composite quality metric the screen ranks on. Centerline is the recipe's observed value; band would show the 95% bootstrap CI when available. Distinct from the model calibration error (ECE) shown above.">
+            Pattern strength bootstrap CI{" "}
             <span className="font-normal" style={{ color: "var(--qgi-text-dim)" }}>
               (distinct from model ECE above)
             </span>
@@ -723,7 +723,7 @@ function PpsBand({ substrate }: { substrate: RecipeAggregated }) {
         backgroundColor: "var(--qgi-surface-2)",
         border: "1px dashed var(--qgi-border)",
       }}
-      title="Bootstrap CI on the Pattern Power Score will populate when the next bake ships the field. The 95% bootstrap CI replaces this placeholder once available. Distinct from the model ECE (calibration error) shown in the model-calibration section above."
+      title="Bootstrap CI on the pattern-strength score will populate when the next bake ships the field. The 95% bootstrap CI replaces this placeholder once available. Distinct from the model ECE (calibration error) shown in the model-calibration section above."
     >
       <div className="flex flex-col gap-0.5">
         <span

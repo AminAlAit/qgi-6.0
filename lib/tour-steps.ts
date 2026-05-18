@@ -95,7 +95,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: 'div[aria-label="Methodology disclosure"]',
     title: "Six tier systems on one page",
     content:
-      "This page runs 6 distinct tier/badge systems: PPS (composite ranking, not a probability), Correlation tier (S/A/B/C), Window tier (S/M/L/XL-win), Evidence strength, Recipe Confidence Index, Country tier. Hover any badge before quoting any number.",
+      "This page runs 6 distinct tier/badge systems: Pattern strength (composite ranking, not a probability), Correlation tier (S/A/B/C), Window tier (S/M/L/XL-win), Evidence strength, Recipe Confidence Index, Country tier. Hover any badge before quoting any number.",
     placement: "bottom",
   },
   {
