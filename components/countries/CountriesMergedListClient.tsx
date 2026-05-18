@@ -76,10 +76,25 @@ const TIER_ORDER: Record<RiskTier, number> = { HIGH: 0, MODERATE: 1, INDICATIVE:
 // Top category extraction (highest-salience across all tiers)
 // ---------------------------------------------------------------------------
 
-function topCategoryLabel(country: CountryRisk): string {
+export function topCategoryLabel(country: CountryRisk): string {
+  // Gates Rank 14 (Aisha R4): the prior `.slice(0, 3)` only considered the
+  // top-3 entries per tier window, so a category that ranked #4+ in any
+  // single tier-window's `top_categories` was invisible to this function
+  // — even if its global salience-z was the highest across the country.
+  // The detail page iterates ALL top_categories with no slice and sorts
+  // by salience desc (see `app/(app)/countries/[iso]/page.tsx:165-183`),
+  // producing a different top-1 than the list card.
+  //
+  // Morocco was the exact case Aisha caught: index card said "Civil War &
+  // Insurgency" but the detail page's top signal was "Political
+  // Repression" — wasted click + misleading framing for a journalist
+  // scanning the index for a story.
+  //
+  // Aligned with the detail page: scan every top_category across every
+  // tier window, take the global max-salience. No slice.
   let best = { label: "—", score: -Infinity };
   for (const tierData of Object.values(country.tiers)) {
-    for (const cat of tierData.top_categories.slice(0, 3)) {
+    for (const cat of tierData.top_categories) {
       const score = cat.salience_score ?? cat.z_score ?? -Infinity;
       if (score > best.score) best = { label: cat.category, score };
     }
