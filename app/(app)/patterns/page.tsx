@@ -105,9 +105,32 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
   const params = await searchParams;
   const payload = await loadRanking();
   const raw = payload.results;
-  // PR #2: still capped at 250; virtual-scroll over the full ranking is
-  // deferred to PR #4 alongside the grid layout toggle.
-  const rows: PatternsMergedRow[] = raw.slice(0, 250).map((p, i) => ({
+
+  // Gates-doc Rank 4 / face-validity-debt #718 (Marcus R3, Dmitri R3):
+  // /patterns previously rendered 250 instance rows but only ~9 unique
+  // country pairs (Paraguay→South Korea ×8 of the top 8 was the canonical
+  // example). Sliding-window duplicates dominate the visible window.
+  // Marcus: "board slide quest dead on arrival."
+  //
+  // Display-level dedupe: keep ONE row per canonical country pair —
+  // specifically the highest-PPS window for that pair. The raw bake is
+  // unchanged (#718 root-cause is in ranking.json's emission); the
+  // visible rendering now collapses sliding-window duplicates to one
+  // best-window row per pair. After the dedupe we still cap at 250 so
+  // the page doesn't grow unboundedly when the bake fixes ship.
+  const bestByPair = new Map<string, PatternRow>();
+  for (const p of raw) {
+    const key = canonicalPairKey(p);
+    const existing = bestByPair.get(key);
+    if (!existing || p.pattern_power_score > existing.pattern_power_score) {
+      bestByPair.set(key, p);
+    }
+  }
+  const dedupedRaw = Array.from(bestByPair.values())
+    .sort((a, b) => b.pattern_power_score - a.pattern_power_score)
+    .slice(0, 250);
+
+  const rows: PatternsMergedRow[] = dedupedRaw.map((p, i) => ({
     ...p,
     window_tier: mapPatternTier(p.pattern_tier),
     row_key: `${p.country_a}-${p.country_b}-${p.start_year_a}-${i}`,

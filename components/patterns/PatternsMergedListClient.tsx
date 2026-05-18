@@ -239,8 +239,8 @@ export function PatternsMergedListClient({
           className="text-xs mt-3 font-data tabular-nums"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          {rows.length} pattern instances · {uniquePairCount} unique pairs · windows
-          covering {yearRange.first}–{yearRange.last}
+          {rows.length} country pairs (best window per pair) · {uniquePairCount} total
+          unique pairs in bake · windows covering {yearRange.first}–{yearRange.last}
         </p>
       </div>
 
