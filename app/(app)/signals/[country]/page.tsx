@@ -1,4 +1,5 @@
 import { loadCountryRisks, resolveCountryBySlug } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { countrySlug } from "@/lib/slug";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
 import { SignalsCountryDetail } from "@/components/signals/SignalsCountryDetail";
@@ -120,11 +121,22 @@ export default async function SignalsMergedCountryPage({ params }: Props) {
     notFound();
   }
 
+  // #815 (2026-05-18) — /signals graduation: per-country detail mirrors
+  // the index. Only ML-LOCKed recipes surface. Non-LOCKed categories
+  // remain visible in country profile "what's happening here" prose
+  // (CountryMergedDetail) so the bake doesn't appear truncated — but
+  // /signals is the validated-recipe view exclusively.
+  const mlStack = await loadMlRecipeStack().catch(() => null);
+  const lockedRecipeSet = new Set(mlStack?.metadata.top_4_recipes ?? []);
+
   // Per-category max-salience for this country, deduped across the S/M/L/XL
   // tier windows (mirrors V1 buildSignals dedup pattern).
   const perCategoryBest = new Map<string, CategoryScore>();
   for (const tierBlock of Object.values(c.tiers ?? {})) {
     for (const cat of tierBlock.top_categories ?? []) {
+      // #815 graduation gate — keep this in lockstep with the index
+      // aggregation in /signals/page.tsx.
+      if (!lockedRecipeSet.has(cat.category)) continue;
       const sal = cat.salience_score ?? cat.z_score ?? 0;
       const existing = perCategoryBest.get(cat.category);
       const existingSal = existing

@@ -79,8 +79,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const revalidate = 3600;
 
 export async function generateStaticParams() {
-  const data = await loadCountryRisks().catch(() => null);
-  if (!data) return [];
+  // #815 (2026-05-18) — only pre-render (country, slug) pairs for the 4
+  // LOCKed recipes. Manually-typed URLs to non-LOCKed leaves still
+  // resolve at request time via ISR (revalidate = 3600) and degrade
+  // gracefully to a STAT-only panel — by design, since /signals index
+  // no longer surfaces non-LOCKed categories.
+  const [data, mlStack] = await Promise.all([
+    loadCountryRisks().catch(() => null),
+    loadMlRecipeStack().catch(() => null),
+  ]);
+  if (!data || !mlStack) return [];
+  const lockedRecipeSet = new Set(mlStack.metadata.top_4_recipes);
   const out: { country: string; slug: string }[] = [];
   for (const country of Object.values(data.countries)) {
     const cslug = countrySlug(country.name);
@@ -88,6 +97,7 @@ export async function generateStaticParams() {
     const seen = new Set<string>();
     for (const tierBlock of Object.values(country.tiers ?? {})) {
       for (const cat of tierBlock.top_categories ?? []) {
+        if (!lockedRecipeSet.has(cat.category)) continue;
         if (seen.has(cat.category)) continue;
         seen.add(cat.category);
         out.push({ country: cslug, slug: cat.category });
