@@ -184,6 +184,15 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
 
   // PR #2 — country list for the multi-select facet. Sorted by frequency
   // desc so the heaviest-firing countries surface first in the dropdown.
+  //
+  // Post-pair-dedupe (Rank 4 / #718, 2026-05-18): this loop iterates the
+  // DEDUPED `rows` rather than `payload.results`. The semantic is now
+  // "countries with the most unique partner pairs" (each country can
+  // contribute at most once per pair), not "countries with the most raw
+  // windows in the bake." After #718 ships and the sliding-window bloat
+  // is fixed upstream, the two would converge anyway. Switch back to
+  // `payload.results` if data-richness sort is preferred over partner-
+  // diversity sort.
   const countryFreq = new Map<string, number>();
   for (const r of rows) {
     countryFreq.set(r.country_a, (countryFreq.get(r.country_a) ?? 0) + 1);
