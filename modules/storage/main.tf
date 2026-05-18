@@ -1565,6 +1565,68 @@ resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge" {
   tags = var.tags
 }
 
+# ---------------------------------------------------------------------------
+# qgi-aws-tf#806 (cost-incident-2026-05-16 follow-up): clone the Athena
+# bytes-scanned alarm for the `primary` workgroup + add an SFN execution-
+# duration alarm.
+#
+# Layer B of the 2026-05-16 forensic: the `primary` workgroup had no per-query
+# cap (closed by #802 + CLI apply 2026-05-18). This alarm is the secondary
+# detection layer — it fires when `primary` scans > 100 GB in a 5-min window
+# regardless of whether the workgroup cap is enforced.
+#
+# The SFN duration alarm is the missing piece from the 2026-05-16 incident:
+# the qgi-indicator-monthly-updater "cost-leak-verify-2gb" run took 17.5h
+# with no alarm at any "this is taking too long" threshold. 2h is half of
+# the new top-level TimeoutSeconds=14400 (4h) from #805 — gives a warning
+# before the hard kill.
+# ---------------------------------------------------------------------------
+resource "aws_cloudwatch_metric_alarm" "athena_processed_bytes_surge_primary" {
+  alarm_name          = "qgi-athena-processed-bytes-surge-primary"
+  alarm_description   = "Triggers when the Athena `primary` workgroup scans more than 100GB in a 5-min window. See qgi-aws-tf#806 (cost-incident-2026-05-16) — secondary detection layer beyond the per-query cap on `primary` from #802."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  metric_name         = "ProcessedBytes"
+  namespace           = "AWS/Athena"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 100 * 1024 * 1024 * 1024 # 100 GiB
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    WorkGroup  = "primary"
+    QueryState = "SUCCEEDED"
+  }
+
+  # Routes to cost_alerts (the alert path founder reads), NOT pipeline_notifications.
+  alarm_actions = [aws_sns_topic.cost_alerts.arn]
+  ok_actions    = [aws_sns_topic.cost_alerts.arn]
+
+  tags = var.tags
+}
+
+resource "aws_cloudwatch_metric_alarm" "sfn_execution_duration_monthly_updater" {
+  alarm_name          = "qgi-sfn-execution-duration-monthly-updater"
+  alarm_description   = "Triggers when the qgi-indicator-monthly-updater state machine has been running for more than 2 hours (7,200,000 ms). 2h = 50% of the #805 hard timeout (4h). Half-way warning, not hard kill. See qgi-aws-tf#806."
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 1
+  metric_name         = "ExecutionTime"
+  namespace           = "AWS/States"
+  period              = 300
+  statistic           = "Maximum"
+  threshold           = 7200000 # 2 hours in ms
+  treat_missing_data  = "notBreaching"
+
+  dimensions = {
+    StateMachineArn = "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-monthly-updater"
+  }
+
+  alarm_actions = [aws_sns_topic.cost_alerts.arn]
+  ok_actions    = [aws_sns_topic.cost_alerts.arn]
+
+  tags = var.tags
+}
+
 # #625 / #632 (2026-05-10): Athena workgroup-level result reuse via
 # `update-work-group` does NOT exist in the AWS API. The original #625
 # null_resource that called `aws athena update-work-group --configuration-updates
