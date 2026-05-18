@@ -516,14 +516,16 @@ export default function RankingPage() {
 
           {/* Min Pattern-Power-Score slider */}
           <div className="flex items-center gap-2">
-            <span
-              className="text-[9px] tracking-[0.12em] uppercase"
+            <label
+              htmlFor="patterns-v1-ranking-min-score"
+              className="text-[9px] tracking-[0.12em] uppercase cursor-pointer"
               style={{ color: "var(--qgi-text-dim)" }}
               title="Minimum pattern strength — composite of correlation, persistence, and breadth"
             >
               Min Score
-            </span>
+            </label>
             <input
+              id="patterns-v1-ranking-min-score"
               type="range"
               min={0}
               max={2500}
@@ -610,13 +612,15 @@ export default function RankingPage() {
 
           {/* Gap years filter */}
           <div className="flex items-center gap-2">
-            <span
-              className="text-[9px] tracking-[0.12em] uppercase"
+            <label
+              htmlFor="patterns-v1-ranking-min-gap"
+              className="text-[9px] tracking-[0.12em] uppercase cursor-pointer"
               style={{ color: "var(--qgi-text-dim)" }}
             >
               Gap
-            </span>
+            </label>
             <input
+              id="patterns-v1-ranking-min-gap"
               type="range"
               min={0}
               max={20}
