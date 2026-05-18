@@ -179,6 +179,68 @@ describe("CountriesMergedListClient — #780 search-alias", () => {
     expect(screen.getByRole("link", { name: /Turkiye/ })).toBeInTheDocument();
   });
 
+  it("topCategoryLabel finds globally-leading category even if it sits at position 4+ in a tier window (#Rank-14 Aisha R4)", async () => {
+    const { topCategoryLabel } = await import("./CountriesMergedListClient");
+    // Construct a country where the globally-leading salience signal is
+    // at position 4 in the S tier window — would have been invisible to
+    // the old `.slice(0, 3)` per-tier logic.
+    const country: CountryRisk = {
+      name: "Morocco",
+      alpha_2: "MA",
+      curated: true,
+      overall_risk_tier: "MODERATE" as RiskTier,
+      tiers: {
+        S: {
+          top_categories: [
+            // The first 3 entries are the would-have-been "top 3"
+            {
+              category: "civil_war_and_insurgency",
+              salience_score: 1.2,
+              z_score: 1.2,
+              severity_tier: 2,
+              rrf_rank: 1,
+              rrf_score: 1,
+              recipe_count: 1,
+              last_event_year: null,
+            },
+            {
+              category: "bilateral_treaty",
+              salience_score: 1.0,
+              z_score: 1.0,
+              severity_tier: 2,
+              rrf_rank: 2,
+              rrf_score: 1,
+              recipe_count: 1,
+              last_event_year: null,
+            },
+            {
+              category: "elections_and_voting",
+              salience_score: 0.9,
+              z_score: 0.9,
+              severity_tier: 2,
+              rrf_rank: 3,
+              rrf_score: 1,
+              recipe_count: 1,
+              last_event_year: null,
+            },
+            // Position 4 — globally highest salience. Old code missed this.
+            {
+              category: "political_repression",
+              salience_score: 2.5,
+              z_score: 2.5,
+              severity_tier: 3,
+              rrf_rank: 4,
+              rrf_score: 1,
+              recipe_count: 1,
+              last_event_year: null,
+            },
+          ],
+        },
+      },
+    };
+    expect(topCategoryLabel(country)).toBe("Political Repression");
+  });
+
   it("Editor's Pick section is hidden on active search (#789 Aisha R5)", async () => {
     const user = userEvent.setup();
     render(
