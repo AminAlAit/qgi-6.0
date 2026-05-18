@@ -239,8 +239,8 @@ export function PatternsMergedListClient({
           className="text-xs mt-3 font-data tabular-nums"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          {rows.length} pattern instances · {uniquePairCount} unique pairs · windows
-          covering {yearRange.first}–{yearRange.last}
+          {rows.length} country pairs (best window per pair) · {uniquePairCount} total
+          unique pairs in bake · windows covering {yearRange.first}–{yearRange.last}
         </p>
       </div>
 
@@ -611,6 +611,14 @@ function buildDetailHref(row: PatternsMergedRow): Route {
   // generateStaticParams. Both year fields are required to disambiguate
   // same-pair windows that share start_year_a — without start_year_b the
   // slug collides across 53 of 64 unique pairs in the current ranking.
+  //
+  // ⚠ Coupling note (Rank-4 dedupe, 2026-05-18): the list page now sends
+  // only the highest-PPS window per pair to this href builder. Today's
+  // generateStaticParams emits all windows so any one of them resolves;
+  // after #718 ships the upstream bake fix, the "winning" window for a
+  // pair may shift bake-to-bake — verify that change against
+  // generateStaticParams to avoid silently rotating the slug to a non-
+  // pre-rendered route. Follow-up tracked at qgi-aws-tf followup ticket.
   return `/patterns/${aSlug}-${bSlug}-${row.start_year_a}-${row.start_year_b}` as Route;
 }
 
