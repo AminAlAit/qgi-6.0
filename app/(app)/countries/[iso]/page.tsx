@@ -379,7 +379,13 @@ export default async function CountryMergedDetailPage({ params }: Props) {
             contribution_pct: cosine > 0 ? (va[i] * vb[i]) / (ma * mb) / cosine : 0,
           }))
           .sort((a, b) => b.contribution_pct - a.contribution_pct)
-          .map((b) => ({ ...b, contribution_pct: Math.round(b.contribution_pct * 100) }));
+          .map((b) => ({ ...b, contribution_pct: Math.round(b.contribution_pct * 100) }))
+          // Drop sub-1% contributors so they don't bloat the "+N more" tail
+          // (Sonnet review on PR #113, finding #1). Also implicitly handles
+          // the zero-cosine edge case — when cosine === 0 every entry rounds
+          // to 0 and the filter empties the breakdown, suppressing the
+          // expander entirely via the length-guard in the component.
+          .filter((b) => b.contribution_pct > 0);
 
         peerSims.push({
           slug: peerSlug,
