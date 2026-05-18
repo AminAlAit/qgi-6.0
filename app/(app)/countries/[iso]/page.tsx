@@ -292,12 +292,21 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   //
   // Uses `allData` hoisted at the top of the function (PR-iv) to ensure
   // peers and subject share the same bake snapshot.
+  // Gates Rank 6 (Santiago R3 + Mei-Lin R5 + 9 more persona-rounds):
+  // similarity number alone is not citable. Carry the per-dimension
+  // breakdown so the UI expander can show "the 89% match is driven by
+  // Economic Stress (35%) + Political Power (25%) + Conflict (18%)…"
   let structuralPeers: Array<{
     slug: string;
     name: string;
     alpha_2: string;
     tier: string;
     similarity: number;
+    breakdown?: Array<{
+      code: string;
+      label: string;
+      contribution_pct: number;
+    }>;
   }> = [];
   if (allData) {
     // Subject's active L1 set (positive-salience dimensions only).
@@ -310,6 +319,11 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       alpha_2: string;
       tier: string;
       similarity: number;
+      breakdown?: Array<{
+        code: string;
+        label: string;
+        contribution_pct: number;
+      }>;
     }> = [];
     if (selfActive.size >= 3) {
       for (const [peerId, peer] of Object.entries(allData.countries)) {
@@ -349,13 +363,37 @@ export default async function CountryMergedDetailPage({ params }: Props) {
         // Composite: Jaccard structural overlap × intersection cosine.
         // Bounded [0, 1]. A 3-dim match with cosine 0.99 scores 0.5×0.99 =
         // 0.495; a 6-dim match with cosine 0.85 scores 0.75×0.85 = 0.638.
-        const similarity = jaccard * (dot / (ma * mb));
+        const cosine = dot / (ma * mb);
+        const similarity = jaccard * cosine;
+
+        // Gates Rank 6 — per-dimension contribution to the cosine. Each
+        // intersection-dim's pairwise product (va[i] * vb[i]) divided by
+        // (ma * mb) sums to the cosine. Express as % of cosine so the
+        // breakdown reads as "this dimension contributed 35% of the
+        // similarity score." Sorted desc; clipped to top 5 (rest folded
+        // into a "+N more" tail in the UI).
+        const breakdown = intersection
+          .map((k, i) => ({
+            code: k,
+            label: L1_GROUPS.find((g) => g.code === k)?.label ?? k,
+            contribution_pct: cosine > 0 ? (va[i] * vb[i]) / (ma * mb) / cosine : 0,
+          }))
+          .sort((a, b) => b.contribution_pct - a.contribution_pct)
+          .map((b) => ({ ...b, contribution_pct: Math.round(b.contribution_pct * 100) }))
+          // Drop sub-1% contributors so they don't bloat the "+N more" tail
+          // (Sonnet review on PR #113, finding #1). Also implicitly handles
+          // the zero-cosine edge case — when cosine === 0 every entry rounds
+          // to 0 and the filter empties the breakdown, suppressing the
+          // expander entirely via the length-guard in the component.
+          .filter((b) => b.contribution_pct > 0);
+
         peerSims.push({
           slug: peerSlug,
           name: peer.name,
           alpha_2: peer.alpha_2,
           tier: peer.overall_risk_tier,
           similarity,
+          breakdown,
         });
       }
       peerSims.sort((a, b) => b.similarity - a.similarity);
