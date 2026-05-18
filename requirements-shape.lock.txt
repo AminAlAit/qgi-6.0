@@ -90,6 +90,12 @@ xarray-einstats==0.9.1
 joblib==1.5.3
 scikit-learn==1.8.0
 
+# pyarrow — required for stable parquet serialization in _sha256_of_dataframe
+# (discovered missing during Chunk C.2: ad-hoc install; lockfile now reflects
+# production reality). Version matches the .venv-path-b installation verified
+# 2026-05-18.
+pyarrow==24.0.0
+
 # Numba (§4.2 DTW acceleration) — INTENTIONALLY OMITTED in Chunk B:
 #   The DTW path runs over T_r <= 15, K_r <= 8 indicators; pure-NumPy DTW
 #   is sub-millisecond at this scale (measured on a 5x5 fixture). Numba
