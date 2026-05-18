@@ -98,201 +98,244 @@ const TIER_STYLES: Record<RiskTier, { bg: string; text: string; border: string }
   },
 };
 
-/** Country ID -> UN region code. Lightweight static lookup. */
+/** Alpha-2 ISO 3166-1 code -> UN region code. Lightweight static lookup.
+ *
+ * Gates #796 / R6 Daniel (ACSS): the prior version was keyed by ISO 3166-1
+ * NUMERIC code (e.g., "24" = Angola), but the `risks.countries` keys are
+ * the QGI-pipeline WB-internal numeric IDs (e.g., "1" = Afghanistan, "2"
+ * = Albania) which DO NOT match ISO numeric codes. Result: every country
+ * fell to "Other" except a handful of coincidental matches; the Dashboard
+ * Regional Breakdown widget undercounted SSA at 4 HIGH / 8 total when the
+ * actual scored count is 15+ HIGH across 27+ SSA countries.
+ *
+ * Switched to alpha-2 keys (e.g., "AO" = Angola), which is the
+ * country.alpha_2 field on every row — stable across both schemas. */
 const REGION_MAP: Record<string, string> = (() => {
-  // Map numeric WB country_id -> region abbreviation
-  // SSA = Sub-Saharan Africa, MNA = Middle East & North Africa,
-  // EAP = East Asia & Pacific, SAS = South Asia, LAC = Latin America & Caribbean,
-  // ECA = Europe & Central Asia
   const map: Record<string, string> = {};
-  // SSA (excluding North Africa: 12=Algeria, 434=Libya, 504=Morocco → MNA)
-  for (const id of [
-    "24",
-    "72",
-    "854",
-    "108",
-    "120",
-    "132",
-    "140",
-    "148",
-    "174",
-    "178",
-    "180",
-    "204",
-    "226",
-    "231",
-    "232",
-    "266",
-    "270",
-    "288",
-    "324",
-    "624",
-    "384",
-    "404",
-    "426",
-    "430",
-    "450",
-    "454",
-    "466",
-    "478",
-    "480",
-    "508",
-    "516",
-    "562",
-    "566",
-    "646",
-    "678",
-    "686",
-    "694",
-    "706",
-    "710",
-    "716",
-    "728",
-    "729",
-    "748",
-    "768",
-    "800",
-    "834",
-    "894",
+  // SSA = Sub-Saharan Africa (excludes North Africa per WB convention:
+  // Algeria/Libya/Morocco/Tunisia/Egypt are MNA).
+  for (const c of [
+    "AO",
+    "BJ",
+    "BW",
+    "BF",
+    "BI",
+    "CM",
+    "CV",
+    "CF",
+    "TD",
+    "KM",
+    "CD",
+    "CG",
+    "CI",
+    "DJ",
+    "GQ",
+    "ER",
+    "SZ",
+    "ET",
+    "GA",
+    "GM",
+    "GH",
+    "GN",
+    "GW",
+    "KE",
+    "LS",
+    "LR",
+    "MG",
+    "MW",
+    "ML",
+    "MR",
+    "MU",
+    "MZ",
+    "NA",
+    "NE",
+    "NG",
+    "RW",
+    "ST",
+    "SN",
+    "SC",
+    "SL",
+    "SO",
+    "ZA",
+    "SS",
+    "SD",
+    "TZ",
+    "TG",
+    "UG",
+    "ZM",
+    "ZW",
   ])
-    map[id] = "SSA";
-  // MNA
-  for (const id of [
-    "12",
-    "48",
-    "262",
-    "818",
-    "364",
-    "368",
-    "376",
-    "400",
-    "414",
-    "422",
-    "434",
-    "504",
-    "512",
-    "275",
-    "634",
-    "682",
-    "760",
-    "788",
-    "792",
-    "784",
-    "887",
+    map[c] = "SSA";
+  // MNA = Middle East & North Africa
+  // Djibouti (DJ) intentionally stays in SSA per WB convention — do NOT
+  // re-add to MNA without updating the SSA comment block above. Sonnet F1
+  // on PR #119 caught a DJ duplicate that overwrote the SSA assignment.
+  for (const c of [
+    "DZ",
+    "BH",
+    "EG",
+    "IR",
+    "IQ",
+    "IL",
+    "JO",
+    "KW",
+    "LB",
+    "LY",
+    "MA",
+    "OM",
+    "PS",
+    "QA",
+    "SA",
+    "SY",
+    "TN",
+    "TR",
+    "AE",
+    "YE",
   ])
-    map[id] = "MNA";
-  // EAP
-  for (const id of [
-    "36",
-    "96",
-    "116",
-    "156",
-    "242",
-    "296",
-    "360",
-    "392",
-    "408",
-    "410",
-    "418",
-    "458",
-    "496",
-    "104",
-    "540",
-    "554",
-    "598",
-    "608",
-    "882",
-    "626",
-    "764",
-    "776",
-    "798",
-    "548",
+    map[c] = "MNA";
+  // EAP = East Asia & Pacific
+  for (const c of [
+    "AU",
+    "BN",
+    "KH",
+    "CN",
+    "FJ",
+    "PF",
+    "GU",
+    "HK",
+    "ID",
+    "JP",
+    "KI",
+    "KR",
+    "KP",
+    "LA",
+    "MO",
+    "MY",
+    "MH",
+    "FM",
+    "MN",
+    "MM",
+    "NC",
+    "NZ",
+    "PG",
+    "PH",
+    "WS",
+    "SG",
+    "SB",
+    "TW",
+    "TH",
+    "TL",
+    "TO",
+    "TV",
+    "VU",
+    "VN",
   ])
-    map[id] = "EAP";
-  // SAS
-  for (const id of ["4", "50", "64", "356", "144", "462", "524", "586"]) map[id] = "SAS";
-  // LAC
-  for (const id of [
-    "28",
-    "32",
-    "44",
-    "52",
-    "68",
-    "76",
-    "84",
-    "152",
-    "170",
-    "188",
-    "192",
-    "212",
-    "214",
-    "218",
-    "222",
-    "308",
-    "320",
-    "328",
-    "332",
-    "340",
-    "388",
-    "484",
-    "558",
-    "591",
-    "600",
-    "604",
-    "662",
-    "740",
-    "780",
-    "858",
-    "862",
+    map[c] = "EAP";
+  // SAS = South Asia
+  for (const c of ["AF", "BD", "BT", "IN", "MV", "NP", "PK", "LK"]) map[c] = "SAS";
+  // LAC = Latin America & Caribbean
+  for (const c of [
+    "AR",
+    "BS",
+    "BB",
+    "BZ",
+    "BO",
+    "BR",
+    "CL",
+    "CO",
+    "CR",
+    "CU",
+    "DM",
+    "DO",
+    "EC",
+    "SV",
+    "GD",
+    "GT",
+    "GY",
+    "HT",
+    "HN",
+    "JM",
+    "MX",
+    "NI",
+    "PA",
+    "PY",
+    "PE",
+    "PR",
+    "KN",
+    "LC",
+    "VC",
+    "SR",
+    "TT",
+    "UY",
+    "VE",
   ])
-    map[id] = "LAC";
-  // ECA
-  for (const id of [
-    "8",
-    "40",
-    "51",
-    "56",
-    "70",
-    "100",
-    "191",
-    "196",
-    "203",
-    "208",
-    "233",
-    "246",
-    "250",
-    "268",
-    "276",
-    "300",
-    "348",
-    "352",
-    "372",
-    "380",
-    "398",
-    "417",
-    "428",
-    "440",
-    "442",
-    "807",
-    "498",
-    "499",
-    "528",
-    "578",
-    "616",
-    "620",
-    "642",
-    "643",
-    "688",
-    "703",
-    "705",
-    "724",
-    "752",
-    "756",
-    "804",
-    "826",
-    "860",
+    map[c] = "LAC";
+  // ECA = Europe & Central Asia
+  for (const c of [
+    "AL",
+    "AD",
+    "AM",
+    "AT",
+    "AZ",
+    "BY",
+    "BE",
+    "BA",
+    "BG",
+    "HR",
+    "CY",
+    "CZ",
+    "DK",
+    "EE",
+    "FI",
+    "FR",
+    "GE",
+    "DE",
+    "GR",
+    "HU",
+    "IS",
+    "IE",
+    "IT",
+    "KZ",
+    "XK",
+    "KG",
+    "LV",
+    "LI",
+    "LT",
+    "LU",
+    "MT",
+    "MD",
+    "MC",
+    "ME",
+    "NL",
+    "MK",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "RU",
+    "SM",
+    "RS",
+    "SK",
+    "SI",
+    "ES",
+    "SE",
+    "CH",
+    "TJ",
+    "TM",
+    "UA",
+    "GB",
+    "UZ",
+    "VA",
   ])
-    map[id] = "ECA";
+    map[c] = "ECA";
+  // Note: a few countries are in two lists by historical region splits
+  // (Djibouti and Sudan in WB sometimes; we keep Djibouti in SSA per UN
+  // M.49 and Sudan in SSA per WB). North Korea/South Korea are EAP.
+  // Canada (CA) and United States (US) are intentionally NOT mapped to
+  // any of these 6 buckets — WB convention treats them as "North America"
+  // (NAC), a separate region we do not surface on the dashboard yet.
+  // They fall through to the "Other" bucket downstream. If/when we add a
+  // NAC bucket, map CA + US here. (Sonnet F2 NIT on PR #119.)
   return map;
 })();
 
@@ -484,8 +527,10 @@ export function BaseClient({
   const regionData = useMemo(() => {
     if (!risks) return [];
     const regionCounts: Record<string, { total: number; high: number }> = {};
-    for (const [id, country] of Object.entries(risks.countries)) {
-      const region = REGION_MAP[id] ?? "Other";
+    for (const country of Object.values(risks.countries)) {
+      // #796 fix: look up by alpha_2 (stable across schemas), not by the
+      // WB-internal data key. See REGION_MAP comment above.
+      const region = REGION_MAP[country.alpha_2] ?? "Other";
       if (!regionCounts[region]) regionCounts[region] = { total: 0, high: 0 };
       regionCounts[region].total++;
       if (country.overall_risk_tier === "HIGH") regionCounts[region].high++;
@@ -555,9 +600,63 @@ export function BaseClient({
   //     driven by mlStack.metadata.top_4_recipes.
   const lockedSlugSet = useMemo(() => new Set(lockedRecipeSlugs), [lockedRecipeSlugs]);
   const topConvergences = useMemo(() => {
-    return topSignals
+    // Gates-doc R6 #799 (Olga + Daniel): the prior logic surfaced Chad/
+    // Bilateral Treaty at 0yr, 1yr, AND 2yr leads as 3 consecutive top-5
+    // entries — same underlying (country, recipe) signal at different
+    // time horizons, presented as 3 independent convergences. Daniel:
+    // "Misleading. Should dedup to one Chad/Bilateral Treaty entry with
+    // 'across 0-2yr windows' appended."
+    //
+    // Dedupe by (country, event_category) keeping the highest
+    // composite_sort_key per pair, then slice 5. Carry the lead-range
+    // span so the UI can show "0-2yr leads" rather than dropping context.
+    const eligible = topSignals
       .filter((s) => (s.n_predictors ?? 0) >= 2)
-      .filter((s) => lockedSlugSet.has(s.event_category))
+      .filter((s) => lockedSlugSet.has(s.event_category));
+
+    const bestByPair = new Map<
+      string,
+      (typeof eligible)[number] & { lead_min?: number; lead_max?: number }
+    >();
+    for (const s of eligible) {
+      const key = `${s.country_a_name}|${s.event_category}`;
+      const existing = bestByPair.get(key);
+      const lead = s.median_lead_time;
+      if (!existing) {
+        bestByPair.set(key, {
+          ...s,
+          lead_min: lead ?? undefined,
+          lead_max: lead ?? undefined,
+        });
+        continue;
+      }
+      // Widen the observed lead range.
+      const newMin =
+        lead != null && existing.lead_min != null
+          ? Math.min(existing.lead_min, lead)
+          : (existing.lead_min ?? lead ?? undefined);
+      const newMax =
+        lead != null && existing.lead_max != null
+          ? Math.max(existing.lead_max, lead)
+          : (existing.lead_max ?? lead ?? undefined);
+      // Keep the row with the higher composite_sort_key as the canonical
+      // representative; widen its lead range to span all observations.
+      if ((s.composite_sort_key ?? 0) > (existing.composite_sort_key ?? 0)) {
+        bestByPair.set(key, {
+          ...s,
+          lead_min: newMin,
+          lead_max: newMax,
+        });
+      } else {
+        bestByPair.set(key, {
+          ...existing,
+          lead_min: newMin,
+          lead_max: newMax,
+        });
+      }
+    }
+
+    return Array.from(bestByPair.values())
       .sort((a, b) => (b.composite_sort_key ?? 0) - (a.composite_sort_key ?? 0))
       .slice(0, 5);
   }, [topSignals, lockedSlugSet]);
@@ -853,8 +952,9 @@ export function BaseClient({
                 <span
                   className="font-data text-[10px]"
                   style={{ color: "var(--qgi-amber)" }}
+                  title="Alarm level (salience-z) — country's signal strength on its top-firing category. >2.5σ = HIGH, 1.0-2.5σ = MODERATE, <1.0σ = INDICATIVE."
                 >
-                  Salience {featuredAlert.salience.toFixed(2)}
+                  Alarm level {featuredAlert.salience.toFixed(2)}
                 </span>
                 <span
                   className="font-data text-[10px]"
@@ -1377,8 +1477,16 @@ export function BaseClient({
                           <span
                             className="font-data text-[9px] shrink-0"
                             style={{ color: "var(--qgi-text-dim)" }}
+                            title="Median lead time between the precedent event and the firing-signal observation. When a (country, recipe) pair appears at multiple lead times, the range is shown."
                           >
-                            {s.median_lead_time}yr lead
+                            {/* #799: when dedupe collapsed multiple leads
+                                for this (country, recipe), show the range
+                                rather than only the canonical median. */}
+                            {s.lead_min != null &&
+                            s.lead_max != null &&
+                            s.lead_min !== s.lead_max
+                              ? `${s.lead_min}-${s.lead_max}yr leads`
+                              : `${s.median_lead_time}yr lead`}
                           </span>
                         )}
                       </div>
