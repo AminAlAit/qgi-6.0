@@ -642,6 +642,382 @@ def dtw_distance(
     return distance, optimal_lag
 
 
+# ---- GP fallback constants (§3.1.4 binding) ---------------------------------
+
+# Same NUTS gate constants apply to the GP fallback (§3.1.3 imported by
+# §3.1.4 by reference).  No additional constants needed; the GP model
+# uses the same RHAT_GATE / ESS_GATE / TARGET_ACCEPT_DEFAULT values.
+
+# Placeholder sentinel values for schema fields that are FPCA-specific
+# but required by the indicator_signature schema even in fallback entries.
+# The schema's ``fpca_component_scores`` is defined as "LKJ posterior mean
+# of μ_r in FPCA score space"; for the GP fallback there is no FPCA score
+# space, so we emit an empty list (valid JSON array of numbers, passes
+# schema's ``type: array, items: number``).
+GP_FALLBACK_FPCA_SCORES_SENTINEL: list[float] = []
+GP_FALLBACK_FPCA_CUMVAR_SENTINEL: float = 0.0
+GP_FALLBACK_FPCA_BASIS_LABEL: str = "gp_fallback_no_fpca_basis"
+
+
+# ---- §3.1.4 GP Fallback models -----------------------------------------------
+
+
+@dataclass(frozen=True)
+class GPFallbackPosterior:
+    """Posterior summary from the §3.1.4 hierarchical Bayes + GP fallback fit.
+
+    Carries:
+      - per-indicator posterior mean trajectory (recipe-level GP mean f_r^(k))
+      - per-indicator posterior covariance diagonal (time-diagonal of the
+        posterior covariance of f_r^(k); this is the "posterior kernel-induced
+        covariance" §3.5.1 refers to for Mahalanobis scoring under fallback)
+      - sampler diagnostics for the gate evaluation
+    """
+
+    posterior_mean_trajectories: list[np.ndarray]  # one per indicator, (T_r,)
+    posterior_cov_diags: list[np.ndarray]  # one per indicator, (T_r,)
+    sampler_diagnostics: "SamplerDiagnostics"
+    idata: object  # arviz InferenceData; TYPE_CHECKING only, avoid circular import
+
+
+def build_gp_fallback_model(
+    trajectories: np.ndarray,
+    K_indicators: int,
+    T_r: int,
+) -> "pm.Model":
+    """Construct the PyMC model for the §3.1.4 hierarchical-Bayes + GP fallback.
+
+    Per §3.1.4 binding spec:
+
+        y_c^(k)(t) = f_r^(k)(t) + g_c^(k)(t) + ε_c,t^(k)
+
+        f_r^(k)  ~ GP(0, κ_recipe^(k)(t, t'))      — recipe-level functional mean
+        g_c^(k)  ~ GP(0, κ_instance^(k)(t, t'))    — instance-level residual
+        ε_c,t^(k) ~ N(0, σ_ε²)                     — observation noise
+
+    Squared-exponential kernels:
+        κ_recipe^(k)(t,t')   = α_k² exp(-(t-t')²/(2ℓ_k²))
+        κ_instance^(k)(t,t') = α_inst_k² exp(-(t-t')²/(2ℓ_inst_k²))
+                                (same form, smaller amplitude prior)
+
+    Hyperpriors per Priya §3.1.4:
+        α_k      ~ HalfCauchy(0, 1)
+        ℓ_k      ~ InvGamma(2, 1)          — avoids zero length-scales
+        σ_ε      ~ HalfCauchy(0, 0.5)
+
+    The instance-level residual GPs share the same prior form but with a
+    smaller amplitude prior (HalfCauchy(0, 0.5)) to enforce shrinkage:
+    recipe-level mean should dominate the instance-level residual for the
+    canonical shape to generalize across instances.
+
+    Args:
+        trajectories: (N_r, T_r, K_indicators) array of normalized trajectories.
+            Axis 0 = instances, axis 1 = time steps, axis 2 = indicators.
+            The time axis runs over integer offsets {-T_r, ..., -1} (aliased to
+            indices 0, 1, ..., T_r-1 for zero-based array indexing).
+        K_indicators: number of key indicators (axis-2 extent of trajectories).
+        T_r: canonical length (number of integer time steps).
+
+    Returns:
+        A PyMC Model object; caller must invoke pm.sample() within a ``with
+        model:`` block or use pm.sample(model=model).
+
+    Raises:
+        ImportError: if pymc is not installed (this function imports lazily so
+            the rest of the module does not pay the PyMC import cost).
+        ValueError: if trajectories.shape does not match (*, T_r, K_indicators).
+    """
+    import os
+
+    if "PYTENSOR_FLAGS" not in os.environ:
+        os.environ["PYTENSOR_FLAGS"] = "cxx="
+
+    import pymc as pm
+
+    if trajectories.ndim != 3:
+        raise ValueError(
+            f"trajectories must be 3-D (N_r, T_r, K_indicators); got shape {trajectories.shape}"
+        )
+    N_r, T_r_actual, K_actual = trajectories.shape
+    if T_r_actual != T_r or K_actual != K_indicators:
+        raise ValueError(
+            f"trajectories shape {trajectories.shape} does not match "
+            f"(N_r={N_r}, T_r={T_r}, K_indicators={K_indicators})"
+        )
+
+    # Integer time grid 0..T_r-1 (represents year offsets -T_r..-1 normalised
+    # to a 0-based index for the covariance algebra; distances are scale-free
+    # in the SE kernel so the offset choice does not affect the posterior shape).
+    t_grid = np.arange(T_r, dtype=float)  # (T_r,)
+
+    # Precompute squared distances matrix: D2[i,j] = (t_i - t_j)^2.
+    t_col = t_grid[:, None]  # (T_r, 1)
+    t_row = t_grid[None, :]  # (1, T_r)
+    D2 = (t_col - t_row) ** 2  # (T_r, T_r)
+
+    with pm.Model() as model:  # noqa: SIM117
+        for k in range(K_indicators):
+            obs_k = trajectories[:, :, k]  # (N_r, T_r)
+
+            # --- Recipe-level GP prior (§3.1.4 binding) ---
+            alpha_k = pm.HalfCauchy(f"alpha_recipe_{k}", beta=1.0)
+            ell_k = pm.InverseGamma(f"ell_recipe_{k}", alpha=2.0, beta=1.0)
+            # Squared-exponential kernel matrix for recipe-level GP.
+            # Shape: (T_r, T_r); each entry = α_k² exp(-D2/(2ℓ_k²)).
+            K_recipe = alpha_k**2 * pm.math.exp(-D2 / (2.0 * ell_k**2))
+            # Add tiny jitter for numerical stability (standard GP practice).
+            K_recipe_jittered = K_recipe + 1e-6 * np.eye(T_r)
+            # Recipe-level GP mean (one draw per time step).
+            f_r_k = pm.MvNormal(
+                f"f_r_{k}",
+                mu=np.zeros(T_r),
+                cov=K_recipe_jittered,
+                shape=(T_r,),
+            )
+
+            # --- Instance-level residual GPs (§3.1.4 binding) ---
+            # Smaller amplitude prior to enforce shrinkage toward recipe mean.
+            alpha_inst_k = pm.HalfCauchy(f"alpha_inst_{k}", beta=0.5)
+            ell_inst_k = pm.InverseGamma(f"ell_inst_{k}", alpha=2.0, beta=1.0)
+            K_instance = alpha_inst_k**2 * pm.math.exp(-D2 / (2.0 * ell_inst_k**2))
+            K_instance_jittered = K_instance + 1e-6 * np.eye(T_r)
+            # One residual GP per instance (shape: N_r × T_r).
+            g_c_k = pm.MvNormal(
+                f"g_c_{k}",
+                mu=np.zeros(T_r),
+                cov=K_instance_jittered,
+                shape=(N_r, T_r),
+            )
+
+            # --- Observation noise (§3.1.4 binding) ---
+            sigma_eps = pm.HalfCauchy(f"sigma_eps_{k}", beta=0.5)
+
+            # --- Likelihood ---
+            # y_c^(k)(t) = f_r^(k)(t) + g_c^(k)(t) + ε_c,t^(k)
+            mu_obs = f_r_k[None, :] + g_c_k  # (N_r, T_r) broadcast
+            pm.Normal(
+                f"obs_{k}",
+                mu=mu_obs,
+                sigma=sigma_eps,
+                observed=obs_k,
+            )
+
+    return model
+
+
+def fit_gp_fallback(
+    trajectories: np.ndarray,
+    K_indicators: int,
+    T_r: int,
+    *,
+    n_chains: int = 4,
+    n_tune: int = 1000,
+    n_draws: int = 1000,
+    target_accept: float = TARGET_ACCEPT_DEFAULT,
+    seed: int = 12345,
+) -> "GPFallbackPosterior":
+    """Run the §3.1.4 GP fallback NUTS sampler and return posterior summary.
+
+    Same MCMC acceptance gates apply as §3.1.3 (imported by reference):
+      - All R-hat ≤ 1.01 across all α_k, ℓ_k, σ_ε, f_r_k parameters
+      - ESS ≥ 400 on every parameter
+      - Zero divergent transitions after warmup
+        (single divergence → caller must refit at target_accept=0.99)
+        (persistent divergences → caller must raise; fallback's fallback
+         does not exist per scope guardrails)
+
+    Args:
+        trajectories: (N_r, T_r, K_indicators) normalized trajectory array.
+        K_indicators: number of key indicators.
+        T_r: canonical length.
+        n_chains: number of HMC chains.
+        n_tune: warmup iterations per chain.
+        n_draws: post-warmup sampling iterations per chain.
+        target_accept: NUTS target acceptance rate.
+        seed: master random seed.
+
+    Returns:
+        GPFallbackPosterior with posterior mean trajectories + cov diags +
+        sampler diagnostics.
+    """
+    import os
+
+    if "PYTENSOR_FLAGS" not in os.environ:
+        os.environ["PYTENSOR_FLAGS"] = "cxx="
+
+    import arviz as az
+    import pymc as pm
+
+    model = build_gp_fallback_model(trajectories, K_indicators, T_r)
+
+    with model:
+        idata = pm.sample(
+            draws=n_draws,
+            tune=n_tune,
+            chains=n_chains,
+            target_accept=target_accept,
+            nuts={"max_treedepth": MAX_TREEDEPTH},
+            random_seed=seed,
+            progressbar=False,
+            compute_convergence_checks=False,
+            cores=1,
+        )
+
+    # --- Collect diagnostic variable names ---
+    # Per Sonnet review (PR #80 NIT-1): include BOTH recipe-level AND instance-level
+    # hyperpriors (alpha_recipe / alpha_inst, ell_recipe / ell_inst) plus sigma_eps
+    # and f_r_k. The full g_c tensor is excluded by design (high-dimensional nuisance;
+    # not consumed by §3.5.1 scoring) but the scalar instance-level hyperpriors are
+    # cheap to gate and catch poor mixing on the instance-level kernel.
+    diag_var_names = []
+    for k in range(K_indicators):
+        diag_var_names.extend([
+            f"alpha_recipe_{k}",
+            f"ell_recipe_{k}",
+            f"alpha_inst_{k}",
+            f"ell_inst_{k}",
+            f"sigma_eps_{k}",
+        ])
+        # f_r_{k} is a vector variable; include it for R-hat / ESS.
+        diag_var_names.append(f"f_r_{k}")
+
+    summary = az.summary(idata, var_names=diag_var_names, kind="diagnostics")
+    rhat_values = summary["r_hat"].values
+    ess_values = summary["ess_bulk"].values
+    n_divergences = int(idata.sample_stats["diverging"].sum().values)
+    diagnostics = evaluate_sampler_diagnostics(rhat_values, ess_values, n_divergences)
+
+    # --- Extract posterior mean trajectories + posterior covariance diag ---
+    posterior_mean_trajectories: list[np.ndarray] = []
+    posterior_cov_diags: list[np.ndarray] = []
+
+    for k in range(K_indicators):
+        # f_r_{k} has shape (chain, draw, T_r) in the posterior.
+        f_r_draws = idata.posterior[f"f_r_{k}"].values  # (chains, draws, T_r)
+        f_r_flat = f_r_draws.reshape(-1, T_r)  # (total_draws, T_r)
+
+        # Posterior mean trajectory (§3.1.4: "joint posterior over recipe-level
+        # functional means").
+        mean_traj = f_r_flat.mean(axis=0)  # (T_r,)
+        posterior_mean_trajectories.append(mean_traj)
+
+        # Posterior covariance diagonal — the "posterior kernel-induced covariance"
+        # per §3.5.1: "uses posterior kernel-induced covariance in place of Σ_r".
+        # This is the empirical posterior covariance of f_r^(k)(t) across all
+        # posterior draws, evaluated on the diagonal (per-time-step variance).
+        # NOT the empirical variance of the training trajectories — it is the
+        # Bayesian posterior covariance of the recipe-level GP mean, which
+        # captures kernel-induced correlation structure learned from data
+        # (matching the Chunk B Priya adjudication precedent from B5: posterior
+        # source, not sample-variance).
+        cov_matrix = np.cov(f_r_flat.T)  # (T_r, T_r) posterior covariance
+        if T_r == 1:
+            cov_diag = np.array([float(np.var(f_r_flat))])
+        else:
+            cov_diag = np.diag(cov_matrix)  # (T_r,) diagonal
+        cov_diag = np.maximum(cov_diag, 0.0)  # defensive floor at 0
+        posterior_cov_diags.append(cov_diag)
+
+    return GPFallbackPosterior(
+        posterior_mean_trajectories=posterior_mean_trajectories,
+        posterior_cov_diags=posterior_cov_diags,
+        sampler_diagnostics=diagnostics,
+        idata=idata,
+    )
+
+
+def extract_gp_posterior_signature(
+    gp_posterior: GPFallbackPosterior,
+    T_r: int,
+    K_indicators: int,
+    indicator_ids: list[str],
+) -> list[dict]:
+    """Return per-indicator signature dicts for the lock JSON from a GP posterior.
+
+    Per §3.1.4 fallback and §4.3 schema binding, each indicator signature must
+    carry the standard fields that the shape kernel (§4.2) and the dispatch
+    loader expect:
+
+      - ``posterior_mean_trajectory``: posterior mean of f_r^(k)(t) at integer
+        time points {-T_r, ..., -1} (stored as 0-based indices but semantically
+        the pre-event trajectory offsets).
+      - ``posterior_cov_diag``: diagonal of the posterior covariance over
+        f_r^(k)(t) — the "posterior kernel-induced covariance" §3.5.1 refers
+        to for Mahalanobis scoring under fallback.
+      - ``fit_method``: "hierarchical_bayes_gp_fallback" (binding sentinel
+        that allows the kernel to distinguish FPCA vs GP paths).
+      - FPCA sentinel fields (``fpca_component_scores``, ``fpca_basis``,
+        ``fpca_cumulative_variance_explained``) with GP-fallback placeholder
+        values — required by the indicator_signature schema; consumers MUST
+        check ``fit_method == "hierarchical_bayes_gp_fallback"`` before
+        interpreting FPCA fields.
+
+    Per B5 lesson (Sonnet 2026-05-17, Priya adjudication Option C):
+    ``posterior_cov_diag`` here is the empirical Bayesian posterior covariance
+    diagonal of f_r^(k)(t) across MCMC draws — NOT the empirical variance of
+    the training trajectories. The kernel's Mahalanobis computation
+    (§3.5.1 → §4.2) uses this as the denominator for shape-distance per time
+    step, consistent with the FPCA-path's LKJ-back-projected Σ_r.
+
+    Args:
+        gp_posterior: GPFallbackPosterior from fit_gp_fallback.
+        T_r: canonical length (must match gp_posterior array shapes).
+        K_indicators: number of indicators.
+        indicator_ids: ordered list of indicator IDs (same order as trajectories
+            axis 2 passed to fit_gp_fallback).
+
+    Returns:
+        List of per-indicator signature dicts (one per indicator) in the order
+        of indicator_ids. Each dict matches the ``indicator_signature`` schema
+        in ``shape-prototypes.lock.schema.json``.
+
+    Raises:
+        ValueError: if lengths do not match expectations.
+    """
+    if len(gp_posterior.posterior_mean_trajectories) != K_indicators:
+        raise ValueError(
+            f"GP posterior has {len(gp_posterior.posterior_mean_trajectories)} "
+            f"mean trajectories but K_indicators={K_indicators}"
+        )
+    if len(indicator_ids) != K_indicators:
+        raise ValueError(
+            f"indicator_ids length {len(indicator_ids)} != K_indicators={K_indicators}"
+        )
+
+    signatures: list[dict] = []
+    for k, iid in enumerate(indicator_ids):
+        mean_traj = np.asarray(gp_posterior.posterior_mean_trajectories[k], dtype=float)
+        cov_diag = np.asarray(gp_posterior.posterior_cov_diags[k], dtype=float)
+
+        if mean_traj.shape[0] != T_r:
+            raise ValueError(
+                f"indicator {iid!r}: posterior_mean_trajectory length "
+                f"{mean_traj.shape[0]} != T_r={T_r}"
+            )
+        if cov_diag.shape[0] != T_r:
+            raise ValueError(
+                f"indicator {iid!r}: posterior_cov_diag length "
+                f"{cov_diag.shape[0]} != T_r={T_r}"
+            )
+
+        sig = {
+            # FPCA sentinel fields required by indicator_signature schema.
+            # These are meaningless for the GP path; consumers must inspect
+            # ``fit_method`` at the recipe level to know which path was used.
+            "fpca_component_scores": GP_FALLBACK_FPCA_SCORES_SENTINEL,
+            "fpca_cumulative_variance_explained": GP_FALLBACK_FPCA_CUMVAR_SENTINEL,
+            "fpca_basis": GP_FALLBACK_FPCA_BASIS_LABEL,
+            # GP-specific posterior fields (the load-bearing data for §3.5.1).
+            "posterior_mean_trajectory": [float(x) for x in mean_traj.tolist()],
+            "posterior_cov_diag": [float(x) for x in np.maximum(cov_diag, 0.0).tolist()],
+            # Provenance tag — parallel to the FPCA path's "posterior_mean_lkj_back_projected".
+            "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+        }
+        signatures.append(sig)
+
+    return signatures
+
+
 def phase_alignment_cosine(
     lag: int,
     *,
