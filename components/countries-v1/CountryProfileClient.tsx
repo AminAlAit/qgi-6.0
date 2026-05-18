@@ -1406,7 +1406,7 @@ function generateSummary(
         ? "moderate"
         : "baseline";
 
-  // Count total precedent windows across all categories
+  // Count total historical matches across all categories
   const totalPrecedents = categories.reduce((sum, c) => sum + c.recipe_count, 0);
 
   let summary = `${country.name}'s economic indicators show ${tierDesc} risk signals. `;
