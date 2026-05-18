@@ -881,12 +881,20 @@ export function BaseClient({
       />
 
       {/* ================================================================
-          ZONE 2: SITUATION SUMMARY
+          ZONE 2: SITUATION SUMMARY — Section 4 (Featured Signal + Risk Pulse)
+          #686A (2026-05-18): wrapped in <section aria-labelledby=...> so
+          screen-reader landmark navigation stops here. Previously a bare
+          <div> meant SR users jumped from family summary straight to
+          watchlist, skipping the featured + pulse content entirely.
           ================================================================ */}
-      <div
+      <section
+        aria-labelledby="situation-summary-heading"
         className="grid grid-cols-1 lg:grid-cols-2 gap-px shrink-0"
         style={{ backgroundColor: "var(--qgi-border)" }}
       >
+        <h2 id="situation-summary-heading" className="sr-only">
+          Situation summary
+        </h2>
         {/* ── Featured Alert Card (left) ──────────────────────────── */}
         <div className="flex flex-col" style={{ backgroundColor: "var(--qgi-bg)" }}>
           <div
@@ -1098,7 +1106,7 @@ export function BaseClient({
                 no callers remained 3 days after the cutover.) */}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* World map removed per owner request (2026-04-18) */}
 

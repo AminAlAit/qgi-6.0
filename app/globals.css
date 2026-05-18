@@ -150,3 +150,22 @@ body {
 .qgi-dual-thumb-input:active::-moz-range-thumb {
   cursor: grabbing;
 }
+
+/* #686B (2026-05-18) — Global prefers-reduced-motion guard.
+   Users with the OS-level reduced-motion preference (vestibular
+   sensitivity, screen-reader workflows) get all transitions and
+   animations effectively disabled. Tailwind's `motion-safe:` prefix
+   would have required touching ~20 `transition-*` sites in
+   BaseClient.tsx + the same surface across the rest of the app;
+   the CSS-level guard ships once and covers every component without
+   per-callsite churn. WCAG 2.3.3 (Animation from Interactions). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

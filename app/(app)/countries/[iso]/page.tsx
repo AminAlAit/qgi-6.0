@@ -167,6 +167,11 @@ export default async function CountryMergedDetailPage({ params }: Props) {
     category: string;
     salience_score: number;
     l1_group: string | null;
+    /** #696 (2026-05-18): recipe_count from the source bake — when < 5
+     *  the category's salience did NOT drive the country's risk tier
+     *  (#201 recipe-count gate). UI badges these as "evidence-thin" so
+     *  a reader doesn't assume a 2-recipe outlier caused the tier. */
+    recipe_count: number;
   }> = [];
   for (const tierData of Object.values(country.tiers)) {
     for (const cat of tierData.top_categories) {
@@ -176,6 +181,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
         category: cat.category,
         salience_score: cat.salience_score ?? cat.z_score ?? 0,
         l1_group: CATEGORY_L1_MAP[cat.category]?.group ?? null,
+        recipe_count: cat.recipe_count,
       });
     }
   }
