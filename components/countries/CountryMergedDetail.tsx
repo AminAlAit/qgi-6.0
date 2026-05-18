@@ -288,6 +288,28 @@ export function CountryMergedDetail({
         </p>
       </section>
 
+      {/* ============== Composite-vs-recipe-percentile explainer ============== */}
+      {/* Gates Rank 13 (Karl + Helena R4): the composite tier can read
+          INDICATIVE while a specific recipe ranks in the 92nd percentile
+          (Brazil case). Aggregation is correct (max-of-L1) but readers
+          on first contact conclude "the page contradicts itself." One-
+          sentence callout that fires only when BOTH a tier exists AND
+          per-recipe data is renderable — i.e., when the contradiction
+          can actually be seen on the same screen. */}
+      {perRecipe && Object.values(perRecipe).some((v) => v !== null) && (
+        <p
+          className="mb-4 text-xs leading-relaxed max-w-[68ch]"
+          style={{ color: "var(--qgi-text-dim)" }}
+        >
+          <span style={{ color: "var(--qgi-text-muted)" }}>
+            How to read this together:
+          </span>{" "}
+          a country&apos;s composite tier reflects its highest-firing L1 dimension — so a
+          country can sit at INDICATIVE overall while ranking in the top quartile on a
+          specific recipe below. Click any recipe row for its cohort percentile.
+        </p>
+      )}
+
       {/* ============== Precedent Match strip (#729 Step 2) ============== */}
       {/*
         Per-recipe Precedent Match decomposition of the hero QGI Risk Score.
