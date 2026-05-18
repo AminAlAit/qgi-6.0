@@ -687,7 +687,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         <div
           className="text-right text-sm font-data tabular-nums"
           style={{ color: "var(--qgi-text)" }}
-          title="Pattern Power Score — composite of correlation, persistence, and breadth."
+          title="Pattern Power Score (PPS) — composite ranking metric. PPS = correlation × persistence × breadth on the row's matching indicator set. Range typically 0–3000. NOT a probability, NOT a calibrated forecast — use as a sort key only. For sovereign-credit work, lean on the correlation coefficient and window length as the substantive inputs."
         >
           {row.pattern_power_score.toFixed(0)}
         </div>
@@ -1015,106 +1015,55 @@ function FacetPlaceholder({ label, tooltip }: { label: string; tooltip: string }
 }
 
 // ============================================================================
-// PR #4 — Sparkline component
+// Sparkline placeholder — face-validity-debt cleanup (Dmitri R3)
 // ----------------------------------------------------------------------------
-// 7-point trajectory rendered as a small SVG line. The series is
-// deterministically seeded on (country_a, country_b, start_year_a) so SSR
-// and CSR produce identical output (no hydration mismatch). When the
-// ranking pipeline ships a real per-window trajectory, swap the seeded
-// values for the bake series here.
+// The earlier version (PR #4) rendered a 7-point SVG line "deterministically
+// seeded on row identity" — i.e., fake data dressed as a chart. Dmitri R3
+// catch: "fake charts are worse than no charts." Tooltip disclosed the
+// seeding but non-hovering users saw what looked like real time-series.
+// Trust regression for any analyst who hovers and finds the deception.
+//
+// Replaced with an honest `[Preview — bake pending]` minichip placeholder,
+// matching the PpsBand pattern in PrecedentMergedDossier. Wires up to real
+// trajectories when ranking.json carries the per-window series.
 // ============================================================================
-function seededTrajectory(seed: string, base: number, n = 7): number[] {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) {
-    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
-  }
-  const out: number[] = [];
-  for (let i = 0; i < n; i++) {
-    h = (Math.imul(16807, h) | 0) >>> 0;
-    // Bias around `base` with a small wobble; preserves the overall scale.
-    const wobble = ((h % 200) - 100) / 1000; // -0.10..+0.10
-    out.push(Math.max(0, Math.min(1, base + wobble)));
-  }
-  return out;
-}
-
-function Sparkline({ row }: { row: PatternsMergedRow }) {
-  const series = seededTrajectory(
-    `${row.country_a}-${row.country_b}-${row.start_year_a}`,
-    row.avg_correlation
-  );
-  const w = 80;
-  const h = 24;
-  const min = Math.min(...series);
-  const max = Math.max(...series);
-  const range = max - min || 1;
-  const stride = w / (series.length - 1);
-  const points = series
-    .map((v, i) => {
-      const x = i * stride;
-      const y = h - 2 - ((v - min) / range) * (h - 4);
-      return `${x.toFixed(1)},${y.toFixed(1)}`;
-    })
-    .join(" ");
-  const last = series[series.length - 1];
-  const first = series[0];
-  const stroke = last >= first ? "#22c55e" : "#f87171";
+function Sparkline({ row: _row }: { row: PatternsMergedRow }) {
   return (
     <span
-      title={`Preview trajectory — 7-point correlation series seeded on row identity. Real series wires up when ranking.json carries per-window trajectories.`}
+      className="inline-flex items-center text-[9px] tracking-wider uppercase font-data px-1.5 py-0.5 rounded"
+      style={{
+        backgroundColor: "var(--qgi-surface-2)",
+        color: "var(--qgi-text-dim)",
+        border: "1px dashed var(--qgi-border)",
+      }}
+      title="Pattern trajectory will populate when the next bake ships per-window correlation series. Held as a placeholder rather than a seeded preview, since fake charts read as real to non-hovering users."
+      aria-label="Pattern trajectory — bake pending"
     >
-      <svg
-        width={w}
-        height={h}
-        viewBox={`0 0 ${w} ${h}`}
-        role="img"
-        aria-label="Pattern trajectory sparkline (preview)"
-        style={{ display: "block" }}
-      >
-        <polyline
-          fill="none"
-          stroke={stroke}
-          strokeWidth={1.4}
-          strokeLinejoin="round"
-          strokeLinecap="round"
-          points={points}
-        />
-      </svg>
+      Trajectory pending
     </span>
   );
 }
 
 // ============================================================================
-// PR #4 — Recipe-confidence dot
+// Recipe-confidence dot placeholder — face-validity-debt cleanup (Dmitri R3)
 // ----------------------------------------------------------------------------
-// Preview placeholder until ranking.json carries an `rci` field. Color
-// drawn from a small seeded hash of row identity so the dots stabilise on
-// SSR/CSR. Tooltip names the rung honestly as a preview.
+// Same principle as the sparkline above: the prior dot was a seeded-color
+// preview that read as "this row has a real RCI rung" to non-hovering users.
+// Replaced with a neutral grey dot + clearer hover copy. Wires up to the
+// real `rci` field when ranking.json carries it.
 // ============================================================================
-const RCI_PREVIEW_RUNGS = [
-  { color: "#22c55e", label: "GREEN preview" },
-  { color: "#fbbf24", label: "YELLOW preview" },
-  { color: "#f87171", label: "RED preview" },
-  { color: "#94a3b8", label: "INSUFFICIENT preview" },
-];
-
-function RciDot({ row }: { row: PatternsMergedRow }) {
-  const seed = `${row.country_a}-${row.country_b}-${row.start_year_a}`;
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) {
-    h = (Math.imul(31, h) + seed.charCodeAt(i)) | 0;
-  }
-  const rung = RCI_PREVIEW_RUNGS[Math.abs(h) % RCI_PREVIEW_RUNGS.length];
+function RciDot({ row: _row }: { row: PatternsMergedRow }) {
   return (
     <span
-      aria-label={`Recipe confidence: ${rung.label}`}
-      title={`Recipe confidence: ${rung.label}. Wires up to real bake data when ranking.json carries the column.`}
+      aria-label="Recipe confidence — bake pending"
+      title="Recipe Confidence Index will populate when ranking.json carries the `rci` column. Held as a neutral placeholder rather than a seeded preview color, since colored dots read as real RCI rungs to non-hovering users."
       style={{
         display: "inline-block",
         width: 10,
         height: 10,
         borderRadius: 999,
-        backgroundColor: rung.color,
+        backgroundColor: "var(--qgi-surface-2)",
+        border: "1px dashed var(--qgi-border)",
       }}
     />
   );
