@@ -687,7 +687,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         <div
           className="text-right text-sm font-data tabular-nums"
           style={{ color: "var(--qgi-text)" }}
-          title="Pattern Power Score (PPS) — composite ranking metric. PPS = correlation × persistence × breadth on the row's matching indicator set. Range typically 0–3000. NOT a probability, NOT a calibrated forecast — use as a sort key only. For sovereign-credit work, lean on the correlation coefficient and window length as the substantive inputs."
+          title="Pattern Power Score (PPS) — composite ranking metric. Bake formula: avg_correlation × pattern_length (years) × indicator_count. NOT a probability, NOT a calibrated forecast — use as a sort key only. For sovereign-credit work, lean on the correlation coefficient and window length as the substantive inputs."
         >
           {row.pattern_power_score.toFixed(0)}
         </div>
