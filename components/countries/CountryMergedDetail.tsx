@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import type { RiskTier } from "@/lib/country-risks.schema";
+import { formatBakeMonthYear } from "@/lib/format-bake-date";
 
 /**
  * Country merged-detail page — Build PR #3 of 5 (A3 Family 2 merger brief).
@@ -777,7 +778,14 @@ function WhatsHappeningHere({
   // the chip should disclose that *without* reading as a not-yet-shipped
   // status. Neutral status chip + visible bake date conveys data vintage
   // and authorship class in one breath.
-  const statusLabel = bakeDate ? `Auto-generated · Bake ${bakeDate}` : "Auto-generated";
+  // Gates-doc Rank 5 — "Bake 2026-04-30" reads as engineer jargon to the
+  // journalism / UN / NGO / consulting segments. "Data through April 2026"
+  // is the journalist-grade phrasing. Fatima + James + Marcus + Dmitri +
+  // Santiago all flagged this independently in R1-R3.
+  const formattedVintage = formatBakeMonthYear(bakeDate);
+  const statusLabel = formattedVintage
+    ? `Auto-generated · Data through ${formattedVintage}`
+    : "Auto-generated";
   return (
     <section className="mb-8" aria-labelledby="whats-happening-heading">
       <div className="flex items-center gap-2 mb-3 flex-wrap">

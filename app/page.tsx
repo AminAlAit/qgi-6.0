@@ -93,7 +93,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         tier: country.overall_risk_tier,
         topCategory: prettyCategory(top.category),
         precedents,
-        signal: `${precedents.toLocaleString()} precedent windows; top drivers in ${prettyCategory(
+        signal: `${precedents.toLocaleString()} historical matches; top drivers in ${prettyCategory(
           top.category
         ).toLowerCase()}.`,
         _salience: salience,
@@ -352,7 +352,7 @@ export default async function LandingPage() {
                     className="font-data text-xs mb-3"
                     style={{ color: "var(--qgi-text-muted)" }}
                   >
-                    {c.precedents} precedent windows
+                    {c.precedents} historical matches
                   </div>
 
                   {/* Signal description */}

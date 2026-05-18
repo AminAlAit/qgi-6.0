@@ -286,15 +286,15 @@ export function PrecedentDetailClient({
             tooltip="Total number of historical analogue patterns linking this country to others in this category."
           />
           <MetricCard
-            label="Peak Salience"
+            label="Peak Alarm Level"
             value={maxSalience.toFixed(2)}
             color={salienceColor}
-            tooltip="Maximum salience score across all pattern tiers. Scores above 1.2 are considered high-signal."
+            tooltip="Highest alarm level (salience-z score) across all pattern tiers. Values above 1.2 are considered high-signal — i.e., the country's indicator profile is more than 1.2 standard deviations above the panel baseline."
           />
           <MetricCard
             label="Active Tiers"
             value={`${activeTierCount} / 4`}
-            tooltip="Number of pattern-length tiers (S/M/L/XL) with at least one active precedent window."
+            tooltip="Number of pattern-length tiers (S/M/L/XL) with at least one active historical match."
           />
           <MetricCard
             label="Last Event Year"
@@ -781,7 +781,7 @@ function generateNarrativeLede(
   return (
     <>
       {country.name}&apos;s indicators show {intensity} {catLabel.toLowerCase()} signals
-      with {totalRecipes.toLocaleString()} historical precedent windows {tierDesc}.
+      with {totalRecipes.toLocaleString()} historical matches {tierDesc}.
       {lastEventYear && (
         <>
           {" "}
