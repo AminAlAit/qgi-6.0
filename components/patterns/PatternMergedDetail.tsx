@@ -345,9 +345,9 @@ export function PatternMergedDetail({
             tooltip={`Pearson |r| averaged across ${row.num_indexes} shared indicators.`}
           />
           <StatCell
-            label="Pattern Power"
+            label="Pattern strength"
             value={row.pattern_power_score.toFixed(0)}
-            tooltip="Pattern Power Score: composite of correlation strength, persistence, and breadth. Not a predictive probability."
+            tooltip="Pattern strength: composite of correlation, persistence, and breadth. Not a predictive probability."
           />
           <StatCell
             label="Length"

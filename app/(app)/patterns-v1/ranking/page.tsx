@@ -519,7 +519,7 @@ export default function RankingPage() {
             <span
               className="text-[9px] tracking-[0.12em] uppercase"
               style={{ color: "var(--qgi-text-dim)" }}
-              title="Minimum Pattern Power Score — strength + persistence + breadth"
+              title="Minimum pattern strength — composite of correlation, persistence, and breadth"
             >
               Min Score
             </span>
@@ -752,7 +752,7 @@ export default function RankingPage() {
           </div>
           <div className="flex items-center gap-1 justify-end">
             <span>Strength</span>
-            <InfoTooltip text="Pattern Power Score (PPS) measures overall pattern quality: correlation strength, pattern length, and indicator coverage. The bar shows relative strength within this view. Correlation tier: S (>=85%), A (70-84%), B (55-69%), C (<55%)." />
+            <InfoTooltip text="Pattern strength measures overall pattern quality: correlation, pattern length, and indicator coverage. The bar shows relative strength within this view. Correlation tier: S (≥85%), A (70-84%), B (55-69%), C (<55%)." />
           </div>
         </div>
 
@@ -966,7 +966,7 @@ function PpsBar({ pps, maxPps }: { pps: number; maxPps: number }) {
       <span
         className="text-[9px] uppercase tracking-wider shrink-0"
         style={{ color: "var(--qgi-text-dim)" }}
-        title="Pattern Power Score — strength + persistence + breadth"
+        title="Pattern strength — composite of correlation, persistence, and breadth"
       >
         Score
       </span>

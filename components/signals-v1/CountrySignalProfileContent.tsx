@@ -272,7 +272,7 @@ export function CountrySignalProfileContent() {
                                 : "var(--qgi-success)",
                         }}
                       >
-                        <span title="Pattern Power Score — strength + persistence + breadth">
+                        <span title="Pattern strength — composite of correlation, persistence, and breadth">
                           Score {s.pattern_power_score.toFixed(1)}
                         </span>
                       </span>

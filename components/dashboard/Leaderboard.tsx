@@ -36,7 +36,7 @@ export function Leaderboard({ patterns }: Props) {
         <span className="flex-1">FOLLOWING</span>
         <span
           className="w-16 text-right"
-          title="Pattern Power Score — strength + persistence + breadth"
+          title="Pattern strength — composite of correlation, persistence, and breadth"
         >
           SCORE
         </span>

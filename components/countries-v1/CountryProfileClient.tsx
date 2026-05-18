@@ -377,7 +377,7 @@ export function CountryProfileClient({
                     <div
                       className="text-[9px] tracking-widest"
                       style={{ color: "var(--qgi-text-dim)" }}
-                      title="Pattern Power Score — strength + persistence + breadth"
+                      title="Pattern strength — composite of correlation, persistence, and breadth"
                     >
                       SCORE
                     </div>

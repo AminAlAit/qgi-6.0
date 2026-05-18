@@ -1409,7 +1409,7 @@ export default function PatternsClient({
                         </th>
                         <th className="px-3 py-2.5 text-left pl-6">
                           SCORE
-                          <InfoTooltip text="Pattern Power Score — strength + persistence + breadth." />
+                          <InfoTooltip text="Pattern strength — composite of correlation, persistence, and breadth." />
                         </th>
                         <th className="px-3 py-2.5 text-right">
                           LEAD
@@ -1724,7 +1724,7 @@ export default function PatternsClient({
                           <div
                             className="text-[9px] tracking-widest uppercase"
                             style={{ color: "var(--qgi-text-dim)" }}
-                            title="Pattern Power Score — strength + persistence + breadth"
+                            title="Pattern strength — composite of correlation, persistence, and breadth"
                           >
                             SCORE -- {ppsLbl}
                           </div>
