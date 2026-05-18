@@ -83,6 +83,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
+  // Single load of ml-recipe-stack.json, reused by both the /precedents
+  // emission below and the /signals leaf-URL emission further down.
+  // Sonnet PR #123 F2 — prior version of this file fetched the stack
+  // twice serially; in-process cache made it cheap but the duplicate
+  // was misleading.
+  const mlStack = await loadMlRecipeStack().catch(() => null);
+  const lockedRecipeSet = new Set(mlStack?.metadata.top_4_recipes ?? []);
+
   // #464: V2.0 canonical URLs.
   //   /precedents/{slug}                — Recipe (one per LOCKed ML recipe)
   //   /signals/{country-slug}           — country-rolled-up watchlist
@@ -97,9 +105,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // `next.config.ts RETIRED_PRECEDENT_SLUGS`. Emitting them in the
   // sitemap would invite Google to surface URLs that redirect — bad
   // for crawl budget + indexed-URL hygiene.
-  try {
-    const stack = await loadMlRecipeStack();
-    for (const slug of stack.metadata.top_4_recipes) {
+  if (mlStack) {
+    for (const slug of mlStack.metadata.top_4_recipes) {
       entries.push({
         url: `${BASE_URL}/precedents/${slug}`,
         lastModified: now,
@@ -110,15 +117,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: 0.8,
       });
     }
-  } catch {
-    // If ml-recipe-stack.json is unreachable at build time, ship the
-    // sitemap without the precedent slugs rather than failing entirely.
   }
+  // If ml-recipe-stack.json was unreachable at build time, ship the
+  // sitemap without the precedent slugs rather than failing entirely.
 
   // Country-profile + signals routes.
   try {
     const data = await loadCountryRisks();
     const lastMod = data.generated_at ? new Date(data.generated_at) : now;
+    // #815 (2026-05-18) — /signals graduation: only emit leaf URLs for
+    // the 4 LOCKed recipes. Same rationale as the /precedents sitemap
+    // trim (#748 PR-3) — non-LOCKed leaves are reachable via direct URL
+    // but unsurfaced from the /signals index, so emitting them in the
+    // sitemap would invite Google to surface URLs that aren't part of
+    // the validated-recipe product surface. Reuses the `lockedRecipeSet`
+    // hoisted above. When mlStack failed to load, the set is empty and
+    // no leaf URLs emit (still ships parent /signals/{country} routes).
     for (const [id, country] of Object.entries(data.countries)) {
       // /countries/{id} — country profile (unchanged from V1.x).
       entries.push({
@@ -139,11 +153,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         priority: country.overall_risk_tier === "HIGH" ? 0.7 : 0.5,
       });
 
-      // /signals/{country-slug}/{cat} — top categories per country
-      // (replaces the old /countries/{id}/{cat} entries).
+      // /signals/{country-slug}/{cat} — only the 4 LOCKed recipes per
+      // #815 graduation. Pre-graduation this emitted top-3 categories
+      // per country across all tier windows (~2-3K leaves total).
       const seenCats = new Set<string>();
       for (const tier of Object.values(country.tiers)) {
         for (const cat of tier.top_categories.slice(0, 3)) {
+          if (!lockedRecipeSet.has(cat.category)) continue;
           if (seenCats.has(cat.category)) continue;
           seenCats.add(cat.category);
           entries.push({

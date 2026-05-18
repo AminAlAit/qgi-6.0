@@ -25,8 +25,8 @@ import type { SignalRow, SignalTier } from "@/app/(app)/signals/page";
  *     strip (live tier counts)
  *   - Lloyd's-style methodology disclosure banner
  *   - Filter strip: search + tier buttons + domain multi-select
- *   - 71-row main table with 5 cols (CATEGORY · TIER · MAX SALIENCE ·
- *     COUNTRIES FIRING · TOP COUNTRIES)
+ *   - 4-row main table (post-#815 graduation; pre-graduation was 71) with
+ *     5 cols (CATEGORY · TIER · MAX SALIENCE · COUNTRIES FIRING · TOP COUNTRIES)
  *
  * Deferred to PR #3: per-country watchlist /signals/[country]
  * Deferred to PR #4: per-(country, recipe) leaf with split-render by lineage
@@ -187,8 +187,8 @@ export function SignalsMergedListClient({
           className="text-xs mt-2 font-data tabular-nums"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          {signals.length} categories tracked · {firingTotal} firing across{" "}
-          {totalCountries} countries · v1.9.1 scoring
+          {signals.length} ML-validated {signals.length === 1 ? "recipe" : "recipes"} ·{" "}
+          {firingTotal} firing across {totalCountries} countries · v1.9.1 scoring
         </p>
       </div>
 
@@ -815,7 +815,16 @@ function FiringNowBand({
 // ============================================================================
 
 function DomainActivationStrip({ domains }: { domains: DomainActivation[] }) {
-  const maxN = Math.max(1, ...domains.map((d) => d.n_categories));
+  // #815 (2026-05-18) — after the 4-only graduation the LOCKed recipes
+  // concentrate in 2 L1 domains (F-Conflict + B-Governance). Rendering all
+  // 8 L1 cells with 6 stuck at 0 made the strip look broken. Filter to
+  // non-zero domains for visual clarity; the post-graduation subtitle
+  // tells the reader these are the activated subset.
+  const activeDomains = domains.filter((d) => d.n_categories > 0);
+  // Defensive fallback: if NOTHING is firing (edge case for future bakes),
+  // fall back to the full list so the strip still renders.
+  const shown = activeDomains.length > 0 ? activeDomains : domains;
+  const maxN = Math.max(1, ...shown.map((d) => d.n_categories));
   return (
     <section
       aria-label="Domain activation"
@@ -842,18 +851,19 @@ function DomainActivationStrip({ domains }: { domains: DomainActivation[] }) {
           className="text-[9px] tracking-widest uppercase"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          categories firing ≥ MODERATE · 8 L1 domains
+          categories firing ≥ MODERATE · {shown.length} active{" "}
+          {shown.length === 1 ? "L1 domain" : "L1 domains"}
         </span>
       </div>
       <div
         className="grid"
         style={{
-          gridTemplateColumns: `repeat(${domains.length}, minmax(0, 1fr))`,
+          gridTemplateColumns: `repeat(${shown.length}, minmax(0, 1fr))`,
         }}
       >
-        {domains.map((d, idx) => {
+        {shown.map((d, idx) => {
           const heightPct = (d.n_categories / maxN) * 100;
-          const isLast = idx === domains.length - 1;
+          const isLast = idx === shown.length - 1;
           return (
             <div
               key={d.code}

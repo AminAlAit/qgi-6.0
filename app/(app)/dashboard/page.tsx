@@ -137,13 +137,24 @@ async function fetchTopSignals(): Promise<SignalRow[]> {
  * revised by founder+ML-Opus.
  */
 function aggregateSignalsTierCounts(
-  risks: Awaited<ReturnType<typeof loadCountryRisks>> | null
+  risks: Awaited<ReturnType<typeof loadCountryRisks>> | null,
+  lockedRecipeSlugs: ReadonlyArray<string>
 ): { n_high: number; n_moderate: number; n_total: number } {
   if (!risks) return { n_high: 0, n_moderate: 0, n_total: 0 };
+  // #815 (2026-05-18) — match the /signals 4-only graduation: the
+  // dashboard's "See all N risk recipes →" link points to /signals, so
+  // its count must match what /signals actually surfaces. Pre-#815 this
+  // aggregated across the full ~71-category bake, which produced an
+  // n_total of 67-71 conflicting with the post-graduation /signals
+  // showing 4. If the LOCKed list is unavailable (mlStack load failed),
+  // fall back to no-filter so the dashboard degrades to pre-#815 shape
+  // rather than displaying zeros.
+  const lockedSet = lockedRecipeSlugs.length > 0 ? new Set(lockedRecipeSlugs) : null;
   const perCategory = new Map<string, number>();
   for (const country of Object.values(risks.countries)) {
     for (const tierBlock of Object.values(country.tiers ?? {})) {
       for (const c of tierBlock.top_categories ?? []) {
+        if (lockedSet && !lockedSet.has(c.category)) continue;
         const sal = c.salience_score ?? c.z_score ?? 0;
         const prev = perCategory.get(c.category) ?? -Infinity;
         if (sal > prev) perCategory.set(c.category, sal);
@@ -180,8 +191,15 @@ export default async function DashboardPage() {
 
   const indexes = indexData as IndexEntry[];
 
+  // PR-4 (#752) — Top Convergences panel filters to LOCKed-only so it
+  // never surfaces a recipe whose detail page has been retired (would
+  // 308 to /precedents per #751).
+  const lockedRecipeSlugs = mlStack?.metadata.top_4_recipes ?? [];
+
   // PR-vi Section 3 (Signals card) — server-side aggregation.
-  const signalsTierCounts = aggregateSignalsTierCounts(risks);
+  // #815 (2026-05-18): now filtered to LOCKed recipes so the count
+  // matches /signals after the 4-only graduation.
+  const signalsTierCounts = aggregateSignalsTierCounts(risks, lockedRecipeSlugs);
 
   // PR-vi Section 3 (Precedents card) — counts.
   const mlValidatedCount = mlStack?.metadata.top_4_recipes.length ?? 0;
@@ -189,11 +207,6 @@ export default async function DashboardPage() {
   // ops/ml-track/FINAL-RESULTS.md). Update only if pre-registration is
   // revised by founder+ML-Opus.
   const TOTAL_LOCKED = 13;
-
-  // PR-4 (#752) — Top Convergences panel filters to LOCKed-only so it
-  // never surfaces a recipe whose detail page has been retired (would
-  // 308 to /precedents per #751).
-  const lockedRecipeSlugs = mlStack?.metadata.top_4_recipes ?? [];
 
   return (
     <BaseClient

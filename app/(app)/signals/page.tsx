@@ -1,4 +1,5 @@
 import { loadCountryRisks } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
 import { SignalsMergedListClient } from "@/components/signals/SignalsMergedListClient";
 import type { CategoryScore } from "@/lib/country-risks";
@@ -34,7 +35,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Signals — QGI Intelligence",
   description:
-    "71 risk categories aggregated across 156 countries with lineage-aware tier vocabulary (HIGH / MODERATE / INDICATIVE).",
+    "ML-validated risk recipes tracked across 156 countries — each adjudicated through blind walk-forward backtest and the QGI four-pillar lock rubric. Tier vocabulary: HIGH / MODERATE / INDICATIVE.",
   // #699: explicit canonical (was inheriting "/" from root layout).
   alternates: { canonical: "/signals" },
 };
@@ -73,9 +74,24 @@ export default async function SignalsMergedPage() {
   let loadError: string | null = null;
 
   try {
-    const data = await loadCountryRisks();
+    // #815 (2026-05-18) — /signals graduation: mirror the /precedents 4-only
+    // graduation. Only ML-LOCKed recipes (those in mlStack.metadata.top_4_recipes)
+    // are surfaced on this index. Non-LOCKed categories continue to live in the
+    // bake (and on /countries/[iso] "what's happening here" prose) — they're
+    // just unreachable from this index. Single source of truth for the LOCKed
+    // set is data/ml-recipe-stack.json (40+ usages across the codebase).
+    //
+    // mlStack load uses .catch() so a transient fetch failure degrades to
+    // an empty filter (0 rows shown, friendly empty state) rather than
+    // blanking the entire index. Mirrors the dashboard/page.tsx fallback
+    // posture. Sonnet PR #123 F1.
+    const [data, mlStack] = await Promise.all([
+      loadCountryRisks(),
+      loadMlRecipeStack().catch(() => null),
+    ]);
     totalCountries = Object.keys(data.countries).length;
     bakeGeneratedAt = data.generated_at ?? null;
+    const lockedRecipeSet = new Set(mlStack?.metadata.top_4_recipes ?? []);
 
     // Aggregation mirrors V1's buildSignals(): for each country, dedupe
     // per-category to the highest-salience entry across all tier windows,
@@ -93,6 +109,11 @@ export default async function SignalsMergedPage() {
       const perCategoryBest = new Map<string, CategoryScore>();
       for (const tierBlock of Object.values(country.tiers ?? {})) {
         for (const c of tierBlock.top_categories ?? []) {
+          // #815 graduation gate — drop non-LOCKed categories at the
+          // innermost loop so downstream aggregation, FiringNowBand,
+          // DomainActivationStrip, and tierCounts all derive from the
+          // 4-recipe view without further filtering.
+          if (!lockedRecipeSet.has(c.category)) continue;
           const sal = c.salience_score ?? c.z_score ?? 0;
           const existing = perCategoryBest.get(c.category);
           const existingSal = existing
