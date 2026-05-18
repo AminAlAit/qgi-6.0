@@ -316,10 +316,18 @@ export function PrecedentMergedDossier({
           </span>
         </div>
 
-        {/* 6a. PPS calibration band */}
+        {/* 6a. PPS bootstrap CI — Gates Rank 17 (Roberto R5 actuary
+            recommendation, closes #782). Renamed from "PPS calibration
+            band" to disambiguate from the MODEL calibration (ECE) shown
+            in §3b above. Roberto: "the dossier already shows ECE = 0.006
+            (excellent); the band below is the PPS sort-key bootstrap CI,
+            not a model-calibration claim." */}
         <div className="mb-6">
-          <SectionLabel title="Pattern Power Score — composite quality metric the screen ranks on. Centerline is the recipe's observed value; band would show the 95% bootstrap CI when available.">
-            PPS calibration band
+          <SectionLabel title="Pattern Power Score — the composite quality metric the screen ranks on. Centerline is the recipe's observed value; band would show the 95% bootstrap CI when available. Distinct from the model calibration error (ECE) shown above.">
+            PPS bootstrap CI{" "}
+            <span className="font-normal" style={{ color: "var(--qgi-text-dim)" }}>
+              (distinct from model ECE above)
+            </span>
           </SectionLabel>
           <PpsBand substrate={substrate} />
         </div>
@@ -715,14 +723,14 @@ function PpsBand({ substrate }: { substrate: RecipeAggregated }) {
         backgroundColor: "var(--qgi-surface-2)",
         border: "1px dashed var(--qgi-border)",
       }}
-      title="Calibration uncertainty band will populate when the next bake ships the field. The 95% bootstrap CI replaces this placeholder once available."
+      title="Bootstrap CI on the Pattern Power Score will populate when the next bake ships the field. The 95% bootstrap CI replaces this placeholder once available. Distinct from the model ECE (calibration error) shown in the model-calibration section above."
     >
       <div className="flex flex-col gap-0.5">
         <span
           className="text-[9px] tracking-widest uppercase font-semibold"
           style={{ color: "var(--qgi-text-dim)" }}
         >
-          Calibration band
+          PPS bootstrap CI
         </span>
         <span className="text-sm" style={{ color: "var(--qgi-text-muted)" }}>
           Bake pending — populates with a 95% bootstrap CI in the next bake
