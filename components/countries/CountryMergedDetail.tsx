@@ -304,9 +304,9 @@ export function CountryMergedDetail({
           <span style={{ color: "var(--qgi-text-muted)" }}>
             How to read this together:
           </span>{" "}
-          a country&apos;s composite tier reflects its highest-firing L1 dimension — so a
-          country can sit at INDICATIVE overall while ranking in the top quartile on a
-          specific recipe below. Click any recipe row for its cohort percentile.
+          a country&apos;s composite tier reflects its highest-scoring risk dimension — so
+          a country can sit at INDICATIVE overall while ranking in the top quartile on a
+          specific recipe below. Each recipe row shows its own cohort percentile.
         </p>
       )}
 
