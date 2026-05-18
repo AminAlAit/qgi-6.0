@@ -1308,8 +1308,15 @@ export default function PatternsClient({
                         which disables pointer-events on the input body
                         and restores it only on the ::thumb pseudo-element.
                         Each thumb is now independently grabbable. */}
+                    {/* #741 (2026-05-18): swap aria-label-only inputs for
+                        visually-hidden <label htmlFor> + matching id per
+                        WCAG 1.3.1. Labels are sr-only so the visible
+                        range-slider UX is unchanged. */}
+                    <label htmlFor="patterns-v1-length-min" className="sr-only">
+                      Minimum pattern length
+                    </label>
                     <input
-                      aria-label="Minimum pattern length"
+                      id="patterns-v1-length-min"
                       type="range"
                       min={globalMinLen}
                       max={globalMaxLen}
@@ -1320,8 +1327,11 @@ export default function PatternsClient({
                       className="qgi-dual-thumb-input absolute top-0 w-full h-2 bg-transparent appearance-none"
                       style={{ zIndex: 2 }}
                     />
+                    <label htmlFor="patterns-v1-length-max" className="sr-only">
+                      Maximum pattern length
+                    </label>
                     <input
-                      aria-label="Maximum pattern length"
+                      id="patterns-v1-length-max"
                       type="range"
                       min={globalMinLen}
                       max={globalMaxLen}
