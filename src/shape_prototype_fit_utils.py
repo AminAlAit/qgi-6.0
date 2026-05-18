@@ -687,28 +687,40 @@ def build_gp_fallback_model(
 ) -> "pm.Model":
     """Construct the PyMC model for the §3.1.4 hierarchical-Bayes + GP fallback.
 
-    Per §3.1.4 binding spec:
+    **Post-F-H-4-A1 model** (qgi-docs 2026-05-18, 8-seat ratified 8/8):
 
-        y_c^(k)(t) = f_r^(k)(t) + g_c^(k)(t) + ε_c,t^(k)
+        y_c^(k)(t) = f_r^(k)(t) + ε_c,t^(k)
 
         f_r^(k)  ~ GP(0, κ_recipe^(k)(t, t'))      — recipe-level functional mean
-        g_c^(k)  ~ GP(0, κ_instance^(k)(t, t'))    — instance-level residual
         ε_c,t^(k) ~ N(0, σ_ε²)                     — observation noise
 
-    Squared-exponential kernels:
-        κ_recipe^(k)(t,t')   = α_k² exp(-(t-t')²/(2ℓ_k²))
-        κ_instance^(k)(t,t') = α_inst_k² exp(-(t-t')²/(2ℓ_inst_k²))
-                                (same form, smaller amplitude prior)
+    Squared-exponential kernel:
+        κ_recipe^(k)(t,t') = α_k² exp(-(t-t')²/(2ℓ_k²))
 
     Hyperpriors per Priya §3.1.4:
-        α_k      ~ HalfCauchy(0, 1)
-        ℓ_k      ~ InvGamma(2, 1)          — avoids zero length-scales
-        σ_ε      ~ HalfCauchy(0, 0.5)
+        α_k  ~ HalfCauchy(0, 1)
+        ℓ_k  ~ InvGamma(2, 1)          — avoids zero length-scales
+        σ_ε  ~ HalfCauchy(0, 0.5)
 
-    The instance-level residual GPs share the same prior form but with a
-    smaller amplitude prior (HalfCauchy(0, 0.5)) to enforce shrinkage:
-    recipe-level mean should dominate the instance-level residual for the
-    canonical shape to generalize across instances.
+    **F-H-4-A1 amendment context (binding):** the instance-level residual GP
+    g_c^(k) and its hyperpriors (α_inst_k, ℓ_inst_k) were removed from
+    §3.1.4 per qgi-docs#115 (merged 396aa67). Justification: the production-
+    scale model (K_indicators = 5, yielding 35 scalar free variables)
+    exceeded the PyTensor Python-interpreter-mode kernel argument limit
+    under the PYTENSOR_FLAGS=cxx= pin (Windows substrate constraint
+    inherited from Path-B Bayes). The crash occurred at model dispatch
+    before any sample was drawn — F-Shape-1 not violated. Instance-level
+    variation now absorbed into σ_ε^(k) per indicator (homoskedastic).
+    Variable count: 3 scalars per indicator (α_k, ℓ_k, σ_ε_k) + 1 vector
+    per indicator (f_r_k of length T_r). Well under PyTensor's kernel-arg
+    limit.
+
+    §3.5.1 posterior_cov_diag contract preserved: still extracted from the
+    Bayesian posterior over f_r^(k) at integer time points.
+
+    Restoration path: if Linux/WSL2 substrate enables PyTensor C-compiler
+    mode, restore g_c^(k) per pre-amendment §3.1.4 + file fresh F-H-4
+    amendment retracting F-H-4-A1.
 
     Args:
         trajectories: (N_r, T_r, K_indicators) array of normalized trajectories.
@@ -775,26 +787,22 @@ def build_gp_fallback_model(
                 shape=(T_r,),
             )
 
-            # --- Instance-level residual GPs (§3.1.4 binding) ---
-            # Smaller amplitude prior to enforce shrinkage toward recipe mean.
-            alpha_inst_k = pm.HalfCauchy(f"alpha_inst_{k}", beta=0.5)
-            ell_inst_k = pm.InverseGamma(f"ell_inst_{k}", alpha=2.0, beta=1.0)
-            K_instance = alpha_inst_k**2 * pm.math.exp(-D2 / (2.0 * ell_inst_k**2))
-            K_instance_jittered = K_instance + 1e-6 * np.eye(T_r)
-            # One residual GP per instance (shape: N_r × T_r).
-            g_c_k = pm.MvNormal(
-                f"g_c_{k}",
-                mu=np.zeros(T_r),
-                cov=K_instance_jittered,
-                shape=(N_r, T_r),
-            )
-
-            # --- Observation noise (§3.1.4 binding) ---
+            # --- Observation noise (§3.1.4 binding, post-F-H-4-A1) ---
+            # Instance-level GP g_c^(k) removed per F-H-4-A1 amendment
+            # (qgi-docs 2026-05-18, 8-seat ratified 8/8 APPROVE).
+            # Substrate justification: PyTensor Python-mode kernel argument
+            # limit at K_indicators=5 × 7 vars = 35 scalars exceeds fusion
+            # capacity under PYTENSOR_FLAGS=cxx= pin (Windows constraint).
+            # Instance-level variation now absorbed into sigma_eps
+            # (homoskedastic per indicator). §3.5.1 posterior_cov_diag
+            # contract preserved (still from f_r_k NUTS posterior draws).
+            # Restoration path: if Linux/WSL2 substrate enables C compiler,
+            # restore g_c^(k) per pre-amendment §3.1.4 + retract F-H-4-A1.
             sigma_eps = pm.HalfCauchy(f"sigma_eps_{k}", beta=0.5)
 
             # --- Likelihood ---
-            # y_c^(k)(t) = f_r^(k)(t) + g_c^(k)(t) + ε_c,t^(k)
-            mu_obs = f_r_k[None, :] + g_c_k  # (N_r, T_r) broadcast
+            # y_c^(k)(t) = f_r^(k)(t) + ε_c,t^(k)  (post-F-H-4-A1)
+            mu_obs = f_r_k[None, :]  # (1, T_r) broadcast over N_r instances
             pm.Normal(
                 f"obs_{k}",
                 mu=mu_obs,
@@ -864,18 +872,15 @@ def fit_gp_fallback(
         )
 
     # --- Collect diagnostic variable names ---
-    # Per Sonnet review (PR #80 NIT-1): include BOTH recipe-level AND instance-level
-    # hyperpriors (alpha_recipe / alpha_inst, ell_recipe / ell_inst) plus sigma_eps
-    # and f_r_k. The full g_c tensor is excluded by design (high-dimensional nuisance;
-    # not consumed by §3.5.1 scoring) but the scalar instance-level hyperpriors are
-    # cheap to gate and catch poor mixing on the instance-level kernel.
+    # Post-F-H-4-A1: instance-level GP hyperpriors (alpha_inst / ell_inst) and
+    # the g_c tensor are removed from the model (qgi-docs 2026-05-18 amendment,
+    # 8-seat ratified 8/8). Only recipe-level GP hyperpriors + sigma_eps + f_r_k
+    # are gated for R-hat / ESS convergence.
     diag_var_names = []
     for k in range(K_indicators):
         diag_var_names.extend([
             f"alpha_recipe_{k}",
             f"ell_recipe_{k}",
-            f"alpha_inst_{k}",
-            f"ell_inst_{k}",
             f"sigma_eps_{k}",
         ])
         # f_r_{k} is a vector variable; include it for R-hat / ESS.
@@ -1012,6 +1017,12 @@ def extract_gp_posterior_signature(
             "posterior_cov_diag": [float(x) for x in np.maximum(cov_diag, 0.0).tolist()],
             # Provenance tag — parallel to the FPCA path's "posterior_mean_lkj_back_projected".
             "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
+            # F-H-4-A1 amendment provenance (qgi-docs 2026-05-18, 8-seat ratified).
+            # Instance-level GP g_c^(k) removed from §3.1.4 model per substrate
+            # constraint (PyTensor Python-mode kernel arg limit). Restoration
+            # path: WSL/Linux substrate → retract F-H-4-A1 + restore g_c^(k).
+            "gp_fallback_variant": "v2_no_instance_gp",
+            "gp_fallback_amendment": "F-H-4-A1",
         }
         signatures.append(sig)
 
