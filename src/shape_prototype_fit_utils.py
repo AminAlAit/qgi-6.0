@@ -863,12 +863,19 @@ def fit_gp_fallback(
             cores=1,
         )
 
-    # --- Collect diagnostic variable names (all f_r_k, alpha, ell, sigma) ---
+    # --- Collect diagnostic variable names ---
+    # Per Sonnet review (PR #80 NIT-1): include BOTH recipe-level AND instance-level
+    # hyperpriors (alpha_recipe / alpha_inst, ell_recipe / ell_inst) plus sigma_eps
+    # and f_r_k. The full g_c tensor is excluded by design (high-dimensional nuisance;
+    # not consumed by §3.5.1 scoring) but the scalar instance-level hyperpriors are
+    # cheap to gate and catch poor mixing on the instance-level kernel.
     diag_var_names = []
     for k in range(K_indicators):
         diag_var_names.extend([
             f"alpha_recipe_{k}",
             f"ell_recipe_{k}",
+            f"alpha_inst_{k}",
+            f"ell_inst_{k}",
             f"sigma_eps_{k}",
         ])
         # f_r_{k} is a vector variable; include it for R-hat / ESS.
