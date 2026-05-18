@@ -7,9 +7,10 @@ under fallback uses "posterior kernel-induced covariance in place of Σ_r").
 Test design:
   - Fast synthetic tests (small N, T_r ≤ 5, 2 chains × 200 iter) to stay
     well under the 60-second budget.
-  - GP sampler tests are marked @pytest.mark.slow (they still run in 30-60s
-    with the reduced settings but wall-time can exceed the fast-suite budget
-    on slower machines or under heavy CI load).
+  - GP sampler tests are marked @pytest.mark.slow. Post-F-H-4-A1
+    (qgi-docs 2026-05-18, 8-seat ratified), the simplified model fits
+    faster than the pre-amendment two-GP variant; in Python interpreter
+    mode on Windows expect minutes per slow test, not seconds.
   - Schema-compliance tests are fast (no NUTS).
 
 Lakatosian guard: no BH/FDR introduced here (§3.6 veto operative).
@@ -257,6 +258,9 @@ def test_extract_gp_posterior_signature_structure() -> None:
         # cov_diag must be >= 0 (§3.5.1 Mahalanobis denominator; §4.2 floor).
         assert all(v >= 0.0 for v in sig["posterior_cov_diag"])
         assert sig["cov_diag_source"] == "posterior_gp_f_r_empirical_cov_diag"
+        # F-H-4-A1 provenance fields (qgi-docs 2026-05-18, 8-seat ratified).
+        assert sig["gp_fallback_variant"] == "v2_no_instance_gp"
+        assert sig["gp_fallback_amendment"] == "F-H-4-A1"
 
 
 def test_posterior_cov_diag_is_gp_posterior_not_empirical_variance() -> None:
