@@ -8,6 +8,11 @@ import {
   type PatternsSearchParams,
   type PatternWindowTier,
 } from "@/lib/patterns-initial-filters";
+import {
+  computePatternTrajectory,
+  type PatternTrajectory,
+  type VerifiedEvent,
+} from "@/lib/pattern-trajectory";
 
 /**
  * /patterns — Preview-only route for A3 merger brief Family 4.
@@ -67,6 +72,8 @@ export interface PatternsMergedRow extends PatternRow {
   window_tier: PatternWindowTier;
   /** Server-derived stable key for React lists. */
   row_key: string;
+  /** T1 (#59) — leader terminating event + follower arc position. */
+  trajectory: PatternTrajectory;
 }
 
 interface RankingPayload {
@@ -97,13 +104,48 @@ async function loadRanking(): Promise<RankingPayload> {
   }
 }
 
+/**
+ * T1 (#59) — load the verified-events corpus once per request and return
+ * a country-indexed Map for O(1) lookup during row enrichment. Empty Map
+ * fallback on failure mirrors `loadRanking()` — the page degrades to the
+ * missing-event state ("No verified event on record") rather than failing.
+ */
+async function loadVerifiedEventsByCountry(): Promise<Map<string, VerifiedEvent[]>> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "verified-events.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const json: unknown = JSON.parse(raw);
+    if (!Array.isArray(json)) return new Map();
+    const byCountry = new Map<string, VerifiedEvent[]>();
+    for (const item of json as VerifiedEvent[]) {
+      if (!item || typeof item.country !== "string" || typeof item.year !== "number") {
+        continue;
+      }
+      const key = item.country.toLowerCase();
+      const bucket = byCountry.get(key);
+      if (bucket) bucket.push(item);
+      else byCountry.set(key, [item]);
+    }
+    return byCountry;
+  } catch {
+    return new Map();
+  }
+}
+
 interface PageProps {
   searchParams: Promise<PatternsSearchParams>;
 }
 
 export default async function PatternsMergedPage({ searchParams }: PageProps) {
   const params = await searchParams;
-  const payload = await loadRanking();
+  // T1 (#59) — kick off events load in parallel with ranking; both are
+  // independent fs reads and we need both before the row map below.
+  const [payload, eventsByCountry] = await Promise.all([
+    loadRanking(),
+    loadVerifiedEventsByCountry(),
+  ]);
   const raw = payload.results;
 
   // Gates-doc Rank 4 / face-validity-debt #718 (Marcus R3, Dmitri R3):
@@ -134,6 +176,14 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
     ...p,
     window_tier: mapPatternTier(p.pattern_tier),
     row_key: `${p.country_a}-${p.country_b}-${p.start_year_a}-${i}`,
+    // T1 (#59) — Phase B trajectory: derive the leader's terminating event
+    // (country_a, end_year_a) from `verified-events.json` and compute the
+    // follower's elapsed position. Pre-sliced by country to avoid scanning
+    // the full corpus once per row.
+    trajectory: computePatternTrajectory(
+      p,
+      eventsByCountry.get(p.country_a.toLowerCase()) ?? []
+    ),
   }));
 
   // Tier counts for the metric strip.

@@ -10,6 +10,7 @@ import type {
   PatternWindowTier,
   PatternsInitialFilters,
 } from "@/lib/patterns-initial-filters";
+import { PatternTrajectoryCell } from "@/components/patterns/PatternTrajectoryCell";
 
 /**
  * Merged Patterns list shell — Build PR #4 of 5 (A3 Family 4 merger brief).
@@ -524,7 +525,7 @@ export function PatternsMergedListClient({
               <div
                 className="hidden md:grid items-center px-4 py-2.5 text-[10px] tracking-widest uppercase gap-x-2"
                 style={{
-                  gridTemplateColumns: "2.5fr 90px 100px 110px 90px 90px 24px",
+                  gridTemplateColumns: "2fr 80px 90px 100px 70px 240px 24px",
                   color: "var(--qgi-text-dim)",
                   borderBottom: "1px solid var(--qgi-border)",
                   backgroundColor: "var(--qgi-surface-2)",
@@ -630,7 +631,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         href={detailHref}
         className="px-4 py-3 grid items-center gap-x-2 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
         style={{
-          gridTemplateColumns: "2.5fr 90px 100px 110px 90px 90px 24px",
+          gridTemplateColumns: "2fr 80px 90px 100px 70px 240px 24px",
         }}
       >
         <div className="flex items-center gap-2 min-w-0">
@@ -707,8 +708,11 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
           {row.pattern_length}y
         </div>
 
-        {/* Sparkline — PR #4 preview data */}
-        <Sparkline row={row} />
+        {/* T1 (#59) — leader terminating event + follower arc position */}
+        <PatternTrajectoryCell
+          trajectory={row.trajectory}
+          leaderCountry={row.country_a}
+        />
 
         {/* Recipe-confidence dot — PR #4 preview placeholder */}
         <RciDot row={row} />
@@ -1022,36 +1026,6 @@ function FacetPlaceholder({ label, tooltip }: { label: string; tooltip: string }
 }
 
 // ============================================================================
-// Sparkline placeholder — face-validity-debt cleanup (Dmitri R3)
-// ----------------------------------------------------------------------------
-// The earlier version (PR #4) rendered a 7-point SVG line "deterministically
-// seeded on row identity" — i.e., fake data dressed as a chart. Dmitri R3
-// catch: "fake charts are worse than no charts." Tooltip disclosed the
-// seeding but non-hovering users saw what looked like real time-series.
-// Trust regression for any analyst who hovers and finds the deception.
-//
-// Replaced with an honest `[Preview — bake pending]` minichip placeholder,
-// matching the PpsBand pattern in PrecedentMergedDossier. Wires up to real
-// trajectories when ranking.json carries the per-window series.
-// ============================================================================
-function Sparkline({ row: _row }: { row: PatternsMergedRow }) {
-  return (
-    <span
-      className="inline-flex items-center text-[9px] tracking-wider uppercase font-data px-1.5 py-0.5 rounded"
-      style={{
-        backgroundColor: "var(--qgi-surface-2)",
-        color: "var(--qgi-text-dim)",
-        border: "1px dashed var(--qgi-border)",
-      }}
-      title="Pattern trajectory will populate when the next bake ships per-window correlation series. Held as a placeholder rather than a seeded preview, since fake charts read as real to non-hovering users."
-      aria-label="Pattern trajectory — bake pending"
-    >
-      Trajectory pending
-    </span>
-  );
-}
-
-// ============================================================================
 // Recipe-confidence dot placeholder — face-validity-debt cleanup (Dmitri R3)
 // ----------------------------------------------------------------------------
 // Same principle as the sparkline above: the prior dot was a seeded-color
@@ -1138,8 +1112,12 @@ function PatternGridCard({ row, rank }: { row: PatternsMergedRow; rank: number }
         </div>
       </div>
 
+      {/* T1 (#59) — leader terminating event + follower arc position */}
       <div className="mb-2">
-        <Sparkline row={row} />
+        <PatternTrajectoryCell
+          trajectory={row.trajectory}
+          leaderCountry={row.country_a}
+        />
       </div>
 
       <div className="flex items-baseline justify-between gap-2 font-data tabular-nums">
