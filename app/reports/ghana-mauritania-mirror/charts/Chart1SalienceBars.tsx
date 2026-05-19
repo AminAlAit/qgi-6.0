@@ -57,7 +57,7 @@ export default function Chart1SalienceBars() {
     <figure
       id="ghana-election-coup-salience-bars"
       className="my-8 relative"
-      style={{ maxWidth: "100%", overflowX: "auto" }}
+      style={{ maxWidth: "100%" }}
     >
       <svg
         viewBox={`0 0 ${labelW + chartW + 8} ${svgH}`}
@@ -162,7 +162,7 @@ export default function Chart1SalienceBars() {
                   fontFamily="var(--font-data, monospace)"
                   fill="var(--qgi-text-muted)"
                 >
-                  — not in top tier
+                  (not in top tier)
                 </text>
               )}
             </g>
@@ -257,9 +257,9 @@ export default function Chart1SalienceBars() {
         className="mt-2 text-xs leading-relaxed"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        Ghana salience z-scores — Elections &amp; Voting vs Military Coup across tier
+        Ghana salience z-scores: Elections &amp; Voting vs Military Coup across tier
         windows. L-tier peak (2.76σ) highlighted. Military Coup absent from XL top tier.
-        Source: country-risks.json, April 2026 bake (QGI V1.9.1).
+        Source: country-risks.json, April 2026 scoring run (QGI V1.9.1).
       </figcaption>
     </figure>
   );
