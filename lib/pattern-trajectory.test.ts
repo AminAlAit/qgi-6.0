@@ -165,6 +165,37 @@ describe("computePatternTrajectory", () => {
     expect(t.terminatingEvent).toBeNull();
   });
 
+  it("populates falsificationAnchor when terminatingEvent is non-null", () => {
+    const row = {
+      country_a: "South Korea",
+      country_b: "Paraguay",
+      start_year_a: 1985,
+      start_year_b: 1987,
+      pattern_length: 2,
+    };
+    const t = computePatternTrajectory(row, SAMPLE_EVENTS, 2026);
+    expect(t.falsificationAnchor).not.toBeNull();
+    expect(t.falsificationAnchor!.followerCountry).toBe("Paraguay");
+    expect(t.falsificationAnchor!.eventCategory).toBe("elections_and_voting");
+    expect(t.falsificationAnchor!.eventCategoryDisplay).toBe("Elections And Voting");
+    // followerEndYear = 1987 + 2 = 1989, so window = [1988, 1990]
+    expect(t.falsificationAnchor!.windowStart).toBe(1988);
+    expect(t.falsificationAnchor!.windowEnd).toBe(1990);
+  });
+
+  it("leaves falsificationAnchor null when terminatingEvent is null", () => {
+    const row = {
+      country_a: "Brazil",
+      country_b: "Argentina",
+      start_year_a: 1900,
+      start_year_b: 1900,
+      pattern_length: 10,
+    };
+    const t = computePatternTrajectory(row, SAMPLE_EVENTS, 2026);
+    expect(t.terminatingEvent).toBeNull();
+    expect(t.falsificationAnchor).toBeNull();
+  });
+
   it("uses leader (country_a) for the event lookup, not follower (country_b)", () => {
     // Paraguay has 1989 coup; South Korea has 1987 democratization.
     // If we accidentally look up follower (country_b = Paraguay) instead
