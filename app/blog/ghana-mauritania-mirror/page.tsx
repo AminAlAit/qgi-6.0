@@ -437,9 +437,16 @@ function FiscalTrajectoryChart() {
   const chartW = svgW - paddingL - paddingR;
   const chartH = svgH - paddingT - paddingB;
 
+  // Sonnet PR #125 review fix: previously maxYear came from the last
+  // IMF_ECF_MARKERS year (2025), which made xScale(2025.5) and
+  // xScale(2026) extrapolate to ~580-615px outside the 560-wide
+  // viewBox — the watch-window shading was rendered off-screen and
+  // invisible. The line still ends at the last actual data point
+  // (2025); only the x-axis domain is extended to accommodate the
+  // November 2026 forward watch window the figcaption promises.
   const years = IMF_ECF_MARKERS.map((d) => d.year);
   const minYear = years[0];
-  const maxYear = years[years.length - 1];
+  const maxYear = 2026;
   const minDebt = 50;
   const maxDebt = 100;
 
@@ -463,10 +470,10 @@ function FiscalTrajectoryChart() {
       <svg
         viewBox={`0 0 ${svgW} ${svgH + 36}`}
         width="100%"
-        aria-label="Line chart showing Ghana public debt as percentage of GDP from 2018 to 2025 with IMF ECF program event markers"
+        aria-label="Line chart showing Ghana public debt as percentage of GDP from 2018 to 2025 with IMF ECF program event markers, plus the May-November 2026 trigger watch window shaded"
         style={{ display: "block" }}
       >
-        <title>Ghana public debt/GDP 2018–2025 with IMF ECF event markers</title>
+        <title>Ghana public debt/GDP 2018–2025 + May–November 2026 watch window</title>
 
         {/* Y-axis gridlines */}
         {[60, 70, 80, 90, 100].map((v) => (
