@@ -41,11 +41,9 @@ const STATIC_ROUTES: Array<{
   { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
-  {
-    path: "/blog/ghana-mauritania-mirror",
-    changeFrequency: "monthly",
-    priority: 0.5,
-  },
+  // Ghana piece moved to /reports (2026-05-19); /blog/ghana-mauritania-mirror
+  // 301-redirects via next.config.ts. Removed from sitemap to avoid
+  // surfacing a redirecting URL.
   {
     path: "/blog/burkina-faso-mali-car-precedent",
     changeFrequency: "monthly",
@@ -67,6 +65,12 @@ const STATIC_ROUTES: Array<{
     priority: 0.5,
   },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
+  // Ghana country analysis elevated from /blog (2026-05-19).
+  {
+    path: "/reports/ghana-mauritania-mirror",
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
   // #430 (2026-04-24): FSI demo report re-added to sitemap. Agent 7 QA
   // audit confirmed it renders fully with proper metadata + print CSS.
   // Also re-linked from /reports index so it's reachable via normal nav.

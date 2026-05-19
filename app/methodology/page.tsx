@@ -115,6 +115,37 @@ export default async function MethodologyPage() {
         {/* Stat cards — concrete numbers up-front (replaces brochure feel) */}
         <StatCards />
 
+        {/* What is a bake? — added V2 (2026-05-19) */}
+        <div
+          id="what-is-a-bake"
+          className="mb-10 rounded-lg border p-5"
+          style={{
+            backgroundColor: "var(--qgi-surface)",
+            borderColor: "var(--qgi-border)",
+          }}
+        >
+          <h3
+            className="text-sm font-semibold mb-2"
+            style={{ color: "var(--qgi-accent)" }}
+          >
+            What is a &ldquo;bake&rdquo;?
+          </h3>
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            QGI runs its full scoring pipeline periodically on a fresh snapshot of all
+            available indicator data. Each complete pipeline run is called a bake. Every
+            score, tier, and structural peer shown on QGI is tied to a specific bake date,
+            because indicator data is updated annually by the source providers and model
+            outputs shift as new data arrives. The current live scores reflect the April
+            2026 bake. When a piece refers to &ldquo;the April 2026 bake,&rdquo; it means
+            the specific computation run on that data snapshot. Bake dates are shown on
+            every country page and in every published analysis so that scores can be
+            traced back to the data state that generated them.
+          </p>
+        </div>
+
         {/* Glossary with inline visuals — 5 core terms, non-collapsed.
             Operational terms (Length Tier, Risk Tier, Salience, Rank Fusion,
             Pattern Depth) live in the collapsible block below for readers
@@ -181,7 +212,13 @@ export default async function MethodologyPage() {
                 Per-country z-score (how far above this country&apos;s own average)
                 multiplied by a category drama weight (1.0 for wars / coups, 0.6 for
                 elections, etc). Surfaces
-                <em> unusually</em> pronounced category scores.
+                <em> unusually</em> pronounced category scores. The &sigma; (sigma) unit
+                is a standard deviation: a z-score of 2.76&sigma; means this
+                country&apos;s signal is 2.76 standard deviations above its own historical
+                average for that category &mdash; a level reached by fewer than 1% of
+                observations in a normal distribution. For practical reading: z &gt;
+                1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
+                exceptional.
               </dd>
             </div>
             <div>
@@ -373,6 +410,30 @@ export default async function MethodologyPage() {
             with a horizontal L→R dendrogram. Default view shows 8 master
             groups → 52 sub-categories; click a sub-category to reveal its
             Layer 3 leaves. */}
+        {/* L1 dimensions and structural peers — added V2 (2026-05-19) */}
+        <Section id="l1-dimensions-and-peers" title="L1 Dimensions and Structural Peers">
+          <p>
+            QGI&apos;s event taxonomy has four layers. The first layer (L1) consists of
+            eight master categories &mdash; Political Power &amp; Regime, Conflict &amp;
+            Insurgency, Governance &amp; Rule of Law, Economic &amp; Financial Stress,
+            Social &amp; Civil Unrest, Diplomatic &amp; Geopolitical, Humanitarian &amp;
+            Displacement, and Structural Vulnerability &mdash; that aggregate all
+            subordinate event types. For each country in a bake, QGI computes a salience
+            score for each of these eight dimensions. This 8-dimensional vector is the
+            country&apos;s L1 risk profile, and it is the basis for peer comparison.
+          </p>
+          <p>
+            The structural similarity between two countries&apos; risk profiles is
+            measured using cosine similarity: a geometric measure of how similarly two
+            vectors point in the space of the 8 dimensions, regardless of their absolute
+            scale. A cosine similarity of 99% means the two countries&apos; risk profiles
+            are nearly identical in shape &mdash; the same dimensions are active, in
+            approximately the same proportions &mdash; even if the absolute scores differ.
+            The cosine peer list on each country page shows the five countries whose
+            current L1 profiles are most similar in this geometric sense.
+          </p>
+        </Section>
+
         <p
           id="event-taxonomy-intro"
           className="text-sm leading-relaxed mt-12 mb-3"
@@ -431,6 +492,7 @@ export default async function MethodologyPage() {
           </p>
 
           <h3
+            id="salience-z-score"
             className="text-sm font-semibold mt-6 mb-2"
             style={{ color: "var(--qgi-accent)" }}
           >
@@ -442,6 +504,14 @@ export default async function MethodologyPage() {
             carry full weight. Infrastructure projects and education reforms carry minimal
             weight. This ensures the ranking surfaces consequential signals, not
             statistically unusual but low-impact events.
+          </p>
+          <p className="mt-3">
+            The &sigma; (sigma) unit in salience values is a standard deviation: a z-score
+            of 2.76&sigma; means this country&apos;s signal is 2.76 standard deviations
+            above its own historical average for that category &mdash; a level reached by
+            fewer than 1% of observations in a normal distribution. For practical reading:
+            z &gt; 1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
+            exceptional.
           </p>
 
           <h3
@@ -623,12 +693,103 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
+          {/* LOCO AUC — added V2 (2026-05-19) */}
+          <div
+            id="loco-auc"
+            className="mt-6 rounded border p-4"
+            style={{
+              borderColor: "var(--qgi-border)",
+              backgroundColor: "var(--qgi-surface-2)",
+            }}
+          >
+            <h3
+              className="text-sm font-semibold mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Leave-One-Country-Out AUC (LOCO AUC)
+            </h3>
+            <p className="text-sm leading-relaxed">
+              Each recipe in QGI&apos;s validated set is tested using a
+              leave-one-country-out cross-validation procedure: the model is retrained
+              once for each country in the training set, omitting that country entirely,
+              and then asked to score it. This removes any look-ahead advantage the model
+              might have from seeing the country&apos;s own historical data during
+              training. The Area Under the Curve (AUC) measures how well the model ranks
+              countries that later experienced the relevant event above those that did
+              not, across all prediction thresholds. An AUC of 0.5 means the model
+              performs at chance; 1.0 means perfect discrimination. QGI&apos;s locked
+              recipes currently range from 0.668 (Bilateral Treaty) to 0.869 (Multilateral
+              Agreement). LOCO AUC is the primary quality gate a recipe must clear to
+              enter QGI&apos;s validated set. The LOCO AUC for every recipe appears on its
+              precedent page alongside the score.
+            </p>
+          </div>
+
+          {/* Bootstrap CI — added V2 (2026-05-19) */}
+          <div
+            id="bootstrap-ci"
+            className="mt-4 rounded border p-4"
+            style={{
+              borderColor: "var(--qgi-border)",
+              backgroundColor: "var(--qgi-surface-2)",
+            }}
+          >
+            <h3
+              className="text-sm font-semibold mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Bootstrap Confidence Intervals
+            </h3>
+            <p className="text-sm leading-relaxed">
+              Every Precedent Match score and QGI Risk Score is accompanied by a 95%
+              confidence interval (shown as [lower&ndash;upper] in brackets). The interval
+              is computed by resampling the country&apos;s indicator data thousands of
+              times with replacement, rerunning the score calculation on each resample,
+              and taking the 2.5th and 97.5th percentiles of the resulting distribution. A
+              narrow interval (e.g., [97&ndash;100]) means the score is stable across
+              different data subsets. A wide interval (e.g., [55&ndash;90]) signals
+              genuine uncertainty, either because the underlying indicators are sparse for
+              that country or because the model is sensitive to small data variations for
+              that recipe. Treat wide-CI scores with proportionally more caution.
+            </p>
+          </div>
+
+          {/* ECE — added V2 (2026-05-19) */}
+          <div
+            id="calibration-error"
+            className="mt-4 rounded border p-4"
+            style={{
+              borderColor: "var(--qgi-border)",
+              backgroundColor: "var(--qgi-surface-2)",
+            }}
+          >
+            <h3
+              className="text-sm font-semibold mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Calibration Error (ECE)
+            </h3>
+            <p className="text-sm leading-relaxed">
+              A model can discriminate well (high AUC) while still being poorly calibrated
+              &mdash; for instance, claiming 80% probability for events that only occur
+              50% of the time. Expected Calibration Error measures the average gap between
+              predicted probability and observed frequency, bucketed across the score
+              range. QGI reports ECE alongside AUC for each recipe. An ECE of 0.012 means
+              predictions are on average 1.2 percentage points off from the observed event
+              rate. For comparison, a perfectly calibrated model has ECE = 0. ECE below
+              0.02 is considered well-calibrated for rare structural events; ECE above
+              0.05 should be treated as a warning that the score&apos;s absolute level may
+              be unreliable even if its ranking is informative.
+            </p>
+          </div>
+
           {/* #729 Step 3 (2026-05-16) — Aggregate vs per-recipe narrative.
               Introduces "QGI Risk Score" (country-level) and "Precedent
               Match" (per-recipe) before the live correlation matrix below.
               Voice rule (Ingrid + Sipho): leads with what the reader sees
               on the country / precedent pages, not the technique. */}
           <section
+            id="aggregate-vs-per-recipe"
             className="mt-8 mb-8"
             aria-labelledby="aggregate-vs-per-recipe-heading"
           >

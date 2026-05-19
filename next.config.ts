@@ -287,6 +287,18 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // ─── 2026-05-19 — Ghana piece elevation from /blog to /reports ────
+      //
+      // The Ghana country analysis was published at /blog/ghana-mauritania-mirror
+      // (V3, 2026-05-19) and immediately elevated to /reports in the same
+      // session. 301 permanent redirect preserves any external links or
+      // social-share URLs from the blog path.
+      {
+        source: "/blog/ghana-mauritania-mirror",
+        destination: "/reports/ghana-mauritania-mirror",
+        permanent: true,
+      },
+
       // ─── #748 PR-3 (2026-05-17) — Retired precedent slugs ─────────
       //
       // Every non-LOCKed precedent slug 301-redirects to `/precedents`
