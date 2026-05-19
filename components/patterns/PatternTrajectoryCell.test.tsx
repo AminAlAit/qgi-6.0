@@ -16,6 +16,13 @@ const baseTrajectory: PatternTrajectory = {
     source: "https://example/kr-2017",
     dataEditorial: false,
   },
+  falsificationAnchor: {
+    followerCountry: "Paraguay",
+    eventCategory: "elections_and_voting",
+    eventCategoryDisplay: "Elections And Voting",
+    windowStart: 2025,
+    windowEnd: 2027,
+  },
 };
 
 describe("PatternTrajectoryCell", () => {
@@ -38,6 +45,7 @@ describe("PatternTrajectoryCell", () => {
     const trajectory: PatternTrajectory = {
       ...baseTrajectory,
       terminatingEvent: null,
+      falsificationAnchor: null,
     };
     render(<PatternTrajectoryCell trajectory={trajectory} leaderCountry="Brazil" />);
     expect(
@@ -47,6 +55,28 @@ describe("PatternTrajectoryCell", () => {
     expect(screen.queryByText(/pending/i)).not.toBeInTheDocument();
   });
 
+  it("T2 (#826) — renders the falsification line when falsificationAnchor is present", () => {
+    render(
+      <PatternTrajectoryCell trajectory={baseTrajectory} leaderCountry="South Korea" />
+    );
+    expect(screen.getByText(/Falsifies if/)).toBeInTheDocument();
+    expect(screen.getByText(/Paraguay/)).toBeInTheDocument();
+    expect(screen.getByText(/Elections And Voting/)).toBeInTheDocument();
+    expect(screen.getByText(/2025/)).toBeInTheDocument();
+    expect(screen.getByText(/2027/)).toBeInTheDocument();
+  });
+
+  it("T2 (#826) — omits the falsification line when falsificationAnchor is null", () => {
+    const trajectory: PatternTrajectory = {
+      ...baseTrajectory,
+      terminatingEvent: null,
+      falsificationAnchor: null,
+    };
+    render(<PatternTrajectoryCell trajectory={trajectory} leaderCountry="Brazil" />);
+    // No fabricated placeholder; the row degrades cleanly to 2 lines.
+    expect(screen.queryByText(/Falsifies if/)).not.toBeInTheDocument();
+  });
+
   it("marks cell with data-editorial='true' and data-event-id when sourced editorially", () => {
     const trajectory: PatternTrajectory = {
       ...baseTrajectory,
@@ -54,6 +84,7 @@ describe("PatternTrajectoryCell", () => {
         ...baseTrajectory.terminatingEvent!,
         dataEditorial: true,
       },
+      falsificationAnchor: baseTrajectory.falsificationAnchor,
     };
     const { container } = render(
       <PatternTrajectoryCell trajectory={trajectory} leaderCountry="South Korea" />

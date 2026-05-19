@@ -1,11 +1,12 @@
 /**
- * T1 (#59) — Pattern trajectory cell rendered on /patterns list view.
+ * T1 (#59) + T2 (#826) — Pattern trajectory cell rendered on /patterns list view.
  *
  * Replaces the prior `Sparkline` + "Trajectory pending" chip placeholder.
- * Two stacked lines per row (~38px total):
+ * Three stacked lines per row (~52px total):
  *
- *   Line 1 (narrative): "{LeaderCountry} window closed {year} · {Event title}"
- *   Line 2 (position):  "[████░░░░] Year {n} of {N}"
+ *   Line 1 (narrative):     "{LeaderCountry} window closed {year} · {Event title}"
+ *   Line 2 (position):      "[████░░░░] Year {n} of {N}"
+ *   Line 3 (falsification): "Falsifies if {Follower} sees no '{event}' by {Y±1}"
  *
  * Design synthesis of Ingrid (Cairo / narrative) + Elif (Tufte / inline-
  * density) Majles consults, 2026-05-19. Position bar styling = Elif's
@@ -15,7 +16,16 @@
  *
  * Missing-event state ("No verified event on record") is Ingrid's
  * honest framing — never says "pending" because the lookup has resolved
- * (negatively).
+ * (negatively). When the terminating event is null, the falsification
+ * line is also omitted (no anchor to falsify against) — never replaced
+ * with a generic placeholder.
+ *
+ * T2 (#826) — founder-ratified template 2026-05-19:
+ *   "If [follower] does not experience some form of '[category]' event
+ *    by [end year ±1], this pattern is falsified."
+ * Source: leader's terminating event category (no new authored data, no
+ * hard thresholds; "some form of" framing intentionally leaves
+ * interpretation to the reader / future evaluator).
  *
  * Phase C (editorial polish) is enabled via the `dataEditorial` flag on
  * the trajectory's terminatingEvent; when true, this cell will render
@@ -36,8 +46,13 @@ function truncateTitle(title: string, maxChars = 56): string {
 }
 
 export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
-  const { terminatingEvent, leaderEndYear, followerYearsElapsed, patternLength } =
-    trajectory;
+  const {
+    terminatingEvent,
+    leaderEndYear,
+    followerYearsElapsed,
+    patternLength,
+    falsificationAnchor,
+  } = trajectory;
   const progressPct = patternLength > 0 ? followerYearsElapsed / patternLength : 0;
   const isEditorial = terminatingEvent?.dataEditorial ?? false;
 
@@ -97,6 +112,19 @@ export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
           {positionLabel}
         </span>
       </div>
+      {falsificationAnchor && (
+        <div
+          className="text-[10px] leading-tight truncate"
+          style={{ color: "var(--qgi-text-muted)" }}
+          title={`Falsification anchor: if ${falsificationAnchor.followerCountry} does not experience some form of '${falsificationAnchor.eventCategoryDisplay}' event by ${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}, this pattern is falsified.`}
+        >
+          <span style={{ color: "var(--qgi-text-dim)" }}>Falsifies if</span>{" "}
+          {`${falsificationAnchor.followerCountry} sees no ‘${falsificationAnchor.eventCategoryDisplay}’ by `}
+          <span className="font-data tabular-nums">
+            {falsificationAnchor.windowStart}&ndash;{falsificationAnchor.windowEnd}
+          </span>
+        </div>
+      )}
     </div>
   );
 }

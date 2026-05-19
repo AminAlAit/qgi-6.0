@@ -43,6 +43,41 @@ export interface TerminatingEvent {
   dataEditorial: boolean;
 }
 
+/** snake_case → "Title Case With Spaces" for display. */
+function displayifyCategory(slug: string): string {
+  return slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+/**
+ * T2 (#826) — Forward-looking falsification anchor for the FOLLOWER.
+ *
+ * Founder template (2026-05-19): "If [follower] does not experience some
+ * form of '[event category]' event by [followerEndYear ±1 year], this
+ * pattern is falsified."
+ *
+ * Source of `eventCategory`: the LEADER's terminating event category from
+ * the same verified-events lookup T1 already does. No new authored content,
+ * no recipe-level static fields. Null when there's no terminating event
+ * to anchor on — the cell omits the falsification line in that case
+ * rather than fabricating a generic recipe-name placeholder.
+ *
+ * The "±1 year" tolerance + "some form of" framing intentionally avoids
+ * hard thresholds (per founder direction). Whether a specific real-world
+ * event qualifies as "some form of civil_war_and_insurgency" is left to
+ * the reader / future evaluator — not encoded in this lib.
+ */
+export interface FalsificationAnchor {
+  followerCountry: string;
+  /** Raw event-category slug from the leader's terminating event. */
+  eventCategory: string;
+  /** snake_case → "Title Case With Spaces" for display. */
+  eventCategoryDisplay: string;
+  /** followerEndYear - 1. */
+  windowStart: number;
+  /** followerEndYear + 1. */
+  windowEnd: number;
+}
+
 export interface PatternTrajectory {
   /** Leader's projected window-close year (start_year_a + pattern_length). */
   leaderEndYear: number;
@@ -54,6 +89,9 @@ export interface PatternTrajectory {
   followerYearsElapsed: number;
   /** Pattern length, surfaced for cell render convenience. */
   patternLength: number;
+  /** T2 (#826) — forward falsification anchor for the follower. Null when
+   *  no terminating event is available to anchor on. */
+  falsificationAnchor: FalsificationAnchor | null;
 }
 
 /**
@@ -132,11 +170,21 @@ export function computePatternTrajectory(
     Math.min(row.pattern_length, currentYear - row.start_year_b)
   );
   const terminatingEvent = findTerminatingEvent(row.country_a, leaderEndYear, events);
+  const falsificationAnchor: FalsificationAnchor | null = terminatingEvent
+    ? {
+        followerCountry: row.country_b,
+        eventCategory: terminatingEvent.category,
+        eventCategoryDisplay: displayifyCategory(terminatingEvent.category),
+        windowStart: followerEndYear - 1,
+        windowEnd: followerEndYear + 1,
+      }
+    : null;
   return {
     leaderEndYear,
     terminatingEvent,
     followerEndYear,
     followerYearsElapsed,
     patternLength: row.pattern_length,
+    falsificationAnchor,
   };
 }
