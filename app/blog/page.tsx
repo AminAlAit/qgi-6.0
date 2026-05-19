@@ -24,6 +24,8 @@ export const metadata: Metadata = {
 // Hand-curated post index. New posts get appended here + their own route
 // under app/blog/<slug>/page.tsx. Intentionally no CMS / MDX pipeline yet
 // — shipping something honest beats architecting something grand.
+// Ghana piece moved to /reports/ghana-mauritania-mirror (2026-05-19).
+// Original /blog/ghana-mauritania-mirror 301-redirects via next.config.ts.
 const POSTS: Array<{
   slug: string;
   title: string;
@@ -31,14 +33,6 @@ const POSTS: Array<{
   dek: string;
   tags: string[];
 }> = [
-  {
-    slug: "ghana-mauritania-mirror",
-    title:
-      "Ghana's Double Signal: The Ballot Box, the Barracks, and the Country Nobody Expected",
-    date: "2026-05-19",
-    dek: "QGI places Ghana at the 99th percentile of global election-stress in its April 2026 bake. Its closest structural analogue is not Burkina Faso — it is Mauritania. That comparison is the story.",
-    tags: ["field-note", "precedent", "West Africa"],
-  },
   {
     slug: "burkina-faso-mali-car-precedent",
     title: "Burkina Faso's risk signature mirrors Mali 2010-2012 and CAR 2011-2013",

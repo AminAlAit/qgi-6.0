@@ -96,6 +96,33 @@ export default function ReportsPage() {
 
         {/* Report Cards */}
         <div className="space-y-6">
+          {/* Ghana report — elevated from /blog 2026-05-19 */}
+          <Link
+            href="/reports/ghana-mauritania-mirror"
+            className="block rounded-lg border p-6 transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Country Analysis · May 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              Ghana&apos;s Double Signal: The Ballot Box, the Barracks, and the Country
+              Nobody Expected
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              QGI places Ghana at the 99th percentile of global election-stress in its
+              April 2026 bake. Its closest structural peer is Mauritania at 99% cosine
+              similarity — not Mali, not Burkina Faso. What that structural resemblance
+              means for the six-month forward call.
+            </p>
+          </Link>
+
           {/* 2026-04-24 (#430): FSI demo report re-linked here. Agent 7
               QA audit verified the report renders fully (27K chars, 9 h2
               + 19 h3 sections, proper @media print CSS, correct canonical).
