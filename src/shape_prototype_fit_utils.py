@@ -730,8 +730,9 @@ def build_gp_fallback_model(
     rather than 3K scalar inputs. NOT an F-H-4 amendment — the model
     equations, priors, and posteriors are mathematically identical. Per-
     indicator parameter values are now `alpha_recipe[k]`, `ell_recipe[k]`,
-    `sigma_eps[k]`. Lock JSON provenance unchanged (gp_fallback_variant
-    remains "v2_no_instance_gp"; gp_fallback_amendment remains "F-H-4-A1").
+    `sigma_eps[k]`. After F-H-4-A3 (qgi-docs 2026-05-19), lock JSON
+    provenance becomes gp_fallback_variant = "v3_no_instance_gp_lognormal_ell"
+    + gp_fallback_amendment = "F-H-4-A1+F-H-4-A3".
 
     §3.5.1 posterior_cov_diag contract preserved: still extracted from the
     Bayesian posterior over f_r^(k) at integer time points.
