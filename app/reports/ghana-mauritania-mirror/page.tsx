@@ -109,15 +109,15 @@ const FOOTNOTES = [
   },
   {
     n: 8,
-    term: "salience z-score",
-    def: "A measure of how unusual a country's score for a given risk category is relative to its own historical average, scaled in units of standard deviation (σ); z = 2.76 means the score is 2.76 standard deviations above that country's mean.",
-    anchor: "#scoring",
-  },
-  {
-    n: 9,
     term: "S-tier / M-tier / L-tier / XL-tier",
     def: "Pattern Length Tiers grouping historical precedent windows by duration: S = 3–8 years (policy cycles), M = 9–20 years (leadership eras), L = 21–40 years (structural shifts), XL = 41+ years; each tier captures a different type of structural dynamic.",
     anchor: "#pattern-tiers",
+  },
+  {
+    n: 9,
+    term: "salience z-score",
+    def: "A measure of how unusual a country's score for a given risk category is relative to its own historical average, scaled in units of standard deviation (σ); z = 2.76 means the score is 2.76 standard deviations above that country's mean.",
+    anchor: "#scoring",
   },
   {
     n: 10,
@@ -418,13 +418,10 @@ export default function GhanaMauritaniaReportPage() {
               </Link>{" "}
               Precedent Match
             </Fn>{" "}
-            registers{" "}
-            <Fn n={3}>
-              99/100 [95% <Fn n={4}>bootstrap CI</Fn>: 97&ndash;100]
-            </Fn>
-            , placing it at the 99th percentile of a 131-country global cohort. Its
-            top-salience risk category at the short-horizon window is not elections; it is
-            Military Coup. And its closest structural analogue, at 99%{" "}
+            registers <Fn n={3}>99/100</Fn> [95% <Fn n={4}>bootstrap CI</Fn>:
+            97&ndash;100] , placing it at the 99th percentile of a 131-country global
+            cohort. Its top-salience risk category at the short-horizon window is not
+            elections; it is Military Coup. And its closest structural analogue, at 99%{" "}
             <Fn n={11}>cosine similarity</Fn> on the{" "}
             <Fn n={12}>8-dimension L1 risk profile</Fn>, is not Mali or Burkina Faso or
             Niger. It is{" "}
@@ -456,9 +453,9 @@ export default function GhanaMauritaniaReportPage() {
           </p>
           <p>
             What makes Ghana unusual is the{" "}
-            <Fn n={9}>S-tier / M-tier / L-tier / XL-tier</Fn> progression. At the S-tier
+            <Fn n={8}>S-tier / M-tier / L-tier / XL-tier</Fn> progression. At the S-tier
             (short time-horizon window), Military Coup is Ghana&apos;s top-ranked risk
-            category with a <Fn n={8}>salience z-score</Fn> of 1.39. Elections &amp;
+            category with a <Fn n={9}>salience z-score</Fn> of 1.39. Elections &amp;
             Voting is third. At the M-tier (medium window), Military Coup holds the top
             rank (salience 1.42); Elections &amp; Voting climbs to second (salience 1.14,
             z-score 1.90). At the L-tier (long window), Elections &amp; Voting surges to
