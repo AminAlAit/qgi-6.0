@@ -631,7 +631,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         href={detailHref}
         className="px-4 py-3 grid items-center gap-x-2 transition-colors hover:bg-[color:var(--qgi-surface-2)]"
         style={{
-          gridTemplateColumns: "2.5fr 90px 100px 110px 90px 90px 24px",
+          gridTemplateColumns: "2fr 80px 90px 100px 70px 240px 24px",
         }}
       >
         <div className="flex items-center gap-2 min-w-0">
