@@ -197,8 +197,8 @@
         },
         "gp_fallback_variant": {
           "type": "string",
-          "enum": ["v2_no_instance_gp"],
-          "description": "F-H-4-A1 amendment provenance (qgi-docs 2026-05-18, 8-seat ratified). Present only on GP-fallback indicator signatures. 'v2_no_instance_gp' = post-amendment §3.1.4 model without g_c^(k). If a future amendment restores g_c^(k) on Linux/WSL2 substrate, a new variant value will be enumerated."
+          "enum": ["v2_no_instance_gp", "v3_no_instance_gp_lognormal_ell"],
+          "description": "F-H-4-A1 + F-H-4-A3 amendment provenance (qgi-docs 2026-05-18 / 2026-05-19, each 8-seat ratified). Present only on GP-fallback indicator signatures. 'v2_no_instance_gp' = post-F-H-4-A1 §3.1.4 model without g_c^(k), with InvGamma(2,1) on ell_recipe. 'v3_no_instance_gp_lognormal_ell' = post-F-H-4-A3 model with ell_recipe ~ LogNormal(log(1.5), 0.5) to address SE-kernel saturation multimodality at T_r=5 (Rasmussen & Williams 2006 §5.4.5; Stein 1999 §2.7). New emissions after the F-H-4-A3 merge MUST use 'v3_no_instance_gp_lognormal_ell'."
         },
         "gp_fallback_amendment": {
           "type": "string",
