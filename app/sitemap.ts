@@ -42,6 +42,11 @@ const STATIC_ROUTES: Array<{
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   {
+    path: "/blog/ghana-mauritania-mirror",
+    changeFrequency: "monthly",
+    priority: 0.5,
+  },
+  {
     path: "/blog/burkina-faso-mali-car-precedent",
     changeFrequency: "monthly",
     priority: 0.5,

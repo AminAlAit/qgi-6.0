@@ -32,6 +32,14 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
+    slug: "ghana-mauritania-mirror",
+    title:
+      "Ghana's Double Signal: The Ballot Box, the Barracks, and the Country Nobody Expected",
+    date: "2026-05-19",
+    dek: "QGI places Ghana at the 99th percentile of global election-stress in its April 2026 bake. Its closest structural analogue is not Burkina Faso — it is Mauritania. That comparison is the story.",
+    tags: ["field-note", "precedent", "West Africa"],
+  },
+  {
     slug: "burkina-faso-mali-car-precedent",
     title: "Burkina Faso's risk signature mirrors Mali 2010-2012 and CAR 2011-2013",
     date: "2026-05-16",
