@@ -43,6 +43,11 @@ export interface TerminatingEvent {
   dataEditorial: boolean;
 }
 
+/** snake_case → "Title Case With Spaces" for display. */
+function displayifyCategory(slug: string): string {
+  return slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 /**
  * T2 (#826) — Forward-looking falsification anchor for the FOLLOWER.
  *
@@ -150,11 +155,6 @@ export function findTerminatingEvent(
  * Direction convention: country_a = LEADER (analogue, completed arc),
  * country_b = FOLLOWER (live case). Confirmed by Ingrid 2026-05-19.
  */
-/** snake_case → "Title Case With Spaces" for display. */
-function displayifyCategory(slug: string): string {
-  return slug.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
 export function computePatternTrajectory(
   row: Pick<
     PatternRow,
