@@ -10,7 +10,7 @@ import TocSidebar from "./TocSidebar";
 import PrintButton from "./PrintButton";
 
 /**
- * Ghana's Double Signal — /reports route (V2 elevation from /blog).
+ * Ghana's Double Signal: /reports route (V2 elevation from /blog).
  *
  * V2 changes vs V3 blog original:
  *  - Elevated to /reports/ghana-mauritania-mirror
@@ -19,13 +19,13 @@ import PrintButton from "./PrintButton";
  *  - End-of-piece CTA
  *  - 15-term citation-tooltip footnotes
  *  - Interactive chart hover states (client chart components)
- *  - Hero image = Chart 2 (900×400 render)
- *  - OG card = opengraph-image.tsx (1200×630 chart render)
+ *  - Hero image = Chart 2 (900x400 render)
+ *  - OG card = opengraph-image.tsx (1200x630 chart render)
  *  - Sticky table-of-contents (xl: breakpoint, IntersectionObserver)
  *  - Print stylesheet
  *
  * All quantitative claims unchanged from V3 manuscript.
- * Source bake: 2026-04-30, QGI V1.9.1.
+ * Source scoring run: 2026-04-30, QGI V1.9.1.
  */
 
 const BAKE_DATE = "2026-04-30";
@@ -34,9 +34,9 @@ const PUBLISH_DATE = "2026-05-19";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Ghana's Double Signal — QGI Intelligence Report",
+  title: "Ghana's Double Signal: QGI Intelligence Report",
   description:
-    "QGI places Ghana at the 99th percentile of global election-stress in its April 2026 bake. Its closest structural analogue is not Burkina Faso — it is Mauritania. That comparison is the story.",
+    "QGI places Ghana at the 99th percentile of global election-stress in its April 2026 scoring run. Its closest structural analogue is not Burkina Faso, it is Mauritania. That comparison is the story.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/ghana-mauritania-mirror",
   },
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title:
       "Ghana's Double Signal: The Ballot Box, the Barracks, and the Country Nobody Expected",
     description:
-      "QGI places Ghana at the 99th percentile of global election-stress. Its closest structural peer is Mauritania at 99% cosine similarity — not Mali, not Burkina Faso. What that structural resemblance means.",
+      "QGI places Ghana at the 99th percentile of global election-stress. Its closest structural peer is Mauritania at 99% cosine similarity, not Mali, not Burkina Faso. What that structural resemblance means.",
     url: "https://qgintelligence.com/reports/ghana-mauritania-mirror",
     siteName: "QGI Intelligence",
     type: "article",
@@ -109,15 +109,15 @@ const FOOTNOTES = [
   },
   {
     n: 8,
-    term: "salience z-score",
-    def: "A measure of how unusual a country's score for a given risk category is relative to its own historical average, scaled in units of standard deviation (σ); z = 2.76 means the score is 2.76 standard deviations above that country's mean.",
-    anchor: "#scoring",
-  },
-  {
-    n: 9,
     term: "S-tier / M-tier / L-tier / XL-tier",
     def: "Pattern Length Tiers grouping historical precedent windows by duration: S = 3–8 years (policy cycles), M = 9–20 years (leadership eras), L = 21–40 years (structural shifts), XL = 41+ years; each tier captures a different type of structural dynamic.",
     anchor: "#pattern-tiers",
+  },
+  {
+    n: 9,
+    term: "salience z-score",
+    def: "A measure of how unusual a country's score for a given risk category is relative to its own historical average, scaled in units of standard deviation (σ); z = 2.76 means the score is 2.76 standard deviations above that country's mean.",
+    anchor: "#scoring",
   },
   {
     n: 10,
@@ -140,7 +140,7 @@ const FOOTNOTES = [
   {
     n: 13,
     term: "composite risk score 68/100",
-    def: "The country-level QGI Risk Score: a single percentile rank summarising the strength of the country's overall salience signal against the bake cohort; distinct from individual recipe Precedent Match scores.",
+    def: "The country-level QGI Risk Score: a single percentile rank summarising the strength of the country's overall salience signal against the scoring cohort; distinct from individual recipe Precedent Match scores.",
     anchor: "#aggregate-vs-per-recipe",
   },
   {
@@ -151,9 +151,9 @@ const FOOTNOTES = [
   },
   {
     n: 15,
-    term: "April 2026 bake",
-    def: "A specific computation run of QGI's full pipeline on the April 2026 data snapshot; scores are tied to a bake date because indicator data and model outputs change as new data arrives.",
-    anchor: "#what-is-a-bake",
+    term: "April 2026 scoring run",
+    def: "A specific computation run of QGI's full pipeline on the April 2026 data snapshot; scores are tied to a scoring date because indicator data and model outputs change as new data arrives.",
+    anchor: "#what-is-a-scoring-run",
   },
 ] as const;
 
@@ -188,7 +188,7 @@ function Fn({ n, children }: { n: number; children: React.ReactNode }) {
           {n}
         </sup>
       </span>
-      {/* Tooltip card — CSS :hover on .fn-wrap shows .fn-tooltip */}
+      {/* Tooltip card: CSS :hover on .fn-wrap shows .fn-tooltip */}
       <span
         className="fn-tooltip"
         role="tooltip"
@@ -282,6 +282,7 @@ export default function GhanaMauritaniaReportPage() {
   aside { background: #f5f5f5 !important; border-color: #ccc !important; color: #333 !important; }
   a { color: #111 !important; text-decoration: underline !important; }
   #footnotes { border-top: 1px solid #ccc !important; }
+  figure { overflow: visible !important; }
   @page { margin: 20mm 15mm; }
 }
           `,
@@ -290,11 +291,11 @@ export default function GhanaMauritaniaReportPage() {
 
       <ArticleJsonLd
         headline="Ghana's Double Signal: The Ballot Box, the Barracks, and the Country Nobody Expected"
-        description="QGI places Ghana at the 99th percentile of global election-stress in its April 2026 bake. Its closest structural analogue is not Burkina Faso — it is Mauritania."
+        description="QGI places Ghana at the 99th percentile of global election-stress in its April 2026 scoring run. Its closest structural analogue is not Burkina Faso, it is Mauritania."
         url="https://qgintelligence.com/reports/ghana-mauritania-mirror"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/ghana-mauritania-mirror/opengraph-image"
-        author={{ type: "Person", name: "Daniel Mensah" }}
+        author={{ type: "Person", name: "Amin Al-Ait" }}
       />
 
       {/* Navbar */}
@@ -350,13 +351,13 @@ export default function GhanaMauritaniaReportPage() {
             Nobody Expected
           </h1>
           <p className="text-xs mb-1" style={{ color: "var(--qgi-text-dim)" }}>
-            By Daniel Mensah · Bake date: {BAKE_DATE} · QGI V1.9.1
+            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QGI V1.9.1
           </p>
           <p
             className="text-[11px] tracking-wide uppercase"
             style={{ color: "var(--qgi-text-muted)", fontVariant: "small-caps" }}
           >
-            ~9 min read · April 2026 bake
+            ~9 min read · April 2026 scoring run
           </p>
         </div>
 
@@ -367,8 +368,8 @@ export default function GhanaMauritaniaReportPage() {
             className="mt-1 text-xs text-center"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            Ghana vs Mauritania — 99% structural similarity, April 2026 bake. Source: QGI
-            computation.
+            Ghana vs Mauritania, 99% structural similarity, April 2026 scoring run.
+            Source: QGI computation.
           </p>
         </div>
 
@@ -387,12 +388,12 @@ export default function GhanaMauritaniaReportPage() {
           </p>
           <p>
             QGI Intelligence is a system that searches for structural resemblance between
-            countries&apos; economic trajectories and historical precedents — running the
+            countries&apos; economic trajectories and historical precedents, running the
             numbers across 131 countries and hundreds of indicators to surface risk
             patterns that conventional desk analysis does not reach. In its{" "}
-            <Fn n={15}>April 2026 bake</Fn>, Ghana scores at the{" "}
+            <Fn n={15}>April 2026 scoring run</Fn>, Ghana scores at the{" "}
             <Fn n={1}>99th percentile of global election-stress</Fn> globally. Its top
-            short-horizon risk category is not elections — it is military coup. And the
+            short-horizon risk category is not elections; it is military coup. And the
             country whose current economic and political risk fingerprint most closely
             matches Ghana&apos;s, out of every country in the 131-country cohort, is not
             Mali, not Burkina Faso, not any of the countries that analysts already watch
@@ -403,7 +404,7 @@ export default function GhanaMauritaniaReportPage() {
 
           {/* Section 1 */}
           <h2 id="signal" className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-            1. The Signal &mdash; Two Numbers That Don&apos;t Belong Together
+            1. The Signal: Two Numbers That Don&apos;t Belong Together
           </h2>
           <p>
             Ghana&apos;s{" "}
@@ -417,10 +418,10 @@ export default function GhanaMauritaniaReportPage() {
               </Link>{" "}
               Precedent Match
             </Fn>{" "}
-            registers <Fn n={3}>99/100 [95% bootstrap CI: 97&ndash;100]</Fn>, placing it
-            at the 99th percentile of a 131-country global cohort. Its top-salience risk
-            category at the short-horizon window is not elections &mdash; it is Military
-            Coup. And its closest structural analogue, at 99%{" "}
+            registers <Fn n={3}>99/100</Fn> [95% <Fn n={4}>bootstrap CI</Fn>:
+            97&ndash;100] , placing it at the 99th percentile of a 131-country global
+            cohort. Its top-salience risk category at the short-horizon window is not
+            elections; it is Military Coup. And its closest structural analogue, at 99%{" "}
             <Fn n={11}>cosine similarity</Fn> on the{" "}
             <Fn n={12}>8-dimension L1 risk profile</Fn>, is not Mali or Burkina Faso or
             Niger. It is{" "}
@@ -448,19 +449,19 @@ export default function GhanaMauritaniaReportPage() {
             captures more than coup risk. The recipe&apos;s <Fn n={5}>LOCO AUC 0.711</Fn>{" "}
             (<Fn n={6}>MODERATE evidence strength</Fn>) and{" "}
             <Fn n={7}>calibration error of 0.012</Fn> tell you it is a well-performing
-            model &mdash; one of the more reliable in QGI&apos;s current validated set.
+            model, one of the more reliable in QGI&apos;s current validated set.
           </p>
           <p>
             What makes Ghana unusual is the{" "}
-            <Fn n={9}>S-tier / M-tier / L-tier / XL-tier</Fn> progression. At the S-tier
+            <Fn n={8}>S-tier / M-tier / L-tier / XL-tier</Fn> progression. At the S-tier
             (short time-horizon window), Military Coup is Ghana&apos;s top-ranked risk
-            category with a <Fn n={8}>salience z-score</Fn> of 1.39. Elections &amp;
+            category with a <Fn n={9}>salience z-score</Fn> of 1.39. Elections &amp;
             Voting is third. At the M-tier (medium window), Military Coup holds the top
             rank (salience 1.42); Elections &amp; Voting climbs to second (salience 1.14,
             z-score 1.90). At the L-tier (long window), Elections &amp; Voting surges to
-            first &mdash; salience 1.66, z-score 2.76 &mdash; with Military Coup holding
-            second. At the XL-tier (longest window), Elections &amp; Voting dominates at
-            z-score 2.38; Military Coup has dropped out of the top tier entirely.
+            first (salience 1.66, z-score 2.76) with Military Coup holding second. At the
+            XL-tier (longest window), Elections &amp; Voting dominates at z-score 2.38;
+            Military Coup has dropped out of the top tier entirely.
           </p>
 
           <Chart1SalienceBars />
@@ -469,21 +470,21 @@ export default function GhanaMauritaniaReportPage() {
             At short-horizon windows, the model is picking up coup-adjacent conditions as
             the dominant signal. At longer windows, the election-stress signature becomes
             primary. This is the structural fingerprint of a country where institutional
-            stress is building across two timescales simultaneously &mdash; not a country
-            with an acute crisis in one domain.
+            stress is building across two timescales simultaneously, not a country with an
+            acute crisis in one domain.
           </p>
           <p>
             QGI&apos;s <Fn n={13}>composite risk score 68/100</Fn> [CI 60&ndash;75],{" "}
-            <Fn n={14}>Tier HIGH</Fn>. The recipe-level breakdown from the current bake
-            shows Elections &amp; Voting at 99/100, Multilateral Agreement at 73/100 [CI
-            55&ndash;90], and Bilateral Treaty at 27/100 [CI 19&ndash;34]. The wide CI on
-            Multilateral Agreement reflects either model uncertainty or data-coverage
+            <Fn n={14}>Tier HIGH</Fn>. The recipe-level breakdown from the current scoring
+            run shows Elections &amp; Voting at 99/100, Multilateral Agreement at 73/100
+            [CI 55&ndash;90], and Bilateral Treaty at 27/100 [CI 19&ndash;34]. The wide CI
+            on Multilateral Agreement reflects either model uncertainty or data-coverage
             thinness for Ghana&apos;s multilateral treaty history; either reading is
             consistent with the structural argument. Civil War and Insurgency produces a
-            null result for Ghana &mdash; the model does not see conflict-state
-            conditions. This is not the DRC profile. It is not the Sudan profile. The
-            stress is specifically in the political-economy intersection where electoral
-            legitimacy meets institutional fragility.
+            null result for Ghana; the model does not see conflict-state conditions. This
+            is not the DRC profile. It is not the Sudan profile. The stress is
+            specifically in the political-economy intersection where electoral legitimacy
+            meets institutional fragility.
           </p>
           <p>
             The election-stress signal at the 99th percentile is available to any FT
@@ -507,10 +508,10 @@ export default function GhanaMauritaniaReportPage() {
             component; Military Coup is the contextual reinforcement.
           </p>
 
-          {/* Pull-quote 1 — between Section 1 and Section 2 */}
+          {/* Pull-quote 1, between Section 1 and Section 2 */}
           <PullQuote>
             &ldquo;Ghana is not showing one risk; it is showing the precise combination
-            that precedes coup-by-election — where a contested or destabilising electoral
+            that precedes coup-by-election, where a contested or destabilising electoral
             outcome becomes the pretext for military intervention.&rdquo;
           </PullQuote>
 
@@ -519,7 +520,7 @@ export default function GhanaMauritaniaReportPage() {
             id="mauritania-mirror"
             className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
           >
-            2. The Mauritania Mirror &mdash; Why This Comparator Stops You
+            2. The Mauritania Mirror: Why This Comparator Stops You
           </h2>
 
           <Chart2L1Comparison />
@@ -533,16 +534,15 @@ export default function GhanaMauritaniaReportPage() {
             >
               Mauritania
             </Link>{" "}
-            as Ghana&apos;s closest structural analogue, with a{" "}
-            <Fn n={11}>cosine similarity</Fn> of 99% on the{" "}
-            <Fn n={10}>L1 risk profile</Fn>. Political Power &amp; Regime accounts for 66%
-            of the cosine similarity, Economic &amp; Financial Stress for 24%, and
+            as Ghana&apos;s closest structural analogue, with a cosine similarity of 99%
+            on the <Fn n={10}>L1 risk profile</Fn>. Political Power &amp; Regime accounts
+            for 66% of the cosine similarity, Economic &amp; Financial Stress for 24%, and
             Diplomatic &amp; Geopolitical Relations for 9%. The three shared active
-            dimensions &mdash; A, D, and F in QGI&apos;s taxonomy &mdash; form the entire
-            explanatory structure of the match. Ghana and Mauritania&apos;s risk
-            fingerprints are not generally similar across all eight dimensions; they are
-            precisely similar on the three dimensions that matter most for
-            regime-political economy interactions.
+            dimensions (A, D, and F in QGI&apos;s taxonomy) form the entire explanatory
+            structure of the match. Ghana and Mauritania&apos;s risk fingerprints are not
+            generally similar across all eight dimensions; they are precisely similar on
+            the three dimensions that matter most for regime-political economy
+            interactions.
           </p>
           <p>
             Mauritania does not appear on standard West Africa risk dashboards as a
@@ -551,11 +551,11 @@ export default function GhanaMauritaniaReportPage() {
             C&ocirc;te d&apos;Ivoire (larger Francophone economy), or, in the pessimistic
             register, Burkina Faso (post-2015 democratic fragility before the coups).
             Mauritania is off the standard mental map for Ghana analysis because the two
-            countries sit in different subregional frames &mdash; Ghana Anglophone
-            coastal, Mauritania Arabic-French Sahelian desert &mdash; and because their
-            recent political trajectories appear to diverge. Ghana held credible elections
-            in December 2024. Mauritania is run by a general-turned-president who came to
-            power through a coup.
+            countries sit in different subregional frames (Ghana Anglophone coastal,
+            Mauritania Arabic-French Sahelian desert) and because their recent political
+            trajectories appear to diverge. Ghana held credible elections in December
+            2024. Mauritania is run by a general-turned-president who came to power
+            through a coup.
           </p>
           <p>
             That apparent divergence is exactly why the structural similarity is
@@ -563,14 +563,13 @@ export default function GhanaMauritaniaReportPage() {
           </p>
           <p>
             In August 2008, General Mohamed Ould Abdel Aziz overthrew President Sidi Ould
-            Cheikh Abdallahi &mdash; a civilian elected in 2007 in what international
-            observers called Mauritania&apos;s most credible election to that point. The
-            pretext was Abdallahi&apos;s attempt to dismiss officers loyal to Aziz. The AU
-            condemned the coup and suspended Mauritania; the EU froze development
-            assistance. In 2009, Aziz ran for president, won with 52% in a disputed but
-            non-violently contested election, and was internationally recognized within
-            months. His successor, Mohamed Ould Ghazouani, was his hand-picked former
-            general.
+            Cheikh Abdallahi, a civilian elected in 2007 in what international observers
+            called Mauritania&apos;s most credible election to that point. The pretext was
+            Abdallahi&apos;s attempt to dismiss officers loyal to Aziz. The AU condemned
+            the coup and suspended Mauritania; the EU froze development assistance. In
+            2009, Aziz ran for president, won with 52% in a disputed but non-violently
+            contested election, and was internationally recognized within months. His
+            successor, Mohamed Ould Ghazouani, was his hand-picked former general.
           </p>
           <p>
             This is the &ldquo;soft coup with electoral normalization&rdquo; template. It
@@ -580,7 +579,7 @@ export default function GhanaMauritaniaReportPage() {
             coup leader runs for election and wins. The international community accepts
             the result, resets bilateral relations, and moves on. The AU deterrence
             mechanism, already weakened by the Sahel coups, was tested and passed the
-            Mauritania case &mdash; in part because Aziz moved fast toward an electoral
+            Mauritania case, in part because Aziz moved fast toward an electoral
             framework.
           </p>
           <p>
@@ -588,10 +587,10 @@ export default function GhanaMauritaniaReportPage() {
             currently planning a coup. Thirty years of civilian rule and the institutional
             memory of Rawlings-era interventions have created a genuine culture of
             military professionalism in the Ghana Armed Forces. The question is whether
-            the cost-benefit calculus of intervention has shifted &mdash; whether the
-            external deterrence that constrained the calculus has eroded, and whether the
-            domestic conditions (fiscal deterioration, legitimacy stress, proximity to
-            operational theaters) are accumulating.
+            the cost-benefit calculus of intervention has shifted, whether the external
+            deterrence that constrained the calculus has eroded, and whether the domestic
+            conditions (fiscal deterioration, legitimacy stress, proximity to operational
+            theaters) are accumulating.
           </p>
           <p>
             QGI&apos;s 99% cosine match with{" "}
@@ -605,31 +604,31 @@ export default function GhanaMauritaniaReportPage() {
             says: the structural conditions that produce the soft-coup-with-normalization
             pattern are present in Ghana&apos;s indicator trajectory at a level of
             similarity the model finds historically meaningful. Mali and Burkina Faso
-            offer the junta-with-no-timetable template &mdash; indefinite constitutional
+            offer the junta-with-no-timetable template: indefinite constitutional
             suspension, foreign security contractors, Russia-backed legitimation
             architecture. That is a different and more destabilizing outcome. The
-            Mauritania template &mdash; intervention, quick elections, institutional
-            continuity &mdash; is exactly the scenario where preventive engagement has the
-            most leverage and the narrowest window. The distinction matters for policy
-            more than it matters for risk scoring.
+            Mauritania template (intervention, quick elections, institutional continuity)
+            is exactly the scenario where preventive engagement has the most leverage and
+            the narrowest window. The distinction matters for policy more than it matters
+            for risk scoring.
           </p>
 
-          {/* Pull-quote 2 — end of Section 2, before Section 3 */}
+          {/* Pull-quote 2, end of Section 2, before Section 3 */}
           <PullQuote>
-            &ldquo;The Mauritania template — intervention, quick elections, institutional
-            continuity — is exactly the scenario where preventive engagement has the most
+            &ldquo;The Mauritania template (intervention, quick elections, institutional
+            continuity) is exactly the scenario where preventive engagement has the most
             leverage and the narrowest window. The distinction matters for policy more
             than it matters for risk scoring.&rdquo;
           </PullQuote>
 
           {/* Section 3 */}
           <h2 id="forward-call" className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-            3. The Forward Call &mdash; A Six-Month Trigger, Not a Year Target
+            3. The Forward Call: A Six-Month Trigger, Not a Year Target
           </h2>
           <p>
             The forward call is an event-trigger window, not a calendar target. The
-            structural stress QGI is measuring does not wait for election day &mdash; in
-            the Mauritania analogue, it materialized in the 18 months <em>between</em> a
+            structural stress QGI is measuring does not wait for election day; in the
+            Mauritania analogue, it materialized in the 18 months <em>between</em> a
             credible election and a coup. The near-term trigger runs through the IMF
             Extended Credit Facility review cycle. Ghana entered the ECF in 2023 and is in
             its third review, with disbursements contingent on continued fiscal
@@ -640,7 +639,7 @@ export default function GhanaMauritaniaReportPage() {
               The six-month watch window is May&ndash;November 2026: if Ghana misses an
               ECF disbursement trigger or requests a substantial program modification,
               accompanied by public-sector wage arrears or fuel subsidy rollbacks, the
-              fiscal-legitimacy stress will register in QGI&apos;s next bake cycle.
+              fiscal-legitimacy stress will register in QGI&apos;s next scoring cycle.
             </strong>{" "}
             That is the leading indicator.
           </p>
@@ -650,7 +649,7 @@ export default function GhanaMauritaniaReportPage() {
           <p>
             <strong>The falsification scenario.</strong> The call is off if the Mahama
             government navigates the third and fourth ECF reviews without significant
-            program modification &mdash; and if ECOWAS reconstitutes a credible deterrence
+            program modification, and if ECOWAS reconstitutes a credible deterrence
             framework through the Accra Initiative, giving Ghanaian military officers a
             named reputational cost for intervention. Both conditions holding by November
             2026 would signal that QGI&apos;s L-tier election-stress peak has decayed
@@ -660,15 +659,14 @@ export default function GhanaMauritaniaReportPage() {
             The moderate form is most probable: not a junta, not a clean democratic
             handover, but a period of elevated civil-military tension where the
             military&apos;s role as a fiscal-crisis stabilizer becomes politically central
-            &mdash; exercised through informal veto power over economic policy rather than
-            an overt seizure of government. A disputed 2028 electoral outcome resolved
-            through military mediation &mdash; the Mauritania 2009 pattern &mdash; would
-            confirm this scenario. A coup before November 2026 would confirm the extreme
-            form. A clean second electoral cycle with no institutional crisis would
-            falsify it.
+            , exercised through informal veto power over economic policy rather than an
+            overt seizure of government. A disputed 2028 electoral outcome resolved
+            through military mediation (the Mauritania 2009 pattern) would confirm this
+            scenario. A coup before November 2026 would confirm the extreme form. A clean
+            second electoral cycle with no institutional crisis would falsify it.
           </p>
 
-          {/* Pull-quote 3 — end of Section 3, before Section 4 */}
+          {/* Pull-quote 3, end of Section 3, before Section 4 */}
           <PullQuote>
             &ldquo;A coup before November 2026 would confirm the extreme form. A clean
             second electoral cycle with no institutional crisis would falsify it.&rdquo;
@@ -676,27 +674,26 @@ export default function GhanaMauritaniaReportPage() {
 
           {/* Section 4 */}
           <h2 id="gaps" className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-            4. What QGI Doesn&apos;t See &mdash; And Why the Case Still Holds
+            4. What QGI Doesn&apos;t See, And Why the Case Still Holds
           </h2>
           <p>Three named gaps warrant disclosure.</p>
           <p>
-            <strong>Foreign security presence.</strong> QGI&apos;s indicator base &mdash;
-            World Bank development indicators, V-Dem electoral quality scores, SIPRI arms
-            transfer data &mdash; cannot see informal private military company (PMC)
-            approaches. Wagner Group / Africa Corps has operated in Burkina Faso, in the
-            operational theater that borders Ghana&apos;s northern corridor directly. The
-            commercial logic of PMC deployments (mining concession revenue in exchange for
-            security services) maps precisely onto Ghana&apos;s gold-exporting economy.
-            This is not an assertion that PMC discussions are occurring; it is an
-            observation that QGI would not surface them if they were. Field knowledge has
-            to carry this.
+            <strong>Foreign security presence.</strong> QGI&apos;s indicator base (World
+            Bank development indicators, V-Dem electoral quality scores, SIPRI arms
+            transfer data) cannot see informal private military company (PMC) approaches.
+            Wagner Group / Africa Corps has operated in Burkina Faso, in the operational
+            theater that borders Ghana&apos;s northern corridor directly. The commercial
+            logic of PMC deployments (mining concession revenue in exchange for security
+            services) maps precisely onto Ghana&apos;s gold-exporting economy. This is not
+            an assertion that PMC discussions are occurring; it is an observation that QGI
+            would not surface them if they were. Field knowledge has to carry this.
           </p>
           <p>
             <strong>AES bloc-level political coherence.</strong> Niger&apos;s Elections
             &amp; Voting score is 93/100, placing it #10 globally in the same recipe
             cohort as Ghana. Niger sits directly north of Ghana&apos;s northern corridor.
             The Alliance des &Eacute;tats du Sahel has explicitly positioned itself as a
-            peer legitimacy-granting structure &mdash; a Ghanaian military government
+            peer legitimacy-granting structure, and a Ghanaian military government
             recognized by Bamako and Niamey would have a form of regional standing that
             did not exist before 2023. This bloc-level political reality is invisible to
             QGI&apos;s per-country scoring. It changes the expected consequences of a coup
@@ -712,24 +709,24 @@ export default function GhanaMauritaniaReportPage() {
             >
               Ghana
             </Link>
-            &apos;s civil society &mdash; the Commission on Human Rights and
-            Administrative Justice, the Ghana Centre for Democratic Development, the major
-            media houses &mdash; proved robust during the 2008 election dispute, resolving
-            a contested outcome within constitutional frameworks. QGI cannot measure
-            institutional resilience directly; it measures indicator trajectories. The
-            Mauritania analogue involved weaker civil society. This is the most important
-            reason Ghana&apos;s structural risk, conditional on the indicator conditions
-            being met, may be lower than the cosine similarity alone implies.
+            &apos;s civil society (the Commission on Human Rights and Administrative
+            Justice, the Ghana Centre for Democratic Development, the major media houses)
+            proved robust during the 2008 election dispute, resolving a contested outcome
+            within constitutional frameworks. QGI cannot measure institutional resilience
+            directly; it measures indicator trajectories. The Mauritania analogue involved
+            weaker civil society. This is the most important reason Ghana&apos;s
+            structural risk, conditional on the indicator conditions being met, may be
+            lower than the cosine similarity alone implies.
           </p>
           <p>
             Despite these gaps, the structural case holds because of what QGI can see: the
             deteriorating fiscal-political trajectory in Ghana&apos;s Economic &amp;
             Financial Stress dimension (salience 1.01 on the L1 profile), the Political
-            Power &amp; Regime dimension at maximum salience in the current bake (1.66
-            &mdash; the same dimension that accounts for 66% of the Ghana-Mauritania
-            cosine match), and the election-stress recipe at the 99th percentile of a
-            validated global cohort. The gaps do not negate the structural reading; they
-            bound the probability and shape the intervention options.
+            Power &amp; Regime dimension at maximum salience in the current scoring run
+            (1.66, the same dimension that accounts for 66% of the Ghana-Mauritania cosine
+            match), and the election-stress recipe at the 99th percentile of a validated
+            global cohort. The gaps do not negate the structural reading; they bound the
+            probability and shape the intervention options.
           </p>
 
           <Chart4L1Profile />
@@ -773,7 +770,7 @@ export default function GhanaMauritaniaReportPage() {
               Financial Stress 24%, Diplomatic &amp; Geopolitical Relations 9% &middot;
               Multilateral Agreement 73/100 [CI 55&ndash;90] &middot; Bilateral Treaty
               27/100 [CI 19&ndash;34] &middot; Civil War &amp; Insurgency: null &middot;
-              April 2026 bake (generated {BAKE_DATE}) &middot; QGI V1.9.1 scoring.
+              April 2026 scoring run (generated {BAKE_DATE}) &middot; QGI V1.9.1 scoring.
             </p>
             <p className="mb-2">
               Methodology disclosures: (1) Military Coup salience derives from a
@@ -800,7 +797,7 @@ export default function GhanaMauritaniaReportPage() {
               >
                 QGI methodology
               </Link>{" "}
-              for bake computation, salience definition, and cohort construction.
+              for scoring run details, salience definition, and cohort construction.
             </p>
           </aside>
 
@@ -819,8 +816,8 @@ export default function GhanaMauritaniaReportPage() {
               <strong style={{ color: "var(--qgi-text)" }}>
                 Explore the underlying data.
               </strong>{" "}
-              Ghana&apos;s full risk profile — salience scores, precedent matches, and
-              structural peers — is at{" "}
+              Ghana&apos;s full risk profile (salience scores, precedent matches, and
+              structural peers) is at{" "}
               <Link
                 href={"/countries/ghana" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
@@ -845,7 +842,7 @@ export default function GhanaMauritaniaReportPage() {
                 /methodology
               </Link>
               . If your organisation would like to commission country-specific structural
-              analysis of this kind — or discuss access to QGI&apos;s full dataset — write
+              analysis of this kind, or discuss access to QGI&apos;s full dataset, write
               to{" "}
               <a
                 href="mailto:contact@qgintelligence.com"
@@ -858,7 +855,7 @@ export default function GhanaMauritaniaReportPage() {
             </p>
           </aside>
 
-          {/* Footnotes list — for print + non-hover users */}
+          {/* Footnotes list, for print + non-hover users */}
           <section
             id="footnotes"
             className="my-8 pt-6"
@@ -884,7 +881,7 @@ export default function GhanaMauritaniaReportPage() {
                     {fn.n}.
                   </span>
                   <strong style={{ color: "var(--qgi-text)" }}>{fn.term}</strong>
-                  {" — "}
+                  {": "}
                   {fn.def}{" "}
                   <a
                     href={`/methodology${fn.anchor}`}
@@ -905,10 +902,10 @@ export default function GhanaMauritaniaReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Daniel Mensah
-            &middot; Salience values cited from the {BAKE_DATE} V1.9.1 bake. This piece
-            reports structural pattern resemblance and historical analogue comparison. It
-            is not a forecast.
+            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            &middot; Salience values cited from the {BAKE_DATE} V1.9.1 scoring run. This
+            piece reports structural pattern resemblance and historical analogue
+            comparison. It is not a forecast.
           </p>
         </div>
       </article>

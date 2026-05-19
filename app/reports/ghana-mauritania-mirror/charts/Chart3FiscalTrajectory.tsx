@@ -93,7 +93,7 @@ export default function Chart3FiscalTrajectory() {
     <figure
       id="ghana-imf-fiscal-trajectory"
       className="my-8 relative"
-      style={{ maxWidth: "100%", overflowX: "auto" }}
+      style={{ maxWidth: "100%" }}
     >
       <svg
         viewBox={`0 0 ${svgW} ${svgH + 36}`}
@@ -192,7 +192,7 @@ export default function Chart3FiscalTrajectory() {
                 style={{ cursor: "pointer", transition: "r 0.15s" }}
                 onMouseEnter={(e) => handlePointEnter(e, d)}
                 onMouseLeave={handleLeave}
-                aria-label={`${d.year}: debt/GDP ${d.debtGdp}%${d.event ? " — " + d.label : ""}`}
+                aria-label={`${d.year}: debt/GDP ${d.debtGdp}%${d.event ? ". " + d.label : ""}`}
               />
               {d.event && d.label && (
                 <text
@@ -244,7 +244,7 @@ export default function Chart3FiscalTrajectory() {
             fill="var(--qgi-text-dim)"
             fontFamily="sans-serif"
           >
-            ECF milestone (IMF program docs — not QGI data)
+            ECF milestone (IMF program docs, not QGI data)
           </text>
           <circle cx={240} cy={5} r={3} fill="#a78bfa" />
           <text
@@ -287,14 +287,13 @@ export default function Chart3FiscalTrajectory() {
                 Trigger Watch Window
               </div>
               <div style={{ color: "var(--qgi-text-muted)" }}>
-                May–November 2026 trigger watch window — next ECF disbursement review
-                cycle
+                May–November 2026 trigger watch window, next ECF disbursement review cycle
               </div>
             </>
           ) : (
             <>
               <div style={{ color: "var(--qgi-text)", fontWeight: 600, marginBottom: 2 }}>
-                {tooltip.data.year} — {tooltip.data.debtGdp}% debt/GDP
+                {tooltip.data.year}: {tooltip.data.debtGdp}% debt/GDP
               </div>
               {tooltip.data.event && tooltip.data.label && (
                 <div style={{ color: "#fbbf24", marginBottom: 4 }}>
@@ -302,7 +301,7 @@ export default function Chart3FiscalTrajectory() {
                 </div>
               )}
               <div style={{ color: "var(--qgi-text-dim)", fontSize: 10 }}>
-                IMF Article IV historical series — not QGI data
+                IMF Article IV historical series, not QGI data
               </div>
             </>
           )}

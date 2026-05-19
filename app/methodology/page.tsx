@@ -115,9 +115,9 @@ export default async function MethodologyPage() {
         {/* Stat cards — concrete numbers up-front (replaces brochure feel) */}
         <StatCards />
 
-        {/* What is a bake? — added V2 (2026-05-19) */}
+        {/* What is a scoring run? Added V2 (2026-05-19), anchor renamed from what-is-a-bake */}
         <div
-          id="what-is-a-bake"
+          id="what-is-a-scoring-run"
           className="mb-10 rounded-lg border p-5"
           style={{
             backgroundColor: "var(--qgi-surface)",
@@ -128,21 +128,21 @@ export default async function MethodologyPage() {
             className="text-sm font-semibold mb-2"
             style={{ color: "var(--qgi-accent)" }}
           >
-            What is a &ldquo;bake&rdquo;?
+            What is a scoring run?
           </h3>
           <p
             className="text-sm leading-relaxed"
             style={{ color: "var(--qgi-text-muted)" }}
           >
             QGI runs its full scoring pipeline periodically on a fresh snapshot of all
-            available indicator data. Each complete pipeline run is called a bake. Every
-            score, tier, and structural peer shown on QGI is tied to a specific bake date,
-            because indicator data is updated annually by the source providers and model
-            outputs shift as new data arrives. The current live scores reflect the April
-            2026 bake. When a piece refers to &ldquo;the April 2026 bake,&rdquo; it means
-            the specific computation run on that data snapshot. Bake dates are shown on
-            every country page and in every published analysis so that scores can be
-            traced back to the data state that generated them.
+            available indicator data. Each complete pipeline run is a scoring run. Every
+            score, tier, and structural peer shown on QGI is tied to a specific scoring
+            date, because indicator data is updated annually by the source providers and
+            model outputs shift as new data arrives. The current live scores reflect the
+            April 2026 scoring run. When a piece refers to &ldquo;the April 2026 scoring
+            run,&rdquo; it means the specific computation on that data snapshot. Scoring
+            dates are shown on every country page and in every published analysis so that
+            scores can be traced back to the data state that generated them.
           </p>
         </div>
 
@@ -215,7 +215,7 @@ export default async function MethodologyPage() {
                 <em> unusually</em> pronounced category scores. The &sigma; (sigma) unit
                 is a standard deviation: a z-score of 2.76&sigma; means this
                 country&apos;s signal is 2.76 standard deviations above its own historical
-                average for that category &mdash; a level reached by fewer than 1% of
+                average for that category, a level reached by fewer than 1% of
                 observations in a normal distribution. For practical reading: z &gt;
                 1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
                 exceptional.
@@ -414,12 +414,12 @@ export default async function MethodologyPage() {
         <Section id="l1-dimensions-and-peers" title="L1 Dimensions and Structural Peers">
           <p>
             QGI&apos;s event taxonomy has four layers. The first layer (L1) consists of
-            eight master categories &mdash; Political Power &amp; Regime, Conflict &amp;
+            eight master categories (Political Power &amp; Regime, Conflict &amp;
             Insurgency, Governance &amp; Rule of Law, Economic &amp; Financial Stress,
             Social &amp; Civil Unrest, Diplomatic &amp; Geopolitical, Humanitarian &amp;
-            Displacement, and Structural Vulnerability &mdash; that aggregate all
-            subordinate event types. For each country in a bake, QGI computes a salience
-            score for each of these eight dimensions. This 8-dimensional vector is the
+            Displacement, and Structural Vulnerability) that aggregate all subordinate
+            event types. For each country in a scoring run, QGI computes a salience score
+            for each of these eight dimensions. This 8-dimensional vector is the
             country&apos;s L1 risk profile, and it is the basis for peer comparison.
           </p>
           <p>
@@ -427,10 +427,10 @@ export default async function MethodologyPage() {
             measured using cosine similarity: a geometric measure of how similarly two
             vectors point in the space of the 8 dimensions, regardless of their absolute
             scale. A cosine similarity of 99% means the two countries&apos; risk profiles
-            are nearly identical in shape &mdash; the same dimensions are active, in
-            approximately the same proportions &mdash; even if the absolute scores differ.
-            The cosine peer list on each country page shows the five countries whose
-            current L1 profiles are most similar in this geometric sense.
+            are nearly identical in shape: the same dimensions are active, in
+            approximately the same proportions, even if the absolute scores differ. The
+            cosine peer list on each country page shows the five countries whose current
+            L1 profiles are most similar in this geometric sense.
           </p>
         </Section>
 
@@ -508,9 +508,9 @@ export default async function MethodologyPage() {
           <p className="mt-3">
             The &sigma; (sigma) unit in salience values is a standard deviation: a z-score
             of 2.76&sigma; means this country&apos;s signal is 2.76 standard deviations
-            above its own historical average for that category &mdash; a level reached by
-            fewer than 1% of observations in a normal distribution. For practical reading:
-            z &gt; 1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
+            above its own historical average for that category, a level reached by fewer
+            than 1% of observations in a normal distribution. For practical reading: z
+            &gt; 1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
             exceptional.
           </p>
 
@@ -770,8 +770,8 @@ export default async function MethodologyPage() {
               Calibration Error (ECE)
             </h3>
             <p className="text-sm leading-relaxed">
-              A model can discriminate well (high AUC) while still being poorly calibrated
-              &mdash; for instance, claiming 80% probability for events that only occur
+              A model can discriminate well (high AUC) while still being poorly
+              calibrated, for instance claiming 80% probability for events that only occur
               50% of the time. Expected Calibration Error measures the average gap between
               predicted probability and observed frequency, bucketed across the score
               range. QGI reports ECE alongside AUC for each recipe. An ECE of 0.012 means

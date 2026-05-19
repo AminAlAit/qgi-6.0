@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 const TOC_ENTRIES = [
-  { id: "signal", label: "Section 1 — The Signal" },
-  { id: "mauritania-mirror", label: "Section 2 — The Mauritania Mirror" },
-  { id: "forward-call", label: "Section 3 — The Forward Call" },
-  { id: "gaps", label: "Section 4 — What QGI Doesn't See" },
+  { id: "signal", label: "Section 1: The Signal" },
+  { id: "mauritania-mirror", label: "Section 2: The Mauritania Mirror" },
+  { id: "forward-call", label: "Section 3: The Forward Call" },
+  { id: "gaps", label: "Section 4: What QGI Doesn't See" },
   { id: "methodology-footnote", label: "Methodology" },
 ];
 
