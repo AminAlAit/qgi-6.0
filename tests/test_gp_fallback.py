@@ -154,11 +154,28 @@ def test_build_gp_fallback_model_returns_pymc_model() -> None:
 
 
 def test_build_gp_fallback_model_variable_names() -> None:
-    """Model has the expected per-indicator variables per §3.1.4 post-F-H-4-A1.
+    """Model has the expected variables per §3.1.4 post-F-H-4-A1 + vectorization
+    + analytic GP marginalization.
 
     Per qgi-docs F-H-4-A1 amendment (2026-05-18, 8-seat ratified 8/8): the
     instance-level GP g_c^(k) and its hyperpriors (alpha_inst, ell_inst) are
     removed. Only recipe-level GP + observation noise remain per indicator.
+
+    Vectorization refactor (2026-05-18, operational tooling — no F-H-4-A2):
+    per-indicator scalar hyperpriors collapsed into single vector RVs of shape
+    (K,). Same priors, same posteriors. Reduces gradient-accumulator fan-in.
+
+    Analytic GP marginalization (2026-05-18, Ji-Hoon + Kwame consult — no
+    F-H-4-A2): the recipe-level f_r^(k) latent vectors are marginalized out
+    of the NUTS sampling via the closed-form GP marginal likelihood
+    y_c^(k) ~ MvNormal(0, K_recipe + sigma_eps² I_T_r). Mathematically
+    identical (standard GP marginalization identity); same priors on
+    hyperparams, same marginal posteriors. §3.5.1 posterior_mean_trajectory
+    + posterior_cov_diag recovered analytically from the closed-form GP
+    conditional posterior given hyperprior draws. NUTS now only samples
+    the 3 vector hyperpriors — drops free-RV count from 3+K to 3, removes
+    NUTS tree-doubling cost on the high-variance f_r directions, and makes
+    Python-interpreter mode tractable within a single session.
     """
     from shape_prototype_fit_utils import build_gp_fallback_model
 
@@ -167,20 +184,41 @@ def test_build_gp_fallback_model_variable_names() -> None:
     trajs, _, _ = _build_gp_trajectories(N_r=4, T_r=T_r, K_indicators=K)
     model = build_gp_fallback_model(trajs, K_indicators=K, T_r=T_r)
     var_names = {v.name for v in model.free_RVs}
+    # Vectorized hyperpriors: 3 vector RVs of shape (K,). These are the ONLY
+    # free RVs post-marginalization.
+    assert "alpha_recipe" in var_names, "Missing vectorized alpha_recipe"
+    assert "ell_recipe" in var_names, "Missing vectorized ell_recipe"
+    assert "sigma_eps" in var_names, "Missing vectorized sigma_eps"
     for k in range(K):
-        assert f"alpha_recipe_{k}" in var_names, f"Missing alpha_recipe_{k}"
-        assert f"ell_recipe_{k}" in var_names, f"Missing ell_recipe_{k}"
-        assert f"sigma_eps_{k}" in var_names, f"Missing sigma_eps_{k}"
-        assert f"f_r_{k}" in var_names, f"Missing f_r_{k}"
         # F-H-4-A1: instance-level GP removed.
         assert f"alpha_inst_{k}" not in var_names, f"Unexpected alpha_inst_{k} (should be removed per F-H-4-A1)"
         assert f"ell_inst_{k}" not in var_names, f"Unexpected ell_inst_{k} (should be removed per F-H-4-A1)"
         assert f"g_c_{k}" not in var_names, f"Unexpected g_c_{k} (should be removed per F-H-4-A1)"
-    # Total scalar free variables = 3 per indicator (alpha_recipe, ell_recipe, sigma_eps)
-    # + 1 vector per indicator (f_r_k of length T_r). For K=2: 6 scalars + 2 vectors.
-    # This keeps the model well under PyTensor's Python-mode kernel argument limit.
-    n_scalar_vars = sum(1 for v in model.free_RVs if v.name.startswith(("alpha_", "ell_", "sigma_")))
-    assert n_scalar_vars == 3 * K, f"Expected {3 * K} scalar hyperprior vars, got {n_scalar_vars}"
+        # Per-indicator scalar names from pre-vectorization must NOT appear.
+        assert f"alpha_recipe_{k}" not in var_names, (
+            f"Unexpected per-indicator alpha_recipe_{k} (should be vectorized)"
+        )
+        assert f"ell_recipe_{k}" not in var_names, (
+            f"Unexpected per-indicator ell_recipe_{k} (should be vectorized)"
+        )
+        assert f"sigma_eps_{k}" not in var_names, (
+            f"Unexpected per-indicator sigma_eps_{k} (should be vectorized)"
+        )
+        # Analytic marginalization: f_r_k is no longer a free RV — it's
+        # integrated out of the joint likelihood. Recovered analytically
+        # at signature-extraction time from the closed-form GP posterior
+        # given (alpha_recipe[k], ell_recipe[k], sigma_eps[k]) draws.
+        assert f"f_r_{k}" not in var_names, (
+            f"Unexpected f_r_{k} (should be analytically marginalized out per "
+            f"Ji-Hoon + Kwame 2026-05-18 consult)"
+        )
+    # Free RV count: 3 vector hyperpriors only. Removes NUTS tree-doubling
+    # cost on the high-variance f_r directions; makes Python-interpreter mode
+    # tractable for the Phase 1 trio in a single session.
+    assert len(model.free_RVs) == 3, (
+        f"Expected 3 free RVs (3 vectorized hyperpriors, f_r marginalized out), "
+        f"got {len(model.free_RVs)}: {sorted(var_names)}"
+    )
 
 
 def test_build_gp_fallback_model_shape_mismatch_raises() -> None:
@@ -258,9 +296,10 @@ def test_extract_gp_posterior_signature_structure() -> None:
         # cov_diag must be >= 0 (§3.5.1 Mahalanobis denominator; §4.2 floor).
         assert all(v >= 0.0 for v in sig["posterior_cov_diag"])
         assert sig["cov_diag_source"] == "posterior_gp_f_r_empirical_cov_diag"
-        # F-H-4-A1 provenance fields (qgi-docs 2026-05-18, 8-seat ratified).
-        assert sig["gp_fallback_variant"] == "v2_no_instance_gp"
-        assert sig["gp_fallback_amendment"] == "F-H-4-A1"
+        # F-H-4-A1 + F-H-4-A3 provenance fields (qgi-docs 2026-05-18 + 2026-05-19,
+        # each 8-seat ratified). F-H-4-A3 changed ell_recipe prior to LogNormal.
+        assert sig["gp_fallback_variant"] == "v3_no_instance_gp_lognormal_ell"
+        assert sig["gp_fallback_amendment"] == "F-H-4-A1+F-H-4-A3"
 
 
 def test_posterior_cov_diag_is_gp_posterior_not_empirical_variance() -> None:
@@ -459,8 +498,8 @@ def test_fit_gp_fallback_recovers_approximate_alpha_ell_posteriors() -> None:
 
     Uses minimal synthetic data (N_r=3, T_r=3, K=1) to keep wall-time
     manageable on Windows Python-interpreter mode (PYTENSOR_FLAGS=cxx=).
-    The model has ~12 latent parameters: α_recipe, ℓ_recipe, α_inst, ℓ_inst,
-    σ_ε (scalars) + f_r (3) + g_c (3×3=9) ≈ 20 total.
+    Post-F-H-4-A1 + vectorization: 3 vector hyperpriors of shape (K=1,)
+    + K=1 f_r vector of shape (T_r=3,) = 4 free RVs total.
     At 2 chains × 100 tune + 100 draw in Python interpreter mode, this
     should complete in under 60 seconds.
 
