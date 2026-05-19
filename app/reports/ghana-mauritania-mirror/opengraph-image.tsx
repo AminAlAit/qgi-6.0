@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Ghana vs Mauritania — 99% structural similarity · April 2026 bake · QGI Intelligence";
+  "Ghana vs Mauritania, 99% structural similarity · April 2026 scoring run · QGI Intelligence";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function Image() {
           letterSpacing: "-0.5px",
         }}
       >
-        Ghana ↔ Mauritania · 99% structural similarity · April 2026 bake
+        Ghana ↔ Mauritania · 99% structural similarity · April 2026 scoring run
       </div>
       <div
         style={{

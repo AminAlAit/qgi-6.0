@@ -124,7 +124,7 @@ function Chart2L1ComparisonInner({ isHero }: { isHero: boolean }) {
     <figure
       id={isHero ? "ghana-l1-vs-mauritania-hero" : "ghana-l1-vs-mauritania"}
       className="my-8 relative"
-      style={{ maxWidth: "100%", overflowX: "auto" }}
+      style={{ maxWidth: "100%" }}
     >
       <svg
         viewBox={`0 0 ${svgW} ${chartH + labelH + 20}`}
@@ -132,7 +132,9 @@ function Chart2L1ComparisonInner({ isHero }: { isHero: boolean }) {
         aria-label="Grouped bar chart comparing per-dimension L1 salience for Ghana and Mauritania across 8 dimensions"
         style={{ display: "block", overflow: "visible" }}
       >
-        <title>Per-dimension L1 salience: Ghana vs Mauritania (April 2026 bake)</title>
+        <title>
+          Per-dimension L1 salience: Ghana vs Mauritania (April 2026 scoring run)
+        </title>
         {L1_DIMENSIONS.map((dim, i) => {
           const x = groupGap + i * (barW * 2 + barGap + groupGap);
           const ghanaH = Math.round((dim.ghana / maxVal) * chartH);
@@ -288,7 +290,7 @@ function Chart2L1ComparisonInner({ isHero }: { isHero: boolean }) {
               }}
             >
               <div style={{ color: "var(--qgi-text)", fontWeight: 600, marginBottom: 2 }}>
-                {dim.id} — {dim.fullName}
+                {dim.id}: {dim.fullName}
               </div>
               <div style={{ color: "var(--qgi-text-muted)" }}>{countryName}</div>
               <div
@@ -318,7 +320,7 @@ function Chart2L1ComparisonInner({ isHero }: { isHero: boolean }) {
         (Political Power &amp; Regime), D (Economic &amp; Financial Stress), and F
         (Diplomatic &amp; Geopolitical Relations) account for 99% of the cosine match
         (Political 66%, Economic 24%, Diplomatic 9%). Source: country-risks.json, April
-        2026 bake.
+        2026 scoring run.
       </figcaption>
     </figure>
   );

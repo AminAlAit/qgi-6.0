@@ -50,7 +50,7 @@ export default function Chart4L1Profile() {
     <figure
       id="ghana-l1-profile-radar"
       className="my-8 relative"
-      style={{ maxWidth: "100%", overflowX: "auto" }}
+      style={{ maxWidth: "100%" }}
     >
       <style>{`
         @keyframes pulse-ref-line {
@@ -65,10 +65,10 @@ export default function Chart4L1Profile() {
       <svg
         viewBox={`0 0 ${svgW} ${svgH}`}
         width="100%"
-        aria-label="Horizontal bar chart showing Ghana 8-dimension L1 risk profile from April 2026 bake"
+        aria-label="Horizontal bar chart showing Ghana 8-dimension L1 risk profile from the April 2026 scoring run"
         style={{ display: "block", overflow: "visible" }}
       >
-        <title>Ghana 8-dimension L1 risk profile — April 2026 bake</title>
+        <title>Ghana 8-dimension L1 risk profile, April 2026 scoring run</title>
 
         {/* Reference line at global HIGH-tier median ~0.6 */}
         <line
@@ -157,7 +157,7 @@ export default function Chart4L1Profile() {
                 fontFamily="var(--font-data, monospace)"
                 fill={isActive ? "rgba(167,139,250,0.9)" : "var(--qgi-text-muted)"}
               >
-                {isActive ? dim.value.toFixed(2) : "0 — zero signal"}
+                {isActive ? dim.value.toFixed(2) : "0 (zero signal)"}
               </text>
             </g>
           );
@@ -172,7 +172,7 @@ export default function Chart4L1Profile() {
           fill="rgba(167,139,250,0.55)"
           fontStyle="italic"
         >
-          Political dominance + Economic stress — zero conflict signal. Mauritania 2008
+          Political dominance + Economic stress, zero conflict signal. Mauritania 2008
           template, not Burkina Faso 2022.
         </text>
       </svg>
@@ -238,11 +238,11 @@ export default function Chart4L1Profile() {
         className="mt-2 text-xs leading-relaxed"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        Ghana 8-dimension L1 risk profile, April 2026 bake. Dimensions A (Political Power
-        &amp; Regime, 1.66), D (Economic &amp; Financial Stress, 1.01), and F (Diplomatic
-        &amp; Geopolitical Relations, 0.50) are the three active dimensions that drive the
-        Mauritania cosine match. Dashed reference line is the illustrative global
-        HIGH-tier median. Source: country-risks.json, QGI V1.9.1.
+        Ghana 8-dimension L1 risk profile, April 2026 scoring run. Dimensions A (Political
+        Power &amp; Regime, 1.66), D (Economic &amp; Financial Stress, 1.01), and F
+        (Diplomatic &amp; Geopolitical Relations, 0.50) are the three active dimensions
+        that drive the Mauritania cosine match. Dashed reference line is the illustrative
+        global HIGH-tier median. Source: country-risks.json, QGI V1.9.1.
       </figcaption>
     </figure>
   );
