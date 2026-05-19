@@ -492,6 +492,7 @@ export default async function MethodologyPage() {
           </p>
 
           <h3
+            id="salience-z-score"
             className="text-sm font-semibold mt-6 mb-2"
             style={{ color: "var(--qgi-accent)" }}
           >
@@ -503,6 +504,14 @@ export default async function MethodologyPage() {
             carry full weight. Infrastructure projects and education reforms carry minimal
             weight. This ensures the ranking surfaces consequential signals, not
             statistically unusual but low-impact events.
+          </p>
+          <p className="mt-3">
+            The &sigma; (sigma) unit in salience values is a standard deviation: a z-score
+            of 2.76&sigma; means this country&apos;s signal is 2.76 standard deviations
+            above its own historical average for that category &mdash; a level reached by
+            fewer than 1% of observations in a normal distribution. For practical reading:
+            z &gt; 1.5&sigma; is elevated; z &gt; 2.0&sigma; is high; z &gt; 2.5&sigma; is
+            exceptional.
           </p>
 
           <h3
@@ -780,6 +789,7 @@ export default async function MethodologyPage() {
               Voice rule (Ingrid + Sipho): leads with what the reader sees
               on the country / precedent pages, not the technique. */}
           <section
+            id="aggregate-vs-per-recipe"
             className="mt-8 mb-8"
             aria-labelledby="aggregate-vs-per-recipe-heading"
           >
