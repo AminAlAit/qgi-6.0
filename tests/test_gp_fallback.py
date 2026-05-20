@@ -381,25 +381,73 @@ def test_mcmc_gates_fire_on_low_ess() -> None:
 
 
 def test_mcmc_gates_fire_on_divergences() -> None:
-    """Divergence gate fires correctly."""
+    """Divergence gate fires correctly under F-H-4-A4 (≤5 absolute AND ≤0.5% rate)."""
     from shape_prototype_fit_utils import evaluate_sampler_diagnostics
 
-    # Single divergence: divergence_gate_pass is False.
-    diags = evaluate_sampler_diagnostics([1.001, 1.001], [600.0, 600.0], 1)
+    # F-H-4-A4 (qgi-docs 2026-05-20): strict 0 gate relaxed. The gate now
+    # requires n_divergences ≤ 5 AND rate ≤ 0.5%. Pre-A4 tests asserting
+    # that 1-2 divergences fail are wrong under the new gate; rewritten
+    # to assert the new contract.
+
+    # 6 divergences fails the absolute gate regardless of rate.
+    diags = evaluate_sampler_diagnostics(
+        [1.001, 1.001], [600.0, 600.0], 6, n_post_warmup_draws=4000
+    )
     assert not diags.divergence_gate_pass
     assert not diags.all_pass
 
-    # Two divergences: still fails.
-    diags = evaluate_sampler_diagnostics([1.001, 1.001], [600.0, 600.0], 2)
+    # 5 divergences at 4000 draws (0.125% rate) passes both gates.
+    diags = evaluate_sampler_diagnostics(
+        [1.001, 1.001], [600.0, 600.0], 5, n_post_warmup_draws=4000
+    )
+    assert diags.divergence_gate_pass
+
+    # 3 divergences at 400 draws = 0.75% rate fails the rate gate even
+    # though absolute count ≤ 5.
+    diags = evaluate_sampler_diagnostics(
+        [1.001, 1.001], [600.0, 600.0], 3, n_post_warmup_draws=400
+    )
     assert not diags.divergence_gate_pass
+
+    # 1 divergence still passes under the new gate (operational note: a
+    # single divergence in the FIRST run triggers the refit-at-0.99
+    # behavior in fit_gp_fallback; the relaxed gate is evaluated only on
+    # the refit result, which is the call site's responsibility).
+    diags = evaluate_sampler_diagnostics(
+        [1.001, 1.001], [600.0, 600.0], 1, n_post_warmup_draws=4000
+    )
+    assert diags.divergence_gate_pass
 
 
 def test_mcmc_gates_all_pass_on_good_diagnostics() -> None:
     """All gates pass on good diagnostic values."""
     from shape_prototype_fit_utils import evaluate_sampler_diagnostics
 
-    diags = evaluate_sampler_diagnostics([1.005, 1.001], [500.0, 800.0], 0)
+    diags = evaluate_sampler_diagnostics(
+        [1.005, 1.001], [500.0, 800.0], 0, n_post_warmup_draws=4000
+    )
     assert diags.all_pass
+
+
+def test_mcmc_gates_canary_9_passes_under_f_h_4_a4() -> None:
+    """The canary 9 observed values (3 divergences out of 4000 draws,
+    R-hat=1.0000, ESS=1141) pass under F-H-4-A4 — this is the case the
+    amendment was designed to legitimize.
+    """
+    from shape_prototype_fit_utils import evaluate_sampler_diagnostics
+
+    diags = evaluate_sampler_diagnostics(
+        rhat_values=[1.0000, 1.0000, 1.0000],
+        ess_values=[1141.0, 1200.0, 1300.0],
+        n_divergences=3,
+        n_post_warmup_draws=4000,
+    )
+    assert diags.rhat_gate_pass
+    assert diags.ess_gate_pass
+    assert diags.divergence_gate_pass
+    assert diags.all_pass
+    # Rate gate should report exactly 3 / 4000 = 0.075%.
+    assert diags.divergence_rate == 3 / 4000
 
 
 # ---------------------------------------------------------------------------
