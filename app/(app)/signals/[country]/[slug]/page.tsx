@@ -205,7 +205,9 @@ export default async function SignalsLeafPage({ params }: Props) {
       allScores.sort((a, b) => b - a);
       const cohortN = allScores.length;
       const cohortRank = allScores.indexOf(perRecipeEntry.score) + 1;
-      // Top-quartile = rank in upper 25% of cohort (rank ≤ N/4).
+      // Top-quartile = rank in upper 25% of cohort (rank ≤ ceil(N/4),
+      // inclusive on small cohorts so e.g. N=3 still surfaces #1 as
+      // top-quartile rather than collapsing the disclosure entirely).
       const isTopQuartile =
         cohortN > 0 && cohortRank > 0 && cohortRank <= Math.ceil(cohortN / 4);
       if (isTopQuartile && (tier === "INDICATIVE" || tier === "MODERATE")) {
