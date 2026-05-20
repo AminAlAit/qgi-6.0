@@ -183,6 +183,33 @@ describe("computePatternTrajectory", () => {
     expect(t.falsificationAnchor!.windowEnd).toBe(1990);
   });
 
+  // #831 (R8-W1redo-Priya-1) — isWindowElapsed flag
+  it("sets isWindowElapsed=true when windowEnd is before currentYear", () => {
+    // followerEndYear = 1987 + 2 = 1989; windowEnd = 1990. currentYear = 2026 → elapsed.
+    const row = {
+      country_a: "South Korea",
+      country_b: "Paraguay",
+      start_year_a: 1985,
+      start_year_b: 1987,
+      pattern_length: 2,
+    };
+    const t = computePatternTrajectory(row, SAMPLE_EVENTS, 2026);
+    expect(t.falsificationAnchor!.isWindowElapsed).toBe(true);
+  });
+
+  it("sets isWindowElapsed=false when windowEnd is in the future", () => {
+    // followerEndYear = 2030 + 2 = 2032; windowEnd = 2033. currentYear = 2026 → not elapsed.
+    const row = {
+      country_a: "South Korea",
+      country_b: "Paraguay",
+      start_year_a: 1985,
+      start_year_b: 2030,
+      pattern_length: 2,
+    };
+    const t = computePatternTrajectory(row, SAMPLE_EVENTS, 2026);
+    expect(t.falsificationAnchor!.isWindowElapsed).toBe(false);
+  });
+
   it("leaves falsificationAnchor null when terminatingEvent is null", () => {
     const row = {
       country_a: "Brazil",

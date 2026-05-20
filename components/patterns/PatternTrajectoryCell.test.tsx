@@ -22,6 +22,7 @@ const baseTrajectory: PatternTrajectory = {
     eventCategoryDisplay: "Elections And Voting",
     windowStart: 2025,
     windowEnd: 2027,
+    isWindowElapsed: false,
   },
 };
 
@@ -77,6 +78,26 @@ describe("PatternTrajectoryCell", () => {
     expect(screen.queryByText(/Falsifies if/)).not.toBeInTheDocument();
   });
 
+  // #831 (R8-W1redo-Priya-1) — elapsed window rendering
+  it("#831 — renders elapsed-window copy when isWindowElapsed=true", () => {
+    const trajectory: PatternTrajectory = {
+      ...baseTrajectory,
+      falsificationAnchor: {
+        followerCountry: "Paraguay",
+        eventCategory: "elections_and_voting",
+        eventCategoryDisplay: "Elections And Voting",
+        windowStart: 2022,
+        windowEnd: 2024,
+        isWindowElapsed: true,
+      },
+    };
+    render(<PatternTrajectoryCell trajectory={trajectory} leaderCountry="South Korea" />);
+    expect(
+      screen.getByText(/Window elapsed 2024 — outcome not yet determined by QGI/)
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/Falsifies if/)).not.toBeInTheDocument();
+  });
+
   it("marks cell with data-editorial='true' and data-event-id when sourced editorially", () => {
     const trajectory: PatternTrajectory = {
       ...baseTrajectory,
@@ -84,7 +105,9 @@ describe("PatternTrajectoryCell", () => {
         ...baseTrajectory.terminatingEvent!,
         dataEditorial: true,
       },
-      falsificationAnchor: baseTrajectory.falsificationAnchor,
+      falsificationAnchor: baseTrajectory.falsificationAnchor
+        ? { ...baseTrajectory.falsificationAnchor }
+        : null,
     };
     const { container } = render(
       <PatternTrajectoryCell trajectory={trajectory} leaderCountry="South Korea" />
