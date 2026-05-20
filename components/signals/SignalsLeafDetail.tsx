@@ -88,6 +88,7 @@ export function SignalsLeafDetail({
   mlPanel,
   generatedDate,
   curated,
+  mlBridgeNote,
 }: {
   countrySlug: string;
   countryName: string;
@@ -100,6 +101,15 @@ export function SignalsLeafDetail({
   mlPanel: LeafMlPanel | null;
   generatedDate: string;
   curated: boolean;
+  /** #833 (R8-W1redo-Priya-4/Daniel-1) — when the ML Precedent Match is in
+   *  the top quartile but the statistical tier is INDICATIVE/MODERATE, surface
+   *  a bridging disclosure above the stat panel. Null when no divergence. */
+  mlBridgeNote?: {
+    score: number;
+    cohortRank: number;
+    cohortN: number;
+    lineageMismatch: true;
+  } | null;
 }) {
   const meta = TIER_META[tier];
   const lineageChip = mlPanel
@@ -288,6 +298,33 @@ export function SignalsLeafDetail({
           {ledeText}
         </p>
       </section>
+
+      {/* #833 (R8-W1redo-Priya-4/Daniel-1) — divergence note when ML rank is
+          top-quartile but statistical tier is INDICATIVE or MODERATE. */}
+      {mlBridgeNote && (
+        <div
+          role="note"
+          className="mb-5 rounded-lg border p-4 text-[11px] leading-relaxed max-w-[68ch]"
+          style={{
+            backgroundColor: "var(--qgi-surface-2)",
+            borderColor: "var(--qgi-border)",
+            color: "var(--qgi-text-muted)",
+          }}
+        >
+          <span
+            className="font-semibold uppercase tracking-wide text-[10px] block mb-1"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Note
+          </span>
+          The statistical alignment tier ({TIER_META[tier].label}) and the ML Precedent
+          Match ({mlBridgeNote.score}/100, #{mlBridgeNote.cohortRank} of{" "}
+          {mlBridgeNote.cohortN}) reflect different model architectures — level-features
+          vs trend-features. A country can score {TIER_META[tier].label} statistically
+          while ranking highly on the ML model when its indicator trajectories are
+          improving from a low absolute base.
+        </div>
+      )}
 
       {/* ============== Statistical lineage panel ============== */}
       <section

@@ -182,6 +182,45 @@ export default async function SignalsLeafPage({ params }: Props) {
     ? data.generated_at.slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
+  // #833 (R8-W1redo-Priya-4 / Daniel-1) — statistical-vs-ML divergence note.
+  // When this country's ML Precedent Match score for this recipe is in the top
+  // quartile but the statistical tier is INDICATIVE or MODERATE, the user
+  // navigating from the country profile sees an apparent contradiction.
+  // Compute cohort quartile server-side so the component stays a pure render.
+  let mlBridgeNote: {
+    score: number;
+    cohortRank: number;
+    cohortN: number;
+    lineageMismatch: true;
+  } | null = null;
+  if (data && mlPanel) {
+    const perRecipeEntry = c.qgi_risk_score_by_recipe?.[slug];
+    if (perRecipeEntry && perRecipeEntry.coverage_flag === "ok") {
+      // Collect all ok-coverage scores for this recipe.
+      const allScores: number[] = [];
+      for (const cData of Object.values(data.countries)) {
+        const rEntry = cData.qgi_risk_score_by_recipe?.[slug];
+        if (rEntry && rEntry.coverage_flag === "ok") allScores.push(rEntry.score);
+      }
+      allScores.sort((a, b) => b - a);
+      const cohortN = allScores.length;
+      const cohortRank = allScores.indexOf(perRecipeEntry.score) + 1;
+      // Top-quartile = rank in upper 25% of cohort (rank ≤ ceil(N/4),
+      // inclusive on small cohorts so e.g. N=3 still surfaces #1 as
+      // top-quartile rather than collapsing the disclosure entirely).
+      const isTopQuartile =
+        cohortN > 0 && cohortRank > 0 && cohortRank <= Math.ceil(cohortN / 4);
+      if (isTopQuartile && (tier === "INDICATIVE" || tier === "MODERATE")) {
+        mlBridgeNote = {
+          score: perRecipeEntry.score,
+          cohortRank,
+          cohortN,
+          lineageMismatch: true,
+        };
+      }
+    }
+  }
+
   return (
     <SignalsLeafDetail
       countrySlug={country}
@@ -195,6 +234,7 @@ export default async function SignalsLeafPage({ params }: Props) {
       mlPanel={mlPanel}
       generatedDate={generatedDate}
       curated={c.curated}
+      mlBridgeNote={mlBridgeNote}
     />
   );
 }

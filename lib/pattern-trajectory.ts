@@ -65,6 +65,11 @@ function displayifyCategory(slug: string): string {
  * hard thresholds (per founder direction). Whether a specific real-world
  * event qualifies as "some form of civil_war_and_insurgency" is left to
  * the reader / future evaluator — not encoded in this lib.
+ *
+ * #831 (R8-W1redo-Priya-1): `isWindowElapsed` is true when the
+ * falsification window has already passed (windowEnd < currentYear).
+ * PatternTrajectoryCell uses this to suppress the forward-looking
+ * "Falsifies if ..." copy and show an honest elapsed-state message.
  */
 export interface FalsificationAnchor {
   followerCountry: string;
@@ -76,6 +81,8 @@ export interface FalsificationAnchor {
   windowStart: number;
   /** followerEndYear + 1. */
   windowEnd: number;
+  /** #831 — true when windowEnd < currentYear (window is in the past). */
+  isWindowElapsed: boolean;
 }
 
 export interface PatternTrajectory {
@@ -170,6 +177,7 @@ export function computePatternTrajectory(
     Math.min(row.pattern_length, currentYear - row.start_year_b)
   );
   const terminatingEvent = findTerminatingEvent(row.country_a, leaderEndYear, events);
+  // #831 (R8-W1redo-Priya-1): mark anchor as elapsed when its window is in the past.
   const falsificationAnchor: FalsificationAnchor | null = terminatingEvent
     ? {
         followerCountry: row.country_b,
@@ -177,6 +185,7 @@ export function computePatternTrajectory(
         eventCategoryDisplay: displayifyCategory(terminatingEvent.category),
         windowStart: followerEndYear - 1,
         windowEnd: followerEndYear + 1,
+        isWindowElapsed: followerEndYear + 1 < currentYear,
       }
     : null;
   return {
