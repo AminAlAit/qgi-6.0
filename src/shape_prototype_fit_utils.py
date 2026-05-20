@@ -1000,8 +1000,8 @@ def fit_gp_fallback(
     # bug review consensus: this is the single most-leverage piece of
     # operational infrastructure for the analytic-marginalization branch.
     if idata_save_path is not None:
-        from pathlib import Path as _Path
-        _idata_path = _Path(idata_save_path)
+        from pathlib import Path
+        _idata_path = Path(idata_save_path)
         _idata_path.parent.mkdir(parents=True, exist_ok=True)
         try:
             idata.to_netcdf(str(_idata_path))
