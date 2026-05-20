@@ -166,6 +166,7 @@ export function CountryMergedDetail({
   tier,
   l1Rows,
   top3,
+  top1L1Label,
   mlRows = [],
   mlCovCount = 0,
   mlMatrixDefaultExpanded = false,
@@ -183,6 +184,10 @@ export function CountryMergedDetail({
    *  scores. Surfaced in the "What's happening here" status chip so the
    *  reader knows the data vintage without hunting for it. */
   bakeDate?: string;
+  /** #842 — the L1 group label with the highest max salience (same source
+   *  as the bar chart). Passed down to WhatsHappeningHere so the narrative
+   *  and bar chart agree on the top dimension. */
+  top1L1Label?: string | null;
   l1Rows: ReadonlyArray<{
     code: string;
     label: string;
@@ -398,7 +403,13 @@ export function CountryMergedDetail({
       )}
 
       {/* ============== Section "What's happening here" (Ingrid) ============== */}
-      <WhatsHappeningHere name={name} tier={tier} top3={top3} bakeDate={bakeDate} />
+      <WhatsHappeningHere
+        name={name}
+        tier={tier}
+        top3={top3}
+        bakeDate={bakeDate}
+        top1L1Label={top1L1Label}
+      />
 
       {/* ============== Section "What this doesn't mean" ============== */}
       <WhatThisDoesntMean name={name} />
@@ -485,13 +496,9 @@ export function CountryMergedDetail({
           >
             See related ranked patterns →
           </Link>
-          <Link
-            href={`/countries/${iso}` as Route}
-            className="hover:text-[var(--qgi-accent)] transition-colors"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            See the V1 country profile (legacy) →
-          </Link>
+          {/* #845 — self-referential V1 legacy link removed. The V1 route
+              (/countries-v1/[id]) uses numeric IDs; slug-to-ID lookup is
+              non-trivial and the link served no useful purpose. */}
         </div>
         <p
           className="text-[10px] mt-5 font-data"
@@ -921,6 +928,7 @@ function WhatsHappeningHere({
   tier,
   top3,
   bakeDate,
+  top1L1Label,
 }: {
   name: string;
   tier: RiskTier;
@@ -934,8 +942,13 @@ function WhatsHappeningHere({
   /** ISO-8601 date (YYYY-MM-DD) of the country-risks bake that produced
    *  this narrative's underlying salience scores. */
   bakeDate?: string;
+  /** #842 — L1 group label with highest max salience (from l1Salience map,
+   *  same source as the bar chart). When present, used as the leading
+   *  dimension in the narrative so text and bar chart agree. */
+  top1L1Label?: string | null;
 }) {
-  const top1 = top3[0] ? formatCategory(top3[0].category) : "—";
+  // #842 — use L1-group label (matches bar chart) instead of raw category name.
+  const top1 = top1L1Label ?? (top3[0] ? formatCategory(top3[0].category) : "—");
   // #757 (persona-test 2026-05-17): 3 personas (Marcus / James / Fatima)
   // independently read the prior "Preview template" amber chip as "this
   // page is unfinished — don't cite it." The narrative IS auto-generated
@@ -981,14 +994,13 @@ function WhatsHappeningHere({
         className="text-base leading-relaxed max-w-[68ch]"
         style={{ color: "var(--qgi-text)" }}
       >
-        {name} sits at Tier {tier} — {tierBlurb(tier)}. The current top-salience signal is{" "}
-        {top1}; alongside it,{" "}
-        {top3.length > 1
-          ? formatCategory(top3[1].category).toLowerCase()
-          : "other dimensions"}{" "}
-        {top3.length > 2 ? `and ${formatCategory(top3[2].category).toLowerCase()} ` : ""}
-        also register above background. The 8-row profile below shows the full L1-domain
-        footprint; click through to{" "}
+        {/* #842 — top1 now comes from L1-salience map (matches bar chart). */}
+        {name} sits at Tier {tier} — {tierBlurb(tier)}. The strongest dimension of risk is{" "}
+        {top1}; the specific signals driving it include{" "}
+        {top3.length > 0 ? formatCategory(top3[0].category) : ""}
+        {top3.length > 1 ? `, ${formatCategory(top3[1].category).toLowerCase()}` : ""}
+        {top3.length > 2 ? `, and ${formatCategory(top3[2].category).toLowerCase()}` : ""}
+        . The 8-row profile below shows the full L1-domain footprint; click through to{" "}
         <Link
           href={"/methodology" as Route}
           className="underline underline-offset-2"

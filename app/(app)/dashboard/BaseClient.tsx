@@ -1476,9 +1476,9 @@ export function BaseClient({
                             color: convColor,
                             border: `1px solid ${convColor}30`,
                           }}
-                          title={convLabel}
+                          title={`${convLabel} · ${s.n_predictors ?? 0} countries: number of distinct countries whose historical trajectories corroborate this pattern. (#838)`}
                         >
-                          {s.n_predictors ?? 0}p
+                          {s.n_predictors ?? 0} countries
                         </span>
                       </div>
                       <div className="flex items-center gap-2">

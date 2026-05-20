@@ -191,6 +191,17 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   topCategories.sort((a, b) => b.salience_score - a.salience_score);
   const top3 = topCategories.slice(0, 3);
 
+  // #842 — derive top1 from the same L1-salience map that drives the bar chart,
+  // so the narrative and bar chart agree. Find the L1 group with highest max salience.
+  const top1L1 = L1_GROUPS.reduce<(typeof L1_GROUPS)[number] | null>((best, g) => {
+    if (!best) return g;
+    return (l1Salience[g.code] ?? -Infinity) > (l1Salience[best.code] ?? -Infinity)
+      ? g
+      : best;
+  }, null);
+  const top1L1Label: string | null =
+    top1L1 && l1Salience[top1L1.code] != null ? top1L1.label : null;
+
   // The L1 row list — fixed A..H order so the page reads as a stable
   // taxonomy (per Elif's small-multiples grid principle).
   const l1Rows = L1_GROUPS.map((g) => ({
@@ -482,6 +493,7 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       tier={country.overall_risk_tier}
       l1Rows={l1Rows}
       top3={top3}
+      top1L1Label={top1L1Label}
       mlRows={mlRows}
       mlCovCount={mlCovCount}
       mlMatrixDefaultExpanded={mlMatrixDefaultExpanded}
