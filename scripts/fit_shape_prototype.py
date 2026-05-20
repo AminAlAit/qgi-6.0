@@ -178,6 +178,7 @@ def fit_recipe_gp_fallback(
     progressbar: bool = True,
     max_treedepth: int | None = None,
     init: str = "jitter+adapt_diag",
+    idata_save_path: str | Path | None = None,
 ) -> tuple[FittedPrototype, dict[str, Any]]:
     """Run the §3.1.4 hierarchical-Bayes + GP fallback fit.
 
@@ -325,6 +326,7 @@ def fit_recipe_gp_fallback(
         progressbar=progressbar,
         max_treedepth=max_treedepth,
         init=init,
+        idata_save_path=idata_save_path,
     )
     diagnostics = gp_result.sampler_diagnostics
     audit.append(
@@ -336,6 +338,7 @@ def fit_recipe_gp_fallback(
     # §3.1.4 by reference).
     if not diagnostics.divergence_gate_pass and diagnostics.n_divergences == 1:
         audit.append("gp_fallback: single divergence -> refitting at target_accept=0.99")
+        # Refit overwrites the saved netcdf (refit's posterior is the keeper).
         gp_result = fit_gp_fallback(
             trajectories,
             K_indicators,
@@ -348,6 +351,7 @@ def fit_recipe_gp_fallback(
             progressbar=progressbar,
             max_treedepth=max_treedepth,
             init=init,
+            idata_save_path=idata_save_path,
         )
         diagnostics = gp_result.sampler_diagnostics
         audit.append(
@@ -1129,6 +1133,20 @@ def main(argv: list[str] | None = None) -> int:
             "correctly be 'hierarchical_bayes_gp_fallback')."
         ),
     )
+    parser.add_argument(
+        "--idata-save-path",
+        type=Path,
+        default=None,
+        dest="idata_save_path",
+        help=(
+            "Path to persist the NUTS InferenceData NetCDF post-fit. When set, "
+            "the analytic-marginalization posterior can be re-extracted in ~30s "
+            "if the closed-form formula is corrected — avoiding multi-hour "
+            "re-fits. Added 2026-05-21 after the GP-posterior formula bug "
+            "review (spec-trio recommendation). Recommended path layout: "
+            "results/shape_fits/<recipe>/idata.nc"
+        ),
+    )
     args = parser.parse_args(argv)
 
     panel_path = args.indicator_panel
@@ -1145,9 +1163,14 @@ def main(argv: list[str] | None = None) -> int:
         n_tune=args.n_tune,
         n_draws=args.n_draws,
         random_seed=args.seed,
+    )
+    # GP-fallback-only kwargs (FPCA primary doesn't accept these).
+    gp_fallback_kwargs = dict(
+        sampler_kwargs,
         progressbar=args.progressbar,
         max_treedepth=args.max_treedepth,
         init=args.init,
+        idata_save_path=args.idata_save_path,
     )
 
     if args.force_fallback:
@@ -1163,7 +1186,7 @@ def main(argv: list[str] | None = None) -> int:
                 positives,
                 indicator_ids,
                 args.T_r,
-                **sampler_kwargs,
+                **gp_fallback_kwargs,
             )
             prototype.recipe_id = args.recipe
             logger.info("GP fallback (--force-fallback): SUCCESS")

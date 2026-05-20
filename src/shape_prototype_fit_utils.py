@@ -922,6 +922,7 @@ def fit_gp_fallback(
     progressbar: bool = True,
     max_treedepth: int | None = None,
     init: str = "jitter+adapt_diag",
+    idata_save_path: "str | Path | None" = None,
 ) -> "GPFallbackPosterior":
     """Run the §3.1.4 GP fallback NUTS sampler and return posterior summary.
 
@@ -992,6 +993,32 @@ def fit_gp_fallback(
         "fit_gp_fallback: NUTS complete — elapsed=%.1fs (%.2f min)",
         _elapsed, _elapsed / 60,
     )
+
+    # Persist InferenceData to disk so future formula corrections cost
+    # ~30 seconds (recompute analytic-marginalization posterior from saved
+    # hyperprior draws) instead of ~10 hours (full NUTS re-fit). 2026-05-21
+    # bug review consensus: this is the single most-leverage piece of
+    # operational infrastructure for the analytic-marginalization branch.
+    if idata_save_path is not None:
+        from pathlib import Path as _Path
+        _idata_path = _Path(idata_save_path)
+        _idata_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            idata.to_netcdf(str(_idata_path))
+            logger.info(
+                "fit_gp_fallback: InferenceData persisted to %s (%.1f MB)",
+                _idata_path,
+                _idata_path.stat().st_size / (1024 * 1024),
+            )
+        except Exception as e:
+            # Non-fatal: NetCDF persistence is for future-proofing, not the
+            # critical fit path. Log + continue.
+            logger.warning(
+                "fit_gp_fallback: idata.to_netcdf(%s) failed: %s — continuing "
+                "without disk persistence; re-fits will be required if the "
+                "extraction formula changes.",
+                _idata_path, e,
+            )
 
     # --- Collect diagnostic variable names ---
     # Post-analytic-marginalization (2026-05-18): f_r_{k} are no longer
@@ -1071,24 +1098,40 @@ def fit_gp_fallback(
         K_all = (a_k[:, None, None] ** 2) * np.exp(
             -D2_np[None, :, :] / (2.0 * l_k[:, None, None] ** 2)
         )
-        # C_all: (S, T_r, T_r)
-        C_all = K_all + (sig_k[:, None, None] ** 2 + 1e-6) * eye_T
+        # C_all: (S, T_r, T_r) — POSTERIOR-CONDITIONING NOISE.
+        # Bug fix 2026-05-21 (spec-trio reviewed; F-Shape-1 compliant —
+        # operational tooling correction, NOT a threshold amendment): the
+        # posterior of f_r given N i.i.d. observations y_c ~ N(f_r, σ²·I)
+        # uses sufficient statistic y_bar ~ N(f_r, σ²/N · I). The conditioning
+        # noise is σ²/N, NOT σ². Prior commit used σ² + 1e-6 here AND applied
+        # an N_r multiplier in K_post — algebraically inconsistent: produced
+        # K_post ≈ -980 · I (raw) clamped to 0 by np.maximum, killing the
+        # §3.5.1 Mahalanobis denominator. Closed-form Woodbury check:
+        # (K^-1 + N/σ² · I)^-1 = K - K (K + σ²/N · I)^-1 K  ✓
+        # Reference: Rasmussen & Williams 2006 §2.2 (GP regression posterior).
+        C_all = K_all + (sig_k[:, None, None] ** 2 / N_r + 1e-6) * eye_T
         # C_inv: (S, T_r, T_r) — np.linalg.inv handles batched inversion
         C_inv = np.linalg.inv(C_all)
 
-        # mu_post: (S, T_r) — K @ C_inv @ Y_bar  per draw
+        # mu_post: (S, T_r) — K @ C_inv @ y_bar  per draw
         KC_inv = K_all @ C_inv                          # (S, T_r, T_r)
         mu_post = KC_inv @ Y_bar_k                      # (S, T_r)
 
-        # K_post: (S, T_r, T_r) — K - N_r * K @ C_inv @ K  per draw
-        K_post = K_all - N_r * KC_inv @ K_all           # (S, T_r, T_r)
-        K_post = np.maximum(K_post, 0.0)
+        # K_post: (S, T_r, T_r) — K - K @ C_inv @ K  per draw.
+        # No N_r multiplier (the per-mean conditioning is already baked into
+        # C_all via σ²/N). K_post is PSD by construction (Woodbury identity);
+        # the 1e-9·I diagonal floor is a numerical safety net for ill-
+        # conditioned K matrices (e.g., near-rank-1 SE kernel at small ℓ).
+        K_post = K_all - KC_inv @ K_all                 # (S, T_r, T_r)
 
         mean_traj = mu_post.mean(axis=0)                # (T_r,)
         cov_mean  = K_post.mean(axis=0)                 # (T_r, T_r)
 
         cov_diag = np.diag(cov_mean) if T_r > 1 else np.array([float(cov_mean[0, 0])])
-        cov_diag = np.maximum(cov_diag, 0.0)
+        # 1e-9 numerical floor (not a 0-clamp). PSD-by-construction posterior
+        # never goes meaningfully negative; this only catches roundoff at
+        # ill-conditioned K matrices.
+        cov_diag = np.maximum(cov_diag, 1e-9)
 
         posterior_mean_trajectories.append(mean_traj)
         posterior_cov_diags.append(cov_diag)
