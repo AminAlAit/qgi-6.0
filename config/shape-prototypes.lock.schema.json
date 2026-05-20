@@ -157,7 +157,18 @@
           }
         },
         "cohort_calibration_ref": {"type": "string"},
-        "schema_version": {"type": "integer", "const": 1}
+        "schema_version": {"type": "integer", "const": 1},
+        "divergences_observed": {
+          "type": "object",
+          "description": "F-H-4-A4 (qgi-docs 2026-05-20, 8-seat ratified 8/8). Sampler-diagnostic provenance written at gate-evaluation time per Marcus #8 rider. Reports observed divergences regardless of pass/fail so Lloyd's audit can re-evaluate under a different gate. Optional for backward compatibility with pre-A4 emissions.",
+          "additionalProperties": false,
+          "required": ["n_divergences", "n_post_warmup_draws", "divergence_rate"],
+          "properties": {
+            "n_divergences": {"type": "integer", "minimum": 0},
+            "n_post_warmup_draws": {"type": "integer", "minimum": 1},
+            "divergence_rate": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+          }
+        }
       }
     },
     "indicator_signature": {
