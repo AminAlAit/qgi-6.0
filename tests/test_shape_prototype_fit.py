@@ -325,24 +325,38 @@ def test_loio_coverage_loop_on_synthetic_well_behaved_data() -> None:
 
 
 def test_evaluate_sampler_diagnostics_logic() -> None:
-    """Diagnostic gate logic per §3.1.3."""
+    """Diagnostic gate logic per §3.1.3 (post-F-H-4-A4 divergence-gate relaxation)."""
     from shape_prototype_fit_utils import evaluate_sampler_diagnostics
 
     # All pass.
-    d = evaluate_sampler_diagnostics([1.005, 1.001], [500, 800], 0)
+    d = evaluate_sampler_diagnostics(
+        [1.005, 1.001], [500, 800], 0, n_post_warmup_draws=4000
+    )
     assert d.all_pass
     # rhat fail.
-    d = evaluate_sampler_diagnostics([1.05, 1.001], [500, 800], 0)
+    d = evaluate_sampler_diagnostics(
+        [1.05, 1.001], [500, 800], 0, n_post_warmup_draws=4000
+    )
     assert not d.all_pass
     assert not d.rhat_gate_pass
     # ESS fail.
-    d = evaluate_sampler_diagnostics([1.005, 1.001], [50, 800], 0)
+    d = evaluate_sampler_diagnostics(
+        [1.005, 1.001], [50, 800], 0, n_post_warmup_draws=4000
+    )
     assert not d.all_pass
     assert not d.ess_gate_pass
-    # Divergence fail.
-    d = evaluate_sampler_diagnostics([1.005, 1.001], [500, 800], 2)
+    # Divergence fail under F-H-4-A4 requires >5 absolute OR >0.5% rate.
+    # 6 divergences fails the absolute gate.
+    d = evaluate_sampler_diagnostics(
+        [1.005, 1.001], [500, 800], 6, n_post_warmup_draws=4000
+    )
     assert not d.all_pass
     assert not d.divergence_gate_pass
+    # 2 divergences PASSES under F-H-4-A4 (pre-A4 this was a fail).
+    d = evaluate_sampler_diagnostics(
+        [1.005, 1.001], [500, 800], 2, n_post_warmup_draws=4000
+    )
+    assert d.all_pass
 
 
 # ---- Utility fixture tests (cheap, no NUTS) ---------------------------------
