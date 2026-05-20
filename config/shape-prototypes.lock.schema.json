@@ -119,7 +119,8 @@
         "per_indicator_trajectory_signature": {
           "type": "object",
           "additionalProperties": {"$ref": "#/$defs/indicator_signature"},
-          "minProperties": 1
+          "minProperties": 0,
+          "description": "Per-indicator trajectory signature. Required to be non-empty when cascade_outcome='fit_locked'. May be empty {} when cascade_outcome='advisory_only_shape_unfittable' (F-H-4-A5: no prototype emitted; orchestrator routes to non-shape head per §4.2). Backward-compatible (pre-A5 entries always had ≥1 signature)."
         },
         "fit_method": {
           "type": "string",
@@ -167,6 +168,56 @@
             "n_divergences": {"type": "integer", "minimum": 0},
             "n_post_warmup_draws": {"type": "integer", "minimum": 1},
             "divergence_rate": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+          }
+        },
+        "cascade_outcome": {
+          "type": "string",
+          "enum": ["fit_locked", "advisory_only_shape_unfittable"],
+          "description": "F-H-4-A5 (qgi-docs 2026-05-20, 8-seat ratified 8/8 with Tariq + Marcus riders). Cascade disposition for the shape feature on this recipe. 'fit_locked' = shape prototype valid and locked (default; equivalent to pre-A5 implicit behavior). 'advisory_only_shape_unfittable' = §3.1.5 cascade exit clause invoked: §3.1.4 NUTS sampler gates failed after operational-tooling exhaustion (refit at target_accept=0.99 + advi+adapt_diag init + n_draws>=2000 per chain still failed R-hat or ESS). No shape prototype emitted; the recipe's cascade LOCK status is independent and unaffected. Optional for backward compatibility with pre-A5 emissions (loader treats absent value as 'fit_locked')."
+        },
+        "advisory_only_reason": {
+          "type": "string",
+          "description": "F-H-4-A5: when cascade_outcome='advisory_only_shape_unfittable', the specific reason category. Currently the only enumerated reason is 'gp_fallback_nuts_gate_failure_after_operational_exhaustion'."
+        },
+        "nuts_gate_failure_diagnostics": {
+          "type": "object",
+          "description": "F-H-4-A5 (Marcus rider): exact sampler diagnostics observed on the failing fit attempt, preserved for Lloyd's audit and for substrate-class characterization in Phase 2 pre-screening. Required when cascade_outcome='advisory_only_shape_unfittable'.",
+          "additionalProperties": true,
+          "properties": {
+            "rhat_max": {"type": "number"},
+            "ess_min": {"type": "number"},
+            "n_divergences": {"type": "integer", "minimum": 0},
+            "n_post_warmup_draws": {"type": "integer", "minimum": 1},
+            "divergence_rate": {"type": "number", "minimum": 0.0},
+            "sampler_config": {
+              "type": "object",
+              "additionalProperties": true,
+              "properties": {
+                "n_chains": {"type": "integer", "minimum": 1},
+                "n_tune": {"type": "integer", "minimum": 1},
+                "n_draws": {"type": "integer", "minimum": 1},
+                "target_accept": {"type": "number"},
+                "init": {"type": "string"}
+              }
+            }
+          }
+        },
+        "operational_tooling_exhausted": {
+          "type": "boolean",
+          "description": "F-H-4-A5 (Marcus rider): true when the recipe routes to ADVISORY-ONLY after operational-tooling exhaustion per §3.1.5 exit clause. Auditable flag; the nuts_gate_failure_diagnostics block must accompany this with the exact sampler config used for the final attempt."
+        },
+        "substrate_class_note": {
+          "type": "string",
+          "description": "F-H-4-A5: human-readable note characterizing the substrate class that drove ADVISORY-ONLY routing (e.g., 'slowly-varying structural/demographic indicators against T_r=5 window'). Tracks first-principles reasoning per Rasmussen & Williams 2006 §5.4.4."
+        },
+        "existing_lock_unaffected": {
+          "type": "object",
+          "description": "F-H-4-A5: companion cascade LOCK status (STRONG/MODERATE/MARGINAL Hybrid D2/D5) for ADVISORY-ONLY shape recipes; preserved here so consumers know the non-shape head is still routable.",
+          "additionalProperties": true,
+          "properties": {
+            "lock_tier": {"type": "string"},
+            "loco_auc": {"type": "number"},
+            "note": {"type": "string"}
           }
         }
       }
