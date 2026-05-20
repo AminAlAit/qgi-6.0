@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Route } from "next";
 import type { PatternRow } from "@/lib/types";
 import type { PatternWindowTier } from "@/app/(app)/patterns/[slug]/page";
+import type { PatternTrajectory } from "@/lib/pattern-trajectory";
+import { PatternTrajectoryCell } from "@/components/patterns/PatternTrajectoryCell";
 import { formatDataThrough } from "@/lib/format-bake-date";
 
 /**
@@ -71,12 +73,15 @@ export function PatternMergedDetail({
   aSlug,
   bSlug,
   generatedDate,
+  trajectory,
 }: {
   row: PatternRow;
   tier: PatternWindowTier;
   aSlug: string;
   bSlug: string;
   generatedDate: string;
+  /** #840 — trajectory narrative (terminating event, arc position, falsification anchor). */
+  trajectory?: PatternTrajectory;
 }) {
   const meta = TIER_META[tier];
   const ledeText = buildLedeText({ row, tier });
@@ -119,7 +124,7 @@ export function PatternMergedDetail({
           Pattern · {row.pattern_length}-year window
         </div>
         <h1
-          className="text-3xl font-semibold leading-snug mb-3"
+          className="text-3xl font-semibold leading-snug mb-1"
           style={{ color: "var(--qgi-text)" }}
         >
           {row.country_a}{" "}
@@ -128,6 +133,18 @@ export function PatternMergedDetail({
           </span>{" "}
           {row.country_b}
         </h1>
+        {/* #839 — when country_b started before country_a, the arrow convention
+            (country_a → country_b) conflicts with chronological precedence.
+            Show a one-line annotation so readers aren't misled. */}
+        {row.start_year_b < row.start_year_a && (
+          <p className="text-[11px] mb-3 italic" style={{ color: "var(--qgi-text-dim)" }}>
+            Follower: {row.country_a} (started {row.start_year_a},{" "}
+            {row.start_year_a - row.start_year_b}{" "}
+            {row.start_year_a - row.start_year_b === 1 ? "year" : "years"} after{" "}
+            {row.country_b})
+          </p>
+        )}
+        {row.start_year_b >= row.start_year_a && <div className="mb-3" />}
         <div className="flex items-center gap-2 flex-wrap">
           <span
             className="text-[9px] tracking-widest uppercase font-semibold px-1.5 py-0.5 rounded"
@@ -259,6 +276,30 @@ export function PatternMergedDetail({
           {ledeText}
         </p>
       </section>
+
+      {/* ============== Trajectory section (#840) ============== */}
+      {trajectory && (
+        <section className="mb-5">
+          <h2
+            className="text-sm font-semibold mb-3"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Trajectory
+          </h2>
+          <div
+            className="rounded-lg border p-4"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <PatternTrajectoryCell
+              trajectory={trajectory}
+              leaderCountry={row.country_a}
+            />
+          </div>
+        </section>
+      )}
 
       {/* ============== Section 2 — "What this doesn't mean" callout (REQUIRED) ============== */}
       <div
