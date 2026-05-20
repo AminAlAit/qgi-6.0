@@ -1227,7 +1227,7 @@ def main(argv: list[str] | None = None) -> int:
                     positives,
                     indicator_ids,
                     args.T_r,
-                    **sampler_kwargs,
+                    **gp_fallback_kwargs,
                 )
                 prototype.recipe_id = args.recipe
                 logger.info(
