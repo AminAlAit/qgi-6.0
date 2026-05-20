@@ -175,6 +175,9 @@ def fit_recipe_gp_fallback(
     n_tune: int = 1000,
     n_draws: int = 1000,
     random_seed: int = 12345,
+    progressbar: bool = True,
+    max_treedepth: int | None = None,
+    init: str = "jitter+adapt_diag",
 ) -> tuple[FittedPrototype, dict[str, Any]]:
     """Run the §3.1.4 hierarchical-Bayes + GP fallback fit.
 
@@ -319,6 +322,9 @@ def fit_recipe_gp_fallback(
         n_draws=n_draws,
         target_accept=target_accept,
         seed=random_seed,
+        progressbar=progressbar,
+        max_treedepth=max_treedepth,
+        init=init,
     )
     diagnostics = gp_result.sampler_diagnostics
     audit.append(
@@ -339,6 +345,9 @@ def fit_recipe_gp_fallback(
             n_draws=n_draws,
             target_accept=TARGET_ACCEPT_REFIT,
             seed=random_seed + 1,
+            progressbar=progressbar,
+            max_treedepth=max_treedepth,
+            init=init,
         )
         diagnostics = gp_result.sampler_diagnostics
         audit.append(
@@ -384,6 +393,11 @@ def fit_recipe_gp_fallback(
                 "rhat_max": diagnostics.rhat_max,
                 "ess_min": diagnostics.ess_min,
                 "n_divergences": diagnostics.n_divergences,
+                # F-H-4-A4 (qgi-docs 2026-05-20): post-warmup draw count +
+                # divergence rate, both required by Marcus #8 rider for the
+                # divergences_observed lock-file provenance.
+                "n_post_warmup_draws": diagnostics.n_post_warmup_draws,
+                "divergence_rate": diagnostics.divergence_rate,
                 "target_accept": target_accept,
                 "n_chains": n_chains,
                 "n_tune": n_tune,
@@ -845,7 +859,11 @@ def _fit_bayesian_posterior(
     rhat_values = summary["r_hat"].values
     ess_values = summary["ess_bulk"].values
     n_divergences = int(idata.sample_stats["diverging"].sum().values)
-    diagnostics = evaluate_sampler_diagnostics(rhat_values, ess_values, n_divergences)
+    # F-H-4-A4: pass post-warmup draw count so the divergence rate-gate fires.
+    n_post_warmup_draws = int(n_chains * n_draws)
+    diagnostics = evaluate_sampler_diagnostics(
+        rhat_values, ess_values, n_divergences, n_post_warmup_draws=n_post_warmup_draws
+    )
 
     posterior_mu = idata.posterior["mu"].mean(dim=["chain", "draw"]).values
 
@@ -997,6 +1015,21 @@ def emit_to_lock_file(
         },
         "cohort_calibration_ref": ref,
         "schema_version": 1,
+        # F-H-4-A4 (Marcus #8 rider, qgi-docs 2026-05-20): write the
+        # divergence-provenance fields at gate-evaluation time regardless of
+        # pass/fail, so Lloyd's audit can re-evaluate under a different gate.
+        # Pulled from prototype.sampler_diagnostics (populated by the fitter).
+        **(
+            {
+                "divergences_observed": {
+                    "n_divergences": int(prototype.sampler_diagnostics.get("n_divergences", 0)),
+                    "n_post_warmup_draws": int(prototype.sampler_diagnostics.get("n_post_warmup_draws", 0)),
+                    "divergence_rate": float(prototype.sampler_diagnostics.get("divergence_rate", 0.0)),
+                }
+            }
+            if prototype.sampler_diagnostics and "n_divergences" in prototype.sampler_diagnostics
+            else {}
+        ),
     }
 
     # Recompute metadata counts.
@@ -1056,6 +1089,33 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--n-draws", type=int, default=1000)
     parser.add_argument("--seed", type=int, default=12345)
     parser.add_argument(
+        "--progressbar",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help=(
+            "Show NUTS progress bar during sampling (default: True). "
+            "Use --no-progressbar to suppress for CI/cron/log-file-only runs."
+        ),
+    )
+    parser.add_argument(
+        "--max-treedepth",
+        type=int,
+        default=None,
+        dest="max_treedepth",
+        help=(
+            "NUTS max tree depth override. Default: module MAX_TREEDEPTH constant. "
+            "Reduce to 7-8 to cap wall-time at the cost of acceptance rate."
+        ),
+    )
+    parser.add_argument(
+        "--init",
+        default="jitter+adapt_diag",
+        help=(
+            "PyMC NUTS initialization strategy (default: jitter+adapt_diag). "
+            "Alternative: advi+adapt_diag for VI-warm-started mass matrix."
+        ),
+    )
+    parser.add_argument(
         "--force-fallback",
         action="store_true",
         default=False,
@@ -1085,6 +1145,9 @@ def main(argv: list[str] | None = None) -> int:
         n_tune=args.n_tune,
         n_draws=args.n_draws,
         random_seed=args.seed,
+        progressbar=args.progressbar,
+        max_treedepth=args.max_treedepth,
+        init=args.init,
     )
 
     if args.force_fallback:

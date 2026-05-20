@@ -52,6 +52,20 @@ TARGET_ACCEPT_DEFAULT: Final[float] = 0.95
 TARGET_ACCEPT_REFIT: Final[float] = 0.99
 MAX_TREEDEPTH: Final[int] = 12
 
+# F-H-4-A4 (qgi-docs 2026-05-20, 8-seat ratified 8/8 APPROVE with Roshani + Marcus
+# operational riders). §3.1.3 divergence gate relaxed from strict 0 to:
+#   ≤ DIVERGENCE_ABS_GATE absolute divergent transitions AND
+#   ≤ DIVERGENCE_RATE_GATE divergence rate over post-warmup draws.
+# Justification (first-principles, F-Shape-1 compliant — NOT walk-data informed):
+# Betancourt 2017 §4.2 + Stan ref manual §15.1.2 + PyMC docs all converge on
+# "<1% divergence rate with passing R-hat/ESS = posterior trustworthy" as the
+# community standard. Strict 0 was more conservative than this consensus and
+# unattainable under the (α, ℓ) ridge geometry inherent to GP regression with
+# SE kernel (Rasmussen & Williams 2006 §5.5). Single-divergence refit logic
+# at target_accept=0.99 unchanged; relaxed gate evaluated only on refit result.
+DIVERGENCE_ABS_GATE: Final[int] = 5
+DIVERGENCE_RATE_GATE: Final[float] = 0.005  # 0.5% of post-warmup draws
+
 # Per §3.5.4 LOIO calibration gate.
 LOIO_COVERAGE_GATE: Final[float] = 0.70
 LOIO_NOMINAL_LEVEL: Final[float] = 0.80
@@ -506,11 +520,13 @@ def fit_fpca(
 
 @dataclass(frozen=True)
 class SamplerDiagnostics:
-    """NUTS sampler diagnostic gates per §3.1.3."""
+    """NUTS sampler diagnostic gates per §3.1.3 (post-F-H-4-A4)."""
 
     rhat_max: float
     ess_min: float
     n_divergences: int
+    n_post_warmup_draws: int  # F-H-4-A4: required for rate-gate evaluation
+    divergence_rate: float    # F-H-4-A4: n_divergences / n_post_warmup_draws
     rhat_gate_pass: bool
     ess_gate_pass: bool
     divergence_gate_pass: bool
@@ -524,27 +540,52 @@ def evaluate_sampler_diagnostics(
     rhat_values: np.ndarray | list[float],
     ess_values: np.ndarray | list[float],
     n_divergences: int,
+    n_post_warmup_draws: int | None = None,
 ) -> SamplerDiagnostics:
-    """Evaluate the three §3.1.3 sampler gates.
+    """Evaluate the three §3.1.3 sampler gates (post-F-H-4-A4 divergence relaxation).
 
-    Per §3.1.3 binding:
-      - All R-hat <= 1.01
-      - Effective sample size >= 400 on every parameter
-      - Zero divergent transitions after warmup
-        (single divergence => refit at target_accept=0.99;
-         persistent divergences => fallback per §3.1.4)
+    Per §3.1.3 binding (after F-H-4-A4 amendment, qgi-docs 2026-05-20):
+      - All R-hat <= RHAT_GATE (1.01)
+      - Effective sample size >= ESS_GATE (400) on every parameter
+      - Divergent transitions <= DIVERGENCE_ABS_GATE (5 absolute) AND
+        divergence rate <= DIVERGENCE_RATE_GATE (0.5%) over post-warmup draws
+        (single divergence => refit at target_accept=0.99 — existing behavior;
+         relaxed gate evaluated only on refit result)
+
+    Args:
+        rhat_values: per-parameter R-hat values from arviz summary.
+        ess_values: per-parameter ESS values from arviz summary.
+        n_divergences: total divergent transitions (post-warmup) from
+            ``idata.sample_stats["diverging"].sum()``.
+        n_post_warmup_draws: total post-warmup draws (= n_chains * n_draws).
+            Required for the F-H-4-A4 rate gate. If None, only the absolute
+            gate fires (backward-compatible with pre-A4 callers, but emits
+            divergence_rate = NaN — callers should always pass this).
+
+    Returns:
+        SamplerDiagnostics with all gate-pass flags + rate provenance.
     """
     rhat_arr = np.asarray(rhat_values, dtype=float)
     ess_arr = np.asarray(ess_values, dtype=float)
     rhat_max = float(np.nanmax(rhat_arr)) if rhat_arr.size > 0 else 0.0
     ess_min = float(np.nanmin(ess_arr)) if ess_arr.size > 0 else 0.0
+    n_div = int(n_divergences)
+    if n_post_warmup_draws is None or n_post_warmup_draws <= 0:
+        div_rate = float("nan")
+        # Without n_post_warmup_draws, can only enforce the absolute gate.
+        div_pass = n_div <= DIVERGENCE_ABS_GATE
+    else:
+        div_rate = n_div / float(n_post_warmup_draws)
+        div_pass = (n_div <= DIVERGENCE_ABS_GATE) and (div_rate <= DIVERGENCE_RATE_GATE)
     return SamplerDiagnostics(
         rhat_max=rhat_max,
         ess_min=ess_min,
-        n_divergences=int(n_divergences),
+        n_divergences=n_div,
+        n_post_warmup_draws=int(n_post_warmup_draws) if n_post_warmup_draws else 0,
+        divergence_rate=div_rate,
         rhat_gate_pass=rhat_max <= RHAT_GATE,
         ess_gate_pass=ess_min >= ESS_GATE,
-        divergence_gate_pass=n_divergences == 0,
+        divergence_gate_pass=div_pass,
     )
 
 
@@ -730,9 +771,8 @@ def build_gp_fallback_model(
     rather than 3K scalar inputs. NOT an F-H-4 amendment — the model
     equations, priors, and posteriors are mathematically identical. Per-
     indicator parameter values are now `alpha_recipe[k]`, `ell_recipe[k]`,
-    `sigma_eps[k]`. After F-H-4-A3 (qgi-docs 2026-05-19), lock JSON
-    provenance becomes gp_fallback_variant = "v3_no_instance_gp_lognormal_ell"
-    + gp_fallback_amendment = "F-H-4-A1+F-H-4-A3".
+    `sigma_eps[k]`. Lock JSON provenance unchanged (gp_fallback_variant
+    remains "v2_no_instance_gp"; gp_fallback_amendment remains "F-H-4-A1").
 
     §3.5.1 posterior_cov_diag contract preserved: still extracted from the
     Bayesian posterior over f_r^(k) at integer time points.
@@ -966,7 +1006,11 @@ def fit_gp_fallback(
     rhat_values = summary["r_hat"].values
     ess_values = summary["ess_bulk"].values
     n_divergences = int(idata.sample_stats["diverging"].sum().values)
-    diagnostics = evaluate_sampler_diagnostics(rhat_values, ess_values, n_divergences)
+    # F-H-4-A4: pass post-warmup draw count for rate-gate evaluation.
+    n_post_warmup_draws = int(n_chains * n_draws)
+    diagnostics = evaluate_sampler_diagnostics(
+        rhat_values, ess_values, n_divergences, n_post_warmup_draws=n_post_warmup_draws
+    )
 
     # --- Recover posterior mean + covariance analytically (§3.5.1 contract) ---
     # Given NUTS draws of (α_k, ℓ_k, σ_ε_k), the GP conditional posterior of
