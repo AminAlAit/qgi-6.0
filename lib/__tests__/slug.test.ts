@@ -69,6 +69,37 @@ describe("countrySlug", () => {
   });
 });
 
+// #836 (R8-W1redo-Yuki-3) — ISO-2 code resolution in resolveCountryBySlug.
+describe("resolveCountryBySlug — ISO-2 code resolution", () => {
+  it("resolves KR (uppercase) to South Korea", async () => {
+    const { resolveCountryBySlug } = await import("@/lib/country-risks");
+    const result = await resolveCountryBySlug("KR");
+    expect(result).not.toBeNull();
+    expect(result!.name).toBe("South Korea");
+  });
+
+  it("resolves kr (lowercase) to South Korea", async () => {
+    const { resolveCountryBySlug } = await import("@/lib/country-risks");
+    const result = await resolveCountryBySlug("kr");
+    expect(result).not.toBeNull();
+    expect(result!.name).toBe("South Korea");
+  });
+
+  it("resolves DE to Germany", async () => {
+    const { resolveCountryBySlug } = await import("@/lib/country-risks");
+    const result = await resolveCountryBySlug("DE");
+    expect(result).not.toBeNull();
+    expect(result!.name).toBe("Germany");
+  });
+
+  it("resolves gb to United Kingdom", async () => {
+    const { resolveCountryBySlug } = await import("@/lib/country-risks");
+    const result = await resolveCountryBySlug("gb");
+    expect(result).not.toBeNull();
+    expect(result!.name).toBe("United Kingdom");
+  });
+});
+
 describe("COMMON_NAME_ALIASES — Côte d'Ivoire (#R8W1 FIX-1 2026-05-20)", () => {
   it("cote_d_ivoire alias maps to ivory_coast", async () => {
     const { COMMON_NAME_ALIASES } = await import("@/lib/country-risks");
