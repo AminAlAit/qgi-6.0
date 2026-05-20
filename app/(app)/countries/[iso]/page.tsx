@@ -3,7 +3,10 @@ import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { toBuyerViewList } from "@/lib/buyer-view";
 import { CATEGORY_L1_MAP, L1_GROUPS } from "@/lib/category-taxonomy";
 import { countrySlug } from "@/lib/slug";
-import { CountryMergedDetail } from "@/components/countries/CountryMergedDetail";
+import {
+  CountryMergedDetail,
+  type QgiPerRecipeEntry,
+} from "@/components/countries/CountryMergedDetail";
 import type { Metadata } from "next";
 import { notFound, permanentRedirect } from "next/navigation";
 
@@ -423,7 +426,45 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   // #729 Step 2 — per-recipe Precedent Match strip data. Optional same as
   // riskScore; pre-#728-Step-1 bakes don't carry the block. The strip is
   // hidden when the country has no per-recipe scores at all (all-null).
-  const perRecipe = country.qgi_risk_score_by_recipe;
+  //
+  // R8 Priya BUG-2 (2026-05-20) — enrich each recipe entry with a
+  // `cohort_rank` so the strip can display "97/100 (#4 of 127)".
+  // Rank = 1-based descending position of this country's score among all
+  // countries that have coverage_flag="ok" for the same recipe. Computed
+  // here (server-side, deterministic per bake) so the client component
+  // stays pure. Skip when coverage_flag !== "ok" per spec.
+  const rawPerRecipe = country.qgi_risk_score_by_recipe;
+  let perRecipe: Record<string, QgiPerRecipeEntry | null> | undefined = rawPerRecipe;
+  if (rawPerRecipe && allData) {
+    const enriched: Record<string, QgiPerRecipeEntry | null> = {};
+    for (const [recipeId, entry] of Object.entries(rawPerRecipe)) {
+      if (entry === null || entry.coverage_flag !== "ok") {
+        enriched[recipeId] = entry;
+        continue;
+      }
+      // Collect all ok-coverage scores for this recipe across the cohort.
+      const allScores: number[] = [];
+      for (const c of Object.values(allData.countries)) {
+        const rEntry = c.qgi_risk_score_by_recipe?.[recipeId];
+        if (rEntry && rEntry.coverage_flag === "ok") {
+          allScores.push(rEntry.score);
+        }
+      }
+      // Sort descending; rank 1 = highest score.
+      allScores.sort((a, b) => b - a);
+      const rank = allScores.indexOf(entry.score) + 1;
+      // Sonnet PR #129 NIT: use the cohort size we actually ranked
+      // against (allScores.length) rather than the pipeline-baked
+      // `cohort_n_recipe`, so the displayed "#N of M" never disagrees
+      // with the rank-N's actual denominator.
+      enriched[recipeId] = {
+        ...entry,
+        cohort_rank: rank > 0 ? rank : undefined,
+        cohort_n_recipe: allScores.length,
+      };
+    }
+    perRecipe = enriched;
+  }
 
   // #757 (persona-test 2026-05-17): surface bake date alongside the
   // "Auto-generated" status chip in WhatsHappeningHere. The dataset's

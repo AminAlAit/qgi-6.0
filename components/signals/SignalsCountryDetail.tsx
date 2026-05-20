@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
+import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
 import type { CountrySignalRow, SignalTier } from "@/app/(app)/signals/[country]/page";
 
 /**
@@ -286,7 +287,7 @@ export function SignalsCountryDetail({
               border: "1px solid var(--qgi-border)",
             }}
           >
-            {curated ? "[Illustrative narrative]" : "[Preview template]"}
+            {AUTO_NARRATIVE_LABEL}
           </span>
         </div>
         <p
