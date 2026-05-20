@@ -117,12 +117,17 @@ export function PrecedentMatchLeaderboard({
                         size={14}
                         countryName={row.countryName}
                       />
-                      <span
-                        className="text-sm font-medium truncate"
+                      {/* #846 — country name links to country profile (structural peers live there).
+                          Note: outer <Link> goes to the signal leaf; this inner <Link> goes to the
+                          country profile. The outer block link still captures full-row click. */}
+                      <Link
+                        href={`/countries/${cslug}` as Route}
+                        className="text-sm font-medium truncate hover:underline hover:text-[var(--qgi-accent)]"
                         style={{ color: "var(--qgi-text)" }}
+                        title={`Go to ${row.countryName} country profile`}
                       >
                         {row.countryName}
-                      </span>
+                      </Link>
                     </div>
                     <div
                       className="relative h-2 rounded"

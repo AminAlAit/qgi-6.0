@@ -235,6 +235,7 @@ export default async function SignalsLeafPage({ params }: Props) {
       generatedDate={generatedDate}
       curated={c.curated}
       mlBridgeNote={mlBridgeNote}
+      countryTier={c.overall_risk_tier}
     />
   );
 }
