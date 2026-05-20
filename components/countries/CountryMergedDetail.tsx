@@ -4,6 +4,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import type { RiskTier } from "@/lib/country-risks.schema";
 import { formatBakeMonthYear, daysSinceBake } from "@/lib/format-bake-date";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
+import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
 
 const VINTAGE_STALENESS_DAYS = 30;
 
@@ -141,6 +142,13 @@ export interface QgiPerRecipeEntry {
   recipe_loco_auc?: number | null;
   recipe_f_rule_advisory_flag?: boolean;
   recipe_f_rule_anomaly_flag?: boolean;
+  /**
+   * R8 Priya BUG-2 (2026-05-20) — per-recipe cohort rank of this country.
+   * Computed server-side by ranking all countries' scores for the recipe
+   * descending; rank 1 = highest score. Only present when coverage_flag="ok".
+   * Format for display: `${score}/100 (#${cohort_rank} of ${cohort_n_recipe})`.
+   */
+  cohort_rank?: number;
 }
 
 function formatRecipeDisplayName(id: string): string {
@@ -859,8 +867,18 @@ function PrecedentMatchRow({
           className="font-data tabular-nums text-sm font-semibold"
           style={{ color: "var(--qgi-text)" }}
         >
-          {entry.score}
+          {entry.score}/100
         </div>
+        {/* R8 Priya BUG-2 (2026-05-20): surface cohort rank when available */}
+        {entry.cohort_rank !== undefined && cohortN !== undefined && (
+          <div
+            className="text-[10px] font-data tabular-nums mt-0.5"
+            style={{ color: "var(--qgi-text-muted)" }}
+            title={`Ranked #${entry.cohort_rank} of ${cohortN} countries with ok coverage on this recipe.`}
+          >
+            #{entry.cohort_rank} of {cohortN}
+          </div>
+        )}
         <div
           className="text-[9px] font-data tabular-nums mt-0.5"
           style={{ color: "var(--qgi-text-dim)" }}
@@ -917,9 +935,13 @@ function WhatsHappeningHere({
   // is the journalist-grade phrasing. Fatima + James + Marcus + Dmitri +
   // Santiago all flagged this independently in R1-R3.
   const formattedVintage = formatBakeMonthYear(bakeDate);
+  // R8 BUG-4 (2026-05-20) — standardize to AUTO_NARRATIVE_LABEL. The prior
+  // "Auto-generated" / "Auto-generated · Data through …" variants diverged
+  // from [PREVIEW TEMPLATE] / [Illustrative narrative] on the signals pages.
+  // Bake date appended as a suffix so the vintage context is preserved.
   const statusLabel = formattedVintage
-    ? `Auto-generated · Data through ${formattedVintage}`
-    : "Auto-generated";
+    ? `${AUTO_NARRATIVE_LABEL} · Data through ${formattedVintage}`
+    : AUTO_NARRATIVE_LABEL;
   return (
     <section className="mb-8" aria-labelledby="whats-happening-heading">
       <div className="flex items-center gap-2 mb-3 flex-wrap">

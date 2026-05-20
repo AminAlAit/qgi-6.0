@@ -143,6 +143,12 @@ export default async function SignalsLeafPage({ params }: Props) {
   // we'd keep going here. For PR #4, an empty statistical hit means there's
   // no leaf to show — fall through to notFound.
   if (byWindow.length === 0) notFound();
+  // Sort order: descending salience z-score (leading window first).
+  // Canonicalized per R8 Daniel Mensah bug report 2026-05-20 — was previously
+  // inconsistent across leaves because Object.entries() key order is
+  // implementation-defined, so Sierra Leone/elections sorted differently
+  // from Sierra Leone/civil_war. Enforcing the sort here (server side, before
+  // the prop flows to SignalsLeafDetail) makes every leaf read identically.
   byWindow.sort((a, b) => b.salience - a.salience);
   const statPanel: LeafStatPanel = {
     max_salience: maxSalience,

@@ -246,6 +246,17 @@ export const COMMON_NAME_ALIASES: Readonly<Record<string, string>> = {
   // South Korea (canonical slug TBD post-bake; aliases here on
   // assumption of `south_korea` canonical form)
   coree_du_sud: "south_korea", // Corée du Sud → diacritic-stripped
+
+  // #R8W1 FIX-1 (2026-05-20, Daniel Mensah): Côte d'Ivoire slug alias.
+  // The canonical bake name is "Ivory Coast" (slug: ivory_coast).
+  // The apostrophe in "Côte d'Ivoire" becomes an underscore via countrySlug(),
+  // producing "cote_d_ivoire" — but that form was missing from the alias map.
+  // Hyphen variants ("cote-d-ivoire" → "cote_d_ivoire") are also covered here
+  // belt-and-suspenders after the hyphen→underscore normalizer runs above.
+  cote_d_ivoire: "ivory_coast",
+  cote_divoire: "ivory_coast", // apostrophe-elided variant (belt-and-suspenders)
+  ivoire: "ivory_coast", // short French form
+  ci: "ivory_coast", // ISO alpha-2
 };
 
 export async function resolveCountryBySlug(
