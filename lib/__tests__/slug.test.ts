@@ -69,6 +69,35 @@ describe("countrySlug", () => {
   });
 });
 
+describe("COMMON_NAME_ALIASES — Côte d'Ivoire (#R8W1 FIX-1 2026-05-20)", () => {
+  it("cote_d_ivoire alias maps to ivory_coast", async () => {
+    const { COMMON_NAME_ALIASES } = await import("@/lib/country-risks");
+    expect(COMMON_NAME_ALIASES["cote_d_ivoire"]).toBe("ivory_coast");
+  });
+
+  it("cote_divoire alias maps to ivory_coast (belt-and-suspenders)", async () => {
+    const { COMMON_NAME_ALIASES } = await import("@/lib/country-risks");
+    expect(COMMON_NAME_ALIASES["cote_divoire"]).toBe("ivory_coast");
+  });
+
+  it("ivoire short alias maps to ivory_coast", async () => {
+    const { COMMON_NAME_ALIASES } = await import("@/lib/country-risks");
+    expect(COMMON_NAME_ALIASES["ivoire"]).toBe("ivory_coast");
+  });
+
+  it("ci ISO alpha-2 alias maps to ivory_coast", async () => {
+    const { COMMON_NAME_ALIASES } = await import("@/lib/country-risks");
+    expect(COMMON_NAME_ALIASES["ci"]).toBe("ivory_coast");
+  });
+
+  it("countrySlug('Côte d\\'Ivoire') produces cote_d_ivoire (the failing slug)", () => {
+    // This is the slug a router would produce for a typed/pasted URL.
+    // With the alias in place, resolveCountryBySlug('cote_d_ivoire')
+    // maps this → ivory_coast → Ivory Coast country entry.
+    expect(countrySlug("Côte d'Ivoire")).toBe("cote_d_ivoire");
+  });
+});
+
 describe("curatedEventsSlug", () => {
   it("strips leading 'the'", () => {
     expect(curatedEventsSlug("The Bahamas")).toBe("bahamas");
