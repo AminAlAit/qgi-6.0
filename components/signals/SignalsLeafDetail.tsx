@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { formatDataThrough } from "@/lib/format-bake-date";
+import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
 import type { L1Group } from "@/lib/category-taxonomy";
 import type {
   LeafMlPanel,
@@ -277,7 +278,7 @@ export function SignalsLeafDetail({
               border: "1px solid var(--qgi-border)",
             }}
           >
-            {curated ? "[Illustrative narrative]" : "[Preview template]"}
+            {AUTO_NARRATIVE_LABEL}
           </span>
         </div>
         <p
