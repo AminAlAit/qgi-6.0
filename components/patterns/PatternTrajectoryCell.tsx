@@ -112,19 +112,30 @@ export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
           {positionLabel}
         </span>
       </div>
-      {falsificationAnchor && (
-        <div
-          className="text-[10px] leading-tight truncate"
-          style={{ color: "var(--qgi-text-muted)" }}
-          title={`Falsification anchor: if ${falsificationAnchor.followerCountry} does not experience some form of '${falsificationAnchor.eventCategoryDisplay}' event by ${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}, this pattern is falsified.`}
-        >
-          <span style={{ color: "var(--qgi-text-dim)" }}>Falsifies if</span>{" "}
-          {`${falsificationAnchor.followerCountry} sees no ‘${falsificationAnchor.eventCategoryDisplay}’ by `}
-          <span className="font-data tabular-nums">
-            {falsificationAnchor.windowStart}&ndash;{falsificationAnchor.windowEnd}
-          </span>
-        </div>
-      )}
+      {/* #831 (R8-W1redo-Priya-1): elapsed windows show honest "outcome not yet
+          determined" copy instead of the stale forward-looking "Falsifies if …". */}
+      {falsificationAnchor &&
+        (falsificationAnchor.isWindowElapsed ? (
+          <div
+            className="text-[10px] leading-tight truncate italic"
+            style={{ color: "var(--qgi-text-dim)" }}
+            title={`The falsification window (${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}) has passed. QGI has not yet determined the outcome for ${falsificationAnchor.followerCountry}.`}
+          >
+            {`Window elapsed ${falsificationAnchor.windowEnd} — outcome not yet determined by QGI`}
+          </div>
+        ) : (
+          <div
+            className="text-[10px] leading-tight truncate"
+            style={{ color: "var(--qgi-text-muted)" }}
+            title={`Falsification anchor: if ${falsificationAnchor.followerCountry} does not experience some form of ‘${falsificationAnchor.eventCategoryDisplay}’ event by ${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}, this pattern is falsified.`}
+          >
+            <span style={{ color: "var(--qgi-text-dim)" }}>Falsifies if</span>{" "}
+            {`${falsificationAnchor.followerCountry} sees no ‘${falsificationAnchor.eventCategoryDisplay}’ by `}
+            <span className="font-data tabular-nums">
+              {falsificationAnchor.windowStart}&ndash;{falsificationAnchor.windowEnd}
+            </span>
+          </div>
+        ))}
     </div>
   );
 }

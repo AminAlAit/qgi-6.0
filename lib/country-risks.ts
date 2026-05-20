@@ -302,6 +302,18 @@ export async function resolveCountryBySlug(
       }
     }
   }
+  // #836 (R8-W1redo-Yuki-3) — ISO-2 code resolution. After normalization,
+  // a 2-character slug is likely an ISO 3166-1 alpha-2 code (e.g., "kr",
+  // "de", "gb"). The country-risks.json carries `alpha_2` on every entry.
+  // Case-insensitive; normalized is already lowercased above.
+  // Skip ISO-3 — country-risks.json does not carry alpha_3.
+  if (normalized.length === 2) {
+    for (const [id, c] of Object.entries(data.countries)) {
+      if (c.alpha_2?.toLowerCase() === normalized) {
+        return { id, ...c };
+      }
+    }
+  }
   return null;
 }
 

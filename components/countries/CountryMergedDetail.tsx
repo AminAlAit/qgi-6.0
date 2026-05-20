@@ -392,8 +392,9 @@ export function CountryMergedDetail({
         Renders nothing if the bake doesn't carry the per-recipe block
         (graceful degradation for pre-#728 bakes).
       */}
+      {/* #834 (R8-W1redo-Sara-1/Daniel-4) — iso threaded so rows link to signal leaf. */}
       {perRecipe && Object.values(perRecipe).some((v) => v !== null) && (
-        <PrecedentMatchStrip perRecipe={perRecipe} />
+        <PrecedentMatchStrip perRecipe={perRecipe} iso={iso} />
       )}
 
       {/* ============== Section "What's happening here" (Ingrid) ============== */}
@@ -681,8 +682,11 @@ function RiskScoreHeroTile({
  */
 function PrecedentMatchStrip({
   perRecipe,
+  iso,
 }: {
   perRecipe: Record<string, QgiPerRecipeEntry | null>;
+  /** #834 (R8-W1redo-Sara-1): country slug for signal-leaf links. */
+  iso: string;
 }) {
   // Stable ordering — top-4 LOCKed recipes in their canonical sequence so
   // the strip reads the same on every country (Yuki's grid-discipline rule).
@@ -726,7 +730,8 @@ function PrecedentMatchStrip({
             const entry = perRecipe[rid];
             return (
               <li key={rid}>
-                <PrecedentMatchRow recipeId={rid} entry={entry} />
+                {/* #834 (R8-W1redo-Sara-1): iso passed for signal-leaf link. */}
+                <PrecedentMatchRow recipeId={rid} entry={entry} iso={iso} />
               </li>
             );
           })}
@@ -745,17 +750,23 @@ function PrecedentMatchStrip({
 function PrecedentMatchRow({
   recipeId,
   entry,
+  iso,
 }: {
   recipeId: string;
   entry: QgiPerRecipeEntry | null;
+  /** #834 (R8-W1redo-Sara-1): country slug → whole row links to signal leaf. */
+  iso: string;
 }) {
   const displayName = formatRecipeDisplayName(recipeId);
+  // #834 (R8-W1redo-Sara-1/Daniel-4): whole row links to per-country signal leaf.
+  const leafHref = `/signals/${iso}/${recipeId}` as Route;
   if (entry === null) {
     return (
-      <div
-        className="px-4 py-2.5 grid items-center gap-3"
+      <Link
+        href={leafHref}
+        className="block px-4 py-2.5 grid items-center gap-3 hover:bg-[var(--qgi-surface-2)] transition-colors"
         style={{ gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 2fr) 90px" }}
-        title={`No top_category match for ${displayName} in this country.`}
+        title={`No top_category match for ${displayName} in this country. This may indicate: (a) the recipe is structurally inapplicable to this country's regime type or geography, (b) insufficient indicator coverage in the current scoring run, or (c) the country's signal in this recipe is below the threshold for inclusion in top categories.`}
       >
         {/* #756 (persona-test 2026-05-17, Fatima/UNDP iPhone 14): truncating
             recipe names to ~12 characters ("Multilatera...", "Civil war &...")
@@ -782,7 +793,7 @@ function PrecedentMatchRow({
         >
           —
         </div>
-      </div>
+      </Link>
     );
   }
 
@@ -810,8 +821,10 @@ function PrecedentMatchRow({
   const tooltip = tooltipParts.join(" ");
 
   return (
-    <div
-      className="px-4 py-2.5 grid items-center gap-3"
+    /* #834 (R8-W1redo-Sara-1): whole row links to signal leaf. */
+    <Link
+      href={leafHref}
+      className="block px-4 py-2.5 grid items-center gap-3 hover:bg-[var(--qgi-surface-2)] transition-colors"
       style={{ gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 2fr) 90px" }}
       title={tooltip}
     >
@@ -886,7 +899,7 @@ function PrecedentMatchRow({
           [{ciSpan}]
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
@@ -984,6 +997,22 @@ function WhatsHappeningHere({
           methodology
         </Link>{" "}
         for how composites and salience are computed.
+      </p>
+      {/* #832 (R8-W1redo-Olga-5) — statistical-vs-ML layer disclosure. */}
+      <p
+        className="mt-3 text-[10px] leading-relaxed max-w-[68ch] italic"
+        style={{ color: "var(--qgi-text-muted)" }}
+      >
+        Categories above are drawn from QGI&apos;s statistical alignment layer (V1.9.1).
+        Validated ML-recipe signals are shown on the{" "}
+        <Link
+          href={"/signals" as Route}
+          className="underline underline-offset-2"
+          style={{ color: "var(--qgi-text-muted)" }}
+        >
+          Signals page
+        </Link>
+        .
       </p>
       {/* #696 — affirmative disclosure for evidence-thin top categories.
           Categories with recipe_count < 5 are excluded from the

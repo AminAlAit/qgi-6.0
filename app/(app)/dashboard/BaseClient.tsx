@@ -1443,12 +1443,19 @@ export function BaseClient({
                 const convLabel = s.convergence_tier
                   ? CONVERGENCE_LABELS[s.convergence_tier]
                   : "Unknown";
-                // PR-vii (2026-05-15) — convergence rows had hover-highlight
-                // but no link wrapper, so users clicked and nothing happened.
-                // Route to /precedents/{event_category} (recipe detail page);
-                // event_category is the L3 taxonomy slug, same shape that
-                // /precedents/[slug] resolves.
-                const rowHref = `/precedents/${s.event_category}` as Route;
+                // #835 (R8-W1redo-Priya-7/Olga-4) — route to per-country signal leaf
+                // (the analytically primary destination) rather than the recipe dossier.
+                // Fallback chain: signal leaf → country profile → recipe dossier.
+                const _countrySlug = s.country_a_name
+                  ? countrySlug(s.country_a_name)
+                  : null;
+                const rowHref = (
+                  _countrySlug && s.event_category
+                    ? `/signals/${_countrySlug}/${s.event_category}`
+                    : _countrySlug
+                      ? `/countries/${_countrySlug}`
+                      : `/precedents/${s.event_category}`
+                ) as Route;
                 return (
                   <li key={`${s.recipe_id ?? i}`}>
                     <Link
