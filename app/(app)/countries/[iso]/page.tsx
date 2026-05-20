@@ -453,9 +453,14 @@ export default async function CountryMergedDetailPage({ params }: Props) {
       // Sort descending; rank 1 = highest score.
       allScores.sort((a, b) => b - a);
       const rank = allScores.indexOf(entry.score) + 1;
+      // Sonnet PR #129 NIT: use the cohort size we actually ranked
+      // against (allScores.length) rather than the pipeline-baked
+      // `cohort_n_recipe`, so the displayed "#N of M" never disagrees
+      // with the rank-N's actual denominator.
       enriched[recipeId] = {
         ...entry,
         cohort_rank: rank > 0 ? rank : undefined,
+        cohort_n_recipe: allScores.length,
       };
     }
     perRecipe = enriched;
