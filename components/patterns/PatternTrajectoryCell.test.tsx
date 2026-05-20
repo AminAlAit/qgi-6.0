@@ -146,4 +146,67 @@ describe("PatternTrajectoryCell", () => {
     expect(innerBar).not.toBeNull();
     expect((innerBar as HTMLElement).style.width).toBe("98%");
   });
+
+  // #849 — lockedRecipeSet guard: only render <Link> when category is LOCKed.
+  it("#849 — renders falsification category as plain text when NOT in lockedRecipeSet", () => {
+    const nonLockedTrajectory: PatternTrajectory = {
+      ...baseTrajectory,
+      falsificationAnchor: {
+        followerCountry: "Paraguay",
+        eventCategory: "military_coup",
+        eventCategoryDisplay: "Military Coup",
+        windowStart: 2025,
+        windowEnd: 2027,
+        isWindowElapsed: false,
+      },
+    };
+    // No lockedRecipeSet passed — defaults to undefined (safe plain-text).
+    const { container } = render(
+      <PatternTrajectoryCell
+        trajectory={nonLockedTrajectory}
+        leaderCountry="South Korea"
+      />
+    );
+    // "Military Coup" text must appear but NOT as a link.
+    expect(screen.getByText(/Military Coup/)).toBeInTheDocument();
+    expect(container.querySelector('a[href*="military_coup"]')).toBeNull();
+  });
+
+  it("#849 — renders falsification category as plain text when lockedRecipeSet explicitly excludes it", () => {
+    const nonLockedTrajectory: PatternTrajectory = {
+      ...baseTrajectory,
+      falsificationAnchor: {
+        followerCountry: "Paraguay",
+        eventCategory: "military_coup",
+        eventCategoryDisplay: "Military Coup",
+        windowStart: 2025,
+        windowEnd: 2027,
+        isWindowElapsed: false,
+      },
+    };
+    const lockedRecipeSet = new Set<string>(["elections_and_voting", "bilateral_treaty"]);
+    const { container } = render(
+      <PatternTrajectoryCell
+        trajectory={nonLockedTrajectory}
+        leaderCountry="South Korea"
+        lockedRecipeSet={lockedRecipeSet}
+      />
+    );
+    expect(screen.getByText(/Military Coup/)).toBeInTheDocument();
+    expect(container.querySelector('a[href*="military_coup"]')).toBeNull();
+  });
+
+  it("#849 — renders falsification category as <Link> when category IS in lockedRecipeSet", () => {
+    const lockedRecipeSet = new Set<string>(["elections_and_voting", "bilateral_treaty"]);
+    const { container } = render(
+      <PatternTrajectoryCell
+        trajectory={baseTrajectory}
+        leaderCountry="South Korea"
+        lockedRecipeSet={lockedRecipeSet}
+      />
+    );
+    // elections_and_voting is in lockedRecipeSet → should be a link.
+    const link = container.querySelector('a[href*="elections_and_voting"]');
+    expect(link).not.toBeNull();
+  });
 });

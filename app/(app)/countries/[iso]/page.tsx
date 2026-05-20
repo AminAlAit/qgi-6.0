@@ -100,7 +100,13 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   // structural-peers section (below) operates on the same snapshot as
   // the subject country (was a latent risk before this hoist when the
   // two loadCountryRisks calls could theoretically race a cache eviction).
-  const allData = await loadCountryRisks().catch(() => null);
+  // #853 — load mlStack in parallel with allData; needed for the
+  // lockedRecipeSet gate on topCategories (prevents non-LOCKed categories
+  // like "military_coup" from appearing in the auto-narrative).
+  const [allData, mlStackEarly] = await Promise.all([
+    loadCountryRisks().catch(() => null),
+    loadMlRecipeStack().catch(() => null),
+  ]);
   let country = await resolveCountryBySlug(iso).catch(() => null);
   // #714 (2026-05-16) — Dashboard and landing page link to /countries/{id}
   // using NUMERIC country IDs (e.g., `/countries/205`). Pre-fix that
@@ -165,6 +171,17 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   // Top-3 categories overall (for hero top-line + the "3 categories driving"
   // accent on the L1 table). De-dupes per-category so the same recipe doesn't
   // appear twice from the S and M tier windows.
+  //
+  // #853 — gate to LOCKed ML recipes only. The statistical layer (71 categories)
+  // includes categories with no ML-validated recipe (e.g. "military_coup" for
+  // Qatar). The WhatsHappeningHere narrative cited these without distinction,
+  // misleading readers about ML-validation status. Apply lockedRecipeSet filter
+  // so only the 4 LOCKed ML recipe categories appear in the auto-narrative.
+  // If fewer than 3 LOCKed categories rank in the top, the narrative will be
+  // shorter — acceptable per triage note. The full statistical layer is still
+  // disclosed in the "Categories above are drawn from QGI's statistical
+  // alignment layer" note below the narrative.
+  const lockedRecipeSetEarly = new Set(mlStackEarly?.metadata.top_4_recipes ?? []);
   const seenCats = new Set<string>();
   const topCategories: Array<{
     category: string;
@@ -178,6 +195,8 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   }> = [];
   for (const tierData of Object.values(country.tiers)) {
     for (const cat of tierData.top_categories) {
+      // #853 — skip categories not in the LOCKed ML recipe set.
+      if (!lockedRecipeSetEarly.has(cat.category)) continue;
       if (seenCats.has(cat.category)) continue;
       seenCats.add(cat.category);
       topCategories.push({
@@ -229,7 +248,9 @@ export default async function CountryMergedDetailPage({ params }: Props) {
   //   the bake. Since the bake currently has many null AHI values, we use
   //   a deterministic preview heuristic per country to decide expansion
   //   default — see `mlCoverageGate` below.
-  const mlStack = await loadMlRecipeStack().catch(() => null);
+  // #853 — reuse the mlStackEarly loaded at the top of the function (parallel
+  // with allData). Avoids a second fs read of ml-recipe-stack.json.
+  const mlStack = mlStackEarly;
   const mlRows = mlStack
     ? toBuyerViewList(mlStack.recipes)
         .filter((r) => mlStack.metadata.top_4_recipes.includes(r.recipe_id))

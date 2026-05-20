@@ -3,6 +3,7 @@ import type { PatternRow } from "@/lib/types";
 import type { Metadata } from "next";
 import { canonicalPairKey } from "@/lib/canonical-pair";
 import { loadCountryRisks } from "@/lib/country-risks";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import {
   resolvePatternsInitialFilters,
   type PatternsSearchParams,
@@ -142,10 +143,18 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
   const params = await searchParams;
   // T1 (#59) — kick off events load in parallel with ranking; both are
   // independent fs reads and we need both before the row map below.
-  const [payload, eventsByCountry] = await Promise.all([
+  // #849 — also load ml recipe stack to build lockedRecipeSet for falsification
+  // anchor link guard (prevents 404s for non-LOCKed categories).
+  const [payload, eventsByCountry, mlStack] = await Promise.all([
     loadRanking(),
     loadVerifiedEventsByCountry(),
+    loadMlRecipeStack().catch(() => null),
   ]);
+  // #849 — set of the 4 LOCKed ML recipe category slugs; only these have
+  // live signals leaves. All others render as plain text (no dead link).
+  const lockedRecipeSet: ReadonlySet<string> = new Set(
+    mlStack?.metadata.top_4_recipes ?? []
+  );
   const raw = payload.results;
 
   // Gates-doc Rank 4 / face-validity-debt #718 (Marcus R3, Dmitri R3):
@@ -285,6 +294,7 @@ export default async function PatternsMergedPage({ searchParams }: PageProps) {
       generatedDate={generatedDate}
       countryOptions={countryOptions}
       initialFilters={initialFilters}
+      lockedRecipeSet={lockedRecipeSet}
     />
   );
 }

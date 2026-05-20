@@ -152,6 +152,7 @@ export function PatternsMergedListClient({
   generatedDate,
   countryOptions,
   initialFilters,
+  lockedRecipeSet,
 }: {
   rows: PatternsMergedRow[];
   tierCounts: Record<PatternWindowTier, number>;
@@ -163,6 +164,9 @@ export function PatternsMergedListClient({
   /** #781 — URL-seeded initial filter state (server-resolved). Defaults
    *  to empty when the page is reached without query params. */
   initialFilters?: PatternsInitialFilters;
+  /** #849 — LOCKed ML recipe set; forwarded to PatternTrajectoryCell to
+   *  guard falsification anchor links. Non-LOCKed categories are plain text. */
+  lockedRecipeSet?: ReadonlySet<string>;
 }) {
   const [search, setSearch] = useState<string>(initialFilters?.search ?? "");
   const [tierFilter, setTierFilter] = useState<Set<PatternWindowTier>>(
@@ -569,7 +573,12 @@ export function PatternsMergedListClient({
             ) : layout === "rows" ? (
               <ul className="divide-y" style={{ borderColor: "var(--qgi-border)" }}>
                 {sorted.map((row, idx) => (
-                  <PatternRowComponent key={row.row_key} row={row} rank={idx + 1} />
+                  <PatternRowComponent
+                    key={row.row_key}
+                    row={row}
+                    rank={idx + 1}
+                    lockedRecipeSet={lockedRecipeSet}
+                  />
                 ))}
               </ul>
             ) : (
@@ -580,7 +589,12 @@ export function PatternsMergedListClient({
                 }}
               >
                 {sorted.map((row, idx) => (
-                  <PatternGridCard key={row.row_key} row={row} rank={idx + 1} />
+                  <PatternGridCard
+                    key={row.row_key}
+                    row={row}
+                    rank={idx + 1}
+                    lockedRecipeSet={lockedRecipeSet}
+                  />
                 ))}
               </div>
             )}
@@ -622,7 +636,15 @@ function buildDetailHref(row: PatternsMergedRow): Route {
   return `/patterns/${aSlug}-${bSlug}-${row.start_year_a}-${row.start_year_b}` as Route;
 }
 
-function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: number }) {
+function PatternRowComponent({
+  row,
+  rank,
+  lockedRecipeSet,
+}: {
+  row: PatternsMergedRow;
+  rank: number;
+  lockedRecipeSet?: ReadonlySet<string>;
+}) {
   const meta = TIER_META[row.window_tier];
   const detailHref = buildDetailHref(row);
   return (
@@ -712,6 +734,7 @@ function PatternRowComponent({ row, rank }: { row: PatternsMergedRow; rank: numb
         <PatternTrajectoryCell
           trajectory={row.trajectory}
           leaderCountry={row.country_a}
+          lockedRecipeSet={lockedRecipeSet}
         />
 
         {/* Recipe-confidence dot — PR #4 preview placeholder */}
@@ -1057,7 +1080,15 @@ function RciDot({ row: _row }: { row: PatternsMergedRow }) {
 // as the rows layout but compressed to ~280×180; sparkline mid-cell rather
 // than as a separate column.
 // ============================================================================
-function PatternGridCard({ row, rank }: { row: PatternsMergedRow; rank: number }) {
+function PatternGridCard({
+  row,
+  rank,
+  lockedRecipeSet,
+}: {
+  row: PatternsMergedRow;
+  rank: number;
+  lockedRecipeSet?: ReadonlySet<string>;
+}) {
   const meta = TIER_META[row.window_tier];
   const detailHref = buildDetailHref(row);
   return (
@@ -1117,6 +1148,7 @@ function PatternGridCard({ row, rank }: { row: PatternsMergedRow; rank: number }
         <PatternTrajectoryCell
           trajectory={row.trajectory}
           leaderCountry={row.country_a}
+          lockedRecipeSet={lockedRecipeSet}
         />
       </div>
 

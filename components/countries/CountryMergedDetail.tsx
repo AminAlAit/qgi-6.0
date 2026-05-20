@@ -990,33 +990,59 @@ function WhatsHappeningHere({
           {statusLabel}
         </span>
       </div>
+      {/* #853 — conditional prose: when top3 is empty (no LOCKed ML recipes
+          in the country's top categories after the lockedRecipeSet gate), render
+          a clear "no ML-validated signals currently firing" note instead of an
+          empty sentence fragment. */}
       <p
         className="text-base leading-relaxed max-w-[68ch]"
         style={{ color: "var(--qgi-text)" }}
       >
-        {/* #842 — top1 now comes from L1-salience map (matches bar chart). */}
-        {name} sits at Tier {tier} — {tierBlurb(tier)}. The strongest dimension of risk is{" "}
-        {top1}; the specific signals driving it include{" "}
-        {top3.length > 0 ? formatCategory(top3[0].category) : ""}
-        {top3.length > 1 ? `, ${formatCategory(top3[1].category).toLowerCase()}` : ""}
-        {top3.length > 2 ? `, and ${formatCategory(top3[2].category).toLowerCase()}` : ""}
-        . The 8-row profile below shows the full L1-domain footprint; click through to{" "}
-        <Link
-          href={"/methodology" as Route}
-          className="underline underline-offset-2"
-          style={{ color: "var(--qgi-text)" }}
-        >
-          methodology
-        </Link>{" "}
-        for how composites and salience are computed.
+        {top3.length === 0 ? (
+          <>
+            {name} sits at Tier {tier} — {tierBlurb(tier)}. No ML-validated signals are
+            currently firing at MODERATE+ for {name}. The 8-row profile below shows the
+            full L1-domain footprint from the statistical layer; click through to{" "}
+            <Link
+              href={"/methodology" as Route}
+              className="underline underline-offset-2"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              methodology
+            </Link>{" "}
+            for how composites and salience are computed.
+          </>
+        ) : (
+          <>
+            {/* #842 — top1 now comes from L1-salience map (matches bar chart). */}
+            {name} sits at Tier {tier} — {tierBlurb(tier)}. The strongest dimension of
+            risk is {top1}; the specific ML-validated signals driving it include{" "}
+            {top3.length > 0 ? formatCategory(top3[0].category) : ""}
+            {top3.length > 1 ? `, ${formatCategory(top3[1].category).toLowerCase()}` : ""}
+            {top3.length > 2
+              ? `, and ${formatCategory(top3[2].category).toLowerCase()}`
+              : ""}
+            . The 8-row profile below shows the full L1-domain footprint; click through to{" "}
+            <Link
+              href={"/methodology" as Route}
+              className="underline underline-offset-2"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              methodology
+            </Link>{" "}
+            for how composites and salience are computed.
+          </>
+        )}
       </p>
       {/* #832 (R8-W1redo-Olga-5) — statistical-vs-ML layer disclosure. */}
       <p
         className="mt-3 text-[10px] leading-relaxed max-w-[68ch] italic"
         style={{ color: "var(--qgi-text-muted)" }}
       >
-        Categories above are drawn from QGI&apos;s statistical alignment layer (V1.9.1).
-        Validated ML-recipe signals are shown on the{" "}
+        {top3.length > 0
+          ? "ML-validated signals above are drawn from the 4 LOCKed QGI recipes (V1.9.1)."
+          : "The statistical alignment layer (71 categories, V1.9.1) is shown in the L1 profile below."}{" "}
+        Full signals breakdown on the{" "}
         <Link
           href={"/signals" as Route}
           className="underline underline-offset-2"
