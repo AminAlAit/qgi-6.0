@@ -1,8 +1,37 @@
 import { PatternMergedDetail } from "@/components/patterns/PatternMergedDetail";
 import { countrySlug } from "@/lib/slug";
 import type { PatternRow } from "@/lib/types";
+import {
+  computePatternTrajectory,
+  type PatternTrajectory,
+  type VerifiedEvent,
+} from "@/lib/pattern-trajectory";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+
+/** #840 — Load verified events, keyed by lowercase country name. */
+async function loadVerifiedEventsByCountry(): Promise<Map<string, VerifiedEvent[]>> {
+  try {
+    const fs = await import("fs/promises");
+    const path = await import("path");
+    const filePath = path.join(process.cwd(), "data", "verified-events.json");
+    const raw = await fs.readFile(filePath, "utf-8");
+    const json: unknown = JSON.parse(raw);
+    if (!Array.isArray(json)) return new Map();
+    const byCountry = new Map<string, VerifiedEvent[]>();
+    for (const item of json as VerifiedEvent[]) {
+      if (!item || typeof item.country !== "string" || typeof item.year !== "number")
+        continue;
+      const key = item.country.toLowerCase();
+      const bucket = byCountry.get(key);
+      if (bucket) bucket.push(item);
+      else byCountry.set(key, [item]);
+    }
+    return byCountry;
+  } catch {
+    return new Map();
+  }
+}
 
 /**
  * /patterns/[slug] — Per-pattern detail page for Family 4 of A3 brief.
@@ -128,7 +157,11 @@ function mapPatternTier(raw: string | undefined): PatternWindowTier {
 
 export default async function PatternDetailPage({ params }: Props) {
   const { slug } = await params;
-  const payload = await loadRanking();
+  // #840 — load events in parallel with ranking (independent fs reads).
+  const [payload, eventsByCountry] = await Promise.all([
+    loadRanking(),
+    loadVerifiedEventsByCountry(),
+  ]);
   const rows = payload.results;
   const row = resolveBySlug(slug, rows);
   if (!row) notFound();
@@ -141,6 +174,12 @@ export default async function PatternDetailPage({ params }: Props) {
     ? payload.generated_at.slice(0, 10)
     : new Date().toISOString().slice(0, 10);
 
+  // #840 — compute trajectory for this specific pattern (same path as list page).
+  const trajectory: PatternTrajectory = computePatternTrajectory(
+    row,
+    eventsByCountry.get(row.country_a.toLowerCase()) ?? []
+  );
+
   return (
     <PatternMergedDetail
       row={row}
@@ -148,6 +187,7 @@ export default async function PatternDetailPage({ params }: Props) {
       aSlug={aSlug}
       bSlug={bSlug}
       generatedDate={generatedDate}
+      trajectory={trajectory}
     />
   );
 }
