@@ -4,6 +4,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import { formatDataThrough } from "@/lib/format-bake-date";
 import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
 import type { L1Group } from "@/lib/category-taxonomy";
+import type { RiskTier } from "@/lib/country-risks.schema";
 import type {
   LeafMlPanel,
   LeafStatPanel,
@@ -89,6 +90,7 @@ export function SignalsLeafDetail({
   generatedDate,
   curated,
   mlBridgeNote,
+  countryTier,
 }: {
   countrySlug: string;
   countryName: string;
@@ -110,6 +112,10 @@ export function SignalsLeafDetail({
     cohortN: number;
     lineageMismatch: true;
   } | null;
+  /** #844 — country risk tier, used to select the correct cohort-stratified ECE
+   *  in the ML calibration badge (HIGH → ece_high_cohort, MODERATE → ece_mid_cohort,
+   *  INDICATIVE → ece_low_cohort). Optional; falls back to ece_overall when absent. */
+  countryTier?: RiskTier;
 }) {
   const meta = TIER_META[tier];
   const lineageChip = mlPanel
@@ -425,7 +431,7 @@ export function SignalsLeafDetail({
       </section>
 
       {/* ============== ML lineage panel (when present) ============== */}
-      {mlPanel && <MlPanel panel={mlPanel} />}
+      {mlPanel && <MlPanel panel={mlPanel} countryTier={countryTier} />}
 
       {/* ============== Cross-family handoffs footer ============== */}
       <section
@@ -533,11 +539,22 @@ function MetricCell({
 // ML stack; column labels are glossed (Discrim. / Anchor / Calibration) to
 // keep the polish-scanner clean.
 // ============================================================================
-function MlPanel({ panel }: { panel: LeafMlPanel }) {
+function MlPanel({ panel, countryTier }: { panel: LeafMlPanel; countryTier?: RiskTier }) {
   const r = panel.recipe;
   const anchorKey = r.anchor_ahi_status;
   const anchor = ANCHOR_DOT[anchorKey] ?? ANCHOR_DOT.unavailable;
-  const calBand = calibrationBand(r.ece_overall);
+  // #844 — select cohort-stratified ECE based on country risk tier.
+  // HIGH tier ≈ high-fragility cohort; MODERATE ≈ mid; INDICATIVE ≈ low.
+  const cohortEce =
+    countryTier === "HIGH"
+      ? r.ece_high_cohort
+      : countryTier === "MODERATE"
+        ? r.ece_mid_cohort
+        : countryTier === "INDICATIVE"
+          ? r.ece_low_cohort
+          : null;
+  const eceForBadge = cohortEce ?? r.ece_overall;
+  const calBand = calibrationBand(eceForBadge);
   return (
     <section
       aria-labelledby="ml-heading"
@@ -591,7 +608,11 @@ function MlPanel({ panel }: { panel: LeafMlPanel }) {
         <MetricCell
           label="Calibration"
           value={calBand}
-          tooltip={`Empirical calibration error ${r.ece_overall.toFixed(3)}; <0.02 = well-calibrated, 0.02–0.05 = gap, >0.05 = drift.`}
+          tooltip={
+            cohortEce != null
+              ? `Overall ECE: ${r.ece_overall.toFixed(3)} (${calibrationBand(r.ece_overall)}); ${countryTier ?? "cohort"}-tier ECE: ${cohortEce.toFixed(3)} (${calibrationBand(cohortEce)}). Badge uses cohort-stratified value. <0.02 = well-calibrated, 0.02–0.05 = gap, >0.05 = drift.` // #844
+              : `Empirical calibration error ${r.ece_overall.toFixed(3)}; <0.02 = well-calibrated, 0.02–0.05 = gap, >0.05 = drift.`
+          }
         />
         <div className="min-w-0" title={anchor.label}>
           <div

@@ -32,6 +32,9 @@
  * a 4px left accent border to mark editorial provenance. The data flow
  * for that is reserved here; no Phase C entries exist in the corpus yet.
  */
+import Link from "next/link";
+import type { Route } from "next";
+import { countrySlug } from "@/lib/slug";
 import type { PatternTrajectory } from "@/lib/pattern-trajectory";
 
 interface Props {
@@ -130,7 +133,17 @@ export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
             title={`Falsification anchor: if ${falsificationAnchor.followerCountry} does not experience some form of ‘${falsificationAnchor.eventCategoryDisplay}’ event by ${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}, this pattern is falsified.`}
           >
             <span style={{ color: "var(--qgi-text-dim)" }}>Falsifies if</span>{" "}
-            {`${falsificationAnchor.followerCountry} sees no ‘${falsificationAnchor.eventCategoryDisplay}’ by `}
+            {`${falsificationAnchor.followerCountry} sees no `}
+            {/* #841 — link category to follower’s signal leaf for direct navigation. */}
+            <Link
+              href={
+                `/signals/${countrySlug(falsificationAnchor.followerCountry) ?? falsificationAnchor.followerCountry.toLowerCase()}/${falsificationAnchor.eventCategory}` as Route
+              }
+              className="underline underline-offset-2 hover:text-[var(--qgi-accent)]"
+            >
+              &apos;{falsificationAnchor.eventCategoryDisplay}&apos;
+            </Link>
+            {` by `}
             <span className="font-data tabular-nums">
               {falsificationAnchor.windowStart}&ndash;{falsificationAnchor.windowEnd}
             </span>

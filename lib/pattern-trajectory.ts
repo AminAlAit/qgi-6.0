@@ -161,6 +161,11 @@ export function findTerminatingEvent(
  *
  * Direction convention: country_a = LEADER (analogue, completed arc),
  * country_b = FOLLOWER (live case). Confirmed by Ingrid 2026-05-19.
+ *
+ * Note: country_a is the 'leader' by ranking.json convention, but if
+ * `start_year_b < start_year_a` the chronological leader is country_b.
+ * See ticket #839 — UI may want to swap labels for that case; the data
+ * convention here doesn't change.
  */
 export function computePatternTrajectory(
   row: Pick<
