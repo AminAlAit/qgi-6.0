@@ -40,6 +40,12 @@ import type { PatternTrajectory } from "@/lib/pattern-trajectory";
 interface Props {
   trajectory: PatternTrajectory;
   leaderCountry: string;
+  /** #849 — guard: only render the falsification category as a <Link> when the
+   *  category is in the LOCKed ML recipe set. Non-LOCKed categories produce
+   *  404s because the signals leaf calls notFound() for unfired categories.
+   *  When this prop is omitted (or empty), all categories render as plain text
+   *  (safe default matching pre-#841 behaviour). */
+  lockedRecipeSet?: ReadonlySet<string>;
 }
 
 /** Trim long verified-event titles to a scannable length (Ingrid: ≤10 words). */
@@ -48,7 +54,11 @@ function truncateTitle(title: string, maxChars = 56): string {
   return `${title.slice(0, maxChars - 1).trimEnd()}…`;
 }
 
-export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
+export function PatternTrajectoryCell({
+  trajectory,
+  leaderCountry,
+  lockedRecipeSet,
+}: Props) {
   const {
     terminatingEvent,
     leaderEndYear,
@@ -134,15 +144,22 @@ export function PatternTrajectoryCell({ trajectory, leaderCountry }: Props) {
           >
             <span style={{ color: "var(--qgi-text-dim)" }}>Falsifies if</span>{" "}
             {`${falsificationAnchor.followerCountry} sees no `}
-            {/* #841 — link category to follower’s signal leaf for direct navigation. */}
-            <Link
-              href={
-                `/signals/${countrySlug(falsificationAnchor.followerCountry) ?? falsificationAnchor.followerCountry.toLowerCase()}/${falsificationAnchor.eventCategory}` as Route
-              }
-              className="underline underline-offset-2 hover:text-[var(--qgi-accent)]"
-            >
-              &apos;{falsificationAnchor.eventCategoryDisplay}&apos;
-            </Link>
+            {/* #849 — only hyperlink when the category is in the LOCKed ML recipe
+                set. Non-LOCKed categories 404 on the signals leaf (notFound() fires
+                when byWindow.length === 0). Regression from #841 which wired the
+                link unconditionally; 227 dead links audited in current ranking.json. */}
+            {lockedRecipeSet?.has(falsificationAnchor.eventCategory) ? (
+              <Link
+                href={
+                  `/signals/${countrySlug(falsificationAnchor.followerCountry) ?? falsificationAnchor.followerCountry.toLowerCase()}/${falsificationAnchor.eventCategory}` as Route
+                }
+                className="underline underline-offset-2 hover:text-[var(--qgi-accent)]"
+              >
+                &apos;{falsificationAnchor.eventCategoryDisplay}&apos;
+              </Link>
+            ) : (
+              <span>&apos;{falsificationAnchor.eventCategoryDisplay}&apos;</span>
+            )}
             {` by `}
             <span className="font-data tabular-nums">
               {falsificationAnchor.windowStart}&ndash;{falsificationAnchor.windowEnd}

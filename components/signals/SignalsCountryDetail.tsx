@@ -205,16 +205,20 @@ export function SignalsCountryDetail({
           >
             What&apos;s firing on {countryName}
           </h1>
+          {/* #850 — explicit "Country composite tier" label distinguishes the
+              statistical-layer tier from the ML-signal tier shown in the body.
+              Three countries (Bahrain, Dominican Republic, Thailand) have a
+              HIGH composite tier while all LOCKed ML signals are INDICATIVE. */}
           <span
             className="text-[10px] tracking-wider uppercase font-semibold font-data px-2 py-1 rounded"
-            title={heroTierMeta.tooltip}
+            title={`Country composite tier: ${heroTierMeta.label}. ${heroTierMeta.tooltip} This tier reflects the full statistical-layer scoring across 71 categories. The ML-validated recipe signals below are tracked on a different scale — see /methodology#aggregate-vs-per-recipe.`}
             style={{
               backgroundColor: heroTierMeta.bg,
               color: heroTierMeta.color,
               border: `1px solid ${heroTierMeta.border}`,
             }}
           >
-            {heroTierMeta.label}
+            Country composite tier: {heroTierMeta.label}
           </span>
         </div>
         <p
@@ -294,7 +298,7 @@ export function SignalsCountryDetail({
           className="text-sm leading-relaxed max-w-[68ch]"
           style={{ color: "var(--qgi-text-muted)" }}
         >
-          {ledeText({ countryName, rows, tierCounts, curated })}
+          {ledeText({ countryName, rows, tierCounts, curated, countryTier })}
         </p>
       </section>
 
@@ -688,11 +692,14 @@ function ledeText({
   rows,
   tierCounts,
   curated,
+  countryTier,
 }: {
   countryName: string;
   rows: CountrySignalRow[];
   tierCounts: Record<SignalTier, number>;
   curated: boolean;
+  /** #850 — composite tier used to add a note when composite ≠ ML-signal tier. */
+  countryTier: SignalTier;
 }): string {
   const firing = tierCounts.HIGH + tierCounts.MODERATE;
   const top = rows[0];
@@ -701,9 +708,15 @@ function ledeText({
   const topScore = top?.salience.toFixed(2) ?? "—";
 
   if (firing === 0) {
+    // #850 — when the composite tier is above INDICATIVE but no ML signals are
+    // firing, add a clarifying sentence so readers understand the discrepancy.
+    const compositeMismatchNote =
+      countryTier !== "INDICATIVE"
+        ? ` Note: the country composite tier (${countryTier}) reflects the full statistical-layer scoring across 71 categories. No ML-validated recipes are currently firing at MODERATE+ for this country.`
+        : "";
     return curated
-      ? `${countryName} shows no categories firing above the baseline rung this week. Background-level signals remain present across the indicator set, but none crossed the moderate threshold in the current bake. This page reports model output for editorial review, not forecasting judgement; absence of firing is not a guarantee of stability.`
-      : `${countryName} currently shows no signals at moderate or higher tier. The full category list below remains visible at background tier for reference. The page below reports model output, not editorial forecast; verify against the country profile and precedents pages before drawing conclusions.`;
+      ? `${countryName} shows no categories firing above the baseline rung this week. Background-level signals remain present across the indicator set, but none crossed the moderate threshold in the current bake. This page reports model output for editorial review, not forecasting judgement; absence of firing is not a guarantee of stability.${compositeMismatchNote}`
+      : `${countryName} currently shows no signals at moderate or higher tier. The full category list below remains visible at background tier for reference. The page below reports model output, not editorial forecast; verify against the country profile and precedents pages before drawing conclusions.${compositeMismatchNote}`;
   }
 
   // Curated voice — Ingrid 3-movement
