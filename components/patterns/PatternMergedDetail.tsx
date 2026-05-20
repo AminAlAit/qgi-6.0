@@ -74,6 +74,7 @@ export function PatternMergedDetail({
   bSlug,
   generatedDate,
   trajectory,
+  lockedRecipeSet,
 }: {
   row: PatternRow;
   tier: PatternWindowTier;
@@ -82,6 +83,9 @@ export function PatternMergedDetail({
   generatedDate: string;
   /** #840 — trajectory narrative (terminating event, arc position, falsification anchor). */
   trajectory?: PatternTrajectory;
+  /** #849 — LOCKed ML recipe set; forwarded to PatternTrajectoryCell for
+   *  falsification anchor link guard. */
+  lockedRecipeSet?: ReadonlySet<string>;
 }) {
   const meta = TIER_META[tier];
   const ledeText = buildLedeText({ row, tier });
@@ -296,6 +300,7 @@ export function PatternMergedDetail({
             <PatternTrajectoryCell
               trajectory={trajectory}
               leaderCountry={row.country_a}
+              lockedRecipeSet={lockedRecipeSet}
             />
           </div>
         </section>
@@ -581,5 +586,8 @@ function buildLedeText({
         ? `${row.country_a} preceded ${row.country_b} by ${Math.abs(yearGap)} ${Math.abs(yearGap) === 1 ? "year" : "years"} on the shared trajectory`
         : `${row.country_a} and ${row.country_b} walked the same trajectory in the same start year`;
 
-  return `${orderingPhrase}, across a ${row.pattern_length}-year window covering ${row.num_indexes} shared indicators. Average correlation: ${corrPct}%. The pattern carries a ${tier} window-tier label; the Architecture lineage chip is still preview-state pending the ranking schema upgrade. Read the country profiles for either side of the pair below, or jump to historical precedents for the closest analogues. This page reports model output reviewed for editorial release, not a probabilistic forecast of recurrence.`;
+  // #851 — replace internal engineering phrase "ranking schema upgrade" with
+  // user-facing copy. The phrase appeared on every one of the 9 pattern detail
+  // pages and was flagged by two W3 personas as trust-breaking jargon.
+  return `${orderingPhrase}, across a ${row.pattern_length}-year window covering ${row.num_indexes} shared indicators. Average correlation: ${corrPct}%. The pattern carries a ${tier} window-tier label; Architecture lineage data is not yet available in this bake and will populate when the pattern database is updated. Read the country profiles for either side of the pair below, or jump to historical precedents for the closest analogues. This page reports model output reviewed for editorial release, not a probabilistic forecast of recurrence.`;
 }

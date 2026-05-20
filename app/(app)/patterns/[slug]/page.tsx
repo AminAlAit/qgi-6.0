@@ -6,6 +6,7 @@ import {
   type PatternTrajectory,
   type VerifiedEvent,
 } from "@/lib/pattern-trajectory";
+import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
@@ -158,10 +159,16 @@ function mapPatternTier(raw: string | undefined): PatternWindowTier {
 export default async function PatternDetailPage({ params }: Props) {
   const { slug } = await params;
   // #840 — load events in parallel with ranking (independent fs reads).
-  const [payload, eventsByCountry] = await Promise.all([
+  // #849 — also load ml recipe stack for falsification anchor link guard.
+  const [payload, eventsByCountry, mlStack] = await Promise.all([
     loadRanking(),
     loadVerifiedEventsByCountry(),
+    loadMlRecipeStack().catch(() => null),
   ]);
+  // #849 — LOCKed ML recipe set for falsification anchor link guard.
+  const lockedRecipeSet: ReadonlySet<string> = new Set(
+    mlStack?.metadata.top_4_recipes ?? []
+  );
   const rows = payload.results;
   const row = resolveBySlug(slug, rows);
   if (!row) notFound();
@@ -188,6 +195,7 @@ export default async function PatternDetailPage({ params }: Props) {
       bSlug={bSlug}
       generatedDate={generatedDate}
       trajectory={trajectory}
+      lockedRecipeSet={lockedRecipeSet}
     />
   );
 }
