@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
   "filed": "2026-05-20",
-  "purpose": "Phase 1 production lock for foreign_intervention. Recipe routes to ADVISORY-ONLY status per F-H-4-A5 (Stage 6 §3.1.5 cascade exit clause): §3.1.4 GP fallback NUTS sampler gates failed after operational-tooling exhaustion (target_accept=0.99 + advi+adapt_diag init + n_draws=2000 still produced rhat_max=1.02 + ess_min=98). Substrate class: slowly-varying structural/demographic/civil-liberty indicators against T_r=5 window — kernel-substrate identifiability constraint per Rasmussen & Williams 2006 §5.4.4. Recipe's cascade LOCK status (Hybrid D2/D5) is independent and unaffected. No shape prototype emitted; orchestrator routes to non-shape head per §4.2 dispatch logic.",
+  "purpose": "Phase 1 production lock for foreign_intervention. Recipe routes to ADVISORY-ONLY status per F-H-4-A5 (Stage 6 cascade exit clause): GP fallback NUTS sampler gates failed after operational-tooling exhaustion (target_accept=0.99 + advi+adapt_diag init + n_draws=2000 still produced rhat_max=1.02 + ess_min=98). Substrate class: slowly-varying structural/demographic/civil-liberty indicators against T_r=5 window. Kernel-substrate identifiability constraint per Rasmussen & Williams 2006 5.4.4. Recipe's cascade LOCK status (Hybrid D2/D5) is independent and unaffected. No shape prototype emitted; orchestrator routes to non-shape head per dispatch logic.",
   "pre_reg_lineage": {
     "stage_6": "cfe8cc4"
   },
   "metadata": {
-    "file_sha256": "",
+    "file_sha256": "1869e5ef8bf6bfc528d2308a0fb733c9d4d21b16d05401d86ac2b24b7a11297a",
     "n_recipes_with_prototype": 1,
     "n_recipes_substrate_inadequate": 0
   },
@@ -23,7 +23,10 @@
       ],
       "canonical_length_T": {
         "point": 5,
-        "posterior_iqr": [4, 6],
+        "posterior_iqr": [
+          4,
+          6
+        ],
         "method": "advisory_only_not_emitted"
       },
       "per_indicator_trajectory_signature": {},
@@ -57,10 +60,10 @@
         }
       },
       "operational_tooling_exhausted": true,
-      "substrate_class_note": "SE kernel length-scale weakly identified against near-flat normalized trajectories at T_r=5. Substrate class: slowly-varying structural/demographic/civil-liberty indicators (life expectancy, fertility rate, net migration, V-Dem civil-political and civil-private indices). First-principles reference: Rasmussen & Williams 2006 §5.4.4 + Stein 1999 §4.2.",
+      "substrate_class_note": "SE kernel length-scale weakly identified against near-flat normalized trajectories at T_r=5. Substrate class: slowly-varying structural/demographic/civil-liberty indicators (life expectancy, fertility rate, net migration, V-Dem civil-political and civil-private indices). First-principles reference: Rasmussen & Williams 2006 5.4.4 + Stein 1999 4.2.",
       "existing_lock_unaffected": {
         "lock_tier": "MODERATE",
-        "loco_auc": 0.6330,
+        "loco_auc": 0.633,
         "note": "Shape ADVISORY-ONLY per F-H-4-A5. Recipe cascade LOCK status is independent of shape fittability."
       },
       "schema_version": 1
@@ -70,7 +73,7 @@
     {
       "date": "2026-05-18",
       "amendment_id": "F-H-4-A1",
-      "change": "Drop instance-level GP from §3.1.4 fallback model.",
+      "change": "Drop instance-level GP from 3.1.4 fallback model.",
       "ratification": "8-seat ratified 8/8 APPROVE",
       "pre_reg_amendment_commit": "396aa67"
     },
@@ -84,14 +87,14 @@
     {
       "date": "2026-05-20",
       "amendment_id": "F-H-4-A4",
-      "change": "Relax §3.1.3 divergence gate from strict 0 to ≤5 absolute AND ≤0.5% rate.",
+      "change": "Relax 3.1.3 divergence gate from strict 0 to <=5 absolute AND <=0.5% rate.",
       "ratification": "8-seat ratified 8/8 APPROVE",
       "pre_reg_amendment_commit": "cfe8cc4"
     },
     {
       "date": "2026-05-20",
       "amendment_id": "F-H-4-A5",
-      "change": "Add §3.1.5 cascade exit clause for §3.1.4 NUTS-gate failure after operational-tooling exhaustion: route to ADVISORY-ONLY.",
+      "change": "Add 3.1.5 cascade exit clause for NUTS-gate failure after operational-tooling exhaustion: route to ADVISORY-ONLY.",
       "ratification": "8-seat ratified 8/8 APPROVE with Tariq + Marcus operational riders",
       "pre_reg_amendment_commit": "pending_merge"
     }

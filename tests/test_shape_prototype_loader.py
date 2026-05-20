@@ -27,6 +27,7 @@ if str(SRC_ROOT) not in sys.path:
 
 from shape_prototype_dispatch import (  # noqa: E402
     DEFAULT_LOCK_PATH,
+    AdvisoryOnlyShapeUnfittableError,
     PrototypeIntegrityError,
     SchemaValidationError,
     ShapePrototypeDispatch,
@@ -420,3 +421,136 @@ def test_default_schema_path_exists() -> None:
     # And be readable as JSON.
     schema = json.loads(DEFAULT_SCHEMA_PATH.read_text(encoding="utf-8"))
     assert schema["title"].startswith("QGI Stage 6 Shape Prototype Lock")
+
+
+# ---- F-H-4-A5 ADVISORY-ONLY cascade exit clause -----------------------------
+#
+# Five tests for the §3.1.5 cascade exit clause (F-H-4-A5, 8-seat ratified
+# 2026-05-20 with Tariq + Marcus operational riders). The cascade-exit-clause
+# code path covers: schema acceptance of cascade_outcome="advisory_only_shape_
+# unfittable" entries with empty per_indicator_trajectory_signature, dispatch
+# loader tracking via _shape_unfittable_advisory_only, has_prototype/
+# try_prototype_for/prototype_for behavior, and the loader's semantic gate
+# preventing empty signature on fit_locked recipes.
+
+
+def _advisory_only_recipe_payload(recipe_id: str = "foreign_intervention") -> dict[str, Any]:
+    """Synthetic ADVISORY-ONLY recipe entry for F-H-4-A5 tests.
+
+    Mirrors the production foreign_intervention lock entry structure: empty
+    per_indicator_trajectory_signature, cascade_outcome set, Marcus rider
+    diagnostic fields present, substrate_audit all-pass (because this is
+    a sampler-gate failure, NOT a G1-G4 substrate failure).
+    """
+    return {
+        "recipe_id": recipe_id,
+        "cascade_outcome": "advisory_only_shape_unfittable",
+        "indicator_ids": ["IND_A", "IND_B"],
+        "canonical_length_T": {
+            "point": 5,
+            "posterior_iqr": [4, 6],
+            "method": "advisory_only_not_emitted",
+        },
+        "per_indicator_trajectory_signature": {},
+        "fit_method": "hierarchical_bayes_gp_fallback",
+        "fit_method_commit_sha": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+        "n_training_positives": 110,
+        "training_data_snapshot_sha": {
+            "s3_path": "local-laptop-scale",
+            "sha256": "0" * 64,
+        },
+        "substrate_audit": {
+            "g1_n_pos_geq_10": True,
+            "g2_n_countries_geq_5": True,
+            "g3_density_geq_0_85": True,
+            "g4_censoring_clean": True,
+        },
+        "cohort_calibration_ref": "advisory_only_not_applicable",
+        "schema_version": 1,
+    }
+
+
+def test_advisory_only_recipe_loads_without_raising(tmp_path: Path) -> None:
+    """F-H-4-A5: loader must accept a cascade_outcome='advisory_only_shape_unfittable'
+    entry with empty per_indicator_trajectory_signature."""
+    payload = _empty_stub_payload()
+    payload["recipes"]["foreign_intervention"] = _advisory_only_recipe_payload()
+    payload["metadata"]["n_recipes_with_prototype"] = 1
+    p = _write_lock(tmp_path / "lock.json", payload)
+
+    dispatch = load_dispatch(p)  # MUST NOT raise
+    assert "foreign_intervention" in dispatch.recipes_with_prototype()
+    assert "foreign_intervention" in dispatch.advisory_only_recipes()
+
+
+def test_advisory_only_has_prototype_returns_false(tmp_path: Path) -> None:
+    """F-H-4-A5: has_prototype() returns False for ADVISORY-ONLY recipes so the
+    production orchestrator routes to the non-shape head per §4.2."""
+    payload = _empty_stub_payload()
+    payload["recipes"]["foreign_intervention"] = _advisory_only_recipe_payload()
+    payload["metadata"]["n_recipes_with_prototype"] = 1
+    p = _write_lock(tmp_path / "lock.json", payload)
+    dispatch = load_dispatch(p)
+    assert dispatch.has_prototype("foreign_intervention") is False
+
+
+def test_advisory_only_prototype_for_raises_advisory_only_error(tmp_path: Path) -> None:
+    """F-H-4-A5: prototype_for() on an ADVISORY-ONLY recipe raises
+    AdvisoryOnlyShapeUnfittableError (NOT SubstrateInadequateError).
+    Distinguishing the two failure modes lets the orchestrator emit
+    different diagnostic messages to Lloyd's audit."""
+    payload = _empty_stub_payload()
+    payload["recipes"]["foreign_intervention"] = _advisory_only_recipe_payload()
+    payload["metadata"]["n_recipes_with_prototype"] = 1
+    p = _write_lock(tmp_path / "lock.json", payload)
+    dispatch = load_dispatch(p)
+    with pytest.raises(AdvisoryOnlyShapeUnfittableError, match="F-H-4-A5"):
+        dispatch.prototype_for("foreign_intervention")
+
+
+def test_advisory_only_try_prototype_for_returns_none(tmp_path: Path) -> None:
+    """F-H-4-A5 Marcus rider: try_prototype_for() returns None (non-raising)
+    for ADVISORY-ONLY recipes so the production path branches cleanly."""
+    payload = _empty_stub_payload()
+    payload["recipes"]["foreign_intervention"] = _advisory_only_recipe_payload()
+    payload["metadata"]["n_recipes_with_prototype"] = 1
+    p = _write_lock(tmp_path / "lock.json", payload)
+    dispatch = load_dispatch(p)
+    assert dispatch.try_prototype_for("foreign_intervention") is None
+    # Sanity: try_prototype_for also returns None for unknown / substrate-
+    # inadequate recipes so the production caller has one non-raising entry.
+    assert dispatch.try_prototype_for("nonexistent_recipe") is None
+
+
+def test_advisory_only_recipes_enumeration(tmp_path: Path) -> None:
+    """F-H-4-A5: advisory_only_recipes() enumerates exactly the recipes with
+    cascade_outcome='advisory_only_shape_unfittable'. Mixed-cohort test:
+    one fit_locked + one ADVISORY-ONLY."""
+    payload = _empty_stub_payload()
+    payload["recipes"]["mass_protest"] = _adequate_recipe_payload(recipe_id="mass_protest")
+    payload["recipes"]["foreign_intervention"] = _advisory_only_recipe_payload()
+    payload["metadata"]["n_recipes_with_prototype"] = 2
+    p = _write_lock(tmp_path / "lock.json", payload)
+    dispatch = load_dispatch(p)
+    assert dispatch.advisory_only_recipes() == ("foreign_intervention",)
+    # mass_protest is fit_locked (default cascade_outcome) → has_prototype True
+    assert dispatch.has_prototype("mass_protest") is True
+    # foreign_intervention is ADVISORY-ONLY → has_prototype False
+    assert dispatch.has_prototype("foreign_intervention") is False
+
+
+def test_fit_locked_with_empty_signature_raises(tmp_path: Path) -> None:
+    """F-H-4-A5 semantic gate (Sonnet review of qgi-ml#85 blocker): the schema
+    relaxed per_indicator_trajectory_signature minProperties to 0 so ADVISORY-
+    ONLY entries can emit {}, but a fit_locked recipe with empty signature is
+    a semantic regression. The loader catches it with a SchemaValidationError
+    that hints at the correct cascade_outcome to use."""
+    payload = _empty_stub_payload()
+    bad_recipe = _adequate_recipe_payload()
+    bad_recipe["cascade_outcome"] = "fit_locked"
+    bad_recipe["per_indicator_trajectory_signature"] = {}
+    payload["recipes"]["mass_protest"] = bad_recipe
+    payload["metadata"]["n_recipes_with_prototype"] = 1
+    p = _write_lock(tmp_path / "lock.json", payload)
+    with pytest.raises(SchemaValidationError, match="cascade_outcome='fit_locked'"):
+        load_dispatch(p)

@@ -232,6 +232,23 @@ class ShapePrototypeDispatch:
                     f"recipes[{rid!r}] cascade_outcome must be 'fit_locked' or "
                     f"'advisory_only_shape_unfittable'; got {cascade_outcome!r}"
                 )
+            # F-H-4-A5 semantic gate: fit_locked entries MUST carry a
+            # non-empty per_indicator_trajectory_signature. The schema's
+            # minProperties was relaxed to 0 (so ADVISORY-ONLY entries can
+            # legally emit {}), but fit_locked recipes silently accepting
+            # an empty signature would be a regression. The loader enforces
+            # the conditional non-emptiness here. Sonnet review of qgi-ml#85
+            # caught this gap; the corresponding test lives in
+            # tests/test_shape_prototype_loader.py.
+            if cascade_outcome == "fit_locked" and not row["per_indicator_trajectory_signature"]:
+                raise SchemaValidationError(
+                    f"recipes[{rid!r}] has cascade_outcome='fit_locked' but "
+                    f"per_indicator_trajectory_signature is empty. A LOCKED "
+                    f"shape recipe must carry at least one indicator signature. "
+                    f"If the recipe is meant to be ADVISORY-ONLY (no shape "
+                    f"prototype), set cascade_outcome='advisory_only_shape_unfittable' "
+                    f"per F-H-4-A5 (Stage 6 §3.1.5 cascade exit clause)."
+                )
             proto = ShapePrototype(
                 recipe_id=rid,
                 indicator_ids=tuple(row["indicator_ids"]),
