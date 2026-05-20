@@ -72,6 +72,23 @@ class SubstrateInadequateError(RuntimeError):
     """
 
 
+class AdvisoryOnlyShapeUnfittableError(RuntimeError):
+    """Raised when a caller requests a prototype for an ADVISORY-ONLY recipe.
+
+    Per F-H-4-A5 (§3.1.5 cascade exit clause): a recipe routes here when its
+    §3.1.4 GP fallback NUTS sampler gates persistently fail after operational
+    tooling exhaustion (refit at target_accept=0.99 + advi+adapt_diag init +
+    n_draws>=2000 per chain still fail R-hat ≤ 1.01 or ESS >= 400). The
+    recipe retains its cascade LOCK status (STRONG/MODERATE/MARGINAL); only
+    the shape feature is unavailable. Loader construction does NOT raise on
+    ADVISORY-ONLY status; only direct prototype lookup via
+    ``prototype_for(recipe_id)`` raises. To enumerate without raising, use
+    ``advisory_only_recipes()`` or ``has_prototype(recipe_id)`` (which
+    returns False for ADVISORY-ONLY recipes). The non-raising fetch
+    ``try_prototype_for(recipe_id)`` returns ``None`` instead.
+    """
+
+
 class SchemaValidationError(ValueError):
     """Raised when the lock JSON fails the §4.3 schema invariants.
 
@@ -152,6 +169,10 @@ class ShapePrototype:
     substrate_audit: SubstrateAudit
     cohort_calibration_ref: str
     schema_version: int
+    # F-H-4-A5 (qgi-docs 2026-05-20): cascade disposition for the shape feature.
+    # "fit_locked" = shape prototype valid (default; equivalent to pre-A5 behavior).
+    # "advisory_only_shape_unfittable" = §3.1.5 cascade exit clause invoked.
+    cascade_outcome: str = "fit_locked"
 
 
 # ---- Dispatch ---------------------------------------------------------------
@@ -191,6 +212,10 @@ class ShapePrototypeDispatch:
         # Parse prototypes.
         self._prototypes: dict[str, ShapePrototype] = {}
         self._substrate_inadequate: set[str] = set()
+        # F-H-4-A5: track recipes routed to ADVISORY-ONLY via the §3.1.5
+        # cascade exit clause. Separate from substrate-inadequate because the
+        # failure mode is sampler-gate exhaustion, not G1-G4 audit.
+        self._shape_unfittable_advisory_only: set[str] = set()
         for rid, row in payload["recipes"].items():
             self._validate_recipe(rid, row)
             audit = SubstrateAudit(
@@ -199,6 +224,31 @@ class ShapePrototypeDispatch:
                 g3_density_geq_0_85=bool(row["substrate_audit"]["g3_density_geq_0_85"]),
                 g4_censoring_clean=bool(row["substrate_audit"]["g4_censoring_clean"]),
             )
+            # F-H-4-A5: read cascade_outcome; absent value defaults to
+            # "fit_locked" for backward-compat with pre-A5 lock entries.
+            cascade_outcome = str(row.get("cascade_outcome", "fit_locked"))
+            if cascade_outcome not in ("fit_locked", "advisory_only_shape_unfittable"):
+                raise SchemaValidationError(
+                    f"recipes[{rid!r}] cascade_outcome must be 'fit_locked' or "
+                    f"'advisory_only_shape_unfittable'; got {cascade_outcome!r}"
+                )
+            # F-H-4-A5 semantic gate: fit_locked entries MUST carry a
+            # non-empty per_indicator_trajectory_signature. The schema's
+            # minProperties was relaxed to 0 (so ADVISORY-ONLY entries can
+            # legally emit {}), but fit_locked recipes silently accepting
+            # an empty signature would be a regression. The loader enforces
+            # the conditional non-emptiness here. Sonnet review of qgi-ml#85
+            # caught this gap; the corresponding test lives in
+            # tests/test_shape_prototype_loader.py.
+            if cascade_outcome == "fit_locked" and not row["per_indicator_trajectory_signature"]:
+                raise SchemaValidationError(
+                    f"recipes[{rid!r}] has cascade_outcome='fit_locked' but "
+                    f"per_indicator_trajectory_signature is empty. A LOCKED "
+                    f"shape recipe must carry at least one indicator signature. "
+                    f"If the recipe is meant to be ADVISORY-ONLY (no shape "
+                    f"prototype), set cascade_outcome='advisory_only_shape_unfittable' "
+                    f"per F-H-4-A5 (Stage 6 §3.1.5 cascade exit clause)."
+                )
             proto = ShapePrototype(
                 recipe_id=rid,
                 indicator_ids=tuple(row["indicator_ids"]),
@@ -217,10 +267,13 @@ class ShapePrototypeDispatch:
                 substrate_audit=audit,
                 cohort_calibration_ref=row["cohort_calibration_ref"],
                 schema_version=int(row["schema_version"]),
+                cascade_outcome=cascade_outcome,
             )
             self._prototypes[rid] = proto
             if not audit.all_pass:
                 self._substrate_inadequate.add(rid)
+            if cascade_outcome == "advisory_only_shape_unfittable":
+                self._shape_unfittable_advisory_only.add(rid)
 
     # ---- Validation helpers ------------------------------------------------
 
@@ -384,15 +437,43 @@ class ShapePrototypeDispatch:
         return tuple(sorted(self._substrate_inadequate))
 
     def has_prototype(self, recipe_id: str) -> bool:
-        """True iff the recipe has a prototype entry AND its substrate is adequate.
+        """True iff the recipe has a prototype entry AND its substrate is adequate
+        AND it is not routed to ADVISORY-ONLY under F-H-4-A5.
 
         Non-raising form of ``prototype_for``; production orchestrators use
-        this to decide whether to call the shape kernel or fall back.
+        this to decide whether to call the shape kernel or fall back to the
+        non-shape head per §4.2.
         """
         return (
             recipe_id in self._prototypes
             and recipe_id not in self._substrate_inadequate
+            and recipe_id not in self._shape_unfittable_advisory_only
         )
+
+    def advisory_only_recipes(self) -> tuple[str, ...]:
+        """F-H-4-A5: recipes routed to ADVISORY-ONLY shape status.
+
+        These recipes have cascade_outcome='advisory_only_shape_unfittable'.
+        The non-shape head fallback is the routing destination per §4.2.
+        The recipe's Hybrid D2/D5 cascade LOCK status is independent.
+        """
+        return tuple(sorted(self._shape_unfittable_advisory_only))
+
+    def try_prototype_for(self, recipe_id: str) -> ShapePrototype | None:
+        """Non-raising fetch for the shape prototype.
+
+        Per F-H-4-A5 Marcus rider: orchestrator-facing dispatch returns
+        ``None`` (not raise) for ADVISORY-ONLY recipes so the production
+        path can branch to the non-shape head cleanly. Substrate-inadequate
+        and missing-prototype cases also return None.
+        """
+        if recipe_id not in self._prototypes:
+            return None
+        if recipe_id in self._substrate_inadequate:
+            return None
+        if recipe_id in self._shape_unfittable_advisory_only:
+            return None
+        return self._prototypes[recipe_id]
 
     def prototype_for(self, recipe_id: str) -> ShapePrototype:
         """Return the ShapePrototype for a recipe with adequate substrate.
@@ -401,6 +482,9 @@ class ShapePrototypeDispatch:
             KeyError: if the recipe has no prototype entry at all.
             SubstrateInadequateError: if the recipe has an entry but G1-G4
                 gates failed; caller must route to ingredient+length fallback.
+            AdvisoryOnlyShapeUnfittableError: if the recipe routed to
+                ADVISORY-ONLY shape per F-H-4-A5 (§3.1.5 cascade exit clause).
+                Caller must route to the non-shape head per §4.2.
         """
         if recipe_id not in self._prototypes:
             raise KeyError(
@@ -415,6 +499,16 @@ class ShapePrototypeDispatch:
                 f"gates: {audit.failing_gates()}. Per §4.3 invariant 3 the "
                 f"orchestrator MUST route this recipe to ingredient+length "
                 f"fallback (no shape similarity emitted)."
+            )
+        if recipe_id in self._shape_unfittable_advisory_only:
+            raise AdvisoryOnlyShapeUnfittableError(
+                f"recipe {recipe_id!r} routed to ADVISORY-ONLY shape status "
+                f"per F-H-4-A5 (§3.1.5 cascade exit clause). The §3.1.4 GP "
+                f"fallback NUTS sampler gates failed after operational "
+                f"tooling exhaustion. Orchestrator must use the non-shape "
+                f"head per §4.2; use try_prototype_for() for the non-raising "
+                f"variant. Cascade LOCK status of this recipe is independent "
+                f"and unaffected."
             )
         return self._prototypes[recipe_id]
 
