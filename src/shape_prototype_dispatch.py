@@ -183,9 +183,13 @@ class ShapePrototype:
     substrate_audit: SubstrateAudit
     cohort_calibration_ref: str
     schema_version: int
-    # F-H-4-A5 (qgi-docs 2026-05-20): cascade disposition for the shape feature.
+    # Cascade disposition for the shape feature on this recipe.
     # "fit_locked" = shape prototype valid (default; equivalent to pre-A5 behavior).
-    # "advisory_only_shape_unfittable" = §3.1.5 cascade exit clause invoked.
+    # "advisory_only_shape_unfittable" = F-H-4-A5 §3.1.5 cascade exit clause invoked.
+    # "phase_1_hard_falsified" = stage-6-phase-1-closure-DECISION-2026-05-21
+    #     (8-seat ratified): prototype is mathematically sound but the FEATURE
+    #     derived from it failed F-S-1/F-S-3 + F-H-7 with margin. Production
+    #     cascade reverts to ingredient+length-only; revival requires fresh pre-reg.
     cascade_outcome: str = "fit_locked"
 
 
@@ -469,6 +473,17 @@ class ShapePrototypeDispatch:
             and recipe_id not in self._shape_unfittable_advisory_only
             and recipe_id not in self._phase_1_hard_falsified
         )
+
+    def hard_falsified_recipes(self) -> tuple[str, ...]:
+        """Recipes routed to HARD-FALSIFY per Stage 7 closure DECISION 2026-05-21.
+
+        These recipes have cascade_outcome='phase_1_hard_falsified'. Production
+        cascade orchestrators MUST route these to ingredient+length-only
+        (no shape feature emitted). Per Tariq #20 R-T1 binding rider, the
+        underlying prototypes MUST NOT be reused as initialization data,
+        priors, or warm-starts under any future fresh pre-reg.
+        """
+        return tuple(sorted(self._phase_1_hard_falsified))
 
     def advisory_only_recipes(self) -> tuple[str, ...]:
         """F-H-4-A5: recipes routed to ADVISORY-ONLY shape status.
