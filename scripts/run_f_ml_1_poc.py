@@ -1,6 +1,10 @@
-"""F-ML-1 per-recipe ML loop PoC driver — civil_war_and_insurgency.
+"""F-ML-1 per-recipe ML loop PoC driver.
 
 Per `qgi-docs/internal/ops/ml-track/F-ML-1-pre-reg.md` (ratified 8/8 2026-05-21).
+
+Parameterized for any recipe whose per-recipe pre-reg has been 3-seat
+mechanics Majles ratified. Default values preserve civil_war_and_insurgency
+backward compatibility. Override via CLI flags for other recipes.
 
 Implements:
   §3.1  three-gate LOCK criterion (Global LOCO + per-cohort LOCO + per-cohort ECE)
@@ -18,11 +22,25 @@ Bindings honored:
   - Marcus M8-1/2: per-recipe floor provenance annotation; unified field-3 schema
   - Nasrin N-2: window_search_auxiliary_note in DECISION emit
 
+Mechanical correctness fix (2026-05-22): country_id normalization replaces `_`
+with ` ` before `.title()` to match parquet panel + cohort-assignments format.
+Discovered pre-walk-2 during econ_recession pre-reg prep. Civil_war walk-1 ran
+WITHOUT this fix; its DECISION stands as ratified (the bug did not alter
+HARD_FAIL routing). See per-recipe-pre-reg/economic-recession-pre-reg.md §3.a.
+
 Run-time: multi-hour laptop. Zero AWS spend.
 
-Usage:
+Usage (civil_war defaults):
     python scripts/run_f_ml_1_poc.py \\
         --output-dir ../qgi-docs/internal/ops/ml-track/results/f-ml-1-poc/
+
+Usage (economic_recession, per-recipe pre-reg values):
+    python scripts/run_f_ml_1_poc.py \\
+        --recipe-id economic_recession \\
+        --hybrid-baseline 0.4784 \\
+        --lock-floor 0.65 \\
+        --cohort-loco-floor 0.60 \\
+        --output-dir ../qgi-docs/internal/ops/ml-track/results/f-ml-1-econ-rec/
 """
 from __future__ import annotations
 
@@ -50,16 +68,20 @@ LOG = logging.getLogger("f-ml-1-poc")
 
 # ---- F-ML-1 pre-reg binding constants ---------------------------------------
 
-RECIPE_ID = "civil_war_and_insurgency"
+# Default values match civil_war_and_insurgency walk-1 (preserved for backward
+# compatibility). For other recipes, override RECIPE_ID + HYBRID_BASELINE +
+# LOCK_FLOOR + COHORT_LOCO_FLOOR via CLI flags. Each per-recipe pre-reg must
+# be 3-seat mechanics Majles ratified before the corresponding walk fires
+# (per F-ML-1 §2.5 + Marcus M8-1).
+DEFAULT_RECIPE_ID = "civil_war_and_insurgency"
 
-# §7 PoC scope
-HYBRID_BASELINE = 0.7686  # per-recipe floor provenance: cascade-inherited (Marcus M8-1)
-DELTA_LIFT = 0.03
-LOCK_FLOOR = HYBRID_BASELINE + DELTA_LIFT  # 0.7986
+# §7 PoC scope (civil_war defaults)
+DEFAULT_HYBRID_BASELINE = 0.7686  # per-recipe floor provenance: cascade-inherited (Marcus M8-1 path (a))
+DEFAULT_LOCK_FLOOR = 0.7986       # HYBRID_BASELINE + 0.03
 
-# §3.1 per-cohort floors
-COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
-COHORT_ECE_GATE = 0.08    # F-H-7 inherited
+# §3.1 per-cohort floors (civil_war defaults)
+DEFAULT_COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
+COHORT_ECE_GATE = 0.08            # F-H-7 inherited (not recipe-specific)
 
 # §5 indicator selection
 TOP_N_PREFILTER = 40
@@ -74,6 +96,33 @@ MLP_FOLD_VARIANCE_TRIGGER = 0.05
 
 # §3.1 Roshani R18-A bootstrap
 BCA_BOOTSTRAP_B = 2000
+
+# Country-name normalization overrides (2026-05-22).
+# Naive `country_id.replace("_", " ").title()` fails for 4 country_ids whose
+# canonical forms in the parquet panels + cohort-assignments.json use hyphens
+# or lowercase conjunctions/articles. Verified by enumeration over all
+# positives.csv country_ids vs panel_set × cohort_assignments_set. See
+# `qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/economic-recession-pre-reg.md` §3.a.
+COUNTRY_NAME_OVERRIDES: dict[str, str] = {
+    "democratic_republic_of_congo": "The Democratic Republic of the Congo",
+    "guinea_bissau": "Guinea-Bissau",
+    "republic_of_congo": "Republic of the Congo",
+    "timor_leste": "Timor-Leste",
+}
+
+
+def normalize_country_id(country_id: str) -> str:
+    """Normalize a positives.csv `country_id` to canonical Title Case form
+    matching parquet panels + cohort-assignments.json.
+
+    For 12 of 16 multi-word country_ids the naive
+    `country_id.replace("_", " ").title()` is correct (e.g., "costa_rica" →
+    "Costa Rica"). For the remaining 4 it produces a mismatch — overridden
+    by `COUNTRY_NAME_OVERRIDES`.
+    """
+    if country_id in COUNTRY_NAME_OVERRIDES:
+        return COUNTRY_NAME_OVERRIDES[country_id]
+    return country_id.replace("_", " ").title()
 
 # ---- AUC + bootstrap CI -----------------------------------------------------
 
@@ -810,13 +859,27 @@ def _to_strict_json(obj: Any) -> str:
     return json.dumps(_w(obj), indent=2, ensure_ascii=False)
 
 
-def _main(argv: list[str] | None = None) -> int:
+def _build_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser. Extracted from `_main` so tests can exercise
+    the SAME parser construction code path (avoiding shadow-parser drift)."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--recipe-id", default=DEFAULT_RECIPE_ID,
+                        help="Recipe ID (e.g., civil_war_and_insurgency, economic_recession).")
+    parser.add_argument("--hybrid-baseline", type=float, default=DEFAULT_HYBRID_BASELINE,
+                        help="Per-recipe cascade-side baseline (Marcus M8-1 provenance). "
+                             "Default 0.7686 = civil_war Hybrid LOCK; per-recipe pre-reg overrides.")
+    parser.add_argument("--lock-floor", type=float, default=DEFAULT_LOCK_FLOOR,
+                        help="Per-recipe global LOCO-AUC LOCK floor (§3.1 Gate 1). "
+                             "Default 0.7986 = civil_war (Hybrid + 0.03); per-recipe pre-reg overrides.")
+    parser.add_argument("--cohort-loco-floor", type=float, default=DEFAULT_COHORT_LOCO_FLOOR,
+                        help="Per-cohort LOCO-AUC LOCK floor (§3.1 Gate 2). "
+                             "Default 0.68 = civil_war Kwame R1 anchor; per-recipe pre-reg overrides.")
     parser.add_argument("--panel-dir", type=Path,
                         default=REPO_ROOT / "data" / "parquet_panels")
-    parser.add_argument("--positives-csv", type=Path,
-                        default=REPO_ROOT / "data" / "shape_inputs_v2" / RECIPE_ID / "positives.csv")
+    parser.add_argument("--positives-csv", type=Path, default=None,
+                        help="Positives CSV path. Defaults to "
+                             "data/shape_inputs_v2/{recipe-id}/positives.csv.")
     parser.add_argument("--cohort-sidecar", type=Path,
                         default=REPO_ROOT.parent / "qgi-data" / "reference" / "cohort-assignments.json")
     parser.add_argument("--max-greedy-steps", type=int, default=12)
@@ -824,18 +887,73 @@ def _main(argv: list[str] | None = None) -> int:
     parser.add_argument("--seed", type=int, default=12345)
     parser.add_argument("--max-candidates-debug", type=int, default=None,
                         help="Debug mode: cap candidates at N (NOT for production walks).")
+    return parser
+
+
+def _main(argv: list[str] | None = None) -> int:
+    parser = _build_parser()
     args = parser.parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    LOG.info("F-ML-1 PoC starting — recipe=%s", RECIPE_ID)
+    recipe_id = args.recipe_id
+    hybrid_baseline = float(args.hybrid_baseline)
+    lock_floor = float(args.lock_floor)
+    cohort_loco_floor = float(args.cohort_loco_floor)
+    if args.positives_csv is None:
+        args.positives_csv = REPO_ROOT / "data" / "shape_inputs_v2" / recipe_id / "positives.csv"
+
+    LOG.info("F-ML-1 PoC starting — recipe=%s", recipe_id)
+    LOG.info("Per-recipe LOCK params: hybrid_baseline=%.4f, lock_floor=%.4f, cohort_loco_floor=%.4f",
+             hybrid_baseline, lock_floor, cohort_loco_floor)
     t0 = time.time()
 
-    # Load positives + build negatives
+    # Load positives + build negatives.
+    # Country-name normalization (2026-05-22 mechanical correctness fix):
+    # parquet panels + cohort-assignments.json use space-separated names
+    # ("Costa Rica", "Bosnia and Herzegovina") AND hyphenated forms for some
+    # cases ("Guinea-Bissau", "Timor-Leste") AND lowercase conjunctions/articles
+    # ("Republic of the Congo"). The naive `.title()` was incorrect for ALL
+    # multi-word names. `normalize_country_id` handles all 16 observed
+    # positives.csv multi-word country_ids: 12 via simple replace+title, 4 via
+    # COUNTRY_NAME_OVERRIDES. Pre-fix civil_war walk silently dropped 41
+    # multi-word events at panel lookup (256 → 192 effective N_pos).
+    # Civil_war DECISION stands as-ratified; this fix applies to walks from
+    # 2026-05-22 forward. See per-recipe-pre-reg/economic-recession-pre-reg.md §3.a.
     pos = pd.read_csv(args.positives_csv)
-    pos["country"] = pos["country_id"].str.title()  # Title-case for panel lookup
+    pos["country"] = pos["country_id"].apply(normalize_country_id)
     pos = pos.rename(columns={"event_year": "year"})
     pos["label"] = 1
     LOG.info("Positives: %d rows, %d unique countries", len(pos), pos["country"].nunique())
+
+    # Startup validation: surface any normalized country name that is missing
+    # from the parquet panels or cohort-assignments.json. Fail fast rather
+    # than silently dropping samples at feature-extraction time (the bug class
+    # discovered pre-walk-2 on 2026-05-22). At least one panel must contain
+    # the country for it to participate in LOCO; missing from cohort-assignments
+    # is non-fatal (the cohort gate excludes the sample but global LOCO still
+    # counts it).
+    pos_countries_for_check = set(pos["country"].unique())
+    sample_panel_path = next(args.panel_dir.iterdir())
+    sample_panel = pd.read_parquet(sample_panel_path / f"{sample_panel_path.name}.parquet")
+    panel_countries_in_sample = set(sample_panel["country"].dropna().unique())
+    missing_in_panel = pos_countries_for_check - panel_countries_in_sample
+    if missing_in_panel:
+        LOG.warning(
+            "Countries in positives.csv not found in sample panel %s — "
+            "feature extraction will fail for these and they will be "
+            "silently dropped (verify normalize_country_id covers them): %s",
+            sample_panel_path.name, sorted(missing_in_panel),
+        )
+    with open(args.cohort_sidecar, encoding="utf-8") as _f:
+        _cohort_keys_for_check = set(json.load(_f)["assignments"].keys())
+    missing_in_cohorts = pos_countries_for_check - _cohort_keys_for_check
+    if missing_in_cohorts:
+        LOG.warning(
+            "Countries in positives.csv not in cohort-assignments.json — "
+            "samples will count toward global LOCO but be excluded from "
+            "per-cohort gate evaluation: %s",
+            sorted(missing_in_cohorts),
+        )
 
     rng = np.random.default_rng(args.seed)
     pos_set = set(zip(pos["country"], pos["year"]))
@@ -930,10 +1048,10 @@ def _main(argv: list[str] | None = None) -> int:
                 info["loco_auc_ci95_lo"] = ci["ci95_lo"]
                 info["loco_auc_ci95_hi"] = ci["ci95_hi"]
 
-    # §3.1 three-gate evaluation
-    global_pass = final["global_auc"] >= LOCK_FLOOR
+    # §3.1 three-gate evaluation (per-recipe floor parameters)
+    global_pass = final["global_auc"] >= lock_floor
     cohort_loco_pass = all(
-        (info["n"] < 5) or (info["loco_auc"] is not None and info["loco_auc"] >= COHORT_LOCO_FLOOR)
+        (info["n"] < 5) or (info["loco_auc"] is not None and info["loco_auc"] >= cohort_loco_floor)
         for info in per_cohort.values()
     )
     cohort_ece_pass = all(
@@ -948,7 +1066,7 @@ def _main(argv: list[str] | None = None) -> int:
     else:
         verdict = "HARD_FAIL"
 
-    borderline = bool(auc_ci["ci95_lo"] < LOCK_FLOOR) if verdict == "LOCK" else False
+    borderline = bool(auc_ci["ci95_lo"] < lock_floor) if verdict == "LOCK" else False
 
     # Descriptive emit (per §6 + Miriam M14-1)
     LOG.info("=== DESCRIPTIVE EMIT ===")
@@ -1005,7 +1123,7 @@ def _main(argv: list[str] | None = None) -> int:
         "f_ml_1_pre_reg": "qgi-docs/internal/ops/ml-track/F-ML-1-pre-reg.md",
         "filed": datetime.now(timezone.utc).isoformat(),
         "elapsed_seconds": elapsed,
-        "recipe_id": RECIPE_ID,
+        "recipe_id": recipe_id,
         "verdict": verdict,
         "borderline_lock": borderline,
         "n_positives": n_pos,
@@ -1020,12 +1138,15 @@ def _main(argv: list[str] | None = None) -> int:
             "lock_gate_eval_ts": lock_gate_eval_ts,
         },
         "per_recipe_floor_provenance": {
-            "baseline_floor": HYBRID_BASELINE,
-            "delta_lift": DELTA_LIFT,
-            "lock_floor": LOCK_FLOOR,
-            "source": "derived_from_prior_hybrid_lock",
-            "prior_lock_value": HYBRID_BASELINE,
-            "prior_lock_name": "Hybrid D2/D5",
+            "hybrid_baseline": hybrid_baseline,
+            "lock_floor": lock_floor,
+            "cohort_loco_floor": cohort_loco_floor,
+            "note": (
+                "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 §7 "
+                "(civil_war_and_insurgency / cascade-inherited) or "
+                "qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ "
+                "(other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+            ),
         },
         "global_loco": auc_ci,
         "per_cohort": per_cohort,
@@ -1033,8 +1154,8 @@ def _main(argv: list[str] | None = None) -> int:
             "global_loco_pass": bool(global_pass),
             "per_cohort_loco_pass": bool(cohort_loco_pass),
             "per_cohort_ece_pass": bool(cohort_ece_pass),
-            "global_floor": LOCK_FLOOR,
-            "cohort_loco_floor": COHORT_LOCO_FLOOR,
+            "global_floor": lock_floor,
+            "cohort_loco_floor": cohort_loco_floor,
             "cohort_ece_gate": COHORT_ECE_GATE,
         },
         "univariate_screen": {
