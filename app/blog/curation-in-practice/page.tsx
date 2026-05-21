@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
-  title: "Curation in practice: Iran, Ukraine, Venezuela — QGI Blog",
+  title: "Curation in practice: Iran, Ukraine, Venezuela · QGI Blog",
   description:
     "Three countries, three different gaps in our existing event coverage, three parallel curation passes in one afternoon. What we changed, what we didn't, and why this work is upstream of every score we publish.",
   alternates: {

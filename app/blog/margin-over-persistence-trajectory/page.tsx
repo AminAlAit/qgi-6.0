@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
-  title: "The margin keeps widening — QGI Blog",
+  title: "The margin keeps widening · QGI Blog",
   description:
     "V1.8 → V1.8.1 → V1.9: the gap between QGI's F1 and the naïve persistence baseline has grown at every release. A walk-through of what the number does, doesn't, and shouldn't prove.",
   alternates: {

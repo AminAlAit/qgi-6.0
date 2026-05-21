@@ -3,12 +3,12 @@ import Link from "next/link";
 import EventsTable from "@/components/methodology/EventsTable";
 
 export const metadata: Metadata = {
-  title: "All verified events — QGI Methodology",
+  title: "All verified events · QGI Methodology",
   description:
     "Searchable table of every verified event in QGI's data lake, with public source URLs.",
   alternates: { canonical: "https://qgintelligence.com/methodology/events" },
   openGraph: {
-    title: "All verified events — QGI Methodology",
+    title: "All verified events · QGI Methodology",
     description:
       "Searchable table of every verified event in QGI's data lake, with public source URLs.",
     url: "https://qgintelligence.com/methodology/events",

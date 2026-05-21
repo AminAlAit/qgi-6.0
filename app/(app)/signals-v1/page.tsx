@@ -5,7 +5,7 @@ import { COUNTRY_REGIONS, type Region } from "@/lib/regions";
 
 // T19 #312: adds openGraph + twitter so signals page is shareable.
 export const metadata = {
-  title: "Signals — QGI Intelligence",
+  title: "Signals · QGI Intelligence",
   description:
     "Early-warning radar — browse active risk signals by domain, severity, and geography.",
   // #699: canonical points to V3 counterpart; explicit noindex (defense in
@@ -13,7 +13,7 @@ export const metadata = {
   alternates: { canonical: "/signals" },
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Signals — QGI Intelligence",
+    title: "Signals · QGI Intelligence",
     description:
       "Early-warning radar — browse active risk signals by domain, severity, and geography.",
     url: "https://qgintelligence.com/signals-v1",
@@ -22,7 +22,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Signals — QGI Intelligence",
+    title: "Signals · QGI Intelligence",
     description:
       "Early-warning radar — browse active risk signals by domain, severity, and geography.",
   },

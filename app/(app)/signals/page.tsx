@@ -33,7 +33,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Signals — QGI Intelligence",
+  title: "Signals · QGI Intelligence",
   description:
     "ML-validated risk recipes tracked across 156 countries — each adjudicated through blind walk-forward backtest and the QGI four-pillar lock rubric. Tier vocabulary: HIGH / MODERATE / INDICATIVE.",
   // #699: explicit canonical (was inheriting "/" from root layout).

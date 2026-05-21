@@ -35,10 +35,10 @@ const geistMono = Geist_Mono({
  */
 export const metadata: Metadata = {
   metadataBase: new URL("https://qgintelligence.com"),
-  title: "QGI — Quantitative Geopolitical Intelligence",
+  title: "QGI · Quantitative Geopolitical Intelligence",
   description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
   openGraph: {
-    title: "QGI — Quantitative Geopolitical Intelligence",
+    title: "QGI · Quantitative Geopolitical Intelligence",
     description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
     url: "https://qgintelligence.com",
     siteName: "QGI Intelligence",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QGI — Quantitative Geopolitical Intelligence",
+    title: "QGI · Quantitative Geopolitical Intelligence",
     description: `Historical precedents in economic data across ${TOTAL_COUNTRIES} countries.`,
     images: ["/og-default.png"],
   },
