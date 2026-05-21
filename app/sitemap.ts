@@ -65,6 +65,22 @@ const STATIC_ROUTES: Array<{
     priority: 0.5,
   },
   { path: "/reports", changeFrequency: "monthly", priority: 0.6 },
+  // R8 podium pieces, published 2026-05-21.
+  {
+    path: "/reports/niger-burkina-divergence",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
+  {
+    path: "/reports/india-pakistan-mirror",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
+  {
+    path: "/reports/ukraine-bosnia-mirror",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
   // Ghana country analysis elevated from /blog (2026-05-19).
   {
     path: "/reports/ghana-mauritania-mirror",
