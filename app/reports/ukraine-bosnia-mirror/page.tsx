@@ -513,11 +513,10 @@ export default function UkraineBosniaMirrorReportPage() {
             validation, and the position should be closed or sized down.
           </p>
 
-          {/* Pull-quote 2 */}
+          {/* Pull-quote 2 — verbatim from Section 4 prose. */}
           <PullQuote>
-            &ldquo;The Bosnia-Ukraine mirror is the trade. The Multilateral Agreement
-            recipe activation is the entry trigger. The falsification event is the exit
-            discipline.&rdquo;
+            &ldquo;Ukraine is currently in the bilateral treaty phase. The structural
+            question is whether the multilateral agreement phase will follow.&rdquo;
           </PullQuote>
 
           <p>
@@ -597,12 +596,11 @@ export default function UkraineBosniaMirrorReportPage() {
             structural sequence that historically precedes multilateral framework lock-in.
           </p>
 
-          {/* Pull-quote 3 */}
+          {/* Pull-quote 3 — verbatim from Section 7 prose. */}
           <PullQuote>
-            &ldquo;The Bilateral Treaty recipe activation is what the structural
-            comparator machine does that conventional research cannot. The Bosnia template
-            is the trade thesis. The Multilateral Agreement crossing 70/100 is the entry
-            trigger. The 60/100 floor with no CI narrowing is the exit discipline.&rdquo;
+            &ldquo;None would produce the specific falsifiable trigger, Ukraine&apos;s
+            Multilateral Agreement ML score crossing 70/100, as the credit-event
+            equivalent of the Bosnia template activating.&rdquo;
           </PullQuote>
 
           {/* Methodology aside */}
@@ -646,15 +644,16 @@ export default function UkraineBosniaMirrorReportPage() {
               </Link>{" "}
               QGI Risk Score 41/100 [34&ndash;49], Tier INDICATIVE; Multilateral Agreement
               99/100 [96&ndash;100] #1 of 58 &middot; Russia Multilateral Agreement 91/100
-              #6 of 58 &middot; Ukraine&shy;Bosnia cosine similarity 81% (bidirectional,
-              each other&apos;s #1 structural twin); next-closest peer cluster (Oman, Sri
-              Lanka, T&uuml;rkiye, Uzbekistan) at ~65% &middot; Multilateral Agreement
-              recipe LOCO AUC 0.8689, ECE 0.009, STRONG evidence grade &middot; Bilateral
-              Treaty recipe LOCO AUC 0.6681, MODERATE evidence grade, with disclosed 25%
-              training-concentration in Colombia (2016 peace process) &middot; Bilateral
-              Treaty top indicators: population change (0.53), employment ratio change
-              (0.42), mobile cellular subscriptions change (0.38) &middot; April 2026
-              scoring run (generated {BAKE_DATE}) &middot; QGI V1.9.1.
+              #6 of 58 &middot; Ukraine&shy;Bosnia composite cosine similarity 81% on the
+              8-dimension L1 risk profile (bidirectional, each other&apos;s #1 structural
+              twin); next-closest peer cluster (Oman, Sri Lanka, T&uuml;rkiye, Uzbekistan)
+              at ~65% &middot; Multilateral Agreement recipe LOCO AUC 0.8689, ECE 0.009,
+              STRONG evidence grade &middot; Bilateral Treaty recipe LOCO AUC 0.6681,
+              MODERATE evidence grade, with disclosed 25% training-concentration in
+              Colombia (2016 peace process) &middot; Bilateral Treaty top indicators:
+              population change (0.53), employment ratio change (0.42), mobile cellular
+              subscriptions change (0.38) &middot; April 2026 scoring run (generated{" "}
+              {BAKE_DATE}) &middot; QGI V1.9.1.
             </p>
             <p className="mb-2">
               Methodology disclosures: (1){" "}

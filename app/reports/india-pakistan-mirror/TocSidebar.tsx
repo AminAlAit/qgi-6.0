@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+// L2 max-6 TOC entries: 5 strongest sections + methodology = 6. Sections 2
+// (Cosine Decomposition) and 4 (Stressors Driving the Match) remain as h2s
+// in the article body but are reached by scroll, not surfaced in the sidebar.
 const TOC_ENTRIES = [
   { id: "opposite-ends-of-the-spectrum", label: "1. Opposite Ends of the Spectrum" },
-  { id: "what-the-cosine-decomposition-shows", label: "2. What the Decomposition Shows" },
   { id: "what-it-doesnt-mean", label: "3. What It Does Not Mean" },
-  { id: "the-stressors-driving-the-match", label: "4. The Stressors Driving the Match" },
   { id: "banking-system-implication", label: "5. Banking-System Implication" },
   { id: "sigma-tier-divergence-at-xl", label: "6. The Sigma-Tier Divergence at XL" },
   { id: "forward-call", label: "7. Forward Call" },

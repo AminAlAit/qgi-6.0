@@ -2,17 +2,18 @@
 
 import { useEffect, useState } from "react";
 
+// L2 max-6 TOC entries: 5 strongest sections + methodology = 6. Sections 3
+// (AES Frame Misses) and 7 (Implications for ECOWAS) remain as h2s in the
+// article body but are reached by scroll, not surfaced in the sidebar.
 const TOC_ENTRIES = [
   {
     id: "two-juntas-opposite-trajectories",
     label: "1. Two Juntas, Opposite Trajectories",
   },
   { id: "what-the-model-reads", label: "2. What the Model Reads" },
-  { id: "aes-frame-misses", label: "3. The AES Frame Misses It" },
   { id: "why-niger-not-mali-burkina", label: "4. Why Niger, Not Mali or Burkina" },
   { id: "forward-call", label: "5. The Forward Call" },
   { id: "what-qgi-doesnt-see", label: "6. What QGI Doesn't See" },
-  { id: "implications-for-ecowas", label: "7. Implications for ECOWAS" },
   { id: "methodology-footnote", label: "Methodology" },
 ];
 

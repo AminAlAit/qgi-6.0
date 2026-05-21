@@ -395,7 +395,8 @@ export default function NigerBurkinaDivergenceReportPage() {
           </p>
           <p>
             These are not different gradations of the same signal. They are opposite
-            structural readings produced by the same model.
+            structural readings produced by the same model, applied to two countries that
+            every West Africa analyst treats as part of a unified political project.
           </p>
           <p>That divergence is the story.</p>
 
@@ -630,7 +631,7 @@ export default function NigerBurkinaDivergenceReportPage() {
           {/* Pull-quote 2 */}
           <PullQuote>
             &ldquo;The dominant indicators driving Niger&apos;s signal are fiscal and
-            demographic. They are not moved by AES membership agreements or Russian
+            demographic. They are not moved by AES membership agreements or Russia
             security protocols. They are moved by the underlying economic and demographic
             dynamics of a uranium-export economy with an extreme demographic
             profile.&rdquo;

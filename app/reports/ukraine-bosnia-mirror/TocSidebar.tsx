@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from "react";
 
+// L2 max-6 TOC entries: 5 strongest sections + methodology = 6. Sections 3
+// (What QGI Shows for Ukraine) and 6 (Three Caveats) remain as h2s in the
+// article body but are reached by scroll, not surfaced in the sidebar.
 const TOC_ENTRIES = [
   { id: "the-categorical-peer", label: "1. The Categorical Peer" },
   { id: "bosnia-template", label: "2. The Bosnia Template" },
-  { id: "what-qgi-shows-for-ukraine", label: "3. What QGI Shows for Ukraine" },
   { id: "the-bilateral-multilateral-sequence", label: "4. Bilateral → Multilateral" },
   { id: "forward-call-and-falsification", label: "5. Forward Call + Falsification" },
-  { id: "three-structural-caveats", label: "6. Three Caveats" },
   { id: "what-the-desk-gets-that-bloomberg-cannot", label: "7. What the Desk Gets" },
   { id: "methodology-footnote", label: "Methodology" },
 ];
