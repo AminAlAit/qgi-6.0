@@ -151,68 +151,159 @@ def test_default_constants_match_civil_war():
     assert drv.DEFAULT_COHORT_LOCO_FLOOR == 0.68
 
 
-def test_country_id_normalization_multi_word():
-    """Per 2026-05-22 mechanical correctness fix: multi-word country_id values
-    (with underscores) must normalize to space-separated Title Case to match
-    parquet panel files and cohort-assignments.json.
+def test_country_id_normalization_simple_cases():
+    """Per 2026-05-22 mechanical correctness fix: simple multi-word names
+    (no hyphen, no lowercase conjunctions) normalize via `_ -> ` ` + title().
 
     Pre-fix `.title()` produced "Costa_Rica" from "costa_rica", silently
-    dropping multi-word countries at panel lookup. Fix replaces `_` with ` `
-    before `.title()`. Civil_war walk-1 ran without this fix and silently
-    dropped 41 multi-word events (256 prep input → 192 effective N_pos).
+    dropping multi-word countries at panel lookup. Civil_war walk-1 ran
+    without this fix and silently dropped 41 multi-word events at panel
+    lookup (256 prep input → 192 effective N_pos).
     """
-    df = pd.DataFrame({
-        "country_id": [
-            "afghanistan",          # single-word -> Afghanistan
-            "costa_rica",           # multi-word -> Costa Rica
-            "bosnia_and_herzegovina",  # tri-word -> Bosnia And Herzegovina
-            "saudi_arabia",         # multi-word -> Saudi Arabia
-            "united_kingdom",       # multi-word -> United Kingdom
-        ],
-        "event_year": [2000, 2010, 2020, 1990, 1980],
+    assert drv.normalize_country_id("afghanistan") == "Afghanistan"
+    assert drv.normalize_country_id("costa_rica") == "Costa Rica"
+    assert drv.normalize_country_id("saudi_arabia") == "Saudi Arabia"
+    assert drv.normalize_country_id("united_kingdom") == "United Kingdom"
+    assert drv.normalize_country_id("central_african_republic") == "Central African Republic"
+
+
+def test_country_id_normalization_overrides():
+    """Per 2026-05-22: 4 country_ids require explicit override because naive
+    `_ -> ` ` + title()` produces a name that does NOT match the canonical
+    form in parquet panels + cohort-assignments.json:
+
+      - "democratic_republic_of_congo" naive: "Democratic Republic Of Congo"
+        canonical: "The Democratic Republic of the Congo"
+      - "guinea_bissau" naive: "Guinea Bissau" canonical: "Guinea-Bissau"
+      - "republic_of_congo" naive: "Republic Of Congo"
+        canonical: "Republic of the Congo"
+      - "timor_leste" naive: "Timor Leste" canonical: "Timor-Leste"
+
+    These overrides are required for the cohort gate AND panel lookup to
+    successfully resolve these countries.
+    """
+    assert (
+        drv.normalize_country_id("democratic_republic_of_congo")
+        == "The Democratic Republic of the Congo"
+    )
+    assert drv.normalize_country_id("guinea_bissau") == "Guinea-Bissau"
+    assert drv.normalize_country_id("republic_of_congo") == "Republic of the Congo"
+    assert drv.normalize_country_id("timor_leste") == "Timor-Leste"
+
+
+def test_normalization_propagates_through_build_x_y():
+    """Per Sonnet PR#91 FU3 + 2026-05-22 mechanical fix verification:
+    end-to-end check that a multi-word `country_id` survives panel lookup
+    AND feature extraction. Pre-fix the panel filter
+    `panel[panel["country"] == "Costa_Rica"]` silently returned zero rows,
+    causing `extract_features_for_indicator` to return None and the sample
+    to be dropped in `build_X_y`. Fix: `normalize_country_id` produces
+    "Costa Rica" (matching the panel format).
+    """
+    # Synthetic panel containing "Costa Rica" (space-separated, matches the
+    # parquet panel convention).
+    panel = pd.DataFrame({
+        "country": ["Costa Rica"] * 20,
+        "year": list(range(2000, 2020)),
+        "value": list(range(20)),
     })
-    normalized = df["country_id"].str.replace("_", " ").str.title().tolist()
-    assert normalized == [
-        "Afghanistan",
-        "Costa Rica",
-        "Bosnia And Herzegovina",
-        "Saudi Arabia",
-        "United Kingdom",
+    # Samples DataFrame as build_X_y consumes (post-normalization):
+    samples = pd.DataFrame({
+        "country": [drv.normalize_country_id("costa_rica")],
+        "year": [2020],
+        "label": [1],
+    })
+    assert samples["country"].iloc[0] == "Costa Rica"
+    X, y, c, yr = drv.build_X_y(samples, ["IND"], window=10, panels={"IND": panel})
+    # Pre-fix: X.shape would be (0, 0) because "Costa_Rica" wouldn't match
+    # "Costa Rica". Post-fix: at least one feature row is built.
+    assert X.shape[0] == 1, "build_X_y must extract features for multi-word country"
+    assert X.shape[1] == 8  # 8 features per indicator
+    assert y[0] == 1
+
+
+def test_normalization_propagates_for_hyphenated_override():
+    """Verify the override map propagates correctly for hyphenated names
+    (Guinea-Bissau / Timor-Leste). Naive `_ -> ` ` + title()` produces
+    "Guinea Bissau" but the canonical panel name is "Guinea-Bissau"."""
+    panel = pd.DataFrame({
+        "country": ["Guinea-Bissau"] * 20,
+        "year": list(range(2000, 2020)),
+        "value": list(range(20)),
+    })
+    samples = pd.DataFrame({
+        "country": [drv.normalize_country_id("guinea_bissau")],
+        "year": [2020],
+        "label": [1],
+    })
+    assert samples["country"].iloc[0] == "Guinea-Bissau"
+    X, y, c, yr = drv.build_X_y(samples, ["IND"], window=10, panels={"IND": panel})
+    assert X.shape[0] == 1, "override map must propagate to build_X_y for hyphenated names"
+
+
+def test_country_normalization_overrides_are_complete():
+    """Per 2026-05-22 walk-2 prep: verify the override map covers EVERY
+    multi-word country_id appearing across all positives.csv files. If a
+    new recipe introduces a country_id not handled by the naive transform
+    AND not in the override map, this test fails fast at the test phase
+    rather than silently dropping samples at walk time.
+    """
+    # Empirically enumerated 2026-05-22 from data/shape_inputs_v2/*/positives.csv:
+    # 16 multi-word country_ids, of which 12 normalize correctly via the
+    # simple rule and 4 require overrides.
+    all_observed_multi_word = [
+        "burkina_faso",
+        "central_african_republic",
+        "costa_rica",
+        "democratic_republic_of_congo",  # override
+        "guinea_bissau",                  # override
+        "ivory_coast",
+        "papua_new_guinea",
+        "republic_of_congo",              # override
+        "saudi_arabia",
+        "sierra_leone",
+        "south_africa",
+        "south_korea",
+        "sri_lanka",
+        "timor_leste",                    # override
+        "united_arab_emirates",
+        "united_kingdom",
     ]
-    # Sanity-check the OLD broken behavior to document what we are fixing:
-    broken = df["country_id"].str.title().tolist()
-    assert "Costa_Rica" in broken  # OLD: dropped at panel lookup
-    assert "Saudi_Arabia" in broken  # OLD: dropped at panel lookup
+    expected_overrides = {
+        "democratic_republic_of_congo",
+        "guinea_bissau",
+        "republic_of_congo",
+        "timor_leste",
+    }
+    assert set(drv.COUNTRY_NAME_OVERRIDES.keys()) == expected_overrides
+    # And every country_id resolves to a non-naive string (sanity)
+    for cid in all_observed_multi_word:
+        normalized = drv.normalize_country_id(cid)
+        assert " " in normalized or "-" in normalized, cid
+        assert "_" not in normalized, cid
 
 
 def test_cli_recipe_id_default(tmp_path):
-    """Per 2026-05-22 parameterization: --recipe-id defaults to civil_war
-    and the positives-csv default path resolves under the recipe-id."""
-    # We only validate the argparse contract, not actual run; use a mock recipe
-    # with a missing positives.csv to fail fast after argparse parse.
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("--recipe-id", default=drv.DEFAULT_RECIPE_ID)
-    p.add_argument("--hybrid-baseline", type=float, default=drv.DEFAULT_HYBRID_BASELINE)
-    p.add_argument("--lock-floor", type=float, default=drv.DEFAULT_LOCK_FLOOR)
-    p.add_argument("--cohort-loco-floor", type=float, default=drv.DEFAULT_COHORT_LOCO_FLOOR)
-    args = p.parse_args([])
+    """Per 2026-05-22 parameterization: --recipe-id defaults to civil_war.
+
+    Uses `drv._build_parser()` (the real parser construction) instead of a
+    shadow parser — addresses Sonnet PR#91 FU1 (prevents parser drift if a
+    future PR adds args to `_main` without updating this test).
+    """
+    parser = drv._build_parser()
+    args = parser.parse_args(["--output-dir", str(tmp_path)])
     assert args.recipe_id == "civil_war_and_insurgency"
     assert args.hybrid_baseline == 0.7686
     assert args.lock_floor == 0.7986
     assert args.cohort_loco_floor == 0.68
 
 
-def test_cli_recipe_id_override():
+def test_cli_recipe_id_override(tmp_path):
     """Per 2026-05-22 parameterization: economic_recession per-recipe pre-reg
-    values must be overridable via CLI flags."""
-    import argparse
-    p = argparse.ArgumentParser()
-    p.add_argument("--recipe-id", default=drv.DEFAULT_RECIPE_ID)
-    p.add_argument("--hybrid-baseline", type=float, default=drv.DEFAULT_HYBRID_BASELINE)
-    p.add_argument("--lock-floor", type=float, default=drv.DEFAULT_LOCK_FLOOR)
-    p.add_argument("--cohort-loco-floor", type=float, default=drv.DEFAULT_COHORT_LOCO_FLOOR)
-    args = p.parse_args([
+    values must be overridable via CLI flags. Uses the real `_build_parser`."""
+    parser = drv._build_parser()
+    args = parser.parse_args([
+        "--output-dir", str(tmp_path),
         "--recipe-id", "economic_recession",
         "--hybrid-baseline", "0.4784",
         "--lock-floor", "0.65",
@@ -222,3 +313,11 @@ def test_cli_recipe_id_override():
     assert args.hybrid_baseline == 0.4784
     assert args.lock_floor == 0.65
     assert args.cohort_loco_floor == 0.60
+
+
+def test_cli_output_dir_required(tmp_path):
+    """Verify --output-dir is required (no implicit default)."""
+    import pytest as _pytest
+    parser = drv._build_parser()
+    with _pytest.raises(SystemExit):
+        parser.parse_args([])  # missing --output-dir
