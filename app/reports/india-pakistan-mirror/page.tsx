@@ -265,7 +265,7 @@ export default function IndiaPakistanMirrorReportPage() {
         url="https://qgintelligence.com/reports/india-pakistan-mirror"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/india-pakistan-mirror/opengraph-image"
-        author={{ type: "Person", name: "Rajesh Iyer" }}
+        author={{ type: "Person", name: "Amin Al-Ait" }}
       />
 
       <header
@@ -318,7 +318,7 @@ export default function IndiaPakistanMirrorReportPage() {
             Hear It
           </h1>
           <p className="text-xs mb-1" style={{ color: "var(--qgi-text-dim)" }}>
-            By Rajesh Iyer · Scoring date: {BAKE_DATE} · QGI V1.9.1
+            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QGI V1.9.1
           </p>
           <p
             className="text-[11px] tracking-wide uppercase"
@@ -829,13 +829,10 @@ export default function IndiaPakistanMirrorReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Rajesh Iyer,
-            Adjunct Fellow at Carnegie India (New Delhi) and retired Chief Risk Officer of
-            ICICI Bank. He spent 12 years building and running India&apos;s second-largest
-            private bank&apos;s country risk frameworks. This analysis represents his
-            personal assessment, not that of ICICI Bank or Carnegie India. Values cited
-            from the {BAKE_DATE} V1.9.1 scoring run. This piece reports structural pattern
-            resemblance and historical-analogue comparison. It is not a forecast.
+            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            &middot; Values cited from the {BAKE_DATE} V1.9.1 scoring run. This piece
+            reports structural pattern resemblance and historical-analogue comparison. It
+            is not a forecast.
           </p>
         </div>
       </article>
