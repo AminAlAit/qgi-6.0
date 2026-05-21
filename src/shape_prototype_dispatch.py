@@ -89,6 +89,20 @@ class AdvisoryOnlyShapeUnfittableError(RuntimeError):
     """
 
 
+class Phase1HardFalsifiedError(RuntimeError):
+    """Raised when a caller requests a prototype for a Phase-1 HARD-FALSIFIED recipe.
+
+    Per stage-6-phase-1-closure-DECISION-2026-05-21 (8-seat ratified): when
+    the Stage 7 §6.1 4-tier exit table routes a recipe to HARD-FALSIFY, the
+    prototype itself remains mathematically sound (sampler diagnostics pass),
+    but the FEATURE derived from the prototype failed F-S-1/F-S-3 + F-H-7
+    with margin. Production cascade reverts to ingredient+length-only for
+    that recipe. Per Tariq #20 R-T1 binding rider: the prototype MUST NOT
+    be reused as initialization data, priors, or warm-starts under any
+    future fresh pre-reg. Future revival requires a full re-fit per F-Shape-1.
+    """
+
+
 class SchemaValidationError(ValueError):
     """Raised when the lock JSON fails the §4.3 schema invariants.
 
@@ -216,6 +230,7 @@ class ShapePrototypeDispatch:
         # cascade exit clause. Separate from substrate-inadequate because the
         # failure mode is sampler-gate exhaustion, not G1-G4 audit.
         self._shape_unfittable_advisory_only: set[str] = set()
+        self._phase_1_hard_falsified: set[str] = set()
         for rid, row in payload["recipes"].items():
             self._validate_recipe(rid, row)
             audit = SubstrateAudit(
@@ -227,10 +242,11 @@ class ShapePrototypeDispatch:
             # F-H-4-A5: read cascade_outcome; absent value defaults to
             # "fit_locked" for backward-compat with pre-A5 lock entries.
             cascade_outcome = str(row.get("cascade_outcome", "fit_locked"))
-            if cascade_outcome not in ("fit_locked", "advisory_only_shape_unfittable"):
+            if cascade_outcome not in ("fit_locked", "advisory_only_shape_unfittable", "phase_1_hard_falsified"):
                 raise SchemaValidationError(
-                    f"recipes[{rid!r}] cascade_outcome must be 'fit_locked' or "
-                    f"'advisory_only_shape_unfittable'; got {cascade_outcome!r}"
+                    f"recipes[{rid!r}] cascade_outcome must be 'fit_locked', "
+                    f"'advisory_only_shape_unfittable', or 'phase_1_hard_falsified'; "
+                    f"got {cascade_outcome!r}"
                 )
             # F-H-4-A5 semantic gate: fit_locked entries MUST carry a
             # non-empty per_indicator_trajectory_signature. The schema's
@@ -274,6 +290,8 @@ class ShapePrototypeDispatch:
                 self._substrate_inadequate.add(rid)
             if cascade_outcome == "advisory_only_shape_unfittable":
                 self._shape_unfittable_advisory_only.add(rid)
+            if cascade_outcome == "phase_1_hard_falsified":
+                self._phase_1_hard_falsified.add(rid)
 
     # ---- Validation helpers ------------------------------------------------
 
@@ -438,7 +456,8 @@ class ShapePrototypeDispatch:
 
     def has_prototype(self, recipe_id: str) -> bool:
         """True iff the recipe has a prototype entry AND its substrate is adequate
-        AND it is not routed to ADVISORY-ONLY under F-H-4-A5.
+        AND it is not routed to ADVISORY-ONLY under F-H-4-A5 AND it is not
+        routed to HARD-FALSIFY under Stage 7 closure DECISION 2026-05-21.
 
         Non-raising form of ``prototype_for``; production orchestrators use
         this to decide whether to call the shape kernel or fall back to the
@@ -448,6 +467,7 @@ class ShapePrototypeDispatch:
             recipe_id in self._prototypes
             and recipe_id not in self._substrate_inadequate
             and recipe_id not in self._shape_unfittable_advisory_only
+            and recipe_id not in self._phase_1_hard_falsified
         )
 
     def advisory_only_recipes(self) -> tuple[str, ...]:
@@ -473,6 +493,8 @@ class ShapePrototypeDispatch:
             return None
         if recipe_id in self._shape_unfittable_advisory_only:
             return None
+        if recipe_id in self._phase_1_hard_falsified:
+            return None
         return self._prototypes[recipe_id]
 
     def prototype_for(self, recipe_id: str) -> ShapePrototype:
@@ -485,6 +507,9 @@ class ShapePrototypeDispatch:
             AdvisoryOnlyShapeUnfittableError: if the recipe routed to
                 ADVISORY-ONLY shape per F-H-4-A5 (§3.1.5 cascade exit clause).
                 Caller must route to the non-shape head per §4.2.
+            Phase1HardFalsifiedError: if the recipe routed to HARD-FALSIFY
+                per Stage 7 §6.1 closure DECISION 2026-05-21. Caller must
+                route to ingredient+length-only (no shape feature emitted).
         """
         if recipe_id not in self._prototypes:
             raise KeyError(
@@ -509,6 +534,17 @@ class ShapePrototypeDispatch:
                 f"head per §4.2; use try_prototype_for() for the non-raising "
                 f"variant. Cascade LOCK status of this recipe is independent "
                 f"and unaffected."
+            )
+        if recipe_id in self._phase_1_hard_falsified:
+            raise Phase1HardFalsifiedError(
+                f"recipe {recipe_id!r} routed to HARD-FALSIFY per Stage 7 "
+                f"§6.1 closure DECISION 2026-05-21 (8-seat ratified). The "
+                f"prototype itself is mathematically sound but the FEATURE "
+                f"derived from it failed F-S-1/F-S-3 + F-H-7 with margin. "
+                f"Orchestrator must use ingredient+length-only (no shape "
+                f"feature). Per Tariq #20 R-T1 binding rider: this prototype "
+                f"MUST NOT be reused as initialization data, priors, or "
+                f"warm-starts under any future fresh pre-reg."
             )
         return self._prototypes[recipe_id]
 
