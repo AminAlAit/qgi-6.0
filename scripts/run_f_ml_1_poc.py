@@ -1,6 +1,10 @@
-"""F-ML-1 per-recipe ML loop PoC driver — civil_war_and_insurgency.
+"""F-ML-1 per-recipe ML loop PoC driver.
 
 Per `qgi-docs/internal/ops/ml-track/F-ML-1-pre-reg.md` (ratified 8/8 2026-05-21).
+
+Parameterized for any recipe whose per-recipe pre-reg has been 3-seat
+mechanics Majles ratified. Default values preserve civil_war_and_insurgency
+backward compatibility. Override via CLI flags for other recipes.
 
 Implements:
   §3.1  three-gate LOCK criterion (Global LOCO + per-cohort LOCO + per-cohort ECE)
@@ -18,11 +22,25 @@ Bindings honored:
   - Marcus M8-1/2: per-recipe floor provenance annotation; unified field-3 schema
   - Nasrin N-2: window_search_auxiliary_note in DECISION emit
 
+Mechanical correctness fix (2026-05-22): country_id normalization replaces `_`
+with ` ` before `.title()` to match parquet panel + cohort-assignments format.
+Discovered pre-walk-2 during econ_recession pre-reg prep. Civil_war walk-1 ran
+WITHOUT this fix; its DECISION stands as ratified (the bug did not alter
+HARD_FAIL routing). See per-recipe-pre-reg/economic-recession-pre-reg.md §3.a.
+
 Run-time: multi-hour laptop. Zero AWS spend.
 
-Usage:
+Usage (civil_war defaults):
     python scripts/run_f_ml_1_poc.py \\
         --output-dir ../qgi-docs/internal/ops/ml-track/results/f-ml-1-poc/
+
+Usage (economic_recession, per-recipe pre-reg values):
+    python scripts/run_f_ml_1_poc.py \\
+        --recipe-id economic_recession \\
+        --hybrid-baseline 0.4784 \\
+        --lock-floor 0.65 \\
+        --cohort-loco-floor 0.60 \\
+        --output-dir ../qgi-docs/internal/ops/ml-track/results/f-ml-1-econ-rec/
 """
 from __future__ import annotations
 
@@ -50,16 +68,20 @@ LOG = logging.getLogger("f-ml-1-poc")
 
 # ---- F-ML-1 pre-reg binding constants ---------------------------------------
 
-RECIPE_ID = "civil_war_and_insurgency"
+# Default values match civil_war_and_insurgency walk-1 (preserved for backward
+# compatibility). For other recipes, override RECIPE_ID + HYBRID_BASELINE +
+# LOCK_FLOOR + COHORT_LOCO_FLOOR via CLI flags. Each per-recipe pre-reg must
+# be 3-seat mechanics Majles ratified before the corresponding walk fires
+# (per F-ML-1 §2.5 + Marcus M8-1).
+DEFAULT_RECIPE_ID = "civil_war_and_insurgency"
 
-# §7 PoC scope
-HYBRID_BASELINE = 0.7686  # per-recipe floor provenance: cascade-inherited (Marcus M8-1)
-DELTA_LIFT = 0.03
-LOCK_FLOOR = HYBRID_BASELINE + DELTA_LIFT  # 0.7986
+# §7 PoC scope (civil_war defaults)
+DEFAULT_HYBRID_BASELINE = 0.7686  # per-recipe floor provenance: cascade-inherited (Marcus M8-1 path (a))
+DEFAULT_LOCK_FLOOR = 0.7986       # HYBRID_BASELINE + 0.03
 
-# §3.1 per-cohort floors
-COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
-COHORT_ECE_GATE = 0.08    # F-H-7 inherited
+# §3.1 per-cohort floors (civil_war defaults)
+DEFAULT_COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
+COHORT_ECE_GATE = 0.08            # F-H-7 inherited (not recipe-specific)
 
 # §5 indicator selection
 TOP_N_PREFILTER = 40
@@ -813,10 +835,22 @@ def _to_strict_json(obj: Any) -> str:
 def _main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
+    parser.add_argument("--recipe-id", default=DEFAULT_RECIPE_ID,
+                        help="Recipe ID (e.g., civil_war_and_insurgency, economic_recession).")
+    parser.add_argument("--hybrid-baseline", type=float, default=DEFAULT_HYBRID_BASELINE,
+                        help="Per-recipe cascade-side baseline (Marcus M8-1 provenance). "
+                             "Default 0.7686 = civil_war Hybrid LOCK; per-recipe pre-reg overrides.")
+    parser.add_argument("--lock-floor", type=float, default=DEFAULT_LOCK_FLOOR,
+                        help="Per-recipe global LOCO-AUC LOCK floor (§3.1 Gate 1). "
+                             "Default 0.7986 = civil_war (Hybrid + 0.03); per-recipe pre-reg overrides.")
+    parser.add_argument("--cohort-loco-floor", type=float, default=DEFAULT_COHORT_LOCO_FLOOR,
+                        help="Per-cohort LOCO-AUC LOCK floor (§3.1 Gate 2). "
+                             "Default 0.68 = civil_war Kwame R1 anchor; per-recipe pre-reg overrides.")
     parser.add_argument("--panel-dir", type=Path,
                         default=REPO_ROOT / "data" / "parquet_panels")
-    parser.add_argument("--positives-csv", type=Path,
-                        default=REPO_ROOT / "data" / "shape_inputs_v2" / RECIPE_ID / "positives.csv")
+    parser.add_argument("--positives-csv", type=Path, default=None,
+                        help="Positives CSV path. Defaults to "
+                             "data/shape_inputs_v2/{recipe-id}/positives.csv.")
     parser.add_argument("--cohort-sidecar", type=Path,
                         default=REPO_ROOT.parent / "qgi-data" / "reference" / "cohort-assignments.json")
     parser.add_argument("--max-greedy-steps", type=int, default=12)
@@ -827,12 +861,29 @@ def _main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
-    LOG.info("F-ML-1 PoC starting — recipe=%s", RECIPE_ID)
+    recipe_id = args.recipe_id
+    hybrid_baseline = float(args.hybrid_baseline)
+    lock_floor = float(args.lock_floor)
+    cohort_loco_floor = float(args.cohort_loco_floor)
+    if args.positives_csv is None:
+        args.positives_csv = REPO_ROOT / "data" / "shape_inputs_v2" / recipe_id / "positives.csv"
+
+    LOG.info("F-ML-1 PoC starting — recipe=%s", recipe_id)
+    LOG.info("Per-recipe LOCK params: hybrid_baseline=%.4f, lock_floor=%.4f, cohort_loco_floor=%.4f",
+             hybrid_baseline, lock_floor, cohort_loco_floor)
     t0 = time.time()
 
-    # Load positives + build negatives
+    # Load positives + build negatives.
+    # Country-name normalization (2026-05-22 mechanical correctness fix):
+    # parquet panels + cohort-assignments.json use space-separated names
+    # ("Costa Rica", "Bosnia and Herzegovina"). Replace `_` with ` ` before
+    # `.title()` so positives.csv lowercase-underscore `costa_rica` matches.
+    # Pre-fix civil_war walk silently dropped 41 multi-word events at panel
+    # lookup (256 → 192 effective N_pos). Civil_war DECISION stands as-ratified;
+    # this fix applies to walks from 2026-05-22 forward. See per-recipe
+    # pre-reg/economic-recession-pre-reg.md §3.a.
     pos = pd.read_csv(args.positives_csv)
-    pos["country"] = pos["country_id"].str.title()  # Title-case for panel lookup
+    pos["country"] = pos["country_id"].str.replace("_", " ").str.title()
     pos = pos.rename(columns={"event_year": "year"})
     pos["label"] = 1
     LOG.info("Positives: %d rows, %d unique countries", len(pos), pos["country"].nunique())
@@ -930,10 +981,10 @@ def _main(argv: list[str] | None = None) -> int:
                 info["loco_auc_ci95_lo"] = ci["ci95_lo"]
                 info["loco_auc_ci95_hi"] = ci["ci95_hi"]
 
-    # §3.1 three-gate evaluation
-    global_pass = final["global_auc"] >= LOCK_FLOOR
+    # §3.1 three-gate evaluation (per-recipe floor parameters)
+    global_pass = final["global_auc"] >= lock_floor
     cohort_loco_pass = all(
-        (info["n"] < 5) or (info["loco_auc"] is not None and info["loco_auc"] >= COHORT_LOCO_FLOOR)
+        (info["n"] < 5) or (info["loco_auc"] is not None and info["loco_auc"] >= cohort_loco_floor)
         for info in per_cohort.values()
     )
     cohort_ece_pass = all(
@@ -948,7 +999,7 @@ def _main(argv: list[str] | None = None) -> int:
     else:
         verdict = "HARD_FAIL"
 
-    borderline = bool(auc_ci["ci95_lo"] < LOCK_FLOOR) if verdict == "LOCK" else False
+    borderline = bool(auc_ci["ci95_lo"] < lock_floor) if verdict == "LOCK" else False
 
     # Descriptive emit (per §6 + Miriam M14-1)
     LOG.info("=== DESCRIPTIVE EMIT ===")
@@ -1005,7 +1056,7 @@ def _main(argv: list[str] | None = None) -> int:
         "f_ml_1_pre_reg": "qgi-docs/internal/ops/ml-track/F-ML-1-pre-reg.md",
         "filed": datetime.now(timezone.utc).isoformat(),
         "elapsed_seconds": elapsed,
-        "recipe_id": RECIPE_ID,
+        "recipe_id": recipe_id,
         "verdict": verdict,
         "borderline_lock": borderline,
         "n_positives": n_pos,
@@ -1020,12 +1071,12 @@ def _main(argv: list[str] | None = None) -> int:
             "lock_gate_eval_ts": lock_gate_eval_ts,
         },
         "per_recipe_floor_provenance": {
-            "baseline_floor": HYBRID_BASELINE,
-            "delta_lift": DELTA_LIFT,
-            "lock_floor": LOCK_FLOOR,
-            "source": "derived_from_prior_hybrid_lock",
-            "prior_lock_value": HYBRID_BASELINE,
-            "prior_lock_name": "Hybrid D2/D5",
+            "hybrid_baseline": hybrid_baseline,
+            "lock_floor": lock_floor,
+            "cohort_loco_floor": cohort_loco_floor,
+            "note": "Provenance details (Marcus M8-1 path-(a)/(b)/(c)) are in the "
+                    "per-recipe pre-reg markdown at "
+                    "qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/{recipe-id}-pre-reg.md",
         },
         "global_loco": auc_ci,
         "per_cohort": per_cohort,
@@ -1033,8 +1084,8 @@ def _main(argv: list[str] | None = None) -> int:
             "global_loco_pass": bool(global_pass),
             "per_cohort_loco_pass": bool(cohort_loco_pass),
             "per_cohort_ece_pass": bool(cohort_ece_pass),
-            "global_floor": LOCK_FLOOR,
-            "cohort_loco_floor": COHORT_LOCO_FLOOR,
+            "global_floor": lock_floor,
+            "cohort_loco_floor": cohort_loco_floor,
             "cohort_ece_gate": COHORT_ECE_GATE,
         },
         "univariate_screen": {

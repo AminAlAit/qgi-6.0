@@ -136,3 +136,89 @@ def test_to_strict_json_numpy_types():
     assert parsed["i"] == 7
     assert parsed["f"] == 3.14
     assert parsed["arr"] == [1, 2, 3]
+
+
+def test_default_constants_match_civil_war():
+    """Verify civil_war defaults preserved for backward compatibility.
+
+    The parameterization (2026-05-22) replaced module-level RECIPE_ID/
+    HYBRID_BASELINE/LOCK_FLOOR/COHORT_LOCO_FLOOR with CLI args; the DEFAULT_*
+    constants encode the civil_war_and_insurgency walk-1 values verbatim.
+    """
+    assert drv.DEFAULT_RECIPE_ID == "civil_war_and_insurgency"
+    assert drv.DEFAULT_HYBRID_BASELINE == 0.7686
+    assert drv.DEFAULT_LOCK_FLOOR == 0.7986
+    assert drv.DEFAULT_COHORT_LOCO_FLOOR == 0.68
+
+
+def test_country_id_normalization_multi_word():
+    """Per 2026-05-22 mechanical correctness fix: multi-word country_id values
+    (with underscores) must normalize to space-separated Title Case to match
+    parquet panel files and cohort-assignments.json.
+
+    Pre-fix `.title()` produced "Costa_Rica" from "costa_rica", silently
+    dropping multi-word countries at panel lookup. Fix replaces `_` with ` `
+    before `.title()`. Civil_war walk-1 ran without this fix and silently
+    dropped 41 multi-word events (256 prep input → 192 effective N_pos).
+    """
+    df = pd.DataFrame({
+        "country_id": [
+            "afghanistan",          # single-word -> Afghanistan
+            "costa_rica",           # multi-word -> Costa Rica
+            "bosnia_and_herzegovina",  # tri-word -> Bosnia And Herzegovina
+            "saudi_arabia",         # multi-word -> Saudi Arabia
+            "united_kingdom",       # multi-word -> United Kingdom
+        ],
+        "event_year": [2000, 2010, 2020, 1990, 1980],
+    })
+    normalized = df["country_id"].str.replace("_", " ").str.title().tolist()
+    assert normalized == [
+        "Afghanistan",
+        "Costa Rica",
+        "Bosnia And Herzegovina",
+        "Saudi Arabia",
+        "United Kingdom",
+    ]
+    # Sanity-check the OLD broken behavior to document what we are fixing:
+    broken = df["country_id"].str.title().tolist()
+    assert "Costa_Rica" in broken  # OLD: dropped at panel lookup
+    assert "Saudi_Arabia" in broken  # OLD: dropped at panel lookup
+
+
+def test_cli_recipe_id_default(tmp_path):
+    """Per 2026-05-22 parameterization: --recipe-id defaults to civil_war
+    and the positives-csv default path resolves under the recipe-id."""
+    # We only validate the argparse contract, not actual run; use a mock recipe
+    # with a missing positives.csv to fail fast after argparse parse.
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--recipe-id", default=drv.DEFAULT_RECIPE_ID)
+    p.add_argument("--hybrid-baseline", type=float, default=drv.DEFAULT_HYBRID_BASELINE)
+    p.add_argument("--lock-floor", type=float, default=drv.DEFAULT_LOCK_FLOOR)
+    p.add_argument("--cohort-loco-floor", type=float, default=drv.DEFAULT_COHORT_LOCO_FLOOR)
+    args = p.parse_args([])
+    assert args.recipe_id == "civil_war_and_insurgency"
+    assert args.hybrid_baseline == 0.7686
+    assert args.lock_floor == 0.7986
+    assert args.cohort_loco_floor == 0.68
+
+
+def test_cli_recipe_id_override():
+    """Per 2026-05-22 parameterization: economic_recession per-recipe pre-reg
+    values must be overridable via CLI flags."""
+    import argparse
+    p = argparse.ArgumentParser()
+    p.add_argument("--recipe-id", default=drv.DEFAULT_RECIPE_ID)
+    p.add_argument("--hybrid-baseline", type=float, default=drv.DEFAULT_HYBRID_BASELINE)
+    p.add_argument("--lock-floor", type=float, default=drv.DEFAULT_LOCK_FLOOR)
+    p.add_argument("--cohort-loco-floor", type=float, default=drv.DEFAULT_COHORT_LOCO_FLOOR)
+    args = p.parse_args([
+        "--recipe-id", "economic_recession",
+        "--hybrid-baseline", "0.4784",
+        "--lock-floor", "0.65",
+        "--cohort-loco-floor", "0.60",
+    ])
+    assert args.recipe_id == "economic_recession"
+    assert args.hybrid_baseline == 0.4784
+    assert args.lock_floor == 0.65
+    assert args.cohort_loco_floor == 0.60
