@@ -6,7 +6,7 @@
     "stage_6": "e4f9e7a"
   },
   "metadata": {
-    "file_sha256": "e736ac06e0a9d4ac90dd81d0ad11289fc53fa3dbb218c0c97d873377c0d7d371",
+    "file_sha256": "06a6f42c031b9d79685af4d7cdd107575609bf67d5dcca8093d1faaae96b1b34",
     "n_recipes_with_prototype": 1,
     "n_recipes_substrate_inadequate": 0
   },
@@ -34,18 +34,18 @@
           "fpca_cumulative_variance_explained": 0.0,
           "fpca_basis": "gp_fallback_no_fpca_basis",
           "posterior_mean_trajectory": [
-            6.5575515312869745,
-            11.757482300766448,
-            19.100739233589024,
-            27.231191493316654,
-            34.06157903368348
+            7.2735640228411365,
+            11.456351932903056,
+            17.395353392778475,
+            27.84232145498398,
+            35.52915682169961
           ],
           "posterior_cov_diag": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            22.058756297492508,
+            17.575131110387826,
+            13.328944859723226,
+            17.575131113313226,
+            22.05875629905256
           ],
           "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
           "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
@@ -56,18 +56,18 @@
           "fpca_cumulative_variance_explained": 0.0,
           "fpca_basis": "gp_fallback_no_fpca_basis",
           "posterior_mean_trajectory": [
-            2.1144107972433144,
-            -1.3613065448127797,
-            0.737830195104695,
-            15.2724852107561,
-            4.160776943433742
+            2.1157013281514265,
+            -1.3594535655265052,
+            0.7281102383497982,
+            15.291512670102913,
+            4.154913893962386
           ],
           "posterior_cov_diag": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            0.09288695633431053,
+            0.09287032190631726,
+            0.09286599493762242,
+            0.09287032190616447,
+            0.09288695633435054
           ],
           "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
           "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
@@ -78,18 +78,18 @@
           "fpca_cumulative_variance_explained": 0.0,
           "fpca_basis": "gp_fallback_no_fpca_basis",
           "posterior_mean_trajectory": [
-            31.931580897369667,
-            56.39191002612226,
-            85.20254493665178,
-            112.13810738098695,
-            129.9655214497889
+            32.66497126821024,
+            55.88068169507028,
+            81.78276280140582,
+            109.43782783855558,
+            144.53677382717595
           ],
           "posterior_cov_diag": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            115.74439203571617,
+            88.93762047827985,
+            67.81273418050436,
+            88.93762047885251,
+            115.7443920357653
           ],
           "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
           "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
@@ -100,18 +100,18 @@
           "fpca_cumulative_variance_explained": 0.0,
           "fpca_basis": "gp_fallback_no_fpca_basis",
           "posterior_mean_trajectory": [
-            0.1917918786070796,
-            -1.1817354809437384,
-            0.03996297761731475,
-            -1.5276322300859675,
-            -0.9508701889936633
+            0.19462015695780355,
+            -1.1985516761003239,
+            0.04076570274278038,
+            -1.5492643321757236,
+            -0.9642493103319014
           ],
           "posterior_cov_diag": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            0.014645610482035784,
+            0.01464560936816774,
+            0.014645609367447505,
+            0.014645609368167414,
+            0.014645610482036595
           ],
           "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
           "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
@@ -122,18 +122,18 @@
           "fpca_cumulative_variance_explained": 0.0,
           "fpca_basis": "gp_fallback_no_fpca_basis",
           "posterior_mean_trajectory": [
-            1.1217259758519025,
-            1.2653337957613096,
-            1.3733408089388677,
-            1.4334090549704732,
-            1.438159783036063
+            1.161403878027393,
+            1.2417933238474934,
+            1.3705584149044447,
+            1.5340108991537504,
+            1.7027964901627475
           ],
           "posterior_cov_diag": [
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0
+            0.0034386559221185465,
+            0.0017092192876571072,
+            0.0018852550947126004,
+            0.001709219287661477,
+            0.003438655922116289
           ],
           "cov_diag_source": "posterior_gp_f_r_empirical_cov_diag",
           "gp_fallback_variant": "v3_no_instance_gp_lognormal_ell",
@@ -159,8 +159,7 @@
         "n_divergences": 3,
         "n_post_warmup_draws": 4000,
         "divergence_rate": 0.00075
-      },
-      "cascade_outcome": "fit_locked"
+      }
     }
   },
   "amendments": [
