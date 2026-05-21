@@ -322,16 +322,21 @@ def fit_predict_loco(
             scaler = StandardScaler()
             Xt = scaler.fit_transform(X_train)
             Xte = scaler.transform(X_test)
+            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
             clf = LogisticRegression(
-                C=1.0, solver="lbfgs", class_weight="balanced",
+                C=1.0, penalty="l1", solver="saga", class_weight="balanced",
                 max_iter=2000, random_state=seed,
             )
             clf.fit(Xt, y_train)
             probs = clf.predict_proba(Xte)[:, 1]
         elif architecture == "XGBoost":
             from xgboost import XGBClassifier
+            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+            # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
+            # collinearity at each greedy step.
             clf = XGBClassifier(
                 n_estimators=200, max_depth=6, learning_rate=0.05,
+                reg_alpha=0.1,
                 scale_pos_weight=spw, eval_metric="logloss",
                 random_state=seed, verbosity=0, n_jobs=1,
             )
@@ -376,6 +381,47 @@ def fold_variance(per_country_auc: dict[str, float]) -> float:
     if len(aucs) < 2:
         return 0.0
     return float(np.var(aucs))
+
+
+def window_ci_via_bootstrap_argmax(
+    per_window_predictions: dict[int, tuple[np.ndarray, np.ndarray]],
+    B: int = BCA_BOOTSTRAP_B,
+    seed: int = 0,
+) -> tuple[int, int]:
+    """Per Roshani R18-B: window_ci via bootstrap argmax-window distribution.
+
+    For each of B bootstrap iterations:
+      1. Resample with replacement (same indices across all windows for paired comparison)
+      2. Compute AUC at each window on the bootstrap sample
+      3. Record argmax_window
+    Return [2.5, 97.5] percentile range of argmax_windows.
+    """
+    if not per_window_predictions:
+        return (0, 0)
+    windows = sorted(per_window_predictions.keys())
+    # Ensure all windows have same N (some may differ due to data availability)
+    common_n = min(len(per_window_predictions[w][0]) for w in windows)
+    if common_n < 10:
+        return (windows[0], windows[-1])
+    rng = np.random.default_rng(seed)
+    argmax_windows: list[int] = []
+    for _ in range(B):
+        idx = rng.integers(0, common_n, size=common_n)
+        best_auc = -1.0
+        best_window = windows[0]
+        for w in windows:
+            probs, labels = per_window_predictions[w]
+            probs_b = probs[:common_n][idx]
+            labels_b = labels[:common_n][idx]
+            auc = compute_auc(probs_b, labels_b)
+            if not np.isnan(auc) and auc > best_auc:
+                best_auc = auc
+                best_window = w
+        argmax_windows.append(best_window)
+    return (
+        int(np.percentile(argmax_windows, 2.5)),
+        int(np.percentile(argmax_windows, 97.5)),
+    )
 
 
 # ---- Univariate screen ------------------------------------------------------
@@ -596,13 +642,15 @@ def emit_descriptive(
     architecture: str,
     feature_importances: list[float] | None,
     audit_chart_path: Path,
+    per_cohort_profile: dict[str, dict[str, Any]] | None = None,
+    window_ci: tuple[int, int] | None = None,
 ) -> dict[str, Any]:
     """Per F-ML-1 §6: 5 descriptive emit fields."""
 
     # Field 1: learned_canonical_length
     field_1 = {
         "best_window": int(chosen_window),
-        "window_ci": [int(chosen_window), int(chosen_window)],  # filled in later
+        "window_ci": [int(window_ci[0]), int(window_ci[1])] if window_ci else [int(chosen_window), int(chosen_window)],
         "window_search_grid": WINDOW_GRID,
         "window_ci_method": "bca_bootstrap_b2000",
     }
@@ -654,10 +702,26 @@ def emit_descriptive(
             "samples": sigs,
         })
 
+    # Field 4: per_cohort_calibration_profile (Sonnet PR#90 B2 — was missing from emit)
+    # Per F-ML-1 §6: required field mapping per-cohort calibration into the descriptive emit
+    # (distinct from the summary root's `per_cohort` block; this is the
+    # methodology-archive-grade artifact for Lloyd's audit).
+    field_4 = {}
+    if per_cohort_profile is not None:
+        for cohort, info in per_cohort_profile.items():
+            field_4[cohort] = {
+                "ece": info.get("ece"),
+                "ci95_lo": info.get("ece_ci95_lo"),
+                "ci95_hi": info.get("ece_ci95_hi"),
+                "n_test": info.get("n"),
+                "reliability_diagram_bins": info.get("reliability_diagram_bins"),
+            }
+
     return {
         "learned_canonical_length": field_1,
         "indicator_importance_profile": field_2,
         "learned_aggregation_weights": field_3,
+        "per_cohort_calibration_profile": field_4,
         "ranked_trajectory_signature": field_5,
     }
 
@@ -695,7 +759,7 @@ def plot_saudi_azeri_audit(
         return str(save_path)
     except Exception as e:
         LOG.warning("Audit chart generation failed: %s", e)
-        return ""
+        return "chart_generation_failed"  # sentinel per Sonnet PR#90 F4
 
 
 # ---- Main orchestrator ------------------------------------------------------
@@ -879,16 +943,12 @@ def _main(argv: list[str] | None = None) -> int:
         feature_importances = None  # MLP: would need SHAP; skip for now
 
     audit_chart_path = args.output_dir / "saudi_azeri_audit.png"
-    descriptive = emit_descriptive(
-        greedy["selected_indicators"], greedy["chosen_window"], panels, samples,
-        final, chosen_arch, feature_importances, audit_chart_path,
-    )
-    chart_path = plot_saudi_azeri_audit(descriptive, panels, greedy["chosen_window"], audit_chart_path)
-    descriptive["ranked_trajectory_signature"]["saudi_azeri_audit_url"] = chart_path
 
-    # window_search_auxiliary_note (per Nasrin N-2)
+    # window_search_auxiliary_note (per Nasrin N-2) + window_ci bootstrap (per Roshani R18-B)
+    LOG.info("=== WINDOW-SEARCH AUXILIARY + WINDOW_CI BOOTSTRAP ===")
     final_step_history = greedy["history"][-1] if greedy["history"] else {}
     loco_auc_per_window: dict[int, float] = {}
+    per_window_predictions: dict[int, tuple[np.ndarray, np.ndarray]] = {}
     if greedy["selected_indicators"]:
         for w in WINDOW_GRID:
             Xw, yw, cw, yrw = build_X_y(samples, greedy["selected_indicators"], w, panels)
@@ -896,10 +956,24 @@ def _main(argv: list[str] | None = None) -> int:
                 continue
             r = fit_predict_loco(Xw, yw, cw, yrw, architecture=chosen_arch, seed=args.seed)
             loco_auc_per_window[w] = float(r["global_auc"])
+            per_window_predictions[w] = (r["probs"], r["labels"])
+    LOG.info("BCa argmax-window bootstrap (B=%d) for window_ci...", BCA_BOOTSTRAP_B)
+    window_ci_pair = window_ci_via_bootstrap_argmax(per_window_predictions, B=BCA_BOOTSTRAP_B, seed=args.seed)
+    LOG.info("window_ci=[%d, %d] (best=%s)", window_ci_pair[0], window_ci_pair[1], greedy["chosen_window"])
     window_aux = {
         "n_combinations_evaluated_final_step": int(len(WINDOW_GRID) * max(1, len(greedy["history"]))),
         "loco_auc_spread_across_windows": loco_auc_per_window,
     }
+
+    # Now build the descriptive emit (depends on per_cohort + window_ci, computed above)
+    descriptive = emit_descriptive(
+        greedy["selected_indicators"], greedy["chosen_window"], panels, samples,
+        final, chosen_arch, feature_importances, audit_chart_path,
+        per_cohort_profile=per_cohort,
+        window_ci=window_ci_pair,
+    )
+    chart_path = plot_saudi_azeri_audit(descriptive, panels, greedy["chosen_window"], audit_chart_path)
+    descriptive["ranked_trajectory_signature"]["saudi_azeri_audit_url"] = chart_path
 
     # Compose DECISION-ready summary (per §10)
     elapsed = time.time() - t0
