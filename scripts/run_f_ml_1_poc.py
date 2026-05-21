@@ -97,6 +97,33 @@ MLP_FOLD_VARIANCE_TRIGGER = 0.05
 # §3.1 Roshani R18-A bootstrap
 BCA_BOOTSTRAP_B = 2000
 
+# Country-name normalization overrides (2026-05-22).
+# Naive `country_id.replace("_", " ").title()` fails for 4 country_ids whose
+# canonical forms in the parquet panels + cohort-assignments.json use hyphens
+# or lowercase conjunctions/articles. Verified by enumeration over all
+# positives.csv country_ids vs panel_set × cohort_assignments_set. See
+# `qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/economic-recession-pre-reg.md` §3.a.
+COUNTRY_NAME_OVERRIDES: dict[str, str] = {
+    "democratic_republic_of_congo": "The Democratic Republic of the Congo",
+    "guinea_bissau": "Guinea-Bissau",
+    "republic_of_congo": "Republic of the Congo",
+    "timor_leste": "Timor-Leste",
+}
+
+
+def normalize_country_id(country_id: str) -> str:
+    """Normalize a positives.csv `country_id` to canonical Title Case form
+    matching parquet panels + cohort-assignments.json.
+
+    For 12 of 16 multi-word country_ids the naive
+    `country_id.replace("_", " ").title()` is correct (e.g., "costa_rica" →
+    "Costa Rica"). For the remaining 4 it produces a mismatch — overridden
+    by `COUNTRY_NAME_OVERRIDES`.
+    """
+    if country_id in COUNTRY_NAME_OVERRIDES:
+        return COUNTRY_NAME_OVERRIDES[country_id]
+    return country_id.replace("_", " ").title()
+
 # ---- AUC + bootstrap CI -----------------------------------------------------
 
 
@@ -832,7 +859,9 @@ def _to_strict_json(obj: Any) -> str:
     return json.dumps(_w(obj), indent=2, ensure_ascii=False)
 
 
-def _main(argv: list[str] | None = None) -> int:
+def _build_parser() -> argparse.ArgumentParser:
+    """Build the CLI parser. Extracted from `_main` so tests can exercise
+    the SAME parser construction code path (avoiding shadow-parser drift)."""
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--recipe-id", default=DEFAULT_RECIPE_ID,
@@ -858,6 +887,11 @@ def _main(argv: list[str] | None = None) -> int:
     parser.add_argument("--seed", type=int, default=12345)
     parser.add_argument("--max-candidates-debug", type=int, default=None,
                         help="Debug mode: cap candidates at N (NOT for production walks).")
+    return parser
+
+
+def _main(argv: list[str] | None = None) -> int:
+    parser = _build_parser()
     args = parser.parse_args(argv)
     args.output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -876,17 +910,50 @@ def _main(argv: list[str] | None = None) -> int:
     # Load positives + build negatives.
     # Country-name normalization (2026-05-22 mechanical correctness fix):
     # parquet panels + cohort-assignments.json use space-separated names
-    # ("Costa Rica", "Bosnia and Herzegovina"). Replace `_` with ` ` before
-    # `.title()` so positives.csv lowercase-underscore `costa_rica` matches.
-    # Pre-fix civil_war walk silently dropped 41 multi-word events at panel
-    # lookup (256 → 192 effective N_pos). Civil_war DECISION stands as-ratified;
-    # this fix applies to walks from 2026-05-22 forward. See per-recipe
-    # pre-reg/economic-recession-pre-reg.md §3.a.
+    # ("Costa Rica", "Bosnia and Herzegovina") AND hyphenated forms for some
+    # cases ("Guinea-Bissau", "Timor-Leste") AND lowercase conjunctions/articles
+    # ("Republic of the Congo"). The naive `.title()` was incorrect for ALL
+    # multi-word names. `normalize_country_id` handles all 16 observed
+    # positives.csv multi-word country_ids: 12 via simple replace+title, 4 via
+    # COUNTRY_NAME_OVERRIDES. Pre-fix civil_war walk silently dropped 41
+    # multi-word events at panel lookup (256 → 192 effective N_pos).
+    # Civil_war DECISION stands as-ratified; this fix applies to walks from
+    # 2026-05-22 forward. See per-recipe-pre-reg/economic-recession-pre-reg.md §3.a.
     pos = pd.read_csv(args.positives_csv)
-    pos["country"] = pos["country_id"].str.replace("_", " ").str.title()
+    pos["country"] = pos["country_id"].apply(normalize_country_id)
     pos = pos.rename(columns={"event_year": "year"})
     pos["label"] = 1
     LOG.info("Positives: %d rows, %d unique countries", len(pos), pos["country"].nunique())
+
+    # Startup validation: surface any normalized country name that is missing
+    # from the parquet panels or cohort-assignments.json. Fail fast rather
+    # than silently dropping samples at feature-extraction time (the bug class
+    # discovered pre-walk-2 on 2026-05-22). At least one panel must contain
+    # the country for it to participate in LOCO; missing from cohort-assignments
+    # is non-fatal (the cohort gate excludes the sample but global LOCO still
+    # counts it).
+    pos_countries_for_check = set(pos["country"].unique())
+    sample_panel_path = next(args.panel_dir.iterdir())
+    sample_panel = pd.read_parquet(sample_panel_path / f"{sample_panel_path.name}.parquet")
+    panel_countries_in_sample = set(sample_panel["country"].dropna().unique())
+    missing_in_panel = pos_countries_for_check - panel_countries_in_sample
+    if missing_in_panel:
+        LOG.warning(
+            "Countries in positives.csv not found in sample panel %s — "
+            "feature extraction will fail for these and they will be "
+            "silently dropped (verify normalize_country_id covers them): %s",
+            sample_panel_path.name, sorted(missing_in_panel),
+        )
+    with open(args.cohort_sidecar, encoding="utf-8") as _f:
+        _cohort_keys_for_check = set(json.load(_f)["assignments"].keys())
+    missing_in_cohorts = pos_countries_for_check - _cohort_keys_for_check
+    if missing_in_cohorts:
+        LOG.warning(
+            "Countries in positives.csv not in cohort-assignments.json — "
+            "samples will count toward global LOCO but be excluded from "
+            "per-cohort gate evaluation: %s",
+            sorted(missing_in_cohorts),
+        )
 
     rng = np.random.default_rng(args.seed)
     pos_set = set(zip(pos["country"], pos["year"]))
@@ -1074,9 +1141,12 @@ def _main(argv: list[str] | None = None) -> int:
             "hybrid_baseline": hybrid_baseline,
             "lock_floor": lock_floor,
             "cohort_loco_floor": cohort_loco_floor,
-            "note": "Provenance details (Marcus M8-1 path-(a)/(b)/(c)) are in the "
-                    "per-recipe pre-reg markdown at "
-                    "qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/{recipe-id}-pre-reg.md",
+            "note": (
+                "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 §7 "
+                "(civil_war_and_insurgency / cascade-inherited) or "
+                "qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ "
+                "(other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+            ),
         },
         "global_loco": auc_ci,
         "per_cohort": per_cohort,
