@@ -45,6 +45,7 @@ from shape_kernel import compute_shape_features  # noqa: E402
 from shape_prototype_dispatch import (  # noqa: E402
     AdvisoryOnlyShapeUnfittableError,
     SubstrateInadequateError,
+    assert_dispatch_invariants,
     load_dispatch,
 )
 
@@ -412,38 +413,71 @@ def evaluate_recipe(
     loco_with = run_loco_lr(samples, use_shape=True)
     with_auc = bootstrap_loco_auc_ci(loco_with["probs"], loco_with["labels"])
 
-    # Ablation Δ (F-S-3): LOCO(with shape) - LOCO(without shape) on identical samples
+    # Ablation Δ (F-S-3): LOCO(with shape) − LOCO(without shape) on identical samples
     delta_ablation = with_auc["auc"] - without_auc["auc"]
 
-    # F-S-1 lift vs Hybrid baseline
+    # ----- F-S-1 lift -----
+    # Per-recipe lift evaluation. F-H-4-A5 narrows cohort to 2; the trio
+    # rule's strictest-defensible N=2 reading drops foreign_intervention to
+    # "not evaluated" and applies the original N=3 floors directly:
+    #   strict:  both LOCKED recipes >= +0.03
+    #   loose:   both LOCKED recipes >= +0.05 (was: 2-of-3; with 2 LOCKED, both)
+    # Per-recipe field returns the lift; cohort-level pass/fail is computed
+    # in determine_tier() (where both-must-clear logic lives).
     if recipe_id == "civil_war_and_insurgency":
         delta_hybrid_lift = with_auc["auc"] - HYBRID_BASELINE_CIVIL_WAR
-        f_s_1_threshold_used = "all_N_0.03_or_loose_0.05"
-        # Phase 1 trio rule: 2/3 must show ≥ 0.05 OR all 3 must show ≥ 0.03.
-        # With cohort = 2 (foreign_intervention ADVISORY-ONLY), interpret as:
-        # both must show ≥ 0.03 OR 1 of 2 must show ≥ 0.05.
-        f_s_1_pass_strict = delta_hybrid_lift >= F_S_1_PHASE1_LIFT_FLOOR_STRICT
-        f_s_1_pass_loose = delta_hybrid_lift >= F_S_1_PHASE1_LIFT_FLOOR_LOOSE
+        f_s_1_threshold_used = "strict_N=2_both_geq_0.03_or_both_geq_0.05"
+        f_s_1_per_recipe_strict = delta_hybrid_lift >= F_S_1_PHASE1_LIFT_FLOOR_STRICT
+        f_s_1_per_recipe_loose = delta_hybrid_lift >= F_S_1_PHASE1_LIFT_FLOOR_LOOSE
     elif recipe_id == ECON_RECESSION:
-        # Rescue mode: WITH-shape must clear LOCO ≥ 0.65 + CI lower > 0.50
+        # Rescue mode: WITH-shape must clear LOCO >= 0.65 + CI95 lower > 0.50
         f_s_1_rescue_loco = with_auc["auc"]
         f_s_1_rescue_ci_lower = with_auc["ci95_lo"]
-        delta_hybrid_lift = None  # no baseline
-        f_s_1_pass_strict = (
+        delta_hybrid_lift = None  # no Hybrid LOCK baseline for econ_recession
+        f_s_1_rescue_pass = (
             f_s_1_rescue_loco >= F_S_1_ECON_RECESSION_RESCUE_FLOOR
             and f_s_1_rescue_ci_lower > F_S_1_ECON_RECESSION_CI_LOWER
         )
-        f_s_1_pass_loose = f_s_1_pass_strict
-        f_s_1_threshold_used = "rescue_mode_LOCO_geq_0.65_CI_lower_gt_0.50"
+        f_s_1_per_recipe_strict = f_s_1_rescue_pass
+        f_s_1_per_recipe_loose = f_s_1_rescue_pass
+        f_s_1_threshold_used = "rescue_mode_LOCO_geq_0.65_AND_CI95_lower_gt_0.50"
 
-    # F-S-2 regression: WITH-shape must not regress below WITHOUT-shape
-    # by more than -0.03. (For civil_war this also compares against Hybrid.)
-    f_s_2_delta = delta_ablation
+    # ----- F-S-2 regression -----
+    # Phase 1 §5.3: "any single recipe with Δ < −0.03 = FAIL." The §5.3
+    # comparator phrasing in Phase 2 is "vs Hybrid baseline," so the
+    # strictest-defensible Phase 1 reading is also vs-Hybrid for recipes
+    # that HAVE a Hybrid LOCK. For econ_recession (no Hybrid LOCK),
+    # F-S-2 falls back to the ablation delta (with − without).
+    if recipe_id == "civil_war_and_insurgency":
+        f_s_2_delta = with_auc["auc"] - HYBRID_BASELINE_CIVIL_WAR
+        f_s_2_comparator = "with_shape_minus_hybrid_baseline"
+    else:
+        f_s_2_delta = delta_ablation
+        f_s_2_comparator = "with_shape_minus_without_shape_no_hybrid_lock"
     f_s_2_fail = f_s_2_delta < F_S_2_REGRESSION_FLOOR
 
-    # F-S-3 ablation: removal must degrade LOCO by ≥ 0.03
-    # i.e., ablation Δ (with - without) ≥ 0.03
-    f_s_3_contributes = delta_ablation >= F_S_3_ABLATION_FLOOR
+    # ----- F-S-3 ablation contribution -----
+    # Phase 1 §5.4: a recipe "contributes" if ablation Δ >= +0.03.
+    # Pre-reg exclusion gate: econ_recession contributes ONLY IF
+    # (ablation Δ >= +0.03) AND (WITH-shape clears F-S-1 rescue floor).
+    # Without the second clause, an ablation-positive-but-below-rescue
+    # recipe would be miscounted toward the F-S-3 majority.
+    base_contributes = delta_ablation >= F_S_3_ABLATION_FLOOR
+    if recipe_id == ECON_RECESSION:
+        # econ_recession exclusion gate per §5.4 special clause
+        f_s_3_contributes = base_contributes and f_s_1_per_recipe_strict
+        f_s_3_excluded_reason = (
+            None
+            if f_s_3_contributes
+            else (
+                "ablation-positive-but-below-rescue"
+                if base_contributes and not f_s_1_per_recipe_strict
+                else None
+            )
+        )
+    else:
+        f_s_3_contributes = base_contributes
+        f_s_3_excluded_reason = None
 
     # F-S-4 AHI: deferred for both recipes (anchor battery not run here)
     f_s_4_status = "deferred — anchor battery v3 measurement is a separate workstream"
@@ -468,17 +502,19 @@ def evaluate_recipe(
         "delta_vs_hybrid_baseline": delta_hybrid_lift,
         "f_s_1": {
             "threshold_used": f_s_1_threshold_used,
-            "pass_strict": bool(f_s_1_pass_strict),
-            "pass_loose": bool(f_s_1_pass_loose),
+            "per_recipe_pass_strict": bool(f_s_1_per_recipe_strict),
+            "per_recipe_pass_loose": bool(f_s_1_per_recipe_loose),
         },
         "f_s_2": {
-            "delta_with_minus_without": f_s_2_delta,
+            "delta": f_s_2_delta,
+            "comparator": f_s_2_comparator,
             "fail": bool(f_s_2_fail),
         },
         "f_s_3": {
             "ablation_delta": delta_ablation,
             "threshold": F_S_3_ABLATION_FLOOR,
             "contributes": bool(f_s_3_contributes),
+            "excluded_reason": f_s_3_excluded_reason,
         },
         "f_s_4": {
             "status": f_s_4_status,
@@ -507,27 +543,43 @@ def determine_tier(cohort_results: dict[str, Any]) -> dict[str, Any]:
             deltas.append(loco_with - 0.5)
     mean_delta = float(np.mean(deltas)) if deltas else float("nan")
 
-    # F-rule summary
-    f_s_1_pass = all(
-        cohort_results[rid]["f_s_1"]["pass_strict"] or cohort_results[rid]["f_s_1"]["pass_loose"]
+    # ----- F-S-1 cohort pass per strictest-defensible N=2 reading -----
+    # Original §5.2 N=3 rule: all 3 >= 0.03 OR 2 of 3 >= 0.05.
+    # With F-H-4-A5 dropping foreign_intervention, strictest reading:
+    # both LOCKED >= 0.03 OR both LOCKED >= 0.05 (i.e., the all-N branch
+    # of the original N=3 rule).
+    per_recipe_strict = [
+        cohort_results[rid]["f_s_1"]["per_recipe_pass_strict"]
         for rid in cohort_results
-    )
-    f_s_2_fail_any = any(cohort_results[rid]["f_s_2"]["fail"] for rid in cohort_results)
+    ]
+    per_recipe_loose = [
+        cohort_results[rid]["f_s_1"]["per_recipe_pass_loose"]
+        for rid in cohort_results
+    ]
+    f_s_1_pass = all(per_recipe_strict) or all(per_recipe_loose)
+    f_s_2_fail_count = sum(1 for rid in cohort_results if cohort_results[rid]["f_s_2"]["fail"])
+    f_s_2_fail_any = f_s_2_fail_count > 0
     f_s_3_contributors = sum(1 for rid in cohort_results if cohort_results[rid]["f_s_3"]["contributes"])
-    f_s_3_pass = f_s_3_contributors >= 1  # ≥ 1 of 2 contributes (Phase 1 trio scaling)
-    # F-S-4 deferred → treat as PASS for tier determination
+    f_s_3_pass = f_s_3_contributors >= 1
+    # F-S-4 deferred → treat as not-fail for tier determination
     f_s_4_status = "all_deferred"
 
-    # §5.6 binary routing
+    # §5.6 binary routing per Phase 1 wording
+    n_recipes = len(cohort_results)
     if not f_s_1_pass:
-        routing = "FALSIFIED (F-S-1 fails: no lift)"
+        routing = "FALSIFIED (F-S-1 fails: insufficient lift)"
     elif not f_s_3_pass:
         routing = "FALSIFIED (F-S-3 fails: decorative theater)"
-    elif f_s_2_fail_any and f_s_2_fail_any:
-        # PARTIAL: F-S-1 PASS + F-S-3 contributes + F-S-4 PASS (deferred=PASS) + F-S-2 exactly 1 of 2 regress
-        routing = "PARTIAL (F-S-2 regression but F-S-1/F-S-3/F-S-4 hold)"
-    else:
+    elif f_s_2_fail_count == 0:
         routing = "PASS (all F-rules hold)"
+    elif f_s_2_fail_count < n_recipes:
+        # PARTIAL: F-S-1 PASS + F-S-3 contributes + F-S-4 PASS-deferred + F-S-2 partial regression
+        routing = (
+            f"PARTIAL (F-S-2 regression in {f_s_2_fail_count}/{n_recipes} "
+            f"recipes; F-S-1/F-S-3 hold)"
+        )
+    else:
+        routing = "FALSIFIED (F-S-2 regresses in all recipes)"
 
     # §6.1 ΔAUC tier
     if mean_delta <= TIER_HARD_FALSIFY_LIFT_MAX:
@@ -595,6 +647,7 @@ def _main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
 
     dispatch = load_dispatch()
+    assert_dispatch_invariants(dispatch)
     cohort_assignments = json.loads(
         (REPO_ROOT.parent / "qgi-data" / "reference" / "cohort-assignments.json").read_text(
             encoding="utf-8"
