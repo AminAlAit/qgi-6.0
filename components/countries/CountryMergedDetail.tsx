@@ -1170,15 +1170,15 @@ function MlCoverageMatrix({
             <span>Architecture</span>
             <span
               className="text-right"
-              title="Discrimination (out-of-country): probability the recipe ranks a positive case above a negative one on countries never seen during training. 0.5 = chance, 1.0 = perfect."
+              title="Recipe-wide discrimination (out-of-country LOCO AUC): probability the recipe ranks a positive case above a negative one on countries never seen during training. 0.5 = chance, 1.0 = perfect. This is a model-level metric and is identical across countries that share the recipe. Per-country anchor stability is shown separately in the Anchor column. [R8-W4-Tomas-B3 / #861]"
             >
-              Discrim.
+              Recipe Discrim.
             </span>
             <span
               className="text-right"
-              title="Calibration error: average gap between predicted probability and observed frequency. 0 = perfectly calibrated; <0.02 target; >0.05 unreliable."
+              title="Recipe-wide calibration error (ECE): average gap between predicted probability and observed frequency. 0 = perfectly calibrated; <0.02 target; >0.05 unreliable. Recipe-level metric, identical across countries that share the recipe. [R8-W4-Tomas-B3 / #861]"
             >
-              Calibration
+              Recipe Calib.
             </span>
             <span
               className="text-right"
@@ -1448,15 +1448,36 @@ function StructuralPeers({
                         </li>
                       );
                     })}
-                    {breakdown.length > 5 && (
-                      <li
-                        className="text-[10px]"
-                        style={{ color: "var(--qgi-text-dim)" }}
-                      >
-                        + {breakdown.length - 5} more dimension
-                        {breakdown.length - 5 === 1 ? "" : "s"}
-                      </li>
-                    )}
+                    {breakdown.length > 5 &&
+                      (() => {
+                        // #858 (R8-W4-Rajesh-B3): include aggregate residual %
+                        // so the breakdown sums visibly to 100%, not 94%.
+                        const residual = breakdown
+                          .slice(5)
+                          .reduce((sum, b) => sum + b.contribution_pct, 0);
+                        return (
+                          <li
+                            className="flex items-center gap-2 text-[10px]"
+                            style={{ color: "var(--qgi-text-dim)" }}
+                          >
+                            <span
+                              className="inline-block w-1.5 h-1.5 rounded-full shrink-0"
+                              style={{ backgroundColor: "var(--qgi-text-dim)" }}
+                              aria-hidden="true"
+                            />
+                            <span className="flex-1 truncate">
+                              + {breakdown.length - 5} more dimension
+                              {breakdown.length - 5 === 1 ? "" : "s"}
+                            </span>
+                            <span
+                              className="font-data tabular-nums"
+                              style={{ color: "var(--qgi-text-dim)" }}
+                            >
+                              {residual}%
+                            </span>
+                          </li>
+                        );
+                      })()}
                   </ul>
                   <p
                     className="text-[10px] mt-2"

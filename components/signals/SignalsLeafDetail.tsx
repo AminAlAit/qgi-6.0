@@ -64,10 +64,16 @@ const TIER_META: Record<
 // Anchor stability — surfacing only the colored dot per Sipho's
 // quantity-belongs-to-tooltip rule. Internal MlStack uses categorical
 // status; we color-map without renaming the rung externally.
+// #857 (R8-W4-Rajesh-B2): added "measured" key — ml-recipe-stack.json emits
+// `anchor_ahi_status: "measured"` for countries with anchor evidence in the
+// LOCKed recipe set. Pre-fix, this fell to ANCHOR_DOT.unavailable (grey,
+// "Not yet measured") which contradicted the country-page's anchor stability
+// indicator on the same data. Aliased to the stable colour treatment.
 const ANCHOR_DOT: Record<string, { color: string; label: string }> = {
   stable: { color: "#22c55e", label: "Stable across resamples" },
-  caution: { color: "#fbbf24", label: "Caution — partial resample agreement" },
-  unstable: { color: "#f87171", label: "Unstable — low resample agreement" },
+  measured: { color: "#22c55e", label: "Anchor measured for this recipe" },
+  caution: { color: "#fbbf24", label: "Caution, partial resample agreement" },
+  unstable: { color: "#f87171", label: "Unstable, low resample agreement" },
   unavailable: { color: "#94a3b8", label: "Not yet measured for this recipe" },
 };
 

@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const decodedCategory = decodeURIComponent(category);
   if (!country || !isValidCategory(country, decodedCategory)) {
     return {
-      title: "Page not found — QGI Intelligence",
+      title: "Page not found · QGI Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -64,11 +64,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // T19 #312: per-page OG + canonical so each precedent detail page has
   // its own social preview (the right unit of shareability for analysts).
   return {
-    title: `${name} — ${catLabel} — QGI Intelligence`,
+    title: `${name} · ${catLabel} · QGI Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${name} — ${catLabel}`,
+      title: `${name} · ${catLabel}`,
       description,
       url: canonical,
       siteName: "QGI Intelligence",
@@ -76,7 +76,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} — ${catLabel}`,
+      title: `${name} · ${catLabel}`,
       description,
     },
   };

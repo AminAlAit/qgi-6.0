@@ -16,7 +16,7 @@ import type { Metadata } from "next";
  * noindex on metadata so Google doesn't surface a coming-soon page.
  */
 export const metadata: Metadata = {
-  title: "Sign in — QGI Intelligence",
+  title: "Sign in · QGI Intelligence",
   description: "Sign-in coming soon. Contact aminalait.de@gmail.com for early access.",
   robots: { index: false, follow: false },
 };

@@ -15,7 +15,7 @@ import type { Metadata } from "next";
  * residual crawl to the canonical URL.
  */
 export const metadata: Metadata = {
-  title: "Pattern Power Ranking — QGI Intelligence",
+  title: "Pattern Power Ranking · QGI Intelligence",
   description:
     "Legacy V1 pattern ranking leaderboard. V3 supersedes via /patterns with sortable query params.",
   alternates: { canonical: "/patterns" },

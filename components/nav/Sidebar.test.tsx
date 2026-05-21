@@ -52,21 +52,13 @@ describe("Sidebar", () => {
     }
   });
 
-  it("renders only LIVE chips (no PREVIEW labels after flat restructure)", () => {
+  it("renders no LIVE or PREVIEW chips (badge column removed per founder ask)", () => {
     render(<Sidebar />);
-    // All 5 entries are surfaced as LIVE in the new top-level. PREVIEW chips
-    // were attached to the V1/V2 sub-entries which no longer appear in nav.
-    expect(screen.getAllByText("LIVE").length).toBe(5);
+    // O2 (2026-05-22): with every entry LIVE post-cutover, the badge column
+    // served no informational purpose. NavChip rendering was removed from
+    // NavLeafLink + NavGroupSection. Both LIVE and PREVIEW labels should be
+    // absent from the rendered sidebar.
+    expect(screen.queryByText("LIVE")).not.toBeInTheDocument();
     expect(screen.queryByText("PREVIEW")).not.toBeInTheDocument();
-  });
-
-  it("LIVE chips carry a hover tooltip explaining the meaning (#790 Aisha R5)", () => {
-    render(<Sidebar />);
-    const liveChips = screen.getAllByText("LIVE");
-    // Every LIVE chip's `title` attribute is the explanation. Aisha (R5)
-    // flagged the badge as a meaningless design choice without it.
-    for (const chip of liveChips) {
-      expect(chip).toHaveAttribute("title", "Production route — current bake data.");
-    }
   });
 });

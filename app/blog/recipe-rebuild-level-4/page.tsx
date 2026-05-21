@@ -6,7 +6,7 @@ import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 // separately. Fallback in ArticleJsonLd is /og-default.png if file missing.
 
 export const metadata: Metadata = {
-  title: "What we mean when we say 'Recipe' — QGI Blog",
+  title: "What we mean when we say 'Recipe' · QGI Blog",
   description:
     "The word 'Recipe' on our methodology page has been doing more rhetorical work than the code. Here is the gap, why it opened, and what the V2.0 rebuild changes.",
   alternates: {

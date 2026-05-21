@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (raw && stack && stack.metadata.top_4_recipes.includes(raw.recipe_id)) {
     const buyer = toBuyerView(raw);
     return {
-      title: `${buyer.display_name} — QGI Intelligence`,
+      title: `${buyer.display_name} · QGI Intelligence`,
       description: `${buyer.display_name}: ${buyer.tier} tier (ML-adjudicated), out-of-country score ${buyer.loco_auc.toFixed(
         3
       )} (${buyer.n_pos_loco} held-out positive${
@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Non-LOCKed slug — PR-3 will turn this into a 301 redirect, but we
   // still need a metadata return value for the notFound() fallback.
   return {
-    title: "Page not found — QGI Intelligence",
+    title: "Page not found · QGI Intelligence",
     robots: { index: false, follow: false },
   };
 }

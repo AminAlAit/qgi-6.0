@@ -5,14 +5,14 @@ import PrintButton from "./PrintButton";
 // T19 #312: the most share-worthy page on the site — full OG + Article
 // JSON-LD added so journalists' link unfurls render a proper preview card.
 export const metadata: Metadata = {
-  title: "FSI Risk Analysis Report — QGI Intelligence",
+  title: "FSI Risk Analysis Report · QGI Intelligence",
   description:
     "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment across 126 countries and 2.01 billion computed patterns.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/fsi-qgi-report",
   },
   openGraph: {
-    title: "FSI Risk Analysis Report — QGI Intelligence",
+    title: "FSI Risk Analysis Report · QGI Intelligence",
     description:
       "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment across 126 countries.",
     url: "https://qgintelligence.com/reports/fsi-qgi-report",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "FSI Risk Analysis Report — QGI Intelligence",
+    title: "FSI Risk Analysis Report · QGI Intelligence",
     description:
       "QGI pattern analysis of FSI-flagged countries. Structural analogy assessment.",
   },
