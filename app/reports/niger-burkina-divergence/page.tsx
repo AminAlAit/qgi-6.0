@@ -278,7 +278,7 @@ export default function NigerBurkinaDivergenceReportPage() {
         url="https://qgintelligence.com/reports/niger-burkina-divergence"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/niger-burkina-divergence/opengraph-image"
-        author={{ type: "Person", name: "Daniel Mensah" }}
+        author={{ type: "Person", name: "Amin Al-Ait" }}
       />
 
       {/* Navbar */}
@@ -334,7 +334,7 @@ export default function NigerBurkinaDivergenceReportPage() {
             the AES Bloc
           </h1>
           <p className="text-xs mb-1" style={{ color: "var(--qgi-text-dim)" }}>
-            By Daniel Mensah · Scoring date: {BAKE_DATE} · QGI V1.9.1
+            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QGI V1.9.1
           </p>
           <p
             className="text-[11px] tracking-wide uppercase"
@@ -966,12 +966,10 @@ export default function NigerBurkinaDivergenceReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Daniel Mensah,
-            Senior Fellow at the Africa Center for Strategic Studies (Dakar). Mr Mensah
-            writes on West African structural risk and Sahel political economy. Salience
-            values cited from the {BAKE_DATE} V1.9.1 scoring run. This piece reports
-            structural pattern resemblance and historical-analogue comparison. It is not a
-            forecast.
+            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            &middot; Salience values cited from the {BAKE_DATE} V1.9.1 scoring run. This
+            piece reports structural pattern resemblance and historical-analogue
+            comparison. It is not a forecast.
           </p>
         </div>
       </article>

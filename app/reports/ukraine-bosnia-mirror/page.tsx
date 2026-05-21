@@ -266,7 +266,7 @@ export default function UkraineBosniaMirrorReportPage() {
         url="https://qgintelligence.com/reports/ukraine-bosnia-mirror"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/ukraine-bosnia-mirror/opengraph-image"
-        author={{ type: "Person", name: "Dmitri Volkov" }}
+        author={{ type: "Person", name: "Amin Al-Ait" }}
       />
 
       <header
@@ -319,7 +319,7 @@ export default function UkraineBosniaMirrorReportPage() {
             UKRAIN 2027
           </h1>
           <p className="text-xs mb-1" style={{ color: "var(--qgi-text-dim)" }}>
-            By Dmitri Volkov · Scoring date: {BAKE_DATE} · QGI V1.9.1
+            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QGI V1.9.1
           </p>
           <p
             className="text-[11px] tracking-wide uppercase"
@@ -811,13 +811,10 @@ export default function UkraineBosniaMirrorReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Dmitri Volkov,
-            Managing Director at Volkov Capital, an EM macro hedge fund focused on
-            sovereign credit structural theses. This piece is adapted from the fund&apos;s
-            May 2026 LP letter and represents the author&apos;s personal market view, not
-            investment advice. Scores cited from the {BAKE_DATE} V1.9.1 scoring run. This
-            piece reports structural pattern resemblance and historical-analogue
-            comparison. It is not a forecast.
+            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            &middot; Scores cited from the {BAKE_DATE} V1.9.1 scoring run. This piece
+            reports structural pattern resemblance and historical-analogue comparison. It
+            is not a forecast.
           </p>
         </div>
       </article>
