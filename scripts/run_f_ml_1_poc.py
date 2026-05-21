@@ -585,6 +585,30 @@ def per_cohort_loco_and_ece(
         for _ in range(500):
             ix = rng.integers(0, len(p), len(p))
             boots.append(compute_ece(p[ix], y[ix]))
+        # Reliability diagram bins (per Sonnet PR#90 B2 residual: was None;
+        # F-ML-1 §6 field 4 requires `reliability_diagram_bins` to be populated)
+        n_bins = 10
+        bin_edges = np.linspace(0.0, 1.0, n_bins + 1)
+        bin_idx = np.clip(np.digitize(p, bin_edges) - 1, 0, n_bins - 1)
+        reliability_bins = []
+        for b in range(n_bins):
+            mask = bin_idx == b
+            if mask.sum() == 0:
+                reliability_bins.append({
+                    "bin_lower": float(bin_edges[b]),
+                    "bin_upper": float(bin_edges[b + 1]),
+                    "n_in_bin": 0,
+                    "mean_predicted": None,
+                    "mean_actual": None,
+                })
+            else:
+                reliability_bins.append({
+                    "bin_lower": float(bin_edges[b]),
+                    "bin_upper": float(bin_edges[b + 1]),
+                    "n_in_bin": int(mask.sum()),
+                    "mean_predicted": float(p[mask].mean()),
+                    "mean_actual": float(y[mask].mean()),
+                })
         out[cohort] = {
             "n": int(len(p)),
             "loco_auc": float(cohort_auc) if not np.isnan(cohort_auc) else None,
@@ -592,6 +616,7 @@ def per_cohort_loco_and_ece(
             "ece_ci95_lo": float(np.percentile(boots, 2.5)),
             "ece_ci95_hi": float(np.percentile(boots, 97.5)),
             "low_confidence": len(p) < 30,
+            "reliability_diagram_bins": reliability_bins,
         }
     return out
 
@@ -928,7 +953,6 @@ def _main(argv: list[str] | None = None) -> int:
     # Descriptive emit (per §6 + Miriam M14-1)
     LOG.info("=== DESCRIPTIVE EMIT ===")
     if chosen_arch == "XGBoost":
-        feature_importances = list(final_xgb["per_country_auc"].values())  # placeholder
         # Re-fit one final XGBoost on full data to extract feature_importances_
         from xgboost import XGBClassifier
         X_all = np.where(np.isfinite(X), X, 0.0)
