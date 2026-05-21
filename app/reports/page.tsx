@@ -96,6 +96,87 @@ export default function ReportsPage() {
 
         {/* Report Cards */}
         <div className="space-y-6">
+          {/* R8 podium #1 — Daniel Mensah, Niger-Burkina divergence (2026-05-21) */}
+          <Link
+            href="/reports/niger-burkina-divergence"
+            className="block rounded-lg border p-6 transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Country Analysis · May 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              The Junta That Cannot Stay Isolated: Niger&apos;s Structural Divergence
+              Inside the AES Bloc
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              QGI places Niger at #4 of 58 on its Multilateral Agreement recipe at 94/100.
+              Its closest structural peer, Burkina Faso (95% cosine similarity at the L1
+              composite), sits at #57 with 2/100. The two AES juntas are on opposite
+              structural paths.
+            </p>
+          </Link>
+
+          {/* R8 podium #2 — Rajesh Iyer, India-Pakistan structural mirror (2026-05-21) */}
+          <Link
+            href="/reports/india-pakistan-mirror"
+            className="block rounded-lg border p-6 transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Country Analysis · May 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              India and Pakistan Are 99% the Same Risk, and Neither Risk Framework Wants
+              to Hear It
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              QGI places India and Pakistan at 99% cosine similarity, each other&apos;s #1
+              structural peer in the 156-country cohort. Civil War &amp; Insurgency recipe
+              fires on both with the same fingerprint. The convergence is recent, not
+              decades-embedded.
+            </p>
+          </Link>
+
+          {/* R8 podium #3 — Dmitri Volkov, Ukraine-Bosnia sovereign credit (2026-05-21) */}
+          <Link
+            href="/reports/ukraine-bosnia-mirror"
+            className="block rounded-lg border p-6 transition-colors hover:border-[var(--qgi-accent)]"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Sovereign Credit Note · May 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              Ukraine&apos;s Structural Mirror: What Bosnia 1996 Tells the Credit Desk
+              About UKRAIN 2027
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              QGI places Ukraine&apos;s closest structural twin at Bosnia and Herzegovina
+              (81% cosine, 16-point gap above the next-closest cluster at 65%). A
+              falsifiable structural-credit thesis: Multilateral Agreement crossing 70/100
+              is the entry trigger, 60/100 floor with no CI narrowing is the exit.
+            </p>
+          </Link>
+
           {/* Ghana report — elevated from /blog 2026-05-19 */}
           <Link
             href="/reports/ghana-mauritania-mirror"
@@ -117,9 +198,9 @@ export default function ReportsPage() {
             </h2>
             <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
               QGI places Ghana at the 99th percentile of global election-stress in its
-              April 2026 bake. Its closest structural peer is Mauritania at 99% cosine
-              similarity — not Mali, not Burkina Faso. What that structural resemblance
-              means for the six-month forward call.
+              April 2026 scoring run. Its closest structural peer is Mauritania at 99%
+              cosine similarity, not Mali, not Burkina Faso. What that structural
+              resemblance means for the six-month forward call.
             </p>
           </Link>
 
