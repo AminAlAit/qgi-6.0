@@ -172,12 +172,21 @@
         },
         "cascade_outcome": {
           "type": "string",
-          "enum": ["fit_locked", "advisory_only_shape_unfittable"],
-          "description": "F-H-4-A5 (qgi-docs 2026-05-20, 8-seat ratified 8/8 with Tariq + Marcus riders). Cascade disposition for the shape feature on this recipe. 'fit_locked' = shape prototype valid and locked (default; equivalent to pre-A5 implicit behavior). 'advisory_only_shape_unfittable' = §3.1.5 cascade exit clause invoked: §3.1.4 NUTS sampler gates failed after operational-tooling exhaustion (refit at target_accept=0.99 + advi+adapt_diag init + n_draws>=2000 per chain still failed R-hat or ESS). No shape prototype emitted; the recipe's cascade LOCK status is independent and unaffected. Optional for backward compatibility with pre-A5 emissions (loader treats absent value as 'fit_locked')."
+          "enum": ["fit_locked", "advisory_only_shape_unfittable", "phase_1_hard_falsified"],
+          "description": "F-H-4-A5 (qgi-docs 2026-05-20, 8-seat ratified) + stage-6-phase-1-closure-DECISION-2026-05-21 (8-seat ratified). Cascade disposition for the shape feature on this recipe. 'fit_locked' = shape prototype valid and locked (default). 'advisory_only_shape_unfittable' = §3.1.5 cascade exit clause invoked. 'phase_1_hard_falsified' = Stage 7 §6.1 HARD-FALSIFY routing: prototype is mathematically sound but the FEATURE derived from it failed F-S-1/F-S-3 + F-H-7 with margin; the production cascade reverts to ingredient+length-only. Future revival requires fresh pre-reg + fresh fit per F-Shape-1."
         },
         "advisory_only_reason": {
           "type": "string",
           "description": "F-H-4-A5: when cascade_outcome='advisory_only_shape_unfittable', the specific reason category. Currently the only enumerated reason is 'gp_fallback_nuts_gate_failure_after_operational_exhaustion'."
+        },
+        "falsification_mode": {
+          "type": "string",
+          "enum": ["baseline_regression", "below_chance_no_baseline"],
+          "description": "Marcus #8 R-M8-1 rider on stage-6-phase-1-closure-DECISION-2026-05-21. Required when cascade_outcome='phase_1_hard_falsified'. 'baseline_regression' = WITH-shape LOCO regresses below an existing Hybrid LOCK baseline (e.g., civil_war_and_insurgency vs Hybrid D2/D5 at 0.7686). 'below_chance_no_baseline' = WITH-shape LOCO operates below random (0.5) without a Hybrid LOCK baseline to compare against (e.g., economic_recession rescue-mode failure)."
+        },
+        "falsification_ref": {
+          "type": "string",
+          "description": "Marcus R-M8-1 rider: path to the binding DECISION artifact that ratified the falsification. Required when cascade_outcome='phase_1_hard_falsified'."
         },
         "nuts_gate_failure_diagnostics": {
           "type": "object",

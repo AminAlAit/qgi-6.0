@@ -6,9 +6,12 @@
     "stage_6": "e4f9e7a"
   },
   "metadata": {
-    "file_sha256": "9cc3ab92d9215497027abe807a57009dbed3fa83df9f1753c79989c91a603c7e",
+    "file_sha256": "5bf997bd28b29bad34276c532df5efdb2461b26b4a2f62ad058c5eef04808a20",
     "n_recipes_with_prototype": 2,
-    "n_recipes_substrate_inadequate": 0
+    "n_recipes_substrate_inadequate": 0,
+    "prototypes_advisory_only": true,
+    "revival_constraint": "fresh_fit_required_no_reuse_of_phase1_prototypes",
+    "ratification_provenance": "stage-6-phase-1-closure-DECISION-2026-05-21 (8/8 RATIFY)"
   },
   "recipes": {
     "civil_war_and_insurgency": {
@@ -160,7 +163,9 @@
         "n_post_warmup_draws": 4000,
         "divergence_rate": 0.00075
       },
-      "cascade_outcome": "fit_locked"
+      "cascade_outcome": "phase_1_hard_falsified",
+      "falsification_mode": "baseline_regression",
+      "falsification_ref": "qgi-docs/internal/decisions/stage-6-phase-1-closure-DECISION-2026-05-21.md"
     },
     "economic_recession": {
       "recipe_id": "economic_recession",
@@ -311,7 +316,9 @@
         "n_post_warmup_draws": 4000,
         "divergence_rate": 0.0
       },
-      "cascade_outcome": "fit_locked"
+      "cascade_outcome": "phase_1_hard_falsified",
+      "falsification_mode": "below_chance_no_baseline",
+      "falsification_ref": "qgi-docs/internal/decisions/stage-6-phase-1-closure-DECISION-2026-05-21.md"
     }
   },
   "amendments": [
