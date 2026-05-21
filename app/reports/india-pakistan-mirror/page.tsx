@@ -346,13 +346,13 @@ export default function IndiaPakistanMirrorReportPage() {
         >
           {/* Soft-landing intro */}
           <p>
-            Every risk framework I ever ran at ICICI Bank placed India and Pakistan at
-            opposite ends of the spectrum. India: investment grade, rising global power,
-            democratic consolidation, $3.5 trillion economy on a 6.5% growth trajectory.
-            Pakistan: IMF-dependent, hybrid civil-military governance, sovereign-default
-            flirtation in 2023, CCC+ rated. The two countries share a border, a colonial
-            partition, and two-thirds of their historical disputes; in the world of risk
-            pricing they inhabit different universes.
+            Conventional sovereign risk frameworks place India and Pakistan at opposite
+            ends of the spectrum. India: investment grade, rising global power, democratic
+            consolidation, $3.5 trillion economy on a 6.5% growth trajectory. Pakistan:
+            IMF-dependent, hybrid civil-military governance, sovereign-default flirtation
+            in 2023, CCC+ rated. The two countries share a border, a colonial partition,
+            and two-thirds of their historical disputes; in the world of risk pricing they
+            inhabit different universes.
           </p>
           <p>
             QGI Intelligence is a structural-precedent platform that runs across 156
@@ -392,9 +392,10 @@ export default function IndiaPakistanMirrorReportPage() {
             .
           </p>
           <p>
-            This is not a data error. I have spent considerable time interrogating it.
+            This is not a data error. The 99% match holds across QGI scoring run cycles
+            and survives the dimensional decomposition that follows.
           </p>
-          <p>What follows is the reading.</p>
+          <p>What follows is the structural reading.</p>
 
           {/* Section 1 */}
           <h2
@@ -541,13 +542,14 @@ export default function IndiaPakistanMirrorReportPage() {
             RBI Financial Stability Report assesses India&apos;s macro-prudential risk in
             isolation. Its CRAR stress tests treat the external environment through the
             lens of global commodity prices and capital flows, not through structural
-            geopolitical precedent comparison. ICICI Bank, where I spent 18 years, runs
-            country risk assessments on a V-Dem + WGI + S&amp;P sovereign composite
-            framework. None of these frameworks would produce the finding that India and
-            Pakistan are structural equivalents, because none of them are designed to ask
-            the question QGI asks: out of all 156 countries in the world right now, which
-            one&apos;s recent indicator trajectory most closely resembles yours across the
-            full set of dimensions that historically precede geopolitical stress?
+            geopolitical precedent comparison. Indian commercial banks run country risk
+            assessments on V-Dem + WGI + S&amp;P sovereign composite frameworks. None of
+            these frameworks would produce the finding that India and Pakistan are
+            structural equivalents, because none of them are designed to ask the question
+            QGI asks: out of all 156 countries in the world right now, which one&apos;s
+            recent indicator trajectory most closely resembles a given country&apos;s
+            across the full set of dimensions that historically precede geopolitical
+            stress?
           </p>
           <p>The answer, for India, is Pakistan. The answer, for Pakistan, is India.</p>
           <p>
