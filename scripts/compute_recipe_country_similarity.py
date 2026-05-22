@@ -382,20 +382,25 @@ def _main(argv: list[str] | None = None) -> int:
 
 
 def build_canonical_profile_from_walk(walk: dict, panels: dict[str, pd.DataFrame],
-                                       chosen_window: int, selected: list[str]) -> dict[str, np.ndarray]:
+                                       chosen_window: int, selected: list[str],
+                                       max_year: int | None = None) -> dict[str, np.ndarray]:
     """Build the canonical T_R[i, t] for each selected indicator.
 
     Per design v1: the recipe canonical profile is the AVERAGE z-scored trajectory
     across all positive instances at their event-year-minus-1.
 
-    This is what the walk's `ranked_trajectory_signature` field contains in the
-    `temporal_profile` array per Miriam M14-1 BINDING — but for full coverage
-    across ALL positives (not just top-5 audit samples), we recompute from positives.csv.
+    Per Sonnet PR#95 B2 (validation harness fix): `max_year` parameter enables
+    proper OOT holdout — when called from Validation 4, pass `max_year=2004` so
+    the canonical profile is derived from pre-2005 positives only and the 2005+
+    holdout positives are genuinely unseen. Production calls leave `max_year=None`
+    to use all positives.
     """
     recipe_id = walk["recipe_id"]
     pos = pd.read_csv(REPO_ROOT / "data" / "shape_inputs_v2" / recipe_id / "positives.csv")
     pos["country"] = pos["country_id"].apply(drv.normalize_country_id)
     pos = pos.rename(columns={"event_year": "year"})
+    if max_year is not None:
+        pos = pos[pos["year"] <= max_year]
 
     canonical: dict[str, np.ndarray] = {}
     for ind in selected:

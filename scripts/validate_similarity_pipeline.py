@@ -86,7 +86,10 @@ def validation_1_positive_recall(walk: dict, panels: dict, shap_weights: dict, r
     pos_set = set(zip(pos["country"].tolist(), pos["year"].tolist()))
 
     # Compute similarity at event-year-minus-1 for each positive
+    # Per Sonnet PR#95 B1 BLOCKING fix: explicitly skip incomplete-coverage samples
+    # (matches production path; prevents weight-renormalization inflation)
     pos_scores = []
+    n_pos_skipped_partial_coverage = 0
     for _, row in pos.iterrows():
         country = str(row["country"])
         eval_year = int(row["year"])  # event year (compute at event_year-1 via window pre-event)
@@ -94,7 +97,9 @@ def validation_1_positive_recall(walk: dict, panels: dict, shap_weights: dict, r
         country_traj = {ind: sim.extract_country_trajectory(panels[ind], country, eval_year, chosen_window,
                                                               ind_dist=z_dist[ind])
                         for ind in selected}
+        # B1 BLOCKING fix: require FULL indicator coverage; skip otherwise
         if any(t is None for t in country_traj.values()):
+            n_pos_skipped_partial_coverage += 1
             continue
         result = sim.compute_country_recipe_similarity(country_traj, recipe_canonical, shap_weights)
         pos_scores.append(result["risk_score"])
@@ -131,12 +136,14 @@ def validation_1_positive_recall(walk: dict, panels: dict, shap_weights: dict, r
     return {
         "name": "validation_1_positive_instance_recall",
         "n_positive_evaluated": len(pos_scores),
+        "n_positive_skipped_partial_coverage": n_pos_skipped_partial_coverage,
         "n_non_event_sampled": len(non_event_scores),
         "median_similarity_positive_at_eventY-1": pos_median,
         "median_similarity_non_event": non_event_median,
         "separation_percentile_points": separation,
         "hard_gate_threshold": V1_HARD_GATE_PERCENTILE_GAP,
         "hard_gate_pass": bool(hard_gate_pass),
+        "b1_fix_applied": "Sonnet PR#95 B1: partial-coverage samples explicitly skipped (no weight-renorm inflation)",
         "m8_r3_publication_anchor": (
             f"In the training panel, the median similarity score of countries one year before "
             f"{walk['recipe_id']} events was {pos_median:.1f}/100; the median for non-event "
@@ -288,16 +295,28 @@ def validation_4_oot_holdout(walk: dict, panels: dict, shap_weights: dict, recip
     holdout = pos[pos["year"] >= V4_OOT_SPLIT_YEAR]
     print(f"  OOT holdout split: {len(holdout)} positives at year >= {V4_OOT_SPLIT_YEAR} (of {len(pos)} total)")
 
+    # Per Sonnet PR#95 B2 BLOCKING fix: rebuild canonical profile from PRE-2005 positives only.
+    # The provided `recipe_canonical` was built from ALL positives (including 2005+), which would
+    # make the OOT holdout an in-sample check for those events and bias the gate result optimistically.
+    print(f"  Rebuilding canonical profile from PRE-{V4_OOT_SPLIT_YEAR} positives only (B2 fix)...")
+    recipe_canonical_oot = sim.build_canonical_profile_from_walk(
+        walk, panels, chosen_window, selected, max_year=V4_OOT_SPLIT_YEAR - 1
+    )
+
     scores = []
+    n_skipped = 0
     for _, row in holdout.iterrows():
         country = str(row["country"])
         event_year = int(row["year"])
         country_traj = {ind: sim.extract_country_trajectory(panels[ind], country, event_year, chosen_window,
                                                               ind_dist=z_dist[ind])
                         for ind in selected}
+        # B1 fix: require FULL indicator coverage for honest OOT recall computation
         if any(t is None for t in country_traj.values()):
+            n_skipped += 1
             continue
-        result = sim.compute_country_recipe_similarity(country_traj, recipe_canonical, shap_weights)
+        # B2 fix: use the OOT-isolated canonical profile (rebuilt above from pre-2005 only)
+        result = sim.compute_country_recipe_similarity(country_traj, recipe_canonical_oot, shap_weights)
         scores.append({
             "country": country,
             "event_year": event_year,
@@ -315,14 +334,22 @@ def validation_4_oot_holdout(walk: dict, panels: dict, shap_weights: dict, recip
         "name": "validation_4_oot_holdout",
         "oot_split_year": V4_OOT_SPLIT_YEAR,
         "n_holdout_positives": n_total,
+        "n_holdout_skipped_partial_coverage": n_skipped,
         "n_at_or_above_high_threshold": n_high,
         "high_threshold_value": HIGH_ZONE_THRESHOLD,
         "recall_at_high_threshold": recall,
         "hard_gate_threshold": V4_HARD_GATE_RECALL,
         "hard_gate_pass": bool(hard_gate_pass),
+        "b1_fix_applied": "Sonnet PR#95 B1: partial-coverage samples explicitly skipped",
+        "b2_fix_applied": (
+            f"Sonnet PR#95 B2: canonical profile rebuilt from pre-{V4_OOT_SPLIT_YEAR} positives only "
+            f"(was previously using all positives including 2005+, which made the OOT 'holdout' "
+            f"in-sample for those events and inflated the gate result optimistically). Genuine OOT."
+        ),
         "interpretation": (
             f"OOT holdout: {n_high}/{n_total} = {100*recall:.1f}% of held-out crisis countries "
-            f"had risk score >= {HIGH_ZONE_THRESHOLD} (HIGH zone) at event-year-minus-1. "
+            f"had risk score >= {HIGH_ZONE_THRESHOLD} (HIGH zone) at event-year-minus-1, scored "
+            f"against a canonical profile built ONLY from pre-{V4_OOT_SPLIT_YEAR} positives. "
             f"Hard gate threshold: {100*V4_HARD_GATE_RECALL:.0f}%. "
             f"{'PASS' if hard_gate_pass else 'FAIL'}."
         ),
