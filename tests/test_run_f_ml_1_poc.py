@@ -321,3 +321,118 @@ def test_cli_output_dir_required(tmp_path):
     parser = drv._build_parser()
     with _pytest.raises(SystemExit):
         parser.parse_args([])  # missing --output-dir
+
+
+def test_f_ml_n_amendment_no_active_mlp_trigger_constant():
+    """Per F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864, 8/8 ratified):
+    the §4.2 fold-variance MLP trigger is REMOVED. The legacy constant is
+    preserved as `MLP_FOLD_VARIANCE_TRIGGER_DEPRECATED` (archival only).
+    The active constant `MLP_FOLD_VARIANCE_TRIGGER` MUST NOT exist (any code
+    still referencing it would be a F-ML-N violation).
+    """
+    assert not hasattr(drv, "MLP_FOLD_VARIANCE_TRIGGER"), (
+        "MLP_FOLD_VARIANCE_TRIGGER must not be defined as an active constant "
+        "per F-ML-N §4.2 amendment 2026-05-22"
+    )
+    assert hasattr(drv, "MLP_FOLD_VARIANCE_TRIGGER_DEPRECATED"), (
+        "Legacy constant should be preserved for archival reference"
+    )
+    assert drv.MLP_FOLD_VARIANCE_TRIGGER_DEPRECATED == 0.05  # historical record
+
+
+def test_f_ml_n_amendment_no_mlp_routing_in_main():
+    """Per Tariq R-T20-A1 + Ji-Hoon ratification: the active code path MUST NOT
+    contain MLP routing logic under the amended §4.2. Specifically, the driver
+    must not call `fit_predict_loco` with architecture='MLP' as an automatic
+    swap target. Verified by source inspection: the legacy `trigger_mlp` and
+    `mlp_trigger_decision_ts` variables must be absent from `_main`.
+    """
+    import inspect
+    main_source = inspect.getsource(drv._main)
+    # No legacy variables
+    assert "trigger_mlp" not in main_source, (
+        "trigger_mlp must be removed from _main per F-ML-N amendment"
+    )
+    assert "mlp_trigger_decision_ts" not in main_source, (
+        "mlp_trigger_decision_ts must be removed per F-ML-N amendment"
+    )
+    # No automatic MLP architecture invocation in the LOCK-eval path
+    # (XGBoost re-fit for feature_importances is in the descriptive emit branch,
+    # not an architecture swap)
+    assert 'architecture="MLP"' not in main_source, (
+        "_main must not invoke architecture='MLP' as automatic swap per F-ML-N"
+    )
+
+
+def test_f_ml_n_stability_label_thresholds():
+    """Per F-ML-1 §4.2-SD: LOW (<0.04), MODERATE (0.04-0.10), HIGH (>0.10).
+
+    Per Sonnet PR#92 FU-3: this test exercises the DRIVER's `_stability_label`
+    helper directly, NOT a local re-implementation. If the driver's logic
+    drifts from the pre-reg, this test catches it."""
+    assert drv._stability_label(0.039) == "LOW"
+    assert drv._stability_label(0.0) == "LOW"
+    assert drv._stability_label(0.04) == "MODERATE"  # boundary: ≥0.04 → MODERATE
+    assert drv._stability_label(0.0656) == "MODERATE"  # econ_recession observed
+    assert drv._stability_label(0.0561) == "MODERATE"  # civil_war observed
+    assert drv._stability_label(0.10) == "MODERATE"  # boundary: ≤0.10 → MODERATE
+    assert drv._stability_label(0.11) == "HIGH"
+    assert drv._stability_label(0.20) == "HIGH"
+
+
+def test_f_ml_n_build_stability_diagnostic_complete():
+    """Per Kwame BLOCKING rider (mandatory §4.2-SD logging) + Sonnet PR#92
+    FU-1 (fold_auc_mean was missing) + FU-2 (need direct emit test): verify
+    `_build_stability_diagnostic` produces a dict with ALL 7 required fields
+    per §4.2-SD spec.
+    """
+    per_country = {"Algeria": 0.7, "Brazil": 0.6, "China": 0.8, "Iran": 0.5}
+    diag = drv._build_stability_diagnostic(per_country)
+    # §4.2-SD spec requires: per-fold AUC values, fold-AUC mean, fold-AUC
+    # variance, qualitative label.
+    assert "per_country_loco_auc" in diag  # item 1
+    assert "fold_auc_mean" in diag         # item 2 (was missing pre-FU-1)
+    assert "fold_variance" in diag         # item 3
+    assert "label" in diag                 # item 4
+    # Additional fields per the amendment artifact
+    assert diag["informational_only"] is True
+    assert "amendment_reference" in diag
+    assert diag["thresholds"] == {"LOW_upper": 0.04, "MODERATE_upper": 0.10}
+    # Value sanity
+    assert abs(diag["fold_auc_mean"] - 0.65) < 1e-9  # mean of [0.7, 0.6, 0.8, 0.5]
+    assert diag["fold_variance"] > 0
+    assert diag["label"] in {"LOW", "MODERATE", "HIGH"}
+    assert diag["per_country_loco_auc"] == {"Algeria": 0.7, "Brazil": 0.6, "China": 0.8, "Iran": 0.5}
+
+
+def test_f_ml_n_build_stability_diagnostic_edge_cases():
+    """Verify _build_stability_diagnostic handles edge cases without raising:
+    empty dict, single fold, NaN values."""
+    # Empty dict
+    diag = drv._build_stability_diagnostic({})
+    assert diag["fold_variance"] == 0.0
+    assert diag["label"] == "LOW"  # 0 < 0.04
+    # Single fold (variance undefined with n<2; fold_variance helper returns 0)
+    diag = drv._build_stability_diagnostic({"A": 0.7})
+    assert diag["fold_variance"] == 0.0
+    # NaN values are filtered
+    diag = drv._build_stability_diagnostic({"A": float("nan"), "B": 0.5, "C": 0.5})
+    assert diag["fold_variance"] == 0.0  # only 2 valid, both 0.5
+    assert diag["label"] == "LOW"
+
+
+def test_f_ml_n_amendment_main_uses_helpers():
+    """Per Sonnet PR#92 FU-3 follow-up: _main MUST call _build_stability_diagnostic,
+    not inline the diagnostic logic. This guards against future drift where a
+    refactor accidentally re-inlines the threshold logic away from the helper.
+    """
+    import inspect
+    main_source = inspect.getsource(drv._main)
+    assert "_build_stability_diagnostic" in main_source, (
+        "_main must call _build_stability_diagnostic helper per §4.2-SD"
+    )
+    # Inline label-threshold logic SHOULD NOT exist in _main (it lives in the
+    # helper). Heuristic check: no `stability_label = "LOW"` inline assignment.
+    assert 'stability_label = "LOW"' not in main_source, (
+        "Label thresholding must live in _stability_label helper, not inlined"
+    )
