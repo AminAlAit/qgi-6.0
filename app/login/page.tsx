@@ -17,7 +17,7 @@ import type { Metadata } from "next";
  */
 export const metadata: Metadata = {
   title: "Sign in · QG Intelligence",
-  description: "Sign-in coming soon. Contact aminalait.de@gmail.com for early access.",
+  description: "Sign-in coming soon. Contact amin@qgintelligence.com for early access.",
   robots: { index: false, follow: false },
 };
 
@@ -101,11 +101,11 @@ export default function LoginPage() {
         >
           Interested in early access for your team? Email{" "}
           <a
-            href="mailto:aminalait.de@gmail.com?subject=QGI%20Early%20Access"
+            href="mailto:amin@qgintelligence.com?subject=QGI%20Early%20Access"
             className="underline hover:text-[var(--qgi-accent)]"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            aminalait.de@gmail.com
+            amin@qgintelligence.com
           </a>
         </p>
 

@@ -157,14 +157,14 @@ export default function AboutPage() {
                 LinkedIn
               </a>
               <a
-                href="mailto:aminalait.de@gmail.com"
+                href="mailto:amin@qgintelligence.com"
                 className="inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium border transition-all hover:brightness-110"
                 style={{
                   borderColor: "var(--qgi-border)",
                   color: "var(--qgi-text)",
                 }}
               >
-                aminalait.de@gmail.com
+                amin@qgintelligence.com
               </a>
             </div>
           </div>
