@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 /**
- * QGI Landing Page — public, static.
+ * QGI Landing Page, public, static.
  *
  * Sections:
  * 1. Navbar
@@ -114,7 +114,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         tier: "HIGH",
         topCategory: "Civil War & Insurgency",
         precedents: 0,
-        signal: "Preview unavailable — pipeline output missing.",
+        signal: "Preview unavailable, pipeline output missing.",
       },
       {
         id: "212",
@@ -124,7 +124,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         tier: "HIGH",
         topCategory: "Civil War & Insurgency",
         precedents: 0,
-        signal: "Preview unavailable — pipeline output missing.",
+        signal: "Preview unavailable, pipeline output missing.",
       },
       {
         id: "1",
@@ -134,7 +134,7 @@ async function loadPreviewCountries(): Promise<PreviewCountry[]> {
         tier: "HIGH",
         topCategory: "Civil War & Insurgency",
         precedents: 0,
-        signal: "Preview unavailable — pipeline output missing.",
+        signal: "Preview unavailable, pipeline output missing.",
       },
     ];
   }
@@ -172,7 +172,7 @@ export default async function LandingPage() {
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       {/*
-       * #738 item 1 (2026-05-16) — WCAG 2.4.1 Bypass Blocks (level A).
+       * #738 item 1 (2026-05-16), WCAG 2.4.1 Bypass Blocks (level A).
        *
        * Pre-fix: the landing page had no `<main>` landmark and no skip
        * link. Keyboard users had to Tab through every nav link, hero
@@ -231,7 +231,7 @@ export default async function LandingPage() {
           {/* T14 #307 (2026-04-19) + #427 (2026-04-24): landing nav now
               uses a client component (LandingHeaderNav) with a real
               hamburger for mobile <md. Previous "hidden md:inline-flex"
-              hid Reports/Blog/Contact on mobile with no fallback — QA
+              hid Reports/Blog/Contact on mobile with no fallback, QA
               sweep 2026-04-24 caught this as the #1 mobile regression.
               Desktop markup is unchanged. */}
           <LandingHeaderNav />
@@ -438,7 +438,7 @@ export default async function LandingPage() {
                 label="Method"
                 value="Statistical"
                 unit="not editorial"
-                desc="Risk candidates emerge from correlation analysis and rank fusion — not from analyst opinion or curated country lists."
+                desc="Risk candidates emerge from correlation analysis and rank fusion, not from analyst opinion or curated country lists."
               />
               <Differentiator
                 label="Foundation"
@@ -494,7 +494,7 @@ export default async function LandingPage() {
               >
                 When a country&rsquo;s economic indicators today resemble the trajectory
                 of another country before a known geopolitical event, that is a precedent
-                worth examining — not a prediction, but a structured historical analogue
+                worth examining, not a prediction, but a structured historical analogue
                 that analysts can evaluate on its merits.
               </p>
               <p
@@ -522,7 +522,7 @@ export default async function LandingPage() {
               />
               <PrincipleCard
                 heading="Analysts examine evidence"
-                body="QGI surfaces candidates for human review. Each country profile shows which precedent countries triggered the signal and which economic indicators aligned — giving analysts the underlying data, not just a score."
+                body="QGI surfaces candidates for human review. Each country profile shows which precedent countries triggered the signal and which economic indicators aligned, giving analysts the underlying data, not just a score."
               />
               <PrincipleCard
                 heading="Continuously updated"
