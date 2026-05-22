@@ -30,21 +30,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = await resolveCountryBySlug(country);
   if (!c) {
     return {
-      title: "Page not found · QGI Intelligence",
+      title: "Page not found · QG Intelligence",
       robots: { index: false, follow: false },
     };
   }
   const description = `Active signals on ${c.name}: every Recipe currently firing, ranked by similarity to the historical fingerprint.`;
   const canonical = `https://qgintelligence.com/signals-v1/${country}`;
   return {
-    title: `${c.name} · Signals · QGI Intelligence`,
+    title: `${c.name} · Signals · QG Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
       title: `${c.name} · Signals`,
       description,
       url: canonical,
-      siteName: "QGI Intelligence",
+      siteName: "QG Intelligence",
       type: "website",
     },
     twitter: {

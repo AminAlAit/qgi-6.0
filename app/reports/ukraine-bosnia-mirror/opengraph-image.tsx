@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Ukraine's closest structural twin: Bosnia 1996 · 81% cosine · April 2026 scoring run · QGI Intelligence";
+  "Ukraine's closest structural twin: Bosnia 1996 · 81% cosine · April 2026 scoring run · QG Intelligence";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -52,7 +52,7 @@ export default function Image() {
           letterSpacing: "0.5px",
         }}
       >
-        QGI Intelligence · Top-5 cosine peers · April 2026 scoring run
+        QG Intelligence · Top-5 cosine peers · April 2026 scoring run
       </div>
 
       <div

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "Five risk domains firing simultaneously on Burkina Faso match the pre-crisis structural pattern of two historical analogues. What that resemblance does and does not mean.",
     url: "https://qgintelligence.com/blog/burkina-faso-mali-car-precedent",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: `${PUBLISH_DATE}T00:00:00Z`,
     images: [
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "QGI Intelligence — Quantitative Geopolitical Intelligence",
+        alt: "QG Intelligence — Quantitative Geopolitical Intelligence",
       },
     ],
   },
@@ -388,7 +388,7 @@ export default function BurkinaFasoPrecedentPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} · QGI Intelligence · Salience values cited from the{" "}
+            Published {PUBLISH_DATE} · QG Intelligence · Salience values cited from the{" "}
             {BAKE_DATE} V1.9.1 bake. Pattern matching against QGI&apos;s historical corpus
             is described on the methodology page; this piece reports a single observation
             and its two historical analogues. It is not a forecast.

@@ -15,16 +15,16 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Signals V2 (Tufte) · QGI Intelligence",
+  title: "Signals V2 (Tufte) · QG Intelligence",
   description:
     "Pick a country to view the top-4 LOCKed ML recipes against that country's context. Tufte variant; Lloyd's banner variant at /signals-v2b.",
   alternates: { canonical: "https://qgintelligence.com/signals-v2a" },
   openGraph: {
-    title: "Signals V2 (Tufte) · QGI Intelligence",
+    title: "Signals V2 (Tufte) · QG Intelligence",
     description:
       "Pick a country to view the top-4 LOCKed ML recipes against that country's context.",
     url: "https://qgintelligence.com/signals-v2a",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
   },
 };

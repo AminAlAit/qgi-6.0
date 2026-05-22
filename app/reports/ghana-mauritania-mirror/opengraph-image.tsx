@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Ghana vs Mauritania, 99% structural similarity · April 2026 scoring run · QGI Intelligence";
+  "Ghana vs Mauritania, 99% structural similarity · April 2026 scoring run · QG Intelligence";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -59,7 +59,7 @@ export default function Image() {
           letterSpacing: "0.5px",
         }}
       >
-        QGI Intelligence · Per-dimension L1 risk profile comparison
+        QG Intelligence · Per-dimension L1 risk profile comparison
       </div>
 
       {/* Chart area */}

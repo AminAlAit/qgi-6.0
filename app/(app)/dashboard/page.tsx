@@ -31,7 +31,7 @@ import { canonicalPairKey } from "@/lib/canonical-pair";
  *     consumer ever needs it)
  */
 export const metadata = {
-  title: "Dashboard · QGI Intelligence",
+  title: "Dashboard · QG Intelligence",
   description:
     "QGI command center. Consolidated view of countries, signals, patterns, and precedents — the front door to the deeper family pages.",
   // #699: explicit canonical (was inheriting "/" from root layout).

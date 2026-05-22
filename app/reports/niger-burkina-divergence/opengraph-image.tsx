@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Niger #4, Burkina Faso #57: structural divergence inside the AES bloc · April 2026 scoring run · QGI Intelligence";
+  "Niger #4, Burkina Faso #57: structural divergence inside the AES bloc · April 2026 scoring run · QG Intelligence";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,7 +49,7 @@ export default function Image() {
           letterSpacing: "0.5px",
         }}
       >
-        QGI Intelligence · Multilateral Agreement recipe · April 2026 scoring run
+        QG Intelligence · Multilateral Agreement recipe · April 2026 scoring run
       </div>
 
       <div
