@@ -26,10 +26,11 @@ for (const idx of indexData as {
   }
 }
 
-export const GET = withAuth(async (req: NextRequest, payload) => {
-  // #445: full per-pattern detail (SCDI breakdown + indicator time-series)
-  // is core IP. Gated to pro plan. In dev, set SKIP_AUTH_GROUPS=pro.
-  requireGroup(payload, "pro");
+export const GET = withAuth(async (req: NextRequest, _payload) => {
+  // #445 + 2026-05-22 (SCDI pager reinstatement): SCDI breakdown is public
+  // while SKIP_AUTH=true is the platform-wide setting (Vercel Hobby,
+  // pre-paywall). Re-add `requireGroup(_payload, "pro")` here when the pro
+  // plan is activated in Cognito and the paywall is turned on.
 
   const { searchParams } = req.nextUrl;
   const country_a = searchParams.get("country_a");
