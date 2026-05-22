@@ -25,18 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   ]);
   if (!c || !recipe) {
     return {
-      title: "Page not found — QGI Intelligence",
+      title: "Page not found · QGI Intelligence",
       robots: { index: false, follow: false },
     };
   }
   const canonical = `https://qgintelligence.com/signals-v2a/${country}/${slug}`;
   const buyer = toBuyerView(recipe);
   return {
-    title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte) — QGI Intelligence`,
+    title: `${c.name} · ${buyer.display_name} · V2 Signal (Tufte) · QGI Intelligence`,
     description: `${buyer.display_name} ML recipe context for ${c.name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (global). Tufte footnote variant.`,
     alternates: { canonical },
     openGraph: {
-      title: `${c.name} · ${buyer.display_name} — V2 Signal (Tufte)`,
+      title: `${c.name} · ${buyer.display_name} · V2 Signal (Tufte)`,
       description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArticleJsonLd } from "@/components/seo/ArticleJsonLd";
 
 export const metadata: Metadata = {
-  title: "Cross-country normalization meets the data — QGI Blog",
+  title: "Cross-country normalization meets the data · QGI Blog",
   description:
     "We proposed replacing per-country z-score normalization with a cross-country global approach. An Athena-backed simulation surfaced three problems. Here's the finding, and why we're shelving V1.9.2 until event-curation coverage grows.",
   alternates: {

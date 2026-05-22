@@ -30,7 +30,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Countries V2 — Narrative — QGI Intelligence",
+  title: "Countries V2 · Narrative · QGI Intelligence",
   robots: { index: false, follow: false },
 };
 

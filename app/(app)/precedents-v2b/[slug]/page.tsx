@@ -20,18 +20,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const recipe = await loadMlRecipeBySlug(slug);
   if (!recipe) {
     return {
-      title: "Page not found — QGI Intelligence",
+      title: "Page not found · QGI Intelligence",
       robots: { index: false, follow: false },
     };
   }
   const canonical = `https://qgintelligence.com/precedents-v2b/${slug}`;
   const buyer = toBuyerView(recipe);
   return {
-    title: `${buyer.display_name} — V2 Recipe (Lloyd's) — QGI Intelligence`,
+    title: `${buyer.display_name} · V2 Recipe (Lloyd's) · QGI Intelligence`,
     description: `${buyer.display_name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}). Buyer-disclosure tear-sheet with Lloyd's banner caveats.`,
     alternates: { canonical },
     openGraph: {
-      title: `${buyer.display_name} — V2 Recipe (Lloyd's)`,
+      title: `${buyer.display_name} · V2 Recipe (Lloyd's)`,
       description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
       siteName: "QGI Intelligence",

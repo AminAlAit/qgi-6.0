@@ -2,14 +2,14 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Reports — QGI Intelligence",
+  title: "Reports · QGI Intelligence",
   description:
     "Pre-computed analytical reports demonstrating QGI's risk analysis capabilities. Sample reports available for download.",
   alternates: {
     canonical: "https://qgintelligence.com/reports",
   },
   openGraph: {
-    title: "Reports — QGI Intelligence",
+    title: "Reports · QGI Intelligence",
     description:
       "Pre-computed analytical reports demonstrating QGI's risk analysis capabilities.",
     url: "https://qgintelligence.com/reports",

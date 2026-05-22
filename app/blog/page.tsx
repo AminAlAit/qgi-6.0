@@ -2,12 +2,12 @@ import type { Metadata, Route } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Blog — QGI Intelligence",
+  title: "Blog · QGI Intelligence",
   description:
     "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
   alternates: { canonical: "https://qgintelligence.com/blog" },
   openGraph: {
-    title: "Blog — QGI Intelligence",
+    title: "Blog · QGI Intelligence",
     description:
       "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
     url: "https://qgintelligence.com/blog",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "Blog — QGI Intelligence",
+    title: "Blog · QGI Intelligence",
     description: "Development notes on building QGI.",
   },
 };

@@ -16,12 +16,12 @@ import { getRciAggregate } from "@/lib/recipe-confidence";
 // T8 #301 + T19 #312: full openGraph + twitter + canonical. This is a
 // share-worthy page; previously it rendered a blank social preview card.
 export const metadata: Metadata = {
-  title: "Methodology — QGI Intelligence",
+  title: "Methodology · QGI Intelligence",
   description:
     "How QGI finds historical precedents in economic data to surface geopolitical risk candidates. Open-data foundation, statistical ensemble, calibration + ranking validation.",
   alternates: { canonical: "https://qgintelligence.com/methodology" },
   openGraph: {
-    title: "Methodology — QGI Intelligence",
+    title: "Methodology · QGI Intelligence",
     description:
       "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
     url: "https://qgintelligence.com/methodology",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Methodology — QGI Intelligence",
+    title: "Methodology · QGI Intelligence",
     description:
       "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
   },
@@ -624,7 +624,8 @@ export default async function MethodologyPage() {
                 have them again. QGI&apos;s value-add is detecting
                 <em> when the signal is changing</em> — not re-asserting the base rate.
                 For decision-theory applications that need calibrated probabilities,
-                persistence is currently stronger. V1.9 XGBoost targets AUPRC &gt; 0.55.
+                persistence is currently stronger. QGI&apos;s per-recipe ML models target
+                improved calibration as part of ongoing recipe validation work.
               </p>
             </div>
           </div>
@@ -632,8 +633,8 @@ export default async function MethodologyPage() {
           <p className="mt-5">
             <strong>When to use QGI vs persistence:</strong> use QGI for top-K analyst
             triage (&ldquo;which 50 countries deserve closer review this quarter?&rdquo;);
-            use persistence (or V1.9 once it ships) for calibrated probability estimates
-            in decision-theory pipelines.
+            use persistence for calibrated probability estimates in decision-theory
+            pipelines until QGI&apos;s per-recipe calibration work is complete.
           </p>
 
           {/* Per-category confidence — replaces the prior statistical-hygiene

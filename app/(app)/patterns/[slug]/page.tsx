@@ -120,11 +120,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const row = resolveBySlug(slug, rows);
   if (!row) {
     return {
-      title: "Pattern not found — QGI Intelligence",
+      title: "Pattern not found · QGI Intelligence",
     };
   }
   return {
-    title: `${row.country_a} → ${row.country_b} — Patterns — QGI Intelligence`,
+    title: `${row.country_a} → ${row.country_b} · Patterns · QGI Intelligence`,
     description: `Per-pattern detail for ${row.country_a} → ${row.country_b}: a ${row.pattern_length}-year window starting ${row.start_year_a} on ${row.num_indexes} shared indicators (avg correlation ${(row.avg_correlation * 100).toFixed(1)}%).`,
     // #699: explicit canonical.
     alternates: { canonical: `/patterns/${slug}` },

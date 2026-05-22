@@ -60,14 +60,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // #788 — if the slug is a category, the page handler will redirect.
     // Use a non-misleading title that doesn't crash the metadata.
     if (maybeCategoryRedirect(country)) {
-      return { title: "Signals — QGI Intelligence" };
+      return { title: "Signals · QGI Intelligence" };
     }
     return {
-      title: "Country not found — QGI Intelligence",
+      title: "Country not found · QGI Intelligence",
     };
   }
   return {
-    title: `What's firing on ${c.name} — Signals — QGI Intelligence`,
+    title: `What's firing on ${c.name} · Signals · QGI Intelligence`,
     description: `Per-country signals watchlist for ${c.name} — risk categories aggregated across all tier windows with lineage-aware vocabulary.`,
     // #699: explicit canonical.
     alternates: { canonical: `/signals/${country}` },
