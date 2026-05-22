@@ -28,7 +28,7 @@ const PUBLISH_DATE = "2026-05-21";
 export const metadata: Metadata = {
   title: "Ukraine's Structural Mirror: What Bosnia 1996 Tells the Credit Desk",
   description:
-    "QGI Intelligence identifies Bosnia and Herzegovina as Ukraine's #1 structural twin at 81% cosine similarity, categorically ahead of the next-closest peer cluster at 65%. A falsifiable structural-credit thesis.",
+    "QG Intelligence identifies Bosnia and Herzegovina as Ukraine's #1 structural twin at 81% cosine similarity, categorically ahead of the next-closest peer cluster at 65%. A falsifiable structural-credit thesis.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/ukraine-bosnia-mirror",
   },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "Ukraine's #1 structural twin at 81% cosine is Bosnia, categorically ahead of the 65% next-closest cluster. The Bilateral → Multilateral sequence is the trade.",
     url: "https://qgintelligence.com/reports/ukraine-bosnia-mirror",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: `${PUBLISH_DATE}T00:00:00Z`,
   },
@@ -365,8 +365,8 @@ export default function UkraineBosniaMirrorReportPage() {
             structural indicators, looks most like Ukraine in April 2026.
           </p>
           <p>
-            According to QGI Intelligence&apos;s <Fn n={1}>April 2026 scoring run</Fn>,
-            the answer is{" "}
+            According to QG Intelligence&apos;s <Fn n={1}>April 2026 scoring run</Fn>, the
+            answer is{" "}
             <Link
               href={"/countries/bosnia_and_herzegovina" as Route}
               className="underline underline-offset-2"
@@ -811,7 +811,7 @@ export default function UkraineBosniaMirrorReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            Published {PUBLISH_DATE} &middot; QG Intelligence &middot; By Amin Al-Ait
             &middot; Scores cited from the {BAKE_DATE} V1.9.1 scoring run. This piece
             reports structural pattern resemblance and historical-analogue comparison. It
             is not a forecast.

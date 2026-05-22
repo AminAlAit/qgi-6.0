@@ -48,7 +48,7 @@ import {
  */
 
 export const metadata: Metadata = {
-  title: "Patterns · QGI Intelligence",
+  title: "Patterns · QG Intelligence",
   description:
     "Country-pair pattern instances aggregated across 156 countries × 13 locked recipes × 60 years of data.",
   // #699: explicit canonical (was inheriting "/" from root layout).

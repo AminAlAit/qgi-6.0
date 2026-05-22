@@ -41,14 +41,15 @@ export const TOTAL_COUNTRIES = 214;
  * Subset of the catalog (TOTAL_INDICATOR_CATALOG) — the rest are awaiting
  * ingestion, normalization, or re-validation.
  */
-export const TOTAL_INDICATORS = 58;
+export const TOTAL_INDICATORS = 104;
 
 /**
- * Total indicators in the catalog (69 World Bank + 5 FAO Food Security).
- * V-Dem, UCDP, GDELT on the roadmap. Use this number when describing
- * the data foundation — NOT for "what's actively in scoring."
+ * Total indicators in the catalog. Founder-confirmed 2026-05-22: the
+ * pipeline actively scores 104 indicators (was 58 in earlier vintage).
+ * Catalog must be at least the scored count; keeping equal until a
+ * fresh audit produces a verified larger total.
  */
-export const TOTAL_INDICATOR_CATALOG = 74;
+export const TOTAL_INDICATOR_CATALOG = 104;
 
 /**
  * UN-recognized states. Constant scope descriptor — appears in marketing

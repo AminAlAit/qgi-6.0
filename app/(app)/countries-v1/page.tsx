@@ -13,22 +13,22 @@ export const revalidate = 3600;
 // T19 #312: add canonical + openGraph so /countries has a proper social
 // preview rather than inheriting the root layout defaults.
 export const metadata: Metadata = {
-  title: "Countries · QGI Intelligence",
+  title: "Countries · QG Intelligence",
   description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,
   // #699: canonical points to V3 counterpart; explicit noindex (defense in
   // depth atop robots.ts Disallow).
   alternates: { canonical: "/countries" },
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Countries · QGI Intelligence",
+    title: "Countries · QG Intelligence",
     description: `Browse country risk profiles powered by historical precedent analysis across ${TOTAL_COUNTRIES} countries.`,
     url: "https://qgintelligence.com/countries-v1",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Countries · QGI Intelligence",
+    title: "Countries · QG Intelligence",
     description: "Browse country risk profiles powered by historical precedent analysis.",
   },
 };

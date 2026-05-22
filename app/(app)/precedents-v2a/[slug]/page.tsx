@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const recipe = await loadMlRecipeBySlug(slug);
   if (!recipe) {
     return {
-      title: "Page not found · QGI Intelligence",
+      title: "Page not found · QG Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -32,14 +32,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // Transform once for metadata strings (buyer-clean architecture label).
   const buyer = toBuyerView(recipe);
   return {
-    title: `${buyer.display_name} · V2 Recipe (Tufte) · QGI Intelligence`,
+    title: `${buyer.display_name} · V2 Recipe (Tufte) · QG Intelligence`,
     description: `${buyer.display_name}: ${buyer.tier} tier, out-of-country score ${buyer.loco_auc.toFixed(3)} (${buyer.n_pos_loco} held-out positive${buyer.n_pos_loco === 1 ? "" : "s"}). Buyer-disclosure tear-sheet with Tufte footnote caveats.`,
     alternates: { canonical },
     openGraph: {
       title: `${buyer.display_name} · V2 Recipe (Tufte)`,
       description: `${buyer.tier} tier · ${buyer.architecture_label} · out-of-country score ${buyer.loco_auc.toFixed(3)}.`,
       url: canonical,
-      siteName: "QGI Intelligence",
+      siteName: "QG Intelligence",
       type: "article",
     },
   };

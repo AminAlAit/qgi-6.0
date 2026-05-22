@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     description:
       "The word 'Recipe' on our methodology page has been doing more rhetorical work than the code. Here is the gap, why it opened, and what the V2.0 rebuild changes.",
     url: "https://qgintelligence.com/blog/recipe-rebuild-level-4",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: "2026-04-26T00:00:00Z",
     images: [

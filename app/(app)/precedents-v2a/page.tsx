@@ -15,16 +15,16 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Precedents V2 (Tufte) · QGI Intelligence",
+  title: "Precedents V2 (Tufte) · QG Intelligence",
   description:
     "Top-4 ML-derived precedent recipes with footnote-style buyer-disclosure caveats. Tufte variant of the V2 precedents browser; Lloyd's banner variant at /precedents-v2b.",
   alternates: { canonical: "https://qgintelligence.com/precedents-v2a" },
   openGraph: {
-    title: "Precedents V2 (Tufte) · QGI Intelligence",
+    title: "Precedents V2 (Tufte) · QG Intelligence",
     description:
       "Top-4 ML-derived precedent recipes with footnote-style buyer-disclosure caveats.",
     url: "https://qgintelligence.com/precedents-v2a",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
   },
 };
