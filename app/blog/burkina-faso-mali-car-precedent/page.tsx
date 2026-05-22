@@ -44,7 +44,7 @@ export const metadata: Metadata = {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "QG Intelligence — Quantitative Geopolitical Intelligence",
+        alt: "QG Intelligence · Quantitative Geopolitical Intelligence",
       },
     ],
   },
