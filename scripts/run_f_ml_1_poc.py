@@ -435,6 +435,44 @@ def fit_predict_loco(
     }
 
 
+def _stability_label(fv: float) -> str:
+    """Per F-ML-1 §4.2-SD: LOW (σ² < 0.04), MODERATE (0.04 ≤ σ² ≤ 0.10),
+    HIGH (σ² > 0.10). Extracted as a named helper so tests can verify the
+    driver's own thresholding logic directly (per Sonnet PR#92 FU-3)."""
+    if fv < 0.04:
+        return "LOW"
+    elif fv <= 0.10:
+        return "MODERATE"
+    else:
+        return "HIGH"
+
+
+def _build_stability_diagnostic(per_country_auc: dict[str, float]) -> dict[str, Any]:
+    """Per F-ML-1 §4.2-SD: compute the informational stability diagnostic
+    emitted on every walk under the F-ML-N amendment.
+
+    §4.2-SD requires logging: (1) per-fold AUC values, (2) fold-AUC mean,
+    (3) fold-AUC variance, (4) qualitative label. Extracted as a helper so
+    tests can verify it directly (per Sonnet PR#92 FU-2 + FU-3).
+    """
+    aucs = np.array(list(per_country_auc.values()))
+    aucs = aucs[~np.isnan(aucs)]
+    fv = float(np.var(aucs)) if len(aucs) >= 2 else 0.0
+    fold_auc_mean = float(np.mean(aucs)) if len(aucs) >= 1 else float("nan")
+    return {
+        "fold_variance": fv,
+        "fold_auc_mean": fold_auc_mean,
+        "label": _stability_label(fv),
+        "per_country_loco_auc": {k: float(v) for k, v in per_country_auc.items()},
+        "thresholds": {"LOW_upper": 0.04, "MODERATE_upper": 0.10},
+        "informational_only": True,
+        "amendment_reference": (
+            "F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864); see "
+            "qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md"
+        ),
+    }
+
+
 def fold_variance(per_country_auc: dict[str, float]) -> float:
     """Per Ji-Hoon R1: variance of per-country LOCO-AUC."""
     aucs = np.array(list(per_country_auc.values()))
@@ -1031,23 +1069,11 @@ def _main(argv: list[str] | None = None) -> int:
     # HIGH variance MAY be cited as contextual evidence in support of a future
     # F-ML-N+1 amendment, which requires its own prior-walk provenance + 8/8
     # ratification INDEPENDENT of this §4.2-SD signal.
-    fv = fold_variance(final["per_country_auc"])
-    if fv < 0.04:
-        stability_label = "LOW"
-    elif fv <= 0.10:
-        stability_label = "MODERATE"
-    else:
-        stability_label = "HIGH"
-    LOG.info("§4.2-SD diagnostic: fold-variance=%.4f, label=%s (informational only; does NOT gate architecture)",
-             fv, stability_label)
-    stability_diagnostic = {
-        "fold_variance": float(fv),
-        "label": stability_label,
-        "per_country_loco_auc": {k: float(v) for k, v in final["per_country_auc"].items()},
-        "thresholds": {"LOW_upper": 0.04, "MODERATE_upper": 0.10},
-        "informational_only": True,
-        "amendment_reference": "F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md",
-    }
+    stability_diagnostic = _build_stability_diagnostic(final["per_country_auc"])
+    fv = stability_diagnostic["fold_variance"]
+    LOG.info("§4.2-SD diagnostic: fold-variance=%.4f, fold-AUC mean=%.4f, label=%s "
+             "(informational only; does NOT gate architecture)",
+             fv, stability_diagnostic["fold_auc_mean"], stability_diagnostic["label"])
 
     # LOCK gate eval
     lock_gate_eval_ts = datetime.now(timezone.utc).isoformat()
@@ -1195,7 +1221,8 @@ def _main(argv: list[str] | None = None) -> int:
             "top_n_indicators": top_n_inds,
         },
         "greedy_outer_loop": greedy,
-        "fold_variance": float(fv),
+        # Note: top-level "fold_variance" removed per Sonnet PR#92 FU-1.
+        # Canonical location is `stability_diagnostic.fold_variance` (§4.2-SD).
         "descriptive_emit": descriptive,
         "window_search_auxiliary_note": window_aux,
     }
