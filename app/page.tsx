@@ -272,14 +272,14 @@ export default async function LandingPage() {
             </p>
             <div className="mt-8 flex items-center gap-4">
               <Link
-                href="/countries"
+                href="/dashboard"
                 className="px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
                 style={{
                   backgroundColor: "var(--qgi-accent)",
                   color: "var(--qgi-bg)",
                 }}
               >
-                Explore Countries
+                Open Dashboard
               </Link>
               <a
                 href="#how-it-works"
