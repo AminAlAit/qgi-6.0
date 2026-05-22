@@ -24,7 +24,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Discover Patterns · V2 Facets · QGI Intelligence",
+  title: "Discover Patterns · V2 Facets · QG Intelligence",
   robots: { index: false, follow: false },
 };
 

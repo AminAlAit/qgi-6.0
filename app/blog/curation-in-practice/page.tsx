@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Three countries, three different failure modes, one afternoon of curation. What quality curation actually looks like.",
     url: "https://qgintelligence.com/blog/curation-in-practice",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: "2026-04-24T00:00:00Z",
   },

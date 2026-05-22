@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Searchable table of every verified event in QGI's data lake, with public source URLs.",
     url: "https://qgintelligence.com/methodology/events",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
   },
 };

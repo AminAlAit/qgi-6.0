@@ -43,7 +43,7 @@ const PUBLISH_DATE = "2026-05-21";
 export const metadata: Metadata = {
   title: "Niger's Structural Divergence from Burkina Faso Inside the AES Bloc",
   description:
-    "QGI Intelligence places Niger #4 of 58 on its Multilateral Agreement recipe at 94/100. Its closest structural peer Burkina Faso sits at #57 with 2/100. The two AES juntas are on opposite structural paths.",
+    "QG Intelligence places Niger #4 of 58 on its Multilateral Agreement recipe at 94/100. Its closest structural peer Burkina Faso sits at #57 with 2/100. The two AES juntas are on opposite structural paths.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/niger-burkina-divergence",
   },
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
     description:
       "Niger and Burkina Faso are 95% cosine peers. On QGI's Multilateral Agreement recipe, Niger ranks #4 of 58; Burkina Faso #57. The structural divergence the AES frame misses.",
     url: "https://qgintelligence.com/reports/niger-burkina-divergence",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: `${PUBLISH_DATE}T00:00:00Z`,
   },
@@ -372,7 +372,7 @@ export default function NigerBurkinaDivergenceReportPage() {
             states as one analytical unit.
           </p>
           <p>
-            QGI Intelligence is a system that searches for structural resemblance between
+            QG Intelligence is a system that searches for structural resemblance between
             countries&apos; indicator trajectories and historical precedents, running the
             numbers across 156 countries and hundreds of governance, economic, and
             security indicators to surface patterns that conventional regional analysis
@@ -966,7 +966,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            Published {PUBLISH_DATE} &middot; QG Intelligence &middot; By Amin Al-Ait
             &middot; Salience values cited from the {BAKE_DATE} V1.9.1 scoring run. This
             piece reports structural pattern resemblance and historical-analogue
             comparison. It is not a forecast.

@@ -52,13 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // #452: an unresolved slug (e.g. /countries/zzznonexistent or
   // /countries/cape-verde when Cape Verde isn't in the V1.9.1 89-country
   // dataset) used to render a head title of "Country #zzznonexistent —
-  // QGI Intelligence" — slug literally reflected into the title. The
+  // QG Intelligence" — slug literally reflected into the title. The
   // body fix in #426 didn't cover the metadata path. Return a generic
   // not-found title + noindex so search engines don't index the
   // not-found page under the slug-shaped URL.
   if (!country) {
     return {
-      title: "Page not found · QGI Intelligence",
+      title: "Page not found · QG Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -69,19 +69,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // are share-worthy and indexable as distinct pages (prior metadata only
   // had title + description, so every country shared the root OG card).
   return {
-    title: `${name} · QGI Intelligence`,
+    title: `${name} · QG Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${name} · QGI Intelligence`,
+      title: `${name} · QG Intelligence`,
       description,
       url: canonical,
-      siteName: "QGI Intelligence",
+      siteName: "QG Intelligence",
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} · QGI Intelligence`,
+      title: `${name} · QG Intelligence`,
       description,
     },
   };

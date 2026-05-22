@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "India and Pakistan: 99% structural mirror · April 2026 scoring run · QGI Intelligence";
+  "India and Pakistan: 99% structural mirror · April 2026 scoring run · QG Intelligence";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -53,7 +53,7 @@ export default function Image() {
           letterSpacing: "0.5px",
         }}
       >
-        QGI Intelligence · Cosine decomposition · April 2026 scoring run
+        QG Intelligence · Cosine decomposition · April 2026 scoring run
       </div>
 
       <div

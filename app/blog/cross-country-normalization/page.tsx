@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "We proposed a structural calibration rewrite. An Athena-backed simulation surfaced three problems before we shipped. Here's what we found.",
     url: "https://qgintelligence.com/blog/cross-country-normalization",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: "2026-04-22T00:00:00Z",
   },

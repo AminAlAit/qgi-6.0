@@ -64,12 +64,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = await resolveCountryBySlug(country).catch(() => null);
   if (!c) {
     return {
-      title: "Signal not found · QGI Intelligence",
+      title: "Signal not found · QG Intelligence",
     };
   }
   const display = displayNameFor(slug);
   return {
-    title: `${c.name} · ${display} · Signals · QGI Intelligence`,
+    title: `${c.name} · ${display} · Signals · QG Intelligence`,
     description: `Per-country, per-recipe signal leaf for ${c.name} on ${display}.`,
     // #699: explicit canonical.
     alternates: { canonical: `/signals/${country}/${slug}` },
