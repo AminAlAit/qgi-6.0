@@ -549,7 +549,6 @@ function NavLeafLink({
   label,
   href,
   icon,
-  badge,
   pathname,
   onClick,
 }: {
@@ -574,7 +573,6 @@ function NavLeafLink({
     >
       <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
       <span className="flex-1 uppercase">{label}</span>
-      <NavChip badge={badge} />
     </Link>
   );
 }
@@ -621,7 +619,6 @@ function NavGroupSection({
               }}
             >
               <span className="flex-1 truncate">{item.label}</span>
-              <NavChip badge={item.badge} />
             </Link>
           );
         })}

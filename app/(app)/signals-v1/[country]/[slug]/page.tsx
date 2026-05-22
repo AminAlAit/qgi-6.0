@@ -140,7 +140,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const c = await resolveCountryBySlug(country);
   if (!c || !(slug in CATEGORY_L1_MAP)) {
     return {
-      title: "Page not found — QGI Intelligence",
+      title: "Page not found · QGI Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -148,11 +148,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = `${c.name}'s trajectory match against the canonical ${label} Recipe — similarity score, fingerprint indicators, and historical analogues.`;
   const canonical = `https://qgintelligence.com/signals-v1/${country}/${slug}`;
   return {
-    title: `${c.name} — ${label} Signal — QGI Intelligence`,
+    title: `${c.name} · ${label} Signal · QGI Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
-      title: `${c.name} — ${label} Signal`,
+      title: `${c.name} · ${label} Signal`,
       description,
       url: canonical,
       siteName: "QGI Intelligence",
@@ -160,7 +160,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${c.name} — ${label} Signal`,
+      title: `${c.name} · ${label} Signal`,
       description,
     },
   };

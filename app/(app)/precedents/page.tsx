@@ -25,7 +25,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Precedents — QGI Intelligence",
+  title: "Precedents · QGI Intelligence",
   description:
     "The recipes the model can predict above chance — each adjudicated end-to-end through blind walk-forward backtest, calibration audit, and the four-pillar lock rubric.",
   alternates: { canonical: "/precedents" },

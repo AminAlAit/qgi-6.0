@@ -28,7 +28,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Discover Patterns — V2 Tabs — QGI Intelligence",
+  title: "Discover Patterns · V2 Tabs · QGI Intelligence",
   robots: { index: false, follow: false },
 };
 
