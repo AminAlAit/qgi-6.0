@@ -16,28 +16,28 @@ import { getRciAggregate } from "@/lib/recipe-confidence";
 // T8 #301 + T19 #312: full openGraph + twitter + canonical. This is a
 // share-worthy page; previously it rendered a blank social preview card.
 export const metadata: Metadata = {
-  title: "Methodology · QGI Intelligence",
+  title: "Methodology · QG Intelligence",
   description:
     "How QGI finds historical precedents in economic data to surface geopolitical risk candidates. Open-data foundation, statistical ensemble, calibration + ranking validation.",
   alternates: { canonical: "https://qgintelligence.com/methodology" },
   openGraph: {
-    title: "Methodology · QGI Intelligence",
+    title: "Methodology · QG Intelligence",
     description:
       "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
     url: "https://qgintelligence.com/methodology",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Methodology · QGI Intelligence",
+    title: "Methodology · QG Intelligence",
     description:
       "How QGI finds historical precedents in economic data to surface geopolitical risk candidates.",
   },
 };
 
 /**
- * Public methodology page — no auth required.
+ * Public methodology page, no auth required.
  * Critical for credibility (every user persona asks for it).
  *
  * Per #482 vague-public framing: the per-category confidence section
@@ -112,7 +112,7 @@ export default async function MethodologyPage() {
           </p>
         </div>
 
-        {/* Stat cards — concrete numbers up-front (replaces brochure feel) */}
+        {/* Stat cards, concrete numbers up-front (replaces brochure feel) */}
         <StatCards />
 
         {/* What is a scoring run? Added V2 (2026-05-19), anchor renamed from what-is-a-bake */}
@@ -146,7 +146,7 @@ export default async function MethodologyPage() {
           </p>
         </div>
 
-        {/* Glossary with inline visuals — 5 core terms, non-collapsed.
+        {/* Glossary with inline visuals, 5 core terms, non-collapsed.
             Operational terms (Length Tier, Risk Tier, Salience, Rank Fusion,
             Pattern Depth) live in the collapsible block below for readers
             who want to drill in. */}
@@ -188,7 +188,7 @@ export default async function MethodologyPage() {
                 <strong>S</strong> = 3–8 years (policy cycles, shocks); <strong>M</strong>{" "}
                 = 9–20 years (leadership eras); <strong>L</strong> = 21–40 years
                 (structural shifts); <strong>XL</strong> = 41+ years (civilizational
-                parallels). Severity-agnostic — describes window length only.
+                parallels). Severity-agnostic, describes window length only.
               </dd>
             </div>
             <div>
@@ -250,8 +250,8 @@ export default async function MethodologyPage() {
           <p>
             Countries often walk the same economic path, just at different times. When
             Country A&apos;s economic trajectory today mirrors Country B&apos;s trajectory
-            from years ago — and Country B subsequently experienced a significant
-            geopolitical event — QGI flags that as a precedent worth examining.
+            from years ago, and Country B subsequently experienced a significant
+            geopolitical event, QGI flags that as a precedent worth examining.
           </p>
           <p>
             QGI does not predict the future. It identifies structural similarities between
@@ -312,11 +312,11 @@ export default async function MethodologyPage() {
           </p>
           <DataBox>
             14 historical precedent windows, 11 preceded fiscal_policy_change in analogous
-            economies — this is what QGI shows, not a probability.
+            economies, this is what QGI shows, not a probability.
           </DataBox>
         </Section>
 
-        {/* Verification flow — answer the AI-hallucination skeptic up-front,
+        {/* Verification flow, answer the AI-hallucination skeptic up-front,
             before the user gets to data sources. Three-stage Fetch → Curate
             → Verify with the same worked example (2008 Iceland) shown at
             every stage. */}
@@ -342,7 +342,7 @@ export default async function MethodologyPage() {
               >
                 World Bank Open Data
               </a>{" "}
-              — 60 indicators (macroeconomic, fiscal, financial, military, social,
+              , 60 indicators (macroeconomic, fiscal, financial, military, social,
               governance, infrastructure, environment). CC BY 4.0.
             </li>
             <li>
@@ -355,7 +355,7 @@ export default async function MethodologyPage() {
               >
                 V-Dem
               </a>{" "}
-              v16 — 39 indicators (electoral democracy, civil liberties, executive
+              v16, 39 indicators (electoral democracy, civil liberties, executive
               constraints, judicial independence, polyarchy index).
             </li>
             <li>
@@ -368,7 +368,7 @@ export default async function MethodologyPage() {
               >
                 FAOSTAT
               </a>{" "}
-              — 5 indicators (food security, agricultural production, undernourishment).
+              , 5 indicators (food security, agricultural production, undernourishment).
             </li>
           </ul>
           <p className="mt-3">
@@ -406,11 +406,11 @@ export default async function MethodologyPage() {
           </p>
         </Section>
 
-        {/* Section: Event Taxonomy — replaces the legacy LayeredTaxonomyTree
+        {/* Section: Event Taxonomy, replaces the legacy LayeredTaxonomyTree
             with a horizontal L→R dendrogram. Default view shows 8 master
             groups → 52 sub-categories; click a sub-category to reveal its
             Layer 3 leaves. */}
-        {/* L1 dimensions and structural peers — added V2 (2026-05-19) */}
+        {/* L1 dimensions and structural peers, added V2 (2026-05-19) */}
         <Section id="l1-dimensions-and-peers" title="L1 Dimensions and Structural Peers">
           <p>
             QGI&apos;s event taxonomy has four layers. The first layer (L1) consists of
@@ -456,12 +456,12 @@ export default async function MethodologyPage() {
             borderColor: "var(--qgi-border)",
           }}
         >
-          <h3 className="text-sm font-semibold mb-2">Layer 4 — every verified event</h3>
+          <h3 className="text-sm font-semibold mb-2">Layer 4, every verified event</h3>
           <p
             className="text-sm leading-relaxed mb-4"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            The individual event records — searchable, filterable, and linked to their
+            The individual event records, searchable, filterable, and linked to their
             verification source URL.
           </p>
           <Link
@@ -487,7 +487,7 @@ export default async function MethodologyPage() {
           <p>
             For each country, we compute how unusual each event category&apos;s precedent
             count is compared to that country&apos;s own average. This removes the
-            data-completeness bias — countries with more complete World Bank data
+            data-completeness bias, countries with more complete World Bank data
             don&apos;t automatically score higher.
           </p>
 
@@ -591,7 +591,7 @@ export default async function MethodologyPage() {
               <p className="mt-3 text-xs" style={{ color: "var(--qgi-text-dim)" }}>
                 <strong>QGI beats the persistence baseline</strong> on ranking metrics.
                 The top-50 predictions are 2.24× more likely to match a real event than
-                random selection — useful for horizon-scanning and portfolio triage.
+                random selection, useful for horizon-scanning and portfolio triage.
               </p>
             </div>
 
@@ -622,8 +622,8 @@ export default async function MethodologyPage() {
                 persistence is an exceptionally strong calibration baseline for rare
                 structural events because countries that had civil wars or coups tend to
                 have them again. QGI&apos;s value-add is detecting
-                <em> when the signal is changing</em> — not re-asserting the base rate.
-                For decision-theory applications that need calibrated probabilities,
+                <em> when the signal is changing</em>, not re-asserting the base rate. For
+                decision-theory applications that need calibrated probabilities,
                 persistence is currently stronger. QGI&apos;s per-recipe ML models target
                 improved calibration as part of ongoing recipe validation work.
               </p>
@@ -637,7 +637,7 @@ export default async function MethodologyPage() {
             pipelines until QGI&apos;s per-recipe calibration work is complete.
           </p>
 
-          {/* Per-category confidence — replaces the prior statistical-hygiene
+          {/* Per-category confidence, replaces the prior statistical-hygiene
               block. Uses the audit aggregate produced by
               `qgi-ml/scripts/audition_indicators.py` (#481). Founder
               direction: report tier counts, do NOT expose the formula or
@@ -659,7 +659,7 @@ export default async function MethodologyPage() {
             <p className="text-sm">
               Not every event category has the same evidence base. We grade each recipe on
               whether its historical track record actually supports flagging countries
-              today — combining backtest accuracy on holdout data, the number of confirmed
+              today, combining backtest accuracy on holdout data, the number of confirmed
               historical events available to learn from, and how complete the underlying
               indicator coverage is for that recipe.
             </p>
@@ -694,7 +694,7 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
-          {/* LOCO AUC — added V2 (2026-05-19) */}
+          {/* LOCO AUC, added V2 (2026-05-19) */}
           <div
             id="loco-auc"
             className="mt-6 rounded border p-4"
@@ -726,7 +726,7 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
-          {/* Bootstrap CI — added V2 (2026-05-19) */}
+          {/* Bootstrap CI, added V2 (2026-05-19) */}
           <div
             id="bootstrap-ci"
             className="mt-4 rounded border p-4"
@@ -755,7 +755,7 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
-          {/* ECE — added V2 (2026-05-19) */}
+          {/* ECE, added V2 (2026-05-19) */}
           <div
             id="calibration-error"
             className="mt-4 rounded border p-4"
@@ -784,7 +784,7 @@ export default async function MethodologyPage() {
             </p>
           </div>
 
-          {/* #729 Step 3 (2026-05-16) — Aggregate vs per-recipe narrative.
+          {/* #729 Step 3 (2026-05-16), Aggregate vs per-recipe narrative.
               Introduces "QGI Risk Score" (country-level) and "Precedent
               Match" (per-recipe) before the live correlation matrix below.
               Voice rule (Ingrid + Sipho): leads with what the reader sees
@@ -799,7 +799,7 @@ export default async function MethodologyPage() {
               className="text-sm font-semibold mb-3"
               style={{ color: "var(--qgi-accent)" }}
             >
-              The two scores you&apos;ll see — QGI Risk Score and Precedent Match
+              The two scores you&apos;ll see, QGI Risk Score and Precedent Match
             </h3>
             <p className="text-sm leading-relaxed mb-3">
               Every country page shows two related numbers, both bounded 0&ndash;100. The
@@ -838,12 +838,12 @@ export default async function MethodologyPage() {
             </p>
           </section>
 
-          {/* #731 (2026-05-16) — Per-recipe Risk Score recipe-recipe correlation
+          {/* #731 (2026-05-16), Per-recipe Risk Score recipe-recipe correlation
               matrix. Renders live from country-risks.json so the matrix
               stays accurate as bakes evolve. Placed inside the Validation
               section because methodological-honesty disclosure is what it
               is. Renders nothing if the bake doesn't carry the matrix (pre-#729
-              Step 1.5 bakes) — graceful degradation. */}
+              Step 1.5 bakes), graceful degradation. */}
           <RecipeCorrelationMatrix />
         </Section>
 
@@ -879,7 +879,7 @@ export default async function MethodologyPage() {
 
         {/* Section 7: Limitations */}
         {/*
-          #748 PR-3 (2026-05-17) — Catalogue retirement anchor.
+          #748 PR-3 (2026-05-17), Catalogue retirement anchor.
 
           Per the ratified Majles brief (`merger-brief-2026-05-17-precedents-revised.md` §4)
           and Sipho's audit-trail rule: when `/precedents` collapsed to
@@ -937,11 +937,11 @@ export default async function MethodologyPage() {
             precedent density, not probability forecasts.
           </DataBox>
           <p className="mt-4">
-            When QGI shows &ldquo;Argentina — Fiscal Policy Change — HIGH,&rdquo; it
-            means: Argentina&apos;s current economic trajectory statistically resembles
-            the trajectories of multiple countries that subsequently experienced fiscal
-            policy changes. Whether Argentina will actually experience a fiscal policy
-            change depends on many factors QGI does not measure.
+            When QGI shows &ldquo;Argentina, Fiscal Policy Change, HIGH,&rdquo; it means:
+            Argentina&apos;s current economic trajectory statistically resembles the
+            trajectories of multiple countries that subsequently experienced fiscal policy
+            changes. Whether Argentina will actually experience a fiscal policy change
+            depends on many factors QGI does not measure.
           </p>
           <p>
             The value of QGI is in the evidence trail: which countries, which indicators,
@@ -1083,7 +1083,7 @@ function MetricCard({
 }
 
 /**
- * #482 — confidence-tally card for the methodology page. Same color
+ * #482, confidence-tally card for the methodology page. Same color
  * palette as RciBadge so users see one consistent visual story across
  * every page that surfaces per-recipe confidence.
  */

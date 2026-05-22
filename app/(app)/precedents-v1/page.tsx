@@ -16,7 +16,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Precedents · QGI Intelligence",
+  title: "Precedents · QG Intelligence",
   description:
     "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
   // #699 (2026-05-15): pre-fix, this V1 page declared canonical pointing
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
   // Explicit noindex on top of robots.ts Disallow (defense in depth).
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Precedents · QGI Intelligence",
+    title: "Precedents · QG Intelligence",
     description:
       "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
     url: "https://qgintelligence.com/precedents-v1",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Precedents · QGI Intelligence",
+    title: "Precedents · QG Intelligence",
     description:
       "Browse the 71 historical recipes — one per event category — ranked by the depth of historical evidence backing each pattern.",
   },

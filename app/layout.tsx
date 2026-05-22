@@ -41,14 +41,14 @@ export const metadata: Metadata = {
     title: "QGI · Quantitative Geopolitical Intelligence",
     description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
     url: "https://qgintelligence.com",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
     images: [
       {
         url: "/og-default.png",
         width: 1200,
         height: 630,
-        alt: "QGI Intelligence — Quantitative Geopolitical Intelligence",
+        alt: "QG Intelligence — Quantitative Geopolitical Intelligence",
       },
     ],
   },
@@ -80,7 +80,7 @@ export const metadata: Metadata = {
 const ORGANIZATION_JSON_LD = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "QGI Intelligence",
+  name: "QG Intelligence",
   alternateName: "Quantitative Geopolitical Intelligence",
   url: "https://qgintelligence.com",
   description: `QGI finds historical economic precedents at scale across ${TOTAL_COUNTRIES} countries. Risk candidates that analysts should examine, not probability forecasts.`,

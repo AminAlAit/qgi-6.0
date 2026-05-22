@@ -25,7 +25,7 @@ const PUBLISH_DATE = "2026-05-21";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "India and Pakistan Are 99% the Same Risk: QGI Intelligence Report",
+  title: "India and Pakistan Are 99% the Same Risk: QG Intelligence Report",
   description:
     "QGI places India and Pakistan at 99% cosine similarity, making them each other's #1 structural peer in the 156-country cohort. The convergence is recent, driven by the past decade's indicator movements, not a decades-long identity.",
   alternates: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description:
       "QGI places India and Pakistan at 99% cosine similarity. The two countries' Civil War & Insurgency recipe fingerprints are nearly identical. The convergence is recent.",
     url: "https://qgintelligence.com/reports/india-pakistan-mirror",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: `${PUBLISH_DATE}T00:00:00Z`,
   },
@@ -355,7 +355,7 @@ export default function IndiaPakistanMirrorReportPage() {
             inhabit different universes.
           </p>
           <p>
-            QGI Intelligence is a structural-precedent platform that runs across 156
+            QG Intelligence is a structural-precedent platform that runs across 156
             countries and hundreds of governance, economic, and security indicators. It
             does not produce a credit rating; it produces a structural-similarity
             comparison between every country and every other. In its{" "}
@@ -831,7 +831,7 @@ export default function IndiaPakistanMirrorReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            Published {PUBLISH_DATE} &middot; QG Intelligence &middot; By Amin Al-Ait
             &middot; Values cited from the {BAKE_DATE} V1.9.1 scoring run. This piece
             reports structural pattern resemblance and historical-analogue comparison. It
             is not a forecast.

@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const decodedCategory = decodeURIComponent(category);
   if (!country || !isValidCategory(country, decodedCategory)) {
     return {
-      title: "Page not found · QGI Intelligence",
+      title: "Page not found · QG Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -59,19 +59,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const catLabel = decodedCategory
     .replace(/_/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase());
-  const description = `Precedent analysis for ${catLabel} risk in ${name}. Historical analogues, pattern-length tier breakdown, and evidence from QGI Intelligence.`;
+  const description = `Precedent analysis for ${catLabel} risk in ${name}. Historical analogues, pattern-length tier breakdown, and evidence from QG Intelligence.`;
   const canonical = `https://qgintelligence.com/countries-v1/${id}/${category}`;
   // T19 #312: per-page OG + canonical so each precedent detail page has
   // its own social preview (the right unit of shareability for analysts).
   return {
-    title: `${name} · ${catLabel} · QGI Intelligence`,
+    title: `${name} · ${catLabel} · QG Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
       title: `${name} · ${catLabel}`,
       description,
       url: canonical,
-      siteName: "QGI Intelligence",
+      siteName: "QG Intelligence",
       type: "article",
     },
     twitter: {

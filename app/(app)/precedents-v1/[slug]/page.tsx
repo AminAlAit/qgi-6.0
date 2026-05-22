@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   // up in the title (#452 same shape of bug).
   if (!(slug in CATEGORY_L1_MAP)) {
     return {
-      title: "Page not found · QGI Intelligence",
+      title: "Page not found · QG Intelligence",
       robots: { index: false, follow: false },
     };
   }
@@ -35,14 +35,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     : `Historical recipe for ${label}.`;
   const canonical = `https://qgintelligence.com/precedents-v1/${slug}`;
   return {
-    title: `${label} · Recipe · QGI Intelligence`,
+    title: `${label} · Recipe · QG Intelligence`,
     description,
     alternates: { canonical },
     openGraph: {
       title: `${label} · Recipe`,
       description,
       url: canonical,
-      siteName: "QGI Intelligence",
+      siteName: "QG Intelligence",
       type: "article",
     },
     twitter: {

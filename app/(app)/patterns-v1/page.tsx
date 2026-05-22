@@ -5,7 +5,7 @@ import type { PatternRow } from "@/lib/types";
 
 // T19 #312: patterns discovery page metadata. Previously shared root title.
 export const metadata: Metadata = {
-  title: "Patterns · QGI Intelligence",
+  title: "Patterns · QG Intelligence",
   description:
     "Explore statistically-significant indicator patterns between country pairs. Discover which economies walked the same trajectory.",
   // #699: canonical points to V3 counterpart; explicit noindex (defense in
@@ -13,16 +13,16 @@ export const metadata: Metadata = {
   alternates: { canonical: "/patterns" },
   robots: { index: false, follow: false },
   openGraph: {
-    title: "Patterns · QGI Intelligence",
+    title: "Patterns · QG Intelligence",
     description:
       "Explore statistically-significant indicator patterns between country pairs.",
     url: "https://qgintelligence.com/patterns-v1",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Patterns · QGI Intelligence",
+    title: "Patterns · QG Intelligence",
     description:
       "Explore statistically-significant indicator patterns between country pairs.",
   },

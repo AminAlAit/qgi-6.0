@@ -24,7 +24,7 @@ import type { Metadata } from "next";
  */
 
 export const metadata: Metadata = {
-  title: "Countries · QGI Intelligence",
+  title: "Countries · QG Intelligence",
   description:
     "Browse 156 countries ranked by structural risk across 71 event categories, with Lloyd's-style methodology disclosure.",
   // #699: explicit canonical (was inheriting "/" from root layout).

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     description:
       "V1.8 → V1.8.1 → V1.9: the gap between QGI's F1 and the naïve persistence baseline has grown at every release.",
     url: "https://qgintelligence.com/blog/margin-over-persistence-trajectory",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: "2026-04-22T00:00:00Z",
     images: [

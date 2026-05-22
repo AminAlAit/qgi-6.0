@@ -13,7 +13,7 @@ import { CountrySignalProfileContent } from "@/components/signals-v1/CountrySign
  * Sister to `patterns-v1/ranking/layout` (paired SEO follow-up).
  */
 export const metadata: Metadata = {
-  title: "Country Signal Profile · QGI Intelligence",
+  title: "Country Signal Profile · QG Intelligence",
   description:
     "Legacy V1 country-signal picker. V3 supersedes via /signals/[country] direct URLs.",
   alternates: { canonical: "/signals" },

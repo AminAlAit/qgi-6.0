@@ -34,7 +34,7 @@ const PUBLISH_DATE = "2026-05-19";
 // ─── Metadata ─────────────────────────────────────────────────────────────────
 
 export const metadata: Metadata = {
-  title: "Ghana's Double Signal: QGI Intelligence Report",
+  title: "Ghana's Double Signal: QG Intelligence Report",
   description:
     "QGI places Ghana at the 99th percentile of global election-stress in its April 2026 scoring run. Its closest structural analogue is not Burkina Faso, it is Mauritania. That comparison is the story.",
   alternates: {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "QGI places Ghana at the 99th percentile of global election-stress. Its closest structural peer is Mauritania at 99% cosine similarity, not Mali, not Burkina Faso. What that structural resemblance means.",
     url: "https://qgintelligence.com/reports/ghana-mauritania-mirror",
-    siteName: "QGI Intelligence",
+    siteName: "QG Intelligence",
     type: "article",
     publishedTime: `${PUBLISH_DATE}T00:00:00Z`,
   },
@@ -387,7 +387,7 @@ export default function GhanaMauritaniaReportPage() {
             consolidation in West Africa.
           </p>
           <p>
-            QGI Intelligence is a system that searches for structural resemblance between
+            QG Intelligence is a system that searches for structural resemblance between
             countries&apos; economic trajectories and historical precedents, running the
             numbers across 131 countries and hundreds of indicators to surface risk
             patterns that conventional desk analysis does not reach. In its{" "}
@@ -902,7 +902,7 @@ export default function GhanaMauritaniaReportPage() {
               borderColor: "var(--qgi-border)",
             }}
           >
-            Published {PUBLISH_DATE} &middot; QGI Intelligence &middot; By Amin Al-Ait
+            Published {PUBLISH_DATE} &middot; QG Intelligence &middot; By Amin Al-Ait
             &middot; Salience values cited from the {BAKE_DATE} V1.9.1 scoring run. This
             piece reports structural pattern resemblance and historical analogue
             comparison. It is not a forecast.

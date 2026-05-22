@@ -3,30 +3,30 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About · QGI Intelligence",
+  title: "About · QG Intelligence",
   description:
-    "QGI Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
+    "QG Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
   alternates: {
     canonical: "https://qgintelligence.com/about",
   },
   openGraph: {
-    title: "About · QGI Intelligence",
+    title: "About · QG Intelligence",
     description:
-      "Meet the founder. QGI Intelligence bridges data engineering and geopolitical risk.",
+      "Meet the founder. QG Intelligence bridges data engineering and geopolitical risk.",
     url: "https://qgintelligence.com/about",
     images: [
       {
         url: "/about/amin.jpg",
         width: 768,
         height: 1024,
-        alt: "Amin Al-Ait, founder of QGI Intelligence",
+        alt: "Amin Al-Ait, founder of QG Intelligence",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About · QGI Intelligence",
-    description: "Meet the founder of QGI Intelligence.",
+    title: "About · QG Intelligence",
+    description: "Meet the founder of QG Intelligence.",
   },
 };
 
@@ -120,7 +120,7 @@ export default function AboutPage() {
             >
               <Image
                 src="/about/amin-square.jpg"
-                alt="Amin Al-Ait, founder of QGI Intelligence"
+                alt="Amin Al-Ait, founder of QG Intelligence"
                 width={512}
                 height={512}
                 priority
@@ -140,7 +140,7 @@ export default function AboutPage() {
               Amin Al-Ait
             </h1>
             <p className="mt-3 text-base" style={{ color: "var(--qgi-text-muted)" }}>
-              Founder, QGI Intelligence · Cloud Data Engineer
+              Founder, QG Intelligence · Cloud Data Engineer
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <a
