@@ -364,44 +364,75 @@ def test_f_ml_n_amendment_no_mlp_routing_in_main():
     )
 
 
-def test_f_ml_n_amendment_stability_diagnostic_present():
-    """Per Kwame BLOCKING rider (mandatory §4.2-SD logging) + Miriam M14-R5
-    BLOCKING (informational-only, NOT gating): every walk must emit a
-    `stability_diagnostic` field in the summary JSON. The diagnostic must
-    contain fold_variance, label (LOW/MODERATE/HIGH), per_country_loco_auc,
-    thresholds, informational_only=True flag, and amendment_reference.
+def test_f_ml_n_stability_label_thresholds():
+    """Per F-ML-1 §4.2-SD: LOW (<0.04), MODERATE (0.04-0.10), HIGH (>0.10).
 
-    Verified by source inspection of `_main` (an end-to-end emit test would
-    require running the full pipeline).
+    Per Sonnet PR#92 FU-3: this test exercises the DRIVER's `_stability_label`
+    helper directly, NOT a local re-implementation. If the driver's logic
+    drifts from the pre-reg, this test catches it."""
+    assert drv._stability_label(0.039) == "LOW"
+    assert drv._stability_label(0.0) == "LOW"
+    assert drv._stability_label(0.04) == "MODERATE"  # boundary: ≥0.04 → MODERATE
+    assert drv._stability_label(0.0656) == "MODERATE"  # econ_recession observed
+    assert drv._stability_label(0.0561) == "MODERATE"  # civil_war observed
+    assert drv._stability_label(0.10) == "MODERATE"  # boundary: ≤0.10 → MODERATE
+    assert drv._stability_label(0.11) == "HIGH"
+    assert drv._stability_label(0.20) == "HIGH"
+
+
+def test_f_ml_n_build_stability_diagnostic_complete():
+    """Per Kwame BLOCKING rider (mandatory §4.2-SD logging) + Sonnet PR#92
+    FU-1 (fold_auc_mean was missing) + FU-2 (need direct emit test): verify
+    `_build_stability_diagnostic` produces a dict with ALL 7 required fields
+    per §4.2-SD spec.
+    """
+    per_country = {"Algeria": 0.7, "Brazil": 0.6, "China": 0.8, "Iran": 0.5}
+    diag = drv._build_stability_diagnostic(per_country)
+    # §4.2-SD spec requires: per-fold AUC values, fold-AUC mean, fold-AUC
+    # variance, qualitative label.
+    assert "per_country_loco_auc" in diag  # item 1
+    assert "fold_auc_mean" in diag         # item 2 (was missing pre-FU-1)
+    assert "fold_variance" in diag         # item 3
+    assert "label" in diag                 # item 4
+    # Additional fields per the amendment artifact
+    assert diag["informational_only"] is True
+    assert "amendment_reference" in diag
+    assert diag["thresholds"] == {"LOW_upper": 0.04, "MODERATE_upper": 0.10}
+    # Value sanity
+    assert abs(diag["fold_auc_mean"] - 0.65) < 1e-9  # mean of [0.7, 0.6, 0.8, 0.5]
+    assert diag["fold_variance"] > 0
+    assert diag["label"] in {"LOW", "MODERATE", "HIGH"}
+    assert diag["per_country_loco_auc"] == {"Algeria": 0.7, "Brazil": 0.6, "China": 0.8, "Iran": 0.5}
+
+
+def test_f_ml_n_build_stability_diagnostic_edge_cases():
+    """Verify _build_stability_diagnostic handles edge cases without raising:
+    empty dict, single fold, NaN values."""
+    # Empty dict
+    diag = drv._build_stability_diagnostic({})
+    assert diag["fold_variance"] == 0.0
+    assert diag["label"] == "LOW"  # 0 < 0.04
+    # Single fold (variance undefined with n<2; fold_variance helper returns 0)
+    diag = drv._build_stability_diagnostic({"A": 0.7})
+    assert diag["fold_variance"] == 0.0
+    # NaN values are filtered
+    diag = drv._build_stability_diagnostic({"A": float("nan"), "B": 0.5, "C": 0.5})
+    assert diag["fold_variance"] == 0.0  # only 2 valid, both 0.5
+    assert diag["label"] == "LOW"
+
+
+def test_f_ml_n_amendment_main_uses_helpers():
+    """Per Sonnet PR#92 FU-3 follow-up: _main MUST call _build_stability_diagnostic,
+    not inline the diagnostic logic. This guards against future drift where a
+    refactor accidentally re-inlines the threshold logic away from the helper.
     """
     import inspect
     main_source = inspect.getsource(drv._main)
-    assert "stability_diagnostic" in main_source, (
-        "_main must build a stability_diagnostic dict per §4.2-SD"
+    assert "_build_stability_diagnostic" in main_source, (
+        "_main must call _build_stability_diagnostic helper per §4.2-SD"
     )
-    assert "fold_variance" in main_source
-    assert '"label"' in main_source or "'label'" in main_source
-    assert '"informational_only"' in main_source or "'informational_only'" in main_source
-    # Bands: LOW < 0.04, MODERATE 0.04-0.10, HIGH > 0.10
-    assert "LOW" in main_source and "MODERATE" in main_source and "HIGH" in main_source
-
-
-def test_f_ml_n_stability_label_thresholds():
-    """Per F-ML-1 §4.2-SD: LOW (<0.04), MODERATE (0.04-0.10), HIGH (>0.10).
-    Verify the threshold boundaries are implemented as documented in the
-    amendment artifact."""
-    # Walk a few representative fold-variance values and verify label
-    # assignment matches the pre-reg.
-    # The driver's logic: if fv < 0.04 -> LOW; elif fv <= 0.10 -> MODERATE; else HIGH
-    def label_for(fv):
-        if fv < 0.04: return "LOW"
-        elif fv <= 0.10: return "MODERATE"
-        else: return "HIGH"
-    # Boundary tests
-    assert label_for(0.039) == "LOW"
-    assert label_for(0.04) == "MODERATE"  # boundary belongs to MODERATE (>=0.04)
-    assert label_for(0.0656) == "MODERATE"  # econ_recession observed
-    assert label_for(0.0561) == "MODERATE"  # civil_war observed
-    assert label_for(0.10) == "MODERATE"  # boundary
-    assert label_for(0.11) == "HIGH"
-    assert label_for(0.20) == "HIGH"
+    # Inline label-threshold logic SHOULD NOT exist in _main (it lives in the
+    # helper). Heuristic check: no `stability_label = "LOW"` inline assignment.
+    assert 'stability_label = "LOW"' not in main_source, (
+        "Label thresholding must live in _stability_label helper, not inlined"
+    )
