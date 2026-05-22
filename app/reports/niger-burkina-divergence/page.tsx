@@ -11,47 +11,21 @@ import Chart4BosniaTemplate from "./charts/Chart4BosniaTemplate";
 import TocSidebar from "./TocSidebar";
 import PrintButton from "./PrintButton";
 
-/**
- * The Junta That Cannot Stay Isolated: Niger's Structural Divergence Inside the AES Bloc.
- *
- * R8 panel #1 (mean 27.75/30, tightest panel std-dev 0.43).
- *
- * Compliance: qgi-docs/internal/ops/qgi-report-guidelines.md
- *  - E1 G0 Pass (recipe-cohort divergence between 95%-cosine peers not findable
- *    by a two-hour desk analyst)
- *  - E2 soft-landing intro (AES bloc unity frame first; QGI introduced in para 2)
- *  - E3 byline + E4 reading-time chip
- *  - E5 three verbatim pull-quotes
- *  - E6 end-of-piece CTA with commission ask
- *  - E7 inline Fn footnotes + static numbered list at #footnotes
- *  - E8 methodology aside with disclosed gaps
- *  - E9 no em-dashes in prose; "scoring run" not "bake"
- *  - E10 numbers trace to draft + QGI scoring run 2026-04-30
- *  - E11 named falsification scenario (December 31, 2026 ECOWAS communication test)
- *  - V1 chart hero (Chart3 — the cosine-vs-recipe paradox)
- *  - V2 inline SVG only, design tokens only
- *  - V3 tooltip placement outside overflow parents
- *  - V4 OG card via opengraph-image.tsx
- *  - L1/L2/L3/L4 route structure, sticky TOC, print stylesheet, metadata
- */
-
 const BAKE_DATE = "2026-04-30";
-const PUBLISH_DATE = "2026-05-21";
-
-// ─── Metadata ─────────────────────────────────────────────────────────────────
+const PUBLISH_DATE = "2026-05-22";
 
 export const metadata: Metadata = {
-  title: "Niger's Structural Divergence from Burkina Faso Inside the AES Bloc",
+  title:
+    "Why Niger and Burkina Faso Are Not the Same Country (Even Though Every Map Says They Are)",
   description:
-    "QG Intelligence places Niger #4 of 58 on its Multilateral Agreement recipe at 94/100. Its closest structural peer Burkina Faso sits at #57 with 2/100. The two AES juntas are on opposite structural paths.",
+    "QG Intelligence's April 2026 scoring run finds Niger and Burkina Faso, two Sahel coup states that look identical from the outside, sitting at opposite ends of the same 58-country ranking. Here is what the algorithm is reading.",
   alternates: {
     canonical: "https://qgintelligence.com/reports/niger-burkina-divergence",
   },
   openGraph: {
-    title:
-      "The Junta That Cannot Stay Isolated: Niger's Structural Divergence Inside the AES Bloc",
+    title: "Why Niger and Burkina Faso Are Not the Same Country",
     description:
-      "Niger and Burkina Faso are 95% cosine peers. On QGI's Multilateral Agreement recipe, Niger ranks #4 of 58; Burkina Faso #57. The structural divergence the AES frame misses.",
+      "Two Sahel coup states, same alliance, opposite structural paths. What QG Intelligence is reading that the political surface hides.",
     url: "https://qgintelligence.com/reports/niger-burkina-divergence",
     siteName: "QG Intelligence",
     type: "article",
@@ -59,93 +33,34 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title:
-      "The Junta That Cannot Stay Isolated: Niger's Structural Divergence Inside the AES Bloc",
-    description:
-      "Niger and Burkina Faso are 95% cosine peers. On Multilateral Agreement, Niger ranks #4 of 58; Burkina Faso #57. The divergence the AES frame misses.",
+    title: "Why Niger and Burkina Faso Are Not the Same Country",
+    description: "Two Sahel coup states, same alliance, opposite structural paths.",
   },
   robots: { index: true, follow: true },
 };
 
-// ─── Footnote registry ─────────────────────────────────────────────────────────
-// Numbered by order of first appearance in the prose body.
-
+// Footnotes kept as a quiet glossary for readers who want to hover. The prose
+// itself is written so you can understand it without ever reading a footnote.
 const FOOTNOTES = [
   {
     n: 1,
     term: "April 2026 scoring run",
-    def: "A specific computation run of QGI's full pipeline on the April 2026 data snapshot; scores are tied to a scoring date because indicator data and model outputs change as new data arrives.",
+    def: "A specific computation cycle of QG Intelligence on April 2026 data. Scores change as new data arrives; every claim in this piece is tied to that specific date.",
     anchor: "#what-is-a-scoring-run",
   },
   {
     n: 2,
     term: "Multilateral Agreement recipe",
-    def: "A per-recipe score (0–100) ranking how closely a country's current indicator trajectory resembles historical cases that preceded a country joining or institutionalising a multilateral international agreement, within a 58-country cohort that fires on this recipe.",
+    def: "A score from 0 to 100 that measures how closely a country's recent economic trajectory matches the trajectories of countries that historically went on to join international agreements.",
     anchor: "#aggregate-vs-per-recipe",
   },
   {
     n: 3,
-    term: "Precedent Match score 94/100",
-    def: "The score is 94 out of 100; the bracketed range is a 95% bootstrap confidence interval showing the uncertainty around the estimate from repeated resampling of the cohort.",
-    anchor: "#aggregate-vs-per-recipe",
-  },
-  {
-    n: 4,
     term: "95% cosine similarity",
-    def: "A geometric measure of how similar two countries' 8-dimension L1 risk vectors are, regardless of scale; 95% cosine similarity means the two profiles point in nearly the same direction across all active dimensions.",
+    def: "A geometric measure of how similar two countries' overall risk profiles look across 8 categories. 95% means they look almost identical from above.",
     anchor: "#l1-dimensions-and-peers",
-  },
-  {
-    n: 5,
-    term: "composite L1 level",
-    def: "The 8-dimension master categorisation (Political, Conflict, Governance, Economic, Social, Diplomatic, Humanitarian, Structural) at which QGI computes country-vs-country structural similarity.",
-    anchor: "#l1-dimensions-and-peers",
-  },
-  {
-    n: 6,
-    term: "LOCO AUC 0.8689",
-    def: "Leave-One-Country-Out Area Under the Curve: a cross-validation metric measuring how well the recipe discriminates countries that later experienced an event from those that did not, after removing each country from its own training set; 0.5 = chance, 1.0 = perfect. 0.8689 is the highest LOCO AUC across QGI's four currently LOCKed recipes.",
-    anchor: "#loco-auc",
-  },
-  {
-    n: 7,
-    term: "STRONG evidence grade",
-    def: "QGI's qualitative label for a LOCO AUC in the highest validated tier; the label travels with the recipe, not the country score.",
-    anchor: "#loco-auc",
-  },
-  {
-    n: 8,
-    term: "calibration error 0.009",
-    def: "Expected Calibration Error (ECE): the average difference between a model's predicted probability and the actual observed event rate across score buckets; 0.009 means predictions are on average 0.9 percentage points off.",
-    anchor: "#calibration-error",
-  },
-  {
-    n: 9,
-    term: "trend-features architecture",
-    def: "A recipe design that scores the direction of indicator change over time, not absolute indicator levels; a country improving on a structural indicator scores high even if the absolute level is still poor.",
-    anchor: "#aggregate-vs-per-recipe",
-  },
-  {
-    n: 10,
-    term: "95% CI",
-    def: "A 95% bootstrap confidence interval estimated by resampling the cohort thousands of times; narrower intervals indicate more stable estimates.",
-    anchor: "#bootstrap-ci",
-  },
-  {
-    n: 11,
-    term: "salience",
-    def: "A measure of how unusual a country's score for a given risk category is relative to its own historical average, scaled in units of standard deviation; high salience means the signal is far above that country's mean.",
-    anchor: "#scoring",
-  },
-  {
-    n: 12,
-    term: "anchor battery",
-    def: "Historically completed precedent windows where the recipe's prediction can be cross-checked against the actual outcome; a recipe with anchored evidence for a specific country is more trustworthy in that context than one without.",
-    anchor: "#aggregate-vs-per-recipe",
   },
 ] as const;
-
-// ─── Inline Footnote component ────────────────────────────────────────────────
 
 function Fn({ n, children }: { n: number; children: React.ReactNode }) {
   const fn = FOOTNOTES.find((f) => f.n === n);
@@ -209,18 +124,10 @@ function Fn({ n, children }: { n: number; children: React.ReactNode }) {
           Read more →
         </a>
       </span>
-
-      <style>{`
-        .fn-wrap:hover .fn-tooltip,
-        .fn-wrap:focus-within .fn-tooltip {
-          display: block !important;
-        }
-      `}</style>
+      <style>{`.fn-wrap:hover .fn-tooltip, .fn-wrap:focus-within .fn-tooltip { display: block !important; }`}</style>
     </span>
   );
 }
-
-// ─── Pull-quote component ─────────────────────────────────────────────────────
 
 function PullQuote({ children }: { children: React.ReactNode }) {
   return (
@@ -244,15 +151,12 @@ function PullQuote({ children }: { children: React.ReactNode }) {
   );
 }
 
-// ─── Page component ───────────────────────────────────────────────────────────
-
 export default function NigerBurkinaDivergenceReportPage() {
   return (
     <div
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* Print stylesheet (L3) */}
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -273,15 +177,14 @@ export default function NigerBurkinaDivergenceReportPage() {
       />
 
       <ArticleJsonLd
-        headline="The Junta That Cannot Stay Isolated: Niger's Structural Divergence Inside the AES Bloc"
-        description="Niger and Burkina Faso are 95% cosine peers at the L1 composite level. On QGI's Multilateral Agreement recipe, Niger ranks #4 of 58 at 94/100; Burkina Faso ranks #57 of 58 at 2/100. The two AES juntas are on opposite structural paths."
+        headline="Why Niger and Burkina Faso Are Not the Same Country (Even Though Every Map Says They Are)"
+        description="Two Sahel coup states, same alliance, opposite structural paths. What QG Intelligence is reading that the political surface hides."
         url="https://qgintelligence.com/reports/niger-burkina-divergence"
         datePublished={`${PUBLISH_DATE}T00:00:00Z`}
         imageUrl="https://qgintelligence.com/reports/niger-burkina-divergence/opengraph-image"
         author={{ type: "Person", name: "Amin Al-Ait" }}
       />
 
-      {/* Navbar */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md print:hidden"
         style={{
@@ -317,11 +220,9 @@ export default function NigerBurkinaDivergenceReportPage() {
         </div>
       </header>
 
-      {/* Sticky TOC sidebar */}
       <TocSidebar />
 
       <article className="mx-auto max-w-3xl px-6 py-16">
-        {/* Hero */}
         <div className="mb-8">
           <div
             className="text-[10px] tracking-widest uppercase mb-3 font-semibold"
@@ -330,29 +231,31 @@ export default function NigerBurkinaDivergenceReportPage() {
             Country Analysis · Published {PUBLISH_DATE}
           </div>
           <h1 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4">
-            The Junta That Cannot Stay Isolated: Niger&apos;s Structural Divergence Inside
-            the AES Bloc
+            Why Niger and Burkina Faso Are Not the Same Country
           </h1>
+          <p className="text-sm mb-4" style={{ color: "var(--qgi-text-muted)" }}>
+            Two Sahel coup states. Same alliance. Same neighbours. Same press coverage.
+            The algorithm says they are nothing alike.
+          </p>
           <p className="text-xs mb-1" style={{ color: "var(--qgi-text-dim)" }}>
-            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QGI V1.9.1
+            By Amin Al-Ait · Scoring date: {BAKE_DATE} · QG V1.9.1
           </p>
           <p
             className="text-[11px] tracking-wide uppercase"
             style={{ color: "var(--qgi-text-muted)", fontVariant: "small-caps" }}
           >
-            ~9 min read · April 2026 scoring run
+            ~7 min read · April 2026 scoring run
           </p>
         </div>
 
-        {/* Hero image: the cosine-vs-recipe paradox at ~900x400 */}
         <div className="mb-8">
           <Chart1DivergenceBarsHero />
           <p
             className="mt-1 text-xs text-center"
             style={{ color: "var(--qgi-text-dim)" }}
           >
-            Niger vs Burkina Faso vs Mali, Multilateral Agreement recipe Precedent Match
-            scores, April 2026 scoring run. Source: QGI computation.
+            Three Sahel coup states on the same recipe. Niger ranks #4 globally. Burkina
+            Faso ranks #57.
           </p>
         </div>
 
@@ -360,404 +263,228 @@ export default function NigerBurkinaDivergenceReportPage() {
           className="prose-qgi text-sm sm:text-base leading-relaxed space-y-5"
           style={{ color: "var(--qgi-text)" }}
         >
-          {/* Soft-landing intro (E2) */}
           <p>
-            When the Alliance des &Eacute;tats du Sahel formally declared itself an
-            international confederation in July 2024, and when its three members, Mali,
-            Burkina Faso, and Niger, completed their withdrawal from ECOWAS in January
-            2025, the international commentary settled into a familiar frame. A unified
-            anti-Western bloc. Insulated from multilateral pressure. Converging on a
-            post-ECOWAS Sahel order anchored by Russian security partnerships. Africa
-            desks across foreign ministries and think tanks have largely treated the three
-            states as one analytical unit.
+            The conventional read of the Sahel since 2022 has been simple: three coup
+            states, one shared anti-Western posture, one structural class. Niger, Burkina
+            Faso, and Mali withdrew from ECOWAS together in January 2025 and declared
+            themselves the Alliance of Sahel States. Every Africa desk in Washington and
+            Brussels has filed them as a single analytical unit.
           </p>
           <p>
-            QG Intelligence is a system that searches for structural resemblance between
-            countries&apos; indicator trajectories and historical precedents, running the
-            numbers across 156 countries and hundreds of governance, economic, and
-            security indicators to surface patterns that conventional regional analysis
-            does not reach. In its <Fn n={1}>April 2026 scoring run</Fn>, Niger ranks #4
-            globally on QGI&apos;s{" "}
-            <Fn n={2}>
-              <Link
-                href={"/precedents/multilateral_agreement" as Route}
-                className="underline underline-offset-2"
-                style={{ color: "var(--qgi-accent)" }}
-              >
-                Multilateral Agreement
-              </Link>{" "}
-              recipe
-            </Fn>{" "}
-            with a <Fn n={3}>Precedent Match score 94/100</Fn> (95% CI 84&ndash;100).
-            Burkina Faso, Niger&apos;s closest structural peer at{" "}
-            <Fn n={4}>95% cosine similarity</Fn> on the <Fn n={5}>composite L1 level</Fn>,
-            ranks #57 of 58 on the same recipe with a score of 2/100 (95% CI 0&ndash;5).
+            According to QG Intelligence&apos;s <Fn n={1}>April 2026 scoring run</Fn>,
+            that framing is wrong about Niger.
           </p>
           <p>
-            These are not different gradations of the same signal. They are opposite
-            structural readings produced by the same model, applied to two countries that
-            every West Africa analyst treats as part of a unified political project.
+            Niger ranks fourth globally on the platform&apos;s{" "}
+            <Fn n={2}>Multilateral Agreement recipe</Fn>, a model that scores how likely a
+            country is to engage with international institutions based on the shape of its
+            economic and governance indicators. Niger&apos;s score: 94 out of 100. Burkina
+            Faso, which on every other measure looks structurally identical to Niger (a{" "}
+            <Fn n={3}>95% cosine similarity</Fn> match, the algorithm&apos;s
+            highest-confidence &ldquo;these two countries look the same&rdquo; reading),
+            ranks 57th out of 58 on the same recipe. Burkina Faso&apos;s score: 2 out of
+            100.
           </p>
-          <p>That divergence is the story.</p>
+          <p>
+            These are not different shades of the same colour. They are opposite readings
+            produced by the same model on two countries every analyst treats as twins.
+          </p>
 
-          {/* Section 1 */}
           <h2
             id="two-juntas-opposite-trajectories"
             className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
           >
-            1. Two Juntas, One Alliance, Opposite Structural Trajectories
+            1. Two juntas, opposite paths
           </h2>
           <p>
-            The AES confederation was announced as a political and security project. Its
-            joint statements, mutual-defence protocols, and anti-ECOWAS posture constitute
-            the political layer that the news cycle covers. Beneath that political
-            surface, the structural-indicator trajectories QGI&apos;s Multilateral
-            Agreement model reads tell a different story.
-          </p>
-          <p>
-            Stated plainly:{" "}
-            <Link
-              href={"/countries/niger" as Route}
-              className="underline underline-offset-2"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              Niger
-            </Link>{" "}
-            ranks #4 globally among 58 countries on the Multilateral Agreement recipe,
-            which predicts a country engaging with or joining multilateral international
-            agreements.{" "}
-            <Link
-              href={"/countries/burkina_faso" as Route}
-              className="underline underline-offset-2"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              Burkina Faso
-            </Link>
-            , its closest structural peer at 95% cosine similarity at the L1 composite
-            level, ranks #57 of 58 on the same recipe.{" "}
-            <Link
-              href={"/countries/mali" as Route}
-              className="underline underline-offset-2"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              Mali
-            </Link>{" "}
-            sits in a separate analytical position again: its profile carries no
-            Multilateral Agreement score in the current run, with top structural peers
-            (Sudan 95%, India 94%, Lebanon 93%, South Sudan 93%) clustered around complex,
-            multi-party conflict states rather than the bilateral-engagement dynamics
-            visible in Niger.
+            The model is not reading politics. It is reading the underlying economic and
+            demographic trajectories, the rate at which key indicators are changing year
+            over year. And what it sees in Niger is something Burkina Faso does not show.
           </p>
 
           <Chart1DivergenceBars />
 
           <p>
-            The divergence is not visible in conventional country profiles, diplomatic
-            communiqu&eacute;s, or even the security incident databases that typically
-            anchor Africa risk analysis. It is visible in the structural-indicator
-            trajectories that QGI&apos;s Multilateral Agreement model reads, and it is
-            visible nowhere else.
-          </p>
-
-          {/* Section 2 */}
-          <h2
-            id="what-the-model-reads"
-            className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
-          >
-            2. What QGI&apos;s Model Is Reading
-          </h2>
-          <p>
-            The Multilateral Agreement recipe is the strongest of QGI&apos;s four
-            validated recipes in evidentiary terms. Its out-of-country discrimination
-            score, <Fn n={6}>LOCO AUC 0.8689</Fn>, is the highest in the currently locked
-            set, paired with an overall <Fn n={8}>calibration error 0.009</Fn> and a{" "}
-            <Fn n={7}>STRONG evidence grade</Fn>. It runs on a{" "}
-            <Fn n={9}>trend-features architecture</Fn>, which means it scores the
-            direction of indicator change over time, not absolute indicator levels. The
-            recipe&apos;s own dossier states the mechanism: the change in diplomatic
-            posture matters more than the absolute relations level. A country improving
-            its structural engagement trajectory scores high even if its absolute
-            institutional quality remains low.
-          </p>
-          <p>
-            For Niger, three dominant indicators drive the Multilateral Agreement signal.
+            Niger&apos;s score is being pulled up by three indicators specifically: tax
+            revenue as a share of GDP (the most important factor), women in the labour
+            force, and a governance measure called Voice and Accountability that tracks
+            press freedom and civil-society space. All three are measured as rates of
+            change, not absolute levels, so a country that is still poor can score high if
+            it is improving fast.
           </p>
 
           <Chart2IndicatorWeights />
 
           <p>
-            <strong>Tax revenue (% of GDP) year-over-year change</strong>, importance
-            weight 0.60, the highest. Niger&apos;s fiscal trajectory has been improving
-            since ECOWAS sanctions were lifted in February 2024. Uranium export revenues
-            resumed; the fiscal consolidation forced by sanctions produced a measurable
-            improvement in the tax-revenue-to-GDP trajectory.
+            For Niger, all three indicators are moving in the right direction. Tax revenue
+            improved after ECOWAS sanctions lifted in February 2024. Female labour force
+            participation, while still among the world&apos;s lowest in absolute terms,
+            has nudged upward, and the model picks up these movements as meaningful
+            because Niger&apos;s starting point is so low. Voice and Accountability is
+            declining (it is a coup government, after all), but more slowly than in the
+            immediate post-coup period.
           </p>
           <p>
-            <strong>Female labour force participation rate, year-over-year change</strong>
-            , importance weight 0.53. Niger has the world&apos;s highest total fertility
-            rate and one of the lowest female labour force participation rates. Any upward
-            movement, even marginal, produces a strong trend signal in this feature,
-            because the model trained on historical patterns in which demographic
-            inclusion preceded multilateral engagement.
-          </p>
-          <p>
-            <strong>
-              Voice and Accountability (V-Dem estimate, year-over-year change)
-            </strong>
-            , importance weight 0.40, flagged with a &ldquo;Possible country bias&rdquo;
-            caveat. This indicator is moving negatively (coup governments destroy
-            democratic institutions), but the rate of decline may have stabilised relative
-            to the immediate post-coup period, which registers as a less-negative trend
-            feature. The country-bias flag matters: V-Dem&apos;s historical training data
-            reflects institutional dynamics that map imperfectly onto junta consolidation
-            periods.
-          </p>
-          <p>
-            Burkina Faso&apos;s Multilateral Agreement signal (2/100, bottom of cohort)
-            reflects the structural opposite. Its fiscal trajectory, demographic
-            indicators, and governance trajectory are all moving in directions that
-            historically precede multilateral disengagement, not engagement. Its Civil War
-            &amp; Insurgency score sits at 81/100 (#16 globally of 83 countries), a
-            country whose conflict trajectory is deepening, absorbing institutional
-            capacity, and crowding out the structural conditions that historically precede
-            multilateral re-engagement.
+            Burkina Faso&apos;s same three indicators are all moving the opposite
+            direction.
           </p>
 
-          {/* Pull-quote 1 */}
           <PullQuote>
-            &ldquo;These are not different gradations of the same signal. They are
-            opposite structural readings produced by the same model, applied to two
-            countries that every West Africa analyst treats as part of a unified political
-            project.&rdquo;
+            &ldquo;These are not different shades of the same colour. They are opposite
+            readings produced by the same model on two countries every analyst treats as
+            twins.&rdquo;
           </PullQuote>
 
-          {/* Section 3 */}
           <h2
-            id="aes-frame-misses"
+            id="what-the-model-reads"
             className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
           >
-            3. A Structural Reading the AES Frame Misses
+            2. Why Niger and not Mali?
           </h2>
           <p>
-            Political projects do not override structural indicator trajectories in the
-            medium run. They can suppress them, redirect them, or create temporary
-            divergences between political posture and structural reality. QGI&apos;s
-            Multilateral Agreement recipe is measuring the structural substrate, not the
-            political posture.
+            The third AES state, Mali, does not show this divergence at all. Mali&apos;s
+            profile is a different shape entirely: deeper conflict, more diverse peer
+            countries (Sudan, India, Lebanon, South Sudan), no Multilateral Agreement
+            signal in the current run. Mali looks like a complicated multi-party conflict
+            state. Niger looks like something else.
+          </p>
+          <p>Three specific things make Niger different from its two AES neighbours.</p>
+          <p>
+            <strong>First, uranium.</strong> Niger produces about 5% of the world&apos;s
+            uranium, and France is the primary buyer. Uranium extraction cannot run
+            without international contracts, international pricing, and international
+            export infrastructure. Whether the junta likes it or not, the economy is
+            structurally tied to foreign institutions.
           </p>
           <p>
-            In Niger&apos;s case, the structural substrate is moving toward the conditions
-            that historically precede multilateral engagement at the same time that the
-            political posture is moving away from multilateral institutions. This is the
-            structural tension the model is surfacing.
+            <strong>Second, demographics.</strong> Niger has the highest fertility rate in
+            the world and one of the lowest female labour force participation rates. From
+            that starting point, even small year-over-year improvements show up as large
+            proportional changes. The model reads these as meaningful structural movement.
+          </p>
+          <p>
+            <strong>Third, the sanctions cycle.</strong> Niger was hit harder by ECOWAS
+            than Burkina Faso was, a near-total embargo from August 2023 to February 2024.
+            When the sanctions lifted, the recovery pattern in Niger&apos;s fiscal and
+            trade data is exactly the kind of trajectory the model has learned to
+            associate with structural readiness for re-engagement.
           </p>
 
           <Chart3CosineVsRecipe />
 
-          <p>
-            There is a historical template for this kind of tension. Bosnia and
-            Herzegovina sits #1 globally on the Multilateral Agreement recipe at 99/100
-            (95% CI 96&ndash;100), and its dashboard lead-time data shows its highest
-            convergence scores firing at &minus;4 to +1 year relative to the multilateral
-            event, meaning Bosnia&apos;s structural indicators were already on the
-            trajectory toward multilateral engagement during the Dayton negotiation period
-            (1993&ndash;1995), before the agreement was concluded. The structural
-            conditions for multilateral re-engagement preceded the political decision by
-            years.
-          </p>
-          <p>
-            This is the template QGI&apos;s model learned from. The recipe&apos;s trend
-            features capture the structural readiness for multilateral engagement even
-            before the political will materialises. Niger may be in an analogous
-            pre-negotiation phase: its indicators are building the structural case for
-            re-engagement while the political surface maintains the isolation posture.
-          </p>
-
-          {/* Section 4 */}
           <h2
-            id="why-niger-not-mali-burkina"
+            id="aes-frame-misses"
             className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
           >
-            4. Why Niger, Not Mali or Burkina Faso
-          </h2>
-          <p>The AES has three members. Why does only Niger show this divergence?</p>
-          <p>
-            Mali&apos;s QGI profile (Risk Score 64/100 [56&ndash;72], Civil War 48/100,
-            #44 of 83) shows none of the recipe-level signals Niger carries. It has no
-            Multilateral Agreement score, no Elections score, no Bilateral Treaty score in
-            the current run. Its top structural peers, listed above, cluster around
-            complex multi-party civil conflicts and contested governance rather than the
-            bilateral engagement dynamics visible in Niger&apos;s profile. Mali is
-            structurally mid-table in a broad conflict-affected cohort. It carries no
-            strong forward-looking treaty signal in either direction.
-          </p>
-          <p>
-            Burkina Faso, as detailed above, is structurally moving in the opposite
-            direction from Niger: deeper conflict, lower multilateral trajectory, lower
-            bilateral engagement trajectory.
-          </p>
-          <p>
-            Niger&apos;s structural distinctiveness within the AES is driven by three
-            factors a field analyst can name.
-          </p>
-          <p>
-            <strong>First, the uranium economy.</strong> Niger produces approximately 5%
-            of the world&apos;s uranium and is France&apos;s primary supplier. Uranium
-            extraction requires a degree of external commercial engagement (multinational
-            mining contracts, international commodity pricing, export infrastructure) that
-            creates structural dependencies on external economic institutions even when
-            political alignment is hostile. These economic dependencies leave traces in
-            fiscal and trade indicator trajectories that the model reads as
-            structural-engagement signals.
-          </p>
-          <p>
-            <strong>Second, the demographic starting point.</strong> Niger&apos;s extreme
-            demographic indicators (highest fertility rate globally, very young median
-            age, very low female labour force participation) mean that even marginal
-            improvements register as large proportional changes in a trend-feature model.
-            The model reads these movements as structural preparation for multilateral
-            engagement. In Niger&apos;s case, they may be more directly a consequence of
-            population structure than of any diplomatic intention.
-          </p>
-          <p>
-            <strong>Third, the ECOWAS sanctions experience.</strong> Unlike Burkina Faso,
-            which was sanctioned but less severely, Niger experienced a near-complete
-            ECOWAS embargo from August 2023 to February 2024. The embargo and its lifting
-            left visible traces in Niger&apos;s fiscal and trade indicators.
-            Sanctions-and-relief cycles produce the kind of fiscal trajectory changes that
-            the Multilateral Agreement model reads as structural engagement signals.
-          </p>
-
-          {/* Pull-quote 2 */}
-          <PullQuote>
-            &ldquo;The dominant indicators driving Niger&apos;s signal are fiscal and
-            demographic. They are not moved by AES membership agreements or Russia
-            security protocols. They are moved by the underlying economic and demographic
-            dynamics of a uranium-export economy with an extreme demographic
-            profile.&rdquo;
-          </PullQuote>
-
-          {/* Section 5 */}
-          <h2 id="forward-call" className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
-            5. The Forward Call
+            3. The Bosnia template
           </h2>
           <p>
-            By Q4 2026, Niger&apos;s structural trajectory on the Multilateral Agreement
-            recipe, absent a reversal in the indicator trends that drive it, will generate
-            observable diplomatic movement toward structured dialogue with the ECOWAS
-            secretariat. This will not be re-entry into ECOWAS. It will take the form of a
-            formal communication or informal diplomatic contact seeking a structured
-            negotiation framework: the kind of outreach that historically precedes treaty
-            re-engagement by 1 to 3 years on the model&apos;s historical template.
+            The model did not decide Niger looks promising from nowhere. It learned from
+            countries that have already walked this path. The clearest historical analogue
+            in the model&apos;s training data is Bosnia and Herzegovina, which today
+            scores 99 out of 100 on the same recipe, the highest score globally.
           </p>
-          <p>
-            <strong>The falsification event.</strong> If by December 31, 2026, the CNSP
-            government has made no formal or documented informal communication to the
-            ECOWAS secretariat seeking any form of structured dialogue (not re-entry, not
-            sanctions relief, just dialogue), the structural trajectory reading is wrong.
-            Multiple independent sources would need to confirm the absence of contact: a
-            denial from the ECOWAS Executive Secretariat plus silence from Niger&apos;s
-            own foreign ministry.
-          </p>
-          <p>
-            The alternative path: the structural indicators are correct in their direction
-            but the political constraint (Tchiani&apos;s personal position, Russia-backed
-            isolation doctrine, internal CNSP disagreement) delays the manifestation by
-            more than the Q4 2026 window. In that case the structural reading is
-            directionally correct but the timing is wrong. QGI&apos;s historical lead
-            times on the Multilateral Agreement recipe range from &minus;4 to +1 years
-            (per the Bosnia dashboard data), so the window uncertainty is genuinely wide.
-          </p>
-
-          {/* Section 6 */}
-          <h2
-            id="what-qgi-doesnt-see"
-            className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
-          >
-            6. What QGI Doesn&apos;t See, and Why the Case Holds Anyway
-          </h2>
 
           <Chart4BosniaTemplate />
 
           <p>
-            <strong>The Russia dependency.</strong> Niger&apos;s agreement with
-            Wagner/Africa Corps creates a structural incentive for continued isolation
-            that QGI&apos;s indicator base cannot capture. PMC contracts do not appear in
-            SIPRI arms transfer data. Russian advisory missions are not reflected in the
-            sovereignty index changes that drive the diplomacy L1 dimension. The
-            structural case for Niger&apos;s re-engagement trajectory competes with a
-            political economy of Wagner dependence that is invisible to QGI.
+            What Bosnia looked like in the mid-1990s, as it began rebuilding after the
+            Dayton Agreement, is the structural pattern the model now detects in Niger:
+            improving fiscal trajectory, improving labour market integration, slowly
+            improving governance. By the time the international institutional framework
+            formally locked in (IMF, World Bank, EU process), Bosnia&apos;s indicator
+            trajectory had already been moving that direction for years.
           </p>
           <p>
-            <strong>The AES institutional inertia.</strong> The confederation has created
-            a bureaucratic and political architecture with its own momentum. Even if
-            Niger&apos;s CNSP leadership wanted to pursue re-engagement, the AES framework
-            creates costs for defection. These institutional dynamics are not captured in
-            per-country indicator scoring.
-          </p>
-          <p>
-            <strong>V-Dem country bias.</strong> The Voice and Accountability indicator
-            (0.40 importance in Niger&apos;s Multilateral Agreement fingerprint) carries a
-            &ldquo;Possible country bias&rdquo; caveat. This signals that V-Dem&apos;s
-            coding methodology may produce artefactual readings in post-coup environments
-            where institutional continuity is disrupted.
-          </p>
-          <p>
-            <strong>No anchor battery.</strong> The Multilateral Agreement recipe has no
-            anchored historical case for Niger itself in the current scoring run. This
-            means there is no &ldquo;Niger has been here before, and the model called it
-            right&rdquo; track-record statement available; the case rests on the
-            recipe&apos;s cohort-wide validation, not country-specific past performance.
-          </p>
-          <p>
-            Despite these gaps, the structural case holds for a specific reason. The
-            dominant indicators driving Niger&apos;s Multilateral Agreement signal are not
-            diplomatic or governance indicators. They are fiscal and demographic. Tax
-            revenue trajectory (0.60 importance) and female labour force participation
-            (0.53 importance) are structural conditions that persist independently of
-            political alliances. They are not moved by AES membership agreements or Russia
-            security protocols. They are moved by the underlying economic and demographic
-            dynamics of a uranium-export economy with an extreme demographic profile. And
-            those dynamics are pointing in a direction the political surface contradicts.
+            The lesson the model draws: structural readiness comes before political
+            decision. Bosnia&apos;s indicators were moving toward multilateral engagement
+            four years before the political agreement was signed.
           </p>
 
-          {/* Section 7 */}
+          <h2 id="forward-call" className="text-xl sm:text-2xl font-semibold mt-10 mb-3">
+            4. The forward call
+          </h2>
+          <p>
+            Based on the model&apos;s historical pattern, here is what to expect by the
+            end of 2026: some form of formal or informal communication from Niger&apos;s
+            CNSP government to the ECOWAS secretariat. Not asking to rejoin. Just asking
+            to talk. A structured dialogue framework, not full membership.
+          </p>
+          <p>
+            This is falsifiable. If by December 31, 2026, no such communication has
+            occurred, verified by both the ECOWAS Executive Secretariat and Niger&apos;s
+            foreign ministry, the structural reading was wrong.
+          </p>
+
+          <h2
+            id="what-qgi-doesnt-see"
+            className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
+          >
+            5. What the model cannot see
+          </h2>
+          <p>
+            The model has blind spots that matter for this call. It cannot see Wagner
+            Group / Africa Corps deployments. Those do not show up in World Bank data, but
+            they create powerful political incentives for continued isolation.
+          </p>
+          <p>
+            It cannot see the AES bureaucracy itself, which has its own institutional
+            momentum and creates costs for any member that wants to defect.
+          </p>
+          <p>
+            It cannot fully trust the Voice and Accountability indicator. The data source
+            for that metric was built to measure democratic institutions, and it does not
+            translate cleanly to coup-government contexts. The platform flags this caveat
+            explicitly.
+          </p>
+          <p>
+            And it does not have a historical Niger case to validate against, only the
+            broader 58-country cohort.
+          </p>
+          <p>
+            Despite all that, the structural argument holds for one reason: the indicators
+            driving Niger&apos;s score are not political. Tax revenue and female labour
+            force participation are not moved by AES membership agreements or Russian
+            security protocols. They are moved by the underlying economics, a
+            uranium-export economy with an extreme demographic profile, and those
+            economics are pointing in a direction the political surface contradicts.
+          </p>
+
+          <PullQuote>
+            &ldquo;Tax revenue and female labour force participation are not moved by AES
+            membership agreements. They are moved by the underlying economics, and those
+            economics are pointing in a direction the political surface
+            contradicts.&rdquo;
+          </PullQuote>
+
           <h2
             id="implications-for-ecowas"
             className="text-xl sm:text-2xl font-semibold mt-10 mb-3"
           >
-            7. Implications for the ECOWAS Reconstitution Debate
+            6. What this means for Western diplomacy
           </h2>
           <p>
-            The structural reading has a direct diplomatic implication. The current
-            consensus in AU and ECOWAS circles is that all three AES states are equally
-            hostile to re-engagement and that the path to Sahel reintegration requires a
-            change of regime, not a change of policy.
+            The current consensus in AU and ECOWAS circles is that all three AES states
+            are equally hostile to re-engagement, and that the path to Sahel reintegration
+            requires regime change, not policy change. The structural reading says that
+            consensus is probably wrong about Niger specifically.
           </p>
           <p>
-            QGI&apos;s structural reading suggests this consensus may be wrong for Niger
-            specifically. If Niger&apos;s indicator trajectory is correctly reading a
-            structural readiness for re-engagement, the diplomatic strategy should
-            differentiate: engaging Niger&apos;s junta separately from Burkina
-            Faso&apos;s, offering a structured dialogue framework that is distinct from
-            full re-entry, and allowing the structural conditions to create political
-            space for Tchiani&apos;s government to signal openness without losing AES
-            solidarity.
+            Niger may not need a different junta. It may need a different conversation. A
+            structured dialogue framework that does not demand immediate ECOWAS re-entry.
+            One that lets the structural conditions create political space without forcing
+            the CNSP government to publicly break ranks with the AES.
           </p>
           <p>
-            For a regional diplomacy that has spent two years treating the AES as a
-            monolith, the recipe-level divergence is a small but concrete handhold for
-            differentiated engagement.
+            For a regional diplomacy that has spent two years treating the three states as
+            one analytical unit, the divergence is a small but concrete handhold.
           </p>
 
-          {/* Pull-quote 3 */}
           <PullQuote>
-            &ldquo;For a regional diplomacy that has spent two years treating the AES as a
-            monolith, the recipe-level divergence is a small but concrete handhold for
-            differentiated engagement.&rdquo;
+            &ldquo;Niger may not need a different junta. It may need a different
+            conversation.&rdquo;
           </PullQuote>
 
-          {/* Methodology aside (E8) */}
           <aside
             id="methodology-footnote"
             role="note"
@@ -774,10 +501,9 @@ export default function NigerBurkinaDivergenceReportPage() {
               className="text-[10px] tracking-widest uppercase font-semibold mb-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Methodology
+              The numbers, in one place
             </div>
             <p className="mb-2">
-              QGI data:{" "}
               <Link
                 href={"/countries/niger" as Route}
                 className="underline underline-offset-2"
@@ -785,63 +511,38 @@ export default function NigerBurkinaDivergenceReportPage() {
               >
                 Niger
               </Link>{" "}
-              Risk Score 89/100 [83&ndash;94], Multilateral Agreement Precedent Match
-              94/100 [84&ndash;100] #4 of 58, Elections &amp; Voting 93/100 [88&ndash;97]
-              #10 of 131, Civil War &amp; Insurgency 57/100 #36 of 83 &middot;{" "}
+              overall risk score: 89 out of 100 (CI 83&ndash;94), HIGH tier. Multilateral
+              Agreement recipe: 94 out of 100 (CI 84&ndash;100), ranked 4th of 58.{" "}
               <Link
                 href={"/countries/burkina_faso" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >
                 Burkina Faso
-              </Link>{" "}
-              Risk Score 90/100 [85&ndash;94], Civil War &amp; Insurgency 81/100 #16 of
-              83, Multilateral Agreement 2/100 #57 of 58, Elections 59/100 &middot;{" "}
+              </Link>
+              : 90 out of 100 (CI 85&ndash;94), HIGH tier. Multilateral Agreement: 2 out
+              of 100 (CI 0&ndash;5), ranked 57th of 58.{" "}
               <Link
                 href={"/countries/mali" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >
                 Mali
-              </Link>{" "}
-              Risk Score 64/100 [56&ndash;72], Civil War 48/100 #44 of 83 &middot;
-              Multilateral Agreement recipe: LOCO AUC 0.8689, ECE 0.009, N=58, STRONG
-              evidence grade &middot; Niger&apos;s Multilateral Agreement indicator
-              fingerprint: Tax revenue change importance 0.60, Female LFPR change 0.53,
-              Voice &amp; Accountability change 0.40 (Possible country bias) &middot;
-              Bosnia and Herzegovina: #1 globally on Multilateral Agreement at 99/100
-              [96&ndash;100], lead times &minus;4 to +1 year &middot; Niger&shy;Burkina
-              Faso cosine peer: 95% similarity on the 8-dimension L1 composite &middot;
-              April 2026 scoring run (generated {BAKE_DATE}) &middot; QGI V1.9.1.
+              </Link>
+              : 64 out of 100 (CI 56&ndash;72). The Multilateral Agreement recipe is the
+              platform&apos;s most validated model (LOCO AUC 0.8689, calibration error
+              0.009). The Niger / Burkina Faso 95% similarity is computed across all 8
+              risk dimensions in the platform&apos;s overall risk profile. Data through
+              the April 2026 scoring run on QG Intelligence V1.9.1.
             </p>
             <p className="mb-2">
-              Methodology disclosures: (1){" "}
-              <strong>Wagner / Africa Corps presence is not captured.</strong> World Bank
-              arms transfer indicators and SIPRI series do not reflect informal PMC
-              deployments, advisory contracts, or mining-for-security exchanges. The
-              re-engagement reading is conditional on these dynamics not overwhelming the
-              structural substrate. (2){" "}
-              <strong>
-                AES confederation institutional dynamics are not scored per-country.
-              </strong>{" "}
-              The bloc&apos;s bureaucratic momentum creates costs for defection that QGI
-              does not model. (3){" "}
-              <strong>V-Dem &ldquo;Possible Country Bias&rdquo; caveat</strong> applies to
-              the Voice and Accountability indicator (0.40 importance) for Niger.
-              V-Dem&apos;s historical training data reflects institutional dynamics that
-              map imperfectly onto junta consolidation periods. (4){" "}
-              <strong>
-                No <Fn n={12}>anchor battery</Fn> for Niger
-              </strong>{" "}
-              in the Multilateral Agreement recipe&apos;s current locked set: there is no
-              prior closed Niger window where the recipe&apos;s prediction can be
-              cross-checked against an actual outcome. The case rests on the recipe&apos;s
-              cohort-wide LOCO validation, not country-specific past performance. (5){" "}
-              <strong>The 95% cosine figure is the composite L1 cosine similarity</strong>{" "}
-              on the 8-dimension risk vector and reflects regime+conflict+governance
-              co-presence; the recipe-level Precedent Match scores in this piece are
-              computed from a different, trend-features-based scoring path that the cosine
-              peer construction does not see.
+              What QG cannot see, and what we have already noted in the piece: Wagner /
+              Africa Corps deployments do not appear in World Bank data; AES institutional
+              inertia is not modelled per country; the Voice and Accountability indicator
+              carries a flag for &ldquo;possible country bias&rdquo; in post-coup
+              contexts; the Multilateral Agreement recipe has no historical Niger case in
+              the current training set, so this call rests on the cohort-wide validation
+              rather than a country-specific track record.
             </p>
             <p>
               See{" "}
@@ -850,13 +551,13 @@ export default function NigerBurkinaDivergenceReportPage() {
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >
-                QGI methodology
+                the methodology page
               </Link>{" "}
-              for scoring run details, recipe construction, and cohort definitions.
+              for how recipes are built, what LOCO AUC measures, and how confidence
+              intervals are computed.
             </p>
           </aside>
 
-          {/* End-of-piece CTA (E6) */}
           <aside
             className="my-8 rounded-lg p-6 print:hidden"
             style={{
@@ -871,8 +572,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               <strong style={{ color: "var(--qgi-text)" }}>
                 Explore the underlying data.
               </strong>{" "}
-              Niger&apos;s full risk profile (salience scores, precedent matches, and
-              structural peers) is at{" "}
+              Niger&apos;s full risk profile is at{" "}
               <Link
                 href={"/countries/niger" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
@@ -880,7 +580,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               >
                 qgintelligence.com/countries/niger
               </Link>
-              . Burkina Faso&apos;s profile is at{" "}
+              . Burkina Faso&apos;s is at{" "}
               <Link
                 href={"/countries/burkina_faso" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
@@ -888,7 +588,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               >
                 /countries/burkina_faso
               </Link>
-              . The Multilateral Agreement precedent cohort (58 countries ranked) is at{" "}
+              . The Multilateral Agreement recipe page (58 countries ranked) is at{" "}
               <Link
                 href={"/precedents/multilateral_agreement" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
@@ -896,29 +596,19 @@ export default function NigerBurkinaDivergenceReportPage() {
               >
                 /precedents/multilateral_agreement
               </Link>
-              . The methodology behind the scoring is at{" "}
-              <Link
-                href={"/methodology" as Route}
-                className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-accent)" }}
-              >
-                /methodology
-              </Link>
-              . If your organisation would like to commission country-specific structural
-              analysis of this kind, or discuss access to QGI&apos;s full dataset, write
-              to{" "}
+              . To commission country-specific structural analysis or discuss access to
+              QG&apos;s full dataset, write to{" "}
               <a
-                href="mailto:contact@qgintelligence.com"
+                href="mailto:amin@qgintelligence.com"
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >
-                contact@qgintelligence.com
+                amin@qgintelligence.com
               </a>
               .
             </p>
           </aside>
 
-          {/* Static footnotes list (E7) */}
           <section
             id="footnotes"
             className="my-8 pt-6"
@@ -929,7 +619,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               className="text-[10px] tracking-widest uppercase font-semibold mb-4"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Term definitions
+              Quick definitions
             </div>
             <ol className="space-y-3 text-xs leading-relaxed list-none p-0">
               {FOOTNOTES.map((fn) => (
@@ -958,18 +648,13 @@ export default function NigerBurkinaDivergenceReportPage() {
             </ol>
           </section>
 
-          {/* Dateline */}
           <p
             className="text-xs mt-12 pt-6 border-t"
-            style={{
-              color: "var(--qgi-text-dim)",
-              borderColor: "var(--qgi-border)",
-            }}
+            style={{ color: "var(--qgi-text-dim)", borderColor: "var(--qgi-border)" }}
           >
-            Published {PUBLISH_DATE} &middot; QG Intelligence &middot; By Amin Al-Ait
-            &middot; Salience values cited from the {BAKE_DATE} V1.9.1 scoring run. This
-            piece reports structural pattern resemblance and historical-analogue
-            comparison. It is not a forecast.
+            Published {PUBLISH_DATE} · QG Intelligence · By Amin Al-Ait · Scores from the{" "}
+            {BAKE_DATE} V1.9.1 scoring run. This piece reports structural pattern
+            resemblance and historical-analogue comparison. It is not a forecast.
           </p>
         </div>
       </article>
