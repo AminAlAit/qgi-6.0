@@ -5,6 +5,7 @@ import type { PatternWindowTier } from "@/app/(app)/patterns/[slug]/page";
 import type { PatternTrajectory } from "@/lib/pattern-trajectory";
 import { PatternTrajectoryCell } from "@/components/patterns/PatternTrajectoryCell";
 import { formatDataThrough } from "@/lib/format-bake-date";
+import { PatternScdiPager } from "@/components/patterns/PatternScdiPager";
 
 /**
  * Merged Patterns per-pattern detail — Build PR #3 of 5 (A3 Family 4).
@@ -429,6 +430,19 @@ export function PatternMergedDetail({
           />
         </div>
       </section>
+
+      {/* ============== Section 4 — SCDI panels (paginated, 4 per page) ============== */}
+      {row.country_a_id != null && row.country_b_id != null && (
+        <PatternScdiPager
+          country_a_id={row.country_a_id}
+          country_b_id={row.country_b_id}
+          start_year_a={row.start_year_a}
+          start_year_b={row.start_year_b}
+          length={row.pattern_length}
+          countryAName={row.country_a}
+          countryBName={row.country_b}
+        />
+      )}
 
       {/* ============== Cross-family handoffs footer ============== */}
       <section
