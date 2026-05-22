@@ -189,11 +189,11 @@ export default function LegalPage() {
             For questions about these terms, data use, or to exercise your data rights,
             contact:{" "}
             <a
-              href="mailto:aminalait.de@gmail.com"
+              href="mailto:amin@qgintelligence.com"
               style={{ color: "var(--qgi-accent)" }}
               className="hover:underline"
             >
-              aminalait.de@gmail.com
+              amin@qgintelligence.com
             </a>
           </p>
         </Section>
