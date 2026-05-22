@@ -268,8 +268,7 @@ export default async function LandingPage() {
             >
               QGI surfaces economically-grounded risk candidates that analysts should
               examine. We find historical precedents in World Bank data spanning{" "}
-              {TOTAL_COUNTRIES} countries and {TOTAL_INDICATORS} indicators (data through{" "}
-              {DATA_VINTAGE_YEAR}).
+              {TOTAL_COUNTRIES} countries and {TOTAL_INDICATORS} indicators.
             </p>
             <div className="mt-8 flex items-center gap-4">
               <Link
@@ -433,7 +432,7 @@ export default async function LandingPage() {
                 label="Scale"
                 value={TOTAL_PATTERNS}
                 unit="patterns"
-                desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} economic indicators (data through ${DATA_VINTAGE_YEAR}). Every pairwise relationship, every historical window, examined.`}
+                desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} economic indicators. Every pairwise relationship, every historical window, examined.`}
               />
               <Differentiator
                 label="Method"
@@ -622,7 +621,7 @@ export default async function LandingPage() {
               </p>
               <div className="flex flex-col gap-4">
                 <a
-                  href="mailto:aminalait.de@gmail.com?subject=Demo%20Request"
+                  href="mailto:amin@qgintelligence.com?subject=Demo%20Request"
                   className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110 w-fit"
                   style={{
                     backgroundColor: "var(--qgi-accent)",
@@ -632,11 +631,11 @@ export default async function LandingPage() {
                   Request a Demo
                 </a>
                 <a
-                  href="mailto:aminalait.de@gmail.com"
+                  href="mailto:amin@qgintelligence.com"
                   className="text-sm transition-colors hover:text-[var(--qgi-accent)]"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
-                  aminalait.de@gmail.com
+                  amin@qgintelligence.com
                 </a>
               </div>
             </div>
@@ -718,11 +717,11 @@ export default async function LandingPage() {
                 Contact
               </a>
               <a
-                href="mailto:aminalait.de@gmail.com"
+                href="mailto:amin@qgintelligence.com"
                 className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                aminalait.de@gmail.com
+                amin@qgintelligence.com
               </a>
             </div>
           </div>
