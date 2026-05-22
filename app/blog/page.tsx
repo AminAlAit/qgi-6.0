@@ -34,11 +34,12 @@ const POSTS: Array<{
   tags: string[];
 }> = [
   {
-    slug: "burkina-faso-mali-car-precedent",
-    title: "Burkina Faso's risk signature mirrors Mali 2010-2012 and CAR 2011-2013",
-    date: "2026-05-16",
-    dek: "Five risk domains light up together on Burkina Faso in our current bake. The same combination preceded the 2012 Mali coup and the 2013 Central African Republic collapse. What that structural resemblance means — and what it doesn't.",
-    tags: ["field-note", "precedent", "Sahel"],
+    slug: "foreign-intervention-graduation",
+    title:
+      "Foreign Intervention, graduated: what eighteen years of indicator trajectories say",
+    date: "2026-05-23",
+    dek: "QGI's first ML-validated recipe earns its risk score. Four indicators, eighteen years, two hard validation gates cleared. The mechanic is similarity to a historical pre-crisis trajectory — and the line between similarity and probability is where this piece spends most of its time.",
+    tags: ["methodology", "ML", "graduation"],
   },
   {
     slug: "recipe-rebuild-level-4",

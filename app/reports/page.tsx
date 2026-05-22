@@ -236,6 +236,32 @@ export default function ReportsPage() {
             </p>
           </Link>
 
+          {/* Burkina Faso — listed but intentionally not yet linked. */}
+          <div
+            className="block rounded-lg border p-6 cursor-not-allowed opacity-60"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              borderColor: "var(--qgi-border)",
+            }}
+            aria-disabled="true"
+          >
+            <div
+              className="text-[10px] tracking-widest uppercase mb-2"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Country Analysis · May 2026
+            </div>
+            <h2 className="text-lg font-semibold mb-1">
+              Burkina Faso&apos;s risk signature mirrors Mali 2010-2012 and CAR 2011-2013
+            </h2>
+            <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              Five risk domains light up together on Burkina Faso in our current bake. The
+              same combination preceded the 2012 Mali coup and the 2013 Central African
+              Republic collapse. What that structural resemblance means — and what it
+              doesn&apos;t.
+            </p>
+          </div>
+
           {/* Upcoming report placeholder */}
           <div
             className="rounded-lg border p-6 opacity-50"
