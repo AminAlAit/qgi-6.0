@@ -75,7 +75,7 @@ const INDICATORS = [
   },
   {
     code: "v2elintmon",
-    label: "Government internet monitoring",
+    label: "International election monitoring",
     source: "V-Dem",
     weightPct: "5%",
   },
