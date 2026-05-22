@@ -162,6 +162,14 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // /recipes/foreign_intervention was live briefly (2026-05-22 to 2026-05-23)
+      // before the recipes route was torn down in favor of a blog graduation
+      // article. Preserve any inbound bookmark or link.
+      {
+        source: "/recipes/foreign_intervention",
+        destination: "/blog/foreign-intervention-graduation",
+        permanent: true,
+      },
       // Patterns V2: drop the V1-era "discover-patterns" prefix.
       // PR-vii (2026-05-15) — :slug* sub-route redirects removed; their
       // destinations (patterns-v2a/[slug], patterns-v2b/[slug]) don't exist

@@ -45,6 +45,11 @@ const STATIC_ROUTES: Array<{
   // 301-redirects via next.config.ts. Removed from sitemap to avoid
   // surfacing a redirecting URL.
   {
+    path: "/blog/foreign-intervention-graduation",
+    changeFrequency: "monthly",
+    priority: 0.65,
+  },
+  {
     path: "/blog/burkina-faso-mali-car-precedent",
     changeFrequency: "monthly",
     priority: 0.5,
