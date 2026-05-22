@@ -15,12 +15,21 @@ Implements:
 
 Bindings honored:
   - Tariq T20-1/2: no same-walk-data amendments; positive provenance required
-  - Ji-Hoon R1: fold-variance computed + MLP-trigger fired BEFORE LOCK gate eval
+  - Ji-Hoon R1: DEPRECATED via F-ML-N §4.2 amendment 2026-05-22; XGBoost is now
+    binding for N_pos>=60; fold-variance is informational diagnostic only (§4.2-SD)
   - Ji-Hoon R2: full LOCO across all 9 windows; no subsampling
   - Miriam M14-1: full-window per-tertile temporal profile in trajectory signature
   - Roshani R18-A/B: BCa bootstrap (B=2000); window_ci method explicit
   - Marcus M8-1/2: per-recipe floor provenance annotation; unified field-3 schema
   - Nasrin N-2: window_search_auxiliary_note in DECISION emit
+
+F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864, 8/8 ratified):
+  - Original §4.2 fold-variance MLP trigger (threshold 0.05) REMOVED
+  - XGBoost is binding for N_pos>=60; no automatic architecture swap
+  - New §4.2-SD: mandatory stability diagnostic (LOW/MODERATE/HIGH labels);
+    does NOT gate architecture; informational only
+  - MLP not eliminated from menu; reintroduction requires F-ML-N+1 pre-reg
+  - Amendment artifact: qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md
 
 Mechanical correctness fix (2026-05-22): country_id normalization replaces `_`
 with ` ` before `.title()` to match parquet panel + cohort-assignments format.
@@ -91,8 +100,11 @@ THIN_RECIPE_CAP = 5  # N_pos < 60 → outer loop cap
 # §5.4 window grid
 WINDOW_GRID = [3, 5, 7, 10, 12, 15, 18, 21, 25]
 
-# §4.2 MLP fold-variance trigger
-MLP_FOLD_VARIANCE_TRIGGER = 0.05
+# §4.2 MLP fold-variance trigger — DEPRECATED 2026-05-22 per F-ML-N amendment
+# (qgi-aws-tf#864). XGBoost is now binding for N_pos>=60; no automatic MLP swap.
+# Constant retained as a historical record only (not referenced in active code).
+# See qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md
+MLP_FOLD_VARIANCE_TRIGGER_DEPRECATED = 0.05  # noqa: F841 — kept for archival reference
 
 # §3.1 Roshani R18-A bootstrap
 BCA_BOOTSTRAP_B = 2000
@@ -1000,25 +1012,44 @@ def _main(argv: list[str] | None = None) -> int:
     LOG.info("Greedy result: %d selected, window=%s, final_AUC=%.4f",
              len(greedy["selected_indicators"]), greedy["chosen_window"], greedy["final_global_auc"])
 
-    # Final fit with selected set + chosen window
-    LOG.info("=== FINAL LOCO + FOLD-VARIANCE ===")
+    # Final fit with selected set + chosen window.
+    # Per F-ML-N §4.2 amendment 2026-05-22: XGBoost is BINDING for N_pos >= 60.
+    # The prior §4.2 fold-variance MLP trigger is removed entirely (cross-recipe
+    # empirical evidence: civil_war + econ_recession both showed MLP collapse
+    # by ~0.20 AUC). MLP is preserved in §4.1 menu but cannot be auto-swapped
+    # without a fresh F-ML-N+1 pre-registration. See:
+    # qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md
+    LOG.info("=== FINAL LOCO ===")
     X, y, c, yr = build_X_y(samples, greedy["selected_indicators"], greedy["chosen_window"], panels)
-    final_xgb = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=args.seed)
-    fv = fold_variance(final_xgb["per_country_auc"])
-    LOG.info("XGBoost final LOCO-AUC=%.4f, fold-variance=%.4f", final_xgb["global_auc"], fv)
+    final = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=args.seed)
+    chosen_arch = architecture
+    LOG.info("%s final LOCO-AUC=%.4f", chosen_arch, final["global_auc"])
 
-    # Ji-Hoon R1 MLP trigger: mechanical, pre-LOCK examination
-    mlp_trigger_decision_ts = datetime.now(timezone.utc).isoformat()
-    trigger_mlp = fv > MLP_FOLD_VARIANCE_TRIGGER
-    if trigger_mlp:
-        LOG.info("MLP trigger fired (fold-variance %.4f > %.2f). Swapping to MLP.", fv, MLP_FOLD_VARIANCE_TRIGGER)
-        final = fit_predict_loco(X, y, c, yr, architecture="MLP", seed=args.seed)
-        chosen_arch = "MLP"
+    # §4.2-SD informational stability diagnostic (per Kwame BLOCKING rider:
+    # MANDATORY logging per walk; non-optional). Records fold-variance + label
+    # but does NOT gate architecture. Per Miriam M14-R5 BLOCKING: persistent
+    # HIGH variance MAY be cited as contextual evidence in support of a future
+    # F-ML-N+1 amendment, which requires its own prior-walk provenance + 8/8
+    # ratification INDEPENDENT of this §4.2-SD signal.
+    fv = fold_variance(final["per_country_auc"])
+    if fv < 0.04:
+        stability_label = "LOW"
+    elif fv <= 0.10:
+        stability_label = "MODERATE"
     else:
-        final = final_xgb
-        chosen_arch = "XGBoost"
+        stability_label = "HIGH"
+    LOG.info("§4.2-SD diagnostic: fold-variance=%.4f, label=%s (informational only; does NOT gate architecture)",
+             fv, stability_label)
+    stability_diagnostic = {
+        "fold_variance": float(fv),
+        "label": stability_label,
+        "per_country_loco_auc": {k: float(v) for k, v in final["per_country_auc"].items()},
+        "thresholds": {"LOW_upper": 0.04, "MODERATE_upper": 0.10},
+        "informational_only": True,
+        "amendment_reference": "F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md",
+    }
 
-    # LOCK gate eval (Ji-Hoon R1: AFTER MLP trigger)
+    # LOCK gate eval
     lock_gate_eval_ts = datetime.now(timezone.utc).isoformat()
     LOG.info("=== LOCK GATE EVAL ===")
 
@@ -1131,12 +1162,11 @@ def _main(argv: list[str] | None = None) -> int:
         "architecture": chosen_arch,
         "architecture_provenance": {
             "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
-            "mlp_trigger_fold_variance": float(fv),
-            "mlp_trigger_threshold": MLP_FOLD_VARIANCE_TRIGGER,
-            "mlp_triggered": bool(trigger_mlp),
-            "mlp_trigger_decision_ts": mlp_trigger_decision_ts,
+            "amendment_reference": "F-ML-N §4.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; §4.2 fold-variance MLP trigger removed entirely",
+            "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-§4.2-amendment-2026-05-22.md",
             "lock_gate_eval_ts": lock_gate_eval_ts,
         },
+        "stability_diagnostic": stability_diagnostic,
         "per_recipe_floor_provenance": {
             "hybrid_baseline": hybrid_baseline,
             "lock_floor": lock_floor,
