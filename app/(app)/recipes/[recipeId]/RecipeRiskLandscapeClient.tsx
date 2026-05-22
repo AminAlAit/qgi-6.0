@@ -90,10 +90,10 @@ interface ShapBarChartProps {
 }
 
 const INDICATOR_LABELS: Record<string, string> = {
-  "RQ.EST": "Rule of Law (RQ.EST)",
-  v2pepwrgen: "Female political power (v2pepwrgen)",
-  v2stfisccap: "Fiscal capacity (v2stfisccap)",
-  v2elintmon: "Electoral integrity monitor (v2elintmon)",
+  "RQ.EST": "Regulatory Quality (RQ.EST)",
+  v2pepwrgen: "Power distribution by gender (v2pepwrgen)",
+  v2stfisccap: "State fiscal capacity (v2stfisccap)",
+  v2elintmon: "Govt internet monitoring (v2elintmon)",
 };
 
 export function ShapBarChart({ indicators }: ShapBarChartProps) {
