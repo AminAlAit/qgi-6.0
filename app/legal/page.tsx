@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PublicNav } from "@/components/PublicNav";
 
 export const metadata: Metadata = {
   title: "Legal · QG Intelligence",
@@ -46,6 +47,7 @@ export default function LegalPage() {
               Intelligence
             </span>
           </Link>
+          <PublicNav />
         </div>
       </header>
 

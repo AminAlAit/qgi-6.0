@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { PublicNav } from "@/components/PublicNav";
 import { getDisplayableReports, getLatestForRail } from "./_data/reports-manifest";
 import { LatestRail } from "./_components/LatestRail";
 import { CategoryFilteredGrid } from "./_components/CategorySegmentedControl";
@@ -53,25 +54,7 @@ export default function ReportsPage() {
               Intelligence
             </span>
           </Link>
-          <nav className="flex items-center gap-4">
-            <Link
-              href="/methodology"
-              className="text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Methodology
-            </Link>
-            <Link
-              href="/dashboard"
-              className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
-              style={{
-                backgroundColor: "var(--qgi-accent)",
-                color: "var(--qgi-bg)",
-              }}
-            >
-              Open Dashboard
-            </Link>
-          </nav>
+          <PublicNav currentPage="reports" />
         </div>
       </header>
 

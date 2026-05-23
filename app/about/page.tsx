@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { PublicNav } from "@/components/PublicNav";
 
 export const metadata: Metadata = {
   title: "About · QG Intelligence",
   description:
-    "QG Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment. QGI emerged after six project iterations since 2021.",
+    "QG Intelligence (Quantitative Geopolitical Intelligence) is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment.",
   alternates: {
     canonical: "https://qgintelligence.com/about",
   },
   openGraph: {
     title: "About · QG Intelligence",
     description:
-      "Meet the founder. QG Intelligence bridges data engineering and geopolitical risk.",
+      "Meet the founder. QG Intelligence bridges data engineering and quantitative geopolitical analysis.",
     url: "https://qgintelligence.com/about",
     images: [
       {
@@ -30,17 +31,14 @@ export const metadata: Metadata = {
   },
 };
 
-/* Founder page (Q2 decision, ship with full bio + photo + LinkedIn).
-   Bio content provided by Amin in decisions-form 2026-04-18 Q2 comment,
-   polished into prose here.
+/* /about, public marketing page. Redesigned 2026-05-23 by Sard mini-Majles
+   3-seat synthesis (Rodrigo / Sunita / Tomás). Hero stays as founder block;
+   approved mission + vision live in a structurally separate institutional
+   band between hero and bio; bio rewritten around the founder's authentic
+   origin moment (TU Dortmund + EA FC) and the platform's OSINT framing.
 
-   2026-04-19: moved from app/(app)/about to app/about so the page
-   lives in the PUBLIC marketing surface (no sidebar/dashboard chrome).
-   Users landing from the header "About" nav link now see a clean
-   standalone page rather than being dropped into the app shell.
-
-   2026-04-19 (later): purged all em-dashes from the visible bio
-   per user. Copy now uses commas, colons, and period breaks. */
+   Old page lives at app/about/_classic-backup/page.tsx for single-rename
+   revert. */
 
 export default function AboutPage() {
   return (
@@ -48,7 +46,7 @@ export default function AboutPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* ─── Navbar (mirrors landing) ─────────────────────────────────── */}
+      {/* Top nav */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
@@ -60,10 +58,7 @@ export default function AboutPage() {
           <Link href="/" className="flex items-baseline gap-1" title="Home">
             <span
               className="font-data text-sm tracking-[0.25em] font-semibold"
-              style={{
-                color: "var(--qgi-accent)",
-                marginRight: "-0.25em",
-              }}
+              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
             >
               QG
             </span>
@@ -74,44 +69,12 @@ export default function AboutPage() {
               Intelligence
             </span>
           </Link>
-          <nav className="flex items-center gap-3 sm:gap-6">
-            <Link
-              href="/reports"
-              className="hidden md:inline-flex text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Reports
-            </Link>
-            <Link
-              href="/methodology"
-              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Methodology
-            </Link>
-            <Link
-              href="/about"
-              className="text-[10px] sm:text-xs tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              About
-            </Link>
-            <Link
-              href="/dashboard"
-              className="text-[10px] sm:text-xs tracking-wider uppercase px-3 sm:px-4 py-1.5 sm:py-2 rounded transition-colors whitespace-nowrap"
-              style={{
-                backgroundColor: "var(--qgi-accent)",
-                color: "var(--qgi-bg)",
-              }}
-            >
-              Open Dashboard
-            </Link>
-          </nav>
+          <PublicNav currentPage="about" />
         </div>
       </header>
 
       <div className="max-w-4xl mx-auto px-6 py-10 sm:py-16">
-        {/* Hero */}
+        {/* Hero: founder block */}
         <div className="grid gap-8 md:grid-cols-[220px_1fr] md:items-start">
           <div className="flex-shrink-0 mx-auto md:mx-0">
             <div
@@ -140,7 +103,11 @@ export default function AboutPage() {
               Amin Al-Ait
             </h1>
             <p className="mt-3 text-base" style={{ color: "var(--qgi-text-muted)" }}>
-              Founder, QG Intelligence · Cloud Data Engineer
+              Founder, QG Intelligence{" "}
+              <span style={{ color: "var(--qgi-text-dim)" }}>
+                (Quantitative Geopolitical Intelligence)
+              </span>{" "}
+              · Cloud Data Engineer
             </p>
             <div className="mt-5 flex flex-wrap items-center gap-3">
               <a
@@ -157,6 +124,19 @@ export default function AboutPage() {
                 LinkedIn
               </a>
               <a
+                href="https://medium.com/@AminAlAit"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium border transition-all hover:brightness-110"
+                style={{
+                  borderColor: "var(--qgi-border)",
+                  color: "var(--qgi-text)",
+                }}
+              >
+                <MediumIcon />
+                Medium
+              </a>
+              <a
                 href="mailto:amin@qgintelligence.com"
                 className="inline-flex items-center gap-2 rounded px-4 py-2 text-sm font-medium border transition-all hover:brightness-110"
                 style={{
@@ -170,7 +150,53 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Bio */}
+        {/* Mission + Vision: institutional band, structurally separated. */}
+        <section
+          aria-label="Platform mission and vision"
+          className="mt-12 py-10 grid gap-10 md:gap-12"
+          style={{
+            borderTop: "1px solid var(--qgi-border)",
+            borderBottom: "1px solid var(--qgi-border)",
+          }}
+        >
+          <div>
+            <div
+              className="text-[10px] tracking-[0.25em] uppercase mb-3 font-data"
+              style={{ color: "var(--qgi-text-dim)" }}
+              aria-hidden="true"
+            >
+              Mission
+            </div>
+            <p
+              className="text-[15px] sm:text-base leading-[1.7]"
+              style={{ color: "var(--qgi-text)" }}
+            >
+              QG Intelligence finds the structural fingerprints countries leave across
+              their economic, political, and governance indicators before major events,
+              matches them against a curated historical record, and surfaces reproducible
+              precedents that analysts can evaluate on the evidence.
+            </p>
+          </div>
+          <div>
+            <div
+              className="text-[10px] tracking-[0.25em] uppercase mb-3 font-data"
+              style={{ color: "var(--qgi-text-dim)" }}
+              aria-hidden="true"
+            >
+              Vision
+            </div>
+            <p
+              className="text-[15px] sm:text-base leading-[1.7]"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              A world where geopolitical risk is read from the data, patterns, and
+              precedents themselves, where every assessment is clear and grounded, and
+              where the evidence does the talking rather than the pundit or the black box.
+            </p>
+          </div>
+        </section>
+
+        {/* Bio: How QGI came to be */}
         <section className="mt-12 max-w-3xl">
           <h2
             className="text-[10px] font-mono tracking-[0.2em] uppercase mb-4"
@@ -183,62 +209,76 @@ export default function AboutPage() {
             style={{ color: "var(--qgi-text-muted)" }}
           >
             <p>
-              I have always been drawn to two things that rarely meet: the quiet,
-              measurable <em>behavior of countries</em>, the indicators, the trajectories,
-              the trends hiding under the headlines, and the loud, human shape of{" "}
-              <em>geopolitics</em>, the crises, the transitions, the inflection points
-              that redraw the map.
+              The question that started QG Intelligence came from a football video game.
+              As a Data Science student at TU Dortmund, I was playing EA FC (formerly
+              FIFA) and found myself more interested in the underlying player ratings than
+              the game itself. EA had built a system that could represent the performance
+              and behavior of individual footballers as a structured, comparable score
+              from a dense set of observable indicators. I kept returning to a single
+              question: could you do the same for countries? Not their GDP, not their
+              headline political classification, but their behavioral fingerprint across
+              dozens of economic, political, and governance dimensions, tracked over time.
             </p>
             <p>
-              My professional path has been data science and data engineering. Building
-              pipelines, taming messy telemetry, shipping systems that distill noise into
-              signal. For years I wondered whether the craft I practiced every day could
-              bridge into the domain I quietly read about every night: whether cloud-scale
-              data could say something honest about geopolitical risk, without
-              overclaiming, without the pundit reflex.
+              That question sat in the background through my engineering work. The version
+              I kept coming back to was more specific: if you could encode a
+              country&apos;s indicator trajectory in the years before a major event, could
+              you find other countries that had followed the same path? Not as a
+              simulation, and not as a causal claim. Simply as a structural match, the way
+              a diagnostician looks for a clinical picture in the historical record.
             </p>
             <p>
-              QGI is the answer I arrived at, after six project iterations since 2021. The
-              idea is simple, even if the execution took years: every country leaves a
-              structural trace in its economic indicators. Trajectories repeat. Events
-              that happened to one country in 1998 sometimes correlate with another
-              country&apos;s current path, quietly, decades later. QGI systematically
-              finds those correlations at scale, pairs them with a curated historical
-              record, and surfaces <em>precedents</em>, not forecasts, that analysts can
-              examine on the evidence.
+              The closest analogue I found early on was the Saudi-Azeri pair. Two
+              countries from different regions, different governance traditions, and
+              different economic structures, that nonetheless showed striking convergence
+              across governance and economic indicators in the period before significant
+              geopolitical events. That convergence was not a prediction. It was a pattern
+              that surfaced from the data, that a trained analyst could interrogate,
+              contest, or rule out. That is what I wanted QGI to surface.
             </p>
             <p>
-              The product is open-methodology by design. The data foundation is World
-              Bank, CC BY 4.0. The backtest numbers are documented, flaws and all. The
-              platform is still expanding: indicators, curated countries, partnerships.
-              I&apos;m building it in the open, one regeneration at a time.
+              Early versions were rough. The platform has gone through six major rebuilds
+              since 2021. The honest number I track is the lift in the top-50 country
+              rankings over a random baseline: it has moved from 0.07 to 0.14 to 0.19
+              across successive methodology iterations. That is not a dramatic figure. It
+              represents incremental, evidence-accountable improvement in the core task.
             </p>
             <p>
-              The ambition reaches further than the current product. I want QGI to serve
-              the buyers who quietly shape risk decisions, the insurance underwriters, the
-              policy analysts, the sovereign risk teams, the writers who cover political
-              instability for audiences with real budgets. The incumbents who serve them
-              today are expensive, closed, and often inflexible. I believe there is room
-              for something different: data-driven and human-curated at once, transparent
-              rather than authoritative, continually improving against honest benchmarks
-              rather than selling polished certainty.
+              The data infrastructure behind QGI draws on Open Source Intelligence
+              sourcing across the full set of countries the platform covers. The
+              integration spans political, economic, governance, and institutional
+              indicators from multiple public providers. No single source dominates. The
+              methodology is designed to be auditable: every precedent match comes with
+              the indicators that drove it, the historical record it was matched against,
+              and the scoring logic that produced the result.
             </p>
             <p>
-              The early numbers are modest and I publish them as they are, including the
-              misses. What I can point to with confidence is a trajectory. The margin by
-              which QGI beats the simplest baseline has grown across three releases, from
-              0.07 to 0.14 to 0.19. The next twelve to eighteen months are about turning
-              that trajectory into something a sophisticated analyst would stake a
-              decision on.
+              The intended audience is not the general public. I built QGI for analysts
+              who already work in geopolitical risk: insurance underwriters pricing
+              sovereign exposure, policy analysts building scenario frameworks, sovereign
+              risk teams at financial institutions, writers who cover political
+              instability for audiences with real budgets. These are professionals who are
+              skeptical of black-box outputs and need to understand the evidence chain
+              behind any conclusion. QGI is designed to show its work.
             </p>
             <p>
-              If any of that resonates, or if you work somewhere QGI could be useful,
-              I&apos;d enjoy hearing from you.
+              I am a Cloud Data Engineer by background. I built QGI because the question
+              from that TU Dortmund afternoon never stopped being interesting. The
+              infrastructure, the methodology, and the platform are the result of working
+              on that question seriously for five years without the pressure of a
+              commercial deadline. Whether QGI becomes a product or a research
+              contribution, the analytical core will remain the same: structural
+              fingerprints, historical precedents, and reproducible evidence.
+            </p>
+            <p>
+              The platform is still expanding. It is also imperfect, and thorny in places.
+              If any of that resonates, or if you work somewhere QGI could be useful, I
+              would enjoy hearing from you.
             </p>
           </div>
         </section>
 
-        {/* Footer links */}
+        {/* Footer onward-links */}
         <section
           className="mt-12 pt-8 border-t"
           style={{ borderColor: "var(--qgi-border)" }}
@@ -252,11 +292,18 @@ export default function AboutPage() {
               Read the methodology →
             </Link>
             <Link
-              href="/countries"
+              href="/reports"
               className="hover:underline"
               style={{ color: "var(--qgi-accent)" }}
             >
-              Browse country profiles →
+              Browse reports →
+            </Link>
+            <Link
+              href="/blog"
+              className="hover:underline"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Latest development updates →
             </Link>
           </div>
         </section>
@@ -275,6 +322,20 @@ function LinkedInIcon() {
       aria-hidden="true"
     >
       <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.852 3.37-1.852 3.601 0 4.267 2.37 4.267 5.455v6.288zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
+  );
+}
+
+function MediumIcon() {
+  return (
+    <svg
+      width={16}
+      height={16}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+    >
+      <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42c1.87 0 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z" />
     </svg>
   );
 }
