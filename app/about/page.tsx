@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
   title: "About · QG Intelligence",
   description:
-    "QG Intelligence (Quantitative Geopolitical Intelligence) is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment.",
+    "QG Intelligence is built by Amin Al-Ait, a cloud data engineer bridging data science and geopolitical risk assessment.",
   alternates: {
     canonical: "https://qgintelligence.com/about",
   },
@@ -46,6 +47,15 @@ export default function AboutPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
+      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link.
+          Matches landing's pattern; gives keyboard users a one-Tab jump to
+          the bio/mission content past the sticky nav. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
+      >
+        Skip to content
+      </a>
       {/* Top nav */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -73,7 +83,11 @@ export default function AboutPage() {
         </div>
       </header>
 
-      <div className="max-w-4xl mx-auto px-6 py-10 sm:py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="max-w-4xl mx-auto px-6 py-10 sm:py-16"
+      >
         {/* Hero: founder block */}
         <div className="grid gap-8 md:grid-cols-[220px_1fr] md:items-start">
           <div className="flex-shrink-0 mx-auto md:mx-0">
@@ -307,7 +321,8 @@ export default function AboutPage() {
             </Link>
           </div>
         </section>
-      </div>
+      </main>
+      <PublicFooter />
     </div>
   );
 }
