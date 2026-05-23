@@ -231,8 +231,8 @@ export default function ForeignInterventionGraduationPage() {
             What QGI means by &ldquo;recipe&rdquo;
           </h2>
           <p>
-            The methodology North Star defines a recipe as five components. Every recipe
-            must specify all five before it can carry a published score:
+            The Methodology Charter defines a recipe as five components. Every recipe must
+            specify all five before it can carry a published score:
           </p>
           <ol className="list-decimal pl-6 space-y-2">
             <li>
@@ -588,8 +588,8 @@ export default function ForeignInterventionGraduationPage() {
             The methodology pause that preceded this graduation was deliberate. For most
             of QGI&apos;s life, the scoring pipeline produced numbers without an
             ML-validated recipe substrate. The numbers were useful upstream of the
-            validation gates the North Star demanded — and we said so — but they did not
-            constitute a graduated recipe.
+            validation gates the Methodology Charter demanded — and we said so — but they
+            did not constitute a graduated recipe.
           </p>
           <p>
             Foreign intervention is the first to clear those gates. Two parallel walks

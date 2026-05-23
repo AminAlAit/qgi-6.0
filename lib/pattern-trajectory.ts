@@ -7,7 +7,7 @@
  *   - the FOLLOWER's current position within its projected arc
  *
  * The "terminating event" is the 4th of the 5 recipe components per the
- * QGI methodology North Star (`qgi-docs/internal/methodology-north-star.md`):
+ * QGI Methodology Charter (`qgi-docs/internal/methodology-charter.md`):
  *   "what the recipe leads to (the precedent's outcome)."
  *
  * R7 personas (all 5 independently) asked for this on /patterns. EIC's
