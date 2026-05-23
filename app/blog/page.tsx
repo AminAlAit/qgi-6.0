@@ -131,6 +131,81 @@ export default function BlogIndexPage() {
           </p>
         </div>
 
+        {/* Pinned: Recipe Tracker — always at the top, above all posts */}
+        <div className="mb-10">
+          <Link
+            href={"/blog/recipe-tracker" as Route}
+            className="group block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
+            style={{
+              backgroundColor: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderLeft: "3px solid var(--qgi-accent)",
+              boxShadow: "0 0 12px rgba(56, 189, 248, 0.08)",
+            }}
+          >
+            <div className="p-5">
+              {/* Eyebrow with LIVE badge */}
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  className="text-[10px] tracking-widest uppercase font-semibold"
+                  style={{ color: "var(--qgi-accent)" }}
+                >
+                  Pinned
+                </span>
+                <span
+                  className="text-[10px] tracking-widest uppercase"
+                  style={{ color: "var(--qgi-text-dim)" }}
+                >
+                  &middot;
+                </span>
+                {/* LIVE badge */}
+                <span className="flex items-center gap-1.5">
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: "inline-block",
+                      width: "7px",
+                      height: "7px",
+                      borderRadius: "50%",
+                      backgroundColor: "var(--qgi-success)",
+                      animation: "qgi-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                    }}
+                  />
+                  <span
+                    className="text-[10px] tracking-widest uppercase font-semibold"
+                    style={{ color: "var(--qgi-success)" }}
+                  >
+                    Live
+                  </span>
+                </span>
+              </div>
+              <h2
+                className="text-xl font-semibold mb-2 group-hover:underline"
+                style={{ color: "var(--qgi-text)" }}
+              >
+                Recipe Tracker
+              </h2>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                Live status board for all 71 QGI recipes — across 8 geopolitical families.
+                One graduated. Six in validation. Sixty-four queued. Graduation requires
+                clearing hard validation gates in held-out historical data, and most
+                candidates will not.
+              </p>
+            </div>
+          </Link>
+
+          {/* Inline keyframe for the pulsing dot */}
+          <style>{`
+            @keyframes qgi-pulse {
+              0%, 100% { opacity: 1; }
+              50% { opacity: 0.3; }
+            }
+          `}</style>
+        </div>
+
         <ul className="space-y-8">
           {POSTS.map((p) => (
             <li
