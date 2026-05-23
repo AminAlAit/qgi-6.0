@@ -994,9 +994,16 @@ def _main(argv: list[str] | None = None) -> int:
             "silently dropped (verify normalize_country_id covers them): %s",
             sample_panel_path.name, sorted(missing_in_panel),
         )
+    # Load cohort-assignments.json ONCE at startup and retain in memory
+    # for the LOCK GATE EVAL phase. Reading the file a second time at LOCK
+    # GATE EVAL (~4-5h later) was the failure mode on the original walk-4
+    # attempt 2026-05-22 — a git checkout in qgi-data between startup and
+    # eval swapped the working-tree file out, crashing the eval after the
+    # full greedy outer loop had already run.
     with open(args.cohort_sidecar, encoding="utf-8") as _f:
-        _cohort_keys_for_check = set(json.load(_f)["assignments"].keys())
-    missing_in_cohorts = pos_countries_for_check - _cohort_keys_for_check
+        _cohort_payload = json.load(_f)
+    cohort_assignments_cached = _cohort_payload["assignments"]
+    missing_in_cohorts = pos_countries_for_check - set(cohort_assignments_cached.keys())
     if missing_in_cohorts:
         LOG.warning(
             "Countries in positives.csv not in cohort-assignments.json — "
@@ -1083,10 +1090,11 @@ def _main(argv: list[str] | None = None) -> int:
     LOG.info("BCa bootstrap on Global LOCO-AUC (B=%d)...", BCA_BOOTSTRAP_B)
     auc_ci = bca_bootstrap_auc_ci(final["probs"], final["labels"], B=BCA_BOOTSTRAP_B, seed=args.seed)
 
-    # Per-cohort LOCO + ECE
+    # Per-cohort LOCO + ECE — reuses the cohort_assignments dict loaded
+    # at startup (cohort_assignments_cached) rather than re-reading from
+    # disk. See startup-load rationale comment for the failure mode.
     LOG.info("Per-cohort LOCO + ECE...")
-    with open(args.cohort_sidecar, encoding="utf-8") as f:
-        cohort_assignments = json.load(f)["assignments"]
+    cohort_assignments = cohort_assignments_cached
     per_cohort = per_cohort_loco_and_ece(
         final["probs"], final["labels"], final["countries"], final["years"], cohort_assignments
     )
