@@ -4,6 +4,7 @@ import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
+import { SkipLink } from "@/components/SkipLink";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 import { countrySlug } from "@/lib/slug";
 import {
@@ -172,34 +173,9 @@ export default async function LandingPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/*
-       * #738 item 1 (2026-05-16), WCAG 2.4.1 Bypass Blocks (level A).
-       *
-       * Pre-fix: the landing page had no `<main>` landmark and no skip
-       * link. Keyboard users had to Tab through every nav link, hero
-       * CTA, and preview card on every page visit before reaching the
-       * "How It Works" / methodology body. Screen readers had no main
-       * landmark to jump to.
-       *
-       * Fix: visually-hidden skip-anchor at the top of the body that
-       * becomes visible on focus (standard `sr-only focus:not-sr-only`
-       * pattern matching the (app) route group's existing skip-link).
-       * Target is `#main-content` on a `<main tabIndex={-1}>` wrapper
-       * around the page body below the `<header>`.
-       *
-       * The (app) route group at `app/(app)/layout.tsx` already provides
-       * skip-link + main landmark for the in-app routes (dashboard,
-       * countries, patterns, signals, precedents, etc.). This fix
-       * extends parity to the landing page. Other public routes
-       * (/about, /blog, /legal, /login, /methodology root, /reports)
-       * lack the landmark too and are tracked as a follow-up under #738.
-       */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
-      >
-        Skip to content
-      </a>
+      {/* #738 skip-link. Extracted to shared <SkipLink /> 2026-05-24 (parity
+          across landing + /about + /reports + /methodology + /blog + /legal). */}
+      <SkipLink />
       {/* ─── Navbar ─────────────────────────────────────────────────── */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -239,7 +215,7 @@ export default async function LandingPage() {
         </div>
       </header>
 
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
         {/* ─── Hero ───────────────────────────────────────────────────── */}
         <section className="mx-auto max-w-6xl px-6 pt-24 pb-20">
           <div className="max-w-3xl">
