@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
  *   the prior LandingHeaderNav).
  */
 
-export type PublicPage = "reports" | "methodology" | "about" | "blog" | null;
+export type PublicPage = "reports" | "methodology" | "about" | "blog" | "legal" | null;
 
 type PublicNavProps = {
   currentPage?: PublicPage;
