@@ -82,15 +82,22 @@ const INDICATORS = [
 ] as const;
 
 const TOP_3 = [
-  { country: "Iran", score: "98.1", file: "Iran-vs-foreign_intervention.png" },
+  {
+    country: "Iran",
+    score: "98.1",
+    band: "96.6–98.4",
+    file: "Iran-vs-foreign_intervention.png",
+  },
   {
     country: "Turkmenistan",
     score: "97.0",
+    band: "95.6–97.2",
     file: "Turkmenistan-vs-foreign_intervention.png",
   },
   {
     country: "Equatorial Guinea",
     score: "96.9",
+    band: "95.4–97.1",
     file: "Equatorial_Guinea-vs-foreign_intervention.png",
   },
 ] as const;
@@ -407,6 +414,12 @@ export default function ForeignInterventionGraduationPage() {
                       >
                         {entry.score} · HIGH
                       </span>
+                      <span
+                        className="font-data tabular-nums text-xs font-normal ml-2"
+                        style={{ color: "var(--qgi-text-dim)" }}
+                      >
+                        (80% band {entry.band})
+                      </span>
                     </h3>
                   </div>
                   <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
@@ -440,6 +453,18 @@ export default function ForeignInterventionGraduationPage() {
             closely across the full eighteen-year window. In Equatorial Guinea&apos;s
             case, the alignment is most pronounced on regulatory quality and fiscal
             capacity. The aggregate is similar; the substrate is country-specific.
+          </p>
+
+          <p>
+            The band after each score (e.g. Iran &ldquo;98.1, 80% band
+            96.6&ndash;98.4&rdquo;) is a margin of error, not decoration. We compute it by
+            bootstrap-resampling the historical events that define the canonical shape and
+            watching how much each country&apos;s score moves. It is honest about a real
+            limit: the canonical shape for this recipe rests on far fewer events than the
+            headline count suggests &mdash; its most heavily-weighted indicator,
+            regulatory quality, is anchored on 46 historical instances. The band makes
+            that uncertainty visible rather than hiding it behind a single confident
+            number. Iran stays firmly in the HIGH zone even at the low end of its band.
           </p>
 
           {/* The validation that earned the graduation */}
