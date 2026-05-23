@@ -12,7 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Recipe Tracker · QG Intelligence",
   description:
-    "Live status board for all 71 QGI recipes. One graduated. Six in validation. Sixty-four queued. Graduation requires clearing hard validation gates in held-out historical data — and most candidates will not.",
+    "Live status board for all 71 QGI recipes. One graduated. One in progress. Five in validation. Sixty-four queued. Graduation requires clearing hard validation gates in held-out historical data — and most candidates will not.",
   alternates: { canonical: "https://qgintelligence.com/blog/recipe-tracker" },
   openGraph: {
     title: "Recipe Tracker · QG Intelligence",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "Recipe Tracker · QG Intelligence",
     description:
-      "71 QGI recipes: 1 graduated, 6 in validation, 64 queued. Graduation requires cleared hard validation gates.",
+      "71 QGI recipes: 1 graduated, 1 in progress, 5 in validation, 64 queued. Graduation requires cleared hard validation gates.",
   },
 };
 
@@ -311,6 +311,7 @@ export default async function RecipeTrackerPage() {
   const families = groupByFamily(data.recipes);
 
   const graduatedCount = data.status_counts.graduated ?? 0;
+  const inProgressCount = data.status_counts.in_progress ?? 0;
   const inValidationCount =
     (data.status_counts.live_legacy ?? 0) +
     (data.status_counts.walked_no_graduation ?? 0);
@@ -413,6 +414,35 @@ export default async function RecipeTrackerPage() {
               </span>
               <span style={{ color: "var(--qgi-text-muted)" }}>Graduated</span>
             </div>
+            {inProgressCount > 0 && (
+              <div
+                className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
+                style={{
+                  backgroundColor: "rgba(56, 189, 248, 0.08)",
+                  border: "1px solid rgba(56, 189, 248, 0.25)",
+                }}
+              >
+                <span
+                  className="qgi-live-dot"
+                  aria-hidden="true"
+                  style={{
+                    display: "inline-block",
+                    width: "6px",
+                    height: "6px",
+                    borderRadius: "50%",
+                    backgroundColor: "var(--qgi-accent)",
+                    animation: "qgi-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                  }}
+                />
+                <span
+                  className="font-data tabular-nums font-semibold"
+                  style={{ color: "var(--qgi-accent)" }}
+                >
+                  {inProgressCount}
+                </span>
+                <span style={{ color: "var(--qgi-text-muted)" }}>In Progress</span>
+              </div>
+            )}
             <div
               className="flex items-center gap-2 px-3 py-1.5 rounded text-xs"
               style={{
@@ -481,7 +511,17 @@ export default async function RecipeTrackerPage() {
               a minimum share of holdout events in an out-of-time test. One recipe has
               cleared those gates:{" "}
               <strong style={{ color: "var(--qgi-text)" }}>Foreign Intervention</strong>.
-              Six recipes are{" "}
+              {inProgressCount > 0 && (
+                <>
+                  {" "}
+                  <strong style={{ color: "var(--qgi-accent)" }}>
+                    Elections &amp; Voting
+                  </strong>{" "}
+                  is <strong style={{ color: "var(--qgi-accent)" }}>In Progress</strong> —
+                  a validation walk is running against it as this board updates.
+                </>
+              )}{" "}
+              {inValidationCount} recipes are{" "}
               <strong style={{ color: "var(--qgi-text)" }}>In Validation</strong> — either
               live on the dashboard via an earlier scoring pathway, or walked through the
               ML framework without clearing all gates; their scores are not yet
