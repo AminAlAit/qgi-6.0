@@ -21,6 +21,7 @@ import path from "node:path";
 
 export type RecipeStatus =
   | "graduated"
+  | "in_progress"
   | "live_legacy"
   | "walked_no_graduation"
   | "queued";
@@ -119,6 +120,8 @@ export function tierLabel(status: RecipeStatus): string {
   switch (status) {
     case "graduated":
       return "Graduated";
+    case "in_progress":
+      return "In Progress";
     case "live_legacy":
     case "walked_no_graduation":
       return "In Validation";
