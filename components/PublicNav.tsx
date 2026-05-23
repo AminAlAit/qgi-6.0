@@ -145,6 +145,8 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
       {open && (
         <div
           id="public-mobile-menu"
+          role="navigation"
+          aria-label="Mobile menu"
           className="md:hidden absolute top-full right-0 mt-2 min-w-[180px] rounded border shadow-lg py-2 z-50"
           style={{
             backgroundColor: "var(--qgi-surface)",
