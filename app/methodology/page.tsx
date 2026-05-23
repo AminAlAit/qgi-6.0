@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { PublicNav } from "@/components/PublicNav";
 import StatCards from "@/components/methodology/StatCards";
 import Glossary from "@/components/methodology/Glossary";
 import VerificationFlow from "@/components/methodology/VerificationFlow";
@@ -77,16 +78,7 @@ export default async function MethodologyPage() {
               Intelligence
             </span>
           </Link>
-          <Link
-            href="/countries"
-            className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
-            style={{
-              backgroundColor: "var(--qgi-accent)",
-              color: "var(--qgi-bg)",
-            }}
-          >
-            Explore Countries
-          </Link>
+          <PublicNav currentPage="methodology" />
         </div>
       </header>
 

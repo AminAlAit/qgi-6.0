@@ -1,5 +1,6 @@
 import type { Metadata, Route } from "next";
 import Link from "next/link";
+import { PublicNav } from "@/components/PublicNav";
 
 export const metadata: Metadata = {
   title: "Blog · QG Intelligence",
@@ -99,16 +100,7 @@ export default function BlogIndexPage() {
               Intelligence
             </span>
           </Link>
-          <Link
-            href="/countries"
-            className="text-xs tracking-wider uppercase px-4 py-2 rounded transition-colors"
-            style={{
-              backgroundColor: "var(--qgi-accent)",
-              color: "var(--qgi-bg)",
-            }}
-          >
-            Explore Countries
-          </Link>
+          <PublicNav currentPage="blog" />
         </div>
       </header>
 
