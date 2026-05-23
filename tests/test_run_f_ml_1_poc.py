@@ -436,3 +436,33 @@ def test_f_ml_n_amendment_main_uses_helpers():
     assert 'stability_label = "LOW"' not in main_source, (
         "Label thresholding must live in _stability_label helper, not inlined"
     )
+
+
+def test_cohort_sidecar_loaded_only_once_in_main():
+    """Regression guard for the cohort-load-once invariant.
+
+    Trigger: 2026-05-23 walk-4 attempt #1 crashed at LOCK GATE EVAL with
+    FileNotFoundError on cohort-assignments.json after running ~4h. Root
+    cause: the driver opened args.cohort_sidecar TWICE — once at startup
+    validation and again at LOCK GATE EVAL ~4h later. Between the two
+    reads, a git checkout in the qgi-data working tree swapped the file
+    out, and the eval crashed after the full greedy outer loop had
+    completed (no checkpoint, so eval-only re-run was impossible).
+
+    Fix: load the file ONCE at startup into cohort_assignments_cached and
+    reuse for LOCK GATE EVAL. This test fails if anyone re-introduces a
+    second file read.
+    """
+    source = (SCRIPTS_DIR / "run_f_ml_1_poc.py").read_text(encoding="utf-8")
+    open_calls = source.count("open(args.cohort_sidecar")
+    assert open_calls == 1, (
+        f"Expected exactly 1 open(args.cohort_sidecar) call in driver; "
+        f"found {open_calls}. The cohort sidecar must be loaded ONCE at "
+        f"startup and cached in memory for LOCK GATE EVAL — see the "
+        f"feedback_verify_cohort_sidecar_before_walk memory rationale."
+    )
+    # And the cached variable MUST be referenced in the LOCK GATE EVAL phase.
+    assert "cohort_assignments_cached" in source, (
+        "Cached cohort assignments variable cohort_assignments_cached not "
+        "found — startup-load fix may have been reverted."
+    )
