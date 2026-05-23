@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 import { countrySlug } from "@/lib/slug";
 import {
@@ -614,7 +615,7 @@ export default async function LandingPage() {
                 style={{ color: "var(--qgi-text-muted)" }}
               >
                 QGI is actively working with political risk analysts, corporate strategy
-                teams, think tanks, and academics who want structured, data-driven
+                teams, think tanks, and academics who want structured, evidence-grounded
                 geopolitical intelligence. Reach out to discuss access, custom country
                 reports, or institutional licensing.
               </p>
@@ -660,99 +661,7 @@ export default async function LandingPage() {
         </section>
       </main>
 
-      {/* ─── Footer ─────────────────────────────────────────────────── */}
-      <footer
-        className="border-t"
-        style={{
-          borderColor: "var(--qgi-border)",
-          backgroundColor: "var(--qgi-surface)",
-        }}
-      >
-        <div className="mx-auto max-w-6xl px-6 py-10">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-6">
-            {/* Wordmark */}
-            <Link href="/" className="flex items-baseline gap-1" title="Home">
-              <span
-                className="font-data text-xs tracking-[0.25em] font-semibold"
-                style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-              >
-                QG
-              </span>
-              <span
-                className="text-[10px] tracking-widest uppercase"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                Intelligence
-              </span>
-            </Link>
-            {/* Footer nav. Order ratified by Sunita (IA consult 2026-05-23):
-                About → Methodology → Reports → Blog → Contact → Legal.
-                Footer scroll-through skews toward "context-seeking" so brand
-                items come first (reverse of top nav's discovery-first order). */}
-            <div className="flex items-center gap-6">
-              <Link
-                href="/about"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                About
-              </Link>
-              <Link
-                href="/methodology"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Methodology
-              </Link>
-              <Link
-                href="/reports"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Reports
-              </Link>
-              <Link
-                href="/blog"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Blog
-              </Link>
-              <a
-                href="#contact"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Contact
-              </a>
-              <Link
-                href="/legal"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Legal
-              </Link>
-            </div>
-          </div>
-          <div
-            className="border-t pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
-            style={{ borderColor: "var(--qgi-border)" }}
-          >
-            <span
-              className="text-[10px] tracking-wider"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              &copy; 2026 QG Intelligence. All rights reserved.
-            </span>
-            <span
-              className="text-[10px] tracking-wider uppercase"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Pattern Recurrence Intelligence
-            </span>
-          </div>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }
