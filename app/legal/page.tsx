@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
+import { SkipLink } from "@/components/SkipLink";
 
 export const metadata: Metadata = {
   title: "Legal · QG Intelligence",
@@ -24,13 +25,7 @@ export default function LegalPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link. */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
-      >
-        Skip to content
-      </a>
+      <SkipLink />
       {/* Navbar */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -59,7 +54,7 @@ export default function LegalPage() {
         </div>
       </header>
 
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <article className="mx-auto max-w-4xl px-6 py-16">
           <h1 className="text-3xl font-semibold mb-12">Legal</h1>
 
@@ -107,11 +102,14 @@ export default function LegalPage() {
 
             <H3>Data Sources</H3>
             <p>
-              QGI uses publicly available data from the World Bank (CC BY 4.0), and plans
-              to integrate data from V-Dem Institute (CC BY 4.0), FAOSTAT (CC BY 4.0),
-              ILOSTAT (CC BY 4.0), UNHCR (CC BY 4.0), UCDP (CC BY 4.0), and GDELT (CC0).
-              All source data is properly attributed. QGI&apos;s derived products (SCDIs,
-              Patterns, Precedents, Salience Scores) are original computations.
+              QGI uses publicly available data from multiple open-source providers,
+              including the World Bank, V-Dem Institute (University of Gothenburg),
+              FAOSTAT (FAO), ILOSTAT (ILO), UNHCR, UCDP (Uppsala University), and the
+              GDELT Project. All source data is properly attributed under its open license
+              (CC BY 4.0 for the named providers above, CC0 for GDELT). The full
+              attribution list is in the Data Attribution section below. QGI&apos;s
+              derived products (SCDIs, Patterns, Precedents, Salience Scores) are original
+              computations.
             </p>
 
             <H3>Limitation of Liability</H3>
