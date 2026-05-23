@@ -17,7 +17,7 @@ alignment. Deterministic (no random state). The §4.2 binding contract
 documented in the docstring below is honored verbatim.
 
 Authority lineage:
-    North Star (2026-05-17)
+    Methodology Charter (2026-05-17)
       -> DECISION §3 Layers 1-2 + Layer 7 (2026-05-17)
         -> modular architecture spec `06-modular-architecture.md` (2026-05-04)
           -> Stage 6 pre-reg §4 (commit e4f9e7a)

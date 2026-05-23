@@ -12,7 +12,7 @@ piece of the pipeline is the PyMC NUTS sampler inside the fitter, which is
 seeded explicitly per recipe at fit time.
 
 Authority lineage:
-    North Star (2026-05-17)
+    Methodology Charter (2026-05-17)
       -> DECISION (2026-05-17, R3 + R4 binding)
         -> Stage 6 §3 (Priya, Bayesian FPCA + hierarchical Bayes)
           -> this module.
