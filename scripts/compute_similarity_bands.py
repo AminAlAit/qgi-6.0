@@ -139,7 +139,11 @@ def collect_positive_trajectories(
                 baseline = series.loc[
                     max(event_year - 25, series.index.min()) : event_year - 1
                 ].dropna()
-                mu = float(baseline.mean()) if len(baseline) > 0 else 0.0
+                # Bare mean (matches build_canonical_profile_from_walk exactly):
+                # on an empty baseline this NaN-propagates and is absorbed by the
+                # np.where(isfinite) mask below — identical to production. A guarded
+                # `else 0.0` would diverge (it keeps a real z-vector), so do NOT add one.
+                mu = float(baseline.mean())
                 sd = float(baseline.std() or 1.0)
             else:
                 mu = float(panel_at_year.mean())
@@ -412,14 +416,14 @@ def _main(argv: list[str] | None = None) -> int:
         )
         prod_score = prod_data["risk_score"]
         delta = abs(our_result["risk_score"] - prod_score)
-        if delta > 0.5:
+        if delta > 0.1:
             log.warning("SELF-CHECK MISMATCH: %s  ours=%.2f  prod=%.2f  delta=%.3f",
                         country, our_result["risk_score"], prod_score, delta)
             n_mismatches += 1
     if n_mismatches == 0:
-        log.info("Self-check PASSED — all point estimates within 0.5 of production.")
+        log.info("Self-check PASSED — all point estimates within 0.1 of production.")
     else:
-        log.error("Self-check FAILED: %d countries deviate > 0.5 from production scores.", n_mismatches)
+        log.error("Self-check FAILED: %d countries deviate > 0.1 from production scores.", n_mismatches)
 
     # ------------------------------------------------------------------
     # 7. Bootstrap
