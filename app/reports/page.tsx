@@ -33,6 +33,13 @@ export default function ReportsPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
+      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
+      >
+        Skip to content
+      </a>
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
@@ -59,7 +66,11 @@ export default function ReportsPage() {
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 py-12 lg:py-16">
+      <main
+        id="main-content"
+        tabIndex={-1}
+        className="mx-auto max-w-6xl px-6 py-12 lg:py-16"
+      >
         <div className="mb-12">
           <div
             className="text-[10px] tracking-widest uppercase mb-3 font-data"
