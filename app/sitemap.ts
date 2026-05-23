@@ -41,6 +41,12 @@ const STATIC_ROUTES: Array<{
   { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
+  // Recipe Tracker: continuously updated as recipes graduate or enter validation.
+  {
+    path: "/blog/recipe-tracker",
+    changeFrequency: "weekly",
+    priority: 0.7,
+  },
   // Ghana piece moved to /reports (2026-05-19); /blog/ghana-mauritania-mirror
   // 301-redirects via next.config.ts. Removed from sitemap to avoid
   // surfacing a redirecting URL.
