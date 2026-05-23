@@ -1,0 +1,745 @@
+{
+  "generated": "2026-05-23",
+  "schema": "recipe-tracker-v1",
+  "n_recipes": 71,
+  "status_counts": {
+    "graduated": 1,
+    "live_legacy": 4,
+    "walked_no_graduation": 2,
+    "queued": 64
+  },
+  "recipes": [
+    {
+      "recipe_id": "elections_and_voting",
+      "label": "Elections & Voting",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Electoral Politics",
+      "status": "live_legacy",
+      "stats": null
+    },
+    {
+      "recipe_id": "government_formation",
+      "label": "Government Formation",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Government Formation",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "constitutional_change",
+      "label": "Constitutional Change",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Constitutional Change",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "decentralization_and_federalism",
+      "label": "Decentralization & Federalism",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Constitutional Change",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "democratic_transition",
+      "label": "Democratic Transition",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Democratic Transition",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "executive_power_consolidation",
+      "label": "Executive Power Consolidation",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Executive Power Consolidation",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "military_coup",
+      "label": "Military Coup",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Military Coup",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "transitional_justice",
+      "label": "Transitional Justice",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Transitional Justice",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "peacekeeping_and_peace_process",
+      "label": "Peacekeeping & Peace Process",
+      "l1_id": "A",
+      "l1_label": "Political Power",
+      "l1_color": "#7B5EE6",
+      "l2_label": "Peacekeeping & Peace Process",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "interstate_war",
+      "label": "Interstate War",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Interstate War",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "civil_war_and_insurgency",
+      "label": "Civil War & Insurgency",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Civil War & Insurgency",
+      "status": "live_legacy",
+      "stats": {
+        "loco_auc": 0.7786,
+        "verdict": "F-ML-1 HARD_FAIL (legacy-LOCK on dashboard)"
+      }
+    },
+    {
+      "recipe_id": "terrorist_attack",
+      "label": "Terrorist Attack",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Terrorism & Extremism",
+      "status": "walked_no_graduation",
+      "stats": {
+        "loco_auc": 0.8862,
+        "v1_separation_pp": 8.5,
+        "v4_oot_recall": 0.0,
+        "window_y": 3,
+        "n_indicators": 6,
+        "verdict": "MARGINAL \u00b7 similarity HARD-FAIL"
+      }
+    },
+    {
+      "recipe_id": "foreign_intervention",
+      "label": "Foreign Intervention",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Foreign Military Intervention",
+      "status": "graduated",
+      "stats": {
+        "loco_auc": 0.9147,
+        "v1_separation_pp": 25.8,
+        "v4_oot_recall": 0.867,
+        "window_y": 18,
+        "n_indicators": 4,
+        "blog_url": "/blog/foreign-intervention-graduation",
+        "verdict": "GRADUATED",
+        "n_countries_scored": 68
+      }
+    },
+    {
+      "recipe_id": "ethnic_and_communal_conflict",
+      "label": "Ethnic & Communal Conflict",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Ethnic & Communal Violence",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "political_violence",
+      "label": "Political Violence",
+      "l1_id": "B",
+      "l1_label": "Conflict & Violence",
+      "l1_color": "#E64545",
+      "l2_label": "Political Violence",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "political_repression",
+      "label": "Political Repression",
+      "l1_id": "C",
+      "l1_label": "Governance & Rights",
+      "l1_color": "#E68F29",
+      "l2_label": "Political Repression",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "political_corruption",
+      "label": "Political Corruption",
+      "l1_id": "C",
+      "l1_label": "Governance & Rights",
+      "l1_color": "#E68F29",
+      "l2_label": "Political Corruption",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "human_rights_violation",
+      "label": "Human Rights Violation",
+      "l1_id": "C",
+      "l1_label": "Governance & Rights",
+      "l1_color": "#E68F29",
+      "l2_label": "Human Rights Violations",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "human_rights_reform",
+      "label": "Human Rights Reform",
+      "l1_id": "C",
+      "l1_label": "Governance & Rights",
+      "l1_color": "#E68F29",
+      "l2_label": "Human Rights Reform",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "military_policy_and_reform",
+      "label": "Military Policy & Reform",
+      "l1_id": "C",
+      "l1_label": "Governance & Rights",
+      "l1_color": "#E68F29",
+      "l2_label": "Military Policy & Security Reform",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "currency_crisis",
+      "label": "Currency Crisis",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Currency & Banking Crisis",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "banking_and_financial_crisis",
+      "label": "Banking & Financial Crisis",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Currency & Banking Crisis",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "economic_recession",
+      "label": "Economic Recession",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Economic Recession & Austerity",
+      "status": "walked_no_graduation",
+      "stats": {
+        "loco_auc": 0.6978,
+        "verdict": "HARD_FAIL"
+      }
+    },
+    {
+      "recipe_id": "fiscal_policy_change",
+      "label": "Fiscal Policy Change",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Fiscal & Monetary Policy",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "monetary_policy_change",
+      "label": "Monetary Policy Change",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Fiscal & Monetary Policy",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "economic_liberalization",
+      "label": "Economic Liberalization",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Economic Liberalization",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "economic_nationalization",
+      "label": "Economic Nationalization",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Economic Nationalization",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "economic_recovery",
+      "label": "Economic Recovery",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Economic Recovery & Growth",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "economic_growth_milestone",
+      "label": "Economic Growth Milestone",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Economic Recovery & Growth",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "trade_agreement",
+      "label": "Trade Agreement",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Trade & Investment",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "trade_dispute",
+      "label": "Trade Dispute",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Trade & Investment",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "foreign_direct_investment",
+      "label": "Foreign Direct Investment",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Trade & Investment",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "industrial_policy",
+      "label": "Industrial Policy",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Trade & Investment",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "sanctions_and_arms_embargo",
+      "label": "Sanctions & Arms Embargo",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Trade & Investment",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "foreign_aid_and_development",
+      "label": "Foreign Aid & Development",
+      "l1_id": "D",
+      "l1_label": "Economic Stress",
+      "l1_color": "#3FA9F5",
+      "l2_label": "Foreign Aid & Development",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "mass_protest",
+      "label": "Mass Protest",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Mass Protest",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "labor_action",
+      "label": "Labor Action",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Labor Action",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "social_policy_reform",
+      "label": "Social Policy Reform",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Social Policy Reform",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "public_health_reform",
+      "label": "Public Health Reform",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Social Policy Reform",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "poverty_and_inequality_crisis",
+      "label": "Poverty & Inequality Crisis",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Poverty & Inequality",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "religious_and_social_movement",
+      "label": "Religious & Social Movement",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Religious & Social Movements",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "migration_and_refugees",
+      "label": "Migration & Refugees",
+      "l1_id": "E",
+      "l1_label": "Social Mobilization",
+      "l1_color": "#3FBF8F",
+      "l2_label": "Migration & Refugees",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "bilateral_treaty",
+      "label": "Bilateral Treaty",
+      "l1_id": "F",
+      "l1_label": "Diplomacy & Geopolitics",
+      "l1_color": "#9F7AEA",
+      "l2_label": "Bilateral Treaties",
+      "status": "live_legacy",
+      "stats": null
+    },
+    {
+      "recipe_id": "multilateral_agreement",
+      "label": "Multilateral Agreement",
+      "l1_id": "F",
+      "l1_label": "Diplomacy & Geopolitics",
+      "l1_color": "#9F7AEA",
+      "l2_label": "Multilateral Agreements",
+      "status": "live_legacy",
+      "stats": null
+    },
+    {
+      "recipe_id": "diplomatic_rupture",
+      "label": "Diplomatic Rupture",
+      "l1_id": "F",
+      "l1_label": "Diplomacy & Geopolitics",
+      "l1_color": "#9F7AEA",
+      "l2_label": "Diplomatic Rupture",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "territorial_disputes",
+      "label": "Territorial Disputes",
+      "l1_id": "F",
+      "l1_label": "Diplomacy & Geopolitics",
+      "l1_color": "#9F7AEA",
+      "l2_label": "Territorial Disputes",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "regional_integration",
+      "label": "Regional Integration",
+      "l1_id": "F",
+      "l1_label": "Diplomacy & Geopolitics",
+      "l1_color": "#9F7AEA",
+      "l2_label": "Regional Integration",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "earthquake",
+      "label": "Earthquake",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Natural Disaster",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "flood_and_cyclone",
+      "label": "Flood & Cyclone",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Natural Disaster",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "volcanic_eruption",
+      "label": "Volcanic Eruption",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Natural Disaster",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "natural_disaster",
+      "label": "Natural Disaster",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Natural Disaster",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "drought_and_famine",
+      "label": "Drought & Famine",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Drought & Famine",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "epidemic_and_pandemic",
+      "label": "Epidemic & Pandemic",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Epidemic & Pandemic",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "humanitarian_crisis",
+      "label": "Humanitarian Crisis",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Humanitarian Crisis",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "water_crisis",
+      "label": "Water Crisis",
+      "l1_id": "G",
+      "l1_label": "Humanitarian Crisis",
+      "l1_color": "#E94989",
+      "l2_label": "Water & Resource Crisis",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "energy_policy",
+      "label": "Energy Policy",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Energy Policy & Resources",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "oil_and_gas",
+      "label": "Oil & Gas",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Energy Policy & Resources",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "renewable_energy",
+      "label": "Renewable Energy",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Energy Policy & Resources",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "environmental_policy",
+      "label": "Environmental Policy",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Environmental Policy",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "climate_agreement",
+      "label": "Climate Agreement",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Climate Agreements",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "resource_conflict",
+      "label": "Resource Conflict",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Resource Conflict",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "infrastructure_project",
+      "label": "Infrastructure Project",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Infrastructure & Urban Development",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "urban_development",
+      "label": "Urban Development",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Infrastructure & Urban Development",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "education_reform",
+      "label": "Education Reform",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Education & Knowledge",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "education_and_research",
+      "label": "Education & Research",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Education & Knowledge",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "digital_policy",
+      "label": "Digital Policy",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Digital & Technology",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "technology_breakthrough",
+      "label": "Technology Breakthrough",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Digital & Technology",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "cyberattack",
+      "label": "Cyberattack",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Digital & Technology",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "cultural_and_heritage",
+      "label": "Cultural & Heritage",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Cultural & Heritage",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "sport_and_international_event",
+      "label": "Sport & International Event",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Cultural & Heritage",
+      "status": "queued",
+      "stats": null
+    },
+    {
+      "recipe_id": "agricultural_policy",
+      "label": "Agricultural Policy",
+      "l1_id": "H",
+      "l1_label": "Structural Trends",
+      "l1_color": "#7A8FA0",
+      "l2_label": "Agricultural Policy",
+      "status": "queued",
+      "stats": null
+    }
+  ]
+}
