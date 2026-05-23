@@ -79,6 +79,13 @@ export default function BlogIndexPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
+      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link. */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
+      >
+        Skip to content
+      </a>
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
@@ -105,151 +112,153 @@ export default function BlogIndexPage() {
         </div>
       </header>
 
-      <article className="mx-auto max-w-4xl px-6 py-16">
-        <div className="mb-12">
-          <div
-            className="text-[10px] tracking-widest uppercase mb-3"
-            style={{ color: "var(--qgi-accent)" }}
-          >
-            Blog
+      <main id="main-content" tabIndex={-1}>
+        <article className="mx-auto max-w-4xl px-6 py-16">
+          <div className="mb-12">
+            <div
+              className="text-[10px] tracking-widest uppercase mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Blog
+            </div>
+            <h1 className="text-3xl font-semibold mb-4">Development notes</h1>
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Honest writeups of what we shipped, what we measured, and what the numbers
+              actually mean. Not a product blog. Not marketing copy. Closer to a lab
+              notebook that happens to be public.
+            </p>
           </div>
-          <h1 className="text-3xl font-semibold mb-4">Development notes</h1>
-          <p
-            className="text-lg leading-relaxed"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            Honest writeups of what we shipped, what we measured, and what the numbers
-            actually mean. Not a product blog. Not marketing copy. Closer to a lab
-            notebook that happens to be public.
-          </p>
-        </div>
 
-        {/* Pinned: Recipe Tracker — always at the top, above all posts */}
-        <div className="mb-10">
-          <Link
-            href={"/blog/recipe-tracker" as Route}
-            className="group block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
-            style={{
-              backgroundColor: "var(--qgi-surface)",
-              border: "1px solid var(--qgi-border)",
-              borderLeft: "3px solid var(--qgi-accent)",
-              boxShadow: "0 0 12px rgba(56, 189, 248, 0.08)",
-            }}
-          >
-            <div className="p-5">
-              {/* Eyebrow with LIVE badge */}
-              <div className="flex items-center gap-2 mb-2">
-                <span
-                  className="text-[10px] tracking-widest uppercase font-semibold"
-                  style={{ color: "var(--qgi-accent)" }}
-                >
-                  Pinned
-                </span>
-                <span
-                  className="text-[10px] tracking-widest uppercase"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  &middot;
-                </span>
-                {/* LIVE badge */}
-                <span className="flex items-center gap-1.5">
-                  <span
-                    aria-hidden="true"
-                    style={{
-                      display: "inline-block",
-                      width: "7px",
-                      height: "7px",
-                      borderRadius: "50%",
-                      backgroundColor: "var(--qgi-success)",
-                      animation: "qgi-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-                    }}
-                  />
+          {/* Pinned: Recipe Tracker — always at the top, above all posts */}
+          <div className="mb-10">
+            <Link
+              href={"/blog/recipe-tracker" as Route}
+              className="group block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
+              style={{
+                backgroundColor: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+                borderLeft: "3px solid var(--qgi-accent)",
+                boxShadow: "0 0 12px rgba(56, 189, 248, 0.08)",
+              }}
+            >
+              <div className="p-5">
+                {/* Eyebrow with LIVE badge */}
+                <div className="flex items-center gap-2 mb-2">
                   <span
                     className="text-[10px] tracking-widest uppercase font-semibold"
-                    style={{ color: "var(--qgi-success)" }}
+                    style={{ color: "var(--qgi-accent)" }}
                   >
-                    Live
+                    Pinned
                   </span>
-                </span>
+                  <span
+                    className="text-[10px] tracking-widest uppercase"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    &middot;
+                  </span>
+                  {/* LIVE badge */}
+                  <span className="flex items-center gap-1.5">
+                    <span
+                      aria-hidden="true"
+                      style={{
+                        display: "inline-block",
+                        width: "7px",
+                        height: "7px",
+                        borderRadius: "50%",
+                        backgroundColor: "var(--qgi-success)",
+                        animation: "qgi-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                      }}
+                    />
+                    <span
+                      className="text-[10px] tracking-widest uppercase font-semibold"
+                      style={{ color: "var(--qgi-success)" }}
+                    >
+                      Live
+                    </span>
+                  </span>
+                </div>
+                <h2
+                  className="text-xl font-semibold mb-2 group-hover:underline"
+                  style={{ color: "var(--qgi-text)" }}
+                >
+                  Recipe Tracker
+                </h2>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "var(--qgi-text-muted)" }}
+                >
+                  Live status board for all 71 QGI recipes — across 8 geopolitical
+                  families. One graduated. Six in validation. Sixty-four queued.
+                  Graduation requires clearing hard validation gates in held-out
+                  historical data, and most candidates will not.
+                </p>
               </div>
-              <h2
-                className="text-xl font-semibold mb-2 group-hover:underline"
-                style={{ color: "var(--qgi-text)" }}
-              >
-                Recipe Tracker
-              </h2>
-              <p
-                className="text-sm leading-relaxed"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                Live status board for all 71 QGI recipes — across 8 geopolitical families.
-                One graduated. Six in validation. Sixty-four queued. Graduation requires
-                clearing hard validation gates in held-out historical data, and most
-                candidates will not.
-              </p>
-            </div>
-          </Link>
+            </Link>
 
-          {/* Inline keyframe for the pulsing dot */}
-          <style>{`
+            {/* Inline keyframe for the pulsing dot */}
+            <style>{`
             @keyframes qgi-pulse {
               0%, 100% { opacity: 1; }
               50% { opacity: 0.3; }
             }
           `}</style>
-        </div>
+          </div>
 
-        <ul className="space-y-8">
-          {POSTS.map((p) => (
-            <li
-              key={p.slug}
-              className="border-b pb-8"
-              style={{ borderColor: "var(--qgi-border)" }}
-            >
-              <Link href={`/blog/${p.slug}` as Route} className="group block">
-                <div
-                  className="text-[10px] tracking-wider uppercase mb-2"
-                  style={{ color: "var(--qgi-text-dim)" }}
-                >
-                  <time dateTime={p.date}>{p.date}</time>
-                  {" · "}
-                  {p.tags.join(" · ")}
-                </div>
-                <h2
-                  className="text-2xl font-semibold mb-3 transition-colors"
-                  style={{ color: "var(--qgi-text)" }}
-                >
-                  <span className="group-hover:underline">{p.title}</span>
-                </h2>
-                <p
-                  className="text-base leading-relaxed"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  {p.dek}
-                </p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul className="space-y-8">
+            {POSTS.map((p) => (
+              <li
+                key={p.slug}
+                className="border-b pb-8"
+                style={{ borderColor: "var(--qgi-border)" }}
+              >
+                <Link href={`/blog/${p.slug}` as Route} className="group block">
+                  <div
+                    className="text-[10px] tracking-wider uppercase mb-2"
+                    style={{ color: "var(--qgi-text-dim)" }}
+                  >
+                    <time dateTime={p.date}>{p.date}</time>
+                    {" · "}
+                    {p.tags.join(" · ")}
+                  </div>
+                  <h2
+                    className="text-2xl font-semibold mb-3 transition-colors"
+                    style={{ color: "var(--qgi-text)" }}
+                  >
+                    <span className="group-hover:underline">{p.title}</span>
+                  </h2>
+                  <p
+                    className="text-base leading-relaxed"
+                    style={{ color: "var(--qgi-text-muted)" }}
+                  >
+                    {p.dek}
+                  </p>
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        <footer
-          className="mt-16 pt-8 border-t text-sm"
-          style={{
-            borderColor: "var(--qgi-border)",
-            color: "var(--qgi-text-dim)",
-          }}
-        >
-          Want the full technical trail? See{" "}
-          <Link
-            href="/methodology"
-            className="underline"
-            style={{ color: "var(--qgi-accent)" }}
+          <footer
+            className="mt-16 pt-8 border-t text-sm"
+            style={{
+              borderColor: "var(--qgi-border)",
+              color: "var(--qgi-text-dim)",
+            }}
           >
-            our methodology page
-          </Link>
-          .
-        </footer>
-      </article>
+            Want the full technical trail? See{" "}
+            <Link
+              href="/methodology"
+              className="underline"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              our methodology page
+            </Link>
+            .
+          </footer>
+        </article>
+      </main>
       <PublicFooter />
     </div>
   );
