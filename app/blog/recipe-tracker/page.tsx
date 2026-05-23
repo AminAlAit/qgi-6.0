@@ -174,8 +174,11 @@ function GraduatedCard({ recipe }: { recipe: Recipe }) {
 
 function InValidationCard({ recipe }: { recipe: Recipe }) {
   const l1Color = recipe.l1_color;
-  const showVerdict =
-    recipe.status === "walked_no_graduation" && recipe.stats?.verdict !== undefined;
+  // Show the honest verdict chip whenever the recipe carries one — including
+  // live_legacy recipes like civil_war_and_insurgency that are on the dashboard
+  // via the earlier pathway but HARD_FAILED F-ML-1 re-validation. Per M8-R5,
+  // a HARD_FAIL must never be sugar-coated into a plain "In Validation" card.
+  const showVerdict = recipe.stats?.verdict !== undefined;
 
   return (
     <li>
