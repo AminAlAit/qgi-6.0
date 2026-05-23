@@ -43,20 +43,19 @@ export const metadata: Metadata = {
     url: "https://qgintelligence.com",
     siteName: "QG Intelligence",
     type: "website",
-    images: [
-      {
-        url: "/og-default.png",
-        width: 1200,
-        height: 630,
-        alt: "QG Intelligence · Quantitative Geopolitical Intelligence",
-      },
-    ],
+    // OG image resolved via file convention: app/opengraph-image.tsx
+    // (edge-rendered via lib/og/OgFrame). Per-route overrides live under
+    // app/<route>/opengraph-image.tsx where each high-share-value page
+    // declares its own. Previously hardcoded to /og-default.png which
+    // drifted out of date with the platform vocabulary (e.g. 58 indicators
+    // / "economic data" framing). 2026-05-23.
   },
   twitter: {
     card: "summary_large_image",
     title: "QGI · Quantitative Geopolitical Intelligence",
-    description: `Historical precedents in economic data across ${TOTAL_COUNTRIES} countries.`,
-    images: ["/og-default.png"],
+    description: `Historical precedents across ${TOTAL_COUNTRIES} countries, sourced from Open Source Intelligence.`,
+    // Twitter falls back to the same file-based opengraph-image per
+    // Next.js conventions when twitter.images is omitted.
   },
   robots: {
     index: true,
