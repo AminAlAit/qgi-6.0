@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import NewsletterForm from "@/components/NewsletterForm";
-import { LandingHeaderNav } from "@/components/landing/LandingHeaderNav";
+import { PublicNav } from "@/components/PublicNav";
 import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
 import { countrySlug } from "@/lib/slug";
 import {
@@ -150,7 +150,7 @@ const STEPS = [
   {
     num: "01",
     title: "Detect Indicator Relationships",
-    desc: `We find statistically significant correlations between economic indicators across ${TOTAL_COUNTRIES} countries spanning decades of World Bank data.`,
+    desc: `We find statistically significant correlations between structural indicators (economic, political, governance) across ${TOTAL_COUNTRIES} countries spanning decades of Open Source Intelligence.`,
   },
   {
     num: "02",
@@ -228,13 +228,13 @@ export default async function LandingPage() {
               Intelligence
             </span>
           </Link>
-          {/* T14 #307 (2026-04-19) + #427 (2026-04-24): landing nav now
-              uses a client component (LandingHeaderNav) with a real
-              hamburger for mobile <md. Previous "hidden md:inline-flex"
-              hid Reports/Blog/Contact on mobile with no fallback, QA
-              sweep 2026-04-24 caught this as the #1 mobile regression.
-              Desktop markup is unchanged. */}
-          <LandingHeaderNav />
+          {/* #427 (2026-04-24): client nav with real hamburger for mobile <md.
+              Previous "hidden md:inline-flex" hid Reports/Blog/Contact on mobile
+              with no fallback, QA sweep 2026-04-24 caught this as the #1 mobile
+              regression. 2026-05-23: extracted to shared PublicNav (used by
+              every public page) so the nav vocabulary stays consistent across
+              landing, /about, /reports, /methodology, /blog, /legal. */}
+          <PublicNav />
         </div>
       </header>
 
@@ -266,8 +266,8 @@ export default async function LandingPage() {
               className="mt-6 text-lg leading-relaxed max-w-xl"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              QGI surfaces economically-grounded risk candidates that analysts should
-              examine. We find historical precedents in World Bank data spanning{" "}
+              QGI surfaces data-grounded risk candidates that analysts should examine. We
+              find historical precedents in open-source intelligence spanning{" "}
               {TOTAL_COUNTRIES} countries and {TOTAL_INDICATORS} indicators.
             </p>
             <div className="mt-8 flex items-center gap-4">
@@ -412,7 +412,7 @@ export default async function LandingPage() {
         >
           <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <Metric value={String(TOTAL_COUNTRIES)} label="Countries Analyzed" />
-            <Metric value={String(TOTAL_INDICATORS)} label="Economic Indicators" />
+            <Metric value={String(TOTAL_INDICATORS)} label="Structural Indicators" />
             <Metric value={TOTAL_PATTERNS} label="Patterns Computed" />
             <Metric value="2.2x" label="Lift@50 vs Baseline" />
           </div>
@@ -432,7 +432,7 @@ export default async function LandingPage() {
                 label="Scale"
                 value={TOTAL_PATTERNS}
                 unit="patterns"
-                desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} economic indicators. Every pairwise relationship, every historical window, examined.`}
+                desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} structural indicators (economic, political, governance). Every pairwise relationship, every historical window, examined.`}
               />
               <Differentiator
                 label="Method"
@@ -442,9 +442,9 @@ export default async function LandingPage() {
               />
               <Differentiator
                 label="Foundation"
-                value="Open data"
-                unit="CC BY 4.0"
-                desc="Built on World Bank Open Data. Reproducible, auditable, and verifiable. No proprietary black-box scores."
+                value="OSINT"
+                unit="open sources"
+                desc="Built on Open Source Intelligence. Reproducible, auditable, and verifiable. No proprietary black-box scores."
               />
               <Differentiator
                 label="Approach"
@@ -476,7 +476,7 @@ export default async function LandingPage() {
                 className="text-xl font-medium leading-relaxed mb-6"
                 style={{ color: "var(--qgi-text)" }}
               >
-                QGI makes geopolitical risk measurable by finding historical economic
+                QGI makes geopolitical risk measurable by finding historical structural
                 precedents at scale.
               </p>
               <p
@@ -485,14 +485,14 @@ export default async function LandingPage() {
               >
                 Traditional political risk analysis relies on expert judgment, regional
                 specialists, and editorial discretion. QGI takes a different approach:
-                statistical pattern matching across the full historical record of World
-                Bank economic data.
+                statistical pattern matching across the full historical record of
+                open-source intelligence on country trajectories.
               </p>
               <p
                 className="text-sm leading-relaxed mb-6"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                When a country&rsquo;s economic indicators today resemble the trajectory
+                When a country&rsquo;s structural indicators today resemble the trajectory
                 of another country before a known geopolitical event, that is a precedent
                 worth examining, not a prediction, but a structured historical analogue
                 that analysts can evaluate on its merits.
@@ -501,8 +501,7 @@ export default async function LandingPage() {
                 className="text-sm leading-relaxed mb-8"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                Built by a Cloud Data Engineer with a passion for quantitative approaches
-                to geopolitical analysis.
+                Built solo, in the open, by a Cloud Data Engineer.
               </p>
               <Link
                 href="/methodology"
@@ -526,7 +525,7 @@ export default async function LandingPage() {
               />
               <PrincipleCard
                 heading="Continuously updated"
-                body="The pipeline ingests updated World Bank data monthly. Risk tiers and precedent rankings refresh automatically as new data arrives."
+                body="The pipeline ingests refreshed open-source data on a regular cadence. Risk tiers and precedent rankings refresh automatically as new data arrives."
               />
             </div>
           </div>
@@ -538,7 +537,7 @@ export default async function LandingPage() {
             Start exploring geopolitical risk
           </h2>
           <p className="mb-8 max-w-md mx-auto" style={{ color: "var(--qgi-text-muted)" }}>
-            Browse country intelligence profiles built on decades of economic data and
+            Browse country intelligence profiles built on decades of open-source data and
             historically verified precedents.
           </p>
           <Link
@@ -686,8 +685,18 @@ export default async function LandingPage() {
                 Intelligence
               </span>
             </Link>
-            {/* Nav links */}
+            {/* Footer nav. Order ratified by Sunita (IA consult 2026-05-23):
+                About → Methodology → Reports → Blog → Contact → Legal.
+                Footer scroll-through skews toward "context-seeking" so brand
+                items come first (reverse of top nav's discovery-first order). */}
             <div className="flex items-center gap-6">
+              <Link
+                href="/about"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                About
+              </Link>
               <Link
                 href="/methodology"
                 className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
@@ -696,18 +705,18 @@ export default async function LandingPage() {
                 Methodology
               </Link>
               <Link
+                href="/reports"
+                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-dim)" }}
+              >
+                Reports
+              </Link>
+              <Link
                 href="/blog"
                 className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
                 Blog
-              </Link>
-              <Link
-                href="/legal"
-                className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Legal
               </Link>
               <a
                 href="#contact"
@@ -716,13 +725,13 @@ export default async function LandingPage() {
               >
                 Contact
               </a>
-              <a
-                href="mailto:amin@qgintelligence.com"
+              <Link
+                href="/legal"
                 className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                amin@qgintelligence.com
-              </a>
+                Legal
+              </Link>
             </div>
           </div>
           <div
