@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
+import { SkipLink } from "@/components/SkipLink";
 import { getDisplayableReports, getLatestForRail } from "./_data/reports-manifest";
 import { LatestRail } from "./_components/LatestRail";
 import { CategoryFilteredGrid } from "./_components/CategorySegmentedControl";
@@ -33,13 +34,7 @@ export default function ReportsPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link. */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
-      >
-        Skip to content
-      </a>
+      <SkipLink />
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
@@ -69,7 +64,7 @@ export default function ReportsPage() {
       <main
         id="main-content"
         tabIndex={-1}
-        className="mx-auto max-w-6xl px-6 py-12 lg:py-16"
+        className="mx-auto max-w-6xl px-6 py-12 lg:py-16 focus:outline-none"
       >
         <div className="mb-12">
           <div
