@@ -4,7 +4,8 @@
   "n_recipes": 71,
   "status_counts": {
     "graduated": 1,
-    "live_legacy": 4,
+    "in_progress": 1,
+    "live_legacy": 3,
     "walked_no_graduation": 2,
     "queued": 64
   },
@@ -16,8 +17,12 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Electoral Politics",
-      "status": "live_legacy",
-      "stats": null
+      "status": "in_progress",
+      "stats": {
+        "verdict": "WALK-5 RUNNING",
+        "window_y": null,
+        "n_indicators": null
+      }
     },
     {
       "recipe_id": "government_formation",
@@ -741,5 +746,6 @@
       "status": "queued",
       "stats": null
     }
-  ]
+  ],
+  "last_updated": "2026-05-23"
 }
