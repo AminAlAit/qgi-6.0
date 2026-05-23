@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 import { getDisplayableReports, getLatestForRail } from "./_data/reports-manifest";
 import { LatestRail } from "./_components/LatestRail";
 import { CategoryFilteredGrid } from "./_components/CategorySegmentedControl";
@@ -84,46 +85,7 @@ export default function ReportsPage() {
         <CategoryFilteredGrid reports={browsable} />
       </main>
 
-      <footer
-        className="border-t"
-        style={{
-          borderColor: "var(--qgi-border)",
-          backgroundColor: "var(--qgi-surface)",
-        }}
-      >
-        <div className="mx-auto max-w-6xl px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Link href="/" className="flex items-baseline gap-1">
-            <span
-              className="font-data text-xs tracking-[0.25em] font-semibold"
-              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
-            >
-              QG
-            </span>
-            <span
-              className="text-[10px] tracking-widest uppercase"
-              style={{ color: "var(--qgi-text-muted)" }}
-            >
-              Intelligence
-            </span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <Link
-              href="/methodology"
-              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Methodology
-            </Link>
-            <Link
-              href="/legal"
-              className="text-[10px] tracking-wider transition-colors hover:text-[var(--qgi-accent)]"
-              style={{ color: "var(--qgi-text-dim)" }}
-            >
-              Legal
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <PublicFooter />
     </div>
   );
 }

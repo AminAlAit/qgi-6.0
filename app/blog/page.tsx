@@ -1,6 +1,7 @@
 import type { Metadata, Route } from "next";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
   title: "Blog · QG Intelligence",
@@ -249,6 +250,7 @@ export default function BlogIndexPage() {
           .
         </footer>
       </article>
+      <PublicFooter />
     </div>
   );
 }

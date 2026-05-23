@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 
 export const metadata: Metadata = {
   title: "Legal · QG Intelligence",
@@ -207,6 +208,7 @@ export default function LegalPage() {
           Last updated: April 24, 2026
         </p>
       </article>
+      <PublicFooter />
     </div>
   );
 }

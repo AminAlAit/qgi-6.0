@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
 import StatCards from "@/components/methodology/StatCards";
 import Glossary from "@/components/methodology/Glossary";
 import VerificationFlow from "@/components/methodology/VerificationFlow";
@@ -971,6 +972,7 @@ export default async function MethodologyPage() {
           </div>
         </div>
       </article>
+      <PublicFooter />
     </div>
   );
 }
