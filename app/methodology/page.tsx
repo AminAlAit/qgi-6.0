@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
+import { SkipLink } from "@/components/SkipLink";
 import StatCards from "@/components/methodology/StatCards";
 import Glossary from "@/components/methodology/Glossary";
 import VerificationFlow from "@/components/methodology/VerificationFlow";
@@ -55,13 +56,7 @@ export default async function MethodologyPage() {
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* #738 parity: WCAG 2.4.1 Bypass Blocks (level A) skip-link. */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-[100] focus:px-3 focus:py-2 focus:bg-[var(--qgi-accent)] focus:text-[var(--qgi-bg)] focus:rounded"
-      >
-        Skip to content
-      </a>
+      <SkipLink />
       {/* Navbar (same as landing) */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
@@ -90,7 +85,7 @@ export default async function MethodologyPage() {
         </div>
       </header>
 
-      <main id="main-content" tabIndex={-1}>
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
         <article className="mx-auto max-w-4xl px-6 py-16">
           {/* Title */}
           <div className="mb-12">
