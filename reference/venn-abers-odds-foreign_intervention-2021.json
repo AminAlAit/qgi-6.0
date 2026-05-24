@@ -3,7 +3,7 @@
   "eval_year": 2021,
   "method": "venn-abers-inductive-per-cohort",
   "method_reference": "Vovk, V., Petej, I., & Fedorova, V. (2015). Large-scale probabilistic predictors with and without guarantees of validity. NeurIPS 28. Per odds-calibration-consult-2026-05-24.md (Ji-Hoon #21 + Kwame #11, 2/2 ratified).",
-  "computed_at_utc": "2026-05-24T10:48:58.594730+00:00",
+  "computed_at_utc": "2026-05-24T11:35:04.906133+00:00",
   "seed_used": 12345,
   "oof_reproduction": {
     "n_samples": 58,
@@ -35,7 +35,7 @@
     "gate_1_coverage_threshold": 0.8,
     "gate_2_width_threshold": 0.6,
     "min_n_for_gate": 5,
-    "suppression_rule": "A cohort publishes odds ONLY if BOTH gates were validatable AND passed (coverage >= 0.90 and mean_width <= 0.60). Otherwise it is suppressed with one of three flags: UNSHARP_LOW_POWER (mean_width > 0.60), UNVALIDATED_COVERAGE (coverage could not be validated — too few validation positives), or INSUFFICIENT_DATA (n_oof < MIN_N_FOR_GATE). Unvalidatable coverage is NOT a free pass."
+    "suppression_rule": "A cohort publishes odds ONLY if BOTH gates were validatable AND passed (midpoint-accuracy-proxy coverage >= 0.80 and mean_width <= 0.60). Otherwise it is suppressed with one of three flags: UNSHARP_LOW_POWER (mean_width > 0.60), UNVALIDATED_COVERAGE (coverage could not be validated — too few validation positives), or INSUFFICIENT_DATA (n_oof < MIN_N_FOR_GATE). Unvalidatable coverage is NOT a free pass."
   },
   "per_cohort_detail": {
     "fragile-state": {
@@ -46,11 +46,11 @@
         "coverage": 0.8,
         "n_covered": 8,
         "n_total": 10,
-        "definition": "midpoint_classification",
+        "definition": "midpoint_classification_accuracy_proxy",
         "gate_pass": true,
         "gate_threshold": 0.8,
         "low_n_skip": false,
-        "winkler_score_mean": -3.709880952380952
+        "winkler_score_diagnostic": -1.9777380952380947
       },
       "gate_2_width": {
         "mean_width": 0.2277777777777779,
@@ -72,11 +72,11 @@
         "coverage": 1.0,
         "n_covered": 6,
         "n_total": 6,
-        "definition": "midpoint_classification",
+        "definition": "midpoint_classification_accuracy_proxy",
         "gate_pass": true,
         "gate_threshold": 0.8,
         "low_n_skip": false,
-        "winkler_score_mean": -0.15126262626262627
+        "winkler_score_diagnostic": -0.15126262626262627
       },
       "gate_2_width": {
         "mean_width": 0.6587301587301587,
