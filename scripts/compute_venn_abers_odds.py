@@ -47,7 +47,9 @@ flags at module bottom for known nondeterminism risks.
 
 ## Gates (per consult §4, enforced and reported, not silently passed)
 
-  Gate 1: Empirical coverage >= 0.90 per cohort (n >= 5 in cal-val split).
+  Gate 1: Midpoint-classification accuracy-proxy coverage >= 0.80 per cohort
+          (n >= 5 in cal-val split). NOTE: accuracy-based proxy, not the VA
+          theoretical coverage guarantee — see compute_empirical_coverage.
   Gate 2: Mean interval width <= 0.60 per cohort; exceeding cohorts get
           UNSHARP_LOW_POWER flag and are suppressed from published odds.
 
@@ -251,14 +253,22 @@ def compute_empirical_coverage(
     than the old 0.90 on the trivial check). Min n: < 5 cal-val → gate_pass=None
     (cohort suppressed UNVALIDATED_COVERAGE; not a free pass).
 
+    HONEST LABELLING (per the expert review of this gate): this metric is
+    structurally midpoint-classification ACCURACY at threshold 0.5, used as a
+    PROXY for coverage at QGI's thin per-cohort n. It is NOT the Venn-Abers
+    theoretical coverage guarantee (which is not estimable at n≈9 cal-val). It
+    screens out a calibrator that reverses the score ordering; it does NOT
+    verify calibration. Proper binned calibration is deferred to Stage B
+    (n≥15/cohort). The output field is named accordingly.
+
     Also returns a logged-only Winkler interval-score diagnostic (no gating) at
-    nominal 90% (alpha=0.10): mean of -(p_hi - p_lo) - (2/alpha)*[underage +
-    overage]. Lower (more negative) = worse; surfaced for analyst inspection.
+    nominal 80% (alpha=0.20, per consult §4): mean of -(p_hi - p_lo) -
+    (2/alpha)*[underage + overage]. Lower (more negative) = worse.
     """
     intervals = batch_venn_abers_intervals(cal_fit_scores, cal_fit_labels, cal_val_scores)
     n_total = len(cal_val_labels)
     n_covered = 0
-    alpha = 0.10
+    alpha = 0.20  # consult §4: nominal 80% interval score
     winkler_terms = []
     for (p_lo, p_hi), y in zip(intervals, cal_val_labels):
         midpoint = (float(p_lo) + float(p_hi)) / 2.0
@@ -274,11 +284,13 @@ def compute_empirical_coverage(
         "coverage": coverage,
         "n_covered": n_covered,
         "n_total": n_total,
-        "definition": "midpoint_classification",
+        # Honest name: this is an accuracy-based proxy for coverage, NOT the VA
+        # theoretical coverage guarantee (see docstring + expert review).
+        "definition": "midpoint_classification_accuracy_proxy",
         "gate_pass": bool(coverage >= 0.80) if n_total >= 5 else None,
         "gate_threshold": 0.80,
         "low_n_skip": n_total < 5,
-        "winkler_score_mean": (float(np.mean(winkler_terms)) if winkler_terms else None),
+        "winkler_score_diagnostic": (float(np.mean(winkler_terms)) if winkler_terms else None),
     }
 
 
@@ -768,7 +780,8 @@ def _main(argv: list[str] | None = None) -> int:
             "min_n_for_gate": MIN_N_FOR_GATE,
             "suppression_rule": (
                 "A cohort publishes odds ONLY if BOTH gates were validatable AND "
-                "passed (coverage >= 0.90 and mean_width <= 0.60). Otherwise it is "
+                "passed (midpoint-accuracy-proxy coverage >= 0.80 and mean_width "
+                "<= 0.60). Otherwise it is "
                 "suppressed with one of three flags: UNSHARP_LOW_POWER (mean_width > "
                 "0.60), UNVALIDATED_COVERAGE (coverage could not be validated — too "
                 "few validation positives), or INSUFFICIENT_DATA (n_oof < "
