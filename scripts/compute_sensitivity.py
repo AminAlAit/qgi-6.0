@@ -168,6 +168,14 @@ def build_output(
             "Pure transform of recipe-similarity-scores artifact; no model re-fit."
         ),
         "m8_r5_note": _M8_R5_NOTE,
+        "headroom_interpretation": (
+            "Headroom is measured from a country's CURRENT cosine to +1.0 (maximum "
+            "alignment with the crisis profile). For a LOW-zone country (trajectory "
+            "DIVERGING from the crisis profile, often anti-aligned cosine<0), large "
+            "headroom therefore reflects PROTECTIVE DISTANCE from the profile — NOT "
+            "vulnerability. Read headroom together with each country's score zone "
+            "(see country_zone)."
+        ),
         "method": (
             "Score S = Σ wᵢ·cosᵢ, so ∂S/∂cosᵢ = wᵢ. "
             "marginal_points_per_unit = wᵢ * 50 (risk_score = 100*(S+1)/2). "
@@ -178,6 +186,9 @@ def build_output(
         "shap_importance_normalized": scores_data.get("shap_importance_normalized", {}),
         "chosen_window": scores_data.get("chosen_window"),
         "n_countries": len(sensitivity),
+        # Per-country score zone (LOW/MODERATE/HIGH), so a consumer can interpret
+        # high headroom correctly (protective distance for LOW-zone countries).
+        "country_zone": {c: scores_data["scores"][c].get("zone") for c in sensitivity},
         "sensitivity": sensitivity,
     }
 

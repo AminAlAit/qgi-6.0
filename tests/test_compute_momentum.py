@@ -168,6 +168,20 @@ def test_compute_country_momentum_rising():
     )
 
 
+def test_compute_country_momentum_carries_retrospective_label():
+    """FOLLOWUP (review 2026-05-24): every per-country result must carry the
+    observation_label marking it RETROSPECTIVE / NOT a forecast — the honesty
+    contract that distinguishes momentum from the (suppressed) projection."""
+    result = cm.compute_country_momentum(
+        target_year=2021, score_fn=_make_rising_scores_fn(), n_offsets=4,
+    )
+    assert "observation_label" in result, "per-country result must include observation_label"
+    label = result["observation_label"].upper()
+    assert "RETROSPECTIVE" in label and "NOT A FORECAST" in label, (
+        f"observation_label must mark this retrospective and not a forecast, got: {result['observation_label']!r}"
+    )
+
+
 def test_compute_country_momentum_falling():
     """Monotonically decreasing scores → direction='falling'."""
     score_fn = _make_falling_scores_fn()

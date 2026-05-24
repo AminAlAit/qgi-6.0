@@ -264,6 +264,14 @@ def compute_track_record_from_oof(
             "Wilson 95% CI reported; suppressed bins (n<5) flagged INSUFFICIENT_DATA. "
             "Never label ppv as 'probability'."
         ),
+        "sampling_disclosure": (
+            "The OOF set is built by the walk's 1:3 positive:negative LOCO sampling, "
+            "NOT a prevalence-matched cohort. Absolute PPV figures reflect this 1:3 "
+            "construction and must NOT be read as a real-world hit rate. They are "
+            "comparative (high bins vs low bins vs the in-sample baseline_rate, which "
+            "is itself the 1:3 base). Prevalence-matched track-record is a Stage-B "
+            "enrichment (score more negatives OOF) — deferred (#110)."
+        ),
     }
 
 
