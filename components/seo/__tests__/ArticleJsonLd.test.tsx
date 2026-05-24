@@ -1,6 +1,6 @@
 /**
  * #734 (2026-05-16) — verify ArticleJsonLd defaults to institutional
- * author (Organization: QGI Intelligence), with personal-byline override
+ * author (Organization: QG Intelligence), with personal-byline override
  * available.
  *
  * Prior default was a hard-coded Person attribution for Amin Al-Ait. This
@@ -26,12 +26,12 @@ describe("ArticleJsonLd author attribution (#734)", () => {
     datePublished: "2026-05-16T00:00:00Z",
   };
 
-  it("defaults to Organization author (QGI Intelligence)", () => {
+  it("defaults to Organization author (QG Intelligence)", () => {
     const markup = renderToStaticMarkup(<ArticleJsonLd {...baseProps} />);
     const payload = extractPayload(markup);
     const author = payload.author as Record<string, string>;
     expect(author["@type"]).toBe("Organization");
-    expect(author.name).toBe("QGI Intelligence");
+    expect(author.name).toBe("QG Intelligence");
     expect(author.url).toBe("https://qgintelligence.com");
   });
 
@@ -66,7 +66,7 @@ describe("ArticleJsonLd author attribution (#734)", () => {
     const payload = extractPayload(markup);
     const publisher = payload.publisher as Record<string, string>;
     expect(publisher["@type"]).toBe("Organization");
-    expect(publisher.name).toBe("QGI Intelligence");
+    expect(publisher.name).toBe("QG Intelligence");
   });
 
   it("emits valid JSON-LD shape", () => {
