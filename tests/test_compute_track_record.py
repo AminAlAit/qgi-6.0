@@ -354,16 +354,23 @@ def test_ppv_monotonicity_on_perfect_separation():
 # ---------------------------------------------------------------------------
 
 
-def test_never_probability_label_in_module():
-    """The honesty label 'frequency' must appear in the module source (not 'probability')."""
-    import inspect
-    source = inspect.getsource(ctr)
-    assert "frequency" in source.lower(), (
-        "The word 'frequency' must appear in the module (honesty gate: not 'probability')"
+def test_artifact_m8_r5_note_is_honest_not_probability():
+    """HONESTY GUARD (review 2026-05-24): build a real artifact and assert its
+    m8_r5_note explicitly frames PPV as out-of-fold FREQUENCY and explicitly
+    denies it is a calibrated probability. The old form merely grepped the
+    module source for the word 'frequency' (which appears in unrelated docstrings)
+    — it guarded nothing."""
+    oof = _make_perfect_oof()
+    artifact = ctr.compute_track_record_from_oof(
+        np.asarray(oof["probs"]), np.asarray(oof["labels"]),
+        recipe_id="r", eval_year=2021, seed=0, auc=0.99,
     )
-    # m8_r5_note must be set somewhere
-    assert "m8_r5_note" in source, (
-        "m8_r5_note must appear in module source"
+    note = artifact["m8_r5_note"].lower()
+    assert "frequency" in note, "note must frame PPV as a frequency"
+    assert "not a calibrated probability" in note, "note must explicitly deny it is a probability"
+    # The 1:3-sampling disclosure must be present (don't let PPV read as a real-world rate).
+    assert "sampling_disclosure" in artifact and "1:3" in artifact["sampling_disclosure"], (
+        "artifact must disclose the 1:3 OOF sampling so PPV isn't read as real-world prevalence"
     )
 
 

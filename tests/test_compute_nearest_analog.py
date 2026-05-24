@@ -207,6 +207,27 @@ def test_find_nearest_analogs_self_exclusion():
         )
 
 
+def test_find_nearest_analogs_all_self_excluded_pool():
+    """FOLLOWUP (review 2026-05-24): if the ONLY positive is the target itself,
+    the pool empties after self-exclusion → no analogs, suppressed=True,
+    flag=WEAK_ANALOG, best=None (no crash)."""
+    inds = ["IND_A"]
+    shap = _uniform_shap(inds)
+    window = 5
+    target_country = "Iran"
+    target_traj = {"IND_A": _make_traj(1.0, window)}
+    positives_traj = [("Iran", 2010, {"IND_A": _make_traj(1.0, window)})]  # only self
+    result = cna.find_nearest_analogs(
+        target_country=target_country, target_traj=target_traj,
+        positives_traj=positives_traj, shap_weights=shap, cohort_map={},
+        top_k=3, analog_floor=0.70,
+    )
+    assert result["analogs"] == []
+    assert result["best_weighted_cosine"] is None
+    assert result["suppressed"] is True
+    assert result["flag"] == "WEAK_ANALOG"
+
+
 def test_find_nearest_analogs_weak_analog_suppressed():
     """If best analog < floor (0.70), suppressed=True and flag=WEAK_ANALOG."""
     inds = ["IND_A"]

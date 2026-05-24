@@ -72,7 +72,7 @@ _CATALOG_LABELS: dict[str, str] = {
     "v2x_clphy": "Physical Violence Index",
     "v2clkill": "Freedom from Political Killings",
     "v2cltort": "Freedom from Torture",
-    "v2mecenefm": "Government Internet Filtering Capacity",  # NOT v2elintmon — different code
+    "v2mecenefm": "Print/Broadcast Media Censorship",  # catalog VD-17 (NOT "internet filtering" — verified 2026-05-24)
     "v2x_gender": "Women's Political Empowerment Index",
     "v2pepwrgen": "Power Distributed by Gender",   # VD-27
     "v2pepwrsoc": "Power Distributed by Socioeconomic Position",
