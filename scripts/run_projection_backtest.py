@@ -536,12 +536,25 @@ def _main(argv: list[str] | None = None) -> int:
     # ------------------------------------------------------------------ #
     # SUPPRESSED disclosure (pre-reg §5.3)                                #
     # ------------------------------------------------------------------ #
-    suppressed = not skill_gate_pass
+    # Suppress on EITHER gate failure, not skill alone (Sonnet review #101):
+    # a recipe that beats persistence (skill PASS) but whose prediction
+    # intervals under-cover (coverage FAIL) would otherwise publish
+    # over-confident bands. suppressed tracks the full gate.
+    suppressed = not gate_pass
     suppression_message = None
     if suppressed:
+        if not skill_gate_pass:
+            reason = (
+                "did not outperform naive persistence for this recipe on historical "
+                "holdout data"
+            )
+        else:
+            reason = (
+                "produced prediction intervals that failed empirical coverage on "
+                "historical holdout data"
+            )
         suppression_message = (
-            "QGI's projection engine did not outperform naive persistence for this recipe "
-            "on historical holdout data. Projected risk scores are not displayed. "
+            f"QGI's projection engine {reason}. Projected risk scores are not displayed. "
             "Current risk score (observed window): [see current_risk_score per country]."
         )
 

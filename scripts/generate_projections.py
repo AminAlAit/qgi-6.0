@@ -64,7 +64,8 @@ _RISK_ZONE_LOW_MAX = sim_mod.RISK_ZONE_LOW_MAX       # 40
 _RISK_ZONE_MODERATE_MAX = sim_mod.RISK_ZONE_MODERATE_MAX  # 65
 _MAX_HORIZON = 3
 _MC_DRAWS = 2000
-_FLAT_SERIES_FLOOR_Z = 1.0   # pre-reg §4.1: floor width ±1.0 z-score units
+# Single source of truth in fit_projection_models (Sonnet review #101 DRY fix).
+_FLAT_SERIES_FLOOR_Z = fpm._FLAT_SERIES_FLOOR_Z   # pre-reg §4.1: floor width ±1.0 z
 
 
 def _zone_from_score(score: float) -> str:
