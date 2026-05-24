@@ -7,12 +7,17 @@
  * Provider; blog posts are static + short + benefit from deterministic
  * SSR output.
  *
- * #734 (2026-05-16) — author defaults to **Organization (QGI Intelligence)**
+ * #734 (2026-05-16) — author defaults to **Organization (QG Intelligence)**
  * not Person. The previous default was a hard-coded Person attribution
  * for Amin Al-Ait, which leaked into the structured data Google + LLMs
  * scrape — particularly visible on the first pipeline-derived blog post
  * (Burkina Faso, #733). Personal-bylined pieces can still pass an
  * explicit `author={...}` override.
+ *
+ * 2026-05-24 — brand fix per #867: "QGI Intelligence" (double-I, wrong)
+ * was shipping in the LIVE JSON-LD payload on every report. Corrected to
+ * "QG Intelligence" (canonical brand, space). Affects Organization name
+ * in both `author` default and `publisher`.
  */
 
 export type ArticleAuthor =
@@ -29,7 +34,7 @@ export type ArticleAuthor =
 
 const DEFAULT_AUTHOR: ArticleAuthor = {
   type: "Organization",
-  name: "QGI Intelligence",
+  name: "QG Intelligence",
   url: "https://qgintelligence.com",
 };
 
@@ -69,7 +74,7 @@ export function ArticleJsonLd({
     author: authorPayload,
     publisher: {
       "@type": "Organization",
-      name: "QGI Intelligence",
+      name: "QG Intelligence",
       url: "https://qgintelligence.com",
       logo: {
         "@type": "ImageObject",
