@@ -108,8 +108,8 @@ module "pipeline" {
   indicator_values_table_name = module.storage.indicator_values_table_name
 
   # #FAR-1: Phase 1 Fargate Spot dispatch
-  fetcher_job_queue_arn         = module.batch.fetcher_job_queue_arn
-  fetcher_job_definition_arn    = module.batch.fetcher_job_definition_arn
+  fetcher_job_queue_arn      = module.batch.fetcher_job_queue_arn
+  fetcher_job_definition_arn = module.batch.fetcher_job_definition_arn
   # #241 Phase B: per-provider JobDef routing. The dispatcher looks up
   # each indicator's `provider` (WB / FAOSTAT / ...) in this map and
   # submits to the matching JobDef. Unknown providers fall back to
@@ -132,6 +132,33 @@ module "pipeline" {
   vdem_batch_job_definition_arn = module.batch.qgi_vdem_ingest_job_definition_arn
   # `fetcher_job_queue_arn` is already passed above for the WB/FAO
   # dispatcher; the V-Dem SF reuses the same value.
+
+  tags = local.tags
+}
+
+# ---------------------------------------------------------------------------
+# Recipe-fleet — F-ML-1 multi-recipe ML walk infrastructure
+#
+# Design doc: qgi-docs/internal/ops/ml-track/aws-recipe-fleet-design.md
+# Build authorized by founder "go" before `terraform apply`. DO NOT apply
+# without cost preflight (qgi-aws-tf/scripts/cost-preflight.sh).
+# ---------------------------------------------------------------------------
+module "recipe_fleet" {
+  source = "../../modules/recipe-fleet"
+
+  environment    = var.environment
+  aws_account_id = var.aws_account_id
+  region         = var.region
+
+  data_lake_bucket_name = module.storage.bucket_name
+  data_lake_bucket_arn  = module.storage.bucket_arn
+
+  # Reuse roles already created by the iam module — no new instance profiles
+  # or execution roles needed.
+  ecs_instance_profile_arn   = module.iam.ecs_instance_profile_arn
+  fargate_execution_role_arn = module.iam.fargate_execution_role_arn
+  stepfunctions_role_arn     = module.iam.stepfunctions_role_arn
+  lambda_execution_role_arn  = module.iam.lambda_execution_role_arn
 
   tags = local.tags
 }
