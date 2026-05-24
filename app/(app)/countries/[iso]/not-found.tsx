@@ -5,8 +5,8 @@ import Link from "next/link";
  *
  * Renders when resolveCountryBySlug() returns null (country absent from the
  * scored dataset) and the page calls notFound(). Guinea-Bissau, Cabo Verde,
- * and São Tomé and Príncipe are three confirmed examples (156-country bake
- * does not include them). The generic in-shell fallback provided no guidance;
+ * and São Tomé and Príncipe are three confirmed examples (some cycles do
+ * not include them). The generic in-shell fallback provided no guidance;
  * Lusophone-Africa specialists interpreted the dead end as a data error rather
  * than a known coverage gap.
  *
@@ -33,9 +33,9 @@ export default function CountryNotFound() {
         className="text-sm leading-relaxed mb-4 max-w-[60ch]"
         style={{ color: "var(--qgi-text-muted)" }}
       >
-        QGI&apos;s current scored dataset covers 156 countries. This country has not yet
-        been included — either due to data availability constraints or because it falls
-        outside the current indicator coverage. Coverage expands with each pipeline bake.
+        This country has not yet been included in the current scored cycle, either due to
+        data availability constraints or because it falls outside the current indicator
+        coverage. Coverage expands with each pipeline bake.
       </p>
       <p
         className="text-sm leading-relaxed mb-6 max-w-[60ch]"
@@ -50,7 +50,7 @@ export default function CountryNotFound() {
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-accent)", color: "var(--qgi-accent)" }}
         >
-          View all 156 scored countries →
+          View all scored countries →
         </Link>
         <Link
           href="/dashboard"

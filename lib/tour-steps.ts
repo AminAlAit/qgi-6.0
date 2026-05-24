@@ -135,9 +135,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     page: "/countries",
     dimension: "a",
     target: "h1",
-    title: "Countries — the 156-country roster",
+    title: "Countries — the in-scope roster",
     content:
-      "156 of 214 countries currently have a risk tier. The 58 remaining are in-scope but unscored — data sparsity, not exclusion. Tiers (HIGH / MODERATE / INDICATIVE) reflect relative position in this cycle's panel. It is not a probability of a specific event in a specific year.",
+      "QGI scopes 214 countries; the count actually scored each cycle varies as data coverage shifts. Unscored countries are not excluded, just data-sparse. Tiers (HIGH / MODERATE / INDICATIVE) reflect relative position in this cycle's panel. It is not a probability of a specific event in a specific year.",
     placement: "bottom",
     skipBeacon: true,
   },
