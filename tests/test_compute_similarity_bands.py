@@ -10,8 +10,11 @@ Coverage:
   - build_canonical_from_sample: full-sample mean vs resampled mean
   - build_canonical_from_sample: empty trajectory list returns zero vector
   - build_canonical_from_sample: indices modulo list length (cross-indicator coverage skew)
-  - collect_positive_trajectories: not tested here (requires IO + real CSV/parquet);
-    covered by the orchestrator's self-check run
+  - collect_positive_trajectories: FIDELITY vs production canonical builder
+    (the band collector must reproduce build_canonical_profile_from_walk's
+    z-scored trajectories exactly), covering both the panel-wide and the
+    per-country baseline-fallback z-score branches. Uses tmp positives.csv +
+    synthetic in-memory panels (monkeypatched REPO_ROOT).
   - CLI smoke: parser accepts all flags
 """
 from __future__ import annotations
@@ -20,6 +23,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 import pytest
 
 SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
@@ -27,7 +31,72 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import compute_similarity_bands as csb  # noqa: E402
+import compute_recipe_country_similarity as crs  # noqa: E402
 from compute_recipe_country_similarity import compute_country_recipe_similarity  # noqa: E402
+
+
+# ---------------------------------------------------------------------------
+# Fidelity: the band collector must reproduce production's canonical exactly
+# ---------------------------------------------------------------------------
+
+
+def _write_positives(tmp_path: Path, recipe_id: str, rows: list[tuple[str, int]]) -> None:
+    """Write a synthetic shape_inputs_v2/{recipe}/positives.csv under tmp_path."""
+    d = tmp_path / "data" / "shape_inputs_v2" / recipe_id
+    d.mkdir(parents=True, exist_ok=True)
+    df = pd.DataFrame(rows, columns=["country_id", "event_year"])
+    df.to_csv(d / "positives.csv", index=False)
+
+
+def _run_both_canonicals(tmp_path, monkeypatch, recipe_id, pos_rows, panel, window):
+    """Point both modules' REPO_ROOT at tmp_path, then compute the canonical
+    profile two ways: the band collector's mean, and production's builder."""
+    _write_positives(tmp_path, recipe_id, pos_rows)
+    monkeypatch.setattr(csb, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(crs, "REPO_ROOT", tmp_path)
+    walk = {"recipe_id": recipe_id}
+    panels = {"IND_X": panel}
+    per_pos = csb.collect_positive_trajectories(walk, panels, window, ["IND_X"])
+    collector_canonical = csb.build_canonical_from_sample(per_pos, window, rng=None)
+    production_canonical = crs.build_canonical_profile_from_walk(walk, panels, window, ["IND_X"])
+    return collector_canonical, production_canonical
+
+
+def test_collector_matches_production_panel_branch(tmp_path, monkeypatch):
+    """>=10 panel-wide observations at event_year-1 -> panel z-score branch.
+    The band collector's canonical must equal production's, element-for-element."""
+    window = 5
+    # 12 countries x years 2003-2012 so the panel-wide year always has >=10 obs.
+    recs = []
+    for ci in range(12):
+        cname = f"Country{ci}"
+        for yr in range(2003, 2013):
+            recs.append({"country": cname, "year": yr, "value": float(ci) + 0.1 * yr})
+    # The two positives must be present as panel countries (normalized title-case).
+    panel = pd.DataFrame(recs)
+    pos_rows = [("country0", 2010), ("country1", 2012)]
+    # normalize_country_id("country0") -> "Country0" (matches panel)
+    coll, prod = _run_both_canonicals(tmp_path, monkeypatch, "fidtest_panel", pos_rows, panel, window)
+    assert set(coll) == set(prod) == {"IND_X"}
+    np.testing.assert_allclose(coll["IND_X"], prod["IND_X"], rtol=1e-9, atol=1e-12)
+    assert np.all(np.isfinite(coll["IND_X"]))
+
+
+def test_collector_matches_production_baseline_fallback_branch(tmp_path, monkeypatch):
+    """<10 panel-wide obs at event_year-1 -> per-country baseline-fallback
+    branch. Collector and production must still agree exactly."""
+    window = 5
+    # Only 2 countries -> the panel-wide year has <10 obs -> baseline fallback.
+    recs = []
+    for cname in ("Alpha", "Beta"):
+        base = 1.0 if cname == "Alpha" else 5.0
+        for yr in range(1990, 2012):
+            recs.append({"country": cname, "year": yr, "value": base + 0.2 * (yr - 1990)})
+    panel = pd.DataFrame(recs)
+    pos_rows = [("alpha", 2010), ("beta", 2011)]
+    coll, prod = _run_both_canonicals(tmp_path, monkeypatch, "fidtest_baseline", pos_rows, panel, window)
+    np.testing.assert_allclose(coll["IND_X"], prod["IND_X"], rtol=1e-9, atol=1e-12)
+    assert np.all(np.isfinite(coll["IND_X"]))
 
 
 # ---------------------------------------------------------------------------
