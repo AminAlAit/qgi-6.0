@@ -1,24 +1,36 @@
 """Recipe-fleet Batch entrypoint.
 
-Runs the F-ML-1 walk (run_f_ml_1_poc.py) + 5 in-walk capability scripts for
-a batch of recipes sequentially inside a single Batch job. Designed for AWS
+Runs the F-ML-1 walk (run_f_ml_1_poc.py) + extract_shap_importances.py +
+compute_recipe_country_similarity.py + 5 in-walk capability scripts for a
+batch of recipes sequentially inside a single Batch job. Designed for AWS
 Batch EC2 Spot / Graviton (arm64, 2 vCPU / 4 GB).
 
 Design doc: qgi-docs/internal/ops/ml-track/aws-recipe-fleet-design.md §7
 
+Per-recipe chain (FIX 1 — see inline comments):
+  1. run_f_ml_1_poc.py        → f-ml-1-poc-summary.json + greedy-result.json
+  2. extract_shap_importances.py → shap-importances-{recipe}.json
+  3. compute_recipe_country_similarity.py → recipe-similarity-scores-{recipe}-{year}.json
+  4. compute_track_record.py  → track-record-{recipe}-{year}.json
+  5. compute_nearest_analog.py → nearest-analog-{recipe}-{year}.json
+  6. compute_momentum.py      → momentum-{recipe}-{year}.json
+  7. compute_driver.py        → driver-{recipe}-{year}.json
+  8. compute_sensitivity.py   → sensitivity-{recipe}-{year}.json
+
 Behaviour
 ---------
 1. Sync indicator parquet panels from S3 ONCE (shared by all recipes in batch).
-2. For each recipe_id in RECIPE_IDS (comma-separated env var):
-   a. Skip if greedy-result.json already exists in S3 (resume-aware).
+2. Download cohort-assignments.json from S3 ONCE (shared by all recipes in batch).
+3. For each recipe_id in RECIPE_IDS (comma-separated env var):
+   a. Skip if greedy-result.json already exists in S3 (resume-aware). See FIX 3.
    b. Sync any existing checkpoint blobs from S3 for this recipe.
-   c. Run run_f_ml_1_poc.py with --checkpoint-dir pointing to a per-recipe
-      local dir (checkpoints/{recipe_id}/).
-   d. Run the 5 in-walk capability scripts on the walk artifacts.
-   e. Upload results + checkpoints to S3.
-3. In canary mode (RUN_MODE=canary): write the SFN task token (if present in
-   env) to S3 and emit cpu_utilization_pct_mean_walk + wall_clock_seconds +
-   estimated_cost_usd to the result JSON.
+   c. Run run_f_ml_1_poc.py with --output-dir pointing to a per-recipe local dir.
+   d. Run extract_shap_importances.py + compute_recipe_country_similarity.py.
+   e. Run the 5 in-walk capability scripts on the walk + similarity artifacts.
+   f. Upload results + checkpoints to S3.
+4. In canary mode (RUN_MODE=canary): emit cpu_utilization_pct_mean_walk +
+   wall_clock_seconds + estimated_cost_usd to the result JSON. The SFN approval
+   token is NOT written by this container (see FIX 4 comment below).
 
 Environment variables (all have defaults for local testing)
 ------------------------------------------------------------
@@ -29,16 +41,23 @@ ML_CHECKPOINTS_PREFIX  : str  — S3 prefix for per-recipe checkpoint blobs
 RECIPE_MANIFEST_S3_KEY : str  — S3 key for recipe-manifest.json
 RECIPE_IDS             : str  — comma-separated list of recipe_ids to run
 RUN_MODE               : str  — "canary" or "fleet" (default "fleet")
-SFN_TASK_TOKEN         : str  — optional; if set, written to S3 for the
-                                approval-gate waitForTaskToken flow
+COHORT_SIDECAR_S3_KEY  : str  — S3 key for cohort-assignments.json (FIX 2)
+EVALUATION_YEAR        : int  — evaluation year for similarity + capabilities (default 2021)
 
 S3 path conventions (trailing-slash prefixes):
   Parquet panels  : s3://{bucket}/{PARQUET_DATA_PREFIX}
-  Results         : s3://{bucket}/{ML_RESULTS_PREFIX}{recipe_id}-result.json
+  Results         : s3://{bucket}/{ML_RESULTS_PREFIX}{recipe_id}/
   Checkpoints     : s3://{bucket}/{ML_CHECKPOINTS_PREFIX}{recipe_id}/
-  Task token      : s3://{bucket}/{ML_RESULTS_PREFIX}canary-task-token-{recipe_id}.txt
 
 NO Athena calls anywhere in this script — design §3 / §6 hard constraint.
+
+FIX 4 — SFN task-token delivery:
+  Approval-token delivery is via the qgi-recipe-fleet-approval SQS queue (the
+  SFN approval state sends the token as the message body); the founder reads it
+  from SQS and calls send-task-success. The container does NOT handle the token.
+  The SFN $$.Task.Token only exists at the waitForTaskToken approval state
+  (an SQS sendMessage state), NOT at the canary Batch job state. Writing it
+  here would only ever write an empty string.
 """
 from __future__ import annotations
 
@@ -80,16 +99,28 @@ RECIPE_MANIFEST_S3_KEY = os.environ.get(
 )
 RECIPE_IDS_RAW = os.environ.get("RECIPE_IDS", "")
 RUN_MODE = os.environ.get("RUN_MODE", "fleet")
-SFN_TASK_TOKEN = os.environ.get("SFN_TASK_TOKEN", "")
+
+# FIX 2: cohort sidecar S3 key — downloaded at startup, passed explicitly to
+# every script that needs it (walk + similarity + track_record + nearest_analog).
+COHORT_SIDECAR_S3_KEY = os.environ.get(
+    "COHORT_SIDECAR_S3_KEY", "reference/cohort-assignments.json"
+)
+
+# Evaluation year for similarity scoring and capability scripts.
+# 2021 is the correct value for foreign_intervention (the canary recipe);
+# override via env var for other recipes if the panel coverage differs.
+EVALUATION_YEAR = int(os.environ.get("EVALUATION_YEAR", "2021"))
 
 # ---------------------------------------------------------------------------
 # Path constants (container layout; see Dockerfile)
 # ---------------------------------------------------------------------------
 APP_DIR = Path("/app")
 SCRIPTS_DIR = APP_DIR / "scripts"
-# run_f_ml_1_poc.py expects to be invoked from the qgi-ml repo root
-# context, which inside the container is /app (PYTHONPATH covers /app/scripts,
-# /app/src). We pass explicit --output-dir so it writes locally.
+# data/shape_inputs_v2/ is copied from qgi-ml at build time (FIX 2).
+# extract_shap_importances.py resolves positives from REPO_ROOT/data/shape_inputs_v2/
+# where REPO_ROOT = Path(__file__).parents[1] = /app. So /app/data/shape_inputs_v2/
+# must exist — guaranteed by the COPY in the Dockerfile.
+SHAPE_INPUTS_DIR = APP_DIR / "data" / "shape_inputs_v2"
 
 
 def _s3() -> Any:
@@ -131,6 +162,13 @@ def s3_sync_prefix_down(bucket: str, prefix: str, local_dir: Path) -> int:
     return count
 
 
+def s3_download_file(bucket: str, key: str, local_path: Path) -> None:
+    """Download a single S3 object to local_path."""
+    local_path.parent.mkdir(parents=True, exist_ok=True)
+    _s3().download_file(bucket, key, str(local_path))
+    LOG.info("s3_download: s3://%s/%s → %s", bucket, key, local_path)
+
+
 def s3_sync_dir_up(local_dir: Path, bucket: str, prefix: str) -> int:
     """Upload all files under local_dir to S3 prefix. Returns count."""
     s3 = _s3()
@@ -154,11 +192,6 @@ def s3_upload_json(data: dict, bucket: str, key: str) -> None:
         ContentType="application/json",
     )
     LOG.info("Uploaded JSON → s3://%s/%s", bucket, key)
-
-
-def s3_put_text(text: str, bucket: str, key: str) -> None:
-    _s3().put_object(Bucket=bucket, Key=key, Body=text.encode())
-    LOG.info("Uploaded text → s3://%s/%s", bucket, key)
 
 
 # ---------------------------------------------------------------------------
@@ -198,6 +231,20 @@ class CpuSampler:
 
 
 # ---------------------------------------------------------------------------
+# Script location helper
+# ---------------------------------------------------------------------------
+
+def _find_script(name: str) -> Path:
+    """Return the Path to a named script, checking SCRIPTS_DIR then APP_DIR."""
+    for candidate in (SCRIPTS_DIR / name, APP_DIR / name):
+        if candidate.exists():
+            return candidate
+    # Return the SCRIPTS_DIR path even if absent — subprocess will surface the
+    # error with a clear message rather than silently skipping.
+    return SCRIPTS_DIR / name
+
+
+# ---------------------------------------------------------------------------
 # Walk runner
 # ---------------------------------------------------------------------------
 
@@ -205,41 +252,41 @@ def run_walk(
     recipe_id: str,
     local_data_dir: Path,
     local_output_dir: Path,
-    local_checkpoint_dir: Path,
+    cohort_sidecar_path: Path,
 ) -> dict:
     """Invoke run_f_ml_1_poc.py as a subprocess.
 
     Returns a dict with at minimum {"status": "ok" | "error", ...}.
 
-    The script writes its output JSON into local_output_dir / run_{recipe_id}/.
-    We pass --output-dir explicitly.
+    The script writes its output JSON into local_output_dir.
+    We pass --output-dir / --panel-dir / --positives-csv / --cohort-sidecar
+    explicitly so the container never falls back to repo-relative defaults.
+
+    FIX 1 — flags corrected vs original:
+      BEFORE: --walk-output-dir (non-existent flag), --data-dir (non-existent flag)
+              --checkpoint-dir (non-existent flag)
+      AFTER:  --output-dir, --panel-dir, --positives-csv, --cohort-sidecar
+              (all real flags from run_f_ml_1_poc._build_parser)
     """
-    script = SCRIPTS_DIR / "run_f_ml_1_poc.py"
-    if not script.exists():
-        # Fallback: look in /app directly
-        script = APP_DIR / "run_f_ml_1_poc.py"
+    script = _find_script("run_f_ml_1_poc.py")
+    local_output_dir.mkdir(parents=True, exist_ok=True)
 
-    recipe_output_dir = local_output_dir / f"run_{recipe_id}"
-    recipe_output_dir.mkdir(parents=True, exist_ok=True)
+    positives_csv = SHAPE_INPUTS_DIR / recipe_id / "positives.csv"
 
-    # NB (AWS-expert review 2026-05-24): run_f_ml_1_poc.py's real flags are
-    # --output-dir / --panel-dir / --positives-csv. There is NO --checkpoint-dir
-    # or --data-dir; the #91 checkpoint (greedy-checkpoint.json + greedy-result
-    # .json) is written into --output-dir, so the per-recipe output dir IS the
-    # checkpoint+result location (and is what we sync to S3 for resume).
     cmd = [
         sys.executable,
         str(script),
         "--recipe-id", recipe_id,
-        "--output-dir", str(recipe_output_dir),
-        # Panel parquet synced from S3 into local_data_dir.
+        "--output-dir", str(local_output_dir),
         "--panel-dir", str(local_data_dir),
+        "--positives-csv", str(positives_csv),
+        "--cohort-sidecar", str(cohort_sidecar_path),
     ]
 
     LOG.info("Launching walk: %s", " ".join(cmd))
     t0 = time.monotonic()
     try:
-        result = subprocess.run(
+        subprocess.run(
             cmd,
             capture_output=False,  # stdout/stderr stream to CloudWatch via awslogs
             check=True,
@@ -258,52 +305,315 @@ def run_walk(
         return {"status": "timeout", "wall_clock_seconds": elapsed}
 
 
-def run_capability_scripts(
+# ---------------------------------------------------------------------------
+# Per-recipe capability chain (FIX 1)
+# ---------------------------------------------------------------------------
+
+def run_capability_chain(
     recipe_id: str,
     walk_output_dir: Path,
     local_data_dir: Path,
+    cohort_sidecar_path: Path,
+    evaluation_year: int,
 ) -> dict:
-    """Run the 5 in-walk capability scripts on the walk artifacts.
+    """Run the full post-walk capability chain for one recipe.
 
-    Scripts (design §5):
-      compute_track_record.py
-      compute_nearest_analog.py
-      compute_momentum.py
-      compute_driver.py
-      compute_sensitivity.py
+    Chain (design §5 + te-new-capabilities-spec.md):
+      Step A: extract_shap_importances.py  → shap-importances-{recipe}.json
+      Step B: compute_recipe_country_similarity.py
+                                           → recipe-similarity-scores-{recipe}-{year}.json
+      Steps C–G: the 5 capability scripts
 
-    Returns a dict of {script_name: "ok"|"error"}.
+    FIX 1 — every subprocess call now uses the script's ACTUAL argparse flags.
+    The original code used --walk-output-dir and --data-dir (both non-existent),
+    which caused argparse exit 2 and silent zero output on every run. The
+    similarity step was missing entirely, which caused a hard dependency crash
+    for 4 of the 5 capability scripts (they all require --scores-file).
+
+    Returns a dict of {step_name: "ok" | "error" | "not_found"}.
     """
-    capability_scripts = [
-        "compute_track_record.py",
-        "compute_nearest_analog.py",
-        "compute_momentum.py",
-        "compute_driver.py",
-        "compute_sensitivity.py",
-    ]
     results: dict[str, str] = {}
-    for script_name in capability_scripts:
-        script = SCRIPTS_DIR / script_name
-        if not script.exists():
-            script = APP_DIR / script_name
-        if not script.exists():
-            LOG.warning("Capability script not found: %s — skipping", script_name)
-            results[script_name] = "not_found"
-            continue
+
+    walk_summary_path = walk_output_dir / "f-ml-1-poc-summary.json"
+    shap_path = walk_output_dir / f"shap-importances-{recipe_id}.json"
+    scores_path = walk_output_dir / f"recipe-similarity-scores-{recipe_id}-{evaluation_year}.json"
+
+    # -------------------------------------------------------------------------
+    # Step A: extract_shap_importances.py
+    # Produces: shap-importances-{recipe_id}.json in walk_output_dir.
+    # Note: this script resolves positives via REPO_ROOT/data/shape_inputs_v2/
+    # (REPO_ROOT = /app in container). The COPY in the Dockerfile ensures
+    # /app/data/shape_inputs_v2/ is present. It also uses a hardcoded panel path
+    # (REPO_ROOT/data/parquet_panels); we symlink local_data_dir there at
+    # startup if the paths differ, OR rely on the fact that run_f_ml_1_poc.py
+    # has already loaded all panels from local_data_dir and the summary JSON
+    # carries all needed indicator metadata — extract_shap_importances only
+    # needs the panels at REPO_ROOT/data/parquet_panels. See assumption note
+    # in the canary report at the end of this file.
+    #
+    # FIX 1 — flags (extract_shap_importances._main argparse):
+    #   --recipe-id (required)
+    #   --walk-summary (required)
+    #   --output-dir (required)
+    #   --seed (optional, default 12345 — matches walk default)
+    # -------------------------------------------------------------------------
+    step_name = "extract_shap_importances.py"
+    script = _find_script(step_name)
+    if not script.exists():
+        LOG.warning("Script not found: %s — skipping SHAP step", step_name)
+        results[step_name] = "not_found"
+    else:
         cmd = [
-            sys.executable,
-            str(script),
+            sys.executable, str(script),
             "--recipe-id", recipe_id,
-            "--walk-output-dir", str(walk_output_dir),
-            "--data-dir", str(local_data_dir),
+            "--walk-summary", str(walk_summary_path),
+            "--output-dir", str(walk_output_dir),
         ]
-        LOG.info("Running capability: %s", script_name)
+        LOG.info("Running %s", step_name)
         try:
-            subprocess.run(cmd, check=True, timeout=1800)  # 30 min cap per script
-            results[script_name] = "ok"
+            subprocess.run(cmd, check=True, timeout=1800)
+            results[step_name] = "ok"
         except Exception as exc:  # noqa: BLE001
-            LOG.error("Capability script %s failed: %s", script_name, exc)
-            results[script_name] = "error"
+            LOG.error("%s failed: %s", step_name, exc)
+            results[step_name] = "error"
+
+    # -------------------------------------------------------------------------
+    # Step B: compute_recipe_country_similarity.py
+    # Hard dependency of steps C, D, E, F, G (all read --scores-file).
+    # Produces: recipe-similarity-scores-{recipe_id}-{evaluation_year}.json
+    #
+    # FIX 1 — flags (compute_recipe_country_similarity._main argparse):
+    #   --recipe-id (required)
+    #   --walk-summary (required)
+    #   --shap-importances (required) ← was MISSING entirely in original code
+    #   --output-dir (required)
+    #   --panel-dir (optional, default REPO_ROOT/data/parquet_panels)
+    #   --evaluation-year (optional, default 2021)
+    #   --top-k-charts (optional)
+    # BEFORE: step was missing entirely → argparse exit 2 on all 5 capability scripts
+    # AFTER: step added; --shap-importances points to shap_path produced in Step A
+    # -------------------------------------------------------------------------
+    if results.get(step_name) != "ok":
+        LOG.warning("Skipping similarity step — SHAP step did not complete successfully")
+        results["compute_recipe_country_similarity.py"] = "skipped_shap_failed"
+    else:
+        step_name = "compute_recipe_country_similarity.py"
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--recipe-id", recipe_id,
+                "--walk-summary", str(walk_summary_path),
+                "--shap-importances", str(shap_path),
+                "--output-dir", str(walk_output_dir),
+                "--panel-dir", str(local_data_dir),
+                "--evaluation-year", str(evaluation_year),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
+    # Remaining capability scripts all depend on the scores file produced in step B.
+    similarity_ok = results.get("compute_recipe_country_similarity.py") == "ok"
+    if not similarity_ok:
+        LOG.warning(
+            "Similarity step did not complete — skipping capability scripts "
+            "that require --scores-file"
+        )
+
+    # -------------------------------------------------------------------------
+    # Step C: compute_track_record.py
+    # FIX 1 — flags (compute_track_record._build_parser argparse):
+    #   --recipe-id (required)
+    #   --walk-summary (required)
+    #   --scores-file (required) ← was missing; hard dependency on similarity step
+    #   --panel-dir (optional)
+    #   --cohort-sidecar (optional, but must be a real path in container)
+    #   --output-dir (required)
+    #   --seed (optional)
+    # BEFORE: --walk-output-dir (wrong), --data-dir (wrong)
+    # AFTER: --walk-summary, --scores-file, --panel-dir, --cohort-sidecar, --output-dir
+    # -------------------------------------------------------------------------
+    step_name = "compute_track_record.py"
+    if not similarity_ok:
+        results[step_name] = "skipped_similarity_failed"
+    else:
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--recipe-id", recipe_id,
+                "--walk-summary", str(walk_summary_path),
+                "--scores-file", str(scores_path),
+                "--panel-dir", str(local_data_dir),
+                "--cohort-sidecar", str(cohort_sidecar_path),
+                "--output-dir", str(walk_output_dir),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
+    # -------------------------------------------------------------------------
+    # Step D: compute_nearest_analog.py
+    # FIX 1 — flags (compute_nearest_analog._build_parser argparse):
+    #   --recipe-id (required)
+    #   --scores-file (required)
+    #   --walk-summary (required)
+    #   --panel-dir (optional)
+    #   --cohort-assignments (optional) ← note: flag name differs from track_record!
+    #                                      compute_nearest_analog uses --cohort-assignments
+    #                                      NOT --cohort-sidecar
+    #   --output-dir (required)
+    #   --top-k (optional)
+    #   --analog-floor (optional)
+    #   --evaluation-year (optional)
+    # BEFORE: --walk-output-dir (wrong), --data-dir (wrong)
+    # AFTER: --scores-file, --walk-summary, --panel-dir, --cohort-assignments, --output-dir
+    # -------------------------------------------------------------------------
+    step_name = "compute_nearest_analog.py"
+    if not similarity_ok:
+        results[step_name] = "skipped_similarity_failed"
+    else:
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--recipe-id", recipe_id,
+                "--scores-file", str(scores_path),
+                "--walk-summary", str(walk_summary_path),
+                "--panel-dir", str(local_data_dir),
+                "--cohort-assignments", str(cohort_sidecar_path),
+                "--output-dir", str(walk_output_dir),
+                "--evaluation-year", str(evaluation_year),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
+    # -------------------------------------------------------------------------
+    # Step E: compute_momentum.py
+    # FIX 1 — flags (compute_momentum._build_parser argparse):
+    #   --recipe-id (required)
+    #   --scores-file (required)
+    #   --walk-summary (required)
+    #   --panel-dir (optional)
+    #   --output-dir (required)
+    #   --evaluation-year (optional)
+    #   --n-offsets (optional)
+    # No --cohort-sidecar or --cohort-assignments (this script doesn't use cohorts).
+    # BEFORE: --walk-output-dir (wrong), --data-dir (wrong)
+    # AFTER: --scores-file, --walk-summary, --panel-dir, --output-dir, --evaluation-year
+    # -------------------------------------------------------------------------
+    step_name = "compute_momentum.py"
+    if not similarity_ok:
+        results[step_name] = "skipped_similarity_failed"
+    else:
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--recipe-id", recipe_id,
+                "--scores-file", str(scores_path),
+                "--walk-summary", str(walk_summary_path),
+                "--panel-dir", str(local_data_dir),
+                "--output-dir", str(walk_output_dir),
+                "--evaluation-year", str(evaluation_year),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
+    # -------------------------------------------------------------------------
+    # Step F: compute_driver.py
+    # FIX 1 — flags (compute_driver._build_parser argparse):
+    #   --scores-file (required)
+    #   --output-dir (required)
+    #   --catalog-file (optional, currently unused in script)
+    # No --recipe-id (inferred from scores file). No --walk-summary. No --panel-dir.
+    # BEFORE: --recipe-id (wrong for this script), --walk-output-dir (wrong), --data-dir (wrong)
+    # AFTER: --scores-file, --output-dir only
+    # -------------------------------------------------------------------------
+    step_name = "compute_driver.py"
+    if not similarity_ok:
+        results[step_name] = "skipped_similarity_failed"
+    else:
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--scores-file", str(scores_path),
+                "--output-dir", str(walk_output_dir),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
+    # -------------------------------------------------------------------------
+    # Step G: compute_sensitivity.py
+    # FIX 1 — flags (compute_sensitivity._build_parser argparse):
+    #   --scores-file (required)
+    #   --output-dir (required)
+    # No --recipe-id, no --walk-summary, no --panel-dir.
+    # BEFORE: --recipe-id (wrong), --walk-output-dir (wrong), --data-dir (wrong)
+    # AFTER: --scores-file, --output-dir only
+    # -------------------------------------------------------------------------
+    step_name = "compute_sensitivity.py"
+    if not similarity_ok:
+        results[step_name] = "skipped_similarity_failed"
+    else:
+        script = _find_script(step_name)
+        if not script.exists():
+            LOG.warning("Script not found: %s — skipping", step_name)
+            results[step_name] = "not_found"
+        else:
+            cmd = [
+                sys.executable, str(script),
+                "--scores-file", str(scores_path),
+                "--output-dir", str(walk_output_dir),
+            ]
+            LOG.info("Running %s", step_name)
+            try:
+                subprocess.run(cmd, check=True, timeout=1800)
+                results[step_name] = "ok"
+            except Exception as exc:  # noqa: BLE001
+                LOG.error("%s failed: %s", step_name, exc)
+                results[step_name] = "error"
+
     return results
 
 
@@ -322,13 +632,19 @@ def main() -> None:
         sys.exit(1)
 
     LOG.info(
-        "recipe-fleet-entrypoint starting | mode=%s | recipes=%s | bucket=%s",
-        RUN_MODE, recipe_ids, S3_BUCKET,
+        "recipe-fleet-entrypoint starting | mode=%s | recipes=%s | bucket=%s | eval_year=%d",
+        RUN_MODE, recipe_ids, S3_BUCKET, EVALUATION_YEAR,
     )
 
     with tempfile.TemporaryDirectory(prefix="qgi-fleet-") as tmpdir_str:
         tmpdir = Path(tmpdir_str)
-        local_data_dir = tmpdir / "parquet-data"
+        # Sync panels to the HARDCODED default location REPO_ROOT/data/parquet_panels
+        # (= /app/data/parquet_panels in-container). extract_shap_importances.py +
+        # compute_recipe_country_similarity.py resolve panels from that fixed path,
+        # while the walk + capabilities take --panel-dir; pointing both at the same
+        # real directory makes the whole chain work without a symlink. Container fs
+        # is ephemeral so writing under /app at runtime is fine.
+        local_data_dir = APP_DIR / "data" / "parquet_panels"
         local_output_dir = tmpdir / "walk-output"
         local_checkpoints_root = tmpdir / "checkpoints"
         local_output_dir.mkdir(parents=True, exist_ok=True)
@@ -341,13 +657,34 @@ def main() -> None:
         LOG.info("Parquet sync complete: %d objects", n_parquet)
 
         # ------------------------------------------------------------------
-        # If task token present (canary mode), write it to S3 immediately
-        # so it's available even if the walk crashes.
+        # Step 1b: download cohort-assignments.json ONCE for all recipes.
+        # FIX 2 — cohort sidecar is a qgi-data reference artifact (not in
+        # qgi-ml). Download from S3 at startup; pass the local path explicitly
+        # to every script that needs it (walk, track_record, nearest_analog).
         # ------------------------------------------------------------------
-        if SFN_TASK_TOKEN and recipe_ids:
-            token_key = f"{ML_RESULTS_PREFIX}canary-task-token-{recipe_ids[0]}.txt"
-            s3_put_text(SFN_TASK_TOKEN, S3_BUCKET, token_key)
-            LOG.info("SFN task token written to s3://%s/%s", S3_BUCKET, token_key)
+        local_cohort_sidecar = tmpdir / "cohort-assignments.json"
+        LOG.info(
+            "Downloading cohort sidecar from s3://%s/%s ...",
+            S3_BUCKET, COHORT_SIDECAR_S3_KEY,
+        )
+        try:
+            s3_download_file(S3_BUCKET, COHORT_SIDECAR_S3_KEY, local_cohort_sidecar)
+            LOG.info("Cohort sidecar downloaded → %s", local_cohort_sidecar)
+        except Exception as exc:  # noqa: BLE001
+            LOG.error(
+                "FATAL: failed to download cohort sidecar from s3://%s/%s: %s — "
+                "cannot proceed without it (walk + LOCK gate + track_record require it)",
+                S3_BUCKET, COHORT_SIDECAR_S3_KEY, exc,
+            )
+            sys.exit(1)
+
+        # FIX 4 — SFN task-token write REMOVED.
+        # The SFN $$.Task.Token only exists at the waitForTaskToken approval
+        # state (an SQS sendMessage state), NOT at this Batch job state. Any
+        # token present in the environment here is empty. Approval-token
+        # delivery is via the qgi-recipe-fleet-approval SQS queue: the SFN
+        # sends the token as the message body; the founder reads it from SQS
+        # and calls send-task-success. This container does not handle the token.
 
         # ------------------------------------------------------------------
         # Step 2: process each recipe in the batch.
@@ -359,51 +696,67 @@ def main() -> None:
         job_summary: list[dict] = []
 
         for recipe_id in recipe_ids:
-            result_key = f"{ML_RESULTS_PREFIX}{recipe_id}-result.json"
-
             # -- Resume guard: skip if greedy-result.json already in S3 --
-            greedy_result_key = f"{ML_RESULTS_PREFIX}{recipe_id}-greedy-result.json"
+            # FIX 3 — key was "{ML_RESULTS_PREFIX}{recipe_id}-greedy-result.json"
+            # (a flat key). Corrected to "{ML_RESULTS_PREFIX}{recipe_id}/greedy-result.json"
+            # because the entrypoint uploads the walk output dir with the prefix
+            # "{ML_RESULTS_PREFIX}{recipe_id}/" — so the actual S3 key for the
+            # greedy-result file is the per-recipe prefix + filename.
+            # BEFORE: f"{ML_RESULTS_PREFIX}{recipe_id}-greedy-result.json"
+            # AFTER:  f"{ML_RESULTS_PREFIX}{recipe_id}/greedy-result.json"
+            greedy_result_key = f"{ML_RESULTS_PREFIX}{recipe_id}/greedy-result.json"
             if s3_object_exists(S3_BUCKET, greedy_result_key):
-                LOG.info("SKIP %s — greedy-result.json already in S3", recipe_id)
+                LOG.info("SKIP %s — greedy-result.json already in S3 (%s)", recipe_id, greedy_result_key)
                 job_summary.append({"recipe_id": recipe_id, "status": "skipped"})
                 continue
 
             LOG.info("=== Processing recipe: %s ===", recipe_id)
             recipe_start = time.monotonic()
 
-            # -- Checkpoint dir per recipe --
+            # Per-recipe walk output dir and checkpoint dir
+            walk_output_dir = local_output_dir / f"run_{recipe_id}"
+            walk_output_dir.mkdir(parents=True, exist_ok=True)
+
             local_ckpt_dir = local_checkpoints_root / recipe_id
             local_ckpt_dir.mkdir(parents=True, exist_ok=True)
             ckpt_s3_prefix = f"{ML_CHECKPOINTS_PREFIX}{recipe_id}/"
 
             # Sync any existing checkpoints from S3 (resume from interruption)
-            s3_sync_prefix_down(S3_BUCKET, ckpt_s3_prefix, local_ckpt_dir)
+            # run_f_ml_1_poc.py writes greedy-checkpoint.json + greedy-result.json
+            # into --output-dir (= walk_output_dir). Sync from the results prefix
+            # so a pre-existing greedy-result.json is picked up by the walk's own
+            # checkpoint-resume logic.
+            results_s3_prefix = f"{ML_RESULTS_PREFIX}{recipe_id}/"
+            s3_sync_prefix_down(S3_BUCKET, results_s3_prefix, walk_output_dir)
 
             # -- Run walk --
             walk_result = run_walk(
                 recipe_id=recipe_id,
                 local_data_dir=local_data_dir,
-                local_output_dir=local_output_dir,
-                local_checkpoint_dir=local_ckpt_dir,
+                local_output_dir=walk_output_dir,
+                cohort_sidecar_path=local_cohort_sidecar,
             )
 
-            # -- Upload checkpoints to S3 immediately after walk (even on failure) --
-            if local_ckpt_dir.exists():
-                s3_sync_dir_up(local_ckpt_dir, S3_BUCKET, ckpt_s3_prefix)
+            # -- Upload walk outputs to S3 immediately after walk (even on failure) --
+            # This includes greedy-checkpoint.json + greedy-result.json so a reclaimed
+            # Spot job can resume from where it left off.
+            if walk_output_dir.exists():
+                s3_sync_dir_up(walk_output_dir, S3_BUCKET, results_s3_prefix)
 
             cap_results: dict[str, str] = {}
             if walk_result.get("status") == "ok":
-                # -- Run 5 capability scripts --
-                walk_output_dir = local_output_dir / f"run_{recipe_id}"
-                cap_results = run_capability_scripts(
+                # -- Run SHAP extraction + similarity + 5 capability scripts --
+                cap_results = run_capability_chain(
                     recipe_id=recipe_id,
                     walk_output_dir=walk_output_dir,
                     local_data_dir=local_data_dir,
+                    cohort_sidecar_path=local_cohort_sidecar,
+                    evaluation_year=EVALUATION_YEAR,
                 )
 
-                # -- Upload walk output to S3 (results prefix) --
+                # -- Upload capability outputs to S3 --
                 if walk_output_dir.exists():
-                    s3_sync_dir_up(walk_output_dir, S3_BUCKET, result_key.replace("-result.json", "/"))
+                    s3_sync_dir_up(walk_output_dir, S3_BUCKET, results_s3_prefix)
 
             recipe_elapsed = time.monotonic() - recipe_start
             recipe_summary = {
@@ -413,7 +766,10 @@ def main() -> None:
                 "capability_results": cap_results,
             }
             job_summary.append(recipe_summary)
-            LOG.info("Recipe %s done in %.0f s | status=%s", recipe_id, recipe_elapsed, walk_result.get("status"))
+            LOG.info(
+                "Recipe %s done in %.0f s | status=%s",
+                recipe_id, recipe_elapsed, walk_result.get("status"),
+            )
 
         # ------------------------------------------------------------------
         # Step 3: finalize canary metrics and upload summary.
@@ -421,7 +777,7 @@ def main() -> None:
         fleet_elapsed = time.monotonic() - fleet_start
         cpu_mean = cpu_sampler.stop()
 
-        # Rough cost estimate: c7g.large on-demand is ~$0.0725/hr in eu-central-1
+        # Rough cost estimate: c7g.large on-demand is ~$0.0725/hr in eu-central-1.
         # Spot is typically ~60-70% off → ~$0.025/hr. Use Spot estimate.
         _SPOT_HOURLY_USD = 0.025
         estimated_cost_usd = (_SPOT_HOURLY_USD * fleet_elapsed) / 3600
@@ -449,20 +805,23 @@ def main() -> None:
                 {
                     "canary_recipe_id": canary_recipe,
                     "status": job_summary[0].get("status") if job_summary else "unknown",
-                    "wall_clock_seconds": job_summary[0].get("walk_wall_clock_seconds") if job_summary else None,
+                    "walk_wall_clock_seconds": job_summary[0].get("walk_wall_clock_seconds") if job_summary else None,
                     "cpu_utilization_pct_mean_walk": round(cpu_mean, 1),
                     "estimated_cost_usd": round(estimated_cost_usd, 4),
                     "message": (
-                        "Canary complete. Review this file then send-task-success "
-                        f"with the token from s3://{S3_BUCKET}/{ML_RESULTS_PREFIX}"
-                        f"canary-task-token-{canary_recipe}.txt to approve fan-out."
+                        "Canary complete. Review this file then use the SFN approval "
+                        "token from the qgi-recipe-fleet-approval SQS queue to call "
+                        "send-task-success and approve the fan-out."
                     ),
                 },
                 S3_BUCKET,
                 canary_result_key,
             )
 
-    LOG.info("recipe-fleet-entrypoint done | wall_clock=%.0f s | cpu_mean=%.1f%%", fleet_elapsed, cpu_mean)
+    LOG.info(
+        "recipe-fleet-entrypoint done | wall_clock=%.0f s | cpu_mean=%.1f%%",
+        fleet_elapsed, cpu_mean,
+    )
 
 
 if __name__ == "__main__":

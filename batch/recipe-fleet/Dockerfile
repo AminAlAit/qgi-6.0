@@ -59,6 +59,15 @@ COPY recipe_fleet_entrypoint.py .
 COPY --from=qgi-ml scripts/ /app/scripts/
 COPY --from=qgi-ml src/ /app/src/
 
+# FIX 2 — copy positives / shape_inputs_v2 data into the image.
+# run_f_ml_1_poc.py resolves --positives-csv from this path when passed
+# explicitly. extract_shap_importances.py hard-codes REPO_ROOT/"data"/
+# "shape_inputs_v2"/{recipe}/positives.csv where REPO_ROOT = /app, so
+# this directory MUST exist in the image at /app/data/shape_inputs_v2/.
+# The data is small and version-controlled in qgi-ml (a few CSV files per
+# recipe); baking it into the image means no S3 fetch is needed for it.
+COPY --from=qgi-ml data/shape_inputs_v2/ /app/data/shape_inputs_v2/
+
 # Make scripts importable as top-level modules (run_f_ml_1_poc.py uses
 # REPO_ROOT / "scripts" and REPO_ROOT / "src" path manipulation internally,
 # so we also set PYTHONPATH to /app/scripts and /app/src for any direct
