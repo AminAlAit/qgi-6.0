@@ -585,30 +585,39 @@ CHECKPOINT_SCHEMA_VERSION = 1
 
 
 def panel_data_fingerprint(panel_dir: Path, positives_csv: Path | None = None) -> str:
-    """Fingerprint the TRAINING DATA a walk runs on: every parquet in panel_dir
-    plus the positives CSV, by (name, size, mtime_ns). Cheap (stat only, no
-    read). This is the safety guard for the 2-4x/year re-run cadence: if the
-    panels/positives are updated, the fingerprint changes, the config signature
-    changes, and a stale checkpoint from the prior data vintage is REJECTED
-    (resume starts fresh) rather than silently resumed onto new data — which
-    would produce a non-reproducible hybrid walk. A false mismatch (e.g. a
-    content-identical re-sync that bumps mtime) only costs a safe fresh start;
-    a false match (the dangerous direction) is what this prevents. Within a
-    single interrupted-then-resumed run the files are stable, so resume works."""
+    """Fingerprint the TRAINING DATA a walk runs on: every parquet under
+    panel_dir (RECURSIVE — panels may be partitioned into per-indicator subdirs)
+    plus the positives CSV, by (relative_name, size). Cheap (stat only, no read).
+
+    This is the 2-4x/year re-run safety guard: updated panels/positives change
+    total size → the fingerprint changes → the config signature changes → a
+    stale checkpoint from the prior data vintage is REJECTED (fresh start)
+    rather than silently resumed onto new data.
+
+    Deliberately uses SIZE, NOT mtime: on the AWS Spot fleet the panels are
+    re-synced from S3 onto a fresh instance after every reclaim, which bumps
+    mtime but not content — using mtime would reject the checkpoint on every
+    reclaim (defeating #91 resume). Size is stable across re-syncs and changes
+    on a real data update (parquet sizes virtually always differ between
+    vintages). Recursion (** ) is required because the S3 layout stores each
+    indicator under its own prefix; a top-level glob would see zero panels and
+    silently fingerprint nothing. (Review/canary 2026-05-25.)"""
     parts: list[tuple] = []
     try:
-        files = sorted(Path(panel_dir).glob("*.parquet"), key=lambda p: p.name)
+        files = sorted(Path(panel_dir).rglob("*.parquet"), key=lambda p: str(p))
     except OSError:
         files = []
     for f in files:
         try:
-            st = f.stat()
-            parts.append((f.name, st.st_size, st.st_mtime_ns))
+            rel = f.relative_to(panel_dir).as_posix()
+        except ValueError:
+            rel = f.name
+        try:
+            parts.append((rel, f.stat().st_size))
         except OSError:
-            parts.append((f.name, -1, -1))
+            parts.append((rel, -1))
     if positives_csv is not None and Path(positives_csv).exists():
-        st = Path(positives_csv).stat()
-        parts.append((Path(positives_csv).name, st.st_size, st.st_mtime_ns))
+        parts.append((Path(positives_csv).name, Path(positives_csv).stat().st_size))
     return hashlib.sha256(json.dumps(parts, sort_keys=True).encode("utf-8")).hexdigest()[:16]
 
 
