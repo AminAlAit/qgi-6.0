@@ -79,16 +79,23 @@ def test_greedy_deterministic_selection_order(fake_inner):
     assert res["chosen_window"] == 10  # max of [5,10]
 
 
+_SIG = lambda cands, steps=3, seed=0, fp="fp0": drv.greedy_config_signature(  # noqa: E731
+    "r", cands, "LR", drv.DELTA_STEP, steps, seed, fp)
+
+
 def test_no_checkpoint_writes_no_file(fake_inner, tmp_path):
-    """With checkpoint params None, no checkpoint file is created."""
-    _run(["a", "b", "c"], max_steps=3, checkpoint_path=None, sig=None)
-    assert not (tmp_path / drv.GREEDY_CHECKPOINT_NAME).exists()
+    """With checkpoint_path given but sig None (half-configured), the write path
+    must be suppressed — proving the no-op is the AND of both params, not just
+    that we happened to pass None for the path."""
+    ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
+    _run(["a", "b", "c"], max_steps=3, checkpoint_path=ckpt, sig=None)
+    assert not ckpt.exists(), "checkpoint must not be written when config_signature is None"
 
 
 def test_checkpoint_written_after_each_step(fake_inner, tmp_path):
     """A checkpoint file is written and reflects the final committed state."""
     ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
-    sig = drv.greedy_config_signature("r", ["a", "b", "c"], "LR", drv.DELTA_STEP, 3, 0)
+    sig = _SIG(["a", "b", "c"])
     res = _run(["a", "b", "c"], max_steps=3, checkpoint_path=ckpt, sig=sig)
     assert ckpt.exists()
     env = json.loads(ckpt.read_text(encoding="utf-8"))
@@ -97,47 +104,76 @@ def test_checkpoint_written_after_each_step(fake_inner, tmp_path):
     assert env["state"]["step"] == len(res["selected_indicators"])
 
 
-def test_resume_reproduces_uninterrupted_run(fake_inner, tmp_path):
-    """THE core guarantee: a run resumed from a mid-greedy checkpoint produces
-    the identical final result to an uninterrupted run."""
-    candidates = ["a", "b", "c", "d"]
-    sig = drv.greedy_config_signature("r", candidates, "LR", drv.DELTA_STEP, 4, 0)
-
-    # (1) Uninterrupted reference run.
-    full = _run(candidates, max_steps=4)
-
-    # (2) Hand-craft a "step 1 complete" checkpoint with the MATCHING signature
-    # (as if the process died after step 1), then resume with the same config.
-    ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
-    step1 = full["history"][0]
-    drv._write_json_atomic(ckpt, {
+def _craft_checkpoint(path, sig, full, up_to_step, candidates):
+    """Build a checkpoint as if the walk committed `up_to_step` steps."""
+    hist = full["history"][:up_to_step]
+    selected = [h["candidate"] for h in hist]
+    last = hist[-1]
+    drv._write_json_atomic(path, {
         "schema_version": drv.CHECKPOINT_SCHEMA_VERSION,
         "config_signature": sig,
         "state": {
-            "selected": [step1["candidate"]],
-            "chosen_window": step1["window"],
-            "remaining": [x for x in candidates if x != step1["candidate"]],
-            "current_auc": step1["auc"],
-            "step": 1,
-            "history": [step1],
+            "selected": selected,
+            "chosen_window": last["window"],
+            "remaining": [x for x in candidates if x not in selected],
+            "current_auc": last["auc"],
+            "step": up_to_step,
+            "history": hist,
         },
     })
+
+
+@pytest.mark.parametrize("up_to_step", [1, 2, 3])
+def test_resume_reproduces_uninterrupted_run(fake_inner, tmp_path, up_to_step):
+    """THE core guarantee: a run resumed from a mid-greedy checkpoint (after
+    step 1, 2, or 3) produces the identical final result to an uninterrupted run."""
+    candidates = ["a", "b", "c", "d"]
+    sig = _SIG(candidates, steps=4)
+    full = _run(candidates, max_steps=4)  # uninterrupted reference
+
+    ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
+    _craft_checkpoint(ckpt, sig, full, up_to_step, candidates)
     resumed = _run(candidates, max_steps=4, checkpoint_path=ckpt, sig=sig)
 
-    assert resumed["selected_indicators"] == full["selected_indicators"], (
-        "resumed selection must equal the uninterrupted run"
-    )
+    assert resumed["selected_indicators"] == full["selected_indicators"]
     assert resumed["chosen_window"] == full["chosen_window"]
     assert abs(resumed["final_global_auc"] - full["final_global_auc"]) < 1e-9
-    # The resumed run must NOT have re-done step 1 (history starts where it left off).
     assert [h["candidate"] for h in resumed["history"]] == [h["candidate"] for h in full["history"]]
+
+
+def test_resume_from_fully_committed_checkpoint_is_noop(fake_inner, tmp_path):
+    """Resuming from an all-steps-committed checkpoint returns immediately with
+    the same result (the while-loop exits on empty `remaining` / step cap)."""
+    candidates = ["a", "b", "c"]
+    sig = _SIG(candidates, steps=3)
+    full = _run(candidates, max_steps=3)
+    ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
+    _craft_checkpoint(ckpt, sig, full, up_to_step=3, candidates=candidates)
+    resumed = _run(candidates, max_steps=3, checkpoint_path=ckpt, sig=sig)
+    assert resumed["selected_indicators"] == full["selected_indicators"]
+
+
+def test_resume_rejected_when_data_fingerprint_differs(fake_inner, tmp_path):
+    """BLOCKER FIX (review 2026-05-24): a checkpoint from the SAME config but a
+    DIFFERENT data fingerprint (panels/positives updated) must be REJECTED —
+    never silently resumed onto new data. This is the 4x/year-cadence guard."""
+    candidates = ["a", "b", "c"]
+    old_sig = _SIG(candidates, steps=3, fp="DATA_VINTAGE_OLD")
+    new_sig = _SIG(candidates, steps=3, fp="DATA_VINTAGE_NEW")
+    assert old_sig != new_sig, "different data fingerprint must change the signature"
+    full = _run(candidates, max_steps=3)
+    ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
+    _craft_checkpoint(ckpt, old_sig, full, up_to_step=1, candidates=candidates)
+    # Run with the NEW data signature → old checkpoint ignored → fresh start.
+    res = _run(candidates, max_steps=3, checkpoint_path=ckpt, sig=new_sig)
+    assert res["selected_indicators"] == ["a", "b", "c"]  # fresh best-first, not seeded
 
 
 def test_resume_ignores_mismatched_signature(fake_inner, tmp_path):
     """A checkpoint from a DIFFERENT config must be ignored → run starts fresh,
     never silently resumes the wrong walk."""
     candidates = ["a", "b", "c"]
-    wrong_sig = drv.greedy_config_signature("OTHER", candidates, "LR", drv.DELTA_STEP, 3, 999)
+    wrong_sig = drv.greedy_config_signature("OTHER", candidates, "LR", drv.DELTA_STEP, 3, 999, "fp0")
     ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
     drv._write_json_atomic(ckpt, {
         "schema_version": drv.CHECKPOINT_SCHEMA_VERSION,
@@ -146,7 +182,7 @@ def test_resume_ignores_mismatched_signature(fake_inner, tmp_path):
                   "current_auc": 0.55, "step": 1, "history": [{"step": 1, "candidate": "c",
                   "window": 5, "auc": 0.55, "lift_over_previous": 0.05, "selected_after": ["c"]}]},
     })
-    right_sig = drv.greedy_config_signature("r", candidates, "LR", drv.DELTA_STEP, 3, 0)
+    right_sig = _SIG(candidates, steps=3)
     res = _run(candidates, max_steps=3, checkpoint_path=ckpt, sig=right_sig)
     # Started fresh → normal best-first order, NOT seeded with "c".
     assert res["selected_indicators"] == ["a", "b", "c"]
@@ -156,6 +192,21 @@ def test_resume_ignores_corrupt_checkpoint(fake_inner, tmp_path):
     """A corrupt checkpoint file must be ignored → run starts fresh."""
     ckpt = tmp_path / drv.GREEDY_CHECKPOINT_NAME
     ckpt.write_text("{ this is not valid json", encoding="utf-8")
-    sig = drv.greedy_config_signature("r", ["a", "b", "c"], "LR", drv.DELTA_STEP, 3, 0)
+    sig = _SIG(["a", "b", "c"], steps=3)
     res = _run(["a", "b", "c"], max_steps=3, checkpoint_path=ckpt, sig=sig)
     assert res["selected_indicators"] == ["a", "b", "c"]
+
+
+def test_panel_data_fingerprint_changes_on_content_change(tmp_path):
+    """The data fingerprint (stat-based) must change when a panel file's size
+    changes — the mechanism behind the 4x/year resume-rejection guard."""
+    pdir = tmp_path / "panels"
+    pdir.mkdir()
+    (pdir / "RQ.EST.parquet").write_bytes(b"x" * 100)
+    (pdir / "v2pepwrgen.parquet").write_bytes(b"y" * 200)
+    fp1 = drv.panel_data_fingerprint(pdir)
+    fp2 = drv.panel_data_fingerprint(pdir)
+    assert fp1 == fp2, "fingerprint must be stable for unchanged files"
+    (pdir / "RQ.EST.parquet").write_bytes(b"x" * 999)  # data updated
+    fp3 = drv.panel_data_fingerprint(pdir)
+    assert fp3 != fp1, "fingerprint must change when panel content changes"
