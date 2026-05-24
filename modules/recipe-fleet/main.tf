@@ -280,11 +280,11 @@ resource "aws_batch_job_definition" "recipe_fleet_walker" {
       { type = "MEMORY", value = "4096" },
     ]
 
-    # arm64 — Graviton. Consistent with all other pipeline Batch jobs.
-    runtimePlatform = {
-      cpuArchitecture       = "ARM64"
-      operatingSystemFamily = "LINUX"
-    }
+    # NB: runtimePlatform is Fargate-ONLY — AWS Batch rejects it on EC2-backed
+    # job definitions ("runtimePlatform is only applicable for Fargate", apply
+    # 2026-05-24). For EC2 Batch the arm64-ness comes from the Graviton instance
+    # pool (c7g/m7g) + the arm64 ECS AMI that image_type=ECS_AL2 auto-selects for
+    # Graviton; no runtimePlatform block is set (matches the scdi-finder EC2 job).
 
     environment = [
       # These are default/fallback values. The SFN Map overrides
