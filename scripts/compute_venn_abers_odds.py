@@ -476,7 +476,7 @@ def fit_and_score_per_cohort(
                 "gate_2_width": None,
                 "gate_pass": False,
                 "suppressed": True,
-                "flag": "UNSHARP_LOW_POWER",
+                "flag": "INSUFFICIENT_DATA",
             }
             continue
 
@@ -527,7 +527,11 @@ def fit_and_score_per_cohort(
             c_key = str(c)
             if c_key not in oof_country_scores:
                 oof_country_scores[c_key] = []
-            oof_country_scores[c_key].append(float(p))
+            # BUGFIX (Sonnet review #100): cache the OOF predicted SCORE (sc),
+            # NOT the binary label (p). Caching the label calibrated in-OOF
+            # test countries against 0/1 instead of their model score, making
+            # those countries' Venn-Abers intervals meaningless.
+            oof_country_scores[c_key].append(float(sc))
 
         # Score each country in this cohort from the eval-year scores file
         cohort_test_countries = []
@@ -688,6 +692,23 @@ def _main(argv: list[str] | None = None) -> int:
     print(f"  OOF: n={oof['n_samples']}, n_pos={oof['n_positives']}, "
           f"n_neg={oof['n_negatives']}, global_auc={oof['global_auc']:.4f}")
 
+    # Programmatic OOF-fidelity self-check (Sonnet review #100): the reproduced
+    # LOCO-AUC must match the walk's stored AUC, else the calibration is being
+    # fit on different predictions than the walk validated. WARN loudly on drift.
+    stored_auc = walk_summary.get("global_loco", {}).get("auc")
+    if stored_auc is not None:
+        auc_delta = abs(float(oof["global_auc"]) - float(stored_auc))
+        if auc_delta > 0.005:
+            print(
+                f"  WARNING: reproduced global_auc={oof['global_auc']:.4f} deviates "
+                f"{auc_delta:.4f} from walk's stored {float(stored_auc):.4f} (> 0.005). "
+                f"OOF reproduction may be unfaithful — odds calibration is suspect. "
+                f"Investigate (numpy/xgboost version, panel drift, country-norm) "
+                f"before trusting this output."
+            )
+        else:
+            print(f"  OOF-fidelity self-check PASSED (|delta|={auc_delta:.5f} <= 0.005).")
+
     # Distribution of OOF instances across cohorts
     cohort_counts: dict[str, int] = {}
     for c in oof["cohorts"]:
@@ -758,8 +779,12 @@ def _main(argv: list[str] | None = None) -> int:
             "gate_2_width_threshold": WIDTH_GATE,
             "min_n_for_gate": MIN_N_FOR_GATE,
             "suppression_rule": (
-                "Cohorts with gate_pass=False OR mean_width > 0.60 are suppressed "
-                "from published odds and flagged UNSHARP_LOW_POWER."
+                "A cohort publishes odds ONLY if BOTH gates were validatable AND "
+                "passed (coverage >= 0.90 and mean_width <= 0.60). Otherwise it is "
+                "suppressed with one of three flags: UNSHARP_LOW_POWER (mean_width > "
+                "0.60), UNVALIDATED_COVERAGE (coverage could not be validated — too "
+                "few validation positives), or INSUFFICIENT_DATA (n_oof < "
+                "MIN_N_FOR_GATE). Unvalidatable coverage is NOT a free pass."
             ),
         },
         "per_cohort_detail": {
