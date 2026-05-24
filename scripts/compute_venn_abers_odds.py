@@ -228,69 +228,57 @@ def compute_empirical_coverage(
     cal_fit_scores: np.ndarray,
     cal_fit_labels: np.ndarray,
 ) -> dict[str, Any]:
-    """Gate 1: empirical coverage on held-out calibration-validation split.
+    """Gate 1: midpoint-classification coverage on the cal-validation split.
 
-    For each instance in the cal-val split where the true label is 1,
-    check whether the Venn-Abers interval [p_lo, p_hi] brackets a positive
-    probability consistent with coverage. Per the consult:
+    Definition (ratified — venn-abers-coverage-gate-consult-2026-05-24.md):
+    Venn-Abers' validity guarantee is an AGGREGATE marginal statement, not an
+    individual-instance bracketing one. For binary outcomes it operationalizes
+    as: the interval's midpoint must land on the correct side of the 0.5
+    decision boundary for each instance. For each cal-val instance with
+    interval [p_lo, p_hi] and label y:
 
-        "Among countries where the true label is 1, at least 90% must have
-        their true label bracketed by [p_lo, p_hi]."
+        midpoint_i = (p_lo_i + p_hi_i) / 2
+        covered_i  = 1  if (y_i == 1 and midpoint_i >= 0.5)
+                        or (y_i == 0 and midpoint_i <  0.5)
+        coverage   = mean(covered_i)
 
-    Since the label IS 1, we check p_hi >= base_rate_in_interval (a weaker
-    condition). The correct operational definition is:
-        coverage = fraction of (score, label=1) test points for which
-        the interval [p_lo, p_hi] does NOT degenerate to [0, 0].
+    This is NOT near-trivial (unlike the prior `p_hi > 0` / `p_lo < 1` check,
+    which the 2026-05-24 review found was satisfied ~always): a calibrator that
+    assigns low-midpoint intervals to positive instances FAILS it. A random
+    calibrator scores ~base-rate; a well-sorted one exceeds 0.80.
 
-    More precisely (from Vovk et al.): an interval [p_lo, p_hi] is "valid"
-    for a positive instance if p_hi > 0. For a negative instance, if p_lo < 1.
-    Together, the fraction of instances for which the interval is valid (the
-    true label is bracketed between the two augmentation predictions) is the
-    empirical coverage.
+    Gate threshold: 0.80 (on this meaningful check — strictly harder in practice
+    than the old 0.90 on the trivial check). Min n: < 5 cal-val → gate_pass=None
+    (cohort suppressed UNVALIDATED_COVERAGE; not a free pass).
 
-    Implementation: an interval covers a binary label y if:
-        y=1: p_hi > 0.5 OR (p_lo + p_hi) / 2 >= some threshold
-    But the cleanest and most conservative check (following Vovk §2):
-        coverage_i = 1 if p_lo <= 0.5 < p_hi  (interval spans the decision boundary)
-                   ELSE 1 if (y==1 and p_hi >= 0.5) or (y==0 and p_lo < 0.5)
-
-    For QGI Stage A (thin data, wide intervals expected): we use the standard
-    binary coverage definition:
-        An interval [p_lo, p_hi] is valid for label y if:
-        the predicted label argmax(p_lo, p_hi) via midpoint matches y,
-        OR the interval width is non-trivial (not degenerate to a point at the wrong end).
-
-    Per consult Gate 1 language: "among countries where true label = 1, at
-    least 90% must have their true label bracketed by [p_lo, p_hi]." We interpret
-    this as: p_hi is the probability assigned when label=1 is augmented; it
-    represents the model's upper bound for being positive. An interval covers
-    a positive instance if p_hi >= p_lo (trivially true) AND p_hi > 0 (non-trivial).
-    The meaningful check is that the interval is not collapsed to [0, 0] for
-    a positive instance and not collapsed to [1, 1] for a negative instance.
-
-    Conservative implementation used here:
-        - For y=1: covered if p_hi > 0.0  (interval gives some positive probability)
-        - For y=0: covered if p_lo < 1.0  (interval gives some negative probability)
-    This matches Vovk's validity definition for the inductive predictor.
-
-    Returns a dict with coverage, n_valid, n_total, gate_pass.
+    Also returns a logged-only Winkler interval-score diagnostic (no gating) at
+    nominal 90% (alpha=0.10): mean of -(p_hi - p_lo) - (2/alpha)*[underage +
+    overage]. Lower (more negative) = worse; surfaced for analyst inspection.
     """
     intervals = batch_venn_abers_intervals(cal_fit_scores, cal_fit_labels, cal_val_scores)
     n_total = len(cal_val_labels)
     n_covered = 0
+    alpha = 0.10
+    winkler_terms = []
     for (p_lo, p_hi), y in zip(intervals, cal_val_labels):
-        if int(y) == 1:
-            n_covered += int(p_hi > 0.0)
-        else:
-            n_covered += int(p_lo < 1.0)
+        midpoint = (float(p_lo) + float(p_hi)) / 2.0
+        yi = int(y)
+        if (yi == 1 and midpoint >= 0.5) or (yi == 0 and midpoint < 0.5):
+            n_covered += 1
+        # Winkler interval score (diagnostic only)
+        underage = max(0.0, float(p_lo) - yi)
+        overage = max(0.0, yi - float(p_hi))
+        winkler_terms.append(-(float(p_hi) - float(p_lo)) - (2.0 / alpha) * (underage + overage))
     coverage = float(n_covered) / float(n_total) if n_total > 0 else float("nan")
     return {
         "coverage": coverage,
         "n_covered": n_covered,
         "n_total": n_total,
-        "gate_pass": bool(coverage >= 0.90) if n_total >= 5 else None,
-        "gate_threshold": 0.90,
+        "definition": "midpoint_classification",
+        "gate_pass": bool(coverage >= 0.80) if n_total >= 5 else None,
+        "gate_threshold": 0.80,
         "low_n_skip": n_total < 5,
+        "winkler_score_mean": (float(np.mean(winkler_terms)) if winkler_terms else None),
     }
 
 
@@ -421,7 +409,7 @@ def reproduce_oof_predictions(
 COHORTS = ("fragile-state", "mid-tier", "stable-democracy")
 # 70/30 split of OOF predictions for cal-fit / cal-val (per consult §4 Gate 1)
 CAL_FIT_FRACTION = 0.70
-COVERAGE_GATE = 0.90
+COVERAGE_GATE = 0.80  # midpoint-classification coverage (consult 2026-05-24); was 0.90 on a trivial check
 WIDTH_GATE = 0.60
 MIN_N_FOR_GATE = 5
 
