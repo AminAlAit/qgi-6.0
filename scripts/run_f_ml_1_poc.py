@@ -584,6 +584,34 @@ GREEDY_RESULT_NAME = "greedy-result.json"
 CHECKPOINT_SCHEMA_VERSION = 1
 
 
+def panel_data_fingerprint(panel_dir: Path, positives_csv: Path | None = None) -> str:
+    """Fingerprint the TRAINING DATA a walk runs on: every parquet in panel_dir
+    plus the positives CSV, by (name, size, mtime_ns). Cheap (stat only, no
+    read). This is the safety guard for the 2-4x/year re-run cadence: if the
+    panels/positives are updated, the fingerprint changes, the config signature
+    changes, and a stale checkpoint from the prior data vintage is REJECTED
+    (resume starts fresh) rather than silently resumed onto new data — which
+    would produce a non-reproducible hybrid walk. A false mismatch (e.g. a
+    content-identical re-sync that bumps mtime) only costs a safe fresh start;
+    a false match (the dangerous direction) is what this prevents. Within a
+    single interrupted-then-resumed run the files are stable, so resume works."""
+    parts: list[tuple] = []
+    try:
+        files = sorted(Path(panel_dir).glob("*.parquet"), key=lambda p: p.name)
+    except OSError:
+        files = []
+    for f in files:
+        try:
+            st = f.stat()
+            parts.append((f.name, st.st_size, st.st_mtime_ns))
+        except OSError:
+            parts.append((f.name, -1, -1))
+    if positives_csv is not None and Path(positives_csv).exists():
+        st = Path(positives_csv).stat()
+        parts.append((Path(positives_csv).name, st.st_size, st.st_mtime_ns))
+    return hashlib.sha256(json.dumps(parts, sort_keys=True).encode("utf-8")).hexdigest()[:16]
+
+
 def greedy_config_signature(
     recipe_id: str,
     candidates_top_n: list[str],
@@ -591,10 +619,15 @@ def greedy_config_signature(
     delta_step: float,
     max_steps: int,
     seed: int,
+    data_fingerprint: str,
 ) -> str:
     """Stable hash of the inputs that define a greedy walk. A checkpoint may
     only be resumed when this signature matches exactly — otherwise the on-disk
-    state belongs to a different walk and resuming would corrupt the result."""
+    state belongs to a different walk and resuming would corrupt the result.
+
+    `data_fingerprint` (from `panel_data_fingerprint`) is REQUIRED so that a
+    re-run on updated training data does NOT resume a stale checkpoint (the
+    4x/year cadence safety guard — see review 2026-05-24, blocker #2)."""
     payload = json.dumps({
         "schema": CHECKPOINT_SCHEMA_VERSION,
         "recipe_id": recipe_id,
@@ -604,6 +637,7 @@ def greedy_config_signature(
         "max_steps": int(max_steps),
         "seed": int(seed),
         "window_grid": list(WINDOW_GRID),
+        "data_fingerprint": data_fingerprint,
     }, sort_keys=True)
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
@@ -1045,8 +1079,10 @@ def _build_parser() -> argparse.ArgumentParser:
                         default=REPO_ROOT.parent / "qgi-data" / "reference" / "cohort-assignments.json")
     parser.add_argument("--no-checkpoint", action="store_true",
                         help="Disable greedy checkpoint/resume (#91). Checkpointing is ON by "
-                             "default (founder 2026-05-24: mandatory for all recipes). Use this "
-                             "only to force a clean from-scratch run or in tests.")
+                             "default (founder 2026-05-24: mandatory for all recipes). The data "
+                             "fingerprint in the config signature already forces a fresh start "
+                             "when panels/positives change, so this is rarely needed — use only "
+                             "to force a clean from-scratch run on UNCHANGED data, or in tests.")
     parser.add_argument("--max-greedy-steps", type=int, default=12)
     parser.add_argument("--negatives-per-positive", type=int, default=3)
     parser.add_argument("--seed", type=int, default=12345)
@@ -1170,9 +1206,12 @@ def _main(argv: list[str] | None = None) -> int:
     # AFTER greedy (e.g. the walk-4 LOCK-gate crash) skip the whole greedy loop;
     # (2) greedy-checkpoint.json lets a crash DURING greedy resume mid-loop. Both
     # are guarded by a config signature so only an identical walk config resumes.
+    data_fp = panel_data_fingerprint(args.panel_dir, args.positives_csv)
     sig = greedy_config_signature(
-        args.recipe_id, top_n_inds, architecture, DELTA_STEP, cap, args.seed,
+        args.recipe_id, top_n_inds, architecture, DELTA_STEP, cap, args.seed, data_fp,
     )
+    LOG.info("Greedy config signature %s (data fingerprint %s) — checkpoint resume guarded by this",
+             sig[:12], data_fp)
     greedy_ckpt_path = args.output_dir / GREEDY_CHECKPOINT_NAME
     greedy_result_path = args.output_dir / GREEDY_RESULT_NAME
 
