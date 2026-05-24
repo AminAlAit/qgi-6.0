@@ -230,6 +230,56 @@ class CpuSampler:
         return sum(self._samples) / len(self._samples)
 
 
+class PeriodicCheckpointSync:
+    """Sync the walk's output dir (which holds the #91 greedy-checkpoint.json +
+    greedy-result.json) UP to S3 every `interval` seconds WHILE the walk runs.
+
+    Why this matters (canary 2026-05-25): the walk writes its per-step checkpoint
+    LOCALLY. Without this background sync the checkpoint only reached S3 after the
+    walk finished — so a Spot reclaim mid-walk lost it and the retry restarted
+    from greedy step 1. With it, the checkpoint is in S3 within `interval` of each
+    step, so a reclaimed job's retry (or a fresh instance) downloads it and the
+    walk's #91 resume picks up where it left off. Writes are atomic on the walk
+    side (tmp+rename), so an in-flight sync at worst uploads a one-step-stale but
+    valid checkpoint.
+    """
+
+    def __init__(self, local_dir: Path, bucket: str, prefix: str, interval: float = 90.0):
+        self._local_dir = local_dir
+        self._bucket = bucket
+        self._prefix = prefix
+        self._interval = interval
+        self._running = False
+        self._thread = None
+
+    def start(self) -> None:
+        import threading
+
+        self._running = True
+
+        def _loop():
+            while self._running:
+                # Sleep first so we don't double-sync at t=0 (the caller already
+                # downloaded any prior checkpoint before launching the walk).
+                for _ in range(int(self._interval)):
+                    if not self._running:
+                        return
+                    time.sleep(1)
+                try:
+                    if self._local_dir.exists():
+                        s3_sync_dir_up(self._local_dir, self._bucket, self._prefix)
+                except Exception as exc:  # noqa: BLE001 — never let a sync error kill the walk
+                    LOG.warning("checkpoint sync (periodic) failed, will retry: %s", exc)
+
+        self._thread = threading.Thread(target=_loop, daemon=True)
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._running = False
+        if self._thread:
+            self._thread.join(timeout=30)
+
+
 # ---------------------------------------------------------------------------
 # Script location helper
 # ---------------------------------------------------------------------------
@@ -729,17 +779,26 @@ def main() -> None:
             results_s3_prefix = f"{ML_RESULTS_PREFIX}{recipe_id}/"
             s3_sync_prefix_down(S3_BUCKET, results_s3_prefix, walk_output_dir)
 
-            # -- Run walk --
-            walk_result = run_walk(
-                recipe_id=recipe_id,
-                local_data_dir=local_data_dir,
-                local_output_dir=walk_output_dir,
-                cohort_sidecar_path=local_cohort_sidecar,
+            # -- Run walk, syncing the checkpoint to S3 every 90s so a Spot
+            #    reclaim mid-walk is recoverable (the retry resumes from the last
+            #    synced greedy step instead of restarting). Canary 2026-05-25. --
+            ckpt_sync = PeriodicCheckpointSync(
+                walk_output_dir, S3_BUCKET, results_s3_prefix, interval=90.0
             )
+            ckpt_sync.start()
+            try:
+                walk_result = run_walk(
+                    recipe_id=recipe_id,
+                    local_data_dir=local_data_dir,
+                    local_output_dir=walk_output_dir,
+                    cohort_sidecar_path=local_cohort_sidecar,
+                )
+            finally:
+                ckpt_sync.stop()
 
-            # -- Upload walk outputs to S3 immediately after walk (even on failure) --
-            # This includes greedy-checkpoint.json + greedy-result.json so a reclaimed
-            # Spot job can resume from where it left off.
+            # -- Final upload of walk outputs to S3 (even on failure) --
+            # greedy-checkpoint.json + greedy-result.json so a reclaimed Spot job
+            # can resume from where it left off.
             if walk_output_dir.exists():
                 s3_sync_dir_up(walk_output_dir, S3_BUCKET, results_s3_prefix)
 
