@@ -54,6 +54,7 @@ Usage (economic_recession, per-recipe pre-reg values):
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import sys
@@ -563,6 +564,114 @@ def univariate_loco_screen(
 # ---- Greedy outer + window search -------------------------------------------
 
 
+# ---- Checkpoint / resume (#91) ---------------------------------------------
+# Per-step greedy checkpointing so a long walk can RESUME instead of restart.
+# Founder 2026-05-24: mandatory for all recipes; hard prerequisite for the AWS
+# Spot fleet (a reclaimed multi-hour walk must resume, not restart from zero).
+# Granularity: at most ONE greedy step is lost on interruption. A config
+# signature guards every resume — a checkpoint is only honoured if it was
+# produced by an identical walk configuration (recipe/candidates/arch/grid/
+# seed/steps); a mismatch or a corrupt file is ignored and the walk starts
+# fresh (never silently resume a different walk).
+#
+# NOTE (AWS): the checkpoint is a plain JSON file in output_dir. On the Spot
+# fleet, output_dir must be backed by S3 (sync the checkpoint out after each
+# step / in at startup) — wired in the AWS-fleet task, not here. S3, not
+# DynamoDB: a cold, infrequent "where was I" blob, written once per greedy step.
+
+GREEDY_CHECKPOINT_NAME = "greedy-checkpoint.json"
+GREEDY_RESULT_NAME = "greedy-result.json"
+CHECKPOINT_SCHEMA_VERSION = 1
+
+
+def panel_data_fingerprint(panel_dir: Path, positives_csv: Path | None = None) -> str:
+    """Fingerprint the TRAINING DATA a walk runs on: every parquet in panel_dir
+    plus the positives CSV, by (name, size, mtime_ns). Cheap (stat only, no
+    read). This is the safety guard for the 2-4x/year re-run cadence: if the
+    panels/positives are updated, the fingerprint changes, the config signature
+    changes, and a stale checkpoint from the prior data vintage is REJECTED
+    (resume starts fresh) rather than silently resumed onto new data — which
+    would produce a non-reproducible hybrid walk. A false mismatch (e.g. a
+    content-identical re-sync that bumps mtime) only costs a safe fresh start;
+    a false match (the dangerous direction) is what this prevents. Within a
+    single interrupted-then-resumed run the files are stable, so resume works."""
+    parts: list[tuple] = []
+    try:
+        files = sorted(Path(panel_dir).glob("*.parquet"), key=lambda p: p.name)
+    except OSError:
+        files = []
+    for f in files:
+        try:
+            st = f.stat()
+            parts.append((f.name, st.st_size, st.st_mtime_ns))
+        except OSError:
+            parts.append((f.name, -1, -1))
+    if positives_csv is not None and Path(positives_csv).exists():
+        st = Path(positives_csv).stat()
+        parts.append((Path(positives_csv).name, st.st_size, st.st_mtime_ns))
+    return hashlib.sha256(json.dumps(parts, sort_keys=True).encode("utf-8")).hexdigest()[:16]
+
+
+def greedy_config_signature(
+    recipe_id: str,
+    candidates_top_n: list[str],
+    architecture: str,
+    delta_step: float,
+    max_steps: int,
+    seed: int,
+    data_fingerprint: str,
+) -> str:
+    """Stable hash of the inputs that define a greedy walk. A checkpoint may
+    only be resumed when this signature matches exactly — otherwise the on-disk
+    state belongs to a different walk and resuming would corrupt the result.
+
+    `data_fingerprint` (from `panel_data_fingerprint`) is REQUIRED so that a
+    re-run on updated training data does NOT resume a stale checkpoint (the
+    4x/year cadence safety guard — see review 2026-05-24, blocker #2)."""
+    payload = json.dumps({
+        "schema": CHECKPOINT_SCHEMA_VERSION,
+        "recipe_id": recipe_id,
+        "candidates_top_n": list(candidates_top_n),  # order matters (greedy order)
+        "architecture": architecture,
+        "delta_step": round(float(delta_step), 8),
+        "max_steps": int(max_steps),
+        "seed": int(seed),
+        "window_grid": list(WINDOW_GRID),
+        "data_fingerprint": data_fingerprint,
+    }, sort_keys=True)
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def _write_json_atomic(path: Path, obj: dict[str, Any]) -> None:
+    """Write JSON via a temp file + rename so a crash mid-write can't leave a
+    truncated/corrupt checkpoint."""
+    tmp = path.with_suffix(path.suffix + ".tmp")
+    tmp.write_text(json.dumps(obj, indent=2, ensure_ascii=False), encoding="utf-8")
+    tmp.replace(path)
+
+
+def load_greedy_checkpoint(path: Path, expected_signature: str) -> dict[str, Any] | None:
+    """Return the validated checkpoint ENVELOPE if a signature-matching one
+    exists; else None (corrupt / mismatched / absent → start fresh, with a log).
+    The envelope carries `state` (per-step resume fields) and, for a completed
+    greedy-result file, also `result` (the full greedy output)."""
+    if not path.exists():
+        return None
+    try:
+        ckpt = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        LOG.warning("Ignoring unreadable greedy checkpoint at %s (%s); starting fresh", path, exc)
+        return None
+    if not isinstance(ckpt, dict) or ckpt.get("config_signature") != expected_signature:
+        LOG.warning("Greedy checkpoint config_signature mismatch/absent at %s; ignoring (different walk config)", path)
+        return None
+    state = ckpt.get("state")
+    if not isinstance(state, dict) or "selected" not in state or "step" not in state:
+        LOG.warning("Greedy checkpoint at %s missing required state fields; ignoring", path)
+        return None
+    return ckpt
+
+
 def greedy_outer_loop(
     samples: pd.DataFrame,
     candidates_top_n: list[str],
@@ -571,6 +680,8 @@ def greedy_outer_loop(
     delta_step: float = DELTA_STEP,
     max_steps: int | None = None,
     seed: int = 0,
+    checkpoint_path: Path | None = None,
+    config_signature: str | None = None,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -589,6 +700,23 @@ def greedy_outer_loop(
     step = 0
     if max_steps is None:
         max_steps = len(candidates_top_n)
+
+    # --- Resume from a per-step checkpoint if one matches this config (#91) ---
+    if checkpoint_path is not None and config_signature is not None:
+        env = load_greedy_checkpoint(checkpoint_path, config_signature)
+        if env is not None:
+            state = env["state"]
+            selected = list(state["selected"])
+            chosen_window = state.get("chosen_window")
+            remaining = list(state["remaining"])
+            current_auc = float(state["current_auc"])
+            history = list(state["history"])
+            step = int(state["step"])
+            LOG.info(
+                "RESUMING greedy from checkpoint: step=%d, selected=%s, current_auc=%.4f",
+                step, selected, current_auc,
+            )
+
     while remaining and step < max_steps:
         step += 1
         LOG.info("Greedy step %d/%d (selected=%d, remaining=%d)", step, max_steps, len(selected), len(remaining))
@@ -626,6 +754,23 @@ def greedy_outer_loop(
         chosen_window = best["window"]
         remaining.remove(best["candidate"])
         current_auc = best["auc"]
+
+        # Checkpoint AFTER the step commits (#91): at most one step is lost on
+        # interruption. Atomic write so a crash mid-write can't corrupt it.
+        if checkpoint_path is not None and config_signature is not None:
+            _write_json_atomic(checkpoint_path, {
+                "schema_version": CHECKPOINT_SCHEMA_VERSION,
+                "config_signature": config_signature,
+                "written_at_utc": datetime.now(timezone.utc).isoformat(),
+                "state": {
+                    "selected": selected,
+                    "chosen_window": chosen_window,
+                    "remaining": remaining,
+                    "current_auc": float(current_auc),
+                    "step": step,
+                    "history": history,
+                },
+            })
     return {
         "selected_indicators": selected,
         "chosen_window": chosen_window,
@@ -932,6 +1077,12 @@ def _build_parser() -> argparse.ArgumentParser:
                              "data/shape_inputs_v2/{recipe-id}/positives.csv.")
     parser.add_argument("--cohort-sidecar", type=Path,
                         default=REPO_ROOT.parent / "qgi-data" / "reference" / "cohort-assignments.json")
+    parser.add_argument("--no-checkpoint", action="store_true",
+                        help="Disable greedy checkpoint/resume (#91). Checkpointing is ON by "
+                             "default (founder 2026-05-24: mandatory for all recipes). The data "
+                             "fingerprint in the config signature already forces a fresh start "
+                             "when panels/positives change, so this is rarely needed — use only "
+                             "to force a clean from-scratch run on UNCHANGED data, or in tests.")
     parser.add_argument("--max-greedy-steps", type=int, default=12)
     parser.add_argument("--negatives-per-positive", type=int, default=3)
     parser.add_argument("--seed", type=int, default=12345)
@@ -1050,10 +1201,46 @@ def _main(argv: list[str] | None = None) -> int:
     # Greedy outer loop + concurrent window search (per §5.2-§5.4)
     LOG.info("=== GREEDY OUTER LOOP + WINDOW SEARCH ===")
     cap = THIN_RECIPE_CAP if n_pos < 60 else args.max_greedy_steps
-    greedy = greedy_outer_loop(
-        samples, top_n_inds, panels, architecture,
-        delta_step=DELTA_STEP, max_steps=cap, seed=args.seed,
+
+    # Checkpoint/resume (#91). Two levels: (1) greedy-result.json lets a crash
+    # AFTER greedy (e.g. the walk-4 LOCK-gate crash) skip the whole greedy loop;
+    # (2) greedy-checkpoint.json lets a crash DURING greedy resume mid-loop. Both
+    # are guarded by a config signature so only an identical walk config resumes.
+    data_fp = panel_data_fingerprint(args.panel_dir, args.positives_csv)
+    sig = greedy_config_signature(
+        args.recipe_id, top_n_inds, architecture, DELTA_STEP, cap, args.seed, data_fp,
     )
+    LOG.info("Greedy config signature %s (data fingerprint %s) — checkpoint resume guarded by this",
+             sig[:12], data_fp)
+    greedy_ckpt_path = args.output_dir / GREEDY_CHECKPOINT_NAME
+    greedy_result_path = args.output_dir / GREEDY_RESULT_NAME
+
+    greedy = None
+    if not args.no_checkpoint:
+        cached = load_greedy_checkpoint(greedy_result_path, sig)
+        if cached is not None and "result" in cached:
+            greedy = cached["result"]
+            LOG.info("SKIPPING greedy loop — resuming from completed greedy-result.json "
+                     "(%d selected, window=%s)", len(greedy["selected_indicators"]), greedy["chosen_window"])
+
+    if greedy is None:
+        greedy = greedy_outer_loop(
+            samples, top_n_inds, panels, architecture,
+            delta_step=DELTA_STEP, max_steps=cap, seed=args.seed,
+            checkpoint_path=None if args.no_checkpoint else greedy_ckpt_path,
+            config_signature=None if args.no_checkpoint else sig,
+        )
+        # Persist the completed greedy result BEFORE LOCK GATE EVAL so a crash
+        # in the (cheaper but historically fragile) LOCK phase never re-runs the
+        # expensive greedy search. Reuses the checkpoint envelope + signature.
+        if not args.no_checkpoint:
+            _write_json_atomic(greedy_result_path, {
+                "schema_version": CHECKPOINT_SCHEMA_VERSION,
+                "config_signature": sig,
+                "written_at_utc": datetime.now(timezone.utc).isoformat(),
+                "state": {"selected": greedy["selected_indicators"], "step": len(greedy["selected_indicators"])},
+                "result": greedy,
+            })
     LOG.info("Greedy result: %d selected, window=%s, final_AUC=%.4f",
              len(greedy["selected_indicators"]), greedy["chosen_window"], greedy["final_global_auc"])
 
