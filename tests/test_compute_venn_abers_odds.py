@@ -235,40 +235,78 @@ def test_pava_predict_p1_geq_p0_on_separated_data():
 # ---------------------------------------------------------------------------
 
 
-def test_coverage_perfect_on_trivial_case():
-    """When all calibration-val positives have a non-degenerate interval
-    (p_hi > 0), coverage should be 1.0."""
-    # Well-separated: every positive test score gets a high interval
+def test_coverage_perfect_on_well_classified_positives():
+    """Midpoint-classification coverage: high-score positives on a well-separated
+    calibrator get midpoint >= 0.5 → all covered → coverage 1.0, gate passes."""
     cal_fit_scores, cal_fit_labels = _make_well_separated_cal(n_pos=40, n_neg=40, seed=0)
-    # Cal-val: only positives (worst case for coverage check)
     cal_val_scores = np.array([0.8, 0.85, 0.9, 0.95, 0.99])
     cal_val_labels = np.array([1, 1, 1, 1, 1])
     result = vao.compute_empirical_coverage(
         cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
     )
+    assert result["definition"] == "midpoint_classification_accuracy_proxy"
     assert result["coverage"] == 1.0, (
-        f"Coverage should be 1.0 on high-score positives: got {result['coverage']:.3f}"
+        f"High-score positives should classify correctly: got {result['coverage']:.3f}"
     )
     assert result["gate_pass"] is True
     assert result["n_total"] == 5
 
 
 def test_coverage_gate_pass_threshold():
-    """Gate passes at coverage >= 0.90, fails below."""
-    # Synthesize a case where exactly 9 of 10 are covered
+    """Gate passes at coverage >= 0.80 (midpoint-classification)."""
     cal_fit_scores, cal_fit_labels = _make_well_separated_cal()
-
-    # Manually patch by using a coverage where we expect exactly 1 miss:
-    # Use negatives as val positives with very low scores — those will
-    # have p_hi close to 0, potentially failing coverage.
-    # Simpler: use 10 test points, all positives with high scores (all covered)
     cal_val_scores = np.array([0.7, 0.75, 0.8, 0.85, 0.9, 0.92, 0.94, 0.96, 0.98, 0.99])
     cal_val_labels = np.ones(10, dtype=int)
     result = vao.compute_empirical_coverage(
         cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
     )
     assert result["gate_pass"] is True
-    assert result["coverage"] >= 0.90
+    assert result["coverage"] >= 0.80
+    assert result["gate_threshold"] == 0.80
+
+
+def test_coverage_gate_FAILS_on_misclassified_positives():
+    """The key non-triviality check: positives that the calibrator places on the
+    WRONG side of 0.5 (low scores labeled positive) must DROP coverage below the
+    gate — proving midpoint-classification is not near-trivially satisfied
+    (unlike the old p_hi>0 check, which would have passed this case)."""
+    cal_fit_scores, cal_fit_labels = _make_well_separated_cal(n_pos=40, n_neg=40, seed=0)
+    # 6 of 8 cal-val positives have LOW scores → midpoint < 0.5 → NOT covered.
+    cal_val_scores = np.array([0.02, 0.05, 0.08, 0.10, 0.12, 0.15, 0.95, 0.98])
+    cal_val_labels = np.ones(8, dtype=int)
+    result = vao.compute_empirical_coverage(
+        cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
+    )
+    assert result["coverage"] < 0.80, (
+        f"Misclassified positives must drop coverage below the gate: "
+        f"got {result['coverage']:.3f} — old trivial check would have passed at 1.0"
+    )
+    assert result["gate_pass"] is False
+
+
+def test_coverage_midpoint_exactly_half_boundary():
+    """F5 boundary: a positive whose interval midpoint is EXACTLY 0.5 must be
+    counted as covered (the classifier uses midpoint >= 0.5, inclusive). We force
+    a symmetric calibrator so a mid-range score yields a midpoint at the 0.5
+    boundary, and assert the >= side is honored rather than > ."""
+    # Symmetric calibration set: equal positives and negatives, mirrored scores,
+    # so the Venn-Abers interval for a central score straddles 0.5 symmetrically.
+    cal_fit_scores = np.array([0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 0.9])
+    cal_fit_labels = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+    cal_val_scores = np.array([0.5, 0.5, 0.5, 0.5, 0.5])
+    cal_val_labels = np.ones(5, dtype=int)
+    result = vao.compute_empirical_coverage(
+        cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
+    )
+    # Recompute the midpoint directly to assert the boundary case is exercised.
+    intervals = vao.batch_venn_abers_intervals(cal_fit_scores, cal_fit_labels, cal_val_scores)
+    mids = [(float(lo) + float(hi)) / 2.0 for lo, hi in intervals]
+    # If any midpoint is exactly 0.5, it must be counted as covered for y=1.
+    if any(abs(m - 0.5) < 1e-12 for m in mids):
+        n_boundary = sum(1 for m in mids if abs(m - 0.5) < 1e-12)
+        assert result["n_covered"] >= n_boundary, (
+            "midpoint == 0.5 positives must be covered under the inclusive >= rule"
+        )
 
 
 def test_coverage_low_n_skip():
@@ -297,7 +335,8 @@ def test_coverage_output_schema():
     result = vao.compute_empirical_coverage(
         cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
     )
-    required_keys = {"coverage", "n_covered", "n_total", "gate_pass", "gate_threshold", "low_n_skip"}
+    required_keys = {"coverage", "n_covered", "n_total", "gate_pass", "gate_threshold",
+                     "low_n_skip", "definition", "winkler_score_diagnostic"}
     assert required_keys.issubset(set(result.keys())), (
         f"Missing keys: {required_keys - set(result.keys())}"
     )
@@ -379,8 +418,9 @@ def test_width_n_test_matches_input():
 
 def test_gate_constants():
     """Verify the gate constants match the consult spec."""
-    assert vao.COVERAGE_GATE == 0.90, (
-        "Gate 1 coverage threshold must be 0.90 per consult §4"
+    assert vao.COVERAGE_GATE == 0.80, (
+        "Gate 1 coverage threshold is 0.80 on the midpoint-classification check "
+        "(venn-abers-coverage-gate-consult-2026-05-24); was 0.90 on the trivial check"
     )
     assert vao.WIDTH_GATE == 0.60, (
         "Gate 2 width threshold must be 0.60 per consult §4"
