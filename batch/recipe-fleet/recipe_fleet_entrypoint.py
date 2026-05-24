@@ -64,6 +64,7 @@ from __future__ import annotations
 import json
 import logging
 import os
+import signal
 import subprocess
 import sys
 import tempfile
@@ -278,6 +279,37 @@ class PeriodicCheckpointSync:
         self._running = False
         if self._thread:
             self._thread.join(timeout=30)
+
+    def flush(self) -> None:
+        """One immediate synchronous checkpoint upload (used by the SIGTERM
+        Spot-reclaim handler to capture the last <90s before the instance dies)."""
+        try:
+            if self._local_dir.exists():
+                s3_sync_dir_up(self._local_dir, self._bucket, self._prefix)
+        except Exception as exc:  # noqa: BLE001
+            LOG.warning("checkpoint flush on SIGTERM failed: %s", exc)
+
+
+# ---------------------------------------------------------------------------
+# Spot-reclaim (SIGTERM) handler
+# ---------------------------------------------------------------------------
+# AWS sends SIGTERM ~2 min before reclaiming a Spot instance, then SIGKILL.
+# This handler writes a CLEAR marker to the log stream (so a watcher knows the
+# run is handing off, rather than the stream just cutting off mid-line) and
+# flushes the latest checkpoint to S3 so the retry resumes from the last step.
+_ACTIVE_SYNC: PeriodicCheckpointSync | None = None
+
+
+def _handle_sigterm(signum, frame):  # noqa: ANN001
+    LOG.warning(
+        "=== SIGTERM received (likely Spot reclaim) === flushing checkpoint to S3 "
+        "and exiting; the Batch retry will resume from the last greedy step on a "
+        "NEW log stream. This is the handoff marker — not a failure."
+    )
+    if _ACTIVE_SYNC is not None:
+        _ACTIVE_SYNC.flush()
+    LOG.warning("checkpoint flushed; exiting 1 for Batch retry/resume.")
+    sys.exit(1)
 
 
 # ---------------------------------------------------------------------------
@@ -676,6 +708,10 @@ def main() -> None:
         LOG.error("S3_BUCKET env var is required")
         sys.exit(1)
 
+    # Catch Spot reclaim (SIGTERM ~2 min before kill): log a clean handoff
+    # marker + flush the checkpoint to S3 so the retry resumes (see handler).
+    signal.signal(signal.SIGTERM, _handle_sigterm)
+
     recipe_ids = [r.strip() for r in RECIPE_IDS_RAW.split(",") if r.strip()]
     if not recipe_ids:
         LOG.error("RECIPE_IDS env var is empty or not set")
@@ -782,9 +818,11 @@ def main() -> None:
             # -- Run walk, syncing the checkpoint to S3 every 90s so a Spot
             #    reclaim mid-walk is recoverable (the retry resumes from the last
             #    synced greedy step instead of restarting). Canary 2026-05-25. --
+            global _ACTIVE_SYNC
             ckpt_sync = PeriodicCheckpointSync(
                 walk_output_dir, S3_BUCKET, results_s3_prefix, interval=90.0
             )
+            _ACTIVE_SYNC = ckpt_sync  # SIGTERM handler flushes this on Spot reclaim
             ckpt_sync.start()
             try:
                 walk_result = run_walk(
@@ -795,6 +833,7 @@ def main() -> None:
                 )
             finally:
                 ckpt_sync.stop()
+                _ACTIVE_SYNC = None
 
             # -- Final upload of walk outputs to S3 (even on failure) --
             # greedy-checkpoint.json + greedy-result.json so a reclaimed Spot job
