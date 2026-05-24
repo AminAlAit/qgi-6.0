@@ -3,7 +3,7 @@
   "eval_year": 2021,
   "method": "venn-abers-inductive-per-cohort",
   "method_reference": "Vovk, V., Petej, I., & Fedorova, V. (2015). Large-scale probabilistic predictors with and without guarantees of validity. NeurIPS 28. Per odds-calibration-consult-2026-05-24.md (Ji-Hoon #21 + Kwame #11, 2/2 ratified).",
-  "computed_at_utc": "2026-05-23T23:54:45.566101+00:00",
+  "computed_at_utc": "2026-05-24T00:29:37.291515+00:00",
   "seed_used": 12345,
   "oof_reproduction": {
     "n_samples": 58,
@@ -26,16 +26,16 @@
     "stable-democracy": null
   },
   "per_cohort_mean_width": {
-    "fragile-state": 0.24433106575963728,
-    "mid-tier": 0.6337868480725624,
-    "stable-democracy": 0.4333333333333333
+    "fragile-state": 0.2277777777777779,
+    "mid-tier": 0.6587301587301587,
+    "stable-democracy": 0.436
   },
   "gate_pass": false,
   "gate_definitions": {
     "gate_1_coverage_threshold": 0.9,
     "gate_2_width_threshold": 0.6,
     "min_n_for_gate": 5,
-    "suppression_rule": "Cohorts with gate_pass=False OR mean_width > 0.60 are suppressed from published odds and flagged UNSHARP_LOW_POWER."
+    "suppression_rule": "A cohort publishes odds ONLY if BOTH gates were validatable AND passed (coverage >= 0.90 and mean_width <= 0.60). Otherwise it is suppressed with one of three flags: UNSHARP_LOW_POWER (mean_width > 0.60), UNVALIDATED_COVERAGE (coverage could not be validated — too few validation positives), or INSUFFICIENT_DATA (n_oof < MIN_N_FOR_GATE). Unvalidatable coverage is NOT a free pass."
   },
   "per_cohort_detail": {
     "fragile-state": {
@@ -51,7 +51,7 @@
         "low_n_skip": false
       },
       "gate_2_width": {
-        "mean_width": 0.24433106575963728,
+        "mean_width": 0.2277777777777779,
         "max_width": 0.7142857142857143,
         "n_test": 21,
         "gate_pass": true,
@@ -75,7 +75,7 @@
         "low_n_skip": false
       },
       "gate_2_width": {
-        "mean_width": 0.6337868480725624,
+        "mean_width": 0.6587301587301587,
         "max_width": 1.0,
         "n_test": 21,
         "gate_pass": false,
@@ -98,7 +98,7 @@
         "gate_threshold": 0.9
       },
       "gate_2_width": {
-        "mean_width": 0.4333333333333333,
+        "mean_width": 0.436,
         "max_width": 0.5,
         "n_test": 25,
         "gate_pass": true,
@@ -115,9 +115,9 @@
   "odds": {
     "Afghanistan": {
       "p_lo": 0.285714,
-      "p_hi": 0.5,
-      "width": 0.214286,
-      "midpoint": 0.392857,
+      "p_hi": 0.428571,
+      "width": 0.142857,
+      "midpoint": 0.357143,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
@@ -175,9 +175,9 @@
     },
     "Djibouti": {
       "p_lo": 0.0,
-      "p_hi": 0.125,
-      "width": 0.125,
-      "midpoint": 0.0625,
+      "p_hi": 0.2,
+      "width": 0.2,
+      "midpoint": 0.1,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
@@ -205,9 +205,9 @@
     },
     "Iran": {
       "p_lo": 0.285714,
-      "p_hi": 1.0,
-      "width": 0.714286,
-      "midpoint": 0.642857,
+      "p_hi": 0.428571,
+      "width": 0.142857,
+      "midpoint": 0.357143,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
@@ -235,19 +235,19 @@
     },
     "Kuwait": {
       "p_lo": 0.0,
-      "p_hi": 0.125,
-      "width": 0.125,
-      "midpoint": 0.0625,
+      "p_hi": 0.166667,
+      "width": 0.166667,
+      "midpoint": 0.083333,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
       "label": "estimated probability range, not a precise probability"
     },
     "Russia": {
-      "p_lo": 0.285714,
+      "p_lo": 0.0,
       "p_hi": 0.428571,
-      "width": 0.142857,
-      "midpoint": 0.357143,
+      "width": 0.428571,
+      "midpoint": 0.214286,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
@@ -274,10 +274,10 @@
       "label": "estimated probability range, not a precise probability"
     },
     "Syria": {
-      "p_lo": 0.75,
+      "p_lo": 0.857143,
       "p_hi": 1.0,
-      "width": 0.25,
-      "midpoint": 0.875,
+      "width": 0.142857,
+      "midpoint": 0.928571,
       "cohort": "fragile-state",
       "suppressed": false,
       "flag": null,
@@ -395,9 +395,9 @@
     },
     "Guinea-Bissau": {
       "p_lo": 0.0,
-      "p_hi": 0.071429,
-      "width": 0.071429,
-      "midpoint": 0.035714,
+      "p_hi": 0.333333,
+      "width": 0.333333,
+      "midpoint": 0.166667,
       "cohort": "mid-tier",
       "suppressed": true,
       "flag": "UNSHARP_LOW_POWER",
@@ -475,9 +475,9 @@
     },
     "Philippines": {
       "p_lo": 0.0,
-      "p_hi": 0.071429,
-      "width": 0.071429,
-      "midpoint": 0.035714,
+      "p_hi": 0.333333,
+      "width": 0.333333,
+      "midpoint": 0.166667,
       "cohort": "mid-tier",
       "suppressed": true,
       "flag": "UNSHARP_LOW_POWER",
@@ -765,9 +765,9 @@
     },
     "Spain": {
       "p_lo": 0.0,
-      "p_hi": 0.333333,
-      "width": 0.333333,
-      "midpoint": 0.166667,
+      "p_hi": 0.4,
+      "width": 0.4,
+      "midpoint": 0.2,
       "cohort": "stable-democracy",
       "suppressed": true,
       "flag": "UNVALIDATED_COVERAGE",
