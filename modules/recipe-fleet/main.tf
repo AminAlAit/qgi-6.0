@@ -397,9 +397,11 @@ resource "aws_lambda_function" "recipe_fleet_post_pass" {
 # auditable. 14-day retention so a token survives a long approval wait.
 # ---------------------------------------------------------------------------
 resource "aws_sqs_queue" "recipe_fleet_approval" {
-  name                      = "qgi-recipe-fleet-approval"
-  message_retention_seconds = 1209600 # 14 days — token must outlive approval wait
-  tags                      = var.tags
+  name                       = "qgi-recipe-fleet-approval"
+  message_retention_seconds  = 1209600 # 14 days — token must outlive approval wait
+  visibility_timeout_seconds = 43200   # 12 h — this is a human-approval queue; a read
+  # must not re-expose the token mid-review (review 2026-05-24). Not a processing queue.
+  tags = var.tags
 }
 
 # ---------------------------------------------------------------------------
