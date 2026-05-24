@@ -145,6 +145,15 @@ resource "aws_iam_role_policy" "recipe_fleet_job" {
         Action   = ["s3:GetObject", "s3:HeadObject"]
         Resource = "arn:aws:s3:::${var.data_lake_bucket_name}/${var.recipe_manifest_s3_key}"
       },
+      # S3 — read reference artifacts the chain needs as INPUTS (the cohort
+      # sidecar cohort-assignments.json the entrypoint downloads at startup; the
+      # walk + LOCK gate + track_record require it). Caught by the 2026-05-24
+      # canary: the entrypoint's cohort download 403'd without this grant.
+      {
+        Effect   = "Allow"
+        Action   = ["s3:GetObject", "s3:HeadObject"]
+        Resource = "arn:aws:s3:::${var.data_lake_bucket_name}/reference/*"
+      },
       # CloudWatch Logs — Batch job logs via awslogs driver.
       {
         Effect   = "Allow"
