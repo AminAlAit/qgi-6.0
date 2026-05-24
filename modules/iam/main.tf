@@ -138,6 +138,8 @@ resource "aws_iam_role_policy" "github_actions_ecr_push" {
           # but same root cause: sibling-policy/sibling-resource drift).
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-a-vdem-ingest",
           "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-pipeline-b-scdi-finder",
+          # #106 recipe-fleet image (qgi-pipeline/batch/recipe-fleet/Dockerfile).
+          "arn:aws:ecr:${var.region}:${var.aws_account_id}:repository/qgi-recipe-fleet",
         ]
       },
     ]
@@ -438,6 +440,31 @@ resource "aws_iam_role_policy" "stepfunctions" {
           "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-indicator-monthly-updater",
           "arn:aws:states:${var.region}:${var.aws_account_id}:execution:qgi-indicator-monthly-updater:*",
         ]
+      },
+      # #106 recipe-fleet SFN: batch:submitJob.sync (canary + Map fan-out).
+      {
+        Effect = "Allow"
+        Action = ["batch:SubmitJob", "batch:DescribeJobs", "batch:TerminateJob"]
+        Resource = [
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job-queue/qgi-recipe-fleet-queue",
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job-definition/qgi-recipe-fleet-walker-job*",
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job/*",
+        ]
+      },
+      # #106: the .sync Batch integration creates a managed EventBridge rule to
+      # receive job-state-change events. PutRule/PutTargets/DescribeRule CANNOT
+      # be resource-scoped (AWS uses a fixed managed rule name), so Resource="*".
+      {
+        Effect   = "Allow"
+        Action   = ["events:PutRule", "events:PutTargets", "events:DescribeRule"]
+        Resource = "*"
+      },
+      # #106: sqs:SendMessage carries the canary approval waitForTaskToken into
+      # the dedicated qgi-recipe-fleet-approval queue.
+      {
+        Effect   = "Allow"
+        Action   = ["sqs:SendMessage"]
+        Resource = "arn:aws:sqs:${var.region}:${var.aws_account_id}:qgi-recipe-fleet-approval"
       },
     ]
   })
