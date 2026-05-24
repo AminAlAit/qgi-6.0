@@ -50,7 +50,7 @@ const TIER_META: Record<
     bg: "rgba(248,113,113,0.10)",
     border: "rgba(248,113,113,0.35)",
     tooltip:
-      "Top 20% of 156 scored countries. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data — relative position, not predictive forecast.",
+      "Top 20% of countries scored this cycle. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data — relative position, not predictive forecast.",
   },
   MODERATE: {
     label: "MODERATE",
@@ -490,7 +490,7 @@ export function CountriesMergedListClient({
           "Turkey" in /countries; search resolved correctly via #780, but
           the Editor's Pick section persisted above the filtered match
           and dominated the viewport. "A journalist who does not notice
-          the '1 of 156' counter would think the search returned no
+          the '1 of N' counter would think the search returned no
           results." Hide-on-search is the cleanest disambiguation —
           tier-filter and curated-only filters also leave it visible,
           since those don't have the same "the filter found nothing"
@@ -604,7 +604,7 @@ function LloydsBanner() {
       </span>
       <p className="text-xs leading-relaxed max-w-[68ch]">
         Country tiers (HIGH / MODERATE / INDICATIVE) reflect composite risk z-scores from
-        V1.9.1 methodology — relative position within the 156-country panel, not
+        V1.9.1 methodology — relative position within the countries scored this cycle, not
         predictive forecast. Hover any tier badge for the rubric. Methodology and known
         limitations:{" "}
         <Link

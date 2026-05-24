@@ -84,8 +84,27 @@ export const DATA_VINTAGE_YEAR = 2024;
  * Canonical one-line scope sentence used in OG/social/meta descriptions.
  * Reusing this string — rather than copying it five times — keeps the
  * count drift QA caught from re-emerging.
+ *
+ * 2026-05-24: "economic data" → "open-source indicators" (qgi-aws-tf#877).
+ * The indicator panel spans V-Dem governance/regime + FAOSTAT + ILOSTAT
+ * + World Bank, not solely economic data; OSINT framing matches the rest
+ * of the public surface.
  */
-export const CANONICAL_SCOPE_SENTENCE = `Historical precedents in economic data across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} indicators.`;
+export const CANONICAL_SCOPE_SENTENCE = `Historical precedents across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} open-source indicators.`;
+
+/**
+ * Number of recipes currently LOCKed by the ML pipeline. Used by the
+ * dashboard's recipe-progress display + the methodology page's stat
+ * cards. 13 LOCKed as of 2026-05-21 (post-KI-2 amendment; territorial_
+ * disputes was FALSIFIED). foreign_intervention graduated 2026-05-23 via
+ * the F-ML-1 similarity-as-risk layer (separate from LOCK count which
+ * is the calibrated-classifier dive).
+ *
+ * Update when a recipe is added to or removed from the LOCK set. CI
+ * assertion in lib/__tests__/site-stats.test.ts will fail if this drifts
+ * from the recipe manifest (TODO #878 follow-up).
+ */
+export const TOTAL_LOCKED = 13;
 
 /**
  * Read the count of countries that received a risk tier in the current
