@@ -7,7 +7,7 @@ import {
 } from "@aws-sdk/client-athena";
 import { unstable_cache } from "next/cache";
 
-const REGION = "eu-central-1";
+const REGION = process.env.AWS_REGION ?? "eu-central-1";
 const WORKGROUP = process.env.ATHENA_WORKGROUP ?? "QGI-Lambda-Workgroup";
 const OUTPUT_LOCATION =
   process.env.ATHENA_OUTPUT_LOCATION ?? "s3://qgi-data-lake-222222222222/query_results/";
