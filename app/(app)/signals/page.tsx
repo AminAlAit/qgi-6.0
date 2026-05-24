@@ -2,6 +2,7 @@ import { loadCountryRisks } from "@/lib/country-risks";
 import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
 import { CATEGORY_L1_MAP, L1_GROUPS, type L1Group } from "@/lib/category-taxonomy";
 import { SignalsMergedListClient } from "@/components/signals/SignalsMergedListClient";
+import { TOTAL_COUNTRIES } from "@/lib/site-stats";
 import type { CategoryScore } from "@/lib/country-risks";
 import type { Metadata } from "next";
 
@@ -34,8 +35,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Signals · QG Intelligence",
-  description:
-    "ML-validated risk recipes tracked across 156 countries — each adjudicated through blind walk-forward backtest and the QGI four-pillar lock rubric. Tier vocabulary: HIGH / MODERATE / INDICATIVE.",
+  description: `ML-validated risk recipes tracked across ${TOTAL_COUNTRIES} in-scope countries, each adjudicated through blind walk-forward backtest and the QGI four-pillar lock rubric. Tier vocabulary: HIGH / MODERATE / INDICATIVE.`,
   // #699: explicit canonical (was inheriting "/" from root layout).
   alternates: { canonical: "/signals" },
 };

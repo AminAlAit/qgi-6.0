@@ -5,6 +5,7 @@ import indexData from "@/data/indexes.json";
 import taxonomyData from "@/data/taxonomy_hierarchy.json";
 import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
 import { canonicalPairKey } from "@/lib/canonical-pair";
+import { TOTAL_LOCKED } from "@/lib/site-stats";
 
 /**
  * PR-vi (2026-05-15) — Dashboard redesigned per JTBD Majles verdict.
@@ -203,10 +204,8 @@ export default async function DashboardPage() {
 
   // PR-vi Section 3 (Precedents card) — counts.
   const mlValidatedCount = mlStack?.metadata.top_4_recipes.length ?? 0;
-  // 13 locked recipes per ML Stage 4 pre-registration (qgi-docs/internal/
-  // ops/ml-track/FINAL-RESULTS.md). Update only if pre-registration is
-  // revised by founder+ML-Opus.
-  const TOTAL_LOCKED = 13;
+  // TOTAL_LOCKED imported from lib/site-stats.ts (SSOT). Was a magic
+  // constant here until #878; update there only.
 
   return (
     <BaseClient

@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# qgi-frontend
 
-## Getting Started
+Next.js 16 / React 19 / TypeScript app for **QG Intelligence** (Quantitative Geopolitical Intelligence). Live at **[qgintelligence.com](https://qgintelligence.com)**, deployed on Vercel (auto-deploy on push to `main`).
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# → http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Required environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Variable               | Default                      | Purpose                                        |
+| ---------------------- | ---------------------------- | ---------------------------------------------- |
+| `SKIP_AUTH`            | `true`                       | Bypass NextAuth in dev (pre-paywall posture)   |
+| `AWS_REGION`           | `eu-central-1`               | Athena + DynamoDB region for live data loaders |
+| `QGI_DATA_LAKE_BUCKET` | `qgi-data-lake-222222222222` | Staging data lake S3 bucket                    |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Optional (set in `.env.local` if you need them):
 
-## Learn More
+- `ATHENA_WORKGROUP` (default `QGI-Lambda-Workgroup`)
+- `ATHENA_OUTPUT_LOCATION` (default `s3://${BUCKET}/query_results/`)
 
-To learn more about Next.js, take a look at the following resources:
+## Where things live
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `app/` — Next.js App Router routes
+  - `app/(app)/...` — auth-gated app shell (dashboard, countries, signals, patterns, precedents)
+  - `app/about/`, `app/methodology/`, `app/reports/`, `app/blog/`, `app/legal/` — public marketing pages
+- `components/` — shared UI (PublicNav, PublicFooter, SkipLink, charts, SEO)
+- `lib/` — data loaders, types, business logic
+- `data/` — baked JSON consumed at build/SSR (country-risks, ranking, taxonomy)
+- `public/` — static assets
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Conventions
 
-## Deploy on Vercel
+- **Single source of truth for counts**: `lib/site-stats.ts` (`TOTAL_COUNTRIES`, `TOTAL_INDICATORS`, `TOTAL_LOCKED`, etc.). Never hardcode counts elsewhere.
+- **Brand**: "QG Intelligence" (with space). "QGI" alone is fine as acronym.
+- **No em-dashes** in user-facing prose. Hyphens / commas / colons only.
+- **Reversibility pattern**: page redesigns back up the old page to `_classic-backup/page.tsx` (Next.js ignores `_`-prefixed dirs).
+- **Tests**: vitest. Run `npx vitest run` before commit (also enforced via pre-push hook).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Full architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [`qgi-docs/architecture/frontend.md`](https://github.com/AminAlAit/qgi-docs/blob/main/architecture/frontend.md).

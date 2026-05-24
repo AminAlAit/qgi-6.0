@@ -1,5 +1,6 @@
 import { getCountriesSortedByRisk } from "@/lib/country-risks";
 import { CountriesMergedListClient } from "@/components/countries/CountriesMergedListClient";
+import { TOTAL_COUNTRIES } from "@/lib/site-stats";
 import type { Metadata } from "next";
 
 /**
@@ -25,8 +26,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Countries · QG Intelligence",
-  description:
-    "Browse 156 countries ranked by structural risk across 71 event categories, with Lloyd's-style methodology disclosure.",
+  description: `Browse ${TOTAL_COUNTRIES} in-scope countries ranked by structural risk across 71 event categories, with Lloyd's-style methodology disclosure.`,
   // #699: explicit canonical (was inheriting "/" from root layout).
   alternates: { canonical: "/countries" },
 };
@@ -66,9 +66,10 @@ export default async function CountriesMergedPage() {
     );
   }
 
-  // Tier counts feed the brief-locked metric strip ("156 countries · 71 dimensions
-  // · 27 HIGH · 48 MODERATE · 81 INDICATIVE"). Computed server-side so the
-  // SSR HTML carries them; client doesn't recompute on every filter change.
+  // Tier counts feed the brief-locked metric strip ("<scored> countries ·
+  // 71 dimensions · N HIGH · N MODERATE · N INDICATIVE"). Computed
+  // server-side so SSR HTML carries them; client doesn't recompute on every
+  // filter change.
   const tierCounts = { HIGH: 0, MODERATE: 0, INDICATIVE: 0 };
   for (const c of countries) tierCounts[c.overall_risk_tier]++;
 
