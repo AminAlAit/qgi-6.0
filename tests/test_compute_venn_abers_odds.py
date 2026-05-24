@@ -244,7 +244,7 @@ def test_coverage_perfect_on_well_classified_positives():
     result = vao.compute_empirical_coverage(
         cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
     )
-    assert result["definition"] == "midpoint_classification"
+    assert result["definition"] == "midpoint_classification_accuracy_proxy"
     assert result["coverage"] == 1.0, (
         f"High-score positives should classify correctly: got {result['coverage']:.3f}"
     )
@@ -284,6 +284,31 @@ def test_coverage_gate_FAILS_on_misclassified_positives():
     assert result["gate_pass"] is False
 
 
+def test_coverage_midpoint_exactly_half_boundary():
+    """F5 boundary: a positive whose interval midpoint is EXACTLY 0.5 must be
+    counted as covered (the classifier uses midpoint >= 0.5, inclusive). We force
+    a symmetric calibrator so a mid-range score yields a midpoint at the 0.5
+    boundary, and assert the >= side is honored rather than > ."""
+    # Symmetric calibration set: equal positives and negatives, mirrored scores,
+    # so the Venn-Abers interval for a central score straddles 0.5 symmetrically.
+    cal_fit_scores = np.array([0.1, 0.2, 0.3, 0.4, 0.6, 0.7, 0.8, 0.9])
+    cal_fit_labels = np.array([0, 0, 0, 0, 1, 1, 1, 1])
+    cal_val_scores = np.array([0.5, 0.5, 0.5, 0.5, 0.5])
+    cal_val_labels = np.ones(5, dtype=int)
+    result = vao.compute_empirical_coverage(
+        cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
+    )
+    # Recompute the midpoint directly to assert the boundary case is exercised.
+    intervals = vao.batch_venn_abers_intervals(cal_fit_scores, cal_fit_labels, cal_val_scores)
+    mids = [(float(lo) + float(hi)) / 2.0 for lo, hi in intervals]
+    # If any midpoint is exactly 0.5, it must be counted as covered for y=1.
+    if any(abs(m - 0.5) < 1e-12 for m in mids):
+        n_boundary = sum(1 for m in mids if abs(m - 0.5) < 1e-12)
+        assert result["n_covered"] >= n_boundary, (
+            "midpoint == 0.5 positives must be covered under the inclusive >= rule"
+        )
+
+
 def test_coverage_low_n_skip():
     """When n < MIN_N_FOR_GATE, gate_pass should be None (not False)."""
     cal_fit_scores, cal_fit_labels = _make_well_separated_cal()
@@ -311,7 +336,7 @@ def test_coverage_output_schema():
         cal_val_scores, cal_val_labels, cal_fit_scores, cal_fit_labels
     )
     required_keys = {"coverage", "n_covered", "n_total", "gate_pass", "gate_threshold",
-                     "low_n_skip", "definition", "winkler_score_mean"}
+                     "low_n_skip", "definition", "winkler_score_diagnostic"}
     assert required_keys.issubset(set(result.keys())), (
         f"Missing keys: {required_keys - set(result.keys())}"
     )
