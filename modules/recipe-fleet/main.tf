@@ -263,9 +263,11 @@ resource "aws_batch_job_definition" "recipe_fleet_walker" {
   retry_strategy {
     # A Spot reclaim restarts the job; the S3 checkpoint guard means
     # already-completed recipes in the batch are skipped on restart.
-    # Limit to 3 — a repeated failure is likely a data or code issue,
-    # not a transient reclaim.
-    attempts = 3
+    # #931: reduced 3 -> 2. One reclaim retry is enough; a SECOND failure is
+    # almost certainly a data/code issue, not a transient reclaim — and 3
+    # attempts × 36h = 108h of worst-case compute before the SFN execution
+    # ceiling (40h) even applies. Two bounds the runaway-cost tail.
+    attempts = 2
   }
 
   timeout {

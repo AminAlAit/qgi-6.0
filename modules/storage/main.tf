@@ -17,7 +17,11 @@ resource "aws_s3_bucket" "data_lake" {
 resource "aws_s3_bucket_versioning" "data_lake" {
   bucket = aws_s3_bucket.data_lake.id
   versioning_configuration {
-    status = "Disabled"
+    # #930: enabled so an accidental overwrite / bad pipeline write is recoverable
+    # (the data lake's Parquet outputs take hours to regenerate; the $37 V-Dem
+    # fix-and-retry incident needed manual reversal). Noncurrent versions are
+    # bounded by the lifecycle rule below so storage cost stays minimal.
+    status = "Enabled"
   }
 }
 
@@ -150,6 +154,14 @@ resource "aws_s3_bucket_lifecycle_configuration" "data_lake" {
   # Adding a lifecycle rule here would silently violate that policy. If the
   # retention mandate is ever reversed, expire-scdi-raw can land in a
   # follow-up PR with the founder override documented in this comment.
+  #
+  # NOTE (#930, 2026-05-26): versioning on this bucket is already Enabled in AWS
+  # and noncurrent-version expiration already exists on some rules out-of-band —
+  # the TF code for this lifecycle_configuration is DRIFTED from AWS. Adding a
+  # noncurrent-expiration rule here was reverted because a non-targeted apply
+  # would also strip the existing (drifted) noncurrent settings. The lifecycle
+  # drift reconciliation is its own ticket; do NOT apply this resource until the
+  # code is reconciled to the live state.
 }
 
 # #597 + #627 (Sonnet audit 2026-05-07): S3 server access logging.
@@ -455,6 +467,10 @@ resource "aws_dynamodb_table" "indicator_updates" {
     enabled        = true
   }
 
+  # #929: guard the coordination table against accidental terraform destroy /
+  # console delete. Additive — does not change runtime behaviour.
+  deletion_protection_enabled = true
+
   tags = var.tags
 }
 
@@ -491,6 +507,13 @@ resource "aws_dynamodb_table" "indicator_values" {
   attribute {
     name = "year"
     type = "N"
+  }
+
+  # #929: this is the frontend's primary read path (~750k items) — protect it
+  # against accidental deletion and make a data-integrity incident recoverable.
+  deletion_protection_enabled = true
+  point_in_time_recovery {
+    enabled = true
   }
 
   tags = var.tags
@@ -569,6 +592,8 @@ resource "aws_dynamodb_table" "pipeline_a_counter" {
     enabled        = true
   }
 
+  deletion_protection_enabled = true  # #929 — losing this mid-run silently breaks the pipeline
+
   tags = var.tags
 }
 
@@ -591,6 +616,8 @@ resource "aws_dynamodb_table" "completion_counters" {
     attribute_name = "expires_at"
     enabled        = true
   }
+
+  deletion_protection_enabled = true  # #929
 
   tags = var.tags
 }
