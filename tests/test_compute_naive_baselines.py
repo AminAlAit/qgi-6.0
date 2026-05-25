@@ -102,7 +102,8 @@ def test_compute_naive_baseline_smoke_and_floor(tmp_path):
 
 
 def test_floor_basis_label_matches_value(tmp_path):
-    """floor_basis == 'absolute_0.70' iff the relative floor is below 0.70."""
+    """floor_basis tracks the value: 'absolute_0.70' below the backstop, 'capped_0.90'
+    when the relative floor would exceed the cap, else 'relative'."""
     countries = [f"C{i:02d}" for i in range(12)]
     years = list(range(1990, 2016))
     panels = {"IND_A": _synth_panel(countries, years, 0.05)}  # weak signal
@@ -115,5 +116,10 @@ def test_floor_basis_label_matches_value(tmp_path):
     if r["relative_floor"] < nb.ABS_FLOOR:
         assert r["floor_basis"] == "absolute_0.70"
         assert abs(r["lock_floor"] - nb.ABS_FLOOR) < 1e-9
+    elif r["relative_floor"] > nb.FLOOR_CAP:
+        assert r["floor_basis"] == "capped_0.90"
+        assert abs(r["lock_floor"] - nb.FLOOR_CAP) < 1e-9
     else:
         assert r["floor_basis"] == "relative"
+    # lock_floor never exceeds the cap, whatever the basis
+    assert r["lock_floor"] <= nb.FLOOR_CAP + 1e-9
