@@ -335,6 +335,35 @@ def build_X_y(
     )
 
 
+def build_samples(pos: pd.DataFrame, negatives_per_positive: int = 3, seed: int = 0,
+                  valid_years: range = range(1980, 2023)) -> pd.DataFrame:
+    """Build the LOCO candidate set: all positives (label=1) + sampled negatives
+    (label=0). Negatives are random (country, year) pairs drawn from the positive
+    countries over ``valid_years``, excluding any positive pair.
+
+    Extracted from the walk's main (2026-05-25) so the F-ML-1 walk AND the
+    naive-baseline floor computation (compute_naive_baselines.py) build the
+    IDENTICAL candidate set — Ji-Hoon's LOCO-parity requirement for greenfield
+    floor provenance. ``pos`` must carry columns country, year, label(=1).
+    Behaviour-preserving extraction: same seed → same negatives (the prior inline
+    rng was used only here)."""
+    rng = np.random.default_rng(seed)
+    pos_set = set(zip(pos["country"], pos["year"]))
+    pos_countries = list(pos["country"].unique())
+    vy = list(valid_years)
+    n_neg_target = len(pos) * negatives_per_positive
+    negs: list[dict] = []
+    attempts = 0
+    while len(negs) < n_neg_target and attempts < n_neg_target * 10:
+        attempts += 1
+        c = pos_countries[rng.integers(0, len(pos_countries))]
+        y = int(vy[rng.integers(0, len(vy))])
+        if (c, y) in pos_set:
+            continue
+        negs.append({"country": c, "year": y, "label": 0})
+    return pd.concat([pos[["country", "year", "label"]], pd.DataFrame(negs)], ignore_index=True)
+
+
 # ---- LOCO + architecture ----------------------------------------------------
 
 
@@ -1172,21 +1201,7 @@ def _main(argv: list[str] | None = None) -> int:
             sorted(missing_in_cohorts),
         )
 
-    rng = np.random.default_rng(args.seed)
-    pos_set = set(zip(pos["country"], pos["year"]))
-    pos_countries = list(pos["country"].unique())
-    valid_years = list(range(1980, 2023))
-    n_neg_target = len(pos) * args.negatives_per_positive
-    negs = []
-    attempts = 0
-    while len(negs) < n_neg_target and attempts < n_neg_target * 10:
-        attempts += 1
-        c = pos_countries[rng.integers(0, len(pos_countries))]
-        y = int(valid_years[rng.integers(0, len(valid_years))])
-        if (c, y) in pos_set:
-            continue
-        negs.append({"country": c, "year": y, "label": 0})
-    samples = pd.concat([pos[["country", "year", "label"]], pd.DataFrame(negs)], ignore_index=True)
+    samples = build_samples(pos, negatives_per_positive=args.negatives_per_positive, seed=args.seed)
     LOG.info("Samples built: %d positives + %d negatives", (samples["label"] == 1).sum(), (samples["label"] == 0).sum())
 
     # Load all candidate panels
