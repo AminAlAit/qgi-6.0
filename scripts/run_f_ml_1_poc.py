@@ -93,6 +93,15 @@ DEFAULT_LOCK_FLOOR = 0.7986       # HYBRID_BASELINE + 0.03
 DEFAULT_COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
 COHORT_ECE_GATE = 0.08            # F-H-7 inherited (not recipe-specific)
 
+# Sample-truncation fix (bugfix amendment 2026-05-25; Majles 5/5, Miriam binding-veto).
+# "No silent sample restriction": a walk must never graduate on a coverage-truncated
+# subsample (the foreign_intervention 0.9147-on-10-of-174 defect). See the
+# 2026-05-25 truncation-leak DECISION + per-recipe-pre-reg/fleet-floor-annex.md.
+MIN_POS_SURVIVAL = 0.50        # ≥50% of raw positives must survive build_X_y (Miriam)
+MIN_EFFECTIVE_NPOS = 30        # ≥30 surviving positives for a meaningful LOCO (Ji-Hoon/Kwame)
+MIN_SURVIVE_COUNTRIES = 10     # ≥10 surviving countries (Miriam MR-14-A3 charter coherence)
+MIN_INDICATOR_COVERAGE = 0.60  # per-indicator: ≥60% of BOTH classes (Ji-Hoon/Kwame fix B)
+
 # §5 indicator selection
 TOP_N_PREFILTER = 40
 DELTA_STEP = 0.005  # greedy outer-loop stopping
@@ -333,6 +342,37 @@ def build_X_y(
         np.array(c_rows),
         np.array(yr_rows),
     )
+
+
+def coverage_report(samples: pd.DataFrame, selected_indicators: list[str],
+                    window: int, panels: dict[str, pd.DataFrame]) -> dict[str, Any]:
+    """Anti-silent-truncation coverage audit (Majles MR-14-A1, 2026-05-25). Surfaces
+    how many positives/negatives SURVIVE build_X_y for a candidate set — the sample
+    restriction the row-drop would otherwise hide (the foreign_intervention defect)."""
+    _, y, c, _ = build_X_y(samples, selected_indicators, window, panels)
+    n_pos_total = int((samples["label"] == 1).sum())
+    n_neg_total = int((samples["label"] == 0).sum())
+    n_pos_surv = int((y == 1).sum()) if len(y) else 0
+    n_neg_surv = int((y == 0).sum()) if len(y) else 0
+    n_countries = int(len({str(x) for x in c.tolist()})) if len(c) else 0
+    return {
+        "n_pos_total": n_pos_total, "n_pos_survive": n_pos_surv,
+        "n_neg_total": n_neg_total, "n_neg_survive": n_neg_surv,
+        "pos_coverage": (n_pos_surv / n_pos_total) if n_pos_total else 0.0,
+        "neg_coverage": (n_neg_surv / n_neg_total) if n_neg_total else 0.0,
+        "n_countries_survive": n_countries,
+    }
+
+
+def coverage_gate_ok(cov: dict[str, Any]) -> bool:
+    """Blocking gate: ≥MIN_POS_SURVIVAL of positives survive, balanced class coverage,
+    and ≥MIN_EFFECTIVE_NPOS positives across ≥MIN_SURVIVE_COUNTRIES countries. A
+    candidate set / walk failing this is COVERAGE_FAIL — never graded on a truncated
+    subsample (the 2026-05-25 bugfix)."""
+    return (cov["pos_coverage"] >= MIN_POS_SURVIVAL
+            and cov["neg_coverage"] >= MIN_INDICATOR_COVERAGE
+            and cov["n_pos_survive"] >= MIN_EFFECTIVE_NPOS
+            and cov["n_countries_survive"] >= MIN_SURVIVE_COUNTRIES)
 
 
 def build_samples(pos: pd.DataFrame, negatives_per_positive: int = 3, seed: int = 0,
