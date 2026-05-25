@@ -1,0 +1,126 @@
+2026-05-18 08:11:45 START civil_war_and_insurgency (C.3 GP fallback re-fit)
+2026-05-18 08:11:48,489 [INFO] --force-fallback set: skipping FPCA primary, running §3.1.4 GP fallback directly for recipe civil_war_and_insurgency.
+2026-05-18 08:11:53,057 [WARNING] Using NumPy C-API based implementation for BLAS functions.
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\rewriting\elemwise.py:1027: UserWarning: Loop fusion failed because the resulting node would exceed the kernel argument limit.
+  warn(
+2026-05-18 08:12:38,453 [INFO] Auto-assigning NUTS sampler...
+2026-05-18 08:12:38,522 [INFO] Initializing NUTS using jitter+adapt_diag...
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\rewriting\elemwise.py:1027: UserWarning: Loop fusion failed because the resulting node would exceed the kernel argument limit.
+  warn(
+2026-05-18 08:13:13,478 [INFO] Sequential sampling (4 chains in 1 job)
+2026-05-18 08:13:13,478 [INFO] NUTS: [alpha_recipe_0, ell_recipe_0, f_r_0, alpha_inst_0, ell_inst_0, g_c_0, sigma_eps_0, alpha_recipe_1, ell_recipe_1, f_r_1, alpha_inst_1, ell_inst_1, g_c_1, sigma_eps_1, alpha_recipe_2, ell_recipe_2, f_r_2, alpha_inst_2, ell_inst_2, g_c_2, sigma_eps_2, alpha_recipe_3, ell_recipe_3, f_r_3, alpha_inst_3, ell_inst_3, g_c_3, sigma_eps_3, alpha_recipe_4, ell_recipe_4, f_r_4, alpha_inst_4, ell_inst_4, g_c_4, sigma_eps_4]
+Traceback (most recent call last):
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\link\vm.py", line 405, in __call__
+    thunk()
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\graph\op.py", line 524, in rval
+    r = p(n, [x[0] for x in i], o)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py", line 757, in perform
+    ufunc = node.tag.ufunc
+            ^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\graph\utils.py", line 285, in __getattribute__
+    return super().__getattribute__(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Scratchpad' object has no attribute 'ufunc'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/workspace/qgi\qgi-6.0\qgi-ml\scripts\fit_shape_prototype.py", line 1190, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\scripts\fit_shape_prototype.py", line 1098, in main
+    prototype, _ = fit_recipe_gp_fallback(
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\scripts\fit_shape_prototype.py", line 313, in fit_recipe_gp_fallback
+    gp_result = fit_gp_fallback(
+                ^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\src\shape_prototype_fit_utils.py", line 854, in fit_gp_fallback
+    idata = pm.sample(
+            ^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 869, in sample
+    _sample_many(**sample_args)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 1011, in _sample_many
+    _sample(
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 1096, in _sample
+    for it, diverging in enumerate(sampling_gen):
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 1166, in _iter_sample
+    point, stats = step.step(point)
+                   ^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\arraystep.py", line 173, in step
+    return super().step(point)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\arraystep.py", line 101, in step
+    apoint, stats = self.astep(q)
+                    ^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\base_hmc.py", line 168, in astep
+    start = self.integrator.compute_state(q0, p0)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\integration.py", line 56, in compute_state
+    logp, dlogp = self._logp_dlogp_func(q)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\model\core.py", line 361, in __call__
+    cost, *grads = self._pytensor_function(*grad_vars)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\compile\function\types.py", line 959, in __call__
+    self.vm()
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\link\vm.py", line 409, in __call__
+    raise_with_op(self.fgraph, node, thunk)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\link\utils.py", line 524, in raise_with_op
+    raise exc_value.with_traceback(exc_trace)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\link\vm.py", line 405, in __call__
+    thunk()
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\graph\op.py", line 524, in rval
+    r = p(n, [x[0] for x in i], o)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py", line 757, in perform
+    ufunc = node.tag.ufunc
+            ^^^^^^^^^^^^^^
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\graph\utils.py", line 285, in __getattribute__
+    return super().__getattribute__(name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'Scratchpad' object has no attribute 'ufunc'
+Apply node that caused the error: Add(Switch.0, alpha_recipe_0_log__, Switch.0, ell_recipe_0_log__, posdef, Composite{...}.2, alpha_inst_0_log__, Composite{...}.4, ell_inst_0_log__, Sum{axes=None}.0, Composite{...}.3, sigma_eps_0_log__, Switch.0, alpha_recipe_1_log__, Switch.0, ell_recipe_1_log__, posdef, Composite{...}.2, alpha_inst_1_log__, Composite{...}.4, ell_inst_1_log__, Sum{axes=None}.0, Composite{...}.3, sigma_eps_1_log__, Switch.0, alpha_recipe_2_log__, Switch.0, ell_recipe_2_log__, posdef, Composite{...}.2, alpha_inst_2_log__, Composite{...}.4, ell_inst_2_log__, Sum{axes=None}.0, Composite{...}.3, sigma_eps_2_log__, Switch.0, alpha_recipe_3_log__, Switch.0, ell_recipe_3_log__, posdef, Composite{...}.2, alpha_inst_3_log__, Composite{...}.4, ell_inst_3_log__, Sum{axes=None}.0, Composite{...}.3, sigma_eps_3_log__, Composite{...}.2, alpha_recipe_4_log__, Composite{...}.4, ell_recipe_4_log__, posdef, Composite{...}.2, alpha_inst_4_log__, Composite{...}.4, ell_inst_4_log__, Sum{axes=None}.0, Composite{...}.3, sigma_eps_4_log__, Sum{axes=None}.0, Sum{axes=None}.0, Sum{axes=None}.0, Sum{axes=None}.0, Sum{axes=None}.0)
+Toposort index: 909
+Inputs types: [TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=()), TensorType(float64, shape=())]
+Inputs shapes: [(), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), ()]
+Inputs strides: [(), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), (), ()]
+Inputs values: [array(-2.45136884), array(0.9271696), array(-0.0308687), array(-0.59261359), array(-9.24445952), array(-0.00563943), array(-1.32884459), array(-3.00763245), array(0.86173458), array(-2069300.18335173), array(-0.05091651), array(-1.23292382), array(-1.87617258), array(0.57467693), array(-2.29737724), array(0.57896667), array(-45.09337594), array(-0.74671171), array(-0.43179005), array(-1.15106991), array(0.07419224), array(-2423.06074566), array(-0.54833984), array(-0.60066083), array(-0.58201292), array(-0.98549656), array(-0.70392575), array(-0.15430826), array(-18.2223047), array(-0.31297743), array(-0.8429279), array(-0.85167353), array(-0.07562995), array(-2828.38128841), array(-0.70221173), array(-0.46771553), array(-2.3749429), array(0.88270063), array(-0.9250151), array(-0.03785527), array(-8.71094943), array(-1.40700735), array(0.02434135), array(-0.83220014), array(-0.08579385), array(-1440.25491776), array(-0.40191636), array(-0.74411165), array(-0.90231061), array(-0.28153847), array(0.19712075), array(-0.83062253), array(-3.78525047), array(-1.77473534), array(0.24355967), array(-0.49362834), array(-0.27375457), array(-1548.76778027), array(-0.6761544), array(-0.48922507), array(-1.09835175e+09), array(-69074870.6074811), array(-6.77811639e+08), array(-753707.51278719), array(-11481.92008221)]
+Outputs clients: [[output[0](Add.0)]]
+
+Backtrace when the node is created (use PyTensor flag traceback__limit=N to make it longer):
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 750, in sample
+    initial_points, step = init_nuts(
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 1543, in init_nuts
+    step = pm.NUTS(potential=potential, model=model, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\nuts.py", line 180, in __init__
+    super().__init__(vars, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\base_hmc.py", line 109, in __init__
+    super().__init__(vars, blocked=blocked, model=self._model, dtype=dtype, **pytensor_kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\arraystep.py", line 163, in __init__
+    func = model.logp_dlogp_function(vars, dtype=dtype, **pytensor_kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\model\core.py", line 626, in logp_dlogp_function
+    return ValueGradFunction(costs, grad_vars, extra_vars_and_values, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\model\core.py", line 321, in __init__
+    cost = rewrite_pregrad(cost)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\pytensorf.py", line 1081, in rewrite_pregrad
+    return rewrite_graph(graph, include=("canonicalize", "stabilize"))
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 750, in sample
+    initial_points, step = init_nuts(
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\sampling\mcmc.py", line 1543, in init_nuts
+    step = pm.NUTS(potential=potential, model=model, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\nuts.py", line 180, in __init__
+    super().__init__(vars, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\hmc\base_hmc.py", line 109, in __init__
+    super().__init__(vars, blocked=blocked, model=self._model, dtype=dtype, **pytensor_kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\step_methods\arraystep.py", line 163, in __init__
+    func = model.logp_dlogp_function(vars, dtype=dtype, **pytensor_kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\model\core.py", line 626, in logp_dlogp_function
+    return ValueGradFunction(costs, grad_vars, extra_vars_and_values, **kwargs)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\model\core.py", line 321, in __init__
+    cost = rewrite_pregrad(cost)
+  File "/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pymc\pytensorf.py", line 1081, in rewrite_pregrad
+    return rewrite_graph(graph, include=("canonicalize", "stabilize"))
+
+HINT: Use the PyTensor flag `exception_verbosity=high` for a debug print-out and storage map footprint of this Apply node.
+2026-05-18 08:13:14 END civil_war_and_insurgency (exit=1)

@@ -1,0 +1,846 @@
+{
+  "audit_date": "2026-05-02T15:10:38Z",
+  "phase": "0c (full)",
+  "n_indicators_total": 104,
+  "n_evaluable": 104,
+  "n_i1": 29,
+  "n_marginal": 9,
+  "n_stationary": 66,
+  "n_insufficient": 0,
+  "pct_i1_or_marginal": 36.5,
+  "aggregate_verdict": "FULL_AUDIT_CONFIRMED",
+  "per_indicator": [
+    {
+      "indicator_id": "AG.PRD.FOOD.XD",
+      "n_countries": 195,
+      "t_years": 62,
+      "n_obs_total": 11011,
+      "cips": -2.1375267183272695,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "BM.KLT.DINV.WD.GD.ZS",
+      "n_countries": 181,
+      "t_years": 55,
+      "n_obs_total": 7188,
+      "cips": -4.443036944087405,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "BM.TRF.PWKR.CD.DT",
+      "n_countries": 199,
+      "t_years": 55,
+      "n_obs_total": 7533,
+      "cips": -3808140323.762261,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "BN.CAB.XOKA.GD.ZS",
+      "n_countries": 197,
+      "t_years": 65,
+      "n_obs_total": 7604,
+      "cips": -2.8178671739645447,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "BX.KLT.DINV.WD.GD.ZS",
+      "n_countries": 198,
+      "t_years": 55,
+      "n_obs_total": 9198,
+      "cips": -4.024079773503573,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "CC.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 4965,
+      "cips": -1.8633318519977589,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "DT.DOD.DECT.GN.ZS",
+      "n_countries": 120,
+      "t_years": 55,
+      "n_obs_total": 5520,
+      "cips": -2.0644901140895136,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "DT.TDS.DECT.EX.ZS",
+      "n_countries": 117,
+      "t_years": 55,
+      "n_obs_total": 4763,
+      "cips": -3.0217922872064533,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "EG.ELC.ACCS.RU.ZS",
+      "n_countries": 154,
+      "t_years": 34,
+      "n_obs_total": 6109,
+      "cips": -124955945242.563,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "EG.ELC.ACCS.UR.ZS",
+      "n_countries": 166,
+      "t_years": 34,
+      "n_obs_total": 6440,
+      "cips": -3.136696620517243,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "EG.IMP.CONS.ZS",
+      "n_countries": 141,
+      "t_years": 34,
+      "n_obs_total": 4399,
+      "cips": -1.9955766971608846,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "EN.GHG.CO2.PC.CE.AR5",
+      "n_countries": 201,
+      "t_years": 55,
+      "n_obs_total": 11165,
+      "cips": -1.328412144223517,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "FB.AST.NPER.ZS",
+      "n_countries": 144,
+      "t_years": 24,
+      "n_obs_total": 2091,
+      "cips": -1.8553323542890945,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "FI.RES.TOTL.CD",
+      "n_countries": 180,
+      "t_years": 65,
+      "n_obs_total": 9315,
+      "cips": -1.883855021604478,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "FI.RES.TOTL.MO",
+      "n_countries": 176,
+      "t_years": 65,
+      "n_obs_total": 6957,
+      "cips": -2.415643608654672,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "FM.LBL.BMNY.GD.ZS",
+      "n_countries": 165,
+      "t_years": 65,
+      "n_obs_total": 8266,
+      "cips": -1.4282379457994625,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "FP.CPI.TOTL.ZG",
+      "n_countries": 190,
+      "t_years": 65,
+      "n_obs_total": 8949,
+      "cips": -6.18442251326323,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "FR.INR.LEND",
+      "n_countries": 147,
+      "t_years": 65,
+      "n_obs_total": 4702,
+      "cips": -444743411392.90875,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "GC.DOD.TOTL.GD.ZS",
+      "n_countries": 78,
+      "t_years": 38,
+      "n_obs_total": 1638,
+      "cips": -2.1222188551843186,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "GC.REV.XGRT.GD.ZS",
+      "n_countries": 156,
+      "t_years": 53,
+      "n_obs_total": 4661,
+      "cips": -2.0313776142172433,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "GC.TAX.TOTL.GD.ZS",
+      "n_countries": 156,
+      "t_years": 53,
+      "n_obs_total": 4686,
+      "cips": -2.07644701338993,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "GC.XPN.TOTL.GD.ZS",
+      "n_countries": 155,
+      "t_years": 53,
+      "n_obs_total": 4452,
+      "cips": -2.122043317637715,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "GE.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 4946,
+      "cips": -2.0647028927504882,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "IT.CEL.SETS.P2",
+      "n_countries": 212,
+      "t_years": 53,
+      "n_obs_total": 10587,
+      "cips": -1.8805218058603115,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "IT.NET.USER.ZS",
+      "n_countries": 207,
+      "t_years": 36,
+      "n_obs_total": 6222,
+      "cips": -0.9567665901761069,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "MS.MIL.MPRT.KD",
+      "n_countries": 166,
+      "t_years": 65,
+      "n_obs_total": 6867,
+      "cips": -3.932632688641814,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "MS.MIL.TOTL.TF.ZS",
+      "n_countries": 171,
+      "t_years": 31,
+      "n_obs_total": 5025,
+      "cips": -2.745987818863018,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "MS.MIL.XPND.GD.ZS",
+      "n_countries": 163,
+      "t_years": 65,
+      "n_obs_total": 7892,
+      "cips": -2.4007628089160904,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "MS.MIL.XPRT.KD",
+      "n_countries": 60,
+      "t_years": 65,
+      "n_obs_total": 2383,
+      "cips": -3.5600513270990453,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NE.CON.GOVT.ZS",
+      "n_countries": 181,
+      "t_years": 65,
+      "n_obs_total": 8470,
+      "cips": -2.2150879336406795,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NE.CON.PRVT.ZS",
+      "n_countries": 184,
+      "t_years": 65,
+      "n_obs_total": 8430,
+      "cips": -2.0862938846104035,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "NE.EXP.GNFS.CD",
+      "n_countries": 188,
+      "t_years": 65,
+      "n_obs_total": 8818,
+      "cips": -1.3734830045017796,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NE.EXP.GNFS.ZS",
+      "n_countries": 187,
+      "t_years": 65,
+      "n_obs_total": 8802,
+      "cips": -2.047519330447503,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "NE.GDI.TOTL.ZS",
+      "n_countries": 181,
+      "t_years": 65,
+      "n_obs_total": 8424,
+      "cips": -2.7062973260988903,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NE.IMP.GNFS.CD",
+      "n_countries": 188,
+      "t_years": 65,
+      "n_obs_total": 8827,
+      "cips": -1.6784714646670862,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NE.IMP.GNFS.ZS",
+      "n_countries": 187,
+      "t_years": 65,
+      "n_obs_total": 8811,
+      "cips": -2.428757207929338,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NV.AGR.TOTL.ZS",
+      "n_countries": 203,
+      "t_years": 65,
+      "n_obs_total": 8866,
+      "cips": -2.706067835006982,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NV.IND.MANF.ZS",
+      "n_countries": 201,
+      "t_years": 65,
+      "n_obs_total": 8038,
+      "cips": -2.0816714137388654,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "NV.IND.TOTL.ZS",
+      "n_countries": 206,
+      "t_years": 65,
+      "n_obs_total": 8821,
+      "cips": -1.9456242652696856,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NV.SRV.TOTL.ZS",
+      "n_countries": 203,
+      "t_years": 65,
+      "n_obs_total": 8395,
+      "cips": -2.274709907338283,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NY.GDP.DEFL.KD.ZG",
+      "n_countries": 211,
+      "t_years": 64,
+      "n_obs_total": 11141,
+      "cips": -4.5094724454017285,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NY.GDP.MKTP.CD",
+      "n_countries": 211,
+      "t_years": 65,
+      "n_obs_total": 11527,
+      "cips": -1.352999080541856,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NY.GDP.MKTP.KD",
+      "n_countries": 209,
+      "t_years": 65,
+      "n_obs_total": 11307,
+      "cips": -0.7623278375097053,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NY.GDP.MKTP.KD.ZG",
+      "n_countries": 212,
+      "t_years": 64,
+      "n_obs_total": 11184,
+      "cips": -5.405279589067343,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "NY.GDP.PCAP.CD",
+      "n_countries": 211,
+      "t_years": 65,
+      "n_obs_total": 11527,
+      "cips": -1.3963359341448431,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "NY.GNP.PCAP.CD",
+      "n_countries": 205,
+      "t_years": 63,
+      "n_obs_total": 10413,
+      "cips": -1.003283242510077,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "PV.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 5009,
+      "cips": -2.4889656772730753,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "RL.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 5055,
+      "cips": -2.031360155319836,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "RQ.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 4949,
+      "cips": -1.9556091276179013,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SE.PRM.ENRR",
+      "n_countries": 205,
+      "t_years": 56,
+      "n_obs_total": 7495,
+      "cips": -1.96565336292955,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SH.DYN.MORT",
+      "n_countries": 195,
+      "t_years": 65,
+      "n_obs_total": 11821,
+      "cips": -4.427170880252034,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "SI.POV.GINI",
+      "n_countries": 110,
+      "t_years": 63,
+      "n_obs_total": 2413,
+      "cips": -2.711388297633988,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "SL.EMP.TOTL.SP.ZS",
+      "n_countries": 186,
+      "t_years": 35,
+      "n_obs_total": 6496,
+      "cips": -1.0610225047632933,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SL.TLF.CACT.FE.ZS",
+      "n_countries": 186,
+      "t_years": 36,
+      "n_obs_total": 6682,
+      "cips": -1.4805849442204133,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SL.UEM.1524.ZS",
+      "n_countries": 186,
+      "t_years": 35,
+      "n_obs_total": 6496,
+      "cips": -1.5349057019053858,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SL.UEM.TOTL.ZS",
+      "n_countries": 186,
+      "t_years": 35,
+      "n_obs_total": 6496,
+      "cips": -1.7203721212636027,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SM.POP.NETM",
+      "n_countries": 215,
+      "t_years": 66,
+      "n_obs_total": 14190,
+      "cips": -3.349846351682811,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "SM.POP.RHCR.EO",
+      "n_countries": 195,
+      "t_years": 65,
+      "n_obs_total": 7166,
+      "cips": -500785828.7507784,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "SP.DYN.LE00.IN",
+      "n_countries": 215,
+      "t_years": 65,
+      "n_obs_total": 13941,
+      "cips": -2.3089334838270217,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "SP.DYN.TFRT.IN",
+      "n_countries": 215,
+      "t_years": 65,
+      "n_obs_total": 13943,
+      "cips": -1.8130112001878351,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "SP.POP.TOTL",
+      "n_countries": 215,
+      "t_years": 65,
+      "n_obs_total": 13945,
+      "cips": 0.10557691968781763,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "TX.VAL.TECH.MF.ZS",
+      "n_countries": 172,
+      "t_years": 18,
+      "n_obs_total": 2665,
+      "cips": -2.70308874471008,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "VA.EST",
+      "n_countries": 204,
+      "t_years": 25,
+      "n_obs_total": 5026,
+      "cips": -2.152536327040329,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "VC.BTL.DETH",
+      "n_countries": 56,
+      "t_years": 36,
+      "n_obs_total": 1212,
+      "cips": -2.4630030365974003,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "VC.IDP.NWDS",
+      "n_countries": 134,
+      "t_years": 16,
+      "n_obs_total": 1767,
+      "cips": -9.199497354751063,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2cacamps",
+      "n_countries": 175,
+      "t_years": 126,
+      "n_obs_total": 19006,
+      "cips": -1.6542042265717665,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2clkill",
+      "n_countries": 171,
+      "t_years": 237,
+      "n_obs_total": 25984,
+      "cips": -9001543654674.076,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2cltort",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25991,
+      "cips": -2.207427045552008,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2cseeorgs",
+      "n_countries": 174,
+      "t_years": 237,
+      "n_obs_total": 25729,
+      "cips": -2.296590321615834,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2csprtcpt",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25532,
+      "cips": -2.1823138225234313,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2csreprss",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25560,
+      "cips": -2.122606390088514,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2elintmon",
+      "n_countries": 143,
+      "t_years": 124,
+      "n_obs_total": 3158,
+      "cips": -20767857811636.766,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2ex_hosw",
+      "n_countries": 121,
+      "t_years": 237,
+      "n_obs_total": 25609,
+      "cips": -3.3196961671442633,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2exaphogp",
+      "n_countries": 66,
+      "t_years": 237,
+      "n_obs_total": 10273,
+      "cips": -3.2575918132261896,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2excrptps",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25725,
+      "cips": -2.026412420163843,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2exl_legitlead",
+      "n_countries": 175,
+      "t_years": 124,
+      "n_obs_total": 18649,
+      "cips": -1.871313164693021,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2exremhog",
+      "n_countries": 134,
+      "t_years": 237,
+      "n_obs_total": 12011,
+      "cips": -2305534314600.4634,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2jureform",
+      "n_countries": 175,
+      "t_years": 126,
+      "n_obs_total": 19202,
+      "cips": -3.8501439031281928,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2lgbicam",
+      "n_countries": 158,
+      "t_years": 237,
+      "n_obs_total": 25999,
+      "cips": -3962755673066.879,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2lgqstexp",
+      "n_countries": 167,
+      "t_years": 237,
+      "n_obs_total": 17626,
+      "cips": -5.772418301825639,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2mecenefm",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 20061,
+      "cips": -2.305926087748766,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2pepwrgen",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25894,
+      "cips": -2.1124898419233777,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2pepwrort",
+      "n_countries": 169,
+      "t_years": 126,
+      "n_obs_total": 19202,
+      "cips": -2.3888678344553105,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2pepwrses",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25978,
+      "cips": -2.2384216574909597,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2pepwrsoc",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25978,
+      "cips": -2.1167975995982187,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2psprlnks",
+      "n_countries": 173,
+      "t_years": 237,
+      "n_obs_total": 24375,
+      "cips": -10120650514071.363,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2stfisccap",
+      "n_countries": 168,
+      "t_years": 237,
+      "n_obs_total": 24958,
+      "cips": -2.2902532360199137,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2svdomaut",
+      "n_countries": 172,
+      "t_years": 237,
+      "n_obs_total": 25979,
+      "cips": -2.913768861090624,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_clphy",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25983,
+      "cips": -2.316526469330927,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_clpol",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25703,
+      "cips": -2.129833869200962,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_clpriv",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25986,
+      "cips": -3.0938042190743715,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_corr",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25393,
+      "cips": -1.9769190032963813,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2x_freexp_altinf",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25527,
+      "cips": -2.094072603278655,
+      "verdict": "MARGINAL"
+    },
+    {
+      "indicator_id": "v2x_gender",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 22073,
+      "cips": -2.168112628091906,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_jucon",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 24893,
+      "cips": -2.1547997397227427,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_libdem",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 24304,
+      "cips": -2.129137266971493,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_neopat",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 24873,
+      "cips": -1.9019376337521174,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2x_partip",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25417,
+      "cips": -2.2006696056617607,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_polyarchy",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25150,
+      "cips": -2.358645401272388,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_regime",
+      "n_countries": 159,
+      "t_years": 126,
+      "n_obs_total": 19236,
+      "cips": -150520675827953.6,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2x_rule",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25795,
+      "cips": -1.7692146597164915,
+      "verdict": "I(1)"
+    },
+    {
+      "indicator_id": "v2xeg_eqprotec",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 25988,
+      "cips": -2.3894390083953647,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2xel_frefair",
+      "n_countries": 173,
+      "t_years": 237,
+      "n_obs_total": 25903,
+      "cips": -3.1679092080168965,
+      "verdict": "STATIONARY"
+    },
+    {
+      "indicator_id": "v2xlg_legcon",
+      "n_countries": 175,
+      "t_years": 237,
+      "n_obs_total": 20685,
+      "cips": -2103066999503.2263,
+      "verdict": "STATIONARY"
+    }
+  ]
+}

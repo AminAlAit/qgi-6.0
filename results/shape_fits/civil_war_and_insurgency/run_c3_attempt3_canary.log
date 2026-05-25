@@ -1,0 +1,12 @@
+2026-05-18 START civil_war_and_insurgency (C.3-attempt3, vectorized, canary K=5)
+2026-05-18 11:10:02,991 [INFO] --force-fallback set: skipping FPCA primary, running §3.1.4 GP fallback directly for recipe civil_war_and_insurgency.
+2026-05-18 11:10:12,960 [WARNING] Using NumPy C-API based implementation for BLAS functions.
+2026-05-18 11:10:34,078 [INFO] Auto-assigning NUTS sampler...
+2026-05-18 11:10:34,290 [INFO] Initializing NUTS using jitter+adapt_diag...
+2026-05-18 11:10:58,693 [INFO] Sequential sampling (2 chains in 1 job)
+2026-05-18 11:10:58,694 [INFO] NUTS: [alpha_recipe, ell_recipe, sigma_eps, f_r_0, f_r_1, f_r_2, f_r_3, f_r_4]
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:3105: RuntimeWarning: overflow encountered in exp
+  return np.exp(x)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2011: RuntimeWarning: invalid value encountered in divide
+  return x / y
+EXIT 127

@@ -1,0 +1,1057 @@
+{
+  "generated_at": "2026-04-26T11:22:06.237676+00:00",
+  "schema_version": 1,
+  "pipeline_version": "v2.0",
+  "recipes": [
+    {
+      "event_category": "social_policy_reform",
+      "canonical_length": 15,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 228,
+      "n_distinct_country_pairs": 78,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "multilateral_agreement",
+      "canonical_length": 32,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 10097,
+      "n_distinct_country_pairs": 1594,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "sanctions_and_arms_embargo",
+      "canonical_length": 43,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 2580,
+      "n_distinct_country_pairs": 630,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "terrorist_attack",
+      "canonical_length": 40,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 13531,
+      "n_distinct_country_pairs": 1275,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "religious_and_social_movement",
+      "canonical_length": 23,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 598,
+      "n_distinct_country_pairs": 171,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "industrial_policy",
+      "canonical_length": 19,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 50,
+      "n_distinct_country_pairs": 36,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "political_repression",
+      "canonical_length": 21,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 18168,
+      "n_distinct_country_pairs": 2412,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "flood_and_cyclone",
+      "canonical_length": 50,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 416,
+      "n_distinct_country_pairs": 231,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "ethnic_and_communal_conflict",
+      "canonical_length": 39,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1077,
+      "n_distinct_country_pairs": 351,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "human_rights_reform",
+      "canonical_length": 35,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3304,
+      "n_distinct_country_pairs": 898,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "executive_power_consolidation",
+      "canonical_length": 19,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1313,
+      "n_distinct_country_pairs": 551,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "water_crisis",
+      "canonical_length": 67,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1,
+      "n_distinct_country_pairs": 1,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "diplomatic_rupture",
+      "canonical_length": 37,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1973,
+      "n_distinct_country_pairs": 817,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "monetary_policy_change",
+      "canonical_length": 37,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 567,
+      "n_distinct_country_pairs": 300,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "energy_policy",
+      "canonical_length": 30,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3364,
+      "n_distinct_country_pairs": 702,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "military_coup",
+      "canonical_length": 15,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 7438,
+      "n_distinct_country_pairs": 1224,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "earthquake",
+      "canonical_length": 34,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 52,
+      "n_distinct_country_pairs": 36,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "political_corruption",
+      "canonical_length": 41,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 5072,
+      "n_distinct_country_pairs": 1081,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "military_policy_and_reform",
+      "canonical_length": 30,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3849,
+      "n_distinct_country_pairs": 741,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "natural_disaster",
+      "canonical_length": 35,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3588,
+      "n_distinct_country_pairs": 561,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "drought_and_famine",
+      "canonical_length": 28,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 144,
+      "n_distinct_country_pairs": 91,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "economic_recession",
+      "canonical_length": 33,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 8651,
+      "n_distinct_country_pairs": 2016,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "interstate_war",
+      "canonical_length": 23,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 2474,
+      "n_distinct_country_pairs": 720,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "infrastructure_project",
+      "canonical_length": 33,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1044,
+      "n_distinct_country_pairs": 404,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "trade_dispute",
+      "canonical_length": 40,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 32,
+      "n_distinct_country_pairs": 15,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "sport_and_international_event",
+      "canonical_length": 38,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 461,
+      "n_distinct_country_pairs": 153,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "urban_development",
+      "canonical_length": 28,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 5,
+      "n_distinct_country_pairs": 3,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "democratic_transition",
+      "canonical_length": 24,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 14308,
+      "n_distinct_country_pairs": 2222,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "technology_breakthrough",
+      "canonical_length": 22,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 699,
+      "n_distinct_country_pairs": 66,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "transitional_justice",
+      "canonical_length": 45,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 2985,
+      "n_distinct_country_pairs": 851,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "banking_and_financial_crisis",
+      "canonical_length": 43,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 656,
+      "n_distinct_country_pairs": 325,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "poverty_and_inequality_crisis",
+      "canonical_length": 52,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 180,
+      "n_distinct_country_pairs": 78,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "mass_protest",
+      "canonical_length": 33,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 17493,
+      "n_distinct_country_pairs": 2628,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "agricultural_policy",
+      "canonical_length": 9,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 578,
+      "n_distinct_country_pairs": 293,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "education_and_research",
+      "canonical_length": 20,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 124,
+      "n_distinct_country_pairs": 66,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "cultural_and_heritage",
+      "canonical_length": 10,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 346,
+      "n_distinct_country_pairs": 184,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "economic_recovery",
+      "canonical_length": 47,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 53,
+      "n_distinct_country_pairs": 28,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "renewable_energy",
+      "canonical_length": 67,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1,
+      "n_distinct_country_pairs": 1,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "elections_and_voting",
+      "canonical_length": 40,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 79133,
+      "n_distinct_country_pairs": 3081,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "resource_conflict",
+      "canonical_length": 58,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 244,
+      "n_distinct_country_pairs": 136,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "foreign_intervention",
+      "canonical_length": 23,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 5273,
+      "n_distinct_country_pairs": 1176,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "climate_agreement",
+      "canonical_length": 58,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 73,
+      "n_distinct_country_pairs": 45,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "foreign_direct_investment",
+      "canonical_length": 44,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 26,
+      "n_distinct_country_pairs": 21,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "human_rights_violation",
+      "canonical_length": 28,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 12136,
+      "n_distinct_country_pairs": 1891,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "territorial_disputes",
+      "canonical_length": 32,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3244,
+      "n_distinct_country_pairs": 496,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "humanitarian_crisis",
+      "canonical_length": 47,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 395,
+      "n_distinct_country_pairs": 190,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "epidemic_and_pandemic",
+      "canonical_length": 58,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3639,
+      "n_distinct_country_pairs": 1592,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "fiscal_policy_change",
+      "canonical_length": 30,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 8586,
+      "n_distinct_country_pairs": 1485,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "foreign_aid_and_development",
+      "canonical_length": 28,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 314,
+      "n_distinct_country_pairs": 171,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "migration_and_refugees",
+      "canonical_length": 36,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 7147,
+      "n_distinct_country_pairs": 1567,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "decentralization_and_federalism",
+      "canonical_length": 34,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 218,
+      "n_distinct_country_pairs": 91,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "bilateral_treaty",
+      "canonical_length": 28,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 34510,
+      "n_distinct_country_pairs": 1830,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "public_health_reform",
+      "canonical_length": 49,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 101,
+      "n_distinct_country_pairs": 66,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "government_formation",
+      "canonical_length": 29,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 24241,
+      "n_distinct_country_pairs": 2556,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "civil_war_and_insurgency",
+      "canonical_length": 23,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 44597,
+      "n_distinct_country_pairs": 1431,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "economic_growth_milestone",
+      "canonical_length": 42,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 544,
+      "n_distinct_country_pairs": 300,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "labor_action",
+      "canonical_length": 22,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 632,
+      "n_distinct_country_pairs": 210,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "oil_and_gas",
+      "canonical_length": 21,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 325,
+      "n_distinct_country_pairs": 105,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "peacekeeping_and_peace_process",
+      "canonical_length": 37,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 10073,
+      "n_distinct_country_pairs": 1326,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "economic_nationalization",
+      "canonical_length": 13,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 800,
+      "n_distinct_country_pairs": 394,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "volcanic_eruption",
+      "canonical_length": 30,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 3,
+      "n_distinct_country_pairs": 3,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "trade_agreement",
+      "canonical_length": 42,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1630,
+      "n_distinct_country_pairs": 465,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "digital_policy",
+      "canonical_length": 49,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 6,
+      "n_distinct_country_pairs": 6,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "economic_liberalization",
+      "canonical_length": 29,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1427,
+      "n_distinct_country_pairs": 695,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "education_reform",
+      "canonical_length": 16,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 20,
+      "n_distinct_country_pairs": 15,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "environmental_policy",
+      "canonical_length": 35,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 596,
+      "n_distinct_country_pairs": 190,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "political_violence",
+      "canonical_length": 23,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 7552,
+      "n_distinct_country_pairs": 1485,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "constitutional_change",
+      "canonical_length": 34,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 22098,
+      "n_distinct_country_pairs": 3081,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "currency_crisis",
+      "canonical_length": 33,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1756,
+      "n_distinct_country_pairs": 496,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    },
+    {
+      "event_category": "regional_integration",
+      "canonical_length": 29,
+      "length_distribution": [],
+      "indicator_fingerprint": [],
+      "coverage_bias_diagnostic": {
+        "n_pairs": 0,
+        "oecd_share": 0.0,
+        "regional_concentration": []
+      },
+      "total_instances": 1902,
+      "n_distinct_country_pairs": 561,
+      "last_recomputed_at": "2026-04-26 11:19:24.352",
+      "contains_predicted": false
+    }
+  ]
+}

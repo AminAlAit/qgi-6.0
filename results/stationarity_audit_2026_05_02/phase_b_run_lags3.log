@@ -1,0 +1,75 @@
+[phase-b] pipeline_config: {
+  "pipeline_version": "585-v1-cointegration-2026-05-02",
+  "lags": 3,
+  "bootstrap_reps": 500,
+  "p_threshold": 0.05,
+  "regimes_file_hash": "59e82354a8ef9b836f56c0279703309998bc2858862b6075a5395e6301f9d533",
+  "panels_file_hash": "ef5a0813e72578f7a07d21ccb6eadcb7474603f2ead98cd5c57a39c45a967a3d",
+  "events_corpus_commit": "a90a11f"
+}
+
+[phase-b] loading regimes from qgi-data\reference\indicator-regimes.json
+[phase-b] I(1) indicators: 29
+[phase-b] loading recipes from qgi-frontend\data\recipes-aggregated.json
+[phase-b] recipe categories: 72
+[phase-b] expected cells: 2088 (29 x 72)
+[phase-b] idempotency-guard verdict: no_existing_map
+
+[phase-b] loading i1_panels from qgi-ml\data\i1_panels.parquet
+[phase-b] panel rows: 334,193
+[phase-b] panel countries: 216
+[phase-b] panel year range: 1789..2025
+
+[phase-b] loading VERIFIED events from local files
+[phase-b] verification files: 154
+[phase-b] curated files:      197
+[phase-b] curated events:     13,899
+[phase-b] verified events:    10,627
+[phase-b] verified countries: 154
+[phase-b] verified categories: 71
+[phase-b] recipe categories with verified events: 71/72
+[phase-b]   recipes with NO verified events: 1 (will all be insufficient_data)
+[phase-b]     - other
+
+[phase-b] pre-building event panels per recipe category...
+[phase-b] cached 72 event panels
+
+[phase-b] executing Westerlund Gt for 2088 cells...
+[585] cell 100/2088 (4.8%) | converged: 72 | not_converged: 0 | insufficient_data: 28 | elapsed: 1m32s | rate: 65 cells/min | eta: 31m
+[585] cell 200/2088 (9.6%) | converged: 158 | not_converged: 0 | insufficient_data: 42 | elapsed: 2m46s | rate: 72 cells/min | eta: 26m
+[585] cell 300/2088 (14.4%) | converged: 204 | not_converged: 0 | insufficient_data: 96 | elapsed: 3m52s | rate: 77 cells/min | eta: 23m
+[585] cell 400/2088 (19.2%) | converged: 291 | not_converged: 0 | insufficient_data: 109 | elapsed: 5m04s | rate: 79 cells/min | eta: 21m
+[585] cell 500/2088 (23.9%) | converged: 380 | not_converged: 0 | insufficient_data: 120 | elapsed: 6m25s | rate: 78 cells/min | eta: 20m
+[585] checkpoint written (500 cells in file)
+[585] cell 600/2088 (28.7%) | converged: 458 | not_converged: 0 | insufficient_data: 142 | elapsed: 7m49s | rate: 77 cells/min | eta: 19m
+[585] cell 700/2088 (33.5%) | converged: 546 | not_converged: 0 | insufficient_data: 154 | elapsed: 9m02s | rate: 77 cells/min | eta: 18m
+[585] cell 800/2088 (38.3%) | converged: 631 | not_converged: 0 | insufficient_data: 169 | elapsed: 10m27s | rate: 77 cells/min | eta: 17m
+[585] cell 900/2088 (43.1%) | converged: 718 | not_converged: 0 | insufficient_data: 182 | elapsed: 12m03s | rate: 75 cells/min | eta: 16m
+[585] cell 1000/2088 (47.9%) | converged: 807 | not_converged: 0 | insufficient_data: 193 | elapsed: 13m42s | rate: 73 cells/min | eta: 15m
+[585] checkpoint written (1000 cells in file)
+[585] cell 1100/2088 (52.7%) | converged: 887 | not_converged: 0 | insufficient_data: 213 | elapsed: 15m21s | rate: 72 cells/min | eta: 14m
+[585] cell 1200/2088 (57.5%) | converged: 971 | not_converged: 0 | insufficient_data: 229 | elapsed: 16m54s | rate: 71 cells/min | eta: 13m
+[585] cell 1300/2088 (62.3%) | converged: 1052 | not_converged: 0 | insufficient_data: 248 | elapsed: 18m08s | rate: 72 cells/min | eta: 11m
+[585] cell 1400/2088 (67.0%) | converged: 1134 | not_converged: 0 | insufficient_data: 266 | elapsed: 19m30s | rate: 72 cells/min | eta: 10m
+[585] cell 1500/2088 (71.8%) | converged: 1219 | not_converged: 0 | insufficient_data: 281 | elapsed: 20m59s | rate: 71 cells/min | eta: 8m
+[585] checkpoint written (1500 cells in file)
+[585] cell 1600/2088 (76.6%) | converged: 1307 | not_converged: 0 | insufficient_data: 293 | elapsed: 22m30s | rate: 71 cells/min | eta: 7m
+[585] cell 1700/2088 (81.4%) | converged: 1399 | not_converged: 0 | insufficient_data: 301 | elapsed: 23m51s | rate: 71 cells/min | eta: 5m
+[585] cell 1800/2088 (86.2%) | converged: 1486 | not_converged: 0 | insufficient_data: 314 | elapsed: 25m07s | rate: 72 cells/min | eta: 4m
+[585] cell 1900/2088 (91.0%) | converged: 1574 | not_converged: 0 | insufficient_data: 326 | elapsed: 26m21s | rate: 72 cells/min | eta: 3m
+[585] cell 2000/2088 (95.8%) | converged: 1665 | not_converged: 0 | insufficient_data: 335 | elapsed: 27m37s | rate: 72 cells/min | eta: 1m
+[585] checkpoint written (2000 cells in file)
+
+[phase-b] finalizing cointegration-map.json
+[phase-b] complete: 2088 cells in 28m45s
+
+======================================================================
+PHASE B COMPLETE — cointegration-map.json written
+  output: qgi-data\reference\cointegration-map-lags3.json
+  cells: 2088
+  cointegrated:        18
+  not_cointegrated:    1723
+  insufficient_data:   347
+  not_converged:       0
+  cointegration rate (excl insufficient/not_converged): 1.0%
+======================================================================
