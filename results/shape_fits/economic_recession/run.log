@@ -1,0 +1,39 @@
+2026-05-18 00:59:13 START economic_recession
+2026-05-18 00:59:21,483 [WARNING] Using NumPy C-API based implementation for BLAS functions.
+2026-05-18 00:59:24,306 [INFO] Auto-assigning NUTS sampler...
+2026-05-18 00:59:24,371 [INFO] Initializing NUTS using jitter+adapt_diag...
+2026-05-18 00:59:30,004 [INFO] Sequential sampling (4 chains in 1 job)
+2026-05-18 00:59:30,004 [INFO] NUTS: [tau, mu, chol]
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2011: RuntimeWarning: divide by zero encountered in divide
+  return x / y
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2937: RuntimeWarning: divide by zero encountered in log
+  return np.log(x)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\subtensor.py:2569: RuntimeWarning: invalid value encountered in add
+  np.add.at(x, idx, y)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: invalid value encountered in impl (vectorized)
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: overflow encountered in square
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: invalid value encountered in subtract
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2011: RuntimeWarning: invalid value encountered in divide
+  return x / y
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\numpy\core\fromnumeric.py:88: RuntimeWarning: invalid value encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: overflow encountered in exp
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\numpy\core\fromnumeric.py:59: RuntimeWarning: invalid value encountered in accumulate
+  return bound(*args, **kwds)
+2026-05-18 01:25:43,587 [INFO] Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 1572 seconds.
+2026-05-18 01:25:44,861 [INFO] audit:
+  basis: cubic_spline K_basis=8 T_r=5
+  instances_loaded=101 dropped=1
+  first_drop_reason_sample=[('somalia', 1987, 'alignment_incomplete_NE.CON.PRVT.ZS')]
+  fpca: M_r=3 cumvar=[0.8433691592869395, 0.9021028112345703, 0.952875932679695, 0.9848412544899723]
+  sampler: rhat_max=1.0100 ess_min=537.0 div=57
+2026-05-18 01:25:44,862 [INFO] fallback_required=True reason=Persistent NUTS diagnostic failure after refit
+2026-05-18 01:25:44,862 [INFO] wall_time=1586.76s
+2026-05-18 01:25:44,862 [WARNING] Recipe economic_recession requires fallback path (§3.1.4). Chunk B.2 implements; this Chunk B run emits the recipe block with empty signature and fit_method=hierarchical_bayes_gp_fallback as a placeholder.
+2026-05-18 01:25:44,866 [INFO] Wrote prototype to config\shape-prototypes.lock.json; file_sha256=edb2a8da703f8db790def778c564bce5f8e73f1d01b3be517e3f254de8f021c2
+2026-05-18 01:25:46 END economic_recession
+EXIT_CODE=0

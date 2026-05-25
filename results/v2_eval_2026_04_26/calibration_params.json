@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "trained_at": "2026-04-26T11:22:39.536858+00:00",
+  "min_samples": 30,
+  "tiers": {
+    "S": {
+      "a": 1.0,
+      "b": 0.0,
+      "n_total": 0,
+      "n_pos": 0,
+      "note": "insufficient data (need \u226530 total, \u22652 pos)"
+    },
+    "M": {
+      "a": 0.5,
+      "b": -2.0,
+      "n_total": 205,
+      "n_pos": 37
+    },
+    "L": {
+      "a": 0.5,
+      "b": -1.0,
+      "n_total": 1803,
+      "n_pos": 642
+    },
+    "XL": {
+      "a": 0.5,
+      "b": -1.5,
+      "n_total": 404,
+      "n_pos": 104
+    }
+  }
+}
