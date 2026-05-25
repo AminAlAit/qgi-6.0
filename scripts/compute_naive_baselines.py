@@ -42,9 +42,31 @@ REPO_ROOT = SCRIPTS_DIR.parent
 # Floor-policy constants (per fleet-floor-annex.md, ratified 2026-05-25)
 DELTA_LIFT = 0.03
 ABS_FLOOR = 0.70
+FLOOR_CAP = 0.90             # hard ceiling: max(naive+δ, 0.70) can never exceed this
+                             # (truncation-leak bugfix facet 2, Majles 2026-05-25). When
+                             # naive≈0.98 the relative floor would be 1.01 (impossible) →
+                             # an unreachable floor that can never graduate. Cap at 0.90.
 THIN_NPOS_CUT = 150          # below this → anchor the floor to the naive upper-CI (Kwame K11-R1)
 SCREEN_WINDOW = 10           # univariate screen default window (§5.1)
 N_BOOTSTRAP = 2000
+
+
+def compute_floor(naive_auc: float, ci_hi: float, n_pos: int) -> tuple[float, float, str]:
+    """Pure floor policy (testable). Returns (naive_basis, lock_floor, floor_basis).
+
+    - Thin recipes (N_pos < THIN_NPOS_CUT) anchor to the naive upper-CI (Kwame K11-R1);
+      others to the point estimate.
+    - lock_floor = max(naive_basis + DELTA_LIFT, ABS_FLOOR), then HARD-CAPPED at
+      FLOOR_CAP (bugfix facet 2): an uncapped floor >1.0 (when naive≈0.98) is
+      unreachable and would silently doom an otherwise-strong recipe."""
+    naive_basis = ci_hi if n_pos < THIN_NPOS_CUT else naive_auc
+    relative_floor = naive_basis + DELTA_LIFT
+    lock_floor = max(relative_floor, ABS_FLOOR)
+    floor_basis = "relative" if relative_floor >= ABS_FLOOR else "absolute_0.70"
+    if lock_floor > FLOOR_CAP:
+        lock_floor = FLOOR_CAP
+        floor_basis = "capped_0.90"
+    return naive_basis, lock_floor, floor_basis
 
 
 def persistence_feature(samples: pd.DataFrame, pos: pd.DataFrame) -> np.ndarray:
@@ -131,11 +153,9 @@ def compute_naive_baseline(recipe_id: str, positives_csv: Path, panel_dir: Path,
 
     _, ci_lo, ci_hi = _bootstrap_auc_ci(pooled[0], pooled[1], n_boot=n_bootstrap, seed=seed)
 
-    # Floor: thin recipes anchor to the upper-CI (Kwame K11-R1)
-    naive_basis = ci_hi if n_pos < THIN_NPOS_CUT else naive_auc
+    # Floor: thin recipes anchor to the upper-CI (Kwame K11-R1); cap at 0.90 (facet 2)
+    naive_basis, lock_floor, floor_basis = compute_floor(naive_auc, ci_hi, n_pos)
     relative_floor = naive_basis + DELTA_LIFT
-    lock_floor = max(relative_floor, ABS_FLOOR)
-    floor_basis = "relative" if relative_floor >= ABS_FLOOR else "absolute_0.70"
 
     return {
         "recipe_id": recipe_id,
@@ -150,6 +170,7 @@ def compute_naive_baseline(recipe_id: str, positives_csv: Path, panel_dir: Path,
         "delta_lift": DELTA_LIFT,
         "relative_floor": round(relative_floor, 4),
         "lock_floor": round(lock_floor, 4),
+        "floor_cap": FLOOR_CAP,
         "floor_basis": floor_basis,
         "thin": n_pos < THIN_NPOS_CUT,
         "panel_fingerprint": drv.panel_data_fingerprint(panel_dir, positives_csv),
@@ -210,7 +231,8 @@ def _main(argv: list[str] | None = None) -> int:
         # Incremental write so a mid-batch interruption preserves completed recipes.
         args.out.write_text(json.dumps({
             "schema_version": 1, "policy": "fleet-floor-annex.md (2026-05-25)",
-            "delta_lift": DELTA_LIFT, "abs_floor": ABS_FLOOR, "thin_npos_cut": THIN_NPOS_CUT,
+            "delta_lift": DELTA_LIFT, "abs_floor": ABS_FLOOR, "floor_cap": FLOOR_CAP,
+            "thin_npos_cut": THIN_NPOS_CUT,
             "git_commit_sha": _git_sha(), "seed": args.seed, "partial": True, "baselines": results,
         }, indent=2), encoding="utf-8")
 
