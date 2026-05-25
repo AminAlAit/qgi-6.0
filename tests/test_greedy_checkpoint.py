@@ -68,6 +68,11 @@ def _run(candidates, max_steps, checkpoint_path=None, sig=None, samples=None):
         samples=samples, candidates_top_n=candidates, panels={},
         architecture="LR", delta_step=drv.DELTA_STEP, max_steps=max_steps, seed=0,
         checkpoint_path=checkpoint_path, config_signature=sig,
+        # Relax the coverage gate: these tests exercise the resume MECHANIC on tiny
+        # synthetic fixtures, not the coverage policy (covered in test_coverage_gate.py
+        # with production thresholds).
+        min_pos_survival=0.0, min_effective_npos=1, min_survive_countries=1,
+        min_indicator_coverage=0.0,
     )
 
 

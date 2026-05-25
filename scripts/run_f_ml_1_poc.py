@@ -93,6 +93,23 @@ DEFAULT_LOCK_FLOOR = 0.7986       # HYBRID_BASELINE + 0.03
 DEFAULT_COHORT_LOCO_FLOOR = 0.68  # Kwame R1, civil_war-anchored
 COHORT_ECE_GATE = 0.08            # F-H-7 inherited (not recipe-specific)
 
+# Sample-truncation fix (bugfix amendment 2026-05-25; Majles 5/5, Miriam binding-veto).
+# "No silent sample restriction": a walk must never graduate on a coverage-truncated
+# subsample (the foreign_intervention 0.9147-on-10-of-174 defect). See the
+# 2026-05-25 truncation-leak DECISION + per-recipe-pre-reg/fleet-floor-annex.md.
+MIN_POS_SURVIVAL = 0.50        # ≥50% of raw positives must survive build_X_y (Miriam)
+MIN_EFFECTIVE_NPOS = 30        # ≥30 surviving positives for a meaningful LOCO (Ji-Hoon/Kwame)
+MIN_SURVIVE_COUNTRIES = 10     # ≥10 surviving countries (Miriam MR-14-A3 charter coherence)
+MIN_INDICATOR_COVERAGE = 0.60  # per-indicator: ≥60% of BOTH classes (Ji-Hoon/Kwame fix B)
+
+# Chance-baseline gate (MR-14-A2, bugfix amendment 2026-05-25). A walk whose global
+# LOCO 95% CI includes chance (0.50) is statistically indistinguishable from a coin
+# flip — it must NOT graduate, regardless of point estimate. This is the gate that
+# catches the foreign_intervention failure mode ONCE the coverage gate has forced the
+# full untruncated sample: the inflated 0.9147 was on 10/174 positives; on the full
+# history the AUC is ≈0.4967 with a CI straddling 0.50. Blocking; overrides LOCK.
+CHANCE_FLOOR = 0.50
+
 # §5 indicator selection
 TOP_N_PREFILTER = 40
 DELTA_STEP = 0.005  # greedy outer-loop stopping
@@ -335,33 +352,151 @@ def build_X_y(
     )
 
 
+def coverage_report(samples: pd.DataFrame, selected_indicators: list[str],
+                    window: int, panels: dict[str, pd.DataFrame]) -> dict[str, Any]:
+    """Anti-silent-truncation coverage audit (Majles MR-14-A1, 2026-05-25). Surfaces
+    how many positives/negatives SURVIVE build_X_y for a candidate set — the sample
+    restriction the row-drop would otherwise hide (the foreign_intervention defect)."""
+    _, y, c, _ = build_X_y(samples, selected_indicators, window, panels)
+    n_pos_total = int((samples["label"] == 1).sum())
+    n_neg_total = int((samples["label"] == 0).sum())
+    n_pos_surv = int((y == 1).sum()) if len(y) else 0
+    n_neg_surv = int((y == 0).sum()) if len(y) else 0
+    n_countries = int(len({str(x) for x in c.tolist()})) if len(c) else 0
+    return {
+        "n_pos_total": n_pos_total, "n_pos_survive": n_pos_surv,
+        "n_neg_total": n_neg_total, "n_neg_survive": n_neg_surv,
+        "pos_coverage": (n_pos_surv / n_pos_total) if n_pos_total else 0.0,
+        "neg_coverage": (n_neg_surv / n_neg_total) if n_neg_total else 0.0,
+        "n_countries_survive": n_countries,
+    }
+
+
+def classify_verdict(coverage_pass: bool, chance_pass: bool, global_pass: bool,
+                     cohort_loco_pass: bool, cohort_ece_pass: bool) -> str:
+    """Map the gate booleans to the final walk verdict. Blocking gates override
+    everything (Majles MR-14-A1/A2 / Miriam binding-veto): no graduation — not even
+    MARGINAL — on a truncated subsample (coverage) or a chance-level CI. Coverage is
+    checked first as it is the upstream cause of the chance failure. Pure + testable."""
+    if not coverage_pass:
+        return "COVERAGE_FAIL"
+    if not chance_pass:
+        return "CHANCE_FAIL"
+    if global_pass and cohort_loco_pass and cohort_ece_pass:
+        return "LOCK"
+    if global_pass and cohort_loco_pass and not cohort_ece_pass:
+        return "MARGINAL_PENDING_BETA_CALIBRATION"
+    return "HARD_FAIL"
+
+
+def coverage_gate_ok(cov: dict[str, Any],
+                     min_pos_survival: float = MIN_POS_SURVIVAL,
+                     min_effective_npos: int = MIN_EFFECTIVE_NPOS,
+                     min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
+                     min_indicator_coverage: float = MIN_INDICATOR_COVERAGE) -> bool:
+    """Blocking gate: ≥min_pos_survival of positives survive, balanced class coverage,
+    and ≥min_effective_npos positives across ≥min_survive_countries countries. A
+    candidate set / walk failing this is COVERAGE_FAIL — never graded on a truncated
+    subsample (the 2026-05-25 bugfix). Thresholds default to the module constants;
+    they are injectable so mechanic-tests can exercise the greedy on tiny fixtures.
+
+    Note (FU-2, Sonnet review #112): the two class-survival thresholds are deliberately
+    ASYMMETRIC — positives must clear MIN_POS_SURVIVAL (0.50) and negatives must clear
+    MIN_INDICATOR_COVERAGE (0.60). Positives are the scarce, decisive class (the leak
+    dropped 94% of them), so the binding floor sits on the positive side; the
+    negative-survival check guards against an indicator that is sparse in the negative
+    pool too. `min_indicator_coverage` thus names the minimum NEGATIVE-class survival."""
+    return (cov["pos_coverage"] >= min_pos_survival
+            and cov["neg_coverage"] >= min_indicator_coverage  # neg-class survival fraction
+            and cov["n_pos_survive"] >= min_effective_npos
+            and cov["n_countries_survive"] >= min_survive_countries)
+
+
 def build_samples(pos: pd.DataFrame, negatives_per_positive: int = 3, seed: int = 0,
-                  valid_years: range = range(1980, 2023)) -> pd.DataFrame:
+                  valid_years: range = range(1980, 2023),
+                  time_matched: bool = True) -> pd.DataFrame:
     """Build the LOCO candidate set: all positives (label=1) + sampled negatives
     (label=0). Negatives are random (country, year) pairs drawn from the positive
-    countries over ``valid_years``, excluding any positive pair.
+    countries, excluding any positive pair.
 
     Extracted from the walk's main (2026-05-25) so the F-ML-1 walk AND the
     naive-baseline floor computation (compute_naive_baselines.py) build the
     IDENTICAL candidate set — Ji-Hoon's LOCO-parity requirement for greenfield
     floor provenance. ``pos`` must carry columns country, year, label(=1).
-    Behaviour-preserving extraction: same seed → same negatives (the prior inline
-    rng was used only here)."""
+
+    ``time_matched`` (default ON, truncation-leak bugfix facet 3, Majles 2026-05-25):
+    draw negative YEARS from the positives' empirical year distribution rather than
+    uniformly over ``valid_years``. This neutralises the temporal confound — when
+    positives cluster in older years but negatives are uniform-recent, calendar time
+    alone separates the classes (AUC(year→label) was ~0.28 for foreign_intervention),
+    and any indicator that merely trends over time can ride that confound to an
+    inflated AUC. Time-matched negatives force the year marginals to coincide, so the
+    model must use the indicator SHAPE, not the era. ``time_matched=False`` preserves
+    the legacy uniform-year sampling (kept only for back-compat / mechanic tests)."""
     rng = np.random.default_rng(seed)
     pos_set = set(zip(pos["country"], pos["year"]))
     pos_countries = list(pos["country"].unique())
-    vy = list(valid_years)
+    # Year pool: positives' own years (time-matched) or the full valid range (legacy).
+    year_pool = list(pos["year"].astype(int)) if time_matched else list(valid_years)
     n_neg_target = len(pos) * negatives_per_positive
     negs: list[dict] = []
     attempts = 0
-    while len(negs) < n_neg_target and attempts < n_neg_target * 10:
+    while len(negs) < n_neg_target and attempts < n_neg_target * 50:
         attempts += 1
         c = pos_countries[rng.integers(0, len(pos_countries))]
-        y = int(vy[rng.integers(0, len(vy))])
+        y = int(year_pool[rng.integers(0, len(year_pool))])
         if (c, y) in pos_set:
             continue
         negs.append({"country": c, "year": y, "label": 0})
     return pd.concat([pos[["country", "year", "label"]], pd.DataFrame(negs)], ignore_index=True)
+
+
+def temporal_confound_auc(samples: pd.DataFrame) -> float:
+    """Diagnostic: AUC of YEAR alone as a label predictor. ~0.50 means the negative
+    sampling is time-matched (no calendar-time confound); far from 0.50 means the
+    era trivially separates the classes (the truncation-leak failure mode). Reported
+    in the §10 summary; non-gating. Returns nan if labels are single-class."""
+    y = samples["label"].to_numpy().astype(int)
+    yr = samples["year"].to_numpy().astype(float)
+    if len(np.unique(y)) < 2:
+        return float("nan")
+    return float(compute_auc(yr, y))
+
+
+def era_stratified_loco(probs: np.ndarray, labels: np.ndarray, years: np.ndarray,
+                        boundary: int = 2000, min_n: int = 20) -> dict[str, Any]:
+    """Diagnostic (bugfix facet 4, non-gating): split the pooled LOCO predictions by
+    era and report per-era AUC + counts. The truncation leak concentrated all signal
+    in a recent subsample; a healthy recipe should hold up across eras, while a wildly
+    era-dependent AUC (e.g. strong post-2000, chance pre-2000) is a red flag that the
+    evidence base is effectively era-restricted. Reports a coarse pre/post split at
+    ``boundary`` plus per-decade buckets. Cells with <``min_n`` rows or single-class
+    labels report auc=None (n still shown)."""
+    probs = np.asarray(probs, float)
+    labels = np.asarray(labels, int)
+    years = np.asarray(years, int)
+
+    def _cell(mask: np.ndarray) -> dict[str, Any]:
+        n = int(mask.sum())
+        n_pos = int((labels[mask] == 1).sum()) if n else 0
+        if n < min_n or len(np.unique(labels[mask])) < 2:
+            return {"n": n, "n_pos": n_pos, "auc": None}
+        return {"n": n, "n_pos": n_pos, "auc": round(float(compute_auc(probs[mask], labels[mask])), 4)}
+
+    out: dict[str, Any] = {
+        "boundary": boundary,
+        "pre_boundary": _cell(years < boundary),
+        "post_boundary": _cell(years >= boundary),
+        "by_decade": {},
+    }
+    if len(years):
+        for dec in range(int(years.min()) // 10 * 10, int(years.max()) // 10 * 10 + 10, 10):
+            cell = _cell((years >= dec) & (years < dec + 10))
+            if cell["n"] > 0:
+                out["by_decade"][f"{dec}s"] = cell
+    aucs = [c["auc"] for c in (out["pre_boundary"], out["post_boundary"]) if c["auc"] is not None]
+    out["pre_post_spread"] = round(abs(aucs[0] - aucs[1]), 4) if len(aucs) == 2 else None
+    return out
 
 
 # ---- LOCO + architecture ----------------------------------------------------
@@ -569,11 +704,32 @@ def univariate_loco_screen(
     architecture-agnostic and pre-filter only.
     """
     LOG.info("Univariate screen: %d candidates × default %d-y window", len(candidates), default_window)
+    n_pos_total = int((samples["label"] == 1).sum())
+    n_neg_total = int((samples["label"] == 0).sum())
     scores: dict[str, dict] = {}
+    n_coverage_rejected = 0
     for i, ind in enumerate(candidates):
         if i % 20 == 0:
             LOG.info("  ...%d/%d", i, len(candidates))
         X, y, c, yr = build_X_y(samples, [ind], default_window, panels)
+        # Coverage gate (truncation fix, 2026-05-25): an indicator that drops too
+        # many positives / too few countries cannot RANK — it can only worsen
+        # coverage in combination and would steer the greedy onto a truncated
+        # subsample (the foreign_intervention defect). Computed inline from this
+        # screen's own build_X_y output (no second build).
+        n_pos_s = int((y == 1).sum()) if len(y) else 0
+        n_neg_s = int((y == 0).sum()) if len(y) else 0
+        cov = {
+            "pos_coverage": (n_pos_s / n_pos_total) if n_pos_total else 0.0,
+            "neg_coverage": (n_neg_s / n_neg_total) if n_neg_total else 0.0,
+            "n_pos_survive": n_pos_s,
+            "n_countries_survive": int(len({str(x) for x in c.tolist()})) if len(c) else 0,
+        }
+        if not coverage_gate_ok(cov):
+            scores[ind] = {"univariate_loco_auc": float("nan"), "n_valid": int(len(X)),
+                           "coverage_fail": True, "pos_coverage": round(cov["pos_coverage"], 3)}
+            n_coverage_rejected += 1
+            continue
         if len(X) < 30:
             scores[ind] = {"univariate_loco_auc": float("nan"), "n_valid": int(len(X))}
             continue
@@ -581,7 +737,11 @@ def univariate_loco_screen(
         scores[ind] = {
             "univariate_loco_auc": float(res["global_auc"]),
             "n_valid": int(len(X)),
+            "pos_coverage": round(cov["pos_coverage"], 3),
         }
+    if n_coverage_rejected:
+        LOG.info("Coverage gate rejected %d/%d candidate indicators (insufficient "
+                 "positive/country coverage) before ranking.", n_coverage_rejected, len(candidates))
     ranked = sorted(
         candidates,
         key=lambda i: scores[i]["univariate_loco_auc"] if not np.isnan(scores[i]["univariate_loco_auc"]) else -1.0,
@@ -720,6 +880,10 @@ def greedy_outer_loop(
     seed: int = 0,
     checkpoint_path: Path | None = None,
     config_signature: str | None = None,
+    min_pos_survival: float = MIN_POS_SURVIVAL,
+    min_effective_npos: int = MIN_EFFECTIVE_NPOS,
+    min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
+    min_indicator_coverage: float = MIN_INDICATOR_COVERAGE,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -731,6 +895,8 @@ def greedy_outer_loop(
     chosen_window: int | None = None
     remaining = list(candidates_top_n)
     history: list[dict] = []
+    n_pos_tot = int((samples["label"] == 1).sum()) if samples is not None else 0
+    n_neg_tot = int((samples["label"] == 0).sum()) if samples is not None else 0
 
     # Current LOCO-AUC with empty set = baseline (random)
     current_auc = 0.5
@@ -764,6 +930,18 @@ def greedy_outer_loop(
                 trial_set = selected + [cand]
                 X, y, c, yr = build_X_y(samples, trial_set, win, panels)
                 if len(X) < 30 or len(np.unique(y)) < 2:
+                    continue
+                # Coverage gate (truncation fix, 2026-05-25): reject a candidate SET
+                # that drops too many positives / countries — the greedy must not
+                # chase AUC on a truncated subsample (the foreign_intervention defect).
+                cov = {
+                    "pos_coverage": (int((y == 1).sum()) / n_pos_tot) if n_pos_tot else 0.0,
+                    "neg_coverage": (int((y == 0).sum()) / n_neg_tot) if n_neg_tot else 0.0,
+                    "n_pos_survive": int((y == 1).sum()),
+                    "n_countries_survive": int(len({str(x) for x in c})),
+                }
+                if not coverage_gate_ok(cov, min_pos_survival, min_effective_npos,
+                                        min_survive_countries, min_indicator_coverage):
                     continue
                 res = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=seed)
                 auc = res["global_auc"]
@@ -1293,6 +1471,37 @@ def _main(argv: list[str] | None = None) -> int:
              "(informational only; does NOT gate architecture)",
              fv, stability_diagnostic["fold_auc_mean"], stability_diagnostic["label"])
 
+    # === Coverage audit (sample-truncation fix; Majles MR-14-A1, 2026-05-25) ===
+    # "No silent sample restriction": surface how much of the evidence the selected
+    # set actually evaluates. The foreign_intervention defect (0.9147 on 10/174
+    # positives) hid here. A walk that keeps too little of the evidence is
+    # COVERAGE_FAIL — it does NOT graduate on a truncated subsample.
+    coverage = coverage_report(samples, greedy["selected_indicators"], greedy["chosen_window"], panels)
+    LOG.info("COVERAGE AUDIT: %d/%d positives survive (%.1f%%) across %d countries; "
+             "negatives %.1f%%",
+             coverage["n_pos_survive"], coverage["n_pos_total"], 100 * coverage["pos_coverage"],
+             coverage["n_countries_survive"], 100 * coverage["neg_coverage"])
+    coverage_pass = coverage_gate_ok(coverage)
+    if not coverage_pass:
+        LOG.warning("COVERAGE_FAIL: selected set keeps too little of the evidence base "
+                    "(positives %.1f%%, %d countries, n=%d) — refusing to grade on a "
+                    "truncated subsample.", 100 * coverage["pos_coverage"],
+                    coverage["n_countries_survive"], coverage["n_pos_survive"])
+
+    # === Temporal-confound + era-stratified diagnostics (bugfix facets 3+4) ===
+    # Non-gating. confound_auc≈0.50 confirms time-matched negatives neutralised the
+    # calendar-time confound; era_loco surfaces signal concentrated in one era.
+    confound_auc = temporal_confound_auc(samples)
+    era_loco = era_stratified_loco(final["probs"], final["labels"], final["years"])
+    # FU-1 (Sonnet review #112): on a COVERAGE_FAIL walk these AUCs are computed on
+    # the SAME truncated subsample the gate rejected — tag them so a DECISION reader
+    # never mistakes inflated per-era/per-window numbers for real signal.
+    era_loco["coverage_truncated"] = bool(not coverage_pass)
+    LOG.info("DIAGNOSTIC temporal-confound AUC(year->label)=%.4f (≈0.50 = time-matched); "
+             "era pre/post-%d spread=%s%s", confound_auc, era_loco["boundary"],
+             era_loco["pre_post_spread"],
+             "  [TRUNCATED — coverage_fail]" if not coverage_pass else "")
+
     # LOCK gate eval
     lock_gate_eval_ts = datetime.now(timezone.utc).isoformat()
     LOG.info("=== LOCK GATE EVAL ===")
@@ -1335,12 +1544,17 @@ def _main(argv: list[str] | None = None) -> int:
         for info in per_cohort.values()
     )
 
-    if global_pass and cohort_loco_pass and cohort_ece_pass:
-        verdict = "LOCK"
-    elif global_pass and cohort_loco_pass and not cohort_ece_pass:
-        verdict = "MARGINAL_PENDING_BETA_CALIBRATION"
-    else:
-        verdict = "HARD_FAIL"
+    # Chance-baseline gate (MR-14-A2): the global LOCO CI must clear chance. If the
+    # 95% lower bound is at/below 0.50, the recipe is statistically a coin flip and
+    # cannot graduate regardless of the point estimate.
+    chance_pass = bool(auc_ci["ci95_lo"] > CHANCE_FLOOR)
+    if not chance_pass:
+        LOG.warning("CHANCE_FAIL: global LOCO 95%% CI lower bound %.4f <= chance floor %.2f "
+                    "— indistinguishable from a coin flip; refusing to grade as signal.",
+                    auc_ci["ci95_lo"], CHANCE_FLOOR)
+
+    verdict = classify_verdict(coverage_pass, chance_pass, global_pass,
+                               cohort_loco_pass, cohort_ece_pass)
 
     borderline = bool(auc_ci["ci95_lo"] < lock_floor) if verdict == "LOCK" else False
 
@@ -1381,6 +1595,10 @@ def _main(argv: list[str] | None = None) -> int:
     window_aux = {
         "n_combinations_evaluated_final_step": int(len(WINDOW_GRID) * max(1, len(greedy["history"]))),
         "loco_auc_spread_across_windows": loco_auc_per_window,
+        # FU-1 (Sonnet review #112): these per-window AUCs use the selected (possibly
+        # sparse) set, so on a COVERAGE_FAIL walk they are computed on the truncated
+        # subsample — flag so they are never read as signal.
+        "coverage_truncated": bool(not coverage_pass),
     }
 
     # Now build the descriptive emit (depends on per_cohort + window_ci, computed above)
@@ -1412,6 +1630,17 @@ def _main(argv: list[str] | None = None) -> int:
             "lock_gate_eval_ts": lock_gate_eval_ts,
         },
         "stability_diagnostic": stability_diagnostic,
+        "coverage_audit": {
+            **coverage,
+            "coverage_pass": bool(coverage_pass),
+            "thresholds": {
+                "min_pos_survival": MIN_POS_SURVIVAL,
+                "min_effective_npos": MIN_EFFECTIVE_NPOS,
+                "min_survive_countries": MIN_SURVIVE_COUNTRIES,
+                "min_indicator_coverage": MIN_INDICATOR_COVERAGE,
+            },
+            "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false → COVERAGE_FAIL verdict; never graded on a truncated subsample.",
+        },
         "per_recipe_floor_provenance": {
             "hybrid_baseline": hybrid_baseline,
             "lock_floor": lock_floor,
@@ -1429,10 +1658,20 @@ def _main(argv: list[str] | None = None) -> int:
             "global_loco_pass": bool(global_pass),
             "per_cohort_loco_pass": bool(cohort_loco_pass),
             "per_cohort_ece_pass": bool(cohort_ece_pass),
+            "chance_baseline_pass": bool(chance_pass),
             "global_floor": lock_floor,
             "cohort_loco_floor": cohort_loco_floor,
             "cohort_ece_gate": COHORT_ECE_GATE,
+            "chance_floor": CHANCE_FLOOR,
         },
+        "chance_baseline_gate": {
+            "ci95_lo": auc_ci["ci95_lo"],
+            "chance_floor": CHANCE_FLOOR,
+            "chance_baseline_pass": bool(chance_pass),
+            "note": "MR-14-A2 (2026-05-25). chance_baseline_pass=false → CHANCE_FAIL verdict; the global LOCO CI straddles a coin flip.",
+        },
+        "temporal_confound_auc": (None if (isinstance(confound_auc, float) and confound_auc != confound_auc) else round(confound_auc, 4)),
+        "era_stratified_loco": era_loco,
         "univariate_screen": {
             "method": "LR, 10y window, ranked by global LOCO-AUC",
             "n_candidates_evaluated": len(all_candidates),
