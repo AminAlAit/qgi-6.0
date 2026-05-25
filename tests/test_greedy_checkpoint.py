@@ -72,7 +72,7 @@ def _run(candidates, max_steps, checkpoint_path=None, sig=None, samples=None):
         # synthetic fixtures, not the coverage policy (covered in test_coverage_gate.py
         # with production thresholds).
         min_pos_survival=0.0, min_effective_npos=1, min_survive_countries=1,
-        min_indicator_coverage=0.0,
+        min_neg_survival=0.0,
     )
 
 
