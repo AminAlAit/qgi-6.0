@@ -61,6 +61,6 @@ def test_coverage_gate_thresholds_are_all_enforced():
     base = {"pos_coverage": 0.9, "neg_coverage": 0.9, "n_pos_survive": 50, "n_countries_survive": 15}
     assert drv.coverage_gate_ok(base) is True
     assert drv.coverage_gate_ok({**base, "pos_coverage": 0.4}) is False        # < MIN_POS_SURVIVAL
-    assert drv.coverage_gate_ok({**base, "neg_coverage": 0.5}) is False        # < MIN_INDICATOR_COVERAGE
+    assert drv.coverage_gate_ok({**base, "neg_coverage": 0.5}) is False        # < MIN_NEG_SURVIVAL
     assert drv.coverage_gate_ok({**base, "n_pos_survive": 20}) is False        # < MIN_EFFECTIVE_NPOS
     assert drv.coverage_gate_ok({**base, "n_countries_survive": 5}) is False   # < MIN_SURVIVE_COUNTRIES
