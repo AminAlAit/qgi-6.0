@@ -364,15 +364,20 @@ def coverage_report(samples: pd.DataFrame, selected_indicators: list[str],
     }
 
 
-def coverage_gate_ok(cov: dict[str, Any]) -> bool:
-    """Blocking gate: ≥MIN_POS_SURVIVAL of positives survive, balanced class coverage,
-    and ≥MIN_EFFECTIVE_NPOS positives across ≥MIN_SURVIVE_COUNTRIES countries. A
+def coverage_gate_ok(cov: dict[str, Any],
+                     min_pos_survival: float = MIN_POS_SURVIVAL,
+                     min_effective_npos: int = MIN_EFFECTIVE_NPOS,
+                     min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
+                     min_indicator_coverage: float = MIN_INDICATOR_COVERAGE) -> bool:
+    """Blocking gate: ≥min_pos_survival of positives survive, balanced class coverage,
+    and ≥min_effective_npos positives across ≥min_survive_countries countries. A
     candidate set / walk failing this is COVERAGE_FAIL — never graded on a truncated
-    subsample (the 2026-05-25 bugfix)."""
-    return (cov["pos_coverage"] >= MIN_POS_SURVIVAL
-            and cov["neg_coverage"] >= MIN_INDICATOR_COVERAGE
-            and cov["n_pos_survive"] >= MIN_EFFECTIVE_NPOS
-            and cov["n_countries_survive"] >= MIN_SURVIVE_COUNTRIES)
+    subsample (the 2026-05-25 bugfix). Thresholds default to the module constants;
+    they are injectable so mechanic-tests can exercise the greedy on tiny fixtures."""
+    return (cov["pos_coverage"] >= min_pos_survival
+            and cov["neg_coverage"] >= min_indicator_coverage
+            and cov["n_pos_survive"] >= min_effective_npos
+            and cov["n_countries_survive"] >= min_survive_countries)
 
 
 def build_samples(pos: pd.DataFrame, negatives_per_positive: int = 3, seed: int = 0,
@@ -609,11 +614,32 @@ def univariate_loco_screen(
     architecture-agnostic and pre-filter only.
     """
     LOG.info("Univariate screen: %d candidates × default %d-y window", len(candidates), default_window)
+    n_pos_total = int((samples["label"] == 1).sum())
+    n_neg_total = int((samples["label"] == 0).sum())
     scores: dict[str, dict] = {}
+    n_coverage_rejected = 0
     for i, ind in enumerate(candidates):
         if i % 20 == 0:
             LOG.info("  ...%d/%d", i, len(candidates))
         X, y, c, yr = build_X_y(samples, [ind], default_window, panels)
+        # Coverage gate (truncation fix, 2026-05-25): an indicator that drops too
+        # many positives / too few countries cannot RANK — it can only worsen
+        # coverage in combination and would steer the greedy onto a truncated
+        # subsample (the foreign_intervention defect). Computed inline from this
+        # screen's own build_X_y output (no second build).
+        n_pos_s = int((y == 1).sum()) if len(y) else 0
+        n_neg_s = int((y == 0).sum()) if len(y) else 0
+        cov = {
+            "pos_coverage": (n_pos_s / n_pos_total) if n_pos_total else 0.0,
+            "neg_coverage": (n_neg_s / n_neg_total) if n_neg_total else 0.0,
+            "n_pos_survive": n_pos_s,
+            "n_countries_survive": int(len({str(x) for x in c.tolist()})) if len(c) else 0,
+        }
+        if not coverage_gate_ok(cov):
+            scores[ind] = {"univariate_loco_auc": float("nan"), "n_valid": int(len(X)),
+                           "coverage_fail": True, "pos_coverage": round(cov["pos_coverage"], 3)}
+            n_coverage_rejected += 1
+            continue
         if len(X) < 30:
             scores[ind] = {"univariate_loco_auc": float("nan"), "n_valid": int(len(X))}
             continue
@@ -621,7 +647,11 @@ def univariate_loco_screen(
         scores[ind] = {
             "univariate_loco_auc": float(res["global_auc"]),
             "n_valid": int(len(X)),
+            "pos_coverage": round(cov["pos_coverage"], 3),
         }
+    if n_coverage_rejected:
+        LOG.info("Coverage gate rejected %d/%d candidate indicators (insufficient "
+                 "positive/country coverage) before ranking.", n_coverage_rejected, len(candidates))
     ranked = sorted(
         candidates,
         key=lambda i: scores[i]["univariate_loco_auc"] if not np.isnan(scores[i]["univariate_loco_auc"]) else -1.0,
@@ -760,6 +790,10 @@ def greedy_outer_loop(
     seed: int = 0,
     checkpoint_path: Path | None = None,
     config_signature: str | None = None,
+    min_pos_survival: float = MIN_POS_SURVIVAL,
+    min_effective_npos: int = MIN_EFFECTIVE_NPOS,
+    min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
+    min_indicator_coverage: float = MIN_INDICATOR_COVERAGE,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -771,6 +805,8 @@ def greedy_outer_loop(
     chosen_window: int | None = None
     remaining = list(candidates_top_n)
     history: list[dict] = []
+    n_pos_tot = int((samples["label"] == 1).sum()) if samples is not None else 0
+    n_neg_tot = int((samples["label"] == 0).sum()) if samples is not None else 0
 
     # Current LOCO-AUC with empty set = baseline (random)
     current_auc = 0.5
@@ -804,6 +840,18 @@ def greedy_outer_loop(
                 trial_set = selected + [cand]
                 X, y, c, yr = build_X_y(samples, trial_set, win, panels)
                 if len(X) < 30 or len(np.unique(y)) < 2:
+                    continue
+                # Coverage gate (truncation fix, 2026-05-25): reject a candidate SET
+                # that drops too many positives / countries — the greedy must not
+                # chase AUC on a truncated subsample (the foreign_intervention defect).
+                cov = {
+                    "pos_coverage": (int((y == 1).sum()) / n_pos_tot) if n_pos_tot else 0.0,
+                    "neg_coverage": (int((y == 0).sum()) / n_neg_tot) if n_neg_tot else 0.0,
+                    "n_pos_survive": int((y == 1).sum()),
+                    "n_countries_survive": int(len({str(x) for x in c})),
+                }
+                if not coverage_gate_ok(cov, min_pos_survival, min_effective_npos,
+                                        min_survive_countries, min_indicator_coverage):
                     continue
                 res = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=seed)
                 auc = res["global_auc"]
@@ -1333,6 +1381,23 @@ def _main(argv: list[str] | None = None) -> int:
              "(informational only; does NOT gate architecture)",
              fv, stability_diagnostic["fold_auc_mean"], stability_diagnostic["label"])
 
+    # === Coverage audit (sample-truncation fix; Majles MR-14-A1, 2026-05-25) ===
+    # "No silent sample restriction": surface how much of the evidence the selected
+    # set actually evaluates. The foreign_intervention defect (0.9147 on 10/174
+    # positives) hid here. A walk that keeps too little of the evidence is
+    # COVERAGE_FAIL — it does NOT graduate on a truncated subsample.
+    coverage = coverage_report(samples, greedy["selected_indicators"], greedy["chosen_window"], panels)
+    LOG.info("COVERAGE AUDIT: %d/%d positives survive (%.1f%%) across %d countries; "
+             "negatives %.1f%%",
+             coverage["n_pos_survive"], coverage["n_pos_total"], 100 * coverage["pos_coverage"],
+             coverage["n_countries_survive"], 100 * coverage["neg_coverage"])
+    coverage_pass = coverage_gate_ok(coverage)
+    if not coverage_pass:
+        LOG.warning("COVERAGE_FAIL: selected set keeps too little of the evidence base "
+                    "(positives %.1f%%, %d countries, n=%d) — refusing to grade on a "
+                    "truncated subsample.", 100 * coverage["pos_coverage"],
+                    coverage["n_countries_survive"], coverage["n_pos_survive"])
+
     # LOCK gate eval
     lock_gate_eval_ts = datetime.now(timezone.utc).isoformat()
     LOG.info("=== LOCK GATE EVAL ===")
@@ -1375,7 +1440,11 @@ def _main(argv: list[str] | None = None) -> int:
         for info in per_cohort.values()
     )
 
-    if global_pass and cohort_loco_pass and cohort_ece_pass:
+    # Coverage gate is BLOCKING and overrides everything (Majles MR-14-A1 / Miriam
+    # binding-veto): no graduation — not even MARGINAL — on a truncated subsample.
+    if not coverage_pass:
+        verdict = "COVERAGE_FAIL"
+    elif global_pass and cohort_loco_pass and cohort_ece_pass:
         verdict = "LOCK"
     elif global_pass and cohort_loco_pass and not cohort_ece_pass:
         verdict = "MARGINAL_PENDING_BETA_CALIBRATION"
@@ -1452,6 +1521,17 @@ def _main(argv: list[str] | None = None) -> int:
             "lock_gate_eval_ts": lock_gate_eval_ts,
         },
         "stability_diagnostic": stability_diagnostic,
+        "coverage_audit": {
+            **coverage,
+            "coverage_pass": bool(coverage_pass),
+            "thresholds": {
+                "min_pos_survival": MIN_POS_SURVIVAL,
+                "min_effective_npos": MIN_EFFECTIVE_NPOS,
+                "min_survive_countries": MIN_SURVIVE_COUNTRIES,
+                "min_indicator_coverage": MIN_INDICATOR_COVERAGE,
+            },
+            "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false → COVERAGE_FAIL verdict; never graded on a truncated subsample.",
+        },
         "per_recipe_floor_provenance": {
             "hybrid_baseline": hybrid_baseline,
             "lock_floor": lock_floor,
