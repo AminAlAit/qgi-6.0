@@ -398,9 +398,16 @@ def coverage_gate_ok(cov: dict[str, Any],
     and ≥min_effective_npos positives across ≥min_survive_countries countries. A
     candidate set / walk failing this is COVERAGE_FAIL — never graded on a truncated
     subsample (the 2026-05-25 bugfix). Thresholds default to the module constants;
-    they are injectable so mechanic-tests can exercise the greedy on tiny fixtures."""
+    they are injectable so mechanic-tests can exercise the greedy on tiny fixtures.
+
+    Note (FU-2, Sonnet review #112): the two class-survival thresholds are deliberately
+    ASYMMETRIC — positives must clear MIN_POS_SURVIVAL (0.50) and negatives must clear
+    MIN_INDICATOR_COVERAGE (0.60). Positives are the scarce, decisive class (the leak
+    dropped 94% of them), so the binding floor sits on the positive side; the
+    negative-survival check guards against an indicator that is sparse in the negative
+    pool too. `min_indicator_coverage` thus names the minimum NEGATIVE-class survival."""
     return (cov["pos_coverage"] >= min_pos_survival
-            and cov["neg_coverage"] >= min_indicator_coverage
+            and cov["neg_coverage"] >= min_indicator_coverage  # neg-class survival fraction
             and cov["n_pos_survive"] >= min_effective_npos
             and cov["n_countries_survive"] >= min_survive_countries)
 
@@ -1486,9 +1493,14 @@ def _main(argv: list[str] | None = None) -> int:
     # calendar-time confound; era_loco surfaces signal concentrated in one era.
     confound_auc = temporal_confound_auc(samples)
     era_loco = era_stratified_loco(final["probs"], final["labels"], final["years"])
+    # FU-1 (Sonnet review #112): on a COVERAGE_FAIL walk these AUCs are computed on
+    # the SAME truncated subsample the gate rejected — tag them so a DECISION reader
+    # never mistakes inflated per-era/per-window numbers for real signal.
+    era_loco["coverage_truncated"] = bool(not coverage_pass)
     LOG.info("DIAGNOSTIC temporal-confound AUC(year->label)=%.4f (≈0.50 = time-matched); "
-             "era pre/post-%d spread=%s", confound_auc, era_loco["boundary"],
-             era_loco["pre_post_spread"])
+             "era pre/post-%d spread=%s%s", confound_auc, era_loco["boundary"],
+             era_loco["pre_post_spread"],
+             "  [TRUNCATED — coverage_fail]" if not coverage_pass else "")
 
     # LOCK gate eval
     lock_gate_eval_ts = datetime.now(timezone.utc).isoformat()
@@ -1583,6 +1595,10 @@ def _main(argv: list[str] | None = None) -> int:
     window_aux = {
         "n_combinations_evaluated_final_step": int(len(WINDOW_GRID) * max(1, len(greedy["history"]))),
         "loco_auc_spread_across_windows": loco_auc_per_window,
+        # FU-1 (Sonnet review #112): these per-window AUCs use the selected (possibly
+        # sparse) set, so on a COVERAGE_FAIL walk they are computed on the truncated
+        # subsample — flag so they are never read as signal.
+        "coverage_truncated": bool(not coverage_pass),
     }
 
     # Now build the descriptive emit (depends on per_cohort + window_ci, computed above)
