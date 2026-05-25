@@ -3,10 +3,10 @@
   "schema": "recipe-tracker-v1",
   "n_recipes": 71,
   "status_counts": {
-    "graduated": 1,
-    "in_progress": 1,
+    "graduated": 0,
+    "in_progress": 0,
     "live_legacy": 3,
-    "walked_no_graduation": 2,
+    "walked_no_graduation": 4,
     "queued": 64
   },
   "recipes": [
@@ -17,11 +17,12 @@
       "l1_label": "Political Power",
       "l1_color": "#7B5EE6",
       "l2_label": "Electoral Politics",
-      "status": "in_progress",
+      "status": "walked_no_graduation",
       "stats": {
-        "verdict": "WALK-5 RUNNING",
-        "window_y": null,
-        "n_indicators": null
+        "loco_auc": 0.7085,
+        "window_y": 3,
+        "n_indicators": 4,
+        "verdict": "HARD_FAIL"
       }
     },
     {
@@ -151,7 +152,7 @@
       "l1_label": "Conflict & Violence",
       "l1_color": "#E64545",
       "l2_label": "Foreign Military Intervention",
-      "status": "graduated",
+      "status": "walked_no_graduation",
       "stats": {
         "loco_auc": 0.9147,
         "v1_separation_pp": 25.8,
@@ -159,7 +160,7 @@
         "window_y": 18,
         "n_indicators": 4,
         "blog_url": "/blog/foreign-intervention-graduation",
-        "verdict": "GRADUATED",
+        "verdict": "GRADUATION SUSPENDED - re-validating after pipeline-coverage fix",
         "n_countries_scored": 68
       }
     },
