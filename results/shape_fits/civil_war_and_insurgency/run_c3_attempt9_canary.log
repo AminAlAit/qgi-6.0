@@ -1,0 +1,19 @@
+2026-05-19 START civil_war_and_insurgency (C.3-attempt9, F-H-4-A3 LogNormal + tight target_accept)
+Tue May 19 23:10:07 WEDT 2026
+2026-05-19 23:10:26,485 [INFO] --force-fallback set: skipping FPCA primary, running §3.1.4 GP fallback directly for recipe civil_war_and_insurgency.
+2026-05-19 23:10:46,333 [WARNING] Using NumPy C-API based implementation for BLAS functions.
+2026-05-19 23:10:48,122 [INFO] fit_gp_fallback: NUTS start — K=5 T_r=5 N=256 chains=2 tune=1000 draws=2000 target_accept=0.99 max_treedepth=12 init=advi+adapt_diag
+2026-05-19 23:11:40,095 [INFO] Auto-assigning NUTS sampler...
+2026-05-19 23:11:40,292 [INFO] Initializing NUTS using advi+adapt_diag...
+Fitting: ------                               20% 4:17:53 Average Loss = 34,019
+2026-05-20 00:32:04,211 [INFO] Convergence achieved at 39600
+2026-05-20 00:32:04,215 [INFO] Interrupted at 39,599 [19%]: Average Loss = 1.7411e+07
+2026-05-20 00:32:34,450 [INFO] Sequential sampling (2 chains in 1 job)
+2026-05-20 00:32:34,450 [INFO] NUTS: [alpha_recipe, ell_recipe, sigma_eps]
+Sampling chain 0, 2 divergences ------------------------ 100% 0:00:00 / 3:32:03
+Sampling chain 1, 1 divergences ------------------------ 100% 0:00:00 / 1:05:30
+2026-05-20 05:10:08,667 [INFO] Sampling 2 chains for 1_000 tune and 2_000 draw iterations (2_000 + 4_000 draws total) took 16654 seconds.
+2026-05-20 05:10:08,751 [INFO] fit_gp_fallback: NUTS complete — elapsed=21560.6s (359.34 min)
+2026-05-20 05:10:09,323 [ERROR] GP fallback failed for recipe civil_war_and_insurgency: GP fallback persistent NUTS failure after refit. rhat_max=1.0000, ess_min=1141.0, n_divergences=3. Recipe is un-fittable under §3.1.4 methodology. N_r=256, T_r=5, K_indicators=5.
+EXIT 1
+Wed May 20 05:10:10 WEDT 2026

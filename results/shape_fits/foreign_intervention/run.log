@@ -1,0 +1,34 @@
+2026-05-18 01:25:46 START foreign_intervention
+2026-05-18 01:26:01,652 [WARNING] Using NumPy C-API based implementation for BLAS functions.
+2026-05-18 01:26:12,043 [INFO] Auto-assigning NUTS sampler...
+2026-05-18 01:26:12,348 [INFO] Initializing NUTS using jitter+adapt_diag...
+2026-05-18 01:26:30,629 [INFO] Sequential sampling (4 chains in 1 job)
+2026-05-18 01:26:30,629 [INFO] NUTS: [tau, mu, chol]
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: overflow encountered in exp
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: invalid value encountered in subtract
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2011: RuntimeWarning: invalid value encountered in divide
+  return x / y
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: invalid value encountered in impl (vectorized)
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\tensor\elemwise.py:763: RuntimeWarning: overflow encountered in square
+  variables = ufunc(*ufunc_args, **ufunc_kwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\numpy\core\fromnumeric.py:88: RuntimeWarning: invalid value encountered in reduce
+  return ufunc.reduce(obj, axis, dtype, out, **passkwargs)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2937: RuntimeWarning: divide by zero encountered in log
+  return np.log(x)
+/workspace/qgi\qgi-6.0\qgi-ml\.venv-path-b\Lib\site-packages\pytensor\scalar\basic.py:2011: RuntimeWarning: divide by zero encountered in divide
+  return x / y
+2026-05-18 02:03:50,643 [INFO] Sampling 4 chains for 1_000 tune and 1_000 draw iterations (4_000 + 4_000 draws total) took 2238 seconds.
+2026-05-18 02:03:51,778 [INFO] audit:
+  basis: cubic_spline K_basis=8 T_r=5
+  instances_loaded=110 dropped=0
+  fpca: M_r=3 cumvar=[0.5421170243043002, 0.6911167686392297, 0.8287677319179323, 0.8906327593208029]
+  sampler: rhat_max=1.0000 ess_min=632.0 div=23
+2026-05-18 02:03:51,779 [INFO] fallback_required=True reason=Persistent NUTS diagnostic failure after refit
+2026-05-18 02:03:51,779 [INFO] wall_time=2280.44s
+2026-05-18 02:03:51,779 [WARNING] Recipe foreign_intervention requires fallback path (§3.1.4). Chunk B.2 implements; this Chunk B run emits the recipe block with empty signature and fit_method=hierarchical_bayes_gp_fallback as a placeholder.
+2026-05-18 02:03:51,804 [INFO] Wrote prototype to config\shape-prototypes.lock.json; file_sha256=e4070c1c25c4bcec3cc33a7056fa5234cff0158511e77e884bdad432f24c3cf4
+2026-05-18 02:03:52 END foreign_intervention
+EXIT_CODE=0
