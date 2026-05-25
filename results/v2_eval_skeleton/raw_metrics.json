@@ -1,0 +1,49 @@
+{
+  "decision_rule": "V2.0 must be BETTER on at least one of {precision-at-K, calibration} AND NOT WORSE on persistence margin.",
+  "rule_passed": false,
+  "rule_explanation": "FAIL V2.0 fails decision rule: persistence margin (nan) WORSE than V1.9.1 (-0.2141); no improvement on precision-at-K or calibration  (NOTE: V2.0 metrics PENDING \u2014 re-run after #463 Parts A v0.2 + B ship.)",
+  "metrics": {
+    "persistence": {
+      "system": "persistence",
+      "precision_at_10": 1.0,
+      "precision_at_50": NaN,
+      "precision_at_100": NaN,
+      "recall_at_10": NaN,
+      "recall_at_50": NaN,
+      "recall_at_100": NaN,
+      "brier_score": 1.2743,
+      "margin_over_persistence": 0.0,
+      "n_predictions": 1902,
+      "coverage": 0.5391,
+      "notes": "precision_at_10/50/100 unavailable from cache; rerun backtest with extended K to populate."
+    },
+    "v1_9_1": {
+      "system": "V1.9.1 (v1_5)",
+      "precision_at_10": 1.0,
+      "precision_at_50": NaN,
+      "precision_at_100": NaN,
+      "recall_at_10": NaN,
+      "recall_at_50": NaN,
+      "recall_at_100": NaN,
+      "brier_score": 0.282,
+      "margin_over_persistence": -0.2141,
+      "n_predictions": 7,
+      "coverage": 0.9265,
+      "notes": "From backtest_results.json key 'v1_5'. K=5 used as proxy for K=10."
+    },
+    "v2_0": {
+      "system": "V2.0",
+      "precision_at_10": NaN,
+      "precision_at_50": NaN,
+      "precision_at_100": NaN,
+      "recall_at_10": NaN,
+      "recall_at_50": NaN,
+      "recall_at_100": NaN,
+      "brier_score": NaN,
+      "margin_over_persistence": NaN,
+      "n_predictions": 0,
+      "coverage": 0.0,
+      "notes": "PENDING: blocked on #463 Part A v0.2 (Pearson trajectory) + Part B (Platt calibration). Backtest set re-evaluation also requires the per-pair backtest fixture (not yet exported from run_backtest.py \u2014 open follow-up to surface)."
+    }
+  }
+}
