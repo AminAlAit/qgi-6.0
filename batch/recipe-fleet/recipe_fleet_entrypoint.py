@@ -42,7 +42,11 @@ RECIPE_MANIFEST_S3_KEY : str  — S3 key for recipe-manifest.json
 RECIPE_IDS             : str  — comma-separated list of recipe_ids to run
 RUN_MODE               : str  — "canary" or "fleet" (default "fleet")
 COHORT_SIDECAR_S3_KEY  : str  — S3 key for cohort-assignments.json (FIX 2)
-EVALUATION_YEAR        : int  — evaluation year for similarity + capabilities (default 2021)
+EVALUATION_YEAR        : int  — OPTIONAL override of the scoring frontier. Unset
+                                (default) → the entrypoint AUTO-resolves the frontier
+                                per recipe from observed panel coverage (max observed
+                                year + 1, D2). Set it only to pin a year (re-baseline
+                                a graduate / historical canary).
 
 S3 path conventions (trailing-slash prefixes):
   Parquet panels  : s3://{bucket}/{PARQUET_DATA_PREFIX}
@@ -107,10 +111,13 @@ COHORT_SIDECAR_S3_KEY = os.environ.get(
     "COHORT_SIDECAR_S3_KEY", "reference/cohort-assignments.json"
 )
 
-# Evaluation year for similarity scoring and capability scripts.
-# 2021 is the correct value for foreign_intervention (the canary recipe);
-# override via env var for other recipes if the panel coverage differs.
-EVALUATION_YEAR = int(os.environ.get("EVALUATION_YEAR", "2021"))
+# Scoring frontier (D2). The hardcoded 2021 is GONE — leaving it made the LOCF
+# nowcast fill inert on production data (Opus delivery-review finding #111). By
+# default the entrypoint AUTO-resolves the frontier per recipe from observed panel
+# coverage (resolve_frontier_year → max observed year + 1). Set EVALUATION_YEAR to
+# an int only to PIN a year (e.g. re-baseline the graduate, or a historical canary).
+_eval_env = os.environ.get("EVALUATION_YEAR", "").strip()
+EVALUATION_YEAR_OVERRIDE: int | None = int(_eval_env) if _eval_env else None
 
 # ---------------------------------------------------------------------------
 # Path constants (container layout; see Dockerfile)
@@ -388,6 +395,41 @@ def run_walk(
 
 
 # ---------------------------------------------------------------------------
+# Scoring-frontier resolution (D2 — replaces the hardcoded 2021)
+# ---------------------------------------------------------------------------
+
+def resolve_frontier_year(selected_indicators: list[str], panel_dir: Path) -> int:
+    """D2: scoring frontier = max OBSERVED year across the recipe's selected
+    indicators + 1. Production panels carry `is_predicted` (ETS) rows which we
+    DISCARD (D1) — only observed rows define the frontier. This mirrors the
+    `--evaluation-year auto` logic in compute_recipe_country_similarity.py; the
+    resolved int is then passed EXPLICITLY to every scoring/capability script so
+    the whole chain agrees on one frontier (and the scores filename is
+    deterministic). Raises if no observed rows are found."""
+    import pandas as pd  # available in the container; local import keeps cold-start lean
+
+    max_obs: int | None = None
+    for ind in selected_indicators:
+        path = panel_dir / ind / f"{ind}.parquet"
+        if not path.exists():
+            LOG.warning("Panel missing for indicator %s at %s — skipped in frontier calc", ind, path)
+            continue
+        df = pd.read_parquet(path)
+        if "is_predicted" in df.columns:
+            df = df[~df["is_predicted"].astype(bool)]
+        if "value" in df.columns:
+            df = df[df["value"].notna()]
+        if len(df):
+            yr = int(df["year"].max())
+            max_obs = yr if max_obs is None else max(max_obs, yr)
+    if max_obs is None:
+        raise RuntimeError(
+            f"Could not resolve scoring frontier — no observed rows for indicators {selected_indicators}"
+        )
+    return max_obs + 1
+
+
+# ---------------------------------------------------------------------------
 # Per-recipe capability chain (FIX 1)
 # ---------------------------------------------------------------------------
 
@@ -470,7 +512,8 @@ def run_capability_chain(
     #   --shap-importances (required) ← was MISSING entirely in original code
     #   --output-dir (required)
     #   --panel-dir (optional, default REPO_ROOT/data/parquet_panels)
-    #   --evaluation-year (optional, default 2021)
+    #   --evaluation-year (we pass the entrypoint-resolved frontier int explicitly,
+    #                       so the script does NOT use its 'auto' default here)
     #   --top-k-charts (optional)
     # BEFORE: step was missing entirely → argparse exit 2 on all 5 capability scripts
     # AFTER: step added; --shap-importances points to shap_path produced in Step A
@@ -718,8 +761,10 @@ def main() -> None:
         sys.exit(1)
 
     LOG.info(
-        "recipe-fleet-entrypoint starting | mode=%s | recipes=%s | bucket=%s | eval_year=%d",
-        RUN_MODE, recipe_ids, S3_BUCKET, EVALUATION_YEAR,
+        "recipe-fleet-entrypoint starting | mode=%s | recipes=%s | bucket=%s | eval_year=%s",
+        RUN_MODE, recipe_ids, S3_BUCKET,
+        EVALUATION_YEAR_OVERRIDE if EVALUATION_YEAR_OVERRIDE is not None
+        else "auto (per-recipe observed frontier)",
     )
 
     with tempfile.TemporaryDirectory(prefix="qgi-fleet-") as tmpdir_str:
@@ -843,13 +888,28 @@ def main() -> None:
 
             cap_results: dict[str, str] = {}
             if walk_result.get("status") == "ok":
+                # -- D2: resolve this recipe's scoring frontier from the walk's
+                #    selected indicators' observed coverage (replaces hardcoded 2021).
+                #    EVALUATION_YEAR env pins it; otherwise auto from panels. --
+                if EVALUATION_YEAR_OVERRIDE is not None:
+                    eval_year = EVALUATION_YEAR_OVERRIDE
+                    LOG.info("Scoring frontier for %s PINNED to %d (EVALUATION_YEAR override)",
+                             recipe_id, eval_year)
+                else:
+                    with open(walk_output_dir / "f-ml-1-poc-summary.json", encoding="utf-8") as f:
+                        _walk = json.load(f)
+                    _selected = _walk["greedy_outer_loop"]["selected_indicators"]
+                    eval_year = resolve_frontier_year(_selected, local_data_dir)
+                    LOG.info("Scoring frontier for %s AUTO-resolved to %d (selected=%s)",
+                             recipe_id, eval_year, _selected)
+
                 # -- Run SHAP extraction + similarity + 5 capability scripts --
                 cap_results = run_capability_chain(
                     recipe_id=recipe_id,
                     walk_output_dir=walk_output_dir,
                     local_data_dir=local_data_dir,
                     cohort_sidecar_path=local_cohort_sidecar,
-                    evaluation_year=EVALUATION_YEAR,
+                    evaluation_year=eval_year,
                 )
 
                 # -- Upload capability outputs to S3 --
