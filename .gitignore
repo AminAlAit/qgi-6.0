@@ -15,6 +15,7 @@ crash.*.log
 # Terraform plan output — never commit
 tfplan
 *.tfplan
+tfplan-*
 
 # Pipeline control surface lives in qgi-pipeline, not here
 *.xlsx
