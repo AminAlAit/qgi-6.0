@@ -100,7 +100,11 @@ COHORT_ECE_GATE = 0.08            # F-H-7 inherited (not recipe-specific)
 MIN_POS_SURVIVAL = 0.50        # ≥50% of raw positives must survive build_X_y (Miriam)
 MIN_EFFECTIVE_NPOS = 30        # ≥30 surviving positives for a meaningful LOCO (Ji-Hoon/Kwame)
 MIN_SURVIVE_COUNTRIES = 10     # ≥10 surviving countries (Miriam MR-14-A3 charter coherence)
-MIN_INDICATOR_COVERAGE = 0.60  # per-indicator: ≥60% of BOTH classes (Ji-Hoon/Kwame fix B)
+MIN_NEG_SURVIVAL = 0.60  # ≥60% of NEGATIVES must survive build_X_y (Ji-Hoon/Kwame fix B;
+                         # renamed from MIN_INDICATOR_COVERAGE per Kwame KA-1, Majles 2026-05-25:
+                         # the name now states what it gates — negative-class survival fraction.
+                         # At the univariate screen this is the single indicator's neg-coverage;
+                         # in coverage_gate_ok it is the selected set's neg-class survival.)
 
 # Chance-baseline gate (MR-14-A2, bugfix amendment 2026-05-25). A walk whose global
 # LOCO 95% CI includes chance (0.50) is statistically indistinguishable from a coin
@@ -393,7 +397,7 @@ def coverage_gate_ok(cov: dict[str, Any],
                      min_pos_survival: float = MIN_POS_SURVIVAL,
                      min_effective_npos: int = MIN_EFFECTIVE_NPOS,
                      min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
-                     min_indicator_coverage: float = MIN_INDICATOR_COVERAGE) -> bool:
+                     min_neg_survival: float = MIN_NEG_SURVIVAL) -> bool:
     """Blocking gate: ≥min_pos_survival of positives survive, balanced class coverage,
     and ≥min_effective_npos positives across ≥min_survive_countries countries. A
     candidate set / walk failing this is COVERAGE_FAIL — never graded on a truncated
@@ -402,12 +406,12 @@ def coverage_gate_ok(cov: dict[str, Any],
 
     Note (FU-2, Sonnet review #112): the two class-survival thresholds are deliberately
     ASYMMETRIC — positives must clear MIN_POS_SURVIVAL (0.50) and negatives must clear
-    MIN_INDICATOR_COVERAGE (0.60). Positives are the scarce, decisive class (the leak
+    MIN_NEG_SURVIVAL (0.60). Positives are the scarce, decisive class (the leak
     dropped 94% of them), so the binding floor sits on the positive side; the
     negative-survival check guards against an indicator that is sparse in the negative
-    pool too. `min_indicator_coverage` thus names the minimum NEGATIVE-class survival."""
+    pool too. `min_neg_survival` thus names the minimum NEGATIVE-class survival."""
     return (cov["pos_coverage"] >= min_pos_survival
-            and cov["neg_coverage"] >= min_indicator_coverage  # neg-class survival fraction
+            and cov["neg_coverage"] >= min_neg_survival  # neg-class survival fraction
             and cov["n_pos_survive"] >= min_effective_npos
             and cov["n_countries_survive"] >= min_survive_countries)
 
@@ -539,7 +543,12 @@ def fit_predict_loco(
         n_neg = int((y_train == 0).sum())
         spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
 
-        # Replace NaN with 0
+        # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
+        # POST-row-selection numeric stabilization for rare non-finite values produced
+        # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
+        # NOT imputation of missing indicator windows — rows lacking a selected
+        # indicator's window are already DROPPED in build_X_y (the coverage gate, not
+        # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
         X_train = np.where(np.isfinite(X_train), X_train, 0.0)
         X_test = np.where(np.isfinite(X_test), X_test, 0.0)
 
@@ -883,7 +892,7 @@ def greedy_outer_loop(
     min_pos_survival: float = MIN_POS_SURVIVAL,
     min_effective_npos: int = MIN_EFFECTIVE_NPOS,
     min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
-    min_indicator_coverage: float = MIN_INDICATOR_COVERAGE,
+    min_neg_survival: float = MIN_NEG_SURVIVAL,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -941,7 +950,7 @@ def greedy_outer_loop(
                     "n_countries_survive": int(len({str(x) for x in c})),
                 }
                 if not coverage_gate_ok(cov, min_pos_survival, min_effective_npos,
-                                        min_survive_countries, min_indicator_coverage):
+                                        min_survive_countries, min_neg_survival):
                     continue
                 res = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=seed)
                 auc = res["global_auc"]
@@ -1637,7 +1646,7 @@ def _main(argv: list[str] | None = None) -> int:
                 "min_pos_survival": MIN_POS_SURVIVAL,
                 "min_effective_npos": MIN_EFFECTIVE_NPOS,
                 "min_survive_countries": MIN_SURVIVE_COUNTRIES,
-                "min_indicator_coverage": MIN_INDICATOR_COVERAGE,
+                "min_neg_survival": MIN_NEG_SURVIVAL,
             },
             "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false → COVERAGE_FAIL verdict; never graded on a truncated subsample.",
         },
@@ -1668,7 +1677,10 @@ def _main(argv: list[str] | None = None) -> int:
             "ci95_lo": auc_ci["ci95_lo"],
             "chance_floor": CHANCE_FLOOR,
             "chance_baseline_pass": bool(chance_pass),
-            "note": "MR-14-A2 (2026-05-25). chance_baseline_pass=false → CHANCE_FAIL verdict; the global LOCO CI straddles a coin flip.",
+            "bootstrap_seed": args.seed,  # RPM-2: record seed so a borderline CI is reproducible
+            "bootstrap_B": BCA_BOOTSTRAP_B,
+            "scope": "global_loco_only",  # RPM-1: per-cohort CI does not trigger CHANCE_FAIL
+            "note": "MR-14-A2 (2026-05-25). chance_baseline_pass=false → CHANCE_FAIL verdict; the global LOCO CI straddles a coin flip. Global CI only (RPM-1).",
         },
         "temporal_confound_auc": (None if (isinstance(confound_auc, float) and confound_auc != confound_auc) else round(confound_auc, 4)),
         "era_stratified_loco": era_loco,

@@ -121,6 +121,21 @@ def test_chance_floor_is_one_half():
     assert drv.CHANCE_FLOOR == 0.50
 
 
+def test_borderline_only_meaningful_on_lock(monkeypatch):
+    """PVS-2: the `borderline_lock` annotation (CI lower < floor) is defined ONLY for a
+    LOCK verdict. On a COVERAGE_FAIL / CHANCE_FAIL verdict it must be False even if the
+    CI lower bound happens to sit below the LOCK floor — replicate the driver's guard
+    `borderline = (ci95_lo < floor) if verdict == 'LOCK' else False`."""
+    floor = 0.80
+    ci_lo = 0.40  # below floor AND below chance
+    def borderline_for(verdict):
+        return bool(ci_lo < floor) if verdict == "LOCK" else False
+    assert borderline_for("LOCK") is True
+    assert borderline_for(drv.classify_verdict(True, False, True, True, True)) is False  # CHANCE_FAIL
+    assert borderline_for(drv.classify_verdict(False, False, True, True, True)) is False  # COVERAGE_FAIL
+    assert borderline_for("HARD_FAIL") is False
+
+
 # --- facet 4: era-stratified LOCO -------------------------------------------
 
 def test_era_stratified_reports_pre_post_and_decades():
