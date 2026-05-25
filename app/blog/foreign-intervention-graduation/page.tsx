@@ -184,6 +184,40 @@ export default function ForeignInterventionGraduationPage() {
       </header>
 
       <article className="mx-auto max-w-3xl px-6 py-16">
+        {/* CORRECTION (2026-05-25) — graduation suspended pending re-validation */}
+        <div
+          role="alert"
+          className="mb-10 rounded-lg p-5"
+          style={{
+            backgroundColor: "rgba(230,69,69,0.08)",
+            border: "1px solid rgba(230,69,69,0.4)",
+            borderLeft: "4px solid #E64545",
+          }}
+        >
+          <div
+            className="text-xs tracking-widest uppercase font-semibold mb-2"
+            style={{ color: "#E64545" }}
+          >
+            Correction · 2026-05-25 · Graduation suspended
+          </div>
+          <p
+            className="text-sm leading-relaxed"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            A subsequent audit of our evaluation pipeline found that the LOCO-AUC of
+            0.9147 reported below was computed on only 10 of this recipe&apos;s 174
+            positive events — roughly 94% were silently dropped because several of the
+            selected indicators lack older-year data coverage. On the full historical
+            evidence base the discrimination collapses to ≈0.50, i.e. not yet
+            distinguishable from chance. The graduation is therefore{" "}
+            <strong>suspended pending a corrected re-walk</strong>. The analysis below is
+            retained for transparency but is <strong>superseded</strong> and should not be
+            cited. We are correcting the pipeline (minimum data-coverage and
+            minimum-evidence gates) and will re-validate honestly before any graduation
+            claim is restored. We publish this correction openly because the integrity of
+            the method is the product.
+          </p>
+        </div>
         {/* Eyebrow + title + dek */}
         <div className="mb-8">
           <div
