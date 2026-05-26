@@ -1,0 +1,182 @@
+import type { Metadata } from "next";
+import { getAllRecipes, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import { BOARD_VINTAGE, getBoardRecipes } from "@/lib/te-mock/risk-board-data";
+import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
+import { RecentMovements } from "@/components/risk-board/RecentMovements";
+import { HonestyDisclosure } from "@/components/risk-board/HonestyDisclosure";
+import { RiskBoardFilters } from "@/components/risk-board/RiskBoardFilters";
+
+export const metadata: Metadata = {
+  title: "Live Risk Board (mockup) · QG Intelligence",
+  description:
+    "Present-tense, tier-gated discrimination ranks across the recipe catalog. The honest replacement for the retired Signals page. Local mockup only.",
+  robots: { index: false, follow: false },
+};
+
+export default function RiskBoardPage() {
+  // Pull rows for the board (the curated set: scored + a representative
+  // queued sample) and the full L1 family list for filter chips.
+  const boardRecipes: TrackerRecipe[] = getBoardRecipes();
+
+  // Build L1 family meta from the full recipe list so a filter chip exists
+  // for every family — even if a family has only queued recipes today.
+  const l1Map = new Map<string, { id: string; label: string; color: string }>();
+  for (const r of getAllRecipes()) {
+    if (!l1Map.has(r.l1_id)) {
+      l1Map.set(r.l1_id, { id: r.l1_id, label: r.l1_label, color: r.l1_color });
+    }
+  }
+  const l1Families = Array.from(l1Map.values()).sort((a, b) => a.id.localeCompare(b.id));
+
+  return (
+    <div
+      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "24px" }}>
+        {/* Mockup banner */}
+        <div
+          style={{
+            display: "inline-block",
+            padding: "5px 12px",
+            border: "1px solid var(--qgi-accent)",
+            color: "var(--qgi-accent)",
+            borderRadius: "4px",
+            fontSize: "11px",
+            letterSpacing: "1.5px",
+            marginBottom: "16px",
+            fontFamily: "ui-monospace, monospace",
+          }}
+        >
+          MOCKUP · /risk-board · local only
+        </div>
+
+        {/* Page hero */}
+        <div style={{ marginBottom: "24px" }}>
+          <div
+            style={{
+              color: "var(--qgi-accent)",
+              fontSize: "10px",
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              fontFamily: "ui-monospace, monospace",
+              marginBottom: "8px",
+            }}
+          >
+            Trajectory Engine · Live Risk Board
+          </div>
+          <h1
+            style={{
+              fontSize: "32px",
+              fontWeight: 600,
+              lineHeight: 1.15,
+              margin: "0 0 10px",
+            }}
+          >
+            Which countries currently resemble a validated crisis shape
+          </h1>
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "15px",
+              lineHeight: 1.6,
+              maxWidth: "820px",
+              margin: 0,
+            }}
+          >
+            Present-tense resemblance scores from the Trajectory Engine, ranked across the
+            recipe catalog. Each cell is a country&apos;s discrimination rank on a single
+            recipe&apos;s canonical movement shape — read it as &quot;sits high in the
+            distribution of recipe-shaped countries,&quot; not as a probability or a
+            forecast. Click any cell to open the recipe&apos;s report card. The retired
+            Signals page made a 2027 forward claim; this board never does.
+          </p>
+        </div>
+
+        {/* Honesty disclosure */}
+        <HonestyDisclosure />
+
+        {/* Hero strip — today's top pairs across all recipes */}
+        <RiskBoardHero vintage={BOARD_VINTAGE} />
+
+        {/* Filter shell + grid (client component) */}
+        <div style={{ marginBottom: "8px" }}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              marginBottom: "10px",
+            }}
+          >
+            <div>
+              <div
+                style={{
+                  color: "var(--qgi-accent)",
+                  fontSize: "10px",
+                  letterSpacing: "2.5px",
+                  textTransform: "uppercase",
+                  fontFamily: "ui-monospace, monospace",
+                  marginBottom: "4px",
+                }}
+              >
+                The grid
+              </div>
+              <h2
+                style={{
+                  fontSize: "20px",
+                  fontWeight: 600,
+                  margin: 0,
+                  color: "var(--qgi-text)",
+                }}
+              >
+                Top-10 countries per recipe
+              </h2>
+            </div>
+            <span
+              style={{
+                fontSize: "10px",
+                letterSpacing: "1px",
+                color: "var(--qgi-text-dim)",
+                padding: "4px 8px",
+                background: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "4px",
+                fontFamily: "ui-monospace, monospace",
+              }}
+            >
+              {boardRecipes.length} recipes on board · vintage {BOARD_VINTAGE}
+            </span>
+          </div>
+        </div>
+
+        <RiskBoardFilters recipes={boardRecipes} l1Families={l1Families} />
+
+        {/* Recent movements panel */}
+        <RecentMovements />
+
+        {/* Footer note */}
+        <footer
+          style={{
+            marginTop: "32px",
+            padding: "16px 0",
+            borderTop: "1px solid var(--qgi-border)",
+            fontSize: "11px",
+            color: "var(--qgi-text-dim)",
+            fontFamily: "ui-monospace, monospace",
+            letterSpacing: "0.3px",
+            display: "flex",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: "12px",
+          }}
+        >
+          <span>
+            Vintage stamp: {BOARD_VINTAGE} · re-walk cadence ≥ 4× / yr · queued rows
+            materialise as the N_pos threshold is crossed.
+          </span>
+          <span>Designed by Talia Ben-Ari — Geopolitical Risk Viz</span>
+        </footer>
+      </div>
+    </div>
+  );
+}

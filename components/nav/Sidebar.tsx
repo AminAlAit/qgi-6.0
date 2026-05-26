@@ -178,6 +178,34 @@ const IconBarChart = () => (
   </svg>
 );
 
+/** BEAKER — wide-mouth lab beaker with bubbling liquid: experimental / mockup
+ *  section header. Marks routes that are local-only and not production-bound. */
+const IconBeaker = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    {/* Lip */}
+    <line
+      x1="5"
+      y1="2"
+      x2="11"
+      y2="2"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+    {/* Walls — narrow neck flaring to wider base */}
+    <path
+      d="M6 2v3.5L2.75 12.5a1 1 0 0 0 .9 1.5h8.7a1 1 0 0 0 .9-1.5L10 5.5V2"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
+    {/* Liquid line */}
+    <line x1="3.4" y1="11" x2="12.6" y2="11" stroke="currentColor" strokeWidth="1.25" />
+    {/* Bubble */}
+    <circle cx="6.5" cy="9.5" r="0.6" fill="currentColor" />
+  </svg>
+);
+
 // ─────────────────────────────────────────────────────────────────────────────
 
 // 2026-04-19: "ABOUT" removed from the dashboard sidebar per user — About
@@ -272,6 +300,27 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     href: "/patterns" as Route,
     icon: <IconNetwork />,
     badge: "LIVE",
+  },
+  // 2026-05-26: TE mockup group — local-only preview routes for the
+  // Trajectory-Engine site-architecture target-state. NOT in production
+  // bundle. Stays on `local/te-precedents-mockup` branch until founder
+  // ratifies. Ordered: existing-pages-redesigned first (matching the
+  // production sidebar order — Dashboard → Precedents → Countries →
+  // Patterns), then the 4 brand-new pages from
+  // te-site-architecture-target-state.md §2.
+  {
+    label: "TE Mockup (local)",
+    icon: <IconBeaker />,
+    items: [
+      { label: "Dashboard V4", href: "/dashboard-v4" as Route, badge: "PREVIEW" },
+      { label: "Precedents V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
+      { label: "Countries V4", href: "/countries-v4" as Route, badge: "PREVIEW" },
+      { label: "Patterns V4", href: "/patterns-v4" as Route, badge: "PREVIEW" },
+      { label: "Live Risk Board", href: "/risk-board" as Route, badge: "PREVIEW" },
+      { label: "Compound Risk", href: "/compound-risk" as Route, badge: "PREVIEW" },
+      { label: "Nearest-Analog", href: "/nearest-analog" as Route, badge: "PREVIEW" },
+      { label: "Recipe Tracker", href: "/recipe-tracker" as Route, badge: "PREVIEW" },
+    ],
   },
 ];
 
