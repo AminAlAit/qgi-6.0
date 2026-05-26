@@ -9,7 +9,7 @@ import {
 } from "@/lib/te-mock/recipes";
 import { CapabilitySection } from "./CapabilitySection";
 import { AnatomyBar } from "./AnatomyBar";
-import { StatusChip } from "./StatusChip";
+import { StatusChip, STATUS_META } from "./StatusChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 
 export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
@@ -139,6 +139,35 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
                 </code>{" "}
                 · {mock.indicators.length} indicators · {mock.window}y window
               </p>
+              {demo && (
+                <p
+                  style={{
+                    marginTop: "10px",
+                    marginBottom: 0,
+                    padding: "8px 12px",
+                    border: "1px dashed var(--qgi-accent)",
+                    borderRadius: "4px",
+                    background: "rgba(56,189,248,0.06)",
+                    fontSize: "11.5px",
+                    lineHeight: 1.5,
+                    color: "var(--qgi-text-muted)",
+                    fontFamily: "ui-monospace, monospace",
+                  }}
+                >
+                  <strong style={{ color: "var(--qgi-accent)" }}>Real status:</strong>{" "}
+                  {STATUS_META[recipe.status].label.toLowerCase()} (graduation vacated
+                  2026-05-25 — F-ML-1 sample-truncation leak; prior LOCO-AUC 0.9147
+                  reduced to ≈0.50 on full history). Rendered here as graduated to show
+                  what a populated detail page looks like. Real surface lives on{" "}
+                  <Link
+                    href={"/recipe-tracker" as Route}
+                    style={{ color: "var(--qgi-accent)" }}
+                  >
+                    /recipe-tracker
+                  </Link>
+                  .
+                </p>
+              )}
             </div>
           </div>
         </div>
@@ -354,7 +383,7 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
               </div>
             </div>
           )}
-          {isWalkedFail && (
+          {isWalkedFail && !demo && (
             <div
               style={{
                 padding: "14px",
