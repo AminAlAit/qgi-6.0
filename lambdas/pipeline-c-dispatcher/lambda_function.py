@@ -45,6 +45,10 @@ def run_athena_query(query_string, workgroup, db_name, output_location, expects_
                 error_message = stats['QueryExecution']['Status'].get('StateChangeReason', 'Unknown error')
                 raise Exception(f"Query {query_execution_id} failed: {error_message}")
         if context is not None and context.get_remaining_time_in_millis() < 30_000:
+            try:
+                athena_client.stop_query_execution(QueryExecutionId=query_execution_id)
+            except Exception:  # noqa: BLE001 — best-effort cancel; never mask the timeout
+                logger.warning("Could not stop runaway query %s on budget abort", query_execution_id)
             raise TimeoutError(
                 f"Aborting Athena poll for {query_execution_id}: <30s Lambda budget left."
             )
