@@ -23,8 +23,13 @@ def check_partition_exists(bucket, prefix, country_id):
     response = s3_client.list_objects_v2(Bucket=bucket, Prefix=partition_prefix, MaxKeys=1)
     return 'Contents' in response
 
-def run_athena_query(query_string, workgroup, db_name, output_location):
-    """Executes a query and waits for it to succeed."""
+def run_athena_query(query_string, workgroup, db_name, output_location, context=None):
+    """Executes a query and waits for it to succeed.
+
+    #919: if a Lambda `context` is passed, the poll loop aborts (TimeoutError) once
+    <30s of Lambda budget remains, rather than being killed mid-poll. A hard kill
+    leaves the query running (still billing), the SQS message undeleted (→ retry),
+    and — if the in-flight INSERT has not committed — risks a DUPLICATE INSERT."""
     logger.info(f"Executing query: \n{query_string}")
     result_output_location = f"{output_location.rstrip('/')}/worker_query_results/{uuid.uuid4()}"
     
@@ -46,15 +51,20 @@ def run_athena_query(query_string, workgroup, db_name, output_location):
             else:
                 error_message = stats['QueryExecution']['Status'].get('StateChangeReason', 'Unknown error')
                 raise Exception(f"Query {query_execution_id} failed: {error_message}")
+        if context is not None and context.get_remaining_time_in_millis() < 30_000:
+            raise TimeoutError(
+                f"Aborting Athena poll for {query_execution_id}: <30s Lambda budget left. "
+                "Query left running; SQS message not deleted (will retry)."
+            )
         time.sleep(5)
 
-def add_partition_manually(table_name, partition_col, partition_val, s3_bucket, s3_prefix, workgroup, db_name, output_location):
+def add_partition_manually(table_name, partition_col, partition_val, s3_bucket, s3_prefix, workgroup, db_name, output_location, context=None):
     """Runs ALTER TABLE ADD PARTITION to surgically add a single missing partition."""
     partition_s3_location = f"s3://{s3_bucket}/{s3_prefix.rstrip('/')}/{partition_col}={partition_val}/"
     # Use IF NOT EXISTS to avoid errors if the partition was created despite the error
     add_partition_query = f"ALTER TABLE {db_name}.{table_name} ADD IF NOT EXISTS PARTITION ({partition_col}='{partition_val}') LOCATION '{partition_s3_location}'"
     logger.info(f"Running targeted ALTER TABLE command: {add_partition_query}")
-    run_athena_query(add_partition_query, workgroup, db_name, output_location)
+    run_athena_query(add_partition_query, workgroup, db_name, output_location, context=context)
 
 
 def _increment_completion(table_name, run_id):
@@ -173,7 +183,7 @@ def lambda_handler(event, context):
                     country_a_id
                 FROM patterns_aggregated
                 """
-            run_athena_query(insert_patterns_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
+            run_athena_query(insert_patterns_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, context=context)
             
             logger.info(f"Successfully processed country ID {country_id_str}. Deleting message.")
             sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
@@ -186,9 +196,9 @@ def lambda_handler(event, context):
                     logger.info(f"Orphaned S3 data found for country ID {country_id_str}. Attempting self-healing.")
                     try:
                         add_partition_manually(
-                            PATTERNS_TABLE_NAME, "country_a_id", country_id_str, 
-                            S3_BUCKET, PATTERNS_S3_PREFIX, 
-                            ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION
+                            PATTERNS_TABLE_NAME, "country_a_id", country_id_str,
+                            S3_BUCKET, PATTERNS_S3_PREFIX,
+                            ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, context=context
                         )
                         logger.info(f"Self-healing successful. Partition added. Deleting message for country ID {country_id_str}.")
                         sqs_client.delete_message(QueueUrl=SQS_QUEUE_URL, ReceiptHandle=receipt_handle)
