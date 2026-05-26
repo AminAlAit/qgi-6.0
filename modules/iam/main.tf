@@ -205,13 +205,17 @@ resource "aws_iam_role_policy" "lambda_execution" {
           var.pipeline_a_counter_table_arn,
         ]
       },
-      # Athena
+      # Athena — scoped to the pipeline workgroup (#915). All six query actions
+      # authorize against the workgroup resource, and every pipeline Lambda runs
+      # in QGI-Lambda-Workgroup (per CLAUDE.md), so scoping here closes the
+      # default-workgroup / unbounded-output vector behind the $139 cost incident
+      # without affecting any pipeline query.
       {
-        Effect = "Allow"
-        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        Effect   = "Allow"
+        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
           "athena:GetQueryResults", "athena:StopQueryExecution",
         "athena:ListQueryExecutions", "athena:GetWorkGroup"]
-        Resource = "*"
+        Resource = "arn:aws:athena:${var.region}:${var.aws_account_id}:workgroup/QGI-Lambda-Workgroup"
       },
       # Glue — qgi_data database
       {
@@ -496,13 +500,18 @@ resource "aws_iam_role_policy" "cross_account_ops" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      # Step Functions — start and observe executions
+      # Step Functions — start and observe executions (#914: scoped to qgi-*
+      # state machines + their executions; the deployer never starts a non-qgi
+      # SFN. Closes the "start any state machine in the account" cost vector.)
       {
         Effect = "Allow"
         Action = ["states:StartExecution", "states:DescribeExecution",
           "states:ListExecutions", "states:GetExecutionHistory",
         "states:StopExecution"]
-        Resource = "*"
+        Resource = [
+          "arn:aws:states:${var.region}:${var.aws_account_id}:stateMachine:qgi-*",
+          "arn:aws:states:${var.region}:${var.aws_account_id}:execution:qgi-*:*",
+        ]
       },
       # Lambda — describe, deploy, and invoke
       {
@@ -519,15 +528,28 @@ resource "aws_iam_role_policy" "cross_account_ops" {
         "logs:GetLogEvents", "logs:FilterLogEvents"]
         Resource = "arn:aws:logs:${var.region}:${var.aws_account_id}:log-group:/aws/*:*"
       },
-      # Batch — observe and manage jobs
+      # Batch — observe + control (#914). Describe*/List* do NOT support
+      # resource-level scoping (must be "*"); Cancel/Terminate act on transient
+      # job IDs. REMOVED batch:UpdateComputeEnvironment + batch:UpdateJobQueue
+      # (those resize compute upward — an infra-mgmt action Terraform performs
+      # with its own creds, not something the ops/deployer role needs).
       {
         Effect = "Allow"
         Action = ["batch:DescribeJobs", "batch:ListJobs",
           "batch:DescribeJobQueues", "batch:DescribeComputeEnvironments",
           "batch:DescribeJobDefinitions", "batch:CancelJob",
-          "batch:TerminateJob", "batch:UpdateComputeEnvironment",
-        "batch:UpdateJobQueue", "batch:SubmitJob"]
+        "batch:TerminateJob"]
         Resource = "*"
+      },
+      # Batch — submit only to qgi-* queues/definitions (#914: was SubmitJob on
+      # "*", i.e. any queue in the account, bypassing the canary gate).
+      {
+        Effect = "Allow"
+        Action = ["batch:SubmitJob"]
+        Resource = [
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job-queue/qgi-*",
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job-definition/qgi-*",
+        ]
       },
       # Athena — run queries (MSCK REPAIR, recipe engine debugging)
       {
