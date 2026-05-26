@@ -54,7 +54,7 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
                 href={"/precedents-v2" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
-                ← Precedents
+                ← Recipes
               </Link>
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span style={{ color: recipe.l1_color }}>
@@ -606,7 +606,7 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
         <CapabilitySection
           id="cap-12"
           num={12}
-          label="Recent additions"
+          label="Precedents"
           tier="results"
           gated={!showResults}
           gateMessage="Recent-event log gated on first walk."
