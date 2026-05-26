@@ -3,9 +3,10 @@ import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/r
 import { RecipeCard } from "@/components/precedents-v2/RecipeCard";
 
 export const metadata: Metadata = {
-  title: "Precedents (v2 mockup) · QG Intelligence",
+  // 2026-05-27 vocabulary swap: "Precedents" page → "Recipes" (Charter §3-aligned).
+  title: "Recipes (v4 mockup) · QG Intelligence",
   description:
-    "TE-era precedents gallery mockup. All 71 recipes grouped by L1 family with status-aware cards. Local-only; not for production.",
+    "TE-era recipes gallery mockup. All 71 recipes grouped by L1 family with status-aware cards. Local-only; not for production.",
   robots: { index: false, follow: false },
 };
 
@@ -60,7 +61,7 @@ export default function PrecedentsGalleryPage() {
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          MOCKUP · precedents-v2 · local only
+          MOCKUP · Recipes V4 · local only
         </div>
 
         {/* Hero */}
@@ -75,7 +76,7 @@ export default function PrecedentsGalleryPage() {
               marginBottom: "8px",
             }}
           >
-            Precedents
+            Recipes
           </div>
           <h1
             style={{

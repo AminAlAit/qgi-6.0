@@ -195,7 +195,7 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
   },
   {
     surface_id: "precedents-v2",
-    name: "Precedents",
+    name: "Recipes",
     href: "/precedents-v2",
     description:
       "Per-recipe report card — the 15-capability anatomy: indicators, window, sample sufficiency, discrimination, calibration disclosure.",

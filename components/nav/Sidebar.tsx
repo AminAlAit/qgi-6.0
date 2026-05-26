@@ -178,6 +178,47 @@ const IconBarChart = () => (
   </svg>
 );
 
+/** CHEF'S HAT — Sofia V4.1 pick for "Recipes" (Charter §3 methodology unit).
+ *  Reads as recipe-author in one glance; doesn't compete with L1-family
+ *  crisis iconography on the recipe cards. Replaces the prior clock-with-
+ *  CCW-arrow ("look back in history") which mis-cued when the page label
+ *  swapped from "Precedents" → "Recipes". 16×16 hat outline. */
+const IconChefHat = () => (
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+    {/* Hat crown — three lobes (left/center/right pillows) */}
+    <path
+      d="M3.25 7.5a2 2 0 1 1 1.2-3.6 2.5 2.5 0 0 1 4.6-1.4 2.5 2.5 0 0 1 4.6 1.4 2 2 0 1 1 1.2 3.6"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    {/* Hat band */}
+    <line
+      x1="3.25"
+      y1="7.5"
+      x2="13.05"
+      y2="7.5"
+      stroke="currentColor"
+      strokeWidth="1.25"
+    />
+    {/* Pleats — three short verticals on the band */}
+    <line x1="6" y1="8" x2="6" y2="10.5" stroke="currentColor" strokeWidth="1" />
+    <line x1="8.15" y1="8" x2="8.15" y2="10.5" stroke="currentColor" strokeWidth="1" />
+    <line x1="10.3" y1="8" x2="10.3" y2="10.5" stroke="currentColor" strokeWidth="1" />
+    {/* Brim */}
+    <rect
+      x="3"
+      y="10.5"
+      width="10.3"
+      height="2.25"
+      rx="0.5"
+      stroke="currentColor"
+      strokeWidth="1.25"
+    />
+  </svg>
+);
+
 /** BEAKER — wide-mouth lab beaker with bubbling liquid: experimental / mockup
  *  section header. Marks routes that are local-only and not production-bound. */
 const IconBeaker = () => (
@@ -274,10 +315,14 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     badge: "LIVE",
   },
   {
+    // 2026-05-27 rename: "Precedents" → "Recipes" (Charter §3-aligned).
+    // Unanimous SWAP from design council (Sofia + Talia + Daniyar).
+    // Sofia V4.1 design pass: icon swap to chef's hat — reads as
+    // recipe-author + doesn't compete with L1 crisis iconography.
     type: "standalone",
-    label: "Precedents",
+    label: "Recipes",
     href: "/precedents" as Route,
-    icon: <IconHistory />,
+    icon: <IconChefHat />,
     badge: "LIVE",
   },
   {
@@ -313,7 +358,8 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <IconBeaker />,
     items: [
       { label: "Dashboard V4", href: "/dashboard-v4" as Route, badge: "PREVIEW" },
-      { label: "Precedents V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
+      { label: "Recipes V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
+      { label: "Recipes V4.1", href: "/precedents-v4.1" as Route, badge: "PREVIEW" },
       { label: "Countries V4", href: "/countries-v4" as Route, badge: "PREVIEW" },
       { label: "Patterns V4", href: "/patterns-v4" as Route, badge: "PREVIEW" },
       { label: "Live Risk Board", href: "/risk-board" as Route, badge: "PREVIEW" },
