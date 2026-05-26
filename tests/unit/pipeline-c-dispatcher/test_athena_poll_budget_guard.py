@@ -24,8 +24,6 @@ def _load_module():
     return mod
 
 
-MODULE = _load_module()
-
 
 def _running():
     return {"QueryExecution": {"Status": {"State": "RUNNING"}}}

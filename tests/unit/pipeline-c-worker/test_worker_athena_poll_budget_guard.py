@@ -56,3 +56,13 @@ def test_worker_poll_ok_when_budget_ample(monkeypatch):
     ctx = MagicMock()
     ctx.get_remaining_time_in_millis.return_value = 600_000
     assert m.run_athena_query("SELECT 1", "wg", "db", "s3://x/", context=ctx) is None
+
+
+def test_worker_no_context_keeps_legacy_wait(monkeypatch):
+    """No context → no budget guard; waits to completion (back-compat). FU2."""
+    m = _load_module()
+    m.athena_client = MagicMock()
+    m.athena_client.start_query_execution.return_value = {"QueryExecutionId": "q1"}
+    m.athena_client.get_query_execution.side_effect = [_running(), _running(), _succeeded()]
+    monkeypatch.setattr(m.time, "sleep", lambda *_: None)
+    assert m.run_athena_query("SELECT 1", "wg", "db", "s3://x/") is None  # no TimeoutError
