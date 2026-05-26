@@ -13,8 +13,12 @@ athena_client = boto3.client('athena')
 s3_client = boto3.client('s3')
 sqs_client = boto3.client('sqs')
 
-def run_athena_query(query_string, workgroup, db_name, output_location, expects_result_path=False):
-    """Executes a query, waits for it to succeed, and optionally returns the result path."""
+def run_athena_query(query_string, workgroup, db_name, output_location, expects_result_path=False, context=None):
+    """Executes a query, waits for it to succeed, and optionally returns the result path.
+
+    #919: when a Lambda `context` is passed, the poll loop aborts (TimeoutError) once
+    <30s of budget remains rather than being killed mid-poll (which would leave the
+    query running + the dispatcher in a broken intermediate state)."""
     logger.info(f"Executing query: \n{query_string}")
     result_output_location = f"{output_location.rstrip('/')}/dispatcher_query_results/{uuid.uuid4()}"
     
@@ -40,6 +44,14 @@ def run_athena_query(query_string, workgroup, db_name, output_location, expects_
             else:
                 error_message = stats['QueryExecution']['Status'].get('StateChangeReason', 'Unknown error')
                 raise Exception(f"Query {query_execution_id} failed: {error_message}")
+        if context is not None and context.get_remaining_time_in_millis() < 30_000:
+            try:
+                athena_client.stop_query_execution(QueryExecutionId=query_execution_id)
+            except Exception:  # noqa: BLE001 — best-effort cancel; never mask the timeout
+                logger.warning("Could not stop runaway query %s on budget abort", query_execution_id)
+            raise TimeoutError(
+                f"Aborting Athena poll for {query_execution_id}: <30s Lambda budget left."
+            )
         time.sleep(5)
 
 def clean_s3_prefix(bucket, prefix):
@@ -74,7 +86,7 @@ def lambda_handler(event, context):
         #    Dispatching all countries caused 200+ empty INSERTs and the DynamoDB write
         #    burst that triggered the counter bug fixed in #108.
         countries_query = f"SELECT DISTINCT country_a_id FROM {DB_NAME}.{SCDIS_TABLE}"
-        result_path = run_athena_query(countries_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, expects_result_path=True)
+        result_path = run_athena_query(countries_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, expects_result_path=True, context=context)
         result_key = result_path.replace(f"s3://{S3_BUCKET}/", "")
         obj = s3_client.get_object(Bucket=S3_BUCKET, Key=result_key)
         body = obj['Body'].read().decode('utf-8')
@@ -100,7 +112,7 @@ def lambda_handler(event, context):
 
         logger.info("Cleaning output locations and dropping old tables...")
         clean_s3_prefix(S3_BUCKET, PATTERNS_S3_LOCATION.replace(f"s3://{S3_BUCKET}/", ""))
-        run_athena_query(f"DROP TABLE IF EXISTS `{DB_NAME}`.`{PATTERNS_TABLE_NAME}`;", ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
+        run_athena_query(f"DROP TABLE IF EXISTS `{DB_NAME}`.`{PATTERNS_TABLE_NAME}`;", ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, context=context)
 
         # Create the main patterns table (WITH pattern_id, WITHOUT indicator_ids)
         logger.info(f"Creating shell table: {PATTERNS_TABLE_NAME}")
@@ -135,7 +147,7 @@ def lambda_handler(event, context):
         STORED AS PARQUET
         LOCATION '{PATTERNS_S3_LOCATION}'
         """
-        run_athena_query(create_patterns_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION)
+        run_athena_query(create_patterns_query, ATHENA_WORKGROUP, DB_NAME, S3_OUTPUT_LOCATION, context=context)
 
         logger.info("Waiting for 10 seconds for Glue Catalog propagation...")
         time.sleep(10)
