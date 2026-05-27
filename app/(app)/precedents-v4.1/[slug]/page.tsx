@@ -35,6 +35,7 @@ import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistri
 import { PrecedentsTimelinePanel } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
 import { PatternAlignmentPanel } from "@/components/precedents-v4-1/PatternAlignmentPanel";
 import { IndicatorSensitivityPanel } from "@/components/precedents-v4-1/IndicatorSensitivityPanel";
+import { ExpandableShell } from "@/components/te-v4-shared/ExpandableShell";
 
 interface Params {
   params: Promise<{ slug: string }>;
@@ -185,38 +186,46 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         countries={extras.countriesBottom}
         showResults={showResults}
       />
-      <ScoreDistributionPanel
-        familyColor={familyColor}
-        histogram={extras.distribution.histogram}
-        median={extras.distribution.median}
-        p90={extras.distribution.p90}
-        p99={extras.distribution.p99}
-        max={extras.distribution.max}
-      />
+      <ExpandableShell familyColor={familyColor} label="Score distribution">
+        <ScoreDistributionPanel
+          familyColor={familyColor}
+          histogram={extras.distribution.histogram}
+          median={extras.distribution.median}
+          p90={extras.distribution.p90}
+          p99={extras.distribution.p99}
+          max={extras.distribution.max}
+        />
+      </ExpandableShell>
       <CalibrationPanel familyColor={familyColor} showCalibrationData={false} />
 
       {/* ─── Trajectory + corpus + sensitivity ─────────────────────────── */}
-      <PrecedentsTimelinePanel
-        familyColor={familyColor}
-        events={corpusEvents}
-        totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
-      />
-      <PatternAlignmentPanel
-        familyColor={familyColor}
-        recipeId={recipe.recipe_id}
-        windowYears={mock.window}
-        indicators={enrichedIndicators}
-        shapeData={shapeData}
-      />
-      <IndicatorSensitivityPanel
-        familyColor={familyColor}
-        indicators={enrichedIndicators.map((i) => ({
-          code: i.code,
-          name: i.name,
-          provider: i.provider,
-          aucDrop: i.aucDrop,
-        }))}
-      />
+      <ExpandableShell familyColor={familyColor} label="Precedents timeline">
+        <PrecedentsTimelinePanel
+          familyColor={familyColor}
+          events={corpusEvents}
+          totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
+        />
+      </ExpandableShell>
+      <ExpandableShell familyColor={familyColor} label="Pattern alignment">
+        <PatternAlignmentPanel
+          familyColor={familyColor}
+          recipeId={recipe.recipe_id}
+          windowYears={mock.window}
+          indicators={enrichedIndicators}
+          shapeData={shapeData}
+        />
+      </ExpandableShell>
+      <ExpandableShell familyColor={familyColor} label="Indicator sensitivity">
+        <IndicatorSensitivityPanel
+          familyColor={familyColor}
+          indicators={enrichedIndicators.map((i) => ({
+            code: i.code,
+            name: i.name,
+            provider: i.provider,
+            aucDrop: i.aucDrop,
+          }))}
+        />
+      </ExpandableShell>
 
       <PatternCrossLinkFooter familyColor={familyColor} recipeId={recipe.recipe_id} />
     </PageLayout>
