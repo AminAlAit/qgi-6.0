@@ -2436,7 +2436,7 @@ const ANALOG_FALLBACKS: Record<string, AnalogTuple[]> = {
       2001,
       68.9,
       "currency_crisis",
-      "Argentina defaulted on US$100bn of sovereign debt in December 2001 — the largest default in history at the time. The peso lost ~75% of its value within months; the country cycled through five presidents in two weeks.",
+      "Argentina defaulted on US$100bn of sovereign debt in December 2001, the largest default in history at the time. The peso lost ~75% of its value within months; the country cycled through five presidents in two weeks.",
     ],
     [
       "Greece",

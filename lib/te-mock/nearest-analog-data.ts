@@ -146,7 +146,7 @@ const ENTRIES: CurrentCountryEntry[] = [
         secondary_recipe_ids: ["currency_crisis", "banking_and_financial_crisis"],
         indicator_trajectory: [65, 62, 59, 55, 51, 47, 44, 40, 37, 34, 31, 28],
         what_happened_next:
-          "Argentina defaulted on US$100 billion of sovereign debt in December 2001 — the largest default in history at the time — after the convertibility regime that pegged the peso to the dollar collapsed. The peso lost roughly 75% of its value within months, poverty hit 57.5% in October 2002, and the country cycled through five presidents in two weeks. Recovery began in 2003 under Néstor Kirchner with capital controls and a 2005 debt restructuring.",
+          "Argentina defaulted on US$100 billion of sovereign debt in December 2001, the largest default in history at the time, after the convertibility regime that pegged the peso to the dollar collapsed. The peso lost roughly 75% of its value within months, poverty hit 57.5% in October 2002, and the country cycled through five presidents in two weeks. Recovery began in 2003 under Néstor Kirchner with capital controls and a 2005 debt restructuring.",
       },
       {
         country: "Greece",
@@ -166,7 +166,7 @@ const ENTRIES: CurrentCountryEntry[] = [
         secondary_recipe_ids: ["currency_crisis", "political_repression"],
         indicator_trajectory: [58, 55, 52, 48, 45, 41, 38, 35, 32, 29, 26, 23],
         what_happened_next:
-          "Venezuela entered a hyperinflationary depression after the 2014 oil-price collapse — cumulative inflation exceeded 10,000,000% by 2019. An estimated 7.7 million Venezuelans emigrated between 2015 and 2024 in the largest displacement in modern Latin American history. Parallel-government claims by Juan Guaidó (2019) and US/EU sanctions framed an extended political-economic standoff with Nicolás Maduro's government.",
+          "Venezuela entered a hyperinflationary depression after the 2014 oil-price collapse; cumulative inflation exceeded 10,000,000% by 2019. An estimated 7.7 million Venezuelans emigrated between 2015 and 2024 in the largest displacement in modern Latin American history. Parallel-government claims by Juan Guaidó (2019) and US/EU sanctions framed an extended political-economic standoff with Nicolás Maduro's government.",
       },
     ],
     contributions: [
@@ -361,7 +361,7 @@ const ENTRIES: CurrentCountryEntry[] = [
         secondary_recipe_ids: ["foreign_intervention", "political_repression"],
         indicator_trajectory: [32, 28, 25, 22, 20, 18, 16, 15, 14, 13, 12, 11],
         what_happened_next:
-          "The collapse of Soviet trade subsidies after 1991 triggered Cuba's 'Special Period in Time of Peace' — GDP contracted ~35% by 1993, daily caloric intake fell from 2,908 to 1,863 kcal, and the balsero (rafter) exodus reached its 1994 peak. Limited liberalisation (legalising the US dollar 1993–2004, opening to tourism, paladar restaurants) stabilised the economy without political opening.",
+          "The collapse of Soviet trade subsidies after 1991 triggered Cuba's 'Special Period in Time of Peace': GDP contracted ~35% by 1993, daily caloric intake fell from 2,908 to 1,863 kcal, and the balsero (rafter) exodus reached its 1994 peak. Limited liberalisation (legalising the US dollar 1993–2004, opening to tourism, paladar restaurants) stabilised the economy without political opening.",
       },
       {
         country: "Lebanon",
@@ -508,7 +508,7 @@ const ENTRIES: CurrentCountryEntry[] = [
         indicator_trajectory: [38, 36, 34, 31, 29, 27, 25, 23, 22, 20, 19, 18],
         weak_analog: true,
         what_happened_next:
-          "Protest in Daraa in March 2011 — triggered by the detention and torture of teenagers who had written anti-regime graffiti — escalated into a civil war that killed an estimated 580,000 people. Foreign intervention (Russia 2015, US-led coalition 2014, Türkiye 2016, Iran throughout) and the rise and territorial defeat of ISIS shaped the conflict's middle years. The Assad government fell to a HTS-led offensive in December 2024.",
+          "Protest in Daraa in March 2011, triggered by the detention and torture of teenagers who had written anti-regime graffiti, escalated into a civil war that killed an estimated 580,000 people. Foreign intervention (Russia 2015, US-led coalition 2014, Türkiye 2016, Iran throughout) and the rise and territorial defeat of ISIS shaped the conflict's middle years. The Assad government fell to a HTS-led offensive in December 2024.",
       },
     ],
     contributions: [
