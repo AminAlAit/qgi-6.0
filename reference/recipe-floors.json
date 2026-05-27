@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "policy": "fleet-floor-annex.md (5-Opus-Majles + founder absolute floor 0.70, 2026-05-25)",
+  "delta_lift": 0.03,
+  "abs_floor": 0.70,
+  "cohort_gap": 0.06,
+  "note": "Per-recipe pre-registered LOCK floors (T20-R2). The fleet entrypoint reads this from S3 (reference/recipe-floors.json) and judges each recipe against its own floor; a recipe absent here is SKIPPED in fleet mode. cohort_loco_floor = lock_floor - 0.06 (proportional-gap, civil_war-anchored). Wave-1 (path a/b) below; greenfield (path c) rows append from compute_naive_baselines.",
+  "floors": {
+    "bilateral_treaty":      {"lock_floor": 0.70,   "cohort_loco_floor": 0.64, "path": "a/b", "basis_loco": 0.6023, "source": "bilateral_treaty-d2-walk.md", "wave": 1},
+    "government_formation":  {"lock_floor": 0.70,   "cohort_loco_floor": 0.64, "path": "a/b", "basis_loco": 0.5755, "source": "government_formation-d2-walk.md", "wave": 1},
+    "constitutional_change": {"lock_floor": 0.7191, "cohort_loco_floor": 0.6591, "path": "a/b", "basis_loco": 0.6891, "source": "constitutional_change-d2-walk.md", "wave": 1},
+    "political_repression":  {"lock_floor": 0.70,   "cohort_loco_floor": 0.64, "path": "a/b", "basis_loco": 0.5905, "source": "political_repression-d2-walk.md", "wave": 1},
+    "mass_protest":          {"lock_floor": 0.70,   "cohort_loco_floor": 0.64, "path": "a/b", "basis_loco": 0.4449, "source": "mass_protest-d2-walk.md", "wave": 1}
+  }
+}
