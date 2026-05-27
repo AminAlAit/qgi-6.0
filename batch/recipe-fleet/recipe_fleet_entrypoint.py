@@ -78,6 +78,7 @@ from typing import Any
 
 import boto3
 import psutil
+from botocore.exceptions import ClientError
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -111,6 +112,11 @@ COHORT_SIDECAR_S3_KEY = os.environ.get(
     "COHORT_SIDECAR_S3_KEY", "reference/cohort-assignments.json"
 )
 
+# T20-R2: per-recipe pre-registered LOCK floors (recipe_id -> {lock_floor,
+# cohort_loco_floor}). In fleet mode a recipe with no floor here is SKIPPED
+# (never walked against the walk's civil_war-anchored default). See fleet-floor-annex.md.
+RECIPE_FLOORS_S3_KEY = os.environ.get("RECIPE_FLOORS_S3_KEY", "reference/recipe-floors.json")
+
 # Scoring frontier (D2). The hardcoded 2021 is GONE — leaving it made the LOCF
 # nowcast fill inert on production data (Opus delivery-review finding #111). By
 # default the entrypoint AUTO-resolves the frontier per recipe from observed panel
@@ -131,8 +137,19 @@ SCRIPTS_DIR = APP_DIR / "scripts"
 SHAPE_INPUTS_DIR = APP_DIR / "data" / "shape_inputs_v2"
 
 
+_S3_CLIENT: Any = None
+
+
 def _s3() -> Any:
-    return boto3.client("s3", region_name=os.environ.get("AWS_REGION", "eu-central-1"))
+    # Module-level singleton (#918): a fresh boto3.client per call wastes session +
+    # credential-resolution work on every S3 op, and constructing one inside an
+    # `except` clause (the old s3_object_exists) is what made the resume-guard fragile.
+    # NB: the singleton is never reset on credential rotation — fine for a short-lived
+    # Batch container; revisit if this entrypoint is ever run as a long-lived daemon.
+    global _S3_CLIENT
+    if _S3_CLIENT is None:
+        _S3_CLIENT = boto3.client("s3", region_name=os.environ.get("AWS_REGION", "eu-central-1"))
+    return _S3_CLIENT
 
 
 # ---------------------------------------------------------------------------
@@ -140,13 +157,51 @@ def _s3() -> Any:
 # ---------------------------------------------------------------------------
 
 def s3_object_exists(bucket: str, key: str) -> bool:
+    """True iff the object exists. A 404 → False; ANY other error (403/throttle/
+    network) is RAISED, never swallowed (#918). The prior code caught a dynamically-
+    constructed `_s3().exceptions.ClientError` and also had a bare `except Exception:
+    return False`, so a permissions error read as 'object absent' — silently making
+    the resume-guard re-run or mis-skip completed recipes on the fleet path."""
     try:
         _s3().head_object(Bucket=bucket, Key=key)
         return True
-    except _s3().exceptions.ClientError:
-        return False
-    except Exception:  # noqa: BLE001
-        return False
+    except ClientError as exc:
+        code = str(exc.response.get("Error", {}).get("Code", ""))
+        if code in ("404", "NoSuchKey", "NotFound"):
+            return False
+        raise  # 403 / throttle / etc. must surface — not be misread as "absent"
+
+
+def resolve_canary_entry(job_summary: list[dict], canary_recipe: str) -> tuple[Any, str, bool]:
+    """Find the canary recipe's OWN summary entry by id (#920) and decide whether it
+    actually walked. Returns (entry|None, status, walked). `walked` is False for a
+    missing entry or any 'skipped*' status — a skipped canary never ran a walk, so the
+    SFN gate must not auto-approve the fan-out on it. Pure + unit-testable."""
+    entry = next((e for e in job_summary if e.get("recipe_id") == canary_recipe), None)
+    status = entry.get("status") if entry else "unknown"
+    walked = bool(entry) and not str(status).startswith("skipped")
+    return entry, status, walked
+
+
+def _canary_message(walked: bool, status: str) -> str:
+    """Human-facing canary-result message (#920 + review FU-1). Three honest cases:
+    not-walked (skipped/missing) → DO NOT APPROVE; walked-but-failed (error/timeout)
+    → review, do not approve on a failed walk; clean walk → review + approve."""
+    if not walked:
+        return (
+            "DO NOT APPROVE: the canary recipe was SKIPPED (already in S3 or no floor "
+            "on file) — no walk actually ran, so this result proves nothing about the "
+            "fleet. Re-run the canary on a recipe that walks."
+        )
+    if str(status) in ("error", "timeout"):
+        return (
+            f"DO NOT APPROVE on a failed canary: the walk ran but ended status={status}. "
+            "Investigate the failure before approving the fan-out."
+        )
+    return (
+        "Canary complete. Review this file then use the SFN approval token from the "
+        "qgi-recipe-fleet-approval SQS queue to call send-task-success and approve the fan-out."
+    )
 
 
 def s3_sync_prefix_down(bucket: str, prefix: str, local_dir: Path) -> int:
@@ -342,6 +397,8 @@ def run_walk(
     local_data_dir: Path,
     local_output_dir: Path,
     cohort_sidecar_path: Path,
+    lock_floor: float | None = None,
+    cohort_loco_floor: float | None = None,
 ) -> dict:
     """Invoke run_f_ml_1_poc.py as a subprocess.
 
@@ -371,6 +428,14 @@ def run_walk(
         "--positives-csv", str(positives_csv),
         "--cohort-sidecar", str(cohort_sidecar_path),
     ]
+    # T20-R2: each recipe is judged against its pre-registered floor, NOT the
+    # walk's civil_war-anchored default. The floor is resolved per recipe from
+    # recipe-floors.json (see main); a recipe with no floor on file is SKIPPED
+    # upstream, never run against the default.
+    if lock_floor is not None:
+        cmd += ["--lock-floor", str(lock_floor)]
+    if cohort_loco_floor is not None:
+        cmd += ["--cohort-loco-floor", str(cohort_loco_floor)]
 
     LOG.info("Launching walk: %s", " ".join(cmd))
     t0 = time.monotonic()
@@ -809,6 +874,25 @@ def main() -> None:
             )
             sys.exit(1)
 
+        # -- Per-recipe floors (T20-R2). Non-fatal if absent: fleet recipes then
+        #    skip individually (never walked against a default floor); canary mode
+        #    falls back to the walk's default floor. --
+        local_floors = tmpdir / "recipe-floors.json"
+        recipe_floors: dict[str, dict] = {}
+        try:
+            s3_download_file(S3_BUCKET, RECIPE_FLOORS_S3_KEY, local_floors)
+            recipe_floors = json.loads(local_floors.read_text(encoding="utf-8")).get("floors", {})
+            LOG.info("Loaded %d per-recipe floors from s3://%s/%s",
+                     len(recipe_floors), S3_BUCKET, RECIPE_FLOORS_S3_KEY)
+        except Exception as exc:  # noqa: BLE001
+            LOG.warning("No recipe-floors.json (s3://%s/%s): %s", S3_BUCKET, RECIPE_FLOORS_S3_KEY, exc)
+        # Review followup: in FLEET mode a missing/empty/malformed floors file must
+        # fail LOUDLY (like the cohort sidecar), not silently skip every recipe.
+        if RUN_MODE == "fleet" and not recipe_floors:
+            LOG.error("FATAL: fleet mode but zero per-recipe floors loaded from s3://%s/%s — "
+                      "refusing to run a no-op fleet (T20-R2).", S3_BUCKET, RECIPE_FLOORS_S3_KEY)
+            sys.exit(1)
+
         # FIX 4 — SFN task-token write REMOVED.
         # The SFN $$.Task.Token only exists at the waitForTaskToken approval
         # state (an SQS sendMessage state), NOT at this Batch job state. Any
@@ -840,6 +924,23 @@ def main() -> None:
                 LOG.info("SKIP %s — greedy-result.json already in S3 (%s)", recipe_id, greedy_result_key)
                 job_summary.append({"recipe_id": recipe_id, "status": "skipped"})
                 continue
+
+            # T20-R2: resolve this recipe's pre-registered floor. In fleet mode a
+            # recipe with no floor on file is SKIPPED — never walked against the default.
+            floor_entry = recipe_floors.get(recipe_id)
+            if floor_entry is None and RUN_MODE == "fleet":
+                LOG.warning("SKIP %s — no floor in recipe-floors.json (T20-R2: no walk "
+                            "against the civil_war-anchored default)", recipe_id)
+                job_summary.append({"recipe_id": recipe_id, "status": "skipped_no_floor"})
+                continue
+            if floor_entry is None:  # canary mode only (fleet already skipped above)
+                LOG.warning("canary mode: %s runs against the walk DEFAULT floor "
+                            "(0.7986/0.68) — T20-R2 inapplicable in canary", recipe_id)
+            else:  # review followup: a partial entry must fail loudly, not fall to a default
+                assert (floor_entry.get("lock_floor") is not None
+                        and floor_entry.get("cohort_loco_floor") is not None), (
+                    f"recipe-floors.json entry for {recipe_id} is missing lock_floor "
+                    f"or cohort_loco_floor — refusing to walk against a partial floor")
 
             LOG.info("=== Processing recipe: %s ===", recipe_id)
             recipe_start = time.monotonic()
@@ -875,6 +976,8 @@ def main() -> None:
                     local_data_dir=local_data_dir,
                     local_output_dir=walk_output_dir,
                     cohort_sidecar_path=local_cohort_sidecar,
+                    lock_floor=(floor_entry or {}).get("lock_floor"),
+                    cohort_loco_floor=(floor_entry or {}).get("cohort_loco_floor"),
                 )
             finally:
                 ckpt_sync.stop()
@@ -959,18 +1062,30 @@ def main() -> None:
         if RUN_MODE == "canary" and recipe_ids:
             canary_recipe = recipe_ids[0]
             canary_result_key = f"{ML_RESULTS_PREFIX}canary-result-{canary_recipe}.json"
+            # Look up the canary recipe's OWN summary entry by id (#920) — never the
+            # positional job_summary[0], which can be a "skipped"/"skipped_no_floor"
+            # entry. A skipped canary never actually ran a walk, so reporting it as a
+            # $0 "success" would let the SFN gate auto-approve the whole fan-out on a
+            # no-op. We surface canary_walked=false + a loud warning so the gate (and
+            # the reviewer) refuse to approve.
+            canary_entry, canary_status, canary_walked = resolve_canary_entry(
+                job_summary, canary_recipe
+            )
+            if not canary_walked:
+                LOG.warning("CANARY DID NOT WALK: %s status=%s — fan-out MUST NOT be "
+                            "approved on this result; re-run the canary on a recipe that "
+                            "will actually walk.", canary_recipe, canary_status)
             s3_upload_json(
                 {
                     "canary_recipe_id": canary_recipe,
-                    "status": job_summary[0].get("status") if job_summary else "unknown",
-                    "walk_wall_clock_seconds": job_summary[0].get("walk_wall_clock_seconds") if job_summary else None,
+                    "status": canary_status,
+                    "canary_walked": canary_walked,
+                    "walk_wall_clock_seconds": (
+                        canary_entry.get("walk_wall_clock_seconds") if canary_entry else None
+                    ),
                     "cpu_utilization_pct_mean_walk": round(cpu_mean, 1),
                     "estimated_cost_usd": round(estimated_cost_usd, 4),
-                    "message": (
-                        "Canary complete. Review this file then use the SFN approval "
-                        "token from the qgi-recipe-fleet-approval SQS queue to call "
-                        "send-task-success and approve the fan-out."
-                    ),
+                    "message": _canary_message(canary_walked, canary_status),
                 },
                 S3_BUCKET,
                 canary_result_key,
