@@ -119,6 +119,28 @@ TOP_N_PREFILTER = 40
 DELTA_STEP = 0.005  # greedy outer-loop stopping
 THIN_RECIPE_CAP = 5  # N_pos < 60 → outer loop cap
 
+# Floor-aware early-abort (FLEET-3, QGI-R&D | 002, 2026-05-27).
+# A walk whose remaining greedy steps cannot reach lock_floor — even under the
+# optimistic assumption that every future step gains the best single-step lift seen
+# so far — is treated as HARD_FAIL-bound; we abort it to stop burning compute on the
+# doomed deep tail (constitutional_change ground 32h+ this way: its per-step lifts
+# stayed above delta_step so the natural halt never fired, yet the floor was already
+# out of reach).
+#
+# HONESTY ON THE BOUND (PR #116 review, 2026-05-27): the optimistic ceiling is a
+# CONSERVATIVE HEURISTIC, **not** a strict mathematical upper bound. With a non-linear
+# model (XGBoost) a future single-step lift CAN exceed observed_max_lift via interaction
+# effects (an indicator weak alone but strong once others are selected). So the abort is
+# outcome-neutral *in the common case* (flat/declining lifts, floor far below the
+# ceiling) but could, in a narrow near-floor case, wrongly abort a recipe an interaction
+# burst would have rescued. Mitigated by: (1) the MIN_STEPS_BEFORE_ABORT grace period;
+# (2) using the all-time MAX lift (full benefit of the doubt); (3) the abort fires
+# hardest where the floor gap is LARGE — exactly where an interaction rescue is least
+# plausible — and is most lenient where the gap is small. The §2.5 classification
+# (amendment-free vs pre-registered vs route-to-INCOMPLETE-not-HARD_FAIL) is referred to
+# a Ji-Hoon/Kwame ruling before this is relied on in the fan-out; see PR #116 / FLEET-3.
+MIN_STEPS_BEFORE_ABORT = 3
+
 # §5.4 window grid
 WINDOW_GRID = [3, 5, 7, 10, 12, 15, 18, 21, 25]
 
@@ -391,6 +413,21 @@ def classify_verdict(coverage_pass: bool, chance_pass: bool, global_pass: bool,
     if global_pass and cohort_loco_pass and not cohort_ece_pass:
         return "MARGINAL_PENDING_BETA_CALIBRATION"
     return "HARD_FAIL"
+
+
+def early_abort_verdict_override(verdict: str, greedy_result: dict[str, Any]) -> str:
+    """A floor-aware early-abort is a COMPUTE-bound halt, not a verdict (PR #116 /
+    Ji-Hoon+Kwame ruling 2026-05-27). Its optimistic ceiling is a conservative HEURISTIC,
+    not a strict upper bound under XGBoost interaction effects — so auto-declaring
+    HARD_FAIL on an abort could flip a would-be-PASS and is therefore NOT §2.5-clean.
+    When the greedy aborted on floor-unreachable we override the verdict to
+    INCOMPLETE_CEILING_BELOW_FLOOR and route the partial walk to human/Majles
+    adjudication (re-run unbounded / accept HARD_FAIL on the evidence / defer). This is
+    verdict-neutral → structurally §2.5-clean; the compute saving is preserved (the walk
+    still halted early), only the label changes. Pure + testable."""
+    if greedy_result.get("early_abort_floor_unreachable"):
+        return "INCOMPLETE_CEILING_BELOW_FLOOR"
+    return verdict
 
 
 def coverage_gate_ok(cov: dict[str, Any],
@@ -893,6 +930,8 @@ def greedy_outer_loop(
     min_effective_npos: int = MIN_EFFECTIVE_NPOS,
     min_survive_countries: int = MIN_SURVIVE_COUNTRIES,
     min_neg_survival: float = MIN_NEG_SURVIVAL,
+    lock_floor: float | None = None,
+    min_steps_before_abort: int = MIN_STEPS_BEFORE_ABORT,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -909,6 +948,8 @@ def greedy_outer_loop(
 
     # Current LOCO-AUC with empty set = baseline (random)
     current_auc = 0.5
+    observed_max_lift = 0.0  # largest single-step gain seen (optimistic abort bound)
+    early_abort = False       # set True iff floor-aware early-abort fires
 
     step = 0
     if max_steps is None:
@@ -925,6 +966,11 @@ def greedy_outer_loop(
             current_auc = float(state["current_auc"])
             history = list(state["history"])
             step = int(state["step"])
+            # Reconstruct the optimistic abort bound from resumed history so the
+            # early-abort decision is identical whether or not we resumed (#91).
+            observed_max_lift = max(
+                (float(h["lift_over_previous"]) for h in history), default=0.0
+            )
             LOG.info(
                 "RESUMING greedy from checkpoint: step=%d, selected=%s, current_auc=%.4f",
                 step, selected, current_auc,
@@ -972,6 +1018,7 @@ def greedy_outer_loop(
             "lift_over_previous": float(lift),
             "selected_after": selected + [best["candidate"]],
         })
+        observed_max_lift = max(observed_max_lift, lift)
         if lift < delta_step:
             LOG.info("  lift below delta_step=%.4f; greedy halts (greedy-stopping invariant)", delta_step)
             break
@@ -996,11 +1043,30 @@ def greedy_outer_loop(
                     "history": history,
                 },
             })
+
+        # Floor-aware early-abort (outcome-neutral; see MIN_STEPS_BEFORE_ABORT note).
+        # The best AUC any number of remaining steps could reach is bounded above by
+        # current_auc + (#steps left) × (best single-step lift ever seen). If even that
+        # optimistic ceiling falls short of the floor, the walk is HARD_FAIL-bound — stop.
+        if lock_floor is not None and step >= min_steps_before_abort:
+            remaining_allowed = min(len(remaining), max_steps - step)
+            optimistic_ceiling = current_auc + remaining_allowed * observed_max_lift
+            if remaining_allowed > 0 and optimistic_ceiling < lock_floor:
+                LOG.info(
+                    "  EARLY-ABORT (floor unreachable): current_auc=%.4f + %d steps × "
+                    "max-lift %.4f = optimistic ceiling %.4f < lock_floor %.4f. "
+                    "Walk is HARD_FAIL-bound; aborting greedy to save compute (outcome-neutral).",
+                    current_auc, remaining_allowed, observed_max_lift,
+                    optimistic_ceiling, lock_floor,
+                )
+                early_abort = True
+                break
     return {
         "selected_indicators": selected,
         "chosen_window": chosen_window,
         "final_global_auc": float(current_auc),
         "history": history,
+        "early_abort_floor_unreachable": early_abort,
     }
 
 
@@ -1440,6 +1506,7 @@ def _main(argv: list[str] | None = None) -> int:
             delta_step=DELTA_STEP, max_steps=cap, seed=args.seed,
             checkpoint_path=None if args.no_checkpoint else greedy_ckpt_path,
             config_signature=None if args.no_checkpoint else sig,
+            lock_floor=lock_floor,
         )
         # Persist the completed greedy result BEFORE LOCK GATE EVAL so a crash
         # in the (cheaper but historically fragile) LOCK phase never re-runs the
@@ -1564,6 +1631,12 @@ def _main(argv: list[str] | None = None) -> int:
 
     verdict = classify_verdict(coverage_pass, chance_pass, global_pass,
                                cohort_loco_pass, cohort_ece_pass)
+    # A floor-unreachable early-abort routes to INCOMPLETE (not auto-HARD_FAIL) — the
+    # heuristic abort bound cannot justify a verdict (PR #116 / Ji-Hoon+Kwame 2026-05-27).
+    verdict = early_abort_verdict_override(verdict, greedy)
+    if verdict == "INCOMPLETE_CEILING_BELOW_FLOOR":
+        LOG.warning("EARLY-ABORT halt → verdict INCOMPLETE_CEILING_BELOW_FLOOR (NOT graded "
+                    "as HARD_FAIL): partial walk surfaced for human/Majles adjudication.")
 
     borderline = bool(auc_ci["ci95_lo"] < lock_floor) if verdict == "LOCK" else False
 
