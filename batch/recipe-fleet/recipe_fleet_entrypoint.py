@@ -73,6 +73,7 @@ import subprocess
 import sys
 import tempfile
 import time
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -116,6 +117,53 @@ COHORT_SIDECAR_S3_KEY = os.environ.get(
 # cohort_loco_floor}). In fleet mode a recipe with no floor here is SKIPPED
 # (never walked against the walk's civil_war-anchored default). See fleet-floor-annex.md.
 RECIPE_FLOORS_S3_KEY = os.environ.get("RECIPE_FLOORS_S3_KEY", "reference/recipe-floors.json")
+
+
+class FloorOrderingError(RuntimeError):
+    """Raised when the per-recipe floors were not provably frozen BEFORE the walk."""
+
+
+def assert_floor_ordering(floors_json: dict, walk_launch_utc: datetime) -> None:
+    """FLEET-5 / trio Condition A (the highest-severity hole): a floor must be FROZEN
+    BEFORE the walk that it judges — otherwise a floor re-derived from the same corpus
+    the fleet is about to walk is a floor-shopping vector that re-creates the
+    foreign_intervention failure class, 44 recipes at a time, with no one watching.
+
+    Enforces (fleet mode only — canary falls back to the walk's default floor):
+      1. The floors artifact carries frozen-before-walk PROVENANCE — top-level
+         `frozen_at_utc`, `git_commit_sha`, `panel_fingerprint` all present + non-null.
+         A floors file without provenance cannot be proven frozen-first → refuse.
+      2. ORDERING: `frozen_at_utc` is strictly BEFORE the walk launch time. Floors
+         frozen at/after launch were (or may have been) derived with knowledge of the
+         walk corpus → refuse.
+
+    NOTE the `panel_fingerprint` EQUALITY check (floors computed against the SAME corpus
+    vintage being walked, not a stale one) lands with the floor-assembly step that records
+    the fingerprint; this function already REQUIRES the field to be present so the schema
+    is enforced from day one. Pure + testable."""
+    missing = [k for k in ("frozen_at_utc", "git_commit_sha", "panel_fingerprint")
+               if not floors_json.get(k)]
+    if missing:
+        raise FloorOrderingError(
+            f"recipe-floors.json lacks frozen-before-walk provenance {missing}; cannot "
+            f"prove floors were frozen before the walk (Condition A). Regenerate the "
+            f"floors artifact with full provenance BEFORE launching the fleet."
+        )
+    try:
+        frozen_at = datetime.fromisoformat(str(floors_json["frozen_at_utc"]))
+    except ValueError as exc:
+        raise FloorOrderingError(
+            f"recipe-floors.json frozen_at_utc is not ISO-8601: "
+            f"{floors_json['frozen_at_utc']!r} ({exc})"
+        ) from exc
+    if frozen_at.tzinfo is None:
+        frozen_at = frozen_at.replace(tzinfo=timezone.utc)
+    if frozen_at >= walk_launch_utc:
+        raise FloorOrderingError(
+            f"FLOOR-SHOPPING GUARD: floors frozen at {frozen_at.isoformat()} are NOT "
+            f"before the walk launch {walk_launch_utc.isoformat()} — a floor derived with "
+            f"knowledge of the walk corpus is forbidden (Condition A). Freeze floors first."
+        )
 
 # Scoring frontier (D2). The hardcoded 2021 is GONE — leaving it made the LOCF
 # nowcast fill inert on production data (Opus delivery-review finding #111). By
@@ -877,11 +925,15 @@ def main() -> None:
         # -- Per-recipe floors (T20-R2). Non-fatal if absent: fleet recipes then
         #    skip individually (never walked against a default floor); canary mode
         #    falls back to the walk's default floor. --
+        # Captured BEFORE any recipe is walked: floors must be frozen before this.
+        walk_launch_utc = datetime.now(timezone.utc)
         local_floors = tmpdir / "recipe-floors.json"
         recipe_floors: dict[str, dict] = {}
+        floors_json: dict = {}
         try:
             s3_download_file(S3_BUCKET, RECIPE_FLOORS_S3_KEY, local_floors)
-            recipe_floors = json.loads(local_floors.read_text(encoding="utf-8")).get("floors", {})
+            floors_json = json.loads(local_floors.read_text(encoding="utf-8"))
+            recipe_floors = floors_json.get("floors", {})
             LOG.info("Loaded %d per-recipe floors from s3://%s/%s",
                      len(recipe_floors), S3_BUCKET, RECIPE_FLOORS_S3_KEY)
         except Exception as exc:  # noqa: BLE001
@@ -892,6 +944,16 @@ def main() -> None:
             LOG.error("FATAL: fleet mode but zero per-recipe floors loaded from s3://%s/%s — "
                       "refusing to run a no-op fleet (T20-R2).", S3_BUCKET, RECIPE_FLOORS_S3_KEY)
             sys.exit(1)
+        # FLEET-5 / Condition A: refuse to walk unless the floors were provably FROZEN
+        # BEFORE this run launched (kills the floor-shopping vector). Fail-loud in fleet.
+        if RUN_MODE == "fleet":
+            try:
+                assert_floor_ordering(floors_json, walk_launch_utc)
+                LOG.info("Floor-ordering OK (Condition A): floors frozen %s, launch %s.",
+                         floors_json.get("frozen_at_utc"), walk_launch_utc.isoformat())
+            except FloorOrderingError as exc:
+                LOG.error("FATAL (Condition A): %s", exc)
+                sys.exit(1)
 
         # FIX 4 — SFN task-token write REMOVED.
         # The SFN $$.Task.Token only exists at the waitForTaskToken approval
