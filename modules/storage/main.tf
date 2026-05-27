@@ -592,7 +592,7 @@ resource "aws_dynamodb_table" "pipeline_a_counter" {
     enabled        = true
   }
 
-  deletion_protection_enabled = true  # #929 — losing this mid-run silently breaks the pipeline
+  deletion_protection_enabled = true # #929 — losing this mid-run silently breaks the pipeline
 
   tags = var.tags
 }
@@ -617,7 +617,7 @@ resource "aws_dynamodb_table" "completion_counters" {
     enabled        = true
   }
 
-  deletion_protection_enabled = true  # #929
+  deletion_protection_enabled = true # #929
 
   tags = var.tags
 }
@@ -1796,6 +1796,67 @@ resource "aws_budgets_budget" "s3_daily" {
 # confirmation outside Terraform — left out of this module to avoid
 # imperatively triggering confirmation flows. Add per-environment in the
 # environments/*/main.tf if desired.
+
+
+# ---------------------------------------------------------------------------
+# FLEET-9 / trio Condition F — $100/day account cost guard (recipe-fleet fan-out).
+# ---------------------------------------------------------------------------
+# Founder-set $100 hard ceiling for a recipe-fleet run (2026-05-27). Two layers:
+#   (1) STRUCTURAL HARD CAP (the real enforcement, in the Batch layer, not here):
+#       the fleet compute env's max_vcpus bounds the worst-case burn — no Spot-retry
+#       storm can exceed it. Invariant FLEET-4 must preserve (PR #33 review: a job runs
+#       up to attempts × attempt_duration of billed vCPU — the attempts=2 retry DOUBLES
+#       it — and the SFN 40h ceiling does NOT kill running Batch jobs):
+#         max_vcpus × attempts × attempt_duration_h × ~$0.05 <= $100
+#       Today: 16 × 2 × 36 h × $0.05 ≈ $58. To reach max_vcpus=48 FLEET-4 must also cut
+#       attempt_duration to 18 h (48 × 2 × 18 × 0.05 ≈ $86). See modules/recipe-fleet/main.tf.
+#   (2) THIS MONITOR — a DAILY ACTUAL $100 account budget that pages cost_alerts
+#       at 80% (early warning) and 100% (ceiling hit). Account-wide (staging is a
+#       dedicated account; the fleet is the dominant spender) so it also catches
+#       anything the structural cap can't see. ACTUAL, not FORECASTED, to avoid
+#       false positives on bursty fan-out launches.
+# A budget ACTION (auto-disable) is deliberately NOT used: applying a deny IAM
+# policy / SCP from a budget breach has real blast-radius risk and is strictly
+# weaker than the structural max_vcpus cap, which cannot be outrun in the first place.
+resource "aws_budgets_budget" "fleet_daily_100" {
+  name         = "qgi-${var.environment}-fleet-daily-100"
+  budget_type  = "COST"
+  limit_amount = "100.00"
+  limit_unit   = "USD"
+  time_unit    = "DAILY"
+
+  notification {
+    comparison_operator       = "GREATER_THAN"
+    threshold                 = 80 # early warning at $80 actual
+    threshold_type            = "PERCENTAGE"
+    notification_type         = "ACTUAL"
+    subscriber_sns_topic_arns = [aws_sns_topic.cost_alerts.arn]
+  }
+  notification {
+    comparison_operator       = "GREATER_THAN"
+    threshold                 = 100 # ceiling hit at $100 actual
+    threshold_type            = "PERCENTAGE"
+    notification_type         = "ACTUAL"
+    subscriber_sns_topic_arns = [aws_sns_topic.cost_alerts.arn]
+  }
+
+  tags       = var.tags
+  depends_on = [aws_sns_topic_policy.cost_alerts]
+}
+
+# Deliver cost_alerts to the QGI ops inbox (PR #33 review: without a subscriber BOTH
+# this budget and s3_daily fire into a void — the broken-alert-path failure mode behind
+# the 2026-05-16 $139 incident). Email subs are created PENDING and require a one-time
+# out-of-band click in the confirmation email; ignore_changes keeps re-applies from
+# churning a confirmed sub. contact@qgintelligence.com is the ops-alarm inbox (NOT personal).
+resource "aws_sns_topic_subscription" "cost_alerts_email" {
+  topic_arn = aws_sns_topic.cost_alerts.arn
+  protocol  = "email"
+  endpoint  = "contact@qgintelligence.com"
+  lifecycle {
+    ignore_changes = [endpoint]
+  }
+}
 
 
 # ---------------------------------------------------------------------------

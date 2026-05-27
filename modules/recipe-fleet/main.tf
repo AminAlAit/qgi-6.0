@@ -199,9 +199,19 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
     allocation_strategy = "SPOT_PRICE_CAPACITY_OPTIMIZED"
     instance_type       = ["c7g.large", "m7g.large"]
 
-    min_vcpus     = 0
-    max_vcpus     = 16 # cap at 8× 2-vCPU jobs; serialized SFN keeps actual
-    desired_vcpus = 0  # concurrency low — ceiling guards against runaway cost
+    min_vcpus = 0
+    # FLEET-9 / Condition F STRUCTURAL COST CAP (the real $100 enforcement): this ceiling
+    # bounds the worst-case burn — no Spot-retry storm can outrun it. INVARIANT any FLEET-4
+    # raise MUST preserve (PR #33 review: the retry_strategy attempts=2 DOUBLES the bound —
+    # a job can run attempts × attempt_duration of billed vCPU; and the SFN 40h ceiling does
+    # NOT terminate already-running Batch jobs, so it is not a billing bound):
+    #   max_vcpus × attempts × attempt_duration_h × ~$0.05  ≤  $100
+    # Today: 16 × 2 × 36 h × $0.05 ≈ $58. To reach max_vcpus=48, FLEET-4 must ALSO cut
+    # attempt_duration to 18 h (48 × 2 × 18 × 0.05 ≈ $86) — the timeout is the lever, not
+    # just the vCPU count. $0.05/vCPU-hr is a deliberately high (≈3×) Spot upper bound.
+    # The $100 DAILY budget (modules/storage fleet_daily_100) is the monitor on top.
+    max_vcpus     = 16 # 16 × 2 attempts × 36 h × $0.05 ≈ $58 worst-case (well under $100)
+    desired_vcpus = 0  # scale-to-zero — nothing runs between fan-outs
 
     instance_role = var.ecs_instance_profile_arn
 
