@@ -171,14 +171,10 @@ resource "aws_iam_role_policy" "recipe_fleet_job" {
 # ---------------------------------------------------------------------------
 # Batch compute environment — right-sized small Graviton Spot (design §2a).
 #
-# Instance pool: c7g.large (2 vCPU / 4 GB, compute-optimized) +
-#   m7g.large (2 vCPU / 8 GB). Both are 2-vCPU — matching the job's VCPU=2.
-# c7g.medium (1 vCPU) is deliberately EXCLUDED: a 2-vCPU job can never be
-# placed on it, so it would be dead weight / a scheduling-confusion hazard
-# (AWS-expert review 2026-05-24). The cost-rule amendment still permits
-# c7g.medium for any future 1-vCPU job, but not this 2-vCPU walker.
-# m7g.xlarge / m7g.2xlarge are NOT listed — the general restriction (design
-# §2a) still applies; only this fleet's specific allow-list is used.
+# Instance pool spans c7g.large(2)→c7g.4xlarge(16) so the #962 per-recipe job sizes
+# (small 4 / medium 8 / fat 16 vCPU) each place on a best-fit instance; m7g.large is a
+# 2-vCPU capacity fallback. c7g.medium (1 vCPU) is EXCLUDED — no job is 1-vCPU. The earlier
+# 2-vCPU-only pool was superseded by the FLEET-4 #964-ratified sizing (2026-05-27).
 #
 # SPOT_PRICE_CAPACITY_OPTIMIZED: the price-aware Batch strategy (AWS Batch has
 # no "lowest_price" option — that's an EC2-Fleet term; valid Batch values are
@@ -197,7 +193,11 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
   compute_resources {
     type                = "SPOT"
     allocation_strategy = "SPOT_PRICE_CAPACITY_OPTIMIZED"
-    instance_type       = ["c7g.large", "m7g.large"]
+    # FLEET-4/#962: SFN Map sets each job's VCPU from the manifest (small 4→c7g.xlarge /
+    # medium 8→c7g.2xlarge / fat 16→c7g.4xlarge). c7g.large(2) covers only the job-def
+    # DEFAULT (never submitted by a sized job); m7g.large is a 2-vCPU capacity fallback.
+    # Batch (SPOT_PRICE_CAPACITY_OPTIMIZED) best-fits each job's vCPU to the cheapest pool.
+    instance_type = ["c7g.large", "c7g.xlarge", "c7g.2xlarge", "c7g.4xlarge", "m7g.large"]
 
     min_vcpus = 0
     # FLEET-9 / Condition F STRUCTURAL COST CAP (the real $100 enforcement): this ceiling
@@ -206,11 +206,12 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
     # a job can run attempts × attempt_duration of billed vCPU; and the SFN 40h ceiling does
     # NOT terminate already-running Batch jobs, so it is not a billing bound):
     #   max_vcpus × attempts × attempt_duration_h × ~$0.05  ≤  $100
-    # Today: 16 × 2 × 36 h × $0.05 ≈ $58. To reach max_vcpus=48, FLEET-4 must ALSO cut
-    # attempt_duration to 18 h (48 × 2 × 18 × 0.05 ≈ $86) — the timeout is the lever, not
-    # just the vCPU count. $0.05/vCPU-hr is a deliberately high (≈3×) Spot upper bound.
-    # The $100 DAILY budget (modules/storage fleet_daily_100) is the monitor on top.
-    max_vcpus     = 16 # 16 × 2 attempts × 36 h × $0.05 ≈ $58 worst-case (well under $100)
+    # FLEET-4 raised this 16→48 PAIRED with the attempt_duration cut 36h→18h below, keeping
+    # the invariant: 48 × 2 attempts × 18 h × $0.05 ≈ $86 (under $100). $0.05/vCPU-hr is a
+    # deliberately high (≈3×) Spot upper bound. The $100 DAILY budget (modules/storage
+    # fleet_daily_100) is the monitor on top. 48 also throttles concurrent fat jobs (16 vCPU
+    # each → ≤3 at once) regardless of the SFN MaxConcurrency.
+    max_vcpus     = 48 # 48 × 2 attempts × 18 h × $0.05 ≈ $86 worst-case (under $100)
     desired_vcpus = 0  # scale-to-zero — nothing runs between fan-outs
 
     instance_role = var.ecs_instance_profile_arn
@@ -273,18 +274,20 @@ resource "aws_batch_job_definition" "recipe_fleet_walker" {
   retry_strategy {
     # A Spot reclaim restarts the job; the S3 checkpoint guard means
     # already-completed recipes in the batch are skipped on restart.
-    # #931: reduced 3 -> 2. One reclaim retry is enough; a SECOND failure is
-    # almost certainly a data/code issue, not a transient reclaim — and 3
-    # attempts × 36h = 108h of worst-case compute before the SFN execution
-    # ceiling (40h) even applies. Two bounds the runaway-cost tail.
+    # #931: reduced 3 -> 2. One reclaim retry is enough; a SECOND failure is almost
+    # certainly a data/code issue, not a transient reclaim. attempts is the multiplier in
+    # the FLEET-9 structural cost cap (max_vcpus × attempts × attempt_duration_h × rate):
+    # at 2 × 18 h it is the runaway-cost bound, since the SFN 40h ceiling does NOT kill a
+    # running Batch job (see compute env max_vcpus note).
     attempts = 2
   }
 
   timeout {
-    # elections_and_voting measured at 21.8 h on laptop. A 5-recipe
-    # batch containing the slowest recipe could theoretically run ~30 h.
-    # 36 h (129600 s) gives comfortable headroom while bounding runaway cost.
-    attempt_duration_seconds = 129600
+    # FLEET-4: cut 36h→18h. With #961 parallelization + #962 sizing the slowest job (1 fat
+    # recipe at 16 vCPU — elections was 21.8h SERIAL on a laptop → ~2-3h at 16 vCPU) finishes
+    # well under 18h, so this is comfortable headroom AND the per-recipe wall-time bound. The
+    # cut is what keeps the FLEET-9 cap holding at max_vcpus=48 (48 × 2 × 18 × $0.05 ≈ $86).
+    attempt_duration_seconds = 64800
   }
 
   container_properties = jsonencode({
@@ -448,11 +451,17 @@ resource "aws_sqs_queue" "recipe_fleet_approval" {
 # approval script) calls `aws stepfunctions send-task-success --task-token`.
 # This is STRUCTURAL: the Map state cannot start until the token is sent.
 #
-# SFN input schema:
+# SFN input schema (FLEET-4b — caller passes the manifest's SIZED runnable_jobs):
 #   {
 #     "mode": "canary" | "full",
-#     "canary_recipe_id": "foreign_intervention",    // only for canary mode
-#     "runnable_recipes": ["recipe_a", "recipe_b"],  // list from manifest
+#     "canary_recipe_id": "government_formation",    // canary mode only (use a FAT recipe)
+#     "canary_vcpu": 16,                             // canary mode only — REQUIRED; vcpu for
+#                                                    //   the canary (omitting it fails the
+#                                                    //   States.Format intrinsic at runtime)
+#     "runnable_jobs": [                             // from manifest.runnable_jobs (#962)
+#       {"recipe_ids": "recipe_a,recipe_b", "vcpu": 8, "tier": "medium"},
+#       {"recipe_ids": "recipe_c", "vcpu": 16, "tier": "fat"}
+#     ]
 #   }
 #
 # The SFN IAM role (var.stepfunctions_role_arn from modules/iam) already has
@@ -511,6 +520,15 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
             Environment = [
               { Name = "RECIPE_IDS", "Value.$" = "$.canary_recipe_id" },
               { Name = "RUN_MODE", Value = "canary" },
+              # FLEET-4b: size the canary like a real fan-out job so it MEASURES the
+              # parallelized cost/time honestly. The consult requires a FAT canary; at the
+              # default 2 vCPU a fat recipe would run ~21h serial (useless + itself costly).
+              # Caller passes $.canary_vcpu (e.g. 16 for a fat canary).
+              { Name = "N_JOBS", "Value.$" = "States.Format('{}', $.canary_vcpu)" },
+            ]
+            ResourceRequirements = [
+              { Type = "VCPU", "Value.$" = "States.Format('{}', $.canary_vcpu)" },
+              { Type = "MEMORY", Value = "4096" },
             ]
           }
         }
@@ -583,14 +601,16 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
       # batched by build_recipe_manifest.py into "job batches" so each
       # Map iteration = one Batch job covering multiple recipes).
       #
-      # InputPath "$.runnable_recipes" expects the input to have been
-      # pre-filtered to the runnable tier (N_pos >= 60) — either by the
-      # build_recipe_manifest.py Pass state or by the caller.
+      # FLEET-4b: ItemsPath is "$.runnable_jobs" — the SIZED form from the manifest
+      # (build_recipe_manifest #962). Each item = {recipe_ids, vcpu, tier, ...}; the caller
+      # passes the manifest's runnable_jobs as the execution input (pre-filtered to N_pos>=60).
+      # MaxConcurrency=5 (was 2): more overlap; actual concurrency is hard-bounded by the
+      # compute env max_vcpus=48 (≤3 fat jobs at 16 vCPU), so this never exceeds the cost cap.
       # -----------------------------------------------------------------
       "Fleet Fan-out" = {
         Type           = "Map"
-        ItemsPath      = "$.runnable_recipes"
-        MaxConcurrency = 2
+        ItemsPath      = "$.runnable_jobs"
+        MaxConcurrency = 5
         ItemProcessor = {
           ProcessorConfig = {
             Mode = "INLINE"
@@ -605,11 +625,32 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
                 JobQueue      = aws_batch_job_queue.recipe_fleet.arn
                 JobDefinition = aws_batch_job_definition.recipe_fleet_walker.arn
                 ContainerOverrides = {
-                  Environment = [{
-                    Name = "RECIPE_IDS"
-                    # Each item is a comma-separated batch of recipe_ids.
-                    "Value.$" = "$"
-                  }]
+                  Environment = [
+                    {
+                      Name      = "RECIPE_IDS"
+                      "Value.$" = "$.recipe_ids" # comma-separated batch for this sized job
+                    },
+                    {
+                      Name = "N_JOBS"
+                      # #962: the per-job vCPU = the parallel walk's --n-jobs (#961).
+                      "Value.$" = "States.Format('{}', $.vcpu)"
+                    }
+                  ]
+                  # #962: size the Batch container to this job's tier. Both VCPU and MEMORY
+                  # are restated (override REPLACES the job-def resourceRequirements by type;
+                  # restating both avoids any merge-vs-replace ambiguity). MEMORY stays 4096:
+                  # the walk needs little RAM (panels are tens of MB) and 4 GB fits every tier
+                  # instance (c7g.xlarge 8 GB → c7g.4xlarge 32 GB) with ECS-agent headroom.
+                  ResourceRequirements = [
+                    {
+                      Type      = "VCPU"
+                      "Value.$" = "States.Format('{}', $.vcpu)"
+                    },
+                    {
+                      Type  = "MEMORY"
+                      Value = "4096"
+                    }
+                  ]
                 }
               }
               ResultPath = "$.job_result"
