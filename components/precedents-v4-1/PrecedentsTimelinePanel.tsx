@@ -4,6 +4,11 @@
  * recipe's verified-positive corpus events: year-axis tick marks,
  * flag + country chip per event, green "+" for added / red "−" for vacated.
  *
+ * Title casing harmonised with peer V4.1 panels ("Sample-size sufficiency",
+ * "Reliability", "Indicator sensitivity") 2026-05-27 per founder #157.
+ * Footer legend extended in the same pass to communicate the MEANING of
+ * "added" / "vacated" curator actions, not just their colors.
+ *
  * — Daniyar Bekmurat, Comparative Historical Pattern Matching
  */
 import type { CSSProperties } from "react";
@@ -66,9 +71,18 @@ export function PrecedentsTimelinePanel({
   const ADDED = "#3FBF8F";
   const VACATED = "#E64545";
 
+  const titleStyle: CSSProperties = {
+    fontSize: "15px",
+    fontWeight: 600,
+    color: familyColor,
+    margin: 0,
+    letterSpacing: "0.1px",
+  };
+
   if (sorted.length === 0) {
     return (
       <section
+        aria-labelledby="precedents-panel-heading"
         style={{
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",
@@ -78,16 +92,8 @@ export function PrecedentsTimelinePanel({
           minWidth: "340px",
         }}
       >
-        <h3
-          style={{
-            fontSize: "13px",
-            fontWeight: 600,
-            color: familyColor,
-            margin: 0,
-            letterSpacing: "0.4px",
-          }}
-        >
-          PRECEDENTS
+        <h3 id="precedents-panel-heading" style={titleStyle}>
+          Precedents
         </h3>
         <div
           style={{
@@ -108,6 +114,7 @@ export function PrecedentsTimelinePanel({
 
   return (
     <section
+      aria-labelledby="precedents-panel-heading"
       style={{
         background: "var(--qgi-surface)",
         borderLeft: `3px solid ${familyColor}`,
@@ -116,7 +123,6 @@ export function PrecedentsTimelinePanel({
         padding: "16px 18px 18px",
         minWidth: "340px",
       }}
-      aria-label="Precedents timeline"
     >
       <header
         style={{
@@ -128,16 +134,8 @@ export function PrecedentsTimelinePanel({
         }}
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-          <h3
-            style={{
-              fontSize: "13px",
-              fontWeight: 600,
-              color: familyColor,
-              letterSpacing: "0.4px",
-              margin: 0,
-            }}
-          >
-            PRECEDENTS
+          <h3 id="precedents-panel-heading" style={titleStyle}>
+            Precedents
           </h3>
           <span style={{ ...chipStyle, color: "var(--qgi-text-dim)" }}>
             curated-event corpus
@@ -303,15 +301,15 @@ export function PrecedentsTimelinePanel({
           paddingTop: "10px",
           borderTop: "1px dashed var(--qgi-border)",
           display: "flex",
-          gap: "16px",
-          flexWrap: "wrap",
+          flexDirection: "column",
+          gap: "8px",
           fontFamily: "ui-monospace, monospace",
           fontSize: "10px",
           color: "var(--qgi-text-muted)",
           letterSpacing: "0.3px",
         }}
       >
-        <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+        <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
           <span
             style={{
               width: "8px",
@@ -319,11 +317,22 @@ export function PrecedentsTimelinePanel({
               borderRadius: "50%",
               background: ADDED,
               display: "inline-block",
+              flex: "0 0 8px",
+              marginTop: "4px",
             }}
           />
-          {visibleAdded} added
-        </span>
-        <span style={{ display: "inline-flex", alignItems: "center", gap: "6px" }}>
+          <span style={{ lineHeight: 1.55 }}>
+            <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
+              {visibleAdded} added
+            </strong>
+            <span style={{ color: "var(--qgi-text-dim)" }}>
+              {" "}
+              — curator confirmed this country-year as a real positive of this
+              recipe&apos;s event type and admitted it to the training corpus.
+            </span>
+          </span>
+        </div>
+        <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
           <span
             style={{
               width: "8px",
@@ -331,13 +340,29 @@ export function PrecedentsTimelinePanel({
               borderRadius: "50%",
               background: VACATED,
               display: "inline-block",
+              flex: "0 0 8px",
+              marginTop: "4px",
             }}
           />
-          {visibleVacated} vacated
-        </span>
-        <span style={{ marginLeft: "auto", color: "var(--qgi-text-dim)" }}>
+          <span style={{ lineHeight: 1.55 }}>
+            <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
+              {visibleVacated} vacated
+            </strong>
+            <span style={{ color: "var(--qgi-text-dim)" }}>
+              {" "}
+              — removed on re-review (mis-coded event type, ambiguous foreign-vs-
+              intrastate framing, or insufficient sourcing).
+            </span>
+          </span>
+        </div>
+        <div
+          style={{
+            color: "var(--qgi-text-dim)",
+            paddingTop: "2px",
+          }}
+        >
           curation actions {minYear}–{maxYear}
-        </span>
+        </div>
       </footer>
     </section>
   );

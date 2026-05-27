@@ -520,6 +520,195 @@ export function getRecipeV4Extras(recipeId: string): RecipeV4Extras | null {
   return EXTRAS[recipeId] ?? null;
 }
 
+/* ────────────────────────────────────────────────────────────────────────── */
+/* Full-list mock data (capability §8/§9 — CountriesPanel expand state).       */
+/*                                                                            */
+/* Per #158 (founder, 2026-05-26): when the combined CountriesPanel expand    */
+/* button is toggled, the panel renders the FULL country roster, not just     */
+/* top-5 + bottom-5. The real bake will emit a per-recipe full ranking; this  */
+/* mock returns a plausible ~80-country list spanning each recipe's score     */
+/* distribution. All names are guaranteed to have a flag-emoji entry in       */
+/* country-flags.ts (verified by Talia 2026-05-26 build).                     */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Foreign Intervention — ~80-country roster, descending from 98.1 (Iran)
+ * down to 5.2 (Switzerland). Order is structurally driven by the real
+ * recipe semantics (autocratic / repressed / fiscally-thin states peak;
+ * stable democracies floor). Scores interpolated to give a smooth slope
+ * matching the right-skewed mock distribution histogram.
+ */
+const COUNTRIES_FULL_FOREIGN_INTERVENTION: CountryScore[] = [
+  { name: "Iran", score: 98.1 },
+  { name: "Turkmenistan", score: 97.0 },
+  { name: "Equatorial Guinea", score: 96.9 },
+  { name: "Belarus", score: 94.2 },
+  { name: "Tajikistan", score: 88.5 },
+  { name: "Eritrea", score: 84.7 },
+  { name: "Syria", score: 81.3 },
+  { name: "North Korea", score: 78.2 },
+  { name: "Venezuela", score: 75.8 },
+  { name: "Cuba", score: 73.4 },
+  { name: "Nicaragua", score: 71.6 },
+  { name: "Saudi Arabia", score: 68.9 },
+  { name: "Sudan", score: 64.5 },
+  { name: "South Sudan", score: 62.7 },
+  { name: "Libya", score: 60.8 },
+  { name: "Yemen", score: 58.4 },
+  { name: "Somalia", score: 55.7 },
+  { name: "Central African Republic", score: 53.2 },
+  { name: "DRC", score: 51.6 },
+  { name: "Ethiopia", score: 48.9 },
+  { name: "Honduras", score: 46.4 },
+  { name: "Guatemala", score: 44.7 },
+  { name: "El Salvador", score: 43.1 },
+  { name: "Madagascar", score: 41.5 },
+  { name: "Cambodia", score: 39.8 },
+  { name: "Laos", score: 38.2 },
+  { name: "Myanmar", score: 37.5 },
+  { name: "Nigeria", score: 36.1 },
+  { name: "Cameroon", score: 35.0 },
+  { name: "Uganda", score: 33.7 },
+  { name: "Mozambique", score: 32.4 },
+  { name: "Burundi", score: 31.2 },
+  { name: "Mali", score: 30.5 },
+  { name: "Burkina Faso", score: 29.4 },
+  { name: "Niger", score: 28.7 },
+  { name: "Guinea", score: 28.0 },
+  { name: "Afghanistan", score: 27.5 },
+  { name: "Pakistan", score: 26.8 },
+  { name: "Iraq", score: 26.1 },
+  { name: "Egypt", score: 25.4 },
+  { name: "Algeria", score: 24.8 },
+  { name: "Russia", score: 24.2 },
+  { name: "Azerbaijan", score: 23.5 },
+  { name: "Kazakhstan", score: 22.7 },
+  { name: "Kyrgyzstan", score: 22.0 },
+  { name: "Armenia", score: 21.3 },
+  { name: "Ukraine", score: 20.6 },
+  { name: "Vietnam", score: 19.8 },
+  { name: "Thailand", score: 19.2 },
+  { name: "Malaysia", score: 18.6 },
+  { name: "Bangladesh", score: 17.9 },
+  { name: "Nepal", score: 17.3 },
+  { name: "Lebanon", score: 16.8 },
+  { name: "Jordan", score: 16.2 },
+  { name: "Morocco", score: 15.6 },
+  { name: "Tunisia", score: 14.9 },
+  { name: "Turkey", score: 14.2 },
+  { name: "Georgia", score: 13.6 },
+  { name: "Moldova", score: 13.0 },
+  { name: "Serbia", score: 12.4 },
+  { name: "Albania", score: 11.8 },
+  { name: "Bosnia and Herzegovina", score: 11.3 },
+  { name: "Bulgaria", score: 10.8 },
+  { name: "Romania", score: 10.4 },
+  { name: "Hungary", score: 10.0 },
+  { name: "Mexico", score: 14.5 },
+  { name: "Brazil", score: 13.8 },
+  { name: "Argentina", score: 12.6 },
+  { name: "Colombia", score: 12.1 },
+  { name: "India", score: 11.5 },
+  { name: "Philippines", score: 11.0 },
+  { name: "Indonesia", score: 10.6 },
+  { name: "South Africa", score: 10.2 },
+  { name: "Israel", score: 9.7 },
+  { name: "United States", score: 9.3 },
+  { name: "United Kingdom", score: 8.8 },
+  { name: "France", score: 8.4 },
+  { name: "Italy", score: 8.0 },
+  { name: "Spain", score: 7.6 },
+  { name: "Germany", score: 7.2 },
+  { name: "Belgium", score: 6.9 },
+  { name: "Austria", score: 6.6 },
+  { name: "Netherlands", score: 6.3 },
+  { name: "Portugal", score: 6.0 },
+  { name: "Ireland", score: 5.7 },
+  { name: "Japan", score: 5.5 },
+  { name: "Finland", score: 8.3 },
+  { name: "New Zealand", score: 7.1 },
+  { name: "Norway", score: 6.4 },
+  { name: "Iceland", score: 5.8 },
+  { name: "Switzerland", score: 5.2 },
+];
+
+const FULL_LISTS: Record<string, CountryScore[]> = {
+  foreign_intervention: COUNTRIES_FULL_FOREIGN_INTERVENTION,
+};
+
+/**
+ * Return the full scored-country roster for a recipe, descending by score.
+ * For recipes without a populated mock, synthesize from top + bottom via
+ * smooth interpolation across known flag-bearing country names — enough
+ * to demo the expand toggle without crashing.
+ */
+export function getCountriesFull(recipeId: string): CountryScore[] {
+  const populated = FULL_LISTS[recipeId];
+  if (populated) {
+    return [...populated].sort((a, b) => b.score - a.score);
+  }
+  return synthesizeFullList(recipeId);
+}
+
+/* Fallback synth: blends top-5 and bottom-5 with interpolated intermediate */
+/* countries pulled from the flag-bearing pool. Returns ~30 entries.        */
+const FILLER_POOL = [
+  "Russia",
+  "Turkey",
+  "Egypt",
+  "Iraq",
+  "Pakistan",
+  "Algeria",
+  "Mexico",
+  "Brazil",
+  "Argentina",
+  "Colombia",
+  "Vietnam",
+  "Thailand",
+  "Indonesia",
+  "Philippines",
+  "Nigeria",
+  "Kenya",
+  "Ghana",
+  "Tunisia",
+  "Morocco",
+  "Jordan",
+  "Lebanon",
+  "Romania",
+  "Hungary",
+  "Bulgaria",
+  "Serbia",
+  "Albania",
+  "Georgia",
+  "Armenia",
+  "Kazakhstan",
+  "Uzbekistan",
+];
+
+function synthesizeFullList(recipeId: string): CountryScore[] {
+  const extras = EXTRAS[recipeId];
+  const bottom = extras?.countriesBottom ?? [];
+  // recipes.ts is the canonical top source; we don't import it here to keep
+  // the helper self-contained — the page passes countriesTop separately.
+  // For the synth fallback we just bracket with extras.countriesBottom and a
+  // synthetic top derived from filler pool max scores.
+  const fillerCount = Math.min(FILLER_POOL.length, 25);
+  const peakScore = 80;
+  const floorScore = bottom.length > 0 ? bottom[0].score : 10;
+  const list: CountryScore[] = [];
+  for (let i = 0; i < fillerCount; i++) {
+    const t = i / Math.max(1, fillerCount - 1);
+    const score = peakScore - t * (peakScore - floorScore - 5);
+    list.push({ name: FILLER_POOL[i], score: round1(score) });
+  }
+  for (const b of bottom) list.push(b);
+  return list.sort((a, b) => b.score - a.score);
+}
+
+function round1(n: number): number {
+  return Math.round(n * 10) / 10;
+}
+
 /**
  * Fallback extras for recipes without populated V4.1 mock data. Returns
  * sensible defaults so the page renders without crashing — most metrics

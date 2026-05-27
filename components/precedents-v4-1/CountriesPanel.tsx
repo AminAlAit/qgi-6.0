@@ -1,0 +1,525 @@
+/**
+ * CountriesPanel — V4.1, founder polish #158.
+ *
+ * Replaces TopCountriesPanel + BottomCountriesPanel: ONE panel showing
+ * both ends of the recipe's score distribution at a glance, plus an
+ * internal "Full list" expand toggle that swaps in a scrollable roster
+ * of every scored country.
+ *
+ *
+ * Layout
+ * ──────
+ *   ┌──────────────────────────────────────────┐
+ *   │ Countries          [tooltip] [expand ▢] │   header
+ *   │ Top and bottom of the distribution.      │   caption
+ *   │ ──────────────────────────────────────── │
+ *   │  TOP  · highest-scoring                  │
+ *   │   1  🇮🇷  Iran                  98.1     │
+ *   │   2  🇹🇲  Turkmenistan          97.0     │
+ *   │   3  🇬🇶  Equatorial Guinea     96.9     │
+ *   │   4  🇧🇾  Belarus               94.2     │
+ *   │   5  🇹🇯  Tajikistan            88.5     │
+ *   │                                          │
+ *   │     ╌╌╌╌  ~157 countries between   ╌╌╌╌  │   structural gap row
+ *   │                                          │
+ *   │  BOTTOM · lowest-scoring                 │
+ *   │  163  🇫🇮  Finland               8.3     │
+ *   │  164  🇳🇿  New Zealand           7.1     │
+ *   │  165  🇳🇴  Norway                6.4     │
+ *   │  166  🇮🇸  Iceland               5.8     │
+ *   │  167  🇨🇭  Switzerland           5.2     │
+ *   └──────────────────────────────────────────┘
+ *
+ * Top is descending (highest first). Bottom is descending too so the
+ * lowest-ranked country sits at the very bottom of the panel — the
+ * eye reads the distribution as a continuous slope from peak (top of
+ * panel) to floor (bottom of panel), with the missing middle marked
+ * by a soft dashed divider showing how many countries are elided.
+ *
+ *
+ * Expand-to-full-list
+ * ───────────────────
+ * The header button (matching ExpandableShell's accent) toggles between
+ * the at-a-glance view (5+5) and a scrollable full roster of every
+ * country in `countriesFull` (mock ≈80 entries for foreign_intervention).
+ * The page does NOT wrap CountriesPanel in ExpandableShell; the panel
+ * is its own expandable surface (founder's note (c)). This keeps the
+ * expansion semantically "show MORE rows", not "grow the grid cell" —
+ * which is what users actually want when they see "5 + 5".
+ *
+ *
+ * Flag-emoji font fix (founder's note (b))
+ * ────────────────────────────────────────
+ * Default Windows font stack renders flag sequences as 2-letter regional
+ * indicators ("IR" instead of 🇮🇷). Every flag span gets an explicit
+ * fontFamily prioritizing the OS-installed emoji fonts that DO support
+ * the regional-indicator-pair → flag rendering: Segoe UI Emoji (Win),
+ * Apple Color Emoji (mac), Noto Color Emoji (Linux/Android).
+ */
+"use client";
+
+import { useState } from "react";
+import { PanelBase } from "./PanelBase";
+import { flagFor } from "@/lib/te-mock/country-flags";
+import type { CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
+
+const FLAG_FONT_STACK =
+  '"Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif';
+
+interface Props {
+  familyColor: string;
+  /** Top-5 (highest scoring), descending. */
+  countriesTop: CountryScore[];
+  /** Bottom-5 (lowest scoring). Caller may pass ascending or descending;
+   *  we sort descending internally so the panel reads peak → floor. */
+  countriesBottom: CountryScore[];
+  /** Full scored roster (~50-170 entries), descending by score. Used
+   *  when the user clicks the in-panel expand button. */
+  countriesFull: CountryScore[];
+  showResults: boolean;
+  /** Total scored — used for the "~N countries between" elided count.
+   *  Defaults to countriesFull.length when omitted. */
+  nScored?: number;
+}
+
+export function CountriesPanel({
+  familyColor,
+  countriesTop,
+  countriesBottom,
+  countriesFull,
+  showResults,
+  nScored,
+}: Props) {
+  const [expanded, setExpanded] = useState(false);
+
+  const totalScored = nScored ?? countriesFull.length;
+  const topSorted = [...countriesTop].sort((a, b) => b.score - a.score);
+  // Force bottom into descending order (lowest-rank last) so the visual
+  // slope is monotone from top of panel (peak) to bottom of panel (floor).
+  const bottomSorted = [...countriesBottom].sort((a, b) => b.score - a.score);
+  const elidedCount = Math.max(0, totalScored - topSorted.length - bottomSorted.length);
+
+  return (
+    <PanelBase
+      title="Countries"
+      familyColor={familyColor}
+      titleTooltip="Both ends of the distribution at a glance — the recipe's positive (highest-scoring) and structural-negative (lowest-scoring) extremes. Rank, not probability; a country at 98 sits at the top of the distribution of countries whose movement shape resembles past precedents. Expand for the full roster."
+      caption={
+        showResults && countriesTop.length > 0
+          ? expanded
+            ? `Full roster — ${totalScored} countries, ranked by score (highest first).`
+            : `Top ${topSorted.length} and bottom ${bottomSorted.length} of ${totalScored} scored countries.`
+          : undefined
+      }
+      sectionPending={!showResults || countriesTop.length === 0 ? "discrimination" : null}
+      id="cap-8"
+      headerSlot={
+        showResults && countriesTop.length > 0 ? (
+          <ExpandToggle
+            expanded={expanded}
+            onClick={() => setExpanded((v) => !v)}
+            familyColor={familyColor}
+          />
+        ) : undefined
+      }
+    >
+      {expanded ? (
+        <FullRoster countries={countriesFull} familyColor={familyColor} />
+      ) : (
+        <TopAndBottom
+          top={topSorted}
+          bottom={bottomSorted}
+          totalScored={totalScored}
+          elidedCount={elidedCount}
+          familyColor={familyColor}
+        />
+      )}
+    </PanelBase>
+  );
+}
+
+/* ───────── Default view: top-5 + divider + bottom-5 ──────────────────── */
+
+function TopAndBottom({
+  top,
+  bottom,
+  totalScored,
+  elidedCount,
+  familyColor,
+}: {
+  top: CountryScore[];
+  bottom: CountryScore[];
+  totalScored: number;
+  elidedCount: number;
+  familyColor: string;
+}) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+      <ZoneHeading label="Top" subLabel="highest-scoring" accent={familyColor} />
+      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {top.map((c, i) => (
+          <CountryRow
+            key={`top-${c.name}`}
+            rank={i + 1}
+            name={c.name}
+            score={c.score}
+            familyColor={familyColor}
+            scoreColor={familyColor}
+            scoreWeight={700}
+            divider={i < top.length - 1}
+          />
+        ))}
+      </ol>
+
+      <ElidedDivider count={elidedCount} />
+
+      <ZoneHeading
+        label="Bottom"
+        subLabel="lowest-scoring"
+        accent="var(--qgi-text-dim)"
+      />
+      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {bottom.map((c, i) => (
+          <CountryRow
+            key={`bot-${c.name}`}
+            rank={totalScored - bottom.length + i + 1}
+            name={c.name}
+            score={c.score}
+            familyColor={familyColor}
+            scoreColor="var(--qgi-text-muted)"
+            scoreWeight={600}
+            divider={i < bottom.length - 1}
+          />
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function ZoneHeading({
+  label,
+  subLabel,
+  accent,
+}: {
+  label: string;
+  subLabel: string;
+  accent: string;
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "baseline",
+        gap: "8px",
+        paddingBottom: "4px",
+        borderBottom: "1px solid var(--qgi-border)",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "ui-monospace, monospace",
+          fontSize: "10px",
+          letterSpacing: "1.1px",
+          textTransform: "uppercase",
+          color: accent,
+          fontWeight: 700,
+        }}
+      >
+        {label}
+      </span>
+      <span
+        style={{
+          fontFamily: "ui-monospace, monospace",
+          fontSize: "9.5px",
+          letterSpacing: "0.5px",
+          textTransform: "uppercase",
+          color: "var(--qgi-text-dim)",
+        }}
+      >
+        · {subLabel}
+      </span>
+    </div>
+  );
+}
+
+function ElidedDivider({ count }: { count: number }) {
+  if (count <= 0) {
+    return <div style={{ height: "4px" }} />;
+  }
+  return (
+    <div
+      aria-hidden
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        padding: "6px 0",
+      }}
+    >
+      <span
+        style={{
+          flex: 1,
+          borderTop: "1px dashed var(--qgi-border)",
+          height: 0,
+          opacity: 0.7,
+        }}
+      />
+      <span
+        style={{
+          fontFamily: "ui-monospace, monospace",
+          fontSize: "10px",
+          color: "var(--qgi-text-dim)",
+          letterSpacing: "0.4px",
+          whiteSpace: "nowrap",
+        }}
+      >
+        ~{count} countries between
+      </span>
+      <span
+        style={{
+          flex: 1,
+          borderTop: "1px dashed var(--qgi-border)",
+          height: 0,
+          opacity: 0.7,
+        }}
+      />
+    </div>
+  );
+}
+
+/* ───────── Expanded view: full scrollable roster ─────────────────────── */
+
+function FullRoster({
+  countries,
+  familyColor,
+}: {
+  countries: CountryScore[];
+  familyColor: string;
+}) {
+  return (
+    <div
+      style={{
+        maxHeight: "440px",
+        overflowY: "auto",
+        margin: 0,
+        padding: 0,
+        border: "1px solid var(--qgi-border)",
+        borderRadius: "4px",
+        background: "var(--qgi-bg)",
+      }}
+    >
+      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {countries.map((c, i) => (
+          <CountryRow
+            key={`full-${i}-${c.name}`}
+            rank={i + 1}
+            name={c.name}
+            score={c.score}
+            familyColor={familyColor}
+            scoreColor={scoreShade(c.score, familyColor)}
+            scoreWeight={i < 10 ? 700 : 600}
+            divider={i < countries.length - 1}
+            dense
+          />
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+/**
+ * Score → color: top of the distribution gets full family color;
+ * mid stays text-muted; bottom gets text-dim. Gives the scroll a
+ * subtle visual gradient even when the list is long.
+ */
+function scoreShade(score: number, familyColor: string): string {
+  if (score >= 70) return familyColor;
+  if (score >= 40) return "var(--qgi-text)";
+  if (score >= 20) return "var(--qgi-text-muted)";
+  return "var(--qgi-text-dim)";
+}
+
+/* ───────── Shared row component ──────────────────────────────────────── */
+
+function CountryRow({
+  rank,
+  name,
+  score,
+  scoreColor,
+  scoreWeight,
+  divider,
+  dense = false,
+}: {
+  rank: number;
+  name: string;
+  score: number;
+  familyColor: string;
+  scoreColor: string;
+  scoreWeight: number;
+  divider: boolean;
+  dense?: boolean;
+}) {
+  const padY = dense ? "6px" : "8px";
+  return (
+    <li
+      style={{
+        display: "grid",
+        gridTemplateColumns: "28px 20px minmax(0, 1fr) auto",
+        gap: "8px",
+        alignItems: "center",
+        padding: dense ? `${padY} 10px` : `${padY} 0`,
+        borderBottom: divider ? "1px solid var(--qgi-border)" : "none",
+      }}
+    >
+      <span
+        style={{
+          fontFamily: "ui-monospace, monospace",
+          fontSize: dense ? "10px" : "10.5px",
+          color: "var(--qgi-text-dim)",
+          textAlign: "right",
+        }}
+      >
+        {rank}
+      </span>
+      <span
+        style={{
+          fontSize: dense ? "14px" : "15px",
+          lineHeight: 1,
+          fontFamily: FLAG_FONT_STACK,
+        }}
+        aria-hidden
+      >
+        {flagFor(name)}
+      </span>
+      <span
+        style={{
+          fontSize: dense ? "12.5px" : "13px",
+          color: "var(--qgi-text)",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          whiteSpace: "nowrap",
+        }}
+      >
+        {name}
+      </span>
+      <span
+        style={{
+          fontFamily: "ui-monospace, monospace",
+          fontSize: dense ? "12.5px" : "13px",
+          color: scoreColor,
+          fontWeight: scoreWeight,
+        }}
+      >
+        {score.toFixed(1)}
+      </span>
+    </li>
+  );
+}
+
+/* ───────── Expand-toggle button (mirrors ExpandableShell's affordance) ─ */
+
+function ExpandToggle({
+  expanded,
+  onClick,
+  familyColor,
+}: {
+  expanded: boolean;
+  onClick: () => void;
+  familyColor: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-label={expanded ? "Collapse to top + bottom" : "Expand to full roster"}
+      aria-pressed={expanded}
+      onClick={onClick}
+      title={expanded ? "Collapse" : "Show full roster"}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "6px",
+        padding: "3px 8px",
+        background: "var(--qgi-bg)",
+        border: `1px solid ${familyColor}`,
+        borderRadius: "4px",
+        color: familyColor,
+        fontFamily: "ui-monospace, monospace",
+        fontSize: "10.5px",
+        letterSpacing: "0.4px",
+        cursor: "pointer",
+        opacity: 0.9,
+        transition: "background 120ms ease, opacity 120ms ease",
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.opacity = "1";
+        e.currentTarget.style.background = `${familyColor}14`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.opacity = "0.9";
+        e.currentTarget.style.background = "var(--qgi-bg)";
+      }}
+    >
+      <ToggleGlyph expanded={expanded} />
+      {expanded ? "Top + bottom" : "Full list"}
+    </button>
+  );
+}
+
+function ToggleGlyph({ expanded }: { expanded: boolean }) {
+  // Inline SVG so we don't add a chart-library or icon-set dep beyond what's
+  // already on the page; mirrors the visual rhythm of Maximize2/Minimize2.
+  return (
+    <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden>
+      {expanded ? (
+        <>
+          <path
+            d="M1 3 L5 1 L9 3"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+          <path
+            d="M1 7 L5 9 L9 7"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </>
+      ) : (
+        <>
+          <line
+            x1="1.5"
+            y1="2.5"
+            x2="8.5"
+            y2="2.5"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+          />
+          <line
+            x1="1.5"
+            y1="5"
+            x2="8.5"
+            y2="5"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+          />
+          <line
+            x1="1.5"
+            y1="7.5"
+            x2="8.5"
+            y2="7.5"
+            stroke="currentColor"
+            strokeWidth="1.3"
+            strokeLinecap="round"
+          />
+        </>
+      )}
+    </svg>
+  );
+}
