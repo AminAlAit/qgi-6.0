@@ -23,7 +23,8 @@ describe("Sidebar", () => {
     // the (still `-merged`-named) canonical V3 shells; PR-iii will rename
     // those URLs to unsuffixed canonical and flip V1 to `-v1`.
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
-    expect(screen.getByText("Precedents")).toBeInTheDocument();
+    // 2026-05-27 Charter §3 vocab swap: "Precedents" page → "Recipes".
+    expect(screen.getByText("Recipes")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Signals")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
