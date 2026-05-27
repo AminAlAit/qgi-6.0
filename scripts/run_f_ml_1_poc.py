@@ -65,6 +65,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
+from joblib import Parallel, delayed
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
@@ -916,6 +917,33 @@ def load_greedy_checkpoint(path: Path, expected_signature: str) -> dict[str, Any
     return ckpt
 
 
+def _eval_grid_cell(samples, selected, cand, win, panels, architecture, seed,
+                    n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
+                    min_survive_countries, min_neg_survival):
+    """Evaluate ONE (candidate, window) grid cell: build the trial set, apply the
+    len/class guards + coverage gate, run full LOCO. Returns the result dict, or None
+    if the cell is skipped. Pure + deterministic (fixed seed, XGBoost n_jobs=1 inside)
+    and reads `panels`/`samples` read-only → safe to run concurrently (#961). The caller
+    reduces results in input order, so parallel evaluation is BIT-IDENTICAL to serial."""
+    trial_set = selected + [cand]
+    X, y, c, yr = build_X_y(samples, trial_set, win, panels)
+    if len(X) < 30 or len(np.unique(y)) < 2:
+        return None
+    # Coverage gate (truncation fix, 2026-05-25): reject a candidate SET that drops too
+    # many positives / countries — the greedy must not chase AUC on a truncated subsample.
+    cov = {
+        "pos_coverage": (int((y == 1).sum()) / n_pos_tot) if n_pos_tot else 0.0,
+        "neg_coverage": (int((y == 0).sum()) / n_neg_tot) if n_neg_tot else 0.0,
+        "n_pos_survive": int((y == 1).sum()),
+        "n_countries_survive": int(len({str(x) for x in c})),
+    }
+    if not coverage_gate_ok(cov, min_pos_survival, min_effective_npos,
+                            min_survive_countries, min_neg_survival):
+        return None
+    res = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=seed)
+    return {"candidate": cand, "window": win, "auc": res["global_auc"], "n_valid": len(X)}
+
+
 def greedy_outer_loop(
     samples: pd.DataFrame,
     candidates_top_n: list[str],
@@ -932,6 +960,7 @@ def greedy_outer_loop(
     min_neg_survival: float = MIN_NEG_SURVIVAL,
     lock_floor: float | None = None,
     min_steps_before_abort: int = MIN_STEPS_BEFORE_ABORT,
+    n_jobs: int = 1,
 ) -> dict[str, Any]:
     """Per §5.2/§5.3/§5.4: greedy outer loop with concurrent window search.
 
@@ -939,6 +968,17 @@ def greedy_outer_loop(
     Pick the best (candidate, window) pair; add if lift ≥ delta_step.
     Per Ji-Hoon R2: full LOCO, no subsampling.
     """
+    # #961 bit-identical contract: n_jobs>1 is guaranteed identical-to-serial only for
+    # XGBoost (the fleet architecture — each cell trains one n_jobs=1 booster, fully
+    # deterministic). Concurrent sklearn LR/MLP fits under the thread backend can differ
+    # via BLAS/OpenMP thread state, which would violate §2.5. So we refuse to parallelize
+    # those rather than silently risk a non-reproducible walk (PR #117 review).
+    if n_jobs != 1 and architecture != "XGBoost":
+        raise ValueError(
+            f"n_jobs>1 is bit-identical only for XGBoost (the fleet architecture); got "
+            f"architecture={architecture!r}. Run LR/MLP with n_jobs=1 (BLAS thread state "
+            f"can make concurrent sklearn fits non-deterministic)."
+        )
     selected: list[str] = []
     chosen_window: int | None = None
     remaining = list(candidates_top_n)
@@ -979,31 +1019,30 @@ def greedy_outer_loop(
     while remaining and step < max_steps:
         step += 1
         LOG.info("Greedy step %d/%d (selected=%d, remaining=%d)", step, max_steps, len(selected), len(remaining))
+        # #961: the (candidate × window) grid is embarrassingly parallel — each cell is
+        # an independent, deterministic LOCO eval. Evaluate cells via joblib (THREAD
+        # backend: XGBoost fit releases the GIL and panels stay shared read-only, so we
+        # avoid pickling the multi-MB panels dict per task, and test monkeypatches still
+        # apply). joblib.Parallel preserves INPUT ORDER, so we reduce in the same
+        # cand-major/window-minor order with the same strict-`>` tie-break as the serial
+        # loop → BIT-IDENTICAL to n_jobs=1. n_jobs defaults to 1 (serial; tests + back-compat).
+        cells = [(cand, win) for cand in remaining for win in WINDOW_GRID]
+        results = Parallel(n_jobs=n_jobs, prefer="threads")(
+            delayed(_eval_grid_cell)(
+                samples, selected, cand, win, panels, architecture, seed,
+                n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
+                min_survive_countries, min_neg_survival,
+            )
+            for (cand, win) in cells
+        )
         best = None
-        for ci, cand in enumerate(remaining):
-            for win in WINDOW_GRID:
-                trial_set = selected + [cand]
-                X, y, c, yr = build_X_y(samples, trial_set, win, panels)
-                if len(X) < 30 or len(np.unique(y)) < 2:
-                    continue
-                # Coverage gate (truncation fix, 2026-05-25): reject a candidate SET
-                # that drops too many positives / countries — the greedy must not
-                # chase AUC on a truncated subsample (the foreign_intervention defect).
-                cov = {
-                    "pos_coverage": (int((y == 1).sum()) / n_pos_tot) if n_pos_tot else 0.0,
-                    "neg_coverage": (int((y == 0).sum()) / n_neg_tot) if n_neg_tot else 0.0,
-                    "n_pos_survive": int((y == 1).sum()),
-                    "n_countries_survive": int(len({str(x) for x in c})),
-                }
-                if not coverage_gate_ok(cov, min_pos_survival, min_effective_npos,
-                                        min_survive_countries, min_neg_survival):
-                    continue
-                res = fit_predict_loco(X, y, c, yr, architecture=architecture, seed=seed)
-                auc = res["global_auc"]
-                if best is None or auc > best["auc"]:
-                    best = {"candidate": cand, "window": win, "auc": auc, "n_valid": len(X)}
-            if (ci + 1) % 5 == 0:
-                LOG.info("  evaluated %d/%d candidates at step %d", ci + 1, len(remaining), step)
+        for res in results:  # input order preserved → identical tie-break to serial
+            if res is None:
+                continue
+            if best is None or res["auc"] > best["auc"]:
+                best = res
+        LOG.info("  evaluated %d grid cells (%d candidates × %d windows) at step %d",
+                 len(cells), len(remaining), len(WINDOW_GRID), step)
         if best is None:
             LOG.info("  no candidate produced a valid LOCO; halting greedy")
             break
@@ -1377,6 +1416,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-greedy-steps", type=int, default=12)
     parser.add_argument("--negatives-per-positive", type=int, default=3)
     parser.add_argument("--seed", type=int, default=12345)
+    parser.add_argument("--n-jobs", type=int, default=1,
+                        help="#961: parallel workers for the (candidate × window) grid "
+                             "within each greedy step. Default 1 (serial). Bit-identical "
+                             "to serial at any n_jobs (thread backend, ordered reduce). "
+                             "The fleet sets this per-recipe by vCPU count (#962).")
     parser.add_argument("--max-candidates-debug", type=int, default=None,
                         help="Debug mode: cap candidates at N (NOT for production walks).")
     return parser
@@ -1507,6 +1551,7 @@ def _main(argv: list[str] | None = None) -> int:
             checkpoint_path=None if args.no_checkpoint else greedy_ckpt_path,
             config_signature=None if args.no_checkpoint else sig,
             lock_floor=lock_floor,
+            n_jobs=args.n_jobs,
         )
         # Persist the completed greedy result BEFORE LOCK GATE EVAL so a crash
         # in the (cheaper but historically fragile) LOCK phase never re-runs the
