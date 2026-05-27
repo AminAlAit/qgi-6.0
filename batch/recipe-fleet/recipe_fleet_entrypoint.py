@@ -484,6 +484,11 @@ def run_walk(
         cmd += ["--lock-floor", str(lock_floor)]
     if cohort_loco_floor is not None:
         cmd += ["--cohort-loco-floor", str(cohort_loco_floor)]
+    # FLEET-4c: the SFN Map sets N_JOBS = this job's per-recipe vCPU (#962); pass it to the
+    # #961 parallel grid. Default 1 (serial, bit-identical) when unset or non-numeric. The
+    # fleet runs only XGBoost (N_pos>=60) recipes, so n_jobs>1 is always the bit-identical path.
+    n_jobs = os.environ.get("N_JOBS", "1")
+    cmd += ["--n-jobs", n_jobs if n_jobs.isdigit() and int(n_jobs) >= 1 else "1"]
 
     LOG.info("Launching walk: %s", " ".join(cmd))
     t0 = time.monotonic()
