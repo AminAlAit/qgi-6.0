@@ -361,6 +361,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
       { label: "Recipes V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
       { label: "Recipes V4.1", href: "/precedents-v4.1" as Route, badge: "PREVIEW" },
       { label: "Countries V4", href: "/countries-v4" as Route, badge: "PREVIEW" },
+      { label: "Countries V4.1", href: "/countries-v4.1" as Route, badge: "PREVIEW" },
       { label: "Patterns V4", href: "/patterns-v4" as Route, badge: "PREVIEW" },
       { label: "Live Risk Board", href: "/risk-board" as Route, badge: "PREVIEW" },
       { label: "Compound Risk", href: "/compound-risk" as Route, badge: "PREVIEW" },
