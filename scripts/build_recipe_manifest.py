@@ -26,7 +26,9 @@ Update this manifest whenever qgi-data/events/curated/ changes (new positive
 events added or removed). Commit the updated recipe-manifest.json alongside
 the positives.csv changes.
 
-# THROWAWAY: not tested — output-only utility script.
+Tested: tests/test_build_recipe_manifest.py (sizing tiers, country count, job batching).
+The `vcpu` field on each runnable_job is consumed by the post-#962 SFN Map (VCPU override
++ --n-jobs); the legacy SFN ignores it and submits at the job-definition default.
 """
 from __future__ import annotations
 
@@ -47,6 +49,27 @@ THIN_MIN_NPOS = 8         # thin walk (5-step greedy cap)
 # Batch job grouping: ~5 recipes per Batch job (design §2a "batches of ~5")
 RECIPES_PER_JOB = 5
 
+# #962 per-recipe Spot sizing. The wall-clock / cost driver is the COUNTRY count
+# (= LOCO folds), not n_pos, so jobs are sized + batched by it. vCPU = the --n-jobs the
+# parallel walk (#961) uses; batch_size shrinks for fat recipes so each fat job stays
+# small (it processes its batch SEQUENTIALLY, so we don't pile slow recipes into one job).
+# vCPUs stay within the FLEET-9 cap: max_vcpus=48 ≥ MaxConcurrency throttles concurrent
+# fat jobs. Tiers (consult 2026-05-27): <60 ctry→4 / 60-99→8 / ≥100→16 vCPU.
+SIZE_TIERS = [
+    # (max_countries_exclusive, tier, vcpu, batch_size)
+    (60, "small", 4, 5),
+    (100, "medium", 8, 3),
+    (10**9, "fat", 16, 1),
+]
+
+
+def size_tier(n_countries: int) -> dict:
+    """Pure: map a recipe's country count to its sizing tier (tier, vcpu, batch_size)."""
+    for ceil, tier, vcpu, batch in SIZE_TIERS:
+        if n_countries < ceil:
+            return {"tier": tier, "vcpu": vcpu, "batch_size": batch}
+    raise AssertionError("unreachable: SIZE_TIERS last bound is open")
+
 
 def count_positives(positives_csv: Path) -> int:
     """Count data rows (non-header) in a positives.csv file."""
@@ -60,9 +83,45 @@ def count_positives(positives_csv: Path) -> int:
         return 0
 
 
+def count_countries(positives_csv: Path) -> int:
+    """Count DISTINCT country_id (LOCO folds) in a positives.csv — the sizing driver."""
+    try:
+        with positives_csv.open() as f:
+            rows = [ln.strip() for ln in f if ln.strip()]
+        if len(rows) < 2:
+            return 0
+        # header is "country_id,event_year"; country_id is column 0
+        return len({r.split(",", 1)[0] for r in rows[1:]})
+    except Exception as exc:  # noqa: BLE001
+        LOG.warning("Could not read countries from %s: %s", positives_csv, exc)
+        return 0
+
+
 def chunk_list(items: list, size: int) -> list[list]:
     """Split list into sublists of up to `size` items each."""
     return [items[i : i + size] for i in range(0, len(items), size)]
+
+
+def build_runnable_jobs(runnable: list[dict]) -> list[dict]:
+    """Pure: group runnable recipes into sized Batch jobs (#962). Recipes are bucketed by
+    sizing tier, sorted densest-first within a tier, then chunked at the tier's batch_size.
+    Each job carries the vCPU the SFN Map sets (resourceRequirements + --n-jobs). Returns a
+    list of {recipe_ids: 'a,b', vcpu, tier, n_recipes, max_countries}."""
+    by_tier: dict[str, list[dict]] = {}
+    for r in runnable:
+        by_tier.setdefault(r["size"]["tier"], []).append(r)
+    jobs: list[dict] = []
+    for _, tier, vcpu, batch in SIZE_TIERS:
+        members = sorted(by_tier.get(tier, []), key=lambda x: x["n_pos"], reverse=True)
+        for chunk in chunk_list(members, batch):
+            jobs.append({
+                "recipe_ids": ",".join(c["recipe_id"] for c in chunk),
+                "vcpu": vcpu,
+                "tier": tier,
+                "n_recipes": len(chunk),
+                "max_countries": max(c["n_countries"] for c in chunk),
+            })
+    return jobs
 
 
 def build_manifest(data_dir: Path) -> dict:
@@ -84,8 +143,10 @@ def build_manifest(data_dir: Path) -> dict:
             LOG.warning("No positives.csv for %s — skipping", recipe_id)
             continue
         n_pos = count_positives(positives_csv)
-        entry = {"recipe_id": recipe_id, "n_pos": n_pos}
+        n_countries = count_countries(positives_csv)
+        entry = {"recipe_id": recipe_id, "n_pos": n_pos, "n_countries": n_countries}
         if n_pos >= RUNNABLE_MIN_NPOS:
+            entry["size"] = size_tier(n_countries)  # #962 vCPU sizing for the fan-out
             runnable.append(entry)
         elif n_pos >= THIN_MIN_NPOS:
             thin.append(entry)
@@ -97,13 +158,13 @@ def build_manifest(data_dir: Path) -> dict:
     thin.sort(key=lambda x: x["n_pos"], reverse=True)
     skip.sort(key=lambda x: x["n_pos"], reverse=True)
 
-    # Pre-batch runnable recipes into job batches of ~5 each.
-    # Each batch becomes one item in the SFN Map's runnable_recipes array.
-    # The entrypoint receives RECIPE_IDS=comma-joined batch and processes
-    # recipes sequentially within the job.
-    runnable_ids = [r["recipe_id"] for r in runnable]
+    # #962 sized jobs: batch runnable recipes by sizing tier, each job carrying its vCPU.
+    # The SFN Map adopts `runnable_jobs` (per-job VCPU override + --n-jobs). `runnable_recipes`
+    # is kept (DERIVED from the same jobs → consistent) so the current SFN keeps working until
+    # it adopts the sized form. thin recipes stay on the legacy ~5-chunk (all small/2-vCPU).
+    runnable_jobs = build_runnable_jobs(runnable)
     thin_ids = [r["recipe_id"] for r in thin]
-    job_batches = chunk_list(runnable_ids, RECIPES_PER_JOB)
+    job_batches = [j["recipe_ids"].split(",") for j in runnable_jobs]
     thin_batches = chunk_list(thin_ids, RECIPES_PER_JOB)
 
     manifest = {
@@ -118,9 +179,12 @@ def build_manifest(data_dir: Path) -> dict:
             "skip": len(skip),
             "total": len(runnable) + len(thin) + len(skip),
         },
-        # runnable_recipes: list of comma-separated batch strings.
-        # Each string is passed as RECIPE_IDS to one Batch job.
-        # SFN Map iterates over this array (one element = one Batch job).
+        # runnable_jobs (#962): the SIZED form the SFN Map adopts — one object per Batch
+        # job: {recipe_ids, vcpu, tier, n_recipes, max_countries}. The Map sets the job's
+        # resourceRequirements VCPU + passes --n-jobs = vcpu to the parallel walk (#961).
+        "runnable_jobs": runnable_jobs,
+        # runnable_recipes: legacy comma-string form, DERIVED from runnable_jobs (same
+        # batching) so the pre-#962 SFN keeps working until it reads runnable_jobs.
         "runnable_recipes": [",".join(batch) for batch in job_batches],
         # thin_recipes: same structure. Can be added to SFN Map if desired.
         "thin_recipes": [",".join(batch) for batch in thin_batches],
