@@ -143,3 +143,53 @@ def test_attestation_blocks_on_pending_majles_transition():
                                        panel_fingerprint="fp")
     assert a["all_conditions_pass"] and not a["tracker_pr_may_merge"]  # graduation needs sign-off
     assert a["transitions_pending_majles"] == trans
+
+
+# ---- assemble_tracker_draft (handler's pure orchestrator) -------------------
+
+def test_assemble_draft_rows_tiers_transitions_attestation():
+    results = {
+        "lockr": _res("LOCK"),
+        "dirr": _res("MARGINAL_PENDING_BETA_CALIBRATION", 0.80, 0.73, 0.86),
+        "expr": _res("HARD_FAIL", 0.58, 0.50, 0.66),
+        "newr": None,  # queued
+    }
+    prev = {"lockr": pp.DIRECTIONAL, "dirr": pp.DIRECTIONAL, "expr": pp.EXPERIMENTAL}
+    out = pp.assemble_tracker_draft(results=results, prev_tiers=prev, conditions=dict(_OK),
+                                    run_id="r1", panel_fingerprint="fp")
+    rows = {r["recipe_id"]: r for r in out["draft_recipes"]}
+    assert rows["lockr"]["tier"] == pp.VALIDATED and rows["lockr"]["status"] == "graduated"
+    assert rows["dirr"]["tier"] == pp.DIRECTIONAL and rows["dirr"]["status"] == "walked_no_graduation"
+    assert rows["expr"]["tier"] == pp.EXPERIMENTAL
+    assert rows["newr"]["tier"] == pp.QUEUED and rows["newr"]["status"] == "queued"
+    # lockr graduated (directional→validated); others unchanged
+    t = {x["recipe_id"]: x for x in out["transitions"]}
+    assert set(t) == {"lockr"} and t["lockr"]["direction"] == "graduation"
+    # a pending graduation blocks the tracker PR merge
+    assert out["attestation"]["all_conditions_pass"] and not out["attestation"]["tracker_pr_may_merge"]
+
+
+def test_assemble_never_grandfathers_a_slipped_recipe():
+    # was Validated last vintage; this run only MARGINAL+weak → must re-derive DOWN, surface a slip
+    results = {"r": _res("MARGINAL_PENDING_BETA_CALIBRATION", 0.62, 0.51, 0.74, cohort_median=0.52)}
+    out = pp.assemble_tracker_draft(results=results, prev_tiers={"r": pp.VALIDATED},
+                                    conditions=dict(_OK), run_id="r1", panel_fingerprint="fp")
+    row = out["draft_recipes"][0]
+    assert row["tier"] != pp.VALIDATED            # NOT grandfathered to its old Validated
+    assert out["transitions"][0]["direction"] == "slip"
+
+
+def test_assemble_beats_baseline_per_recipe_demotes():
+    results = {"r": _res("HARD_FAIL", 0.80, 0.72, 0.86)}  # would be Directional...
+    out = pp.assemble_tracker_draft(results=results, prev_tiers={}, conditions=dict(_OK),
+                                    run_id="r1", panel_fingerprint="fp",
+                                    beats_baseline={"r": False})  # ...but fails baseline-beat
+    assert out["draft_recipes"][0]["tier"] == pp.EXPERIMENTAL
+
+
+def test_assemble_overrides_caller_no_grandfather_false():
+    # a stale/buggy caller cannot smuggle in no_grandfathered_tiers=False — this path proves it
+    bad = dict(_OK, no_grandfathered_tiers=False)
+    out = pp.assemble_tracker_draft(results={"r": _res("LOCK")}, prev_tiers={"r": pp.VALIDATED},
+                                    conditions=bad, run_id="r1", panel_fingerprint="fp")
+    assert out["attestation"]["conditions"]["no_grandfathered_tiers"] is True
