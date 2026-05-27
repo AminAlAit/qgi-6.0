@@ -1,0 +1,173 @@
+/**
+ * country-iso2 — name → ISO-3166-1 alpha-2 (lowercase) lookup.
+ *
+ * Companion to country-flags.ts. We keep the emoji codepoint in mock data
+ * (used for ARIA / fallback), but the visible flag on the page is an
+ * <img src="https://flagcdn.com/16x12/<iso2>.png" /> — Windows 10 ships no
+ * font that renders regional-indicator pairs as actual flags, and falling
+ * back to "UA"/"YE"/"SD" letter pairs looked broken on the founder's
+ * browser (#162 part B, 2026-05-27).
+ *
+ * Lowercase to match flagcdn.com's path convention.
+ *
+ * Mockup-only — when the bake ships per-country JSONs the ISO code will
+ * come from `countries/<iso>.json#iso2` directly.
+ *
+ * — Daniyar Bekmurat, Comparative Historical Pattern Matching
+ */
+
+const ISO2: Record<string, string> = {
+  // Events that actually appear in precedents-corpus-mock.ts ──────────────
+  Ukraine: "ua",
+  Yemen: "ye",
+  Syria: "sy",
+  Libya: "ly",
+  "Central African Republic": "cf",
+  Sudan: "sd",
+  Niger: "ne",
+  Lebanon: "lb",
+  Mali: "ml",
+  "Burkina Faso": "bf",
+  Ethiopia: "et",
+  Myanmar: "mm",
+  Mozambique: "mz",
+  Chile: "cl",
+  Tunisia: "tn",
+  Kenya: "ke",
+  Bolivia: "bo",
+
+  // Broader roster — keep aligned with country-flags.ts so the same util
+  // can be reused by adjacent panels if they later switch to img flags.
+  // MENA
+  Iran: "ir",
+  Iraq: "iq",
+  Israel: "il",
+  "Saudi Arabia": "sa",
+  Qatar: "qa",
+  Egypt: "eg",
+  Morocco: "ma",
+  Algeria: "dz",
+  Jordan: "jo",
+  Turkey: "tr",
+  // Africa
+  "South Sudan": "ss",
+  Eritrea: "er",
+  Somalia: "so",
+  Uganda: "ug",
+  Rwanda: "rw",
+  Burundi: "bi",
+  DRC: "cd",
+  "Congo, DRC": "cd",
+  CAR: "cf",
+  Guinea: "gn",
+  Senegal: "sn",
+  Cameroon: "cm",
+  Nigeria: "ng",
+  Ghana: "gh",
+  Angola: "ao",
+  "Equatorial Guinea": "gq",
+  Zambia: "zm",
+  "South Africa": "za",
+  Madagascar: "mg",
+  "Sierra Leone": "sl",
+  // Asia
+  Pakistan: "pk",
+  Afghanistan: "af",
+  India: "in",
+  "Sri Lanka": "lk",
+  Bangladesh: "bd",
+  Nepal: "np",
+  Bhutan: "bt",
+  China: "cn",
+  "North Korea": "kp",
+  "South Korea": "kr",
+  Japan: "jp",
+  Mongolia: "mn",
+  Taiwan: "tw",
+  Vietnam: "vn",
+  Cambodia: "kh",
+  Laos: "la",
+  Thailand: "th",
+  Indonesia: "id",
+  Philippines: "ph",
+  Malaysia: "my",
+  Singapore: "sg",
+  "Myanmar (2011-15)": "mm",
+  // Central Asia
+  Kazakhstan: "kz",
+  Uzbekistan: "uz",
+  Turkmenistan: "tm",
+  Tajikistan: "tj",
+  Kyrgyzstan: "kg",
+  // Caucasus
+  Armenia: "am",
+  Azerbaijan: "az",
+  Georgia: "ge",
+  // Europe (East)
+  Russia: "ru",
+  Belarus: "by",
+  Moldova: "md",
+  Poland: "pl",
+  "Czech Republic": "cz",
+  Hungary: "hu",
+  Slovakia: "sk",
+  Romania: "ro",
+  Bulgaria: "bg",
+  Croatia: "hr",
+  Serbia: "rs",
+  Albania: "al",
+  "North Macedonia": "mk",
+  "Bosnia and Herzegovina": "ba",
+  Slovenia: "si",
+  Estonia: "ee",
+  Latvia: "lv",
+  Lithuania: "lt",
+  // Europe (West)
+  France: "fr",
+  Germany: "de",
+  "United Kingdom": "gb",
+  Ireland: "ie",
+  Iceland: "is",
+  Norway: "no",
+  Sweden: "se",
+  Finland: "fi",
+  Denmark: "dk",
+  Netherlands: "nl",
+  Belgium: "be",
+  Switzerland: "ch",
+  Austria: "at",
+  Italy: "it",
+  Spain: "es",
+  Portugal: "pt",
+  Greece: "gr",
+  Cyprus: "cy",
+  // Americas
+  "United States": "us",
+  Canada: "ca",
+  Mexico: "mx",
+  Argentina: "ar",
+  Brazil: "br",
+  Colombia: "co",
+  Ecuador: "ec",
+  Peru: "pe",
+  Venezuela: "ve",
+  Uruguay: "uy",
+  Paraguay: "py",
+  Cuba: "cu",
+  Nicaragua: "ni",
+  Honduras: "hn",
+  Guatemala: "gt",
+  "El Salvador": "sv",
+  "Costa Rica": "cr",
+  // Other / Special
+  "Hong Kong": "hk",
+};
+
+/**
+ * Resolve a country display-name to its ISO-3166-1 alpha-2 code
+ * (lowercase, matching flagcdn.com's path convention). Returns
+ * empty string for unknown names so callers can branch on falsy.
+ */
+export function iso2For(name: string): string {
+  return ISO2[name] ?? "";
+}

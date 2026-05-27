@@ -235,9 +235,10 @@ export function IndicatorSensitivityPanel({
                   whiteSpace: "nowrap",
                   letterSpacing: "0.3px",
                 }}
-                aria-label={`AUC drop ${fmtAucDrop(row.aucDrop)}`}
+                aria-label={`Removing this indicator drops the score by ${fmtAucDrop(row.aucDrop)}`}
+                title={`If this indicator were removed, the recipe's score-separation would drop by ${fmtAucDrop(row.aucDrop)} (LOCO-AUC).`}
               >
-                −{fmtAucDrop(row.aucDrop)} AUC
+                −{fmtAucDrop(row.aucDrop)}
               </div>
 
               {/* Row 2: full-width bar track + indicator code below */}
@@ -283,16 +284,8 @@ export function IndicatorSensitivityPanel({
                     opacity="0.85"
                   />
                 </svg>
-                <div
-                  style={{
-                    fontFamily: MONO,
-                    fontSize: 10,
-                    color: TEXT_MUTED,
-                    letterSpacing: "0.3px",
-                  }}
-                >
-                  {row.code}
-                </div>
+                {/* 2026-05-27 (#159): raw indicator code hidden — available
+                    on hover via the row's title attribute (above). */}
               </div>
             </li>
           );
@@ -312,7 +305,8 @@ export function IndicatorSensitivityPanel({
           letterSpacing: "0.3px",
         }}
       >
-        bars scaled to largest drop in this recipe · n = {rows.length}
+        Each bar is scaled relative to this recipe&apos;s most load-bearing indicator ·{" "}
+        {rows.length} ingredients
       </div>
     </section>
   );

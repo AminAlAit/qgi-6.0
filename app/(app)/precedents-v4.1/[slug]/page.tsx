@@ -20,18 +20,19 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 
-import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
+import { PageLayout, TallSlot } from "@/components/precedents-v4-1/PageLayout";
 import { StatusChip, STATUS_META } from "@/components/precedents-v2/StatusChip";
 import {
   IndicatorSetPanel,
   WindowPanel,
   IdentityCardPanel,
   DiscriminationPanel,
-  CalibrationPanel,
   PatternCrossLinkFooter,
 } from "@/components/precedents-v4-1/MinorPanels";
+import { CalibrationPanel } from "@/components/precedents-v4-1/CalibrationPanel";
 import { CountriesPanel } from "@/components/precedents-v4-1/CountriesPanel";
-import { SampleSizePanel } from "@/components/precedents-v4-1/SampleSizePanel";
+// SampleSizePanel deprecated 2026-05-27 (#161 — folded into IdentityCardPanel
+// as "Real-world cases" + eligibility chip). File retained, no longer imported.
 import { ReliabilityPanel } from "@/components/precedents-v4-1/ReliabilityPanel";
 import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistributionPanel";
 import { PrecedentsTimelinePanel } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
@@ -96,10 +97,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       }}
     >
       <strong style={{ color: familyColor }}>Demo render.</strong> Real status:{" "}
-      <strong>{STATUS_META[recipe.status].label.toLowerCase()}</strong> (graduation
-      vacated 2026-05-25 — sample-truncation leak; prior LOCO-AUC 0.9147 reduced to ≈0.50
-      on full history). Rendered as graduated to show what a populated page looks like.
-      Truth lives on{" "}
+      <strong>{STATUS_META[recipe.status].label.toLowerCase()}</strong> — graduation
+      withdrawn on 2026-05-25 after a sample-coverage error was found during review.
+      Re-evaluation in progress. Rendered as graduated here so you can see what a
+      populated page looks like. Up-to-date status lives on{" "}
       <Link href={"/recipe-tracker" as Route} style={{ color: familyColor }}>
         /recipe-tracker
       </Link>
@@ -133,14 +134,26 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       definition={mock.definition}
       demoDisclosure={demoDisclosure}
     >
-      {/* ─── Anatomy backbone (Definition lives in the header lede now) ─── */}
-      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
-      <WindowPanel
-        familyColor={familyColor}
-        windowYears={mock.window}
-        ciLow={3}
-        ciHigh={25}
-      />
+      {/*
+        ──────────────────────────────────────────────────────────────────
+        Panel order — pedagogical sort (#164 part 1 — Sofia 2026-05-27).
+        Reader's journey: STRUCTURE → VALIDATION → RESULTS → DEEP-DIVE.
+
+          1. STRUCTURE   IdentityCard (incl. corpus size) · IndicatorSet · Window
+          2. VALIDATION  Discrimination · Reliability · Calibration
+          3. RESULTS     CountriesPanel · ScoreDistribution
+          4. DEEP-DIVE   Precedents · PatternAlignment · IndicatorSensitivity
+
+        IdentityCard leads because it answers "what is this recipe and is
+        it ready to be evaluated" before the reader spends attention on the
+        indicator stack. Calibration moves up into VALIDATION (it's a
+        trustworthiness concern, not a results display). TallSlot wraps
+        panels whose natural height exceeds one grid row (IndicatorSet,
+        Countries, ScoreDistribution, Precedents, PatternAlignment) so the
+        grid's dense flow packs short panels into the leftover cells.
+        ────────────────────────────────────────────────────────────────── */}
+
+      {/* ─── 1. STRUCTURE ──────────────────────────────────────────────── */}
       <IdentityCardPanel
         familyColor={familyColor}
         l1_id={recipe.l1_id}
@@ -149,16 +162,20 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         nIndicators={enrichedIndicators.length}
         status={recipe.status}
         vintage={vintageStamp()}
-      />
-      <SampleSizePanel
-        familyColor={familyColor}
         nPositives={mock.nPositives ?? 0}
-        nCohorts={extras.nCohorts}
         thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
-        threshold={extras.threshold}
+      />
+      <TallSlot>
+        <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
+      </TallSlot>
+      <WindowPanel
+        familyColor={familyColor}
+        windowYears={mock.window}
+        ciLow={3}
+        ciHigh={25}
       />
 
-      {/* ─── Results panels (gated for non-demo non-graduated) ─────────── */}
+      {/* ─── 2. VALIDATION (does it work) ──────────────────────────────── */}
       <DiscriminationPanel
         familyColor={familyColor}
         locoAuc={locoAuc}
@@ -173,46 +190,55 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         walksCompleted={extras.reliability.walksCompleted}
         verdict={extras.reliability.verdict}
       />
-      {/* Combined top-5 + bottom-5 panel with internal "Full list" toggle
-          (#158 — Talia 2026-05-26). Replaces the old TopCountriesPanel +
-          BottomCountriesPanel pair; NOT wrapped in ExpandableShell — it
-          owns its own expand surface. */}
-      <CountriesPanel
-        familyColor={familyColor}
-        countriesTop={mock.countriesTop}
-        countriesBottom={extras.countriesBottom}
-        countriesFull={countriesFull}
-        showResults={showResults}
-      />
-      <ExpandableShell familyColor={familyColor} label="Score distribution">
-        <ScoreDistributionPanel
-          familyColor={familyColor}
-          histogram={extras.distribution.histogram}
-          median={extras.distribution.median}
-          p90={extras.distribution.p90}
-          p99={extras.distribution.p99}
-          max={extras.distribution.max}
-        />
-      </ExpandableShell>
       <CalibrationPanel familyColor={familyColor} showCalibrationData={false} />
 
-      {/* ─── Trajectory + corpus + sensitivity ─────────────────────────── */}
-      <ExpandableShell familyColor={familyColor} label="Precedents timeline">
-        <PrecedentsTimelinePanel
+      {/* ─── 3. RESULTS (what does it find) ────────────────────────────── */}
+      {/* Combined top-5 + bottom-5 panel with internal "Full list" toggle
+          (#158 — Talia 2026-05-26). NOT wrapped in ExpandableShell — owns
+          its own expand surface. TallSlot reserves 2 grid rows. */}
+      <TallSlot>
+        <CountriesPanel
           familyColor={familyColor}
-          events={corpusEvents}
-          totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
+          countriesTop={mock.countriesTop}
+          countriesBottom={extras.countriesBottom}
+          countriesFull={countriesFull}
+          showResults={showResults}
         />
-      </ExpandableShell>
-      <ExpandableShell familyColor={familyColor} label="Pattern alignment">
-        <PatternAlignmentPanel
-          familyColor={familyColor}
-          recipeId={recipe.recipe_id}
-          windowYears={mock.window}
-          indicators={enrichedIndicators}
-          shapeData={shapeData}
-        />
-      </ExpandableShell>
+      </TallSlot>
+      <TallSlot>
+        <ExpandableShell familyColor={familyColor} label="Score distribution">
+          <ScoreDistributionPanel
+            familyColor={familyColor}
+            histogram={extras.distribution.histogram}
+            median={extras.distribution.median}
+            p90={extras.distribution.p90}
+            p99={extras.distribution.p99}
+            max={extras.distribution.max}
+          />
+        </ExpandableShell>
+      </TallSlot>
+
+      {/* ─── 4. DEEP-DIVE (anatomy of the prediction) ──────────────────── */}
+      <TallSlot>
+        <ExpandableShell familyColor={familyColor} label="Precedents timeline">
+          <PrecedentsTimelinePanel
+            familyColor={familyColor}
+            events={corpusEvents}
+            totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
+          />
+        </ExpandableShell>
+      </TallSlot>
+      <TallSlot>
+        <ExpandableShell familyColor={familyColor} label="Pattern alignment">
+          <PatternAlignmentPanel
+            familyColor={familyColor}
+            recipeId={recipe.recipe_id}
+            windowYears={mock.window}
+            indicators={enrichedIndicators}
+            shapeData={shapeData}
+          />
+        </ExpandableShell>
+      </TallSlot>
       <ExpandableShell familyColor={familyColor} label="Indicator sensitivity">
         <IndicatorSensitivityPanel
           familyColor={familyColor}

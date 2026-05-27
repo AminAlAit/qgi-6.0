@@ -14,6 +14,7 @@
  */
 import Link from "next/link";
 import type { Route } from "next";
+import type { ReactNode } from "react";
 import { PanelBase } from "./PanelBase";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import type { IndicatorWithWeight, CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
@@ -101,18 +102,12 @@ export function IndicatorSetPanel({
                   fontWeight: 600,
                   lineHeight: 1.3,
                 }}
+                title={ind.code}
               >
                 {ind.name}
               </div>
-              <code
-                style={{
-                  fontSize: "10px",
-                  color: "var(--qgi-text-muted)",
-                  fontFamily: "ui-monospace, monospace",
-                }}
-              >
-                {ind.code}
-              </code>
+              {/* 2026-05-27 (#159): raw indicator code (e.g. v2pepwrgen) removed
+                  from visible row; available on hover via the title attribute. */}
             </div>
             {hasWeights && (
               <div
@@ -251,7 +246,13 @@ export function WindowPanel({
   );
 }
 
-/* ───────── Identity card (slimmed — #153) ───────────────────────────── */
+/* ───────── Identity card (merged with sample-size — #161 / Sofia 2026-05-27) ─── */
+/*                                                                                  */
+/* Founder #161: Sample-size sufficiency stops being a sibling panel; its           */
+/* user-facing essence (real-world case count + an "is the recipe big enough        */
+/* to be evaluated" yes/no) folds into Identity card. The "LOCO cohorts" tile       */
+/* and the "≥60-pos" jargon are gone from visible copy. Threshold detail stays      */
+/* in the tooltip for technical readers. R&D Q5 binding preserved.                  */
 
 const STATUS_LABELS: Record<string, string> = {
   graduated: "Graduated",
@@ -278,6 +279,8 @@ export function IdentityCardPanel({
   nIndicators,
   status,
   vintage,
+  nPositives,
+  thresholdMet,
 }: {
   familyColor: string;
   l1_id: string;
@@ -286,12 +289,18 @@ export function IdentityCardPanel({
   nIndicators: number;
   status: string;
   vintage: string;
+  /** Curated count of documented real-world cases of this event. */
+  nPositives: number;
+  /** Whether the corpus is large enough for the recipe to be evaluated. */
+  thresholdMet: boolean;
 }) {
+  const eligibleColor = thresholdMet ? "#3FBF8F" : "#E68F29";
+  const eligibleLabel = thresholdMet ? "Eligible for evaluation" : "Not yet eligible";
   return (
     <PanelBase
       title="Identity card"
       familyColor={familyColor}
-      titleTooltip="The recipe's ID badge: L1/L2 taxonomic position, indicator count, current status, and the vintage stamp of the run that produced these numbers."
+      titleTooltip="The recipe's ID badge: taxonomic position, indicator count, current status, vintage, and the size of the curated case corpus. Recipes need at least 60 verified positives before the discrimination assessment can run."
       id="cap-5"
     >
       <div
@@ -306,6 +315,32 @@ export function IdentityCardPanel({
         <Field label="Indicators" value={String(nIndicators)} />
         <Field label="Status" value={formatStatus(status)} />
         <Field label="Tracker vintage" value={vintage} />
+        <Field
+          label="Real-world cases"
+          value={nPositives.toLocaleString()}
+          inlineChip={
+            <span
+              title={
+                thresholdMet
+                  ? "The curated corpus is large enough for the recipe to be honestly assessed."
+                  : "The curated corpus is not yet large enough for an honest assessment. More cases are being collected."
+              }
+              style={{
+                fontSize: "9.5px",
+                letterSpacing: "0.6px",
+                fontFamily: "ui-monospace, monospace",
+                color: eligibleColor,
+                border: `1px solid ${eligibleColor}`,
+                borderRadius: "3px",
+                padding: "1px 6px",
+                textTransform: "uppercase",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {eligibleLabel}
+            </span>
+          }
+        />
       </div>
     </PanelBase>
   );
@@ -315,10 +350,12 @@ function Field({
   label,
   value,
   accent,
+  inlineChip,
 }: {
   label: string;
   value: string;
   accent?: string;
+  inlineChip?: ReactNode;
 }) {
   return (
     <div>
@@ -336,13 +373,23 @@ function Field({
       </div>
       <div
         style={{
-          fontSize: "12.5px",
-          color: accent ?? "var(--qgi-text)",
-          fontWeight: 500,
-          fontFamily: "ui-monospace, monospace",
+          display: "flex",
+          alignItems: "center",
+          gap: "8px",
+          flexWrap: "wrap",
         }}
       >
-        {value}
+        <div
+          style={{
+            fontSize: "12.5px",
+            color: accent ?? "var(--qgi-text)",
+            fontWeight: 500,
+            fontFamily: "ui-monospace, monospace",
+          }}
+        >
+          {value}
+        </div>
+        {inlineChip}
       </div>
     </div>
   );
