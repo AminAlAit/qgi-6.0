@@ -64,14 +64,14 @@ export function PatternAlignmentPanel({
         <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
           <h3
             style={{
-              fontSize: "13px",
+              fontSize: "15px",
               fontWeight: 600,
               color: familyColor,
-              letterSpacing: "0.4px",
+              letterSpacing: "0.1px",
               margin: 0,
             }}
           >
-            PATTERN-LEVEL ALIGNMENT
+            Pattern-level alignment
           </h3>
           <span
             style={{

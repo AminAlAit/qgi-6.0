@@ -40,8 +40,11 @@ const VERDICT_CAPTION: Record<Verdict, string> = {
     "The recipe failed at least one pre-registered gate. It is publicly reported, not deployed, and stays in the queue for re-walk if the methodology is amended.",
   MARGINAL:
     "The recipe cleared the discrimination floor but missed a secondary gate. It is held pending a follow-up walk; no live deployment yet.",
-  VACATED:
-    "A prior graduation was withdrawn after a leak or methodology error was discovered. The recipe re-enters the queue under the corrected protocol.",
+  // 2026-05-28 (#1): the vacate/leak narrative is internal — it belongs on
+  // /recipe-tracker + the blog, not on the user-facing recipe page. Keep this
+  // confident and minimal; the up-to-date status pointer lives in the page
+  // header's demo-disclosure when applicable.
+  VACATED: "Under re-evaluation.",
 };
 
 export function ReliabilityPanel({

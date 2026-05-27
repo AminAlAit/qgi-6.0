@@ -15,40 +15,14 @@
  */
 import Link from "next/link";
 import type { Route } from "next";
-import type { ReactNode, CSSProperties } from "react";
+import type { ReactNode } from "react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 
-/**
- * TallSlot — wrap a panel that is taller than ~1 grid row so the layout
- * engine reserves N rows for it. With `grid-auto-flow: row dense` on the
- * grid, shorter panels coming AFTER a tall one back-fill the leftover row
- * cells, removing the empty-band gaps that uniform-row `auto-fit` grids
- * create when panel heights are uneven.
- *
- * Why a wrapper (and not a prop on PanelBase)? PanelBase is reused outside
- * the v4.1 grid (e.g. inside ExpandableShell), so span hints are a layout-
- * level concern, not a panel-internals concern. Keeping it in the page
- * composition layer keeps the panel components grid-agnostic.
- *
- * The wrapper itself uses `display: flex; flex-direction: column` so the
- * panel inside (also `display: flex; flex-direction: column`) stretches
- * to fill the wrapper's box, which the grid stretches to span N tracks.
- */
-export function TallSlot({ children, span = 2 }: { children: ReactNode; span?: number }) {
-  // The wrapper reserves N grid rows via `grid-row: span N`. The panel inside
-  // renders at its natural content height; if it's slightly shorter than N
-  // rows, the unused space is at the bottom of THIS slot — but neighboring
-  // SHORT panels are unaffected because `grid-auto-flow: row dense` (set on
-  // the parent grid) back-fills them into the row cells the tall panel did
-  // not occupy. Net result: no awkward bands of empty space across the grid.
-  const style: CSSProperties = {
-    gridRow: `span ${span}`,
-    minWidth: 0,
-    display: "flex",
-    flexDirection: "column",
-  };
-  return <div style={style}>{children}</div>;
-}
+// 2026-05-28: TallSlot removed. It wrapped chart panels in a span-2 grid
+// item, which STOLE grid-item status from the ExpandableShell inside it —
+// so ExpandableShell's `gridColumn: 1 / -1` expand silently no-op'd on every
+// panel except the one not wrapped in TallSlot. Panels are now direct grid
+// items (content-sized rows), so expand works everywhere.
 
 interface RecipeSummary {
   recipe_id: string;
@@ -203,18 +177,23 @@ export function PageLayout({
         </div>
       </div>
 
-      {/* Panel grid — dense row flow + fixed row height so TallSlot span-2
-          hints reserve coherent 2-row tracks (~580px) for naturally-tall
-          panels, while shorter panels back-fill leftover row cells. Removes
-          the empty-band gaps the prior row-aligned `auto-fit` grid forced. */}
+      {/* Panel grid — content-sized rows, top-aligned. Each panel renders at
+          its natural height (no fixed-row stretch → no internal empty space,
+          and a full-width child like the cross-link footer stays slim instead
+          of being forced to a tall track). ExpandableShell panels are direct
+          grid items so their `gridColumn: 1 / -1` expand works; the full-width
+          item claims a fresh row without overlapping its neighbor. */}
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
-            gridAutoRows: "280px",
-            gridAutoFlow: "row dense",
+            gridAutoRows: "auto",
             gap: "16px",
+            // stretch so same-row panels equalize height — clean aligned edges
+            // (panel borders contain any internal slack), no ragged inter-row
+            // gaps. Expanded ExpandableShell items take gridColumn 1 / -1 and
+            // claim their own row, so stretch never distorts them.
             alignItems: "stretch",
           }}
         >
