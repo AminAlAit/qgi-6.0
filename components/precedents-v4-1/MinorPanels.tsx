@@ -676,31 +676,27 @@ export function PatternCrossLinkFooter({
     <div
       style={{
         gridColumn: "1 / -1",
-        marginTop: "8px",
-        padding: "12px 16px",
-        background: "var(--qgi-surface)",
-        border: "1px solid var(--qgi-border)",
-        borderLeft: `3px solid ${familyColor}`,
-        borderRadius: "6px",
+        marginTop: "4px",
+        padding: "8px 14px",
+        background: "transparent",
+        borderTop: "1px solid var(--qgi-border)",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "flex-end",
         alignItems: "center",
-        fontSize: "12px",
-        color: "var(--qgi-text-muted)",
+        gap: "12px",
+        fontSize: "11px",
+        color: "var(--qgi-text-dim)",
         fontFamily: "ui-monospace, monospace",
         letterSpacing: "0.2px",
       }}
     >
-      <span>The full canonical pattern viz lives at /patterns-v4/{recipeId}.</span>
+      <span>Full canonical-pattern view</span>
       <Link
         href={`/patterns-v4/${recipeId}` as Route}
         style={{
           color: familyColor,
           textDecoration: "none",
           fontWeight: 600,
-          border: `1px solid ${familyColor}`,
-          padding: "4px 10px",
-          borderRadius: "3px",
         }}
       >
         Open pattern →

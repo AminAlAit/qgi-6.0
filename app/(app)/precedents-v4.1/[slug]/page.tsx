@@ -20,7 +20,7 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 
-import { PageLayout, TallSlot } from "@/components/precedents-v4-1/PageLayout";
+import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
 import { StatusChip, STATUS_META } from "@/components/precedents-v2/StatusChip";
 import {
   IndicatorSetPanel,
@@ -165,9 +165,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         nPositives={mock.nPositives ?? 0}
         thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
       />
-      <TallSlot>
-        <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
-      </TallSlot>
+      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
       <WindowPanel
         familyColor={familyColor}
         windowYears={mock.window}
@@ -195,50 +193,42 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       {/* ─── 3. RESULTS (what does it find) ────────────────────────────── */}
       {/* Combined top-5 + bottom-5 panel with internal "Full list" toggle
           (#158 — Talia 2026-05-26). NOT wrapped in ExpandableShell — owns
-          its own expand surface. TallSlot reserves 2 grid rows. */}
-      <TallSlot>
-        <CountriesPanel
+          its own expand surface. */}
+      <CountriesPanel
+        familyColor={familyColor}
+        countriesTop={mock.countriesTop}
+        countriesBottom={extras.countriesBottom}
+        countriesFull={countriesFull}
+        showResults={showResults}
+      />
+      <ExpandableShell familyColor={familyColor} label="Score distribution">
+        <ScoreDistributionPanel
           familyColor={familyColor}
-          countriesTop={mock.countriesTop}
-          countriesBottom={extras.countriesBottom}
-          countriesFull={countriesFull}
-          showResults={showResults}
+          histogram={extras.distribution.histogram}
+          median={extras.distribution.median}
+          p90={extras.distribution.p90}
+          p99={extras.distribution.p99}
+          max={extras.distribution.max}
         />
-      </TallSlot>
-      <TallSlot>
-        <ExpandableShell familyColor={familyColor} label="Score distribution">
-          <ScoreDistributionPanel
-            familyColor={familyColor}
-            histogram={extras.distribution.histogram}
-            median={extras.distribution.median}
-            p90={extras.distribution.p90}
-            p99={extras.distribution.p99}
-            max={extras.distribution.max}
-          />
-        </ExpandableShell>
-      </TallSlot>
+      </ExpandableShell>
 
       {/* ─── 4. DEEP-DIVE (anatomy of the prediction) ──────────────────── */}
-      <TallSlot>
-        <ExpandableShell familyColor={familyColor} label="Precedents timeline">
-          <PrecedentsTimelinePanel
-            familyColor={familyColor}
-            events={corpusEvents}
-            totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
-          />
-        </ExpandableShell>
-      </TallSlot>
-      <TallSlot>
-        <ExpandableShell familyColor={familyColor} label="Pattern alignment">
-          <PatternAlignmentPanel
-            familyColor={familyColor}
-            recipeId={recipe.recipe_id}
-            windowYears={mock.window}
-            indicators={enrichedIndicators}
-            shapeData={shapeData}
-          />
-        </ExpandableShell>
-      </TallSlot>
+      <ExpandableShell familyColor={familyColor} label="Precedents timeline">
+        <PrecedentsTimelinePanel
+          familyColor={familyColor}
+          events={corpusEvents}
+          totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
+        />
+      </ExpandableShell>
+      <ExpandableShell familyColor={familyColor} label="Pattern alignment">
+        <PatternAlignmentPanel
+          familyColor={familyColor}
+          recipeId={recipe.recipe_id}
+          windowYears={mock.window}
+          indicators={enrichedIndicators}
+          shapeData={shapeData}
+        />
+      </ExpandableShell>
       <ExpandableShell familyColor={familyColor} label="Indicator sensitivity">
         <IndicatorSensitivityPanel
           familyColor={familyColor}

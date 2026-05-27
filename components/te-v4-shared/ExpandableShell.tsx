@@ -32,12 +32,19 @@ export function ExpandableShell({ familyColor, label, children }: Props) {
     <div
       style={{
         position: "relative",
-        // Grid cell behavior: full-row span when expanded; default cell otherwise.
-        // The page's grid is auto-fit minmax(340px, 1fr); "1 / -1" spans every
-        // column in the current row. The chart's SVG (width 100%) scales up.
+        // Direct grid item (no TallSlot wrapper). Full-row span when expanded;
+        // single cell otherwise. The page's grid is auto-fit minmax(340px, 1fr);
+        // "1 / -1" spans every column in the current row, and dense flow places
+        // the full-width item on a fresh row so it never overlaps a neighbor.
+        // The chart's SVG (width 100%) scales up to fill the wider cell.
         gridColumn: expanded ? "1 / -1" : "auto",
-        // A light transition on max-width so the panel doesn't pop.
-        transition: "all 180ms ease-out",
+        minWidth: 0,
+        // single-cell grid → the child <section> stretches to fill the cell
+        // (grid default align/justify = stretch). With the page grid's
+        // alignItems:stretch, the panel matches its row height with no
+        // transparent void below it.
+        display: "grid",
+        transition: "grid-column 180ms ease-out",
       }}
     >
       {children}

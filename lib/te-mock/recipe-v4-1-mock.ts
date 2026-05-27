@@ -350,7 +350,11 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
       v1SeparationPp: 25.8,
       v4OotRecallPct: 86.7,
       walksCompleted: 4,
-      verdict: "VACATED", // demo: graduated but vacated 2026-05-25 per the truncation leak
+      // 2026-05-28: demo renders as graduated → show a confident LOCK verdict.
+      // The real vacate story is internal (lives on /recipe-tracker + the blog),
+      // not surfaced to the recipe-page reader. Header demo-disclosure carries
+      // the honest real-status pointer.
+      verdict: "LOCK",
     },
     countriesBottom: [
       { name: "Switzerland", score: 5.2 },
