@@ -257,7 +257,7 @@ export function WindowPanel({
 const STATUS_LABELS: Record<string, string> = {
   graduated: "Graduated",
   in_validation: "In validation",
-  walked_no_graduation: "Reviewed — did not graduate",
+  walked_no_graduation: "Reviewed, not graduated",
   vacated: "Graduation vacated",
   queued: "Queued",
   retired: "Retired",
@@ -422,7 +422,7 @@ export function DiscriminationPanel({
     <PanelBase
       title="Discrimination"
       familyColor={familyColor}
-      titleTooltip={`Leave-One-Cohort-Out AUC — how cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
+      titleTooltip={`Leave-One-Cohort-Out AUC. How cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
       sectionPending={!showResults || locoAuc === null ? "discrimination" : null}
       id="cap-6"
     >
@@ -570,7 +570,7 @@ export function BottomCountriesPanel({
     <PanelBase
       title="Bottom scoring countries"
       familyColor={familyColor}
-      titleTooltip="The lowest-scoring countries on this recipe — structural negative space."
+      titleTooltip="The lowest-scoring countries on this recipe: the structural negative space."
       sectionPending={!showResults || countries.length === 0 ? "discrimination" : null}
       id="cap-9"
     >

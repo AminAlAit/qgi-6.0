@@ -15,7 +15,7 @@ export default function NotFound() {
         className="text-[10px] tracking-widest uppercase mb-3"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        404 — Not found
+        404 · Not found
       </p>
       <h1
         className="text-2xl font-semibold leading-snug mb-3"
@@ -28,8 +28,8 @@ export default function NotFound() {
         style={{ color: "var(--qgi-text-muted)" }}
       >
         The URL you tried isn&apos;t one of QGI&apos;s routes. If you arrived from a
-        bookmark, the page may have moved — check the sidebar or jump back to the
-        Dashboard below.
+        bookmark, the page may have moved. Check the sidebar or jump back to the Dashboard
+        below.
       </p>
       <div className="flex flex-wrap gap-2">
         <Link

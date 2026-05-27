@@ -214,7 +214,7 @@ export function PrecedentsTimelinePanel({
         }}
       >
         {totalEventsInCorpus.toLocaleString()} verified events in this recipe&apos;s
-        corpus. Showing the {sorted.length} most recent curation actions — hover a dot for
+        corpus. Showing the {sorted.length} most recent curation actions. Hover a dot for
         detail.
       </p>
 
@@ -323,7 +323,7 @@ export function PrecedentsTimelinePanel({
               <button
                 key={`hit-${id}`}
                 type="button"
-                aria-label={`${ev.year} ${ev.country} — ${labelAction}: ${ev.reason}`}
+                aria-label={`${ev.year} ${ev.country}, ${labelAction}: ${ev.reason}`}
                 onMouseEnter={() => setHoveredId(id)}
                 onMouseLeave={() => setHoveredId((prev) => (prev === id ? null : prev))}
                 onFocus={() => setHoveredId(id)}
@@ -492,8 +492,8 @@ export function PrecedentsTimelinePanel({
             </strong>
             <span style={{ color: "var(--qgi-text-dim)" }}>
               {" "}
-              — curator confirmed this country-year as a real positive of this
-              recipe&apos;s event type and admitted it to the training corpus.
+              curator confirmed this country-year as a real positive of this recipe&apos;s
+              event type and admitted it to the training corpus.
             </span>
           </span>
         </div>
@@ -515,8 +515,8 @@ export function PrecedentsTimelinePanel({
             </strong>
             <span style={{ color: "var(--qgi-text-dim)" }}>
               {" "}
-              — removed on re-review (mis-coded event type, ambiguous foreign-vs-
-              intrastate framing, or insufficient sourcing).
+              removed on re-review (mis-coded event type, ambiguous foreign-vs- intrastate
+              framing, or insufficient sourcing).
             </span>
           </span>
         </div>

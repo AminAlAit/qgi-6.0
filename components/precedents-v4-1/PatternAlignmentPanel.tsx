@@ -50,7 +50,7 @@ export function PatternAlignmentPanel({
         padding: "16px 18px 18px",
         minWidth: "340px",
       }}
-      aria-label="Pattern-level alignment — canonical movement shape"
+      aria-label="Pattern-level alignment: canonical movement shape"
     >
       <header
         style={{
@@ -110,7 +110,7 @@ export function PatternAlignmentPanel({
           lineHeight: 1.5,
         }}
       >
-        What the precedent shape <em>looks like</em> — the trajectory countries need to
+        What the precedent shape <em>looks like</em>: the trajectory countries need to
         follow to score high on this recipe. Mean across verified positives in{" "}
         <strong>bold</strong>; the band shows 25th–75th percentile.
       </p>

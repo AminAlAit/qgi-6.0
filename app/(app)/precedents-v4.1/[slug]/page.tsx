@@ -56,7 +56,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       ? `${recipe.label} · Recipes V4.1 · QG Intelligence`
       : "Recipe not found · QG Intelligence",
     description:
-      "Recipe report-card mockup V4.1 — dashboard panel grid, L1-color accent, honesty via tooltips. Local-only, not for production.",
+      "Recipe report-card mockup V4.1: dashboard panel grid, L1-color accent, honesty via tooltips. Local-only, not for production.",
     robots: { index: false, follow: false },
   };
 }
@@ -97,7 +97,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       }}
     >
       <strong style={{ color: familyColor }}>Demo render.</strong> Real status:{" "}
-      <strong>{STATUS_META[recipe.status].label.toLowerCase()}</strong> — graduation
+      <strong>{STATUS_META[recipe.status].label.toLowerCase()}</strong>. Graduation
       withdrawn on 2026-05-25 after a sample-coverage error was found during review.
       Re-evaluation in progress. Rendered as graduated here so you can see what a
       populated page looks like. Up-to-date status lives on{" "}

@@ -140,9 +140,9 @@ function CalibrationBody({ ece, familyColor }: { ece: number; familyColor: strin
           margin: 0,
         }}
       >
-        How close the recipe&apos;s score numbers are to actual frequencies — i.e. when
-        the recipe says &ldquo;0.8&rdquo;, does the event happen 80% of the time in
-        similar countries? Lower ECE means closer alignment.
+        How close the recipe&apos;s score numbers are to actual frequencies. When the
+        recipe says &ldquo;0.8&rdquo;, does the event happen 80% of the time in similar
+        countries? Lower ECE means closer alignment.
       </p>
 
       {/* Threshold bar */}
