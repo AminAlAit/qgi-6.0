@@ -40,6 +40,15 @@ def _per_cohort_median(result: dict[str, Any]) -> float | None:
 # tier ordering for transition direction (higher index = stronger claim)
 _RANK = {QUEUED: 0, HOLD: 0, EXPERIMENTAL: 1, DIRECTIONAL: 2, VALIDATED: 3}
 
+# tier → public Recipe-Tracker status string (only VALIDATED is "graduated")
+_TIER_STATUS = {
+    VALIDATED: "graduated",
+    DIRECTIONAL: "walked_no_graduation",
+    EXPERIMENTAL: "walked_no_graduation",
+    HOLD: "held_for_review",
+    QUEUED: "queued",
+}
+
 
 def classify_tier(result: dict[str, Any] | None, *,
                   beats_baseline: bool | None = None) -> dict[str, Any]:
@@ -139,3 +148,46 @@ def build_integrity_attestation(*, conditions: dict[str, bool], transitions: lis
         # truth-claims, never a cron side-effect).
         "tracker_pr_may_merge": all_yes and len(pending) == 0,
     }
+
+
+def assemble_tracker_draft(*, results: dict[str, dict | None], prev_tiers: dict[str, str],
+                           beats_baseline: dict[str, bool] | None = None,
+                           conditions: dict[str, bool], run_id: str,
+                           panel_fingerprint: str | None) -> dict[str, Any]:
+    """Pure orchestrator the handler wires S3 I/O around: given this run's per-recipe walk
+    summaries (`results`: recipe_id → summary dict or None) + the PREVIOUS vintage's tiers,
+    produce the DRAFT tracker rows + the tier transitions + the merge-gating attestation.
+
+    The handler's only job around this is: read the 44 summaries + prev tracker from S3,
+    call this, then write the result as a DRAFT (a PR / a draft S3 key) — NEVER a direct
+    push to the live tracker (Condition D). `beats_baseline` (criterion 4) is supplied per
+    recipe by the handler from each recipe's frozen floor."""
+    beats_baseline = beats_baseline or {}
+    draft_rows: list[dict] = []
+    this_tiers: dict[str, str] = {}
+    for recipe_id in sorted(results):
+        summary = results[recipe_id]
+        t = classify_tier(summary, beats_baseline=beats_baseline.get(recipe_id))
+        this_tiers[recipe_id] = t["tier"]
+        g = (summary or {}).get("global_loco", {}) or {}
+        draft_rows.append({
+            "recipe_id": recipe_id,
+            "tier": t["tier"],
+            "status": _TIER_STATUS[t["tier"]],
+            "tier_reason": t["reason"],
+            "flags": t["flags"],
+            "stats": {
+                "loco_auc": g.get("auc"),
+                "ci95": [g.get("ci95_lo"), g.get("ci95_hi")],
+                "verdict": (summary or {}).get("verdict"),
+            },
+        })
+    transitions = detect_transitions(prev_tiers, this_tiers)
+    # Condition B is satisfied by construction here (every tier was re-derived fresh above;
+    # prev_tiers fed ONLY detect_transitions). We OVERRIDE any caller-supplied value — this
+    # path IS the proof, so a stale/buggy caller cannot smuggle in no_grandfathered_tiers=False.
+    conditions = {**conditions, "no_grandfathered_tiers": True}
+    attestation = build_integrity_attestation(
+        conditions=conditions, transitions=transitions, run_id=run_id,
+        panel_fingerprint=panel_fingerprint)
+    return {"draft_recipes": draft_rows, "transitions": transitions, "attestation": attestation}
