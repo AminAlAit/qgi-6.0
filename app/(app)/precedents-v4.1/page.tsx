@@ -97,7 +97,7 @@ export default function RecipesV41GalleryPage() {
             }}
           >
             All {recipes.length} structural-event recipes in the QG Intelligence research
-            program, grouped by L1 family. Pick any recipe to open its V4.1 report card —
+            program, grouped by L1 family. Pick any recipe to open its V4.1 report card:
             dashboard panel grid, L1-color accent, honesty via tooltips not yellow boxes.
           </p>
           <p

@@ -31,7 +31,7 @@ const ANTI_CAUSAL_TOOLTIP =
   "The page must never imply 'improve indicator X to lower this country's risk.'";
 
 const CAPTION =
-  "How much each ingredient carries the recipe — the AUC drop if any " +
+  "How much each ingredient carries the recipe: the AUC drop if any " +
   "single indicator were removed. If removing any one collapses the score, " +
   "the recipe is over-reliant on it.";
 // ==============================================================================

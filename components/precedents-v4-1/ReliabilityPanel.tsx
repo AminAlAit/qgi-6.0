@@ -104,7 +104,7 @@ export function ReliabilityPanel({
         <Metric
           label="Separation power"
           value={`+${v1SeparationPp.toFixed(1)}pp`}
-          caption="How cleanly the recipe separates pre-event country-years from non-event ones — the gap, in percentile points, between the two groups' median similarity. Pre-registered validation bar is +20pp; higher is better."
+          caption="How cleanly the recipe separates pre-event country-years from non-event ones. The gap, in percentile points, between the two groups' median similarity. Pre-registered validation bar is +20pp; higher is better."
           valueColor={v1SeparationPp >= 20 ? "#3FBF8F" : "#E68F29"}
         />
         <Metric
