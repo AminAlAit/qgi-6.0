@@ -48,23 +48,30 @@
  * which is what users actually want when they see "5 + 5".
  *
  *
- * Flag-emoji font fix (founder's note (b))
- * ────────────────────────────────────────
- * Default Windows font stack renders flag sequences as 2-letter regional
- * indicators ("IR" instead of 🇮🇷). Every flag span gets an explicit
- * fontFamily prioritizing the OS-installed emoji fonts that DO support
- * the regional-indicator-pair → flag rendering: Segoe UI Emoji (Win),
- * Apple Color Emoji (mac), Noto Color Emoji (Linux/Android).
+ * Flag rendering — image-based (founder #163)
+ * ───────────────────────────────────────────
+ * Windows 10's Segoe UI Emoji ships flag sequences as plain 2-letter
+ * regional-indicator pairs ("IR" instead of 🇮🇷). A font-stack override
+ * doesn't fix this — Win10 simply has no flag glyphs available. The
+ * cross-browser fix is to render flags as `<img>` from flagcdn.com via
+ * the country's ISO 3166-1 alpha-2 code (resolved by `iso2For(name)`).
+ *
+ * Sizes: 16×12 — the natural aspect ratio for most flags, sits cleanly
+ * beside 13px text without optical wobble. flagcdn provides 1× and 2×
+ * raster sizes; we ask for 16×12 explicitly so the browser doesn't have
+ * to upscale the 1× tile on Hi-DPI displays (16×12 is already the right
+ * physical pixel count for our row height).
+ *
+ * On a missing ISO code (unmapped country name) we render a
+ * fixed-footprint blank span so the row grid stays aligned — better
+ * than a broken-image icon.
  */
 "use client";
 
 import { useState } from "react";
 import { PanelBase } from "./PanelBase";
-import { flagFor } from "@/lib/te-mock/country-flags";
+import { iso2For } from "@/lib/te-mock/country-flags";
 import type { CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
-
-const FLAG_FONT_STACK =
-  '"Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif';
 
 interface Props {
   familyColor: string;
@@ -360,6 +367,7 @@ function CountryRow({
   dense?: boolean;
 }) {
   const padY = dense ? "6px" : "8px";
+  const iso2 = iso2For(name);
   return (
     <li
       style={{
@@ -381,16 +389,21 @@ function CountryRow({
       >
         {rank}
       </span>
-      <span
-        style={{
-          fontSize: dense ? "14px" : "15px",
-          lineHeight: 1,
-          fontFamily: FLAG_FONT_STACK,
-        }}
-        aria-hidden
-      >
-        {flagFor(name)}
-      </span>
+      {iso2 ? (
+        <img
+          src={`https://flagcdn.com/16x12/${iso2}.png`}
+          alt={`${name} flag`}
+          width={16}
+          height={12}
+          style={{
+            display: "inline-block",
+            verticalAlign: "middle",
+            flexShrink: 0,
+          }}
+        />
+      ) : (
+        <span style={{ width: 16, height: 12, display: "inline-block" }} aria-hidden />
+      )}
       <span
         style={{
           fontSize: dense ? "12.5px" : "13px",

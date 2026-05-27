@@ -217,19 +217,12 @@ function IndicatorShape({
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
           }}
-          title={indicator.name}
+          title={`${indicator.name} (${indicator.code})`}
         >
           {indicator.name}
         </div>
-        <code
-          style={{
-            fontSize: "9.5px",
-            color: "var(--qgi-text-muted)",
-            fontFamily: "ui-monospace, monospace",
-          }}
-        >
-          {indicator.code}
-        </code>
+        {/* 2026-05-27 (#159): raw indicator code hidden from visible row;
+            available on hover via the title attribute. */}
       </div>
       <ShapeSparkline shape={shape} familyColor={familyColor} windowYears={windowYears} />
     </div>
@@ -359,7 +352,7 @@ function ShapeSparkline({
         fill="var(--qgi-text-dim)"
         fontFamily="ui-monospace, monospace"
       >
-        t−{windowYears}y
+        {windowYears} yrs before event
       </text>
       <text
         x={padL + innerW}
@@ -369,7 +362,7 @@ function ShapeSparkline({
         fontFamily="ui-monospace, monospace"
         textAnchor="end"
       >
-        event
+        event year
       </text>
     </svg>
   );

@@ -5,11 +5,50 @@
  * definition lede paragraph (per #155 — Definition is anchoring context,
  * not a panel-tile equal to charts) + optional demo disclosure. Below:
  * dashboard-style panel grid (CSS Grid auto-fit minmax(340px, 1fr)).
+ *
+ * 2026-05-27 polish (#164 — Sofia): grid now uses `grid-auto-flow: row dense`
+ * + `grid-auto-rows: minmax(0, auto)`, and exports a `<TallSlot>` wrapper
+ * the page uses to mark naturally-tall panels (Countries, ScoreDistribution,
+ * IndicatorSet, PatternAlignment) with `grid-row: span 2`. The dense flow
+ * + variable row spans removes the empty-band gaps that the old
+ * row-aligned `auto-fit` grid forced under short panels.
  */
 import Link from "next/link";
 import type { Route } from "next";
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+
+/**
+ * TallSlot — wrap a panel that is taller than ~1 grid row so the layout
+ * engine reserves N rows for it. With `grid-auto-flow: row dense` on the
+ * grid, shorter panels coming AFTER a tall one back-fill the leftover row
+ * cells, removing the empty-band gaps that uniform-row `auto-fit` grids
+ * create when panel heights are uneven.
+ *
+ * Why a wrapper (and not a prop on PanelBase)? PanelBase is reused outside
+ * the v4.1 grid (e.g. inside ExpandableShell), so span hints are a layout-
+ * level concern, not a panel-internals concern. Keeping it in the page
+ * composition layer keeps the panel components grid-agnostic.
+ *
+ * The wrapper itself uses `display: flex; flex-direction: column` so the
+ * panel inside (also `display: flex; flex-direction: column`) stretches
+ * to fill the wrapper's box, which the grid stretches to span N tracks.
+ */
+export function TallSlot({ children, span = 2 }: { children: ReactNode; span?: number }) {
+  // The wrapper reserves N grid rows via `grid-row: span N`. The panel inside
+  // renders at its natural content height; if it's slightly shorter than N
+  // rows, the unused space is at the bottom of THIS slot — but neighboring
+  // SHORT panels are unaffected because `grid-auto-flow: row dense` (set on
+  // the parent grid) back-fills them into the row cells the tall panel did
+  // not occupy. Net result: no awkward bands of empty space across the grid.
+  const style: CSSProperties = {
+    gridRow: `span ${span}`,
+    minWidth: 0,
+    display: "flex",
+    flexDirection: "column",
+  };
+  return <div style={style}>{children}</div>;
+}
 
 interface RecipeSummary {
   recipe_id: string;
@@ -86,19 +125,7 @@ export function PageLayout({
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span>{recipe.l2_label}</span>
             </nav>
-            <span
-              style={{
-                fontSize: "10px",
-                padding: "3px 9px",
-                border: "1px solid var(--qgi-accent)",
-                color: "var(--qgi-accent)",
-                borderRadius: "3px",
-                letterSpacing: "1.2px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-            >
-              MOCKUP · V4.1
-            </span>
+            {/* 2026-05-27 (#159): MOCKUP · V4.1 chip removed — internal versioning */}
           </div>
 
           <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
@@ -141,25 +168,19 @@ export function PageLayout({
               >
                 {recipe.label}
               </h1>
-              <p
-                style={{
-                  color: "var(--qgi-text-muted)",
-                  fontSize: "13px",
-                  margin: 0,
-                  lineHeight: 1.5,
-                }}
-              >
-                Recipe ID{" "}
-                <code
+              {subtitle && (
+                <p
                   style={{
-                    fontFamily: "ui-monospace, monospace",
-                    color: recipe.l1_color,
+                    color: "var(--qgi-text-muted)",
+                    fontSize: "13px",
+                    margin: 0,
+                    lineHeight: 1.5,
                   }}
                 >
-                  {recipe.recipe_id}
-                </code>
-                {subtitle ? ` · ${subtitle}` : null}
-              </p>
+                  {/* 2026-05-27 (#159): Recipe ID slug exposure removed */}
+                  {subtitle}
+                </p>
+              )}
               {definition && (
                 <p
                   style={{
@@ -182,12 +203,17 @@ export function PageLayout({
         </div>
       </div>
 
-      {/* Panel grid */}
+      {/* Panel grid — dense row flow + fixed row height so TallSlot span-2
+          hints reserve coherent 2-row tracks (~580px) for naturally-tall
+          panels, while shorter panels back-fill leftover row cells. Removes
+          the empty-band gaps the prior row-aligned `auto-fit` grid forced. */}
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px 24px 64px" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+            gridAutoRows: "280px",
+            gridAutoFlow: "row dense",
             gap: "16px",
             alignItems: "stretch",
           }}

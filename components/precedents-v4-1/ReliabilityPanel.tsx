@@ -1,8 +1,22 @@
 /**
- * Reliability panel (capability #7) — V4.1, #139.
+ * Reliability panel (capability #7) — V4.1, #139 + #159/#160 polish.
  *
- * R&D-LOCKED captions verbatim for V1 separation + V4 OOT recall. Verdict
- * chip color reflects LOCK (green) / HARD_FAIL (red) / MARGINAL/VACATED (amber).
+ * Polish pass (Talia, 2026-05-27):
+ *   - "V1 SEPARATION" tile renamed to "Separation power" (friendlier).
+ *   - "V4 OOT RECALL" tile renamed to "Out-of-time accuracy" (friendlier).
+ *   - "Walks completed" tile dropped per founder approval — number was
+ *     opaque to non-methodologists; the verdict already telegraphs walk
+ *     state, and methodology-curious readers can reach the pre-reg.
+ *   - Caption for Separation power: R&D Q8-locked descriptive sentence
+ *     retained VERBATIM; threshold-mention line polished from "Pre-
+ *     registered LOCK floor is +20pp" to "Pre-registered validation
+ *     bar is +20pp" (drops the "LOCK" jargon without losing the fact).
+ *   - Caption for Out-of-time accuracy: identical polish — "LOCK floor"
+ *     → "validation bar".
+ *
+ * Verdict chip color still reflects LOCK (green) / HARD_FAIL (red) /
+ * MARGINAL/VACATED (amber); the verdict CAPTION (R&D Q8-locked) is the
+ * friendly user-facing surface.
  */
 type Verdict = "LOCK" | "HARD_FAIL" | "MARGINAL" | "VACATED";
 
@@ -34,13 +48,15 @@ export function ReliabilityPanel({
   familyColor,
   v1SeparationPp,
   v4OotRecallPct,
-  walksCompleted,
   verdict,
 }: {
   familyColor: string;
   v1SeparationPp: number;
   v4OotRecallPct: number;
-  walksCompleted: number;
+  /** Retained in the prop signature for upstream-bake compatibility; the
+   *  page no longer renders a "Walks completed" tile (#159). Callers may
+   *  pass the value without effect. */
+  walksCompleted?: number;
   verdict: Verdict;
 }) {
   const verdictColor = VERDICT_COLOR[verdict];
@@ -75,24 +91,24 @@ export function ReliabilityPanel({
         </h3>
       </header>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px 14px" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          gap: "16px 14px",
+        }}
+      >
         <Metric
-          label="V1 separation"
+          label="Separation power"
           value={`+${v1SeparationPp.toFixed(1)}pp`}
-          caption="How cleanly the recipe separates pre-event country-years from non-event ones — the gap, in percentile points, between the two groups' median similarity. Pre-registered LOCK floor is +20pp; higher is better."
+          caption="How cleanly the recipe separates pre-event country-years from non-event ones — the gap, in percentile points, between the two groups' median similarity. Pre-registered validation bar is +20pp; higher is better."
           valueColor={v1SeparationPp >= 20 ? "#3FBF8F" : "#E68F29"}
         />
         <Metric
-          label="V4 OOT recall"
+          label="Out-of-time accuracy"
           value={`${v4OotRecallPct.toFixed(1)}%`}
-          caption="Out-of-time recall: of crisis country-years held out of training (post-2005 events), the share the recipe still ranked HIGH one year before the event. LOCK floor is 60%."
+          caption="Of crisis country-years held out of training (post-2005 events), the share the recipe still ranked HIGH one year before the event. Pre-registered validation bar is 60%."
           valueColor={v4OotRecallPct >= 60 ? "#3FBF8F" : "#E68F29"}
-        />
-        <Metric
-          label="Walks completed"
-          value={String(walksCompleted)}
-          caption="Number of full pre-registered walks the recipe has been through end to end. Four walks is the standard F-ML-1 sequence."
-          valueColor={familyColor}
         />
         <Metric
           label="Verdict"

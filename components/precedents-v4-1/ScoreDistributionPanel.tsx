@@ -3,11 +3,22 @@
 import * as React from "react";
 
 /**
- * Score distribution panel (capability #10) — V4.1, #140.
+ * Score distribution panel (capability #10) — V4.1, #140 + #160 polish.
  *
  * Default: histogram (bin 10, hover → country list). Alt: strip plot
  * (one dot per country, tier-colored). Founder picks between the two.
  * Median/p90/p99/max surface as axis annotations; no cryptic prose.
+ *
+ * Polish pass (Talia, 2026-05-27 #160):
+ *   - Axis annotations "p90" / "p99" → "top 10%" / "top 1%" (reads as
+ *     plain English; the quantile semantics are unchanged). "med" stays
+ *     as "median"; "max" stays as "max".
+ *   - "ALT: STRIP PLOT" section label → "Alternate view: per-country dots".
+ *   - Histogram hover tooltip now reads "score range" / "n countries"
+ *     instead of leaning on the "discrimination rank" jargon. The fact
+ *     R&D Q5 binds (rank, not probability) is preserved by the panel's
+ *     title-tooltip in PanelBase plus the header paragraph; the hover
+ *     surface is shorter and friendlier.
  */
 interface HistogramBin {
   bin_lo: number;
@@ -117,8 +128,8 @@ export function ScoreDistributionPanel({
           }}
         >
           How the recipe&apos;s rank-0-to-100 scores spread across all scored countries.
-          Hover any bar for the country list. Median / p90 / p99 / max mark the right-tail
-          shape.
+          Hover any bar for the country list. Median, top 10%, top 1%, and max mark the
+          right-tail shape.
         </p>
       </header>
 
@@ -141,7 +152,7 @@ export function ScoreDistributionPanel({
             marginBottom: "8px",
           }}
         >
-          ALT: STRIP PLOT
+          Alternate view: per-country dots
         </div>
         <StripPlot
           dots={stripDots}
@@ -173,10 +184,10 @@ function Histogram({
 }) {
   const [hoverIdx, setHoverIdx] = React.useState<number | null>(null);
   const W = 560;
-  const H = 180;
+  const H = 192;
   const PAD_L = 30;
   const PAD_R = 16;
-  const PAD_T = 14;
+  const PAD_T = 24; // +10 vs prior; room for two-line annotations
   const PAD_B = 30;
   const plotW = W - PAD_L - PAD_R;
   const plotH = H - PAD_T - PAD_B;
@@ -267,21 +278,21 @@ function Histogram({
         <Annotation
           x={xForScore(median)}
           top={PAD_T - 6}
-          label="med"
+          label="median"
           value={median}
           color="var(--qgi-text-muted)"
         />
         <Annotation
           x={xForScore(p90)}
           top={PAD_T - 6}
-          label="p90"
+          label="top 10%"
           value={p90}
           color="var(--qgi-text-muted)"
         />
         <Annotation
           x={xForScore(p99)}
           top={PAD_T - 6}
-          label="p99"
+          label="top 1%"
           value={p99}
           color="var(--qgi-text-muted)"
         />
@@ -325,7 +336,8 @@ function Histogram({
           }}
         >
           <div style={{ color: familyColor, marginBottom: "4px", fontWeight: 600 }}>
-            {hoveredBin.bin_lo}–{hoveredBin.bin_hi} · n={hoveredBin.count}
+            score {hoveredBin.bin_lo}–{hoveredBin.bin_hi} · {hoveredBin.count}{" "}
+            {hoveredBin.count === 1 ? "country" : "countries"}
           </div>
           {hoveredBin.countries && hoveredBin.countries.length > 0 ? (
             <div style={{ color: "var(--qgi-text-muted)", lineHeight: 1.5 }}>
@@ -336,7 +348,7 @@ function Histogram({
             </div>
           ) : (
             <div style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
-              country list not in bake
+              Country list not available for this range.
             </div>
           )}
         </div>
@@ -358,19 +370,32 @@ function Annotation({
   value: number;
   color: string;
 }) {
+  // Two-line annotation: label on top, value beneath. Reads cleanly for
+  // multi-word friendly labels ("top 10%", "top 1%") that would otherwise
+  // collide with the value on a single line.
   return (
     <g>
       <text
         x={x}
-        y={top - 3}
+        y={top - 9}
         fontSize={8.5}
         fill={color}
         textAnchor="middle"
         fontFamily="ui-monospace, monospace"
       >
-        {label} {value.toFixed(0)}
+        {label}
       </text>
-      <line x1={x} x2={x} y1={top} y2={top + 4} stroke={color} strokeWidth={0.75} />
+      <text
+        x={x}
+        y={top - 1}
+        fontSize={8.5}
+        fill={color}
+        textAnchor="middle"
+        fontFamily="ui-monospace, monospace"
+      >
+        {value.toFixed(0)}
+      </text>
+      <line x1={x} x2={x} y1={top + 2} y2={top + 5} stroke={color} strokeWidth={0.75} />
     </g>
   );
 }
@@ -415,10 +440,10 @@ function StripPlot({
 }) {
   const [hoverIdx, setHoverIdx] = React.useState<number | null>(null);
   const W = 560;
-  const H = 90;
+  const H = 100;
   const PAD_L = 30;
   const PAD_R = 16;
-  const PAD_T = 22;
+  const PAD_T = 32; // +10 vs prior; room for two-line annotations
   const PAD_B = 28;
   const plotW = W - PAD_L - PAD_R;
   const yMid = PAD_T + (H - PAD_T - PAD_B) / 2;
@@ -481,21 +506,21 @@ function StripPlot({
         <Annotation
           x={xForScore(median)}
           top={PAD_T - 6}
-          label="med"
+          label="median"
           value={median}
           color="var(--qgi-text-muted)"
         />
         <Annotation
           x={xForScore(p90)}
           top={PAD_T - 6}
-          label="p90"
+          label="top 10%"
           value={p90}
           color="var(--qgi-text-muted)"
         />
         <Annotation
           x={xForScore(p99)}
           top={PAD_T - 6}
-          label="p99"
+          label="top 1%"
           value={p99}
           color="var(--qgi-text-muted)"
         />
@@ -572,7 +597,7 @@ function StripPlot({
           <span style={{ color: TIER_COLOR[hovered.tier], fontWeight: 600 }}>
             {hovered.name}
           </span>{" "}
-          · bin {hovered.score.toFixed(0)}
+          · score {hovered.score.toFixed(0)}
         </div>
       )}
     </div>
