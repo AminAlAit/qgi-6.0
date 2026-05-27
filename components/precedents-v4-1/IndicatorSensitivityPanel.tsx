@@ -56,9 +56,12 @@ export interface IndicatorSensitivityPanelProps {
   familyColor: string;
   /** 3-5 indicators. Caller decides ordering; component sorts descending by aucDrop. */
   indicators: IndicatorSensitivity[];
-  /** Optional override for the panel header tooltip; defaults to the R&D-locked anti-causal sentence. */
-  headerTooltip?: string;
 }
+
+// 2026-05-27 Sonnet review P1-1: removed the prior `headerTooltip?: string`
+// override prop. R&D Q4 #1 marks the anti-causal sentence as NON-NEGOTIABLE;
+// an override prop made the obligation silently bypass-able by a future
+// caller. The panel now renders ANTI_CAUSAL_TOOLTIP unconditionally.
 
 // Family-color usage rule: thin border + chip tints + headline color only.
 const SURFACE_BG = "var(--qgi-surface)";
@@ -86,10 +89,10 @@ function fmtAucDrop(d: number): string {
 export function IndicatorSensitivityPanel({
   familyColor,
   indicators,
-  headerTooltip,
 }: IndicatorSensitivityPanelProps) {
   const rows = clampIndicators(indicators);
-  const tooltip = headerTooltip ?? ANTI_CAUSAL_TOOLTIP;
+  // Locked per R&D Q4 #1; no override path.
+  const tooltip = ANTI_CAUSAL_TOOLTIP;
 
   // Scale bars so the largest drop fills ~92% of the track. If everything is
   // tiny, the bars stay tiny — that itself communicates "no indicator carries

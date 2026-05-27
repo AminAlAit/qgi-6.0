@@ -162,7 +162,7 @@ export default function RecipesV41GalleryPage() {
                 }}
               >
                 {rs.map((r) => (
-                  <RecipeCard key={r.recipe_id} recipe={r} />
+                  <RecipeCard key={r.recipe_id} recipe={r} basePath="/precedents-v4.1" />
                 ))}
               </div>
             </section>

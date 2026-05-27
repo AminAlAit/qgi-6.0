@@ -16,7 +16,20 @@ const L1_SHORT: Record<string, string> = {
   H: "Struc",
 };
 
-export function RecipeCard({ recipe }: { recipe: TrackerRecipe }) {
+/**
+ * RecipeCard
+ *
+ * `basePath` defaults to /precedents-v2 (V4 gallery). The V4.1 gallery
+ * passes "/precedents-v4.1" so card clicks land on V4.1 detail pages
+ * (Sonnet review P0-2, 2026-05-27).
+ */
+export function RecipeCard({
+  recipe,
+  basePath = "/precedents-v2",
+}: {
+  recipe: TrackerRecipe;
+  basePath?: string;
+}) {
   const statusMeta = STATUS_META[recipe.status];
   const isQueued = recipe.status === "queued";
   const isWalked = recipe.status === "walked_no_graduation";
@@ -31,7 +44,7 @@ export function RecipeCard({ recipe }: { recipe: TrackerRecipe }) {
 
   return (
     <Link
-      href={`/precedents-v2/${recipe.recipe_id}` as Route}
+      href={`${basePath}/${recipe.recipe_id}` as Route}
       style={{
         textDecoration: "none",
         color: "inherit",
