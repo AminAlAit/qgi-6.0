@@ -1,22 +1,16 @@
 /**
- * MinorPanels — the eight smaller panels I own (orchestrator) for Recipes V4.1,
- * sitting beside the persona-built ones (Sofia: PanelBase/PageLayout/Tooltip;
- * Talia: SampleSize/Reliability/ScoreDistribution; Daniyar: PrecedentsTimeline/
- * PatternAlignment; Kwame: IndicatorSensitivity).
+ * MinorPanels — smaller panels for Recipes V4.1.
  *
- * All eight use Sofia's PanelBase wrapper, follow the family-color cross-cut
- * rule (thin left border + chip tints + headline color; never a flood), and
- * carry honesty via tooltips/section-pending gates (not inline disclaimers).
- *
- * Panels:
- *   - DefinitionPanel       (capability §1)
- *   - IndicatorSetPanel     (capability §2 + #5; SHAP % per indicator)
- *   - WindowPanel           (capability §3; optimal-window display)
- *   - IdentityCardPanel     (capability §5 + #142 vintage merge)
- *   - DiscriminationPanel   (capability §6 — LOCO-AUC score chip)
- *   - TopCountriesPanel     (capability §8; flags per #135)
- *   - BottomCountriesPanel  (capability §9; table form per #136)
- *   - CalibrationPanel      (capability §11 — section-pending gate)
+ * Polish pass (Sofia, 2026-05-27 — #153 / #154 / #155 / #156):
+ *   - DefinitionPanel still exported for back-compat but no longer used
+ *     by the V4.1 page (Definition now lives in PageLayout's header lede).
+ *   - IdentityCardPanel slimmed: walk metadata + window dropped. Status
+ *     renders as a user-facing phrase (formatStatus), not the raw enum.
+ *   - WindowPanel + DiscriminationPanel get de-jargonized captions while
+ *     preserving methodology meaning (R&D Q5 binds the FACT, not the
+ *     word "LOCK"); technical readers find the threshold in the tooltip.
+ *   - All "gate" / "walk" / "walked_no_graduation" phrasing scrubbed
+ *     from visible copy.
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -24,8 +18,7 @@ import { PanelBase } from "./PanelBase";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import type { IndicatorWithWeight, CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
 
-/* ───────── §1 Definition ─────────────────────────────────────────────── */
-
+/* ───────── DefinitionPanel (deprecated — kept for compat) ──────────── */
 export function DefinitionPanel({
   familyColor,
   definition,
@@ -37,16 +30,11 @@ export function DefinitionPanel({
     <PanelBase
       title="Definition"
       familyColor={familyColor}
-      titleTooltip="The recipe's structural identity: which event the recipe is trying to discriminate. Locked at recipe creation; refines as curated events grow, never changes meaning."
+      titleTooltip="The recipe's structural identity. Locked at recipe creation; refines as curated events grow."
       id="cap-1"
     >
       <p
-        style={{
-          fontSize: "14px",
-          lineHeight: 1.6,
-          color: "var(--qgi-text)",
-          margin: 0,
-        }}
+        style={{ fontSize: "14px", lineHeight: 1.6, color: "var(--qgi-text)", margin: 0 }}
       >
         {definition}
       </p>
@@ -54,7 +42,7 @@ export function DefinitionPanel({
   );
 }
 
-/* ───────── §2 + §5 Indicator set (with SHAP %) ────────────────────────── */
+/* ───────── IndicatorSet (with SHAP %) ───────────────────────────────── */
 
 export function IndicatorSetPanel({
   familyColor,
@@ -69,7 +57,7 @@ export function IndicatorSetPanel({
     <PanelBase
       title="Indicator set"
       familyColor={familyColor}
-      titleTooltip={`The ${indicators.length || "N"} ingredients whose canonical movement shape defines this recipe. Greedy selection picked these from the full V-Dem / World Bank panel; their SHAP weights sum to 100.`}
+      titleTooltip={`The ${indicators.length || "N"} ingredients whose canonical movement shape defines this recipe. Their weights sum to 100% across the selected set.`}
       caption={
         indicators.length > 0
           ? `${indicators.length} indicators · weights sum to 100% across the selected set`
@@ -182,7 +170,7 @@ export function IndicatorSetPanel({
   );
 }
 
-/* ───────── §3 Window ─────────────────────────────────────────────────── */
+/* ───────── Optimal window (#156 polish) ─────────────────────────────── */
 
 export function WindowPanel({
   familyColor,
@@ -195,103 +183,129 @@ export function WindowPanel({
   ciLow?: number;
   ciHigh?: number;
 }) {
+  const sweepCopy =
+    ciLow !== undefined && ciHigh !== undefined
+      ? `Chosen from a search across ${ciLow}–${ciHigh} years of history.`
+      : null;
   return (
     <PanelBase
       title="Optimal window"
       familyColor={familyColor}
-      titleTooltip="How many years of indicator history before the event the recipe's canonical shape spans. Picked by the greedy walker from the 3-25y sweep."
+      titleTooltip="How many years of indicator history before the event the recipe's canonical shape spans."
       id="cap-3"
     >
-      <div style={{ display: "flex", alignItems: "baseline", gap: "14px" }}>
-        <div
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          marginTop: "2px",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "flex-end", gap: "10px" }}>
+          <span
+            style={{
+              fontSize: "64px",
+              fontWeight: 700,
+              color: familyColor,
+              fontFamily: "ui-monospace, monospace",
+              lineHeight: 0.95,
+              letterSpacing: "-2.5px",
+            }}
+          >
+            {windowYears}
+          </span>
+          <span
+            style={{
+              fontSize: "16px",
+              fontWeight: 600,
+              color: "var(--qgi-text-muted)",
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.5px",
+              paddingBottom: "8px",
+              textTransform: "uppercase",
+            }}
+          >
+            years
+          </span>
+        </div>
+        <p
           style={{
-            fontSize: "56px",
-            fontWeight: 700,
-            color: familyColor,
-            fontFamily: "ui-monospace, monospace",
-            lineHeight: 1,
-            letterSpacing: "-2px",
+            fontSize: "12.5px",
+            lineHeight: 1.55,
+            color: "var(--qgi-text-muted)",
+            margin: 0,
           }}
         >
-          {windowYears}
-          <span style={{ fontSize: "20px", marginLeft: "2px" }}>y</span>
-        </div>
-        <div
-          style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.5 }}
-        >
-          {ciLow !== undefined && ciHigh !== undefined ? (
+          The recipe&apos;s canonical shape spans the {windowYears} years leading up to
+          each event.
+          {sweepCopy ? (
             <>
-              Selected from the {ciLow}–{ciHigh}y sweep.
-              <br />
-              The shape spans {windowYears} years before each event.
+              {" "}
+              <span style={{ color: "var(--qgi-text-dim)" }}>{sweepCopy}</span>
             </>
-          ) : (
-            <>
-              The recipe&apos;s canonical shape spans {windowYears} years before each
-              event.
-            </>
-          )}
-        </div>
+          ) : null}
+        </p>
       </div>
     </PanelBase>
   );
 }
 
-/* ───────── §5 + §14 Identity card (with vintage merged) ─────────────── */
+/* ───────── Identity card (slimmed — #153) ───────────────────────────── */
+
+const STATUS_LABELS: Record<string, string> = {
+  graduated: "Graduated",
+  in_validation: "In validation",
+  walked_no_graduation: "Reviewed — did not graduate",
+  vacated: "Graduation vacated",
+  queued: "Queued",
+  retired: "Retired",
+  live_legacy: "Live (legacy)",
+  in_progress: "In progress",
+};
+
+function formatStatus(raw: string): string {
+  if (STATUS_LABELS[raw]) return STATUS_LABELS[raw];
+  const friendly = raw.replace(/_/g, " ").toLowerCase();
+  return friendly.charAt(0).toUpperCase() + friendly.slice(1);
+}
 
 export function IdentityCardPanel({
   familyColor,
   l1_id,
   l1_label,
   l2_label,
-  windowYears,
   nIndicators,
   status,
-  walkId,
-  walkNumber,
-  cohortDef,
-  ratifiedBy,
-  walkDate,
   vintage,
 }: {
   familyColor: string;
   l1_id: string;
   l1_label: string;
   l2_label: string;
-  windowYears: number;
   nIndicators: number;
   status: string;
-  walkId: string;
-  walkNumber: number;
-  cohortDef: string;
-  ratifiedBy: string;
-  walkDate: string;
   vintage: string;
 }) {
   return (
     <PanelBase
       title="Identity card"
       familyColor={familyColor}
-      titleTooltip="The recipe's ID badge: L1/L2 taxonomic position, indicator count, window, current status, and the vintage stamp of the walk that produced these numbers."
+      titleTooltip="The recipe's ID badge: L1/L2 taxonomic position, indicator count, current status, and the vintage stamp of the run that produced these numbers."
       id="cap-5"
     >
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-          gap: "12px 16px",
+          gap: "14px 18px",
         }}
       >
         <Field label="L1 family" value={`${l1_id} · ${l1_label}`} accent={familyColor} />
         <Field label="L2 sub-class" value={l2_label} />
-        <Field label="Window" value={`${windowYears}y`} />
         <Field label="Indicators" value={String(nIndicators)} />
-        <Field label="Status" value={status.replace(/_/g, " ")} />
+        <Field label="Status" value={formatStatus(status)} />
         <Field label="Tracker vintage" value={vintage} />
-        {walkId && <Field label="Walk" value={`#${walkNumber} · ${walkId}`} />}
-        {cohortDef && <Field label="Cohort" value={cohortDef} />}
-        {ratifiedBy && <Field label="Ratified by" value={ratifiedBy} />}
-        {walkDate && <Field label="Walk date" value={walkDate} />}
       </div>
     </PanelBase>
   );
@@ -334,7 +348,7 @@ function Field({
   );
 }
 
-/* ───────── §6 Discrimination — LOCO-AUC score ────────────────────────── */
+/* ───────── Discrimination (#156 polish — de-jargonized caption) ─────── */
 
 export function DiscriminationPanel({
   familyColor,
@@ -353,61 +367,87 @@ export function DiscriminationPanel({
 }) {
   const cleared = locoAuc !== null && locoAuc >= lockFloor;
   const chipColor = cleared ? "#3FBF8F" : "#E68F29";
+  const distance = locoAuc !== null ? Math.abs(locoAuc - lockFloor) : 0;
+  const verdictCopy = cleared
+    ? `Above the validation threshold by ${distance.toFixed(3)}.`
+    : `Below the validation threshold by ${distance.toFixed(3)}.`;
   return (
     <PanelBase
       title="Discrimination"
       familyColor={familyColor}
-      titleTooltip={`Leave-One-Cohort-Out AUC — how cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered LOCK floor is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
+      titleTooltip={`Leave-One-Cohort-Out AUC — how cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
       sectionPending={!showResults || locoAuc === null ? "discrimination" : null}
       id="cap-6"
     >
       {showResults && locoAuc !== null && (
-        <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-          <div style={{ display: "flex", alignItems: "baseline", gap: "14px" }}>
-            <div
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            marginTop: "2px",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "flex-end", gap: "12px" }}>
+            <span
               style={{
-                fontSize: "48px",
+                fontSize: "56px",
                 fontWeight: 700,
                 color: chipColor,
                 fontFamily: "ui-monospace, monospace",
-                lineHeight: 1,
+                lineHeight: 0.95,
                 letterSpacing: "-2px",
               }}
             >
               {locoAuc.toFixed(3)}
-            </div>
-            <div
+            </span>
+            <span
               style={{
-                fontSize: "11.5px",
-                color: "var(--qgi-text-muted)",
-                lineHeight: 1.45,
+                fontSize: "11px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.6px",
+                paddingBottom: "10px",
+                textTransform: "uppercase",
               }}
             >
-              LOCO-AUC ={" "}
-              <strong style={{ color: chipColor, fontFamily: "ui-monospace, monospace" }}>
-                {locoAuc.toFixed(4)}
-              </strong>
-              {ciLow !== undefined && ciHigh !== undefined && (
-                <>
-                  {" "}
-                  · 95% CI [{ciLow.toFixed(3)}, {ciHigh.toFixed(3)}]
-                </>
-              )}
-              <br />
-              {cleared ? "Cleared LOCK floor by" : "Below LOCK floor by"}{" "}
-              <strong style={{ fontFamily: "ui-monospace, monospace" }}>
-                {Math.abs(locoAuc - lockFloor).toFixed(3)}
-              </strong>
-              .
-            </div>
+              LOCO-AUC
+            </span>
           </div>
+          <p
+            style={{
+              fontSize: "12.5px",
+              lineHeight: 1.55,
+              color: "var(--qgi-text-muted)",
+              margin: 0,
+            }}
+          >
+            <span style={{ color: chipColor, fontWeight: 600 }}>{verdictCopy}</span>
+            {ciLow !== undefined && ciHigh !== undefined && (
+              <>
+                {" "}
+                <span style={{ color: "var(--qgi-text-dim)" }}>
+                  95% confidence interval{" "}
+                  <code
+                    style={{
+                      fontFamily: "ui-monospace, monospace",
+                      color: "var(--qgi-text-muted)",
+                    }}
+                  >
+                    [{ciLow.toFixed(3)}, {ciHigh.toFixed(3)}]
+                  </code>
+                  .
+                </span>
+              </>
+            )}
+          </p>
         </div>
       )}
     </PanelBase>
   );
 }
 
-/* ───────── §8 Top scoring countries (with flags) ─────────────────────── */
+/* ───────── Top scoring countries (deprecated — Talia's CountriesPanel replaces) ─── */
 
 export function TopCountriesPanel({
   familyColor,
@@ -422,7 +462,7 @@ export function TopCountriesPanel({
     <PanelBase
       title="Top scoring countries"
       familyColor={familyColor}
-      titleTooltip="Top-10 countries by discrimination rank on this recipe. Rank, not probability — a country at 98 is positioned at the top of the distribution of countries whose movement shape resembles past precedents."
+      titleTooltip="Top-10 by discrimination rank on this recipe."
       sectionPending={!showResults || countries.length === 0 ? "discrimination" : null}
       id="cap-8"
     >
@@ -470,8 +510,6 @@ export function TopCountriesPanel({
   );
 }
 
-/* ───────── §9 Bottom scoring countries (table form) ──────────────────── */
-
 export function BottomCountriesPanel({
   familyColor,
   countries,
@@ -485,107 +523,55 @@ export function BottomCountriesPanel({
     <PanelBase
       title="Bottom scoring countries"
       familyColor={familyColor}
-      titleTooltip="The lowest-scoring countries on this recipe — the structural negative space. Useful for confirming the recipe discriminates: if Switzerland and Norway sit at the bottom of a Foreign Intervention recipe, the discriminator is doing its job."
+      titleTooltip="The lowest-scoring countries on this recipe — structural negative space."
       sectionPending={!showResults || countries.length === 0 ? "discrimination" : null}
       id="cap-9"
     >
-      <table
-        style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          fontSize: "12.5px",
-          color: "var(--qgi-text)",
-        }}
-      >
-        <thead>
-          <tr style={{ borderBottom: "1px solid var(--qgi-border)" }}>
-            <th
+      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {countries.map((c, i) => (
+          <li
+            key={c.name}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "22px 18px minmax(0, 1fr) auto",
+              gap: "8px",
+              alignItems: "center",
+              padding: "8px 0",
+              borderBottom:
+                i < countries.length - 1 ? "1px solid var(--qgi-border)" : "none",
+            }}
+          >
+            <span
               style={{
-                textAlign: "left",
-                padding: "6px 0",
                 fontFamily: "ui-monospace, monospace",
-                fontSize: "9.5px",
-                letterSpacing: "0.6px",
+                fontSize: "10.5px",
                 color: "var(--qgi-text-dim)",
-                fontWeight: 600,
               }}
             >
-              #
-            </th>
-            <th />
-            <th
+              {i + 1}
+            </span>
+            <span style={{ fontSize: "15px", lineHeight: 1 }} aria-hidden>
+              {flagFor(c.name)}
+            </span>
+            <span style={{ fontSize: "13px", color: "var(--qgi-text)" }}>{c.name}</span>
+            <span
               style={{
-                textAlign: "left",
-                padding: "6px 0",
                 fontFamily: "ui-monospace, monospace",
-                fontSize: "9.5px",
-                letterSpacing: "0.6px",
-                color: "var(--qgi-text-dim)",
-                fontWeight: 600,
+                fontSize: "13px",
+                color: "var(--qgi-text-muted)",
+                fontWeight: 700,
               }}
             >
-              Country
-            </th>
-            <th
-              style={{
-                textAlign: "right",
-                padding: "6px 0",
-                fontFamily: "ui-monospace, monospace",
-                fontSize: "9.5px",
-                letterSpacing: "0.6px",
-                color: "var(--qgi-text-dim)",
-                fontWeight: 600,
-              }}
-            >
-              Score
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {countries.map((c, i) => (
-            <tr
-              key={c.name}
-              style={{
-                borderBottom:
-                  i < countries.length - 1 ? "1px solid var(--qgi-border)" : "none",
-              }}
-            >
-              <td
-                style={{
-                  padding: "8px 0",
-                  fontFamily: "ui-monospace, monospace",
-                  fontSize: "11px",
-                  color: "var(--qgi-text-dim)",
-                }}
-              >
-                {countries.length - i + countries.length}{" "}
-                {/* show rank-from-bottom-of-roster */}
-              </td>
-              <td style={{ padding: "8px 0", width: "20px" }} aria-hidden>
-                <span style={{ fontSize: "14px", lineHeight: 1 }}>{flagFor(c.name)}</span>
-              </td>
-              <td style={{ padding: "8px 0", fontSize: "13px" }}>{c.name}</td>
-              <td
-                style={{
-                  padding: "8px 0",
-                  textAlign: "right",
-                  fontFamily: "ui-monospace, monospace",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                  color: "var(--qgi-text-muted)",
-                }}
-              >
-                {c.score.toFixed(1)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              {c.score.toFixed(1)}
+            </span>
+          </li>
+        ))}
+      </ol>
     </PanelBase>
   );
 }
 
-/* ───────── §11 Calibration ───────────────────────────────────────────── */
+/* ───────── Calibration ──────────────────────────────────────────────── */
 
 export function CalibrationPanel({
   familyColor,
@@ -600,7 +586,7 @@ export function CalibrationPanel({
     <PanelBase
       title="Calibration"
       familyColor={familyColor}
-      titleTooltip="Calibration ECE — once the recipe graduates AND clears the ECE gate, the score in the country panels flips from a rank to a calibrated probability interval (Venn-Abers, per cohort)."
+      titleTooltip="Once the recipe graduates and clears the calibration threshold, the score in country panels flips from a rank to a calibrated probability interval (Venn-Abers, per cohort)."
       sectionPending={showCalibrationData ? null : "probability"}
       id="cap-11"
     >
@@ -622,7 +608,7 @@ export function CalibrationPanel({
           >
             Expected Calibration Error (ECE).
             <br />
-            Pre-reg gate: ECE ≤ 0.08.
+            Pre-registered threshold: ECE ≤ 0.08.
           </div>
         </div>
       )}
@@ -630,7 +616,7 @@ export function CalibrationPanel({
   );
 }
 
-/* ───────── Cross-link footer (deep-link to /patterns-v4/<id>) ────────── */
+/* ───────── Cross-link footer ────────────────────────────────────────── */
 
 export function PatternCrossLinkFooter({
   familyColor,

@@ -9,7 +9,11 @@ import {
   isDemoGraduated,
   vintageStamp,
 } from "@/lib/te-mock/recipes";
-import { getRecipeV4Extras, getFallbackExtras } from "@/lib/te-mock/recipe-v4-1-mock";
+import {
+  getRecipeV4Extras,
+  getFallbackExtras,
+  getCountriesFull,
+} from "@/lib/te-mock/recipe-v4-1-mock";
 import { getShapeData } from "@/lib/te-mock/recipe-shape-mock";
 import {
   getCorpusEvents,
@@ -19,16 +23,14 @@ import {
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
 import { StatusChip, STATUS_META } from "@/components/precedents-v2/StatusChip";
 import {
-  DefinitionPanel,
   IndicatorSetPanel,
   WindowPanel,
   IdentityCardPanel,
   DiscriminationPanel,
-  TopCountriesPanel,
-  BottomCountriesPanel,
   CalibrationPanel,
   PatternCrossLinkFooter,
 } from "@/components/precedents-v4-1/MinorPanels";
+import { CountriesPanel } from "@/components/precedents-v4-1/CountriesPanel";
 import { SampleSizePanel } from "@/components/precedents-v4-1/SampleSizePanel";
 import { ReliabilityPanel } from "@/components/precedents-v4-1/ReliabilityPanel";
 import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistributionPanel";
@@ -65,6 +67,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
 
   const mock = getMock(recipe);
   const extras = getRecipeV4Extras(slug) ?? getFallbackExtras(slug);
+  const countriesFull = getCountriesFull(slug);
   const shapeData = getShapeData(slug);
   const corpusEvents = getCorpusEvents(slug);
   const totalEventsInCorpus = getTotalEventsInCorpus(slug);
@@ -127,10 +130,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       recipe={recipe}
       statusChip={<StatusChip status={effectiveStatus} size="md" />}
       subtitle={`${enrichedIndicators.length} indicators · ${mock.window}y window`}
+      definition={mock.definition}
       demoDisclosure={demoDisclosure}
     >
-      {/* ─── Anatomy backbone ──────────────────────────────────────────── */}
-      <DefinitionPanel familyColor={familyColor} definition={mock.definition} />
+      {/* ─── Anatomy backbone (Definition lives in the header lede now) ─── */}
       <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
       <WindowPanel
         familyColor={familyColor}
@@ -143,14 +146,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         l1_id={recipe.l1_id}
         l1_label={recipe.l1_label}
         l2_label={recipe.l2_label}
-        windowYears={mock.window}
         nIndicators={enrichedIndicators.length}
         status={recipe.status}
-        walkId={extras.walkId}
-        walkNumber={extras.walkNumber}
-        cohortDef={extras.cohortDef}
-        ratifiedBy={extras.ratifiedBy}
-        walkDate={extras.walkDate}
         vintage={vintageStamp()}
       />
       <SampleSizePanel
@@ -176,14 +173,15 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         walksCompleted={extras.reliability.walksCompleted}
         verdict={extras.reliability.verdict}
       />
-      <TopCountriesPanel
+      {/* Combined top-5 + bottom-5 panel with internal "Full list" toggle
+          (#158 — Talia 2026-05-26). Replaces the old TopCountriesPanel +
+          BottomCountriesPanel pair; NOT wrapped in ExpandableShell — it
+          owns its own expand surface. */}
+      <CountriesPanel
         familyColor={familyColor}
-        countries={mock.countriesTop}
-        showResults={showResults}
-      />
-      <BottomCountriesPanel
-        familyColor={familyColor}
-        countries={extras.countriesBottom}
+        countriesTop={mock.countriesTop}
+        countriesBottom={extras.countriesBottom}
+        countriesFull={countriesFull}
         showResults={showResults}
       />
       <ExpandableShell familyColor={familyColor} label="Score distribution">

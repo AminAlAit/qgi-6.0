@@ -1,32 +1,15 @@
 /**
  * PanelBase — V4.1 panel primitive.
  *
- * Each capability/sub-capability of the recipe report card renders inside a
- * PanelBase. Panels are dashboard-grid children (PageLayout owns the grid);
- * each panel is self-contained, ~280-440px wide, drop-in.
- *
  * Family color (Charter L1 family — e.g. Foreign Intervention = #E64545
- * Conflict & Violence) is applied as:
- *   - a thin 3px left border (the rhythm marker that replaces §NN)
- *   - chip / accent tints inside the panel (the panel's own concern)
- *   - the panel title color
+ * Conflict & Violence) is applied as a thin 3px left border + chip / accent
+ * tints inside the panel + the panel title color. Surface stays dark navy;
+ * family color never floods the background.
  *
- * The surface STAYS dark navy (var(--qgi-surface)) — family color never
- * floods the background. This is the Sofia/Talia/Daniyar/Kwame contract;
- * every panel in V4.1 obeys it.
- *
- * Section markers (V4's monospace `§NN`) are dropped per #137. Spatial
- * position in the grid + family-color left border carry the rhythm that
- * `§07 Reliability` was carrying in the long-scroll layout.
- *
- * Dual section-pending copy (R&D Q5):
- *   sectionPending="discrimination" → "Fills after this recipe completes a
- *                                     validated walk."
- *   sectionPending="probability"    → "Fills if/when calibration clears its
- *                                     gate."
- *
- * No "M8-R5" or "Honesty regime" inline text — those facts live in tooltips
- * on score chips + tier ribbon + section-pending gates (R&D Q5).
+ * 2026-05-27 polish (#154 — scrub internal terminology): section-pending
+ * dual copy rephrased to drop "gate" / "walk" from visible text. The
+ * methodology distinction (separation vs. probability) is preserved; the
+ * underlying R&D facts stay in the tooltips for technical readers.
  */
 import type { ReactNode } from "react";
 import { TooltipChip } from "./TooltipChip";
@@ -34,44 +17,24 @@ import { TooltipChip } from "./TooltipChip";
 type SectionPending = "discrimination" | "probability" | null;
 
 interface Props {
-  /** Panel title, e.g. "Discrimination", "Indicator set", "Top scoring countries". */
   title: string;
-  /**
-   * Optional hover-tooltip on the title — used to surface anti-causal /
-   * methodology framing without inline brand text.
-   */
   titleTooltip?: string;
-  /** Recipe's L1 family color (Charter — already in recipe-tracker.json). */
   familyColor: string;
-  /**
-   * Dual-flavor section-pending gate. When set, panel renders the pending
-   * message instead of `children`. Null = panel populated normally.
-   */
   sectionPending?: SectionPending;
-  /**
-   * Optional anchor id for permalinks (e.g. `cap-7`). Kept available because
-   * the underlying URL-anchor pattern is useful for permalinks even with no
-   * visible §NN chip. Not rendered as a label.
-   */
   id?: string;
-  /**
-   * Optional right-aligned header slot (small tier chip, walk number, etc.).
-   * Use sparingly — the panel's headline is the title.
-   */
   headerSlot?: ReactNode;
-  /** Optional one-line caption under the title (plain-English explainer). */
   caption?: string;
   children?: ReactNode;
 }
 
 const PENDING_COPY: Record<NonNullable<SectionPending>, string> = {
-  discrimination: "Fills after this recipe completes a validated walk.",
-  probability: "Fills if/when calibration clears its gate.",
+  discrimination: "Fills once this recipe has been tested against historical events.",
+  probability: "Fills once the score becomes a reliable probability.",
 };
 
 const PENDING_LABEL: Record<NonNullable<SectionPending>, string> = {
-  discrimination: "Awaiting walk",
-  probability: "Awaiting calibration",
+  discrimination: "Awaiting results",
+  probability: "Awaiting probability tuning",
 };
 
 export function PanelBase({
@@ -99,13 +62,7 @@ export function PanelBase({
         minHeight: "140px",
       }}
     >
-      <header
-        style={{
-          display: "flex",
-          alignItems: "baseline",
-          gap: "10px",
-        }}
-      >
+      <header style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
         <h2
           style={{
             fontSize: "15px",

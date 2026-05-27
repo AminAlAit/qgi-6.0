@@ -1,14 +1,10 @@
 /**
  * PageLayout — V4.1 page-level frame.
  *
- * Header strip (recipe icon + status chip + H1 + breadcrumb + MOCKUP banner
- * + optional "Real status" disclosure) and a responsive panel grid below.
- *
- * Panel grid contract: CSS Grid, auto-fit minmax(340px, 1fr) — 2-3 cols on
- * wide, 1 col narrow. Children are PanelBase instances (or wrappers).
- *
- * The V4 sticky AnatomyBar is GONE. With a panel grid + no §NN labels,
- * spatial position carries the rhythm.
+ * Header strip: recipe icon + status chip + H1 + recipe-id subtitle +
+ * definition lede paragraph (per #155 — Definition is anchoring context,
+ * not a panel-tile equal to charts) + optional demo disclosure. Below:
+ * dashboard-style panel grid (CSS Grid auto-fit minmax(340px, 1fr)).
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -28,6 +24,11 @@ interface Props {
   recipe: RecipeSummary;
   statusChip: ReactNode;
   subtitle?: string;
+  /**
+   * Definition lede paragraph (#155). Rendered under the H1 + subtitle as
+   * a 15px line, max-width 720px, primary text color.
+   */
+  definition?: string;
   demoDisclosure?: ReactNode;
   children: ReactNode;
 }
@@ -36,6 +37,7 @@ export function PageLayout({
   recipe,
   statusChip,
   subtitle,
+  definition,
   demoDisclosure,
   children,
 }: Props) {
@@ -99,7 +101,6 @@ export function PageLayout({
             </span>
           </div>
 
-          {/* Title row: icon + status + H1 + subtitle */}
           <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
             <div
               style={{
@@ -159,8 +160,22 @@ export function PageLayout({
                 </code>
                 {subtitle ? ` · ${subtitle}` : null}
               </p>
+              {definition && (
+                <p
+                  style={{
+                    marginTop: "16px",
+                    marginBottom: 0,
+                    maxWidth: "720px",
+                    fontSize: "15px",
+                    lineHeight: 1.65,
+                    color: "var(--qgi-text)",
+                  }}
+                >
+                  {definition}
+                </p>
+              )}
               {demoDisclosure && (
-                <div style={{ marginTop: "12px" }}>{demoDisclosure}</div>
+                <div style={{ marginTop: "16px" }}>{demoDisclosure}</div>
               )}
             </div>
           </div>
