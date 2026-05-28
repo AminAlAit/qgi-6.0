@@ -28,6 +28,13 @@
 .DS_Store
 *.pem
 
+# TE sample fixtures synced from S3 (large, NOT for git)
+# Per the te-sample-10-frontend-handoff: this dataset is build-against-only,
+# do NOT merge or publish; keep it out of the repo and let each developer
+# sync from S3 as needed.
+/data/te-sample-10/
+/data/te-wave-*/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
