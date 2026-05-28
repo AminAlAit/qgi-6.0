@@ -599,81 +599,84 @@ def fit_predict_loco(
     pooled_years: list[int] = []
     per_country_auc: dict[str, float] = {}
 
-    # Pin BLAS/OpenMP to 1 thread for the whole fold loop. Under the #961 thread backend
-    # each parallel cell would otherwise launch a full BLAS thread pool, oversubscribing the
-    # box (N×N threads). Bit-identical for the seeded, exact-tree XGBoost fleet path; the
-    # canary re-run is the §2.5 confirmation. No-op if threadpoolctl is unavailable locally.
-    with _threadpool_limits(1):
-        for held in unique_countries:
-            train_mask = countries != held
-            test_mask = countries == held
-            if test_mask.sum() == 0 or train_mask.sum() == 0:
-                continue
-            y_train = y[train_mask]
-            if len(np.unique(y_train)) < 2:
-                continue
-            X_train = X[train_mask]
-            X_test = X[test_mask]
-            y_test = y[test_mask]
-            n_pos = int((y_train == 1).sum())
-            n_neg = int((y_train == 0).sum())
-            spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
+    # NOTE: BLAS/OpenMP thread pinning lives at the greedy_outer_loop level now — wrapping
+    # it here per-fold (or worse, per-cell when this fn is called inside Parallel) caused
+    # the 2026-05-28 canary to be ~13× slower than the prior. threadpool_limits mutates
+    # process-global library state under a lock; 16 joblib worker threads entering+exiting
+    # the context per cell serialized hard. The fix is one enter per WALK in the greedy
+    # outer loop (below), inherited by all joblib workers. The Dockerfile also sets
+    # OMP_NUM_THREADS=1 et al. process-wide, so in production the in-code wrap is the
+    # belt-and-suspenders for local runs without those env vars.
+    for held in unique_countries:
+        train_mask = countries != held
+        test_mask = countries == held
+        if test_mask.sum() == 0 or train_mask.sum() == 0:
+            continue
+        y_train = y[train_mask]
+        if len(np.unique(y_train)) < 2:
+            continue
+        X_train = X[train_mask]
+        X_test = X[test_mask]
+        y_test = y[test_mask]
+        n_pos = int((y_train == 1).sum())
+        n_neg = int((y_train == 0).sum())
+        spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
 
-            # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
-            # POST-row-selection numeric stabilization for rare non-finite values produced
-            # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
-            # NOT imputation of missing indicator windows — rows lacking a selected
-            # indicator's window are already DROPPED in build_X_y (the coverage gate, not
-            # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
-            X_train = np.where(np.isfinite(X_train), X_train, 0.0)
-            X_test = np.where(np.isfinite(X_test), X_test, 0.0)
+        # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
+        # POST-row-selection numeric stabilization for rare non-finite values produced
+        # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
+        # NOT imputation of missing indicator windows — rows lacking a selected
+        # indicator's window are already DROPPED in build_X_y (the coverage gate, not
+        # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
+        X_train = np.where(np.isfinite(X_train), X_train, 0.0)
+        X_test = np.where(np.isfinite(X_test), X_test, 0.0)
 
-            if architecture == "LR":
-                from sklearn.linear_model import LogisticRegression
-                scaler = StandardScaler()
-                Xt = scaler.fit_transform(X_train)
-                Xte = scaler.transform(X_test)
-                # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-                clf = LogisticRegression(
-                    C=1.0, penalty="l1", solver="saga", class_weight="balanced",
-                    max_iter=2000, random_state=seed,
-                )
-                clf.fit(Xt, y_train)
-                probs = clf.predict_proba(Xte)[:, 1]
-            elif architecture == "XGBoost":
-                from xgboost import XGBClassifier
-                # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-                # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
-                # collinearity at each greedy step.
-                clf = XGBClassifier(
-                    n_estimators=200, max_depth=6, learning_rate=0.05,
-                    reg_alpha=0.1,
-                    scale_pos_weight=spw, eval_metric="logloss",
-                    random_state=seed, verbosity=0, n_jobs=1,
-                )
-                clf.fit(X_train, y_train)
-                probs = clf.predict_proba(X_test)[:, 1]
-            elif architecture == "MLP":
-                from sklearn.neural_network import MLPClassifier
-                scaler = StandardScaler()
-                Xt = scaler.fit_transform(X_train)
-                Xte = scaler.transform(X_test)
-                clf = MLPClassifier(
-                    hidden_layer_sizes=(16,), activation="relu",
-                    solver="adam", learning_rate_init=1e-3, max_iter=200,
-                    early_stopping=True, random_state=seed,
-                )
-                clf.fit(Xt, y_train)
-                probs = clf.predict_proba(Xte)[:, 1]
-            else:
-                raise ValueError(f"Unknown architecture {architecture!r}")
+        if architecture == "LR":
+            from sklearn.linear_model import LogisticRegression
+            scaler = StandardScaler()
+            Xt = scaler.fit_transform(X_train)
+            Xte = scaler.transform(X_test)
+            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+            clf = LogisticRegression(
+                C=1.0, penalty="l1", solver="saga", class_weight="balanced",
+                max_iter=2000, random_state=seed,
+            )
+            clf.fit(Xt, y_train)
+            probs = clf.predict_proba(Xte)[:, 1]
+        elif architecture == "XGBoost":
+            from xgboost import XGBClassifier
+            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+            # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
+            # collinearity at each greedy step.
+            clf = XGBClassifier(
+                n_estimators=200, max_depth=6, learning_rate=0.05,
+                reg_alpha=0.1,
+                scale_pos_weight=spw, eval_metric="logloss",
+                random_state=seed, verbosity=0, n_jobs=1,
+            )
+            clf.fit(X_train, y_train)
+            probs = clf.predict_proba(X_test)[:, 1]
+        elif architecture == "MLP":
+            from sklearn.neural_network import MLPClassifier
+            scaler = StandardScaler()
+            Xt = scaler.fit_transform(X_train)
+            Xte = scaler.transform(X_test)
+            clf = MLPClassifier(
+                hidden_layer_sizes=(16,), activation="relu",
+                solver="adam", learning_rate_init=1e-3, max_iter=200,
+                early_stopping=True, random_state=seed,
+            )
+            clf.fit(Xt, y_train)
+            probs = clf.predict_proba(Xte)[:, 1]
+        else:
+            raise ValueError(f"Unknown architecture {architecture!r}")
 
-            pooled_probs.extend(probs.tolist())
-            pooled_labels.extend(y_test.tolist())
-            pooled_countries.extend([held] * test_mask.sum())
-            pooled_years.extend(years[test_mask].tolist())
-            if len(np.unique(y_test)) >= 2:
-                per_country_auc[held] = compute_auc(probs, y_test)
+        pooled_probs.extend(probs.tolist())
+        pooled_labels.extend(y_test.tolist())
+        pooled_countries.extend([held] * test_mask.sum())
+        pooled_years.extend(years[test_mask].tolist())
+        if len(np.unique(y_test)) >= 2:
+            per_country_auc[held] = compute_auc(probs, y_test)
 
     return {
         "probs": np.array(pooled_probs),
@@ -1075,14 +1078,22 @@ def greedy_outer_loop(
         # cand-major/window-minor order with the same strict-`>` tie-break as the serial
         # loop → BIT-IDENTICAL to n_jobs=1. n_jobs defaults to 1 (serial; tests + back-compat).
         cells = [(cand, win) for cand in remaining for win in WINDOW_GRID]
-        results = Parallel(n_jobs=n_jobs, prefer="threads")(
-            delayed(_eval_grid_cell)(
-                samples, selected, cand, win, panels, architecture, seed,
-                n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
-                min_survive_countries, min_neg_survival, feat_cache,
+        # BLAS/OpenMP pin: ONE enter per greedy step, set-once on the main thread, inherited
+        # by every joblib worker thread. The 2026-05-28 canary showed that putting this
+        # wrap per-fold (inside fit_predict_loco) caused 16 workers to serialize on
+        # threadpoolctl's process-global state lock — step 1 went from ~5 min to >74 min
+        # (~13× slower). Per-step (~12 enter/exits per walk) avoids the contention while
+        # preserving the BLAS-pin guarantee. The Dockerfile env vars OMP_NUM_THREADS=1
+        # etc. are the production primary; this is the local belt-and-suspenders.
+        with _threadpool_limits(1):
+            results = Parallel(n_jobs=n_jobs, prefer="threads")(
+                delayed(_eval_grid_cell)(
+                    samples, selected, cand, win, panels, architecture, seed,
+                    n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
+                    min_survive_countries, min_neg_survival, feat_cache,
+                )
+                for (cand, win) in cells
             )
-            for (cand, win) in cells
-        )
         best = None
         for res in results:  # input order preserved → identical tie-break to serial
             if res is None:
