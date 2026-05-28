@@ -29,12 +29,31 @@
 #   python /app/recipe_fleet_entrypoint.py
 #   (configured in Batch job definition command override)
 
+# ---- build args (traceability) -------------------------------------------
+# QGI_ML_SHA is stamped at CI build time by ecr-push.yml (#130) so every
+# image in ECR is traceable to the exact qgi-ml commit it bundles.
+# Pass with: docker buildx build --build-arg QGI_ML_SHA="$(git -C __qgi-ml rev-parse HEAD)" ...
+ARG QGI_ML_SHA=unknown
+
 # ---- base ----------------------------------------------------------------
 # python:3.13-slim for arm64 is the same convention as the scdi-finder
 # Dockerfile in qgi-pipeline/batch/scdi-finder/Dockerfile (which uses 3.12).
 # Updated to 3.13 to match the Lambda runtime and the Python 3.13 convention
 # in the CLAUDE.md conventions.
 FROM --platform=linux/arm64 python:3.13-slim
+
+# BuildKit scope rule: an ARG declared BEFORE FROM lives in the global scope and is
+# visible to FROM's image-ref expansion, but is NOT visible to instructions inside
+# the build stage unless RE-DECLARED after FROM. Without this line the LABEL below
+# would always read the literal empty string (or fall back to the global default
+# `unknown`) regardless of what `--build-arg QGI_ML_SHA=...` the CI passes — the
+# traceability claim would silently fail. Re-declaring here brings the build-arg
+# into stage scope; the LABEL then records the real qgi-ml HEAD. (Sonnet PR #42 nit.)
+ARG QGI_ML_SHA=unknown
+
+# Stamp the qgi-ml version into the image so `docker inspect` or ECR
+# image metadata can be used to trace which qgi-ml commit is bundled.
+LABEL qgi_ml_sha=$QGI_ML_SHA
 
 # ---- system dependencies -------------------------------------------------
 # libgomp1 is required by XGBoost for OpenMP (even with n_jobs=1 the lib
