@@ -6,16 +6,11 @@ import { STATUS_META } from "./StatusChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
-const L1_SHORT: Record<string, string> = {
-  A: "Polit",
-  B: "Confl",
-  C: "Gov",
-  D: "Econ",
-  E: "Social",
-  F: "Diplo",
-  G: "Human",
-  H: "Struc",
-};
+// L1_SHORT abbreviation map removed 2026-05-28 — the per-recipe family chip
+// now uses the full recipe.l1_label per the V4.1 icon rules (the abbreviated
+// "Polit/Confl/Gov/..." letter-prefixed chip was redundant signal next to the
+// RecipeIcon). The full-label chip is cleaner and is what the rest of the
+// V4.1 surfaces show.
 
 /**
  * In v4.1 strategy, map the StatusTone to a chip color that avoids banned
@@ -111,6 +106,14 @@ export function RecipeCard({
           >
             <RecipeIcon recipeId={recipe.recipe_id} size={32} strokeWidth={1.5} />
           </div>
+          {/* Family chip — colored dot + full L1 label. The bare letter
+              prefix (and the L1_SHORT abbreviation) was dropped on the
+              per-recipe card per the V4.1 icon rules: the recipe icon to
+              the left already identifies the recipe; the family glyph
+              repeats redundant signal and was flagged in the 2026-05-28
+              clicky-clicky pass. The family-letter glyph still lives on
+              the family-section header above the card grid where it is
+              identifying the family, not the recipe. */}
           <span
             style={{
               fontSize: "10px",
@@ -133,7 +136,7 @@ export function RecipeCard({
                 background: recipe.l1_color,
               }}
             />
-            {recipe.l1_id} · {L1_SHORT[recipe.l1_id] ?? recipe.l1_id}
+            {recipe.l1_label}
           </span>
         </div>
 

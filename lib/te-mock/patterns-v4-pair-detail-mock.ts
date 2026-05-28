@@ -667,14 +667,37 @@ for (const p of PAIRS) {
   INDEX[p.pair_id] = p;
 }
 
+/**
+ * Alias map: compact pair_ids used by the main-data catalogue
+ * (lib/te-mock/patterns-v4-main-data.ts) → the long-form slugs this file's
+ * detail entries are keyed on. The two data files were authored independently
+ * and used different slug conventions; this map lets the catalog's row hrefs
+ * resolve into existing detail entries without trimming or duplicating data.
+ *
+ * Pairs in the main-data catalogue that are NOT in this map still navigate
+ * to /patterns-v4/{compact-id} and gracefully notFound() (placeholder data
+ * not authored yet for those pairs).
+ */
+const SLUG_ALIASES: Record<string, string> = {
+  "pry-kor": "paraguay-south_korea-1963",
+  "arg-rus": "argentina-russia-1985",
+  "tun-egy": "egypt-tunisia-1975",
+  "gha-sen": "ghana-senegal-1980",
+  "pol-cze": "poland-czech_republic-1989",
+};
+
 // ── Accessors ─────────────────────────────────────────────────────────────
 
 export function getPair(slug: string): PairDetail | undefined {
-  return INDEX[slug];
+  const resolved = SLUG_ALIASES[slug] ?? slug;
+  return INDEX[resolved];
 }
 
 export function getAllPairSlugs(): string[] {
-  return Object.keys(INDEX);
+  // Include BOTH the canonical long-form slugs and the catalog's compact
+  // aliases so generateStaticParams pre-renders both URL forms. A reader
+  // who lands on either format gets the same detail page.
+  return [...Object.keys(INDEX), ...Object.keys(SLUG_ALIASES)];
 }
 
 /** Emoji flag for a country name -- thin wrapper for components. */
