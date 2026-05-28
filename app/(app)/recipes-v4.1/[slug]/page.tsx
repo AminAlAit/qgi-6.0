@@ -19,6 +19,7 @@ import {
   getCorpusEvents,
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
+import { getPattern } from "@/lib/te-mock/patterns-v4-data";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
 import { StatusChip, STATUS_META } from "@/components/precedents-v2/StatusChip";
@@ -27,7 +28,6 @@ import {
   WindowPanel,
   IdentityCardPanel,
   DiscriminationPanel,
-  PatternCrossLinkFooter,
 } from "@/components/precedents-v4-1/MinorPanels";
 import { CalibrationPanel } from "@/components/precedents-v4-1/CalibrationPanel";
 import { CountriesPanel } from "@/components/precedents-v4-1/CountriesPanel";
@@ -77,6 +77,9 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   const effectiveStatus = demo ? "graduated" : recipe.status;
   const showResults = effectiveStatus === "graduated";
   const familyColor = recipe.l1_color;
+  // Only recipes with a curated trajectory have a deep-dive page; gate the
+  // panel's "Open the full trajectory" button so it never dead-links.
+  const hasTrajectory = !!getPattern(slug);
 
   // For the demo (foreign_intervention) we render with results visible but
   // surface the "real status" disclosure in the header. The full M8-R5
@@ -220,13 +223,14 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
         />
       </ExpandableShell>
-      <ExpandableShell familyColor={familyColor} label="Pattern alignment">
+      <ExpandableShell familyColor={familyColor} label="Trajectory alignment">
         <PatternAlignmentPanel
           familyColor={familyColor}
           recipeId={recipe.recipe_id}
           windowYears={mock.window}
           indicators={enrichedIndicators}
           shapeData={shapeData}
+          hasTrajectory={hasTrajectory}
         />
       </ExpandableShell>
       <ExpandableShell familyColor={familyColor} label="Indicator sensitivity">
@@ -240,8 +244,6 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           }))}
         />
       </ExpandableShell>
-
-      <PatternCrossLinkFooter familyColor={familyColor} recipeId={recipe.recipe_id} />
     </PageLayout>
   );
 }

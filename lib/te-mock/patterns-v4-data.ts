@@ -647,7 +647,7 @@ function fallbackExamples(recipe: TrackerRecipe): HistoricalExample[] {
   return mock.countriesTop.slice(0, 5).map((c, i) => ({
     country: c.name,
     year: seedYears[i] ?? 2010,
-    event_summary: `${recipe.label} event recorded in the QGI catalog (illustrative — see Precedents detail for full event log).`,
+    event_summary: `${recipe.label} event recorded in the QGI catalog (illustrative; see the recipe page for the full event log).`,
   }));
 }
 
@@ -792,6 +792,7 @@ export interface RankingEntry {
   top_score: number;
   runner_pattern_id: string;
   runner_pattern_name: string;
+  runner_l1_id: string;
   runner_l1_color: string;
   runner_score: number;
 }
@@ -836,6 +837,7 @@ export function getRanking(): RankingEntry[] {
       top_score: Number(top.score.toFixed(1)),
       runner_pattern_id: runner.pattern.id,
       runner_pattern_name: runner.pattern.name,
+      runner_l1_id: runner.pattern.l1_id,
       runner_l1_color: runner.pattern.l1_color,
       runner_score: Number(runner.score.toFixed(1)),
     });

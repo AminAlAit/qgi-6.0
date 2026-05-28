@@ -22,7 +22,7 @@ const L1_ORDER = ["A", "B", "C", "D", "E", "F", "G", "H"];
 /**
  * Recipes V4.1 gallery — sibling to /precedents-v2 with the 2026-05-27
  * vocabulary swap applied (Charter §3-aligned: "Recipes" as the methodology
- * unit at page level). The detail page at /precedents-v4.1/[slug] carries
+ * unit at page level). The detail page at /recipes-v4.1/[slug] carries
  * the dashboard panel grid + L1-color accent + tooltip honesty redesign.
  *
  * Cards reuse the V4 RecipeCard component (still good) but link into V4.1
@@ -162,7 +162,7 @@ export default function RecipesV41GalleryPage() {
                 }}
               >
                 {rs.map((r) => (
-                  <RecipeCard key={r.recipe_id} recipe={r} basePath="/precedents-v4.1" />
+                  <RecipeCard key={r.recipe_id} recipe={r} basePath="/recipes-v4.1" />
                 ))}
               </div>
             </section>

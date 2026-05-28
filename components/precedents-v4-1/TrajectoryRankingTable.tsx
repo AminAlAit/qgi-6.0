@@ -1,34 +1,32 @@
 "use client";
 
 /**
- * PatternRankingTable — the /patterns-v4/ranking client surface.
+ * TrajectoryRankingTable — the /recipes-v4.1/trajectory-ranking client
+ * surface (migrated + rebuilt from the old /patterns-v4/ranking to the V4.1
+ * bar). Top-30 countries by how closely their current movement resembles any
+ * trajectory in the catalog. Search + family filter + sortable columns.
  *
- * Structural-discrimination leaderboard. Each row = one country. Sort by
- * match score, filter by L1 family of the top-matched pattern, full-text
- * search by country name.
- *
- * Client component (only this page in V4 carries interactivity — the gallery
- * + detail pages are pure Server Components, matching the precedents-v2
- * convention).
- *
- * Honesty regime: every score is a SHAPE-SIMILARITY RANK, not a probability.
- * The page header carries the persistent quarantine note + the M8-R5
- * disclosure. Side panel explains how this ranking differs from /risk-board.
+ * Built to the bar: flagcdn flags, family color as thin accent, honest plain
+ * copy (no M8-R5 / walk / gate jargon, no "pattern" wording, no emoji status
+ * dots, no em-dashes), links into the trajectory deep-dives.
  */
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
-import { ChartLine, Search, ListFilter } from "lucide-react";
+import { Search, ListFilter } from "lucide-react";
 import type { RankingEntry } from "@/lib/te-mock/patterns-v4-data";
+import { familyColor } from "@/lib/te-mock/l1-families";
+import { flagFor } from "@/lib/te-mock/country-flags";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 
 type SortKey = "rank" | "country" | "top_score" | "region";
 
-export interface PatternRankingTableProps {
+export interface TrajectoryRankingTableProps {
   rows: RankingEntry[];
   families: Array<{ id: string; label: string; color: string }>;
 }
 
-export function PatternRankingTable({ rows, families }: PatternRankingTableProps) {
+export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTableProps) {
   const [query, setQuery] = useState("");
   const [familyFilter, setFamilyFilter] = useState<string | null>(null);
   const [sortKey, setSortKey] = useState<SortKey>("rank");
@@ -58,11 +56,9 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
   }, [rows, query, familyFilter, sortKey, sortDir]);
 
   function toggleSort(key: SortKey) {
-    if (sortKey === key) {
-      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
-    } else {
+    if (sortKey === key) setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    else {
       setSortKey(key);
-      // numeric defaults to desc; text defaults to asc
       setSortDir(key === "top_score" ? "desc" : "asc");
     }
   }
@@ -76,9 +72,8 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
         alignItems: "flex-start",
       }}
     >
-      {/* Main column — controls + table */}
       <div>
-        {/* Controls strip */}
+        {/* Controls */}
         <div
           style={{
             display: "flex",
@@ -92,7 +87,6 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             marginBottom: "12px",
           }}
         >
-          {/* Search */}
           <label
             style={{
               display: "inline-flex",
@@ -111,7 +105,7 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search country, region, or pattern…"
+              placeholder="Search country, region, or recipe"
               style={{
                 flex: 1,
                 background: "transparent",
@@ -125,7 +119,6 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             />
           </label>
 
-          {/* Family filter chips */}
           <div
             style={{
               display: "inline-flex",
@@ -142,28 +135,32 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             >
               All families
             </button>
-            {families.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                onClick={() => setFamilyFilter(familyFilter === f.id ? null : f.id)}
-                style={chipBtnStyle(familyFilter === f.id, f.color)}
-                aria-pressed={familyFilter === f.id}
-              >
-                <span
-                  style={{
-                    width: "6px",
-                    height: "6px",
-                    borderRadius: "50%",
-                    background: f.color,
-                    marginRight: "5px",
-                    display: "inline-block",
-                    verticalAlign: "middle",
-                  }}
-                />
-                {f.id}
-              </button>
-            ))}
+            {families.map((f) => {
+              const c = familyColor(f.id, f.color);
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  onClick={() => setFamilyFilter(familyFilter === f.id ? null : f.id)}
+                  style={chipBtnStyle(familyFilter === f.id, c)}
+                  aria-pressed={familyFilter === f.id}
+                  title={f.label}
+                >
+                  <span
+                    style={{
+                      width: "6px",
+                      height: "6px",
+                      borderRadius: "50%",
+                      background: c,
+                      marginRight: "5px",
+                      display: "inline-block",
+                      verticalAlign: "middle",
+                    }}
+                  />
+                  {f.id}
+                </button>
+              );
+            })}
           </div>
 
           <span style={{ flex: 1 }} />
@@ -197,11 +194,11 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             }}
           >
             <colgroup>
-              <col style={{ width: "44px" }} />
+              <col style={{ width: "40px" }} />
               <col style={{ width: "auto" }} />
-              <col style={{ width: "100px" }} />
+              <col style={{ width: "96px" }} />
               <col style={{ width: "auto" }} />
-              <col style={{ width: "78px" }} />
+              <col style={{ width: "70px" }} />
               <col style={{ width: "auto" }} />
             </colgroup>
             <thead>
@@ -232,7 +229,7 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
                 >
                   Region
                 </Th>
-                <Th>Top-matched pattern</Th>
+                <Th>Top trajectory</Th>
                 <Th
                   active={sortKey === "top_score"}
                   dir={sortDir}
@@ -260,162 +257,171 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
                   </td>
                 </tr>
               )}
-              {filtered.map((row, i) => (
-                <tr
-                  key={row.country}
-                  style={{
-                    borderBottom:
-                      i < filtered.length - 1 ? "1px solid var(--qgi-border)" : "none",
-                  }}
-                >
-                  <td
+              {filtered.map((row, i) => {
+                const topColor = familyColor(row.top_l1_id, row.top_l1_color);
+                return (
+                  <tr
+                    key={row.country}
                     style={{
-                      padding: "11px 12px",
-                      fontFamily: "ui-monospace, monospace",
-                      fontSize: "11.5px",
-                      color: "var(--qgi-text-dim)",
+                      borderBottom:
+                        i < filtered.length - 1 ? "1px solid var(--qgi-border)" : "none",
                     }}
                   >
-                    {String(row.rank).padStart(2, "0")}
-                  </td>
-                  <td style={{ padding: "11px 12px" }}>
-                    <div style={{ fontWeight: 600, color: "var(--qgi-text)" }}>
-                      {row.country}
-                    </div>
-                  </td>
-                  <td
-                    style={{
-                      padding: "11px 12px",
-                      fontFamily: "ui-monospace, monospace",
-                      fontSize: "10.5px",
-                      color: "var(--qgi-text-muted)",
-                      letterSpacing: "0.3px",
-                    }}
-                  >
-                    {row.region}
-                  </td>
-                  <td style={{ padding: "11px 12px" }}>
-                    <Link
-                      href={`/patterns-v4/${row.top_pattern_id}` as Route}
+                    <td
                       style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "8px",
-                        color: "var(--qgi-text)",
-                        textDecoration: "none",
-                      }}
-                    >
-                      <span
-                        style={{
-                          width: "7px",
-                          height: "7px",
-                          borderRadius: "50%",
-                          background: row.top_l1_color,
-                          flexShrink: 0,
-                        }}
-                      />
-                      <span style={{ fontSize: "12.5px" }}>{row.top_pattern_name}</span>
-                      <span
-                        style={{
-                          fontSize: "9.5px",
-                          padding: "1px 5px",
-                          border: `1px solid ${row.top_l1_color}`,
-                          color: row.top_l1_color,
-                          borderRadius: "3px",
-                          fontFamily: "ui-monospace, monospace",
-                          letterSpacing: "0.3px",
-                        }}
-                      >
-                        {row.top_l1_id}
-                      </span>
-                    </Link>
-                  </td>
-                  <td style={{ padding: "11px 12px", textAlign: "right" }}>
-                    <span
-                      style={{
+                        padding: "11px 12px",
                         fontFamily: "ui-monospace, monospace",
-                        fontWeight: 600,
-                        fontSize: "14px",
-                        color: row.top_l1_color,
-                      }}
-                    >
-                      {row.top_score.toFixed(1)}
-                    </span>
-                  </td>
-                  <td style={{ padding: "11px 12px" }}>
-                    <Link
-                      href={`/patterns-v4/${row.runner_pattern_id}` as Route}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        color: "var(--qgi-text-muted)",
-                        textDecoration: "none",
                         fontSize: "11.5px",
+                        color: "var(--qgi-text-dim)",
                       }}
                     >
+                      {String(row.rank).padStart(2, "0")}
+                    </td>
+                    <td style={{ padding: "11px 12px" }}>
                       <span
                         style={{
-                          width: "6px",
-                          height: "6px",
-                          borderRadius: "50%",
-                          background: row.runner_l1_color,
-                          flexShrink: 0,
-                          opacity: 0.7,
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
                         }}
-                      />
-                      <span>{row.runner_pattern_name}</span>
+                      >
+                        <FlagImg
+                          emoji={flagFor(row.country)}
+                          name={row.country}
+                          width={20}
+                          radius={2}
+                        />
+                        <span style={{ fontWeight: 600, color: "var(--qgi-text)" }}>
+                          {row.country}
+                        </span>
+                      </span>
+                    </td>
+                    <td
+                      style={{
+                        padding: "11px 12px",
+                        fontFamily: "ui-monospace, monospace",
+                        fontSize: "10.5px",
+                        color: "var(--qgi-text-muted)",
+                        letterSpacing: "0.3px",
+                      }}
+                    >
+                      {row.region}
+                    </td>
+                    <td style={{ padding: "11px 12px" }}>
+                      <Link
+                        href={`/recipes-v4.1/${row.top_pattern_id}/trajectory` as Route}
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "8px",
+                          color: "var(--qgi-text)",
+                          textDecoration: "none",
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: "7px",
+                            height: "7px",
+                            borderRadius: "50%",
+                            background: topColor,
+                            flexShrink: 0,
+                          }}
+                        />
+                        <span style={{ fontSize: "12.5px" }}>{row.top_pattern_name}</span>
+                        <span
+                          style={{
+                            fontSize: "9.5px",
+                            padding: "1px 5px",
+                            border: `1px solid ${topColor}`,
+                            color: topColor,
+                            borderRadius: "3px",
+                            fontFamily: "ui-monospace, monospace",
+                            letterSpacing: "0.3px",
+                          }}
+                        >
+                          {row.top_l1_id}
+                        </span>
+                      </Link>
+                    </td>
+                    <td style={{ padding: "11px 12px", textAlign: "right" }}>
                       <span
                         style={{
                           fontFamily: "ui-monospace, monospace",
-                          fontSize: "10.5px",
-                          color: "var(--qgi-text-dim)",
+                          fontWeight: 600,
+                          fontSize: "14px",
+                          color: topColor,
                         }}
                       >
-                        {row.runner_score.toFixed(1)}
+                        {row.top_score.toFixed(0)}
                       </span>
-                    </Link>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+                    <td style={{ padding: "11px 12px" }}>
+                      <Link
+                        href={
+                          `/recipes-v4.1/${row.runner_pattern_id}/trajectory` as Route
+                        }
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "6px",
+                          color: "var(--qgi-text-muted)",
+                          textDecoration: "none",
+                          fontSize: "11.5px",
+                        }}
+                      >
+                        <span
+                          style={{
+                            width: "6px",
+                            height: "6px",
+                            borderRadius: "50%",
+                            background: familyColor(
+                              row.runner_l1_id,
+                              row.runner_l1_color
+                            ),
+                            flexShrink: 0,
+                            opacity: 0.7,
+                          }}
+                        />
+                        <span>{row.runner_pattern_name}</span>
+                        <span
+                          style={{
+                            fontFamily: "ui-monospace, monospace",
+                            fontSize: "10.5px",
+                            color: "var(--qgi-text-dim)",
+                          }}
+                        >
+                          {row.runner_score.toFixed(0)}
+                        </span>
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
 
-        {/* M8-R5 footer */}
+        {/* Honest footer (calm, not a red alarm box) */}
         <div
           style={{
             marginTop: "14px",
             padding: "12px 14px",
-            border: "1px solid #E64545",
-            background: "rgba(230,69,69,0.05)",
-            borderLeft: "3px solid #E64545",
+            border: "1px solid var(--qgi-border)",
+            borderLeft: "3px solid #5B7E99",
+            background: "rgba(91,126,153,0.06)",
             borderRadius: "5px",
             fontSize: "12px",
             color: "var(--qgi-text-muted)",
             lineHeight: 1.55,
           }}
         >
-          <div
-            style={{
-              fontSize: "9.5px",
-              letterSpacing: "1.3px",
-              color: "#E64545",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "4px",
-              fontWeight: 600,
-            }}
-          >
-            M8-R5 DISCLOSURE
-          </div>
-          Scores in this table are <strong>shape-similarity discrimination ranks</strong>,
-          not probabilities. A country at 90 is not 90% likely to see the event; it is
-          positioned high in the distribution of how closely its trajectory rhymes with
-          the canonical shape.
+          Scores in this table are similarity ranks from 0 to 100, not probabilities. A
+          country at 90 resembles that trajectory closely; it is not 90% likely to see the
+          event. No recipe here is yet deployed for real decisions.
         </div>
       </div>
 
-      {/* Side panel — how this differs from risk-board */}
+      {/* Side panel — how this differs from the Risk Board */}
       <aside
         style={{
           background: "var(--qgi-surface)",
@@ -426,28 +432,18 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
           top: "12px",
         }}
       >
-        <div
+        <h3
           style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "10px",
+            fontSize: "12px",
+            letterSpacing: "1.2px",
+            color: "var(--qgi-accent)",
+            fontFamily: "ui-monospace, monospace",
+            margin: "0 0 10px",
+            textTransform: "uppercase",
           }}
         >
-          <ChartLine size={14} color="var(--qgi-accent)" />
-          <h3
-            style={{
-              fontSize: "12px",
-              letterSpacing: "1.2px",
-              color: "var(--qgi-accent)",
-              fontFamily: "ui-monospace, monospace",
-              margin: 0,
-              textTransform: "uppercase",
-            }}
-          >
-            How this differs from Risk Board
-          </h3>
-        </div>
+          How this differs from the Risk Board
+        </h3>
         <p
           style={{
             fontSize: "12px",
@@ -456,10 +452,9 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             margin: "0 0 10px",
           }}
         >
-          The <strong style={{ color: "var(--qgi-text)" }}>Patterns ranking</strong> sorts
-          countries by shape similarity to ANY pattern in the catalog — including
-          walked-failed and queued recipes. It asks:{" "}
-          <em>whose trajectory rhymes with something we know about?</em>
+          This ranking sorts countries by shape similarity to any trajectory in the
+          catalog, including recipes still in review. It asks:{" "}
+          <em>whose recent movement resembles something we have seen before?</em>
         </p>
         <p
           style={{
@@ -473,11 +468,8 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
           <Link href={"/risk-board" as Route} style={{ color: "var(--qgi-accent)" }}>
             Risk Board
           </Link>{" "}
-          ranks only on{" "}
-          <strong style={{ color: "var(--qgi-text)" }}>Validated (🟢) recipes</strong>{" "}
-          with calibration disclosure, surfacing recipe scores with their confidence
-          bands. It asks:{" "}
-          <em>where are we confident enough to put a tier on the table?</em>
+          ranks only on deployed recipes with their confidence bands. It asks:{" "}
+          <em>where are we confident enough to put a number on the table?</em>
         </p>
         <p
           style={{
@@ -488,8 +480,8 @@ export function PatternRankingTable({ rows, families }: PatternRankingTableProps
             fontStyle: "italic",
           }}
         >
-          Use Patterns for structural exploration; use Risk Board for decision-grade
-          tiering.
+          Use trajectories for structural exploration; use the Risk Board for
+          decision-grade calls.
         </p>
       </aside>
     </div>
@@ -508,7 +500,6 @@ function chipBtnStyle(active: boolean, accent?: string): React.CSSProperties {
     cursor: "pointer",
     fontFamily: "ui-monospace, monospace",
     letterSpacing: "0.3px",
-    transition: "all 0.12s",
   };
 }
 
