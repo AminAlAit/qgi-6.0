@@ -5,6 +5,7 @@
 # Core ML
 xgboost>=2.0,<3.0          # XGBClassifier(n_jobs=1) — single-threaded per §2a
 shap>=0.45,<1.0             # SHAP values for compute_driver.py + compute_sensitivity.py
+threadpoolctl>=3.0,<4.0    # pin BLAS/OpenMP to 1 thread per fold (#961 oversubscription fix)
 
 # Data / numeric
 pandas>=2.0,<3.0
