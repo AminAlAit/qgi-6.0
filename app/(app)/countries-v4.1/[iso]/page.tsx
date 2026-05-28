@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const country = getCountryByIso(iso);
   return {
     title: country
-      ? `${country.name} (v4.1 mockup) · QG Intelligence`
+      ? `${country.name} · QG Intelligence`
       : "Country not found · QG Intelligence",
     description: country
       ? `${country.name}: the recipes its recent signals resemble, the indicators behind each score, recent movement, and historical analogs. Local-only mockup.`

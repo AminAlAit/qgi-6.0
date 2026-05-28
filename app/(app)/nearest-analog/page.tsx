@@ -31,6 +31,7 @@ import {
 import { vintageStamp } from "@/lib/te-mock/recipes";
 import { CountryPicker } from "@/components/nearest-analog/CountryPicker";
 import { MethodologyBox } from "@/components/nearest-analog/MethodologyBox";
+import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
 
 export const metadata: Metadata = {
   title: "Nearest-Analog Finder (mockup) · QG Intelligence",
@@ -39,9 +40,29 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function NearestAnalogPage() {
+interface NearestAnalogPageProps {
+  searchParams: Promise<{ iso?: string }>;
+}
+
+export default async function NearestAnalogPage({
+  searchParams,
+}: NearestAnalogPageProps) {
+  const { iso: isoParam } = await searchParams;
   const entries = getCurrentCountries();
   const dflt = defaultCurrentCountry();
+
+  // Resolve requested ISO: if the corpus has it use it; otherwise pass the
+  // default and let CountryPicker render the "no data yet" banner.
+  const requestedIso = isoParam?.toUpperCase();
+  const inCorpus = requestedIso ? entries.some((e) => e.iso === requestedIso) : false;
+  const resolvedDefaultIso = inCorpus ? (requestedIso as string) : dflt.iso;
+
+  // If an ISO was requested but isn't in the analog corpus, look up its name
+  // from the v4 country list for a human-readable banner.
+  const unavailableName =
+    requestedIso && !inCorpus
+      ? (COUNTRIES_V4.find((c) => c.iso === requestedIso)?.name ?? requestedIso)
+      : null;
 
   return (
     <div
@@ -182,7 +203,11 @@ export default function NearestAnalogPage() {
           }}
         >
           <main style={{ minWidth: 0 }}>
-            <CountryPicker entries={entries} defaultIso={dflt.iso} />
+            <CountryPicker
+              entries={entries}
+              defaultIso={resolvedDefaultIso}
+              unavailableName={unavailableName ?? undefined}
+            />
           </main>
           <div style={{ position: "sticky", top: "24px" }}>
             <MethodologyBox />
