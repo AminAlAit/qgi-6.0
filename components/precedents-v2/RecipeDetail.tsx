@@ -11,6 +11,34 @@ import { CapabilitySection } from "./CapabilitySection";
 import { AnatomyBar } from "./AnatomyBar";
 import { StatusChip, STATUS_META } from "./StatusChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
+
+function VacatedMetric({ children }: { children: React.ReactNode }) {
+  return (
+    <span style={{ display: "inline-flex", alignItems: "baseline", gap: "4px" }}>
+      <span style={{ textDecoration: "line-through", color: "var(--qgi-text-dim)" }}>
+        {children}
+      </span>
+      <span
+        title="This number was vacated on 2026-05-25 after a sample-coverage error. Re-evaluation in progress."
+        style={{
+          fontSize: "8px",
+          fontFamily: "ui-monospace, monospace",
+          letterSpacing: "0.4px",
+          color: "#E68F29",
+          border: "1px solid #E68F29",
+          background: "rgba(230,143,41,0.10)",
+          padding: "1px 4px",
+          borderRadius: "2px",
+          textTransform: "uppercase",
+          verticalAlign: "super",
+        }}
+      >
+        vacated
+      </span>
+    </span>
+  );
+}
 
 export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
   const mock = getMock(recipe);
@@ -359,12 +387,12 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
                 style={{
                   fontSize: "56px",
                   fontWeight: 600,
-                  color: "#3FBF8F",
+                  color: demo ? "var(--qgi-text-dim)" : "#3FBF8F",
                   fontFamily: "ui-monospace, monospace",
                   lineHeight: 1,
                 }}
               >
-                0.91
+                {demo ? <VacatedMetric>0.91</VacatedMetric> : "0.91"}
               </div>
               <div style={{ flex: 1, minWidth: "240px" }}>
                 <div
@@ -374,11 +402,17 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
                     marginBottom: "6px",
                   }}
                 >
-                  LOCO-AUC = <strong>0.9147</strong> (95% CI 0.872 – 0.948) across 6
-                  leave-one-cohort-out folds.
+                  LOCO-AUC ={" "}
+                  <strong>
+                    {demo ? <VacatedMetric>0.9147</VacatedMetric> : "0.9147"}
+                  </strong>{" "}
+                  (95% CI{" "}
+                  {demo ? <VacatedMetric>0.872–0.948</VacatedMetric> : "0.872 – 0.948"})
+                  across 6 leave-one-cohort-out folds.
                 </div>
                 <div style={{ fontSize: "12px", color: "var(--qgi-text-muted)" }}>
-                  Exceeds the LOCK floor of 0.7986 by +0.116. V1 separation 25.8pp.
+                  Exceeds the LOCK floor of 0.7986 by +0.116. V1 separation{" "}
+                  {demo ? <VacatedMetric>25.8pp</VacatedMetric> : "25.8pp"}.
                 </div>
               </div>
             </div>
@@ -423,12 +457,29 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
           gated={!showResults}
           gateMessage="Held-out walk metrics become available after graduation."
         >
-          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
-            <Stat label="V1 separation" value="25.8pp" />
-            <Stat label="V4 OOT recall" value="86.7%" />
-            <Stat label="Walks completed" value="4" />
-            <Stat label="Verdict" value="LOCKED" emphasis />
-          </div>
+          {demo ? (
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              <StatNode label="V1 separation">
+                <VacatedMetric>+25.8pp</VacatedMetric>
+              </StatNode>
+              <StatNode label="V4 OOT recall">
+                <VacatedMetric>86.7%</VacatedMetric>
+              </StatNode>
+              <StatNode label="Walks completed">
+                <VacatedMetric>4 (3 cleared + 1 vacated)</VacatedMetric>
+              </StatNode>
+              <StatNode label="Verdict">
+                <VacatedMetric>LOCKED</VacatedMetric>
+              </StatNode>
+            </div>
+          ) : (
+            <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+              <Stat label="V1 separation" value="25.8pp" />
+              <Stat label="V4 OOT recall" value="86.7%" />
+              <Stat label="Walks completed" value="4" />
+              <Stat label="Verdict" value="LOCKED" emphasis />
+            </div>
+          )}
         </CapabilitySection>
 
         {/* §8 Top countries */}
@@ -663,8 +714,9 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
           <div
             style={{
               padding: "16px",
-              border: "1px solid #E64545",
-              background: "rgba(230,69,69,0.06)",
+              border: `1px solid var(--qgi-border)`,
+              borderLeft: `3px solid ${CALM_SLATE_BLUE}`,
+              background: `rgba(91,126,153,0.06)`,
               borderRadius: "6px",
             }}
           >
@@ -672,12 +724,12 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
               style={{
                 fontSize: "10px",
                 letterSpacing: "1.2px",
-                color: "#E64545",
+                color: CALM_SLATE_BLUE,
                 fontFamily: "ui-monospace, monospace",
                 marginBottom: "8px",
               }}
             >
-              ANTI-CAUSAL FIREWALL
+              How to read this
             </div>
             <p
               style={{
@@ -744,6 +796,34 @@ function Stat({
         }}
       >
         {value}
+      </div>
+    </div>
+  );
+}
+
+function StatNode({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <div
+        style={{
+          fontSize: "10px",
+          letterSpacing: "1px",
+          color: "var(--qgi-text-dim)",
+          fontFamily: "ui-monospace, monospace",
+          marginBottom: "4px",
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          fontSize: "20px",
+          fontWeight: 600,
+          color: "var(--qgi-text)",
+          fontFamily: "ui-monospace, monospace",
+        }}
+      >
+        {children}
       </div>
     </div>
   );
