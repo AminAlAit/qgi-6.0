@@ -67,6 +67,21 @@ import numpy as np
 import pandas as pd
 from joblib import Parallel, delayed
 
+# Pin BLAS/OpenMP to one thread *around each model fit* so the parallel grid (#961) does not
+# oversubscribe the box: N joblib threads each spawning N BLAS threads = N² (e.g. 16×16=256 on
+# a 16-core canary). Pinning to 1 is bit-identical for the fleet's XGBoost path (n_estimators
+# fixed, exact tree method, seeded; thread count does not change the result) and removes the
+# contention that made the parallel walk run *slower* than a single laptop core. threadpoolctl
+# is an optional dep: if absent (older local env), fall back to a no-op so the walk still runs.
+try:
+    from threadpoolctl import threadpool_limits as _threadpool_limits
+except ImportError:  # pragma: no cover - exercised only where the dep is missing
+    from contextlib import contextmanager
+
+    @contextmanager
+    def _threadpool_limits(*_args, **_kwargs):
+        yield
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "src"
 SCRIPTS_ROOT = REPO_ROOT / "scripts"
@@ -338,6 +353,7 @@ def build_X_y(
     selected_indicators: list[str],
     window: int,
     panels: dict[str, pd.DataFrame],
+    feat_cache: dict | None = None,
 ) -> tuple[np.ndarray, np.ndarray, np.ndarray, np.ndarray]:
     """Build feature matrix for one (selected_set, window) configuration.
 
@@ -346,7 +362,17 @@ def build_X_y(
         y: (n_valid,) labels
         countries: (n_valid,) per-row country
         years: (n_valid,) per-row year
-    """
+
+    `feat_cache` (optional): a memo dict keyed by ``(indicator, country, year, window)``
+    → the 8-feature vector (or None for insufficient data). BIT-IDENTICAL by construction:
+    ``extract_features_for_indicator`` is a pure deterministic function of exactly those four
+    keys (independent of the selected set), so a cached value equals a freshly-computed one.
+    The greedy loop shares ONE cache across all (candidate × window) cells + steps, which kills
+    the dominant redundancy — today the selected set's features are re-extracted for every
+    candidate and every cell. The cache is a plain dict; under the thread backend (#961) its
+    set/get are GIL-atomic and the cached value is deterministic, so a write race can at worst
+    recompute the same value — never alter the result. `None` disables the cache (back-compat
+    + the serial test arms)."""
     X_rows = []
     y_rows = []
     c_rows = []
@@ -357,8 +383,15 @@ def build_X_y(
         feat_parts = []
         skip = False
         for ind in selected_indicators:
-            panel = panels[ind]
-            f = extract_features_for_indicator(panel, country, year, window)
+            if feat_cache is not None:
+                key = (ind, country, year, window)
+                if key in feat_cache:
+                    f = feat_cache[key]
+                else:
+                    f = extract_features_for_indicator(panels[ind], country, year, window)
+                    feat_cache[key] = f
+            else:
+                f = extract_features_for_indicator(panels[ind], country, year, window)
             if f is None:
                 skip = True
                 break
@@ -566,76 +599,81 @@ def fit_predict_loco(
     pooled_years: list[int] = []
     per_country_auc: dict[str, float] = {}
 
-    for held in unique_countries:
-        train_mask = countries != held
-        test_mask = countries == held
-        if test_mask.sum() == 0 or train_mask.sum() == 0:
-            continue
-        y_train = y[train_mask]
-        if len(np.unique(y_train)) < 2:
-            continue
-        X_train = X[train_mask]
-        X_test = X[test_mask]
-        y_test = y[test_mask]
-        n_pos = int((y_train == 1).sum())
-        n_neg = int((y_train == 0).sum())
-        spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
+    # Pin BLAS/OpenMP to 1 thread for the whole fold loop. Under the #961 thread backend
+    # each parallel cell would otherwise launch a full BLAS thread pool, oversubscribing the
+    # box (N×N threads). Bit-identical for the seeded, exact-tree XGBoost fleet path; the
+    # canary re-run is the §2.5 confirmation. No-op if threadpoolctl is unavailable locally.
+    with _threadpool_limits(1):
+        for held in unique_countries:
+            train_mask = countries != held
+            test_mask = countries == held
+            if test_mask.sum() == 0 or train_mask.sum() == 0:
+                continue
+            y_train = y[train_mask]
+            if len(np.unique(y_train)) < 2:
+                continue
+            X_train = X[train_mask]
+            X_test = X[test_mask]
+            y_test = y[test_mask]
+            n_pos = int((y_train == 1).sum())
+            n_neg = int((y_train == 0).sum())
+            spw = (n_neg / max(n_pos, 1)) if n_pos > 0 else 1.0
 
-        # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
-        # POST-row-selection numeric stabilization for rare non-finite values produced
-        # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
-        # NOT imputation of missing indicator windows — rows lacking a selected
-        # indicator's window are already DROPPED in build_X_y (the coverage gate, not
-        # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
-        X_train = np.where(np.isfinite(X_train), X_train, 0.0)
-        X_test = np.where(np.isfinite(X_test), X_test, 0.0)
+            # Replace residual NaN/inf with 0. NOTE (Ji-Hoon JH-2, 2026-05-25): this is
+            # POST-row-selection numeric stabilization for rare non-finite values produced
+            # by the z-score feature computation (e.g. a zero-variance window → 0/0). It is
+            # NOT imputation of missing indicator windows — rows lacking a selected
+            # indicator's window are already DROPPED in build_X_y (the coverage gate, not
+            # fill, is the remedy). The JH-R1 firewall (no filled row in any fold) holds.
+            X_train = np.where(np.isfinite(X_train), X_train, 0.0)
+            X_test = np.where(np.isfinite(X_test), X_test, 0.0)
 
-        if architecture == "LR":
-            from sklearn.linear_model import LogisticRegression
-            scaler = StandardScaler()
-            Xt = scaler.fit_transform(X_train)
-            Xte = scaler.transform(X_test)
-            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-            clf = LogisticRegression(
-                C=1.0, penalty="l1", solver="saga", class_weight="balanced",
-                max_iter=2000, random_state=seed,
-            )
-            clf.fit(Xt, y_train)
-            probs = clf.predict_proba(Xte)[:, 1]
-        elif architecture == "XGBoost":
-            from xgboost import XGBClassifier
-            # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
-            # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
-            # collinearity at each greedy step.
-            clf = XGBClassifier(
-                n_estimators=200, max_depth=6, learning_rate=0.05,
-                reg_alpha=0.1,
-                scale_pos_weight=spw, eval_metric="logloss",
-                random_state=seed, verbosity=0, n_jobs=1,
-            )
-            clf.fit(X_train, y_train)
-            probs = clf.predict_proba(X_test)[:, 1]
-        elif architecture == "MLP":
-            from sklearn.neural_network import MLPClassifier
-            scaler = StandardScaler()
-            Xt = scaler.fit_transform(X_train)
-            Xte = scaler.transform(X_test)
-            clf = MLPClassifier(
-                hidden_layer_sizes=(16,), activation="relu",
-                solver="adam", learning_rate_init=1e-3, max_iter=200,
-                early_stopping=True, random_state=seed,
-            )
-            clf.fit(Xt, y_train)
-            probs = clf.predict_proba(Xte)[:, 1]
-        else:
-            raise ValueError(f"Unknown architecture {architecture!r}")
+            if architecture == "LR":
+                from sklearn.linear_model import LogisticRegression
+                scaler = StandardScaler()
+                Xt = scaler.fit_transform(X_train)
+                Xte = scaler.transform(X_test)
+                # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+                clf = LogisticRegression(
+                    C=1.0, penalty="l1", solver="saga", class_weight="balanced",
+                    max_iter=2000, random_state=seed,
+                )
+                clf.fit(Xt, y_train)
+                probs = clf.predict_proba(Xte)[:, 1]
+            elif architecture == "XGBoost":
+                from xgboost import XGBClassifier
+                # Per F-ML-1 §5.2: L1-regularized inner model (Sonnet PR#90 B1).
+                # reg_alpha=0.1 inside XGBoost provides L1 regularization handling
+                # collinearity at each greedy step.
+                clf = XGBClassifier(
+                    n_estimators=200, max_depth=6, learning_rate=0.05,
+                    reg_alpha=0.1,
+                    scale_pos_weight=spw, eval_metric="logloss",
+                    random_state=seed, verbosity=0, n_jobs=1,
+                )
+                clf.fit(X_train, y_train)
+                probs = clf.predict_proba(X_test)[:, 1]
+            elif architecture == "MLP":
+                from sklearn.neural_network import MLPClassifier
+                scaler = StandardScaler()
+                Xt = scaler.fit_transform(X_train)
+                Xte = scaler.transform(X_test)
+                clf = MLPClassifier(
+                    hidden_layer_sizes=(16,), activation="relu",
+                    solver="adam", learning_rate_init=1e-3, max_iter=200,
+                    early_stopping=True, random_state=seed,
+                )
+                clf.fit(Xt, y_train)
+                probs = clf.predict_proba(Xte)[:, 1]
+            else:
+                raise ValueError(f"Unknown architecture {architecture!r}")
 
-        pooled_probs.extend(probs.tolist())
-        pooled_labels.extend(y_test.tolist())
-        pooled_countries.extend([held] * test_mask.sum())
-        pooled_years.extend(years[test_mask].tolist())
-        if len(np.unique(y_test)) >= 2:
-            per_country_auc[held] = compute_auc(probs, y_test)
+            pooled_probs.extend(probs.tolist())
+            pooled_labels.extend(y_test.tolist())
+            pooled_countries.extend([held] * test_mask.sum())
+            pooled_years.extend(years[test_mask].tolist())
+            if len(np.unique(y_test)) >= 2:
+                per_country_auc[held] = compute_auc(probs, y_test)
 
     return {
         "probs": np.array(pooled_probs),
@@ -919,14 +957,16 @@ def load_greedy_checkpoint(path: Path, expected_signature: str) -> dict[str, Any
 
 def _eval_grid_cell(samples, selected, cand, win, panels, architecture, seed,
                     n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
-                    min_survive_countries, min_neg_survival):
+                    min_survive_countries, min_neg_survival, feat_cache=None):
     """Evaluate ONE (candidate, window) grid cell: build the trial set, apply the
     len/class guards + coverage gate, run full LOCO. Returns the result dict, or None
     if the cell is skipped. Pure + deterministic (fixed seed, XGBoost n_jobs=1 inside)
     and reads `panels`/`samples` read-only → safe to run concurrently (#961). The caller
-    reduces results in input order, so parallel evaluation is BIT-IDENTICAL to serial."""
+    reduces results in input order, so parallel evaluation is BIT-IDENTICAL to serial.
+    `feat_cache` is the shared per-(indicator,country,year,window) feature memo (read-mostly,
+    GIL-atomic under the thread backend); it changes only speed, never the result."""
     trial_set = selected + [cand]
-    X, y, c, yr = build_X_y(samples, trial_set, win, panels)
+    X, y, c, yr = build_X_y(samples, trial_set, win, panels, feat_cache=feat_cache)
     if len(X) < 30 or len(np.unique(y)) < 2:
         return None
     # Coverage gate (truncation fix, 2026-05-25): reject a candidate SET that drops too
@@ -983,6 +1023,14 @@ def greedy_outer_loop(
     chosen_window: int | None = None
     remaining = list(candidates_top_n)
     history: list[dict] = []
+    # Shared per-(indicator,country,year,window) feature memo for the whole walk. The dominant
+    # cost is re-extracting the SAME features for the SAME (indicator,window) across every
+    # candidate cell and every greedy step; this memo computes each exactly once. Bit-identical
+    # (see build_X_y) — the canary re-run is the §2.5 confirmation that selection+AUC are
+    # unchanged. One dict per walk (one process), GC'd at process exit; no cross-walk leak.
+    # NOTE (Sonnet PR#121 FU-2): on a checkpoint RESUME the cache starts cold, so the first
+    # post-resume step pays the full extraction cost again. Speed-only — no correctness impact.
+    feat_cache: dict = {}
     n_pos_tot = int((samples["label"] == 1).sum()) if samples is not None else 0
     n_neg_tot = int((samples["label"] == 0).sum()) if samples is not None else 0
 
@@ -1031,7 +1079,7 @@ def greedy_outer_loop(
             delayed(_eval_grid_cell)(
                 samples, selected, cand, win, panels, architecture, seed,
                 n_pos_tot, n_neg_tot, min_pos_survival, min_effective_npos,
-                min_survive_countries, min_neg_survival,
+                min_survive_countries, min_neg_survival, feat_cache,
             )
             for (cand, win) in cells
         )

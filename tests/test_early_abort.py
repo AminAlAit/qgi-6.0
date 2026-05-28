@@ -32,7 +32,7 @@ def fake_inner(monkeypatch):
     ctrl = {"values": {}, "auc_fn": None}
     last = {"auc": 0.5}
 
-    def fake_build_X_y(samples, trial_set, win, panels):
+    def fake_build_X_y(samples, trial_set, win, panels, feat_cache=None):
         if ctrl["auc_fn"] is not None:
             last["auc"] = ctrl["auc_fn"](trial_set)
         else:
