@@ -1,6 +1,6 @@
 /**
  * TrajectoryDetail — the per-recipe "Trajectory" deep-dive body, lives at
- * /recipes-v4.1/[slug]/trajectory.
+ * /recipes/[slug]/trajectory.
  *
  * "Trajectory" (Sofia naming consult, 2026-05-28) is the V4 name for a
  * recipe's canonical movement shape — the recurring shape its key indicators
@@ -28,7 +28,7 @@ import { PanelShell } from "@/components/countries-v4-1/PanelShell";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { PatternShapeSparkline } from "@/components/patterns-v4/PatternShapeSparkline";
 
-// Resolve a country name → its /countries-v4.1 slug, where we have one.
+// Resolve a country name → its /countries slug, where we have one.
 const ISO_BY_NAME = new Map(COUNTRIES_V4.map((c) => [c.name, c.iso.toLowerCase()]));
 
 /**
@@ -106,7 +106,7 @@ export function TrajectoryDetail({
             }}
           >
             <Link
-              href={`/recipes-v4.1/${recipe.recipe_id}` as Route}
+              href={`/recipes/${recipe.recipe_id}` as Route}
               style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
             >
               ← {recipe.label}
@@ -474,7 +474,7 @@ export function TrajectoryDetail({
                   <li key={m.country}>
                     {slug ? (
                       <Link
-                        href={`/countries-v4.1/${slug}` as Route}
+                        href={`/countries/${slug}` as Route}
                         style={{
                           textDecoration: "none",
                           color: "inherit",
@@ -550,7 +550,7 @@ export function TrajectoryDetail({
             }}
           >
             <Link
-              href={"/recipes-v4.1/trajectory-ranking" as Route}
+              href={"/recipes/trajectory-ranking" as Route}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -568,7 +568,7 @@ export function TrajectoryDetail({
               Trajectory strength ranking →
             </Link>
             <Link
-              href={`/recipes-v4.1/${recipe.recipe_id}` as Route}
+              href={`/recipes/${recipe.recipe_id}` as Route}
               style={{
                 fontSize: "12px",
                 color: "var(--qgi-text-muted)",

@@ -1,5 +1,5 @@
 /**
- * patterns-v4-pair-detail-mock — data layer for /patterns-v4/[slug] detail pages.
+ * patterns-v4-pair-detail-mock — data layer for /patterns/[slug] detail pages.
  *
  * VOCABULARY RULES (binding, no exceptions)
  * ------------------------------------------

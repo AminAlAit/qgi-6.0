@@ -4,8 +4,7 @@ import type { NextRequest } from "next/server";
 /**
  * Next.js 16 Proxy (replaces middleware.ts).
  *
- * Protects /dashboard, /patterns, /signals routes behind auth.
- * /countries is public (part of the Country Intelligence Browser).
+ * Protects the 9 canonical V4.1 app routes behind auth.
  * Landing page (/) is always public.
  *
  * SKIP_AUTH=true bypasses all auth checks for local development.
@@ -31,5 +30,15 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*", "/patterns/:path*", "/signals/:path*"],
+  matcher: [
+    "/dashboard/:path*",
+    "/recipes/:path*",
+    "/countries/:path*",
+    "/risk-board/:path*",
+    "/compound-risk/:path*",
+    "/compare/:path*",
+    "/nearest-analog/:path*",
+    "/patterns/:path*",
+    "/recipe-tracker/:path*",
+  ],
 };

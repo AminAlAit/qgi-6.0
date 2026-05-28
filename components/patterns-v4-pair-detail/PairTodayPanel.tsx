@@ -5,7 +5,7 @@
  *
  * Two side-by-side cards. Each card:
  *   - Country flag + name
- *   - Link to /countries-v4.1/{iso}
+ *   - Link to /countries/{iso}
  *   - One summary sentence: "Currently {Country}'s strongest recipe match
  *     is {recipe}, rank #{n} in the catalogue."
  *
@@ -91,7 +91,7 @@ export function PairTodayPanel({ todayA, todayB }: PairTodayPanelProps) {
 function TodayCard({ summary }: { summary: TodaySummary }) {
   return (
     <Link
-      href={`/countries-v4.1/${summary.iso}` as Route}
+      href={`/countries/${summary.iso}` as Route}
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <div

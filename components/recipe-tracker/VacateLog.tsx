@@ -139,7 +139,7 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
                   </span>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <Link
-                      href={`/precedents-v2/${ev.recipe_id}` as Route}
+                      href={`/recipes/${ev.recipe_id}` as Route}
                       style={{
                         fontSize: "13px",
                         fontWeight: 600,

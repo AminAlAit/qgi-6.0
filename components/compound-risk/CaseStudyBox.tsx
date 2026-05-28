@@ -70,7 +70,7 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
           return (
             <Link
               key={r.recipe_id}
-              href={`/precedents-v2/${r.recipe_id}` as Route}
+              href={`/recipes/${r.recipe_id}` as Route}
               title={`${r.label} · ${r.score.toFixed(1)}`}
               style={{
                 textDecoration: "none",

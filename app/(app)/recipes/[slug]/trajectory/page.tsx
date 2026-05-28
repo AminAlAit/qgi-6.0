@@ -1,8 +1,8 @@
 /**
- * /recipes-v4.1/[slug]/trajectory — the per-recipe "Trajectory" deep-dive.
+ * /recipes/[slug]/trajectory — the per-recipe "Trajectory" deep-dive.
  *
  * The canonical movement shape of a recipe, given its own page under the
- * recipe (was /patterns-v4/[id]; migrated here so "pattern" returns to its
+ * recipe (was /patterns/[id]; migrated here so "pattern" returns to its
  * SCDI/Cascade meaning at /patterns). Built to the V4.1 bar via
  * TrajectoryDetail. Only recipes that ship a curated shape resolve; others
  * 404 (and the recipe page only links here when a trajectory exists).

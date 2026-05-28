@@ -476,18 +476,18 @@ export function CountryMergedDetail({
         </div>
         <div className="flex flex-col gap-2 text-sm max-w-[68ch]">
           <Link
-            href={`/signals/${iso}` as Route}
+            href={`/risk-board` as Route}
             className="hover:text-[var(--qgi-accent)] transition-colors"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Currently firing signals for {name} →
+            Risk Board — current country rankings →
           </Link>
           <Link
-            href={"/precedents" as Route}
+            href={"/recipes" as Route}
             className="hover:text-[var(--qgi-accent)] transition-colors"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            See related precedent recipes →
+            See all recipes →
           </Link>
           <Link
             href={"/patterns?sort=loco_auc" as Route}
@@ -1042,13 +1042,13 @@ function WhatsHappeningHere({
         {top3.length > 0
           ? "ML-validated signals above are drawn from the 4 LOCKed QGI recipes (V1.9.1)."
           : "The statistical alignment layer (71 categories, V1.9.1) is shown in the L1 profile below."}{" "}
-        Full signals breakdown on the{" "}
+        Full risk breakdown on the{" "}
         <Link
-          href={"/signals" as Route}
+          href={"/risk-board" as Route}
           className="underline underline-offset-2"
           style={{ color: "var(--qgi-text-muted)" }}
         >
-          Signals page
+          Risk Board
         </Link>
         .
       </p>

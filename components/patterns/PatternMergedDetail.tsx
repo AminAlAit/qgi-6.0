@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 import type { PatternRow } from "@/lib/types";
-import type { PatternWindowTier } from "@/app/(app)/patterns/[slug]/page";
+import type { PatternWindowTier } from "@/lib/patterns-initial-filters";
 import type { PatternTrajectory } from "@/lib/pattern-trajectory";
 import { PatternTrajectoryCell } from "@/components/patterns/PatternTrajectoryCell";
 import { formatDataThrough } from "@/lib/format-bake-date";
@@ -491,7 +491,7 @@ export function PatternMergedDetail({
             {row.country_b} country profile →
           </Link>
           <Link
-            href={`/signals/${aSlug}` as Route}
+            href={`/countries/aSlug}` as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",
@@ -501,7 +501,7 @@ export function PatternMergedDetail({
             What&apos;s firing on {row.country_a} →
           </Link>
           <Link
-            href={`/signals/${bSlug}` as Route}
+            href={`/countries/bSlug}` as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",
@@ -511,7 +511,7 @@ export function PatternMergedDetail({
             What&apos;s firing on {row.country_b} →
           </Link>
           <Link
-            href={"/precedents" as Route}
+            href={"/recipes" as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",

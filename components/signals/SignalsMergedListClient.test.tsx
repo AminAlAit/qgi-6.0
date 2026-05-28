@@ -20,7 +20,7 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { SignalsMergedListClient } from "./SignalsMergedListClient";
-import type { SignalRow } from "@/app/(app)/signals/page";
+import type { SignalRow } from "@/lib/signals-types";
 
 const LOCKED_SLUGS = [
   "civil_war_and_insurgency",

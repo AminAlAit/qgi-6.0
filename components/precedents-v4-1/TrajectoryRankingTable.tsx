@@ -1,8 +1,8 @@
 "use client";
 
 /**
- * TrajectoryRankingTable — the /recipes-v4.1/trajectory-ranking client
- * surface (migrated + rebuilt from the old /patterns-v4/ranking to the V4.1
+ * TrajectoryRankingTable — the /recipes/trajectory-ranking client
+ * surface (migrated + rebuilt from the old /patterns/ranking to the V4.1
  * bar). Top-30 countries by how closely their current movement resembles any
  * trajectory in the catalog. Search + family filter + sortable columns.
  *
@@ -331,7 +331,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
                       </td>
                       <td style={{ padding: "11px 12px" }}>
                         <Link
-                          href={`/recipes-v4.1/${row.top_pattern_id}/trajectory` as Route}
+                          href={`/recipes/${row.top_pattern_id}/trajectory` as Route}
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
@@ -381,9 +381,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
                       </td>
                       <td style={{ padding: "11px 12px" }}>
                         <Link
-                          href={
-                            `/recipes-v4.1/${row.runner_pattern_id}/trajectory` as Route
-                          }
+                          href={`/recipes/${row.runner_pattern_id}/trajectory` as Route}
                           style={{
                             display: "inline-flex",
                             alignItems: "center",

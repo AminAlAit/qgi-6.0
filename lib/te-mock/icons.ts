@@ -2,7 +2,7 @@
  * Recipe → Lucide icon mapping. PascalCase icon names per lucide-react export
  * convention. Each recipe gets a concept-matched line-art symbol.
  *
- * Mockup-only. Used by app/(app)/precedents-v2/*.
+ * Mockup-only. Used by app/(app)/recipes/*.
  */
 import {
   Vote,

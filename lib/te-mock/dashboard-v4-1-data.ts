@@ -1,5 +1,5 @@
 /**
- * Data layer for /dashboard-v4.1
+ * Data layer for /dashboard
  *
  * - HERO_TILES_V41 — 6 revised tiles per the V4.1 spec (spec date 2026-05-28).
  *   Splits V4's combined "Recipes tested" tile into two separate tiles

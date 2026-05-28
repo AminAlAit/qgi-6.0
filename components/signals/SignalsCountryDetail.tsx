@@ -6,7 +6,7 @@ import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
 import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
-import type { CountrySignalRow, SignalTier } from "@/app/(app)/signals/[country]/page";
+import type { CountrySignalRow, SignalTier } from "@/lib/signals-types";
 
 /**
  * Merged Signals per-country detail — Build PR #3 of 5 (A3 Family 3).
@@ -179,7 +179,7 @@ export function SignalsCountryDetail({
         </Link>
         <span className="mx-1.5">/</span>
         <Link
-          href={"/signals" as Route}
+          href={"/risk-board" as Route}
           className="hover:underline"
           style={{ color: "var(--qgi-text-dim)" }}
         >
@@ -571,7 +571,7 @@ export function SignalsCountryDetail({
               `Country profile →` CTA above already covers country-scoped
               navigation. */}
           <Link
-            href={"/signals" as Route}
+            href={"/risk-board" as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",

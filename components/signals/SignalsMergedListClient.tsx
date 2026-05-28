@@ -6,7 +6,7 @@ import type { Route } from "next";
 import { CountryFlag } from "@/components/design/CountryFlag";
 import { countrySlug } from "@/lib/slug";
 import { L1_GROUPS } from "@/lib/category-taxonomy";
-import type { SignalRow, SignalTier } from "@/app/(app)/signals/page";
+import type { SignalRow, SignalTier } from "@/lib/signals-types";
 
 /**
  * Merged Signals list shell — Build PR #2 of 5 (A3 Family 3 merger brief).

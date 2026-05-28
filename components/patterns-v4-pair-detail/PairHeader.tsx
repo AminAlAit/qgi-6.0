@@ -1,5 +1,5 @@
 /**
- * PairHeader -- §1 header band for /patterns-v4/[slug].
+ * PairHeader -- §1 header band for /patterns/[slug].
  *
  * Symmetric: no leader/follower framing, no status chip, no arrow between
  * country names. Both countries treated identically.
@@ -68,7 +68,7 @@ export function PairHeader({
           }}
         >
           <Link
-            href={"/patterns-v4" as Route}
+            href={"/patterns" as Route}
             style={{ color: "var(--qgi-accent)", textDecoration: "none" }}
           >
             Patterns V4

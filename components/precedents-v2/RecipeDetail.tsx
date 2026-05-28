@@ -79,7 +79,7 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
               }}
             >
               <Link
-                href={"/precedents-v2" as Route}
+                href={"/recipes" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
                 ← Recipes

@@ -104,7 +104,7 @@ export default async function ComparePage({ searchParams }: Props) {
               }}
             >
               <Link
-                href={"/countries-v4.1" as Route}
+                href={"/countries" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
                 Countries

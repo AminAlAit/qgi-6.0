@@ -206,7 +206,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           </div>
         </div>
         <Link
-          href={"/precedents-v2" as Route}
+          href={"/recipes" as Route}
           style={{
             fontSize: "12px",
             padding: "9px 14px",

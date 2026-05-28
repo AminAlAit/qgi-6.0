@@ -40,11 +40,11 @@ export default function NotFound() {
           ← Back to Dashboard
         </Link>
         <Link
-          href="/precedents"
+          href="/recipes"
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
         >
-          Precedents
+          Recipes
         </Link>
         <Link
           href="/countries"
@@ -54,11 +54,11 @@ export default function NotFound() {
           Countries
         </Link>
         <Link
-          href="/signals"
+          href="/risk-board"
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
         >
-          Signals
+          Risk Board
         </Link>
         <Link
           href="/patterns"

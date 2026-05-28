@@ -98,7 +98,7 @@ export function InFlightPanel({
           return (
             <Link
               key={it.recipe_id}
-              href={`/precedents-v2/${r.recipe_id}` as Route}
+              href={`/recipes/${r.recipe_id}` as Route}
               style={{
                 display: "flex",
                 alignItems: "flex-start",
@@ -217,7 +217,7 @@ export function InFlightPanel({
                   {it.eta}
                 </span>
                 <Link
-                  href={`/precedents-v2/${r.recipe_id}` as Route}
+                  href={`/recipes/${r.recipe_id}` as Route}
                   style={{ color: "var(--qgi-text)", textDecoration: "none", flex: 1 }}
                 >
                   {r.label}

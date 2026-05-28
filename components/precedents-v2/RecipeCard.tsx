@@ -25,8 +25,8 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
 /**
  * RecipeCard
  *
- * `basePath` defaults to /precedents-v2 (V4 gallery). The V4.1 gallery
- * passes "/recipes-v4.1" so card clicks land on V4.1 detail pages.
+ * `basePath` defaults to /recipes (V4 gallery). The V4.1 gallery
+ * passes "/recipes" so card clicks land on V4.1 detail pages.
  *
  * `labelStrategy` defaults to "legacy" (byte-identical V4 behavior). Pass
  * "v4.1" for the polished gallery to emit plain-language labels via
@@ -35,7 +35,7 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
  */
 export function RecipeCard({
   recipe,
-  basePath = "/precedents-v2",
+  basePath = "/recipes",
   labelStrategy = "legacy",
 }: {
   recipe: TrackerRecipe;

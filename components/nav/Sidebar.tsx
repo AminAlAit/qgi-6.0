@@ -20,264 +20,20 @@ import {
 // History:
 // - 2026-04-13: Patterns→Precedents, Recipes→Signals (#121).
 // - 2026-04-16: Dashboard renamed to BASE and promoted to the top slot (#248).
-//   "Base" is QGI's command-center landing — a sample of everything in one view —
-//   not a "dashboard of legacy panels." Routed at /base; /dashboard kept as a
-//   redirect for outstanding bookmarks.
 // - 2026-04-17: Unicode placeholder icons replaced with inline SVGs (#icon-redesign).
-// - 2026-05-15: Flat 5-entry restructure (PR-i of resurfacing cutover). V1 +
-//   V2 family sub-entries removed from the sidebar — the routes remain
-//   reachable by direct URL but are no longer surfaced in nav. The 4 family
-//   entries point at the (current-name) `-merged` routes; PR-iii will rename
-//   those to canonical (`/countries`, etc.) atomically with the V1→`-v1`
-//   rename, so the sidebar hrefs here will update one more time then.
-
-// ── Inline SVG icons (16×16, currentColor, no external deps) ──────────────
-
-/** DASHBOARD — 2×2 grid of squares: command-center overview */
-const IconDashboard = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect
-      x="1"
-      y="1"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="9"
-      y="1"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="1"
-      y="9"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="9"
-      y="9"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
-/** COUNTRIES — wireframe globe with meridian + equator lines */
-const IconGlobe = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
-    {/* vertical meridian */}
-    <path
-      d="M8 1.75C8 1.75 5.5 4.5 5.5 8s2.5 6.25 2.5 6.25M8 1.75C8 1.75 10.5 4.5 10.5 8S8 14.25 8 14.25"
-      stroke="currentColor"
-      strokeWidth="1.25"
-    />
-    {/* horizontal equator */}
-    <line x1="1.75" y1="8" x2="14.25" y2="8" stroke="currentColor" strokeWidth="1.25" />
-  </svg>
-);
-
-/** PRECEDENTS — clock with a counter-clockwise arrow: look back in history */
-const IconHistory = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M8 14A6 6 0 1 0 2.5 7.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    {/* CCW arrow tip on the arc's open end */}
-    <polyline
-      points="1,5.5 2.5,7.5 4.5,6.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    {/* clock hands: 12 o'clock stem + 3 o'clock hand */}
-    <line
-      x1="8"
-      y1="8"
-      x2="8"
-      y2="5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    <line
-      x1="8"
-      y1="8"
-      x2="11"
-      y2="8"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-/** SIGNALS — lightning bolt: alert / early-warning signal */
-const IconSignal = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M9.5 1.5L4 9h4l-1.5 5.5L12 7H8L9.5 1.5z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-/** PATTERNS — three nodes connected by edges: network / structural pattern */
-const IconNetwork = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    {/* edges */}
-    <line x1="8" y1="3" x2="3" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    <line x1="8" y1="3" x2="13" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    <line x1="3" y1="12" x2="13" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    {/* nodes */}
-    <circle cx="8" cy="3" r="2" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="3" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="13" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-/** RANKING — ascending bar chart: power ranking / leaderboard */
-const IconBarChart = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect
-      x="1.5"
-      y="9"
-      width="3"
-      height="5.5"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="6.5"
-      y="5.5"
-      width="3"
-      height="9"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="11.5"
-      y="1.5"
-      width="3"
-      height="13"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
-/** CHEF'S HAT — Sofia V4.1 pick for "Recipes" (Charter §3 methodology unit).
- *  Reads as recipe-author in one glance; doesn't compete with L1-family
- *  crisis iconography on the recipe cards. Replaces the prior clock-with-
- *  CCW-arrow ("look back in history") which mis-cued when the page label
- *  swapped from "Precedents" → "Recipes". 16×16 hat outline. */
-const IconChefHat = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    {/* Hat crown — three lobes (left/center/right pillows) */}
-    <path
-      d="M3.25 7.5a2 2 0 1 1 1.2-3.6 2.5 2.5 0 0 1 4.6-1.4 2.5 2.5 0 0 1 4.6 1.4 2 2 0 1 1 1.2 3.6"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    {/* Hat band */}
-    <line
-      x1="3.25"
-      y1="7.5"
-      x2="13.05"
-      y2="7.5"
-      stroke="currentColor"
-      strokeWidth="1.25"
-    />
-    {/* Pleats — three short verticals on the band */}
-    <line x1="6" y1="8" x2="6" y2="10.5" stroke="currentColor" strokeWidth="1" />
-    <line x1="8.15" y1="8" x2="8.15" y2="10.5" stroke="currentColor" strokeWidth="1" />
-    <line x1="10.3" y1="8" x2="10.3" y2="10.5" stroke="currentColor" strokeWidth="1" />
-    {/* Brim */}
-    <rect
-      x="3"
-      y="10.5"
-      width="10.3"
-      height="2.25"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.25"
-    />
-  </svg>
-);
-
-/** BEAKER — wide-mouth lab beaker with bubbling liquid: experimental / mockup
- *  section header. Marks routes that are local-only and not production-bound. */
-const IconBeaker = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    {/* Lip */}
-    <line
-      x1="5"
-      y1="2"
-      x2="11"
-      y2="2"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    {/* Walls — narrow neck flaring to wider base */}
-    <path
-      d="M6 2v3.5L2.75 12.5a1 1 0 0 0 .9 1.5h8.7a1 1 0 0 0 .9-1.5L10 5.5V2"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinejoin="round"
-    />
-    {/* Liquid line */}
-    <line x1="3.4" y1="11" x2="12.6" y2="11" stroke="currentColor" strokeWidth="1.25" />
-    {/* Bubble */}
-    <circle cx="6.5" cy="9.5" r="0.6" fill="currentColor" />
-  </svg>
-);
+// - 2026-05-15: Flat 5-entry restructure (PR-i of resurfacing cutover).
+// - 2026-05-28: V4.1 canonical promotion. TE Mockup group merged into the
+//   top-level list as 9 standalone PRIMARY entries. All legacy entries
+//   (Dashboard/Recipes/Countries/Signals/Patterns pointing at deleted routes)
+//   removed. Inline SVG icon components removed; lucide-react used directly.
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-// 2026-04-19: "ABOUT" removed from the dashboard sidebar per user — About
-// is a public marketing surface and lives in the landing-page header nav,
-// not mixed with dashboard tools. The IconUser SVG was dropped with it.
-//
 // #440: `href: Route` so typed-routes pre-validates every nav target at
-// build time. Renaming `/precedents` → `/precedence` (or any future
-// re-org) becomes a build error here instead of a 404 in production.
-//
-// 2026-05-13 (A3 Family 1 Build PR #4): refactored from flat 15-item nav
-// into family-grouped sections with chip badges (LIVE / PREVIEW). The
-// merged Precedents preview surface needed its own nav slot (founder
-// request); flat list was already cluttered with 4 V2 routes; grouping
-// makes the V1/V2/Merged side-by-side comparison legible. Chip badges
-// surface the trial-period state at a glance. Cutover (PR #5) will kill
-// V1 + V2 preview entries and promote the merged route to PRIMARY status.
+// build time. A typo in any internal route becomes a build failure instead
+// of a silent runtime 404.
 
-/** Trial-period status chip. PRIMARY is reserved for the post-cutover
- *  canonical surface; LIVE = production V1; PREVIEW = V2 + merged previews. */
+/** Nav badge type. PRIMARY = canonical post-cutover surface. */
 type NavBadge = "LIVE" | "PREVIEW" | "PRIMARY";
 
 interface NavItem {
@@ -306,143 +62,83 @@ interface NavStandalone {
 type NavEntry = NavGroup | NavStandalone;
 
 /**
- * PR-i of the resurfacing cutover (2026-05-15) — sidebar flattened to a
- * 5-entry top-level list: Dashboard + 4 family canonicals.
+ * 2026-05-28 — V4.1 canonical promotion.
  *
- * Legacy V1 (Country browser / Recipe catalogue / Active signals / Pattern
- * atlas / Power ranking) and V2 (Table / Narrative / Tufte / Lloyd's /
- * Discover — Tabs / Discover — Facets) routes are NOT in the sidebar
- * anymore. They remain LIVE in the routing tree — reachable by typing the
- * URL — but are no longer surfaced in nav. PR-iii will rename:
- *   /countries (V1)         → /countries-v1
- *   /countries (V3)  → /countries
- *   (same shape for Precedents / Signals / Patterns)
- * and at that moment the hrefs below flip to the unsuffixed canonical.
+ * The legacy 5-entry top-level list (Dashboard/Recipes/Countries/Signals/
+ * Patterns pointing at deleted V3 routes) and the TE Mockup group (9 V4.1
+ * routes behind a beaker section header) collapse into ONE flat list of
+ * 9 PRIMARY canonical entries. Labels drop the "V4" / "V4.1" suffixes.
+ * Icons: lucide-react throughout — no inline SVGs needed.
  */
 const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
     label: "Dashboard",
     href: "/dashboard",
-    icon: <IconDashboard />,
-    badge: "LIVE",
+    icon: <LayoutDashboard size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
-    // 2026-05-27 rename: "Precedents" → "Recipes" (Charter §3-aligned).
-    // Unanimous SWAP from design council (Sofia + Talia + Daniyar).
-    // Sofia V4.1 design pass: icon swap to chef's hat — reads as
-    // recipe-author + doesn't compete with L1 crisis iconography.
     type: "standalone",
     label: "Recipes",
-    href: "/precedents" as Route,
-    icon: <IconChefHat />,
-    badge: "LIVE",
+    href: "/recipes",
+    icon: <ScrollText size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
     label: "Countries",
-    href: "/countries" as Route,
-    icon: <IconGlobe />,
-    badge: "LIVE",
+    href: "/countries",
+    icon: <Globe size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
-    label: "Signals",
-    href: "/signals" as Route,
-    icon: <IconSignal />,
-    badge: "LIVE",
+    label: "Risk Board",
+    href: "/risk-board",
+    icon: <Gauge size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
+  {
+    type: "standalone",
+    label: "Compound Risk",
+    href: "/compound-risk",
+    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
+  {
+    type: "standalone",
+    label: "Compare",
+    href: "/compare",
+    icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
+  {
+    type: "standalone",
+    label: "Nearest Analog",
+    href: "/nearest-analog",
+    icon: <Telescope size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
     label: "Patterns",
-    href: "/patterns" as Route,
-    icon: <IconNetwork />,
-    badge: "LIVE",
+    href: "/patterns",
+    icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
-  // 2026-05-26: TE mockup group — local-only preview routes for the
-  // Trajectory-Engine site-architecture target-state. NOT in production
-  // bundle. Stays on `local/te-precedents-mockup` branch until founder
-  // ratifies. Ordered: existing-pages-redesigned first (matching the
-  // production sidebar order — Dashboard → Precedents → Countries →
-  // Patterns), then the 4 brand-new pages from
-  // te-site-architecture-target-state.md §2.
   {
-    label: "TE Mockup (local)",
-    icon: <IconBeaker />,
-    items: [
-      {
-        // Dashboard V4.1 — uses the original Dashboard V4 icon
-        // (LayoutDashboard) per founder pick 2026-05-28. The pre-V4.1
-        // Dashboard V4 entry is no longer listed in the sidebar.
-        label: "Dashboard V4.1",
-        href: "/dashboard-v4.1" as Route,
-        badge: "PREVIEW",
-        icon: <LayoutDashboard size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Recipes V4.1",
-        href: "/recipes-v4.1" as Route,
-        badge: "PREVIEW",
-        icon: <ScrollText size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        // Countries V4.1 — uses the original Countries V4 icon (Globe)
-        // per founder pick. The pre-V4.1 Countries V4 entry is dropped.
-        label: "Countries V4.1",
-        href: "/countries-v4.1" as Route,
-        badge: "PREVIEW",
-        icon: <Globe size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        // 2026-05-28: renamed from "Live Risk Board" to "Risk Board" per
-        // founder pick. Gauge icon retained.
-        label: "Risk Board",
-        href: "/risk-board" as Route,
-        badge: "PREVIEW",
-        icon: <Gauge size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Compound Risk",
-        href: "/compound-risk" as Route,
-        badge: "PREVIEW",
-        icon: <Layers size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Compare",
-        href: "/compare" as Route,
-        badge: "PREVIEW",
-        icon: <Columns2 size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        // 2026-05-28: renamed from "Nearest-Analog" to "Nearest Analog"
-        // (removed the hyphen) per founder pick. Telescope icon retained.
-        label: "Nearest Analog",
-        href: "/nearest-analog" as Route,
-        badge: "PREVIEW",
-        icon: <Telescope size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        // 2026-05-28: icon swapped from Spline (single arc) to Waves
-        // (parallel arcs) per founder pick — better evokes the "two
-        // countries' trajectories running in parallel" concept.
-        label: "Patterns V4",
-        href: "/patterns-v4" as Route,
-        badge: "PREVIEW",
-        icon: <Waves size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Recipe Tracker",
-        href: "/recipe-tracker" as Route,
-        badge: "PREVIEW",
-        icon: <ListChecks size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-    ],
+    type: "standalone",
+    label: "Recipe Tracker",
+    href: "/recipe-tracker",
+    icon: <ListChecks size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
 ];
 
 /** Flatten the structure to the leaf-route list — used by the
  *  longest-prefix-wins active-state algorithm so a deep pathname like
- *  /precedents/civil_war_and_insurgency highlights the right item. */
+ *  /recipes/foreign_intervention highlights the right item. */
 function collectNavItems(): NavItem[] {
   const all: NavItem[] = [];
   for (const entry of NAV_STRUCTURE) {
@@ -570,7 +266,7 @@ export function Sidebar() {
           landmark wrapper. Pointer-events guard during the slide-in
           transition prevents a click on the hamburger from passing
           through to the link beneath while the drawer is translating
-          in (was navigating users to /precedents on mobile tap). */}
+          in (was navigating users to /recipes on mobile tap). */}
       <aside
         id="qgi-sidebar-drawer"
         aria-label="Site navigation"
@@ -595,15 +291,17 @@ export function Sidebar() {
         <Link
           href="/dashboard"
           onClick={closeOnNavigate}
-          className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
+          className="flex items-baseline gap-1.5 px-5 py-6 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)" }}
           title="Go to Dashboard (command center)"
         >
           <span
-            className="text-xs tracking-[0.25em]"
             style={{
+              fontSize: "26px",
+              lineHeight: 1,
+              letterSpacing: "0.04em",
               color: "var(--qgi-accent)",
-              marginRight: "-0.25em",
+              marginRight: "-0.05em",
               // 2026-05-28 (founder pick): use Century Gothic Bold for the QG
               // wordmark — matches the Gemini infographics. Fallback chain:
               // Century Gothic (Windows native), URW Gothic (Linux), Avant
@@ -617,21 +315,26 @@ export function Sidebar() {
             QG
           </span>
           <span
-            className="text-[10px] tracking-widest uppercase"
-            style={{ color: "var(--qgi-text-muted)" }}
+            className="uppercase"
+            style={{
+              fontSize: "12px",
+              letterSpacing: "0.2em",
+              color: "var(--qgi-text-muted)",
+              fontWeight: 500,
+            }}
           >
             Intelligence
           </span>
         </Link>
 
         {/* Navigation
-          GH#250: longest-prefix-wins active state. Without this, RANKING
-          (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
-          naive startsWith() matches both. `isActiveRoute` picks the
-          deepest leaf href that the current pathname matches.
-          2026-05-13 (A3 Family 1 PR #4): refactored to family-grouped
-          sections; the active-state algorithm operates on the flattened
-          leaf list (FLAT_NAV_ITEMS) so it stays unaware of group structure. */}
+          GH#250: longest-prefix-wins active state. Without this, RECIPE-TRACKER
+          (/recipe-tracker) could mis-activate RECIPES (/recipes) because a naive
+          startsWith() would match both. `isActiveRoute` picks the deepest leaf
+          href that the current pathname matches.
+          2026-05-28: all 9 entries are standalone; NavGroupSection is still
+          supported by the renderer for future use but not currently in the
+          structure. */}
         <nav
           aria-label="Main navigation"
           className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto"
@@ -701,15 +404,15 @@ export function Sidebar() {
 }
 
 // ---------------------------------------------------------------------------
-// Sub-components for the family-grouped nav (A3 Family 1 PR #4)
+// Sub-components
 // ---------------------------------------------------------------------------
 
 /** Longest-prefix-wins active-state check (per-leaf, group-unaware). */
 function isActiveRoute(pathname: string, href: Route): boolean {
   if (pathname === href) return true;
   if (!pathname.startsWith(href + "/")) return false;
-  // A deeper leaf in the same family wins (e.g. /patterns/ranking outranks
-  // /patterns when the user is on /patterns/ranking).
+  // A deeper leaf in the same family wins (e.g. /recipes/foreign_intervention
+  // outranks /recipes when the user is on a recipe detail page).
   return !FLAT_NAV_ITEMS.some(
     (other) =>
       other.href !== href &&
@@ -718,9 +421,7 @@ function isActiveRoute(pathname: string, href: Route): boolean {
   );
 }
 
-/** Top-level nav link (icon + label + badge). PR-i (2026-05-15) flat
- *  restructure made this the renderer for all 5 sidebar entries — the
- *  group/family distinction is gone, so every entry uses this shape. */
+/** Top-level nav link (icon + label). Used for all 9 canonical entries. */
 function NavLeafLink({
   label,
   href,
@@ -753,9 +454,9 @@ function NavLeafLink({
   );
 }
 
-/** Family section header + child links. Non-collapsible in PR #4 — clean
- *  visual grouping without state cost. Collapsible expansion can ship as
- *  a follow-up if founder finds the sidebar too tall. */
+/** Family section header + child links. Non-collapsible — clean visual
+ *  grouping without state cost. Kept for future use; not in current
+ *  NAV_STRUCTURE after the V4.1 canonical promotion. */
 function NavGroupSection({
   group,
   pathname,
@@ -805,58 +506,5 @@ function NavGroupSection({
         })}
       </div>
     </div>
-  );
-}
-
-/** Trial-period status chip. Three states:
- *  - LIVE: production V1 surface (neutral slate)
- *  - PREVIEW: V2 + merged-preview routes (amber)
- *  - PRIMARY: reserved for post-cutover canonical surface (blue/accent)
- *
- * #790 (Aisha R5 2026-05-17) — without a tooltip / legend, "LIVE" reads
- * to a first-visit analyst as a meaningless design choice or a hidden-
- * meaning status indicator. Each badge state now carries a one-line
- * `title` so hovering surfaces the meaning. (Pure hover tooltip — no
- * extra DOM, no aria changes; the existing aria-label is preserved.)
- */
-const BADGE_TOOLTIP: Record<NavBadge, string> = {
-  LIVE: "Production route — current bake data.",
-  PREVIEW: "Preview / V2 route — alongside the production surface during cutover.",
-  PRIMARY: "Primary canonical surface (post-cutover).",
-};
-
-function NavChip({ badge }: { badge: NavBadge }) {
-  const colors: Record<NavBadge, { fg: string; bg: string; border: string }> = {
-    LIVE: {
-      fg: "#94a3b8",
-      bg: "rgba(148, 163, 184, 0.12)",
-      border: "rgba(148, 163, 184, 0.30)",
-    },
-    PREVIEW: {
-      fg: "#fbbf24",
-      bg: "rgba(251, 191, 36, 0.12)",
-      border: "rgba(251, 191, 36, 0.35)",
-    },
-    PRIMARY: {
-      fg: "var(--qgi-accent)",
-      bg: "var(--qgi-accent-glow)",
-      border: "var(--qgi-accent)",
-    },
-  };
-  const c = colors[badge];
-  return (
-    <span
-      className="inline-flex items-center font-data text-[8px] tracking-widest uppercase px-1 py-0.5 rounded font-semibold shrink-0"
-      style={{
-        color: c.fg,
-        backgroundColor: c.bg,
-        border: `1px solid ${c.border}`,
-      }}
-      // Keep the chip semantic for screen readers but visually compact.
-      aria-label={`${badge} surface`}
-      title={BADGE_TOOLTIP[badge]}
-    >
-      {badge}
-    </span>
   );
 }

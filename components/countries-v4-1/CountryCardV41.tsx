@@ -1,5 +1,5 @@
 /**
- * CountryCardV41 — one country tile on /countries-v4.1.
+ * CountryCardV41 — one country tile on /countries.
  *
  * Color rules (Talia consult 2026-05-28):
  *   - Left 3px border = the DOMINANT lit family (family of the highest-
@@ -54,7 +54,7 @@ export function CountryCardV41({
 
   return (
     <Link
-      href={`/countries-v4.1/${country.iso.toLowerCase()}` as Route}
+      href={`/countries/${country.iso.toLowerCase()}` as Route}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}
     >
       <article

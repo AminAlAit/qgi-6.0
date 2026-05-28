@@ -1,5 +1,5 @@
 /**
- * Mock data for /patterns-v4 — the V4 Patterns mockup.
+ * Mock data for /patterns — the V4 Patterns mockup.
  *
  * VOCABULARY QUARANTINE (per IA spec §1, ratified 2026-05-24)
  * -----------------------------------------------------------
@@ -789,7 +789,7 @@ export function getPattern(id: string): PatternEntry | undefined {
 }
 
 // ── Ranking entries ─────────────────────────────────────────────────────
-// The /patterns-v4/ranking leaderboard — top-30 countries ranked by their
+// The /patterns/ranking leaderboard — top-30 countries ranked by their
 // CURRENT shape-match score against ANY pattern in the catalog. For each
 // country we surface the best-matched pattern + the runner-up.
 

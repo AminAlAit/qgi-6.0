@@ -307,7 +307,7 @@ export function CountryBrowsePanel({ allPairs }: CountryBrowsePanelProps) {
               return (
                 <Link
                   key={pair.pair_id}
-                  href={`/patterns-v4/${pair.pair_id}` as Route}
+                  href={`/patterns/${pair.pair_id}` as Route}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
                   <div

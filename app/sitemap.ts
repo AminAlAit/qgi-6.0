@@ -32,13 +32,19 @@ const STATIC_ROUTES: Array<{
   // carries `robots: { index: false }` (transitional state until PR-vi
   // redesigns it as QGI's landing page). When PR-vi flips it to
   // indexable, add `{ path: "/dashboard", changeFrequency: "weekly", priority: 0.95 }`.
+  // V4.1 canonical family pages (promoted 2026-05-28).
+  // /signals and /precedents are deleted; /recipes, /countries, /patterns
+  // are now V4.1 canonical. /risk-board, /compare, /compound-risk,
+  // /nearest-analog are new surfaces added in the V4.1 promo.
+  { path: "/dashboard", changeFrequency: "daily", priority: 0.95 },
+  { path: "/recipes", changeFrequency: "weekly", priority: 0.9 },
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
   { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
-  // /patterns/ranking REMOVED — V1-only route, now 308 → /patterns-v1/ranking
-  // which is Disallow'd. V3 sorts via /patterns?sort= query params (URL
-  // query state, not a static route).
-  { path: "/signals", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/precedents", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/risk-board", changeFrequency: "daily", priority: 0.8 },
+  { path: "/compound-risk", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
+  { path: "/nearest-analog", changeFrequency: "weekly", priority: 0.6 },
+  { path: "/recipe-tracker", changeFrequency: "weekly", priority: 0.75 },
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   // Recipe Tracker: continuously updated as recipes graduate or enter validation.

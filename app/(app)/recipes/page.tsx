@@ -22,9 +22,9 @@ const STATUS_ORDER: Record<TrackerRecipe["status"], number> = {
 const L1_ORDER = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
 /**
- * Recipes V4.1 gallery — sibling to /precedents-v2 with the 2026-05-27
+ * Recipes V4.1 gallery — sibling to /recipes with the 2026-05-27
  * vocabulary swap applied (Charter §3-aligned: "Recipes" as the methodology
- * unit at page level). The detail page at /recipes-v4.1/[slug] carries
+ * unit at page level). The detail page at /recipes/[slug] carries
  * the dashboard panel grid + L1-color accent + tooltip honesty redesign.
  *
  * Cards reuse the V4 RecipeCard component (still good) but link into V4.1
@@ -191,7 +191,7 @@ export default function RecipesV41GalleryPage() {
                     <RecipeCard
                       key={r.recipe_id}
                       recipe={recipeForCard}
-                      basePath="/recipes-v4.1"
+                      basePath="/recipes"
                       labelStrategy="v4.1"
                     />
                   );

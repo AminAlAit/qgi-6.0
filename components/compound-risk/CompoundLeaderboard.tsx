@@ -256,7 +256,7 @@ function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
   const chipColor = familyColor(recipe.l1_id, recipe.l1_color);
   return (
     <Link
-      href={`/precedents-v2/${recipe.recipe_id}` as Route}
+      href={`/recipes/${recipe.recipe_id}` as Route}
       title={`${recipe.label}: score ${recipe.score.toFixed(1)} (decile ${recipe.decile}), ${friendlyStatus}`}
       style={{
         textDecoration: "none",

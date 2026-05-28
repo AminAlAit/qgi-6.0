@@ -78,7 +78,7 @@ function SurfacedCard({ pair }: { pair: RecentlySurfacedPair }) {
 
   return (
     <Link
-      href={`/patterns-v4/${pair.pair_id}` as Route}
+      href={`/patterns/${pair.pair_id}` as Route}
       style={{ textDecoration: "none", color: "inherit" }}
     >
       <div

@@ -198,7 +198,7 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
   {
     surface_id: "recipes-v4-1",
     name: "Recipes",
-    href: "/recipes-v4.1",
+    href: "/recipes",
     description:
       "Per-recipe detail page: indicators selected, validation window, sample size, discrimination score, and calibration notes.",
     Icon: ScrollText,
@@ -355,7 +355,7 @@ const WALK_EVENTS: ActivityEvent[] = RECENT_WALKS
       kind: meta.kind,
       title: meta.title(w.recipe_id, w.loco_auc),
       detail: meta.detail(w.recipe_id, w.loco_auc),
-      href: `/recipes-v4.1/${w.recipe_id}`,
+      href: `/recipes/${w.recipe_id}`,
       Icon: meta.Icon,
       color: meta.color,
     };

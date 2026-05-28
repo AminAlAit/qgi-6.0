@@ -1,7 +1,7 @@
 /**
  * CountryCard — one country tile on /countries-v4.
  *
- * Visual idiom mirrors `components/precedents-v2/RecipeCard.tsx`:
+ * Visual idiom mirrors `components/recipes/RecipeCard.tsx`:
  *   - top row: flag emoji + ISO chip
  *   - body: country name + region
  *   - "tier ribbon" replaced by a compound-score chip strip

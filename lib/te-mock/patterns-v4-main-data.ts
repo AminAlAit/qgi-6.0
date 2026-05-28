@@ -1,5 +1,5 @@
 /**
- * patterns-v4-main-data — data layer for the /patterns-v4 main catalogue page.
+ * patterns-v4-main-data — data layer for the /patterns main catalogue page.
  *
  * SEPARATE from lib/te-mock/patterns-v4-data.ts, which describes
  * recipe-internal shape data (canonical movement trajectories per recipe).
@@ -618,7 +618,7 @@ export function pairFlagFor(name: string): string {
   return flagFor(name);
 }
 
-/** Generate a URL-safe slug from a pair_id for /patterns-v4/{slug} routes */
+/** Generate a URL-safe slug from a pair_id for /patterns/{slug} routes */
 export function pairSlug(pairId: string): string {
   return pairId;
 }
