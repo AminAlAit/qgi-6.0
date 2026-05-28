@@ -28,18 +28,18 @@ const VERDICT_COLOR: Record<Verdict, string> = {
 };
 
 const VERDICT_LABEL: Record<Verdict, string> = {
-  LOCK: "LOCK",
-  HARD_FAIL: "HARD-FAIL",
-  MARGINAL: "MARGINAL",
-  VACATED: "VACATED",
+  LOCK: "Validated",
+  HARD_FAIL: "Did not hold up",
+  MARGINAL: "Held back",
+  VACATED: "Under re-evaluation",
 };
 
 const VERDICT_CAPTION: Record<Verdict, string> = {
-  LOCK: "The recipe cleared every pre-registered gate (discrimination floor, V1 separation, V4 OOT recall). It is eligible for the live risk board.",
+  LOCK: "The recipe cleared every pre-registered check (discrimination floor, V1 separation, V4 OOT recall). It is eligible for the live risk board.",
   HARD_FAIL:
-    "The recipe failed at least one pre-registered gate. It is publicly reported, not deployed, and stays in the queue for re-walk if the methodology is amended.",
+    "The recipe failed at least one pre-registered check. It is publicly reported, not deployed, and stays in the queue for re-walk if the methodology is amended.",
   MARGINAL:
-    "The recipe cleared the discrimination floor but missed a secondary gate. It is held pending a follow-up walk; no live deployment yet.",
+    "The recipe cleared the discrimination floor but missed a secondary check. It is held pending a follow-up walk; no live deployment yet.",
   // 2026-05-28 (#1): the vacate/leak narrative is internal — it belongs on
   // /recipe-tracker + the blog, not on the user-facing recipe page. Keep this
   // confident and minimal; the up-to-date status pointer lives in the page
@@ -80,7 +80,7 @@ export function ReliabilityPanel({
       }}
     >
       <header>
-        <h3
+        <h2
           id="reliability-panel-heading"
           style={{
             fontSize: "15px",
@@ -91,7 +91,7 @@ export function ReliabilityPanel({
           }}
         >
           Reliability
-        </h3>
+        </h2>
       </header>
 
       <div

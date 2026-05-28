@@ -134,7 +134,7 @@ export function PrecedentsTimelinePanel({
   if (sorted.length === 0) {
     return (
       <section
-        aria-labelledby="precedents-panel-heading"
+        aria-labelledby="precedents-panel-heading-empty"
         style={{
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",
@@ -144,9 +144,9 @@ export function PrecedentsTimelinePanel({
           minWidth: "340px",
         }}
       >
-        <h3 id="precedents-panel-heading" style={titleStyle}>
+        <h2 id="precedents-panel-heading-empty" style={titleStyle}>
           Precedents
-        </h3>
+        </h2>
         <div
           style={{
             marginTop: "12px",
@@ -186,9 +186,9 @@ export function PrecedentsTimelinePanel({
         }}
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-          <h3 id="precedents-panel-heading" style={titleStyle}>
+          <h2 id="precedents-panel-heading" style={titleStyle}>
             Precedents
-          </h3>
+          </h2>
           <span style={{ ...chipStyle, color: "var(--qgi-text-dim)" }}>
             curated-event corpus
           </span>
@@ -318,7 +318,7 @@ export function PrecedentsTimelinePanel({
               popup as mouse hover (accessibility parity). */}
           {positioned.map((p) => {
             const { ev, xPct, yPct, id } = p;
-            const labelAction = ev.action === "added" ? "added" : "vacated";
+            const labelAction = ev.action === "added" ? "added" : "removed";
             return (
               <button
                 key={`hit-${id}`}
@@ -441,7 +441,7 @@ export function PrecedentsTimelinePanel({
                         letterSpacing: "0.6px",
                       }}
                     >
-                      {ev.action}
+                      {ev.action === "vacated" ? "removed" : ev.action}
                     </span>
                   </div>
                   <div
@@ -511,7 +511,7 @@ export function PrecedentsTimelinePanel({
           />
           <span style={{ lineHeight: 1.55 }}>
             <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
-              {visibleVacated} vacated
+              {visibleVacated} removed
             </strong>
             <span style={{ color: "var(--qgi-text-dim)" }}>
               {" "}

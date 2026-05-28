@@ -156,7 +156,7 @@ export function IndicatorSensitivityPanel({
       data-panel="indicator-sensitivity"
     >
       <header style={headerStyle}>
-        <h3 style={titleStyle}>Indicator sensitivity</h3>
+        <h2 style={titleStyle}>Indicator sensitivity</h2>
         {/* Header tooltip carries the anti-causal sentence verbatim.
             Native `title` is intentional: works without JS, screen-reader
             accessible, no popover dependency. */}
@@ -236,7 +236,7 @@ export function IndicatorSensitivityPanel({
                   letterSpacing: "0.3px",
                 }}
                 aria-label={`Removing this indicator drops the score by ${fmtAucDrop(row.aucDrop)}`}
-                title={`If this indicator were removed, the recipe's score-separation would drop by ${fmtAucDrop(row.aucDrop)} (LOCO-AUC).`}
+                title={`If this indicator were removed, the recipe's score-separation would drop by ${fmtAucDrop(row.aucDrop)}.`}
               >
                 −{fmtAucDrop(row.aucDrop)}
               </div>
@@ -256,7 +256,7 @@ export function IndicatorSensitivityPanel({
                   viewBox="0 0 100 10"
                   preserveAspectRatio="none"
                   role="img"
-                  aria-label={`Removing ${row.name} drops LOCO-AUC by ${fmtAucDrop(row.aucDrop)}`}
+                  aria-label={`Removing ${row.name} drops the score by ${fmtAucDrop(row.aucDrop)}`}
                   style={{ display: "block" }}
                 >
                   {/* Track (dark page bg, so the bar contrasts on the surface) */}

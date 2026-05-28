@@ -66,7 +66,7 @@ export function PatternAlignmentPanel({
         }}
       >
         <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-          <h3
+          <h2
             style={{
               fontSize: "15px",
               fontWeight: 600,
@@ -76,7 +76,7 @@ export function PatternAlignmentPanel({
             }}
           >
             Trajectory alignment
-          </h3>
+          </h2>
           <span
             style={{
               fontFamily: "ui-monospace, monospace",
