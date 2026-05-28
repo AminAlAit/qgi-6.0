@@ -163,6 +163,15 @@ const ISO2: Record<string, string> = {
   "Hong Kong": "hk",
 };
 
+// Additional entries to cover TE sample-10 country corpus
+Object.assign(ISO2, {
+  "Trinidad And Tobago": "tt",
+  "Papua New Guinea": "pg",
+  "North Korea": "kp",
+  Kuwait: "kw",
+  "Trinidad and Tobago": "tt",
+});
+
 /**
  * Resolve a country display-name to its ISO-3166-1 alpha-2 code
  * (lowercase, matching flagcdn.com's path convention). Returns
@@ -170,4 +179,23 @@ const ISO2: Record<string, string> = {
  */
 export function iso2For(name: string): string {
   return ISO2[name] ?? "";
+}
+
+/**
+ * Map of lowercased country name → iso2 code.
+ * Used by precedents-corpus-mock.ts and other adapters for fast lookup.
+ */
+export const NAME_TO_ISO2 = new Map<string, string>(
+  Object.entries(ISO2).map(([name, code]) => [name.toLowerCase(), code])
+);
+
+/**
+ * Derive a flag emoji from an ISO-3166-1 alpha-2 code (lowercase).
+ * Formula: regional indicator symbol letters = code.charCodeAt(i) - 97 + 0x1F1E6.
+ */
+export function flagFromIso2(iso2: string): string {
+  if (!iso2 || iso2.length < 2) return "";
+  const a = iso2.charCodeAt(0) - 97 + 0x1f1e6;
+  const b = iso2.charCodeAt(1) - 97 + 0x1f1e6;
+  return String.fromCodePoint(a, b);
 }

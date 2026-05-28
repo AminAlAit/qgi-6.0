@@ -2,9 +2,24 @@
  * precedents-corpus-mock — curated-event corpus actions feeding
  * PrecedentsTimelinePanel.
  *
- * — Daniyar Bekmurat, Comparative Historical Pattern Matching
+ * V4.1 wire-up (2026-05-29):
+ *   - TE sample-10 recipes source from card.precedents_corpus.
+ *   - card.precedents_corpus is optional — if absent, returns [] so the UI
+ *     renders the "corpus data not yet computed for this vintage" gate.
+ *   - The corpus events in sample-10 have null labels and null brief_urls;
+ *     the PrecedentEvent shape uses country_name as the display value.
+ *   - foreign_intervention, civil_war_and_insurgency, constitutional_change
+ *     keep their hand-authored data (cascade-era; no real card).
+ *
+ * PrecedentEvent.action note: card corpus events don't carry an "action" field.
+ * We emit all as "added" since the pipeline corpus is a positive-only set.
+ * Corpus curators may later introduce "vacated" rows via the editorial overlay.
  */
 import type { PrecedentEvent } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
+import { loadAllCards } from "@/lib/te-data-contract/load";
+import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
+
+// ─── Hand-authored corpus events for cascade-era / demo recipes ───────────────
 
 const foreignInterventionEvents: PrecedentEvent[] = [
   {
@@ -104,7 +119,7 @@ const civilWarEvents: PrecedentEvent[] = [
     country_iso: "YEM",
     flag_emoji: "🇾🇪",
     action: "added",
-    reason: "Sustained Houthi-government conflict ≥1000 BD/yr",
+    reason: "Sustained Houthi-government conflict",
   },
   {
     year: 2020,
@@ -112,7 +127,7 @@ const civilWarEvents: PrecedentEvent[] = [
     country_iso: "ETH",
     flag_emoji: "🇪🇹",
     action: "added",
-    reason: "Tigray conflict crosses UCDP civil-war threshold",
+    reason: "Tigray conflict crosses civil-war threshold",
   },
   {
     year: 2022,
@@ -120,7 +135,7 @@ const civilWarEvents: PrecedentEvent[] = [
     country_iso: "MMR",
     flag_emoji: "🇲🇲",
     action: "added",
-    reason: "Post-coup PDF insurgency reaches civil-war intensity",
+    reason: "Post-coup insurgency reaches civil-war intensity",
   },
   {
     year: 2023,
@@ -128,7 +143,7 @@ const civilWarEvents: PrecedentEvent[] = [
     country_iso: "SDN",
     flag_emoji: "🇸🇩",
     action: "added",
-    reason: "RSF-SAF war exceeds 1000 BD/yr",
+    reason: "RSF-SAF war exceeds threshold",
   },
   {
     year: 2024,
@@ -183,22 +198,83 @@ const constitutionalChangeEvents: PrecedentEvent[] = [
   },
 ];
 
-const CORPUS_EVENTS: Record<string, PrecedentEvent[]> = {
+const HAND_AUTHORED_CORPUS: Record<string, PrecedentEvent[]> = {
   foreign_intervention: foreignInterventionEvents,
   civil_war_and_insurgency: civilWarEvents,
   constitutional_change: constitutionalChangeEvents,
 };
 
-const TOTAL_EVENTS_IN_CORPUS: Record<string, number> = {
+const HAND_AUTHORED_TOTALS: Record<string, number> = {
   foreign_intervention: 412,
   civil_war_and_insurgency: 511,
   constitutional_change: 402,
 };
 
-export function getCorpusEvents(recipeId: string): PrecedentEvent[] {
-  return CORPUS_EVENTS[recipeId] ?? [];
+// ─── TE card-derived corpus events ────────────────────────────────────────────
+
+const _corpusCache = new Map<string, PrecedentEvent[]>();
+
+/**
+ * Build PrecedentEvent[] from card.precedents_corpus.
+ * Returns [] if the field is absent or if data loading fails.
+ */
+function buildFromCard(recipeId: string): PrecedentEvent[] {
+  try {
+    const allCards = loadAllCards();
+    const card = allCards[recipeId];
+    if (!card || !card.precedents_corpus) return [];
+
+    return card.precedents_corpus.events.map((e) => {
+      // Resolve ISO2 from country_name for flag derivation
+      const nameLower = e.country_name.toLowerCase();
+      const iso2 = NAME_TO_ISO2.get(nameLower);
+      const flag = iso2 ? flagFromIso2(iso2) : null;
+
+      return {
+        year: e.year,
+        country: e.country_name,
+        // country_iso from card is null in sample-10 — leave as the 3-letter name
+        country_iso: e.country_iso ?? e.country_name.slice(0, 3).toUpperCase(),
+        flag_emoji: flag ?? "",
+        action: "added" as const,
+        reason: e.label ?? "In training set",
+      };
+    });
+  } catch {
+    return [];
+  }
 }
 
+/**
+ * Return corpus events for a recipe.
+ *
+ * Lookup order:
+ *   1. Hand-authored (foreign_intervention, civil_war_and_insurgency, constitutional_change)
+ *   2. Real card.precedents_corpus data (TE sample-10)
+ *   3. [] — component renders "corpus data not yet computed" gate
+ */
+export function getCorpusEvents(recipeId: string): PrecedentEvent[] {
+  if (HAND_AUTHORED_CORPUS[recipeId]) return HAND_AUTHORED_CORPUS[recipeId];
+
+  if (_corpusCache.has(recipeId)) return _corpusCache.get(recipeId)!;
+
+  const events = buildFromCard(recipeId);
+  _corpusCache.set(recipeId, events);
+  return events;
+}
+
+/**
+ * Total events in corpus for a recipe (denominator for the timeline header).
+ * For TE recipes, use card.precedents_corpus.total_events_in_corpus.
+ */
 export function getTotalEventsInCorpus(recipeId: string): number {
-  return TOTAL_EVENTS_IN_CORPUS[recipeId] ?? 0;
+  if (HAND_AUTHORED_TOTALS[recipeId]) return HAND_AUTHORED_TOTALS[recipeId];
+
+  try {
+    const allCards = loadAllCards();
+    const card = allCards[recipeId];
+    return card?.precedents_corpus?.total_events_in_corpus ?? 0;
+  } catch {
+    return 0;
+  }
 }

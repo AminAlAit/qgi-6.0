@@ -14,10 +14,9 @@ import { CompoundOverlapChart } from "@/components/compound-risk/CompoundOverlap
 import { CaseStudyBox } from "@/components/compound-risk/CaseStudyBox";
 
 export const metadata: Metadata = {
-  title: "Compound Risk (mockup) · QG Intelligence",
+  title: "Compound Risk · QG Intelligence",
   description:
-    "Countries lit on multiple crisis recipes at once. Compound score is a stacking heuristic over discrimination ranks, not a joint probability. Local-only mockup.",
-  robots: { index: false, follow: false },
+    "Countries lit on multiple crisis recipes at once. Compound score is a stacking heuristic over discrimination ranks, not a joint probability.",
 };
 
 interface PageProps {

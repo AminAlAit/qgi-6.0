@@ -26,10 +26,9 @@ import { CountriesV41Filters } from "@/components/countries-v4-1/CountriesV41Fil
 import { CountryCardV41 } from "@/components/countries-v4-1/CountryCardV41";
 
 export const metadata: Metadata = {
-  title: "Country Atlas (v4.1 mockup) · QG Intelligence",
+  title: "Country Atlas · QG Intelligence",
   description:
-    "Per-country atlas: the recipes each country resembles, the indicators behind each score, momentum, and historical analogs. Local-only mockup, not for production.",
-  robots: { index: false, follow: false },
+    "Per-country atlas: the recipes each country resembles, the indicators behind each score, momentum, and historical analogs.",
 };
 
 interface PageProps {

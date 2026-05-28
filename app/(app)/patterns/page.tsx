@@ -31,10 +31,9 @@ import { FeaturedPairPanel } from "@/components/patterns-v4/FeaturedPairPanel";
 import { RecentlySurfacedPanel } from "@/components/patterns-v4/RecentlySurfacedPanel";
 
 export const metadata: Metadata = {
-  title: "Patterns (v4) -- Country pair catalogue · QG Intelligence",
+  title: "Patterns · Country pair catalogue · QG Intelligence",
   description:
-    "The QGI pair catalogue: country pairs whose indicator-composite histories ran in close parallel over a shared historical window, ranked by pair strength. Mockup -- not for production.",
-  robots: { index: false, follow: false },
+    "The QGI pair catalogue: country pairs whose indicator-composite histories ran in close parallel over a shared historical window, ranked by pair strength.",
 };
 
 export default function PatternsV4Page() {
@@ -68,20 +67,7 @@ export default function PatternsV4Page() {
         >
           {catalogue.vintage}
         </span>
-        <span
-          style={{
-            fontSize: "10px",
-            padding: "5px 10px",
-            border: "1px solid rgba(229,162,41,0.35)",
-            color: "rgba(229,162,41,0.9)",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.4px",
-            background: "rgba(229,162,41,0.06)",
-            borderRadius: "4px",
-          }}
-        >
-          MOCKUP
-        </span>
+        {/* MOCKUP chip dropped 2026-05-29 — V4 patterns surface is canonical. */}
       </div>
 
       {/* ── Section 1: Page hero ── */}

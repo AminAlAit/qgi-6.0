@@ -17,10 +17,9 @@ import { vintageStamp } from "@/lib/te-mock/recipes";
 import { TrajectoryRankingTable } from "@/components/precedents-v4-1/TrajectoryRankingTable";
 
 export const metadata: Metadata = {
-  title: "Trajectory strength ranking (v4.1 mockup) · QG Intelligence",
+  title: "Trajectory strength ranking · QG Intelligence",
   description:
-    "Top-30 countries ranked by how closely their current movement resembles any recipe trajectory. Local-only mockup, not for production.",
-  robots: { index: false, follow: false },
+    "Top-30 countries ranked by how closely their current movement resembles any recipe trajectory.",
 };
 
 export default function TrajectoryRankingPage() {
@@ -46,7 +45,7 @@ export default function TrajectoryRankingPage() {
             href={"/recipes" as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
-            ← Recipes V4.1
+            ← Recipes
           </Link>
           <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
           <span style={{ color: "var(--qgi-text)" }}>Trajectory strength ranking</span>

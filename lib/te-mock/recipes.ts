@@ -1,16 +1,46 @@
 /**
  * Mock recipe data for the /recipes mockup pages.
  *
- * Combines the real recipe-tracker.json shape (71 recipes, L1 family, status)
- * with mock per-recipe data for the 15 capabilities (indicators, definition,
- * top countries, etc.). NOT production data; for local mockup viewing only.
+ * V4.1 wire-up (2026-05-29):
  *
- * For the foreign_intervention demo case, this module renders the page as
- * if the recipe had cleared a clean re-walk and graduated — to show what
- * a fully-populated 🟢 detail page looks like. Today no recipe is actually
- * graduated.
+ *   ENGINE DISCRIMINATOR
+ *   --------------------
+ *   cascade-era recipes (4):
+ *     foreign_intervention, multilateral_agreement, elections_and_voting, bilateral_treaty
+ *     engine: "cascade"
+ *
+ *   TE sample-10 recipes (10):
+ *     banking_and_financial_crisis, bilateral_treaty (TE walk), diplomatic_rupture,
+ *     economic_liberalization, economic_nationalization, ethnic_and_communal_conflict,
+ *     fiscal_policy_change, government_formation, migration_and_refugees, terrorist_attack
+ *     engine: "trajectory-engine-v1"
+ *
+ *   NOTE: bilateral_treaty appears in BOTH lists.
+ *   - The cascade-era row in recipe-tracker.json stays as the historical record.
+ *   - The TE walk supersedes it for tile rendering (TE row is added via addTERecipes()).
+ *   - The cascade row carries engine: "cascade" and is NOT removed from getAllRecipes().
+ *
+ *   STATUS MAPPING
+ *   --------------
+ *   TE tier → TrackerRecipe.status:
+ *     "directional"  → "walked_no_graduation"   (ran, did not clear the bar)
+ *     "experimental" → "walked_no_graduation"   (same; tier-label renders the distinction)
+ *     "validated"    → "graduated"              (no such recipe in sample-10)
+ *
+ *   DEMO GRADUATED
+ *   --------------
+ *   foreign_intervention is the ONLY recipe that isDemoGraduated() returns true for.
+ *   This preserves the demo detail page that shows what a graduated page looks like.
+ *   No real recipe in sample-10 is graduated.
+ *
+ *   VINTAGE STAMP
+ *   -------------
+ *   Returns "2026-05-28" (from MANIFEST.produced_at_utc) for TE recipes.
+ *   The cascade-era tracker vintage ("2026-05-23") is preserved for cascade rows.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
+import { loadAllCards, loadAllScores, loadVintage } from "@/lib/te-data-contract/load";
+import { resolveIndicatorLabel } from "@/lib/indicator-labels";
 
 export type RecipeStatus =
   | "graduated"
@@ -18,6 +48,8 @@ export type RecipeStatus =
   | "in_progress"
   | "live_legacy"
   | "queued";
+
+export type RecipeEngine = "cascade" | "trajectory-engine-v1";
 
 export interface TrackerRecipe {
   recipe_id: string;
@@ -27,11 +59,14 @@ export interface TrackerRecipe {
   l1_color: string;
   l2_label: string;
   status: RecipeStatus;
+  engine?: RecipeEngine;
   stats: {
     loco_auc?: number;
     window_y?: number;
     n_indicators?: number;
     verdict?: string;
+    /** User-facing tier label — avoids banned enum values in UI copy. */
+    tier_label_user_facing?: string;
   } | null;
 }
 
@@ -49,22 +84,221 @@ export interface RecipeMock {
   nPositives?: number;
 }
 
-const TRACKER_VINTAGE = (recipeTracker as { generated: string }).generated;
+// ─── L1 mapping: recipe_id → L1 metadata for TE sample-10 recipes ────────────
+//
+// 2026-05-29 — synced to data/recipe-tracker.json as the source of truth.
+// The earlier hand-coded values invented family IDs that don't exist in the
+// canonical A-H taxonomy (most egregious: migration_and_refugees was assigned
+// l1_id="M" which fails the page's family filter → the recipe vanished from
+// /recipes entirely; six others had the wrong family).
+//
+// l1_color is left at the tracker's value here — familyColor(l1_id) in
+// lib/te-mock/l1-families.ts is the display source; this just keeps the
+// row internally consistent.
 
-export function vintageStamp(): string {
-  return TRACKER_VINTAGE;
+const TE_L1_MAP: Record<string, { l1_id: string; l1_label: string; l1_color: string }> = {
+  banking_and_financial_crisis: {
+    l1_id: "D",
+    l1_label: "Economic Stress",
+    l1_color: "#3FA9F5",
+  },
+  bilateral_treaty: {
+    l1_id: "F",
+    l1_label: "Diplomacy & Geopolitics",
+    l1_color: "#9F7AEA",
+  },
+  diplomatic_rupture: {
+    l1_id: "F",
+    l1_label: "Diplomacy & Geopolitics",
+    l1_color: "#9F7AEA",
+  },
+  economic_liberalization: {
+    l1_id: "D",
+    l1_label: "Economic Stress",
+    l1_color: "#3FA9F5",
+  },
+  economic_nationalization: {
+    l1_id: "D",
+    l1_label: "Economic Stress",
+    l1_color: "#3FA9F5",
+  },
+  ethnic_and_communal_conflict: {
+    l1_id: "B",
+    l1_label: "Conflict & Violence",
+    l1_color: "#E64545",
+  },
+  fiscal_policy_change: { l1_id: "D", l1_label: "Economic Stress", l1_color: "#3FA9F5" },
+  government_formation: { l1_id: "A", l1_label: "Political Power", l1_color: "#7B5EE6" },
+  migration_and_refugees: {
+    l1_id: "E",
+    l1_label: "Social Mobilization",
+    l1_color: "#3FBF8F",
+  },
+  terrorist_attack: { l1_id: "B", l1_label: "Conflict & Violence", l1_color: "#E64545" },
+};
+
+/** Human-readable label from a snake_case recipe_id. */
+function humanize(id: string): string {
+  return id
+    .split("_")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
 }
 
+/**
+ * Resolve an indicator code to a friendly display name.
+ * Uses lib/indicator-labels.ts first; falls back to the raw code.
+ */
+function resolveIndicatorName(code: string): string {
+  const { label } = resolveIndicatorLabel(code);
+  return label;
+}
+
+// ─── Vintage ─────────────────────────────────────────────────────────────────
+const TRACKER_VINTAGE = (recipeTracker as { generated: string }).generated;
+const TE_VINTAGE = loadVintage(); // "2026-05-28"
+
+export function vintageStamp(): string {
+  // Return the TE vintage for TE recipes; the tracker vintage is the cascade-era one.
+  // The dashboard and recipe-tracker page receive this; TE is newer.
+  return TE_VINTAGE;
+}
+
+// ─── Base recipe list from tracker (cascade-era rows) ────────────────────────
+function cascadeRecipes(): TrackerRecipe[] {
+  return (recipeTracker as { recipes: TrackerRecipe[] }).recipes.map((r) => ({
+    ...r,
+    engine: "cascade" as RecipeEngine,
+  }));
+}
+
+// ─── TE recipe rows built from card-v3 data ───────────────────────────────────
+function buildTERecipes(): TrackerRecipe[] {
+  const allCards = loadAllCards();
+  const rows: TrackerRecipe[] = [];
+
+  // Build a label/l2 lookup from the cascade-era JSON so we reuse the
+  // already-curated friendly labels ("Banking & Financial Crisis", not
+  // the naive humanize() output "Banking And Financial Crisis").
+  const cascadeRows = (recipeTracker as { recipes: TrackerRecipe[] }).recipes;
+  const cascadeByID = new Map<string, TrackerRecipe>(
+    cascadeRows.map((r) => [r.recipe_id, r])
+  );
+
+  for (const [recipeId, card] of Object.entries(allCards)) {
+    const l1 = TE_L1_MAP[recipeId] ?? {
+      l1_id: "X",
+      l1_label: "Other",
+      l1_color: "#7A8FA0",
+    };
+    const cascadeRow = cascadeByID.get(recipeId);
+    const label = cascadeRow?.label ?? humanize(recipeId);
+    const l2_label = cascadeRow?.l2_label ?? humanize(recipeId);
+
+    // Status mapping:
+    //   directional → walked_no_graduation (ran; discrimination rank earned but below graduation bar)
+    //   experimental → walked_no_graduation (same; user-facing distinction is tier_label)
+    //   validated → graduated (no such recipe in sample-10)
+    const statusMap: Record<string, RecipeStatus> = {
+      directional: "walked_no_graduation",
+      experimental: "walked_no_graduation",
+      validated: "graduated",
+      queued: "queued",
+      hold: "queued",
+    };
+    const status: RecipeStatus = statusMap[card.tier] ?? "walked_no_graduation";
+
+    // User-facing tier label that avoids banned vocab in the UI.
+    const tierLabelMap: Record<string, string> = {
+      directional: "Directional",
+      experimental: "Experimental",
+      validated: "Validated",
+      queued: "Queued",
+      hold: "On hold",
+    };
+    const tier_label_user_facing = tierLabelMap[card.tier] ?? card.tier;
+
+    rows.push({
+      recipe_id: recipeId,
+      label,
+      l1_id: l1.l1_id,
+      l1_label: l1.l1_label,
+      l1_color: l1.l1_color,
+      l2_label,
+      status,
+      engine: "trajectory-engine-v1",
+      stats: {
+        loco_auc: card.stats.loco_auc,
+        window_y: card.greedy_walk.chosen_window,
+        n_indicators: card.greedy_walk.selected_indicators.length,
+        verdict: card.verdict,
+        tier_label_user_facing,
+      },
+    });
+  }
+
+  return rows;
+}
+
+// Build once at module load; memoized.
+let _allRecipesCache: TrackerRecipe[] | null = null;
+
+/**
+ * Returns the unified recipe list with TE-WINS dedupe:
+ *   - All 71 cascade-era rows from recipe-tracker.json (engine: "cascade")
+ *   - PLUS the 10 TE rows derived from card-v3 (engine: "trajectory-engine-v1")
+ *   - Any recipe_id present in BOTH sets has the cascade row REMOVED — the
+ *     TE walk is the current state, the cascade row was its pre-walk
+ *     placeholder. The cascade engine version is still queryable via
+ *     getCascadeRecipe(recipeId) for the Recipe Tracker historical column.
+ *
+ * Overlap as of sample-10: bilateral_treaty, banking_and_financial_crisis,
+ * migration_and_refugees, terrorist_attack, ethnic_and_communal_conflict,
+ * economic_liberalization, economic_nationalization, fiscal_policy_change,
+ * diplomatic_rupture, government_formation (all 10, in fact — the wave
+ * 1+2 fan-out was a subset of the cascade catalog).
+ */
 export function getAllRecipes(): TrackerRecipe[] {
-  return (recipeTracker as { recipes: TrackerRecipe[] }).recipes;
+  if (_allRecipesCache) return _allRecipesCache;
+  const cascade = cascadeRecipes();
+  const te = buildTERecipes();
+  const teIds = new Set(te.map((r) => r.recipe_id));
+  const cascadeKept = cascade.filter((r) => !teIds.has(r.recipe_id));
+  // Order: cascade-kept first, then TE rows. /recipes groups by status/tier.
+  _allRecipesCache = [...cascadeKept, ...te];
+  return _allRecipesCache;
+}
+
+/**
+ * Look up a recipe by ID, preferring the TE row when both engines exist.
+ * The dedupe in getAllRecipes() already makes this a no-op for /recipes, but
+ * call sites that derive from the raw cascade list (e.g. /recipe-tracker
+ * historical column) need this helper.
+ */
+export function getCascadeRecipe(recipeId: string): TrackerRecipe | undefined {
+  return cascadeRecipes().find((r) => r.recipe_id === recipeId);
 }
 
 export function getRecipe(recipeId: string): TrackerRecipe | undefined {
   return getAllRecipes().find((r) => r.recipe_id === recipeId);
 }
 
-// Per-recipe mock data. Recipes not listed here fall back to GENERIC_MOCK.
-const MOCK_DATA: Record<string, RecipeMock> = {
+/**
+ * Get the TE-engine row for a recipe, if it exists.
+ * Used when the caller needs the real-data row over the cascade-era row.
+ */
+export function getTERecipe(recipeId: string): TrackerRecipe | undefined {
+  return getAllRecipes().find(
+    (r) => r.recipe_id === recipeId && r.engine === "trajectory-engine-v1"
+  );
+}
+
+// ─── Per-recipe mock data ─────────────────────────────────────────────────────
+// Cascade-era recipes (foreign_intervention, multilateral_agreement,
+// elections_and_voting, bilateral_treaty) keep their hand-authored definitions
+// and indicators. TE recipes source indicators from the real card data.
+
+const CASCADE_MOCK_DATA: Record<string, RecipeMock> = {
   elections_and_voting: {
     definition:
       "A national-level electoral event (legislative or presidential) producing a contested or non-contested outcome with implications for regime continuity.",
@@ -112,7 +346,11 @@ const MOCK_DATA: Record<string, RecipeMock> = {
       "A foreign state's deployment of military force into another sovereign state's territory, either as direct combat or coercive presence.",
     indicators: [
       { code: "RQ.EST", name: "Regulatory Quality", provider: "World Bank WGI" },
-      { code: "v2pepwrgen", name: "Power distributed by gender", provider: "V-Dem" },
+      {
+        code: "v2pepwrgen",
+        name: "Power distributed by gender",
+        provider: "V-Dem",
+      },
       { code: "v2stfisccap", name: "State fiscal source", provider: "V-Dem" },
       {
         code: "v2elintmon",
@@ -129,63 +367,6 @@ const MOCK_DATA: Record<string, RecipeMock> = {
       { name: "Tajikistan", score: 88.5 },
     ],
     nPositives: 412,
-  },
-  terrorist_attack: {
-    definition:
-      "A coordinated attack by a non-state actor producing civilian casualties or critical-infrastructure damage, meeting GTD/UCDP terrorism criteria.",
-    indicators: [
-      { code: "v2cseeorgs", name: "CSO entry/exit", provider: "V-Dem" },
-      { code: "PV.EST", name: "Political Stability", provider: "World Bank WGI" },
-      { code: "v2psoppaut", name: "Opposition autonomy", provider: "V-Dem" },
-      { code: "v2x_corr", name: "Political corruption index", provider: "V-Dem" },
-    ],
-    window: 8,
-    countriesTop: [
-      { name: "Pakistan", score: 71.5 },
-      { name: "Iraq", score: 67.8 },
-      { name: "Mali", score: 64.2 },
-      { name: "Burkina Faso", score: 61.0 },
-      { name: "Nigeria", score: 58.5 },
-    ],
-    nPositives: 287,
-  },
-  economic_recession: {
-    definition:
-      "Two consecutive quarters of negative real GDP growth, or annual real GDP contraction exceeding -1.5%.",
-    indicators: [
-      { code: "NY.GDP.MKTP.KD.ZG", name: "GDP growth", provider: "World Bank" },
-      { code: "FP.CPI.TOTL.ZG", name: "Inflation, CPI", provider: "World Bank" },
-      { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
-      { code: "SL.UEM.TOTL.ZS", name: "Unemployment", provider: "World Bank ILO" },
-    ],
-    window: 5,
-    countriesTop: [
-      { name: "Argentina", score: 72.1 },
-      { name: "Turkey", score: 68.5 },
-      { name: "Lebanon", score: 65.4 },
-      { name: "Sri Lanka", score: 61.8 },
-      { name: "Pakistan", score: 58.2 },
-    ],
-    nPositives: 358,
-  },
-  bilateral_treaty: {
-    definition:
-      "A formal agreement between two states governing trade, investment, security, or diplomatic relations.",
-    indicators: [
-      { code: "v2cltrnslw", name: "Transparent laws", provider: "V-Dem" },
-      { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
-      { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
-      { code: "v2x_polyarchy", name: "Electoral democracy", provider: "V-Dem" },
-    ],
-    window: 7,
-    countriesTop: [
-      { name: "Vietnam", score: 64.5 },
-      { name: "Morocco", score: 61.8 },
-      { name: "Colombia", score: 58.7 },
-      { name: "Kazakhstan", score: 56.1 },
-      { name: "Egypt", score: 53.2 },
-    ],
-    nPositives: 563,
   },
   multilateral_agreement: {
     definition:
@@ -205,6 +386,25 @@ const MOCK_DATA: Record<string, RecipeMock> = {
       { name: "Estonia", score: 61.8 },
     ],
     nPositives: 287,
+  },
+  bilateral_treaty: {
+    definition:
+      "A formal agreement between two states governing trade, investment, security, or diplomatic relations.",
+    indicators: [
+      { code: "v2cltrnslw", name: "Transparent laws", provider: "V-Dem" },
+      { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
+      { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
+      { code: "v2x_polyarchy", name: "Electoral democracy", provider: "V-Dem" },
+    ],
+    window: 7,
+    countriesTop: [
+      { name: "Vietnam", score: 64.5 },
+      { name: "Morocco", score: 61.8 },
+      { name: "Colombia", score: 58.7 },
+      { name: "Kazakhstan", score: 56.1 },
+      { name: "Egypt", score: 53.2 },
+    ],
+    nPositives: 563,
   },
   mass_protest: {
     definition:
@@ -246,7 +446,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   democratic_transition: {
     definition:
-      "A sustained shift in the V-Dem electoral democracy index of +0.10 or more over a 5-year window, accompanied by competitive elections.",
+      "A sustained shift in the electoral democracy index of +0.10 or more over a 5-year window, accompanied by competitive elections.",
     indicators: [
       { code: "v2x_polyarchy", name: "Electoral democracy", provider: "V-Dem" },
       { code: "v2elfrfair", name: "Election free and fair", provider: "V-Dem" },
@@ -256,7 +456,6 @@ const MOCK_DATA: Record<string, RecipeMock> = {
     window: 6,
     countriesTop: [
       { name: "Tunisia", score: 68.5 },
-      { name: "Myanmar (2011-15)", score: 61.4 },
       { name: "Senegal", score: 58.2 },
       { name: "Indonesia", score: 55.7 },
       { name: "Brazil", score: 53.4 },
@@ -304,11 +503,9 @@ const MOCK_DATA: Record<string, RecipeMock> = {
     ],
     nPositives: 402,
   },
-
-  // === Additions by Maya Reyes — ~30 more recipes, real V-Dem/WB codes ===
   interstate_war: {
     definition:
-      "Armed conflict between two or more sovereign states involving sustained use of military force across a recognized border, meeting UCDP interstate-conflict criteria (≥25 battle deaths per year).",
+      "Armed conflict between two or more sovereign states involving sustained use of military force across a recognized border.",
     indicators: [
       { code: "v2svdomaut", name: "Domestic Autonomy / Sovereignty", provider: "V-Dem" },
       { code: "PV.EST", name: "Political Stability", provider: "World Bank WGI" },
@@ -331,7 +528,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   ethnic_and_communal_conflict: {
     definition:
-      "Sustained organized violence between ethnic, religious, or communal groups producing fatalities and population displacement, distinct from state-versus-rebel civil war dynamics.",
+      "Sustained organized violence between ethnic, religious, or communal groups producing fatalities and population displacement.",
     indicators: [
       {
         code: "v2pepwrses",
@@ -362,7 +559,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   political_violence: {
     definition:
-      "Politically motivated violence by state or non-state actors targeting civilians, opposition figures, or political institutions, falling below civil-war intensity thresholds.",
+      "Politically motivated violence by state or non-state actors targeting civilians, opposition figures, or political institutions.",
     indicators: [
       { code: "v2x_clphy", name: "Physical Violence Index", provider: "V-Dem" },
       { code: "v2clkill", name: "Freedom from Political Killings", provider: "V-Dem" },
@@ -381,7 +578,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   military_coup: {
     definition:
-      "Unconstitutional seizure of executive authority by military or security forces, replacing an incumbent civilian or military government within a compressed time window.",
+      "Unconstitutional seizure of executive authority by military or security forces.",
     indicators: [
       { code: "v2x_jucon", name: "Judicial Constraints on Executive", provider: "V-Dem" },
       {
@@ -408,7 +605,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   political_corruption: {
     definition:
-      "Systemic misuse of public office for private gain by executive, legislative, or judicial officials, evidenced through prosecutions, investigations, or sustained perception declines.",
+      "Systemic misuse of public office for private gain by executive, legislative, or judicial officials.",
     indicators: [
       { code: "v2x_corr", name: "Political Corruption Index", provider: "V-Dem" },
       { code: "v2excrptps", name: "Executive Corruption", provider: "V-Dem" },
@@ -446,7 +643,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   human_rights_reform: {
     definition:
-      "Legislative, constitutional, or institutional change expanding civil, political, or minority rights, often following a political transition or sustained civil-society pressure.",
+      "Legislative, constitutional, or institutional change expanding civil, political, or minority rights.",
     indicators: [
       { code: "v2x_clpol", name: "Political Civil Liberties Index", provider: "V-Dem" },
       { code: "v2x_clpriv", name: "Private Civil Liberties Index", provider: "V-Dem" },
@@ -465,7 +662,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   military_policy_and_reform: {
     definition:
-      "Structural changes to military doctrine, command, conscription, or budget, including civil-military relations reforms following political transition or external pressure.",
+      "Structural changes to military doctrine, command, conscription, or budget, including civil-military relations reforms.",
     indicators: [
       { code: "v2x_jucon", name: "Judicial Constraints on Executive", provider: "V-Dem" },
       {
@@ -488,7 +685,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   executive_power_consolidation: {
     definition:
-      "A sustained, observable concentration of formal and informal power in the executive at the expense of legislative, judicial, or sub-national institutions, without full regime transition.",
+      "A sustained, observable concentration of formal and informal power in the executive.",
     indicators: [
       { code: "v2x_jucon", name: "Judicial Constraints on Executive", provider: "V-Dem" },
       {
@@ -519,7 +716,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   transitional_justice: {
     definition:
-      "Formal mechanisms (truth commissions, trials, reparations, lustration) addressing past mass human-rights violations during regime change or post-conflict settlement.",
+      "Formal mechanisms addressing past mass human-rights violations during regime change or post-conflict settlement.",
     indicators: [
       { code: "v2juncind", name: "Judicial independence", provider: "V-Dem" },
       { code: "v2x_rule", name: "Rule of Law Index", provider: "V-Dem" },
@@ -538,7 +735,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   peacekeeping_and_peace_process: {
     definition:
-      "Formal negotiation, ceasefire, or third-party-monitored settlement of an active armed conflict, including deployment of peacekeeping forces under UN, regional, or bilateral mandate.",
+      "Formal negotiation, ceasefire, or third-party-monitored settlement of an active armed conflict.",
     indicators: [
       {
         code: "VC.BTL.DETH",
@@ -565,7 +762,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   currency_crisis: {
     definition:
-      "Sharp depreciation of the national currency exceeding 15% against a reference basket within a 12-month window, often accompanied by reserve depletion and capital controls.",
+      "Sharp depreciation of the national currency exceeding 15% against a reference basket within a 12-month window.",
     indicators: [
       { code: "FP.CPI.TOTL.ZG", name: "Inflation, CPI", provider: "World Bank" },
       {
@@ -596,7 +793,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   banking_and_financial_crisis: {
     definition:
-      "Systemic banking distress evidenced by NPL ratios above 15%, bank runs, government recapitalization, or deposit insurance activation, distinct from sovereign or currency crises.",
+      "Systemic banking distress evidenced by NPL ratios above 15%, bank runs, government recapitalization, or deposit insurance activation.",
     indicators: [
       {
         code: "FB.AST.NPER.ZS",
@@ -627,7 +824,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   fiscal_policy_change: {
     definition:
-      "Substantive change to government tax, spending, or borrowing policy, typically codified in a budget law or emergency fiscal package, exceeding a normal annual adjustment.",
+      "Substantive change to government tax, spending, or borrowing policy, typically codified in a budget law or emergency fiscal package.",
     indicators: [
       {
         code: "GC.DOD.TOTL.GD.ZS",
@@ -654,7 +851,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   monetary_policy_change: {
     definition:
-      "Material adjustment to central-bank policy stance — rate cycle inflection, framework switch, or balance-sheet operation — exceeding routine calibration moves.",
+      "Material adjustment to central-bank policy stance — rate cycle inflection, framework switch, or balance-sheet operation.",
     indicators: [
       { code: "FP.CPI.TOTL.ZG", name: "Inflation, CPI", provider: "World Bank" },
       { code: "NY.GDP.MKTP.KD.ZG", name: "GDP growth", provider: "World Bank" },
@@ -673,7 +870,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   economic_liberalization: {
     definition:
-      "Policy program reducing state intervention in markets — privatization, deregulation, capital-account opening, or trade liberalization — typically over a multi-year reform window.",
+      "Policy program reducing state intervention in markets — privatization, deregulation, capital-account opening, or trade liberalization.",
     indicators: [
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
       { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
@@ -692,7 +889,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   trade_agreement: {
     definition:
-      "Bilateral or multilateral treaty reducing tariff or non-tariff barriers, governing investment, dispute resolution, or services trade, ratified through formal legislative process.",
+      "Bilateral or multilateral treaty reducing tariff or non-tariff barriers.",
     indicators: [
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
       { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
@@ -711,7 +908,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   sanctions_and_arms_embargo: {
     definition:
-      "Imposition or lifting of targeted economic, financial, or military restrictions against a country by another state, regional bloc, or UN Security Council resolution.",
+      "Imposition or lifting of targeted economic, financial, or military restrictions against a country.",
     indicators: [
       { code: "v2svdomaut", name: "Domestic Autonomy / Sovereignty", provider: "V-Dem" },
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
@@ -730,7 +927,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   economic_recovery: {
     definition:
-      "Sustained return to positive real GDP growth following a recession trough, accompanied by labor-market and investment-confidence indicators rejoining their pre-shock trajectories.",
+      "Sustained return to positive real GDP growth following a recession trough.",
     indicators: [
       { code: "NY.GDP.MKTP.KD.ZG", name: "GDP growth", provider: "World Bank" },
       { code: "SL.UEM.TOTL.ZS", name: "Unemployment", provider: "World Bank ILO" },
@@ -749,7 +946,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   labor_action: {
     definition:
-      "Organized work stoppage, general strike, or coordinated industrial action by trade unions or worker collectives, exceeding sectoral or single-employer disputes.",
+      "Organized work stoppage, general strike, or coordinated industrial action by trade unions or worker collectives.",
     indicators: [
       { code: "SL.UEM.TOTL.ZS", name: "Unemployment", provider: "World Bank ILO" },
       {
@@ -772,7 +969,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   social_policy_reform: {
     definition:
-      "Substantive legislative or regulatory change to welfare, healthcare, pension, or family policy, exceeding routine parametric adjustment.",
+      "Substantive legislative or regulatory change to welfare, healthcare, pension, or family policy.",
     indicators: [
       {
         code: "v2csprtcpt",
@@ -795,7 +992,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   public_health_reform: {
     definition:
-      "Major restructuring of national health-system financing, coverage, or delivery, including insurance expansion, pandemic-response architecture, or pharmaceutical regulation.",
+      "Major restructuring of national health-system financing, coverage, or delivery.",
     indicators: [
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
       { code: "v2x_polyarchy", name: "Electoral democracy index", provider: "V-Dem" },
@@ -818,7 +1015,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   poverty_and_inequality_crisis: {
     definition:
-      "A sustained increase in extreme poverty headcount or Gini coefficient exceeding one standard deviation of the country's historical baseline over a multi-year window.",
+      "A sustained increase in extreme poverty headcount or Gini coefficient exceeding one standard deviation of the country's historical baseline.",
     indicators: [
       { code: "SI.POV.GINI", name: "Gini index", provider: "World Bank" },
       {
@@ -841,7 +1038,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   migration_and_refugees: {
     definition:
-      "Mass cross-border population movement exceeding 1% of origin- or host-country population, driven by conflict, persecution, economic collapse, or environmental shock.",
+      "Mass cross-border population movement exceeding 1% of origin- or host-country population.",
     indicators: [
       {
         code: "SM.POP.REFG.OR",
@@ -864,7 +1061,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   religious_and_social_movement: {
     definition:
-      "Sustained mobilization around religious identity, moral-traditionalist agenda, or transnational social cause, producing organized advocacy, electoral pressure, or street action.",
+      "Sustained mobilization around religious identity, moral-traditionalist agenda, or transnational social cause.",
     indicators: [
       {
         code: "v2csprtcpt",
@@ -891,7 +1088,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   diplomatic_rupture: {
     definition:
-      "Formal downgrade or severance of diplomatic relations between two states — expulsion of ambassadors, embassy closure, or recognition withdrawal — outside a multilateral context.",
+      "Formal downgrade or severance of diplomatic relations between two states — expulsion of ambassadors, embassy closure, or recognition withdrawal.",
     indicators: [
       { code: "v2svdomaut", name: "Domestic Autonomy / Sovereignty", provider: "V-Dem" },
       { code: "PV.EST", name: "Political Stability", provider: "World Bank WGI" },
@@ -910,7 +1107,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   territorial_disputes: {
     definition:
-      "Active contestation of land or maritime boundaries between two or more states, including occupation, claim filings, or military deployments in disputed zones.",
+      "Active contestation of land or maritime boundaries between two or more states.",
     indicators: [
       { code: "v2svdomaut", name: "Domestic Autonomy / Sovereignty", provider: "V-Dem" },
       { code: "PV.EST", name: "Political Stability", provider: "World Bank WGI" },
@@ -929,7 +1126,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   regional_integration: {
     definition:
-      "Accession, deepening, or institutional reform of a regional intergovernmental organization (EU, ASEAN, AU, Mercosur, ECOWAS) producing binding policy harmonization.",
+      "Accession, deepening, or institutional reform of a regional intergovernmental organization.",
     indicators: [
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
       { code: "v2cltrnslw", name: "Transparent laws", provider: "V-Dem" },
@@ -948,7 +1145,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   earthquake: {
     definition:
-      "Seismic event of magnitude ≥6.0 producing population casualties or displacement, with humanitarian response triggering domestic emergency declaration or international assistance.",
+      "Seismic event of magnitude ≥6.0 producing population casualties or displacement.",
     indicators: [
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
       { code: "VC.IDP.NWDS", name: "New internal displacements", provider: "World Bank" },
@@ -971,7 +1168,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   epidemic_and_pandemic: {
     definition:
-      "Sustained outbreak of a transmissible disease exceeding national baseline mortality or morbidity, triggering WHO PHEIC declaration or domestic public-health emergency.",
+      "Sustained outbreak of a transmissible disease exceeding national baseline mortality or morbidity.",
     indicators: [
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
       { code: "v2cltrnslw", name: "Transparent laws", provider: "V-Dem" },
@@ -994,7 +1191,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   oil_and_gas: {
     definition:
-      "Major exploration, production, pricing, or licensing event in the hydrocarbon sector — discovery, project sanction, supply disruption, or fiscal regime change — affecting national revenue.",
+      "Major exploration, production, pricing, or licensing event in the hydrocarbon sector.",
     indicators: [
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
       { code: "v2x_neopat", name: "Neopatrimonialism Index", provider: "V-Dem" },
@@ -1013,7 +1210,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   energy_policy: {
     definition:
-      "National-level legislative or executive change governing electricity generation, transmission tariffs, fossil-fuel subsidies, or energy-mix targets, with multi-year sector implications.",
+      "National-level legislative or executive change governing electricity generation, transmission tariffs, fossil-fuel subsidies, or energy-mix targets.",
     indicators: [
       { code: "RQ.EST", name: "Regulatory Quality", provider: "World Bank WGI" },
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
@@ -1031,8 +1228,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
     nPositives: 234,
   },
   climate_agreement: {
-    definition:
-      "Ratification, withdrawal, or major NDC update under UNFCCC framework, or signing of regional climate treaty with binding emissions or finance commitments.",
+    definition: "Ratification, withdrawal, or major NDC update under UNFCCC framework.",
     indicators: [
       { code: "v2cltrnslw", name: "Transparent laws", provider: "V-Dem" },
       { code: "NE.TRD.GNFS.ZS", name: "Trade %GDP", provider: "World Bank" },
@@ -1051,7 +1247,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   education_reform: {
     definition:
-      "Major change to national curriculum, school financing, teacher policy, or higher-education governance, codified in legislation or ministerial framework.",
+      "Major change to national curriculum, school financing, teacher policy, or higher-education governance.",
     indicators: [
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
       { code: "v2x_polyarchy", name: "Electoral democracy index", provider: "V-Dem" },
@@ -1070,7 +1266,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   cyberattack: {
     definition:
-      "State-attributed or critical-infrastructure-targeting cyber incident producing service disruption, data exfiltration, or financial loss exceeding national reporting threshold.",
+      "State-attributed or critical-infrastructure-targeting cyber incident producing service disruption, data exfiltration, or financial loss.",
     indicators: [
       { code: "RQ.EST", name: "Regulatory Quality", provider: "World Bank WGI" },
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
@@ -1089,7 +1285,7 @@ const MOCK_DATA: Record<string, RecipeMock> = {
   },
   infrastructure_project: {
     definition:
-      "Large-scale capital project (transport corridor, energy plant, port, urban rail) exceeding 1% of GDP or producing cross-border economic linkage, with multi-year implementation arc.",
+      "Large-scale capital project exceeding 1% of GDP or producing cross-border economic linkage.",
     indicators: [
       { code: "BX.KLT.DINV.WD.GD.ZS", name: "FDI, net inflows", provider: "World Bank" },
       { code: "GE.EST", name: "Government Effectiveness", provider: "World Bank WGI" },
@@ -1126,11 +1322,77 @@ const GENERIC_COUNTRIES = [
   { name: "Country D", score: 51.2 },
 ];
 
-export function getMock(recipe: TrackerRecipe): RecipeMock {
-  const direct = MOCK_DATA[recipe.recipe_id];
-  if (direct) return direct;
+/** Build a RecipeMock from a TE card (real data). */
+function buildTEMock(recipeId: string): RecipeMock | null {
+  let card;
+  try {
+    const allCards = loadAllCards();
+    card = allCards[recipeId];
+  } catch {
+    return null;
+  }
+  if (!card) return null;
+
+  // Indicators from greedy_walk.selected_indicators + LOO sensitivity for names.
+  const looMap = new Map(
+    (card.indicator_sensitivity?.leave_one_out ?? []).map((e) => [e.code, e])
+  );
+
+  const indicators: IndicatorMock[] = card.greedy_walk.selected_indicators.map((code) => {
+    // name is null in sample-10 — resolve via indicator-labels
+    const rawName = looMap.get(code)?.name ?? null;
+    const name = rawName ?? resolveIndicatorName(code);
+    // Derive provider from code prefix
+    const provider =
+      code.startsWith("v2") || code.startsWith("v3")
+        ? "V-Dem"
+        : code.includes(".")
+          ? "World Bank"
+          : "Other";
+    return { code, name, provider };
+  });
+
+  // Top countries from scores file, top 5 by score
+  let countriesTop: Array<{ name: string; score: number }> = [];
+  try {
+    const allScores = loadAllScores();
+    const sf = allScores[recipeId];
+    if (sf?.scores) {
+      countriesTop = [...sf.scores]
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5)
+        .map((e) => ({ name: e.name, score: Number(e.score.toFixed(1)) }));
+    }
+  } catch {
+    // scores unavailable — fall back to empty
+  }
+
+  const definition =
+    CASCADE_MOCK_DATA[recipeId]?.definition ??
+    `${humanize(recipeId)}: a structurally-defined event recipe assessed by the trajectory engine. Full methodology in the recipe detail page.`;
+
   return {
-    definition: `${recipe.label}: a structurally-defined event recipe in the QGI catalog. Full definition published with the first walk.`,
+    definition,
+    indicators,
+    window: card.greedy_walk.chosen_window,
+    countriesTop,
+    nPositives: card.n_positives,
+  };
+}
+
+export function getMock(recipe: TrackerRecipe): RecipeMock {
+  // TE recipes: use real card data
+  if (recipe.engine === "trajectory-engine-v1") {
+    const teMock = buildTEMock(recipe.recipe_id);
+    if (teMock) return teMock;
+  }
+
+  // Cascade-era recipes: use hand-authored mock data
+  const direct = CASCADE_MOCK_DATA[recipe.recipe_id];
+  if (direct) return direct;
+
+  return {
+    definition: `${recipe.label}: a structurally-defined event recipe in the QGI catalog. Full definition published with the first validation run.`,
     indicators: GENERIC_INDICATORS,
     window: 8,
     countriesTop: GENERIC_COUNTRIES,
@@ -1140,9 +1402,10 @@ export function getMock(recipe: TrackerRecipe): RecipeMock {
 
 /**
  * Is this recipe rendered as the "demo graduated" case?
- * Foreign Intervention is in walked_no_graduation today (post-vacate), but the
- * spec asks us to show what a graduated page LOOKS like — and foreign_intervention
- * is the natural demo subject.
+ *
+ * Only foreign_intervention qualifies — it preserves the demo detail page
+ * showing what a fully-populated graduated page looks like.
+ * No recipe in sample-10 is actually graduated (0 validated in wave-1+2).
  */
 export function isDemoGraduated(recipe: TrackerRecipe): boolean {
   return recipe.recipe_id === "foreign_intervention";
