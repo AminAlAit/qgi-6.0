@@ -17,7 +17,7 @@ import type { RecipeContribution } from "@/lib/te-mock/nearest-analog-data";
 import { statusLabel } from "@/lib/te-mock/country-families";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { getRecipe } from "@/lib/te-mock/recipes";
-import { familyColor } from "@/lib/te-mock/l1-families";
+import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 
 export interface RecipeContributionBarProps {
   contributions: RecipeContribution[];
@@ -52,11 +52,11 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
         const badge = badgeFor(c.status);
         const widthPct = (c.contribution_pct / max) * 100;
         // P2-1: derive canonical color from recipe catalog, not hardcoded data field.
+        // getRecipe() always resolves for any recipe in the contributions data,
+        // so the inner fallback uses NEUTRAL_SLATE rather than c.l1_color (the
+        // legacy data-field value is intentionally not authoritative; see #134).
         const recipe = getRecipe(c.recipe_id);
-        const canonicalColor = familyColor(
-          recipe?.l1_id ?? "",
-          recipe?.l1_color ?? c.l1_color
-        );
+        const canonicalColor = familyColor(recipe?.l1_id ?? "", NEUTRAL_SLATE);
         return (
           <div
             key={c.recipe_id}

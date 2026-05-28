@@ -20,6 +20,7 @@ import type {
 import { getRecipe } from "@/lib/te-mock/recipes";
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { familyColor as resolveFamilyColor } from "@/lib/te-mock/l1-families";
 
 interface Props {
   attribution: readonly CountryDriverAttribution[];
@@ -59,7 +60,10 @@ function AttributionSection({
   // All attribution rows share the same recipe_id (per buildAttribution).
   const recipeId = attribution[0].recipe_id;
   const recipe = getRecipe(recipeId);
-  const familyColor = recipe?.l1_color ?? "var(--qgi-accent)";
+  // Route through resolveFamilyColor so the F-family override (#9F7AEA →
+  // #6C77E8) and any future re-hues apply here too — same discipline as
+  // the rest of the V4.1 surfaces.
+  const familyColor = resolveFamilyColor(recipe?.l1_id ?? "", recipe?.l1_color);
 
   return (
     <SubSection

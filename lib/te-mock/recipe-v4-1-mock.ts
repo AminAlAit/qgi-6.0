@@ -63,7 +63,6 @@ interface RecipeV4Extras {
   /** Vintage block (capability §14 — merges into the Identity card per #142). */
   walkId: string;
   walkNumber: number;
-  cohortDef: string;
   ratifiedBy: string;
   walkDate: string;
 }
@@ -368,7 +367,6 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "fi_v4_2026-05-21",
     walkNumber: 4,
-    cohortDef: "LOCO-6",
     ratifiedBy: "Majles 8/8 · 2026-05-22",
     walkDate: "2026-05-21",
   },
@@ -434,7 +432,6 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "cw_v3_2026-05-08",
     walkNumber: 3,
-    cohortDef: "LOCO-6",
     ratifiedBy: "Majles · 2026-05-09",
     walkDate: "2026-05-08",
   },
@@ -514,7 +511,6 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "cc_v2_2026-04-15",
     walkNumber: 2,
-    cohortDef: "LOCO-6",
     ratifiedBy: "Majles · 2026-04-16",
     walkDate: "2026-04-15",
   },
@@ -735,7 +731,6 @@ export function getFallbackExtras(recipeId: string): RecipeV4Extras {
     nCohorts: 0,
     walkId: "",
     walkNumber: 0,
-    cohortDef: "",
     ratifiedBy: "",
     walkDate: "",
   };

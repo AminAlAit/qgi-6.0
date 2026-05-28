@@ -28,19 +28,6 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
 }
 
 /**
- * Remap internal verdict strings to user-facing labels for the v4.1 chip
- * row. Returns null when no chip should be rendered.
- */
-function verdictLabel(value: string | undefined | null): string | null {
-  if (!value) return null;
-  const lower = value.toLowerCase();
-  if (lower.includes("hard") && (lower.includes("fail") || lower.includes("_fail")))
-    return "Did not hold up";
-  if (lower.includes("loco")) return null; // hide raw LOCO chip; pill handles status
-  return null;
-}
-
-/**
  * RecipeCard
  *
  * `basePath` defaults to /precedents-v2 (V4 gallery). The V4.1 gallery

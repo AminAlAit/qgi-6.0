@@ -81,7 +81,7 @@ export const HERO_TILES = (c: HeroCounts): HeroTile[] => [
   {
     value: String(c.countries),
     label: "Countries on platform",
-    sublabel: "Verified-positive corpus",
+    sublabel: "Curated event records",
     Icon: Globe,
     color: "#38bdf8",
   },
@@ -302,7 +302,7 @@ const WALK_TO_EVENT: Record<
     color: "#a78bfa",
     kind: "walk_fired",
     title: (id) => `Re-evaluation in progress: ${labelOf(id)}`,
-    detail: () => "Outcome will replace the prior result. ETA ~5-6 hours.",
+    detail: () => "Outcome will replace the prior result.",
   },
   MARGINAL: {
     Icon: Sparkles,
@@ -311,6 +311,9 @@ const WALK_TO_EVENT: Record<
     title: (id) => `Validation borderline: ${labelOf(id)}`,
     detail: () => "Discrimination is near the threshold; under review.",
   },
+  // SCHEDULED and QUEUED collapse to the same surface — both mean "waiting
+  // for the evidence base to meet the bar before validation fires." Use a
+  // single shared entry to prevent the two keys from drifting apart.
   SCHEDULED: {
     Icon: Calendar,
     color: "#7A8FA0",
@@ -318,14 +321,10 @@ const WALK_TO_EVENT: Record<
     title: (id) => `Scheduled: ${labelOf(id)}`,
     detail: () => "Will run when the evidence base meets the bar.",
   },
-  QUEUED: {
-    Icon: Calendar,
-    color: "#7A8FA0",
-    kind: "walk_fired",
-    title: (id) => `Scheduled: ${labelOf(id)}`,
-    detail: () => "Will run when the evidence base meets the bar.",
-  },
 };
+// Alias QUEUED → SCHEDULED so future verdict values with either key resolve
+// to the same rendering without a silent dictionary miss.
+WALK_TO_EVENT.QUEUED = WALK_TO_EVENT.SCHEDULED;
 
 function labelOf(recipe_id: string): string {
   return RECIPES.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;

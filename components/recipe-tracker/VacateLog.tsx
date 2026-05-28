@@ -7,17 +7,22 @@ import type { VacateEvent } from "@/lib/te-mock/recipe-tracker-extra";
 /** Sanitize data-layer note text: replace internal acronyms with plain
  *  language before rendering. The data file is read-only shared utility. */
 function sanitizeNote(note: string): string {
-  return note
-    .replace(/F-ML-\d+/gi, "ML pre-registration")
-    .replace(/F-ML-N/gi, "future ML pre-registration")
-    .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
-    .replace(/\bLOCO\b/g, "out-of-sample discrimination")
-    .replace(/\bvacated\b/gi, "withdrawn")
-    .replace(/\bvacate\b/gi, "correction")
-    .replace(/re-walk/gi, "re-validation")
-    .replace(/\bin flight\b/gi, "in review")
-    .replace(/\bfan-out\b/gi, "production rollout")
-    .replace(/\btruncation\b/gi, "coverage gap");
+  return (
+    note
+      .replace(/F-ML-\d+/gi, "ML pre-registration")
+      .replace(/F-ML-N/gi, "future ML pre-registration")
+      .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
+      .replace(/\bLOCO\b/g, "out-of-sample discrimination")
+      .replace(/\bvacated\b/gi, "withdrawn")
+      .replace(/\bvacate\b/gi, "correction")
+      .replace(/re-walk/gi, "re-validation")
+      // \bwalk\b sits after re-walk so the longer pattern grabs first
+      // (parity with components/recipe-tracker/InFlightPanel.tsx:sanitizeNote).
+      .replace(/\bwalk\b/gi, "validation pass")
+      .replace(/\bin flight\b/gi, "in review")
+      .replace(/\bfan-out\b/gi, "production rollout")
+      .replace(/\btruncation\b/gi, "coverage gap")
+  );
 }
 
 /** Plain-language label for a prior_status value shown in the correction
