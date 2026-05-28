@@ -2576,14 +2576,21 @@ function analogsFor(iso: string, recipesLit: Array<[string, number]>): CountryAn
   // 1. Try to pull from Daniyar's nearest-analog corpus.
   const fromCorpus = getCurrentCountry(iso);
   if (fromCorpus && fromCorpus.analogs.length > 0) {
-    return fromCorpus.analogs.map((a) => ({
-      country: a.country,
-      year: a.year,
-      match_score: a.match_score,
-      primary_recipe_id: a.primary_recipe_id,
-      what_happened_next: a.what_happened_next,
-      weak_analog: a.weak_analog,
-    }));
+    // Self-exclusion parity with the family-pool path below: filter out any
+    // analog row whose country name matches the subject country (case
+    // insensitive). Without this, IRN renders "Iran 1978" as an analog of
+    // today's Iran — same country, just a past event (T-08 reviewer FU-1).
+    const subjectName = fromCorpus.name.toLowerCase();
+    return fromCorpus.analogs
+      .filter((a) => a.country.toLowerCase() !== subjectName)
+      .map((a) => ({
+        country: a.country,
+        year: a.year,
+        match_score: a.match_score,
+        primary_recipe_id: a.primary_recipe_id,
+        what_happened_next: a.what_happened_next,
+        weak_analog: a.weak_analog,
+      }));
   }
 
   // 2. Otherwise fabricate from per-family pools.

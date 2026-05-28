@@ -48,7 +48,12 @@ function an(noun: string): string {
  * Used to decide whether to rephrase around the article rather than prepend one.
  */
 function isNounPhrase(label: string): boolean {
-  return / and /i.test(label);
+  // Match both " and " and " & " — recipe labels in the tracker mix the two
+  // conventions ("Drought and Famine" vs "Civil War & Insurgency"). Without
+  // the ampersand branch, the latter falls through to the article path and
+  // renders "a civil war & insurgency event" instead of "conditions of
+  // civil war & insurgency".
+  return / and | & /i.test(label);
 }
 
 function describeArchetype(points: number[]): string {

@@ -256,7 +256,10 @@ const STATUS_LABELS: Record<string, string> = {
   graduated: "Graduated",
   in_validation: "In validation",
   walked_no_graduation: "Reviewed, not graduated",
-  vacated: "Graduation vacated",
+  // "vacated" is on the V4.1 banned-vocab list; surface as the audit-driven
+  // re-evaluation state instead. Currently dead (no recipe carries status
+  // "vacated" today) but renders correctly if a future re-validation lands.
+  vacated: "Under re-evaluation",
   queued: "Queued",
   retired: "Retired",
   live_legacy: "Live (legacy)",
