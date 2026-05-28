@@ -119,7 +119,7 @@ export function TrackerHero({
           marginBottom: "8px",
         }}
       >
-        Live Recipe Tracker
+        Recipe Tracker
       </div>
       <div
         style={{
@@ -150,9 +150,10 @@ export function TrackerHero({
               margin: 0,
             }}
           >
-            Every recipe walks the same pre-registered gates. Most fail. This page shows
-            the program failing in public — that is the honesty signal. Click any row for
-            the recipe&apos;s full 15-capability report card.
+            Every recipe goes through the same pre-registered validation checkpoints. Most
+            do not hold up. This page shows the program&apos;s results in public: that
+            transparency is the point. Click any row for the recipe&apos;s full
+            15-capability report card.
           </p>
         </div>
         <div
@@ -183,35 +184,35 @@ export function TrackerHero({
         <ScoreTile
           big
           count={graduated}
-          label="Graduated"
-          sublabel="Cleared every pre-reg gate"
+          label="Deployed"
+          sublabel="Cleared every pre-registered checkpoint"
           Icon={GraduationCap}
           color="#3FBF8F"
         />
         <ScoreTile
           count={walkedFail}
-          label="Walked-failed"
-          sublabel="Hard-failed a gate"
+          label="Tested, did not hold up"
+          sublabel="Hard-failed a validation bar"
           Icon={CircleX}
           color="#E68F29"
         />
         <ScoreTile
           count={inProgress}
-          label="In flight"
-          sublabel="Walk running now"
+          label="In review"
+          sublabel="Validation pass running now"
           Icon={Radio}
           color="#a78bfa"
         />
         <ScoreTile
           count={legacy}
-          label="Legacy ML-1"
-          sublabel="Pre-TE, re-walk pending"
+          label="Early method, under review"
+          sublabel="Pre-TE method, re-validation pending"
           Icon={Layers}
           color="#7A8FA0"
         />
         <ScoreTile
           count={queued}
-          label="Queued"
+          label="Not yet tested"
           sublabel="Awaiting curated events"
           Icon={Hourglass}
           color="#64748b"

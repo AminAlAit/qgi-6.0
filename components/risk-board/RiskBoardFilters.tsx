@@ -7,7 +7,7 @@
  *
  * Filters:
  *   - L1 family chips (multi-select; empty = all).
- *   - Status filter (graduated / walked-failed / queued — but only the
+ *   - Status filter (scored / queued — but only the
  *     scored statuses produce visible scores; queued shows greyed rows).
  *   - Free-text country search (matches any cell.country in any visible row).
  *
@@ -28,7 +28,7 @@ import {
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import Link from "next/link";
 import type { Route } from "next";
-import { STATUS_META } from "@/components/precedents-v2/StatusChip";
+import { statusLabel } from "@/lib/te-mock/country-families";
 
 interface Props {
   recipes: TrackerRecipe[];
@@ -183,7 +183,7 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
             [
               ["all", "All"],
               ["scored", "Scored"],
-              ["queued", "No walk yet"],
+              ["queued", "Not yet tested"],
             ] as Array<[StatusFilter, string]>
           ).map(([key, label]) => {
             const active = statusFilter === key;
@@ -387,7 +387,9 @@ function RecipeGridRow({
   isLast: boolean;
 }) {
   const isQueued = row.display_state === "queued";
-  const statusMeta = STATUS_META[recipe.status];
+  const sl = statusLabel(recipe.status);
+  const statusColor =
+    sl.tone === "deployed" ? "#3FBF8F" : sl.tone === "failed" ? "#E68F29" : "#7A8FA0";
 
   return (
     <div
@@ -445,12 +447,12 @@ function RecipeGridRow({
               style={{
                 fontSize: "9.5px",
                 letterSpacing: "0.3px",
-                color: statusMeta.color,
+                color: statusColor,
                 fontFamily: "ui-monospace, monospace",
                 marginTop: "2px",
               }}
             >
-              {statusMeta.label}
+              {sl.label}
             </div>
           </div>
         </div>
@@ -491,7 +493,7 @@ function HeatCell({
   const alpha = isQueued ? 0 : 0.1 + intensity * 0.55;
   const zone =
     cell.score === null
-      ? "—"
+      ? "–"
       : cell.score >= 65
         ? "HIGH"
         : cell.score >= 40
@@ -525,7 +527,7 @@ function HeatCell({
       }}
       title={
         cell.score === null
-          ? "No walk yet — recipe queued for next vintage."
+          ? "Not yet scored: recipe queued for next vintage."
           : `${cell.country} · discrimination rank ${cell.score.toFixed(1)} (${zone})`
       }
     >
@@ -540,7 +542,7 @@ function HeatCell({
           whiteSpace: "nowrap",
         }}
       >
-        {isQueued ? "no walk yet" : cell.country}
+        {isQueued ? "not yet scored" : cell.country}
       </div>
 
       <div
@@ -559,7 +561,7 @@ function HeatCell({
             lineHeight: 1,
           }}
         >
-          {cell.score === null ? "—" : cell.score.toFixed(1)}
+          {cell.score === null ? "–" : cell.score.toFixed(1)}
         </span>
         {!isQueued && cell.score !== null && (
           <span

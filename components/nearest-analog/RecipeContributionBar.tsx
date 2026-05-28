@@ -3,38 +3,40 @@
  * contributed to the current country's analog match, weighted by SHAP-style
  * contribution percentage.
  *
- * This is the "which recipes matched" panel from the spec — for the current
- * country, which canonical shapes pulled it toward its analogs and by how
- * much. Maps to ledger Feature 5 (Aggregation rule) + Feature 14 (driver) at
- * the recipe layer rather than the indicator layer.
+ * This is the "which recipes matched" panel from the spec: for the current
+ * country, which canonical trajectory shapes pulled it toward its analogs and
+ * by how much. Maps to ledger Feature 5 (Aggregation rule) + Feature 14
+ * (driver) at the recipe layer rather than the indicator layer.
  *
- * Honesty regime: chip on every non-graduated recipe marking its tier
- * status. A walked-failed recipe contributing 40% must not be confused
- * with a validated 40% contribution.
+ * Status chip on every non-graduated recipe: a recipe that did not hold up
+ * contributing 40% must not be confused with a validated 40% contribution.
  *
  * Server component.
  */
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { RecipeContribution } from "@/lib/te-mock/nearest-analog-data";
+import { statusLabel } from "@/lib/te-mock/country-families";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 
 export interface RecipeContributionBarProps {
   contributions: RecipeContribution[];
 }
 
-const STATUS_BADGE: Record<
-  RecipeContribution["status"],
-  { label: string; color: string; bg: string }
-> = {
-  graduated: { label: "validated", color: "#3FBF8F", bg: "rgba(63,191,143,0.12)" },
-  walked_no_graduation: {
-    label: "walked-failed",
-    color: "#E68F29",
-    bg: "rgba(230,143,41,0.12)",
-  },
-  queued: { label: "queued", color: "#64748b", bg: "rgba(100,116,139,0.12)" },
-  live_legacy: { label: "legacy ML-1", color: "#7A8FA0", bg: "rgba(122,143,160,0.12)" },
-};
+function badgeFor(status: RecipeContribution["status"]): {
+  label: string;
+  color: string;
+  bg: string;
+} {
+  const { label, tone } = statusLabel(status);
+  const color =
+    tone === "deployed" ? "#3FBF8F" : tone === "failed" ? "#E68F29" : "#7A8FA0";
+  const bg =
+    tone === "deployed"
+      ? "rgba(63,191,143,0.12)"
+      : tone === "failed"
+        ? "rgba(230,143,41,0.12)"
+        : "rgba(122,143,160,0.12)";
+  return { label, color, bg };
+}
 
 export function RecipeContributionBar({ contributions }: RecipeContributionBarProps) {
   const sorted = [...contributions].sort(
@@ -45,7 +47,7 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
       {sorted.map((c) => {
-        const badge = STATUS_BADGE[c.status];
+        const badge = badgeFor(c.status);
         const widthPct = (c.contribution_pct / max) * 100;
         return (
           <div

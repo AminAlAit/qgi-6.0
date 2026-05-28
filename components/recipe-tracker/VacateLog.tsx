@@ -5,6 +5,30 @@ import { ArchiveX } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import type { VacateEvent } from "@/lib/te-mock/recipe-tracker-extra";
 
+/** Sanitize data-layer note text: replace internal acronyms with plain
+ *  language before rendering. The data file is read-only shared utility. */
+function sanitizeNote(note: string): string {
+  return note
+    .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
+    .replace(/\bLOCO\b/g, "out-of-sample discrimination")
+    .replace(/\bvacated\b/gi, "withdrawn")
+    .replace(/\bvacate\b/gi, "correction")
+    .replace(/re-walk/gi, "re-validation");
+}
+
+/** Plain-language label for a prior_status value shown in the correction
+ *  header line (e.g. "graduated" → "Deployed"). */
+function priorStatusLabel(status: string): string {
+  switch (status) {
+    case "graduated":
+      return "DEPLOYED";
+    case "directional":
+      return "DIRECTIONAL";
+    default:
+      return status.toUpperCase();
+  }
+}
+
 export function VacateLog({ events }: { events: VacateEvent[] }) {
   return (
     <section
@@ -36,7 +60,7 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
             fontWeight: 700,
           }}
         >
-          Vacate log · public correction record
+          Corrections log · public correction record
         </h2>
       </header>
       <p
@@ -47,15 +71,15 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
           margin: "0 0 12px",
         }}
       >
-        Recipes whose prior verdict was withdrawn after audit. The honest counterpart to
-        graduation.
+        Recipes whose prior verdict was withdrawn after audit. Surfaced here on purpose:
+        the honest counterpart to deployment.
       </p>
 
       {events.length === 0 ? (
         <div
           style={{ fontSize: "12px", color: "var(--qgi-text-dim)", fontStyle: "italic" }}
         >
-          No vacate events.
+          No corrections on record.
         </div>
       ) : (
         <ul
@@ -124,7 +148,8 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
                         marginTop: "2px",
                       }}
                     >
-                      {ev.prior_status.toUpperCase()} → VACATED · {ev.vacated_at}
+                      {priorStatusLabel(ev.prior_status)} &#8594; WITHDRAWN ·{" "}
+                      {ev.vacated_at}
                     </div>
                   </div>
                 </div>
@@ -137,7 +162,7 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
                   }}
                 >
                   <strong style={{ color: "var(--qgi-text)" }}>{ev.cause}.</strong>{" "}
-                  {ev.note}
+                  {sanitizeNote(ev.note)}
                 </div>
               </li>
             );

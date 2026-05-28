@@ -88,7 +88,7 @@ export function HistoryAccumulatingGate({
             lineHeight: 1.3,
           }}
         >
-          {label} — history accumulating.
+          {label}: history accumulating.
         </div>
         <div
           style={{

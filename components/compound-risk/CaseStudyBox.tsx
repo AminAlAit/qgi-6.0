@@ -3,6 +3,9 @@ import type { Route } from "next";
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { CompoundCaseStudy } from "@/lib/te-mock/compound-risk-data";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
   return (
@@ -26,9 +29,7 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <span style={{ fontSize: "28px", lineHeight: 1 }} aria-hidden>
-            {study.flag}
-          </span>
+          <FlagImg emoji={flagFor(study.country)} name={study.country} width={32} />
           <Link
             href={`/countries/${study.iso.toLowerCase()}` as Route}
             style={{ textDecoration: "none", color: "var(--qgi-text)" }}
@@ -79,9 +80,9 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
                 gap: "6px",
                 padding: "4px 8px",
                 borderRadius: "4px",
-                background: `${r.l1_color}1A`,
-                border: `1px solid ${r.l1_color}`,
-                color: r.l1_color,
+                background: `${familyColor(r.l1_id, r.l1_color)}1A`,
+                border: `1px solid ${familyColor(r.l1_id, r.l1_color)}`,
+                color: familyColor(r.l1_id, r.l1_color),
                 fontSize: "11px",
                 fontFamily: "ui-monospace, monospace",
                 letterSpacing: "0.3px",
@@ -120,7 +121,7 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
         }}
       >
         <span>Vintage · {study.vintage}</span>
-        <span style={{ fontStyle: "italic" }}>Mock narrative — design preview only</span>
+        <span style={{ fontStyle: "italic" }}>Mock narrative, design preview only</span>
       </footer>
     </article>
   );

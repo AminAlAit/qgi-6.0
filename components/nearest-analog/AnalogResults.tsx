@@ -82,7 +82,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           }}
         >
           The three historical cases whose pre-event indicator trajectories most resemble{" "}
-          {entry.name}&apos;s recent movement. <strong>Similarity, not destiny</strong> —
+          {entry.name}&apos;s recent movement. <strong>Similarity, not destiny:</strong>{" "}
           read the historical outcomes as fact about the analog country, never as forecast
           for {entry.name}.
         </p>
@@ -159,8 +159,8 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
             maxWidth: "640px",
           }}
         >
-          The canonical shapes that pulled {entry.name} toward its analogs, ranked by
-          SHAP-weighted contribution. Status chip on every row — a walked-failed recipe
+          The trajectory shapes that pulled {entry.name} toward its analogs, ranked by
+          weighted contribution. Status chip on every row: a recipe that did not hold up
           contributing 40% must not be read as a validated 40%.
         </p>
         <RecipeContributionBar contributions={entry.contributions} />
@@ -199,8 +199,8 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           <div
             style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.5 }}
           >
-            All 71 recipes in the QGI catalog with mini-trajectories — browse every
-            canonical shape, queued or walked, that the analog finder draws from.
+            All 71 recipes in the QGI catalog with mini-trajectories: browse every
+            trajectory shape, queued or tested, that the analog finder draws from.
           </div>
         </div>
         <Link

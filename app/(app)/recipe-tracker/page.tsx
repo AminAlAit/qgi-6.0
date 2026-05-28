@@ -14,17 +14,17 @@ import { ReadThisPanel } from "@/components/recipe-tracker/ReadThisPanel";
 import { VacateLog } from "@/components/recipe-tracker/VacateLog";
 
 export const metadata: Metadata = {
-  title: "Recipe Tracker (mockup) · QG Intelligence",
+  title: "Recipe Tracker · QG Intelligence",
   description:
-    "Public scoreboard of the QGI recipe research program — which have walked, graduated, hard-failed, or are queued. Honesty-regime first. Local mockup.",
+    "Public scoreboard of the QGI recipe research program: which have been tested, deployed, or are queued. Transparent about validation states.",
   robots: { index: false, follow: false },
 };
 
 export default function RecipeTrackerPage() {
   const recipes: TrackerRecipe[] = getAllRecipes();
 
-  // Honesty: count status straight from the source-of-truth JSON.
-  // foreign_intervention is walked_no_graduation here — NOT graduated.
+  // Count status straight from the source-of-truth JSON.
+  // foreign_intervention is walked_no_graduation here, NOT graduated.
   const counts = recipes.reduce(
     (acc, r) => {
       acc[r.status] = (acc[r.status] ?? 0) + 1;
@@ -45,23 +45,6 @@ export default function RecipeTrackerPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "20px 24px 64px" }}>
-        {/* Mockup banner */}
-        <div
-          style={{
-            display: "inline-block",
-            padding: "5px 12px",
-            border: "1px solid var(--qgi-accent)",
-            color: "var(--qgi-accent)",
-            borderRadius: "4px",
-            fontSize: "11px",
-            letterSpacing: "1.5px",
-            marginBottom: "20px",
-            fontFamily: "ui-monospace, monospace",
-          }}
-        >
-          MOCKUP · /recipe-tracker · local only
-        </div>
-
         {/* Hero scoreboard */}
         <TrackerHero
           graduated={graduated}
@@ -73,49 +56,7 @@ export default function RecipeTrackerPage() {
           vintage={vintageStamp()}
         />
 
-        {/* Honesty regime banner — sits between hero and timeline */}
-        <div
-          style={{
-            marginTop: "20px",
-            marginBottom: "28px",
-            padding: "14px 18px",
-            border: "1px solid #E68F29",
-            borderLeft: "3px solid #E68F29",
-            background: "rgba(230, 143, 41, 0.06)",
-            borderRadius: "6px",
-            display: "flex",
-            gap: "14px",
-            alignItems: "flex-start",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "10px",
-              letterSpacing: "1.2px",
-              color: "#E68F29",
-              fontFamily: "ui-monospace, monospace",
-              whiteSpace: "nowrap",
-              paddingTop: "2px",
-            }}
-          >
-            M8-R5
-          </div>
-          <p
-            style={{
-              fontSize: "13px",
-              lineHeight: 1.6,
-              margin: 0,
-              color: "var(--qgi-text)",
-            }}
-          >
-            <strong>Discrimination ranks, not probabilities.</strong> A LOCO-AUC of 0.91
-            says the recipe separates pre-event years from non-event years better than
-            chance — it does <em>not</em> say any country has an N% chance of an event.
-            Even graduated recipes earn only the right to call themselves discriminators.
-          </p>
-        </div>
-
-        {/* Walk timeline strip */}
+        {/* Validation timeline strip */}
         <WalkTimeline walks={HISTORICAL_WALKS} recipes={recipes} />
 
         {/* Body grid — table left, side panels right */}
@@ -168,9 +109,9 @@ export default function RecipeTrackerPage() {
             truth).
           </div>
           <div>
-            Scoreboard auto-updates every walk. Mock historical-walk dates + in-flight +
-            queued cards are illustrative — the recipe roster, statuses, and stats are
-            real.
+            Scoreboard auto-updates after each validation pass. Illustrative historical
+            validation dates, in-review items, and scheduled cards are shown for context;
+            the recipe roster, statuses, and stats are real.
           </div>
         </footer>
       </div>

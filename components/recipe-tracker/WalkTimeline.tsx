@@ -16,6 +16,24 @@ function colorForVerdict(v: WalkEvent["verdict"]): string {
   }
 }
 
+/** Plain-language label for a verdict enum value used in tooltips/UI. */
+function verdictLabel(v: WalkEvent["verdict"]): string {
+  switch (v) {
+    case "GRADUATED":
+      return "Deployed";
+    case "VACATED":
+      return "Withdrawn";
+    case "HARD_FAIL":
+      return "Hard-fail";
+    case "IN_FLIGHT":
+      return "In review";
+    case "MARGINAL":
+      return "Marginal";
+    default:
+      return v;
+  }
+}
+
 export function WalkTimeline({
   walks,
   recipes,
@@ -68,7 +86,7 @@ export function WalkTimeline({
             margin: 0,
           }}
         >
-          Walks fired · chronological
+          Validation timeline · chronological
         </h2>
         <div
           style={{
@@ -78,10 +96,10 @@ export function WalkTimeline({
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          <Swatch color="#3FBF8F" label="Graduated" />
+          <Swatch color="#3FBF8F" label="Deployed" />
           <Swatch color="#E68F29" label="Hard-fail" />
-          <Swatch color="#a78bfa" label="In flight" />
-          <Swatch color="#E64545" label="Vacated" />
+          <Swatch color="#a78bfa" label="In review" />
+          <Swatch color="#E64545" label="Withdrawn" />
         </div>
       </div>
 
@@ -126,7 +144,7 @@ export function WalkTimeline({
               <a
                 key={`${w.recipe_id}-${w.fired_at}`}
                 href={`/precedents-v2/${w.recipe_id}`}
-                title={`${label} · ${w.fired_at} · ${w.verdict}${w.loco_auc ? ` · LOCO ${w.loco_auc.toFixed(3)}` : ""}`}
+                title={`${label} · ${w.fired_at} · ${verdictLabel(w.verdict)}${w.loco_auc ? ` · Discrimination score ${w.loco_auc.toFixed(3)}` : ""}`}
                 style={{
                   position: "absolute",
                   left,

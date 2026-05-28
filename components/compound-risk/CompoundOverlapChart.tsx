@@ -1,6 +1,9 @@
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { CompoundCountry } from "@/lib/te-mock/compound-risk-data";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
+import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 
 interface Props {
   countries: CompoundCountry[];
@@ -45,7 +48,7 @@ export function CompoundOverlapChart({ countries }: Props) {
             flex: 1,
           }}
         >
-          Where the families stack — top {countries.length}
+          Where the families stack: top {countries.length}
         </h2>
         <span
           style={{
@@ -102,9 +105,7 @@ export function CompoundOverlapChart({ countries }: Props) {
               <div
                 style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}
               >
-                <span style={{ fontSize: "18px", lineHeight: 1 }} aria-hidden>
-                  {c.flag}
-                </span>
+                <FlagImg emoji={flagFor(c.country)} name={c.country} width={20} />
                 <div style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
                   <span
                     style={{
@@ -141,21 +142,22 @@ export function CompoundOverlapChart({ countries }: Props) {
               >
                 {c.lit_recipes.map((r, idx) => {
                   const pct = (r.score / total) * 100;
+                  const segColor = familyColor(r.l1_id, r.l1_color);
                   return (
                     <div
                       key={r.recipe_id}
-                      title={`${r.label} · ${r.score.toFixed(1)} · family ${r.l1_id}`}
+                      title={`${r.label}: ${r.score.toFixed(1)}, family ${r.l1_id}`}
                       style={{
                         width: `${pct}%`,
-                        background: `${r.l1_color}66`,
+                        background: `${segColor}66`,
                         borderRight:
                           idx < c.lit_recipes.length - 1
-                            ? `1px solid ${r.l1_color}`
+                            ? `1px solid ${segColor}`
                             : "none",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        color: r.l1_color,
+                        color: segColor,
                         minWidth: "22px",
                       }}
                     >
@@ -191,31 +193,34 @@ export function CompoundOverlapChart({ countries }: Props) {
               ])
             )
           ).values()
-        ).map((f) => (
-          <span
-            key={f.id}
-            style={{
-              fontSize: "10.5px",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              color: "var(--qgi-text-muted)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-            }}
-          >
+        ).map((f) => {
+          const legendColor = familyColor(f.id, f.color);
+          return (
             <span
+              key={f.id}
               style={{
-                width: "10px",
-                height: "10px",
-                background: f.color,
-                borderRadius: "2px",
-                display: "inline-block",
+                fontSize: "10.5px",
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                color: "var(--qgi-text-muted)",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.3px",
               }}
-            />
-            {f.id} · {f.label}
-          </span>
-        ))}
+            >
+              <span
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  background: legendColor,
+                  borderRadius: "2px",
+                  display: "inline-block",
+                }}
+              />
+              {f.id} · {f.label}
+            </span>
+          );
+        })}
       </div>
     </section>
   );

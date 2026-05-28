@@ -133,7 +133,7 @@ export function CompoundHero({
           >
             <strong>Compound risk</strong> is the structural condition where a{" "}
             <em>single state</em> is positioned high on{" "}
-            <em>multiple, semantically-distinct</em> crisis recipes at the same time —
+            <em>multiple, semantically-distinct</em> crisis recipes at the same time:
             civil-war shape <em>and</em> economic-recession shape <em>and</em>{" "}
             mass-protest shape, layered on the same body politic. Each recipe scores the
             country independently against its own canonical pre-event trajectory; the

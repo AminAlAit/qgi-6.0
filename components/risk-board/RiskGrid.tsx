@@ -25,7 +25,7 @@ import {
   type RecipeRow,
   type BoardCell,
 } from "@/lib/te-mock/risk-board-data";
-import { STATUS_META } from "@/components/precedents-v2/StatusChip";
+import { statusLabel } from "@/lib/te-mock/country-families";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 
 export function RiskGrid({ recipes }: { recipes: TrackerRecipe[] }) {
@@ -114,7 +114,9 @@ function RecipeGridRow({
   isLast: boolean;
 }) {
   const isQueued = row.display_state === "queued";
-  const statusMeta = STATUS_META[recipe.status];
+  const sl = statusLabel(recipe.status);
+  const statusColor =
+    sl.tone === "deployed" ? "#3FBF8F" : sl.tone === "failed" ? "#E68F29" : "#7A8FA0";
 
   // Coverage caption — only on scored rows, per R&D reply §Q7. Honest framing:
   // a country lacking coverage is "not scored," never "low score."
@@ -180,12 +182,12 @@ function RecipeGridRow({
                 style={{
                   fontSize: "9.5px",
                   letterSpacing: "0.3px",
-                  color: statusMeta.color,
+                  color: statusColor,
                   fontFamily: "ui-monospace, monospace",
                   marginTop: "2px",
                 }}
               >
-                {statusMeta.label}
+                {sl.label}
               </div>
             </div>
           </div>
@@ -258,7 +260,7 @@ function HeatCell({
           justifyContent: "space-between",
           cursor: "default",
         }}
-        title="No walk yet — recipe queued for next vintage."
+        title="Not yet scored: recipe queued for next vintage."
       >
         <div
           style={{
@@ -268,7 +270,7 @@ function HeatCell({
             lineHeight: 1.2,
           }}
         >
-          no walk yet
+          not yet scored
         </div>
         <span
           style={{
@@ -279,7 +281,7 @@ function HeatCell({
             lineHeight: 1,
           }}
         >
-          —
+          –
         </span>
       </div>
     );
@@ -303,7 +305,7 @@ function HeatCell({
           justifyContent: "space-between",
           cursor: "help",
         }}
-        title={`${cell.country} · not scored — country lacks indicator coverage for this recipe. NOT the same as a low score.`}
+        title={`${cell.country} · not scored: country lacks indicator coverage for this recipe, not the same as a low score.`}
       >
         <div
           style={{

@@ -3,17 +3,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { ListFilter, Layers } from "lucide-react";
+import { L1_FAMILIES as L1_FAMILY_MAP, familyColor } from "@/lib/te-mock/l1-families";
 
-const L1_FAMILIES: Array<{ id: string; label: string; color: string }> = [
-  { id: "A", label: "Political Power", color: "#7B5EE6" },
-  { id: "B", label: "Conflict & Violence", color: "#E64545" },
-  { id: "C", label: "Governance & Rights", color: "#E68F29" },
-  { id: "D", label: "Economic Stress", color: "#3FA9F5" },
-  { id: "E", label: "Social Mobilization", color: "#3FBF8F" },
-  { id: "F", label: "Diplomacy & Geopolitics", color: "#9F7AEA" },
-  { id: "G", label: "Humanitarian Crisis", color: "#E94989" },
-  { id: "H", label: "Structural Trends", color: "#7A8FA0" },
-];
+const L1_FAMILIES = Object.values(L1_FAMILY_MAP).map((f) => ({
+  id: f.id,
+  label: f.label,
+  color: familyColor(f.id),
+}));
 
 interface Props {
   minThreshold: number;

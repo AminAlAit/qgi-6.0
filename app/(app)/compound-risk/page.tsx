@@ -58,21 +58,21 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Mockup banner */}
+        {/* Vintage chip */}
         <div
           style={{
             display: "inline-block",
             padding: "5px 12px",
-            border: "1px solid var(--qgi-accent)",
-            color: "var(--qgi-accent)",
+            border: "1px solid var(--qgi-border)",
+            color: "var(--qgi-text-dim)",
             borderRadius: "4px",
             fontSize: "11px",
-            letterSpacing: "1.5px",
+            letterSpacing: "1px",
             marginBottom: "16px",
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          MOCKUP · /compound-risk · local only
+          Data as of {COMPOUND_VINTAGE}
         </div>
 
         {/* Hero */}
@@ -83,51 +83,60 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
           vintage={COMPOUND_VINTAGE}
         />
 
-        {/* M8-R5 honesty banner */}
+        {/* How to read this board */}
         <div
           style={{
             marginTop: "20px",
-            padding: "14px 16px",
-            border: "1px solid var(--qgi-border)",
-            borderLeft: "3px solid #E68F29",
-            background: "rgba(230,143,41,0.05)",
+            padding: "16px 18px",
+            border: "1px solid #5B7E99",
+            borderLeft: "3px solid #5B7E99",
+            background: "rgba(91,126,153,0.06)",
             borderRadius: "6px",
           }}
         >
           <div
             style={{
-              fontSize: "10px",
-              letterSpacing: "1.2px",
-              color: "#E68F29",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "6px",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#5B7E99",
+              marginBottom: "10px",
+              letterSpacing: "0.3px",
             }}
           >
-            HONESTY-REGIME DISCLOSURE · M8-R5 · COMPOUND READ-OFF
+            How to read this board
           </div>
-          <p
+          <ol
             style={{
-              fontSize: "13px",
-              lineHeight: 1.6,
-              color: "var(--qgi-text)",
               margin: 0,
+              padding: "0 0 0 18px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "6px",
             }}
           >
-            The <strong>compound score</strong> is a transparent stacking heuristic — the
-            sum of a country&apos;s top-decile margins across the recipes it currently
-            lights up on. It is <strong>not a joint probability</strong>. A country lit on
-            three recipes is <em>not</em> &quot;60% likely to experience all three&quot;;
-            the score is a positioning aggregate over three independent{" "}
-            <strong>discrimination ranks</strong>, not a multiplied likelihood. Only{" "}
-            <code style={{ fontFamily: "ui-monospace, monospace" }}>
-              foreign_intervention
-            </code>{" "}
-            has even a candidate graduation today (currently re-validating after a
-            coverage-fix); the rest are <em>walked-failed</em> or <em>queued</em>. With
-            one graduated recipe in the program, the compound view is{" "}
-            <strong>illustrative</strong>; it becomes meaningful as more recipes graduate
-            across quarterly re-walks.
-          </p>
+            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
+              The <strong>compound score</strong> is a relative stacking of high rankings
+              across this country&apos;s lit recipes, not a probability.
+            </li>
+            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
+              A country lit on three recipes is <em>not</em> &quot;more likely to
+              experience all three&quot;. The score aggregates independent{" "}
+              <strong>discrimination ranks</strong>, not multiplied likelihoods.
+            </li>
+            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
+              Only{" "}
+              <code style={{ fontFamily: "ui-monospace, monospace" }}>
+                foreign_intervention
+              </code>{" "}
+              has a candidate deployment today (currently re-validating after a coverage
+              fix). The rest are either tested without holding up, or not yet tested. With
+              one near-deployed recipe, this view is <strong>illustrative</strong>.
+            </li>
+            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
+              The view becomes meaningful as more recipes are validated and deployed
+              across quarterly reviews.
+            </li>
+          </ol>
         </div>
 
         {/* Filters */}
@@ -200,9 +209,9 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
             }}
           >
             Analyst-style structural reads on two countries where multiple recipes
-            co-light. These are <strong>mock narratives for design preview</strong> — not
-            published QGI assessments. They will be replaced by curated, dated briefs once
-            the recipe fleet graduates a second validated recipe.
+            co-light. These are <strong>mock narratives for design preview only</strong>,
+            not published QGI assessments. They will be replaced by curated, dated briefs
+            once the recipe fleet deploys a second validated recipe.
           </p>
           <div
             style={{
@@ -234,12 +243,8 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
             letterSpacing: "0.3px",
           }}
         >
-          <span>
-            Data vintage · {COMPOUND_VINTAGE} · all values are mockup placeholders
-          </span>
-          <span>
-            Compound score = sum of top-decile margins · stacking heuristic only
-          </span>
+          <span>Compound Risk · data as of {COMPOUND_VINTAGE}</span>
+          <span>Compound score: stacked rank, not a probability</span>
         </div>
       </div>
     </div>

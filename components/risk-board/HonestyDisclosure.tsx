@@ -1,17 +1,16 @@
 /**
- * Honesty-regime disclosure block (M8-R5). Surfaces the discrimination-vs-
- * probability contract directly on the page. Lifted in tone from the
- * §11 calibration block in RecipeDetail.tsx so the two pages feel cousin.
+ * Disclosure panel. Surfaces the discrimination-vs-probability contract
+ * directly on the page. Calm slate-blue tone per V4.1 bar.
  */
 export function HonestyDisclosure() {
   return (
     <div
       style={{
         padding: "14px 16px",
-        border: "1px solid var(--qgi-border)",
-        background: "rgba(255,255,255,0.02)",
+        border: "1px solid #3A5A70",
+        background: "rgba(91,126,153,0.08)",
         borderRadius: "6px",
-        borderLeft: "3px solid #E68F29",
+        borderLeft: "3px solid #5B7E99",
         marginBottom: "24px",
       }}
     >
@@ -19,29 +18,38 @@ export function HonestyDisclosure() {
         style={{
           fontSize: "10px",
           letterSpacing: "1.2px",
-          color: "#E68F29",
+          color: "#5B7E99",
           fontFamily: "ui-monospace, monospace",
-          marginBottom: "6px",
+          marginBottom: "8px",
+          textTransform: "uppercase",
         }}
       >
-        HONESTY-REGIME DISCLOSURE · M8-R5
+        How to read this board
       </div>
-      <p
+      <ol
         style={{
           fontSize: "13px",
           color: "var(--qgi-text)",
-          lineHeight: 1.6,
+          lineHeight: 1.65,
           margin: 0,
+          paddingLeft: "18px",
         }}
       >
-        Scores on this board are <strong>discrimination ranks, not probabilities</strong>.
-        A country positioned at 80 is not &quot;80% likely&quot; to experience the event —
-        it sits high in the distribution of countries whose recent movement shape
-        resembles the recipe. Movements over time describe{" "}
-        <strong>rank shifts and decile movement</strong>, never forward odds. No row makes
-        a forward-dated claim; the Trajectory Engine measures present-tense resemblance
-        only.
-      </p>
+        <li>
+          Scores are <strong>discrimination ranks, not probabilities</strong>. A country
+          at 80 is not &ldquo;80% likely&rdquo; to experience the event; it sits high in
+          the distribution of countries whose recent movement shape resembles this recipe.
+        </li>
+        <li>
+          Movements over time describe <strong>rank shifts</strong>, not changes in
+          forward odds.
+        </li>
+        <li>No row on this board makes a forward-dated claim.</li>
+        <li>
+          Recipes with status &ldquo;Not yet tested&rdquo; appear as placeholders; scores
+          will appear once their evidence base is sufficient.
+        </li>
+      </ol>
     </div>
   );
 }

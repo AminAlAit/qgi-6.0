@@ -1,12 +1,12 @@
 /**
- * "What just shifted" — recent rank-shift events across the board.
+ * "What just shifted" : recent rank-shift events across the board.
  *
- * Per the M8-R5 honesty regime, every movement is framed as a rank shift
+ * Per the honesty contract, every movement is framed as a rank shift
  * / decile movement, NEVER as a probability change.
  *
  * 2026-05-26 schema-align (R&D reply qgi-docs #169 §Q3): movements are
  * vintage-over-vintage (~quarterly), not 30-day. Scores only change when
- * a recipe is re-walked/re-scored, so a 30-day window would almost
+ * a recipe is re-scored on a new data vintage, so a 30-day window would almost
  * always be empty. Field is `delta_quarters` + `vs_vintage`.
  *
  * At vintage 1, the feed is empty by construction (no prior bake to
@@ -214,7 +214,7 @@ function MovementRow({
         </span>
       </div>
 
-      {/* Vintage chip — "since 2026-Q2" verbatim, more honest than a relative count */}
+      {/* Vintage chip : "since 2026-Q2" verbatim, more honest than a relative count */}
       <div
         style={{
           display: "flex",

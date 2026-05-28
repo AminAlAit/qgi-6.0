@@ -1,26 +1,21 @@
-import { Info, GraduationCap, Target, ShieldAlert } from "lucide-react";
+/**
+ * ReadThisPanel — V4.1 "How to read this tracker" panel.
+ *
+ * Replaces the old M8-R5 alarm box with a calm slate-blue panel that carries
+ * the same substantive truths in plain language. No internal regime branding,
+ * no LOCO acronym, no persona credits.
+ *
+ * Design idiom mirrors HowToReadPanel in components/countries-v4-1/ReadMePanels.tsx.
+ */
+import { Info } from "lucide-react";
 
-const BULLETS: Array<{ Icon: typeof Info; title: string; body: string }> = [
-  {
-    Icon: Target,
-    title: "LOCO floor",
-    body: "Leave-one-cohort-out AUC must clear 0.7986 — measured across six geographic cohorts, never on the country being scored.",
-  },
-  {
-    Icon: GraduationCap,
-    title: "V1 separation",
-    body: "Pre-event country-years must score visibly higher than non-event years (separation gap, in percentage points).",
-  },
-  {
-    Icon: Info,
-    title: "Calibration ECE",
-    body: "Probabilities are calibrated only if expected calibration error stays under 0.08. Foreign Intervention failed this in walk-3 — so we show ranks, not percentages.",
-  },
-  {
-    Icon: ShieldAlert,
-    title: "Coverage + chance gate",
-    body: "≥50% positive survival and ≥30 positives after walk filters, beating a naive baseline. The vacated recipe failed this in audit — added 2026-05-25.",
-  },
+const CALM_SLATE_BLUE = "#5B7E99";
+
+const STATEMENTS: string[] = [
+  "Scores rank how closely a recipe's signals resemble historical pre-event conditions. A high discrimination score means the recipe separates pre-event years from non-event years better than chance: it does not mean any country has a specific probability of an event.",
+  "A recipe is considered deployed only after it clears every pre-registered validation checkpoint across held-out groups of cases. Nothing on this tracker is a forecast.",
+  "Corrections are surfaced here on purpose. When a prior result does not survive audit, we withdraw it publicly and log the reason.",
+  "Most recipes do not hold up. The tracker showing that clearly is the transparency signal, not a sign of failure.",
 ];
 
 export function ReadThisPanel() {
@@ -29,7 +24,7 @@ export function ReadThisPanel() {
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",
-        borderLeft: "3px solid var(--qgi-accent)",
+        borderLeft: `3px solid ${CALM_SLATE_BLUE}`,
         borderRadius: "6px",
         padding: "16px",
       }}
@@ -39,36 +34,25 @@ export function ReadThisPanel() {
           display: "flex",
           alignItems: "center",
           gap: "8px",
-          marginBottom: "10px",
+          marginBottom: "12px",
         }}
       >
-        <Info size={14} color="var(--qgi-accent)" />
+        <Info size={14} color={CALM_SLATE_BLUE} />
         <h2
           style={{
             fontSize: "10.5px",
             letterSpacing: "1.5px",
             textTransform: "uppercase",
-            color: "var(--qgi-accent)",
+            color: CALM_SLATE_BLUE,
             fontFamily: "ui-monospace, monospace",
             margin: 0,
             fontWeight: 700,
           }}
         >
-          How to read this
+          How to read this tracker
         </h2>
       </header>
-      <p
-        style={{
-          fontSize: "12px",
-          lineHeight: 1.55,
-          color: "var(--qgi-text-muted)",
-          margin: "0 0 12px",
-        }}
-      >
-        Every recipe walks the same pre-registered gates (F-ML-1). Most fail. That&apos;s
-        a feature, not a bug.
-      </p>
-      <ul
+      <ol
         style={{
           listStyle: "none",
           padding: 0,
@@ -78,51 +62,32 @@ export function ReadThisPanel() {
           gap: "10px",
         }}
       >
-        {BULLETS.map((b) => (
-          <li
-            key={b.title}
-            style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}
-          >
+        {STATEMENTS.map((s, i) => (
+          <li key={i} style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
             <span
               style={{
-                width: "22px",
-                height: "22px",
+                color: CALM_SLATE_BLUE,
+                fontFamily: "ui-monospace, monospace",
+                fontSize: "12px",
+                lineHeight: 1.6,
                 flexShrink: 0,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                background: "var(--qgi-bg)",
-                border: "1px solid var(--qgi-border)",
-                borderRadius: "4px",
-                color: "var(--qgi-accent)",
+                fontWeight: 600,
               }}
             >
-              <b.Icon size={13} strokeWidth={1.8} />
+              {String(i + 1).padStart(2, "0")}
             </span>
-            <div>
-              <div
-                style={{
-                  fontSize: "11.5px",
-                  fontWeight: 600,
-                  color: "var(--qgi-text)",
-                  marginBottom: "2px",
-                }}
-              >
-                {b.title}
-              </div>
-              <div
-                style={{
-                  fontSize: "11.5px",
-                  lineHeight: 1.5,
-                  color: "var(--qgi-text-muted)",
-                }}
-              >
-                {b.body}
-              </div>
-            </div>
+            <span
+              style={{
+                fontSize: "12px",
+                lineHeight: 1.55,
+                color: "var(--qgi-text-muted)",
+              }}
+            >
+              {s}
+            </span>
           </li>
         ))}
-      </ul>
+      </ol>
     </section>
   );
 }

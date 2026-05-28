@@ -6,10 +6,10 @@
  * Pure shape-matching across the recipe library."
  *
  * Maps to Capability #12 (Nearest historical analog) in the TE capability
- * ledger — SHAP-weighted cosine across the 4-indicator trajectory, k=3,
+ * ledger: SHAP-weighted cosine across the 4-indicator trajectory, k=3,
  * self-excluded, regional-clustering caveat applied.
  *
- * Honesty regime (M8-R5 binding):
+ * Honesty constraints:
  * - Matches are SIMILARITY, never forward predictions.
  * - "What happened next" is HISTORICAL FACT about the analog country.
  * - All non-graduated recipes carry visible tier chips.
@@ -48,31 +48,17 @@ export default function NearestAnalogPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "24px" }}>
-        {/* Mockup banner */}
+        {/* Vintage stamp */}
         <div
           style={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             gap: "12px",
             marginBottom: "20px",
             flexWrap: "wrap",
           }}
         >
-          <span
-            style={{
-              display: "inline-block",
-              padding: "5px 12px",
-              border: "1px solid var(--qgi-accent)",
-              color: "var(--qgi-accent)",
-              borderRadius: "4px",
-              fontSize: "11px",
-              letterSpacing: "1.5px",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            MOCKUP · /nearest-analog · local only
-          </span>
           <span
             style={{
               fontSize: "10px",
@@ -105,7 +91,7 @@ export default function NearestAnalogPage() {
             }}
           >
             <Telescope size={13} strokeWidth={2} />
-            Trajectory Engine · Capability 12
+            Nearest Analog
           </div>
           <h1
             style={{
@@ -127,7 +113,7 @@ export default function NearestAnalogPage() {
               margin: 0,
             }}
           >
-            Pick a country today, the engine shows you the closest historical match —
+            Pick a country today, the engine shows you the closest historical match:
             &ldquo;this looks most like Tunisia 2008 + Argentina 2015.&rdquo; Pure
             shape-matching across the 71-recipe library. A <strong>similarity</strong>{" "}
             statement, not a forecast: the historical outcome is what happened to the
@@ -135,28 +121,28 @@ export default function NearestAnalogPage() {
           </p>
         </header>
 
-        {/* M8-R5 disclosure banner */}
+        {/* How to read this — disclosure */}
         <div
           style={{
             padding: "14px 18px",
-            background: "rgba(230,143,41,0.08)",
-            border: "1px solid #E68F29",
+            background: "rgba(91,126,153,0.08)",
+            border: "1px solid #5B7E99",
             borderRadius: "8px",
             marginBottom: "24px",
-            borderLeft: "3px solid #E68F29",
+            borderLeft: "3px solid #5B7E99",
           }}
         >
           <div
             style={{
               fontSize: "10px",
               letterSpacing: "1.2px",
-              color: "#E68F29",
+              color: "#5B7E99",
               fontFamily: "ui-monospace, monospace",
               marginBottom: "6px",
               fontWeight: 600,
             }}
           >
-            HONESTY-REGIME DISCLOSURE · M8-R5 BINDING
+            HOW TO READ THIS
           </div>
           <p
             style={{
@@ -167,10 +153,9 @@ export default function NearestAnalogPage() {
             }}
           >
             Analog matches are{" "}
-            <strong>shape similarities, NOT forward predictions</strong>. &ldquo;Egypt
-            today looks like Tunisia 2008&rdquo; means the indicator trajectories rhyme —
-            it does NOT mean Egypt will follow Tunisia&apos;s outcome. No QGI recipe is
-            currently 🟢 Validated; the demo render uses{" "}
+            <strong>shape similarities, not forward predictions</strong>. &ldquo;Egypt
+            today looks like Tunisia 2008&rdquo; means the indicator trajectories rhyme;
+            it does not mean Egypt will follow Tunisia&apos;s outcome. The demo renders{" "}
             <Link
               href={"/precedents-v2/foreign_intervention" as Route}
               style={{
@@ -181,9 +166,9 @@ export default function NearestAnalogPage() {
             >
               foreign_intervention
             </Link>{" "}
-            as the primary recipe (post-vacate, walked-failed), with other walked-failed
-            and queued recipes contributing as secondary shapes. Tier chips show this on
-            every recipe surface.
+            as the primary recipe, with other tested and queued recipes contributing as
+            secondary shapes. Status chips on every recipe surface show the validation
+            tier.
           </p>
         </div>
 
@@ -203,22 +188,6 @@ export default function NearestAnalogPage() {
             <MethodologyBox />
           </div>
         </div>
-
-        {/* Persona signature */}
-        <footer
-          style={{
-            marginTop: "48px",
-            paddingTop: "20px",
-            borderTop: "1px solid var(--qgi-border)",
-            fontSize: "11px",
-            color: "var(--qgi-text-dim)",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.4px",
-            textAlign: "right",
-          }}
-        >
-          Designed by Daniyar Bekmurat — Comparative Historical Pattern Matching
-        </footer>
       </div>
     </div>
   );
