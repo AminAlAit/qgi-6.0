@@ -18,7 +18,10 @@ export type RouteKey =
   | "risk-board"
   | "compound-risk"
   | "nearest-analog"
-  | "recipe-tracker";
+  | "recipe-tracker"
+  | "compare"
+  | "patterns-v4"
+  | "patterns-v4-detail";
 
 export interface RuleEntry {
   /** Short title, sentence case, ~5 words. */
@@ -206,6 +209,72 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       {
         title: "Nothing here is a forecast",
         body: "Finding that Country A resembles Country B at a given historical moment does not mean Country A will replicate Country B's subsequent trajectory. Analogy is a structural lens, not a forward projection.",
+      },
+    ],
+  },
+
+  compare: {
+    lede: "Four rules for reading a side-by-side comparison.",
+    rules: [
+      {
+        title: "Scores are ranks, not probabilities",
+        body: "Every cell on this page is a resemblance rank showing how closely each country's recent trajectory matches a recipe today. A 30-point gap between two countries on a recipe is a gap in rank position, not a gap in event probability.",
+      },
+      {
+        title: "Comparison is structural, not relative",
+        body: "Placing two countries next to each other on the same recipes does not declare a winner or rank one as more at risk than the other. Both countries sit on the same distribution; the page shows you where each one currently sits.",
+      },
+      {
+        title: "Status comes from the tracker",
+        body: "The status chip on each recipe row (deployed, tested, queued, withdrawn) is drawn from the Recipe Tracker, which is the source of truth. The comparison view reflects those statuses; it does not set them.",
+      },
+      {
+        title: "Nothing here is a forecast",
+        body: "A side-by-side comparison describes how two countries' structural shapes look today. It does not predict which country will experience a specific event, nor which one will experience it first.",
+      },
+    ],
+  },
+
+  "patterns-v4": {
+    lede: "Four rules for reading the patterns catalogue.",
+    rules: [
+      {
+        title: "Strength is a rank, not a probability",
+        body: "Every pair strength on this page is a 0-to-100 rank showing how tightly two countries' indicator trajectories rhymed over a shared historical window. A pair at 91 is at the top of the distribution, not 91 percent likely to do anything.",
+      },
+      {
+        title: "Both countries' pasts, not either's future",
+        body: "A pattern describes the historical record. Argentina and Russia running together through the 1990s is a fact about those decades. It does not say that Argentina will follow Russia next, or that Russia will follow Argentina next. The rhyme is symmetric and historical.",
+      },
+      {
+        title: "Corrections are published on purpose",
+        body: "When a pair's window or strength is revised after a fresh data vintage, the change appears here. A pair sliding out of the top 30 between vintages is the methodology working as designed.",
+      },
+      {
+        title: "Nothing here is a forecast",
+        body: "Pair-rhymes are a historical-shape lens. They describe how two countries' stories ran together, not how either country's story will unfold next. Read them as analogies, not as predictions.",
+      },
+    ],
+  },
+
+  "patterns-v4-detail": {
+    lede: "Four rules for reading a single pair of countries' shared past.",
+    rules: [
+      {
+        title: "Scores are ranks, not probabilities",
+        body: "The strength of this pair, the indicator contribution bars, and the catalogue rank shown on this page are all resemblance ranks. They describe how closely two countries' historical trajectories ran together. They are not probabilities of any current or future event for either country.",
+      },
+      {
+        title: "Both countries' pasts, not either's future",
+        body: "The page describes a shared historical window. Even when one country's indicators crossed a threshold years before the other country's did, that fact is historical. It is not a signal that the second country will repeat the first country's later trajectory. The page treats the two countries symmetrically for that reason.",
+      },
+      {
+        title: "Per-indicator timestamps are facts, pair-level direction is not",
+        body: "Inside the indicators panel you will see two years per indicator: the historical year each country crossed a notable threshold on that indicator. Those two years are facts. The page does not combine them into a single direction for the whole pair, because doing so would imply a forecast the methodology cannot support.",
+      },
+      {
+        title: "Nothing here is a forecast",
+        body: "Finding that two countries resembled each other across a historical window does not tell you that either country will resemble its past, or the other country's past, going forward. To read either country's present, follow the country-profile link at the bottom of the page. The two countries' present-day stories are not narrated on this page.",
       },
     ],
   },

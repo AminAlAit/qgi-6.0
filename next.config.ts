@@ -175,24 +175,13 @@ const nextConfig: NextConfig = {
         destination: "/recipes-v4.1/:path*",
         permanent: true,
       },
-      // 2026-05-28 — Patterns V4 removed; "pattern" returns to its SCDI meaning
-      // at /patterns. The TE canonical-movement-shape concept is now "Trajectory"
-      // under the recipe. Map the old local mockup URLs to their new homes.
-      {
-        source: "/patterns-v4/ranking",
-        destination: "/recipes-v4.1/trajectory-ranking",
-        permanent: true,
-      },
-      {
-        source: "/patterns-v4/:slug",
-        destination: "/recipes-v4.1/:slug/trajectory",
-        permanent: true,
-      },
-      {
-        source: "/patterns-v4",
-        destination: "/recipes-v4.1",
-        permanent: true,
-      },
+      // 2026-05-28 (UNDONE) — Patterns V4 was retired but is now reinstated
+      // as the V4.1 standard treatment of the classic-cascade pattern surface
+      // (founder ratified after the Talia/Sofia/Marcus council pass).
+      // /patterns-v4, /patterns-v4/:slug, and the inline ranking band all
+      // live at the new route. The three legacy redirects below have been
+      // intentionally removed; if a redirect is needed later, it should
+      // target the new /patterns-v4 routes, not redirect away from them.
       // /recipes/foreign_intervention was live briefly (2026-05-22 to 2026-05-23)
       // before the recipes route was torn down in favor of a blog graduation
       // article. Preserve any inbound bookmark or link.

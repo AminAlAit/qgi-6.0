@@ -67,7 +67,15 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 textDecoration: "none",
                 color: "inherit",
                 display: "grid",
-                gridTemplateColumns: "minmax(0, 1.4fr) minmax(120px, 1fr) auto auto",
+                // Fixed widths on the trailing columns so the bar column
+                // starts at the same x-position on every row. Previously
+                // both trailing columns were `auto`, which let the status
+                // chip's variable width ("Not yet tested" vs "Tested, did
+                // not hold up") push the fr-based columns sideways and
+                // visually misalign the bars. 36px = 2-3 digit score;
+                // 190px holds the longest statusLabel string with the
+                // chip right-aligned inside it.
+                gridTemplateColumns: "minmax(0, 1.4fr) minmax(120px, 1fr) 36px 190px",
                 alignItems: "center",
                 gap: "12px",
                 padding: "8px 8px",
@@ -146,7 +154,9 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 {r.score.toFixed(0)}
               </span>
 
-              {/* Honest status chip */}
+              {/* Honest status chip — right-aligned inside the fixed
+                  190px column so every row's chip ends at the same edge,
+                  giving the row a true table-like alignment. */}
               <span
                 style={{
                   fontSize: "9.5px",
@@ -155,6 +165,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                   fontFamily: "ui-monospace, monospace",
                   letterSpacing: "0.2px",
                   whiteSpace: "nowrap",
+                  justifySelf: "end",
                   ...statusChipStyle(tone),
                 }}
               >

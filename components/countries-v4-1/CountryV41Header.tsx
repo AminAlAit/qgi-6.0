@@ -124,32 +124,39 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
               gap: "8px",
               padding: "7px 12px",
               background:
-                "linear-gradient(135deg, rgba(167,139,250,0.18) 0%, rgba(91,126,153,0.18) 100%)",
-              border: "1px solid rgba(167,139,250,0.45)",
+                "linear-gradient(135deg, rgba(56,189,248,0.18) 0%, rgba(56,189,248,0.05) 100%)",
+              border: "1px solid rgba(56,189,248,0.55)",
               borderRadius: "5px",
               color: "var(--qgi-text)",
               fontSize: "11.5px",
               fontWeight: 600,
-              fontFamily: "ui-monospace, monospace",
               letterSpacing: "0.3px",
               cursor: "not-allowed",
               opacity: 0.85,
               whiteSpace: "nowrap",
             }}
           >
-            <Sparkles size={13} strokeWidth={1.8} aria-hidden="true" color="#a78bfa" />
-            <span>Generate Country Report</span>
+            <Sparkles
+              size={13}
+              strokeWidth={1.8}
+              aria-hidden="true"
+              color="var(--qgi-accent)"
+            />
+            <span style={{ fontFamily: "var(--font-qg-brand)" }}>
+              Generate Country Report
+            </span>
             <span
               style={{
                 fontSize: "9px",
                 padding: "1px 6px",
-                background: "rgba(167,139,250,0.25)",
-                border: "1px solid rgba(167,139,250,0.55)",
-                color: "#a78bfa",
+                background: "rgba(56,189,248,0.25)",
+                border: "1px solid rgba(56,189,248,0.55)",
+                color: "var(--qgi-accent)",
                 borderRadius: "3px",
                 letterSpacing: "0.5px",
                 textTransform: "uppercase",
                 fontWeight: 700,
+                fontFamily: "var(--font-qg-brand)",
               }}
             >
               Soon

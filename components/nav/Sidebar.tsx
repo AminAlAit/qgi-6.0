@@ -4,6 +4,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { Route } from "next";
+import {
+  LayoutDashboard,
+  LayoutPanelTop,
+  ChefHat,
+  ScrollText,
+  Globe,
+  Globe2,
+  Gauge,
+  Layers,
+  Columns2,
+  Telescope,
+  Spline,
+  ListChecks,
+} from "lucide-react";
 
 // Navigation items.
 // History:
@@ -273,6 +287,8 @@ interface NavItem {
   label: string;
   href: Route;
   badge: NavBadge;
+  /** Optional per-item icon rendered next to the label inside a group. */
+  icon?: React.ReactNode;
 }
 
 interface NavGroup {
@@ -357,16 +373,78 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     label: "TE Mockup (local)",
     icon: <IconBeaker />,
     items: [
-      { label: "Dashboard V4", href: "/dashboard-v4" as Route, badge: "PREVIEW" },
-      { label: "Dashboard V4.1", href: "/dashboard-v4.1" as Route, badge: "PREVIEW" },
-      { label: "Recipes V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
-      { label: "Recipes V4.1", href: "/recipes-v4.1" as Route, badge: "PREVIEW" },
-      { label: "Countries V4", href: "/countries-v4" as Route, badge: "PREVIEW" },
-      { label: "Countries V4.1", href: "/countries-v4.1" as Route, badge: "PREVIEW" },
-      { label: "Live Risk Board", href: "/risk-board" as Route, badge: "PREVIEW" },
-      { label: "Compound Risk", href: "/compound-risk" as Route, badge: "PREVIEW" },
-      { label: "Nearest-Analog", href: "/nearest-analog" as Route, badge: "PREVIEW" },
-      { label: "Recipe Tracker", href: "/recipe-tracker" as Route, badge: "PREVIEW" },
+      {
+        label: "Dashboard V4",
+        href: "/dashboard-v4" as Route,
+        badge: "PREVIEW",
+        icon: <LayoutDashboard size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Dashboard V4.1",
+        href: "/dashboard-v4.1" as Route,
+        badge: "PREVIEW",
+        icon: <LayoutPanelTop size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Recipes V4",
+        href: "/precedents-v2" as Route,
+        badge: "PREVIEW",
+        icon: <ChefHat size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Recipes V4.1",
+        href: "/recipes-v4.1" as Route,
+        badge: "PREVIEW",
+        icon: <ScrollText size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Countries V4",
+        href: "/countries-v4" as Route,
+        badge: "PREVIEW",
+        icon: <Globe size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Countries V4.1",
+        href: "/countries-v4.1" as Route,
+        badge: "PREVIEW",
+        icon: <Globe2 size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Live Risk Board",
+        href: "/risk-board" as Route,
+        badge: "PREVIEW",
+        icon: <Gauge size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Compound Risk",
+        href: "/compound-risk" as Route,
+        badge: "PREVIEW",
+        icon: <Layers size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Compare",
+        href: "/compare" as Route,
+        badge: "PREVIEW",
+        icon: <Columns2 size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Nearest-Analog",
+        href: "/nearest-analog" as Route,
+        badge: "PREVIEW",
+        icon: <Telescope size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Patterns V4",
+        href: "/patterns-v4" as Route,
+        badge: "PREVIEW",
+        icon: <Spline size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
+      {
+        label: "Recipe Tracker",
+        href: "/recipe-tracker" as Route,
+        badge: "PREVIEW",
+        icon: <ListChecks size={14} strokeWidth={1.6} aria-hidden="true" />,
+      },
     ],
   },
 ];
@@ -531,8 +609,13 @@ export function Sidebar() {
           title="Go to Dashboard (command center)"
         >
           <span
-            className="font-data text-xs tracking-[0.25em] font-semibold"
-            style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+            className="text-xs tracking-[0.25em]"
+            style={{
+              color: "var(--qgi-accent)",
+              marginRight: "-0.25em",
+              fontFamily: "var(--font-qg-brand)",
+              fontWeight: 700,
+            }}
           >
             QG
           </span>
@@ -699,7 +782,7 @@ function NavGroupSection({
           {group.label}
         </span>
       </div>
-      {/* Indented item rows — no per-item icon (group icon does the job). */}
+      {/* Indented item rows — per-item icon rendered when present. */}
       <div className="flex flex-col gap-0.5">
         {group.items.map((item) => {
           const active = isActiveRoute(pathname, item.href);
@@ -714,6 +797,11 @@ function NavGroupSection({
                 backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
               }}
             >
+              {item.icon && (
+                <span className="flex items-center justify-center w-[14px] h-[14px] shrink-0">
+                  {item.icon}
+                </span>
+              )}
               <span className="flex-1 truncate">{item.label}</span>
             </Link>
           );
