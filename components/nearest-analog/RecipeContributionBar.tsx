@@ -16,6 +16,8 @@
 import type { RecipeContribution } from "@/lib/te-mock/nearest-analog-data";
 import { statusLabel } from "@/lib/te-mock/country-families";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { getRecipe } from "@/lib/te-mock/recipes";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export interface RecipeContributionBarProps {
   contributions: RecipeContribution[];
@@ -49,6 +51,12 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
       {sorted.map((c) => {
         const badge = badgeFor(c.status);
         const widthPct = (c.contribution_pct / max) * 100;
+        // P2-1: derive canonical color from recipe catalog, not hardcoded data field.
+        const recipe = getRecipe(c.recipe_id);
+        const canonicalColor = familyColor(
+          recipe?.l1_id ?? "",
+          recipe?.l1_color ?? c.l1_color
+        );
         return (
           <div
             key={c.recipe_id}
@@ -69,8 +77,8 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
                 left: 0,
                 bottom: 0,
                 width: `${widthPct}%`,
-                background: `linear-gradient(to right, ${c.l1_color}22, ${c.l1_color}05)`,
-                borderRight: `1px solid ${c.l1_color}33`,
+                background: `linear-gradient(to right, ${canonicalColor}22, ${canonicalColor}05)`,
+                borderRight: `1px solid ${canonicalColor}33`,
               }}
             />
             <div
@@ -88,7 +96,7 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: c.l1_color,
+                  color: canonicalColor,
                   flexShrink: 0,
                 }}
               >
@@ -132,7 +140,7 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
                 style={{
                   fontSize: "16px",
                   fontWeight: 600,
-                  color: c.l1_color,
+                  color: canonicalColor,
                   fontFamily: "ui-monospace, monospace",
                   flexShrink: 0,
                 }}

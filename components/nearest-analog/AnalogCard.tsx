@@ -22,12 +22,46 @@ import { TrajectorySparkline } from "./TrajectorySparkline";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
+import { familyColor, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
+
+// P2-2: lightweight region lookup covering both current-country subjects and
+// historical analogs that appear in nearest-analog-data.ts. Used to detect
+// cross-region matches without needing a prop from AnalogResults.
+const COUNTRY_REGIONS: Record<string, string> = {
+  // Current countries (subjects)
+  Egypt: "MENA",
+  Lebanon: "MENA",
+  Pakistan: "South Asia",
+  Türkiye: "MENA",
+  Venezuela: "Latin America",
+  Iran: "MENA",
+  Myanmar: "Southeast Asia",
+  Ethiopia: "Sub-Saharan Africa",
+  Tunisia: "MENA",
+  Nigeria: "Sub-Saharan Africa",
+  // Historical analogs
+  Algeria: "MENA",
+  Syria: "MENA",
+  Sudan: "Sub-Saharan Africa",
+  Eritrea: "Sub-Saharan Africa",
+  Zimbabwe: "Sub-Saharan Africa",
+  Argentina: "Latin America",
+  Greece: "Europe",
+  Hungary: "Europe",
+  Russia: "Europe",
+  Cuba: "Latin America",
+  Bangladesh: "South Asia",
+  Indonesia: "Southeast Asia",
+  Belarus: "Europe",
+};
 
 export interface AnalogCardProps {
   rank: number; // 1, 2, 3
   analog: HistoricalAnalog;
   currentCountryName: string;
   currentTrajectory: number[];
+  /** Region of the subject country — used to detect cross-region matches. */
+  subjectRegion?: string;
 }
 
 export function AnalogCard({
@@ -35,11 +69,24 @@ export function AnalogCard({
   analog,
   currentCountryName,
   currentTrajectory,
+  subjectRegion,
 }: AnalogCardProps) {
   const recipe = getRecipe(analog.primary_recipe_id);
-  const l1Color = recipe?.l1_color ?? "#9ab0c4";
+  // P2-1: derive canonical color via familyColor() so the F-Diplomacy indigo
+  // override flows through instead of the raw tracker l1_color.
+  const l1Color = familyColor(recipe?.l1_id ?? "", recipe?.l1_color ?? "#9ab0c4");
   const recipeLabel = recipe?.label ?? analog.primary_recipe_id;
   const recipeStatus = recipe?.status ?? "queued";
+
+  // P2-2: cross-region detection using the inline COUNTRY_REGIONS table.
+  // subjectRegion prop takes precedence when provided; falls back to table lookup
+  // on currentCountryName so AnalogResults doesn't need to be touched.
+  const resolvedSubjectRegion = subjectRegion ?? COUNTRY_REGIONS[currentCountryName];
+  const analogRegion = COUNTRY_REGIONS[analog.country];
+  const isCrossRegion =
+    resolvedSubjectRegion !== undefined &&
+    analogRegion !== undefined &&
+    resolvedSubjectRegion !== analogRegion;
 
   // Score-zone framing (mirrors ledger Feature 6: HIGH/MODERATE/LOW)
   const scoreZone =
@@ -147,6 +194,28 @@ export function AnalogCard({
           </div>
         </div>
       </div>
+
+      {/* P2-2: Cross-region caveat chip */}
+      {isCrossRegion && (
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "5px",
+            padding: "2px 8px",
+            borderRadius: "3px",
+            border: `1px solid ${CALM_SLATE_BLUE}`,
+            background: `${CALM_SLATE_BLUE}1A`,
+            fontSize: "9px",
+            fontFamily: "ui-monospace, monospace",
+            color: CALM_SLATE_BLUE,
+            letterSpacing: "0.3px",
+            alignSelf: "flex-start",
+          }}
+        >
+          cross-region match
+        </div>
+      )}
 
       {/* Recipe driver chip */}
       <div
@@ -318,7 +387,8 @@ export function AnalogCard({
           </span>
           {analog.secondary_recipe_ids.map((sid) => {
             const sr = getRecipe(sid);
-            const color = sr?.l1_color ?? "#9ab0c4";
+            // P2-1: canonical color via familyColor, not raw tracker l1_color.
+            const color = familyColor(sr?.l1_id ?? "", sr?.l1_color ?? "#9ab0c4");
             return (
               <span
                 key={sid}
