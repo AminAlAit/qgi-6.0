@@ -1,3 +1,5 @@
+import { CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
+
 export function StructuralFenceNote() {
   return (
     <section style={{ marginBottom: "32px" }}>
@@ -24,29 +26,19 @@ export function StructuralFenceNote() {
             fontSize: "16px",
             fontWeight: 600,
             margin: 0,
-            color: "var(--qgi-text)",
+            color: CALM_SLATE_BLUE,
             flex: 1,
           }}
         >
-          What this dashboard is NOT
+          How to read this dashboard
         </h2>
-        <span
-          style={{
-            fontSize: "10px",
-            color: "#E68F29",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.8px",
-          }}
-        >
-          M8-R5 · honesty regime
-        </span>
       </div>
       <div
         style={{
           padding: "18px 20px",
-          border: "1px solid #E68F29",
-          borderLeft: "3px solid #E68F29",
-          background: "rgba(230, 143, 41, 0.06)",
+          border: `1px solid ${CALM_SLATE_BLUE}55`,
+          borderLeft: `3px solid ${CALM_SLATE_BLUE}`,
+          background: `${CALM_SLATE_BLUE}0F`,
           borderRadius: "8px",
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
@@ -55,52 +47,47 @@ export function StructuralFenceNote() {
       >
         <FenceRule
           n="01"
-          title="This is not a forecast page."
+          title="Scores are ranks, not probabilities."
           body={
             <>
-              Nothing here says &ldquo;country X is N% likely to do Y by date Z.&rdquo;
-              QGI&apos;s methodology is <strong>discrimination, not prediction</strong> —
-              it separates pre-event years from non-event years on shape, and a high score
-              means a country currently <em>resembles</em> a validated crisis shape, not
-              that the crisis will fire.
+              Every score on this page is a <strong>discrimination rank</strong>: it
+              reflects how closely a country&apos;s current indicator trajectory resembles
+              a validated crisis pattern, not the likelihood of an event occurring. A high
+              rank means resemblance, nothing more.
             </>
           }
         />
         <FenceRule
           n="02"
-          title="Numbers here are counts and ranks."
+          title="Tile counts come from the public tracker."
           body={
             <>
-              Recipe counts (graduated, walked, queued) are integers from the
-              source-of-truth tracker JSON. Country scores are{" "}
-              <strong>discrimination ranks 0–100</strong>, not probabilities. A 98 means
-              &ldquo;positioned high in the distribution of countries whose movement shape
-              resembles this recipe.&rdquo; That is all.
+              Recipe counts (validated, tested, queued) are integers drawn directly from
+              the recipe tracker. Nothing on this dashboard promotes a recipe&apos;s tier
+              or softens a verdict in transit.
             </>
           }
         />
         <FenceRule
           n="03"
-          title="The dashboard aggregates, it never upgrades a tier."
+          title="Corrections are surfaced on purpose."
           body={
             <>
-              A walked-but-not-graduated recipe surfaces here as walked-not-graduated. A
-              legacy ML-1 recipe surfaces as legacy. The dashboard is a <em>sampler</em>;
-              the tier contract is whatever the source surface says — never softened in
-              transit, never promoted by aggregation.
+              When a prior result does not hold up under further review, the correction
+              appears here alongside the original. The activity timeline and recipe
+              tracker carry the full record. Publishing corrections is part of how the
+              program works.
             </>
           }
         />
         <FenceRule
           n="04"
-          title="Today, zero recipes are validated."
+          title="Nothing here is a forecast."
           body={
             <>
-              The graduated count is honestly 0 in the current vintage — the only prior
-              graduation (foreign_intervention) was publicly <strong>vacated</strong> on
-              2026-05-25 after a sample-truncation leak was found. A re-walk under the
-              pipeline-coverage fix is in flight. The program failing in public is the
-              page&apos;s point.
+              QGI describes and ranks current conditions; it does not predict future
+              events or assign probabilities to outcomes. No tile, score, or trend line on
+              this page should be read as a forward claim.
             </>
           }
         />
@@ -124,7 +111,7 @@ function FenceRule({
         style={{
           fontSize: "10px",
           letterSpacing: "1.2px",
-          color: "#E68F29",
+          color: CALM_SLATE_BLUE,
           fontFamily: "ui-monospace, monospace",
           marginBottom: "6px",
         }}

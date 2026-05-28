@@ -16,7 +16,7 @@ import { StructuralFenceNote } from "@/components/dashboard-v4/StructuralFenceNo
 export const metadata: Metadata = {
   title: "Dashboard v4 (mockup) · QG Intelligence",
   description:
-    "Command-center landing in the V4 idiom — a tier-stamped sampler of every QGI surface. Local-only mockup; not for production.",
+    "Command-center landing in the V4 idiom: a tier-stamped sampler of every QGI surface. Local-only mockup; not for production.",
   robots: { index: false, follow: false },
 };
 
@@ -66,7 +66,7 @@ export default function DashboardV4Page() {
               borderRadius: "4px",
             }}
           >
-            Data as of {vintage} · M8-R5 honesty regime
+            Data as of {vintage}
           </span>
         </div>
 
@@ -112,8 +112,8 @@ export default function DashboardV4Page() {
               }}
             >
               A 30-second sampler of every surface in the platform. Counts and ranks come
-              from the source-of-truth recipe-tracker; nothing on this page upgrades a
-              tier or makes a forward call. Open any tile to drop into the deep page.
+              from the recipe tracker; nothing on this page upgrades a tier or makes a
+              forward call. Open any tile to go to the full page.
             </p>
           </div>
         </div>
@@ -137,12 +137,12 @@ export default function DashboardV4Page() {
         >
           <div style={{ marginBottom: "4px" }}>
             Dashboard v4 mockup · vintage {vintage} · {recipes.length} recipes across 8 L1
-            families · data from <code>data/recipe-tracker.json</code> +{" "}
-            <code>lib/te-mock/*</code>.
+            families · recipe data sourced from the public recipe tracker and platform
+            mock data.
           </div>
           <div>
-            Tile counts are recomputed every walk. Activity entries are illustrative;
-            recipe roster, statuses, and stats are real.
+            Tile counts refresh after each validation run. Activity entries are
+            illustrative; recipe roster, statuses, and stats are real.
           </div>
         </footer>
       </div>

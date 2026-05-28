@@ -111,6 +111,7 @@ function ActivityRow({ event, isLast }: { event: ActivityEvent; isLast: boolean 
       </div>
 
       <div
+        aria-hidden="true"
         style={{
           width: "32px",
           height: "32px",

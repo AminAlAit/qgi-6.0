@@ -72,7 +72,9 @@ export const HERO_TILES = (c: HeroCounts): HeroTile[] => [
     value: String(c.graduated),
     label: "Validated recipes",
     sublabel:
-      c.graduated === 0 ? "0 today — see the vacate log" : "Cleared every pre-reg gate",
+      c.graduated === 0
+        ? "0 today. See the correction log below."
+        : "Cleared every pre-reg gate",
     Icon: GraduationCap,
     color: "#3FBF8F",
   },
@@ -85,22 +87,22 @@ export const HERO_TILES = (c: HeroCounts): HeroTile[] => [
   },
   {
     value: String(c.walked + c.legacy),
-    label: "Recipes walked",
-    sublabel: `${c.walked} walked-failed · ${c.legacy} legacy`,
+    label: "Recipes tested",
+    sublabel: `${c.walked} didn't hold up · ${c.legacy} early method`,
     Icon: FlaskConical,
     color: "#E68F29",
   },
   {
     value: String(c.in_flight),
     label: "In flight",
-    sublabel: "Walks running now",
+    sublabel: "Validation runs in progress",
     Icon: Radio,
     color: "#a78bfa",
   },
   {
     value: `${c.top_compound.country}`,
     label: "Top compound today",
-    sublabel: `Compound rank ${c.top_compound.score.toFixed(1)}`,
+    sublabel: `Top of the compound-risk board today. Rank ${c.top_compound.score.toFixed(1)}.`,
     Icon: Crosshair,
     color: "#E68F29",
   },
@@ -123,9 +125,9 @@ export const HIGHLIGHTS: Highlight[] = [
   {
     source: "risk-board",
     source_label: "Risk Board",
-    href: `/risk-board#${TOP_PAIR.recipe_id}`,
+    href: `/risk-board`,
     headline: `${TOP_PAIR.country} · Foreign Intervention`,
-    caption: `Discrimination rank ${TOP_PAIR.score.toFixed(1)} — top of the validated-recipe board today. Demo-graduated rendering; real status is walked-not-graduated pending re-walk.`,
+    caption: `Discrimination rank ${TOP_PAIR.score.toFixed(1)}; top of the board today. Rendered as deployed for the visual demo; the recipe itself is currently in review.`,
     metric: TOP_PAIR.score.toFixed(1),
     recipe_id: TOP_PAIR.recipe_id,
     tier_label: "demo · graduated",
@@ -134,9 +136,9 @@ export const HIGHLIGHTS: Highlight[] = [
   {
     source: "compound-risk",
     source_label: "Compound Risk",
-    href: `/compound-risk#${TOP_COMPOUND.iso}`,
+    href: `/compound-risk`,
     headline: `${TOP_COMPOUND.country} · ${TOP_COMPOUND.lit_recipes.length} recipes lit`,
-    caption: `Heaviest single-state stack on the board — ${TOP_COMPOUND.lit_families.length} L1 families overlap (${TOP_COMPOUND.lit_families.join(", ")}). Stacking heuristic, not joint probability.`,
+    caption: `Heaviest single-state stack on the board: ${TOP_COMPOUND.lit_families.length} L1 families overlap (${TOP_COMPOUND.lit_families.join(", ")}). Stacking heuristic, not joint probability.`,
     metric: TOP_COMPOUND.compound_score.toFixed(1),
     icon: Crosshair,
     color: "#E68F29",
@@ -146,7 +148,7 @@ export const HIGHLIGHTS: Highlight[] = [
   {
     source: "nearest-analog",
     source_label: "Nearest Analog",
-    href: "/nearest-analog#egypt",
+    href: "/nearest-analog",
     headline: "Egypt · resembles Algeria 1990",
     caption:
       "12-quarter composite trajectory closely matches Algeria's pre-1991 buildup. Historical fact, not a forecast about Egypt.",
@@ -159,12 +161,12 @@ export const HIGHLIGHTS: Highlight[] = [
     source: "recipe-tracker",
     source_label: "Recipe Tracker",
     href: "/recipe-tracker",
-    headline: `Vacated: ${LATEST_VACATE.label}`,
-    caption: `${LATEST_VACATE.cause} · ${LATEST_VACATE.vacated_at}. Public retraction; re-walk in flight. This is what the honesty regime looks like in motion.`,
+    headline: `Correction: ${LATEST_VACATE.label}`,
+    caption: `A prior validation didn't survive audit on ${LATEST_VACATE.vacated_at}; the recipe is back in review under a pipeline-coverage fix. Public corrections are part of how the program works.`,
     metric: "−1",
     icon: CircleX,
     color: "#E64545",
-    tier_label: "vacated",
+    tier_label: "correction",
     tier_color: "#E64545",
   },
 ];
@@ -181,24 +183,24 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
     name: "Recipe Tracker",
     href: "/recipe-tracker",
     description:
-      "Scoreboard of the whole research program — every recipe with its tier, last walk, and verdict. The spine of QGI's honesty regime.",
+      "Scoreboard of the whole research program: every recipe with its tier, last validation run, and verdict.",
     Icon: ListChecks,
     color: "#3FBF8F",
     metric_value: `${TOTAL_RECIPES}`,
     metric_label: "recipes tracked",
     ribbon: "new",
     chips: [
-      { label: `${WALKED_COUNT} walked-failed`, color: "#E68F29" },
-      { label: `${LEGACY_COUNT} legacy`, color: "#7A8FA0" },
+      { label: `${WALKED_COUNT} didn't hold up`, color: "#E68F29" },
+      { label: `${LEGACY_COUNT} early method`, color: "#7A8FA0" },
       { label: `${QUEUED_COUNT} queued`, color: "#64748b" },
     ],
   },
   {
-    surface_id: "precedents-v2",
+    surface_id: "recipes-v4-1",
     name: "Recipes",
-    href: "/precedents-v2",
+    href: "/recipes-v4.1",
     description:
-      "Per-recipe report card — the 15-capability anatomy: indicators, window, sample sufficiency, discrimination, calibration disclosure.",
+      "Per-recipe detail page: indicators selected, validation window, sample size, discrimination score, and calibration notes.",
     Icon: ScrollText,
     color: "#a78bfa",
     metric_value: "15",
@@ -211,11 +213,11 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
     name: "Live Risk Board",
     href: "/risk-board",
     description:
-      "Present-tense scoring of countries against validated crisis shapes. Bands shown. No forward call, ever. The honest replacement for Signals.",
+      "Present-tense scoring of countries against validated crisis shapes. Bands shown. No forward call, ever.",
     Icon: ChartBar,
     color: "#E68F29",
-    metric_value: "10×N",
-    metric_label: "country × recipe heatmap",
+    metric_value: "15",
+    metric_label: "top pairs ranked",
     ribbon: "new",
     chips: [{ label: "validated-only by default", color: "#3FBF8F" }],
   },
@@ -224,7 +226,7 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
     name: "Compound Risk",
     href: "/compound-risk",
     description:
-      "Which countries light up on more than one recipe at once. Transparent stacking heuristic over discrimination ranks — not a joint probability.",
+      "Which countries appear on more than one recipe at once. Stacking heuristic over discrimination ranks; not a joint probability.",
     Icon: Layers,
     color: "#E68F29",
     metric_value: String(COMPOUND_COUNTRIES.length),
@@ -236,7 +238,7 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
     name: "Nearest Analog",
     href: "/nearest-analog",
     description:
-      "Which past case does this country most resemble before its event? Similarity, never forecast — carries the regional-clustering caveat.",
+      "Which past case does this country most resemble before its event? Similarity, never forecast; carries the regional-clustering caveat.",
     Icon: Compass,
     color: "#38bdf8",
     metric_value: "3",
@@ -248,7 +250,7 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
     name: "Countries",
     href: "/countries",
     description:
-      "Per-country hub: scores on validated recipes, SHAP drivers, momentum, nearest analog, compound stack — the whole TE story for one place.",
+      "Per-country hub: scores on validated recipes, SHAP drivers, momentum, nearest analog, compound stack. The whole TE story for one place.",
     Icon: Globe,
     color: "#7B5EE6",
     metric_value: "174",
@@ -275,41 +277,53 @@ const WALK_TO_EVENT: Record<
     Icon: GraduationCap,
     color: "#3FBF8F",
     kind: "graduation",
-    title: (id) => `Walk graduated: ${labelOf(id)}`,
-    detail: (id, auc) =>
-      `LOCO-AUC ${auc?.toFixed(4) ?? "—"} cleared the LOCK floor. Subsequently vacated — see entry below.`,
+    title: (id) => `Validation passed: ${labelOf(id)}`,
+    detail: () =>
+      "Recipe cleared the discrimination threshold; later withdrawn after audit (see correction below).",
   },
   HARD_FAIL: {
     Icon: CircleX,
     color: "#E68F29",
     kind: "hard_fail",
-    title: (id) => `Walk hard-failed: ${labelOf(id)}`,
-    detail: (id, auc) =>
-      `LOCO-AUC ${auc?.toFixed(4) ?? "—"} below the LOCK floor. Hard-core mechanic validated; protective-belt threshold did not clear.`,
+    title: (id) => `Validation didn't hold: ${labelOf(id)}`,
+    detail: () =>
+      "Discrimination didn't separate pre-event from non-event years strongly enough.",
   },
   VACATED: {
     Icon: CircleX,
     color: "#E64545",
     kind: "vacate",
-    title: (id) => `Graduation vacated: ${labelOf(id)}`,
+    title: (id) => `Correction published: ${labelOf(id)}`,
     detail: () =>
-      "Sample-truncation leak found in F-ML-1. Public retraction; fan-out held; re-walk under pipeline-coverage fix.",
+      "A prior validation was withdrawn after audit; re-evaluation is in progress.",
   },
   IN_FLIGHT: {
     Icon: Radio,
     color: "#a78bfa",
     kind: "walk_fired",
-    title: (id) => `Walk fired: ${labelOf(id)}`,
-    detail: () =>
-      "Re-walk under the pipeline-coverage fix. ETA ~5–6h. Outcome will replace the prior verdict.",
+    title: (id) => `Re-evaluation in progress: ${labelOf(id)}`,
+    detail: () => "Outcome will replace the prior result. ETA ~5-6 hours.",
   },
   MARGINAL: {
     Icon: Sparkles,
     color: "#a78bfa",
     kind: "walk_fired",
-    title: (id) => `Walk completed: ${labelOf(id)}`,
-    detail: (id, auc) =>
-      `Marginal verdict at LOCO-AUC ${auc?.toFixed(4) ?? "—"}; awaiting Majles review.`,
+    title: (id) => `Validation borderline: ${labelOf(id)}`,
+    detail: () => "Discrimination is near the threshold; under review.",
+  },
+  SCHEDULED: {
+    Icon: Calendar,
+    color: "#7A8FA0",
+    kind: "walk_fired",
+    title: (id) => `Scheduled: ${labelOf(id)}`,
+    detail: () => "Will run when the evidence base meets the bar.",
+  },
+  QUEUED: {
+    Icon: Calendar,
+    color: "#7A8FA0",
+    kind: "walk_fired",
+    title: (id) => `Scheduled: ${labelOf(id)}`,
+    detail: () => "Will run when the evidence base meets the bar.",
   },
 };
 
@@ -317,26 +331,29 @@ function labelOf(recipe_id: string): string {
   return RECIPES.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;
 }
 
-const WALK_EVENTS: ActivityEvent[] = RECENT_WALKS.map((w) => {
-  const meta = WALK_TO_EVENT[w.verdict] ?? WALK_TO_EVENT.IN_FLIGHT;
-  return {
-    date: w.fired_at,
-    kind: meta.kind,
-    title: meta.title(w.recipe_id, w.loco_auc),
-    detail: meta.detail(w.recipe_id, w.loco_auc),
-    href: `/precedents-v2/${w.recipe_id}`,
-    Icon: meta.Icon,
-    color: meta.color,
-  };
-});
+const WALK_EVENTS: ActivityEvent[] = RECENT_WALKS
+  // Drop VACATED walk rows — the META_EVENTS entry covers this correction
+  .filter((w) => w.verdict !== "VACATED")
+  .map((w) => {
+    const meta = WALK_TO_EVENT[w.verdict] ?? WALK_TO_EVENT.IN_FLIGHT;
+    return {
+      date: w.fired_at,
+      kind: meta.kind,
+      title: meta.title(w.recipe_id, w.loco_auc),
+      detail: meta.detail(w.recipe_id, w.loco_auc),
+      href: `/recipes-v4.1/${w.recipe_id}`,
+      Icon: meta.Icon,
+      color: meta.color,
+    };
+  });
 
 const META_EVENTS: ActivityEvent[] = [
   {
     date: "2026-05-25",
     kind: "vacate",
-    title: "Foreign Intervention graduation publicly vacated",
+    title: "Foreign Intervention validation withdrawn",
     detail:
-      "Sample-truncation leak in F-ML-1 §4.2 reduced the published 0.9147 to ≈0.50 on full history. North Star paragraph stays in correction mode until re-walk completes.",
+      "Audit found the original result depended on a partial sample; on the full record it returns to chance. The recipe is back in review.",
     href: "/recipe-tracker",
     Icon: CircleX,
     color: "#E64545",
@@ -344,9 +361,9 @@ const META_EVENTS: ActivityEvent[] = [
   {
     date: "2026-05-24",
     kind: "methodology_amendment",
-    title: "Cohort coverage + chance gates added to F-ML-1",
+    title: "New checks added to validation rules",
     detail:
-      "Pre-registration amendment (qgi-docs#130) — every walk must now report per-cohort coverage AND clear the chance floor before any LOCK gate is evaluated.",
+      "Each validation run must now report per-region data coverage and clear a baseline check before any pass or fail decision.",
     Icon: FilePenLine,
     color: "#38bdf8",
   },
@@ -355,25 +372,24 @@ const META_EVENTS: ActivityEvent[] = [
     kind: "indicator_added",
     title: "VC.IDP.NWDS added to the indicator catalog",
     detail:
-      "World Bank new-internal-displacements series passed Ihsa stationarity audit; now available for any recipe whose canonical shape needs population-movement signal.",
+      "World Bank's new-internal-displacements series passed quality checks; available for any recipe whose shape needs population-movement signal.",
     Icon: Database,
     color: "#3FBF8F",
   },
   {
     date: "2026-05-20",
     kind: "data_sync",
-    title: "Curated-events sync · 12 new verified events",
+    title: "12 new verified events added to the curated set",
     detail:
-      "Three Sahel-region civil_war_and_insurgency positives + nine miscellaneous additions ratified into qgi-data/events/curated/. Recipe N_pos counts updated.",
+      "Three Sahel-region civil-war positives plus nine other additions ratified; recipe counts refreshed.",
     Icon: Database,
     color: "#7A8FA0",
   },
   {
     date: "2026-05-17",
     kind: "methodology_amendment",
-    title: "Methodology Charter ratified",
-    detail:
-      "Saudi-Azeri canonical example + 5-component recipe definition + cascade-vs-ML synthesis. Every R&D decision now traces to qgi-docs/internal/methodology-charter.md.",
+    title: "Methodology charter ratified",
+    detail: "Founding-document update on how recipes are defined and scored.",
     Icon: ScrollText,
     color: "#a78bfa",
   },

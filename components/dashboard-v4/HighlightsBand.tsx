@@ -4,6 +4,7 @@ import { createElement } from "react";
 import type { LucideIcon } from "lucide-react";
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import { getRecipe } from "@/lib/te-mock/recipes";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export interface Highlight {
   source: "risk-board" | "compound-risk" | "nearest-analog" | "recipe-tracker";
@@ -96,7 +97,9 @@ function HighlightTile({ h }: { h: Highlight }) {
     }
     return <FallbackIcon size={size} />;
   };
-  const color = recipe?.l1_color ?? h.color ?? "var(--qgi-accent)";
+  const color = recipe
+    ? familyColor(recipe.l1_id, recipe.l1_color)
+    : (h.color ?? "var(--qgi-accent)");
   const isWalked = recipe?.status === "walked_no_graduation";
 
   return (
@@ -157,6 +160,7 @@ function HighlightTile({ h }: { h: Highlight }) {
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <div
+            aria-hidden="true"
             style={{
               width: "40px",
               height: "40px",

@@ -52,6 +52,7 @@ export function SurfaceCard({ card }: { card: SurfaceCardData }) {
           }}
         >
           <div
+            aria-hidden="true"
             style={{
               width: "52px",
               height: "52px",
