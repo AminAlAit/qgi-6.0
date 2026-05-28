@@ -278,8 +278,14 @@ const WALK_TO_EVENT: Record<
     color: "#3FBF8F",
     kind: "graduation",
     title: (id) => `Validation passed: ${labelOf(id)}`,
-    detail: () =>
-      "Recipe cleared the discrimination threshold; later withdrawn after audit (see correction below).",
+    // Conditional tail: only append "later withdrawn after audit" when a
+    // VACATED row exists for the same recipe_id in HISTORICAL_WALKS. Without
+    // the guard, every future non-vacated graduation would falsely read as
+    // withdrawn — a hardcoded misstatement (T-02 reviewer follow-up).
+    detail: (id) =>
+      wasGraduationVacated(id)
+        ? "Recipe cleared the discrimination threshold; later withdrawn after audit (see correction below)."
+        : "Recipe cleared the discrimination threshold.",
   },
   HARD_FAIL: {
     Icon: CircleX,
@@ -328,6 +334,15 @@ WALK_TO_EVENT.QUEUED = WALK_TO_EVENT.SCHEDULED;
 
 function labelOf(recipe_id: string): string {
   return RECIPES.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;
+}
+
+/** True if a VACATED row exists for this recipe in the walk history. Used to
+ *  decide whether the GRADUATED activity-timeline entry should append the
+ *  "later withdrawn after audit" tail. */
+function wasGraduationVacated(recipe_id: string): boolean {
+  return HISTORICAL_WALKS.some(
+    (w) => w.recipe_id === recipe_id && w.verdict === "VACATED"
+  );
 }
 
 const WALK_EVENTS: ActivityEvent[] = RECENT_WALKS
