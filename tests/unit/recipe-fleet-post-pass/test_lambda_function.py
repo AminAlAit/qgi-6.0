@@ -434,6 +434,120 @@ def test_handler_never_writes_to_published_tracker_key(fake_s3):
     assert all("post-pass/" in k and "draft-tracker.json" in k for k in written_keys)
 
 
+# ---------- #966 stale-walk rejection ----------------------------------------
+
+class TestStaleWalkRejection:
+    """#966 — a summary `filed` before `floors.frozen_at_utc` is a FLEET-5 invariant
+    violation and a stale leftover from a prior pipeline version (the
+    foreign_intervention 2026-05-25 leaked walk is the canonical case the filter
+    closes). Filtered recipes route to QUEUED + a warning surfaces the reason."""
+
+    def test_stale_walk_routes_to_queued_with_warning(self, fake_s3):
+        bucket = "b"
+        # walk filed BEFORE floors were frozen — must be rejected
+        _put_summary(fake_s3, bucket, "ml-results/", "stale_recipe",
+                      filed="2026-05-25T13:25:28Z")
+        _put_summary(fake_s3, bucket, "ml-results/", "fresh_recipe",
+                      filed="2026-05-28T13:00:00Z")
+        _put_floors(fake_s3, bucket, frozen_at="2026-05-27T22:12:40Z")
+        out = lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        body = json.loads(fake_s3.put_calls[-1][2].decode("utf-8"))
+        rows = {r["recipe_id"]: r for r in body["draft_recipes"]}
+        assert rows["stale_recipe"]["tier"] == pp.QUEUED
+        assert rows["fresh_recipe"]["tier"] != pp.QUEUED  # classified normally
+        assert any("stale_recipe" in w and "stale walk" in w for w in out["warnings"])
+        assert any("foreign_intervention" not in w for w in out["warnings"])  # not by name
+        # FU2 per Sonnet PR review — return envelope MUST self-describe the rejection
+        # count so an operator reading the SFN history can see it without parsing warnings.
+        assert out["n_stale_rejected"] == 1
+
+
+    def test_no_rejection_when_all_walks_post_freeze(self, fake_s3):
+        bucket = "b"
+        _put_summary(fake_s3, bucket, "ml-results/", "a", filed="2026-05-28T13:00:00Z")
+        _put_floors(fake_s3, bucket, frozen_at="2026-05-27T22:12:40Z")
+        out = lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        assert not any("stale walk" in w for w in out["warnings"])
+
+
+    def test_no_rejection_when_floors_missing(self, fake_s3):
+        """If floors.json is absent the existing floor_ordering_ok FAIL already covers it;
+        the stale-walk filter is a no-op so it never silently masks the missing-floors
+        condition."""
+        bucket = "b"
+        _put_summary(fake_s3, bucket, "ml-results/", "a", filed="2026-05-25T00:00:00Z")
+        out = lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        body = json.loads(fake_s3.put_calls[-1][2].decode("utf-8"))
+        # Row classified normally (no rejection); the floor_ordering_ok FAIL is the
+        # global surface for "we can't verify ordering".
+        assert any("floors missing" in w for w in out["warnings"])
+        assert not any("stale walk" in w for w in out["warnings"])
+
+
+    def test_no_rejection_when_frozen_at_missing_from_floors(self, fake_s3):
+        bucket = "b"
+        _put_summary(fake_s3, bucket, "ml-results/", "a", filed="2026-05-25T00:00:00Z")
+        # Floors doc present but lacks frozen_at_utc — must NOT reject (fail-open here is
+        # fine: floor_ordering_ok=FAIL already surfaces the missing-field condition).
+        fake_s3.objs[(bucket, lf._FLOORS_KEY)] = json.dumps({"floors": {}}).encode("utf-8")
+        out = lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        assert not any("stale walk" in w for w in out["warnings"])
+
+
+    def test_walk_filed_exactly_at_freeze_is_NOT_rejected(self, fake_s3):
+        """Boundary: filed == frozen_at means the walk fired at the same instant the
+        floors were committed. Strict `<` predicate keeps this case classified normally."""
+        bucket = "b"
+        ts = "2026-05-27T22:12:40Z"
+        _put_summary(fake_s3, bucket, "ml-results/", "a", filed=ts)
+        _put_floors(fake_s3, bucket, frozen_at=ts)
+        lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        body = json.loads(fake_s3.put_calls[-1][2].decode("utf-8"))
+        rows = {r["recipe_id"]: r for r in body["draft_recipes"]}
+        assert rows["a"]["tier"] != pp.QUEUED  # classified, not stale-rejected
+
+
+    def test_malformed_filed_timestamp_is_left_alone(self, fake_s3):
+        """A summary whose `filed` field is unparseable is NOT rejected here (the
+        existing flow already treats it as classified-normally); the filter only
+        rejects when both timestamps parse + ordering is violated. Fail-open for
+        unparseable inputs avoids silent over-rejection."""
+        bucket = "b"
+        # Build a manual summary with garbage filed
+        import json as _j
+        s = {"recipe_id": "a", "verdict": "HARD_FAIL",
+             "filed": "not-a-real-timestamp",
+             "global_loco": {"auc": 0.7, "ci95_lo": 0.6, "ci95_hi": 0.8},
+             "per_cohort": {"a": {"loco_auc": 0.6}, "b": {"loco_auc": 0.55}, "c": {"loco_auc": 0.62}}}
+        fake_s3.objs[(bucket, "ml-results/a/f-ml-1-poc-summary.json")] = _j.dumps(s).encode()
+        fake_s3.sub_prefixes.append("ml-results/a/")
+        _put_floors(fake_s3, bucket, frozen_at="2026-05-27T22:12:40Z")
+        lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        body = json.loads(fake_s3.put_calls[-1][2].decode("utf-8"))
+        rows = {r["recipe_id"]: r for r in body["draft_recipes"]}
+        assert rows["a"]["tier"] != pp.QUEUED  # unparseable filed → not rejected here
+
+
+    def test_summary_without_filed_field_is_left_alone(self, fake_s3):
+        """Same reasoning as unparseable filed — a missing `filed` is not enough on
+        its own to reject."""
+        bucket = "b"
+        import json as _j
+        s = {"recipe_id": "a", "verdict": "HARD_FAIL",
+             # NO `filed` field at all
+             "global_loco": {"auc": 0.7, "ci95_lo": 0.6, "ci95_hi": 0.8},
+             "per_cohort": {"a": {"loco_auc": 0.6}, "b": {"loco_auc": 0.55}, "c": {"loco_auc": 0.62}}}
+        fake_s3.objs[(bucket, "ml-results/a/f-ml-1-poc-summary.json")] = _j.dumps(s).encode()
+        fake_s3.sub_prefixes.append("ml-results/a/")
+        _put_floors(fake_s3, bucket, frozen_at="2026-05-27T22:12:40Z")
+        lf.lambda_handler({"s3_bucket": bucket, "execution_name": "v1"}, None)
+        body = json.loads(fake_s3.put_calls[-1][2].decode("utf-8"))
+        rows = {r["recipe_id"]: r for r in body["draft_recipes"]}
+        assert rows["a"]["tier"] != pp.QUEUED
+
+
+# -----------------------------------------------------------------------------
+
 def test_s3_get_object_error_other_than_nosuchkey_propagates(fake_s3, monkeypatch):
     """A real S3 error (e.g. AccessDenied) must propagate — silently treating it as
     'missing' could mask an IAM regression that needs founder attention."""
