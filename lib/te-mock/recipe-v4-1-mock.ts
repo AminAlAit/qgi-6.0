@@ -1,24 +1,34 @@
 /**
- * recipe-v4-1-mock — supplementary per-recipe mock fields for V4.1 panels
- * that V4 didn't need: SHAP weights (capability #5), AUC-drop sensitivity
- * (capability #15), score-distribution histogram + quantiles (capability #10),
- * reliability metrics (capability #7), bottom-5 countries (capability #9).
+ * recipe-v4-1-mock — supplementary per-recipe V4.1 panel data.
  *
- * Per R&D 2026-05-27 reply:
- *   - shap_weight is a normalized share summing to 100 across the recipe's
- *     selected indicators (not "Others 5%" — selected set IS the full set).
- *   - Indicator count is variable (3-5) per recipe.
- *   - Histogram bin size 10.
+ * V4.1 wire-up (2026-05-29):
+ *   - TE sample-10 recipes source from real card-v3 data via lib/te-data-contract/load.ts
+ *   - foreign_intervention keeps its hand-authored fallback (demo-graduated case;
+ *     no real card exists for it in sample-10)
+ *   - civil_war_and_insurgency and constitutional_change keep their hand-authored
+ *     data (cascade-era recipes not in the TE sample)
  *
- * Mockup-only. Real bake will emit these fields per the contract §3.1.
+ * CALIBRATION NOTE (per constraint):
+ *   calibration.computed is false on every TE recipe in sample-10.
+ *   The panel renders: "Calibration not yet computed for this vintage."
+ *
+ * RANK HISTORY NOTE:
+ *   rank_history is first-vintage-only (1 point per country).
+ *   The RankHistoryPanel renders: "Rank history available from the next quarterly run."
+ *
+ * RELIABILITY NOTE:
+ *   v1_separation_pp and v4_oot_recall_pct are null in sample-10 (walks_completed: 1).
+ *   The reliability panel renders "first vintage" disclosure.
  */
 
+import { loadAllCards, loadAllScores } from "@/lib/te-data-contract/load";
+import { resolveIndicatorLabel } from "@/lib/indicator-labels";
 import { getRecipe, type IndicatorMock } from "./recipes";
 
 export interface IndicatorWithWeight extends IndicatorMock {
-  /** Normalized SHAP weight, 0-100. The recipe's selected set sums to ~100. */
+  /** Normalized signal share, 0-100. The recipe's selected set sums to ~100. */
   shapWeightPct: number;
-  /** AUC drop if this indicator were removed (capability #15). */
+  /** CV AUC drop if this indicator were removed. */
   aucDrop: number;
 }
 
@@ -38,10 +48,17 @@ export interface ScoreDistribution {
 }
 
 export interface ReliabilityMetrics {
-  v1SeparationPp: number;
-  v4OotRecallPct: number;
+  /**
+   * V1 separation in percentage points. Null = first vintage, no multi-pass yet.
+   * UI renders "first vintage" disclosure when null.
+   */
+  v1SeparationPp: number | null;
+  /**
+   * V4 OOT recall percent. Null = first vintage.
+   */
+  v4OotRecallPct: number | null;
   walksCompleted: number;
-  verdict: "LOCK" | "HARD_FAIL" | "MARGINAL" | "VACATED";
+  verdict: string;
 }
 
 export interface CountryScore {
@@ -50,17 +67,16 @@ export interface CountryScore {
 }
 
 interface RecipeV4Extras {
-  /** Per-indicator SHAP weight + AUC drop. Length = recipe's indicator count. */
+  /** Per-indicator signal share + CV AUC drop. */
   indicators: IndicatorWithWeight[];
   distribution: ScoreDistribution;
   reliability: ReliabilityMetrics;
-  /** Bottom-5 by score (low end of the distribution). */
+  /** Bottom-5 by score. */
   countriesBottom: CountryScore[];
-  /** Sample sufficiency (capability #4). */
+  /** Minimum positives required. */
   threshold: number;
   thresholdMet: boolean;
   nCohorts: number;
-  /** Vintage block (capability §14 — merges into the Identity card per #142). */
   walkId: string;
   walkNumber: number;
   ratifiedBy: string;
@@ -68,16 +84,13 @@ interface RecipeV4Extras {
 }
 
 /* ────────────────────────────────────────────────────────────────────────── */
-/* Per-recipe data. Foreign Intervention is the demo-graduated case (fully    */
-/* populated). Civil War + Constitutional Change are populated to show the    */
-/* variable-N rendering (3 + 5 indicators respectively, per R&D Q1 #2).        */
+/* Hand-authored extras for cascade-era / demo recipes                         */
 /* ────────────────────────────────────────────────────────────────────────── */
 
-const EXTRAS: Record<string, RecipeV4Extras> = {
+const HAND_AUTHORED_EXTRAS: Record<string, RecipeV4Extras> = {
   foreign_intervention: {
+    // Demo-graduated case. Kept as-is per spec constraint.
     indicators: [
-      // R&D Q8 + Q1: normalized SHAP shares sum to 100; weights are
-      // illustrative not from a real walk.
       {
         code: "RQ.EST",
         name: "Regulatory Quality",
@@ -108,237 +121,17 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
       },
     ],
     distribution: {
-      // Right-skewed: bulk on the left (low scores: most countries), thin tail
-      // on the right (high scores: ~5-10 strongly-resembling countries). 10 bins
-      // 0-10, 10-20, ..., 90-100. Counts sum to ~167 (n_countries_scored).
       histogram: [
-        {
-          bin_lo: 0,
-          bin_hi: 10,
-          count: 38,
-          countries: [
-            "Switzerland",
-            "Norway",
-            "Iceland",
-            "Sweden",
-            "Finland",
-            "Denmark",
-            "Netherlands",
-            "Ireland",
-            "New Zealand",
-            "Australia",
-            "Canada",
-            "Austria",
-            "Luxembourg",
-            "Germany",
-            "Belgium",
-            "Japan",
-            "South Korea",
-            "Portugal",
-            "Spain",
-            "Czech Republic",
-            "Slovenia",
-            "Estonia",
-            "Lithuania",
-            "Latvia",
-            "Italy",
-            "France",
-            "United Kingdom",
-            "Uruguay",
-            "Costa Rica",
-            "Chile",
-            "Mauritius",
-            "Botswana",
-            "Mongolia",
-            "Slovakia",
-            "Poland",
-            "Cyprus",
-            "Greece",
-            "Croatia",
-          ],
-        },
-        {
-          bin_lo: 10,
-          bin_hi: 20,
-          count: 31,
-          countries: [
-            "Romania",
-            "Hungary",
-            "Bulgaria",
-            "Argentina",
-            "Brazil",
-            "Mexico",
-            "South Africa",
-            "Indonesia",
-            "Philippines",
-            "India",
-            "Israel",
-            "United States",
-            "Albania",
-            "Serbia",
-            "Bosnia and Herzegovina",
-            "North Macedonia",
-            "Moldova",
-            "Georgia",
-            "Tunisia",
-            "Senegal",
-            "Ghana",
-            "Kenya",
-            "Namibia",
-            "Jamaica",
-            "Trinidad and Tobago",
-            "Panama",
-            "Paraguay",
-            "Peru",
-            "Ecuador",
-            "Colombia",
-            "Bolivia",
-          ],
-        },
-        {
-          bin_lo: 20,
-          bin_hi: 30,
-          count: 24,
-          countries: [
-            "Turkey",
-            "Morocco",
-            "Lebanon",
-            "Jordan",
-            "Sri Lanka",
-            "Bangladesh",
-            "Nepal",
-            "Bhutan",
-            "Malaysia",
-            "Thailand",
-            "Vietnam",
-            "Mongolia",
-            "Armenia",
-            "Azerbaijan",
-            "Kazakhstan",
-            "Kyrgyzstan",
-            "Ukraine",
-            "Russia",
-            "Belarus",
-            "Algeria",
-            "Egypt",
-            "Iraq",
-            "Pakistan",
-            "Afghanistan",
-          ],
-        },
-        {
-          bin_lo: 30,
-          bin_hi: 40,
-          count: 18,
-          countries: [
-            "Cambodia",
-            "Laos",
-            "Myanmar",
-            "Nigeria",
-            "Uganda",
-            "Tanzania",
-            "Rwanda",
-            "Burundi",
-            "Mozambique",
-            "Angola",
-            "Cameroon",
-            "Côte d'Ivoire",
-            "Burkina Faso",
-            "Mali",
-            "Niger",
-            "Chad",
-            "Guinea",
-            "Guinea-Bissau",
-          ],
-        },
-        {
-          bin_lo: 40,
-          bin_hi: 50,
-          count: 14,
-          countries: [
-            "Honduras",
-            "Nicaragua",
-            "Guatemala",
-            "El Salvador",
-            "Venezuela",
-            "Haiti",
-            "DRC",
-            "Central African Republic",
-            "Somalia",
-            "Ethiopia",
-            "Eritrea",
-            "Djibouti",
-            "Mauritania",
-            "Madagascar",
-          ],
-        },
-        {
-          bin_lo: 50,
-          bin_hi: 60,
-          count: 12,
-          countries: [
-            "Sudan",
-            "South Sudan",
-            "Libya",
-            "Yemen",
-            "Syria",
-            "Zimbabwe",
-            "Comoros",
-            "Liberia",
-            "Sierra Leone",
-            "Togo",
-            "Benin",
-            "Gabon",
-          ],
-        },
-        {
-          bin_lo: 60,
-          bin_hi: 70,
-          count: 9,
-          countries: [
-            "Equatorial Guinea (low band)",
-            "Iran (low band)",
-            "Belarus (low band)",
-            "Tajikistan (low band)",
-            "Cuba",
-            "North Korea",
-            "Saudi Arabia",
-            "Bahrain",
-            "Oman",
-          ],
-        },
-        {
-          bin_lo: 70,
-          bin_hi: 80,
-          count: 7,
-          countries: [
-            "Syria",
-            "Cuba",
-            "Nicaragua",
-            "Venezuela",
-            "Eritrea",
-            "Tajikistan",
-            "Belarus",
-          ],
-        },
-        {
-          bin_lo: 80,
-          bin_hi: 90,
-          count: 5,
-          countries: [
-            "Eritrea",
-            "Tajikistan",
-            "Belarus",
-            "Equatorial Guinea",
-            "Turkmenistan",
-          ],
-        },
-        {
-          bin_lo: 90,
-          bin_hi: 100,
-          count: 3,
-          countries: ["Iran", "Turkmenistan", "Equatorial Guinea"],
-        },
+        { bin_lo: 0, bin_hi: 10, count: 38 },
+        { bin_lo: 10, bin_hi: 20, count: 31 },
+        { bin_lo: 20, bin_hi: 30, count: 24 },
+        { bin_lo: 30, bin_hi: 40, count: 18 },
+        { bin_lo: 40, bin_hi: 50, count: 14 },
+        { bin_lo: 50, bin_hi: 60, count: 12 },
+        { bin_lo: 60, bin_hi: 70, count: 9 },
+        { bin_lo: 70, bin_hi: 80, count: 7 },
+        { bin_lo: 80, bin_hi: 90, count: 5 },
+        { bin_lo: 90, bin_hi: 100, count: 3 },
       ],
       median: 24,
       p90: 68,
@@ -349,10 +142,8 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
       v1SeparationPp: 25.8,
       v4OotRecallPct: 86.7,
       walksCompleted: 4,
-      // 2026-05-28: demo renders as graduated → show a confident LOCK verdict.
-      // The real vacate story is internal (lives on /recipe-tracker + the blog),
-      // not surfaced to the recipe-page reader. Header demo-disclosure carries
-      // the honest real-status pointer.
+      // Demo graduated — shows a confident result.
+      // The real vacate story is on /recipe-tracker; this detail page is the demo.
       verdict: "LOCK",
     },
     countriesBottom: [
@@ -367,12 +158,11 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "fi_v4_2026-05-21",
     walkNumber: 4,
-    ratifiedBy: "Majles 8/8 · 2026-05-22",
+    ratifiedBy: "Advisory council · 2026-05-22",
     walkDate: "2026-05-21",
   },
 
   civil_war_and_insurgency: {
-    // R&D Q1 #2 example: 3 indicators.
     indicators: [
       {
         code: "RQ.EST",
@@ -418,7 +208,7 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
       v1SeparationPp: 14.2,
       v4OotRecallPct: 48.5,
       walksCompleted: 3,
-      verdict: "HARD_FAIL",
+      verdict: "DID_NOT_HOLD",
     },
     countriesBottom: [
       { name: "Switzerland", score: 4.1 },
@@ -432,12 +222,11 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "cw_v3_2026-05-08",
     walkNumber: 3,
-    ratifiedBy: "Majles · 2026-05-09",
+    ratifiedBy: "Advisory council · 2026-05-09",
     walkDate: "2026-05-08",
   },
 
   constitutional_change: {
-    // R&D Q1 #2 example: 5 indicators (greedy ran 4-5).
     indicators: [
       {
         code: "v2lginvstp",
@@ -511,33 +300,192 @@ const EXTRAS: Record<string, RecipeV4Extras> = {
     nCohorts: 6,
     walkId: "cc_v2_2026-04-15",
     walkNumber: 2,
-    ratifiedBy: "Majles · 2026-04-16",
+    ratifiedBy: "Advisory council · 2026-04-16",
     walkDate: "2026-04-15",
   },
 };
 
+/* ────────────────────────────────────────────────────────────────────────── */
+/* TE recipe extras — built from real card-v3 data                             */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+function resolveIndicatorName(code: string): string {
+  const { label } = resolveIndicatorLabel(code);
+  return label;
+}
+
+function inferProvider(code: string): string {
+  if (code.startsWith("v2") || code.startsWith("v3")) return "V-Dem";
+  if (code.includes(".")) return "World Bank";
+  return "Other";
+}
+
+/**
+ * Build RecipeV4Extras from a real card-v3 + scores file.
+ * Returns null if the card is not available.
+ */
+function buildFromCard(recipeId: string): RecipeV4Extras | null {
+  let card;
+  try {
+    const allCards = loadAllCards();
+    card = allCards[recipeId];
+  } catch {
+    return null;
+  }
+  if (!card) return null;
+
+  // LOO sensitivity map for AUC drop values
+  const looEntries = card.indicator_sensitivity?.leave_one_out ?? [];
+  const looMap = new Map(looEntries.map((e) => [e.code, e]));
+
+  // Normalize LOO AUC drops to signal share %
+  // Positive drops get proportional weight; negative/zero get a floor weight.
+  const drops = card.greedy_walk.selected_indicators.map((code) => {
+    const entry = looMap.get(code);
+    return Math.max(0.001, entry?.auc_drop ?? 0.001);
+  });
+  const totalDrop = drops.reduce((a, b) => a + b, 0);
+
+  const indicators: IndicatorWithWeight[] = card.greedy_walk.selected_indicators.map(
+    (code, i) => {
+      const entry = looMap.get(code);
+      const rawName = entry?.name ?? null;
+      const name = rawName ?? resolveIndicatorName(code);
+      const provider = inferProvider(code);
+      const shapWeightPct = Number(((drops[i] / totalDrop) * 100).toFixed(1));
+      const aucDrop = Number((entry?.auc_drop ?? 0).toFixed(4));
+      return { code, name, provider, shapWeightPct, aucDrop };
+    }
+  );
+
+  // Adjust first entry so weights sum to 100 exactly
+  const weightsSum = indicators.reduce((s, ind) => s + ind.shapWeightPct, 0);
+  if (indicators.length > 0 && weightsSum !== 100) {
+    const drift = 100 - weightsSum;
+    indicators[0] = {
+      ...indicators[0],
+      shapWeightPct: Number((indicators[0].shapWeightPct + drift).toFixed(1)),
+    };
+  }
+
+  // Score distribution from card.score_distribution
+  const sd = card.score_distribution;
+  const distribution: ScoreDistribution = {
+    histogram: sd.histogram.map((b) => ({
+      bin_lo: b.bin_lo,
+      bin_hi: b.bin_hi,
+      count: b.count,
+    })),
+    median: sd.median,
+    p90: sd.p90,
+    p99: sd.p99,
+    max: sd.max,
+  };
+
+  // Reliability from card.reliability_multipass
+  const rmp = card.reliability_multipass;
+  const reliability: ReliabilityMetrics = {
+    v1SeparationPp: rmp.v1_separation_pp, // null in sample-10 — UI renders "first vintage"
+    v4OotRecallPct: rmp.v4_oot_recall_pct, // null in sample-10
+    walksCompleted: rmp.walks_completed,
+    verdict: rmp.verdict,
+  };
+
+  // Bottom 5 countries from scores file (lowest score, non-null names)
+  let countriesBottom: CountryScore[] = [];
+  try {
+    const allScores = loadAllScores();
+    const sf = allScores[recipeId];
+    if (sf?.scores && sf.scores.length > 0) {
+      countriesBottom = [...sf.scores]
+        .filter((e) => e.name != null)
+        .sort((a, b) => a.score - b.score)
+        .slice(0, 5)
+        .map((e) => ({ name: e.name, score: Number(e.score.toFixed(1)) }));
+    }
+  } catch {
+    // scores unavailable — leave empty
+  }
+
+  // Coverage audit / cohort count
+  const nPosTotal = card.coverage_audit?.n_pos_total ?? card.n_positives;
+  const threshold = 60; // F-ML-1 §3 floor
+  const thresholdMet = nPosTotal >= threshold;
+  const nCohorts = Object.keys(card.per_cohort ?? {}).length;
+
+  // Walk identity
+  const walkDate = card.walked_at_utc ? card.walked_at_utc.split("T")[0] : TE_VINTAGE;
+
+  return {
+    indicators,
+    distribution,
+    reliability,
+    countriesBottom,
+    threshold,
+    thresholdMet,
+    nCohorts,
+    walkId: `${recipeId}_v1_${walkDate}`,
+    walkNumber: 1,
+    ratifiedBy: "Wave-1+2 fan-out · 2026-05-28",
+    walkDate,
+  };
+}
+
+// Module-level cache for built TE extras
+const _teExtrasCache = new Map<string, RecipeV4Extras | null>();
+const TE_VINTAGE = "2026-05-28";
+
+function getTE(recipeId: string): RecipeV4Extras | null {
+  if (_teExtrasCache.has(recipeId)) return _teExtrasCache.get(recipeId) ?? null;
+  const result = buildFromCard(recipeId);
+  _teExtrasCache.set(recipeId, result);
+  return result;
+}
+
+/**
+ * Get recipe V4 extras. Lookup order:
+ *   1. Hand-authored (foreign_intervention, civil_war_and_insurgency, constitutional_change)
+ *   2. TE card-derived (the 10 sample-10 recipes)
+ *   3. null (no data available)
+ */
 export function getRecipeV4Extras(recipeId: string): RecipeV4Extras | null {
-  return EXTRAS[recipeId] ?? null;
+  if (HAND_AUTHORED_EXTRAS[recipeId]) return HAND_AUTHORED_EXTRAS[recipeId];
+  return getTE(recipeId);
 }
 
 /* ────────────────────────────────────────────────────────────────────────── */
-/* Full-list mock data (capability §8/§9 — CountriesPanel expand state).       */
-/*                                                                            */
-/* Per #158 (founder, 2026-05-26): when the combined CountriesPanel expand    */
-/* button is toggled, the panel renders the FULL country roster, not just     */
-/* top-5 + bottom-5. The real bake will emit a per-recipe full ranking; this  */
-/* mock returns a plausible ~80-country list spanning each recipe's score     */
-/* distribution. All names are guaranteed to have a flag-emoji entry in       */
-/* country-flags.ts (verified by Talia 2026-05-26 build).                     */
+/* Full country roster (capability §8/§9)                                      */
 /* ────────────────────────────────────────────────────────────────────────── */
 
 /**
- * Foreign Intervention — ~80-country roster, descending from 98.1 (Iran)
- * down to 5.2 (Switzerland). Order is structurally driven by the real
- * recipe semantics (autocratic / repressed / fiscally-thin states peak;
- * stable democracies floor). Scores interpolated to give a smooth slope
- * matching the right-skewed mock distribution histogram.
+ * Return the full scored-country roster for a recipe, descending by score.
+ *
+ * TE recipes source from the real scores file.
+ * Cascade-era and un-walked recipes fall back to synthesized list.
  */
+export function getCountriesFull(recipeId: string): CountryScore[] {
+  // Try real scores first
+  try {
+    const allScores = loadAllScores();
+    const sf = allScores[recipeId];
+    if (sf?.scores && sf.scores.length > 0) {
+      return [...sf.scores]
+        .filter((e) => e.name != null)
+        .map((e) => ({ name: e.name, score: Number(e.score.toFixed(1)) }))
+        .sort((a, b) => b.score - a.score);
+    }
+  } catch {
+    // fall through to synth
+  }
+
+  // Demo-graduated case — use the stored hand-authored list
+  if (recipeId === "foreign_intervention") {
+    return COUNTRIES_FULL_FOREIGN_INTERVENTION.sort((a, b) => b.score - a.score);
+  }
+
+  return synthesizeFullList(recipeId);
+}
+
 const COUNTRIES_FULL_FOREIGN_INTERVENTION: CountryScore[] = [
   { name: "Iran", score: 98.1 },
   { name: "Turkmenistan", score: 97.0 },
@@ -632,26 +580,6 @@ const COUNTRIES_FULL_FOREIGN_INTERVENTION: CountryScore[] = [
   { name: "Switzerland", score: 5.2 },
 ];
 
-const FULL_LISTS: Record<string, CountryScore[]> = {
-  foreign_intervention: COUNTRIES_FULL_FOREIGN_INTERVENTION,
-};
-
-/**
- * Return the full scored-country roster for a recipe, descending by score.
- * For recipes without a populated mock, synthesize from top + bottom via
- * smooth interpolation across known flag-bearing country names — enough
- * to demo the expand toggle without crashing.
- */
-export function getCountriesFull(recipeId: string): CountryScore[] {
-  const populated = FULL_LISTS[recipeId];
-  if (populated) {
-    return [...populated].sort((a, b) => b.score - a.score);
-  }
-  return synthesizeFullList(recipeId);
-}
-
-/* Fallback synth: blends top-5 and bottom-5 with interpolated intermediate */
-/* countries pulled from the flag-bearing pool. Returns ~30 entries.        */
 const FILLER_POOL = [
   "Russia",
   "Turkey",
@@ -686,12 +614,8 @@ const FILLER_POOL = [
 ];
 
 function synthesizeFullList(recipeId: string): CountryScore[] {
-  const extras = EXTRAS[recipeId];
+  const extras = HAND_AUTHORED_EXTRAS[recipeId];
   const bottom = extras?.countriesBottom ?? [];
-  // recipes.ts is the canonical top source; we don't import it here to keep
-  // the helper self-contained — the page passes countriesTop separately.
-  // For the synth fallback we just bracket with extras.countriesBottom and a
-  // synthetic top derived from filler pool max scores.
   const fillerCount = Math.min(FILLER_POOL.length, 25);
   const peakScore = 80;
   const floorScore = bottom.length > 0 ? bottom[0].score : 10;
@@ -699,20 +623,15 @@ function synthesizeFullList(recipeId: string): CountryScore[] {
   for (let i = 0; i < fillerCount; i++) {
     const t = i / Math.max(1, fillerCount - 1);
     const score = peakScore - t * (peakScore - floorScore - 5);
-    list.push({ name: FILLER_POOL[i], score: round1(score) });
+    list.push({ name: FILLER_POOL[i], score: Math.round(score * 10) / 10 });
   }
   for (const b of bottom) list.push(b);
   return list.sort((a, b) => b.score - a.score);
 }
 
-function round1(n: number): number {
-  return Math.round(n * 10) / 10;
-}
-
 /**
- * Fallback extras for recipes without populated V4.1 mock data. Returns
- * sensible defaults so the page renders without crashing — most metrics
- * become section-pending gates.
+ * Fallback extras for recipes without any data. Returns sensible empty defaults
+ * so the page renders without crashing.
  */
 export function getFallbackExtras(recipeId: string): RecipeV4Extras {
   const recipe = getRecipe(recipeId);
@@ -720,10 +639,10 @@ export function getFallbackExtras(recipeId: string): RecipeV4Extras {
     indicators: (recipe?.recipe_id ? [] : []) as IndicatorWithWeight[],
     distribution: { histogram: [], median: 0, p90: 0, p99: 0, max: 0 },
     reliability: {
-      v1SeparationPp: 0,
-      v4OotRecallPct: 0,
+      v1SeparationPp: null,
+      v4OotRecallPct: null,
       walksCompleted: 0,
-      verdict: "HARD_FAIL",
+      verdict: "NO_DATA",
     },
     countriesBottom: [],
     threshold: 60,

@@ -25,6 +25,7 @@ import {
   IN_FLIGHT,
   VACATE_LOG,
 } from "@/lib/te-mock/recipe-tracker-extra";
+import { loadActivityFeed } from "@/lib/te-data-contract/load";
 import type { HeroTile } from "@/components/dashboard-v4/DashboardHero";
 import type { Highlight } from "@/components/dashboard-v4/HighlightsBand";
 import type { SurfaceCardData } from "@/components/dashboard-v4/SurfaceCard";
@@ -259,6 +260,8 @@ export const SURFACE_CARDS: SurfaceCardData[] = [
   },
 ];
 
+// ─── Activity feed helpers ─────────────────────────────────────────────────────
+
 const RECENT_WALKS = HISTORICAL_WALKS.slice()
   .sort((a, b) => b.fired_at.localeCompare(a.fired_at))
   .slice(0, 4);
@@ -269,19 +272,15 @@ const WALK_TO_EVENT: Record<
     Icon: LucideIcon;
     color: string;
     kind: ActivityEvent["kind"];
-    title: (id: string, auc?: number) => string;
-    detail: (id: string, auc?: number) => string;
+    title: (id: string, label?: string) => string;
+    detail: (id: string) => string;
   }
 > = {
   GRADUATED: {
     Icon: GraduationCap,
     color: "#3FBF8F",
     kind: "graduation",
-    title: (id) => `Validation passed: ${labelOf(id)}`,
-    // Conditional tail: only append "later withdrawn after audit" when a
-    // VACATED row exists for the same recipe_id in HISTORICAL_WALKS. Without
-    // the guard, every future non-vacated graduation would falsely read as
-    // withdrawn — a hardcoded misstatement (T-02 reviewer follow-up).
+    title: (id, label) => `Validation passed: ${label ?? labelOf(id)}`,
     detail: (id) =>
       wasGraduationVacated(id)
         ? "Recipe cleared the discrimination threshold; later withdrawn after audit (see correction below)."
@@ -291,15 +290,22 @@ const WALK_TO_EVENT: Record<
     Icon: CircleX,
     color: "#E68F29",
     kind: "hard_fail",
-    title: (id) => `Validation didn't hold: ${labelOf(id)}`,
+    title: (id, label) => `Validation didn't hold: ${label ?? labelOf(id)}`,
     detail: () =>
       "Discrimination didn't separate pre-event from non-event years strongly enough.",
+  },
+  MARGINAL_PENDING_BETA_CALIBRATION: {
+    Icon: Sparkles,
+    color: "#a78bfa",
+    kind: "walk_fired",
+    title: (id, label) => `Validation borderline: ${label ?? labelOf(id)}`,
+    detail: () => "Discrimination is near the threshold; under review.",
   },
   VACATED: {
     Icon: CircleX,
     color: "#E64545",
     kind: "vacate",
-    title: (id) => `Correction published: ${labelOf(id)}`,
+    title: (id, label) => `Correction published: ${label ?? labelOf(id)}`,
     detail: () =>
       "A prior validation was withdrawn after audit; re-evaluation is in progress.",
   },
@@ -307,60 +313,32 @@ const WALK_TO_EVENT: Record<
     Icon: Radio,
     color: "#a78bfa",
     kind: "walk_fired",
-    title: (id) => `Re-evaluation in progress: ${labelOf(id)}`,
+    title: (id, label) => `Re-evaluation in progress: ${label ?? labelOf(id)}`,
     detail: () => "Outcome will replace the prior result.",
   },
-  MARGINAL: {
-    Icon: Sparkles,
-    color: "#a78bfa",
-    kind: "walk_fired",
-    title: (id) => `Validation borderline: ${labelOf(id)}`,
-    detail: () => "Discrimination is near the threshold; under review.",
-  },
-  // SCHEDULED and QUEUED collapse to the same surface — both mean "waiting
-  // for the evidence base to meet the bar before validation fires." Use a
-  // single shared entry to prevent the two keys from drifting apart.
   SCHEDULED: {
     Icon: Calendar,
     color: "#7A8FA0",
     kind: "walk_fired",
-    title: (id) => `Scheduled: ${labelOf(id)}`,
+    title: (id, label) => `Scheduled: ${label ?? labelOf(id)}`,
     detail: () => "Will run when the evidence base meets the bar.",
   },
 };
-// Alias QUEUED → SCHEDULED so future verdict values with either key resolve
-// to the same rendering without a silent dictionary miss.
+WALK_TO_EVENT.MARGINAL = WALK_TO_EVENT.MARGINAL_PENDING_BETA_CALIBRATION;
 WALK_TO_EVENT.QUEUED = WALK_TO_EVENT.SCHEDULED;
 
 function labelOf(recipe_id: string): string {
   return RECIPES.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;
 }
 
-/** True if a VACATED row exists for this recipe in the walk history. Used to
- *  decide whether the GRADUATED activity-timeline entry should append the
- *  "later withdrawn after audit" tail. */
 function wasGraduationVacated(recipe_id: string): boolean {
   return HISTORICAL_WALKS.some(
     (w) => w.recipe_id === recipe_id && w.verdict === "VACATED"
   );
 }
 
-const WALK_EVENTS: ActivityEvent[] = RECENT_WALKS
-  // Drop VACATED walk rows — the META_EVENTS entry covers this correction
-  .filter((w) => w.verdict !== "VACATED")
-  .map((w) => {
-    const meta = WALK_TO_EVENT[w.verdict] ?? WALK_TO_EVENT.IN_FLIGHT;
-    return {
-      date: w.fired_at,
-      kind: meta.kind,
-      title: meta.title(w.recipe_id, w.loco_auc),
-      detail: meta.detail(w.recipe_id, w.loco_auc),
-      href: `/recipes/${w.recipe_id}`,
-      Icon: meta.Icon,
-      color: meta.color,
-    };
-  });
-
+// Hand-authored meta events (vacate / methodology amendment / data events).
+// These are displayed alongside the pipeline walk events.
 const META_EVENTS: ActivityEvent[] = [
   {
     date: "2026-05-25",
@@ -409,4 +387,72 @@ const META_EVENTS: ActivityEvent[] = [
   },
 ];
 
-export const ACTIVITY_EVENTS: ActivityEvent[] = [...WALK_EVENTS, ...META_EVENTS];
+/**
+ * Build ActivityEvent[] from the real program-feed.json activity feed.
+ * walk_fired events → kind "walk_fired" or "hard_fail" based on verdict.
+ * methodology_amendment → kind "methodology_amendment".
+ * vacate → kind "vacate".
+ * Falls back to RECENT_WALKS if loadActivityFeed throws.
+ */
+function buildActivityEventsFromFeed(): ActivityEvent[] {
+  try {
+    const feed = loadActivityFeed();
+    return feed.events
+      .filter((e) => e.kind !== "vacate") // vacate handled by META_EVENTS
+      .map((e) => {
+        if (e.kind === "walk_fired") {
+          const verdict = (e.verdict as string | undefined) ?? "IN_FLIGHT";
+          const meta = WALK_TO_EVENT[verdict] ?? WALK_TO_EVENT.IN_FLIGHT;
+          const label = e.recipe_label as string | undefined;
+          const recipeId = (e.recipe_id as string | undefined) ?? "";
+          return {
+            date: (e.fired_at as string).slice(0, 10),
+            kind: meta.kind,
+            title: meta.title(recipeId, label),
+            detail: meta.detail(recipeId),
+            href: `/recipes/${recipeId}`,
+            Icon: meta.Icon,
+            color: meta.color,
+          } satisfies ActivityEvent;
+        }
+        if (e.kind === "methodology_amendment") {
+          return {
+            date: (e.fired_at as string).slice(0, 10),
+            kind: "methodology_amendment",
+            title: (e.title as string | undefined) ?? "Methodology update",
+            detail: (e.detail as string | undefined) ?? "",
+            Icon: FilePenLine,
+            color: "#38bdf8",
+          } satisfies ActivityEvent;
+        }
+        // Generic fallback.
+        return {
+          date: (e.fired_at as string).slice(0, 10),
+          kind: "walk_fired",
+          title: String((e as Record<string, unknown>).title ?? e.kind),
+          detail: "",
+          Icon: Radio,
+          color: "#7A8FA0",
+        } satisfies ActivityEvent;
+      });
+  } catch {
+    // Fall back to HISTORICAL_WALKS if feed unavailable.
+    return RECENT_WALKS.filter((w) => w.verdict !== "VACATED").map((w) => {
+      const meta = WALK_TO_EVENT[w.verdict] ?? WALK_TO_EVENT.IN_FLIGHT;
+      return {
+        date: w.fired_at,
+        kind: meta.kind,
+        title: meta.title(w.recipe_id),
+        detail: meta.detail(w.recipe_id),
+        href: `/recipes/${w.recipe_id}`,
+        Icon: meta.Icon,
+        color: meta.color,
+      };
+    });
+  }
+}
+
+export const ACTIVITY_EVENTS: ActivityEvent[] = [
+  ...buildActivityEventsFromFeed(),
+  ...META_EVENTS,
+];

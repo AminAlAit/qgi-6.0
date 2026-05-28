@@ -1,35 +1,26 @@
 /**
- * Mock data for the /nearest-analog mockup page.
+ * nearest-analog-data — current-country analog data for /nearest-analog.
  *
- * Implements Capability #12 (Nearest historical analog) from the TE capability
- * ledger: SHAP-weighted cosine similarity between a country's recent indicator
- * trajectory and the pre-event trajectories of all historical positives in the
- * recipe's training set. Self-excluded. Carries the regional-clustering caveat.
+ * V4.1 wire-up (2026-05-29):
+ *   - Hand-authored ENTRIES remain as the primary catalog (10 countries with
+ *     rich narrative analogs).
+ *   - TE sample-10 analogs from loadAnalogs() are appended for countries NOT
+ *     already present in the hand-authored set. These carry real match_score /
+ *     contributions from the pipeline; what_happened_next is null in the raw
+ *     data — displayed as "In training set" (honest gap).
+ *   - getCurrentCountry() and getCurrentCountries() are unchanged in shape.
  *
- * SHAPE OF THE DATA
- * - Each "current country" carries 12 quarterly indicator values (one synthetic
- *   composite series driving the sparkline). Values are z-scored 0..100.
- * - Each country has top-3 historical analogs. Each analog carries its own
- *   12-quarter pre-event trajectory in the same scale, so the sparkline
- *   overlay reads honestly (same axis, same units).
- * - primary_recipe_id is the recipe whose canonical shape drove the match.
- *   Per spec, foreign_intervention is the "demo graduated" recipe so it carries
- *   most of the primary matches; walked-failed recipes appear as secondary
- *   contributors only.
- * - what_happened_next is HISTORICAL FACT about the analog country in the
- *   years AFTER its labelled event. Never a prediction about the current
- *   country. M8-R5 binding.
+ * Implements Capability #12 (Nearest historical analog): SHAP-weighted cosine
+ * similarity between a country's recent indicator trajectory and the pre-event
+ * trajectories of all historical positives in the recipe's training set.
+ * Self-excluded. Carries the regional-clustering caveat.
  *
- * HONESTY REGIME (M8-R5)
+ * HONESTY REGIME
  * - These are similarity matches, NOT forward predictions.
- * - "Country X today resembles Tunisia 2008" means the indicator trajectories
- *   rhyme — it does NOT mean Country X will follow Tunisia's outcome.
  * - Match scores < 70 are flagged as "weak analog" per ledger Feature 12.
- * - Regional-clustering caveat applies: LOCO is within-region-out-of-country,
- *   not true out-of-region.
- *
- * Mockup-only. Not production. Local-only branch (`local/te-precedents-mockup`).
+ * - Regional-clustering caveat applies.
  */
+import { loadAnalogs } from "@/lib/te-data-contract/load";
 
 export interface HistoricalAnalog {
   country: string;
@@ -749,15 +740,85 @@ const ENTRIES: CurrentCountryEntry[] = [
   },
 ];
 
+// ─── TE analogs supplement ────────────────────────────────────────────────────
+// Append real TE analog entries from loadAnalogs() for countries not already
+// in the hand-authored ENTRIES list.
+
+let _allEntriesCache: CurrentCountryEntry[] | null = null;
+
+function buildAllEntries(): CurrentCountryEntry[] {
+  const base = ENTRIES.slice();
+  const handAuthored = new Set(base.map((e) => e.iso.toUpperCase()));
+
+  try {
+    const data = loadAnalogs();
+    for (const te of data.entries) {
+      if (!te.name) continue;
+      // iso: analog entries have iso=null in v3 contract; derive from name.
+      const nameLower = te.name.toLowerCase();
+      // Build a best-effort ISO from country-iso2 (imported transitively via
+      // countries-v4-data → country-iso2). Since we can't import there (circular),
+      // use a simple 3-letter fallback from the name.
+      const iso3 = te.iso ?? te.name.slice(0, 3).toUpperCase();
+      if (handAuthored.has(iso3)) continue;
+      if (!te.analogs || te.analogs.length === 0) continue;
+
+      // Build HistoricalAnalog[] from TE analog entries.
+      const analogs: HistoricalAnalog[] = te.analogs
+        .filter((a) => a.country && a.year && a.match_score != null)
+        .slice(0, 3)
+        .map((a) => ({
+          country: a.country ?? "",
+          year: a.year ?? 0,
+          match_score: a.match_score ?? 0,
+          primary_recipe_id: a.primary_recipe_id ?? "",
+          secondary_recipe_ids: [],
+          indicator_trajectory: [], // real trajectory not in v3 analogs contract
+          what_happened_next: a.what_happened_next ?? "In training set.",
+          weak_analog: (a.weak_analog ?? false) || (a.match_score ?? 0) < 70,
+        }));
+      if (analogs.length === 0) continue;
+
+      // Build RecipeContribution[] from TE contributions.
+      const contributions: RecipeContribution[] = (te.contributions ?? [])
+        .filter((c) => c.recipe_id)
+        .map((c) => ({
+          recipe_id: c.recipe_id ?? "",
+          recipe_label: c.recipe_label ?? c.recipe_id ?? "",
+          l1_color: c.l1_color ?? "#7A8FA0",
+          contribution_pct: c.contribution_pct ?? 0,
+          status: "walked_no_graduation" as const,
+        }));
+
+      base.push({
+        iso: iso3,
+        name: te.name,
+        region: te.region ?? "Unknown",
+        indicator_trajectory: Array.isArray(te.indicator_trajectory)
+          ? (te.indicator_trajectory as number[])
+          : [],
+        analogs,
+        contributions,
+      });
+      handAuthored.add(iso3);
+    }
+  } catch {
+    // loadAnalogs unavailable — fall through to hand-authored only
+  }
+
+  return base;
+}
+
 export function getCurrentCountries(): CurrentCountryEntry[] {
-  return ENTRIES;
+  if (!_allEntriesCache) _allEntriesCache = buildAllEntries();
+  return _allEntriesCache;
 }
 
 export function getCurrentCountry(iso: string): CurrentCountryEntry | undefined {
-  return ENTRIES.find((e) => e.iso === iso);
+  return getCurrentCountries().find((e) => e.iso === iso.toUpperCase());
 }
 
 export function defaultCurrentCountry(): CurrentCountryEntry {
   // Default to Egypt — the spec's example.
-  return ENTRIES[0];
+  return getCurrentCountries()[0];
 }

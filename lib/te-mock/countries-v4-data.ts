@@ -1,5 +1,15 @@
 /**
- * Mock data for the /countries-v4 mockup pages.
+ * countries-v4-data — country hub data for /countries-v4 pages.
+ *
+ * V4.1 wire-up (2026-05-29):
+ *   - SEEDS remain the primary source of driver/trajectory/population data.
+ *   - TE sample-10 scores are overlaid on top_recipes when a TE recipe row
+ *     matches a seed's recipesLit entry by recipe_id. This keeps drivers
+ *     honest (seed-authored, not fabricated from scores) while surfacing
+ *     real discrimination ranks.
+ *   - country-index.json (214 entries) backfills iso2/flag_emoji for any
+ *     country that appears in scores but not in SEEDS.
+ *   - vintage is sourced from the country-index for TE countries.
  *
  * Each country carries:
  *   - identity (iso, name, region, flag_emoji, population, vintage)
@@ -12,15 +22,17 @@
  *     nearest-analog-data when available; plausible fabrications otherwise)
  *   - lit_families: derived list of distinct L1 families lit
  *
- * Country names are deliberately reused from compound-risk-data.ts so the
- * cross-reference into /compound-risk surfaces the same set. All scores
- * are M8-R5 discrimination ranks, NOT probabilities.
- *
- * Mockup only. Local-only branch `local/te-precedents-mockup`.
+ * All scores are discrimination ranks, NOT probabilities.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
 import { getRecipe, type TrackerRecipe, type RecipeStatus } from "@/lib/te-mock/recipes";
 import { getCurrentCountry } from "@/lib/te-mock/nearest-analog-data";
+import {
+  loadAllScores,
+  loadCountryIndex,
+  SAMPLE_10_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
+import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
 
 export interface CountryTopRecipe {
   recipe_id: string;
@@ -2783,7 +2795,131 @@ function buildAttribution(seed: Seed, recipeId: string): CountryDriverAttributio
   }));
 }
 
-export const COUNTRIES_V4: CountryV4[] = SEEDS.map(hydrate);
+// ─── TE sample-10 scores overlay ─────────────────────────────────────────────
+//
+// For each country in SEEDS, check if any of its recipesLit entries map to a
+// TE sample-10 recipe. If so, replace the seed-authored score with the real
+// discrimination rank from the scores file. This keeps drivers honest
+// (seed-authored) while showing real ranks in top_recipes.
+//
+// Countries that appear in TE scores but NOT in SEEDS are appended below as
+// TE-only entries (iso/flag resolved from country-iso2.ts; drivers are empty
+// since we have no seed-authored indicators for them).
+
+let _countriesV4Cache: CountryV4[] | null = null;
+
+function buildCountriesV4(): CountryV4[] {
+  // Build a map of recipe_id → name → real score from TE scores files.
+  // Keys are normalized: recipe_id (string), country name lowercase → score.
+  const teScoreMap = new Map<string, Map<string, number>>();
+  // Also track top_recipes from country-index for L1 metadata.
+  const ciTopRecipesMap = new Map<
+    string,
+    {
+      recipe_id: string;
+      score: number;
+      l1_id: string;
+      l1_label: string;
+      l1_color: string;
+    }[]
+  >();
+  try {
+    const allScores = loadAllScores();
+    for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+      const sf = allScores[recipeId];
+      if (!sf) continue;
+      const byName = new Map<string, number>();
+      for (const entry of sf.scores) {
+        byName.set(entry.name.toLowerCase(), entry.score);
+      }
+      teScoreMap.set(recipeId, byName);
+    }
+    const ci = loadCountryIndex();
+    for (const c of ci.countries) {
+      if (!c.top_recipes) continue;
+      ciTopRecipesMap.set(
+        c.name.toLowerCase(),
+        c.top_recipes.map((r) => ({
+          recipe_id: r.recipe_id,
+          score: r.score ?? 0,
+          l1_id: r.l1_id ?? "",
+          l1_label: r.l1_label ?? "",
+          l1_color: r.l1_color ?? "#7A8FA0",
+        }))
+      );
+    }
+  } catch {
+    // Loaders unavailable at this point — fall through to seed-only.
+  }
+
+  // Hydrate every seed, overlaying real TE scores where available.
+  const seedIsos = new Set(SEEDS.map((s) => s.iso.toUpperCase()));
+  const base = SEEDS.map((seed) => {
+    // For each (recipeId, seedScore) pair, check if TE has a real score.
+    const updatedRecipesLit: Array<[string, number]> = seed.recipesLit.map(
+      ([rid, seedScore]) => {
+        if (!SAMPLE_10_RECIPE_IDS.includes(rid)) return [rid, seedScore];
+        const byName = teScoreMap.get(rid);
+        if (!byName) return [rid, seedScore];
+        const real = byName.get(seed.name.toLowerCase());
+        return [rid, real !== undefined ? real : seedScore];
+      }
+    );
+    return hydrate({ ...seed, recipesLit: updatedRecipesLit });
+  });
+
+  // Append TE-only countries: countries that appear in TE scores (top_recipes
+  // from country-index) but have no SEEDS entry (iso not in seedIsos).
+  // We only add a country if it has at least one TE recipe score ≥ 50
+  // (i.e., it's meaningfully "lit" on at least one recipe).
+  const ci_extra: CountryV4[] = [];
+  try {
+    const ci = loadCountryIndex();
+    const ciVintage = ci.vintage ?? "2026-05-28";
+    for (const c of ci.countries) {
+      const iso2 = NAME_TO_ISO2.get(c.name.toLowerCase()) ?? "";
+      // Attempt a 3-letter ISO: country-index uses null iso for most entries.
+      // Build a pseudo-3-letter from iso2 until real iso3 ships per-country.
+      const iso3 = iso2 ? iso2.toUpperCase() + "_" : c.name.slice(0, 3).toUpperCase();
+      // Skip if we already have a seed for this country.
+      if (
+        seedIsos.has(iso3) ||
+        base.some((b) => b.name.toLowerCase() === c.name.toLowerCase())
+      )
+        continue;
+      if (!c.top_recipes || c.top_recipes.length === 0) continue;
+      const topScore = c.top_recipes[0]?.score ?? 0;
+      if ((topScore ?? 0) < 50) continue;
+
+      const recipesLit: Array<[string, number]> = c.top_recipes
+        .filter((r) => r.score != null)
+        .map((r) => [r.recipe_id, r.score ?? 0]);
+      if (recipesLit.length === 0) continue;
+
+      const flag = iso2 ? flagFromIso2(iso2) : "";
+      const entry = hydrate({
+        iso: iso3,
+        name: c.name,
+        region: c.region ?? "Unknown",
+        flag,
+        population: 0,
+        recipesLit,
+        drivers: [],
+        analogs: [],
+      });
+      ci_extra.push({ ...entry, vintage: ciVintage });
+    }
+  } catch {
+    // country-index unavailable — TE-only entries omitted
+  }
+
+  return [...base, ...ci_extra];
+}
+
+export const COUNTRIES_V4: CountryV4[] = (() => {
+  if (!_countriesV4Cache) _countriesV4Cache = buildCountriesV4();
+  return _countriesV4Cache;
+})();
 
 export function getCountryByIso(iso: string): CountryV4 | undefined {
   const upper = iso.toUpperCase();

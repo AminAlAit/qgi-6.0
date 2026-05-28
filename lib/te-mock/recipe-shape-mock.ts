@@ -1,13 +1,18 @@
 /**
- * recipe-shape-mock — per-indicator canonical-shape mock data feeding
- * PatternAlignmentPanel. Each indicator gets {mean, p25, p75} arrays of
- * length windowYears (one entry per year leading to the event).
+ * recipe-shape-mock — per-indicator canonical-shape data feeding
+ * PatternAlignmentPanel.
  *
- * Wireframe data, not live walk output.
- *
- * — Daniyar Bekmurat, Comparative Historical Pattern Matching
+ * V4.1 wire-up (2026-05-29):
+ *   - TE sample-10 recipes source from real card.trajectory_alignment data.
+ *   - card.trajectory_alignment is optional — if missing, returns [] so the UI
+ *     renders the "shape data not yet computed for this vintage" gate.
+ *   - foreign_intervention, civil_war_and_insurgency, constitutional_change
+ *     keep their hand-authored shape data (cascade-era; no real card).
  */
 import type { AlignmentShape } from "@/components/precedents-v4-1/PatternAlignmentPanel";
+import { loadAllCards } from "@/lib/te-data-contract/load";
+
+// ─── Synthetic shape generator (used for hand-authored data only) ─────────────
 
 function shape(
   windowYears: number,
@@ -33,6 +38,8 @@ function shape(
   }
   return { indicatorCode: "__UNSET__", mean, p25, p75 };
 }
+
+// ─── Hand-authored shapes for cascade-era / demo recipes ─────────────────────
 
 const FOREIGN_INTERVENTION_WINDOW = 18;
 const foreignInterventionShapes: AlignmentShape[] = [
@@ -73,12 +80,52 @@ const constitutionalChangeShapes: AlignmentShape[] = [
   { ...shape(CONSTITUTIONAL_WINDOW, 1, 0.0, 1.1, 0.42, 12), indicatorCode: "v2csprtcpt" },
 ];
 
-const SHAPE_DATA: Record<string, AlignmentShape[]> = {
+const HAND_AUTHORED_SHAPES: Record<string, AlignmentShape[]> = {
   foreign_intervention: foreignInterventionShapes,
   civil_war_and_insurgency: civilWarShapes,
   constitutional_change: constitutionalChangeShapes,
 };
 
+// ─── TE card-derived shapes ────────────────────────────────────────────────────
+
+/**
+ * Build AlignmentShape[] from a card's trajectory_alignment field.
+ * Returns [] if trajectory_alignment is absent (optional in v3 contract).
+ */
+function buildFromCard(recipeId: string): AlignmentShape[] {
+  try {
+    const allCards = loadAllCards();
+    const card = allCards[recipeId];
+    if (!card || !card.trajectory_alignment) return [];
+
+    return card.trajectory_alignment.indicators.map((ind) => ({
+      indicatorCode: ind.code,
+      mean: ind.shape.mean,
+      p25: ind.shape.p25,
+      p75: ind.shape.p75,
+    }));
+  } catch {
+    return [];
+  }
+}
+
+// Cache to avoid re-loading on every call
+const _shapeCache = new Map<string, AlignmentShape[]>();
+
+/**
+ * Get shape data for a recipe.
+ *
+ * Lookup order:
+ *   1. Hand-authored (foreign_intervention, civil_war_and_insurgency, constitutional_change)
+ *   2. Real card.trajectory_alignment data (TE sample-10 recipes)
+ *   3. [] — component renders "shape data not yet computed for this vintage"
+ */
 export function getShapeData(recipeId: string): AlignmentShape[] {
-  return SHAPE_DATA[recipeId] ?? [];
+  if (HAND_AUTHORED_SHAPES[recipeId]) return HAND_AUTHORED_SHAPES[recipeId];
+
+  if (_shapeCache.has(recipeId)) return _shapeCache.get(recipeId)!;
+
+  const shapes = buildFromCard(recipeId);
+  _shapeCache.set(recipeId, shapes);
+  return shapes;
 }

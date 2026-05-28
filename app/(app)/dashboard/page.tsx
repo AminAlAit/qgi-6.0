@@ -16,10 +16,9 @@ import { ActivityTimeline } from "@/components/dashboard-v4-1/ActivityTimeline";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
-  title: "Dashboard V4.1 (mockup) · QG Intelligence",
+  title: "Dashboard · QG Intelligence",
   description:
-    "Parallel route for the V4.1 dashboard redesign. Local-only mockup; not for production.",
-  robots: { index: false, follow: false },
+    "QGI dashboard: pipeline state, recipe tier summary, country highlights, and recent activity.",
 };
 
 // Calm-slate-blue constant — matches CALM_SLATE_BLUE in l1-families.ts.
@@ -35,48 +34,32 @@ export default function DashboardV41Page() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "20px 24px 64px" }}>
-        {/* ── Top strip: mockup banner + vintage chip ─────────────────────── */}
+        {/* ── Top strip: HowToReadButton + vintage chip ───────────────────── */}
+        {/* Mockup banner dropped 2026-05-29 — V4.1 dashboard is canonical. */}
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             alignItems: "center",
             marginBottom: "20px",
-            flexWrap: "wrap",
             gap: "10px",
           }}
         >
+          <HowToReadButton routeKey="dashboard-v4.1" />
           <span
             style={{
-              display: "inline-block",
-              padding: "5px 12px",
-              border: "1px solid var(--qgi-accent)",
-              color: "var(--qgi-accent)",
-              borderRadius: "4px",
-              fontSize: "11px",
-              letterSpacing: "1.5px",
+              fontSize: "10px",
+              letterSpacing: "1px",
               fontFamily: "ui-monospace, monospace",
+              color: "var(--qgi-text-dim)",
+              padding: "5px 10px",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "4px",
             }}
           >
-            MOCKUP · /dashboard · local only
+            Data as of {vintage}
           </span>
-          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <HowToReadButton routeKey="dashboard-v4.1" />
-            <span
-              style={{
-                fontSize: "10px",
-                letterSpacing: "1px",
-                fontFamily: "ui-monospace, monospace",
-                color: "var(--qgi-text-dim)",
-                padding: "5px 10px",
-                background: "var(--qgi-surface)",
-                border: "1px solid var(--qgi-border)",
-                borderRadius: "4px",
-              }}
-            >
-              Data as of {vintage}
-            </span>
-          </div>
         </div>
 
         {/* ── Hero section: eyebrow + h1 + lineage + sub ──────────────────── */}
@@ -177,9 +160,8 @@ export default function DashboardV41Page() {
           }}
         >
           <div style={{ marginBottom: "4px" }}>
-            Dashboard V4.1 mockup · vintage {vintage} · {recipes.length} recipes across 8
-            L1 families · recipe data sourced from the public recipe tracker and platform
-            mock data.
+            Vintage {vintage} · {recipes.length} recipes across 8 L1 families · recipe
+            data sourced from the public recipe tracker and platform data.
           </div>
           <div>
             Tile counts refresh after each validation run. Activity entries are

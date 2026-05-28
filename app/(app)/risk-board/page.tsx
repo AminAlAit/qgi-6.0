@@ -12,10 +12,9 @@ import { familyColor } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
 export const metadata: Metadata = {
-  title: "Risk Board (mockup) · QG Intelligence",
+  title: "Risk Board · QG Intelligence",
   description:
-    "Present-tense, tier-gated discrimination ranks across the recipe catalog. The honest replacement for the retired Signals page. Local mockup only.",
-  robots: { index: false, follow: false },
+    "Present-tense, tier-gated discrimination ranks across the recipe catalog. The honest replacement for the retired Signals page.",
 };
 
 export default function RiskBoardPage() {

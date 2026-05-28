@@ -1,22 +1,22 @@
 /**
- * Mock data for the /compound-risk view.
+ * compound-risk-data — /compound-risk view data.
  *
- * Compound score = sum of top-decile margins ((score - 50) for each lit recipe),
- * a transparent stacking heuristic over discrimination ranks. NOT a joint
- * probability : see M8-R5 disclosure on the page.
+ * V4.1 wire-up (2026-05-29):
+ *   - SEEDS (cascade-era hand-authored rows) remain for the main compound
+ *     country list and all three case studies.
+ *   - TE sample-10 countries are appended from loadCountryIndex():
+ *     each country's top_recipes (already carrying l1_id/l1_label/l1_color
+ *     from the pipeline) maps directly to CompoundLitRecipe. Countries
+ *     appearing in both SEEDS and country-index use the SEEDS version.
+ *   - Compound score formula is unchanged (sum of margins above 50).
  *
- * Every recipe renders with the visual signature dictated by its real
- * status — no "demo graduated" overlay (the isGraduated override was removed
- * 2026-05-28 as part of the V4.1 honesty bar). Recipes that did not hold up
- * carry the dashed-border treatment per RecipeCard.tsx convention; the F-family
- * color override is applied via familyColor() from lib/te-mock/l1-families.
- *
- * Country pickings + narratives are plausible-but-fictional research stubs.
- * Will be replaced by curated, dated, ratified case briefs after a second
- * recipe graduates.
+ * Compound score = sum of (score - 50) margins for each lit recipe.
+ * NOT a joint probability — see disclosure on the page.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
 import type { TrackerRecipe } from "@/lib/te-mock/recipes";
+import { loadCountryIndex, SAMPLE_10_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import { flagFromIso2, NAME_TO_ISO2 } from "@/lib/te-mock/country-iso2";
 
 export interface CompoundLitRecipe {
   recipe_id: string;
@@ -345,7 +345,7 @@ const SEEDS: Seed[] = [
   },
 ];
 
-export const COMPOUND_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => ({
+const SEED_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => ({
   country: s.country,
   iso: s.iso,
   flag: s.flag,
@@ -355,6 +355,63 @@ export const COMPOUND_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => ({
   lit_families: families(s.recipes),
   vintage: COMPOUND_VINTAGE,
 }));
+
+// ─── TE country-index supplement ─────────────────────────────────────────────
+// Append countries from country-index that have ≥1 TE recipe lit at score ≥50
+// and are NOT already in SEEDS. L1 metadata comes from country-index's
+// top_recipes array (pipeline-emitted l1_id/l1_label/l1_color).
+
+function buildTECompoundCountries(): CompoundCountry[] {
+  try {
+    const ci = loadCountryIndex();
+    const seedNames = new Set(SEEDS.map((s) => s.country.toLowerCase()));
+    const out: CompoundCountry[] = [];
+    for (const c of ci.countries) {
+      if (seedNames.has(c.name.toLowerCase())) continue;
+      if (!c.top_recipes || c.top_recipes.length === 0) continue;
+      // Only TE sample-10 recipe entries, lit at ≥50.
+      const teRecipes = c.top_recipes.filter(
+        (r) =>
+          SAMPLE_10_RECIPE_IDS.includes(r.recipe_id) && r.score != null && r.score >= 50
+      );
+      if (teRecipes.length === 0) continue;
+
+      const lit: CompoundLitRecipe[] = teRecipes.map((r) => ({
+        recipe_id: r.recipe_id,
+        label: r.label ?? r.recipe_id,
+        score: r.score ?? 0,
+        decile: Math.round((r.score ?? 0) / 10),
+        l1_id: r.l1_id ?? "",
+        l1_label: r.l1_label ?? "",
+        l1_color: r.l1_color ?? "#7A8FA0",
+      }));
+
+      const iso2 = NAME_TO_ISO2.get(c.name.toLowerCase()) ?? "";
+      const flag = iso2 ? flagFromIso2(iso2) : "";
+      // Pseudo-3-letter iso from iso2 (no real iso3 in v3 contract).
+      const iso = iso2 ? iso2.toUpperCase() + "_" : c.name.slice(0, 3).toUpperCase();
+
+      out.push({
+        country: c.name,
+        iso,
+        flag,
+        region: c.region ?? "Unknown",
+        compound_score: compound(lit),
+        lit_recipes: lit,
+        lit_families: families(lit),
+        vintage: ci.vintage ?? COMPOUND_VINTAGE,
+      });
+    }
+    return out;
+  } catch {
+    return [];
+  }
+}
+
+export const COMPOUND_COUNTRIES: CompoundCountry[] = [
+  ...SEED_COUNTRIES,
+  ...buildTECompoundCountries(),
+];
 
 export function countLitAtThreshold(
   countries: CompoundCountry[],

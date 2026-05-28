@@ -1,28 +1,30 @@
 /**
- * Mock data for the /risk-board page — the "honest replacement for Signals."
+ * risk-board-data — board data for /risk-board.
+ *
+ * V4.1 wire-up (2026-05-29):
+ *   - Cascade-era recipe rows (foreign_intervention, civil_war_and_insurgency,
+ *     etc.) keep their hand-authored cells.
+ *   - TE sample-10 recipe rows are generated at runtime from real scores
+ *     files: top-10 countries by discrimination rank, sorted descending.
+ *   - getBoardRecipeIds() now includes all 10 TE sample-10 recipes.
+ *   - getTopPairs() now includes top-1 pair from each TE recipe row.
  *
  * Three feeds:
  *   1. getTopPairs()        — today's top {country × recipe} pairs, ranked.
  *   2. getRecipeRow(id)     — for a recipe row, the top-10 country/score cells.
- *   3. getRecentMovements() — recent rank shifts across the board.
+ *   3. getRecentMovements() — empty at vintage-1 (no prior vintage to diff).
  *
- * All numbers are MOCK / illustrative. Per the M8-R5 honesty regime, scores
- * are presented as DISCRIMINATION RANKS, not probabilities.
- *
- * State alignment with recipe-tracker.json (vintage 2026-05-23):
- *   - foreign_intervention            → walked_no_graduation (rendered as
- *                                         demo-graduated for the mockup;
- *                                         see lib/te-mock/recipes.ts).
- *   - civil_war_and_insurgency        → live_legacy (F-ML-1 HARD_FAIL chip).
- *   - terrorist_attack                → walked_no_graduation (HARD-FAIL).
- *   - economic_recession              → walked_no_graduation (HARD-FAIL).
- *   - elections_and_voting            → walked_no_graduation (HARD-FAIL).
- *   - everything else                 → queued / no-walk.
+ * All scores are discrimination ranks, NOT probabilities.
  */
 
 import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import {
+  loadScores,
+  loadCountryIndex,
+  SAMPLE_10_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
 
-export const BOARD_VINTAGE = "2026-05-23";
+export const BOARD_VINTAGE = "2026-05-28";
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /* Types                                                                       */
@@ -163,8 +165,38 @@ const TOP_PAIRS_RAW: BoardPair[] = [
   { country: "Lebanon", recipe_id: "economic_recession", score: 65.4, rank_delta_q: 2 },
 ];
 
+/**
+ * Build TE top pairs: top-1 from each TE recipe row, for inclusion in the
+ * hero strip. rank_delta_q is null (vintage 1 — no prior vintage to diff).
+ */
+function buildTETopPairs(): BoardPair[] {
+  const pairs: BoardPair[] = [];
+  for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+    try {
+      const row = getTERecipeRow(recipeId);
+      const top = row?.cells.find((c) => c.state === "scored" && c.score != null);
+      if (top && top.score != null) {
+        pairs.push({
+          country: top.country,
+          recipe_id: recipeId,
+          score: top.score,
+          rank_delta_q: null, // vintage 1 — no prior
+        });
+      }
+    } catch {
+      // skip
+    }
+  }
+  return pairs;
+}
+
 export function getTopPairs(): BoardPair[] {
-  return TOP_PAIRS_RAW.slice().sort((a, b) => b.score - a.score);
+  // Merge hand-authored cascade pairs with real TE top pairs.
+  // De-duplicate by (country, recipe_id) — cascade takes precedence.
+  const cascade = TOP_PAIRS_RAW.slice();
+  const seen = new Set(cascade.map((p) => `${p.country}:${p.recipe_id}`));
+  const te = buildTETopPairs().filter((p) => !seen.has(`${p.country}:${p.recipe_id}`));
+  return [...cascade, ...te].sort((a, b) => b.score - a.score);
 }
 
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -346,7 +378,58 @@ const EMPTY_QUEUED_CELLS: BoardCell[] = Array.from({ length: 10 }, () => ({
   state: "no_walk_yet" as const,
 }));
 
+// ─── TE sample-10 row builder ─────────────────────────────────────────────────
+
+/**
+ * Build a RecipeRow for a TE sample-10 recipe using real scores.
+ * Returns null if scores are unavailable (loader throws).
+ */
+function buildTERecipeRow(recipeId: string): RecipeRow | null {
+  try {
+    const recipe = getRecipe(recipeId);
+    if (!recipe) return null;
+    const sf = loadScores(recipeId);
+    // Resolve n_countries_scored from real scores file.
+    const n_countries_scored = sf.n_countries_scored ?? sf.scores.length;
+    // Top-10 by score descending.
+    const top10 = sf.scores
+      .filter((e) => e.score != null)
+      .sort((a, b) => (b.score ?? 0) - (a.score ?? 0))
+      .slice(0, 10);
+    const cells: BoardCell[] = top10.map((e) => ({
+      country: e.name,
+      score: e.score ?? null,
+      state: "scored" as const,
+    }));
+    // Pad to 10 if fewer than 10 scored countries.
+    while (cells.length < 10) {
+      cells.push({ country: "—", score: null, state: "not_scored" as const });
+    }
+    return {
+      recipe_id: recipeId,
+      cells,
+      display_state: "walked_no_graduation",
+      n_countries_scored,
+      countries_not_scored_iso: null, // not available in v3 contract
+      platform_roster_size: sf.n_countries_scored ?? PLATFORM_ROSTER_SIZE,
+    };
+  } catch {
+    return null;
+  }
+}
+
+// Module-level cache for TE rows (avoid re-loading on every call).
+const _teRowCache = new Map<string, RecipeRow | null>();
+
+function getTERecipeRow(recipeId: string): RecipeRow | null {
+  if (!_teRowCache.has(recipeId)) {
+    _teRowCache.set(recipeId, buildTERecipeRow(recipeId));
+  }
+  return _teRowCache.get(recipeId) ?? null;
+}
+
 export function getRecipeRow(recipeId: string): RecipeRow | null {
+  // 1. Hand-authored cascade rows.
   const recipe = getRecipe(recipeId);
   if (!recipe) return null;
   const cells = RECIPE_ROW_CELLS[recipeId];
@@ -363,6 +446,12 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
       platform_roster_size: PLATFORM_ROSTER_SIZE,
     };
   }
+  // 2. TE sample-10 rows (real data).
+  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+    const teRow = getTERecipeRow(recipeId);
+    if (teRow) return teRow;
+  }
+  // 3. Queued / no walk.
   return {
     recipe_id: recipeId,
     cells: EMPTY_QUEUED_CELLS,
@@ -374,8 +463,8 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
 }
 
 /**
- * Recipes shown on the board, in order. Visible (scored) rows first,
- * then a representative queued sample.
+ * Recipes shown on the board, in order. Cascade visible rows first,
+ * then TE sample-10 rows (all walked_no_graduation), then queued sample.
  */
 export function getBoardRecipeIds(): string[] {
   return [
@@ -384,6 +473,11 @@ export function getBoardRecipeIds(): string[] {
     "terrorist_attack",
     "economic_recession",
     "elections_and_voting",
+    // TE sample-10 walked recipes (real data)
+    ...SAMPLE_10_RECIPE_IDS.filter(
+      (id) => id !== "terrorist_attack" // already listed above from cascade set
+    ),
+    // Queued (no walk yet)
     ...QUEUED_RECIPES_ON_BOARD,
   ];
 }

@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
-import { RecipeCard } from "@/components/precedents-v2/RecipeCard";
+import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
-  title: "Recipes V4.1 (mockup) · QG Intelligence",
+  title: "Recipes · QG Intelligence",
   description:
-    "Recipes V4.1 gallery: dashboard panel grid, L1-color accent, tooltip-based honesty. Local-only, not for production.",
-  robots: { index: false, follow: false },
+    "Recipe catalog: every structural-event recipe in the QG Intelligence research program, grouped by L1 family.",
 };
 
 const STATUS_ORDER: Record<TrackerRecipe["status"], number> = {
@@ -49,31 +48,16 @@ export default function RecipesV41GalleryPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Mockup banner + HowToReadButton */}
+        {/* HowToReadButton (mockup banner dropped 2026-05-29 — V4.1 is canonical) */}
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             alignItems: "center",
             marginBottom: "16px",
-            flexWrap: "wrap",
             gap: "8px",
           }}
         >
-          <span
-            style={{
-              display: "inline-block",
-              padding: "5px 12px",
-              border: "1px solid var(--qgi-accent)",
-              color: "var(--qgi-accent)",
-              borderRadius: "4px",
-              fontSize: "11px",
-              letterSpacing: "1.5px",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            MOCKUP · Recipes V4.1 · local only
-          </span>
           <HowToReadButton routeKey="recipes-v4.1" />
         </div>
 
@@ -110,8 +94,7 @@ export default function RecipesV41GalleryPage() {
             }}
           >
             All {recipes.length} structural-event recipes in the QG Intelligence research
-            program, grouped by L1 family. Pick any recipe to open its V4.1 report card:
-            dashboard panel grid, L1-color accent, honesty via tooltips not yellow boxes.
+            program, grouped by L1 family. Pick any recipe to open its full report card.
           </p>
           <p
             style={{

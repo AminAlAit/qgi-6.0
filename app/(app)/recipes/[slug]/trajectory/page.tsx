@@ -28,12 +28,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const pattern = getPattern(slug);
   return {
     title: pattern
-      ? `${pattern.name} trajectory (v4.1 mockup) · QG Intelligence`
+      ? `${pattern.name} trajectory · QG Intelligence`
       : "Trajectory not found · QG Intelligence",
     description: pattern
-      ? `The canonical movement shape of ${pattern.name}: a ${pattern.window_y}-year run-up across ${pattern.n_positives || "the available"} verified cases. Local-only mockup.`
+      ? `The canonical movement shape of ${pattern.name}: a ${pattern.window_y}-year run-up across ${pattern.n_positives || "the available"} verified cases.`
       : "Trajectory not found.",
-    robots: { index: false, follow: false },
   };
 }
 

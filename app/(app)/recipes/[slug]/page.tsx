@@ -57,11 +57,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const recipe = getRecipe(slug);
   return {
     title: recipe
-      ? `${recipe.label} · Recipes V4.1 · QG Intelligence`
+      ? `${recipe.label} · Recipes · QG Intelligence`
       : "Recipe not found · QG Intelligence",
-    description:
-      "Recipe report-card mockup V4.1: dashboard panel grid, L1-color accent, honesty via tooltips. Local-only, not for production.",
-    robots: { index: false, follow: false },
+    description: recipe
+      ? `${recipe.label} recipe report card: indicator set, validation, results.`
+      : "Recipe not found.",
   };
 }
 

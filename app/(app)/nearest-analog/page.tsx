@@ -33,10 +33,9 @@ import { MethodologyBox } from "@/components/nearest-analog/MethodologyBox";
 import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
 
 export const metadata: Metadata = {
-  title: "Nearest Analog Finder (mockup) · QG Intelligence",
+  title: "Nearest Analog Finder · QG Intelligence",
   description:
-    "Pick a country today, see its closest historical pre-crisis shape matches. TE Capability #12 mockup. Local-only; not for production.",
-  robots: { index: false, follow: false },
+    "Pick a country today, see its closest historical pre-crisis shape matches.",
 };
 
 interface NearestAnalogPageProps {

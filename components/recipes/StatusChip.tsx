@@ -15,8 +15,10 @@ export const STATUS_META: Record<
     color: "#a78bfa",
     bgAlpha: "rgba(167,139,250,0.15)",
   },
+  // 2026-05-29 wire-up: relabel from "Legacy ML-1" → "Prior vintage" to
+  // strip the methodology-jargon from user-facing chips.
   live_legacy: {
-    label: "Legacy ML-1",
+    label: "Prior vintage",
     color: "#7A8FA0",
     bgAlpha: "rgba(122,143,160,0.15)",
   },

@@ -93,7 +93,7 @@ export function PageLayout({
                 href={"/recipes" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
-                ← Recipes V4.1
+                ← Recipes
               </Link>
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span style={{ color: recipe.l1_color }}>
