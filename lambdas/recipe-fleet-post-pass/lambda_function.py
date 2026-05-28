@@ -124,30 +124,35 @@ def _list_recipe_ids(bucket: str, prefix: str) -> list[str]:
 # ---------------------------------------------------------------------------
 
 
+def _parse_utc(ts: str | None) -> datetime | None:
+    """Parse an ISO-8601 UTC timestamp, returning None if absent/unparseable.
+    Accepts both trailing-Z and ±HH:MM offset forms. Consolidates the three
+    repetitions of `datetime.fromisoformat(ts.replace("Z","+00:00"))` that
+    otherwise drift independently in this module (Sonnet PR #44 nit N1)."""
+    if not ts:
+        return None
+    try:
+        return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+
+
 def _derive_floor_ordering_ok(floors_doc: dict | None, results: dict[str, dict | None]) -> bool:
     """FLEET-5 in code: floors must be frozen BEFORE the earliest walk fires. If we can't
     read either side of the comparison, fail CLOSED (return False) — never silently True.
     """
     if not floors_doc:
         return False
-    frozen_at = floors_doc.get("frozen_at_utc")
-    if not frozen_at:
-        return False
-    try:
-        frozen_dt = datetime.fromisoformat(frozen_at.replace("Z", "+00:00"))
-    except ValueError:
+    frozen_dt = _parse_utc(floors_doc.get("frozen_at_utc"))
+    if frozen_dt is None:
         return False
     walk_times: list[datetime] = []
     for summary in results.values():
         if not summary:
             continue
-        filed = summary.get("filed")
-        if not filed:
-            continue
-        try:
-            walk_times.append(datetime.fromisoformat(filed.replace("Z", "+00:00")))
-        except ValueError:
-            continue
+        walk_dt = _parse_utc(summary.get("filed"))
+        if walk_dt is not None:
+            walk_times.append(walk_dt)
     if not walk_times:
         # Can't verify — fail closed
         return False
@@ -174,6 +179,45 @@ def _derive_beats_baseline(floors_doc: dict | None,
         else:
             out[rid] = bool(auc > hb)
     return out
+
+
+def _reject_stale_walks(results: dict[str, dict | None],
+                         floors_doc: dict | None,
+                         warnings: list[str]) -> int:
+    """Per-recipe filter (#966): set `results[rid] = None` for any summary whose
+    `filed` timestamp predates `floors.frozen_at_utc`. The FLEET-5 invariant says
+    floors must be frozen BEFORE every walk fires; a summary that violates that
+    ordering is a stale leftover from a prior pipeline version (e.g., the
+    foreign_intervention 2026-05-25 leaked walk that surfaced on 2026-05-28).
+    Treating it as None routes the recipe to QUEUED via `assemble_tracker_draft`
+    — never silently classified — and the warning surfaces the reason. Returns
+    the count of recipes filtered. No-op when floors_doc or its `frozen_at_utc`
+    is missing (the global `floor_ordering_ok` derivation already fails closed
+    in that case)."""
+    if not floors_doc:
+        return 0
+    frozen_at = floors_doc.get("frozen_at_utc")
+    frozen_dt = _parse_utc(frozen_at)
+    if frozen_dt is None:
+        return 0
+    rejected = 0
+    for rid in sorted(results):
+        summary = results[rid]
+        if not summary:
+            continue
+        filed = summary.get("filed")
+        walk_dt = _parse_utc(filed)
+        if walk_dt is None:
+            continue
+        if walk_dt < frozen_dt:
+            warnings.append(
+                f"{rid}: stale walk (filed={filed} predates floors.frozen_at_utc="
+                f"{frozen_at}); excluded from draft pending re-walk under the "
+                f"corrected pipeline (FLEET-5 invariant)."
+            )
+            results[rid] = None
+            rejected += 1
+    return rejected
 
 
 def _env_bool(name: str, default: bool) -> bool:
@@ -256,6 +300,16 @@ def lambda_handler(event: dict, context: Any) -> dict[str, Any]:
         warnings.append(f"no previous tracker at s3://{bucket}/{_PUBLISHED_TRACKER_KEY} "
                         f"— all transitions will read as 'queued → <tier>'")
 
+    # 3b. Reject any summary filed before the floors were frozen (#966). A walk that
+    # predates floors.frozen_at_utc is a stale leftover from a prior pipeline version
+    # (FLEET-5 invariant violation) — the foreign_intervention 2026-05-25 leaked walk
+    # is the class of regression this filter closes. Filtered recipes are routed to
+    # QUEUED via assemble_tracker_draft + the warning is surfaced for operator review.
+    n_stale_rejected = _reject_stale_walks(results, floors_doc, warnings)
+    if n_stale_rejected:
+        LOG.warning("rejected %d stale-walk summaries (filed before floors.frozen_at_utc)",
+                    n_stale_rejected)
+
     # 4. Derive condition booleans + per-recipe baseline-beat.
     beats_baseline = _derive_beats_baseline(floors_doc, results)
     conditions = {
@@ -311,6 +365,7 @@ def lambda_handler(event: dict, context: Any) -> dict[str, Any]:
         "vintage_id": vintage_id,
         "draft_s3_uri": draft_uri,
         "n_recipes_processed": len(recipe_ids),
+        "n_stale_rejected": n_stale_rejected,  # FU2 per Sonnet PR review — self-describing audit signal
         "n_transitions": len(draft["transitions"]),
         "attestation_summary": {
             "all_conditions_pass": draft["attestation"]["all_conditions_pass"],
