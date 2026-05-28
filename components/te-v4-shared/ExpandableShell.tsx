@@ -56,10 +56,10 @@ export function ExpandableShell({ familyColor, label, children }: Props) {
         title={expanded ? "Minimize" : "Expand"}
         style={{
           position: "absolute",
-          top: "12px",
-          right: "12px",
-          width: "26px",
-          height: "26px",
+          top: "8px",
+          right: "8px",
+          width: "22px",
+          height: "22px",
           padding: 0,
           display: "inline-flex",
           alignItems: "center",
@@ -69,8 +69,10 @@ export function ExpandableShell({ familyColor, label, children }: Props) {
           borderRadius: "4px",
           color: familyColor,
           cursor: "pointer",
-          transition: "background 120ms ease, transform 120ms ease",
+          transition:
+            "background 120ms ease, transform 120ms ease, box-shadow 120ms ease",
           opacity: 0.85,
+          boxShadow: `0 0 0 3px ${familyColor}22`,
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.opacity = "1";

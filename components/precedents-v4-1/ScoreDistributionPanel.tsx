@@ -71,9 +71,9 @@ export function ScoreDistributionPanel({
           gap: "12px",
         }}
       >
-        <h3 style={{ fontSize: "15px", fontWeight: 600, color: familyColor, margin: 0 }}>
+        <h2 style={{ fontSize: "15px", fontWeight: 600, color: familyColor, margin: 0 }}>
           Score distribution
-        </h3>
+        </h2>
         <div
           style={{
             marginTop: "auto",
@@ -107,7 +107,7 @@ export function ScoreDistributionPanel({
       }}
     >
       <header>
-        <h3
+        <h2
           id="score-distribution-panel-heading"
           style={{
             fontSize: "15px",
@@ -118,7 +118,7 @@ export function ScoreDistributionPanel({
           }}
         >
           Score distribution
-        </h3>
+        </h2>
         <p
           style={{
             fontSize: "11px",

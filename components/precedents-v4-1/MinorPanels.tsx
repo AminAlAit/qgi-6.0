@@ -456,7 +456,7 @@ export function DiscriminationPanel({
                 textTransform: "uppercase",
               }}
             >
-              LOCO-AUC
+              Discrimination score
             </span>
           </div>
           <p
