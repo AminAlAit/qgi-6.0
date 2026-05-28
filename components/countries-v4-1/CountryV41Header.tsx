@@ -94,7 +94,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             }}
             title="A relative stacking of high rankings across this country's lit recipes, not a probability."
           >
-            Compound {country.compound_score.toFixed(0)}
+            Compound Risk {country.compound_score.toFixed(0)}
           </span>
         </div>
 

@@ -283,7 +283,7 @@ export function CountriesV41Hero({
           <div
             style={{ fontSize: "11px", color: "var(--qgi-text-muted)", marginTop: "2px" }}
           >
-            Compound {countryOfTheWeek.compound_score.toFixed(0)} ·{" "}
+            Compound Risk {countryOfTheWeek.compound_score.toFixed(0)} ·{" "}
             {countryOfTheWeek.recipes_lit_count} lit
           </div>
         </HeroTile>
