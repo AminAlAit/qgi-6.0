@@ -1,9 +1,9 @@
 "use client";
 
 /**
- * Client-side filter + search shell around <RiskGrid />. Keeps interactivity
- * out of the server page per the Next.js 16 page convention (page.tsx stays
- * a Server Component).
+ * Client-side filter + search shell around the inlined FilteredGrid. Keeps
+ * interactivity out of the server page per the Next.js 16 page convention
+ * (page.tsx stays a Server Component).
  *
  * Filters:
  *   - L1 family chips (multi-select; empty = all).
@@ -14,24 +14,37 @@
  * Search behaviour: when a country query is entered, each row's cells are
  * filtered down to matching countries (and the rank position is preserved).
  * Rows with zero matches drop out.
+ *
+ * RiskGrid.tsx was deleted in QA-8 P1. All grid rendering now lives here so
+ * the §Q7 coverage caption + not_scored cell branch always render.
  */
 
 import { useMemo, useState } from "react";
 import { Search, X, Filter, RotateCcw } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
-import type { TrackerRecipe } from "@/lib/te-mock/recipes";
 import {
   getRecipeRow,
   type BoardCell,
   type RecipeRow,
 } from "@/lib/te-mock/risk-board-data";
-import { iconForRecipe } from "@/lib/te-mock/icons";
+import { familyColor } from "@/lib/te-mock/l1-families";
 import Link from "next/link";
 import type { Route } from "next";
-import { statusLabel } from "@/lib/te-mock/country-families";
+
+/** Slim projection type — only public-safe fields forwarded from the server. */
+export interface RiskBoardRecipeProjection {
+  recipe_id: string;
+  label: string;
+  l1_id: string;
+  l1_label: string;
+  l1_color: string;
+  l2_label: string;
+  statusLabel: string;
+  statusTone: "deployed" | "neutral" | "failed";
+}
 
 interface Props {
-  recipes: TrackerRecipe[];
+  recipes: RiskBoardRecipeProjection[];
   /** L1 family meta to render filter chips. Derived once on the server. */
   l1Families: Array<{ id: string; label: string; color: string }>;
 }
@@ -60,9 +73,9 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
 
   const q = query.trim().toLowerCase();
 
-  // Apply filters → rows for RiskGrid.
+  // Apply filters → rows for FilteredGrid.
   const visibleRows = useMemo(() => {
-    const rows: Array<{ recipe: TrackerRecipe; row: RecipeRow }> = [];
+    const rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }> = [];
     for (const recipe of recipes) {
       // L1 filter
       if (selectedL1.size > 0 && !selectedL1.has(recipe.l1_id)) continue;
@@ -133,6 +146,7 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "5px" }}>
           {l1Families.map((fam) => {
             const active = selectedL1.has(fam.id);
+            const displayColor = familyColor(fam.id, fam.color);
             return (
               <button
                 key={fam.id}
@@ -141,9 +155,9 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
                 style={{
                   fontSize: "10.5px",
                   padding: "4px 9px",
-                  background: active ? fam.color : "transparent",
-                  color: active ? "var(--qgi-bg)" : fam.color,
-                  border: `1px solid ${fam.color}`,
+                  background: active ? displayColor : "transparent",
+                  color: active ? "var(--qgi-bg)" : displayColor,
+                  border: `1px solid ${displayColor}`,
                   borderRadius: "4px",
                   fontFamily: "ui-monospace, monospace",
                   letterSpacing: "0.4px",
@@ -159,7 +173,7 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
                     width: "6px",
                     height: "6px",
                     borderRadius: "50%",
-                    background: active ? "var(--qgi-bg)" : fam.color,
+                    background: active ? "var(--qgi-bg)" : displayColor,
                   }}
                 />
                 {fam.id} · {fam.label}
@@ -287,9 +301,8 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
       </div>
 
       {/* The grid itself — inlined here so that cell filtering by `q` can
-          modulate cells without re-passing many props through props-drilling
-          to RiskGrid. RiskGrid (server) is exported for the unfiltered case;
-          this client variant is the in-page interactive one. */}
+          modulate cells without re-passing many props through props-drilling.
+          RiskGrid.tsx was deleted in QA-8 P1; this is now the sole grid. */}
       <FilteredGrid rows={visibleRows} query={q} />
     </>
   );
@@ -297,14 +310,15 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /* In-place client grid — accepts already-filtered rows + a country query     */
-/* to apply per-cell highlighting. Visual contract identical to RiskGrid.    */
+/* to apply per-cell highlighting. Ported from RiskGrid.tsx (deleted QA-8).  */
+/* Includes the §Q7 coverage caption + not_scored cell branch.               */
 /* ────────────────────────────────────────────────────────────────────────── */
 
 function FilteredGrid({
   rows,
   query,
 }: {
-  rows: Array<{ recipe: TrackerRecipe; row: RecipeRow }>;
+  rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }>;
   query: string;
 }) {
   if (rows.length === 0) {
@@ -381,94 +395,132 @@ function RecipeGridRow({
   query,
   isLast,
 }: {
-  recipe: TrackerRecipe;
+  recipe: RiskBoardRecipeProjection;
   row: RecipeRow;
   query: string;
   isLast: boolean;
 }) {
   const isQueued = row.display_state === "queued";
-  const sl = statusLabel(recipe.status);
   const statusColor =
-    sl.tone === "deployed" ? "#3FBF8F" : sl.tone === "failed" ? "#E68F29" : "#7A8FA0";
+    recipe.statusTone === "deployed"
+      ? "#3FBF8F"
+      : recipe.statusTone === "failed"
+        ? "#E68F29"
+        : "#7A8FA0";
+  const displayColor = familyColor(recipe.l1_id, recipe.l1_color);
+
+  // Coverage caption — only on scored rows, per R&D reply §Q7. Honest framing:
+  // a country lacking coverage is "not scored," never "low score."
+  const hasCoverageData = row.n_countries_scored !== null;
+  const coverageGap = hasCoverageData
+    ? row.platform_roster_size - (row.n_countries_scored as number)
+    : 0;
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "280px repeat(10, minmax(0, 1fr))",
-        borderBottom: isLast ? "none" : "1px solid var(--qgi-border)",
-        background: isQueued ? "rgba(0,0,0,0.18)" : "transparent",
-      }}
-    >
-      <Link
-        href={`/precedents-v2/${recipe.recipe_id}` as Route}
-        style={{ textDecoration: "none", color: "inherit" }}
+    <div style={{ borderBottom: isLast ? "none" : "1px solid var(--qgi-border)" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "280px repeat(10, minmax(0, 1fr))",
+          background: isQueued ? "rgba(0,0,0,0.18)" : "transparent",
+        }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "10px 12px",
-            borderRight: "1px solid var(--qgi-border)",
-            borderLeft: `3px solid ${recipe.l1_color}`,
-            height: "100%",
-            opacity: isQueued ? 0.62 : 1,
-          }}
+        <Link
+          href={`/precedents-v2/${recipe.recipe_id}` as Route}
+          style={{ textDecoration: "none", color: "inherit" }}
         >
           <div
             style={{
-              width: "28px",
-              height: "28px",
               display: "flex",
               alignItems: "center",
-              justifyContent: "center",
-              color: recipe.l1_color,
-              flexShrink: 0,
+              gap: "10px",
+              padding: "10px 12px",
+              borderRight: "1px solid var(--qgi-border)",
+              borderLeft: `3px solid ${displayColor}`,
+              height: "100%",
+              opacity: isQueued ? 0.62 : 1,
             }}
           >
-            <RecipeIcon recipeId={recipe.recipe_id} size={18} strokeWidth={1.6} />
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
-                fontSize: "12.5px",
-                fontWeight: 600,
-                color: "var(--qgi-text)",
-                lineHeight: 1.2,
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
+                width: "28px",
+                height: "28px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: displayColor,
+                flexShrink: 0,
               }}
             >
-              {recipe.label}
+              <RecipeIcon recipeId={recipe.recipe_id} size={18} strokeWidth={1.6} />
             </div>
-            <div
-              style={{
-                fontSize: "9.5px",
-                letterSpacing: "0.3px",
-                color: statusColor,
-                fontFamily: "ui-monospace, monospace",
-                marginTop: "2px",
-              }}
-            >
-              {sl.label}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div
+                style={{
+                  fontSize: "12.5px",
+                  fontWeight: 600,
+                  color: "var(--qgi-text)",
+                  lineHeight: 1.2,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {recipe.label}
+              </div>
+              <div
+                style={{
+                  fontSize: "9.5px",
+                  letterSpacing: "0.3px",
+                  color: statusColor,
+                  fontFamily: "ui-monospace, monospace",
+                  marginTop: "2px",
+                }}
+              >
+                {recipe.statusLabel}
+              </div>
             </div>
           </div>
-        </div>
-      </Link>
+        </Link>
 
-      {row.cells.map((cell, i) => (
-        <HeatCell
-          key={`${recipe.recipe_id}-${i}`}
-          cell={cell}
-          recipeId={recipe.recipe_id}
-          familyColor={recipe.l1_color}
-          isLastCol={i === 9}
-          isQueued={isQueued}
-          query={query}
-        />
-      ))}
+        {row.cells.map((cell, i) => (
+          <HeatCell
+            key={`${recipe.recipe_id}-${i}`}
+            cell={cell}
+            recipeId={recipe.recipe_id}
+            familyColor={displayColor}
+            isLastCol={i === 9}
+            isQueued={isQueued}
+            query={query}
+          />
+        ))}
+      </div>
+
+      {/* Coverage caption — honesty surface, R&D reply §Q7 */}
+      {hasCoverageData && (
+        <div
+          style={{
+            padding: "6px 14px 8px",
+            paddingLeft: "295px", // align under the cell columns, past the 280px identity col + 12px gutter
+            fontSize: "10px",
+            color: "var(--qgi-text-dim)",
+            fontFamily: "ui-monospace, monospace",
+            letterSpacing: "0.3px",
+            background: "rgba(0,0,0,0.06)",
+            borderTop: "1px solid var(--qgi-border)",
+          }}
+          title={
+            row.countries_not_scored_iso && row.countries_not_scored_iso.length > 0
+              ? `Lacking coverage: ${row.countries_not_scored_iso.join(", ")}`
+              : undefined
+          }
+        >
+          {row.n_countries_scored} of {row.platform_roster_size} platform countries scored
+          {coverageGap > 0
+            ? ` · ${coverageGap} lack coverage for this recipe's indicators`
+            : ""}
+        </div>
+      )}
     </div>
   );
 }
@@ -476,7 +528,7 @@ function RecipeGridRow({
 function HeatCell({
   cell,
   recipeId,
-  familyColor,
+  familyColor: resolvedFamilyColor,
   isLastCol,
   isQueued,
   query,
@@ -488,82 +540,162 @@ function HeatCell({
   isQueued: boolean;
   query: string;
 }) {
-  const intensity =
-    cell.score === null ? 0 : Math.max(0, Math.min(1, (cell.score - 40) / 60));
-  const alpha = isQueued ? 0 : 0.1 + intensity * 0.55;
-  const zone =
-    cell.score === null
-      ? "–"
-      : cell.score >= 65
-        ? "HIGH"
-        : cell.score >= 40
-          ? "MODERATE"
-          : "LOW";
+  // ── State-specific render branches ─────────────────────────────────────
+
+  // no_walk_yet — recipe is queued; all cells render as placeholder
+  if (cell.state === "no_walk_yet" || isQueued) {
+    return (
+      <div
+        style={{
+          position: "relative",
+          height: "62px",
+          padding: "6px 8px",
+          borderRight: isLastCol ? "none" : "1px solid var(--qgi-border)",
+          background: "transparent",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          cursor: "default",
+        }}
+        title="Not yet tested: recipe queued for next vintage."
+      >
+        <div
+          style={{
+            fontSize: "10.5px",
+            color: "var(--qgi-text-dim)",
+            fontWeight: 500,
+            lineHeight: 1.2,
+          }}
+        >
+          not yet tested
+        </div>
+        <span
+          style={{
+            fontSize: "14px",
+            fontWeight: 600,
+            fontFamily: "ui-monospace, monospace",
+            color: "var(--qgi-text-dim)",
+            lineHeight: 1,
+          }}
+        >
+          –
+        </span>
+      </div>
+    );
+  }
+
+  // not_scored — recipe IS walked, this country lacks indicator coverage.
+  // Honesty per R&D reply §Q7: hatched pattern + "not scored" copy, NEVER a low rank.
+  if (cell.state === "not_scored") {
+    return (
+      <div
+        style={{
+          position: "relative",
+          height: "62px",
+          padding: "6px 8px",
+          borderRight: isLastCol ? "none" : "1px solid var(--qgi-border)",
+          background:
+            "repeating-linear-gradient(45deg, rgba(122,143,160,0.05) 0 4px, transparent 4px 8px)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          cursor: "help",
+        }}
+        title={`${cell.country} · not scored: country lacks indicator coverage for this recipe, not the same as a low score.`}
+      >
+        <div
+          style={{
+            fontSize: "10.5px",
+            color: "var(--qgi-text-dim)",
+            fontWeight: 500,
+            lineHeight: 1.2,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+          }}
+        >
+          {cell.country}
+        </div>
+        <span
+          style={{
+            fontSize: "10px",
+            letterSpacing: "0.6px",
+            color: "var(--qgi-text-dim)",
+            fontFamily: "ui-monospace, monospace",
+            textTransform: "uppercase",
+          }}
+        >
+          not scored
+        </span>
+      </div>
+    );
+  }
+
+  // ── Scored cell — normal heatmap branch ────────────────────────────────
+  const score = cell.score as number;
+  const intensity = Math.max(0, Math.min(1, (score - 40) / 60));
+  const alpha = 0.1 + intensity * 0.55;
+  const zone = score >= 65 ? "HIGH" : score >= 40 ? "MODERATE" : "LOW";
   const zoneColor =
     zone === "HIGH"
       ? "#E64545"
       : zone === "MODERATE"
         ? "#E68F29"
         : "var(--qgi-text-muted)";
-  const isQueryMatch =
-    query.length > 0 && !isQueued && cell.country.toLowerCase().includes(query);
+  const isQueryMatch = query.length > 0 && cell.country.toLowerCase().includes(query);
 
-  const cellInner = (
-    <div
-      style={{
-        position: "relative",
-        height: "62px",
-        padding: "6px 8px",
-        borderRight: isLastCol ? "none" : "1px solid var(--qgi-border)",
-        background: isQueued
-          ? "transparent"
-          : `linear-gradient(90deg, ${hexToRgba(familyColor, alpha)} 0%, ${hexToRgba(familyColor, alpha * 0.4)} 100%)`,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "space-between",
-        cursor: isQueued ? "default" : "pointer",
-        outline: isQueryMatch ? `2px solid ${familyColor}` : "none",
-        outlineOffset: isQueryMatch ? "-2px" : 0,
-      }}
-      title={
-        cell.score === null
-          ? "Not yet scored: recipe queued for next vintage."
-          : `${cell.country} · discrimination rank ${cell.score.toFixed(1)} (${zone})`
-      }
+  return (
+    <Link
+      href={`/precedents-v2/${recipeId}` as Route}
+      style={{ textDecoration: "none", color: "inherit", display: "block" }}
     >
       <div
         style={{
-          fontSize: "10.5px",
-          color: isQueued ? "var(--qgi-text-dim)" : "var(--qgi-text)",
-          fontWeight: isQueryMatch ? 700 : 500,
-          lineHeight: 1.2,
-          overflow: "hidden",
-          textOverflow: "ellipsis",
-          whiteSpace: "nowrap",
-        }}
-      >
-        {isQueued ? "not yet scored" : cell.country}
-      </div>
-
-      <div
-        style={{
+          position: "relative",
+          height: "62px",
+          padding: "6px 8px",
+          borderRight: isLastCol ? "none" : "1px solid var(--qgi-border)",
+          background: `linear-gradient(90deg, ${hexToRgba(resolvedFamilyColor, alpha)} 0%, ${hexToRgba(resolvedFamilyColor, alpha * 0.4)} 100%)`,
           display: "flex",
+          flexDirection: "column",
           justifyContent: "space-between",
-          alignItems: "baseline",
+          cursor: "pointer",
+          outline: isQueryMatch ? `2px solid ${resolvedFamilyColor}` : "none",
+          outlineOffset: isQueryMatch ? "-2px" : 0,
         }}
+        title={`${cell.country} · discrimination rank ${score.toFixed(1)} (${zone})`}
       >
-        <span
+        <div
           style={{
-            fontSize: "14px",
-            fontWeight: 600,
-            fontFamily: "ui-monospace, monospace",
-            color: isQueued ? "var(--qgi-text-dim)" : "var(--qgi-text)",
-            lineHeight: 1,
+            fontSize: "10.5px",
+            color: "var(--qgi-text)",
+            fontWeight: isQueryMatch ? 700 : 500,
+            lineHeight: 1.2,
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
           }}
         >
-          {cell.score === null ? "–" : cell.score.toFixed(1)}
-        </span>
-        {!isQueued && cell.score !== null && (
+          {cell.country}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "baseline",
+          }}
+        >
+          <span
+            style={{
+              fontSize: "14px",
+              fontWeight: 600,
+              fontFamily: "ui-monospace, monospace",
+              color: "var(--qgi-text)",
+              lineHeight: 1,
+            }}
+          >
+            {score.toFixed(1)}
+          </span>
           <span
             style={{
               fontSize: "8.5px",
@@ -574,18 +706,8 @@ function HeatCell({
           >
             {zone}
           </span>
-        )}
+        </div>
       </div>
-    </div>
-  );
-
-  if (isQueued) return cellInner;
-  return (
-    <Link
-      href={`/precedents-v2/${recipeId}` as Route}
-      style={{ textDecoration: "none", color: "inherit", display: "block" }}
-    >
-      {cellInner}
     </Link>
   );
 }

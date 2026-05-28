@@ -10,9 +10,9 @@ import Link from "next/link";
 import type { Route } from "next";
 import { ArrowUp, ArrowDown, Minus } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import { getTopPairs, zoneFor, type BoardPair } from "@/lib/te-mock/risk-board-data";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export function RiskBoardHero({ vintage }: { vintage: string }) {
   const pairs = getTopPairs();
@@ -118,6 +118,7 @@ function HeroRow({
       : zone === "MODERATE"
         ? "#E68F29"
         : "var(--qgi-text-muted)";
+  const displayColor = familyColor(recipe.l1_id, recipe.l1_color);
 
   return (
     <li>
@@ -134,7 +135,7 @@ function HeroRow({
             background: "var(--qgi-bg)",
             border: "1px solid var(--qgi-border)",
             borderRadius: "6px",
-            borderLeft: `3px solid ${recipe.l1_color}`,
+            borderLeft: `3px solid ${displayColor}`,
           }}
         >
           {/* Rank */}
@@ -159,7 +160,7 @@ function HeroRow({
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: recipe.l1_color,
+              color: displayColor,
               flexShrink: 0,
             }}
           >
@@ -199,7 +200,7 @@ function HeroRow({
               style={{
                 fontSize: "18px",
                 fontWeight: 600,
-                color: recipe.l1_color,
+                color: displayColor,
                 fontFamily: "ui-monospace, monospace",
                 lineHeight: 1,
               }}

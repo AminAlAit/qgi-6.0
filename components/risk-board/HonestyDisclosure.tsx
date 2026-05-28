@@ -46,8 +46,8 @@ export function HonestyDisclosure() {
         </li>
         <li>No row on this board makes a forward-dated claim.</li>
         <li>
-          Recipes with status &ldquo;Not yet tested&rdquo; appear as placeholders; scores
-          will appear once their evidence base is sufficient.
+          Recipes marked &ldquo;Not yet tested&rdquo; show placeholder rows; scores will
+          appear once their evidence base is sufficient.
         </li>
       </ol>
     </div>

@@ -17,7 +17,6 @@ import Link from "next/link";
 import type { Route } from "next";
 import { ArrowUp, ArrowDown, Equal, Calendar } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import {
   BOARD_VINTAGE,
@@ -25,6 +24,7 @@ import {
   type RankMovement,
 } from "@/lib/te-mock/risk-board-data";
 import { HistoryAccumulatingGate } from "@/components/te-v4-shared/HistoryAccumulatingGate";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export function RecentMovements() {
   const events = getRecentMovements();
@@ -99,7 +99,7 @@ export function RecentMovements() {
                 key={`${ev.country}-${ev.recipe_id}-${ev.vs_vintage}`}
                 ev={ev}
                 recipeLabel={recipe.label}
-                familyColor={recipe.l1_color}
+                familyColor={familyColor(recipe.l1_id, recipe.l1_color)}
                 isLast={i === events.length - 1}
               />
             );
