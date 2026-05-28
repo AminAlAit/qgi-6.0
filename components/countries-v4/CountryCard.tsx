@@ -14,6 +14,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 
 export function CountryCard({ country }: { country: CountryV4 }) {
   const topRecipe = country.top_recipes[0];
@@ -47,9 +48,7 @@ export function CountryCard({ country }: { country: CountryV4 }) {
             marginBottom: "10px",
           }}
         >
-          <span style={{ fontSize: "32px", lineHeight: 1 }} aria-hidden>
-            {country.flag_emoji}
-          </span>
+          <FlagImg emoji={country.flag_emoji} name={country.name} width={30} radius={3} />
           <span
             style={{
               fontSize: "9.5px",

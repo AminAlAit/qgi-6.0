@@ -7,6 +7,7 @@
  * recipes-lit count, ISO).
  */
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 
 export function CountryDetailHeader({ country }: { country: CountryV4 }) {
   return (
@@ -24,12 +25,10 @@ export function CountryDetailHeader({ country }: { country: CountryV4 }) {
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          fontSize: "56px",
-          lineHeight: 1,
         }}
         aria-hidden
       >
-        {country.flag_emoji}
+        <FlagImg emoji={country.flag_emoji} name={country.name} width={64} radius={4} />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div
