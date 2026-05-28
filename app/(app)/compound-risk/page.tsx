@@ -6,6 +6,7 @@ import {
   countLitAtThreshold,
   type CompoundCountry,
 } from "@/lib/te-mock/compound-risk-data";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { CompoundHero } from "@/components/compound-risk/CompoundHero";
 import { CompoundFilters } from "@/components/compound-risk/CompoundFilters";
 import { CompoundLeaderboard } from "@/components/compound-risk/CompoundLeaderboard";
@@ -58,21 +59,31 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Vintage chip */}
+        {/* Vintage chip + HowToReadButton */}
         <div
           style={{
-            display: "inline-block",
-            padding: "5px 12px",
-            border: "1px solid var(--qgi-border)",
-            color: "var(--qgi-text-dim)",
-            borderRadius: "4px",
-            fontSize: "11px",
-            letterSpacing: "1px",
+            display: "flex",
+            justifyContent: "flex-end",
+            alignItems: "center",
+            gap: "8px",
             marginBottom: "16px",
-            fontFamily: "ui-monospace, monospace",
           }}
         >
-          Data as of {COMPOUND_VINTAGE}
+          <HowToReadButton routeKey="compound-risk" />
+          <span
+            style={{
+              display: "inline-block",
+              padding: "5px 12px",
+              border: "1px solid var(--qgi-border)",
+              color: "var(--qgi-text-dim)",
+              borderRadius: "4px",
+              fontSize: "11px",
+              letterSpacing: "1px",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            Data as of {COMPOUND_VINTAGE}
+          </span>
         </div>
 
         {/* Hero */}

@@ -22,6 +22,8 @@ interface Props {
   familyColor: string;
   sectionPending?: SectionPending;
   id?: string;
+  /** Optional data-tour anchor for product tour steps. */
+  dataTour?: string;
   headerSlot?: ReactNode;
   caption?: string;
   children?: ReactNode;
@@ -43,6 +45,7 @@ export function PanelBase({
   familyColor,
   sectionPending = null,
   id,
+  dataTour,
   headerSlot,
   caption,
   children,
@@ -50,6 +53,7 @@ export function PanelBase({
   return (
     <section
       id={id}
+      data-tour={dataTour}
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

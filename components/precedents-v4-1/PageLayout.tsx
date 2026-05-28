@@ -43,6 +43,8 @@ interface Props {
    */
   definition?: string;
   demoDisclosure?: ReactNode;
+  /** Slot rendered on the right side of the breadcrumb strip (e.g. HowToReadButton). */
+  headerRightSlot?: ReactNode;
   children: ReactNode;
 }
 
@@ -52,6 +54,7 @@ export function PageLayout({
   subtitle,
   definition,
   demoDisclosure,
+  headerRightSlot,
   children,
 }: Props) {
   return (
@@ -100,6 +103,7 @@ export function PageLayout({
               <span>{recipe.l2_label}</span>
             </nav>
             {/* 2026-05-27 (#159): MOCKUP · V4.1 chip removed — internal versioning */}
+            {headerRightSlot}
           </div>
 
           <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>

@@ -110,6 +110,7 @@ export function CountriesPanel({
     <PanelBase
       title="Countries"
       familyColor={familyColor}
+      dataTour="countries-panel"
       titleTooltip="Both ends of the distribution at a glance. The recipe's positive (highest-scoring) and structural-negative (lowest-scoring) extremes. Rank, not probability; a country at 98 sits at the top of the distribution of countries whose movement shape resembles past precedents. Expand for the full roster."
       caption={
         showResults && countriesTop.length > 0

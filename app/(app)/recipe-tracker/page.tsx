@@ -5,6 +5,7 @@ import {
   vintageStamp,
   type TrackerRecipe,
 } from "@/lib/te-mock/recipes";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   HISTORICAL_WALKS,
   IN_FLIGHT,
@@ -61,6 +62,17 @@ export default function RecipeTrackerPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "20px 24px 64px" }}>
+        {/* Top strip: HowToReadButton right-aligned */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "12px",
+          }}
+        >
+          <HowToReadButton routeKey="recipe-tracker" />
+        </div>
+
         {/* Hero scoreboard */}
         <TrackerHero
           graduated={graduated}

@@ -177,7 +177,8 @@ export function TrackerHero({
       </div>
 
       {/* Scoreboard tiles — sized by importance, the graduated tile is the headline */}
-      <div
+      <section
+        data-tour="tracker-hero-tiles"
         style={{
           display: "grid",
           gridTemplateColumns: "1.4fr 1fr 1fr 1fr 1fr 1.1fr",
@@ -233,7 +234,7 @@ export function TrackerHero({
           color="#38bdf8"
           ariaLabel={`${total} recipes total in the catalog across 8 L1 families`}
         />
-      </div>
+      </section>
     </header>
   );
 }

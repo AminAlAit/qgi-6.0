@@ -24,6 +24,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
 import { Telescope } from "lucide-react";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   getCurrentCountries,
   defaultCurrentCountry,
@@ -80,6 +81,7 @@ export default async function NearestAnalogPage({
             flexWrap: "wrap",
           }}
         >
+          <HowToReadButton routeKey="nearest-analog" />
           <span
             style={{
               fontSize: "10px",

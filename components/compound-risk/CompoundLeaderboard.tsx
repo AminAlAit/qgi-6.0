@@ -20,7 +20,7 @@ interface Props {
 
 export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props) {
   return (
-    <section style={{ marginTop: "32px" }}>
+    <section data-tour="compound-leaderboard" style={{ marginTop: "32px" }}>
       <div
         style={{
           display: "flex",

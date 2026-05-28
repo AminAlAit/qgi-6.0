@@ -20,6 +20,7 @@ export function RiskBoardHero({ vintage }: { vintage: string }) {
 
   return (
     <section
+      data-tour="risk-board-hero-strip"
       style={{
         borderTop: "1px solid var(--qgi-border)",
         borderBottom: "1px solid var(--qgi-border)",

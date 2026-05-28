@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import { BOARD_VINTAGE, getBoardRecipes } from "@/lib/te-mock/risk-board-data";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
 import { HonestyDisclosure } from "@/components/risk-board/HonestyDisclosure";
@@ -61,9 +62,12 @@ export default function RiskBoardPage() {
           style={{
             display: "flex",
             justifyContent: "flex-end",
+            alignItems: "center",
+            gap: "8px",
             marginBottom: "16px",
           }}
         >
+          <HowToReadButton routeKey="risk-board" />
           <span
             style={{
               fontSize: "10px",

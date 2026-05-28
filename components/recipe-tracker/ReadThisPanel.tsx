@@ -21,6 +21,7 @@ const STATEMENTS: string[] = [
 export function ReadThisPanel() {
   return (
     <section
+      data-tour="read-this-panel"
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

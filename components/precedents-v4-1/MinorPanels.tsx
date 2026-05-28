@@ -426,6 +426,7 @@ export function DiscriminationPanel({
       titleTooltip={`Leave-One-Cohort-Out AUC. How cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
       sectionPending={!showResults || locoAuc === null ? "discrimination" : null}
       id="cap-6"
+      dataTour="discrimination-panel"
     >
       {showResults && locoAuc !== null && (
         <div

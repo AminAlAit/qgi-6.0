@@ -17,6 +17,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Route } from "next";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { COUNTRIES_V4, getCountryByIso } from "@/lib/te-mock/countries-v4-data";
 import { familiesByBestScore } from "@/lib/te-mock/country-families";
 import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
@@ -91,27 +92,38 @@ export default async function CountryV41DetailPage({ params }: Params) {
         }}
       >
         <div style={{ maxWidth: "1080px", margin: "0 auto", padding: "20px 24px 24px" }}>
-          <nav
-            aria-label="Breadcrumb"
+          <div
             style={{
-              fontSize: "11px",
-              letterSpacing: "0.3px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
               marginBottom: "16px",
+              gap: "12px",
+              flexWrap: "wrap",
             }}
           >
-            <Link
-              href={"/countries-v4.1" as Route}
-              style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
+            <nav
+              aria-label="Breadcrumb"
+              style={{
+                fontSize: "11px",
+                letterSpacing: "0.3px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+              }}
             >
-              ← Countries
-            </Link>
-            <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
-            <span style={{ color: "var(--qgi-text-muted)" }}>{country.region}</span>
-            <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
-            <span>{country.iso}</span>
-          </nav>
+              <Link
+                href={"/countries-v4.1" as Route}
+                style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
+              >
+                ← Countries
+              </Link>
+              <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
+              <span style={{ color: "var(--qgi-text-muted)" }}>{country.region}</span>
+              <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
+              <span>{country.iso}</span>
+            </nav>
+            <HowToReadButton routeKey="countries-v4.1-detail" />
+          </div>
           <CountryV41Header country={country} />
         </div>
       </div>
@@ -121,19 +133,21 @@ export default async function CountryV41DetailPage({ params }: Params) {
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <LitRecipesPanel country={country} />
 
-          <PanelPair>
-            <WhyScoresPanel
-              accent={driversAccent}
-              countryName={country.name}
-              topRecipeLabel={topRecipe?.label ?? "its top recipe"}
-              attribution={country.drivers_attribution}
-            />
-            <WhatsMovingPanel
-              accent={driversAccent}
-              countryName={country.name}
-              movement={country.drivers_movement}
-            />
-          </PanelPair>
+          <div data-tour="drivers-panels">
+            <PanelPair>
+              <WhyScoresPanel
+                accent={driversAccent}
+                countryName={country.name}
+                topRecipeLabel={topRecipe?.label ?? "its top recipe"}
+                attribution={country.drivers_attribution}
+              />
+              <WhatsMovingPanel
+                accent={driversAccent}
+                countryName={country.name}
+                movement={country.drivers_movement}
+              />
+            </PanelPair>
+          </div>
 
           <RankHistoryPanel country={country} />
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   getAllRecipes,
   getRecipe,
@@ -92,6 +93,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   // pending copy — no inline brand text anywhere on the page.
   const demoDisclosure = demo ? (
     <div
+      data-tour="demo-disclosure"
       style={{
         padding: "8px 12px",
         border: `1px dashed ${familyColor}`,
@@ -177,6 +179,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       subtitle={`${enrichedIndicators.length} indicators · ${mock.window}y window`}
       definition={mock.definition}
       demoDisclosure={demoDisclosure}
+      headerRightSlot={<HowToReadButton routeKey="recipes-v4.1-detail" />}
     >
       {/*
         ──────────────────────────────────────────────────────────────────

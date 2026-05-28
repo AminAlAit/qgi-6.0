@@ -22,6 +22,7 @@ export function PanelShell({
   fullWidth = false,
   children,
   style,
+  dataTour,
 }: {
   title: string;
   accent: string;
@@ -33,9 +34,12 @@ export function PanelShell({
   fullWidth?: boolean;
   children: ReactNode;
   style?: CSSProperties;
+  /** Optional data-tour anchor for product tour steps. */
+  dataTour?: string;
 }) {
   return (
     <section
+      data-tour={dataTour}
       style={{
         gridColumn: fullWidth ? "1 / -1" : "auto",
         background: "var(--qgi-surface)",
