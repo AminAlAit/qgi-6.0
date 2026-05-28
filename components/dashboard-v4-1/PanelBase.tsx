@@ -29,10 +29,12 @@ export function PanelBase({
   caption,
   accent = "#5B7E99",
   children,
+  className,
   rightSlot,
 }: PanelBaseProps) {
   return (
     <section
+      className={className}
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

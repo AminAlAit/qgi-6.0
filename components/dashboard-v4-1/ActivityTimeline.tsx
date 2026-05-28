@@ -53,13 +53,23 @@ export function ActivityTimeline({ events }: { events: ActivityEvent[] }) {
       collapsedCount={COLLAPSED_COUNT}
     >
       {sorted.map((e, i) => (
-        <ActivityRow key={`${e.date}-${i}`} event={e} isLast={i === sorted.length - 1} />
+        <ActivityRow key={`${e.date}-${i}`} event={e} />
       ))}
     </CollapsibleRows>
   );
 }
 
-function ActivityRow({ event, isLast }: { event: ActivityEvent; isLast: boolean }) {
+// isLast is injected by CollapsibleRows via cloneElement on the last visible
+// row so the border suppression is keyed off what is actually shown, not the
+// underlying sorted-array index — fixes the spurious bottom-border on the
+// last visible row when the list is collapsed.
+function ActivityRow({
+  event,
+  isLast = false,
+}: {
+  event: ActivityEvent;
+  isLast?: boolean;
+}) {
   const { Icon, color } = event;
   const body = (
     <div
