@@ -208,7 +208,7 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
               lineHeight: 1.5,
             }}
           >
-            Analyst-style structural reads on two countries where multiple recipes
+            Analyst-style structural reads on three countries where multiple recipes
             co-light. These are <strong>mock narratives for design preview only</strong>,
             not published QGI assessments. They will be replaced by curated, dated briefs
             once the recipe fleet deploys a second validated recipe.

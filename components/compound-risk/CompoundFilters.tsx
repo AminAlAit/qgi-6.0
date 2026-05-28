@@ -96,6 +96,7 @@ export function CompoundFilters({ minThreshold, familyFilter }: Props) {
             <button
               key={n}
               type="button"
+              aria-pressed={active}
               onClick={() => setMin(n)}
               style={{
                 fontSize: "12px",
@@ -150,6 +151,7 @@ export function CompoundFilters({ minThreshold, familyFilter }: Props) {
             <button
               key={f.id}
               type="button"
+              aria-pressed={active}
               onClick={() => toggleFam(f.id)}
               title={f.label}
               style={{
