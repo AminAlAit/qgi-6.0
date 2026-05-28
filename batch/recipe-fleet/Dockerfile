@@ -74,6 +74,18 @@ COPY --from=qgi-ml data/shape_inputs_v2/ /app/data/shape_inputs_v2/
 # imports).
 ENV PYTHONPATH="/app/scripts:/app/src:/app"
 
+# Pin every BLAS/OpenMP backend to a single thread process-wide. The #961 parallel grid runs
+# N joblib worker threads, each of which would otherwise spin up its own full BLAS thread pool
+# (N×N oversubscription → the parallel walk ran slower than one laptop core on the canary).
+# Set BEFORE the Python process imports numpy/xgboost so the pools are created already-capped;
+# threadpoolctl in run_f_ml_1_poc.py is the per-fold belt-and-suspenders. Bit-identical for the
+# seeded XGBoost fleet path (the canary re-run confirms selection+AUC unchanged, §2.5).
+ENV OMP_NUM_THREADS=1 \
+    OPENBLAS_NUM_THREADS=1 \
+    MKL_NUM_THREADS=1 \
+    NUMEXPR_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1
+
 # ---- entrypoint ----------------------------------------------------------
 # Batch job definition overrides this with:
 #   "command": ["python", "/app/recipe_fleet_entrypoint.py"]
