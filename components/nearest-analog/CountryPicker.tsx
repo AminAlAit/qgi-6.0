@@ -14,6 +14,8 @@ import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import type { CurrentCountryEntry } from "@/lib/te-mock/nearest-analog-data";
 import { AnalogResults } from "./AnalogResults";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
 
 export interface CountryPickerProps {
   entries: CurrentCountryEntry[];
@@ -128,6 +130,7 @@ export function CountryPicker({
           >
             <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
               <Search size={16} strokeWidth={1.8} color="var(--qgi-text-muted)" />
+              <FlagImg emoji={flagFor(selected.name)} name={selected.name} width={18} />
               <span style={{ fontWeight: 600 }}>{selected.name}</span>
               <span
                 style={{
@@ -236,7 +239,10 @@ export function CountryPicker({
                       marginBottom: "2px",
                     }}
                   >
-                    <span style={{ fontWeight: active ? 600 : 500 }}>{e.name}</span>
+                    <span style={{ display: "flex", alignItems: "center", gap: "7px" }}>
+                      <FlagImg emoji={flagFor(e.name)} name={e.name} width={14} />
+                      <span style={{ fontWeight: active ? 600 : 500 }}>{e.name}</span>
+                    </span>
                     <span
                       style={{
                         fontSize: "10px",
