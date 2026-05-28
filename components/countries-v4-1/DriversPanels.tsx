@@ -11,6 +11,7 @@
  */
 import { PanelShell } from "./PanelShell";
 import { MiniSparkline } from "./MiniSparkline";
+import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import type {
   CountryDriverAttribution,
   CountryDriverMovement,
@@ -123,7 +124,7 @@ export function WhyScoresPanel({
                   style={{
                     width: `${r.signal_share_pct}%`,
                     height: "100%",
-                    background: accent,
+                    background: NEUTRAL_SLATE,
                     opacity: 0.85,
                   }}
                 />

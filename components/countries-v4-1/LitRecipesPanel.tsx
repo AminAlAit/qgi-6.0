@@ -118,7 +118,10 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 </span>
               </div>
 
-              {/* Score bar (family hue, length = rank) */}
+              {/* Score bar — NEUTRAL_SLATE per V4.1 rule 8 (magnitude bars
+                  carry the rank-not-probability semantics; family color
+                  stays on the chip glyph and the row left-edge accent
+                  but never on the rank bar itself). */}
               <div
                 style={{
                   height: "8px",
@@ -133,7 +136,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                   style={{
                     width: `${Math.max(2, Math.min(100, r.score))}%`,
                     height: "100%",
-                    background: color,
+                    background: NEUTRAL_SLATE,
                     opacity: 0.85,
                   }}
                 />
