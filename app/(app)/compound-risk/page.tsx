@@ -94,62 +94,6 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
           vintage={COMPOUND_VINTAGE}
         />
 
-        {/* How to read this board */}
-        <div
-          style={{
-            marginTop: "20px",
-            padding: "16px 18px",
-            border: "1px solid #5B7E99",
-            borderLeft: "3px solid #5B7E99",
-            background: "rgba(91,126,153,0.06)",
-            borderRadius: "6px",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "12px",
-              fontWeight: 600,
-              color: "#5B7E99",
-              marginBottom: "10px",
-              letterSpacing: "0.3px",
-            }}
-          >
-            How to read this board
-          </div>
-          <ol
-            style={{
-              margin: 0,
-              padding: "0 0 0 18px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "6px",
-            }}
-          >
-            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
-              The <strong>compound score</strong> is a relative stacking of high rankings
-              across this country&apos;s lit recipes, not a probability.
-            </li>
-            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
-              A country lit on three recipes is <em>not</em> &quot;more likely to
-              experience all three&quot;. The score aggregates independent{" "}
-              <strong>discrimination ranks</strong>, not multiplied likelihoods.
-            </li>
-            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
-              Only{" "}
-              <code style={{ fontFamily: "ui-monospace, monospace" }}>
-                foreign_intervention
-              </code>{" "}
-              has a candidate deployment today (currently re-validating after a coverage
-              fix). The rest are either tested without holding up, or not yet tested. With
-              one near-deployed recipe, this view is <strong>illustrative</strong>.
-            </li>
-            <li style={{ fontSize: "13px", lineHeight: 1.6, color: "var(--qgi-text)" }}>
-              The view becomes meaningful as more recipes are validated and deployed
-              across quarterly reviews.
-            </li>
-          </ol>
-        </div>
-
         {/* Filters */}
         <CompoundFilters minThreshold={minThreshold} familyFilter={familyFilter} />
 

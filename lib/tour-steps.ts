@@ -1,7 +1,7 @@
 import type { Step } from "react-joyride";
 
 /**
- * QGI in-product tour — 59 steps across 14 pages.
+ * QGI in-product tour — 72 steps across 14 pages.
  *
  * Original 12 steps authored from the 5-persona convergence walkthrough
  * (Aisha/Karl/Mei-Lin/Helena/Roberto) on production qgintelligence.com,
@@ -10,9 +10,10 @@ import type { Step } from "react-joyride";
  * for the synthesis and per-persona walkthroughs.
  *
  * V4.1 extension: 32 steps (2026-05-28) + 27 panel-coverage steps
- * (2026-05-28) = 59 total steps. Covers every visible panel on each of
- * 9 surfaces. Authored by Hana Kawai-Bjornsson. Arc: "Resemblance, not
- * prediction."
+ * (2026-05-28) = 59 total steps; updated 2026-05-28 to 72 steps —
+ * inline how-to-read panels removed, button step added last on every
+ * page. Covers every visible panel on each of 9 surfaces. Authored by
+ * Hana Kawai-Bjornsson. Arc: "Resemblance, not prediction."
  *
  * Every page has a mandatory **(a) Introduction** step anchored on the page's
  * `h1`. Additional **(d) "What to be careful of"** steps anchor on the
@@ -257,8 +258,17 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "We will open foreign_intervention next. It is the demo recipe: it was withdrawn for re-evaluation after an audit found a coverage gap, and the page carries that note transparently. That is the methodology working as designed.",
     placement: "right",
   },
+  {
+    page: "/recipes-v4.1",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules: scores are ranks not probabilities, counts come from the tracker, corrections are published on purpose, nothing here is a forecast.",
+    placement: "bottom",
+  },
 
-  // ─── /recipes-v4.1/foreign_intervention — 12 steps, top-to-bottom ────────
+  // ─── /recipes-v4.1/foreign_intervention — 13 steps, top-to-bottom ────────
   // Reading arc: Header (h1 + demo disclosure) → Structure (Identity, Indicator
   // Set, Window) → Validation (Discrimination, Reliability, Calibration) →
   // Results (Countries, Score Distribution) → Deep-dive (Precedents, Pattern
@@ -276,7 +286,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/recipes-v4.1/foreign_intervention",
-    dimension: "d",
+    dimension: "c",
     target: '[data-tour="demo-disclosure"]',
     title: "Why we still show the page",
     content:
@@ -373,6 +383,15 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "The canonical movement shape spelled out: for each indicator in the recipe, the mean trajectory of validated positives in the years leading to the event, with a band showing the 25th to 75th percentile. This is what 'looks like' looks like.",
     placement: "top",
   },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules. Re-open it on any page to re-anchor.",
+    placement: "bottom",
+  },
 
   // ─── /countries-v4.1 — 5 steps, ordered top-to-bottom ────────────────────
   {
@@ -424,9 +443,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
 
   // ─── /countries-v4.1/sdn — 7 steps, ordered top-to-bottom ────────────────
   // Visual order on page: header (h1 + chips + lede) → Recipes in play →
-  // Drivers (Why + What's moving) → Rank history → Analogs + How-to-read
-  // (side-by-side pair) → Vintage sources. The generate-report-button step
-  // was removed (it is an upcoming, disabled feature; not tour-worthy yet).
+  // Drivers (Why + What's moving) → Rank history → Analogs → Vintage sources
+  // → how-to-read-button (last). The generate-report-button step was removed
+  // (it is an upcoming, disabled feature; not tour-worthy yet).
   {
     page: "/countries-v4.1/sdn",
     dimension: "a",
@@ -475,15 +494,6 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/countries-v4.1/sdn",
-    dimension: "d",
-    target: '[data-tour="how-to-read-panel"]',
-    title: "The four rules, one click away",
-    content:
-      "This panel is the reference card you will see open from the button on every other page. It is permanent on country pages because the country view is the one most often deep-linked and shared, so the rules ride with the page.",
-    placement: "top",
-  },
-  {
-    page: "/countries-v4.1/sdn",
     dimension: "b",
     target: '[data-tour="vintage-sources-panel"]',
     title: "Provenance, in one place",
@@ -491,11 +501,19 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "When the data was last refreshed, which providers it came from, and the methodology vintage. Visit this panel before quoting any number; freshness is part of the claim.",
     placement: "top",
   },
+  {
+    page: "/countries-v4.1/sdn",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules. The country page is the one most often deep-linked and shared, so it is worth opening before you cite a number from here.",
+    placement: "bottom",
+  },
 
   // ─── /risk-board — 5 steps, ordered top-to-bottom ────────────────────────
-  // Visual order: h1 → HonestyDisclosure → RiskBoardHero strip → grid →
-  // recent movements. The honesty disclosure renders directly under the hero,
-  // before any leaderboard tile, so it lands in the tour at position 2.
+  // Visual order: h1 → RiskBoardHero strip → grid → recent movements →
+  // how-to-read-button (last). HonestyDisclosure removed from page and tour.
   {
     page: "/risk-board",
     dimension: "a",
@@ -505,15 +523,6 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "Which countries currently resemble a validated crisis shape, ranked across every recipe in the catalog. Each cell is one country, on one recipe, today. Click any cell to open that recipe's report card.",
     placement: "bottom",
     skipBeacon: true,
-  },
-  {
-    page: "/risk-board",
-    dimension: "d",
-    target: '[data-tour="risk-board-honesty"]',
-    title: "Read scores as ranks, every time",
-    content:
-      "A country at 80 is not 80 percent likely to break. It is sitting high in the distribution of countries whose recent trajectory resembles this recipe. Hold that distinction in mind on every page that follows.",
-    placement: "bottom",
   },
   {
     page: "/risk-board",
@@ -541,6 +550,15 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     content:
       "Countries whose rank shifted most since the last data vintage. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
     placement: "top",
+  },
+  {
+    page: "/risk-board",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules. The risk board is the page most often misread as a probability board, so opening this on the way in is worth it.",
+    placement: "bottom",
   },
 
   // ─── /compound-risk — 6 steps, ordered top-to-bottom ─────────────────────
@@ -646,20 +664,28 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/nearest-analog",
-    dimension: "d",
+    dimension: "c",
     target: '[data-tour="analog-methodology-box"]',
     title: "Resemblance, never forecast",
     content:
       "If you read one statement on this site, read this panel's four. Analog matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
     placement: "left",
   },
+  {
+    page: "/nearest-analog",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules. Analog matches are similarities, not forward predictions -- open the rules on any page when you need to re-anchor.",
+    placement: "bottom",
+  },
 
   // ─── /recipe-tracker — 7 steps, ordered top-to-bottom ────────────────────
   // Visual order: h1 → hero tiles → walk timeline (full-width strip) →
   // recipe table (left column body) → in-flight (right column top) →
-  // read-this-panel (right column middle) → vacate-log (right column bottom).
-  // The right-side panels are stacked under each other; the table is parallel
-  // to the whole stack but starts at the same vertical position as in-flight.
+  // vacate-log (right column bottom) → how-to-read-button (last).
+  // ReadThisPanel removed from page and tour.
   // The tour walks the table first because the page's editorial center is the
   // table; the side panels are supporting context.
   {
@@ -710,21 +736,21 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/recipe-tracker",
-    dimension: "d",
-    target: '[data-tour="read-this-panel"]',
-    title: "Four lines that ride every page",
-    content:
-      "These four statements are the substrate. Every page on the site lives or dies by them: scores are resemblance ranks not probabilities; deployed means cleared every checkpoint; corrections are published on purpose; most recipes do not hold up.",
-    placement: "left",
-  },
-  {
-    page: "/recipe-tracker",
     dimension: "c",
     target: '[data-tour="vacate-log"]',
     title: "Corrections are published on purpose",
     content:
-      "When a prior result does not survive audit, we withdraw it publicly and log the reason here. Reading the log is reading the methodology working as designed. You have finished the tour.",
+      "When a prior result does not survive audit, we withdraw it publicly and log the reason here. Reading the log is reading the methodology working as designed.",
     placement: "left",
+  },
+  {
+    page: "/recipe-tracker",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Open this when you forget",
+    content:
+      "Every page has this button. It opens a quiet reference card with the four ground rules. You have finished the tour -- the four rules are always one click away from here.",
+    placement: "bottom",
   },
 ];
 

@@ -29,10 +29,7 @@ import {
 } from "@/components/countries-v4-1/DriversPanels";
 import { RankHistoryPanel } from "@/components/countries-v4-1/RankHistoryPanel";
 import { AnalogsPanelV41 } from "@/components/countries-v4-1/AnalogsPanelV41";
-import {
-  HowToReadPanel,
-  VintageSourcesPanel,
-} from "@/components/countries-v4-1/ReadMePanels";
+import { VintageSourcesPanel } from "@/components/countries-v4-1/ReadMePanels";
 
 interface Params {
   params: Promise<{ iso: string }>;
@@ -151,10 +148,7 @@ export default async function CountryV41DetailPage({ params }: Params) {
 
           <RankHistoryPanel country={country} />
 
-          <PanelPair>
-            <AnalogsPanelV41 country={country} />
-            <HowToReadPanel />
-          </PanelPair>
+          <AnalogsPanelV41 country={country} />
 
           <VintageSourcesPanel country={country} />
         </div>

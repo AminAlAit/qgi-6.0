@@ -21,8 +21,6 @@
  * Mockup only. Not for production. Local branch `local/te-precedents-mockup`.
  */
 import type { Metadata } from "next";
-import Link from "next/link";
-import type { Route } from "next";
 import { Telescope } from "lucide-react";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
@@ -143,57 +141,6 @@ export default async function NearestAnalogPage({
             analog country, never a prediction about today&apos;s.
           </p>
         </header>
-
-        {/* How to read this — disclosure */}
-        <div
-          style={{
-            padding: "14px 18px",
-            background: "rgba(91,126,153,0.08)",
-            border: "1px solid #5B7E99",
-            borderRadius: "8px",
-            marginBottom: "24px",
-            borderLeft: "3px solid #5B7E99",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "10px",
-              letterSpacing: "1.2px",
-              color: "#5B7E99",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "6px",
-              fontWeight: 600,
-            }}
-          >
-            HOW TO READ THIS
-          </div>
-          <p
-            style={{
-              fontSize: "13px",
-              color: "var(--qgi-text)",
-              lineHeight: 1.55,
-              margin: 0,
-            }}
-          >
-            Analog matches are{" "}
-            <strong>shape similarities, not forward predictions</strong>. &ldquo;Egypt
-            today looks like Tunisia 2008&rdquo; means the indicator trajectories rhyme;
-            it does not mean Egypt will follow Tunisia&apos;s outcome. The demo renders{" "}
-            <Link
-              href={"/precedents-v2/foreign_intervention" as Route}
-              style={{
-                color: "var(--qgi-accent)",
-                textDecoration: "underline",
-                textDecorationStyle: "dotted",
-              }}
-            >
-              foreign_intervention
-            </Link>{" "}
-            as the primary recipe, with other tested and queued recipes contributing as
-            secondary shapes. Status chips on every recipe surface show the validation
-            tier.
-          </p>
-        </div>
 
         {/* Main: picker + results column · methodology side panel */}
         <div
