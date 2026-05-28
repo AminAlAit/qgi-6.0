@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { TrackerRecipe } from "@/lib/te-mock/recipes";
 import type { InFlightItem, QueuedItem } from "@/lib/te-mock/recipe-tracker-extra";
 import { Radio, CalendarClock } from "lucide-react";
@@ -10,12 +9,17 @@ import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
  *  language before rendering. The data file is a read-only shared utility. */
 function sanitizeNote(note: string): string {
   return note
+    .replace(/F-ML-\d+/gi, "ML pre-registration")
+    .replace(/F-ML-N/gi, "future ML pre-registration")
     .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
     .replace(/\bLOCO\b/g, "out-of-sample discrimination")
     .replace(/\bvacated\b/gi, "withdrawn")
     .replace(/\bvacate\b/gi, "correction")
     .replace(/re-walk/gi, "re-validation")
-    .replace(/\bwalk\b/gi, "validation pass");
+    .replace(/\bwalk\b/gi, "validation pass")
+    .replace(/\bin flight\b/gi, "in review")
+    .replace(/\bfan-out\b/gi, "production rollout")
+    .replace(/\btruncation\b/gi, "coverage gap");
 }
 
 export function InFlightPanel({
@@ -46,7 +50,7 @@ export function InFlightPanel({
           marginBottom: "12px",
         }}
       >
-        <Radio size={14} color="#a78bfa" />
+        <Radio size={14} color="#a78bfa" aria-hidden="true" />
         <h2
           style={{
             fontSize: "10.5px",
@@ -58,7 +62,7 @@ export function InFlightPanel({
             fontWeight: 700,
           }}
         >
-          Under validation &amp; scheduled · next 30 days
+          Under validation and scheduled · next 30 days
         </h2>
       </header>
 
@@ -240,6 +244,7 @@ export function InFlightPanel({
 function PulsingDot({ color }: { color: string }) {
   return (
     <span
+      aria-hidden="true"
       style={{
         display: "inline-block",
         width: "7px",

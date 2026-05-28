@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { getMock, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { ArrowUpDown, ChevronUp, ChevronDown, Search, ListFilter } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
@@ -55,6 +54,15 @@ const LAST_WALK: Record<string, string> = {
   elections_and_voting: "2026-05-09",
   civil_war_and_insurgency: "2026-05-22",
 };
+
+/** Map raw verdict strings (from JSON or legacy enums) to plain-English labels. */
+function verdictLabel(text: string): string {
+  if (/HARD_FAIL/i.test(text) && /MARGINAL/i.test(text))
+    return "Marginal: did not hold up";
+  if (/HARD.?FAIL/i.test(text)) return "Did not hold up";
+  if (/SUSPEND/i.test(text)) return "On hold pending re-validation";
+  return text.replace(/legacy-LOCK\s*/gi, "").trim();
+}
 
 export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
   const [search, setSearch] = useState("");
@@ -181,7 +189,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
       >
         {/* Search */}
         <label style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-          <Search size={14} color="var(--qgi-text-dim)" />
+          <Search size={14} color="var(--qgi-text-dim)" aria-hidden="true" />
           <input
             type="text"
             value={search}
@@ -205,7 +213,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
         <div
           style={{ display: "flex", flexWrap: "wrap", gap: "6px", alignItems: "center" }}
         >
-          <ListFilter size={12} color="var(--qgi-text-dim)" />
+          <ListFilter size={12} color="var(--qgi-text-dim)" aria-hidden="true" />
           <span
             style={{
               fontSize: "10px",
@@ -225,6 +233,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
               <button
                 key={s}
                 type="button"
+                aria-pressed={active}
                 onClick={() => toggleStatus(s)}
                 style={{
                   fontSize: "10.5px",
@@ -282,6 +291,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
               <button
                 key={l1.id}
                 type="button"
+                aria-pressed={active}
                 onClick={() => toggleL1(l1.id)}
                 style={{
                   fontSize: "10.5px",
@@ -477,7 +487,10 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                     </Td>
                     <Td>
                       {r.stats?.verdict ? (
-                        <VerdictPill text={r.stats.verdict} status={r.status} />
+                        <VerdictPill
+                          text={verdictLabel(r.stats.verdict)}
+                          status={r.status}
+                        />
                       ) : (
                         <Dash />
                       )}
@@ -596,9 +609,30 @@ function Th({
   active?: boolean;
   dir?: SortDir;
 }) {
+  const ariaSortValue: React.AriaAttributes["aria-sort"] = onClick
+    ? active
+      ? dir === "asc"
+        ? "ascending"
+        : "descending"
+      : "none"
+    : undefined;
+
   return (
     <th
       onClick={onClick}
+      tabIndex={onClick ? 0 : undefined}
+      role={onClick ? "button" : undefined}
+      aria-sort={ariaSortValue}
+      onKeyDown={
+        onClick
+          ? (e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                onClick();
+              }
+            }
+          : undefined
+      }
       style={{
         width,
         textAlign: align ?? "left",
@@ -627,12 +661,12 @@ function Th({
         {onClick &&
           (active ? (
             dir === "asc" ? (
-              <ChevronUp size={11} />
+              <ChevronUp size={11} aria-hidden="true" />
             ) : (
-              <ChevronDown size={11} />
+              <ChevronDown size={11} aria-hidden="true" />
             )
           ) : (
-            <ArrowUpDown size={10} opacity={0.5} />
+            <ArrowUpDown size={10} opacity={0.5} aria-hidden="true" />
           ))}
       </span>
     </th>
