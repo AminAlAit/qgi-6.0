@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { ArchiveX } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import type { VacateEvent } from "@/lib/te-mock/recipe-tracker-extra";
@@ -9,11 +8,16 @@ import type { VacateEvent } from "@/lib/te-mock/recipe-tracker-extra";
  *  language before rendering. The data file is read-only shared utility. */
 function sanitizeNote(note: string): string {
   return note
+    .replace(/F-ML-\d+/gi, "ML pre-registration")
+    .replace(/F-ML-N/gi, "future ML pre-registration")
     .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
     .replace(/\bLOCO\b/g, "out-of-sample discrimination")
     .replace(/\bvacated\b/gi, "withdrawn")
     .replace(/\bvacate\b/gi, "correction")
-    .replace(/re-walk/gi, "re-validation");
+    .replace(/re-walk/gi, "re-validation")
+    .replace(/\bin flight\b/gi, "in review")
+    .replace(/\bfan-out\b/gi, "production rollout")
+    .replace(/\btruncation\b/gi, "coverage gap");
 }
 
 /** Plain-language label for a prior_status value shown in the correction
@@ -48,7 +52,7 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
           marginBottom: "10px",
         }}
       >
-        <ArchiveX size={14} color="#E64545" />
+        <ArchiveX size={14} color="#E64545" aria-hidden="true" />
         <h2
           style={{
             fontSize: "10.5px",
@@ -161,7 +165,9 @@ export function VacateLog({ events }: { events: VacateEvent[] }) {
                     marginTop: "6px",
                   }}
                 >
-                  <strong style={{ color: "var(--qgi-text)" }}>{ev.cause}.</strong>{" "}
+                  <strong style={{ color: "var(--qgi-text)" }}>
+                    {sanitizeNote(ev.cause)}.
+                  </strong>{" "}
                   {sanitizeNote(ev.note)}
                 </div>
               </li>

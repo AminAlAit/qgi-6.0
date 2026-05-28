@@ -145,23 +145,47 @@ export function WalkTimeline({
                 key={`${w.recipe_id}-${w.fired_at}`}
                 href={`/precedents-v2/${w.recipe_id}`}
                 title={`${label} · ${w.fired_at} · ${verdictLabel(w.verdict)}${w.loco_auc ? ` · Discrimination score ${w.loco_auc.toFixed(3)}` : ""}`}
+                aria-label={`${label} · ${w.fired_at} · ${verdictLabel(w.verdict)}`}
                 style={{
                   position: "absolute",
                   left,
                   top: "50%",
+                  /* 24×24 hit target (WCAG 2.5.8) via padding; negative margin keeps layout stable */
                   transform: "translate(-50%, -50%)",
-                  width: "12px",
-                  height: "12px",
-                  borderRadius: "50%",
-                  background: color,
-                  border: `2px solid var(--qgi-surface)`,
-                  boxShadow: `0 0 0 1px ${color}, 0 0 8px ${color}66`,
+                  width: "24px",
+                  height: "24px",
+                  margin: "-6px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   cursor: "pointer",
                   zIndex: 2,
                   textDecoration: "none",
                   color: "transparent",
+                  borderRadius: "50%",
+                  outline: "none",
                 }}
               >
+                {/* Visual dot — 12×12, centered inside 24×24 hit area */}
+                <span
+                  aria-hidden="true"
+                  style={{
+                    display: "inline-block",
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "50%",
+                    background: color,
+                    border: `2px solid var(--qgi-surface)`,
+                    boxShadow: `0 0 0 1px ${color}, 0 0 8px ${color}66`,
+                    flexShrink: 0,
+                  }}
+                />
+                <style>{`
+                  a[href*="/precedents-v2/"]:focus-visible {
+                    outline: 2px solid var(--qgi-accent, #38bdf8);
+                    outline-offset: 2px;
+                  }
+                `}</style>
                 <span
                   style={{
                     position: "absolute",

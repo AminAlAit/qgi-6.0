@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import {
+  getAllRecipes,
+  getRecipe,
+  vintageStamp,
+  type TrackerRecipe,
+} from "@/lib/te-mock/recipes";
 import {
   HISTORICAL_WALKS,
   IN_FLIGHT,
@@ -33,12 +38,23 @@ export default function RecipeTrackerPage() {
     {} as Record<TrackerRecipe["status"], number>
   );
 
+  // IN_FLIGHT items already exist in the JSON under their canonical status
+  // (walked_no_graduation or live_legacy). Subtract them from those buckets
+  // before adding them to inProgress, so the five tiles still sum to total.
+  const inFlightIds = new Set(IN_FLIGHT.map((x) => x.recipe_id));
+  let walkedFail = counts.walked_no_graduation ?? 0;
+  let legacy = counts.live_legacy ?? 0;
+  for (const id of inFlightIds) {
+    const r = getRecipe(id);
+    if (r?.status === "walked_no_graduation") walkedFail--;
+    else if (r?.status === "live_legacy") legacy--;
+  }
+  // Debug assertion: graduated + walkedFail + inProgress + legacy + queued === total
   const graduated = counts.graduated ?? 0;
-  const walkedFail = counts.walked_no_graduation ?? 0;
-  const inProgress = counts.in_progress ?? 0;
-  const legacy = counts.live_legacy ?? 0;
+  const inProgress = (counts.in_progress ?? 0) + IN_FLIGHT.length;
   const queued = counts.queued ?? 0;
   const total = recipes.length;
+  // Assert: 0 + walkedFail + inProgress + legacy + queued should equal total (71)
 
   return (
     <div
@@ -49,7 +65,7 @@ export default function RecipeTrackerPage() {
         <TrackerHero
           graduated={graduated}
           walkedFail={walkedFail}
-          inProgress={inProgress + IN_FLIGHT.length}
+          inProgress={inProgress}
           legacy={legacy}
           queued={queued}
           total={total}

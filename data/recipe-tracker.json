@@ -22,7 +22,7 @@
         "loco_auc": 0.7085,
         "window_y": 3,
         "n_indicators": 4,
-        "verdict": "HARD_FAIL"
+        "verdict": "Did not hold up"
       }
     },
     {
@@ -125,7 +125,7 @@
       "status": "live_legacy",
       "stats": {
         "loco_auc": 0.7786,
-        "verdict": "F-ML-1 HARD_FAIL (legacy-LOCK on dashboard)"
+        "verdict": "Did not hold up under re-validation"
       }
     },
     {
@@ -142,7 +142,7 @@
         "v4_oot_recall": 0.0,
         "window_y": 3,
         "n_indicators": 6,
-        "verdict": "MARGINAL \u00b7 similarity HARD-FAIL"
+        "verdict": "Marginal: did not hold up"
       }
     },
     {
@@ -160,7 +160,7 @@
         "window_y": 18,
         "n_indicators": 4,
         "blog_url": "/blog/foreign-intervention-graduation",
-        "verdict": "GRADUATION SUSPENDED - re-validating after pipeline-coverage fix",
+        "verdict": "On hold pending re-validation",
         "n_countries_scored": 68
       }
     },
@@ -264,7 +264,7 @@
       "status": "walked_no_graduation",
       "stats": {
         "loco_auc": 0.6978,
-        "verdict": "HARD_FAIL"
+        "verdict": "Did not hold up"
       }
     },
     {

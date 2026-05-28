@@ -15,11 +15,13 @@ interface TileProps {
   Icon: LucideIcon;
   color: string;
   big?: boolean;
+  ariaLabel?: string;
 }
 
-function ScoreTile({ count, label, sublabel, Icon, color, big }: TileProps) {
+function ScoreTile({ count, label, sublabel, Icon, color, big, ariaLabel }: TileProps) {
   return (
     <div
+      aria-label={ariaLabel}
       style={{
         background: "var(--qgi-surface)",
         border: `1px solid ${color}66`,
@@ -34,6 +36,7 @@ function ScoreTile({ count, label, sublabel, Icon, color, big }: TileProps) {
       }}
     >
       <div
+        aria-hidden="true"
         style={{
           width: big ? "44px" : "36px",
           height: big ? "44px" : "36px",
@@ -47,7 +50,7 @@ function ScoreTile({ count, label, sublabel, Icon, color, big }: TileProps) {
           color,
         }}
       >
-        <Icon size={big ? 24 : 20} strokeWidth={1.6} />
+        <Icon size={big ? 24 : 20} strokeWidth={1.6} aria-hidden="true" />
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div
@@ -188,6 +191,7 @@ export function TrackerHero({
           sublabel="Cleared every pre-registered checkpoint"
           Icon={GraduationCap}
           color="#3FBF8F"
+          ariaLabel={`${graduated} recipes deployed: cleared every pre-registered checkpoint`}
         />
         <ScoreTile
           count={walkedFail}
@@ -195,6 +199,7 @@ export function TrackerHero({
           sublabel="Hard-failed a validation bar"
           Icon={CircleX}
           color="#E68F29"
+          ariaLabel={`${walkedFail} recipes tested, did not hold up: hard-failed a validation bar`}
         />
         <ScoreTile
           count={inProgress}
@@ -202,6 +207,7 @@ export function TrackerHero({
           sublabel="Validation pass running now"
           Icon={Radio}
           color="#a78bfa"
+          ariaLabel={`${inProgress} recipes in review: validation pass running now`}
         />
         <ScoreTile
           count={legacy}
@@ -209,6 +215,7 @@ export function TrackerHero({
           sublabel="Pre-TE method, re-validation pending"
           Icon={Layers}
           color="#7A8FA0"
+          ariaLabel={`${legacy} recipes using early method, under review: pre-TE method, re-validation pending`}
         />
         <ScoreTile
           count={queued}
@@ -216,6 +223,7 @@ export function TrackerHero({
           sublabel="Awaiting curated events"
           Icon={Hourglass}
           color="#64748b"
+          ariaLabel={`${queued} recipes not yet tested: awaiting curated events`}
         />
         <ScoreTile
           count={total}
@@ -223,6 +231,7 @@ export function TrackerHero({
           sublabel="71 recipes · 8 L1 families"
           Icon={Telescope}
           color="#38bdf8"
+          ariaLabel={`${total} recipes total in the catalog across 8 L1 families`}
         />
       </div>
     </header>

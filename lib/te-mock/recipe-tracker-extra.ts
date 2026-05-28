@@ -113,14 +113,14 @@ export const IN_FLIGHT: InFlightItem[] = [
     started_at: "2026-05-26 04:12 UTC",
     eta: "~5h",
     stage: "Stage 4 / 6",
-    note: "Re-walk under pipeline-coverage fix after 2026-05-25 vacate. Outcome will replace the truncation-leak result.",
+    note: "Re-validation under the pipeline-coverage fix after the 2026-05-25 correction. Outcome will replace the prior withdrawn result.",
   },
   {
     recipe_id: "multilateral_agreement",
     started_at: "2026-05-26 06:30 UTC",
     eta: "~6h",
     stage: "Stage 2 / 6",
-    note: "First F-ML-1 walk of a Diplomacy-family legacy recipe.",
+    note: "First validation pass for a Diplomacy-family recipe under the new pipeline-coverage fix.",
   },
 ];
 
@@ -138,7 +138,7 @@ export const VACATE_LOG: VacateEvent[] = [
     label: "Foreign Intervention",
     prior_status: "graduated",
     vacated_at: "2026-05-25",
-    cause: "F-ML-1 sample-truncation leak",
-    note: "Reported LOCO-AUC 0.9147 on 10 of 174 positives only. Re-evaluated against full history, the score reverts to ≈0.50 (chance). Graduation was vacated publicly; the fan-out was held; a re-walk under the pipeline-coverage fix is in flight.",
+    cause: "Sample-coverage gap",
+    note: "Reported discrimination score 0.9147 on 10 of 174 positives only. Re-evaluated against full history, the score reverts to approximately chance. Graduation was withdrawn publicly; the production rollout was held; a re-validation under the pipeline-coverage fix is in review.",
   },
 ];
