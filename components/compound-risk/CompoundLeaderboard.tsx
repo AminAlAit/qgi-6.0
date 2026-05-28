@@ -11,6 +11,7 @@ import { FamilyChip } from "@/components/countries-v4-1/FamilyChip";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { familyColor, familyLabel } from "@/lib/te-mock/l1-families";
 import { statusLabel } from "@/lib/te-mock/country-families";
+import type { JSX } from "react";
 
 interface Props {
   countries: CompoundCountry[];
@@ -100,6 +101,15 @@ export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props
 
 function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number }) {
   const sortedRecipes = [...country.lit_recipes].sort((a, b) => b.score - a.score);
+
+  // Rule 2: country-scoped family chips use the top-recipe-in-family icon as
+  // the glyph. Build a lookup: famId → top-scoring recipe_id in that family.
+  const topRecipeByFamily = new Map<string, string>();
+  for (const r of sortedRecipes) {
+    if (!topRecipeByFamily.has(r.l1_id)) {
+      topRecipeByFamily.set(r.l1_id, r.recipe_id);
+    }
+  }
   return (
     <li>
       <article
@@ -157,6 +167,9 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               </span>
             </span>
           </Link>
+          {/* Rule 2: family chips on a country-scoped surface. Each chip
+              keeps showLabel={false} (compact) but the letter glyph is
+              replaced by the top-recipe-in-family icon via iconNode. */}
           <div
             style={{ display: "flex", gap: "4px", marginTop: "8px", flexWrap: "wrap" }}
           >
@@ -165,6 +178,15 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               if (!fam) return null;
               const color = familyColor(famId, fam.l1_color);
               const label = familyLabel(famId, fam.l1_label);
+              const topRecipeId = topRecipeByFamily.get(famId);
+              const iconNode: JSX.Element | undefined = topRecipeId ? (
+                <RecipeIcon
+                  recipeId={topRecipeId}
+                  size={12}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
+              ) : undefined;
               return (
                 <FamilyChip
                   key={famId}
@@ -172,6 +194,7 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
                   label={label}
                   color={color}
                   showLabel={false}
+                  iconNode={iconNode}
                 />
               );
             })}

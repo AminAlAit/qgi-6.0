@@ -13,7 +13,7 @@
  * L1-family color as a thin accent only, the anti-causal firewall folded into
  * a calm "How to read" panel, no em-dashes, no rendered persona credit.
  *
- * Reuses the shared V4.1 vocabulary: PanelShell / FlagImg / FamilyChip.
+ * Reuses the shared V4.1 vocabulary: PanelShell / FlagImg / RecipeIcon.
  * Server component.
  */
 import Link from "next/link";
@@ -26,7 +26,6 @@ import { flagFor } from "@/lib/te-mock/country-flags";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { PanelShell } from "@/components/countries-v4-1/PanelShell";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
-import { FamilyChip } from "@/components/countries-v4-1/FamilyChip";
 import { PatternShapeSparkline } from "@/components/patterns-v4/PatternShapeSparkline";
 
 // Resolve a country name → its /countries-v4.1 slug, where we have one.

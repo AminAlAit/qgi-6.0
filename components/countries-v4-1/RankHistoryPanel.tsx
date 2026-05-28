@@ -9,7 +9,7 @@
  */
 import { PanelShell } from "./PanelShell";
 import { MiniSparkline } from "./MiniSparkline";
-import { FamilyChip } from "./FamilyChip";
+import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
 
@@ -54,12 +54,24 @@ export function RankHistoryPanel({ country }: { country: CountryV4 }) {
                   marginBottom: "8px",
                 }}
               >
-                <FamilyChip
-                  id={l1ById.get(m.recipe_id) ?? "?"}
-                  label={m.label}
-                  color={color}
-                  showLabel={false}
-                />
+                <span
+                  title={`${m.label} (${l1ById.get(m.recipe_id) ?? "?"} family)`}
+                  aria-label={`${m.label} recipe icon`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "22px",
+                    height: "22px",
+                    border: `1px solid ${color}99`,
+                    borderRadius: "3px",
+                    color,
+                    background: `${color}14`,
+                    flexShrink: 0,
+                  }}
+                >
+                  <RecipeIcon recipeId={m.recipe_id} size={14} strokeWidth={1.8} />
+                </span>
                 <span
                   style={{
                     fontSize: "12px",
