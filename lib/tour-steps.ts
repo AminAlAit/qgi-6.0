@@ -42,7 +42,10 @@ export interface QgiTourStep extends Step {
     | "/risk-board"
     | "/compound-risk"
     | "/nearest-analog"
-    | "/recipe-tracker";
+    | "/recipe-tracker"
+    | "/compare"
+    | "/patterns-v4"
+    | "/patterns-v4/paraguay-south_korea-1963";
   /** Tour-design dimension covered (a/b/c/d) per the spec. */
   dimension: "a" | "b" | "c" | "d";
 }
@@ -681,6 +684,72 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
+  // ─── /compare — 6 steps, ordered top-to-bottom ──────────────────────────
+  {
+    page: "/compare",
+    dimension: "a",
+    target: "h1",
+    title: "Two countries, same metrics",
+    content:
+      "Compare places two countries next to each other on the same set of recipes, today. The picker above the page is the page; everything below it is the comparison.",
+    placement: "bottom",
+    skipBeacon: true,
+  },
+  {
+    page: "/compare",
+    dimension: "c",
+    target: '[data-tour="compare-picker"]',
+    title: "Pick the two countries",
+    content:
+      "Type or pick any two countries. The URL updates so you can share the comparison; swap A and B with the arrow between them.",
+    placement: "bottom",
+  },
+  {
+    page: "/compare",
+    dimension: "c",
+    target: '[data-tour="generate-comparison-report-button"]',
+    title: "A future button, previewed",
+    content:
+      "Disabled today, earmarked for a future release. A thinking AI model will read everything QGI knows about the two countries -- every recipe in play, the indicator drivers, the analogs -- and write you a side-by-side intelligence report.",
+    placement: "bottom",
+  },
+  {
+    page: "/compare",
+    dimension: "b",
+    target: '[data-tour="compare-at-a-glance"]',
+    title: "The comparison's shape, in four numbers",
+    content:
+      "How many recipes each country is in play on, the biggest single-recipe rank gap between them, and how many recipes both are in play on at once.",
+    placement: "bottom",
+  },
+  {
+    page: "/compare",
+    dimension: "c",
+    target: '[data-tour="compare-matrix"]',
+    title: "Read across, read down",
+    content:
+      "The main view. Read across to see where one country sits on a recipe. Read down to see which recipes both countries currently resemble. The colored bar is rank magnitude, not probability.",
+    placement: "top",
+  },
+  {
+    page: "/compare",
+    dimension: "c",
+    target: '[data-tour="compare-drivers"]',
+    title: "Where the gap comes from",
+    content:
+      "For the top recipe both countries are in play on, the indicator attribution side by side. If the same indicator is doing the work for both countries, that is the shared driver of the comparison.",
+    placement: "top",
+  },
+  {
+    page: "/compare",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Same rules apply",
+    content:
+      "Every cell on this page is a resemblance rank. A country at 80 and a country at 40 are not twice as risky and half as risky; they sit at different points on the same distribution. Open the rules whenever you need to re-anchor.",
+    placement: "bottom",
+  },
+
   // ─── /recipe-tracker — 7 steps, ordered top-to-bottom ────────────────────
   // Visual order: h1 → hero tiles → walk timeline (full-width strip) →
   // recipe table (left column body) → in-flight (right column top) →
@@ -751,6 +820,129 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     content:
       "Every page has this button. It opens a quiet reference card with the four ground rules. You have finished the tour -- the four rules are always one click away from here.",
     placement: "bottom",
+  },
+
+  // ─── /patterns-v4 — 6 steps, ordered top-to-bottom ───────────────────────
+  {
+    page: "/patterns-v4",
+    dimension: "a",
+    target: "h1",
+    title: "Two countries, same arc",
+    content:
+      "A pattern is two countries whose stories ran in step for a long stretch of history. This page is the catalogue. Each row is a pair, the years they ran together, and how tightly they rhymed.",
+    placement: "bottom",
+    skipBeacon: true,
+  },
+  {
+    page: "/patterns-v4",
+    dimension: "b",
+    target: '[data-tour="patterns-overview-tiles"]',
+    title: "How big the catalogue is",
+    content:
+      "Three numbers describe the catalogue at a glance: how many pairs are on file, how long the median pair ran in step, and which pair holds the longest run on record. Use them as scale before you dive in.",
+    placement: "bottom",
+  },
+  {
+    page: "/patterns-v4",
+    dimension: "c",
+    target: '[data-tour="patterns-ranking-table"]',
+    title: "The leaderboard, by pair strength",
+    content:
+      "The strongest paired rhymes on record, ranked. Sort by strength or by window length. Click any pair to open the detail. The score on the right is a rank from 0 to 100, not a probability.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4",
+    dimension: "b",
+    target: '[data-tour="patterns-family-browse"]',
+    title: "Browse by event family",
+    content:
+      "Filter to pairs where at least one country in the pair currently resembles a recipe in a given family. The colors match the family colors on every other page.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4",
+    dimension: "c",
+    target: '[data-tour="patterns-country-browse"]',
+    title: "Browse by country",
+    content:
+      "Pick any country to see every pair it appears in, sorted by rhyme strength. This is the entry point most analysts come back to.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Four rules, one click",
+    content:
+      "Open this on any page to re-anchor. The four rules on Patterns are the same four rules everywhere: scores are ranks not probabilities, the rhyme is between two countries' pasts not a forecast about either's future, corrections are published on purpose, nothing here is a forecast.",
+    placement: "bottom",
+  },
+
+  // ─── /patterns-v4/paraguay-south_korea-1963 — 7 steps ────────────────────
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "a",
+    target: '[data-tour="pair-header"]',
+    title: "A pair, not a leader and a follower",
+    content:
+      "You're looking at two countries whose trajectories ran in parallel over a shared historical window. The page treats them symmetrically. Neither country is described as leading or following the other.",
+    placement: "bottom",
+    skipBeacon: true,
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "a",
+    target: '[data-tour="pair-summary"]',
+    title: "Where this pair sits",
+    content:
+      "Four numbers: where this pair ranks in the full catalogue, how long the shared window was, how many indicators went into it, and which decade was the strongest match.",
+    placement: "bottom",
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "b",
+    target: '[data-tour="pair-shape-overlay"]',
+    title: "What the resemblance looked like",
+    content:
+      "Both countries' indicator-composite trajectory over the shared window. Two lines. No arrow between them. The axis runs from benign to crisis; it isn't a probability.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "c",
+    target: '[data-tour="pair-indicators"]',
+    title: "What the resemblance was made of",
+    content:
+      "The indicators that carried the rhyme. For each indicator, you'll see the historical year each country crossed a notable threshold on that indicator. Two timestamps, not a delta.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "c",
+    target: '[data-tour="pair-decades"]',
+    title: "The rhyme decade by decade",
+    content:
+      "Small charts showing the resemblance held across multiple decades of the window, not just one. The shape language is the same vocabulary the main catalogue uses.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "c",
+    target: '[data-tour="pair-today"]',
+    title: "Where each country is today",
+    content:
+      "Two cards, two links. Each country's present-day reading lives on its own profile page. This pair page doesn't synthesize a present-day claim from the past resemblance.",
+    placement: "top",
+  },
+  {
+    page: "/patterns-v4/paraguay-south_korea-1963",
+    dimension: "d",
+    target: '[data-tour="how-to-read-button"]',
+    title: "Read the four rules",
+    content:
+      "Open How to read for the four rules that govern this page. The most load-bearing rule for a pair: both countries' pasts, not either country's future.",
+    placement: "left",
   },
 ];
 
