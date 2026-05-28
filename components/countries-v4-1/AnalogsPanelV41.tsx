@@ -20,6 +20,7 @@ export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
     <PanelShell
       title="Historical analogs"
       accent={ARCHIVAL_GOLD}
+      dataTour="analogs-panel"
       caption={`Past situations whose recent pattern most resembles ${country.name} now. Similarity is not prediction; what follows is history about each analog, not a forecast about ${country.name}.`}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>

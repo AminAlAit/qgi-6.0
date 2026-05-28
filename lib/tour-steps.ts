@@ -1,7 +1,7 @@
 import type { Step } from "react-joyride";
 
 /**
- * QGI in-product tour — 44 steps across 14 pages.
+ * QGI in-product tour — 59 steps across 14 pages.
  *
  * Original 12 steps authored from the 5-persona convergence walkthrough
  * (Aisha/Karl/Mei-Lin/Helena/Roberto) on production qgintelligence.com,
@@ -9,10 +9,10 @@ import type { Step } from "react-joyride";
  * `qgi-docs/internal/testing/tour-design/tour-spec-convergence-2026-05-18.md`
  * for the synthesis and per-persona walkthroughs.
  *
- * V4.1 extension: 32 steps across 9 new routes (dashboard-v4.1,
- * recipes-v4.1, recipes-v4.1/foreign_intervention, countries-v4.1,
- * countries-v4.1/sdn, risk-board, compound-risk, nearest-analog,
- * recipe-tracker). Authored from Hana K-B's V4.1 tour spec, 2026-05-28.
+ * V4.1 extension: 32 steps (2026-05-28) + 27 panel-coverage steps
+ * (2026-05-28) = 59 total steps. Covers every visible panel on each of
+ * 9 surfaces. Authored by Hana Kawai-Bjornsson. Arc: "Resemblance, not
+ * prediction."
  *
  * Every page has a mandatory **(a) Introduction** step anchored on the page's
  * `h1`. Additional **(d) "What to be careful of"** steps anchor on the
@@ -20,7 +20,7 @@ import type { Step } from "react-joyride";
  * pages add **(b) Navigation** or **(c) Workflow** steps where 3+ personas
  * converged on a high-leverage affordance.
  *
- * Total: 44 steps, page-resumed by the TourProvider — visiting another
+ * Total: 59 steps, page-resumed by the TourProvider — visiting another
  * page mid-tour picks up at that page's first remaining step.
  */
 
@@ -209,6 +209,24 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "Every page has this button. It opens a quiet reference card with the four ground rules: scores are ranks not probabilities, counts come from the tracker, corrections are published on purpose, nothing here is a forecast. Re-open it on any page to re-anchor.",
     placement: "bottom",
   },
+  {
+    page: "/dashboard-v4.1",
+    dimension: "b",
+    target: '[data-tour="surfaces-grid"]',
+    title: "Six pages, six lenses",
+    content:
+      "Every page on the platform is one of these tiles, and the tour will walk you through each in turn. Recipe Tracker on the left is the source of truth; the other five are different ways of looking at the same data. Tap any tile to jump.",
+    placement: "top",
+  },
+  {
+    page: "/dashboard-v4.1",
+    dimension: "c",
+    target: '[data-tour="activity-timeline"]',
+    title: "Recent activity, in plain log form",
+    content:
+      "Every validation run, every published correction, every methodology amendment lands here in date order. The expand button reveals the full feed. A correction in this list is the program working as designed, not a defect.",
+    placement: "top",
+  },
 
   // ─── /recipes-v4.1 — 3 steps ─────────────────────────────────────────────
   {
@@ -287,6 +305,69 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "This recipe's graduation was withdrawn after an audit found a coverage gap. We render the page populated so you can see what a deployed recipe looks like, with the withdrawal disclosed in line. The live status lives on the Recipe Tracker.",
     placement: "bottom",
   },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "a",
+    target: '[data-tour="identity-card-panel"]',
+    title: "Identity, in one card",
+    content:
+      "Who this recipe is in one block: the family it belongs to, the events it was trained against, the number of historical cases in its evidence base. Read this first; the rest of the page is its anatomy.",
+    placement: "right",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "a",
+    target: '[data-tour="window-panel"]',
+    title: "How far back the shape looks",
+    content:
+      "Each recipe's canonical movement shape spans a fixed window of years before the event. This number is the recipe's memory horizon: how much past trajectory it considers when matching today's countries.",
+    placement: "right",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "c",
+    target: '[data-tour="reliability-panel"]',
+    title: "Does it hold up across passes",
+    content:
+      "Discrimination on one validation pass can be a coincidence. Reliability asks whether the result repeats across multiple passes on the same evidence base. This panel says whether the verdict survived the second look.",
+    placement: "right",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "c",
+    target: '[data-tour="calibration-panel"]',
+    title: "Calibration, separately tracked",
+    content:
+      "Discrimination tells you whether the recipe separates pre-event from non-event years. Calibration is a different question: whether the score it assigns means what it claims to mean. Tracked separately because they fail differently.",
+    placement: "right",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "c",
+    target: '[data-tour="score-distribution-panel"]',
+    title: "Where today's countries fall",
+    content:
+      "The histogram of every country's score on this recipe today. The top countries you saw two panels up sit in the right tail; most countries cluster around the middle. The shape of the curve tells you whether the recipe is decisive or ambiguous.",
+    placement: "top",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "c",
+    target: '[data-tour="precedents-timeline-panel"]',
+    title: "The cases this recipe was trained on",
+    content:
+      "Every event in the curated record that this recipe was validated against, in date order. Click any to read the case brief. This is the historical evidence base; nothing else on the page would exist without it.",
+    placement: "top",
+  },
+  {
+    page: "/recipes-v4.1/foreign_intervention",
+    dimension: "c",
+    target: '[data-tour="pattern-alignment-panel"]',
+    title: "The shape, indicator by indicator",
+    content:
+      "The canonical movement shape spelled out: for each indicator in the recipe, the mean trajectory of validated positives in the years leading to the event, with a band showing the 25th to 75th percentile. This is what 'looks like' looks like.",
+    placement: "top",
+  },
 
   // ─── /countries-v4.1 — 3 steps ───────────────────────────────────────────
   {
@@ -317,6 +398,24 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "Scores on this page are still ranks of resemblance, not probabilities. A country lit on three recipes is not three times more likely to break: it is a country whose current trajectory rhymes with three distinct historical patterns.",
     placement: "bottom",
   },
+  {
+    page: "/countries-v4.1",
+    dimension: "b",
+    target: '[data-tour="atlas-filters"]',
+    title: "Filter and sort the atlas",
+    content:
+      "Region filter, family filter, sort by compound score or by number of recipes in play. The atlas is the entire roster of countries we cover, and these controls are how you cut it.",
+    placement: "bottom",
+  },
+  {
+    page: "/countries-v4.1",
+    dimension: "c",
+    target: '[data-tour="atlas-grid"]',
+    title: "Every country, as a card",
+    content:
+      "Each card is a small dossier: dominant family color on the border, the recipes the country is currently matching, the compound score. Tap any card for the full country view.",
+    placement: "top",
+  },
 
   // ─── /countries-v4.1/sdn — 4 steps ───────────────────────────────────────
   {
@@ -332,8 +431,8 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   {
     page: "/countries-v4.1/sdn",
     dimension: "b",
-    target: '[data-tour="lit-recipes-panel"]',
-    title: "Lit recipes, scored and chipped",
+    target: '[data-tour="recipes-in-play-panel"]',
+    title: "Recipes in play, scored and chipped",
     content:
       "Every recipe Sudan currently resembles, scored on the same 0 to 100 rank. The status chip on the right says whether that recipe has been deployed, was tested and did not hold up, is in review, or is still queued.",
     placement: "top",
@@ -354,6 +453,42 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     title: "The four rules, one click away",
     content:
       "This panel is the reference card you will see open from the button on every other page. It is permanent on country pages because the country view is the one most often deep-linked and shared, so the rules ride with the page.",
+    placement: "top",
+  },
+  {
+    page: "/countries-v4.1/sdn",
+    dimension: "c",
+    target: '[data-tour="generate-report-button"]',
+    title: "A future button, previewed",
+    content:
+      "This button is disabled today but earmarked: a thinking AI model will read everything we know about this country, every recipe in play, its drivers, its movement, its analogs, and write you a full intelligence report. Coming in a future release.",
+    placement: "bottom",
+  },
+  {
+    page: "/countries-v4.1/sdn",
+    dimension: "c",
+    target: '[data-tour="rank-history-panel"]',
+    title: "Where the country sits over time",
+    content:
+      "How the country's rank on its top recipe has moved across recent quarters. Movement is a rank shift, not a probability change. A country climbing the list does not mean an event is more likely; it means its trajectory is matching the recipe shape more strongly than it was.",
+    placement: "top",
+  },
+  {
+    page: "/countries-v4.1/sdn",
+    dimension: "c",
+    target: '[data-tour="analogs-panel"]',
+    title: "Closest historical rhymes",
+    content:
+      "The three past cases whose trajectories most resemble this country's recent shape. Open Nearest Analog from the sidebar to explore the full picker; this panel is the country-detail shorthand.",
+    placement: "top",
+  },
+  {
+    page: "/countries-v4.1/sdn",
+    dimension: "b",
+    target: '[data-tour="vintage-sources-panel"]',
+    title: "Provenance, in one place",
+    content:
+      "When the data was last refreshed, which providers it came from, and the methodology vintage. Visit this panel before quoting any number; freshness is part of the claim.",
     placement: "top",
   },
 
@@ -386,6 +521,24 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "A country at 80 is not 80 percent likely to break. It is sitting high in the distribution of countries whose recent trajectory resembles this recipe. Hold that distinction in mind on every page that follows.",
     placement: "bottom",
   },
+  {
+    page: "/risk-board",
+    dimension: "b",
+    target: '[data-tour="risk-board-grid"]',
+    title: "Every recipe, top ten countries each",
+    content:
+      "The grid: each row is one recipe, each cell is one country's rank on it. Sort, filter by family, pin a country to track it across rows. Click any cell to open that recipe's full report card.",
+    placement: "top",
+  },
+  {
+    page: "/risk-board",
+    dimension: "c",
+    target: '[data-tour="recent-movements"]',
+    title: "Who moved most this quarter",
+    content:
+      "Countries whose rank shifted most since the last data vintage. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
+    placement: "top",
+  },
 
   // ─── /compound-risk — 3 steps ────────────────────────────────────────────
   {
@@ -416,6 +569,33 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
       "This page is the most common place to misread a score. Open the rules on the way in. With limited deployed recipes in the catalog today, the compound view is illustrative; it becomes meaningful as more recipes pass validation.",
     placement: "bottom",
   },
+  {
+    page: "/compound-risk",
+    dimension: "b",
+    target: '[data-tour="compound-hero"]',
+    title: "Lit at how many recipes today",
+    content:
+      "The hero tells you how many countries are currently in play on three or more recipes at once. Adjust the threshold below to widen or tighten the lens. A higher threshold surfaces the heaviest stacks; a lower one casts a wider net.",
+    placement: "bottom",
+  },
+  {
+    page: "/compound-risk",
+    dimension: "c",
+    target: '[data-tour="overlap-chart"]',
+    title: "The same data, by family",
+    content:
+      "For the top five compound countries: which family stacks dominate the score, as horizontal bars. A country lit on Conflict plus Economic plus Social tells a different story than one lit on Diplomatic plus Structural.",
+    placement: "top",
+  },
+  {
+    page: "/compound-risk",
+    dimension: "c",
+    target: '[data-tour="case-studies"]',
+    title: "Three mock briefs",
+    content:
+      "Analyst-style structural reads on three countries where multiple recipes co-light. These are placeholder narratives, not published assessments. They will be replaced with curated, dated briefs once a second recipe clears validation.",
+    placement: "top",
+  },
 
   // ─── /nearest-analog — 3 steps ───────────────────────────────────────────
   {
@@ -445,6 +625,24 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     content:
       "If you read one statement on this site, read this panel's four. Analog matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
     placement: "left",
+  },
+  {
+    page: "/nearest-analog",
+    dimension: "b",
+    target: '[data-tour="analog-results"]',
+    title: "Three matches, with outcomes",
+    content:
+      "Each match card carries the analog country, the year, a similarity score, and a brief note on what happened next. 'What happened next' is a fact about the analog, not a forecast about today's country. Read it that way and you read it correctly.",
+    placement: "top",
+  },
+  {
+    page: "/nearest-analog",
+    dimension: "c",
+    target: '[data-tour="recipe-contributions"]',
+    title: "Which recipes pulled the match",
+    content:
+      "A match is a weighted average of resemblances across the recipe library. This panel tells you which recipes did most of the pulling. A non-deployed recipe contributing 30 percent is not a green light; it is a flag, weighted into a similarity statement.",
+    placement: "top",
   },
 
   // ─── /recipe-tracker — 4 steps ───────────────────────────────────────────
@@ -483,6 +681,33 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     title: "Four lines that ride every page",
     content:
       "These four statements are the substrate. Every page on the site lives or dies by them: scores are resemblance ranks not probabilities; deployed means cleared every checkpoint; corrections are published on purpose; most recipes do not hold up. You have finished the tour.",
+    placement: "left",
+  },
+  {
+    page: "/recipe-tracker",
+    dimension: "b",
+    target: '[data-tour="walk-timeline"]',
+    title: "Every validation run, in order",
+    content:
+      "The horizontal timeline of every validation pass we have run. Green markers cleared the bar, amber markers did not, purple markers are still in progress. Hover for the date and verdict.",
+    placement: "bottom",
+  },
+  {
+    page: "/recipe-tracker",
+    dimension: "c",
+    target: '[data-tour="recipe-table"]',
+    title: "The whole catalog, sortable",
+    content:
+      "Every recipe in the catalog, with its status, family, last validation date, and verdict. Sort any column, filter by family or status. This is the scoreboard the rest of the site cites.",
+    placement: "top",
+  },
+  {
+    page: "/recipe-tracker",
+    dimension: "c",
+    target: '[data-tour="in-flight-panel"]',
+    title: "What is being tested right now",
+    content:
+      "Validation passes currently running, plus a preview of what is scheduled to run next. Outcomes will land in the activity log on the dashboard you started from.",
     placement: "left",
   },
 ];

@@ -164,7 +164,7 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
         <CompoundOverlapChart countries={filtered.slice(0, 5)} />
 
         {/* Case studies */}
-        <section style={{ marginTop: "48px" }}>
+        <section data-tour="case-studies" style={{ marginTop: "48px" }}>
           <div
             style={{
               display: "flex",

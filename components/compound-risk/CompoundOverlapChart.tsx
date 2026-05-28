@@ -14,7 +14,7 @@ export function CompoundOverlapChart({ countries }: Props) {
   const topCompoundScore = Math.max(...countries.map((c) => c.compound_score), 1);
 
   return (
-    <section style={{ marginTop: "48px" }}>
+    <section data-tour="overlap-chart" style={{ marginTop: "48px" }}>
       <div
         style={{
           display: "flex",

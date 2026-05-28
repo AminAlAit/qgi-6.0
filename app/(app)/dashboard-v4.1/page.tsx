@@ -155,10 +155,14 @@ export default function DashboardV41Page() {
         </section>
 
         {/* ── SurfaceGrid (Worker B) ──────────────────────────────────────── */}
-        <SurfaceGrid cards={SURFACE_CARDS} />
+        <div data-tour="surfaces-grid">
+          <SurfaceGrid cards={SURFACE_CARDS} />
+        </div>
 
         {/* ── ActivityTimeline (Worker C) ─────────────────────────────────── */}
-        <ActivityTimeline events={ACTIVITY_EVENTS} />
+        <div data-tour="activity-timeline">
+          <ActivityTimeline events={ACTIVITY_EVENTS} />
+        </div>
 
         {/* ── Footer ──────────────────────────────────────────────────────── */}
         <footer

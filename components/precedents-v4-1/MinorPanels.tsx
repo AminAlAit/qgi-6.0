@@ -186,6 +186,7 @@ export function WindowPanel({
       familyColor={familyColor}
       titleTooltip="How many years of indicator history before the event the recipe's canonical shape spans."
       id="cap-3"
+      dataTour="window-panel"
     >
       <div
         style={{
@@ -303,6 +304,7 @@ export function IdentityCardPanel({
       familyColor={familyColor}
       titleTooltip="The recipe's ID badge: taxonomic position, indicator count, current status, vintage, and the size of the curated case corpus. Recipes need at least 60 verified positives before the discrimination assessment can run."
       id="cap-5"
+      dataTour="identity-card-panel"
     >
       <div
         style={{
@@ -638,6 +640,7 @@ export function CalibrationPanel({
       titleTooltip="Once the recipe graduates and clears the calibration threshold, the score in country panels flips from a rank to a calibrated probability interval (Venn-Abers, per cohort)."
       sectionPending={showCalibrationData ? null : "probability"}
       id="cap-11"
+      dataTour="calibration-panel"
     >
       {showCalibrationData && ece !== undefined && (
         <div style={{ display: "flex", alignItems: "baseline", gap: "14px" }}>

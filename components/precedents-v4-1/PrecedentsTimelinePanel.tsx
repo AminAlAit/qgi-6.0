@@ -135,6 +135,7 @@ export function PrecedentsTimelinePanel({
     return (
       <section
         aria-labelledby="precedents-panel-heading-empty"
+        data-tour="precedents-timeline-panel"
         style={{
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",
@@ -167,6 +168,7 @@ export function PrecedentsTimelinePanel({
   return (
     <section
       aria-labelledby="precedents-panel-heading"
+      data-tour="precedents-timeline-panel"
       style={{
         background: "var(--qgi-surface)",
         borderLeft: `3px solid ${familyColor}`,

@@ -58,6 +58,7 @@ export function ScoreDistributionPanel({
   if (!hasData) {
     return (
       <section
+        data-tour="score-distribution-panel"
         style={{
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",
@@ -94,6 +95,7 @@ export function ScoreDistributionPanel({
   return (
     <section
       aria-labelledby="score-distribution-panel-heading"
+      data-tour="score-distribution-panel"
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",
