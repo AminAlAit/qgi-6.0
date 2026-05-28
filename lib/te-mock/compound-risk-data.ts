@@ -5,11 +5,11 @@
  * a transparent stacking heuristic over discrimination ranks. NOT a joint
  * probability : see M8-R5 disclosure on the page.
  *
- * Foreign Intervention is the only recipe rendered with a "graduated" visual
- * signature (its real status is walked_no_graduation pending re-walk; we paint
- * it green here to show what the page LOOKS like with a graduate participating).
- * Every other recipe carries the walked-failed dashed-border treatment per
- * RecipeCard.tsx convention.
+ * Every recipe renders with the visual signature dictated by its real
+ * status — no "demo graduated" overlay (the isGraduated override was removed
+ * 2026-05-28 as part of the V4.1 honesty bar). Recipes that did not hold up
+ * carry the dashed-border treatment per RecipeCard.tsx convention; the F-family
+ * color override is applied via familyColor() from lib/te-mock/l1-families.
  *
  * Country pickings + narratives are plausible-but-fictional research stubs.
  * Will be replaced by curated, dated, ratified case briefs after a second
@@ -403,7 +403,7 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
       "genuinely distinct structural pressures rather than a single indicator bundle; conflict-shape indicators " +
       "(state-capacity collapse, ethnic-violence rates) sit alongside meteorological and humanitarian-throughput " +
       "signals that draw on a non-overlapping data substrate. This is the architecturally cleanest compound case " +
-      "in the current vintage, and the one most consistent with the original intuition of the compound page, " +
+      "in the current vintage, and the one most consistent with the original intuition of the compound page: " +
       "three independent lenses pointing at the same country.",
   },
   {

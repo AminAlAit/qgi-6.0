@@ -187,7 +187,7 @@ export function InFlightPanel({
             gap: "6px",
           }}
         >
-          <CalendarClock size={11} /> Scheduled for next 30d
+          <CalendarClock size={11} aria-hidden="true" /> Scheduled for next 30d
         </div>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           {queued.map((it) => {
