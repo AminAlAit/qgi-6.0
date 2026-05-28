@@ -16,7 +16,6 @@ import { TrackerHero } from "@/components/recipe-tracker/TrackerHero";
 import { WalkTimeline } from "@/components/recipe-tracker/WalkTimeline";
 import { RecipeTable } from "@/components/recipe-tracker/RecipeTable";
 import { InFlightPanel } from "@/components/recipe-tracker/InFlightPanel";
-import { ReadThisPanel } from "@/components/recipe-tracker/ReadThisPanel";
 import { VacateLog } from "@/components/recipe-tracker/VacateLog";
 
 export const metadata: Metadata = {
@@ -115,7 +114,6 @@ export default function RecipeTrackerPage() {
               queued={QUEUED_NEXT_30D}
               recipes={recipes}
             />
-            <ReadThisPanel />
             <VacateLog events={VACATE_LOG} />
           </aside>
         </div>

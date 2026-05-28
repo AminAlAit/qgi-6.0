@@ -4,7 +4,6 @@ import { BOARD_VINTAGE, getBoardRecipes } from "@/lib/te-mock/risk-board-data";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
-import { HonestyDisclosure } from "@/components/risk-board/HonestyDisclosure";
 import {
   RiskBoardFilters,
   type RiskBoardRecipeProjection,
@@ -125,9 +124,6 @@ export default function RiskBoardPage() {
             makes no forward-dated claim.
           </p>
         </div>
-
-        {/* Honesty disclosure */}
-        <HonestyDisclosure />
 
         {/* Hero strip — today's top pairs across all recipes */}
         <RiskBoardHero vintage={BOARD_VINTAGE} />
