@@ -411,8 +411,16 @@ export function RecipeDetail({ recipe }: { recipe: TrackerRecipe }) {
                   across 6 leave-one-cohort-out folds.
                 </div>
                 <div style={{ fontSize: "12px", color: "var(--qgi-text-muted)" }}>
-                  Exceeds the LOCK floor of 0.7986 by +0.116. V1 separation{" "}
-                  {demo ? <VacatedMetric>25.8pp</VacatedMetric> : "25.8pp"}.
+                  {demo ? (
+                    <>
+                      <VacatedMetric>
+                        Exceeds the LOCK floor of 0.7986 by +0.116
+                      </VacatedMetric>
+                      . V1 separation <VacatedMetric>25.8pp</VacatedMetric>.
+                    </>
+                  ) : (
+                    <>Exceeds the LOCK floor of 0.7986 by +0.116. V1 separation 25.8pp.</>
+                  )}
                 </div>
               </div>
             </div>

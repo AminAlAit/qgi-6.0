@@ -556,7 +556,9 @@ function Th({
       onClick={onClick}
       onKeyDown={isSortable ? handleKeyDown : undefined}
       tabIndex={isSortable ? 0 : undefined}
-      role={isSortable ? "button" : undefined}
+      // Intentionally NO role="button" — overriding the implicit
+      // columnheader role would lose table semantics for screen readers.
+      // scope="col" + aria-sort + tabIndex + onKeyDown provides full a11y.
       aria-sort={
         isSortable
           ? active
