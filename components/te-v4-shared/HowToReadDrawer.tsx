@@ -11,16 +11,25 @@
  * - Body scroll is locked while open
  * - No internal "Next / OK" buttons — reader dismisses when done
  *
+ * Animation (2026-05-28): the drawer slides in from the right over 500ms
+ * and slides out symmetrically. To support BOTH directions cleanly we keep
+ * the drawer mounted for the full close-transition before unmounting:
+ *
+ *   open=true  → mount → next-frame visible=true  → transform animates in
+ *   open=false → visible=false → transform animates out → wait 500ms → unmount
+ *
  * The backdrop is a <button> (not a <div>) so keyboard users can dismiss
  * without hunting for the close button. Its label makes the intent clear.
  */
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import { HOW_TO_READ_CONTENT, type RouteKey } from "@/lib/te-mock/how-to-read-content";
 
 const CALM_SLATE_BLUE = "#5B7E99";
+const ANIM_MS = 500;
+const EASING = "cubic-bezier(0.16, 1, 0.3, 1)";
 
 export interface HowToReadDrawerProps {
   routeKey: RouteKey;
@@ -29,7 +38,52 @@ export interface HowToReadDrawerProps {
 }
 
 export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProps) {
-  // ESC to close. Body scroll-lock while open.
+  // `mounted` tracks whether the DOM is present. `visible` drives the
+  // transform/opacity transition. Two-stage so we can animate in (mount,
+  // then next-frame flip visible to trigger CSS transition) AND animate
+  // out (flip visible off, wait for transition, then unmount).
+  //
+  // All state mutations happen inside async callbacks (requestAnimationFrame
+  // + setTimeout) rather than synchronously in the effect body. The
+  // react-hooks/set-state-in-effect rule blocks synchronous setState in
+  // effects (cascading renders); async-callback updates are the supported
+  // escape hatch for animation orchestration.
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  // Mutable handle so the open-branch cleanup can cancel whichever rAF is
+  // currently in flight (id1 mounts, id2 flips visible).
+  const cancelRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (open) {
+      // Two rAFs: first frame mounts the DOM with translateX(100%); second
+      // frame flips visible=true so the CSS transition runs. Without the
+      // double-rAF React batches both updates and the transition is skipped.
+      const id1 = requestAnimationFrame(() => {
+        setMounted(true);
+        const id2 = requestAnimationFrame(() => setVisible(true));
+        // Stash id2 on the outer cancel so cleanup can cancel either step.
+        cancelRef.current = id2;
+      });
+      cancelRef.current = id1;
+      return () => {
+        if (cancelRef.current !== null) cancelAnimationFrame(cancelRef.current);
+        cancelRef.current = null;
+      };
+    }
+    // Closing: rAF the visible=false flip (lets the browser paint
+    // translateX(100%)), then unmount after the transition duration.
+    const id1 = requestAnimationFrame(() => setVisible(false));
+    const id2 = window.setTimeout(() => setMounted(false), ANIM_MS);
+    return () => {
+      cancelAnimationFrame(id1);
+      window.clearTimeout(id2);
+    };
+  }, [open]);
+
+  // ESC to close + body scroll-lock while the drawer is open. Keyed off
+  // `open` so closing via outside-click or ESC immediately unlocks scroll
+  // even though the unmount waits 500ms.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -44,13 +98,14 @@ export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProp
     };
   }, [open, onClose]);
 
-  if (!open) return null;
+  if (!mounted) return null;
 
   const content = HOW_TO_READ_CONTENT[routeKey];
 
   return (
     <>
-      {/* Backdrop — focusable so keyboard users can dismiss without the X */}
+      {/* Backdrop — focusable so keyboard users can dismiss without the X.
+          Fades in/out with the drawer. */}
       <button
         type="button"
         aria-label="Close how-to-read drawer"
@@ -63,14 +118,18 @@ export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProp
           border: "none",
           padding: 0,
           cursor: "default",
+          opacity: visible ? 1 : 0,
+          pointerEvents: visible ? "auto" : "none",
+          transition: `opacity ${ANIM_MS}ms ${EASING}`,
         }}
       />
 
-      {/* Drawer */}
+      {/* Drawer — slides in from the right over 500ms */}
       <aside
         role="dialog"
         aria-modal="true"
         aria-labelledby="howtoread-title"
+        aria-hidden={!visible}
         style={{
           position: "fixed",
           top: 0,
@@ -83,6 +142,9 @@ export function HowToReadDrawer({ routeKey, open, onClose }: HowToReadDrawerProp
           overflowY: "auto",
           zIndex: 50,
           boxShadow: "-8px 0 24px rgba(0,0,0,0.3)",
+          transform: visible ? "translateX(0)" : "translateX(100%)",
+          transition: `transform ${ANIM_MS}ms ${EASING}`,
+          willChange: "transform",
         }}
       >
         {/* Header */}
