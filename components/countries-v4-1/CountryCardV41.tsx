@@ -113,34 +113,14 @@ export function CountryCardV41({
             flex: 1,
           }}
         >
-          {/* Top row — flag + ISO chip */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              marginBottom: "10px",
-            }}
-          >
+          {/* Flag */}
+          <div style={{ marginBottom: "10px" }}>
             <FlagImg
               emoji={country.flag_emoji}
               name={country.name}
               width={30}
               radius={3}
             />
-            <span
-              style={{
-                fontSize: "9.5px",
-                padding: "2px 7px",
-                border: "1px solid var(--qgi-border)",
-                color: "var(--qgi-text-dim)",
-                borderRadius: "3px",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.5px",
-              }}
-            >
-              {country.iso}
-            </span>
           </div>
 
           {/* Name + region (neutral, not hued) */}
@@ -260,15 +240,13 @@ export function CountryCardV41({
               />
             </div>
 
-            {/* Bottom: top recipe + honest lit count */}
+            {/* Bottom: top recipe */}
             <div
               style={{
                 display: "flex",
-                justifyContent: "space-between",
                 alignItems: "center",
                 paddingTop: "9px",
                 borderTop: "1px solid rgba(255,255,255,0.04)",
-                gap: "8px",
               }}
             >
               {topRecipe ? (
@@ -302,23 +280,6 @@ export function CountryCardV41({
                   no recipes lit
                 </span>
               )}
-              <span
-                style={{
-                  fontSize: "9.5px",
-                  padding: "2px 7px",
-                  borderRadius: "10px",
-                  fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.3px",
-                  background: "rgba(122,143,160,0.10)",
-                  color: "var(--qgi-text-muted)",
-                  border: "1px solid var(--qgi-border)",
-                  whiteSpace: "nowrap",
-                  flexShrink: 0,
-                }}
-                title={`${country.recipes_lit_count} recipes lit; ${country.recipes_lit_graduated} deployed for decisions. Lit means the country's recent signals resemble that recipe's pattern; it is not a confirmed prediction.`}
-              >
-                {country.recipes_lit_count} lit · {country.recipes_lit_graduated} deployed
-              </span>
             </div>
           </div>
         </div>
