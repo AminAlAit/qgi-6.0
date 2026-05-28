@@ -670,13 +670,10 @@ for (const p of PAIRS) {
 /**
  * Alias map: compact pair_ids used by the main-data catalogue
  * (lib/te-mock/patterns-v4-main-data.ts) → the long-form slugs this file's
- * detail entries are keyed on. The two data files were authored independently
- * and used different slug conventions; this map lets the catalog's row hrefs
- * resolve into existing detail entries without trimming or duplicating data.
+ * hand-authored detail entries are keyed on.
  *
- * Pairs in the main-data catalogue that are NOT in this map still navigate
- * to /patterns-v4/{compact-id} and gracefully notFound() (placeholder data
- * not authored yet for those pairs).
+ * Pairs NOT in this map fall through to the deterministic synthesizer below,
+ * so every row in the main-data catalogue navigates to a working detail page.
  */
 const SLUG_ALIASES: Record<string, string> = {
   "pry-kor": "paraguay-south_korea-1963",
@@ -686,18 +683,194 @@ const SLUG_ALIASES: Record<string, string> = {
   "pol-cze": "poland-czech_republic-1989",
 };
 
+// ── Synthesizer for catalog pairs without hand-authored detail ────────────
+//
+// Every PairRow in `lib/te-mock/patterns-v4-main-data.ts` deserves a working
+// detail page. For the 5 with hand-authored entries above, INDEX/SLUG_ALIASES
+// route directly. For the other ~35, we synthesize a deterministic PairDetail
+// from the row's existing fields (countries, years, window). The synthesized
+// content respects the symmetric framing rule: no leader/follower vocab,
+// no aggregated timestamps, two crossing years per indicator as facts.
+
+import type { PairRow } from "./patterns-v4-main-data";
+import { getFullCatalogue } from "./patterns-v4-main-data";
+import { L1_FAMILIES, familyColor, NEUTRAL_SLATE } from "./l1-families";
+
+/** Deterministic seeded PRNG in [0, 1) derived from a string. */
+function seedFrom(s: string): () => number {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < s.length; i++) {
+    h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  }
+  return () => {
+    h = Math.imul(h ^ (h >>> 15), 2246822507);
+    h = Math.imul(h ^ (h >>> 13), 3266489909);
+    h = (h ^ (h >>> 16)) >>> 0;
+    return h / 4294967296;
+  };
+}
+
+const INDICATOR_POOL = [
+  { code: "v2x_libdem", name: "Liberal democracy index", provider: "V-Dem" },
+  { code: "v2x_polyarchy", name: "Electoral democracy index", provider: "V-Dem" },
+  { code: "v2psprbrch", name: "Party branches", provider: "V-Dem" },
+  { code: "v2eltrnout", name: "Voter turnout", provider: "V-Dem" },
+  { code: "v2x_corr", name: "Political corruption index", provider: "V-Dem" },
+  { code: "v2elffelr", name: "Election free and fair", provider: "V-Dem" },
+  { code: "FP.CPI.TOTL.ZG", name: "Inflation, consumer prices", provider: "World Bank" },
+  { code: "NY.GDP.MKTP.KD.ZG", name: "GDP growth", provider: "World Bank" },
+  { code: "BN.CAB.XOKA.CD", name: "Current account balance", provider: "World Bank" },
+  { code: "SI.POV.GINI", name: "Gini coefficient", provider: "World Bank" },
+  {
+    code: "FAOSTAT.GFCF.AGR",
+    name: "Capital formation in agriculture",
+    provider: "FAOSTAT",
+  },
+  { code: "ILO.UE.RATE", name: "Unemployment rate", provider: "ILOSTAT" },
+];
+
+const ARCHETYPE_POOL: DecadeBucket["archetype"][] = [
+  "ramp",
+  "oscillation",
+  "step",
+  "recovery",
+  "collapse",
+];
+
+const FAMILY_IDS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+
+function synthesizePairDetail(
+  row: PairRow,
+  catalogueRank: number,
+  catalogueSize: number
+): PairDetail {
+  const rand = seedFrom(row.pair_id);
+
+  // 8 indicators picked deterministically from the pool with normalized contributions.
+  const pool = [...INDICATOR_POOL].sort(() => rand() - 0.5).slice(0, 8);
+  const rawContribs = pool.map(() => 5 + rand() * 20);
+  const sumContribs = rawContribs.reduce((a, b) => a + b, 0);
+  const sharedIndicators: PairIndicator[] = pool.map((ind, i) => ({
+    code: ind.code,
+    name: ind.name,
+    provider: ind.provider,
+    contributionPct: Number(((rawContribs[i] / sumContribs) * 100).toFixed(1)),
+    crossingYearA: row.start_year + Math.floor(rand() * row.window_years * 0.7),
+    crossingYearB: row.start_year + Math.floor(rand() * row.window_years * 0.7),
+    thresholdDefinition: `${ind.name} z-score crossed +1.5 SD above its country baseline.`,
+  }));
+
+  // Composite z-score series, one entry per year of the shared window.
+  const seriesLen = Math.max(2, row.window_years);
+  const compositeSeriesA: number[] = [];
+  const compositeSeriesB: number[] = [];
+  for (let i = 0; i < seriesLen; i++) {
+    const phase = i / seriesLen;
+    const baseA = Math.sin(phase * Math.PI * 2 + rand() * 0.6) * 1.4;
+    const baseB = Math.sin(phase * Math.PI * 2 + rand() * 0.6 + 0.3) * 1.4;
+    compositeSeriesA.push(Number((baseA + (rand() - 0.5) * 0.5).toFixed(2)));
+    compositeSeriesB.push(Number((baseB + (rand() - 0.5) * 0.5).toFixed(2)));
+  }
+
+  // Decade buckets covering the window.
+  const startDecade = Math.floor(row.start_year / 10) * 10;
+  const endDecade = Math.floor(row.end_year / 10) * 10;
+  const decadeBuckets: DecadeBucket[] = [];
+  for (let d = startDecade; d <= endDecade; d += 10) {
+    const offset = Math.max(0, d - row.start_year);
+    const sliceA = compositeSeriesA.slice(offset, offset + 10);
+    const sliceB = compositeSeriesB.slice(offset, offset + 10);
+    decadeBuckets.push({
+      decade: `${d}s`,
+      archetype: ARCHETYPE_POOL[Math.floor(rand() * ARCHETYPE_POOL.length)],
+      seriesA:
+        sliceA.length > 0
+          ? sliceA
+          : compositeSeriesA.slice(0, Math.min(10, compositeSeriesA.length)),
+      seriesB:
+        sliceB.length > 0
+          ? sliceB
+          : compositeSeriesB.slice(0, Math.min(10, compositeSeriesB.length)),
+    });
+  }
+  const strongestDecade =
+    decadeBuckets[Math.floor(decadeBuckets.length / 2)]?.decade ??
+    decadeBuckets[0]?.decade ??
+    `${startDecade}s`;
+
+  // Family assignment per country — deterministic hash of country name.
+  const famAIdx = Math.floor(seedFrom(row.country_a_name)() * FAMILY_IDS.length);
+  const famBIdx = Math.floor(seedFrom(row.country_b_name)() * FAMILY_IDS.length);
+  const familyMeta = (id: string) => ({
+    l1_id: id,
+    l1_color: familyColor(id, NEUTRAL_SLATE),
+    l1_label: L1_FAMILIES[id]?.label ?? id,
+  });
+
+  return {
+    pair_id: row.pair_id,
+    countryA: row.country_a_name,
+    countryB: row.country_b_name,
+    iso2A: row.country_a_iso.toLowerCase(),
+    iso2B: row.country_b_iso.toLowerCase(),
+    startYear: row.start_year,
+    endYear: row.end_year,
+    windowLength: row.window_years,
+    catalogueRank,
+    catalogueSize,
+    sharedIndicators,
+    strongestDecade,
+    dominantFamilyA: familyMeta(FAMILY_IDS[famAIdx]),
+    dominantFamilyB: familyMeta(FAMILY_IDS[famBIdx]),
+    compositeSeriesA,
+    compositeSeriesB,
+    decadeBuckets,
+    todaySummaryA: {
+      iso: row.country_a_iso.toLowerCase(),
+      countryName: row.country_a_name,
+      topRecipeLabel: "currently in play on multiple recipes",
+      catalogueRank: Math.floor(rand() * 50) + 1,
+    },
+    todaySummaryB: {
+      iso: row.country_b_iso.toLowerCase(),
+      countryName: row.country_b_name,
+      topRecipeLabel: "currently in play on multiple recipes",
+      catalogueRank: Math.floor(rand() * 50) + 1,
+    },
+  };
+}
+
 // ── Accessors ─────────────────────────────────────────────────────────────
 
 export function getPair(slug: string): PairDetail | undefined {
-  const resolved = SLUG_ALIASES[slug] ?? slug;
-  return INDEX[resolved];
+  // 1. Long-form hand-authored slug, exact match.
+  if (INDEX[slug]) return INDEX[slug];
+
+  // 2. Compact slug aliased to a hand-authored long-form entry.
+  const aliased = SLUG_ALIASES[slug];
+  if (aliased && INDEX[aliased]) return INDEX[aliased];
+
+  // 3. Synthesize from main-data catalogue for any other catalog row.
+  const catalogue = getFullCatalogue();
+  const idx = catalogue.findIndex((r) => r.pair_id === slug);
+  if (idx >= 0) {
+    return synthesizePairDetail(catalogue[idx], idx + 1, catalogue.length);
+  }
+
+  return undefined;
 }
 
 export function getAllPairSlugs(): string[] {
-  // Include BOTH the canonical long-form slugs and the catalog's compact
-  // aliases so generateStaticParams pre-renders both URL forms. A reader
-  // who lands on either format gets the same detail page.
-  return [...Object.keys(INDEX), ...Object.keys(SLUG_ALIASES)];
+  // Every long-form hand-authored slug + every compact alias + every
+  // catalogue pair_id. generateStaticParams pre-renders all forms; the
+  // synthesizer covers any catalog row not in the alias map.
+  const catalogue = getFullCatalogue();
+  const all = new Set<string>([
+    ...Object.keys(INDEX),
+    ...Object.keys(SLUG_ALIASES),
+    ...catalogue.map((r) => r.pair_id),
+  ]);
+  return Array.from(all);
 }
 
 /** Emoji flag for a country name -- thin wrapper for components. */
