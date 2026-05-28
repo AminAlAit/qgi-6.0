@@ -237,7 +237,7 @@ export function CountryCardV41({
                 }}
                 title="A relative stacking of high rankings, not a probability."
               >
-                COMPOUND
+                COMPOUND RISK
               </span>
             </div>
             <div

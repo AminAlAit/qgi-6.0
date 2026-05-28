@@ -100,7 +100,7 @@ export function CountriesV41Filters({
           Sort
         </span>
         <Pill
-          label="Compound"
+          label="Compound Risk"
           active={activeSort === "compound"}
           onClick={() => setParam("sort", "compound")}
         />
