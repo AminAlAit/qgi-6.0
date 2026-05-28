@@ -1,10 +1,15 @@
 import type { Metadata } from "next";
-import { getAllRecipes, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import { getAllRecipes } from "@/lib/te-mock/recipes";
 import { BOARD_VINTAGE, getBoardRecipes } from "@/lib/te-mock/risk-board-data";
 import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
 import { HonestyDisclosure } from "@/components/risk-board/HonestyDisclosure";
-import { RiskBoardFilters } from "@/components/risk-board/RiskBoardFilters";
+import {
+  RiskBoardFilters,
+  type RiskBoardRecipeProjection,
+} from "@/components/risk-board/RiskBoardFilters";
+import { familyColor } from "@/lib/te-mock/l1-families";
+import { statusLabel } from "@/lib/te-mock/country-families";
 
 export const metadata: Metadata = {
   title: "Live Risk Board (mockup) · QG Intelligence",
@@ -15,15 +20,33 @@ export const metadata: Metadata = {
 
 export default function RiskBoardPage() {
   // Pull rows for the board (the curated set: scored + a representative
-  // queued sample) and the full L1 family list for filter chips.
-  const boardRecipes: TrackerRecipe[] = getBoardRecipes();
+  // queued sample) and project to the slim public-safe shape before passing
+  // to the client. Raw verdict/stats/status enum are stripped server-side.
+  const boardRecipes: RiskBoardRecipeProjection[] = getBoardRecipes().map((r) => {
+    const sl = statusLabel(r.status);
+    return {
+      recipe_id: r.recipe_id,
+      label: r.label,
+      l1_id: r.l1_id,
+      l1_label: r.l1_label,
+      l1_color: r.l1_color,
+      l2_label: r.l2_label,
+      statusLabel: sl.label,
+      statusTone: sl.tone,
+    };
+  });
 
   // Build L1 family meta from the full recipe list so a filter chip exists
   // for every family — even if a family has only queued recipes today.
+  // Run each entry through familyColor() so F-family gets its corrected hue.
   const l1Map = new Map<string, { id: string; label: string; color: string }>();
   for (const r of getAllRecipes()) {
     if (!l1Map.has(r.l1_id)) {
-      l1Map.set(r.l1_id, { id: r.l1_id, label: r.l1_label, color: r.l1_color });
+      l1Map.set(r.l1_id, {
+        id: r.l1_id,
+        label: r.l1_label,
+        color: familyColor(r.l1_id, r.l1_color),
+      });
     }
   }
   const l1Families = Array.from(l1Map.values()).sort((a, b) => a.id.localeCompare(b.id));

@@ -351,12 +351,8 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
   if (!recipe) return null;
   const cells = RECIPE_ROW_CELLS[recipeId];
   if (cells) {
-    const isDemoGraduated = recipeId === "foreign_intervention";
-    const display_state: RecipeRow["display_state"] = isDemoGraduated
-      ? "graduated"
-      : recipe.status === "live_legacy"
-        ? "live_legacy"
-        : "walked_no_graduation";
+    const display_state: RecipeRow["display_state"] =
+      recipe.status === "live_legacy" ? "live_legacy" : "walked_no_graduation";
     const coverage = RECIPE_COVERAGE[recipeId];
     return {
       recipe_id: recipeId,
@@ -452,7 +448,7 @@ const RECENT_MOVEMENTS_FUTURE_SHAPE: RankMovement[] = [
     new_rank: 3,
     delta_quarters: 1,
     vs_vintage: "2026-Q2",
-    blurb: "Trajectory smoothing pushed the country one decile down — still HIGH-zone.",
+    blurb: "Trajectory smoothing pushed the country one decile down: still HIGH-zone.",
   },
   {
     country: "Equatorial Guinea",
