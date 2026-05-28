@@ -11,7 +11,6 @@
  */
 import { PanelShell } from "./PanelShell";
 import { MiniSparkline } from "./MiniSparkline";
-import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import type {
   CountryDriverAttribution,
   CountryDriverMovement,
@@ -24,13 +23,11 @@ const BRIDGE =
 /* ── P2 — Why these scores (attribution) ─────────────────────────────── */
 export function WhyScoresPanel({
   accent,
-  topRecipeId,
   topRecipeLabel,
   countryName,
   attribution,
 }: {
   accent: string;
-  topRecipeId: string;
   topRecipeLabel: string;
   countryName: string;
   attribution: CountryDriverAttribution[];
@@ -42,7 +39,6 @@ export function WhyScoresPanel({
     <PanelShell
       title="Why these scores"
       accent={accent}
-      icon={<RecipeIcon recipeId={topRecipeId} size={16} strokeWidth={1.7} />}
       tooltip={BRIDGE}
       caption={`Which signals weigh most in ${countryName}'s top score (${topRecipeLabel}). This is how the model reads the data, not a cause.`}
     >
@@ -164,12 +160,10 @@ function DirectionGlyph({
 
 export function WhatsMovingPanel({
   accent,
-  topRecipeId,
   countryName,
   movement,
 }: {
   accent: string;
-  topRecipeId: string;
   countryName: string;
   movement: CountryDriverMovement[];
 }) {
@@ -177,7 +171,6 @@ export function WhatsMovingPanel({
     <PanelShell
       title="What's moving"
       accent={accent}
-      icon={<RecipeIcon recipeId={topRecipeId} size={16} strokeWidth={1.7} />}
       tooltip={BRIDGE}
       caption={`How each indicator behind ${countryName}'s scores has actually shifted over the last 3 years. Recent movement only, not a projection.`}
     >
