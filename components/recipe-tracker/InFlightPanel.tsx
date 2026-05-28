@@ -6,6 +6,18 @@ import type { InFlightItem, QueuedItem } from "@/lib/te-mock/recipe-tracker-extr
 import { Radio, CalendarClock } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 
+/** Sanitize data-layer note text: replace internal jargon with plain
+ *  language before rendering. The data file is a read-only shared utility. */
+function sanitizeNote(note: string): string {
+  return note
+    .replace(/LOCO-AUC/g, "out-of-sample discrimination score")
+    .replace(/\bLOCO\b/g, "out-of-sample discrimination")
+    .replace(/\bvacated\b/gi, "withdrawn")
+    .replace(/\bvacate\b/gi, "correction")
+    .replace(/re-walk/gi, "re-validation")
+    .replace(/\bwalk\b/gi, "validation pass");
+}
+
 export function InFlightPanel({
   inFlight,
   queued,
@@ -46,7 +58,7 @@ export function InFlightPanel({
             fontWeight: 700,
           }}
         >
-          In flight & queued · next 30 days
+          Under validation &amp; scheduled · next 30 days
         </h2>
       </header>
 
@@ -72,7 +84,7 @@ export function InFlightPanel({
               fontStyle: "italic",
             }}
           >
-            No walks running.
+            No validation passes running.
           </div>
         )}
         {inFlight.map((it) => {
@@ -148,7 +160,7 @@ export function InFlightPanel({
                     marginTop: "4px",
                   }}
                 >
-                  {it.note}
+                  {sanitizeNote(it.note)}
                 </div>
               </div>
             </Link>
@@ -171,7 +183,7 @@ export function InFlightPanel({
             gap: "6px",
           }}
         >
-          <CalendarClock size={11} /> Queued for next 30d
+          <CalendarClock size={11} /> Scheduled for next 30d
         </div>
         <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
           {queued.map((it) => {

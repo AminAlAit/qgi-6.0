@@ -33,21 +33,28 @@ export default function RiskBoardPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "24px" }}>
-        {/* Mockup banner */}
+        {/* Vintage stamp (subtle) */}
         <div
           style={{
-            display: "inline-block",
-            padding: "5px 12px",
-            border: "1px solid var(--qgi-accent)",
-            color: "var(--qgi-accent)",
-            borderRadius: "4px",
-            fontSize: "11px",
-            letterSpacing: "1.5px",
+            display: "flex",
+            justifyContent: "flex-end",
             marginBottom: "16px",
-            fontFamily: "ui-monospace, monospace",
           }}
         >
-          MOCKUP · /risk-board · local only
+          <span
+            style={{
+              fontSize: "10px",
+              letterSpacing: "1px",
+              color: "var(--qgi-text-dim)",
+              padding: "4px 8px",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "4px",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            Data as of {BOARD_VINTAGE}
+          </span>
         </div>
 
         {/* Page hero */}
@@ -62,7 +69,7 @@ export default function RiskBoardPage() {
               marginBottom: "8px",
             }}
           >
-            Trajectory Engine · Live Risk Board
+            Live Risk Board
           </div>
           <h1
             style={{
@@ -85,10 +92,10 @@ export default function RiskBoardPage() {
           >
             Present-tense resemblance scores from the Trajectory Engine, ranked across the
             recipe catalog. Each cell is a country&apos;s discrimination rank on a single
-            recipe&apos;s canonical movement shape — read it as &quot;sits high in the
+            recipe&apos;s canonical movement shape: read it as &quot;sits high in the
             distribution of recipe-shaped countries,&quot; not as a probability or a
-            forecast. Click any cell to open the recipe&apos;s report card. The retired
-            Signals page made a 2027 forward claim; this board never does.
+            forecast. Click any cell to open the recipe&apos;s report card. This board
+            makes no forward-dated claim.
           </p>
         </div>
 
@@ -171,10 +178,9 @@ export default function RiskBoardPage() {
           }}
         >
           <span>
-            Vintage stamp: {BOARD_VINTAGE} · re-walk cadence ≥ 4× / yr · queued rows
-            materialise as the N_pos threshold is crossed.
+            Vintage: {BOARD_VINTAGE} · Scores refresh on each data vintage; new recipes
+            appear as their evidence base grows.
           </span>
-          <span>Designed by Talia Ben-Ari — Geopolitical Risk Viz</span>
         </footer>
       </div>
     </div>

@@ -7,19 +7,21 @@
  * Server component. The trajectory overlay is rendered as inline SVG by
  * TrajectorySparkline (no client interactivity).
  *
- * Honesty regime (M8-R5 binding):
+ * Honesty constraints:
  * - "what_happened_next" is HISTORICAL FACT about the analog country, never a
  *   forecast about the current country.
  * - Weak analogs (match_score < 70) carry a visible weak-match chip per
- *   ledger Feature 12 ("match-quality floor 0.70 → 'weak analog'").
+ *   ledger Feature 12 ("match-quality floor 0.70 — 'weak analog'").
  * - The regional-clustering caveat is shown on the parent results panel,
  *   not repeated on every card.
  */
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { getRecipe } from "@/lib/te-mock/recipes";
 import type { HistoricalAnalog } from "@/lib/te-mock/nearest-analog-data";
+import { statusLabel } from "@/lib/te-mock/country-families";
 import { TrajectorySparkline } from "./TrajectorySparkline";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
 
 export interface AnalogCardProps {
   rank: number; // 1, 2, 3
@@ -95,12 +97,16 @@ export function AnalogCard({
         <div style={{ minWidth: 0 }}>
           <div
             style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
               fontSize: "18px",
               fontWeight: 600,
               color: "var(--qgi-text)",
               lineHeight: 1.2,
             }}
           >
+            <FlagImg emoji={flagFor(analog.country)} name={analog.country} width={24} />
             {analog.country}
           </div>
           <div
@@ -177,44 +183,40 @@ export function AnalogCard({
               marginBottom: "1px",
             }}
           >
-            CANONICAL SHAPE
+            TRAJECTORY SHAPE
           </div>
           <div style={{ fontSize: "12px", fontWeight: 600, color: "var(--qgi-text)" }}>
             {recipeLabel}
           </div>
         </div>
-        {recipeStatus === "walked_no_graduation" && (
-          <span
-            style={{
-              fontSize: "9px",
-              padding: "2px 6px",
-              borderRadius: "3px",
-              background: "rgba(230,143,41,0.15)",
-              border: "1px solid #E68F29",
-              color: "#E68F29",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-            }}
-          >
-            walked-failed
-          </span>
-        )}
-        {recipeStatus === "live_legacy" && (
-          <span
-            style={{
-              fontSize: "9px",
-              padding: "2px 6px",
-              borderRadius: "3px",
-              background: "rgba(122,143,160,0.15)",
-              border: "1px solid #7A8FA0",
-              color: "#7A8FA0",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-            }}
-          >
-            legacy ML-1
-          </span>
-        )}
+        {recipeStatus !== "graduated" &&
+          (() => {
+            const { label, tone } = statusLabel(recipeStatus);
+            const chipColor =
+              tone === "failed" ? "#E68F29" : tone === "deployed" ? "#3FBF8F" : "#7A8FA0";
+            const chipBg =
+              tone === "failed"
+                ? "rgba(230,143,41,0.15)"
+                : tone === "deployed"
+                  ? "rgba(63,191,143,0.12)"
+                  : "rgba(122,143,160,0.12)";
+            return (
+              <span
+                style={{
+                  fontSize: "9px",
+                  padding: "2px 6px",
+                  borderRadius: "3px",
+                  background: chipBg,
+                  border: `1px solid ${chipColor}`,
+                  color: chipColor,
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "0.3px",
+                }}
+              >
+                {label}
+              </span>
+            );
+          })()}
       </div>
 
       {/* Sparkline overlay */}
@@ -261,7 +263,7 @@ export function AnalogCard({
             letterSpacing: "0.2px",
           }}
         >
-          ⚠ Weak analog · match score below the 70 floor — interpret with caution.
+          ⚠ Weak analog: match score below the 70 floor. Interpret with caution.
         </div>
       )}
 

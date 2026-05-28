@@ -3,7 +3,7 @@
  *
  * Compound score = sum of top-decile margins ((score - 50) for each lit recipe),
  * a transparent stacking heuristic over discrimination ranks. NOT a joint
- * probability — see M8-R5 disclosure on the page.
+ * probability : see M8-R5 disclosure on the page.
  *
  * Foreign Intervention is the only recipe rendered with a "graduated" visual
  * signature (its real status is walked_no_graduation pending re-walk; we paint
@@ -379,14 +379,14 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     vintage: IRAN.vintage,
     narrative:
       "Iran is the densest single-state compound case currently on the board, lighting up on foreign_intervention, " +
-      "political_repression, sanctions_and_arms_embargo, mass_protest, and currency_crisis — three L1 families " +
+      "political_repression, sanctions_and_arms_embargo, mass_protest, and currency_crisis : three L1 families " +
       "stacking on the same body politic at once (B-Conflict, C-Governance, D-Economic). The structural read is " +
-      "that the same indicator pressures — degraded regulatory quality, narrowing civil-liberties space, and " +
-      "deteriorating fiscal-source diversity — are simultaneously the inputs that drive the foreign-intervention " +
+      "that the same indicator pressures : degraded regulatory quality, narrowing civil-liberties space, and " +
+      "deteriorating fiscal-source diversity : are simultaneously the inputs that drive the foreign-intervention " +
       "trajectory AND the protest-and-repression cycle, so the compound score is partly a measurement of " +
       "indicator-overlap rather than three independent crisis paths. None of the lit recipes are graduated under " +
       "the current honesty regime, so this is best read as a positioning aggregate, not a forecast of any single " +
-      "event firing — and certainly not of all five firing jointly.",
+      "event firing : and certainly not of all five firing jointly.",
   },
   {
     country: SUDAN.country,
@@ -396,13 +396,13 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     recipes: SUDAN.lit_recipes,
     vintage: SUDAN.vintage,
     narrative:
-      "Sudan stacks across five recipes — civil_war_and_insurgency, humanitarian_crisis, foreign_intervention, " +
-      "drought_and_famine, mass_protest — spanning four L1 families (B-Conflict, E-Social, G-Humanitarian plus a " +
+      "Sudan stacks across five recipes : civil_war_and_insurgency, humanitarian_crisis, foreign_intervention, " +
+      "drought_and_famine, mass_protest : spanning four L1 families (B-Conflict, E-Social, G-Humanitarian plus a " +
       "structural drought channel under H). Unlike the Iran case, the Sudan stack reflects genuinely distinct " +
       "structural pressures rather than a single indicator bundle: conflict-shape indicators (state-capacity " +
       "collapse, ethnic-violence rates) sit alongside meteorological and humanitarian-throughput signals that draw " +
       "on a non-overlapping data substrate. This is the architecturally cleanest compound case in the current " +
-      "vintage, and the one most consistent with the original intuition of the compound page — three independent " +
+      "vintage, and the one most consistent with the original intuition of the compound page : three independent " +
       "lenses pointing at the same country.",
   },
   {
@@ -414,7 +414,7 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     vintage: ARGENTINA.vintage,
     narrative:
       "Argentina shows the canonical economic-compound stack: currency_crisis, economic_recession, " +
-      "fiscal_policy_change, and mass_protest — three D-Economic recipes plus an E-Social spillover. The reading " +
+      "fiscal_policy_change, and mass_protest : three D-Economic recipes plus an E-Social spillover. The reading " +
       "to be careful about here is that currency_crisis and economic_recession share substantial indicator overlap " +
       "(inflation, GDP growth, fiscal-source diversity), so a high compound score is mathematically expected " +
       "rather than informative; the mass_protest light-up is the one independent confirmation that the economic " +

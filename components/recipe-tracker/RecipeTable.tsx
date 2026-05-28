@@ -20,11 +20,11 @@ const STATUS_RANK: Record<TrackerRecipe["status"], number> = {
 };
 
 const STATUS_LABEL: Record<TrackerRecipe["status"], string> = {
-  graduated: "Graduated",
-  walked_no_graduation: "Walked · failed",
-  in_progress: "In flight",
-  live_legacy: "Legacy ML-1",
-  queued: "Queued",
+  graduated: "Deployed",
+  walked_no_graduation: "Tested, did not hold up",
+  in_progress: "In review",
+  live_legacy: "Early method, under review",
+  queued: "Not yet tested",
 };
 
 const STATUS_COLOR: Record<TrackerRecipe["status"], string> = {
@@ -381,11 +381,11 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                   active={sortKey === "loco"}
                   dir={sortDir}
                 >
-                  LOCO-AUC
+                  Disc. score
                 </Th>
                 <Th align="right">Window</Th>
                 <Th align="right">n ind</Th>
-                <Th>Last walk</Th>
+                <Th>Last tested</Th>
                 <Th>Next ETA</Th>
               </tr>
             </thead>
@@ -401,8 +401,8 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                 const last = LAST_WALK[r.recipe_id] ?? null;
                 const next =
                   r.status === "graduated" || r.status === "in_progress"
-                    ? "—"
-                    : (NEXT_WALK_BY_L1[r.l1_id] ?? "—");
+                    ? "n/a"
+                    : (NEXT_WALK_BY_L1[r.l1_id] ?? "n/a");
                 const isClickable = true; // every row links to its precedents-v2 detail
                 return (
                   <tr
@@ -663,7 +663,7 @@ function Td({
 function Dash() {
   return (
     <span style={{ color: "var(--qgi-text-dim)", fontFamily: "ui-monospace, monospace" }}>
-      —
+      n/a
     </span>
   );
 }

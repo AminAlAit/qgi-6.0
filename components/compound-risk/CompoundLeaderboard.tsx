@@ -2,12 +2,16 @@ import Link from "next/link";
 import type { Route } from "next";
 import { iconForRecipe } from "@/lib/te-mock/icons";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
-import { StatusChip } from "@/components/precedents-v2/StatusChip";
 import {
   RECIPE_LOOKUP,
   type CompoundCountry,
   type CompoundLitRecipe,
 } from "@/lib/te-mock/compound-risk-data";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { FamilyChip } from "@/components/countries-v4-1/FamilyChip";
+import { flagFor } from "@/lib/te-mock/country-flags";
+import { familyColor, familyLabel } from "@/lib/te-mock/l1-families";
+import { statusLabel } from "@/lib/te-mock/country-families";
 
 interface Props {
   countries: CompoundCountry[];
@@ -136,9 +140,7 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               gap: "10px",
             }}
           >
-            <span style={{ fontSize: "22px", lineHeight: 1 }} aria-hidden>
-              {country.flag}
-            </span>
+            <FlagImg emoji={flagFor(country.country)} name={country.country} width={24} />
             <span style={{ display: "flex", flexDirection: "column", minWidth: 0 }}>
               <span style={{ fontSize: "15px", fontWeight: 600, lineHeight: 1.2 }}>
                 {country.country}
@@ -162,22 +164,16 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
             {country.lit_families.map((famId) => {
               const fam = country.lit_recipes.find((r) => r.l1_id === famId);
               if (!fam) return null;
+              const color = familyColor(famId, fam.l1_color);
+              const label = familyLabel(famId, fam.l1_label);
               return (
-                <span
+                <FamilyChip
                   key={famId}
-                  title={fam.l1_label}
-                  style={{
-                    fontSize: "9.5px",
-                    padding: "2px 6px",
-                    border: `1px solid ${fam.l1_color}`,
-                    color: fam.l1_color,
-                    borderRadius: "3px",
-                    fontFamily: "ui-monospace, monospace",
-                    letterSpacing: "0.5px",
-                  }}
-                >
-                  {famId}
-                </span>
+                  id={famId}
+                  label={label}
+                  color={color}
+                  showLabel={false}
+                />
               );
             })}
           </div>
@@ -201,7 +197,7 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               marginBottom: "3px",
             }}
           >
-            COMPOUND
+            COMPOUND RISK
           </div>
           <div
             style={{
@@ -233,14 +229,14 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
 
 function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
   const tracker = RECIPE_LOOKUP[recipe.recipe_id];
-  const isGraduated = recipe.recipe_id === "foreign_intervention"; // demo graduate
-  const statusForChip = isGraduated ? "graduated" : (tracker?.status ?? "queued");
+  const isGraduated = recipe.recipe_id === "foreign_intervention"; // demo near-deployed
+  const rawStatus = isGraduated ? "graduated" : (tracker?.status ?? "queued");
+  const { label: friendlyStatus } = statusLabel(rawStatus);
+  const chipColor = familyColor(recipe.l1_id, recipe.l1_color);
   return (
     <Link
       href={`/precedents-v2/${recipe.recipe_id}` as Route}
-      title={`${recipe.label} — score ${recipe.score.toFixed(1)} (decile ${recipe.decile}) · ${
-        isGraduated ? "Validated (demo)" : statusForChip.replace(/_/g, " ")
-      }`}
+      title={`${recipe.label}: score ${recipe.score.toFixed(1)} (decile ${recipe.decile}), ${friendlyStatus}`}
       style={{
         textDecoration: "none",
         position: "relative",
@@ -250,13 +246,13 @@ function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
         width: "38px",
         height: "38px",
         borderRadius: "6px",
-        background: `${recipe.l1_color}1A`,
-        border: `1px solid ${recipe.l1_color}`,
-        color: recipe.l1_color,
-        // Walked-failed signature: dashed border per RecipeCard.tsx convention.
+        background: `${chipColor}1A`,
+        border: `1px solid ${chipColor}`,
+        color: chipColor,
+        // Tested-did-not-hold-up signature: dashed border per RecipeCard.tsx convention.
         borderStyle:
-          !isGraduated && statusForChip === "walked_no_graduation" ? "dashed" : "solid",
-        opacity: !isGraduated && statusForChip === "queued" ? 0.55 : 1,
+          !isGraduated && rawStatus === "walked_no_graduation" ? "dashed" : "solid",
+        opacity: !isGraduated && rawStatus === "queued" ? 0.55 : 1,
       }}
     >
       <RecipeIcon recipeId={recipe.recipe_id} size={20} strokeWidth={1.6} />
@@ -278,9 +274,9 @@ function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
       >
         {recipe.score.toFixed(0)}
       </span>
-      {/* Hidden a11y status, visible to screen readers via title */}
-      <span style={{ position: "absolute", left: "-9999px" }}>
-        <StatusChip status={statusForChip} />
+      {/* Hidden a11y status — screen readers pick it up from title above */}
+      <span style={{ position: "absolute", left: "-9999px" }} aria-hidden>
+        {friendlyStatus}
       </span>
     </Link>
   );
