@@ -2422,7 +2422,107 @@ function buildRankHistory(iso: string, recipeId: string, currentScore: number): 
 // nearest-analog-data.ts doesn't carry an entry for the ISO. Each tuple
 // is (country, year, match_score, primary_recipe_id, what_happened_next).
 type AnalogTuple = [string, number, number, string, string];
-const ANALOG_FALLBACKS: Record<string, AnalogTuple[]> = {
+
+// Per-family (L1) analog pools — keyed by L1 id (A..H).
+// Self-exclusion is applied at call time.
+const ANALOG_POOLS_BY_FAMILY: Record<string, AnalogTuple[]> = {
+  // B — Conflict & Violence
+  B: [
+    [
+      "Yemen",
+      2014,
+      74.8,
+      "civil_war_and_insurgency",
+      "The Houthi movement seized Sanaa in September 2014. Saudi-led coalition air strikes began in March 2015, triggering a multi-sided civil war that by 2023 had displaced over 4 million people and produced the world's largest humanitarian crisis.",
+    ],
+    [
+      "Iraq",
+      2014,
+      71.2,
+      "foreign_intervention",
+      "ISIS seized Mosul and declared a caliphate in June 2014. A US-led coalition launched air strikes in August 2014; ground operations by Iraqi forces, Kurdish Peshmerga, and Iranian-backed militias followed. Mosul was retaken in July 2017.",
+    ],
+    [
+      "Mali",
+      2012,
+      66.5,
+      "civil_war_and_insurgency",
+      "AQIM-linked MNLA rebels seized northern Mali in March–April 2012 following a military coup. French Operation Serval launched in January 2013; the UN MINUSMA mission deployed in July 2013. Insurgency persisted through subsequent coups in 2020 and 2021.",
+    ],
+  ],
+  // D — Economic Stress
+  D: [
+    [
+      "Argentina",
+      2001,
+      68.9,
+      "currency_crisis",
+      "Argentina defaulted on US$100bn of sovereign debt in December 2001, the largest default in history at the time. The peso lost ~75% of its value within months; the country cycled through five presidents in two weeks.",
+    ],
+    [
+      "Lebanon",
+      2019,
+      66.3,
+      "banking_and_financial_crisis",
+      "Lebanon's banking system froze deposits in October 2019 as the government defaulted on US$1.2bn in Eurobonds in March 2020. The Beirut port explosion in August 2020 compounded the collapse; GDP contracted ~58% from 2018 to 2021.",
+    ],
+    [
+      "Greece",
+      2012,
+      64.2,
+      "banking_and_financial_crisis",
+      "Greece executed the largest sovereign-debt restructuring in history in March 2012 (~€199bn PSI swap). Three EU/IMF bailout programmes ran from 2010 through 2018; unemployment exceeded 27%.",
+    ],
+  ],
+  // E — Social Mobilization
+  E: [
+    [
+      "Egypt",
+      2011,
+      72.1,
+      "mass_protest",
+      "Eighteen days of protests centred on Tahrir Square forced President Hosni Mubarak to resign on 11 February 2011. The Supreme Council of the Armed Forces ruled for 16 months; Mohamed Morsi won elections in June 2012 before being deposed in a military coup in July 2013.",
+    ],
+    [
+      "Sudan",
+      2019,
+      68.4,
+      "mass_protest",
+      "Mass protests beginning December 2018 against Omar al-Bashir's government led to his removal by the military on 11 April 2019. A transitional Sovereignty Council formed in August 2019; a second coup in October 2021 by General al-Burhan dissolved civilian government.",
+    ],
+    [
+      "Tunisia",
+      2010,
+      64.7,
+      "mass_protest",
+      "Mohamed Bouazizi's self-immolation in December 2010 sparked protests that ended Ben Ali's 23-year rule on 14 January 2011. A new constitution was ratified in January 2014. President Kais Saied subsequently suspended parliament in July 2021.",
+    ],
+  ],
+  // G — Humanitarian Crisis
+  G: [
+    [
+      "Yemen",
+      2015,
+      75.3,
+      "humanitarian_crisis",
+      "The Saudi-led military intervention in March 2015 triggered a blockade that, combined with active conflict, produced the world's largest humanitarian crisis by 2018: 21 million people food-insecure, over 4 million displaced, cholera outbreak exceeding 2 million cases.",
+    ],
+    [
+      "DR Congo",
+      1998,
+      69.8,
+      "humanitarian_crisis",
+      "The Second Congo War (1998–2003) drew in eight African states. An estimated 5 million people died, mostly from disease and famine; 3.4 million were internally displaced by 2002. The conflict fragmented into dozens of armed groups that persist in eastern DRC today.",
+    ],
+    [
+      "Afghanistan",
+      2021,
+      65.1,
+      "humanitarian_crisis",
+      "The Taliban's seizure of Kabul on 15 August 2021 triggered the rapid collapse of the US-backed government. Within months 97% of Afghans fell below the poverty line; 24 million faced acute food insecurity and over 3.5 million were internally displaced by early 2022.",
+    ],
+  ],
+  // Default for other families (A, C, F, H)
   DEFAULT_CRISIS: [
     [
       "Tunisia",
@@ -2446,30 +2546,31 @@ const ANALOG_FALLBACKS: Record<string, AnalogTuple[]> = {
       "Greece executed the largest sovereign-debt restructuring in history in March 2012 (~€199bn PSI swap). Three EU/IMF bailout programmes ran from 2010 through 2018; unemployment exceeded 27%.",
     ],
   ],
-  DEFAULT_STABLE: [
-    [
-      "Indonesia",
-      2014,
-      62.8,
-      "democratic_transition",
-      "Joko Widodo's July 2014 election as the first Indonesian president from outside the political-military elite consolidated the post-Reformasi democratic transition that began in 1998.",
-    ],
-    [
-      "Brazil",
-      2002,
-      58.4,
-      "government_formation",
-      "Luiz Inácio Lula da Silva's October 2002 election victory completed Brazil's first peaceful left-right transfer of power since the 1985 return to democracy.",
-    ],
-    [
-      "Chile",
-      2017,
-      54.6,
-      "constitutional_change",
-      "Chile's 2019-2022 constitutional process began after the October 2019 estallido social. The September 2022 plebiscite rejected the draft; a second process produced another rejected draft in December 2023.",
-    ],
-  ],
 };
+
+const ANALOG_FALLBACKS_STABLE: AnalogTuple[] = [
+  [
+    "Indonesia",
+    2014,
+    62.8,
+    "democratic_transition",
+    "Joko Widodo's July 2014 election as the first Indonesian president from outside the political-military elite consolidated the post-Reformasi democratic transition that began in 1998.",
+  ],
+  [
+    "Brazil",
+    2002,
+    58.4,
+    "government_formation",
+    "Luiz Inácio Lula da Silva's October 2002 election victory completed Brazil's first peaceful left-right transfer of power since the 1985 return to democracy.",
+  ],
+  [
+    "Chile",
+    2017,
+    54.6,
+    "constitutional_change",
+    "Chile's 2019-2022 constitutional process began after the October 2019 estallido social. The September 2022 plebiscite rejected the draft; a second process produced another rejected draft in December 2023.",
+  ],
+];
 
 function analogsFor(iso: string, recipesLit: Array<[string, number]>): CountryAnalog[] {
   // 1. Try to pull from Daniyar's nearest-analog corpus.
@@ -2484,12 +2585,43 @@ function analogsFor(iso: string, recipesLit: Array<[string, number]>): CountryAn
       weak_analog: a.weak_analog,
     }));
   }
-  // 2. Otherwise fabricate. If the country's top score >= 60 use the
-  // crisis pool; else use the stable pool.
+
+  // 2. Otherwise fabricate from per-family pools.
   const topScore = recipesLit[0]?.[1] ?? 0;
-  const pool =
-    topScore >= 60 ? ANALOG_FALLBACKS.DEFAULT_CRISIS : ANALOG_FALLBACKS.DEFAULT_STABLE;
-  return pool.map((t) => ({
+  if (topScore < 60) {
+    // Low-risk countries: use the stable pool, excluding self by country name.
+    const filtered = ANALOG_FALLBACKS_STABLE.filter(
+      (t) => t[0].toLowerCase() !== iso.toLowerCase()
+    );
+    return filtered.map((t) => ({
+      country: t[0],
+      year: t[1],
+      match_score: t[2],
+      primary_recipe_id: t[3],
+      what_happened_next: t[4],
+      weak_analog: t[2] < 70,
+    }));
+  }
+
+  // Look up the top recipe's L1 family id via the tracker.
+  const topRecipeId = recipesLit[0]?.[0];
+  const topRecipeMeta = topRecipeId ? getRecipe(topRecipeId) : undefined;
+  const l1Id = topRecipeMeta?.l1_id ?? "";
+
+  // Pick the family pool, falling back to DEFAULT_CRISIS for unmapped families.
+  const familyPool =
+    ANALOG_POOLS_BY_FAMILY[l1Id] ?? ANALOG_POOLS_BY_FAMILY.DEFAULT_CRISIS;
+
+  // Subject country name (look up from seeds or fall back to ISO).
+  // We use iso as the lookup key; self-exclusion is case-insensitive on the
+  // analog's country name field.
+  const subjectSeed = SEEDS.find((s) => s.iso === iso.toUpperCase());
+  const subjectName = subjectSeed?.name ?? "";
+
+  const filtered = familyPool.filter(
+    (t) => t[0].toLowerCase() !== subjectName.toLowerCase()
+  );
+  return filtered.map((t) => ({
     country: t[0],
     year: t[1],
     match_score: t[2],

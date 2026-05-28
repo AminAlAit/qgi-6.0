@@ -65,7 +65,7 @@ export function PanelShell({
               {icon}
             </span>
           )}
-          <h3
+          <h2
             style={{
               fontSize: "13px",
               letterSpacing: "0.6px",
@@ -77,7 +77,7 @@ export function PanelShell({
             }}
           >
             {title}
-          </h3>
+          </h2>
         </div>
         {tooltip && (
           <span

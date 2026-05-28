@@ -33,14 +33,13 @@ export function WhyScoresPanel({
   attribution: CountryDriverAttribution[];
 }) {
   const rows = [...attribution].sort((a, b) => b.signal_share_pct - a.signal_share_pct);
-  const max = Math.max(1, ...rows.map((r) => r.signal_share_pct));
 
   return (
     <PanelShell
       title="Why these scores"
       accent={accent}
       tooltip={BRIDGE}
-      caption={`Which signals weigh most in ${countryName}'s top score (${topRecipeLabel}). This is how the model reads the data, not a cause.`}
+      caption={`Which of ${countryName}'s recent signals weigh most in its scoring. This is how the model reads the data, not a cause.`}
     >
       {rows.length === 0 ? (
         <p
@@ -122,7 +121,7 @@ export function WhyScoresPanel({
               >
                 <div
                   style={{
-                    width: `${(r.signal_share_pct / max) * 100}%`,
+                    width: `${r.signal_share_pct}%`,
                     height: "100%",
                     background: accent,
                     opacity: 0.85,
@@ -238,9 +237,7 @@ export function WhatsMovingPanel({
                 }}
               >
                 <DirectionGlyph direction={m.direction} />
-                {z > 0 ? "+" : ""}
-                {/* sub-1 changes keep a decimal so a real move never reads as 0 */}
-                {Math.abs(z) < 1 ? z.toFixed(1) : z.toFixed(0)}
+                {`${z > 0 ? "+" : ""}${Math.abs(z) < 1 ? z.toFixed(1) : z.toFixed(0)}`}
               </span>
             </li>
           );

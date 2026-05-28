@@ -18,9 +18,17 @@ import { AnalogResults } from "./AnalogResults";
 export interface CountryPickerProps {
   entries: CurrentCountryEntry[];
   defaultIso: string;
+  /** When a ?iso= was requested but isn't in the analog corpus, pass the
+   *  human-readable country name here. A small banner will explain the
+   *  fallback to the default country. */
+  unavailableName?: string;
 }
 
-export function CountryPicker({ entries, defaultIso }: CountryPickerProps) {
+export function CountryPicker({
+  entries,
+  defaultIso,
+  unavailableName,
+}: CountryPickerProps) {
   const [iso, setIso] = useState<string>(defaultIso);
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -35,6 +43,45 @@ export function CountryPicker({ entries, defaultIso }: CountryPickerProps) {
 
   return (
     <div>
+      {/* Fallback banner — shown when ?iso= points to a country not yet in the analog corpus */}
+      {unavailableName && (
+        <div
+          role="note"
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: "10px",
+            padding: "10px 14px",
+            marginBottom: "14px",
+            background: "rgba(91,126,153,0.08)",
+            border: "1px solid rgba(91,126,153,0.35)",
+            borderLeft: "3px solid #5B7E99",
+            borderRadius: "6px",
+            fontSize: "12px",
+            color: "var(--qgi-text-muted)",
+            lineHeight: 1.55,
+          }}
+        >
+          <span
+            style={{
+              fontFamily: "ui-monospace, monospace",
+              fontSize: "11px",
+              color: "#5B7E99",
+              flexShrink: 0,
+              marginTop: "1px",
+            }}
+          >
+            ⓘ
+          </span>
+          <span>
+            No analog data yet for{" "}
+            <strong style={{ color: "var(--qgi-text)" }}>{unavailableName}</strong>.{" "}
+            Showing the default country instead. The analog corpus is expanded as more
+            recipes complete walks.
+          </span>
+        </div>
+      )}
+
       {/* Picker */}
       <div
         style={{
