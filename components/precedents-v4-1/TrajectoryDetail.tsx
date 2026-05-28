@@ -21,7 +21,7 @@ import type { Route } from "next";
 import { getMock, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import type { PatternEntry } from "@/lib/te-mock/patterns-v4-data";
 import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
-import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
+import { familyColor, NEUTRAL_SLATE, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { PanelShell } from "@/components/countries-v4-1/PanelShell";
@@ -29,10 +29,27 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { FamilyChip } from "@/components/countries-v4-1/FamilyChip";
 import { PatternShapeSparkline } from "@/components/patterns-v4/PatternShapeSparkline";
 
-const CALM_SLATE_BLUE = "#5B7E99";
-
 // Resolve a country name → its /countries-v4.1 slug, where we have one.
 const ISO_BY_NAME = new Map(COUNTRIES_V4.map((c) => [c.name, c.iso.toLowerCase()]));
+
+/**
+ * Vowel-aware indefinite article. Returns "an" if noun starts with a vowel
+ * sound, "a" otherwise. For plural / noun-phrase labels that don't naturally
+ * take a singular article, the call-site should rephrase to avoid the article
+ * entirely rather than calling this helper.
+ */
+function an(noun: string): string {
+  return /^[aeiouAEIOU]/.test(noun.trim()) ? "an" : "a";
+}
+
+/**
+ * Returns true if the label is a noun phrase (contains " and " or starts with
+ * a plural-sounding word) that doesn't naturally take a singular article.
+ * Used to decide whether to rephrase around the article rather than prepend one.
+ */
+function isNounPhrase(label: string): boolean {
+  return / and /i.test(label);
+}
 
 function describeArchetype(points: number[]): string {
   const start = points[0];
@@ -270,9 +287,19 @@ export function TrajectoryDetail({
 
           {/* Historical cases */}
           <PanelShell
-            title="Where this trajectory ran to the event"
+            title={
+              pattern.historical_examples_source === "curated"
+                ? "Where this trajectory ran to the event"
+                : "Illustrative cases (placeholder)"
+            }
             accent={accent}
-            caption={`Past cases from the verified record where this shape ran to a ${recipe.label.toLowerCase()} event. Each line is historical fact about that country, never a statement about anyone's future.`}
+            caption={
+              pattern.historical_examples_source === "curated"
+                ? isNounPhrase(recipe.label)
+                  ? `Past cases from the verified record where this shape ran to conditions of ${recipe.label.toLowerCase()}. Each entry is a historical fact about that country, never a statement about anyone's future.`
+                  : `Past cases from the verified record where this shape ran to ${an(recipe.label)} ${recipe.label.toLowerCase()} event. Each entry is a historical fact about that country, never a statement about anyone's future.`
+                : "Illustrative cases drawn from the recipe's top-country list. These are NOT from a verified-positives corpus; they are placeholders until that recipe's historical record is curated. Treat them as design content, not historical evidence."
+            }
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {pattern.historical_examples.map((ex, i) => (
