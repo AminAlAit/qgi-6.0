@@ -162,6 +162,37 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-05-28 — Recipes V4.1 route rename: /precedents-v4.1 → /recipes-v4.1
+      // ("Recipes" is the methodology unit at page level; the old "precedents"
+      // slug lingered only in the mockup URL). 308 preserves any local bookmark.
+      {
+        source: "/precedents-v4.1",
+        destination: "/recipes-v4.1",
+        permanent: true,
+      },
+      {
+        source: "/precedents-v4.1/:path*",
+        destination: "/recipes-v4.1/:path*",
+        permanent: true,
+      },
+      // 2026-05-28 — Patterns V4 removed; "pattern" returns to its SCDI meaning
+      // at /patterns. The TE canonical-movement-shape concept is now "Trajectory"
+      // under the recipe. Map the old local mockup URLs to their new homes.
+      {
+        source: "/patterns-v4/ranking",
+        destination: "/recipes-v4.1/trajectory-ranking",
+        permanent: true,
+      },
+      {
+        source: "/patterns-v4/:slug",
+        destination: "/recipes-v4.1/:slug/trajectory",
+        permanent: true,
+      },
+      {
+        source: "/patterns-v4",
+        destination: "/recipes-v4.1",
+        permanent: true,
+      },
       // /recipes/foreign_intervention was live briefly (2026-05-22 to 2026-05-23)
       // before the recipes route was torn down in favor of a blog graduation
       // article. Preserve any inbound bookmark or link.

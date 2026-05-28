@@ -29,6 +29,9 @@ export interface PatternAlignmentPanelProps {
   windowYears: number;
   indicators: AlignmentIndicator[];
   shapeData: AlignmentShape[];
+  /** When true, render the button to the full trajectory deep-dive (only
+   *  recipes that ship a curated trajectory have a deep-dive page). */
+  hasTrajectory?: boolean;
 }
 
 export function PatternAlignmentPanel({
@@ -37,6 +40,7 @@ export function PatternAlignmentPanel({
   windowYears,
   indicators,
   shapeData,
+  hasTrajectory = false,
 }: PatternAlignmentPanelProps) {
   const shapeByCode = new Map(shapeData.map((s) => [s.indicatorCode, s]));
 
@@ -50,7 +54,7 @@ export function PatternAlignmentPanel({
         padding: "16px 18px 18px",
         minWidth: "340px",
       }}
-      aria-label="Pattern-level alignment: canonical movement shape"
+      aria-label="Trajectory alignment: canonical movement shape"
     >
       <header
         style={{
@@ -71,7 +75,7 @@ export function PatternAlignmentPanel({
               margin: 0,
             }}
           >
-            Pattern-level alignment
+            Trajectory alignment
           </h3>
           <span
             style={{
@@ -85,21 +89,26 @@ export function PatternAlignmentPanel({
             window
           </span>
         </div>
-        <Link
-          href={`/patterns-v4/${recipeId}` as Route}
-          style={{
-            fontFamily: "ui-monospace, monospace",
-            fontSize: "10px",
-            color: familyColor,
-            textDecoration: "none",
-            border: `1px solid ${familyColor}`,
-            padding: "3px 8px",
-            borderRadius: "3px",
-            letterSpacing: "0.4px",
-          }}
-        >
-          full pattern →
-        </Link>
+        {hasTrajectory && (
+          <Link
+            href={`/recipes-v4.1/${recipeId}/trajectory` as Route}
+            style={{
+              fontFamily: "ui-monospace, monospace",
+              fontSize: "10px",
+              color: familyColor,
+              textDecoration: "none",
+              border: `1px solid ${familyColor}`,
+              background: `${familyColor}14`,
+              padding: "4px 10px",
+              borderRadius: "4px",
+              letterSpacing: "0.4px",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+            }}
+          >
+            Open the full trajectory →
+          </Link>
+        )}
       </header>
 
       <p
@@ -110,8 +119,8 @@ export function PatternAlignmentPanel({
           lineHeight: 1.5,
         }}
       >
-        What the precedent shape <em>looks like</em>: the trajectory countries need to
-        follow to score high on this recipe. Mean across verified positives in{" "}
+        What this recipe&apos;s trajectory <em>looks like</em>: the shape a country&apos;s
+        indicators need to follow to score high. Mean across verified positives in{" "}
         <strong>bold</strong>; the band shows 25th–75th percentile.
       </p>
 
@@ -254,7 +263,7 @@ function ShapeSparkline({
           fontStyle: "italic",
         }}
       >
-        shape pending walk
+        shape not yet computed
       </div>
     );
   }

@@ -12,8 +12,6 @@
  *   - All "gate" / "walk" / "walked_no_graduation" phrasing scrubbed
  *     from visible copy.
  */
-import Link from "next/link";
-import type { Route } from "next";
 import type { ReactNode } from "react";
 import { PanelBase } from "./PanelBase";
 import { flagFor } from "@/lib/te-mock/country-flags";
@@ -660,47 +658,5 @@ export function CalibrationPanel({
         </div>
       )}
     </PanelBase>
-  );
-}
-
-/* ───────── Cross-link footer ────────────────────────────────────────── */
-
-export function PatternCrossLinkFooter({
-  familyColor,
-  recipeId,
-}: {
-  familyColor: string;
-  recipeId: string;
-}) {
-  return (
-    <div
-      style={{
-        gridColumn: "1 / -1",
-        marginTop: "4px",
-        padding: "8px 14px",
-        background: "transparent",
-        borderTop: "1px solid var(--qgi-border)",
-        display: "flex",
-        justifyContent: "flex-end",
-        alignItems: "center",
-        gap: "12px",
-        fontSize: "11px",
-        color: "var(--qgi-text-dim)",
-        fontFamily: "ui-monospace, monospace",
-        letterSpacing: "0.2px",
-      }}
-    >
-      <span>Full canonical-pattern view</span>
-      <Link
-        href={`/patterns-v4/${recipeId}` as Route}
-        style={{
-          color: familyColor,
-          textDecoration: "none",
-          fontWeight: 600,
-        }}
-      >
-        Open pattern →
-      </Link>
-    </div>
   );
 }

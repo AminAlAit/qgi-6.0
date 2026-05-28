@@ -20,7 +20,7 @@ const L1_SHORT: Record<string, string> = {
  * RecipeCard
  *
  * `basePath` defaults to /precedents-v2 (V4 gallery). The V4.1 gallery
- * passes "/precedents-v4.1" so card clicks land on V4.1 detail pages
+ * passes "/recipes-v4.1" so card clicks land on V4.1 detail pages
  * (Sonnet review P0-2, 2026-05-27).
  */
 export function RecipeCard({

@@ -56,7 +56,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
           return (
             <Link
               key={r.recipe_id}
-              href={`/precedents-v4.1/${r.recipe_id}` as Route}
+              href={`/recipes-v4.1/${r.recipe_id}` as Route}
               style={{
                 textDecoration: "none",
                 color: "inherit",
