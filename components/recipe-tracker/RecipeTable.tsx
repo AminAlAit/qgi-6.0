@@ -619,9 +619,12 @@ function Th({
 
   return (
     <th
+      scope="col"
       onClick={onClick}
       tabIndex={onClick ? 0 : undefined}
-      role={onClick ? "button" : undefined}
+      // Intentionally NO role="button" — overriding the implicit
+      // columnheader role would lose table semantics for screen readers.
+      // aria-sort + tabIndex + onKeyDown provides full keyboard a11y.
       aria-sort={ariaSortValue}
       onKeyDown={
         onClick
@@ -731,9 +734,17 @@ function VerdictPill({
   text: string;
   status: TrackerRecipe["status"];
 }) {
-  const upper = text.toUpperCase();
-  const isFail = /FAIL|HARD|SUSPEND/.test(upper);
-  const color = isFail ? "#E64545" : status === "graduated" ? "#3FBF8F" : "#7A8FA0";
+  // Color from status, not from the translated text — verdictLabel() now
+  // emits plain phrases ("Did not hold up", "On hold pending re-validation")
+  // that no longer match the FAIL|HARD|SUSPEND regex this used to rely on.
+  // walked_no_graduation status implies a fail verdict (HARD_FAIL / MARGINAL
+  // / SUSPEND); graduated implies LOCK; everything else stays neutral.
+  const color =
+    status === "walked_no_graduation"
+      ? "#E64545"
+      : status === "graduated"
+        ? "#3FBF8F"
+        : "#7A8FA0";
   return (
     <span
       style={{

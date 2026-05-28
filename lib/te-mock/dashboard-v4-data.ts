@@ -74,7 +74,7 @@ export const HERO_TILES = (c: HeroCounts): HeroTile[] => [
     sublabel:
       c.graduated === 0
         ? "0 today. See the correction log below."
-        : "Cleared every pre-reg gate",
+        : "Cleared every pre-registered check",
     Icon: GraduationCap,
     color: "#3FBF8F",
   },
@@ -130,8 +130,8 @@ export const HIGHLIGHTS: Highlight[] = [
     caption: `Discrimination rank ${TOP_PAIR.score.toFixed(1)}; top of the board today. Rendered as deployed for the visual demo; the recipe itself is currently in review.`,
     metric: TOP_PAIR.score.toFixed(1),
     recipe_id: TOP_PAIR.recipe_id,
-    tier_label: "demo · graduated",
-    tier_color: "#3FBF8F",
+    tier_label: "in review",
+    tier_color: "#E68F29",
   },
   {
     source: "compound-risk",
