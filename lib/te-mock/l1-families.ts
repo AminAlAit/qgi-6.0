@@ -11,6 +11,12 @@
  *
  * `familyColor()` returns the DISPLAY color (F overridden); for every other
  * family it equals the tracker color, so the two stay consistent.
+ *
+ * 2026-05-28 (QA-6): H was identical to NEUTRAL_SLATE (#7A8FA0), so H-dominant
+ * cards (Kenya, Germany, UK) rendered their left-border / ribbon / symbol in
+ * the exact same hue as the magnitude bar and "+N more" overflow — breaking
+ * the color-encodes-kind / length-encodes-magnitude rule. Re-hued H to warm
+ * taupe (#8A7A6E) to free up slate as the neutral channel.
  */
 
 export interface L1Family {
@@ -28,12 +34,18 @@ export const L1_FAMILIES: Record<string, L1Family> = {
   // F re-hued from tracker #9F7AEA → #6C77E8 to break the A/F purple clash.
   F: { id: "F", label: "Diplomacy & Geopolitics", color: "#6C77E8" },
   G: { id: "G", label: "Humanitarian Crisis", color: "#E94989" },
-  H: { id: "H", label: "Structural Trends", color: "#7A8FA0" },
+  // H re-hued from #7A8FA0 → #8A7A6E (warm taupe) — see file header for why.
+  H: { id: "H", label: "Structural Trends", color: "#8A7A6E" },
 };
 
 /** Neutral slate used for magnitude bars, structural panel accents, and
  *  the "+N more families" overflow segment — never a family hue. */
 export const NEUTRAL_SLATE = "#7A8FA0";
+
+/** Calm slate-blue used for the de-shouted anti-causal firewall panels
+ *  ("How to read this …") across V4.1 surfaces. Single source so the
+ *  hue stays consistent if it ever tunes. */
+export const CALM_SLATE_BLUE = "#5B7E99";
 
 /**
  * Display color for a family id. Falls back to the passed tracker color,
