@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import {
   RECIPE_LOOKUP,
@@ -229,8 +228,7 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
 
 function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
   const tracker = RECIPE_LOOKUP[recipe.recipe_id];
-  const isGraduated = recipe.recipe_id === "foreign_intervention"; // demo near-deployed
-  const rawStatus = isGraduated ? "graduated" : (tracker?.status ?? "queued");
+  const rawStatus = tracker?.status ?? "queued";
   const { label: friendlyStatus } = statusLabel(rawStatus);
   const chipColor = familyColor(recipe.l1_id, recipe.l1_color);
   return (
@@ -250,9 +248,8 @@ function RecipeChip({ recipe }: { recipe: CompoundLitRecipe }) {
         border: `1px solid ${chipColor}`,
         color: chipColor,
         // Tested-did-not-hold-up signature: dashed border per RecipeCard.tsx convention.
-        borderStyle:
-          !isGraduated && rawStatus === "walked_no_graduation" ? "dashed" : "solid",
-        opacity: !isGraduated && rawStatus === "queued" ? 0.55 : 1,
+        borderStyle: rawStatus === "walked_no_graduation" ? "dashed" : "solid",
+        opacity: rawStatus === "queued" ? 0.55 : 1,
       }}
     >
       <RecipeIcon recipeId={recipe.recipe_id} size={20} strokeWidth={1.6} />

@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { CompoundCaseStudy } from "@/lib/te-mock/compound-risk-data";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";

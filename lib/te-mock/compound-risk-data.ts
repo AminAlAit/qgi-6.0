@@ -171,6 +171,7 @@ const SEEDS: Seed[] = [
       lit("political_repression", 78.2, 10),
       lit("foreign_intervention", 94.2, 10),
       lit("sanctions_and_arms_embargo", 73.6, 10),
+      lit("multilateral_agreement", 58.0, 8),
     ],
   },
   {
@@ -378,15 +379,15 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     recipes: IRAN.lit_recipes,
     vintage: IRAN.vintage,
     narrative:
-      "Iran is the densest single-state compound case currently on the board, lighting up on foreign_intervention, " +
-      "political_repression, sanctions_and_arms_embargo, mass_protest, and currency_crisis : three L1 families " +
-      "stacking on the same body politic at once (B-Conflict, C-Governance, D-Economic). The structural read is " +
-      "that the same indicator pressures : degraded regulatory quality, narrowing civil-liberties space, and " +
-      "deteriorating fiscal-source diversity : are simultaneously the inputs that drive the foreign-intervention " +
-      "trajectory AND the protest-and-repression cycle, so the compound score is partly a measurement of " +
-      "indicator-overlap rather than three independent crisis paths. None of the lit recipes are graduated under " +
-      "the current honesty regime, so this is best read as a positioning aggregate, not a forecast of any single " +
-      "event firing : and certainly not of all five firing jointly.",
+      "Iran is the densest single-state compound case currently on the board, lighting up on five recipes " +
+      "(foreign_intervention, political_repression, sanctions_and_arms_embargo, mass_protest, and currency_crisis), " +
+      "four L1 families stacking on the same body politic at once (B-Conflict, C-Governance, D-Economic, E-Social). " +
+      "The structural read is that the same indicator pressures, degraded regulatory quality, narrowing " +
+      "civil-liberties space, and deteriorating fiscal-source diversity, are simultaneously the inputs that drive " +
+      "the foreign-intervention trajectory AND the protest-and-repression cycle, so the compound score is partly a " +
+      "measurement of indicator-overlap rather than four independent crisis paths. None of the lit recipes are " +
+      "graduated under the current honesty regime, so this is best read as a positioning aggregate, not a forecast " +
+      "of any single event firing, and certainly not of all five firing jointly.",
   },
   {
     country: SUDAN.country,
@@ -396,14 +397,14 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     recipes: SUDAN.lit_recipes,
     vintage: SUDAN.vintage,
     narrative:
-      "Sudan stacks across five recipes : civil_war_and_insurgency, humanitarian_crisis, foreign_intervention, " +
-      "drought_and_famine, mass_protest : spanning four L1 families (B-Conflict, E-Social, G-Humanitarian plus a " +
-      "structural drought channel under H). Unlike the Iran case, the Sudan stack reflects genuinely distinct " +
-      "structural pressures rather than a single indicator bundle: conflict-shape indicators (state-capacity " +
-      "collapse, ethnic-violence rates) sit alongside meteorological and humanitarian-throughput signals that draw " +
-      "on a non-overlapping data substrate. This is the architecturally cleanest compound case in the current " +
-      "vintage, and the one most consistent with the original intuition of the compound page : three independent " +
-      "lenses pointing at the same country.",
+      "Sudan stacks across five recipes (civil_war_and_insurgency, humanitarian_crisis, foreign_intervention, " +
+      "drought_and_famine, mass_protest), spanning three L1 families (B-Conflict, E-Social, G-Humanitarian) with " +
+      "a meteorological drought-and-famine channel inside G. Unlike the Iran case, the Sudan stack reflects " +
+      "genuinely distinct structural pressures rather than a single indicator bundle; conflict-shape indicators " +
+      "(state-capacity collapse, ethnic-violence rates) sit alongside meteorological and humanitarian-throughput " +
+      "signals that draw on a non-overlapping data substrate. This is the architecturally cleanest compound case " +
+      "in the current vintage, and the one most consistent with the original intuition of the compound page, " +
+      "three independent lenses pointing at the same country.",
   },
   {
     country: ARGENTINA.country,
@@ -413,8 +414,8 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     recipes: ARGENTINA.lit_recipes,
     vintage: ARGENTINA.vintage,
     narrative:
-      "Argentina shows the canonical economic-compound stack: currency_crisis, economic_recession, " +
-      "fiscal_policy_change, and mass_protest : three D-Economic recipes plus an E-Social spillover. The reading " +
+      "Argentina shows the canonical economic-compound stack (currency_crisis, economic_recession, " +
+      "fiscal_policy_change, and mass_protest), three D-Economic recipes plus an E-Social spillover. The reading " +
       "to be careful about here is that currency_crisis and economic_recession share substantial indicator overlap " +
       "(inflation, GDP growth, fiscal-source diversity), so a high compound score is mathematically expected " +
       "rather than informative; the mass_protest light-up is the one independent confirmation that the economic " +

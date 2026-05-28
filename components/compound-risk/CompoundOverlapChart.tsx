@@ -1,9 +1,8 @@
-import { iconForRecipe } from "@/lib/te-mock/icons";
 import type { CompoundCountry } from "@/lib/te-mock/compound-risk-data";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
-import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 interface Props {
   countries: CompoundCountry[];
@@ -12,10 +11,7 @@ interface Props {
 export function CompoundOverlapChart({ countries }: Props) {
   if (countries.length === 0) return null;
 
-  const maxScore = Math.max(
-    ...countries.flatMap((c) => c.lit_recipes.map((r) => r.score)),
-    100
-  );
+  const topCompoundScore = Math.max(...countries.map((c) => c.compound_score), 1);
 
   return (
     <section style={{ marginTop: "48px" }}>
@@ -136,7 +132,7 @@ export function CompoundOverlapChart({ countries }: Props) {
                   overflow: "hidden",
                   border: "1px solid var(--qgi-border)",
                   background: "var(--qgi-bg)",
-                  width: `${Math.min(100, (total / (maxScore * 4)) * 100 + 30)}%`,
+                  width: `${(c.compound_score / topCompoundScore) * 100}%`,
                   transition: "width 0.2s",
                 }}
               >
@@ -193,34 +189,36 @@ export function CompoundOverlapChart({ countries }: Props) {
               ])
             )
           ).values()
-        ).map((f) => {
-          const legendColor = familyColor(f.id, f.color);
-          return (
-            <span
-              key={f.id}
-              style={{
-                fontSize: "10.5px",
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "6px",
-                color: "var(--qgi-text-muted)",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.3px",
-              }}
-            >
+        )
+          .sort((a, b) => a.id.localeCompare(b.id))
+          .map((f) => {
+            const legendColor = familyColor(f.id, f.color);
+            return (
               <span
+                key={f.id}
                 style={{
-                  width: "10px",
-                  height: "10px",
-                  background: legendColor,
-                  borderRadius: "2px",
-                  display: "inline-block",
+                  fontSize: "10.5px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  color: "var(--qgi-text-muted)",
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "0.3px",
                 }}
-              />
-              {f.id} · {f.label}
-            </span>
-          );
-        })}
+              >
+                <span
+                  style={{
+                    width: "10px",
+                    height: "10px",
+                    background: legendColor,
+                    borderRadius: "2px",
+                    display: "inline-block",
+                  }}
+                />
+                {f.id} · {f.label}
+              </span>
+            );
+          })}
       </div>
     </section>
   );
