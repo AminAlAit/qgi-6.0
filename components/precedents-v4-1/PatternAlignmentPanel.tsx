@@ -46,6 +46,7 @@ export function PatternAlignmentPanel({
 
   return (
     <section
+      data-tour="pattern-alignment-panel"
       style={{
         background: "var(--qgi-surface)",
         borderLeft: `3px solid ${familyColor}`,

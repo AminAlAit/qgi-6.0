@@ -34,6 +34,7 @@ export function InFlightPanel({
   const byId = Object.fromEntries(recipes.map((r) => [r.recipe_id, r]));
   return (
     <section
+      data-tour="in-flight-panel"
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

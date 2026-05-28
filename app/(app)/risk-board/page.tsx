@@ -183,7 +183,9 @@ export default function RiskBoardPage() {
           </div>
         </div>
 
-        <RiskBoardFilters recipes={boardRecipes} l1Families={l1Families} />
+        <div data-tour="risk-board-grid">
+          <RiskBoardFilters recipes={boardRecipes} l1Families={l1Families} />
+        </div>
 
         {/* Recent movements panel */}
         <RecentMovements />

@@ -8,6 +8,7 @@
  * states the honest frame (resemblance not forecast; none deployed) in
  * plain language.
  */
+import { Sparkles } from "lucide-react";
 import { FlagImg } from "./FlagImg";
 import { FamilyChip } from "./FamilyChip";
 import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
@@ -56,7 +57,10 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
       </div>
 
       <div style={{ flex: 1, minWidth: 0 }}>
-        {/* Status chip — program-wide truth, quiet not alarming */}
+        {/* Status chip row + Generate Country Report CTA — quiet not alarming.
+            CTA is intentionally disabled: an upcoming feature where a thinking
+            AI model reads everything QGI knows about this country and writes
+            a full intelligence report via API. */}
         <div
           style={{
             display: "flex",
@@ -64,38 +68,92 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             gap: "10px",
             marginBottom: "10px",
             flexWrap: "wrap",
+            justifyContent: "space-between",
           }}
         >
-          <span
+          <div
             style={{
-              fontSize: "11px",
-              padding: "3px 9px",
-              border: "1px solid var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-              background: "rgba(122,143,160,0.10)",
-              borderRadius: "4px",
-              letterSpacing: "0.3px",
-              fontFamily: "ui-monospace, monospace",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+              flexWrap: "wrap",
             }}
-            title="No recipe is yet deployed for real decisions. Every light is a flag for attention, not a confirmed prediction."
           >
-            Not deployed
-          </span>
-          <span
+            <span
+              style={{
+                fontSize: "11px",
+                padding: "3px 9px",
+                border: "1px solid var(--qgi-border)",
+                color: "var(--qgi-text-muted)",
+                background: "rgba(122,143,160,0.10)",
+                borderRadius: "4px",
+                letterSpacing: "0.3px",
+                fontFamily: "ui-monospace, monospace",
+              }}
+              title={`No recipe is yet deployed for real decisions. Every row in "Recipes in play" is a flag for attention, not a confirmed prediction.`}
+            >
+              Not deployed
+            </span>
+            <span
+              style={{
+                fontSize: "11px",
+                padding: "3px 9px",
+                border: "1px solid var(--qgi-border)",
+                color: "var(--qgi-text)",
+                borderRadius: "4px",
+                letterSpacing: "0.3px",
+                fontFamily: "ui-monospace, monospace",
+                fontWeight: 600,
+              }}
+              title="A relative stacking of high rankings across this country's recipes in play, not a probability."
+            >
+              Compound Risk {country.compound_score.toFixed(0)}
+            </span>
+          </div>
+          <button
+            data-tour="generate-report-button"
+            type="button"
+            disabled
+            aria-disabled="true"
+            aria-label={`Generate Country Report for ${country.name} (coming soon)`}
+            title={`Coming soon: a thinking AI model reads everything QGI knows about ${country.name} — every recipe in play, its drivers, its analogs, its movement — and writes you a full intelligence report via API. Disabled today; live in a future release.`}
             style={{
-              fontSize: "11px",
-              padding: "3px 9px",
-              border: "1px solid var(--qgi-border)",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "7px 12px",
+              background:
+                "linear-gradient(135deg, rgba(167,139,250,0.18) 0%, rgba(91,126,153,0.18) 100%)",
+              border: "1px solid rgba(167,139,250,0.45)",
+              borderRadius: "5px",
               color: "var(--qgi-text)",
-              borderRadius: "4px",
-              letterSpacing: "0.3px",
-              fontFamily: "ui-monospace, monospace",
+              fontSize: "11.5px",
               fontWeight: 600,
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+              cursor: "not-allowed",
+              opacity: 0.85,
+              whiteSpace: "nowrap",
             }}
-            title="A relative stacking of high rankings across this country's lit recipes, not a probability."
           >
-            Compound Risk {country.compound_score.toFixed(0)}
-          </span>
+            <Sparkles size={13} strokeWidth={1.8} aria-hidden="true" color="#a78bfa" />
+            <span>Generate Country Report</span>
+            <span
+              style={{
+                fontSize: "9px",
+                padding: "1px 6px",
+                background: "rgba(167,139,250,0.25)",
+                border: "1px solid rgba(167,139,250,0.55)",
+                color: "#a78bfa",
+                borderRadius: "3px",
+                letterSpacing: "0.5px",
+                textTransform: "uppercase",
+                fontWeight: 700,
+              }}
+            >
+              Soon
+            </span>
+          </button>
         </div>
 
         <h1

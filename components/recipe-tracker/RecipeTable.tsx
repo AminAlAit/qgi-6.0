@@ -142,7 +142,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
   };
 
   return (
-    <section>
+    <section data-tour="recipe-table">
       <header
         style={{
           display: "flex",

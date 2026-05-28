@@ -104,73 +104,77 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
           vintage={vintageStamp()}
         />
 
-        <CountriesV41Filters
-          regions={REGION_ORDER}
-          activeRegion={regionFilter}
-          activeSort={sortKey}
-          totalShown={sorted.length}
-        />
+        <div data-tour="atlas-filters">
+          <CountriesV41Filters
+            regions={REGION_ORDER}
+            activeRegion={regionFilter}
+            activeSort={sortKey}
+            totalShown={sorted.length}
+          />
+        </div>
 
-        {REGION_ORDER.map((region) => {
-          const inRegion = grouped[region] ?? [];
-          if (inRegion.length === 0) return null;
-          const regionLit = inRegion.filter((c) => c.recipes_lit_count >= 1).length;
-          return (
-            <section key={region} style={{ marginTop: "32px" }}>
-              <header
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  gap: "12px",
-                  marginBottom: "14px",
-                }}
-              >
-                <span
+        <div data-tour="atlas-grid">
+          {REGION_ORDER.map((region) => {
+            const inRegion = grouped[region] ?? [];
+            if (inRegion.length === 0) return null;
+            const regionLit = inRegion.filter((c) => c.recipes_lit_count >= 1).length;
+            return (
+              <section key={region} style={{ marginTop: "32px" }}>
+                <header
                   style={{
-                    fontSize: "10px",
-                    letterSpacing: "1.5px",
-                    fontFamily: "ui-monospace, monospace",
-                    color: "var(--qgi-text-dim)",
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: "12px",
+                    marginBottom: "14px",
                   }}
                 >
-                  REGION
-                </span>
-                <h2
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      letterSpacing: "1.5px",
+                      fontFamily: "ui-monospace, monospace",
+                      color: "var(--qgi-text-dim)",
+                    }}
+                  >
+                    REGION
+                  </span>
+                  <h2
+                    style={{
+                      fontSize: "18px",
+                      fontWeight: 600,
+                      margin: 0,
+                      color: "var(--qgi-text)",
+                      flex: 1,
+                    }}
+                  >
+                    {region}
+                  </h2>
+                  <span
+                    style={{
+                      fontSize: "10.5px",
+                      color: "var(--qgi-text-muted)",
+                      fontFamily: "ui-monospace, monospace",
+                      letterSpacing: "0.3px",
+                    }}
+                  >
+                    {inRegion.length} countries · {regionLit} lit
+                  </span>
+                </header>
+                <div
                   style={{
-                    fontSize: "18px",
-                    fontWeight: 600,
-                    margin: 0,
-                    color: "var(--qgi-text)",
-                    flex: 1,
+                    display: "grid",
+                    gridTemplateColumns: "repeat(auto-fill, minmax(248px, 1fr))",
+                    gap: "14px",
                   }}
                 >
-                  {region}
-                </h2>
-                <span
-                  style={{
-                    fontSize: "10.5px",
-                    color: "var(--qgi-text-muted)",
-                    fontFamily: "ui-monospace, monospace",
-                    letterSpacing: "0.3px",
-                  }}
-                >
-                  {inRegion.length} countries · {regionLit} lit
-                </span>
-              </header>
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(248px, 1fr))",
-                  gap: "14px",
-                }}
-              >
-                {inRegion.map((c) => (
-                  <CountryCardV41 key={c.iso} country={c} maxCompound={maxCompound} />
-                ))}
-              </div>
-            </section>
-          );
-        })}
+                  {inRegion.map((c) => (
+                    <CountryCardV41 key={c.iso} country={c} maxCompound={maxCompound} />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
 
         <footer
           style={{

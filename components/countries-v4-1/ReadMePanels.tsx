@@ -92,7 +92,12 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
   ).sort();
 
   return (
-    <PanelShell title="Vintage & sources" accent={NEUTRAL_SLATE} fullWidth>
+    <PanelShell
+      title="Vintage & sources"
+      accent={NEUTRAL_SLATE}
+      fullWidth
+      dataTour="vintage-sources-panel"
+    >
       <div
         style={{
           display: "grid",

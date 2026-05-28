@@ -67,6 +67,7 @@ export function ReliabilityPanel({
   return (
     <section
       aria-labelledby="reliability-panel-heading"
+      data-tour="reliability-panel"
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

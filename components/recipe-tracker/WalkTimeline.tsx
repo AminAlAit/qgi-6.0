@@ -67,7 +67,7 @@ export function WalkTimeline({
   }
 
   return (
-    <section style={{ marginTop: "8px" }}>
+    <section data-tour="walk-timeline" style={{ marginTop: "8px" }}>
       <div
         style={{
           display: "flex",

@@ -32,6 +32,7 @@ export function RecentMovements() {
 
   return (
     <section
+      data-tour="recent-movements"
       style={{
         marginTop: "32px",
         padding: "20px",

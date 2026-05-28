@@ -90,6 +90,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
 
       {/* Top-3 grid */}
       <div
+        data-tour="analog-results"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
@@ -109,6 +110,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
 
       {/* Recipe-contribution panel */}
       <section
+        data-tour="recipe-contributions"
         style={{
           background: "var(--qgi-surface)",
           border: "1px solid var(--qgi-border)",

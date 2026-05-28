@@ -1,9 +1,14 @@
 /**
- * LitRecipesPanel (P1) — the RESULTS hero: every recipe this country is lit
- * on, as a ranked table. Full-width, neutral/structural accent (it spans
- * families). Each row: family dot + letter glyph + recipe label + a score
- * bar (filled in the recipe's family color, length = the 0-100 rank) +
- * the score + an honest status chip.
+ * LitRecipesPanel (P1) — title "Recipes in play": every recipe this
+ * country's current trajectory matches, as a ranked table. Full-width,
+ * neutral/structural accent (it spans families). Each row: family dot +
+ * letter glyph + recipe label + a score bar (filled in the recipe's
+ * family color, length = the 0-100 rank) + the score + an honest status
+ * chip.
+ *
+ * 2026-05-28: "Lit recipes" -> "Recipes in play" per founder pick (game/
+ * board metaphor pairs with the risk-board leaderboard framing; reads as
+ * "currently in the running," not as a status claim about the recipes).
  *
  * Honesty: the caption carries Kwame's canonical graduation-gap sentence;
  * status chips use blessed plain labels (statusLabel); green is reserved
@@ -44,11 +49,11 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
 
   return (
     <PanelShell
-      title="Lit recipes"
+      title="Recipes in play"
       accent={NEUTRAL_SLATE}
       fullWidth
-      dataTour="lit-recipes-panel"
-      caption="None of these patterns has yet cleared our validation bar, so every light here is a flag worth a closer look, not a confirmed prediction. Scores are a relative ranking from 0 to 100, not a probability."
+      dataTour="recipes-in-play-panel"
+      caption="None of these patterns has yet cleared our validation bar, so every row here is a flag worth a closer look, not a confirmed prediction. Scores are a relative ranking from 0 to 100, not a probability."
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
         {rows.map((r) => {

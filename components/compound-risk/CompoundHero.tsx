@@ -14,7 +14,7 @@ export function CompoundHero({
   vintage,
 }: Props) {
   return (
-    <section style={{ marginBottom: "8px" }}>
+    <section data-tour="compound-hero" style={{ marginBottom: "8px" }}>
       <div
         style={{
           color: "var(--qgi-accent)",

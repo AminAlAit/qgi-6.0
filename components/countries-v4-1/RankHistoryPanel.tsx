@@ -23,6 +23,7 @@ export function RankHistoryPanel({ country }: { country: CountryV4 }) {
       title="Recent movement (last 12 quarters)"
       accent={NEUTRAL_SLATE}
       fullWidth
+      dataTour="rank-history-panel"
       caption={`Where ${country.name} has sat in the score distribution over the last 3 years, for its most-lit recipes. Past movement only, not a projection of where it is going.`}
     >
       <div
