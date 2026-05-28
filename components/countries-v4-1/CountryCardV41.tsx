@@ -20,7 +20,8 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { FlagImg } from "./FlagImg";
-import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
+import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { familiesByBestScore } from "@/lib/te-mock/country-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
 
@@ -33,14 +34,16 @@ export function CountryCardV41({
   maxCompound: number;
 }) {
   const fams = familiesByBestScore(country);
-  const dominant = fams[0];
-  const accent = dominant?.color ?? NEUTRAL_SLATE;
+  const accent = fams[0]?.color ?? NEUTRAL_SLATE;
   const isDark = country.recipes_lit_count === 0;
 
-  // Ribbon: up to 4 family segments + a neutral overflow segment.
-  const MAX_SEG = 4;
-  const shown = fams.slice(0, MAX_SEG);
-  const overflow = fams.length - shown.length;
+  // One ribbon segment + one symbol PER LIT RECIPE (ordered by score), both
+  // in the recipe's family color. So the count of colors on the top border
+  // equals the count of symbols equals the "N lit" badge — and the symbol
+  // tells the reader WHICH recipe each color stands for. Capped at 8.
+  const MAX_SHOWN = 8;
+  const recipes = country.top_recipes.slice(0, MAX_SHOWN);
+  const overflow = country.top_recipes.length - recipes.length;
 
   const compoundPct = Math.max(
     2,
@@ -69,7 +72,8 @@ export function CountryCardV41({
           opacity: isDark ? 0.72 : 1,
         }}
       >
-        {/* Family ribbon — equal-width categorical segments */}
+        {/* Ribbon — one segment per lit recipe, in its family color, same
+            order as the symbol row below. */}
         <div
           aria-hidden
           style={{
@@ -83,20 +87,20 @@ export function CountryCardV41({
             background: "var(--qgi-bg)",
           }}
         >
-          {shown.map((f) => (
+          {recipes.map((r) => (
             <span
-              key={f.id}
-              title={`${f.id} · ${f.label}`}
-              style={{ flex: 1, background: f.color }}
+              key={r.recipe_id}
+              title={`${r.label} (${r.score.toFixed(0)})`}
+              style={{ flex: 1, background: familyColor(r.l1_id, r.l1_color) }}
             />
           ))}
           {overflow > 0 && (
             <span
-              title={`+${overflow} more famil${overflow === 1 ? "y" : "ies"}`}
+              title={`+${overflow} more`}
               style={{ flex: 1, background: NEUTRAL_SLATE }}
             />
           )}
-          {shown.length === 0 && (
+          {recipes.length === 0 && (
             <span style={{ flex: 1, background: "var(--qgi-border)" }} />
           )}
         </div>
@@ -163,6 +167,45 @@ export function CountryCardV41({
               {country.region}
             </div>
           </div>
+
+          {/* Lit-recipe symbols — one per recipe, in family color, same order
+              and colors as the top ribbon. Tells the reader which recipes the
+              country is lit on, by symbol + color, at a glance. */}
+          {recipes.length > 0 && (
+            <div
+              style={{
+                display: "flex",
+                gap: "8px",
+                flexWrap: "wrap",
+                alignItems: "center",
+                marginBottom: "12px",
+              }}
+            >
+              {recipes.map((r) => (
+                <span
+                  key={r.recipe_id}
+                  title={`${r.label} · ${r.score.toFixed(0)}`}
+                  style={{
+                    display: "inline-flex",
+                    color: familyColor(r.l1_id, r.l1_color),
+                  }}
+                >
+                  <RecipeIcon recipeId={r.recipe_id} size={18} strokeWidth={1.7} />
+                </span>
+              ))}
+              {overflow > 0 && (
+                <span
+                  style={{
+                    fontSize: "10px",
+                    color: "var(--qgi-text-dim)",
+                    fontFamily: "ui-monospace, monospace",
+                  }}
+                >
+                  +{overflow}
+                </span>
+              )}
+            </div>
+          )}
 
           {/* Compound: number + neutral magnitude bar */}
           <div style={{ marginTop: "auto" }}>
