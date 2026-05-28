@@ -16,7 +16,6 @@ import type { CSSProperties, ReactNode } from "react";
 export function PanelShell({
   title,
   accent,
-  icon,
   caption,
   tooltip,
   fullWidth = false,
@@ -25,9 +24,6 @@ export function PanelShell({
 }: {
   title: string;
   accent: string;
-  /** Optional leading symbol (e.g. a family-colored RecipeIcon) that keys
-   *  the panel's accent color to the recipe it represents. */
-  icon?: ReactNode;
   caption?: ReactNode;
   tooltip?: string;
   fullWidth?: boolean;
@@ -56,29 +52,19 @@ export function PanelShell({
           marginBottom: caption ? "6px" : "12px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}>
-          {icon && (
-            <span
-              style={{ display: "inline-flex", color: accent, flexShrink: 0 }}
-              aria-hidden
-            >
-              {icon}
-            </span>
-          )}
-          <h3
-            style={{
-              fontSize: "13px",
-              letterSpacing: "0.6px",
-              textTransform: "uppercase",
-              color: accent,
-              fontFamily: "ui-monospace, monospace",
-              fontWeight: 600,
-              margin: 0,
-            }}
-          >
-            {title}
-          </h3>
-        </div>
+        <h3
+          style={{
+            fontSize: "13px",
+            letterSpacing: "0.6px",
+            textTransform: "uppercase",
+            color: accent,
+            fontFamily: "ui-monospace, monospace",
+            fontWeight: 600,
+            margin: 0,
+          }}
+        >
+          {title}
+        </h3>
         {tooltip && (
           <span
             title={tooltip}

@@ -13,7 +13,6 @@ import Link from "next/link";
 import type { Route } from "next";
 import { PanelShell } from "./PanelShell";
 import { FamilyChip } from "./FamilyChip";
-import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { statusLabel, type StatusTone } from "@/lib/te-mock/country-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
@@ -70,20 +69,10 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
               }}
             >
-              {/* Recipe symbol (family-colored) + family glyph + label.
-                  The colored symbol is the key: the same symbol/color marks
-                  this recipe on its drivers panel and momentum card. */}
+              {/* Family dot + glyph + label */}
               <div
                 style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}
               >
-                <span style={{ display: "inline-flex", flexShrink: 0 }} aria-hidden>
-                  <RecipeIcon
-                    recipeId={r.recipe_id}
-                    size={16}
-                    strokeWidth={1.7}
-                    color={color}
-                  />
-                </span>
                 <FamilyChip
                   id={r.l1_id}
                   label={r.l1_label}

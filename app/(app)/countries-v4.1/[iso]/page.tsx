@@ -124,14 +124,12 @@ export default async function CountryV41DetailPage({ params }: Params) {
           <PanelPair>
             <WhyScoresPanel
               accent={driversAccent}
-              topRecipeId={topRecipe?.recipe_id ?? ""}
               countryName={country.name}
               topRecipeLabel={topRecipe?.label ?? "its top recipe"}
               attribution={country.drivers_attribution}
             />
             <WhatsMovingPanel
               accent={driversAccent}
-              topRecipeId={topRecipe?.recipe_id ?? ""}
               countryName={country.name}
               movement={country.drivers_movement}
             />
