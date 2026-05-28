@@ -15,7 +15,7 @@ export function DashboardHero({ tiles }: { tiles: HeroTile[] }) {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1.3fr repeat(5, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
           gap: "12px",
         }}
       >
@@ -45,6 +45,7 @@ function ScoreTile({ tile }: { tile: HeroTile }) {
       }}
     >
       <div
+        aria-hidden="true"
         style={{
           width: big ? "40px" : "34px",
           height: big ? "40px" : "34px",
