@@ -44,7 +44,7 @@ export function CountryPicker({
   );
 
   return (
-    <div>
+    <div data-tour="picker-panel">
       {/* Fallback banner — shown when ?iso= points to a country not yet in the analog corpus */}
       {unavailableName && (
         <div

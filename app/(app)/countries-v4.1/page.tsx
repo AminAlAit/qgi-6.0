@@ -13,6 +13,7 @@
  */
 import type { Metadata } from "next";
 import { vintageStamp } from "@/lib/te-mock/recipes";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   COUNTRIES_V4,
   REGION_ORDER,
@@ -73,9 +74,12 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
           style={{
             display: "flex",
             justifyContent: "flex-end",
+            alignItems: "center",
+            gap: "8px",
             marginBottom: "16px",
           }}
         >
+          <HowToReadButton routeKey="countries-v4.1" />
           <span
             style={{
               fontSize: "10px",

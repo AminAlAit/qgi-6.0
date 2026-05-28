@@ -358,6 +358,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <IconBeaker />,
     items: [
       { label: "Dashboard V4", href: "/dashboard-v4" as Route, badge: "PREVIEW" },
+      { label: "Dashboard V4.1", href: "/dashboard-v4.1" as Route, badge: "PREVIEW" },
       { label: "Recipes V4", href: "/precedents-v2" as Route, badge: "PREVIEW" },
       { label: "Recipes V4.1", href: "/recipes-v4.1" as Route, badge: "PREVIEW" },
       { label: "Countries V4", href: "/countries-v4" as Route, badge: "PREVIEW" },

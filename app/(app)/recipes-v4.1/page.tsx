@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { RecipeCard } from "@/components/precedents-v2/RecipeCard";
 import { familyColor } from "@/lib/te-mock/l1-families";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
   title: "Recipes V4.1 (mockup) · QG Intelligence",
@@ -48,21 +49,32 @@ export default function RecipesV41GalleryPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Mockup banner */}
+        {/* Mockup banner + HowToReadButton */}
         <div
           style={{
-            display: "inline-block",
-            padding: "5px 12px",
-            border: "1px solid var(--qgi-accent)",
-            color: "var(--qgi-accent)",
-            borderRadius: "4px",
-            fontSize: "11px",
-            letterSpacing: "1.5px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             marginBottom: "16px",
-            fontFamily: "ui-monospace, monospace",
+            flexWrap: "wrap",
+            gap: "8px",
           }}
         >
-          MOCKUP · Recipes V4.1 · local only
+          <span
+            style={{
+              display: "inline-block",
+              padding: "5px 12px",
+              border: "1px solid var(--qgi-accent)",
+              color: "var(--qgi-accent)",
+              borderRadius: "4px",
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            MOCKUP · Recipes V4.1 · local only
+          </span>
+          <HowToReadButton routeKey="recipes-v4.1" />
         </div>
 
         {/* Hero */}
@@ -122,7 +134,11 @@ export default function RecipesV41GalleryPage() {
           const l1Label = rs[0].l1_label;
           const l1Color = familyColor(rs[0].l1_id, rs[0].l1_color);
           return (
-            <section key={l1Id} style={{ marginTop: "32px" }}>
+            <section
+              key={l1Id}
+              data-tour={`family-section-${l1Id}`}
+              style={{ marginTop: "32px" }}
+            >
               <header
                 style={{
                   display: "flex",

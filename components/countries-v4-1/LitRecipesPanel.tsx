@@ -47,6 +47,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
       title="Lit recipes"
       accent={NEUTRAL_SLATE}
       fullWidth
+      dataTour="lit-recipes-panel"
       caption="None of these patterns has yet cleared our validation bar, so every light here is a flag worth a closer look, not a confirmed prediction. Scores are a relative ranking from 0 to 100, not a probability."
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>

@@ -13,7 +13,7 @@ import { HighlightsBand } from "@/components/dashboard-v4-1/HighlightsBand";
 import { SurfaceGrid } from "@/components/dashboard-v4-1/SurfaceGrid";
 // Worker C — same note.
 import { ActivityTimeline } from "@/components/dashboard-v4-1/ActivityTimeline";
-import { StructuralFenceNote } from "@/components/dashboard-v4-1/StructuralFenceNote";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
   title: "Dashboard V4.1 (mockup) · QG Intelligence",
@@ -60,20 +60,23 @@ export default function DashboardV41Page() {
           >
             MOCKUP · /dashboard-v4.1 · local only
           </span>
-          <span
-            style={{
-              fontSize: "10px",
-              letterSpacing: "1px",
-              fontFamily: "ui-monospace, monospace",
-              color: "var(--qgi-text-dim)",
-              padding: "5px 10px",
-              background: "var(--qgi-surface)",
-              border: "1px solid var(--qgi-border)",
-              borderRadius: "4px",
-            }}
-          >
-            Data as of {vintage}
-          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <HowToReadButton routeKey="dashboard-v4.1" />
+            <span
+              style={{
+                fontSize: "10px",
+                letterSpacing: "1px",
+                fontFamily: "ui-monospace, monospace",
+                color: "var(--qgi-text-dim)",
+                padding: "5px 10px",
+                background: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "4px",
+              }}
+            >
+              Data as of {vintage}
+            </span>
+          </div>
         </div>
 
         {/* ── Hero section: eyebrow + h1 + lineage + sub ──────────────────── */}
@@ -140,16 +143,16 @@ export default function DashboardV41Page() {
           </p>
         </section>
 
-        {/* ── StructuralFenceNote — "How to read" panel (Worker C) ────────── */}
-        {/* Moved from bottom to just below the hero per V4.1 section order.  */}
-        <StructuralFenceNote />
-
         {/* ── Hero tiles — 6 program-state metrics ────────────────────────── */}
         {/* No panel wrapper: Talia's call — tiles are self-bordered.          */}
-        <DashboardHero tiles={HERO_TILES_V41(heroCounts)} />
+        <section data-tour="hero-tiles">
+          <DashboardHero tiles={HERO_TILES_V41(heroCounts)} />
+        </section>
 
         {/* ── HighlightsBand (Worker B) ────────────────────────────────────── */}
-        <HighlightsBand highlights={HIGHLIGHTS} vintage={vintage} />
+        <section data-tour="highlights-band">
+          <HighlightsBand highlights={HIGHLIGHTS} vintage={vintage} />
+        </section>
 
         {/* ── SurfaceGrid (Worker B) ──────────────────────────────────────── */}
         <SurfaceGrid cards={SURFACE_CARDS} />

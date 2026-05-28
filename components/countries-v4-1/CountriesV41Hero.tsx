@@ -24,14 +24,17 @@ function HeroTile({
   accent,
   Icon,
   href,
+  dataTour,
 }: {
   children: React.ReactNode;
   accent: string;
   Icon: LucideIcon;
   href?: Route;
+  dataTour?: string;
 }) {
   const inner = (
     <div
+      data-tour={dataTour}
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",
@@ -242,6 +245,7 @@ export function CountriesV41Hero({
           accent={cotwAccent}
           Icon={Award}
           href={`/countries-v4.1/${countryOfTheWeek.iso.toLowerCase()}` as Route}
+          dataTour="cotw-tile"
         >
           <div
             style={{

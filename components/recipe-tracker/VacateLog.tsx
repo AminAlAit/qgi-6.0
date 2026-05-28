@@ -41,6 +41,7 @@ function priorStatusLabel(status: string): string {
 export function VacateLog({ events }: { events: VacateEvent[] }) {
   return (
     <section
+      data-tour="vacate-log"
       style={{
         background: "var(--qgi-surface)",
         border: "1px solid var(--qgi-border)",

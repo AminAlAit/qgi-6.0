@@ -26,7 +26,11 @@ const STATEMENTS = [
 
 export function HowToReadPanel() {
   return (
-    <PanelShell title="How to read this page" accent={CALM_SLATE_BLUE}>
+    <PanelShell
+      title="How to read this page"
+      accent={CALM_SLATE_BLUE}
+      dataTour="how-to-read-panel"
+    >
       <ul
         style={{
           listStyle: "none",

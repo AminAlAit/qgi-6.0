@@ -16,6 +16,7 @@ const PANEL_COLOR = "#5B7E99";
 export function MethodologyBox() {
   return (
     <aside
+      data-tour="analog-methodology-box"
       style={{
         background: "rgba(91,126,153,0.06)",
         border: `1px solid ${PANEL_COLOR}`,

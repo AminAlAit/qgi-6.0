@@ -5,6 +5,7 @@
 export function HonestyDisclosure() {
   return (
     <div
+      data-tour="risk-board-honesty"
       style={{
         padding: "14px 16px",
         border: "1px solid #3A5A70",
