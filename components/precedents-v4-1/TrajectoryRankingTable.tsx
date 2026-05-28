@@ -15,7 +15,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { Search, ListFilter } from "lucide-react";
 import type { RankingEntry } from "@/lib/te-mock/patterns-v4-data";
-import { familyColor } from "@/lib/te-mock/l1-families";
+import { familyColor, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 
@@ -64,427 +64,452 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
   }
 
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "minmax(0, 1fr) 280px",
-        gap: "20px",
-        alignItems: "flex-start",
-      }}
-    >
-      <div>
-        {/* Controls */}
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "12px",
-            alignItems: "center",
-            padding: "12px 14px",
-            background: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "6px",
-            marginBottom: "12px",
-          }}
-        >
-          <label
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
-              padding: "6px 10px",
-              background: "var(--qgi-bg)",
-              border: "1px solid var(--qgi-border)",
-              borderRadius: "4px",
-              flex: "1 1 220px",
-              minWidth: "180px",
-            }}
-          >
-            <Search size={13} color="var(--qgi-text-dim)" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search country, region, or recipe"
-              style={{
-                flex: 1,
-                background: "transparent",
-                border: "none",
-                outline: "none",
-                color: "var(--qgi-text)",
-                fontSize: "12.5px",
-                fontFamily: "inherit",
-              }}
-              aria-label="Search ranking"
-            />
-          </label>
-
+    <>
+      {/* Responsive grid: sidebar collapses under table below 880px */}
+      <style>{`
+        .trajectory-ranking-grid {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 280px;
+          gap: 20px;
+          align-items: flex-start;
+        }
+        @media (max-width: 880px) {
+          .trajectory-ranking-grid {
+            grid-template-columns: 1fr;
+          }
+          .trajectory-ranking-grid aside {
+            position: static !important;
+          }
+        }
+      `}</style>
+      <div
+        className="trajectory-ranking-grid"
+        style={
+          {
+            /* layout now via .trajectory-ranking-grid CSS */
+          }
+        }
+      >
+        <div>
+          {/* Controls */}
           <div
             style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "6px",
+              display: "flex",
               flexWrap: "wrap",
+              gap: "12px",
+              alignItems: "center",
+              padding: "12px 14px",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "6px",
+              marginBottom: "12px",
             }}
           >
-            <ListFilter size={12} color="var(--qgi-text-dim)" />
-            <button
-              type="button"
-              onClick={() => setFamilyFilter(null)}
-              style={chipBtnStyle(familyFilter === null)}
+            <label
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "6px 10px",
+                background: "var(--qgi-bg)",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "4px",
+                flex: "1 1 220px",
+                minWidth: "180px",
+              }}
             >
-              All families
-            </button>
-            {families.map((f) => {
-              const c = familyColor(f.id, f.color);
-              return (
-                <button
-                  key={f.id}
-                  type="button"
-                  onClick={() => setFamilyFilter(familyFilter === f.id ? null : f.id)}
-                  style={chipBtnStyle(familyFilter === f.id, c)}
-                  aria-pressed={familyFilter === f.id}
-                  title={f.label}
-                >
-                  <span
-                    style={{
-                      width: "6px",
-                      height: "6px",
-                      borderRadius: "50%",
-                      background: c,
-                      marginRight: "5px",
-                      display: "inline-block",
-                      verticalAlign: "middle",
-                    }}
-                  />
-                  {f.id}
-                </button>
-              );
-            })}
+              <Search size={13} color="var(--qgi-text-dim)" />
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search country, region, or recipe"
+                style={{
+                  flex: 1,
+                  background: "transparent",
+                  border: "none",
+                  outline: "none",
+                  color: "var(--qgi-text)",
+                  fontSize: "12.5px",
+                  fontFamily: "inherit",
+                }}
+                aria-label="Search ranking"
+              />
+            </label>
+
+            <div
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                flexWrap: "wrap",
+              }}
+            >
+              <ListFilter size={12} color="var(--qgi-text-dim)" />
+              <button
+                type="button"
+                onClick={() => setFamilyFilter(null)}
+                style={chipBtnStyle(familyFilter === null)}
+                aria-pressed={familyFilter === null}
+              >
+                All families
+              </button>
+              {families.map((f) => {
+                const c = familyColor(f.id, f.color);
+                return (
+                  <button
+                    key={f.id}
+                    type="button"
+                    onClick={() => setFamilyFilter(familyFilter === f.id ? null : f.id)}
+                    style={chipBtnStyle(familyFilter === f.id, c)}
+                    aria-pressed={familyFilter === f.id}
+                    aria-label={f.label}
+                    title={f.label}
+                  >
+                    <span
+                      style={{
+                        width: "6px",
+                        height: "6px",
+                        borderRadius: "50%",
+                        background: c,
+                        marginRight: "5px",
+                        display: "inline-block",
+                        verticalAlign: "middle",
+                      }}
+                    />
+                    {f.id}
+                  </button>
+                );
+              })}
+            </div>
+
+            <span style={{ flex: 1 }} />
+            <span
+              style={{
+                fontSize: "10px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.4px",
+              }}
+            >
+              {filtered.length} of {rows.length} countries
+            </span>
           </div>
 
-          <span style={{ flex: 1 }} />
-          <span
+          {/* Table — overflow-x:auto lets it scroll horizontally on narrow desktops */}
+          <div
             style={{
-              fontSize: "10px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.4px",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "6px",
+              overflowX: "auto",
             }}
           >
-            {filtered.length} of {rows.length} countries
-          </span>
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                fontSize: "12.5px",
+                tableLayout: "fixed",
+              }}
+            >
+              <colgroup>
+                <col style={{ width: "40px" }} />
+                <col style={{ width: "auto" }} />
+                <col style={{ width: "96px" }} />
+                <col style={{ width: "auto" }} />
+                <col style={{ width: "70px" }} />
+                <col style={{ width: "auto" }} />
+              </colgroup>
+              <thead>
+                <tr
+                  style={{
+                    background: "var(--qgi-bg)",
+                    borderBottom: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  <Th
+                    active={sortKey === "rank"}
+                    dir={sortDir}
+                    onClick={() => toggleSort("rank")}
+                  >
+                    #
+                  </Th>
+                  <Th
+                    active={sortKey === "country"}
+                    dir={sortDir}
+                    onClick={() => toggleSort("country")}
+                  >
+                    Country
+                  </Th>
+                  <Th
+                    active={sortKey === "region"}
+                    dir={sortDir}
+                    onClick={() => toggleSort("region")}
+                  >
+                    Region
+                  </Th>
+                  <Th>Top trajectory</Th>
+                  <Th
+                    active={sortKey === "top_score"}
+                    dir={sortDir}
+                    onClick={() => toggleSort("top_score")}
+                    align="right"
+                  >
+                    Match
+                  </Th>
+                  <Th>Runner-up</Th>
+                </tr>
+              </thead>
+              <tbody>
+                {filtered.length === 0 && (
+                  <tr>
+                    <td
+                      colSpan={6}
+                      style={{
+                        padding: "32px 16px",
+                        textAlign: "center",
+                        color: "var(--qgi-text-dim)",
+                        fontStyle: "italic",
+                      }}
+                    >
+                      No countries match these filters.
+                    </td>
+                  </tr>
+                )}
+                {filtered.map((row, i) => {
+                  const topColor = familyColor(row.top_l1_id, row.top_l1_color);
+                  return (
+                    <tr
+                      key={row.country}
+                      style={{
+                        borderBottom:
+                          i < filtered.length - 1
+                            ? "1px solid var(--qgi-border)"
+                            : "none",
+                      }}
+                    >
+                      <td
+                        style={{
+                          padding: "11px 12px",
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: "11.5px",
+                          color: "var(--qgi-text-dim)",
+                        }}
+                      >
+                        {String(row.rank).padStart(2, "0")}
+                      </td>
+                      <td style={{ padding: "11px 12px" }}>
+                        <span
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                          }}
+                        >
+                          <FlagImg
+                            emoji={flagFor(row.country)}
+                            name={row.country}
+                            width={20}
+                            radius={2}
+                          />
+                          <span style={{ fontWeight: 600, color: "var(--qgi-text)" }}>
+                            {row.country}
+                          </span>
+                        </span>
+                      </td>
+                      <td
+                        style={{
+                          padding: "11px 12px",
+                          fontFamily: "ui-monospace, monospace",
+                          fontSize: "10.5px",
+                          color: "var(--qgi-text-muted)",
+                          letterSpacing: "0.3px",
+                        }}
+                      >
+                        {row.region}
+                      </td>
+                      <td style={{ padding: "11px 12px" }}>
+                        <Link
+                          href={`/recipes-v4.1/${row.top_pattern_id}/trajectory` as Route}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "8px",
+                            color: "var(--qgi-text)",
+                            textDecoration: "none",
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: "7px",
+                              height: "7px",
+                              borderRadius: "50%",
+                              background: topColor,
+                              flexShrink: 0,
+                            }}
+                          />
+                          <span style={{ fontSize: "12.5px" }}>
+                            {row.top_pattern_name}
+                          </span>
+                          <span
+                            style={{
+                              fontSize: "9.5px",
+                              padding: "1px 5px",
+                              border: `1px solid ${topColor}`,
+                              color: topColor,
+                              borderRadius: "3px",
+                              fontFamily: "ui-monospace, monospace",
+                              letterSpacing: "0.3px",
+                            }}
+                          >
+                            {row.top_l1_id}
+                          </span>
+                        </Link>
+                      </td>
+                      <td style={{ padding: "11px 12px", textAlign: "right" }}>
+                        <span
+                          style={{
+                            fontFamily: "ui-monospace, monospace",
+                            fontWeight: 600,
+                            fontSize: "14px",
+                            color: topColor,
+                          }}
+                        >
+                          {row.top_score.toFixed(0)}
+                        </span>
+                      </td>
+                      <td style={{ padding: "11px 12px" }}>
+                        <Link
+                          href={
+                            `/recipes-v4.1/${row.runner_pattern_id}/trajectory` as Route
+                          }
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "6px",
+                            color: "var(--qgi-text-muted)",
+                            textDecoration: "none",
+                            fontSize: "11.5px",
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: "6px",
+                              height: "6px",
+                              borderRadius: "50%",
+                              background: familyColor(
+                                row.runner_l1_id,
+                                row.runner_l1_color
+                              ),
+                              flexShrink: 0,
+                              opacity: 0.7,
+                            }}
+                          />
+                          <span>{row.runner_pattern_name}</span>
+                          <span
+                            style={{
+                              fontFamily: "ui-monospace, monospace",
+                              fontSize: "10.5px",
+                              color: "var(--qgi-text-dim)",
+                            }}
+                          >
+                            {row.runner_score.toFixed(0)}
+                          </span>
+                        </Link>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Honest footer (calm, not a red alarm box) */}
+          <div
+            style={{
+              marginTop: "14px",
+              padding: "12px 14px",
+              border: "1px solid var(--qgi-border)",
+              borderLeft: `3px solid ${CALM_SLATE_BLUE}`,
+              background: "rgba(91,126,153,0.06)",
+              borderRadius: "5px",
+              fontSize: "12px",
+              color: "var(--qgi-text-muted)",
+              lineHeight: 1.55,
+            }}
+          >
+            Scores in this table are similarity ranks from 0 to 100, not probabilities. A
+            country at 90 resembles that trajectory closely; it is not 90% likely to see
+            the event. No recipe here is yet deployed for real decisions.
+          </div>
         </div>
 
-        {/* Table */}
-        <div
+        {/* Side panel — how this differs from the Risk Board */}
+        <aside
           style={{
             background: "var(--qgi-surface)",
             border: "1px solid var(--qgi-border)",
             borderRadius: "6px",
-            overflow: "hidden",
+            padding: "14px 16px",
+            position: "sticky",
+            top: "12px",
           }}
         >
-          <table
+          <h3
             style={{
-              width: "100%",
-              borderCollapse: "collapse",
-              fontSize: "12.5px",
-              tableLayout: "fixed",
+              fontSize: "12px",
+              letterSpacing: "1.2px",
+              color: "var(--qgi-accent)",
+              fontFamily: "ui-monospace, monospace",
+              margin: "0 0 10px",
+              textTransform: "uppercase",
             }}
           >
-            <colgroup>
-              <col style={{ width: "40px" }} />
-              <col style={{ width: "auto" }} />
-              <col style={{ width: "96px" }} />
-              <col style={{ width: "auto" }} />
-              <col style={{ width: "70px" }} />
-              <col style={{ width: "auto" }} />
-            </colgroup>
-            <thead>
-              <tr
-                style={{
-                  background: "var(--qgi-bg)",
-                  borderBottom: "1px solid var(--qgi-border)",
-                }}
-              >
-                <Th
-                  active={sortKey === "rank"}
-                  dir={sortDir}
-                  onClick={() => toggleSort("rank")}
-                >
-                  #
-                </Th>
-                <Th
-                  active={sortKey === "country"}
-                  dir={sortDir}
-                  onClick={() => toggleSort("country")}
-                >
-                  Country
-                </Th>
-                <Th
-                  active={sortKey === "region"}
-                  dir={sortDir}
-                  onClick={() => toggleSort("region")}
-                >
-                  Region
-                </Th>
-                <Th>Top trajectory</Th>
-                <Th
-                  active={sortKey === "top_score"}
-                  dir={sortDir}
-                  onClick={() => toggleSort("top_score")}
-                  align="right"
-                >
-                  Match
-                </Th>
-                <Th>Runner-up</Th>
-              </tr>
-            </thead>
-            <tbody>
-              {filtered.length === 0 && (
-                <tr>
-                  <td
-                    colSpan={6}
-                    style={{
-                      padding: "32px 16px",
-                      textAlign: "center",
-                      color: "var(--qgi-text-dim)",
-                      fontStyle: "italic",
-                    }}
-                  >
-                    No countries match these filters.
-                  </td>
-                </tr>
-              )}
-              {filtered.map((row, i) => {
-                const topColor = familyColor(row.top_l1_id, row.top_l1_color);
-                return (
-                  <tr
-                    key={row.country}
-                    style={{
-                      borderBottom:
-                        i < filtered.length - 1 ? "1px solid var(--qgi-border)" : "none",
-                    }}
-                  >
-                    <td
-                      style={{
-                        padding: "11px 12px",
-                        fontFamily: "ui-monospace, monospace",
-                        fontSize: "11.5px",
-                        color: "var(--qgi-text-dim)",
-                      }}
-                    >
-                      {String(row.rank).padStart(2, "0")}
-                    </td>
-                    <td style={{ padding: "11px 12px" }}>
-                      <span
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "8px",
-                        }}
-                      >
-                        <FlagImg
-                          emoji={flagFor(row.country)}
-                          name={row.country}
-                          width={20}
-                          radius={2}
-                        />
-                        <span style={{ fontWeight: 600, color: "var(--qgi-text)" }}>
-                          {row.country}
-                        </span>
-                      </span>
-                    </td>
-                    <td
-                      style={{
-                        padding: "11px 12px",
-                        fontFamily: "ui-monospace, monospace",
-                        fontSize: "10.5px",
-                        color: "var(--qgi-text-muted)",
-                        letterSpacing: "0.3px",
-                      }}
-                    >
-                      {row.region}
-                    </td>
-                    <td style={{ padding: "11px 12px" }}>
-                      <Link
-                        href={`/recipes-v4.1/${row.top_pattern_id}/trajectory` as Route}
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "8px",
-                          color: "var(--qgi-text)",
-                          textDecoration: "none",
-                        }}
-                      >
-                        <span
-                          style={{
-                            width: "7px",
-                            height: "7px",
-                            borderRadius: "50%",
-                            background: topColor,
-                            flexShrink: 0,
-                          }}
-                        />
-                        <span style={{ fontSize: "12.5px" }}>{row.top_pattern_name}</span>
-                        <span
-                          style={{
-                            fontSize: "9.5px",
-                            padding: "1px 5px",
-                            border: `1px solid ${topColor}`,
-                            color: topColor,
-                            borderRadius: "3px",
-                            fontFamily: "ui-monospace, monospace",
-                            letterSpacing: "0.3px",
-                          }}
-                        >
-                          {row.top_l1_id}
-                        </span>
-                      </Link>
-                    </td>
-                    <td style={{ padding: "11px 12px", textAlign: "right" }}>
-                      <span
-                        style={{
-                          fontFamily: "ui-monospace, monospace",
-                          fontWeight: 600,
-                          fontSize: "14px",
-                          color: topColor,
-                        }}
-                      >
-                        {row.top_score.toFixed(0)}
-                      </span>
-                    </td>
-                    <td style={{ padding: "11px 12px" }}>
-                      <Link
-                        href={
-                          `/recipes-v4.1/${row.runner_pattern_id}/trajectory` as Route
-                        }
-                        style={{
-                          display: "inline-flex",
-                          alignItems: "center",
-                          gap: "6px",
-                          color: "var(--qgi-text-muted)",
-                          textDecoration: "none",
-                          fontSize: "11.5px",
-                        }}
-                      >
-                        <span
-                          style={{
-                            width: "6px",
-                            height: "6px",
-                            borderRadius: "50%",
-                            background: familyColor(
-                              row.runner_l1_id,
-                              row.runner_l1_color
-                            ),
-                            flexShrink: 0,
-                            opacity: 0.7,
-                          }}
-                        />
-                        <span>{row.runner_pattern_name}</span>
-                        <span
-                          style={{
-                            fontFamily: "ui-monospace, monospace",
-                            fontSize: "10.5px",
-                            color: "var(--qgi-text-dim)",
-                          }}
-                        >
-                          {row.runner_score.toFixed(0)}
-                        </span>
-                      </Link>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Honest footer (calm, not a red alarm box) */}
-        <div
-          style={{
-            marginTop: "14px",
-            padding: "12px 14px",
-            border: "1px solid var(--qgi-border)",
-            borderLeft: "3px solid #5B7E99",
-            background: "rgba(91,126,153,0.06)",
-            borderRadius: "5px",
-            fontSize: "12px",
-            color: "var(--qgi-text-muted)",
-            lineHeight: 1.55,
-          }}
-        >
-          Scores in this table are similarity ranks from 0 to 100, not probabilities. A
-          country at 90 resembles that trajectory closely; it is not 90% likely to see the
-          event. No recipe here is yet deployed for real decisions.
-        </div>
+            How this differs from the Risk Board
+          </h3>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "var(--qgi-text-muted)",
+              lineHeight: 1.6,
+              margin: "0 0 10px",
+            }}
+          >
+            This ranking sorts countries by shape similarity to any trajectory in the
+            catalog, including recipes still in review. It asks:{" "}
+            <em>whose recent movement resembles something we have seen before?</em>
+          </p>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "var(--qgi-text-muted)",
+              lineHeight: 1.6,
+              margin: "0 0 10px",
+            }}
+          >
+            The{" "}
+            <Link href={"/risk-board" as Route} style={{ color: "var(--qgi-accent)" }}>
+              Risk Board
+            </Link>{" "}
+            ranks only on deployed recipes with their confidence bands. It asks:{" "}
+            <em>where are we confident enough to put a number on the table?</em>
+          </p>
+          <p
+            style={{
+              fontSize: "11.5px",
+              color: "var(--qgi-text-dim)",
+              lineHeight: 1.55,
+              margin: 0,
+              fontStyle: "italic",
+            }}
+          >
+            Use trajectories for structural exploration; use the Risk Board for
+            decision-grade calls.
+          </p>
+        </aside>
       </div>
-
-      {/* Side panel — how this differs from the Risk Board */}
-      <aside
-        style={{
-          background: "var(--qgi-surface)",
-          border: "1px solid var(--qgi-border)",
-          borderRadius: "6px",
-          padding: "14px 16px",
-          position: "sticky",
-          top: "12px",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: "12px",
-            letterSpacing: "1.2px",
-            color: "var(--qgi-accent)",
-            fontFamily: "ui-monospace, monospace",
-            margin: "0 0 10px",
-            textTransform: "uppercase",
-          }}
-        >
-          How this differs from the Risk Board
-        </h3>
-        <p
-          style={{
-            fontSize: "12px",
-            color: "var(--qgi-text-muted)",
-            lineHeight: 1.6,
-            margin: "0 0 10px",
-          }}
-        >
-          This ranking sorts countries by shape similarity to any trajectory in the
-          catalog, including recipes still in review. It asks:{" "}
-          <em>whose recent movement resembles something we have seen before?</em>
-        </p>
-        <p
-          style={{
-            fontSize: "12px",
-            color: "var(--qgi-text-muted)",
-            lineHeight: 1.6,
-            margin: "0 0 10px",
-          }}
-        >
-          The{" "}
-          <Link href={"/risk-board" as Route} style={{ color: "var(--qgi-accent)" }}>
-            Risk Board
-          </Link>{" "}
-          ranks only on deployed recipes with their confidence bands. It asks:{" "}
-          <em>where are we confident enough to put a number on the table?</em>
-        </p>
-        <p
-          style={{
-            fontSize: "11.5px",
-            color: "var(--qgi-text-dim)",
-            lineHeight: 1.55,
-            margin: 0,
-            fontStyle: "italic",
-          }}
-        >
-          Use trajectories for structural exploration; use the Risk Board for
-          decision-grade calls.
-        </p>
-      </aside>
-    </div>
+    </>
   );
 }
 
@@ -516,9 +541,31 @@ function Th({
   onClick?: () => void;
   align?: "left" | "right";
 }) {
+  const isSortable = Boolean(onClick);
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTableCellElement>) {
+    if (onClick && (e.key === "Enter" || e.key === " ")) {
+      e.preventDefault();
+      onClick();
+    }
+  }
+
   return (
     <th
+      scope="col"
       onClick={onClick}
+      onKeyDown={isSortable ? handleKeyDown : undefined}
+      tabIndex={isSortable ? 0 : undefined}
+      role={isSortable ? "button" : undefined}
+      aria-sort={
+        isSortable
+          ? active
+            ? dir === "asc"
+              ? "ascending"
+              : "descending"
+            : "none"
+          : undefined
+      }
       style={{
         padding: "10px 12px",
         textAlign: align,
@@ -528,14 +575,22 @@ function Th({
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-dim)",
         fontFamily: "ui-monospace, monospace",
         fontWeight: 600,
-        cursor: onClick ? "pointer" : "default",
+        cursor: isSortable ? "pointer" : "default",
         userSelect: "none",
+        whiteSpace: "nowrap",
       }}
     >
       {children}
+      {/* Active column: direction arrow */}
       {active && (
         <span style={{ marginLeft: "5px", fontSize: "9px" }}>
           {dir === "asc" ? "▲" : "▼"}
+        </span>
+      )}
+      {/* Inactive sortable columns: neutral ↕ affordance at low opacity */}
+      {isSortable && !active && (
+        <span style={{ marginLeft: "4px", fontSize: "8px", opacity: 0.35 }} aria-hidden>
+          ↕
         </span>
       )}
     </th>
