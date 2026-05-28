@@ -11,13 +11,15 @@
  * monospaced count glyph, color-keyed border accent, icon in a square
  * inset.
  */
+import React from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { Globe, Flame, Layers, Award, type LucideIcon } from "lucide-react";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 
 interface TileProps {
-  count: string;
+  count: React.ReactNode;
   label: string;
   sublabel: string;
   Icon: LucideIcon;
@@ -220,7 +222,17 @@ export function CountriesHero({
         />
         <HeroTile
           big
-          count={`${countryOfTheWeek.flag_emoji}  ${countryOfTheWeek.name}`}
+          count={
+            <span style={{ display: "inline-flex", alignItems: "center", gap: "10px" }}>
+              <FlagImg
+                emoji={countryOfTheWeek.flag_emoji}
+                name={countryOfTheWeek.name}
+                width={32}
+                radius={3}
+              />
+              {countryOfTheWeek.name}
+            </span>
+          }
           label="Country of the week"
           sublabel={`Curated · compound ${countryOfTheWeek.compound_score.toFixed(1)} · ${countryOfTheWeek.recipes_lit_count} lit`}
           Icon={Award}
