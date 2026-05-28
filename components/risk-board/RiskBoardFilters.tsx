@@ -428,7 +428,7 @@ function RecipeGridRow({
         }}
       >
         <Link
-          href={`/precedents-v2/${recipe.recipe_id}` as Route}
+          href={`/recipes/${recipe.recipe_id}` as Route}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div
@@ -664,7 +664,7 @@ function HeatCell({
 
   return (
     <Link
-      href={`/precedents-v2/${recipeId}` as Route}
+      href={`/recipes/${recipeId}` as Route}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}
     >
       <div

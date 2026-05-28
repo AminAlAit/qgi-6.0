@@ -1,5 +1,5 @@
 /**
- * CountryV41Header — header strip for /countries-v4.1/[iso].
+ * CountryV41Header — header strip for /countries/[iso].
  *
  * Neutral page chrome (Talia): a country is not one family, so the header
  * does not flood with a single hue. The flag tile carries a thin

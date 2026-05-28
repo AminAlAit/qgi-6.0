@@ -3,9 +3,9 @@
  *
  * Narrow strip:
  *   <- Back to Patterns V4 catalogue
- *   /countries-v4.1/{a-iso}
- *   /countries-v4.1/{b-iso}
- *   /recipes-v4.1
+ *   /countries/{a-iso}
+ *   /countries/{b-iso}
+ *   /recipes
  *
  * Monospace 12px. No pair-to-pair links.
  */
@@ -53,19 +53,19 @@ export function PairHandoffsFooter({
         gap: "8px 14px",
       }}
     >
-      <Link href={"/patterns-v4" as Route} style={linkStyle}>
+      <Link href={"/patterns" as Route} style={linkStyle}>
         &larr; Back to Patterns V4 catalogue
       </Link>
       <span style={sepStyle}>/</span>
-      <Link href={`/countries-v4.1/${iso2A}` as Route} style={linkStyle}>
+      <Link href={`/countries/${iso2A}` as Route} style={linkStyle}>
         {countryA} profile
       </Link>
       <span style={sepStyle}>/</span>
-      <Link href={`/countries-v4.1/${iso2B}` as Route} style={linkStyle}>
+      <Link href={`/countries/${iso2B}` as Route} style={linkStyle}>
         {countryB} profile
       </Link>
       <span style={sepStyle}>/</span>
-      <Link href={"/recipes-v4.1" as Route} style={linkStyle}>
+      <Link href={"/recipes" as Route} style={linkStyle}>
         Recipes catalogue
       </Link>
     </footer>

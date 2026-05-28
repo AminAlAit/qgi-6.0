@@ -5,32 +5,28 @@ import { TOUR_STEPS, TOUR_STEPS_BY_PAGE, TOUR_TOTAL_STEPS } from "@/lib/tour-ste
  * Tour-steps shape invariants — caught at unit-test time so they don't
  * regress silently into production.
  *
- * Original 12-step / 5-page invariants have been superseded by the V4.1
- * extension (2026-05-28, Hana Kawai-Bjornsson authoring, 73 steps across
- * 16 pages). The three snapshot assertions below (exact step count, exact
- * page set, exact (a)-intro count) are updated to match the current tour.
- * The four structural invariants (first step = (a), original-5 distributions,
- * non-empty fields, valid dimensions) remain unchanged.
+ * 2026-05-28: V4.1 canonical promotion. The original 12 legacy steps
+ * (covering /dashboard V3, /precedents, /patterns V3, /signals,
+ * /countries V3) were removed because those routes are deleted. The
+ * 60 V4.1 steps remain, now under the canonical route paths. The
+ * "original-5-page distribution" test has been removed — those pages
+ * no longer exist; their steps are gone.
  */
 
-/** Canonical pages covered by the full V4.1 tour. */
+/** Canonical pages covered by the post-V4.1-promo tour (12 pages). */
 const ALL_TOUR_PAGES = new Set([
   "/dashboard",
-  "/precedents",
-  "/patterns",
-  "/signals",
+  "/recipes",
+  "/recipes/foreign_intervention",
   "/countries",
-  "/dashboard-v4.1",
-  "/recipes-v4.1",
-  "/recipes-v4.1/foreign_intervention",
-  "/countries-v4.1",
-  "/countries-v4.1/sdn",
+  "/countries/sdn",
   "/risk-board",
   "/compound-risk",
   "/nearest-analog",
   "/recipe-tracker",
   "/compare",
-  "/patterns-v4",
+  "/patterns",
+  "/patterns/paraguay-south_korea-1963",
 ]);
 
 describe("TOUR_STEPS — shape invariants", () => {
@@ -72,14 +68,6 @@ describe("TOUR_STEPS — shape invariants", () => {
     }
   });
 
-  it("original-5-page step distribution matches founding convergence spec", () => {
-    expect(TOUR_STEPS_BY_PAGE["/dashboard"]).toBe(2);
-    expect(TOUR_STEPS_BY_PAGE["/precedents"]).toBe(3);
-    expect(TOUR_STEPS_BY_PAGE["/patterns"]).toBe(3);
-    expect(TOUR_STEPS_BY_PAGE["/signals"]).toBe(2);
-    expect(TOUR_STEPS_BY_PAGE["/countries"]).toBe(2);
-  });
-
   it("every step has content, target, title (non-empty)", () => {
     for (const s of TOUR_STEPS) {
       expect(s.target, `${s.page}/${s.dimension} target`).toBeTruthy();
@@ -91,6 +79,18 @@ describe("TOUR_STEPS — shape invariants", () => {
   it("dimensions are one of a/b/c/d", () => {
     for (const s of TOUR_STEPS) {
       expect(["a", "b", "c", "d"]).toContain(s.dimension);
+    }
+  });
+
+  it("no step references a deleted route", () => {
+    const deletedRoutes = ["/precedents", "/signals", "/base", "/dashboard-v4"];
+    for (const s of TOUR_STEPS) {
+      for (const deleted of deletedRoutes) {
+        expect(
+          s.page.startsWith(deleted),
+          `Step on page "${s.page}" references deleted route ${deleted}`
+        ).toBe(false);
+      }
     }
   });
 });

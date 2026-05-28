@@ -90,7 +90,7 @@ export function PageLayout({
               }}
             >
               <Link
-                href={"/recipes-v4.1" as Route}
+                href={"/recipes" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
                 ← Recipes V4.1

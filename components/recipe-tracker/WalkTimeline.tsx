@@ -143,7 +143,7 @@ export function WalkTimeline({
             return (
               <a
                 key={`${w.recipe_id}-${w.fired_at}`}
-                href={`/precedents-v2/${w.recipe_id}`}
+                href={`/recipes/${w.recipe_id}`}
                 title={`${label} · ${w.fired_at} · ${verdictLabel(w.verdict)}${w.loco_auc ? ` · Discrimination score ${w.loco_auc.toFixed(3)}` : ""}`}
                 aria-label={`${label} · ${w.fired_at} · ${verdictLabel(w.verdict)}`}
                 style={{
@@ -181,7 +181,7 @@ export function WalkTimeline({
                   }}
                 />
                 <style>{`
-                  a[href*="/precedents-v2/"]:focus-visible {
+                  a[href*="/recipes/"]:focus-visible {
                     outline: 2px solid var(--qgi-accent, #38bdf8);
                     outline-offset: 2px;
                   }

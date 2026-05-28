@@ -1,5 +1,5 @@
 /**
- * PageLayout — wrapper for /patterns-v4 main page.
+ * PageLayout — wrapper for /patterns main page.
  *
  * No L1 accent border, no recipe icon. Pairs are family-agnostic.
  * Standard V4.1 chrome: max-width 1280px, 24px padding.

@@ -1,8 +1,8 @@
 /**
- * /recipes-v4.1/trajectory-ranking — Trajectory strength ranking.
+ * /recipes/trajectory-ranking — Trajectory strength ranking.
  *
  * Top-30 countries by how closely their current movement resembles any
- * trajectory in the catalog. Migrated from /patterns-v4/ranking and rebuilt
+ * trajectory in the catalog. Migrated from /patterns/ranking and rebuilt
  * to the V4.1 bar (honest copy, flags, no "pattern" wording, no M8-R5 box).
  * Reached via the button on each trajectory deep-dive.
  *
@@ -43,7 +43,7 @@ export default function TrajectoryRankingPage() {
           }}
         >
           <Link
-            href={"/recipes-v4.1" as Route}
+            href={"/recipes" as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
             ← Recipes V4.1

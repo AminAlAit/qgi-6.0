@@ -144,7 +144,7 @@ function MovementRow({
     >
       {/* Recipe icon column */}
       <Link
-        href={`/precedents-v2/${ev.recipe_id}` as Route}
+        href={`/recipes/${ev.recipe_id}` as Route}
         style={{
           textDecoration: "none",
           color: "inherit",

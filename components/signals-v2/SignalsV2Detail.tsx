@@ -17,7 +17,7 @@ import { SectionLabel } from "@/components/v2/SectionLabel";
  * V2 signal detail page — single (country, recipe) tear-sheet.
  *
  * MVP-shallow scope (#655 founder pick 2026-05-12): renders the same
- * recipe-level metrics as `/precedents-v2{a,b}/[slug]` plus a country
+ * recipe-level metrics as `/recipes{a,b}/[slug]` plus a country
  * header. The country slug doesn't drive any per-(country, year) firing
  * score today — that's a future bake. The page exists as the URL surface
  * + buyer-disclosure caveat surface; per-country probability comes later.

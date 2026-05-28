@@ -92,7 +92,7 @@ export function PatternAlignmentPanel({
         </div>
         {hasTrajectory && (
           <Link
-            href={`/recipes-v4.1/${recipeId}/trajectory` as Route}
+            href={`/recipes/${recipeId}/trajectory` as Route}
             style={{
               fontFamily: "ui-monospace, monospace",
               fontSize: "10px",

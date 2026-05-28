@@ -110,7 +110,7 @@ export function PrecedentsV2List({
         <p>
           Generated {generatedAt} · Model version {modelVersion}. See{" "}
           <Link
-            href="/precedents"
+            href="/recipes"
             className="underline"
             style={{ color: "var(--qgi-text-dim)" }}
           >

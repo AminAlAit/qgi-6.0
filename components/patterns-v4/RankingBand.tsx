@@ -510,7 +510,7 @@ function PairRow({ pair, rank }: { pair: PairRow; rank?: number }) {
 
   return (
     <Link
-      href={`/patterns-v4/${pair.pair_id}` as Route}
+      href={`/patterns/${pair.pair_id}` as Route}
       style={{ textDecoration: "none", color: "inherit" }}
       aria-label={`Open pair ${pair.country_a_name} and ${pair.country_b_name}`}
     >
@@ -559,7 +559,7 @@ function PairRow({ pair, rank }: { pair: PairRow; rank?: number }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              window.location.href = `/countries-v4.1/${pair.country_a_iso}`;
+              window.location.href = `/countries/${pair.country_a_iso}`;
             }}
           >
             {pair.country_a_name}
@@ -584,7 +584,7 @@ function PairRow({ pair, rank }: { pair: PairRow; rank?: number }) {
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();
-              window.location.href = `/countries-v4.1/${pair.country_b_iso}`;
+              window.location.href = `/countries/${pair.country_b_iso}`;
             }}
           >
             {pair.country_b_name}

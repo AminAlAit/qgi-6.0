@@ -1,227 +1,192 @@
-import { loadCountryRisks } from "@/lib/country-risks";
-import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
-import { BaseClient } from "./BaseClient";
-import indexData from "@/data/indexes.json";
-import taxonomyData from "@/data/taxonomy_hierarchy.json";
-import type { IndexEntry, PatternRow, SignalRow } from "@/lib/types";
-import { canonicalPairKey } from "@/lib/canonical-pair";
-import { TOTAL_LOCKED } from "@/lib/site-stats";
+import type { Metadata } from "next";
+import { getAllRecipes, vintageStamp } from "@/lib/te-mock/recipes";
+import {
+  HERO_TILES_V41,
+  HIGHLIGHTS,
+  SURFACE_CARDS,
+  ACTIVITY_EVENTS,
+  buildHeroCountsV41,
+} from "@/lib/te-mock/dashboard-v4-1-data";
+import { DashboardHero } from "@/components/dashboard-v4-1/DashboardHero";
+// Worker B — will fail tsc until Worker B lands; error is theirs, not ours.
+import { HighlightsBand } from "@/components/dashboard-v4-1/HighlightsBand";
+import { SurfaceGrid } from "@/components/dashboard-v4-1/SurfaceGrid";
+// Worker C — same note.
+import { ActivityTimeline } from "@/components/dashboard-v4-1/ActivityTimeline";
+import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
-/**
- * PR-vi (2026-05-15) — Dashboard redesigned per JTBD Majles verdict.
- *
- * Dashboard is QGI's canonical front door — the "simple to use" landing
- * surface. The 4 family pages (/precedents, /countries, /signals,
- * /patterns) are the "deep to explore" surface beneath.
- *
- * Old `robots: noindex` removed: Dashboard is now indexable. The /base
- * legacy slug-route (if any) should redirect here or carry its own
- * noindex; this page is the canonical entry point.
- *
- * No new data loaders — every section reads from the existing baked
- * JSONs that the V3 family pages already use:
- *   - country-risks.json  → tier counts + watchlist + outliers + featured
- *   - ranking.json        → top pattern pairs
- *   - recipes-top50.json  → top convergences
- *   - ml-recipe-stack.json → Precedents card validated-count
- *
- * Added in this PR:
- *   - loadMlRecipeStack() call for the Precedents card
- *   - Server-side signals HIGH + MODERATE aggregation (mirrors logic
- *     from /signals/page.tsx; could be extracted to lib/ if a third
- *     consumer ever needs it)
- */
-export const metadata = {
-  title: "Dashboard · QG Intelligence",
+export const metadata: Metadata = {
+  title: "Dashboard V4.1 (mockup) · QG Intelligence",
   description:
-    "QGI command center. Consolidated view of countries, signals, patterns, and precedents — the front door to the deeper family pages.",
-  // #699: explicit canonical (was inheriting "/" from root layout).
-  alternates: { canonical: "/dashboard" },
+    "Parallel route for the V4.1 dashboard redesign. Local-only mockup; not for production.",
+  robots: { index: false, follow: false },
 };
 
-// P1 from #699 audit: align with sibling V3 family pages' ISR cadence.
-export const revalidate = 3600;
+// Calm-slate-blue constant — matches CALM_SLATE_BLUE in l1-families.ts.
+const CALM_SLATE_BLUE = "#5B7E99";
 
-/**
- * Load top pattern pairs directly from baked ranking.json.
- * No API call needed — the file is in data/.
- */
-async function fetchTopPairs(): Promise<{
-  pairs: PatternRow[];
-  totalUniquePairs: number;
-}> {
-  try {
-    const fs = await import("fs/promises");
-    const path = await import("path");
-    const filePath = path.join(process.cwd(), "data", "ranking.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    // T13 #306 HIGH fix: minimal shape guard before cast so a malformed
-    // ranking.json (empty file, error payload) doesn't ripple into the UI
-    // as a cryptic crash. The cast is still a lie — a proper Zod schema
-    // would validate every row — but this bounds the blast radius.
-    const json: unknown = JSON.parse(raw);
-    if (
-      !json ||
-      typeof json !== "object" ||
-      !Array.isArray((json as { results?: unknown }).results)
-    ) {
-      console.warn("[dashboard] ranking.json missing or malformed `results` array");
-      return { pairs: [], totalUniquePairs: 0 };
-    }
-    const results: PatternRow[] = (json as { results: PatternRow[] }).results;
-    // Dedupe by canonical (order-insensitive, numeric-padded) pair key,
-    // keeping best PPS per pair. The key shape is the single source of
-    // truth at `lib/canonical-pair.ts` — same helper used by /patterns
-    // and /api/patterns/ranking. Per Opus-4.7 review on PR #100
-    // (Findings 2.2 + 2.3): centralizing eliminated a three-way
-    // divergence that produced the #777 "9 pairs vs 4 pairs" mismatch.
-    const bestPerPair = new Map<string, PatternRow>();
-    for (const row of results) {
-      const key = canonicalPairKey(row);
-      const existing = bestPerPair.get(key);
-      if (!existing || row.pattern_power_score > existing.pattern_power_score) {
-        bestPerPair.set(key, row);
-      }
-    }
-    const deduped = Array.from(bestPerPair.values())
-      .sort((a, b) => b.pattern_power_score - a.pattern_power_score)
-      .slice(0, 5);
-    return { pairs: deduped, totalUniquePairs: bestPerPair.size };
-  } catch (err) {
-    // T2 #295 fix: log so we don't debug a silent "no pairs" in prod.
-    console.error("[dashboard] fetchTopPairs failed:", err);
-    return { pairs: [], totalUniquePairs: 0 };
-  }
-}
-
-/**
- * Load top-50 convergence signals from baked recipes-top50.json.
- * This is the real convergence/signal data with event categories,
- * lead times, and convergence scores.
- */
-async function fetchTopSignals(): Promise<SignalRow[]> {
-  try {
-    const fs = await import("fs/promises");
-    const path = await import("path");
-    const filePath = path.join(process.cwd(), "data", "recipes-top50.json");
-    const raw = await fs.readFile(filePath, "utf-8");
-    const json: unknown = JSON.parse(raw);
-    if (
-      !json ||
-      typeof json !== "object" ||
-      !Array.isArray((json as { results?: unknown }).results)
-    ) {
-      console.warn("[dashboard] recipes-top50.json missing or malformed `results` array");
-      return [];
-    }
-    return (json as { results: SignalRow[] }).results;
-  } catch (err) {
-    console.error("[dashboard] fetchTopSignals failed:", err);
-    return [];
-  }
-}
-
-/**
- * PR-vi — server-side signals aggregation for the four-family band.
- *
- * Mirrors `app/(app)/signals/page.tsx` buildSignals() logic: for each
- * country, dedupe per-category to the highest-salience entry across
- * S/M/L/XL windows; then count categories where max-salience-z >= 2.5
- * (HIGH rung) or 1.0..2.5 (MODERATE rung).
- *
- * Returns the two counts the Section 3 Signals card needs. The
- * `n_high < 3` fallback rule (E1) is applied at render time in
- * BaseClient — this function returns both counts unconditionally.
- *
- * 13 locked recipes per ML Stage 4 pre-registration (qgi-docs/internal/
- * ops/ml-track/FINAL-RESULTS.md). Update only if pre-registration is
- * revised by founder+ML-Opus.
- */
-function aggregateSignalsTierCounts(
-  risks: Awaited<ReturnType<typeof loadCountryRisks>> | null,
-  lockedRecipeSlugs: ReadonlyArray<string>
-): { n_high: number; n_moderate: number; n_total: number } {
-  if (!risks) return { n_high: 0, n_moderate: 0, n_total: 0 };
-  // #815 (2026-05-18) — match the /signals 4-only graduation: the
-  // dashboard's "See all N risk recipes →" link points to /signals, so
-  // its count must match what /signals actually surfaces. Pre-#815 this
-  // aggregated across the full ~71-category bake, which produced an
-  // n_total of 67-71 conflicting with the post-graduation /signals
-  // showing 4. If the LOCKed list is unavailable (mlStack load failed),
-  // fall back to no-filter so the dashboard degrades to pre-#815 shape
-  // rather than displaying zeros.
-  const lockedSet = lockedRecipeSlugs.length > 0 ? new Set(lockedRecipeSlugs) : null;
-  const perCategory = new Map<string, number>();
-  for (const country of Object.values(risks.countries)) {
-    for (const tierBlock of Object.values(country.tiers ?? {})) {
-      for (const c of tierBlock.top_categories ?? []) {
-        if (lockedSet && !lockedSet.has(c.category)) continue;
-        const sal = c.salience_score ?? c.z_score ?? 0;
-        const prev = perCategory.get(c.category) ?? -Infinity;
-        if (sal > prev) perCategory.set(c.category, sal);
-      }
-    }
-  }
-  let n_high = 0;
-  let n_moderate = 0;
-  for (const sal of perCategory.values()) {
-    if (sal >= 2.5) n_high++;
-    else if (sal >= 1.0) n_moderate++;
-  }
-  return { n_high, n_moderate, n_total: perCategory.size };
-}
-
-export default async function DashboardPage() {
-  // Don't bring down the page if any single source 500s.
-  const [risksResult, topPairsResult, topSignalsResult, mlStackResult] =
-    await Promise.allSettled([
-      loadCountryRisks(),
-      fetchTopPairs(),
-      fetchTopSignals(),
-      loadMlRecipeStack(),
-    ]);
-
-  const risks = risksResult.status === "fulfilled" ? risksResult.value : null;
-  const topPairs =
-    topPairsResult.status === "fulfilled"
-      ? topPairsResult.value
-      : { pairs: [], totalUniquePairs: 0 };
-  const topSignals =
-    topSignalsResult.status === "fulfilled" ? topSignalsResult.value : [];
-  const mlStack = mlStackResult.status === "fulfilled" ? mlStackResult.value : null;
-
-  const indexes = indexData as IndexEntry[];
-
-  // PR-4 (#752) — Top Convergences panel filters to LOCKed-only so it
-  // never surfaces a recipe whose detail page has been retired (would
-  // 308 to /precedents per #751).
-  const lockedRecipeSlugs = mlStack?.metadata.top_4_recipes ?? [];
-
-  // PR-vi Section 3 (Signals card) — server-side aggregation.
-  // #815 (2026-05-18): now filtered to LOCKed recipes so the count
-  // matches /signals after the 4-only graduation.
-  const signalsTierCounts = aggregateSignalsTierCounts(risks, lockedRecipeSlugs);
-
-  // PR-vi Section 3 (Precedents card) — counts.
-  const mlValidatedCount = mlStack?.metadata.top_4_recipes.length ?? 0;
-  // TOTAL_LOCKED imported from lib/site-stats.ts (SSOT). Was a magic
-  // constant here until #878; update there only.
+export default function DashboardV41Page() {
+  const recipes = getAllRecipes();
+  const heroCounts = buildHeroCountsV41(recipes);
+  const vintage = vintageStamp();
 
   return (
-    <BaseClient
-      risks={risks}
-      indexes={indexes}
-      topPairs={topPairs.pairs}
-      totalUniquePairs={topPairs.totalUniquePairs}
-      topSignals={topSignals}
-      taxonomy={taxonomyData}
-      // PR-vi Majles-verdict props
-      signalsHighCount={signalsTierCounts.n_high}
-      signalsModerateCount={signalsTierCounts.n_moderate}
-      signalsTotalCount={signalsTierCounts.n_total}
-      mlValidatedCount={mlValidatedCount}
-      totalLocked={TOTAL_LOCKED}
-      lockedRecipeSlugs={lockedRecipeSlugs}
-    />
+    <div
+      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "20px 24px 64px" }}>
+        {/* ── Top strip: mockup banner + vintage chip ─────────────────────── */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: "20px",
+            flexWrap: "wrap",
+            gap: "10px",
+          }}
+        >
+          <span
+            style={{
+              display: "inline-block",
+              padding: "5px 12px",
+              border: "1px solid var(--qgi-accent)",
+              color: "var(--qgi-accent)",
+              borderRadius: "4px",
+              fontSize: "11px",
+              letterSpacing: "1.5px",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            MOCKUP · /dashboard · local only
+          </span>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <HowToReadButton routeKey="dashboard-v4.1" />
+            <span
+              style={{
+                fontSize: "10px",
+                letterSpacing: "1px",
+                fontFamily: "ui-monospace, monospace",
+                color: "var(--qgi-text-dim)",
+                padding: "5px 10px",
+                background: "var(--qgi-surface)",
+                border: "1px solid var(--qgi-border)",
+                borderRadius: "4px",
+              }}
+            >
+              Data as of {vintage}
+            </span>
+          </div>
+        </div>
+
+        {/* ── Hero section: eyebrow + h1 + lineage + sub ──────────────────── */}
+        {/* Not wrapped in a panel per Talia's call — tiles self-border already */}
+        <section style={{ marginBottom: "32px" }}>
+          {/* Eyebrow */}
+          <div
+            style={{
+              color: "var(--qgi-accent)",
+              fontSize: "10px",
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              fontFamily: "ui-monospace, monospace",
+              marginBottom: "8px",
+            }}
+          >
+            THE PLATFORM
+          </div>
+
+          {/* h1 */}
+          <h1
+            style={{
+              fontSize: "34px",
+              fontWeight: 600,
+              lineHeight: 1.1,
+              margin: "0 0 10px",
+              maxWidth: "780px",
+            }}
+          >
+            QG Intelligence describes country risk
+            <br />
+            by comparing today against history.
+          </h1>
+
+          {/* Lineage caption — calm-slate-blue, monospace, 12px */}
+          <p
+            style={{
+              color: CALM_SLATE_BLUE,
+              fontSize: "12px",
+              lineHeight: 1.5,
+              fontFamily: "ui-monospace, monospace",
+              margin: "0 0 12px",
+              maxWidth: "780px",
+            }}
+          >
+            Out-of-sample discrimination ranks from validated recipes; every claim
+            resolves to a tracker entry, every correction is published.
+          </p>
+
+          {/* Sub */}
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "14px",
+              lineHeight: 1.55,
+              margin: 0,
+              maxWidth: "780px",
+            }}
+          >
+            Each recipe is a pre-registered shape of indicators that we test against a
+            curated record of past events. Recipes that hold up are deployed; recipes that
+            do not are kept in the log so corrections stay visible. Nothing on this site
+            forecasts a future event.
+          </p>
+        </section>
+
+        {/* ── Hero tiles — 6 program-state metrics ────────────────────────── */}
+        {/* No panel wrapper: Talia's call — tiles are self-bordered.          */}
+        <section data-tour="hero-tiles">
+          <DashboardHero tiles={HERO_TILES_V41(heroCounts)} />
+        </section>
+
+        {/* ── HighlightsBand (Worker B) ────────────────────────────────────── */}
+        <section data-tour="highlights-band">
+          <HighlightsBand highlights={HIGHLIGHTS} vintage={vintage} />
+        </section>
+
+        {/* ── SurfaceGrid (Worker B) ──────────────────────────────────────── */}
+        <div data-tour="surfaces-grid">
+          <SurfaceGrid cards={SURFACE_CARDS} />
+        </div>
+
+        {/* ── ActivityTimeline (Worker C) ─────────────────────────────────── */}
+        <div data-tour="activity-timeline">
+          <ActivityTimeline events={ACTIVITY_EVENTS} />
+        </div>
+
+        {/* ── Footer ──────────────────────────────────────────────────────── */}
+        <footer
+          style={{
+            marginTop: "48px",
+            paddingTop: "20px",
+            borderTop: "1px solid var(--qgi-border)",
+            fontSize: "11px",
+            color: "var(--qgi-text-dim)",
+            lineHeight: 1.6,
+            fontFamily: "ui-monospace, monospace",
+          }}
+        >
+          <div style={{ marginBottom: "4px" }}>
+            Dashboard V4.1 mockup · vintage {vintage} · {recipes.length} recipes across 8
+            L1 families · recipe data sourced from the public recipe tracker and platform
+            mock data.
+          </div>
+          <div>
+            Tile counts refresh after each validation run. Activity entries are
+            illustrative; recipe roster, statuses, and stats are real.
+          </div>
+        </footer>
+      </div>
+    </div>
   );
 }

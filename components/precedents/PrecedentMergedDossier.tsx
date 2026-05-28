@@ -522,7 +522,7 @@ function BreadcrumbNav({ recipeName }: { recipeName: string }) {
       </Link>
       <span className="mx-1">/</span>
       <Link
-        href="/precedents"
+        href="/recipes"
         className="hover:text-[var(--qgi-accent)] transition-colors"
         style={{ color: "var(--qgi-text-dim)" }}
       >

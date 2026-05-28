@@ -1,5 +1,5 @@
 /**
- * CountriesV41Hero — headline + lede + 4 stat tiles for /countries-v4.1.
+ * CountriesV41Hero — headline + lede + 4 stat tiles for /countries.
  *
  * Color (Talia consult 2026-05-28): the stat tiles are summary numbers, not
  * threat families, so they must NOT borrow family hues — that would imply a
@@ -244,7 +244,7 @@ export function CountriesV41Hero({
         <HeroTile
           accent={cotwAccent}
           Icon={Award}
-          href={`/countries-v4.1/${countryOfTheWeek.iso.toLowerCase()}` as Route}
+          href={`/countries/${countryOfTheWeek.iso.toLowerCase()}` as Route}
           dataTour="cotw-tile"
         >
           <div

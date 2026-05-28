@@ -3,7 +3,7 @@
  *
  * Single hero pair, 12-point sparkline of both countries' indicator-composite
  * movement overlaid, one-paragraph editorial gloss, "Open the pair" CTA into
- * /patterns-v4/{slug}.
+ * /patterns/{slug}.
  *
  * METHODOLOGY GUARD (Marcus, binding):
  * The featured_editorial field MUST be HISTORICAL-VOICE ONLY. This component
@@ -241,7 +241,7 @@ export function FeaturedPairPanel({ pair }: FeaturedPairPanelProps) {
 
       {/* CTA */}
       <Link
-        href={`/patterns-v4/${pairSlug(pair.pair_id)}` as Route}
+        href={`/patterns/${pairSlug(pair.pair_id)}` as Route}
         style={{
           display: "inline-flex",
           alignItems: "center",

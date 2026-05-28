@@ -568,7 +568,7 @@ export default function IndiaPakistanMirrorReportPage() {
               </Link>
               . The Civil War recipe page (83 countries ranked) is at{" "}
               <Link
-                href={"/precedents/civil_war_and_insurgency" as Route}
+                href={"/recipes/civil_war_and_insurgency" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >

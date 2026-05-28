@@ -1,5 +1,5 @@
 /**
- * Mock recipe data for the /precedents-v2 mockup pages.
+ * Mock recipe data for the /recipes mockup pages.
  *
  * Combines the real recipe-tracker.json shape (71 recipes, L1 family, status)
  * with mock per-recipe data for the 15 capabilities (indicators, definition,

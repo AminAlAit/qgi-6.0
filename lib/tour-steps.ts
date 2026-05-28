@@ -1,27 +1,22 @@
 import type { Step } from "react-joyride";
 
 /**
- * QGI in-product tour — 72 steps across 14 pages.
+ * QGI in-product tour — 60 steps across 12 canonical pages.
  *
- * Original 12 steps authored from the 5-persona convergence walkthrough
- * (Aisha/Karl/Mei-Lin/Helena/Roberto) on production qgintelligence.com,
- * 2026-05-18. See
- * `qgi-docs/internal/testing/tour-design/tour-spec-convergence-2026-05-18.md`
- * for the synthesis and per-persona walkthroughs.
+ * Original 12 legacy steps (for /dashboard V3, /precedents, /patterns V3,
+ * /signals, /countries V3) removed 2026-05-28 as part of the V4.1
+ * canonical promotion — those routes are deleted; the steps would target
+ * dead anchors. The 60 remaining V4.1 steps (authored by Hana
+ * Kawai-Bjornsson 2026-05-28) cover every visible panel on each of 9
+ * canonical surfaces. Arc: "Resemblance, not prediction."
  *
- * V4.1 extension: 32 steps (2026-05-28) + 27 panel-coverage steps
- * (2026-05-28) = 59 total steps; updated 2026-05-28 to 72 steps —
- * inline how-to-read panels removed, button step added last on every
- * page. Covers every visible panel on each of 9 surfaces. Authored by
- * Hana Kawai-Bjornsson. Arc: "Resemblance, not prediction."
+ * Every page has a mandatory **(a) Introduction** step anchored on the
+ * page's `h1`. Additional **(d) "What to be careful of"** steps anchor on
+ * methodology disclosure callouts. Some pages add **(b) Navigation** or
+ * **(c) Workflow** steps where 3+ personas converged on a high-leverage
+ * affordance.
  *
- * Every page has a mandatory **(a) Introduction** step anchored on the page's
- * `h1`. Additional **(d) "What to be careful of"** steps anchor on the
- * methodology disclosure callouts (now always-visible per PR-A). Some
- * pages add **(b) Navigation** or **(c) Workflow** steps where 3+ personas
- * converged on a high-leverage affordance.
- *
- * Total: 59 steps, page-resumed by the TourProvider — visiting another
+ * Total: 60 steps, page-resumed by the TourProvider — visiting another
  * page mid-tour picks up at that page's first remaining step.
  */
 
@@ -30,154 +25,25 @@ export interface QgiTourStep extends Step {
    *  segment the tour by route + resume on navigation. */
   page:
     | "/dashboard"
-    | "/precedents"
-    | "/patterns"
-    | "/signals"
+    | "/recipes"
+    | "/recipes/foreign_intervention"
     | "/countries"
-    | "/dashboard-v4.1"
-    | "/recipes-v4.1"
-    | "/recipes-v4.1/foreign_intervention"
-    | "/countries-v4.1"
-    | "/countries-v4.1/sdn"
+    | "/countries/sdn"
     | "/risk-board"
     | "/compound-risk"
     | "/nearest-analog"
     | "/recipe-tracker"
     | "/compare"
-    | "/patterns-v4"
-    | "/patterns-v4/paraguay-south_korea-1963";
+    | "/patterns"
+    | "/patterns/paraguay-south_korea-1963";
   /** Tour-design dimension covered (a/b/c/d) per the spec. */
   dimension: "a" | "b" | "c" | "d";
 }
 
 export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
-  // ─── /dashboard — 2 steps ───────────────────────────────────────────
+  // ─── /dashboard — 6 steps, ordered top-to-bottom ────────────────────
   {
     page: "/dashboard",
-    dimension: "a",
-    target: "h1",
-    title: "Dashboard — the synthesis layer",
-    content:
-      "The dashboard surfaces tier distribution, the watchlist, and current-cycle convergences from all four family surfaces. It does not produce its own metrics; it summarises. Check the cycle metadata before citing anything time-sensitive.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/dashboard",
-    dimension: "d",
-    target: 'aside[role="note"][aria-label="Methodology note"]',
-    title: "Read this before citing",
-    content:
-      "A HIGH count aggregates four methodologically distinct surfaces — country tier ≠ signal tier ≠ recipe tier ≠ pattern tier. Stale data in a fast-moving region is a citation liability.",
-    placement: "bottom",
-  },
-
-  // ─── /precedents — 3 steps ──────────────────────────────────────────
-  {
-    page: "/precedents",
-    dimension: "a",
-    target: "h1",
-    title: "Precedents — the certified evidence layer",
-    content:
-      "A precedent is a recipe — a recurring instability event type. 13 are in the locked catalogue; only 4 have completed ML adjudication. The table tier (STRONG/MODERATE) reflects ML-validated predictive strength of those 4 — not overall risk magnitude.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/precedents",
-    dimension: "d",
-    target: 'aside[role="note"][aria-label="How to read this"]',
-    title: "Only 4 of 13 are validated",
-    content:
-      "If you cite a recipe finding, check whether it's one of the four. The other 9 are locked but not adjudicated — citing them requires an explicit disclosure sentence. 'Not validated' ≠ 'no risk' — read it as 'evidence still under audit.'",
-    placement: "bottom",
-  },
-  {
-    page: "/precedents",
-    dimension: "b",
-    target: "table",
-    title: "Tier and Coverage columns",
-    content:
-      "TIER here (STRONG/MODERATE) is the ML evidence strength — NOT the same as HIGH/MODERATE/INDICATIVE on /countries. The COVERAGE column tells you whose history trained the model — '25% OECD' means ~53 OECD countries; check your country's region before citing.",
-    placement: "top",
-  },
-
-  // ─── /patterns — 3 steps (the highest-leverage tour) ────────────────
-  {
-    page: "/patterns",
-    dimension: "a",
-    target: "h1",
-    title: "Patterns — structural analogues",
-    content:
-      "A Pattern is a country pair whose indicator trajectories ran near-parallel over a multi-decade window. Paraguay→South Korea, 64 years, 91% correlation. Each row is a dated instance, not a unique pair. This is a structural analogue, not a forecast.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/patterns",
-    dimension: "d",
-    target: 'div[aria-label="Methodology disclosure"]',
-    title: "Six tier systems on one page",
-    content:
-      "This page runs 6 distinct tier/badge systems: Pattern strength (composite ranking, not a probability), Correlation tier (S/A/B/C), Window tier (S/M/L/XL-win), Evidence strength, Recipe Confidence Index, Country tier. Hover any badge before quoting any number.",
-    placement: "bottom",
-  },
-  {
-    page: "/patterns",
-    dimension: "c",
-    target: 'button[aria-pressed="false"]',
-    title: "Workflow: start with 'Currently firing'",
-    content:
-      "Hit a quick preset first — 'Currently firing' filters to patterns where today's signal activity matches the historical trajectory. Then search by your country in the COUNTRY facet, and sort by Correlation for the cleanest analogue.",
-    placement: "bottom",
-  },
-
-  // ─── /signals — 2 steps (domain-filter (b) was 2/5 convergence, deferred
-  //     as segment-targeted optional per the founder-locked SHIP threshold) ──
-  {
-    page: "/signals",
-    dimension: "a",
-    target: "h1",
-    title: "Signals — 67 risk categories",
-    content:
-      "Each row is a category and the maximum salience-z across all firing countries. Tier here is a σ-threshold rung (HIGH ≥ 2.5σ, MODERATE ≥ 1.0σ relative to the current-cycle panel) — not a probability, and not the same as country tier on /countries.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/signals",
-    dimension: "d",
-    target: 'div[aria-label="Methodology disclosure"]',
-    title: "σ-distance, not probability",
-    content:
-      "Tier values here use σ-distance from the panel baseline — not exceedance probabilities. Treat tier as a ranked ordinal screen, not a return-period estimate. Where 'Preview' badges appear (e.g., the Alignment column), those numbers are placeholders pending the next bake.",
-    placement: "bottom",
-  },
-
-  // ─── /countries — 2 steps (with optional 3rd) ───────────────────────
-  {
-    page: "/countries",
-    dimension: "a",
-    target: "h1",
-    title: "Countries — the in-scope roster",
-    content:
-      "QGI scopes 214 countries; the count actually scored each cycle varies as data coverage shifts. Unscored countries are not excluded, just data-sparse. Tiers (HIGH / MODERATE / INDICATIVE) reflect relative position in this cycle's panel. It is not a probability of a specific event in a specific year.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/countries",
-    dimension: "d",
-    target: '[role="note"][aria-label="What tier does not mean"]',
-    title: "What tier does not mean",
-    content:
-      "Single most important disclosure for citation use. Tier is a relative distributional rank — it does not imply a probability of loss, a return period, or a credit-event forecast. Pakistan at HIGH and Somalia at HIGH are not equiprobable risks; salience score and recipe count differentiate them.",
-    placement: "bottom",
-  },
-
-  // ─── /dashboard-v4.1 — 6 steps, ordered top-to-bottom ────────────────────
-  {
-    page: "/dashboard-v4.1",
     dimension: "a",
     target: "h1",
     title: "Start with the thesis",
@@ -187,7 +53,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/dashboard-v4.1",
+    page: "/dashboard",
     dimension: "b",
     target: '[data-tour="hero-tiles"]',
     title: "Six numbers that summarize the program",
@@ -196,7 +62,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/dashboard-v4.1",
+    page: "/dashboard",
     dimension: "c",
     target: '[data-tour="highlights-band"]',
     title: "Where today's signal is loudest",
@@ -205,7 +71,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/dashboard-v4.1",
+    page: "/dashboard",
     dimension: "b",
     target: '[data-tour="surfaces-grid"]',
     title: "Six pages, six lenses",
@@ -214,7 +80,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/dashboard-v4.1",
+    page: "/dashboard",
     dimension: "c",
     target: '[data-tour="activity-timeline"]',
     title: "Recent activity, in plain log form",
@@ -223,7 +89,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/dashboard-v4.1",
+    page: "/dashboard",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
@@ -232,9 +98,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /recipes-v4.1 — 3 steps ─────────────────────────────────────────────
+  // ─── /recipes — 3 steps ─────────────────────────────────────────────
   {
-    page: "/recipes-v4.1",
+    page: "/recipes",
     dimension: "a",
     target: "h1",
     title: "The catalog of patterns",
@@ -244,7 +110,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/recipes-v4.1",
+    page: "/recipes",
     dimension: "b",
     target: '[data-tour="family-section-A"] header',
     title: "Eight families, by event kind",
@@ -253,16 +119,16 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/recipes-v4.1",
+    page: "/recipes",
     dimension: "d",
-    target: 'a[href="/recipes-v4.1/foreign_intervention"]',
+    target: 'a[href="/recipes/foreign_intervention"]',
     title: "Pick one to see how deep it goes",
     content:
       "We will open foreign_intervention next. It is the demo recipe: it was withdrawn for re-evaluation after an audit found a coverage gap, and the page carries that note transparently. That is the methodology working as designed.",
     placement: "right",
   },
   {
-    page: "/recipes-v4.1",
+    page: "/recipes",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
@@ -271,14 +137,14 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /recipes-v4.1/foreign_intervention — 13 steps, top-to-bottom ────────
+  // ─── /recipes/foreign_intervention — 13 steps, top-to-bottom ────────
   // Reading arc: Header (h1 + demo disclosure) → Structure (Identity, Indicator
   // Set, Window) → Validation (Discrimination, Reliability, Calibration) →
   // Results (Countries, Score Distribution) → Deep-dive (Precedents, Pattern
   // Alignment). The demo-disclosure moves from closing beat to second step
   // because it visually sits in the header band, right under h1.
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "a",
     target: "h1",
     title: "One recipe, laid bare",
@@ -288,7 +154,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="demo-disclosure"]',
     title: "Why we still show the page",
@@ -297,7 +163,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "a",
     target: '[data-tour="identity-card-panel"]',
     title: "Identity, in one card",
@@ -306,7 +172,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "b",
     target: 'section[id="cap-2"]',
     title: "Indicator set: the recipe's ingredients",
@@ -315,7 +181,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "a",
     target: '[data-tour="window-panel"]',
     title: "How far back the shape looks",
@@ -324,7 +190,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="discrimination-panel"]',
     title: "How well the recipe separates",
@@ -333,7 +199,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="reliability-panel"]',
     title: "Does it hold up across passes",
@@ -342,7 +208,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="calibration-panel"]',
     title: "Calibration, separately tracked",
@@ -351,7 +217,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "right",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="countries-panel"]',
     title: "Today's resemblance, ranked",
@@ -360,7 +226,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="score-distribution-panel"]',
     title: "Where today's countries fall",
@@ -369,7 +235,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="precedents-timeline-panel"]',
     title: "The cases this recipe was trained on",
@@ -378,7 +244,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "c",
     target: '[data-tour="pattern-alignment-panel"]',
     title: "The shape, indicator by indicator",
@@ -387,7 +253,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/recipes-v4.1/foreign_intervention",
+    page: "/recipes/foreign_intervention",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
@@ -396,9 +262,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /countries-v4.1 — 5 steps, ordered top-to-bottom ────────────────────
+  // ─── /countries — 5 steps, ordered top-to-bottom ────────────────────
   {
-    page: "/countries-v4.1",
+    page: "/countries",
     dimension: "a",
     target: "h1",
     title: "The same data, pivoted",
@@ -408,7 +274,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/countries-v4.1",
+    page: "/countries",
     dimension: "c",
     target: '[data-tour="cotw-tile"]',
     title: "Country of the week",
@@ -417,7 +283,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "left",
   },
   {
-    page: "/countries-v4.1",
+    page: "/countries",
     dimension: "b",
     target: '[data-tour="atlas-filters"]',
     title: "Filter and sort the atlas",
@@ -426,7 +292,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/countries-v4.1",
+    page: "/countries",
     dimension: "c",
     target: '[data-tour="atlas-grid"]',
     title: "Every country, as a card",
@@ -435,7 +301,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1",
+    page: "/countries",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Same rules apply",
@@ -444,13 +310,13 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /countries-v4.1/sdn — 7 steps, ordered top-to-bottom ────────────────
+  // ─── /countries/sdn — 7 steps, ordered top-to-bottom ────────────────
   // Visual order on page: header (h1 + chips + lede) → Recipes in play →
   // Drivers (Why + What's moving) → Rank history → Analogs → Vintage sources
   // → how-to-read-button (last). The generate-report-button step was removed
   // (it is an upcoming, disabled feature; not tour-worthy yet).
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "a",
     target: "h1",
     title: "One country, in full",
@@ -460,7 +326,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "b",
     target: '[data-tour="recipes-in-play-panel"]',
     title: "Recipes in play, scored and chipped",
@@ -469,7 +335,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "c",
     target: '[data-tour="drivers-panels"]',
     title: "Why and what's moving",
@@ -478,7 +344,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "c",
     target: '[data-tour="rank-history-panel"]',
     title: "Where the country sits over time",
@@ -487,7 +353,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "c",
     target: '[data-tour="analogs-panel"]',
     title: "Closest historical rhymes",
@@ -496,7 +362,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "b",
     target: '[data-tour="vintage-sources-panel"]',
     title: "Provenance, in one place",
@@ -505,7 +371,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/countries-v4.1/sdn",
+    page: "/countries/sdn",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
@@ -822,9 +688,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /patterns-v4 — 6 steps, ordered top-to-bottom ───────────────────────
+  // ─── /patterns — 6 steps, ordered top-to-bottom ───────────────────────
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "a",
     target: "h1",
     title: "Two countries, same arc",
@@ -834,7 +700,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "b",
     target: '[data-tour="patterns-overview-tiles"]',
     title: "How big the catalogue is",
@@ -843,7 +709,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "c",
     target: '[data-tour="patterns-ranking-table"]',
     title: "The leaderboard, by pair strength",
@@ -852,7 +718,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "b",
     target: '[data-tour="patterns-family-browse"]',
     title: "Browse by event family",
@@ -861,7 +727,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "c",
     target: '[data-tour="patterns-country-browse"]',
     title: "Browse by country",
@@ -870,7 +736,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4",
+    page: "/patterns",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Four rules, one click",
@@ -879,9 +745,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /patterns-v4/paraguay-south_korea-1963 — 7 steps ────────────────────
+  // ─── /patterns/paraguay-south_korea-1963 — 7 steps ────────────────────
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "a",
     target: '[data-tour="pair-header"]',
     title: "A pair, not a leader and a follower",
@@ -891,7 +757,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "a",
     target: '[data-tour="pair-summary"]',
     title: "Where this pair sits",
@@ -900,7 +766,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "b",
     target: '[data-tour="pair-shape-overlay"]',
     title: "What the resemblance looked like",
@@ -909,7 +775,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "c",
     target: '[data-tour="pair-indicators"]',
     title: "What the resemblance was made of",
@@ -918,7 +784,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "c",
     target: '[data-tour="pair-decades"]',
     title: "The rhyme decade by decade",
@@ -927,7 +793,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "c",
     target: '[data-tour="pair-today"]',
     title: "Where each country is today",
@@ -936,7 +802,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/patterns-v4/paraguay-south_korea-1963",
+    page: "/patterns/paraguay-south_korea-1963",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Read the four rules",

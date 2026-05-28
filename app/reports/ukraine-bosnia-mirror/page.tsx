@@ -630,7 +630,7 @@ export default function UkraineBosniaMirrorReportPage() {
               </Link>
               . Recipe pages:{" "}
               <Link
-                href={"/precedents/bilateral_treaty" as Route}
+                href={"/recipes/bilateral_treaty" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >
@@ -638,7 +638,7 @@ export default function UkraineBosniaMirrorReportPage() {
               </Link>{" "}
               and{" "}
               <Link
-                href={"/precedents/multilateral_agreement" as Route}
+                href={"/recipes/multilateral_agreement" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * CountriesV41Filters — region pill row + sort selector for /countries-v4.1.
+ * CountriesV41Filters — region pill row + sort selector for /countries.
  *
  * Client component: controls write through to the URL via router.replace,
  * preserving the server-rendered card grouping. (Distinct from the v4
@@ -29,7 +29,7 @@ export function CountriesV41Filters({
     if (value === null || value === "") next.delete(key);
     else next.set(key, value);
     const qs = next.toString();
-    router.replace((qs ? `/countries-v4.1?${qs}` : "/countries-v4.1") as never);
+    router.replace((qs ? `/countries?${qs}` : "/countries") as never);
   }
 
   return (
