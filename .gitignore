@@ -35,6 +35,9 @@
 /data/te-sample-10/
 /data/te-wave-*/
 
+# Playwright clicky-clicky screenshots (large; regenerate as needed)
+/screenshots/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

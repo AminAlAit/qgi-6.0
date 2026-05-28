@@ -17,6 +17,8 @@ import Link from "next/link";
 import type { Route } from "next";
 import { ArrowUp, ArrowDown, Equal, Calendar } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import {
   BOARD_VINTAGE,
@@ -173,15 +175,21 @@ function MovementRow({
       <div style={{ minWidth: 0 }}>
         <div
           style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "6px",
             fontSize: "13px",
             fontWeight: 600,
             color: "var(--qgi-text)",
             marginBottom: "2px",
           }}
         >
-          {ev.country}{" "}
-          <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
-            on {recipeLabel}
+          <FlagImg emoji={flagFor(ev.country)} name={ev.country} width={16} radius={2} />
+          <span>
+            {ev.country}{" "}
+            <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
+              on {recipeLabel}
+            </span>
           </span>
         </div>
         <div

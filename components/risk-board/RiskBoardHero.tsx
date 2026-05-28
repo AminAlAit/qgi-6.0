@@ -10,6 +10,8 @@ import Link from "next/link";
 import type { Route } from "next";
 import { ArrowUp, ArrowDown, Minus } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import { getTopPairs, zoneFor, type BoardPair } from "@/lib/te-mock/risk-board-data";
 import { familyColor } from "@/lib/te-mock/l1-families";
@@ -172,15 +174,31 @@ function HeroRow({
           <div style={{ flex: 1, minWidth: 0 }}>
             <div
               style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "6px",
                 fontSize: "13px",
                 fontWeight: 600,
                 color: "var(--qgi-text)",
                 overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
+                minWidth: 0,
               }}
             >
-              {pair.country}
+              <FlagImg
+                emoji={flagFor(pair.country)}
+                name={pair.country}
+                width={16}
+                radius={2}
+              />
+              <span
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {pair.country}
+              </span>
             </div>
             <div
               style={{

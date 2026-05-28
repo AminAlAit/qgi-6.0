@@ -6,16 +6,13 @@ import { useEffect, useState } from "react";
 import type { Route } from "next";
 import {
   LayoutDashboard,
-  LayoutPanelTop,
-  ChefHat,
   ScrollText,
   Globe,
-  Globe2,
   Gauge,
   Layers,
   Columns2,
   Telescope,
-  Spline,
+  Waves,
   ListChecks,
 } from "lucide-react";
 
@@ -374,22 +371,13 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <IconBeaker />,
     items: [
       {
-        label: "Dashboard V4",
-        href: "/dashboard-v4" as Route,
-        badge: "PREVIEW",
-        icon: <LayoutDashboard size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
+        // Dashboard V4.1 — uses the original Dashboard V4 icon
+        // (LayoutDashboard) per founder pick 2026-05-28. The pre-V4.1
+        // Dashboard V4 entry is no longer listed in the sidebar.
         label: "Dashboard V4.1",
         href: "/dashboard-v4.1" as Route,
         badge: "PREVIEW",
-        icon: <LayoutPanelTop size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Recipes V4",
-        href: "/precedents-v2" as Route,
-        badge: "PREVIEW",
-        icon: <ChefHat size={14} strokeWidth={1.6} aria-hidden="true" />,
+        icon: <LayoutDashboard size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
         label: "Recipes V4.1",
@@ -398,19 +386,17 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
         icon: <ScrollText size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
-        label: "Countries V4",
-        href: "/countries-v4" as Route,
+        // Countries V4.1 — uses the original Countries V4 icon (Globe)
+        // per founder pick. The pre-V4.1 Countries V4 entry is dropped.
+        label: "Countries V4.1",
+        href: "/countries-v4.1" as Route,
         badge: "PREVIEW",
         icon: <Globe size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
-        label: "Countries V4.1",
-        href: "/countries-v4.1" as Route,
-        badge: "PREVIEW",
-        icon: <Globe2 size={14} strokeWidth={1.6} aria-hidden="true" />,
-      },
-      {
-        label: "Live Risk Board",
+        // 2026-05-28: renamed from "Live Risk Board" to "Risk Board" per
+        // founder pick. Gauge icon retained.
+        label: "Risk Board",
         href: "/risk-board" as Route,
         badge: "PREVIEW",
         icon: <Gauge size={14} strokeWidth={1.6} aria-hidden="true" />,
@@ -428,16 +414,21 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
         icon: <Columns2 size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
-        label: "Nearest-Analog",
+        // 2026-05-28: renamed from "Nearest-Analog" to "Nearest Analog"
+        // (removed the hyphen) per founder pick. Telescope icon retained.
+        label: "Nearest Analog",
         href: "/nearest-analog" as Route,
         badge: "PREVIEW",
         icon: <Telescope size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
+        // 2026-05-28: icon swapped from Spline (single arc) to Waves
+        // (parallel arcs) per founder pick — better evokes the "two
+        // countries' trajectories running in parallel" concept.
         label: "Patterns V4",
         href: "/patterns-v4" as Route,
         badge: "PREVIEW",
-        icon: <Spline size={14} strokeWidth={1.6} aria-hidden="true" />,
+        icon: <Waves size={14} strokeWidth={1.6} aria-hidden="true" />,
       },
       {
         label: "Recipe Tracker",
@@ -613,7 +604,13 @@ export function Sidebar() {
             style={{
               color: "var(--qgi-accent)",
               marginRight: "-0.25em",
-              fontFamily: "var(--font-qg-brand)",
+              // 2026-05-28 (founder pick): use Century Gothic Bold for the QG
+              // wordmark — matches the Gemini infographics. Fallback chain:
+              // Century Gothic (Windows native), URW Gothic (Linux), Avant
+              // Garde / Geometric Sans (macOS fallbacks), Sora (the
+              // previous web brand font), then generic sans.
+              fontFamily:
+                "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
               fontWeight: 700,
             }}
           >

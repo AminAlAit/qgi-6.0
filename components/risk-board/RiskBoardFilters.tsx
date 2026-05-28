@@ -22,6 +22,8 @@
 import { useMemo, useState } from "react";
 import { Search, X, Filter, RotateCcw } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { flagFor } from "@/lib/te-mock/country-flags";
 import {
   getRecipeRow,
   type BoardCell,
@@ -605,16 +607,32 @@ function HeatCell({
       >
         <div
           style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
             fontSize: "10.5px",
             color: "var(--qgi-text-dim)",
             fontWeight: 500,
             lineHeight: 1.2,
             overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
+            minWidth: 0,
           }}
         >
-          {cell.country}
+          <FlagImg
+            emoji={flagFor(cell.country)}
+            name={cell.country}
+            width={14}
+            radius={2}
+          />
+          <span
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {cell.country}
+          </span>
         </div>
         <span
           style={{
@@ -667,16 +685,32 @@ function HeatCell({
       >
         <div
           style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
             fontSize: "10.5px",
             color: "var(--qgi-text)",
             fontWeight: isQueryMatch ? 700 : 500,
             lineHeight: 1.2,
             overflow: "hidden",
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
+            minWidth: 0,
           }}
         >
-          {cell.country}
+          <FlagImg
+            emoji={flagFor(cell.country)}
+            name={cell.country}
+            width={14}
+            radius={2}
+          />
+          <span
+            style={{
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {cell.country}
+          </span>
         </div>
         <div
           style={{
