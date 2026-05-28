@@ -11,6 +11,7 @@
 import { Sparkles } from "lucide-react";
 import { FlagImg } from "./FlagImg";
 import { FamilyChip } from "./FamilyChip";
+import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { familiesByBestScore } from "@/lib/te-mock/country-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
@@ -191,18 +192,35 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
           {lede}
         </p>
 
-        {/* Family chip row — dominant emphasized */}
+        {/* Family chip row — dominant emphasized.
+            Rule 2: country-scoped surface. Each chip represents a family but
+            uses the top recipe in that family as the glyph icon (iconNode
+            prop), making the chip iconographic without becoming a per-recipe
+            chip. Label is preserved after the icon. */}
         {fams.length > 0 && (
           <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
-            {fams.map((f, i) => (
-              <FamilyChip
-                key={f.id}
-                id={f.id}
-                label={f.label}
-                color={f.color}
-                emphasis={i === 0}
-              />
-            ))}
+            {fams.map((f, i) => {
+              // Find the top-scoring recipe in this family for the country.
+              const topRecipeInFamily = country.top_recipes.find((r) => r.l1_id === f.id);
+              const iconNode = topRecipeInFamily ? (
+                <RecipeIcon
+                  recipeId={topRecipeInFamily.recipe_id}
+                  size={12}
+                  strokeWidth={1.8}
+                  aria-hidden="true"
+                />
+              ) : undefined;
+              return (
+                <FamilyChip
+                  key={f.id}
+                  id={f.id}
+                  label={f.label}
+                  color={f.color}
+                  emphasis={i === 0}
+                  iconNode={iconNode}
+                />
+              );
+            })}
           </div>
         )}
       </div>

@@ -17,7 +17,7 @@
 import Link from "next/link";
 import type { Route } from "next";
 import { PanelShell } from "./PanelShell";
-import { FamilyChip } from "./FamilyChip";
+import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { statusLabel, type StatusTone } from "@/lib/te-mock/country-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
@@ -75,16 +75,28 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 borderBottom: "1px solid rgba(255,255,255,0.04)",
               }}
             >
-              {/* Family dot + glyph + label */}
+              {/* Recipe icon + label (Rule 1: chip is per-recipe, use the recipe's icon) */}
               <div
                 style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}
               >
-                <FamilyChip
-                  id={r.l1_id}
-                  label={r.l1_label}
-                  color={color}
-                  showLabel={false}
-                />
+                <span
+                  title={`${r.label} (${r.l1_id} · ${r.l1_label})`}
+                  aria-label={`${r.label}, ${r.l1_label} family`}
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "22px",
+                    height: "22px",
+                    border: `1px solid ${color}99`,
+                    borderRadius: "3px",
+                    color,
+                    background: `${color}14`,
+                    flexShrink: 0,
+                  }}
+                >
+                  <RecipeIcon recipeId={r.recipe_id} size={14} strokeWidth={1.8} />
+                </span>
                 <span
                   style={{
                     fontSize: "13px",
