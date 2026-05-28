@@ -12,7 +12,15 @@
  * server→client edge.
  */
 
-import { Children, useState, type ReactNode } from "react";
+import {
+  Children,
+  cloneElement,
+  isValidElement,
+  useId,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { PanelBase } from "@/components/dashboard-v4-1/PanelBase";
 
@@ -34,16 +42,31 @@ export function CollapsibleRows({
   children,
 }: CollapsibleRowsProps) {
   const [expanded, setExpanded] = useState(false);
+  const regionId = useId();
   const rows = Children.toArray(children);
   const total = rows.length;
-  const visible = expanded ? rows : rows.slice(0, collapsedCount);
+  const sliced = expanded ? rows : rows.slice(0, collapsedCount);
+  // Inject isLast=true into the last visible child so the bottom-border
+  // suppression keys off what is actually shown, not the underlying array
+  // index. The row component accepts `isLast?: boolean` and ignores any
+  // extra props if it does not declare them.
+  const visible = sliced.map((child, i) => {
+    if (i === sliced.length - 1 && isValidElement(child)) {
+      const el = child as ReactElement<{ isLast?: boolean }>;
+      return cloneElement(el, { isLast: true });
+    }
+    return child;
+  });
   const canExpand = total > collapsedCount;
 
   const expandButton = canExpand ? (
     <button
       type="button"
-      aria-label={expanded ? "Collapse activity list" : "Show all activity entries"}
+      aria-label={
+        expanded ? `Collapse to ${collapsedCount} entries` : `Show all ${total} entries`
+      }
       aria-expanded={expanded}
+      aria-controls={regionId}
       title={expanded ? "Collapse" : "Show all"}
       onClick={() => setExpanded((v) => !v)}
       style={{
@@ -78,6 +101,7 @@ export function CollapsibleRows({
       rightSlot={expandButton}
     >
       <div
+        id={regionId}
         style={{
           border: "1px solid var(--qgi-border)",
           borderRadius: "6px",
@@ -90,7 +114,13 @@ export function CollapsibleRows({
       {canExpand && (
         <button
           type="button"
-          aria-label={expanded ? "Collapse activity list" : "Show all activity entries"}
+          aria-label={
+            expanded
+              ? `Collapse to ${collapsedCount} entries`
+              : `Show all ${total} entries`
+          }
+          aria-expanded={expanded}
+          aria-controls={regionId}
           onClick={() => setExpanded((v) => !v)}
           style={{
             marginTop: "8px",

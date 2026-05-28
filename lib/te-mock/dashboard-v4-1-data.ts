@@ -29,19 +29,18 @@ import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/r
 import { IN_FLIGHT } from "@/lib/te-mock/recipe-tracker-extra";
 import type { HeroTile } from "@/components/dashboard-v4-1/DashboardHero";
 
-// Re-export V4 data shapes for Worker B + C (unchanged underlying data).
-export {
+// Re-export V4 data shapes for the V4.1 page. HIGHLIGHTS and ACTIVITY_EVENTS
+// flow through unchanged; SURFACE_CARDS gets the V4.1 trim (ribbon stripped,
+// UI-architectural metrics cleared on the 3 affected cards).
+import {
   HIGHLIGHTS,
-  SURFACE_CARDS,
+  SURFACE_CARDS as _SURFACE_CARDS_V4,
   ACTIVITY_EVENTS,
 } from "@/lib/te-mock/dashboard-v4-data";
+import { toV41SurfaceCardData } from "@/components/dashboard-v4-1/SurfaceCard";
 
-// Also re-export types that Worker B + C need from their respective components'
-// perspective. They import directly from dashboard-v4 components anyway, but
-// surfacing these from the data file avoids any future coupling ambiguity.
-export type { Highlight } from "@/components/dashboard-v4/HighlightsBand";
-export type { SurfaceCardData } from "@/components/dashboard-v4/SurfaceCard";
-export type { ActivityEvent } from "@/components/dashboard-v4/ActivityTimeline";
+export { HIGHLIGHTS, ACTIVITY_EVENTS };
+export const SURFACE_CARDS = _SURFACE_CARDS_V4.map(toV41SurfaceCardData);
 
 // ─── Hero counts ────────────────────────────────────────────────────────────
 
