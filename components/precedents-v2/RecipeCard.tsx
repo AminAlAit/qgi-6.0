@@ -4,6 +4,7 @@ import { iconForRecipe } from "@/lib/te-mock/icons";
 import { vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { STATUS_META } from "./StatusChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
+import { statusLabel } from "@/lib/te-mock/country-families";
 
 const L1_SHORT: Record<string, string> = {
   A: "Polit",
@@ -17,24 +18,57 @@ const L1_SHORT: Record<string, string> = {
 };
 
 /**
+ * In v4.1 strategy, map the StatusTone to a chip color that avoids banned
+ * internal palette labels. Deployed=green / failed=amber / neutral=slate.
+ */
+function toneColor(tone: "deployed" | "neutral" | "failed"): string {
+  if (tone === "deployed") return "#3FBF8F";
+  if (tone === "failed") return "#E68F29";
+  return "#7A8FA0";
+}
+
+/**
+ * Remap internal verdict strings to user-facing labels for the v4.1 chip
+ * row. Returns null when no chip should be rendered.
+ */
+function verdictLabel(value: string | undefined | null): string | null {
+  if (!value) return null;
+  const lower = value.toLowerCase();
+  if (lower.includes("hard") && (lower.includes("fail") || lower.includes("_fail")))
+    return "Did not hold up";
+  if (lower.includes("loco")) return null; // hide raw LOCO chip; pill handles status
+  return null;
+}
+
+/**
  * RecipeCard
  *
  * `basePath` defaults to /precedents-v2 (V4 gallery). The V4.1 gallery
- * passes "/recipes-v4.1" so card clicks land on V4.1 detail pages
- * (Sonnet review P0-2, 2026-05-27).
+ * passes "/recipes-v4.1" so card clicks land on V4.1 detail pages.
+ *
+ * `labelStrategy` defaults to "legacy" (byte-identical V4 behavior). Pass
+ * "v4.1" for the polished gallery to emit plain-language labels via
+ * statusLabel() and suppress banned vocab chips (HARD-FAIL, Legacy ML-1,
+ * LOCO, Walk in flight). P0-3 fix 2026-05-28.
  */
 export function RecipeCard({
   recipe,
   basePath = "/precedents-v2",
+  labelStrategy = "legacy",
 }: {
   recipe: TrackerRecipe;
   basePath?: string;
+  labelStrategy?: "legacy" | "v4.1";
 }) {
   const statusMeta = STATUS_META[recipe.status];
   const isQueued = recipe.status === "queued";
   const isWalked = recipe.status === "walked_no_graduation";
   const isLegacy = recipe.status === "live_legacy";
   const isFmlFail = recipe.recipe_id === "civil_war_and_insurgency";
+
+  // V4.1 derivations (only computed when strategy === "v4.1", harmless otherwise)
+  const v41Label = statusLabel(recipe.status);
+  const v41Color = toneColor(v41Label.tone);
 
   const vintage = isQueued
     ? "Vintage: awaiting first walk"
@@ -167,26 +201,49 @@ export function RecipeCard({
             minHeight: "22px",
           }}
         >
-          {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
-          {isWalked && (
+          {labelStrategy === "v4.1" ? (
+            // V4.1 strategy: no banned vocab chips; only safe neutral chips
             <>
-              <span style={chipStyle("muted")}>
-                LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
-              </span>
-              <span style={chipStyle("fail")}>HARD-FAIL</span>
-              <span style={chipStyle("muted")}>
-                {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"} ind
-              </span>
+              {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
+              {isWalked && (
+                <span style={chipStyle("muted")}>
+                  Score sep {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
+                </span>
+              )}
+              {isWalked && (
+                <span style={chipStyle("muted")}>
+                  {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
+                  ind
+                </span>
+              )}
+              {/* in_progress and live_legacy: status pill in the footer handles it */}
             </>
-          )}
-          {isLegacy && (
+          ) : (
+            // Legacy strategy: byte-identical to the original behavior
             <>
-              <span style={chipStyle("legacy")}>Legacy ML-1</span>
-              {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
+              {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
+              {isWalked && (
+                <>
+                  <span style={chipStyle("muted")}>
+                    LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
+                  </span>
+                  <span style={chipStyle("fail")}>HARD-FAIL</span>
+                  <span style={chipStyle("muted")}>
+                    {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
+                    ind
+                  </span>
+                </>
+              )}
+              {isLegacy && (
+                <>
+                  <span style={chipStyle("legacy")}>Legacy ML-1</span>
+                  {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
+                </>
+              )}
+              {recipe.status === "in_progress" && (
+                <span style={chipStyle("purple")}>Walk in flight</span>
+              )}
             </>
-          )}
-          {recipe.status === "in_progress" && (
-            <span style={chipStyle("purple")}>Walk in flight</span>
           )}
         </div>
 
@@ -217,20 +274,37 @@ export function RecipeCard({
           >
             {vintage}
           </span>
-          <span
-            style={{
-              fontSize: "9.5px",
-              padding: "2px 7px",
-              borderRadius: "10px",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-              background: statusMeta.bgAlpha,
-              color: statusMeta.color,
-              border: `1px solid ${statusMeta.color}`,
-            }}
-          >
-            {statusMeta.label}
-          </span>
+          {labelStrategy === "v4.1" ? (
+            <span
+              style={{
+                fontSize: "9.5px",
+                padding: "2px 7px",
+                borderRadius: "10px",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.3px",
+                background: `${v41Color}26`,
+                color: v41Color,
+                border: `1px solid ${v41Color}`,
+              }}
+            >
+              {v41Label.label}
+            </span>
+          ) : (
+            <span
+              style={{
+                fontSize: "9.5px",
+                padding: "2px 7px",
+                borderRadius: "10px",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.3px",
+                background: statusMeta.bgAlpha,
+                color: statusMeta.color,
+                border: `1px solid ${statusMeta.color}`,
+              }}
+            >
+              {statusMeta.label}
+            </span>
+          )}
         </div>
       </article>
     </Link>

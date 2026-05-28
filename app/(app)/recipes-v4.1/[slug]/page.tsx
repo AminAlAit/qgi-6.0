@@ -14,6 +14,7 @@ import {
   getFallbackExtras,
   getCountriesFull,
 } from "@/lib/te-mock/recipe-v4-1-mock";
+import { statusLabel } from "@/lib/te-mock/country-families";
 import { getShapeData } from "@/lib/te-mock/recipe-shape-mock";
 import {
   getCorpusEvents,
@@ -22,7 +23,9 @@ import {
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
-import { StatusChip, STATUS_META } from "@/components/precedents-v2/StatusChip";
+// StatusChip/STATUS_META replaced by v41StatusChip inline with statusLabel()
+// for V4.1 (no banned vocab — "Legacy ML-1", "Walked, not graduated", etc.).
+import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
 import {
   IndicatorSetPanel,
   WindowPanel,
@@ -76,7 +79,9 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   const demo = isDemoGraduated(recipe);
   const effectiveStatus = demo ? "graduated" : recipe.status;
   const showResults = effectiveStatus === "graduated";
-  const familyColor = recipe.l1_color;
+  // Use familyColorFn to apply the F-Diplomacy override (#9F7AEA → #6C77E8)
+  // and any future family re-hues, rather than reading recipe.l1_color raw.
+  const familyColor = familyColorFn(recipe.l1_id, recipe.l1_color);
   // Only recipes with a curated trajectory have a deep-dive page; gate the
   // panel's "Open the full trajectory" button so it never dead-links.
   const hasTrajectory = !!getPattern(slug);
@@ -100,7 +105,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       }}
     >
       <strong style={{ color: familyColor }}>Demo render.</strong> Real status:{" "}
-      <strong>{STATUS_META[recipe.status].label.toLowerCase()}</strong>. Graduation
+      <strong>{statusLabel(recipe.status).label.toLowerCase()}</strong>. Graduation
       withdrawn on 2026-05-25 after a sample-coverage error was found during review.
       Re-evaluation in progress. Rendered as graduated here so you can see what a
       populated page looks like. Up-to-date status lives on{" "}
@@ -129,10 +134,46 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           aucDrop: 0,
         }));
 
+  // Spread recipe with the resolved familyColor so PageLayout's three
+  // recipe.l1_color reads (breadcrumb, icon border, icon color) all use the
+  // override rather than the raw tracker value.
+  const recipeWithColor = { ...recipe, l1_color: familyColor };
+
+  // V4.1 uses plain-language status labels (statusLabel) rather than the
+  // banned STATUS_META vocab ("Legacy ML-1", "Walked, not graduated", etc.).
+  const v41StatusLabel = statusLabel(effectiveStatus);
+  const v41StatusColor =
+    v41StatusLabel.tone === "deployed"
+      ? "#3FBF8F"
+      : v41StatusLabel.tone === "failed"
+        ? "#E68F29"
+        : "#7A8FA0";
+  const v41StatusChip = (
+    <span
+      style={{
+        padding: "5px 12px",
+        fontSize: "12px",
+        border: `1px solid ${v41StatusColor}`,
+        color: v41StatusColor,
+        backgroundColor: `${v41StatusColor}26`,
+        borderRadius: "4px",
+        letterSpacing: "0.3px",
+        fontFamily: "ui-monospace, monospace",
+        fontWeight: 600,
+        display: "inline-flex",
+        alignItems: "center",
+        gap: "5px",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {v41StatusLabel.label}
+    </span>
+  );
+
   return (
     <PageLayout
-      recipe={recipe}
-      statusChip={<StatusChip status={effectiveStatus} size="md" />}
+      recipe={recipeWithColor}
+      statusChip={v41StatusChip}
       subtitle={`${enrichedIndicators.length} indicators · ${mock.window}y window`}
       definition={mock.definition}
       demoDisclosure={demoDisclosure}

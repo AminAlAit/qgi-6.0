@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { RecipeCard } from "@/components/precedents-v2/RecipeCard";
+import { familyColor } from "@/lib/te-mock/l1-families";
 
 export const metadata: Metadata = {
   title: "Recipes V4.1 (mockup) · QG Intelligence",
   description:
-    "Recipes V4.1 gallery — dashboard panel grid + L1-color accent + tooltip-based honesty. Local-only, not for production.",
+    "Recipes V4.1 gallery: dashboard panel grid, L1-color accent, tooltip-based honesty. Local-only, not for production.",
   robots: { index: false, follow: false },
 };
 
@@ -119,7 +120,7 @@ export default function RecipesV41GalleryPage() {
           const rs = groups[l1Id];
           if (!rs?.length) return null;
           const l1Label = rs[0].l1_label;
-          const l1Color = rs[0].l1_color;
+          const l1Color = familyColor(rs[0].l1_id, rs[0].l1_color);
           return (
             <section key={l1Id} style={{ marginTop: "32px" }}>
               <header
@@ -161,9 +162,24 @@ export default function RecipesV41GalleryPage() {
                   gap: "14px",
                 }}
               >
-                {rs.map((r) => (
-                  <RecipeCard key={r.recipe_id} recipe={r} basePath="/recipes-v4.1" />
-                ))}
+                {rs.map((r) => {
+                  // Apply the family-color display override (F-Diplomacy
+                  // #9F7AEA → #6C77E8) before handing the recipe to the card,
+                  // which renders chip border / icon tint / tier-ribbon from
+                  // recipe.l1_color directly.
+                  const recipeForCard = {
+                    ...r,
+                    l1_color: familyColor(r.l1_id, r.l1_color),
+                  };
+                  return (
+                    <RecipeCard
+                      key={r.recipe_id}
+                      recipe={recipeForCard}
+                      basePath="/recipes-v4.1"
+                      labelStrategy="v4.1"
+                    />
+                  );
+                })}
               </div>
             </section>
           );
