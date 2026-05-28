@@ -53,7 +53,7 @@ def fake_inner(monkeypatch):
     # compute it inside build_X_y (which sees trial_set) and stash it.
     _LAST = {"auc": 0.5}
 
-    def fake_build_X_y_with_auc(samples, trial_set, win, panels):
+    def fake_build_X_y_with_auc(samples, trial_set, win, panels, feat_cache=None):
         val = sum(_VALUES.get(ind, 0.0) for ind in trial_set)
         _LAST["auc"] = 0.5 + val + 1e-4 * win  # larger window → tiny tiebreak win
         return fake_build_X_y(samples, trial_set, win, panels)

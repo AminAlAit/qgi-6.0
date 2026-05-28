@@ -32,7 +32,7 @@ def fake_inner(monkeypatch):
     monkeypatch.setattr(drv, "WINDOW_GRID", [5, 10], raising=True)
     ctrl = {"values": {}}
 
-    def fake_build_X_y(samples, trial_set, win, panels):
+    def fake_build_X_y(samples, trial_set, win, panels, feat_cache=None):
         auc = 0.5 + sum(ctrl["values"].get(i, 0.0) for i in trial_set) + 1e-4 * win
         X = np.full((40, 1), auc, dtype=float)   # AUC carried in the data, not a closure
         y = np.array([0, 1] * 20)
