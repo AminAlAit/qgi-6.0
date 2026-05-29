@@ -148,3 +148,112 @@ def test_country_movement_12y_single_point_zscore_change_is_None():
     out = sc.country_movement_12y("Alpha", panels, ["ind_a"])
     assert len(out[0]["trajectory_12q"]) == 1
     assert out[0]["z_score_change"] is None
+
+
+# ---------- build_today_X ---------------------------------------------------
+
+def test_build_today_X_year_fallback_keeps_country_at_earlier_year(monkeypatch):
+    """When `extract_features_for_indicator` returns None at the country's most-recent
+    year (insufficient window history), build_today_X must back off year-by-year up
+    to 5 years and keep the country at the first year where extraction succeeds.
+
+    Smoke test for the fallback loop in build_today_X (lines 217–231 of
+    score_countries.py). Sonnet review follow-up: the loop was previously preceded
+    by a 5-iteration no-op (deleted in 196c0b1) and is now the sole logic — pin its
+    behaviour explicitly."""
+    import pandas as pd
+
+    selected = ["ind_a", "ind_b"]
+    window = 12
+    # Both countries appear in both panels with years 2020-2024.
+    panels = {
+        ind: pd.DataFrame({
+            "country": ["Alpha"] * 5 + ["Beta"] * 5,
+            "year": list(range(2020, 2025)) * 2,
+            "value": [1.0, 2.0, 3.0, 4.0, 5.0] * 2,
+        })
+        for ind in selected
+    }
+
+    # Monkeypatch `drv.extract_features_for_indicator` (which build_today_X calls)
+    # to simulate: Alpha succeeds at year 2024; Beta fails at 2024+2023, succeeds at 2022.
+    def fake_extract(panel, country, year, win):
+        if country == "Alpha":
+            return np.ones(8)
+        if country == "Beta":
+            if year >= 2023:
+                return None
+            return np.full(8, 2.0)
+        return None
+
+    monkeypatch.setattr(sc.drv, "extract_features_for_indicator", fake_extract)
+
+    X, keep_c, keep_y = sc.build_today_X(selected, panels, window)
+    assert sorted(keep_c) == ["Alpha", "Beta"]
+    # Order should be alphabetical (set.intersection + sorted), so Alpha first.
+    alpha_idx = keep_c.index("Alpha")
+    beta_idx = keep_c.index("Beta")
+    assert keep_y[alpha_idx] == 2024  # no fallback needed
+    assert keep_y[beta_idx] == 2022   # 2-year fallback
+    # X shape: (2 countries, 2 indicators × 8 features = 16)
+    assert X.shape == (2, 16)
+    # Alpha's row is all-ones (both indicators × 8 features × 1.0)
+    assert np.allclose(X[alpha_idx], 1.0)
+    # Beta's row is all-twos
+    assert np.allclose(X[beta_idx], 2.0)
+
+
+def test_build_today_X_drops_country_when_all_5_years_fail(monkeypatch):
+    """If extract fails at year and all 4 prior years, drop the country."""
+    import pandas as pd
+
+    selected = ["ind_a"]
+    window = 12
+    panels = {
+        "ind_a": pd.DataFrame({
+            "country": ["Alpha"] * 5 + ["Beta"] * 5,
+            "year": list(range(2020, 2025)) * 2,
+            "value": [1.0, 2.0, 3.0, 4.0, 5.0] * 2,
+        })
+    }
+
+    def fake_extract(panel, country, year, win):
+        if country == "Alpha":
+            return np.ones(8)
+        return None  # Beta always fails — all 5 fallback years exhausted
+
+    monkeypatch.setattr(sc.drv, "extract_features_for_indicator", fake_extract)
+
+    X, keep_c, keep_y = sc.build_today_X(selected, panels, window)
+    assert keep_c == ["Alpha"]
+    assert keep_y == [2024]
+    assert X.shape == (1, 8)
+
+
+def test_build_today_X_drops_country_missing_from_a_required_panel():
+    """A country present in only some panels is dropped (set.intersection covers this)."""
+    import pandas as pd
+
+    selected = ["ind_a", "ind_b"]
+    panels = {
+        "ind_a": pd.DataFrame({"country": ["Alpha", "Beta"], "year": [2024, 2024], "value": [1.0, 2.0]}),
+        "ind_b": pd.DataFrame({"country": ["Alpha"], "year": [2024], "value": [3.0]}),  # Beta absent
+    }
+    X, keep_c, keep_y = sc.build_today_X(selected, panels, window=12)
+    # Beta is dropped (missing from ind_b) before extraction is even attempted.
+    assert "Beta" not in keep_c
+
+
+def test_build_today_X_empty_intersection_returns_empty():
+    """No country appears in all panels → empty result, not a crash."""
+    import pandas as pd
+
+    selected = ["ind_a", "ind_b"]
+    panels = {
+        "ind_a": pd.DataFrame({"country": ["Alpha"], "year": [2024], "value": [1.0]}),
+        "ind_b": pd.DataFrame({"country": ["Beta"],  "year": [2024], "value": [2.0]}),
+    }
+    X, keep_c, keep_y = sc.build_today_X(selected, panels, window=12)
+    assert X.shape == (0, 16)  # 2 indicators × 8 = 16-col empty matrix
+    assert keep_c == []
+    assert keep_y == []
