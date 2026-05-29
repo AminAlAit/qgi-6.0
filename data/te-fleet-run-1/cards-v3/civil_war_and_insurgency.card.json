@@ -1,0 +1,506 @@
+{
+  "recipe_id": "civil_war_and_insurgency",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "prior_version",
+  "family_label": "Economic Stress",
+  "description_compelling": "An organized armed group challenges the state for territory or control, producing sustained combat and mass displacement. Years out, you see regulatory-quality scores, ethnic-power-balance measures, and per-capita-growth metrics drift downward together. Recurrent in weak-state belts: the Sahel, the Horn, parts of South and Southeast Asia.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6881551116333725,
+    "ci95_lo": 0.6522436770986563,
+    "ci95_hi": 0.7215702575463886,
+    "ci80_lo": 0.6644839880197739,
+    "ci80_hi": 0.710832857896207,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2x_clpriv",
+      "MS.MIL.XPND.GD.ZS",
+      "v2x_rule",
+      "v2pepwrort"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2x_clpriv",
+        "name": "Private Civil Liberties Index (0-1)"
+      },
+      {
+        "code": "MS.MIL.XPND.GD.ZS",
+        "name": null
+      },
+      {
+        "code": "v2x_rule",
+        "name": "Rule of Law Index (0-1)"
+      },
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)"
+      }
+    ],
+    "chosen_window": 12,
+    "final_global_auc": 0.6881551116333725,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2x_clpriv",
+        "window": 25,
+        "auc": 0.6236560567827999,
+        "lift_over_previous": 0.1236560567827999,
+        "selected_after": [
+          "v2x_clpriv"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "MS.MIL.XPND.GD.ZS",
+        "window": 12,
+        "auc": 0.6490146046667786,
+        "lift_over_previous": 0.025358547883978733,
+        "selected_after": [
+          "v2x_clpriv",
+          "MS.MIL.XPND.GD.ZS"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2x_rule",
+        "window": 12,
+        "auc": 0.6746617424878294,
+        "lift_over_previous": 0.02564713782105077,
+        "selected_after": [
+          "v2x_clpriv",
+          "MS.MIL.XPND.GD.ZS",
+          "v2x_rule"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2pepwrort",
+        "window": 12,
+        "auc": 0.6881551116333725,
+        "lift_over_previous": 0.01349336914554311,
+        "selected_after": [
+          "v2x_clpriv",
+          "MS.MIL.XPND.GD.ZS",
+          "v2x_rule",
+          "v2pepwrort"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2pepwrsoc",
+        "window": 12,
+        "auc": 0.6870438140003358,
+        "lift_over_previous": -0.0011112976330367452,
+        "selected_after": [
+          "v2x_clpriv",
+          "MS.MIL.XPND.GD.ZS",
+          "v2x_rule",
+          "v2pepwrort",
+          "v2pepwrsoc"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 511,
+    "n_pos_survive": 322,
+    "n_neg_total": 1533,
+    "n_neg_survive": 925,
+    "pos_coverage": 0.6301369863013698,
+    "neg_coverage": 0.6033920417482062,
+    "n_countries_survive": 83,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 733,
+      "loco_auc": 0.6816473279947703,
+      "ece": 0.12268812031361896,
+      "ece_ci95_lo": 0.097951576722364,
+      "ece_ci95_hi": 0.15734268277584945,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 160,
+          "mean_predicted": 0.056275993498275056,
+          "mean_actual": 0.10625
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 130,
+          "mean_predicted": 0.1460037219982881,
+          "mean_actual": 0.23076923076923078
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 92,
+          "mean_predicted": 0.24318088105191354,
+          "mean_actual": 0.2826086956521739
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 75,
+          "mean_predicted": 0.3487953921159109,
+          "mean_actual": 0.29333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 57,
+          "mean_predicted": 0.4451391623731245,
+          "mean_actual": 0.40350877192982454
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 64,
+          "mean_predicted": 0.551597892306745,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 56,
+          "mean_predicted": 0.6529399710042136,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 45,
+          "mean_predicted": 0.7472389711274041,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 29,
+          "mean_predicted": 0.8471295751374344,
+          "mean_actual": 0.5517241379310345
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 25,
+          "mean_predicted": 0.9478269815444946,
+          "mean_actual": 0.64
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6388510959948623,
+      "loco_auc_ci95_hi": 0.721553715610642
+    },
+    "mid-tier": {
+      "n": 284,
+      "loco_auc": 0.6529088050314465,
+      "ece": 0.08992854426500166,
+      "ece_ci95_lo": 0.0691588030641277,
+      "ece_ci95_hi": 0.15098481884195047,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 122,
+          "mean_predicted": 0.048018601110403535,
+          "mean_actual": 0.18032786885245902
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 71,
+          "mean_predicted": 0.14484699532179765,
+          "mean_actual": 0.15492957746478872
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 31,
+          "mean_predicted": 0.24647650891734707,
+          "mean_actual": 0.2903225806451613
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.33645474910736084,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 15,
+          "mean_predicted": 0.4308497448762258,
+          "mean_actual": 0.4666666666666667
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 12,
+          "mean_predicted": 0.5484959085782369,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.6511174223639749,
+          "mean_actual": 0.6363636363636364
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.7557109991709391,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8352305591106415,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 4,
+          "mean_predicted": 0.9327387809753418,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.559145473216806,
+      "loco_auc_ci95_hi": 0.7268869213551303
+    },
+    "stable-democracy": {
+      "n": 212,
+      "loco_auc": 0.6223489574050971,
+      "ece": 0.06637931394803706,
+      "ece_ci95_lo": 0.038644758019242706,
+      "ece_ci95_hi": 0.12089089085386386,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 146,
+          "mean_predicted": 0.05069100196881551,
+          "mean_actual": 0.10273972602739725
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 28,
+          "mean_predicted": 0.14977030083537102,
+          "mean_actual": 0.17857142857142858
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 17,
+          "mean_predicted": 0.24199557392036214,
+          "mean_actual": 0.17647058823529413
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 10,
+          "mean_predicted": 0.335721018910408,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.42234987020492554,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5683809965848923,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8741900324821472,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4912656061722055,
+      "loco_auc_ci95_hi": 0.7365089826263561
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-05-28T19:58:26.870875+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4982,
+  "stability_diagnostic": {
+    "fold_variance": 0.07145755172550423,
+    "fold_auc_mean": 0.5800860238054445,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.509090909090909,
+      "Angola": 0.6,
+      "Argentina": 0.8333333333333334,
+      "Brazil": 0.7333333333333333,
+      "Burkina Faso": 0.6222222222222222,
+      "Burundi": 0.6666666666666666,
+      "Cameroon": 0.8,
+      "Chad": 0.5714285714285714,
+      "China": 1.0,
+      "Colombia": 0.6911764705882353,
+      "Ecuador": 0.5,
+      "Egypt": 0.5454545454545454,
+      "El Salvador": 0.5666666666666667,
+      "Eritrea": 0.5,
+      "Ethiopia": 0.8680555555555556,
+      "Greece": 0.0,
+      "India": 0.6507936507936508,
+      "Indonesia": 0.0,
+      "Iran": 0.7373737373737373,
+      "Iraq": 0.7575757575757576,
+      "Ireland": 0.6363636363636364,
+      "Israel": 0.375,
+      "Ivory Coast": 0.6111111111111112,
+      "Jordan": 0.7647058823529411,
+      "Kuwait": 0.9230769230769231,
+      "Laos": 0.2857142857142857,
+      "Lebanon": 0.6176470588235294,
+      "Liberia": 0.7454545454545455,
+      "Libya": 0.8311688311688312,
+      "Malaysia": 0.15384615384615385,
+      "Mali": 0.8586956521739131,
+      "Mexico": 0.1875,
+      "Morocco": 0.7843137254901961,
+      "Myanmar": 0.7083333333333334,
+      "Namibia": 0.1,
+      "Nepal": 0.10714285714285714,
+      "Nicaragua": 0.9230769230769231,
+      "Niger": 0.4722222222222222,
+      "Nigeria": 0.4583333333333333,
+      "North Macedonia": 1.0,
+      "Oman": 0.9090909090909091,
+      "Pakistan": 0.525974025974026,
+      "Papua New Guinea": 0.1,
+      "Peru": 0.9444444444444444,
+      "Philippines": 0.4431818181818182,
+      "Portugal": 1.0,
+      "Russia": 0.0,
+      "Rwanda": 0.6666666666666666,
+      "Saudi Arabia": 0.3854166666666667,
+      "Senegal": 0.38461538461538464,
+      "Sierra Leone": 0.7272727272727273,
+      "Somalia": 0.6111111111111112,
+      "South Africa": 0.5384615384615384,
+      "South Sudan": 0.5,
+      "Sri Lanka": 0.7,
+      "Sudan": 0.4,
+      "Syria": 0.7208333333333333,
+      "Tajikistan": 0.18181818181818182,
+      "Thailand": 0.5,
+      "The Democratic Republic of the Congo": 0.7,
+      "Togo": 1.0,
+      "Tunisia": 0.4444444444444444,
+      "Turkiye": 0.6,
+      "Uganda": 0.5833333333333334,
+      "Ukraine": 0.0,
+      "United Kingdom": 0.7111111111111111,
+      "Uzbekistan": 1.0,
+      "Yemen": 0.6666666666666666,
+      "Zimbabwe": 0.38461538461538464
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7199,
+    "cohort_loco_floor": 0.6599,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 511,
+  "n_negatives": 1533,
+  "walked_at_utc": "2026-05-28T20:08:47.290745+00:00",
+  "elapsed_seconds": 7035.120316267014,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results/civil_war_and_insurgency/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": false,
+    "histogram": [],
+    "median": null,
+    "p90": null,
+    "p99": null,
+    "max": null,
+    "n_countries_scored": 0,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": null,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": false,
+    "bins": null,
+    "ece": null,
+    "notes": "calibration block absent in this vintage"
+  },
+  "per_country_scores_pointer": "scores/civil_war_and_insurgency.scores.json"
+}

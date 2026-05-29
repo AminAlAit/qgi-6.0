@@ -1,6 +1,16 @@
 import { Sidebar } from "@/components/nav/Sidebar";
 import { PresentationWrapper } from "@/components/nav/PresentationWrapper";
 import { TourProvider } from "@/components/tour/TourProvider";
+import manifest from "@/data/te-sample-10/MANIFEST.json";
+
+/**
+ * V4.1 §2 — one canonical vintage stamp per session. Lives in the sidebar
+ * (below the "Take the tour" button) so every page sees it once and only
+ * once. Sourced server-side from the sample-10 MANIFEST so a new bake
+ * lifts the chip automatically; passed as a prop to the (client) Sidebar
+ * to keep the sidebar bundle from importing the heavy load.ts module.
+ */
+const dataVintage = (manifest as { produced_at_utc: string }).produced_at_utc;
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,7 +26,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         Skip to content
       </a>
       <div className="flex h-full overflow-x-hidden">
-        <Sidebar />
+        <Sidebar dataVintage={dataVintage} />
         <main id="main-content" className="flex-1 overflow-y-auto" tabIndex={-1}>
           {children}
         </main>

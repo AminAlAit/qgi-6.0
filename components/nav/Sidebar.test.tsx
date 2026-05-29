@@ -16,49 +16,53 @@ describe("Sidebar", () => {
     expect(screen.getByText("Intelligence")).toBeInTheDocument();
   });
 
-  it("renders the 5 flat top-level entries (Dashboard + 4 families)", () => {
+  it("renders the 8 canonical V4.1 entries", () => {
     render(<Sidebar />);
-    // 2026-05-15 PR-i flat restructure: sidebar is now 5 standalone entries,
-    // no group headers, no V1/V2 sub-entries. The 4 family routes point at
-    // the (still `-merged`-named) canonical V3 shells; PR-iii will rename
-    // those URLs to unsuffixed canonical and flip V1 to `-v1`.
+    // 2026-05-29 V4.1 round-3 amendment: Recipe Tracker route deleted; the
+    // catalog ledger view is now folded into /recipes via the per-card
+    // Confidence badge. The blog post at /blog/recipe-tracker is unrelated
+    // and unaffected.
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
-    expect(screen.getByText("Precedents")).toBeInTheDocument();
+    expect(screen.getByText("Recipes")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
-    expect(screen.getByText("Signals")).toBeInTheDocument();
+    expect(screen.getByText("Risk Board")).toBeInTheDocument();
+    expect(screen.getByText("Compound Risk")).toBeInTheDocument();
+    expect(screen.getByText("Compare")).toBeInTheDocument();
+    expect(screen.getByText("Nearest Analog")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
+    // "Recipe Tracker" sidebar entry removed 2026-05-29.
+    expect(screen.queryByText("Recipe Tracker")).not.toBeInTheDocument();
   });
 
-  it("does NOT render any legacy V1 / V2 sub-entries", () => {
+  it("does NOT render any legacy or removed entries", () => {
     render(<Sidebar />);
-    // These were the V1 + V2 family sub-entries removed in PR-i. The routes
-    // remain reachable by direct URL but are no longer in nav.
     const removed = [
+      // Removed V3 entries
+      "Signals",
+      // Old V4.1 label suffixes
+      "Dashboard V4.1",
+      "Recipes V4.1",
+      "Countries V4.1",
+      "Patterns V4",
+      // TE Mockup group header
+      "TE Mockup (local)",
+      // Old V1/V2 sub-entries
       "Country browser",
       "Recipe catalogue",
       "Active signals",
       "Pattern atlas",
       "Power ranking",
-      "V2 — Table",
-      "V2 — Narrative",
-      "V2 — Tufte",
-      "V2 — Lloyd's",
-      "Discover — Tabs",
-      "Discover — Facets",
-      "Merged preview",
     ];
     for (const label of removed) {
       expect(screen.queryByText(label)).not.toBeInTheDocument();
     }
   });
 
-  it("renders no LIVE or PREVIEW chips (badge column removed per founder ask)", () => {
+  it("renders no LIVE or PREVIEW chips (all entries are PRIMARY, no chip rendered)", () => {
     render(<Sidebar />);
-    // O2 (2026-05-22): with every entry LIVE post-cutover, the badge column
-    // served no informational purpose. NavChip rendering was removed from
-    // NavLeafLink + NavGroupSection. Both LIVE and PREVIEW labels should be
-    // absent from the rendered sidebar.
+    // NavLeafLink does not render the badge chip in the current implementation.
     expect(screen.queryByText("LIVE")).not.toBeInTheDocument();
     expect(screen.queryByText("PREVIEW")).not.toBeInTheDocument();
+    expect(screen.queryByText("PRIMARY")).not.toBeInTheDocument();
   });
 });

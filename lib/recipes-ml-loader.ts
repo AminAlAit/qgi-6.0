@@ -1,7 +1,7 @@
 /**
  * Loader for `data/ml-recipe-stack.json` — the V2-shipped ML recipe stack.
  *
- * Used by `/precedents-v2{a,b}` + `/signals-v2{a,b}` route handlers (#645
+ * Used by `/recipes{a,b}` + `/signals-v2{a,b}` route handlers (#645
  * + #655). Server-side only; reads the baked snapshot at SSR time.
  *
  * Per #643's bake-script contract, this file is committed alongside the

@@ -51,7 +51,7 @@ test.describe("/dashboard", () => {
     const patternsCard = band.locator('a[href="/patterns"]');
     await expect(patternsCard).toBeVisible();
 
-    const precedentsCard = band.locator('a[href="/precedents"]');
+    const precedentsCard = band.locator('a[href="/recipes"]');
     await expect(precedentsCard).toBeVisible();
 
     // The Countries dominant number is the HIGH count — must be a positive integer.

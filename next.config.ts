@@ -4,28 +4,11 @@ import { withSentryConfig } from "@sentry/nextjs";
 /**
  * #748 PR-3 (#751) — Retired precedent slugs (2026-05-17).
  *
- * Per the founder's L10525 directive and the ratified Majles brief at
- * `qgi-docs/internal/ops/cycle-resurfacing/merger-brief-2026-05-17-precedents-revised.md`
- * §4 — every non-LOCKed precedent slug 301-redirects to `/precedents`.
- * Reasoning (orchestrator synthesis, no tie):
- *   - 404 disqualified by Tomás and Marcus: prior bake links were
- *     public; serving 404 looks like loss of artifact, not deliberate
- *     retirement.
- *   - `/methodology` deep-link disqualified by Sipho and Ingrid: asks
- *     the reader to figure out why their bookmark broke.
- *   - 301 to `/precedents` keeps the reader inside the family, signals
- *     deliberate retirement to crawlers, and lets the index header's
- *     "currently validated" copy do the explanation work.
+ * These slugs used to 301-redirect to `/precedents`. That route is now
+ * deleted as part of the V4.1 canonical promotion (2026-05-28). The list
+ * is kept here for reference but is no longer used in redirects().
  *
- * EXPLICIT LIST (not a wildcard) so adding a future LOCKed slug
- * requires a deliberate removal from this list. The 4 LOCKed slugs —
- * civil_war_and_insurgency, multilateral_agreement, elections_and_voting,
- * bilateral_treaty — are NOT in this list and continue to render via
- * `/precedents/[slug]`.
- *
- * Source: keys of CATEGORY_L1_MAP in `lib/category-taxonomy.ts` minus
- * the 4 LOCKed slugs from `data/ml-recipe-stack.json metadata.top_4_recipes`.
- * 86 entries; bake from 2026-05-17.
+ * RETIRED_PRECEDENT_SLUGS is unused; kept for audit trail.
  */
 const RETIRED_PRECEDENT_SLUGS = [
   "government_formation",
@@ -144,114 +127,57 @@ const nextConfig: NextConfig = {
   },
   poweredByHeader: false,
   /**
-   * PR-ii (2026-05-15) — V2 route consistent naming.
+   * 2026-05-28 — V4.1 canonical promotion redirects.
    *
-   * The previous V2 routes used inconsistent naming (`/discover-patterns-a`
-   * for Patterns vs `/precedents-v2-a` for Precedents). Renamed to a
-   * uniform `{family}-v2{variant}` scheme so a future reader can read the
-   * URL and know the family + variant without checking the brief.
+   * Only four redirect families remain after the V4.1 promo:
+   *  1. /precedents-v4.1 → /recipes (bookmark preservation)
+   *  2. /recipes/foreign_intervention → /blog (graduation article)
+   *  3. /countries-merged → /countries (PR-iii legacy)
+   *  4. /patterns-merged → /patterns (PR-iii legacy)
+   *  5. /blog/ghana-mauritania-mirror → /reports (elevation redirect)
    *
-   * 308 permanent redirects from the old paths preserve any bookmark or
-   * external inbound link. Status 308 (vs 301) keeps the HTTP method on
-   * the follow — irrelevant for these GET-only routes today, but the
-   * safer default.
-   *
-   * These redirects can be removed once external links to the old paths
-   * are confirmed gone (search for inbound traffic in Vercel analytics
-   * after 90 days; safe to drop if zero).
+   * All redirects that targeted deleted routes (/precedents, /signals,
+   * /patterns-v1, /signals-v1, /patterns-v2a, /patterns-v2b, etc.) have
+   * been removed — 404 is better than a redirect to a 404.
    */
   async redirects() {
     return [
-      // /recipes/foreign_intervention was live briefly (2026-05-22 to 2026-05-23)
-      // before the recipes route was torn down in favor of a blog graduation
-      // article. Preserve any inbound bookmark or link.
+      // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
+      // (catalog ledger) was deleted; its AUC column reborn as the per-card
+      // Confidence badge on /recipes. Bookmarks preserved here.
+      // NOTE: /blog/recipe-tracker is a SEPARATE route (the audience-facing
+      // program-update blog post) — it lives on and must NOT be caught by
+      // this redirect. We use an exact source string, not a prefix wildcard.
       {
-        source: "/recipes/foreign_intervention",
-        destination: "/blog/foreign-intervention-graduation",
-        permanent: true,
-      },
-      // Patterns V2: drop the V1-era "discover-patterns" prefix.
-      // PR-vii (2026-05-15) — :slug* sub-route redirects removed; their
-      // destinations (patterns-v2a/[slug], patterns-v2b/[slug]) don't exist
-      // as dynamic Next routes, so the old redirect chained 308 → 404.
-      {
-        source: "/discover-patterns-a",
-        destination: "/patterns-v2a",
-        permanent: true,
-      },
-      {
-        source: "/discover-patterns-b",
-        destination: "/patterns-v2b",
-        permanent: true,
-      },
-      // Signals V2: drop the internal hyphen
-      {
-        source: "/signals-v2-a",
-        destination: "/signals-v2a",
-        permanent: true,
-      },
-      {
-        source: "/signals-v2-a/:path*",
-        destination: "/signals-v2a/:path*",
-        permanent: true,
-      },
-      {
-        source: "/signals-v2-b",
-        destination: "/signals-v2b",
-        permanent: true,
-      },
-      {
-        source: "/signals-v2-b/:path*",
-        destination: "/signals-v2b/:path*",
-        permanent: true,
-      },
-      // Precedents V2: drop the internal hyphen
-      {
-        source: "/precedents-v2-a",
-        destination: "/precedents-v2a",
-        permanent: true,
-      },
-      {
-        source: "/precedents-v2-a/:slug*",
-        destination: "/precedents-v2a/:slug*",
-        permanent: true,
-      },
-      {
-        source: "/precedents-v2-b",
-        destination: "/precedents-v2b",
-        permanent: true,
-      },
-      {
-        source: "/precedents-v2-b/:slug*",
-        destination: "/precedents-v2b/:slug*",
+        source: "/recipe-tracker",
+        destination: "/recipes",
         permanent: true,
       },
 
-      // ─── PR-iii (2026-05-15) — V3 -merged → canonical + V1 → -v1 ────────
-      //
-      // The atomic canonical rename. V3 now serves the unsuffixed canonical
-      // URLs; V1 lives at -v1; bookmarks at the old -merged paths 308 here.
-      //
-      // V1 sub-routes that conflict with V3 (e.g. /patterns/ranking and
-      // /signals/country which V3 does NOT serve) get explicit redirects
-      // to their -v1 archive locations so old bookmarks don't 404.
-      //
-      // V1 BASE paths (/precedents, /countries, /signals, /patterns) are
-      // NOT redirected — they're the new canonical V3 URLs now. Anyone
-      // bookmarking V1's base path lands on V3 (intentional cutover).
-      // To explicitly access V1, use the -v1 suffix.
+      // 2026-05-28 — V4.1 canonical promotion. /precedents-v4.1 was the
+      // pre-canonical URL for the Recipes surface; preserve bookmarks.
+      {
+        source: "/precedents-v4.1",
+        destination: "/recipes",
+        permanent: true,
+      },
+      {
+        source: "/precedents-v4.1/:path*",
+        destination: "/recipes/:path*",
+        permanent: true,
+      },
 
-      // V3 -merged URLs → canonical (for any external link still using -merged)
-      {
-        source: "/precedents-merged",
-        destination: "/precedents",
-        permanent: true,
-      },
-      {
-        source: "/precedents-merged/:slug*",
-        destination: "/precedents/:slug*",
-        permanent: true,
-      },
+      // (Removed 2026-05-28) The previous redirect from
+      // /recipes/foreign_intervention → /blog/foreign-intervention-graduation
+      // was retired when /recipes-v4.1/ was promoted to /recipes/, because
+      // foreign_intervention is now the canonical demo recipe slug for the
+      // V4.1 detail page. The blog graduation article is still live at
+      // /blog/foreign-intervention-graduation; visit it directly.
+
+      // Old -merged URLs from the PR-iii (2026-05-15) V3 rename.
+      // /countries and /patterns now serve V4.1 canonical routes.
+      // /precedents and /signals are deleted; their -merged aliases
+      // would 404 so they are not redirected.
       {
         source: "/countries-merged",
         destination: "/countries",
@@ -260,16 +186,6 @@ const nextConfig: NextConfig = {
       {
         source: "/countries-merged/:path*",
         destination: "/countries/:path*",
-        permanent: true,
-      },
-      {
-        source: "/signals-merged",
-        destination: "/signals",
-        permanent: true,
-      },
-      {
-        source: "/signals-merged/:path*",
-        destination: "/signals/:path*",
         permanent: true,
       },
       {
@@ -283,42 +199,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // V1 sub-routes that have NO V3 counterpart — preserved at -v1
-      {
-        source: "/patterns/ranking",
-        destination: "/patterns-v1/ranking",
-        permanent: true,
-      },
-      {
-        source: "/signals/country",
-        destination: "/signals-v1/country",
-        permanent: true,
-      },
-
       // ─── 2026-05-19 — Ghana piece elevation from /blog to /reports ────
-      //
-      // The Ghana country analysis was published at /blog/ghana-mauritania-mirror
-      // (V3, 2026-05-19) and immediately elevated to /reports in the same
-      // session. 301 permanent redirect preserves any external links or
-      // social-share URLs from the blog path.
       {
         source: "/blog/ghana-mauritania-mirror",
         destination: "/reports/ghana-mauritania-mirror",
         permanent: true,
       },
-
-      // ─── #748 PR-3 (2026-05-17) — Retired precedent slugs ─────────
-      //
-      // Every non-LOCKed precedent slug 301-redirects to `/precedents`
-      // per the founder's L10525 directive. Generated from the
-      // `RETIRED_PRECEDENT_SLUGS` constant above so the explicit list
-      // stays auditable. Adding a future LOCKed slug requires
-      // REMOVING it from this list, not adding a special case here.
-      ...RETIRED_PRECEDENT_SLUGS.map((slug) => ({
-        source: `/precedents/${slug}`,
-        destination: "/precedents",
-        permanent: true,
-      })),
     ];
   },
 };

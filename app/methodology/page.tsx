@@ -909,7 +909,7 @@ export default async function MethodologyPage() {
               historical precedent recipes that had cleared the screen floor but not the
               full lock rubric (out-of-country discrimination, calibration audit, anchor
               stability). They have been retired from the public index. The four recipes
-              currently appearing at <Link href="/precedents">/precedents</Link> are those
+              currently appearing at <Link href="/recipes">/precedents</Link> are those
               that have completed adjudication end-to-end on this bake. The retired
               recipes remain measured inside the pipeline; they may re-enter the index in
               a future bake if they pass the lock rubric. Until then, any URL of the form{" "}
