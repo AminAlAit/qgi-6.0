@@ -281,18 +281,51 @@ def s3_download_file(bucket: str, key: str, local_path: Path) -> None:
 
 
 def s3_sync_dir_up(local_dir: Path, bucket: str, prefix: str) -> int:
-    """Upload all files under local_dir to S3 prefix. Returns count."""
+    """Upload all files under local_dir to S3 prefix. Returns count of files
+    actually uploaded (skipped-as-unchanged files are NOT counted).
+
+    Content-aware: a file is skipped when an S3 object already exists at the
+    target key AND its ContentLength matches the local file size AND its
+    LastModified is ≥ the local file's mtime. Otherwise the local file is
+    uploaded — covering new files, edits, and any case where we can't prove the
+    S3 copy is fresh. Worth the head_object cost because the periodic-sync +
+    multi-stage-emit pattern re-syncs the same dir 2-3 times per recipe, and
+    most files (greedy-result.json, summary.json, country-scores.json) are
+    written once and never rewritten within a recipe.
+
+    Sonnet follow-up #967 on PR #46 (2026-05-29 review)."""
     s3 = _s3()
-    count = 0
+    uploaded = 0
+    skipped = 0
     for path in local_dir.rglob("*"):
         if not path.is_file():
             continue
         rel = path.relative_to(local_dir)
         key = f"{prefix}{rel.as_posix()}"
+        local_size = path.stat().st_size
+        local_mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc)
+        try:
+            head = s3.head_object(Bucket=bucket, Key=key)
+            s3_size = head.get("ContentLength")
+            s3_last = head.get("LastModified")  # tz-aware datetime
+            if (s3_size == local_size
+                    and s3_last is not None
+                    and s3_last >= local_mtime):
+                skipped += 1
+                continue
+        except ClientError as exc:
+            # 404 → upload (new key). Any other error → propagate; do NOT swallow
+            # (mirrors the #918 fix on s3_object_exists).
+            code = exc.response.get("Error", {}).get("Code")
+            if code not in ("404", "NoSuchKey", "NotFound"):
+                raise
         s3.upload_file(str(path), bucket, key)
-        count += 1
-    LOG.info("s3_sync_up: %d files from %s → s3://%s/%s", count, local_dir, bucket, prefix)
-    return count
+        uploaded += 1
+    LOG.info(
+        "s3_sync_up: %d uploaded, %d skipped-unchanged from %s → s3://%s/%s",
+        uploaded, skipped, local_dir, bucket, prefix,
+    )
+    return uploaded
 
 
 def s3_upload_json(data: dict, bucket: str, key: str) -> None:
@@ -548,14 +581,29 @@ def run_score_countries(
         "--positives-csv", str(positives_csv),
         "--output-dir", str(walk_output_dir),
     ]
-    LOG.info("Launching score_countries: %s", " ".join(cmd))
+    # Timeout default 1800 s (30 min) — local bake averaged ~3 min × 10 recipes.
+    # Override via env var SCORE_COUNTRIES_TIMEOUT_SECONDS for fat recipes
+    # (N_pos > 300) where the K × 5-fold LOO ablation dominates. Sonnet
+    # follow-up #967 on PR #46 (2026-05-29 review).
+    try:
+        timeout_s = int(os.environ.get("SCORE_COUNTRIES_TIMEOUT_SECONDS", "1800"))
+        if timeout_s <= 0:
+            raise ValueError("must be a positive integer (seconds)")
+    except ValueError as exc:
+        LOG.warning(
+            "SCORE_COUNTRIES_TIMEOUT_SECONDS=%r is not a positive integer (%s) — "
+            "falling back to the 1800 s default.",
+            os.environ.get("SCORE_COUNTRIES_TIMEOUT_SECONDS"), exc,
+        )
+        timeout_s = 1800
+    LOG.info("Launching score_countries (timeout=%ds): %s", timeout_s, " ".join(cmd))
     t0 = time.monotonic()
     try:
         subprocess.run(
             cmd,
             capture_output=False,  # awslogs picks up stdout/stderr
             check=True,
-            timeout=30 * 60,  # 30 min per recipe; the local bake averaged ~3 min × 10 recipes
+            timeout=timeout_s,
         )
         elapsed = time.monotonic() - t0
         LOG.info("score_countries complete for %s in %.0f s", recipe_id, elapsed)
