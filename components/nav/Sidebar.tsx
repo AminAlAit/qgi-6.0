@@ -81,6 +81,16 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <LayoutDashboard size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
+  // Risk Board promoted to slot #2 (2026-05-29) per founder ratification.
+  // Sits directly under Dashboard so the present-tense scan-pattern
+  // ("who's hot right now") is the first user surface after the showroom.
+  {
+    type: "standalone",
+    label: "Risk Board",
+    href: "/risk-board",
+    icon: <Gauge size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
   {
     type: "standalone",
     label: "Recipes",
@@ -93,13 +103,6 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     label: "Countries",
     href: "/countries",
     icon: <Globe size={16} strokeWidth={1.5} aria-hidden="true" />,
-    badge: "PRIMARY",
-  },
-  {
-    type: "standalone",
-    label: "Risk Board",
-    href: "/risk-board",
-    icon: <Gauge size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
   {
