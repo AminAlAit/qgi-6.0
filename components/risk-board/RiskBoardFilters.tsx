@@ -759,11 +759,17 @@ function HeatCell({
   const intensity = Math.max(0, Math.min(1, (score - 40) / 60));
   const alpha = 0.1 + intensity * 0.55;
   // Round-3.6 (2026-05-29) — drop HIGH / MODERATE / LOW bins. The number
-  // alone (now a percentage) carries the confidence reading; lerped color
-  // + glow halo gradient does the categorical work the bins used to do.
+  // alone (now a percentage) carries the confidence reading; color + glow
+  // do the categorical work the bins used to do.
+  //
+  // Round-3.6.1 (2026-05-29) — gradient endpoint is WHITE, not the family
+  // color, because the cell background is already a family-color gradient.
+  // The number lerps MUTED_GRAY → WHITE so high-confidence percentages
+  // pop OFF the colored background instead of dissolving into it. The
+  // glow halo is white too, so the number reads as illuminated.
   const cT = confidenceT(score);
-  const confidenceColor = lerpHexToRgb(MUTED_GRAY, resolvedFamilyColor, cT);
-  const confidenceGlowShadow = confidenceGlow(resolvedFamilyColor, cT);
+  const confidenceColor = lerpHexToRgb(MUTED_GRAY, "#FFFFFF", cT);
+  const confidenceGlowShadow = confidenceGlow("#FFFFFF", cT);
   const pct = Math.round(score);
 
   return (
