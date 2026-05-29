@@ -60,6 +60,9 @@ interface NavStandalone {
   href: Route;
   icon: React.ReactNode;
   badge: NavBadge;
+  /** When true, render a small "Coming soon" chip after the label so the
+   *  user knows the destination is a locked preview before they click. */
+  comingSoon?: boolean;
 }
 
 type NavEntry = NavGroup | NavStandalone;
@@ -118,6 +121,10 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     href: "/compare",
     icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
+    // Round-3.2 lockdown 2026-05-29: /compare body is a Coming-Soon overlay
+    // until the side-by-side comparison ships. Flag the nav entry so the
+    // user sees the lockdown intent before the click.
+    comingSoon: true,
   },
   {
     type: "standalone",
@@ -455,6 +462,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
                   href={entry.href}
                   icon={entry.icon}
                   badge={entry.badge}
+                  comingSoon={entry.comingSoon}
                   pathname={pathname}
                   onClick={closeOnNavigate}
                   collapsed={collapsed}
@@ -559,6 +567,7 @@ function NavLeafLink({
   pathname,
   onClick,
   collapsed,
+  comingSoon,
 }: {
   label: string;
   href: Route;
@@ -567,6 +576,7 @@ function NavLeafLink({
   pathname: string;
   onClick: () => void;
   collapsed: boolean;
+  comingSoon?: boolean;
 }) {
   const active = isActiveRoute(pathname, href);
   return (
@@ -574,8 +584,8 @@ function NavLeafLink({
       href={href}
       onClick={onClick}
       aria-current={active ? "page" : undefined}
-      aria-label={collapsed ? label : undefined}
-      title={collapsed ? label : undefined}
+      aria-label={collapsed ? `${label}${comingSoon ? " (coming soon)" : ""}` : undefined}
+      title={collapsed ? `${label}${comingSoon ? " — Coming soon" : ""}` : undefined}
       className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
@@ -596,6 +606,25 @@ function NavLeafLink({
       >
         {label}
       </span>
+      {/* "Coming soon" chip — only when the entry is flagged AND the sidebar
+          is expanded. Calm slate-dim so it doesn't fight the active-state
+          accent; the visible-but-quiet tone matches the §4 "Coming soon"
+          recipe chip vocabulary, so the same word reads as the same
+          surface signal across the app. */}
+      {comingSoon && !collapsed && (
+        <span
+          aria-hidden="true"
+          className="shrink-0 px-1.5 py-0.5 rounded text-[8.5px] tracking-[1.5px] font-semibold normal-case"
+          style={{
+            color: "var(--qgi-text-dim)",
+            border: "1px solid var(--qgi-border)",
+            background: "var(--qgi-bg)",
+            letterSpacing: "0.5px",
+          }}
+        >
+          Coming soon
+        </span>
+      )}
     </Link>
   );
 }
