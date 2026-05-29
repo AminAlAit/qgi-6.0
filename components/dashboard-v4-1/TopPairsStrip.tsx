@@ -127,6 +127,11 @@ function PairRow({
   const cT = confidenceT(pair.score);
   const pctColor = lerpHexToRgb(MUTED_GRAY, recipeFamilyColor, cT);
   const pctGlow = confidenceGlow(recipeFamilyColor, cT);
+  // 2026-05-30 polish — rationale dropped from the rail per founder ask
+  // ("too much text"). The curated long-form rationale moves to the cell
+  // title attribute so it surfaces on hover for the curious reader, but
+  // the visible row stays at 2 lines: rank+flag+country+score / recipe
+  // label.
   const rationale = "rationale" in pair ? pair.rationale : undefined;
 
   return (
@@ -134,6 +139,7 @@ function PairRow({
       <Link
         href={`/recipes/${pair.recipe_id}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
+        title={rationale}
       >
         <div
           style={{
@@ -237,22 +243,9 @@ function PairRow({
             </span>
           </div>
 
-          {/* Row 3 (optional): one-sentence rationale from the curation pass.
-              Renders only when present so the rail stays compact under the
-              legacy non-curated path. */}
-          {rationale && (
-            <div
-              style={{
-                paddingLeft: "26px",
-                fontSize: "10.5px",
-                color: "var(--qgi-text-dim)",
-                lineHeight: 1.35,
-                marginTop: "1px",
-              }}
-            >
-              {rationale}
-            </div>
-          )}
+          {/* 2026-05-30: rationale row dropped from the visible card. The
+              full editorial note moves to the link's title attribute so
+              hovering surfaces it without the visual weight. */}
         </div>
       </Link>
     </li>
