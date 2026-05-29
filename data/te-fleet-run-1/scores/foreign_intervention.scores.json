@@ -1,7 +1,7 @@
 {
   "recipe_id": "foreign_intervention",
   "vintage": "fleet-run-1-2026-05-30",
-  "scored_at_utc": "2026-05-29T22:18:48.111508+00:00",
+  "scored_at_utc": "2026-05-29T22:48:51.631028+00:00",
   "n_countries_scored": 172,
   "train_auc": 1.0,
   "scoring_method": "XGBoost refit + SHAP TreeExplainer (per #967)",
