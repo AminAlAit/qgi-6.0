@@ -16,35 +16,9 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
   return "#7A8FA0";
 }
 
-/**
- * V4.1 round-3.1 (2026-05-29) — gradient start color for the Confidence
- * number. Matches `var(--qgi-text-muted)` (#9ab0c4) so that an AUC of
- * exactly 0.50 (coin flip) renders the SAME hue as the muted window/signals
- * chip beside it. As AUC climbs toward 1.00 the number fades into the
- * recipe's family color (recipe.l1_color). The gradient IS the meaning.
- */
-const MUTED_GRAY = "#9ab0c4";
-
-/** Parse `#RRGGBB` -> {r,g,b} integer components. */
-function parseHex(hex: string): { r: number; g: number; b: number } {
-  // The family colors and MUTED_GRAY are all #RRGGBB; no #RGB shorthand
-  // expected from upstream, so we don't normalize the 3-digit form.
-  return {
-    r: parseInt(hex.slice(1, 3), 16),
-    g: parseInt(hex.slice(3, 5), 16),
-    b: parseInt(hex.slice(5, 7), 16),
-  };
-}
-
-/** Linear interpolation between two `#RRGGBB` hex colors. Returns an
- *  `rgb(...)` string ready to use as a CSS color value. `t` is clamped
- *  to [0, 1] by the caller; this fn assumes valid t. */
-function lerpHexToRgb(startHex: string, endHex: string, t: number): string {
-  const s = parseHex(startHex);
-  const e = parseHex(endHex);
-  const mix = (a: number, b: number) => Math.round(a + (b - a) * t);
-  return `rgb(${mix(s.r, e.r)}, ${mix(s.g, e.g)}, ${mix(s.b, e.b)})`;
-}
+// Round-3.6 (2026-05-29) — color-lerp + glow helpers extracted to
+// lib/color-lerp.ts so the Risk Board cells use the SAME color math.
+import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
 
 /**
  * RecipeCard
@@ -285,10 +259,10 @@ export function RecipeCard({
           {typeof recipe.stats?.loco_auc === "number" &&
             (() => {
               const auc = recipe.stats.loco_auc;
-              // AUC < 0.5 is below coin-flip; render as fully muted.
-              // AUC >= 1.0 is unreachable; render as fully family-hue.
-              const t = Math.max(0, Math.min(1, (auc - 0.5) / 0.5));
+              const t = confidenceT(auc * 100);
               const color = lerpHexToRgb(MUTED_GRAY, recipe.l1_color, t);
+              // Glow blooms from ~62% upward, full halo at 100%.
+              const glow = confidenceGlow(recipe.l1_color, t);
               return (
                 <div
                   style={{
@@ -297,7 +271,7 @@ export function RecipeCard({
                     alignItems: "flex-end",
                     lineHeight: 1,
                   }}
-                  title={`${Math.round(auc * 100)}% confidence — how cleanly this recipe separates pre-event country-years from the rest. 50% is a coin flip; higher is better.`}
+                  title={`${Math.round(auc * 100)}% confidence — how closely this country-trajectory has matched the recipe's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
                 >
                   <div
                     style={{
@@ -307,6 +281,8 @@ export function RecipeCard({
                       letterSpacing: "-0.5px",
                       color,
                       lineHeight: 1,
+                      textShadow: glow || undefined,
+                      transition: "text-shadow 180ms ease-out",
                     }}
                   >
                     {Math.round(auc * 100)}%
