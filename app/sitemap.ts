@@ -44,7 +44,9 @@ const STATIC_ROUTES: Array<{
   { path: "/compound-risk", changeFrequency: "weekly", priority: 0.7 },
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
   { path: "/nearest-analog", changeFrequency: "weekly", priority: 0.6 },
-  { path: "/recipe-tracker", changeFrequency: "weekly", priority: 0.75 },
+  // /recipe-tracker route deleted 2026-05-29 — folded into /recipes via
+  // the per-card Confidence badge. The blog post at /blog/recipe-tracker
+  // is unaffected (separate route, audience-facing program update).
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   // Recipe Tracker: continuously updated as recipes graduate or enter validation.

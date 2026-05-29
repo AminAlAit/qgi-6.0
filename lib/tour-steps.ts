@@ -32,7 +32,6 @@ export interface QgiTourStep extends Step {
     | "/risk-board"
     | "/compound-risk"
     | "/nearest-analog"
-    | "/recipe-tracker"
     | "/compare"
     | "/patterns"
     | "/patterns/paraguay-south_korea-1963";
@@ -616,77 +615,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /recipe-tracker — 7 steps, ordered top-to-bottom ────────────────────
-  // Visual order: h1 → hero tiles → walk timeline (full-width strip) →
-  // recipe table (left column body) → in-flight (right column top) →
-  // vacate-log (right column bottom) → how-to-read-button (last).
-  // ReadThisPanel removed from page and tour.
-  // The tour walks the table first because the page's editorial center is the
-  // table; the side panels are supporting context.
-  {
-    page: "/recipe-tracker",
-    dimension: "a",
-    target: "h1",
-    title: "Where every claim resolves",
-    content:
-      "Every recipe in the catalog has a status: deployed, tested-and-did-not-hold-up, in review, early-method-under-review, or not yet tested. This page is the scoreboard. The other eight pages cite it; this page is the source of truth.",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "b",
-    target: '[data-tour="tracker-hero-tiles"]',
-    title: "Six tiles, summing to the whole program",
-    content:
-      "The big green tile counts the deployed recipes. The amber tile counts the ones tested that did not hold up. Most recipes do not hold up: the tracker showing that clearly is the integrity signal, not a sign of failure.",
-    placement: "bottom",
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "b",
-    target: '[data-tour="walk-timeline"]',
-    title: "Every validation run, in order",
-    content:
-      "The horizontal timeline of every validation pass we have run. Green markers cleared the bar, amber markers did not, purple markers are still in progress. Hover for the date and verdict.",
-    placement: "bottom",
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "c",
-    target: '[data-tour="recipe-table"]',
-    title: "The whole catalog, sortable",
-    content:
-      "Every recipe in the catalog, with its status, family, last validation date, and verdict. Sort any column, filter by family or status. This is the scoreboard the rest of the site cites.",
-    placement: "top",
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "c",
-    target: '[data-tour="in-flight-panel"]',
-    title: "What is being tested right now",
-    content:
-      "Validation passes currently running, plus a preview of what is scheduled to run next. Outcomes will land in the activity log on the dashboard you started from.",
-    placement: "left",
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "c",
-    target: '[data-tour="vacate-log"]',
-    title: "Corrections are published on purpose",
-    content:
-      "When a prior result does not survive audit, we withdraw it publicly and log the reason here. Reading the log is reading the methodology working as designed.",
-    placement: "left",
-  },
-  {
-    page: "/recipe-tracker",
-    dimension: "d",
-    target: '[data-tour="how-to-read-button"]',
-    title: "Open this when you forget",
-    content:
-      "Every page has this button. It opens a quiet reference card with the four ground rules. You have finished the tour -- the four rules are always one click away from here.",
-    placement: "bottom",
-  },
+  // /recipe-tracker tour steps removed 2026-05-29 — the route was deleted
+  // in the V4.1 round-3 amendment (2-bucket status vocabulary; the catalog-
+  // ledger view folded into /recipes via the per-card Confidence badge).
 
   // ─── /patterns — 6 steps, ordered top-to-bottom ───────────────────────
   {

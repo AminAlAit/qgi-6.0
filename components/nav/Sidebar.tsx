@@ -13,7 +13,6 @@ import {
   Columns2,
   Telescope,
   Waves,
-  ListChecks,
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
@@ -131,13 +130,11 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
-  {
-    type: "standalone",
-    label: "Recipe Tracker",
-    href: "/recipe-tracker",
-    icon: <ListChecks size={16} strokeWidth={1.5} aria-hidden="true" />,
-    badge: "PRIMARY",
-  },
+  // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
+  // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog
+  // ledger view is folded into /recipes; the AUC column reborn as the per-
+  // card "Confidence" badge. The /blog/recipe-tracker post is unaffected
+  // (different route, audience-facing blog post about the program).
 ];
 
 /** Flatten the structure to the leaf-route list — used by the

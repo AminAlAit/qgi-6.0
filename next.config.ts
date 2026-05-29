@@ -142,6 +142,18 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
+      // (catalog ledger) was deleted; its AUC column reborn as the per-card
+      // Confidence badge on /recipes. Bookmarks preserved here.
+      // NOTE: /blog/recipe-tracker is a SEPARATE route (the audience-facing
+      // program-update blog post) — it lives on and must NOT be caught by
+      // this redirect. We use an exact source string, not a prefix wildcard.
+      {
+        source: "/recipe-tracker",
+        destination: "/recipes",
+        permanent: true,
+      },
+
       // 2026-05-28 — V4.1 canonical promotion. /precedents-v4.1 was the
       // pre-canonical URL for the Recipes surface; preserve bookmarks.
       {

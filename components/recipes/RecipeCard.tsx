@@ -127,6 +127,9 @@ export function RecipeCard({
               render a static dot. The bottom-right status chip is removed
               with this change (no duplication). */}
         {labelStrategy === "v4.1" ? (
+          // V4.1 round-3 amendment (2026-05-29) — 2-bucket vocabulary:
+          // "in play" gets a family-color pulsing dot (active rotation).
+          // "Coming soon" renders text only — no dot. Founder ratified.
           <span
             style={{
               fontSize: "10px",
@@ -142,16 +145,18 @@ export function RecipeCard({
             }}
             title={recipe.l1_label}
           >
-            <span
-              className={isWalked ? "qgi-pulse-dot" : undefined}
-              style={{
-                width: "6px",
-                height: "6px",
-                borderRadius: "50%",
-                background: recipe.l1_color,
-                boxShadow: isWalked ? `0 0 0 0 ${recipe.l1_color}` : undefined,
-              }}
-            />
+            {!isQueued && (
+              <span
+                className="qgi-pulse-dot"
+                style={{
+                  width: "6px",
+                  height: "6px",
+                  borderRadius: "50%",
+                  background: recipe.l1_color,
+                  boxShadow: `0 0 0 0 ${recipe.l1_color}`,
+                }}
+              />
+            )}
             {v41Label.label}
           </span>
         ) : (
@@ -240,9 +245,44 @@ export function RecipeCard({
         }}
       >
         {labelStrategy === "v4.1" ? (
-          // V4.1 strategy: scrubbed chips. No "Tested, did not hold up",
-          // no "Awaiting curated events" with subtle pejorative tone.
+          // V4.1 strategy chips — round-3 amendment 2026-05-29:
+          //   Confidence badge replaces the old AUC column from the
+          //   (now-deleted) Recipe Tracker. Sourced from card.stats.loco_auc
+          //   and rendered as `78%` style. Only shown when the recipe has
+          //   stats (post-walk recipes); Coming-soon cards render an empty
+          //   chip row so the foot geometry stays consistent.
           <>
+            {typeof recipe.stats?.loco_auc === "number" && (
+              <span
+                style={{
+                  fontSize: "10px",
+                  padding: "3px 8px",
+                  borderRadius: "3px",
+                  border: `1px solid ${recipe.l1_color}`,
+                  background: `${recipe.l1_color}1A`,
+                  color: recipe.l1_color,
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "0.3px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+                title="Confidence: how cleanly this recipe separates pre-event country-years from the rest. 50% reads as a coin flip; higher is better."
+              >
+                <strong style={{ fontWeight: 700 }}>
+                  {Math.round(recipe.stats.loco_auc * 100)}%
+                </strong>
+                <span
+                  style={{
+                    opacity: 0.78,
+                    fontSize: "9.5px",
+                    letterSpacing: "0.5px",
+                  }}
+                >
+                  confidence
+                </span>
+              </span>
+            )}
             {isWalked && recipe.stats?.window_y && (
               <span style={chipStyle("muted")}>
                 {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
