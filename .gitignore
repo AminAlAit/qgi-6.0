@@ -57,3 +57,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 preview-screenshots/
+
+# Per the te-fleet-run-1 backend handoff (2026-05-30): this dataset is also
+# build-against-only. 28 MB; reproducible from S3 ml-results/ via
+# qgi-ml/scripts/bake_te_fleet_run_1.py.
+/data/te-fleet-run-1/
