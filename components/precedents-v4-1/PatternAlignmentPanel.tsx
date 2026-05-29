@@ -57,72 +57,57 @@ export function PatternAlignmentPanel({
       }}
       aria-label="Trajectory alignment: canonical movement shape"
     >
+      {/* 2026-05-29 (Naila #29): "Open the full trajectory" button moved
+          from header to footer per founder direction. Header is now title
+          + subtitle only, in a single clean line. */}
       <header
         style={{
           display: "flex",
           alignItems: "baseline",
-          justifyContent: "space-between",
-          gap: "12px",
+          gap: "10px",
           marginBottom: "4px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-          <h2
-            style={{
-              fontSize: "15px",
-              fontWeight: 600,
-              color: familyColor,
-              letterSpacing: "0.1px",
-              margin: 0,
-            }}
-          >
-            Trajectory alignment
-          </h2>
-          <span
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              fontSize: "10px",
-              color: "var(--qgi-text-dim)",
-              letterSpacing: "0.3px",
-            }}
-          >
-            canonical movement shape · {indicators.length} indicators · {windowYears}y
-            window
-          </span>
-        </div>
-        {hasTrajectory && (
-          <Link
-            href={`/recipes/${recipeId}/trajectory` as Route}
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              fontSize: "10px",
-              color: familyColor,
-              textDecoration: "none",
-              border: `1px solid ${familyColor}`,
-              background: `${familyColor}14`,
-              padding: "4px 10px",
-              borderRadius: "4px",
-              letterSpacing: "0.4px",
-              whiteSpace: "nowrap",
-              flexShrink: 0,
-            }}
-          >
-            Open the full trajectory →
-          </Link>
-        )}
+        <h2
+          style={{
+            fontSize: "15px",
+            fontWeight: 600,
+            color: familyColor,
+            letterSpacing: "0.1px",
+            margin: 0,
+          }}
+        >
+          Trajectory alignment
+        </h2>
+        <span
+          style={{
+            fontFamily: "ui-monospace, monospace",
+            fontSize: "10px",
+            color: "var(--qgi-text-dim)",
+            letterSpacing: "0.3px",
+          }}
+        >
+          {indicators.length} signals · {windowYears}y window
+        </span>
       </header>
 
+      {/* 2026-05-29 (Naila #29): subtitle rewritten for plain-English
+          comprehension. The old line ("what this recipe's trajectory
+          LOOKS like") was already decent but front-loaded the methodology
+          term. New line opens with the audience-facing question. */}
       <p
         style={{
           fontSize: "12px",
           color: "var(--qgi-text-muted)",
           margin: "2px 0 16px",
           lineHeight: 1.5,
+          maxWidth: "65ch",
         }}
       >
-        What this recipe&apos;s trajectory <em>looks like</em>: the shape a country&apos;s
-        indicators need to follow to score high. Mean across verified positives in{" "}
-        <strong>bold</strong>; the band shows 25th–75th percentile.
+        For a country to score high on this recipe, its signals need to MOVE in this shape
+        across the window. The <strong>bold line</strong> is the average path across every
+        verified precedent; the shaded band is the range the middle 50% of precedents
+        followed.
       </p>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -140,6 +125,9 @@ export function PatternAlignmentPanel({
         })}
       </div>
 
+      {/* 2026-05-29 (Naila #29): legend + axis-hint row, with the
+          "Open the full trajectory" button right-aligned at the bottom.
+          Cleaner reading order: chart → legend → "go deeper". */}
       <footer
         style={{
           marginTop: "14px",
@@ -150,6 +138,7 @@ export function PatternAlignmentPanel({
           color: "var(--qgi-text-dim)",
           letterSpacing: "0.3px",
           display: "flex",
+          alignItems: "center",
           gap: "14px",
           flexWrap: "wrap",
         }}
@@ -178,7 +167,27 @@ export function PatternAlignmentPanel({
           />
           25th–75th percentile
         </span>
-        <span style={{ marginLeft: "auto" }}>z-score, year-0 = event year</span>
+        <span>year-0 = event year</span>
+        {hasTrajectory && (
+          <Link
+            href={`/recipes/${recipeId}/trajectory` as Route}
+            style={{
+              marginLeft: "auto",
+              fontFamily: "ui-monospace, monospace",
+              fontSize: "10px",
+              color: familyColor,
+              textDecoration: "none",
+              border: `1px solid ${familyColor}`,
+              background: `${familyColor}14`,
+              padding: "4px 10px",
+              borderRadius: "4px",
+              letterSpacing: "0.4px",
+              whiteSpace: "nowrap",
+            }}
+          >
+            Open the full trajectory →
+          </Link>
+        )}
       </footer>
     </section>
   );

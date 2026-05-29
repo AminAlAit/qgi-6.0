@@ -53,7 +53,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="recipes-in-play-panel"
-      caption="None of these patterns has yet cleared our validation bar, so every row here is a flag worth a closer look, not a confirmed prediction. Scores are a relative ranking from 0 to 100, not a probability."
+      caption="Every row is a recipe whose canonical pre-event shape this country's recent signals resemble. Scores are a relative 0-to-100 ranking of resemblance, not a probability."
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
         {rows.map((r) => {
@@ -88,7 +88,7 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
                 style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0 }}
               >
                 <span
-                  title={`${r.label} (${r.l1_id} · ${r.l1_label})`}
+                  title={`${r.label} (${r.l1_label} family)`}
                   aria-label={`${r.label}, ${r.l1_label} family`}
                   style={{
                     display: "inline-flex",

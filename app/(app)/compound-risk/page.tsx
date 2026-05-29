@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import {
   COMPOUND_COUNTRIES,
-  COMPOUND_VINTAGE,
   COMPOUND_CASE_STUDIES,
   countLitAtThreshold,
   type CompoundCountry,
@@ -16,7 +15,7 @@ import { CaseStudyBox } from "@/components/compound-risk/CaseStudyBox";
 export const metadata: Metadata = {
   title: "Compound Risk · QG Intelligence",
   description:
-    "Countries lit on multiple crisis recipes at once. Compound score is a stacking heuristic over discrimination ranks, not a joint probability.",
+    "Countries whose recent signals resemble multiple crisis shapes at once. Compound Risk is a 0-100 score that averages a country's recipe matches, dampened for thin coverage.",
 };
 
 interface PageProps {
@@ -58,7 +57,8 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Vintage chip + HowToReadButton */}
+        {/* HowToReadButton (vintage stamp removed per V4.1 §2 — one stamp lives
+            under TAKE THE TOUR in the global header). */}
         <div
           style={{
             display: "flex",
@@ -69,20 +69,6 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
           }}
         >
           <HowToReadButton routeKey="compound-risk" />
-          <span
-            style={{
-              display: "inline-block",
-              padding: "5px 12px",
-              border: "1px solid var(--qgi-border)",
-              color: "var(--qgi-text-dim)",
-              borderRadius: "4px",
-              fontSize: "11px",
-              letterSpacing: "1px",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            Data as of {COMPOUND_VINTAGE}
-          </span>
         </div>
 
         {/* Hero */}
@@ -90,7 +76,6 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
           litAtThreshold={litAtThreshold}
           minThreshold={minThreshold}
           totalCountries={totalCountries}
-          vintage={COMPOUND_VINTAGE}
         />
 
         {/* Filters */}
@@ -118,16 +103,6 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
               paddingTop: "24px",
             }}
           >
-            <span
-              style={{
-                fontSize: "10px",
-                letterSpacing: "1.5px",
-                fontFamily: "ui-monospace, monospace",
-                color: "var(--qgi-text-dim)",
-              }}
-            >
-              §03
-            </span>
             <h2
               style={{
                 fontSize: "18px",
@@ -137,21 +112,8 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
                 flex: 1,
               }}
             >
-              Current compound case studies
+              Compound case studies
             </h2>
-            <span
-              style={{
-                fontSize: "9px",
-                letterSpacing: "1px",
-                padding: "2px 7px",
-                border: "1px dashed var(--qgi-accent)",
-                color: "var(--qgi-accent)",
-                borderRadius: "3px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-            >
-              MOCK NARRATIVE
-            </span>
           </div>
           <p
             style={{
@@ -162,10 +124,8 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
               lineHeight: 1.5,
             }}
           >
-            Analyst-style structural reads on three countries where multiple recipes
-            co-light. These are <strong>mock narratives for design preview only</strong>,
-            not published QGI assessments. They will be replaced by curated, dated briefs
-            once the recipe fleet deploys a second validated recipe.
+            Structural reads on three countries where multiple recipes light up at once,
+            and what each stack tells us about the country&apos;s position in the corpus.
           </p>
           <div
             style={{
@@ -197,8 +157,10 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
             letterSpacing: "0.3px",
           }}
         >
-          <span>Compound Risk · data as of {COMPOUND_VINTAGE}</span>
-          <span>Compound score: stacked rank, not a probability</span>
+          <span>Compound Risk</span>
+          <span>
+            Bounded 0-100 score, averaged across recipe matches. Not a probability.
+          </span>
         </div>
       </div>
     </div>

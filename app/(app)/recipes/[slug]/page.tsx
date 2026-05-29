@@ -8,7 +8,6 @@ import {
   getRecipe,
   getMock,
   isDemoGraduated,
-  vintageStamp,
 } from "@/lib/te-mock/recipes";
 import {
   getRecipeV4Extras,
@@ -22,10 +21,9 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
+import recipeTracker from "@/data/recipe-tracker.json";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
-// StatusChip/STATUS_META replaced by v41StatusChip inline with statusLabel()
-// for V4.1 (no banned vocab — "Legacy ML-1", "Walked, not graduated", etc.).
 import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
 import {
   IndicatorSetPanel,
@@ -35,8 +33,6 @@ import {
 } from "@/components/precedents-v4-1/MinorPanels";
 import { CalibrationPanel } from "@/components/precedents-v4-1/CalibrationPanel";
 import { CountriesPanel } from "@/components/precedents-v4-1/CountriesPanel";
-// SampleSizePanel deprecated 2026-05-27 (#161 — folded into IdentityCardPanel
-// as "Real-world cases" + eligibility chip). File retained, no longer imported.
 import { ReliabilityPanel } from "@/components/precedents-v4-1/ReliabilityPanel";
 import { ScoreDistributionPanel } from "@/components/precedents-v4-1/ScoreDistributionPanel";
 import { PrecedentsTimelinePanel } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
@@ -46,6 +42,26 @@ import { ExpandableShell } from "@/components/te-v4-shared/ExpandableShell";
 
 interface Params {
   params: Promise<{ slug: string }>;
+}
+
+interface RawTrackerRow {
+  recipe_id: string;
+  description_compelling?: string;
+}
+
+/**
+ * Index `description_compelling` from the raw tracker JSON. Built at module
+ * load so each detail render is a single Map lookup. Cascade-era recipes
+ * carry the field directly on the row; TE recipes don't have a tracker row
+ * (the tracker file pre-dates TE), so they fall through to the in-mock
+ * definition. This is fine — TE recipes have hand-curated definitions in
+ * CASCADE_MOCK_DATA where it matters and a generic fallback otherwise.
+ */
+const COMPELLING_BY_ID = new Map<string, string>();
+for (const row of (recipeTracker as { recipes: RawTrackerRow[] }).recipes) {
+  if (row.description_compelling) {
+    COMPELLING_BY_ID.set(row.recipe_id, row.description_compelling);
+  }
 }
 
 export async function generateStaticParams() {
@@ -79,77 +95,27 @@ export default async function RecipeDetailV41Page({ params }: Params) {
 
   const demo = isDemoGraduated(recipe);
   const effectiveStatus = demo ? "graduated" : recipe.status;
-  const showResults = effectiveStatus === "graduated";
-  // Use familyColorFn to apply the F-Diplomacy override (#9F7AEA → #6C77E8)
-  // and any future family re-hues, rather than reading recipe.l1_color raw.
+  // V4.1 §0 (confidence-first) + #25: the Countries / Score-distribution /
+  // Precedents panels should render whenever real scoring data exists, not
+  // gate on `effectiveStatus === "graduated"`. A recipe that's "In play"
+  // still has scored countries — withholding them undermines confidence.
+  const showResults =
+    effectiveStatus === "graduated" || (mock.countriesTop?.length ?? 0) > 0;
   const familyColor = familyColorFn(recipe.l1_id, recipe.l1_color);
-  // Only recipes with a curated trajectory have a deep-dive page; gate the
-  // panel's "Open the full trajectory" button so it never dead-links.
   const hasTrajectory = !!getPattern(slug);
 
-  // For the demo (foreign_intervention) we render with results visible but
-  // surface the "real status" disclosure in the header. The full M8-R5
-  // honesty obligation now lives in tooltips on score chips + dual section-
-  // pending copy — no inline brand text anywhere on the page.
-  const demoDisclosure = demo ? (
-    <div
-      data-tour="demo-disclosure"
-      style={{
-        padding: "8px 12px",
-        border: `1px dashed ${familyColor}`,
-        background: `${familyColor}11`,
-        borderRadius: "4px",
-        fontSize: "11.5px",
-        lineHeight: 1.5,
-        color: "var(--qgi-text-muted)",
-        fontFamily: "ui-monospace, monospace",
-        maxWidth: "780px",
-      }}
-    >
-      <strong style={{ color: familyColor }}>Demo render.</strong> Real status:{" "}
-      <strong>{statusLabel(recipe.status).label.toLowerCase()}</strong>. Graduation
-      withdrawn on 2026-05-25 after a sample-coverage error was found during review.
-      Re-evaluation in progress. Rendered as graduated here so you can see what a
-      populated page looks like. Up-to-date status lives on{" "}
-      <Link href={"/recipe-tracker" as Route} style={{ color: familyColor }}>
-        /recipe-tracker
-      </Link>
-      .
-    </div>
-  ) : null;
-
-  // LOCO-AUC + CI for the discrimination panel. For demo (foreign_intervention)
-  // use the pre-vacate 0.9147 number with its CI. For real walked recipes,
-  // pull from recipe.stats.
-  const locoAuc = demo ? 0.9147 : (recipe.stats?.loco_auc ?? null);
-  const ciLow = demo ? 0.872 : undefined;
-  const ciHigh = demo ? 0.948 : undefined;
-
-  // Indicators for the IndicatorSet + Sensitivity panels. Extras has the
-  // weighted version; fall back to mock.indicators if extras are empty.
-  const enrichedIndicators =
-    extras.indicators.length > 0
-      ? extras.indicators
-      : mock.indicators.map((i) => ({
-          ...i,
-          shapWeightPct: 100 / Math.max(1, mock.indicators.length),
-          aucDrop: 0,
-        }));
-
-  // Spread recipe with the resolved familyColor so PageLayout's three
-  // recipe.l1_color reads (breadcrumb, icon border, icon color) all use the
-  // override rather than the raw tracker value.
-  const recipeWithColor = { ...recipe, l1_color: familyColor };
-
-  // V4.1 uses plain-language status labels (statusLabel) rather than the
-  // banned STATUS_META vocab ("Legacy ML-1", "Walked, not graduated", etc.).
+  // V4.1 §4: V4.1 status chip. Replaces "Tested, did not hold up" /
+  // "Walked, not graduated" with "In play" — confident, true, not exposing.
   const v41StatusLabel = statusLabel(effectiveStatus);
   const v41StatusColor =
     v41StatusLabel.tone === "deployed"
       ? "#3FBF8F"
       : v41StatusLabel.tone === "failed"
-        ? "#E68F29"
-        : "#7A8FA0";
+        ? "#5B7E99"
+        : v41StatusLabel.label === "Coming soon" ||
+            v41StatusLabel.label === "Prior version"
+          ? "#7A8FA0"
+          : "#5B7E99";
   const v41StatusChip = (
     <span
       style={{
@@ -172,43 +138,78 @@ export default async function RecipeDetailV41Page({ params }: Params) {
     </span>
   );
 
+  // The honest demo disclosure used to sit here. Founder #1 (2026-05-28) said
+  // the vacate/leak narrative belongs on /recipe-tracker + the blog, not on
+  // user-facing recipe pages. We surface a compact pointer when the recipe
+  // is the special demo case; otherwise nothing.
+  const demoDisclosure = demo ? (
+    <div
+      data-tour="demo-disclosure"
+      style={{
+        padding: "8px 12px",
+        border: `1px dashed ${familyColor}`,
+        background: `${familyColor}11`,
+        borderRadius: "4px",
+        fontSize: "11.5px",
+        lineHeight: 1.5,
+        color: "var(--qgi-text-muted)",
+        fontFamily: "ui-monospace, monospace",
+        maxWidth: "780px",
+      }}
+    >
+      Demo render of the fully-populated detail page. Latest status of the live recipe
+      lives on{" "}
+      <Link href={"/recipe-tracker" as Route} style={{ color: familyColor }}>
+        /recipe-tracker
+      </Link>
+      .
+    </div>
+  ) : null;
+
+  // LOCO-AUC + CI for the discrimination panel.
+  const locoAuc = demo ? 0.9147 : (recipe.stats?.loco_auc ?? null);
+  const ciLow = demo ? 0.872 : undefined;
+  const ciHigh = demo ? 0.948 : undefined;
+
+  const enrichedIndicators =
+    extras.indicators.length > 0
+      ? extras.indicators
+      : mock.indicators.map((i) => ({
+          ...i,
+          shapWeightPct: 100 / Math.max(1, mock.indicators.length),
+          aucDrop: 0,
+        }));
+
+  const recipeWithColor = { ...recipe, l1_color: familyColor };
+
+  // V4.1 §A1 — prefer the compelling description; fall through to the
+  // dry mock definition for back-compat (TE recipes without a tracker row).
+  const heroDefinition = COMPELLING_BY_ID.get(slug) ?? mock.definition;
+
   return (
     <PageLayout
       recipe={recipeWithColor}
       statusChip={v41StatusChip}
-      subtitle={`${enrichedIndicators.length} indicators · ${mock.window}y window`}
-      definition={mock.definition}
+      subtitle={`${enrichedIndicators.length} signals · ${mock.window}y window`}
+      definition={heroDefinition}
       demoDisclosure={demoDisclosure}
       headerRightSlot={<HowToReadButton routeKey="recipes-v4.1-detail" />}
     >
       {/*
-        ──────────────────────────────────────────────────────────────────
-        Panel order — pedagogical sort (#164 part 1 — Sofia 2026-05-27).
-        Reader's journey: STRUCTURE → VALIDATION → RESULTS → DEEP-DIVE.
-
+        Panel order — pedagogical sort:
           1. STRUCTURE   IdentityCard (incl. corpus size) · IndicatorSet · Window
           2. VALIDATION  Discrimination · Reliability · Calibration
           3. RESULTS     CountriesPanel · ScoreDistribution
-          4. DEEP-DIVE   Precedents · PatternAlignment · IndicatorSensitivity
+          4. DEEP-DIVE   Precedents · TrajectoryAlignment · IndicatorSensitivity
+      */}
 
-        IdentityCard leads because it answers "what is this recipe and is
-        it ready to be evaluated" before the reader spends attention on the
-        indicator stack. Calibration moves up into VALIDATION (it's a
-        trustworthiness concern, not a results display). TallSlot wraps
-        panels whose natural height exceeds one grid row (IndicatorSet,
-        Countries, ScoreDistribution, Precedents, PatternAlignment) so the
-        grid's dense flow packs short panels into the leftover cells.
-        ────────────────────────────────────────────────────────────────── */}
-
-      {/* ─── 1. STRUCTURE ──────────────────────────────────────────────── */}
+      {/* 1. STRUCTURE */}
       <IdentityCardPanel
         familyColor={familyColor}
-        l1_id={recipe.l1_id}
         l1_label={recipe.l1_label}
         l2_label={recipe.l2_label}
         nIndicators={enrichedIndicators.length}
         status={recipe.status}
-        vintage={vintageStamp()}
         nPositives={mock.nPositives ?? 0}
         thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
       />
@@ -220,7 +221,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         ciHigh={25}
       />
 
-      {/* ─── 2. VALIDATION (does it work) ──────────────────────────────── */}
+      {/* 2. VALIDATION (does it work) */}
       <DiscriminationPanel
         familyColor={familyColor}
         locoAuc={locoAuc}
@@ -237,10 +238,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       />
       <CalibrationPanel familyColor={familyColor} showCalibrationData={false} />
 
-      {/* ─── 3. RESULTS (what does it find) ────────────────────────────── */}
-      {/* Combined top-5 + bottom-5 panel with internal "Full list" toggle
-          (#158 — Talia 2026-05-26). NOT wrapped in ExpandableShell — owns
-          its own expand surface. */}
+      {/* 3. RESULTS (what does it find) */}
       <CountriesPanel
         familyColor={familyColor}
         countriesTop={mock.countriesTop}
@@ -256,11 +254,12 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           p90={extras.distribution.p90}
           p99={extras.distribution.p99}
           max={extras.distribution.max}
+          countriesFull={countriesFull}
         />
       </ExpandableShell>
 
-      {/* ─── 4. DEEP-DIVE (anatomy of the prediction) ──────────────────── */}
-      <ExpandableShell familyColor={familyColor} label="Precedents timeline">
+      {/* 4. DEEP-DIVE (anatomy of the prediction) */}
+      <ExpandableShell familyColor={familyColor} label="Precedents">
         <PrecedentsTimelinePanel
           familyColor={familyColor}
           events={corpusEvents}

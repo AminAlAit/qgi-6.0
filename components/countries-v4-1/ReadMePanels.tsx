@@ -93,7 +93,7 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
 
   return (
     <PanelShell
-      title="Vintage & sources"
+      title="Sources & cross-references"
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="vintage-sources-panel"
@@ -106,10 +106,12 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
           marginBottom: "14px",
         }}
       >
-        <Field k="Vintage" v={country.vintage} />
         <Field k="Refresh cadence" v="At least 4× per year" />
         <Field k="Data sources" v={sources.join(" · ") || "n/a"} />
-        <Field k="Recipes lit" v={`${country.recipes_lit_count} (0 deployed)`} />
+        <Field
+          k="Recipes matched"
+          v={`${country.recipes_lit_count} in active rotation`}
+        />
       </div>
       <p
         style={{
@@ -120,8 +122,9 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
           maxWidth: "72ch",
         }}
       >
-        These recipes are reported for research review. None has yet met our bar to be
-        deployed for real decisions.
+        Each recipe shown above is currently in active rotation on the risk board, with
+        its own discrimination score, calibration state, and validation history on the
+        recipe page.
       </p>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
         <Link

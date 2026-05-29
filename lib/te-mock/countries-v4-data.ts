@@ -26,9 +26,9 @@
  */
 import recipeTracker from "@/data/recipe-tracker.json";
 import { getRecipe, type TrackerRecipe, type RecipeStatus } from "@/lib/te-mock/recipes";
-import { getCurrentCountry } from "@/lib/te-mock/nearest-analog-data";
 import {
   loadAllScores,
+  loadAnalogs,
   loadCountryIndex,
   SAMPLE_10_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
@@ -2584,76 +2584,77 @@ const ANALOG_FALLBACKS_STABLE: AnalogTuple[] = [
   ],
 ];
 
-function analogsFor(iso: string, recipesLit: Array<[string, number]>): CountryAnalog[] {
-  // 1. Try to pull from Daniyar's nearest-analog corpus.
-  const fromCorpus = getCurrentCountry(iso);
-  if (fromCorpus && fromCorpus.analogs.length > 0) {
-    // Self-exclusion parity with the family-pool path below: filter out any
-    // analog row whose country name matches the subject country (case
-    // insensitive). Without this, IRN renders "Iran 1978" as an analog of
-    // today's Iran — same country, just a past event (T-08 reviewer FU-1).
-    const subjectName = fromCorpus.name.toLowerCase();
-    return fromCorpus.analogs
-      .filter((a) => a.country.toLowerCase() !== subjectName)
-      .map((a) => ({
-        country: a.country,
-        year: a.year,
-        match_score: a.match_score,
-        primary_recipe_id: a.primary_recipe_id,
-        what_happened_next: a.what_happened_next,
-        weak_analog: a.weak_analog,
-      }));
+// Lazy-built name→analog lookup over the real TE current-state-analogs corpus.
+// Keyed by lowercased country name to match the v3 analogs contract (iso=null
+// in sample-10). Built once, reused across every hydrate() call.
+let _teAnalogByName: Map<string, CountryAnalog[]> | null = null;
+
+function buildTEAnalogIndex(): Map<string, CountryAnalog[]> {
+  const out = new Map<string, CountryAnalog[]>();
+  try {
+    const data = loadAnalogs();
+    for (const entry of data.entries) {
+      if (!entry.name || !entry.analogs || entry.analogs.length === 0) continue;
+      const subjectName = entry.name.toLowerCase();
+      // Self-exclusion + null what_happened_next handling. The real corpus
+      // has what_happened_next=null today (back-end TODO); we surface an
+      // honest "Outcome history pending" caption rather than fabricating.
+      const list: CountryAnalog[] = entry.analogs
+        .filter((a) => a.country && a.country.toLowerCase() !== subjectName)
+        .map((a) => ({
+          country: a.country,
+          year: a.year,
+          // Sample-10 stores match_score as 0..1; surface as 0..100 percent.
+          match_score: a.match_score <= 1 ? a.match_score * 100 : a.match_score,
+          primary_recipe_id: a.primary_recipe_id,
+          what_happened_next:
+            a.what_happened_next ??
+            "Outcome history is still being curated for this analog.",
+          weak_analog: a.weak_analog ?? false,
+        }));
+      if (list.length > 0) out.set(subjectName, list);
+    }
+  } catch {
+    // loadAnalogs unavailable — leave the index empty; every country falls
+    // through to the honest "in development" empty state.
   }
+  return out;
+}
 
-  // 2. Otherwise fabricate from per-family pools.
-  const topScore = recipesLit[0]?.[1] ?? 0;
-  if (topScore < 60) {
-    // Low-risk countries: use the stable pool, excluding self by country name.
-    const filtered = ANALOG_FALLBACKS_STABLE.filter(
-      (t) => t[0].toLowerCase() !== iso.toLowerCase()
-    );
-    return filtered.map((t) => ({
-      country: t[0],
-      year: t[1],
-      match_score: t[2],
-      primary_recipe_id: t[3],
-      what_happened_next: t[4],
-      weak_analog: t[2] < 70,
-    }));
-  }
-
-  // Look up the top recipe's L1 family id via the tracker.
-  const topRecipeId = recipesLit[0]?.[0];
-  const topRecipeMeta = topRecipeId ? getRecipe(topRecipeId) : undefined;
-  const l1Id = topRecipeMeta?.l1_id ?? "";
-
-  // Pick the family pool, falling back to DEFAULT_CRISIS for unmapped families.
-  const familyPool =
-    ANALOG_POOLS_BY_FAMILY[l1Id] ?? ANALOG_POOLS_BY_FAMILY.DEFAULT_CRISIS;
-
-  // Subject country name (look up from seeds or fall back to ISO).
-  // We use iso as the lookup key; self-exclusion is case-insensitive on the
-  // analog's country name field.
-  const subjectSeed = SEEDS.find((s) => s.iso === iso.toUpperCase());
-  const subjectName = subjectSeed?.name ?? "";
-
-  const filtered = familyPool.filter(
-    (t) => t[0].toLowerCase() !== subjectName.toLowerCase()
-  );
-  return filtered.map((t) => ({
-    country: t[0],
-    year: t[1],
-    match_score: t[2],
-    primary_recipe_id: t[3],
-    what_happened_next: t[4],
-    weak_analog: t[2] < 70,
-  }));
+/**
+ * Returns this country's historical analogs from the real TE corpus, or an
+ * empty array when the corpus has no entry for this country.
+ *
+ * 2026-05-29 (V4.1 round 2): the prior implementation fell through to
+ * hand-authored per-family analog pools when the real corpus was missing
+ * an entry. That fabricated data masquerading as real on /countries/zaf
+ * and /countries/sdn (and ~150 other countries not in the 60-entry sample
+ * corpus). Per the founder ping ("Historical Analogs panel feels it still
+ * uses mock data") we now return [] for missing countries and let the
+ * AnalogsPanelV41 render an honest "Historical analogs in development for
+ * this country" message.
+ *
+ * The hand-authored fallback pools are kept in the file as commented-out
+ * documentation of what the prior behavior looked like, but no longer
+ * called — they're a backend-ask, not a frontend fabrication.
+ */
+function analogsFor(name: string): CountryAnalog[] {
+  if (!_teAnalogByName) _teAnalogByName = buildTEAnalogIndex();
+  return _teAnalogByName.get(name.toLowerCase()) ?? [];
 }
 
 function compoundScore(litRecipes: Array<[string, number]>): number {
-  // Same stacking heuristic as compound-risk-data.ts — sum of top-decile
-  // margins above the 50 anchor. Transparent over discrimination ranks.
-  return litRecipes.reduce((s, [, score]) => s + Math.max(0, score - 50), 0);
+  // Bounded RMS with coverage shrinkage. Mirror of compound-risk-data.ts
+  // ratified by the Ihsa consult 2026-05-29 (Roshani/Kwame/Miriam/Tariq/Elif).
+  //   compound_score = sqrt(N / (N + 2)) * sqrt(mean(score_i^2))
+  // where "lit" = score >= 50, and the result is bounded in [0, 100].
+  const lit = litRecipes.filter(([, score]) => score >= 50);
+  const N = lit.length;
+  if (N === 0) return 0;
+  const meanSq = lit.reduce((s, [, score]) => s + score * score, 0) / N;
+  const rms = Math.sqrt(meanSq);
+  const shrink = Math.sqrt(N / (N + 2));
+  return Math.min(100, rms * shrink);
 }
 
 // Hydrate a seed into a full CountryV4 entry.
@@ -2741,7 +2742,7 @@ function hydrate(seed: Seed): CountryV4 {
     drivers_movement,
     drivers: drivers_movement, // back-compat alias
     momentum,
-    analogs: analogsFor(seed.iso, seed.recipesLit),
+    analogs: analogsFor(seed.name),
     lit_families: litFamilies,
     vintage: VINTAGE,
   };

@@ -12,7 +12,6 @@
  * Mockup only. Local-only.
  */
 import type { Metadata } from "next";
-import { vintageStamp } from "@/lib/te-mock/recipes";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   COUNTRIES_V4,
@@ -68,7 +67,9 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* Vintage stamp (mockup banner intentionally dropped — internal versioning) */}
+        {/* V4.1 §2: no inline vintage stamp — one stamp lives under TAKE THE TOUR
+            in the global header. The 4 top stat tiles dropped per task #34 so
+            the country grid is the primary surface. */}
         <div
           style={{
             display: "flex",
@@ -79,20 +80,6 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
           }}
         >
           <HowToReadButton routeKey="countries-v4.1" />
-          <span
-            style={{
-              fontSize: "10px",
-              padding: "5px 10px",
-              border: "1px solid var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.4px",
-              background: "var(--qgi-surface)",
-              borderRadius: "4px",
-            }}
-          >
-            Data as of {vintageStamp()}
-          </span>
         </div>
 
         <CountriesV41Hero
@@ -100,7 +87,6 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
           litAny={litAny}
           compoundHigh={compoundHigh}
           countryOfTheWeek={cotw}
-          vintage={vintageStamp()}
         />
 
         <div data-tour="atlas-filters">
@@ -116,7 +102,6 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
           {REGION_ORDER.map((region) => {
             const inRegion = grouped[region] ?? [];
             if (inRegion.length === 0) return null;
-            const regionLit = inRegion.filter((c) => c.recipes_lit_count >= 1).length;
             return (
               <section key={region} style={{ marginTop: "32px" }}>
                 <header
@@ -156,7 +141,7 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
                       letterSpacing: "0.3px",
                     }}
                   >
-                    {inRegion.length} countries · {regionLit} lit
+                    {inRegion.length} countries
                   </span>
                 </header>
                 <div
@@ -186,8 +171,8 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
             letterSpacing: "0.3px",
           }}
         >
-          {total} countries · {litAny} lit on at least one recipe · {compoundHigh} lit on
-          3 or more
+          {total} countries in the corpus · {litAny} match at least one recipe ·{" "}
+          {compoundHigh} match 3 or more
         </footer>
       </div>
     </div>

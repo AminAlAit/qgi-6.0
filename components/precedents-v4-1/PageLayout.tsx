@@ -96,9 +96,8 @@ export function PageLayout({
                 ← Recipes
               </Link>
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
-              <span style={{ color: recipe.l1_color }}>
-                {recipe.l1_id} · {recipe.l1_label}
-              </span>
+              {/* V4.1 §1.2: family rendered as label only — no letter glyph. */}
+              <span style={{ color: recipe.l1_color }}>{recipe.l1_label}</span>
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               <span>{recipe.l2_label}</span>
             </nav>

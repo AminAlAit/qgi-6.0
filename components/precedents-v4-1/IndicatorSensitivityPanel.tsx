@@ -30,10 +30,18 @@ const ANTI_CAUSAL_TOOLTIP =
   "Sensitivity is structural responsiveness, never a lever to pull. " +
   "The page must never imply 'improve indicator X to lower this country's risk.'";
 
+/** V4.1 polish 2026-05-29 (Naila #30):
+ *  - Caption now explains what AUC means in plain English. The old caption
+ *    used "AUC drop" naked, which is unintuitive for the audience.
+ *  - Caption splits into two sentences: a structural definition + a
+ *    diagnostic line about over-reliance. */
 const CAPTION =
-  "How much each ingredient carries the recipe: the AUC drop if any " +
-  "single indicator were removed. If removing any one collapses the score, " +
-  "the recipe is over-reliant on it.";
+  "How much each signal carries the recipe. " +
+  "AUC measures how cleanly the recipe separates pre-event country-years " +
+  "from the rest — the bar shows how much that separation falls if we " +
+  "remove a single signal. " +
+  "If pulling any one signal collapses the recipe, it was leaning on that " +
+  "signal too hard.";
 // ==============================================================================
 
 export interface IndicatorSensitivity {
@@ -91,13 +99,8 @@ export function IndicatorSensitivityPanel({
   indicators,
 }: IndicatorSensitivityPanelProps) {
   const rows = clampIndicators(indicators);
-  // Locked per R&D Q4 #1; no override path.
-  const tooltip = ANTI_CAUSAL_TOOLTIP;
 
-  // Scale bars so the largest drop fills ~92% of the track. If everything is
-  // tiny, the bars stay tiny — that itself communicates "no indicator carries
-  // the recipe alone," which is exactly what a healthy sensitivity profile
-  // looks like.
+  // Scale bars so the largest drop fills ~92% of the track.
   const maxDrop = Math.max(0.01, ...rows.map((r) => r.aucDrop));
   const trackPct = (d: number) => Math.min(100, (d / maxDrop) * 92);
 
@@ -115,7 +118,6 @@ export function IndicatorSensitivityPanel({
   const headerStyle: CSSProperties = {
     display: "flex",
     alignItems: "baseline",
-    justifyContent: "space-between",
     gap: 12,
     marginBottom: 6,
   };
@@ -129,18 +131,6 @@ export function IndicatorSensitivityPanel({
     fontWeight: 600,
   };
 
-  const hintStyle: CSSProperties = {
-    fontSize: 10,
-    letterSpacing: "0.4px",
-    color: TEXT_MUTED,
-    fontFamily: MONO,
-    cursor: "help",
-    border: `1px solid ${BORDER}`,
-    borderRadius: 3,
-    padding: "1px 6px",
-    userSelect: "none",
-  };
-
   const captionStyle: CSSProperties = {
     fontSize: 12,
     lineHeight: 1.5,
@@ -149,20 +139,19 @@ export function IndicatorSensitivityPanel({
     maxWidth: "60ch",
   };
 
+  // V4.1 polish 2026-05-29 (Naila #30): the "ⓘ what this means" chip
+  // in the top-right was removed per founder direction. The anti-causal
+  // rider it carried (ANTI_CAUSAL_TOOLTIP) is reasserted as an
+  // aria-description on the panel so screen readers still hear it.
   return (
     <section
       aria-label="Indicator sensitivity"
+      aria-description={ANTI_CAUSAL_TOOLTIP}
       style={panelStyle}
       data-panel="indicator-sensitivity"
     >
       <header style={headerStyle}>
         <h2 style={titleStyle}>Indicator sensitivity</h2>
-        {/* Header tooltip carries the anti-causal sentence verbatim.
-            Native `title` is intentional: works without JS, screen-reader
-            accessible, no popover dependency. */}
-        <span title={tooltip} aria-label={tooltip} style={hintStyle} role="note">
-          ⓘ what this means
-        </span>
       </header>
 
       <p style={captionStyle}>{CAPTION}</p>

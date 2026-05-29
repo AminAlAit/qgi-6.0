@@ -65,7 +65,9 @@ export function WhyScoresPanel({
           }}
         >
           {rows.map((r) => (
-            <li key={r.indicator_code}>
+            // key uses indicator_name to keep raw provider codes out of the
+            // SSR'd HTML stream — rule §3 (never the code; always the name).
+            <li key={r.indicator_name}>
               <div
                 style={{
                   display: "flex",
@@ -188,7 +190,7 @@ export function WhatsMovingPanel({
           const z = m.z_score_change;
           return (
             <li
-              key={m.indicator_code}
+              key={m.indicator_name}
               style={{
                 display: "grid",
                 gridTemplateColumns: "minmax(0, 1fr) auto auto",

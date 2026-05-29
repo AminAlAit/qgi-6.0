@@ -1,28 +1,34 @@
 import type { RecipeStatus } from "@/lib/te-mock/recipes";
 
+/** STATUS_META — V4.1 §4 vocabulary applied 2026-05-29.
+ *  All banned chip text ("Walked, not graduated", "Walk in progress",
+ *  "Prior vintage", "Queued") replaced with the audience-facing
+ *  vocabulary: Validated / In play / Coming soon / Prior version.
+ *
+ *  "Coming soon" reads as "on the roadmap, just not shipped yet".
+ *  "In play" reads as "we are actively using and refining this".
+ *  Both are honest; neither leaks methodology jargon. */
 export const STATUS_META: Record<
   RecipeStatus,
   { label: string; color: string; bgAlpha: string }
 > = {
   graduated: { label: "Validated", color: "#3FBF8F", bgAlpha: "rgba(63,191,143,0.15)" },
   walked_no_graduation: {
-    label: "Walked, not graduated",
-    color: "#E68F29",
-    bgAlpha: "rgba(230,143,41,0.15)",
+    label: "In play",
+    color: "#5B7E99",
+    bgAlpha: "rgba(91,126,153,0.15)",
   },
   in_progress: {
-    label: "Walk in progress",
-    color: "#a78bfa",
-    bgAlpha: "rgba(167,139,250,0.15)",
+    label: "In play",
+    color: "#5B7E99",
+    bgAlpha: "rgba(91,126,153,0.15)",
   },
-  // 2026-05-29 wire-up: relabel from "Legacy ML-1" → "Prior vintage" to
-  // strip the methodology-jargon from user-facing chips.
   live_legacy: {
-    label: "Prior vintage",
+    label: "Prior version",
     color: "#7A8FA0",
     bgAlpha: "rgba(122,143,160,0.15)",
   },
-  queued: { label: "Queued", color: "#64748b", bgAlpha: "rgba(100,116,139,0.15)" },
+  queued: { label: "Coming soon", color: "#7A8FA0", bgAlpha: "rgba(122,143,160,0.15)" },
 };
 
 export function StatusChip({

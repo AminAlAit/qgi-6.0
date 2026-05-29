@@ -4,15 +4,9 @@ interface Props {
   litAtThreshold: number;
   minThreshold: number;
   totalCountries: number;
-  vintage: string;
 }
 
-export function CompoundHero({
-  litAtThreshold,
-  minThreshold,
-  totalCountries,
-  vintage,
-}: Props) {
+export function CompoundHero({ litAtThreshold, minThreshold, totalCountries }: Props) {
   return (
     <section data-tour="compound-hero" style={{ marginBottom: "8px" }}>
       <div
@@ -35,7 +29,7 @@ export function CompoundHero({
           margin: "0 0 16px",
         }}
       >
-        Countries lighting up on more than one recipe
+        Where multiple crisis shapes pile up on the same country
       </h1>
 
       <div
@@ -102,9 +96,9 @@ export function CompoundHero({
               lineHeight: 1.45,
             }}
           >
-            countries are currently lit on{" "}
-            <strong style={{ color: "var(--qgi-amber)" }}>≥{minThreshold} recipes</strong>{" "}
-            at once
+            countries currently match{" "}
+            <strong style={{ color: "var(--qgi-amber)" }}>{minThreshold} or more</strong>{" "}
+            of our crisis recipes at once
           </div>
           <div
             style={{
@@ -115,7 +109,7 @@ export function CompoundHero({
               color: "var(--qgi-text-dim)",
             }}
           >
-            of {totalCountries} country-cases tracked · vintage {vintage}
+            of {totalCountries} countries in the corpus
           </div>
         </div>
 
@@ -131,13 +125,12 @@ export function CompoundHero({
               margin: "0 0 12px",
             }}
           >
-            <strong>Compound risk</strong> is the structural condition where a{" "}
-            <em>single state</em> is positioned high on{" "}
-            <em>multiple, semantically-distinct</em> crisis recipes at the same time:
-            civil-war shape <em>and</em> economic-recession shape <em>and</em>{" "}
-            mass-protest shape, layered on the same body politic. Each recipe scores the
-            country independently against its own canonical pre-event trajectory; the
-            compound view stacks those positions and surfaces where the stack is tallest.
+            <strong>Compound Risk</strong> is a single 0-100 score that captures how
+            strongly a country&apos;s recent signals resemble multiple crisis shapes at
+            once. Civil-war shape <em>and</em> economic-recession shape <em>and</em>{" "}
+            mass-protest shape can each light up on the same body politic. The score
+            averages those resemblances, weighted toward the strongest, and is dampened
+            when the country only matches a recipe or two.
           </p>
           <p
             style={{
@@ -148,10 +141,10 @@ export function CompoundHero({
             }}
           >
             The page answers one question:{" "}
-            <em>where do structural pressures pile up on the same state?</em> It does not
-            claim those pressures interact causally, nor that the recipes will fire
-            jointly. It is a multi-frame similarity read, surfaced honestly with each
-            recipe&apos;s own tier and band carried through.
+            <em>where do structural pressures pile up on the same country?</em> It does
+            not claim those pressures interact causally, nor that the recipes will fire
+            jointly. It is a multi-lens resemblance read, bounded so the score does not
+            grow simply because we ship more recipes.
           </p>
         </div>
       </div>

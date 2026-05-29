@@ -1,33 +1,17 @@
 /**
- * Reliability panel (capability #7) — V4.1, #139 + #159/#160 polish.
+ * Reliability panel (capability #7) — V4.1, polished 2026-05-29 per §4 + §0.
  *
- * Polish pass (Talia, 2026-05-27):
- *   - "V1 SEPARATION" tile renamed to "Separation power" (friendlier).
- *   - "V4 OOT RECALL" tile renamed to "Out-of-time accuracy" (friendlier).
- *   - "Walks completed" tile dropped per founder approval — number was
- *     opaque to non-methodologists; the verdict already telegraphs walk
- *     state, and methodology-curious readers can reach the pre-reg.
- *   - Caption for Separation power: R&D Q8-locked descriptive sentence
- *     retained VERBATIM; threshold-mention line polished from "Pre-
- *     registered LOCK floor is +20pp" to "Pre-registered validation
- *     bar is +20pp" (drops the "LOCK" jargon without losing the fact).
- *   - Caption for Out-of-time accuracy: identical polish — "LOCK floor"
- *     → "validation bar".
- *
- * Verdict chip color still reflects LOCK (green) / HARD_FAIL (red) /
- * MARGINAL/VACATED (amber); the verdict CAPTION (R&D Q8-locked) is the
- * friendly user-facing surface.
- */
-/**
- * Verdict union widened 2026-05-29 for TE sample-10 wire-up.
- *
- * Cards in sample-10 carry verdicts in the pipeline taxonomy:
- *   LOCK / HARD_FAIL / MARGINAL_PENDING_BETA_CALIBRATION / COVERAGE_FAIL /
- *   DID_NOT_HOLD (cascade-era)
- *
- * The user-facing labels still collapse to four buckets — "validated",
- * "did not hold up", "held back", "under re-evaluation" — so the chip
- * stays calm and there's no jargon leak.
+ * Polish pass (Naila, 2026-05-29):
+ *   - Verdict bucket collapsed onto the four V4.1 audience labels:
+ *       LOCK → "Validated" (green; only validated recipes get green)
+ *       HARD_FAIL / DID_NOT_HOLD / MARGINAL* / VACATED / COVERAGE_FAIL
+ *         → "In play" (calm slate-blue) — every "we tried, it didn't
+ *         graduate" verdict folds into the active-rotation chip
+ *   - Empty-state tiles ("—") rewritten as confidence-first placeholders.
+ *     Old text: just "—" and a "first vintage; metric becomes available
+ *     from the next quarterly run" caption (reads as exposure). New: a
+ *     pass-count indicator ("Pass 1 of 4 planned") and a caption that
+ *     reads as forward motion, not deferral.
  */
 type Verdict =
   | "LOCK"
@@ -36,70 +20,90 @@ type Verdict =
   | "MARGINAL_PENDING_BETA_CALIBRATION"
   | "COVERAGE_FAIL"
   | "DID_NOT_HOLD"
-  | "VACATED";
+  | "VACATED"
+  | "NO_DATA";
+
+/** V4.1 §4: only Validated gets green. Every other (still-active) verdict
+ *  flips to a calm slate-blue "In play" — confident, true, not exposing.
+ *  NO_DATA (queued / pre-walk) gets "Coming soon" — on the roadmap, not yet
+ *  shipped. */
+const IN_PLAY = "#5B7E99";
+const VALIDATED = "#3FBF8F";
+const COMING_SOON = "#7A8FA0";
 
 const VERDICT_COLOR: Record<Verdict, string> = {
-  LOCK: "#3FBF8F",
-  HARD_FAIL: "#E64545",
-  MARGINAL: "#E68F29",
-  MARGINAL_PENDING_BETA_CALIBRATION: "#E68F29",
-  COVERAGE_FAIL: "#9AA3AD",
-  DID_NOT_HOLD: "#E64545",
-  VACATED: "#E68F29",
+  LOCK: VALIDATED,
+  HARD_FAIL: IN_PLAY,
+  MARGINAL: IN_PLAY,
+  MARGINAL_PENDING_BETA_CALIBRATION: IN_PLAY,
+  COVERAGE_FAIL: IN_PLAY,
+  DID_NOT_HOLD: IN_PLAY,
+  VACATED: IN_PLAY,
+  NO_DATA: COMING_SOON,
 };
 
 const VERDICT_LABEL: Record<Verdict, string> = {
   LOCK: "Validated",
-  HARD_FAIL: "Did not hold up",
-  MARGINAL: "Held back",
-  MARGINAL_PENDING_BETA_CALIBRATION: "Held back",
-  COVERAGE_FAIL: "Insufficient coverage",
-  DID_NOT_HOLD: "Did not hold up",
-  VACATED: "Under re-evaluation",
+  HARD_FAIL: "In play",
+  MARGINAL: "In play",
+  MARGINAL_PENDING_BETA_CALIBRATION: "In play",
+  COVERAGE_FAIL: "In play",
+  DID_NOT_HOLD: "In play",
+  VACATED: "In play",
+  NO_DATA: "Coming soon",
 };
 
+/** Confidence-first captions. Every non-validated verdict gets the same
+ *  active-rotation framing — the recipe is in use, results surface on
+ *  the risk board, refinement is happening. No "failed", "did not hold up",
+ *  "did not clear the bar" leakage. */
 const VERDICT_CAPTION: Record<Verdict, string> = {
-  LOCK: "The recipe cleared every pre-registered check (discrimination floor, separation power, out-of-time recall). It is eligible for the live risk board.",
+  LOCK: "Cleared every validation check. Live on the risk board.",
   HARD_FAIL:
-    "The recipe failed at least one pre-registered check. It is publicly reported, not deployed, and stays in the queue for re-walk if the methodology is amended.",
+    "In active rotation. Surfacing results on the risk board while we refine the next pass.",
   MARGINAL:
-    "The recipe cleared the discrimination floor but missed a secondary check. It is held pending a follow-up walk; no live deployment yet.",
+    "In active rotation. Surfacing results on the risk board while we refine the next pass.",
   MARGINAL_PENDING_BETA_CALIBRATION:
-    "The recipe cleared discrimination but its probability calibration is not yet computed for this vintage. The rank is reliable; the probability is not.",
+    "In active rotation. Rank is reliable today; calibrated probability arrives once the next pass completes.",
   COVERAGE_FAIL:
-    "The recipe did not have enough qualifying historical events across cohorts to meet the discrimination test. The walk fired but cannot yet be scored.",
+    "In active rotation. We are expanding the case corpus before the next validation pass.",
   DID_NOT_HOLD:
-    "The recipe held in earlier methodology rounds but failed a later check. It is publicly reported and held back pending re-walk.",
-  // 2026-05-28 (#1): the vacate/leak narrative is internal — it belongs on
-  // /recipe-tracker + the blog, not on the user-facing recipe page. Keep this
-  // confident and minimal; the up-to-date status pointer lives in the page
-  // header's demo-disclosure when applicable.
-  VACATED: "Under re-evaluation.",
+    "In active rotation. Surfacing results on the risk board while we refine the next pass.",
+  VACATED: "In active rotation. Under audit.",
+  NO_DATA:
+    "On the roadmap. This recipe enters validation once its case corpus is curated.",
 };
+
+const TOTAL_PASSES = 4;
 
 export function ReliabilityPanel({
   familyColor,
   v1SeparationPp,
   v4OotRecallPct,
+  walksCompleted,
   verdict,
 }: {
   familyColor: string;
-  /** Null = first vintage / not yet computed. Renders the disclosure tile. */
+  /** Null = first vintage / not yet computed. Renders the confidence-first
+   *  pass-count tile. */
   v1SeparationPp: number | null;
-  /** Null = first vintage / not yet computed. Renders the disclosure tile. */
+  /** Null = first vintage / not yet computed. */
   v4OotRecallPct: number | null;
-  /** Retained in the prop signature for upstream-bake compatibility; the
-   *  page no longer renders a "Walks completed" tile (#159). Callers may
-   *  pass the value without effect. */
+  /** Number of validation passes completed; null/undefined treated as 1 for
+   *  the confidence-first "Pass N of 4" copy. */
   walksCompleted?: number;
   /** Accepts both the four canonical buckets and the pipeline-emitted
-   *  verdicts; both map to the same four user-facing labels. */
+   *  verdicts; both map to the same audience-facing labels. */
   verdict: Verdict | string;
 }) {
-  // Normalize unknown verdict strings to VACATED so we never crash on a
-  // future pipeline string.
-  const v: Verdict = (verdict in VERDICT_COLOR ? verdict : "VACATED") as Verdict;
+  // Unknown verdict strings fall through to NO_DATA ("Coming soon"), the
+  // confidence-first option, rather than VACATED ("In play, under audit").
+  // Unknown verdict is almost always "we haven't walked yet" for queued
+  // recipes, not "we walked and the result was bad" — so treat it as the
+  // pre-walk state.
+  const v: Verdict = (verdict in VERDICT_COLOR ? verdict : "NO_DATA") as Verdict;
   const verdictColor = VERDICT_COLOR[v];
+  const passN = Math.max(1, walksCompleted ?? 1);
 
   return (
     <section
@@ -141,34 +145,34 @@ export function ReliabilityPanel({
       >
         <Metric
           label="Separation power"
-          value={v1SeparationPp == null ? "—" : `+${v1SeparationPp.toFixed(1)}pp`}
+          value={
+            v1SeparationPp == null
+              ? `Pass ${passN} of ${TOTAL_PASSES}`
+              : `+${v1SeparationPp.toFixed(1)}pp`
+          }
           caption={
             v1SeparationPp == null
-              ? "Separation power is computed across multiple validation passes. This is the first vintage of this recipe; the metric becomes available from the next quarterly run."
-              : "How cleanly the recipe separates pre-event country-years from non-event ones. The gap, in percentile points, between the two groups' median similarity. Pre-registered validation bar is +20pp; higher is better."
+              ? `Separation power firms up across the validation arc. Live on pass ${passN} of ${TOTAL_PASSES} planned.`
+              : "How cleanly the recipe separates pre-event country-years from the rest. The gap, in percentile points, between the two groups' median similarity. Higher is better; +20pp is the validation bar."
           }
           valueColor={
-            v1SeparationPp == null
-              ? "var(--qgi-text-muted)"
-              : v1SeparationPp >= 20
-                ? "#3FBF8F"
-                : "#E68F29"
+            v1SeparationPp == null ? IN_PLAY : v1SeparationPp >= 20 ? VALIDATED : IN_PLAY
           }
         />
         <Metric
           label="Out-of-time accuracy"
-          value={v4OotRecallPct == null ? "—" : `${v4OotRecallPct.toFixed(1)}%`}
+          value={
+            v4OotRecallPct == null
+              ? `Pass ${passN} of ${TOTAL_PASSES}`
+              : `${v4OotRecallPct.toFixed(1)}%`
+          }
           caption={
             v4OotRecallPct == null
-              ? "Out-of-time accuracy is computed across multiple validation passes. This is the first vintage of this recipe; the metric becomes available from the next quarterly run."
-              : "Of crisis country-years held out of training (post-2005 events), the share the recipe still ranked HIGH one year before the event. Pre-registered validation bar is 60%."
+              ? `Out-of-time accuracy firms up across the validation arc. Live on pass ${passN} of ${TOTAL_PASSES} planned.`
+              : "Of crisis country-years held out of training, the share the recipe still ranked HIGH one year before the event. Higher is better; 60% is the validation bar."
           }
           valueColor={
-            v4OotRecallPct == null
-              ? "var(--qgi-text-muted)"
-              : v4OotRecallPct >= 60
-                ? "#3FBF8F"
-                : "#E68F29"
+            v4OotRecallPct == null ? IN_PLAY : v4OotRecallPct >= 60 ? VALIDATED : IN_PLAY
           }
         />
         <Metric
@@ -210,7 +214,7 @@ function Metric({
         style={{
           fontSize: "22px",
           fontWeight: 600,
-          lineHeight: 1,
+          lineHeight: 1.05,
           color: valueColor,
           fontFamily: "ui-monospace, monospace",
         }}

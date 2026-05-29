@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getAllRecipes, vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import { getAllRecipes, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { RecipeCard } from "@/components/recipes/RecipeCard";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
@@ -7,7 +7,7 @@ import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 export const metadata: Metadata = {
   title: "Recipes · QG Intelligence",
   description:
-    "Recipe catalog: every structural-event recipe in the QG Intelligence research program, grouped by L1 family.",
+    "The Recipe Catalog: all 71 structural-event recipes, grouped by category.",
 };
 
 const STATUS_ORDER: Record<TrackerRecipe["status"], number> = {
@@ -21,13 +21,16 @@ const STATUS_ORDER: Record<TrackerRecipe["status"], number> = {
 const L1_ORDER = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
 /**
- * Recipes V4.1 gallery — sibling to /recipes with the 2026-05-27
- * vocabulary swap applied (Charter §3-aligned: "Recipes" as the methodology
- * unit at page level). The detail page at /recipes/[slug] carries
- * the dashboard panel grid + L1-color accent + tooltip honesty redesign.
+ * Recipes V4.1 gallery — V4.1 UX rules applied 2026-05-29:
+ *   #13: blue "RECIPES" eyebrow removed (academic/methodologist signal)
+ *   #14: "The recipe catalog" → "The Recipe Catalog" (title case)
+ *   #15: intro tightened — no "research program", no "L1"
+ *   #16: per-page vintage stamp / demo-pointer caption removed (one stamp
+ *        per session lives in the global header per V4.1 §2)
  *
- * Cards reuse the V4 RecipeCard component (still good) but link into V4.1
- * detail routes — that's the only behavior shift at gallery level.
+ * Family-section subheaders no longer prefix the family letter glyph
+ * ("A · Political Power") — V4.1 §1.2. The letter stays in code as the
+ * internal taxonomy key; the user sees the label alone.
  */
 export default function RecipesV41GalleryPage() {
   const recipes = getAllRecipes();
@@ -48,7 +51,6 @@ export default function RecipesV41GalleryPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
-        {/* HowToReadButton (mockup banner dropped 2026-05-29 — V4.1 is canonical) */}
         <div
           style={{
             display: "flex",
@@ -61,20 +63,9 @@ export default function RecipesV41GalleryPage() {
           <HowToReadButton routeKey="recipes-v4.1" />
         </div>
 
-        {/* Hero */}
+        {/* Hero — V4.1 §5 / §1.3 / §15: no eyebrow, title case, one-sentence
+            subtitle that sells, no "research program" / "L1" / vintage stamp. */}
         <div style={{ marginBottom: "32px" }}>
-          <div
-            style={{
-              color: "var(--qgi-accent)",
-              fontSize: "10px",
-              letterSpacing: "4px",
-              textTransform: "uppercase",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "8px",
-            }}
-          >
-            Recipes
-          </div>
           <h1
             style={{
               fontSize: "32px",
@@ -83,7 +74,7 @@ export default function RecipesV41GalleryPage() {
               margin: "0 0 12px",
             }}
           >
-            The recipe catalog
+            The Recipe Catalog
           </h1>
           <p
             style={{
@@ -93,24 +84,12 @@ export default function RecipesV41GalleryPage() {
               maxWidth: "780px",
             }}
           >
-            All {recipes.length} structural-event recipes in the QG Intelligence research
-            program, grouped by L1 family. Pick any recipe to open its full report card.
-          </p>
-          <p
-            style={{
-              color: "var(--qgi-text-dim)",
-              fontSize: "11.5px",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-              marginTop: "8px",
-            }}
-          >
-            Vintage {vintageStamp()} · pick foreign_intervention to see the demo-graduated
-            page in full.
+            All {recipes.length} structural-event recipes, grouped by category. Pick any
+            recipe to open its full report card.
           </p>
         </div>
 
-        {/* Sections per L1 */}
+        {/* Sections per L1 — V4.1 §1.2: render family label only, no letter glyph */}
         {L1_ORDER.map((l1Id) => {
           const rs = groups[l1Id];
           if (!rs?.length) return null;
@@ -162,10 +141,6 @@ export default function RecipesV41GalleryPage() {
                 }}
               >
                 {rs.map((r) => {
-                  // Apply the family-color display override (F-Diplomacy
-                  // #9F7AEA → #6C77E8) before handing the recipe to the card,
-                  // which renders chip border / icon tint / tier-ribbon from
-                  // recipe.l1_color directly.
                   const recipeForCard = {
                     ...r,
                     l1_color: familyColor(r.l1_id, r.l1_color),

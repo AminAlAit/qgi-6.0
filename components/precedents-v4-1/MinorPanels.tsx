@@ -253,18 +253,19 @@ export function WindowPanel({
 /* and the "≥60-pos" jargon are gone from visible copy. Threshold detail stays      */
 /* in the tooltip for technical readers. R&D Q5 binding preserved.                  */
 
+/** V4.1 §4: status labels map directly to the four audience-facing buckets.
+ *  Validated / In play / Coming soon / Prior version — no methodology jargon. */
 const STATUS_LABELS: Record<string, string> = {
-  graduated: "Graduated",
-  in_validation: "In validation",
-  walked_no_graduation: "Reviewed, not graduated",
-  // "vacated" is on the V4.1 banned-vocab list; surface as the audit-driven
-  // re-evaluation state instead. Currently dead (no recipe carries status
-  // "vacated" today) but renders correctly if a future re-validation lands.
-  vacated: "Under re-evaluation",
-  queued: "Queued",
+  graduated: "Validated",
+  walked_no_graduation: "In play",
+  in_progress: "In play",
+  queued: "Coming soon",
   retired: "Retired",
-  live_legacy: "Live (legacy)",
-  in_progress: "In progress",
+  live_legacy: "Prior version",
+  // "vacated" is on the V4.1 banned-vocab list; surface as "In play" until
+  // re-evaluation completes (the audit is happening; we keep the chip calm).
+  vacated: "In play",
+  in_validation: "In play",
 };
 
 function formatStatus(raw: string): string {
@@ -273,36 +274,45 @@ function formatStatus(raw: string): string {
   return friendly.charAt(0).toUpperCase() + friendly.slice(1);
 }
 
+/** V4.1 polish 2026-05-29 (#23):
+ *   - Drop the family-letter glyph from the Category tile (§1.2).
+ *   - Rename "L1 family" → "Category", "L2 sub-class" → "Subcategory" (§1.3).
+ *   - Drop the "Tracker vintage" tile entirely (§2; one stamp per session).
+ *   - Status renders the V4.1 audience-facing label.
+ *
+ * `l1_id` was previously read for the breadcrumb-style prefix; we still
+ * accept the prop (callers haven't been updated everywhere) but don't
+ * render it. Marked deprecated. */
 export function IdentityCardPanel({
   familyColor,
-  l1_id,
   l1_label,
   l2_label,
   nIndicators,
   status,
-  vintage,
   nPositives,
   thresholdMet,
 }: {
   familyColor: string;
-  l1_id: string;
+  /** Deprecated 2026-05-29: family-letter glyph no longer rendered (§1.2). */
+  l1_id?: string;
   l1_label: string;
   l2_label: string;
   nIndicators: number;
   status: string;
-  vintage: string;
+  /** Deprecated 2026-05-29: per-card vintage replaced by single header stamp. */
+  vintage?: string;
   /** Curated count of documented real-world cases of this event. */
   nPositives: number;
   /** Whether the corpus is large enough for the recipe to be evaluated. */
   thresholdMet: boolean;
 }) {
-  const eligibleColor = thresholdMet ? "#3FBF8F" : "#E68F29";
-  const eligibleLabel = thresholdMet ? "Eligible for evaluation" : "Not yet eligible";
+  const eligibleColor = thresholdMet ? "#3FBF8F" : "#7A8FA0";
+  const eligibleLabel = thresholdMet ? "Ready to evaluate" : "Building the case corpus";
   return (
     <PanelBase
       title="Identity card"
       familyColor={familyColor}
-      titleTooltip="The recipe's ID badge: taxonomic position, indicator count, current status, vintage, and the size of the curated case corpus. Recipes need at least 60 verified positives before the discrimination assessment can run."
+      titleTooltip="The recipe's ID badge: where it sits in the taxonomy, how many signals it uses, where it stands today, and how many real-world cases are documented in its corpus."
       id="cap-5"
       dataTour="identity-card-panel"
     >
@@ -313,20 +323,19 @@ export function IdentityCardPanel({
           gap: "14px 18px",
         }}
       >
-        <Field label="L1 family" value={`${l1_id} · ${l1_label}`} accent={familyColor} />
-        <Field label="L2 sub-class" value={l2_label} />
-        <Field label="Indicators" value={String(nIndicators)} />
+        <Field label="Category" value={l1_label} accent={familyColor} />
+        <Field label="Subcategory" value={l2_label} />
+        <Field label="Signals" value={String(nIndicators)} />
         <Field label="Status" value={formatStatus(status)} />
-        <Field label="Tracker vintage" value={vintage} />
         <Field
-          label="Real-world cases"
+          label="Documented cases"
           value={nPositives.toLocaleString()}
           inlineChip={
             <span
               title={
                 thresholdMet
-                  ? "The curated corpus is large enough for the recipe to be honestly assessed."
-                  : "The curated corpus is not yet large enough for an honest assessment. More cases are being collected."
+                  ? "The case corpus is large enough for a clean assessment."
+                  : "We are still expanding the case corpus; the recipe enters assessment when the corpus crosses the threshold."
               }
               style={{
                 fontSize: "9.5px",

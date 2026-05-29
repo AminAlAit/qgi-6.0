@@ -277,7 +277,7 @@ export function CountryCardV41({
                     fontFamily: "ui-monospace, monospace",
                   }}
                 >
-                  no recipes lit
+                  no recipes matched
                 </span>
               )}
             </div>

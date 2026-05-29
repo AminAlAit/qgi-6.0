@@ -1,16 +1,14 @@
 /**
- * FamilyChip — an L1 threat-family chip: letter glyph + label.
+ * FamilyChip — a threat-family chip: icon-or-dot + label.
  *
- * Per Talia's color consult (2026-05-28): every family chip carries its
- * single-letter L1 code as a bold glyph. This is the load-bearing
- * disambiguator — it survives the residual A/F purple proximity and
- * color-blindness, where hue alone would not. Color appears as a thin
- * border + a low-alpha tint only; the surface is never flooded.
+ * 2026-05-29 (V4.1 round 2): per rule §1.2 the bare A/B/C/D/E/F/G/H letter
+ * glyph never appears next to the family label on user-facing surfaces.
+ * When no `iconNode` is supplied, the chip falls back to a small color
+ * dot rather than the letter — color + label carry the family identity.
+ * Tooltip still references the letter as internal taxonomy.
  *
- * `iconNode` — optional override for the letter glyph. When supplied (Rule 2:
- * country-scoped family chips), it renders in place of the bold letter so the
- * chip carries the top-recipe icon for that family while still showing the
- * family label. The letter remains the default when no iconNode is provided.
+ * `iconNode` — optional. Used on country-scoped surfaces (Rule 2) where
+ * the top-recipe icon for the family conveys more information than the dot.
  */
 import type { CSSProperties, ReactNode } from "react";
 
@@ -26,22 +24,22 @@ export function FamilyChip({
   id: string;
   label: string;
   color: string;
-  /** When false, renders just the glyph (compact). */
+  /** When false, renders just the icon/dot (compact). */
   showLabel?: boolean;
   /** Dominant family gets a full-perimeter border; others are quieter. */
   emphasis?: boolean;
   /**
-   * Optional icon node that replaces the bold letter glyph. Used on
+   * Optional icon node that replaces the family color dot. Used on
    * country-scoped surfaces (Rule 2) where the top-recipe icon for the
-   * family conveys more information than the bare letter. Falls back to
-   * the letter when omitted.
+   * family conveys more information.
    */
   iconNode?: ReactNode;
   style?: CSSProperties;
 }) {
   return (
     <span
-      title={`${id} · ${label}`}
+      title={label}
+      data-family-id={id}
       aria-label={`${label} family`}
       style={{
         display: "inline-flex",
@@ -63,7 +61,17 @@ export function FamilyChip({
       {iconNode != null ? (
         <span style={{ display: "inline-flex", alignItems: "center" }}>{iconNode}</span>
       ) : (
-        <span style={{ fontWeight: 700 }}>{id}</span>
+        <span
+          aria-hidden
+          style={{
+            width: "8px",
+            height: "8px",
+            borderRadius: "50%",
+            background: color,
+            display: "inline-block",
+            flexShrink: 0,
+          }}
+        />
       )}
       {showLabel && <span style={{ opacity: 0.95 }}>{label}</span>}
     </span>

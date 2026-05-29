@@ -29,14 +29,20 @@ interface Props {
   children?: ReactNode;
 }
 
+/** V4.1 §0 polish (#23 — 2026-05-29):
+ *  Confidence-first pending copy. The old text leaked exposure
+ *  ("Fills once this recipe has been tested...") — the new text reads as
+ *  forward motion ("In active rotation — discrimination view fills on the
+ *  next validation pass"). Same fact, sold not hedged. */
 const PENDING_COPY: Record<NonNullable<SectionPending>, string> = {
-  discrimination: "Fills once this recipe has been tested against historical events.",
-  probability: "Fills once the score becomes a reliable probability.",
+  discrimination: "In active rotation. This view fills on the next validation pass.",
+  probability:
+    "In active rotation. The probability layer arrives once the rank stabilizes across validation passes.",
 };
 
 const PENDING_LABEL: Record<NonNullable<SectionPending>, string> = {
-  discrimination: "Awaiting results",
-  probability: "Awaiting probability tuning",
+  discrimination: "Next pass",
+  probability: "Probability layer pending",
 };
 
 export function PanelBase({
