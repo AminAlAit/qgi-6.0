@@ -4,8 +4,8 @@ skip (no _archive in current pass) / read errors surface as warnings / rollup la
 at the right S3 key / handler returns the expected envelope."""
 from __future__ import annotations
 
+import importlib.util
 import json
-import sys
 from io import BytesIO
 from pathlib import Path
 from unittest.mock import MagicMock
@@ -13,9 +13,16 @@ from unittest.mock import MagicMock
 import pytest
 from botocore.exceptions import ClientError
 
-sys.path.insert(0, str(
-    Path(__file__).resolve().parents[3] / "lambdas" / "recipe-fleet-vintage-rollup"))
-import lambda_function as lf  # noqa: E402
+# Load the lambda module under a UNIQUE name to avoid sys.modules collision
+# with other Lambda dirs that also expose a `lambda_function` module
+# (see qgi-frontend-bake-trigger for the same pattern).
+_MODULE_PATH = (
+    Path(__file__).resolve().parents[3]
+    / "lambdas" / "recipe-fleet-vintage-rollup" / "lambda_function.py"
+)
+_spec = importlib.util.spec_from_file_location("vintage_rollup_lf", _MODULE_PATH)
+lf = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(lf)
 
 
 class _FakeS3:
