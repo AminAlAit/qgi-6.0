@@ -490,7 +490,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
               window.localStorage.setItem("qgi-tour-launch", "manual");
               window.location.reload();
             }}
-            className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left"
+            className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left cursor-pointer hover:border-[var(--qgi-accent)] hover:text-[var(--qgi-text)]"
             style={{
               borderColor: "var(--qgi-border)",
               color: "var(--qgi-text-muted)",
