@@ -428,6 +428,56 @@ function getTERecipeRow(recipeId: string): RecipeRow | null {
   return _teRowCache.get(recipeId) ?? null;
 }
 
+/**
+ * Round-3.5 (2026-05-29) — full per-recipe country score map.
+ *
+ * Drives the Risk Board "select up to 10 countries" custom-grid mode.
+ * Returns every country with a score in the recipe, regardless of top-10
+ * rank. The user can then select arbitrary countries (e.g. Russia) and
+ * the grid will resolve a real cell for them in every recipe row.
+ *
+ * - Cascade-era recipes (hand-authored): only the top-10 entries in
+ *   RECIPE_ROW_CELLS contribute. Countries outside that set resolve to
+ *   "not scored" — honest, matches the data we actually have.
+ * - TE sample-10 recipes: full loadScores() corpus is used, which is
+ *   the platform roster (~150 countries with scores per recipe).
+ * - Queued recipes: empty map. The grid renders the "Coming soon" cell.
+ *
+ * The map is keyed by the same country `name` strings that appear in
+ * BoardCell.country, so the client component looks countries up by
+ * the same key it already renders.
+ */
+export function getRecipeFullScoreMap(recipeId: string): Record<string, number> {
+  // 1. Hand-authored cascade rows
+  const cells = RECIPE_ROW_CELLS[recipeId];
+  if (cells) {
+    const map: Record<string, number> = {};
+    for (const c of cells) {
+      if (c.state === "scored" && typeof c.score === "number") {
+        map[c.country] = c.score;
+      }
+    }
+    return map;
+  }
+  // 2. TE sample-10 rows (real data, ~150 countries per recipe)
+  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+    try {
+      const sf = loadScores(recipeId);
+      const map: Record<string, number> = {};
+      for (const e of sf.scores) {
+        if (typeof e.score === "number") {
+          map[e.name] = e.score;
+        }
+      }
+      return map;
+    } catch {
+      return {};
+    }
+  }
+  // 3. Queued / no walk
+  return {};
+}
+
 export function getRecipeRow(recipeId: string): RecipeRow | null {
   // 1. Hand-authored cascade rows.
   const recipe = getRecipe(recipeId);
