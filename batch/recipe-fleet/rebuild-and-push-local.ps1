@@ -165,11 +165,17 @@ if ($LASTEXITCODE -ne 0) { throw "docker login to $EcrRegistry failed" }
 
 # ─── 5. Buildx setup (one-time on a fresh machine, idempotent) ───────────
 Write-Host "`n[buildx] Ensuring multi-platform builder is available..." -ForegroundColor Cyan
-$null = docker buildx inspect qgi-recipe-fleet-builder 2>&1
+# Suppress stderr instead of merging (2>&1) — PS 5.1's $ErrorActionPreference=Stop
+# treats stderr from native exes as terminating errors even when the exe exits 0
+# (the "NativeCommandError" trap). $LASTEXITCODE is the authoritative signal here.
+$null = docker buildx inspect qgi-recipe-fleet-builder 2>$null
 if ($LASTEXITCODE -ne 0) {
+    Write-Host "[buildx] Creating qgi-recipe-fleet-builder (one-time)..." -ForegroundColor Yellow
     docker buildx create --name qgi-recipe-fleet-builder --driver docker-container --bootstrap | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw "docker buildx create failed" }
 }
 docker buildx use qgi-recipe-fleet-builder | Out-Null
+if ($LASTEXITCODE -ne 0) { throw "docker buildx use qgi-recipe-fleet-builder failed" }
 
 # ─── 6. Build + push ─────────────────────────────────────────────────────
 $BuildContextDir = Join-Path $QgiPipelineRoot "batch\recipe-fleet"
