@@ -27,7 +27,7 @@
  * methodology debugging and the `?` tooltip on the page.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
-import type { TrackerRecipe } from "@/lib/te-mock/recipes";
+import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { loadCountryIndex, SAMPLE_10_RECIPE_IDS } from "@/lib/te-data-contract/load";
 import { flagFromIso2, NAME_TO_ISO2 } from "@/lib/te-mock/country-iso2";
 
@@ -69,8 +69,13 @@ export interface CompoundCaseStudy {
 export const COMPOUND_VINTAGE = (recipeTracker as { generated: string }).generated;
 
 // Cheap O(1) lookup of recipe metadata.
+// Round-3.8 (2026-05-30) — sourced from getAllRecipes() (the deduped
+// catalog where TE walked rows override the cascade-era queued seeds)
+// instead of the raw recipe-tracker.json. That fix stops the
+// CompoundLeaderboard's RecipeChip from rendering "Coming soon" status
+// labels on recipes the rest of the app already shows as in-play.
 export const RECIPE_LOOKUP: Record<string, TrackerRecipe> = Object.fromEntries(
-  (recipeTracker as { recipes: TrackerRecipe[] }).recipes.map((r) => [r.recipe_id, r])
+  getAllRecipes().map((r) => [r.recipe_id, r])
 );
 
 function lit(recipe_id: string, score: number, decile = 9): CompoundLitRecipe {
@@ -113,6 +118,28 @@ function compoundLegacy(recipes: CompoundLitRecipe[]): number {
 
 function families(recipes: CompoundLitRecipe[]): string[] {
   return Array.from(new Set(recipes.map((r) => r.l1_id))).sort();
+}
+
+/**
+ * Round-3.8 (2026-05-30) — Compound Risk cleanup. Filter lit-recipe lists
+ * down to recipes that are actually IN PLAY in the catalog (status:
+ * graduated / walked_no_graduation / in_progress / live_legacy). Drops
+ * queued + hold recipes whose hand-curated seed scores were leaking
+ * through and showing "Coming soon" tooltips on the Compound Risk page.
+ *
+ * Founder verdict (2026-05-30): "how can you be using recipes you don't
+ * have baked data from? wtf.. can you do a thorough cleanup please."
+ *
+ * After this filter, Compound Risk aggregates ONLY recipes the rest of
+ * the catalog also considers in-play. A country that loses all of its
+ * lit recipes after the filter falls off the page entirely.
+ */
+function inPlayOnly(recipes: CompoundLitRecipe[]): CompoundLitRecipe[] {
+  return recipes.filter((r) => {
+    const tr = getRecipe(r.recipe_id);
+    if (!tr) return false;
+    return tr.status !== "queued";
+  });
 }
 
 interface Seed {
@@ -381,17 +408,25 @@ const SEEDS: Seed[] = [
   },
 ];
 
-const SEED_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => ({
-  country: s.country,
-  iso: s.iso,
-  flag: s.flag,
-  region: s.region,
-  compound_score: compound(s.recipes),
-  compound_score_legacy: compoundLegacy(s.recipes),
-  lit_recipes: s.recipes,
-  lit_families: families(s.recipes),
-  vintage: COMPOUND_VINTAGE,
-}));
+// Filter every seed's recipe list through inPlayOnly so queued/hold
+// recipes from the cascade-era catalog never leak onto the Compound
+// Risk page. Countries that lose all lit recipes after the filter are
+// dropped (their score would be 0; the page is about countries with
+// MULTIPLE in-play matches).
+const SEED_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => {
+  const recipes = inPlayOnly(s.recipes);
+  return {
+    country: s.country,
+    iso: s.iso,
+    flag: s.flag,
+    region: s.region,
+    compound_score: compound(recipes),
+    compound_score_legacy: compoundLegacy(recipes),
+    lit_recipes: recipes,
+    lit_families: families(recipes),
+    vintage: COMPOUND_VINTAGE,
+  };
+}).filter((c) => c.lit_recipes.length > 0);
 
 // ─── TE country-index supplement ─────────────────────────────────────────────
 // Append countries from country-index that have ≥1 TE recipe lit at score ≥50

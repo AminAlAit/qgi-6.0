@@ -44,7 +44,6 @@ import {
 } from "@/components/dashboard-v4-1/InsightPlots";
 import { WorldActivity } from "@/components/dashboard-v4-1/WorldActivity";
 import { TopPairsStrip } from "@/components/dashboard-v4-1/TopPairsStrip";
-import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
   title: "Dashboard · QG Intelligence",
@@ -66,21 +65,10 @@ export default function DashboardV41Page() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "20px 24px 64px" }}>
-        {/* ── Top strip: "How to read this" button only ──────────────────── */}
-        {/* V4.1 §2 — vintage stamp moved 2026-05-29 from this header strip
-            into the sidebar (below "Take the tour") so it renders once per
-            session across every page, not per-page on the dashboard. */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            marginBottom: "28px",
-            gap: "6px",
-          }}
-        >
-          <HowToReadButton routeKey="dashboard-v4.1" />
-        </div>
+        {/* 2026-05-30: top strip removed entirely. The 'How to read this
+            page' button was the only thing in it (vintage stamp lives in
+            the sidebar). The Dashboard h1 + hero tiles + rail headers all
+            self-explain; the popover added no marginal value. */}
 
         {/* ── Two-column shell: main scroll column + sticky right rail ─────
             Grid layout: at ≥1024px the rail holds a 320px fixed track on
@@ -111,14 +99,11 @@ export default function DashboardV41Page() {
               align-items: start;
             }
           }
+          /* 2026-05-30: rail is non-sticky per founder ask. It still sits
+             in the right column at ≥1024px, but it scrolls naturally with
+             the page. No sticky positioning. */
           .qgi-dashboard-rail {
             position: static;
-          }
-          @media (min-width: 1024px) {
-            .qgi-dashboard-rail {
-              position: sticky;
-              top: 16px;
-            }
           }
         `}</style>
 
