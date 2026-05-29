@@ -16,11 +16,12 @@ describe("Sidebar", () => {
     expect(screen.getByText("Intelligence")).toBeInTheDocument();
   });
 
-  it("renders the 9 canonical V4.1 entries", () => {
+  it("renders the 8 canonical V4.1 entries", () => {
     render(<Sidebar />);
-    // 2026-05-28 V4.1 canonical promotion: sidebar is now 9 standalone
-    // PRIMARY entries. The legacy 5-entry list and the TE Mockup group
-    // are gone. Signals is no longer a top-level route.
+    // 2026-05-29 V4.1 round-3 amendment: Recipe Tracker route deleted; the
+    // catalog ledger view is now folded into /recipes via the per-card
+    // Confidence badge. The blog post at /blog/recipe-tracker is unrelated
+    // and unaffected.
     expect(screen.getByText("Dashboard")).toBeInTheDocument();
     expect(screen.getByText("Recipes")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
@@ -29,7 +30,8 @@ describe("Sidebar", () => {
     expect(screen.getByText("Compare")).toBeInTheDocument();
     expect(screen.getByText("Nearest Analog")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
-    expect(screen.getByText("Recipe Tracker")).toBeInTheDocument();
+    // "Recipe Tracker" sidebar entry removed 2026-05-29.
+    expect(screen.queryByText("Recipe Tracker")).not.toBeInTheDocument();
   });
 
   it("does NOT render any legacy or removed entries", () => {

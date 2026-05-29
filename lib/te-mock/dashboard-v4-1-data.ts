@@ -447,18 +447,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
   return rows;
 }
 
-// ───────────────────────────────────────────────────────────────────────────────
-// Legacy exports — kept for any caller that still imports them.
-// ───────────────────────────────────────────────────────────────────────────────
-// The original V4.1 page consumed HIGHLIGHTS, SURFACE_CARDS, ACTIVITY_EVENTS
-// from this module. The new page does not. We re-export the loaders so other
-// surfaces (Risk Board, etc.) that may import them keep compiling, but the
-// dashboard itself no longer references any of them.
-
-export { HIGHLIGHTS, ACTIVITY_EVENTS } from "@/lib/te-mock/dashboard-v4-data";
-
-// SURFACE_CARDS is re-exported via the V4.1 surface-card mapper so any
-// non-dashboard caller continues to get the V4.1-shaped row.
-import { SURFACE_CARDS as _SURFACE_CARDS_V4 } from "@/lib/te-mock/dashboard-v4-data";
-import { toV41SurfaceCardData } from "@/components/dashboard-v4-1/SurfaceCard";
-export const SURFACE_CARDS = _SURFACE_CARDS_V4.map(toV41SurfaceCardData);
+// Legacy re-exports removed 2026-05-29 — `lib/te-mock/dashboard-v4-data.ts`
+// was deleted with the V4.1 round-3 amendment. Grep confirmed no active
+// callers of HIGHLIGHTS / SURFACE_CARDS / ACTIVITY_EVENTS outside this
+// module, so the re-export shim is no longer load-bearing.

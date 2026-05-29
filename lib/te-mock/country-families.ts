@@ -33,31 +33,37 @@ export function familiesByBestScore(country: CountryV4): FamilyRank[] {
 
 /** User-facing label + tone for a recipe's validation status.
  *
- *  V4.1 vocabulary (`qgi-docs/internal/ops/qgi-v4-1-ux-rules.md` §4):
- *  - validated / LOCK     → "Validated"    (green; the green chip only)
- *  - directional / experimental / walked-no-grad → "In play"   (calm blue)
- *  - queued / hold        → "Coming soon"  (slate-dim)
- *  - live_legacy          → "Prior version" (slate-dim)
+ *  V4.1 round-3 amendment (2026-05-29) — two-bucket collapse:
  *
- *  Replaces "Tested, did not hold up", "Walked, not graduated",
- *  "Reviewed, not graduated", "Early method, under review", and every
- *  other "we tried, it didn't graduate" phrasing. The audience reads
- *  "In play" as "we are actively using and refining this" — which is true.
+ *  Founder ratified: drop "Validated" and "Prior version" from the
+ *  audience surface. The high-confidence framing (when a recipe LOCKs)
+ *  will be expressed differently in a future iteration — not via a
+ *  third status chip. For now every active-rotation recipe (LOCK,
+ *  directional, experimental, in_progress, cascade-era live_legacy)
+ *  reads as **"in play"** (lowercase). Pre-walk / queued / hold reads
+ *  as **"Coming soon"**.
+ *
+ *  Mapping:
+ *   - graduated / LOCK / walked_no_graduation / in_progress / live_legacy
+ *     → "in play"  (neutral tone, family-color pulsing dot)
+ *   - queued / hold
+ *     → "Coming soon"  (neutral tone, no dot)
+ *
+ *  The `deployed` and `failed` tone codes are retained on the type so
+ *  any legacy caller still compiles, but no path returns them now.
  */
 export type StatusTone = "deployed" | "neutral" | "failed";
 
 export function statusLabel(status: string): { label: string; tone: StatusTone } {
   switch (status) {
-    case "graduated":
-      return { label: "Validated", tone: "deployed" };
-    case "walked_no_graduation":
-      return { label: "In play", tone: "neutral" };
-    case "in_progress":
-      return { label: "In play", tone: "neutral" };
-    case "live_legacy":
-      return { label: "Prior version", tone: "neutral" };
     case "queued":
+    case "hold":
       return { label: "Coming soon", tone: "neutral" };
+    case "graduated":
+    case "walked_no_graduation":
+    case "in_progress":
+    case "live_legacy":
+      return { label: "in play", tone: "neutral" };
     default:
       return { label: "Coming soon", tone: "neutral" };
   }

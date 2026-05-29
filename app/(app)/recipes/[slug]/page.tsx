@@ -138,10 +138,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
     </span>
   );
 
-  // The honest demo disclosure used to sit here. Founder #1 (2026-05-28) said
-  // the vacate/leak narrative belongs on /recipe-tracker + the blog, not on
-  // user-facing recipe pages. We surface a compact pointer when the recipe
-  // is the special demo case; otherwise nothing.
+  // V4.1 round-3 (2026-05-29): /recipe-tracker route deleted. The demo
+  // pointer now lands on /blog/recipe-tracker — the audience-facing
+  // program-update post that preserves the corrections-log narrative
+  // for the foreign_intervention vacate.
   const demoDisclosure = demo ? (
     <div
       data-tour="demo-disclosure"
@@ -157,10 +157,9 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         maxWidth: "780px",
       }}
     >
-      Demo render of the fully-populated detail page. Latest status of the live recipe
-      lives on{" "}
-      <Link href={"/recipe-tracker" as Route} style={{ color: familyColor }}>
-        /recipe-tracker
+      Demo render of the fully-populated detail page. Latest program status lives on{" "}
+      <Link href={"/blog/recipe-tracker" as Route} style={{ color: familyColor }}>
+        the recipe-tracker blog post
       </Link>
       .
     </div>

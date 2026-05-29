@@ -1,32 +1,36 @@
 import type { RecipeStatus } from "@/lib/te-mock/recipes";
 
-/** STATUS_META — V4.1 §4 vocabulary applied 2026-05-29.
- *  All banned chip text ("Walked, not graduated", "Walk in progress",
- *  "Prior vintage", "Queued") replaced with the audience-facing
- *  vocabulary: Validated / In play / Coming soon / Prior version.
+/** STATUS_META — V4.1 round-3 vocabulary (2026-05-29 amendment).
  *
- *  "Coming soon" reads as "on the roadmap, just not shipped yet".
- *  "In play" reads as "we are actively using and refining this".
- *  Both are honest; neither leaks methodology jargon. */
+ *  Two-bucket collapse — every "active rotation" status reads as **"in play"**
+ *  (lowercase, calm slate-blue, pulsing family-color dot in the gallery
+ *  card). Every pre-walk / queued status reads as **"Coming soon"**
+ *  (slate-dim, no dot). The earlier 4-bucket vocabulary
+ *  (Validated / In play / Coming soon / Prior version) is retired —
+ *  high-confidence framing will surface differently in a future iteration. */
 export const STATUS_META: Record<
   RecipeStatus,
   { label: string; color: string; bgAlpha: string }
 > = {
-  graduated: { label: "Validated", color: "#3FBF8F", bgAlpha: "rgba(63,191,143,0.15)" },
+  graduated: {
+    label: "in play",
+    color: "#5B7E99",
+    bgAlpha: "rgba(91,126,153,0.15)",
+  },
   walked_no_graduation: {
-    label: "In play",
+    label: "in play",
     color: "#5B7E99",
     bgAlpha: "rgba(91,126,153,0.15)",
   },
   in_progress: {
-    label: "In play",
+    label: "in play",
     color: "#5B7E99",
     bgAlpha: "rgba(91,126,153,0.15)",
   },
   live_legacy: {
-    label: "Prior version",
-    color: "#7A8FA0",
-    bgAlpha: "rgba(122,143,160,0.15)",
+    label: "in play",
+    color: "#5B7E99",
+    bgAlpha: "rgba(91,126,153,0.15)",
   },
   queued: { label: "Coming soon", color: "#7A8FA0", bgAlpha: "rgba(122,143,160,0.15)" },
 };

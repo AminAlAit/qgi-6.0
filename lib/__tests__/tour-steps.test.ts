@@ -23,7 +23,6 @@ const ALL_TOUR_PAGES = new Set([
   "/risk-board",
   "/compound-risk",
   "/nearest-analog",
-  "/recipe-tracker",
   "/compare",
   "/patterns",
   "/patterns/paraguay-south_korea-1963",
