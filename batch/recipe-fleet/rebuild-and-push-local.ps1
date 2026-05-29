@@ -165,17 +165,30 @@ if ($LASTEXITCODE -ne 0) { throw "docker login to $EcrRegistry failed" }
 
 # ─── 5. Buildx setup (one-time on a fresh machine, idempotent) ───────────
 Write-Host "`n[buildx] Ensuring multi-platform builder is available..." -ForegroundColor Cyan
-# Suppress stderr instead of merging (2>&1) — PS 5.1's $ErrorActionPreference=Stop
+# Suppress stderr instead of merging (2>&1) -- PS 5.1's $ErrorActionPreference=Stop
 # treats stderr from native exes as terminating errors even when the exe exits 0
 # (the "NativeCommandError" trap). $LASTEXITCODE is the authoritative signal here.
-$null = docker buildx inspect qgi-recipe-fleet-builder 2>$null
-if ($LASTEXITCODE -ne 0) {
+# PS 5.1 NativeCommandError trap: 2>$null alone does NOT bypass the trap when a
+# native exe emits ANY stderr with non-zero exit. Only try/catch swallows it
+# cleanly. $LASTEXITCODE is the authoritative signal inside the try.
+$builderExists = $true
+try {
+    docker buildx inspect qgi-recipe-fleet-builder 2>$null | Out-Null
+    if ($LASTEXITCODE -ne 0) { $builderExists = $false }
+} catch {
+    $builderExists = $false
+}
+if (-not $builderExists) {
     Write-Host "[buildx] Creating qgi-recipe-fleet-builder (one-time)..." -ForegroundColor Yellow
     docker buildx create --name qgi-recipe-fleet-builder --driver docker-container --bootstrap | Out-Null
     if ($LASTEXITCODE -ne 0) { throw "docker buildx create failed" }
 }
-docker buildx use qgi-recipe-fleet-builder | Out-Null
-if ($LASTEXITCODE -ne 0) { throw "docker buildx use qgi-recipe-fleet-builder failed" }
+try {
+    docker buildx use qgi-recipe-fleet-builder | Out-Null
+} catch {
+    throw "docker buildx use qgi-recipe-fleet-builder failed: $_"
+}
+if ($LASTEXITCODE -ne 0) { throw "docker buildx use qgi-recipe-fleet-builder failed (rc=$LASTEXITCODE)" }
 
 # ─── 6. Build + push ─────────────────────────────────────────────────────
 $BuildContextDir = Join-Path $QgiPipelineRoot "batch\recipe-fleet"
