@@ -73,7 +73,7 @@ if (-not (Test-Path "$QgiPipelineRoot\batch\recipe-fleet\Dockerfile")) {
     throw "Dockerfile not found at $QgiPipelineRoot\batch\recipe-fleet\Dockerfile"
 }
 if (-not (Test-Path "$QgiMlRoot\scripts\run_f_ml_1_poc.py")) {
-    throw "qgi-ml walk driver not found at $QgiMlRoot\scripts\run_f_ml_1_poc.py — wrong QgiMlRoot?"
+    throw "qgi-ml walk driver not found at $QgiMlRoot\scripts\run_f_ml_1_poc.py -- wrong QgiMlRoot?"
 }
 
 # ─── 1. Pre-flight: Docker + AWS CLI + SSO session ────────────────────────
@@ -84,7 +84,7 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "[preflight] Checking AWS CLI + SSO session..." -ForegroundColor Cyan
-# Capture raw output FIRST, then check exit code, then parse — piping straight
+# Capture raw output FIRST, then check exit code, then parse -- piping straight
 # into ConvertFrom-Json shadows the AWS CLI's exit code with ConvertFrom-Json's
 # (which is always 0 on success), and a non-JSON error string from the CLI would
 # surface as a cryptic parse failure rather than the SSO-refresh hint.
@@ -97,7 +97,7 @@ $caller = $callerRaw | ConvertFrom-Json
 if ($caller.Account -ne "222222222222") {
     throw "Wrong AWS account: caller is in $($caller.Account); need STAGING 222222222222. Paste staging creds."
 }
-Write-Host "[preflight] AWS account: $($caller.Account) (staging) — OK" -ForegroundColor Green
+Write-Host "[preflight] AWS account: $($caller.Account) (staging) -- OK" -ForegroundColor Green
 Write-Host "[preflight] Caller arn: $($caller.Arn)" -ForegroundColor Gray
 
 # ─── 2. Repo cleanliness check ────────────────────────────────────────────
@@ -114,7 +114,7 @@ function Test-RepoClean {
         # commit that was never pushed. (Sonnet PR #48 review N3.)
         $upstreamRaw = git rev-parse --abbrev-ref "@{u}" 2>&1
         if ($LASTEXITCODE -ne 0) {
-            throw "[$Label] no upstream tracking branch configured — cannot confirm sync with origin. Raw: $upstreamRaw"
+            throw "[$Label] no upstream tracking branch configured -- cannot confirm sync with origin. Raw: $upstreamRaw"
         }
         $ahead = git rev-list "@{u}..HEAD" --count
         if ($branch -ne "main") {
@@ -124,7 +124,7 @@ function Test-RepoClean {
             throw "[$Label] working tree is dirty:`n$dirty`nCommit/stash before rebuilding (or pass -SkipDirtyCheck)."
         }
         if ($ahead -and [int]$ahead -gt 0) {
-            throw "[$Label] local main is $ahead commit(s) ahead of origin/main — push first."
+            throw "[$Label] local main is $ahead commit(s) ahead of origin/main -- push first."
         }
         Write-Host "[$Label] clean on main, in sync with origin" -ForegroundColor Green
     } finally {
@@ -136,7 +136,7 @@ if (-not $SkipDirtyCheck) {
     Test-RepoClean -Path $QgiPipelineRoot -Label "qgi-pipeline"
     Test-RepoClean -Path $QgiMlRoot       -Label "qgi-ml"
 } else {
-    Write-Host "[preflight] -SkipDirtyCheck set — skipping repo cleanliness check (you take the blame for any drift)" -ForegroundColor Yellow
+    Write-Host "[preflight] -SkipDirtyCheck set -- skipping repo cleanliness check (you take the blame for any drift)" -ForegroundColor Yellow
 }
 
 # ─── 3. Capture SHAs for traceability LABEL ──────────────────────────────
@@ -186,7 +186,7 @@ $buildArgs = @(
 
 Write-Host "`n[build] docker $($buildArgs -join ' ')" -ForegroundColor Cyan
 if ($DryRun) {
-    Write-Host "[dry-run] not executing buildx — re-run without -DryRun to push" -ForegroundColor Yellow
+    Write-Host "[dry-run] not executing buildx -- re-run without -DryRun to push" -ForegroundColor Yellow
     return
 }
 
