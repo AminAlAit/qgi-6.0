@@ -56,3 +56,12 @@ data/parquet_panels/
 # Backup of subset panel pre-full-S3-sync
 data/all_104_panels.parquet.SUBSET_BACKUP
 
+
+# Cascade-era investigation outputs (#577/#582/#585 + Phase-1/v2-eval) — run-time
+# logs and intermediate eval JSONs; not source of truth.
+results/shape_fits/*/run.log
+results/shape_fits/*/run_c3*.log
+results/shape_fits/phase*_run.log
+results/detrending_experiment_*/
+results/stationarity_audit_*/
+results/v2_eval_*/
