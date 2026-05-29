@@ -41,7 +41,8 @@ const STATIC_ROUTES: Array<{
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
   { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
   { path: "/risk-board", changeFrequency: "daily", priority: 0.8 },
-  { path: "/compound-risk", changeFrequency: "weekly", priority: 0.7 },
+  // /compound-risk taken down 2026-05-30; sitemap entry removed.
+  // Redirect 308 → /risk-board.
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
   { path: "/nearest-analog", changeFrequency: "weekly", priority: 0.6 },
   // /recipe-tracker route deleted 2026-05-29 — folded into /recipes via

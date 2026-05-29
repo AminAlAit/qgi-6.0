@@ -1,42 +1,38 @@
 /**
  * Mock recipe data for the /recipes mockup pages.
  *
- * V4.1 wire-up (2026-05-29):
+ * Fleet-run-1 wire-up (2026-05-30):
  *
  *   ENGINE DISCRIMINATOR
  *   --------------------
- *   cascade-era recipes (4):
- *     foreign_intervention, multilateral_agreement, elections_and_voting, bilateral_treaty
+ *   cascade-era recipes (remaining cascade-only rows):
  *     engine: "cascade"
  *
- *   TE sample-10 recipes (10):
- *     banking_and_financial_crisis, bilateral_treaty (TE walk), diplomatic_rupture,
- *     economic_liberalization, economic_nationalization, ethnic_and_communal_conflict,
- *     fiscal_policy_change, government_formation, migration_and_refugees, terrorist_attack
+ *   TE fleet-run-1 recipes (44):
+ *     All 44 walked recipes from data/te-fleet-run-1/cards-v3/
  *     engine: "trajectory-engine-v1"
  *
- *   NOTE: bilateral_treaty appears in BOTH lists.
- *   - The cascade-era row in recipe-tracker.json stays as the historical record.
- *   - The TE walk supersedes it for tile rendering (TE row is added via addTERecipes()).
- *   - The cascade row carries engine: "cascade" and is NOT removed from getAllRecipes().
+ *   NOTE: All 44 TE recipe IDs overlap with cascade-era tracker rows.
+ *   - The TE walk supersedes the cascade row for tile rendering.
+ *   - The cascade row stays in the tracker for historical record.
  *
  *   STATUS MAPPING
  *   --------------
  *   TE tier → TrackerRecipe.status:
  *     "directional"  → "walked_no_graduation"   (ran, did not clear the bar)
  *     "experimental" → "walked_no_graduation"   (same; tier-label renders the distinction)
- *     "validated"    → "graduated"              (no such recipe in sample-10)
+ *     "validated"    → "graduated"              (no such recipe in fleet-run-1: 0 LOCKs)
  *
- *   DEMO GRADUATED
- *   --------------
- *   foreign_intervention is the ONLY recipe that isDemoGraduated() returns true for.
- *   This preserves the demo detail page that shows what a graduated page looks like.
- *   No real recipe in sample-10 is graduated.
+ *   L1 LOOKUP
+ *   ---------
+ *   Sourced from recipe-tracker.json (cascade tracker) for every recipe present
+ *   there. All 44 fleet-run-1 IDs are in the tracker. Falls back to the card's
+ *   family_label + humanized id only for any future recipe absent from the tracker.
  *
  *   VINTAGE STAMP
  *   -------------
- *   Returns "2026-05-28" (from MANIFEST.produced_at_utc) for TE recipes.
- *   The cascade-era tracker vintage ("2026-05-23") is preserved for cascade rows.
+ *   Returns the fleet-run-1 MANIFEST.produced_at_utc for TE recipes.
+ *   The cascade-era tracker vintage is preserved for cascade-only rows.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
 import { loadAllCards, loadAllScores, loadVintage } from "@/lib/te-data-contract/load";
@@ -92,58 +88,35 @@ export interface RecipeMock {
   nPositives?: number;
 }
 
-// ─── L1 mapping: recipe_id → L1 metadata for TE sample-10 recipes ────────────
+// ─── L1 lookup: sourced from recipe-tracker.json ──────────────────────────────
 //
-// 2026-05-29 — synced to data/recipe-tracker.json as the source of truth.
-// The earlier hand-coded values invented family IDs that don't exist in the
-// canonical A-H taxonomy (most egregious: migration_and_refugees was assigned
-// l1_id="M" which fails the page's family filter → the recipe vanished from
-// /recipes entirely; six others had the wrong family).
+// Fleet-run-1 (2026-05-30): all 44 TE recipe IDs are in the cascade tracker.
+// We build the lookup once from the tracker JSON at module load. The old
+// hand-coded TE_L1_MAP (10 entries, sample-10 era) is replaced by this
+// dynamic approach so we never have to hand-maintain 44 entries.
 //
-// l1_color is left at the tracker's value here — familyColor(l1_id) in
-// lib/te-mock/l1-families.ts is the display source; this just keeps the
-// row internally consistent.
+// For any recipe absent from the tracker (future edge case), falls back to
+// the card's family_label with a grey placeholder color.
 
-const TE_L1_MAP: Record<string, { l1_id: string; l1_label: string; l1_color: string }> = {
-  banking_and_financial_crisis: {
-    l1_id: "D",
-    l1_label: "Economic Stress",
-    l1_color: "#3FA9F5",
-  },
-  bilateral_treaty: {
-    l1_id: "F",
-    l1_label: "Diplomacy & Geopolitics",
-    l1_color: "#9F7AEA",
-  },
-  diplomatic_rupture: {
-    l1_id: "F",
-    l1_label: "Diplomacy & Geopolitics",
-    l1_color: "#9F7AEA",
-  },
-  economic_liberalization: {
-    l1_id: "D",
-    l1_label: "Economic Stress",
-    l1_color: "#3FA9F5",
-  },
-  economic_nationalization: {
-    l1_id: "D",
-    l1_label: "Economic Stress",
-    l1_color: "#3FA9F5",
-  },
-  ethnic_and_communal_conflict: {
-    l1_id: "B",
-    l1_label: "Conflict & Violence",
-    l1_color: "#E64545",
-  },
-  fiscal_policy_change: { l1_id: "D", l1_label: "Economic Stress", l1_color: "#3FA9F5" },
-  government_formation: { l1_id: "A", l1_label: "Political Power", l1_color: "#7B5EE6" },
-  migration_and_refugees: {
-    l1_id: "E",
-    l1_label: "Social Mobilization",
-    l1_color: "#3FBF8F",
-  },
-  terrorist_attack: { l1_id: "B", l1_label: "Conflict & Violence", l1_color: "#E64545" },
-};
+function buildL1LookupFromTracker(): Map<
+  string,
+  { l1_id: string; l1_label: string; l1_color: string }
+> {
+  const cascadeRows = (recipeTracker as { recipes: TrackerRecipe[] }).recipes;
+  const map = new Map<string, { l1_id: string; l1_label: string; l1_color: string }>();
+  for (const r of cascadeRows) {
+    if (r.l1_id && r.l1_label && r.l1_color) {
+      map.set(r.recipe_id, {
+        l1_id: r.l1_id,
+        l1_label: r.l1_label,
+        l1_color: r.l1_color,
+      });
+    }
+  }
+  return map;
+}
+
+const _trackerL1Map = buildL1LookupFromTracker();
 
 /** Human-readable label from a snake_case recipe_id. */
 function humanize(id: string): string {
@@ -194,9 +167,16 @@ function buildTERecipes(): TrackerRecipe[] {
   );
 
   for (const [recipeId, card] of Object.entries(allCards)) {
-    const l1 = TE_L1_MAP[recipeId] ?? {
+    // Source L1 from the cascade tracker (preferred). Falls back to the card's
+    // family_label only if a future recipe isn't in the tracker yet.
+    const trackerL1 = _trackerL1Map.get(recipeId);
+    const cardFamilyLabel =
+      typeof (card as unknown as Record<string, unknown>).family_label === "string"
+        ? ((card as unknown as Record<string, unknown>).family_label as string)
+        : null;
+    const l1 = trackerL1 ?? {
       l1_id: "X",
-      l1_label: "Other",
+      l1_label: cardFamilyLabel ?? "Other",
       l1_color: "#7A8FA0",
     };
     const cascadeRow = cascadeByID.get(recipeId);
@@ -254,17 +234,14 @@ let _allRecipesCache: TrackerRecipe[] | null = null;
 /**
  * Returns the unified recipe list with TE-WINS dedupe:
  *   - All 71 cascade-era rows from recipe-tracker.json (engine: "cascade")
- *   - PLUS the 10 TE rows derived from card-v3 (engine: "trajectory-engine-v1")
+ *   - PLUS the 44 TE rows derived from card-v3 (engine: "trajectory-engine-v1")
  *   - Any recipe_id present in BOTH sets has the cascade row REMOVED — the
  *     TE walk is the current state, the cascade row was its pre-walk
  *     placeholder. The cascade engine version is still queryable via
  *     getCascadeRecipe(recipeId) for the Recipe Tracker historical column.
  *
- * Overlap as of sample-10: bilateral_treaty, banking_and_financial_crisis,
- * migration_and_refugees, terrorist_attack, ethnic_and_communal_conflict,
- * economic_liberalization, economic_nationalization, fiscal_policy_change,
- * diplomatic_rupture, government_formation (all 10, in fact — the wave
- * 1+2 fan-out was a subset of the cascade catalog).
+ * All 44 fleet-run-1 recipe IDs are a subset of the 71 cascade catalog rows.
+ * The remaining 27 cascade-only rows render as "Coming soon" in /recipes.
  */
 export function getAllRecipes(): TrackerRecipe[] {
   if (_allRecipesCache) return _allRecipesCache;
@@ -1413,10 +1390,11 @@ export function getMock(recipe: TrackerRecipe): RecipeMock {
 /**
  * Is this recipe rendered as the "demo graduated" case?
  *
- * Only foreign_intervention qualifies — it preserves the demo detail page
- * showing what a fully-populated graduated page looks like.
- * No recipe in sample-10 is actually graduated (0 validated in wave-1+2).
+ * Fleet-run-1 (2026-05-30): foreign_intervention now has a real walked card
+ * (MARGINAL_PENDING_BETA_CALIBRATION, recipe_status_audience: in_play).
+ * The old demo-graduated fallback is retired. This function always returns
+ * false; kept exported so the recipe detail page compiles without changes.
  */
-export function isDemoGraduated(recipe: TrackerRecipe): boolean {
-  return recipe.recipe_id === "foreign_intervention";
+export function isDemoGraduated(_recipe: TrackerRecipe): boolean {
+  return false;
 }

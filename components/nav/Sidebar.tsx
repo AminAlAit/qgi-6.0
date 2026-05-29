@@ -9,7 +9,6 @@ import {
   ScrollText,
   Globe,
   Gauge,
-  Layers,
   Columns2,
   Telescope,
   Waves,
@@ -108,13 +107,14 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <Globe size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
-  {
-    type: "standalone",
-    label: "Compound Risk",
-    href: "/compound-risk",
-    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
-    badge: "PRIMARY",
-  },
+  // Compound Risk entry removed 2026-05-30. The route was a polycrisis
+  // leaderboard; the founder elected to take it down and revisit later
+  // on different hypotheses (the Stats/ML trio paper at
+  // qgi-docs/internal/ops/te-fleet-run-1-... documents the rejuvenation
+  // path: hand-tag recipe polarity, then ship as
+  // 'Compound Negative-Event Density'). Components + data live on in
+  // components/compound-risk/ + lib/te-mock/compound-risk-data.ts so
+  // the rebuild starts from scaffolding, not from scratch.
   {
     type: "standalone",
     label: "Nearest Analog",

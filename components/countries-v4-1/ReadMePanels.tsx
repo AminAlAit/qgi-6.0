@@ -127,18 +127,9 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
         recipe page.
       </p>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-        <Link
-          href={"/compound-risk" as Route}
-          style={{
-            fontSize: "12px",
-            color: "var(--qgi-accent)",
-            textDecoration: "none",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.3px",
-          }}
-        >
-          Open in Compound Risk →
-        </Link>
+        {/* "Open in Compound Risk" link removed 2026-05-30 — that route
+            was taken down. Will return when the page rejuvenates as
+            Compound Negative-Event Density. */}
         <Link
           href={`/nearest-analog?iso=${country.iso}` as Route}
           style={{

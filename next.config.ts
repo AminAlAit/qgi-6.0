@@ -142,6 +142,17 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-05-30 — /compound-risk taken down. Page deleted; bookmarks
+      // redirect to /risk-board (the most-overlapping live surface).
+      // Components + data layer stay in tree (components/compound-risk/,
+      // lib/te-mock/compound-risk-data.ts) for a future rejuvenation per
+      // the Stats/ML trio paper (compound-negative-event-density path).
+      {
+        source: "/compound-risk",
+        destination: "/risk-board",
+        permanent: true,
+      },
+
       // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
       // (catalog ledger) was deleted; its AUC column reborn as the per-card
       // Confidence badge on /recipes. Bookmarks preserved here.
