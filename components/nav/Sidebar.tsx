@@ -505,16 +505,23 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
             Lives directly below "Take the tour" so every page sees it once
             and only once. Hides when sidebar collapses (the chip wouldn't
             fit in the 56px rail and the date is already on the user's
-            mental model once they've seen it). */}
+            mental model once they've seen it).
+
+            Round-3.4 (2026-05-29): two-line layout — "Data Last Updated"
+            on top, YYYY-MM on the bottom. The day is dropped from the
+            display because the audience scans by month, not by day; the
+            granularity matches how the bake actually cadences (weekly→
+            monthly). */}
         {!collapsed && dataVintage && (
           <div
-            className="mx-3 mb-3 px-3 py-1.5 text-[10px] tracking-[0.1em] uppercase font-medium"
+            className="mx-3 mb-3 px-3 py-1.5 text-[10px] tracking-[0.1em] uppercase font-medium leading-[1.35]"
             style={{
               color: "var(--qgi-text-dim)",
               fontFamily: "ui-monospace, monospace",
             }}
           >
-            Data Last Updated {dataVintage}
+            <div>Data Last Updated</div>
+            <div>{dataVintage.slice(0, 7)}</div>
           </div>
         )}
 
