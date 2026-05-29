@@ -47,17 +47,21 @@ export function lerpHexToRgb(startHex: string, endHex: string, t: number): strin
  * Build a text-shadow string that glows in `endHex` (the family color),
  * scaling with t. Returns an empty string below a soft threshold so weak
  * scores don't carry any glow at all — the halo earns its space.
+ *
+ * Round-3.6.2 (2026-05-29) — toned down per founder ask. 100% was reading
+ * as blown-out; halved the alpha and trimmed the blur radius so the glow
+ * suggests "lit" rather than "burning". Numbers below:
+ *   t = 0   → no glow
+ *   t = 0.4 → tight 2px core @ 0.33 alpha + 7px halo @ 0.19 alpha
+ *   t = 1.0 → tight 3px core @ 0.52 alpha + 12px halo @ 0.32 alpha
  */
 export function confidenceGlow(endHex: string, t: number): string {
   if (t < 0.18) return "";
   const e = parseHex(endHex);
   const rgb = `${e.r}, ${e.g}, ${e.b}`;
-  // Two stacked shadows: a tight inner core + a wider outer halo. Both
-  // scale with t — tight core 1→4px, outer halo 4→18px. Opacity also
-  // scales: inner up to 0.85, outer up to 0.55.
-  const innerBlur = Math.round(1 + t * 3);
-  const outerBlur = Math.round(4 + t * 14);
-  const innerAlpha = (0.35 + t * 0.5).toFixed(2);
-  const outerAlpha = (0.18 + t * 0.37).toFixed(2);
+  const innerBlur = Math.round(1 + t * 2);
+  const outerBlur = Math.round(3 + t * 9);
+  const innerAlpha = (0.2 + t * 0.32).toFixed(2);
+  const outerAlpha = (0.1 + t * 0.22).toFixed(2);
   return `0 0 ${innerBlur}px rgba(${rgb}, ${innerAlpha}), 0 0 ${outerBlur}px rgba(${rgb}, ${outerAlpha})`;
 }
