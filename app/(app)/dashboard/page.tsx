@@ -65,28 +65,20 @@ export default function DashboardV41Page() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "20px 24px 64px" }}>
-        {/* ── Top strip: "How to read this" + Data Last Updated chip ─────── */}
-        {/* Vintage stamp lives ONLY here per rule §2. */}
+        {/* ── Top strip: "How to read this" button only ──────────────────── */}
+        {/* V4.1 §2 — vintage stamp moved 2026-05-29 from this header strip
+            into the sidebar (below "Take the tour") so it renders once per
+            session across every page, not per-page on the dashboard. */}
         <div
           style={{
             display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-end",
+            justifyContent: "flex-end",
+            alignItems: "center",
             marginBottom: "28px",
             gap: "6px",
           }}
         >
           <HowToReadButton routeKey="dashboard-v4.1" />
-          <span
-            style={{
-              fontSize: "11px",
-              fontFamily: "ui-monospace, monospace",
-              color: "var(--qgi-text-dim)",
-              letterSpacing: "0.2px",
-            }}
-          >
-            Data Last Updated {heroCounts.vintage}
-          </span>
         </div>
 
         {/* ── Hero: short, sales-y h1 + one-sentence subtitle ────────────── */}

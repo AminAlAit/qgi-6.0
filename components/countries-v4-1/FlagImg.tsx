@@ -12,6 +12,7 @@
  */
 import type { CSSProperties } from "react";
 import { iso2FromFlagEmoji } from "@/lib/te-mock/flag-cdn";
+import { iso2For } from "@/lib/te-mock/country-flags";
 
 // flagcdn width presets (the wNN series). We pick the smallest >= 2× the
 // display width so Hi-DPI screens get a crisp raster without upscaling.
@@ -35,7 +36,13 @@ export function FlagImg({
   radius?: number;
   style?: CSSProperties;
 }) {
-  const iso2 = iso2FromFlagEmoji(emoji);
+  // V4.1 follow-up 2026-05-29 — when the emoji decode misses (e.g. the
+  // caller passed a country name without a FLAGS entry, or the value in
+  // FLAGS is a raw iso2 string that the regional-indicator decode can't
+  // handle), fall through to iso2For(name) before showing the placeholder.
+  // This catches the Brunei / Fiji / Maldives / Mauritania / 12 others
+  // that were missing flags on /risk-board despite being in the lookup.
+  const iso2 = iso2FromFlagEmoji(emoji) ?? iso2For(name);
   const height = Math.round(width * 0.75);
 
   if (!iso2) {

@@ -13,9 +13,9 @@ const CALM_SLATE_BLUE = "#5B7E99";
 
 const STATEMENTS: string[] = [
   "Scores rank how closely a recipe's signals resemble historical pre-event conditions. A high discrimination score means the recipe separates pre-event years from non-event years better than chance: it does not mean any country has a specific probability of an event.",
-  "A recipe is considered deployed only after it clears every pre-registered validation checkpoint across held-out groups of cases. Nothing on this tracker is a forecast.",
-  "Corrections are surfaced here on purpose. When a prior result does not survive audit, we withdraw it publicly and log the reason.",
-  "Most recipes do not hold up. The tracker showing that clearly is the transparency signal, not a sign of failure.",
+  "A recipe is marked Validated only after it clears every checkpoint across held-out groups of cases. Recipes In Play are in active rotation and surface results on the risk board while each pass completes. Nothing on this tracker is a forecast.",
+  "When a prior result does not survive audit, we withdraw it publicly and log the reason. The corrections log is in the audit trail below.",
+  "Pair strength, discrimination score, and rank are all relative measures within the recipe distribution. None is a probability of any future event.",
 ];
 
 export function ReadThisPanel() {

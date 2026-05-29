@@ -75,11 +75,11 @@ export function CountryPicker({
           >
             ⓘ
           </span>
+          {/* V4.1 §1.1: "complete walks" jargon removed. Honest empty-state. */}
           <span>
-            No analog data yet for{" "}
+            Historical analogs are in development for{" "}
             <strong style={{ color: "var(--qgi-text)" }}>{unavailableName}</strong>.{" "}
-            Showing the default country instead. The analog corpus is expanded as more
-            recipes complete walks.
+            Showing the default country in the meantime.
           </span>
         </div>
       )}
@@ -205,8 +205,7 @@ export function CountryPicker({
                     textAlign: "center",
                   }}
                 >
-                  No matches in the mock corpus. Try Egypt, Lebanon, Iran, Türkiye,
-                  Pakistan…
+                  No countries matched. Try Egypt, Lebanon, Iran, Türkiye, Pakistan…
                 </div>
               )}
               {filtered.map((e) => {
@@ -259,6 +258,7 @@ export function CountryPicker({
             </div>
           )}
         </div>
+        {/* V4.1 §1.4: "Mock corpus" removed — confidence-first. */}
         <div
           style={{
             marginTop: "10px",
@@ -268,9 +268,9 @@ export function CountryPicker({
             fontStyle: "italic",
           }}
         >
-          Mock corpus: {entries.length} countries. The selected country&apos;s recent
-          12-quarter composite indicator trajectory is matched against pre-event
-          trajectories of every historical positive in the recipe library.
+          {entries.length} countries available. The selected country&apos;s recent
+          12-quarter composite trajectory is matched against pre-event trajectories in the
+          recipe library.
         </div>
       </div>
 

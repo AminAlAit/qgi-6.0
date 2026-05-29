@@ -5,10 +5,12 @@
  * match scores mean, what analog outcomes represent, and what the indicators
  * are.
  *
+ * V4.1 §2: vintage stamp removed from this panel — one stamp lives in the
+ * global header. The "Data vintage" row now reads as a static statement.
+ *
  * Server component.
  */
-import { Telescope, Compass, Crosshair, History as HistoryIcon } from "lucide-react";
-import { vintageStamp } from "@/lib/te-mock/recipes";
+import { Telescope, Compass, History as HistoryIcon } from "lucide-react";
 
 /** Accent hue for the panel: calm slate-blue. */
 const PANEL_COLOR = "#5B7E99";
@@ -107,13 +109,10 @@ export function MethodologyBox() {
         The top three cases across all trajectory shapes are surfaced.
       </Row>
 
-      {/* Vintage row */}
-      <Row icon={HistoryIcon} title="Data vintage">
-        Training corpus: curated verified-positive events catalogued through{" "}
-        <span style={{ fontFamily: "ui-monospace, monospace", color: "var(--qgi-text)" }}>
-          {vintageStamp()}
-        </span>
-        . Analog rankings may shift as new events are catalogued.
+      {/* V4.1 §2: vintage stamp removed — the global header carries it. */}
+      <Row icon={HistoryIcon} title="Updates">
+        The analog corpus is updated on each data vintage. Rankings may shift as new
+        events are catalogued.
       </Row>
     </aside>
   );

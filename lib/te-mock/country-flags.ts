@@ -361,7 +361,7 @@ const ISO2: Record<string, string> = {
   Gambia: "gm",
   "Guinea-Bissau": "gw",
   "Cape Verde": "cv",
-  Mauritania: "mr",
+  Mauritania: "🇲🇷",
   Tanzania: "tz",
   Zimbabwe: "zw",
   Botswana: "bw",
@@ -379,28 +379,111 @@ const ISO2: Record<string, string> = {
   "United Arab Emirates": "ae",
   Bahrain: "bh",
   Oman: "om",
-  Palestine: "ps",
+  Palestine: "🇵🇸",
   // Asia
-  Maldives: "mv",
-  Brunei: "bn",
+  Maldives: "🇲🇻",
+  Brunei: "🇧🇳",
   "Timor-Leste": "tl",
   // Europe
   Malta: "mt",
-  Liechtenstein: "li",
+  Liechtenstein: "🇱🇮",
   Montenegro: "me",
   Kosovo: "xk",
   // Americas
   "Dominican Republic": "do",
   Haiti: "ht",
   Jamaica: "jm",
-  Suriname: "sr",
-  Guyana: "gy",
+  Suriname: "🇸🇷",
+  Guyana: "🇬🇾",
   // Oceania
-  Fiji: "fj",
+  Fiji: "🇫🇯",
+  // Risk Board flag fill 2026-05-29 — the 16 microstate / territory names
+  // were rendering without flags on /risk-board (and anywhere else flagFor()
+  // is the resolution path). FlagImg expects the emoji form (it decodes
+  // iso2 from the regional-indicator codepoints), so values here must be
+  // emoji, NOT iso2 strings.
+  "Trinidad and Tobago": "🇹🇹",
+  "Papua New Guinea": "🇵🇬",
+  "Marshall Islands": "🇲🇭",
+  Micronesia: "🇫🇲",
+  Samoa: "🇼🇸",
+  Macao: "🇲🇴",
+  "Isle of Man": "🇮🇲",
+  "Saint Martin (French part)": "🇲🇫",
+  // Long-tail microstate / territory backfill from the country roster.
+  "Sint Maarten (Dutch part)": "🇸🇽",
+  "Saint Kitts and Nevis": "🇰🇳",
+  "Saint Vincent and the Grenadines": "🇻🇨",
+  Tuvalu: "🇹🇻",
+  Kiribati: "🇰🇮",
+  Tonga: "🇹🇴",
+  Nauru: "🇳🇷",
+  Vanuatu: "🇻🇺",
+  "Solomon Islands": "🇸🇧",
+  Palau: "🇵🇼",
+  // Comoros / Bhutan / Timor-Leste / Hong Kong already present above as
+  // iso2-string entries (which the flagFor smart-fallback lifts to emoji).
+  // Not re-adding here to avoid TS1117 duplicate-property error.
+  "Sao Tome and Principe": "🇸🇹",
+  "Cabo Verde": "🇨🇻",
+  Seychelles: "🇸🇨",
+  Andorra: "🇦🇩",
+  "San Marino": "🇸🇲",
+  Monaco: "🇲🇨",
+  Vatican: "🇻🇦",
+  "Faroe Islands": "🇫🇴",
+  Greenland: "🇬🇱",
+  "Channel Islands": "🇯🇪",
+  Gibraltar: "🇬🇮",
+  "Cayman Islands": "🇰🇾",
+  Bermuda: "🇧🇲",
+  "Turks and Caicos Islands": "🇹🇨",
+  "British Virgin Islands": "🇻🇬",
+  "U.S. Virgin Islands": "🇻🇮",
+  Anguilla: "🇦🇮",
+  Aruba: "🇦🇼",
+  Curacao: "🇨🇼",
+  "Antigua and Barbuda": "🇦🇬",
+  Dominica: "🇩🇲",
+  Grenada: "🇬🇩",
+  Barbados: "🇧🇧",
+  "New Caledonia": "🇳🇨",
+  "French Polynesia": "🇵🇫",
+  Guam: "🇬🇺",
+  "Northern Mariana Islands": "🇲🇵",
+  "American Samoa": "🇦🇸",
+  "Puerto Rico": "🇵🇷",
 };
 
+/**
+ * V4.1 follow-up 2026-05-29 — robust mixed-map handling.
+ *
+ * The FLAGS map historically contained pure emoji values, but the 2026-05-28
+ * sweep (Naila Hassan's African / Asian / Microstate backfill) added several
+ * dozen entries as iso2 strings instead of emojis. FlagImg expects emoji, so
+ * those entries rendered as empty placeholders silently.
+ *
+ * Rather than rewrite the map (which would conflict on every concurrent edit),
+ * we normalize at the read site: if a value looks like a 2-letter iso2 code,
+ * lift it to the regional-indicator emoji pair on the fly.
+ */
+function iso2ToEmoji(iso2: string): string {
+  // Regional Indicator Symbol A is U+1F1E6; each letter maps to base + offset.
+  const A_OFFSET = 0x1f1e6 - "a".charCodeAt(0);
+  const cps = iso2
+    .toLowerCase()
+    .split("")
+    .map((c) => c.charCodeAt(0) + A_OFFSET);
+  return String.fromCodePoint(cps[0], cps[1]);
+}
+
 export function flagFor(name: string): string {
-  return FLAGS[name] ?? "🏳️";
+  const raw = FLAGS[name];
+  if (!raw) return "🏳️";
+  // Already an emoji (Regional Indicator pair = 8 UTF-16 code units, but len 2 in code points)
+  // → return as-is. Two-letter ASCII iso2 → lift.
+  if (/^[a-z]{2}$/i.test(raw)) return iso2ToEmoji(raw);
+  return raw;
 }
 
 /**
@@ -416,3 +499,5 @@ export function flagFor(name: string): string {
 export function iso2For(name: string): string | null {
   return ISO2[name] ?? null;
 }
+
+// touch 1780028405015

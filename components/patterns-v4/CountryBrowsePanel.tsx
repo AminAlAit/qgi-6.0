@@ -275,7 +275,7 @@ export function CountryBrowsePanel({ allPairs }: CountryBrowsePanelProps) {
             padding: "16px 0",
           }}
         >
-          No pairs on record for {selected.name} in this vintage.
+          No pairs on record for {selected.name} yet.
         </div>
       )}
 

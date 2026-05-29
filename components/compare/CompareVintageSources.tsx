@@ -47,18 +47,15 @@ export function CompareVintageSources({
     ])
   ).sort();
 
-  const vintage =
-    countryA.vintage === countryB.vintage
-      ? countryA.vintage
-      : `${countryA.vintage} / ${countryB.vintage}`;
-
   return (
     <PanelShell
-      title="Vintage and sources"
+      title="Data sources"
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="compare-vintage"
     >
+      {/* V4.1 §2: vintage stamp removed (lives in global header).
+          Source-attribution rows kept — audience-facing in a good way. */}
       <div
         style={{
           display: "grid",
@@ -67,14 +64,14 @@ export function CompareVintageSources({
           marginBottom: "14px",
         }}
       >
-        <Field k="Vintage" v={vintage} />
         <Field k="Refresh cadence" v="At least 4x per year" />
         <Field k="Data sources" v={sources.join(" / ") || "n/a"} />
         <Field
-          k="Recipes in play"
+          k="Recipes matched"
           v={`${countryA.name}: ${countryA.recipes_lit_count} | ${countryB.name}: ${countryB.recipes_lit_count}`}
         />
       </div>
+      {/* V4.1 §1.4: self-flagellation removed. Confidence-first. */}
       <p
         style={{
           fontSize: "12px",
@@ -84,9 +81,7 @@ export function CompareVintageSources({
           maxWidth: "72ch",
         }}
       >
-        These scores are reported for research review. None of the recipes shown has yet
-        met our bar to be deployed for real decisions. Every score is a resemblance rank,
-        not a probability.
+        Every score is a resemblance rank, not a probability.
       </p>
     </PanelShell>
   );

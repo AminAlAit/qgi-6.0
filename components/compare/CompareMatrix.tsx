@@ -20,15 +20,15 @@ import { NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
 import type { CompareGapRow } from "@/lib/te-mock/compare-data";
 
-// Status chip for recipe tracker state.
+/** V4.1 §4 vocabulary — four audience buckets, no methodology jargon. */
 function StatusChip({ status }: { status: string | null }) {
   if (!status) return null;
   const map: Record<string, { label: string; color: string }> = {
-    graduated: { label: "Deployed", color: "#3FBF8F" },
-    in_progress: { label: "In review", color: "#E68F29" },
-    walked_no_graduation: { label: "Tested", color: "#E64545" },
-    live_legacy: { label: "Legacy", color: "#7A8FA0" },
-    queued: { label: "Queued", color: "#7A8FA0" },
+    graduated: { label: "Validated", color: "#3FBF8F" },
+    in_progress: { label: "In play", color: "#5B7E99" },
+    walked_no_graduation: { label: "In play", color: "#5B7E99" },
+    live_legacy: { label: "Prior version", color: "#7A8FA0" },
+    queued: { label: "Coming soon", color: "#7A8FA0" },
   };
   const entry = map[status] ?? { label: status, color: "#7A8FA0" };
   return (
@@ -377,7 +377,8 @@ export function CompareMatrix({
         );
       })}
 
-      {/* Marcus mitigation 3 — muted rows explanation */}
+      {/* Muted rows explanation — V4.1 §0 + §4: confidence-first framing.
+          "Did not hold up" language replaced by active-rotation framing. */}
       {hasAnyMuted && (
         <div
           style={{
@@ -390,8 +391,8 @@ export function CompareMatrix({
             borderTop: "1px solid var(--qgi-border)",
           }}
         >
-          Rows where the recipe was tested and did not hold up are shown muted; their
-          scores are present for completeness, not as validated readings.
+          Muted rows are recipes In Play: in active rotation on the risk board while the
+          next validation pass completes.
         </div>
       )}
     </section>

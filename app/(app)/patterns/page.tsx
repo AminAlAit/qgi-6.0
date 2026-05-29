@@ -42,7 +42,8 @@ export default function PatternsV4Page() {
 
   return (
     <PageLayout>
-      {/* ── Top strip: vintage stamp + HowToReadButton ── */}
+      {/* ── Top strip: HowToReadButton ── */}
+      {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
       <div
         style={{
           display: "flex",
@@ -53,21 +54,6 @@ export default function PatternsV4Page() {
         }}
       >
         <HowToReadButton routeKey="patterns-v4" />
-        <span
-          style={{
-            fontSize: "10px",
-            padding: "5px 10px",
-            border: "1px solid var(--qgi-border)",
-            color: "var(--qgi-text-muted)",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.4px",
-            background: "var(--qgi-surface)",
-            borderRadius: "4px",
-          }}
-        >
-          {catalogue.vintage}
-        </span>
-        {/* MOCKUP chip dropped 2026-05-29 — V4 patterns surface is canonical. */}
       </div>
 
       {/* ── Section 1: Page hero ── */}
@@ -137,6 +123,7 @@ export default function PatternsV4Page() {
       <RecentlySurfacedPanel pairs={catalogue.recently_surfaced} />
 
       {/* Footer */}
+      {/* V4.1 §2: "{catalogue.vintage} vintage" removed from footer. */}
       <footer
         style={{
           marginTop: "48px",
@@ -148,8 +135,8 @@ export default function PatternsV4Page() {
           letterSpacing: "0.3px",
         }}
       >
-        {catalogue.total_pairs} pairs · {catalogue.vintage} vintage · Pair strength is a
-        rank (0-100), not a probability.
+        {catalogue.total_pairs} pairs · Pair strength is a rank (0-100), not a
+        probability.
       </footer>
     </PageLayout>
   );

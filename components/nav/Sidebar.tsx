@@ -170,7 +170,7 @@ function readStoredCollapsed(): boolean {
   }
 }
 
-export function Sidebar() {
+export function Sidebar({ dataVintage }: { dataVintage?: string }) {
   const pathname = usePathname();
 
   // T14 #307 HIGH fix (2026-04-19): mobile hamburger + off-canvas sidebar.
@@ -491,6 +491,23 @@ export function Sidebar() {
           >
             ✨ Take the tour
           </button>
+        )}
+
+        {/* V4.1 §2 — one canonical "Data Last Updated" stamp per session.
+            Lives directly below "Take the tour" so every page sees it once
+            and only once. Hides when sidebar collapses (the chip wouldn't
+            fit in the 56px rail and the date is already on the user's
+            mental model once they've seen it). */}
+        {!collapsed && dataVintage && (
+          <div
+            className="mx-3 mb-3 px-3 py-1.5 text-[10px] tracking-[0.1em] uppercase font-medium"
+            style={{
+              color: "var(--qgi-text-dim)",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            Data Last Updated {dataVintage}
+          </div>
         )}
 
         {/* Footer — shows text when expanded; hides when collapsed. */}

@@ -16,7 +16,12 @@ import { getAllRecipes } from "@/lib/te-mock/recipes";
 import { getTopPairs, zoneFor, type BoardPair } from "@/lib/te-mock/risk-board-data";
 import { familyColor } from "@/lib/te-mock/l1-families";
 
-export function RiskBoardHero({ vintage }: { vintage: string }) {
+export function RiskBoardHero({
+  vintage: _vintage,
+}: {
+  /** @deprecated V4.1 §2 — vintage stamp removed. Prop kept for back-compat. */
+  vintage?: string;
+}) {
   const pairs = getTopPairs();
   const recipes = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
 
@@ -63,21 +68,7 @@ export function RiskBoardHero({ vintage }: { vintage: string }) {
             Top {pairs.length} country × recipe pairs
           </h2>
         </div>
-        <span
-          style={{
-            fontSize: "10px",
-            letterSpacing: "1px",
-            color: "var(--qgi-text-dim)",
-            padding: "4px 8px",
-            background: "var(--qgi-bg)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "4px",
-            fontFamily: "ui-monospace, monospace",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Vintage {vintage}
-        </span>
+        {/* V4.1 §2: per-panel vintage stamp removed — one stamp in global header. */}
       </div>
 
       <ol

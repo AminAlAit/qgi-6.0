@@ -113,7 +113,8 @@ export default async function ComparePage({ searchParams }: Props) {
               <span>Compare</span>
             </nav>
 
-            {/* Vintage chip + GenerateComparisonReportButton + HowToReadButton */}
+            {/* GenerateComparisonReportButton + HowToReadButton
+                V4.1 §2: vintage stamp removed — lives in the global header. */}
             <div
               style={{
                 display: "flex",
@@ -122,19 +123,6 @@ export default async function ComparePage({ searchParams }: Props) {
                 flexWrap: "wrap",
               }}
             >
-              <span
-                style={{
-                  fontSize: "10px",
-                  fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.4px",
-                  color: "var(--qgi-text-dim)",
-                  padding: "3px 8px",
-                  border: "1px solid var(--qgi-border)",
-                  borderRadius: "3px",
-                }}
-              >
-                {countryA.vintage}
-              </span>
               <GenerateComparisonReportButton
                 countryA={countryA.name}
                 countryB={countryB.name}

@@ -22,8 +22,11 @@ interface PageProps {
   searchParams: Promise<{
     min?: string;
     families?: string;
+    page?: string;
   }>;
 }
+
+const PAGE_SIZE = 25;
 
 export default async function CompoundRiskPage({ searchParams }: PageProps) {
   const sp = await searchParams;
@@ -48,6 +51,17 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
     }
     return true;
   });
+
+  // V4.1 follow-up 2026-05-29: paginate the leaderboard. Pre-pagination the
+  // page rendered ~200 CompoundRow components on each load — each row carries
+  // 4-6 lit-recipe icons + flags + family chips, so the cost compounds. 25/page
+  // gives the risk-analyst a scan-pattern that fits a single screen + keeps
+  // the slice-cost flat regardless of corpus growth.
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const pageRaw = Number(sp.page ?? "1");
+  const page = Number.isFinite(pageRaw) ? Math.max(1, Math.min(totalPages, pageRaw)) : 1;
+  const pageStart = (page - 1) * PAGE_SIZE;
+  const paged = filtered.slice(pageStart, pageStart + PAGE_SIZE);
 
   const litAtThreshold = countLitAtThreshold(sortedAll, minThreshold);
   const totalCountries = sortedAll.length;
@@ -81,11 +95,16 @@ export default async function CompoundRiskPage({ searchParams }: PageProps) {
         {/* Filters */}
         <CompoundFilters minThreshold={minThreshold} familyFilter={familyFilter} />
 
-        {/* Leaderboard */}
+        {/* Leaderboard — paginated (25 rows per page) */}
         <CompoundLeaderboard
-          countries={filtered}
+          countries={paged}
           minThreshold={minThreshold}
           allCount={sortedAll.length}
+          filteredCount={filtered.length}
+          page={page}
+          totalPages={totalPages}
+          pageSize={PAGE_SIZE}
+          pageStart={pageStart}
         />
 
         {/* Overlap chart (top 5) */}

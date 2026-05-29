@@ -144,7 +144,7 @@ export function FamilyBrowsePanel({ allPairs }: FamilyBrowsePanelProps) {
             fontStyle: "italic",
           }}
         >
-          No pairs active in this family this vintage.
+          No pairs on record for this category yet.
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "1px" }}>

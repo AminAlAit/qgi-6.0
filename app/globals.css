@@ -169,3 +169,30 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* V4.1 follow-up 2026-05-29 — soft "in active rotation" pulse on the recipe
+   card status dot. The shadow ring expands and fades on every cycle; the
+   dot's solid fill stays put so the family hue reads steady. Color is
+   inherited from the dot's `background`, so each family glows in its
+   own hue (no hard-coded color).
+
+   The animation is gated by `.qgi-pulse-dot` so non-In-Play statuses get a
+   static dot. Reduced-motion users get a 0.01ms duration via the rule
+   above — visually inert, no perceived motion. */
+@keyframes qgi-pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 currentColor;
+  }
+  70% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
+}
+
+.qgi-pulse-dot {
+  animation: qgi-pulse-ring 1.8s ease-out infinite;
+  /* color carries the family hue forward to box-shadow (currentColor). */
+  color: currentColor;
+}

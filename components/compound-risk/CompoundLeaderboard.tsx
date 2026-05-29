@@ -17,9 +17,28 @@ interface Props {
   countries: CompoundCountry[];
   minThreshold: number;
   allCount: number;
+  filteredCount: number;
+  page: number;
+  totalPages: number;
+  pageSize: number;
+  pageStart: number;
 }
 
-export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props) {
+export function CompoundLeaderboard({
+  countries,
+  minThreshold,
+  allCount,
+  filteredCount,
+  page,
+  totalPages,
+  pageSize,
+  pageStart,
+}: Props) {
+  // V4.1 follow-up 2026-05-29 — paginated leaderboard. Range and label below
+  // describe the current slice; pagination controls live in the footer.
+  const showStart = filteredCount === 0 ? 0 : pageStart + 1;
+  const showEnd = Math.min(pageStart + countries.length, filteredCount);
+
   return (
     <section data-tour="compound-leaderboard" style={{ marginTop: "32px" }}>
       <div
@@ -49,7 +68,9 @@ export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props
             letterSpacing: "0.3px",
           }}
         >
-          showing {countries.length} of {allCount} · {minThreshold}+ recipes matched
+          {filteredCount === 0
+            ? `0 of ${allCount} · ${minThreshold}+ recipes matched`
+            : `${showStart}–${showEnd} of ${filteredCount} · ${minThreshold}+ recipes matched`}
         </span>
       </div>
 
@@ -70,22 +91,164 @@ export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props
           remove a family requirement.
         </div>
       ) : (
-        <ol
-          style={{
-            listStyle: "none",
-            padding: 0,
-            margin: 0,
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
-          }}
-        >
-          {countries.map((c, i) => (
-            <CompoundRow key={c.iso} country={c} rank={i + 1} />
-          ))}
-        </ol>
+        <>
+          <ol
+            style={{
+              listStyle: "none",
+              padding: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
+              gap: "10px",
+            }}
+          >
+            {countries.map((c, i) => (
+              <CompoundRow key={c.iso} country={c} rank={pageStart + i + 1} />
+            ))}
+          </ol>
+          <Pagination page={page} totalPages={totalPages} pageSize={pageSize} />
+        </>
       )}
     </section>
+  );
+}
+
+/**
+ * Server-rendered pagination control. Each control is a Link with the current
+ * filter searchParams preserved and only ?page= updated. The whole control
+ * disappears when there's a single page.
+ *
+ * The pagination context (filter state) is read from the URL by the parent
+ * page; we receive only the page number + count of pages here. Pure render,
+ * no client JS.
+ */
+function Pagination({
+  page,
+  totalPages,
+  pageSize,
+}: {
+  page: number;
+  totalPages: number;
+  pageSize: number;
+}) {
+  if (totalPages <= 1) return null;
+
+  // Show: first, prev, current ±2, next, last. Ellipsis when there's a gap.
+  const pageNumbers = paginationWindow(page, totalPages);
+
+  return (
+    <nav
+      aria-label="Compound leaderboard pagination"
+      style={{
+        marginTop: "20px",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        gap: "12px",
+        flexWrap: "wrap",
+      }}
+    >
+      <span
+        style={{
+          fontSize: "10.5px",
+          color: "var(--qgi-text-dim)",
+          fontFamily: "ui-monospace, monospace",
+          letterSpacing: "0.3px",
+        }}
+      >
+        Page {page} of {totalPages} · {pageSize} per page
+      </span>
+      <div style={{ display: "flex", gap: "4px", alignItems: "center" }}>
+        <PageLink page={page - 1} disabled={page <= 1} label="Prev" />
+        {pageNumbers.map((p, i) =>
+          p === "…" ? (
+            <span
+              key={`gap-${i}`}
+              aria-hidden="true"
+              style={{
+                fontSize: "11px",
+                color: "var(--qgi-text-dim)",
+                padding: "0 4px",
+                fontFamily: "ui-monospace, monospace",
+              }}
+            >
+              …
+            </span>
+          ) : (
+            <PageLink key={p} page={p} active={p === page} label={String(p)} />
+          )
+        )}
+        <PageLink page={page + 1} disabled={page >= totalPages} label="Next" />
+      </div>
+    </nav>
+  );
+}
+
+/** Compute a compact page window: first, current±2, last, with ellipses. */
+function paginationWindow(current: number, total: number): Array<number | "…"> {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const set = new Set<number>([1, total, current - 1, current, current + 1]);
+  // Add a buffer at the edges so we don't get "1, 2, 3, 4, 5, ..., 10" but
+  // "1, ..., 4, 5, 6, ..., 10".
+  if (current <= 4) [2, 3, 4].forEach((n) => set.add(n));
+  if (current >= total - 3) [total - 1, total - 2, total - 3].forEach((n) => set.add(n));
+  const sorted = Array.from(set)
+    .filter((n) => n >= 1 && n <= total)
+    .sort((a, b) => a - b);
+  const out: Array<number | "…"> = [];
+  for (let i = 0; i < sorted.length; i++) {
+    out.push(sorted[i]);
+    if (i < sorted.length - 1 && sorted[i + 1] !== sorted[i] + 1) out.push("…");
+  }
+  return out;
+}
+
+function PageLink({
+  page,
+  active,
+  disabled,
+  label,
+}: {
+  page: number;
+  active?: boolean;
+  disabled?: boolean;
+  label: string;
+}) {
+  const style: React.CSSProperties = {
+    minWidth: "28px",
+    padding: "4px 8px",
+    fontSize: "11px",
+    fontFamily: "ui-monospace, monospace",
+    letterSpacing: "0.3px",
+    textAlign: "center",
+    border: `1px solid ${active ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
+    borderRadius: "4px",
+    background: active ? "var(--qgi-accent)" : "var(--qgi-surface)",
+    color: disabled
+      ? "var(--qgi-text-dim)"
+      : active
+        ? "var(--qgi-bg)"
+        : "var(--qgi-text-muted)",
+    textDecoration: "none",
+    cursor: disabled ? "default" : "pointer",
+    opacity: disabled ? 0.4 : 1,
+    pointerEvents: disabled ? "none" : "auto",
+  };
+  if (disabled) {
+    return (
+      <span style={style} aria-disabled="true">
+        {label}
+      </span>
+    );
+  }
+  // Preserve current filter state via the search params already in the URL.
+  // The Link rewrites only the `page` param via the `?page=…` hash; Next.js
+  // typed-routes is happy with a relative search string.
+  const href = `?page=${page}` as Route;
+  return (
+    <Link href={href} style={style} aria-current={active ? "page" : undefined}>
+      {label}
+    </Link>
   );
 }
 

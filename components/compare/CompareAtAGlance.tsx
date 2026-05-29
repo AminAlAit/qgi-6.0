@@ -214,15 +214,16 @@ export function CompareAtAGlance({
         formattedA={String(glance.recipes_a)}
         formattedB={String(glance.recipes_b)}
       />
+      {/* V4.1 §1.3: "Lit families" → "Matched categories"; "L1" removed from tooltip. */}
       <SplitTile
-        label="Lit families"
+        label="Matched categories"
         countryA={countryA}
         countryB={countryB}
         valueA={glance.lit_families_a}
         valueB={glance.lit_families_b}
         formattedA={String(glance.lit_families_a)}
         formattedB={String(glance.lit_families_b)}
-        tooltip="Distinct L1 threat families each country is in play on."
+        tooltip="Distinct risk categories each country currently matches."
       />
       <SplitTile
         label="Top recipe rank gap"

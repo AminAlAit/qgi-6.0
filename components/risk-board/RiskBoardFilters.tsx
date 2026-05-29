@@ -23,6 +23,9 @@ import { useMemo, useState } from "react";
 import { Search, X, Filter, RotateCcw } from "lucide-react";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+// 2026-05-29 — touch comment to force Turbopack to re-detect this module's
+// dependency on the updated FlagImg + country-flags lib (cache invalidation
+// guard for the 16-flag-missing fix).
 import { flagFor } from "@/lib/te-mock/country-flags";
 import {
   getRecipeRow,
@@ -178,7 +181,8 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
                     background: active ? "var(--qgi-bg)" : displayColor,
                   }}
                 />
-                {fam.id} · {fam.label}
+                {/* V4.1 §1.2: family letter glyph banned. Label only. */}
+                {fam.label}
               </button>
             );
           })}
@@ -199,7 +203,8 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
             [
               ["all", "All"],
               ["scored", "Scored"],
-              ["queued", "Not yet tested"],
+              /* V4.1 §4: "Not yet tested" → "Coming soon". */
+              ["queued", "Coming soon"],
             ] as Array<[StatusFilter, string]>
           ).map(([key, label]) => {
             const active = statusFilter === key;
@@ -411,12 +416,9 @@ function RecipeGridRow({
         : "#7A8FA0";
   const displayColor = familyColor(recipe.l1_id, recipe.l1_color);
 
-  // Coverage caption — only on scored rows, per R&D reply §Q7. Honest framing:
-  // a country lacking coverage is "not scored," never "low score."
-  const hasCoverageData = row.n_countries_scored !== null;
-  const coverageGap = hasCoverageData
-    ? row.platform_roster_size - (row.n_countries_scored as number)
-    : 0;
+  // V4.1 §1.4 (2026-05-29): the coverage caption ("X of 174 platform
+  // countries scored · Y lack coverage…") was self-flagellation noise —
+  // removed. hasCoverageData + coverageGap derivations dropped with it.
 
   return (
     <div style={{ borderBottom: isLast ? "none" : "1px solid var(--qgi-border)" }}>
@@ -498,31 +500,12 @@ function RecipeGridRow({
         ))}
       </div>
 
-      {/* Coverage caption — honesty surface, R&D reply §Q7 */}
-      {hasCoverageData && (
-        <div
-          style={{
-            padding: "6px 14px 8px",
-            paddingLeft: "295px", // align under the cell columns, past the 280px identity col + 12px gutter
-            fontSize: "10px",
-            color: "var(--qgi-text-dim)",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.3px",
-            background: "rgba(0,0,0,0.06)",
-            borderTop: "1px solid var(--qgi-border)",
-          }}
-          title={
-            row.countries_not_scored_iso && row.countries_not_scored_iso.length > 0
-              ? `Lacking coverage: ${row.countries_not_scored_iso.join(", ")}`
-              : undefined
-          }
-        >
-          {row.n_countries_scored} of {row.platform_roster_size} platform countries scored
-          {coverageGap > 0
-            ? ` · ${coverageGap} lack coverage for this recipe's indicators`
-            : ""}
-        </div>
-      )}
+      {/* V4.1 §1.4 (2026-05-29): the between-row coverage caption ("X of 174
+          platform countries scored · Y lack coverage for this recipe's
+          indicators") was self-flagellation noise that read as exposure on
+          every recipe row. Removed. The full not-scored ISO list is still
+          available via the tooltip on the row's identity column if anyone
+          needs it. */}
     </div>
   );
 }
@@ -559,7 +542,8 @@ function HeatCell({
           justifyContent: "space-between",
           cursor: "default",
         }}
-        title="Not yet tested: recipe queued for next vintage."
+        title="Coming soon: recipe enters scoring once its evidence base is ready."
+        /* V4.1 §4: "not yet tested" → "coming soon" */
       >
         <div
           style={{
@@ -569,7 +553,7 @@ function HeatCell({
             lineHeight: 1.2,
           }}
         >
-          not yet tested
+          coming soon
         </div>
         <span
           style={{

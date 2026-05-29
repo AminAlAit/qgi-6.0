@@ -27,7 +27,6 @@ import {
   getCurrentCountries,
   defaultCurrentCountry,
 } from "@/lib/te-mock/nearest-analog-data";
-import { vintageStamp } from "@/lib/te-mock/recipes";
 import { CountryPicker } from "@/components/nearest-analog/CountryPicker";
 import { MethodologyBox } from "@/components/nearest-analog/MethodologyBox";
 import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
@@ -67,7 +66,7 @@ export default async function NearestAnalogPage({
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1320px", margin: "0 auto", padding: "24px" }}>
-        {/* Vintage stamp */}
+        {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
         <div
           style={{
             display: "flex",
@@ -79,20 +78,6 @@ export default async function NearestAnalogPage({
           }}
         >
           <HowToReadButton routeKey="nearest-analog" />
-          <span
-            style={{
-              fontSize: "10px",
-              padding: "5px 10px",
-              border: "1px solid var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.4px",
-              background: "var(--qgi-surface)",
-              borderRadius: "4px",
-            }}
-          >
-            Data as of {vintageStamp()}
-          </span>
         </div>
 
         {/* Hero */}
