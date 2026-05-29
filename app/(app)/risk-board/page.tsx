@@ -1,13 +1,11 @@
 import type { Metadata } from "next";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import {
-  BOARD_VINTAGE,
   getBoardRecipes,
   getRecipeFullScoreMap,
   getRecipeRow,
 } from "@/lib/te-mock/risk-board-data";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
-import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
 import {
   RiskBoardFilters,
@@ -137,8 +135,10 @@ export default function RiskBoardPage() {
           </p>
         </div>
 
-        {/* Hero strip — today's top pairs across all recipes */}
-        <RiskBoardHero vintage={BOARD_VINTAGE} />
+        {/* "Today across the catalog" hero strip removed 2026-05-29 —
+            moved to /dashboard in a slim form (TopPairsStrip). The grid
+            below is the primary surface here; the dashboard owns the
+            teaser. */}
 
         {/* Filter shell + grid (client component) */}
         <div style={{ marginBottom: "8px" }}>
