@@ -89,6 +89,12 @@ for _p in (SCRIPTS_ROOT, SRC_ROOT, REPO_ROOT):
     if str(_p) not in sys.path:
         sys.path.insert(0, str(_p))
 
+# #969: Beta calibration emit. Imported under an explicit `_beta_cal` alias so the
+# call site at the summary dict (search for `_beta_cal.compute_calibration_block`)
+# is unambiguous about the source module. Placed AFTER the SRC_ROOT path setup
+# above so no second `sys.path.insert` is needed (Sonnet PR#124 FU-1).
+import beta_calibration as _beta_cal
+
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 LOG = logging.getLogger("f-ml-1-poc")
 
@@ -1872,6 +1878,15 @@ def _main(argv: list[str] | None = None) -> int:
         # Canonical location is `stability_diagnostic.fold_variance` (§4.2-SD).
         "descriptive_emit": descriptive,
         "window_search_auxiliary_note": window_aux,
+        # #969: Beta calibration emit (Kull et al. 2017) on the pooled LOCO predictions.
+        # APPEND-ONLY — does not change selected_indicators, chosen_window, AUC, the
+        # gates_eval, or the verdict. The verdict policy (whether LOCK requires
+        # ECE <= floor in addition to discrimination) is a Majles methodology gate
+        # handled separately; this emit is the data the policy will consume.
+        # Bit-identity is preserved because the calibration computation only READS
+        # `final["probs"]` and `final["labels"]` (already-computed pooled LOCO arrays)
+        # and writes a NEW top-level field. No upstream value is changed.
+        "calibration": _beta_cal.compute_calibration_block(final["probs"], final["labels"]),
     }
     out_path = args.output_dir / "f-ml-1-poc-summary.json"
     out_path.write_text(_to_strict_json(summary), encoding="utf-8")
