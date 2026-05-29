@@ -118,7 +118,7 @@ export default function RiskBoardPage() {
               margin: "0 0 10px",
             }}
           >
-            Which countries currently resemble a validated crisis shape
+            Where today&apos;s country paths resemble history&apos;s event recipes
           </h1>
           <p
             style={{
@@ -129,9 +129,14 @@ export default function RiskBoardPage() {
               margin: 0,
             }}
           >
-            {/* V4.1 §5: one-sentence subtitle. */}
-            Discrimination ranks across the recipe catalog: which countries currently
-            resemble each recipe&apos;s historical shape, ranked. Not a forecast.
+            {/* 2026-05-30 polish: dropped "discrimination ranks" jargon and
+                the "Not a forecast" hedge. New copy frames rows + cells
+                + the multi-country pick-and-compare affordance. No em-dashes
+                per V4.1 §11. */}
+            Each row is an event recipe, a shape reconstructed from past cases. Each cell
+            shows how closely a country&apos;s recent path matches that shape. Scan a row
+            for today&apos;s closest matches, or pick countries to compare them across the
+            catalog.
           </p>
         </div>
 

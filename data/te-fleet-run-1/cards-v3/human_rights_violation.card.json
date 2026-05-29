@@ -1,0 +1,483 @@
+{
+  "recipe_id": "human_rights_violation",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "prior_version",
+  "family_label": "Civil Conflict",
+  "description_compelling": "Documented state or state-tolerated abuse at scale \u2014 torture, extrajudicial killings, arbitrary detention, systematic targeting of identifiable groups. Freedom-from-torture, freedom-from-killings, and equal-protection indices all degrade together. The signal lights up across closed autocracies and conflict-zone states with collapsed accountability.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7193464690317775,
+    "ci95_lo": 0.673480526852574,
+    "ci95_hi": 0.7620594032701857,
+    "ci80_lo": 0.6916274761040615,
+    "ci80_hi": 0.7485782693173557,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cltort",
+      "NE.IMP.GNFS.ZS",
+      "NE.EXP.GNFS.ZS"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)"
+      },
+      {
+        "code": "NE.IMP.GNFS.ZS",
+        "name": null
+      },
+      {
+        "code": "NE.EXP.GNFS.ZS",
+        "name": null
+      }
+    ],
+    "chosen_window": 15,
+    "final_global_auc": 0.7193464690317775,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cltort",
+        "window": 12,
+        "auc": 0.6736717948717948,
+        "lift_over_previous": 0.17367179487179485,
+        "selected_after": [
+          "v2cltort"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "NE.IMP.GNFS.ZS",
+        "window": 15,
+        "auc": 0.6965987617848793,
+        "lift_over_previous": 0.02292696691308449,
+        "selected_after": [
+          "v2cltort",
+          "NE.IMP.GNFS.ZS"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "NE.EXP.GNFS.ZS",
+        "window": 15,
+        "auc": 0.7193464690317775,
+        "lift_over_previous": 0.02274770724689812,
+        "selected_after": [
+          "v2cltort",
+          "NE.IMP.GNFS.ZS",
+          "NE.EXP.GNFS.ZS"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_neopat",
+        "window": 12,
+        "auc": 0.7143670619692506,
+        "lift_over_previous": -0.004979407062526864,
+        "selected_after": [
+          "v2cltort",
+          "NE.IMP.GNFS.ZS",
+          "NE.EXP.GNFS.ZS",
+          "v2x_neopat"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 232,
+    "n_pos_survive": 166,
+    "n_neg_total": 696,
+    "n_neg_survive": 469,
+    "pos_coverage": 0.7155172413793104,
+    "neg_coverage": 0.6738505747126436,
+    "n_countries_survive": 78,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 329,
+      "loco_auc": 0.6752136752136753,
+      "ece": 0.13718551958664843,
+      "ece_ci95_lo": 0.10627885077404861,
+      "ece_ci95_hi": 0.19262617299478996,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 55,
+          "mean_predicted": 0.050537934238937765,
+          "mean_actual": 0.12727272727272726
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 52,
+          "mean_predicted": 0.14783073087724355,
+          "mean_actual": 0.19230769230769232
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 28,
+          "mean_predicted": 0.24926132495914186,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 33,
+          "mean_predicted": 0.3445068895816803,
+          "mean_actual": 0.5151515151515151
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 29,
+          "mean_predicted": 0.4453308530922594,
+          "mean_actual": 0.41379310344827586
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 42,
+          "mean_predicted": 0.5503408170881725,
+          "mean_actual": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 22,
+          "mean_predicted": 0.6513267105275934,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 25,
+          "mean_predicted": 0.7466087079048157,
+          "mean_actual": 0.64
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 27,
+          "mean_predicted": 0.8504184528633401,
+          "mean_actual": 0.4074074074074074
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 16,
+          "mean_predicted": 0.9352657608687878,
+          "mean_actual": 0.5625
+        }
+      ],
+      "loco_auc_ci95_lo": 0.611801027488963,
+      "loco_auc_ci95_hi": 0.7286613636868746
+    },
+    "mid-tier": {
+      "n": 153,
+      "loco_auc": 0.6866828087167071,
+      "ece": 0.1162474731659042,
+      "ece_ci95_lo": 0.07630209780086648,
+      "ece_ci95_hi": 0.1844127842139154,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 76,
+          "mean_predicted": 0.04172977478562021,
+          "mean_actual": 0.13157894736842105
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 26,
+          "mean_predicted": 0.14070414407895163,
+          "mean_actual": 0.15384615384615385
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 21,
+          "mean_predicted": 0.24152679528508866,
+          "mean_actual": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 15,
+          "mean_predicted": 0.3598655144373576,
+          "mean_actual": 0.5333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.4805612117052078,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5486109654108683,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6282931715250015,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7507053911685944,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.821129322052002,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5653760933807113,
+      "loco_auc_ci95_hi": 0.780549450827095
+    },
+    "stable-democracy": {
+      "n": 146,
+      "loco_auc": 0.48134328358208955,
+      "ece": 0.08954240736704677,
+      "ece_ci95_lo": 0.04994326996958291,
+      "ece_ci95_hi": 0.14278610273438172,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 105,
+          "mean_predicted": 0.04312298606105504,
+          "mean_actual": 0.09523809523809523
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 27,
+          "mean_predicted": 0.14674346342130942,
+          "mean_actual": 0.037037037037037035
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 7,
+          "mean_predicted": 0.25154027342796326,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.37565240263938904,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.45164497196674347,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5872448086738586,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7124088108539581,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.33814887870733296,
+      "loco_auc_ci95_hi": 0.6439085471164031
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-05-28T21:54:41.244681+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5133,
+  "stability_diagnostic": {
+    "fold_variance": 0.09356162279871803,
+    "fold_auc_mean": 0.6426529581529582,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Algeria": 0.5,
+      "Argentina": 0.5333333333333333,
+      "Australia": 0.125,
+      "Bahrain": 0.7,
+      "Belarus": 0.3333333333333333,
+      "Bhutan": 1.0,
+      "Bolivia": 0.9444444444444444,
+      "Botswana": 0.375,
+      "Brazil": 0.4642857142857143,
+      "Bulgaria": 1.0,
+      "Chile": 0.6666666666666666,
+      "China": 0.5714285714285714,
+      "Colombia": 0.85,
+      "Cuba": 1.0,
+      "Dominican Republic": 0.6666666666666666,
+      "Egypt": 0.5,
+      "El Salvador": 0.6666666666666666,
+      "Eritrea": 0.25,
+      "Guatemala": 0.9375,
+      "Guinea": 1.0,
+      "Honduras": 0.75,
+      "Hungary": 0.5,
+      "India": 0.9393939393939394,
+      "Indonesia": 0.9393939393939394,
+      "Iran": 0.5,
+      "Iraq": 0.5833333333333334,
+      "Israel": 0.2,
+      "Italy": 0.5714285714285714,
+      "Ivory Coast": 0.4722222222222222,
+      "Kenya": 0.8571428571428571,
+      "Kuwait": 0.5416666666666666,
+      "Kyrgyzstan": 0.0,
+      "Laos": 0.8333333333333334,
+      "Libya": 0.3333333333333333,
+      "Mali": 0.8,
+      "Mauritania": 0.7857142857142857,
+      "Mexico": 0.8095238095238095,
+      "Morocco": 0.88,
+      "Netherlands": 0.0,
+      "Nicaragua": 0.8055555555555556,
+      "Pakistan": 0.85,
+      "Papua New Guinea": 0.2857142857142857,
+      "Paraguay": 1.0,
+      "Peru": 1.0,
+      "Philippines": 0.9523809523809523,
+      "Russia": 1.0,
+      "Rwanda": 1.0,
+      "Saudi Arabia": 0.0,
+      "Somalia": 0.0,
+      "South Africa": 0.5555555555555556,
+      "Spain": 1.0,
+      "Sudan": 0.8333333333333334,
+      "Syria": 0.4,
+      "Tanzania": 1.0,
+      "Thailand": 0.0,
+      "The Democratic Republic of the Congo": 0.5,
+      "Togo": 0.6590909090909091,
+      "Tunisia": 0.6666666666666666,
+      "Turkmenistan": 1.0,
+      "Uganda": 0.25,
+      "United Kingdom": 0.7,
+      "Uruguay": 1.0,
+      "Uzbekistan": 1.0,
+      "Yemen": 0.3333333333333333,
+      "Zimbabwe": 0.6
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 232,
+  "n_negatives": 696,
+  "walked_at_utc": "2026-05-28T21:59:52.410248+00:00",
+  "elapsed_seconds": 5687.870158433914,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results/human_rights_violation/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": false,
+    "histogram": [],
+    "median": null,
+    "p90": null,
+    "p99": null,
+    "max": null,
+    "n_countries_scored": 0,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": null,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": false,
+    "bins": null,
+    "ece": null,
+    "notes": "calibration block absent in this vintage"
+  },
+  "per_country_scores_pointer": "scores/human_rights_violation.scores.json"
+}

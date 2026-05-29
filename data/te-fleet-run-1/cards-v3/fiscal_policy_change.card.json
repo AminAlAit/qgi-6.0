@@ -1,0 +1,489 @@
+{
+  "recipe_id": "fiscal_policy_change",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "prior_version",
+  "family_label": "International Tension",
+  "description_compelling": "A material rewrite of who gets taxed and what gets spent \u2014 emergency budgets, austerity packages, tax-code overhauls, defense or welfare reorderings. Debt-to-GDP, fiscal-capacity, and external-interest-burden measures pressure the move months to years out. Common in countries returning from IMF programs, in mid-cycle democracies, and during war or pandemic shocks.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6622591491012544,
+    "ci95_lo": 0.6090164129112489,
+    "ci95_hi": 0.7119368094831862,
+    "ci80_lo": 0.628007708834664,
+    "ci80_hi": 0.6945150415923285,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "NV.IND.MANF.ZS",
+      "v2x_clphy",
+      "SP.DYN.TFRT.IN"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "NV.IND.MANF.ZS",
+        "name": null
+      },
+      {
+        "code": "v2x_clphy",
+        "name": "Physical Violence Index (0-1)"
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null
+      }
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.6622591491012544,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "NV.IND.MANF.ZS",
+        "window": 12,
+        "auc": 0.6247449723112795,
+        "lift_over_previous": 0.12474497231127946,
+        "selected_after": [
+          "NV.IND.MANF.ZS"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2x_clphy",
+        "window": 10,
+        "auc": 0.643395189447821,
+        "lift_over_previous": 0.01865021713654158,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.DYN.TFRT.IN",
+        "window": 10,
+        "auc": 0.6622591491012544,
+        "lift_over_previous": 0.01886395965343335,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy",
+          "SP.DYN.TFRT.IN"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_corr",
+        "window": 10,
+        "auc": 0.6635523082891503,
+        "lift_over_previous": 0.0012931591878959647,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy",
+          "SP.DYN.TFRT.IN",
+          "v2x_corr"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 232,
+    "n_pos_survive": 148,
+    "n_neg_total": 696,
+    "n_neg_survive": 418,
+    "pos_coverage": 0.6379310344827587,
+    "neg_coverage": 0.6005747126436781,
+    "n_countries_survive": 86,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 212,
+      "loco_auc": 0.6059981684981685,
+      "ece": 0.13270800820121295,
+      "ece_ci95_lo": 0.09770377637672388,
+      "ece_ci95_hi": 0.19575267086384315,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 60,
+          "mean_predicted": 0.055453094118274746,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 55,
+          "mean_predicted": 0.14179281971671365,
+          "mean_actual": 0.2909090909090909
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 44,
+          "mean_predicted": 0.24326083267276938,
+          "mean_actual": 0.13636363636363635
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 17,
+          "mean_predicted": 0.34266919949475455,
+          "mean_actual": 0.17647058823529413
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.4446459843052758,
+          "mean_actual": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 15,
+          "mean_predicted": 0.5518768827120463,
+          "mean_actual": 0.5333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6337068438529968,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.74086594581604,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8605285485585531,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.923546314239502,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5107048954551145,
+      "loco_auc_ci95_hi": 0.6981621343128875
+    },
+    "mid-tier": {
+      "n": 94,
+      "loco_auc": 0.6003787878787878,
+      "ece": 0.193660779677807,
+      "ece_ci95_lo": 0.14149404309610736,
+      "ece_ci95_hi": 0.2931657630298781,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 24,
+          "mean_predicted": 0.05162962836523851,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 11,
+          "mean_predicted": 0.1357127929275686,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 13,
+          "mean_predicted": 0.2386328039261011,
+          "mean_actual": 0.07692307692307693
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.3645058870315552,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.4412017491730777,
+          "mean_actual": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.5409465757283297,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6398834109306335,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7502766592161996,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8600544730822245,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.46606912450681987,
+      "loco_auc_ci95_hi": 0.7198117852460925
+    },
+    "stable-democracy": {
+      "n": 252,
+      "loco_auc": 0.7043956043956044,
+      "ece": 0.09614839303558545,
+      "ece_ci95_lo": 0.07299540686469141,
+      "ece_ci95_hi": 0.1591498371889992,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 62,
+          "mean_predicted": 0.04870510368698066,
+          "mean_actual": 0.0967741935483871
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 59,
+          "mean_predicted": 0.14940362638336116,
+          "mean_actual": 0.1864406779661017
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 24,
+          "mean_predicted": 0.24720543809235096,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 24,
+          "mean_predicted": 0.34835053731997806,
+          "mean_actual": 0.4583333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 17,
+          "mean_predicted": 0.4488164764993331,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 21,
+          "mean_predicted": 0.5362078575860887,
+          "mean_actual": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 17,
+          "mean_predicted": 0.6561699965420891,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 17,
+          "mean_predicted": 0.7416779013241038,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8470086753368378,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9243114829063416,
+          "mean_actual": 0.6
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6302561222015384,
+      "loco_auc_ci95_hi": 0.7669325196368706
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-05-28T12:36:15.598154+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.518,
+  "stability_diagnostic": {
+    "fold_variance": 0.08222955236624427,
+    "fold_auc_mean": 0.6075488283234762,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Algeria": 0.6666666666666666,
+      "Argentina": 0.4,
+      "Austria": 1.0,
+      "Bangladesh": 0.6666666666666666,
+      "Belarus": 0.0,
+      "Bhutan": 0.8571428571428571,
+      "Bolivia": 0.8571428571428571,
+      "Botswana": 0.9,
+      "Brazil": 0.4,
+      "Burkina Faso": 0.5714285714285714,
+      "Cameroon": 1.0,
+      "Chad": 0.5,
+      "Chile": 0.4444444444444444,
+      "Costa Rica": 0.75,
+      "Cuba": 0.0,
+      "Dominican Republic": 0.75,
+      "Egypt": 0.5333333333333333,
+      "Eritrea": 0.75,
+      "Estonia": 1.0,
+      "Ethiopia": 0.4,
+      "Finland": 1.0,
+      "France": 0.0,
+      "Germany": 0.5,
+      "Ghana": 1.0,
+      "Greece": 1.0,
+      "India": 0.5142857142857142,
+      "Indonesia": 0.5,
+      "Iran": 0.25,
+      "Iraq": 0.3333333333333333,
+      "Ireland": 1.0,
+      "Ivory Coast": 1.0,
+      "Jamaica": 0.875,
+      "Japan": 0.3333333333333333,
+      "Jordan": 0.9,
+      "Kazakhstan": 1.0,
+      "Kenya": 0.6363636363636364,
+      "Kyrgyzstan": 0.5714285714285714,
+      "Latvia": 0.875,
+      "Lithuania": 1.0,
+      "Mali": 0.6,
+      "Mauritius": 0.5,
+      "Mexico": 0.5,
+      "Mongolia": 0.3333333333333333,
+      "Morocco": 0.5,
+      "Namibia": 0.5,
+      "Netherlands": 0.375,
+      "New Zealand": 1.0,
+      "Nigeria": 0.4,
+      "Norway": 0.3333333333333333,
+      "Oman": 0.5,
+      "Pakistan": 0.5,
+      "Panama": 1.0,
+      "Portugal": 0.2,
+      "Rwanda": 0.2,
+      "Saudi Arabia": 0.375,
+      "Slovakia": 0.0,
+      "South Korea": 0.5,
+      "Spain": 1.0,
+      "Suriname": 1.0,
+      "Sweden": 0.375,
+      "Switzerland": 0.8,
+      "Timor-Leste": 0.6666666666666666,
+      "Tunisia": 0.7142857142857143,
+      "Turkiye": 1.0,
+      "United Arab Emirates": 0.5,
+      "United Kingdom": 0.5,
+      "United States": 0.2222222222222222,
+      "Uruguay": 0.5555555555555556,
+      "Venezuela": 0.6,
+      "Zambia": 0.4,
+      "Zimbabwe": 0.75
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 232,
+  "n_negatives": 696,
+  "walked_at_utc": "2026-05-28T12:41:11.556069+00:00",
+  "elapsed_seconds": 2461.8717272281647,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results/fiscal_policy_change/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": false,
+    "histogram": [],
+    "median": null,
+    "p90": null,
+    "p99": null,
+    "max": null,
+    "n_countries_scored": 0,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": null,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": false,
+    "bins": null,
+    "ece": null,
+    "notes": "calibration block absent in this vintage"
+  },
+  "per_country_scores_pointer": "scores/fiscal_policy_change.scores.json"
+}
