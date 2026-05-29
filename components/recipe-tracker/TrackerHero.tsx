@@ -100,7 +100,6 @@ export function TrackerHero({
   legacy,
   queued,
   total,
-  vintage,
 }: {
   graduated: number;
   walkedFail: number;
@@ -108,7 +107,10 @@ export function TrackerHero({
   legacy: number;
   queued: number;
   total: number;
-  vintage: string;
+  /** @deprecated vintage stamp removed per V4.1 §2 — one stamp in the global
+   *  header replaces all per-page stamps. Prop kept for backwards-compat only;
+   *  no longer rendered. */
+  vintage?: string;
 }) {
   return (
     <header style={{ marginBottom: "8px" }}>
@@ -135,6 +137,7 @@ export function TrackerHero({
         }}
       >
         <div style={{ maxWidth: "780px" }}>
+          {/* V4.1 §5: short punchy h1, not a methodology abstract. */}
           <h1
             style={{
               fontSize: "34px",
@@ -143,8 +146,9 @@ export function TrackerHero({
               margin: "0 0 10px",
             }}
           >
-            The scoreboard of the QGI research program
+            The Recipe Catalog
           </h1>
+          {/* V4.1 §0 + §5: one-sentence subtitle. Confidence-first. */}
           <p
             style={{
               color: "var(--qgi-text-muted)",
@@ -153,27 +157,11 @@ export function TrackerHero({
               margin: 0,
             }}
           >
-            Every recipe goes through the same pre-registered validation checkpoints. Most
-            do not hold up. This page shows the program&apos;s results in public: that
-            transparency is the point. Click any row for the recipe&apos;s full
-            15-capability report card.
+            Every recipe is validated against the same checkpoints. Click any row for the
+            full report card.
           </p>
         </div>
-        <div
-          style={{
-            fontFamily: "ui-monospace, monospace",
-            fontSize: "10px",
-            letterSpacing: "1px",
-            color: "var(--qgi-text-dim)",
-            padding: "6px 10px",
-            background: "var(--qgi-surface)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "4px",
-            whiteSpace: "nowrap",
-          }}
-        >
-          Data as of {vintage}
-        </div>
+        {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
       </div>
 
       {/* Scoreboard tiles — sized by importance, the graduated tile is the headline */}

@@ -55,7 +55,7 @@ export default function RiskBoardPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "24px" }}>
-        {/* Vintage stamp (subtle) */}
+        {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
         <div
           style={{
             display: "flex",
@@ -66,20 +66,6 @@ export default function RiskBoardPage() {
           }}
         >
           <HowToReadButton routeKey="risk-board" />
-          <span
-            style={{
-              fontSize: "10px",
-              letterSpacing: "1px",
-              color: "var(--qgi-text-dim)",
-              padding: "4px 8px",
-              background: "var(--qgi-surface)",
-              border: "1px solid var(--qgi-border)",
-              borderRadius: "4px",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            Data as of {BOARD_VINTAGE}
-          </span>
         </div>
 
         {/* Page hero */}
@@ -115,12 +101,9 @@ export default function RiskBoardPage() {
               margin: 0,
             }}
           >
-            Present-tense resemblance scores from the Trajectory Engine, ranked across the
-            recipe catalog. Each cell is a country&apos;s discrimination rank on a single
-            recipe&apos;s canonical movement shape: read it as &quot;sits high in the
-            distribution of recipe-shaped countries,&quot; not as a probability or a
-            forecast. Click any cell to open the recipe&apos;s report card. This board
-            makes no forward-dated claim.
+            {/* V4.1 §5: one-sentence subtitle. */}
+            Discrimination ranks across the recipe catalog: which countries currently
+            resemble each recipe&apos;s historical shape, ranked. Not a forecast.
           </p>
         </div>
 
@@ -161,6 +144,7 @@ export default function RiskBoardPage() {
                 Top-10 countries per recipe
               </h2>
             </div>
+            {/* V4.1 §2: "vintage {BOARD_VINTAGE}" removed — stamp lives in global header. */}
             <span
               style={{
                 fontSize: "10px",
@@ -173,7 +157,7 @@ export default function RiskBoardPage() {
                 fontFamily: "ui-monospace, monospace",
               }}
             >
-              {boardRecipes.length} recipes on board · vintage {BOARD_VINTAGE}
+              {boardRecipes.length} recipes on board
             </span>
           </div>
         </div>
@@ -201,9 +185,10 @@ export default function RiskBoardPage() {
             gap: "12px",
           }}
         >
+          {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer. */}
           <span>
-            Vintage: {BOARD_VINTAGE} · Scores refresh on each data vintage; new recipes
-            appear as their evidence base grows.
+            Scores refresh on each data vintage. New recipes appear as their evidence base
+            grows.
           </span>
         </footer>
       </div>

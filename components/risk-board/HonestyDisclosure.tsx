@@ -46,9 +46,10 @@ export function HonestyDisclosure() {
           forward odds.
         </li>
         <li>No row on this board makes a forward-dated claim.</li>
+        {/* V4.1 §4: "Not yet tested" → "Coming soon" (audience-facing). */}
         <li>
-          Recipes marked &ldquo;Not yet tested&rdquo; show placeholder rows; scores will
-          appear once their evidence base is sufficient.
+          Recipes marked &ldquo;Coming soon&rdquo; show placeholder rows; scores appear
+          once their evidence base is sufficient.
         </li>
       </ol>
     </div>

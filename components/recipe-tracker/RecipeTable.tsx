@@ -58,13 +58,18 @@ const LAST_WALK: Record<string, string> = {
   civil_war_and_insurgency: "2026-05-22",
 };
 
-/** Map raw verdict strings (from JSON or legacy enums) to plain-English labels. */
+/** Map raw verdict strings (from JSON or legacy enums) to audience-facing labels.
+ *  V4.1 §4: every non-validated verdict folds into the active-rotation framing.
+ *  "Did not hold up" / "failed" language removed. */
 function verdictLabel(text: string): string {
-  if (/HARD_FAIL/i.test(text) && /MARGINAL/i.test(text))
-    return "Marginal: did not hold up";
-  if (/HARD.?FAIL/i.test(text)) return "Did not hold up";
-  if (/SUSPEND/i.test(text)) return "On hold pending re-validation";
-  return text.replace(/legacy-LOCK\s*/gi, "").trim();
+  if (/HARD_FAIL/i.test(text) && /MARGINAL/i.test(text)) return "In play";
+  if (/HARD.?FAIL/i.test(text)) return "In play";
+  if (/SUSPEND/i.test(text)) return "In play";
+  if (/LOCK/i.test(text)) return "Validated";
+  return text
+    .replace(/legacy-LOCK\s*/gi, "")
+    .replace(/_/g, " ")
+    .trim();
 }
 
 export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
@@ -468,6 +473,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                         {r.l2_label}
                       </div>
                     </Td>
+                    {/* V4.1 §1.2: family letter glyph banned. Label only. */}
                     <Td>
                       <span
                         style={{
@@ -482,7 +488,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                           whiteSpace: "nowrap",
                         }}
                       >
-                        {r.l1_id} · {r.l1_label}
+                        {r.l1_label}
                       </span>
                     </Td>
                     <Td>
@@ -737,14 +743,11 @@ function VerdictPill({
   text: string;
   status: TrackerRecipe["status"];
 }) {
-  // Color from status, not from the translated text — verdictLabel() now
-  // emits plain phrases ("Did not hold up", "On hold pending re-validation")
-  // that no longer match the FAIL|HARD|SUSPEND regex this used to rely on.
-  // walked_no_graduation status implies a fail verdict (HARD_FAIL / MARGINAL
-  // / SUSPEND); graduated implies LOCK; everything else stays neutral.
+  // V4.1 §4: walked_no_graduation → "In play" (calm slate-blue, not red).
+  // graduated → "Validated" (green). Everything else neutral slate.
   const color =
     status === "walked_no_graduation"
-      ? "#E64545"
+      ? "#5B7E99"
       : status === "graduated"
         ? "#3FBF8F"
         : "#7A8FA0";

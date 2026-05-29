@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import {
-  getAllRecipes,
-  getRecipe,
-  vintageStamp,
-  type TrackerRecipe,
-} from "@/lib/te-mock/recipes";
+import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import {
   HISTORICAL_WALKS,
@@ -13,16 +8,13 @@ import {
   VACATE_LOG,
 } from "@/lib/te-mock/recipe-tracker-extra";
 import { TrackerHero } from "@/components/recipe-tracker/TrackerHero";
-import { WalkTimeline } from "@/components/recipe-tracker/WalkTimeline";
 import { RecipeTable } from "@/components/recipe-tracker/RecipeTable";
-import { InFlightPanel } from "@/components/recipe-tracker/InFlightPanel";
-import { VacateLog } from "@/components/recipe-tracker/VacateLog";
+import { AuditTrailSection } from "@/components/recipe-tracker/AuditTrailSection";
 
 export const metadata: Metadata = {
   title: "Recipe Tracker · QG Intelligence",
   description:
-    "Public scoreboard of the QGI recipe research program: which have been tested, deployed, or are queued. Transparent about validation states.",
-  robots: { index: false, follow: false },
+    "The QGI recipe catalog: every recipe, its validation status, and its report card.",
 };
 
 export default function RecipeTrackerPage() {
@@ -80,45 +72,24 @@ export default function RecipeTrackerPage() {
           legacy={legacy}
           queued={queued}
           total={total}
-          vintage={vintageStamp()}
         />
 
-        {/* Validation timeline strip */}
-        <WalkTimeline walks={HISTORICAL_WALKS} recipes={recipes} />
-
-        {/* Body grid — table left, side panels right */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "minmax(0, 1fr) 320px",
-            gap: "24px",
-            marginTop: "28px",
-          }}
-        >
-          {/* Left: the table */}
-          <div style={{ minWidth: 0 }}>
-            <RecipeTable recipes={recipes} />
-          </div>
-
-          {/* Right: side panels */}
-          <aside
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              minWidth: 0,
-            }}
-          >
-            <InFlightPanel
-              inFlight={IN_FLIGHT}
-              queued={QUEUED_NEXT_30D}
-              recipes={recipes}
-            />
-            <VacateLog events={VACATE_LOG} />
-          </aside>
+        {/* Main table (always visible — confidence-first surface) */}
+        <div style={{ marginTop: "28px" }}>
+          <RecipeTable recipes={recipes} />
         </div>
 
-        {/* Footer */}
+        {/* Methodology audit trail — collapsed by default per V4.1 §0.
+            Audience-curious users click in; default visitor sees the catalog. */}
+        <AuditTrailSection
+          walks={HISTORICAL_WALKS}
+          inFlight={IN_FLIGHT}
+          queued={QUEUED_NEXT_30D}
+          vacateLog={VACATE_LOG}
+          recipes={recipes}
+        />
+
+        {/* Footer — V4.1 §2: no vintage stamp, no L1 family count */}
         <footer
           style={{
             marginTop: "48px",
@@ -129,15 +100,9 @@ export default function RecipeTrackerPage() {
             lineHeight: 1.6,
           }}
         >
-          <div style={{ marginBottom: "6px", fontFamily: "ui-monospace, monospace" }}>
-            Tracker vintage: {vintageStamp()} · {total} recipes across 8 L1 families ·
-            Recipe-state data from <code>data/recipe-tracker.json</code> (source of
-            truth).
-          </div>
-          <div>
-            Scoreboard auto-updates after each validation pass. Illustrative historical
-            validation dates, in-review items, and scheduled cards are shown for context;
-            the recipe roster, statuses, and stats are real.
+          <div style={{ fontFamily: "ui-monospace, monospace" }}>
+            {total} recipes across 8 categories · Recipe status from{" "}
+            <code>data/recipe-tracker.json</code> · Refreshes after each validation pass.
           </div>
         </footer>
       </div>

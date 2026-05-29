@@ -64,56 +64,98 @@ export function RecipeCard({
       ? "Vintage: legacy (pre-TE)"
       : "Vintage logged in header";
 
-  return (
-    <Link
-      href={`${basePath}/${recipe.recipe_id}` as Route}
+  // V4.1 follow-up 2026-05-29: "Coming soon" recipes are not yet shipped —
+  // they should not be clickable. We render the same <article> chrome but
+  // without the wrapping <Link>, and we drop cursor:pointer so the card
+  // reads as inert.
+  const linkable = !isQueued;
+
+  // V4.1 follow-up 2026-05-29: drop the L2 subcategory line ONLY when it's
+  // exact-equal to the recipe title (case-insensitive, whitespace-trimmed).
+  // Near-matches like "Climate Agreement / Climate Agreements" or "Economic
+  // Recession / Economic Recession & Austerity" stay — founder clarified
+  // those are intentional L2 rephrasings, not duplicates.
+  const showL2 =
+    !!recipe.l2_label &&
+    recipe.l2_label.trim().toLowerCase() !== recipe.label.trim().toLowerCase();
+
+  const cardChrome = (
+    <article
+      className={`recipe-card status-${recipe.status}`}
       style={{
-        textDecoration: "none",
-        color: "inherit",
-        display: "block",
+        background: "var(--qgi-surface)",
+        border: "1px solid var(--qgi-border)",
+        borderRadius: "8px",
+        padding: "14px",
+        minHeight: "200px",
+        display: "flex",
+        flexDirection: "column",
+        transition: "border-color 0.15s, transform 0.15s",
+        cursor: linkable ? "pointer" : "default",
+        opacity: isQueued ? 0.62 : 1,
       }}
     >
-      <article
-        className={`recipe-card status-${recipe.status}`}
+      {/* Top: crest + L1 chip */}
+      <div
         style={{
-          background: "var(--qgi-surface)",
-          border: "1px solid var(--qgi-border)",
-          borderRadius: "8px",
-          padding: "14px",
-          minHeight: "200px",
           display: "flex",
-          flexDirection: "column",
-          transition: "border-color 0.15s, transform 0.15s",
-          cursor: "pointer",
-          opacity: isQueued ? 0.62 : 1,
+          justifyContent: "space-between",
+          alignItems: "flex-start",
+          marginBottom: "12px",
         }}
       >
-        {/* Top: crest + L1 chip */}
         <div
           style={{
+            width: "56px",
+            height: "56px",
             display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            marginBottom: "12px",
+            alignItems: "center",
+            justifyContent: "center",
+            color: recipe.l1_color,
+            opacity: isQueued ? 0.55 : 0.95,
+            border: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
+            borderRadius: "4px",
           }}
         >
-          <div
+          <RecipeIcon recipeId={recipe.recipe_id} size={32} strokeWidth={1.5} />
+        </div>
+        {/* Top-right chip — V4.1 follow-up 2026-05-29: now carries the
+              STATUS label (Validated / In play / Coming soon / Prior version)
+              in family color. The colored dot preserves the categorical hue
+              so the family identity stays legible at a glance. For "In play"
+              recipes the dot pulses to signal active rotation; other statuses
+              render a static dot. The bottom-right status chip is removed
+              with this change (no duplication). */}
+        {labelStrategy === "v4.1" ? (
+          <span
             style={{
-              width: "56px",
-              height: "56px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
+              fontSize: "10px",
+              padding: "3px 8px",
+              border: `1px solid ${recipe.l1_color}`,
               color: recipe.l1_color,
-              opacity: isQueued ? 0.55 : 0.95,
-              border: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
               borderRadius: "4px",
+              letterSpacing: "0.5px",
+              fontFamily: "ui-monospace, monospace",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "5px",
             }}
+            title={recipe.l1_label}
           >
-            <RecipeIcon recipeId={recipe.recipe_id} size={32} strokeWidth={1.5} />
-          </div>
-          {/* Family chip — colored dot + full L1 label.
-              V4.1 §1.2: NO letter glyph next to the family label. */}
+            <span
+              className={isWalked ? "qgi-pulse-dot" : undefined}
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: recipe.l1_color,
+                boxShadow: isWalked ? `0 0 0 0 ${recipe.l1_color}` : undefined,
+              }}
+            />
+            {v41Label.label}
+          </span>
+        ) : (
+          // Legacy strategy unchanged — family chip with name + non-pulsing dot.
           <span
             style={{
               fontSize: "10px",
@@ -138,169 +180,181 @@ export function RecipeCard({
             />
             {recipe.l1_label}
           </span>
-        </div>
+        )}
+      </div>
 
-        {/* Text */}
-        <div style={{ flex: 1, marginBottom: "8px" }}>
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: 600,
-              lineHeight: 1.25,
-              color: isQueued ? "rgba(255,255,255,0.7)" : "var(--qgi-text)",
-              marginBottom: "3px",
-            }}
-          >
-            {recipe.label}
-          </div>
+      {/* Text — l2_label dropped when it duplicates the title (V4.1 polish) */}
+      <div style={{ flex: 1, marginBottom: "8px" }}>
+        <div
+          style={{
+            fontSize: "14px",
+            fontWeight: 600,
+            lineHeight: 1.25,
+            color: isQueued ? "rgba(255,255,255,0.7)" : "var(--qgi-text)",
+            marginBottom: showL2 ? "3px" : 0,
+          }}
+        >
+          {recipe.label}
+        </div>
+        {showL2 && (
           <div
             style={{ fontSize: "11px", color: "var(--qgi-text-muted)", lineHeight: 1.3 }}
           >
             {recipe.l2_label}
           </div>
-        </div>
+        )}
+      </div>
 
-        {/* V4.1 §12: construction-color tier ribbon removed for v4.1 cards.
+      {/* V4.1 §12: construction-color tier ribbon removed for v4.1 cards.
             Legacy strategy retains it for backward compat. */}
-        {labelStrategy === "legacy" && (
-          <div
-            style={{
-              height: "4px",
-              margin: "8px -14px 10px",
-              background:
-                recipe.status === "graduated"
-                  ? "#3FBF8F"
-                  : recipe.status === "walked_no_graduation"
-                    ? "repeating-linear-gradient(45deg, #E68F29, #E68F29 4px, transparent 4px, transparent 8px)"
-                    : recipe.status === "in_progress"
-                      ? "#a78bfa"
-                      : recipe.status === "live_legacy"
-                        ? "#7A8FA0"
-                        : "none",
-              borderTop: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
-              opacity: isQueued ? 0.3 : 1,
-              marginTop: isQueued ? "12px" : "8px",
-            }}
-          />
-        )}
-
-        {/* Chips */}
+      {labelStrategy === "legacy" && (
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "4px",
-            marginBottom: "8px",
-            minHeight: "22px",
+            height: "4px",
+            margin: "8px -14px 10px",
+            background:
+              recipe.status === "graduated"
+                ? "#3FBF8F"
+                : recipe.status === "walked_no_graduation"
+                  ? "repeating-linear-gradient(45deg, #E68F29, #E68F29 4px, transparent 4px, transparent 8px)"
+                  : recipe.status === "in_progress"
+                    ? "#a78bfa"
+                    : recipe.status === "live_legacy"
+                      ? "#7A8FA0"
+                      : "none",
+            borderTop: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
+            opacity: isQueued ? 0.3 : 1,
+            marginTop: isQueued ? "12px" : "8px",
           }}
-        >
-          {labelStrategy === "v4.1" ? (
-            // V4.1 strategy: scrubbed chips. No "Tested, did not hold up",
-            // no "Awaiting curated events" with subtle pejorative tone.
-            <>
-              {isWalked && recipe.stats?.window_y && (
+        />
+      )}
+
+      {/* Chips */}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "4px",
+          marginBottom: "8px",
+          minHeight: "22px",
+        }}
+      >
+        {labelStrategy === "v4.1" ? (
+          // V4.1 strategy: scrubbed chips. No "Tested, did not hold up",
+          // no "Awaiting curated events" with subtle pejorative tone.
+          <>
+            {isWalked && recipe.stats?.window_y && (
+              <span style={chipStyle("muted")}>
+                {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
+                signals
+              </span>
+            )}
+          </>
+        ) : (
+          // Legacy strategy: byte-identical to the original behavior
+          <>
+            {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
+            {isWalked && (
+              <>
                 <span style={chipStyle("muted")}>
-                  {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
-                  signals
+                  LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
                 </span>
-              )}
-            </>
-          ) : (
-            // Legacy strategy: byte-identical to the original behavior
-            <>
-              {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
-              {isWalked && (
-                <>
-                  <span style={chipStyle("muted")}>
-                    LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
-                  </span>
-                  <span style={chipStyle("fail")}>HARD-FAIL</span>
-                  <span style={chipStyle("muted")}>
-                    {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
-                    ind
-                  </span>
-                </>
-              )}
-              {isLegacy && (
-                <>
-                  <span style={chipStyle("legacy")}>Legacy ML-1</span>
-                  {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
-                </>
-              )}
-              {recipe.status === "in_progress" && (
-                <span style={chipStyle("purple")}>Walk in flight</span>
-              )}
-            </>
-          )}
-        </div>
-
-        {/* Trajectory dots — legacy only */}
-        {labelStrategy === "legacy" && (
-          <div
-            style={{ display: "flex", gap: "4px", marginBottom: "10px", height: "6px" }}
-          >
-            {isWalked && <span style={dotStyle("#E68F29")} />}
-            {isLegacy &&
-              [0, 1, 2].map((i) => <span key={i} style={dotStyle("#7A8FA0")} />)}
-          </div>
+                <span style={chipStyle("fail")}>HARD-FAIL</span>
+                <span style={chipStyle("muted")}>
+                  {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
+                  ind
+                </span>
+              </>
+            )}
+            {isLegacy && (
+              <>
+                <span style={chipStyle("legacy")}>Legacy ML-1</span>
+                {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
+              </>
+            )}
+            {recipe.status === "in_progress" && (
+              <span style={chipStyle("purple")}>Walk in flight</span>
+            )}
+          </>
         )}
+      </div>
 
-        {/* Foot — V4.1: no per-card vintage line */}
+      {/* Trajectory dots — legacy only */}
+      {labelStrategy === "legacy" && (
+        <div style={{ display: "flex", gap: "4px", marginBottom: "10px", height: "6px" }}>
+          {isWalked && <span style={dotStyle("#E68F29")} />}
+          {isLegacy && [0, 1, 2].map((i) => <span key={i} style={dotStyle("#7A8FA0")} />)}
+        </div>
+      )}
+
+      {/* Foot — V4.1 follow-up 2026-05-29: status chip moved up into the
+            top-right family badge. Footer kept ONLY for the legacy strategy
+            (vintage line + status pill); v4.1 strategy emits no footer to
+            avoid the duplicated-status reading the user flagged. */}
+      {labelStrategy === "legacy" && (
         <div
           style={{
             display: "flex",
-            justifyContent: labelStrategy === "v4.1" ? "flex-end" : "space-between",
+            justifyContent: "space-between",
             alignItems: "center",
             marginTop: "auto",
             paddingTop: "8px",
             borderTop: "1px solid rgba(255,255,255,0.04)",
           }}
         >
-          {labelStrategy === "legacy" && (
-            <span
-              style={{
-                fontSize: "9.5px",
-                color: "var(--qgi-text-dim)",
-                letterSpacing: "0.3px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-            >
-              {legacyVintage}
-            </span>
-          )}
-          {labelStrategy === "v4.1" ? (
-            <span
-              style={{
-                fontSize: "9.5px",
-                padding: "2px 7px",
-                borderRadius: "10px",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.3px",
-                background: `${v41Color}26`,
-                color: v41Color,
-                border: `1px solid ${v41Color}`,
-              }}
-            >
-              {v41Label.label}
-            </span>
-          ) : (
-            <span
-              style={{
-                fontSize: "9.5px",
-                padding: "2px 7px",
-                borderRadius: "10px",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.3px",
-                background: statusMeta.bgAlpha,
-                color: statusMeta.color,
-                border: `1px solid ${statusMeta.color}`,
-              }}
-            >
-              {statusMeta.label}
-            </span>
-          )}
+          <span
+            style={{
+              fontSize: "9.5px",
+              color: "var(--qgi-text-dim)",
+              letterSpacing: "0.3px",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            {legacyVintage}
+          </span>
+          <span
+            style={{
+              fontSize: "9.5px",
+              padding: "2px 7px",
+              borderRadius: "10px",
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+              background: statusMeta.bgAlpha,
+              color: statusMeta.color,
+              border: `1px solid ${statusMeta.color}`,
+            }}
+          >
+            {statusMeta.label}
+          </span>
         </div>
-      </article>
+      )}
+    </article>
+  );
+
+  // V4.1 follow-up 2026-05-29: "Coming soon" cards render the same chrome
+  // wrapped in a plain <div>, not a Link — they're not yet shipped, so
+  // there's no destination page worth navigating to.
+  if (!linkable) {
+    return (
+      <div
+        aria-disabled="true"
+        style={{ textDecoration: "none", color: "inherit", display: "block" }}
+      >
+        {cardChrome}
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      href={`${basePath}/${recipe.recipe_id}` as Route}
+      style={{
+        textDecoration: "none",
+        color: "inherit",
+        display: "block",
+      }}
+    >
+      {cardChrome}
     </Link>
   );
 }

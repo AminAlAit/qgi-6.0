@@ -161,9 +161,10 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
             maxWidth: "640px",
           }}
         >
+          {/* V4.1 §1.4: "did not hold up" removed. Status chip framing kept. */}
           The trajectory shapes that pulled {entry.name} toward its analogs, ranked by
-          weighted contribution. Status chip on every row: a recipe that did not hold up
-          contributing 40% must not be read as a validated 40%.
+          weighted contribution. The status chip on each row tells you where that recipe
+          sits in the validation arc.
         </p>
         <RecipeContributionBar contributions={entry.contributions} />
       </section>

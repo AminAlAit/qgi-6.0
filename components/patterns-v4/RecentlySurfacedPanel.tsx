@@ -51,7 +51,7 @@ export function RecentlySurfacedPanel({ pairs }: RecentlySurfacedPanelProps) {
           color: "var(--qgi-text)",
         }}
       >
-        New or rising this vintage
+        New and rising pairs
       </h2>
 
       <div
