@@ -33,6 +33,7 @@ import {
   type RecipeRow,
 } from "@/lib/te-mock/risk-board-data";
 import { familyColor } from "@/lib/te-mock/l1-families";
+import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
 import Link from "next/link";
 import type { Route } from "next";
 
@@ -757,13 +758,13 @@ function HeatCell({
   const score = cell.score as number;
   const intensity = Math.max(0, Math.min(1, (score - 40) / 60));
   const alpha = 0.1 + intensity * 0.55;
-  const zone = score >= 65 ? "HIGH" : score >= 40 ? "MODERATE" : "LOW";
-  const zoneColor =
-    zone === "HIGH"
-      ? "#E64545"
-      : zone === "MODERATE"
-        ? "#E68F29"
-        : "var(--qgi-text-muted)";
+  // Round-3.6 (2026-05-29) — drop HIGH / MODERATE / LOW bins. The number
+  // alone (now a percentage) carries the confidence reading; lerped color
+  // + glow halo gradient does the categorical work the bins used to do.
+  const cT = confidenceT(score);
+  const confidenceColor = lerpHexToRgb(MUTED_GRAY, resolvedFamilyColor, cT);
+  const confidenceGlowShadow = confidenceGlow(resolvedFamilyColor, cT);
+  const pct = Math.round(score);
 
   return (
     <Link
@@ -788,7 +789,7 @@ function HeatCell({
           opacity: isDimmed ? 0.32 : 1,
           transition: "opacity 120ms ease-out, outline-color 120ms",
         }}
-        title={`${cell.country} · discrimination rank ${score.toFixed(1)} (${zone})`}
+        title={`${cell.country} · ${pct}% confidence — this country's recent path has been this close to the recipe's canonical pre-event shape.`}
       >
         <div
           style={{
@@ -822,30 +823,23 @@ function HeatCell({
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "flex-end",
             alignItems: "baseline",
           }}
         >
           <span
             style={{
-              fontSize: "14px",
-              fontWeight: 600,
+              fontSize: "16px",
+              fontWeight: 700,
               fontFamily: "ui-monospace, monospace",
-              color: "var(--qgi-text)",
+              color: confidenceColor,
+              letterSpacing: "-0.5px",
               lineHeight: 1,
+              textShadow: confidenceGlowShadow || undefined,
+              transition: "text-shadow 180ms ease-out, color 180ms",
             }}
           >
-            {score.toFixed(1)}
-          </span>
-          <span
-            style={{
-              fontSize: "8.5px",
-              letterSpacing: "0.8px",
-              color: zoneColor,
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            {zone}
+            {pct}%
           </span>
         </div>
       </div>
