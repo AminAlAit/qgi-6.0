@@ -43,6 +43,7 @@ import {
   TopPairTeaserPlot,
 } from "@/components/dashboard-v4-1/InsightPlots";
 import { WorldActivity } from "@/components/dashboard-v4-1/WorldActivity";
+import { TopPairsStrip } from "@/components/dashboard-v4-1/TopPairsStrip";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
@@ -128,6 +129,13 @@ export default function DashboardV41Page() {
           <FamilyDistributionPlot slices={familyDistrib} />
           <IndicatorCorpusPlot stats={corpus} />
           <TopPairTeaserPlot pairs={pairs} />
+        </section>
+
+        {/* ── Today across the catalog (slim) ──────────────────────────── */}
+        {/* Migrated 2026-05-29 from /risk-board — the dashboard owns the
+            present-tense teaser; the Risk Board owns the full grid. */}
+        <section data-tour="top-pairs-strip">
+          <TopPairsStrip limit={8} />
         </section>
 
         {/* ── World-facing activity: what's moving this vintage ─────────── */}
