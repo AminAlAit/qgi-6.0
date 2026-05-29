@@ -48,9 +48,8 @@ export function lerpHexToRgb(startHex: string, endHex: string, t: number): strin
  * scaling with t. Returns an empty string below a soft threshold so weak
  * scores don't carry any glow at all — the halo earns its space.
  *
- * Round-3.6.3 (2026-05-29) — softened further per founder ask. The earlier
- * pass still felt too eager at the high end. Dialed alpha + blur down
- * another step so the halo whispers rather than declares:
+ * Round-3.6.3 (2026-05-29) — SOFT variant. Used by the Risk Board cells
+ * and the Dashboard TopPairsStrip, which sit on bright/dense backgrounds.
  *   t = 0    → no glow
  *   t = 0.25 → no glow (lifted threshold)
  *   t = 0.5  → tight 2px @ 0.23 + 5px halo @ 0.13
@@ -64,5 +63,31 @@ export function confidenceGlow(endHex: string, t: number): string {
   const outerBlur = Math.round(2 + t * 6);
   const innerAlpha = (0.12 + t * 0.22).toFixed(2);
   const outerAlpha = (0.06 + t * 0.14).toFixed(2);
+  return `0 0 ${innerBlur}px rgba(${rgb}, ${innerAlpha}), 0 0 ${outerBlur}px rgba(${rgb}, ${outerAlpha})`;
+}
+
+/**
+ * Build a stronger text-shadow halo. Used by the Recipe gallery cards
+ * specifically, where the badge sits on a calm slate panel with plenty
+ * of dead space around it and EARNS the extra bloom. The Risk Board
+ * cells stay on `confidenceGlow` (soft) because their backgrounds are
+ * already family-color-gradient and a strong glow blooms into
+ * neighboring cells.
+ *
+ * Round-3.6.4 (2026-05-30) — restored to the original confidenceGlow
+ * intensity per founder ask (recipe cards only):
+ *   t = 0    → no glow
+ *   t < 0.18 → no glow
+ *   t = 0.5  → tight 3px @ 0.60 + 11px halo @ 0.37
+ *   t = 1.0  → tight 4px @ 0.85 + 18px halo @ 0.55
+ */
+export function confidenceGlowBold(endHex: string, t: number): string {
+  if (t < 0.18) return "";
+  const e = parseHex(endHex);
+  const rgb = `${e.r}, ${e.g}, ${e.b}`;
+  const innerBlur = Math.round(1 + t * 3);
+  const outerBlur = Math.round(4 + t * 14);
+  const innerAlpha = (0.35 + t * 0.5).toFixed(2);
+  const outerAlpha = (0.18 + t * 0.37).toFixed(2);
   return `0 0 ${innerBlur}px rgba(${rgb}, ${innerAlpha}), 0 0 ${outerBlur}px rgba(${rgb}, ${outerAlpha})`;
 }

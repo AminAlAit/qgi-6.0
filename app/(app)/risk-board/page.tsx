@@ -141,56 +141,9 @@ export default function RiskBoardPage() {
             teaser. */}
 
         {/* Filter shell + grid (client component) */}
-        <div style={{ marginBottom: "8px" }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "baseline",
-              marginBottom: "10px",
-            }}
-          >
-            <div>
-              <div
-                style={{
-                  color: "var(--qgi-accent)",
-                  fontSize: "10px",
-                  letterSpacing: "2.5px",
-                  textTransform: "uppercase",
-                  fontFamily: "ui-monospace, monospace",
-                  marginBottom: "4px",
-                }}
-              >
-                The grid
-              </div>
-              <h2
-                style={{
-                  fontSize: "20px",
-                  fontWeight: 600,
-                  margin: 0,
-                  color: "var(--qgi-text)",
-                }}
-              >
-                Top-10 countries per recipe
-              </h2>
-            </div>
-            {/* V4.1 §2: "vintage {BOARD_VINTAGE}" removed — stamp lives in global header. */}
-            <span
-              style={{
-                fontSize: "10px",
-                letterSpacing: "1px",
-                color: "var(--qgi-text-dim)",
-                padding: "4px 8px",
-                background: "var(--qgi-surface)",
-                border: "1px solid var(--qgi-border)",
-                borderRadius: "4px",
-                fontFamily: "ui-monospace, monospace",
-              }}
-            >
-              {boardRecipes.length} recipes on board
-            </span>
-          </div>
-        </div>
+        {/* "The grid" eyebrow + "Top-10 countries per recipe" h2 removed
+            2026-05-30 — redundant with the filter bar that immediately
+            announces what this surface is. The grid stands on its own. */}
 
         <div data-tour="risk-board-grid">
           <RiskBoardFilters

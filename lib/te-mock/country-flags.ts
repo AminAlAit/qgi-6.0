@@ -250,7 +250,7 @@ const FLAGS: Record<string, string> = {
   Turkiye: "🇹🇷",
   // Americas (Caribbean + Central + South)
   Bahamas: "🇧🇸",
-  Cuba: "🇨🇺",
+  // Cuba already declared in the original Americas section above; not re-adding.
   Panama: "🇵🇦",
   Belize: "🇧🇿",
   Barbados: "🇧🇧",

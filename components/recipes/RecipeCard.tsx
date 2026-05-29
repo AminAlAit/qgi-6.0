@@ -18,7 +18,16 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
 
 // Round-3.6 (2026-05-29) — color-lerp + glow helpers extracted to
 // lib/color-lerp.ts so the Risk Board cells use the SAME color math.
-import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
+// Round-3.6.4 (2026-05-30) — recipe gallery cards use the BOLD glow
+// variant; the calm slate panel background has the room for it. The
+// Risk Board cells and the Dashboard TopPairsStrip keep the soft
+// `confidenceGlow` since they sit on busier surfaces.
+import {
+  MUTED_GRAY,
+  confidenceT,
+  lerpHexToRgb,
+  confidenceGlowBold,
+} from "@/lib/color-lerp";
 
 /**
  * RecipeCard
@@ -262,7 +271,7 @@ export function RecipeCard({
               const t = confidenceT(auc * 100);
               const color = lerpHexToRgb(MUTED_GRAY, recipe.l1_color, t);
               // Glow blooms from ~62% upward, full halo at 100%.
-              const glow = confidenceGlow(recipe.l1_color, t);
+              const glow = confidenceGlowBold(recipe.l1_color, t);
               return (
                 <div
                   style={{
