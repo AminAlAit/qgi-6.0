@@ -351,64 +351,120 @@ function FilteredGrid({
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
           Recipe ↓ · Country →
         </div>
-        {customCountries
-          ? customCountries.map((name, i) => (
-              <div
-                key={name}
-                style={{
-                  padding: "10px 6px",
-                  textAlign: "center",
-                  borderRight:
-                    i === customCountries.length - 1
-                      ? "none"
-                      : "1px solid var(--qgi-border)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "5px",
-                  color: hoveredCountry === name ? "var(--qgi-text)" : undefined,
-                  fontWeight: hoveredCountry === name ? 700 : undefined,
-                }}
-                title={name}
-              >
-                <FlagImg emoji={flagFor(name)} name={name} width={14} radius={2} />
-                <span
-                  style={{
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {name}
-                </span>
-              </div>
-            ))
-          : Array.from({ length: 10 }, (_, i) => (
-              <div
-                key={i}
-                style={{
-                  padding: "10px 6px",
-                  textAlign: "center",
-                  borderRight: i === 9 ? "none" : "1px solid var(--qgi-border)",
-                }}
-              >
-                #{i + 1}
-              </div>
-            ))}
+        {/* Header columns — rank labels in BOTH modes. In custom mode the
+            cells re-sort per row by score, so a fixed country header at
+            the top would mismatch the cells beneath; rank labels stay
+            stable and the cells carry their own country identity. */}
+        {Array.from({ length: colCount }, (_, i) => (
+          <div
+            key={i}
+            style={{
+              padding: "10px 6px",
+              textAlign: "center",
+              borderRight: i === colCount - 1 ? "none" : "1px solid var(--qgi-border)",
+            }}
+          >
+            #{i + 1}
+          </div>
+        ))}
       </div>
 
-      {rows.map(({ recipe, row }, idx) => (
-        <RecipeGridRow
-          key={recipe.recipe_id}
-          recipe={recipe}
-          row={row}
-          customCountries={customCountries}
-          hoveredCountry={hoveredCountry}
-          onHoverCountry={onHoverCountry}
-          gridTemplate={gridTemplate}
-          isLast={idx === rows.length - 1}
-        />
-      ))}
+      {/* Round-3.5.2 (2026-05-29) — recipes grouped by L1 family. Each
+          family gets a section header strip in its own family color so
+          the grid reads as A-Z-keyed bands instead of an undifferentiated
+          flat list. Group order follows the canonical A..H L1 sequence
+          (already passed down via the l1Families prop). */}
+      {(() => {
+        const groups: Array<{
+          l1_id: string;
+          l1_label: string;
+          l1_color: string;
+          items: typeof rows;
+        }> = [];
+        const seen = new Map<string, number>();
+        for (const r of rows) {
+          let idx = seen.get(r.recipe.l1_id);
+          if (idx === undefined) {
+            idx = groups.length;
+            seen.set(r.recipe.l1_id, idx);
+            groups.push({
+              l1_id: r.recipe.l1_id,
+              l1_label: r.recipe.l1_label,
+              l1_color: familyColor(r.recipe.l1_id, r.recipe.l1_color),
+              items: [],
+            });
+          }
+          groups[idx].items.push(r);
+        }
+        // Stable canonical L1 ordering (A..H).
+        groups.sort((a, b) => a.l1_id.localeCompare(b.l1_id));
+
+        const totalRows = rows.length;
+        let renderedRowIdx = 0;
+        return groups.map((g, gi) => (
+          <div key={g.l1_id}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                padding: "10px 16px 9px",
+                background: `linear-gradient(90deg, ${hexToRgba(g.l1_color, 0.16)} 0%, ${hexToRgba(g.l1_color, 0.02)} 100%)`,
+                borderTop: gi === 0 ? "none" : "1px solid var(--qgi-border)",
+                borderBottom: "1px solid var(--qgi-border)",
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "10px",
+                  height: "10px",
+                  borderRadius: "50%",
+                  background: g.l1_color,
+                  flexShrink: 0,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "11px",
+                  letterSpacing: "1.5px",
+                  textTransform: "uppercase",
+                  color: g.l1_color,
+                  fontWeight: 600,
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                {g.l1_label}
+              </span>
+              <span
+                style={{
+                  fontSize: "10px",
+                  color: "var(--qgi-text-dim)",
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                {g.items.length} recipe{g.items.length === 1 ? "" : "s"}
+              </span>
+            </div>
+            {g.items.map(({ recipe, row }) => {
+              const isLast = renderedRowIdx === totalRows - 1;
+              renderedRowIdx += 1;
+              return (
+                <RecipeGridRow
+                  key={recipe.recipe_id}
+                  recipe={recipe}
+                  row={row}
+                  customCountries={customCountries}
+                  hoveredCountry={hoveredCountry}
+                  onHoverCountry={onHoverCountry}
+                  gridTemplate={gridTemplate}
+                  isLast={isLast}
+                />
+              );
+            })}
+          </div>
+        ));
+      })()}
     </div>
   );
 }
@@ -447,16 +503,22 @@ function RecipeGridRow({
   // top-10; they're derived per-column from the user's selected countries
   // resolved against recipe.scoreByCountry. Missing entries render as
   // "not scored" cells (state="not_scored", score=null).
+  //
+  // Round-3.5.1 sort (2026-05-29): per founder ask, custom-mode cells rank
+  // highest-to-lowest LEFT-to-RIGHT — same convention as the default top-10
+  // grid (column #1 = highest = leftmost). Sorting is PER ROW: each recipe
+  // ranks the user's selected countries by THAT recipe's own scores.
+  // Not-scored cells sit at the far right (effectively negative infinity)
+  // so they don't pollute the scored ordering.
   const cellsToRender: BoardCell[] = customCountries
-    ? customCountries.map((name) => {
-        const sc = recipe.scoreByCountry[name];
-        if (typeof sc === "number") {
-          return { country: name, score: sc, state: "scored" as const };
-        }
-        // The selected country lacks coverage in this recipe — render
-        // the honest "not scored" branch, not a fake low score.
-        return { country: name, score: null, state: "not_scored" as const };
-      })
+    ? customCountries
+        .map((name): BoardCell => {
+          const sc = recipe.scoreByCountry[name];
+          return typeof sc === "number"
+            ? { country: name, score: sc, state: "scored" as const }
+            : { country: name, score: null, state: "not_scored" as const };
+        })
+        .sort((a, b) => (b.score ?? -Infinity) - (a.score ?? -Infinity))
     : row.cells;
   const colCount = cellsToRender.length;
 
