@@ -437,15 +437,9 @@ function FilteredGrid({
               >
                 {g.l1_label}
               </span>
-              <span
-                style={{
-                  fontSize: "10px",
-                  color: "var(--qgi-text-dim)",
-                  fontFamily: "ui-monospace, monospace",
-                }}
-              >
-                {g.items.length} recipe{g.items.length === 1 ? "" : "s"}
-              </span>
+              {/* L1 group recipe-count chip removed 2026-05-29 — the
+                  family label alone carries enough context; the count
+                  was visual noise. */}
             </div>
             {g.items.map(({ recipe, row }) => {
               const isLast = renderedRowIdx === totalRows - 1;
@@ -488,12 +482,6 @@ function RecipeGridRow({
   isLast: boolean;
 }) {
   const isQueued = row.display_state === "queued";
-  const statusColor =
-    recipe.statusTone === "deployed"
-      ? "#3FBF8F"
-      : recipe.statusTone === "failed"
-        ? "#E68F29"
-        : "#7A8FA0";
   const displayColor = familyColor(recipe.l1_id, recipe.l1_color);
 
   // V4.1 §1.4 (2026-05-29): the coverage caption ("X of 174 platform
@@ -575,17 +563,11 @@ function RecipeGridRow({
               >
                 {recipe.label}
               </div>
-              <div
-                style={{
-                  fontSize: "9.5px",
-                  letterSpacing: "0.3px",
-                  color: statusColor,
-                  fontFamily: "ui-monospace, monospace",
-                  marginTop: "2px",
-                }}
-              >
-                {recipe.statusLabel}
-              </div>
+              {/* Per-row "in play" status line removed 2026-05-29 — every
+                  row in the visible grid is in play by construction (the
+                  status filter is hardcoded scored-only), so the label
+                  carried zero signal per-row and added visual repetition
+                  down the column. */}
             </div>
           </div>
         </Link>
