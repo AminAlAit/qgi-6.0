@@ -17,6 +17,36 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
 }
 
 /**
+ * V4.1 round-3.1 (2026-05-29) — gradient start color for the Confidence
+ * number. Matches `var(--qgi-text-muted)` (#9ab0c4) so that an AUC of
+ * exactly 0.50 (coin flip) renders the SAME hue as the muted window/signals
+ * chip beside it. As AUC climbs toward 1.00 the number fades into the
+ * recipe's family color (recipe.l1_color). The gradient IS the meaning.
+ */
+const MUTED_GRAY = "#9ab0c4";
+
+/** Parse `#RRGGBB` -> {r,g,b} integer components. */
+function parseHex(hex: string): { r: number; g: number; b: number } {
+  // The family colors and MUTED_GRAY are all #RRGGBB; no #RGB shorthand
+  // expected from upstream, so we don't normalize the 3-digit form.
+  return {
+    r: parseInt(hex.slice(1, 3), 16),
+    g: parseInt(hex.slice(3, 5), 16),
+    b: parseInt(hex.slice(5, 7), 16),
+  };
+}
+
+/** Linear interpolation between two `#RRGGBB` hex colors. Returns an
+ *  `rgb(...)` string ready to use as a CSS color value. `t` is clamped
+ *  to [0, 1] by the caller; this fn assumes valid t. */
+function lerpHexToRgb(startHex: string, endHex: string, t: number): string {
+  const s = parseHex(startHex);
+  const e = parseHex(endHex);
+  const mix = (a: number, b: number) => Math.round(a + (b - a) * t);
+  return `rgb(${mix(s.r, e.r)}, ${mix(s.g, e.g)}, ${mix(s.b, e.b)})`;
+}
+
+/**
  * RecipeCard
  *
  * `basePath` defaults to /recipes (V4 gallery). The V4.1 gallery
@@ -70,14 +100,9 @@ export function RecipeCard({
   // reads as inert.
   const linkable = !isQueued;
 
-  // V4.1 follow-up 2026-05-29: drop the L2 subcategory line ONLY when it's
-  // exact-equal to the recipe title (case-insensitive, whitespace-trimmed).
-  // Near-matches like "Climate Agreement / Climate Agreements" or "Economic
-  // Recession / Economic Recession & Austerity" stay — founder clarified
-  // those are intentional L2 rephrasings, not duplicates.
-  const showL2 =
-    !!recipe.l2_label &&
-    recipe.l2_label.trim().toLowerCase() !== recipe.label.trim().toLowerCase();
+  // V4.1 round-3.1 (2026-05-29): L2 subtitle line removed entirely.
+  // Founder ratified — the rephrase didn't earn its real estate. Title
+  // alone, family chip, and the bottom metric row carry the card.
 
   const cardChrome = (
     <article
@@ -188,7 +213,11 @@ export function RecipeCard({
         )}
       </div>
 
-      {/* Text — l2_label dropped when it duplicates the title (V4.1 polish) */}
+      {/* Title only — V4.1 round-3.1 (2026-05-29): L2 subtitle line dropped
+            entirely across every card. The L2 distinction matters only to
+            curators, not to the audience; the title + family chip + bottom-
+            row metrics carry the whole information story. The legacy strategy
+            keeps the same one-line title behavior (it never rendered L2). */}
       <div style={{ flex: 1, marginBottom: "8px" }}>
         <div
           style={{
@@ -196,18 +225,10 @@ export function RecipeCard({
             fontWeight: 600,
             lineHeight: 1.25,
             color: isQueued ? "rgba(255,255,255,0.7)" : "var(--qgi-text)",
-            marginBottom: showL2 ? "3px" : 0,
           }}
         >
           {recipe.label}
         </div>
-        {showL2 && (
-          <div
-            style={{ fontSize: "11px", color: "var(--qgi-text-muted)", lineHeight: 1.3 }}
-          >
-            {recipe.l2_label}
-          </div>
-        )}
       </div>
 
       {/* V4.1 §12: construction-color tier ribbon removed for v4.1 cards.
@@ -234,90 +255,112 @@ export function RecipeCard({
         />
       )}
 
-      {/* Chips */}
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          gap: "4px",
-          marginBottom: "8px",
-          minHeight: "22px",
-        }}
-      >
-        {labelStrategy === "v4.1" ? (
-          // V4.1 strategy chips — round-3 amendment 2026-05-29:
-          //   Confidence badge replaces the old AUC column from the
-          //   (now-deleted) Recipe Tracker. Sourced from card.stats.loco_auc
-          //   and rendered as `78%` style. Only shown when the recipe has
-          //   stats (post-walk recipes); Coming-soon cards render an empty
-          //   chip row so the foot geometry stays consistent.
-          <>
-            {typeof recipe.stats?.loco_auc === "number" && (
-              <span
-                style={{
-                  fontSize: "10px",
-                  padding: "3px 8px",
-                  borderRadius: "3px",
-                  border: `1px solid ${recipe.l1_color}`,
-                  background: `${recipe.l1_color}1A`,
-                  color: recipe.l1_color,
-                  fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.3px",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "5px",
-                }}
-                title="Confidence: how cleanly this recipe separates pre-event country-years from the rest. 50% reads as a coin flip; higher is better."
-              >
-                <strong style={{ fontWeight: 700 }}>
-                  {Math.round(recipe.stats.loco_auc * 100)}%
-                </strong>
-                <span
-                  style={{
-                    opacity: 0.78,
-                    fontSize: "9.5px",
-                    letterSpacing: "0.5px",
-                  }}
-                >
-                  confidence
-                </span>
-              </span>
-            )}
+      {/* Bottom row — V4.1 round-3.1 (2026-05-29):
+            window/signals badge bottom-LEFT, Confidence number bottom-RIGHT.
+            Confidence color gradient interpolates from the muted-text gray
+            (#9ab0c4, matching the window/signals chip) at AUC 50% up to
+            the recipe's family color at AUC 100%. The visual gradient is
+            the meaning: low-confidence recipes look muted, high-confidence
+            recipes are visually loud in the family hue. */}
+      {labelStrategy === "v4.1" ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            marginTop: "auto",
+            paddingTop: "10px",
+            gap: "8px",
+            minHeight: "44px",
+          }}
+        >
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "4px" }}>
             {isWalked && recipe.stats?.window_y && (
               <span style={chipStyle("muted")}>
                 {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
                 signals
               </span>
             )}
-          </>
-        ) : (
-          // Legacy strategy: byte-identical to the original behavior
-          <>
-            {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
-            {isWalked && (
-              <>
-                <span style={chipStyle("muted")}>
-                  LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
-                </span>
-                <span style={chipStyle("fail")}>HARD-FAIL</span>
-                <span style={chipStyle("muted")}>
-                  {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
-                  ind
-                </span>
-              </>
-            )}
-            {isLegacy && (
-              <>
-                <span style={chipStyle("legacy")}>Legacy ML-1</span>
-                {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
-              </>
-            )}
-            {recipe.status === "in_progress" && (
-              <span style={chipStyle("purple")}>Walk in flight</span>
-            )}
-          </>
-        )}
-      </div>
+          </div>
+          {typeof recipe.stats?.loco_auc === "number" &&
+            (() => {
+              const auc = recipe.stats.loco_auc;
+              // AUC < 0.5 is below coin-flip; render as fully muted.
+              // AUC >= 1.0 is unreachable; render as fully family-hue.
+              const t = Math.max(0, Math.min(1, (auc - 0.5) / 0.5));
+              const color = lerpHexToRgb(MUTED_GRAY, recipe.l1_color, t);
+              return (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "flex-end",
+                    lineHeight: 1,
+                  }}
+                  title={`${Math.round(auc * 100)}% confidence — how cleanly this recipe separates pre-event country-years from the rest. 50% is a coin flip; higher is better.`}
+                >
+                  <div
+                    style={{
+                      fontSize: "26px",
+                      fontWeight: 700,
+                      fontFamily: "ui-monospace, monospace",
+                      letterSpacing: "-0.5px",
+                      color,
+                      lineHeight: 1,
+                    }}
+                  >
+                    {Math.round(auc * 100)}%
+                  </div>
+                  <div
+                    style={{
+                      fontSize: "9px",
+                      letterSpacing: "1.2px",
+                      textTransform: "uppercase",
+                      color: "var(--qgi-text-dim)",
+                      fontFamily: "ui-monospace, monospace",
+                      marginTop: "3px",
+                    }}
+                  >
+                    confidence
+                  </div>
+                </div>
+              );
+            })()}
+        </div>
+      ) : (
+        // Legacy strategy: byte-identical to the original behavior
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "4px",
+            marginBottom: "8px",
+            minHeight: "22px",
+          }}
+        >
+          {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
+          {isWalked && (
+            <>
+              <span style={chipStyle("muted")}>
+                LOCO {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
+              </span>
+              <span style={chipStyle("fail")}>HARD-FAIL</span>
+              <span style={chipStyle("muted")}>
+                {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"} ind
+              </span>
+            </>
+          )}
+          {isLegacy && (
+            <>
+              <span style={chipStyle("legacy")}>Legacy ML-1</span>
+              {isFmlFail && <span style={chipStyle("fail")}>F-ML-1 HARD_FAIL</span>}
+            </>
+          )}
+          {recipe.status === "in_progress" && (
+            <span style={chipStyle("purple")}>Walk in flight</span>
+          )}
+        </div>
+      )}
 
       {/* Trajectory dots — legacy only */}
       {labelStrategy === "legacy" && (
