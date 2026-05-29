@@ -48,20 +48,21 @@ export function lerpHexToRgb(startHex: string, endHex: string, t: number): strin
  * scaling with t. Returns an empty string below a soft threshold so weak
  * scores don't carry any glow at all — the halo earns its space.
  *
- * Round-3.6.2 (2026-05-29) — toned down per founder ask. 100% was reading
- * as blown-out; halved the alpha and trimmed the blur radius so the glow
- * suggests "lit" rather than "burning". Numbers below:
- *   t = 0   → no glow
- *   t = 0.4 → tight 2px core @ 0.33 alpha + 7px halo @ 0.19 alpha
- *   t = 1.0 → tight 3px core @ 0.52 alpha + 12px halo @ 0.32 alpha
+ * Round-3.6.3 (2026-05-29) — softened further per founder ask. The earlier
+ * pass still felt too eager at the high end. Dialed alpha + blur down
+ * another step so the halo whispers rather than declares:
+ *   t = 0    → no glow
+ *   t = 0.25 → no glow (lifted threshold)
+ *   t = 0.5  → tight 2px @ 0.23 + 5px halo @ 0.13
+ *   t = 1.0  → tight 2px @ 0.34 + 8px halo @ 0.20
  */
 export function confidenceGlow(endHex: string, t: number): string {
-  if (t < 0.18) return "";
+  if (t < 0.25) return "";
   const e = parseHex(endHex);
   const rgb = `${e.r}, ${e.g}, ${e.b}`;
-  const innerBlur = Math.round(1 + t * 2);
-  const outerBlur = Math.round(3 + t * 9);
-  const innerAlpha = (0.2 + t * 0.32).toFixed(2);
-  const outerAlpha = (0.1 + t * 0.22).toFixed(2);
+  const innerBlur = Math.round(1 + t * 1);
+  const outerBlur = Math.round(2 + t * 6);
+  const innerAlpha = (0.12 + t * 0.22).toFixed(2);
+  const outerAlpha = (0.06 + t * 0.14).toFixed(2);
   return `0 0 ${innerBlur}px rgba(${rgb}, ${innerAlpha}), 0 0 ${outerBlur}px rgba(${rgb}, ${outerAlpha})`;
 }
