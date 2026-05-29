@@ -1,18 +1,27 @@
 /**
- * TopPairsStrip — slim Dashboard version of the Risk Board "Today across
- * the catalog" hero (now retired from /risk-board).
+ * TopPairsStrip — Dashboard right-rail "story tape" of top country-recipe
+ * pairs ranked by confidence.
  *
- * The full hero (RiskBoardHero) carried per-row recipe icons + zone chips
- * + rank-delta indicators + 18px family-color score numbers. The Dashboard
- * lives in a denser context, so this slim version is a single 2-column
- * grid of compact rows, each showing:
+ * 2026-05-30 — restructured from a 2-column horizontal strip into a single-
+ * column vertical rail. The component now sits in a sticky right-side column
+ * on the dashboard, holding up to 20 hand-curated pairs (data contract:
+ * `data/curated-top-pairs.json` produced by a parallel curation agent;
+ * graceful fallback to getTopPairs() when the curated drop is absent).
  *
- *   rank · flag · country · recipe label · confidence %
- *
- * The confidence number reuses the shared color-lerp + glow helper so the
- * visual reads the same as Risk Board cells (white-glow toned) and recipe
- * cards (family-color glow), keeping the cross-surface language
- * consistent. Surface chrome follows the dashboard's PanelBase idiom.
+ * Rail design rationale (Sard mini-majles, 2026-05-30):
+ *   - Position: sticky (scrolls until pinned), not fixed. Preserves natural
+ *     scroll rhythm; works at any page length.
+ *   - Width: 320px (set by parent grid). One-line row layout: rank · flag ·
+ *     country · recipe · score. Rationale (when present) renders on a
+ *     second line, dim.
+ *   - Cap: all 20 visible with internal scroll on max-height. The rail IS
+ *     the story tape; hiding rows behind a "Show all" defeats the
+ *     peripheral-scan affordance.
+ *   - Header: "Top 20 today" with one-line caption. Calm slate so the rail
+ *     stays quieter than the family-color insight plots.
+ *   - Visual weight: family-color left border on each row (the only color
+ *     tie-back to the rest of the dashboard idiom); score uses the shared
+ *     lerp + glow helper.
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -20,23 +29,42 @@ import { PanelBase } from "./PanelBase";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
-import { getTopPairs, type BoardPair } from "@/lib/te-mock/risk-board-data";
+import {
+  getCuratedTopPairs,
+  getTopPairs,
+  type BoardPair,
+  type CuratedBoardPair,
+} from "@/lib/te-mock/risk-board-data";
 import { familyColor } from "@/lib/te-mock/l1-families";
 import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
 
 interface Props {
-  /** How many pairs to show. Default 8 — fits a 2-column grid on dashboard. */
+  /**
+   * Max pairs to show. Default 20 — matches the curated drop size.
+   * The rail's internal scroll absorbs whatever fits in the viewport.
+   */
   limit?: number;
 }
 
-export function TopPairsStrip({ limit = 8 }: Props) {
-  const pairs = getTopPairs().slice(0, limit);
+export function TopPairsStrip({ limit = 20 }: Props) {
+  // Curated 20-pair list is the canonical source. Fall back to the legacy
+  // getTopPairs() merge when the curated drop is not yet present, so the
+  // surface never renders empty during the parallel-agent landing window.
+  const curated = getCuratedTopPairs();
+  const pairs: Array<CuratedBoardPair | (BoardPair & { rank: number })> =
+    curated.length > 0
+      ? curated.slice(0, limit)
+      : getTopPairs()
+          .slice(0, limit)
+          .map((p, i) => ({ ...p, rank: i + 1 }));
+
   const recipes = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
+  const countLabel = pairs.length;
 
   return (
     <PanelBase
-      title="Today across the catalog"
-      caption={`Top ${pairs.length} country-recipe matches, ranked by confidence.`}
+      title={`Top ${countLabel} today`}
+      caption="Country-recipe matches, ranked by confidence."
       rightSlot={
         <Link
           href={"/risk-board" as Route}
@@ -53,24 +81,29 @@ export function TopPairsStrip({ limit = 8 }: Props) {
         </Link>
       }
     >
+      {/* Internal-scroll container. max-height tops out near the viewport
+          so the rail behaves as a peripheral companion: visible at scan,
+          scrollable when the user invests attention. */}
       <ol
         style={{
           listStyle: "none",
           padding: 0,
           margin: 0,
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
-          gap: "6px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+          maxHeight: "calc(100vh - 220px)",
+          overflowY: "auto",
+          paddingRight: "4px",
         }}
       >
-        {pairs.map((pair, idx) => {
+        {pairs.map((pair) => {
           const recipe = recipes.get(pair.recipe_id);
           if (!recipe) return null;
           return (
             <PairRow
-              key={`${pair.country}-${pair.recipe_id}`}
+              key={`${pair.country}-${pair.recipe_id}-${pair.rank}`}
               pair={pair}
-              rank={idx + 1}
               recipeLabel={recipe.label}
               recipeFamilyColor={familyColor(recipe.l1_id, recipe.l1_color)}
             />
@@ -83,20 +116,18 @@ export function TopPairsStrip({ limit = 8 }: Props) {
 
 function PairRow({
   pair,
-  rank,
   recipeLabel,
   recipeFamilyColor,
 }: {
-  pair: BoardPair;
-  rank: number;
+  pair: CuratedBoardPair | (BoardPair & { rank: number });
   recipeLabel: string;
   recipeFamilyColor: string;
 }) {
   const pct = Math.round(pair.score);
   const cT = confidenceT(pair.score);
-  // Slate panel background → family-color endpoint reads well here.
   const pctColor = lerpHexToRgb(MUTED_GRAY, recipeFamilyColor, cT);
   const pctGlow = confidenceGlow(recipeFamilyColor, cT);
+  const rationale = "rationale" in pair ? pair.rationale : undefined;
 
   return (
     <li>
@@ -107,105 +138,121 @@ function PairRow({
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "7px 10px",
+            flexDirection: "column",
+            gap: "3px",
+            padding: "7px 9px",
             background: "var(--qgi-bg)",
             border: "1px solid var(--qgi-border)",
             borderLeft: `2px solid ${recipeFamilyColor}`,
             borderRadius: "4px",
-            minHeight: "34px",
           }}
         >
-          {/* Rank */}
-          <span
-            style={{
-              fontSize: "10px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.5px",
-              flexShrink: 0,
-              minWidth: "18px",
-            }}
-          >
-            {String(rank).padStart(2, "0")}
-          </span>
-
-          {/* Country flag */}
-          <FlagImg
-            emoji={flagFor(pair.country)}
-            name={pair.country}
-            width={14}
-            radius={2}
-          />
-
-          {/* Country + recipe label, both ellipsised */}
+          {/* Row 1: rank · flag · country · score */}
           <div
             style={{
-              flex: 1,
-              minWidth: 0,
               display: "flex",
-              alignItems: "baseline",
-              gap: "6px",
-              fontSize: "12px",
-              lineHeight: 1.2,
+              alignItems: "center",
+              gap: "8px",
+              minHeight: "20px",
             }}
           >
             <span
               style={{
+                fontSize: "10px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.5px",
+                flexShrink: 0,
+                minWidth: "18px",
+              }}
+            >
+              {String(pair.rank).padStart(2, "0")}
+            </span>
+
+            <FlagImg
+              emoji={flagFor(pair.country)}
+              name={pair.country}
+              width={14}
+              radius={2}
+            />
+
+            <span
+              style={{
+                flex: 1,
+                minWidth: 0,
+                fontSize: "12px",
                 fontWeight: 600,
                 color: "var(--qgi-text)",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
-                flexShrink: 0,
-                maxWidth: "44%",
+                lineHeight: 1.2,
               }}
             >
               {pair.country}
             </span>
+
             <span
               style={{
-                color: "var(--qgi-text-dim)",
-                fontSize: "10.5px",
+                fontSize: "14px",
+                fontWeight: 700,
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "-0.3px",
+                color: pctColor,
+                textShadow: pctGlow || undefined,
+                flexShrink: 0,
+                transition: "text-shadow 180ms ease-out, color 180ms",
+                minWidth: "32px",
+                textAlign: "right",
               }}
+              title={`${pct}% confidence — this country's recent path matches the recipe's canonical shape.`}
             >
-              ·
+              {pct}%
             </span>
+          </div>
+
+          {/* Row 2: recipe label (indented under the flag column) */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              paddingLeft: "26px",
+              fontSize: "11px",
+              color: "var(--qgi-text-muted)",
+              lineHeight: 1.25,
+            }}
+            title={recipeLabel}
+          >
             <span
               style={{
-                color: "var(--qgi-text-muted)",
-                fontSize: "11.5px",
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
                 flex: 1,
                 minWidth: 0,
               }}
-              title={recipeLabel}
             >
               {recipeLabel}
             </span>
           </div>
 
-          {/* Confidence — same color/glow rule as Risk Board + Recipe cards */}
-          <span
-            style={{
-              fontSize: "14px",
-              fontWeight: 700,
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "-0.3px",
-              color: pctColor,
-              textShadow: pctGlow || undefined,
-              flexShrink: 0,
-              transition: "text-shadow 180ms ease-out, color 180ms",
-              minWidth: "32px",
-              textAlign: "right",
-            }}
-            title={`${pct}% confidence — this country's recent path matches the recipe's canonical shape.`}
-          >
-            {pct}%
-          </span>
+          {/* Row 3 (optional): one-sentence rationale from the curation pass.
+              Renders only when present so the rail stays compact under the
+              legacy non-curated path. */}
+          {rationale && (
+            <div
+              style={{
+                paddingLeft: "26px",
+                fontSize: "10.5px",
+                color: "var(--qgi-text-dim)",
+                lineHeight: 1.35,
+                marginTop: "1px",
+              }}
+            >
+              {rationale}
+            </div>
+          )}
         </div>
       </Link>
     </li>

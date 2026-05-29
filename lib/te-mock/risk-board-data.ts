@@ -200,6 +200,70 @@ export function getTopPairs(): BoardPair[] {
 }
 
 /* ────────────────────────────────────────────────────────────────────────── */
+/* CURATED TOP PAIRS — hand-curated 20-pair list for the dashboard right rail */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+/**
+ * Extends BoardPair with vectors + rationale produced by the curation pass.
+ * `vectors` is the audience-facing list of risk vectors driving the score
+ * (rendered as small inline glyphs); `rationale` is a one-sentence audience
+ * caption. Both optional — the loader renders calmly when absent.
+ */
+export interface CuratedBoardPair extends BoardPair {
+  rank: number;
+  vectors?: string[];
+  rationale?: string;
+}
+
+interface CuratedTopPairsFile {
+  produced_at_utc: string;
+  curated_by: string;
+  rubric: string;
+  pairs: Array<{
+    rank: number;
+    country: string;
+    recipe_id: string;
+    score: number;
+    vectors?: string[];
+    rationale?: string;
+  }>;
+}
+
+/**
+ * Loads the hand-curated 20-pair list at `data/curated-top-pairs.json` if it
+ * exists. Falls through to an empty array when the file is absent — the
+ * dashboard rail then back-fills from getTopPairs() so the surface never
+ * renders empty.
+ *
+ * The JSON is produced by a parallel curation agent. Shape:
+ *   { produced_at_utc, curated_by, rubric, pairs: [...] }
+ *
+ * `rank_delta_q` is set to null for curated pairs — the curation is a
+ * vintage-1 hand-selection, not a quarterly diff. Future curated drops can
+ * include rank_delta_q if they want to.
+ */
+export function getCuratedTopPairs(): CuratedBoardPair[] {
+  try {
+    // Lazy require so a missing file does not break SSR import resolution.
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const data = require("@/data/curated-top-pairs.json") as CuratedTopPairsFile;
+    if (!data || !Array.isArray(data.pairs)) return [];
+    return data.pairs.map((p) => ({
+      rank: p.rank,
+      country: p.country,
+      recipe_id: p.recipe_id,
+      score: p.score,
+      rank_delta_q: null,
+      vectors: p.vectors,
+      rationale: p.rationale,
+    }));
+  } catch {
+    // File absent or malformed — graceful empty.
+    return [];
+  }
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
 /* PER-RECIPE ROWS — the heatmap grid                                          */
 /* ────────────────────────────────────────────────────────────────────────── */
 
