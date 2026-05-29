@@ -117,17 +117,6 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   },
   {
     type: "standalone",
-    label: "Compare",
-    href: "/compare",
-    icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
-    badge: "PRIMARY",
-    // Round-3.2 lockdown 2026-05-29: /compare body is a Coming-Soon overlay
-    // until the side-by-side comparison ships. Flag the nav entry so the
-    // user sees the lockdown intent before the click.
-    comingSoon: true,
-  },
-  {
-    type: "standalone",
     label: "Nearest Analog",
     href: "/nearest-analog",
     icon: <Telescope size={16} strokeWidth={1.5} aria-hidden="true" />,
@@ -139,6 +128,17 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     href: "/patterns",
     icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
+  },
+  // Compare is bottom-slotted (2026-05-29) — it's the only locked surface,
+  // and demoting it to the foot of the nav keeps the live surfaces dense
+  // up top. comingSoon chip explains the lockdown without a separate click.
+  {
+    type: "standalone",
+    label: "Compare",
+    href: "/compare",
+    icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+    comingSoon: true,
   },
   // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
   // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog

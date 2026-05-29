@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
-import { BOARD_VINTAGE, getBoardRecipes } from "@/lib/te-mock/risk-board-data";
+import {
+  BOARD_VINTAGE,
+  getBoardRecipes,
+  getRecipeFullScoreMap,
+  getRecipeRow,
+} from "@/lib/te-mock/risk-board-data";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { RiskBoardHero } from "@/components/risk-board/RiskBoardHero";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
@@ -32,8 +37,33 @@ export default function RiskBoardPage() {
       l2_label: r.l2_label,
       statusLabel: sl.label,
       statusTone: sl.tone,
+      // Round-3.5 (2026-05-29): full country→score map per recipe drives
+      // the multi-country custom-grid mode. Cascade recipes contribute
+      // ~10 entries; TE sample-10 recipes ~150; queued recipes 0.
+      // Total payload across the board is ~1.5k entries, manageable as
+      // an inline server→client prop.
+      scoreByCountry: getRecipeFullScoreMap(r.recipe_id),
     };
   });
+
+  // Aggregate every known country across every visible row — the universe
+  // the user can multi-select from. Sorted alphabetically; dedup'd.
+  const countryUniverse = (() => {
+    const set = new Set<string>();
+    for (const recipe of boardRecipes) {
+      for (const name of Object.keys(recipe.scoreByCountry)) {
+        set.add(name);
+      }
+    }
+    // Also include the top-10 country names from queued recipes' projections
+    // when available so the picker doesn't surprise-omit anyone we've ever
+    // shown on the board.
+    for (const recipe of boardRecipes) {
+      const row = getRecipeRow(recipe.recipe_id);
+      if (row) for (const c of row.cells) if (c.country !== "—") set.add(c.country);
+    }
+    return Array.from(set).sort((a, b) => a.localeCompare(b));
+  })();
 
   // Build L1 family meta from the full recipe list so a filter chip exists
   // for every family — even if a family has only queued recipes today.
@@ -163,7 +193,11 @@ export default function RiskBoardPage() {
         </div>
 
         <div data-tour="risk-board-grid">
-          <RiskBoardFilters recipes={boardRecipes} l1Families={l1Families} />
+          <RiskBoardFilters
+            recipes={boardRecipes}
+            l1Families={l1Families}
+            countryUniverse={countryUniverse}
+          />
         </div>
 
         {/* Recent movements panel */}

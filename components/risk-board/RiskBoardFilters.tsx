@@ -46,20 +46,43 @@ export interface RiskBoardRecipeProjection {
   l2_label: string;
   statusLabel: string;
   statusTone: "deployed" | "neutral" | "failed";
+  /**
+   * Round-3.5 (2026-05-29) — full country→score lookup for THIS recipe,
+   * used in custom-grid mode when the user selects specific countries
+   * that may not be in the recipe's default top-10. Empty object for
+   * queued recipes.
+   */
+  scoreByCountry: Record<string, number>;
 }
 
 interface Props {
   recipes: RiskBoardRecipeProjection[];
   /** L1 family meta to render filter chips. Derived once on the server. */
   l1Families: Array<{ id: string; label: string; color: string }>;
+  /** Every country that could be selected (union of every recipe's
+   *  scored countries + every recipe row's rendered cells). Sorted
+   *  alphabetically server-side. */
+  countryUniverse: string[];
 }
 
-type StatusFilter = "all" | "scored" | "queued";
+const MAX_SELECTED = 10;
 
-export function RiskBoardFilters({ recipes, l1Families }: Props) {
+export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props) {
   const [selectedL1, setSelectedL1] = useState<Set<string>>(new Set());
-  const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
-  const [query, setQuery] = useState("");
+  // Round-3.5 (2026-05-29): status filter retired. The grid is scored-only
+  // by default and queued recipes never enter the grid mode — the user
+  // never asked for that toggle.
+  // Round-3.5 country multi-select. When N>0, the grid renders with
+  // selectedCountries as columns instead of top-10 per recipe. Capped at
+  // MAX_SELECTED. Order preserved (first selected = first column).
+  const [selectedCountries, setSelectedCountries] = useState<string[]>([]);
+  // Country picker free-text typeahead — distinct from the grid filter
+  // search of yore. The query narrows the dropdown list, not the rows.
+  const [pickerQuery, setPickerQuery] = useState("");
+  // Hover highlight in custom-grid mode. When the user hovers any cell,
+  // every cell carrying the same country across rows lights up; the rest
+  // fade. Null = no hover, normal rendering.
+  const [hoveredCountry, setHoveredCountry] = useState<string | null>(null);
 
   const toggleL1 = (id: string) => {
     setSelectedL1((prev) => {
@@ -70,45 +93,58 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
     });
   };
 
-  const reset = () => {
-    setSelectedL1(new Set());
-    setStatusFilter("all");
-    setQuery("");
+  const addCountry = (name: string) => {
+    setSelectedCountries((prev) => {
+      if (prev.includes(name)) return prev;
+      if (prev.length >= MAX_SELECTED) return prev;
+      return [...prev, name];
+    });
+    setPickerQuery("");
+  };
+  const removeCountry = (name: string) => {
+    setSelectedCountries((prev) => prev.filter((c) => c !== name));
   };
 
-  const q = query.trim().toLowerCase();
+  const reset = () => {
+    setSelectedL1(new Set());
+    setSelectedCountries([]);
+    setPickerQuery("");
+  };
 
-  // Apply filters → rows for FilteredGrid.
+  const pq = pickerQuery.trim().toLowerCase();
+
+  // Suggestions for the typeahead — top 8 matches, with already-selected
+  // countries excluded. Country names are dense enough that the user can
+  // usually type 2-3 chars and pick.
+  const pickerSuggestions = useMemo(() => {
+    if (!pq && selectedCountries.length === 0) return [];
+    const out: string[] = [];
+    for (const name of countryUniverse) {
+      if (selectedCountries.includes(name)) continue;
+      if (!pq || name.toLowerCase().includes(pq)) {
+        out.push(name);
+        if (out.length >= 8) break;
+      }
+    }
+    return out;
+  }, [pq, countryUniverse, selectedCountries]);
+
+  // Apply L1 filter + always-scored mode → rows for the grid.
   const visibleRows = useMemo(() => {
     const rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }> = [];
     for (const recipe of recipes) {
-      // L1 filter
       if (selectedL1.size > 0 && !selectedL1.has(recipe.l1_id)) continue;
-
       const row = getRecipeRow(recipe.recipe_id);
       if (!row) continue;
-
-      // Status filter
-      const isQueued = row.display_state === "queued";
-      if (statusFilter === "scored" && isQueued) continue;
-      if (statusFilter === "queued" && !isQueued) continue;
-
-      // Country search: drop the row if a query is set and nothing matches.
-      if (q && !isQueued) {
-        const hit = row.cells.some((c) => c.country.toLowerCase().includes(q));
-        if (!hit) continue;
-      }
-      // For queued rows, drop them entirely when there's an active country query
-      // (they have no country signal to match on).
-      if (q && isQueued) continue;
-
+      // Round-3.5: scored-only. Coming-soon recipes never enter the grid.
+      if (row.display_state === "queued") continue;
       rows.push({ recipe, row });
     }
     return rows;
-  }, [recipes, selectedL1, statusFilter, q]);
+  }, [recipes, selectedL1]);
 
-  const activeFilterCount =
-    selectedL1.size + (statusFilter !== "all" ? 1 : 0) + (q ? 1 : 0);
+  const customMode = selectedCountries.length > 0;
+  const activeFilterCount = selectedL1.size + (customMode ? 1 : 0);
 
   return (
     <>
@@ -197,91 +233,21 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
           }}
         />
 
-        {/* Status filter */}
-        <div style={{ display: "flex", gap: "4px" }}>
-          {(
-            [
-              ["all", "All"],
-              ["scored", "Scored"],
-              /* V4.1 §4: "Not yet tested" → "Coming soon". */
-              ["queued", "Coming soon"],
-            ] as Array<[StatusFilter, string]>
-          ).map(([key, label]) => {
-            const active = statusFilter === key;
-            return (
-              <button
-                key={key}
-                type="button"
-                onClick={() => setStatusFilter(key)}
-                style={{
-                  fontSize: "10.5px",
-                  padding: "4px 9px",
-                  background: active ? "var(--qgi-accent)" : "transparent",
-                  color: active ? "var(--qgi-bg)" : "var(--qgi-text-muted)",
-                  border: `1px solid ${active ? "var(--qgi-accent)" : "var(--qgi-border)"}`,
-                  borderRadius: "4px",
-                  fontFamily: "ui-monospace, monospace",
-                  letterSpacing: "0.4px",
-                  cursor: "pointer",
-                }}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </div>
+        {/* Round-3.5 (2026-05-29): country multi-select picker. The user
+            picks up to 10 countries; the grid then switches to a
+            custom-column mode where each column is a selected country
+            and each cell is that country's score in that recipe (or
+            "not scored" when the country lacks coverage). */}
+        <CountryMultiPicker
+          selected={selectedCountries}
+          suggestions={pickerSuggestions}
+          query={pickerQuery}
+          onQueryChange={setPickerQuery}
+          onAdd={addCountry}
+          onRemove={removeCountry}
+        />
 
         <span style={{ flex: 1 }} />
-
-        {/* Country search */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "6px",
-            padding: "5px 10px",
-            background: "var(--qgi-bg)",
-            border: "1px solid var(--qgi-border)",
-            borderRadius: "4px",
-            minWidth: "200px",
-          }}
-        >
-          <Search size={13} strokeWidth={1.8} color="var(--qgi-text-dim)" />
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search country (e.g. Iran)"
-            aria-label="Search by country"
-            style={{
-              flex: 1,
-              background: "transparent",
-              border: "none",
-              outline: "none",
-              color: "var(--qgi-text)",
-              fontFamily: "ui-monospace, monospace",
-              fontSize: "11.5px",
-              minWidth: 0,
-            }}
-          />
-          {q && (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              aria-label="Clear search"
-              style={{
-                background: "transparent",
-                border: "none",
-                color: "var(--qgi-text-dim)",
-                cursor: "pointer",
-                padding: 0,
-                display: "flex",
-              }}
-            >
-              <X size={12} strokeWidth={2} />
-            </button>
-          )}
-        </div>
 
         {activeFilterCount > 0 && (
           <button
@@ -307,10 +273,14 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
         )}
       </div>
 
-      {/* The grid itself — inlined here so that cell filtering by `q` can
-          modulate cells without re-passing many props through props-drilling.
-          RiskGrid.tsx was deleted in QA-8 P1; this is now the sole grid. */}
-      <FilteredGrid rows={visibleRows} query={q} />
+      {/* Grid — switches between default top-10 mode and custom-country
+          mode depending on whether the user has selected any countries. */}
+      <FilteredGrid
+        rows={visibleRows}
+        customCountries={customMode ? selectedCountries : null}
+        hoveredCountry={hoveredCountry}
+        onHoverCountry={setHoveredCountry}
+      />
     </>
   );
 }
@@ -323,10 +293,16 @@ export function RiskBoardFilters({ recipes, l1Families }: Props) {
 
 function FilteredGrid({
   rows,
-  query,
+  customCountries,
+  hoveredCountry,
+  onHoverCountry,
 }: {
   rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }>;
-  query: string;
+  /** Null = default top-10 mode. Array (≥1) = custom-column mode with
+   *  these countries as the columns. */
+  customCountries: string[] | null;
+  hoveredCountry: string | null;
+  onHoverCountry: (name: string | null) => void;
 }) {
   if (rows.length === 0) {
     return (
@@ -345,6 +321,12 @@ function FilteredGrid({
     );
   }
 
+  // Number of cell columns + the grid-template string. In default mode
+  // we always render exactly 10 columns (#1..#10). In custom mode the
+  // number matches the user's selection (1..10).
+  const colCount = customCountries ? customCountries.length : 10;
+  const gridTemplate = `280px repeat(${colCount}, minmax(0, 1fr))`;
+
   return (
     <div
       style={{
@@ -357,7 +339,7 @@ function FilteredGrid({
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "280px repeat(10, minmax(0, 1fr))",
+          gridTemplateColumns: gridTemplate,
           background: "var(--qgi-bg)",
           borderBottom: "1px solid var(--qgi-border)",
           fontFamily: "ui-monospace, monospace",
@@ -369,18 +351,50 @@ function FilteredGrid({
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
           Recipe ↓ · Country →
         </div>
-        {Array.from({ length: 10 }, (_, i) => (
-          <div
-            key={i}
-            style={{
-              padding: "10px 6px",
-              textAlign: "center",
-              borderRight: i === 9 ? "none" : "1px solid var(--qgi-border)",
-            }}
-          >
-            #{i + 1}
-          </div>
-        ))}
+        {customCountries
+          ? customCountries.map((name, i) => (
+              <div
+                key={name}
+                style={{
+                  padding: "10px 6px",
+                  textAlign: "center",
+                  borderRight:
+                    i === customCountries.length - 1
+                      ? "none"
+                      : "1px solid var(--qgi-border)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "5px",
+                  color: hoveredCountry === name ? "var(--qgi-text)" : undefined,
+                  fontWeight: hoveredCountry === name ? 700 : undefined,
+                }}
+                title={name}
+              >
+                <FlagImg emoji={flagFor(name)} name={name} width={14} radius={2} />
+                <span
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {name}
+                </span>
+              </div>
+            ))
+          : Array.from({ length: 10 }, (_, i) => (
+              <div
+                key={i}
+                style={{
+                  padding: "10px 6px",
+                  textAlign: "center",
+                  borderRight: i === 9 ? "none" : "1px solid var(--qgi-border)",
+                }}
+              >
+                #{i + 1}
+              </div>
+            ))}
       </div>
 
       {rows.map(({ recipe, row }, idx) => (
@@ -388,7 +402,10 @@ function FilteredGrid({
           key={recipe.recipe_id}
           recipe={recipe}
           row={row}
-          query={query}
+          customCountries={customCountries}
+          hoveredCountry={hoveredCountry}
+          onHoverCountry={onHoverCountry}
+          gridTemplate={gridTemplate}
           isLast={idx === rows.length - 1}
         />
       ))}
@@ -399,12 +416,18 @@ function FilteredGrid({
 function RecipeGridRow({
   recipe,
   row,
-  query,
+  customCountries,
+  hoveredCountry,
+  onHoverCountry,
+  gridTemplate,
   isLast,
 }: {
   recipe: RiskBoardRecipeProjection;
   row: RecipeRow;
-  query: string;
+  customCountries: string[] | null;
+  hoveredCountry: string | null;
+  onHoverCountry: (name: string | null) => void;
+  gridTemplate: string;
   isLast: boolean;
 }) {
   const isQueued = row.display_state === "queued";
@@ -420,12 +443,29 @@ function RecipeGridRow({
   // countries scored · Y lack coverage…") was self-flagellation noise —
   // removed. hasCoverageData + coverageGap derivations dropped with it.
 
+  // Round-3.5 (2026-05-29): in custom mode the cells aren't the row's
+  // top-10; they're derived per-column from the user's selected countries
+  // resolved against recipe.scoreByCountry. Missing entries render as
+  // "not scored" cells (state="not_scored", score=null).
+  const cellsToRender: BoardCell[] = customCountries
+    ? customCountries.map((name) => {
+        const sc = recipe.scoreByCountry[name];
+        if (typeof sc === "number") {
+          return { country: name, score: sc, state: "scored" as const };
+        }
+        // The selected country lacks coverage in this recipe — render
+        // the honest "not scored" branch, not a fake low score.
+        return { country: name, score: null, state: "not_scored" as const };
+      })
+    : row.cells;
+  const colCount = cellsToRender.length;
+
   return (
     <div style={{ borderBottom: isLast ? "none" : "1px solid var(--qgi-border)" }}>
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "280px repeat(10, minmax(0, 1fr))",
+          gridTemplateColumns: gridTemplate,
           background: isQueued ? "rgba(0,0,0,0.18)" : "transparent",
         }}
       >
@@ -487,17 +527,23 @@ function RecipeGridRow({
           </div>
         </Link>
 
-        {row.cells.map((cell, i) => (
-          <HeatCell
-            key={`${recipe.recipe_id}-${i}`}
-            cell={cell}
-            recipeId={recipe.recipe_id}
-            familyColor={displayColor}
-            isLastCol={i === 9}
-            isQueued={isQueued}
-            query={query}
-          />
-        ))}
+        {cellsToRender.map((cell, i) => {
+          const isHovered = hoveredCountry === cell.country;
+          const dimmed = hoveredCountry !== null && !isHovered;
+          return (
+            <HeatCell
+              key={`${recipe.recipe_id}-${i}-${cell.country}`}
+              cell={cell}
+              recipeId={recipe.recipe_id}
+              familyColor={displayColor}
+              isLastCol={i === colCount - 1}
+              isQueued={isQueued}
+              isHovered={isHovered}
+              isDimmed={dimmed}
+              onHoverCountry={onHoverCountry}
+            />
+          );
+        })}
       </div>
 
       {/* V4.1 §1.4 (2026-05-29): the between-row coverage caption ("X of 174
@@ -516,14 +562,20 @@ function HeatCell({
   familyColor: resolvedFamilyColor,
   isLastCol,
   isQueued,
-  query,
+  isHovered,
+  isDimmed,
+  onHoverCountry,
 }: {
   cell: BoardCell;
   recipeId: string;
   familyColor: string;
   isLastCol: boolean;
   isQueued: boolean;
-  query: string;
+  /** Round-3.5: this cell's country matches the user's hovered country. */
+  isHovered?: boolean;
+  /** Round-3.5: ANOTHER cell's country is hovered; dim everything else. */
+  isDimmed?: boolean;
+  onHoverCountry?: (name: string | null) => void;
 }) {
   // ── State-specific render branches ─────────────────────────────────────
 
@@ -575,6 +627,8 @@ function HeatCell({
   if (cell.state === "not_scored") {
     return (
       <div
+        onMouseEnter={onHoverCountry ? () => onHoverCountry(cell.country) : undefined}
+        onMouseLeave={onHoverCountry ? () => onHoverCountry(null) : undefined}
         style={{
           position: "relative",
           height: "62px",
@@ -586,6 +640,10 @@ function HeatCell({
           flexDirection: "column",
           justifyContent: "space-between",
           cursor: "help",
+          outline: isHovered ? `2px solid ${resolvedFamilyColor}` : "none",
+          outlineOffset: isHovered ? "-2px" : 0,
+          opacity: isDimmed ? 0.32 : 1,
+          transition: "opacity 120ms ease-out",
         }}
         title={`${cell.country} · not scored: country lacks indicator coverage for this recipe, not the same as a low score.`}
       >
@@ -644,11 +702,12 @@ function HeatCell({
       : zone === "MODERATE"
         ? "#E68F29"
         : "var(--qgi-text-muted)";
-  const isQueryMatch = query.length > 0 && cell.country.toLowerCase().includes(query);
 
   return (
     <Link
       href={`/recipes/${recipeId}` as Route}
+      onMouseEnter={onHoverCountry ? () => onHoverCountry(cell.country) : undefined}
+      onMouseLeave={onHoverCountry ? () => onHoverCountry(null) : undefined}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}
     >
       <div
@@ -662,8 +721,10 @@ function HeatCell({
           flexDirection: "column",
           justifyContent: "space-between",
           cursor: "pointer",
-          outline: isQueryMatch ? `2px solid ${resolvedFamilyColor}` : "none",
-          outlineOffset: isQueryMatch ? "-2px" : 0,
+          outline: isHovered ? `2px solid ${resolvedFamilyColor}` : "none",
+          outlineOffset: isHovered ? "-2px" : 0,
+          opacity: isDimmed ? 0.32 : 1,
+          transition: "opacity 120ms ease-out, outline-color 120ms",
         }}
         title={`${cell.country} · discrimination rank ${score.toFixed(1)} (${zone})`}
       >
@@ -674,7 +735,7 @@ function HeatCell({
             gap: "5px",
             fontSize: "10.5px",
             color: "var(--qgi-text)",
-            fontWeight: isQueryMatch ? 700 : 500,
+            fontWeight: isHovered ? 700 : 500,
             lineHeight: 1.2,
             overflow: "hidden",
             minWidth: 0,
@@ -741,4 +802,167 @@ function hexToRgba(hex: string, alpha: number): string {
   const g = parseInt(h.slice(2, 4), 16);
   const b = parseInt(h.slice(4, 6), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/* ────────────────────────────────────────────────────────────────────────── */
+/* CountryMultiPicker — up to 10 country chips + typeahead dropdown          */
+/* ────────────────────────────────────────────────────────────────────────── */
+
+function CountryMultiPicker({
+  selected,
+  suggestions,
+  query,
+  onQueryChange,
+  onAdd,
+  onRemove,
+}: {
+  selected: string[];
+  suggestions: string[];
+  query: string;
+  onQueryChange: (q: string) => void;
+  onAdd: (name: string) => void;
+  onRemove: (name: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const atCap = selected.length >= MAX_SELECTED;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "8px",
+        padding: "5px 10px",
+        background: "var(--qgi-bg)",
+        border: "1px solid var(--qgi-border)",
+        borderRadius: "4px",
+        minWidth: "260px",
+        flex: "0 1 520px",
+        position: "relative",
+        flexWrap: "wrap",
+      }}
+    >
+      <Search size={13} strokeWidth={1.8} color="var(--qgi-text-dim)" />
+      {/* Selected chips */}
+      {selected.map((name) => (
+        <span
+          key={name}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: "4px",
+            padding: "2px 4px 2px 6px",
+            background: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+            borderRadius: "3px",
+            fontSize: "10.5px",
+            color: "var(--qgi-text)",
+            fontFamily: "ui-monospace, monospace",
+          }}
+        >
+          <FlagImg emoji={flagFor(name)} name={name} width={12} radius={2} />
+          {name}
+          <button
+            type="button"
+            onClick={() => onRemove(name)}
+            aria-label={`Remove ${name}`}
+            style={{
+              background: "transparent",
+              border: "none",
+              color: "var(--qgi-text-dim)",
+              cursor: "pointer",
+              padding: 0,
+              display: "flex",
+              marginLeft: "2px",
+            }}
+          >
+            <X size={10} strokeWidth={2.2} />
+          </button>
+        </span>
+      ))}
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => {
+          onQueryChange(e.target.value);
+          setOpen(true);
+        }}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        placeholder={
+          atCap
+            ? `Max ${MAX_SELECTED} countries`
+            : selected.length === 0
+              ? "Select up to 10 countries..."
+              : `Add country (${MAX_SELECTED - selected.length} left)`
+        }
+        aria-label="Country picker"
+        disabled={atCap}
+        style={{
+          flex: 1,
+          background: "transparent",
+          border: "none",
+          outline: "none",
+          color: "var(--qgi-text)",
+          fontFamily: "ui-monospace, monospace",
+          fontSize: "11.5px",
+          minWidth: "120px",
+        }}
+      />
+      {open && !atCap && suggestions.length > 0 && (
+        <div
+          role="listbox"
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: "calc(100% + 4px)",
+            background: "var(--qgi-surface)",
+            border: "1px solid var(--qgi-border)",
+            borderRadius: "4px",
+            boxShadow: "0 8px 24px rgba(0,0,0,0.45)",
+            zIndex: 50,
+            maxHeight: "240px",
+            overflowY: "auto",
+          }}
+        >
+          {suggestions.map((name) => (
+            <button
+              key={name}
+              type="button"
+              role="option"
+              onMouseDown={(e) => {
+                // mouseDown beats the input's onBlur so the click registers.
+                e.preventDefault();
+                onAdd(name);
+              }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                width: "100%",
+                padding: "7px 12px",
+                background: "transparent",
+                border: "none",
+                color: "var(--qgi-text)",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: "11.5px",
+                cursor: "pointer",
+                textAlign: "left",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = "var(--qgi-bg)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+              }}
+            >
+              <FlagImg emoji={flagFor(name)} name={name} width={14} radius={2} />
+              {name}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
