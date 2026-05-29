@@ -17,6 +17,7 @@ Methodology decisions live in `post_pass_core` and are re-tested in
 `test_post_pass_core.py` — these tests do NOT re-derive tier policy."""
 from __future__ import annotations
 
+import importlib.util
 import json
 import sys
 from io import BytesIO
@@ -26,9 +27,22 @@ from unittest.mock import MagicMock
 import pytest
 from botocore.exceptions import ClientError
 
-sys.path.insert(0, str(
-    Path(__file__).resolve().parents[3] / "lambdas" / "recipe-fleet-post-pass"))
-import lambda_function as lf  # noqa: E402
+_LAMBDA_DIR = (
+    Path(__file__).resolve().parents[3] / "lambdas" / "recipe-fleet-post-pass"
+)
+
+# Load lambda_function under a UNIQUE name to avoid sys.modules collision with
+# other Lambda dirs that also expose a `lambda_function` module
+# (see qgi-frontend-bake-trigger for the same pattern).
+_spec = importlib.util.spec_from_file_location(
+    "post_pass_lf", _LAMBDA_DIR / "lambda_function.py"
+)
+lf = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(lf)
+
+# post_pass_core has a unique module name (no collision risk), so the simple
+# sys.path + import idiom is fine.
+sys.path.insert(0, str(_LAMBDA_DIR))
 import post_pass_core as pp  # noqa: E402
 
 

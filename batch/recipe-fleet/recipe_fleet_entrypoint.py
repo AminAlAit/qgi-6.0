@@ -512,6 +512,67 @@ def run_walk(
         return {"status": "timeout", "wall_clock_seconds": elapsed}
 
 
+def run_score_countries(
+    recipe_id: str,
+    walk_output_dir: Path,
+    local_data_dir: Path,
+) -> dict:
+    """[#967] Invoke score_countries.py as a subprocess AFTER the walk.
+
+    Reads the walk's `f-ml-1-poc-summary.json` + positives.csv + the locked
+    indicators' panels; refits XGBoost on the locked configuration; scores every
+    country at its most-recent year of feature support; emits SHAP per country,
+    indicator movement, top-3 nearest-analogs, score distribution, and 5-fold-CV
+    LOO indicator-sensitivity into `country-scores.json` alongside the walk
+    summary. The PeriodicCheckpointSync uploads it to S3 on the next tick.
+
+    A non-zero return code DOES NOT fail the recipe — the walk summary is the
+    primary artifact, and the post-pass Lambda + dashboard render honestly when
+    `country-scores.json` is absent. The status is logged for the operator to
+    surface in CloudWatch."""
+    script = _find_script("score_countries.py")
+    summary_path = walk_output_dir / "f-ml-1-poc-summary.json"
+    if not summary_path.exists():
+        LOG.warning("score_countries: walk summary missing at %s — skipping", summary_path)
+        return {"status": "skipped", "reason": "summary_absent"}
+    positives_csv = SHAPE_INPUTS_DIR / recipe_id / "positives.csv"
+    if not positives_csv.exists():
+        LOG.warning("score_countries: positives.csv missing at %s — skipping", positives_csv)
+        return {"status": "skipped", "reason": "positives_absent"}
+
+    cmd = [
+        sys.executable, str(script),
+        "--recipe-id", recipe_id,
+        "--summary-path", str(summary_path),
+        "--panel-dir", str(local_data_dir),
+        "--positives-csv", str(positives_csv),
+        "--output-dir", str(walk_output_dir),
+    ]
+    LOG.info("Launching score_countries: %s", " ".join(cmd))
+    t0 = time.monotonic()
+    try:
+        subprocess.run(
+            cmd,
+            capture_output=False,  # awslogs picks up stdout/stderr
+            check=True,
+            timeout=30 * 60,  # 30 min per recipe; the local bake averaged ~3 min × 10 recipes
+        )
+        elapsed = time.monotonic() - t0
+        LOG.info("score_countries complete for %s in %.0f s", recipe_id, elapsed)
+        return {"status": "ok", "wall_clock_seconds": elapsed}
+    except subprocess.CalledProcessError as exc:
+        elapsed = time.monotonic() - t0
+        LOG.warning("score_countries FAILED for %s after %.0f s (rc=%d) — "
+                    "walk summary stands; country-scores.json absent.",
+                    recipe_id, elapsed, exc.returncode)
+        return {"status": "error", "returncode": exc.returncode,
+                "wall_clock_seconds": elapsed}
+    except subprocess.TimeoutExpired:
+        elapsed = time.monotonic() - t0
+        LOG.warning("score_countries TIMED OUT for %s after %.0f s", recipe_id, elapsed)
+        return {"status": "timeout", "wall_clock_seconds": elapsed}
+
+
 # ---------------------------------------------------------------------------
 # Scoring-frontier resolution (D2 — replaces the hardcoded 2021)
 # ---------------------------------------------------------------------------
@@ -1056,6 +1117,21 @@ def main() -> None:
             if walk_output_dir.exists():
                 s3_sync_dir_up(walk_output_dir, S3_BUCKET, results_s3_prefix)
 
+            # [#967] Per-country scoring step — runs ONLY on a successful walk
+            # (consumes the summary). Failure of this step is non-fatal: the
+            # walk summary stands; country-scores.json is absent in S3; the
+            # post-pass Lambda + dashboard render the gap honestly.
+            score_result: dict = {"status": "skipped", "reason": "walk_not_ok"}
+            if walk_result.get("status") == "ok":
+                score_result = run_score_countries(
+                    recipe_id=recipe_id,
+                    walk_output_dir=walk_output_dir,
+                    local_data_dir=local_data_dir,
+                )
+                # Re-sync so country-scores.json lands in S3 alongside the summary.
+                if walk_output_dir.exists():
+                    s3_sync_dir_up(walk_output_dir, S3_BUCKET, results_s3_prefix)
+
             cap_results: dict[str, str] = {}
             if walk_result.get("status") == "ok":
                 # -- D2: resolve this recipe's scoring frontier from the walk's
@@ -1092,6 +1168,7 @@ def main() -> None:
                 "status": walk_result.get("status", "unknown"),
                 "walk_wall_clock_seconds": walk_result.get("wall_clock_seconds"),
                 "capability_results": cap_results,
+                "score_countries": score_result,  # #967 — per-country scoring step result
             }
             job_summary.append(recipe_summary)
             LOG.info(
