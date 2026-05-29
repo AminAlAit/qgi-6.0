@@ -30,7 +30,6 @@ export interface QgiTourStep extends Step {
     | "/countries"
     | "/countries/sdn"
     | "/risk-board"
-    | "/compound-risk"
     | "/nearest-analog"
     | "/compare"
     | "/patterns"
@@ -429,64 +428,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /compound-risk — 6 steps, ordered top-to-bottom ─────────────────────
-  // Visual order: h1 (inside hero) → compound-hero → leaderboard → overlap
-  // chart → case studies → how-to-read-button (top-strip chrome, last).
-  {
-    page: "/compound-risk",
-    dimension: "a",
-    target: "h1",
-    title: "Countries on more than one recipe",
-    content:
-      "Some countries resemble several recipes at once. This page surfaces them, ranked by a stacking score that combines high rankings across each recipe in play. It answers: where are structural pressures piling up on the same state?",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/compound-risk",
-    dimension: "b",
-    target: '[data-tour="compound-hero"]',
-    title: "On how many recipes today",
-    content:
-      "The hero tells you how many countries are currently in play on three or more recipes at once. Adjust the threshold below to widen or tighten the lens. A higher threshold surfaces the heaviest stacks; a lower one casts a wider net.",
-    placement: "bottom",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="compound-leaderboard"]',
-    title: "Stacked rank, not joint probability",
-    content:
-      "A country in play on three recipes is not three times more likely to break. It is a country whose trajectory rhymes with three distinct patterns at once. The compound score stacks resemblance ranks across recipes; it does not multiply event probabilities.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="overlap-chart"]',
-    title: "The same data, by family",
-    content:
-      "For the top five compound countries: which family stacks dominate the score, as horizontal bars. A country in play on Conflict plus Economic plus Social tells a different story than one in play on Diplomatic plus Structural.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="case-studies"]',
-    title: "Three mock briefs",
-    content:
-      "Analyst-style structural reads on three countries where multiple recipes co-light. These are placeholder narratives, not published assessments. They will be replaced with curated, dated briefs once a second recipe clears validation.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "d",
-    target: '[data-tour="how-to-read-button"]',
-    title: "The four rules, again",
-    content:
-      "This page is the most common place to misread a score. Open the rules on the way in. With limited deployed recipes in the catalog today, the compound view is illustrative; it becomes meaningful as more recipes pass validation.",
-    placement: "bottom",
-  },
+  // /compound-risk tour steps removed 2026-05-30 — the route was taken
+  // down. Tour-step authoring will return once the page is rejuvenated as
+  // 'Compound Negative-Event Density' per the Stats/ML trio paper.
 
   // ─── /nearest-analog — 5 steps, ordered top-to-bottom ────────────────────
   // Visual order on page: h1 → picker (main column top) → results → recipe

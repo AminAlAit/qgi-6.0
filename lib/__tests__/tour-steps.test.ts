@@ -21,7 +21,6 @@ const ALL_TOUR_PAGES = new Set([
   "/countries",
   "/countries/sdn",
   "/risk-board",
-  "/compound-risk",
   "/nearest-analog",
   "/compare",
   "/patterns",

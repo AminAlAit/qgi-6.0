@@ -107,37 +107,39 @@ export default function DashboardV41Page() {
           }
         `}</style>
 
+        {/* Hero section pulled OUT of the 2-column grid (2026-05-30) so the
+            Highlights rail's top edge aligns with the first 'normal panel'
+            on the left (the Hero Tiles row), not with the h1. */}
+        <section style={{ marginBottom: "28px" }}>
+          <h1
+            style={{
+              fontSize: "38px",
+              fontWeight: 600,
+              lineHeight: 1.1,
+              margin: "0 0 12px",
+              maxWidth: "780px",
+              letterSpacing: "-0.5px",
+            }}
+          >
+            Country risk, compared to history.
+          </h1>
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "15px",
+              lineHeight: 1.55,
+              margin: 0,
+              maxWidth: "720px",
+            }}
+          >
+            Every country, scored against the shapes that preceded the events that matter
+            — and shown alongside the historical cases it most resembles.
+          </p>
+        </section>
+
         <div className="qgi-dashboard-grid">
           {/* ─── Main column ─────────────────────────────────────────────── */}
           <div style={{ minWidth: 0 }}>
-            {/* Hero: short, sales-y h1 + one-sentence subtitle */}
-            <section style={{ marginBottom: "28px" }}>
-              <h1
-                style={{
-                  fontSize: "38px",
-                  fontWeight: 600,
-                  lineHeight: 1.1,
-                  margin: "0 0 12px",
-                  maxWidth: "780px",
-                  letterSpacing: "-0.5px",
-                }}
-              >
-                Country risk, compared to history.
-              </h1>
-              <p
-                style={{
-                  color: "var(--qgi-text-muted)",
-                  fontSize: "15px",
-                  lineHeight: 1.55,
-                  margin: 0,
-                  maxWidth: "720px",
-                }}
-              >
-                Every country, scored against the shapes that preceded the events that
-                matter — and shown alongside the historical cases it most resembles.
-              </p>
-            </section>
-
             {/* Hero tiles: 5 catalog-size confidence metrics */}
             <section data-tour="hero-tiles">
               <DashboardHero tiles={HERO_TILES_V41(heroCounts)} />

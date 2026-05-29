@@ -30,7 +30,7 @@ import {
   loadAllScores,
   loadAnalogs,
   loadCountryIndex,
-  SAMPLE_10_RECIPE_IDS,
+  FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
 

@@ -21,7 +21,7 @@ import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/reci
 import {
   loadScores,
   loadCountryIndex,
-  SAMPLE_10_RECIPE_IDS,
+  FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 
 export const BOARD_VINTAGE = "2026-05-28";
@@ -166,12 +166,12 @@ const TOP_PAIRS_RAW: BoardPair[] = [
 ];
 
 /**
- * Build TE top pairs: top-1 from each TE recipe row, for inclusion in the
- * hero strip. rank_delta_q is null (vintage 1 — no prior vintage to diff).
+ * Build TE top pairs: top-1 from each TE fleet-run-1 recipe row, for
+ * inclusion in the hero strip. rank_delta_q is null (vintage 1 — no prior).
  */
 function buildTETopPairs(): BoardPair[] {
   const pairs: BoardPair[] = [];
-  for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+  for (const recipeId of FLEET_RUN_1_RECIPE_IDS) {
     try {
       const row = getTERecipeRow(recipeId);
       const top = row?.cells.find((c) => c.state === "scored" && c.score != null);
@@ -442,10 +442,10 @@ const EMPTY_QUEUED_CELLS: BoardCell[] = Array.from({ length: 10 }, () => ({
   state: "no_walk_yet" as const,
 }));
 
-// ─── TE sample-10 row builder ─────────────────────────────────────────────────
+// ─── TE fleet-run-1 row builder ───────────────────────────────────────────────
 
 /**
- * Build a RecipeRow for a TE sample-10 recipe using real scores.
+ * Build a RecipeRow for a TE fleet-run-1 recipe using real scores.
  * Returns null if scores are unavailable (loader throws).
  */
 function buildTERecipeRow(recipeId: string): RecipeRow | null {
@@ -524,7 +524,7 @@ export function getRecipeFullScoreMap(recipeId: string): Record<string, number> 
     return map;
   }
   // 2. TE sample-10 rows (real data, ~150 countries per recipe)
-  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+  if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     try {
       const sf = loadScores(recipeId);
       const map: Record<string, number> = {};
@@ -561,7 +561,7 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
     };
   }
   // 2. TE sample-10 rows (real data).
-  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+  if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     const teRow = getTERecipeRow(recipeId);
     if (teRow) return teRow;
   }
@@ -577,23 +577,22 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
 }
 
 /**
- * Recipes shown on the board, in order. Cascade visible rows first,
- * then TE sample-10 rows (all walked_no_graduation), then queued sample.
+ * Recipes shown on the board, in order. Fleet-run-1 walked recipes first
+ * (all 44, real data), then queued recipes that didn't make the fleet-run-1
+ * set but are in the cascade catalog.
+ *
+ * Note: the hand-authored cascade rows (foreign_intervention,
+ * civil_war_and_insurgency, economic_recession, elections_and_voting,
+ * terrorist_attack) are all present in fleet-run-1, so FLEET_RUN_1_RECIPE_IDS
+ * already covers them. The RECIPE_ROW_CELLS hand-authored data for those
+ * recipes is still used as the primary source in getRecipeRow() (cascade
+ * branch), ensuring their hand-curated scores continue to render.
  */
 export function getBoardRecipeIds(): string[] {
-  return [
-    "foreign_intervention",
-    "civil_war_and_insurgency",
-    "terrorist_attack",
-    "economic_recession",
-    "elections_and_voting",
-    // TE sample-10 walked recipes (real data)
-    ...SAMPLE_10_RECIPE_IDS.filter(
-      (id) => id !== "terrorist_attack" // already listed above from cascade set
-    ),
-    // Queued (no walk yet)
-    ...QUEUED_RECIPES_ON_BOARD,
-  ];
+  const fleetSet = new Set(FLEET_RUN_1_RECIPE_IDS);
+  // Queued-only entries: board recipes not in fleet-run-1
+  const queuedOnly = QUEUED_RECIPES_ON_BOARD.filter((id) => !fleetSet.has(id));
+  return [...FLEET_RUN_1_RECIPE_IDS, ...queuedOnly];
 }
 
 export function getBoardRecipes(): TrackerRecipe[] {
