@@ -5,7 +5,6 @@ import {
   getRecipeFullScoreMap,
   getRecipeRow,
 } from "@/lib/te-mock/risk-board-data";
-import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { RecentMovements } from "@/components/risk-board/RecentMovements";
 import {
   RiskBoardFilters,
@@ -83,18 +82,12 @@ export default function RiskBoardPage() {
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "24px" }}>
-        {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            alignItems: "center",
-            gap: "8px",
-            marginBottom: "16px",
-          }}
-        >
-          <HowToReadButton routeKey="risk-board" />
-        </div>
+        {/* 2026-05-30 — "How to read this page" button removed from Risk
+            Board. The new h1 + subtitle ('Where today's country paths
+            resemble…' + 3-sentence teaching subtitle) carry the reading
+            guidance inline; the popover was redundant. The button stays
+            on other surfaces (recipes detail, country detail) where the
+            methodology depth still warrants it. */}
 
         {/* Page hero */}
         <div style={{ marginBottom: "24px" }}>
