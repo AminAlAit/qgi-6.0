@@ -2826,7 +2826,7 @@ function buildCountriesV4(): CountryV4[] {
   >();
   try {
     const allScores = loadAllScores();
-    for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+    for (const recipeId of FLEET_RUN_1_RECIPE_IDS) {
       const sf = allScores[recipeId];
       if (!sf) continue;
       const byName = new Map<string, number>();
@@ -2859,7 +2859,7 @@ function buildCountriesV4(): CountryV4[] {
     // For each (recipeId, seedScore) pair, check if TE has a real score.
     const updatedRecipesLit: Array<[string, number]> = seed.recipesLit.map(
       ([rid, seedScore]) => {
-        if (!SAMPLE_10_RECIPE_IDS.includes(rid)) return [rid, seedScore];
+        if (!FLEET_RUN_1_RECIPE_IDS.includes(rid)) return [rid, seedScore];
         const byName = teScoreMap.get(rid);
         if (!byName) return [rid, seedScore];
         const real = byName.get(seed.name.toLowerCase());

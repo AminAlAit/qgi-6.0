@@ -1,8 +1,13 @@
 /**
- * TE sample-10 analogs contract.
+ * TE analogs contract.
  *
- * Source: `data/te-sample-10/analogs/current-state-analogs.json`
- * Shape verified from real files.
+ * Source: `data/te-fleet-run-1/analogs/current-state-analogs.json`
+ * Shape verified from real files (fleet-run-1, 216 entries).
+ *
+ * Breaking change from sample-10: entries now carry `iso2` (ISO 3166-1 alpha-2)
+ * as the primary country key; `iso` remains null for all 216 entries. The
+ * `nearest-analog-data.ts` buildAllEntries() uses ISO2_TO_ISO3 to resolve the
+ * 3-letter code needed by URL routing and getCurrentCountry() lookups.
  */
 
 export interface AnalogEntry {
@@ -23,12 +28,13 @@ export interface AnalogContributionEntry {
 }
 
 export interface CurrentStateAnalogEntry {
-  /** null in sample-10 — resolve via name-to-ISO map. */
+  /** null in fleet-run-1 — resolve via iso2 + ISO2_TO_ISO3 map. */
   iso: string | null;
+  /** ISO 3166-1 alpha-2 lowercase — present in fleet-run-1, null in sample-10. */
+  iso2: string | null;
   name: string;
-  /** null in sample-10. */
   region: string | null;
-  /** null in sample-10 — represents per-indicator trajectory; not yet emitted. */
+  /** null — per-indicator trajectory not yet emitted by the bake. */
   indicator_trajectory: unknown | null;
   analogs: AnalogEntry[];
   contributions: AnalogContributionEntry[];
