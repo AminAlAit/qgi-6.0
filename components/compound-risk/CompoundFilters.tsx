@@ -88,7 +88,7 @@ export function CompoundFilters({ minThreshold, familyFilter }: Props) {
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          Minimum recipes lit
+          Minimum recipes matched
         </span>
         {[2, 3, 4].map((n) => {
           const active = n === localMin;
@@ -143,7 +143,7 @@ export function CompoundFilters({ minThreshold, familyFilter }: Props) {
             fontFamily: "ui-monospace, monospace",
           }}
         >
-          L1 family overlap (AND)
+          Threat-family overlap (all selected)
         </span>
         {L1_FAMILIES.map((f) => {
           const active = localFams.has(f.id);
@@ -178,7 +178,7 @@ export function CompoundFilters({ minThreshold, familyFilter }: Props) {
                   background: active ? "var(--qgi-bg)" : f.color,
                 }}
               />
-              {f.id} · {f.label}
+              {f.label}
             </button>
           );
         })}

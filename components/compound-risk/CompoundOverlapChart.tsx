@@ -25,16 +25,6 @@ export function CompoundOverlapChart({ countries }: Props) {
           paddingTop: "24px",
         }}
       >
-        <span
-          style={{
-            fontSize: "10px",
-            letterSpacing: "1.5px",
-            fontFamily: "ui-monospace, monospace",
-            color: "var(--qgi-text-dim)",
-          }}
-        >
-          §02
-        </span>
         <h2
           style={{
             fontSize: "18px",
@@ -46,20 +36,6 @@ export function CompoundOverlapChart({ countries }: Props) {
         >
           Where the families stack: top {countries.length}
         </h2>
-        <span
-          style={{
-            fontSize: "9px",
-            letterSpacing: "1px",
-            padding: "2px 7px",
-            border: "1px solid #3FBF8F",
-            color: "#3FBF8F",
-            borderRadius: "3px",
-            fontFamily: "ui-monospace, monospace",
-            opacity: 0.85,
-          }}
-        >
-          Stacked bar
-        </span>
       </div>
       <p
         style={{
@@ -70,9 +46,9 @@ export function CompoundOverlapChart({ countries }: Props) {
           lineHeight: 1.5,
         }}
       >
-        Each bar is the country&apos;s compound stack, segmented by L1 family. Wider
-        segments = larger contribution to the compound score. Read horizontally to see{" "}
-        <em>which families pile up on which country</em>.
+        Each bar is the country&apos;s compound shape, segmented by threat family. Wider
+        segments mean a larger contribution to the compound score. Read horizontally to
+        see <em>which families pile up on which country</em>.
       </p>
 
       <div
@@ -215,7 +191,7 @@ export function CompoundOverlapChart({ countries }: Props) {
                     display: "inline-block",
                   }}
                 />
-                {f.id} · {f.label}
+                {f.label}
               </span>
             );
           })}

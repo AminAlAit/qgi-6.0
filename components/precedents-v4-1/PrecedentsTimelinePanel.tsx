@@ -28,7 +28,12 @@
 "use client";
 
 import { useState, type CSSProperties } from "react";
-import { iso2For } from "@/lib/te-mock/country-iso2";
+// 2026-05-29 (Naila #27): switched from country-iso2 to country-flags' iso2For
+// — the country-flags lookup is the more complete table (including the
+// 2026-05-29 gap-fill batch covering Ivory Coast, Benin, Togo, Tanzania,
+// Liberia, Republic of Congo, Mauritania, etc.). country-iso2 returns
+// empty string on miss; country-flags returns null — we treat both as falsy.
+import { iso2For } from "@/lib/te-mock/country-flags";
 
 export interface PrecedentEvent {
   year: number;
@@ -195,18 +200,16 @@ export function PrecedentsTimelinePanel({
             curated-event corpus
           </span>
         </div>
-        <span
-          style={{
-            ...chipStyle,
-            color: "var(--qgi-text)",
-            fontWeight: 600,
-          }}
-          title="Total verified positives in this recipe's training corpus"
-        >
-          {totalEventsInCorpus.toLocaleString()} verified events
-        </span>
+        {/* 2026-05-29 (Naila #27): right-side "75 verified events" chip
+            removed; the subtitle below carries the same number with a
+            proper sentence, so the chip was duplicate signal. */}
       </header>
 
+      {/* 2026-05-29 (Naila #27): subtitle rewritten with proper spacing —
+          previously rendered as "75verified events..." due to a missing
+          space in the template literal. Sentence reads cleanly now and
+          carries the count, the curation actions count, and the hover hint
+          in one breath. */}
       <p
         style={{
           fontSize: "12px",
@@ -216,8 +219,8 @@ export function PrecedentsTimelinePanel({
         }}
       >
         {totalEventsInCorpus.toLocaleString()} verified events in this recipe&apos;s
-        corpus. Showing the {sorted.length} most recent curation actions. Hover a dot for
-        detail.
+        corpus. Showing the {sorted.length} most recent curation actions. Hover any marker
+        for detail.
       </p>
 
       {/* Timeline + popup overlay. The wrapper is `position: relative` and
@@ -476,49 +479,68 @@ export function PrecedentsTimelinePanel({
           letterSpacing: "0.3px",
         }}
       >
+        {/* 2026-05-29 (Naila #28): legend now reads as plain English —
+            "+" and "−" markers say what each one MEANS, in audience terms,
+            not curator-internal language. "Added to the corpus" beats
+            "curator confirmed this country-year as a real positive...". */}
         <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
           <span
+            aria-hidden
             style={{
-              width: "8px",
-              height: "8px",
+              width: "12px",
+              height: "12px",
               borderRadius: "50%",
               background: ADDED,
-              display: "inline-block",
-              flex: "0 0 8px",
-              marginTop: "4px",
+              color: "var(--qgi-bg)",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flex: "0 0 12px",
+              marginTop: "2px",
+              fontWeight: 700,
+              fontSize: "10px",
             }}
-          />
+          >
+            +
+          </span>
           <span style={{ lineHeight: 1.55 }}>
             <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
               {visibleAdded} added
             </strong>
             <span style={{ color: "var(--qgi-text-dim)" }}>
               {" "}
-              curator confirmed this country-year as a real positive of this recipe&apos;s
-              event type and admitted it to the training corpus.
+              a verified case of this event was admitted to the corpus.
             </span>
           </span>
         </div>
         <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
           <span
+            aria-hidden
             style={{
-              width: "8px",
-              height: "8px",
+              width: "12px",
+              height: "12px",
               borderRadius: "50%",
               background: VACATED,
-              display: "inline-block",
-              flex: "0 0 8px",
-              marginTop: "4px",
+              color: "var(--qgi-bg)",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flex: "0 0 12px",
+              marginTop: "2px",
+              fontWeight: 700,
+              fontSize: "10px",
             }}
-          />
+          >
+            −
+          </span>
           <span style={{ lineHeight: 1.55 }}>
             <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
               {visibleVacated} removed
             </strong>
             <span style={{ color: "var(--qgi-text-dim)" }}>
               {" "}
-              removed on re-review (mis-coded event type, ambiguous foreign-vs- intrastate
-              framing, or insufficient sourcing).
+              a previously-included case was removed on re-review (mis-coded event type,
+              insufficient sourcing, or a definitional reframing).
             </span>
           </span>
         </div>

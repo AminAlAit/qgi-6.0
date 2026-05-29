@@ -30,16 +30,6 @@ export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props
           marginBottom: "14px",
         }}
       >
-        <span
-          style={{
-            fontSize: "10px",
-            letterSpacing: "1.5px",
-            fontFamily: "ui-monospace, monospace",
-            color: "var(--qgi-text-dim)",
-          }}
-        >
-          §01
-        </span>
         <h2
           style={{
             fontSize: "18px",
@@ -59,7 +49,7 @@ export function CompoundLeaderboard({ countries, minThreshold, allCount }: Props
             letterSpacing: "0.3px",
           }}
         >
-          showing {countries.length} of {allCount} · ≥{minThreshold} recipes lit
+          showing {countries.length} of {allCount} · {minThreshold}+ recipes matched
         </span>
       </div>
 
@@ -218,6 +208,11 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               fontFamily: "ui-monospace, monospace",
               marginBottom: "3px",
             }}
+            title={
+              `Bounded 0-100 score. Averages this country's recipe matches ` +
+              `(root-mean-square), dampened for thin coverage. ` +
+              `Prior unbounded sum-of-margins for this country: ${country.compound_score_legacy.toFixed(1)}.`
+            }
           >
             COMPOUND RISK
           </div>
@@ -241,7 +236,7 @@ function CompoundRow({ country, rank }: { country: CompoundCountry; rank: number
               letterSpacing: "0.3px",
             }}
           >
-            {country.lit_recipes.length} recipes lit
+            {country.lit_recipes.length} recipes matched
           </div>
         </div>
       </article>

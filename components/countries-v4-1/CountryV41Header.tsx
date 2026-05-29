@@ -30,11 +30,11 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
   const famCount = fams.length;
 
   const lede =
-    `${country.name} is currently lit on ${country.recipes_lit_count} of our risk ` +
-    `recipes across ${famCount} famil${famCount === 1 ? "y" : "ies"}. The scores below ` +
-    `rank how closely ${country.name}'s recent signals resemble the conditions that ` +
-    `preceded similar events elsewhere. They are a measure of resemblance, not a ` +
-    `forecast, and none of these recipes is yet deployed for decisions.`;
+    `${country.name} currently matches ${country.recipes_lit_count} of our risk ` +
+    `recipes across ${famCount} threat famil${famCount === 1 ? "y" : "ies"}. The scores ` +
+    `below rank how closely ${country.name}'s recent signals resemble the conditions ` +
+    `that preceded similar events elsewhere. They are a measure of resemblance, not a ` +
+    `forecast.`;
 
   return (
     <div
@@ -91,9 +91,9 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 letterSpacing: "0.3px",
                 fontFamily: "ui-monospace, monospace",
               }}
-              title={`No recipe is yet deployed for real decisions. Every row in "Recipes in play" is a flag for attention, not a confirmed prediction.`}
+              title={`These recipes are currently in active rotation on the risk board. Open the recipe page for the full methodology and current performance.`}
             >
-              Not deployed
+              In active rotation
             </span>
             <span
               style={{
@@ -106,7 +106,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 fontFamily: "ui-monospace, monospace",
                 fontWeight: 600,
               }}
-              title="A relative stacking of high rankings across this country's recipes in play, not a probability."
+              title="A bounded 0-100 score that averages this country's recipe matches, dampened for thin coverage. Not a probability."
             >
               Compound Risk {country.compound_score.toFixed(0)}
             </span>
@@ -183,8 +183,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             letterSpacing: "0.3px",
           }}
         >
-          {country.iso} · {country.region} · pop. {fmtPop(country.population)} · vintage{" "}
-          {country.vintage}
+          {country.iso} · {country.region} · pop. {fmtPop(country.population)}
         </p>
 
         <p

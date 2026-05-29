@@ -1,24 +1,18 @@
 import Link from "next/link";
 import type { Route } from "next";
-import { iconForRecipe } from "@/lib/te-mock/icons";
-import { vintageStamp, type TrackerRecipe } from "@/lib/te-mock/recipes";
+import { type TrackerRecipe } from "@/lib/te-mock/recipes";
 import { STATUS_META } from "./StatusChip";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { statusLabel } from "@/lib/te-mock/country-families";
 
-// L1_SHORT abbreviation map removed 2026-05-28 — the per-recipe family chip
-// now uses the full recipe.l1_label per the V4.1 icon rules (the abbreviated
-// "Polit/Confl/Gov/..." letter-prefixed chip was redundant signal next to the
-// RecipeIcon). The full-label chip is cleaner and is what the rest of the
-// V4.1 surfaces show.
-
 /**
  * In v4.1 strategy, map the StatusTone to a chip color that avoids banned
- * internal palette labels. Deployed=green / failed=amber / neutral=slate.
+ * internal palette labels. V4.1 §4: validated=green / in-play=calm blue /
+ * coming-soon=slate-dim / prior-version=slate-dim.
  */
 function toneColor(tone: "deployed" | "neutral" | "failed"): string {
   if (tone === "deployed") return "#3FBF8F";
-  if (tone === "failed") return "#E68F29";
+  if (tone === "failed") return "#5B7E99"; // legacy fallback (no longer used for in-play)
   return "#7A8FA0";
 }
 
@@ -29,9 +23,19 @@ function toneColor(tone: "deployed" | "neutral" | "failed"): string {
  * passes "/recipes" so card clicks land on V4.1 detail pages.
  *
  * `labelStrategy` defaults to "legacy" (byte-identical V4 behavior). Pass
- * "v4.1" for the polished gallery to emit plain-language labels via
- * statusLabel() and suppress banned vocab chips (HARD-FAIL, Legacy ML-1,
- * LOCO, Walk in flight). P0-3 fix 2026-05-28.
+ * "v4.1" for the polished gallery to emit the V4.1 vocabulary
+ * ("Validated" / "In play" / "Coming soon" / "Prior version") and
+ * suppress every banned chip (HARD-FAIL, Legacy ML-1, LOCO, Walk in flight).
+ *
+ * V4.1 polish 2026-05-29:
+ *   - Per-card vintage line removed (§2: one stamp per session, in the
+ *     global header, not per-card).
+ *   - "Tested, did not hold up" chip text scrubbed; replaced with "In play"
+ *     status chip in the footer (§4).
+ *   - Construction-color tier ribbon removed for v4.1 cards (§12 —
+ *     redundant with the family-color left border the icon already
+ *     carries; an "in-play" recipe doesn't deserve a striped warning
+ *     stripe — that's exposure, not confidence).
  */
 export function RecipeCard({
   recipe,
@@ -52,11 +56,13 @@ export function RecipeCard({
   const v41Label = statusLabel(recipe.status);
   const v41Color = toneColor(v41Label.tone);
 
-  const vintage = isQueued
+  // V4.1 §2: per-card vintage line is dropped. The single session-level
+  // vintage stamp lives in the global header. Legacy strategy keeps it.
+  const legacyVintage = isQueued
     ? "Vintage: awaiting first walk"
     : isLegacy
       ? "Vintage: legacy (pre-TE)"
-      : `Vintage: ${vintageStamp()}`;
+      : "Vintage logged in header";
 
   return (
     <Link
@@ -74,7 +80,7 @@ export function RecipeCard({
           border: "1px solid var(--qgi-border)",
           borderRadius: "8px",
           padding: "14px",
-          minHeight: "220px",
+          minHeight: "200px",
           display: "flex",
           flexDirection: "column",
           transition: "border-color 0.15s, transform 0.15s",
@@ -106,14 +112,8 @@ export function RecipeCard({
           >
             <RecipeIcon recipeId={recipe.recipe_id} size={32} strokeWidth={1.5} />
           </div>
-          {/* Family chip — colored dot + full L1 label. The bare letter
-              prefix (and the L1_SHORT abbreviation) was dropped on the
-              per-recipe card per the V4.1 icon rules: the recipe icon to
-              the left already identifies the recipe; the family glyph
-              repeats redundant signal and was flagged in the 2026-05-28
-              clicky-clicky pass. The family-letter glyph still lives on
-              the family-section header above the card grid where it is
-              identifying the family, not the recipe. */}
+          {/* Family chip — colored dot + full L1 label.
+              V4.1 §1.2: NO letter glyph next to the family label. */}
           <span
             style={{
               fontSize: "10px",
@@ -160,26 +160,29 @@ export function RecipeCard({
           </div>
         </div>
 
-        {/* Tier ribbon */}
-        <div
-          style={{
-            height: "4px",
-            margin: "8px -14px 10px",
-            background:
-              recipe.status === "graduated"
-                ? "#3FBF8F"
-                : recipe.status === "walked_no_graduation"
-                  ? "repeating-linear-gradient(45deg, #E68F29, #E68F29 4px, transparent 4px, transparent 8px)"
-                  : recipe.status === "in_progress"
-                    ? "#a78bfa"
-                    : recipe.status === "live_legacy"
-                      ? "#7A8FA0"
-                      : "none",
-            borderTop: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
-            opacity: isQueued ? 0.3 : 1,
-            marginTop: isQueued ? "12px" : "8px",
-          }}
-        />
+        {/* V4.1 §12: construction-color tier ribbon removed for v4.1 cards.
+            Legacy strategy retains it for backward compat. */}
+        {labelStrategy === "legacy" && (
+          <div
+            style={{
+              height: "4px",
+              margin: "8px -14px 10px",
+              background:
+                recipe.status === "graduated"
+                  ? "#3FBF8F"
+                  : recipe.status === "walked_no_graduation"
+                    ? "repeating-linear-gradient(45deg, #E68F29, #E68F29 4px, transparent 4px, transparent 8px)"
+                    : recipe.status === "in_progress"
+                      ? "#a78bfa"
+                      : recipe.status === "live_legacy"
+                        ? "#7A8FA0"
+                        : "none",
+              borderTop: isQueued ? `1px dashed ${recipe.l1_color}` : "none",
+              opacity: isQueued ? 0.3 : 1,
+              marginTop: isQueued ? "12px" : "8px",
+            }}
+          />
+        )}
 
         {/* Chips */}
         <div
@@ -192,21 +195,15 @@ export function RecipeCard({
           }}
         >
           {labelStrategy === "v4.1" ? (
-            // V4.1 strategy: no banned vocab chips; only safe neutral chips
+            // V4.1 strategy: scrubbed chips. No "Tested, did not hold up",
+            // no "Awaiting curated events" with subtle pejorative tone.
             <>
-              {isQueued && <span style={chipStyle("grey")}>Awaiting curated events</span>}
-              {isWalked && (
+              {isWalked && recipe.stats?.window_y && (
                 <span style={chipStyle("muted")}>
-                  Score sep {recipe.stats?.loco_auc?.toFixed(2) ?? "—"}
+                  {recipe.stats?.window_y}y window · {recipe.stats?.n_indicators ?? "?"}{" "}
+                  signals
                 </span>
               )}
-              {isWalked && (
-                <span style={chipStyle("muted")}>
-                  {recipe.stats?.window_y ?? "?"}y · {recipe.stats?.n_indicators ?? "?"}{" "}
-                  ind
-                </span>
-              )}
-              {/* in_progress and live_legacy: status pill in the footer handles it */}
             </>
           ) : (
             // Legacy strategy: byte-identical to the original behavior
@@ -237,33 +234,40 @@ export function RecipeCard({
           )}
         </div>
 
-        {/* Trajectory dots */}
-        <div style={{ display: "flex", gap: "4px", marginBottom: "10px", height: "6px" }}>
-          {isWalked && <span style={dotStyle("#E68F29")} />}
-          {isLegacy && [0, 1, 2].map((i) => <span key={i} style={dotStyle("#7A8FA0")} />)}
-        </div>
+        {/* Trajectory dots — legacy only */}
+        {labelStrategy === "legacy" && (
+          <div
+            style={{ display: "flex", gap: "4px", marginBottom: "10px", height: "6px" }}
+          >
+            {isWalked && <span style={dotStyle("#E68F29")} />}
+            {isLegacy &&
+              [0, 1, 2].map((i) => <span key={i} style={dotStyle("#7A8FA0")} />)}
+          </div>
+        )}
 
-        {/* Foot */}
+        {/* Foot — V4.1: no per-card vintage line */}
         <div
           style={{
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: labelStrategy === "v4.1" ? "flex-end" : "space-between",
             alignItems: "center",
             marginTop: "auto",
             paddingTop: "8px",
             borderTop: "1px solid rgba(255,255,255,0.04)",
           }}
         >
-          <span
-            style={{
-              fontSize: "9.5px",
-              color: "var(--qgi-text-dim)",
-              letterSpacing: "0.3px",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            {vintage}
-          </span>
+          {labelStrategy === "legacy" && (
+            <span
+              style={{
+                fontSize: "9.5px",
+                color: "var(--qgi-text-dim)",
+                letterSpacing: "0.3px",
+                fontFamily: "ui-monospace, monospace",
+              }}
+            >
+              {legacyVintage}
+            </span>
+          )}
           {labelStrategy === "v4.1" ? (
             <span
               style={{

@@ -107,7 +107,8 @@ const HAND_AUTHORED_EXTRAS: Record<string, RecipeV4Extras> = {
       },
       {
         code: "v2stfisccap",
-        name: "State Fiscal Source",
+        // 2026-05-29 Naila — catalog-canonical name (VD-11).
+        name: "State fiscal capacity",
         provider: "V-Dem",
         shapWeightPct: 20,
         aucDrop: 0.038,

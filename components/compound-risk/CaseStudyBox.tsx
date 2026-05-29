@@ -45,24 +45,11 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
                 marginTop: "2px",
               }}
             >
-              {study.iso} · compound {study.compound_score.toFixed(1)} ·{" "}
+              {study.iso} · Compound Risk {study.compound_score.toFixed(1)} ·{" "}
               {study.recipes.length} recipes
             </div>
           </Link>
         </div>
-        <span
-          style={{
-            fontSize: "9px",
-            letterSpacing: "1px",
-            padding: "2px 7px",
-            border: "1px dashed var(--qgi-accent)",
-            color: "var(--qgi-accent)",
-            borderRadius: "3px",
-            fontFamily: "ui-monospace, monospace",
-          }}
-        >
-          MOCK
-        </span>
       </header>
 
       <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
@@ -112,15 +99,23 @@ export function CaseStudyBox({ study }: { study: CompoundCaseStudy }) {
           paddingTop: "10px",
           borderTop: "1px solid var(--qgi-border)",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "flex-end",
           fontSize: "10px",
           color: "var(--qgi-text-dim)",
           fontFamily: "ui-monospace, monospace",
           letterSpacing: "0.3px",
         }}
       >
-        <span>Vintage · {study.vintage}</span>
-        <span style={{ fontStyle: "italic" }}>Mock narrative, design preview only</span>
+        <Link
+          href={`/countries/${study.iso.toLowerCase()}` as Route}
+          style={{
+            color: "var(--qgi-accent)",
+            textDecoration: "none",
+            letterSpacing: "0.3px",
+          }}
+        >
+          Open the full {study.country} view →
+        </Link>
       </footer>
     </article>
   );

@@ -60,6 +60,14 @@ export interface TrackerRecipe {
   l2_label: string;
   status: RecipeStatus;
   engine?: RecipeEngine;
+  /**
+   * Audience-facing 2-3 sentence story of what this event LOOKS like, the
+   * indicators that tend to precede it, and the country profile it fits.
+   * Authored hand-curated 2026-05-29 (V4.1 §15 A1); pipeline bake target
+   * is `description_compelling` on the card JSON. Falls back to nothing
+   * if absent — detail page falls through to `mock.definition`.
+   */
+  description_compelling?: string;
   stats: {
     loco_auc?: number;
     window_y?: number;
@@ -351,7 +359,9 @@ const CASCADE_MOCK_DATA: Record<string, RecipeMock> = {
         name: "Power distributed by gender",
         provider: "V-Dem",
       },
-      { code: "v2stfisccap", name: "State fiscal source", provider: "V-Dem" },
+      // 2026-05-29 Naila — catalog-canonical name from
+      // qgi-docs/methodology/indicator-catalog-detailed.md VD-11.
+      { code: "v2stfisccap", name: "State fiscal capacity", provider: "V-Dem" },
       {
         code: "v2elintmon",
         name: "International election monitoring",

@@ -170,6 +170,32 @@ const FLAGS: Record<string, string> = {
   // Other / Special
   Turkey: "🇹🇷",
   "Hong Kong": "🇭🇰",
+  // 2026-05-29 gap fills (V4.1 polish)
+  "Ivory Coast": "🇨🇮",
+  "Côte d'Ivoire": "🇨🇮",
+  "Cote d'Ivoire": "🇨🇮",
+  Benin: "🇧🇯",
+  Togo: "🇹🇬",
+  Liberia: "🇱🇷",
+  Tanzania: "🇹🇿",
+  Zimbabwe: "🇿🇼",
+  Botswana: "🇧🇼",
+  Namibia: "🇳🇦",
+  Lesotho: "🇱🇸",
+  Eswatini: "🇸🇿",
+  Malawi: "🇲🇼",
+  Gabon: "🇬🇦",
+  Chad: "🇹🇩",
+  "Republic of Congo": "🇨🇬",
+  "United Arab Emirates": "🇦🇪",
+  Bahrain: "🇧🇭",
+  Oman: "🇴🇲",
+  Malta: "🇲🇹",
+  Montenegro: "🇲🇪",
+  Kosovo: "🇽🇰",
+  "Dominican Republic": "🇩🇴",
+  Haiti: "🇭🇹",
+  Jamaica: "🇯🇲",
 };
 
 /**
@@ -323,6 +349,54 @@ const ISO2: Record<string, string> = {
   // Other / Special
   Turkey: "tr",
   "Hong Kong": "hk",
+  // ─── 2026-05-29 gap fills (V4.1 polish — Naila #27) ────────────────
+  // Country names surfaced as "flag missing" during the recipe-page audit.
+  // Africa
+  "Ivory Coast": "ci",
+  "Côte d'Ivoire": "ci",
+  "Cote d'Ivoire": "ci",
+  Benin: "bj",
+  Togo: "tg",
+  Liberia: "lr",
+  Gambia: "gm",
+  "Guinea-Bissau": "gw",
+  "Cape Verde": "cv",
+  Mauritania: "mr",
+  Tanzania: "tz",
+  Zimbabwe: "zw",
+  Botswana: "bw",
+  Namibia: "na",
+  Lesotho: "ls",
+  Eswatini: "sz",
+  Malawi: "mw",
+  Comoros: "km",
+  Djibouti: "dj",
+  Gabon: "ga",
+  Chad: "td",
+  Congo: "cg",
+  "Republic of Congo": "cg",
+  // Middle East
+  "United Arab Emirates": "ae",
+  Bahrain: "bh",
+  Oman: "om",
+  Palestine: "ps",
+  // Asia
+  Maldives: "mv",
+  Brunei: "bn",
+  "Timor-Leste": "tl",
+  // Europe
+  Malta: "mt",
+  Liechtenstein: "li",
+  Montenegro: "me",
+  Kosovo: "xk",
+  // Americas
+  "Dominican Republic": "do",
+  Haiti: "ht",
+  Jamaica: "jm",
+  Suriname: "sr",
+  Guyana: "gy",
+  // Oceania
+  Fiji: "fj",
 };
 
 export function flagFor(name: string): string {

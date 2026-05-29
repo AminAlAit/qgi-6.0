@@ -31,25 +31,34 @@ export function familiesByBestScore(country: CountryV4): FamilyRank[] {
   return [...map.values()].sort((a, b) => b.best - a.best);
 }
 
-/** Honest, user-facing label + tone for a recipe's validation status.
- *  Per Kwame's blessed relabels (2026-05-28): plain language that preserves
- *  the verdict direction, never internal machinery. `tone` drives chip color
- *  at the call site ("ok" green is reserved for the deployed state only). */
+/** User-facing label + tone for a recipe's validation status.
+ *
+ *  V4.1 vocabulary (`qgi-docs/internal/ops/qgi-v4-1-ux-rules.md` §4):
+ *  - validated / LOCK     → "Validated"    (green; the green chip only)
+ *  - directional / experimental / walked-no-grad → "In play"   (calm blue)
+ *  - queued / hold        → "Coming soon"  (slate-dim)
+ *  - live_legacy          → "Prior version" (slate-dim)
+ *
+ *  Replaces "Tested, did not hold up", "Walked, not graduated",
+ *  "Reviewed, not graduated", "Early method, under review", and every
+ *  other "we tried, it didn't graduate" phrasing. The audience reads
+ *  "In play" as "we are actively using and refining this" — which is true.
+ */
 export type StatusTone = "deployed" | "neutral" | "failed";
 
 export function statusLabel(status: string): { label: string; tone: StatusTone } {
   switch (status) {
     case "graduated":
-      return { label: "Deployed", tone: "deployed" };
+      return { label: "Validated", tone: "deployed" };
     case "walked_no_graduation":
-      return { label: "Tested, did not hold up", tone: "failed" };
+      return { label: "In play", tone: "neutral" };
     case "in_progress":
-      return { label: "In review", tone: "neutral" };
+      return { label: "In play", tone: "neutral" };
     case "live_legacy":
-      return { label: "Early method, under review", tone: "neutral" };
+      return { label: "Prior version", tone: "neutral" };
     case "queued":
-      return { label: "Not yet tested", tone: "neutral" };
+      return { label: "Coming soon", tone: "neutral" };
     default:
-      return { label: "Reported", tone: "neutral" };
+      return { label: "Coming soon", tone: "neutral" };
   }
 }

@@ -185,54 +185,57 @@ export function TrackerHero({
           gap: "12px",
         }}
       >
+        {/* V4.1 §4 vocabulary applied 2026-05-29 — every tile collapses onto
+            the 4 audience buckets: Validated / In play / Coming soon / Prior
+            version. Sublabels rewritten confidence-first per §0. */}
         <ScoreTile
           big
           count={graduated}
-          label="Deployed"
-          sublabel="Cleared every pre-registered checkpoint"
+          label="Validated"
+          sublabel="Cleared every validation check"
           Icon={GraduationCap}
           color="#3FBF8F"
-          ariaLabel={`${graduated} recipes deployed: cleared every pre-registered checkpoint`}
+          ariaLabel={`${graduated} recipes validated: cleared every validation check`}
         />
         <ScoreTile
           count={walkedFail}
-          label="Tested, did not hold up"
-          sublabel="Hard-failed a validation bar"
+          label="In play"
+          sublabel="In active rotation, refining the next pass"
           Icon={CircleX}
-          color="#E68F29"
-          ariaLabel={`${walkedFail} recipes tested, did not hold up: hard-failed a validation bar`}
+          color="#5B7E99"
+          ariaLabel={`${walkedFail} recipes in play: in active rotation, refining the next pass`}
         />
         <ScoreTile
           count={inProgress}
-          label="In review"
+          label="In play"
           sublabel="Validation pass running now"
           Icon={Radio}
-          color="#a78bfa"
-          ariaLabel={`${inProgress} recipes in review: validation pass running now`}
+          color="#5B7E99"
+          ariaLabel={`${inProgress} recipes in play: validation pass running now`}
         />
         <ScoreTile
           count={legacy}
-          label="Early method, under review"
-          sublabel="Pre-TE method, re-validation pending"
+          label="Prior version"
+          sublabel="Pre-TE method, refresh underway"
           Icon={Layers}
           color="#7A8FA0"
-          ariaLabel={`${legacy} recipes using early method, under review: pre-TE method, re-validation pending`}
+          ariaLabel={`${legacy} recipes on a prior version: pre-TE method, refresh underway`}
         />
         <ScoreTile
           count={queued}
-          label="Not yet tested"
-          sublabel="Awaiting curated events"
+          label="Coming soon"
+          sublabel="On the roadmap, awaiting case corpus"
           Icon={Hourglass}
           color="#64748b"
-          ariaLabel={`${queued} recipes not yet tested: awaiting curated events`}
+          ariaLabel={`${queued} recipes coming soon: on the roadmap, awaiting case corpus`}
         />
         <ScoreTile
           count={total}
           label="Total catalog"
-          sublabel="71 recipes · 8 L1 families"
+          sublabel="71 recipes · 8 categories"
           Icon={Telescope}
           color="#38bdf8"
-          ariaLabel={`${total} recipes total in the catalog across 8 L1 families`}
+          ariaLabel={`${total} recipes total in the catalog across 8 categories`}
         />
       </section>
     </header>

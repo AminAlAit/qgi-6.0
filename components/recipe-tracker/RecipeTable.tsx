@@ -18,20 +18,23 @@ const STATUS_RANK: Record<TrackerRecipe["status"], number> = {
   queued: 4,
 };
 
+// V4.1 §4 vocabulary (ratified 2026-05-29). Same 4 audience buckets used
+// across StatusChip, ReliabilityPanel, and the recipe gallery — single
+// vocabulary across every recipe-status surface.
 const STATUS_LABEL: Record<TrackerRecipe["status"], string> = {
-  graduated: "Deployed",
-  walked_no_graduation: "Tested, did not hold up",
-  in_progress: "In review",
-  live_legacy: "Early method, under review",
-  queued: "Not yet tested",
+  graduated: "Validated",
+  walked_no_graduation: "In play",
+  in_progress: "In play",
+  live_legacy: "Prior version",
+  queued: "Coming soon",
 };
 
 const STATUS_COLOR: Record<TrackerRecipe["status"], string> = {
-  graduated: "#3FBF8F",
-  walked_no_graduation: "#E68F29",
-  in_progress: "#a78bfa",
-  live_legacy: "#7A8FA0",
-  queued: "#64748b",
+  graduated: "#3FBF8F", // green — only Validated gets green
+  walked_no_graduation: "#5B7E99", // calm slate-blue — In play
+  in_progress: "#5B7E99",
+  live_legacy: "#7A8FA0", // slate-dim — Prior version
+  queued: "#7A8FA0", // slate-dim — Coming soon
 };
 
 // Plausible "next walk ETA" by L1 family — mock, sequenced by priority.
@@ -269,7 +272,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
           )}
         </div>
 
-        {/* L1 filter row */}
+        {/* Category filter row — V4.1 §1.3: "L1" / family-letter glyph banned. */}
         <div
           style={{ display: "flex", flexWrap: "wrap", gap: "6px", alignItems: "center" }}
         >
@@ -283,7 +286,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
               marginLeft: "20px",
             }}
           >
-            L1 family
+            Category
           </span>
           {l1Options.map((l1) => {
             const active = l1Filter.has(l1.id);
@@ -317,7 +320,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                     display: "inline-block",
                   }}
                 />
-                {l1.id} · {l1.label}
+                {l1.label}
               </button>
             );
           })}
@@ -375,7 +378,7 @@ export function RecipeTable({ recipes }: { recipes: TrackerRecipe[] }) {
                   Recipe
                 </Th>
                 <Th onClick={() => setSort("l1")} active={sortKey === "l1"} dir={sortDir}>
-                  L1 family
+                  Category
                 </Th>
                 <Th
                   onClick={() => setSort("status")}

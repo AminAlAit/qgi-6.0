@@ -1,30 +1,36 @@
 "use client";
 
 import * as React from "react";
+import { iso2For } from "@/lib/te-mock/country-flags";
 
 /**
- * Score distribution panel (capability #10) — V4.1, #140 + #160 polish.
+ * Score distribution panel — V4.1, Naila polish 2026-05-29.
  *
- * Default: histogram (bin 10, hover → country list). Alt: strip plot
- * (one dot per country, tier-colored). Founder picks between the two.
- * Median/p90/p99/max surface as axis annotations; no cryptic prose.
+ * Replaces:
+ *   - Strip plot (always rendered second, low value): scoring buckets
+ *     just to look like a different chart didn't add insight.
+ *   - "Alternate view: per-country dots" mystery section header.
  *
- * Polish pass (Talia, 2026-05-27 #160):
- *   - Axis annotations "p90" / "p99" → "top 10%" / "top 1%" (reads as
- *     plain English; the quantile semantics are unchanged). "med" stays
- *     as "median"; "max" stays as "max".
- *   - "ALT: STRIP PLOT" section label → "Alternate view: per-country dots".
- *   - Histogram hover tooltip now reads "score range" / "n countries"
- *     instead of leaning on the "discrimination rank" jargon. The fact
- *     R&D Q5 binds (rank, not probability) is preserved by the panel's
- *     title-tooltip in PanelBase plus the header paragraph; the hover
- *     surface is shorter and friendlier.
+ * Adds:
+ *   - 1-line caption explaining what the chart shows (founder #26).
+ *   - Country lists per histogram bin, derived from `countriesFull` (the
+ *     full scored roster) so the hover tooltip never says "country list
+ *     not available" — the data exists, the histogram bin just didn't
+ *     carry it baked-in (founder #26).
+ *   - Replacement secondary view: top-12 countries by score, ranked. A
+ *     genuinely useful supplement to the histogram (founder #26 explicit
+ *     prompt: "Replace ... with something more useful").
  */
 interface HistogramBin {
   bin_lo: number;
   bin_hi: number;
   count: number;
   countries?: string[];
+}
+
+interface CountryScore {
+  name: string;
+  score: number;
 }
 
 export function ScoreDistributionPanel({
@@ -34,6 +40,7 @@ export function ScoreDistributionPanel({
   p90,
   p99,
   max,
+  countriesFull,
 }: {
   familyColor: string;
   histogram: HistogramBin[];
@@ -41,18 +48,30 @@ export function ScoreDistributionPanel({
   p90: number;
   p99: number;
   max: number;
+  /** Full scored roster (descending by score). Used to populate per-bin
+   *  country lists when the baked histogram bins don't carry them, and
+   *  to render the secondary top-N view. */
+  countriesFull?: CountryScore[];
 }) {
-  const stripDots = React.useMemo(() => {
-    const dots: Array<{ score: number; name: string; tier: Tier }> = [];
-    for (const b of histogram) {
-      if (!b.countries) continue;
-      for (const name of b.countries) {
-        const score = (b.bin_lo + b.bin_hi) / 2;
-        dots.push({ score, name, tier: tierFor(score) });
-      }
-    }
-    return dots;
-  }, [histogram]);
+  /** Enrich histogram bins with countries from `countriesFull` if the bin
+   *  doesn't already carry them. This is the founder-flagged bug: real-data
+   *  histograms ship without per-bin country lists, so the hover tooltip
+   *  was silently saying "Country list not available". The country roster
+   *  exists; we just bucket it ourselves. */
+  const enrichedHistogram = React.useMemo(() => {
+    return histogram.map((b) => {
+      if (b.countries && b.countries.length > 0) return b;
+      const inBin = (countriesFull ?? []).filter(
+        (c) => c.score >= b.bin_lo && c.score < b.bin_hi
+      );
+      // For the topmost bin, include the max-score boundary too.
+      const isLast = b.bin_hi >= max;
+      const matched = isLast
+        ? (countriesFull ?? []).filter((c) => c.score >= b.bin_lo && c.score <= b.bin_hi)
+        : inBin;
+      return { ...b, countries: matched.map((c) => c.name) };
+    });
+  }, [histogram, countriesFull, max]);
 
   const hasData = histogram.length > 0 && histogram.some((b) => b.count > 0);
   if (!hasData) {
@@ -86,7 +105,7 @@ export function ScoreDistributionPanel({
             fontSize: "13px",
           }}
         >
-          Fills after this recipe completes a validated walk.
+          In active rotation. This view fills on the next validation pass.
         </div>
       </section>
     );
@@ -121,22 +140,27 @@ export function ScoreDistributionPanel({
         >
           Score distribution
         </h2>
+        {/* V4.1 #26: explicit 1-line caption. The chart shows score spread;
+            most readers don't intuit a histogram of recipe scores without
+            being told what they're looking at. */}
         <p
           style={{
-            fontSize: "11px",
+            fontSize: "12px",
             lineHeight: 1.5,
             color: "var(--qgi-text-muted)",
             margin: "6px 0 0",
+            maxWidth: "60ch",
           }}
         >
-          How the recipe&apos;s rank-0-to-100 scores spread across all scored countries.
-          Hover any bar for the country list. Median, top 10%, top 1%, and max mark the
-          right-tail shape.
+          How the recipe&apos;s scores spread across every country we evaluate. The right
+          tail — the small set of high-scoring countries — is where the recipe flags
+          structural resemblance to past precedents. Hover any bar for the countries
+          inside that score range.
         </p>
       </header>
 
       <Histogram
-        histogram={histogram}
+        histogram={enrichedHistogram}
         familyColor={familyColor}
         median={median}
         p90={p90}
@@ -144,27 +168,9 @@ export function ScoreDistributionPanel({
         max={max}
       />
 
-      <div>
-        <div
-          style={{
-            fontSize: "10px",
-            letterSpacing: "1.2px",
-            color: "var(--qgi-text-dim)",
-            fontFamily: "ui-monospace, monospace",
-            marginBottom: "8px",
-          }}
-        >
-          Alternate view: per-country dots
-        </div>
-        <StripPlot
-          dots={stripDots}
-          median={median}
-          p90={p90}
-          p99={p99}
-          max={max}
-          familyColor={familyColor}
-        />
-      </div>
+      {countriesFull && countriesFull.length > 0 && (
+        <TopCountriesTable countries={countriesFull} familyColor={familyColor} />
+      )}
     </section>
   );
 }
@@ -189,7 +195,7 @@ function Histogram({
   const H = 192;
   const PAD_L = 30;
   const PAD_R = 16;
-  const PAD_T = 24; // +10 vs prior; room for two-line annotations
+  const PAD_T = 24;
   const PAD_B = 30;
   const plotW = W - PAD_L - PAD_R;
   const plotH = H - PAD_T - PAD_B;
@@ -329,7 +335,7 @@ function Histogram({
             border: `1px solid ${familyColor}`,
             borderRadius: "4px",
             padding: "8px 10px",
-            maxWidth: "220px",
+            maxWidth: "240px",
             fontFamily: "ui-monospace, monospace",
             fontSize: "10.5px",
             color: "var(--qgi-text)",
@@ -350,7 +356,7 @@ function Histogram({
             </div>
           ) : (
             <div style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
-              Country list not available for this range.
+              No scored countries in this band.
             </div>
           )}
         </div>
@@ -372,9 +378,6 @@ function Annotation({
   value: number;
   color: string;
 }) {
-  // Two-line annotation: label on top, value beneath. Reads cleanly for
-  // multi-word friendly labels ("top 10%", "top 1%") that would otherwise
-  // collide with the value on a single line.
   return (
     <g>
       <text
@@ -402,232 +405,103 @@ function Annotation({
   );
 }
 
-type Tier = "low" | "mid" | "high" | "extreme";
-
-function tierFor(score: number): Tier {
-  if (score >= 75) return "extreme";
-  if (score >= 50) return "high";
-  if (score >= 25) return "mid";
-  return "low";
-}
-
-const TIER_COLOR: Record<Tier, string> = {
-  low: "#5C6675",
-  mid: "#A78BFA",
-  high: "#E68F29",
-  extreme: "#E64545",
-};
-
-const TIER_RADIUS: Record<Tier, number> = {
-  low: 2.4,
-  mid: 2.8,
-  high: 3.2,
-  extreme: 3.6,
-};
-
-function StripPlot({
-  dots,
-  median,
-  p90,
-  p99,
-  max,
+/** Replacement for the strip plot: the top-12 countries by score, ranked.
+ *  More useful than a second view of the same dots; surfaces the right-tail
+ *  the histogram only summarizes. */
+function TopCountriesTable({
+  countries,
   familyColor,
 }: {
-  dots: Array<{ score: number; name: string; tier: Tier }>;
-  median: number;
-  p90: number;
-  p99: number;
-  max: number;
+  countries: CountryScore[];
   familyColor: string;
 }) {
-  const [hoverIdx, setHoverIdx] = React.useState<number | null>(null);
-  const W = 560;
-  const H = 100;
-  const PAD_L = 30;
-  const PAD_R = 16;
-  const PAD_T = 32; // +10 vs prior; room for two-line annotations
-  const PAD_B = 28;
-  const plotW = W - PAD_L - PAD_R;
-  const yMid = PAD_T + (H - PAD_T - PAD_B) / 2;
-  const xForScore = (s: number) => PAD_L + (s / 100) * plotW;
-
-  const dotsWithJitter = React.useMemo(
-    () =>
-      dots.map((d, i) => ({
-        ...d,
-        idx: i,
-        jitter: ((hashStr(d.name) % 1000) / 1000 - 0.5) * 14,
-      })),
-    [dots]
-  );
-
-  const hovered = hoverIdx !== null ? dotsWithJitter[hoverIdx] : null;
-
+  const top = [...countries].sort((a, b) => b.score - a.score).slice(0, 12);
   return (
-    <div style={{ width: "100%", position: "relative" }}>
-      <svg
-        viewBox={`0 0 ${W} ${H}`}
-        style={{ width: "100%", height: "auto", display: "block" }}
-        role="img"
-        aria-label="Strip plot of recipe scores"
-      >
-        <line
-          x1={PAD_L}
-          x2={PAD_L + plotW}
-          y1={H - PAD_B}
-          y2={H - PAD_B}
-          stroke="var(--qgi-border)"
-          strokeWidth={1}
-        />
-        {Array.from({ length: 11 }).map((_, i) => {
-          const s = i * 10;
-          const x = xForScore(s);
-          return (
-            <g key={i}>
-              <line
-                x1={x}
-                x2={x}
-                y1={H - PAD_B}
-                y2={H - PAD_B + 3}
-                stroke="var(--qgi-border)"
-                strokeWidth={0.75}
-              />
-              <text
-                x={x}
-                y={H - PAD_B + 13}
-                fontSize={8.5}
-                fill="var(--qgi-text-dim)"
-                textAnchor="middle"
-                fontFamily="ui-monospace, monospace"
-              >
-                {s}
-              </text>
-            </g>
-          );
-        })}
-        <Annotation
-          x={xForScore(median)}
-          top={PAD_T - 6}
-          label="median"
-          value={median}
-          color="var(--qgi-text-muted)"
-        />
-        <Annotation
-          x={xForScore(p90)}
-          top={PAD_T - 6}
-          label="top 10%"
-          value={p90}
-          color="var(--qgi-text-muted)"
-        />
-        <Annotation
-          x={xForScore(p99)}
-          top={PAD_T - 6}
-          label="top 1%"
-          value={p99}
-          color="var(--qgi-text-muted)"
-        />
-        <Annotation
-          x={xForScore(max)}
-          top={PAD_T - 6}
-          label="max"
-          value={max}
-          color={familyColor}
-        />
-        {[median, p90, p99, max].map((q, i) => (
-          <line
-            key={i}
-            x1={xForScore(q)}
-            x2={xForScore(q)}
-            y1={PAD_T}
-            y2={H - PAD_B}
-            stroke="var(--qgi-text-dim)"
-            strokeDasharray="2 3"
-            strokeWidth={0.5}
-            opacity={0.6}
-          />
-        ))}
-        {dotsWithJitter.map((d) => (
-          <circle
-            key={d.idx}
-            cx={xForScore(d.score)}
-            cy={yMid + d.jitter}
-            r={TIER_RADIUS[d.tier]}
-            fill={TIER_COLOR[d.tier]}
-            fillOpacity={hoverIdx === d.idx ? 1 : 0.78}
-            stroke={hoverIdx === d.idx ? "var(--qgi-text)" : "none"}
-            strokeWidth={hoverIdx === d.idx ? 1 : 0}
-            onMouseEnter={() => setHoverIdx(d.idx)}
-            onMouseLeave={() => setHoverIdx(null)}
-            style={{ cursor: "pointer" }}
-          />
-        ))}
-      </svg>
+    <div>
       <div
         style={{
-          display: "flex",
-          gap: "12px",
-          fontSize: "9.5px",
-          fontFamily: "ui-monospace, monospace",
+          fontSize: "10px",
+          letterSpacing: "1.2px",
           color: "var(--qgi-text-dim)",
-          letterSpacing: "0.5px",
-          marginTop: "4px",
-          flexWrap: "wrap",
+          fontFamily: "ui-monospace, monospace",
+          marginBottom: "8px",
         }}
       >
-        <LegendDot color={TIER_COLOR.low} label="0–24 low" />
-        <LegendDot color={TIER_COLOR.mid} label="25–49 mid" />
-        <LegendDot color={TIER_COLOR.high} label="50–74 high" />
-        <LegendDot color={TIER_COLOR.extreme} label="75–100 extreme" />
+        Right-tail · top 12 countries
       </div>
-      {hovered && (
-        <div
-          style={{
-            position: "absolute",
-            top: "4px",
-            right: "4px",
-            background: "var(--qgi-bg)",
-            border: `1px solid ${TIER_COLOR[hovered.tier]}`,
-            borderRadius: "4px",
-            padding: "6px 8px",
-            fontFamily: "ui-monospace, monospace",
-            fontSize: "10.5px",
-            color: "var(--qgi-text)",
-            pointerEvents: "none",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.4)",
-          }}
-        >
-          <span style={{ color: TIER_COLOR[hovered.tier], fontWeight: 600 }}>
-            {hovered.name}
-          </span>{" "}
-          · score {hovered.score.toFixed(0)}
-        </div>
-      )}
+      <ol
+        style={{
+          listStyle: "none",
+          padding: 0,
+          margin: 0,
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(150px, 1fr))",
+          gap: "4px 16px",
+        }}
+      >
+        {top.map((c, i) => {
+          const iso = iso2For(c.name);
+          return (
+            <li
+              key={c.name}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "16px 16px minmax(0, 1fr) auto",
+                gap: "6px",
+                alignItems: "center",
+                padding: "4px 0",
+                borderBottom: "1px dashed var(--qgi-border)",
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: "10px",
+                  color: "var(--qgi-text-dim)",
+                  textAlign: "right",
+                }}
+              >
+                {i + 1}
+              </span>
+              {iso ? (
+                <img
+                  src={`https://flagcdn.com/16x12/${iso}.png`}
+                  alt={`${c.name} flag`}
+                  width={16}
+                  height={12}
+                  style={{ display: "inline-block", verticalAlign: "middle" }}
+                />
+              ) : (
+                <span
+                  style={{ width: 16, height: 12, display: "inline-block" }}
+                  aria-hidden
+                />
+              )}
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "var(--qgi-text)",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                }}
+              >
+                {c.name}
+              </span>
+              <span
+                style={{
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: "11.5px",
+                  color: familyColor,
+                  fontWeight: 600,
+                }}
+              >
+                {c.score.toFixed(1)}
+              </span>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
-}
-
-function LegendDot({ color, label }: { color: string; label: string }) {
-  return (
-    <span style={{ display: "inline-flex", alignItems: "center", gap: "5px" }}>
-      <span
-        style={{
-          width: "8px",
-          height: "8px",
-          borderRadius: "50%",
-          background: color,
-          display: "inline-block",
-        }}
-      />
-      {label}
-    </span>
-  );
-}
-
-function hashStr(s: string): number {
-  let h = 2166136261;
-  for (let i = 0; i < s.length; i++) {
-    h ^= s.charCodeAt(i);
-    h = Math.imul(h, 16777619);
-  }
-  return Math.abs(h);
 }

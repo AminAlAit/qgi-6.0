@@ -8,10 +8,23 @@
  *     each country's top_recipes (already carrying l1_id/l1_label/l1_color
  *     from the pipeline) maps directly to CompoundLitRecipe. Countries
  *     appearing in both SEEDS and country-index use the SEEDS version.
- *   - Compound score formula is unchanged (sum of margins above 50).
  *
- * Compound score = sum of (score - 50) margins for each lit recipe.
- * NOT a joint probability — see disclosure on the page.
+ * Compound score formula (Sard Ihsa consult 2026-05-29, ratified by
+ *   Roshani/Kwame/Miriam/Tariq/Elif):
+ *
+ *   compound_score = sqrt(N / (N + 2)) * sqrt(mean(score_i^2))
+ *
+ * where N = number of lit recipes (score >= 50), score_i = recipe
+ * discrimination rank in 0..100. Bounded in [0, 100]. The Hölder-mean
+ * (α=2 / RMS) core rewards consistently high recipes without unbounded
+ * stacking; the sqrt(N/(N+2)) prefactor is a Bayesian shrinkage toward
+ * zero for thin coverage (one recipe at 100 ⇒ ~57.7; three at 80 ⇒ ~62;
+ * eight at 80 ⇒ ~71). Pre-registered: see /methodology #compound-formula.
+ *
+ * Replaces the prior cumulative-unbounded sum(max(0, score - 50)) which
+ * was not a probability, not a percentile, and grew without bound as the
+ * recipe catalog expanded. Old field kept as `compound_score_legacy` for
+ * methodology debugging and the `?` tooltip on the page.
  */
 import recipeTracker from "@/data/recipe-tracker.json";
 import type { TrackerRecipe } from "@/lib/te-mock/recipes";
@@ -33,7 +46,10 @@ export interface CompoundCountry {
   iso: string;
   flag: string;
   region: string;
+  /** Bounded RMS with coverage shrinkage in [0, 100]. Ihsa-ratified 2026-05-29. */
   compound_score: number;
+  /** Legacy sum-of-margins kept for the methodology tooltip / debugging only. */
+  compound_score_legacy: number;
   lit_recipes: CompoundLitRecipe[];
   lit_families: string[]; // unique L1 ids, in canonical A-H order
   vintage: string;
@@ -44,6 +60,7 @@ export interface CompoundCaseStudy {
   iso: string;
   flag: string;
   compound_score: number;
+  compound_score_legacy: number;
   recipes: CompoundLitRecipe[];
   narrative: string;
   vintage: string;
@@ -70,8 +87,27 @@ function lit(recipe_id: string, score: number, decile = 9): CompoundLitRecipe {
   };
 }
 
+/**
+ * Bounded RMS with coverage shrinkage (Ihsa 2026-05-29).
+ *
+ *   compound_score = sqrt(N / (N + 2)) * sqrt(mean(score_i^2))
+ *
+ * "Lit" is defined as score >= 50 (the orthogonal anchor); a country with
+ * recipes below 50 contributes 0 N to the shrinkage and 0 to the RMS.
+ * Returns a value in [0, 100].
+ */
 function compound(recipes: CompoundLitRecipe[]): number {
-  // Sum of margins above the 50 (orthogonal) anchor. Transparent stacking heuristic.
+  const lit = recipes.filter((r) => r.score >= 50);
+  const N = lit.length;
+  if (N === 0) return 0;
+  const meanSq = lit.reduce((s, r) => s + r.score * r.score, 0) / N;
+  const rms = Math.sqrt(meanSq);
+  const shrink = Math.sqrt(N / (N + 2));
+  return Math.min(100, rms * shrink);
+}
+
+/** Legacy unbounded sum-of-margins. Kept for the `?` tooltip explaining what changed. */
+function compoundLegacy(recipes: CompoundLitRecipe[]): number {
   return recipes.reduce((s, r) => s + Math.max(0, r.score - 50), 0);
 }
 
@@ -351,6 +387,7 @@ const SEED_COUNTRIES: CompoundCountry[] = SEEDS.map((s) => ({
   flag: s.flag,
   region: s.region,
   compound_score: compound(s.recipes),
+  compound_score_legacy: compoundLegacy(s.recipes),
   lit_recipes: s.recipes,
   lit_families: families(s.recipes),
   vintage: COMPOUND_VINTAGE,
@@ -397,6 +434,7 @@ function buildTECompoundCountries(): CompoundCountry[] {
         flag,
         region: c.region ?? "Unknown",
         compound_score: compound(lit),
+        compound_score_legacy: compoundLegacy(lit),
         lit_recipes: lit,
         lit_families: families(lit),
         vintage: ci.vintage ?? COMPOUND_VINTAGE,
@@ -433,51 +471,53 @@ export const COMPOUND_CASE_STUDIES: CompoundCaseStudy[] = [
     iso: IRAN.iso,
     flag: IRAN.flag,
     compound_score: IRAN.compound_score,
+    compound_score_legacy: IRAN.compound_score_legacy,
     recipes: IRAN.lit_recipes,
     vintage: IRAN.vintage,
     narrative:
-      "Iran is the densest single-state compound case currently on the board, lighting up on five recipes " +
-      "(foreign_intervention, political_repression, sanctions_and_arms_embargo, mass_protest, and currency_crisis), " +
-      "four L1 families stacking on the same body politic at once (B-Conflict, C-Governance, D-Economic, E-Social). " +
-      "The structural read is that the same indicator pressures, degraded regulatory quality, narrowing " +
-      "civil-liberties space, and deteriorating fiscal-source diversity, are simultaneously the inputs that drive " +
-      "the foreign-intervention trajectory AND the protest-and-repression cycle, so the compound score is partly a " +
-      "measurement of indicator-overlap rather than four independent crisis paths. None of the lit recipes are " +
-      "graduated under the current honesty regime, so this is best read as a positioning aggregate, not a forecast " +
-      "of any single event firing, and certainly not of all five firing jointly.",
+      "Iran is the densest single-state compound case currently on the board, with high scores on five recipes " +
+      "(Foreign Intervention, Political Repression, Sanctions and Arms Embargo, Mass Protest, and Currency Crisis), " +
+      "spanning four threat families at once (Conflict & Violence, Governance & Rights, Economic Stress, Social Mobilization). " +
+      "The structural read is that the same underlying signals — degraded regulatory quality, narrowing " +
+      "civil-liberties space, and deteriorating fiscal-source diversity — sit behind the foreign-intervention trajectory " +
+      "AND the protest-and-repression cycle. The compound score reflects shared substrate as much as independent crisis " +
+      "paths. None of these recipes is yet deployed for real decisions, so this is best read as a positioning aggregate, " +
+      "not a forecast of any single event firing, and certainly not of all five firing jointly.",
   },
   {
     country: SUDAN.country,
     iso: SUDAN.iso,
     flag: SUDAN.flag,
     compound_score: SUDAN.compound_score,
+    compound_score_legacy: SUDAN.compound_score_legacy,
     recipes: SUDAN.lit_recipes,
     vintage: SUDAN.vintage,
     narrative:
-      "Sudan stacks across five recipes (civil_war_and_insurgency, humanitarian_crisis, foreign_intervention, " +
-      "drought_and_famine, mass_protest), spanning three L1 families (B-Conflict, E-Social, G-Humanitarian) with " +
-      "a meteorological drought-and-famine channel inside G. Unlike the Iran case, the Sudan stack reflects " +
-      "genuinely distinct structural pressures rather than a single indicator bundle; conflict-shape indicators " +
-      "(state-capacity collapse, ethnic-violence rates) sit alongside meteorological and humanitarian-throughput " +
-      "signals that draw on a non-overlapping data substrate. This is the architecturally cleanest compound case " +
-      "in the current vintage, and the one most consistent with the original intuition of the compound page: " +
-      "three independent lenses pointing at the same country.",
+      "Sudan registers across five recipes (Civil War and Insurgency, Humanitarian Crisis, Foreign Intervention, " +
+      "Drought and Famine, Mass Protest), spanning three threat families (Conflict & Violence, Social Mobilization, " +
+      "Humanitarian Crisis) with a meteorological drought-and-famine channel layered on top. Unlike the Iran case, " +
+      "the Sudan stack reflects genuinely distinct structural pressures rather than a single bundle of correlated " +
+      "signals; conflict-shape indicators (state-capacity collapse, ethnic-violence rates) sit alongside meteorological " +
+      "and humanitarian-throughput signals that draw on a non-overlapping data substrate. This is the architecturally " +
+      "cleanest compound case in the current snapshot, and the one most consistent with the original intuition of " +
+      "the compound page: three independent lenses pointing at the same country.",
   },
   {
     country: ARGENTINA.country,
     iso: ARGENTINA.iso,
     flag: ARGENTINA.flag,
     compound_score: ARGENTINA.compound_score,
+    compound_score_legacy: ARGENTINA.compound_score_legacy,
     recipes: ARGENTINA.lit_recipes,
     vintage: ARGENTINA.vintage,
     narrative:
-      "Argentina shows the canonical economic-compound stack (currency_crisis, economic_recession, " +
-      "fiscal_policy_change, and mass_protest), three D-Economic recipes plus an E-Social spillover. The reading " +
-      "to be careful about here is that currency_crisis and economic_recession share substantial indicator overlap " +
-      "(inflation, GDP growth, fiscal-source diversity), so a high compound score is mathematically expected " +
-      "rather than informative; the mass_protest light-up is the one independent confirmation that the economic " +
-      "stress is propagating into the social domain rather than being absorbed at the policy layer. Until at least " +
-      "one of these recipes graduates and earns a confidence band, the Argentina case is a worked example of why " +
-      "compound scores need same-family-discount handling in v2.",
+      "Argentina shows the canonical economic-compound shape (Currency Crisis, Economic Recession, " +
+      "Fiscal Policy Change, and Mass Protest), three Economic-Stress recipes plus a Social-Mobilization spillover. " +
+      "The reading to be careful about here is that Currency Crisis and Economic Recession share substantial " +
+      "underlying signals (inflation, GDP growth, fiscal-source diversity), so a tightly clustered compound score " +
+      "is mathematically expected rather than independently informative; the Mass Protest reading is the one " +
+      "independent confirmation that the economic stress is propagating into the social domain rather than being " +
+      "absorbed at the policy layer. Until one of these recipes is deployed for real decisions, the Argentina case " +
+      "is a worked example of why a single bounded score is more honest than a stacked sum.",
   },
 ];

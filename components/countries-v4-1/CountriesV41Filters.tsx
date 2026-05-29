@@ -105,7 +105,7 @@ export function CountriesV41Filters({
           onClick={() => setParam("sort", "compound")}
         />
         <Pill
-          label="Recipes lit"
+          label="Recipes matched"
           active={activeSort === "lit"}
           onClick={() => setParam("sort", "lit")}
         />
