@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import { CANONICAL_SCOPE_SENTENCE, TOTAL_COUNTRIES } from "@/lib/site-stats";
 
@@ -14,6 +14,13 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const soraBrand = Sora({
+  variable: "--font-qg-brand",
+  subsets: ["latin"],
+  weight: ["600", "700"],
   display: "swap",
 });
 
@@ -93,7 +100,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} ${soraBrand.variable} h-full`}
+    >
       <body className="h-full antialiased">
         <script
           type="application/ld+json"

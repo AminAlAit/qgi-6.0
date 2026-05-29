@@ -1,4 +1,26 @@
 /**
+ * 2026-05-28 (V4.1 promo): Shared pattern + signal types that were previously
+ * defined in the now-deleted V3 route pages. Moved here so legacy V3
+ * components in `components/patterns/` and `components/signals/` can
+ * continue to compile.
+ */
+import type { PatternWindowTier } from "@/lib/patterns-initial-filters";
+import type { PatternTrajectory } from "@/lib/pattern-trajectory";
+
+/**
+ * PatternsMergedRow — enriched pattern row as used by the V3 patterns list.
+ * Extracted 2026-05-28 from the deleted `app/(app)/patterns/page.tsx`.
+ */
+export interface PatternsMergedRow extends PatternRow {
+  /** Brief-renamed Pattern-window vocab — S-win/M-win/L-win/XL-win. */
+  window_tier: PatternWindowTier;
+  /** Server-derived stable key for React lists. */
+  row_key: string;
+  /** T1 (#59) — leader terminating event + follower arc position. */
+  trajectory: PatternTrajectory;
+}
+
+/**
  * PatternRow — single pattern window as produced by pipeline-recipe-engine
  * and consumed by the frontend.
  *

@@ -5,7 +5,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { countrySlug } from "@/lib/slug";
 import { formatDataThrough } from "@/lib/format-bake-date";
-import type { PatternsMergedRow } from "@/app/(app)/patterns/page";
+import type { PatternsMergedRow } from "@/lib/types";
 import type {
   PatternWindowTier,
   PatternsInitialFilters,

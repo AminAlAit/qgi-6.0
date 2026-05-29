@@ -15,7 +15,7 @@ export default function NotFound() {
         className="text-[10px] tracking-widest uppercase mb-3"
         style={{ color: "var(--qgi-text-dim)" }}
       >
-        404 — Not found
+        404 · Not found
       </p>
       <h1
         className="text-2xl font-semibold leading-snug mb-3"
@@ -28,8 +28,8 @@ export default function NotFound() {
         style={{ color: "var(--qgi-text-muted)" }}
       >
         The URL you tried isn&apos;t one of QGI&apos;s routes. If you arrived from a
-        bookmark, the page may have moved — check the sidebar or jump back to the
-        Dashboard below.
+        bookmark, the page may have moved. Check the sidebar or jump back to the Dashboard
+        below.
       </p>
       <div className="flex flex-wrap gap-2">
         <Link
@@ -40,11 +40,11 @@ export default function NotFound() {
           ← Back to Dashboard
         </Link>
         <Link
-          href="/precedents"
+          href="/recipes"
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
         >
-          Precedents
+          Recipes
         </Link>
         <Link
           href="/countries"
@@ -54,11 +54,11 @@ export default function NotFound() {
           Countries
         </Link>
         <Link
-          href="/signals"
+          href="/risk-board"
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
         >
-          Signals
+          Risk Board
         </Link>
         <Link
           href="/patterns"

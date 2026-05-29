@@ -2,208 +2,49 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Route } from "next";
+import {
+  LayoutDashboard,
+  ScrollText,
+  Globe,
+  Gauge,
+  Layers,
+  Columns2,
+  Telescope,
+  Waves,
+  PanelLeftClose,
+  PanelLeft,
+} from "lucide-react";
 
 // Navigation items.
 // History:
 // - 2026-04-13: Patterns→Precedents, Recipes→Signals (#121).
 // - 2026-04-16: Dashboard renamed to BASE and promoted to the top slot (#248).
-//   "Base" is QGI's command-center landing — a sample of everything in one view —
-//   not a "dashboard of legacy panels." Routed at /base; /dashboard kept as a
-//   redirect for outstanding bookmarks.
 // - 2026-04-17: Unicode placeholder icons replaced with inline SVGs (#icon-redesign).
-// - 2026-05-15: Flat 5-entry restructure (PR-i of resurfacing cutover). V1 +
-//   V2 family sub-entries removed from the sidebar — the routes remain
-//   reachable by direct URL but are no longer surfaced in nav. The 4 family
-//   entries point at the (current-name) `-merged` routes; PR-iii will rename
-//   those to canonical (`/countries`, etc.) atomically with the V1→`-v1`
-//   rename, so the sidebar hrefs here will update one more time then.
-
-// ── Inline SVG icons (16×16, currentColor, no external deps) ──────────────
-
-/** DASHBOARD — 2×2 grid of squares: command-center overview */
-const IconDashboard = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect
-      x="1"
-      y="1"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="9"
-      y="1"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="1"
-      y="9"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="9"
-      y="9"
-      width="6"
-      height="6"
-      rx="1"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
-
-/** COUNTRIES — wireframe globe with meridian + equator lines */
-const IconGlobe = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <circle cx="8" cy="8" r="6.25" stroke="currentColor" strokeWidth="1.5" />
-    {/* vertical meridian */}
-    <path
-      d="M8 1.75C8 1.75 5.5 4.5 5.5 8s2.5 6.25 2.5 6.25M8 1.75C8 1.75 10.5 4.5 10.5 8S8 14.25 8 14.25"
-      stroke="currentColor"
-      strokeWidth="1.25"
-    />
-    {/* horizontal equator */}
-    <line x1="1.75" y1="8" x2="14.25" y2="8" stroke="currentColor" strokeWidth="1.25" />
-  </svg>
-);
-
-/** PRECEDENTS — clock with a counter-clockwise arrow: look back in history */
-const IconHistory = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M8 14A6 6 0 1 0 2.5 7.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    {/* CCW arrow tip on the arc's open end */}
-    <polyline
-      points="1,5.5 2.5,7.5 4.5,6.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    {/* clock hands: 12 o'clock stem + 3 o'clock hand */}
-    <line
-      x1="8"
-      y1="8"
-      x2="8"
-      y2="5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-    <line
-      x1="8"
-      y1="8"
-      x2="11"
-      y2="8"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-    />
-  </svg>
-);
-
-/** SIGNALS — lightning bolt: alert / early-warning signal */
-const IconSignal = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <path
-      d="M9.5 1.5L4 9h4l-1.5 5.5L12 7H8L9.5 1.5z"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
-
-/** PATTERNS — three nodes connected by edges: network / structural pattern */
-const IconNetwork = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    {/* edges */}
-    <line x1="8" y1="3" x2="3" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    <line x1="8" y1="3" x2="13" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    <line x1="3" y1="12" x2="13" y2="12" stroke="currentColor" strokeWidth="1.25" />
-    {/* nodes */}
-    <circle cx="8" cy="3" r="2" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="3" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
-    <circle cx="13" cy="12" r="2" stroke="currentColor" strokeWidth="1.5" />
-  </svg>
-);
-
-/** RANKING — ascending bar chart: power ranking / leaderboard */
-const IconBarChart = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-    <rect
-      x="1.5"
-      y="9"
-      width="3"
-      height="5.5"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="6.5"
-      y="5.5"
-      width="3"
-      height="9"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-    <rect
-      x="11.5"
-      y="1.5"
-      width="3"
-      height="13"
-      rx="0.5"
-      stroke="currentColor"
-      strokeWidth="1.5"
-    />
-  </svg>
-);
+// - 2026-05-15: Flat 5-entry restructure (PR-i of resurfacing cutover).
+// - 2026-05-28: V4.1 canonical promotion. TE Mockup group merged into the
+//   top-level list as 9 standalone PRIMARY entries. All legacy entries
+//   (Dashboard/Recipes/Countries/Signals/Patterns pointing at deleted routes)
+//   removed. Inline SVG icon components removed; lucide-react used directly.
+// - 2026-05-29: Collapsible sidebar (§10 UX rules). localStorage persistence,
+//   smooth 220ms transition, icon-only collapsed mode with tooltips.
 
 // ─────────────────────────────────────────────────────────────────────────────
 
-// 2026-04-19: "ABOUT" removed from the dashboard sidebar per user — About
-// is a public marketing surface and lives in the landing-page header nav,
-// not mixed with dashboard tools. The IconUser SVG was dropped with it.
-//
 // #440: `href: Route` so typed-routes pre-validates every nav target at
-// build time. Renaming `/precedents` → `/precedence` (or any future
-// re-org) becomes a build error here instead of a 404 in production.
-//
-// 2026-05-13 (A3 Family 1 Build PR #4): refactored from flat 15-item nav
-// into family-grouped sections with chip badges (LIVE / PREVIEW). The
-// merged Precedents preview surface needed its own nav slot (founder
-// request); flat list was already cluttered with 4 V2 routes; grouping
-// makes the V1/V2/Merged side-by-side comparison legible. Chip badges
-// surface the trial-period state at a glance. Cutover (PR #5) will kill
-// V1 + V2 preview entries and promote the merged route to PRIMARY status.
+// build time. A typo in any internal route becomes a build failure instead
+// of a silent runtime 404.
 
-/** Trial-period status chip. PRIMARY is reserved for the post-cutover
- *  canonical surface; LIVE = production V1; PREVIEW = V2 + merged previews. */
+/** Nav badge type. PRIMARY = canonical post-cutover surface. */
 type NavBadge = "LIVE" | "PREVIEW" | "PRIMARY";
 
 interface NavItem {
   label: string;
   href: Route;
   badge: NavBadge;
+  /** Optional per-item icon rendered next to the label inside a group. */
+  icon?: React.ReactNode;
 }
 
 interface NavGroup {
@@ -219,65 +60,96 @@ interface NavStandalone {
   href: Route;
   icon: React.ReactNode;
   badge: NavBadge;
+  /** When true, render a small "Coming soon" chip after the label so the
+   *  user knows the destination is a locked preview before they click. */
+  comingSoon?: boolean;
 }
 
 type NavEntry = NavGroup | NavStandalone;
 
 /**
- * PR-i of the resurfacing cutover (2026-05-15) — sidebar flattened to a
- * 5-entry top-level list: Dashboard + 4 family canonicals.
+ * 2026-05-28 — V4.1 canonical promotion.
  *
- * Legacy V1 (Country browser / Recipe catalogue / Active signals / Pattern
- * atlas / Power ranking) and V2 (Table / Narrative / Tufte / Lloyd's /
- * Discover — Tabs / Discover — Facets) routes are NOT in the sidebar
- * anymore. They remain LIVE in the routing tree — reachable by typing the
- * URL — but are no longer surfaced in nav. PR-iii will rename:
- *   /countries (V1)         → /countries-v1
- *   /countries (V3)  → /countries
- *   (same shape for Precedents / Signals / Patterns)
- * and at that moment the hrefs below flip to the unsuffixed canonical.
+ * The legacy 5-entry top-level list (Dashboard/Recipes/Countries/Signals/
+ * Patterns pointing at deleted V3 routes) and the TE Mockup group (9 V4.1
+ * routes behind a beaker section header) collapse into ONE flat list of
+ * 9 PRIMARY canonical entries. Labels drop the "V4" / "V4.1" suffixes.
+ * Icons: lucide-react throughout — no inline SVGs needed.
  */
 const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
     label: "Dashboard",
     href: "/dashboard",
-    icon: <IconDashboard />,
-    badge: "LIVE",
+    icon: <LayoutDashboard size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
+  // Risk Board promoted to slot #2 (2026-05-29) per founder ratification.
+  // Sits directly under Dashboard so the present-tense scan-pattern
+  // ("who's hot right now") is the first user surface after the showroom.
+  {
+    type: "standalone",
+    label: "Risk Board",
+    href: "/risk-board",
+    icon: <Gauge size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
-    label: "Precedents",
-    href: "/precedents" as Route,
-    icon: <IconHistory />,
-    badge: "LIVE",
+    label: "Recipes",
+    href: "/recipes",
+    icon: <ScrollText size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
     label: "Countries",
-    href: "/countries" as Route,
-    icon: <IconGlobe />,
-    badge: "LIVE",
+    href: "/countries",
+    icon: <Globe size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
-    label: "Signals",
-    href: "/signals" as Route,
-    icon: <IconSignal />,
-    badge: "LIVE",
+    label: "Compound Risk",
+    href: "/compound-risk",
+    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+  },
+  {
+    type: "standalone",
+    label: "Nearest Analog",
+    href: "/nearest-analog",
+    icon: <Telescope size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
   {
     type: "standalone",
     label: "Patterns",
-    href: "/patterns" as Route,
-    icon: <IconNetwork />,
-    badge: "LIVE",
+    href: "/patterns",
+    icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
   },
+  // Compare is bottom-slotted (2026-05-29) — it's the only locked surface,
+  // and demoting it to the foot of the nav keeps the live surfaces dense
+  // up top. comingSoon chip explains the lockdown without a separate click.
+  {
+    type: "standalone",
+    label: "Compare",
+    href: "/compare",
+    icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+    comingSoon: true,
+  },
+  // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
+  // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog
+  // ledger view is folded into /recipes; the AUC column reborn as the per-
+  // card "Confidence" badge. The /blog/recipe-tracker post is unaffected
+  // (different route, audience-facing blog post about the program).
 ];
 
 /** Flatten the structure to the leaf-route list — used by the
  *  longest-prefix-wins active-state algorithm so a deep pathname like
- *  /precedents/civil_war_and_insurgency highlights the right item. */
+ *  /recipes/foreign_intervention highlights the right item. */
 function collectNavItems(): NavItem[] {
   const all: NavItem[] = [];
   for (const entry of NAV_STRUCTURE) {
@@ -292,7 +164,20 @@ function collectNavItems(): NavItem[] {
 
 const FLAT_NAV_ITEMS = collectNavItems();
 
-export function Sidebar() {
+const STORAGE_KEY = "qgi-sidebar-collapsed";
+
+/** Read the persisted collapsed state from localStorage without touching
+ *  React state — safe to call only on the client (in useEffect / event
+ *  handlers). Returns false (expanded) when the key is absent. */
+function readStoredCollapsed(): boolean {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "true";
+  } catch {
+    return false;
+  }
+}
+
+export function Sidebar({ dataVintage }: { dataVintage?: string }) {
   const pathname = usePathname();
 
   // T14 #307 HIGH fix (2026-04-19): mobile hamburger + off-canvas sidebar.
@@ -302,6 +187,37 @@ export function Sidebar() {
   // Escape closes, and body scroll-lock while open.
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  // Collapsible desktop sidebar (§10 UX rules, 2026-05-29).
+  // Initialise to false (expanded) on the server — we'll sync from
+  // localStorage on mount to avoid SSR hydration mismatch.
+  const [collapsed, setCollapsed] = useState(false);
+  // Track whether we've hydrated yet so SSR and first-paint agree on `false`.
+  const hydrated = useRef(false);
+
+  // Sync collapsed state from localStorage on mount (client-only).
+  // Defer the setState past the current render via requestAnimationFrame —
+  // the react-hooks/set-state-in-effect lint blocks the synchronous-in-effect
+  // pattern, and the rAF call lets first paint settle before we flip state.
+  useEffect(() => {
+    hydrated.current = true;
+    const stored = readStoredCollapsed();
+    if (!stored) return;
+    const raf = requestAnimationFrame(() => setCollapsed(true));
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  function toggleCollapsed() {
+    setCollapsed((prev) => {
+      const next = !prev;
+      try {
+        localStorage.setItem(STORAGE_KEY, String(next));
+      } catch {
+        // localStorage blocked (private browsing etc.) — in-memory only.
+      }
+      return next;
+    });
+  }
+
   // Close the drawer when the user taps a nav link. We used to do this
   // via a `useEffect(() => setMobileOpen(false), [pathname])` effect, but
   // react-hooks/set-state-in-effect flags the unconditional setState as
@@ -309,7 +225,7 @@ export function Sidebar() {
   // React-preferred way to close a controlled UI surface on navigation.
   const closeOnNavigate = () => setMobileOpen(false);
 
-  // Escape to dismiss.
+  // Escape to dismiss mobile drawer.
   useEffect(() => {
     if (!mobileOpen) return;
     const onKey = (e: KeyboardEvent) => {
@@ -319,7 +235,21 @@ export function Sidebar() {
     return () => window.removeEventListener("keydown", onKey);
   }, [mobileOpen]);
 
-  // Lock background scroll while the drawer is open.
+  // Keyboard shortcut: [ / ] toggles the collapsed state on desktop.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      // Skip when focus is inside an input / textarea to avoid hijacking typing.
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+      if (e.key === "[" || e.key === "]") {
+        toggleCollapsed();
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // Lock background scroll while the mobile drawer is open.
   useEffect(() => {
     if (typeof document === "undefined") return;
     if (mobileOpen) {
@@ -405,11 +335,19 @@ export function Sidebar() {
           landmark wrapper. Pointer-events guard during the slide-in
           transition prevents a click on the hamburger from passing
           through to the link beneath while the drawer is translating
-          in (was navigating users to /precedents on mobile tap). */}
+          in (was navigating users to /recipes on mobile tap).
+
+          2026-05-29 — collapsible desktop sidebar (§10). The aside uses a
+          CSS transition on `width` (220ms ease-in-out). The `data-collapsed`
+          attribute drives the width via inline style so we can interpolate
+          precisely. `overflow-hidden` on the aside clips text as it shrinks.
+          The main column is flex-1 — it absorbs the freed width automatically
+          with no JS needed on the layout side (Approach A). */}
       <aside
         id="qgi-sidebar-drawer"
         aria-label="Site navigation"
-        className={`flex flex-col w-56 shrink-0 border-r fixed md:static inset-y-0 left-0 z-50 transition-transform duration-200 md:translate-x-0 ${
+        data-collapsed={collapsed ? "true" : "false"}
+        className={`flex flex-col shrink-0 border-r fixed md:static inset-y-0 left-0 z-50 transition-transform duration-200 md:translate-x-0 overflow-hidden ${
           mobileOpen
             ? "translate-x-0 pointer-events-auto"
             : "-translate-x-full md:translate-x-0 pointer-events-none md:pointer-events-auto"
@@ -417,48 +355,103 @@ export function Sidebar() {
         style={{
           backgroundColor: "var(--qgi-surface)",
           borderColor: "var(--qgi-border)",
+          // Width transition: 240px expanded → 56px collapsed.
+          // Only animate on md+; on mobile the drawer is full-height overlay
+          // and width is irrelevant (it's always 224px / w-56).
+          width: collapsed ? "56px" : "224px",
+          transition: "width 220ms ease-in-out",
+          // On mobile, restore the w-56 fixed width regardless of collapsed
+          // state. The collapse feature is desktop-only.
         }}
       >
-        {/* Wordmark — matches the qgintelligence.com domain (#245).
-          QG (blue) + INTELLIGENCE (grey) reads as "qg-intelligence" the same
-          way the URL does.
-          Visual: tightened with `gap-1` + negative margin-right on QG so the
-          trailing letter-spacing doesn't push "Intelligence" away (the
-          0.25em tracking adds ~3px of phantom space after the last letter).
-          GH#251: clickable; in-app sidebar navigates to /dashboard
-          (was /base, which just redirects — saves an extra hop per click). */}
-        <Link
-          href="/dashboard"
-          onClick={closeOnNavigate}
-          className="flex items-baseline gap-1 px-5 py-5 border-b transition-colors hover:bg-[var(--qgi-surface-2)]"
+        {/* Wordmark row — QG (always visible) + Intelligence (hides when
+            collapsed). The toggle button sits to the right of the wordmark
+            area and is always visible on desktop.
+
+            On collapsed, the Link only shows "QG" (overflow-hidden clips
+            the rest). The toggle sits at the right of the header row. */}
+        <div
+          className="flex items-center border-b"
           style={{ borderColor: "var(--qgi-border)" }}
-          title="Go to Dashboard (command center)"
         >
-          <span
-            className="font-data text-xs tracking-[0.25em] font-semibold"
-            style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+          <Link
+            href="/dashboard"
+            onClick={closeOnNavigate}
+            className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
+            title="Go to Dashboard (command center)"
           >
-            QG
-          </span>
-          <span
-            className="text-[10px] tracking-widest uppercase"
+            <span
+              style={{
+                fontSize: "26px",
+                lineHeight: 1,
+                letterSpacing: "0.04em",
+                color: "var(--qgi-accent)",
+                marginRight: "-0.05em",
+                // 2026-05-28 (founder pick): use Century Gothic Bold for the QG
+                // wordmark — matches the Gemini infographics. Fallback chain:
+                // Century Gothic (Windows native), URW Gothic (Linux), Avant
+                // Garde / Geometric Sans (macOS fallbacks), Sora (the
+                // previous web brand font), then generic sans.
+                fontFamily:
+                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
+                fontWeight: 700,
+                flexShrink: 0,
+              }}
+            >
+              QG
+            </span>
+            {/* "Intelligence" fades + collapses out when the sidebar narrows.
+                opacity transition gives a smoother visual than clipping alone. */}
+            <span
+              className="uppercase transition-opacity duration-200"
+              style={{
+                fontSize: "12px",
+                letterSpacing: "0.2em",
+                color: "var(--qgi-text-muted)",
+                fontWeight: 500,
+                opacity: collapsed ? 0 : 1,
+                // Keep it in layout but invisible during transition; after the
+                // sidebar finishes collapsing it's fully clipped by overflow-hidden.
+                whiteSpace: "nowrap",
+              }}
+            >
+              Intelligence
+            </span>
+          </Link>
+
+          {/* Desktop-only collapse toggle. Hidden on mobile (the hamburger
+              handles mobile open/close). Positioned at the right of the
+              header area, inside the border-b row. */}
+          <button
+            type="button"
+            aria-label="Toggle sidebar"
+            aria-expanded={!collapsed}
+            onClick={toggleCollapsed}
+            title={
+              collapsed ? "Expand sidebar  ( [ or ] )" : "Collapse sidebar  ( [ or ] )"
+            }
+            className="hidden md:flex items-center justify-center shrink-0 p-2 mr-2 rounded transition-colors hover:bg-[var(--qgi-surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Intelligence
-          </span>
-        </Link>
+            {collapsed ? (
+              <PanelLeft size={15} strokeWidth={1.5} aria-hidden="true" />
+            ) : (
+              <PanelLeftClose size={15} strokeWidth={1.5} aria-hidden="true" />
+            )}
+          </button>
+        </div>
 
         {/* Navigation
-          GH#250: longest-prefix-wins active state. Without this, RANKING
-          (/patterns/ranking) ALSO lights up PATTERNS (/patterns) because
-          naive startsWith() matches both. `isActiveRoute` picks the
-          deepest leaf href that the current pathname matches.
-          2026-05-13 (A3 Family 1 PR #4): refactored to family-grouped
-          sections; the active-state algorithm operates on the flattened
-          leaf list (FLAT_NAV_ITEMS) so it stays unaware of group structure. */}
+          GH#250: longest-prefix-wins active state. Without this, RECIPE-TRACKER
+          (/recipe-tracker) could mis-activate RECIPES (/recipes) because a naive
+          startsWith() would match both. `isActiveRoute` picks the deepest leaf
+          href that the current pathname matches.
+          2026-05-28: all 9 entries are standalone; NavGroupSection is still
+          supported by the renderer for future use but not currently in the
+          structure. */}
         <nav
           aria-label="Main navigation"
-          className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto"
+          className="flex flex-col gap-3 px-2 pt-4 flex-1 overflow-y-auto overflow-x-hidden"
         >
           {NAV_STRUCTURE.map((entry) => {
             if ("type" in entry) {
@@ -469,8 +462,10 @@ export function Sidebar() {
                   href={entry.href}
                   icon={entry.icon}
                   badge={entry.badge}
+                  comingSoon={entry.comingSoon}
                   pathname={pathname}
                   onClick={closeOnNavigate}
+                  collapsed={collapsed}
                 />
               );
             }
@@ -485,55 +480,82 @@ export function Sidebar() {
           })}
         </nav>
 
-        {/* Tour-design 2026-05-18 — manual re-trigger for the in-product
-            tour. Sets a localStorage flag and reloads; TourProvider picks
-            it up and forces a tour start regardless of the dismiss cookie. */}
-        <button
-          type="button"
-          onClick={() => {
-            if (typeof window === "undefined") return;
-            window.localStorage.setItem("qgi-tour-launch", "manual");
-            window.location.reload();
-          }}
-          className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left"
-          style={{
-            borderColor: "var(--qgi-border)",
-            color: "var(--qgi-text-muted)",
-            backgroundColor: "transparent",
-          }}
-        >
-          ✨ Take the tour
-        </button>
+        {/* Tour re-trigger button. Hides gracefully when collapsed
+            (overflow-hidden clips it; the icon-only mode has no space). */}
+        {!collapsed && (
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window === "undefined") return;
+              window.localStorage.setItem("qgi-tour-launch", "manual");
+              window.location.reload();
+            }}
+            className="mx-3 mb-2 mt-1 px-3 py-2 rounded text-[10px] tracking-widest uppercase font-semibold border transition-colors text-left cursor-pointer hover:border-[var(--qgi-accent)] hover:text-[var(--qgi-text)]"
+            style={{
+              borderColor: "var(--qgi-border)",
+              color: "var(--qgi-text-muted)",
+              backgroundColor: "transparent",
+            }}
+          >
+            ✨ Take the tour
+          </button>
+        )}
 
-        {/* Footer */}
-        <div
-          className="px-5 py-4 border-t text-[10px] tracking-wider"
-          style={{
-            borderColor: "var(--qgi-border)",
-            color: "var(--qgi-text-dim)",
-          }}
-        >
-          QUANTITATIVE
-          <br />
-          GEOPOLITICAL
-          <br />
-          INTELLIGENCE
-        </div>
+        {/* V4.1 §2 — one canonical "Data Last Updated" stamp per session.
+            Lives directly below "Take the tour" so every page sees it once
+            and only once. Hides when sidebar collapses (the chip wouldn't
+            fit in the 56px rail and the date is already on the user's
+            mental model once they've seen it).
+
+            Round-3.4 (2026-05-29): two-line layout — "Data Last Updated"
+            on top, YYYY-MM on the bottom. The day is dropped from the
+            display because the audience scans by month, not by day; the
+            granularity matches how the bake actually cadences (weekly→
+            monthly). */}
+        {!collapsed && dataVintage && (
+          <div
+            className="mx-3 mb-3 px-3 py-1.5 text-[10px] tracking-[0.1em] uppercase font-medium leading-[1.35]"
+            style={{
+              color: "var(--qgi-text-dim)",
+              fontFamily: "ui-monospace, monospace",
+            }}
+          >
+            <div>Data Last Updated</div>
+            <div>{dataVintage.slice(0, 7)}</div>
+          </div>
+        )}
+
+        {/* Footer — shows text when expanded; hides when collapsed. */}
+        {!collapsed && (
+          <div
+            className="px-5 py-4 border-t text-[10px] tracking-wider"
+            style={{
+              borderColor: "var(--qgi-border)",
+              color: "var(--qgi-text-dim)",
+            }}
+          >
+            QUANTITATIVE
+            <br />
+            GEOPOLITICAL
+            <br />
+            INTELLIGENCE
+          </div>
+        )}
       </aside>
     </>
   );
 }
 
 // ---------------------------------------------------------------------------
-// Sub-components for the family-grouped nav (A3 Family 1 PR #4)
+// Sub-components
 // ---------------------------------------------------------------------------
 
 /** Longest-prefix-wins active-state check (per-leaf, group-unaware). */
 function isActiveRoute(pathname: string, href: Route): boolean {
   if (pathname === href) return true;
   if (!pathname.startsWith(href + "/")) return false;
-  // A deeper leaf in the same family wins (e.g. /patterns/ranking outranks
-  // /patterns when the user is on /patterns/ranking).
+  // A deeper leaf in the same family wins (e.g. /recipes/foreign_intervention
+  // outranks /recipes when the user is on a recipe detail page).
   return !FLAT_NAV_ITEMS.some(
     (other) =>
       other.href !== href &&
@@ -542,15 +564,17 @@ function isActiveRoute(pathname: string, href: Route): boolean {
   );
 }
 
-/** Top-level nav link (icon + label + badge). PR-i (2026-05-15) flat
- *  restructure made this the renderer for all 5 sidebar entries — the
- *  group/family distinction is gone, so every entry uses this shape. */
+/** Top-level nav link (icon + label). Used for all 9 canonical entries.
+ *  When `collapsed=true` the label is hidden and a native `title` tooltip
+ *  carries the accessible label. */
 function NavLeafLink({
   label,
   href,
   icon,
   pathname,
   onClick,
+  collapsed,
+  comingSoon,
 }: {
   label: string;
   href: Route;
@@ -558,6 +582,8 @@ function NavLeafLink({
   badge: NavBadge;
   pathname: string;
   onClick: () => void;
+  collapsed: boolean;
+  comingSoon?: boolean;
 }) {
   const active = isActiveRoute(pathname, href);
   return (
@@ -565,21 +591,54 @@ function NavLeafLink({
       href={href}
       onClick={onClick}
       aria-current={active ? "page" : undefined}
+      aria-label={collapsed ? `${label}${comingSoon ? " (coming soon)" : ""}` : undefined}
+      title={collapsed ? `${label}${comingSoon ? " — Coming soon" : ""}` : undefined}
       className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
         backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
+        // Centre the icon when collapsed; left-align when expanded.
+        justifyContent: collapsed ? "center" : "flex-start",
+        paddingLeft: collapsed ? "0" : undefined,
+        paddingRight: collapsed ? "0" : undefined,
       }}
     >
       <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
-      <span className="flex-1 uppercase">{label}</span>
+      {/* Label — hidden (clipped) when collapsed. overflow-hidden on the
+          aside does the actual clipping; opacity gives a smooth fade. */}
+      <span
+        className="flex-1 uppercase transition-opacity duration-150 whitespace-nowrap overflow-hidden"
+        style={{ opacity: collapsed ? 0 : 1 }}
+        aria-hidden={collapsed}
+      >
+        {label}
+      </span>
+      {/* "Coming soon" chip — only when the entry is flagged AND the sidebar
+          is expanded. Calm slate-dim so it doesn't fight the active-state
+          accent; the visible-but-quiet tone matches the §4 "Coming soon"
+          recipe chip vocabulary, so the same word reads as the same
+          surface signal across the app. */}
+      {comingSoon && !collapsed && (
+        <span
+          aria-hidden="true"
+          className="shrink-0 px-1.5 py-0.5 rounded text-[8.5px] tracking-[1.5px] font-semibold normal-case"
+          style={{
+            color: "var(--qgi-text-dim)",
+            border: "1px solid var(--qgi-border)",
+            background: "var(--qgi-bg)",
+            letterSpacing: "0.5px",
+          }}
+        >
+          Coming soon
+        </span>
+      )}
     </Link>
   );
 }
 
-/** Family section header + child links. Non-collapsible in PR #4 — clean
- *  visual grouping without state cost. Collapsible expansion can ship as
- *  a follow-up if founder finds the sidebar too tall. */
+/** Family section header + child links. Non-collapsible — clean visual
+ *  grouping without state cost. Kept for future use; not in current
+ *  NAV_STRUCTURE after the V4.1 canonical promotion. */
 function NavGroupSection({
   group,
   pathname,
@@ -603,7 +662,7 @@ function NavGroupSection({
           {group.label}
         </span>
       </div>
-      {/* Indented item rows — no per-item icon (group icon does the job). */}
+      {/* Indented item rows — per-item icon rendered when present. */}
       <div className="flex flex-col gap-0.5">
         {group.items.map((item) => {
           const active = isActiveRoute(pathname, item.href);
@@ -618,64 +677,16 @@ function NavGroupSection({
                 backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
               }}
             >
+              {item.icon && (
+                <span className="flex items-center justify-center w-[14px] h-[14px] shrink-0">
+                  {item.icon}
+                </span>
+              )}
               <span className="flex-1 truncate">{item.label}</span>
             </Link>
           );
         })}
       </div>
     </div>
-  );
-}
-
-/** Trial-period status chip. Three states:
- *  - LIVE: production V1 surface (neutral slate)
- *  - PREVIEW: V2 + merged-preview routes (amber)
- *  - PRIMARY: reserved for post-cutover canonical surface (blue/accent)
- *
- * #790 (Aisha R5 2026-05-17) — without a tooltip / legend, "LIVE" reads
- * to a first-visit analyst as a meaningless design choice or a hidden-
- * meaning status indicator. Each badge state now carries a one-line
- * `title` so hovering surfaces the meaning. (Pure hover tooltip — no
- * extra DOM, no aria changes; the existing aria-label is preserved.)
- */
-const BADGE_TOOLTIP: Record<NavBadge, string> = {
-  LIVE: "Production route — current bake data.",
-  PREVIEW: "Preview / V2 route — alongside the production surface during cutover.",
-  PRIMARY: "Primary canonical surface (post-cutover).",
-};
-
-function NavChip({ badge }: { badge: NavBadge }) {
-  const colors: Record<NavBadge, { fg: string; bg: string; border: string }> = {
-    LIVE: {
-      fg: "#94a3b8",
-      bg: "rgba(148, 163, 184, 0.12)",
-      border: "rgba(148, 163, 184, 0.30)",
-    },
-    PREVIEW: {
-      fg: "#fbbf24",
-      bg: "rgba(251, 191, 36, 0.12)",
-      border: "rgba(251, 191, 36, 0.35)",
-    },
-    PRIMARY: {
-      fg: "var(--qgi-accent)",
-      bg: "var(--qgi-accent-glow)",
-      border: "var(--qgi-accent)",
-    },
-  };
-  const c = colors[badge];
-  return (
-    <span
-      className="inline-flex items-center font-data text-[8px] tracking-widest uppercase px-1 py-0.5 rounded font-semibold shrink-0"
-      style={{
-        color: c.fg,
-        backgroundColor: c.bg,
-        border: `1px solid ${c.border}`,
-      }}
-      // Keep the chip semantic for screen readers but visually compact.
-      aria-label={`${badge} surface`}
-      title={BADGE_TOOLTIP[badge]}
-    >
-      {badge}
-    </span>
   );
 }

@@ -5,11 +5,8 @@ import { formatDataThrough } from "@/lib/format-bake-date";
 import { AUTO_NARRATIVE_LABEL } from "@/lib/labels";
 import type { L1Group } from "@/lib/category-taxonomy";
 import type { RiskTier } from "@/lib/country-risks.schema";
-import type {
-  LeafMlPanel,
-  LeafStatPanel,
-  SignalTier,
-} from "@/app/(app)/signals/[country]/[slug]/page";
+
+import type { LeafMlPanel, LeafStatPanel, SignalTier } from "@/lib/signals-types";
 
 /**
  * Merged Signals per-(country, recipe) leaf — Build PR #4 of 5 (A3 Family 3).
@@ -159,7 +156,7 @@ export function SignalsLeafDetail({
         </Link>
         <span className="mx-1.5">/</span>
         <Link
-          href={"/signals" as Route}
+          href={"/risk-board" as Route}
           className="hover:underline"
           style={{ color: "var(--qgi-text-dim)" }}
         >
@@ -167,7 +164,7 @@ export function SignalsLeafDetail({
         </Link>
         <span className="mx-1.5">/</span>
         <Link
-          href={`/signals/${countrySlug}` as Route}
+          href={`/countries/countrySlug}` as Route}
           className="hover:underline"
           style={{ color: "var(--qgi-text-dim)" }}
         >
@@ -456,7 +453,7 @@ export function SignalsLeafDetail({
         </h2>
         <div className="flex flex-wrap gap-2">
           <Link
-            href={`/signals/${countrySlug}` as Route}
+            href={`/countries/countrySlug}` as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",

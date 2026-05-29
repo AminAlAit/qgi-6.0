@@ -315,7 +315,7 @@ export default function BurkinaFasoPrecedentPage() {
                 <strong>The score is bake-relative.</strong> Numbers in this piece come
                 from the 2026-04-30 V1.9.1 bake. Live values may have shifted; see{" "}
                 <Link
-                  href={"/signals/burkina_faso" as Route}
+                  href={"/countries/bfa" as Route}
                   className="underline underline-offset-2"
                   style={{ color: "var(--qgi-accent)" }}
                 >
@@ -350,7 +350,7 @@ export default function BurkinaFasoPrecedentPage() {
           <ul className="list-disc pl-6 space-y-2 text-sm">
             <li>
               <Link
-                href={"/signals/burkina_faso" as Route}
+                href={"/countries/bfa" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >
@@ -360,7 +360,7 @@ export default function BurkinaFasoPrecedentPage() {
             </li>
             <li>
               <Link
-                href={"/precedents/civil_war_and_insurgency" as Route}
+                href={"/recipes/civil_war_and_insurgency" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >

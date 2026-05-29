@@ -590,7 +590,7 @@ export default function NigerBurkinaDivergenceReportPage() {
               </Link>
               . The Multilateral Agreement recipe page (58 countries ranked) is at{" "}
               <Link
-                href={"/precedents/multilateral_agreement" as Route}
+                href={"/recipes/multilateral_agreement" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >
