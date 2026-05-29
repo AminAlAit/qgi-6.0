@@ -32,6 +32,44 @@ export function RecentMovements() {
   const events = getRecentMovements();
   const recipes = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
 
+  // 2026-05-30 polish — when no movements exist (vintage 1 — no prior
+  // bake to diff), render a minimal one-line "Quarterly shifts will
+  // appear here from the next refresh." line instead of the previous
+  // 5-line block of methodology hedge. The full hedge content moves
+  // to the section's title attribute for the curious reader.
+  if (events.length === 0) {
+    return (
+      <section
+        data-tour="recent-movements"
+        style={{
+          marginTop: "32px",
+          padding: "18px 22px",
+          border: "1px solid var(--qgi-border)",
+          background: "var(--qgi-surface)",
+          borderRadius: "8px",
+          display: "flex",
+          alignItems: "center",
+          gap: "12px",
+        }}
+        title="Quarterly rank shifts begin at vintage 2 (the next bake). Vintage 1 has no prior reading to diff against."
+      >
+        <Calendar size={14} strokeWidth={1.7} color="var(--qgi-text-dim)" />
+        <span
+          style={{
+            fontSize: "12.5px",
+            color: "var(--qgi-text-muted)",
+            lineHeight: 1.4,
+          }}
+        >
+          <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
+            Quarterly shifts
+          </strong>{" "}
+          appear here from the next refresh.
+        </span>
+      </section>
+    );
+  }
+
   return (
     <section
       data-tour="recent-movements"
@@ -88,6 +126,7 @@ export function RecentMovements() {
       </header>
 
       {events.length === 0 ? (
+        // unreachable — early return above; kept for legacy safety
         <HistoryAccumulatingGate
           vintage={BOARD_VINTAGE}
           label="Vintage-over-vintage rank shifts"
