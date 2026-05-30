@@ -208,8 +208,10 @@ module "gha_runner_frontend" {
   runner_label           = "qgi-frontend" # MUST match runs-on label in workflow YAML
   runner_pat_secret_name = "qgi-gha-runner-registration-frontend-pat"
 
-  vpc_id    = data.aws_vpc.default.id
-  subnet_id = data.aws_subnets.default.ids[0]
+  vpc_id = data.aws_vpc.default.id
+  # Sonnet nit: AWS returns subnet ids in undefined order; `sort` makes the
+  # plan deterministic so a re-plan doesn't bounce the runner across AZs.
+  subnet_id = sort(data.aws_subnets.default.ids)[0]
 
   instance_type = "c7g.medium"
 

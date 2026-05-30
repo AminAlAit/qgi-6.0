@@ -30,9 +30,9 @@ variable "instance_type" {
 }
 
 variable "spot_max_price" {
-  description = "Maximum Spot price per instance-hour. Leave empty for the on-demand-equivalent cap."
+  description = "Maximum Spot price per instance-hour. Leave null for the on-demand-equivalent cap. (Sonnet nit: empty string causes perpetual plan diffs against the provider.)"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "tags" {

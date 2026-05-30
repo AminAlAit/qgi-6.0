@@ -120,7 +120,11 @@ resource "aws_launch_template" "runner" {
   }
 
   network_interfaces {
-    associate_public_ip_address = false
+    # Sonnet B1: default VPC's default subnets are public (Internet Gateway,
+    # no NAT). Without a public IP the runner can't reach github.com or dnf
+    # repos and cloud-init fails at step 1. Sg is outbound-only with no
+    # inbound rules — the public IP is purely egress.
+    associate_public_ip_address = true
     security_groups             = [aws_security_group.runner.id]
   }
 
