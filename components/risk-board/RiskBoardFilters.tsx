@@ -275,12 +275,23 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
       </div>
 
       {/* Grid — switches between default top-10 mode and custom-country
-          mode depending on whether the user has selected any countries. */}
+          mode depending on whether the user has selected any countries.
+
+          2026-05-30 hover-highlight gate: hover-to-highlight only makes
+          visual sense when columns are vertically aligned across rows,
+          i.e. CUSTOM mode (every row renders the same selected countries
+          in the same column order). In DEFAULT mode each row's cells are
+          that recipe's own top-10, so a hovered country is usually present
+          in zero or one other row — the dim effect on the remaining 43/44
+          rows reads as the page going dark for no reason. Gate it: pass
+          hoveredCountry through only in custom mode; in default mode the
+          grid renders flat and clicking a cell still routes to the country
+          page. */}
       <FilteredGrid
         rows={visibleRows}
         customCountries={customMode ? selectedCountries : null}
-        hoveredCountry={hoveredCountry}
-        onHoverCountry={setHoveredCountry}
+        hoveredCountry={customMode ? hoveredCountry : null}
+        onHoverCountry={customMode ? setHoveredCountry : () => {}}
       />
     </>
   );
