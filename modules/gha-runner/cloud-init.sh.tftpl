@@ -1,0 +1,114 @@
+#!/bin/bash
+# cloud-init bootstrap for a GHA self-hosted runner registered to ${repo}.
+#
+# Architecture:
+#   1. Install runner binary (arm64 latest) + dependencies (git, curl, jq,
+#      python3, awscli, gh CLI).
+#   2. Pull a fine-grained PAT from Secrets Manager.
+#   3. Mint a short-lived registration token via the GitHub API.
+#   4. Register the runner with the supplied label, as a systemd service.
+#
+# Idempotency: a re-run (e.g. instance replacement after Spot interruption)
+# calls `config.sh remove` first so we don't pile up zombie runners in the
+# GitHub runner list.
+set -euo pipefail
+
+REPO="${repo}"
+RUNNER_LABEL="${runner_label}"
+PAT_SECRET_NAME="${runner_pat_secret_name}"
+REGION="$(curl -s --max-time 5 http://169.254.169.254/latest/meta-data/placement/region || echo eu-central-1)"
+INSTANCE_ID="$(curl -s --max-time 5 http://169.254.169.254/latest/meta-data/instance-id || echo unknown)"
+RUNNER_NAME="qgi-runner-$${RUNNER_LABEL}-$${INSTANCE_ID}"
+RUNNER_HOME="/opt/actions-runner"
+
+log() { echo "[$(date -u +%FT%TZ)] $*"; }
+
+log "=== qgi-gha-runner cloud-init starting ==="
+log "Repo:   $REPO"
+log "Label:  $RUNNER_LABEL"
+log "Region: $REGION"
+log "Name:   $RUNNER_NAME"
+
+# ── 1. Install dependencies ──────────────────────────────────────────────────
+log "Installing dependencies..."
+dnf install -y git curl jq tar python3 awscli
+
+# gh CLI (arm64). Lock to a stable major; bump in module when needed.
+GH_VERSION="2.55.0"
+curl -sL -o /tmp/gh.tar.gz \
+  "https://github.com/cli/cli/releases/download/v$${GH_VERSION}/gh_$${GH_VERSION}_linux_arm64.tar.gz"
+tar -xzf /tmp/gh.tar.gz -C /tmp
+install -m 0755 "/tmp/gh_$${GH_VERSION}_linux_arm64/bin/gh" /usr/local/bin/gh
+gh --version
+
+# ── 2. Install actions-runner binary ─────────────────────────────────────────
+log "Installing actions-runner..."
+mkdir -p "$RUNNER_HOME"
+cd "$RUNNER_HOME"
+
+# Resolve latest runner version from the GitHub API (use the runner-releases
+# repo so we don't need auth for this read).
+RUNNER_VERSION="$(curl -sL https://api.github.com/repos/actions/runner/releases/latest \
+  | jq -r .tag_name | sed 's/^v//')"
+log "Runner version: $RUNNER_VERSION"
+
+curl -sLo runner.tar.gz \
+  "https://github.com/actions/runner/releases/download/v$${RUNNER_VERSION}/actions-runner-linux-arm64-$${RUNNER_VERSION}.tar.gz"
+tar -xzf runner.tar.gz
+rm runner.tar.gz
+
+# Runner expects a dedicated low-privilege user.
+useradd --create-home --shell /bin/bash --home-dir /home/runner runner || true
+chown -R runner:runner "$RUNNER_HOME"
+
+# Optional: install runner system dependencies (libicu etc.)
+./bin/installdependencies.sh || log "(installdependencies.sh exit non-zero; runner may still work on AL2023)"
+
+# ── 3. Fetch PAT from Secrets Manager ────────────────────────────────────────
+log "Fetching PAT from Secrets Manager ($PAT_SECRET_NAME)..."
+PAT="$(aws secretsmanager get-secret-value \
+  --region "$REGION" \
+  --secret-id "$PAT_SECRET_NAME" \
+  --query SecretString --output text)"
+if [ -z "$PAT" ]; then
+  log "ERROR: empty PAT from $PAT_SECRET_NAME"
+  exit 1
+fi
+
+# ── 4. Mint short-lived registration token ───────────────────────────────────
+log "Minting registration token for $REPO..."
+REG_TOKEN="$(curl -sX POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $PAT" \
+  -H "X-GitHub-Api-Version: 2022-11-28" \
+  "https://api.github.com/repos/$REPO/actions/runners/registration-token" \
+  | jq -r .token)"
+if [ -z "$REG_TOKEN" ] || [ "$REG_TOKEN" = "null" ]; then
+  log "ERROR: registration-token endpoint returned empty/null"
+  exit 1
+fi
+
+# Discard PAT from memory ASAP; only the short-lived REG_TOKEN is needed past
+# this point.
+unset PAT
+
+# ── 5. Register the runner ───────────────────────────────────────────────────
+log "Removing any prior registration (idempotency)..."
+su runner -c "cd $RUNNER_HOME && ./config.sh remove --token $REG_TOKEN" 2>/dev/null || true
+
+log "Registering runner with label '$RUNNER_LABEL'..."
+su runner -c "cd $RUNNER_HOME && ./config.sh \
+  --unattended \
+  --url https://github.com/$REPO \
+  --token $REG_TOKEN \
+  --name $RUNNER_NAME \
+  --labels $RUNNER_LABEL \
+  --replace"
+
+# ── 6. Install + start as a systemd service ──────────────────────────────────
+log "Installing systemd service..."
+"$RUNNER_HOME/svc.sh" install runner
+"$RUNNER_HOME/svc.sh" start
+
+log "=== Runner registered and running ==="
+systemctl status actions.runner.* --no-pager | head -20 || true
