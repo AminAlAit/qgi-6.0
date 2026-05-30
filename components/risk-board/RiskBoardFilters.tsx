@@ -276,14 +276,16 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
 
       {/* Grid — switches between default top-10 mode and custom-country
           mode depending on whether the user has selected any countries.
-          Hover-to-highlight is always on; the per-mode dim policy lives
-          downstream in HeatCell. */}
+          Hover-to-highlight and dim-others are always on (founder ask
+          2026-05-30 round 3): without the dim, the highlight is invisible
+          on a 44-row board because the hovered match doesn't stand out
+          against equally-bright neighbours. */}
       <FilteredGrid
         rows={visibleRows}
         customCountries={customMode ? selectedCountries : null}
         hoveredCountry={hoveredCountry}
         onHoverCountry={setHoveredCountry}
-        dimOthersOnHover={customMode}
+        dimOthersOnHover={true}
       />
     </>
   );

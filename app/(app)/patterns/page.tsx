@@ -1,34 +1,16 @@
 /**
- * /patterns — Pair-strength catalogue main page.
+ * /patterns — Pair-pattern catalogue.
  *
- * V4.1 quality bar:
- *   - No engine-distinction vocabulary (no cascade, Pearson, PPS, SCDI,
- *     trajectory engine, ML-2 TE, SCDI)
- *   - No statusLabel chips on pair rows (pairs are family-agnostic ranks)
- *   - No family-color borders or letter-glyphs on pair rows
- *   - Pair strength = rank 0-100, NOT a probability
- *   - Featured pair editorial = historical-voice only (no present-day activations)
- *   - NEUTRAL_SLATE for magnitude bars
- *   - HowToReadButton top-right, no inline how-to-read panel
- *   - Flags via FlagImg (flagcdn.com), never emoji
- *   - No em-dashes in copy
+ * MOCK ELIMINATION — 2026-05-30
+ * The pair-pattern catalogue was 100% seed data from
+ * lib/te-mock/patterns-v4-main-data.ts (FULL_CATALOGUE + FAMILY_ACTIVE_ISOS).
+ * The bake does not yet emit pair-detection results. Verdict: honest empty state.
+ * Gap logged to C:\tmp\backend-gaps\patterns-trajectory.md
  *
- * Server component. Client surfaces: RankingBand, FamilyBrowsePanel,
- * CountryBrowsePanel (all "use client" with isolated state).
+ * The route remains alive so existing links / nav entries do not 404.
  */
 import type { Metadata } from "next";
-import {
-  getPatternsCatalogue,
-  getFullCatalogue,
-} from "@/lib/te-mock/patterns-v4-main-data";
-import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { PageLayout } from "@/components/patterns-v4/PageLayout";
-import { OverviewTiles } from "@/components/patterns-v4/OverviewTiles";
-import { RankingBand } from "@/components/patterns-v4/RankingBand";
-import { FamilyBrowsePanel } from "@/components/patterns-v4/FamilyBrowsePanel";
-import { CountryBrowsePanel } from "@/components/patterns-v4/CountryBrowsePanel";
-import { FeaturedPairPanel } from "@/components/patterns-v4/FeaturedPairPanel";
-import { RecentlySurfacedPanel } from "@/components/patterns-v4/RecentlySurfacedPanel";
 
 export const metadata: Metadata = {
   title: "Patterns · Country pair catalogue · QG Intelligence",
@@ -37,107 +19,69 @@ export const metadata: Metadata = {
 };
 
 export default function PatternsV4Page() {
-  const catalogue = getPatternsCatalogue();
-  const allPairs = getFullCatalogue();
-
   return (
     <PageLayout>
-      {/* ── Top strip: HowToReadButton ── */}
-      {/* V4.1 §2: vintage stamp removed — lives in the global header. */}
+      {/* Page eyebrow */}
       <div
         style={{
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          gap: "8px",
-          marginBottom: "16px",
+          fontSize: "9px",
+          letterSpacing: "2px",
+          color: "var(--qgi-accent)",
+          fontFamily: "ui-monospace, monospace",
+          marginBottom: "8px",
+          fontWeight: 600,
         }}
       >
-        <HowToReadButton routeKey="patterns-v4" />
+        PATTERNS
       </div>
 
-      {/* ── Section 1: Page hero ── */}
-      <section aria-labelledby="patterns-v4-h1">
-        <div
+      <h1
+        style={{
+          fontSize: "clamp(24px, 4vw, 38px)",
+          fontWeight: 800,
+          margin: "0 0 14px",
+          color: "var(--qgi-text)",
+          lineHeight: 1.15,
+        }}
+      >
+        Long-run rhymes between country pairs
+      </h1>
+
+      {/* Honest empty state */}
+      <div
+        style={{
+          padding: "40px 24px",
+          border: "1px dashed var(--qgi-border)",
+          borderRadius: "6px",
+          background: "rgba(91, 126, 153, 0.05)",
+          textAlign: "center",
+          maxWidth: "640px",
+          margin: "40px auto",
+        }}
+      >
+        <h2
           style={{
-            fontSize: "9px",
-            letterSpacing: "2px",
-            color: "var(--qgi-accent)",
-            fontFamily: "ui-monospace, monospace",
-            marginBottom: "8px",
+            fontSize: "16px",
             fontWeight: 600,
-          }}
-        >
-          PATTERNS
-        </div>
-        <h1
-          id="patterns-v4-h1"
-          style={{
-            fontSize: "clamp(24px, 4vw, 38px)",
-            fontWeight: 800,
-            margin: "0 0 14px",
+            marginBottom: "10px",
             color: "var(--qgi-text)",
-            lineHeight: 1.15,
           }}
         >
-          Long-run rhymes between country pairs
-        </h1>
+          Pair-pattern catalog under development
+        </h2>
         <p
           style={{
-            fontSize: "15px",
             color: "var(--qgi-text-muted)",
-            maxWidth: "640px",
-            lineHeight: 1.65,
-            margin: 0,
+            fontSize: "13px",
+            lineHeight: 1.6,
           }}
         >
-          A pattern is two countries whose indicator-composite histories ran in close
-          parallel over a shared multi-decade window. The catalogue ranks every pair by
-          how tightly their trajectories rhymed. Pair strength is a 0-to-100 rank; it is
-          not a probability of any future event.
+          The pair-pattern catalog is a research artifact under separate methodology
+          development. It identifies country pairs whose indicator-composite histories ran
+          in close parallel over shared multi-decade windows. Live results will appear
+          here when the pair-detection engine lands in the trajectory engine bake.
         </p>
-
-        {/* ── Section 2: Overview tiles (sits inside hero block) ── */}
-        <OverviewTiles
-          totalPairs={catalogue.total_pairs}
-          medianWindowYears={catalogue.median_window_years}
-          longestPair={catalogue.longest_pair}
-        />
-      </section>
-
-      {/* ── Section 3: Ranking band (full-width) ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr" }}>
-        <RankingBand allPairs={allPairs} />
       </div>
-
-      {/* ── Section 4: Family browse ── */}
-      <FamilyBrowsePanel allPairs={allPairs} />
-
-      {/* ── Section 5: Country browse ── */}
-      <CountryBrowsePanel allPairs={allPairs} />
-
-      {/* ── Section 6: Featured pair of the vintage ── */}
-      <FeaturedPairPanel pair={catalogue.featured_pair} />
-
-      {/* ── Section 7: Recently surfaced ── */}
-      <RecentlySurfacedPanel pairs={catalogue.recently_surfaced} />
-
-      {/* Footer */}
-      {/* V4.1 §2: "{catalogue.vintage} vintage" removed from footer. */}
-      <footer
-        style={{
-          marginTop: "48px",
-          paddingTop: "20px",
-          borderTop: "1px solid var(--qgi-border)",
-          fontSize: "11px",
-          color: "var(--qgi-text-dim)",
-          fontFamily: "ui-monospace, monospace",
-          letterSpacing: "0.3px",
-        }}
-      >
-        {catalogue.total_pairs} pairs · Pair strength is a rank (0-100), not a
-        probability.
-      </footer>
     </PageLayout>
   );
 }

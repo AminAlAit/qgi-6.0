@@ -51,7 +51,7 @@ export function WhyScoresPanel({
             margin: 0,
           }}
         >
-          No attribution available for this country yet.
+          Driver attribution available once the country is scored on at least one recipe.
         </p>
       ) : (
         <ul
@@ -176,76 +176,89 @@ export function WhatsMovingPanel({
       tooltip={BRIDGE}
       caption={`How each indicator behind ${countryName}'s scores has actually shifted over the last 3 years. Recent movement only, not a projection.`}
     >
-      <ul
-        style={{
-          listStyle: "none",
-          padding: 0,
-          margin: 0,
-          display: "flex",
-          flexDirection: "column",
-          gap: "11px",
-        }}
-      >
-        {movement.map((m) => {
-          const z = m.z_score_change;
-          return (
-            <li
-              key={m.indicator_name}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "minmax(0, 1fr) auto auto",
-                alignItems: "center",
-                gap: "10px",
-              }}
-            >
-              <span
+      {movement.length === 0 ? (
+        <p
+          style={{
+            fontSize: "12px",
+            color: "var(--qgi-text-dim)",
+            fontStyle: "italic",
+            margin: 0,
+          }}
+        >
+          Indicator trajectories available with the next bake.
+        </p>
+      ) : (
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "11px",
+          }}
+        >
+          {movement.map((m) => {
+            const z = m.z_score_change;
+            return (
+              <li
+                key={m.indicator_name}
                 style={{
-                  fontSize: "12.5px",
-                  color: "var(--qgi-text)",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
+                  display: "grid",
+                  gridTemplateColumns: "minmax(0, 1fr) auto auto",
+                  alignItems: "center",
+                  gap: "10px",
                 }}
-                title={`${m.indicator_name} (${m.provider})`}
               >
-                {m.indicator_name}
                 <span
                   style={{
-                    fontSize: "9.5px",
-                    color: "var(--qgi-text-dim)",
+                    fontSize: "12.5px",
+                    color: "var(--qgi-text)",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                  title={`${m.indicator_name} (${m.provider})`}
+                >
+                  {m.indicator_name}
+                  <span
+                    style={{
+                      fontSize: "9.5px",
+                      color: "var(--qgi-text-dim)",
+                      fontFamily: "ui-monospace, monospace",
+                      marginLeft: "8px",
+                      letterSpacing: "0.3px",
+                    }}
+                  >
+                    {m.provider}
+                  </span>
+                </span>
+                <MiniSparkline
+                  values={m.trajectory}
+                  color={accent}
+                  width={104}
+                  height={26}
+                />
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "5px",
                     fontFamily: "ui-monospace, monospace",
-                    marginLeft: "8px",
-                    letterSpacing: "0.3px",
+                    fontSize: "11.5px",
+                    color: "var(--qgi-text-muted)",
+                    minWidth: "52px",
+                    justifyContent: "flex-end",
                   }}
                 >
-                  {m.provider}
+                  <DirectionGlyph direction={m.direction} />
+                  {`${z > 0 ? "+" : ""}${Math.abs(z) < 1 ? z.toFixed(1) : z.toFixed(0)}`}
                 </span>
-              </span>
-              <MiniSparkline
-                values={m.trajectory}
-                color={accent}
-                width={104}
-                height={26}
-              />
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "5px",
-                  fontFamily: "ui-monospace, monospace",
-                  fontSize: "11.5px",
-                  color: "var(--qgi-text-muted)",
-                  minWidth: "52px",
-                  justifyContent: "flex-end",
-                }}
-              >
-                <DirectionGlyph direction={m.direction} />
-                {`${z > 0 ? "+" : ""}${Math.abs(z) < 1 ? z.toFixed(1) : z.toFixed(0)}`}
-              </span>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </PanelShell>
   );
 }
