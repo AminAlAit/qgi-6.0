@@ -341,6 +341,78 @@ def panel_lookup(panel_root: Path, code: str, country: str, year: int) -> tuple[
     )
 
 
+def analog_pre_event_trajectory(
+    panel_root: Path,
+    selected: list[str],
+    analog_country: str,
+    analog_year: int,
+    panel_wide_z: dict | None,
+) -> list[float]:
+    """Compute the 12-year pre-event composite z-score trajectory for an analog
+    (country, year) tuple. Mean over selected indicators, z-scored using the
+    panel-wide-z-distribution stats (mean/std per indicator). LOCF fill on
+    missing years. Returns [] if no indicator data is available.
+    (Frontend §1.1 indicator_trajectory_12q per AnalogEntry — gap #3 close.)
+    """
+    if not analog_country or not analog_year:
+        return []
+    years = list(range(int(analog_year) - 11, int(analog_year) + 1))  # 12 inclusive
+    composite = [0.0] * 12
+    n_contrib = [0] * 12
+    z_stats = (panel_wide_z or {}).get("indicators") or {}
+
+    import math
+    for code in selected:
+        df = _load_panel(panel_root, code)
+        if df is None:
+            continue
+        stats = z_stats.get(code) or {}
+        mu = stats.get("mean")
+        sigma = stats.get("std")
+        # Defensive fallbacks — nan/None/zero all need to be handled.
+        if mu is None or (isinstance(mu, float) and math.isnan(mu)):
+            mu = float(df["value"].mean())
+        if mu is None or (isinstance(mu, float) and math.isnan(mu)):
+            mu = 0.0
+        if sigma is None or (isinstance(sigma, float) and math.isnan(sigma)) or sigma <= 0:
+            sigma = float(df["value"].std())
+        if sigma is None or (isinstance(sigma, float) and math.isnan(sigma)) or sigma <= 0:
+            sigma = 1.0
+        cdf = df[(df["country"] == analog_country) & (df["year"] <= max(years))].sort_values("year")
+        if cdf.empty:
+            continue
+        # Build year → value index for LOCF
+        year_to_val: dict[int, float] = {}
+        last_val = None
+        for _, row in cdf.iterrows():
+            y = int(row["year"])
+            v = row["value"]
+            if pd.notna(v):
+                last_val = float(v)
+            year_to_val[y] = last_val
+        # Find value at each target year using LOCF
+        sorted_years = sorted(year_to_val.keys())
+        for i, target in enumerate(years):
+            val = None
+            for y in reversed(sorted_years):
+                if y <= target:
+                    val = year_to_val[y]
+                    break
+            if val is None:
+                continue
+            if isinstance(val, float) and math.isnan(val):
+                continue
+            z = (val - mu) / sigma
+            if math.isnan(z) or math.isinf(z):
+                continue
+            composite[i] += z
+            n_contrib[i] += 1
+    # Average across contributing indicators per time point
+    if not any(n_contrib):
+        return []
+    return [composite[i] / n_contrib[i] if n_contrib[i] > 0 else 0.0 for i in range(12)]
+
+
 # Lightweight unit hints from common indicator-code prefixes.
 def unit_hint_for(code: str | None) -> str | None:
     if not code:
@@ -566,6 +638,8 @@ def build_scores_file(
     sensitivity_data: dict | None = None,
     momentum_data: dict | None = None,
     nearest_analog_data: dict | None = None,
+    panel_wide_z: dict | None = None,
+    selected_indicators: list[str] | None = None,
     panel_root: Path | None = None,
     platform_roster: set[str] | None = None,
 ) -> dict | None:
@@ -637,10 +711,12 @@ def build_scores_file(
             an_name = a.get("country") or a.get("name") or ""
             an_iso2, _, _ = normalize_iso(an_name, countries)
             an_year = a.get("year")
-            # secondary_recipe_ids: other recipes that also rate this analog
-            # highly (only meaningful at country-level — at country×year level
-            # we cannot trivially join, so this is a heuristic for now).
-            secondary = []  # filled later via cross-recipe enrichment pass
+            # Pre-event indicator_trajectory_12q (frontend §1.1; closes gap #3)
+            pre_event_traj = []
+            if panel_root and selected_indicators and an_year:
+                pre_event_traj = analog_pre_event_trajectory(
+                    panel_root, selected_indicators, an_name, int(an_year), panel_wide_z,
+                )
             analogs.append({
                 "country": an_name,
                 "country_iso2": an_iso2,
@@ -648,8 +724,8 @@ def build_scores_file(
                 "match_score": a.get("match_score") or a.get("similarity"),
                 "weak_analog": bool(a.get("weak_analog", False)),
                 "what_happened_next": None,  # research workstream (ticket #974)
-                "indicator_trajectory_12q": [],  # filled if pre-event window can be derived
-                "secondary_recipe_ids": secondary,
+                "indicator_trajectory_12q": pre_event_traj,
+                "secondary_recipe_ids": [],  # filled later via cross-recipe enrichment pass
             })
 
         score = e.get("score")
@@ -1047,7 +1123,9 @@ def main() -> int:
         nearest_analog_full = s3_get_json(s3, args.bucket, f"ml-results/{rid}/nearest-analog-{rid}-2026.json")
         momentum = s3_get_json(s3, args.bucket, f"ml-results/{rid}/momentum-{rid}-2026.json")
         shap_imp = s3_get_json(s3, args.bucket, f"ml-results/{rid}/shap-importances-{rid}.json")
+        panel_wide_z = s3_get_json(s3, args.bucket, f"ml-results/{rid}/panel-wide-z-distribution-2026.json")
         tracker_row = tracker.get(rid)
+        selected_indicators = (summary.get("greedy_outer_loop") or {}).get("selected_indicators") or []
         card = build_card_v3(
             summary, sensitivity, indicator_names, tracker_row, args.bucket,
             shap_data=shap_imp, panel_root=args.panel_root,
@@ -1056,6 +1134,7 @@ def main() -> int:
             rid, args.vintage, country_scores, countries, indicator_names,
             recipe_similarity=recipe_similarity, sensitivity_data=sensitivity,
             momentum_data=momentum, nearest_analog_data=nearest_analog_full,
+            panel_wide_z=panel_wide_z, selected_indicators=selected_indicators,
             panel_root=args.panel_root if args.panel_root.exists() else None,
             platform_roster=platform_roster,
         )
