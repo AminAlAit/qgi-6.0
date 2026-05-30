@@ -83,7 +83,7 @@ function AnalogColumn({
                   background: `${ARCHIVAL_GOLD}12`,
                   letterSpacing: "0.2px",
                 }}
-                title="Structural similarity score between this analog and the subject country."
+                title="Structural similarity score between this analogue and the subject country."
               >
                 {a.match_score.toFixed(0)}% match
               </span>
@@ -144,11 +144,11 @@ export function CompareAnalogsPair({
 
   return (
     <PanelShell
-      title="Historical analogs"
+      title="Historical analogues"
       accent={ARCHIVAL_GOLD}
       dataTour="compare-analogs"
       fullWidth
-      caption={`Past situations whose shape most resembles each country now. Similarity is not prediction; the outcomes below are history about each analog, not a forecast.`}
+      caption={`Past situations whose shape most resembles each country now. Similarity is not prediction; the outcomes below are history about each analogue, not a forecast.`}
     >
       <div
         style={{

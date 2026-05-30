@@ -27,7 +27,7 @@ import { CountryCardV41 } from "@/components/countries-v4-1/CountryCardV41";
 export const metadata: Metadata = {
   title: "Country Atlas · QG Intelligence",
   description:
-    "Per-country atlas: the recipes each country resembles, the indicators behind each score, momentum, and historical analogs.",
+    "Per-country atlas: the recipes each country resembles, the indicators behind each score, momentum, and historical analogues.",
 };
 
 interface PageProps {

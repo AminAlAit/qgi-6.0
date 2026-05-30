@@ -20,7 +20,7 @@ const CALM_SLATE_BLUE = "#5B7E99";
 const STATEMENTS = [
   "These scores rank how strongly a country's signals resemble past pre-event conditions. They are not the chance that an event will happen.",
   "The drivers show which indicators weigh in the score. They are statistical associations, not proven causes.",
-  "The analogs are historical resemblances. They are not forecasts of what comes next.",
+  "The analogues are historical resemblances. They are not forecasts of what comes next.",
   "Nothing on this page says an event will happen.",
 ];
 
@@ -140,7 +140,7 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
             letterSpacing: "0.3px",
           }}
         >
-          Open the Nearest-Analog finder →
+          Open the Nearest-Analogue finder →
         </Link>
         <Link
           href={"/risk-board" as Route}

@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
       ? `${country.name} · QG Intelligence`
       : "Country not found · QG Intelligence",
     description: country
-      ? `${country.name}: the recipes its recent signals resemble, the indicators behind each score, recent movement, and historical analogs.`
+      ? `${country.name}: the recipes its recent signals resemble, the indicators behind each score, recent movement, and historical analogues.`
       : "Country not found.",
   };
 }
