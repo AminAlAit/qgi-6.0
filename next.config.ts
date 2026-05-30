@@ -246,6 +246,17 @@ const nextConfig: NextConfig = {
         destination: "/patterns",
         permanent: true,
       },
+
+      // ─── 2026-05-30 — pair/ subroute collapsed into unified [slug] ─────
+      // /patterns/pair/{slug} is now served by /patterns/{slug} (2-segment
+      // ISO-2 slugs dispatch to the pair-overview view inside the unified
+      // route). 301 preserves any external or internal links that used the
+      // old /pair/ subroute.
+      {
+        source: "/patterns/pair/:slug",
+        destination: "/patterns/:slug",
+        permanent: true,
+      },
     ];
   },
 };

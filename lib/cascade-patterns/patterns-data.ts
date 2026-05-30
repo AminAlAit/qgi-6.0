@@ -301,3 +301,21 @@ export function getTierCounts(): TierCounts {
   _tierCountsCache = counts;
   return counts;
 }
+
+// ---------------------------------------------------------------------------
+// Country names — sorted list of all 215 country names for the search filter
+// ---------------------------------------------------------------------------
+
+let _countryNamesCache: string[] | null = null;
+
+export function getCountryNames(): string[] {
+  if (_countryNamesCache) return _countryNamesCache;
+  const idx = getPartnersIndex();
+  const names = new Set<string>();
+  for (const e of idx) {
+    names.add(e.country_a);
+    names.add(e.country_b);
+  }
+  _countryNamesCache = Array.from(names).sort();
+  return _countryNamesCache;
+}
