@@ -412,6 +412,253 @@ resource "aws_lambda_function" "recipe_fleet_post_pass" {
 }
 
 # ---------------------------------------------------------------------------
+# Lambda — vintage-rollup (stub; lane 4 of pipeline build, qgi-aws-tf#972).
+#
+# Real code lives at qgi-pipeline/lambdas/recipe-fleet-vintage-rollup/
+# (already merged at qgi-pipeline#45). Same #153 placeholder pattern as the
+# post-pass Lambda: TF creates the function shell; CI/CD deploys the real
+# code; lifecycle.ignore_changes lets the deployed code survive subsequent
+# applies.
+#
+# Reads every walk-summary the platform has produced (current vintage at
+# ml-results/{recipe}/f-ml-1-poc-summary.json + prior vintages under
+# ml-results/_archive/*), builds the cross-vintage rollup, writes:
+#   s3://{bucket}/dashboard/admin/te-vintage-rollup.json
+# ---------------------------------------------------------------------------
+data "archive_file" "recipe_fleet_vintage_rollup_placeholder" {
+  type        = "zip"
+  output_path = "${path.module}/vintage_rollup_placeholder.zip"
+  source {
+    content  = <<-EOT
+      """Placeholder for qgi-recipe-fleet-vintage-rollup Lambda.
+      Real code has not been deployed by CI/CD yet.
+      Same #153 pattern as the post-pass Lambda.
+      """
+      import os
+
+      def lambda_handler(event, context):
+          fn = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "<unknown>")
+          raise RuntimeError(
+              f"PLACEHOLDER STUB STILL LIVE for Lambda '{fn}'. "
+              f"Terraform created this function but CI/CD has not yet deployed "
+              f"the real code. Trigger: `gh workflow run deploy-lambdas.yml "
+              f"--repo AminAlAit/qgi-pipeline -f deploy_all=true` or push "
+              f"any commit touching lambdas/recipe-fleet-vintage-rollup/."
+          )
+    EOT
+    filename = "lambda_function.py"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "recipe_fleet_vintage_rollup" {
+  name              = "/aws/lambda/qgi-recipe-fleet-vintage-rollup"
+  retention_in_days = 30
+  tags              = var.tags
+}
+
+resource "aws_lambda_function" "recipe_fleet_vintage_rollup" {
+  function_name    = "qgi-recipe-fleet-vintage-rollup"
+  handler          = "lambda_function.lambda_handler"
+  runtime          = "python3.13"
+  architectures    = ["arm64"]
+  timeout          = 300
+  memory_size      = 512
+  filename         = data.archive_file.recipe_fleet_vintage_rollup_placeholder.output_path
+  source_code_hash = data.archive_file.recipe_fleet_vintage_rollup_placeholder.output_base64sha256
+  role             = var.lambda_execution_role_arn
+
+  environment {
+    variables = {
+      S3_BUCKET         = var.data_lake_bucket_name
+      ML_RESULTS_PREFIX = var.ml_results_prefix
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [filename, source_code_hash]
+  }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Lambda — frontend-sync (stub; lane 2 of pipeline build, qgi-aws-tf#973).
+#
+# Real code lives at qgi-pipeline/lambdas/recipe-fleet-frontend-sync/ (merged
+# at qgi-pipeline#52). Pure workflow_dispatch dispatcher: fires the
+# sync-te-fleet-vintage.yml workflow in AminAlAit/qgi-frontend (merged at
+# qgi-frontend#163) once a bake vintage lands in S3.
+#
+# Reads the GitHub PAT from Secrets Manager
+# (qgi-github-frontend-dispatch-pat, already provisioned for the bake-
+# country-risks trigger Lambda). No new secret needed.
+# ---------------------------------------------------------------------------
+data "archive_file" "recipe_fleet_frontend_sync_placeholder" {
+  type        = "zip"
+  output_path = "${path.module}/frontend_sync_placeholder.zip"
+  source {
+    content  = <<-EOT
+      """Placeholder for qgi-recipe-fleet-frontend-sync Lambda.
+      Real code has not been deployed by CI/CD yet.
+      Same #153 pattern as sibling stubs.
+      """
+      import os
+
+      def lambda_handler(event, context):
+          fn = os.environ.get("AWS_LAMBDA_FUNCTION_NAME", "<unknown>")
+          raise RuntimeError(
+              f"PLACEHOLDER STUB STILL LIVE for Lambda '{fn}'. "
+              f"Terraform created this function but CI/CD has not yet deployed "
+              f"the real code. Trigger: `gh workflow run deploy-lambdas.yml "
+              f"--repo AminAlAit/qgi-pipeline -f deploy_all=true` or push "
+              f"any commit touching lambdas/recipe-fleet-frontend-sync/."
+          )
+    EOT
+    filename = "lambda_function.py"
+  }
+}
+
+resource "aws_cloudwatch_log_group" "recipe_fleet_frontend_sync" {
+  name              = "/aws/lambda/qgi-recipe-fleet-frontend-sync"
+  retention_in_days = 30
+  tags              = var.tags
+}
+
+resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
+  function_name    = "qgi-recipe-fleet-frontend-sync"
+  handler          = "lambda_function.lambda_handler"
+  runtime          = "python3.13"
+  architectures    = ["arm64"]
+  timeout          = 30 # one-shot HTTP POST; no work to do
+  memory_size      = 256
+  filename         = data.archive_file.recipe_fleet_frontend_sync_placeholder.output_path
+  source_code_hash = data.archive_file.recipe_fleet_frontend_sync_placeholder.output_base64sha256
+  role             = var.lambda_execution_role_arn
+
+  environment {
+    variables = {
+      GITHUB_OWNER           = "AminAlAit"
+      GITHUB_REPO            = "qgi-frontend"
+      GITHUB_WORKFLOW_FILE   = "sync-te-fleet-vintage.yml"
+      GITHUB_REF             = "main"
+      GITHUB_PAT_SECRET_NAME = "qgi-github-frontend-dispatch-pat"
+      S3_BUCKET              = var.data_lake_bucket_name
+    }
+  }
+
+  lifecycle {
+    ignore_changes = [filename, source_code_hash]
+  }
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Batch JobDefinition — bake-te-fleet-run (lane 5 of pipeline build, qgi-aws-tf#973).
+#
+# Reuses the `qgi-recipe-fleet:latest` image (same arm64 build that runs
+# the walker), but with a different command: invoke
+# `qgi-ml/scripts/bake_te_fleet_run_1.py` in AWS mode (BAKE_MODE=aws). The
+# script reads walk artifacts from S3, applies all bucket-A enrichments,
+# writes the corpus to S3 under frontend-data/te-fleet-run-{N}/.
+#
+# Note: the image must contain bake_te_fleet_run_1.py. The current
+# Dockerfile already vendors qgi-ml into /app/qgi-ml so this works without
+# a Dockerfile change; if a future rebuild moves qgi-ml out, this script
+# path needs to be re-aligned.
+#
+# 2 vCPU / 4 GB is right-sized — the bake is single-threaded, I/O-bound
+# (S3 fetch ~150 files), runs ~1 min.
+# ---------------------------------------------------------------------------
+resource "aws_batch_job_definition" "bake_te_fleet_run" {
+  name = "qgi-bake-te-fleet-run-job"
+  type = "container"
+
+  platform_capabilities = ["EC2"]
+
+  retry_strategy {
+    attempts = 2 # one Spot reclaim retry; never more (#153 pattern)
+  }
+
+  timeout {
+    attempt_duration_seconds = 1800 # 30 min — bake is fast (~1 min); 30x headroom
+  }
+
+  container_properties = jsonencode({
+    image = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-recipe-fleet:latest"
+    command = [
+      "python", "/app/qgi-ml/scripts/bake_te_fleet_run_1.py",
+      "--bucket", var.data_lake_bucket_name,
+      "--countries", "/app/qgi-ml/data/countries.json",
+      "--recipe-tracker", "/app/qgi-ml/data/recipe-tracker.json",
+      "--indicator-catalog", "/app/qgi-ml/data/indicator-catalog-detailed.md",
+    ]
+
+    # Reuse the walker's job role: same S3 read on parquet panels (used for
+    # raw indicator values via --panel-root) + same S3 write scope on
+    # ml-results. The bake additionally writes under frontend-data/, which
+    # the walker role does NOT include. Add an inline statement below to
+    # the walker role policy — see the matching role-policy update later.
+    jobRoleArn       = aws_iam_role.recipe_fleet_job.arn
+    executionRoleArn = var.fargate_execution_role_arn
+
+    resourceRequirements = [
+      { type = "VCPU", value = "2" },
+      { type = "MEMORY", value = "4096" },
+    ]
+
+    environment = [
+      { name = "BAKE_MODE", value = "aws" },
+      { name = "S3_BUCKET", value = var.data_lake_bucket_name },
+      # OUTPUT_S3_PREFIX is set per-execution by the SFN ContainerOverrides
+      # using $$.Execution.Name; restated as a placeholder so the JobDef
+      # still works for ad-hoc test invocations.
+      { name = "OUTPUT_S3_PREFIX", value = "" },
+    ]
+
+    logConfiguration = {
+      logDriver = "awslogs"
+      options = {
+        "awslogs-group"         = "/aws/batch/qgi-recipe-fleet"
+        "awslogs-region"        = var.region
+        "awslogs-stream-prefix" = "bake"
+      }
+    }
+  })
+
+  tags = var.tags
+}
+
+# ---------------------------------------------------------------------------
+# Extend the recipe-fleet job role: the bake job also writes under
+# frontend-data/te-fleet-run-* (S3 PUT). The walker's existing policy
+# allows put under ml-results + ml-checkpoints; the bake needs one
+# additional prefix.
+# ---------------------------------------------------------------------------
+resource "aws_iam_role_policy" "recipe_fleet_bake_extra" {
+  name = "qgi-recipe-fleet-bake-output-policy"
+  role = aws_iam_role.recipe_fleet_job.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:PutObjectAcl",
+          "s3:ListBucket",
+        ]
+        Resource = [
+          var.data_lake_bucket_arn,
+          "${var.data_lake_bucket_arn}/frontend-data/te-fleet-run-*",
+        ]
+      },
+    ]
+  })
+}
+
+# ---------------------------------------------------------------------------
 # SQS — durable carrier for the canary approval task-token (design §4).
 #
 # The "Await Founder Approval" SFN state sends the waitForTaskToken into this
@@ -587,7 +834,34 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
           "MessageBody.$" = "$$.Task.Token"
         }
         ResultPath = "$.approval"
-        Next       = "Fleet Fan-out"
+        # qgi-aws-tf#971 — Mode Router fix. Canary executions previously fell
+        # through into "Fleet Fan-out" which then crashed on the missing
+        # `runnable_jobs` field. Route based on $.mode so canary executions end
+        # cleanly while full-mode executions still proceed to fan-out.
+        Next = "Mode Router"
+      }
+
+      # -----------------------------------------------------------------
+      # MODE ROUTER (#971 fix) — gate canary executions out of the fan-out.
+      #
+      # A canary execution only runs ONE recipe + approval; it must NOT
+      # enter Fleet Fan-out (which requires $.runnable_jobs). Founder approval
+      # of a canary marks the canary good; full fleet runs are dispatched as
+      # SEPARATE SFN executions with mode="full".
+      # -----------------------------------------------------------------
+      "Mode Router" = {
+        Type = "Choice"
+        Choices = [{
+          Variable     = "$.mode"
+          StringEquals = "canary"
+          Next         = "Canary End"
+        }]
+        Default = "Fleet Fan-out"
+      }
+
+      "Canary End" = {
+        Type = "Pass"
+        End  = true
       }
 
       # -----------------------------------------------------------------
@@ -665,12 +939,41 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
           }
         }
         ResultPath = "$.fleet_results"
-        Next       = "Post-pass Lambda"
+        Next       = "Vintage Rollup"
       }
 
       # -----------------------------------------------------------------
-      # POST-PASS Lambda — cross-recipe aggregation + frontend outputs.
-      # Stub today; real code deployed by CI/CD.
+      # VINTAGE ROLLUP Lambda (qgi-aws-tf#972, lane 4).
+      #
+      # First step of the post-Map chain. Scans the recipe-fleet S3 layout
+      # for every walk-summary the platform has produced (current vintage
+      # at ml-results/{recipe}/f-ml-1-poc-summary.json + prior vintages
+      # under ml-results/_archive/), denormalizes via vintage_rollup_core,
+      # writes dashboard/admin/te-vintage-rollup.json. The Admin Dashboard
+      # (qgi-aws-tf#151) reads this for the quarterly-trend section.
+      # -----------------------------------------------------------------
+      "Vintage Rollup" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_fleet_vintage_rollup.arn
+        Parameters = {
+          "current_vintage_id.$" = "$$.Execution.Name"
+          "s3_bucket"            = var.data_lake_bucket_name
+          "ml_results_prefix"    = var.ml_results_prefix
+        }
+        ResultPath = "$.vintage_rollup_result"
+        Retry = [{
+          ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException", "Lambda.AWSLambdaException", "Lambda.SdkClientException"]
+          IntervalSeconds = 30
+          MaxAttempts     = 3
+          BackoffRate     = 2
+        }]
+        Next = "Post-pass Lambda"
+      }
+
+      # -----------------------------------------------------------------
+      # POST-PASS Lambda — cross-recipe aggregation + tier classification.
+      # Reads vintage-rollup output + raw walk summaries; emits the
+      # post-pass tier classifications used by the bake step.
       # -----------------------------------------------------------------
       "Post-pass Lambda" = {
         Type     = "Task"
@@ -685,6 +988,69 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
           ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException", "Lambda.AWSLambdaException", "Lambda.SdkClientException"]
           IntervalSeconds = 30
           MaxAttempts     = 5
+          BackoffRate     = 2
+        }]
+        Next = "Bake Frontend Corpus"
+      }
+
+      # -----------------------------------------------------------------
+      # BAKE FRONTEND CORPUS (qgi-aws-tf#973, lane 5).
+      #
+      # Batch job — invokes bake_te_fleet_run_1.py with BAKE_MODE=aws.
+      # Writes the vintage corpus (cards-v3, scores, country-index,
+      # rank-history, analogs, activity feed, MANIFEST) directly to S3
+      # under frontend-data/te-fleet-run-{execution_name}/. The bake script
+      # refuses-to-overwrite if a MANIFEST.json already exists at that
+      # prefix (run-separation rule, feedback_run_separation_versioning.md).
+      # -----------------------------------------------------------------
+      "Bake Frontend Corpus" = {
+        Type     = "Task"
+        Resource = "arn:aws:states:::batch:submitJob.sync"
+        Parameters = {
+          "JobName.$"   = "States.Format('qgi-bake-te-fleet-run-{}', $$.Execution.Name)"
+          JobQueue      = aws_batch_job_queue.recipe_fleet.arn
+          JobDefinition = aws_batch_job_definition.bake_te_fleet_run.arn
+          ContainerOverrides = {
+            Environment = [
+              { Name = "BAKE_MODE", Value = "aws" },
+              { Name = "S3_BUCKET", Value = var.data_lake_bucket_name },
+              {
+                Name      = "OUTPUT_S3_PREFIX"
+                "Value.$" = "States.Format('frontend-data/te-fleet-run-{}/', $$.Execution.Name)"
+              },
+            ]
+          }
+        }
+        ResultPath = "$.bake_result"
+        Retry = [{
+          ErrorEquals     = ["Batch.BatchException", "States.TaskFailed"]
+          IntervalSeconds = 60
+          MaxAttempts     = 1
+          BackoffRate     = 2
+        }]
+        Next = "Frontend Sync"
+      }
+
+      # -----------------------------------------------------------------
+      # FRONTEND SYNC Lambda (qgi-aws-tf#973, lane 2).
+      #
+      # Fires `workflow_dispatch` on qgi-frontend's sync-te-fleet-vintage.yml
+      # workflow. The workflow does the S3 sync + cross-vintage rank-history
+      # append + PR creation. Audit-trail mechanism: PR, not webhook,
+      # per the architectural pick locked in this session's handoff memo.
+      # -----------------------------------------------------------------
+      "Frontend Sync" = {
+        Type     = "Task"
+        Resource = aws_lambda_function.recipe_fleet_frontend_sync.arn
+        Parameters = {
+          "vintage_s3_prefix.$" = "States.Format('frontend-data/te-fleet-run-{}/', $$.Execution.Name)"
+          "execution_name.$"    = "$$.Execution.Name"
+        }
+        ResultPath = "$.frontend_sync_result"
+        Retry = [{
+          ErrorEquals     = ["Lambda.TooManyRequestsException", "Lambda.ServiceException", "Lambda.AWSLambdaException", "Lambda.SdkClientException"]
+          IntervalSeconds = 30
+          MaxAttempts     = 3
           BackoffRate     = 2
         }]
         End = true
