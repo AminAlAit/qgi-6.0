@@ -40,7 +40,7 @@ export interface PairWindowRecord {
  */
 export async function loadPairWindows(
   idA: string,
-  idB: string,
+  idB: string
 ): Promise<PairWindowRecord | null> {
   // Next.js static imports require compile-time known paths, so we use fs
   // dynamically. This file is always called from a Server Component.
@@ -50,7 +50,7 @@ export async function loadPairWindows(
 
     const tryFile = async (
       fileId: string,
-      partnerId: string,
+      partnerId: string
     ): Promise<PairWindowRecord | null> => {
       const filePath = path.join(process.cwd(), "data", "pair-windows", `${fileId}.json`);
       try {

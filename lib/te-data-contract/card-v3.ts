@@ -181,5 +181,8 @@ export interface CardV3 {
   /** Per-indicator direction signs: +1 (risk-increasing) / -1 (risk-decreasing). */
   shap_direction_signs?: Record<string, number>;
   /** Per-indicator last_z / mean_z / std_z / slope breakdown. */
-  per_feature_breakdown?: Record<string, { last_z: number; mean_z: number; std_z: number; slope: number }>;
+  per_feature_breakdown?: Record<
+    string,
+    { last_z: number; mean_z: number; std_z: number; slope: number }
+  >;
 }

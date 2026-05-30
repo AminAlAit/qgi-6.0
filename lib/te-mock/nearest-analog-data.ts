@@ -21,7 +21,11 @@
  * - Match scores < 70 are flagged as "weak analog" per ledger Feature 12.
  * - Regional-clustering caveat applies.
  */
-import { loadAnalogs, loadAllScores, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import {
+  loadAnalogs,
+  loadAllScores,
+  FLEET_RUN_1_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
 import type { NearestAnalogEntry } from "@/lib/te-data-contract/scores";
 
 /**
@@ -370,7 +374,8 @@ function buildAllEntries(): CurrentCountryEntry[] {
 
           const secondaryRecipeIds: string[] = enriched?.secondary_recipe_ids ?? [];
           const indicatorTrajectory: number[] =
-            enriched?.indicator_trajectory_12q && enriched.indicator_trajectory_12q.length > 0
+            enriched?.indicator_trajectory_12q &&
+            enriched.indicator_trajectory_12q.length > 0
               ? zTrajToDisplay(enriched.indicator_trajectory_12q)
               : [];
           // Round-2: what_happened_next is still null from the bake.

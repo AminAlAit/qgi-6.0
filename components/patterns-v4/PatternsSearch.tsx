@@ -2,13 +2,17 @@
 
 /**
  * PatternsSearch — client-side search + filter shell for the /patterns
- * catalogue. Receives the full pre-filtered list from the Server Component;
- * all filtering happens in-browser so the page stays a Server Component.
+ * catalogue. Receives two corpora from the Server Component:
  *
- * Filters:
- *   - Free-text search (country name, both sides of the pair)
- *   - Pattern tier (XL / L / M / S)
- *   - Min correlation (>0.85, >0.90, >0.95)
+ *   entries     — top-1000 XL pairs from ranking.json (the leaderboard)
+ *   fullCorpus  — all ~23k unique pairs from country-partners-index
+ *
+ * Default view ("All tiers") shows the top-1000 XL leaderboard.
+ * Clicking a specific tier (L / M / S) switches to the full corpus
+ * filtered to that tier so real counts are visible.
+ * Clicking XL stays on the leaderboard.
+ *
+ * Tier counts shown in chip labels (e.g. "L (8,391)").
  *
  * Pagination: 50 results per page.
  *
@@ -23,20 +27,12 @@ import Link from "next/link";
 import type { Route } from "next";
 import { Search, X } from "lucide-react";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
-import { iso2For, flagFor } from "@/lib/te-mock/country-flags";
+import { flagFor } from "@/lib/te-mock/country-flags";
 import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
-import type { CatalogueEntry } from "@/lib/cascade-patterns/patterns-data";
+import type { CatalogueEntry, TierCounts } from "@/lib/cascade-patterns/patterns-data";
 
 const ACCENT = "#5B7E99"; // CALM_SLATE_BLUE
 const PAGE_SIZE = 50;
-
-const TIER_CHIPS = [
-  { value: "", label: "All tiers" },
-  { value: "XL", label: "XL" },
-  { value: "L", label: "L" },
-  { value: "M", label: "M" },
-  { value: "S", label: "S" },
-] as const;
 
 const CORR_CHIPS = [
   { value: 0, label: "Any correlation" },
@@ -46,17 +42,44 @@ const CORR_CHIPS = [
 ] as const;
 
 interface Props {
+  /** Top-1000 XL leaderboard from ranking.json */
   entries: CatalogueEntry[];
+  /** Full ~23k pairs corpus from country-partners-index */
+  fullCorpus: CatalogueEntry[];
+  /** Pre-computed tier counts from fullCorpus */
+  tierCounts: TierCounts;
 }
 
-export function PatternsSearch({ entries }: Props) {
+export function PatternsSearch({ entries, fullCorpus, tierCounts }: Props) {
   const [query, setQuery] = useState("");
   const [tierFilter, setTierFilter] = useState("");
   const [corrFloor, setCorrFloor] = useState(0);
   const [page, setPage] = useState(1);
 
+  // Build tier chip definitions with live counts
+  const TIER_CHIPS = useMemo(
+    () => [
+      {
+        value: "",
+        label: `All tiers`,
+        sublabel: `top ${entries.length.toLocaleString()} by strength`,
+      },
+      { value: "XL", label: `XL`, sublabel: `${tierCounts.XL.toLocaleString()}` },
+      { value: "L", label: `L`, sublabel: `${tierCounts.L.toLocaleString()}` },
+      { value: "M", label: `M`, sublabel: `${tierCounts.M.toLocaleString()}` },
+      { value: "S", label: `S`, sublabel: `${tierCounts.S.toLocaleString()}` },
+    ],
+    [entries.length, tierCounts]
+  );
+
+  // Choose the active corpus: XL or default → leaderboard; L/M/S → full corpus
+  const activeCorpus = useMemo(() => {
+    if (tierFilter === "" || tierFilter === "XL") return entries;
+    return fullCorpus.filter((e) => e.tier === tierFilter);
+  }, [entries, fullCorpus, tierFilter]);
+
   const filtered = useMemo(() => {
-    let out = entries;
+    let out = activeCorpus;
 
     if (query.trim()) {
       const q = query.trim().toLowerCase();
@@ -66,8 +89,9 @@ export function PatternsSearch({ entries }: Props) {
       );
     }
 
-    if (tierFilter) {
-      out = out.filter((e) => e.tier === tierFilter);
+    if (tierFilter === "XL") {
+      // Leaderboard is already XL-only, but apply the explicit filter for clarity
+      out = out.filter((e) => e.tier === "XL");
     }
 
     if (corrFloor > 0) {
@@ -75,7 +99,7 @@ export function PatternsSearch({ entries }: Props) {
     }
 
     return out;
-  }, [entries, query, tierFilter, corrFloor]);
+  }, [activeCorpus, query, tierFilter, corrFloor]);
 
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const pageEntries = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
@@ -160,29 +184,46 @@ export function PatternsSearch({ entries }: Props) {
 
         {/* Tier chips */}
         <div style={{ display: "flex", gap: "5px", flexWrap: "wrap" }}>
-          {TIER_CHIPS.map((chip) => (
-            <button
-              key={chip.value}
-              onClick={() => handleTier(chip.value)}
-              style={{
-                padding: "4px 10px",
-                fontSize: "11px",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.3px",
-                borderRadius: "4px",
-                border: "1px solid",
-                cursor: "pointer",
-                transition: "all 100ms",
-                borderColor: tierFilter === chip.value ? ACCENT : "var(--qgi-border)",
-                background:
-                  tierFilter === chip.value ? `${ACCENT}18` : "var(--qgi-surface)",
-                color: tierFilter === chip.value ? ACCENT : "var(--qgi-text-muted)",
-                fontWeight: tierFilter === chip.value ? 600 : 400,
-              }}
-            >
-              {chip.label}
-            </button>
-          ))}
+          {TIER_CHIPS.map((chip) => {
+            const active = tierFilter === chip.value;
+            return (
+              <button
+                key={chip.value}
+                onClick={() => handleTier(chip.value)}
+                title={chip.sublabel}
+                style={{
+                  padding: "4px 10px",
+                  fontSize: "11px",
+                  fontFamily: "ui-monospace, monospace",
+                  letterSpacing: "0.3px",
+                  borderRadius: "4px",
+                  border: "1px solid",
+                  cursor: "pointer",
+                  transition: "all 100ms",
+                  borderColor: active ? ACCENT : "var(--qgi-border)",
+                  background: active ? `${ACCENT}18` : "var(--qgi-surface)",
+                  color: active ? ACCENT : "var(--qgi-text-muted)",
+                  fontWeight: active ? 600 : 400,
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "4px",
+                }}
+              >
+                {chip.label}
+                {chip.value && (
+                  <span
+                    style={{
+                      fontSize: "9px",
+                      color: active ? ACCENT : "var(--qgi-text-dim)",
+                      fontWeight: 400,
+                    }}
+                  >
+                    {chip.sublabel}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
 
         {/* Correlation floor chips */}
@@ -243,8 +284,12 @@ export function PatternsSearch({ entries }: Props) {
           marginBottom: "10px",
         }}
       >
-        {filtered.length} pair{filtered.length !== 1 ? "s" : ""}
-        {hasFilters ? " matching" : " in catalogue"}
+        {filtered.length.toLocaleString()} pair{filtered.length !== 1 ? "s" : ""}
+        {hasFilters
+          ? " matching"
+          : tierFilter === ""
+            ? " — leaderboard (top 1,000 by strength)"
+            : ""}
         {pageCount > 1 && ` — page ${page} of ${pageCount}`}
       </p>
 
