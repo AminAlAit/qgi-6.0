@@ -10,6 +10,7 @@ import { withSentryConfig } from "@sentry/nextjs";
  *
  * RETIRED_PRECEDENT_SLUGS is unused; kept for audit trail.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const RETIRED_PRECEDENT_SLUGS = [
   "government_formation",
   "constitutional_change",
@@ -227,6 +228,22 @@ const nextConfig: NextConfig = {
       {
         source: "/blog/ghana-mauritania-mirror",
         destination: "/reports/ghana-mauritania-mirror",
+        permanent: true,
+      },
+
+      // ─── 2026-05-30 — Pair detail demotion ─────────────────────────────
+      // Old pair-detail pages lived at /patterns/{pair_id} where pair_id was
+      // a numeric format like "57-176" or a long-form slug like
+      // "paraguay-south_korea-1963". These now live at /patterns/pair/{iso-iso}.
+      // New 5-segment pattern slugs (e.g. pt-es-1975-2024) are NOT redirected
+      // — they go directly to the new per-pattern detail page.
+      //
+      // Numeric pair IDs (e.g. 57-176): redirect to /patterns so users land
+      // on the catalogue rather than a 404. The numeric format is legacy and
+      // there are no known external inbound links to preserve.
+      {
+        source: "/patterns/:numA(\\d+)-:numB(\\d+)",
+        destination: "/patterns",
         permanent: true,
       },
     ];
