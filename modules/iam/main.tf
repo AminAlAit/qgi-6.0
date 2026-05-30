@@ -445,13 +445,19 @@ resource "aws_iam_role_policy" "stepfunctions" {
           "arn:aws:states:${var.region}:${var.aws_account_id}:execution:qgi-indicator-monthly-updater:*",
         ]
       },
-      # #106 recipe-fleet SFN: batch:submitJob.sync (canary + Map fan-out).
+      # #106 recipe-fleet SFN: batch:submitJob.sync (canary + Map fan-out + bake).
+      # qgi-aws-tf#973 (Sonnet PR #36 round-2 B1): add qgi-bake-te-fleet-run-job*
+      # to the JobDefinition Resource list. The "Bake Frontend Corpus" SFN state
+      # submits this JobDef on the same queue as the walker; without it the SFN
+      # role would get AccessDenied at the bake step despite having SubmitJob on
+      # the walker family.
       {
         Effect = "Allow"
         Action = ["batch:SubmitJob", "batch:DescribeJobs", "batch:TerminateJob"]
         Resource = [
           "arn:aws:batch:${var.region}:${var.aws_account_id}:job-queue/qgi-recipe-fleet-queue",
           "arn:aws:batch:${var.region}:${var.aws_account_id}:job-definition/qgi-recipe-fleet-walker-job*",
+          "arn:aws:batch:${var.region}:${var.aws_account_id}:job-definition/qgi-bake-te-fleet-run-job*",
           "arn:aws:batch:${var.region}:${var.aws_account_id}:job/*",
         ]
       },
