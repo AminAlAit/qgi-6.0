@@ -211,8 +211,8 @@ resource "aws_iam_role_policy" "lambda_execution" {
       # default-workgroup / unbounded-output vector behind the $139 cost incident
       # without affecting any pipeline query.
       {
-        Effect   = "Allow"
-        Action   = ["athena:StartQueryExecution", "athena:GetQueryExecution",
+        Effect = "Allow"
+        Action = ["athena:StartQueryExecution", "athena:GetQueryExecution",
           "athena:GetQueryResults", "athena:StopQueryExecution",
         "athena:ListQueryExecutions", "athena:GetWorkGroup"]
         Resource = "arn:aws:athena:${var.region}:${var.aws_account_id}:workgroup/QGI-Lambda-Workgroup"
@@ -798,5 +798,70 @@ resource "aws_iam_role_policy" "github_actions_frontend_s3_read" {
       Action   = ["s3:GetObject"]
       Resource = "${var.data_lake_bucket_arn}/dashboard/country-risks.json"
     }]
+  })
+}
+
+# ---------------------------------------------------------------------------
+# qgi-aws-tf#973 lane 2 — OIDC role for the TE fleet vintage sync workflow
+#
+# The `sync-te-fleet-vintage.yml` workflow in AminAlAit/qgi-frontend assumes
+# this role via OIDC to `aws s3 sync` a new fleet vintage from
+# `frontend-data/te-fleet-run-*/` into the repo. Scope is intentionally
+# narrow: s3:ListBucket on the bake output prefix + s3:GetObject on the
+# objects under it; no put/delete. The workflow writes the files into the
+# checkout via GITHUB_TOKEN — no S3 write permission needed.
+#
+# The sub claim matches workflow_dispatch from main; the Lambda dispatches
+# this workflow on the main branch ref so the sub matches.
+# ---------------------------------------------------------------------------
+resource "aws_iam_role" "github_actions_frontend_te_fleet_sync" {
+  name = "github-actions-qgi-frontend-te-fleet-sync"
+
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Federated = aws_iam_openid_connect_provider.github_actions.arn }
+      Action    = "sts:AssumeRoleWithWebIdentity"
+      Condition = {
+        StringEquals = {
+          "token.actions.githubusercontent.com:aud" = "sts.amazonaws.com"
+        }
+        StringLike = {
+          "token.actions.githubusercontent.com:sub" = "repo:AminAlAit/qgi-frontend:ref:refs/heads/main"
+        }
+      }
+    }]
+  })
+
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "github_actions_frontend_te_fleet_sync" {
+  name = "qgi-frontend-te-fleet-sync-policy"
+  role = aws_iam_role.github_actions_frontend_te_fleet_sync.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = ["s3:ListBucket"]
+        # ListBucket is bucket-scoped; restrict the listing to the prefix via
+        # the standard `s3:prefix` condition so the workflow can't enumerate
+        # other folders of the data lake.
+        Resource = var.data_lake_bucket_arn
+        Condition = {
+          StringLike = {
+            "s3:prefix" = ["frontend-data/te-fleet-run-*"]
+          }
+        }
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["s3:GetObject"]
+        Resource = "${var.data_lake_bucket_arn}/frontend-data/te-fleet-run-*"
+      },
+    ]
   })
 }
