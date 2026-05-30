@@ -20,13 +20,13 @@ export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
 
   return (
     <PanelShell
-      title="Historical analogs"
+      title="Historical analogues"
       accent={ARCHIVAL_GOLD}
       dataTour="analogs-panel"
       caption={
         hasAnalogs
-          ? `Past situations whose recent pattern most resembles ${country.name} now. Similarity is not prediction; what follows is history about each analog, not a forecast about ${country.name}.`
-          : `We surface the historical situations whose pre-event pattern most resembles a country's recent signals. ${country.name} is not in the current analog corpus.`
+          ? `Past situations whose recent pattern most resembles ${country.name} now. Similarity is not prediction; what follows is history about each analogue, not a forecast about ${country.name}.`
+          : `We surface the historical situations whose pre-event pattern most resembles a country's recent signals. ${country.name} is not in the current analogue corpus.`
       }
     >
       {!hasAnalogs ? (
@@ -41,7 +41,7 @@ export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
             lineHeight: 1.55,
           }}
         >
-          Historical analogs for {country.name} are in development. The current vintage
+          Historical analogues for {country.name} are in development. The current vintage
           covers 60 countries; coverage expands with each refresh.
         </div>
       ) : (

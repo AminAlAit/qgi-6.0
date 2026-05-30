@@ -337,7 +337,7 @@ export function AnalogCard({
               letterSpacing: "0.3px",
             }}
           >
-            Trajectory data not yet curated for this analog.
+            Trajectory data not yet curated for this analogue.
           </div>
         )}
       </div>
@@ -356,7 +356,7 @@ export function AnalogCard({
             letterSpacing: "0.2px",
           }}
         >
-          ⚠ Weak analog: match score below the 70 floor. Interpret with caution.
+          ⚠ Weak analogue: match score below the 70 floor. Interpret with caution.
         </div>
       )}
 

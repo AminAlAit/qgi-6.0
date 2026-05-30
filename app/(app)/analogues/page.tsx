@@ -122,7 +122,7 @@ export default async function NearestAnalogPage({
             &ldquo;this looks most like Tunisia 2008 + Argentina 2015.&rdquo; Pure
             shape-matching across the 71-recipe library. A <strong>similarity</strong>{" "}
             statement, not a forecast: the historical outcome is what happened to the
-            analog country, never a prediction about today&apos;s.
+            analogue country, never a prediction about today&apos;s.
           </p>
         </header>
 

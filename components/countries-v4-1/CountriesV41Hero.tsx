@@ -64,8 +64,8 @@ export function CountriesV41Hero({
         >
           Every country we track, with the recipes its recent signals resemble, the
           indicators behind each score, how it has moved, and its closest historical
-          analogs. Scores measure resemblance to past pre-event conditions, not the chance
-          an event will happen. Open any card for the full country view.
+          analogues. Scores measure resemblance to past pre-event conditions, not the
+          chance an event will happen. Open any card for the full country view.
         </p>
       </div>
     </header>

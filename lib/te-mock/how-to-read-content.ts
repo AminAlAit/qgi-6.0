@@ -196,15 +196,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Matches are similarities, not predictions",
-        body: "Each analog pair shows two countries whose indicator trajectories ran in close parallel over a shared historical window. Structural similarity over the past does not predict that the target country will follow the reference country's future path.",
+        body: "Each analogue pair shows two countries whose indicator trajectories ran in close parallel over a shared historical window. Structural similarity over the past does not predict that the target country will follow the reference country's future path.",
       },
       {
-        title: "Analog scores come from validated recipes",
-        body: "The recipe scores shown alongside analog pairs are drawn from the Recipe Tracker. An analog's relevance depends on whether the shared recipes are validated; the tracker is the source of truth for that.",
+        title: "Analogue scores come from validated recipes",
+        body: "The recipe scores shown alongside analogue pairs are drawn from the Recipe Tracker. An analogue's relevance depends on whether the shared recipes are validated; the tracker is the source of truth for that.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If a recipe that anchored an analog pair is later revised or withdrawn, the pair's displayed context updates. The analog itself stays in the record; its recipe context is corrected.",
+        body: "If a recipe that anchored an analogue pair is later revised or withdrawn, the pair's displayed context updates. The analogue itself stays in the record; its recipe context is corrected.",
       },
       {
         title: "Nothing here is a forecast",

@@ -77,7 +77,7 @@ export function CountryPicker({
           </span>
           {/* V4.1 §1.1: "complete walks" jargon removed. Honest empty-state. */}
           <span>
-            Historical analogs are in development for{" "}
+            Historical analogues are in development for{" "}
             <strong style={{ color: "var(--qgi-text)" }}>{unavailableName}</strong>.{" "}
             Showing the default country in the meantime.
           </span>

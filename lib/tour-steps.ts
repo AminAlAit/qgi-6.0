@@ -453,7 +453,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="picker-panel"]',
     title: "Pick a country, see its rhyme",
     content:
-      "Search for any country in the corpus. The page returns its three closest historical analogues, with what happened to those analog countries listed for context. That history is a fact about the analog, not a prediction about today's country.",
+      "Search for any country in the corpus. The page returns its three closest historical analogues, with what happened to those analogue countries listed for context. That history is a fact about the analogue, not a prediction about today's country.",
     placement: "right",
   },
   {
@@ -462,7 +462,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="analog-results"]',
     title: "Three matches, with outcomes",
     content:
-      "Each match card carries the analog country, the year, a similarity score, and a brief note on what happened next. 'What happened next' is a fact about the analog, not a forecast about today's country. Read it that way and you read it correctly.",
+      "Each match card carries the analogue country, the year, a similarity score, and a brief note on what happened next. 'What happened next' is a fact about the analogue, not a forecast about today's country. Read it that way and you read it correctly.",
     placement: "top",
   },
   {
@@ -519,7 +519,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="generate-comparison-report-button"]',
     title: "A future button, previewed",
     content:
-      "Disabled today, earmarked for a future release. A thinking AI model will read everything QGI knows about the two countries -- every recipe in play, the indicator drivers, the analogs -- and write you a side-by-side intelligence report.",
+      "Disabled today, earmarked for a future release. A thinking AI model will read everything QGI knows about the two countries -- every recipe in play, the indicator drivers, the analogues -- and write you a side-by-side intelligence report.",
     placement: "bottom",
   },
   {

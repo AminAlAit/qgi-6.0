@@ -220,7 +220,7 @@ export default async function ComparePage() {
               accent={CHN}
             />
             <StatTile
-              label="Historical analog overlap"
+              label="Historical analogue overlap"
               big="4 / 7"
               caption="four shared historical pre-event matches"
               accent={PURPLE}
@@ -289,7 +289,7 @@ export default async function ComparePage() {
           >
             We&apos;re currently working on making it possible for you to compare
             countries to one another. Same recipes, same metrics, side by side. Until
-            then, you can compare any country to its closest historical analog via
+            then, you can compare any country to its closest historical analogue via
             <Link
               href={"/analogues" as Route}
               style={{

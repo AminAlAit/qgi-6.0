@@ -170,9 +170,9 @@ export function CountriesHero({
             }}
           >
             Every country in the QGI corpus, surfaced as a per-country TE hub — recipe
-            scores + driving indicators + momentum + nearest analogs + compound view, all
-            cross-referenced into the Risk Board, Compound Risk, and Nearest-Analog views.
-            Click any card to open the country&apos;s hub.
+            scores + driving indicators + momentum + nearest analogues + compound view,
+            all cross-referenced into the Risk Board, Compound Risk, and Nearest-Analogue
+            views. Click any card to open the country&apos;s hub.
           </p>
         </div>
         <div

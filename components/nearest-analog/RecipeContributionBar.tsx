@@ -120,20 +120,13 @@ export function RecipeContributionBar({ contributions }: RecipeContributionBarPr
                   >
                     {c.recipe_label}
                   </span>
-                  <span
-                    style={{
-                      fontSize: "9px",
-                      padding: "1px 6px",
-                      borderRadius: "3px",
-                      border: `1px solid ${badge.color}`,
-                      background: badge.bg,
-                      color: badge.color,
-                      fontFamily: "ui-monospace, monospace",
-                      letterSpacing: "0.3px",
-                    }}
-                  >
-                    {badge.label}
-                  </span>
+                  {/* 2026-05-30 founder ask: status badge removed. Every
+                      contribution row here is by construction a recipe
+                      that's in active rotation — the chip carried zero
+                      signal. The `badge` variable is intentionally left
+                      computed above so the chip can drop back in here
+                      if future statuses (e.g. retired) need surfacing. */}
+                  <span style={{ display: "none" }}>{badge.label}</span>
                 </div>
               </div>
               <div
