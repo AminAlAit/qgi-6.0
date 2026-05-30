@@ -235,13 +235,13 @@ export default function AboutPage() {
               a diagnostician looks for a clinical picture in the historical record.
             </p>
             <p>
-              The closest analogue I found early on was the Saudi-Azeri pair. Two
-              countries from different regions, different governance traditions, and
-              different economic structures, that nonetheless showed striking convergence
-              across governance and economic indicators in the period before significant
-              geopolitical events. That convergence was not a prediction. It was a pattern
-              that surfaced from the data, that a trained analyst could interrogate,
-              contest, or rule out. That is what I wanted QGI to surface.
+              The earliest patterns I found were cross-regional: two countries from
+              different governance traditions and different economic structures that
+              nonetheless showed striking convergence across governance and economic
+              indicators in the years before significant geopolitical events. That
+              convergence was not a prediction. It was a pattern that surfaced from the
+              data, that a trained analyst could interrogate, contest, or rule out. That is
+              what I wanted QGI to surface.
             </p>
             <p>
               Early versions were rough. The platform has gone through six major rebuilds
