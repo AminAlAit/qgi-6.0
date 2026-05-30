@@ -299,6 +299,74 @@ def s3_get_json(s3: Any, bucket: str, key: str) -> dict | None:
 
 
 # ────────────────────────────────────────────────────────────────────────────
+# Panel-parquet helpers (raw values + units + provider)
+# ────────────────────────────────────────────────────────────────────────────
+
+_PANEL_CACHE: dict[str, "pandas.DataFrame"] = {}
+
+
+def _load_panel(panel_root: Path, code: str):
+    """Load + cache a single indicator panel. Returns DataFrame or None."""
+    if code in _PANEL_CACHE:
+        return _PANEL_CACHE[code]
+    import pandas as pd
+    p = panel_root / code
+    if not p.exists():
+        _PANEL_CACHE[code] = None
+        return None
+    try:
+        df = pd.read_parquet(p)
+        _PANEL_CACHE[code] = df
+        return df
+    except Exception:
+        _PANEL_CACHE[code] = None
+        return None
+
+
+def panel_lookup(panel_root: Path, code: str, country: str, year: int) -> tuple[Any, Any, str | None]:
+    """Returns (value_at_year, value_prev_year, provider) for (country, year)."""
+    df = _load_panel(panel_root, code)
+    if df is None:
+        return None, None, None
+    rows = df[(df["country"] == country) & (df["year"] <= year)].sort_values("year")
+    if rows.empty:
+        return None, None, None
+    latest = rows.iloc[-1]
+    prev = rows.iloc[-2] if len(rows) >= 2 else None
+    provider = latest.get("provider") if "provider" in df.columns else None
+    return (
+        float(latest["value"]) if pd.notna(latest["value"]) else None,
+        float(prev["value"]) if (prev is not None and pd.notna(prev["value"])) else None,
+        str(provider) if provider else None,
+    )
+
+
+# Lightweight unit hints from common indicator-code prefixes.
+def unit_hint_for(code: str | None) -> str | None:
+    if not code:
+        return None
+    if code.endswith(".ZS") or code.endswith(".GD.ZS"):
+        return "% of GDP" if ".GD" in code else "%"
+    if code.endswith(".KD") or code.endswith(".CD"):
+        return "USD"
+    if code.endswith(".P5") or "PSRC.P5" in code:
+        return "per 100K population"
+    if code.startswith("v2") or code.startswith("v3"):
+        return "z-score (V-Dem)"
+    if code.endswith(".EST"):
+        return "WGI score"
+    return None
+
+
+def import_pandas():
+    """Lazy import so the bake doesn't require pandas if panels disabled."""
+    global pd
+    import pandas as _pd
+    pd = _pd
+    return _pd
+
+
+# ────────────────────────────────────────────────────────────────────────────
 # Card-v3 builder
 # ────────────────────────────────────────────────────────────────────────────
 
@@ -325,6 +393,8 @@ def build_card_v3(
     indicator_names: dict[str, str],
     tracker_row: dict[str, Any] | None,
     s3_bucket: str,
+    shap_data: dict | None = None,
+    panel_root: Path | None = None,
 ) -> dict:
     """Compose a card-v3 JSON from the walk summary + sidecar artifacts."""
     rid = summary.get("recipe_id")
@@ -440,7 +510,46 @@ def build_card_v3(
         },
         "per_country_scores_pointer": f"scores/{rid}.scores.json",
     }
+
+    # NEW (frontend round-3 §1.5): shape_points + recipe-level SHAP importances
+    if shap_data:
+        card["shape_points"] = _compute_shape_points(shap_data, selected)
+        card["shap_importance_raw"] = shap_data.get("shap_importance_raw") or {}
+        card["shap_importance_normalized"] = shap_data.get("shap_importance_normalized") or {}
+        card["shap_direction_signs"] = shap_data.get("shap_direction_signs") or {}
+        card["per_feature_breakdown"] = shap_data.get("per_feature_breakdown") or {}
+    else:
+        card["shape_points"] = None
+        card["shap_importance_raw"] = {}
+        card["shap_importance_normalized"] = {}
+        card["shap_direction_signs"] = {}
+        card["per_feature_breakdown"] = {}
+
     return card
+
+
+def _compute_shape_points(shap_data: dict, selected: list[str]) -> list[float]:
+    """Canonical 12-point z-score shape per recipe — composite of per-feature
+    last_z + mean_z + std_z + slope across the selected indicators, weighted by
+    SHAP normalized importance. Approximates the recipe's archetypal shape.
+    (frontend §1.5 ask; real implementation belongs in score_countries upgrade.)
+    """
+    pfb = shap_data.get("per_feature_breakdown") or {}
+    weights = shap_data.get("shap_importance_normalized") or {}
+    if not pfb or not selected:
+        return []
+    # Build 12-point trajectory by interpolating from per-feature (last_z, mean_z, std_z, slope)
+    # Each feature contributes: y(t) = mean_z + slope * (t - 5.5)  for t in 0..11
+    pts = [0.0] * 12
+    total_w = sum((weights.get(c) or 0) for c in selected) or 1.0
+    for c in selected:
+        b = pfb.get(c) or {}
+        w = (weights.get(c) or 0) / total_w
+        mean = b.get("mean_z") or 0
+        slope = (b.get("slope") or 0) / 12.0  # spread slope across 12 points
+        for t in range(12):
+            pts[t] += w * (mean + slope * (t - 5.5))
+    return pts
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -453,9 +562,17 @@ def build_scores_file(
     country_scores: dict | None,
     countries: dict[str, dict[str, str]],
     indicator_names: dict[str, str],
+    recipe_similarity: dict | None = None,
+    sensitivity_data: dict | None = None,
+    momentum_data: dict | None = None,
+    nearest_analog_data: dict | None = None,
+    panel_root: Path | None = None,
+    platform_roster: set[str] | None = None,
 ) -> dict | None:
     """Compose the scores file from country-scores.json (#967 output) with iso2 +
-    indicator name + score_pp backfill."""
+    indicator name + score_pp backfill + frontend round-3 enrichments:
+    cosine_similarity_S + zone + sensitivity_per_indicator + momentum_scores_by_year +
+    indicator_trajectory_composite_12q + countries_not_scored_iso."""
     if not country_scores:
         return None
     raw = country_scores.get("scores") or []
@@ -481,35 +598,77 @@ def build_scores_file(
                 # Provider hint via code-prefix heuristic (mirrors frontend's inferProvider)
                 "provider": _provider_for(code),
             })
-        # Indicator movement with friendly names
+        # Indicator movement with friendly names + raw values from panel parquets
         movement = []
+        eval_year = e.get("eval_year")
         for m in (e.get("indicator_movement") or []):
             code = m.get("indicator") or m.get("code")
+            latest, prior, panel_provider = (None, None, None)
+            if panel_root and code and eval_year and name:
+                latest, prior, panel_provider = panel_lookup(panel_root, code, name, int(eval_year))
             movement.append({
                 "indicator_code": code,
                 "indicator_name": indicator_names.get(code) if code else None,
                 "trajectory_12q": m.get("trajectory_12q") or [],
                 "z_score_change": m.get("z_score_change"),
-                "provider": _provider_for(code),
-                # Raw values + unit pending score_countries upgrade (frontend §1.4 ask)
-                "latest_raw_value": m.get("latest_raw_value"),
-                "prior_raw_value": m.get("prior_raw_value"),
-                "unit": m.get("unit"),
+                # Provider: prefer panel-resolved (explicit) over heuristic
+                "provider": panel_provider or _provider_for(code),
+                # Raw values from panel parquet (frontend §1.4)
+                "latest_raw_value": latest,
+                "prior_raw_value": prior,
+                "unit": unit_hint_for(code),
             })
-        # Nearest analogs
+
+        # Indicator trajectory composite (frontend §1.1) — mean across selected
+        # indicators' trajectory_12q.
+        trajectories = [mv["trajectory_12q"] for mv in movement if mv["trajectory_12q"]]
+        if trajectories:
+            n_pts = min(len(t) for t in trajectories)
+            indicator_trajectory_composite = [
+                sum(t[i] for t in trajectories) / len(trajectories)
+                for i in range(n_pts)
+            ]
+        else:
+            indicator_trajectory_composite = []
+
+        # Nearest analogs — enrichment via secondary_recipe_ids (cross-recipe)
         analogs = []
         for a in (e.get("nearest_analogs") or []):
             an_name = a.get("country") or a.get("name") or ""
             an_iso2, _, _ = normalize_iso(an_name, countries)
+            an_year = a.get("year")
+            # secondary_recipe_ids: other recipes that also rate this analog
+            # highly (only meaningful at country-level — at country×year level
+            # we cannot trivially join, so this is a heuristic for now).
+            secondary = []  # filled later via cross-recipe enrichment pass
             analogs.append({
                 "country": an_name,
                 "country_iso2": an_iso2,
-                "year": a.get("year"),
+                "year": an_year,
                 "match_score": a.get("match_score") or a.get("similarity"),
                 "weak_analog": bool(a.get("weak_analog", False)),
+                "what_happened_next": None,  # research workstream (ticket #974)
+                "indicator_trajectory_12q": [],  # filled if pre-event window can be derived
+                "secondary_recipe_ids": secondary,
             })
+
         score = e.get("score")
         score_pp = round(100.0 * (n - rank) / max(n - 1, 1), 2) if n > 1 else 50.0
+
+        # Cosine similarity + zone from recipe-similarity-scores
+        rs_entry = ((recipe_similarity or {}).get("scores") or {}).get(name) or {}
+        cosine_S = rs_entry.get("cosine_similarity_S")
+        zone = rs_entry.get("zone")
+        zone_label = rs_entry.get("zone_label")
+
+        # Sensitivity per indicator (frontend §1.4 marginal_points_per_unit)
+        sens_pi = (((sensitivity_data or {}).get("sensitivity") or {}).get(name) or [])
+
+        # Momentum scores_by_year (frontend §1.4 — vintage-1 multi-year history!)
+        mom_entry = ((momentum_data or {}).get("results") or {}).get(name) or {}
+        scores_by_year = mom_entry.get("scores_by_year") or {}
+        momentum_label = mom_entry.get("label") or mom_entry.get("trend")
+
         entries.append({
             "iso": iso3,
             "iso2": iso2,
@@ -518,13 +677,29 @@ def build_scores_file(
             "score": score,
             "rank": rank,
             "score_pp": score_pp,
-            "eval_year": e.get("eval_year"),
+            "eval_year": eval_year,
             "in_evidence_base": bool(e.get("in_evidence_base", False)),
             "delta_vs_prior_vintage": None,  # first vintage
             "shap_attribution": shap_attr,
             "indicator_movement": movement,
+            "indicator_trajectory_composite_12q": indicator_trajectory_composite,
             "nearest_analogs": analogs,
+            # NEW (frontend round-3 enrichments):
+            "cosine_similarity_S": cosine_S,
+            "zone": zone,
+            "zone_label": zone_label,
+            "sensitivity_per_indicator": sens_pi,
+            "momentum_scores_by_year": scores_by_year,
+            "momentum_label": momentum_label,
         })
+
+    # countries_not_scored_iso (frontend §1.2) — roster diff
+    scored_names = {e["name"] for e in entries}
+    not_scored: list[dict] = []
+    if platform_roster:
+        for full_name in (platform_roster - scored_names):
+            ns_iso2, _, _ = normalize_iso(full_name, countries)
+            not_scored.append({"name": full_name, "iso2": ns_iso2})
 
     return {
         "recipe_id": rid,
@@ -533,7 +708,11 @@ def build_scores_file(
                           or country_scores.get("walked_at_utc")
                           or datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "n_countries_scored": n,
+        "n_countries_not_scored": len(not_scored),
+        "countries_not_scored": not_scored,  # frontend §1.2
+        "countries_not_scored_iso": [c["iso2"] for c in not_scored if c["iso2"]],
         "train_auc": country_scores.get("train_auc"),
+        "cv_auc_full": country_scores.get("cv_auc_full"),
         "scoring_method": "XGBoost refit + SHAP TreeExplainer (per #967)",
         "scores": entries,
     }
@@ -824,6 +1003,8 @@ def main() -> int:
     ap.add_argument("--recipe-tracker", type=Path, required=True)
     ap.add_argument("--indicator-catalog", type=Path, required=True)
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
+    ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
+                    help="Local panel parquet root for raw-value lookups (frontend §1.4).")
     args = ap.parse_args()
 
     LOG.info("Loading resources...")
@@ -848,21 +1029,42 @@ def main() -> int:
     all_cards: dict[str, dict] = {}
     all_scores: dict[str, dict] = {}
 
+    # Platform roster from countries.json for countries_not_scored_iso derivation
+    platform_roster = {entry["name"] for entry in countries.values()}
+
+    # Eagerly import pandas if panel root exists (raw-value lookups need it)
+    if args.panel_root.exists():
+        import_pandas()
+
     def process_one(rid: str) -> tuple[str, dict | None, dict | None]:
         summary = s3_get_json(s3, args.bucket, f"ml-results/{rid}/f-ml-1-poc-summary.json")
         if not summary:
             return rid, None, None
+        # Pull all sidecar artifacts in parallel (per-recipe inner-parallel via S3 SDK)
         sensitivity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/sensitivity-{rid}-2026.json")
         country_scores = s3_get_json(s3, args.bucket, f"ml-results/{rid}/country-scores.json")
+        recipe_similarity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/recipe-similarity-scores-{rid}-2026.json")
+        nearest_analog_full = s3_get_json(s3, args.bucket, f"ml-results/{rid}/nearest-analog-{rid}-2026.json")
+        momentum = s3_get_json(s3, args.bucket, f"ml-results/{rid}/momentum-{rid}-2026.json")
+        shap_imp = s3_get_json(s3, args.bucket, f"ml-results/{rid}/shap-importances-{rid}.json")
         tracker_row = tracker.get(rid)
-        card = build_card_v3(summary, sensitivity, indicator_names, tracker_row, args.bucket)
-        scores_file = build_scores_file(rid, args.vintage, country_scores, countries, indicator_names)
+        card = build_card_v3(
+            summary, sensitivity, indicator_names, tracker_row, args.bucket,
+            shap_data=shap_imp, panel_root=args.panel_root,
+        )
+        scores_file = build_scores_file(
+            rid, args.vintage, country_scores, countries, indicator_names,
+            recipe_similarity=recipe_similarity, sensitivity_data=sensitivity,
+            momentum_data=momentum, nearest_analog_data=nearest_analog_full,
+            panel_root=args.panel_root if args.panel_root.exists() else None,
+            platform_roster=platform_roster,
+        )
         if scores_file:
             card["score_distribution"] = compute_score_distribution(scores_file)
         return rid, card, scores_file
 
     LOG.info("Building cards + scores per recipe (parallel S3 fetches)...")
-    with ThreadPoolExecutor(max_workers=10) as ex:
+    with ThreadPoolExecutor(max_workers=8) as ex:
         for rid, card, scores_file in ex.map(process_one, recipe_ids):
             if card is None:
                 LOG.warning("  %s: no summary; skipped", rid)
@@ -874,6 +1076,58 @@ def main() -> int:
                 (args.output_dir / "scores" / f"{rid}.scores.json").write_text(json.dumps(scores_file, indent=2, default=str))
             else:
                 LOG.info("  %s: no country-scores.json (likely pre-image-rebuild walk; scores skipped)", rid)
+
+    # Cross-recipe enrichment: fill secondary_recipe_ids on each analog by
+    # looking up which OTHER recipes also have the same (analog_country, year)
+    # as a high-score analog.
+    LOG.info("Cross-recipe secondary_recipe_ids enrichment...")
+    analog_to_recipes: dict[tuple, list[str]] = {}
+    for rid, sf in all_scores.items():
+        for e in sf.get("scores", []):
+            for a in e.get("nearest_analogs", []):
+                key = (a.get("country"), a.get("year"))
+                if key[0] and key[1]:
+                    analog_to_recipes.setdefault(key, []).append(rid)
+    for rid, sf in all_scores.items():
+        for e in sf.get("scores", []):
+            for a in e.get("nearest_analogs", []):
+                key = (a.get("country"), a.get("year"))
+                # Dedup while preserving order
+                seen = set()
+                others = []
+                for r in analog_to_recipes.get(key, []):
+                    if r != rid and r not in seen:
+                        others.append(r)
+                        seen.add(r)
+                a["secondary_recipe_ids"] = others[:5]
+        (args.output_dir / "scores" / f"{rid}.scores.json").write_text(json.dumps(sf, indent=2, default=str))
+
+    # Emit country-rank-history.json (frontend §1.4 highest priority — vintage 1)
+    LOG.info("Emitting country-rank-history.json (vintage-1)...")
+    rank_history_rows: list[dict] = []
+    for rid, sf in all_scores.items():
+        for e in sf.get("scores", []):
+            rank_history_rows.append({
+                "vintage": args.vintage,
+                "recipe_id": rid,
+                "country": e["name"],
+                "country_iso2": e.get("iso2"),
+                "score": e.get("score"),
+                "rank": e.get("rank"),
+                "n_countries_scored": sf.get("n_countries_scored"),
+            })
+    rank_history = {
+        "vintage": args.vintage,
+        "produced_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "schema_note": "Append-only across vintages. Cross-vintage delta panels join by (recipe_id, country) and order by vintage.",
+        "n_rows": len(rank_history_rows),
+        "rows": rank_history_rows,
+    }
+    (args.output_dir / "countries").mkdir(exist_ok=True)
+    (args.output_dir / "countries" / "country-rank-history.json").write_text(
+        json.dumps(rank_history, indent=2, default=str)
+    )
+    LOG.info("  %d rank-history rows emitted", len(rank_history_rows))
 
     LOG.info("Built %d cards, %d scores files", len(all_cards), len(all_scores))
 
