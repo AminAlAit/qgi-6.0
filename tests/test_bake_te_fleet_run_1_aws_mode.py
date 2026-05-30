@@ -226,3 +226,11 @@ class TestResolveReferenceInput:
         s3 = MagicMock()
         with pytest.raises(ValueError, match="Malformed S3 URI"):
             _resolve_reference_input("s3://bucket-only", s3)
+
+    def test_s3_uri_empty_key_raises(self):
+        """Sonnet #133 BLOCK: `s3://bucket/` passes the slash check but yields
+        an empty key. Fail pre-flight here, not as an opaque boto3 error."""
+        s3 = MagicMock()
+        with pytest.raises(ValueError, match="key is empty"):
+            _resolve_reference_input("s3://bucket/", s3)
+        s3.download_file.assert_not_called()

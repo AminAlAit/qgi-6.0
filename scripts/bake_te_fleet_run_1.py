@@ -184,6 +184,11 @@ def _resolve_reference_input(arg_value: str | Path, s3_client: Any) -> Path:
     if "/" not in after_scheme:
         raise ValueError(f"Malformed S3 URI: {s!r} (expected s3://bucket/key)")
     bucket, _, key = after_scheme.partition("/")
+    # Sonnet #133 BLOCK fix: `s3://bucket/` passes the slash check but yields
+    # an empty key, which boto3 would dispatch as an opaque mid-bake S3 error
+    # instead of failing pre-flight here.
+    if not key:
+        raise ValueError(f"Malformed S3 URI: {s!r} (key is empty after bucket name)")
     suffix = Path(key).suffix or ".tmp"
     # Use a NamedTemporaryFile with delete=False so it survives until process exit.
     import tempfile
