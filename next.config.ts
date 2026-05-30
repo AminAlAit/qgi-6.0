@@ -153,6 +153,19 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
+      // 2026-05-30 — /nearest-analog renamed to /analogues (British spelling,
+      // founder-ratified). 308 preserves bookmarks and any external links.
+      {
+        source: "/nearest-analog",
+        destination: "/analogues",
+        permanent: true,
+      },
+      {
+        source: "/nearest-analog/:path*",
+        destination: "/analogues/:path*",
+        permanent: true,
+      },
+
       // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
       // (catalog ledger) was deleted; its AUC column reborn as the per-card
       // Confidence badge on /recipes. Bookmarks preserved here.

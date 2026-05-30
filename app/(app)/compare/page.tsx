@@ -7,7 +7,7 @@
  * face-offs) styled to look like a professional comparative-analytics
  * surface even at 8px blur. A centered overlay sits on top with the
  * founder-authored "Coming soon" message and a deflection link to the
- * Nearest Analog page.
+ * Analogues page.
  *
  * The whole surface is height-constrained to 100% of the main column
  * with overflow:hidden so neither the user nor the visible message ever
@@ -291,14 +291,14 @@ export default async function ComparePage() {
             countries to one another. Same recipes, same metrics, side by side. Until
             then, you can compare any country to its closest historical analog via
             <Link
-              href={"/nearest-analog" as Route}
+              href={"/analogues" as Route}
               style={{
                 color: "var(--qgi-accent)",
                 textDecoration: "none",
                 marginLeft: "5px",
               }}
             >
-              Nearest Analog
+              Analogues
             </Link>
             .
           </p>

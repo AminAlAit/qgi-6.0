@@ -30,7 +30,7 @@ export interface QgiTourStep extends Step {
     | "/countries"
     | "/countries/sdn"
     | "/risk-board"
-    | "/nearest-analog"
+    | "/analogues"
     | "/compare"
     | "/patterns"
     | "/patterns/paraguay-south_korea-1963";
@@ -356,7 +356,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="analogs-panel"]',
     title: "Closest historical rhymes",
     content:
-      "The three past cases whose trajectories most resemble this country's recent shape. Open Nearest Analog from the sidebar to explore the full picker; this panel is the country-detail shorthand.",
+      "The three past cases whose trajectories most resemble this country's recent shape. Open Analogues from the sidebar to explore the full picker; this panel is the country-detail shorthand.",
     placement: "top",
   },
   {
@@ -432,13 +432,13 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   // down. Tour-step authoring will return once the page is rejuvenated as
   // 'Compound Negative-Event Density' per the Stats/ML trio paper.
 
-  // ─── /nearest-analog — 5 steps, ordered top-to-bottom ────────────────────
+  // ─── /analogues — 5 steps, ordered top-to-bottom ────────────────────────
   // Visual order on page: h1 → picker (main column top) → results → recipe
   // contributions (still main column, below results) → methodology box (sticky
   // side panel, anchored top-right). Methodology box goes last in the tour
   // because it is the closing reference card.
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "a",
     target: "h1",
     title: "Today's shape, in history",
@@ -448,16 +448,16 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="picker-panel"]',
     title: "Pick a country, see its rhyme",
     content:
-      "Search for any country in the corpus. The page returns its three closest historical analogs, with what happened to those analog countries listed for context. That history is a fact about the analog, not a prediction about today's country.",
+      "Search for any country in the corpus. The page returns its three closest historical analogues, with what happened to those analog countries listed for context. That history is a fact about the analog, not a prediction about today's country.",
     placement: "right",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "b",
     target: '[data-tour="analog-results"]',
     title: "Three matches, with outcomes",
@@ -466,7 +466,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="recipe-contributions"]',
     title: "Which recipes pulled the match",
@@ -475,21 +475,21 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="analog-methodology-box"]',
     title: "Resemblance, never forecast",
     content:
-      "If you read one statement on this site, read this panel's four. Analog matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
+      "If you read one statement on this site, read this panel's four. Analogues matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
     placement: "left",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
     content:
-      "Every page has this button. It opens a quiet reference card with the four ground rules. Analog matches are similarities, not forward predictions -- open the rules on any page when you need to re-anchor.",
+      "Every page has this button. It opens a quiet reference card with the four ground rules. Analogues matches are similarities, not forward predictions -- open the rules on any page when you need to re-anchor.",
     placement: "bottom",
   },
 

@@ -35,7 +35,7 @@ const STATIC_ROUTES: Array<{
   // V4.1 canonical family pages (promoted 2026-05-28).
   // /signals and /precedents are deleted; /recipes, /countries, /patterns
   // are now V4.1 canonical. /risk-board, /compare, /compound-risk,
-  // /nearest-analog are new surfaces added in the V4.1 promo.
+  // /analogues are new surfaces added in the V4.1 promo.
   { path: "/dashboard", changeFrequency: "daily", priority: 0.95 },
   { path: "/recipes", changeFrequency: "weekly", priority: 0.9 },
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
@@ -44,7 +44,7 @@ const STATIC_ROUTES: Array<{
   // /compound-risk taken down 2026-05-30; sitemap entry removed.
   // Redirect 308 → /risk-board.
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
-  { path: "/nearest-analog", changeFrequency: "weekly", priority: 0.6 },
+  { path: "/analogues", changeFrequency: "weekly", priority: 0.6 },
   // /recipe-tracker route deleted 2026-05-29 — folded into /recipes via
   // the per-card Confidence badge. The blog post at /blog/recipe-tracker
   // is unaffected (separate route, audience-facing program update).

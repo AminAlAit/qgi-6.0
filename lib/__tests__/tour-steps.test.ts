@@ -21,7 +21,7 @@ const ALL_TOUR_PAGES = new Set([
   "/countries",
   "/countries/sdn",
   "/risk-board",
-  "/nearest-analog",
+  "/analogues",
   "/compare",
   "/patterns",
   "/patterns/paraguay-south_korea-1963",
