@@ -524,6 +524,50 @@ resource "aws_cloudwatch_log_group" "recipe_fleet_frontend_sync" {
   tags              = var.tags
 }
 
+# Sonnet PR #36 F2 (BLOCK fix): the shared lambda_execution_role has NO
+# secretsmanager:GetSecretValue. The frontend-sync Lambda needs to read the
+# GitHub PAT to dispatch workflows. Following the existing pattern
+# (modules/pipeline/bake_trigger.tf:43-73) we give this Lambda a dedicated
+# tight-scoped role with CloudWatch Logs + one Secrets Manager read.
+data "aws_secretsmanager_secret" "github_frontend_dispatch_pat" {
+  # Created in modules/pipeline/bake_trigger.tf for the existing
+  # qgi-frontend-bake-trigger Lambda. Same PAT works for any workflow
+  # dispatch on qgi-frontend (actions:write scope).
+  name = "qgi-github-frontend-dispatch-pat"
+}
+
+resource "aws_iam_role" "recipe_fleet_frontend_sync" {
+  name = "qgi-recipe-fleet-frontend-sync-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [{
+      Effect    = "Allow"
+      Principal = { Service = "lambda.amazonaws.com" }
+      Action    = "sts:AssumeRole"
+    }]
+  })
+  tags = var.tags
+}
+
+resource "aws_iam_role_policy" "recipe_fleet_frontend_sync" {
+  role = aws_iam_role.recipe_fleet_frontend_sync.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect   = "Allow"
+        Action   = ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"]
+        Resource = "arn:aws:logs:*:${var.aws_account_id}:log-group:/aws/lambda/qgi-recipe-fleet-frontend-sync*"
+      },
+      {
+        Effect   = "Allow"
+        Action   = ["secretsmanager:GetSecretValue"]
+        Resource = data.aws_secretsmanager_secret.github_frontend_dispatch_pat.arn
+      },
+    ]
+  })
+}
+
 resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
   function_name    = "qgi-recipe-fleet-frontend-sync"
   handler          = "lambda_function.lambda_handler"
@@ -533,7 +577,7 @@ resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
   memory_size      = 256
   filename         = data.archive_file.recipe_fleet_frontend_sync_placeholder.output_path
   source_code_hash = data.archive_file.recipe_fleet_frontend_sync_placeholder.output_base64sha256
-  role             = var.lambda_execution_role_arn
+  role             = aws_iam_role.recipe_fleet_frontend_sync.arn
 
   environment {
     variables = {
@@ -558,14 +602,19 @@ resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
 #
 # Reuses the `qgi-recipe-fleet:latest` image (same arm64 build that runs
 # the walker), but with a different command: invoke
-# `qgi-ml/scripts/bake_te_fleet_run_1.py` in AWS mode (BAKE_MODE=aws). The
-# script reads walk artifacts from S3, applies all bucket-A enrichments,
-# writes the corpus to S3 under frontend-data/te-fleet-run-{N}/.
+# `bake_te_fleet_run_1.py` in AWS mode (BAKE_MODE=aws). The script reads
+# walk artifacts from S3, applies all bucket-A enrichments, writes the
+# corpus to S3 under frontend-data/te-fleet-run-{N}/.
 #
-# Note: the image must contain bake_te_fleet_run_1.py. The current
-# Dockerfile already vendors qgi-ml into /app/qgi-ml so this works without
-# a Dockerfile change; if a future rebuild moves qgi-ml out, this script
-# path needs to be re-aligned.
+# Script path: the Dockerfile (qgi-pipeline/batch/recipe-fleet/Dockerfile)
+# does `COPY --from=qgi-ml scripts/ /app/scripts/` so the bake script lives
+# at `/app/scripts/bake_te_fleet_run_1.py` (Sonnet PR #36 F1 fix).
+#
+# Reference files (countries / recipe-tracker / indicator-catalog) are NOT
+# vendored in the image. The bake script accepts s3:// URIs for these args
+# (qgi-ml feat/bake-s3-reference-paths-973) and downloads them at startup.
+# One-time founder prereq before apply: aws s3 cp the 3 reference files to
+# s3://{bucket}/reference/.
 #
 # 2 vCPU / 4 GB is right-sized — the bake is single-threaded, I/O-bound
 # (S3 fetch ~150 files), runs ~1 min.
@@ -587,11 +636,11 @@ resource "aws_batch_job_definition" "bake_te_fleet_run" {
   container_properties = jsonencode({
     image = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-recipe-fleet:latest"
     command = [
-      "python", "/app/qgi-ml/scripts/bake_te_fleet_run_1.py",
+      "python", "/app/scripts/bake_te_fleet_run_1.py",
       "--bucket", var.data_lake_bucket_name,
-      "--countries", "/app/qgi-ml/data/countries.json",
-      "--recipe-tracker", "/app/qgi-ml/data/recipe-tracker.json",
-      "--indicator-catalog", "/app/qgi-ml/data/indicator-catalog-detailed.md",
+      "--countries", "s3://${var.data_lake_bucket_name}/reference/countries.json",
+      "--recipe-tracker", "s3://${var.data_lake_bucket_name}/reference/recipe-tracker.json",
+      "--indicator-catalog", "s3://${var.data_lake_bucket_name}/reference/indicator-catalog-detailed.md",
     ]
 
     # Reuse the walker's job role: same S3 read on parquet panels (used for
@@ -642,17 +691,33 @@ resource "aws_iam_role_policy" "recipe_fleet_bake_extra" {
   policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
+      # PutObject for the bake outputs. Sonnet F3 (NIT): dropped
+      # PutObjectAcl — the bucket is single-account; ACLs not used.
       {
-        Effect = "Allow"
-        Action = [
-          "s3:PutObject",
-          "s3:PutObjectAcl",
-          "s3:ListBucket",
-        ]
-        Resource = [
-          var.data_lake_bucket_arn,
-          "${var.data_lake_bucket_arn}/frontend-data/te-fleet-run-*",
-        ]
+        Effect   = "Allow"
+        Action   = ["s3:PutObject"]
+        Resource = "${var.data_lake_bucket_arn}/frontend-data/te-fleet-run-*"
+      },
+      # ListBucket on the bucket with prefix condition so the refuse-overwrite
+      # guard (_refuse_overwrite_if_baked) can probe for an existing MANIFEST.
+      {
+        Effect   = "Allow"
+        Action   = ["s3:ListBucket"]
+        Resource = var.data_lake_bucket_arn
+        Condition = {
+          StringLike = {
+            "s3:prefix" = ["frontend-data/te-fleet-run-*"]
+          }
+        }
+      },
+      # GetObject on the reference/ prefix so the bake can download the 3
+      # reference files (countries.json, recipe-tracker.json, indicator-
+      # catalog-detailed.md) at startup. Founder syncs these once with
+      # `aws s3 cp` per the JobDef command comment.
+      {
+        Effect   = "Allow"
+        Action   = ["s3:GetObject"]
+        Resource = "${var.data_lake_bucket_arn}/reference/*"
       },
     ]
   })
