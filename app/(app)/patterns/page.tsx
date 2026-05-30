@@ -21,8 +21,10 @@ import type { Metadata } from "next";
 import { Layers } from "lucide-react";
 import {
   getCatalogue,
+  getPartnersIndex,
   getFeaturedPairs,
   getCascadeVintage,
+  getTierCounts,
 } from "@/lib/cascade-patterns/patterns-data";
 import { FeaturedPairsStrip } from "@/components/patterns-v4/FeaturedPairsStrip";
 import { PatternsSearch } from "@/components/patterns-v4/PatternsSearch";
@@ -35,8 +37,10 @@ export const metadata: Metadata = {
 
 export default function PatternsPage() {
   const catalogue = getCatalogue();
+  const fullCorpus = getPartnersIndex();
   const featured = getFeaturedPairs();
   const vintage = getCascadeVintage();
+  const tierCounts = getTierCounts();
 
   return (
     <div
@@ -105,9 +109,7 @@ export default function PatternsPage() {
           >
             <span>Cascade vintage: {vintage.label}</span>
             <span style={{ opacity: 0.4 }}>·</span>
-            <span>
-              {catalogue.length} pair{catalogue.length !== 1 ? "s" : ""}
-            </span>
+            <span>{fullCorpus.length.toLocaleString()} pairs</span>
           </div>
         </header>
 
@@ -151,7 +153,11 @@ export default function PatternsPage() {
           >
             Full catalogue
           </h2>
-          <PatternsSearch entries={catalogue} />
+          <PatternsSearch
+            entries={catalogue}
+            fullCorpus={fullCorpus}
+            tierCounts={tierCounts}
+          />
         </section>
 
         {/* ── Footer ───────────────────────────────────────────────────────── */}

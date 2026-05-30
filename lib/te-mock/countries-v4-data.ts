@@ -27,8 +27,10 @@
 import recipeTracker from "@/data/recipe-tracker.json";
 import { getRecipe, type TrackerRecipe, type RecipeStatus } from "@/lib/te-mock/recipes";
 import {
+  loadAllScores,
   loadAnalogs,
   loadCardV3,
+  loadCountryIndex,
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
@@ -2890,10 +2892,14 @@ function inferProvider(code: string | null | undefined): string {
 function resolveProvider(bakeProvider: string | null | undefined, code: string): string {
   if (!bakeProvider) return inferProvider(code);
   switch (bakeProvider.toUpperCase()) {
-    case "VDEM": return "V-Dem";
-    case "WB": return "World Bank";
-    case "WGI": return "World Bank WGI";
-    default: return bakeProvider;
+    case "VDEM":
+      return "V-Dem";
+    case "WB":
+      return "World Bank";
+    case "WGI":
+      return "World Bank WGI";
+    default:
+      return bakeProvider;
   }
 }
 

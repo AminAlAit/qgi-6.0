@@ -281,7 +281,7 @@ export function buildIndicatorCorpusStack(): IndicatorCorpusStat[] {
   const PROVIDER_COLORS: Record<string, string> = {
     "V-Dem": "#7B5EE6",
     "World Bank": "#38bdf8",
-    "FAO": "#E68F29",
+    FAO: "#E68F29",
   };
   const DEFAULT_COLOR = "#3FBF8F";
   try {

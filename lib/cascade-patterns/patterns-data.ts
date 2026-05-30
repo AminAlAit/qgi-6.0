@@ -134,7 +134,11 @@ let _catalogueCache: CatalogueEntry[] | null = null;
 export function getCatalogue(): CatalogueEntry[] {
   if (_catalogueCache) return _catalogueCache;
 
-  const raw = rankingRaw as unknown as { generated_at: string; limit: number; results: RankingResult[] };
+  const raw = rankingRaw as unknown as {
+    generated_at: string;
+    limit: number;
+    results: RankingResult[];
+  };
 
   // Deduplicate: keep the highest-PPS window per country_a + country_b pair
   const best = new Map<string, RankingResult>();
@@ -199,8 +203,7 @@ export function getPartnersIndex(): CatalogueEntry[] {
     for (const p of partners) {
       const idA = parseInt(keyId);
       const idB = p.p;
-      const [caId, cbId] =
-        idA <= idB ? [keyId, String(idB)] : [String(idB), keyId];
+      const [caId, cbId] = idA <= idB ? [keyId, String(idB)] : [String(idB), keyId];
       const slug = `${caId}-${cbId}`;
       if (seen.has(slug)) continue;
       seen.add(slug);
@@ -240,7 +243,7 @@ export function getPartnersIndex(): CatalogueEntry[] {
 export function getFeaturedPairs(): FeaturedPair[] {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const raw = featuredRaw as any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   return (raw.pairs ?? []) as FeaturedPair[];
 }
 
@@ -272,4 +275,29 @@ export function getPairBySlug(slug: string): CatalogueEntry | null {
   // Fall back to partners index
   const idx = getPartnersIndex();
   return idx.find((e) => e.slug === slug) ?? null;
+}
+
+// ---------------------------------------------------------------------------
+// Tier counts — pre-computed from the full partners index corpus
+// ---------------------------------------------------------------------------
+
+export interface TierCounts {
+  XL: number;
+  L: number;
+  M: number;
+  S: number;
+}
+
+let _tierCountsCache: TierCounts | null = null;
+
+export function getTierCounts(): TierCounts {
+  if (_tierCountsCache) return _tierCountsCache;
+  const idx = getPartnersIndex();
+  const counts: TierCounts = { XL: 0, L: 0, M: 0, S: 0 };
+  for (const e of idx) {
+    const t = e.tier as keyof TierCounts;
+    if (t in counts) counts[t]++;
+  }
+  _tierCountsCache = counts;
+  return counts;
 }
