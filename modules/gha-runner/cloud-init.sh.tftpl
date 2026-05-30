@@ -16,8 +16,25 @@ set -euo pipefail
 REPO="${repo}"
 RUNNER_LABEL="${runner_label}"
 PAT_SECRET_NAME="${runner_pat_secret_name}"
-REGION="$(curl -s --max-time 5 http://169.254.169.254/latest/meta-data/placement/region || echo eu-central-1)"
-INSTANCE_ID="$(curl -s --max-time 5 http://169.254.169.254/latest/meta-data/instance-id || echo unknown)"
+
+# Sonnet B2: Launch Template enforces IMDSv2 (http_tokens=required). v1-style
+# token-less metadata requests get HTTP 401. Standard pattern: mint a session
+# token first, then attach the X-aws-ec2-metadata-token header to every read.
+# Without this fix, REGION/INSTANCE_ID fall back to placeholders and every
+# Spot-replaced instance collides on the runner name "...-unknown".
+IMDS_TOKEN="$(curl -s --max-time 5 \
+  -X PUT \
+  -H 'X-aws-ec2-metadata-token-ttl-seconds: 21600' \
+  http://169.254.169.254/latest/api/token || echo '')"
+IMDS_HDR=()
+if [ -n "$IMDS_TOKEN" ]; then
+  IMDS_HDR=(-H "X-aws-ec2-metadata-token: $IMDS_TOKEN")
+fi
+
+REGION="$(curl -s --max-time 5 "$${IMDS_HDR[@]}" \
+  http://169.254.169.254/latest/meta-data/placement/region || echo eu-central-1)"
+INSTANCE_ID="$(curl -s --max-time 5 "$${IMDS_HDR[@]}" \
+  http://169.254.169.254/latest/meta-data/instance-id || echo unknown)"
 RUNNER_NAME="qgi-runner-$${RUNNER_LABEL}-$${INSTANCE_ID}"
 RUNNER_HOME="/opt/actions-runner"
 
@@ -46,11 +63,11 @@ log "Installing actions-runner..."
 mkdir -p "$RUNNER_HOME"
 cd "$RUNNER_HOME"
 
-# Resolve latest runner version from the GitHub API (use the runner-releases
-# repo so we don't need auth for this read).
-RUNNER_VERSION="$(curl -sL https://api.github.com/repos/actions/runner/releases/latest \
-  | jq -r .tag_name | sed 's/^v//')"
-log "Runner version: $RUNNER_VERSION"
+# Sonnet nit: pin RUNNER_VERSION (was resolved from /releases/latest at boot,
+# making replaced instances pick up new versions silently). Bump deliberately
+# in the module when GitHub releases a known-good newer version.
+RUNNER_VERSION="2.319.1"
+log "Runner version: $RUNNER_VERSION (pinned)"
 
 curl -sLo runner.tar.gz \
   "https://github.com/actions/runner/releases/download/v$${RUNNER_VERSION}/actions-runner-linux-arm64-$${RUNNER_VERSION}.tar.gz"
@@ -93,10 +110,12 @@ fi
 unset PAT
 
 # ── 5. Register the runner ───────────────────────────────────────────────────
-log "Removing any prior registration (idempotency)..."
-su runner -c "cd $RUNNER_HOME && ./config.sh remove --token $REG_TOKEN" 2>/dev/null || true
-
-log "Registering runner with label '$RUNNER_LABEL'..."
+# Sonnet nit: GitHub's runner CLI requires a separate REMOVAL token for
+# config.sh remove (registration token only works for registration). When the
+# instance has no prior state (first boot of a Spot instance), remove is a
+# no-op; we skip it unconditionally and rely on --replace to handle name
+# collisions in GitHub's runner list.
+log "Registering runner with label '$RUNNER_LABEL' (--replace handles name collisions)..."
 su runner -c "cd $RUNNER_HOME && ./config.sh \
   --unattended \
   --url https://github.com/$REPO \
@@ -104,6 +123,10 @@ su runner -c "cd $RUNNER_HOME && ./config.sh \
   --name $RUNNER_NAME \
   --labels $RUNNER_LABEL \
   --replace"
+
+# Sonnet nit: PAT was unset earlier; clear REG_TOKEN too once registration
+# completes (script exits shortly anyway but explicit cleanup is consistent).
+unset REG_TOKEN
 
 # ── 6. Install + start as a systemd service ──────────────────────────────────
 log "Installing systemd service..."
