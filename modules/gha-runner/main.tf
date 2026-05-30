@@ -84,7 +84,7 @@ resource "aws_iam_instance_profile" "runner" {
 # ─── Security group — outbound-only (no inbound) ─────────────────────────────
 resource "aws_security_group" "runner" {
   name        = "${local.name_prefix}-sg"
-  description = "GHA self-hosted runner — outbound-only (GitHub API + S3 + Secrets Manager)"
+  description = "GHA self-hosted runner -- outbound-only (GitHub API + S3 + Secrets Manager)"
   vpc_id      = var.vpc_id
 
   egress {
