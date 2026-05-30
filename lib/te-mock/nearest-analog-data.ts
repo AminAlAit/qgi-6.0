@@ -265,7 +265,9 @@ export interface RecipeContribution {
   recipe_label: string;
   l1_color: string;
   contribution_pct: number; // 0..100
-  status: "graduated" | "walked_no_graduation" | "queued" | "live_legacy";
+  // "in_progress" is the local-union name for the pipeline's "in_play"
+  // value; statusLabel renders it as "In play".
+  status: "graduated" | "walked_no_graduation" | "queued" | "live_legacy" | "in_progress";
 }
 
 export interface CurrentCountryEntry {
@@ -335,16 +337,26 @@ function buildAllEntries(): CurrentCountryEntry[] {
           recipe_label: c.recipe_label ?? c.recipe_id ?? "",
           l1_color: c.l1_color ?? "#7A8FA0",
           contribution_pct: c.contribution_pct ?? 0,
-          // Pipeline emits status strings like "in_play"; normalise to the
-          // RecipeContribution union type — unknown values fall back to "queued".
-          status: ([
-            "graduated",
-            "walked_no_graduation",
-            "queued",
-            "live_legacy",
-          ].includes(c.status ?? "")
-            ? c.status
-            : "queued") as RecipeContribution["status"],
+          // Pipeline emits status strings like "in_play" (V4.1 audience-
+          // facing label) which maps to the local union value "in_progress"
+          // (statusLabel renders both as "In play"). Anything else falls
+          // back to "queued" → "Coming soon". 2026-05-30 bug fix: prior
+          // version coerced "in_play" → "queued" so every contribution
+          // chip on the analog page displayed "Coming soon".
+          status: ((): RecipeContribution["status"] => {
+            const raw = c.status ?? "";
+            if (raw === "in_play") return "in_progress";
+            if (
+              raw === "graduated" ||
+              raw === "walked_no_graduation" ||
+              raw === "queued" ||
+              raw === "live_legacy" ||
+              raw === "in_progress"
+            ) {
+              return raw as RecipeContribution["status"];
+            }
+            return "queued";
+          })(),
         }));
 
       base.push({
