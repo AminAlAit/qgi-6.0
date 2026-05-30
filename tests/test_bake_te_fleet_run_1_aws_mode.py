@@ -60,6 +60,22 @@ class TestBakeOutputLocal:
         )
         assert w.describe_root() == str(tmp_path)
 
+    def test_unicode_payload_roundtrip_utf8(self, tmp_path: Path):
+        """Sonnet F1/F2: local writes must use UTF-8 to match the S3 path's
+        .encode('utf-8'); without it, flag emoji + non-ASCII indicator names
+        would silently mangle on Windows (cp1252 default locale)."""
+        w = _BakeOutput(
+            mode="local", output_dir=tmp_path, s3_client=MagicMock(),
+            bucket="ignored", prefix="",
+        )
+        payload = '{"country": "Côte d\'Ivoire", "flag": "🇨🇮", "indicator": "v2x_polyarchy"}'
+        w.write_text("scores/x.scores.json", payload)
+        target = tmp_path / "scores" / "x.scores.json"
+        # Read back as UTF-8 explicitly — bit-identical
+        assert target.read_text(encoding="utf-8") == payload
+        # Raw bytes must round-trip through UTF-8 encoding
+        assert target.read_bytes() == payload.encode("utf-8")
+
 
 class TestBakeOutputAws:
     def test_write_text_calls_put_object_with_normalized_key(self, tmp_path: Path):

@@ -152,7 +152,11 @@ class _BakeOutput:
         else:
             target = self.output_dir / rel_path
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(content)
+            # encoding="utf-8" matches the S3 path (which always writes UTF-8
+            # via .encode("utf-8")). Without it, Windows-default cp1252 would
+            # silently mangle flag emoji / non-ASCII indicator names. Sonnet
+            # review F1 on qgi-ml#132.
+            target.write_text(content, encoding="utf-8")
 
     def describe_root(self) -> str:
         if self.mode == "aws":
