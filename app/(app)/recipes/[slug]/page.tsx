@@ -21,6 +21,7 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
+import { loadCardV3, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
 import recipeTracker from "@/data/recipe-tracker.json";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
@@ -166,9 +167,33 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   ) : null;
 
   // LOCO-AUC + CI for the discrimination panel.
-  const locoAuc = demo ? 0.9147 : (recipe.stats?.loco_auc ?? null);
-  const ciLow = demo ? 0.872 : undefined;
-  const ciHigh = demo ? 0.948 : undefined;
+  // Source: real card stats (ci95_lo / ci95_hi). Fleet-run-1 recipes carry
+  // bootstrap CI from the pipeline bake. Cascade-only / queued recipes have
+  // no card — render the point estimate only (honest empty state).
+  const isTeRecipe = FLEET_RUN_1_RECIPE_IDS.includes(slug);
+  let locoAuc: number | null = recipe.stats?.loco_auc ?? null;
+  let ciLow: number | undefined;
+  let ciHigh: number | undefined;
+  // Window search range for WindowPanel: min/max of windows searched in the
+  // greedy walk history. Not present on cascade-only recipes (undefined →
+  // WindowPanel renders without the "Chosen from X–Y years" caption).
+  let windowSearchMin: number | undefined;
+  let windowSearchMax: number | undefined;
+  if (isTeRecipe) {
+    try {
+      const card = loadCardV3(slug);
+      locoAuc = card.stats.loco_auc;
+      ciLow = card.stats.ci95_lo;
+      ciHigh = card.stats.ci95_hi;
+      const windows = card.greedy_walk.history.map((h) => h.window);
+      if (windows.length > 0) {
+        windowSearchMin = Math.min(...windows);
+        windowSearchMax = Math.max(...windows);
+      }
+    } catch {
+      // Card unavailable — point estimate only; window range stays undefined.
+    }
+  }
 
   const enrichedIndicators =
     extras.indicators.length > 0
@@ -220,8 +245,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       <WindowPanel
         familyColor={familyColor}
         windowYears={mock.window}
-        ciLow={3}
-        ciHigh={25}
+        ciLow={windowSearchMin}
+        ciHigh={windowSearchMax}
       />
 
       {/* 2. VALIDATION (does it work) */}

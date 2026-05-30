@@ -1,36 +1,34 @@
 /**
  * /recipes/trajectory-ranking — Trajectory strength ranking.
  *
- * Top-30 countries by how closely their current movement resembles any
- * trajectory in the catalog. Migrated from /patterns/ranking and rebuilt
- * to the V4.1 bar (honest copy, flags, no "pattern" wording, no M8-R5 box).
- * Reached via the button on each trajectory deep-dive.
+ * MOCK ELIMINATION — 2026-05-30
+ * getRanking() built its rows from patterns-v4-data.ts synthesised
+ * current_top_matches (buildCurrentMatches, lines 661-721). Entire
+ * data set was synthesised from recipe mock country lists — zero fleet data.
+ * The trajectory-ranking concept is real and the bake could carry it, but
+ * it doesn't yet. Verdict: honest empty state.
+ * Gap logged to C:\tmp\backend-gaps\patterns-trajectory.md
  *
- * Server shell; the table itself is the one interactive client surface.
- * Mockup only, local-only.
+ * Route remains alive so the "Trajectory strength ranking" link on recipe
+ * pages does not 404.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
-import { getRanking, getL1Families } from "@/lib/te-mock/patterns-v4-data";
-import { vintageStamp } from "@/lib/te-mock/recipes";
-import { TrajectoryRankingTable } from "@/components/precedents-v4-1/TrajectoryRankingTable";
 
 export const metadata: Metadata = {
   title: "Trajectory strength ranking · QG Intelligence",
   description:
-    "Top-30 countries ranked by how closely their current movement resembles any recipe trajectory.",
+    "Top countries ranked by how closely their current movement resembles any recipe trajectory.",
 };
 
 export default function TrajectoryRankingPage() {
-  const rows = getRanking();
-  const families = getL1Families();
-
   return (
     <div
       style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px" }}>
+        {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           style={{
@@ -51,6 +49,7 @@ export default function TrajectoryRankingPage() {
           <span style={{ color: "var(--qgi-text)" }}>Trajectory strength ranking</span>
         </nav>
 
+        {/* Page eyebrow */}
         <div
           style={{
             color: "var(--qgi-text-dim)",
@@ -63,6 +62,7 @@ export default function TrajectoryRankingPage() {
         >
           Trajectory strength ranking
         </div>
+
         <h1
           style={{
             fontSize: "30px",
@@ -73,46 +73,43 @@ export default function TrajectoryRankingPage() {
         >
           Countries ranked by trajectory match
         </h1>
-        <p
-          style={{
-            color: "var(--qgi-text-muted)",
-            fontSize: "14.5px",
-            lineHeight: 1.6,
-            maxWidth: "820px",
-            margin: "0 0 14px",
-          }}
-        >
-          The top {rows.length} countries whose recent movement most closely resembles any
-          trajectory in the catalog. Each row shows the closest-matched trajectory, its
-          match score, and the country&apos;s runner-up. Sort any column, filter by
-          family, or search. Match scores are similarity ranks, not probabilities.
-        </p>
 
+        {/* Honest empty state */}
         <div
           style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "10px",
-            alignItems: "center",
-            padding: "0 0 18px",
-            fontSize: "11px",
-            fontFamily: "ui-monospace, monospace",
-            color: "var(--qgi-text-dim)",
-            letterSpacing: "0.5px",
+            padding: "40px 24px",
+            border: "1px dashed var(--qgi-border)",
+            borderRadius: "6px",
+            background: "rgba(91, 126, 153, 0.05)",
+            textAlign: "center",
+            maxWidth: "640px",
+            margin: "40px auto",
           }}
         >
-          <span>
-            Vintage:{" "}
-            <span style={{ color: "var(--qgi-text-muted)" }}>{vintageStamp()}</span>
-          </span>
-          <span style={{ opacity: 0.4 }}>·</span>
-          <span>
-            Top {rows.length} of all scoring countries · {families.length} families
-            represented
-          </span>
+          <h2
+            style={{
+              fontSize: "16px",
+              fontWeight: 600,
+              marginBottom: "10px",
+              color: "var(--qgi-text)",
+            }}
+          >
+            Trajectory ranking not yet available
+          </h2>
+          <p
+            style={{
+              color: "var(--qgi-text-muted)",
+              fontSize: "13px",
+              lineHeight: 1.6,
+            }}
+          >
+            The trajectory strength ranking lists countries whose current indicator
+            movement most closely resembles a recipe&apos;s canonical shape. This ranking
+            is a real concept the bake will carry, but per-country trajectory alignment
+            scores are not yet emitted by the bake. The table will populate here when the
+            trajectory engine begins scoring countries against each recipe shape.
+          </p>
         </div>
-
-        <TrajectoryRankingTable rows={rows} families={families} />
       </div>
     </div>
   );

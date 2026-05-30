@@ -38,7 +38,9 @@ import {
   loadCountryIndex,
   loadAllScores,
   loadAnalogs,
+  loadActivityFeed,
 } from "@/lib/te-data-contract/load";
+import type { CountryIndex } from "@/lib/te-data-contract/country-index";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import { L1_FAMILIES, familyColor, familyLabel } from "@/lib/te-mock/l1-families";
 import type { HeroTile } from "@/components/dashboard-v4-1/DashboardHero";
@@ -57,19 +59,19 @@ export interface HeroCounts41 {
 }
 
 /**
- * Indicator corpus size: distinct indicator codes referenced across the
- * 10 TE walks (from greedy_walk + indicator_sensitivity). This is the live
- * count of indicators actually USED by validated walks. The 74-indicator
- * catalog total (WB+FAO) lives in /methodology; here we surface the
- * "actively scored" subset, which is more compelling because every one is
- * load-bearing in at least one walk.
+ * Indicator corpus size: total catalog count across all providers
+ * (WB-WGI + WB-Macro + V-Dem + FAO).
+ *
+ * GAP: MANIFEST.json does not carry an `indicator_catalog_size` field.
+ * The bake knows the indicator count (it's in the card SHAP attributions)
+ * but does not currently surface a single authoritative total at the
+ * manifest level. Backend ask: add `indicator_catalog_size: number` to
+ * MANIFEST.json. Until that field ships, we use the documented catalog
+ * baseline of 74 (WB-WGI×6 + WB-Macro×30 + V-Dem×33 + FAO×5 =74).
+ * See `buildIndicatorCorpusStack()` for the per-provider breakdown.
  */
 function computeIndicatorsTracked(): number {
-  // Total catalog (WB + FAO + V-Dem subset) is ~74. The dashboard surfaces
-  // the cardinality at the catalog level — that is the marketable number.
-  // We pull the catalog total from the indicator-labels resolver, but to
-  // keep this calc deterministic without a catalog round-trip, we use the
-  // documented baseline. If the catalog grows, this lifts trivially.
+  // TODO: replace with manifest.indicator_catalog_size when the field ships.
   return 74;
 }
 
@@ -87,10 +89,20 @@ function computePairsSurfaced(): number {
   }
 }
 
-/** Vintages logged: 1 today; +1 per quarterly run. Floor at 1. */
+/**
+ * Vintages logged: count of distinct fleet runs baked into the frontend.
+ *
+ * Currently 1 (fleet-run-1, 2026-05-28). The number will increment +1 per
+ * quarterly run once the bake pipeline automatically writes each run into
+ * `data/te-fleet-run-N/`. At that point this function should count the
+ * te-fleet-run-* directories or read a run-list JSON.
+ *
+ * GAP: MANIFEST.json does not carry a `vintages_logged` or `run_index`
+ * field. Backend ask: add `run_index: number` to MANIFEST so the frontend
+ * can derive this without directory inspection.
+ */
 function computeVintagesLogged(): number {
-  // First vintage of the trajectory engine (2026-05-28). Catalog rows that
-  // predate it count under the cascade-era tracker (separate page).
+  // TODO: replace with manifest.run_index when the field ships.
   return 1;
 }
 
@@ -224,28 +236,34 @@ export interface CoverageSummary {
 
 export function buildCoverageSummary(): CoverageSummary {
   let scored = 214;
-  let roster = 214;
+  let roster = 248;
+  let regionBreakdown: Array<{ region: string; pct: number }> = [];
   try {
-    const idx = loadCountryIndex();
+    const idx = loadCountryIndex() as CountryIndex & {
+      coverage_density_per_region?: Record<string, number>;
+    };
     scored = idx.n_countries_scored;
     roster = idx.platform_roster_size;
+    // Derive region breakdown from `coverage_density_per_region` (bucket-A
+    // enrichment applied on every fleet run). Percentages are share-of-scored.
+    const cdr = idx.coverage_density_per_region ?? {};
+    const total = Object.values(cdr).reduce((a, b) => a + b, 0);
+    regionBreakdown = Object.entries(cdr)
+      // Drop the "Unknown" bucket — not meaningful for a coverage display.
+      .filter(([region]) => region !== "Unknown" && region !== "null")
+      .sort((a, b) => b[1] - a[1])
+      .map(([region, count]) => ({
+        region,
+        pct: total > 0 ? (count / total) * 100 : 0,
+      }));
   } catch {
-    /* fall back to constants */
+    /* fall back to empty breakdown on load failure */
   }
-  // Region breakdown is illustrative until country-index ships region tags.
-  // The percentages reflect global coverage of the WB + V-Dem corpora.
   return {
     countries_scored: scored,
     roster,
     pct: roster > 0 ? (scored / roster) * 100 : 0,
-    region_breakdown: [
-      { region: "Sub-Saharan Africa", pct: 100 },
-      { region: "Asia & Pacific", pct: 100 },
-      { region: "Europe & Central Asia", pct: 100 },
-      { region: "Middle East & N. Africa", pct: 100 },
-      { region: "Latin America & Caribbean", pct: 100 },
-      { region: "North America", pct: 100 },
-    ],
+    region_breakdown: regionBreakdown,
   };
 }
 
@@ -345,106 +363,117 @@ export const ICON_FOR_ACTIVITY_KEY = {
 } as const;
 
 /**
- * Build world-facing activity rows from country-index + per-recipe scores
- * + analogs. Replaces the R&D walk feed.
+ * Map a `fired_at` ISO string to a display date (YYYY-MM-DD).
+ */
+function firedAtToDate(firedAt: string): string {
+  try {
+    return firedAt.slice(0, 10);
+  } catch {
+    return firedAt;
+  }
+}
+
+/**
+ * Build world-facing activity rows from the baked program-feed.json.
  *
- * Composition (target 10 rows):
- *   - 3 × country-movement   (top compound-score countries this vintage)
- *   - 3 × recipe top-10 shift (top recipes by current top-10 movement)
- *   - 2 × emerging pair      (analog matches outside top-100)
- *   - 2 × analog spotlight   (high-similarity match with a hook)
+ * Source: `data/te-fleet-run-1/activity/program-feed.json` (46 events).
+ * Consumes `loadActivityFeed()` from the data contract.
  *
- * Rows ARE deterministic from the data, not random — same data → same rows.
+ * Mapping:
+ *   walk_fired              → recipe_top10_shift  (recipe run this vintage)
+ *   vacate                  → corpus_growth       (catalog correction)
+ *   methodology_amendment   → corpus_growth       (methodology update)
+ *   <unknown kind>          → corpus_growth       (generic catalog event)
+ *
+ * Rows are sorted most-recent-first by `fired_at` (descending ISO string
+ * sort is correct for the YYYY-MM-DDTHH:MM:SSZ format used in the feed).
+ * The function returns ALL rows; the WorldActivity component collapses to 5
+ * and expands on demand.
  */
 export function buildWorldActivityRows(): WorldActivityRow[] {
-  const vintage = vintageStamp();
-  const rows: WorldActivityRow[] = [];
-
-  // ── Country movements: top-3 by compound score ──
   try {
-    const idx = loadCountryIndex();
-    const topCountries = [...idx.countries]
-      .sort((a, b) => b.compound_score - a.compound_score)
-      .slice(0, 3);
-    for (const c of topCountries) {
-      const topRecipe = c.top_recipes?.[0];
-      if (!topRecipe) continue;
-      const families = (c.lit_families ?? [])
-        .slice(0, 3)
-        .map((f) => familyLabel(f))
-        .join(", ");
-      rows.push({
-        date: vintage,
-        kind: "country_movement",
-        title: `${c.name} sits in the global top decile this vintage`,
-        detail:
-          `${c.recipes_lit_count} recipes lit across ${families || "multiple families"}. ` +
-          `Top match: ${topRecipe.label} at the ${Math.round(topRecipe.score)}th percentile.`,
-        href: `/countries`,
-        color: "#E68F29",
-        iconKey: "trending",
-      });
-    }
-  } catch {
-    /* skip section on missing data */
-  }
-
-  // ── Recipe top-10 shifts: top-3 recipes by top-country score in scores files ──
-  try {
-    const allScores = loadAllScores();
-    const recipes = getAllRecipes();
-    const recipeShifts: Array<{
-      recipe_id: string;
-      recipe_label: string;
-      top_country: string;
-      top_score: number;
-    }> = [];
-    for (const [recipe_id, sf] of Object.entries(allScores)) {
-      if (!sf.scores || sf.scores.length === 0) continue;
-      const topEntry = [...sf.scores].sort((a, b) => b.score - a.score)[0];
-      const label = recipes.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;
-      recipeShifts.push({
-        recipe_id,
-        recipe_label: label,
-        top_country: topEntry.name,
-        top_score: topEntry.score,
-      });
-    }
-    const topShifts = recipeShifts.sort((a, b) => b.top_score - a.top_score).slice(0, 3);
-    for (const s of topShifts) {
-      rows.push({
-        date: vintage,
-        kind: "recipe_top10_shift",
-        title: `${s.recipe_label}: ${s.top_country} leads the global ranking`,
-        detail:
-          `${s.top_country} sits at the ${Math.round(s.top_score)}th percentile on this recipe ` +
-          `among all countries scored this vintage.`,
-        href: `/recipes/${s.recipe_id}`,
-        color: "#7B5EE6",
-        iconKey: "crosshair",
-      });
-    }
-  } catch {
-    /* skip */
-  }
-
-  // ── Pair / analog spotlights: top-3 analog matches ──
-  const pairs = buildTopPairTeasers(3);
-  for (const p of pairs) {
-    rows.push({
-      date: vintage,
-      kind: "analog_spotlight",
-      title: `${p.country_a} today resembles ${p.country_b} ${p.country_b_year}`,
-      detail:
-        `${Math.round(p.match_pct)}% similarity on the ${p.recipe_label} recipe shape. ` +
-        `Historical comparison drawn from the analog corpus.`,
-      href: `/nearest-analog`,
-      color: "#38bdf8",
-      iconKey: "sparkles",
+    const feed = loadActivityFeed();
+    const sorted = [...feed.events].sort((a, b) => b.fired_at.localeCompare(a.fired_at));
+    return sorted.map((evt): WorldActivityRow => {
+      const date = firedAtToDate(evt.fired_at);
+      if (evt.kind === "walk_fired") {
+        const e = evt as {
+          kind: "walk_fired";
+          fired_at: string;
+          recipe_id: string;
+          recipe_label: string;
+          tier: string;
+          verdict: string;
+          loco_auc: number;
+          note: string;
+        };
+        const verdictLabel =
+          e.verdict === "MARGINAL_PENDING_BETA_CALIBRATION"
+            ? "directional — beta calibration pending"
+            : "experimental — under review";
+        return {
+          date,
+          kind: "recipe_top10_shift",
+          title: `${e.recipe_label}: first vintage under the Trajectory Engine`,
+          detail:
+            `Walk completed ${date}. LOCO AUC ${e.loco_auc.toFixed(3)} · ` +
+            `${verdictLabel}. ${e.note}`,
+          href: `/recipes/${e.recipe_id}`,
+          color: "#7B5EE6",
+          iconKey: "crosshair",
+        };
+      }
+      if (evt.kind === "vacate") {
+        const e = evt as {
+          kind: "vacate";
+          fired_at: string;
+          recipe_id: string;
+          recipe_label: string;
+          prior_status: string;
+          cause: string;
+          note: string;
+        };
+        return {
+          date,
+          kind: "corpus_growth",
+          title: `${e.recipe_label}: status correction applied`,
+          detail: `${e.cause} ${e.note}`,
+          href: `/recipes/${e.recipe_id}`,
+          color: "#E68F29",
+          iconKey: "activity",
+        };
+      }
+      if (evt.kind === "methodology_amendment") {
+        const e = evt as {
+          kind: "methodology_amendment";
+          fired_at: string;
+          title: string;
+          detail: string;
+        };
+        return {
+          date,
+          kind: "corpus_growth",
+          title: `Methodology update: ${e.title}`,
+          detail: e.detail,
+          href: `/methodology`,
+          color: "#5B7E99",
+          iconKey: "activity",
+        };
+      }
+      // Generic fallback for unknown future kinds
+      return {
+        date,
+        kind: "corpus_growth",
+        title: `Catalog event — ${evt.kind}`,
+        detail: `Recorded ${date}.`,
+        href: `/methodology`,
+        color: "#5B7E99",
+        iconKey: "activity",
+      };
     });
+  } catch {
+    return [];
   }
-
-  return rows;
 }
 
 // Legacy re-exports removed 2026-05-29 — `lib/te-mock/dashboard-v4-data.ts`

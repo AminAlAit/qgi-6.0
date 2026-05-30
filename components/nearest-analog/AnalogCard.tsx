@@ -24,6 +24,9 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { familyColor, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
 
+// Slate-blue accent (#5B7E99) used for "not yet curated" placeholder elements.
+const CURATION_PLACEHOLDER_COLOR = "#5B7E99";
+
 // P2-2: lightweight region lookup covering both current-country subjects and
 // historical analogs that appear in nearest-analog-data.ts. Used to detect
 // cross-region matches without needing a prop from AnalogResults.
@@ -288,7 +291,11 @@ export function AnalogCard({
           })()}
       </div>
 
-      {/* Sparkline overlay */}
+      {/* Sparkline overlay — rendered only when both trajectories are non-empty.
+          Pipeline fleet-run-1 does not yet emit per-analog indicator_trajectory;
+          the current country's trajectory is also null in fleet-run-1. Both map
+          to [] in buildAllEntries(). When either is empty we show a quiet
+          "not yet curated" placeholder instead of crashing. */}
       <div
         style={{
           padding: "10px",
@@ -308,14 +315,31 @@ export function AnalogCard({
         >
           12-QUARTER COMPOSITE TRAJECTORY
         </div>
-        <TrajectorySparkline
-          currentSeries={currentTrajectory}
-          analogSeries={analog.indicator_trajectory}
-          currentLabel={currentCountryName}
-          analogLabel={`${analog.country} ${analog.year}`}
-          analogColor={l1Color}
-          height={84}
-        />
+        {currentTrajectory.length > 1 && analog.indicator_trajectory.length > 1 ? (
+          <TrajectorySparkline
+            currentSeries={currentTrajectory}
+            analogSeries={analog.indicator_trajectory}
+            currentLabel={currentCountryName}
+            analogLabel={`${analog.country} ${analog.year}`}
+            analogColor={l1Color}
+            height={84}
+          />
+        ) : (
+          <div
+            style={{
+              padding: "14px 10px",
+              borderRadius: "4px",
+              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}33`,
+              background: `${CURATION_PLACEHOLDER_COLOR}0D`,
+              fontSize: "11px",
+              color: CURATION_PLACEHOLDER_COLOR,
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+            }}
+          >
+            Trajectory data not yet curated for this analog.
+          </div>
+        )}
       </div>
 
       {/* Weak-match warning */}
@@ -336,7 +360,10 @@ export function AnalogCard({
         </div>
       )}
 
-      {/* What happened next (HISTORICAL FACT only) */}
+      {/* What happened next (HISTORICAL FACT only).
+          Pipeline fleet-run-1 emits what_happened_next: null — buildAllEntries()
+          maps null to "In training set." which is the canonical honest placeholder.
+          Render placeholder in muted slate-blue; curated narrative in normal text. */}
       <div>
         <div
           style={{
@@ -350,16 +377,35 @@ export function AnalogCard({
         >
           WHAT HAPPENED NEXT · {analog.country.toUpperCase()} {analog.year}
         </div>
-        <p
-          style={{
-            fontSize: "12.5px",
-            color: "var(--qgi-text)",
-            lineHeight: 1.55,
-            margin: 0,
-          }}
-        >
-          {analog.what_happened_next}
-        </p>
+        {analog.what_happened_next === "In training set." ||
+        !analog.what_happened_next ? (
+          <p
+            style={{
+              fontSize: "11px",
+              color: CURATION_PLACEHOLDER_COLOR,
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+              margin: 0,
+              padding: "10px",
+              borderRadius: "4px",
+              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}33`,
+              background: `${CURATION_PLACEHOLDER_COLOR}0D`,
+            }}
+          >
+            In training set.
+          </p>
+        ) : (
+          <p
+            style={{
+              fontSize: "12.5px",
+              color: "var(--qgi-text)",
+              lineHeight: 1.55,
+              margin: 0,
+            }}
+          >
+            {analog.what_happened_next}
+          </p>
+        )}
       </div>
 
       {/* Secondary recipes */}
