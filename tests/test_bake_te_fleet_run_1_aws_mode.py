@@ -32,6 +32,7 @@ spec.loader.exec_module(bake_mod)
 _BakeOutput = bake_mod._BakeOutput
 _refuse_overwrite_if_baked = bake_mod._refuse_overwrite_if_baked
 _resolve_reference_input = bake_mod._resolve_reference_input
+_resolve_audience_status = bake_mod._resolve_audience_status
 
 
 class TestBakeOutputLocal:
@@ -234,3 +235,68 @@ class TestResolveReferenceInput:
         with pytest.raises(ValueError, match="key is empty"):
             _resolve_reference_input("s3://bucket/", s3)
         s3.download_file.assert_not_called()
+
+
+class TestResolveAudienceStatus:
+    """M8-R7 (BINDING, 2026-05-30 DECISION §10): 'prior_version' chip only for
+    recipes with prior validated/graduated public footprint."""
+
+    def test_lock_returns_validated(self):
+        assert _resolve_audience_status("LOCK", {"status": "queued"}) == "validated"
+
+    def test_hard_fail_greenfield_returns_coming_soon(self):
+        """The most common fleet-run-1 case: HARD_FAIL on a recipe whose
+        tracker status is 'queued' (greenfield). 'prior_version' is FORBIDDEN."""
+        assert _resolve_audience_status("HARD_FAIL", {"status": "queued"}) == "coming_soon"
+
+    def test_hard_fail_walked_no_graduation_returns_coming_soon(self):
+        """`walked_no_graduation` is NOT 'validated or graduated' — recipe
+        was walked but never shipped as validated. Still greenfield by M8-R7."""
+        assert _resolve_audience_status("HARD_FAIL", {"status": "walked_no_graduation"}) == "coming_soon"
+
+    def test_hard_fail_live_legacy_returns_prior_version(self):
+        """Cascade-era live recipe re-walked and HARD_FAILed under F-ML-1:
+        prior public footprint exists, so 'prior_version' is honest."""
+        assert _resolve_audience_status("HARD_FAIL", {"status": "live_legacy"}) == "prior_version"
+
+    def test_hard_fail_graduated_returns_prior_version(self):
+        """A previously-graduated recipe HARD_FAILing under a re-walk:
+        legitimate 'prior_version' — the public has seen it as validated."""
+        assert _resolve_audience_status("HARD_FAIL", {"status": "graduated"}) == "prior_version"
+
+    def test_hard_fail_no_tracker_row_returns_coming_soon(self):
+        """Recipe missing from tracker entirely (rarest greenfield): no
+        public footprint → coming_soon."""
+        assert _resolve_audience_status("HARD_FAIL", None) == "coming_soon"
+
+    def test_chance_fail_greenfield_returns_coming_soon(self):
+        """CHANCE_FAIL also maps to 'prior_version' in the base dict; same
+        M8-R7 gate applies."""
+        assert _resolve_audience_status("CHANCE_FAIL", {"status": "queued"}) == "coming_soon"
+
+    def test_marginal_pending_unaffected(self):
+        """The gate only fires on base='prior_version'. MARGINAL_PENDING maps
+        to 'in_play' regardless of tracker status. Both the short alias and
+        the production canonical form (from run_f_ml_1_poc.py) are exercised
+        per Sonnet F2 (round 1 of #134)."""
+        # Short alias (used in some test fixtures)
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CAL", {"status": "queued"}) == "in_play"
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CAL", {"status": "live_legacy"}) == "in_play"
+        # Production canonical form emitted by run_f_ml_1_poc.py
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CALIBRATION", {"status": "queued"}) == "in_play"
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CALIBRATION", {"status": "live_legacy"}) == "in_play"
+
+    def test_chance_fail_live_legacy_returns_prior_version(self):
+        """Sonnet F3: gate-opens path for CHANCE_FAIL on a cascade-era recipe.
+        Mirrors the HARD_FAIL+live_legacy case for the second 'prior_version'
+        verdict."""
+        assert _resolve_audience_status("CHANCE_FAIL", {"status": "live_legacy"}) == "prior_version"
+
+    def test_unknown_verdict_falls_to_coming_soon(self):
+        """Unknown verdict (defensive): fall to coming_soon, never to a
+        misleading prior_version."""
+        assert _resolve_audience_status("UNKNOWN_VERDICT", {"status": "queued"}) == "coming_soon"
+
+    def test_coverage_fail_unaffected(self):
+        """COVERAGE_FAIL maps to 'coming_soon' in the base; gate doesn't fire."""
+        assert _resolve_audience_status("COVERAGE_FAIL", {"status": "live_legacy"}) == "coming_soon"
