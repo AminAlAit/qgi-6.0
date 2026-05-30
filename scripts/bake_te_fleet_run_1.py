@@ -94,6 +94,19 @@ VERDICT_TO_TIER = {
 CONTRACT_VERSION = "v3-2026-05-30"
 
 
+def _provider_for(code: str | None) -> str | None:
+    """Indicator-provider hint via code-prefix heuristic. Mirrors frontend's
+    inferProvider(). Pipeline ought to emit this explicitly per frontend §1.4 —
+    until then this is a server-side approximation."""
+    if not code:
+        return None
+    if code.startswith("v2") or code.startswith("v3"):
+        return "V-Dem"
+    if code.endswith(".EST"):
+        return "World Bank WGI"
+    return "World Bank"
+
+
 # ────────────────────────────────────────────────────────────────────────────
 # Resource loaders
 # ────────────────────────────────────────────────────────────────────────────
@@ -455,24 +468,33 @@ def build_scores_file(
     for rank, e in enumerate(raw_sorted, 1):
         name = e.get("country") or e.get("name") or ""
         iso2, iso3, flag = normalize_iso(name, countries)
-        # SHAP attribution with friendly names
+        # SHAP attribution with friendly names (field names per frontend contract §4)
         shap_attr = []
         for s in (e.get("shap_attribution") or []):
             code = s.get("indicator") or s.get("code")
             shap_attr.append({
-                "code": code,
-                "name": indicator_names.get(code) if code else None,
+                "indicator_code": code,
+                "indicator_name": indicator_names.get(code) if code else None,
                 "signal_share_pct": s.get("signal_share_pct") or s.get("share_pct") or s.get("share"),
+                # Raw shap_value pending score_countries.py upgrade (frontend §4 ask)
+                "shap_value": s.get("shap_value"),
+                # Provider hint via code-prefix heuristic (mirrors frontend's inferProvider)
+                "provider": _provider_for(code),
             })
         # Indicator movement with friendly names
         movement = []
         for m in (e.get("indicator_movement") or []):
             code = m.get("indicator") or m.get("code")
             movement.append({
-                "code": code,
-                "name": indicator_names.get(code) if code else None,
+                "indicator_code": code,
+                "indicator_name": indicator_names.get(code) if code else None,
                 "trajectory_12q": m.get("trajectory_12q") or [],
                 "z_score_change": m.get("z_score_change"),
+                "provider": _provider_for(code),
+                # Raw values + unit pending score_countries upgrade (frontend §1.4 ask)
+                "latest_raw_value": m.get("latest_raw_value"),
+                "prior_raw_value": m.get("prior_raw_value"),
+                "unit": m.get("unit"),
             })
         # Nearest analogs
         analogs = []
@@ -870,14 +892,27 @@ def main() -> int:
     (args.output_dir / "activity" / "program-feed.json").write_text(json.dumps(activity, indent=2, default=str))
     LOG.info("  %d events", len(activity["events"]))
 
+    # Indicator corpus breakdown: count of UNIQUE indicators by provider seen
+    # across all walks (frontend §1.3 — what they want is the corpus inventory,
+    # not the per-walk selection tally).
+    seen_per_provider: dict[str, set[str]] = {}
+    for card in all_cards.values():
+        for ind in (card.get("greedy_walk", {}).get("selected_indicators") or []):
+            p = _provider_for(ind) or "Other"
+            seen_per_provider.setdefault(p, set()).add(ind)
+    provider_tally = {p: len(s) for p, s in seen_per_provider.items()}
+
     # MANIFEST
     manifest = {
         "vintage": args.vintage,
+        "run_index": 1,  # frontend §1.3 — first official fleet run; increment on next vintage
         "produced_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "engine": "F-ML-1 / Trajectory Engine (ML2)",
         "n_recipes": len(all_cards),
         "n_scores_files": len(all_scores),
         "n_countries_indexed": country_index["n_countries_scored"],
+        "indicator_catalog_size": len(indicator_names),  # frontend §1.3
+        "indicator_corpus_breakdown": provider_tally,    # frontend §1.3
         "contract_version": CONTRACT_VERSION,
         "image_digest": "sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
         "image_tag": "43f9d9bd",
