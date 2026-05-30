@@ -1,5 +1,5 @@
 /**
- * scdi-mock.ts — hand-mocked per-pattern indicator lists for the 10
+ * scdi-mock.ts — hand-mocked per-pattern indicator lists for the 15
  * showcase patterns on /patterns/[slug].
  *
  * FILE NAME intentionally keeps "scdi" — internal contract name.
@@ -10,9 +10,13 @@
  * read from the baked JSON. The TypeScript types (PatternIndicator,
  * PatternMeta) are the stable contract.
  *
- * Slug format (5-segment, alphabetical ISO order):
- *   {a_iso2}-{b_iso2}-{start_year_a}-{end_year} (4 segments)
- *   e.g.  pt-es-1975-2024
+ * Slug formats:
+ *   4-segment (aligned start):  {a_iso2}-{b_iso2}-{start_year}-{end_year}
+ *     e.g.  pt-es-1975-2024
+ *   5-segment (offset start):   {a_iso2}-{b_iso2}-{start_year_a}-{start_year_b}-{length}
+ *     e.g.  ke-ps-1998-2004-19
+ *   In both formats iso2 codes are in alphabetical order; in 5-segment slugs
+ *   the start years correspond to whichever country comes first alphabetically.
  *
  * Indicator codes sourced from data/indexes.json (numeric_id verified).
  * Pearson r values are in range 0.60-0.95. Z-score trajectories have 12
@@ -56,6 +60,7 @@ export interface PatternMeta {
   b_iso2: string;
   a_name: string;
   b_name: string;
+  /** For aligned patterns: start year of both countries. For offset patterns: start year of country A. */
   start_year: number;
   end_year: number;
   length: number;
@@ -64,6 +69,16 @@ export interface PatternMeta {
   num_indicators: number;
   tier: "XL" | "L" | "M" | "S";
   plausibility_note: string;
+  /**
+   * Offset pattern only. Start year of country B (when different from start_year).
+   * When present, the hero panel renders a 2-line offset stat row.
+   */
+  start_year_b?: number;
+  /**
+   * Offset pattern only. |start_year - start_year_b|.
+   * Positive = A leads (A started first). Negative = B leads (B started first).
+   */
+  offset_years?: number;
 }
 
 // ── Z-score trajectory helpers ────────────────────────────────────────────
@@ -1295,6 +1310,721 @@ const MOCKED_INDICATORS: Record<string, PatternIndicator[]> = {
       series_b: fallTrajectory(0.12),
     },
   ],
+
+  // ── OFFSET-1: ke-ps-1998-2004-19
+  // Kenya (sa=1998) vs Palestine (sb=2004), offset=6y Kenya leads, l=19
+  // Kenya multi-party reform era 1998; Palestine post-Oslo state-building 2004
+  // Africa / Middle East cross-regional. 22 indicators, ac=0.827, pps=345.6
+  "ke-ps-1998-2004-19": [
+    {
+      code: "NY.GDP.MKTP.KD.ZG",
+      numeric_id: 1,
+      name: "GDP growth (annual %)",
+      sector: "Economic",
+      pearson_r: 0.83,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.14),
+    },
+    {
+      code: "NY.GDP.PCAP.CD",
+      numeric_id: 9,
+      name: "GDP per capita (current US$)",
+      sector: "Economic",
+      pearson_r: 0.82,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "VA.EST",
+      numeric_id: 21,
+      name: "Voice and Accountability (estimate)",
+      sector: "Governance",
+      pearson_r: 0.78,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "GE.EST",
+      numeric_id: 22,
+      name: "Government Effectiveness (estimate)",
+      sector: "Governance",
+      pearson_r: 0.75,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "PV.EST",
+      numeric_id: 3,
+      name: "Political Stability and Absence of Violence (estimate)",
+      sector: "Governance",
+      pearson_r: 0.69,
+      direction: "same",
+      series_a: sineTrajectory(0.1, 0.18),
+      series_b: sineTrajectory(0.3, 0.18),
+    },
+    {
+      code: "SP.DYN.LE00.IN",
+      numeric_id: 4,
+      name: "Life expectancy at birth, total (years)",
+      sector: "Health",
+      pearson_r: 0.87,
+      direction: "same",
+      series_a: riseTrajectory(0.09),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "SH.DYN.MORT",
+      numeric_id: 14,
+      name: "Mortality rate, under-5 (per 1,000 live births)",
+      sector: "Health",
+      pearson_r: 0.85,
+      direction: "same",
+      series_a: fallTrajectory(0.1),
+      series_b: fallTrajectory(0.1),
+    },
+    {
+      code: "SP.DYN.TFRT.IN",
+      numeric_id: 15,
+      name: "Fertility rate, total (births per woman)",
+      sector: "Demographic",
+      pearson_r: 0.81,
+      direction: "same",
+      series_a: fallTrajectory(0.1),
+      series_b: fallTrajectory(0.11),
+    },
+    {
+      code: "IT.NET.USER.ZS",
+      numeric_id: 13,
+      name: "Individuals using the Internet (% of population)",
+      sector: "Infrastructure",
+      pearson_r: 0.88,
+      direction: "same",
+      series_a: stepUpTrajectory(0.1),
+      series_b: stepUpTrajectory(0.1),
+    },
+    {
+      code: "IT.CEL.SETS.P2",
+      numeric_id: 16,
+      name: "Mobile cellular subscriptions (per 100 people)",
+      sector: "Infrastructure",
+      pearson_r: 0.86,
+      direction: "same",
+      series_a: riseTrajectory(0.1),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "SE.PRM.ENRR",
+      numeric_id: 6,
+      name: "School enrollment, primary (% gross)",
+      sector: "Education",
+      pearson_r: 0.79,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "NE.EXP.GNFS.ZS",
+      numeric_id: 18,
+      name: "Exports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.74,
+      direction: "same",
+      series_a: sineTrajectory(0.1, 0.15),
+      series_b: sineTrajectory(0.2, 0.15),
+    },
+    {
+      code: "BX.KLT.DINV.WD.GD.ZS",
+      numeric_id: 40,
+      name: "Foreign direct investment, net inflows (% of GDP)",
+      sector: "Finance",
+      pearson_r: 0.71,
+      direction: "same",
+      series_a: riseTrajectory(0.15),
+      series_b: riseTrajectory(0.15),
+    },
+    {
+      code: "CC.EST",
+      numeric_id: 25,
+      name: "Control of Corruption (estimate)",
+      sector: "Governance",
+      pearson_r: 0.66,
+      direction: "opposite",
+      series_a: riseTrajectory(0.12),
+      series_b: fallTrajectory(0.12),
+    },
+  ],
+
+  // ── OFFSET-2: cz-la-1993-1998-19
+  // Czechia (sa=1993) vs Laos (sb=1998), offset=5y Czechia leads, l=19
+  // Czechia post-Velvet Revolution trade opening 1993; Laos doi-moi-style reform 1998
+  // Europe / Asia cross-regional. 21 indicators, ac=0.862, pps=343.8
+  "cz-la-1993-1998-19": [
+    {
+      code: "NY.GDP.MKTP.KD.ZG",
+      numeric_id: 1,
+      name: "GDP growth (annual %)",
+      sector: "Economic",
+      pearson_r: 0.86,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "NY.GDP.PCAP.CD",
+      numeric_id: 9,
+      name: "GDP per capita (current US$)",
+      sector: "Economic",
+      pearson_r: 0.88,
+      direction: "same",
+      series_a: riseTrajectory(0.1),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "NE.EXP.GNFS.ZS",
+      numeric_id: 18,
+      name: "Exports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.84,
+      direction: "same",
+      series_a: riseTrajectory(0.11),
+      series_b: riseTrajectory(0.11),
+    },
+    {
+      code: "NE.IMP.GNFS.ZS",
+      numeric_id: 20,
+      name: "Imports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.81,
+      direction: "same",
+      series_a: riseTrajectory(0.11),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "BX.KLT.DINV.WD.GD.ZS",
+      numeric_id: 40,
+      name: "Foreign direct investment, net inflows (% of GDP)",
+      sector: "Finance",
+      pearson_r: 0.79,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "FP.CPI.TOTL.ZG",
+      numeric_id: 30,
+      name: "Inflation, consumer prices (annual %)",
+      sector: "Economic",
+      pearson_r: 0.77,
+      direction: "same",
+      series_a: fallTrajectory(0.12),
+      series_b: fallTrajectory(0.12),
+    },
+    {
+      code: "GE.EST",
+      numeric_id: 22,
+      name: "Government Effectiveness (estimate)",
+      sector: "Governance",
+      pearson_r: 0.76,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "RQ.EST",
+      numeric_id: 23,
+      name: "Regulatory Quality (estimate)",
+      sector: "Governance",
+      pearson_r: 0.74,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "SP.DYN.LE00.IN",
+      numeric_id: 4,
+      name: "Life expectancy at birth, total (years)",
+      sector: "Health",
+      pearson_r: 0.9,
+      direction: "same",
+      series_a: riseTrajectory(0.07),
+      series_b: riseTrajectory(0.08),
+    },
+    {
+      code: "SH.DYN.MORT",
+      numeric_id: 14,
+      name: "Mortality rate, under-5 (per 1,000 live births)",
+      sector: "Health",
+      pearson_r: 0.88,
+      direction: "same",
+      series_a: fallTrajectory(0.09),
+      series_b: fallTrajectory(0.09),
+    },
+    {
+      code: "IT.NET.USER.ZS",
+      numeric_id: 13,
+      name: "Individuals using the Internet (% of population)",
+      sector: "Infrastructure",
+      pearson_r: 0.85,
+      direction: "same",
+      series_a: stepUpTrajectory(0.09),
+      series_b: stepUpTrajectory(0.1),
+    },
+    {
+      code: "SP.URB.TOTL.IN.ZS",
+      numeric_id: 62,
+      name: "Urban population (% of total population)",
+      sector: "Demographic",
+      pearson_r: 0.83,
+      direction: "same",
+      series_a: riseTrajectory(0.09),
+      series_b: riseTrajectory(0.09),
+    },
+    {
+      code: "NV.IND.MANF.ZS",
+      numeric_id: 35,
+      name: "Manufacturing, value added (% of GDP)",
+      sector: "Economic",
+      pearson_r: 0.71,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "SL.UEM.TOTL.ZS",
+      numeric_id: 8,
+      name: "Unemployment, total (% of total labor force)",
+      sector: "Social",
+      pearson_r: 0.68,
+      direction: "opposite",
+      series_a: fallTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+  ],
+
+  // ── OFFSET-3: mm-rs-2007-2000-14
+  // Myanmar (sa=2007) vs Serbia (sb=2000), offset=7y Myanmar leads, l=14
+  // Serbia post-Milosevic opening 2000; Myanmar Thein Sein reform era 2007
+  // Asia / Europe cross-regional. 20 indicators, ac=0.819, pps=229.4
+  "mm-rs-2007-2000-14": [
+    {
+      code: "NY.GDP.MKTP.KD.ZG",
+      numeric_id: 1,
+      name: "GDP growth (annual %)",
+      sector: "Economic",
+      pearson_r: 0.82,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "NY.GDP.PCAP.CD",
+      numeric_id: 9,
+      name: "GDP per capita (current US$)",
+      sector: "Economic",
+      pearson_r: 0.8,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "BX.KLT.DINV.WD.GD.ZS",
+      numeric_id: 40,
+      name: "Foreign direct investment, net inflows (% of GDP)",
+      sector: "Finance",
+      pearson_r: 0.78,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.14),
+    },
+    {
+      code: "GE.EST",
+      numeric_id: 22,
+      name: "Government Effectiveness (estimate)",
+      sector: "Governance",
+      pearson_r: 0.76,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "RL.EST",
+      numeric_id: 24,
+      name: "Rule of Law (estimate)",
+      sector: "Governance",
+      pearson_r: 0.74,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "CC.EST",
+      numeric_id: 25,
+      name: "Control of Corruption (estimate)",
+      sector: "Governance",
+      pearson_r: 0.71,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.14),
+    },
+    {
+      code: "VA.EST",
+      numeric_id: 21,
+      name: "Voice and Accountability (estimate)",
+      sector: "Governance",
+      pearson_r: 0.77,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "NE.EXP.GNFS.ZS",
+      numeric_id: 18,
+      name: "Exports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.73,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "IT.NET.USER.ZS",
+      numeric_id: 13,
+      name: "Individuals using the Internet (% of population)",
+      sector: "Infrastructure",
+      pearson_r: 0.84,
+      direction: "same",
+      series_a: stepUpTrajectory(0.1),
+      series_b: stepUpTrajectory(0.1),
+    },
+    {
+      code: "SP.DYN.LE00.IN",
+      numeric_id: 4,
+      name: "Life expectancy at birth, total (years)",
+      sector: "Health",
+      pearson_r: 0.86,
+      direction: "same",
+      series_a: riseTrajectory(0.09),
+      series_b: riseTrajectory(0.09),
+    },
+    {
+      code: "SH.DYN.MORT",
+      numeric_id: 14,
+      name: "Mortality rate, under-5 (per 1,000 live births)",
+      sector: "Health",
+      pearson_r: 0.84,
+      direction: "same",
+      series_a: fallTrajectory(0.1),
+      series_b: fallTrajectory(0.1),
+    },
+    {
+      code: "RQ.EST",
+      numeric_id: 23,
+      name: "Regulatory Quality (estimate)",
+      sector: "Governance",
+      pearson_r: 0.69,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.14),
+    },
+    {
+      code: "PV.EST",
+      numeric_id: 3,
+      name: "Political Stability and Absence of Violence (estimate)",
+      sector: "Governance",
+      pearson_r: 0.65,
+      direction: "opposite",
+      series_a: fallTrajectory(0.14),
+      series_b: riseTrajectory(0.14),
+    },
+  ],
+
+  // ── OFFSET-4: mz-ye-2002-1996-19
+  // Mozambique (sa=2002) vs Yemen (sb=1996), offset=6y Yemen leads, l=19
+  // Both post-conflict development arcs, resource-fragile states with parallel social-sector gains
+  // Africa / Asia cross-regional. 25 indicators, ac=0.843, pps=400.4
+  "mz-ye-2002-1996-19": [
+    {
+      code: "SP.DYN.LE00.IN",
+      numeric_id: 4,
+      name: "Life expectancy at birth, total (years)",
+      sector: "Health",
+      pearson_r: 0.89,
+      direction: "same",
+      series_a: riseTrajectory(0.09),
+      series_b: riseTrajectory(0.09),
+    },
+    {
+      code: "SH.DYN.MORT",
+      numeric_id: 14,
+      name: "Mortality rate, under-5 (per 1,000 live births)",
+      sector: "Health",
+      pearson_r: 0.87,
+      direction: "same",
+      series_a: fallTrajectory(0.1),
+      series_b: fallTrajectory(0.1),
+    },
+    {
+      code: "SP.DYN.TFRT.IN",
+      numeric_id: 15,
+      name: "Fertility rate, total (births per woman)",
+      sector: "Demographic",
+      pearson_r: 0.84,
+      direction: "same",
+      series_a: fallTrajectory(0.1),
+      series_b: fallTrajectory(0.11),
+    },
+    {
+      code: "SE.PRM.ENRR",
+      numeric_id: 6,
+      name: "School enrollment, primary (% gross)",
+      sector: "Education",
+      pearson_r: 0.82,
+      direction: "same",
+      series_a: riseTrajectory(0.11),
+      series_b: riseTrajectory(0.11),
+    },
+    {
+      code: "NY.GDP.MKTP.KD.ZG",
+      numeric_id: 1,
+      name: "GDP growth (annual %)",
+      sector: "Economic",
+      pearson_r: 0.8,
+      direction: "same",
+      series_a: sineTrajectory(0.1, 0.15),
+      series_b: sineTrajectory(0.2, 0.15),
+    },
+    {
+      code: "NY.GDP.PCAP.CD",
+      numeric_id: 9,
+      name: "GDP per capita (current US$)",
+      sector: "Economic",
+      pearson_r: 0.77,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "NE.EXP.GNFS.ZS",
+      numeric_id: 18,
+      name: "Exports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.75,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.14),
+    },
+    {
+      code: "EG.ELC.ACCS.RU.ZS",
+      numeric_id: 11,
+      name: "Access to electricity, rural (% of rural population)",
+      sector: "Infrastructure",
+      pearson_r: 0.83,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "IT.CEL.SETS.P2",
+      numeric_id: 16,
+      name: "Mobile cellular subscriptions (per 100 people)",
+      sector: "Infrastructure",
+      pearson_r: 0.86,
+      direction: "same",
+      series_a: stepUpTrajectory(0.1),
+      series_b: stepUpTrajectory(0.1),
+    },
+    {
+      code: "PV.EST",
+      numeric_id: 3,
+      name: "Political Stability and Absence of Violence (estimate)",
+      sector: "Governance",
+      pearson_r: 0.72,
+      direction: "same",
+      series_a: plateauDeclineTrajectory(0.14),
+      series_b: plateauDeclineTrajectory(0.14),
+    },
+    {
+      code: "SP.URB.TOTL.IN.ZS",
+      numeric_id: 62,
+      name: "Urban population (% of total population)",
+      sector: "Demographic",
+      pearson_r: 0.88,
+      direction: "same",
+      series_a: riseTrajectory(0.08),
+      series_b: riseTrajectory(0.08),
+    },
+    {
+      code: "NV.AGR.TOTL.ZS",
+      numeric_id: 33,
+      name: "Agriculture, forestry, and fishing, value added (% of GDP)",
+      sector: "Economic",
+      pearson_r: 0.76,
+      direction: "same",
+      series_a: fallTrajectory(0.12),
+      series_b: fallTrajectory(0.12),
+    },
+    {
+      code: "BX.KLT.DINV.WD.GD.ZS",
+      numeric_id: 40,
+      name: "Foreign direct investment, net inflows (% of GDP)",
+      sector: "Finance",
+      pearson_r: 0.7,
+      direction: "same",
+      series_a: riseTrajectory(0.15),
+      series_b: riseTrajectory(0.15),
+    },
+    {
+      code: "VA.EST",
+      numeric_id: 21,
+      name: "Voice and Accountability (estimate)",
+      sector: "Governance",
+      pearson_r: 0.67,
+      direction: "opposite",
+      series_a: riseTrajectory(0.14),
+      series_b: fallTrajectory(0.14),
+    },
+  ],
+
+  // ── OFFSET-5: me-pa-2008-1998-19
+  // Montenegro (sa=2008) vs Panama (sb=1998), offset=10y Panama leads, l=19
+  // Panama dollarisation + service-hub opening 1998; Montenegro independence + EU orbit 2008
+  // Europe / Latin America cross-regional. 22 indicators, ac=0.824, pps=344.4
+  "me-pa-2008-1998-19": [
+    {
+      code: "NY.GDP.MKTP.KD.ZG",
+      numeric_id: 1,
+      name: "GDP growth (annual %)",
+      sector: "Economic",
+      pearson_r: 0.82,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "NY.GDP.PCAP.CD",
+      numeric_id: 9,
+      name: "GDP per capita (current US$)",
+      sector: "Economic",
+      pearson_r: 0.85,
+      direction: "same",
+      series_a: riseTrajectory(0.11),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "BX.KLT.DINV.WD.GD.ZS",
+      numeric_id: 40,
+      name: "Foreign direct investment, net inflows (% of GDP)",
+      sector: "Finance",
+      pearson_r: 0.81,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "NE.EXP.GNFS.ZS",
+      numeric_id: 18,
+      name: "Exports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.78,
+      direction: "same",
+      series_a: riseTrajectory(0.12),
+      series_b: riseTrajectory(0.11),
+    },
+    {
+      code: "NE.IMP.GNFS.ZS",
+      numeric_id: 20,
+      name: "Imports of goods and services (% of GDP)",
+      sector: "Trade",
+      pearson_r: 0.76,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.12),
+    },
+    {
+      code: "NV.SRV.TOTL.ZS",
+      numeric_id: 36,
+      name: "Services, value added (% of GDP)",
+      sector: "Economic",
+      pearson_r: 0.83,
+      direction: "same",
+      series_a: riseTrajectory(0.11),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "GE.EST",
+      numeric_id: 22,
+      name: "Government Effectiveness (estimate)",
+      sector: "Governance",
+      pearson_r: 0.74,
+      direction: "same",
+      series_a: riseTrajectory(0.13),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "RL.EST",
+      numeric_id: 24,
+      name: "Rule of Law (estimate)",
+      sector: "Governance",
+      pearson_r: 0.72,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "RQ.EST",
+      numeric_id: 23,
+      name: "Regulatory Quality (estimate)",
+      sector: "Governance",
+      pearson_r: 0.71,
+      direction: "same",
+      series_a: riseTrajectory(0.14),
+      series_b: riseTrajectory(0.13),
+    },
+    {
+      code: "IT.NET.USER.ZS",
+      numeric_id: 13,
+      name: "Individuals using the Internet (% of population)",
+      sector: "Infrastructure",
+      pearson_r: 0.88,
+      direction: "same",
+      series_a: stepUpTrajectory(0.09),
+      series_b: stepUpTrajectory(0.09),
+    },
+    {
+      code: "SP.DYN.LE00.IN",
+      numeric_id: 4,
+      name: "Life expectancy at birth, total (years)",
+      sector: "Health",
+      pearson_r: 0.86,
+      direction: "same",
+      series_a: riseTrajectory(0.09),
+      series_b: riseTrajectory(0.09),
+    },
+    {
+      code: "SP.URB.TOTL.IN.ZS",
+      numeric_id: 62,
+      name: "Urban population (% of total population)",
+      sector: "Demographic",
+      pearson_r: 0.84,
+      direction: "same",
+      series_a: riseTrajectory(0.1),
+      series_b: riseTrajectory(0.1),
+    },
+    {
+      code: "FP.CPI.TOTL.ZG",
+      numeric_id: 30,
+      name: "Inflation, consumer prices (annual %)",
+      sector: "Economic",
+      pearson_r: 0.68,
+      direction: "opposite",
+      series_a: riseTrajectory(0.14),
+      series_b: fallTrajectory(0.14),
+    },
+  ],
 };
 
 // ── Pattern metadata catalog ───────────────────────────────────────────────
@@ -1460,13 +2190,104 @@ export const PATTERN_META: PatternMeta[] = [
     plausibility_note:
       "Conflict-fragile co-decay: shared instability trajectory, military expenditure growth, governance erosion, health stagnation",
   },
+  // ── 5 offset patterns (5-segment slugs) ────────────────────────────────
+  {
+    slug: "ke-ps-1998-2004-19",
+    a_iso2: "ke",
+    b_iso2: "ps",
+    a_name: "Kenya",
+    b_name: "Palestine",
+    start_year: 1998,
+    end_year: 2017,
+    length: 19,
+    pps: 71,
+    avg_correlation: 0.79,
+    num_indicators: 14,
+    tier: "S",
+    plausibility_note:
+      "Kenya multi-party reform era 1998 preceded Palestine post-Oslo state-building 2004 by 6 years; both show parallel governance improvement and social-sector gains",
+    start_year_b: 2004,
+    offset_years: -6,
+  },
+  {
+    slug: "cz-la-1993-1998-19",
+    a_iso2: "cz",
+    b_iso2: "la",
+    a_name: "Czechia",
+    b_name: "Laos",
+    start_year: 1993,
+    end_year: 2012,
+    length: 19,
+    pps: 74,
+    avg_correlation: 0.82,
+    num_indicators: 14,
+    tier: "S",
+    plausibility_note:
+      "Czechia post-Velvet Revolution export-led opening 1993 preceded Laos doi-moi-style reform 1998 by 5 years; both show trade and FDI acceleration with parallel health gains",
+    start_year_b: 1998,
+    offset_years: -5,
+  },
+  {
+    slug: "mm-rs-2007-2000-14",
+    a_iso2: "mm",
+    b_iso2: "rs",
+    a_name: "Myanmar",
+    b_name: "Serbia",
+    start_year: 2007,
+    end_year: 2021,
+    length: 14,
+    pps: 57,
+    avg_correlation: 0.77,
+    num_indicators: 13,
+    tier: "S",
+    plausibility_note:
+      "Authoritarian-opening rhyme: Serbia post-Milosevic 2000 preceded Myanmar Thein Sein reform era 2007 by 7 years; both show FDI inflow, governance improvement, and internet diffusion",
+    start_year_b: 2000,
+    offset_years: 7,
+  },
+  {
+    slug: "mz-ye-2002-1996-19",
+    a_iso2: "mz",
+    b_iso2: "ye",
+    a_name: "Mozambique",
+    b_name: "Yemen",
+    start_year: 2002,
+    end_year: 2021,
+    length: 19,
+    pps: 82,
+    avg_correlation: 0.8,
+    num_indicators: 14,
+    tier: "S",
+    plausibility_note:
+      "Yemen post-unification development arc 1996 preceded Mozambique post-civil-war reconstruction 2002 by 6 years; both resource-fragile states show parallel social-sector gains before governance decay",
+    start_year_b: 1996,
+    offset_years: 6,
+  },
+  {
+    slug: "me-pa-2008-1998-19",
+    a_iso2: "me",
+    b_iso2: "pa",
+    a_name: "Montenegro",
+    b_name: "Panama",
+    start_year: 2008,
+    end_year: 2027,
+    length: 19,
+    pps: 70,
+    avg_correlation: 0.79,
+    num_indicators: 13,
+    tier: "S",
+    plausibility_note:
+      "Panama dollarisation and service-hub opening 1998 preceded Montenegro independence and EU orbit 2008 by 10 years; both small states show services-led growth, FDI surge, and governance improvement",
+    start_year_b: 1998,
+    offset_years: 10,
+  },
 ];
 
 // ── Accessors ─────────────────────────────────────────────────────────────
 
 /**
  * Returns the mocked PatternIndicator list for a given pattern slug.
- * Returns null if the slug is not one of the 10 mocked patterns.
+ * Returns null if the slug is not one of the 15 mocked patterns.
  *
  * ONE-LINE SWAP contract: when real `data/cascade/pattern-scdis.json` lands,
  * replace the MOCKED_INDICATORS lookup with a read from that file. The return
@@ -1476,7 +2297,7 @@ export function getPatternIndicators(slug: string): PatternIndicator[] | null {
   return MOCKED_INDICATORS[slug] ?? null;
 }
 
-/** Returns the 10 mocked pattern slugs (for navigation / "Try a sample pattern" affordance). */
+/** Returns all 15 mocked pattern slugs (for navigation / "Try a sample pattern" affordance). */
 export function getMockedPatternSlugs(): string[] {
   return Object.keys(MOCKED_INDICATORS);
 }
@@ -1486,7 +2307,16 @@ export function getPatternMeta(slug: string): PatternMeta | null {
   return PATTERN_META.find((m) => m.slug === slug) ?? null;
 }
 
-/** Returns the full PatternMeta catalog (all 10). */
+/** Returns the full PatternMeta catalog (all 15). */
 export function getAllPatternMeta(): PatternMeta[] {
   return PATTERN_META;
+}
+
+/**
+ * Detects whether a slug is 4-segment (aligned) or 5-segment (offset).
+ * 4-segment: {a_iso2}-{b_iso2}-{start_year}-{end_year}
+ * 5-segment: {a_iso2}-{b_iso2}-{start_year_a}-{start_year_b}-{length}
+ */
+export function isOffsetSlug(slug: string): boolean {
+  return slug.split("-").length === 5;
 }
