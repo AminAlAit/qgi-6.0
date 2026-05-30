@@ -94,6 +94,14 @@ class TestGetPat:
         with pytest.raises(RuntimeError, match="no SecretString"):
             fe_sync._get_pat(client)
 
+    def test_missing_secret_string_key_raises(self):
+        """Defensive: Secrets Manager binary secrets return no `SecretString`
+        key (binary content is under `SecretBinary` instead). Module rejects."""
+        client = MagicMock()
+        client.get_secret_value.return_value = {}
+        with pytest.raises(RuntimeError, match="no SecretString"):
+            fe_sync._get_pat(client)
+
 
 # ─── _dispatch_workflow ──────────────────────────────────────────────────
 
