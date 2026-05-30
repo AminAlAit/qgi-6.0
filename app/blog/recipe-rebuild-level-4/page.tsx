@@ -109,14 +109,15 @@ export default function RecipeRebuildLevel4Post() {
           style={{ color: "var(--qgi-text)" }}
         >
           <p>
-            QGI began with a single observation. Saudi Arabia&apos;s economic trajectory
-            from 2011 to 2015, viewed across a handful of indicators, looked structurally
-            like Azerbaijan&apos;s from 2016 to 2020. Saudi Arabia experienced a defined
-            military-conflict-related shock at the end of its window. Azerbaijan, walking
-            the same path four years later, experienced one too. The pitch that followed,
-            and the pitch that has carried QGI for two years, is this: countries walk the
-            same paths at different times, and if we can describe the path well enough we
-            can tell a country it is on one before the path ends.
+            QGI began with a single observation: two countries from different regions,
+            examined across a handful of economic and governance indicators, showed
+            strikingly similar trajectories in the years before major geopolitical shocks.
+            The one that walked the path earlier experienced a defined shock at the end of
+            its window. The one that followed the same path several years later
+            experienced one too. The pitch that followed, and the pitch that has carried
+            QGI for two years, is this: countries walk the same paths at different times,
+            and if we can describe the path well enough we can tell a country it is on one
+            before the path ends.
           </p>
 
           <p>
@@ -348,17 +349,18 @@ export default function RecipeRebuildLevel4Post() {
           </p>
 
           <p>
-            The first is sign retention in the underlying SCDI corpus. Today the
-            correlation engine keeps positive correlations and discards strong negative
-            ones. The Saudi-Azeri founding observation is a positive-correlation case, the
-            similarity function we are building works on positive correlations, and the
-            cost of recomputing the entire 14-billion-row SCDI table to add a sign column
-            is non-trivial. We are deferring negative-correlation modelling to a separate
-            research workstream rather than folding it into V2.0. One member of our
-            internal advisory council registered a principled dissent on this — the
-            argument that dropping the sign at SCDI creation locks us out of an entire
-            half of the modelling space permanently — and we have logged that dissent
-            against the future research workstream rather than letting it disappear.
+            The first is sign retention in the underlying pattern indicator corpus. Today
+            the correlation engine keeps positive correlations and discards strong
+            negative ones. The founding observation that motivated this work is a
+            positive-correlation case, the similarity function we are building works on
+            positive correlations, and the cost of recomputing the entire 14-billion-row
+            indicator table to add a sign column is non-trivial. We are deferring
+            negative-correlation modelling to a separate research workstream rather than
+            folding it into V2.0. One member of our internal advisory council registered a
+            principled dissent on this -- the argument that dropping the sign at indicator
+            creation locks us out of an entire half of the modelling space permanently --
+            and we have logged that dissent against the future research workstream rather
+            than letting it disappear.
           </p>
 
           <p>
