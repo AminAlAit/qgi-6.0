@@ -26,8 +26,9 @@ describe("Sidebar", () => {
     expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Risk Board")).toBeInTheDocument();
     expect(screen.getByText("Compare")).toBeInTheDocument();
-    expect(screen.getByText("Nearest Analog")).toBeInTheDocument();
+    expect(screen.getByText("Analogues")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
+    expect(screen.queryByText("Nearest Analog")).not.toBeInTheDocument();
     expect(screen.queryByText("Recipe Tracker")).not.toBeInTheDocument();
     expect(screen.queryByText("Compound Risk")).not.toBeInTheDocument();
   });

@@ -117,8 +117,8 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   // the rebuild starts from scaffolding, not from scratch.
   {
     type: "standalone",
-    label: "Nearest Analog",
-    href: "/nearest-analog",
+    label: "Analogues",
+    href: "/analogues",
     icon: <Telescope size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },

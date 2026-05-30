@@ -17,7 +17,7 @@ export type RouteKey =
   | "countries-v4.1-detail"
   | "risk-board"
   | "compound-risk"
-  | "nearest-analog"
+  | "analogues"
   | "recipe-tracker"
   | "compare"
   | "patterns-v4"
@@ -191,8 +191,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     ],
   },
 
-  "nearest-analog": {
-    lede: "Four rules for reading nearest-analog matches.",
+  analogues: {
+    lede: "Four rules for reading Analogues matches.",
     rules: [
       {
         title: "Matches are similarities, not predictions",

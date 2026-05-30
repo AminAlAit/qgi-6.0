@@ -1,5 +1,5 @@
 /**
- * nearest-analog-data — current-country analog data for /nearest-analog.
+ * nearest-analog-data — current-country analog data for /analogues.
  *
  * V4.1 wire-up (2026-05-30 — full pipeline wire):
  *   - All 216-country entries come exclusively from loadAnalogs() (fleet-run-1
@@ -27,7 +27,7 @@ import { loadAnalogs } from "@/lib/te-data-contract/load";
  * ISO 3166-1 alpha-2 → alpha-3 lookup for the 216-country TE fleet-run-1
  * analog corpus (2026-05-30). All entries have iso=null, iso2=<2-letter>.
  * Needed because getCurrentCountry() looks up by 3-letter code (matching URL
- * routing, e.g. /nearest-analog?iso=SDN), but the bake only carries iso2.
+ * routing, e.g. /analogues?iso=SDN), but the bake only carries iso2.
  * This is the canonical standard mapping — no fallback truncation needed.
  */
 const ISO2_TO_ISO3: Readonly<Record<string, string>> = {

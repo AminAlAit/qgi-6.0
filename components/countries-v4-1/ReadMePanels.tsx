@@ -131,7 +131,7 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
             was taken down. Will return when the page rejuvenates as
             Compound Negative-Event Density. */}
         <Link
-          href={`/nearest-analog?iso=${country.iso}` as Route}
+          href={`/analogues?iso=${country.iso}` as Route}
           style={{
             fontSize: "12px",
             color: "var(--qgi-accent)",

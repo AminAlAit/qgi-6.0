@@ -1,5 +1,5 @@
 /**
- * /nearest-analog — Nearest-Analog finder mockup page.
+ * /analogues — Analogues finder mockup page.
  *
  * Implements §2.C of `qgi-docs/internal/design/te-site-architecture-target-state.md`:
  * "Pick a country today, the system shows you the closest historical match.
@@ -32,9 +32,9 @@ import { MethodologyBox } from "@/components/nearest-analog/MethodologyBox";
 import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
 
 export const metadata: Metadata = {
-  title: "Nearest Analog Finder · QG Intelligence",
+  title: "Analogues · QG Intelligence",
   description:
-    "Pick a country today, see its closest historical pre-crisis shape matches.",
+    "Pick a country today, see its closest historical Analogues: shape matches across the recipe library.",
 };
 
 interface NearestAnalogPageProps {
@@ -77,7 +77,7 @@ export default async function NearestAnalogPage({
             flexWrap: "wrap",
           }}
         >
-          <HowToReadButton routeKey="nearest-analog" />
+          <HowToReadButton routeKey="analogues" />
         </div>
 
         {/* Hero */}
@@ -96,7 +96,7 @@ export default async function NearestAnalogPage({
             }}
           >
             <Telescope size={13} strokeWidth={2} />
-            Nearest Analog
+            ANALOGUES
           </div>
           <h1
             style={{
@@ -107,7 +107,7 @@ export default async function NearestAnalogPage({
               maxWidth: "920px",
             }}
           >
-            Nearest Analog finder
+            Analogues
           </h1>
           <p
             style={{

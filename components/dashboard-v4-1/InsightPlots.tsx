@@ -432,7 +432,7 @@ export function TopPairTeaserPlot({ pairs }: { pairs: CountryPairTeaser[] }) {
         {pairs.map((p, i) => (
           <Link
             key={`${p.country_a}-${p.country_b}-${i}`}
-            href={"/nearest-analog" as Route}
+            href={"/analogues" as Route}
             style={{
               textDecoration: "none",
               color: "inherit",
