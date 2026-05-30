@@ -247,14 +247,19 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // ─── 2026-05-30 — pair/ subroute collapsed into unified [slug] ─────
-      // /patterns/pair/{slug} is now served by /patterns/{slug} (2-segment
-      // ISO-2 slugs dispatch to the pair-overview view inside the unified
-      // route). 301 preserves any external or internal links that used the
-      // old /pair/ subroute.
+      // ─── 2026-05-31 — pair-overview route retired ───────────────────────
+      // 2-segment ISO-2 slugs (e.g. /patterns/gr-lb) used to serve a
+      // pair-overview page. That view is removed; both the /pair/ subroute
+      // and bare 2-segment slugs now redirect to /patterns.
       {
         source: "/patterns/pair/:slug",
-        destination: "/patterns/:slug",
+        destination: "/patterns",
+        permanent: true,
+      },
+      // 2-segment ISO-2 slug pattern: two lowercase 2-3 char codes with a dash.
+      {
+        source: "/patterns/:a([a-z]{2,3})-:b([a-z]{2,3})",
+        destination: "/patterns",
         permanent: true,
       },
     ];

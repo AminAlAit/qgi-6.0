@@ -61,6 +61,9 @@ export function PatternSegmentTimeline({
     ticks.push(y);
   }
 
+  // For aligned patterns both tracks are identical — show the length label only once.
+  const isAligned = startA === startB && endA === endB;
+
   return (
     <div
       style={{
@@ -100,10 +103,13 @@ export function PatternSegmentTimeline({
         {[
           { name: countryA, start: startA, end: endA },
           { name: countryB, start: startB, end: endB },
-        ].map(({ name, start, end }) => {
+        ].map(({ name, start, end }, trackIdx) => {
           const leftPct = pct(start);
           const widthPct = ((end - start) / axisSpan) * 100;
           const length = end - start;
+          // Only show the centred length label on the first track for aligned
+          // patterns (avoids printing "22 y" twice on identical tracks).
+          const showLengthLabel = !isAligned || trackIdx === 0;
 
           return (
             <div
@@ -195,20 +201,22 @@ export function PatternSegmentTimeline({
                   >
                     {start}
                   </span>
-                  {/* Length centered */}
-                  <span
-                    style={{
-                      position: "absolute",
-                      left: `${leftPct + widthPct / 2}%`,
-                      transform: "translateX(-50%)",
-                      fontSize: "9px",
-                      fontFamily: "ui-monospace, monospace",
-                      color: "var(--qgi-text-dim)",
-                      whiteSpace: "nowrap",
-                    }}
-                  >
-                    {length} y
-                  </span>
+                  {/* Length centered — shown only once for aligned patterns */}
+                  {showLengthLabel && (
+                    <span
+                      style={{
+                        position: "absolute",
+                        left: `${leftPct + widthPct / 2}%`,
+                        transform: "translateX(-50%)",
+                        fontSize: "9px",
+                        fontFamily: "ui-monospace, monospace",
+                        color: "var(--qgi-text-dim)",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {length} y
+                    </span>
+                  )}
                   {/* End year */}
                   <span
                     style={{

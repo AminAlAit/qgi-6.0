@@ -319,3 +319,21 @@ export function getCountryNames(): string[] {
   _countryNamesCache = Array.from(names).sort();
   return _countryNamesCache;
 }
+
+// ---------------------------------------------------------------------------
+// Max pattern length — derived dynamically from the corpus
+// ---------------------------------------------------------------------------
+
+let _maxLengthCache: number | null = null;
+
+/** Returns the longest window_length in the full corpus (catalogue + partners index). */
+export function getMaxPatternLength(): number {
+  if (_maxLengthCache !== null) return _maxLengthCache;
+  const catalogue = getCatalogue();
+  const idx = getPartnersIndex();
+  let max = 12;
+  for (const e of catalogue) if (e.window_length > max) max = e.window_length;
+  for (const e of idx) if (e.window_length > max) max = e.window_length;
+  _maxLengthCache = max;
+  return max;
+}

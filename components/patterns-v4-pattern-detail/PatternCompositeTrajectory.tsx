@@ -229,7 +229,7 @@ export function PatternCompositeTrajectory({
               color: "var(--qgi-text)",
             }}
           >
-            Indicator-composite trajectory &middot; Year 1 &rarr; Year {length}
+            Indicator-composite trajectory
           </h2>
         </div>
 
@@ -315,7 +315,7 @@ export function PatternCompositeTrajectory({
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+              gridTemplateColumns: "repeat(2, 1fr)",
               gap: "14px",
             }}
           >
