@@ -117,9 +117,20 @@ jobs:
 
       - name: Commit + push branch
         id: commit
+        env:
+          # Sonnet round 2 N7: pass workflow_dispatch inputs as env vars so
+          # the shell sees them as plain bash variables. GitHub expands
+          # `${{ inputs.* }}` BEFORE the shell runs; a hostile input
+          # containing a quote / backtick / $ could otherwise break or
+          # subshell-execute. Env-var pattern is GHA's documented hardening.
+          SLUG: ${{ steps.vintage.outputs.slug }}
+          LABEL: ${{ steps.vintage.outputs.label }}
+          S3_BUCKET: ${{ inputs.s3_bucket }}
+          VINTAGE_PREFIX: ${{ inputs.vintage_s3_prefix }}
+          EXECUTION_NAME: ${{ inputs.execution_name }}
         run: |
           set -euo pipefail
-          branch="sync/te-fleet-${{ steps.vintage.outputs.slug }}"
+          branch="sync/te-fleet-${SLUG}"
           git checkout -b "$branch"
 
           git add data/
@@ -130,12 +141,13 @@ jobs:
             exit 0
           fi
 
-          n_files=$(git diff --cached --name-only | wc -l)
-          msg="data(te): sync vintage ${{ steps.vintage.outputs.label }} ($n_files files)
+          # Sonnet N9: `wc -l` is portable across Linux/macOS once whitespace-trimmed.
+          n_files=$(git diff --cached --name-only | wc -l | tr -d ' ')
+          msg="data(te): sync vintage ${LABEL} (${n_files} files)
 
-          Source: s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }}
-          Execution: ${{ inputs.execution_name }}
-          Vintage: ${{ steps.vintage.outputs.label }}
+          Source: s3://${S3_BUCKET}/${VINTAGE_PREFIX}
+          Execution: ${EXECUTION_NAME}
+          Vintage: ${LABEL}
 
           Per run-separation rule (feedback_run_separation_versioning.md): the
           per-vintage corpus lands at data/te-fleet-run-<slug>/ and the
@@ -162,22 +174,30 @@ jobs:
         if: steps.commit.outputs.skip != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Sonnet round 2 N7: same env-var hardening as the commit step.
+          SLUG: ${{ steps.vintage.outputs.slug }}
+          LABEL: ${{ steps.vintage.outputs.label }}
+          S3_BUCKET: ${{ inputs.s3_bucket }}
+          VINTAGE_PREFIX: ${{ inputs.vintage_s3_prefix }}
+          EXECUTION_NAME: ${{ inputs.execution_name }}
+          BRANCH: ${{ steps.commit.outputs.branch }}
         run: |
           set -euo pipefail
-          gh pr create \
-            --title "data(te): sync vintage ${{ steps.vintage.outputs.label }}" \
-            --body "Triggered by SFN execution \`${{ inputs.execution_name }}\` via qgi-recipe-fleet-frontend-sync Lambda.
+          body="Triggered by SFN execution \`${EXECUTION_NAME}\` via qgi-recipe-fleet-frontend-sync Lambda.
 
-          **Source:** \`s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }}\`
-          **Vintage:** \`${{ steps.vintage.outputs.label }}\`
+          **Source:** \`s3://${S3_BUCKET}/${VINTAGE_PREFIX}\`
+          **Vintage:** \`${LABEL}\`
 
           Per run-separation rule (\`feedback_run_separation_versioning.md\`):
-          - Per-vintage corpus -> \`data/te-fleet-run-${{ steps.vintage.outputs.slug }}/\`
+          - Per-vintage corpus -> \`data/te-fleet-run-${SLUG}/\`
           - Cross-vintage rank-history -> \`data/te-fleet-rank-history.json\` (APPEND-only, with idempotent re-run support)
 
           Sonnet review before merge (cf. \`feedback_pr_review.md\`).
-          " \
+          "
+          gh pr create \
+            --title "data(te): sync vintage ${LABEL}" \
+            --body "$body" \
             --base main \
-            --head "${{ steps.commit.outputs.branch }}" \
+            --head "$BRANCH" \
             --label "data" \
             --label "te-fleet"

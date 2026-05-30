@@ -124,5 +124,47 @@ class TestAppendRankHistory(unittest.TestCase):
         self.assertTrue(cross.exists())
 
 
+class TestMainCli(unittest.TestCase):
+    """Sonnet round 2 N8 — cover the main() wrapper, not just the core."""
+
+    def test_main_empty_slug_returns_2(self):
+        """If neither --slug nor VINTAGE_SLUG is set, main() exits 2."""
+        import os
+        original_slug = os.environ.pop("VINTAGE_SLUG", None)
+        original_argv = sys.argv
+        try:
+            sys.argv = ["append.py"]  # no --slug
+            rc = appender.main()
+            self.assertEqual(rc, 2)
+        finally:
+            if original_slug is not None:
+                os.environ["VINTAGE_SLUG"] = original_slug
+            sys.argv = original_argv
+
+    def test_main_uses_env_var_for_slug(self):
+        """VINTAGE_SLUG env var is the default for --slug."""
+        import os
+        original_slug = os.environ.get("VINTAGE_SLUG")
+        original_argv = sys.argv
+        tmp = pathlib.Path(tempfile.mkdtemp())
+        try:
+            # Set env var; pass --per-vintage (missing file → noop, rc=0)
+            os.environ["VINTAGE_SLUG"] = "test-slug"
+            sys.argv = [
+                "append.py",
+                "--per-vintage", str(tmp / "missing.json"),
+                "--cross", str(tmp / "cross.json"),
+            ]
+            rc = appender.main()
+            self.assertEqual(rc, 0)  # missing file = noop
+        finally:
+            if original_slug is not None:
+                os.environ["VINTAGE_SLUG"] = original_slug
+            else:
+                os.environ.pop("VINTAGE_SLUG", None)
+            sys.argv = original_argv
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
 if __name__ == "__main__":
     unittest.main()
