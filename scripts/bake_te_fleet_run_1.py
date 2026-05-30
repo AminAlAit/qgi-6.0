@@ -164,6 +164,36 @@ class _BakeOutput:
         return str(self.output_dir)
 
 
+def _resolve_reference_input(arg_value: str | Path, s3_client: Any) -> Path:
+    """Resolve a CLI --countries / --recipe-tracker / --indicator-catalog
+    argument that may be a local path OR an s3:// URI.
+
+    AWS-mode prereq (per the bake Batch JobDef): the founder syncs the 3
+    reference files to s3://qgi-data-lake-222222222222/reference/. The
+    JobDef then passes s3:// URIs for these flags so we don't have to
+    bake them into the container image.
+
+    Local mode: argv passes a local path; this function is a no-op (returns
+    Path verbatim).
+    """
+    s = str(arg_value)
+    if not s.startswith("s3://"):
+        return Path(s)
+    # s3://bucket/key/with/slashes.json
+    after_scheme = s[len("s3://"):]
+    if "/" not in after_scheme:
+        raise ValueError(f"Malformed S3 URI: {s!r} (expected s3://bucket/key)")
+    bucket, _, key = after_scheme.partition("/")
+    suffix = Path(key).suffix or ".tmp"
+    # Use a NamedTemporaryFile with delete=False so it survives until process exit.
+    import tempfile
+    fd, tmp_path = tempfile.mkstemp(suffix=suffix, prefix="bake-ref-")
+    os.close(fd)
+    LOG.info("Downloading s3://%s/%s to %s", bucket, key, tmp_path)
+    s3_client.download_file(bucket, key, tmp_path)
+    return Path(tmp_path)
+
+
 def _refuse_overwrite_if_baked(s3_client: Any, bucket: str, prefix: str) -> None:
     """Per `feedback_run_separation_versioning.md` — refuse-to-overwrite if a
     MANIFEST.json already exists at the target prefix. Raises RuntimeError so
@@ -1165,9 +1195,14 @@ def main() -> int:
     ap.add_argument("--output-dir", type=Path, default=None,
                     help="Local FS output dir. Required when BAKE_MODE!=aws; "
                          "ignored when BAKE_MODE=aws (S3 prefix is used instead).")
-    ap.add_argument("--countries", type=Path, required=True)
-    ap.add_argument("--recipe-tracker", type=Path, required=True)
-    ap.add_argument("--indicator-catalog", type=Path, required=True)
+    # accept str (not Path) so s3:// URIs aren't munged by pathlib; the
+    # resolver function downloads if needed and returns a Path.
+    ap.add_argument("--countries", type=str, required=True,
+                    help="Local path OR s3:// URI to countries.json")
+    ap.add_argument("--recipe-tracker", type=str, required=True,
+                    help="Local path OR s3:// URI to recipe-tracker.json")
+    ap.add_argument("--indicator-catalog", type=str, required=True,
+                    help="Local path OR s3:// URI to indicator-catalog-detailed.md")
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
     ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
                     help="Local panel parquet root for raw-value lookups (frontend §1.4).")
@@ -1198,7 +1233,20 @@ def main() -> int:
             LOG.error("BAKE_MODE=local requires --output-dir")
             return 2
 
+    # boto3 client is needed both for the reference-file s3:// resolver and
+    # for the bake itself. Build it BEFORE loading reference files so the
+    # resolver can use it.
+    s3 = boto3.client("s3", region_name="eu-central-1")
+
     LOG.info("Loading resources...")
+    # In AWS mode the Batch JobDef passes s3:// URIs for these 3 reference
+    # files (countries / recipe-tracker / indicator-catalog) because they
+    # aren't vendored in the qgi-recipe-fleet image. _resolve_reference_input
+    # downloads to a temp file in that case; in local mode it's a no-op.
+    args.countries = _resolve_reference_input(args.countries, s3)
+    args.recipe_tracker = _resolve_reference_input(args.recipe_tracker, s3)
+    args.indicator_catalog = _resolve_reference_input(args.indicator_catalog, s3)
+
     countries = load_countries(args.countries)
     LOG.info("  %d countries", len(countries))
     tracker = load_recipe_tracker(args.recipe_tracker)
@@ -1206,7 +1254,6 @@ def main() -> int:
     indicator_names = load_indicator_catalog(args.indicator_catalog)
     LOG.info("  %d indicator catalog entries", len(indicator_names))
 
-    s3 = boto3.client("s3", region_name="eu-central-1")
     recipe_ids = list_recipe_dirs(s3, args.bucket)
     LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
 
