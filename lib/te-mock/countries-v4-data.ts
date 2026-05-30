@@ -2419,7 +2419,7 @@ function buildTrajectory(
  * Backend ask: cross-vintage rollup file (country × recipe × vintage → score)
  * baked alongside each fleet run. See C:\tmp\backend-gaps\countries.md §1.4.
  */
- 
+
 function buildRankHistory(
   _iso: string,
   _recipeId: string,
@@ -2755,7 +2755,11 @@ function hydrate(
  * This is a convenience heuristic — the bake currently does not emit a
  * `provider` field alongside each SHAP entry, so we derive it client-side.
  */
-function inferProvider(code: string): string {
+function inferProvider(code: string | null | undefined): string {
+  // 2026-05-30: defensive — same hardening as resolveIndicatorLabel.
+  // Fleet-run-1 shap_attribution[] occasionally has undefined codes;
+  // crashing here would 500 every page that loads countries-v4-data.ts.
+  if (!code) return "Unknown";
   const base = code.split("__")[0]; // strip any transform suffix
   if (base.startsWith("v2")) return "V-Dem";
   if (base.endsWith(".EST")) return "World Bank WGI";
