@@ -62,6 +62,7 @@ export function statusLabel(status: string): { label: string; tone: StatusTone }
     case "graduated":
     case "walked_no_graduation":
     case "in_progress":
+    case "in_play": // pipeline emits this V4.1 audience-facing label directly
     case "live_legacy":
       return { label: "in play", tone: "neutral" };
     default:
