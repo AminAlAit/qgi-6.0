@@ -71,6 +71,16 @@ LOG = logging.getLogger("bake-te-fleet-run-1")
 
 # ─── verdict → recipe_status_audience mapping (§9.3) ─────────────────────────
 # Pipeline owns the canonical mapping; frontend safe-falls unknown to "coming_soon".
+#
+# M8-R7 (BINDING, 2026-05-30 cumulative DECISION §10): "prior_version" only
+# applies to a HARD_FAIL or CHANCE_FAIL whose recipe HAS appeared as validated
+# or graduated on the public site (i.e. the recipe has a prior public footprint).
+# For greenfield (no prior public footprint), use a neutral never-graduated
+# label. The gate fires for any verdict whose base mapping = "prior_version"
+# (currently HARD_FAIL + CHANCE_FAIL).
+#
+# The base map below is the "with prior" view; the runtime gate in
+# _resolve_audience_status() applies M8-R7 using the recipe's tracker status.
 VERDICT_TO_AUDIENCE_STATUS = {
     "LOCK": "validated",
     "HARD_FAIL": "prior_version",
@@ -80,6 +90,36 @@ VERDICT_TO_AUDIENCE_STATUS = {
     "MARGINAL_PENDING_BETA_CALIBRATION": "in_play",
     "MARGINAL_PENDING_BETA_CAL": "in_play",
 }
+
+# Tracker statuses that count as "validated or graduated" public footprint per
+# M8-R7. `walked_no_graduation` is NOT public footprint of a GRADUATION; the
+# recipe was walked but never shipped as validated. Greenfield (`queued` or
+# anything else) likewise has no public footprint.
+PRIOR_PUBLIC_FOOTPRINT_STATUSES = frozenset({"live_legacy", "graduated"})
+
+
+def _resolve_audience_status(verdict: str, tracker_row: dict | None) -> str:
+    """M8-R7 gate: a HARD_FAIL maps to 'prior_version' only when the recipe has
+    prior public footprint (was validated/graduated). Greenfield HARD_FAILs
+    (the common case in fleet-run-1) get 'coming_soon' instead — honest about
+    "we tried this and the protective-belt did not clear" without falsely
+    implying a roll-back from a prior public version.
+
+    Args:
+        verdict: the walk's verdict string (e.g. "LOCK", "HARD_FAIL").
+        tracker_row: the recipe's row from recipe-tracker.json, or None if
+            the recipe is not yet in the tracker (greenfield).
+
+    Returns the audience-status string. Caller emits it to the scores file +
+    card. Unknown verdicts fall to "coming_soon" (same as the dict default).
+    """
+    base = VERDICT_TO_AUDIENCE_STATUS.get(verdict, "coming_soon")
+    if base != "prior_version":
+        return base
+    tracker_status = (tracker_row or {}).get("status")
+    if tracker_status in PRIOR_PUBLIC_FOOTPRINT_STATUSES:
+        return "prior_version"
+    return "coming_soon"
 
 # ─── verdict → tier (the legacy classification used on cards) ────────────────
 VERDICT_TO_TIER = {
@@ -595,7 +635,10 @@ def build_card_v3(
     rid = summary.get("recipe_id")
     verdict = summary.get("verdict") or "UNKNOWN"
     tier = VERDICT_TO_TIER.get(verdict, "experimental")
-    audience_status = VERDICT_TO_AUDIENCE_STATUS.get(verdict, "coming_soon")
+    # M8-R7 (BINDING) gate: tracker_row drives the prior_version vs. coming_soon
+    # split. See module-level _resolve_audience_status() docstring + the
+    # 2026-05-30 cumulative DECISION §10 annex.
+    audience_status = _resolve_audience_status(verdict, tracker_row)
     go = summary.get("greedy_outer_loop") or {}
     selected = go.get("selected_indicators") or []
     chosen_window = go.get("chosen_window")
