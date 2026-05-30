@@ -11,7 +11,7 @@ import {
   Gauge,
   Columns2,
   Telescope,
-  Waves,
+  Layers,
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
@@ -126,7 +126,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     type: "standalone",
     label: "Patterns",
     href: "/patterns",
-    icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
+    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
   // Compare is bottom-slotted (2026-05-29) — it's the only locked surface,
