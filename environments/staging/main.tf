@@ -173,3 +173,45 @@ module "monitoring" {
   sns_topic_arn = module.storage.sns_topic_arn
   tags          = local.tags
 }
+
+# ---------------------------------------------------------------------------
+# GHA self-hosted runner — c7g.medium Spot Graviton (qgi-aws-tf#970)
+#
+# Replaces GHA-hosted minutes for the qgi-frontend repo so the
+# `sync-te-fleet-vintage.yml` workflow (lane 2 of the pipeline build) can
+# run. Founder declined GHA top-up (`feedback_aws_cost_rule_qgi_rnd_001.md`)
+# — self-hosted is the alternative; ~$5/mo.
+#
+# PREREQUISITE before `terraform apply` (founder one-time setup):
+#   Create the runner registration secret with a fine-grained PAT:
+#     aws secretsmanager create-secret \
+#       --name qgi-gha-runner-registration-frontend-pat \
+#       --secret-string "<PAT with Administration: Read and Write on qgi-frontend>"
+#
+# Module README: ../../modules/gha-runner/README.md
+# ---------------------------------------------------------------------------
+data "aws_vpc" "default" {
+  default = true
+}
+
+data "aws_subnets" "default" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default.id]
+  }
+}
+
+module "gha_runner_frontend" {
+  source = "../../modules/gha-runner"
+
+  repo                   = "AminAlAit/qgi-frontend"
+  runner_label           = "qgi-frontend" # MUST match runs-on label in workflow YAML
+  runner_pat_secret_name = "qgi-gha-runner-registration-frontend-pat"
+
+  vpc_id    = data.aws_vpc.default.id
+  subnet_id = data.aws_subnets.default.ids[0]
+
+  instance_type = "c7g.medium"
+
+  tags = local.tags
+}
