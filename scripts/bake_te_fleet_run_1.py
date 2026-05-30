@@ -73,9 +73,11 @@ LOG = logging.getLogger("bake-te-fleet-run-1")
 # Pipeline owns the canonical mapping; frontend safe-falls unknown to "coming_soon".
 #
 # M8-R7 (BINDING, 2026-05-30 cumulative DECISION §10): "prior_version" only
-# applies to a HARD_FAIL whose recipe HAS appeared as validated or graduated on
-# the public site (i.e. the recipe has a prior public footprint). For greenfield
-# HARD_FAILs (no prior public footprint), use a neutral never-graduated label.
+# applies to a HARD_FAIL or CHANCE_FAIL whose recipe HAS appeared as validated
+# or graduated on the public site (i.e. the recipe has a prior public footprint).
+# For greenfield (no prior public footprint), use a neutral never-graduated
+# label. The gate fires for any verdict whose base mapping = "prior_version"
+# (currently HARD_FAIL + CHANCE_FAIL).
 #
 # The base map below is the "with prior" view; the runtime gate in
 # _resolve_audience_status() applies M8-R7 using the recipe's tracker status.

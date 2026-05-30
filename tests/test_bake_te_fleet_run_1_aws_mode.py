@@ -276,9 +276,21 @@ class TestResolveAudienceStatus:
 
     def test_marginal_pending_unaffected(self):
         """The gate only fires on base='prior_version'. MARGINAL_PENDING maps
-        to 'in_play' regardless of tracker status."""
+        to 'in_play' regardless of tracker status. Both the short alias and
+        the production canonical form (from run_f_ml_1_poc.py) are exercised
+        per Sonnet F2 (round 1 of #134)."""
+        # Short alias (used in some test fixtures)
         assert _resolve_audience_status("MARGINAL_PENDING_BETA_CAL", {"status": "queued"}) == "in_play"
         assert _resolve_audience_status("MARGINAL_PENDING_BETA_CAL", {"status": "live_legacy"}) == "in_play"
+        # Production canonical form emitted by run_f_ml_1_poc.py
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CALIBRATION", {"status": "queued"}) == "in_play"
+        assert _resolve_audience_status("MARGINAL_PENDING_BETA_CALIBRATION", {"status": "live_legacy"}) == "in_play"
+
+    def test_chance_fail_live_legacy_returns_prior_version(self):
+        """Sonnet F3: gate-opens path for CHANCE_FAIL on a cascade-era recipe.
+        Mirrors the HARD_FAIL+live_legacy case for the second 'prior_version'
+        verdict."""
+        assert _resolve_audience_status("CHANCE_FAIL", {"status": "live_legacy"}) == "prior_version"
 
     def test_unknown_verdict_falls_to_coming_soon(self):
         """Unknown verdict (defensive): fall to coming_soon, never to a
