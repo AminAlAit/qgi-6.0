@@ -62,3 +62,7 @@ preview-screenshots/
 # build-against-only. 28 MB; reproducible from S3 ml-results/ via
 # qgi-ml/scripts/bake_te_fleet_run_1.py.
 /data/te-fleet-run-1/
+
+# Python bytecode (scripts/ has Python utilities)
+__pycache__/
+*.pyc
