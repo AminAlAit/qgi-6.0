@@ -18,6 +18,8 @@
  */
 
 import type { Metadata } from "next";
+import Link from "next/link";
+import type { Route } from "next";
 import { Layers } from "lucide-react";
 import {
   getCatalogue,
@@ -26,6 +28,7 @@ import {
   getCascadeVintage,
   getTierCounts,
 } from "@/lib/cascade-patterns/patterns-data";
+import { getMockedPatternSlugs, getPatternMeta } from "@/lib/cascade-patterns/scdi-mock";
 import { FeaturedPairsStrip } from "@/components/patterns-v4/FeaturedPairsStrip";
 import { PatternsSearch } from "@/components/patterns-v4/PatternsSearch";
 
@@ -41,6 +44,7 @@ export default function PatternsPage() {
   const featured = getFeaturedPairs();
   const vintage = getCascadeVintage();
   const tierCounts = getTierCounts();
+  const mockedSlugs = getMockedPatternSlugs();
 
   return (
     <div
@@ -176,6 +180,61 @@ export default function PatternsPage() {
           from a structural-correlation run across the QGI indicator library. Next cascade
           re-bake in progress.
         </footer>
+
+        {/* DEV mock-pattern cluster — remove when backend ships pattern-scdis.json */}
+        <div
+          style={{
+            marginTop: "32px",
+            paddingTop: "14px",
+            borderTop: "1px dashed var(--qgi-border)",
+          }}
+        >
+          <div
+            style={{
+              fontSize: "9px",
+              fontFamily: "ui-monospace, monospace",
+              color: "var(--qgi-text-dim)",
+              letterSpacing: "1.4px",
+              fontWeight: 600,
+              marginBottom: "10px",
+            }}
+          >
+            DEV · 15 MOCK PATTERNS (QA ONLY)
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "6px",
+            }}
+          >
+            {mockedSlugs.map((slug) => {
+              const m = getPatternMeta(slug);
+              const label = m
+                ? `${m.a_iso2.toUpperCase()}/${m.b_iso2.toUpperCase()} ${m.start_year}${m.start_year_b !== undefined ? "/" + m.start_year_b : ""}${m.start_year_b !== undefined ? " +" + Math.abs(m.offset_years ?? 0) + "y" : ""}`
+                : slug;
+              return (
+                <Link
+                  key={slug}
+                  href={`/patterns/${slug}` as Route}
+                  style={{
+                    fontSize: "10px",
+                    fontFamily: "ui-monospace, monospace",
+                    color: "var(--qgi-text-dim)",
+                    background: "var(--qgi-surface)",
+                    border: "1px solid var(--qgi-border)",
+                    borderRadius: "4px",
+                    padding: "3px 8px",
+                    textDecoration: "none",
+                    opacity: 0.75,
+                  }}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </div>
   );

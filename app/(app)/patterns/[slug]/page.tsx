@@ -39,6 +39,7 @@ import {
   getMockedPatternSlugs,
   getPatternMeta,
   getAllPatternMeta,
+  isOffsetSlug,
 } from "@/lib/cascade-patterns/scdi-mock";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 import { PageLayout } from "@/components/patterns-v4/PageLayout";
@@ -211,18 +212,62 @@ export default async function PatternDetailPage({ params }: Params) {
             >
               {meta.a_name} ↔ {meta.b_name}
             </h1>
-            <p
-              style={{
-                fontSize: "14px",
-                color: "var(--qgi-text-muted)",
-                margin: 0,
-              }}
-            >
-              {meta.start_year}
-              {"–"}
-              {meta.end_year} · {meta.length} years · {meta.num_indicators} shared
-              indicators
-            </p>
+            {isOffsetSlug(slug) && meta.start_year_b !== undefined ? (
+              /* 2-line offset stat row */
+              <div
+                style={{
+                  fontSize: "13px",
+                  color: "var(--qgi-text-muted)",
+                  margin: 0,
+                  lineHeight: 1.6,
+                  fontFamily: "ui-monospace, monospace",
+                }}
+              >
+                <div>
+                  {meta.a_name} {meta.start_year}
+                  {" → "}
+                  {meta.start_year + meta.length} ({meta.length}
+                  {" "}y)
+                </div>
+                <div>
+                  {meta.b_name} {meta.start_year_b}
+                  {" → "}
+                  {meta.start_year_b + meta.length} ({meta.length}
+                  {" "}y)
+                </div>
+                <div
+                  style={{
+                    fontSize: "11px",
+                    color: "var(--qgi-accent)",
+                    marginTop: "2px",
+                    letterSpacing: "0.3px",
+                  }}
+                >
+                  {Math.abs(meta.offset_years ?? 0)}-year offset
+                  {meta.offset_years && meta.offset_years > 0
+                    ? ` · ${meta.b_name} led`
+                    : meta.offset_years && meta.offset_years < 0
+                      ? ` · ${meta.a_name} led`
+                      : ""}
+                  {" · "}
+                  {meta.num_indicators} shared indicators
+                </div>
+              </div>
+            ) : (
+              /* 1-line aligned stat row (existing behaviour) */
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "var(--qgi-text-muted)",
+                  margin: 0,
+                }}
+              >
+                {meta.start_year}
+                {"–"}
+                {meta.end_year} · {meta.length} years · {meta.num_indicators} shared
+                indicators
+              </p>
+            )}
           </div>
         </div>
 
