@@ -3,16 +3,12 @@
 /**
  * PatternIndicatorsGrouped — §5 Indicator detail, grouped by sector.
  *
- * Mirrors the /recipes page L1-family grouping idiom.
- *
- * - No sort chips. No direction chips. No URL state.
- * - Each sector is a section with a colored left border + header band.
- * - Within each section, SCDIs sorted by correlation desc.
- * - Hidden sectors (from pie chart toggle) collapse their entire section.
- * - Indicator cards are expandable: click to expand to ~4x size.
- * - Expanded card: larger sparkline with gridlines + axis labels.
- * - "Align to window" toggle in expanded card: OFF = calendar years, ON = Year 1..N.
- * - "r =" replaced with "correlation =".
+ * - Category filter chips live at the TOP of this panel (collocated with
+ *   the SCDIs they affect). No need to scroll to the pie chart above.
+ * - Expanded SCDI card: both countries overlaid on ONE plot, not two separate.
+ * - "Align" toggle: ON = Year 1..N shared axis; OFF = calendar years.
+ *   Tooltip explains the behaviour; label itself is just "Align".
+ * - "correlation =" not "r =".
  * - No direction badges.
  */
 
@@ -68,29 +64,34 @@ function Sparkline({
   );
 }
 
-// ── Expanded interactive sparkline with gridlines + axis ─────────────────────
+// ── Overlaid expanded chart — both countries on one plot ──────────────────────
 
-function ExpandedSparkline({
-  series,
-  color,
-  label,
-  windowStart,
+function OverlaidExpandedChart({
+  seriesA,
+  seriesB,
+  colorA,
+  colorB,
+  labelA,
+  labelB,
+  windowStartA,
+  windowStartB,
   useWindowRelative,
   length,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  seriesIndex,
 }: {
-  series: number[];
-  color: string;
-  label: string;
-  windowStart: number;
+  seriesA: number[];
+  seriesB: number[];
+  colorA: string;
+  colorB: string;
+  labelA: string;
+  labelB: string;
+  windowStartA: number;
+  windowStartB: number;
   useWindowRelative: boolean;
   length: number;
-  seriesIndex: number; // 0 = A, 1 = B (reserved for future per-side styling)
 }) {
   const [hovered, setHovered] = useState<number | null>(null);
-  const w = 260;
-  const h = 80;
+  const w = 460;
+  const h = 90;
   const padLeft = 32;
   const padRight = 8;
   const padTop = 8;
@@ -98,48 +99,98 @@ function ExpandedSparkline({
   const innerW = w - padLeft - padRight;
   const innerH = h - padTop - padBot;
 
-  const min = Math.min(...series);
-  const max = Math.max(...series);
-  const range = max - min || 1;
-  const n = series.length;
+  // When aligned (useWindowRelative=true) both series share the same x-axis
+  // (Year 1..N). When not aligned, country A's calendar start is used for
+  // the x labels (country B may start at a different year, but visually both
+  // traces are plotted on the shared Year 1..N axis since the series are
+  // already trimmed to the same window length).
+  const nA = seriesA.length;
+  const nB = seriesB.length;
+  const n = Math.max(nA, nB);
+
+  // Shared y scale across both series.
+  const allVals = [...seriesA, ...seriesB];
+  const minY = Math.min(...allVals);
+  const maxY = Math.max(...allVals);
+  const rangeY = maxY - minY || 1;
 
   const toX = (i: number) => padLeft + (i / (n - 1)) * innerW;
-  const toY = (v: number) => padTop + (1 - (v - min) / range) * innerH;
+  const toY = (v: number) => padTop + (1 - (v - minY) / rangeY) * innerH;
 
-  const path = series
-    .map((v, i) => `${i === 0 ? "M" : "L"} ${toX(i).toFixed(1)} ${toY(v).toFixed(1)}`)
-    .join(" ");
+  const buildPath = (series: number[]) =>
+    series
+      .map((v, i) => `${i === 0 ? "M" : "L"} ${toX(i).toFixed(1)} ${toY(v).toFixed(1)}`)
+      .join(" ");
 
-  // Tick positions: 0, mid, last.
+  const pathA = buildPath(seriesA);
+  const pathB = buildPath(seriesB);
+
   const xTicks = [0, Math.floor((n - 1) / 2), n - 1];
-  const yTicks = [min, (min + max) / 2, max];
+  const yTicks = [minY, (minY + maxY) / 2, maxY];
 
   const labelForX = (i: number) => {
     if (useWindowRelative) return `Y${i + 1}`;
-    return String(windowStart + Math.round((i / (n - 1)) * (length - 1)));
+    // Use country A's calendar start as the x-axis reference.
+    return String(windowStartA + Math.round((i / (n - 1)) * (length - 1)));
   };
 
   return (
     <div>
+      {/* Legend row */}
       <div
         style={{
-          fontSize: "10px",
-          fontFamily: "ui-monospace, monospace",
-          color: "var(--qgi-text-dim)",
-          marginBottom: "4px",
           display: "flex",
-          alignItems: "center",
-          gap: "6px",
+          gap: "16px",
+          marginBottom: "6px",
+          flexWrap: "wrap",
         }}
       >
-        <FlagImg emoji={pairDetailFlagFor(label)} name={label} width={14} radius={1} />
-        {label.slice(0, 14)}
+        {[
+          { label: labelA, color: colorA, dashed: false },
+          { label: labelB, color: colorB, dashed: true },
+        ].map(({ label, color, dashed }) => (
+          <div key={label} style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+            <svg width={22} height={8} aria-hidden style={{ flexShrink: 0 }}>
+              <line
+                x1={0}
+                y1={4}
+                x2={22}
+                y2={4}
+                stroke={color}
+                strokeWidth={1.8}
+                strokeDasharray={dashed ? "4 2" : undefined}
+                strokeOpacity={dashed ? 0.7 : 1}
+              />
+            </svg>
+            <FlagImg
+              emoji={pairDetailFlagFor(label)}
+              name={label}
+              width={13}
+              radius={1}
+            />
+            <span
+              style={{
+                fontSize: "10px",
+                fontFamily: "ui-monospace, monospace",
+                color: "var(--qgi-text-dim)",
+              }}
+            >
+              {label.slice(0, 14)}
+              {!useWindowRelative && (
+                <span style={{ color: "var(--qgi-text-dim)", marginLeft: "4px" }}>
+                  ({label === labelA ? windowStartA : windowStartB})
+                </span>
+              )}
+            </span>
+          </div>
+        ))}
       </div>
+
       <svg
         width={w}
         height={h}
         viewBox={`0 0 ${w} ${h}`}
-        style={{ display: "block", overflow: "visible" }}
+        style={{ display: "block", overflow: "visible", maxWidth: "100%" }}
         onMouseLeave={() => setHovered(null)}
       >
         {/* Grid lines */}
@@ -170,30 +221,55 @@ function ExpandedSparkline({
           );
         })}
 
-        {/* Series path */}
+        {/* Zero guide */}
+        {minY < 0 && maxY > 0 && (
+          <line
+            x1={padLeft}
+            y1={toY(0)}
+            x2={w - padRight}
+            y2={toY(0)}
+            stroke="var(--qgi-border)"
+            strokeWidth={0.7}
+            strokeDasharray="2 2"
+          />
+        )}
+
+        {/* Series B (dashed, drawn first so A is on top) */}
         <path
-          d={path}
+          d={pathB}
           fill="none"
-          stroke={color}
+          stroke={colorB}
+          strokeWidth={1.8}
+          strokeOpacity={0.7}
+          strokeDasharray="5 3"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+
+        {/* Series A */}
+        <path
+          d={pathA}
+          fill="none"
+          stroke={colorA}
           strokeWidth={1.8}
           strokeLinejoin="round"
           strokeLinecap="round"
         />
 
-        {/* Hover dots */}
-        {series.map((v, i) => (
+        {/* Hover dots for A */}
+        {seriesA.map((v, i) => (
           <circle
             key={i}
             cx={toX(i)}
             cy={toY(v)}
-            r={hovered === i ? 4 : 0}
-            fill={color}
+            r={hovered === i ? 3.5 : 0}
+            fill={colorA}
             style={{ transition: "r 0.1s" }}
           />
         ))}
 
         {/* Invisible hover targets */}
-        {series.map((v, i) => (
+        {Array.from({ length: n }, (_, i) => (
           <rect
             key={i}
             x={toX(i) - innerW / n / 2}
@@ -206,21 +282,21 @@ function ExpandedSparkline({
         ))}
 
         {/* Hover tooltip */}
-        {hovered !== null && (
+        {hovered !== null && hovered < seriesA.length && (
           <g>
             <line
               x1={toX(hovered)}
               y1={padTop}
               x2={toX(hovered)}
               y2={padTop + innerH}
-              stroke={color}
-              strokeWidth={0.8}
+              stroke="var(--qgi-text-dim)"
+              strokeWidth={0.7}
               strokeOpacity={0.5}
             />
             <rect
-              x={toX(hovered) - 22}
+              x={toX(hovered) - 28}
               y={padTop - 14}
-              width={44}
+              width={56}
               height={13}
               rx={3}
               fill="var(--qgi-surface)"
@@ -235,7 +311,8 @@ function ExpandedSparkline({
               textAnchor="middle"
               fontFamily="ui-monospace, monospace"
             >
-              {labelForX(hovered)}: {series[hovered].toFixed(2)}
+              {labelForX(hovered)}: A {seriesA[hovered]?.toFixed(1)} / B{" "}
+              {seriesB[hovered]?.toFixed(1)}
             </text>
           </g>
         )}
@@ -286,7 +363,7 @@ function IndicatorCard({
   length: number;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const [alignToWindow, setAlignToWindow] = useState(false);
+  const [align, setAlign] = useState(false);
 
   const stripeColor = sectorColor(indicator.sector);
   const t = Math.max(0, Math.min(1, (indicator.pearson_r - 0.6) / 0.4));
@@ -342,7 +419,7 @@ function IndicatorCard({
           </div>
 
           {!expanded ? (
-            /* Compact view */
+            /* Compact view — two tiny sparklines side by side */
             <>
               <div style={{ display: "flex", gap: "10px", marginBottom: "10px" }}>
                 <div style={{ display: "flex", flexDirection: "column" }}>
@@ -387,66 +464,45 @@ function IndicatorCard({
               </span>
             </>
           ) : (
-            /* Expanded view */
+            /* Expanded view — single overlaid chart */
             <>
-              {/* Align to window toggle */}
+              {/* Align toggle */}
               <div style={{ marginBottom: "14px" }} onClick={(e) => e.stopPropagation()}>
                 <button
-                  onClick={() => setAlignToWindow((v) => !v)}
+                  onClick={() => setAlign((v) => !v)}
+                  title={
+                    align
+                      ? "Both series on shared Year 1…N axis. Click to switch to calendar years."
+                      : "Each country on its own calendar-year axis. Click to align both to Year 1…N."
+                  }
                   style={{
-                    padding: "3px 10px",
+                    padding: "3px 12px",
                     borderRadius: "12px",
-                    border: `1px solid ${alignToWindow ? stripeColor : "var(--qgi-border)"}`,
-                    background: alignToWindow ? `${stripeColor}20` : "transparent",
-                    color: alignToWindow ? stripeColor : "var(--qgi-text-muted)",
+                    border: `1px solid ${align ? stripeColor : "var(--qgi-border)"}`,
+                    background: align ? `${stripeColor}20` : "transparent",
+                    color: align ? stripeColor : "var(--qgi-text-muted)",
                     fontSize: "10px",
                     fontFamily: "ui-monospace, monospace",
                     cursor: "pointer",
-                    fontWeight: alignToWindow ? 600 : 400,
+                    fontWeight: align ? 600 : 400,
                   }}
                 >
-                  Align to window: {alignToWindow ? "ON" : "OFF"}
+                  Align
                 </button>
-                <span
-                  style={{
-                    fontSize: "10px",
-                    color: "var(--qgi-text-dim)",
-                    fontFamily: "ui-monospace, monospace",
-                    marginLeft: "8px",
-                  }}
-                >
-                  {alignToWindow
-                    ? "x-axis = Year 1..N (both overlaid)"
-                    : "x-axis = calendar years per country"}
-                </span>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "20px",
-                  marginBottom: "12px",
-                }}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <ExpandedSparkline
-                  series={indicator.series_a}
-                  color={colorA}
-                  label={countryA}
-                  windowStart={startA}
-                  useWindowRelative={alignToWindow}
+              <div onClick={(e) => e.stopPropagation()} style={{ marginBottom: "12px" }}>
+                <OverlaidExpandedChart
+                  seriesA={indicator.series_a}
+                  seriesB={indicator.series_b}
+                  colorA={colorA}
+                  colorB={colorB}
+                  labelA={countryA}
+                  labelB={countryB}
+                  windowStartA={startA}
+                  windowStartB={startB}
+                  useWindowRelative={align}
                   length={length}
-                  seriesIndex={0}
-                />
-                <ExpandedSparkline
-                  series={indicator.series_b}
-                  color={colorB}
-                  label={countryB}
-                  windowStart={startB}
-                  useWindowRelative={alignToWindow}
-                  length={length}
-                  seriesIndex={1}
                 />
               </div>
 
@@ -472,6 +528,12 @@ function IndicatorCard({
 
 // ── Main grouped component ────────────────────────────────────────────────────
 
+interface SectorMeta {
+  sector: string;
+  count: number;
+  color: string;
+}
+
 interface PatternIndicatorsGroupedProps {
   indicators: PatternIndicator[];
   countryA: string;
@@ -480,6 +542,8 @@ interface PatternIndicatorsGroupedProps {
   startB: number;
   length: number;
   hiddenSectors: Set<string>;
+  onToggle: (sector: string) => void;
+  sectors: SectorMeta[];
 }
 
 export function PatternIndicatorsGrouped({
@@ -490,6 +554,8 @@ export function PatternIndicatorsGrouped({
   startB,
   length,
   hiddenSectors,
+  onToggle,
+  sectors,
 }: PatternIndicatorsGroupedProps) {
   // Group by sector, sort each group by correlation desc.
   const groups: { sector: string; items: PatternIndicator[] }[] = [];
@@ -537,22 +603,61 @@ export function PatternIndicatorsGrouped({
         style={{
           fontSize: "15px",
           fontWeight: 700,
-          margin: "0 0 6px",
+          margin: "0 0 10px",
           color: "var(--qgi-text)",
         }}
       >
         Each signal, side by side
       </h2>
-      <p
+
+      {/* ── Inline category filter chips ──────────────────────────────── */}
+      <div
         style={{
-          fontSize: "11px",
-          color: "var(--qgi-text-dim)",
-          margin: "0 0 20px",
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "6px",
+          marginBottom: "20px",
         }}
       >
-        Click any indicator to expand its chart. Use the pie chart above to filter by
-        category.
-      </p>
+        {sectors.map(({ sector, count, color }) => {
+          const hidden = hiddenSectors.has(sector);
+          return (
+            <button
+              key={sector}
+              onClick={() => onToggle(sector)}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "5px",
+                padding: "3px 9px",
+                borderRadius: "12px",
+                border: `1px solid ${hidden ? "var(--qgi-border)" : color + "60"}`,
+                background: hidden ? "transparent" : `${color}18`,
+                color: hidden ? "var(--qgi-text-dim)" : color,
+                fontSize: "10px",
+                fontFamily: "ui-monospace, monospace",
+                fontWeight: hidden ? 400 : 600,
+                cursor: "pointer",
+                opacity: hidden ? 0.55 : 1,
+                transition: "all 0.15s",
+              }}
+            >
+              <span
+                style={{
+                  width: "7px",
+                  height: "7px",
+                  borderRadius: "50%",
+                  background: hidden ? "var(--qgi-border)" : color,
+                  display: "inline-block",
+                  flexShrink: 0,
+                }}
+              />
+              {sector}
+              <span style={{ fontSize: "9px", opacity: 0.75 }}>{count}</span>
+            </button>
+          );
+        })}
+      </div>
 
       {visibleGroups.length === 0 && (
         <p
@@ -564,7 +669,7 @@ export function PatternIndicatorsGrouped({
             padding: "24px 0",
           }}
         >
-          All categories are hidden. Click a slice in the pie chart to show them.
+          All categories hidden. Click a chip above to show them.
         </p>
       )}
 
@@ -573,7 +678,7 @@ export function PatternIndicatorsGrouped({
         const color = sectorColor(sector);
         return (
           <section key={sector} style={{ marginBottom: "24px" }}>
-            {/* Section header — mirrors /recipes L1 band */}
+            {/* Section header */}
             <header
               style={{
                 display: "flex",

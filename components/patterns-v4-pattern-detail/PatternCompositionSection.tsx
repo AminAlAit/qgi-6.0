@@ -3,14 +3,16 @@
 /**
  * PatternCompositionSection — client wrapper that holds pie↔grid toggle state.
  *
- * Contains both PatternCompositionPie and PatternIndicatorsGrouped.
- * The hidden-sectors Set is managed here and passed to both.
+ * Category filter chips live at the top of PatternIndicatorsGrouped (collocated
+ * with the SCDIs they affect). The pie remains as a visual summary of composition
+ * only; users do not need to scroll up to the pie to toggle categories.
  */
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import type { PatternIndicator } from "@/lib/cascade-patterns/scdi-mock";
 import { PatternCompositionPie } from "./PatternCompositionPie";
 import { PatternIndicatorsGrouped } from "./PatternIndicatorsGrouped";
+import { sectorColor } from "@/lib/cascade-patterns/sector-colors";
 
 interface PatternCompositionSectionProps {
   indicators: PatternIndicator[];
@@ -43,6 +45,17 @@ export function PatternCompositionSection({
     });
   }, []);
 
+  // Build ordered sector list from indicators (sorted by count desc).
+  const sectors = useMemo(() => {
+    const counts: Record<string, number> = {};
+    for (const ind of indicators) {
+      counts[ind.sector] = (counts[ind.sector] ?? 0) + 1;
+    }
+    return Object.entries(counts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([sector, count]) => ({ sector, count, color: sectorColor(sector) }));
+  }, [indicators]);
+
   return (
     <>
       <PatternCompositionPie
@@ -58,6 +71,8 @@ export function PatternCompositionSection({
         startB={startB}
         length={length}
         hiddenSectors={hiddenSectors}
+        onToggle={handleToggle}
+        sectors={sectors}
       />
     </>
   );

@@ -17,12 +17,12 @@
  */
 
 import type { Metadata } from "next";
-import { Layers } from "lucide-react";
 import {
   getCatalogue,
   getPartnersIndex,
   getTierCounts,
   getCountryNames,
+  getMaxPatternLength,
 } from "@/lib/cascade-patterns/patterns-data";
 import { PatternsSearch } from "@/components/patterns-v4/PatternsSearch";
 
@@ -37,6 +37,7 @@ export default function PatternsPage() {
   const fullCorpus = getPartnersIndex();
   const tierCounts = getTierCounts();
   const countryNames = getCountryNames();
+  const maxPatternLength = getMaxPatternLength();
 
   return (
     <div
@@ -45,23 +46,6 @@ export default function PatternsPage() {
       <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px 24px 64px" }}>
         {/* ── Hero ─────────────────────────────────────────────────────────── */}
         <header style={{ marginBottom: "32px" }}>
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "8px",
-              color: "var(--qgi-accent)",
-              fontSize: "10px",
-              letterSpacing: "4px",
-              textTransform: "uppercase",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "10px",
-            }}
-          >
-            <Layers size={12} strokeWidth={2} />
-            PATTERNS
-          </div>
-
           <h1
             style={{
               fontSize: "clamp(26px, 4vw, 42px)",
@@ -96,6 +80,7 @@ export default function PatternsPage() {
           fullCorpus={fullCorpus}
           tierCounts={tierCounts}
           countryNames={countryNames}
+          maxPatternLength={maxPatternLength}
         />
       </div>
     </div>

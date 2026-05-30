@@ -67,38 +67,43 @@ interface Props {
   fullCorpus: CatalogueEntry[];
   tierCounts: TierCounts;
   countryNames: string[];
+  maxPatternLength: number;
 }
 
-export function PatternsSearch({ entries, fullCorpus, tierCounts, countryNames }: Props) {
+export function PatternsSearch({
+  entries,
+  fullCorpus,
+  tierCounts,
+  countryNames,
+  maxPatternLength,
+}: Props) {
   // Filter state
   const [countryA, setCountryA] = useState("");
   const [countryB, setCountryB] = useState("");
   const [tierFilter, setTierFilter] = useState<"" | "short" | "medium" | "long">("");
   const [lengthMin, setLengthMin] = useState(12);
-  const [lengthMax, setLengthMax] = useState(65);
+  const [lengthMax, setLengthMax] = useState(maxPatternLength);
   const [startYearAMin, setStartYearAMin] = useState(1960);
   const [startYearAMax, setStartYearAMax] = useState(2024);
   const [startYearBMin, setStartYearBMin] = useState(1960);
   const [startYearBMax, setStartYearBMax] = useState(2024);
+  // Start-year filter is always visible; active when user changes from defaults.
   const [useYearFilter, setUseYearFilter] = useState(false);
   const [page, setPage] = useState(1);
-  // filtersOpen reserved for future mobile collapse toggle.
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [filtersOpen, setFiltersOpen] = useState(true);
 
   const resetFilters = useCallback(() => {
     setCountryA("");
     setCountryB("");
     setTierFilter("");
     setLengthMin(12);
-    setLengthMax(65);
+    setLengthMax(maxPatternLength);
     setStartYearAMin(1960);
     setStartYearAMax(2024);
     setStartYearBMin(1960);
     setStartYearBMax(2024);
     setUseYearFilter(false);
     setPage(1);
-  }, []);
+  }, [maxPatternLength]);
 
   const resetAndPage = useCallback((fn: () => void) => {
     fn();
@@ -187,7 +192,7 @@ export function PatternsSearch({ entries, fullCorpus, tierCounts, countryNames }
     !!countryB ||
     !!tierFilter ||
     lengthMin !== 12 ||
-    lengthMax !== 65 ||
+    lengthMax !== maxPatternLength ||
     useYearFilter;
 
   // Tier chip definitions
@@ -295,19 +300,27 @@ export function PatternsSearch({ entries, fullCorpus, tierCounts, countryNames }
           />
         </FilterSection>
 
-        {/* Pattern length */}
+        {/* Pattern length — unified control: length range slider + tier chips */}
         <FilterSection label="Pattern length">
           <LengthRangeSlider
             min={lengthMin}
             max={lengthMax}
-            onMinChange={(v) => resetAndPage(() => setLengthMin(v))}
+            corpusMax={maxPatternLength}
+            onMinChange={(v) => {
+              resetAndPage(() => setLengthMin(v));
+              // Auto-update tier filter to match the selected range
+            }}
             onMaxChange={(v) => resetAndPage(() => setLengthMax(v))}
           />
-        </FilterSection>
-
-        {/* Tier */}
-        <FilterSection label="Term length">
-          <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
+          {/* Tier quick-select chips below the slider */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "4px",
+              marginTop: "10px",
+            }}
+          >
             {TIER_CHIPS.map((chip) => {
               const active = tierFilter === chip.value;
               return (
@@ -318,8 +331,8 @@ export function PatternsSearch({ entries, fullCorpus, tierCounts, countryNames }
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "space-between",
-                    padding: "5px 9px",
-                    fontSize: "11px",
+                    padding: "4px 8px",
+                    fontSize: "10.5px",
                     fontFamily: "ui-monospace, monospace",
                     borderRadius: "4px",
                     border: "1px solid",
@@ -348,64 +361,59 @@ export function PatternsSearch({ entries, fullCorpus, tierCounts, countryNames }
           </div>
         </FilterSection>
 
-        {/* Start year filter (opt-in) */}
+        {/* Start year — always visible; note that it narrows corpus to top-ranked entries */}
         <FilterSection label="Start year" last>
-          <div style={{ marginBottom: "8px" }}>
-            <label
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "7px",
-                fontSize: "10.5px",
-                color: "var(--qgi-text-muted)",
-                fontFamily: "ui-monospace, monospace",
-                cursor: "pointer",
-              }}
-            >
-              <input
-                type="checkbox"
-                checked={useYearFilter}
-                onChange={(e) => resetAndPage(() => setUseYearFilter(e.target.checked))}
-                style={{ accentColor: ACCENT }}
-              />
-              Filter by start year
-            </label>
-            {!useYearFilter && (
-              <p
-                style={{
-                  fontSize: "9.5px",
-                  color: "var(--qgi-text-dim)",
-                  fontFamily: "ui-monospace, monospace",
-                  margin: "5px 0 0",
-                  lineHeight: 1.5,
-                }}
-              >
-                Searches top-ranked entries where start year is recorded
-              </p>
-            )}
+          <p
+            style={{
+              fontSize: "9.5px",
+              color: "var(--qgi-text-dim)",
+              fontFamily: "ui-monospace, monospace",
+              margin: "0 0 8px",
+              lineHeight: 1.5,
+            }}
+          >
+            Searches top-ranked entries with recorded start years.
+          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+            <YearRangeInput
+              label="Country A"
+              min={startYearAMin}
+              max={startYearAMax}
+              onMinChange={(v) =>
+                resetAndPage(() => {
+                  setStartYearAMin(v);
+                  setUseYearFilter(true);
+                })
+              }
+              onMaxChange={(v) =>
+                resetAndPage(() => {
+                  setStartYearAMax(v);
+                  setUseYearFilter(true);
+                })
+              }
+              floor={1960}
+              ceil={2024}
+            />
+            <YearRangeInput
+              label="Country B"
+              min={startYearBMin}
+              max={startYearBMax}
+              onMinChange={(v) =>
+                resetAndPage(() => {
+                  setStartYearBMin(v);
+                  setUseYearFilter(true);
+                })
+              }
+              onMaxChange={(v) =>
+                resetAndPage(() => {
+                  setStartYearBMax(v);
+                  setUseYearFilter(true);
+                })
+              }
+              floor={1960}
+              ceil={2024}
+            />
           </div>
-          {useYearFilter && (
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
-              <YearRangeInput
-                label="Country A start"
-                min={startYearAMin}
-                max={startYearAMax}
-                onMinChange={(v) => resetAndPage(() => setStartYearAMin(v))}
-                onMaxChange={(v) => resetAndPage(() => setStartYearAMax(v))}
-                floor={1960}
-                ceil={2024}
-              />
-              <YearRangeInput
-                label="Country B start"
-                min={startYearBMin}
-                max={startYearBMax}
-                onMinChange={(v) => resetAndPage(() => setStartYearBMin(v))}
-                onMaxChange={(v) => resetAndPage(() => setStartYearBMax(v))}
-                floor={1960}
-                ceil={2024}
-              />
-            </div>
-          )}
         </FilterSection>
       </aside>
 
@@ -686,7 +694,7 @@ function PatternRow({ entry, rank }: { entry: CatalogueEntry; rank: number }) {
                 fontFamily: "ui-monospace, monospace",
               }}
             >
-              r = {entry.corr.toFixed(3)}
+              correlation = {entry.corr.toFixed(3)}
             </span>
 
             {/* Start years (only when available) */}
@@ -903,21 +911,16 @@ function CountryInput({
 function LengthRangeSlider({
   min,
   max,
+  corpusMax,
   onMinChange,
   onMaxChange,
 }: {
   min: number;
   max: number;
+  corpusMax: number;
   onMinChange: (v: number) => void;
   onMaxChange: (v: number) => void;
 }) {
-  // Human-readable tier for the selected range
-  function tierForLength(len: number): string {
-    if (len <= 20) return "short pattern";
-    if (len <= 40) return "medium term";
-    return "long term";
-  }
-
   return (
     <div>
       <div
@@ -935,10 +938,7 @@ function LengthRangeSlider({
             color: "var(--qgi-text-muted)",
           }}
         >
-          {min}y{" "}
-          <span style={{ fontSize: "9px", color: "var(--qgi-text-dim)" }}>
-            ({tierForLength(min)})
-          </span>
+          {min}y
         </span>
         <span
           style={{
@@ -954,7 +954,7 @@ function LengthRangeSlider({
         <input
           type="range"
           min={12}
-          max={65}
+          max={corpusMax}
           value={min}
           onChange={(e) => {
             const v = parseInt(e.target.value);
@@ -966,7 +966,7 @@ function LengthRangeSlider({
         <input
           type="range"
           min={12}
-          max={65}
+          max={corpusMax}
           value={max}
           onChange={(e) => {
             const v = parseInt(e.target.value);
@@ -975,41 +975,6 @@ function LengthRangeSlider({
           style={{ width: "100%", accentColor: ACCENT }}
           aria-label="Maximum length"
         />
-      </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "4px",
-          marginTop: "6px",
-          flexWrap: "wrap",
-        }}
-      >
-        {[
-          { label: "12y", v: 12 },
-          { label: "25y", v: 25 },
-          { label: "40y", v: 40 },
-          { label: "65y", v: 65 },
-        ].map((preset) => (
-          <button
-            key={preset.label}
-            onClick={() => {
-              onMinChange(12);
-              onMaxChange(preset.v);
-            }}
-            style={{
-              fontSize: "9px",
-              padding: "2px 6px",
-              borderRadius: "3px",
-              border: "1px solid var(--qgi-border)",
-              background: max === preset.v && min === 12 ? `${ACCENT}18` : "transparent",
-              color: max === preset.v && min === 12 ? ACCENT : "var(--qgi-text-dim)",
-              cursor: "pointer",
-              fontFamily: "ui-monospace, monospace",
-            }}
-          >
-            {preset.label}
-          </button>
-        ))}
       </div>
     </div>
   );

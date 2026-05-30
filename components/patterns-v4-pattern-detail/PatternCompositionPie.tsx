@@ -132,14 +132,15 @@ export function PatternCompositionPie({
           margin: "0 0 16px",
         }}
       >
-        Click a category to show or hide its indicators below.
+        Click a category to show or hide its indicators. Filter chips also appear at the
+        top of the indicator grid below.
       </p>
 
       <div
         style={{
           display: "flex",
           flexWrap: "wrap",
-          gap: "20px",
+          gap: "24px",
           alignItems: "flex-start",
         }}
       >
@@ -175,14 +176,13 @@ export function PatternCompositionPie({
           })}
         </svg>
 
-        {/* Legend */}
+        {/* Legend — counts sit immediately after their label, not pushed to edge */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             gap: "8px",
-            flex: 1,
-            minWidth: "140px",
+            flexShrink: 0,
           }}
         >
           {slices.map((slice) => {
@@ -230,7 +230,6 @@ export function PatternCompositionPie({
                     fontSize: "10px",
                     fontFamily: "ui-monospace, monospace",
                     color: "var(--qgi-text-dim)",
-                    marginLeft: "auto",
                   }}
                 >
                   {slice.count}
