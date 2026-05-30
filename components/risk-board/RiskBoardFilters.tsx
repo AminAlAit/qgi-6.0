@@ -276,22 +276,14 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
 
       {/* Grid — switches between default top-10 mode and custom-country
           mode depending on whether the user has selected any countries.
-
-          2026-05-30 hover-highlight gate: hover-to-highlight only makes
-          visual sense when columns are vertically aligned across rows,
-          i.e. CUSTOM mode (every row renders the same selected countries
-          in the same column order). In DEFAULT mode each row's cells are
-          that recipe's own top-10, so a hovered country is usually present
-          in zero or one other row — the dim effect on the remaining 43/44
-          rows reads as the page going dark for no reason. Gate it: pass
-          hoveredCountry through only in custom mode; in default mode the
-          grid renders flat and clicking a cell still routes to the country
-          page. */}
+          Hover-to-highlight is always on; the per-mode dim policy lives
+          downstream in HeatCell. */}
       <FilteredGrid
         rows={visibleRows}
         customCountries={customMode ? selectedCountries : null}
-        hoveredCountry={customMode ? hoveredCountry : null}
-        onHoverCountry={customMode ? setHoveredCountry : () => {}}
+        hoveredCountry={hoveredCountry}
+        onHoverCountry={setHoveredCountry}
+        dimOthersOnHover={customMode}
       />
     </>
   );
@@ -308,6 +300,7 @@ function FilteredGrid({
   customCountries,
   hoveredCountry,
   onHoverCountry,
+  dimOthersOnHover,
 }: {
   rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }>;
   /** Null = default top-10 mode. Array (≥1) = custom-column mode with
@@ -315,6 +308,10 @@ function FilteredGrid({
   customCountries: string[] | null;
   hoveredCountry: string | null;
   onHoverCountry: (name: string | null) => void;
+  /** True only in custom-column mode where columns are vertically aligned
+   *  across rows; in default mode each row's top-10 is mostly disjoint so
+   *  dimming 43/44 rows reads as the page going dark. */
+  dimOthersOnHover: boolean;
 }) {
   if (rows.length === 0) {
     return (
@@ -463,6 +460,7 @@ function FilteredGrid({
                   customCountries={customCountries}
                   hoveredCountry={hoveredCountry}
                   onHoverCountry={onHoverCountry}
+                  dimOthersOnHover={dimOthersOnHover}
                   gridTemplate={gridTemplate}
                   isLast={isLast}
                 />
@@ -481,6 +479,7 @@ function RecipeGridRow({
   customCountries,
   hoveredCountry,
   onHoverCountry,
+  dimOthersOnHover,
   gridTemplate,
   isLast,
 }: {
@@ -489,6 +488,7 @@ function RecipeGridRow({
   customCountries: string[] | null;
   hoveredCountry: string | null;
   onHoverCountry: (name: string | null) => void;
+  dimOthersOnHover: boolean;
   gridTemplate: string;
   isLast: boolean;
 }) {
@@ -585,7 +585,13 @@ function RecipeGridRow({
 
         {cellsToRender.map((cell, i) => {
           const isHovered = hoveredCountry === cell.country;
-          const dimmed = hoveredCountry !== null && !isHovered;
+          // Dim policy is mode-gated: in custom mode every row shows the
+          // same N countries in the same column order so dim-others makes
+          // the matched column pop. In default mode each row is its own
+          // top-10 (mostly disjoint) so dimming 43/44 rows reads as the
+          // page going dark — keep them at full opacity, the highlight
+          // alone carries the signal.
+          const dimmed = dimOthersOnHover && hoveredCountry !== null && !isHovered;
           return (
             <HeatCell
               key={`${recipe.recipe_id}-${i}-${cell.country}`}
