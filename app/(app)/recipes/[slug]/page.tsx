@@ -188,7 +188,11 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   return (
     <PageLayout
       recipe={recipeWithColor}
-      statusChip={v41StatusChip}
+      // 2026-05-30: status chip removed from the recipe header (founder
+      // ask). The chip + tone-color logic above stays in case we want to
+      // re-attach somewhere subtler in the page later. PageLayout now
+      // omits the chip slot entirely when statusChip is null.
+      statusChip={null}
       subtitle={`${enrichedIndicators.length} signals · ${mock.window}y window`}
       definition={heroDefinition}
       demoDisclosure={demoDisclosure}
