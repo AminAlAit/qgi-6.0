@@ -8,9 +8,10 @@ name: Sync TE fleet vintage from S3
 #   1. Checkout main.
 #   2. AWS OIDC into a read-only role scoped to the bake output prefix.
 #   3. `aws s3 sync` the vintage into a fresh `data/te-fleet-run-{vintage}/` dir.
-#   4. Read the per-vintage `countries/country-rank-history.json` and APPEND its
-#      rows to the cross-vintage `data/te-fleet-rank-history.json` (run-separation
-#      rule: never overwrite a published vintage's rows; later vintages append).
+#   4. Run `scripts/append-cross-vintage-rank-history.py` to APPEND this
+#      vintage's rank-history rows to `data/te-fleet-rank-history.json`
+#      (run-separation rule: never overwrite a published vintage's rows;
+#      same-vintage re-runs replace cleanly; other vintages survive).
 #   5. Open a PR with the new dir + the appended cross-vintage file.
 #
 # Why a PR (not direct push to main): audit trail per the architectural pick
@@ -53,18 +54,26 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0 # full history so PR diff resolves cleanly
+          fetch-depth: 0 # full history so gh pr create / diff resolve cleanly
 
       - name: Resolve vintage label
         id: vintage
         run: |
+          set -euo pipefail
           vintage="${{ inputs.vintage }}"
           if [ -z "$vintage" ]; then
             vintage="${{ inputs.execution_name }}"
           fi
-          echo "label=$vintage" >> "$GITHUB_OUTPUT"
           # Slugify for filesystem + branch name
           slug=$(echo "$vintage" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9' '-' | sed 's/--*/-/g; s/^-//; s/-$//')
+
+          # Sonnet D4: guard against empty slug from blank inputs
+          if [ -z "$slug" ]; then
+            echo "::error::Empty vintage slug after normalizing inputs.vintage='${{ inputs.vintage }}' / inputs.execution_name='${{ inputs.execution_name }}'"
+            exit 1
+          fi
+
+          echo "label=$vintage" >> "$GITHUB_OUTPUT"
           echo "slug=$slug" >> "$GITHUB_OUTPUT"
 
       - name: Configure AWS credentials via OIDC
@@ -77,75 +86,29 @@ jobs:
         run: |
           set -euo pipefail
           dest="data/te-fleet-run-${{ steps.vintage.outputs.slug }}"
-          echo "Sync s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }} → $dest"
+          echo "Sync s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }} -> $dest"
           mkdir -p "$dest"
           aws s3 sync \
             "s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }}" \
             "$dest" \
             --no-progress
 
-          # Confirm at least MANIFEST.json + cards-v3 dir landed; bail loudly otherwise
+          # Confirm at least MANIFEST.json landed; bail loudly otherwise
           if [ ! -f "$dest/MANIFEST.json" ]; then
-            echo "::error::S3 sync produced no MANIFEST.json under $dest — bake output incomplete or wrong prefix"
+            echo "::error::S3 sync produced no MANIFEST.json under $dest -- bake output incomplete or wrong prefix"
             exit 1
           fi
 
       - name: Append vintage rows to cross-vintage rank history
-        run: |
-          set -euo pipefail
-          dest="data/te-fleet-run-${{ steps.vintage.outputs.slug }}"
-          per_vintage="$dest/countries/country-rank-history.json"
-          cross="data/te-fleet-rank-history.json"
-
-          if [ ! -f "$per_vintage" ]; then
-            echo "::warning::No per-vintage rank-history.json at $per_vintage — skipping cross-vintage append"
-            exit 0
-          fi
-
-          python - <<'PY'
-          import json
-          import os
-          import pathlib
-
-          slug = os.environ["VINTAGE_SLUG"]
-          dest = pathlib.Path(f"data/te-fleet-run-{slug}")
-          per_vintage_path = dest / "countries" / "country-rank-history.json"
-          cross_path = pathlib.Path("data/te-fleet-rank-history.json")
-
-          new_doc = json.loads(per_vintage_path.read_text())
-          new_rows = new_doc.get("rows", [])
-          new_vintage = new_doc.get("vintage")
-          if not new_vintage:
-              raise SystemExit("Per-vintage rank history has no `vintage` field")
-
-          if cross_path.exists():
-              cross_doc = json.loads(cross_path.read_text())
-              existing_rows = cross_doc.get("rows", [])
-              # Idempotency: drop any existing rows whose `vintage` equals
-              # new_vintage so a re-run of the same SFN execution overwrites
-              # cleanly. Cross-vintage rows for OTHER vintages survive.
-              kept = [r for r in existing_rows if r.get("vintage") != new_vintage]
-              dropped = len(existing_rows) - len(kept)
-              if dropped:
-                  print(f"Dropped {dropped} existing rows for vintage={new_vintage}")
-              merged_rows = kept + new_rows
-          else:
-              merged_rows = list(new_rows)
-
-          out_doc = {
-              "schema_note": (
-                  "Cross-vintage append-only. Re-running an existing vintage "
-                  "replaces its rows; rows from other vintages survive."
-              ),
-              "n_rows": len(merged_rows),
-              "n_vintages": len({r.get("vintage") for r in merged_rows if r.get("vintage")}),
-              "rows": merged_rows,
-          }
-          cross_path.write_text(json.dumps(out_doc, indent=2))
-          print(f"Cross-vintage file: {len(merged_rows)} rows across {out_doc['n_vintages']} vintages")
-          PY
         env:
           VINTAGE_SLUG: ${{ steps.vintage.outputs.slug }}
+        run: |
+          set -euo pipefail
+          # Logic extracted to scripts/append-cross-vintage-rank-history.py so
+          # Python indentation isn't tangled with YAML block-scalar handling
+          # (Sonnet D1) and the logic is unit-tested (8/8 in
+          # scripts/test_append_cross_vintage_rank_history.py).
+          python scripts/append-cross-vintage-rank-history.py
 
       - name: Configure git
         run: |
@@ -162,7 +125,7 @@ jobs:
           git add data/
 
           if git diff --cached --quiet; then
-            echo "No changes to commit — bake output identical to current main."
+            echo "No changes to commit -- bake output identical to current main."
             echo "skip=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -178,12 +141,22 @@ jobs:
           per-vintage corpus lands at data/te-fleet-run-<slug>/ and the
           cross-vintage rank-history is APPEND-only.
 
-          🤖 Generated by qgi-recipe-fleet-frontend-sync (qgi-aws-tf#973)"
+          Generated by qgi-recipe-fleet-frontend-sync (qgi-aws-tf#973)"
 
           git commit -m "$msg"
           git push origin "$branch"
           echo "branch=$branch" >> "$GITHUB_OUTPUT"
           echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure PR labels exist
+        if: steps.commit.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Sonnet D2: `gh pr create --label X` hard-fails if X doesn't exist.
+          # Create-or-ignore so first run on a fresh repo doesn't break.
+          gh label create "data" --description "Data file changes" --color "0075CA" 2>/dev/null || true
+          gh label create "te-fleet" --description "Trajectory engine fleet sync" --color "5319E7" 2>/dev/null || true
 
       - name: Open PR
         if: steps.commit.outputs.skip != 'true'
@@ -199,8 +172,8 @@ jobs:
           **Vintage:** \`${{ steps.vintage.outputs.label }}\`
 
           Per run-separation rule (\`feedback_run_separation_versioning.md\`):
-          - Per-vintage corpus → \`data/te-fleet-run-${{ steps.vintage.outputs.slug }}/\`
-          - Cross-vintage rank-history → \`data/te-fleet-rank-history.json\` (APPEND-only, with idempotent re-run support)
+          - Per-vintage corpus -> \`data/te-fleet-run-${{ steps.vintage.outputs.slug }}/\`
+          - Cross-vintage rank-history -> \`data/te-fleet-rank-history.json\` (APPEND-only, with idempotent re-run support)
 
           Sonnet review before merge (cf. \`feedback_pr_review.md\`).
           " \
