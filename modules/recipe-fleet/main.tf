@@ -869,11 +869,14 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
       # This gate is STRUCTURAL — the fan-out Map CANNOT start until
       # this state receives the token. It is not a checklist item.
       #
-      # HeartbeatSeconds = 0 disables the heartbeat timeout so the SFN
-      # execution can wait days for founder approval without timing out.
-      # The execution-level TimeoutSeconds (40 h) still applies.
-      # Remove HeartbeatSeconds or set a value if automated approval
-      # is wired later (e.g., a Slack-button Lambda sends the token).
+      # No HeartbeatSeconds key is set, so SFN never expects heartbeats
+      # and the execution can wait days for founder approval without
+      # timing out. The execution-level TimeoutSeconds (40 h) still
+      # applies. Add HeartbeatSeconds + a heartbeat-sending Lambda if
+      # automated approval is wired later (Slack-button etc.).
+      # Sonnet PR #36 round-2 NIT-B: was incorrectly described as
+      # "HeartbeatSeconds = 0" — 0 is not a valid SFN ASL value;
+      # OMITTING the field is what disables the heartbeat.
       # -----------------------------------------------------------------
       "Await Founder Approval" = {
         Type     = "Task"

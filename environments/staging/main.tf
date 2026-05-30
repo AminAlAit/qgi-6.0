@@ -160,6 +160,14 @@ module "recipe_fleet" {
   stepfunctions_role_arn     = module.iam.stepfunctions_role_arn
   lambda_execution_role_arn  = module.iam.lambda_execution_role_arn
 
+  # Sonnet PR #36 round-2 NIT-D: recipe-fleet's frontend-sync Lambda role
+  # reads the `qgi-github-frontend-dispatch-pat` Secrets Manager secret via
+  # `data.aws_secretsmanager_secret`. The secret is CREATED by module.pipeline
+  # (bake_trigger.tf). On a net-new account (qa, prod first apply), the data
+  # lookup would fail at plan time without this dependency. Staging already
+  # has the secret; on qa/prod the dependency forces pipeline-first ordering.
+  depends_on = [module.pipeline]
+
   tags = local.tags
 }
 
