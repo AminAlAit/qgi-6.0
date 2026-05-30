@@ -991,5 +991,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/agricultural_policy.scores.json"
+  "per_country_scores_pointer": "scores/agricultural_policy.scores.json",
+  "shape_points": [
+    0.004132820213654683,
+    0.02181050860817055,
+    0.039488197002686416,
+    0.057165885397202264,
+    0.07484357379171815,
+    0.09252126218623401,
+    0.11019895058074987,
+    0.12787663897526574,
+    0.14555432736978158,
+    0.16323201576429747,
+    0.1809097041588133,
+    0.1985873925533292
+  ],
+  "shap_importance_raw": {
+    "v2x_clpriv": 1.3028678894042969,
+    "v2lgbicam": 2.154214382171631,
+    "v2pepwrort": 1.5924630165100098
+  },
+  "shap_importance_normalized": {
+    "v2x_clpriv": 0.2580168738120492,
+    "v2lgbicam": 0.4266155186793462,
+    "v2pepwrort": 0.3153676075086046
+  },
+  "shap_direction_signs": {
+    "v2x_clpriv": -1,
+    "v2lgbicam": -1,
+    "v2pepwrort": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_clpriv": {
+      "last_z": 0.166912242770195,
+      "mean_z": 0.10297159105539322,
+      "std_z": 0.2505089342594147,
+      "slope": 0.1843796670436859,
+      "accel": 0.2709055244922638,
+      "tertile1_mean": 0.11853786557912827,
+      "tertile2_mean": 0.10523159056901932,
+      "tertile3_mean": 0.10342050343751907
+    },
+    "v2lgbicam": {
+      "last_z": 0.18741318583488464,
+      "mean_z": 0.15047356486320496,
+      "std_z": 0.14988696575164795,
+      "slope": 0.20263808965682983,
+      "accel": 0.846824049949646,
+      "tertile1_mean": 0.14763447642326355,
+      "tertile2_mean": 0.37423449754714966,
+      "tertile3_mean": 0.09510941803455353
+    },
+    "v2pepwrort": {
+      "last_z": 0.40469422936439514,
+      "mean_z": 0.033603135496377945,
+      "std_z": 0.1728343367576599,
+      "slope": 0.24768124520778656,
+      "accel": 0.17644642293453217,
+      "tertile1_mean": 0.35546383261680603,
+      "tertile2_mean": 0.07820869982242584,
+      "tertile3_mean": 0.12353119254112244
+    }
+  }
 }

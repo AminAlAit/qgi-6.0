@@ -957,5 +957,40 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/infrastructure_project.scores.json"
+  "per_country_scores_pointer": "scores/infrastructure_project.scores.json",
+  "shape_points": [
+    0.22818586975336075,
+    0.26205920428037643,
+    0.2959325388073921,
+    0.3298058733344078,
+    0.3636792078614235,
+    0.3975525423884392,
+    0.43142587691545486,
+    0.46529921144247055,
+    0.49917254596948624,
+    0.5330458804965019,
+    0.5669192150235176,
+    0.6007925495505333
+  ],
+  "shap_importance_raw": {
+    "NE.CON.GOVT.ZS": 3.9383764266967773
+  },
+  "shap_importance_normalized": {
+    "NE.CON.GOVT.ZS": 1.0
+  },
+  "shap_direction_signs": {
+    "NE.CON.GOVT.ZS": -1
+  },
+  "per_feature_breakdown": {
+    "NE.CON.GOVT.ZS": {
+      "last_z": 0.29275915026664734,
+      "mean_z": 0.414489209651947,
+      "std_z": 0.8624138832092285,
+      "slope": 0.40648001432418823,
+      "accel": 0.5870060920715332,
+      "tertile1_mean": 0.40094995498657227,
+      "tertile2_mean": 0.7665838003158569,
+      "tertile3_mean": 0.20769433677196503
+    }
+  }
 }

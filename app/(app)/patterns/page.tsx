@@ -1,87 +1,176 @@
 /**
- * /patterns — Pair-pattern catalogue.
+ * /patterns — Cascade pair-pattern catalogue.
  *
- * MOCK ELIMINATION — 2026-05-30
- * The pair-pattern catalogue was 100% seed data from
- * lib/te-mock/patterns-v4-main-data.ts (FULL_CATALOGUE + FAMILY_ACTIVE_ISOS).
- * The bake does not yet emit pair-detection results. Verdict: honest empty state.
- * Gap logged to C:\tmp\backend-gaps\patterns-trajectory.md
+ * Rebuilt 2026-05-30. Replaces the honest-empty-state stub.
  *
- * The route remains alive so existing links / nav entries do not 404.
+ * Data sources (cascade-era only, no TE / Analogues mixing):
+ *   - data/ranking.json          — top-1000 algorithmic pair windows
+ *   - data/country-partners-index.json — 215-country partner index
+ *   - data/cascade-patterns-featured.json — 12 Selene-curated pairs
+ *
+ * Layout (Sara Ahmed / Sard majles 2026-05-30):
+ *   1. Hero: h1 + 2-line subtitle + vintage stamp
+ *   2. Featured strip: 12 curated pair cards in a 2-3 col responsive grid
+ *   3. Search + filter interface + paginated results list
+ *
+ * V4.1 §0 confidence-first. Flag images on every country. No em-dashes.
+ * No kicker-chip spam. No methodology jargon.
  */
+
 import type { Metadata } from "next";
-import { PageLayout } from "@/components/patterns-v4/PageLayout";
+import { Layers } from "lucide-react";
+import {
+  getCatalogue,
+  getFeaturedPairs,
+  getCascadeVintage,
+} from "@/lib/cascade-patterns/patterns-data";
+import { FeaturedPairsStrip } from "@/components/patterns-v4/FeaturedPairsStrip";
+import { PatternsSearch } from "@/components/patterns-v4/PatternsSearch";
 
 export const metadata: Metadata = {
-  title: "Patterns · Country pair catalogue · QG Intelligence",
+  title: "Pair Patterns · QG Intelligence",
   description:
-    "The QGI pair catalogue: country pairs whose indicator-composite histories ran in close parallel over a shared historical window, ranked by pair strength.",
+    "Country pairs whose indicator-composite histories ran in close parallel over shared multi-decade windows. The algorithmic cascade catalogue, ranked by pair strength.",
 };
 
-export default function PatternsV4Page() {
+export default function PatternsPage() {
+  const catalogue = getCatalogue();
+  const featured = getFeaturedPairs();
+  const vintage = getCascadeVintage();
+
   return (
-    <PageLayout>
-      {/* Page eyebrow */}
-      <div
-        style={{
-          fontSize: "9px",
-          letterSpacing: "2px",
-          color: "var(--qgi-accent)",
-          fontFamily: "ui-monospace, monospace",
-          marginBottom: "8px",
-          fontWeight: 600,
-        }}
-      >
-        PATTERNS
-      </div>
+    <div
+      style={{ minHeight: "100%", background: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "24px 24px 64px" }}>
+        {/* ── Hero ─────────────────────────────────────────────────────────── */}
+        <header style={{ marginBottom: "32px" }}>
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "var(--qgi-accent)",
+              fontSize: "10px",
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              fontFamily: "ui-monospace, monospace",
+              marginBottom: "10px",
+            }}
+          >
+            <Layers size={12} strokeWidth={2} />
+            PATTERNS
+          </div>
 
-      <h1
-        style={{
-          fontSize: "clamp(24px, 4vw, 38px)",
-          fontWeight: 800,
-          margin: "0 0 14px",
-          color: "var(--qgi-text)",
-          lineHeight: 1.15,
-        }}
-      >
-        Long-run rhymes between country pairs
-      </h1>
+          <h1
+            style={{
+              fontSize: "clamp(26px, 4vw, 42px)",
+              fontWeight: 800,
+              margin: "0 0 12px",
+              lineHeight: 1.1,
+              letterSpacing: "-0.5px",
+              maxWidth: "700px",
+            }}
+          >
+            Pair patterns
+          </h1>
 
-      {/* Honest empty state */}
-      <div
-        style={{
-          padding: "40px 24px",
-          border: "1px dashed var(--qgi-border)",
-          borderRadius: "6px",
-          background: "rgba(91, 126, 153, 0.05)",
-          textAlign: "center",
-          maxWidth: "640px",
-          margin: "40px auto",
-        }}
-      >
-        <h2
+          <p
+            style={{
+              fontSize: "15px",
+              color: "var(--qgi-text-muted)",
+              lineHeight: 1.6,
+              margin: "0 0 16px",
+              maxWidth: "640px",
+            }}
+          >
+            Country pairs whose recent paths rhyme. Browse the algorithmic catalogue or
+            jump to a featured finding.
+          </p>
+
+          {/* Vintage stamp */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              fontSize: "10.5px",
+              fontFamily: "ui-monospace, monospace",
+              color: "var(--qgi-text-dim)",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderRadius: "4px",
+              padding: "4px 10px",
+            }}
+          >
+            <span>Cascade vintage: {vintage.label}</span>
+            <span style={{ opacity: 0.4 }}>·</span>
+            <span>
+              {catalogue.length} pair{catalogue.length !== 1 ? "s" : ""}
+            </span>
+          </div>
+        </header>
+
+        {/* ── Featured pairs ───────────────────────────────────────────────── */}
+        <section style={{ marginBottom: "40px" }}>
+          <h2
+            style={{
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#5B7E99",
+              margin: "0 0 14px",
+              letterSpacing: "0.1px",
+            }}
+          >
+            Featured pairs
+          </h2>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "var(--qgi-text-dim)",
+              margin: "0 0 16px",
+              lineHeight: 1.5,
+            }}
+          >
+            Twelve pairs selected for cross-regional surprise, structural depth, and
+            geographic distance.
+          </p>
+          <FeaturedPairsStrip pairs={featured} />
+        </section>
+
+        {/* ── Catalogue search ─────────────────────────────────────────────── */}
+        <section>
+          <h2
+            style={{
+              fontSize: "13px",
+              fontWeight: 600,
+              color: "#5B7E99",
+              margin: "0 0 14px",
+              letterSpacing: "0.1px",
+            }}
+          >
+            Full catalogue
+          </h2>
+          <PatternsSearch entries={catalogue} />
+        </section>
+
+        {/* ── Footer ───────────────────────────────────────────────────────── */}
+        <footer
           style={{
-            fontSize: "16px",
-            fontWeight: 600,
-            marginBottom: "10px",
-            color: "var(--qgi-text)",
-          }}
-        >
-          Pair-pattern catalog under development
-        </h2>
-        <p
-          style={{
-            color: "var(--qgi-text-muted)",
-            fontSize: "13px",
+            marginTop: "40px",
+            paddingTop: "18px",
+            borderTop: "1px solid var(--qgi-border)",
+            fontSize: "11px",
+            color: "var(--qgi-text-dim)",
             lineHeight: 1.6,
+            fontFamily: "ui-monospace, monospace",
           }}
         >
-          The pair-pattern catalog is a research artifact under separate methodology
-          development. It identifies country pairs whose indicator-composite histories ran
-          in close parallel over shared multi-decade windows. Live results will appear
-          here when the pair-detection engine lands in the trajectory engine bake.
-        </p>
+          Cascade vintage {vintage.label}. Pair-pattern scores are algorithmic outputs
+          from a structural-correlation run across the QGI indicator library. Next cascade
+          re-bake in progress.
+        </footer>
       </div>
-    </PageLayout>
+    </div>
   );
 }

@@ -982,5 +982,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/human_rights_violation.scores.json"
+  "per_country_scores_pointer": "scores/human_rights_violation.scores.json",
+  "shape_points": [
+    -0.043827222542426825,
+    -0.020055369145530164,
+    0.0037164842513665018,
+    0.027488337648263167,
+    0.05126019104515983,
+    0.0750320444420565,
+    0.09880389783895316,
+    0.12257575123584985,
+    0.1463476046327465,
+    0.17011945802964318,
+    0.19389131142653981,
+    0.2176631648234365
+  ],
+  "shap_importance_raw": {
+    "v2cltort": 2.51975417137146,
+    "NE.IMP.GNFS.ZS": 1.151916742324829,
+    "NE.EXP.GNFS.ZS": 1.1683993339538574
+  },
+  "shap_importance_normalized": {
+    "v2cltort": 0.5206028099684711,
+    "NE.IMP.GNFS.ZS": 0.23799587265992359,
+    "NE.EXP.GNFS.ZS": 0.24140131737160533
+  },
+  "shap_direction_signs": {
+    "v2cltort": -1,
+    "NE.IMP.GNFS.ZS": -1,
+    "NE.EXP.GNFS.ZS": -1
+  },
+  "per_feature_breakdown": {
+    "v2cltort": {
+      "last_z": 1.0159276723861694,
+      "mean_z": 0.08836176991462708,
+      "std_z": 0.25334128737449646,
+      "slope": 0.3145855665206909,
+      "accel": 0.2587731182575226,
+      "tertile1_mean": 0.08458167314529419,
+      "tertile2_mean": 0.3659054636955261,
+      "tertile3_mean": 0.1382775753736496
+    },
+    "NE.IMP.GNFS.ZS": {
+      "last_z": 0.11817055940628052,
+      "mean_z": 0.06590158492326736,
+      "std_z": 0.1485479176044464,
+      "slope": 0.22544918954372406,
+      "accel": 0.12378121167421341,
+      "tertile1_mean": 0.23993723094463348,
+      "tertile2_mean": 0.16517986357212067,
+      "tertile3_mean": 0.0649491623044014
+    },
+    "NE.EXP.GNFS.ZS": {
+      "last_z": 0.169398233294487,
+      "mean_z": 0.10452420264482498,
+      "std_z": 0.1227373406291008,
+      "slope": 0.2809932231903076,
+      "accel": 0.17699414491653442,
+      "tertile1_mean": 0.08750313520431519,
+      "tertile2_mean": 0.07786581665277481,
+      "tertile3_mean": 0.148383229970932
+    }
+  }
 }

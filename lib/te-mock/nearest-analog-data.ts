@@ -21,7 +21,8 @@
  * - Match scores < 70 are flagged as "weak analog" per ledger Feature 12.
  * - Regional-clustering caveat applies.
  */
-import { loadAnalogs } from "@/lib/te-data-contract/load";
+import { loadAnalogs, loadAllScores, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import type { NearestAnalogEntry } from "@/lib/te-data-contract/scores";
 
 /**
  * ISO 3166-1 alpha-2 → alpha-3 lookup for the 216-country TE fleet-run-1
@@ -286,11 +287,60 @@ export interface CurrentCountryEntry {
 // Score-scale: the pipeline emits match_score on 0–1 (cosine similarity).
 // AnalogCard thresholds (STRONG ≥ 85, MODERATE ≥ 70, WEAK < 70) expect 0–100.
 // We multiply by 100 here; weak_analog is re-derived from the scaled score.
+//
+// Round-2 enrichment: scores files carry nearest_analogs[] with
+// indicator_trajectory_12q and secondary_recipe_ids per subject-country ×
+// recipe. We build a lookup keyed by
+//   `${subject_name.lower}|${analog_country.lower}|${year}`
+// across all 44 recipes and join it into the analogs array.
+
+/** Map z-score trajectory from ±3 to 0–100 display scale. */
+function zTrajToDisplay(zArr: number[]): number[] {
+  return zArr.map((v) => Math.max(0, Math.min(100, ((v + 3) / 6) * 100)));
+}
+
+type ScoresAnalogKey = `${string}|${string}|${number}`;
+type ScoresAnalogLookup = Map<ScoresAnalogKey, NearestAnalogEntry>;
+
+let _scoresAnalogLookup: ScoresAnalogLookup | null = null;
+
+/**
+ * Build the round-2 enrichment lookup from all 44 scores files.
+ * Key: `${subject_name.lower}|${analog_country.lower}|${year}`.
+ * First match wins (recipes processed in FLEET_RUN_1_RECIPE_IDS order).
+ * Only populates `indicator_trajectory_12q` and `secondary_recipe_ids`.
+ */
+function buildScoresAnalogLookup(): ScoresAnalogLookup {
+  const out: ScoresAnalogLookup = new Map();
+  try {
+    const allScores = loadAllScores();
+    for (const recipeId of FLEET_RUN_1_RECIPE_IDS) {
+      const sf = allScores[recipeId];
+      if (!sf) continue;
+      for (const entry of sf.scores) {
+        if (!entry.nearest_analogs || entry.nearest_analogs.length === 0) continue;
+        const subjectKey = entry.name.toLowerCase();
+        for (const a of entry.nearest_analogs) {
+          if (!a.country || !a.year) continue;
+          const key: ScoresAnalogKey = `${subjectKey}|${a.country.toLowerCase()}|${a.year}`;
+          if (!out.has(key)) {
+            out.set(key, a);
+          }
+        }
+      }
+    }
+  } catch {
+    // Scores unavailable — enrichment skipped.
+  }
+  return out;
+}
 
 let _allEntriesCache: CurrentCountryEntry[] | null = null;
 
 function buildAllEntries(): CurrentCountryEntry[] {
   const base: CurrentCountryEntry[] = [];
+  if (!_scoresAnalogLookup) _scoresAnalogLookup = buildScoresAnalogLookup();
+  const scoresLookup = _scoresAnalogLookup;
 
   try {
     const data = loadAnalogs();
@@ -307,23 +357,35 @@ function buildAllEntries(): CurrentCountryEntry[] {
       if (!te.analogs || te.analogs.length === 0) continue;
 
       // Build HistoricalAnalog[] — multiply match_score × 100 (0–1 → 0–100).
+      const subjectKey = te.name.toLowerCase();
       const analogs: HistoricalAnalog[] = te.analogs
         .filter((a) => a.country && a.year && a.match_score != null)
         .slice(0, 3)
         .map((a) => {
           const scaledScore = (a.match_score ?? 0) * 100;
+
+          // Round-2: look up enrichment from the scores files.
+          const enrichKey: ScoresAnalogKey = `${subjectKey}|${(a.country ?? "").toLowerCase()}|${a.year ?? 0}`;
+          const enriched = scoresLookup.get(enrichKey);
+
+          const secondaryRecipeIds: string[] = enriched?.secondary_recipe_ids ?? [];
+          const indicatorTrajectory: number[] =
+            enriched?.indicator_trajectory_12q && enriched.indicator_trajectory_12q.length > 0
+              ? zTrajToDisplay(enriched.indicator_trajectory_12q)
+              : [];
+          // Round-2: what_happened_next is still null from the bake.
+          // Use enriched value if non-null; fall back to honest placeholder.
+          const whatHappenedNext: string =
+            enriched?.what_happened_next ?? a.what_happened_next ?? "In training set.";
+
           return {
             country: a.country ?? "",
             year: a.year ?? 0,
             match_score: scaledScore,
             primary_recipe_id: a.primary_recipe_id ?? "",
-            // Pipeline does not emit secondary_recipe_ids — honest empty array.
-            secondary_recipe_ids: [],
-            // Pipeline does not emit per-analog indicator_trajectory — honest empty array.
-            indicator_trajectory: [],
-            // what_happened_next is null in fleet-run-1 — "In training set." is
-            // the canonical honest placeholder per the analogs contract.
-            what_happened_next: a.what_happened_next ?? "In training set.",
+            secondary_recipe_ids: secondaryRecipeIds,
+            indicator_trajectory: indicatorTrajectory,
+            what_happened_next: whatHappenedNext,
             weak_analog: scaledScore < 70,
           };
         });

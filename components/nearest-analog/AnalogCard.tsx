@@ -361,9 +361,12 @@ export function AnalogCard({
       )}
 
       {/* What happened next (HISTORICAL FACT only).
-          Pipeline fleet-run-1 emits what_happened_next: null — buildAllEntries()
-          maps null to "In training set." which is the canonical honest placeholder.
-          Render placeholder in muted slate-blue; curated narrative in normal text. */}
+          Round-2: what_happened_next is still null from the bake. buildAllEntries()
+          maps null to "In training set." — this is the current state.
+          Render a quiet slate-blue badge for the placeholder; curated narrative in
+          normal text when it arrives. The badge text was updated from the old
+          "In training set." to "Narrative coming soon — research workstream in flight"
+          per the round-2 UX rules (V4.1 confidence-first, honest gap framing). */}
       <div>
         <div
           style={{
@@ -377,23 +380,43 @@ export function AnalogCard({
         >
           WHAT HAPPENED NEXT · {analog.country.toUpperCase()} {analog.year}
         </div>
-        {analog.what_happened_next === "In training set." ||
-        !analog.what_happened_next ? (
-          <p
+        {!analog.what_happened_next ||
+        analog.what_happened_next === "In training set." ||
+        analog.what_happened_next ===
+          "Outcome history is still being curated for this analog." ? (
+          <div
             style={{
-              fontSize: "11px",
-              color: CURATION_PLACEHOLDER_COLOR,
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-              margin: 0,
-              padding: "10px",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "6px 10px",
               borderRadius: "4px",
-              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}33`,
+              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}44`,
               background: `${CURATION_PLACEHOLDER_COLOR}0D`,
             }}
           >
-            In training set.
-          </p>
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: CURATION_PLACEHOLDER_COLOR,
+                opacity: 0.6,
+                flexShrink: 0,
+              }}
+              aria-hidden
+            />
+            <span
+              style={{
+                fontSize: "11px",
+                color: CURATION_PLACEHOLDER_COLOR,
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.3px",
+              }}
+            >
+              Narrative coming soon — research workstream in flight
+            </span>
+          </div>
         ) : (
           <p
             style={{

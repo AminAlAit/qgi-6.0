@@ -993,5 +993,92 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/sanctions_and_arms_embargo.scores.json"
+  "per_country_scores_pointer": "scores/sanctions_and_arms_embargo.scores.json",
+  "shape_points": [
+    -0.019155932061532502,
+    -0.0004436302894489236,
+    0.01826867148263466,
+    0.03698097325471825,
+    0.05569327502680183,
+    0.07440557679888542,
+    0.09311787857096901,
+    0.1118301803430526,
+    0.13054248211513617,
+    0.14925478388721977,
+    0.16796708565930335,
+    0.18667938743138693
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.160996437072754,
+    "NE.CON.GOVT.ZS": 1.4814715385437012,
+    "v2csprtcpt": 0.9323531985282898,
+    "v2mecenefm": 1.675612449645996,
+    "v2x_partip": 0.668239951133728
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.19615821389297852,
+    "NE.CON.GOVT.ZS": 0.2503046535325454,
+    "v2csprtcpt": 0.15752738966351731,
+    "v2mecenefm": 0.2831060757844513,
+    "v2x_partip": 0.11290366712650744
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "NE.CON.GOVT.ZS": -1,
+    "v2csprtcpt": -1,
+    "v2mecenefm": -1,
+    "v2x_partip": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.274356871843338,
+      "mean_z": 0.059663787484169006,
+      "std_z": 0.19802117347717285,
+      "slope": 0.10777170956134796,
+      "accel": 0.3356474041938782,
+      "tertile1_mean": 0.07920122146606445,
+      "tertile2_mean": 0.011091641150414944,
+      "tertile3_mean": 0.0952426865696907
+    },
+    "NE.CON.GOVT.ZS": {
+      "last_z": 0.1898466944694519,
+      "mean_z": 0.07475193589925766,
+      "std_z": 0.07563135772943497,
+      "slope": 0.5870215892791748,
+      "accel": 0.18494877219200134,
+      "tertile1_mean": 0.1365765482187271,
+      "tertile2_mean": 0.12731388211250305,
+      "tertile3_mean": 0.10538068413734436
+    },
+    "v2csprtcpt": {
+      "last_z": 0.04278101399540901,
+      "mean_z": 0.019073691219091415,
+      "std_z": 0.25602325797080994,
+      "slope": 0.11880679428577423,
+      "accel": 0.16545727849006653,
+      "tertile1_mean": 0.16523177921772003,
+      "tertile2_mean": 0.11242515593767166,
+      "tertile3_mean": 0.0525541827082634
+    },
+    "v2mecenefm": {
+      "last_z": 0.48718205094337463,
+      "mean_z": 0.17076827585697174,
+      "std_z": 0.14397673308849335,
+      "slope": 0.0957527682185173,
+      "accel": 0.1946198046207428,
+      "tertile1_mean": 0.07604295015335083,
+      "tertile2_mean": 0.044302258640527725,
+      "tertile3_mean": 0.4629676640033722
+    },
+    "v2x_partip": {
+      "last_z": 0.08372118324041367,
+      "mean_z": 0.01768997497856617,
+      "std_z": 0.21217110753059387,
+      "slope": 0.09432435035705566,
+      "accel": 0.1341831535100937,
+      "tertile1_mean": 0.017003832384943962,
+      "tertile2_mean": 0.08953454345464706,
+      "tertile3_mean": 0.019611774012446404
+    }
+  }
 }

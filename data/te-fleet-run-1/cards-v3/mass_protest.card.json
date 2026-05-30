@@ -1042,5 +1042,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/mass_protest.scores.json"
+  "per_country_scores_pointer": "scores/mass_protest.scores.json",
+  "shape_points": [
+    0.005777439389111054,
+    0.01989726058202801,
+    0.034017081774944974,
+    0.04813690296786194,
+    0.062256724160778903,
+    0.07637654535369587,
+    0.09049636654661283,
+    0.10461618773952978,
+    0.11873600893244673,
+    0.13285583012536373,
+    0.14697565131828066,
+    0.16109547251119766
+  ],
+  "shap_importance_raw": {
+    "SM.POP.RHCR.EO": 1.6484779119491577,
+    "v2excrptps": 0.8845664858818054,
+    "v2csprtcpt": 1.156184196472168
+  },
+  "shap_importance_normalized": {
+    "SM.POP.RHCR.EO": 0.4468353938529915,
+    "v2excrptps": 0.23977003952743506,
+    "v2csprtcpt": 0.31339456661957343
+  },
+  "shap_direction_signs": {
+    "SM.POP.RHCR.EO": -1,
+    "v2excrptps": -1,
+    "v2csprtcpt": -1
+  },
+  "per_feature_breakdown": {
+    "SM.POP.RHCR.EO": {
+      "last_z": 0.15885356068611145,
+      "mean_z": 0.06852991133928299,
+      "std_z": 0.5023053884506226,
+      "slope": 0.19963185489177704,
+      "accel": 0.32098421454429626,
+      "tertile1_mean": 0.3033674955368042,
+      "tertile2_mean": 0.094805508852005,
+      "tertile3_mean": 0.0
+    },
+    "v2excrptps": {
+      "last_z": 0.11654136329889297,
+      "mean_z": 0.0673789530992508,
+      "std_z": 0.04961949586868286,
+      "slope": 0.12017334997653961,
+      "accel": 0.21897290647029877,
+      "tertile1_mean": 0.2570561170578003,
+      "tertile2_mean": 0.054824281483888626,
+      "tertile3_mean": 0.0
+    },
+    "v2csprtcpt": {
+      "last_z": 0.12667439877986908,
+      "mean_z": 0.11697526276111603,
+      "std_z": 0.18911759555339813,
+      "slope": 0.164078488945961,
+      "accel": 0.3092922270298004,
+      "tertile1_mean": 0.15188387036323547,
+      "tertile2_mean": 0.09816230833530426,
+      "tertile3_mean": 0.0
+    }
+  }
 }

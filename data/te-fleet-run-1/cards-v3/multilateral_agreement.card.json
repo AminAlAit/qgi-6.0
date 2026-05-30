@@ -950,5 +950,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/multilateral_agreement.scores.json"
+  "per_country_scores_pointer": "scores/multilateral_agreement.scores.json",
+  "shape_points": [
+    0.03019121169820572,
+    0.04427814612855399,
+    0.058365080558902264,
+    0.07245201498925052,
+    0.0865389494195988,
+    0.10062588384994708,
+    0.11471281828029534,
+    0.12879975271064362,
+    0.1428866871409919,
+    0.15697362157134018,
+    0.17106055600168846,
+    0.1851474904320367
+  ],
+  "shap_importance_raw": {
+    "MS.MIL.MPRT.KD": 1.649383783340454,
+    "v2x_clpriv": 1.3173596858978271,
+    "v2lgbicam": 1.3123058080673218
+  },
+  "shap_importance_normalized": {
+    "MS.MIL.MPRT.KD": 0.38545566467021963,
+    "v2x_clpriv": 0.3078627051304563,
+    "v2lgbicam": 0.30668163019932404
+  },
+  "shap_direction_signs": {
+    "MS.MIL.MPRT.KD": -1,
+    "v2x_clpriv": -1,
+    "v2lgbicam": -1
+  },
+  "per_feature_breakdown": {
+    "MS.MIL.MPRT.KD": {
+      "last_z": 0.35981693863868713,
+      "mean_z": 0.1295526772737503,
+      "std_z": 0.1615447849035263,
+      "slope": 0.1742972433567047,
+      "accel": 0.2845059037208557,
+      "tertile1_mean": 0.24133142828941345,
+      "tertile2_mean": 0.09519321471452713,
+      "tertile3_mean": 0.20314159989356995
+    },
+    "v2x_clpriv": {
+      "last_z": 0.15974634885787964,
+      "mean_z": 0.07813847064971924,
+      "std_z": 0.20154611766338348,
+      "slope": 0.15759581327438354,
+      "accel": 0.19142283499240875,
+      "tertile1_mean": 0.1083846166729927,
+      "tertile2_mean": 0.28195035457611084,
+      "tertile3_mean": 0.13857510685920715
+    },
+    "v2lgbicam": {
+      "last_z": 0.1339987814426422,
+      "mean_z": 0.10980969667434692,
+      "std_z": 0.12156529724597931,
+      "slope": 0.17393112182617188,
+      "accel": 0.3565773665904999,
+      "tertile1_mean": 0.09550488740205765,
+      "tertile2_mean": 0.18849699199199677,
+      "tertile3_mean": 0.13242170214653015
+    }
+  }
 }

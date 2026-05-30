@@ -997,5 +997,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/terrorist_attack.scores.json"
+  "per_country_scores_pointer": "scores/terrorist_attack.scores.json",
+  "shape_points": [
+    -0.0459022285917175,
+    -0.019322678997596623,
+    0.007256870596524247,
+    0.03383642019064512,
+    0.06041596978476599,
+    0.08699551937888686,
+    0.11357506897300773,
+    0.1401546185671286,
+    0.16673416816124947,
+    0.19331371775537037,
+    0.21989326734949122,
+    0.24647281694361212
+  ],
+  "shap_importance_raw": {
+    "v2excrptps": 1.3771295547485352,
+    "v2pepwrort": 1.370210886001587
+  },
+  "shap_importance_normalized": {
+    "v2excrptps": 0.5012591575190913,
+    "v2pepwrort": 0.4987408424809087
+  },
+  "shap_direction_signs": {
+    "v2excrptps": -1,
+    "v2pepwrort": -1
+  },
+  "per_feature_breakdown": {
+    "v2excrptps": {
+      "last_z": 0.25607728958129883,
+      "mean_z": 0.11026988178491592,
+      "std_z": 0.08776058256626129,
+      "slope": 0.4151078462600708,
+      "accel": 0.30319204926490784,
+      "tertile1_mean": 0.06535746157169342,
+      "tertile2_mean": 0.13936448097229004,
+      "tertile3_mean": 0.0
+    },
+    "v2pepwrort": {
+      "last_z": 0.24501901865005493,
+      "mean_z": 0.09025029093027115,
+      "std_z": 0.1799284666776657,
+      "slope": 0.22231583297252655,
+      "accel": 0.29261961579322815,
+      "tertile1_mean": 0.21617861092090607,
+      "tertile2_mean": 0.12389905005693436,
+      "tertile3_mean": 0.0
+    }
+  }
 }

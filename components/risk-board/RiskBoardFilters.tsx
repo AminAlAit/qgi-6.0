@@ -610,12 +610,36 @@ function RecipeGridRow({
         })}
       </div>
 
-      {/* V4.1 §1.4 (2026-05-29): the between-row coverage caption ("X of 174
-          platform countries scored · Y lack coverage for this recipe's
-          indicators") was self-flagellation noise that read as exposure on
-          every recipe row. Removed. The full not-scored ISO list is still
-          available via the tooltip on the row's identity column if anyone
-          needs it. */}
+      {/* Round-2 (2026-05-30): countries_not_scored_iso now baked in the corpus.
+          Show a quiet row footer "X countries not scored — view list" with a
+          tooltip listing the ISOs. Only visible for walked recipes with coverage
+          gaps; hidden for queued recipes. */}
+      {!isQueued &&
+        row.countries_not_scored_iso !== null &&
+        row.countries_not_scored_iso !== undefined &&
+        row.countries_not_scored_iso.length > 0 && (
+          <div
+            style={{
+              padding: "4px 14px 5px 14px",
+              borderTop: "1px solid var(--qgi-border)",
+              fontSize: "10.5px",
+              color: "var(--qgi-text-dim)",
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+              background: "var(--qgi-bg)",
+              display: "flex",
+              gap: "6px",
+              alignItems: "center",
+            }}
+          >
+            <span
+              title={`Not scored (${row.countries_not_scored_iso.length}): ${row.countries_not_scored_iso.slice(0, 30).join(", ")}${row.countries_not_scored_iso.length > 30 ? ` … +${row.countries_not_scored_iso.length - 30} more` : ""}`}
+              style={{ cursor: "help" }}
+            >
+              {row.countries_not_scored_iso.length} countries not scored — view list
+            </span>
+          </div>
+        )}
     </div>
   );
 }
@@ -994,6 +1018,7 @@ function CountryMultiPicker({
               key={name}
               type="button"
               role="option"
+              aria-selected={false}
               onMouseDown={(e) => {
                 // mouseDown beats the input's onBlur so the click registers.
                 e.preventDefault();

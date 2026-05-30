@@ -170,4 +170,16 @@ export interface CardV3 {
   engine: "trajectory-engine-v1";
   contract_version: string;
   per_country_scores_pointer: string;
+
+  // round-2 (2026-05-30) additions:
+  /** 12-float canonical trajectory composite built from per_feature_breakdown × shap_importance_normalized. */
+  shape_points?: number[];
+  /** Per-indicator raw SHAP values (unsigned magnitude). */
+  shap_importance_raw?: Record<string, number>;
+  /** Per-indicator normalized SHAP weights (sums to 1). */
+  shap_importance_normalized?: Record<string, number>;
+  /** Per-indicator direction signs: +1 (risk-increasing) / -1 (risk-decreasing). */
+  shap_direction_signs?: Record<string, number>;
+  /** Per-indicator last_z / mean_z / std_z / slope breakdown. */
+  per_feature_breakdown?: Record<string, { last_z: number; mean_z: number; std_z: number; slope: number }>;
 }

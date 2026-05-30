@@ -958,5 +958,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/diplomatic_rupture.scores.json"
+  "per_country_scores_pointer": "scores/diplomatic_rupture.scores.json",
+  "shape_points": [
+    0.007810439318832948,
+    0.022054006626775202,
+    0.03629757393471746,
+    0.0505411412426597,
+    0.06478470855060195,
+    0.07902827585854422,
+    0.09327184316648647,
+    0.10751541047442874,
+    0.12175897778237098,
+    0.13600254509031323,
+    0.1502461123982555,
+    0.16448967970619777
+  ],
+  "shap_importance_raw": {
+    "FM.LBL.BMNY.GD.ZS": 2.1017634868621826,
+    "NY.GDP.DEFL.KD.ZG": 2.054582118988037,
+    "v2cseeorgs": 1.0314812660217285,
+    "SP.POP.TOTL": 0.5501332879066467
+  },
+  "shap_importance_normalized": {
+    "FM.LBL.BMNY.GD.ZS": 0.36629105611344664,
+    "NY.GDP.DEFL.KD.ZG": 0.3580683834980331,
+    "v2cseeorgs": 0.17976445240106534,
+    "SP.POP.TOTL": 0.09587610798745493
+  },
+  "shap_direction_signs": {
+    "FM.LBL.BMNY.GD.ZS": -1,
+    "NY.GDP.DEFL.KD.ZG": -1,
+    "v2cseeorgs": -1,
+    "SP.POP.TOTL": -1
+  },
+  "per_feature_breakdown": {
+    "FM.LBL.BMNY.GD.ZS": {
+      "last_z": 0.2474914938211441,
+      "mean_z": 0.10891235619783401,
+      "std_z": 0.12448372691869736,
+      "slope": 0.09103667736053467,
+      "accel": 0.43617475032806396,
+      "tertile1_mean": 0.10173913091421127,
+      "tertile2_mean": 0.14905571937561035,
+      "tertile3_mean": 0.8428696393966675
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.08961467444896698,
+      "mean_z": 0.11648719012737274,
+      "std_z": 0.31806841492652893,
+      "slope": 0.24178792536258698,
+      "accel": 0.35283908247947693,
+      "tertile1_mean": 0.6686298847198486,
+      "tertile2_mean": 0.1328216940164566,
+      "tertile3_mean": 0.13433341681957245
+    },
+    "v2cseeorgs": {
+      "last_z": 0.23074588179588318,
+      "mean_z": 0.02328326366841793,
+      "std_z": 0.08095115423202515,
+      "slope": 0.2668939232826233,
+      "accel": 0.2483202964067459,
+      "tertile1_mean": 0.08611860871315002,
+      "tertile2_mean": 0.07138022780418396,
+      "tertile3_mean": 0.023787854239344597
+    },
+    "SP.POP.TOTL": {
+      "last_z": 0.06668070703744888,
+      "mean_z": 0.003760629566386342,
+      "std_z": 0.13246844708919525,
+      "slope": 0.031522300094366074,
+      "accel": 0.2322506159543991,
+      "tertile1_mean": 0.035298287868499756,
+      "tertile2_mean": 0.042165763676166534,
+      "tertile3_mean": 0.005986510775983334
+    }
+  }
 }

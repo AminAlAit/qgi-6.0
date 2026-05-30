@@ -1,42 +1,64 @@
 /**
  * /recipes/[slug]/trajectory — Per-recipe trajectory deep-dive.
  *
- * MOCK ELIMINATION — 2026-05-30
- * getPattern(slug) + buildCurrentMatches (patterns-v4-data.ts:649-721)
- * synthesised current_top_matches entirely from recipe mock country lists.
- * The canonical shape series were also synthesised archetype curves — not
- * bake output. Zero fleet-run-1 data reached this page. Verdict: honest empty state.
- * Gap logged to C:\tmp\backend-gaps\patterns-trajectory.md
+ * Round-2 (2026-05-30): shape_points (12-float z-score series) is now emitted
+ * by the bake. This page renders the canonical movement shape as a full-width
+ * sparkline with quarter labels. Retrospective only (Kwame): the line ends at
+ * the latest reading; no forward extension.
  *
- * Route remains alive so recipe pages that link here do not 404.
- * generateStaticParams returns an empty array — no pre-rendered slugs;
- * all requests hit the fallback shell. robots: noindex kept.
+ * Methodology note: shape_points is the normalised z-score composite across a
+ * recipe's key indicators over the 12 quarters preceding a canonical event.
+ * It is NOT a forecast — it describes what the data historically rhymes around.
+ * The caption says so explicitly and the page is noindex-free now that it has
+ * real content.
  */
 import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
+import { loadCardV3, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
 export function generateStaticParams() {
-  // No pre-rendered trajectory pages until the bake emits shape data.
-  return [];
+  return FLEET_RUN_1_RECIPE_IDS.map((id) => ({ slug: id }));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   return {
-    title: `Trajectory · ${slug} · QG Intelligence`,
+    title: `Trajectory · ${slug.replace(/_/g, " ")} · QG Intelligence`,
     description:
-      "The canonical movement shape of a recipe. Live results will appear when the trajectory engine emits per-recipe shape data.",
-    robots: { index: false, follow: false },
+      "The canonical movement shape of a recipe — the recurring indicator-composite arc its verified-positive history rhymes around.",
   };
+}
+
+/** Map a z-score to a 0–100 display scale (clamp ±3 range). */
+function zToDisplay(z: number): number {
+  return Math.max(0, Math.min(100, ((z + 3) / 6) * 100));
 }
 
 export default async function TrajectoryDeepDivePage({ params }: PageProps) {
   const { slug } = await params;
+
+  // Load card — may throw if slug is not a fleet-run-1 recipe.
+  let shapePoints: number[] | null = null;
+  let shapeNote: string | null = null;
+  try {
+    const card = loadCardV3(slug);
+    if (card.shape_points && card.shape_points.length > 1) {
+      shapePoints = card.shape_points.map(zToDisplay);
+    }
+    // Use description if available for context.
+    if ("description" in card && typeof card.description === "string") {
+      shapeNote = card.description;
+    }
+  } catch {
+    // Recipe not in fleet-run-1 or card missing — show empty state.
+  }
+
+  const quarterLabels = Array.from({ length: 12 }, (_, i) => `Q${i + 1}`);
 
   return (
     <div
@@ -65,7 +87,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
             href={`/recipes/${slug}` as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
-            {slug}
+            {slug.replace(/_/g, " ")}
           </Link>
           <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
           <span style={{ color: "var(--qgi-text)" }}>Trajectory</span>
@@ -87,52 +109,193 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
 
         <h1
           style={{
-            fontSize: "30px",
+            fontSize: "28px",
             fontWeight: 600,
             lineHeight: 1.15,
-            margin: "0 0 12px",
+            margin: "0 0 8px",
+            textTransform: "capitalize",
           }}
         >
           Canonical movement shape
         </h1>
-
-        {/* Honest empty state */}
-        <div
+        <p
           style={{
-            padding: "40px 24px",
-            border: "1px dashed var(--qgi-border)",
-            borderRadius: "6px",
-            background: "rgba(91, 126, 153, 0.05)",
-            textAlign: "center",
-            maxWidth: "640px",
-            margin: "40px auto",
+            fontSize: "13px",
+            color: "var(--qgi-text-dim)",
+            maxWidth: "72ch",
+            lineHeight: 1.6,
+            margin: "0 0 32px",
           }}
         >
-          <h2
+          The normalised indicator-composite arc that this recipe&apos;s verified-positive
+          history rhymes around, measured over 12 quarters leading up to the canonical
+          event. Retrospective only — this is what the model has seen in the past, not a
+          forecast.
+        </p>
+
+        {shapePoints && shapePoints.length > 1 ? (
+          <div
             style={{
-              fontSize: "16px",
-              fontWeight: 600,
-              marginBottom: "10px",
-              color: "var(--qgi-text)",
+              background: "var(--qgi-surface)",
+              border: "1px solid var(--qgi-border)",
+              borderLeft: "3px solid #7B5EE6",
+              borderRadius: "6px",
+              padding: "24px",
             }}
           >
-            Trajectory shape not yet available
-          </h2>
-          <p
+            {/* Eyebrow */}
+            <div
+              style={{
+                fontSize: "10px",
+                letterSpacing: "1.5px",
+                textTransform: "uppercase",
+                fontFamily: "ui-monospace, monospace",
+                color: "#7B5EE6",
+                marginBottom: "16px",
+              }}
+            >
+              {slug.replace(/_/g, " ")} · 12-quarter canonical arc
+            </div>
+
+            {/* SVG sparkline — full width, 80px tall */}
+            <svg
+              viewBox={`0 0 800 80`}
+              preserveAspectRatio="none"
+              style={{
+                display: "block",
+                width: "100%",
+                height: "80px",
+                overflow: "visible",
+                marginBottom: "8px",
+              }}
+              role="img"
+              aria-label={`Canonical movement shape for ${slug.replace(/_/g, " ")} — 12 quarters`}
+            >
+              {/* Midline (50 = z=0) */}
+              <line
+                x1={0}
+                y1={40}
+                x2={800}
+                y2={40}
+                stroke="var(--qgi-border)"
+                strokeWidth={1}
+                strokeDasharray="4 4"
+              />
+              {/* Shape line */}
+              <polyline
+                points={shapePoints
+                  .map((v, i) => {
+                    const x = (i / (shapePoints!.length - 1)) * 800;
+                    const y = 80 - (v / 100) * 80;
+                    return `${x.toFixed(1)},${y.toFixed(1)}`;
+                  })
+                  .join(" ")}
+                fill="none"
+                stroke="#7B5EE6"
+                strokeWidth={2}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* End dot */}
+              {(() => {
+                const lastIdx = shapePoints.length - 1;
+                const lastX = 800;
+                const lastY = 80 - (shapePoints[lastIdx] / 100) * 80;
+                return <circle cx={lastX} cy={lastY} r={4} fill="#7B5EE6" />;
+              })()}
+            </svg>
+
+            {/* Quarter axis */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                marginBottom: "16px",
+              }}
+            >
+              {quarterLabels.map((q) => (
+                <span
+                  key={q}
+                  style={{
+                    fontSize: "9px",
+                    fontFamily: "ui-monospace, monospace",
+                    color: "var(--qgi-text-dim)",
+                    letterSpacing: "0.3px",
+                  }}
+                >
+                  {q}
+                </span>
+              ))}
+            </div>
+
+            {/* Y-axis legend */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                fontSize: "9.5px",
+                fontFamily: "ui-monospace, monospace",
+                color: "var(--qgi-text-dim)",
+              }}
+            >
+              <span>Indicator composite z-score (display scale 0–100; 50 = z=0)</span>
+              <span style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
+                Past only — line ends at canonical event
+              </span>
+            </div>
+
+            {/* Description if available */}
+            {shapeNote && (
+              <p
+                style={{
+                  marginTop: "20px",
+                  fontSize: "12px",
+                  lineHeight: 1.6,
+                  color: "var(--qgi-text-dim)",
+                  maxWidth: "80ch",
+                  fontStyle: "italic",
+                }}
+              >
+                {shapeNote}
+              </p>
+            )}
+          </div>
+        ) : (
+          /* Empty state — recipe not in fleet-run-1 or shape_points absent */
+          <div
             style={{
-              color: "var(--qgi-text-muted)",
-              fontSize: "13px",
-              lineHeight: 1.6,
+              padding: "40px 24px",
+              border: "1px dashed var(--qgi-border)",
+              borderRadius: "6px",
+              background: "rgba(91, 126, 153, 0.05)",
+              textAlign: "center",
+              maxWidth: "640px",
+              margin: "40px auto",
             }}
           >
-            The trajectory deep-dive shows the canonical movement shape of a recipe: the
-            recurring indicator-composite arc that its verified-positive history rhymes
-            around, plus the countries whose current movement most closely matches that
-            shape. Per-recipe shape series and per-country trajectory alignment scores are
-            not yet emitted by the bake. This page will populate when the trajectory
-            engine begins producing shape output.
-          </p>
-        </div>
+            <h2
+              style={{
+                fontSize: "16px",
+                fontWeight: 600,
+                marginBottom: "10px",
+                color: "var(--qgi-text)",
+              }}
+            >
+              Trajectory shape not yet available
+            </h2>
+            <p
+              style={{
+                color: "var(--qgi-text-muted)",
+                fontSize: "13px",
+                lineHeight: 1.6,
+              }}
+            >
+              The shape series for this recipe has not been emitted by the bake yet. This
+              page will populate when the trajectory engine produces shape output for this
+              recipe.
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

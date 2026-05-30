@@ -112,6 +112,7 @@ import rawScores_transitional_justice from "@/data/te-fleet-run-1/scores/transit
 
 // Reference files
 import rawCountryIndex from "@/data/te-fleet-run-1/countries/country-index.json";
+import rawRankHistory from "@/data/te-fleet-run-1/countries/country-rank-history.json";
 import rawAnalogs from "@/data/te-fleet-run-1/analogs/current-state-analogs.json";
 import rawActivityFeed from "@/data/te-fleet-run-1/activity/program-feed.json";
 import rawManifest from "@/data/te-fleet-run-1/MANIFEST.json";
@@ -316,9 +317,56 @@ export function loadAllScores(): Record<string, RecipeScoresFile> {
   return SCORES_MAP;
 }
 
+/** A single row in the rank-history file. */
+export interface RankHistoryRow {
+  vintage: string;
+  recipe_id: string;
+  country: string;
+  country_iso2: string;
+  score: number;
+  rank: number;
+  n_countries_scored: number;
+}
+
+export interface RankHistoryFile {
+  vintage: string;
+  produced_at_utc: string;
+  schema_note: string;
+  n_rows: number;
+  rows: RankHistoryRow[];
+}
+
+/**
+ * Load the cross-vintage country rank history.
+ * At fleet-run-1 this contains 7,577 rows (one per country × recipe that
+ * was scored). Append-only: vintage 2 rows join by (recipe_id, country).
+ */
+export function loadRankHistory(): RankHistoryFile {
+  const data = rawRankHistory as unknown as RankHistoryFile;
+  assertNonEmpty(data, "rank-history");
+  assertArrayNonEmpty(data.rows, "rank-history.rows");
+  return data;
+}
+
 /** Vintage stamp from the MANIFEST. */
 export function loadVintage(): string {
   return (rawManifest as { produced_at_utc: string }).produced_at_utc;
+}
+
+/** run_index from MANIFEST — increments per quarterly fleet run. */
+export function loadRunIndex(): number {
+  return (rawManifest as { run_index: number }).run_index;
+}
+
+/** indicator_catalog_size from MANIFEST. */
+export function loadIndicatorCatalogSize(): number {
+  return (rawManifest as { indicator_catalog_size: number }).indicator_catalog_size;
+}
+
+/** indicator_corpus_breakdown from MANIFEST: provider → count. */
+export function loadIndicatorCorpusBreakdown(): Record<string, number> {
+  return (rawManifest as { indicator_corpus_breakdown: Record<string, number> })
+    .indicator_corpus_breakdown;
 }
 
 /** All 44 fleet-run-1 recipe IDs. Replaces the old SAMPLE_10_RECIPE_IDS constant. */

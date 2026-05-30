@@ -1010,5 +1010,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/military_policy_and_reform.scores.json"
+  "per_country_scores_pointer": "scores/military_policy_and_reform.scores.json",
+  "shape_points": [
+    0.016190184650228825,
+    0.03745252988564031,
+    0.0587148751210518,
+    0.07997722035646328,
+    0.10123956559187475,
+    0.12250191082728623,
+    0.14376425606269772,
+    0.1650266012981092,
+    0.18628894653352068,
+    0.20755129176893214,
+    0.22881363700434365,
+    0.25007598223975513
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.4086787700653076,
+    "v2exl_legitlead": 1.4952173233032227,
+    "v2csreprss": 1.3324826955795288
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.3325195503622797,
+    "v2exl_legitlead": 0.3529470327828032,
+    "v2csreprss": 0.3145334168549171
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "v2exl_legitlead": -1,
+    "v2csreprss": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.3696037530899048,
+      "mean_z": 0.09623973071575165,
+      "std_z": 0.0750679150223732,
+      "slope": 0.23457495868206024,
+      "accel": 0.21325871348381042,
+      "tertile1_mean": 0.17227302491664886,
+      "tertile2_mean": 0.1550406962633133,
+      "tertile3_mean": 0.09262007474899292
+    },
+    "v2exl_legitlead": {
+      "last_z": 0.2861579656600952,
+      "mean_z": 0.09006897360086441,
+      "std_z": 0.20238563418388367,
+      "slope": 0.37926194071769714,
+      "accel": 0.11445549130439758,
+      "tertile1_mean": 0.14665569365024567,
+      "tertile2_mean": 0.18668949604034424,
+      "tertile3_mean": 0.08954213559627533
+    },
+    "v2csreprss": {
+      "last_z": 0.28475093841552734,
+      "mean_z": 0.22045961022377014,
+      "std_z": 0.14839166402816772,
+      "slope": 0.13762609660625458,
+      "accel": 0.15580974519252777,
+      "tertile1_mean": 0.1018175482749939,
+      "tertile2_mean": 0.09741351008415222,
+      "tertile3_mean": 0.18621355295181274
+    }
+  }
 }

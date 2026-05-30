@@ -936,5 +936,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/banking_and_financial_crisis.scores.json"
+  "per_country_scores_pointer": "scores/banking_and_financial_crisis.scores.json",
+  "shape_points": [
+    0.04415094033595732,
+    0.06605227316192507,
+    0.08795360598789283,
+    0.10985493881386058,
+    0.13175627163982837,
+    0.15365760446579613,
+    0.17555893729176392,
+    0.19746027011773162,
+    0.2193616029436994,
+    0.24126293576966718,
+    0.2631642685956349,
+    0.2850656014216027
+  ],
+  "shap_importance_raw": {
+    "NV.SRV.TOTL.ZS": 2.120857000350952,
+    "v2x_gender": 1.8152241706848145,
+    "MS.MIL.XPND.GD.ZS": 1.4226264953613281
+  },
+  "shap_importance_normalized": {
+    "NV.SRV.TOTL.ZS": 0.39577770096514736,
+    "v2x_gender": 0.3387428991634606,
+    "MS.MIL.XPND.GD.ZS": 0.26547939987139196
+  },
+  "shap_direction_signs": {
+    "NV.SRV.TOTL.ZS": -1,
+    "v2x_gender": -1,
+    "MS.MIL.XPND.GD.ZS": -1
+  },
+  "per_feature_breakdown": {
+    "NV.SRV.TOTL.ZS": {
+      "last_z": 0.8509629964828491,
+      "mean_z": 0.11862273514270782,
+      "std_z": 0.24227336049079895,
+      "slope": 0.3529268205165863,
+      "accel": 0.21226584911346436,
+      "tertile1_mean": 0.027825530618429184,
+      "tertile2_mean": 0.04053397476673126,
+      "tertile3_mean": 0.2754456698894501
+    },
+    "v2x_gender": {
+      "last_z": 0.1914505660533905,
+      "mean_z": 0.2136862874031067,
+      "std_z": 0.3662266433238983,
+      "slope": 0.21557629108428955,
+      "accel": 0.6931717395782471,
+      "tertile1_mean": 0.028785841539502144,
+      "tertile2_mean": 0.07063739746809006,
+      "tertile3_mean": 0.03568939119577408
+    },
+    "MS.MIL.XPND.GD.ZS": {
+      "last_z": 0.16328909993171692,
+      "mean_z": 0.17054176330566406,
+      "std_z": 0.10063043236732483,
+      "slope": 0.18875472247600555,
+      "accel": 0.5362032055854797,
+      "tertile1_mean": 0.01732712797820568,
+      "tertile2_mean": 0.10545717924833298,
+      "tertile3_mean": 0.14042291045188904
+    }
+  }
 }

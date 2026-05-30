@@ -1082,5 +1082,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/bilateral_treaty.scores.json"
+  "per_country_scores_pointer": "scores/bilateral_treaty.scores.json",
+  "shape_points": [
+    0.06958702910148948,
+    0.08237149391251332,
+    0.09515595872353717,
+    0.10794042353456103,
+    0.12072488834558487,
+    0.13350935315660872,
+    0.14629381796763258,
+    0.15907828277865643,
+    0.1718627475896803,
+    0.1846472124007041,
+    0.19743167721172797,
+    0.2102161420227518
+  ],
+  "shap_importance_raw": {
+    "NY.GDP.PCAP.CD": 1.2917038202285767,
+    "NY.GNP.PCAP.CD": 1.2287628650665283
+  },
+  "shap_importance_normalized": {
+    "NY.GDP.PCAP.CD": 0.512485972444956,
+    "NY.GNP.PCAP.CD": 0.487514027555044
+  },
+  "shap_direction_signs": {
+    "NY.GDP.PCAP.CD": -1,
+    "NY.GNP.PCAP.CD": -1
+  },
+  "per_feature_breakdown": {
+    "NY.GDP.PCAP.CD": {
+      "last_z": 0.10820762813091278,
+      "mean_z": 0.16241097450256348,
+      "std_z": 0.16088806092739105,
+      "slope": 0.13195474445819855,
+      "accel": 0.3076176047325134,
+      "tertile1_mean": 0.2125493586063385,
+      "tertile2_mean": 0.10302280634641647,
+      "tertile3_mean": 0.10505261272192001
+    },
+    "NY.GNP.PCAP.CD": {
+      "last_z": 0.16312970221042633,
+      "mean_z": 0.11623919755220413,
+      "std_z": 0.18181093037128448,
+      "slope": 0.1759715974330902,
+      "accel": 0.21086309850215912,
+      "tertile1_mean": 0.14910286664962769,
+      "tertile2_mean": 0.0900321900844574,
+      "tertile3_mean": 0.14161328971385956
+    }
+  }
 }

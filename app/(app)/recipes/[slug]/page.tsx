@@ -21,7 +21,11 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
-import { loadCardV3, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import {
+  loadCardV3,
+  loadScores,
+  FLEET_RUN_1_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
 import recipeTracker from "@/data/recipe-tracker.json";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
@@ -117,27 +121,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
             v41StatusLabel.label === "Prior version"
           ? "#7A8FA0"
           : "#5B7E99";
-  const v41StatusChip = (
-    <span
-      style={{
-        padding: "5px 12px",
-        fontSize: "12px",
-        border: `1px solid ${v41StatusColor}`,
-        color: v41StatusColor,
-        backgroundColor: `${v41StatusColor}26`,
-        borderRadius: "4px",
-        letterSpacing: "0.3px",
-        fontFamily: "ui-monospace, monospace",
-        fontWeight: 600,
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "5px",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {v41StatusLabel.label}
-    </span>
-  );
+  // 2026-05-30: chip JSX retired (founder ask). Kept the label + color
+  // derivation above so the chip can drop back in here if a future
+  // status (e.g., retired) needs surfacing. Suppress unused-var lint.
+  void v41StatusColor;
 
   // V4.1 round-3 (2026-05-29): /recipe-tracker route deleted. The demo
   // pointer now lands on /blog/recipe-tracker — the audience-facing
@@ -174,6 +161,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   let locoAuc: number | null = recipe.stats?.loco_auc ?? null;
   let ciLow: number | undefined;
   let ciHigh: number | undefined;
+  // Round-2: 5-fold CV AUC from scores file top-level.
+  let cvAucFull: number | null = null;
   // Window search range for WindowPanel: min/max of windows searched in the
   // greedy walk history. Not present on cascade-only recipes (undefined →
   // WindowPanel renders without the "Chosen from X–Y years" caption).
@@ -192,6 +181,12 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       }
     } catch {
       // Card unavailable — point estimate only; window range stays undefined.
+    }
+    try {
+      const sf = loadScores(slug);
+      cvAucFull = sf.cv_auc_full ?? null;
+    } catch {
+      // Scores unavailable — cvAucFull stays null.
     }
   }
 
@@ -256,6 +251,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         ciLow={ciLow}
         ciHigh={ciHigh}
         showResults={showResults}
+        cvAucFull={cvAucFull}
       />
       <ReliabilityPanel
         familyColor={familyColor}

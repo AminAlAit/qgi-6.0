@@ -282,12 +282,17 @@ function buildTERecipeRow(recipeId: string): RecipeRow | null {
     while (cells.length < 10) {
       cells.push({ country: "—", score: null, state: "not_scored" as const });
     }
+    // Round-2: countries_not_scored_iso now baked in scores file.
+    const countries_not_scored_iso =
+      Array.isArray(sf.countries_not_scored_iso) && sf.countries_not_scored_iso.length > 0
+        ? sf.countries_not_scored_iso
+        : null;
     return {
       recipe_id: recipeId,
       cells,
       display_state: "walked_no_graduation",
       n_countries_scored,
-      countries_not_scored_iso: null, // not available in v3 contract
+      countries_not_scored_iso,
       platform_roster_size: sf.n_countries_scored ?? PLATFORM_ROSTER_SIZE,
     };
   } catch {
