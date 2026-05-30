@@ -27,9 +27,8 @@
 import recipeTracker from "@/data/recipe-tracker.json";
 import { getRecipe, type TrackerRecipe, type RecipeStatus } from "@/lib/te-mock/recipes";
 import {
-  loadAllScores,
   loadAnalogs,
-  loadCountryIndex,
+  loadCardV3,
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
@@ -65,6 +64,8 @@ export interface CountryDriverAttribution {
   signal_share_pct: number;
   /** Which recipe this attribution belongs to — drivers_attribution is per-recipe. */
   recipe_id: string;
+  /** Round-2: +1 = risk-increasing, -1 = risk-decreasing. null if not available. */
+  direction_sign?: number | null;
 }
 
 export interface CountryDriverMovement {
@@ -76,6 +77,12 @@ export interface CountryDriverMovement {
   trajectory: number[];
   /** Observed standardized change over the visible window. */
   z_score_change: number;
+  /** Round-2: raw indicator value at eval_year. null if unavailable. */
+  latest_raw_value?: number | null;
+  /** Round-2: raw indicator value at the prior year. null if unavailable. */
+  prior_raw_value?: number | null;
+  /** Round-2: unit hint string (e.g. "%", "z-score (V-Dem)"). null if unavailable. */
+  unit?: string | null;
 }
 
 /** @deprecated Use CountryDriverMovement. Kept as an alias for prior-callsite compat. */
@@ -87,6 +94,23 @@ export interface CountryMomentum {
   l1_color: string;
   /** 12 quarterly rank-position values in the 0..100 score scale. */
   rank_history: number[];
+  /**
+   * Round-2: multi-year score history from momentum_scores_by_year.
+   * Keys are year strings ("2023".."2026"), values are scores 0..100.
+   * Populated from the bake corpus; empty object = first vintage only.
+   */
+  year_scores: Record<string, number>;
+  /** Round-2: momentum label (rising/falling/flat/suppressed). null if unavailable. */
+  momentum_label: string | null;
+}
+
+export interface SensitivityItem {
+  indicator_code: string;
+  indicator_name: string;
+  marginal_points_per_unit: number;
+  current_cosine: number;
+  headroom: number;
+  headroom_points: number;
 }
 
 export interface CountryAnalog {
@@ -130,6 +154,17 @@ export interface CountryV4 {
   analogs: CountryAnalog[];
   lit_families: CountryLitFamily[];
   vintage: string;
+  /**
+   * Round-2: per-indicator sensitivity — "what would move the score".
+   * Populated from sensitivity_per_indicator[] in the scores bake.
+   * Empty array = not yet scored on any TE recipe.
+   */
+  sensitivity: SensitivityItem[];
+  /**
+   * Round-2: 12-pt composite indicator trajectory from the bake.
+   * Mean of selected indicators z-scores. Empty array = not available.
+   */
+  indicator_trajectory_composite_12q: number[];
 }
 
 const VINTAGE = (recipeTracker as { generated: string }).generated;
@@ -2369,6 +2404,7 @@ const SEEDS: Seed[] = [
 
 // ── Trajectory + analog hydration ────────────────────────────────────────
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function buildTrajectory(
   shape: "rising" | "falling" | "flat",
   from: number,
@@ -2408,24 +2444,80 @@ function buildTrajectory(
 }
 
 /**
- * Rank history requires ≥2 vintages of bake data to be meaningful.
- * Fleet-run-1 is the FIRST vintage (2026-05-30). Until a second quarterly
- * vintage lands, there is no cross-vintage rank series to chart.
- *
- * Returns an empty array. The RankHistoryPanel renders an honest
- * "Rank history will appear once the next quarterly vintage lands." state
- * when momentum is empty.
- *
- * Backend ask: cross-vintage rollup file (country × recipe × vintage → score)
- * baked alongside each fleet run. See C:\tmp\backend-gaps\countries.md §1.4.
+ * Build 4-year score history from momentum_scores_by_year.
+ * Returns sorted year array (ascending) of scores as number[].
+ * Returns [] when no momentum data is present (falls back to empty state
+ * in RankHistoryPanel).
  */
+function buildYearScores(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): Record<string, number> {
+  const sf = allScores[recipeId];
+  if (!sf) return {};
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry?.momentum_scores_by_year) return {};
+  return entry.momentum_scores_by_year;
+}
 
-function buildRankHistory(
-  _iso: string,
-  _recipeId: string,
-  _currentScore: number
+/**
+ * Build momentum_label for a country × recipe.
+ */
+function buildMomentumLabel(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): string | null {
+  const sf = allScores[recipeId];
+  if (!sf) return null;
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  return entry?.momentum_label ?? null;
+}
+
+/**
+ * Build sensitivity items for a country × recipe.
+ * Returns [] when sensitivity_per_indicator is absent or empty.
+ */
+function buildSensitivity(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): SensitivityItem[] {
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry?.sensitivity_per_indicator) return [];
+  return entry.sensitivity_per_indicator.map((s) => ({
+    indicator_code: s.indicator,
+    indicator_name: getIndicatorLabel(s.indicator),
+    marginal_points_per_unit: s.marginal_points_per_unit,
+    current_cosine: s.current_cosine,
+    headroom: s.headroom,
+    headroom_points: s.headroom_points,
+  }));
+}
+
+/**
+ * Build indicator_trajectory_composite_12q for a country × recipe.
+ * Returns [] when field is absent.
+ */
+function buildCompositeTrajectory(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
 ): number[] {
-  return []; // honest: single vintage only — no history to chart
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  const raw = entry?.indicator_trajectory_composite_12q;
+  if (!Array.isArray(raw) || raw.length === 0) return [];
+  // Normalise from z-score range ±3 to 0..100 display scale.
+  return raw.map((v) => Math.max(0, Math.min(100, ((v + 3) / 6) * 100)));
 }
 
 // Plausible mock analogs by country profile. Used as fallbacks when
@@ -2435,6 +2527,7 @@ type AnalogTuple = [string, number, number, string, string];
 
 // Per-family (L1) analog pools — keyed by L1 id (A..H).
 // Self-exclusion is applied at call time.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ANALOG_POOLS_BY_FAMILY: Record<string, AnalogTuple[]> = {
   // B — Conflict & Violence
   B: [
@@ -2558,6 +2651,7 @@ const ANALOG_POOLS_BY_FAMILY: Record<string, AnalogTuple[]> = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ANALOG_FALLBACKS_STABLE: AnalogTuple[] = [
   [
     "Indonesia",
@@ -2715,15 +2809,35 @@ function hydrate(
     ? buildMovementFromScores(seed.name, topRecipeTEId, allScores)
     : [];
 
-  // Momentum (rank history): requires ≥2 vintages. Fleet-run-1 is the FIRST vintage.
-  // Emit the top-4 lit recipes as metadata stubs with empty rank_history arrays.
-  // RankHistoryPanel detects empty arrays and renders an honest pending message.
-  const momentum: CountryMomentum[] = topRecipesAll.slice(0, 4).map((r) => ({
-    recipe_id: r.recipe_id,
-    label: r.label,
-    l1_color: r.l1_color,
-    rank_history: buildRankHistory(seed.iso, r.recipe_id, r.score),
-  }));
+  // Momentum: populate year_scores from momentum_scores_by_year (round-2).
+  // rank_history remains empty at vintage-1 — the cross-vintage rollup file
+  // (country-rank-history.json) now provides that data via loadRankHistory().
+  const momentum: CountryMomentum[] = topRecipesAll.slice(0, 4).map((r) => {
+    const yearScores = FLEET_RUN_1_RECIPE_IDS.includes(r.recipe_id)
+      ? buildYearScores(seed.name, r.recipe_id, allScores)
+      : {};
+    const momentumLabel = FLEET_RUN_1_RECIPE_IDS.includes(r.recipe_id)
+      ? buildMomentumLabel(seed.name, r.recipe_id, allScores)
+      : null;
+    return {
+      recipe_id: r.recipe_id,
+      label: r.label,
+      l1_color: r.l1_color,
+      rank_history: [],
+      year_scores: yearScores,
+      momentum_label: momentumLabel,
+    };
+  });
+
+  // Round-2: sensitivity items from the top-lit TE recipe.
+  const sensitivity: SensitivityItem[] = topRecipeTEId
+    ? buildSensitivity(seed.name, topRecipeTEId, allScores)
+    : [];
+
+  // Round-2: composite indicator trajectory from the top-lit TE recipe.
+  const indicator_trajectory_composite_12q: number[] = topRecipeTEId
+    ? buildCompositeTrajectory(seed.name, topRecipeTEId, allScores)
+    : [];
 
   return {
     iso: seed.iso,
@@ -2742,6 +2856,8 @@ function hydrate(
     analogs: analogsFor(seed.name),
     lit_families: litFamilies,
     vintage: VINTAGE,
+    sensitivity,
+    indicator_trajectory_composite_12q,
   };
 }
 
@@ -2752,8 +2868,9 @@ function hydrate(
  *   - WGI codes end with ".EST" → "World Bank WGI"
  *   - Everything else → "World Bank"
  *
- * This is a convenience heuristic — the bake currently does not emit a
- * `provider` field alongside each SHAP entry, so we derive it client-side.
+ * Round-2 (2026-05-30): indicator_movement[] now carries an explicit
+ * `provider` field. This heuristic is retained only for shap_attribution[]
+ * which does not carry provider (pending score_countries.py upgrade #974).
  */
 function inferProvider(code: string | null | undefined): string {
   // 2026-05-30: defensive — same hardening as resolveIndicatorLabel.
@@ -2767,11 +2884,28 @@ function inferProvider(code: string | null | undefined): string {
 }
 
 /**
+ * Map a bake provider code to a display label.
+ * Round-2: scores file emits "VDEM", "WB" etc. — normalise to display labels.
+ */
+function resolveProvider(bakeProvider: string | null | undefined, code: string): string {
+  if (!bakeProvider) return inferProvider(code);
+  switch (bakeProvider.toUpperCase()) {
+    case "VDEM": return "V-Dem";
+    case "WB": return "World Bank";
+    case "WGI": return "World Bank WGI";
+    default: return bakeProvider;
+  }
+}
+
+/**
  * Real SHAP attribution for a country × recipe.
  *
  * Reads from the baked scores file (`scores/{recipeId}.scores.json`) for the
  * country name, extracts the `shap_attribution[]` array, and normalises into
  * CountryDriverAttribution[].
+ *
+ * Round-2: also reads `card.shap_direction_signs` to populate direction_sign
+ * per indicator (used by WhyScoresPanel for +/- arrows).
  *
  * Indicator names that are null in the bake are backfilled via
  * `getIndicatorLabel()` (lib/indicator-labels.ts).
@@ -2795,12 +2929,22 @@ function buildAttribution(
   const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
   if (!entry || !entry.shap_attribution || entry.shap_attribution.length === 0) return [];
 
+  // Round-2: load shap_direction_signs from the card if available.
+  let directionSigns: Record<string, number> = {};
+  try {
+    const card = loadCardV3(recipeId);
+    directionSigns = card.shap_direction_signs ?? {};
+  } catch {
+    // Card unavailable or no direction signs — direction_sign stays null.
+  }
+
   return entry.shap_attribution.map((s) => ({
     indicator_code: s.code,
     indicator_name: s.name ?? getIndicatorLabel(s.code),
     provider: inferProvider(s.code),
     signal_share_pct: s.signal_share_pct,
     recipe_id: recipeId,
+    direction_sign: directionSigns[s.code] ?? null,
   }));
 }
 
@@ -2840,13 +2984,19 @@ function buildMovementFromScores(
     const trajectory = m.trajectory_12q.map((v) =>
       Math.max(0, Math.min(100, ((v + 3) / 6) * 100))
     );
+    // Round-2: use explicit provider from bake; fall back to heuristic.
+    const provider = resolveProvider(m.provider, m.code);
     return {
       indicator_code: m.code,
       indicator_name: m.name ?? getIndicatorLabel(m.code),
-      provider: inferProvider(m.code),
+      provider,
       direction,
       trajectory,
       z_score_change: Number(z.toFixed(2)),
+      // Round-2: raw values and unit from bake.
+      latest_raw_value: m.latest_raw_value ?? null,
+      prior_raw_value: m.prior_raw_value ?? null,
+      unit: m.unit ?? null,
     };
   });
 }

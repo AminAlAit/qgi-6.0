@@ -28,6 +28,7 @@ import {
   WhatsMovingPanel,
 } from "@/components/countries-v4-1/DriversPanels";
 import { RankHistoryPanel } from "@/components/countries-v4-1/RankHistoryPanel";
+import { SensitivityPanel } from "@/components/countries-v4-1/SensitivityPanel";
 import { AnalogsPanelV41 } from "@/components/countries-v4-1/AnalogsPanelV41";
 import { VintageSourcesPanel } from "@/components/countries-v4-1/ReadMePanels";
 
@@ -74,7 +75,6 @@ export default async function CountryV41DetailPage({ params }: Params) {
 
   const fams = familiesByBestScore(country);
   const driversAccent = fams[0]?.color ?? NEUTRAL_SLATE;
-  const topRecipe = country.top_recipes[0];
 
   return (
     <div
@@ -134,18 +134,26 @@ export default async function CountryV41DetailPage({ params }: Params) {
               <WhyScoresPanel
                 accent={driversAccent}
                 countryName={country.name}
-                topRecipeLabel={topRecipe?.label ?? "its top recipe"}
                 attribution={country.drivers_attribution}
               />
               <WhatsMovingPanel
                 accent={driversAccent}
                 countryName={country.name}
                 movement={country.drivers_movement}
+                compositeTrajectory={country.indicator_trajectory_composite_12q}
               />
             </PanelPair>
           </div>
 
           <RankHistoryPanel country={country} />
+
+          {country.sensitivity.length > 0 && (
+            <SensitivityPanel
+              accent={driversAccent}
+              countryName={country.name}
+              sensitivity={country.sensitivity}
+            />
+          )}
 
           <AnalogsPanelV41 country={country} />
 

@@ -1003,5 +1003,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/civil_war_and_insurgency.scores.json"
+  "per_country_scores_pointer": "scores/civil_war_and_insurgency.scores.json",
+  "shape_points": [
+    -0.023978793264381217,
+    -0.006359327668250304,
+    0.011260137927880613,
+    0.028879603524011525,
+    0.04649906912014244,
+    0.06411853471627335,
+    0.08173800031240427,
+    0.0993574659085352,
+    0.11697693150466609,
+    0.13459639710079702,
+    0.15221586269692794,
+    0.16983532829305883
+  ],
+  "shap_importance_raw": {
+    "v2x_clpriv": 0.9843019247055054,
+    "MS.MIL.XPND.GD.ZS": 1.2969739437103271,
+    "v2x_rule": 0.7741870880126953,
+    "v2pepwrort": 1.0197560787200928
+  },
+  "shap_importance_normalized": {
+    "v2x_clpriv": 0.2415335019335,
+    "MS.MIL.XPND.GD.ZS": 0.3182587076974201,
+    "v2x_rule": 0.18997435017243464,
+    "v2pepwrort": 0.2502334401966453
+  },
+  "shap_direction_signs": {
+    "v2x_clpriv": -1,
+    "MS.MIL.XPND.GD.ZS": -1,
+    "v2x_rule": -1,
+    "v2pepwrort": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_clpriv": {
+      "last_z": 0.08024810254573822,
+      "mean_z": 0.0515022911131382,
+      "std_z": 0.1503939926624298,
+      "slope": 0.3364464044570923,
+      "accel": 0.08988244831562042,
+      "tertile1_mean": 0.12575355172157288,
+      "tertile2_mean": 0.08494279533624649,
+      "tertile3_mean": 0.06513233482837677
+    },
+    "MS.MIL.XPND.GD.ZS": {
+      "last_z": 0.3734002113342285,
+      "mean_z": 0.084576815366745,
+      "std_z": 0.13537828624248505,
+      "slope": 0.25571680068969727,
+      "accel": 0.15903715789318085,
+      "tertile1_mean": 0.10252942889928818,
+      "tertile2_mean": 0.08946657180786133,
+      "tertile3_mean": 0.09686876833438873
+    },
+    "v2x_rule": {
+      "last_z": 0.1643582582473755,
+      "mean_z": 0.050014082342386246,
+      "std_z": 0.09350782632827759,
+      "slope": 0.13887697458267212,
+      "accel": 0.09491551667451859,
+      "tertile1_mean": 0.11844176799058914,
+      "tertile2_mean": 0.03609474375844002,
+      "tertile3_mean": 0.07797792553901672
+    },
+    "v2pepwrort": {
+      "last_z": 0.2061140537261963,
+      "mean_z": 0.09619033336639404,
+      "std_z": 0.09147432446479797,
+      "slope": 0.08952978998422623,
+      "accel": 0.21778979897499084,
+      "tertile1_mean": 0.1936279833316803,
+      "tertile2_mean": 0.05098475143313408,
+      "tertile3_mean": 0.07404506951570511
+    }
+  }
 }

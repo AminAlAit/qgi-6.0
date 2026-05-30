@@ -1002,5 +1002,66 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/fiscal_policy_change.scores.json"
+  "per_country_scores_pointer": "scores/fiscal_policy_change.scores.json",
+  "shape_points": [
+    -0.00752292577815156,
+    0.009260161309882001,
+    0.02604324839791557,
+    0.042826335485949135,
+    0.05960942257398269,
+    0.07639250966201624,
+    0.0931755967500498,
+    0.10995868383808338,
+    0.1267417709261169,
+    0.1435248580141505,
+    0.16030794510218405,
+    0.1770910321902176
+  ],
+  "shap_importance_raw": {
+    "NV.IND.MANF.ZS": 1.546621322631836,
+    "v2x_clphy": 1.117370843887329,
+    "SP.DYN.TFRT.IN": 1.1738628149032593
+  },
+  "shap_importance_normalized": {
+    "NV.IND.MANF.ZS": 0.40299107968342557,
+    "v2x_clphy": 0.2911446235712632,
+    "SP.DYN.TFRT.IN": 0.30586429674531124
+  },
+  "shap_direction_signs": {
+    "NV.IND.MANF.ZS": -1,
+    "v2x_clphy": -1,
+    "SP.DYN.TFRT.IN": -1
+  },
+  "per_feature_breakdown": {
+    "NV.IND.MANF.ZS": {
+      "last_z": 0.21710853278636932,
+      "mean_z": 0.12509354948997498,
+      "std_z": 0.2528829276561737,
+      "slope": 0.1995552033185959,
+      "accel": 0.22805733978748322,
+      "tertile1_mean": 0.3205264210700989,
+      "tertile2_mean": 0.12458451092243195,
+      "tertile3_mean": 0.07881282269954681
+    },
+    "v2x_clphy": {
+      "last_z": 0.07593701034784317,
+      "mean_z": 0.03672407194972038,
+      "std_z": 0.2176465094089508,
+      "slope": 0.16332365572452545,
+      "accel": 0.22929330170154572,
+      "tertile1_mean": 0.0881195217370987,
+      "tertile2_mean": 0.22407014667987823,
+      "tertile3_mean": 0.08225658535957336
+    },
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.2156640887260437,
+      "mean_z": 0.07742143422365189,
+      "std_z": 0.20102401077747345,
+      "slope": 0.24006487429141998,
+      "accel": 0.15222524106502533,
+      "tertile1_mean": 0.15126673877239227,
+      "tertile2_mean": 0.049613356590270996,
+      "tertile3_mean": 0.08658309280872345
+    }
+  }
 }

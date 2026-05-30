@@ -976,5 +976,92 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/currency_crisis.scores.json"
+  "per_country_scores_pointer": "scores/currency_crisis.scores.json",
+  "shape_points": [
+    0.03979392269503201,
+    0.06909933903751686,
+    0.09840475538000172,
+    0.12771017172248658,
+    0.1570155880649714,
+    0.18632100440745625,
+    0.21562642074994112,
+    0.244931837092426,
+    0.27423725343491084,
+    0.3035426697773957,
+    0.3328480861198806,
+    0.36215350246236544
+  ],
+  "shap_importance_raw": {
+    "BN.CAB.XOKA.GD.ZS": 2.595318555831909,
+    "NE.IMP.GNFS.CD": 0.6562362909317017,
+    "v2jureform": 1.3270244598388672,
+    "NY.GDP.MKTP.CD": 1.6083911657333374,
+    "NY.GDP.DEFL.KD.ZG": 0.45462435483932495
+  },
+  "shap_importance_normalized": {
+    "BN.CAB.XOKA.GD.ZS": 0.39076737189880223,
+    "NE.IMP.GNFS.CD": 0.09880703475716504,
+    "v2jureform": 0.19980509115207326,
+    "NY.GDP.MKTP.CD": 0.24216941978338538,
+    "NY.GDP.DEFL.KD.ZG": 0.06845108240857409
+  },
+  "shap_direction_signs": {
+    "BN.CAB.XOKA.GD.ZS": -1,
+    "NE.IMP.GNFS.CD": -1,
+    "v2jureform": -1,
+    "NY.GDP.MKTP.CD": -1,
+    "NY.GDP.DEFL.KD.ZG": -1
+  },
+  "per_feature_breakdown": {
+    "BN.CAB.XOKA.GD.ZS": {
+      "last_z": 0.8898926973342896,
+      "mean_z": 0.3963508605957031,
+      "std_z": 0.2261231690645218,
+      "slope": 0.5606882572174072,
+      "accel": 0.28978660702705383,
+      "tertile1_mean": 0.17619341611862183,
+      "tertile2_mean": 0.05628356710076332,
+      "tertile3_mean": 0.0
+    },
+    "NE.IMP.GNFS.CD": {
+      "last_z": 0.030210036784410477,
+      "mean_z": 0.025873199105262756,
+      "std_z": 0.10583876818418503,
+      "slope": 0.15241043269634247,
+      "accel": 0.2580123841762543,
+      "tertile1_mean": 0.009912071749567986,
+      "tertile2_mean": 0.0739794448018074,
+      "tertile3_mean": 0.0
+    },
+    "v2jureform": {
+      "last_z": 0.14686134457588196,
+      "mean_z": 0.08134649693965912,
+      "std_z": 0.1909712702035904,
+      "slope": 0.43554896116256714,
+      "accel": 0.17023414373397827,
+      "tertile1_mean": 0.17251622676849365,
+      "tertile2_mean": 0.12954607605934143,
+      "tertile3_mean": 0.0
+    },
+    "NY.GDP.MKTP.CD": {
+      "last_z": 0.4330393970012665,
+      "mean_z": 0.10546882450580597,
+      "std_z": 0.018443142995238304,
+      "slope": 0.07292309403419495,
+      "accel": 0.7890040278434753,
+      "tertile1_mean": 0.09888340532779694,
+      "tertile2_mean": 0.09062930941581726,
+      "tertile3_mean": 0.0
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.047048330307006836,
+      "mean_z": 0.025441614910960197,
+      "std_z": 0.08517803996801376,
+      "slope": 0.18732286989688873,
+      "accel": 0.034634608775377274,
+      "tertile1_mean": 0.05456956475973129,
+      "tertile2_mean": 0.020429329946637154,
+      "tertile3_mean": 0.0
+    }
+  }
 }

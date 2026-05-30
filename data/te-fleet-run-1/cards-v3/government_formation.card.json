@@ -1038,5 +1038,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/government_formation.scores.json"
+  "per_country_scores_pointer": "scores/government_formation.scores.json",
+  "shape_points": [
+    0.056191217690863236,
+    0.06926691476505728,
+    0.08234261183925132,
+    0.09541830891344537,
+    0.10849400598763939,
+    0.12156970306183346,
+    0.1346454001360275,
+    0.14772109721022153,
+    0.16079679428441557,
+    0.1738724913586096,
+    0.18694818843280364,
+    0.20002388550699768
+  ],
+  "shap_importance_raw": {
+    "v2clkill": 1.187510371208191,
+    "NY.GDP.DEFL.KD.ZG": 1.2007496356964111
+  },
+  "shap_importance_normalized": {
+    "v2clkill": 0.49722826148536076,
+    "NY.GDP.DEFL.KD.ZG": 0.5027717385146393
+  },
+  "shap_direction_signs": {
+    "v2clkill": -1,
+    "NY.GDP.DEFL.KD.ZG": -1
+  },
+  "per_feature_breakdown": {
+    "v2clkill": {
+      "last_z": 0.11291471868753433,
+      "mean_z": 0.07806165516376495,
+      "std_z": 0.20171840488910675,
+      "slope": 0.18000343441963196,
+      "accel": 0.16633182764053345,
+      "tertile1_mean": 0.1763102263212204,
+      "tertile2_mean": 0.11298609524965286,
+      "tertile3_mean": 0.15918397903442383
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.18952970206737518,
+      "mean_z": 0.1776016503572464,
+      "std_z": 0.14767824113368988,
+      "slope": 0.13406793773174286,
+      "accel": 0.17608989775180817,
+      "tertile1_mean": 0.1292984038591385,
+      "tertile2_mean": 0.10062364488840103,
+      "tertile3_mean": 0.14586025476455688
+    }
+  }
 }

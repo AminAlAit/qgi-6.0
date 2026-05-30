@@ -1049,5 +1049,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/trade_agreement.scores.json"
+  "per_country_scores_pointer": "scores/trade_agreement.scores.json",
+  "shape_points": [
+    0.03876733196420875,
+    0.05464592945633205,
+    0.07052452694845533,
+    0.08640312444057861,
+    0.10228172193270194,
+    0.1181603194248252,
+    0.13403891691694853,
+    0.14991751440907178,
+    0.1657961119011951,
+    0.1816747093933184,
+    0.19755330688544168,
+    0.21343190437756496
+  ],
+  "shap_importance_raw": {
+    "NY.GDP.DEFL.KD.ZG": 1.5765830278396606,
+    "EG.ELC.ACCS.UR.ZS": 1.5912249088287354,
+    "NV.AGR.TOTL.ZS": 0.883865475654602,
+    "NY.GNP.PCAP.CD": 2.1158626079559326
+  },
+  "shap_importance_normalized": {
+    "NY.GDP.DEFL.KD.ZG": 0.2556260754142071,
+    "EG.ELC.ACCS.UR.ZS": 0.25800009981243227,
+    "NV.AGR.TOTL.ZS": 0.1433093333785878,
+    "NY.GNP.PCAP.CD": 0.3430644913947728
+  },
+  "shap_direction_signs": {
+    "NY.GDP.DEFL.KD.ZG": -1,
+    "EG.ELC.ACCS.UR.ZS": -1,
+    "NV.AGR.TOTL.ZS": -1,
+    "NY.GNP.PCAP.CD": -1
+  },
+  "per_feature_breakdown": {
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.16775357723236084,
+      "mean_z": 0.14783069491386414,
+      "std_z": 0.14493298530578613,
+      "slope": 0.37315839529037476,
+      "accel": 0.47135600447654724,
+      "tertile1_mean": 0.16823171079158783,
+      "tertile2_mean": 0.10331970453262329,
+      "tertile3_mean": 0.0
+    },
+    "EG.ELC.ACCS.UR.ZS": {
+      "last_z": 0.6567703485488892,
+      "mean_z": 0.2666928172111511,
+      "std_z": 0.13954797387123108,
+      "slope": 0.12882761657238007,
+      "accel": 0.2646656334400177,
+      "tertile1_mean": 0.08857713639736176,
+      "tertile2_mean": 0.04614340141415596,
+      "tertile3_mean": 0.0
+    },
+    "NV.AGR.TOTL.ZS": {
+      "last_z": 0.03278237208724022,
+      "mean_z": 0.041011881083250046,
+      "std_z": 0.3312705159187317,
+      "slope": 0.11095558851957321,
+      "accel": 0.24985341727733612,
+      "tertile1_mean": 0.06647175550460815,
+      "tertile2_mean": 0.051519930362701416,
+      "tertile3_mean": 0.0
+    },
+    "NY.GNP.PCAP.CD": {
+      "last_z": 0.9926517009735107,
+      "mean_z": 0.039718709886074066,
+      "std_z": 0.12130838632583618,
+      "slope": 0.13413117825984955,
+      "accel": 0.5852903127670288,
+      "tertile1_mean": 0.23712877929210663,
+      "tertile2_mean": 0.005633415188640356,
+      "tertile3_mean": 0.0
+    }
+  }
 }

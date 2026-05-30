@@ -952,5 +952,40 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/natural_disaster.scores.json"
+  "per_country_scores_pointer": "scores/natural_disaster.scores.json",
+  "shape_points": [
+    0.12088012819488841,
+    0.150404904037714,
+    0.17992967988053957,
+    0.20945445572336513,
+    0.23897923156619072,
+    0.2685040074090163,
+    0.29802878325184184,
+    0.32755355909466743,
+    0.357078334937493,
+    0.3866031107803186,
+    0.41612788662314415,
+    0.44565266246596974
+  ],
+  "shap_importance_raw": {
+    "v2x_freexp_altinf": 2.9904327392578125
+  },
+  "shap_importance_normalized": {
+    "v2x_freexp_altinf": 1.0
+  },
+  "shap_direction_signs": {
+    "v2x_freexp_altinf": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_freexp_altinf": {
+      "last_z": 0.5362775325775146,
+      "mean_z": 0.2832663953304291,
+      "std_z": 0.5162926316261292,
+      "slope": 0.35429731011390686,
+      "accel": 0.4124281108379364,
+      "tertile1_mean": 0.28223368525505066,
+      "tertile2_mean": 0.23958462476730347,
+      "tertile3_mean": 0.366052508354187
+    }
+  }
 }

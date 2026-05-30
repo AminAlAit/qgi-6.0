@@ -963,5 +963,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/ethnic_and_communal_conflict.scores.json"
+  "per_country_scores_pointer": "scores/ethnic_and_communal_conflict.scores.json",
+  "shape_points": [
+    -0.07029735290826318,
+    -0.025524117520317628,
+    0.019249117867627934,
+    0.06402235325557348,
+    0.10879558864351904,
+    0.1535688240314646,
+    0.19834205941941013,
+    0.24311529480735572,
+    0.28788853019530125,
+    0.33266176558324684,
+    0.37743500097119237,
+    0.4222082363591379
+  ],
+  "shap_importance_raw": {
+    "v2pepwrsoc": 2.301625967025757,
+    "v2x_partip": 1.9320095777511597
+  },
+  "shap_importance_normalized": {
+    "v2pepwrsoc": 0.5436523627701725,
+    "v2x_partip": 0.4563476372298276
+  },
+  "shap_direction_signs": {
+    "v2pepwrsoc": -1,
+    "v2x_partip": -1
+  },
+  "per_feature_breakdown": {
+    "v2pepwrsoc": {
+      "last_z": 0.2743839621543884,
+      "mean_z": 0.2225741446018219,
+      "std_z": 0.27810800075531006,
+      "slope": 0.7806823253631592,
+      "accel": 0.2448396533727646,
+      "tertile1_mean": 0.19367896020412445,
+      "tertile2_mean": 0.14541462063789368,
+      "tertile3_mean": 0.16194425523281097
+    },
+    "v2x_partip": {
+      "last_z": 0.15398016571998596,
+      "mean_z": 0.12041802704334259,
+      "std_z": 0.5301998257637024,
+      "slope": 0.2473093420267105,
+      "accel": 0.29444053769111633,
+      "tertile1_mean": 0.2128877341747284,
+      "tertile2_mean": 0.23987631499767303,
+      "tertile3_mean": 0.13289768993854523
+    }
+  }
 }

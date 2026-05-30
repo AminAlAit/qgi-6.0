@@ -999,5 +999,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/political_corruption.scores.json"
+  "per_country_scores_pointer": "scores/political_corruption.scores.json",
+  "shape_points": [
+    -0.05328740426393355,
+    -0.022634890262115504,
+    0.008017623739702558,
+    0.0386701377415206,
+    0.06932265174333865,
+    0.09997516574515669,
+    0.13062767974697476,
+    0.16128019374879282,
+    0.19193270775061083,
+    0.2225852217524289,
+    0.25323773575424696,
+    0.283890249756065
+  ],
+  "shap_importance_raw": {
+    "v2mecenefm": 1.9788901805877686,
+    "SP.POP.TOTL": 1.778261423110962
+  },
+  "shap_importance_normalized": {
+    "v2mecenefm": 0.5266995823750228,
+    "SP.POP.TOTL": 0.4733004176249772
+  },
+  "shap_direction_signs": {
+    "v2mecenefm": -1,
+    "SP.POP.TOTL": -1
+  },
+  "per_feature_breakdown": {
+    "v2mecenefm": {
+      "last_z": 0.28321143984794617,
+      "mean_z": 0.11035717278718948,
+      "std_z": 0.19070489704608917,
+      "slope": 0.2111431509256363,
+      "accel": 0.43771594762802124,
+      "tertile1_mean": 0.6048489809036255,
+      "tertile2_mean": 0.14090871810913086,
+      "tertile3_mean": 0.0
+    },
+    "SP.POP.TOTL": {
+      "last_z": 0.23095852136611938,
+      "mean_z": 0.12080349773168564,
+      "std_z": 0.2557026743888855,
+      "slope": 0.5421950817108154,
+      "accel": 0.5342311263084412,
+      "tertile1_mean": 0.07019661366939545,
+      "tertile2_mean": 0.024173863232135773,
+      "tertile3_mean": 0.0
+    }
+  }
 }

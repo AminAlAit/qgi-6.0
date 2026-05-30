@@ -1040,5 +1040,92 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/transitional_justice.scores.json"
+  "per_country_scores_pointer": "scores/transitional_justice.scores.json",
+  "shape_points": [
+    0.0324442881907581,
+    0.040547238761899265,
+    0.04865018933304043,
+    0.0567531399041816,
+    0.06485609047532276,
+    0.07295904104646392,
+    0.08106199161760508,
+    0.08916494218874624,
+    0.09726789275988741,
+    0.10537084333102857,
+    0.11347379390216973,
+    0.12157674447331089
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.2470028400421143,
+    "v2pepwrort": 0.8139597177505493,
+    "v2xlg_legcon": 1.176897644996643,
+    "v2x_polyarchy": 0.9187687635421753,
+    "v2csreprss": 0.9558615684509277
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.24391298752696614,
+    "v2pepwrort": 0.15921001950279245,
+    "v2xlg_legcon": 0.23020045455140045,
+    "v2x_polyarchy": 0.17971060431142266,
+    "v2csreprss": 0.1869659341074183
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "v2pepwrort": -1,
+    "v2xlg_legcon": -1,
+    "v2x_polyarchy": -1,
+    "v2csreprss": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.2033633142709732,
+      "mean_z": 0.12809856235980988,
+      "std_z": 0.31217169761657715,
+      "slope": 0.09134270995855331,
+      "accel": 0.14919622242450714,
+      "tertile1_mean": 0.09525621682405472,
+      "tertile2_mean": 0.16773644089698792,
+      "tertile3_mean": 0.09983769059181213
+    },
+    "v2pepwrort": {
+      "last_z": 0.03318968042731285,
+      "mean_z": 0.03875918686389923,
+      "std_z": 0.10216741263866425,
+      "slope": 0.11541827768087387,
+      "accel": 0.33492398262023926,
+      "tertile1_mean": 0.08200336992740631,
+      "tertile2_mean": 0.08561647683382034,
+      "tertile3_mean": 0.02188132517039776
+    },
+    "v2xlg_legcon": {
+      "last_z": 0.2451646476984024,
+      "mean_z": 0.08507637679576874,
+      "std_z": 0.3438521921634674,
+      "slope": 0.10680073499679565,
+      "accel": 0.1174699068069458,
+      "tertile1_mean": 0.07310527563095093,
+      "tertile2_mean": 0.04751773923635483,
+      "tertile3_mean": 0.1579107642173767
+    },
+    "v2x_polyarchy": {
+      "last_z": 0.038700129836797714,
+      "mean_z": 0.04658112674951553,
+      "std_z": 0.44220566749572754,
+      "slope": 0.08564350008964539,
+      "accel": 0.12648087739944458,
+      "tertile1_mean": 0.0640220120549202,
+      "tertile2_mean": 0.027491750195622444,
+      "tertile3_mean": 0.08764370530843735
+    },
+    "v2csreprss": {
+      "last_z": 0.19818522036075592,
+      "mean_z": 0.06225208565592766,
+      "std_z": 0.1414536088705063,
+      "slope": 0.0888042226433754,
+      "accel": 0.2261277735233307,
+      "tertile1_mean": 0.06717726588249207,
+      "tertile2_mean": 0.10650739073753357,
+      "tertile3_mean": 0.06535395979881287
+    }
+  }
 }

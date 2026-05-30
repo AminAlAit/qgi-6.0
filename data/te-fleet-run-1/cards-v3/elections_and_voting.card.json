@@ -1102,5 +1102,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/elections_and_voting.scores.json"
+  "per_country_scores_pointer": "scores/elections_and_voting.scores.json",
+  "shape_points": [
+    0.03826844303264374,
+    0.045333577016163216,
+    0.052398710999682685,
+    0.05946384498320215,
+    0.06652897896672164,
+    0.07359411295024111,
+    0.08065924693376057,
+    0.08772438091728006,
+    0.09478951490079951,
+    0.10185464888431901,
+    0.10891978286783847,
+    0.11598491685135796
+  ],
+  "shap_importance_raw": {
+    "v2x_libdem": 0.542783260345459,
+    "v2xel_frefair": 0.728290319442749,
+    "v2x_clpol": 0.852155327796936,
+    "v2pepwrsoc": 0.503473162651062
+  },
+  "shap_importance_normalized": {
+    "v2x_libdem": 0.2066405880194282,
+    "v2xel_frefair": 0.2772641510033369,
+    "v2x_clpol": 0.3244202444780142,
+    "v2pepwrsoc": 0.19167501649922072
+  },
+  "shap_direction_signs": {
+    "v2x_libdem": -1,
+    "v2xel_frefair": -1,
+    "v2x_clpol": -1,
+    "v2pepwrsoc": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_libdem": {
+      "last_z": 0.10903292894363403,
+      "mean_z": 0.06750200688838959,
+      "std_z": 0.052901074290275574,
+      "slope": 0.10774435847997665,
+      "accel": 0.08887284994125366,
+      "tertile1_mean": 0.07038158923387527,
+      "tertile2_mean": 0.04634847491979599,
+      "tertile3_mean": 0.0
+    },
+    "v2xel_frefair": {
+      "last_z": 0.06267189979553223,
+      "mean_z": 0.036512959748506546,
+      "std_z": 0.30750513076782227,
+      "slope": 0.0636247918009758,
+      "accel": 0.17008692026138306,
+      "tertile1_mean": 0.04363391920924187,
+      "tertile2_mean": 0.04425469785928726,
+      "tertile3_mean": 0.0
+    },
+    "v2x_clpol": {
+      "last_z": 0.22292225062847137,
+      "mean_z": 0.13163281977176666,
+      "std_z": 0.1454952359199524,
+      "slope": 0.08619114011526108,
+      "accel": 0.12280327081680298,
+      "tertile1_mean": 0.09170304983854294,
+      "tertile2_mean": 0.05140749737620354,
+      "tertile3_mean": 0.0
+    },
+    "v2pepwrsoc": {
+      "last_z": 0.05133141204714775,
+      "mean_z": 0.053997330367565155,
+      "std_z": 0.02124951221048832,
+      "slope": 0.08824428915977478,
+      "accel": 0.08057273179292679,
+      "tertile1_mean": 0.08604076504707336,
+      "tertile2_mean": 0.12203716486692429,
+      "tertile3_mean": 0.0
+    }
+  }
 }

@@ -416,6 +416,7 @@ export function DiscriminationPanel({
   ciHigh,
   lockFloor = 0.7986,
   showResults,
+  cvAucFull,
 }: {
   familyColor: string;
   locoAuc: number | null;
@@ -423,6 +424,8 @@ export function DiscriminationPanel({
   ciHigh?: number;
   lockFloor?: number;
   showResults: boolean;
+  /** Round-2: 5-fold CV AUC from scores file top-level. */
+  cvAucFull?: number | null;
 }) {
   const cleared = locoAuc !== null && locoAuc >= lockFloor;
   const chipColor = cleared ? "#3FBF8F" : "#E68F29";
@@ -501,6 +504,19 @@ export function DiscriminationPanel({
               </>
             )}
           </p>
+          {cvAucFull != null && (
+            <p
+              style={{
+                fontSize: "11.5px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+                margin: "6px 0 0",
+                letterSpacing: "0.3px",
+              }}
+            >
+              5-fold CV: {cvAucFull.toFixed(3)}
+            </p>
+          )}
         </div>
       )}
     </PanelBase>

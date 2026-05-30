@@ -1100,5 +1100,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/political_violence.scores.json"
+  "per_country_scores_pointer": "scores/political_violence.scores.json",
+  "shape_points": [
+    0.035641259348227594,
+    0.05849945689607501,
+    0.08135765444392243,
+    0.10421585199176983,
+    0.12707404953961726,
+    0.14993224708746467,
+    0.17279044463531207,
+    0.19564864218315947,
+    0.2185068397310069,
+    0.2413650372788543,
+    0.26422323482670174,
+    0.2870814323745491
+  ],
+  "shap_importance_raw": {
+    "SP.POP.TOTL": 1.2243481874465942,
+    "SP.DYN.LE00.IN": 1.7193652391433716
+  },
+  "shap_importance_normalized": {
+    "SP.POP.TOTL": 0.41591962600275745,
+    "SP.DYN.LE00.IN": 0.5840803739972426
+  },
+  "shap_direction_signs": {
+    "SP.POP.TOTL": -1,
+    "SP.DYN.LE00.IN": -1
+  },
+  "per_feature_breakdown": {
+    "SP.POP.TOTL": {
+      "last_z": 0.22371962666511536,
+      "mean_z": 0.12180378288030624,
+      "std_z": 0.221562460064888,
+      "slope": 0.2018708735704422,
+      "accel": 0.3414580821990967,
+      "tertile1_mean": 0.09690538048744202,
+      "tertile2_mean": 0.0170279573649168,
+      "tertile3_mean": 0.0
+    },
+    "SP.DYN.LE00.IN": {
+      "last_z": 0.2232767641544342,
+      "mean_z": 0.18953001499176025,
+      "std_z": 0.3403565585613251,
+      "slope": 0.3258734941482544,
+      "accel": 0.32164132595062256,
+      "tertile1_mean": 0.13818921148777008,
+      "tertile2_mean": 0.18049786984920502,
+      "tertile3_mean": 0.0
+    }
+  }
 }

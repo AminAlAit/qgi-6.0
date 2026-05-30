@@ -39,6 +39,9 @@ import {
   loadAllScores,
   loadAnalogs,
   loadActivityFeed,
+  loadRunIndex,
+  loadIndicatorCatalogSize,
+  loadIndicatorCorpusBreakdown,
 } from "@/lib/te-data-contract/load";
 import type { CountryIndex } from "@/lib/te-data-contract/country-index";
 import { iso2For } from "@/lib/te-mock/country-flags";
@@ -59,20 +62,16 @@ export interface HeroCounts41 {
 }
 
 /**
- * Indicator corpus size: total catalog count across all providers
- * (WB-WGI + WB-Macro + V-Dem + FAO).
- *
- * GAP: MANIFEST.json does not carry an `indicator_catalog_size` field.
- * The bake knows the indicator count (it's in the card SHAP attributions)
- * but does not currently surface a single authoritative total at the
- * manifest level. Backend ask: add `indicator_catalog_size: number` to
- * MANIFEST.json. Until that field ships, we use the documented catalog
- * baseline of 74 (WB-WGI×6 + WB-Macro×30 + V-Dem×33 + FAO×5 =74).
- * See `buildIndicatorCorpusStack()` for the per-provider breakdown.
+ * Indicator corpus size: read directly from MANIFEST.indicator_catalog_size.
+ * Round-2 (2026-05-30): field ships with value 63 (V-Dem×33 + World Bank×29,
+ * no FAO in this fleet run). Falls back to 63 on load error.
  */
 function computeIndicatorsTracked(): number {
-  // TODO: replace with manifest.indicator_catalog_size when the field ships.
-  return 74;
+  try {
+    return loadIndicatorCatalogSize();
+  } catch {
+    return 63;
+  }
 }
 
 /**
@@ -90,20 +89,16 @@ function computePairsSurfaced(): number {
 }
 
 /**
- * Vintages logged: count of distinct fleet runs baked into the frontend.
- *
- * Currently 1 (fleet-run-1, 2026-05-28). The number will increment +1 per
- * quarterly run once the bake pipeline automatically writes each run into
- * `data/te-fleet-run-N/`. At that point this function should count the
- * te-fleet-run-* directories or read a run-list JSON.
- *
- * GAP: MANIFEST.json does not carry a `vintages_logged` or `run_index`
- * field. Backend ask: add `run_index: number` to MANIFEST so the frontend
- * can derive this without directory inspection.
+ * Vintages logged: read from MANIFEST.run_index.
+ * Round-2 (2026-05-30): field ships with value 1 (first fleet run).
+ * Increments with each quarterly run. Falls back to 1 on load error.
  */
 function computeVintagesLogged(): number {
-  // TODO: replace with manifest.run_index when the field ships.
-  return 1;
+  try {
+    return loadRunIndex();
+  } catch {
+    return 1;
+  }
 }
 
 export function buildHeroCountsV41(recipes: TrackerRecipe[]): HeroCounts41 {
@@ -274,17 +269,36 @@ export interface IndicatorCorpusStat {
 }
 
 /**
- * Indicator corpus stack: how the 74 indicators split across providers.
- * Counts are hand-curated from the catalog (WB-WGI + WB-Economic +
- * WB-Social + V-Dem + FAO) and refresh on Round-3 backend bake.
+ * Indicator corpus stack: reads provider breakdown directly from
+ * MANIFEST.indicator_corpus_breakdown.
+ *
+ * Round-2 (2026-05-30): breakdown = {"V-Dem": 33, "World Bank": 29}.
+ * Falls back to the hardcoded round-2 totals if the manifest is unavailable.
+ *
+ * Provider → display color map mirrors the V4.1 brand palette.
  */
 export function buildIndicatorCorpusStack(): IndicatorCorpusStat[] {
-  return [
-    { label: "World Bank · WGI", count: 6, color: "#38bdf8" },
-    { label: "World Bank · Macro", count: 30, color: "#3FBF8F" },
-    { label: "V-Dem · Institutions", count: 33, color: "#7B5EE6" },
-    { label: "FAO · Food Security", count: 5, color: "#E68F29" },
-  ];
+  const PROVIDER_COLORS: Record<string, string> = {
+    "V-Dem": "#7B5EE6",
+    "World Bank": "#38bdf8",
+    "FAO": "#E68F29",
+  };
+  const DEFAULT_COLOR = "#3FBF8F";
+  try {
+    const breakdown = loadIndicatorCorpusBreakdown();
+    return Object.entries(breakdown)
+      .sort((a, b) => b[1] - a[1])
+      .map(([provider, count]) => ({
+        label: provider,
+        count,
+        color: PROVIDER_COLORS[provider] ?? DEFAULT_COLOR,
+      }));
+  } catch {
+    return [
+      { label: "V-Dem", count: 33, color: "#7B5EE6" },
+      { label: "World Bank", count: 29, color: "#38bdf8" },
+    ];
+  }
 }
 
 export interface CountryPairTeaser {

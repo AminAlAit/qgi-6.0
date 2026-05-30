@@ -974,5 +974,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/interstate_war.scores.json"
+  "per_country_scores_pointer": "scores/interstate_war.scores.json",
+  "shape_points": [
+    -0.0514751483907139,
+    -0.02339400595417923,
+    0.004687136482355437,
+    0.0327682789188901,
+    0.06084942135542476,
+    0.08893056379195942,
+    0.11701170622849409,
+    0.14509284866502875,
+    0.1731739911015634,
+    0.20125513353809807,
+    0.22933627597463274,
+    0.2574174184111674
+  ],
+  "shap_importance_raw": {
+    "NE.CON.PRVT.ZS": 1.558180570602417,
+    "v2x_rule": 0.9729421734809875,
+    "v2pepwrses": 1.5891218185424805,
+    "v2mecenefm": 1.5383150577545166
+  },
+  "shap_importance_normalized": {
+    "NE.CON.PRVT.ZS": 0.27536699710476265,
+    "v2x_rule": 0.1719416669176282,
+    "v2pepwrses": 0.2808350402139353,
+    "v2mecenefm": 0.27185629576367387
+  },
+  "shap_direction_signs": {
+    "NE.CON.PRVT.ZS": -1,
+    "v2x_rule": -1,
+    "v2pepwrses": -1,
+    "v2mecenefm": -1
+  },
+  "per_feature_breakdown": {
+    "NE.CON.PRVT.ZS": {
+      "last_z": 0.12448734045028687,
+      "mean_z": 0.09943230450153351,
+      "std_z": 0.15044724941253662,
+      "slope": 0.4706333577632904,
+      "accel": 0.07630137354135513,
+      "tertile1_mean": 0.28219854831695557,
+      "tertile2_mean": 0.2520633935928345,
+      "tertile3_mean": 0.10261701792478561
+    },
+    "v2x_rule": {
+      "last_z": 0.07445099949836731,
+      "mean_z": 0.12065521627664566,
+      "std_z": 0.227942556142807,
+      "slope": 0.17167578637599945,
+      "accel": 0.15094229578971863,
+      "tertile1_mean": 0.03540448099374771,
+      "tertile2_mean": 0.08663614094257355,
+      "tertile3_mean": 0.10523471236228943
+    },
+    "v2pepwrses": {
+      "last_z": 0.17628373205661774,
+      "mean_z": 0.0836309865117073,
+      "std_z": 0.2193501889705658,
+      "slope": 0.2572963237762451,
+      "accel": 0.3524107336997986,
+      "tertile1_mean": 0.28261327743530273,
+      "tertile2_mean": 0.08936595916748047,
+      "tertile3_mean": 0.1281706541776657
+    },
+    "v2mecenefm": {
+      "last_z": 0.12021096050739288,
+      "mean_z": 0.11534987390041351,
+      "std_z": 0.06483300775289536,
+      "slope": 0.38844335079193115,
+      "accel": 0.36328715085983276,
+      "tertile1_mean": 0.21104826033115387,
+      "tertile2_mean": 0.20977787673473358,
+      "tertile3_mean": 0.06536465138196945
+    }
+  }
 }

@@ -998,5 +998,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/economic_nationalization.scores.json"
+  "per_country_scores_pointer": "scores/economic_nationalization.scores.json",
+  "shape_points": [
+    -0.08712158297580314,
+    -0.0421765847894361,
+    0.0027684133969309126,
+    0.047713411583297935,
+    0.09265840976966497,
+    0.13760340795603201,
+    0.18254840614239903,
+    0.22749340432876602,
+    0.27243840251513307,
+    0.3173834007015001,
+    0.3623283988878671,
+    0.40727339707423416
+  ],
+  "shap_importance_raw": {
+    "v2svdomaut": 1.9254028797149658,
+    "v2pepwrses": 1.7294819355010986,
+    "v2csprtcpt": 1.2128783464431763,
+    "v2x_gender": 1.4172027111053467
+  },
+  "shap_importance_normalized": {
+    "v2svdomaut": 0.30635057034415253,
+    "v2pepwrses": 0.2751776175898861,
+    "v2csprtcpt": 0.19298089615714392,
+    "v2x_gender": 0.2254909159088174
+  },
+  "shap_direction_signs": {
+    "v2svdomaut": -1,
+    "v2pepwrses": -1,
+    "v2csprtcpt": -1,
+    "v2x_gender": -1
+  },
+  "per_feature_breakdown": {
+    "v2svdomaut": {
+      "last_z": 0.2605104446411133,
+      "mean_z": 0.34369513392448425,
+      "std_z": 0.39872583746910095,
+      "slope": 0.3014504611492157,
+      "accel": 0.23500363528728485,
+      "tertile1_mean": 0.045672621577978134,
+      "tertile2_mean": 0.020180344581604004,
+      "tertile3_mean": 0.32016438245773315
+    },
+    "v2pepwrses": {
+      "last_z": 0.09806408733129501,
+      "mean_z": 0.1352386325597763,
+      "std_z": 0.10570532083511353,
+      "slope": 1.045255184173584,
+      "accel": 0.18420976400375366,
+      "tertile1_mean": 0.055286165326833725,
+      "tertile2_mean": 0.022557957097887993,
+      "tertile3_mean": 0.08316483348608017
+    },
+    "v2csprtcpt": {
+      "last_z": 0.1005173996090889,
+      "mean_z": 0.029457034543156624,
+      "std_z": 0.13070333003997803,
+      "slope": 0.335212379693985,
+      "accel": 0.18412178754806519,
+      "tertile1_mean": 0.28199636936187744,
+      "tertile2_mean": 0.03585050627589226,
+      "tertile3_mean": 0.11501952260732651
+    },
+    "v2x_gender": {
+      "last_z": 0.38757821917533875,
+      "mean_z": 0.05270907282829285,
+      "std_z": 0.1337186098098755,
+      "slope": 0.4198397099971771,
+      "accel": 0.16429060697555542,
+      "tertile1_mean": 0.15184815227985382,
+      "tertile2_mean": 0.07081860303878784,
+      "tertile3_mean": 0.03639969974756241
+    }
+  }
 }

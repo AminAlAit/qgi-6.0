@@ -964,5 +964,79 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/energy_policy.scores.json"
+  "per_country_scores_pointer": "scores/energy_policy.scores.json",
+  "shape_points": [
+    -0.003219955383352017,
+    0.01348099446452867,
+    0.030181944312409364,
+    0.04688289416029006,
+    0.06358384400817074,
+    0.08028479385605145,
+    0.09698574370393212,
+    0.1136866935518128,
+    0.1303876433996935,
+    0.14708859324757417,
+    0.1637895430954549,
+    0.18049049294333558
+  ],
+  "shap_importance_raw": {
+    "MS.MIL.MPRT.KD": 1.5076996088027954,
+    "SM.POP.NETM": 1.969313621520996,
+    "v2exl_legitlead": 0.8547137975692749,
+    "v2svdomaut": 0.9912320375442505
+  },
+  "shap_importance_normalized": {
+    "MS.MIL.MPRT.KD": 0.2832446371027893,
+    "SM.POP.NETM": 0.36996595264239623,
+    "v2exl_legitlead": 0.160571176118758,
+    "v2svdomaut": 0.18621823413605645
+  },
+  "shap_direction_signs": {
+    "MS.MIL.MPRT.KD": -1,
+    "SM.POP.NETM": -1,
+    "v2exl_legitlead": -1,
+    "v2svdomaut": -1
+  },
+  "per_feature_breakdown": {
+    "MS.MIL.MPRT.KD": {
+      "last_z": 0.2595144808292389,
+      "mean_z": 0.1171153113245964,
+      "std_z": 0.14123769104480743,
+      "slope": 0.16787035763263702,
+      "accel": 0.25457242131233215,
+      "tertile1_mean": 0.14808326959609985,
+      "tertile2_mean": 0.1863406002521515,
+      "tertile3_mean": 0.23296546936035156
+    },
+    "SM.POP.NETM": {
+      "last_z": 0.34722700715065,
+      "mean_z": 0.10876920819282532,
+      "std_z": 0.17236626148223877,
+      "slope": 0.22346056997776031,
+      "accel": 0.1574806571006775,
+      "tertile1_mean": 0.2375473827123642,
+      "tertile2_mean": 0.34129154682159424,
+      "tertile3_mean": 0.3811708986759186
+    },
+    "v2exl_legitlead": {
+      "last_z": 0.09237949550151825,
+      "mean_z": 0.052179478108882904,
+      "std_z": 0.11364632099866867,
+      "slope": 0.16420871019363403,
+      "accel": 0.10689590871334076,
+      "tertile1_mean": 0.2392696589231491,
+      "tertile2_mean": 0.058138396590948105,
+      "tertile3_mean": 0.027995804324746132
+    },
+    "v2svdomaut": {
+      "last_z": 0.16617152094841003,
+      "mean_z": 0.03675021976232529,
+      "std_z": 0.046424705535173416,
+      "slope": 0.23533158004283905,
+      "accel": 0.30462029576301575,
+      "tertile1_mean": 0.04043129086494446,
+      "tertile2_mean": 0.053114451467990875,
+      "tertile3_mean": 0.10838795453310013
+    }
+  }
 }

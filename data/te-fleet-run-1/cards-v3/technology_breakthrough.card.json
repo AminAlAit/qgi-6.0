@@ -1035,5 +1035,92 @@
     "n_predictions": 172,
     "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume."
   },
-  "per_country_scores_pointer": "scores/technology_breakthrough.scores.json"
+  "per_country_scores_pointer": "scores/technology_breakthrough.scores.json",
+  "shape_points": [
+    -0.019431142449381794,
+    -0.00012337903458935033,
+    0.019184384380203083,
+    0.03849214779499554,
+    0.057799911209787974,
+    0.07710767462458043,
+    0.09641543803937286,
+    0.1157232014541653,
+    0.13503096486895774,
+    0.15433872828375017,
+    0.17364649169854265,
+    0.19295425511333505
+  ],
+  "shap_importance_raw": {
+    "MS.MIL.MPRT.KD": 1.8303322792053223,
+    "SM.POP.NETM": 1.684827208518982,
+    "v2svdomaut": 1.0356117486953735,
+    "SP.DYN.TFRT.IN": 0.9565955400466919,
+    "v2pepwrgen": 0.7944554090499878
+  },
+  "shap_importance_normalized": {
+    "MS.MIL.MPRT.KD": 0.2904449261377166,
+    "SM.POP.NETM": 0.26735556144241335,
+    "v2svdomaut": 0.16433528560605012,
+    "SP.DYN.TFRT.IN": 0.15179665688525146,
+    "v2pepwrgen": 0.12606756992856852
+  },
+  "shap_direction_signs": {
+    "MS.MIL.MPRT.KD": -1,
+    "SM.POP.NETM": -1,
+    "v2svdomaut": -1,
+    "SP.DYN.TFRT.IN": -1,
+    "v2pepwrgen": -1
+  },
+  "per_feature_breakdown": {
+    "MS.MIL.MPRT.KD": {
+      "last_z": 0.5704794526100159,
+      "mean_z": 0.022592976689338684,
+      "std_z": 0.16223379969596863,
+      "slope": 0.07221289724111557,
+      "accel": 0.12664617598056793,
+      "tertile1_mean": 0.02420741878449917,
+      "tertile2_mean": 0.017742756754159927,
+      "tertile3_mean": 0.834216833114624
+    },
+    "SM.POP.NETM": {
+      "last_z": 0.15401671826839447,
+      "mean_z": 0.23252713680267334,
+      "std_z": 0.38834255933761597,
+      "slope": 0.2382219284772873,
+      "accel": 0.24818843603134155,
+      "tertile1_mean": 0.12795665860176086,
+      "tertile2_mean": 0.12694154679775238,
+      "tertile3_mean": 0.16863220930099487
+    },
+    "v2svdomaut": {
+      "last_z": 0.0429401770234108,
+      "mean_z": 0.046239156275987625,
+      "std_z": 0.4499800503253937,
+      "slope": 0.39453330636024475,
+      "accel": 0.07434911280870438,
+      "tertile1_mean": 0.02756991982460022,
+      "tertile2_mean": 0.0,
+      "tertile3_mean": 0.0
+    },
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.12530219554901123,
+      "mean_z": 0.04284823685884476,
+      "std_z": 0.28380751609802246,
+      "slope": 0.23936055600643158,
+      "accel": 0.15283580124378204,
+      "tertile1_mean": 0.07113604992628098,
+      "tertile2_mean": 0.009933721274137497,
+      "tertile3_mean": 0.031371477991342545
+    },
+    "v2pepwrgen": {
+      "last_z": 0.04764791205525398,
+      "mean_z": 0.031167203560471535,
+      "std_z": 0.0966489389538765,
+      "slope": 0.36376887559890747,
+      "accel": 0.20156997442245483,
+      "tertile1_mean": 0.004248632118105888,
+      "tertile2_mean": 0.023662304505705833,
+      "tertile3_mean": 0.02574157901108265
+    }
+  }
 }

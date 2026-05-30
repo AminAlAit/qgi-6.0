@@ -44,6 +44,8 @@ import {
 } from "@/components/dashboard-v4-1/InsightPlots";
 import { WorldActivity } from "@/components/dashboard-v4-1/WorldActivity";
 import { TopPairsStrip } from "@/components/dashboard-v4-1/TopPairsStrip";
+import { FeaturedPatternsPanel } from "@/components/dashboard-v4-1/FeaturedPatternsPanel";
+import { getFeaturedPairs } from "@/lib/cascade-patterns/patterns-data";
 
 export const metadata: Metadata = {
   title: "Dashboard · QG Intelligence",
@@ -59,6 +61,7 @@ export default function DashboardV41Page() {
   const corpus = buildIndicatorCorpusStack();
   const pairs = buildTopPairTeasers(3);
   const activity = buildWorldActivityRows();
+  const featuredPatterns = getFeaturedPairs();
 
   return (
     <div
@@ -167,6 +170,11 @@ export default function DashboardV41Page() {
             {/* World-facing activity: what's moving this vintage */}
             <section data-tour="world-activity">
               <WorldActivity rows={activity} />
+            </section>
+
+            {/* Featured pair patterns — cascade catalogue highlight */}
+            <section data-tour="featured-patterns">
+              <FeaturedPatternsPanel pairs={featuredPatterns} limit={4} />
             </section>
 
             {/* Footer — catalog scope + provenance */}

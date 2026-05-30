@@ -997,5 +997,40 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/migration_and_refugees.scores.json"
+  "per_country_scores_pointer": "scores/migration_and_refugees.scores.json",
+  "shape_points": [
+    0.010934048642714828,
+    0.05152292177081108,
+    0.09211179489890736,
+    0.13270066802700362,
+    0.17328954115509987,
+    0.21387841428319612,
+    0.2544672874112924,
+    0.29505616053938866,
+    0.3356450336674849,
+    0.37623390679558116,
+    0.41682277992367744,
+    0.45741165305177367
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 2.2369232177734375
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 1.0
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.2951066493988037,
+      "mean_z": 0.23417285084724426,
+      "std_z": 0.23946210741996765,
+      "slope": 0.48706647753715515,
+      "accel": 0.4274841248989105,
+      "tertile1_mean": 0.33084291219711304,
+      "tertile2_mean": 0.22278812527656555,
+      "tertile3_mean": 0.0
+    }
+  }
 }
