@@ -57,6 +57,7 @@ import datetime
 import json
 import logging
 import math
+import os
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor
@@ -92,6 +93,89 @@ VERDICT_TO_TIER = {
 }
 
 CONTRACT_VERSION = "v3-2026-05-30"
+
+
+# ─── Output writer (local FS vs AWS S3) ──────────────────────────────────────
+#
+# `BAKE_MODE` env-var selects the destination of every artifact write:
+#   - unset / "local"  → writes under args.output_dir on the local filesystem
+#   - "aws"            → writes under s3://{args.bucket}/{OUTPUT_S3_PREFIX}/
+#
+# AWS mode also enforces the run-separation rule (
+# `feedback_run_separation_versioning.md`): the target S3 prefix must not
+# already contain a MANIFEST.json. Refuse-to-overwrite is fail-loud, never
+# silent — a duplicate execution name (manual restart) must be caught here
+# before any new file lands on top of a published vintage.
+class _BakeOutput:
+    """Routes mkdir + write_text to local FS or to S3 based on `mode`.
+
+    Paths in calls are RELATIVE to the bake output root (e.g.
+    "scores/foreign_intervention.scores.json"). Callers should not pass
+    absolute paths or paths beginning with "/".
+    """
+
+    def __init__(
+        self,
+        *,
+        mode: str,
+        output_dir: Path,
+        s3_client: Any,
+        bucket: str,
+        prefix: str,
+    ) -> None:
+        if mode not in ("local", "aws"):
+            raise ValueError(f"Invalid BAKE_MODE: {mode!r} (expected local|aws)")
+        self.mode = mode
+        self.output_dir = output_dir
+        self.s3 = s3_client
+        self.bucket = bucket
+        # Normalize trailing slash on prefix so concat always yields valid key
+        self.prefix = (prefix.rstrip("/") + "/") if prefix else ""
+
+    def mkdir(self, rel: str = "") -> None:
+        if self.mode == "aws":
+            return  # S3 has no directories; put_object lazily creates the path
+        target = self.output_dir / rel if rel else self.output_dir
+        target.mkdir(parents=True, exist_ok=True)
+
+    def write_text(self, rel_path: str, content: str) -> None:
+        if rel_path.startswith("/"):
+            raise ValueError(f"rel_path must be relative, got {rel_path!r}")
+        if self.mode == "aws":
+            key = f"{self.prefix}{rel_path}"
+            self.s3.put_object(
+                Bucket=self.bucket,
+                Key=key,
+                Body=content.encode("utf-8"),
+                ContentType="application/json",
+            )
+        else:
+            target = self.output_dir / rel_path
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(content)
+
+    def describe_root(self) -> str:
+        if self.mode == "aws":
+            return f"s3://{self.bucket}/{self.prefix}"
+        return str(self.output_dir)
+
+
+def _refuse_overwrite_if_baked(s3_client: Any, bucket: str, prefix: str) -> None:
+    """Per `feedback_run_separation_versioning.md` — refuse-to-overwrite if a
+    MANIFEST.json already exists at the target prefix. Raises RuntimeError so
+    main() can fail loud with a non-zero exit code; SFN sees a failed Batch
+    job rather than a silent overwrite of a published vintage."""
+    if not prefix:
+        return
+    key = f"{prefix.rstrip('/')}/MANIFEST.json"
+    resp = s3_client.list_objects_v2(Bucket=bucket, Prefix=key, MaxKeys=1)
+    if resp.get("KeyCount"):
+        raise RuntimeError(
+            f"Refusing to overwrite published vintage: s3://{bucket}/{key} "
+            "already exists. Every fleet run must have a unique OUTPUT_S3_PREFIX "
+            "(see feedback_run_separation_versioning.md). If this is a "
+            "deliberate restart, delete the existing prefix manually first."
+        )
 
 
 def _provider_for(code: str | None) -> str | None:
@@ -1074,14 +1158,41 @@ def build_activity_feed(
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--bucket", required=True)
-    ap.add_argument("--output-dir", type=Path, required=True)
+    ap.add_argument("--output-dir", type=Path, default=None,
+                    help="Local FS output dir. Required when BAKE_MODE!=aws; "
+                         "ignored when BAKE_MODE=aws (S3 prefix is used instead).")
     ap.add_argument("--countries", type=Path, required=True)
     ap.add_argument("--recipe-tracker", type=Path, required=True)
     ap.add_argument("--indicator-catalog", type=Path, required=True)
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
     ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
                     help="Local panel parquet root for raw-value lookups (frontend §1.4).")
+    ap.add_argument("--output-s3-prefix", default=None,
+                    help="S3 key prefix under --bucket for AWS-mode writes. "
+                         "Overrides OUTPUT_S3_PREFIX env-var if both are set. "
+                         "Ignored in local mode.")
     args = ap.parse_args()
+
+    # ── Output mode resolution (BAKE_MODE env-var; CLI flags assist) ──────
+    mode = os.environ.get("BAKE_MODE", "local").strip().lower()
+    if mode not in ("local", "aws"):
+        LOG.error("Invalid BAKE_MODE=%r (expected 'local' or 'aws')", mode)
+        return 2
+
+    output_s3_prefix = ""
+    if mode == "aws":
+        output_s3_prefix = (args.output_s3_prefix
+                            or os.environ.get("OUTPUT_S3_PREFIX", "")).strip()
+        if not output_s3_prefix:
+            LOG.error("BAKE_MODE=aws requires --output-s3-prefix or "
+                      "OUTPUT_S3_PREFIX env-var")
+            return 2
+        if args.output_dir is None:
+            args.output_dir = Path("/tmp/_bake_unused")  # stub; never written
+    else:
+        if args.output_dir is None:
+            LOG.error("BAKE_MODE=local requires --output-dir")
+            return 2
 
     LOG.info("Loading resources...")
     countries = load_countries(args.countries)
@@ -1095,12 +1206,31 @@ def main() -> int:
     recipe_ids = list_recipe_dirs(s3, args.bucket)
     LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
 
-    args.output_dir.mkdir(parents=True, exist_ok=True)
-    (args.output_dir / "cards-v3").mkdir(exist_ok=True)
-    (args.output_dir / "scores").mkdir(exist_ok=True)
-    (args.output_dir / "countries").mkdir(exist_ok=True)
-    (args.output_dir / "analogs").mkdir(exist_ok=True)
-    (args.output_dir / "activity").mkdir(exist_ok=True)
+    # In AWS mode, refuse-to-overwrite if MANIFEST.json already exists at the
+    # target prefix (run-separation rule). This MUST happen before any artifact
+    # write — fail loud, don't clobber a published vintage.
+    if mode == "aws":
+        try:
+            _refuse_overwrite_if_baked(s3, args.bucket, output_s3_prefix)
+        except RuntimeError as exc:
+            LOG.error("%s", exc)
+            return 3
+
+    writer = _BakeOutput(
+        mode=mode,
+        output_dir=args.output_dir,
+        s3_client=s3,
+        bucket=args.bucket,
+        prefix=output_s3_prefix,
+    )
+    LOG.info("BAKE_MODE=%s → writing to %s", mode, writer.describe_root())
+
+    writer.mkdir()
+    writer.mkdir("cards-v3")
+    writer.mkdir("scores")
+    writer.mkdir("countries")
+    writer.mkdir("analogs")
+    writer.mkdir("activity")
 
     all_cards: dict[str, dict] = {}
     all_scores: dict[str, dict] = {}
@@ -1149,10 +1279,10 @@ def main() -> int:
                 LOG.warning("  %s: no summary; skipped", rid)
                 continue
             all_cards[rid] = card
-            (args.output_dir / "cards-v3" / f"{rid}.card.json").write_text(json.dumps(card, indent=2, default=str))
+            writer.write_text(f"cards-v3/{rid}.card.json", json.dumps(card, indent=2, default=str))
             if scores_file:
                 all_scores[rid] = scores_file
-                (args.output_dir / "scores" / f"{rid}.scores.json").write_text(json.dumps(scores_file, indent=2, default=str))
+                writer.write_text(f"scores/{rid}.scores.json", json.dumps(scores_file, indent=2, default=str))
             else:
                 LOG.info("  %s: no country-scores.json (likely pre-image-rebuild walk; scores skipped)", rid)
 
@@ -1179,7 +1309,7 @@ def main() -> int:
                         others.append(r)
                         seen.add(r)
                 a["secondary_recipe_ids"] = others[:5]
-        (args.output_dir / "scores" / f"{rid}.scores.json").write_text(json.dumps(sf, indent=2, default=str))
+        writer.write_text(f"scores/{rid}.scores.json", json.dumps(sf, indent=2, default=str))
 
     # Emit country-rank-history.json (frontend §1.4 highest priority — vintage 1)
     LOG.info("Emitting country-rank-history.json (vintage-1)...")
@@ -1202,9 +1332,10 @@ def main() -> int:
         "n_rows": len(rank_history_rows),
         "rows": rank_history_rows,
     }
-    (args.output_dir / "countries").mkdir(exist_ok=True)
-    (args.output_dir / "countries" / "country-rank-history.json").write_text(
-        json.dumps(rank_history, indent=2, default=str)
+    writer.mkdir("countries")
+    writer.write_text(
+        "countries/country-rank-history.json",
+        json.dumps(rank_history, indent=2, default=str),
     )
     LOG.info("  %d rank-history rows emitted", len(rank_history_rows))
 
@@ -1212,17 +1343,17 @@ def main() -> int:
 
     LOG.info("Building country-index...")
     country_index = build_country_index(all_scores, all_cards, countries, tracker, args.vintage)
-    (args.output_dir / "countries" / "country-index.json").write_text(json.dumps(country_index, indent=2, default=str))
+    writer.write_text("countries/country-index.json", json.dumps(country_index, indent=2, default=str))
     LOG.info("  %d countries indexed", country_index["n_countries_scored"])
 
     LOG.info("Building analogs file...")
     analogs_file = build_analogs_file(all_scores, tracker, countries, args.vintage)
-    (args.output_dir / "analogs" / "current-state-analogs.json").write_text(json.dumps(analogs_file, indent=2, default=str))
+    writer.write_text("analogs/current-state-analogs.json", json.dumps(analogs_file, indent=2, default=str))
     LOG.info("  %d analog entries", len(analogs_file["entries"]))
 
     LOG.info("Building activity feed...")
     activity = build_activity_feed(all_cards, tracker, args.vintage)
-    (args.output_dir / "activity" / "program-feed.json").write_text(json.dumps(activity, indent=2, default=str))
+    writer.write_text("activity/program-feed.json", json.dumps(activity, indent=2, default=str))
     LOG.info("  %d events", len(activity["events"]))
 
     # Indicator corpus breakdown: count of UNIQUE indicators by provider seen
@@ -1271,10 +1402,10 @@ def main() -> int:
         manifest["verdict_counts"][v] = manifest["verdict_counts"].get(v, 0) + 1
         t = card.get("tier") or "UNKNOWN"
         manifest["tier_counts"][t] = manifest["tier_counts"].get(t, 0) + 1
-    (args.output_dir / "MANIFEST.json").write_text(json.dumps(manifest, indent=2, default=str))
+    writer.write_text("MANIFEST.json", json.dumps(manifest, indent=2, default=str))
 
     LOG.info("=== BAKE COMPLETE ===")
-    LOG.info("Output: %s", args.output_dir)
+    LOG.info("Output: %s", writer.describe_root())
     LOG.info("Verdict counts: %s", manifest["verdict_counts"])
     LOG.info("Tier counts:    %s", manifest["tier_counts"])
     return 0

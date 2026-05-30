@@ -1,0 +1,158 @@
+"""Unit tests for the BAKE_MODE=aws routing in bake_te_fleet_run_1.
+
+Covers:
+  - _BakeOutput local mode → writes hit the FS at the expected paths
+  - _BakeOutput aws mode → writes hit s3.put_object with the right Key+Body
+  - mkdir() is a no-op in aws mode
+  - Invalid mode raises ValueError at construction
+  - Absolute rel_path is rejected
+  - _refuse_overwrite_if_baked raises when MANIFEST.json already exists
+  - _refuse_overwrite_if_baked is silent when prefix is empty / no existing key
+
+These tests do NOT exercise the full bake pipeline — that requires real walk
+artifacts. They lock the writer contract so the AWS-mode rewrite stays
+behaviour-equivalent to the local mode.
+"""
+from __future__ import annotations
+
+import importlib.util
+import sys
+from pathlib import Path
+from unittest.mock import MagicMock
+
+import pytest
+
+# Import the bake module by path (it is a script, not a package member)
+_BAKE = Path(__file__).resolve().parents[1] / "scripts" / "bake_te_fleet_run_1.py"
+spec = importlib.util.spec_from_file_location("bake_te_fleet_run_1", _BAKE)
+bake_mod = importlib.util.module_from_spec(spec)
+sys.modules["bake_te_fleet_run_1"] = bake_mod
+spec.loader.exec_module(bake_mod)
+
+_BakeOutput = bake_mod._BakeOutput
+_refuse_overwrite_if_baked = bake_mod._refuse_overwrite_if_baked
+
+
+class TestBakeOutputLocal:
+    def test_write_text_creates_file_under_output_dir(self, tmp_path: Path):
+        s3 = MagicMock()
+        w = _BakeOutput(
+            mode="local", output_dir=tmp_path, s3_client=s3,
+            bucket="ignored", prefix="",
+        )
+        w.write_text("scores/x.scores.json", '{"k":1}')
+        target = tmp_path / "scores" / "x.scores.json"
+        assert target.read_text() == '{"k":1}'
+        s3.put_object.assert_not_called()
+
+    def test_mkdir_creates_subdir(self, tmp_path: Path):
+        w = _BakeOutput(
+            mode="local", output_dir=tmp_path, s3_client=MagicMock(),
+            bucket="ignored", prefix="",
+        )
+        w.mkdir("cards-v3")
+        assert (tmp_path / "cards-v3").is_dir()
+
+    def test_describe_root_returns_path(self, tmp_path: Path):
+        w = _BakeOutput(
+            mode="local", output_dir=tmp_path, s3_client=MagicMock(),
+            bucket="ignored", prefix="",
+        )
+        assert w.describe_root() == str(tmp_path)
+
+
+class TestBakeOutputAws:
+    def test_write_text_calls_put_object_with_normalized_key(self, tmp_path: Path):
+        s3 = MagicMock()
+        w = _BakeOutput(
+            mode="aws", output_dir=tmp_path, s3_client=s3,
+            bucket="qgi-data-lake-222222222222",
+            prefix="frontend-data/te-fleet-run-1-2026-05-30",
+        )
+        w.write_text("scores/foreign_intervention.scores.json", '{"k":1}')
+        s3.put_object.assert_called_once_with(
+            Bucket="qgi-data-lake-222222222222",
+            Key="frontend-data/te-fleet-run-1-2026-05-30/scores/foreign_intervention.scores.json",
+            Body=b'{"k":1}',
+            ContentType="application/json",
+        )
+
+    def test_write_text_handles_trailing_slash_on_prefix(self, tmp_path: Path):
+        s3 = MagicMock()
+        w = _BakeOutput(
+            mode="aws", output_dir=tmp_path, s3_client=s3,
+            bucket="b", prefix="prefix/with/slash/",
+        )
+        w.write_text("MANIFEST.json", "{}")
+        s3.put_object.assert_called_once()
+        assert s3.put_object.call_args.kwargs["Key"] == "prefix/with/slash/MANIFEST.json"
+
+    def test_mkdir_is_noop_in_aws_mode(self, tmp_path: Path):
+        s3 = MagicMock()
+        w = _BakeOutput(
+            mode="aws", output_dir=tmp_path, s3_client=s3,
+            bucket="b", prefix="p/",
+        )
+        w.mkdir()
+        w.mkdir("cards-v3")
+        # No FS touch (output_dir was a tmp_path; mkdir on it would have succeeded
+        # but we want to assert no SUBDIR was created)
+        assert not (tmp_path / "cards-v3").exists()
+        s3.put_object.assert_not_called()
+
+    def test_describe_root_returns_s3_uri(self, tmp_path: Path):
+        w = _BakeOutput(
+            mode="aws", output_dir=tmp_path, s3_client=MagicMock(),
+            bucket="bkt", prefix="vintage-1",
+        )
+        assert w.describe_root() == "s3://bkt/vintage-1/"
+
+
+class TestBakeOutputValidation:
+    def test_invalid_mode_raises(self, tmp_path: Path):
+        with pytest.raises(ValueError, match="Invalid BAKE_MODE"):
+            _BakeOutput(
+                mode="cloud", output_dir=tmp_path, s3_client=MagicMock(),
+                bucket="b", prefix="",
+            )
+
+    def test_absolute_rel_path_rejected(self, tmp_path: Path):
+        w = _BakeOutput(
+            mode="aws", output_dir=tmp_path, s3_client=MagicMock(),
+            bucket="b", prefix="p/",
+        )
+        with pytest.raises(ValueError, match="must be relative"):
+            w.write_text("/absolute/path.json", "{}")
+
+
+class TestRefuseOverwrite:
+    def test_raises_when_manifest_exists(self):
+        s3 = MagicMock()
+        s3.list_objects_v2.return_value = {"KeyCount": 1, "Contents": [{"Key": "p/MANIFEST.json"}]}
+        with pytest.raises(RuntimeError, match="Refusing to overwrite"):
+            _refuse_overwrite_if_baked(s3, "bkt", "p")
+
+    def test_silent_when_no_manifest(self):
+        s3 = MagicMock()
+        s3.list_objects_v2.return_value = {"KeyCount": 0}
+        # Should not raise
+        _refuse_overwrite_if_baked(s3, "bkt", "p/")
+
+    def test_silent_when_prefix_empty(self):
+        s3 = MagicMock()
+        # When prefix is "", we should not even hit S3 — local mode
+        _refuse_overwrite_if_baked(s3, "bkt", "")
+        s3.list_objects_v2.assert_not_called()
+
+    def test_list_objects_uses_manifest_key_not_just_prefix(self):
+        """Lock the lookup key shape: it must be `{prefix}/MANIFEST.json`, not
+        just `{prefix}`, so we don't false-positive on a prefix that exists for
+        other reasons (e.g. an in-flight bake that hasn't written MANIFEST yet)."""
+        s3 = MagicMock()
+        s3.list_objects_v2.return_value = {"KeyCount": 0}
+        _refuse_overwrite_if_baked(s3, "bkt", "vintage-1/")
+        s3.list_objects_v2.assert_called_once_with(
+            Bucket="bkt",
+            Prefix="vintage-1/MANIFEST.json",
+            MaxKeys=1,
+        )
