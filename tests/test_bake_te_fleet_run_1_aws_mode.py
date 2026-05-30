@@ -31,6 +31,7 @@ spec.loader.exec_module(bake_mod)
 
 _BakeOutput = bake_mod._BakeOutput
 _refuse_overwrite_if_baked = bake_mod._refuse_overwrite_if_baked
+_resolve_reference_input = bake_mod._resolve_reference_input
 
 
 class TestBakeOutputLocal:
@@ -172,3 +173,64 @@ class TestRefuseOverwrite:
             Prefix="vintage-1/MANIFEST.json",
             MaxKeys=1,
         )
+
+
+class TestResolveReferenceInput:
+    """Sonnet #36 F1 follow-up: bake JobDef passes s3:// URIs for the 3
+    reference files because they aren't vendored in the image. The resolver
+    downloads to a temp file in that case; local paths pass through."""
+
+    def test_local_path_pass_through(self, tmp_path: Path):
+        local = tmp_path / "countries.json"
+        local.write_text("{}")
+        s3 = MagicMock()
+        result = _resolve_reference_input(str(local), s3)
+        assert result == Path(str(local))
+        s3.download_file.assert_not_called()
+
+    def test_path_object_pass_through(self, tmp_path: Path):
+        local = tmp_path / "countries.json"
+        s3 = MagicMock()
+        result = _resolve_reference_input(local, s3)
+        assert result == local
+        s3.download_file.assert_not_called()
+
+    def test_s3_uri_downloads(self):
+        s3 = MagicMock()
+        # Successful download_file is a no-op (returns None); the resolver
+        # returns the local path it told boto3 to download into.
+        result = _resolve_reference_input(
+            "s3://qgi-data-lake-222222222222/reference/countries.json", s3,
+        )
+        assert isinstance(result, Path)
+        assert result.suffix == ".json"
+        s3.download_file.assert_called_once()
+        call_args = s3.download_file.call_args[0]
+        assert call_args[0] == "qgi-data-lake-222222222222"
+        assert call_args[1] == "reference/countries.json"
+        # Third arg is the tmp_path string
+        assert str(result) == call_args[2]
+
+    def test_s3_uri_with_nested_key(self):
+        s3 = MagicMock()
+        result = _resolve_reference_input(
+            "s3://bucket/deeply/nested/path/file.md", s3,
+        )
+        assert isinstance(result, Path)
+        assert result.suffix == ".md"
+        call_args = s3.download_file.call_args[0]
+        assert call_args[0] == "bucket"
+        assert call_args[1] == "deeply/nested/path/file.md"
+
+    def test_s3_uri_no_key_raises(self):
+        s3 = MagicMock()
+        with pytest.raises(ValueError, match="Malformed S3 URI"):
+            _resolve_reference_input("s3://bucket-only", s3)
+
+    def test_s3_uri_empty_key_raises(self):
+        """Sonnet #133 BLOCK: `s3://bucket/` passes the slash check but yields
+        an empty key. Fail pre-flight here, not as an opaque boto3 error."""
+        s3 = MagicMock()
+        with pytest.raises(ValueError, match="key is empty"):
+            _resolve_reference_input("s3://bucket/", s3)
+        s3.download_file.assert_not_called()
