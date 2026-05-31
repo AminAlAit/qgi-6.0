@@ -122,16 +122,26 @@ def detect_transitions(prev_tiers: dict[str, str], this_tiers: dict[str, str]) -
             # any tier TRANSITION (esp. a graduation or a slip out of Validated) is a public
             # truth-claim change → needs Majles sign-off before the tracker PR merges.
             "needs_majles_signoff": True,
+            # FLEET-8 / Condition I: the sign-off is a RECORDED act, not an inferred
+            # merge-event. These stay None until a human fills them in during the
+            # tracker-PR review; the tracker PR is merge-blocked while they are None.
+            "majles_signoff_by": None,
+            "majles_signoff_at_utc": None,
         })
     return transitions
 
 
 def build_integrity_attestation(*, conditions: dict[str, bool], transitions: list[dict],
-                                 run_id: str, panel_fingerprint: str | None) -> dict[str, Any]:
+                                 run_id: str, panel_fingerprint: str | None,
+                                 floors_frozen_at_utc: str | None = None) -> dict[str, Any]:
     """FLEET-8 / Condition I: the one-page attestation that gates the tracker PR. The cycle
     must answer each blocking condition YES/NO; the PR may not merge unless all are YES and
     every tier transition has Majles sign-off. Pure — the caller supplies the condition
-    booleans it asserted upstream."""
+    booleans it asserted upstream.
+
+    `floors_frozen_at_utc` is recorded verbatim so a reviewer reading the attestation sees
+    WHEN the floors were frozen (the anchor for `floor_ordering_ok`), not just the boolean —
+    Condition A's evidence travels with the attestation, not only its pass/fail."""
     required = ["floor_ordering_ok", "no_grandfathered_tiers", "bit_identical_walk",
                 "no_poisoned_indicator_holds_bypassed"]
     all_yes = all(bool(conditions.get(k)) for k in required)
@@ -139,6 +149,7 @@ def build_integrity_attestation(*, conditions: dict[str, bool], transitions: lis
     return {
         "run_id": run_id,
         "panel_fingerprint": panel_fingerprint,
+        "floors_frozen_at_utc": floors_frozen_at_utc,
         "conditions": {k: bool(conditions.get(k)) for k in required},
         "all_conditions_pass": all_yes,
         "tier_transitions": transitions,
@@ -153,7 +164,8 @@ def build_integrity_attestation(*, conditions: dict[str, bool], transitions: lis
 def assemble_tracker_draft(*, results: dict[str, dict | None], prev_tiers: dict[str, str],
                            beats_baseline: dict[str, bool] | None = None,
                            conditions: dict[str, bool], run_id: str,
-                           panel_fingerprint: str | None) -> dict[str, Any]:
+                           panel_fingerprint: str | None,
+                           floors_frozen_at_utc: str | None = None) -> dict[str, Any]:
     """Pure orchestrator the handler wires S3 I/O around: given this run's per-recipe walk
     summaries (`results`: recipe_id → summary dict or None) + the PREVIOUS vintage's tiers,
     produce the DRAFT tracker rows + the tier transitions + the merge-gating attestation.
@@ -189,5 +201,5 @@ def assemble_tracker_draft(*, results: dict[str, dict | None], prev_tiers: dict[
     conditions = {**conditions, "no_grandfathered_tiers": True}
     attestation = build_integrity_attestation(
         conditions=conditions, transitions=transitions, run_id=run_id,
-        panel_fingerprint=panel_fingerprint)
+        panel_fingerprint=panel_fingerprint, floors_frozen_at_utc=floors_frozen_at_utc)
     return {"draft_recipes": draft_rows, "transitions": transitions, "attestation": attestation}

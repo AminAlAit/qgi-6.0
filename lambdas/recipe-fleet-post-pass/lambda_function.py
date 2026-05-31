@@ -346,6 +346,9 @@ def lambda_handler(event: dict, context: Any) -> dict[str, Any]:
         conditions=conditions,
         run_id=vintage_id,
         panel_fingerprint=panel_fp,
+        # Condition I: record WHEN floors were frozen alongside the boolean, so the
+        # attestation carries Condition A's evidence (anchor timestamp), not just its verdict.
+        floors_frozen_at_utc=(floors_doc or {}).get("frozen_at_utc"),
     )
 
     # 6. Write the draft (NEVER to the live tracker — that's the PR/Majles path).

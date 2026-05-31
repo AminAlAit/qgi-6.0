@@ -117,6 +117,23 @@ def test_new_recipe_from_queued():
     assert t[0]["from_tier"] == pp.QUEUED and t[0]["direction"] == "graduation"
 
 
+def test_validated_to_experimental_is_a_slip():
+    # FLEET-6 hardest case: a previously-VALIDATED recipe re-walks to a low-AUC
+    # EXPERIMENTAL result. It must drop two ranks AND surface as a slip — never be
+    # quietly kept at Validated (the leak-vacate scenario that motivated Condition B).
+    t = pp.detect_transitions({"r": pp.VALIDATED}, {"r": pp.EXPERIMENTAL})
+    assert len(t) == 1
+    assert t[0]["direction"] == "slip" and t[0]["needs_majles_signoff"] is True
+
+
+def test_transitions_carry_blank_signoff_fields():
+    # Condition I: the Majles sign-off is a RECORDED act. Every transition ships with
+    # explicit (initially-empty) sign-off slots, not an inferred merge event.
+    t = pp.detect_transitions({"r": pp.DIRECTIONAL}, {"r": pp.VALIDATED})
+    assert t[0]["majles_signoff_by"] is None
+    assert t[0]["majles_signoff_at_utc"] is None
+
+
 # ---- build_integrity_attestation (FLEET-8 Condition I) ----------------------
 
 _OK = {"floor_ordering_ok": True, "no_grandfathered_tiers": True,
@@ -143,6 +160,21 @@ def test_attestation_blocks_on_pending_majles_transition():
                                        panel_fingerprint="fp")
     assert a["all_conditions_pass"] and not a["tracker_pr_may_merge"]  # graduation needs sign-off
     assert a["transitions_pending_majles"] == trans
+
+
+def test_attestation_records_floors_frozen_at_utc():
+    # Condition I: the attestation carries Condition A's EVIDENCE (when floors were
+    # frozen), not just the floor_ordering_ok boolean. A reviewer reads the timestamp.
+    a = pp.build_integrity_attestation(conditions=_OK, transitions=[], run_id="r1",
+                                       panel_fingerprint="fp",
+                                       floors_frozen_at_utc="2026-05-25T00:00:00Z")
+    assert a["floors_frozen_at_utc"] == "2026-05-25T00:00:00Z"
+
+
+def test_attestation_floors_frozen_defaults_none():
+    a = pp.build_integrity_attestation(conditions=_OK, transitions=[], run_id="r1",
+                                       panel_fingerprint="fp")
+    assert a["floors_frozen_at_utc"] is None
 
 
 # ---- assemble_tracker_draft (handler's pure orchestrator) -------------------
