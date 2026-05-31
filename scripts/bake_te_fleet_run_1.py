@@ -504,6 +504,26 @@ def panel_lookup(panel_root: Path, code: str, country: str, year: int) -> tuple[
     )
 
 
+def _load_population(panel_root: Path | None) -> dict[str, int]:
+    """Latest SP.POP.TOTL value per country, read from the indicator panels (frontend
+    §C.1). Population is already an ingested WB indicator — no external fetch needed.
+    Empty dict when the panel is absent (population stays null; the FE keeps its seeds)."""
+    if not panel_root:
+        return {}
+    df = _load_panel(Path(panel_root), "SP.POP.TOTL")
+    if df is None or "country" not in getattr(df, "columns", []):
+        return {}
+    out: dict[str, int] = {}
+    valid = df[df["value"].notna()]
+    for country, g in valid.groupby("country"):
+        latest = g.sort_values("year").iloc[-1]
+        try:
+            out[str(country)] = int(round(float(latest["value"])))
+        except (TypeError, ValueError):
+            continue
+    return out
+
+
 def analog_pre_event_trajectory(
     panel_root: Path,
     selected: list[str],
@@ -1256,8 +1276,10 @@ def build_country_index(
     countries: dict[str, dict[str, str]],
     tracker: dict[str, dict[str, Any]],
     vintage: str,
+    population_by_country: dict[str, int] | None = None,
 ) -> dict:
     """Aggregate every country across every recipe; produce CountryIndexEntry rows."""
+    population_by_country = population_by_country or {}
     # country_name → {recipe_id → score_entry}
     by_country: dict[str, dict[str, dict]] = {}
     for rid, sf in all_scores.items():
@@ -1307,7 +1329,7 @@ def build_country_index(
             "flag_emoji": flag,
             "name": name,
             "region": region,
-            "population": None,
+            "population": population_by_country.get(name),  # §C.1 from SP.POP.TOTL panel
             "vintage": vintage,
             "recipes_lit_count": len(lit_scores),
             "lit_families": list(lit_families),
@@ -1718,7 +1740,10 @@ def main() -> int:
     LOG.info("Built %d cards, %d scores files", len(all_cards), len(all_scores))
 
     LOG.info("Building country-index...")
-    country_index = build_country_index(all_scores, all_cards, countries, tracker, args.vintage)
+    population_by_country = _load_population(args.panel_root if args.panel_root.exists() else None)
+    LOG.info("  %d countries with population from the SP.POP.TOTL panel", len(population_by_country))
+    country_index = build_country_index(all_scores, all_cards, countries, tracker, args.vintage,
+                                        population_by_country=population_by_country)
     writer.write_text("countries/country-index.json", json.dumps(country_index, indent=2, default=str))
     LOG.info("  %d countries indexed", country_index["n_countries_scored"])
 
