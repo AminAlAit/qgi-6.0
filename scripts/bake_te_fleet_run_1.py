@@ -751,9 +751,9 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
         "window_years": int(window_years),
         "indicators": indicators_out,
         "samples_used": max_samples,
-        "method": ("z-aggregated across positive cases, aligned by lead-year, gaps "
-                   "linearly interpolated; fleet-run-1 emits head(5) positives "
-                   "(interim), full-corpus at run-2"),
+        "method": ("z-aggregated across the emitted positive cases (count in "
+                   "samples_used), aligned by lead-year, gaps linearly interpolated. "
+                   "Pre-§F walks emit head(5) positives; §F-onward emit the full corpus."),
     }
 
 
