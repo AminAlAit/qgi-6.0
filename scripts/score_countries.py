@@ -97,6 +97,17 @@ def signal_share_per_indicator(shap_row: np.ndarray, n_features_per_ind: int = 8
     return (per / total * 100.0).tolist()
 
 
+def signed_shap_per_indicator(shap_row: np.ndarray, n_features_per_ind: int = 8
+                               ) -> list[float]:
+    """Signed sum of raw SHAP over each indicator's 8-feature group (frontend §A.1 /
+    #974). Positive => this indicator's trajectory pushes the country TOWARD the event
+    class; negative => away. Same 8-feature grouping as `signal_share_per_indicator`,
+    which takes |shap| and discards the sign; this keeps the sign for the country-profile
+    'Why these scores -> signed magnitude' panel."""
+    s = np.asarray(shap_row).reshape(-1, n_features_per_ind)
+    return s.sum(axis=1).tolist()
+
+
 def histogram_bins(scores: np.ndarray, n_bins: int = 20) -> dict[str, Any]:
     """20 bins of 5pp width on the [0, 100] score axis. Last bin inclusive on
     100 so a score of exactly 100 isn't dropped (mirrors the calibration-bins
@@ -324,7 +335,9 @@ def score_recipe(*, summary: dict, positives_df: pd.DataFrame,
     scores_rows: list[dict[str, Any]] = []
     for i, c in enumerate(countries):
         ss = signal_share_per_indicator(shap_arr[i])
-        shap_attr = [{"code": ind, "name": None, "signal_share_pct": round(ss[j], 1)}
+        sv = signed_shap_per_indicator(shap_arr[i])  # §A.1/#974 signed magnitude
+        shap_attr = [{"code": ind, "name": None, "signal_share_pct": round(ss[j], 1),
+                      "shap_value": round(float(sv[j]), 6)}
                      for j, ind in enumerate(selected)]
         analogs: list[dict[str, Any]] = []
         if len(Xp):
