@@ -784,6 +784,77 @@ def _calibration_block(summary: dict) -> dict:
     return base
 
 
+def _load_verified_events(path: Path | None) -> dict[str, list[dict]]:
+    """Group the curated verified-events corpus by `category` (== recipe_id) for the
+    §B.3 precedents. Empty dict when no path is given — precedents then come back empty
+    and the recipe-detail Precedents panel keeps its 'no precedents yet' state."""
+    if not path:
+        return {}
+    raw = json.loads(Path(path).read_text(encoding="utf-8"))
+    by_cat: dict[str, list[dict]] = {}
+    for e in raw:
+        cat = e.get("category")
+        if cat:
+            by_cat.setdefault(cat, []).append(e)
+    return by_cat
+
+
+def _norm_country_key(name: str | None) -> str:
+    """Fold a verified-events country name to positives.csv's `country_id` form
+    (lowercase, underscores). A fold mismatch just leaves in_training_set False — the
+    event still appears in the precedents list, it's only not flagged as a training case."""
+    return (name or "").strip().lower().replace(" ", "_")
+
+
+def _load_positives_set(shape_inputs_root: Path | None, rid: str) -> set[tuple[str, int]]:
+    """Read {root}/{rid}/positives.csv (header: country_id,event_year) into a
+    {(country_id, year)} set for the in_training_set flag. Empty set if the file is
+    absent (in_training_set then degrades to all-False; precedents still render)."""
+    if not shape_inputs_root:
+        return set()
+    p = Path(shape_inputs_root) / rid / "positives.csv"
+    if not p.exists():
+        return set()
+    out: set[tuple[str, int]] = set()
+    for i, line in enumerate(p.read_text(encoding="utf-8").splitlines()):
+        if i == 0 or not line.strip():  # header / blank
+            continue
+        parts = line.split(",")
+        if len(parts) < 2:
+            continue
+        try:
+            out.add((parts[0].strip().lower(), int(float(parts[1].strip()))))
+        except ValueError:
+            continue
+    return out
+
+
+def _build_precedents_corpus(rid: str, events_by_cat: dict[str, list[dict]],
+                             positives: set[tuple[str, int]], countries: dict) -> dict:
+    """frontend §B.3: the recipe's precedents corpus = every curated event whose
+    `category` is this recipe, each tagged `in_training_set` (was it one of the walk's
+    positives). Most-recent first. Always returns a dict (possibly empty events) so the
+    panel can show '0 precedents' vs. an un-computed null."""
+    out_events: list[dict] = []
+    for e in (events_by_cat.get(rid) or []):
+        nm = e.get("country")
+        iso2, _, _ = normalize_iso(nm, countries) if nm else (None, None, None)
+        try:
+            yr_int = int(e.get("year"))
+        except (TypeError, ValueError):
+            yr_int = None
+        in_ts = yr_int is not None and (_norm_country_key(nm), yr_int) in positives
+        out_events.append({
+            "country_iso": iso2,
+            "country_name": nm,
+            "year": yr_int,
+            "label": e.get("title"),
+            "in_training_set": in_ts,
+        })
+    out_events.sort(key=lambda x: -(x["year"] or 0))  # most recent first
+    return {"events": out_events, "total_events_in_corpus": len(out_events)}
+
+
 def build_card_v3(
     summary: dict,
     sensitivity_data: dict | None,
@@ -792,6 +863,7 @@ def build_card_v3(
     s3_bucket: str,
     shap_data: dict | None = None,
     panel_root: Path | None = None,
+    precedents_corpus: dict | None = None,
 ) -> dict:
     """Compose a card-v3 JSON from the walk summary + sidecar artifacts."""
     rid = summary.get("recipe_id")
@@ -923,6 +995,10 @@ def build_card_v3(
     # frontend bake-request B.1: canonical per-indicator movement shape, aggregated
     # from the walk summary's descriptive emit (5-sample interim; full-corpus at run-2)
     card["trajectory_alignment"] = _build_trajectory_alignment(summary, indicator_names)
+    # frontend bake-request B.3: curated precedents corpus (events of this recipe's
+    # category, each tagged whether it was a training positive). Empty {events:[],
+    # total_events_in_corpus:0} when no verified-events input was supplied.
+    card["precedents_corpus"] = precedents_corpus
 
     return card
 
@@ -1436,6 +1512,14 @@ def main() -> int:
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
     ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
                     help="Local panel parquet root for raw-value lookups (frontend §1.4).")
+    ap.add_argument("--verified-events", type=str, default=None,
+                    help="Local path OR s3:// URI to verified-events.json (frontend §B.3 "
+                         "precedents corpus, grouped by category==recipe_id). Optional; "
+                         "precedents stay empty if omitted.")
+    ap.add_argument("--shape-inputs-root", type=Path, default=Path("data/shape_inputs_v2"),
+                    help="Root of per-recipe positives.csv ({root}/{recipe}/positives.csv) "
+                         "for the precedents in_training_set flag (in the AWS image: "
+                         "/app/data/shape_inputs_v2). Optional; flag degrades to False if absent.")
     ap.add_argument("--output-s3-prefix", default=None,
                     help="S3 key prefix under --bucket for AWS-mode writes. "
                          "Overrides OUTPUT_S3_PREFIX env-var if both are set. "
@@ -1483,6 +1567,11 @@ def main() -> int:
     LOG.info("  %d tracker rows", len(tracker))
     indicator_names = load_indicator_catalog(args.indicator_catalog)
     LOG.info("  %d indicator catalog entries", len(indicator_names))
+    # §B.3 precedents: curated verified-events corpus (optional; s3:// resolved in AWS).
+    if args.verified_events:
+        args.verified_events = _resolve_reference_input(args.verified_events, s3)
+    events_by_cat = _load_verified_events(args.verified_events)
+    LOG.info("  %d recipe-categories in verified-events corpus", len(events_by_cat))
 
     recipe_ids = list_recipe_dirs(s3, args.bucket)
     LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
@@ -1537,9 +1626,11 @@ def main() -> int:
         panel_wide_z = s3_get_json(s3, args.bucket, f"ml-results/{rid}/panel-wide-z-distribution-2026.json")
         tracker_row = tracker.get(rid)
         selected_indicators = (summary.get("greedy_outer_loop") or {}).get("selected_indicators") or []
+        precedents = _build_precedents_corpus(
+            rid, events_by_cat, _load_positives_set(args.shape_inputs_root, rid), countries)
         card = build_card_v3(
             summary, sensitivity, indicator_names, tracker_row, args.bucket,
-            shap_data=shap_imp, panel_root=args.panel_root,
+            shap_data=shap_imp, panel_root=args.panel_root, precedents_corpus=precedents,
         )
         scores_file = build_scores_file(
             rid, args.vintage, country_scores, countries, indicator_names,
