@@ -692,9 +692,10 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
     not by raw index: each sample's profile is dropna'd so lengths differ, and aligning
     by index would smear different lead-times together.
 
-    INTERIM (fleet-run-1): the walk emits only head(5) positives per indicator, so this
-    is a 5-sample shape (the same basis te-sample-10 shipped). The full-corpus shape
-    lands at fleet-run-2; `samples_used` records the basis for audit."""
+    Coverage: pre-§F walks (fleet-run-1) emit only head(5) positives, so those cards
+    carry a 5-sample shape (identified by samples_used == 5; the same basis te-sample-10
+    shipped). §F-onward walks emit the full positive corpus. `samples_used` always
+    records the actual count for audit."""
     rts = (summary.get("descriptive_emit") or {}).get("ranked_trajectory_signature") or {}
     per_ind = rts.get("per_indicator_signatures") or []
     if not per_ind:
@@ -751,9 +752,9 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
         "window_years": int(window_years),
         "indicators": indicators_out,
         "samples_used": max_samples,
-        "method": ("z-aggregated across positive cases, aligned by lead-year, gaps "
-                   "linearly interpolated; fleet-run-1 emits head(5) positives "
-                   "(interim), full-corpus at run-2"),
+        "method": ("z-aggregated across the emitted positive cases (count in "
+                   "samples_used), aligned by lead-year, gaps linearly interpolated. "
+                   "Pre-§F walks emit head(5) positives; §F-onward emit the full corpus."),
     }
 
 
