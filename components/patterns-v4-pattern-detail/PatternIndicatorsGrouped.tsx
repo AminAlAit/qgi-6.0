@@ -388,6 +388,7 @@ function IndicatorCard({
   startA,
   startB,
   length,
+  isOffset,
 }: {
   indicator: PatternIndicator;
   countryA: string;
@@ -395,8 +396,13 @@ function IndicatorCard({
   startA: number;
   startB: number;
   length: number;
+  /** When false (same start year for both countries), no align toggle is shown
+   *  and the chart always renders the overlaid Year 1..N view. */
+  isOffset: boolean;
 }) {
   const [expanded, setExpanded] = useState(false);
+  // Align toggle state: only meaningful when isOffset=true. For non-offset
+  // patterns the chart always renders window-relative (useWindowRelative=true).
   const [align, setAlign] = useState(false);
 
   const stripeColor = sectorColor(indicator.sector);
@@ -500,30 +506,36 @@ function IndicatorCard({
           ) : (
             /* Expanded view — single overlaid chart */
             <>
-              {/* Align toggle */}
-              <div style={{ marginBottom: "14px" }} onClick={(e) => e.stopPropagation()}>
-                <button
-                  onClick={() => setAlign((v) => !v)}
-                  title={
-                    align
-                      ? "Both series on shared Year 1…N axis. Click to switch to calendar years."
-                      : "Each country on its own calendar-year axis. Click to align both to Year 1…N."
-                  }
-                  style={{
-                    padding: "3px 12px",
-                    borderRadius: "12px",
-                    border: `1px solid ${align ? stripeColor : "var(--qgi-border)"}`,
-                    background: align ? `${stripeColor}20` : "transparent",
-                    color: align ? stripeColor : "var(--qgi-text-muted)",
-                    fontSize: "10px",
-                    fontFamily: "ui-monospace, monospace",
-                    cursor: "pointer",
-                    fontWeight: align ? 600 : 400,
-                  }}
+              {/* Align toggle — only shown for offset patterns (different start years).
+                  Non-offset patterns always render the overlaid Year 1..N view. */}
+              {isOffset && (
+                <div
+                  style={{ marginBottom: "14px" }}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  Align
-                </button>
-              </div>
+                  <button
+                    onClick={() => setAlign((v) => !v)}
+                    title={
+                      align
+                        ? "Both series on shared Year 1..N axis. Click to switch to calendar years."
+                        : "Each country on its own calendar-year axis. Click to align both to Year 1..N."
+                    }
+                    style={{
+                      padding: "3px 12px",
+                      borderRadius: "12px",
+                      border: `1px solid ${align ? stripeColor : "var(--qgi-border)"}`,
+                      background: align ? `${stripeColor}20` : "transparent",
+                      color: align ? stripeColor : "var(--qgi-text-muted)",
+                      fontSize: "10px",
+                      fontFamily: "ui-monospace, monospace",
+                      cursor: "pointer",
+                      fontWeight: align ? 600 : 400,
+                    }}
+                  >
+                    Align
+                  </button>
+                </div>
+              )}
 
               <div onClick={(e) => e.stopPropagation()} style={{ marginBottom: "12px" }}>
                 <OverlaidExpandedChart
@@ -535,7 +547,7 @@ function IndicatorCard({
                   labelB={countryB}
                   windowStartA={startA}
                   windowStartB={startB}
-                  useWindowRelative={align}
+                  useWindowRelative={isOffset ? align : true}
                   length={length}
                 />
               </div>
@@ -578,6 +590,10 @@ interface PatternIndicatorsGroupedProps {
   hiddenSectors: Set<string>;
   onToggle: (sector: string) => void;
   sectors: SectorMeta[];
+  /** True when the two countries have different start years (offset pattern).
+   *  When false, each SCDI card shows no align toggle and always uses the
+   *  overlaid Year 1..N view. */
+  isOffset: boolean;
 }
 
 export function PatternIndicatorsGrouped({
@@ -590,6 +606,7 @@ export function PatternIndicatorsGrouped({
   hiddenSectors,
   onToggle,
   sectors,
+  isOffset,
 }: PatternIndicatorsGroupedProps) {
   // Group by sector, sort each group by correlation desc.
   const groups: { sector: string; items: PatternIndicator[] }[] = [];
@@ -764,6 +781,7 @@ export function PatternIndicatorsGrouped({
                   startA={startA}
                   startB={startB}
                   length={length}
+                  isOffset={isOffset}
                 />
               ))}
             </div>

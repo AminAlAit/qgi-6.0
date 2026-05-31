@@ -3,23 +3,16 @@
 /**
  * PatternCompositeTrajectory — composite rhyme line + per-category composites.
  *
- * Align toggle (2026-05-31):
- *   OFF (default) — shared CALENDAR x-axis. Each country's segment is plotted
- *     at its actual start year so the 7-year (or N-year) offset is visible.
- *     X-axis range spans min(startA, startB) to max(endA, endB).
- *   ON — shared WINDOW-RELATIVE x-axis: Year 1..N. Both lines overlap so the
- *     rhyme shape is visible. This is the original behaviour.
- *
- * Per-category composite subplots always use window-relative Year 1..N (they
- * are category deep-dives that assume alignment). Align toggle only affects
- * the main composite chart.
+ * Main chart always uses window-relative Year 1..N axis (no toggle).
+ * Calendar offset is already visible in the Segment Timeline panel above.
+ * Per-category composite subplots also use Year 1..N.
  *
  * Kicker: COMPOSITE TRAJECTORY
  * Heading: "Indicator-composite trajectory"
- * Subtitle: expanded plain-English description (moved from below chart)
+ * Subtitle: plain-English description, keeps z-score, no em-dash.
  */
 
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import type { PatternIndicator } from "@/lib/cascade-patterns/scdi-mock";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { pairDetailFlagFor } from "@/lib/te-mock/patterns-v4-pair-detail-mock";
@@ -30,7 +23,7 @@ interface PatternCompositeTrajectoryProps {
   countryA: string;
   countryB: string;
   length: number;
-  /** Calendar start year of country A's window (for Align OFF calendar x-axis). */
+  /** Calendar start year of country A's window. */
   startA: number;
   /** Calendar end year of country A's window. */
   endA: number;
@@ -243,10 +236,16 @@ export function PatternCompositeTrajectory({
   countryA,
   countryB,
   length,
-  startA,
-  endA,
-  startB,
-  endB,
+  // startA/endA/startB/endB kept in interface so caller API is stable; main chart is always
+  // window-relative (Year 1..N). Calendar offset is shown in the Segment Timeline above.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  startA: _startA,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  endA: _endA,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  startB: _startB,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  endB: _endB,
   compositeA,
   compositeB,
   indicators,
@@ -256,13 +255,6 @@ export function PatternCompositeTrajectory({
   const colorA = familyColor(dominantFamilyAId);
   const colorB = familyColor(dominantFamilyBId);
   const sameFamily = dominantFamilyAId === dominantFamilyBId;
-
-  // Align toggle: OFF = calendar x-axis (offset visible), ON = Year 1..N (rhyme visible).
-  const [aligned, setAligned] = useState(false);
-
-  // Calendar axis bounds (for Align OFF).
-  const calMin = Math.min(startA, startB);
-  const calMax = Math.max(endA, endB);
 
   // Per-category composites: only categories with >=2 indicators.
   const categoryComposites = useMemo(() => {
@@ -287,8 +279,6 @@ export function PatternCompositeTrajectory({
       })
       .sort((a, b) => b.count - a.count);
   }, [indicators]);
-
-  const ACCENT_COLOR = "#5B7E99";
 
   return (
     <div
@@ -375,7 +365,7 @@ export function PatternCompositeTrajectory({
         </div>
       </div>
 
-      {/* Subtitle — moved from below chart; plain-English, keeps z-score */}
+      {/* Subtitle — plain-English, keeps z-score, no em-dash */}
       <p
         style={{
           fontSize: "12px",
@@ -387,43 +377,13 @@ export function PatternCompositeTrajectory({
       >
         One line per country, blending all {indicators.length} of its indicators into a
         single trace. Each indicator is put on a z-score scale first, so a slow-moving
-        measure and a volatile one count equally, then they are averaged together. Where
-        the two lines rise and fall in step, the countries were moving alike.{" "}
-        {aligned
-          ? "Each line starts at its own country's first year, so they sit on top of each other and the shared shape stands out."
-          : `Real calendar years are shown, so you can see the ${Math.abs(startA - startB)}-year gap between when each country's run began.`}
+        measure and a volatile one count equally, then they are averaged together. Both
+        lines run from Year 1 to Year {length} so the shared shape stands out clearly.
+        Where the two lines rise and fall in step, the countries were moving alike.
       </p>
 
-      {/* Align toggle + main chart */}
+      {/* Main chart — always window-relative Year 1..N */}
       <div style={{ width: "100%" }}>
-        {/* Align toggle — colocated with the chart it affects */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "flex-end",
-            marginBottom: "6px",
-          }}
-        >
-          <button
-            onClick={() => setAligned((a) => !a)}
-            aria-pressed={aligned}
-            style={{
-              fontSize: "10px",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.8px",
-              padding: "3px 10px",
-              borderRadius: "4px",
-              border: `1px solid ${aligned ? ACCENT_COLOR : "var(--qgi-border)"}`,
-              background: aligned ? `${ACCENT_COLOR}18` : "transparent",
-              color: aligned ? ACCENT_COLOR : "var(--qgi-text-dim)",
-              cursor: "pointer",
-              transition: "all 100ms",
-            }}
-          >
-            {aligned ? "Aligned · switch to calendar" : "Align · show rhyme"}
-          </button>
-        </div>
-
         <div style={{ overflowX: "auto" }}>
           <MiniChart
             seriesA={compositeA}
@@ -433,11 +393,7 @@ export function PatternCompositeTrajectory({
             length={length}
             w={SVG_WIDTH}
             h={SVG_HEIGHT}
-            xMode={aligned ? "relative" : "calendar"}
-            startA={startA}
-            startB={startB}
-            calMin={calMin}
-            calMax={calMax}
+            xMode="relative"
           />
         </div>
       </div>

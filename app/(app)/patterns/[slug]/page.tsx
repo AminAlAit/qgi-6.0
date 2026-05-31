@@ -398,6 +398,7 @@ export default async function UnifiedPatternPage({ params }: Params) {
         startA={startA}
         startB={startB}
         length={meta.length}
+        isOffset={isOffset}
       />
     </PageLayout>
   );
