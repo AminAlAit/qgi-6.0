@@ -622,6 +622,168 @@ def normalize_iso(name: str, countries: dict[str, dict[str, str]]) -> tuple[str 
     return None, None, None
 
 
+def _percentile(values: list[float], q: float) -> float:
+    """Linear-interpolation percentile (q in [0,100]) over a non-empty list.
+    Matches numpy's default 'linear' method so a shape line renders identically
+    whether aggregated here or upstream. Pure stdlib (the bake has no numpy)."""
+    s = sorted(values)
+    if len(s) == 1:
+        return float(s[0])
+    rank = (q / 100.0) * (len(s) - 1)
+    lo = int(rank)
+    frac = rank - lo
+    if lo + 1 < len(s):
+        return float(s[lo] + frac * (s[lo + 1] - s[lo]))
+    return float(s[lo])
+
+
+def _fill_gaps(arr: list) -> list:
+    """Fill None gaps so a shape array is a full number[] (the frontend card-v3
+    contract declares mean/p25/p75 as non-nullable). A gap means NO positive case
+    covered that lead-year (rare — sparse early indicator coverage). Interior gaps
+    are linearly interpolated between the nearest known lead-years; leading/trailing
+    gaps carry the nearest known value. Interpolating a smooth z-trajectory is a
+    standard, defensible estimate and is disclosed in the alignment `method` string."""
+    known = [i for i, v in enumerate(arr) if v is not None]
+    if not known:
+        return arr  # all-None — caller skips empty indicators, so this is defensive
+    out = list(arr)
+    for i in range(0, known[0]):              # leading
+        out[i] = arr[known[0]]
+    for i in range(known[-1] + 1, len(arr)):  # trailing
+        out[i] = arr[known[-1]]
+    for a, b in zip(known, known[1:]):        # interior
+        if b - a > 1:
+            for i in range(a + 1, b):
+                frac = (i - a) / (b - a)
+                out[i] = round(arr[a] + frac * (arr[b] - arr[a]), 4)
+    return out
+
+
+def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) -> dict | None:
+    """Canonical per-indicator movement shape (frontend bake-request B.1): z-scored
+    mean/p25/p75 of each selected indicator across the recipe's positive cases over
+    the window run-up, one point per lead-year.
+
+    Source is already on S3 in the walk summary
+    (`descriptive_emit.ranked_trajectory_signature.per_indicator_signatures[].samples[]`,
+    each carrying `temporal_profile` + `years_covered`); we aggregate at bake time, NO
+    re-walk. Samples are aligned by RELATIVE lead position (year_covered - event_year),
+    not by raw index: each sample's profile is dropna'd so lengths differ, and aligning
+    by index would smear different lead-times together.
+
+    INTERIM (fleet-run-1): the walk emits only head(5) positives per indicator, so this
+    is a 5-sample shape (the same basis te-sample-10 shipped). The full-corpus shape
+    lands at fleet-run-2; `samples_used` records the basis for audit."""
+    rts = (summary.get("descriptive_emit") or {}).get("ranked_trajectory_signature") or {}
+    per_ind = rts.get("per_indicator_signatures") or []
+    if not per_ind:
+        return None
+    window_years = (summary.get("greedy_outer_loop") or {}).get("chosen_window")
+    if not isinstance(window_years, int) or window_years < 2:
+        return None
+
+    positions = list(range(-int(window_years), 0))  # -W .. -1 (years before the event)
+    indicators_out: list[dict] = []
+    max_samples = 0
+    for block in per_ind:
+        code = block.get("indicator_id")
+        if not code:  # malformed signature block — can't identify the indicator
+            continue
+        samples = block.get("samples") or []
+        max_samples = max(max_samples, len(samples))
+        by_pos: dict[int, list[float]] = {}
+        for s in samples:
+            profile = s.get("temporal_profile") or []
+            years = s.get("years_covered") or []
+            ev = s.get("year")
+            if ev is None or len(profile) != len(years):
+                continue
+            for z, yr in zip(profile, years):
+                by_pos.setdefault(int(yr) - int(ev), []).append(float(z))
+        if not by_pos:
+            continue
+        mean_arr, p25_arr, p75_arr = [], [], []
+        for p in positions:
+            vals = by_pos.get(p)
+            if vals:
+                mean_arr.append(round(sum(vals) / len(vals), 4))
+                p25_arr.append(round(_percentile(vals, 25), 4))
+                p75_arr.append(round(_percentile(vals, 75), 4))
+            else:
+                mean_arr.append(None)
+                p25_arr.append(None)
+                p75_arr.append(None)
+        indicators_out.append({
+            "code": code,
+            "name": indicator_names.get(code),
+            "provider": _provider_for(code),
+            "n_samples": len(samples),
+            "shape": {
+                "mean": _fill_gaps(mean_arr),
+                "p25": _fill_gaps(p25_arr),
+                "p75": _fill_gaps(p75_arr),
+            },
+        })
+    if not indicators_out:
+        return None
+    return {
+        "window_years": int(window_years),
+        "indicators": indicators_out,
+        "samples_used": max_samples,
+        "method": ("z-aggregated across positive cases, aligned by lead-year, gaps "
+                   "linearly interpolated; fleet-run-1 emits head(5) positives "
+                   "(interim), full-corpus at run-2"),
+    }
+
+
+def _cohort_separation_pp(per_cohort: dict | None) -> float | None:
+    """reliability_multipass.v1_separation_pp: the spread (in AUC points) between the
+    best and worst per-cohort LOCO-AUC. A within-run consistency signal derivable from
+    this single walk; v4_oot_recall_pct stays null (it genuinely needs a 2nd pass)."""
+    if not per_cohort:
+        return None
+    aucs = [v.get("loco_auc") for v in per_cohort.values()
+            if isinstance(v, dict) and v.get("loco_auc") is not None]
+    if len(aucs) < 2:
+        return None
+    return round(max(aucs) - min(aucs), 4)
+
+
+def _per_cohort_calibration(per_cohort: dict | None) -> dict | None:
+    """Per-cohort calibration (frontend bake-request B.4): {cohort: {ece, bins, n}}.
+    The pooled `calibration` block is left intact; this adds the per-cohort breakdown
+    the walk already computed (`per_cohort[c].ece` + `.reliability_diagram_bins`)."""
+    if not per_cohort:
+        return None
+    out: dict[str, dict] = {}
+    for cohort, v in per_cohort.items():
+        if not isinstance(v, dict):
+            continue
+        out[cohort] = {
+            "ece": v.get("ece"),
+            "bins": v.get("reliability_diagram_bins"),
+            "n": v.get("n"),
+            "low_confidence": v.get("low_confidence"),
+        }
+    return out or None
+
+
+def _calibration_block(summary: dict) -> dict:
+    """Pooled calibration block + a per-cohort breakdown folded in. Returns a FRESH
+    dict so we never mutate the summary's own `calibration` object."""
+    base = dict(summary.get("calibration") or {
+        "computed": False,
+        "bins": None,
+        "ece": None,
+        "notes": "calibration block absent in this vintage",
+    })
+    pc = _per_cohort_calibration(summary.get("per_cohort"))
+    if pc is not None:
+        base["per_cohort"] = pc
+    return base
+
+
 def build_card_v3(
     summary: dict,
     sensitivity_data: dict | None,
@@ -736,16 +898,11 @@ def build_card_v3(
         },
         "reliability_multipass": {
             "walks_completed": 1,
-            "v1_separation_pp": None,
-            "v4_oot_recall_pct": None,
+            "v1_separation_pp": _cohort_separation_pp(summary.get("per_cohort")),
+            "v4_oot_recall_pct": None,  # needs a 2nd independent walk (fleet-run-2)
             "verdict": verdict,
         },
-        "calibration": summary.get("calibration") or {
-            "computed": False,
-            "bins": None,
-            "ece": None,
-            "notes": "calibration block absent in this vintage",
-        },
+        "calibration": _calibration_block(summary),
         "per_country_scores_pointer": f"scores/{rid}.scores.json",
     }
 
@@ -762,6 +919,10 @@ def build_card_v3(
         card["shap_importance_normalized"] = {}
         card["shap_direction_signs"] = {}
         card["per_feature_breakdown"] = {}
+
+    # frontend bake-request B.1: canonical per-indicator movement shape, aggregated
+    # from the walk summary's descriptive emit (5-sample interim; full-corpus at run-2)
+    card["trajectory_alignment"] = _build_trajectory_alignment(summary, indicator_names)
 
     return card
 
