@@ -78,3 +78,21 @@ def test_trajectory_window_empty_country_has_new_keys():
     panel = _panel([1.0, 2.0], [2019, 2020], country="OTHER")
     row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
     assert row["trajectory_window"] == [] and row["trajectory_window_years"] == []
+
+
+def test_trajectory_window_short_history_returns_what_exists():
+    # only 3 years of data, window=12 -> a 3-point window, not an error.
+    panel = _panel([10.0, 20.0, 30.0], [2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=12)[0]
+    assert row["trajectory_window_years"] == [2018, 2019, 2020]
+    assert len(row["trajectory_window"]) == 3
+
+
+def test_trajectory_window_drops_nan_baseline_values():
+    # a NaN in the panel must not poison the baseline mean/std (parity with the
+    # walk's .dropna()).
+    panel = _panel([10.0, float("nan"), 30.0, 40.0, 50.0], [2016, 2017, 2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    # baseline = [10,30,40,50] (NaN dropped), mean 32.5; window years still 2018-2020
+    assert row["trajectory_window_years"] == [2018, 2019, 2020]
+    assert all(v == v for v in row["trajectory_window"])  # no NaN propagated
