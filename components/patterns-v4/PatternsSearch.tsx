@@ -870,8 +870,63 @@ function LengthRangeSlider({
   const pctLeft = ((min - corpusMin) / span) * 100;
   const pctRight = ((max - corpusMin) / span) * 100;
 
+  // When the two thumbs sit in the right half of the track, raise the MIN
+  // thumb above the MAX thumb so that, if they overlap, the user can still
+  // grab the min thumb and drag it left. In the left half the max thumb wins.
+  // The tracks themselves are pointer-events:none (see <style> below), so the
+  // two thumbs only contend when they physically overlap — this rule resolves
+  // exactly that case and was the cause of the "left thumb stuck" bug.
+  const minOnTop = min > corpusMin + span / 2;
+
   return (
     <div>
+      {/* Thumb-only pointer-events: the native range input hit-tests its whole
+          track, so two stacked full-width inputs make the top one capture every
+          click (the min thumb became unreachable — founder bug 2026-05-31).
+          Disabling pointer-events on the input and re-enabling ONLY on the
+          ::thumb pseudo-element makes each thumb independently grabbable. */}
+      <style>{`
+        .qgi-range-dual {
+          position: absolute;
+          width: 100%;
+          height: 18px;
+          margin: 0;
+          background: transparent;
+          -webkit-appearance: none;
+          appearance: none;
+          pointer-events: none;
+          outline: none;
+        }
+        .qgi-range-dual::-webkit-slider-runnable-track {
+          background: transparent;
+          height: 4px;
+        }
+        .qgi-range-dual::-moz-range-track { background: transparent; height: 4px; }
+        .qgi-range-dual::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          pointer-events: auto;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: ${ACCENT};
+          border: 2px solid var(--qgi-surface);
+          box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+          cursor: pointer;
+          margin-top: -6px;
+        }
+        .qgi-range-dual::-moz-range-thumb {
+          pointer-events: auto;
+          width: 16px;
+          height: 16px;
+          border-radius: 50%;
+          background: ${ACCENT};
+          border: 2px solid var(--qgi-surface);
+          box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+          cursor: pointer;
+        }
+      `}</style>
+
       {/* Value label */}
       <div
         style={{
@@ -920,10 +975,10 @@ function LengthRangeSlider({
           }}
         />
 
-        {/* Min thumb — lives below max thumb (z-index lower by default).
-            pointer-events: none when it's at max so the max thumb can still be dragged. */}
+        {/* Min thumb */}
         <input
           type="range"
+          className="qgi-range-dual"
           min={corpusMin}
           max={corpusMax}
           value={min}
@@ -932,25 +987,13 @@ function LengthRangeSlider({
             if (v <= max) onMinChange(v);
           }}
           aria-label="Minimum pattern length"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "4px",
-            appearance: "none",
-            WebkitAppearance: "none",
-            background: "transparent",
-            pointerEvents: min === max ? "none" : "auto",
-            // Thumb styling via CSS custom properties / accent-color
-            accentColor: ACCENT,
-            outline: "none",
-            zIndex: min > max - span * 0.01 ? 5 : 4,
-            cursor: "pointer",
-          }}
+          style={{ zIndex: minOnTop ? 6 : 4 }}
         />
 
         {/* Max thumb */}
         <input
           type="range"
+          className="qgi-range-dual"
           min={corpusMin}
           max={corpusMax}
           value={max}
@@ -959,18 +1002,7 @@ function LengthRangeSlider({
             if (v >= min) onMaxChange(v);
           }}
           aria-label="Maximum pattern length"
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "4px",
-            appearance: "none",
-            WebkitAppearance: "none",
-            background: "transparent",
-            accentColor: ACCENT,
-            outline: "none",
-            zIndex: 5,
-            cursor: "pointer",
-          }}
+          style={{ zIndex: 5 }}
         />
       </div>
 
