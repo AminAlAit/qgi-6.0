@@ -48,7 +48,8 @@ def test_rank_and_fill_skips_overflow_keeps_smaller_later():
     ws = [{"corr": 0.9, "length": 5, "n_ind": 3, "sz": 300},
           {"corr": 0.5, "length": 5, "n_ind": 3, "sz": 50}]
     sel, total = sc.rank_and_fill(ws, size_cap_bytes=100, per_pattern_bytes=lambda w: w["sz"])
-    assert [w["sz"] for w in sel] == [50] and total == 50  # big one skipped, small fits
+    assert [w["sz"] for w in sel] == [50]  # big one skipped, small fits
+    assert total == 50
 
 
 # ---- build_slug -------------------------------------------------------------
@@ -77,6 +78,11 @@ def test_zscore_downsample_to_12_preserves_endpoints():
 
 def test_zscore_empty():
     assert sc.zscore_downsample([]) == []
+
+
+def test_zscore_single_epoch_returns_first_zscore():
+    # n_epochs=1 -> z-score of the first window point (documented single-epoch contract)
+    assert sc.zscore_downsample([10, 20, 30, 40, 50], n_epochs=1) == [-1.4142]
 
 
 # ---- pearson_r + direction --------------------------------------------------
