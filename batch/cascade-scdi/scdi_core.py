@@ -16,6 +16,7 @@ Founder directive (2026-05-31, feedback_cascade_batch_ranking):
 from __future__ import annotations
 
 import math
+from collections.abc import Callable
 
 # Balanced-score weights. Sum to 1.0; #indicators (0.36) sits slightly above
 # correlation (0.34), and length (0.30) is the one shaved — the deliberate tilt.
@@ -49,7 +50,7 @@ def balanced_scores(windows: list[dict]) -> list[float]:
 
 
 def rank_and_fill(windows: list[dict], size_cap_bytes: int,
-                  per_pattern_bytes) -> tuple[list[dict], int]:
+                  per_pattern_bytes: Callable[[dict], int]) -> tuple[list[dict], int]:
     """Greedy fill (founder: NOT a fixed N). Rank windows by balanced score desc, then
     add best-first while the accumulated estimated baked size stays under
     `size_cap_bytes`. `per_pattern_bytes(window)` estimates a pattern's JSON footprint.
@@ -81,7 +82,8 @@ def build_slug(a_iso2: str, b_iso2: str, start_a: int, start_b: int, length: int
 def zscore_downsample(values: list[float], n_epochs: int = 12) -> list[float]:
     """Z-score a country's indicator series over the window (per-country mean/std),
     then downsample to `n_epochs` evenly-spaced points (linear interpolation; endpoints
-    preserved). Returns floats rounded to 4dp. Empty in -> empty out."""
+    preserved). Returns floats rounded to 4dp. Empty in -> empty out;
+    n_epochs<=1 -> the first lead-point's z-score (single-epoch summary)."""
     n = len(values)
     if n == 0:
         return []
