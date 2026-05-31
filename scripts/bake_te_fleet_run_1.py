@@ -637,6 +637,29 @@ def _percentile(values: list[float], q: float) -> float:
     return float(s[lo])
 
 
+def _fill_gaps(arr: list) -> list:
+    """Fill None gaps so a shape array is a full number[] (the frontend card-v3
+    contract declares mean/p25/p75 as non-nullable). A gap means NO positive case
+    covered that lead-year (rare — sparse early indicator coverage). Interior gaps
+    are linearly interpolated between the nearest known lead-years; leading/trailing
+    gaps carry the nearest known value. Interpolating a smooth z-trajectory is a
+    standard, defensible estimate and is disclosed in the alignment `method` string."""
+    known = [i for i, v in enumerate(arr) if v is not None]
+    if not known:
+        return arr  # all-None — caller skips empty indicators, so this is defensive
+    out = list(arr)
+    for i in range(0, known[0]):              # leading
+        out[i] = arr[known[0]]
+    for i in range(known[-1] + 1, len(arr)):  # trailing
+        out[i] = arr[known[-1]]
+    for a, b in zip(known, known[1:]):        # interior
+        if b - a > 1:
+            for i in range(a + 1, b):
+                frac = (i - a) / (b - a)
+                out[i] = round(arr[a] + frac * (arr[b] - arr[a]), 4)
+    return out
+
+
 def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) -> dict | None:
     """Canonical per-indicator movement shape (frontend bake-request B.1): z-scored
     mean/p25/p75 of each selected indicator across the recipe's positive cases over
@@ -657,7 +680,7 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
     if not per_ind:
         return None
     window_years = (summary.get("greedy_outer_loop") or {}).get("chosen_window")
-    if not window_years or window_years < 2:
+    if not isinstance(window_years, int) or window_years < 2:
         return None
 
     positions = list(range(-int(window_years), 0))  # -W .. -1 (years before the event)
@@ -665,6 +688,8 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
     max_samples = 0
     for block in per_ind:
         code = block.get("indicator_id")
+        if not code:  # malformed signature block — can't identify the indicator
+            continue
         samples = block.get("samples") or []
         max_samples = max(max_samples, len(samples))
         by_pos: dict[int, list[float]] = {}
@@ -691,9 +716,14 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
                 p75_arr.append(None)
         indicators_out.append({
             "code": code,
-            "name": indicator_names.get(code) if code else None,
+            "name": indicator_names.get(code),
             "provider": _provider_for(code),
-            "shape": {"mean": mean_arr, "p25": p25_arr, "p75": p75_arr},
+            "n_samples": len(samples),
+            "shape": {
+                "mean": _fill_gaps(mean_arr),
+                "p25": _fill_gaps(p25_arr),
+                "p75": _fill_gaps(p75_arr),
+            },
         })
     if not indicators_out:
         return None
@@ -701,8 +731,9 @@ def _build_trajectory_alignment(summary: dict, indicator_names: dict[str, str]) 
         "window_years": int(window_years),
         "indicators": indicators_out,
         "samples_used": max_samples,
-        "method": ("z-aggregated across positive cases, aligned by lead-year; "
-                   "fleet-run-1 emits head(5) positives (interim), full-corpus at run-2"),
+        "method": ("z-aggregated across positive cases, aligned by lead-year, gaps "
+                   "linearly interpolated; fleet-run-1 emits head(5) positives "
+                   "(interim), full-corpus at run-2"),
     }
 
 

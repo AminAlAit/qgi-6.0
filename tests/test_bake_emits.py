@@ -145,6 +145,42 @@ def test_trajectory_alignment_none_when_window_too_small():
     assert bake._build_trajectory_alignment(_summary_with_sigs(1, sigs), {}) is None
 
 
+def test_trajectory_alignment_interior_gap_is_interpolated_not_null():
+    # A lead-year with NO covering positive must be interpolated to keep shape a
+    # full number[] (frontend contract is non-nullable). window 3, only -3 and -1.
+    sigs = [{"indicator_id": "x", "samples": [
+        {"country": "A", "year": 2020, "temporal_profile": [10.0, 20.0],
+         "years_covered": [2017, 2019]}]}]  # 2018 (lead -2) absent
+    out = bake._build_trajectory_alignment(_summary_with_sigs(3, sigs), {})
+    mean = out["indicators"][0]["shape"]["mean"]
+    assert mean == [10.0, 15.0, 20.0]  # -2 linearly interpolated, no None
+    assert all(v is not None for v in mean)
+
+
+def test_trajectory_alignment_leading_gap_is_edge_filled():
+    # window 3, sample covers only -2 and -1; -3 has no data -> carry nearest known.
+    sigs = [{"indicator_id": "x", "samples": [
+        {"country": "A", "year": 2020, "temporal_profile": [4.0, 6.0],
+         "years_covered": [2018, 2019]}]}]
+    out = bake._build_trajectory_alignment(_summary_with_sigs(3, sigs), {})
+    assert out["indicators"][0]["shape"]["mean"] == [4.0, 4.0, 6.0]  # -3 back-filled
+
+
+def test_trajectory_alignment_skips_codeless_block():
+    sigs = [
+        {"samples": [{"country": "A", "year": 2000, "temporal_profile": [1.0, 2.0],
+                      "years_covered": [1998, 1999]}]},  # no indicator_id -> skipped
+        {"indicator_id": "x", "samples": [{"country": "A", "year": 2000,
+         "temporal_profile": [3.0, 4.0], "years_covered": [1998, 1999]}]},
+    ]
+    out = bake._build_trajectory_alignment(_summary_with_sigs(2, sigs), {})
+    assert len(out["indicators"]) == 1 and out["indicators"][0]["code"] == "x"
+
+
+def test_fill_gaps_all_none_returns_unchanged():
+    assert bake._fill_gaps([None, None]) == [None, None]
+
+
 # ---- integration: build_card_v3 wires the three new emits --------------------
 
 def test_build_card_v3_wires_new_emits():
