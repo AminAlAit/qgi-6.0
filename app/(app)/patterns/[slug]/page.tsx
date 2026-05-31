@@ -72,19 +72,38 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
-// ── Tier label ────────────────────────────────────────────────────────────────
+// ── MetricPill — hero stat display ────────────────────────────────────────────
 
-function tierLabel(tier: string): string {
-  switch (tier) {
-    case "XL":
-    case "L":
-      return "long term";
-    case "M":
-      return "medium term";
-    case "S":
-    default:
-      return "short pattern";
-  }
+function MetricPill({ label, value }: { label: string; value: string }) {
+  return (
+    <div style={{ textAlign: "center" }}>
+      <div
+        style={{
+          fontSize: "9px",
+          letterSpacing: "1.2px",
+          fontFamily: "ui-monospace, monospace",
+          color: "var(--qgi-text-dim)",
+          fontWeight: 600,
+          textTransform: "uppercase",
+          marginBottom: "2px",
+        }}
+      >
+        {label}
+      </div>
+      <div
+        style={{
+          fontSize: "18px",
+          fontWeight: 700,
+          color: "var(--qgi-text)",
+          lineHeight: 1.1,
+          letterSpacing: "-0.3px",
+          fontFamily: "ui-monospace, monospace",
+        }}
+      >
+        {value}
+      </div>
+    </div>
+  );
 }
 
 // ── Build composite series ────────────────────────────────────────────────────
@@ -277,54 +296,42 @@ export default async function UnifiedPatternPage({ params }: Params) {
               />
             </div>
 
-            {/* Metadata row: window span + indicator count + tier */}
+            {/* Core metrics: length · offset · indicators — hero anchors */}
             <div
               style={{
                 display: "flex",
                 flexWrap: "wrap",
                 justifyContent: "center",
-                gap: "6px",
-                fontSize: "11px",
-                fontFamily: "ui-monospace, monospace",
-                color: "var(--qgi-text-muted)",
+                gap: "16px",
+                marginTop: "4px",
               }}
             >
               {isOffset && meta.start_year_b !== undefined ? (
                 <>
-                  <span>{meta.length} years</span>
-                  <span style={{ color: "var(--qgi-text-dim)" }}>&middot;</span>
-                  <span>{Math.abs(meta.offset_years ?? 0)}-year offset</span>
-                  <span style={{ color: "var(--qgi-text-dim)" }}>&middot;</span>
-                  <span>{meta.num_indicators} indicators</span>
+                  <MetricPill label="length" value={`${meta.length} years`} />
+                  <MetricPill
+                    label="offset"
+                    value={`${Math.abs(meta.offset_years ?? 0)}-year offset`}
+                  />
+                  <MetricPill
+                    label="indicators"
+                    value={`${meta.num_indicators} indicators`}
+                  />
                 </>
               ) : (
                 <>
-                  <span>
-                    {meta.start_year}–{meta.end_year}
-                  </span>
-                  <span style={{ color: "var(--qgi-text-dim)" }}>&middot;</span>
-                  <span>{meta.length} years</span>
-                  <span style={{ color: "var(--qgi-text-dim)" }}>&middot;</span>
-                  <span>{meta.num_indicators} indicators</span>
+                  <MetricPill
+                    label="window"
+                    value={`${meta.start_year}–${meta.end_year}`}
+                  />
+                  <MetricPill label="length" value={`${meta.length} years`} />
+                  <MetricPill
+                    label="indicators"
+                    value={`${meta.num_indicators} indicators`}
+                  />
                 </>
               )}
             </div>
-
-            {/* Tier badge */}
-            <span
-              style={{
-                background: "var(--qgi-bg)",
-                border: "1px solid var(--qgi-border)",
-                borderRadius: "4px",
-                padding: "2px 10px",
-                fontSize: "9px",
-                fontFamily: "ui-monospace, monospace",
-                color: "var(--qgi-text-muted)",
-                letterSpacing: "0.5px",
-              }}
-            >
-              {tierLabel(meta.tier)}
-            </span>
           </div>
 
           {/* Country B block — right-aligned */}
@@ -372,6 +379,10 @@ export default async function UnifiedPatternPage({ params }: Params) {
         countryA={meta.a_name}
         countryB={meta.b_name}
         length={meta.length}
+        startA={startA}
+        endA={endA}
+        startB={startB}
+        endB={endB}
         compositeA={compositeA}
         compositeB={compositeB}
         indicators={indicators}

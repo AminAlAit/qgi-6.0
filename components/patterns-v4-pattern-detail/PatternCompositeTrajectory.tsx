@@ -3,19 +3,23 @@
 /**
  * PatternCompositeTrajectory — composite rhyme line + per-category composites.
  *
- * The overall composite uses Year 1..N on the x-axis (window-relative) so
- * both countries' series overlay correctly even for offset patterns. The
- * calendar-year offset is shown in the segment timeline panel above.
+ * Align toggle (2026-05-31):
+ *   OFF (default) — shared CALENDAR x-axis. Each country's segment is plotted
+ *     at its actual start year so the 7-year (or N-year) offset is visible.
+ *     X-axis range spans min(startA, startB) to max(endA, endB).
+ *   ON — shared WINDOW-RELATIVE x-axis: Year 1..N. Both lines overlap so the
+ *     rhyme shape is visible. This is the original behaviour.
  *
- * Per-category composite subplots are shown below the main chart, one per
- * category that has >=2 indicators in this pattern. Laid out in a 2-column
- * responsive grid.
+ * Per-category composite subplots always use window-relative Year 1..N (they
+ * are category deep-dives that assume alignment). Align toggle only affects
+ * the main composite chart.
  *
  * Kicker: COMPOSITE TRAJECTORY
- * Heading: "Indicator-composite trajectory · Year 1 → Year N"
+ * Heading: "Indicator-composite trajectory"
+ * Subtitle: expanded plain-English description (moved from below chart)
  */
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type { PatternIndicator } from "@/lib/cascade-patterns/scdi-mock";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { pairDetailFlagFor } from "@/lib/te-mock/patterns-v4-pair-detail-mock";
@@ -26,6 +30,14 @@ interface PatternCompositeTrajectoryProps {
   countryA: string;
   countryB: string;
   length: number;
+  /** Calendar start year of country A's window (for Align OFF calendar x-axis). */
+  startA: number;
+  /** Calendar end year of country A's window. */
+  endA: number;
+  /** Calendar start year of country B's window. */
+  startB: number;
+  /** Calendar end year of country B's window. */
+  endB: number;
   compositeA: number[];
   compositeB: number[];
   indicators: PatternIndicator[];
@@ -35,23 +47,33 @@ interface PatternCompositeTrajectoryProps {
 
 const SVG_WIDTH = 600;
 const SVG_HEIGHT = 80;
-const AXIS_PAD = 20;
+const AXIS_PAD = 22;
+// Horizontal padding inside the SVG so first/last labels don't clip.
+const X_PAD = 28;
 const SUB_HEIGHT = 50;
 
-function buildPath(series: number[], w: number, h: number): string {
+function buildPath(series: number[], drawW: number, h: number): string {
   if (series.length < 2) return "";
   const min = Math.min(...series);
   const max = Math.max(...series);
   const range = max - min || 1;
   return series
     .map((v, i) => {
-      const x = (i / (series.length - 1)) * w;
+      const x = X_PAD + (i / (series.length - 1)) * drawW;
       const y = h - ((v - min) / range) * h;
       return `${i === 0 ? "M" : "L"} ${x.toFixed(1)} ${y.toFixed(1)}`;
     })
     .join(" ");
 }
 
+/**
+ * MiniChart — SVG sparkline with axis labels.
+ *
+ * xMode "relative" (default): Year 1..N ticks. Both series plotted in the
+ *   same X space so they overlay regardless of calendar offset.
+ * xMode "calendar": each series plotted at its own calendar start position
+ *   on a shared axis from calMin to calMax, so a 7-year offset is visible.
+ */
 function MiniChart({
   seriesA,
   seriesB,
@@ -60,7 +82,11 @@ function MiniChart({
   w = SVG_WIDTH,
   h = SVG_HEIGHT,
   length,
-  xAxisStyle = "years",
+  xMode = "relative",
+  startA,
+  startB,
+  calMin,
+  calMax,
 }: {
   seriesA: number[];
   seriesB: number[];
@@ -69,42 +95,111 @@ function MiniChart({
   w?: number;
   h?: number;
   length: number;
-  xAxisStyle?: "years";
+  xMode?: "relative" | "calendar";
+  /** Calendar start year of A (required for xMode "calendar"). */
+  startA?: number;
+  /** Calendar start year of B (required for xMode "calendar"). */
+  startB?: number;
+  /** Axis minimum year (required for xMode "calendar"). */
+  calMin?: number;
+  /** Axis maximum year (required for xMode "calendar"). */
+  calMax?: number;
 }) {
-  const pathA = buildPath(seriesA, w, h);
-  const pathB = buildPath(seriesB, w, h);
   const sameColor = colorA === colorB;
+  // Total viewBox width includes horizontal padding on both sides.
+  const totalW = w + X_PAD * 2;
+  // Inner draw area width.
+  const drawW = w;
 
-  // Year tick marks: Year 1, Year N, midpoint.
-  const tickPositions = [0, Math.floor((length - 1) / 2), length - 1];
+  // Build paths.
+  let pathA = "";
+  let pathB = "";
+
+  if (
+    xMode === "calendar" &&
+    calMin != null &&
+    calMax != null &&
+    startA != null &&
+    startB != null
+  ) {
+    const calSpan = calMax - calMin || 1;
+    // Map a (startYear, seriesIndex) to an x coordinate in the viewBox.
+    const calX = (startYear: number, i: number) =>
+      X_PAD + ((startYear - calMin + i) / calSpan) * drawW;
+
+    const minAll = Math.min(...seriesA, ...seriesB);
+    const maxAll = Math.max(...seriesA, ...seriesB);
+    const range = maxAll - minAll || 1;
+    const yOf = (v: number) => h - ((v - minAll) / range) * h;
+
+    pathA = seriesA
+      .map(
+        (v, i) =>
+          `${i === 0 ? "M" : "L"} ${calX(startA, i).toFixed(1)} ${yOf(v).toFixed(1)}`
+      )
+      .join(" ");
+    pathB = seriesB
+      .map(
+        (v, i) =>
+          `${i === 0 ? "M" : "L"} ${calX(startB, i).toFixed(1)} ${yOf(v).toFixed(1)}`
+      )
+      .join(" ");
+  } else {
+    // Relative mode: both series share the same X space.
+    pathA = buildPath(seriesA, drawW, h);
+    pathB = buildPath(seriesB, drawW, h);
+  }
+
+  // Axis ticks.
+  const ticks: Array<{ x: number; label: string }> = [];
+
+  if (xMode === "calendar" && calMin != null && calMax != null) {
+    const calSpan = calMax - calMin || 1;
+    // Decade ticks on the calendar axis.
+    const firstDecade = Math.ceil(calMin / 10) * 10;
+    for (let y = firstDecade; y <= calMax; y += 10) {
+      const x = X_PAD + ((y - calMin) / calSpan) * drawW;
+      ticks.push({ x, label: String(y) });
+    }
+  } else {
+    // Year 1, midpoint, Year N.
+    const mid = Math.floor((length - 1) / 2);
+    [0, mid, length - 1].forEach((i) => {
+      const x = X_PAD + (i / (length - 1)) * drawW;
+      const label =
+        i === 0 ? "Year 1" : i === length - 1 ? `Year ${length}` : `Year ${i + 1}`;
+      ticks.push({ x, label });
+    });
+  }
 
   return (
     <svg
-      viewBox={`0 0 ${w} ${h + AXIS_PAD}`}
+      viewBox={`0 0 ${totalW} ${h + AXIS_PAD}`}
       style={{ width: "100%", display: "block" }}
       aria-hidden="true"
     >
-      {/* Zero guide */}
-      {(() => {
-        const all = [...seriesA, ...seriesB];
-        const min = Math.min(...all);
-        const max = Math.max(...all);
-        if (min < 0 && max > 0) {
-          const y = h - ((0 - min) / (max - min || 1)) * h;
-          return (
-            <line
-              x1={0}
-              y1={y}
-              x2={w}
-              y2={y}
-              stroke="var(--qgi-border)"
-              strokeWidth={0.6}
-              strokeDasharray="3 3"
-            />
-          );
-        }
-        return null;
-      })()}
+      {/* Zero guide (relative mode only — calendar mode has heterogeneous ranges) */}
+      {xMode === "relative" &&
+        (() => {
+          const all = [...seriesA, ...seriesB];
+          const min = Math.min(...all);
+          const max = Math.max(...all);
+          if (min < 0 && max > 0) {
+            const y = h - ((0 - min) / (max - min || 1)) * h;
+            return (
+              <line
+                x1={X_PAD}
+                y1={y}
+                x2={X_PAD + drawW}
+                y2={y}
+                stroke="var(--qgi-border)"
+                strokeWidth={0.6}
+                strokeDasharray="3 3"
+              />
+            );
+          }
+          return null;
+        })()}
 
       {/* B drawn first so A is on top */}
       <path
@@ -117,34 +212,29 @@ function MiniChart({
       />
       <path d={pathA} fill="none" stroke={colorA} strokeWidth={1.6} strokeOpacity={1} />
 
-      {/* Year axis ticks */}
-      {tickPositions.map((i) => {
-        const x = (i / (length - 1)) * w;
-        const label =
-          i === 0 ? "Year 1" : i === length - 1 ? `Year ${length}` : `Year ${i + 1}`;
-        return (
-          <g key={i}>
-            <line
-              x1={x}
-              y1={h}
-              x2={x}
-              y2={h + 4}
-              stroke="var(--qgi-text-dim)"
-              strokeWidth={0.7}
-            />
-            <text
-              x={x}
-              y={h + AXIS_PAD - 2}
-              fill="var(--qgi-text-dim)"
-              fontSize={7}
-              fontFamily="ui-monospace, monospace"
-              textAnchor="middle"
-            >
-              {xAxisStyle === "years" ? label : `${i + 1}`}
-            </text>
-          </g>
-        );
-      })}
+      {/* Axis ticks + labels */}
+      {ticks.map(({ x, label }) => (
+        <g key={label}>
+          <line
+            x1={x}
+            y1={h}
+            x2={x}
+            y2={h + 4}
+            stroke="var(--qgi-text-dim)"
+            strokeWidth={0.7}
+          />
+          <text
+            x={x}
+            y={h + AXIS_PAD - 3}
+            fill="var(--qgi-text-dim)"
+            fontSize={7}
+            fontFamily="ui-monospace, monospace"
+            textAnchor="middle"
+          >
+            {label}
+          </text>
+        </g>
+      ))}
     </svg>
   );
 }
@@ -153,6 +243,10 @@ export function PatternCompositeTrajectory({
   countryA,
   countryB,
   length,
+  startA,
+  endA,
+  startB,
+  endB,
   compositeA,
   compositeB,
   indicators,
@@ -162,6 +256,13 @@ export function PatternCompositeTrajectory({
   const colorA = familyColor(dominantFamilyAId);
   const colorB = familyColor(dominantFamilyBId);
   const sameFamily = dominantFamilyAId === dominantFamilyBId;
+
+  // Align toggle: OFF = calendar x-axis (offset visible), ON = Year 1..N (rhyme visible).
+  const [aligned, setAligned] = useState(false);
+
+  // Calendar axis bounds (for Align OFF).
+  const calMin = Math.min(startA, startB);
+  const calMax = Math.max(endA, endB);
 
   // Per-category composites: only categories with >=2 indicators.
   const categoryComposites = useMemo(() => {
@@ -187,6 +288,8 @@ export function PatternCompositeTrajectory({
       .sort((a, b) => b.count - a.count);
   }, [indicators]);
 
+  const ACCENT_COLOR = "#5B7E99";
+
   return (
     <div
       style={{
@@ -197,7 +300,7 @@ export function PatternCompositeTrajectory({
         marginBottom: "20px",
       }}
     >
-      {/* Header */}
+      {/* Header row: kicker + h2 + legend */}
       <div
         style={{
           display: "flex",
@@ -205,7 +308,7 @@ export function PatternCompositeTrajectory({
           justifyContent: "space-between",
           flexWrap: "wrap",
           gap: "10px",
-          marginBottom: "14px",
+          marginBottom: "6px",
         }}
       >
         <div>
@@ -237,7 +340,7 @@ export function PatternCompositeTrajectory({
         <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
           {[
             { name: countryA, color: colorA, dashed: false },
-            { name: countryB, color: sameFamily ? colorB : colorB, dashed: sameFamily },
+            { name: countryB, color: colorB, dashed: sameFamily },
           ].map(({ name, color, dashed }) => (
             <div key={name} style={{ display: "flex", alignItems: "center", gap: "6px" }}>
               <svg width={28} height={10} aria-hidden style={{ flexShrink: 0 }}>
@@ -272,46 +375,87 @@ export function PatternCompositeTrajectory({
         </div>
       </div>
 
-      {/* Main chart */}
-      <div style={{ width: "100%", overflowX: "auto" }}>
-        <MiniChart
-          seriesA={compositeA}
-          seriesB={compositeB}
-          colorA={colorA}
-          colorB={colorB}
-          length={length}
-          w={SVG_WIDTH}
-          h={SVG_HEIGHT}
-        />
-      </div>
-
+      {/* Subtitle — moved from below chart; plain-English, keeps z-score */}
       <p
         style={{
-          fontSize: "11px",
-          color: "var(--qgi-text-dim)",
-          margin: "8px 0 0",
-          fontStyle: "italic",
+          fontSize: "12px",
+          color: "var(--qgi-text-muted)",
+          margin: "0 0 14px",
+          lineHeight: 1.6,
+          maxWidth: "640px",
         }}
       >
-        Both countries&apos; indicator-composite z-score normalized to the shared window
-        length. Year 1 = each country&apos;s start year.
+        One line per country, blending all {indicators.length} of its indicators into a
+        single trace. Each indicator is put on a z-score scale first, so a slow-moving
+        measure and a volatile one count equally, then they are averaged together. Where
+        the two lines rise and fall in step, the countries were moving alike.{" "}
+        {aligned
+          ? "Each line starts at its own country's first year, so they sit on top of each other and the shared shape stands out."
+          : `Real calendar years are shown, so you can see the ${Math.abs(startA - startB)}-year gap between when each country's run began.`}
       </p>
+
+      {/* Align toggle + main chart */}
+      <div style={{ width: "100%" }}>
+        {/* Align toggle — colocated with the chart it affects */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "6px",
+          }}
+        >
+          <button
+            onClick={() => setAligned((a) => !a)}
+            aria-pressed={aligned}
+            style={{
+              fontSize: "10px",
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.8px",
+              padding: "3px 10px",
+              borderRadius: "4px",
+              border: `1px solid ${aligned ? ACCENT_COLOR : "var(--qgi-border)"}`,
+              background: aligned ? `${ACCENT_COLOR}18` : "transparent",
+              color: aligned ? ACCENT_COLOR : "var(--qgi-text-dim)",
+              cursor: "pointer",
+              transition: "all 100ms",
+            }}
+          >
+            {aligned ? "Aligned · switch to calendar" : "Align · show rhyme"}
+          </button>
+        </div>
+
+        <div style={{ overflowX: "auto" }}>
+          <MiniChart
+            seriesA={compositeA}
+            seriesB={compositeB}
+            colorA={colorA}
+            colorB={colorB}
+            length={length}
+            w={SVG_WIDTH}
+            h={SVG_HEIGHT}
+            xMode={aligned ? "relative" : "calendar"}
+            startA={startA}
+            startB={startB}
+            calMin={calMin}
+            calMax={calMax}
+          />
+        </div>
+      </div>
 
       {/* Per-category composites */}
       {categoryComposites.length > 0 && (
-        <div style={{ marginTop: "20px" }}>
-          <div
+        <div style={{ marginTop: "24px" }}>
+          {/* "BY CATEGORY" as h2 — same size/weight as panel h2 */}
+          <h2
             style={{
-              fontSize: "9px",
-              letterSpacing: "1.2px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
-              marginBottom: "12px",
-              fontWeight: 600,
+              fontSize: "15px",
+              fontWeight: 700,
+              margin: "0 0 14px",
+              color: "var(--qgi-text)",
             }}
           >
-            BY CATEGORY
-          </div>
+            By category
+          </h2>
           <div
             style={{
               display: "grid",
@@ -378,6 +522,7 @@ export function PatternCompositeTrajectory({
                     length={length}
                     w={280}
                     h={SUB_HEIGHT}
+                    xMode="relative"
                   />
                 </div>
               );
