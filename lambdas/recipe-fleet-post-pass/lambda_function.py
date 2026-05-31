@@ -347,7 +347,8 @@ def lambda_handler(event: dict, context: Any) -> dict[str, Any]:
         run_id=vintage_id,
         panel_fingerprint=panel_fp,
         # Condition I: record WHEN floors were frozen alongside the boolean, so the
-        # attestation carries Condition A's evidence (anchor timestamp), not just its verdict.
+        # attestation carries the `floor_ordering_ok` evidence (the frozen-at anchor),
+        # not just its pass/fail verdict.
         floors_frozen_at_utc=(floors_doc or {}).get("frozen_at_utc"),
     )
 
