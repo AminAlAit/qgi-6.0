@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 import score_countries as sc  # noqa: E402
@@ -38,3 +39,60 @@ def test_signed_shap_same_block_grouping_as_signal_share():
     row = np.arange(24.0)  # 3 indicators
     assert len(sc.signed_shap_per_indicator(row)) == 3
     assert len(sc.signal_share_per_indicator(row)) == 3
+
+
+# ---- trajectory_window (§A.2) -----------------------------------------------
+
+def _panel(values, years, country="X"):
+    return pd.DataFrame({"country": [country] * len(years), "year": years, "value": values})
+
+
+def test_trajectory_window_uses_25y_baseline_not_within_window():
+    # years 2016-2020, values 10..50. window=3 -> last 3 years (2018,2019,2020).
+    panel = _panel([10.0, 20.0, 30.0, 40.0, 50.0], [2016, 2017, 2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    assert row["trajectory_window_years"] == [2018, 2019, 2020]
+    # z'd against the 25y baseline (all 5: mean 30, std sqrt(200)=14.1421), NOT the
+    # 3y window mean (40). value 30 == baseline mean -> 0.0 proves baseline-z.
+    assert row["trajectory_window"] == [0.0, 0.7071, 1.4142]
+
+
+def test_trajectory_window_overlay_scale_matches_canonical_baseline_z():
+    # The whole point: window z uses baseline mean/std, so the window's own first
+    # point is NOT forced to a within-window anchor. (within-window z would give
+    # value 30 -> (30-40)/8.165 = -1.2247, which we must NOT see.)
+    panel = _panel([10.0, 20.0, 30.0, 40.0, 50.0], [2016, 2017, 2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    assert row["trajectory_window"][0] == 0.0  # baseline-z, not within-window
+
+
+def test_trajectory_12q_unchanged_regression():
+    panel = _panel([10.0, 20.0, 30.0, 40.0, 50.0], [2016, 2017, 2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    # within-window z over the available 5 points (mean 30, std 14.1421) — pre-existing
+    assert [round(v, 4) for v in row["trajectory_12q"]] == [-1.4142, -0.7071, 0.0, 0.7071, 1.4142]
+    assert round(row["z_score_change"], 4) == 2.8284
+
+
+def test_trajectory_window_empty_country_has_new_keys():
+    panel = _panel([1.0, 2.0], [2019, 2020], country="OTHER")
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    assert row["trajectory_window"] == [] and row["trajectory_window_years"] == []
+
+
+def test_trajectory_window_short_history_returns_what_exists():
+    # only 3 years of data, window=12 -> a 3-point window, not an error.
+    panel = _panel([10.0, 20.0, 30.0], [2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=12)[0]
+    assert row["trajectory_window_years"] == [2018, 2019, 2020]
+    assert len(row["trajectory_window"]) == 3
+
+
+def test_trajectory_window_drops_nan_baseline_values():
+    # a NaN in the panel must not poison the baseline mean/std (parity with the
+    # walk's .dropna()).
+    panel = _panel([10.0, float("nan"), 30.0, 40.0, 50.0], [2016, 2017, 2018, 2019, 2020])
+    row = sc.country_movement_12y("X", {"ind1": panel}, ["ind1"], window=3)[0]
+    # baseline = [10,30,40,50] (NaN dropped), mean 32.5; window years still 2018-2020
+    assert row["trajectory_window_years"] == [2018, 2019, 2020]
+    assert all(v == v for v in row["trajectory_window"])  # no NaN propagated
