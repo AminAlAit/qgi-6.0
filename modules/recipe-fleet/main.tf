@@ -963,7 +963,15 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
               Type     = "Task"
               Resource = "arn:aws:states:::batch:submitJob.sync"
               Parameters = {
-                "JobName.$"   = "States.Format('qgi-recipe-fleet-{}', $$.Map.Item.Index)"
+                # #131 (FLEET-INFRA): $$.Map.Item.Index does NOT resolve inside
+                # this inline Map's ItemProcessor at runtime — submitJob fails
+                # with "JsonPath argument for $.Map.Item.Index could not be
+                # found". Surfaced by the 2026-05-31 fan-out smoke test (the
+                # canary path uses a static JobName so never exercised this).
+                # Switch to $$.Execution.Name — the proven pattern used by the
+                # canary + bake states + the design doc. Batch permits duplicate
+                # JobNames across the Map's parallel items; jobIds stay unique.
+                "JobName.$"   = "States.Format('qgi-recipe-fleet-{}', $$.Execution.Name)"
                 JobQueue      = aws_batch_job_queue.recipe_fleet.arn
                 JobDefinition = aws_batch_job_definition.recipe_fleet_walker.arn
                 ContainerOverrides = {
