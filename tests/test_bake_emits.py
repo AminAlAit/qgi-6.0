@@ -294,3 +294,5 @@ def test_build_card_v3_wires_new_emits():
     assert card["trajectory_alignment"]["indicators"][0]["code"] == "v2x_test"
     # summary's own calibration object must not be mutated by the fold-in
     assert "per_cohort" not in summary["calibration"]
+    # precedents_corpus defaults to None when not supplied (the sentinel contract)
+    assert card["precedents_corpus"] is None
