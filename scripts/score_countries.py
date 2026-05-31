@@ -136,7 +136,13 @@ def country_movement_12y(country: str, panels: dict[str, pd.DataFrame],
                           selected: list[str], window: int = 12) -> list[dict[str, Any]]:
     """Per indicator, the last 12 annual data points as a z-score trajectory
     (z-scored within the country's own recent history — the relative-change
-    signal, not cross-country level). z_score_change = last - first."""
+    signal, not cross-country level). z_score_change = last - first.
+
+    Also emits `trajectory_window` + `trajectory_window_years` (frontend §A.2): the
+    last `window` annual points z-scored against the country's 25y baseline ending at
+    its latest year. This mirrors the walk's `extract_trajectory_signature_full`
+    baseline-z so the line overlays the canonical `trajectory_alignment` shape on the
+    SAME scale (see the inline comment); distinct from `trajectory_12q`'s within-window z."""
     out: list[dict[str, Any]] = []
     for ind in selected:
         cdf = panels[ind][panels[ind]["country"] == country].sort_values("year")
@@ -156,10 +162,13 @@ def country_movement_12y(country: str, panels: dict[str, pd.DataFrame],
         # the country's current run-up overlays the canonical trajectory_alignment shape
         # on the SAME per-country 25y-baseline z-scale, not the within-window z used by 12q.
         latest = int(cdf["year"].max())
-        bvals = cdf[cdf["year"] >= latest - 24]["value"].to_numpy(dtype=float)
-        bmu = float(bvals.mean())
-        bsd = max(float(bvals.std()) if bvals.size > 1 else 0.0, 1e-9)
-        wdf = cdf[cdf["year"] >= latest - int(window) + 1]
+        base = cdf[(cdf["year"] >= latest - 24) & cdf["value"].notna()]
+        bvals = base["value"].to_numpy(dtype=float)
+        bmu = float(bvals.mean()) if bvals.size else 0.0
+        # match the walk's guard exactly (`baseline.std() or 1.0`): a flat baseline
+        # -> 1.0 so a constant run-up reads as 0 movement, not a blown-up z.
+        bsd = (float(bvals.std()) if bvals.size > 1 else 0.0) or 1.0
+        wdf = cdf[(cdf["year"] >= latest - int(window) + 1) & cdf["value"].notna()]
         wtraj = [round(float((v - bmu) / bsd), 4) for v in wdf["value"].to_numpy(dtype=float)]
         wyears = [int(y) for y in wdf["year"].tolist()]
         out.append({"code": ind, "name": None, "trajectory_12q": traj, "z_score_change": zchg,
