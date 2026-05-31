@@ -108,7 +108,10 @@ jobs:
           # Python indentation isn't tangled with YAML block-scalar handling
           # (Sonnet D1) and the logic is unit-tested (8/8 in
           # scripts/test_append_cross_vintage_rank_history.py).
-          python scripts/append-cross-vintage-rank-history.py
+          # python3 (not `python`): the self-hosted AL2023 runner provides
+          # python3 only — bare `python` is "command not found" (exit 127).
+          # Surfaced by the 2026-05-31 fan-out smoke (run 26699159927).
+          python3 scripts/append-cross-vintage-rank-history.py
 
       - name: Configure git
         run: |
