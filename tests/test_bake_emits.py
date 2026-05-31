@@ -2,6 +2,7 @@
 (frontend bake-request §A/§B: trajectory_alignment, per-cohort calibration,
 v1_separation_pp). All pure functions over the walk summary — no S3, no re-walk.
 """
+import json
 import sys
 from pathlib import Path
 
@@ -204,6 +205,66 @@ def test_build_analogs_reslices_composite_into_subject_and_analogs():
     # §D.2: Egypt's analog Syria embeds Syria's composite from the SAME recipe (r_hi)
     syria_an = [a for a in entries["Egypt"]["analogs"] if a["country"] == "Syria"][0]
     assert syria_an["indicator_trajectory_12q"] == [4.0, 5.0, 6.0]
+
+
+# ---- §B.3 precedents_corpus --------------------------------------------------
+
+def test_norm_country_key():
+    assert bake._norm_country_key("United States") == "united_states"
+    assert bake._norm_country_key("Bangladesh") == "bangladesh"
+    assert bake._norm_country_key(None) == ""
+
+
+def test_build_precedents_corpus_tags_training_positives_and_sorts():
+    events_by_cat = {"trade_agreement": [
+        {"country": "Bangladesh", "year": 2026, "title": "LDC Graduation", "category": "trade_agreement"},
+        {"country": "Brazil", "year": 1995, "title": "Mercosur deepening", "category": "trade_agreement"},
+    ]}
+    positives = {("bangladesh", 2026)}  # only Bangladesh/2026 was a training positive
+    out = bake._build_precedents_corpus("trade_agreement", events_by_cat, positives, {})
+    assert out["total_events_in_corpus"] == 2
+    assert out["events"][0]["year"] == 2026  # most-recent first
+    by_c = {e["country_name"]: e for e in out["events"]}
+    assert by_c["Bangladesh"]["in_training_set"] is True
+    assert by_c["Bangladesh"]["label"] == "LDC Graduation"
+    assert by_c["Brazil"]["in_training_set"] is False
+
+
+def test_build_precedents_corpus_empty_for_unknown_recipe():
+    out = bake._build_precedents_corpus("nope", {"x": [{"country": "A", "year": 2000}]}, set(), {})
+    assert out == {"events": [], "total_events_in_corpus": 0}
+
+
+def test_load_verified_events_groups_by_category(tmp_path):
+    p = tmp_path / "ve.json"
+    p.write_text(json.dumps([
+        {"country": "A", "year": 2000, "category": "r1", "title": "t1"},
+        {"country": "B", "year": 2001, "category": "r1", "title": "t2"},
+        {"country": "C", "year": 2002, "category": "r2", "title": "t3"},
+        {"country": "D", "year": 2003, "title": "no-cat"},  # dropped: no category
+    ]), encoding="utf-8")
+    by_cat = bake._load_verified_events(p)
+    assert len(by_cat["r1"]) == 2 and len(by_cat["r2"]) == 1
+    assert bake._load_verified_events(None) == {}
+
+
+def test_load_positives_set(tmp_path):
+    d = tmp_path / "shape" / "trade_agreement"
+    d.mkdir(parents=True)
+    (d / "positives.csv").write_text("country_id,event_year\nbangladesh,2026\nbrazil,1995\n",
+                                     encoding="utf-8")
+    s = bake._load_positives_set(tmp_path / "shape", "trade_agreement")
+    assert ("bangladesh", 2026) in s and ("brazil", 1995) in s
+    assert bake._load_positives_set(tmp_path / "shape", "missing") == set()  # no file
+    assert bake._load_positives_set(None, "x") == set()
+
+
+def test_build_card_v3_passes_precedents_through():
+    summary = {"recipe_id": "r", "verdict": "HARD_FAIL",
+               "greedy_outer_loop": {"chosen_window": 3}, "global_loco": {"auc": 0.6}}
+    pc = {"events": [{"country_name": "X", "year": 2020}], "total_events_in_corpus": 1}
+    card = bake.build_card_v3(summary, None, {}, None, "b", precedents_corpus=pc)
+    assert card["precedents_corpus"] == pc
 
 
 # ---- integration: build_card_v3 wires the three new emits --------------------
