@@ -99,14 +99,22 @@ function OverlaidExpandedChart({
   const innerW = w - padLeft - padRight;
   const innerH = h - padTop - padBot;
 
-  // When aligned (useWindowRelative=true) both series share the same x-axis
-  // (Year 1..N). When not aligned, country A's calendar start is used for
-  // the x labels (country B may start at a different year, but visually both
-  // traces are plotted on the shared Year 1..N axis since the series are
-  // already trimmed to the same window length).
+  // Two render modes:
+  //   ALIGN ON  (useWindowRelative=true): both traces stretch across the full
+  //     width on a shared Year 1..N axis — overlaid so the rhyme is visible.
+  //   ALIGN OFF (calendar mode): each trace sits at its REAL calendar position.
+  //     For an offset pattern (e.g. Serbia 2000, Myanmar 2007) the two segments
+  //     are visibly displaced by the offset across a shared union calendar axis.
   const nA = seriesA.length;
   const nB = seriesB.length;
   const n = Math.max(nA, nB);
+
+  // Calendar spans of each country's window and their union.
+  const endA = windowStartA + length - 1;
+  const endB = windowStartB + length - 1;
+  const unionStart = Math.min(windowStartA, windowStartB);
+  const unionEnd = Math.max(endA, endB);
+  const unionSpan = unionEnd - unionStart || 1;
 
   // Shared y scale across both series.
   const allVals = [...seriesA, ...seriesB];
@@ -114,25 +122,45 @@ function OverlaidExpandedChart({
   const maxY = Math.max(...allVals);
   const rangeY = maxY - minY || 1;
 
-  const toX = (i: number) => padLeft + (i / (n - 1)) * innerW;
+  // Per-series x mapping. Aligned → index fraction; calendar → year fraction
+  // within the union range (so an offset start shifts the whole trace right).
+  const xFrac = (i: number, count: number, start: number) => {
+    if (useWindowRelative) return count > 1 ? i / (count - 1) : 0.5;
+    const year = start + (count > 1 ? (i / (count - 1)) * (length - 1) : 0);
+    return (year - unionStart) / unionSpan;
+  };
+  const toXA = (i: number) => padLeft + xFrac(i, nA, windowStartA) * innerW;
+  const toXB = (i: number) => padLeft + xFrac(i, nB, windowStartB) * innerW;
   const toY = (v: number) => padTop + (1 - (v - minY) / rangeY) * innerH;
 
-  const buildPath = (series: number[]) =>
+  const buildPath = (series: number[], toXfn: (i: number) => number) =>
     series
-      .map((v, i) => `${i === 0 ? "M" : "L"} ${toX(i).toFixed(1)} ${toY(v).toFixed(1)}`)
+      .map((v, i) => `${i === 0 ? "M" : "L"} ${toXfn(i).toFixed(1)} ${toY(v).toFixed(1)}`)
       .join(" ");
 
-  const pathA = buildPath(seriesA);
-  const pathB = buildPath(seriesB);
+  const pathA = buildPath(seriesA, toXA);
+  const pathB = buildPath(seriesB, toXB);
 
-  const xTicks = [0, Math.floor((n - 1) / 2), n - 1];
   const yTicks = [minY, (minY + maxY) / 2, maxY];
 
-  const labelForX = (i: number) => {
-    if (useWindowRelative) return `Y${i + 1}`;
-    // Use country A's calendar start as the x-axis reference.
-    return String(windowStartA + Math.round((i / (n - 1)) * (length - 1)));
-  };
+  // X-axis ticks: Year 1..N when aligned, union calendar years when not.
+  const xAxisTicks: { frac: number; label: string }[] = useWindowRelative
+    ? [
+        { frac: 0, label: "Y1" },
+        { frac: 0.5, label: `Y${Math.round(n / 2)}` },
+        { frac: 1, label: `Y${n}` },
+      ]
+    : [
+        { frac: 0, label: String(unionStart) },
+        { frac: 0.5, label: String(Math.round((unionStart + unionEnd) / 2)) },
+        { frac: 1, label: String(unionEnd) },
+      ];
+
+  // Hover tooltip label for an index into series A.
+  const labelForX = (i: number) =>
+    useWindowRelative
+      ? `Y${i + 1}`
+      : String(windowStartA + Math.round((i / Math.max(1, nA - 1)) * (length - 1)));
 
   return (
     <div>
@@ -260,7 +288,7 @@ function OverlaidExpandedChart({
         {seriesA.map((v, i) => (
           <circle
             key={i}
-            cx={toX(i)}
+            cx={toXA(i)}
             cy={toY(v)}
             r={hovered === i ? 3.5 : 0}
             fill={colorA}
@@ -268,13 +296,13 @@ function OverlaidExpandedChart({
           />
         ))}
 
-        {/* Invisible hover targets */}
-        {Array.from({ length: n }, (_, i) => (
+        {/* Invisible hover targets (indexed on series A) */}
+        {seriesA.map((_, i) => (
           <rect
             key={i}
-            x={toX(i) - innerW / n / 2}
+            x={toXA(i) - innerW / nA / 2}
             y={padTop}
-            width={innerW / n}
+            width={innerW / nA}
             height={innerH}
             fill="transparent"
             onMouseEnter={() => setHovered(i)}
@@ -285,16 +313,16 @@ function OverlaidExpandedChart({
         {hovered !== null && hovered < seriesA.length && (
           <g>
             <line
-              x1={toX(hovered)}
+              x1={toXA(hovered)}
               y1={padTop}
-              x2={toX(hovered)}
+              x2={toXA(hovered)}
               y2={padTop + innerH}
               stroke="var(--qgi-text-dim)"
               strokeWidth={0.7}
               strokeOpacity={0.5}
             />
             <rect
-              x={toX(hovered) - 28}
+              x={toXA(hovered) - 28}
               y={padTop - 14}
               width={56}
               height={13}
@@ -304,7 +332,7 @@ function OverlaidExpandedChart({
               strokeWidth={0.7}
             />
             <text
-              x={toX(hovered)}
+              x={toXA(hovered)}
               y={padTop - 4}
               fill="var(--qgi-text)"
               fontSize={7}
@@ -317,29 +345,35 @@ function OverlaidExpandedChart({
           </g>
         )}
 
-        {/* X axis ticks */}
-        {xTicks.map((i) => (
-          <g key={i}>
-            <line
-              x1={toX(i)}
-              y1={padTop + innerH}
-              x2={toX(i)}
-              y2={padTop + innerH + 3}
-              stroke="var(--qgi-text-dim)"
-              strokeWidth={0.7}
-            />
-            <text
-              x={toX(i)}
-              y={h - 4}
-              fill="var(--qgi-text-dim)"
-              fontSize={6}
-              textAnchor="middle"
-              fontFamily="ui-monospace, monospace"
-            >
-              {labelForX(i)}
-            </text>
-          </g>
-        ))}
+        {/* X axis ticks. textAnchor clamps at the edges so the first/last
+            labels never clip outside the SVG box. */}
+        {xAxisTicks.map((tick, ti) => {
+          const x = padLeft + tick.frac * innerW;
+          const anchor =
+            ti === 0 ? "start" : ti === xAxisTicks.length - 1 ? "end" : "middle";
+          return (
+            <g key={ti}>
+              <line
+                x1={x}
+                y1={padTop + innerH}
+                x2={x}
+                y2={padTop + innerH + 3}
+                stroke="var(--qgi-text-dim)"
+                strokeWidth={0.7}
+              />
+              <text
+                x={x}
+                y={h - 4}
+                fill="var(--qgi-text-dim)"
+                fontSize={6}
+                textAnchor={anchor}
+                fontFamily="ui-monospace, monospace"
+              >
+                {tick.label}
+              </text>
+            </g>
+          );
+        })}
       </svg>
     </div>
   );

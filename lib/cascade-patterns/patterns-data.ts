@@ -337,3 +337,19 @@ export function getMaxPatternLength(): number {
   _maxLengthCache = max;
   return max;
 }
+
+let _minLengthCache: number | null = null;
+
+/** Returns the shortest window_length in the full corpus (catalogue + partners index). */
+export function getMinPatternLength(): number {
+  if (_minLengthCache !== null) return _minLengthCache;
+  const catalogue = getCatalogue();
+  const idx = getPartnersIndex();
+  let min = 9999;
+  for (const e of catalogue)
+    if (e.window_length > 0 && e.window_length < min) min = e.window_length;
+  for (const e of idx)
+    if (e.window_length > 0 && e.window_length < min) min = e.window_length;
+  _minLengthCache = min < 9999 ? min : 3;
+  return _minLengthCache;
+}

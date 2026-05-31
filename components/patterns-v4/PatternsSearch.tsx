@@ -10,10 +10,12 @@
  * Filter dimensions:
  *   - Country A (typeahead over 215 countries)
  *   - Country B (typeahead over 215 countries)
- *   - Pattern length range slider (12-65 years; tier labels)
+ *   - Pattern length range slider (corpusMin–corpusMax years; bounds derived dynamically)
  *   - Start year for A (range; only available for entries with real start_year_a)
  *   - Start year for B (range; aligned patterns have sa = sb)
- *   - Tier chips: short pattern / medium term / long term (S/M/L+XL)
+ *
+ * Tier chips removed (2026-05-31): the range slider IS the only term-based filter.
+ * Tier badges remain on result rows as labels; no tier filter in the filter panel.
  *
  * Default corpus: all ~23,179 pairs from fullCorpus (partners index).
  * When start-year filters are active: restricted to entries where
@@ -24,7 +26,7 @@
  *
  * Pagination: 50/page.
  *
- * 2026-05-30
+ * 2026-05-30 / 2026-05-31
  */
 
 import { useState, useMemo, useCallback, useRef } from "react";
@@ -54,34 +56,30 @@ const TIER_COLORS: Record<string, string> = {
   S: "#8A7A6E",
 };
 
-// Map UI filter tier bucket to data tier values
-// "long" covers both L and XL
-const TIER_FILTER_MAP: Record<string, string[]> = {
-  short: ["S"],
-  medium: ["M"],
-  long: ["L", "XL"],
-};
-
 interface Props {
   entries: CatalogueEntry[];
   fullCorpus: CatalogueEntry[];
   tierCounts: TierCounts;
   countryNames: string[];
+  /** Shortest window_length in the corpus — derived dynamically server-side. */
+  minPatternLength: number;
   maxPatternLength: number;
 }
 
 export function PatternsSearch({
   entries,
   fullCorpus,
-  tierCounts,
+  // tierCounts kept in props API for forward-compat; not rendered in filter panel (2026-05-31).
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  tierCounts: _tierCounts,
   countryNames,
+  minPatternLength,
   maxPatternLength,
 }: Props) {
   // Filter state
   const [countryA, setCountryA] = useState("");
   const [countryB, setCountryB] = useState("");
-  const [tierFilter, setTierFilter] = useState<"" | "short" | "medium" | "long">("");
-  const [lengthMin, setLengthMin] = useState(12);
+  const [lengthMin, setLengthMin] = useState(minPatternLength);
   const [lengthMax, setLengthMax] = useState(maxPatternLength);
   const [startYearAMin, setStartYearAMin] = useState(1960);
   const [startYearAMax, setStartYearAMax] = useState(2024);
@@ -94,8 +92,7 @@ export function PatternsSearch({
   const resetFilters = useCallback(() => {
     setCountryA("");
     setCountryB("");
-    setTierFilter("");
-    setLengthMin(12);
+    setLengthMin(minPatternLength);
     setLengthMax(maxPatternLength);
     setStartYearAMin(1960);
     setStartYearAMax(2024);
@@ -103,7 +100,7 @@ export function PatternsSearch({
     setStartYearBMax(2024);
     setUseYearFilter(false);
     setPage(1);
-  }, [maxPatternLength]);
+  }, [minPatternLength, maxPatternLength]);
 
   const resetAndPage = useCallback((fn: () => void) => {
     fn();
@@ -150,11 +147,6 @@ export function PatternsSearch({
       });
     }
 
-    if (tierFilter) {
-      const tierValues = TIER_FILTER_MAP[tierFilter];
-      out = out.filter((e) => tierValues.includes(e.tier));
-    }
-
     // Length filter
     out = out.filter((e) => e.window_length >= lengthMin && e.window_length <= lengthMax);
 
@@ -174,7 +166,6 @@ export function PatternsSearch({
     activeCorpus,
     countryA,
     countryB,
-    tierFilter,
     lengthMin,
     lengthMax,
     useYearFilter,
@@ -190,34 +181,9 @@ export function PatternsSearch({
   const hasFilters =
     !!countryA ||
     !!countryB ||
-    !!tierFilter ||
-    lengthMin !== 12 ||
+    lengthMin !== minPatternLength ||
     lengthMax !== maxPatternLength ||
     useYearFilter;
-
-  // Tier chip definitions
-  const TIER_CHIPS = [
-    {
-      value: "" as const,
-      label: "All",
-      sublabel: `${fullCorpus.length.toLocaleString()} total`,
-    },
-    {
-      value: "short" as const,
-      label: "short pattern",
-      sublabel: `${tierCounts.S.toLocaleString()}`,
-    },
-    {
-      value: "medium" as const,
-      label: "medium term",
-      sublabel: `${tierCounts.M.toLocaleString()}`,
-    },
-    {
-      value: "long" as const,
-      label: "long term",
-      sublabel: `${(tierCounts.L + tierCounts.XL).toLocaleString()}`,
-    },
-  ];
 
   return (
     <div style={{ display: "flex", gap: "24px", alignItems: "flex-start" }}>
@@ -300,65 +266,16 @@ export function PatternsSearch({
           />
         </FilterSection>
 
-        {/* Pattern length — unified control: length range slider + tier chips */}
+        {/* Pattern length — single range slider; no tier chips */}
         <FilterSection label="Pattern length">
           <LengthRangeSlider
             min={lengthMin}
             max={lengthMax}
+            corpusMin={minPatternLength}
             corpusMax={maxPatternLength}
-            onMinChange={(v) => {
-              resetAndPage(() => setLengthMin(v));
-              // Auto-update tier filter to match the selected range
-            }}
+            onMinChange={(v) => resetAndPage(() => setLengthMin(v))}
             onMaxChange={(v) => resetAndPage(() => setLengthMax(v))}
           />
-          {/* Tier quick-select chips below the slider */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "4px",
-              marginTop: "10px",
-            }}
-          >
-            {TIER_CHIPS.map((chip) => {
-              const active = tierFilter === chip.value;
-              return (
-                <button
-                  key={chip.value}
-                  onClick={() => resetAndPage(() => setTierFilter(chip.value))}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    padding: "4px 8px",
-                    fontSize: "10.5px",
-                    fontFamily: "ui-monospace, monospace",
-                    borderRadius: "4px",
-                    border: "1px solid",
-                    cursor: "pointer",
-                    transition: "all 100ms",
-                    borderColor: active ? ACCENT : "var(--qgi-border)",
-                    background: active ? `${ACCENT}18` : "transparent",
-                    color: active ? ACCENT : "var(--qgi-text-muted)",
-                    fontWeight: active ? 600 : 400,
-                    textAlign: "left",
-                  }}
-                >
-                  <span>{chip.label}</span>
-                  <span
-                    style={{
-                      fontSize: "9px",
-                      color: active ? ACCENT : "var(--qgi-text-dim)",
-                      fontWeight: 400,
-                    }}
-                  >
-                    {chip.sublabel}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
         </FilterSection>
 
         {/* Start year — always visible; note that it narrows corpus to top-ranked entries */}
@@ -911,12 +828,14 @@ function CountryInput({
 function LengthRangeSlider({
   min,
   max,
+  corpusMin,
   corpusMax,
   onMinChange,
   onMaxChange,
 }: {
   min: number;
   max: number;
+  corpusMin: number;
   corpusMax: number;
   onMinChange: (v: number) => void;
   onMaxChange: (v: number) => void;
@@ -953,7 +872,7 @@ function LengthRangeSlider({
       <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         <input
           type="range"
-          min={12}
+          min={corpusMin}
           max={corpusMax}
           value={min}
           onChange={(e) => {
@@ -965,7 +884,7 @@ function LengthRangeSlider({
         />
         <input
           type="range"
-          min={12}
+          min={corpusMin}
           max={corpusMax}
           value={max}
           onChange={(e) => {

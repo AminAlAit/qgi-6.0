@@ -23,6 +23,7 @@ import {
   getTierCounts,
   getCountryNames,
   getMaxPatternLength,
+  getMinPatternLength,
 } from "@/lib/cascade-patterns/patterns-data";
 import { PatternsSearch } from "@/components/patterns-v4/PatternsSearch";
 
@@ -38,6 +39,7 @@ export default function PatternsPage() {
   const tierCounts = getTierCounts();
   const countryNames = getCountryNames();
   const maxPatternLength = getMaxPatternLength();
+  const minPatternLength = getMinPatternLength();
 
   return (
     <div
@@ -80,6 +82,7 @@ export default function PatternsPage() {
           fullCorpus={fullCorpus}
           tierCounts={tierCounts}
           countryNames={countryNames}
+          minPatternLength={minPatternLength}
           maxPatternLength={maxPatternLength}
         />
       </div>
