@@ -267,6 +267,33 @@ def test_build_card_v3_passes_precedents_through():
     assert card["precedents_corpus"] == pc
 
 
+# ---- §C.1 population from SP.POP.TOTL panel ----------------------------------
+
+def test_load_population_latest_per_country(monkeypatch):
+    import pandas as pd
+    df = pd.DataFrame({
+        "country": ["Egypt", "Egypt", "Brazil"],
+        "year": [2019, 2021, 2020],
+        "value": [100.0, 110.0, 215.7],
+    })
+    monkeypatch.setattr(bake, "_load_panel",
+                        lambda root, code: df if code == "SP.POP.TOTL" else None)
+    pop = bake._load_population(Path("/any"))
+    assert pop == {"Egypt": 110, "Brazil": 216}  # latest year per country, int-rounded
+
+
+def test_load_population_empty_when_no_panel_root():
+    assert bake._load_population(None) == {}
+
+
+def test_build_country_index_sets_population():
+    all_scores = {"r": {"scores": [{"name": "Egypt", "score": 80}]}}
+    idx = bake.build_country_index(all_scores, {}, {}, {}, "v1",
+                                   population_by_country={"Egypt": 110000000})
+    entry = [c for c in idx["countries"] if c["name"] == "Egypt"][0]
+    assert entry["population"] == 110000000
+
+
 # ---- integration: build_card_v3 wires the three new emits --------------------
 
 def test_build_card_v3_wires_new_emits():
