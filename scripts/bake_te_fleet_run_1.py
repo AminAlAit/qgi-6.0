@@ -1278,6 +1278,22 @@ def build_analogs_file(
     vintage: str,
 ) -> dict:
     """For each country, aggregate top analog matches across recipes."""
+    # §D.1/§D.2 pre-pass: per-(recipe, country) current composite 12q z-trajectory,
+    # copied straight from the scores files so analog sparklines embed it rather than
+    # the frontend best-effort-joining it. `top_recipe` = each country's highest-scoring
+    # recipe, used as its representative "current country" sparkline (§D.1).
+    composite_by_rc: dict[tuple[str, str], Any] = {}
+    top_recipe: dict[str, tuple[float, str]] = {}
+    for rid, sf in all_scores.items():
+        for e in (sf.get("scores") or []):
+            nm = e.get("name")
+            if not nm:
+                continue
+            composite_by_rc[(rid, nm)] = e.get("indicator_trajectory_composite_12q")
+            sc_ = e.get("score") or 0
+            if nm not in top_recipe or sc_ > top_recipe[nm][0]:
+                top_recipe[nm] = (sc_, rid)
+
     by_country: dict[str, list[dict]] = {}
     contributions: dict[str, dict[str, dict]] = {}
     for rid, sf in all_scores.items():
@@ -1294,6 +1310,8 @@ def build_analogs_file(
                     "primary_recipe_id": rid,
                     "what_happened_next": None,
                     "weak_analog": an.get("weak_analog", False),
+                    # §D.2: embed the analog country's current composite (same recipe)
+                    "indicator_trajectory_12q": composite_by_rc.get((rid, an.get("country"))),
                 })
             # Track per-recipe contribution
             s = e.get("score") or 0
@@ -1325,12 +1343,15 @@ def build_analogs_file(
                 "status": "in_play",
             })
         contr_list.sort(key=lambda c: -c["contribution_pct"])
+        # §D.1: the subject's "current country" sparkline = its composite from its
+        # highest-scoring recipe (the country's most-lit pattern).
+        tr_recipe = top_recipe.get(name, (0.0, None))[1]
         entries.append({
             "iso": None,
             "iso2": iso2,
             "name": name,
             "region": region,
-            "indicator_trajectory": None,
+            "indicator_trajectory": composite_by_rc.get((tr_recipe, name)) if tr_recipe else None,
             "analogs": analogs_sorted,
             "contributions": contr_list[:5],
         })

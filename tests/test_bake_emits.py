@@ -181,6 +181,31 @@ def test_fill_gaps_all_none_returns_unchanged():
     assert bake._fill_gaps([None, None]) == [None, None]
 
 
+# ---- build_analogs_file §D re-slice -----------------------------------------
+
+def test_build_analogs_reslices_composite_into_subject_and_analogs():
+    all_scores = {
+        "r_hi": {"scores": [
+            {"name": "Egypt", "score": 90, "indicator_trajectory_composite_12q": [1.0, 2.0, 3.0],
+             "nearest_analogs": [{"country": "Syria", "year": 2011, "match_score": 0.9,
+                                  "weak_analog": False}]},
+            {"name": "Syria", "score": 40, "indicator_trajectory_composite_12q": [4.0, 5.0, 6.0],
+             "nearest_analogs": []},
+        ]},
+        "r_lo": {"scores": [
+            {"name": "Egypt", "score": 30, "indicator_trajectory_composite_12q": [7.0, 8.0, 9.0],
+             "nearest_analogs": []},
+        ]},
+    }
+    out = bake.build_analogs_file(all_scores, {}, {}, "v1")
+    entries = {e["name"]: e for e in out["entries"]}
+    # §D.1: Egypt's subject sparkline = its TOP recipe (r_hi, score 90), NOT r_lo (30)
+    assert entries["Egypt"]["indicator_trajectory"] == [1.0, 2.0, 3.0]
+    # §D.2: Egypt's analog Syria embeds Syria's composite from the SAME recipe (r_hi)
+    syria_an = [a for a in entries["Egypt"]["analogs"] if a["country"] == "Syria"][0]
+    assert syria_an["indicator_trajectory_12q"] == [4.0, 5.0, 6.0]
+
+
 # ---- integration: build_card_v3 wires the three new emits --------------------
 
 def test_build_card_v3_wires_new_emits():
