@@ -1572,6 +1572,10 @@ def main() -> int:
         args.verified_events = _resolve_reference_input(args.verified_events, s3)
     events_by_cat = _load_verified_events(args.verified_events)
     LOG.info("  %d recipe-categories in verified-events corpus", len(events_by_cat))
+    if events_by_cat and not Path(args.shape_inputs_root).exists():
+        LOG.warning("  shape-inputs-root %s not found — precedents in_training_set will be "
+                    "all-False (pass --shape-inputs-root, e.g. /app/data/shape_inputs_v2)",
+                    args.shape_inputs_root)
 
     recipe_ids = list_recipe_dirs(s3, args.bucket)
     LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
