@@ -1112,11 +1112,16 @@ def main() -> None:
             if floor_entry is None:  # canary mode only (fleet already skipped above)
                 LOG.warning("canary mode: %s runs against the walk DEFAULT floor "
                             "(0.7986/0.68) — T20-R2 inapplicable in canary", recipe_id)
-            else:  # review followup: a partial entry must fail loudly, not fall to a default
-                assert (floor_entry.get("lock_floor") is not None
-                        and floor_entry.get("cohort_loco_floor") is not None), (
-                    f"recipe-floors.json entry for {recipe_id} is missing lock_floor "
-                    f"or cohort_loco_floor — refusing to walk against a partial floor")
+            elif (floor_entry.get("lock_floor") is None
+                    or floor_entry.get("cohort_loco_floor") is None):
+                # review followup (FU-B): a partial floor entry must fail LOUDLY, not fall to
+                # a default. An `assert` was used here, but asserts are stripped under
+                # `python -O`, which would silently let a partial floor through in an
+                # optimized runtime. Use an explicit exit so the guard survives -O.
+                LOG.error("FATAL: recipe-floors.json entry for %s is missing lock_floor "
+                          "or cohort_loco_floor — refusing to walk against a partial floor",
+                          recipe_id)
+                sys.exit(1)
 
             LOG.info("=== Processing recipe: %s ===", recipe_id)
             recipe_start = time.monotonic()
