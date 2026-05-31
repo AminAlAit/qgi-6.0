@@ -1346,8 +1346,13 @@ def emit_descriptive(
     }
 
     # Field 5: ranked_trajectory_signature (Miriam M14-1, FULL window)
-    # Take top-N positives + extract trajectory for each indicator
-    positives = samples[samples["label"] == 1].head(5)  # representative sample
+    # frontend §B.1/§F: emit ALL positives (was head(5), a 5-sample interim) so the
+    # bake aggregates the canonical movement shape (mean/p25/p75, lead-year aligned)
+    # over the FULL positive corpus. The bake reads whatever `samples` are present and
+    # records `samples_used`. Cost is ~O(n_positives x n_indicators) cheap DataFrame
+    # slices — acceptable at walk scale. The Saudi-Azeri audit plot uses only
+    # `samples[:3]`, so it is unaffected.
+    positives = samples[samples["label"] == 1]
     field_5 = {"saudi_azeri_audit_url": str(audit_chart_path), "per_indicator_signatures": []}
     for ind in selected:
         sigs = []
