@@ -24,7 +24,7 @@
  * PPS column: visible in result rows with a tooltip explaining the score.
  * Tier labels: "short pattern" / "medium term" / "long term".
  *
- * Pagination: 50/page.
+ * Pagination: 20/page.
  *
  * 2026-05-30 / 2026-05-31
  */
@@ -39,7 +39,7 @@ import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/col
 import type { CatalogueEntry, TierCounts } from "@/lib/cascade-patterns/patterns-data";
 
 const ACCENT = "#5B7E99";
-const PAGE_SIZE = 50;
+const PAGE_SIZE = 20;
 
 // Tier display config
 const TIER_LABEL: Record<string, string> = {
@@ -692,6 +692,13 @@ function FilterSection({
   );
 }
 
+/**
+ * CountryInput — combobox with on-focus scrollable dropdown.
+ *
+ * Opens on focus (even with no text typed) showing all countries.
+ * Typing filters to matching entries. Flag image in each row.
+ * Closes on select or click-away.
+ */
 function CountryInput({
   value,
   onChange,
@@ -707,13 +714,15 @@ function CountryInput({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const q = value.trim().toLowerCase();
+  // When q is empty, show all countries (capped at 200 for performance).
+  // When q has text, filter to matching entries.
   const suggestions = useMemo(() => {
-    if (!q) return [];
+    if (!q) return countryNames.slice(0, 200);
     const out: string[] = [];
     for (const name of countryNames) {
       if (name.toLowerCase().includes(q)) {
         out.push(name);
-        if (out.length >= 8) break;
+        if (out.length >= 50) break;
       }
     }
     return out;
@@ -739,8 +748,9 @@ function CountryInput({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setOpen(true)}
-          onBlur={() => setTimeout(() => setOpen(false), 150)}
+          onBlur={() => setTimeout(() => setOpen(false), 160)}
           placeholder={placeholder}
+          autoComplete="off"
           style={{
             flex: 1,
             background: "transparent",
@@ -754,7 +764,10 @@ function CountryInput({
         />
         {value && (
           <button
-            onClick={() => onChange("")}
+            onClick={() => {
+              onChange("");
+              inputRef.current?.focus();
+            }}
             style={{
               background: "none",
               border: "none",
@@ -784,11 +797,14 @@ function CountryInput({
             maxHeight: "220px",
             overflowY: "auto",
           }}
+          role="listbox"
         >
           {suggestions.map((name) => (
             <button
               key={name}
               type="button"
+              role="option"
+              aria-selected={value === name}
               onMouseDown={(e) => {
                 e.preventDefault();
                 onChange(name);
@@ -800,7 +816,7 @@ function CountryInput({
                 gap: "8px",
                 width: "100%",
                 padding: "6px 10px",
-                background: "transparent",
+                background: value === name ? "var(--qgi-bg)" : "transparent",
                 border: "none",
                 color: "var(--qgi-text)",
                 fontFamily: "ui-monospace, monospace",
@@ -812,7 +828,8 @@ function CountryInput({
                 (e.currentTarget as HTMLButtonElement).style.background = "var(--qgi-bg)";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = "transparent";
+                (e.currentTarget as HTMLButtonElement).style.background =
+                  value === name ? "var(--qgi-bg)" : "transparent";
               }}
             >
               <FlagImg emoji={flagFor(name)} name={name} width={13} radius={2} />
@@ -825,6 +842,14 @@ function CountryInput({
   );
 }
 
+/**
+ * LengthRangeSlider — dual-thumb range slider.
+ *
+ * Two <input type="range"> elements are stacked on the same track using
+ * pointer-events management (the standard accessible dual-thumb technique).
+ * The selected span is highlighted between the two thumbs.
+ * Reads as ONE control; label shows "X to Y years".
+ */
 function LengthRangeSlider({
   min,
   max,
@@ -840,36 +865,63 @@ function LengthRangeSlider({
   onMinChange: (v: number) => void;
   onMaxChange: (v: number) => void;
 }) {
+  const span = corpusMax - corpusMin || 1;
+  // Percentages of track that correspond to the current min/max thumb positions.
+  const pctLeft = ((min - corpusMin) / span) * 100;
+  const pctRight = ((max - corpusMin) / span) * 100;
+
   return (
     <div>
+      {/* Value label */}
       <div
         style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "baseline",
-          marginBottom: "6px",
+          fontSize: "11px",
+          fontFamily: "ui-monospace, monospace",
+          color: "var(--qgi-text-muted)",
+          marginBottom: "10px",
+          letterSpacing: "0.2px",
         }}
       >
-        <span
-          style={{
-            fontSize: "11px",
-            fontFamily: "ui-monospace, monospace",
-            color: "var(--qgi-text-muted)",
-          }}
-        >
-          {min}y
-        </span>
-        <span
-          style={{
-            fontSize: "10px",
-            fontFamily: "ui-monospace, monospace",
-            color: "var(--qgi-text-dim)",
-          }}
-        >
-          to {max}y
-        </span>
+        {min} to {max} years
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
+
+      {/* Dual-thumb slider track */}
+      <div
+        style={{
+          position: "relative",
+          height: "18px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {/* Track background */}
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            height: "4px",
+            background: "var(--qgi-border)",
+            borderRadius: "2px",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Selected range highlight between the two thumbs */}
+        <div
+          style={{
+            position: "absolute",
+            left: `${pctLeft}%`,
+            right: `${100 - pctRight}%`,
+            height: "4px",
+            background: ACCENT,
+            borderRadius: "2px",
+            pointerEvents: "none",
+          }}
+        />
+
+        {/* Min thumb — lives below max thumb (z-index lower by default).
+            pointer-events: none when it's at max so the max thumb can still be dragged. */}
         <input
           type="range"
           min={corpusMin}
@@ -879,9 +931,24 @@ function LengthRangeSlider({
             const v = parseInt(e.target.value);
             if (v <= max) onMinChange(v);
           }}
-          style={{ width: "100%", accentColor: ACCENT }}
-          aria-label="Minimum length"
+          aria-label="Minimum pattern length"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "4px",
+            appearance: "none",
+            WebkitAppearance: "none",
+            background: "transparent",
+            pointerEvents: min === max ? "none" : "auto",
+            // Thumb styling via CSS custom properties / accent-color
+            accentColor: ACCENT,
+            outline: "none",
+            zIndex: min > max - span * 0.01 ? 5 : 4,
+            cursor: "pointer",
+          }}
         />
+
+        {/* Max thumb */}
         <input
           type="range"
           min={corpusMin}
@@ -891,9 +958,35 @@ function LengthRangeSlider({
             const v = parseInt(e.target.value);
             if (v >= min) onMaxChange(v);
           }}
-          style={{ width: "100%", accentColor: ACCENT }}
-          aria-label="Maximum length"
+          aria-label="Maximum pattern length"
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "4px",
+            appearance: "none",
+            WebkitAppearance: "none",
+            background: "transparent",
+            accentColor: ACCENT,
+            outline: "none",
+            zIndex: 5,
+            cursor: "pointer",
+          }}
         />
+      </div>
+
+      {/* Corpus bounds hint */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          marginTop: "6px",
+          fontSize: "9px",
+          fontFamily: "ui-monospace, monospace",
+          color: "var(--qgi-text-dim)",
+        }}
+      >
+        <span>{corpusMin}y</span>
+        <span>{corpusMax}y</span>
       </div>
     </div>
   );

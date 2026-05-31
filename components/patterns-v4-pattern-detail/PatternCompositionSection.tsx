@@ -21,6 +21,9 @@ interface PatternCompositionSectionProps {
   startA: number;
   startB: number;
   length: number;
+  /** True when the two countries have different start years. Threaded down to
+   *  PatternIndicatorsGrouped to gate the per-SCDI align toggle. */
+  isOffset: boolean;
 }
 
 export function PatternCompositionSection({
@@ -30,6 +33,7 @@ export function PatternCompositionSection({
   startA,
   startB,
   length,
+  isOffset,
 }: PatternCompositionSectionProps) {
   const [hiddenSectors, setHiddenSectors] = useState<Set<string>>(new Set());
 
@@ -73,6 +77,7 @@ export function PatternCompositionSection({
         hiddenSectors={hiddenSectors}
         onToggle={handleToggle}
         sectors={sectors}
+        isOffset={isOffset}
       />
     </>
   );
