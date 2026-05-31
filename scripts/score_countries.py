@@ -133,7 +133,7 @@ def histogram_bins(scores: np.ndarray, n_bins: int = 20) -> dict[str, Any]:
 
 
 def country_movement_12y(country: str, panels: dict[str, pd.DataFrame],
-                          selected: list[str]) -> list[dict[str, Any]]:
+                          selected: list[str], window: int = 12) -> list[dict[str, Any]]:
     """Per indicator, the last 12 annual data points as a z-score trajectory
     (z-scored within the country's own recent history — the relative-change
     signal, not cross-country level). z_score_change = last - first."""
@@ -141,7 +141,8 @@ def country_movement_12y(country: str, panels: dict[str, pd.DataFrame],
     for ind in selected:
         cdf = panels[ind][panels[ind]["country"] == country].sort_values("year")
         if cdf.empty:
-            out.append({"code": ind, "name": None, "trajectory_12q": [], "z_score_change": None})
+            out.append({"code": ind, "name": None, "trajectory_12q": [], "z_score_change": None,
+                        "trajectory_window": [], "trajectory_window_years": []})
             continue
         recent = cdf.tail(12)
         vals = recent["value"].to_numpy(dtype=float)
@@ -150,7 +151,19 @@ def country_movement_12y(country: str, panels: dict[str, pd.DataFrame],
         sd = max(sd, 1e-9)
         traj = ((vals - mu) / sd).tolist()
         zchg = float(traj[-1] - traj[0]) if len(traj) >= 2 else None
-        out.append({"code": ind, "name": None, "trajectory_12q": traj, "z_score_change": zchg})
+        # §A.2 full canonical window, z'd against the country's 25y baseline ending at
+        # its latest year (mirrors run_f_ml_1_poc.extract_trajectory_signature_full) so
+        # the country's current run-up overlays the canonical trajectory_alignment shape
+        # on the SAME per-country 25y-baseline z-scale, not the within-window z used by 12q.
+        latest = int(cdf["year"].max())
+        bvals = cdf[cdf["year"] >= latest - 24]["value"].to_numpy(dtype=float)
+        bmu = float(bvals.mean())
+        bsd = max(float(bvals.std()) if bvals.size > 1 else 0.0, 1e-9)
+        wdf = cdf[cdf["year"] >= latest - int(window) + 1]
+        wtraj = [round(float((v - bmu) / bsd), 4) for v in wdf["value"].to_numpy(dtype=float)]
+        wyears = [int(y) for y in wdf["year"].tolist()]
+        out.append({"code": ind, "name": None, "trajectory_12q": traj, "z_score_change": zchg,
+                    "trajectory_window": wtraj, "trajectory_window_years": wyears})
     return out
 
 
@@ -363,7 +376,7 @@ def score_recipe(*, summary: dict, positives_df: pd.DataFrame,
             "in_evidence_base": c in pos_country_set,
             "delta_vs_prior_vintage": None,  # first vintage; filled by vintage-rollup if prior exists
             "shap_attribution": shap_attr,
-            "indicator_movement": country_movement_12y(c, panels, selected),
+            "indicator_movement": country_movement_12y(c, panels, selected, window),
             "nearest_analogs": analogs,
         })
 
