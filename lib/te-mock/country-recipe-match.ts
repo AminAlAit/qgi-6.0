@@ -270,12 +270,10 @@ export function getCountryRecipeMatch(
 }
 
 /**
- * Static params for the scored (fleet) pages. Capped to the top
- * `PER_RECIPE_CAP` countries per recipe (by rank) to keep the build bounded;
- * the long tail renders on demand when linked.
+ * Static params for the scored (fleet) match pages. Pre-renders only the top
+ * match per recipe (~44 pages) to keep the build within CI's memory budget;
+ * the long tail renders on demand when linked (pages are noindex).
  */
-const PER_RECIPE_CAP = 50;
-
 export function getMatchStaticParams(): Array<{ slug: string; iso: string }> {
   const out: Array<{ slug: string; iso: string }> = [];
   const seen = new Set<string>();
@@ -286,9 +284,13 @@ export function getMatchStaticParams(): Array<{ slug: string; iso: string }> {
     } catch {
       continue;
     }
+    // Build-memory: pre-render only the top match per recipe (~44 pages total).
+    // These pages are noindex and reached from in-app links, and dynamicParams
+    // defaults to true, so the rest render on-demand. Pre-rendering the full
+    // PER_RECIPE_CAP * 44 grid (~2,200 pages) OOMs CI's 2GB Node heap.
     const top = [...(file.scores as unknown as FleetEntry[])]
       .sort((a, b) => a.rank - b.rank)
-      .slice(0, PER_RECIPE_CAP);
+      .slice(0, 1);
     for (const e of top) {
       const i2 = (e.iso2 ?? iso2For(e.name) ?? "").toLowerCase();
       if (!i2) continue;
