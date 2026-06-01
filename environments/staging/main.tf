@@ -153,6 +153,20 @@ module "recipe_fleet" {
   data_lake_bucket_name = module.storage.bucket_name
   data_lake_bucket_arn  = module.storage.bucket_arn
 
+  # fleet-run-2 (2026-06-01, Path A): fresh S3 prefixes so run-2 walks into a clean
+  # namespace. The walk's resume guard skips any recipe with an existing
+  # greedy-result.json, so pointing at run-2 prefixes keeps run-1's ml-results/ +
+  # ml-checkpoints/ UNTOUCHED and stops any recipe from being wrongly skipped. The
+  # cloud bake reads the same prefix, so run-2's bake reads run-2's walk outputs.
+  ml_results_prefix     = "ml-results-run2/"
+  ml_checkpoints_prefix = "ml-checkpoints-run2/"
+
+  # IMAGE PERMA-FIX (2026-06-01): pin to a SPECIFIC build tag (the module resolves it to an
+  # immutable digest), never ':latest'. This is the build carrying the #136/#137/#141
+  # walk/score code + the bake fixes — the canary (re-run step 5) must confirm its CLOUD
+  # output has shap_value/trajectory_window before any full re-run trusts it.
+  recipe_fleet_image_tag = "bake-panels-527004d"
+
   # Reuse roles already created by the iam module — no new instance profiles
   # or execution roles needed.
   ecs_instance_profile_arn   = module.iam.ecs_instance_profile_arn
