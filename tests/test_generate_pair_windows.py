@@ -60,6 +60,42 @@ class TestNum:
 
 
 # ===========================================================================
+# parse_ind()  — §H: Athena array<smallint> -> list[int] for the SCDI baker
+# ===========================================================================
+
+class TestParseInd:
+
+    def test_typical_athena_array_with_spaces(self):
+        assert gpw.parse_ind("[16, 165, 4, 14]") == [16, 165, 4, 14]
+
+    def test_no_spaces(self):
+        assert gpw.parse_ind("[16,165,4]") == [16, 165, 4]
+
+    def test_empty_array(self):
+        assert gpw.parse_ind("[]") == []
+
+    def test_empty_string(self):
+        assert gpw.parse_ind("") == []
+
+    def test_none(self):
+        assert gpw.parse_ind(None) == []
+
+    def test_single_element(self):
+        assert gpw.parse_ind("[42]") == [42]
+
+    def test_malformed_token_skipped_not_crash(self):
+        # a junk token degrades to a shorter list rather than crashing the bake
+        assert gpw.parse_ind("[1, bad, 3]") == [1, 3]
+
+    def test_extra_whitespace(self):
+        assert gpw.parse_ind("[ 1 , 2 ]") == [1, 2]
+
+    def test_no_brackets_still_parses(self):
+        # defensive: if Athena ever omits the brackets, still parse the CSV
+        assert gpw.parse_ind("7, 8, 9") == [7, 8, 9]
+
+
+# ===========================================================================
 # _slug()
 # ===========================================================================
 
