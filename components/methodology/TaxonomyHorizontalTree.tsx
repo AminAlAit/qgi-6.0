@@ -111,23 +111,13 @@ export default function TaxonomyHorizontalTree() {
   }
 
   return (
-    <section
-      id="taxonomy"
-      className="py-12 border-b"
-      style={{ borderColor: "var(--qgi-border)" }}
-    >
-      <h2
-        className="text-xs tracking-[0.25em] uppercase mb-2"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
-        Event taxonomy
-      </h2>
+    <div>
       <p
         className="text-sm mb-6 leading-relaxed max-w-2xl"
         style={{ color: "var(--qgi-text)" }}
       >
         Every verified event is mapped to one of {data.summary.layer3_count} canonical
-        leaf categories, organized in {data.summary.layer1_count} master groups and{" "}
+        leaf categories, organised in {data.summary.layer1_count} master groups and{" "}
         {data.summary.layer2_count} sub-categories. Click a sub-category to reveal its
         leaf-level types.
       </p>
@@ -310,6 +300,6 @@ export default function TaxonomyHorizontalTree() {
           {expanded.size > 0 ? "Collapse all" : "Expand all"}
         </button>
       </div>
-    </section>
+    </div>
   );
 }

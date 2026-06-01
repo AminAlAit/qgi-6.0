@@ -50,7 +50,7 @@ const TIER_META: Record<
     bg: "rgba(248,113,113,0.10)",
     border: "rgba(248,113,113,0.35)",
     tooltip:
-      "Top 20% of countries scored this cycle. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data — relative position, not predictive forecast.",
+      "Top 20% of countries scored this cycle. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data: relative position, not predictive forecast.",
   },
   MODERATE: {
     label: "MODERATE",
@@ -472,8 +472,8 @@ export function CountriesMergedListClient({
             }}
             title={
               sortDir === "asc"
-                ? "Ascending — click to flip"
-                : "Descending — click to flip"
+                ? "Ascending (click to flip)"
+                : "Descending (click to flip)"
             }
           >
             {sortDir === "asc" ? "↑" : "↓"}
@@ -520,7 +520,7 @@ export function CountriesMergedListClient({
           <span>Country</span>
           <span>Tier</span>
           <span>Top category</span>
-          <span title="L1 risk-domain footprint — sparkbar shows which of the 8 L1 groups have at least one top-category firing">
+          <span title="L1 risk-domain footprint: sparkbar shows which of the 8 L1 groups have at least one top-category firing">
             Domains
           </span>
           <span title="ML coverage: number of validated recipes with measured anchor stability for this country (out of 13). Preview values until per-country anchor-stability bake ships.">
@@ -604,7 +604,7 @@ function LloydsBanner() {
       </span>
       <p className="text-xs leading-relaxed max-w-[68ch]">
         Country tiers (HIGH / MODERATE / INDICATIVE) reflect composite risk z-scores from
-        V1.9.1 methodology — relative position within the countries scored this cycle, not
+        V1.9.1 methodology: relative position within the countries scored this cycle, not
         predictive forecast. Hover any tier badge for the rubric. Methodology and known
         limitations:{" "}
         <Link
@@ -1010,7 +1010,7 @@ function PreviewHeaderChip() {
         border: "1px solid rgba(251, 191, 36, 0.30)",
       }}
       title="Column populated with deterministic preview values until production data bake ships. See per-cell hover for provenance."
-      aria-label="Preview data — provisional until production bake"
+      aria-label="Preview data: provisional until production bake"
     >
       Preview
     </span>
@@ -1078,7 +1078,7 @@ function WatchBand() {
         className="px-4 pt-3 pb-1 text-[11px] leading-relaxed"
         style={{ color: "var(--qgi-text-muted)" }}
       >
-        Editor&apos;s pick — hand-selected for the week, not the highest-ranked by
+        Editor&apos;s pick: hand-selected for the week, not the highest-ranked by
         composite tier. Use the full table below for ranked output.
       </p>
 

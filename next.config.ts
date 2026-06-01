@@ -10,6 +10,7 @@ import { withSentryConfig } from "@sentry/nextjs";
  *
  * RETIRED_PRECEDENT_SLUGS is unused; kept for audit trail.
  */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const RETIRED_PRECEDENT_SLUGS = [
   "government_formation",
   "constitutional_change",
@@ -142,6 +143,46 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-05-31 (founder): /landing-v2 promoted to the homepage "/".
+      // Preserve any links to the old staging URL.
+      {
+        source: "/landing-v2",
+        destination: "/",
+        permanent: true,
+      },
+      // 2026-05-31 (founder): per-pattern detail is mock pending the backend
+      // SCDI batch. Redirect /patterns/<slug> to the (real) /patterns search
+      // so no mock detail is reachable. Single-segment only, so the retired
+      // /patterns/pair/<slug> route is untouched. Remove when real SCDIs ship.
+      {
+        source: "/patterns/:slug",
+        destination: "/patterns",
+        permanent: false,
+      },
+      // 2026-05-30 — /compound-risk taken down. Page deleted; bookmarks
+      // redirect to /risk-board (the most-overlapping live surface).
+      // Components + data layer stay in tree (components/compound-risk/,
+      // lib/te-mock/compound-risk-data.ts) for a future rejuvenation per
+      // the Stats/ML trio paper (compound-negative-event-density path).
+      {
+        source: "/compound-risk",
+        destination: "/risk-board",
+        permanent: true,
+      },
+
+      // 2026-05-30 — /nearest-analog renamed to /analogues (British spelling,
+      // founder-ratified). 308 preserves bookmarks and any external links.
+      {
+        source: "/nearest-analog",
+        destination: "/analogues",
+        permanent: true,
+      },
+      {
+        source: "/nearest-analog/:path*",
+        destination: "/analogues/:path*",
+        permanent: true,
+      },
+
       // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
       // (catalog ledger) was deleted; its AUC column reborn as the per-card
       // Confidence badge on /recipes. Bookmarks preserved here.
@@ -203,6 +244,38 @@ const nextConfig: NextConfig = {
       {
         source: "/blog/ghana-mauritania-mirror",
         destination: "/reports/ghana-mauritania-mirror",
+        permanent: true,
+      },
+
+      // ─── 2026-05-30 — Pair detail demotion ─────────────────────────────
+      // Old pair-detail pages lived at /patterns/{pair_id} where pair_id was
+      // a numeric format like "57-176" or a long-form slug like
+      // "paraguay-south_korea-1963". These now live at /patterns/pair/{iso-iso}.
+      // New 5-segment pattern slugs (e.g. pt-es-1975-2024) are NOT redirected
+      // — they go directly to the new per-pattern detail page.
+      //
+      // Numeric pair IDs (e.g. 57-176): redirect to /patterns so users land
+      // on the catalogue rather than a 404. The numeric format is legacy and
+      // there are no known external inbound links to preserve.
+      {
+        source: "/patterns/:numA(\\d+)-:numB(\\d+)",
+        destination: "/patterns",
+        permanent: true,
+      },
+
+      // ─── 2026-05-31 — pair-overview route retired ───────────────────────
+      // 2-segment ISO-2 slugs (e.g. /patterns/gr-lb) used to serve a
+      // pair-overview page. That view is removed; both the /pair/ subroute
+      // and bare 2-segment slugs now redirect to /patterns.
+      {
+        source: "/patterns/pair/:slug",
+        destination: "/patterns",
+        permanent: true,
+      },
+      // 2-segment ISO-2 slug pattern: two lowercase 2-3 char codes with a dash.
+      {
+        source: "/patterns/:a([a-z]{2,3})-:b([a-z]{2,3})",
+        destination: "/patterns",
         permanent: true,
       },
     ];

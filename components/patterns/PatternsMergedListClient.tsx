@@ -129,7 +129,7 @@ const PRESET_CHIPS: ReadonlyArray<{
     id: "top-confidence",
     label: "Top confidence",
     tooltip:
-      "Ranked by out-of-country discrimination score — the strictest validation gate.",
+      "Ranked by out-of-country discrimination score: the strictest validation gate.",
   },
   {
     id: "country-tier-shifts",
@@ -238,7 +238,7 @@ export function PatternsMergedListClient({
           className="text-2xl font-semibold leading-snug max-w-[68ch]"
           style={{ color: "var(--qgi-text)" }}
         >
-          Which economies walked the same path — and what happened next.
+          Which economies walked the same path, and what happened next.
         </h1>
         <p
           className="text-xs mt-3 font-data tabular-nums"

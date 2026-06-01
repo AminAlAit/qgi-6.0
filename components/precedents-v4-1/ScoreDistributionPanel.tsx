@@ -153,7 +153,7 @@ export function ScoreDistributionPanel({
           }}
         >
           How the recipe&apos;s scores spread across every country we evaluate. The right
-          tail — the small set of high-scoring countries — is where the recipe flags
+          tail (the small set of high-scoring countries) is where the recipe flags
           structural resemblance to past precedents. Hover any bar for the countries
           inside that score range.
         </p>

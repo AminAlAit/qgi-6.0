@@ -8,8 +8,6 @@
  */
 import type { MetadataRoute } from "next";
 import { loadCountryRisks } from "@/lib/country-risks";
-import { loadMlRecipeStack } from "@/lib/recipes-ml-loader";
-import { countrySlug } from "@/lib/slug";
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://qgintelligence.com";
 
@@ -35,19 +33,23 @@ const STATIC_ROUTES: Array<{
   // V4.1 canonical family pages (promoted 2026-05-28).
   // /signals and /precedents are deleted; /recipes, /countries, /patterns
   // are now V4.1 canonical. /risk-board, /compare, /compound-risk,
-  // /nearest-analog are new surfaces added in the V4.1 promo.
+  // /analogues are new surfaces added in the V4.1 promo.
   { path: "/dashboard", changeFrequency: "daily", priority: 0.95 },
   { path: "/recipes", changeFrequency: "weekly", priority: 0.9 },
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
   { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
   { path: "/risk-board", changeFrequency: "daily", priority: 0.8 },
-  { path: "/compound-risk", changeFrequency: "weekly", priority: 0.7 },
+  // /compound-risk taken down 2026-05-30; sitemap entry removed.
+  // Redirect 308 → /risk-board.
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
-  { path: "/nearest-analog", changeFrequency: "weekly", priority: 0.6 },
+  { path: "/analogues", changeFrequency: "weekly", priority: 0.6 },
   // /recipe-tracker route deleted 2026-05-29 — folded into /recipes via
   // the per-card Confidence badge. The blog post at /blog/recipe-tracker
   // is unaffected (separate route, audience-facing program update).
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/methodology/indicators", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/methodology/events", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/contact", changeFrequency: "monthly", priority: 0.4 },
   { path: "/blog", changeFrequency: "weekly", priority: 0.6 },
   // Recipe Tracker: continuously updated as recipes graduate or enter validation.
   {
@@ -127,93 +129,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: r.priority,
   }));
 
-  // Single load of ml-recipe-stack.json, reused by both the /precedents
-  // emission below and the /signals leaf-URL emission further down.
-  // Sonnet PR #123 F2 — prior version of this file fetched the stack
-  // twice serially; in-process cache made it cheap but the duplicate
-  // was misleading.
-  const mlStack = await loadMlRecipeStack().catch(() => null);
-  const lockedRecipeSet = new Set(mlStack?.metadata.top_4_recipes ?? []);
-
-  // #464: V2.0 canonical URLs.
-  //   /precedents/{slug}                — Recipe (one per LOCKed ML recipe)
-  //   /signals/{country-slug}           — country-rolled-up watchlist
-  //   /signals/{country-slug}/{slug}    — country-vs-recipe leaf
-  //   /countries/{id}                   — country profile (unchanged)
-  //   /countries/{id}/{cat}             — DROPPED (301 to /signals/...)
+  // Country-profile routes from the baked country-risks.json.
   //
-  // #748 PR-3 (2026-05-17) — `/precedents/{slug}` now emits ONLY the 4
-  // LOCKed ML slugs per the founder's L10525 directive ("All other
-  // recipes/precedents, other than those 4 must be removed from view").
-  // The other ~86 retired slugs 301-redirect to `/precedents` via
-  // `next.config.ts RETIRED_PRECEDENT_SLUGS`. Emitting them in the
-  // sitemap would invite Google to surface URLs that redirect — bad
-  // for crawl budget + indexed-URL hygiene.
-  if (mlStack) {
-    for (const slug of mlStack.metadata.top_4_recipes) {
-      entries.push({
-        url: `${BASE_URL}/precedents/${slug}`,
-        lastModified: now,
-        changeFrequency: "weekly",
-        // Higher priority than the previous 0.6 across 71 entries —
-        // these are the only validated precedents, deserve more
-        // crawl-budget weight.
-        priority: 0.8,
-      });
-    }
-  }
-  // If ml-recipe-stack.json was unreachable at build time, ship the
-  // sitemap without the precedent slugs rather than failing entirely.
-
-  // Country-profile + signals routes.
+  // 2026-06-01: the /precedents/{slug} and /signals/{...} emissions were
+  // removed. Both route families were deleted in the V4.1 promotion (they
+  // now redirect or 404), so listing them only fed search engines
+  // redirecting/dead URLs. Recipes live at /recipes; country profiles at
+  // /countries/{id}, which is the only dynamic family still emitted here.
   try {
     const data = await loadCountryRisks();
     const lastMod = data.generated_at ? new Date(data.generated_at) : now;
-    // #815 (2026-05-18) — /signals graduation: only emit leaf URLs for
-    // the 4 LOCKed recipes. Same rationale as the /precedents sitemap
-    // trim (#748 PR-3) — non-LOCKed leaves are reachable via direct URL
-    // but unsurfaced from the /signals index, so emitting them in the
-    // sitemap would invite Google to surface URLs that aren't part of
-    // the validated-recipe product surface. Reuses the `lockedRecipeSet`
-    // hoisted above. When mlStack failed to load, the set is empty and
-    // no leaf URLs emit (still ships parent /signals/{country} routes).
     for (const [id, country] of Object.entries(data.countries)) {
-      // /countries/{id} — country profile (unchanged from V1.x).
       entries.push({
         url: `${BASE_URL}/countries/${id}`,
         lastModified: lastMod,
         changeFrequency: "weekly",
         priority: country.overall_risk_tier === "HIGH" ? 0.7 : 0.5,
       });
-
-      const slug = countrySlug(country.name);
-      if (!slug) continue;
-
-      // /signals/{country-slug} — country-rolled-up watchlist.
-      entries.push({
-        url: `${BASE_URL}/signals/${slug}`,
-        lastModified: lastMod,
-        changeFrequency: "weekly",
-        priority: country.overall_risk_tier === "HIGH" ? 0.7 : 0.5,
-      });
-
-      // /signals/{country-slug}/{cat} — only the 4 LOCKed recipes per
-      // #815 graduation. Pre-graduation this emitted top-3 categories
-      // per country across all tier windows (~2-3K leaves total).
-      const seenCats = new Set<string>();
-      for (const tier of Object.values(country.tiers)) {
-        for (const cat of tier.top_categories.slice(0, 3)) {
-          if (!lockedRecipeSet.has(cat.category)) continue;
-          if (seenCats.has(cat.category)) continue;
-          seenCats.add(cat.category);
-          entries.push({
-            url: `${BASE_URL}/signals/${slug}/${cat.category}`,
-            lastModified: lastMod,
-            changeFrequency: "weekly",
-            priority: 0.4,
-          });
-        }
-      }
     }
   } catch {
     // If country-risks.json is unreachable at build time, ship just the

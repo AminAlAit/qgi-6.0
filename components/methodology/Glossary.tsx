@@ -12,13 +12,13 @@ const TERMS: { id: string; short: string; long: string; visual: React.ReactNode 
   {
     id: "event",
     short: "Event",
-    long: "A historical incident QGI tracks against a country's indicator trajectory — e.g., Brazil's 2018 presidential election, the 2008 Icelandic banking collapse, the 2011 Bahraini uprising. Every event is verified against a public source.",
+    long: "A historical incident QGI tracks against a country's indicator trajectory: for example, Brazil's 2018 presidential election, the 2008 Icelandic banking collapse, the 2011 Bahraini uprising. Every event is verified against a public source.",
     visual: <CalendarDot />,
   },
   {
     id: "indicator",
     short: "Indicator",
-    long: "A single time-series QGI ingests — GDP per capita, V-Dem polyarchy score, Gini coefficient, FAOSTAT food-price index. Currently 104 indicators across 3 sources.",
+    long: "A single time-series QGI ingests: GDP per capita, V-Dem polyarchy score, Gini coefficient, FAOSTAT food-price index. Currently 109 indicators across 3 sources.",
     visual: <Sparkline />,
   },
   {
@@ -30,13 +30,13 @@ const TERMS: { id: string; short: string; long: string; visual: React.ReactNode 
   {
     id: "pattern",
     short: "Pattern",
-    long: "A repeated co-movement across multiple indicators — when several SCDIs link the same country pair at the same time offset. Patterns are stronger evidence than any single SCDI.",
+    long: "A repeated co-movement across multiple indicators, when several SCDIs link the same country pair at the same time offset. Patterns are stronger evidence than any single SCDI.",
     visual: <Branching />,
   },
   {
     id: "recipe",
     short: "Recipe",
-    long: "The canonical fingerprint of multiple Patterns. Says: \"this country's current trajectory looks like that country's was N years before [event X] happened.\" Recipes are what get surfaced as risk signals on the live site.",
+    long: "The canonical shape distilled from multiple Patterns. A recipe says: this country's current trajectory resembles the trajectory of a country that went on to experience a given kind of event. Recipes are the basis for every country reading on the live site.",
     visual: <Fingerprint />,
   },
 ];

@@ -17,11 +17,12 @@ export type RouteKey =
   | "countries-v4.1-detail"
   | "risk-board"
   | "compound-risk"
-  | "nearest-analog"
+  | "analogues"
   | "recipe-tracker"
   | "compare"
   | "patterns-v4"
-  | "patterns-v4-detail";
+  | "patterns-v4-detail"
+  | "recipe-country-match";
 
 export interface RuleEntry {
   /** Short title, sentence case, ~5 words. */
@@ -191,20 +192,20 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     ],
   },
 
-  "nearest-analog": {
-    lede: "Four rules for reading nearest-analog matches.",
+  analogues: {
+    lede: "Four rules for reading Analogues matches.",
     rules: [
       {
         title: "Matches are similarities, not predictions",
-        body: "Each analog pair shows two countries whose indicator trajectories ran in close parallel over a shared historical window. Structural similarity over the past does not predict that the target country will follow the reference country's future path.",
+        body: "Each analogue pair shows two countries whose indicator trajectories ran in close parallel over a shared historical window. Structural similarity over the past does not predict that the target country will follow the reference country's future path.",
       },
       {
-        title: "Analog scores come from validated recipes",
-        body: "The recipe scores shown alongside analog pairs are drawn from the Recipe Tracker. An analog's relevance depends on whether the shared recipes are validated; the tracker is the source of truth for that.",
+        title: "Analogue scores come from validated recipes",
+        body: "The recipe scores shown alongside analogue pairs are drawn from the Recipe Tracker. An analogue's relevance depends on whether the shared recipes are validated; the tracker is the source of truth for that.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If a recipe that anchored an analog pair is later revised or withdrawn, the pair's displayed context updates. The analog itself stays in the record; its recipe context is corrected.",
+        body: "If a recipe that anchored an analogue pair is later revised or withdrawn, the pair's displayed context updates. The analogue itself stays in the record; its recipe context is corrected.",
       },
       {
         title: "Nothing here is a forecast",
@@ -248,7 +249,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       },
       {
         title: "Corrections are published on purpose",
-        body: "When a pair's window or strength is revised after a fresh data vintage, the change appears here. A pair sliding out of the top 30 between vintages is the methodology working as designed.",
+        body: "When a pair's window or strength is revised after a fresh data release, the change appears here. A pair sliding out of the top 30 between releases is the methodology working as designed.",
       },
       {
         title: "Nothing here is a forecast",
@@ -275,6 +276,28 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       {
         title: "Nothing here is a forecast",
         body: "Finding that two countries resembled each other across a historical window does not tell you that either country will resemble its past, or the other country's past, going forward. To read either country's present, follow the country-profile link at the bottom of the page. The two countries' present-day stories are not narrated on this page.",
+      },
+    ],
+  },
+
+  "recipe-country-match": {
+    lede: "Four rules for reading how one country is tracing one recipe.",
+    rules: [
+      {
+        title: "The score is a rank, not a probability",
+        body: "The big number is a resemblance rank: how closely this country's recent trajectory matches the shape that ran ahead of this event type in past cases. A score of 90 means it sits near the top of that resemblance, not that there is a 90% chance of anything.",
+      },
+      {
+        title: "Shape behind, this country's path in front",
+        body: "For each signal we draw the average path that ran ahead of past cases and the range most cases stayed within, then lay this country's own recent path on top in white. Where the white line sits inside the band, the country is in shape. Where it parts, it is drifting off.",
+      },
+      {
+        title: "The white line ends at today",
+        body: "Every movement line stops at the latest reading and is never drawn forward. A line that has been settling into the shape describes the recent past, not a projection of where the country goes next.",
+      },
+      {
+        title: "Nothing here is a forecast",
+        body: "Tracing the shape of an event type is a measure of resemblance to history. It does not predict that this country will experience that event, nor when. The analogues we list are history about other situations, not a forecast about this one.",
       },
     ],
   },

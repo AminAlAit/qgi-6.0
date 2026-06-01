@@ -66,9 +66,14 @@ describe("resolveIndicatorLabel", () => {
     );
   });
 
-  it("empty string input is handled gracefully", () => {
-    const result = resolveIndicatorLabel("");
-    expect(result.label).toBe("");
-    expect(result.found).toBe(false);
+  it("empty / null / undefined input is handled gracefully", () => {
+    // 2026-05-30: empty / null / undefined all now return the same safe
+    // placeholder so the SSR import chain (countries-v4-data → indicator-
+    // labels) cannot crash on a bake gap (one fleet-run-1 SHAP entry
+    // shipped with no indicator_code).
+    expect(resolveIndicatorLabel("").label).toBe("(indicator code missing)");
+    expect(resolveIndicatorLabel("").found).toBe(false);
+    expect(resolveIndicatorLabel(null).label).toBe("(indicator code missing)");
+    expect(resolveIndicatorLabel(undefined).label).toBe("(indicator code missing)");
   });
 });

@@ -37,7 +37,7 @@ export const config = {
     "/risk-board/:path*",
     "/compound-risk/:path*",
     "/compare/:path*",
-    "/nearest-analog/:path*",
+    "/analogues/:path*",
     "/patterns/:path*",
     "/recipe-tracker/:path*",
   ],

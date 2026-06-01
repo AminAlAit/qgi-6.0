@@ -69,6 +69,9 @@
 "use client";
 
 import { useState } from "react";
+import type { CSSProperties } from "react";
+import Link from "next/link";
+import type { Route } from "next";
 import { PanelBase } from "./PanelBase";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import type { CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
@@ -87,6 +90,12 @@ interface Props {
   /** Total scored — used for the "~N countries between" elided count.
    *  Defaults to countriesFull.length when omitted. */
   nScored?: number;
+  /** When set, each country row links to /recipes/{recipeId}/countries/{iso2}
+   *  (the country-recipe match page). Rows whose name has no ISO stay inert. */
+  recipeId?: string;
+  /** When set, the matching row is outlined in the family color (used on the
+   *  match page to show "you are here"). */
+  highlightName?: string;
 }
 
 export function CountriesPanel({
@@ -96,6 +105,8 @@ export function CountriesPanel({
   countriesFull,
   showResults,
   nScored,
+  recipeId,
+  highlightName,
 }: Props) {
   const [expanded, setExpanded] = useState(false);
 
@@ -132,7 +143,12 @@ export function CountriesPanel({
       }
     >
       {expanded ? (
-        <FullRoster countries={countriesFull} familyColor={familyColor} />
+        <FullRoster
+          countries={countriesFull}
+          familyColor={familyColor}
+          recipeId={recipeId}
+          highlightName={highlightName}
+        />
       ) : (
         <TopAndBottom
           top={topSorted}
@@ -140,6 +156,8 @@ export function CountriesPanel({
           totalScored={totalScored}
           elidedCount={elidedCount}
           familyColor={familyColor}
+          recipeId={recipeId}
+          highlightName={highlightName}
         />
       )}
     </PanelBase>
@@ -154,12 +172,16 @@ function TopAndBottom({
   totalScored,
   elidedCount,
   familyColor,
+  recipeId,
+  highlightName,
 }: {
   top: CountryScore[];
   bottom: CountryScore[];
   totalScored: number;
   elidedCount: number;
   familyColor: string;
+  recipeId?: string;
+  highlightName?: string;
 }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -175,6 +197,8 @@ function TopAndBottom({
             scoreColor={familyColor}
             scoreWeight={700}
             divider={i < top.length - 1}
+            recipeId={recipeId}
+            highlight={c.name === highlightName}
           />
         ))}
       </ol>
@@ -197,6 +221,8 @@ function TopAndBottom({
             scoreColor="var(--qgi-text-muted)"
             scoreWeight={600}
             divider={i < bottom.length - 1}
+            recipeId={recipeId}
+            highlight={c.name === highlightName}
           />
         ))}
       </ol>
@@ -300,9 +326,13 @@ function ElidedDivider({ count }: { count: number }) {
 function FullRoster({
   countries,
   familyColor,
+  recipeId,
+  highlightName,
 }: {
   countries: CountryScore[];
   familyColor: string;
+  recipeId?: string;
+  highlightName?: string;
 }) {
   return (
     <div
@@ -328,6 +358,8 @@ function FullRoster({
             scoreWeight={i < 10 ? 700 : 600}
             divider={i < countries.length - 1}
             dense
+            recipeId={recipeId}
+            highlight={c.name === highlightName}
           />
         ))}
       </ol>
@@ -353,10 +385,13 @@ function CountryRow({
   rank,
   name,
   score,
+  familyColor,
   scoreColor,
   scoreWeight,
   divider,
   dense = false,
+  recipeId,
+  highlight = false,
 }: {
   rank: number;
   name: string;
@@ -366,20 +401,35 @@ function CountryRow({
   scoreWeight: number;
   divider: boolean;
   dense?: boolean;
+  /** When set, the row links to the country-recipe match page. */
+  recipeId?: string;
+  /** When true, the row is outlined ("you are here"). */
+  highlight?: boolean;
 }) {
   const padY = dense ? "6px" : "8px";
   const iso2 = iso2For(name);
-  return (
-    <li
-      style={{
-        display: "grid",
-        gridTemplateColumns: "28px 20px minmax(0, 1fr) auto",
-        gap: "8px",
-        alignItems: "center",
-        padding: dense ? `${padY} 10px` : `${padY} 0`,
-        borderBottom: divider ? "1px solid var(--qgi-border)" : "none",
-      }}
-    >
+  // Only link on a valid 2-letter ISO; some names resolve to an emoji or
+  // null in the flag map, which would produce a malformed URL.
+  const linkable = !!recipeId && !!iso2 && /^[a-z]{2}$/.test(iso2);
+
+  const rowStyle: CSSProperties = {
+    display: "grid",
+    gridTemplateColumns: "28px 20px minmax(0, 1fr) auto",
+    gap: "8px",
+    alignItems: "center",
+    padding: dense ? `${padY} 8px` : `${padY} 6px`,
+    borderRadius: "4px",
+    textDecoration: "none",
+    color: "inherit",
+    background: highlight ? `${familyColor}24` : "transparent",
+    outline: highlight ? `1.5px solid ${familyColor}` : "none",
+    outlineOffset: "-1.5px",
+    cursor: linkable ? "pointer" : "default",
+    transition: "background 120ms ease",
+  };
+
+  const content = (
+    <>
       <span
         style={{
           fontFamily: "ui-monospace, monospace",
@@ -396,11 +446,7 @@ function CountryRow({
           alt={`${name} flag`}
           width={16}
           height={12}
-          style={{
-            display: "inline-block",
-            verticalAlign: "middle",
-            flexShrink: 0,
-          }}
+          style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0 }}
         />
       ) : (
         <span style={{ width: 16, height: 12, display: "inline-block" }} aria-hidden />
@@ -412,6 +458,7 @@ function CountryRow({
           overflow: "hidden",
           textOverflow: "ellipsis",
           whiteSpace: "nowrap",
+          fontWeight: highlight ? 700 : 400,
         }}
       >
         {name}
@@ -426,8 +473,34 @@ function CountryRow({
       >
         {score.toFixed(1)}
       </span>
-    </li>
+    </>
   );
+
+  const liStyle: CSSProperties = {
+    listStyle: "none",
+    borderBottom: divider ? "1px solid var(--qgi-border)" : "none",
+  };
+
+  if (linkable) {
+    return (
+      <li style={liStyle}>
+        <Link
+          href={`/recipes/${recipeId}/countries/${iso2}` as Route}
+          style={rowStyle}
+          onMouseEnter={(e) => {
+            if (!highlight) e.currentTarget.style.background = "var(--qgi-bg)";
+          }}
+          onMouseLeave={(e) => {
+            if (!highlight) e.currentTarget.style.background = "transparent";
+          }}
+        >
+          {content}
+        </Link>
+      </li>
+    );
+  }
+
+  return <li style={{ ...liStyle, ...rowStyle }}>{content}</li>;
 }
 
 /* ───────── Expand-toggle button (mirrors ExpandableShell's affordance) ─ */

@@ -33,7 +33,7 @@ export function MomentumStrip({ momentum, vintage }: Props) {
       <HistoryAccumulatingGate
         vintage={vintage}
         label="Rank momentum"
-        nextAvailableAt="vintage 2 (~Q2 2027)"
+        nextAvailableAt="release 2 (~Q2 2027)"
       />
     );
   }
@@ -45,7 +45,7 @@ export function MomentumStrip({ momentum, vintage }: Props) {
       <HistoryAccumulatingGate
         vintage={vintage}
         label="Rank momentum (per recipe)"
-        nextAvailableAt="vintage 2 (~Q2 2027)"
+        nextAvailableAt="release 2 (~Q2 2027)"
       />
     );
   }
@@ -123,7 +123,7 @@ function PerRecipeGate({ m, vintage }: { m: CountryMomentum; vintage: string }) 
       <HistoryAccumulatingGate
         vintage={vintage}
         label="Rank history"
-        nextAvailableAt="vintage 2 (~Q2 2027)"
+        nextAvailableAt="release 2 (~Q2 2027)"
         variant="row"
       />
     </div>

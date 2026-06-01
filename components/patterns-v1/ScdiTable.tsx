@@ -225,13 +225,13 @@ export function ScdiTable({ scdis, onRowSelect, selectedIndex }: Props) {
                 className="text-right font-data text-[10px]"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                {n > 0 ? n : "—"}
+                {n > 0 ? n : "–"}
               </span>
               <span
                 className="text-right font-data text-[10px]"
                 style={{ color: sigCol }}
               >
-                {n >= 3 ? `${formatPValue(p)} ${sig}` : "—"}
+                {n >= 3 ? `${formatPValue(p)} ${sig}` : "–"}
               </span>
               <span
                 className="text-center text-[10px]"

@@ -30,8 +30,7 @@ export interface QgiTourStep extends Step {
     | "/countries"
     | "/countries/sdn"
     | "/risk-board"
-    | "/compound-risk"
-    | "/nearest-analog"
+    | "/analogues"
     | "/compare"
     | "/patterns"
     | "/patterns/paraguay-south_korea-1963";
@@ -66,7 +65,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="highlights-band"]',
     title: "Where today's signal is loudest",
     content:
-      "Four tiles, one from each of the live surfaces, refreshed each data vintage. Tap any tile to open the full page behind it. You will meet each of those surfaces in turn as the tour continues.",
+      "Four tiles, one from each of the live surfaces, refreshed each data release. Tap any tile to open the full page behind it. You will meet each of those surfaces in turn as the tour continues.",
     placement: "bottom",
   },
   {
@@ -278,7 +277,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="cotw-tile"]',
     title: "Country of the week",
     content:
-      "The country whose stack of resembled recipes is most worth a careful read this vintage. Sort and region filters below let you slice the full atlas; the colored border on each card is the family with the strongest match for that country.",
+      "The country whose stack of resembled recipes is most worth a careful read this release. Sort and region filters below let you slice the full atlas; the colored border on each card is the family with the strongest match for that country.",
     placement: "left",
   },
   {
@@ -357,7 +356,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="analogs-panel"]',
     title: "Closest historical rhymes",
     content:
-      "The three past cases whose trajectories most resemble this country's recent shape. Open Nearest Analog from the sidebar to explore the full picker; this panel is the country-detail shorthand.",
+      "The three past cases whose trajectories most resemble this country's recent shape. Open Analogues from the sidebar to explore the full picker; this panel is the country-detail shorthand.",
     placement: "top",
   },
   {
@@ -366,7 +365,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="vintage-sources-panel"]',
     title: "Provenance, in one place",
     content:
-      "When the data was last refreshed, which providers it came from, and the methodology vintage. Visit this panel before quoting any number; freshness is part of the claim.",
+      "When the data was last refreshed, which providers it came from, and the release it belongs to. Visit this panel before quoting any number; freshness is part of the claim.",
     placement: "top",
   },
   {
@@ -398,7 +397,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="risk-board-hero-strip"]',
     title: "The top pairs, across every recipe",
     content:
-      "These are the highest-resemblance country and recipe pairs anywhere on the platform, this vintage. The arrow tells you how that pair has shifted since last quarter: movement is a rank shift, not a probability change.",
+      "These are the highest-resemblance country and recipe pairs anywhere on the platform, this release. The arrow tells you how that pair has shifted since last quarter: movement is a rank shift, not a probability change.",
     placement: "bottom",
   },
   {
@@ -416,7 +415,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="recent-movements"]',
     title: "Who moved most this quarter",
     content:
-      "Countries whose rank shifted most since the last data vintage. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
+      "Countries whose rank shifted most since the last data release. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
     placement: "top",
   },
   {
@@ -429,72 +428,17 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "bottom",
   },
 
-  // ─── /compound-risk — 6 steps, ordered top-to-bottom ─────────────────────
-  // Visual order: h1 (inside hero) → compound-hero → leaderboard → overlap
-  // chart → case studies → how-to-read-button (top-strip chrome, last).
-  {
-    page: "/compound-risk",
-    dimension: "a",
-    target: "h1",
-    title: "Countries on more than one recipe",
-    content:
-      "Some countries resemble several recipes at once. This page surfaces them, ranked by a stacking score that combines high rankings across each recipe in play. It answers: where are structural pressures piling up on the same state?",
-    placement: "bottom",
-    skipBeacon: true,
-  },
-  {
-    page: "/compound-risk",
-    dimension: "b",
-    target: '[data-tour="compound-hero"]',
-    title: "On how many recipes today",
-    content:
-      "The hero tells you how many countries are currently in play on three or more recipes at once. Adjust the threshold below to widen or tighten the lens. A higher threshold surfaces the heaviest stacks; a lower one casts a wider net.",
-    placement: "bottom",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="compound-leaderboard"]',
-    title: "Stacked rank, not joint probability",
-    content:
-      "A country in play on three recipes is not three times more likely to break. It is a country whose trajectory rhymes with three distinct patterns at once. The compound score stacks resemblance ranks across recipes; it does not multiply event probabilities.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="overlap-chart"]',
-    title: "The same data, by family",
-    content:
-      "For the top five compound countries: which family stacks dominate the score, as horizontal bars. A country in play on Conflict plus Economic plus Social tells a different story than one in play on Diplomatic plus Structural.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "c",
-    target: '[data-tour="case-studies"]',
-    title: "Three mock briefs",
-    content:
-      "Analyst-style structural reads on three countries where multiple recipes co-light. These are placeholder narratives, not published assessments. They will be replaced with curated, dated briefs once a second recipe clears validation.",
-    placement: "top",
-  },
-  {
-    page: "/compound-risk",
-    dimension: "d",
-    target: '[data-tour="how-to-read-button"]',
-    title: "The four rules, again",
-    content:
-      "This page is the most common place to misread a score. Open the rules on the way in. With limited deployed recipes in the catalog today, the compound view is illustrative; it becomes meaningful as more recipes pass validation.",
-    placement: "bottom",
-  },
+  // /compound-risk tour steps removed 2026-05-30 — the route was taken
+  // down. Tour-step authoring will return once the page is rejuvenated as
+  // 'Compound Negative-Event Density' per the Stats/ML trio paper.
 
-  // ─── /nearest-analog — 5 steps, ordered top-to-bottom ────────────────────
+  // ─── /analogues — 5 steps, ordered top-to-bottom ────────────────────────
   // Visual order on page: h1 → picker (main column top) → results → recipe
   // contributions (still main column, below results) → methodology box (sticky
   // side panel, anchored top-right). Methodology box goes last in the tour
   // because it is the closing reference card.
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "a",
     target: "h1",
     title: "Today's shape, in history",
@@ -504,25 +448,25 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     skipBeacon: true,
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="picker-panel"]',
     title: "Pick a country, see its rhyme",
     content:
-      "Search for any country in the corpus. The page returns its three closest historical analogs, with what happened to those analog countries listed for context. That history is a fact about the analog, not a prediction about today's country.",
+      "Search for any country in the corpus. The page returns its three closest historical analogues, with what happened to those analogue countries listed for context. That history is a fact about the analogue, not a prediction about today's country.",
     placement: "right",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "b",
     target: '[data-tour="analog-results"]',
     title: "Three matches, with outcomes",
     content:
-      "Each match card carries the analog country, the year, a similarity score, and a brief note on what happened next. 'What happened next' is a fact about the analog, not a forecast about today's country. Read it that way and you read it correctly.",
+      "Each match card carries the analogue country, the year, a similarity score, and a brief note on what happened next. 'What happened next' is a fact about the analogue, not a forecast about today's country. Read it that way and you read it correctly.",
     placement: "top",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="recipe-contributions"]',
     title: "Which recipes pulled the match",
@@ -531,21 +475,21 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     placement: "top",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "c",
     target: '[data-tour="analog-methodology-box"]',
     title: "Resemblance, never forecast",
     content:
-      "If you read one statement on this site, read this panel's four. Analog matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
+      "If you read one statement on this site, read this panel's four. Analogues matches are similarities, not forward predictions: today's Egypt looking like 2008 Tunisia means the trajectories rhyme, not that Egypt will follow Tunisia.",
     placement: "left",
   },
   {
-    page: "/nearest-analog",
+    page: "/analogues",
     dimension: "d",
     target: '[data-tour="how-to-read-button"]',
     title: "Open this when you forget",
     content:
-      "Every page has this button. It opens a quiet reference card with the four ground rules. Analog matches are similarities, not forward predictions -- open the rules on any page when you need to re-anchor.",
+      "Every page has this button. It opens a quiet reference card with the four ground rules. Analogues matches are similarities, not forward predictions -- open the rules on any page when you need to re-anchor.",
     placement: "bottom",
   },
 
@@ -575,7 +519,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="generate-comparison-report-button"]',
     title: "A future button, previewed",
     content:
-      "Disabled today, earmarked for a future release. A thinking AI model will read everything QGI knows about the two countries -- every recipe in play, the indicator drivers, the analogs -- and write you a side-by-side intelligence report.",
+      "Disabled today, earmarked for a future release. A thinking AI model will read everything QGI knows about the two countries -- every recipe in play, the indicator drivers, the analogues -- and write you a side-by-side intelligence report.",
     placement: "bottom",
   },
   {

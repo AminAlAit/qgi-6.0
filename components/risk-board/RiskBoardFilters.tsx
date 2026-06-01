@@ -26,7 +26,7 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 // 2026-05-29 — touch comment to force Turbopack to re-detect this module's
 // dependency on the updated FlagImg + country-flags lib (cache invalidation
 // guard for the 16-flag-missing fix).
-import { flagFor } from "@/lib/te-mock/country-flags";
+import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
 import {
   getRecipeRow,
   type BoardCell,
@@ -275,12 +275,17 @@ export function RiskBoardFilters({ recipes, l1Families, countryUniverse }: Props
       </div>
 
       {/* Grid — switches between default top-10 mode and custom-country
-          mode depending on whether the user has selected any countries. */}
+          mode depending on whether the user has selected any countries.
+          Hover-to-highlight and dim-others are always on (founder ask
+          2026-05-30 round 3): without the dim, the highlight is invisible
+          on a 44-row board because the hovered match doesn't stand out
+          against equally-bright neighbours. */}
       <FilteredGrid
         rows={visibleRows}
         customCountries={customMode ? selectedCountries : null}
         hoveredCountry={hoveredCountry}
         onHoverCountry={setHoveredCountry}
+        dimOthersOnHover={true}
       />
     </>
   );
@@ -297,6 +302,7 @@ function FilteredGrid({
   customCountries,
   hoveredCountry,
   onHoverCountry,
+  dimOthersOnHover,
 }: {
   rows: Array<{ recipe: RiskBoardRecipeProjection; row: RecipeRow }>;
   /** Null = default top-10 mode. Array (≥1) = custom-column mode with
@@ -304,6 +310,10 @@ function FilteredGrid({
   customCountries: string[] | null;
   hoveredCountry: string | null;
   onHoverCountry: (name: string | null) => void;
+  /** True only in custom-column mode where columns are vertically aligned
+   *  across rows; in default mode each row's top-10 is mostly disjoint so
+   *  dimming 43/44 rows reads as the page going dark. */
+  dimOthersOnHover: boolean;
 }) {
   if (rows.length === 0) {
     return (
@@ -452,6 +462,7 @@ function FilteredGrid({
                   customCountries={customCountries}
                   hoveredCountry={hoveredCountry}
                   onHoverCountry={onHoverCountry}
+                  dimOthersOnHover={dimOthersOnHover}
                   gridTemplate={gridTemplate}
                   isLast={isLast}
                 />
@@ -470,6 +481,7 @@ function RecipeGridRow({
   customCountries,
   hoveredCountry,
   onHoverCountry,
+  dimOthersOnHover,
   gridTemplate,
   isLast,
 }: {
@@ -478,6 +490,7 @@ function RecipeGridRow({
   customCountries: string[] | null;
   hoveredCountry: string | null;
   onHoverCountry: (name: string | null) => void;
+  dimOthersOnHover: boolean;
   gridTemplate: string;
   isLast: boolean;
 }) {
@@ -574,7 +587,13 @@ function RecipeGridRow({
 
         {cellsToRender.map((cell, i) => {
           const isHovered = hoveredCountry === cell.country;
-          const dimmed = hoveredCountry !== null && !isHovered;
+          // Dim policy is mode-gated: in custom mode every row shows the
+          // same N countries in the same column order so dim-others makes
+          // the matched column pop. In default mode each row is its own
+          // top-10 (mostly disjoint) so dimming 43/44 rows reads as the
+          // page going dark — keep them at full opacity, the highlight
+          // alone carries the signal.
+          const dimmed = dimOthersOnHover && hoveredCountry !== null && !isHovered;
           return (
             <HeatCell
               key={`${recipe.recipe_id}-${i}-${cell.country}`}
@@ -591,12 +610,9 @@ function RecipeGridRow({
         })}
       </div>
 
-      {/* V4.1 §1.4 (2026-05-29): the between-row coverage caption ("X of 174
-          platform countries scored · Y lack coverage for this recipe's
-          indicators") was self-flagellation noise that read as exposure on
-          every recipe row. Removed. The full not-scored ISO list is still
-          available via the tooltip on the row's identity column if anyone
-          needs it. */}
+      {/* 2026-05-31 (founder): the per-row "N countries not scored — view list"
+          footer caption was removed. It read as coverage self-flagellation
+          between every recipe row; the grid stands on its scored cells. */}
     </div>
   );
 }
@@ -754,9 +770,18 @@ function HeatCell({
   const confidenceGlowShadow = confidenceGlow("#FFFFFF", cT);
   const pct = Math.round(score);
 
+  // A scored cell is a (country x recipe) intersection — link to the match
+  // page ("how this country is tracing this recipe"). Fall back to the recipe
+  // page when the country name has no ISO mapping.
+  const cellIso2 = iso2For(cell.country);
+  const cellHref =
+    cellIso2 && /^[a-z]{2}$/.test(cellIso2)
+      ? `/recipes/${recipeId}/countries/${cellIso2}`
+      : `/recipes/${recipeId}`;
+
   return (
     <Link
-      href={`/recipes/${recipeId}` as Route}
+      href={cellHref as Route}
       onMouseEnter={onHoverCountry ? () => onHoverCountry(cell.country) : undefined}
       onMouseLeave={onHoverCountry ? () => onHoverCountry(null) : undefined}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}
@@ -975,6 +1000,7 @@ function CountryMultiPicker({
               key={name}
               type="button"
               role="option"
+              aria-selected={false}
               onMouseDown={(e) => {
                 // mouseDown beats the input's onBlur so the click registers.
                 e.preventDefault();

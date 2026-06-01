@@ -37,19 +37,19 @@ import type { CountryRisksData } from "./country-risks";
 export const TOTAL_COUNTRIES = 214;
 
 /**
- * Number of indicators currently SCORED by the pipeline (z-score + RRF).
- * Subset of the catalog (TOTAL_INDICATOR_CATALOG) — the rest are awaiting
- * ingestion, normalization, or re-validation.
+ * Number of indicators currently active / scored by the pipeline.
+ * Verified 2026-05-31 from the staging data lake: World Bank 69 + FAOSTAT 5
+ * (indicators.json status=process) + V-Dem 35 (fleet set) = 109. The earlier
+ * hardcoded 104 had no backing list; the verified roster lives in
+ * data/indicator-catalog.json and powers /methodology/indicators.
  */
-export const TOTAL_INDICATORS = 104;
+export const TOTAL_INDICATORS = 109;
 
 /**
- * Total indicators in the catalog. Founder-confirmed 2026-05-22: the
- * pipeline actively scores 104 indicators (was 58 in earlier vintage).
- * Catalog must be at least the scored count; keeping equal until a
- * fresh audit produces a verified larger total.
+ * Total indicators in the active catalog. Equal to the scored count; the
+ * fuller WB+FAOSTAT dispatcher holds 275 with most on hold pending ingestion.
  */
-export const TOTAL_INDICATOR_CATALOG = 104;
+export const TOTAL_INDICATOR_CATALOG = 109;
 
 /**
  * UN-recognized states. Constant scope descriptor — appears in marketing

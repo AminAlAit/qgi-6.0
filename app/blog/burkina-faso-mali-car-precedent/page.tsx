@@ -25,9 +25,9 @@ const PUBLISH_DATE = "2026-05-16";
 
 export const metadata: Metadata = {
   title:
-    "Burkina Faso's risk signature — a structural pattern shared with Mali 2010-2012 and CAR 2011-2013 — QGI Blog",
+    "Burkina Faso's risk signature: a structural pattern shared with Mali 2010-2012 and CAR 2011-2013 | QGI Blog",
   description:
-    "Five risk domains fire simultaneously on Burkina Faso in our 2026-04-30 bake. The same five-domain signature preceded the 2012 Mali coup and the 2013 Central African Republic collapse. What that structural resemblance means — and what it doesn't.",
+    "Five risk domains fire simultaneously on Burkina Faso in our 2026-04-30 bake. The same five-domain signature preceded the 2012 Mali coup and the 2013 Central African Republic collapse. What that structural resemblance means, and what it doesn't.",
   alternates: {
     canonical: "https://qgintelligence.com/blog/burkina-faso-mali-car-precedent",
   },
@@ -129,7 +129,7 @@ export default function BurkinaFasoPrecedentPage() {
           >
             Five risk domains light up together in our current bake. The same combination
             preceded the 2012 Mali coup and the 2013 Central African Republic collapse.
-            The pattern is structural, the outcomes are historical — and the gap between
+            The pattern is structural, the outcomes are historical, and the gap between
             resemblance and prediction is where this piece spends most of its time.
           </p>
         </div>
@@ -144,7 +144,7 @@ export default function BurkinaFasoPrecedentPage() {
           </h2>
           <p>
             QGI&apos;s 2026-04-30 bake places Burkina Faso in the MODERATE tier overall.
-            The aggregate score is unremarkable for the Sahel — moderate scores on
+            The aggregate score is unremarkable for the Sahel: moderate scores on
             individual risk dimensions are common in a band where structural fragility is
             the regional baseline. What is unusual, and what this piece is about, is which
             five domains are firing at once.
@@ -213,7 +213,7 @@ export default function BurkinaFasoPrecedentPage() {
 
           <p>
             Civil-war salience above 2σ, military-coup salience above 1.8σ, three further
-            categories elevated together — this is a five- domain firing, not a single
+            categories elevated together: this is a five- domain firing, not a single
             dominant signal. The aggregate tier is MODERATE because none of these scores
             individually crosses the 2.5σ HIGH cutoff. Looking only at the headline
             number, you would not notice. Looking at the five rows together, you see
@@ -247,9 +247,9 @@ export default function BurkinaFasoPrecedentPage() {
             Central African Republic, 2011-2013
           </h2>
           <p>
-            CAR carried the same five-row firing — civil conflict, coup potential,
-            protest, repression, elections — through 2011 and 2012. The aggregate tier was
-            not HIGH. The combination was unusual.
+            CAR carried the same five-row firing (civil conflict, coup potential, protest,
+            repression, elections) through 2011 and 2012. The aggregate tier was not HIGH.
+            The combination was unusual.
           </p>
           <p>
             On 24 March 2013, the Séléka coalition captured Bangui; President François
@@ -302,8 +302,8 @@ export default function BurkinaFasoPrecedentPage() {
                 historically resolved five-domain firings in QGI&apos;s 2026-04-30 corpus
                 is small. Mali and CAR are visible because they happened. Cases where a
                 similar signature appeared and dissipated without crisis are
-                under-represented by the same logic — they are harder to anchor to a
-                single named event.
+                under-represented by the same logic; they are harder to anchor to a single
+                named event.
               </li>
               <li>
                 <strong>Structural similarity is not causal mechanism.</strong> The
@@ -331,7 +331,7 @@ export default function BurkinaFasoPrecedentPage() {
           </h2>
           <p>
             QGI&apos;s purpose is to surface historical precedents that an analyst can use
-            as a starting point — not to issue forecasts. Burkina Faso&apos;s current
+            as a starting point, not to issue forecasts. Burkina Faso&apos;s current
             five-domain firing is the kind of structural pattern our pipeline is designed
             to find. Mali and CAR are the kind of historical analogues that earn that
             structural pattern its weight.
@@ -355,8 +355,8 @@ export default function BurkinaFasoPrecedentPage() {
                 style={{ color: "var(--qgi-accent)" }}
               >
                 Burkina Faso signal page
-              </Link>{" "}
-              — current bake&apos;s salience values per category, refreshed monthly.
+              </Link>
+              : current bake&apos;s salience values per category, refreshed monthly.
             </li>
             <li>
               <Link
@@ -365,8 +365,8 @@ export default function BurkinaFasoPrecedentPage() {
                 style={{ color: "var(--qgi-accent)" }}
               >
                 Civil-war-and-insurgency precedent
-              </Link>{" "}
-              — the ML-validated recipe behind the 2.22σ score on that row.
+              </Link>
+              : the ML-validated recipe behind the 2.22σ score on that row.
             </li>
             <li>
               <Link
@@ -375,8 +375,8 @@ export default function BurkinaFasoPrecedentPage() {
                 style={{ color: "var(--qgi-accent)" }}
               >
                 Methodology
-              </Link>{" "}
-              — how the bake is computed, what salience means, where the cohort comes
+              </Link>
+              : how the bake is computed, what salience means, where the cohort comes
               from.
             </li>
           </ul>

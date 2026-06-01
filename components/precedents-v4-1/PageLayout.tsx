@@ -35,7 +35,7 @@ interface RecipeSummary {
 
 interface Props {
   recipe: RecipeSummary;
-  statusChip: ReactNode;
+  statusChip?: ReactNode;
   subtitle?: string;
   /**
    * Definition lede paragraph (#155). Rendered under the H1 + subtitle as
@@ -123,17 +123,25 @@ export function PageLayout({
               <RecipeIcon recipeId={recipe.recipe_id} size={52} strokeWidth={1.5} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  marginBottom: "10px",
-                  flexWrap: "wrap",
-                }}
-              >
-                {statusChip}
-              </div>
+              {/* 2026-05-30: status chip ("In play" etc.) removed from the
+                  recipe header per founder ask — every recipe rendered here
+                  is in active rotation by construction, so the chip carried
+                  zero signal. The slot is still wired (statusChip is now
+                  optional) so future chip styles can drop back in here
+                  without re-plumbing PageLayout. */}
+              {statusChip && (
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    marginBottom: "10px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  {statusChip}
+                </div>
+              )}
               <h1
                 style={{
                   fontSize: "30px",

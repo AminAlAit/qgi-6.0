@@ -172,7 +172,7 @@ export default function RiskBoardPage() {
         >
           {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer. */}
           <span>
-            Scores refresh on each data vintage. New recipes appear as their evidence base
+            Scores refresh on each data release. New recipes appear as their evidence base
             grows.
           </span>
         </footer>

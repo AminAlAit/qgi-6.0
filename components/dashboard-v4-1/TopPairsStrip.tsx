@@ -27,6 +27,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { PanelBase } from "./PanelBase";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
+import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { getAllRecipes } from "@/lib/te-mock/recipes";
 import {
@@ -61,10 +62,13 @@ export function TopPairsStrip({ limit = 20 }: Props) {
   const recipes = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
   const countLabel = pairs.length;
 
+  // Visual-density count for accessibility-only; not surfaced in the
+  // header (founder asked the header to read just "Highlights").
+  void countLabel;
+
   return (
     <PanelBase
-      title={`Top ${countLabel} today`}
-      caption="Country-recipe matches, ranked by confidence."
+      title="Highlights"
       rightSlot={
         <Link
           href={"/risk-board" as Route}
@@ -81,9 +85,9 @@ export function TopPairsStrip({ limit = 20 }: Props) {
         </Link>
       }
     >
-      {/* Internal-scroll container. max-height tops out near the viewport
-          so the rail behaves as a peripheral companion: visible at scan,
-          scrollable when the user invests attention. */}
+      {/* 2026-05-30: rail is non-sticky + non-scrolling. The full list
+          flows with the page; overflow is dictated by the page's normal
+          scroll, not an internal scrollbar. */}
       <ol
         style={{
           listStyle: "none",
@@ -91,10 +95,7 @@ export function TopPairsStrip({ limit = 20 }: Props) {
           margin: 0,
           display: "flex",
           flexDirection: "column",
-          gap: "5px",
-          maxHeight: "calc(100vh - 220px)",
-          overflowY: "auto",
-          paddingRight: "4px",
+          gap: "6px",
         }}
       >
         {pairs.map((pair) => {
@@ -104,6 +105,7 @@ export function TopPairsStrip({ limit = 20 }: Props) {
             <PairRow
               key={`${pair.country}-${pair.recipe_id}-${pair.rank}`}
               pair={pair}
+              recipeId={pair.recipe_id}
               recipeLabel={recipe.label}
               recipeFamilyColor={familyColor(recipe.l1_id, recipe.l1_color)}
             />
@@ -116,10 +118,12 @@ export function TopPairsStrip({ limit = 20 }: Props) {
 
 function PairRow({
   pair,
+  recipeId,
   recipeLabel,
   recipeFamilyColor,
 }: {
   pair: CuratedBoardPair | (BoardPair & { rank: number });
+  recipeId: string;
   recipeLabel: string;
   recipeFamilyColor: string;
 }) {
@@ -127,17 +131,19 @@ function PairRow({
   const cT = confidenceT(pair.score);
   const pctColor = lerpHexToRgb(MUTED_GRAY, recipeFamilyColor, cT);
   const pctGlow = confidenceGlow(recipeFamilyColor, cT);
-  // 2026-05-30 polish — rationale dropped from the rail per founder ask
-  // ("too much text"). The curated long-form rationale moves to the cell
-  // title attribute so it surfaces on hover for the curious reader, but
-  // the visible row stays at 2 lines: rank+flag+country+score / recipe
-  // label.
   const rationale = "rationale" in pair ? pair.rationale : undefined;
+  // Card reads as a sentence:
+  //   [recipe icon · family color] Recipe Label … score%
+  //   [flag] Country  (one indent under the icon column)
+  // Recipe-first per Lea: the dashboard's question is "which shapes are
+  // matching"; the country is the predicate of the sentence, not the
+  // subject. Icon + family color give the recipe-identity glance Ingrid
+  // wanted. Rank numbers dropped per Yuki (founder concurred).
 
   return (
     <li>
       <Link
-        href={`/recipes/${pair.recipe_id}` as Route}
+        href={`/recipes/${recipeId}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
         title={rationale}
       >
@@ -146,14 +152,14 @@ function PairRow({
             display: "flex",
             flexDirection: "column",
             gap: "3px",
-            padding: "7px 9px",
+            padding: "8px 10px",
             background: "var(--qgi-bg)",
             border: "1px solid var(--qgi-border)",
             borderLeft: `2px solid ${recipeFamilyColor}`,
             borderRadius: "4px",
           }}
         >
-          {/* Row 1: rank · flag · country · score */}
+          {/* Row 1: recipe icon · recipe label · score */}
           <div
             style={{
               display: "flex",
@@ -163,24 +169,19 @@ function PairRow({
             }}
           >
             <span
+              aria-hidden="true"
               style={{
-                fontSize: "10px",
-                color: "var(--qgi-text-dim)",
-                fontFamily: "ui-monospace, monospace",
-                letterSpacing: "0.5px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: recipeFamilyColor,
                 flexShrink: 0,
-                minWidth: "18px",
+                width: "18px",
+                height: "18px",
               }}
             >
-              {String(pair.rank).padStart(2, "0")}
+              <RecipeIcon recipeId={recipeId} size={16} strokeWidth={1.7} />
             </span>
-
-            <FlagImg
-              emoji={flagFor(pair.country)}
-              name={pair.country}
-              width={14}
-              radius={2}
-            />
 
             <span
               style={{
@@ -195,7 +196,7 @@ function PairRow({
                 lineHeight: 1.2,
               }}
             >
-              {pair.country}
+              {recipeLabel}
             </span>
 
             <span
@@ -211,13 +212,13 @@ function PairRow({
                 minWidth: "32px",
                 textAlign: "right",
               }}
-              title={`${pct}% confidence — this country's recent path matches the recipe's canonical shape.`}
+              title={`${pct}% match: this country's recent path matches the recipe's canonical shape.`}
             >
               {pct}%
             </span>
           </div>
 
-          {/* Row 2: recipe label (indented under the flag column) */}
+          {/* Row 2: flag · country (indented under the icon) */}
           <div
             style={{
               display: "flex",
@@ -228,8 +229,13 @@ function PairRow({
               color: "var(--qgi-text-muted)",
               lineHeight: 1.25,
             }}
-            title={recipeLabel}
           >
+            <FlagImg
+              emoji={flagFor(pair.country)}
+              name={pair.country}
+              width={14}
+              radius={2}
+            />
             <span
               style={{
                 whiteSpace: "nowrap",
@@ -237,15 +243,13 @@ function PairRow({
                 textOverflow: "ellipsis",
                 flex: 1,
                 minWidth: 0,
+                color: "var(--qgi-text)",
+                fontWeight: 500,
               }}
             >
-              {recipeLabel}
+              {pair.country}
             </span>
           </div>
-
-          {/* 2026-05-30: rationale row dropped from the visible card. The
-              full editorial note moves to the link's title attribute so
-              hovering surfaces it without the visual weight. */}
         </div>
       </Link>
     </li>

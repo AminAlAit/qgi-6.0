@@ -1,6 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import EventsTable from "@/components/methodology/EventsTable";
+import StatPie from "@/components/methodology/StatPie";
+import { PIE_PALETTE, type PieSlice } from "@/components/methodology/pie-data";
+import taxonomy from "@/data/taxonomy-with-counts.json";
+import verifiedEvents from "@/data/verified-events.json";
+
+interface L1 {
+  label: string;
+  display_label?: string;
+  event_count?: number;
+}
+const MASTER_GROUP_SLICES: PieSlice[] = (taxonomy as { layer1: L1[] }).layer1
+  .map((l1, i) => ({
+    label: l1.display_label || l1.label,
+    value: l1.event_count || 0,
+    color: PIE_PALETTE[i % PIE_PALETTE.length],
+  }))
+  .filter((s) => s.value > 0);
+
+const SOURCE_SLICES: PieSlice[] = (() => {
+  const m = new Map<string, number>();
+  for (const e of verifiedEvents as Array<{ sourceDomain?: string | null }>) {
+    const d = e.sourceDomain;
+    if (!d) continue;
+    m.set(d, (m.get(d) || 0) + 1);
+  }
+  return [...m.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, value], i) => ({
+      label,
+      value,
+      color: PIE_PALETTE[i % PIE_PALETTE.length],
+    }));
+})();
 
 export const metadata: Metadata = {
   title: "All verified events · QGI Methodology",
@@ -70,6 +103,11 @@ export default function MethodologyEventsPage() {
             Every event in QGI&apos;s data lake, with the verification source URL. Filter
             by country, category, year range, or fulltext search the title.
           </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+          <StatPie title="Events by master group" slices={MASTER_GROUP_SLICES} />
+          <StatPie title="Events by source" slices={SOURCE_SLICES} />
         </div>
 
         <EventsTable />

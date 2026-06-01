@@ -43,7 +43,7 @@ export function formatBakeMonthYear(iso: string | undefined | null): string {
  */
 export function formatDataThrough(iso: string | undefined | null): string {
   const monthYear = formatBakeMonthYear(iso);
-  return monthYear ? `Data through ${monthYear}` : "Data vintage unknown";
+  return monthYear ? `Data through ${monthYear}` : "Data release unknown";
 }
 
 /**

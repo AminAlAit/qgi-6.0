@@ -1,0 +1,156 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PublicNav } from "@/components/PublicNav";
+import { PublicFooter } from "@/components/PublicFooter";
+import { SkipLink } from "@/components/SkipLink";
+import IndicatorTaxonomyTree from "@/components/methodology/IndicatorTaxonomyTree";
+import IndicatorsTable from "@/components/methodology/IndicatorsTable";
+import StatPie from "@/components/methodology/StatPie";
+import { PIE_PALETTE, type PieSlice } from "@/components/methodology/pie-data";
+import catalog from "@/data/indicator-catalog.json";
+
+interface CatEntry {
+  provider: string;
+  theme: string;
+}
+const ENTRIES = (catalog as { indicators: CatEntry[] }).indicators;
+const TOTAL = ENTRIES.length;
+
+const PROVIDER_COLOR: Record<string, string> = {
+  "World Bank": "#38bdf8",
+  "V-Dem": "#7B5EE6",
+  FAOSTAT: "#3FBF8F",
+};
+
+function countBy(key: "provider" | "theme"): PieSlice[] {
+  const m = new Map<string, number>();
+  for (const e of ENTRIES) m.set(e[key], (m.get(e[key]) || 0) + 1);
+  return [...m.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .map(([label, value], i) => ({
+      label,
+      value,
+      color:
+        key === "provider"
+          ? PROVIDER_COLOR[label] || PIE_PALETTE[i]
+          : PIE_PALETTE[i % PIE_PALETTE.length],
+    }));
+}
+
+const PROVIDER_SLICES = countBy("provider");
+const THEME_SLICES = countBy("theme");
+
+export const metadata: Metadata = {
+  title: "All indicators · QGI Methodology",
+  description:
+    "Every open-data indicator QGI currently tracks, with its provider, theme, and how many recipes it feeds. World Bank, V-Dem and FAOSTAT.",
+  alternates: { canonical: "https://qgintelligence.com/methodology/indicators" },
+  openGraph: {
+    title: "All indicators · QGI Methodology",
+    description: "Every open-data indicator QGI currently tracks, by provider and theme.",
+    url: "https://qgintelligence.com/methodology/indicators",
+    siteName: "QG Intelligence",
+    type: "article",
+  },
+};
+
+export default function MethodologyIndicatorsPage() {
+  return (
+    <div
+      className="min-h-full"
+      style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
+    >
+      <SkipLink />
+      <header
+        className="sticky top-0 z-50 border-b backdrop-blur-md"
+        style={{
+          borderColor: "var(--qgi-border)",
+          backgroundColor: "rgba(15, 25, 35, 0.85)",
+        }}
+      >
+        <div className="mx-auto max-w-5xl flex items-center justify-between px-6 py-4">
+          <Link href="/" className="flex items-baseline gap-1" title="Home">
+            <span
+              className="font-data text-sm tracking-[0.25em] font-semibold"
+              style={{ color: "var(--qgi-accent)", marginRight: "-0.25em" }}
+            >
+              QG
+            </span>
+            <span
+              className="text-[11px] tracking-widest uppercase"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Intelligence
+            </span>
+          </Link>
+          <PublicNav currentPage="methodology" />
+        </div>
+      </header>
+
+      <main id="main-content" tabIndex={-1} className="focus:outline-none">
+        <article className="mx-auto max-w-5xl px-6 py-16">
+          <div className="mb-10">
+            <div
+              className="text-[10px] tracking-widest uppercase mb-3"
+              style={{ color: "var(--qgi-accent)" }}
+            >
+              Methodology · Indicators
+            </div>
+            <h1 className="text-3xl font-semibold mb-4">
+              The indicators behind every score
+            </h1>
+            <p
+              className="text-lg leading-relaxed max-w-2xl"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              QGI reads {TOTAL} open-data indicators, every one public and citable, drawn
+              from the World Bank, V-Dem and FAOSTAT. They span the economy, governance,
+              rights, conflict and society, the raw signals a recipe is built from.
+            </p>
+            <p className="mt-4 text-sm">
+              <Link
+                href="/methodology"
+                className="border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
+                style={{
+                  color: "var(--qgi-text-muted)",
+                  borderColor: "var(--qgi-border)",
+                }}
+              >
+                &larr; Back to the methodology
+              </Link>
+            </p>
+          </div>
+
+          <section className="mb-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <StatPie title="Indicators by provider" slices={PROVIDER_SLICES} />
+              <StatPie title="Indicators by theme" slices={THEME_SLICES} />
+            </div>
+          </section>
+
+          <section className="mb-14">
+            <h2
+              className="text-xs tracking-[0.25em] uppercase mb-4"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              By provider and theme
+            </h2>
+            <IndicatorTaxonomyTree />
+          </section>
+
+          <section>
+            <h2
+              className="text-xs tracking-[0.25em] uppercase mb-4"
+              style={{ color: "var(--qgi-text-muted)" }}
+            >
+              Every indicator
+            </h2>
+            <IndicatorsTable />
+          </section>
+        </article>
+      </main>
+
+      <PublicFooter />
+    </div>
+  );
+}

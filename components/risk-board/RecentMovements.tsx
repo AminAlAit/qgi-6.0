@@ -51,7 +51,7 @@ export function RecentMovements() {
           alignItems: "center",
           gap: "12px",
         }}
-        title="Quarterly rank shifts begin at vintage 2 (the next bake). Vintage 1 has no prior reading to diff against."
+        title="Quarterly rank shifts begin at release 2 (the next bake). Release 1 has no prior reading to diff against."
       >
         <Calendar size={14} strokeWidth={1.7} color="var(--qgi-text-dim)" />
         <span
@@ -129,7 +129,7 @@ export function RecentMovements() {
         // unreachable — early return above; kept for legacy safety
         <HistoryAccumulatingGate
           vintage={BOARD_VINTAGE}
-          label="Vintage-over-vintage rank shifts"
+          label="Release-over-release rank shifts"
         />
       ) : (
         <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
@@ -275,7 +275,7 @@ function MovementRow({
           minWidth: "78px",
           justifyContent: "flex-end",
         }}
-        title={`Prior reading from vintage ${ev.vs_vintage} (${ev.delta_quarters} quarter${ev.delta_quarters === 1 ? "" : "s"} ago)`}
+        title={`Prior reading from release ${ev.vs_vintage} (${ev.delta_quarters} quarter${ev.delta_quarters === 1 ? "" : "s"} ago)`}
       >
         <Calendar size={11} strokeWidth={1.8} />
         since {ev.vs_vintage}

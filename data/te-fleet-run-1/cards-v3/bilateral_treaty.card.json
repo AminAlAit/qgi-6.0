@@ -471,13 +471,598 @@
   "elapsed_seconds": 5519.385473251343,
   "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results/bilateral_treaty/f-ml-1-poc-summary.json",
   "score_distribution": {
-    "computed": false,
-    "histogram": [],
-    "median": null,
-    "p90": null,
-    "p99": null,
-    "max": null,
-    "n_countries_scored": 0,
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 9,
+        "countries": [
+          "Luxembourg",
+          "Sudan",
+          "Switzerland",
+          "Kuwait",
+          "Macao",
+          "Australia",
+          "United States",
+          "Iceland",
+          "Faroe Islands"
+        ],
+        "country_isos": [
+          "lu",
+          "sd",
+          "ch",
+          "kw",
+          "mo",
+          "au",
+          "us",
+          "is",
+          "fo"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 11,
+        "countries": [
+          "Japan",
+          "Angola",
+          "Lithuania",
+          "Hong Kong",
+          "Qatar",
+          "United Kingdom",
+          "Yemen",
+          "Afghanistan",
+          "Netherlands",
+          "Denmark",
+          "Sweden"
+        ],
+        "country_isos": [
+          "jp",
+          "ao",
+          "lt",
+          "hk",
+          "qa",
+          "gb",
+          "ye",
+          "af",
+          "nl",
+          "dk",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 10,
+        "countries": [
+          "Venezuela",
+          "Croatia",
+          "Hungary",
+          "Latvia",
+          "Equatorial Guinea",
+          "Isle of Man",
+          "Lesotho",
+          "France",
+          "Comoros",
+          "Cameroon"
+        ],
+        "country_isos": [
+          "ve",
+          "hr",
+          "hu",
+          "lv",
+          "gq",
+          "im",
+          "ls",
+          "fr",
+          "km",
+          "cm"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 10,
+        "countries": [
+          "Benin",
+          "Colombia",
+          "Greece",
+          "Liberia",
+          "Zambia",
+          "Panama",
+          "South Africa",
+          "Poland",
+          "Cayman Islands",
+          "Chad"
+        ],
+        "country_isos": [
+          "bj",
+          "co",
+          "gr",
+          "lr",
+          "zm",
+          "pa",
+          "za",
+          "pl",
+          "ky",
+          "td"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 10,
+        "countries": [
+          "Israel",
+          "Estonia",
+          "Grenada",
+          "Mauritania",
+          "Uruguay",
+          "Belize",
+          "Singapore",
+          "Iraq",
+          "Seychelles",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "il",
+          "ee",
+          "gd",
+          "mr",
+          "uy",
+          "bz",
+          "sg",
+          "iq",
+          "sc",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 10,
+        "countries": [
+          "Guyana",
+          "Senegal",
+          "Burundi",
+          "Ireland",
+          "Finland",
+          "Saint Kitts and Nevis",
+          "Saint Vincent and the Grenadines",
+          "Chile",
+          "Bahrain",
+          "Sierra Leone"
+        ],
+        "country_isos": [
+          "gy",
+          "sn",
+          "bi",
+          "ie",
+          "fi",
+          "kn",
+          "vc",
+          "cl",
+          "bh",
+          "sl"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 10,
+        "countries": [
+          "Botswana",
+          "Djibouti",
+          "Suriname",
+          "Pakistan",
+          "Mexico",
+          "Norway",
+          "Germany",
+          "Belgium",
+          "Mali",
+          "Micronesia"
+        ],
+        "country_isos": [
+          "bw",
+          "dj",
+          "sr",
+          "pk",
+          "mx",
+          "no",
+          "de",
+          "be",
+          "ml",
+          "fm"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 10,
+        "countries": [
+          "Bermuda",
+          "Jamaica",
+          "Nigeria",
+          "Romania",
+          "Burkina Faso",
+          "Barbados",
+          "Canada",
+          "Portugal",
+          "Tunisia",
+          "Libya"
+        ],
+        "country_isos": [
+          "bm",
+          "jm",
+          "ng",
+          "ro",
+          "bf",
+          "bb",
+          "ca",
+          "pt",
+          "tn",
+          "ly"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 10,
+        "countries": [
+          "Nauru",
+          "Azerbaijan",
+          "Brunei",
+          "The Gambia",
+          "Czechia",
+          "Turks and Caicos Islands",
+          "Montenegro",
+          "Kazakhstan",
+          "Trinidad and Tobago",
+          "Togo"
+        ],
+        "country_isos": [
+          "nr",
+          "az",
+          "bn",
+          "gm",
+          "cz",
+          "tc",
+          "me",
+          "kz",
+          "tt",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 10,
+        "countries": [
+          "Gabon",
+          "Iran",
+          "Kyrgyzstan",
+          "United Arab Emirates",
+          "Paraguay",
+          "Argentina",
+          "Slovenia",
+          "Palau",
+          "Lebanon",
+          "Kenya"
+        ],
+        "country_isos": [
+          "ga",
+          "ir",
+          "kg",
+          "ae",
+          "py",
+          "ar",
+          "si",
+          "pw",
+          "lb",
+          "ke"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 10,
+        "countries": [
+          "Saint Lucia",
+          "Oman",
+          "El Salvador",
+          "Antigua and Barbuda",
+          "Cyprus",
+          "Russia",
+          "Bulgaria",
+          "Guatemala",
+          "Haiti",
+          "Myanmar"
+        ],
+        "country_isos": [
+          "lc",
+          "om",
+          "sv",
+          "ag",
+          "cy",
+          "ru",
+          "bg",
+          "gt",
+          "ht",
+          "mm"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 11,
+        "countries": [
+          "Maldives",
+          "Zimbabwe",
+          "Laos",
+          "Costa Rica",
+          "Morocco",
+          "The Democratic Republic of the Congo",
+          "Brazil",
+          "Dominican Republic",
+          "Eswatini",
+          "Ghana",
+          "India"
+        ],
+        "country_isos": [
+          "mv",
+          "zw",
+          "la",
+          "cr",
+          "ma",
+          "cd",
+          "br",
+          "do",
+          "sz",
+          "gh",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 10,
+        "countries": [
+          "Turkiye",
+          "Bangladesh",
+          "Ivory Coast",
+          "Puerto Rico",
+          "Serbia",
+          "Spain",
+          "Austria",
+          "Cambodia",
+          "Aruba",
+          "Algeria"
+        ],
+        "country_isos": [
+          "tr",
+          "bd",
+          "ci",
+          "pr",
+          "rs",
+          "es",
+          "at",
+          "kh",
+          "aw",
+          "dz"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 10,
+        "countries": [
+          "Guinea",
+          "Thailand",
+          "Timor-Leste",
+          "Malaysia",
+          "French Polynesia",
+          "Italy",
+          "Belarus",
+          "Bosnia and Herzegovina",
+          "Greenland",
+          "Dominica"
+        ],
+        "country_isos": [
+          "gn",
+          "th",
+          "tl",
+          "my",
+          "pf",
+          "it",
+          "by",
+          "ba",
+          "gl",
+          "dm"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 10,
+        "countries": [
+          "Armenia",
+          "Mauritius",
+          "Fiji",
+          "Eritrea",
+          "North Macedonia",
+          "Peru",
+          "New Zealand",
+          "China",
+          "Cura\u00e7ao",
+          "Ecuador"
+        ],
+        "country_isos": [
+          "am",
+          "mu",
+          "fj",
+          "er",
+          "mk",
+          "pe",
+          "nz",
+          "cn",
+          "cw",
+          "ec"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 10,
+        "countries": [
+          "Sao Tome and Principe",
+          "Bhutan",
+          "Mozambique",
+          "Saudi Arabia",
+          "Nepal",
+          "Guinea-Bissau",
+          "Solomon Islands",
+          "Cabo Verde",
+          "Albania",
+          "Madagascar"
+        ],
+        "country_isos": [
+          "st",
+          "bt",
+          "mz",
+          "sa",
+          "np",
+          "gw",
+          "sb",
+          "cv",
+          "al",
+          "mg"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 10,
+        "countries": [
+          "Nicaragua",
+          "Cuba",
+          "Tonga",
+          "Georgia",
+          "Bahamas",
+          "Tuvalu",
+          "Vanuatu",
+          "Malawi",
+          "Marshall Islands",
+          "Moldova"
+        ],
+        "country_isos": [
+          "ni",
+          "cu",
+          "to",
+          "ge",
+          "bs",
+          "tv",
+          "vu",
+          "mw",
+          "mh",
+          "md"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 10,
+        "countries": [
+          "Egypt",
+          "Somalia",
+          "Sint Maarten (Dutch part)",
+          "Mongolia",
+          "Jordan",
+          "Uganda",
+          "Namibia",
+          "Philippines",
+          "Kiribati",
+          "Samoa"
+        ],
+        "country_isos": [
+          "eg",
+          "so",
+          "sx",
+          "mn",
+          "jo",
+          "ug",
+          "na",
+          "ph",
+          "ki",
+          "ws"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 10,
+        "countries": [
+          "Republic of the Congo",
+          "Ukraine",
+          "Tajikistan",
+          "Malta",
+          "Central African Republic",
+          "Uzbekistan",
+          "Bolivia",
+          "Niger",
+          "South Korea",
+          "Vietnam"
+        ],
+        "country_isos": [
+          "cg",
+          "ua",
+          "tj",
+          "mt",
+          "cf",
+          "uz",
+          "bo",
+          "ne",
+          "kr",
+          "vn"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 11,
+        "countries": [
+          "Tanzania",
+          "Ethiopia",
+          "Papua New Guinea",
+          "Turkmenistan",
+          "Syria",
+          "Liechtenstein",
+          "Palestine",
+          "Rwanda",
+          "Indonesia",
+          "Honduras",
+          "Sri Lanka"
+        ],
+        "country_isos": [
+          "tz",
+          "et",
+          "pg",
+          "tm",
+          "sy",
+          "li",
+          "ps",
+          "rw",
+          "id",
+          "hn",
+          "lk"
+        ]
+      }
+    ],
+    "median": 50.5,
+    "p90": 90.1,
+    "p99": 99.0,
+    "max": 100.0,
+    "n_countries_scored": 202,
     "source": "score_countries.py per-country eval"
   },
   "indicator_sensitivity": {
@@ -497,5 +1082,53 @@
     "ece": null,
     "notes": "calibration block absent in this vintage"
   },
-  "per_country_scores_pointer": "scores/bilateral_treaty.scores.json"
+  "per_country_scores_pointer": "scores/bilateral_treaty.scores.json",
+  "shape_points": [
+    0.06958702910148948,
+    0.08237149391251332,
+    0.09515595872353717,
+    0.10794042353456103,
+    0.12072488834558487,
+    0.13350935315660872,
+    0.14629381796763258,
+    0.15907828277865643,
+    0.1718627475896803,
+    0.1846472124007041,
+    0.19743167721172797,
+    0.2102161420227518
+  ],
+  "shap_importance_raw": {
+    "NY.GDP.PCAP.CD": 1.2917038202285767,
+    "NY.GNP.PCAP.CD": 1.2287628650665283
+  },
+  "shap_importance_normalized": {
+    "NY.GDP.PCAP.CD": 0.512485972444956,
+    "NY.GNP.PCAP.CD": 0.487514027555044
+  },
+  "shap_direction_signs": {
+    "NY.GDP.PCAP.CD": -1,
+    "NY.GNP.PCAP.CD": -1
+  },
+  "per_feature_breakdown": {
+    "NY.GDP.PCAP.CD": {
+      "last_z": 0.10820762813091278,
+      "mean_z": 0.16241097450256348,
+      "std_z": 0.16088806092739105,
+      "slope": 0.13195474445819855,
+      "accel": 0.3076176047325134,
+      "tertile1_mean": 0.2125493586063385,
+      "tertile2_mean": 0.10302280634641647,
+      "tertile3_mean": 0.10505261272192001
+    },
+    "NY.GNP.PCAP.CD": {
+      "last_z": 0.16312970221042633,
+      "mean_z": 0.11623919755220413,
+      "std_z": 0.18181093037128448,
+      "slope": 0.1759715974330902,
+      "accel": 0.21086309850215912,
+      "tertile1_mean": 0.14910286664962769,
+      "tertile2_mean": 0.0900321900844574,
+      "tertile3_mean": 0.14161328971385956
+    }
+  }
 }

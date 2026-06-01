@@ -37,8 +37,8 @@ export function AnalogsRow({
           fontStyle: "italic",
         }}
       >
-        No historical analogs above the match-quality floor for {subjectName} at this
-        vintage.
+        No historical analogues above the match-quality floor for {subjectName} at this
+        release.
       </div>
     );
   }
@@ -212,7 +212,7 @@ function AnalogCardCompact({ analog, rank }: { analog: CountryAnalog; rank: numb
             letterSpacing: "0.2px",
           }}
         >
-          ⚠ Weak analog (below the 70 floor) — interpret with caution.
+          ⚠ Weak analogue (below the 70 floor): interpret with caution.
         </div>
       )}
 

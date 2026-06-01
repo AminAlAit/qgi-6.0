@@ -1,7 +1,7 @@
 import { Sidebar } from "@/components/nav/Sidebar";
 import { PresentationWrapper } from "@/components/nav/PresentationWrapper";
 import { TourProvider } from "@/components/tour/TourProvider";
-import manifest from "@/data/te-sample-10/MANIFEST.json";
+import manifest from "@/data/te-fleet-run-1/MANIFEST.json";
 
 /**
  * V4.1 §2 — one canonical vintage stamp per session. Lives in the sidebar

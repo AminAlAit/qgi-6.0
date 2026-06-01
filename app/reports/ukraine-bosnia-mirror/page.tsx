@@ -494,7 +494,7 @@ export default function UkraineBosniaMirrorReportPage() {
           <p>
             <strong>Much of the underlying data runs with a one to two year lag.</strong>{" "}
             The April 2026 scoring run reflects economic and governance indicator data
-            whose most recent vintage is largely 2024. Ukraine&apos;s 2025 trajectory may
+            whose most recent release is largely 2024. Ukraine&apos;s 2025 trajectory may
             not yet be fully reflected.
           </p>
 
