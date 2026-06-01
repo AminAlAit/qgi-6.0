@@ -1,7 +1,8 @@
 """Bake fleet-run-1 walk artifacts into the frontend's TE data-contract shape.
 
-Reads from S3 (ml-results/{recipe}/) — produces a local corpus at
-`qgi-frontend/data/te-fleet-run-1/` in cards-v3 + scores + country-index +
+Reads per-recipe walk outputs from S3 under --ml-results-prefix (run-1 =
+`ml-results/`, run-2 = `ml-results-run2/`) — produces a corpus at
+`qgi-frontend/data/te-fleet-run-{N}/` in cards-v3 + scores + country-index +
 analogs + activity-feed shape. Applies the Bucket A enrichments committed in
 `qgi-docs/internal/ops/te-sample-10-backend-reply-round-3-2026-05-29.md` so the
 frontend reads server-resolved iso2/region/indicator names rather than
@@ -239,6 +240,45 @@ def _resolve_reference_input(arg_value: str | Path, s3_client: Any) -> Path:
     return Path(tmp_path)
 
 
+def _sync_panel_root(arg_value: str | Path, s3_client: Any) -> Path:
+    """Resolve --panel-root, which may be a local path OR an ``s3://`` prefix.
+
+    The qgi-recipe-fleet image has **no s3fs**, so the bake cannot
+    ``pd.read_parquet('s3://...')`` directly, and the bake job does NOT run the walk
+    entrypoint that syncs panels. In AWS mode the JobDef therefore passes the
+    ``pipeline-A-indicator-extractor/output/parquet-completed/`` prefix as an ``s3://``
+    URI; this syncs every ``{code}/`` panel under it to a local temp dir (boto3,
+    in-region ⇒ ~free) and returns that dir, so the downstream ``_load_panel(panel_root,
+    code)`` reads work unchanged. WITHOUT this, population (§C.1), trajectory_window
+    (§A.2), raw indicator values (§1.4) and analog trajectories (§D) silently null out
+    in the cloud bake. Local mode: returns the path verbatim (no-op)."""
+    s = str(arg_value)
+    if not s.startswith("s3://"):
+        return Path(s)
+    after_scheme = s[len("s3://"):]
+    if "/" not in after_scheme:
+        raise ValueError(f"Malformed S3 panel URI: {s!r} (expected s3://bucket/prefix/)")
+    bucket, _, prefix = after_scheme.partition("/")
+    if not prefix:
+        raise ValueError(f"Malformed S3 panel URI: {s!r} (prefix is empty after bucket)")
+    import tempfile
+    dest = Path(tempfile.mkdtemp(prefix="bake-panels-"))
+    paginator = s3_client.get_paginator("list_objects_v2")
+    n = 0
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix):
+        for obj in page.get("Contents", []):
+            key = obj["Key"]
+            rel = key[len(prefix):].lstrip("/")
+            if not rel:  # the prefix's own placeholder object, if any
+                continue
+            target = dest / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            s3_client.download_file(bucket, key, str(target))
+            n += 1
+    LOG.info("Synced %d panel objects from %s -> %s", n, s, dest)
+    return dest
+
+
 def _refuse_overwrite_if_baked(s3_client: Any, bucket: str, prefix: str) -> None:
     """Per `feedback_run_separation_versioning.md` — refuse-to-overwrite if a
     MANIFEST.json already exists at the target prefix. Raises RuntimeError so
@@ -441,12 +481,12 @@ def load_indicator_catalog(path: Path) -> dict[str, str]:
 # S3 helpers
 # ────────────────────────────────────────────────────────────────────────────
 
-def list_recipe_dirs(s3: Any, bucket: str) -> list[str]:
+def list_recipe_dirs(s3: Any, bucket: str, prefix: str = "ml-results/") -> list[str]:
     out: list[str] = []
     paginator = s3.get_paginator("list_objects_v2")
-    for page in paginator.paginate(Bucket=bucket, Prefix="ml-results/", Delimiter="/"):
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="/"):
         for p in page.get("CommonPrefixes", []) or []:
-            sub = p["Prefix"].split("ml-results/")[1].rstrip("/")
+            sub = p["Prefix"][len(prefix):].rstrip("/")
             if not sub or sub.startswith("_"):
                 continue
             out.append(sub)
@@ -885,6 +925,7 @@ def build_card_v3(
     shap_data: dict | None = None,
     panel_root: Path | None = None,
     precedents_corpus: dict | None = None,
+    ml_results_prefix: str = "ml-results/",
 ) -> dict:
     """Compose a card-v3 JSON from the walk summary + sidecar artifacts."""
     rid = summary.get("recipe_id")
@@ -982,7 +1023,7 @@ def build_card_v3(
         "n_negatives": summary.get("n_negatives"),
         "walked_at_utc": summary.get("filed"),
         "elapsed_seconds": summary.get("elapsed_seconds"),
-        "raw_summary_s3": f"s3://{s3_bucket}/ml-results/{rid}/f-ml-1-poc-summary.json",
+        "raw_summary_s3": f"s3://{s3_bucket}/{ml_results_prefix}{rid}/f-ml-1-poc-summary.json",
         "score_distribution": score_distribution,  # filled by scores pass
         "indicator_sensitivity": {
             "computed": bool(sens_entries),
@@ -1533,8 +1574,26 @@ def main() -> int:
     ap.add_argument("--indicator-catalog", type=str, required=True,
                     help="Local path OR s3:// URI to indicator-catalog-detailed.md")
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
-    ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
-                    help="Local panel parquet root for raw-value lookups (frontend §1.4).")
+    ap.add_argument("--ml-results-prefix", default="ml-results/",
+                    help="S3 prefix the per-recipe walk outputs are read from. Run-1 = "
+                         "'ml-results/'; run-2 (Path A) wrote to 'ml-results-run2/'. MUST match "
+                         "the run's ML_RESULTS_PREFIX or the bake reads the wrong vintage's data.")
+    # MANIFEST provenance — per-vintage; default to run-1's values so an unflagged
+    # invocation is byte-identical to the original run-1 bake (Sonnet #143 FIX 1/2).
+    ap.add_argument("--run-index", type=int, default=1,
+                    help="Vintage ordinal in MANIFEST (frontend §1.3). run-1=1, run-2=2.")
+    ap.add_argument("--image-digest",
+                    default="sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
+                    help="Image digest stamped into MANIFEST provenance.")
+    ap.add_argument("--image-tag", default="43f9d9bd",
+                    help="Image tag stamped into MANIFEST provenance.")
+    ap.add_argument("--qgi-ml-sha", default="9e764464c9074d0e5c351cd31603456b5b8ff434",
+                    help="qgi-ml commit SHA stamped into MANIFEST provenance.")
+    ap.add_argument("--panel-root", type=str, default="data/parquet_panels",
+                    help="Panel parquet root for raw-value lookups (frontend §1.4). Local path "
+                         "OR an s3:// prefix (parquet-completed/); the s3:// form is synced to a "
+                         "local temp dir at startup (the image has no s3fs). str, not Path, so the "
+                         "s3:// '//' survives argparse.")
     ap.add_argument("--verified-events", type=str, default=None,
                     help="Local path OR s3:// URI to verified-events.json (frontend §B.3 "
                          "precedents corpus, grouped by category==recipe_id). Optional; "
@@ -1583,6 +1642,11 @@ def main() -> int:
     args.countries = _resolve_reference_input(args.countries, s3)
     args.recipe_tracker = _resolve_reference_input(args.recipe_tracker, s3)
     args.indicator_catalog = _resolve_reference_input(args.indicator_catalog, s3)
+    # --panel-root may be an s3:// prefix in AWS mode (no panels are baked into the
+    # image and the bake job skips the walk entrypoint's panel sync). Sync to a local
+    # dir so the panel-dependent fields (§C.1 population / §A.2 trajectory_window /
+    # §1.4 raw values / §D analog trajectories) populate instead of silently nulling.
+    args.panel_root = _sync_panel_root(args.panel_root, s3)
 
     countries = load_countries(args.countries)
     LOG.info("  %d countries", len(countries))
@@ -1600,8 +1664,8 @@ def main() -> int:
                     "all-False (pass --shape-inputs-root, e.g. /app/data/shape_inputs_v2)",
                     args.shape_inputs_root)
 
-    recipe_ids = list_recipe_dirs(s3, args.bucket)
-    LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
+    recipe_ids = list_recipe_dirs(s3, args.bucket, args.ml_results_prefix)
+    LOG.info("Discovered %d recipe dirs in S3 under %s", len(recipe_ids), args.ml_results_prefix)
 
     # In AWS mode, refuse-to-overwrite if MANIFEST.json already exists at the
     # target prefix (run-separation rule). This MUST happen before any artifact
@@ -1639,18 +1703,20 @@ def main() -> int:
     if args.panel_root.exists():
         import_pandas()
 
+    mlp = args.ml_results_prefix  # read prefix (run-1 = ml-results/, run-2 = ml-results-run2/)
+
     def process_one(rid: str) -> tuple[str, dict | None, dict | None]:
-        summary = s3_get_json(s3, args.bucket, f"ml-results/{rid}/f-ml-1-poc-summary.json")
+        summary = s3_get_json(s3, args.bucket, f"{mlp}{rid}/f-ml-1-poc-summary.json")
         if not summary:
             return rid, None, None
         # Pull all sidecar artifacts in parallel (per-recipe inner-parallel via S3 SDK)
-        sensitivity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/sensitivity-{rid}-2026.json")
-        country_scores = s3_get_json(s3, args.bucket, f"ml-results/{rid}/country-scores.json")
-        recipe_similarity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/recipe-similarity-scores-{rid}-2026.json")
-        nearest_analog_full = s3_get_json(s3, args.bucket, f"ml-results/{rid}/nearest-analog-{rid}-2026.json")
-        momentum = s3_get_json(s3, args.bucket, f"ml-results/{rid}/momentum-{rid}-2026.json")
-        shap_imp = s3_get_json(s3, args.bucket, f"ml-results/{rid}/shap-importances-{rid}.json")
-        panel_wide_z = s3_get_json(s3, args.bucket, f"ml-results/{rid}/panel-wide-z-distribution-2026.json")
+        sensitivity = s3_get_json(s3, args.bucket, f"{mlp}{rid}/sensitivity-{rid}-2026.json")
+        country_scores = s3_get_json(s3, args.bucket, f"{mlp}{rid}/country-scores.json")
+        recipe_similarity = s3_get_json(s3, args.bucket, f"{mlp}{rid}/recipe-similarity-scores-{rid}-2026.json")
+        nearest_analog_full = s3_get_json(s3, args.bucket, f"{mlp}{rid}/nearest-analog-{rid}-2026.json")
+        momentum = s3_get_json(s3, args.bucket, f"{mlp}{rid}/momentum-{rid}-2026.json")
+        shap_imp = s3_get_json(s3, args.bucket, f"{mlp}{rid}/shap-importances-{rid}.json")
+        panel_wide_z = s3_get_json(s3, args.bucket, f"{mlp}{rid}/panel-wide-z-distribution-2026.json")
         tracker_row = tracker.get(rid)
         selected_indicators = (summary.get("greedy_outer_loop") or {}).get("selected_indicators") or []
         precedents = _build_precedents_corpus(
@@ -1658,6 +1724,7 @@ def main() -> int:
         card = build_card_v3(
             summary, sensitivity, indicator_names, tracker_row, args.bucket,
             shap_data=shap_imp, panel_root=args.panel_root, precedents_corpus=precedents,
+            ml_results_prefix=mlp,
         )
         scores_file = build_scores_file(
             rid, args.vintage, country_scores, countries, indicator_names,
@@ -1771,7 +1838,7 @@ def main() -> int:
     # MANIFEST
     manifest = {
         "vintage": args.vintage,
-        "run_index": 1,  # frontend §1.3 — first official fleet run; increment on next vintage
+        "run_index": args.run_index,  # frontend §1.3 — per-vintage; pass --run-index (run-2 = 2)
         "produced_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "engine": "F-ML-1 / Trajectory Engine (ML2)",
         "n_recipes": len(all_cards),
@@ -1780,9 +1847,9 @@ def main() -> int:
         "indicator_catalog_size": len(indicator_names),  # frontend §1.3
         "indicator_corpus_breakdown": provider_tally,    # frontend §1.3
         "contract_version": CONTRACT_VERSION,
-        "image_digest": "sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
-        "image_tag": "43f9d9bd",
-        "qgi_ml_sha": "9e764464c9074d0e5c351cd31603456b5b8ff434",
+        "image_digest": args.image_digest,  # provenance — pass per-run; defaults to run-1's
+        "image_tag": args.image_tag,
+        "qgi_ml_sha": args.qgi_ml_sha,
         "bucket_a_enrichments_applied": [
             "iso2/iso3/flag_emoji on scores + analogs",
             "region on country-index",

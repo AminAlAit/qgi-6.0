@@ -323,3 +323,74 @@ def test_build_card_v3_wires_new_emits():
     assert "per_cohort" not in summary["calibration"]
     # precedents_corpus defaults to None when not supplied (the sentinel contract)
     assert card["precedents_corpus"] is None
+
+
+# ---- _sync_panel_root (cloud-bake panel access) -----------------------------
+
+class _FakeS3:
+    """Minimal boto3-S3 stand-in: paginates a fixed key set + writes on download."""
+    def __init__(self, objects):
+        self._objects = objects  # {key: content_str}
+        self.downloaded = []
+
+    def get_paginator(self, _op):
+        objs = self._objects
+
+        class _Pag:
+            def paginate(self, Bucket, Prefix, **kwargs):  # noqa: N803 (boto3 kwarg case)
+                yield {"Contents": [{"Key": k} for k in objs if k.startswith(Prefix)]}
+
+        return _Pag()
+
+    def download_file(self, _bucket, key, dest):
+        Path(dest).write_text(self._objects[key], encoding="utf-8")
+        self.downloaded.append((key, dest))
+
+
+def test_sync_panel_root_local_path_is_noop():
+    # a non-s3 value passes straight through as a Path (s3_client never touched)
+    assert bake._sync_panel_root("data/parquet_panels", s3_client=None) == Path("data/parquet_panels")
+
+
+def test_sync_panel_root_rejects_malformed_uri():
+    import pytest
+    with pytest.raises(ValueError):
+        bake._sync_panel_root("s3://bucketonly", None)   # no slash → no prefix
+    with pytest.raises(ValueError):
+        bake._sync_panel_root("s3://bucket/", None)       # empty prefix after bucket
+
+
+def test_sync_panel_root_preserves_code_structure():
+    base = "pipeline-A-indicator-extractor/output/parquet-completed/"
+    fake = _FakeS3({
+        base + "SP.POP.TOTL/SP.POP.TOTL_completed.parquet": "pop",
+        base + "CC.EST/CC.EST_completed.parquet": "cc",
+    })
+    dest = bake._sync_panel_root(f"s3://qgi-data-lake/{base}", fake)
+    # {code}/ layout under the prefix is preserved so _load_panel(dest, code) works
+    assert (dest / "SP.POP.TOTL" / "SP.POP.TOTL_completed.parquet").read_text() == "pop"
+    assert (dest / "CC.EST" / "CC.EST_completed.parquet").read_text() == "cc"
+    assert len(fake.downloaded) == 2
+
+
+# ---- list_recipe_dirs: read prefix is parameterized (run-2 = ml-results-run2/) ----
+
+def test_list_recipe_dirs_honors_custom_prefix():
+    seen = {}
+
+    class _Pag:
+        def paginate(self, Bucket, Prefix, Delimiter):  # noqa: N803
+            seen["prefix"] = Prefix
+            yield {"CommonPrefixes": [
+                {"Prefix": "ml-results-run2/civil_war/"},
+                {"Prefix": "ml-results-run2/elections_and_voting/"},
+                {"Prefix": "ml-results-run2/_archive/"},  # underscore-prefixed → skipped
+            ]}
+
+    class _S3:
+        def get_paginator(self, _op):
+            return _Pag()
+
+    out = bake.list_recipe_dirs(_S3(), "bucket", "ml-results-run2/")
+    assert seen["prefix"] == "ml-results-run2/"  # the run-2 prefix is actually used
+    assert out == ["civil_war", "elections_and_voting"]  # slice is prefix-len correct, _archive dropped
