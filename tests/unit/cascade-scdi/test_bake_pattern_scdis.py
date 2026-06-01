@@ -90,6 +90,20 @@ def test_select_patterns_respects_cap():
     assert len(selected) == 1 and total <= 1500
 
 
+def test_select_patterns_ranks_on_actual_ind_count_not_stale_ic():
+    # `ic` is recorded at generation; `len(ind)` is the truth after enrichment. Equal
+    # corr + length, so #indicators is the only differentiator. Pair Y has MORE actual
+    # ids; it must rank first even though pair X claims a far larger (stale) `ic`.
+    # Ranking on `ic` would wrongly pick X — this guards the B2/F2 fix.
+    cands = [
+        {"a_id": 1, "b_id": 2, "l": 10, "sa": 2000, "sb": 2000, "ic": 99, "ac": 0.9, "pps": 1, "ind": [1, 2]},
+        {"a_id": 3, "b_id": 4, "l": 10, "sa": 2000, "sb": 2000, "ic": 3, "ac": 0.9, "pps": 1, "ind": [1, 2, 3, 4]},
+    ]
+    selected, _ = bp.select_patterns(cands, size_cap_bytes=100_000)
+    first = (min(selected[0]["a_id"], selected[0]["b_id"]), max(selected[0]["a_id"], selected[0]["b_id"]))
+    assert first == (3, 4)  # more ACTUAL indicators wins; the stale ic=99 is ignored
+
+
 # ---- slug orientation -------------------------------------------------------
 
 def test_slug_aligned_alphabetical_and_series_order():

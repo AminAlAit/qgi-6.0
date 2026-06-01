@@ -86,7 +86,9 @@ def load_indexes(entries: list[dict]) -> dict[int, dict]:
 def load_partner_meta(partners_index: dict) -> dict[int, dict]:
     """``numeric_id -> {a2, name}`` from ``country-partners-index.json`` (partner
     entries carry ``p`` = numeric id, ``a2`` = iso2, ``n`` = country name). The name
-    is the panel join key (panels are keyed by country name)."""
+    is the panel join key (panels are keyed by country name). Relies on the index being
+    bidirectional (A lists B and B lists A) — the generator writes both directions, so
+    every country that appears as a window endpoint also appears as a partner entry."""
     out: dict[int, dict] = {}
     for partners in partners_index.values():
         for p in partners:
@@ -139,7 +141,10 @@ def representative_per_pair(cands: list[dict]) -> list[dict]:
     best: dict[tuple[int, int], tuple[tuple, dict]] = {}
     for c in cands:
         key = (min(c["a_id"], c["b_id"]), max(c["a_id"], c["b_id"]))
-        rank = (c["ic"], c["ac"], c["l"])
+        # Richness = the ACTUAL enriched id count (len(ind)), not the recorded `ic`
+        # (which can lag the shipped ids after partial enrichment) — keeps de-dup and
+        # the balanced rank below consistent on the same source of truth.
+        rank = (len(c["ind"]) or c["ic"], c["ac"], c["l"])
         prev = best.get(key)
         if prev is None or rank > prev[0]:
             best[key] = (rank, c)
@@ -159,9 +164,12 @@ def select_patterns(cands: list[dict], size_cap_bytes: int) -> tuple[list[dict],
     ``(selected_windows_in_rank_order, total_estimated_bytes)``."""
     reps = representative_per_pair(cands)
     # scdi_core.rank_and_fill keys on corr/length/n_ind — map the window fields in
-    # (it returns the SAME dicts, so a_id/b_id/sa/sb/ind survive).
+    # (it returns the SAME dicts, so a_id/b_id/sa/sb/ind survive). n_ind is the ACTUAL
+    # enriched id count (len(ind)) so the balanced rank and estimate_pattern_bytes agree
+    # on the same source of truth — NOT the recorded `ic`, which can lag post-enrichment.
     for r in reps:
-        r["corr"], r["length"], r["n_ind"] = r["ac"], r["l"], r["ic"]
+        r["corr"], r["length"] = r["ac"], r["l"]
+        r["n_ind"] = len(r["ind"]) or r["ic"]
     return sc.rank_and_fill(reps, size_cap_bytes, estimate_pattern_bytes)
 
 
@@ -382,7 +390,19 @@ def main(argv: list[str] | None = None) -> int:
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(result, separators=(",", ":")), encoding="utf-8")
-    LOG.info("Wrote %s (%d patterns, %.1f KB).", args.out, len(result), args.out.stat().st_size / 1024)
+    size_bytes = args.out.stat().st_size
+    cap_bytes = int(args.size_cap_mb * 1e6)
+    if size_bytes > cap_bytes:
+        # The greedy-fill budgets on an ESTIMATE; if the real file still overshoots,
+        # the per-indicator byte estimate under-counted — surface it loudly rather than
+        # silently ship an over-cap file to Vercel.
+        LOG.warning(
+            "Baked file %.1f MB EXCEEDS the %.1f MB cap — per-indicator byte estimate "
+            "under-counted; lower --size-cap-mb or raise _BYTES_PER_INDICATOR.",
+            size_bytes / 1e6,
+            cap_bytes / 1e6,
+        )
+    LOG.info("Wrote %s (%d patterns, %.1f KB).", args.out, len(result), size_bytes / 1024)
     return 0
 
 
