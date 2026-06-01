@@ -480,12 +480,12 @@ def load_indicator_catalog(path: Path) -> dict[str, str]:
 # S3 helpers
 # ────────────────────────────────────────────────────────────────────────────
 
-def list_recipe_dirs(s3: Any, bucket: str) -> list[str]:
+def list_recipe_dirs(s3: Any, bucket: str, prefix: str = "ml-results/") -> list[str]:
     out: list[str] = []
     paginator = s3.get_paginator("list_objects_v2")
-    for page in paginator.paginate(Bucket=bucket, Prefix="ml-results/", Delimiter="/"):
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix, Delimiter="/"):
         for p in page.get("CommonPrefixes", []) or []:
-            sub = p["Prefix"].split("ml-results/")[1].rstrip("/")
+            sub = p["Prefix"][len(prefix):].rstrip("/")
             if not sub or sub.startswith("_"):
                 continue
             out.append(sub)
@@ -924,6 +924,7 @@ def build_card_v3(
     shap_data: dict | None = None,
     panel_root: Path | None = None,
     precedents_corpus: dict | None = None,
+    ml_results_prefix: str = "ml-results/",
 ) -> dict:
     """Compose a card-v3 JSON from the walk summary + sidecar artifacts."""
     rid = summary.get("recipe_id")
@@ -1021,7 +1022,7 @@ def build_card_v3(
         "n_negatives": summary.get("n_negatives"),
         "walked_at_utc": summary.get("filed"),
         "elapsed_seconds": summary.get("elapsed_seconds"),
-        "raw_summary_s3": f"s3://{s3_bucket}/ml-results/{rid}/f-ml-1-poc-summary.json",
+        "raw_summary_s3": f"s3://{s3_bucket}/{ml_results_prefix}{rid}/f-ml-1-poc-summary.json",
         "score_distribution": score_distribution,  # filled by scores pass
         "indicator_sensitivity": {
             "computed": bool(sens_entries),
@@ -1572,6 +1573,10 @@ def main() -> int:
     ap.add_argument("--indicator-catalog", type=str, required=True,
                     help="Local path OR s3:// URI to indicator-catalog-detailed.md")
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
+    ap.add_argument("--ml-results-prefix", default="ml-results/",
+                    help="S3 prefix the per-recipe walk outputs are read from. Run-1 = "
+                         "'ml-results/'; run-2 (Path A) wrote to 'ml-results-run2/'. MUST match "
+                         "the run's ML_RESULTS_PREFIX or the bake reads the wrong vintage's data.")
     ap.add_argument("--panel-root", type=str, default="data/parquet_panels",
                     help="Panel parquet root for raw-value lookups (frontend §1.4). Local path "
                          "OR an s3:// prefix (parquet-completed/); the s3:// form is synced to a "
@@ -1647,8 +1652,8 @@ def main() -> int:
                     "all-False (pass --shape-inputs-root, e.g. /app/data/shape_inputs_v2)",
                     args.shape_inputs_root)
 
-    recipe_ids = list_recipe_dirs(s3, args.bucket)
-    LOG.info("Discovered %d recipe dirs in S3", len(recipe_ids))
+    recipe_ids = list_recipe_dirs(s3, args.bucket, args.ml_results_prefix)
+    LOG.info("Discovered %d recipe dirs in S3 under %s", len(recipe_ids), args.ml_results_prefix)
 
     # In AWS mode, refuse-to-overwrite if MANIFEST.json already exists at the
     # target prefix (run-separation rule). This MUST happen before any artifact
@@ -1686,18 +1691,20 @@ def main() -> int:
     if args.panel_root.exists():
         import_pandas()
 
+    mlp = args.ml_results_prefix  # read prefix (run-1 = ml-results/, run-2 = ml-results-run2/)
+
     def process_one(rid: str) -> tuple[str, dict | None, dict | None]:
-        summary = s3_get_json(s3, args.bucket, f"ml-results/{rid}/f-ml-1-poc-summary.json")
+        summary = s3_get_json(s3, args.bucket, f"{mlp}{rid}/f-ml-1-poc-summary.json")
         if not summary:
             return rid, None, None
         # Pull all sidecar artifacts in parallel (per-recipe inner-parallel via S3 SDK)
-        sensitivity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/sensitivity-{rid}-2026.json")
-        country_scores = s3_get_json(s3, args.bucket, f"ml-results/{rid}/country-scores.json")
-        recipe_similarity = s3_get_json(s3, args.bucket, f"ml-results/{rid}/recipe-similarity-scores-{rid}-2026.json")
-        nearest_analog_full = s3_get_json(s3, args.bucket, f"ml-results/{rid}/nearest-analog-{rid}-2026.json")
-        momentum = s3_get_json(s3, args.bucket, f"ml-results/{rid}/momentum-{rid}-2026.json")
-        shap_imp = s3_get_json(s3, args.bucket, f"ml-results/{rid}/shap-importances-{rid}.json")
-        panel_wide_z = s3_get_json(s3, args.bucket, f"ml-results/{rid}/panel-wide-z-distribution-2026.json")
+        sensitivity = s3_get_json(s3, args.bucket, f"{mlp}{rid}/sensitivity-{rid}-2026.json")
+        country_scores = s3_get_json(s3, args.bucket, f"{mlp}{rid}/country-scores.json")
+        recipe_similarity = s3_get_json(s3, args.bucket, f"{mlp}{rid}/recipe-similarity-scores-{rid}-2026.json")
+        nearest_analog_full = s3_get_json(s3, args.bucket, f"{mlp}{rid}/nearest-analog-{rid}-2026.json")
+        momentum = s3_get_json(s3, args.bucket, f"{mlp}{rid}/momentum-{rid}-2026.json")
+        shap_imp = s3_get_json(s3, args.bucket, f"{mlp}{rid}/shap-importances-{rid}.json")
+        panel_wide_z = s3_get_json(s3, args.bucket, f"{mlp}{rid}/panel-wide-z-distribution-2026.json")
         tracker_row = tracker.get(rid)
         selected_indicators = (summary.get("greedy_outer_loop") or {}).get("selected_indicators") or []
         precedents = _build_precedents_corpus(
@@ -1705,6 +1712,7 @@ def main() -> int:
         card = build_card_v3(
             summary, sensitivity, indicator_names, tracker_row, args.bucket,
             shap_data=shap_imp, panel_root=args.panel_root, precedents_corpus=precedents,
+            ml_results_prefix=mlp,
         )
         scores_file = build_scores_file(
             rid, args.vintage, country_scores, countries, indicator_names,

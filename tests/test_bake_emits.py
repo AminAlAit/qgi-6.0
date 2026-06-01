@@ -371,3 +371,26 @@ def test_sync_panel_root_preserves_code_structure():
     assert (dest / "SP.POP.TOTL" / "SP.POP.TOTL_completed.parquet").read_text() == "pop"
     assert (dest / "CC.EST" / "CC.EST_completed.parquet").read_text() == "cc"
     assert len(fake.downloaded) == 2
+
+
+# ---- list_recipe_dirs: read prefix is parameterized (run-2 = ml-results-run2/) ----
+
+def test_list_recipe_dirs_honors_custom_prefix():
+    seen = {}
+
+    class _Pag:
+        def paginate(self, Bucket, Prefix, Delimiter):  # noqa: N803
+            seen["prefix"] = Prefix
+            yield {"CommonPrefixes": [
+                {"Prefix": "ml-results-run2/civil_war/"},
+                {"Prefix": "ml-results-run2/elections_and_voting/"},
+                {"Prefix": "ml-results-run2/_archive/"},  # underscore-prefixed → skipped
+            ]}
+
+    class _S3:
+        def get_paginator(self, _op):
+            return _Pag()
+
+    out = bake.list_recipe_dirs(_S3(), "bucket", "ml-results-run2/")
+    assert seen["prefix"] == "ml-results-run2/"  # the run-2 prefix is actually used
+    assert out == ["civil_war", "elections_and_voting"]  # slice is prefix-len correct, _archive dropped
