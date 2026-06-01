@@ -346,6 +346,104 @@ export function buildTopPairTeasers(n = 3): CountryPairTeaser[] {
 }
 
 // ───────────────────────────────────────────────────────────────────────────────
+// Closest matches now — the Briefing centerpiece.
+// "How countries are following recipes", as a left-to-right row of rich cards.
+// Real fleet data; the strong band (the 95%ers), not the saturated 100s; one
+// per country for variety; each card opens the country×recipe match page.
+// ───────────────────────────────────────────────────────────────────────────────
+
+export interface ClosestMatch {
+  country: string;
+  iso2: string;
+  recipe_id: string;
+  recipe_label: string;
+  l1_color: string;
+  score: number;
+  zone_label: string | null;
+  /** 12-quarter composite z-trajectory for the card spark (may be empty). */
+  composite: number[];
+  eval_year: number;
+}
+
+/**
+ * The strongest current country×recipe matches across the whole fleet, in the
+ * "95%er" band — strong resemblance without the saturated 100s. Diversified to
+ * one country per card and at most two cards per recipe so the row reads as a
+ * spread of distinct stories, not the same country five times.
+ */
+export function buildClosestMatches(n = 8): ClosestMatch[] {
+  try {
+    const byId = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
+    const all = loadAllScores();
+    const band: ClosestMatch[] = [];
+    for (const [rid, file] of Object.entries(all)) {
+      const rec = byId.get(rid);
+      if (!rec) continue;
+      const fc = familyColor(rec.l1_id, rec.l1_color);
+      for (const e of file.scores as Array<{
+        name: string;
+        iso2?: string | null;
+        score: number;
+        zone_label?: string;
+        eval_year: number;
+        indicator_trajectory_composite_12q?: number[];
+      }>) {
+        // The "95%er" band: skip the saturated top (>=98, which clusters at
+        // 99 and reads as a wall) and the long tail. Strong, varied, not maxed.
+        if (e.score >= 98 || e.score < 92) continue;
+        const iso2 = (e.iso2 ?? iso2For(e.name) ?? "").toLowerCase();
+        if (!/^[a-z]{2}$/.test(iso2)) continue;
+        band.push({
+          country: e.name,
+          iso2,
+          recipe_id: rid,
+          recipe_label: rec.label,
+          l1_color: fc,
+          score: e.score,
+          zone_label: e.zone_label ?? null,
+          composite: e.indicator_trajectory_composite_12q ?? [],
+          eval_year: e.eval_year,
+        });
+      }
+    }
+    if (band.length <= n) return band.sort((a, b) => b.score - a.score);
+    // Sample n picks evenly across the WHOLE band (ascending) so the row shows
+    // a genuine range of strengths (e.g. 97 down to 92), not each country's
+    // peak (which clusters at the top). Distinct country per card, <=2 per
+    // recipe. We search outward from each evenly-spaced index for the first
+    // entry that satisfies the variety constraints.
+    band.sort((a, b) => a.score - b.score);
+    const N = band.length;
+    const usedCountry = new Set<string>();
+    const usedRecipe = new Map<string, number>();
+    const picked: ClosestMatch[] = [];
+    for (let i = 0; i < n; i++) {
+      const target = Math.round((i * (N - 1)) / (n - 1));
+      let chosen: ClosestMatch | null = null;
+      for (let off = 0; off < N && !chosen; off++) {
+        for (const cand of [target + off, target - off]) {
+          if (cand < 0 || cand >= N) continue;
+          const m = band[cand];
+          if (usedCountry.has(m.country)) continue;
+          if ((usedRecipe.get(m.recipe_id) ?? 0) >= 2) continue;
+          chosen = m;
+          break;
+        }
+      }
+      if (chosen) {
+        picked.push(chosen);
+        usedCountry.add(chosen.country);
+        usedRecipe.set(chosen.recipe_id, (usedRecipe.get(chosen.recipe_id) ?? 0) + 1);
+      }
+    }
+    picked.sort((a, b) => b.score - a.score);
+    return picked;
+  } catch {
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
 // World-facing activity — replaces the R&D walk feed.
 // ───────────────────────────────────────────────────────────────────────────────
 
@@ -428,7 +526,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
         return {
           date,
           kind: "recipe_top10_shift",
-          title: `${e.recipe_label}: first vintage under the Trajectory Engine`,
+          title: `${e.recipe_label}: first release under the Trajectory Engine`,
           detail:
             `Walk completed ${date}. LOCO AUC ${e.loco_auc.toFixed(3)} · ` +
             `${verdictLabel}. ${e.note}`,

@@ -40,7 +40,7 @@ interface Props {
 export function HistoryAccumulatingGate({
   vintage,
   label = "Quarterly diffs",
-  nextAvailableAt = "vintage 2 (~Q2 2027)",
+  nextAvailableAt = "release 2 (~Q2 2027)",
   variant = "card",
 }: Props) {
   const padding = variant === "row" ? "10px 14px" : "18px 20px";

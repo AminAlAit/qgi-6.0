@@ -38,7 +38,7 @@ const ANTI_CAUSAL_TOOLTIP =
 const CAPTION =
   "How much each signal carries the recipe. " +
   "AUC measures how cleanly the recipe separates pre-event country-years " +
-  "from the rest — the bar shows how much that separation falls if we " +
+  "from the rest: the bar shows how much that separation falls if we " +
   "remove a single signal. " +
   "If pulling any one signal collapses the recipe, it was leaning on that " +
   "signal too hard.";

@@ -572,8 +572,27 @@ export function flagFor(name: string): string {
  * names ("United States", "Equatorial Guinea") and we want a hard miss
  * for unexpected spellings rather than a silent wrong-flag.
  */
+/** Convert a regional-indicator flag emoji back to its lowercase iso2 code. */
+function emojiToIso2(s: string): string | null {
+  const cps = Array.from(s);
+  if (cps.length < 2) return null;
+  const A = 0x1f1e6;
+  const a = cps[0].codePointAt(0);
+  const b = cps[1].codePointAt(0);
+  if (a == null || b == null || a < A || a > A + 25 || b < A || b > A + 25) return null;
+  return String.fromCharCode(97 + (a - A)) + String.fromCharCode(97 + (b - A));
+}
+
 export function iso2For(name: string): string | null {
-  return ISO2[name] ?? null;
+  const raw = ISO2[name];
+  if (!raw) return null;
+  // 2026-05-31 fix: a batch of long-tail entries were backfilled into the
+  // ISO2 map as flag EMOJI instead of 2-letter codes (Vanuatu, Suriname, and
+  // ~40 other microstates/territories), which broke flagcdn URLs + links.
+  // Normalize at the read site: a 2-letter code passes through (lowercased);
+  // a regional-indicator emoji is converted back to its code.
+  if (/^[a-z]{2}$/i.test(raw)) return raw.toLowerCase();
+  return emojiToIso2(raw);
 }
 
 // touch 1780028405015

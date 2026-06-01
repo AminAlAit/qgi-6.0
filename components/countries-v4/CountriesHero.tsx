@@ -169,7 +169,7 @@ export function CountriesHero({
               margin: 0,
             }}
           >
-            Every country in the QGI corpus, surfaced as a per-country TE hub — recipe
+            Every country in the QGI corpus, surfaced as a per-country TE hub: recipe
             scores + driving indicators + momentum + nearest analogues + compound view,
             all cross-referenced into the Risk Board, Compound Risk, and Nearest-Analogue
             views. Click any card to open the country&apos;s hub.
@@ -188,7 +188,7 @@ export function CountriesHero({
             whiteSpace: "nowrap",
           }}
         >
-          Vintage {vintage}
+          Release {vintage}
         </div>
       </div>
 

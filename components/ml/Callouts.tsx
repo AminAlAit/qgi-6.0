@@ -193,7 +193,7 @@ export function AdvisoryOnlyCallout({
         {nPosLoco ?? 1} held-out positive{(nPosLoco ?? 1) === 1 ? "" : "s"}
       </span>
       . Per buyer-disclosure rule, do not use as a primary signal for standalone risk
-      pricing — only as one component of a composite score.
+      pricing: only as one component of a composite score.
     </>
   );
   if (style === "tufte") {
@@ -247,8 +247,8 @@ export function ConcentrationAlertCallout({
   const calloutLevel: CalloutLevel = level === "HIGH" ? "critical" : "warning";
   const title =
     level === "HIGH"
-      ? `HIGH training-data concentration — ${country}`
-      : `Caution-level concentration — ${country}`;
+      ? `HIGH training-data concentration: ${country}`
+      : `Caution-level concentration: ${country}`;
   const body = (
     <>
       Top-1 training country accounts for{" "}
@@ -298,7 +298,7 @@ export function NotMeasuredHint({
     <>
       <em>Not measured</em>
       {trimmedReason && (
-        <span className="text-[var(--qgi-text-dim)]"> — {trimmedReason}</span>
+        <span className="text-[var(--qgi-text-dim)]">: {trimmedReason}</span>
       )}
     </>
   );
@@ -332,8 +332,8 @@ export function InterpretationHintBadge({
 }) {
   const labels: Record<InterpretationHint, string> = {
     risk_elevation: "Risk-elevation indicator",
-    engagement_signal: "Engagement indicator — does not imply premium reduction",
-    ambiguous: "Context-dependent — read mechanism narrative",
+    engagement_signal: "Engagement indicator (does not imply premium reduction)",
+    ambiguous: "Context-dependent: read mechanism narrative",
   };
   const levels: Record<InterpretationHint, CalloutLevel> = {
     risk_elevation: "warning",

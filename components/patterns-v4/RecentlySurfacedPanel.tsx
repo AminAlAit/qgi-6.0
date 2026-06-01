@@ -115,7 +115,7 @@ function SurfacedCard({ pair }: { pair: RecentlySurfacedPair }) {
           }}
         >
           {isNew ? (
-            "NEW THIS VINTAGE"
+            "NEW THIS RELEASE"
           ) : (
             <>
               <TrendingUp size={9} strokeWidth={2} />

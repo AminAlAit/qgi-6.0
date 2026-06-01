@@ -2944,14 +2944,24 @@ function buildAttribution(
     // Card unavailable or no direction signs — direction_sign stays null.
   }
 
-  return entry.shap_attribution.map((s) => ({
-    indicator_code: s.code,
-    indicator_name: s.name ?? getIndicatorLabel(s.code),
-    provider: inferProvider(s.code),
-    signal_share_pct: s.signal_share_pct,
-    recipe_id: recipeId,
-    direction_sign: directionSigns[s.code] ?? null,
-  }));
+  // NOTE: the contract type names these `code`/`name`, but the real fleet-run-1
+  // JSON uses `indicator_code`/`indicator_name`/`provider`. Read the real
+  // fields (falling back to the contract names) so we don't emit
+  // "(indicator code missing)" placeholders.
+  return entry.shap_attribution.map((s) => {
+    const code = (s as { indicator_code?: string }).indicator_code ?? s.code ?? "";
+    const name =
+      (s as { indicator_name?: string | null }).indicator_name ?? s.name ?? getIndicatorLabel(code);
+    const provider = resolveProvider((s as { provider?: string | null }).provider, code);
+    return {
+      indicator_code: code,
+      indicator_name: name,
+      provider,
+      signal_share_pct: s.signal_share_pct,
+      recipe_id: recipeId,
+      direction_sign: directionSigns[code] ?? null,
+    };
+  });
 }
 
 /**
@@ -2983,6 +2993,12 @@ function buildMovementFromScores(
     return [];
 
   return entry.indicator_movement.map((m) => {
+    // Real fleet-run-1 JSON uses `indicator_code`/`indicator_name` (the
+    // contract type names them `code`/`name`); read the real fields first so
+    // we don't emit "(indicator code missing)".
+    const code = (m as { indicator_code?: string }).indicator_code ?? m.code ?? "";
+    const name =
+      (m as { indicator_name?: string | null }).indicator_name ?? m.name ?? getIndicatorLabel(code);
     const z = m.z_score_change;
     const direction: CountryDriverMovement["direction"] =
       z > 0.3 ? "rising" : z < -0.3 ? "falling" : "flat";
@@ -2991,10 +3007,10 @@ function buildMovementFromScores(
       Math.max(0, Math.min(100, ((v + 3) / 6) * 100))
     );
     // Round-2: use explicit provider from bake; fall back to heuristic.
-    const provider = resolveProvider(m.provider, m.code);
+    const provider = resolveProvider(m.provider, code);
     return {
-      indicator_code: m.code,
-      indicator_name: m.name ?? getIndicatorLabel(m.code),
+      indicator_code: code,
+      indicator_name: name,
       provider,
       direction,
       trajectory,
@@ -3095,9 +3111,11 @@ function buildCountriesV4(): CountryV4[] {
     const ciVintage = ci.vintage ?? "2026-05-28";
     for (const c of ci.countries) {
       const iso2 = NAME_TO_ISO2.get(c.name.toLowerCase()) ?? "";
-      // Attempt a 3-letter ISO: country-index uses null iso for most entries.
-      // Build a pseudo-3-letter from iso2 until real iso3 ships per-country.
-      const iso3 = iso2 ? iso2.toUpperCase() + "_" : c.name.slice(0, 3).toUpperCase();
+      // country-index ships null iso for most entries. Use the 2-letter ISO as
+      // the route/display identifier (no trailing "_" padding) until real iso3
+      // ships per-country. 2026-05-31 (founder): the "_" surfaced as "SS_" /
+      // "/countries/ss_" in the UI; dropped.
+      const iso3 = iso2 ? iso2.toUpperCase() : c.name.slice(0, 3).toUpperCase();
       // Skip if we already have a seed for this country.
       if (
         seedIsos.has(iso3) ||

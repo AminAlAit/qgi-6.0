@@ -174,7 +174,7 @@ export function PatternMergedDetail({
           </span>
           <span
             className="text-[10px] tracking-widest uppercase font-semibold font-data px-2 py-0.5 rounded"
-            title="Architecture lineage — D2 (level features) / D5 (trend features) / V1-statistical. Wires up when ranking.json carries the lineage column."
+            title="Architecture lineage: D2 (level features) / D5 (trend features) / V1-statistical. Wires up when ranking.json carries the lineage column."
             style={{
               backgroundColor: "var(--qgi-surface-2)",
               color: "var(--qgi-text-dim)",

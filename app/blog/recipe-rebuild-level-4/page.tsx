@@ -121,8 +121,8 @@ export default function RecipeRebuildLevel4Post() {
           </p>
 
           <p>
-            That description — the path itself, abstracted away from any one country, with
-            a typical length and a typical cast of indicators — is what we have been
+            That description (the path itself, abstracted away from any one country, with
+            a typical length and a typical cast of indicators) is what we have been
             calling a <strong>Recipe</strong>. The methodology page says so. The blog
             posts assume so. Every conversation we have with an analyst, a journalist, or
             a prospective customer leans on it.
@@ -133,7 +133,7 @@ export default function RecipeRebuildLevel4Post() {
             on the methodology page is not the Recipe in the code. The two have been
             different things since the very first version. This post walks through what we
             found, why it took this long to name it, and what the next three weeks of
-            engineering work — versioned as V2.0 — will change.
+            engineering work (versioned as V2.0) will change.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">
@@ -147,13 +147,13 @@ export default function RecipeRebuildLevel4Post() {
             window. The second layer, a Pattern, is a bundle of those SCDIs between the
             same two countries on the same window. The third layer, the one the code
             currently labels &ldquo;Recipe,&rdquo; is a Pattern that has been matched to a
-            known historical event in country B — the analogue, with its real-world ending
+            known historical event in country B: the analogue, with its real-world ending
             attached.
           </p>
 
           <p>
-            The fourth layer — the one the methodology page implies and the code does not
-            build — is the abstraction across all of those event-matched Patterns. The
+            The fourth layer, the one the methodology page implies and the code does not
+            build, is the abstraction across all of those event-matched Patterns. The
             canonical length. The indicator fingerprint. The function that takes a country
             today and asks how close its current trajectory is to the typical shape of
             those analogues. Here is the shape, side by side:
@@ -169,7 +169,7 @@ export default function RecipeRebuildLevel4Post() {
             <pre
               className="font-data text-[11px] leading-relaxed p-5 m-0 whitespace-pre"
               style={{ color: "var(--qgi-text)" }}
-            >{`  TODAY (Level 3) — one row per matched Pattern instance
+            >{`  TODAY (Level 3): one row per matched Pattern instance
   ┌──────────────────────────────────────────────────────────────┐
   │ recipe_id     country_a   country_b   start_a   length       │
   │ event_category   event_year_a   event_year_b   pps           │
@@ -182,7 +182,7 @@ export default function RecipeRebuildLevel4Post() {
   │   (millions of rows; the abstraction is implicit)            │
   └──────────────────────────────────────────────────────────────┘
 
-  V2.0 (Level 4) — one row per event category
+  V2.0 (Level 4): one row per event category
   ┌──────────────────────────────────────────────────────────────┐
   │ event_category : military_conflict                           │
   │ canonical_length : 6 yrs (median; IQR 5-8)                   │
@@ -199,12 +199,12 @@ export default function RecipeRebuildLevel4Post() {
           </div>
 
           <p>
-            The level-3 table is what we have. It is not wrong — every row is a real
+            The level-3 table is what we have. It is not wrong: every row is a real
             country pair, a real shared trajectory, a real historical event. But it is not
             what the methodology page describes. The page promises the level-4 entity: the
             abstracted recipe, against which a country today can be scored. We have been
-            computing a different thing — a count of how densely the level-3 rows cluster
-            around each country — and labelling the result with the level-4 word.
+            computing a different thing, a count of how densely the level-3 rows cluster
+            around each country, and labelling the result with the level-4 word.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">How the gap opened</h2>
@@ -219,7 +219,7 @@ export default function RecipeRebuildLevel4Post() {
             exist. The salience score that ranks countries on the live site is built from
             the density of level-3 rows; it works as a ranking signal and is described
             honestly enough on the methodology page&apos;s scoring section. The
-            methodology page&apos;s opening — &ldquo;countries walk the same path&rdquo; —
+            methodology page&apos;s opening (&ldquo;countries walk the same path&rdquo;)
             is the part that has been ahead of the code.
           </p>
 
@@ -239,7 +239,7 @@ export default function RecipeRebuildLevel4Post() {
             One of the audit&apos;s findings was small enough to fix on its own, and we
             did. The level-3 table contained a particular kind of duplication: for the
             same country pair ending in the same historical event, we were storing every
-            possible window length that converged on that ending — a 5-year window, a
+            possible window length that converged on that ending: a 5-year window, a
             6-year window, a 7-year window, all describing the same lead-up to the same
             event. The original spec said to keep only the longest of these and discard
             the rest. The code did not.
@@ -247,7 +247,7 @@ export default function RecipeRebuildLevel4Post() {
 
           <p>
             Once we measured the cost of the bug, the size of it surprised us. Across the
-            full table, the inflation factor was 77.9x — for every row that should have
+            full table, the inflation factor was 77.9x: for every row that should have
             been there, roughly seventy-seven were. The factor was not uniform across
             event categories. Civil-war analogues, where each country pair&apos;s patterns
             tend to have varied natural lengths, inflated 16-32x. Pandemic-related
@@ -286,8 +286,8 @@ export default function RecipeRebuildLevel4Post() {
             the count of distinct country pairs feeding the recipe, and a coverage-bias
             diagnostic that names the OECD / non-OECD composition of the corpus so a
             reader of a recipe built mostly from rich-data countries can discount it
-            appropriately when applying it to a poor-data subject. Provenance metadata —
-            when the recipe was last recomputed, against which pipeline version — sits
+            appropriately when applying it to a poor-data subject. Provenance metadata
+            (when the recipe was last recomputed, against which pipeline version) sits
             next to those properties.
           </p>
 
@@ -295,16 +295,16 @@ export default function RecipeRebuildLevel4Post() {
             The second new phase consumes the level-4 table and a single country&apos;s
             recent indicator series, and produces a similarity score between zero and one.
             This is the function the methodology page has been promising. A country does
-            not need to have all the fingerprint indicators populated — partial coverage
-            is a first-class case, not a failure mode — and the function has to tolerate
-            it gracefully and report which fingerprint indicators were present and which
-            were missing. The output passes through an explicit calibration step against a
+            not need to have all the fingerprint indicators populated (partial coverage is
+            a first-class case, not a failure mode), and the function has to tolerate it
+            gracefully and report which fingerprint indicators were present and which were
+            missing. The output passes through an explicit calibration step against a
             held-out validation set, so a similarity of 0.78 means something stable across
             countries and across pipeline runs rather than being a bare heuristic.
           </p>
 
           <p>
-            The frontend surface is a small one — a per-country watchlist that lists the
+            The frontend surface is a small one: a per-country watchlist that lists the
             recipes currently scoring above threshold for that country, with the change
             since last cycle and the indicator coverage. The country profile pages will
             link to it. The methodology page will be rewritten to describe the level-4
@@ -388,11 +388,11 @@ export default function RecipeRebuildLevel4Post() {
           </p>
 
           <p>
-            We expect to write at least one more post during the build window — most
-            likely once the level-4 aggregation is running and we can show what the
-            indicator fingerprints actually look like for a few of the larger event
-            categories. Patterns we did not expect to see will probably surface; that is
-            the kind of thing this work is for.
+            We expect to write at least one more post during the build window, most likely
+            once the level-4 aggregation is running and we can show what the indicator
+            fingerprints actually look like for a few of the larger event categories.
+            Patterns we did not expect to see will probably surface; that is the kind of
+            thing this work is for.
           </p>
 
           <p>

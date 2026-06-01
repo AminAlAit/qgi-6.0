@@ -14,6 +14,7 @@
  */
 import type { ReactNode } from "react";
 import { PanelBase } from "./PanelBase";
+import { IndicatorDonut } from "./IndicatorDonut";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import type { IndicatorWithWeight, CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
 
@@ -41,17 +42,30 @@ export function DefinitionPanel({
   );
 }
 
-/* ───────── IndicatorSet (with SHAP %) ───────────────────────────────── */
+/* ───────── IndicatorSet (interactive donut of signal weights) ────────── */
+/*                                                                          */
+/* 2026-05-31 (founder): the per-indicator bar list became a donut so the   */
+/* part-to-whole reading is immediate. `wide` spans two grid columns. The   */
+/* donut itself is the interactive client component IndicatorDonut (hover a */
+/* slice or legend row to light it and fade the others); the legend names   */
+/* stay fixed on the right.                                                 */
 
 export function IndicatorSetPanel({
   familyColor,
   indicators,
+  wide = false,
 }: {
   familyColor: string;
   indicators: IndicatorWithWeight[];
+  /** Span two grid columns and render the donut + legend side by side. */
+  wide?: boolean;
 }) {
   const hasWeights =
     indicators.length > 0 && indicators.every((i) => typeof i.shapWeightPct === "number");
+  const sorted = hasWeights
+    ? [...indicators].sort((a, b) => b.shapWeightPct - a.shapWeightPct)
+    : indicators;
+
   return (
     <PanelBase
       title="Indicator set"
@@ -59,106 +73,49 @@ export function IndicatorSetPanel({
       titleTooltip={`The ${indicators.length || "N"} ingredients whose canonical movement shape defines this recipe. Their weights sum to 100% across the selected set.`}
       caption={
         indicators.length > 0
-          ? `${indicators.length} indicators · weights sum to 100% across the selected set`
+          ? `The complete signal set for this recipe. Each slice is one indicator; its size is how much that signal counts toward the score. They sum to the whole.`
           : undefined
       }
       sectionPending={indicators.length === 0 ? "discrimination" : null}
       id="cap-2"
+      style={wide ? { gridColumn: "span 2" } : undefined}
     >
-      <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-        {indicators.map((ind) => (
-          <div
-            key={ind.code}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0, 1fr) auto",
-              gap: "10px",
-              alignItems: "center",
-              padding: "8px 10px",
-              background: "var(--qgi-bg)",
-              border: "1px solid var(--qgi-border)",
-              borderRadius: "4px",
-            }}
-          >
-            <div style={{ minWidth: 0 }}>
-              <div
+      {!hasWeights ? (
+        <ul
+          style={{
+            listStyle: "none",
+            padding: 0,
+            margin: 0,
+            display: "flex",
+            flexDirection: "column",
+            gap: "8px",
+          }}
+        >
+          {indicators.map((ind) => (
+            <li
+              key={ind.code}
+              style={{ fontSize: "12.5px", color: "var(--qgi-text)" }}
+              title={ind.code}
+            >
+              <span
                 style={{
                   fontSize: "9.5px",
                   letterSpacing: "0.6px",
                   color: "var(--qgi-text-dim)",
                   fontFamily: "ui-monospace, monospace",
-                  marginBottom: "2px",
                   textTransform: "uppercase",
+                  marginRight: "8px",
                 }}
               >
                 {ind.provider}
-              </div>
-              <div
-                style={{
-                  fontSize: "12.5px",
-                  color: "var(--qgi-text)",
-                  fontWeight: 600,
-                  lineHeight: 1.3,
-                }}
-                title={ind.code}
-              >
-                {ind.name}
-              </div>
-              {/* 2026-05-27 (#159): raw indicator code (e.g. v2pepwrgen) removed
-                  from visible row; available on hover via the title attribute. */}
-            </div>
-            {hasWeights && (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                  gap: "4px",
-                  minWidth: "90px",
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: "ui-monospace, monospace",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    color: familyColor,
-                    letterSpacing: "-0.3px",
-                  }}
-                >
-                  {ind.shapWeightPct.toFixed(0)}%
-                </div>
-                <svg
-                  width="80"
-                  height="6"
-                  viewBox="0 0 80 6"
-                  style={{ display: "block" }}
-                >
-                  <rect
-                    x="0"
-                    y="0"
-                    width="80"
-                    height="6"
-                    rx="1"
-                    fill="var(--qgi-bg)"
-                    stroke="var(--qgi-border)"
-                    strokeWidth="0.5"
-                  />
-                  <rect
-                    x="0"
-                    y="0"
-                    width={(ind.shapWeightPct / 100) * 80}
-                    height="6"
-                    rx="1"
-                    fill={familyColor}
-                    opacity="0.85"
-                  />
-                </svg>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+              </span>
+              {ind.name}
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <IndicatorDonut familyColor={familyColor} indicators={sorted} />
+      )}
     </PanelBase>
   );
 }

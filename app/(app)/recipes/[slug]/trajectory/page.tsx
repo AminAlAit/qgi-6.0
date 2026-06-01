@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Trajectory · ${slug.replace(/_/g, " ")} · QG Intelligence`,
     description:
-      "The canonical movement shape of a recipe — the recurring indicator-composite arc its verified-positive history rhymes around.",
+      "The canonical movement shape of a recipe: the recurring indicator-composite arc its verified-positive history rhymes around.",
   };
 }
 
@@ -129,7 +129,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
         >
           The normalised indicator-composite arc that this recipe&apos;s verified-positive
           history rhymes around, measured over 12 quarters leading up to the canonical
-          event. Retrospective only — this is what the model has seen in the past, not a
+          event. Retrospective only: this is what the model has seen in the past, not a
           forecast.
         </p>
 
@@ -169,7 +169,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
                 marginBottom: "8px",
               }}
               role="img"
-              aria-label={`Canonical movement shape for ${slug.replace(/_/g, " ")} — 12 quarters`}
+              aria-label={`Canonical movement shape for ${slug.replace(/_/g, " ")}, 12 quarters`}
             >
               {/* Midline (50 = z=0) */}
               <line
@@ -240,7 +240,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
             >
               <span>Indicator composite z-score (display scale 0–100; 50 = z=0)</span>
               <span style={{ color: "var(--qgi-text-dim)", fontStyle: "italic" }}>
-                Past only — line ends at canonical event
+                Past only: line ends at canonical event
               </span>
             </div>
 

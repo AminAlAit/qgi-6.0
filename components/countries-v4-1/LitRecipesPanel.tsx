@@ -1,5 +1,5 @@
 /**
- * LitRecipesPanel (P1) — title "Recipes in play": every recipe this
+ * LitRecipesPanel (P1) — title "Active recipes": every recipe this
  * country's current trajectory matches, as a ranked table. Full-width,
  * neutral/structural accent (it spans families). Each row: family dot +
  * letter glyph + recipe label + a score bar (filled in the recipe's
@@ -9,6 +9,9 @@
  * 2026-05-28: "Lit recipes" -> "Recipes in play" per founder pick (game/
  * board metaphor pairs with the risk-board leaderboard framing; reads as
  * "currently in the running," not as a status claim about the recipes).
+ * 2026-05-31: "Recipes in play" -> "Active recipes" (founder); rows now link
+ * to /recipes/{id}/countries/{iso2} (the "how this country is tracing that
+ * recipe" match page) instead of the recipe detail page.
  *
  * Honesty: the caption carries Kwame's canonical graduation-gap sentence;
  * status chips use blessed plain labels (statusLabel); green is reserved
@@ -20,6 +23,7 @@ import { PanelShell } from "./PanelShell";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
 import { familyColor, NEUTRAL_SLATE } from "@/lib/te-mock/l1-families";
 import { statusLabel, type StatusTone } from "@/lib/te-mock/country-families";
+import { iso2For } from "@/lib/te-mock/country-flags";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
 
 function statusChipStyle(tone: StatusTone): React.CSSProperties {
@@ -46,14 +50,19 @@ function statusChipStyle(tone: StatusTone): React.CSSProperties {
 
 export function LitRecipesPanel({ country }: { country: CountryV4 }) {
   const rows = country.top_recipes.slice(0, 15);
+  // Each row links to the country-recipe match page ("how this country is
+  // tracing that recipe"). The match page resolves the country by iso2.
+  // Guard the format: some names resolve to an emoji/null in the flag map.
+  const rawIso2 = iso2For(country.name);
+  const iso2 = rawIso2 && /^[a-z]{2}$/.test(rawIso2) ? rawIso2 : null;
 
   return (
     <PanelShell
-      title="Recipes in play"
+      title="Active recipes"
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="recipes-in-play-panel"
-      caption="Every row is a recipe whose canonical pre-event shape this country's recent signals resemble. Scores are a relative 0-to-100 ranking of resemblance, not a probability."
+      caption={`Every row is a recipe ${country.name}'s recent signals are actively tracing. Scores are a relative 0-to-100 ranking of resemblance, not a probability. Open a row to see how ${country.name} is tracing that recipe, signal by signal.`}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
         {rows.map((r) => {
@@ -62,7 +71,11 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
           return (
             <Link
               key={r.recipe_id}
-              href={`/recipes/${r.recipe_id}` as Route}
+              href={
+                (iso2
+                  ? `/recipes/${r.recipe_id}/countries/${iso2}`
+                  : `/recipes/${r.recipe_id}`) as Route
+              }
               style={{
                 textDecoration: "none",
                 color: "inherit",

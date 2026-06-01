@@ -30,8 +30,6 @@
  */
 
 import { useState, useMemo, useCallback, useRef } from "react";
-import Link from "next/link";
-import type { Route } from "next";
 import { Search, X, SlidersHorizontal, Info } from "lucide-react";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
@@ -356,7 +354,7 @@ export function PatternsSearch({
             {filtered.length.toLocaleString()} pattern
             {filtered.length !== 1 ? "s" : ""}
             {hasFilters ? " matching" : ""}
-            {pageCount > 1 && ` — page ${page} of ${pageCount}`}
+            {pageCount > 1 && `, page ${page} of ${pageCount}`}
             {useYearFilter && (
               <span
                 style={{
@@ -499,11 +497,11 @@ function PatternRow({ entry, rank }: { entry: CatalogueEntry; rank: number }) {
   const tierLabel = TIER_LABEL[entry.tier] ?? entry.tier.toLowerCase();
   const tierColor = TIER_COLORS[entry.tier] ?? "#9ab0c4";
 
+  // 2026-05-31 (founder): per-pattern detail is mock until the backend SCDI
+  // batch lands, so rows are non-clickable for now (no mock detail reachable).
+  // Re-wrap in a Link to /patterns/{entry.slug} when real SCDIs ship.
   return (
-    <Link
-      href={`/patterns/${entry.slug}` as Route}
-      style={{ textDecoration: "none", color: "inherit", display: "block" }}
-    >
+    <div style={{ display: "block" }}>
       <div
         style={{
           display: "grid",
@@ -650,7 +648,7 @@ function PatternRow({ entry, rank }: { entry: CatalogueEntry; rank: number }) {
           </span>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }
 

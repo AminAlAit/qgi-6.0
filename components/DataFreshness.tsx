@@ -73,11 +73,7 @@ export function DataFreshness({ generatedAt, label = "Updated" }: DataFreshnessP
           : "var(--qgi-text-dim)";
 
   const suffix =
-    level === "overdue"
-      ? " — refresh overdue"
-      : level === "stale"
-        ? " — refresh due"
-        : "";
+    level === "overdue" ? ", refresh overdue" : level === "stale" ? ", refresh due" : "";
 
   // Tooltip with the absolute timestamp for users who want to know exactly
   const absolute = generatedAt

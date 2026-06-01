@@ -65,7 +65,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="highlights-band"]',
     title: "Where today's signal is loudest",
     content:
-      "Four tiles, one from each of the live surfaces, refreshed each data vintage. Tap any tile to open the full page behind it. You will meet each of those surfaces in turn as the tour continues.",
+      "Four tiles, one from each of the live surfaces, refreshed each data release. Tap any tile to open the full page behind it. You will meet each of those surfaces in turn as the tour continues.",
     placement: "bottom",
   },
   {
@@ -277,7 +277,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="cotw-tile"]',
     title: "Country of the week",
     content:
-      "The country whose stack of resembled recipes is most worth a careful read this vintage. Sort and region filters below let you slice the full atlas; the colored border on each card is the family with the strongest match for that country.",
+      "The country whose stack of resembled recipes is most worth a careful read this release. Sort and region filters below let you slice the full atlas; the colored border on each card is the family with the strongest match for that country.",
     placement: "left",
   },
   {
@@ -365,7 +365,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="vintage-sources-panel"]',
     title: "Provenance, in one place",
     content:
-      "When the data was last refreshed, which providers it came from, and the methodology vintage. Visit this panel before quoting any number; freshness is part of the claim.",
+      "When the data was last refreshed, which providers it came from, and the release it belongs to. Visit this panel before quoting any number; freshness is part of the claim.",
     placement: "top",
   },
   {
@@ -397,7 +397,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="risk-board-hero-strip"]',
     title: "The top pairs, across every recipe",
     content:
-      "These are the highest-resemblance country and recipe pairs anywhere on the platform, this vintage. The arrow tells you how that pair has shifted since last quarter: movement is a rank shift, not a probability change.",
+      "These are the highest-resemblance country and recipe pairs anywhere on the platform, this release. The arrow tells you how that pair has shifted since last quarter: movement is a rank shift, not a probability change.",
     placement: "bottom",
   },
   {
@@ -415,7 +415,7 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     target: '[data-tour="recent-movements"]',
     title: "Who moved most this quarter",
     content:
-      "Countries whose rank shifted most since the last data vintage. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
+      "Countries whose rank shifted most since the last data release. Up arrows are countries climbing the board, down arrows are countries falling. A rank shift is not a probability change.",
     placement: "top",
   },
   {

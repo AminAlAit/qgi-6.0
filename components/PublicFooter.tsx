@@ -7,12 +7,13 @@ import Link from "next/link";
  * visitor to the same set of onward destinations.
  *
  * Footer link order ratified by Sunita Krishnaswamy-Park (IA consult
- * 2026-05-23): About → Methodology → Reports → Blog → Contact → Legal.
+ * 2026-05-23): About → Methodology → Reports → Blog → Contact → Privacy → Terms.
+ * (Privacy + Terms deep-link into the /legal page sections.)
  * Footer scroll-through skews toward "context-seeking" so brand items
  * come first, reversing the discovery-first order of the top nav.
  *
- * Contact links to /#contact (landing's contact anchor) so the destination
- * is consistent regardless of which page the user clicks from.
+ * Contact links to /contact (the fill-in form) so the destination is
+ * consistent regardless of which page the user clicks from.
  */
 export function PublicFooter() {
   return (
@@ -72,18 +73,25 @@ export function PublicFooter() {
               Blog
             </Link>
             <Link
-              href="/#contact"
+              href="/contact"
               className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-dim)" }}
             >
               Contact
             </Link>
             <Link
-              href="/legal"
+              href="/legal#privacy-policy"
               className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              Legal
+              Privacy
+            </Link>
+            <Link
+              href="/legal#terms-of-service"
+              className="text-[11px] tracking-wider uppercase transition-colors hover:text-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-dim)" }}
+            >
+              Terms
             </Link>
           </nav>
         </div>

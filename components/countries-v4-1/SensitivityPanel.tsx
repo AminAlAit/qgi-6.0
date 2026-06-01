@@ -44,11 +44,11 @@ export function SensitivityPanel({
 
   return (
     <PanelShell
-      title="Sensitivity — what would move the score"
+      title="Sensitivity: what would move the score"
       accent={color}
       tooltip={SENSITIVITY_TOOLTIP}
       fullWidth
-      caption={`Which indicators have the most leverage on ${countryName}'s score, and how much room remains before each would materially shift it. Model sensitivity only — not a projection.`}
+      caption={`Which indicators have the most leverage on ${countryName}'s score, and how much room remains before each would materially shift it. Model sensitivity only, not a projection.`}
     >
       {rows.length === 0 ? (
         <p

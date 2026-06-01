@@ -39,7 +39,7 @@ const TIER_META: Record<
     bg: "rgba(248,113,113,0.10)",
     border: "rgba(248,113,113,0.35)",
     tooltip:
-      "Top 20% of 156 scored countries. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data — relative position, not predictive forecast.",
+      "Top 20% of 156 scored countries. Composite of 71 risk-category z-scores, aggregated via max(L1) per V1.9.1 methodology. Reflects structural conditions visible in indicator data: relative position, not predictive forecast.",
   },
   MODERATE: {
     label: "MODERATE",
@@ -60,11 +60,11 @@ const TIER_META: Record<
 };
 
 const TIER_BANNER_COPY: Record<RiskTier, string> = {
-  HIGH: "{country} sits at Tier HIGH — the top 20% of countries we score. This reflects structural conditions visible in indicator data; it is a relative position, not a prediction of imminent crisis.",
+  HIGH: "{country} sits at Tier HIGH, the top 20% of countries we score. This reflects structural conditions visible in indicator data; it is a relative position, not a prediction of imminent crisis.",
   MODERATE:
-    "{country} sits at Tier MODERATE — the middle band, above background but below the most elevated quartile. At least one risk dimension is elevated relative to global norms.",
+    "{country} sits at Tier MODERATE, the middle band, above background but below the most elevated quartile. At least one risk dimension is elevated relative to global norms.",
   INDICATIVE:
-    "{country} sits at Tier INDICATIVE — the broadest band. Background signals are tracked but no single dimension is currently elevated.",
+    "{country} sits at Tier INDICATIVE, the broadest band. Background signals are tracked but no single dimension is currently elevated.",
 };
 
 function formatCategory(slug: string): string {
@@ -291,7 +291,7 @@ export function CountryMergedDetail({
                       color: "var(--qgi-text-muted)",
                       border: "1px solid var(--qgi-border)",
                     }}
-                    title="Curated event history available — full timeline reachable via the events section."
+                    title="Curated event history available: full timeline reachable via the events section."
                   >
                     Curated event history
                   </span>
@@ -326,7 +326,7 @@ export function CountryMergedDetail({
         return (
           <aside
             role="note"
-            aria-label="Data vintage"
+            aria-label="Data release"
             className="mb-4 rounded-md px-3 py-2 max-w-[68ch] flex items-start gap-2 text-xs leading-relaxed"
             style={{
               backgroundColor: "rgba(245, 158, 11, 0.08)",
@@ -339,12 +339,12 @@ export function CountryMergedDetail({
               className="font-semibold tracking-wide uppercase text-[10px] shrink-0"
               style={{ color: "rgba(245, 158, 11, 0.95)" }}
             >
-              Data vintage
+              Data release
             </span>
             <span>
               Scores reflect indicator data through{" "}
               {monthYear || (bakeDate ?? "an earlier bake")} ({age} days ago). Real-world
-              events since are not captured — interpret with care for fast-moving
+              events since are not captured, so interpret with care for fast-moving
               situations.
             </span>
           </aside>
@@ -383,7 +383,7 @@ export function CountryMergedDetail({
           <span style={{ color: "var(--qgi-text-muted)" }}>
             How to read this together:
           </span>{" "}
-          a country&apos;s composite tier reflects its highest-scoring risk dimension — so
+          a country&apos;s composite tier reflects its highest-scoring risk dimension, so
           a country can sit at INDICATIVE overall while ranking in the top quartile on a
           specific recipe below. Each recipe row shows its own cohort percentile.
         </p>
@@ -480,7 +480,7 @@ export function CountryMergedDetail({
             className="hover:text-[var(--qgi-accent)] transition-colors"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Risk Board — current country rankings →
+            Risk Board: current country rankings →
           </Link>
           <Link
             href={"/recipes" as Route}
@@ -853,7 +853,7 @@ function PrecedentMatchRow({
                 backgroundColor: "rgba(251,191,36,0.10)",
                 border: "1px solid rgba(251,191,36,0.35)",
               }}
-              title="F-rule ADVISORY — treat this recipe's score as provisional."
+              title="F-rule ADVISORY: treat this recipe's score as provisional."
             >
               Advisory
             </span>
@@ -1000,7 +1000,7 @@ function WhatsHappeningHere({
       >
         {top3.length === 0 ? (
           <>
-            {name} sits at Tier {tier} — {tierBlurb(tier)}. No ML-validated signals are
+            {name} sits at Tier {tier}: {tierBlurb(tier)}. No ML-validated signals are
             currently firing at MODERATE+ for {name}. The 8-row profile below shows the
             full L1-domain footprint from the statistical layer; click through to{" "}
             <Link
@@ -1015,8 +1015,8 @@ function WhatsHappeningHere({
         ) : (
           <>
             {/* #842 — top1 now comes from L1-salience map (matches bar chart). */}
-            {name} sits at Tier {tier} — {tierBlurb(tier)}. The strongest dimension of
-            risk is {top1}; the specific ML-validated signals driving it include{" "}
+            {name} sits at Tier {tier}: {tierBlurb(tier)}. The strongest dimension of risk
+            is {top1}; the specific ML-validated signals driving it include{" "}
             {top3.length > 0 ? formatCategory(top3[0].category) : ""}
             {top3.length > 1 ? `, ${formatCategory(top3[1].category).toLowerCase()}` : ""}
             {top3.length > 2
@@ -1071,7 +1071,7 @@ function WhatsHappeningHere({
               border: "1px dashed var(--qgi-border)",
               color: "var(--qgi-text-dim)",
             }}
-            title="Categories with fewer than 5 ML-locked recipes are excluded from the cross-tier list that drives the risk-tier badge — they're shown for transparency but did not promote this country."
+            title="Categories with fewer than 5 ML-locked recipes are excluded from the cross-tier list that drives the risk-tier badge; they're shown for transparency but did not promote this country."
           >
             Evidence-thin
           </span>
@@ -1083,7 +1083,7 @@ function WhatsHappeningHere({
                 {i < arr.length - 1 ? ", " : ""}
               </span>
             ))}{" "}
-          did not drive the tier badge — flagged for transparency.
+          did not drive the tier badge, flagged for transparency.
         </p>
       )}
     </section>
@@ -1623,7 +1623,7 @@ function L1Row({
           <span
             className="font-data text-[9px] tracking-widest uppercase ml-1"
             style={{ color: "var(--qgi-accent)" }}
-            title="Top-3 driver — one of this country's strongest current signals"
+            title="Top-3 driver: one of this country's strongest current signals"
           >
             ▸ driver
           </span>
