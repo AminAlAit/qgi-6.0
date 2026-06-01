@@ -1,0 +1,206 @@
+name: Sync TE fleet vintage from S3
+
+# qgi-aws-tf#973 lane 2 — triggered by the qgi-recipe-fleet-frontend-sync
+# Lambda in the staging AWS account once the AWS-native bake job has written
+# a new vintage to s3://qgi-data-lake-222222222222/frontend-data/te-fleet-run-{N}/.
+#
+# What this workflow does:
+#   1. Checkout main.
+#   2. AWS OIDC into a read-only role scoped to the bake output prefix.
+#   3. `aws s3 sync` the vintage into a fresh `data/te-fleet-run-{vintage}/` dir.
+#   4. Run `scripts/append-cross-vintage-rank-history.py` to APPEND this
+#      vintage's rank-history rows to `data/te-fleet-rank-history.json`
+#      (run-separation rule: never overwrite a published vintage's rows;
+#      same-vintage re-runs replace cleanly; other vintages survive).
+#   5. Open a PR with the new dir + the appended cross-vintage file.
+#
+# Why a PR (not direct push to main): audit trail per the architectural pick
+# in `.claude/memory/project_session_2026_05_30_fleet_run_1.md` §"Architectural
+# picks already decided" (#2). Founder reviews the PR; a Sonnet reviewer
+# inspects the diff for size/sanity; merge auto-deploys to Vercel.
+#
+# Runner: self-hosted (qgi-frontend label) per lane 3 of the pipeline build.
+# GHA-hosted runners are out of minutes (founder declined top-up).
+
+on:
+  workflow_dispatch:
+    inputs:
+      s3_bucket:
+        description: "S3 bucket holding the bake output"
+        required: true
+        default: "qgi-data-lake-222222222222"
+      vintage_s3_prefix:
+        description: "S3 prefix for this vintage (must end with /)"
+        required: true
+      execution_name:
+        description: "SFN execution name (used for branch name)"
+        required: true
+      vintage:
+        description: "Human-readable vintage tag (default = execution_name)"
+        required: false
+        default: ""
+
+jobs:
+  sync:
+    name: Sync vintage and open PR
+    runs-on: [self-hosted, qgi-frontend]
+    permissions:
+      id-token: write # OIDC to AWS
+      contents: write # git commit + push branch
+      pull-requests: write # gh pr create
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0 # full history so gh pr create / diff resolve cleanly
+
+      - name: Resolve vintage label
+        id: vintage
+        run: |
+          set -euo pipefail
+          vintage="${{ inputs.vintage }}"
+          if [ -z "$vintage" ]; then
+            vintage="${{ inputs.execution_name }}"
+          fi
+          # Slugify for filesystem + branch name
+          slug=$(echo "$vintage" | tr '[:upper:]' '[:lower:]' | tr -c 'a-z0-9' '-' | sed 's/--*/-/g; s/^-//; s/-$//')
+
+          # Sonnet D4: guard against empty slug from blank inputs
+          if [ -z "$slug" ]; then
+            echo "::error::Empty vintage slug after normalizing inputs.vintage='${{ inputs.vintage }}' / inputs.execution_name='${{ inputs.execution_name }}'"
+            exit 1
+          fi
+
+          echo "label=$vintage" >> "$GITHUB_OUTPUT"
+          echo "slug=$slug" >> "$GITHUB_OUTPUT"
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::222222222222:role/github-actions-qgi-frontend-te-fleet-sync
+          aws-region: eu-central-1
+
+      - name: Sync vintage from S3
+        run: |
+          set -euo pipefail
+          dest="data/te-fleet-run-${{ steps.vintage.outputs.slug }}"
+          echo "Sync s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }} -> $dest"
+          mkdir -p "$dest"
+          aws s3 sync \
+            "s3://${{ inputs.s3_bucket }}/${{ inputs.vintage_s3_prefix }}" \
+            "$dest" \
+            --no-progress
+
+          # Confirm at least MANIFEST.json landed; bail loudly otherwise
+          if [ ! -f "$dest/MANIFEST.json" ]; then
+            echo "::error::S3 sync produced no MANIFEST.json under $dest -- bake output incomplete or wrong prefix"
+            exit 1
+          fi
+
+      - name: Append vintage rows to cross-vintage rank history
+        env:
+          VINTAGE_SLUG: ${{ steps.vintage.outputs.slug }}
+        run: |
+          set -euo pipefail
+          # Logic extracted to scripts/append-cross-vintage-rank-history.py so
+          # Python indentation isn't tangled with YAML block-scalar handling
+          # (Sonnet D1) and the logic is unit-tested (8/8 in
+          # scripts/test_append_cross_vintage_rank_history.py).
+          # python3 (not `python`): the self-hosted AL2023 runner provides
+          # python3 only — bare `python` is "command not found" (exit 127).
+          # Surfaced by the 2026-05-31 fan-out smoke (run 26699159927).
+          python3 scripts/append-cross-vintage-rank-history.py
+
+      - name: Configure git
+        run: |
+          git config user.name  "qgi-fleet-sync-bot"
+          git config user.email "fleet-sync-bot@qgintelligence.com"
+
+      - name: Commit + push branch
+        id: commit
+        env:
+          # Sonnet round 2 N7: pass workflow_dispatch inputs as env vars so
+          # the shell sees them as plain bash variables. GitHub expands
+          # `${{ inputs.* }}` BEFORE the shell runs; a hostile input
+          # containing a quote / backtick / $ could otherwise break or
+          # subshell-execute. Env-var pattern is GHA's documented hardening.
+          SLUG: ${{ steps.vintage.outputs.slug }}
+          LABEL: ${{ steps.vintage.outputs.label }}
+          S3_BUCKET: ${{ inputs.s3_bucket }}
+          VINTAGE_PREFIX: ${{ inputs.vintage_s3_prefix }}
+          EXECUTION_NAME: ${{ inputs.execution_name }}
+        run: |
+          set -euo pipefail
+          branch="sync/te-fleet-${SLUG}"
+          git checkout -b "$branch"
+
+          git add data/
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit -- bake output identical to current main."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          # Sonnet N9: `wc -l` is portable across Linux/macOS once whitespace-trimmed.
+          n_files=$(git diff --cached --name-only | wc -l | tr -d ' ')
+          msg="data(te): sync vintage ${LABEL} (${n_files} files)
+
+          Source: s3://${S3_BUCKET}/${VINTAGE_PREFIX}
+          Execution: ${EXECUTION_NAME}
+          Vintage: ${LABEL}
+
+          Per run-separation rule (feedback_run_separation_versioning.md): the
+          per-vintage corpus lands at data/te-fleet-run-<slug>/ and the
+          cross-vintage rank-history is APPEND-only.
+
+          Generated by qgi-recipe-fleet-frontend-sync (qgi-aws-tf#973)"
+
+          git commit -m "$msg"
+          git push origin "$branch"
+          echo "branch=$branch" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure PR labels exist
+        if: steps.commit.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Sonnet D2: `gh pr create --label X` hard-fails if X doesn't exist.
+          # Create-or-ignore so first run on a fresh repo doesn't break.
+          gh label create "data" --description "Data file changes" --color "0075CA" 2>/dev/null || true
+          gh label create "te-fleet" --description "Trajectory engine fleet sync" --color "5319E7" 2>/dev/null || true
+
+      - name: Open PR
+        if: steps.commit.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Sonnet round 2 N7: same env-var hardening as the commit step.
+          SLUG: ${{ steps.vintage.outputs.slug }}
+          LABEL: ${{ steps.vintage.outputs.label }}
+          S3_BUCKET: ${{ inputs.s3_bucket }}
+          VINTAGE_PREFIX: ${{ inputs.vintage_s3_prefix }}
+          EXECUTION_NAME: ${{ inputs.execution_name }}
+          BRANCH: ${{ steps.commit.outputs.branch }}
+        run: |
+          set -euo pipefail
+          body="Triggered by SFN execution \`${EXECUTION_NAME}\` via qgi-recipe-fleet-frontend-sync Lambda.
+
+          **Source:** \`s3://${S3_BUCKET}/${VINTAGE_PREFIX}\`
+          **Vintage:** \`${LABEL}\`
+
+          Per run-separation rule (\`feedback_run_separation_versioning.md\`):
+          - Per-vintage corpus -> \`data/te-fleet-run-${SLUG}/\`
+          - Cross-vintage rank-history -> \`data/te-fleet-rank-history.json\` (APPEND-only, with idempotent re-run support)
+
+          Sonnet review before merge (cf. \`feedback_pr_review.md\`).
+          "
+          gh pr create \
+            --title "data(te): sync vintage ${LABEL}" \
+            --body "$body" \
+            --base main \
+            --head "$BRANCH" \
+            --label "data" \
+            --label "te-fleet"
