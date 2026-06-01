@@ -1150,6 +1150,12 @@ def build_scores_file(
                 "indicator_name": indicator_names.get(code) if code else None,
                 "trajectory_12q": m.get("trajectory_12q") or [],
                 "z_score_change": m.get("z_score_change"),
+                # §A.2: carry the score-time trajectory_window (25y-baseline z, annual) +
+                # its years through from the walk's country-scores. The bake REBUILDS this
+                # entry, so without explicitly forwarding these they silently drop to []
+                # even though score_countries emitted them (2026-06-01 finding).
+                "trajectory_window": m.get("trajectory_window") or [],
+                "trajectory_window_years": m.get("trajectory_window_years") or [],
                 # Provider: prefer panel-resolved (explicit) over heuristic
                 "provider": panel_provider or _provider_for(code),
                 # Raw values from panel parquet (frontend §1.4)
