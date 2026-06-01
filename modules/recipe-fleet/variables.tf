@@ -70,6 +70,24 @@ variable "recipe_manifest_s3_key" {
   description = "S3 key for the recipe-manifest.json (runnable/thin/skip tiers) read by the SFN pre-filter Pass state."
 }
 
+# IMAGE PERMA-FIX: pin the walk + bake JobDefs to an immutable DIGEST resolved from
+# this tag at apply time, never the mutable ':latest' tag. The 2026-06-01 incident —
+# run-2 walked on a stale ':latest' that lacked the #136/#137/#141 walk/score code —
+# is impossible once the JobDef references qgi-recipe-fleet@sha256:<digest>. Set this to
+# a SPECIFIC build tag per deploy (NOT 'latest'); a TF apply then bakes that exact
+# digest into both JobDefs. Update = push a new tag, bump this, re-apply.
+variable "recipe_fleet_image_tag" {
+  type        = string
+  default     = ""
+  description = "ECR tag of qgi-recipe-fleet to pin (resolved to an immutable digest). Set per deploy to a specific build tag, never 'latest', so every job runs a provable image."
+  # Sonnet #40 BLOCKER: a 'latest' (or empty) default would silently re-introduce the
+  # stale-image incident on any env that forgets to override it. Force every env to pin.
+  validation {
+    condition     = var.recipe_fleet_image_tag != "" && var.recipe_fleet_image_tag != "latest"
+    error_message = "recipe_fleet_image_tag must be an explicit immutable build tag (e.g. bake-panels-527004d), never '' or 'latest' — that defeats the digest perma-fix."
+  }
+}
+
 variable "tags" {
   type    = map(string)
   default = {}

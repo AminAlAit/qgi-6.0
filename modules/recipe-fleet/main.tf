@@ -211,7 +211,12 @@ resource "aws_batch_compute_environment" "recipe_fleet_spot" {
     # deliberately high (≈3×) Spot upper bound. The $100 DAILY budget (modules/storage
     # fleet_daily_100) is the monitor on top. 48 also throttles concurrent fat jobs (16 vCPU
     # each → ≤3 at once) regardless of the SFN MaxConcurrency.
-    max_vcpus     = 48 # 48 × 2 attempts × 18 h × $0.05 ≈ $86 worst-case (under $100)
+    # SPEED CRANK (2026-06-01): 48 -> 128, PAIRED with the attempt_duration cut 18h->6h
+    # below. Each job finishes in <3h, so 6h is safe headroom; the raise lets ~all ~19 jobs
+    # run concurrently (MaxConcurrency 5->20) -> ~16h wall-clock collapses to ~3-4h. The
+    # FLEET-9 invariant HOLDS: 128 x 2 attempts x 6 h x $0.05 = $77 worst-case (under $100,
+    # and LOWER than the old $86).
+    max_vcpus     = 128
     desired_vcpus = 0  # scale-to-zero — nothing runs between fan-outs
 
     instance_role = var.ecs_instance_profile_arn
@@ -265,6 +270,18 @@ resource "aws_cloudwatch_log_group" "recipe_fleet" {
 # to run sequentially in that job). The entrypoint processes them in order,
 # skipping any with an existing greedy-result.json in S3 (resume-aware).
 # ---------------------------------------------------------------------------
+# IMAGE PERMA-FIX (2026-06-01): resolve the chosen tag to its immutable digest at
+# apply time, so both JobDefs reference qgi-recipe-fleet@sha256:<digest> — never the
+# mutable ':latest'. Prevents the run-2 stale-image incident from recurring.
+data "aws_ecr_image" "recipe_fleet" {
+  repository_name = "qgi-recipe-fleet"
+  image_tag       = var.recipe_fleet_image_tag
+}
+
+locals {
+  recipe_fleet_image = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-recipe-fleet@${data.aws_ecr_image.recipe_fleet.image_digest}"
+}
+
 resource "aws_batch_job_definition" "recipe_fleet_walker" {
   name = "qgi-recipe-fleet-walker-job"
   type = "container"
@@ -287,11 +304,14 @@ resource "aws_batch_job_definition" "recipe_fleet_walker" {
     # recipe at 16 vCPU — elections was 21.8h SERIAL on a laptop → ~2-3h at 16 vCPU) finishes
     # well under 18h, so this is comfortable headroom AND the per-recipe wall-time bound. The
     # cut is what keeps the FLEET-9 cap holding at max_vcpus=48 (48 × 2 × 18 × $0.05 ≈ $86).
-    attempt_duration_seconds = 64800
+    # SPEED CRANK (2026-06-01): 18h -> 6h. The slowest job (1 fat recipe at 16 vCPU, or a
+    # ~5-small batch) finishes in <3h, so 6h is comfortable headroom AND the cut is what lets
+    # max_vcpus rise to 128 while the FLEET-9 cap holds (128 x 2 x 6 x $0.05 = $77).
+    attempt_duration_seconds = 21600
   }
 
   container_properties = jsonencode({
-    image   = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-recipe-fleet:latest"
+    image   = local.recipe_fleet_image
     command = ["python", "/app/recipe_fleet_entrypoint.py"]
 
     # Task role: the narrow recipe-fleet job role (no Athena).
@@ -600,8 +620,8 @@ resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
 # ---------------------------------------------------------------------------
 # Batch JobDefinition — bake-te-fleet-run (lane 5 of pipeline build, qgi-aws-tf#973).
 #
-# Reuses the `qgi-recipe-fleet:latest` image (same arm64 build that runs
-# the walker), but with a different command: invoke
+# Reuses the same pinned-digest image as the walker (local.recipe_fleet_image —
+# qgi-recipe-fleet@sha256:..., never :latest), but with a different command: invoke
 # `bake_te_fleet_run_1.py` in AWS mode (BAKE_MODE=aws). The script reads
 # walk artifacts from S3, applies all bucket-A enrichments, writes the
 # corpus to S3 under frontend-data/te-fleet-run-{N}/.
@@ -634,13 +654,27 @@ resource "aws_batch_job_definition" "bake_te_fleet_run" {
   }
 
   container_properties = jsonencode({
-    image = "${var.aws_account_id}.dkr.ecr.${var.region}.amazonaws.com/qgi-recipe-fleet:latest"
+    image = local.recipe_fleet_image
     command = [
       "python", "/app/scripts/bake_te_fleet_run_1.py",
       "--bucket", var.data_lake_bucket_name,
       "--countries", "s3://${var.data_lake_bucket_name}/reference/countries.json",
       "--recipe-tracker", "s3://${var.data_lake_bucket_name}/reference/recipe-tracker.json",
       "--indicator-catalog", "s3://${var.data_lake_bucket_name}/reference/indicator-catalog-detailed.md",
+      # Panel-dependent fields (§C.1 population / §A.2 trajectory_window / §1.4 raw
+      # values / §D analog trajectories) need the indicator panels. The bake job runs
+      # the script DIRECTLY (not the walk entrypoint that syncs panels) and the image
+      # bakes in no panels, so pass the parquet-completed/ prefix as an s3:// URI; the
+      # script syncs it locally at startup (image has no s3fs). Without this they null.
+      "--panel-root", "s3://${var.data_lake_bucket_name}/pipeline-A-indicator-extractor/output/parquet-completed/",
+      # §B.3 precedents corpus (grouped by category==recipe_id) + the per-recipe
+      # positives.csv root (vendored in the image at /app/data/shape_inputs_v2) used to
+      # tag each precedent's in_training_set flag.
+      "--verified-events", "s3://${var.data_lake_bucket_name}/reference/verified-events.json",
+      "--shape-inputs-root", "/app/data/shape_inputs_v2",
+      # Read the SAME prefix the walk wrote (var.ml_results_prefix). Without this the bake
+      # defaults to ml-results/ and bakes the WRONG vintage's data (2026-06-01 finding).
+      "--ml-results-prefix", var.ml_results_prefix,
     ]
 
     # Reuse the walker's job role: same S3 read on parquet panels (used for
@@ -946,13 +980,18 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
       # FLEET-4b: ItemsPath is "$.runnable_jobs" — the SIZED form from the manifest
       # (build_recipe_manifest #962). Each item = {recipe_ids, vcpu, tier, ...}; the caller
       # passes the manifest's runnable_jobs as the execution input (pre-filtered to N_pos>=60).
-      # MaxConcurrency=5 (was 2): more overlap; actual concurrency is hard-bounded by the
-      # compute env max_vcpus=48 (≤3 fat jobs at 16 vCPU), so this never exceeds the cost cap.
+      # MaxConcurrency (see the SPEED CRANK note on the Map state below): actual concurrency
+      # is hard-bounded by the compute env max_vcpus=128 (sum of the jobs' vCPUs), so it
+      # never exceeds the cost cap.
       # -----------------------------------------------------------------
       "Fleet Fan-out" = {
         Type           = "Map"
         ItemsPath      = "$.runnable_jobs"
-        MaxConcurrency = 5
+        # SPEED CRANK (2026-06-01): 5 -> 20 so all ~19 jobs run in ONE wave instead of ~4
+        # (5-at-a-time was the 16h bottleneck, not the per-job time). Real concurrency is
+        # still hard-bounded by compute-env max_vcpus=128 (sum of the jobs' vCPUs), so this
+        # never exceeds the cost cap.
+        MaxConcurrency = 20
         ItemProcessor = {
           ProcessorConfig = {
             Mode = "INLINE"
