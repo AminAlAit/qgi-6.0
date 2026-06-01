@@ -55,7 +55,11 @@ export async function addNewsletterContact(email: string): Promise<DeliverResult
     // 200/201 = created; 409 = already a contact, which we treat as success.
     if (res.ok || res.status === 409) return { ok: true, configured: true };
     const body = await res.text().catch(() => "");
-    console.error("[email-delivery] Resend audience add failed", res.status, body.slice(0, 300));
+    console.error(
+      "[email-delivery] Resend audience add failed",
+      res.status,
+      body.slice(0, 300)
+    );
     return { ok: false, configured: true };
   } catch (err) {
     console.error("[email-delivery] audience request failed:", err);
@@ -63,7 +67,11 @@ export async function addNewsletterContact(email: string): Promise<DeliverResult
   }
 }
 
-export async function deliverEmail({ subject, text, replyTo }: DeliverInput): Promise<DeliverResult> {
+export async function deliverEmail({
+  subject,
+  text,
+  replyTo,
+}: DeliverInput): Promise<DeliverResult> {
   const key = process.env.RESEND_API_KEY;
   if (!key) return { ok: false, configured: false };
 

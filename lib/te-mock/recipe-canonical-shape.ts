@@ -33,16 +33,36 @@ interface TrajectoryAlignment {
 }
 
 const CARDS: Record<string, { trajectory_alignment?: TrajectoryAlignment }> = {
-  banking_and_financial_crisis: card_banking as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  bilateral_treaty: card_bilateral as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  diplomatic_rupture: card_diplomatic as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  economic_liberalization: card_econlib as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  economic_nationalization: card_econnat as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  ethnic_and_communal_conflict: card_ethnic as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  fiscal_policy_change: card_fiscal as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  government_formation: card_govform as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  migration_and_refugees: card_migration as unknown as { trajectory_alignment?: TrajectoryAlignment },
-  terrorist_attack: card_terror as unknown as { trajectory_alignment?: TrajectoryAlignment },
+  banking_and_financial_crisis: card_banking as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  bilateral_treaty: card_bilateral as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  diplomatic_rupture: card_diplomatic as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  economic_liberalization: card_econlib as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  economic_nationalization: card_econnat as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  ethnic_and_communal_conflict: card_ethnic as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  fiscal_policy_change: card_fiscal as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  government_formation: card_govform as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  migration_and_refugees: card_migration as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
+  terrorist_attack: card_terror as unknown as {
+    trajectory_alignment?: TrajectoryAlignment;
+  },
 };
 
 export interface CanonicalShape {

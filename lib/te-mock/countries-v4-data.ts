@@ -2951,7 +2951,9 @@ function buildAttribution(
   return entry.shap_attribution.map((s) => {
     const code = (s as { indicator_code?: string }).indicator_code ?? s.code ?? "";
     const name =
-      (s as { indicator_name?: string | null }).indicator_name ?? s.name ?? getIndicatorLabel(code);
+      (s as { indicator_name?: string | null }).indicator_name ??
+      s.name ??
+      getIndicatorLabel(code);
     const provider = resolveProvider((s as { provider?: string | null }).provider, code);
     return {
       indicator_code: code,
@@ -2998,7 +3000,9 @@ function buildMovementFromScores(
     // we don't emit "(indicator code missing)".
     const code = (m as { indicator_code?: string }).indicator_code ?? m.code ?? "";
     const name =
-      (m as { indicator_name?: string | null }).indicator_name ?? m.name ?? getIndicatorLabel(code);
+      (m as { indicator_name?: string | null }).indicator_name ??
+      m.name ??
+      getIndicatorLabel(code);
     const z = m.z_score_change;
     const direction: CountryDriverMovement["direction"] =
       z > 0.3 ? "rising" : z < -0.3 ? "falling" : "flat";

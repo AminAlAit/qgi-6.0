@@ -25,7 +25,11 @@
  * Returns null for any recipe not in the scored fleet, or any country not
  * scored on it — the page then renders an honest "coming soon" state.
  */
-import { loadScores, loadVintage, SAMPLE_10_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import {
+  loadScores,
+  loadVintage,
+  SAMPLE_10_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
 import { getIndicatorLabel } from "@/lib/indicator-labels";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import { getRecipeCanonical } from "@/lib/te-mock/recipe-canonical-shape";
@@ -148,7 +152,10 @@ export interface CountryRecipeMatch {
 /** Normalize a backend provider code to its audience-facing label. */
 function prettyProvider(raw: string | null | undefined): string {
   if (!raw) return "";
-  const k = raw.trim().toUpperCase().replace(/[\s_-]/g, "");
+  const k = raw
+    .trim()
+    .toUpperCase()
+    .replace(/[\s_-]/g, "");
   if (k === "VDEM") return "V-Dem";
   if (k === "WGI") return "World Bank WGI";
   if (k === "WB" || k === "WORLDBANK") return "World Bank";
@@ -251,7 +258,8 @@ export function getCountryRecipeMatch(
     canonicalWindowYears: canon?.windowYears ?? null,
     zone: entry.zone ?? null,
     zoneLabel: entry.zone_label ?? null,
-    cosineSimilarity: typeof entry.cosine_similarity_S === "number" ? entry.cosine_similarity_S : null,
+    cosineSimilarity:
+      typeof entry.cosine_similarity_S === "number" ? entry.cosine_similarity_S : null,
     composite,
     momentumByYear,
     momentumLabel: entry.momentum_label ?? null,
