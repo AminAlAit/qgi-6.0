@@ -337,7 +337,7 @@ class _FakeS3:
         objs = self._objects
 
         class _Pag:
-            def paginate(self, Bucket, Prefix):  # noqa: N803 (boto3 kwarg case)
+            def paginate(self, Bucket, Prefix, **kwargs):  # noqa: N803 (boto3 kwarg case)
                 yield {"Contents": [{"Key": k} for k in objs if k.startswith(Prefix)]}
 
         return _Pag()

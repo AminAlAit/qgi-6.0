@@ -1,7 +1,8 @@
 """Bake fleet-run-1 walk artifacts into the frontend's TE data-contract shape.
 
-Reads from S3 (ml-results/{recipe}/) — produces a local corpus at
-`qgi-frontend/data/te-fleet-run-1/` in cards-v3 + scores + country-index +
+Reads per-recipe walk outputs from S3 under --ml-results-prefix (run-1 =
+`ml-results/`, run-2 = `ml-results-run2/`) — produces a corpus at
+`qgi-frontend/data/te-fleet-run-{N}/` in cards-v3 + scores + country-index +
 analogs + activity-feed shape. Applies the Bucket A enrichments committed in
 `qgi-docs/internal/ops/te-sample-10-backend-reply-round-3-2026-05-29.md` so the
 frontend reads server-resolved iso2/region/indicator names rather than
@@ -1577,6 +1578,17 @@ def main() -> int:
                     help="S3 prefix the per-recipe walk outputs are read from. Run-1 = "
                          "'ml-results/'; run-2 (Path A) wrote to 'ml-results-run2/'. MUST match "
                          "the run's ML_RESULTS_PREFIX or the bake reads the wrong vintage's data.")
+    # MANIFEST provenance — per-vintage; default to run-1's values so an unflagged
+    # invocation is byte-identical to the original run-1 bake (Sonnet #143 FIX 1/2).
+    ap.add_argument("--run-index", type=int, default=1,
+                    help="Vintage ordinal in MANIFEST (frontend §1.3). run-1=1, run-2=2.")
+    ap.add_argument("--image-digest",
+                    default="sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
+                    help="Image digest stamped into MANIFEST provenance.")
+    ap.add_argument("--image-tag", default="43f9d9bd",
+                    help="Image tag stamped into MANIFEST provenance.")
+    ap.add_argument("--qgi-ml-sha", default="9e764464c9074d0e5c351cd31603456b5b8ff434",
+                    help="qgi-ml commit SHA stamped into MANIFEST provenance.")
     ap.add_argument("--panel-root", type=str, default="data/parquet_panels",
                     help="Panel parquet root for raw-value lookups (frontend §1.4). Local path "
                          "OR an s3:// prefix (parquet-completed/); the s3:// form is synced to a "
@@ -1826,7 +1838,7 @@ def main() -> int:
     # MANIFEST
     manifest = {
         "vintage": args.vintage,
-        "run_index": 1,  # frontend §1.3 — first official fleet run; increment on next vintage
+        "run_index": args.run_index,  # frontend §1.3 — per-vintage; pass --run-index (run-2 = 2)
         "produced_at_utc": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "engine": "F-ML-1 / Trajectory Engine (ML2)",
         "n_recipes": len(all_cards),
@@ -1835,9 +1847,9 @@ def main() -> int:
         "indicator_catalog_size": len(indicator_names),  # frontend §1.3
         "indicator_corpus_breakdown": provider_tally,    # frontend §1.3
         "contract_version": CONTRACT_VERSION,
-        "image_digest": "sha256:b95ece033fb5f5ff6b4dcca7011f7a7a52747d864fbcac5cb7900ecd5f91c6f8",
-        "image_tag": "43f9d9bd",
-        "qgi_ml_sha": "9e764464c9074d0e5c351cd31603456b5b8ff434",
+        "image_digest": args.image_digest,  # provenance — pass per-run; defaults to run-1's
+        "image_tag": args.image_tag,
+        "qgi_ml_sha": args.qgi_ml_sha,
         "bucket_a_enrichments_applied": [
             "iso2/iso3/flag_emoji on scores + analogs",
             "region on country-index",
