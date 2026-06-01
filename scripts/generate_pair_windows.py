@@ -10,6 +10,9 @@ Runs THREE Athena queries against qgi_data.patterns and produces two artefacts:
                   TOP_K_PER_END_YEAR windows per distinct end-year anchored
                   to analogue event years (deduplicated, sorted by PPS desc)
         - "hist": length-histogram (length -> count)
+      Each window carries l/sa/sb/ic/ac/pps/cp plus (§H) "ind": the pattern's
+      indicator_numeric_ids, consumed by bake_pattern_scdis.py to resolve
+      per-indicator SCDI detail without re-querying the 2 B-row patterns table.
       Schema matches what /api/patterns/windows/route.ts expects as the baked
       fallback.
 
@@ -90,12 +93,18 @@ CURRENT_YEAR = datetime.now().year
 SQL_TOP_N = f"""
 SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
        indicator_count, avg_correlation, pattern_power_score,
+       -- §H cascade SCDI bake: carry the pattern's indicator id list (already a
+       -- column on qgi_data.patterns) so bake_pattern_scdis can resolve per-indicator
+       -- SCDI detail WITHOUT re-querying the 2B-row patterns table
+       -- (cascade-patterns-scdi-reply-v2 §2).
+       indicator_numeric_ids,
        -- #461: D7 plumbing carried forward into pair_windows.json so the
        -- frontend can render a "contains predicted values" badge per pair.
        COALESCE(contains_predicted, FALSE) AS contains_predicted
 FROM (
   SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
          indicator_count, avg_correlation, pattern_power_score, contains_predicted,
+         indicator_numeric_ids,
          ROW_NUMBER() OVER (
            PARTITION BY country_a_id, country_b_id
            ORDER BY pattern_power_score DESC
@@ -116,11 +125,14 @@ GROUP BY country_a_id, country_b_id, length
 SQL_TOP_K_PER_END_YEAR = f"""
 SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
        indicator_count, avg_correlation, pattern_power_score,
+       -- §H: see SQL_TOP_N — carry the indicator id list for the SCDI baker.
+       indicator_numeric_ids,
        -- #461: D7 plumbing — see SQL_TOP_N.
        COALESCE(contains_predicted, FALSE) AS contains_predicted
 FROM (
   SELECT country_a_id, country_b_id, length, start_year_a, start_year_b,
          indicator_count, avg_correlation, pattern_power_score, contains_predicted,
+         indicator_numeric_ids,
          ROW_NUMBER() OVER (
            PARTITION BY country_a_id, country_b_id, (start_year_b + length)
            ORDER BY pattern_power_score DESC
@@ -181,6 +193,32 @@ def num(s):
             return float(s)
         except ValueError:
             return None
+
+
+def parse_ind(s):
+    """Parse Athena's text rendering of an ``array<smallint>`` into ``list[int]``.
+
+    ``indicator_numeric_ids`` comes back from ``get_query_results`` as a VarChar
+    string like ``"[16, 165, 4, 14]"`` (brackets, comma-separated, possibly with
+    spaces). Empty / null / ``"[]"`` → ``[]``. Non-integer tokens are skipped so a
+    malformed cell degrades to a shorter list rather than crashing the bake. The
+    SCDI baker (``bake_pattern_scdis.py``) reads this as the window's ``ind`` field.
+    """
+    if not s:
+        return []
+    s = s.strip()
+    if s.startswith("[") and s.endswith("]"):
+        s = s[1:-1]
+    out: list[int] = []
+    for tok in s.split(","):
+        tok = tok.strip()
+        if not tok:
+            continue
+        try:
+            out.append(int(tok))
+        except ValueError:
+            continue
+    return out
 
 
 # #358: curated-events loader. Same conventions as
@@ -339,7 +377,10 @@ def main():
         if None in (l, sa, sb, ic, ac, pps):
             continue
         entry = {"l": int(l), "sa": int(sa), "sb": int(sb), "ic": int(ic),
-                 "ac": float(ac), "pps": float(pps), "cp": cp}
+                 "ac": float(ac), "pps": float(pps), "cp": cp,
+                 # §H: indicator id list for the SCDI baker (extra field; existing
+                 # frontend readers ignore it, so this stays backward-compatible).
+                 "ind": parse_ind(r.get("indicator_numeric_ids"))}
         out[ca][cb]["top"].append(entry)
 
     # Sort each top list DESC by pps (paranoia — should already be DESC from SQL)
@@ -433,6 +474,8 @@ def main():
                 "l": int(l), "sa": int(sa), "sb": int(sb),
                 "ic": int(ic), "ac": float(ac), "pps": float(pps),
                 "cp": cp,
+                # §H: indicator id list for the SCDI baker (see Query 1).
+                "ind": parse_ind(r.get("indicator_numeric_ids")),
             }
             # Deduplicate against existing top list (Query 1 may already
             # have this exact window if it's both PPS-top and event-aligned).
