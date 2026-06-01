@@ -239,6 +239,45 @@ def _resolve_reference_input(arg_value: str | Path, s3_client: Any) -> Path:
     return Path(tmp_path)
 
 
+def _sync_panel_root(arg_value: str | Path, s3_client: Any) -> Path:
+    """Resolve --panel-root, which may be a local path OR an ``s3://`` prefix.
+
+    The qgi-recipe-fleet image has **no s3fs**, so the bake cannot
+    ``pd.read_parquet('s3://...')`` directly, and the bake job does NOT run the walk
+    entrypoint that syncs panels. In AWS mode the JobDef therefore passes the
+    ``pipeline-A-indicator-extractor/output/parquet-completed/`` prefix as an ``s3://``
+    URI; this syncs every ``{code}/`` panel under it to a local temp dir (boto3,
+    in-region ⇒ ~free) and returns that dir, so the downstream ``_load_panel(panel_root,
+    code)`` reads work unchanged. WITHOUT this, population (§C.1), trajectory_window
+    (§A.2), raw indicator values (§1.4) and analog trajectories (§D) silently null out
+    in the cloud bake. Local mode: returns the path verbatim (no-op)."""
+    s = str(arg_value)
+    if not s.startswith("s3://"):
+        return Path(s)
+    after_scheme = s[len("s3://"):]
+    if "/" not in after_scheme:
+        raise ValueError(f"Malformed S3 panel URI: {s!r} (expected s3://bucket/prefix/)")
+    bucket, _, prefix = after_scheme.partition("/")
+    if not prefix:
+        raise ValueError(f"Malformed S3 panel URI: {s!r} (prefix is empty after bucket)")
+    import tempfile
+    dest = Path(tempfile.mkdtemp(prefix="bake-panels-"))
+    paginator = s3_client.get_paginator("list_objects_v2")
+    n = 0
+    for page in paginator.paginate(Bucket=bucket, Prefix=prefix):
+        for obj in page.get("Contents", []):
+            key = obj["Key"]
+            rel = key[len(prefix):].lstrip("/")
+            if not rel:  # the prefix's own placeholder object, if any
+                continue
+            target = dest / rel
+            target.parent.mkdir(parents=True, exist_ok=True)
+            s3_client.download_file(bucket, key, str(target))
+            n += 1
+    LOG.info("Synced %d panel objects from %s -> %s", n, s, dest)
+    return dest
+
+
 def _refuse_overwrite_if_baked(s3_client: Any, bucket: str, prefix: str) -> None:
     """Per `feedback_run_separation_versioning.md` — refuse-to-overwrite if a
     MANIFEST.json already exists at the target prefix. Raises RuntimeError so
@@ -1533,8 +1572,11 @@ def main() -> int:
     ap.add_argument("--indicator-catalog", type=str, required=True,
                     help="Local path OR s3:// URI to indicator-catalog-detailed.md")
     ap.add_argument("--vintage", default="fleet-run-1-2026-05-30")
-    ap.add_argument("--panel-root", type=Path, default=Path("data/parquet_panels"),
-                    help="Local panel parquet root for raw-value lookups (frontend §1.4).")
+    ap.add_argument("--panel-root", type=str, default="data/parquet_panels",
+                    help="Panel parquet root for raw-value lookups (frontend §1.4). Local path "
+                         "OR an s3:// prefix (parquet-completed/); the s3:// form is synced to a "
+                         "local temp dir at startup (the image has no s3fs). str, not Path, so the "
+                         "s3:// '//' survives argparse.")
     ap.add_argument("--verified-events", type=str, default=None,
                     help="Local path OR s3:// URI to verified-events.json (frontend §B.3 "
                          "precedents corpus, grouped by category==recipe_id). Optional; "
@@ -1583,6 +1625,11 @@ def main() -> int:
     args.countries = _resolve_reference_input(args.countries, s3)
     args.recipe_tracker = _resolve_reference_input(args.recipe_tracker, s3)
     args.indicator_catalog = _resolve_reference_input(args.indicator_catalog, s3)
+    # --panel-root may be an s3:// prefix in AWS mode (no panels are baked into the
+    # image and the bake job skips the walk entrypoint's panel sync). Sync to a local
+    # dir so the panel-dependent fields (§C.1 population / §A.2 trajectory_window /
+    # §1.4 raw values / §D analog trajectories) populate instead of silently nulling.
+    args.panel_root = _sync_panel_root(args.panel_root, s3)
 
     countries = load_countries(args.countries)
     LOG.info("  %d countries", len(countries))
