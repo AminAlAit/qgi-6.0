@@ -78,7 +78,7 @@ type NavEntry = NavGroup | NavStandalone;
 const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
-    label: "Dashboard",
+    label: "Briefing",
     href: "/dashboard",
     icon: <LayoutDashboard size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
@@ -378,7 +378,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
             href="/dashboard"
             onClick={closeOnNavigate}
             className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
-            title="Go to Dashboard (command center)"
+            title="Go to Briefing (command center)"
           >
             <span
               style={{
@@ -592,7 +592,7 @@ function NavLeafLink({
       onClick={onClick}
       aria-current={active ? "page" : undefined}
       aria-label={collapsed ? `${label}${comingSoon ? " (coming soon)" : ""}` : undefined}
-      title={collapsed ? `${label}${comingSoon ? " — Coming soon" : ""}` : undefined}
+      title={collapsed ? `${label}${comingSoon ? ": Coming soon" : ""}` : undefined}
       className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",

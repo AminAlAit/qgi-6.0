@@ -66,7 +66,7 @@ export function HighlightsBand({
             letterSpacing: "0.3px",
           }}
         >
-          one tile per surface · vintage {vintage}
+          one tile per surface · release {vintage}
         </span>
       </div>
       <div

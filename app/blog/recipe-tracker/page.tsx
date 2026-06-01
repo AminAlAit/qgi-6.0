@@ -12,12 +12,12 @@ import {
 export const metadata: Metadata = {
   title: "Recipe Tracker · QG Intelligence",
   description:
-    "Live status board for all 71 QGI recipes. One graduated. One in progress. Five in validation. Sixty-four queued. Graduation requires clearing hard validation gates in held-out historical data — and most candidates will not.",
+    "Live status board for all 71 QGI recipes. One graduated. One in progress. Five in validation. Sixty-four queued. Graduation requires clearing hard validation gates in held-out historical data, and most candidates will not.",
   alternates: { canonical: "https://qgintelligence.com/blog/recipe-tracker" },
   openGraph: {
     title: "Recipe Tracker · QG Intelligence",
     description:
-      "Live status board for all 71 QGI recipes — graduated, in validation, and queued.",
+      "Live status board for all 71 QGI recipes: graduated, in validation, and queued.",
     url: "https://qgintelligence.com/blog/recipe-tracker",
     siteName: "QG Intelligence",
     type: "website",
@@ -103,7 +103,7 @@ function GraduatedCard({ recipe }: { recipe: Recipe }) {
     <li>
       <Link
         href={blogUrl}
-        aria-label={`${recipe.label} — graduated recipe, read the full graduation post`}
+        aria-label={`${recipe.label}: graduated recipe, read the full graduation post`}
         className="block rounded-lg overflow-hidden transition-transform hover:-translate-y-0.5"
         style={{
           backgroundColor: "var(--qgi-surface)",
@@ -184,7 +184,7 @@ function InValidationCard({ recipe }: { recipe: Recipe }) {
     <li>
       <div
         role="article"
-        aria-label={`${recipe.label} — in validation, not yet clickable`}
+        aria-label={`${recipe.label}: in validation, not yet clickable`}
         className="block rounded-lg overflow-hidden"
         style={{
           backgroundColor: "var(--qgi-surface)",
@@ -224,7 +224,7 @@ function QueuedCard({ recipe }: { recipe: Recipe }) {
     <li>
       <div
         role="article"
-        aria-label={`${recipe.label} — queued, validation not yet started`}
+        aria-label={`${recipe.label}: queued, validation not yet started`}
         className="block rounded-lg overflow-hidden"
         style={{
           backgroundColor: "var(--qgi-surface)",
@@ -502,7 +502,7 @@ export default async function RecipeTrackerPage() {
               className="text-base leading-relaxed"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              QGI works with {data.n_recipes} recipes — named patterns of geopolitical
+              QGI works with {data.n_recipes} recipes, named patterns of geopolitical
               change, each requiring validation against historical data before any score
               derived from it is published. This tracker is the index of that program. A
               recipe is <strong style={{ color: "var(--qgi-text)" }}>Graduated</strong>{" "}
@@ -517,19 +517,19 @@ export default async function RecipeTrackerPage() {
                   <strong style={{ color: "var(--qgi-accent)" }}>
                     Elections &amp; Voting
                   </strong>{" "}
-                  is <strong style={{ color: "var(--qgi-accent)" }}>In Progress</strong> —
+                  is <strong style={{ color: "var(--qgi-accent)" }}>In Progress</strong>:
                   a validation walk is running against it as this board updates.
                 </>
               )}{" "}
               {inValidationCount} recipes are{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>In Validation</strong> — either
+              <strong style={{ color: "var(--qgi-text)" }}>In Validation</strong>: either
               live on the dashboard via an earlier scoring pathway, or walked through the
               ML framework without clearing all gates; their scores are not yet
               methodology-certified. The remaining {queuedCount} are{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>Queued</strong> — the
-              validation framework has not been applied to them yet. Most will not
-              graduate on the first walk: that is the point of having gates. QGI publishes
-              what it has validated, not what it expects to validate.
+              <strong style={{ color: "var(--qgi-text)" }}>Queued</strong>: the validation
+              framework has not been applied to them yet. Most will not graduate on the
+              first walk: that is the point of having gates. QGI publishes what it has
+              validated, not what it expects to validate.
             </p>
           </div>
         </div>

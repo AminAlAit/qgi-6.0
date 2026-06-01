@@ -227,7 +227,7 @@ export default function ReportsPage() {
               Demo Report · April 2026
             </div>
             <h2 className="text-lg font-semibold mb-1">
-              FSI × QGI — Fragile-State Pattern Overlay
+              FSI × QGI: Fragile-State Pattern Overlay
             </h2>
             <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
               How QGI&apos;s structural-analogue patterns align with Fund for Peace&apos;s
@@ -257,7 +257,7 @@ export default function ReportsPage() {
             <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
               Five risk domains light up together on Burkina Faso in our current bake. The
               same combination preceded the 2012 Mali coup and the 2013 Central African
-              Republic collapse. What that structural resemblance means — and what it
+              Republic collapse. What that structural resemblance means, and what it
               doesn&apos;t.
             </p>
           </div>
@@ -271,7 +271,7 @@ export default function ReportsPage() {
             }}
           >
             <h2 className="text-lg font-semibold mb-1">
-              Regional Risk Brief — Middle East & North Africa
+              Regional Risk Brief: Middle East & North Africa
             </h2>
             <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
               Planned Q3 2026. Regional pattern analysis across 20 MENA countries with
@@ -287,7 +287,7 @@ export default function ReportsPage() {
             }}
           >
             <h2 className="text-lg font-semibold mb-1">
-              Structural Twins Deep Dive — BRICS+
+              Structural Twins Deep Dive: BRICS+
             </h2>
             <p className="text-sm" style={{ color: "var(--qgi-text-dim)" }}>
               Planned Q4 2026. Which non-BRICS economies share structural trajectories

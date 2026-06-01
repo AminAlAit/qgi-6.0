@@ -181,18 +181,16 @@ export default function LegalPage() {
               className="list-disc list-inside space-y-1 mt-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              <li>World Bank Open Data — CC BY 4.0</li>
-              <li>V-Dem Institute, University of Gothenburg — CC BY 4.0</li>
+              <li>World Bank Open Data: CC BY 4.0</li>
+              <li>V-Dem Institute, University of Gothenburg: CC BY 4.0</li>
               <li>
-                Food and Agriculture Organization of the United Nations (FAOSTAT) — CC BY
+                Food and Agriculture Organization of the United Nations (FAOSTAT): CC BY
                 4.0
               </li>
-              <li>International Labour Organization (ILOSTAT) — CC BY 4.0</li>
-              <li>UNHCR — The UN Refugee Agency — CC BY 4.0</li>
-              <li>
-                Uppsala Conflict Data Program (UCDP), Uppsala University — CC BY 4.0
-              </li>
-              <li>GDELT Project — CC0 (Public Domain)</li>
+              <li>International Labour Organization (ILOSTAT): CC BY 4.0</li>
+              <li>UNHCR, The UN Refugee Agency: CC BY 4.0</li>
+              <li>Uppsala Conflict Data Program (UCDP), Uppsala University: CC BY 4.0</li>
+              <li>GDELT Project: CC0 (Public Domain)</li>
             </ul>
           </Section>
 
@@ -225,8 +223,12 @@ export default function LegalPage() {
 }
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  const id = title
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
   return (
-    <section className="mb-12">
+    <section id={id} className="mb-12 scroll-mt-24">
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
       <div
         className="space-y-3 text-sm leading-relaxed"

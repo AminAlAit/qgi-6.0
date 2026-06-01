@@ -22,9 +22,9 @@ const BAKE_YEAR = "2021";
 
 export const metadata: Metadata = {
   title:
-    "Foreign Intervention, graduated: what eighteen years of indicator trajectories say — QGI Blog",
+    "Foreign Intervention, graduated: what eighteen years of indicator trajectories say. QGI Blog",
   description:
-    "QGI's first ML-validated recipe earns its risk score. Four indicators, eighteen years, and the validation that gates publication. Discrimination layer, not calibrated probability — and the difference matters.",
+    "QGI's first ML-validated recipe earns its risk score. Four indicators, eighteen years, and the validation that gates publication. Discrimination layer, not calibrated probability, and the difference matters.",
   alternates: {
     canonical: "https://qgintelligence.com/blog/foreign-intervention-graduation",
   },
@@ -108,7 +108,7 @@ const VALIDATIONS = [
     label: "Positive-instance recall",
     gate: "HARD GATE",
     detail:
-      "Median similarity at one year before event vs non-event baseline. Foreign intervention: 96.0 vs 70.1 — 25.8 percentile-point separation. Gate: 20pp.",
+      "Median similarity at one year before event vs non-event baseline. Foreign intervention: 96.0 vs 70.1, a 25.8 percentile-point separation. Gate: 20pp.",
     verdict: "PASS",
   },
   {
@@ -117,7 +117,7 @@ const VALIDATIONS = [
     gate: "Reporting only",
     detail:
       "Correlation between similarity score and XGBoost discriminator probability. Pearson 0.26, Spearman 0.50. Moderate; not problematic.",
-    verdict: "—",
+    verdict: "n/a",
   },
   {
     name: "V3",
@@ -125,7 +125,7 @@ const VALIDATIONS = [
     gate: "Reporting only",
     detail:
       "Median similarity by cohort. Stable-democracy 5.9, mid-tier 66.7, fragile-state 94.8. Cleanly discriminating across three tiers.",
-    verdict: "—",
+    verdict: "n/a",
   },
   {
     name: "V4",
@@ -206,7 +206,7 @@ export default function ForeignInterventionGraduationPage() {
           >
             A subsequent audit of our evaluation pipeline found that the LOCO-AUC of
             0.9147 reported below was computed on only 10 of this recipe&apos;s 174
-            positive events — roughly 94% were silently dropped because several of the
+            positive events, roughly 94% were silently dropped because several of the
             selected indicators lack older-year data coverage. On the full historical
             evidence base the discrimination collapses to ≈0.50, i.e. not yet
             distinguishable from chance. The graduation is therefore{" "}
@@ -236,7 +236,7 @@ export default function ForeignInterventionGraduationPage() {
           >
             QGI&apos;s first ML-validated recipe earns its risk score today. Four
             indicators, eighteen years, two hard validation gates cleared. The mechanic is
-            similarity to a historical pre-crisis trajectory — and the line between
+            similarity to a historical pre-crisis trajectory, and the line between
             similarity and probability is where this piece spends most of its time.
           </p>
         </div>
@@ -260,7 +260,7 @@ export default function ForeignInterventionGraduationPage() {
           </p>
           <p>
             This piece is the long version of that announcement. It explains what
-            graduated, what the underlying mechanic does, and — more importantly — what it
+            graduated, what the underlying mechanic does, and (more importantly) what it
             cannot do. The validation that earned the graduation tells one specific thing:
             our scoring mechanic can discriminate pre-crisis trajectories from
             non-pre-crisis trajectories. It does not tell us, and we do not claim, a
@@ -277,28 +277,28 @@ export default function ForeignInterventionGraduationPage() {
           </p>
           <ol className="list-decimal pl-6 space-y-2">
             <li>
-              <strong>Key indicators</strong> — the small handful of substrate indicators
+              <strong>Key indicators</strong>: the small handful of substrate indicators
               (out of 104 we track) that carry the strongest discriminative signal for
               this crisis class.
             </li>
             <li>
-              <strong>Canonical length</strong> — how many years (3–25y) the predictive
+              <strong>Canonical length</strong>: how many years (3–25y) the predictive
               signal accumulates over. Some crises develop over three years; some over
               twenty-five. The recipe says which.
             </li>
             <li>
-              <strong>Canonical movement shape</strong> — the average trajectory of those
+              <strong>Canonical movement shape</strong>: the average trajectory of those
               indicators across the canonical length, computed from all historical
               positive instances in our corpus.
             </li>
             <li>
-              <strong>Aggregation rule</strong> — how the per-indicator measurements
+              <strong>Aggregation rule</strong>: how the per-indicator measurements
               combine into a single country-recipe number.
             </li>
             <li>
-              <strong>Terminating event</strong> — the crisis type that defines the
-              recipe. For foreign_intervention, a curated foreign-intervention event in
-              our corpus.
+              <strong>Terminating event</strong>: the crisis type that defines the recipe.
+              For foreign_intervention, a curated foreign-intervention event in our
+              corpus.
             </li>
           </ol>
           <p>
@@ -402,7 +402,7 @@ export default function ForeignInterventionGraduationPage() {
           </p>
           <p>
             <strong>Terminating event:</strong> a curated foreign-intervention entry in
-            our corpus — vetted by hand, timestamped to the year the intervention began.
+            our corpus, vetted by hand, timestamped to the year the intervention began.
           </p>
 
           {/* What the risk score actually says */}
@@ -427,7 +427,7 @@ export default function ForeignInterventionGraduationPage() {
           <p>
             65 or higher is HIGH. Below 40 is LOW. Between is MODERATE. 50 is the point
             where the country&apos;s trajectory is geometrically orthogonal to the
-            canonical shape — neither matching nor opposite.
+            canonical shape: neither matching nor opposite.
           </p>
           <p>
             In the {BAKE_YEAR} bake, sixty-eight countries had complete coverage across
@@ -457,7 +457,7 @@ export default function ForeignInterventionGraduationPage() {
                     </h3>
                   </div>
                   <p className="text-xs" style={{ color: "var(--qgi-text-dim)" }}>
-                    Indicator trajectory overlay — {entry.country} vs the
+                    Indicator trajectory overlay: {entry.country} vs the
                     foreign_intervention canonical pre-crisis profile.
                   </p>
                 </figcaption>
@@ -495,10 +495,10 @@ export default function ForeignInterventionGraduationPage() {
             bootstrap-resampling the historical events that define the canonical shape and
             watching how much each country&apos;s score moves. It is honest about a real
             limit: the canonical shape for this recipe rests on far fewer events than the
-            headline count suggests &mdash; its most heavily-weighted indicator,
-            regulatory quality, is anchored on 46 historical instances. The band makes
-            that uncertainty visible rather than hiding it behind a single confident
-            number. Iran stays firmly in the HIGH zone even at the low end of its band.
+            headline count suggests, with its most heavily-weighted indicator, regulatory
+            quality, is anchored on 46 historical instances. The band makes that
+            uncertainty visible rather than hiding it behind a single confident number.
+            Iran stays firmly in the HIGH zone even at the low end of its band.
           </p>
 
           {/* The validation that earned the graduation */}
@@ -507,7 +507,7 @@ export default function ForeignInterventionGraduationPage() {
           </h2>
           <p>
             Graduation is not automatic. Before a recipe&apos;s scores are published, four
-            validations run. Two are hard gates — if either fails, the recipe does not
+            validations run. Two are hard gates: if either fails, the recipe does not
             graduate. The other two produce evidence but do not block.
           </p>
 
@@ -553,7 +553,7 @@ export default function ForeignInterventionGraduationPage() {
                       style={{ color: "var(--qgi-text)" }}
                     >
                       <span className="font-semibold">{v.name}</span>{" "}
-                      <span style={{ color: "var(--qgi-text-dim)" }}>— {v.label}</span>
+                      <span style={{ color: "var(--qgi-text-dim)" }}>: {v.label}</span>
                       <p
                         className="text-xs mt-1 font-normal"
                         style={{ color: "var(--qgi-text-dim)" }}
@@ -608,8 +608,8 @@ export default function ForeignInterventionGraduationPage() {
                 <strong>This is a similarity score, not a calibrated probability.</strong>{" "}
                 We do not claim &ldquo;country X has Y% probability of foreign
                 intervention in N years.&rdquo; The validation that cleared discrimination
-                — telling pre-crisis from non-pre-crisis trajectories — is a different
-                claim from calibrated probability. Earlier this same week, the same recipe
+                (telling pre-crisis from non-pre-crisis trajectories) is a different claim
+                from calibrated probability. Earlier this same week, the same recipe
                 attempted a calibrated probability output via Beta calibration on the same
                 XGBoost backbone; the expected calibration error (ECE) failed the hard
                 threshold across multiple cohort × recipe cells. Rather than ship a
@@ -626,7 +626,7 @@ export default function ForeignInterventionGraduationPage() {
               </li>
               <li>
                 <strong>A LOW score is not &ldquo;safe.&rdquo;</strong> A country may face
-                foreign intervention for reasons not captured by the four indicators —
+                foreign intervention for reasons not captured by the four indicators:
                 idiosyncratic shocks, new actors, regional contagion. Low similarity is
                 &ldquo;the methodology has not flagged this pattern,&rdquo; not &ldquo;the
                 methodology has cleared this country.&rdquo;
@@ -647,7 +647,7 @@ export default function ForeignInterventionGraduationPage() {
             The methodology pause that preceded this graduation was deliberate. For most
             of QGI&apos;s life, the scoring pipeline produced numbers without an
             ML-validated recipe substrate. The numbers were useful upstream of the
-            validation gates the Methodology Charter demanded — and we said so — but they
+            validation gates the Methodology Charter demanded (and we said so), but they
             did not constitute a graduated recipe.
           </p>
           <p>
@@ -656,8 +656,8 @@ export default function ForeignInterventionGraduationPage() {
             both demonstrated that the indicator-selection mechanic worked, but neither
             cleared the additional thresholds the per-recipe pre-registration demanded.
             Foreign intervention cleared discrimination. The mechanism that earned this
-            graduation — XGBoost-derived indicator selection, SHAP-weighted cosine
-            similarity on z-scored trajectory profiles, held-out out-of-time validation —
+            graduation (XGBoost-derived indicator selection, SHAP-weighted cosine
+            similarity on z-scored trajectory profiles, held-out out-of-time validation)
             is now provenance for any subsequent recipe to use.
           </p>
           <p>
@@ -680,7 +680,7 @@ export default function ForeignInterventionGraduationPage() {
               >
                 Methodology page
               </Link>{" "}
-              — full derivation of the similarity-as-risk-metric framework, what the score
+              : full derivation of the similarity-as-risk-metric framework, what the score
               is and is not, and the validation flow before any recipe&apos;s scores
               publish.
             </li>
@@ -694,7 +694,7 @@ export default function ForeignInterventionGraduationPage() {
               >
                 Similarity-as-risk-metric long-form (qgi-docs)
               </a>{" "}
-              — the methodology document the page above is built from.
+              : the methodology document the page above is built from.
             </li>
             <li>
               <a
@@ -706,7 +706,7 @@ export default function ForeignInterventionGraduationPage() {
               >
                 Foreign intervention recipe DECISION
               </a>{" "}
-              — the formal eight-of-eight ratified decision document with the validation
+              : the formal eight-of-eight ratified decision document with the validation
               dossier and the rider package.
             </li>
           </ul>

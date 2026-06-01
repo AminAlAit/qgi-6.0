@@ -94,7 +94,7 @@ export function PatternTrajectoryCell({
         }}
         title={
           terminatingEvent
-            ? `${terminatingEvent.title} — ${terminatingEvent.country}, ${terminatingEvent.year}. Source: ${terminatingEvent.source}`
+            ? `${terminatingEvent.title}: ${terminatingEvent.country}, ${terminatingEvent.year}. Source: ${terminatingEvent.source}`
             : `No event found in verified-events.json for ${leaderCountry} within ±2 years of ${leaderEndYear}.`
         }
       >
@@ -134,7 +134,7 @@ export function PatternTrajectoryCell({
             style={{ color: "var(--qgi-text-dim)" }}
             title={`The falsification window (${falsificationAnchor.windowStart}–${falsificationAnchor.windowEnd}) has passed. QGI has not yet determined the outcome for ${falsificationAnchor.followerCountry}.`}
           >
-            {`Window elapsed ${falsificationAnchor.windowEnd} — outcome not yet determined by QGI`}
+            {`Window elapsed ${falsificationAnchor.windowEnd}: outcome not yet determined by QGI`}
           </div>
         ) : (
           <div

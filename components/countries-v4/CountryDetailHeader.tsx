@@ -109,7 +109,7 @@ export function CountryDetailHeader({ country }: { country: CountryV4 }) {
             margin: 0,
           }}
         >
-          {country.region} · population ~{fmt(country.population)} · vintage{" "}
+          {country.region} · population ~{fmt(country.population)} · release{" "}
           {country.vintage}
         </p>
       </div>

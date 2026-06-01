@@ -150,7 +150,7 @@ export default async function ComparePage() {
           }}
         >
           <PanelHeader
-            eyebrow="§01 — Shared recipe matchup"
+            eyebrow="§01 · Shared recipe matchup"
             title="Where the two countries diverge most"
           />
           <div
@@ -189,7 +189,7 @@ export default async function ComparePage() {
             }}
           >
             <PanelHeader
-              eyebrow="§02 — Indicator face-off"
+              eyebrow="§02 · Indicator face-off"
               title="Drivers behind the gap"
             />
             <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>

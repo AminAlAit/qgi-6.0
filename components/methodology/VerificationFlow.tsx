@@ -29,7 +29,7 @@ const STEPS = [
     title: "Curate",
     summary: "Reduce to a structured event matching QGI's schema.",
     detail:
-      "The agent extracts a single canonical title, year, category from QGI's 71-category taxonomy, and a 1-2 sentence description. No web access during this stage — pure structural cleanup.",
+      "The agent extracts a single canonical title, year, category from QGI's 71-category taxonomy, and a 1-2 sentence description. No web access during this stage; it is pure structural cleanup.",
     example: {
       stage: "After E1–E5 cleanup rules applied",
       lines: [
@@ -80,24 +80,14 @@ const FLOW_CARDS = [
 
 export default function VerificationFlow() {
   return (
-    <section
-      id="verification"
-      className="py-12 border-b"
-      style={{ borderColor: "var(--qgi-border)" }}
-    >
-      <h2
-        className="text-xs tracking-[0.25em] uppercase mb-2"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
-        How verification works
-      </h2>
+    <div>
       <p
         className="text-sm mb-10 leading-relaxed max-w-2xl"
         style={{ color: "var(--qgi-text)" }}
       >
-        Three independent stages between &quot;found on the web&quot; and &quot;in the
-        data lake.&quot; The same event below — the 2008 Icelandic banking collapse —
-        shown at every stage of the pipeline.
+        Three independent stages between finding an event on the web and adding it to the
+        record. The same event, the 2008 Icelandic banking collapse, is shown at every
+        stage.
       </p>
 
       {/* Three steps in a row */}
@@ -215,11 +205,9 @@ export default function VerificationFlow() {
         className="mt-5 text-[11px] leading-relaxed max-w-3xl"
         style={{ color: "var(--qgi-text-muted)" }}
       >
-        Per the <code>#374</code> data-lake invariant: an event lands in{" "}
-        <code>qgi_data.events</code> only if its (country, year, title) tuple has a{" "}
-        <code>verdict=&quot;TRUE&quot;</code> entry in the country&apos;s verification
-        file. FALSE verdicts and unverified events are dropped at ingest time.
+        An event is only kept once it has passed verification with a true verdict and a
+        cited public source. Events that fail, or that no source can confirm, are dropped.
       </p>
-    </section>
+    </div>
   );
 }

@@ -111,7 +111,7 @@ export function MethodologyBox() {
 
       {/* V4.1 §2: vintage stamp removed — the global header carries it. */}
       <Row icon={HistoryIcon} title="Updates">
-        The analogue corpus is updated on each data vintage. Rankings may shift as new
+        The analogue corpus is updated on each data release. Rankings may shift as new
         events are catalogued.
       </Row>
     </aside>

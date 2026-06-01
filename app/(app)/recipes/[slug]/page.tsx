@@ -236,7 +236,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         nPositives={mock.nPositives ?? 0}
         thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
       />
-      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
+      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} wide />
       <WindowPanel
         familyColor={familyColor}
         windowYears={mock.window}
@@ -269,6 +269,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         countriesBottom={extras.countriesBottom}
         countriesFull={countriesFull}
         showResults={showResults}
+        recipeId={recipe.recipe_id}
       />
       <ExpandableShell familyColor={familyColor} label="Score distribution">
         <ScoreDistributionPanel

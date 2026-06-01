@@ -1,182 +1,55 @@
-import Link from "next/link";
+/**
+ * Home ("/") — the public landing. Promoted from /landing-v2 on 2026-05-31
+ * (founder direction). Confidence-first: real fleet data in the live preview,
+ * no method internals in the headline copy. The old marketing landing it
+ * replaced is retired; /landing-v2 now redirects here (next.config).
+ */
 import type { Metadata } from "next";
-import { CountryFlag } from "@/components/design/CountryFlag";
-import NewsletterForm from "@/components/NewsletterForm";
+import Link from "next/link";
+import type { Route } from "next";
 import { PublicNav } from "@/components/PublicNav";
 import { PublicFooter } from "@/components/PublicFooter";
 import { SkipLink } from "@/components/SkipLink";
-import { loadCountryRisks, type RiskTier } from "@/lib/country-risks";
-import { countrySlug } from "@/lib/slug";
-import {
-  TOTAL_COUNTRIES,
-  TOTAL_INDICATORS,
-  TOTAL_PATTERNS,
-  DATA_VINTAGE_YEAR,
-} from "@/lib/site-stats";
+import { RotatingWordmark } from "@/components/landing-v2/RotatingWordmark";
+import { ClosestMatches } from "@/components/dashboard-v4-1/ClosestMatches";
+import { buildClosestMatches } from "@/lib/te-mock/dashboard-v4-1-data";
 
-// #699 (2026-05-15): explicit home canonical. Pre-fix, the root layout
-// declared the canonical for every child page (so all V3 routes told
-// Google "I am a duplicate of /"); root canonical removed and each route
-// now sets its own. Home page declares "/" explicitly.
 export const metadata: Metadata = {
+  title: "QG Intelligence · Country risk, read against history",
+  description:
+    "Across 180+ countries and territories, every country scored against the shapes that came before the events that matter, and shown alongside the real cases it most resembles.",
   alternates: { canonical: "/" },
-};
-
-/**
- * QGI Landing Page, public, static.
- *
- * Sections:
- * 1. Navbar
- * 2. Hero with tagline
- * 3. Live preview: 3 country risk cards (pulled from live country-risks.json)
- * 4. How it works: 3-step visual
- * 5. Metrics bar
- * 6. Key differentiators
- * 7. About / mission statement
- * 8. Newsletter capture
- * 9. Get in touch / request demo
- * 10. Footer (enhanced)
- *
- * T1 #294 fix (2026-04-19): preview cards used to be hardcoded for
- * Argentina/Russia/Ethiopia and drifted from the actual pipeline output.
- * Now pull the top 3 HIGH-tier countries by max salience from the same
- * baked JSON the dashboard reads. Revalidates on the page-level ISR.
- */
-
-// Revalidate once per hour so the preview reflects pipeline re-runs
-// without re-rendering on every request (T16 perf).
-export const revalidate = 3600;
-
-type PreviewCountry = {
-  id: string;
-  /** #759 (2026-05-17): canonical slug for use in the preview-card Link
-   *  href. Linking by id (numeric) works (the [iso] page redirects), but
-   *  serves users an extra 308 hop and produces ugly URLs in tab titles
-   *  + share previews. Slug is resolved server-side from country.name. */
-  slug: string;
-  name: string;
-  alpha_2: string;
-  tier: RiskTier;
-  topCategory: string;
-  precedents: number;
-  signal: string;
-};
-
-function prettyCategory(slug: string): string {
-  // "civil_war_and_insurgency" -> "Civil War & Insurgency"
-  return slug
-    .replace(/_and_/g, " & ")
-    .replace(/_/g, " ")
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-async function loadPreviewCountries(): Promise<PreviewCountry[]> {
-  try {
-    const data = await loadCountryRisks();
-    const rows: Array<PreviewCountry & { _salience: number }> = [];
-    for (const [id, country] of Object.entries(data.countries)) {
-      if (country.overall_risk_tier !== "HIGH") continue;
-      const cats = country.tiers?.S?.top_categories ?? [];
-      const top = cats[0];
-      if (!top) continue;
-      const salience = top.salience_score ?? top.z_score ?? 0;
-      const precedents = top.recipe_count ?? 0;
-      // #759 (2026-05-17): resolve slug server-side so the preview-card
-      // Link href can route directly to /countries/:slug instead of
-      // /countries/:id → 308 → /countries/:slug. Fall back to the
-      // numeric id rather than dropping the country entirely if the
-      // slug helper can't produce one (the [iso] route accepts both).
-      const slug = countrySlug(country.name) ?? id;
-      rows.push({
-        id, // kept for analytics / tracking
-        slug,
-        name: country.name,
-        alpha_2: country.alpha_2,
-        tier: country.overall_risk_tier,
-        topCategory: prettyCategory(top.category),
-        precedents,
-        signal: `${precedents.toLocaleString()} historical matches; top drivers in ${prettyCategory(
-          top.category
-        ).toLowerCase()}.`,
-        _salience: salience,
-      });
-    }
-    rows.sort((a, b) => b._salience - a._salience);
-    return rows.slice(0, 3).map(({ _salience: _s, ...rest }) => rest);
-  } catch {
-    // Static fallback if country-risks.json is unreachable at build time.
-    // IDs match the canonical World-Bank-aligned numeric IDs in country-risks
-    // so the hero-card Links still route correctly when this branch fires.
-    return [
-      {
-        id: "217",
-        slug: "the_syrian_arab_republic",
-        name: "Syria",
-        alpha_2: "SY",
-        tier: "HIGH",
-        topCategory: "Civil War & Insurgency",
-        precedents: 0,
-        signal: "Preview unavailable, pipeline output missing.",
-      },
-      {
-        id: "212",
-        slug: "sudan",
-        name: "Sudan",
-        alpha_2: "SD",
-        tier: "HIGH",
-        topCategory: "Civil War & Insurgency",
-        precedents: 0,
-        signal: "Preview unavailable, pipeline output missing.",
-      },
-      {
-        id: "1",
-        slug: "afghanistan",
-        name: "Afghanistan",
-        alpha_2: "AF",
-        tier: "HIGH",
-        topCategory: "Civil War & Insurgency",
-        precedents: 0,
-        signal: "Preview unavailable, pipeline output missing.",
-      },
-    ];
-  }
-}
-
-const TIER_STYLES: Record<string, { bg: string; text: string; border: string }> = {
-  HIGH: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "#f87171" },
-  MODERATE: { bg: "rgba(251, 191, 36, 0.12)", text: "#fbbf24", border: "#fbbf24" },
-  INDICATIVE: { bg: "rgba(56, 189, 248, 0.12)", text: "#38bdf8", border: "#38bdf8" },
 };
 
 const STEPS = [
   {
     num: "01",
-    title: "Detect Indicator Relationships",
-    desc: `We find statistically significant correlations between structural indicators (economic, political, governance) across ${TOTAL_COUNTRIES} countries spanning decades of Open Source Intelligence.`,
+    title: "We learn the shapes",
+    desc: "From decades of the historical record, we learn the signal shapes that tend to run ahead of each kind of event, a currency crisis, a coup, a wave of unrest. We call each shape a recipe.",
   },
   {
     num: "02",
-    title: "Match Historical Precedents",
-    desc: "When Country A's trajectory today mirrors Country B's trajectory before a known geopolitical event, we surface that precedent.",
+    title: "We watch every country",
+    desc: "Across 180+ countries and territories, we track how each one's recent signals are moving and compare them, quarter by quarter, against every recipe.",
   },
   {
     num: "03",
-    title: "Score & Rank Risk Candidates",
-    desc: "Z-score normalization and rank fusion ensemble produce country-level risk tiers. Analysts examine the evidence, not a black-box score.",
+    title: "We show you the evidence",
+    desc: "See how closely a country is tracing a recipe right now, signal by signal, and the real historical cases it most resembles. A measure of resemblance, not a forecast.",
   },
 ];
 
-export default async function LandingPage() {
-  const previewCountries = await loadPreviewCountries();
+export default async function HomePage() {
+  const matches = buildClosestMatches(6);
+
   return (
     <div
       className="min-h-full"
       style={{ backgroundColor: "var(--qgi-bg)", color: "var(--qgi-text)" }}
     >
-      {/* #738 skip-link. Extracted to shared <SkipLink /> 2026-05-24 (parity
-          across landing + /about + /reports + /methodology + /blog + /legal). */}
       <SkipLink />
-      {/* ─── Navbar ─────────────────────────────────────────────────── */}
+
+      {/* Header */}
       <header
         className="sticky top-0 z-50 border-b backdrop-blur-md"
         style={{
@@ -185,15 +58,14 @@ export default async function LandingPage() {
         }}
       >
         <div className="mx-auto max-w-6xl flex items-center justify-between px-6 py-4">
-          {/* GH#251: clickable; on public pages, click navigates to root. */}
-          <Link href="/" className="flex items-baseline gap-1" title="Home">
+          <Link href={"/" as Route} className="flex items-baseline gap-1" title="Home">
             <span
-              className="font-data text-sm tracking-[0.25em] font-semibold"
+              className="text-sm tracking-[0.25em] font-semibold"
               style={{
                 color: "var(--qgi-accent)",
-                // Compensate trailing letter-spacing so visual gap to
-                // "Intelligence" matches the qgintelligence.com domain.
                 marginRight: "-0.25em",
+                fontFamily:
+                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
               }}
             >
               QG
@@ -205,56 +77,28 @@ export default async function LandingPage() {
               Intelligence
             </span>
           </Link>
-          {/* #427 (2026-04-24): client nav with real hamburger for mobile <md.
-              Previous "hidden md:inline-flex" hid Reports/Blog/Contact on mobile
-              with no fallback, QA sweep 2026-04-24 caught this as the #1 mobile
-              regression. 2026-05-23: extracted to shared PublicNav (used by
-              every public page) so the nav vocabulary stays consistent across
-              landing, /about, /reports, /methodology, /blog, /legal. */}
           <PublicNav />
         </div>
       </header>
 
       <main id="main-content" tabIndex={-1} className="focus:outline-none">
-        {/* ─── Hero ───────────────────────────────────────────────────── */}
-        <section className="mx-auto max-w-6xl px-6 pt-24 pb-20">
+        {/* Hero */}
+        <section className="mx-auto max-w-6xl px-6 pt-24 pb-16">
           <div className="max-w-3xl">
-            <div
-              className="inline-block mb-6 px-3 py-1 rounded-full text-[10px] tracking-widest uppercase border"
-              style={{
-                borderColor: "var(--qgi-accent)",
-                color: "var(--qgi-accent)",
-                backgroundColor: "var(--qgi-accent-glow)",
-              }}
-            >
-              Pattern Recurrence Intelligence
-            </div>
-            <h1
-              className="text-4xl sm:text-5xl font-semibold leading-tight tracking-tight"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              Quantitative
-              <br />
-              Geopolitical
-              <br />
-              <span style={{ color: "var(--qgi-accent)" }}>Intelligence</span>
-            </h1>
+            <RotatingWordmark />
             <p
-              className="mt-6 text-lg leading-relaxed max-w-xl"
+              className="mt-8 text-lg leading-relaxed max-w-xl"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              QGI surfaces data-grounded risk candidates that analysts should examine. We
-              find historical precedents in open-source intelligence spanning{" "}
-              {TOTAL_COUNTRIES} countries and {TOTAL_INDICATORS} indicators.
+              Across 180+ countries and territories, every country is scored against the
+              shapes that came before the events that matter, and shown alongside the real
+              historical cases it most resembles. Evidence you can open, not a black box.
             </p>
-            <div className="mt-8 flex items-center gap-4">
+            <div className="mt-9 flex items-center gap-4 flex-wrap">
               <Link
-                href="/dashboard"
+                href={"/dashboard" as Route}
                 className="px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
-                style={{
-                  backgroundColor: "var(--qgi-accent)",
-                  color: "var(--qgi-bg)",
-                }}
+                style={{ backgroundColor: "var(--qgi-accent)", color: "var(--qgi-bg)" }}
               >
                 Open Dashboard
               </Link>
@@ -266,85 +110,48 @@ export default async function LandingPage() {
                   color: "var(--qgi-text-muted)",
                 }}
               >
-                Learn More
+                How it works
               </a>
             </div>
           </div>
         </section>
 
-        {/* ─── Live Preview: Country Risk Cards ───────────────────────── */}
-        <section className="mx-auto max-w-6xl px-6 pb-24">
-          <h2
-            className="text-xs tracking-widest uppercase mb-8"
-            style={{ color: "var(--qgi-text-dim)" }}
-          >
-            Live Intelligence Preview
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {previewCountries.map((c) => {
-              const style = TIER_STYLES[c.tier];
-              // #432 Bug 1: hero cards advertised an accent-border hover
-              // affordance but had no click target. Wrap in a Link so the
-              // visual promise (cursor + hover state + "preview" framing)
-              // matches behaviour: tap → /countries/:id.
-              return (
-                <Link
-                  key={c.alpha_2}
-                  href={`/countries/${c.slug}`}
-                  className="block rounded-lg border p-5 transition-colors hover:border-[var(--qgi-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
-                  style={{
-                    backgroundColor: "var(--qgi-surface)",
-                    borderColor: "var(--qgi-border)",
-                  }}
-                >
-                  {/* Country header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <CountryFlag alpha2={c.alpha_2} size={24} />
-                      <span className="font-medium">{c.name}</span>
-                    </div>
-                    <span
-                      className="text-[10px] tracking-widest font-semibold px-2 py-0.5 rounded"
-                      style={{
-                        backgroundColor: style.bg,
-                        color: style.text,
-                        border: `1px solid ${style.border}40`,
-                      }}
-                    >
-                      {c.tier}
-                    </span>
-                  </div>
-
-                  {/* Top category */}
-                  <div
-                    className="text-sm font-medium mb-1"
-                    style={{ color: "var(--qgi-text)" }}
-                  >
-                    {c.topCategory}
-                  </div>
-
-                  {/* Precedent count */}
-                  <div
-                    className="font-data text-xs mb-3"
-                    style={{ color: "var(--qgi-text-muted)" }}
-                  >
-                    {c.precedents} historical matches
-                  </div>
-
-                  {/* Signal description */}
-                  <p
-                    className="text-xs leading-relaxed"
-                    style={{ color: "var(--qgi-text-dim)" }}
-                  >
-                    {c.signal}
-                  </p>
-                </Link>
-              );
-            })}
+        {/* Live preview — real fleet data */}
+        <section className="mx-auto max-w-6xl px-6 pb-20">
+          <div className="flex items-center gap-2 mb-5">
+            <span className="relative flex h-2 w-2" aria-hidden="true">
+              <span
+                className="absolute inline-flex h-full w-full rounded-full opacity-75 animate-ping"
+                style={{ backgroundColor: "#3FBF8F" }}
+              />
+              <span
+                className="relative inline-flex h-2 w-2 rounded-full"
+                style={{ backgroundColor: "#3FBF8F" }}
+              />
+            </span>
+            <span
+              className="text-[10px] tracking-widest uppercase"
+              style={{
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+              }}
+            >
+              Live
+            </span>
+          </div>
+          <ClosestMatches matches={matches} />
+          <div className="mt-8">
+            <Link
+              href={"/dashboard" as Route}
+              className="text-sm tracking-wide border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
+              style={{ color: "var(--qgi-text-muted)", borderColor: "var(--qgi-border)" }}
+            >
+              Open the full dashboard &rarr;
+            </Link>
           </div>
         </section>
 
-        {/* ─── How It Works ───────────────────────────────────────────── */}
+        {/* How it works */}
         <section
           id="how-it-works"
           className="border-t"
@@ -355,14 +162,17 @@ export default async function LandingPage() {
               className="text-xs tracking-widest uppercase mb-12"
               style={{ color: "var(--qgi-text-dim)" }}
             >
-              How It Works
+              How it works
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {STEPS.map((step) => (
                 <div key={step.num}>
                   <div
-                    className="font-data text-3xl font-bold mb-4"
-                    style={{ color: "var(--qgi-accent)" }}
+                    className="text-3xl font-bold mb-4"
+                    style={{
+                      color: "var(--qgi-accent)",
+                      fontFamily: "ui-monospace, monospace",
+                    }}
                   >
                     {step.num}
                   </div>
@@ -376,10 +186,24 @@ export default async function LandingPage() {
                 </div>
               ))}
             </div>
+            <p className="mt-10 text-sm" style={{ color: "var(--qgi-text-dim)" }}>
+              Want the full picture?{" "}
+              <Link
+                href={"/methodology" as Route}
+                className="border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
+                style={{
+                  color: "var(--qgi-text-muted)",
+                  borderColor: "var(--qgi-border)",
+                }}
+              >
+                Read the methodology
+              </Link>
+              .
+            </p>
           </div>
         </section>
 
-        {/* ─── Metrics Bar ────────────────────────────────────────────── */}
+        {/* Why QGI */}
         <section
           className="border-t"
           style={{
@@ -387,16 +211,6 @@ export default async function LandingPage() {
             backgroundColor: "var(--qgi-surface)",
           }}
         >
-          <div className="mx-auto max-w-6xl px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <Metric value={String(TOTAL_COUNTRIES)} label="Countries Analyzed" />
-            <Metric value={String(TOTAL_INDICATORS)} label="Structural Indicators" />
-            <Metric value={TOTAL_PATTERNS} label="Patterns Computed" />
-            <Metric value="2.2x" label="Lift@50 vs Baseline" />
-          </div>
-        </section>
-
-        {/* ─── Key Differentiators ────────────────────────────────────── */}
-        <section className="border-t" style={{ borderColor: "var(--qgi-border)" }}>
           <div className="mx-auto max-w-6xl px-6 py-24">
             <h2
               className="text-xs tracking-widest uppercase mb-12"
@@ -404,132 +218,55 @@ export default async function LandingPage() {
             >
               Why QGI
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Differentiator
-                label="Scale"
-                value={TOTAL_PATTERNS}
-                unit="patterns"
-                desc={`Computed across ${TOTAL_COUNTRIES} countries and ${TOTAL_INDICATORS} structural indicators (economic, political, governance). Every pairwise relationship, every historical window, examined.`}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <WhyCard
+                label="Evidence, not a black box"
+                body="Every score opens to the signals behind it and the real historical cases it resembles. You see the working, not a verdict."
               />
-              <Differentiator
-                label="Method"
-                value="Statistical"
-                unit="not editorial"
-                desc="Risk candidates emerge from correlation analysis and rank fusion, not from analyst opinion or curated country lists."
+              <WhyCard
+                label="History, not opinion"
+                body="Scores come from the historical record, not from analyst hunches or curated country lists. The same method runs on every country."
               />
-              <Differentiator
-                label="Foundation"
-                value="OSINT"
-                unit="open sources"
-                desc="Built on Open Source Intelligence. Reproducible, auditable, and verifiable. No proprietary black-box scores."
+              <WhyCard
+                label="180+ countries & territories"
+                body="Global coverage, refreshed every quarter. Every country is read against the full catalogue of event recipes, every release."
               />
-              <Differentiator
-                label="Approach"
-                value="Analogues"
-                unit="not forecasts"
-                desc="We ask which countries walked this economic path before, and what followed. Historical precedents grounded in decades of data."
+              <WhyCard
+                label="Resemblance, not a forecast"
+                body="We tell you what today rhymes with, honestly. Tracing a recipe is a structural analogue an analyst can weigh, not a prediction."
               />
             </div>
           </div>
         </section>
 
-        {/* ─── About / Mission ────────────────────────────────────────── */}
-        <section
-          className="border-t"
-          style={{
-            borderColor: "var(--qgi-border)",
-            backgroundColor: "var(--qgi-surface)",
-          }}
-        >
-          <div className="mx-auto max-w-6xl px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2
-                className="text-xs tracking-widest uppercase mb-6"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                About
-              </h2>
-              <p
-                className="text-xl font-medium leading-relaxed mb-6"
-                style={{ color: "var(--qgi-text)" }}
-              >
-                QGI makes geopolitical risk measurable by finding historical structural
-                precedents at scale.
-              </p>
-              <p
-                className="text-sm leading-relaxed mb-4"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                Traditional political risk analysis relies on expert judgment, regional
-                specialists, and editorial discretion. QGI takes a different approach:
-                statistical pattern matching across the full historical record of
-                open-source intelligence on country trajectories.
-              </p>
-              <p
-                className="text-sm leading-relaxed mb-6"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                When a country&rsquo;s structural indicators today resemble the trajectory
-                of another country before a known geopolitical event, that is a precedent
-                worth examining, not a prediction, but a structured historical analogue
-                that analysts can evaluate on its merits.
-              </p>
-              <p
-                className="text-sm leading-relaxed mb-8"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                Built solo, in the open, by a Cloud Data Engineer.
-              </p>
-              <Link
-                href="/methodology"
-                className="text-sm tracking-wide border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
-                style={{
-                  color: "var(--qgi-text-muted)",
-                  borderColor: "var(--qgi-border)",
-                }}
-              >
-                Read the full methodology
-              </Link>
-            </div>
-            <div className="space-y-6">
-              <PrincipleCard
-                heading="Pattern-based, not opinion-based"
-                body="Risk tier assignments emerge from computed correlations, z-score normalization, and reciprocal rank fusion. The methodology is documented, versioned, and open to scrutiny."
-              />
-              <PrincipleCard
-                heading="Analysts examine evidence"
-                body="QGI surfaces candidates for human review. Each country profile shows which precedent countries triggered the signal and which economic indicators aligned, giving analysts the underlying data, not just a score."
-              />
-              <PrincipleCard
-                heading="Continuously updated"
-                body="The pipeline ingests refreshed open-source data on a regular cadence. Risk tiers and precedent rankings refresh automatically as new data arrives."
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Primary CTA ────────────────────────────────────────────── */}
+        {/* CTA */}
         <section className="mx-auto max-w-6xl px-6 py-24 text-center">
           <h2 className="text-2xl font-semibold mb-4">
-            Start exploring geopolitical risk
+            See what the world is rhyming with
           </h2>
           <p className="mb-8 max-w-md mx-auto" style={{ color: "var(--qgi-text-muted)" }}>
-            Browse country intelligence profiles built on decades of open-source data and
-            historically verified precedents.
+            Open Dashboard for today&rsquo;s closest matches, or browse every country and
+            recipe.
           </p>
-          <Link
-            href="/countries"
-            className="inline-block px-8 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
-            style={{
-              backgroundColor: "var(--qgi-accent)",
-              color: "var(--qgi-bg)",
-            }}
-          >
-            Open Country Intelligence Browser
-          </Link>
+          <div className="flex items-center justify-center gap-4 flex-wrap">
+            <Link
+              href={"/dashboard" as Route}
+              className="inline-block px-8 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
+              style={{ backgroundColor: "var(--qgi-accent)", color: "var(--qgi-bg)" }}
+            >
+              Open Dashboard
+            </Link>
+            <Link
+              href={"/countries" as Route}
+              className="inline-block px-8 py-3 rounded text-sm tracking-wide border transition-colors hover:bg-[var(--qgi-surface-2)]"
+              style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
+            >
+              Browse countries
+            </Link>
+          </div>
         </section>
 
-        {/* ─── Newsletter ─────────────────────────────────────────────── */}
+        {/* Newsletter */}
         <section
           className="border-t"
           style={{
@@ -537,101 +274,37 @@ export default async function LandingPage() {
             backgroundColor: "var(--qgi-surface)",
           }}
         >
-          <div className="mx-auto max-w-6xl px-6 py-20 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
-            <div className="max-w-lg">
+          <div className="mx-auto max-w-6xl px-6 py-20">
+            <div className="max-w-2xl">
               <h2
                 className="text-xs tracking-widest uppercase mb-4"
                 style={{ color: "var(--qgi-text-dim)" }}
               >
-                Stay Updated
+                Stay updated
               </h2>
               <p
                 className="text-lg font-medium mb-2"
                 style={{ color: "var(--qgi-text)" }}
               >
-                Monthly intelligence digest
+                Newsletter
+                <span
+                  className="ml-2 align-middle text-[10px] tracking-widest uppercase px-2 py-0.5 rounded"
+                  style={{
+                    color: "var(--qgi-accent)",
+                    border: "1px solid var(--qgi-border)",
+                  }}
+                >
+                  Coming soon
+                </span>
               </p>
               <p
                 className="text-sm leading-relaxed"
                 style={{ color: "var(--qgi-text-muted)" }}
               >
-                Receive the QGI monthly update: new country risk tiers, methodology
-                improvements, and notable precedent matches from the latest pipeline run.
-                No marketing, no noise.
+                We are putting together a monthly digest of new country readings and
+                notable resemblances. Sign-ups will open here shortly. No marketing, no
+                noise.
               </p>
-            </div>
-            <div className="w-full md:w-auto">
-              <NewsletterForm />
-            </div>
-          </div>
-        </section>
-
-        {/* ─── Get in Touch / Request Demo ────────────────────────────── */}
-        <section
-          id="contact"
-          className="border-t"
-          style={{ borderColor: "var(--qgi-border)" }}
-        >
-          <div className="mx-auto max-w-6xl px-6 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-            <div>
-              <h2
-                className="text-xs tracking-widest uppercase mb-6"
-                style={{ color: "var(--qgi-text-dim)" }}
-              >
-                Get in Touch
-              </h2>
-              <p
-                className="text-xl font-medium leading-relaxed mb-6"
-                style={{ color: "var(--qgi-text)" }}
-              >
-                Enterprise access, custom reports, or academic licensing?
-              </p>
-              <p
-                className="text-sm leading-relaxed mb-8"
-                style={{ color: "var(--qgi-text-muted)" }}
-              >
-                QGI is actively working with political risk analysts, corporate strategy
-                teams, think tanks, and academics who want structured, evidence-grounded
-                geopolitical intelligence. Reach out to discuss access, custom country
-                reports, or institutional licensing.
-              </p>
-              <div className="flex flex-col gap-4">
-                <a
-                  href="mailto:amin@qgintelligence.com?subject=Demo%20Request"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110 w-fit"
-                  style={{
-                    backgroundColor: "var(--qgi-accent)",
-                    color: "var(--qgi-bg)",
-                  }}
-                >
-                  Request a Demo
-                </a>
-                <a
-                  href="mailto:amin@qgintelligence.com"
-                  className="text-sm transition-colors hover:text-[var(--qgi-accent)]"
-                  style={{ color: "var(--qgi-text-muted)" }}
-                >
-                  amin@qgintelligence.com
-                </a>
-              </div>
-            </div>
-            <div className="space-y-5 pt-2">
-              <UseCase
-                title="Corporate Strategy Teams"
-                body="Identify which markets exhibit structural analogues to countries that experienced supply-chain disruptions, sanctions regimes, or government transitions."
-              />
-              <UseCase
-                title="Political Risk Analysts"
-                body="Augment qualitative assessments with quantitative precedent evidence. Bring the historical record to bear on current country trajectories."
-              />
-              <UseCase
-                title="Think Tanks & Academics"
-                body="Access reproducible, open-data-backed risk signals for research. Full methodology documentation and data provenance available."
-              />
-              <UseCase
-                title="Journalists & Media"
-                body="Ground geopolitical reporting in economic data. QGI surfaces which historical episodes a current situation most closely resembles."
-              />
             </div>
           </div>
         </section>
@@ -642,95 +315,14 @@ export default async function LandingPage() {
   );
 }
 
-function Metric({ value, label }: { value: string; label: string }) {
-  return (
-    <div>
-      <div
-        className="font-data text-2xl font-bold"
-        style={{ color: "var(--qgi-accent)" }}
-      >
-        {value}
-      </div>
-      <div
-        className="text-xs mt-1 tracking-wider uppercase"
-        style={{ color: "var(--qgi-text-muted)" }}
-      >
-        {label}
-      </div>
-    </div>
-  );
-}
-
-function Differentiator({
-  label,
-  value,
-  unit,
-  desc,
-}: {
-  label: string;
-  value: string;
-  unit: string;
-  desc: string;
-}) {
+function WhyCard({ label, body }: { label: string; body: string }) {
   return (
     <div
       className="rounded-lg border p-6"
-      style={{
-        backgroundColor: "var(--qgi-surface)",
-        borderColor: "var(--qgi-border)",
-      }}
+      style={{ backgroundColor: "var(--qgi-bg)", borderColor: "var(--qgi-border)" }}
     >
-      <div
-        className="text-[10px] tracking-widest uppercase mb-3"
-        style={{ color: "var(--qgi-text-dim)" }}
-      >
+      <h3 className="text-base font-semibold mb-2" style={{ color: "var(--qgi-text)" }}>
         {label}
-      </div>
-      <div className="flex items-baseline gap-2 mb-4">
-        <span
-          className="font-data text-2xl font-bold"
-          style={{ color: "var(--qgi-accent)" }}
-        >
-          {value}
-        </span>
-        <span
-          className="text-xs tracking-wide"
-          style={{ color: "var(--qgi-text-muted)" }}
-        >
-          {unit}
-        </span>
-      </div>
-      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-        {desc}
-      </p>
-    </div>
-  );
-}
-
-function PrincipleCard({ heading, body }: { heading: string; body: string }) {
-  return (
-    <div
-      className="rounded-lg border p-5"
-      style={{
-        backgroundColor: "var(--qgi-surface-2)",
-        borderColor: "var(--qgi-border)",
-      }}
-    >
-      <h3 className="text-sm font-semibold mb-2" style={{ color: "var(--qgi-text)" }}>
-        {heading}
-      </h3>
-      <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
-        {body}
-      </p>
-    </div>
-  );
-}
-
-function UseCase({ title, body }: { title: string; body: string }) {
-  return (
-    <div className="border-l-2 pl-4 py-1" style={{ borderColor: "var(--qgi-accent)" }}>
-      <h3 className="text-sm font-semibold mb-1" style={{ color: "var(--qgi-text)" }}>
-        {title}
       </h3>
       <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text-muted)" }}>
         {body}

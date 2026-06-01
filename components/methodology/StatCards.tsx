@@ -4,6 +4,8 @@
  * Replaces the single-line stat strip with a tasteful card grid + monochrome
  * provider logos for World Bank / V-Dem / FAOSTAT. No cheese.
  */
+import Link from "next/link";
+import type { Route } from "next";
 import stats from "@/data/methodology-stats.json";
 
 function fmt(n: number): string {
@@ -20,33 +22,29 @@ function fmtDate(iso: string): string {
   });
 }
 
-const CARDS = [
-  {
-    value: fmt(stats.total_verified_events),
-    label: "Verified events",
-    sublabel: `${stats.earliest_event_year}–${stats.latest_event_year}`,
-  },
-  {
-    value: fmt(stats.verified_countries),
-    label: "Countries covered",
-    sublabel: "of 195 UN members",
-  },
-  {
-    value: stats.indicator_count.toString(),
-    label: "Indicators",
-    sublabel: "across 3 providers",
-  },
-  {
-    value: stats.category_count.toString(),
-    label: "Event categories",
-    sublabel: "3-layer taxonomy",
-  },
-  {
-    value: fmt(stats.unique_source_urls),
-    label: "Source URLs",
-    sublabel: `${fmt(stats.unique_source_domains)} unique domains`,
-  },
-];
+function MiniStat({ value, label, sub }: { value: string; label: string; sub?: string }) {
+  return (
+    <div>
+      <div
+        className="font-data text-[26px] leading-none tabular-nums tracking-tight mb-1.5"
+        style={{ color: "var(--qgi-text)" }}
+      >
+        {value}
+      </div>
+      <div
+        className="text-[10px] tracking-widest uppercase mb-1"
+        style={{ color: "var(--qgi-accent)" }}
+      >
+        {label}
+      </div>
+      {sub ? (
+        <div className="text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
+          {sub}
+        </div>
+      ) : null}
+    </div>
+  );
+}
 
 export default function StatCards() {
   const breakdown =
@@ -73,34 +71,78 @@ export default function StatCards() {
         </span>
       </div>
 
-      {/* 5 metric cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
-        {CARDS.map((c, i) => (
-          <div
-            key={i}
-            className="rounded-lg border p-4"
-            style={{
-              borderColor: "var(--qgi-border)",
-              backgroundColor: "var(--qgi-surface)",
-            }}
-          >
-            <div
-              className="font-data text-2xl tabular-nums tracking-tight mb-1"
-              style={{ color: "var(--qgi-text)" }}
-            >
-              {c.value}
-            </div>
-            <div
-              className="text-[10px] tracking-widest uppercase mb-1"
-              style={{ color: "var(--qgi-accent)" }}
-            >
-              {c.label}
-            </div>
-            <div className="text-[10px]" style={{ color: "var(--qgi-text-muted)" }}>
-              {c.sublabel}
-            </div>
+      {/* One equal-height row: events (wide, clickable) · countries · indicators (clickable).
+          Footer links sit at the bottom of each card so the row reads as one cohesive set. */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-3 items-stretch">
+        <Link
+          href={"/methodology/events" as Route}
+          className="lg:col-span-6 group rounded-lg border p-5 flex flex-col justify-between transition-colors hover:border-[var(--qgi-accent)]"
+          style={{
+            borderColor: "var(--qgi-border)",
+            backgroundColor: "var(--qgi-surface)",
+          }}
+        >
+          <div className="flex flex-wrap gap-x-10 gap-y-5">
+            <MiniStat
+              value={fmt(stats.total_verified_events)}
+              label="Verified events"
+              sub={`${stats.earliest_event_year}–${stats.latest_event_year}`}
+            />
+            <MiniStat
+              value={stats.category_count.toString()}
+              label="Event categories"
+              sub="3-layer taxonomy"
+            />
+            <MiniStat
+              value={fmt(stats.unique_source_urls)}
+              label="Source URLs"
+              sub={`${fmt(stats.unique_source_domains)} unique domains`}
+            />
           </div>
-        ))}
+          <span
+            className="mt-6 text-[11px] tracking-wider uppercase transition-colors group-hover:text-[var(--qgi-accent)]"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            Browse all events &rarr;
+          </span>
+        </Link>
+
+        <div
+          className="lg:col-span-3 rounded-lg border p-5 flex flex-col justify-between"
+          style={{
+            borderColor: "var(--qgi-border)",
+            backgroundColor: "var(--qgi-surface)",
+          }}
+        >
+          <MiniStat value="180+" label="Countries &amp; territories" />
+          <span
+            className="mt-6 text-[11px] tracking-wider uppercase"
+            style={{ color: "var(--qgi-text-dim)" }}
+          >
+            Scored every release
+          </span>
+        </div>
+
+        <Link
+          href={"/methodology/indicators" as Route}
+          className="lg:col-span-3 group rounded-lg border p-5 flex flex-col justify-between transition-colors hover:border-[var(--qgi-accent)]"
+          style={{
+            borderColor: "var(--qgi-border)",
+            backgroundColor: "var(--qgi-surface)",
+          }}
+        >
+          <MiniStat
+            value={stats.indicator_count.toString()}
+            label="Indicators"
+            sub="across 3 providers"
+          />
+          <span
+            className="mt-6 text-[11px] tracking-wider uppercase transition-colors group-hover:text-[var(--qgi-accent)]"
+            style={{ color: "var(--qgi-text-muted)" }}
+          >
+            Browse all indicators &rarr;
+          </span>
+        </Link>
       </div>
 
       {/* Provider strip with monochrome logos */}
@@ -120,13 +162,12 @@ export default function StatCards() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <ProviderCell
             name="World Bank"
-            count={breakdown["World Bank"] || 60}
+            count={breakdown["World Bank"] || 69}
             logo={<WBLogo />}
           />
           <ProviderCell
             name="V-Dem"
-            version="v16 (2025)"
-            count={breakdown["V-Dem v16"] || 39}
+            count={breakdown["V-Dem"] || 35}
             logo={<VDemLogo />}
           />
           <ProviderCell

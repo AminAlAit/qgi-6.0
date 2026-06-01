@@ -414,7 +414,7 @@ export function AnalogCard({
                 letterSpacing: "0.3px",
               }}
             >
-              Narrative coming soon — research workstream in flight
+              Narrative coming soon: research workstream in flight
             </span>
           </div>
         ) : (

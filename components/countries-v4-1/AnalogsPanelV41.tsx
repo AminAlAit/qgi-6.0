@@ -41,7 +41,7 @@ export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
             lineHeight: 1.55,
           }}
         >
-          Historical analogues for {country.name} are in development. The current vintage
+          Historical analogues for {country.name} are in development. The current release
           covers 60 countries; coverage expands with each refresh.
         </div>
       ) : (

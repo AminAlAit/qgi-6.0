@@ -143,6 +143,22 @@ const nextConfig: NextConfig = {
    */
   async redirects() {
     return [
+      // 2026-05-31 (founder): /landing-v2 promoted to the homepage "/".
+      // Preserve any links to the old staging URL.
+      {
+        source: "/landing-v2",
+        destination: "/",
+        permanent: true,
+      },
+      // 2026-05-31 (founder): per-pattern detail is mock pending the backend
+      // SCDI batch. Redirect /patterns/<slug> to the (real) /patterns search
+      // so no mock detail is reachable. Single-segment only, so the retired
+      // /patterns/pair/<slug> route is untouched. Remove when real SCDIs ship.
+      {
+        source: "/patterns/:slug",
+        destination: "/patterns",
+        permanent: false,
+      },
       // 2026-05-30 — /compound-risk taken down. Page deleted; bookmarks
       // redirect to /risk-board (the most-overlapping live surface).
       // Components + data layer stay in tree (components/compound-risk/,

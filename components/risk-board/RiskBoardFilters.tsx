@@ -26,7 +26,7 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 // 2026-05-29 — touch comment to force Turbopack to re-detect this module's
 // dependency on the updated FlagImg + country-flags lib (cache invalidation
 // guard for the 16-flag-missing fix).
-import { flagFor } from "@/lib/te-mock/country-flags";
+import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
 import {
   getRecipeRow,
   type BoardCell,
@@ -610,36 +610,9 @@ function RecipeGridRow({
         })}
       </div>
 
-      {/* Round-2 (2026-05-30): countries_not_scored_iso now baked in the corpus.
-          Show a quiet row footer "X countries not scored — view list" with a
-          tooltip listing the ISOs. Only visible for walked recipes with coverage
-          gaps; hidden for queued recipes. */}
-      {!isQueued &&
-        row.countries_not_scored_iso !== null &&
-        row.countries_not_scored_iso !== undefined &&
-        row.countries_not_scored_iso.length > 0 && (
-          <div
-            style={{
-              padding: "4px 14px 5px 14px",
-              borderTop: "1px solid var(--qgi-border)",
-              fontSize: "10.5px",
-              color: "var(--qgi-text-dim)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.3px",
-              background: "var(--qgi-bg)",
-              display: "flex",
-              gap: "6px",
-              alignItems: "center",
-            }}
-          >
-            <span
-              title={`Not scored (${row.countries_not_scored_iso.length}): ${row.countries_not_scored_iso.slice(0, 30).join(", ")}${row.countries_not_scored_iso.length > 30 ? ` … +${row.countries_not_scored_iso.length - 30} more` : ""}`}
-              style={{ cursor: "help" }}
-            >
-              {row.countries_not_scored_iso.length} countries not scored — view list
-            </span>
-          </div>
-        )}
+      {/* 2026-05-31 (founder): the per-row "N countries not scored — view list"
+          footer caption was removed. It read as coverage self-flagellation
+          between every recipe row; the grid stands on its scored cells. */}
     </div>
   );
 }
@@ -797,9 +770,18 @@ function HeatCell({
   const confidenceGlowShadow = confidenceGlow("#FFFFFF", cT);
   const pct = Math.round(score);
 
+  // A scored cell is a (country x recipe) intersection — link to the match
+  // page ("how this country is tracing this recipe"). Fall back to the recipe
+  // page when the country name has no ISO mapping.
+  const cellIso2 = iso2For(cell.country);
+  const cellHref =
+    cellIso2 && /^[a-z]{2}$/.test(cellIso2)
+      ? `/recipes/${recipeId}/countries/${cellIso2}`
+      : `/recipes/${recipeId}`;
+
   return (
     <Link
-      href={`/recipes/${recipeId}` as Route}
+      href={cellHref as Route}
       onMouseEnter={onHoverCountry ? () => onHoverCountry(cell.country) : undefined}
       onMouseLeave={onHoverCountry ? () => onHoverCountry(null) : undefined}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}

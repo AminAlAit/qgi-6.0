@@ -164,7 +164,7 @@ export function PrecedentsTimelinePanel({
             fontSize: "13px",
           }}
         >
-          No recent curation actions for this recipe at the current vintage.
+          No recent curation actions for this recipe at the current release.
         </div>
       </section>
     );
