@@ -10,9 +10,8 @@ import { useEffect, useState } from "react";
  * surface: Reports, Methodology, About, Blog, Contact, Open Dashboard.
  *
  * - currentPage highlights the active link in --qgi-accent.
- * - Contact always points to /#contact (landing's contact section anchor),
- *   so the destination is consistent regardless of which page the user
- *   clicks from.
+ * - Contact points to /contact (the fill-in form), consistent from every
+ *   page. (Previously a /#contact anchor on the old landing.)
  * - Mobile (<md): Reports + Blog + Contact collapse into a hamburger menu;
  *   Methodology + About + Open Dashboard remain visible (same pattern as
  *   the prior LandingHeaderNav).
@@ -78,7 +77,7 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
         About
       </Link>
       <Link
-        href={"/#contact" as Route}
+        href={"/contact" as Route}
         className={`hidden md:inline-flex ${baseClass}`}
         style={{ color: "var(--qgi-text-muted)" }}
       >
@@ -173,7 +172,7 @@ export function PublicNav({ currentPage = null }: PublicNavProps) {
             Blog
           </Link>
           <Link
-            href={"/#contact" as Route}
+            href={"/contact" as Route}
             onClick={closeOnNav}
             className="block px-4 py-3 text-sm tracking-wider uppercase transition-colors hover:bg-[var(--qgi-surface-2)]"
             style={{ color: "var(--qgi-text-muted)" }}

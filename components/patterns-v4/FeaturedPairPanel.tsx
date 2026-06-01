@@ -125,7 +125,7 @@ export function FeaturedPairPanel({ pair }: FeaturedPairPanelProps) {
           fontWeight: 600,
         }}
       >
-        FEATURED PAIR OF THE VINTAGE
+        FEATURED PAIR OF THE RELEASE
       </div>
 
       {/* Pair identity */}

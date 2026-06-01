@@ -16,22 +16,23 @@ describe("Sidebar", () => {
     expect(screen.getByText("Intelligence")).toBeInTheDocument();
   });
 
-  it("renders the 8 canonical V4.1 entries", () => {
+  it("renders the 7 canonical V4.1 entries", () => {
     render(<Sidebar />);
-    // 2026-05-29 V4.1 round-3 amendment: Recipe Tracker route deleted; the
-    // catalog ledger view is now folded into /recipes via the per-card
-    // Confidence badge. The blog post at /blog/recipe-tracker is unrelated
-    // and unaffected.
-    expect(screen.getByText("Dashboard")).toBeInTheDocument();
+    // 2026-05-29: Recipe Tracker route deleted (folded into /recipes).
+    // 2026-05-30: Compound Risk route taken down (308 → /risk-board).
+    // Will rejuvenate as compound-negative-event-density per Stats trio.
+    // Top slot label is "Briefing" (route still /dashboard); the
+    // "Dashboard" copy was renamed to "Briefing" — see NAV_STRUCTURE.
+    expect(screen.getByText("Briefing")).toBeInTheDocument();
     expect(screen.getByText("Recipes")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Risk Board")).toBeInTheDocument();
-    expect(screen.getByText("Compound Risk")).toBeInTheDocument();
     expect(screen.getByText("Compare")).toBeInTheDocument();
-    expect(screen.getByText("Nearest Analog")).toBeInTheDocument();
+    expect(screen.getByText("Analogues")).toBeInTheDocument();
     expect(screen.getByText("Patterns")).toBeInTheDocument();
-    // "Recipe Tracker" sidebar entry removed 2026-05-29.
+    expect(screen.queryByText("Nearest Analog")).not.toBeInTheDocument();
     expect(screen.queryByText("Recipe Tracker")).not.toBeInTheDocument();
+    expect(screen.queryByText("Compound Risk")).not.toBeInTheDocument();
   });
 
   it("does NOT render any legacy or removed entries", () => {

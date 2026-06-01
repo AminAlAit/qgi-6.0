@@ -77,7 +77,7 @@ export function MethodologyBox() {
         </li>
         <li style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.6 }}>
           <strong style={{ color: "var(--qgi-text)" }}>
-            Analog outcomes are completed history about the analog country.
+            Analogue outcomes are completed history about the analogue country.
           </strong>{" "}
           &ldquo;In Tunisia, 2008, …&rdquo; describes what happened there. It is never
           joined to the current country by a predictive verb and does not imply the
@@ -111,7 +111,7 @@ export function MethodologyBox() {
 
       {/* V4.1 §2: vintage stamp removed — the global header carries it. */}
       <Row icon={HistoryIcon} title="Updates">
-        The analog corpus is updated on each data vintage. Rankings may shift as new
+        The analogue corpus is updated on each data release. Rankings may shift as new
         events are catalogued.
       </Row>
     </aside>

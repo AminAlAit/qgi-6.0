@@ -29,10 +29,12 @@ import { getRecipe, type TrackerRecipe, type RecipeStatus } from "@/lib/te-mock/
 import {
   loadAllScores,
   loadAnalogs,
+  loadCardV3,
   loadCountryIndex,
-  SAMPLE_10_RECIPE_IDS,
+  FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
+import { getIndicatorLabel } from "@/lib/indicator-labels";
 
 export interface CountryTopRecipe {
   recipe_id: string;
@@ -64,6 +66,8 @@ export interface CountryDriverAttribution {
   signal_share_pct: number;
   /** Which recipe this attribution belongs to — drivers_attribution is per-recipe. */
   recipe_id: string;
+  /** Round-2: +1 = risk-increasing, -1 = risk-decreasing. null if not available. */
+  direction_sign?: number | null;
 }
 
 export interface CountryDriverMovement {
@@ -75,6 +79,12 @@ export interface CountryDriverMovement {
   trajectory: number[];
   /** Observed standardized change over the visible window. */
   z_score_change: number;
+  /** Round-2: raw indicator value at eval_year. null if unavailable. */
+  latest_raw_value?: number | null;
+  /** Round-2: raw indicator value at the prior year. null if unavailable. */
+  prior_raw_value?: number | null;
+  /** Round-2: unit hint string (e.g. "%", "z-score (V-Dem)"). null if unavailable. */
+  unit?: string | null;
 }
 
 /** @deprecated Use CountryDriverMovement. Kept as an alias for prior-callsite compat. */
@@ -86,6 +96,23 @@ export interface CountryMomentum {
   l1_color: string;
   /** 12 quarterly rank-position values in the 0..100 score scale. */
   rank_history: number[];
+  /**
+   * Round-2: multi-year score history from momentum_scores_by_year.
+   * Keys are year strings ("2023".."2026"), values are scores 0..100.
+   * Populated from the bake corpus; empty object = first vintage only.
+   */
+  year_scores: Record<string, number>;
+  /** Round-2: momentum label (rising/falling/flat/suppressed). null if unavailable. */
+  momentum_label: string | null;
+}
+
+export interface SensitivityItem {
+  indicator_code: string;
+  indicator_name: string;
+  marginal_points_per_unit: number;
+  current_cosine: number;
+  headroom: number;
+  headroom_points: number;
 }
 
 export interface CountryAnalog {
@@ -129,6 +156,17 @@ export interface CountryV4 {
   analogs: CountryAnalog[];
   lit_families: CountryLitFamily[];
   vintage: string;
+  /**
+   * Round-2: per-indicator sensitivity — "what would move the score".
+   * Populated from sensitivity_per_indicator[] in the scores bake.
+   * Empty array = not yet scored on any TE recipe.
+   */
+  sensitivity: SensitivityItem[];
+  /**
+   * Round-2: 12-pt composite indicator trajectory from the bake.
+   * Mean of selected indicators z-scores. Empty array = not available.
+   */
+  indicator_trajectory_composite_12q: number[];
 }
 
 const VINTAGE = (recipeTracker as { generated: string }).generated;
@@ -2368,6 +2406,7 @@ const SEEDS: Seed[] = [
 
 // ── Trajectory + analog hydration ────────────────────────────────────────
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function buildTrajectory(
   shape: "rising" | "falling" | "flat",
   from: number,
@@ -2406,28 +2445,81 @@ function buildTrajectory(
   return out;
 }
 
-function buildRankHistory(iso: string, recipeId: string, currentScore: number): number[] {
-  // Same hash-seeded RNG as buildTrajectory, scoped to (iso, recipe).
-  // 12-quarter walk that lands on `currentScore` at q=11.
-  let h = 5381;
-  const s = `${iso}:rank:${recipeId}`;
-  for (let i = 0; i < s.length; i++) {
-    h = ((h << 5) + h) ^ s.charCodeAt(i);
-  }
-  const rng = () => {
-    h = Math.imul(48271, h) | 0;
-    return ((h >>> 0) / 0xffffffff - 0.5) * 8;
-  };
-  // Start near 50 (median) and drift toward currentScore with noise.
-  const start = 50 + (rng() / 8) * 20;
-  const out: number[] = [];
-  for (let q = 0; q < 12; q++) {
-    const t = q / 11;
-    const base = start + (currentScore - start) * (t * t * (3 - 2 * t));
-    out.push(Math.max(0, Math.min(100, base + rng())));
-  }
-  out[11] = Math.max(0, Math.min(100, currentScore));
-  return out;
+/**
+ * Build 4-year score history from momentum_scores_by_year.
+ * Returns sorted year array (ascending) of scores as number[].
+ * Returns [] when no momentum data is present (falls back to empty state
+ * in RankHistoryPanel).
+ */
+function buildYearScores(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): Record<string, number> {
+  const sf = allScores[recipeId];
+  if (!sf) return {};
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry?.momentum_scores_by_year) return {};
+  return entry.momentum_scores_by_year;
+}
+
+/**
+ * Build momentum_label for a country × recipe.
+ */
+function buildMomentumLabel(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): string | null {
+  const sf = allScores[recipeId];
+  if (!sf) return null;
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  return entry?.momentum_label ?? null;
+}
+
+/**
+ * Build sensitivity items for a country × recipe.
+ * Returns [] when sensitivity_per_indicator is absent or empty.
+ */
+function buildSensitivity(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): SensitivityItem[] {
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry?.sensitivity_per_indicator) return [];
+  return entry.sensitivity_per_indicator.map((s) => ({
+    indicator_code: s.indicator,
+    indicator_name: getIndicatorLabel(s.indicator),
+    marginal_points_per_unit: s.marginal_points_per_unit,
+    current_cosine: s.current_cosine,
+    headroom: s.headroom,
+    headroom_points: s.headroom_points,
+  }));
+}
+
+/**
+ * Build indicator_trajectory_composite_12q for a country × recipe.
+ * Returns [] when field is absent.
+ */
+function buildCompositeTrajectory(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): number[] {
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  const raw = entry?.indicator_trajectory_composite_12q;
+  if (!Array.isArray(raw) || raw.length === 0) return [];
+  // Normalise from z-score range ±3 to 0..100 display scale.
+  return raw.map((v) => Math.max(0, Math.min(100, ((v + 3) / 6) * 100)));
 }
 
 // Plausible mock analogs by country profile. Used as fallbacks when
@@ -2437,6 +2529,7 @@ type AnalogTuple = [string, number, number, string, string];
 
 // Per-family (L1) analog pools — keyed by L1 id (A..H).
 // Self-exclusion is applied at call time.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ANALOG_POOLS_BY_FAMILY: Record<string, AnalogTuple[]> = {
   // B — Conflict & Violence
   B: [
@@ -2560,6 +2653,7 @@ const ANALOG_POOLS_BY_FAMILY: Record<string, AnalogTuple[]> = {
   ],
 };
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ANALOG_FALLBACKS_STABLE: AnalogTuple[] = [
   [
     "Indonesia",
@@ -2658,7 +2752,11 @@ function compoundScore(litRecipes: Array<[string, number]>): number {
 }
 
 // Hydrate a seed into a full CountryV4 entry.
-function hydrate(seed: Seed): CountryV4 {
+// allScores is passed in (loaded once by buildCountriesV4) for SHAP/movement reads.
+function hydrate(
+  seed: Seed,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile> = {}
+): CountryV4 {
   const topRecipesAll: CountryTopRecipe[] = [];
   for (const [recipeId, score] of seed.recipesLit) {
     const meta: TrackerRecipe | undefined = getRecipe(recipeId);
@@ -2695,38 +2793,53 @@ function hydrate(seed: Seed): CountryV4 {
     a.l1_id.localeCompare(b.l1_id)
   );
 
-  // Movement: same shape as the prior `drivers` field, with `direction`
-  // and `z_score_change` lifted from the seed shape signal.
-  const drivers_movement: CountryDriverMovement[] = seed.drivers.map((d) => {
-    const trajectory = buildTrajectory(d.shape, d.from, d.to, seed.iso, d.code);
-    const direction: CountryDriverMovement["direction"] =
-      d.shape === "rising" ? "rising" : d.shape === "falling" ? "falling" : "flat";
+  // Attribution (SHAP): read from bake scores for the country's top-lit TE recipe.
+  // Falls back to [] (honest empty state) when the country has no scored TE entry.
+  // If the top recipe is not in fleet-run-1 (i.e. a seed-only recipe), cascade down
+  // to the first fleet-run-1 recipe that has SHAP data for this country.
+  const topRecipeTEId = topRecipesAll.find((r) =>
+    FLEET_RUN_1_RECIPE_IDS.includes(r.recipe_id)
+  )?.recipe_id;
+  const drivers_attribution: CountryDriverAttribution[] = topRecipeTEId
+    ? buildAttribution(seed.name, topRecipeTEId, allScores)
+    : [];
+
+  // Movement: read real indicator_movement[] from the bake scores for the same
+  // top-lit TE recipe. Falls back to [] → WhatsMovingPanel honest empty state.
+  // For seeds that have no scored TE recipe, we emit [] (not synthetic trajectories).
+  const drivers_movement: CountryDriverMovement[] = topRecipeTEId
+    ? buildMovementFromScores(seed.name, topRecipeTEId, allScores)
+    : [];
+
+  // Momentum: populate year_scores from momentum_scores_by_year (round-2).
+  // rank_history remains empty at vintage-1 — the cross-vintage rollup file
+  // (country-rank-history.json) now provides that data via loadRankHistory().
+  const momentum: CountryMomentum[] = topRecipesAll.slice(0, 4).map((r) => {
+    const yearScores = FLEET_RUN_1_RECIPE_IDS.includes(r.recipe_id)
+      ? buildYearScores(seed.name, r.recipe_id, allScores)
+      : {};
+    const momentumLabel = FLEET_RUN_1_RECIPE_IDS.includes(r.recipe_id)
+      ? buildMomentumLabel(seed.name, r.recipe_id, allScores)
+      : null;
     return {
-      indicator_code: d.code,
-      indicator_name: d.name,
-      provider: d.provider,
-      direction,
-      trajectory,
-      z_score_change: Number((d.to - d.from).toFixed(1)),
+      recipe_id: r.recipe_id,
+      label: r.label,
+      l1_color: r.l1_color,
+      rank_history: [],
+      year_scores: yearScores,
+      momentum_label: momentumLabel,
     };
   });
 
-  // Attribution: SHAP-style signal share for the country's TOP-lit recipe.
-  // Deterministic decay so different countries get visually distinct
-  // distributions while still summing to ~100. R&D reply §Q4 mandates the
-  // distinction from movement; both are surfaced separately.
-  const topRecipe = topRecipesAll[0];
-  const drivers_attribution: CountryDriverAttribution[] = topRecipe
-    ? buildAttribution(seed, topRecipe.recipe_id)
+  // Round-2: sensitivity items from the top-lit TE recipe.
+  const sensitivity: SensitivityItem[] = topRecipeTEId
+    ? buildSensitivity(seed.name, topRecipeTEId, allScores)
     : [];
 
-  // Momentum: top-4 lit recipes get rank-history sparklines.
-  const momentum: CountryMomentum[] = topRecipesAll.slice(0, 4).map((r) => ({
-    recipe_id: r.recipe_id,
-    label: r.label,
-    l1_color: r.l1_color,
-    rank_history: buildRankHistory(seed.iso, r.recipe_id, r.score),
-  }));
+  // Round-2: composite indicator trajectory from the top-lit TE recipe.
+  const indicator_trajectory_composite_12q: number[] = topRecipeTEId
+    ? buildCompositeTrajectory(seed.name, topRecipeTEId, allScores)
+    : [];
 
   return {
     iso: seed.iso,
@@ -2745,55 +2858,173 @@ function hydrate(seed: Seed): CountryV4 {
     analogs: analogsFor(seed.name),
     lit_families: litFamilies,
     vintage: VINTAGE,
+    sensitivity,
+    indicator_trajectory_composite_12q,
   };
 }
 
 /**
- * SHAP-style attribution for a country × top-lit recipe.
+ * Infer a short provider label from a raw indicator code.
  *
- * The pipeline (per R&D reply §Q4) emits per-recipe signal_share_pct for
- * the 4 indicators that define the recipe's canonical shape. We
- * synthesize a plausible distribution here using:
- *   1. The seed's existing `drivers` array (first 4 indicators).
- *   2. A deterministic decay (rank 1 = ~38%, rank 2 = ~27%, rank 3 = ~20%,
- *      rank 4 = ~15%), normalized to sum to 100.
- *   3. Per-country jitter from a small ISO hash so different countries
- *      don't all look identical.
+ *   - V-Dem codes start with "v2" → "V-Dem"
+ *   - WGI codes end with ".EST" → "World Bank WGI"
+ *   - Everything else → "World Bank"
  *
- * Honesty note: SHAP shares are PER-RECIPE — a country's attribution for
- * its #1 lit recipe is different from its #2. The frontend renders only
- * the top-lit recipe's attribution in §3A (the "why this country scores
- * high" panel). The pipeline could emit attribution for additional
- * recipes; we ship only the top-lit one for v1 mockup scope.
+ * Round-2 (2026-05-30): indicator_movement[] now carries an explicit
+ * `provider` field. This heuristic is retained only for shap_attribution[]
+ * which does not carry provider (pending score_countries.py upgrade #974).
  */
-function buildAttribution(seed: Seed, recipeId: string): CountryDriverAttribution[] {
-  const indicators = seed.drivers.slice(0, 4);
-  if (indicators.length === 0) return [];
+function inferProvider(code: string | null | undefined): string {
+  // 2026-05-30: defensive — same hardening as resolveIndicatorLabel.
+  // Fleet-run-1 shap_attribution[] occasionally has undefined codes;
+  // crashing here would 500 every page that loads countries-v4-data.ts.
+  if (!code) return "Unknown";
+  const base = code.split("__")[0]; // strip any transform suffix
+  if (base.startsWith("v2")) return "V-Dem";
+  if (base.endsWith(".EST")) return "World Bank WGI";
+  return "World Bank";
+}
 
-  // Deterministic per-country jitter — small hash of the ISO modulo a small range.
-  const seedHash = seed.iso
-    .split("")
-    .reduce((acc, ch) => (acc * 31 + ch.charCodeAt(0)) % 1000, 7);
-  const jitter = (idx: number) => ((seedHash + idx * 73) % 11) - 5; // ±5
+/**
+ * Map a bake provider code to a display label.
+ * Round-2: scores file emits "VDEM", "WB" etc. — normalise to display labels.
+ */
+function resolveProvider(bakeProvider: string | null | undefined, code: string): string {
+  if (!bakeProvider) return inferProvider(code);
+  switch (bakeProvider.toUpperCase()) {
+    case "VDEM":
+      return "V-Dem";
+    case "WB":
+      return "World Bank";
+    case "WGI":
+      return "World Bank WGI";
+    default:
+      return bakeProvider;
+  }
+}
 
-  // Decay weights for ranks 1..4. Sum = 100.
-  const baseWeights = [38, 27, 20, 15];
-  const raw = indicators.map((_, i) => baseWeights[i] + jitter(i));
-  const total = raw.reduce((a, b) => a + b, 0);
-  const normalized = raw.map((w) => Math.round((w / total) * 1000) / 10);
-  // Adjust the largest entry so the sum is exactly 100.0 (rounding drift).
-  const drift = 100 - normalized.reduce((a, b) => a + b, 0);
-  if (drift !== 0) {
-    normalized[0] = Number((normalized[0] + drift).toFixed(1));
+/**
+ * Real SHAP attribution for a country × recipe.
+ *
+ * Reads from the baked scores file (`scores/{recipeId}.scores.json`) for the
+ * country name, extracts the `shap_attribution[]` array, and normalises into
+ * CountryDriverAttribution[].
+ *
+ * Round-2: also reads `card.shap_direction_signs` to populate direction_sign
+ * per indicator (used by WhyScoresPanel for +/- arrows).
+ *
+ * Indicator names that are null in the bake are backfilled via
+ * `getIndicatorLabel()` (lib/indicator-labels.ts).
+ *
+ * Returns [] when:
+ *   - the recipe ID is not in fleet-run-1;
+ *   - the country is not found in that recipe's scores;
+ *   - the shap_attribution array is empty.
+ * In these cases WhyScoresPanel renders "Driver attribution available once
+ * the country is scored on at least one recipe."
+ */
+function buildAttribution(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): CountryDriverAttribution[] {
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry || !entry.shap_attribution || entry.shap_attribution.length === 0) return [];
+
+  // Round-2: load shap_direction_signs from the card if available.
+  let directionSigns: Record<string, number> = {};
+  try {
+    const card = loadCardV3(recipeId);
+    directionSigns = card.shap_direction_signs ?? {};
+  } catch {
+    // Card unavailable or no direction signs — direction_sign stays null.
   }
 
-  return indicators.map((d, i) => ({
-    indicator_code: d.code,
-    indicator_name: d.name,
-    provider: d.provider,
-    signal_share_pct: normalized[i],
-    recipe_id: recipeId,
-  }));
+  // NOTE: the contract type names these `code`/`name`, but the real fleet-run-1
+  // JSON uses `indicator_code`/`indicator_name`/`provider`. Read the real
+  // fields (falling back to the contract names) so we don't emit
+  // "(indicator code missing)" placeholders.
+  return entry.shap_attribution.map((s) => {
+    const code = (s as { indicator_code?: string }).indicator_code ?? s.code ?? "";
+    const name =
+      (s as { indicator_name?: string | null }).indicator_name ??
+      s.name ??
+      getIndicatorLabel(code);
+    const provider = resolveProvider((s as { provider?: string | null }).provider, code);
+    return {
+      indicator_code: code,
+      indicator_name: name,
+      provider,
+      signal_share_pct: s.signal_share_pct,
+      recipe_id: recipeId,
+      direction_sign: directionSigns[code] ?? null,
+    };
+  });
+}
+
+/**
+ * Real indicator movement for a country × recipe.
+ *
+ * Reads `indicator_movement[]` from the baked scores file and maps into
+ * CountryDriverMovement[]. Trajectory values are z-scores (±3 range);
+ * they are normalised to a 0–100 display scale for the MiniSparkline which
+ * defaults to [0, 100]:
+ *   display = clamp((z + 3) / 6 * 100, 0, 100)
+ *
+ * Direction is derived from z_score_change:
+ *   > +0.3 → "rising", < -0.3 → "falling", otherwise "flat".
+ *
+ * Returns [] when the country has no scored entry for the recipe, or when
+ * indicator_movement is empty. WhatsMovingPanel renders honest empty state.
+ */
+function buildMovementFromScores(
+  countryName: string,
+  recipeId: string,
+  allScores: Record<string, import("@/lib/te-data-contract/scores").RecipeScoresFile>
+): CountryDriverMovement[] {
+  const sf = allScores[recipeId];
+  if (!sf) return [];
+
+  const nameLower = countryName.toLowerCase();
+  const entry = sf.scores.find((e) => e.name.toLowerCase() === nameLower);
+  if (!entry || !entry.indicator_movement || entry.indicator_movement.length === 0)
+    return [];
+
+  return entry.indicator_movement.map((m) => {
+    // Real fleet-run-1 JSON uses `indicator_code`/`indicator_name` (the
+    // contract type names them `code`/`name`); read the real fields first so
+    // we don't emit "(indicator code missing)".
+    const code = (m as { indicator_code?: string }).indicator_code ?? m.code ?? "";
+    const name =
+      (m as { indicator_name?: string | null }).indicator_name ??
+      m.name ??
+      getIndicatorLabel(code);
+    const z = m.z_score_change;
+    const direction: CountryDriverMovement["direction"] =
+      z > 0.3 ? "rising" : z < -0.3 ? "falling" : "flat";
+    // Normalise z-trajectory from ±3 range to 0–100 display scale.
+    const trajectory = m.trajectory_12q.map((v) =>
+      Math.max(0, Math.min(100, ((v + 3) / 6) * 100))
+    );
+    // Round-2: use explicit provider from bake; fall back to heuristic.
+    const provider = resolveProvider(m.provider, code);
+    return {
+      indicator_code: code,
+      indicator_name: name,
+      provider,
+      direction,
+      trajectory,
+      z_score_change: Number(z.toFixed(2)),
+      // Round-2: raw values and unit from bake.
+      latest_raw_value: m.latest_raw_value ?? null,
+      prior_raw_value: m.prior_raw_value ?? null,
+      unit: m.unit ?? null,
+    };
+  });
 }
 
 // ─── TE sample-10 scores overlay ─────────────────────────────────────────────
@@ -2824,9 +3055,14 @@ function buildCountriesV4(): CountryV4[] {
       l1_color: string;
     }[]
   >();
+  // allScores loaded once, passed to every hydrate() call for SHAP/movement reads.
+  let allScores: Record<
+    string,
+    import("@/lib/te-data-contract/scores").RecipeScoresFile
+  > = {};
   try {
-    const allScores = loadAllScores();
-    for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+    allScores = loadAllScores();
+    for (const recipeId of FLEET_RUN_1_RECIPE_IDS) {
       const sf = allScores[recipeId];
       if (!sf) continue;
       const byName = new Map<string, number>();
@@ -2859,14 +3095,14 @@ function buildCountriesV4(): CountryV4[] {
     // For each (recipeId, seedScore) pair, check if TE has a real score.
     const updatedRecipesLit: Array<[string, number]> = seed.recipesLit.map(
       ([rid, seedScore]) => {
-        if (!SAMPLE_10_RECIPE_IDS.includes(rid)) return [rid, seedScore];
+        if (!FLEET_RUN_1_RECIPE_IDS.includes(rid)) return [rid, seedScore];
         const byName = teScoreMap.get(rid);
         if (!byName) return [rid, seedScore];
         const real = byName.get(seed.name.toLowerCase());
         return [rid, real !== undefined ? real : seedScore];
       }
     );
-    return hydrate({ ...seed, recipesLit: updatedRecipesLit });
+    return hydrate({ ...seed, recipesLit: updatedRecipesLit }, allScores);
   });
 
   // Append TE-only countries: countries that appear in TE scores (top_recipes
@@ -2879,9 +3115,11 @@ function buildCountriesV4(): CountryV4[] {
     const ciVintage = ci.vintage ?? "2026-05-28";
     for (const c of ci.countries) {
       const iso2 = NAME_TO_ISO2.get(c.name.toLowerCase()) ?? "";
-      // Attempt a 3-letter ISO: country-index uses null iso for most entries.
-      // Build a pseudo-3-letter from iso2 until real iso3 ships per-country.
-      const iso3 = iso2 ? iso2.toUpperCase() + "_" : c.name.slice(0, 3).toUpperCase();
+      // country-index ships null iso for most entries. Use the 2-letter ISO as
+      // the route/display identifier (no trailing "_" padding) until real iso3
+      // ships per-country. 2026-05-31 (founder): the "_" surfaced as "SS_" /
+      // "/countries/ss_" in the UI; dropped.
+      const iso3 = iso2 ? iso2.toUpperCase() : c.name.slice(0, 3).toUpperCase();
       // Skip if we already have a seed for this country.
       if (
         seedIsos.has(iso3) ||
@@ -2898,16 +3136,19 @@ function buildCountriesV4(): CountryV4[] {
       if (recipesLit.length === 0) continue;
 
       const flag = iso2 ? flagFromIso2(iso2) : "";
-      const entry = hydrate({
-        iso: iso3,
-        name: c.name,
-        region: c.region ?? "Unknown",
-        flag,
-        population: 0,
-        recipesLit,
-        drivers: [],
-        analogs: [],
-      });
+      const entry = hydrate(
+        {
+          iso: iso3,
+          name: c.name,
+          region: c.region ?? "Unknown",
+          flag,
+          population: 0,
+          recipesLit,
+          drivers: [],
+          analogs: [],
+        },
+        allScores
+      );
       ci_extra.push({ ...entry, vintage: ciVintage });
     }
   } catch {

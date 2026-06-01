@@ -72,10 +72,10 @@ export function RecipeCard({
   // V4.1 §2: per-card vintage line is dropped. The single session-level
   // vintage stamp lives in the global header. Legacy strategy keeps it.
   const legacyVintage = isQueued
-    ? "Vintage: awaiting first walk"
+    ? "Release: awaiting first walk"
     : isLegacy
-      ? "Vintage: legacy (pre-TE)"
-      : "Vintage logged in header";
+      ? "Release: legacy (pre-TE)"
+      : "Release logged in header";
 
   // V4.1 follow-up 2026-05-29: "Coming soon" recipes are not yet shipped —
   // they should not be clickable. We render the same <article> chrome but
@@ -280,7 +280,7 @@ export function RecipeCard({
                     alignItems: "flex-end",
                     lineHeight: 1,
                   }}
-                  title={`${Math.round(auc * 100)}% confidence — how closely this country-trajectory has matched the recipe's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
+                  title={`${Math.round(auc * 100)}% confidence: how closely this country-trajectory has matched the recipe's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
                 >
                   <div
                     style={{

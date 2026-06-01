@@ -11,7 +11,7 @@
  * methodology distinction (separation vs. probability) is preserved; the
  * underlying R&D facts stay in the tooltips for technical readers.
  */
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { TooltipChip } from "./TooltipChip";
 
 type SectionPending = "discrimination" | "probability" | null;
@@ -26,6 +26,9 @@ interface Props {
   dataTour?: string;
   headerSlot?: ReactNode;
   caption?: string;
+  /** Optional style overrides merged onto the panel <section> (e.g.
+   *  `gridColumn: "span 2"` to make a panel span two grid columns). */
+  style?: CSSProperties;
   children?: ReactNode;
 }
 
@@ -54,6 +57,7 @@ export function PanelBase({
   dataTour,
   headerSlot,
   caption,
+  style,
   children,
 }: Props) {
   return (
@@ -70,6 +74,7 @@ export function PanelBase({
         flexDirection: "column",
         gap: "12px",
         minHeight: "140px",
+        ...style,
       }}
     >
       <header style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>

@@ -148,7 +148,7 @@ describe("ConcentrationAlertCallout", () => {
       />
     );
     expect(
-      screen.getByText("HIGH training-data concentration — venezuela")
+      screen.getByText("HIGH training-data concentration: venezuela")
     ).toBeInTheDocument();
     expect(screen.getByText(/71.4%/)).toBeInTheDocument();
   });
@@ -162,9 +162,7 @@ describe("ConcentrationAlertCallout", () => {
         share={0.25}
       />
     );
-    expect(
-      screen.getByText("Caution-level concentration — colombia")
-    ).toBeInTheDocument();
+    expect(screen.getByText("Caution-level concentration: colombia")).toBeInTheDocument();
   });
 });
 
@@ -255,7 +253,7 @@ describe("InterpretationHintBadge", () => {
   it("renders 'Context-dependent' for ambiguous", () => {
     render(<InterpretationHintBadge style="tufte" hint="ambiguous" />);
     expect(
-      screen.getByText("Context-dependent — read mechanism narrative")
+      screen.getByText("Context-dependent: read mechanism narrative")
     ).toBeInTheDocument();
   });
 

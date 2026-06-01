@@ -15,7 +15,7 @@
  * - Metric block renders only when metric_value is present (no empty block).
  *
  * Export: toV41SurfaceCardData() helper — strips ribbon, clears metric on the
- * three UI-architectural cards (Recipes, Risk Board, Nearest Analog).
+ * three UI-architectural cards (Recipes, Risk Board, Analogues).
  */
 import Link from "next/link";
 import type { Route } from "next";
@@ -42,11 +42,7 @@ export interface SurfaceCardData {
  * (capabilities-per-recipe, top-pairs-ranked, analogs-per-country) rather than
  * methodology counts. We clear them in the transform.
  */
-const UI_ARCHITECTURAL_METRICS = new Set([
-  "recipes-v4-1",
-  "risk-board",
-  "nearest-analog",
-]);
+const UI_ARCHITECTURAL_METRICS = new Set(["recipes-v4-1", "risk-board", "analogues"]);
 
 /**
  * Strip ribbon and drop UI-architectural metrics from a V4 SurfaceCardData.

@@ -7,12 +7,12 @@ import { SkipLink } from "@/components/SkipLink";
 export const metadata: Metadata = {
   title: "Blog · QG Intelligence",
   description:
-    "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
+    "Development notes on building QGI: scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
   alternates: { canonical: "https://qgintelligence.com/blog" },
   openGraph: {
     title: "Blog · QG Intelligence",
     description:
-      "Development notes on building QGI — scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
+      "Development notes on building QGI: scoring releases, backtest results, methodology shifts, and what the numbers actually mean.",
     url: "https://qgintelligence.com/blog",
     siteName: "QG Intelligence",
     type: "website",
@@ -41,7 +41,7 @@ const POSTS: Array<{
     title:
       "Foreign Intervention, graduated: what eighteen years of indicator trajectories say",
     date: "2026-05-23",
-    dek: "QGI's first ML-validated recipe earns its risk score. Four indicators, eighteen years, two hard validation gates cleared. The mechanic is similarity to a historical pre-crisis trajectory — and the line between similarity and probability is where this piece spends most of its time.",
+    dek: "QGI's first ML-validated recipe earns its risk score. Four indicators, eighteen years, two hard validation gates cleared. The mechanic is similarity to a historical pre-crisis trajectory, and the line between similarity and probability is where this piece spends most of its time.",
     tags: ["methodology", "ML", "graduation"],
   },
   {
@@ -69,7 +69,7 @@ const POSTS: Array<{
     slug: "margin-over-persistence-trajectory",
     title: "The margin keeps widening",
     date: "2026-04-22",
-    dek: "V1.8 → V1.8.1 → V1.9 — the gap between QGI and the naïve baseline has grown at every release. Here's why, and what the number does and doesn't prove.",
+    dek: "V1.8 → V1.8.1 → V1.9. The gap between QGI and the naïve baseline has grown at every release. Here's why, and what the number does and doesn't prove.",
     tags: ["methodology", "backtest", "V1.9"],
   },
 ];
@@ -185,7 +185,7 @@ export default function BlogIndexPage() {
                   className="text-sm leading-relaxed"
                   style={{ color: "var(--qgi-text-muted)" }}
                 >
-                  Live status board for all 71 QGI recipes — across 8 geopolitical
+                  Live status board for all 71 QGI recipes, across 8 geopolitical
                   families. One graduated. Six in validation. Sixty-four queued.
                   Graduation requires clearing hard validation gates in held-out
                   historical data, and most candidates will not.

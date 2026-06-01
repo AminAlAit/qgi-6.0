@@ -27,9 +27,9 @@ describe("formatDataThrough", () => {
     expect(formatDataThrough("2026-04-30")).toBe("Data through April 2026");
   });
 
-  it("falls back to 'Data vintage unknown' for bad input", () => {
-    expect(formatDataThrough(undefined)).toBe("Data vintage unknown");
-    expect(formatDataThrough("bad")).toBe("Data vintage unknown");
+  it("falls back to 'Data release unknown' for bad input", () => {
+    expect(formatDataThrough(undefined)).toBe("Data release unknown");
+    expect(formatDataThrough("bad")).toBe("Data release unknown");
   });
 });
 

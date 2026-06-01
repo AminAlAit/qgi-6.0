@@ -96,7 +96,7 @@ export default function MarginTrajectoryPost() {
             className="text-lg leading-relaxed"
             style={{ color: "var(--qgi-text-muted)" }}
           >
-            Raw F1 is the wrong number to look at. Here&apos;s the one we watch instead —
+            Raw F1 is the wrong number to look at. Here&apos;s the one we watch instead,
             and why it has grown at every QGI release since February.
           </p>
         </div>
@@ -107,24 +107,24 @@ export default function MarginTrajectoryPost() {
         >
           <p>
             Every time a forecasting model ships a new version, the question is the same:
-            is it actually better? F1 is the default answer — a single number between 0
-            and 1 summarising precision and recall.
+            is it actually better? F1 is the default answer: a single number between 0 and
+            1 summarising precision and recall.
           </p>
 
           <p>
             The problem with F1 alone is that it depends on how hard the evaluation set
             is. If you change the set of countries you evaluate on, or the set of events
             you score against, F1 moves for reasons that have nothing to do with the model
-            itself. You can watch F1 tick up while your model is quietly getting worse —
+            itself. You can watch F1 tick up while your model is quietly getting worse:
             the eval just got easier.
           </p>
 
           <p>
             <strong>Margin over persistence</strong> is the metric that keeps us honest.
-            It subtracts the F1 of a trivial baseline — &ldquo;next year&apos;s events
-            equal this year&apos;s events&rdquo; (persistence) — from the model&apos;s F1.
-            If the eval set changes, both numbers move together. The gap is what the model
-            is actually contributing.
+            It subtracts the F1 of a trivial baseline (&ldquo;next year&apos;s events
+            equal this year&apos;s events&rdquo;, i.e. persistence) from the model&apos;s
+            F1. If the eval set changes, both numbers move together. The gap is what the
+            model is actually contributing.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">The last three releases</h2>
@@ -172,7 +172,7 @@ export default function MarginTrajectoryPost() {
 
           <p>
             This is the part where it&apos;s tempting to claim the model is getting
-            smarter. It isn&apos;t — or at least not in proportion to the margin growth.
+            smarter. It isn&apos;t, or at least not in proportion to the margin growth.
             Most of the gap widening comes from the{" "}
             <em>evaluation harness getting more honest</em>:
           </p>
@@ -208,13 +208,13 @@ export default function MarginTrajectoryPost() {
           <p>
             Margin over persistence is a ranking-quality metric. It tells you the model
             orders predictions usefully. It does <strong>not</strong> tell you the
-            probability estimates are well-calibrated — that &ldquo;HIGH&rdquo; actually
+            probability estimates are well-calibrated: that &ldquo;HIGH&rdquo; actually
             corresponds to 70% realisation rates rather than 40%.
           </p>
 
           <p>
             For that, we look at Brier Skill Score. V1.9 crossed positive BSS on short-
-            and medium-pattern tiers during validation (+0.017 and +0.009 — first time in
+            and medium-pattern tiers during validation (+0.017 and +0.009, first time in
             QGI&apos;s history). Test-phase BSS remained negative across every tier (−0.16
             to −0.24). The validation-to-test gap is the clearest signal that the
             statistical recipe system is at a calibration ceiling.
@@ -225,8 +225,8 @@ export default function MarginTrajectoryPost() {
           </h2>
 
           <p>
-            The release that shipped the same day as this post —{" "}
-            <strong>V1.9.1 (Fix C)</strong> — tightens the threshold logic that decides
+            The release that shipped the same day as this post,{" "}
+            <strong>V1.9.1 (Fix C)</strong>, tightens the threshold logic that decides
             which countries end up in the HIGH risk tier. It fixed a diagnostic bug where
             68% of scored countries were rated HIGH, including stable democracies whose
             top category was nothing more severe than &ldquo;elections and voting.&rdquo;
@@ -244,7 +244,7 @@ export default function MarginTrajectoryPost() {
 
           <p>
             The <em>next</em> release, V1.9.2 (Fix D), will change the actual salience
-            scores — it replaces per-country z-score normalization with cross-country
+            scores: it replaces per-country z-score normalization with cross-country
             per-category normalization. That one we will re-backtest, because the ranking
             changes. If the calibration ceiling moves, it&apos;ll show up in the next
             version of this trajectory chart.
@@ -256,10 +256,10 @@ export default function MarginTrajectoryPost() {
 
           <p>
             Two things. First, whether V1.9.2 lifts test-phase BSS into positive territory
-            on at least one tier — that would be the first evidence the calibration
-            ceiling is breakable without switching to a gradient-boosted model. Second,
-            whether the margin keeps widening. Four releases with monotonically growing
-            margin is a pattern worth watching; five would start to be a track record.
+            on at least one tier: that would be the first evidence the calibration ceiling
+            is breakable without switching to a gradient-boosted model. Second, whether
+            the margin keeps widening. Four releases with monotonically growing margin is
+            a pattern worth watching; five would start to be a track record.
           </p>
 
           <p>We&apos;ll post the V1.9.2 numbers when they land. Probably in 2-3 weeks.</p>

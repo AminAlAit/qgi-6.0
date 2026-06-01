@@ -169,7 +169,7 @@ function Row({ row, isLast }: { row: CountryTopRecipe; isLast: boolean }) {
               letterSpacing: "0.3px",
               marginTop: "2px",
             }}
-            title="Discrimination rank on the recipe's canonical movement shape — not a probability."
+            title="Discrimination rank on the recipe's canonical movement shape, not a probability."
           >
             rank
           </div>

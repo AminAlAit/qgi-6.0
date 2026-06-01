@@ -43,7 +43,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
                 marginBottom: "4px",
               }}
             >
-              TOP-3 HISTORICAL ANALOGS · {entry.name.toUpperCase()} TODAY
+              TOP-3 HISTORICAL ANALOGUES · {entry.name.toUpperCase()} TODAY
             </div>
             <h2
               style={{
@@ -57,20 +57,10 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
               Whose pre-event shape does {entry.name} rhyme with most?
             </h2>
           </div>
-          <span
-            style={{
-              fontSize: "10px",
-              padding: "4px 9px",
-              borderRadius: "3px",
-              border: "1px solid var(--qgi-border)",
-              color: "var(--qgi-text-muted)",
-              fontFamily: "ui-monospace, monospace",
-              letterSpacing: "0.4px",
-              background: "var(--qgi-surface)",
-            }}
-          >
-            k=3 · SHAP-weighted cosine · self-excluded
-          </span>
+          {/* 2026-05-30 founder ask: "k=3 · SHAP-weighted cosine ·
+              self-excluded" methodology chip removed. The mechanics live
+              in the methodology side panel and the "how to read this"
+              popover; the headline doesn't need to shout them. */}
         </div>
         <p
           style={{
@@ -83,8 +73,8 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
         >
           The three historical cases whose pre-event indicator trajectories most resemble{" "}
           {entry.name}&apos;s recent movement. <strong>Similarity, not destiny:</strong>{" "}
-          read the historical outcomes as fact about the analog country, never as forecast
-          for {entry.name}.
+          read the historical outcomes as fact about the analogue country, never as
+          forecast for {entry.name}.
         </p>
       </div>
 
@@ -127,44 +117,32 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           }}
         >
           <Layers size={18} strokeWidth={1.6} color="var(--qgi-accent)" />
-          <div>
-            <div
-              style={{
-                fontSize: "9px",
-                letterSpacing: "1.5px",
-                color: "var(--qgi-accent)",
-                fontFamily: "ui-monospace, monospace",
-                marginBottom: "1px",
-                fontWeight: 600,
-              }}
-            >
-              WHICH RECIPES MATCHED
-            </div>
-            <h3
-              style={{
-                fontSize: "16px",
-                fontWeight: 600,
-                margin: 0,
-                color: "var(--qgi-text)",
-              }}
-            >
-              Recipe contributions to {entry.name}&apos;s analog match
-            </h3>
-          </div>
+          {/* 2026-05-30: copy simplified to match the Risk Board pattern —
+              kicker chip dropped, dense subtitle dropped, paragraph
+              compressed to one sentence that says what the rows are. */}
+          <h3
+            style={{
+              fontSize: "18px",
+              fontWeight: 600,
+              margin: 0,
+              color: "var(--qgi-text)",
+              lineHeight: 1.2,
+            }}
+          >
+            Which recipes pulled the match
+          </h3>
         </header>
         <p
           style={{
-            fontSize: "12px",
+            fontSize: "13px",
             color: "var(--qgi-text-muted)",
             lineHeight: 1.55,
             margin: "0 0 14px",
             maxWidth: "640px",
           }}
         >
-          {/* V4.1 §1.4: "did not hold up" removed. Status chip framing kept. */}
-          The trajectory shapes that pulled {entry.name} toward its analogs, ranked by
-          weighted contribution. The status chip on each row tells you where that recipe
-          sits in the validation arc.
+          The trajectory shapes that drew {entry.name} toward its analogues, ranked by
+          weighted contribution.
         </p>
         <RecipeContributionBar contributions={entry.contributions} />
       </section>
@@ -203,7 +181,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
             style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.5 }}
           >
             All 71 recipes in the QGI catalog with mini-trajectories: browse every
-            trajectory shape, queued or tested, that the analog finder draws from.
+            trajectory shape, queued or tested, that the analogue finder draws from.
           </div>
         </div>
         <Link

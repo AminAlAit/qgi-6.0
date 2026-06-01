@@ -38,7 +38,12 @@ import {
   loadCountryIndex,
   loadAllScores,
   loadAnalogs,
+  loadActivityFeed,
+  loadRunIndex,
+  loadIndicatorCatalogSize,
+  loadIndicatorCorpusBreakdown,
 } from "@/lib/te-data-contract/load";
+import type { CountryIndex } from "@/lib/te-data-contract/country-index";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import { L1_FAMILIES, familyColor, familyLabel } from "@/lib/te-mock/l1-families";
 import type { HeroTile } from "@/components/dashboard-v4-1/DashboardHero";
@@ -57,20 +62,16 @@ export interface HeroCounts41 {
 }
 
 /**
- * Indicator corpus size: distinct indicator codes referenced across the
- * 10 TE walks (from greedy_walk + indicator_sensitivity). This is the live
- * count of indicators actually USED by validated walks. The 74-indicator
- * catalog total (WB+FAO) lives in /methodology; here we surface the
- * "actively scored" subset, which is more compelling because every one is
- * load-bearing in at least one walk.
+ * Indicator corpus size: read directly from MANIFEST.indicator_catalog_size.
+ * Round-2 (2026-05-30): field ships with value 63 (V-Dem×33 + World Bank×29,
+ * no FAO in this fleet run). Falls back to 63 on load error.
  */
 function computeIndicatorsTracked(): number {
-  // Total catalog (WB + FAO + V-Dem subset) is ~74. The dashboard surfaces
-  // the cardinality at the catalog level — that is the marketable number.
-  // We pull the catalog total from the indicator-labels resolver, but to
-  // keep this calc deterministic without a catalog round-trip, we use the
-  // documented baseline. If the catalog grows, this lifts trivially.
-  return 74;
+  try {
+    return loadIndicatorCatalogSize();
+  } catch {
+    return 63;
+  }
 }
 
 /**
@@ -87,11 +88,17 @@ function computePairsSurfaced(): number {
   }
 }
 
-/** Vintages logged: 1 today; +1 per quarterly run. Floor at 1. */
+/**
+ * Vintages logged: read from MANIFEST.run_index.
+ * Round-2 (2026-05-30): field ships with value 1 (first fleet run).
+ * Increments with each quarterly run. Falls back to 1 on load error.
+ */
 function computeVintagesLogged(): number {
-  // First vintage of the trajectory engine (2026-05-28). Catalog rows that
-  // predate it count under the cascade-era tracker (separate page).
-  return 1;
+  try {
+    return loadRunIndex();
+  } catch {
+    return 1;
+  }
 }
 
 export function buildHeroCountsV41(recipes: TrackerRecipe[]): HeroCounts41 {
@@ -224,28 +231,34 @@ export interface CoverageSummary {
 
 export function buildCoverageSummary(): CoverageSummary {
   let scored = 214;
-  let roster = 214;
+  let roster = 248;
+  let regionBreakdown: Array<{ region: string; pct: number }> = [];
   try {
-    const idx = loadCountryIndex();
+    const idx = loadCountryIndex() as CountryIndex & {
+      coverage_density_per_region?: Record<string, number>;
+    };
     scored = idx.n_countries_scored;
     roster = idx.platform_roster_size;
+    // Derive region breakdown from `coverage_density_per_region` (bucket-A
+    // enrichment applied on every fleet run). Percentages are share-of-scored.
+    const cdr = idx.coverage_density_per_region ?? {};
+    const total = Object.values(cdr).reduce((a, b) => a + b, 0);
+    regionBreakdown = Object.entries(cdr)
+      // Drop the "Unknown" bucket — not meaningful for a coverage display.
+      .filter(([region]) => region !== "Unknown" && region !== "null")
+      .sort((a, b) => b[1] - a[1])
+      .map(([region, count]) => ({
+        region,
+        pct: total > 0 ? (count / total) * 100 : 0,
+      }));
   } catch {
-    /* fall back to constants */
+    /* fall back to empty breakdown on load failure */
   }
-  // Region breakdown is illustrative until country-index ships region tags.
-  // The percentages reflect global coverage of the WB + V-Dem corpora.
   return {
     countries_scored: scored,
     roster,
     pct: roster > 0 ? (scored / roster) * 100 : 0,
-    region_breakdown: [
-      { region: "Sub-Saharan Africa", pct: 100 },
-      { region: "Asia & Pacific", pct: 100 },
-      { region: "Europe & Central Asia", pct: 100 },
-      { region: "Middle East & N. Africa", pct: 100 },
-      { region: "Latin America & Caribbean", pct: 100 },
-      { region: "North America", pct: 100 },
-    ],
+    region_breakdown: regionBreakdown,
   };
 }
 
@@ -256,17 +269,36 @@ export interface IndicatorCorpusStat {
 }
 
 /**
- * Indicator corpus stack: how the 74 indicators split across providers.
- * Counts are hand-curated from the catalog (WB-WGI + WB-Economic +
- * WB-Social + V-Dem + FAO) and refresh on Round-3 backend bake.
+ * Indicator corpus stack: reads provider breakdown directly from
+ * MANIFEST.indicator_corpus_breakdown.
+ *
+ * Round-2 (2026-05-30): breakdown = {"V-Dem": 33, "World Bank": 29}.
+ * Falls back to the hardcoded round-2 totals if the manifest is unavailable.
+ *
+ * Provider → display color map mirrors the V4.1 brand palette.
  */
 export function buildIndicatorCorpusStack(): IndicatorCorpusStat[] {
-  return [
-    { label: "World Bank · WGI", count: 6, color: "#38bdf8" },
-    { label: "World Bank · Macro", count: 30, color: "#3FBF8F" },
-    { label: "V-Dem · Institutions", count: 33, color: "#7B5EE6" },
-    { label: "FAO · Food Security", count: 5, color: "#E68F29" },
-  ];
+  const PROVIDER_COLORS: Record<string, string> = {
+    "V-Dem": "#7B5EE6",
+    "World Bank": "#38bdf8",
+    FAO: "#E68F29",
+  };
+  const DEFAULT_COLOR = "#3FBF8F";
+  try {
+    const breakdown = loadIndicatorCorpusBreakdown();
+    return Object.entries(breakdown)
+      .sort((a, b) => b[1] - a[1])
+      .map(([provider, count]) => ({
+        label: provider,
+        count,
+        color: PROVIDER_COLORS[provider] ?? DEFAULT_COLOR,
+      }));
+  } catch {
+    return [
+      { label: "V-Dem", count: 33, color: "#7B5EE6" },
+      { label: "World Bank", count: 29, color: "#38bdf8" },
+    ];
+  }
 }
 
 export interface CountryPairTeaser {
@@ -314,6 +346,104 @@ export function buildTopPairTeasers(n = 3): CountryPairTeaser[] {
 }
 
 // ───────────────────────────────────────────────────────────────────────────────
+// Closest matches now — the Briefing centerpiece.
+// "How countries are following recipes", as a left-to-right row of rich cards.
+// Real fleet data; the strong band (the 95%ers), not the saturated 100s; one
+// per country for variety; each card opens the country×recipe match page.
+// ───────────────────────────────────────────────────────────────────────────────
+
+export interface ClosestMatch {
+  country: string;
+  iso2: string;
+  recipe_id: string;
+  recipe_label: string;
+  l1_color: string;
+  score: number;
+  zone_label: string | null;
+  /** 12-quarter composite z-trajectory for the card spark (may be empty). */
+  composite: number[];
+  eval_year: number;
+}
+
+/**
+ * The strongest current country×recipe matches across the whole fleet, in the
+ * "95%er" band — strong resemblance without the saturated 100s. Diversified to
+ * one country per card and at most two cards per recipe so the row reads as a
+ * spread of distinct stories, not the same country five times.
+ */
+export function buildClosestMatches(n = 8): ClosestMatch[] {
+  try {
+    const byId = new Map(getAllRecipes().map((r) => [r.recipe_id, r]));
+    const all = loadAllScores();
+    const band: ClosestMatch[] = [];
+    for (const [rid, file] of Object.entries(all)) {
+      const rec = byId.get(rid);
+      if (!rec) continue;
+      const fc = familyColor(rec.l1_id, rec.l1_color);
+      for (const e of file.scores as Array<{
+        name: string;
+        iso2?: string | null;
+        score: number;
+        zone_label?: string;
+        eval_year: number;
+        indicator_trajectory_composite_12q?: number[];
+      }>) {
+        // The "95%er" band: skip the saturated top (>=98, which clusters at
+        // 99 and reads as a wall) and the long tail. Strong, varied, not maxed.
+        if (e.score >= 98 || e.score < 92) continue;
+        const iso2 = (e.iso2 ?? iso2For(e.name) ?? "").toLowerCase();
+        if (!/^[a-z]{2}$/.test(iso2)) continue;
+        band.push({
+          country: e.name,
+          iso2,
+          recipe_id: rid,
+          recipe_label: rec.label,
+          l1_color: fc,
+          score: e.score,
+          zone_label: e.zone_label ?? null,
+          composite: e.indicator_trajectory_composite_12q ?? [],
+          eval_year: e.eval_year,
+        });
+      }
+    }
+    if (band.length <= n) return band.sort((a, b) => b.score - a.score);
+    // Sample n picks evenly across the WHOLE band (ascending) so the row shows
+    // a genuine range of strengths (e.g. 97 down to 92), not each country's
+    // peak (which clusters at the top). Distinct country per card, <=2 per
+    // recipe. We search outward from each evenly-spaced index for the first
+    // entry that satisfies the variety constraints.
+    band.sort((a, b) => a.score - b.score);
+    const N = band.length;
+    const usedCountry = new Set<string>();
+    const usedRecipe = new Map<string, number>();
+    const picked: ClosestMatch[] = [];
+    for (let i = 0; i < n; i++) {
+      const target = Math.round((i * (N - 1)) / (n - 1));
+      let chosen: ClosestMatch | null = null;
+      for (let off = 0; off < N && !chosen; off++) {
+        for (const cand of [target + off, target - off]) {
+          if (cand < 0 || cand >= N) continue;
+          const m = band[cand];
+          if (usedCountry.has(m.country)) continue;
+          if ((usedRecipe.get(m.recipe_id) ?? 0) >= 2) continue;
+          chosen = m;
+          break;
+        }
+      }
+      if (chosen) {
+        picked.push(chosen);
+        usedCountry.add(chosen.country);
+        usedRecipe.set(chosen.recipe_id, (usedRecipe.get(chosen.recipe_id) ?? 0) + 1);
+      }
+    }
+    picked.sort((a, b) => b.score - a.score);
+    return picked;
+  } catch {
+    return [];
+  }
+}
+
+// ───────────────────────────────────────────────────────────────────────────────
 // World-facing activity — replaces the R&D walk feed.
 // ───────────────────────────────────────────────────────────────────────────────
 
@@ -345,106 +475,117 @@ export const ICON_FOR_ACTIVITY_KEY = {
 } as const;
 
 /**
- * Build world-facing activity rows from country-index + per-recipe scores
- * + analogs. Replaces the R&D walk feed.
+ * Map a `fired_at` ISO string to a display date (YYYY-MM-DD).
+ */
+function firedAtToDate(firedAt: string): string {
+  try {
+    return firedAt.slice(0, 10);
+  } catch {
+    return firedAt;
+  }
+}
+
+/**
+ * Build world-facing activity rows from the baked program-feed.json.
  *
- * Composition (target 10 rows):
- *   - 3 × country-movement   (top compound-score countries this vintage)
- *   - 3 × recipe top-10 shift (top recipes by current top-10 movement)
- *   - 2 × emerging pair      (analog matches outside top-100)
- *   - 2 × analog spotlight   (high-similarity match with a hook)
+ * Source: `data/te-fleet-run-1/activity/program-feed.json` (46 events).
+ * Consumes `loadActivityFeed()` from the data contract.
  *
- * Rows ARE deterministic from the data, not random — same data → same rows.
+ * Mapping:
+ *   walk_fired              → recipe_top10_shift  (recipe run this vintage)
+ *   vacate                  → corpus_growth       (catalog correction)
+ *   methodology_amendment   → corpus_growth       (methodology update)
+ *   <unknown kind>          → corpus_growth       (generic catalog event)
+ *
+ * Rows are sorted most-recent-first by `fired_at` (descending ISO string
+ * sort is correct for the YYYY-MM-DDTHH:MM:SSZ format used in the feed).
+ * The function returns ALL rows; the WorldActivity component collapses to 5
+ * and expands on demand.
  */
 export function buildWorldActivityRows(): WorldActivityRow[] {
-  const vintage = vintageStamp();
-  const rows: WorldActivityRow[] = [];
-
-  // ── Country movements: top-3 by compound score ──
   try {
-    const idx = loadCountryIndex();
-    const topCountries = [...idx.countries]
-      .sort((a, b) => b.compound_score - a.compound_score)
-      .slice(0, 3);
-    for (const c of topCountries) {
-      const topRecipe = c.top_recipes?.[0];
-      if (!topRecipe) continue;
-      const families = (c.lit_families ?? [])
-        .slice(0, 3)
-        .map((f) => familyLabel(f))
-        .join(", ");
-      rows.push({
-        date: vintage,
-        kind: "country_movement",
-        title: `${c.name} sits in the global top decile this vintage`,
-        detail:
-          `${c.recipes_lit_count} recipes lit across ${families || "multiple families"}. ` +
-          `Top match: ${topRecipe.label} at the ${Math.round(topRecipe.score)}th percentile.`,
-        href: `/countries`,
-        color: "#E68F29",
-        iconKey: "trending",
-      });
-    }
-  } catch {
-    /* skip section on missing data */
-  }
-
-  // ── Recipe top-10 shifts: top-3 recipes by top-country score in scores files ──
-  try {
-    const allScores = loadAllScores();
-    const recipes = getAllRecipes();
-    const recipeShifts: Array<{
-      recipe_id: string;
-      recipe_label: string;
-      top_country: string;
-      top_score: number;
-    }> = [];
-    for (const [recipe_id, sf] of Object.entries(allScores)) {
-      if (!sf.scores || sf.scores.length === 0) continue;
-      const topEntry = [...sf.scores].sort((a, b) => b.score - a.score)[0];
-      const label = recipes.find((r) => r.recipe_id === recipe_id)?.label ?? recipe_id;
-      recipeShifts.push({
-        recipe_id,
-        recipe_label: label,
-        top_country: topEntry.name,
-        top_score: topEntry.score,
-      });
-    }
-    const topShifts = recipeShifts.sort((a, b) => b.top_score - a.top_score).slice(0, 3);
-    for (const s of topShifts) {
-      rows.push({
-        date: vintage,
-        kind: "recipe_top10_shift",
-        title: `${s.recipe_label}: ${s.top_country} leads the global ranking`,
-        detail:
-          `${s.top_country} sits at the ${Math.round(s.top_score)}th percentile on this recipe ` +
-          `among all countries scored this vintage.`,
-        href: `/recipes/${s.recipe_id}`,
-        color: "#7B5EE6",
-        iconKey: "crosshair",
-      });
-    }
-  } catch {
-    /* skip */
-  }
-
-  // ── Pair / analog spotlights: top-3 analog matches ──
-  const pairs = buildTopPairTeasers(3);
-  for (const p of pairs) {
-    rows.push({
-      date: vintage,
-      kind: "analog_spotlight",
-      title: `${p.country_a} today resembles ${p.country_b} ${p.country_b_year}`,
-      detail:
-        `${Math.round(p.match_pct)}% similarity on the ${p.recipe_label} recipe shape. ` +
-        `Historical comparison drawn from the analog corpus.`,
-      href: `/nearest-analog`,
-      color: "#38bdf8",
-      iconKey: "sparkles",
+    const feed = loadActivityFeed();
+    const sorted = [...feed.events].sort((a, b) => b.fired_at.localeCompare(a.fired_at));
+    return sorted.map((evt): WorldActivityRow => {
+      const date = firedAtToDate(evt.fired_at);
+      if (evt.kind === "walk_fired") {
+        const e = evt as {
+          kind: "walk_fired";
+          fired_at: string;
+          recipe_id: string;
+          recipe_label: string;
+          tier: string;
+          verdict: string;
+          loco_auc: number;
+          note: string;
+        };
+        const verdictLabel =
+          e.verdict === "MARGINAL_PENDING_BETA_CALIBRATION"
+            ? "directional — beta calibration pending"
+            : "experimental — under review";
+        return {
+          date,
+          kind: "recipe_top10_shift",
+          title: `${e.recipe_label}: first release under the Trajectory Engine`,
+          detail:
+            `Walk completed ${date}. LOCO AUC ${e.loco_auc.toFixed(3)} · ` +
+            `${verdictLabel}. ${e.note}`,
+          href: `/recipes/${e.recipe_id}`,
+          color: "#7B5EE6",
+          iconKey: "crosshair",
+        };
+      }
+      if (evt.kind === "vacate") {
+        const e = evt as {
+          kind: "vacate";
+          fired_at: string;
+          recipe_id: string;
+          recipe_label: string;
+          prior_status: string;
+          cause: string;
+          note: string;
+        };
+        return {
+          date,
+          kind: "corpus_growth",
+          title: `${e.recipe_label}: status correction applied`,
+          detail: `${e.cause} ${e.note}`,
+          href: `/recipes/${e.recipe_id}`,
+          color: "#E68F29",
+          iconKey: "activity",
+        };
+      }
+      if (evt.kind === "methodology_amendment") {
+        const e = evt as {
+          kind: "methodology_amendment";
+          fired_at: string;
+          title: string;
+          detail: string;
+        };
+        return {
+          date,
+          kind: "corpus_growth",
+          title: `Methodology update: ${e.title}`,
+          detail: e.detail,
+          href: `/methodology`,
+          color: "#5B7E99",
+          iconKey: "activity",
+        };
+      }
+      // Generic fallback for unknown future kinds
+      return {
+        date,
+        kind: "corpus_growth",
+        title: `Catalog event — ${evt.kind}`,
+        detail: `Recorded ${date}.`,
+        href: `/methodology`,
+        color: "#5B7E99",
+        iconKey: "activity",
+      };
     });
+  } catch {
+    return [];
   }
-
-  return rows;
 }
 
 // Legacy re-exports removed 2026-05-29 — `lib/te-mock/dashboard-v4-data.ts`

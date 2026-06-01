@@ -7,7 +7,7 @@ import { getRecipe } from "@/lib/te-mock/recipes";
 import { familyColor } from "@/lib/te-mock/l1-families";
 
 export interface Highlight {
-  source: "risk-board" | "compound-risk" | "nearest-analog" | "recipe-tracker";
+  source: "risk-board" | "compound-risk" | "analogues" | "recipe-tracker";
   source_label: string;
   href: string;
   headline: string;
@@ -66,7 +66,7 @@ export function HighlightsBand({
             letterSpacing: "0.3px",
           }}
         >
-          one tile per surface · vintage {vintage}
+          one tile per surface · release {vintage}
         </span>
       </div>
       <div

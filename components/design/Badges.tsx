@@ -85,7 +85,7 @@ export function ConvergenceBadge({
 
   const tooltip =
     nPredictors && nRegions
-      ? `${CONVERGENCE_LABELS[tier]} — ${nPredictors} predictor${nPredictors === 1 ? "" : "s"} across ${nRegions} region${nRegions === 1 ? "" : "s"}`
+      ? `${CONVERGENCE_LABELS[tier]}: ${nPredictors} predictor${nPredictors === 1 ? "" : "s"} across ${nRegions} region${nRegions === 1 ? "" : "s"}`
       : CONVERGENCE_LABELS[tier];
 
   return (

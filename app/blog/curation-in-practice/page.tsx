@@ -96,7 +96,7 @@ export default function CurationInPracticePost() {
           style={{ color: "var(--qgi-text)" }}
         >
           <p>
-            Most of the writing on this blog is about scoring methodology — what algorithm
+            Most of the writing on this blog is about scoring methodology: what algorithm
             turns data into a country tier, why one version replaces another. That&apos;s
             the visible half of the work. The invisible half is the data itself. Every
             score QGI publishes is computed from a corpus of hand-verified historical
@@ -120,7 +120,7 @@ export default function CurationInPracticePost() {
           <p>
             <strong>Iran</strong> had volume but missed the last decade. The existing 146
             events were heavy on the Revolution, the Iran–Iraq war, and the Ahmadinejad
-            years, and thin on the post-JCPOA period — the 2017–18 protests, the 2019
+            years, and thin on the post-JCPOA period: the 2017–18 protests, the 2019
             fuel-price protests, the 2022 Mahsa Amini unrest, the 2024 presidential
             transition, the post-October-2023 regional escalation. A scoring engine that
             doesn&apos;t know 2017 happened can&apos;t tell you anything useful about
@@ -130,9 +130,9 @@ export default function CurationInPracticePost() {
           <p>
             <strong>Ukraine</strong> was thin on everything. Forty-three events total,
             mostly post-2014. A country where the 20th century alone produced more
-            regime-defining ruptures than most states manage in two hundred years — the
+            regime-defining ruptures than most states manage in two hundred years, the
             1991 independence, the 2004 Orange Revolution, the 2014 Maidan, Crimea,
-            Donbas, the 2022 full-scale invasion — and we had forty-three entries.
+            Donbas, the 2022 full-scale invasion, and we had forty-three entries.
             That&apos;s not coverage. That&apos;s a stub.
           </p>
 
@@ -143,9 +143,9 @@ export default function CurationInPracticePost() {
             curated history. Zero
             <code> humanitarian_crisis </code>
             entries for a country where six million people emigrated. The events existed
-            in the file — RCTV&apos;s forced closure, the 2014 SEBIN detentions, the 2017
-            protest deaths, the 2019 blackouts, the Tun Tun operation — but most were
-            coded as <code>social_unrest</code> or <code>economic_crisis</code>, which
+            in the file: RCTV&apos;s forced closure, the 2014 SEBIN detentions, the 2017
+            protest deaths, the 2019 blackouts, the Tun Tun operation, but most were coded
+            as <code>social_unrest</code> or <code>economic_crisis</code>, which
             understates what was happening. The engine was getting the right country with
             the wrong labels.
           </p>
@@ -155,7 +155,7 @@ export default function CurationInPracticePost() {
           <p>
             We ran three curation passes in parallel, one per country, each using the same
             canonical template. The template is the same one we rolled out across all
-            curation work two weeks ago — it inlines the 71-category taxonomy directly in
+            curation work two weeks ago: it inlines the 71-category taxonomy directly in
             the prompt, which dropped the confabulation rate from roughly 20% (agents
             inventing plausible-sounding categories that aren&apos;t in the schema) to
             effectively zero when we re-audited. Every candidate event had to come with a
@@ -165,8 +165,7 @@ export default function CurationInPracticePost() {
           </p>
 
           <p>
-            Total wall time: about an afternoon. Total cost: the API calls — a few
-            dollars.
+            Total wall time: about an afternoon. Total cost: the API calls, a few dollars.
           </p>
 
           <h2 className="text-2xl font-semibold mt-10 mb-4">The results</h2>
@@ -185,13 +184,13 @@ export default function CurationInPracticePost() {
           <p>
             <strong>Ukraine: 43 → 85</strong> (+42 net, done in two passes). First pass
             targeted 100 events. It produced 67, and on review we rejected several as not
-            meeting the verification bar — events that happened but couldn&apos;t be
-            pinned to a single clear source, or that were already covered by a broader
-            entry. Second pass brought it to 85 at the quality bar we wanted rather than
-            100 at a softer one. Coverage now spans 1991 independence through the 2024
-            battlefield situation, with proper weight on the 2004 Orange Revolution, the
-            2013–14 Maidan sequence, the 2015 Minsk II period, and the 2022–24 full-scale
-            war. Top categories: <code>civil_war_and_insurgency</code> (12),{" "}
+            meeting the verification bar: events that happened but couldn&apos;t be pinned
+            to a single clear source, or that were already covered by a broader entry.
+            Second pass brought it to 85 at the quality bar we wanted rather than 100 at a
+            softer one. Coverage now spans 1991 independence through the 2024 battlefield
+            situation, with proper weight on the 2004 Orange Revolution, the 2013–14
+            Maidan sequence, the 2015 Minsk II period, and the 2022–24 full-scale war. Top
+            categories: <code>civil_war_and_insurgency</code> (12),{" "}
             <code>foreign_intervention</code> (7), <code>interstate_war</code> (6).
           </p>
 
@@ -199,8 +198,8 @@ export default function CurationInPracticePost() {
             <strong>Venezuela: 51 → 71</strong> (+20 net, with a category rebalance). This
             was the most interesting of the three because the headline number understates
             the change. The three high-signal categories that were previously almost empty
-            — <code>political_repression</code>, <code>banking_and_financial_crisis</code>
-            , <code>humanitarian_crisis</code> — went from a combined 2 events to 14. The
+            (<code>political_repression</code>, <code>banking_and_financial_crisis</code>,{" "}
+            <code>humanitarian_crisis</code>) went from a combined 2 events to 14. The
             events are real things that happened to real people: the migration crisis, the
             bolívar collapse, the ANC period, the 2017 and 2024 detention waves. They were
             missing not because they were obscure but because the original curation had
@@ -246,8 +245,8 @@ export default function CurationInPracticePost() {
               parallel agent pass and human review.
             </li>
             <li>
-              <strong>Back-coding.</strong> Venezuela&apos;s problem — under-labeled
-              categories in an existing file — probably exists in other files we
+              <strong>Back-coding.</strong> Venezuela&apos;s problem, under-labeled
+              categories in an existing file, probably exists in other files we
               haven&apos;t re-audited. Category-stratified retrospective coding is on the
               roadmap; we haven&apos;t started.
             </li>
@@ -265,7 +264,7 @@ export default function CurationInPracticePost() {
           <p>
             The scoring pages on this site talk in terms of z-scores and recipe fusion and
             tier thresholds. All of that math runs on events like the 185 we added today.
-            If the events are wrong — missing, miscategorized, unsourced, made up — no
+            If the events are wrong (missing, miscategorized, unsourced, made up), no
             clever scoring choice can repair it. The math computes faithfully from the
             input. It doesn&apos;t know the input is bad.
           </p>

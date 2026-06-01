@@ -20,7 +20,7 @@ const CALM_SLATE_BLUE = "#5B7E99";
 const STATEMENTS = [
   "These scores rank how strongly a country's signals resemble past pre-event conditions. They are not the chance that an event will happen.",
   "The drivers show which indicators weigh in the score. They are statistical associations, not proven causes.",
-  "The analogs are historical resemblances. They are not forecasts of what comes next.",
+  "The analogues are historical resemblances. They are not forecasts of what comes next.",
   "Nothing on this page says an event will happen.",
 ];
 
@@ -127,8 +127,11 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
         recipe page.
       </p>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+        {/* "Open in Compound Risk" link removed 2026-05-30 — that route
+            was taken down. Will return when the page rejuvenates as
+            Compound Negative-Event Density. */}
         <Link
-          href={"/compound-risk" as Route}
+          href={`/analogues?iso=${country.iso}` as Route}
           style={{
             fontSize: "12px",
             color: "var(--qgi-accent)",
@@ -137,19 +140,7 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
             letterSpacing: "0.3px",
           }}
         >
-          Open in Compound Risk →
-        </Link>
-        <Link
-          href={`/nearest-analog?iso=${country.iso}` as Route}
-          style={{
-            fontSize: "12px",
-            color: "var(--qgi-accent)",
-            textDecoration: "none",
-            fontFamily: "ui-monospace, monospace",
-            letterSpacing: "0.3px",
-          }}
-        >
-          Open the Nearest-Analog finder →
+          Open the Nearest-Analogue finder →
         </Link>
         <Link
           href={"/risk-board" as Route}

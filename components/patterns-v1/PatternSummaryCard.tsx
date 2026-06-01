@@ -74,8 +74,8 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
         >
           <span style={{ color: "#f87171" }}>⚡ EARLY WARNING SIGNAL</span>
           <span style={{ color: "var(--qgi-text-muted)", fontWeight: 400 }}>
-            Predictor country is currently in its historical window — Following country
-            may be entering {meta.country_a}&apos;s past trajectory
+            Predictor country is currently in its historical window. Following country may
+            be entering {meta.country_a}&apos;s past trajectory
           </span>
         </div>
       )}
@@ -136,7 +136,7 @@ export function PatternSummaryCard({ meta, scdis, isEarlyWarning }: Props) {
             style={{ color: "var(--qgi-text-dim)" }}
           >
             Pattern Strength
-            <InfoTooltip text="Pattern strength — a composite ranking metric blending correlation, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0–2000+." />
+            <InfoTooltip text="Pattern strength: a composite ranking metric blending correlation, pattern length, and indicator coverage. Higher = more historically grounded match. Range 0–2000+." />
           </span>
           <span
             className="font-data text-3xl font-semibold"

@@ -28,11 +28,11 @@
 .DS_Store
 *.pem
 
-# TE sample fixtures synced from S3 (large, NOT for git)
-# Per the te-sample-10-frontend-handoff: this dataset is build-against-only,
-# do NOT merge or publish; keep it out of the repo and let each developer
-# sync from S3 as needed.
-/data/te-sample-10/
+# TE sample fixtures from S3. 2026-06-01 (founder): the cards-v3 canonical
+# shapes are now COMMITTED (the build imports them for match-page overlays);
+# the rest of the dataset stays out of git.
+/data/te-sample-10/*
+!/data/te-sample-10/cards-v3/
 /data/te-wave-*/
 
 # Playwright clicky-clicky screenshots (large; regenerate as needed)
@@ -58,11 +58,8 @@ yarn-error.log*
 next-env.d.ts
 preview-screenshots/
 
-# Per the te-fleet-run-1 backend handoff (2026-05-30): this dataset is also
-# build-against-only. 28 MB; reproducible from S3 ml-results/ via
-# qgi-ml/scripts/bake_te_fleet_run_1.py.
-/data/te-fleet-run-1/
-
-# Python bytecode (scripts/ has Python utilities)
-__pycache__/
-*.pyc
+# te-fleet-run-1 dataset. 2026-06-01 (founder): now COMMITTED for the launch
+# deploy (the Vercel build imports it; backend deliveries land as commits). An
+# S3 build-fetch may replace this later to slim git. Still reproducible from S3
+# ml-results/ via qgi-ml/scripts/bake_te_fleet_run_1.py.
+# (was ignored: /data/te-fleet-run-1/)

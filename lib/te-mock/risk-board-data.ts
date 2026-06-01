@@ -21,7 +21,7 @@ import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/reci
 import {
   loadScores,
   loadCountryIndex,
-  SAMPLE_10_RECIPE_IDS,
+  FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 
 export const BOARD_VINTAGE = "2026-05-28";
@@ -113,65 +113,13 @@ export interface RankMovement {
 /* ────────────────────────────────────────────────────────────────────────── */
 
 /**
- * The hero "today's top 10 across the catalog" list. Pairs are drawn ONLY
- * from recipes that have a real-looking score surface (demo-graduated +
- * walked recipes). Queued recipes contribute nothing to this list.
+ * Build top pairs from all 44 fleet-run-1 recipes: top-1 country per recipe,
+ * collected across the whole catalog and then sorted descending by score.
+ * rank_delta_q is null at vintage 1 — no prior vintage to diff against.
  */
-const TOP_PAIRS_RAW: BoardPair[] = [
-  { country: "Iran", recipe_id: "foreign_intervention", score: 98.1, rank_delta_q: 0 },
-  {
-    country: "Turkmenistan",
-    recipe_id: "foreign_intervention",
-    score: 97.0,
-    rank_delta_q: 1,
-  },
-  {
-    country: "Equatorial Guinea",
-    recipe_id: "foreign_intervention",
-    score: 96.9,
-    rank_delta_q: -1,
-  },
-  { country: "Belarus", recipe_id: "foreign_intervention", score: 94.2, rank_delta_q: 0 },
-  {
-    country: "Tajikistan",
-    recipe_id: "foreign_intervention",
-    score: 88.5,
-    rank_delta_q: 2,
-  },
-  {
-    country: "Myanmar",
-    recipe_id: "civil_war_and_insurgency",
-    score: 77.8,
-    rank_delta_q: 0,
-  },
-  {
-    country: "Yemen",
-    recipe_id: "civil_war_and_insurgency",
-    score: 74.5,
-    rank_delta_q: 0,
-  },
-  { country: "Pakistan", recipe_id: "terrorist_attack", score: 71.5, rank_delta_q: 1 },
-  {
-    country: "Sudan",
-    recipe_id: "civil_war_and_insurgency",
-    score: 71.2,
-    rank_delta_q: -2,
-  },
-  { country: "Argentina", recipe_id: "economic_recession", score: 72.1, rank_delta_q: 3 },
-  { country: "Tunisia", recipe_id: "elections_and_voting", score: 71.2, rank_delta_q: 0 },
-  { country: "Turkey", recipe_id: "economic_recession", score: 68.5, rank_delta_q: -1 },
-  { country: "DRC", recipe_id: "civil_war_and_insurgency", score: 68.4, rank_delta_q: 0 },
-  { country: "Iraq", recipe_id: "terrorist_attack", score: 67.8, rank_delta_q: 0 },
-  { country: "Lebanon", recipe_id: "economic_recession", score: 65.4, rank_delta_q: 2 },
-];
-
-/**
- * Build TE top pairs: top-1 from each TE recipe row, for inclusion in the
- * hero strip. rank_delta_q is null (vintage 1 — no prior vintage to diff).
- */
-function buildTETopPairs(): BoardPair[] {
+function buildAllTopPairs(): BoardPair[] {
   const pairs: BoardPair[] = [];
-  for (const recipeId of SAMPLE_10_RECIPE_IDS) {
+  for (const recipeId of FLEET_RUN_1_RECIPE_IDS) {
     try {
       const row = getTERecipeRow(recipeId);
       const top = row?.cells.find((c) => c.state === "scored" && c.score != null);
@@ -184,19 +132,15 @@ function buildTETopPairs(): BoardPair[] {
         });
       }
     } catch {
-      // skip
+      // skip missing / malformed scores files
     }
   }
-  return pairs;
+  return pairs.sort((a, b) => b.score - a.score);
 }
 
 export function getTopPairs(): BoardPair[] {
-  // Merge hand-authored cascade pairs with real TE top pairs.
-  // De-duplicate by (country, recipe_id) — cascade takes precedence.
-  const cascade = TOP_PAIRS_RAW.slice();
-  const seen = new Set(cascade.map((p) => `${p.country}:${p.recipe_id}`));
-  const te = buildTETopPairs().filter((p) => !seen.has(`${p.country}:${p.recipe_id}`));
-  return [...cascade, ...te].sort((a, b) => b.score - a.score);
+  // Derived entirely from real fleet-run-1 scores — no hand-authored data.
+  return buildAllTopPairs();
 }
 
 /* ────────────────────────────────────────────────────────────────────────── */
@@ -267,157 +211,26 @@ export function getCuratedTopPairs(): CuratedBoardPair[] {
 /* PER-RECIPE ROWS — the heatmap grid                                          */
 /* ────────────────────────────────────────────────────────────────────────── */
 
-/**
- * Builds a `BoardCell` with the right state. Convenience constructor used
- * inline below.
- */
-const scored = (country: string, score: number): BoardCell => ({
-  country,
-  score,
-  state: "scored",
-});
-
-const RECIPE_ROW_CELLS: Record<string, BoardCell[]> = {
-  foreign_intervention: [
-    scored("Iran", 98.1),
-    scored("Turkmenistan", 97.0),
-    scored("Equatorial Guinea", 96.9),
-    scored("Belarus", 94.2),
-    scored("Tajikistan", 88.5),
-    scored("Eritrea", 84.1),
-    scored("Venezuela", 81.7),
-    scored("Cuba", 78.9),
-    scored("Nicaragua", 75.6),
-    scored("Syria", 73.4),
-  ],
-  civil_war_and_insurgency: [
-    scored("Myanmar", 77.8),
-    scored("Yemen", 74.5),
-    scored("Sudan", 71.2),
-    scored("DRC", 68.4),
-    scored("Mali", 64.5),
-    scored("Ethiopia", 61.8),
-    scored("Somalia", 60.1),
-    scored("Burkina Faso", 58.7),
-    scored("CAR", 56.4),
-    scored("Niger", 54.2),
-  ],
-  terrorist_attack: [
-    scored("Pakistan", 71.5),
-    scored("Iraq", 67.8),
-    scored("Mali", 64.2),
-    scored("Burkina Faso", 61.0),
-    scored("Nigeria", 58.5),
-    scored("Somalia", 55.8),
-    scored("Afghanistan", 54.1),
-    scored("Mozambique", 51.4),
-    scored("Niger", 49.7),
-    scored("Cameroon", 47.2),
-  ],
-  economic_recession: [
-    scored("Argentina", 72.1),
-    scored("Turkey", 68.5),
-    scored("Lebanon", 65.4),
-    scored("Sri Lanka", 61.8),
-    scored("Pakistan", 58.2),
-    scored("Egypt", 55.7),
-    scored("Ghana", 53.1),
-    scored("Zambia", 50.8),
-    scored("Tunisia", 48.4),
-    scored("Ecuador", 46.0),
-  ],
-  elections_and_voting: [
-    scored("Tunisia", 71.2),
-    scored("Senegal", 68.4),
-    scored("Brazil", 64.8),
-    scored("South Africa", 62.5),
-    scored("Indonesia", 58.7),
-    scored("Mexico", 56.1),
-    scored("Philippines", 53.5),
-    scored("Poland", 51.2),
-    scored("India", 49.4),
-    scored("Turkey", 47.0),
-  ],
-};
+// RECIPE_ROW_CELLS intentionally removed — all 5 cascade-era hand-authored
+// rows (foreign_intervention, civil_war_and_insurgency, terrorist_attack,
+// economic_recession, elections_and_voting) are now in fleet-run-1 with real
+// scores. getRecipeRow() falls through to getTERecipeRow() for them.
+// Keeping this map non-empty would shadow the real pipeline data.
+const RECIPE_ROW_CELLS: Record<string, BoardCell[]> = {};
 
 /**
- * Per R&D reply §Q7: n_countries_scored varies per recipe based on which
- * countries have coverage for that recipe's selected indicators.
- * Platform roster ≈174 at current vintage; coverage is recipe-specific.
- *
- * Illustrative values per the cohort-coverage amendment (qgi-docs#130).
+ * PLATFORM_ROSTER_SIZE: fallback denominator for coverage captions when the
+ * scores file doesn't carry n_countries_scored (should not happen for
+ * fleet-run-1, but kept as a safe floor).
  */
 const PLATFORM_ROSTER_SIZE = 174;
 
-const RECIPE_COVERAGE: Record<string, { n_scored: number; not_scored_iso: string[] }> = {
-  // Foreign intervention uses RQ.EST + v2pepwrgen + v2stfisccap + v2elintmon —
-  // V-Dem coverage gap on a handful of microstates.
-  foreign_intervention: {
-    n_scored: 167,
-    not_scored_iso: ["AND", "MCO", "SMR", "TUV", "NRU", "PLW", "MHL"],
-  },
-  // Civil war uses VC.BTL.DETH which has small-state gaps.
-  civil_war_and_insurgency: {
-    n_scored: 158,
-    not_scored_iso: [
-      "AND",
-      "LIE",
-      "MCO",
-      "SMR",
-      "TUV",
-      "NRU",
-      "PLW",
-      "MHL",
-      "FSM",
-      "KIR",
-      "TON",
-      "VAT",
-      "VUT",
-      "WSM",
-      "ATG",
-      "BHS",
-    ],
-  },
-  // Terrorism uses CSO indicators + GTD coverage; some small-island gaps.
-  terrorist_attack: {
-    n_scored: 162,
-    not_scored_iso: [
-      "AND",
-      "LIE",
-      "MCO",
-      "SMR",
-      "TUV",
-      "NRU",
-      "PLW",
-      "MHL",
-      "FSM",
-      "KIR",
-      "VAT",
-      "VUT",
-    ],
-  },
-  // Economic recession uses WB national accounts — strong global coverage.
-  economic_recession: {
-    n_scored: 171,
-    not_scored_iso: ["AND", "MCO", "VAT"],
-  },
-  // Elections uses V-Dem electoral indicators — gap on non-electoral regimes is by-design (still scored as "no election" → low score, not "not_scored"). Coverage gap is small-state V-Dem absence.
-  elections_and_voting: {
-    n_scored: 164,
-    not_scored_iso: [
-      "AND",
-      "LIE",
-      "MCO",
-      "SMR",
-      "TUV",
-      "NRU",
-      "PLW",
-      "MHL",
-      "FSM",
-      "VAT",
-    ],
-  },
-};
+// RECIPE_COVERAGE removed — all 44 fleet-run-1 recipes carry real
+// n_countries_scored in their scores file (top-level field). The five
+// previously hand-authored entries (foreign_intervention,
+// civil_war_and_insurgency, terrorist_attack, economic_recession,
+// elections_and_voting) are superseded by real pipeline counts.
+// getRecipeRow() now reads coverage from loadScores() for every TE recipe.
 
 /**
  * Recipes that are explicitly "queued" / no-walk on the board.
@@ -442,10 +255,10 @@ const EMPTY_QUEUED_CELLS: BoardCell[] = Array.from({ length: 10 }, () => ({
   state: "no_walk_yet" as const,
 }));
 
-// ─── TE sample-10 row builder ─────────────────────────────────────────────────
+// ─── TE fleet-run-1 row builder ───────────────────────────────────────────────
 
 /**
- * Build a RecipeRow for a TE sample-10 recipe using real scores.
+ * Build a RecipeRow for a TE fleet-run-1 recipe using real scores.
  * Returns null if scores are unavailable (loader throws).
  */
 function buildTERecipeRow(recipeId: string): RecipeRow | null {
@@ -469,12 +282,17 @@ function buildTERecipeRow(recipeId: string): RecipeRow | null {
     while (cells.length < 10) {
       cells.push({ country: "—", score: null, state: "not_scored" as const });
     }
+    // Round-2: countries_not_scored_iso now baked in scores file.
+    const countries_not_scored_iso =
+      Array.isArray(sf.countries_not_scored_iso) && sf.countries_not_scored_iso.length > 0
+        ? sf.countries_not_scored_iso
+        : null;
     return {
       recipe_id: recipeId,
       cells,
       display_state: "walked_no_graduation",
       n_countries_scored,
-      countries_not_scored_iso: null, // not available in v3 contract
+      countries_not_scored_iso,
       platform_roster_size: sf.n_countries_scored ?? PLATFORM_ROSTER_SIZE,
     };
   } catch {
@@ -512,19 +330,8 @@ function getTERecipeRow(recipeId: string): RecipeRow | null {
  * the same key it already renders.
  */
 export function getRecipeFullScoreMap(recipeId: string): Record<string, number> {
-  // 1. Hand-authored cascade rows
-  const cells = RECIPE_ROW_CELLS[recipeId];
-  if (cells) {
-    const map: Record<string, number> = {};
-    for (const c of cells) {
-      if (c.state === "scored" && typeof c.score === "number") {
-        map[c.country] = c.score;
-      }
-    }
-    return map;
-  }
-  // 2. TE sample-10 rows (real data, ~150 countries per recipe)
-  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+  // TE fleet-run-1 rows (real data — all 44 walked recipes).
+  if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     try {
       const sf = loadScores(recipeId);
       const map: Record<string, number> = {};
@@ -538,34 +345,20 @@ export function getRecipeFullScoreMap(recipeId: string): Record<string, number> 
       return {};
     }
   }
-  // 3. Queued / no walk
+  // Queued / no walk
   return {};
 }
 
 export function getRecipeRow(recipeId: string): RecipeRow | null {
-  // 1. Hand-authored cascade rows.
   const recipe = getRecipe(recipeId);
   if (!recipe) return null;
-  const cells = RECIPE_ROW_CELLS[recipeId];
-  if (cells) {
-    const display_state: RecipeRow["display_state"] =
-      recipe.status === "live_legacy" ? "live_legacy" : "walked_no_graduation";
-    const coverage = RECIPE_COVERAGE[recipeId];
-    return {
-      recipe_id: recipeId,
-      cells,
-      display_state,
-      n_countries_scored: coverage?.n_scored ?? null,
-      countries_not_scored_iso: coverage?.not_scored_iso ?? null,
-      platform_roster_size: PLATFORM_ROSTER_SIZE,
-    };
-  }
-  // 2. TE sample-10 rows (real data).
-  if (SAMPLE_10_RECIPE_IDS.includes(recipeId)) {
+  // 1. TE fleet-run-1 rows (real data — all 44 walked recipes including the
+  //    former cascade-era hand-authored group).
+  if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     const teRow = getTERecipeRow(recipeId);
     if (teRow) return teRow;
   }
-  // 3. Queued / no walk.
+  // 2. Queued / no walk.
   return {
     recipe_id: recipeId,
     cells: EMPTY_QUEUED_CELLS,
@@ -577,23 +370,15 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
 }
 
 /**
- * Recipes shown on the board, in order. Cascade visible rows first,
- * then TE sample-10 rows (all walked_no_graduation), then queued sample.
+ * Recipes shown on the board, in order. Fleet-run-1 walked recipes first
+ * (all 44, real data — including the former cascade-era group), then queued
+ * recipes that didn't make the fleet-run-1 set but are in the cascade catalog.
  */
 export function getBoardRecipeIds(): string[] {
-  return [
-    "foreign_intervention",
-    "civil_war_and_insurgency",
-    "terrorist_attack",
-    "economic_recession",
-    "elections_and_voting",
-    // TE sample-10 walked recipes (real data)
-    ...SAMPLE_10_RECIPE_IDS.filter(
-      (id) => id !== "terrorist_attack" // already listed above from cascade set
-    ),
-    // Queued (no walk yet)
-    ...QUEUED_RECIPES_ON_BOARD,
-  ];
+  const fleetSet = new Set(FLEET_RUN_1_RECIPE_IDS);
+  // Queued-only entries: board recipes not in fleet-run-1
+  const queuedOnly = QUEUED_RECIPES_ON_BOARD.filter((id) => !fleetSet.has(id));
+  return [...FLEET_RUN_1_RECIPE_IDS, ...queuedOnly];
 }
 
 export function getBoardRecipes(): TrackerRecipe[] {
@@ -702,7 +487,7 @@ const RECENT_MOVEMENTS_FUTURE_SHAPE: RankMovement[] = [
     new_rank: 10,
     delta_quarters: 1,
     vs_vintage: "2026-Q2",
-    blurb: "First appearance inside this row's top-10 since the prior vintage.",
+    blurb: "First appearance inside this row's top-10 since the prior release.",
   },
 ];
 

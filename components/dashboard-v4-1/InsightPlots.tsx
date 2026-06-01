@@ -37,7 +37,7 @@ export function CoverageMapPlot({ data }: { data: CoverageSummary }) {
   return (
     <PanelBase
       title="Global coverage"
-      caption="Every country in the roster gets scored on every recipe in the catalog, every vintage."
+      caption="Every country in the roster gets scored on every recipe in the catalog, every release."
       accent={CALM_SLATE_BLUE}
     >
       <div
@@ -432,7 +432,7 @@ export function TopPairTeaserPlot({ pairs }: { pairs: CountryPairTeaser[] }) {
         {pairs.map((p, i) => (
           <Link
             key={`${p.country_a}-${p.country_b}-${i}`}
-            href={"/nearest-analog" as Route}
+            href={"/analogues" as Route}
             style={{
               textDecoration: "none",
               color: "inherit",

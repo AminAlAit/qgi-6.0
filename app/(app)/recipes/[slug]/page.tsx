@@ -21,6 +21,11 @@ import {
   getTotalEventsInCorpus,
 } from "@/lib/te-mock/precedents-corpus-mock";
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
+import {
+  loadCardV3,
+  loadScores,
+  FLEET_RUN_1_RECIPE_IDS,
+} from "@/lib/te-data-contract/load";
 import recipeTracker from "@/data/recipe-tracker.json";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
@@ -116,27 +121,10 @@ export default async function RecipeDetailV41Page({ params }: Params) {
             v41StatusLabel.label === "Prior version"
           ? "#7A8FA0"
           : "#5B7E99";
-  const v41StatusChip = (
-    <span
-      style={{
-        padding: "5px 12px",
-        fontSize: "12px",
-        border: `1px solid ${v41StatusColor}`,
-        color: v41StatusColor,
-        backgroundColor: `${v41StatusColor}26`,
-        borderRadius: "4px",
-        letterSpacing: "0.3px",
-        fontFamily: "ui-monospace, monospace",
-        fontWeight: 600,
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "5px",
-        whiteSpace: "nowrap",
-      }}
-    >
-      {v41StatusLabel.label}
-    </span>
-  );
+  // 2026-05-30: chip JSX retired (founder ask). Kept the label + color
+  // derivation above so the chip can drop back in here if a future
+  // status (e.g., retired) needs surfacing. Suppress unused-var lint.
+  void v41StatusColor;
 
   // V4.1 round-3 (2026-05-29): /recipe-tracker route deleted. The demo
   // pointer now lands on /blog/recipe-tracker — the audience-facing
@@ -166,9 +154,41 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   ) : null;
 
   // LOCO-AUC + CI for the discrimination panel.
-  const locoAuc = demo ? 0.9147 : (recipe.stats?.loco_auc ?? null);
-  const ciLow = demo ? 0.872 : undefined;
-  const ciHigh = demo ? 0.948 : undefined;
+  // Source: real card stats (ci95_lo / ci95_hi). Fleet-run-1 recipes carry
+  // bootstrap CI from the pipeline bake. Cascade-only / queued recipes have
+  // no card — render the point estimate only (honest empty state).
+  const isTeRecipe = FLEET_RUN_1_RECIPE_IDS.includes(slug);
+  let locoAuc: number | null = recipe.stats?.loco_auc ?? null;
+  let ciLow: number | undefined;
+  let ciHigh: number | undefined;
+  // Round-2: 5-fold CV AUC from scores file top-level.
+  let cvAucFull: number | null = null;
+  // Window search range for WindowPanel: min/max of windows searched in the
+  // greedy walk history. Not present on cascade-only recipes (undefined →
+  // WindowPanel renders without the "Chosen from X–Y years" caption).
+  let windowSearchMin: number | undefined;
+  let windowSearchMax: number | undefined;
+  if (isTeRecipe) {
+    try {
+      const card = loadCardV3(slug);
+      locoAuc = card.stats.loco_auc;
+      ciLow = card.stats.ci95_lo;
+      ciHigh = card.stats.ci95_hi;
+      const windows = card.greedy_walk.history.map((h) => h.window);
+      if (windows.length > 0) {
+        windowSearchMin = Math.min(...windows);
+        windowSearchMax = Math.max(...windows);
+      }
+    } catch {
+      // Card unavailable — point estimate only; window range stays undefined.
+    }
+    try {
+      const sf = loadScores(slug);
+      cvAucFull = sf.cv_auc_full ?? null;
+    } catch {
+      // Scores unavailable — cvAucFull stays null.
+    }
+  }
 
   const enrichedIndicators =
     extras.indicators.length > 0
@@ -188,7 +208,11 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   return (
     <PageLayout
       recipe={recipeWithColor}
-      statusChip={v41StatusChip}
+      // 2026-05-30: status chip removed from the recipe header (founder
+      // ask). The chip + tone-color logic above stays in case we want to
+      // re-attach somewhere subtler in the page later. PageLayout now
+      // omits the chip slot entirely when statusChip is null.
+      statusChip={null}
       subtitle={`${enrichedIndicators.length} signals · ${mock.window}y window`}
       definition={heroDefinition}
       demoDisclosure={demoDisclosure}
@@ -212,12 +236,12 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         nPositives={mock.nPositives ?? 0}
         thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
       />
-      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} />
+      <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} wide />
       <WindowPanel
         familyColor={familyColor}
         windowYears={mock.window}
-        ciLow={3}
-        ciHigh={25}
+        ciLow={windowSearchMin}
+        ciHigh={windowSearchMax}
       />
 
       {/* 2. VALIDATION (does it work) */}
@@ -227,6 +251,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         ciLow={ciLow}
         ciHigh={ciHigh}
         showResults={showResults}
+        cvAucFull={cvAucFull}
       />
       <ReliabilityPanel
         familyColor={familyColor}
@@ -244,6 +269,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         countriesBottom={extras.countriesBottom}
         countriesFull={countriesFull}
         showResults={showResults}
+        recipeId={recipe.recipe_id}
       />
       <ExpandableShell familyColor={familyColor} label="Score distribution">
         <ScoreDistributionPanel

@@ -66,7 +66,7 @@ export default function LoginPage() {
           </div>
           <p className="text-sm leading-relaxed" style={{ color: "var(--qgi-text)" }}>
             Account creation is not yet open. The dashboard and all country intelligence
-            pages are publicly browsable today — no login needed.
+            pages are publicly browsable today, no login needed.
           </p>
         </div>
 

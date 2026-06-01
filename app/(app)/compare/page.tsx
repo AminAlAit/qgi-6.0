@@ -7,7 +7,7 @@
  * face-offs) styled to look like a professional comparative-analytics
  * surface even at 8px blur. A centered overlay sits on top with the
  * founder-authored "Coming soon" message and a deflection link to the
- * Nearest Analog page.
+ * Analogues page.
  *
  * The whole surface is height-constrained to 100% of the main column
  * with overflow:hidden so neither the user nor the visible message ever
@@ -150,7 +150,7 @@ export default async function ComparePage() {
           }}
         >
           <PanelHeader
-            eyebrow="§01 — Shared recipe matchup"
+            eyebrow="§01 · Shared recipe matchup"
             title="Where the two countries diverge most"
           />
           <div
@@ -189,7 +189,7 @@ export default async function ComparePage() {
             }}
           >
             <PanelHeader
-              eyebrow="§02 — Indicator face-off"
+              eyebrow="§02 · Indicator face-off"
               title="Drivers behind the gap"
             />
             <div style={{ display: "flex", flexDirection: "column", gap: "9px" }}>
@@ -220,7 +220,7 @@ export default async function ComparePage() {
               accent={CHN}
             />
             <StatTile
-              label="Historical analog overlap"
+              label="Historical analogue overlap"
               big="4 / 7"
               caption="four shared historical pre-event matches"
               accent={PURPLE}
@@ -289,16 +289,16 @@ export default async function ComparePage() {
           >
             We&apos;re currently working on making it possible for you to compare
             countries to one another. Same recipes, same metrics, side by side. Until
-            then, you can compare any country to its closest historical analog via
+            then, you can compare any country to its closest historical analogue via
             <Link
-              href={"/nearest-analog" as Route}
+              href={"/analogues" as Route}
               style={{
                 color: "var(--qgi-accent)",
                 textDecoration: "none",
                 marginLeft: "5px",
               }}
             >
-              Nearest Analog
+              Analogues
             </Link>
             .
           </p>

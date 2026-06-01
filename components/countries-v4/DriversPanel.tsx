@@ -50,7 +50,7 @@ function AttributionSection({
       <SubSection
         letter="A"
         title="Why this country scores high"
-        copy="SHAP signal share unavailable — country has no top-lit recipe at the current vintage."
+        copy="SHAP signal share unavailable: country has no top-lit recipe at the current release."
       >
         <EmptyBox text="No attribution surface yet." />
       </SubSection>
@@ -72,7 +72,7 @@ function AttributionSection({
       copy={
         <>
           SHAP attribution on the top-lit recipe (
-          <strong>{recipe?.label ?? recipeId}</strong>) — the share each indicator
+          <strong>{recipe?.label ?? recipeId}</strong>): the share each indicator
           contributes to the country&apos;s discrimination rank. Sums to 100. This is the
           model&apos;s &ldquo;reason,&rdquo; not the underlying substrate movement (see §B
           below).
@@ -198,7 +198,7 @@ function MovementSection({ movement }: { movement: readonly CountryDriverMovemen
       <SubSection
         letter="B"
         title="What&rsquo;s moving in the panels"
-        copy="No indicator movement surfaced at the current vintage."
+        copy="No indicator movement surfaced at the current release."
       >
         <EmptyBox text="Movement panel empty." />
       </SubSection>
@@ -318,7 +318,7 @@ function MovementCard({ driver }: { driver: CountryDriverMovement }) {
         }}
       >
         <code>{driver.indicator_code}</code>
-        <span title="Observed z-shift across the visible 12-quarter window — not a forecast.">
+        <span title="Observed z-shift across the visible 12-quarter window, not a forecast.">
           Δz {driver.z_score_change > 0 ? "+" : ""}
           {driver.z_score_change.toFixed(1)}
         </span>

@@ -260,7 +260,7 @@ export function IndexChart({
     backgroundColor: "transparent",
     title: {
       text: indexName,
-      subtext: `R²=${Number.isFinite(r2) ? r2.toFixed(3) : "—"}  n=${actualN}  p=${formatPValue(pValue)} ${sig}`,
+      subtext: `R²=${Number.isFinite(r2) ? r2.toFixed(3) : "n/a"}  n=${actualN}  p=${formatPValue(pValue)} ${sig}`,
       textStyle: { color: "var(--qgi-text-muted)", fontSize: 10, fontWeight: 400 },
       subtextStyle: {
         color: correlationColor(correlation),

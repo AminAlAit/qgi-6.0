@@ -24,6 +24,9 @@ import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 import { familyColor, CALM_SLATE_BLUE } from "@/lib/te-mock/l1-families";
 
+// Slate-blue accent (#5B7E99) used for "not yet curated" placeholder elements.
+const CURATION_PLACEHOLDER_COLOR = "#5B7E99";
+
 // P2-2: lightweight region lookup covering both current-country subjects and
 // historical analogs that appear in nearest-analog-data.ts. Used to detect
 // cross-region matches without needing a prop from AnalogResults.
@@ -288,7 +291,11 @@ export function AnalogCard({
           })()}
       </div>
 
-      {/* Sparkline overlay */}
+      {/* Sparkline overlay — rendered only when both trajectories are non-empty.
+          Pipeline fleet-run-1 does not yet emit per-analog indicator_trajectory;
+          the current country's trajectory is also null in fleet-run-1. Both map
+          to [] in buildAllEntries(). When either is empty we show a quiet
+          "not yet curated" placeholder instead of crashing. */}
       <div
         style={{
           padding: "10px",
@@ -308,14 +315,31 @@ export function AnalogCard({
         >
           12-QUARTER COMPOSITE TRAJECTORY
         </div>
-        <TrajectorySparkline
-          currentSeries={currentTrajectory}
-          analogSeries={analog.indicator_trajectory}
-          currentLabel={currentCountryName}
-          analogLabel={`${analog.country} ${analog.year}`}
-          analogColor={l1Color}
-          height={84}
-        />
+        {currentTrajectory.length > 1 && analog.indicator_trajectory.length > 1 ? (
+          <TrajectorySparkline
+            currentSeries={currentTrajectory}
+            analogSeries={analog.indicator_trajectory}
+            currentLabel={currentCountryName}
+            analogLabel={`${analog.country} ${analog.year}`}
+            analogColor={l1Color}
+            height={84}
+          />
+        ) : (
+          <div
+            style={{
+              padding: "14px 10px",
+              borderRadius: "4px",
+              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}33`,
+              background: `${CURATION_PLACEHOLDER_COLOR}0D`,
+              fontSize: "11px",
+              color: CURATION_PLACEHOLDER_COLOR,
+              fontFamily: "ui-monospace, monospace",
+              letterSpacing: "0.3px",
+            }}
+          >
+            Trajectory data not yet curated for this analogue.
+          </div>
+        )}
       </div>
 
       {/* Weak-match warning */}
@@ -332,11 +356,17 @@ export function AnalogCard({
             letterSpacing: "0.2px",
           }}
         >
-          ⚠ Weak analog: match score below the 70 floor. Interpret with caution.
+          ⚠ Weak analogue: match score below the 70 floor. Interpret with caution.
         </div>
       )}
 
-      {/* What happened next (HISTORICAL FACT only) */}
+      {/* What happened next (HISTORICAL FACT only).
+          Round-2: what_happened_next is still null from the bake. buildAllEntries()
+          maps null to "In training set." — this is the current state.
+          Render a quiet slate-blue badge for the placeholder; curated narrative in
+          normal text when it arrives. The badge text was updated from the old
+          "In training set." to "Narrative coming soon — research workstream in flight"
+          per the round-2 UX rules (V4.1 confidence-first, honest gap framing). */}
       <div>
         <div
           style={{
@@ -350,16 +380,55 @@ export function AnalogCard({
         >
           WHAT HAPPENED NEXT · {analog.country.toUpperCase()} {analog.year}
         </div>
-        <p
-          style={{
-            fontSize: "12.5px",
-            color: "var(--qgi-text)",
-            lineHeight: 1.55,
-            margin: 0,
-          }}
-        >
-          {analog.what_happened_next}
-        </p>
+        {!analog.what_happened_next ||
+        analog.what_happened_next === "In training set." ||
+        analog.what_happened_next ===
+          "Outcome history is still being curated for this analog." ? (
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "6px",
+              padding: "6px 10px",
+              borderRadius: "4px",
+              border: `1px solid ${CURATION_PLACEHOLDER_COLOR}44`,
+              background: `${CURATION_PLACEHOLDER_COLOR}0D`,
+            }}
+          >
+            <span
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: CURATION_PLACEHOLDER_COLOR,
+                opacity: 0.6,
+                flexShrink: 0,
+              }}
+              aria-hidden
+            />
+            <span
+              style={{
+                fontSize: "11px",
+                color: CURATION_PLACEHOLDER_COLOR,
+                fontFamily: "ui-monospace, monospace",
+                letterSpacing: "0.3px",
+              }}
+            >
+              Narrative coming soon: research workstream in flight
+            </span>
+          </div>
+        ) : (
+          <p
+            style={{
+              fontSize: "12.5px",
+              color: "var(--qgi-text)",
+              lineHeight: 1.55,
+              margin: 0,
+            }}
+          >
+            {analog.what_happened_next}
+          </p>
+        )}
       </div>
 
       {/* Secondary recipes */}

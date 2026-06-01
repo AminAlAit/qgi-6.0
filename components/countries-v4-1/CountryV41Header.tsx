@@ -117,7 +117,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             disabled
             aria-disabled="true"
             aria-label={`Generate Country Report for ${country.name} (coming soon)`}
-            title={`Coming soon: a thinking AI model reads everything QGI knows about ${country.name} — every recipe in play, its drivers, its analogs, its movement — and writes you a full intelligence report via API. Disabled today; live in a future release.`}
+            title={`Coming soon: a thinking AI model reads everything QGI knows about ${country.name} (every recipe in play, its drivers, its analogues, its movement) and writes you a full intelligence report via API. Disabled today; live in a future release.`}
             style={{
               display: "inline-flex",
               alignItems: "center",

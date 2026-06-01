@@ -1102,5 +1102,92 @@
     "n_predictions": 465,
     "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume."
   },
-  "per_country_scores_pointer": "scores/foreign_intervention.scores.json"
+  "per_country_scores_pointer": "scores/foreign_intervention.scores.json",
+  "shape_points": [
+    -0.012895385866328216,
+    0.003080181513571664,
+    0.019055748893471544,
+    0.03503131627337142,
+    0.05100688365327131,
+    0.06698245103317119,
+    0.08295801841307107,
+    0.09893358579297094,
+    0.11490915317287083,
+    0.1308847205527707,
+    0.14686028793267059,
+    0.1628358553125705
+  ],
+  "shap_importance_raw": {
+    "v2x_gender": 1.325905203819275,
+    "SP.DYN.LE00.IN": 1.2561066150665283,
+    "NY.GDP.MKTP.KD.ZG": 1.404740810394287,
+    "v2xeg_eqprotec": 0.7050734758377075,
+    "v2stfisccap": 0.7638109922409058
+  },
+  "shap_importance_normalized": {
+    "v2x_gender": 0.24303398121205674,
+    "SP.DYN.LE00.IN": 0.23024013376451685,
+    "NY.GDP.MKTP.KD.ZG": 0.2574842837465086,
+    "v2xeg_eqprotec": 0.1292376056646184,
+    "v2stfisccap": 0.1400039956122994
+  },
+  "shap_direction_signs": {
+    "v2x_gender": -1,
+    "SP.DYN.LE00.IN": -1,
+    "NY.GDP.MKTP.KD.ZG": -1,
+    "v2xeg_eqprotec": -1,
+    "v2stfisccap": -1
+  },
+  "per_feature_breakdown": {
+    "v2x_gender": {
+      "last_z": 0.343155175447464,
+      "mean_z": 0.044948186725378036,
+      "std_z": 0.31374070048332214,
+      "slope": 0.23278319835662842,
+      "accel": 0.14723794162273407,
+      "tertile1_mean": 0.07315061241388321,
+      "tertile2_mean": 0.05809418857097626,
+      "tertile3_mean": 0.11279518902301788
+    },
+    "SP.DYN.LE00.IN": {
+      "last_z": 0.14745214581489563,
+      "mean_z": 0.05678054690361023,
+      "std_z": 0.24453286826610565,
+      "slope": 0.1926819533109665,
+      "accel": 0.47069376707077026,
+      "tertile1_mean": 0.06550858169794083,
+      "tertile2_mean": 0.025568215176463127,
+      "tertile3_mean": 0.052888423204422
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "last_z": 0.28162527084350586,
+      "mean_z": 0.15787898004055023,
+      "std_z": 0.17129676043987274,
+      "slope": 0.1840994954109192,
+      "accel": 0.12269552052021027,
+      "tertile1_mean": 0.19475361704826355,
+      "tertile2_mean": 0.1629614382982254,
+      "tertile3_mean": 0.1294296681880951
+    },
+    "v2xeg_eqprotec": {
+      "last_z": 0.026474032551050186,
+      "mean_z": 0.06482011079788208,
+      "std_z": 0.2615595757961273,
+      "slope": 0.07516796141862869,
+      "accel": 0.10075413435697556,
+      "tertile1_mean": 0.041226428002119064,
+      "tertile2_mean": 0.04959893971681595,
+      "tertile3_mean": 0.08547227829694748
+    },
+    "v2stfisccap": {
+      "last_z": 0.05406592786312103,
+      "mean_z": 0.013889498077332973,
+      "std_z": 0.20405273139476776,
+      "slope": 0.24036605656147003,
+      "accel": 0.07486564666032791,
+      "tertile1_mean": 0.05619434267282486,
+      "tertile2_mean": 0.06567399203777313,
+      "tertile3_mean": 0.054702773690223694
+    }
+  }
 }

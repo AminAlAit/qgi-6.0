@@ -9,10 +9,9 @@ import {
   ScrollText,
   Globe,
   Gauge,
-  Layers,
   Columns2,
   Telescope,
-  Waves,
+  Layers,
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
@@ -79,7 +78,7 @@ type NavEntry = NavGroup | NavStandalone;
 const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   {
     type: "standalone",
-    label: "Dashboard",
+    label: "Briefing",
     href: "/dashboard",
     icon: <LayoutDashboard size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
@@ -108,17 +107,18 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     icon: <Globe size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
+  // Compound Risk entry removed 2026-05-30. The route was a polycrisis
+  // leaderboard; the founder elected to take it down and revisit later
+  // on different hypotheses (the Stats/ML trio paper at
+  // qgi-docs/internal/ops/te-fleet-run-1-... documents the rejuvenation
+  // path: hand-tag recipe polarity, then ship as
+  // 'Compound Negative-Event Density'). Components + data live on in
+  // components/compound-risk/ + lib/te-mock/compound-risk-data.ts so
+  // the rebuild starts from scaffolding, not from scratch.
   {
     type: "standalone",
-    label: "Compound Risk",
-    href: "/compound-risk",
-    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
-    badge: "PRIMARY",
-  },
-  {
-    type: "standalone",
-    label: "Nearest Analog",
-    href: "/nearest-analog",
+    label: "Analogues",
+    href: "/analogues",
     icon: <Telescope size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
@@ -126,7 +126,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     type: "standalone",
     label: "Patterns",
     href: "/patterns",
-    icon: <Waves size={16} strokeWidth={1.5} aria-hidden="true" />,
+    icon: <Layers size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
   // Compare is bottom-slotted (2026-05-29) — it's the only locked surface,
@@ -378,7 +378,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
             href="/dashboard"
             onClick={closeOnNavigate}
             className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
-            title="Go to Dashboard (command center)"
+            title="Go to Briefing (command center)"
           >
             <span
               style={{
@@ -592,7 +592,7 @@ function NavLeafLink({
       onClick={onClick}
       aria-current={active ? "page" : undefined}
       aria-label={collapsed ? `${label}${comingSoon ? " (coming soon)" : ""}` : undefined}
-      title={collapsed ? `${label}${comingSoon ? " — Coming soon" : ""}` : undefined}
+      title={collapsed ? `${label}${comingSoon ? ": Coming soon" : ""}` : undefined}
       className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",

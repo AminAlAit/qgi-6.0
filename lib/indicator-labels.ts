@@ -185,7 +185,19 @@ export interface ResolverResult {
  *   resolveIndicatorLabel("VC.BTL.DETH")  // no transform
  *     → { label: "Battle-related deaths (number of people)", found: true, ... }
  */
-export function resolveIndicatorLabel(rawId: string): ResolverResult {
+export function resolveIndicatorLabel(rawId: string | null | undefined): ResolverResult {
+  // 2026-05-30 hardening — fleet-run-1 shap_attribution[] occasionally
+  // carries entries with no `indicator_code` (data gap). Returning a
+  // safe placeholder here prevents the call from crashing the entire
+  // SSR render of every page that imports countries-v4-data.ts.
+  if (!rawId) {
+    return {
+      label: "(indicator code missing)",
+      found: false,
+      baseId: "",
+      transformLabel: "",
+    };
+  }
   let baseId = rawId;
   let transformLabel = "";
   for (const suffix of TRANSFORM_SUFFIXES) {
@@ -207,6 +219,6 @@ export function resolveIndicatorLabel(rawId: string): ResolverResult {
 }
 
 /** Convenience wrapper: just the label string. */
-export function getIndicatorLabel(rawId: string): string {
+export function getIndicatorLabel(rawId: string | null | undefined): string {
   return resolveIndicatorLabel(rawId).label;
 }
