@@ -21,7 +21,9 @@ describe("Sidebar", () => {
     // 2026-05-29: Recipe Tracker route deleted (folded into /recipes).
     // 2026-05-30: Compound Risk route taken down (308 → /risk-board).
     // Will rejuvenate as compound-negative-event-density per Stats trio.
-    expect(screen.getByText("Dashboard")).toBeInTheDocument();
+    // Top slot label is "Briefing" (route still /dashboard); the
+    // "Dashboard" copy was renamed to "Briefing" — see NAV_STRUCTURE.
+    expect(screen.getByText("Briefing")).toBeInTheDocument();
     expect(screen.getByText("Recipes")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Risk Board")).toBeInTheDocument();

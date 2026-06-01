@@ -93,7 +93,7 @@ describe("PatternTrajectoryCell", () => {
     };
     render(<PatternTrajectoryCell trajectory={trajectory} leaderCountry="South Korea" />);
     expect(
-      screen.getByText(/Window elapsed 2024 — outcome not yet determined by QGI/)
+      screen.getByText(/Window elapsed 2024: outcome not yet determined by QGI/)
     ).toBeInTheDocument();
     expect(screen.queryByText(/Falsifies if/)).not.toBeInTheDocument();
   });

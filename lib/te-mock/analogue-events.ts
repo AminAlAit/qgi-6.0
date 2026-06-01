@@ -83,7 +83,10 @@ export function findAnalogueEvent(
     const dist = Math.abs(e.year - year);
     // Closest year wins; ties break toward the event at or after the analogue
     // year (the one the analogue is genuinely "running up to").
-    if (dist < bestDist || (dist === bestDist && best != null && e.year >= year && best.year < year)) {
+    if (
+      dist < bestDist ||
+      (dist === bestDist && best != null && e.year >= year && best.year < year)
+    ) {
       bestDist = dist;
       best = e;
     }
