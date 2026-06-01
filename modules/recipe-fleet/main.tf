@@ -620,8 +620,8 @@ resource "aws_lambda_function" "recipe_fleet_frontend_sync" {
 # ---------------------------------------------------------------------------
 # Batch JobDefinition — bake-te-fleet-run (lane 5 of pipeline build, qgi-aws-tf#973).
 #
-# Reuses the `qgi-recipe-fleet:latest` image (same arm64 build that runs
-# the walker), but with a different command: invoke
+# Reuses the same pinned-digest image as the walker (local.recipe_fleet_image —
+# qgi-recipe-fleet@sha256:..., never :latest), but with a different command: invoke
 # `bake_te_fleet_run_1.py` in AWS mode (BAKE_MODE=aws). The script reads
 # walk artifacts from S3, applies all bucket-A enrichments, writes the
 # corpus to S3 under frontend-data/te-fleet-run-{N}/.
@@ -980,8 +980,9 @@ resource "aws_sfn_state_machine" "recipe_fleet" {
       # FLEET-4b: ItemsPath is "$.runnable_jobs" — the SIZED form from the manifest
       # (build_recipe_manifest #962). Each item = {recipe_ids, vcpu, tier, ...}; the caller
       # passes the manifest's runnable_jobs as the execution input (pre-filtered to N_pos>=60).
-      # MaxConcurrency=5 (was 2): more overlap; actual concurrency is hard-bounded by the
-      # compute env max_vcpus=48 (≤3 fat jobs at 16 vCPU), so this never exceeds the cost cap.
+      # MaxConcurrency (see the SPEED CRANK note on the Map state below): actual concurrency
+      # is hard-bounded by the compute env max_vcpus=128 (sum of the jobs' vCPUs), so it
+      # never exceeds the cost cap.
       # -----------------------------------------------------------------
       "Fleet Fan-out" = {
         Type           = "Map"

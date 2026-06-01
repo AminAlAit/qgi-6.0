@@ -78,8 +78,14 @@ variable "recipe_manifest_s3_key" {
 # digest into both JobDefs. Update = push a new tag, bump this, re-apply.
 variable "recipe_fleet_image_tag" {
   type        = string
-  default     = "latest"
+  default     = ""
   description = "ECR tag of qgi-recipe-fleet to pin (resolved to an immutable digest). Set per deploy to a specific build tag, never 'latest', so every job runs a provable image."
+  # Sonnet #40 BLOCKER: a 'latest' (or empty) default would silently re-introduce the
+  # stale-image incident on any env that forgets to override it. Force every env to pin.
+  validation {
+    condition     = var.recipe_fleet_image_tag != "" && var.recipe_fleet_image_tag != "latest"
+    error_message = "recipe_fleet_image_tag must be an explicit immutable build tag (e.g. bake-panels-527004d), never '' or 'latest' — that defeats the digest perma-fix."
+  }
 }
 
 variable "tags" {
