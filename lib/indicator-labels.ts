@@ -24,6 +24,7 @@
  * Isolated test coverage: `lib/__tests__/indicator-labels.test.ts`.
  */
 import indexesData from "@/data/indexes.json";
+import catalogData from "@/data/indicator-catalog.json";
 
 // ---------------------------------------------------------------------------
 // Catalog (indexes.json) — string-id → display name
@@ -33,6 +34,21 @@ const INDEXES_BY_STRING_ID = new Map<string, string>();
 for (const idx of indexesData as Array<{ id: string; name: string }>) {
   if (idx.id && idx.name) {
     INDEXES_BY_STRING_ID.set(idx.id, idx.name);
+  }
+}
+
+// Full active catalogue (109 entries incl. all 69 World Bank names) — the
+// authoritative provider-code → name source. Closes the te-fleet-run-2 inline
+// WB-name gap: when a bake leaves indicator_name null for a World Bank code,
+// the label still resolves here by code.
+const CATALOG_BY_CODE = new Map<string, string>();
+{
+  const arr = Array.isArray(catalogData)
+    ? (catalogData as Array<{ code?: string; name?: string }>)
+    : ((catalogData as { indicators?: Array<{ code?: string; name?: string }> })
+        .indicators ?? []);
+  for (const c of arr) {
+    if (c.code && c.name) CATALOG_BY_CODE.set(c.code, c.name);
   }
 }
 
@@ -209,7 +225,7 @@ export function resolveIndicatorLabel(rawId: string | null | undefined): Resolve
   }
   const fromIndexes = INDEXES_BY_STRING_ID.get(baseId);
   const fromSupplementary = SUPPLEMENTARY_LABELS[baseId];
-  const baseName = fromIndexes ?? fromSupplementary;
+  const baseName = fromIndexes ?? fromSupplementary ?? CATALOG_BY_CODE.get(baseId);
   const found = baseName !== undefined;
   // If no catalog hit, surface the raw base code rather than crash.
   // Analyst readers can still recognize the provider format.
