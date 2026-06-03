@@ -242,21 +242,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
 
-      // ─── 2026-05-30 — Pair detail demotion ─────────────────────────────
-      // Old pair-detail pages lived at /patterns/{pair_id} where pair_id was
-      // a numeric format like "57-176" or a long-form slug like
-      // "paraguay-south_korea-1963". These now live at /patterns/pair/{iso-iso}.
-      // New 5-segment pattern slugs (e.g. pt-es-1975-2024) are NOT redirected
-      // — they go directly to the new per-pattern detail page.
-      //
-      // Numeric pair IDs (e.g. 57-176): redirect to /patterns so users land
-      // on the catalogue rather than a 404. The numeric format is legacy and
-      // there are no known external inbound links to preserve.
-      {
-        source: "/patterns/:numA(\\d+)-:numB(\\d+)",
-        destination: "/patterns",
-        permanent: true,
-      },
+      // 2026-06-04: the numeric /patterns/<numA>-<numB> redirect is REMOVED.
+      // The catalogue's pattern slugs ARE numeric id-pairs ({country_a_id}-
+      // {country_b_id}, e.g. 172-208), and the per-pattern detail page now
+      // renders them for real (getPairBySlug). The old "numeric = legacy ->
+      // /patterns" rule was intercepting every real pattern click. Unknown
+      // slugs fall through to the page's notFound() (404), not a redirect.
 
       // ─── 2026-05-31 — pair-overview route retired ───────────────────────
       // 2-segment ISO-2 slugs (e.g. /patterns/gr-lb) used to serve a
