@@ -60,6 +60,7 @@ jobs:
       - name: Build app
         run: npm run build
         env:
+          NODE_OPTIONS: --max-old-space-size=6144
           NEXT_TELEMETRY_DISABLED: "1"
           SKIP_AUTH: "true"
           SKIP_AUTH_GROUPS: "pro"
