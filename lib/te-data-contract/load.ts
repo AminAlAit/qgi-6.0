@@ -7,7 +7,7 @@
  * Runtime sanity checks: each loader verifies the shape is non-empty and
  * throws a contract-drift error rather than silently returning garbage data.
  *
- * The 44 fleet-run-2 recipe IDs are enumerated in FLEET_RUN_1_RECIPE_IDS.
+ * The 44 fleet-run-2 recipe IDs are enumerated in FLEET_RUN_2_RECIPE_IDS.
  * data/te-sample-10/ stays on disk for back-compat but is no longer imported.
  */
 
@@ -369,12 +369,13 @@ export function loadIndicatorCorpusBreakdown(): Record<string, number> {
     .indicator_corpus_breakdown;
 }
 
-/** All 44 fleet-run-2 recipe IDs. Replaces the old SAMPLE_10_RECIPE_IDS constant. */
-export const FLEET_RUN_1_RECIPE_IDS = Object.keys(CARD_MAP) as string[];
+/** All 44 recipe IDs in the current vintage (te-fleet-run-2). */
+export const FLEET_RUN_2_RECIPE_IDS = Object.keys(CARD_MAP) as string[];
 
 /**
- * @deprecated Use FLEET_RUN_1_RECIPE_IDS. Kept as an alias so existing
- * consumers (compound-risk-data.ts etc.) continue to compile without
- * requiring a mass rename in one shot.
+ * @deprecated Use FLEET_RUN_2_RECIPE_IDS. Aliases kept so existing consumers
+ * (risk-board-data.ts, countries-v4-data.ts, etc.) compile without a mass
+ * rename in one shot.
  */
-export const SAMPLE_10_RECIPE_IDS = FLEET_RUN_1_RECIPE_IDS;
+export const FLEET_RUN_1_RECIPE_IDS = FLEET_RUN_2_RECIPE_IDS;
+export const SAMPLE_10_RECIPE_IDS = FLEET_RUN_2_RECIPE_IDS;
