@@ -58,8 +58,8 @@ yarn-error.log*
 next-env.d.ts
 preview-screenshots/
 
-# te-fleet-run-1 dataset. 2026-06-01 (founder): now COMMITTED for the launch
-# deploy (the Vercel build imports it; backend deliveries land as commits). An
-# S3 build-fetch may replace this later to slim git. Still reproducible from S3
-# ml-results/ via qgi-ml/scripts/bake_te_fleet_run_1.py.
-# (was ignored: /data/te-fleet-run-1/)
+# te-fleet-run-1 dataset. 2026-06-04: superseded by te-fleet-run-2 (the live
+# vintage); nothing imports run-1 anymore, so it is dropped from git to slim the
+# repo (~60MB). Still in S3 (frontend-data/te-fleet-run-1/) + git history +
+# reproducible via qgi-ml/scripts/bake_te_fleet_run_1.py.
+/data/te-fleet-run-1/
