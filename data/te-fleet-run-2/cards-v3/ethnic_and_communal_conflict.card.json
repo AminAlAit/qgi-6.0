@@ -1,0 +1,2079 @@
+{
+  "recipe_id": "ethnic_and_communal_conflict",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Economic Stress",
+  "description_compelling": "Organized violence between ethnic, religious, or communal groups \u2014 riots, pogroms, low-intensity sectarian war \u2014 producing fatalities and displacement. Group-power inequalities, equal-protection indices, and refugee-origin counts move first. The pattern is strongest in plural societies where one group dominates institutions and another contests them.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6986080586080586,
+    "ci95_lo": 0.6213828660328491,
+    "ci95_hi": 0.7647569901004428,
+    "ci80_lo": 0.6475225895994229,
+    "ci80_hi": 0.7410772291467178,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2pepwrsoc",
+      "v2x_partip"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2pepwrsoc",
+        "name": "Power Distributed by Socioeconomic Position (0-4)"
+      },
+      {
+        "code": "v2x_partip",
+        "name": "Political Participation (0-1)"
+      }
+    ],
+    "chosen_window": 21,
+    "final_global_auc": 0.6986080586080586,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2pepwrsoc",
+        "window": 21,
+        "auc": 0.6655677655677655,
+        "lift_over_previous": 0.16556776556776553,
+        "selected_after": [
+          "v2pepwrsoc"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2x_partip",
+        "window": 21,
+        "auc": 0.6986080586080586,
+        "lift_over_previous": 0.0330402930402931,
+        "selected_after": [
+          "v2pepwrsoc",
+          "v2x_partip"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2pepwrgen",
+        "window": 21,
+        "auc": 0.6961172161172161,
+        "lift_over_previous": -0.0024908424908425264,
+        "selected_after": [
+          "v2pepwrsoc",
+          "v2x_partip",
+          "v2pepwrgen"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 79,
+    "n_pos_survive": 65,
+    "n_neg_total": 237,
+    "n_neg_survive": 210,
+    "pos_coverage": 0.8227848101265823,
+    "neg_coverage": 0.8860759493670886,
+    "n_countries_survive": 40,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 146,
+      "loco_auc": 0.7012820512820512,
+      "ece": 0.1531234452858159,
+      "ece_ci95_lo": 0.10665218345063406,
+      "ece_ci95_hi": 0.22100457927062214,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 79,
+          "mean_predicted": 0.04371707530432864,
+          "mean_actual": 0.11392405063291139
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 18,
+          "mean_predicted": 0.14246577479773098,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.2285302993324068,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.36113346368074417,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.4514656774699688,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5449453890323639,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.662930448849996,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 6,
+          "mean_predicted": 0.742845485607783,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.8475680777004787,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 6,
+          "mean_predicted": 0.9316822489102682,
+          "mean_actual": 0.8333333333333334
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5842525209939967,
+      "loco_auc_ci95_hi": 0.7924200938006174
+    },
+    "mid-tier": {
+      "n": 76,
+      "loco_auc": 0.6910774410774411,
+      "ece": 0.15708794170917062,
+      "ece_ci95_lo": 0.10678458343287563,
+      "ece_ci95_hi": 0.26524519576096756,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 33,
+          "mean_predicted": 0.03922578849067742,
+          "mean_actual": 0.15151515151515152
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 12,
+          "mean_predicted": 0.14773080435891947,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.2415595998366674,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 4,
+          "mean_predicted": 0.32293300330638885,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.44949941833813983,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.5532150864601135,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6385475277900696,
+          "mean_actual": 0.8
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7583825886249542,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8463191390037537,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5422078862637048,
+      "loco_auc_ci95_hi": 0.8299786537434674
+    },
+    "stable-democracy": {
+      "n": 49,
+      "loco_auc": 0.7215686274509804,
+      "ece": 0.13113944124126312,
+      "ece_ci95_lo": 0.100433629585373,
+      "ece_ci95_hi": 0.27563861198295664,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 11,
+          "mean_predicted": 0.057141990908844906,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 11,
+          "mean_predicted": 0.1510681381279772,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 7,
+          "mean_predicted": 0.24014324588435038,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 5,
+          "mean_predicted": 0.3514868676662445,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 5,
+          "mean_predicted": 0.4431439697742462,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5869945287704468,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6491038799285889,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7410585880279541,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8777046203613281,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.9129329919815063,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5385117521473936,
+      "loco_auc_ci95_hi": 0.8516570189464604
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T00:16:36.049333+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5186,
+  "stability_diagnostic": {
+    "fold_variance": 0.08104326494257968,
+    "fold_auc_mean": 0.6970017636684304,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Algeria": 1.0,
+      "Australia": 0.3333333333333333,
+      "Brazil": 0.7777777777777778,
+      "Burundi": 0.85,
+      "China": 1.0,
+      "Cyprus": 1.0,
+      "Ethiopia": 0.6666666666666666,
+      "Germany": 0.8,
+      "Ghana": 0.42857142857142855,
+      "Greece": 0.0,
+      "Guinea": 0.4,
+      "Haiti": 1.0,
+      "India": 1.0,
+      "Kenya": 0.75,
+      "Kyrgyzstan": 0.0,
+      "Mali": 0.5,
+      "Mauritius": 0.6666666666666666,
+      "Mexico": 0.8125,
+      "Myanmar": 0.9375,
+      "Nepal": 0.625,
+      "Nigeria": 0.7142857142857143,
+      "Pakistan": 0.75,
+      "Philippines": 1.0,
+      "Rwanda": 0.9166666666666666,
+      "Serbia": 0.625,
+      "Singapore": 0.3333333333333333,
+      "Sri Lanka": 0.8,
+      "Sweden": 0.6666666666666666,
+      "Syria": 0.5,
+      "The Democratic Republic of the Congo": 0.5,
+      "Turkiye": 0.16666666666666666,
+      "United Kingdom": 1.0,
+      "Uruguay": 1.0,
+      "Uzbekistan": 1.0,
+      "Yemen": 0.5714285714285714,
+      "Zimbabwe": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7361,
+    "cohort_loco_floor": 0.6761,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 79,
+  "n_negatives": 237,
+  "walked_at_utc": "2026-06-01T00:17:59.538306+00:00",
+  "elapsed_seconds": 1986.208079814911,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/ethnic_and_communal_conflict/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Sweden",
+          "Maldives",
+          "Greece",
+          "Ivory Coast",
+          "Mauritius",
+          "Zambia",
+          "Zimbabwe",
+          "Guatemala"
+        ],
+        "country_isos": [
+          "se",
+          "mv",
+          "gr",
+          "ci",
+          "mu",
+          "zm",
+          "zw",
+          "gt"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Uruguay",
+          "Rwanda",
+          "Mauritania",
+          "Luxembourg",
+          "Palestine",
+          "Vietnam",
+          "Singapore",
+          "Iraq",
+          "South Korea"
+        ],
+        "country_isos": [
+          "uy",
+          "rw",
+          "mr",
+          "lu",
+          "ps",
+          "vn",
+          "sg",
+          "iq",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Eritrea",
+          "Turkiye",
+          "Tanzania",
+          "Georgia",
+          "Ghana",
+          "Angola",
+          "Mali",
+          "Turkmenistan",
+          "India"
+        ],
+        "country_isos": [
+          "er",
+          "tr",
+          "tz",
+          "ge",
+          "gh",
+          "ao",
+          "ml",
+          "tm",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Argentina",
+          "Central African Republic",
+          "Japan",
+          "Azerbaijan",
+          "Hong Kong",
+          "Lesotho",
+          "Solomon Islands",
+          "Uganda"
+        ],
+        "country_isos": [
+          "ar",
+          "cf",
+          "jp",
+          "az",
+          "hk",
+          "ls",
+          "sb",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Trinidad and Tobago",
+          "Lebanon",
+          "Sao Tome and Principe",
+          "Kuwait",
+          "Burundi",
+          "Haiti",
+          "China",
+          "Portugal",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "tt",
+          "lb",
+          "st",
+          "kw",
+          "bi",
+          "ht",
+          "cn",
+          "pt",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Ukraine",
+          "Malaysia",
+          "Senegal",
+          "Montenegro",
+          "Bangladesh",
+          "Iceland",
+          "Somalia",
+          "Tunisia",
+          "Norway"
+        ],
+        "country_isos": [
+          "ua",
+          "my",
+          "sn",
+          "me",
+          "bd",
+          "is",
+          "so",
+          "tn",
+          "no"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Panama",
+          "The Gambia",
+          "Fiji",
+          "Germany",
+          "Qatar",
+          "Guinea-Bissau",
+          "Bahrain",
+          "Syria",
+          "Hungary"
+        ],
+        "country_isos": [
+          "pa",
+          "gm",
+          "fj",
+          "de",
+          "qa",
+          "gw",
+          "bh",
+          "sy",
+          "hu"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Russia",
+          "Barbados",
+          "Netherlands",
+          "United Arab Emirates",
+          "The Democratic Republic of the Congo",
+          "Seychelles",
+          "Serbia",
+          "Mongolia"
+        ],
+        "country_isos": [
+          "ru",
+          "bb",
+          "nl",
+          "ae",
+          "cd",
+          "sc",
+          "rs",
+          "mn"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Cameroon",
+          "Gabon",
+          "North Korea",
+          "Belarus",
+          "Ireland",
+          "Czechia",
+          "Eswatini",
+          "France",
+          "Poland"
+        ],
+        "country_isos": [
+          "cm",
+          "ga",
+          "kp",
+          "by",
+          "ie",
+          "cz",
+          "sz",
+          "fr",
+          "pl"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Papua New Guinea",
+          "Denmark",
+          "Laos",
+          "Nigeria",
+          "Cabo Verde",
+          "North Macedonia",
+          "Uzbekistan",
+          "Oman",
+          "Niger"
+        ],
+        "country_isos": [
+          "pg",
+          "dk",
+          "la",
+          "ng",
+          "cv",
+          "mk",
+          "uz",
+          "om",
+          "ne"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Equatorial Guinea",
+          "Armenia",
+          "Venezuela",
+          "Paraguay",
+          "Jordan",
+          "Iran",
+          "Lithuania",
+          "Cyprus",
+          "Guinea"
+        ],
+        "country_isos": [
+          "gq",
+          "am",
+          "ve",
+          "py",
+          "jo",
+          "ir",
+          "lt",
+          "cy",
+          "gn"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "United States",
+          "Yemen",
+          "Ecuador",
+          "United Kingdom",
+          "Australia",
+          "Timor-Leste",
+          "Ethiopia",
+          "Myanmar"
+        ],
+        "country_isos": [
+          "us",
+          "ye",
+          "ec",
+          "gb",
+          "au",
+          "tl",
+          "et",
+          "mm"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "South Sudan",
+          "Djibouti",
+          "Estonia",
+          "Honduras",
+          "Bhutan",
+          "Egypt",
+          "Belgium",
+          "South Africa",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "ss",
+          "dj",
+          "ee",
+          "hn",
+          "bt",
+          "eg",
+          "be",
+          "za",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Spain",
+          "Austria",
+          "Finland",
+          "Bolivia",
+          "Sierra Leone",
+          "Mozambique",
+          "Croatia",
+          "Taiwan",
+          "Liberia"
+        ],
+        "country_isos": [
+          "es",
+          "at",
+          "fi",
+          "bo",
+          "sl",
+          "mz",
+          "hr",
+          "tw",
+          "lr"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Malawi",
+          "Saudi Arabia",
+          "Cuba",
+          "Botswana",
+          "Algeria",
+          "Vanuatu",
+          "Suriname",
+          "Republic of the Congo",
+          "Canada"
+        ],
+        "country_isos": [
+          "mw",
+          "sa",
+          "cu",
+          "bw",
+          "dz",
+          "vu",
+          "sr",
+          "cg",
+          "ca"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Pakistan",
+          "Afghanistan",
+          "Indonesia",
+          "Peru",
+          "Burkina Faso",
+          "Brazil",
+          "Thailand",
+          "New Zealand"
+        ],
+        "country_isos": [
+          "pk",
+          "af",
+          "id",
+          "pe",
+          "bf",
+          "br",
+          "th",
+          "nz"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Benin",
+          "Comoros",
+          "Tajikistan",
+          "Sudan",
+          "Malta",
+          "Albania",
+          "Romania",
+          "Guyana",
+          "Nicaragua"
+        ],
+        "country_isos": [
+          "bj",
+          "km",
+          "tj",
+          "sd",
+          "mt",
+          "al",
+          "ro",
+          "gy",
+          "ni"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Italy",
+          "Dominican Republic",
+          "Costa Rica",
+          "Libya",
+          "Namibia",
+          "Philippines",
+          "Madagascar",
+          "Jamaica",
+          "Colombia"
+        ],
+        "country_isos": [
+          "it",
+          "do",
+          "cr",
+          "ly",
+          "na",
+          "ph",
+          "mg",
+          "jm",
+          "co"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Bulgaria",
+          "Moldova",
+          "Mexico",
+          "Morocco",
+          "Kazakhstan",
+          "Chad",
+          "Latvia",
+          "El Salvador",
+          "Switzerland"
+        ],
+        "country_isos": [
+          "bg",
+          "md",
+          "mx",
+          "ma",
+          "kz",
+          "td",
+          "lv",
+          "sv",
+          "ch"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Chile",
+          "Sri Lanka",
+          "Kenya",
+          "Nepal",
+          "Togo",
+          "Slovakia",
+          "Israel",
+          "Kyrgyzstan",
+          "Bosnia and Herzegovina"
+        ],
+        "country_isos": [
+          "cl",
+          "lk",
+          "ke",
+          "np",
+          "tg",
+          "sk",
+          "il",
+          "kg",
+          "ba"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0305,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5460568009789178,
+      "b": 0.0,
+      "c": -0.15413869744515332,
+      "n_fit": 275,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 40,
+        "observed_rate": 0.075
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 89,
+        "observed_rate": 0.15730337078651685
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 60,
+        "observed_rate": 0.25
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 48,
+        "observed_rate": 0.3125
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 38,
+        "observed_rate": 0.47368421052631576
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.015076850248352688,
+    "n_predictions": 275,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1531234452858159,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 79,
+            "mean_predicted": 0.04371707530432864,
+            "mean_actual": 0.11392405063291139
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 18,
+            "mean_predicted": 0.14246577479773098,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.2285302993324068,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.36113346368074417,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.4514656774699688,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5449453890323639,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.662930448849996,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 6,
+            "mean_predicted": 0.742845485607783,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.8475680777004787,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 6,
+            "mean_predicted": 0.9316822489102682,
+            "mean_actual": 0.8333333333333334
+          }
+        ],
+        "n": 146,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.15708794170917062,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 33,
+            "mean_predicted": 0.03922578849067742,
+            "mean_actual": 0.15151515151515152
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 12,
+            "mean_predicted": 0.14773080435891947,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.2415595998366674,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 4,
+            "mean_predicted": 0.32293300330638885,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.44949941833813983,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.5532150864601135,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6385475277900696,
+            "mean_actual": 0.8
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7583825886249542,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8463191390037537,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 76,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.13113944124126312,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 11,
+            "mean_predicted": 0.057141990908844906,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 11,
+            "mean_predicted": 0.1510681381279772,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 7,
+            "mean_predicted": 0.24014324588435038,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 5,
+            "mean_predicted": 0.3514868676662445,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 5,
+            "mean_predicted": 0.4431439697742462,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5869945287704468,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6491038799285889,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7410585880279541,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8777046203613281,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.9129329919815063,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 49,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/ethnic_and_communal_conflict.scores.json",
+  "shape_points": [
+    -0.07029735290826318,
+    -0.025524117520317628,
+    0.019249117867627934,
+    0.06402235325557348,
+    0.10879558864351904,
+    0.1535688240314646,
+    0.19834205941941013,
+    0.24311529480735572,
+    0.28788853019530125,
+    0.33266176558324684,
+    0.37743500097119237,
+    0.4222082363591379
+  ],
+  "shap_importance_raw": {
+    "v2pepwrsoc": 2.301625967025757,
+    "v2x_partip": 1.9320095777511597
+  },
+  "shap_importance_normalized": {
+    "v2pepwrsoc": 0.5436523627701725,
+    "v2x_partip": 0.4563476372298276
+  },
+  "shap_direction_signs": {
+    "v2pepwrsoc": -1,
+    "v2x_partip": -1
+  },
+  "per_feature_breakdown": {
+    "v2pepwrsoc": {
+      "last_z": 0.2743839621543884,
+      "mean_z": 0.2225741446018219,
+      "std_z": 0.27810800075531006,
+      "slope": 0.7806823253631592,
+      "accel": 0.2448396533727646,
+      "tertile1_mean": 0.19367896020412445,
+      "tertile2_mean": 0.14541462063789368,
+      "tertile3_mean": 0.16194425523281097
+    },
+    "v2x_partip": {
+      "last_z": 0.15398016571998596,
+      "mean_z": 0.12041802704334259,
+      "std_z": 0.5301998257637024,
+      "slope": 0.2473093420267105,
+      "accel": 0.29444053769111633,
+      "tertile1_mean": 0.2128877341747284,
+      "tertile2_mean": 0.23987631499767303,
+      "tertile3_mean": 0.13289768993854523
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 21,
+    "indicators": [
+      {
+        "code": "v2pepwrsoc",
+        "name": "Power Distributed by Socioeconomic Position (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 67,
+        "shape": {
+          "mean": [
+            -0.2397,
+            -0.2508,
+            -0.2712,
+            -0.2168,
+            -0.1394,
+            -0.1136,
+            -0.1281,
+            -0.0751,
+            -0.0175,
+            0.0075,
+            0.0412,
+            0.1036,
+            0.1245,
+            0.2109,
+            0.2277,
+            0.1819,
+            0.2012,
+            0.1869,
+            0.2129,
+            0.2923,
+            0.376
+          ],
+          "p25": [
+            -0.8794,
+            -0.8573,
+            -0.8573,
+            -0.8112,
+            -0.5999,
+            -0.5921,
+            -0.5999,
+            -0.5921,
+            -0.4276,
+            -0.3927,
+            -0.3052,
+            -0.2889,
+            -0.2889,
+            -0.2763,
+            -0.2854,
+            -0.2889,
+            -0.2881,
+            -0.2889,
+            -0.2889,
+            -0.4187,
+            -0.4187
+          ],
+          "p75": [
+            0.2478,
+            0.2569,
+            0.2306,
+            0.2306,
+            0.2241,
+            0.2781,
+            0.2499,
+            0.3816,
+            0.4156,
+            0.4276,
+            0.4899,
+            0.5038,
+            0.6071,
+            0.7089,
+            0.7749,
+            0.7749,
+            0.8088,
+            0.8262,
+            0.8308,
+            0.9881,
+            1.1853
+          ]
+        }
+      },
+      {
+        "code": "v2x_partip",
+        "name": "Political Participation (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 67,
+        "shape": {
+          "mean": [
+            -0.4724,
+            -0.5172,
+            -0.3327,
+            -0.3623,
+            -0.2916,
+            -0.1723,
+            -0.1523,
+            -0.0129,
+            -0.0033,
+            -0.0118,
+            -0.0083,
+            0.0552,
+            0.1522,
+            0.2526,
+            0.333,
+            0.4623,
+            0.6584,
+            0.6515,
+            0.5929,
+            0.6046,
+            0.9465
+          ],
+          "p25": [
+            -1.0178,
+            -1.0299,
+            -0.8593,
+            -0.8593,
+            -0.7896,
+            -0.5851,
+            -0.5512,
+            -0.4814,
+            -0.4754,
+            -0.4754,
+            -0.4355,
+            -0.4754,
+            -0.3959,
+            -0.2721,
+            -0.22,
+            -0.0596,
+            0.0291,
+            0.0,
+            -0.0809,
+            -0.2395,
+            0.1233
+          ],
+          "p75": [
+            -0.0663,
+            -0.1212,
+            0.0421,
+            0.0292,
+            0.0336,
+            0.1335,
+            0.2113,
+            0.3913,
+            0.4104,
+            0.3534,
+            0.4104,
+            0.5214,
+            0.668,
+            0.8685,
+            0.9782,
+            1.2178,
+            1.3028,
+            1.3028,
+            1.338,
+            1.33,
+            1.6258
+          ]
+        }
+      }
+    ],
+    "samples_used": 67,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2025,
+        "label": "Highlands Tribal Violence Continues to Displace Thousands",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2025,
+        "label": "Organized Crime and Gang Violence Escalates",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2024,
+        "label": "Enga Province Tribal Massacre Kills More Than 40",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2024,
+        "label": "Far-Right Riots Erupt Across England After Southport Stabbing",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2023,
+        "label": "Northern Mayor Crisis and KFOR Soldiers Injured",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2023,
+        "label": "Gang Violence Surge Prompts Army Deployment Debate",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2022,
+        "label": "G9 gang blockade of fuel terminal paralyzes Haiti's entire economy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2022,
+        "label": "Murder Rate Reaches Record Highs",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2021,
+        "label": "License Plate Crisis at Northern Border Crossings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2021,
+        "label": "Banditry and Kidnapping Crisis in Northwest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2020,
+        "label": "Hachalu Hundessa assassination triggers Oromo unrest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2020,
+        "label": "Parliament dissolves; Mo\u00efse rules by decree as gangs escalate massacres",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2019,
+        "label": "Inter-ethnic violence escalates across multiple regions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2019,
+        "label": "Pokot-Turkana Cattle Raiding Violence Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2019,
+        "label": "AMLO's 'Hugs Not Bullets' Security Strategy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2018,
+        "label": "Federal Intervention in Rio de Janeiro Security",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2018,
+        "label": "Security Crisis and Rising Crime Rates Dominate Politics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2017,
+        "label": "Tigray-Afar and Tigray-Amhara border disputes intensify",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2016,
+        "label": "Malakal Protection of Civilians Site Attacks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2014,
+        "label": "El Chapo Guzm\u00e1n Arrested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2014,
+        "label": "Bentiu Massacre \u2014 Ethnic Killings at UN Compound Vicinity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2013,
+        "label": "Little India Riot Exposes Foreign Worker Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2013,
+        "label": "Husby Riots Spread Across Stockholm Suburbs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2012,
+        "label": "Brazil Introduces Cotistas Racial Quota System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2012,
+        "label": "Rakhine State Violence Displaces 140,000 Rohingya into Camps",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2012,
+        "label": "Oil Theft \u2014 Bunkering Crisis in Niger Delta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2011,
+        "label": "Post-Election Violence \u2014 Ethnic Clashes Between Malinke and Fula",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2011,
+        "label": "Northern Kosovo Border Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2010,
+        "label": "Osh Ethnic Massacres Kill Hundreds as Kyrgyz and Uzbeks Clash",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2010,
+        "label": "Rizal Park Hostage Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2010,
+        "label": "Ethnic Violence in Southern Kyrgyzstan Kills Hundreds of Uzbeks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2009,
+        "label": "Xinjiang Urumqi riots \u2014 ethnic violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2009,
+        "label": "Ciudad Ju\u00e1rez Becomes World's Most Violent City",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2008,
+        "label": "Brazil Deploys Army Against Violence in Rio de Janeiro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2008,
+        "label": "Cartel Violence Reaches Crisis Levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2007,
+        "label": "Disputed Election Triggers Post-Election Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2007,
+        "label": "Madhesi Uprising Demands Plains Representation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2006,
+        "label": "Calder\u00f3n Declares War on Drug Cartels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2005,
+        "label": "Cronulla Riots Expose Ethnic Tensions in Sydney",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2004,
+        "label": "March Riots \u2014 Anti-Serb Violence Across Kosovo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2004,
+        "label": "March Pogroms in Kosovo \u2014 Violence Against Serbs Shocks Region",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2004,
+        "label": "Kurdish Uprising in Qamishli Suppressed by Syrian Security Forces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2003,
+        "label": "Ituri Massacres and French-Led Artemis Operation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2003,
+        "label": "Inter-ethnic violence in southern Ethiopia displaces thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2001,
+        "label": "Buddhist-Muslim Communal Violence Erupts in Central Myanmar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1999,
+        "label": "Kaya Riots \u2014 Communal Violence After Singer's Death in Custody",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1998,
+        "label": "Drenica Massacres Open Full-Scale Kosovo War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1997,
+        "label": "Kocheril Raman Narayanan becomes first Dalit President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1997,
+        "label": "Mombasa Coast Ethnic Attacks Before Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 1996,
+        "label": "Buffer zone killings escalate tensions between communities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1996,
+        "label": "Kidnapping Industry Grows as Tribal Leverage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 1995,
+        "label": "State Language Law restricts Hungarian minority rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1994,
+        "label": "Konkomba-Nanumba Ethnic Violence Kills Thousands in Northern Ghana",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "Nyamata and Ntarama church massacres",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "Bisesero massacre \u2014 Tutsi resistance overwhelmed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1993,
+        "label": "Ethnic Violence in North Kivu \u2014 Banyarwanda Expulsions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1993,
+        "label": "Cardinal Posadas Ocampo Killed in Guadalajara Airport Shootout",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1993,
+        "label": "Sivas Massacre: Islamist Mob Burns Alevi Cultural Festival Hotel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1992,
+        "label": "Rostock-Lichtenhagen: xenophobic mob attacks refugee housing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1992,
+        "label": "Ethnic Clashes Orchestrated in the Rift Valley",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1991,
+        "label": "Albanians Pushed Out of State Schools, Hospitals, and Workplaces",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1991,
+        "label": "Osh Inter-Ethnic Violence of 1990 Shapes Early Independence Context",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1988,
+        "label": "Sumgait Pogroms Against Armenians in Azerbaijan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1988,
+        "label": "Ntega-Marangara massacres \u2014 ethnic violence kills thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1986,
+        "label": "Serbian Academy Memorandum Published \u2014 Croatian Alarm at Serbian Nationalism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1986,
+        "label": "SANU Memorandum Published \u2014 Blueprint for Serbian Nationalism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1985,
+        "label": "DEA Agent Kiki Camarena Murdered by Guadalajara Cartel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1984,
+        "label": "Cross-Border Drug Trade Expands Rapidly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1983,
+        "label": "Black July \u2014 anti-Tamil pogrom kills thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1982,
+        "label": "Heroin Trade Emerges from Afghan War Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1981,
+        "label": "Jaffna Public Library burned \u2014 97,000 books destroyed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1981,
+        "label": "Brixton Riots Expose Racial Tensions and Policing Failures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1981,
+        "label": "Entumbane Clashes between ZANLA and ZIPRA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1972,
+        "label": "Selective Genocide \u2014 Hutu massacres kill 150,000-300,000",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1968,
+        "label": "Port Louis Communal Riots Between Creoles and Muslims",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1965,
+        "label": "Juba and Wau Massacres of Southern Civilians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1962,
+        "label": "Kurdish Population Census Controversy in Jazira Region",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1959,
+        "label": "Rwandan Social Revolution \u2014 Hutu uprising against Tutsi rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1958,
+        "label": "Anti-Tamil riots kill hundreds across Ceylon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1958,
+        "label": "Notting Hill Race Riots Expose Post-War Immigration Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1956,
+        "label": "Sinhala Only Act passed \u2014 landmark language flashpoint",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1955,
+        "label": "Istanbul pogrom devastates the Greek minority in Turkey",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1951,
+        "label": "Berber cultural identity movement suppressed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1950,
+        "label": "Indian Tamils stripped of citizenship and voting rights",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1933,
+        "label": "Belgian administration introduces ethnic identity cards",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 85
+  }
+}

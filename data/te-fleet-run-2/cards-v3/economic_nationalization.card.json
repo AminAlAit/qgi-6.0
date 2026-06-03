@@ -1,0 +1,2050 @@
+{
+  "recipe_id": "economic_nationalization",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "directional",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "in_play",
+  "family_label": "International Tension",
+  "description_compelling": "The state reclaims strategic industries \u2014 oil and gas, banking, telecoms, mining \u2014 through expropriation, forced share transfers, or compulsory licensing. Sovereignty indices, neopatrimonialism scores, and FDI flows shift in the years before. Strongest in resource-dependent states and in populist governments under fiscal pressure.",
+  "description": null,
+  "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+  "stats": {
+    "loco_auc": 0.7806154119003281,
+    "ci95_lo": 0.7097274939688124,
+    "ci95_hi": 0.83905921467511,
+    "ci80_lo": 0.7355226917264758,
+    "ci80_hi": 0.8210318867627309,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2svdomaut",
+      "v2pepwrses",
+      "v2csprtcpt",
+      "v2x_gender"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2svdomaut",
+        "name": "Domestic Autonomy / Sovereignty (0-1)"
+      },
+      {
+        "code": "v2pepwrses",
+        "name": "Power Distributed by Social Group (Ethnic) (0-4)"
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)"
+      },
+      {
+        "code": "v2x_gender",
+        "name": "Women's Political Empowerment Index (0-1)"
+      }
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.7806154119003281,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2svdomaut",
+        "window": 10,
+        "auc": 0.7048951048951049,
+        "lift_over_previous": 0.20489510489510487,
+        "selected_after": [
+          "v2svdomaut"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2pepwrses",
+        "window": 10,
+        "auc": 0.7165501165501166,
+        "lift_over_previous": 0.011655011655011704,
+        "selected_after": [
+          "v2svdomaut",
+          "v2pepwrses"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2csprtcpt",
+        "window": 10,
+        "auc": 0.7276612276612276,
+        "lift_over_previous": 0.011111111111111072,
+        "selected_after": [
+          "v2svdomaut",
+          "v2pepwrses",
+          "v2csprtcpt"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_gender",
+        "window": 10,
+        "auc": 0.7806154119003281,
+        "lift_over_previous": 0.05295418423910048,
+        "selected_after": [
+          "v2svdomaut",
+          "v2pepwrses",
+          "v2csprtcpt",
+          "v2x_gender"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2x_corr",
+        "window": 10,
+        "auc": 0.7789305666400639,
+        "lift_over_previous": -0.001684845260264245,
+        "selected_after": [
+          "v2svdomaut",
+          "v2pepwrses",
+          "v2csprtcpt",
+          "v2x_gender",
+          "v2x_corr"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 69,
+    "n_pos_survive": 63,
+    "n_neg_total": 207,
+    "n_neg_survive": 179,
+    "pos_coverage": 0.9130434782608695,
+    "neg_coverage": 0.8647342995169082,
+    "n_countries_survive": 40,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 176,
+      "loco_auc": 0.7938877043354655,
+      "ece": 0.12230346938039559,
+      "ece_ci95_lo": 0.09297781798188887,
+      "ece_ci95_hi": 0.1911267122954581,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 90,
+          "mean_predicted": 0.034867770103220314,
+          "mean_actual": 0.07777777777777778
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.1376443561166525,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 11,
+          "mean_predicted": 0.2544321756471287,
+          "mean_actual": 0.36363636363636365
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 10,
+          "mean_predicted": 0.3369622081518173,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 7,
+          "mean_predicted": 0.43449048910822186,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 8,
+          "mean_predicted": 0.552189439535141,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.6448260383172468,
+          "mean_actual": 0.7272727272727273
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 6,
+          "mean_predicted": 0.7634805341561636,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.8721345663070679,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 10,
+          "mean_predicted": 0.9577888548374176,
+          "mean_actual": 0.4
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6980794105404853,
+      "loco_auc_ci95_hi": 0.8602855052230848
+    },
+    "mid-tier": {
+      "n": 38,
+      "loco_auc": 0.696969696969697,
+      "ece": 0.19496407852459113,
+      "ece_ci95_lo": 0.14604888969946556,
+      "ece_ci95_hi": 0.3410605305848692,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 11,
+          "mean_predicted": 0.043777734633873806,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 3,
+          "mean_predicted": 0.16562112172444662,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 1,
+          "mean_predicted": 0.20082661509513855,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 3,
+          "mean_predicted": 0.3721120258172353,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 4,
+          "mean_predicted": 0.431366503238678,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.553063323100408,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.6287526147706168,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7431364059448242,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8168099522590637,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.48465714271538196,
+      "loco_auc_ci95_hi": 0.8431632884296101
+    },
+    "stable-democracy": {
+      "n": 28,
+      "loco_auc": 0.7555555555555555,
+      "ece": 0.21272880238081726,
+      "ece_ci95_lo": 0.1411524011154792,
+      "ece_ci95_hi": 0.3760089565135005,
+      "low_confidence": true,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 7,
+          "mean_predicted": 0.07444807461329869,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 5,
+          "mean_predicted": 0.12669800370931625,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 3,
+          "mean_predicted": 0.2590571641921997,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.38740938901901245,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5702546437581381,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6763011813163757,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7268558740615845,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8064406514167786,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 4,
+          "mean_predicted": 0.9359133690595627,
+          "mean_actual": 0.75
+        }
+      ]
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T01:30:10.379995+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5006,
+  "stability_diagnostic": {
+    "fold_variance": 0.07872342249657063,
+    "fold_auc_mean": 0.7805555555555556,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Algeria": 1.0,
+      "Angola": 1.0,
+      "Argentina": 0.4,
+      "Bolivia": 0.4666666666666667,
+      "Burkina Faso": 0.8888888888888888,
+      "Burundi": 0.8333333333333334,
+      "Chile": 0.75,
+      "Egypt": 0.7,
+      "Ethiopia": 1.0,
+      "Hungary": 1.0,
+      "India": 0.6666666666666666,
+      "Iran": 0.6666666666666666,
+      "Iraq": 1.0,
+      "Italy": 1.0,
+      "Jamaica": 0.5,
+      "Kuwait": 1.0,
+      "Libya": 0.5,
+      "Madagascar": 0.8333333333333334,
+      "Mali": 0.8,
+      "Mexico": 1.0,
+      "Myanmar": 0.75,
+      "Nigeria": 0.0,
+      "North Korea": 1.0,
+      "Pakistan": 1.0,
+      "Papua New Guinea": 1.0,
+      "Peru": 0.9444444444444444,
+      "Philippines": 1.0,
+      "Somalia": 1.0,
+      "Sri Lanka": 1.0,
+      "Syria": 0.85,
+      "Togo": 0.5,
+      "Uganda": 0.25,
+      "United Arab Emirates": 0.0,
+      "Venezuela": 1.0,
+      "Yemen": 0.8,
+      "Zambia": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7175,
+    "cohort_loco_floor": 0.6575,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 69,
+  "n_negatives": 207,
+  "walked_at_utc": "2026-06-01T01:32:02.400753+00:00",
+  "elapsed_seconds": 3277.8440520763397,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/economic_nationalization/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Nicaragua",
+          "Venezuela",
+          "Madagascar",
+          "Zambia",
+          "Bosnia and Herzegovina",
+          "Cabo Verde",
+          "Portugal",
+          "Barbados"
+        ],
+        "country_isos": [
+          "ni",
+          "ve",
+          "mg",
+          "zm",
+          "ba",
+          "cv",
+          "pt",
+          "bb"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Chad",
+          "Bahrain",
+          "Lebanon",
+          "Kenya",
+          "Morocco",
+          "Ukraine",
+          "Sao Tome and Principe",
+          "Ecuador",
+          "Russia"
+        ],
+        "country_isos": [
+          "td",
+          "bh",
+          "lb",
+          "ke",
+          "ma",
+          "ua",
+          "st",
+          "ec",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "United Arab Emirates",
+          "Uganda",
+          "Malaysia",
+          "Honduras",
+          "El Salvador",
+          "Hungary",
+          "Ivory Coast",
+          "Angola",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "ae",
+          "ug",
+          "my",
+          "hn",
+          "sv",
+          "hu",
+          "ci",
+          "ao",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Peru",
+          "Liberia",
+          "Mozambique",
+          "Eswatini",
+          "Bhutan",
+          "Palestine",
+          "Ethiopia",
+          "Serbia"
+        ],
+        "country_isos": [
+          "pe",
+          "lr",
+          "mz",
+          "sz",
+          "bt",
+          "ps",
+          "et",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Turkiye",
+          "Lesotho",
+          "Central African Republic",
+          "Armenia",
+          "Iraq",
+          "Belarus",
+          "Yemen",
+          "Myanmar",
+          "Togo"
+        ],
+        "country_isos": [
+          "tr",
+          "ls",
+          "cf",
+          "am",
+          "iq",
+          "by",
+          "ye",
+          "mm",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Djibouti",
+          "Mauritania",
+          "Israel",
+          "Algeria",
+          "Laos",
+          "Jordan",
+          "Egypt",
+          "Mongolia",
+          "Vanuatu"
+        ],
+        "country_isos": [
+          "dj",
+          "mr",
+          "il",
+          "dz",
+          "la",
+          "jo",
+          "eg",
+          "mn",
+          "vu"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Malta",
+          "Georgia",
+          "Croatia",
+          "Libya",
+          "Ghana",
+          "Taiwan",
+          "Kazakhstan",
+          "Cuba",
+          "Spain"
+        ],
+        "country_isos": [
+          "mt",
+          "ge",
+          "hr",
+          "ly",
+          "gh",
+          "tw",
+          "kz",
+          "cu",
+          "es"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Oman",
+          "Costa Rica",
+          "Haiti",
+          "Pakistan",
+          "Papua New Guinea",
+          "Guinea-Bissau",
+          "India",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "om",
+          "cr",
+          "ht",
+          "pk",
+          "pg",
+          "gw",
+          "in",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Guinea",
+          "Philippines",
+          "Guatemala",
+          "Japan",
+          "Turkmenistan",
+          "Kuwait",
+          "Luxembourg",
+          "Bangladesh",
+          "Estonia"
+        ],
+        "country_isos": [
+          "gn",
+          "ph",
+          "gt",
+          "jp",
+          "tm",
+          "kw",
+          "lu",
+          "bd",
+          "ee"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Uzbekistan",
+          "Republic of the Congo",
+          "Slovenia",
+          "United States",
+          "Uruguay",
+          "Paraguay",
+          "Afghanistan",
+          "Cambodia",
+          "The Democratic Republic of the Congo"
+        ],
+        "country_isos": [
+          "uz",
+          "cg",
+          "si",
+          "us",
+          "uy",
+          "py",
+          "af",
+          "kh",
+          "cd"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Tunisia",
+          "Slovakia",
+          "Saudi Arabia",
+          "Hong Kong",
+          "Switzerland",
+          "Burundi",
+          "Albania",
+          "Iceland",
+          "Netherlands"
+        ],
+        "country_isos": [
+          "tn",
+          "sk",
+          "sa",
+          "hk",
+          "ch",
+          "bi",
+          "al",
+          "is",
+          "nl"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "New Zealand",
+          "Germany",
+          "Mauritius",
+          "France",
+          "Sudan",
+          "Greece",
+          "Thailand",
+          "Qatar"
+        ],
+        "country_isos": [
+          "nz",
+          "de",
+          "mu",
+          "fr",
+          "sd",
+          "gr",
+          "th",
+          "qa"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Jamaica",
+          "China",
+          "Czechia",
+          "Equatorial Guinea",
+          "Maldives",
+          "Cyprus",
+          "Namibia",
+          "Senegal",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "jm",
+          "cn",
+          "cz",
+          "gq",
+          "mv",
+          "cy",
+          "na",
+          "sn",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Ireland",
+          "Benin",
+          "Eritrea",
+          "Poland",
+          "Moldova",
+          "Botswana",
+          "Nigeria",
+          "Tanzania",
+          "North Korea"
+        ],
+        "country_isos": [
+          "ie",
+          "bj",
+          "er",
+          "pl",
+          "md",
+          "bw",
+          "ng",
+          "tz",
+          "kp"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Gabon",
+          "Argentina",
+          "Austria",
+          "Vietnam",
+          "Zimbabwe",
+          "Bulgaria",
+          "United Kingdom",
+          "South Sudan",
+          "Azerbaijan"
+        ],
+        "country_isos": [
+          "ga",
+          "ar",
+          "at",
+          "vn",
+          "zw",
+          "bg",
+          "gb",
+          "ss",
+          "az"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Finland",
+          "Cameroon",
+          "Kyrgyzstan",
+          "Bolivia",
+          "South Africa",
+          "Solomon Islands",
+          "Niger",
+          "Sweden"
+        ],
+        "country_isos": [
+          "fi",
+          "cm",
+          "kg",
+          "bo",
+          "za",
+          "sb",
+          "ne",
+          "se"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Tajikistan",
+          "Lithuania",
+          "Australia",
+          "Singapore",
+          "Malawi",
+          "Norway",
+          "Denmark",
+          "Guyana",
+          "Iran"
+        ],
+        "country_isos": [
+          "tj",
+          "lt",
+          "au",
+          "sg",
+          "mw",
+          "no",
+          "dk",
+          "gy",
+          "ir"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Dominican Republic",
+          "Comoros",
+          "Brazil",
+          "Montenegro",
+          "Belgium",
+          "Mexico",
+          "Suriname",
+          "Seychelles",
+          "Syria"
+        ],
+        "country_isos": [
+          "do",
+          "km",
+          "br",
+          "me",
+          "be",
+          "mx",
+          "sr",
+          "sc",
+          "sy"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Romania",
+          "Italy",
+          "Somalia",
+          "Burkina Faso",
+          "Indonesia",
+          "Sierra Leone",
+          "Panama",
+          "Chile",
+          "Fiji"
+        ],
+        "country_isos": [
+          "ro",
+          "it",
+          "so",
+          "bf",
+          "id",
+          "sl",
+          "pa",
+          "cl",
+          "fj"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Sri Lanka",
+          "Nepal",
+          "Latvia",
+          "Mali",
+          "South Korea",
+          "North Macedonia",
+          "Colombia",
+          "Canada",
+          "The Gambia"
+        ],
+        "country_isos": [
+          "lk",
+          "np",
+          "lv",
+          "ml",
+          "kr",
+          "mk",
+          "co",
+          "ca",
+          "gm"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0969,
+    "v4_oot_recall_pct": null,
+    "verdict": "MARGINAL_PENDING_BETA_CALIBRATION"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.8022959392635475,
+      "b": 0.0,
+      "c": 0.2795841134767564,
+      "n_fit": 242,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 69,
+        "observed_rate": 0.07246376811594203
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 48,
+        "observed_rate": 0.10416666666666667
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 23,
+        "observed_rate": 0.08695652173913043
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 27,
+        "observed_rate": 0.48148148148148145
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 43,
+        "observed_rate": 0.46511627906976744
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 32,
+        "observed_rate": 0.5625
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.04823540144902959,
+    "n_predictions": 242,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.12230346938039559,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 90,
+            "mean_predicted": 0.034867770103220314,
+            "mean_actual": 0.07777777777777778
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.1376443561166525,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 11,
+            "mean_predicted": 0.2544321756471287,
+            "mean_actual": 0.36363636363636365
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 10,
+            "mean_predicted": 0.3369622081518173,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 7,
+            "mean_predicted": 0.43449048910822186,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 8,
+            "mean_predicted": 0.552189439535141,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 11,
+            "mean_predicted": 0.6448260383172468,
+            "mean_actual": 0.7272727272727273
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 6,
+            "mean_predicted": 0.7634805341561636,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.8721345663070679,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 10,
+            "mean_predicted": 0.9577888548374176,
+            "mean_actual": 0.4
+          }
+        ],
+        "n": 176,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.19496407852459113,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 11,
+            "mean_predicted": 0.043777734633873806,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 3,
+            "mean_predicted": 0.16562112172444662,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 1,
+            "mean_predicted": 0.20082661509513855,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 3,
+            "mean_predicted": 0.3721120258172353,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 4,
+            "mean_predicted": 0.431366503238678,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.553063323100408,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.6287526147706168,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7431364059448242,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8168099522590637,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 38,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.21272880238081726,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 7,
+            "mean_predicted": 0.07444807461329869,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 5,
+            "mean_predicted": 0.12669800370931625,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 3,
+            "mean_predicted": 0.2590571641921997,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.38740938901901245,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5702546437581381,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6763011813163757,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7268558740615845,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8064406514167786,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 4,
+            "mean_predicted": 0.9359133690595627,
+            "mean_actual": 0.75
+          }
+        ],
+        "n": 28,
+        "low_confidence": true
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/economic_nationalization.scores.json",
+  "shape_points": [
+    -0.08712158297580314,
+    -0.0421765847894361,
+    0.0027684133969309126,
+    0.047713411583297935,
+    0.09265840976966497,
+    0.13760340795603201,
+    0.18254840614239903,
+    0.22749340432876602,
+    0.27243840251513307,
+    0.3173834007015001,
+    0.3623283988878671,
+    0.40727339707423416
+  ],
+  "shap_importance_raw": {
+    "v2svdomaut": 1.9254028797149658,
+    "v2pepwrses": 1.7294819355010986,
+    "v2csprtcpt": 1.2128783464431763,
+    "v2x_gender": 1.4172027111053467
+  },
+  "shap_importance_normalized": {
+    "v2svdomaut": 0.30635057034415253,
+    "v2pepwrses": 0.2751776175898861,
+    "v2csprtcpt": 0.19298089615714392,
+    "v2x_gender": 0.2254909159088174
+  },
+  "shap_direction_signs": {
+    "v2svdomaut": -1,
+    "v2pepwrses": -1,
+    "v2csprtcpt": -1,
+    "v2x_gender": -1
+  },
+  "per_feature_breakdown": {
+    "v2svdomaut": {
+      "last_z": 0.2605104446411133,
+      "mean_z": 0.34369513392448425,
+      "std_z": 0.39872583746910095,
+      "slope": 0.3014504611492157,
+      "accel": 0.23500363528728485,
+      "tertile1_mean": 0.045672621577978134,
+      "tertile2_mean": 0.020180344581604004,
+      "tertile3_mean": 0.32016438245773315
+    },
+    "v2pepwrses": {
+      "last_z": 0.09806408733129501,
+      "mean_z": 0.1352386325597763,
+      "std_z": 0.10570532083511353,
+      "slope": 1.045255184173584,
+      "accel": 0.18420976400375366,
+      "tertile1_mean": 0.055286165326833725,
+      "tertile2_mean": 0.022557957097887993,
+      "tertile3_mean": 0.08316483348608017
+    },
+    "v2csprtcpt": {
+      "last_z": 0.1005173996090889,
+      "mean_z": 0.029457034543156624,
+      "std_z": 0.13070333003997803,
+      "slope": 0.335212379693985,
+      "accel": 0.18412178754806519,
+      "tertile1_mean": 0.28199636936187744,
+      "tertile2_mean": 0.03585050627589226,
+      "tertile3_mean": 0.11501952260732651
+    },
+    "v2x_gender": {
+      "last_z": 0.38757821917533875,
+      "mean_z": 0.05270907282829285,
+      "std_z": 0.1337186098098755,
+      "slope": 0.4198397099971771,
+      "accel": 0.16429060697555542,
+      "tertile1_mean": 0.15184815227985382,
+      "tertile2_mean": 0.07081860303878784,
+      "tertile3_mean": 0.03639969974756241
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 10,
+    "indicators": [
+      {
+        "code": "v2svdomaut",
+        "name": "Domestic Autonomy / Sovereignty (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 66,
+        "shape": {
+          "mean": [
+            0.1205,
+            0.2101,
+            0.3171,
+            0.3226,
+            0.3765,
+            0.4503,
+            0.5673,
+            0.6894,
+            0.7338,
+            1.1084
+          ],
+          "p25": [
+            -0.3054,
+            -0.214,
+            -0.2,
+            -0.2,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.5954,
+            0.813,
+            0.9207,
+            0.936,
+            0.9829,
+            1.0198,
+            1.2616,
+            1.269,
+            1.4118,
+            1.7167
+          ]
+        }
+      },
+      {
+        "code": "v2pepwrses",
+        "name": "Power Distributed by Social Group (Ethnic) (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 66,
+        "shape": {
+          "mean": [
+            0.0734,
+            0.2271,
+            0.2558,
+            0.2938,
+            0.4178,
+            0.5986,
+            0.7117,
+            0.8359,
+            0.9798,
+            1.381
+          ],
+          "p25": [
+            -0.3552,
+            -0.2141,
+            -0.2141,
+            -0.2,
+            -0.1741,
+            0.0,
+            0.1582,
+            0.1854,
+            0.1943,
+            0.561
+          ],
+          "p75": [
+            0.4954,
+            0.6498,
+            0.7057,
+            0.795,
+            1.0129,
+            1.2357,
+            1.383,
+            1.6148,
+            1.7771,
+            2.1808
+          ]
+        }
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 66,
+        "shape": {
+          "mean": [
+            0.2936,
+            0.2923,
+            0.2526,
+            0.1958,
+            0.1333,
+            0.0445,
+            0.0643,
+            0.0061,
+            -0.0536,
+            -0.063
+          ],
+          "p25": [
+            -0.2,
+            -0.2,
+            -0.2069,
+            -0.2362,
+            -0.484,
+            -0.9784,
+            -1.0017,
+            -1.1755,
+            -1.4152,
+            -1.6874
+          ],
+          "p75": [
+            0.6721,
+            0.7461,
+            0.7461,
+            0.7461,
+            0.8717,
+            0.8861,
+            1.0263,
+            0.9702,
+            1.079,
+            1.1031
+          ]
+        }
+      },
+      {
+        "code": "v2x_gender",
+        "name": "Women's Political Empowerment Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 63,
+        "shape": {
+          "mean": [
+            0.244,
+            0.3985,
+            0.454,
+            0.4888,
+            0.5817,
+            0.6968,
+            0.8227,
+            0.9078,
+            1.0858,
+            1.1656
+          ],
+          "p25": [
+            -0.3578,
+            -0.1798,
+            -0.2135,
+            -0.1545,
+            0.0998,
+            0.2675,
+            0.3228,
+            0.3903,
+            0.7029,
+            0.6309
+          ],
+          "p75": [
+            0.7563,
+            0.8242,
+            1.0842,
+            1.0276,
+            1.2049,
+            1.2857,
+            1.3489,
+            1.3995,
+            1.5388,
+            1.6266
+          ]
+        }
+      }
+    ],
+    "samples_used": 66,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2023,
+        "label": "Boric Announces Lithium Nationalization Strategy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2021,
+        "label": "Kumtor Mine Nationalized After Japarov Seizes Management",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2020,
+        "label": "Porgera Gold Mine Special Mining Lease Not Renewed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2019,
+        "label": "Heritage Petroleum and Trinidad Petroleum Holdings Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2018,
+        "label": "Petrotrin Refinery Closure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2016,
+        "label": "Kaesong Industrial Complex Permanently Closed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2012,
+        "label": "YPF Renationalization from Repsol",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2011,
+        "label": "Hungary nationalizes private pension fund assets worth roughly 10 percent of GDP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2008,
+        "label": "Renationalization of Pension System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 2006,
+        "label": "Morales Issues Decree 28701 Nationalizing Hydrocarbons on May Day",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1992,
+        "label": "Limited Economic Liberalization Under Investment Law No. 10",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1991,
+        "label": "Nawaz Sharif's First Government Reverses Nationalizations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1990,
+        "label": "Privatization Wave \u2014 Telmex and Banks Sold",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1984,
+        "label": "Sankara Confronts Traditional Chiefs and IMF \u2014 Rejects Dependency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1980,
+        "label": "Saudi Arabia Completes ARAMCO Nationalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1978,
+        "label": "Private Business Abolished Under Green Book",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1977,
+        "label": "Nationalization of Banks and Major Industries",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1977,
+        "label": "Burundi nationalizes coffee sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1975,
+        "label": "Urban land nationalization expands socialist program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1975,
+        "label": "Ethiopia nationalizes banks and major industries",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1975,
+        "label": "PNP Nationalizations Expand State Sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1975,
+        "label": "Kuwait Oil Company Fully Nationalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1975,
+        "label": "Socialist Nationalizations Sweep Banks and Key Sectors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1974,
+        "label": "Bauxite Levy Imposed on Foreign Mining Companies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1974,
+        "label": "Caroni Sugar Nationalised",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1974,
+        "label": "UAE Nationalizes Majority Stakes in Oil Companies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1972,
+        "label": "Nationalization of Iraq Petroleum Company",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1972,
+        "label": "Kuwait Begins Nationalization of Kuwait Oil Company",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1972,
+        "label": "Partial Nationalization of BP Operations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1972,
+        "label": "Echeverr\u00eda Expands State Role in the Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1972,
+        "label": "Nationalization of Major Industries",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1972,
+        "label": "Fisheries Nationalization Coincides with Anchoveta Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1972,
+        "label": "Saudi Arabia Takes Equity Stake in ARAMCO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1972,
+        "label": "Economic Nationalization Following Asian Expulsion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1972,
+        "label": "PDRY Nationalizes Economy and Land Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1971,
+        "label": "Complete nationalization of French oil and gas industry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1971,
+        "label": "Unanimous Congressional Nationalization of Copper Mines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1971,
+        "label": "Nigerian National Oil Corporation Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1970,
+        "label": "Somalia Declared a Socialist State; Nationalization Drive Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1969,
+        "label": "Algeria nationalizes majority stake in French oil companies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1969,
+        "label": "General Ovando Nationalizes Gulf Oil Assets",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1969,
+        "label": "Bank nationalization \u2014 14 major banks taken over",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1969,
+        "label": "Copper Mines Partially Nationalised",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1968,
+        "label": "IPC Expropriation: Talara Act Asserts Oil Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1968,
+        "label": "Mulungushi Economic Reforms \u2014 State Participation in Business",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1967,
+        "label": "Arusha Declaration \u2014 Ujamaa African Socialism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1965,
+        "label": "Nationalization of French mining interests begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1965,
+        "label": "Chileanization of Copper and Comprehensive Agrarian Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1964,
+        "label": "Economic Nationalizations under Arif",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1963,
+        "label": "Burmese Way to Socialism and Mass Nationalization Proclaimed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1963,
+        "label": "Sweeping Nationalizations Transform Syrian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1962,
+        "label": "Electricity Industry Nationalised, State Monopoly ENEL Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1962,
+        "label": "Nationalization of Trade and Socialist Economic Model",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1962,
+        "label": "Nationalisation of Western oil companies triggers US aid cutoff",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1961,
+        "label": "Sweeping Nationalizations Transform Egyptian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1961,
+        "label": "UAR Nationalization Decrees Partially Reversed in Syria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1960,
+        "label": "Cuba Nationalizes US Oil Refineries and Major Businesses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1959,
+        "label": "First Agrarian Reform Law Redistributes Cuban Landholdings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1958,
+        "label": "UAR Nationalizations Hit Syrian Business Community",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1956,
+        "label": "Nasser Nationalizes Suez Canal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1956,
+        "label": "Life Insurance Corporation of India formed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1955,
+        "label": "Nuevo Trato Copper Law Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1955,
+        "label": "Economic Nationalism Movement Grows",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1954,
+        "label": "Nationalization of Key Industries Under Socialist Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1953,
+        "label": "Argentina Nationalizes Foreign Telephone Companies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1953,
+        "label": "Air India nationalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1952,
+        "label": "Tin Mines Nationalized; COMIBOL Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1951,
+        "label": "Oil Nationalization and Mosaddegh Becomes Prime Minister",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1950,
+        "label": "Hungary completes nationalization of remaining private industry",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 69
+  }
+}

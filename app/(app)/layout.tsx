@@ -1,13 +1,13 @@
 import { Sidebar } from "@/components/nav/Sidebar";
 import { PresentationWrapper } from "@/components/nav/PresentationWrapper";
 import { TourProvider } from "@/components/tour/TourProvider";
-import manifest from "@/data/te-fleet-run-1/MANIFEST.json";
+import manifest from "@/data/te-fleet-run-2/MANIFEST.json";
 
 /**
  * V4.1 §2 — one canonical vintage stamp per session. Lives in the sidebar
  * (below the "Take the tour" button) so every page sees it once and only
- * once. Sourced server-side from the sample-10 MANIFEST so a new bake
- * lifts the chip automatically; passed as a prop to the (client) Sidebar
+ * once. Sourced server-side from the current vintage MANIFEST (te-fleet-run-2)
+ * so a new bake lifts the chip automatically; passed as a prop to the Sidebar
  * to keep the sidebar bundle from importing the heavy load.ts module.
  */
 const dataVintage = (manifest as { produced_at_utc: string }).produced_at_utc;

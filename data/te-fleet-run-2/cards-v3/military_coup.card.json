@@ -1,0 +1,3347 @@
+{
+  "recipe_id": "military_coup",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "An armed seizure of executive power \u2014 tanks at the palace, broadcasters off air, the constitution suspended by communiqu\u00e9. Legitimacy-of-leadership metrics, military-civilian balance, and political-stability scores usually trend down for several years first. Concentrated in Sahel states, post-colonial fragments, and any government that loses elite legitimacy without losing formal office.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6858492894671886,
+    "ci95_lo": 0.6321098046102466,
+    "ci95_hi": 0.7377220939838365,
+    "ci80_lo": 0.6502919756669073,
+    "ci80_hi": 0.7180173183108729,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "SP.DYN.LE00.IN",
+      "v2excrptps",
+      "v2cltort",
+      "v2xel_frefair",
+      "v2x_clpol"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "SP.DYN.LE00.IN",
+        "name": null
+      },
+      {
+        "code": "v2excrptps",
+        "name": "Executive Corruption (0-4)"
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)"
+      },
+      {
+        "code": "v2xel_frefair",
+        "name": "Free and Fair Elections Index (0-1)"
+      },
+      {
+        "code": "v2x_clpol",
+        "name": "Political Civil Liberties Index (0-1)"
+      }
+    ],
+    "chosen_window": 25,
+    "final_global_auc": 0.6858492894671886,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "SP.DYN.LE00.IN",
+        "window": 7,
+        "auc": 0.6141455795064042,
+        "lift_over_previous": 0.11414557950640425,
+        "selected_after": [
+          "SP.DYN.LE00.IN"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2excrptps",
+        "window": 7,
+        "auc": 0.6371449630156097,
+        "lift_over_previous": 0.022999383509205495,
+        "selected_after": [
+          "SP.DYN.LE00.IN",
+          "v2excrptps"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2cltort",
+        "window": 7,
+        "auc": 0.652359893653426,
+        "lift_over_previous": 0.015214930637816204,
+        "selected_after": [
+          "SP.DYN.LE00.IN",
+          "v2excrptps",
+          "v2cltort"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2xel_frefair",
+        "window": 25,
+        "auc": 0.6656616947000952,
+        "lift_over_previous": 0.013301801046669226,
+        "selected_after": [
+          "SP.DYN.LE00.IN",
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2x_clpol",
+        "window": 25,
+        "auc": 0.6858492894671886,
+        "lift_over_previous": 0.02018759476709342,
+        "selected_after": [
+          "SP.DYN.LE00.IN",
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2svdomaut",
+        "window": 25,
+        "auc": 0.6878239712260658,
+        "lift_over_previous": 0.0019746817588771615,
+        "selected_after": [
+          "SP.DYN.LE00.IN",
+          "v2excrptps",
+          "v2cltort",
+          "v2xel_frefair",
+          "v2x_clpol",
+          "v2svdomaut"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 203,
+    "n_pos_survive": 138,
+    "n_neg_total": 609,
+    "n_neg_survive": 411,
+    "pos_coverage": 0.6798029556650246,
+    "neg_coverage": 0.6748768472906403,
+    "n_countries_survive": 70,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 379,
+      "loco_auc": 0.7147182114578482,
+      "ece": 0.10485012499040539,
+      "ece_ci95_lo": 0.07819270622654817,
+      "ece_ci95_hi": 0.15034248813947457,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 139,
+          "mean_predicted": 0.045934797458940274,
+          "mean_actual": 0.16546762589928057
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 55,
+          "mean_predicted": 0.14397394751960582,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 38,
+          "mean_predicted": 0.24799820898394836,
+          "mean_actual": 0.3157894736842105
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 37,
+          "mean_predicted": 0.3523575438035501,
+          "mean_actual": 0.24324324324324326
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 24,
+          "mean_predicted": 0.4572744394342105,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 33,
+          "mean_predicted": 0.5550274867000002,
+          "mean_actual": 0.42424242424242425
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 21,
+          "mean_predicted": 0.6444254801386878,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 12,
+          "mean_predicted": 0.7323119888703028,
+          "mean_actual": 0.4166666666666667
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 10,
+          "mean_predicted": 0.8478434801101684,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 10,
+          "mean_predicted": 0.9287969887256622,
+          "mean_actual": 0.9
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6590984897279211,
+      "loco_auc_ci95_hi": 0.7699609478760839
+    },
+    "mid-tier": {
+      "n": 107,
+      "loco_auc": 0.5498338870431894,
+      "ece": 0.21924391159108864,
+      "ece_ci95_lo": 0.16729852815515525,
+      "ece_ci95_hi": 0.3143696409689314,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 32,
+          "mean_predicted": 0.05089016491547227,
+          "mean_actual": 0.09375
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 17,
+          "mean_predicted": 0.14200528623426661,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 15,
+          "mean_predicted": 0.2510891924301783,
+          "mean_actual": 0.26666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 7,
+          "mean_predicted": 0.35249475496155874,
+          "mean_actual": 0.2857142857142857
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.42619648948311806,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5661286115646362,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6396308064460754,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 9,
+          "mean_predicted": 0.7422018316056993,
+          "mean_actual": 0.1111111111111111
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8470952212810516,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 4,
+          "mean_predicted": 0.931963324546814,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.4199054080160582,
+      "loco_auc_ci95_hi": 0.6765707008664181
+    },
+    "stable-democracy": {
+      "n": 57,
+      "loco_auc": 0.5471698113207547,
+      "ece": 0.1025819135829806,
+      "ece_ci95_lo": 0.07849566104102944,
+      "ece_ci95_hi": 0.19037386069090614,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 28,
+          "mean_predicted": 0.04155868095611887,
+          "mean_actual": 0.07142857142857142
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 16,
+          "mean_predicted": 0.13419940462335944,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.25635695159435273,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 3,
+          "mean_predicted": 0.3307993809382121,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.43852759897708893,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.565726617972056,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.13636363636363635,
+      "loco_auc_ci95_hi": 0.9090909090909091
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T07:30:55.154406+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.4975,
+  "stability_diagnostic": {
+    "fold_variance": 0.08191822856072996,
+    "fold_auc_mean": 0.6682865112124747,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.7380952380952381,
+      "Algeria": 0.8,
+      "Argentina": 1.0,
+      "Bangladesh": 1.0,
+      "Bolivia": 0.3888888888888889,
+      "Brazil": 1.0,
+      "Burkina Faso": 0.3055555555555556,
+      "Burundi": 0.7083333333333334,
+      "Chile": 0.6,
+      "Egypt": 0.6111111111111112,
+      "El Salvador": 0.0,
+      "Eritrea": 0.6666666666666666,
+      "Ethiopia": 0.8333333333333334,
+      "Ghana": 0.65,
+      "Guatemala": 0.5,
+      "Guinea": 0.8333333333333334,
+      "Haiti": 0.0,
+      "Honduras": 0.6538461538461539,
+      "Iraq": 1.0,
+      "Ivory Coast": 0.8571428571428571,
+      "Kenya": 0.8,
+      "Liberia": 1.0,
+      "Libya": 0.8571428571428571,
+      "Madagascar": 0.7857142857142857,
+      "Maldives": 0.6666666666666666,
+      "Mali": 1.0,
+      "Morocco": 1.0,
+      "Myanmar": 1.0,
+      "Nepal": 0.9,
+      "Niger": 0.7818181818181819,
+      "Nigeria": 0.3,
+      "Oman": 0.6666666666666666,
+      "Pakistan": 0.625,
+      "Panama": 1.0,
+      "Papua New Guinea": 0.6666666666666666,
+      "Paraguay": 0.5238095238095238,
+      "Peru": 1.0,
+      "Philippines": 0.75,
+      "Qatar": 0.3333333333333333,
+      "Russia": 0.47058823529411764,
+      "Rwanda": 0.7142857142857143,
+      "Sierra Leone": 0.55,
+      "Somalia": 0.3333333333333333,
+      "South Korea": 0.4,
+      "Spain": 0.5,
+      "Sudan": 0.7678571428571429,
+      "Suriname": 0.5,
+      "Syria": 1.0,
+      "Thailand": 0.5666666666666667,
+      "Togo": 0.0,
+      "Tunisia": 1.0,
+      "Turkiye": 0.875,
+      "Uganda": 1.0,
+      "Uruguay": 0.2857142857142857,
+      "Venezuela": 0.2857142857142857,
+      "Yemen": 0.7083333333333334,
+      "Zambia": 0.0,
+      "Zimbabwe": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 203,
+  "n_negatives": 609,
+  "walked_at_utc": "2026-06-01T07:38:08.268321+00:00",
+  "elapsed_seconds": 8041.4336133003235,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/military_coup/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Vietnam",
+          "Nepal",
+          "Iran",
+          "Russia",
+          "Nicaragua",
+          "Cuba",
+          "Solomon Islands",
+          "Turkiye"
+        ],
+        "country_isos": [
+          "vn",
+          "np",
+          "ir",
+          "ru",
+          "ni",
+          "cu",
+          "sb",
+          "tr"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Bahrain",
+          "Argentina",
+          "Cambodia",
+          "Kazakhstan",
+          "Lesotho",
+          "The Gambia",
+          "South Korea",
+          "Syria",
+          "Israel"
+        ],
+        "country_isos": [
+          "bh",
+          "ar",
+          "kh",
+          "kz",
+          "ls",
+          "gm",
+          "kr",
+          "sy",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Norway",
+          "Venezuela",
+          "Malta",
+          "Malawi",
+          "El Salvador",
+          "Spain",
+          "Oman",
+          "Laos",
+          "Uzbekistan"
+        ],
+        "country_isos": [
+          "no",
+          "ve",
+          "mt",
+          "mw",
+          "sv",
+          "es",
+          "om",
+          "la",
+          "uz"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Palestine",
+          "Albania",
+          "Kuwait",
+          "Hong Kong",
+          "Singapore",
+          "Guatemala",
+          "Bolivia",
+          "United Kingdom"
+        ],
+        "country_isos": [
+          "ps",
+          "al",
+          "kw",
+          "hk",
+          "sg",
+          "gt",
+          "bo",
+          "gb"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Japan",
+          "Rwanda",
+          "Colombia",
+          "Ghana",
+          "Ukraine",
+          "North Korea",
+          "Moldova",
+          "Croatia",
+          "Finland"
+        ],
+        "country_isos": [
+          "jp",
+          "rw",
+          "co",
+          "gh",
+          "ua",
+          "kp",
+          "md",
+          "hr",
+          "fi"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Panama",
+          "Slovenia",
+          "Netherlands",
+          "France",
+          "Ireland",
+          "Azerbaijan",
+          "Belgium",
+          "Luxembourg",
+          "Eritrea"
+        ],
+        "country_isos": [
+          "pa",
+          "si",
+          "nl",
+          "fr",
+          "ie",
+          "az",
+          "be",
+          "lu",
+          "er"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Maldives",
+          "Guyana",
+          "Paraguay",
+          "Portugal",
+          "Indonesia",
+          "New Zealand",
+          "Bhutan"
+        ],
+        "country_isos": [
+          "ee",
+          "mv",
+          "gy",
+          "py",
+          "pt",
+          "id",
+          "nz",
+          "bt"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Denmark",
+          "Egypt",
+          "Kyrgyzstan",
+          "Myanmar",
+          "Switzerland",
+          "Dominican Republic",
+          "Turkmenistan",
+          "Qatar",
+          "Belarus"
+        ],
+        "country_isos": [
+          "dk",
+          "eg",
+          "kg",
+          "mm",
+          "ch",
+          "do",
+          "tm",
+          "qa",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Sweden",
+          "Yemen",
+          "North Macedonia",
+          "Austria",
+          "Algeria",
+          "Canada",
+          "South Africa",
+          "Italy",
+          "Germany"
+        ],
+        "country_isos": [
+          "se",
+          "ye",
+          "mk",
+          "at",
+          "dz",
+          "ca",
+          "za",
+          "it",
+          "de"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Mozambique",
+          "United States",
+          "Georgia",
+          "Eswatini",
+          "Seychelles",
+          "United Arab Emirates",
+          "Australia",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "mz",
+          "us",
+          "ge",
+          "sz",
+          "sc",
+          "ae",
+          "au",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Comoros",
+          "Sao Tome and Principe",
+          "China",
+          "India",
+          "Iceland",
+          "Mexico",
+          "Sri Lanka",
+          "Djibouti",
+          "Tajikistan"
+        ],
+        "country_isos": [
+          "km",
+          "st",
+          "cn",
+          "in",
+          "is",
+          "mx",
+          "lk",
+          "dj",
+          "tj"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 9,
+        "countries": [
+          "Tunisia",
+          "Pakistan",
+          "Serbia",
+          "Togo",
+          "Armenia",
+          "Morocco",
+          "Jordan",
+          "Benin",
+          "Senegal"
+        ],
+        "country_isos": [
+          "tn",
+          "pk",
+          "rs",
+          "tg",
+          "am",
+          "ma",
+          "jo",
+          "bj",
+          "sn"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Ecuador",
+          "Bulgaria",
+          "Namibia",
+          "Liberia",
+          "Honduras",
+          "Chile",
+          "Romania",
+          "Cyprus",
+          "Poland"
+        ],
+        "country_isos": [
+          "ec",
+          "bg",
+          "na",
+          "lr",
+          "hn",
+          "cl",
+          "ro",
+          "cy",
+          "pl"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Afghanistan",
+          "Czechia",
+          "Bangladesh",
+          "Sierra Leone",
+          "Mauritius",
+          "Suriname",
+          "Republic of the Congo",
+          "Angola"
+        ],
+        "country_isos": [
+          "af",
+          "cz",
+          "bd",
+          "sl",
+          "mu",
+          "sr",
+          "cg",
+          "ao"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Ethiopia",
+          "Kenya",
+          "Slovakia",
+          "Latvia",
+          "Libya",
+          "Uganda",
+          "Saudi Arabia",
+          "Vanuatu",
+          "Cameroon"
+        ],
+        "country_isos": [
+          "et",
+          "ke",
+          "sk",
+          "lv",
+          "ly",
+          "ug",
+          "sa",
+          "vu",
+          "cm"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Uruguay",
+          "Greece",
+          "Burundi",
+          "Nigeria",
+          "Lebanon",
+          "Iraq",
+          "Mongolia",
+          "Papua New Guinea",
+          "Botswana"
+        ],
+        "country_isos": [
+          "uy",
+          "gr",
+          "bi",
+          "ng",
+          "lb",
+          "iq",
+          "mn",
+          "pg",
+          "bw"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Somalia",
+          "Mali",
+          "Sudan",
+          "Costa Rica",
+          "Barbados",
+          "Malaysia",
+          "Central African Republic",
+          "Peru"
+        ],
+        "country_isos": [
+          "so",
+          "ml",
+          "sd",
+          "cr",
+          "bb",
+          "my",
+          "cf",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Madagascar",
+          "Gabon",
+          "Hungary",
+          "Lithuania",
+          "Bosnia and Herzegovina",
+          "Montenegro",
+          "Equatorial Guinea",
+          "Trinidad and Tobago",
+          "Philippines"
+        ],
+        "country_isos": [
+          "mg",
+          "ga",
+          "hu",
+          "lt",
+          "ba",
+          "me",
+          "gq",
+          "tt",
+          "ph"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Guinea-Bissau",
+          "Mauritania",
+          "Burkina Faso",
+          "Brazil",
+          "Guinea",
+          "Zambia",
+          "Ivory Coast",
+          "Thailand",
+          "Haiti"
+        ],
+        "country_isos": [
+          "gw",
+          "mr",
+          "bf",
+          "br",
+          "gn",
+          "zm",
+          "ci",
+          "th",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Fiji",
+          "Tanzania",
+          "The Democratic Republic of the Congo",
+          "Chad",
+          "Zimbabwe",
+          "Cabo Verde",
+          "Niger",
+          "South Sudan",
+          "Jamaica"
+        ],
+        "country_isos": [
+          "fj",
+          "tz",
+          "cd",
+          "td",
+          "zw",
+          "cv",
+          "ne",
+          "ss",
+          "jm"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 174,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1675,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5872456998170215,
+      "b": 0.0,
+      "c": -0.10988222387632342,
+      "n_fit": 549,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 62,
+        "observed_rate": 0.11290322580645161
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 156,
+        "observed_rate": 0.14102564102564102
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 119,
+        "observed_rate": 0.2184873949579832
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 138,
+        "observed_rate": 0.3333333333333333
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 74,
+        "observed_rate": 0.5
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.026020262794368976,
+    "n_predictions": 549,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.10485012499040539,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 139,
+            "mean_predicted": 0.045934797458940274,
+            "mean_actual": 0.16546762589928057
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 55,
+            "mean_predicted": 0.14397394751960582,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 38,
+            "mean_predicted": 0.24799820898394836,
+            "mean_actual": 0.3157894736842105
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 37,
+            "mean_predicted": 0.3523575438035501,
+            "mean_actual": 0.24324324324324326
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 24,
+            "mean_predicted": 0.4572744394342105,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 33,
+            "mean_predicted": 0.5550274867000002,
+            "mean_actual": 0.42424242424242425
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 21,
+            "mean_predicted": 0.6444254801386878,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 12,
+            "mean_predicted": 0.7323119888703028,
+            "mean_actual": 0.4166666666666667
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 10,
+            "mean_predicted": 0.8478434801101684,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 10,
+            "mean_predicted": 0.9287969887256622,
+            "mean_actual": 0.9
+          }
+        ],
+        "n": 379,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.21924391159108864,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 32,
+            "mean_predicted": 0.05089016491547227,
+            "mean_actual": 0.09375
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 17,
+            "mean_predicted": 0.14200528623426661,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 15,
+            "mean_predicted": 0.2510891924301783,
+            "mean_actual": 0.26666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 7,
+            "mean_predicted": 0.35249475496155874,
+            "mean_actual": 0.2857142857142857
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.42619648948311806,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5661286115646362,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6396308064460754,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 9,
+            "mean_predicted": 0.7422018316056993,
+            "mean_actual": 0.1111111111111111
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8470952212810516,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 4,
+            "mean_predicted": 0.931963324546814,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 107,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.1025819135829806,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 28,
+            "mean_predicted": 0.04155868095611887,
+            "mean_actual": 0.07142857142857142
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 16,
+            "mean_predicted": 0.13419940462335944,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.25635695159435273,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 3,
+            "mean_predicted": 0.3307993809382121,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.43852759897708893,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.565726617972056,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 57,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/military_coup.scores.json",
+  "shape_points": [
+    0.02056430180898461,
+    0.03725318597921089,
+    0.053942070149437193,
+    0.07063095431966349,
+    0.08731983848988976,
+    0.10400872266011606,
+    0.12069760683034235,
+    0.13738649100056863,
+    0.15407537517079492,
+    0.1707642593410212,
+    0.1874531435112475,
+    0.2041420276814738
+  ],
+  "shap_importance_raw": {
+    "SP.DYN.LE00.IN": 2.237459182739258,
+    "v2excrptps": 0.7202975749969482,
+    "v2cltort": 0.7835416197776794,
+    "v2xel_frefair": 0.9546199440956116,
+    "v2x_clpol": 1.1502186059951782
+  },
+  "shap_importance_normalized": {
+    "SP.DYN.LE00.IN": 0.3827243888480058,
+    "v2excrptps": 0.1232091522858111,
+    "v2cltort": 0.13402724388440185,
+    "v2xel_frefair": 0.1632907261525169,
+    "v2x_clpol": 0.19674848882926435
+  },
+  "shap_direction_signs": {
+    "SP.DYN.LE00.IN": -1,
+    "v2excrptps": -1,
+    "v2cltort": -1,
+    "v2xel_frefair": -1,
+    "v2x_clpol": -1
+  },
+  "per_feature_breakdown": {
+    "SP.DYN.LE00.IN": {
+      "last_z": 0.33838313817977905,
+      "mean_z": 0.14610548317432404,
+      "std_z": 0.7637386322021484,
+      "slope": 0.4122835397720337,
+      "accel": 0.13603030145168304,
+      "tertile1_mean": 0.049308892339468,
+      "tertile2_mean": 0.043834734708070755,
+      "tertile3_mean": 0.34777435660362244
+    },
+    "v2excrptps": {
+      "last_z": 0.038652870804071426,
+      "mean_z": 0.06402940303087234,
+      "std_z": 0.189504012465477,
+      "slope": 0.09746706485748291,
+      "accel": 0.12506242096424103,
+      "tertile1_mean": 0.1457238644361496,
+      "tertile2_mean": 0.02170032262802124,
+      "tertile3_mean": 0.03815755248069763
+    },
+    "v2cltort": {
+      "last_z": 0.2369464784860611,
+      "mean_z": 0.051486801356077194,
+      "std_z": 0.07683268189430237,
+      "slope": 0.07634737342596054,
+      "accel": 0.07322560995817184,
+      "tertile1_mean": 0.1422443836927414,
+      "tertile2_mean": 0.03828473016619682,
+      "tertile3_mean": 0.08817355334758759
+    },
+    "v2xel_frefair": {
+      "last_z": 0.11696504801511765,
+      "mean_z": 0.12285183370113373,
+      "std_z": 0.2024070769548416,
+      "slope": 0.04517069086432457,
+      "accel": 0.11472392082214355,
+      "tertile1_mean": 0.2008996158838272,
+      "tertile2_mean": 0.08268146961927414,
+      "tertile3_mean": 0.0689203292131424
+    },
+    "v2x_clpol": {
+      "last_z": 0.35422587394714355,
+      "mean_z": 0.10970770567655563,
+      "std_z": 0.09449450671672821,
+      "slope": 0.065353624522686,
+      "accel": 0.12853297591209412,
+      "tertile1_mean": 0.1228904128074646,
+      "tertile2_mean": 0.07368601858615875,
+      "tertile3_mean": 0.20132754743099213
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 25,
+    "indicators": [
+      {
+        "code": "SP.DYN.LE00.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 165,
+        "shape": {
+          "mean": [
+            -1.4392,
+            -1.3035,
+            -1.1694,
+            -1.0428,
+            -0.8745,
+            -0.7838,
+            -0.714,
+            -0.5842,
+            -0.5017,
+            -0.4272,
+            -0.3638,
+            -0.2843,
+            -0.1739,
+            -0.0715,
+            -0.0372,
+            0.0638,
+            0.1859,
+            0.1757,
+            0.3406,
+            0.3689,
+            0.5548,
+            0.7264,
+            0.8415,
+            1.079,
+            1.2337
+          ],
+          "p25": [
+            -1.8026,
+            -1.6211,
+            -1.4502,
+            -1.2823,
+            -1.1294,
+            -1.0051,
+            -0.9118,
+            -0.8192,
+            -0.7614,
+            -0.6925,
+            -0.6622,
+            -0.6374,
+            -0.5005,
+            -0.4456,
+            -0.4312,
+            -0.3386,
+            -0.2145,
+            -0.2821,
+            -0.0717,
+            0.0491,
+            0.2578,
+            0.4654,
+            0.6426,
+            0.9521,
+            1.1651
+          ],
+          "p75": [
+            -1.2615,
+            -1.1776,
+            -1.0987,
+            -0.9813,
+            -0.8356,
+            -0.6989,
+            -0.6309,
+            -0.4311,
+            -0.3028,
+            -0.1375,
+            -0.0541,
+            0.047,
+            0.2143,
+            0.2796,
+            0.388,
+            0.506,
+            0.6486,
+            0.7365,
+            0.8497,
+            0.9492,
+            1.0848,
+            1.205,
+            1.3614,
+            1.4762,
+            1.6878
+          ]
+        }
+      },
+      {
+        "code": "v2excrptps",
+        "name": "Executive Corruption (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 198,
+        "shape": {
+          "mean": [
+            0.1731,
+            0.1598,
+            0.1933,
+            0.1922,
+            0.1892,
+            0.1921,
+            0.1278,
+            0.0698,
+            0.027,
+            0.024,
+            -0.0172,
+            -0.0354,
+            -0.0456,
+            -0.0879,
+            -0.0666,
+            -0.0905,
+            -0.0773,
+            -0.0877,
+            -0.0632,
+            -0.0286,
+            -0.1188,
+            -0.1434,
+            -0.1872,
+            -0.1913,
+            -0.1991
+          ],
+          "p25": [
+            -0.6585,
+            -0.6585,
+            -0.6141,
+            -0.5839,
+            -0.5519,
+            -0.4667,
+            -0.487,
+            -0.4863,
+            -0.4899,
+            -0.4892,
+            -0.5132,
+            -0.4899,
+            -0.5132,
+            -0.5506,
+            -0.5506,
+            -0.5833,
+            -0.5859,
+            -0.669,
+            -0.6592,
+            -0.6721,
+            -0.8254,
+            -0.8786,
+            -0.9314,
+            -0.9768,
+            -0.9768
+          ],
+          "p75": [
+            1.0741,
+            1.0554,
+            0.9894,
+            0.9384,
+            0.922,
+            0.9048,
+            0.7354,
+            0.5961,
+            0.5333,
+            0.4875,
+            0.4508,
+            0.4443,
+            0.4199,
+            0.3618,
+            0.3934,
+            0.3677,
+            0.387,
+            0.3855,
+            0.4276,
+            0.4899,
+            0.4451,
+            0.4675,
+            0.4692,
+            0.5506,
+            0.5909
+          ]
+        }
+      },
+      {
+        "code": "v2cltort",
+        "name": "Freedom from Torture (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 198,
+        "shape": {
+          "mean": [
+            -0.1342,
+            -0.1778,
+            -0.1226,
+            -0.096,
+            -0.0853,
+            -0.1105,
+            -0.1188,
+            -0.0707,
+            -0.1186,
+            -0.062,
+            -0.0414,
+            0.0067,
+            0.005,
+            0.0364,
+            0.0367,
+            0.0499,
+            0.0994,
+            0.1621,
+            0.145,
+            0.1266,
+            0.1134,
+            0.162,
+            0.1256,
+            0.1154,
+            0.1408
+          ],
+          "p25": [
+            -1.0315,
+            -0.9908,
+            -0.8543,
+            -0.7986,
+            -0.77,
+            -0.7387,
+            -0.7503,
+            -0.6979,
+            -0.6623,
+            -0.5512,
+            -0.5551,
+            -0.5485,
+            -0.6049,
+            -0.571,
+            -0.5827,
+            -0.5598,
+            -0.5404,
+            -0.4842,
+            -0.5205,
+            -0.571,
+            -0.6795,
+            -0.7324,
+            -0.8686,
+            -0.8705,
+            -0.9782
+          ],
+          "p75": [
+            0.6585,
+            0.5715,
+            0.5966,
+            0.5733,
+            0.6045,
+            0.5025,
+            0.5275,
+            0.5458,
+            0.4896,
+            0.4899,
+            0.5111,
+            0.5736,
+            0.6192,
+            0.6378,
+            0.6569,
+            0.6641,
+            0.7552,
+            0.8112,
+            0.8264,
+            0.8654,
+            0.8685,
+            0.9952,
+            0.9995,
+            1.1,
+            1.2525
+          ]
+        }
+      },
+      {
+        "code": "v2xel_frefair",
+        "name": "Free and Fair Elections Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 198,
+        "shape": {
+          "mean": [
+            -0.2864,
+            -0.3184,
+            -0.2993,
+            -0.305,
+            -0.2494,
+            -0.2609,
+            -0.2426,
+            -0.2472,
+            -0.2105,
+            -0.1364,
+            -0.056,
+            -0.0207,
+            0.0444,
+            0.0244,
+            0.0953,
+            0.1164,
+            0.1502,
+            0.1069,
+            0.2043,
+            0.204,
+            0.2418,
+            0.2353,
+            0.333,
+            0.3848,
+            0.4277
+          ],
+          "p25": [
+            -0.9564,
+            -0.9716,
+            -0.9037,
+            -0.857,
+            -0.8267,
+            -0.8075,
+            -0.7545,
+            -0.7548,
+            -0.7434,
+            -0.7048,
+            -0.6763,
+            -0.6701,
+            -0.5993,
+            -0.5946,
+            -0.5446,
+            -0.5144,
+            -0.5144,
+            -0.5524,
+            -0.5133,
+            -0.4956,
+            -0.5068,
+            -0.5041,
+            -0.5061,
+            -0.5061,
+            -0.5376
+          ],
+          "p75": [
+            0.2589,
+            0.2048,
+            0.2414,
+            0.2319,
+            0.2961,
+            0.2319,
+            0.2401,
+            0.3664,
+            0.4136,
+            0.459,
+            0.5936,
+            0.6173,
+            0.6339,
+            0.6068,
+            0.7346,
+            0.7095,
+            0.8143,
+            0.817,
+            0.8426,
+            0.8865,
+            0.9539,
+            0.9922,
+            1.074,
+            1.115,
+            1.1875
+          ]
+        }
+      },
+      {
+        "code": "v2x_clpol",
+        "name": "Political Civil Liberties Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 198,
+        "shape": {
+          "mean": [
+            -0.3133,
+            -0.3515,
+            -0.2846,
+            -0.256,
+            -0.2443,
+            -0.2123,
+            -0.186,
+            -0.1516,
+            -0.1743,
+            -0.1271,
+            -0.0929,
+            -0.0406,
+            -0.0551,
+            -0.0574,
+            0.0561,
+            0.0656,
+            0.0857,
+            0.1385,
+            0.1494,
+            0.1772,
+            0.2146,
+            0.2762,
+            0.2879,
+            0.3733,
+            0.409
+          ],
+          "p25": [
+            -1.0902,
+            -1.1024,
+            -0.9803,
+            -0.9207,
+            -0.8571,
+            -0.8106,
+            -0.7782,
+            -0.7332,
+            -0.6969,
+            -0.6797,
+            -0.714,
+            -0.6916,
+            -0.7331,
+            -0.6469,
+            -0.6133,
+            -0.6159,
+            -0.5771,
+            -0.559,
+            -0.5988,
+            -0.6768,
+            -0.7286,
+            -0.7335,
+            -0.7014,
+            -0.7816,
+            -0.7666
+          ],
+          "p75": [
+            0.3473,
+            0.3874,
+            0.4775,
+            0.4869,
+            0.4804,
+            0.4889,
+            0.4018,
+            0.4248,
+            0.4047,
+            0.4279,
+            0.5411,
+            0.5669,
+            0.5931,
+            0.5771,
+            0.6723,
+            0.7508,
+            0.7462,
+            0.8647,
+            0.8738,
+            0.9466,
+            1.0318,
+            1.1912,
+            1.2137,
+            1.3252,
+            1.456
+          ]
+        }
+      }
+    ],
+    "samples_used": 198,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 2024,
+        "label": "General Zuniga Leads Failed Armored Coup Attempt",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2024,
+        "label": "Bolsonaro Indicted for Alleged Coup Plot",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2024,
+        "label": "Assad Regime Collapses: Bashar Flees to Russia",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2023,
+        "label": "Bolsonaro Supporters Storm Government Buildings in Brasilia",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2023,
+        "label": "Military Coup Overthrows President Bazoum",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "Wagner Group mutiny led by Prigozhin",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2023,
+        "label": "Attempted Military Mutiny \u2014 Aboo Bashar Incident",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2022,
+        "label": "January Military Coup \u2014 Damiba Ousts Kabor\u00e9",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2022,
+        "label": "Second Coup Within Months \u2014 Traor\u00e9 Deposes Damiba",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2022,
+        "label": "Imran Khan Removed via No-Confidence Vote",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "Taliban captures Kabul and Afghan government collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2021,
+        "label": "Military Coup \u2014 Colonel Mamadi Doumbouya and CNRD Seize Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2021,
+        "label": "Coup Attempt Foiled on Eve of Bazoum Inauguration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2021,
+        "label": "October 25 Military Coup \u2014 Generals Seize Power; Resistance Committees Mobilize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2021,
+        "label": "Saied's July 25 Power Grab \u2014 Democracy Suspended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2017,
+        "label": "Military Coup Removes Mugabe After 37 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2016,
+        "label": "President Dilma Rousseff Impeached and Removed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2016,
+        "label": "Attempted Military Coup of 15 July; 250 Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2015,
+        "label": "RSP Coup Attempt \u2014 Presidential Guard Seizes Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2015,
+        "label": "Failed military coup attempt during third-term crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2014,
+        "label": "Prayuth Chan-ocha Stages Coup, Establishes NCPO Junta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2014,
+        "label": "Houthi Forces Capture Sanaa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2013,
+        "label": "Military Removes Morsi in Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2012,
+        "label": "Nasheed forced to resign after police mutiny and military pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2012,
+        "label": "Military Coup Overthrows ATT Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2012,
+        "label": "Mutiny Attempt by Pro-Somare Soldiers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2010,
+        "label": "Military Coup Overthrows Tandja; CSRD Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2009,
+        "label": "Military Coup Ousts President Zelaya, Triggering International Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2009,
+        "label": "Military-Backed Coup Installs Rajoelina, Madagascar Suspended from AU",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2008,
+        "label": "Captain Moussa Dadis Camara Seizes Power \u2014 CNDD Junta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2007,
+        "label": "Military-Backed Caretaker Government Installed ('1/11')",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2007,
+        "label": "Musharraf Declares Emergency and Suspends Constitution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2006,
+        "label": "Shin Corp Sale and Yellow Shirts Trigger September 19 Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2005,
+        "label": "King Gyanendra Seizes Full Executive Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2003,
+        "label": "Coup Plot Uncovered \u2014 Army Loyalists Arrested",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2003,
+        "label": "Oakwood Mutiny \u2014 Military Coup Attempt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2002,
+        "label": "King Gyanendra Seizes Power \u2014 Parliament Dissolved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2000,
+        "label": "Failed Coup Attempt by Oviedo Supporters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1999,
+        "label": "Mainassara Assassinated; Wanke Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1999,
+        "label": "Musharraf's Military Coup \u2014 Pakistan's Fourth",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1997,
+        "label": "AFRC Coup Ousts Kabbah",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 1997,
+        "label": "February 28 'Postmodern Coup': Military Forces Erbakan from Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1997,
+        "label": "Failed Coup Attempt and Torture of Political Prisoners",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1996,
+        "label": "Taliban captures Kabul and establishes Islamic Emirate of Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1996,
+        "label": "Buyoya retakes power in bloodless coup \u2014 international sanctions imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1996,
+        "label": "Ibrahim Bare Mainassara Leads Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1996,
+        "label": "Benazir's Second Government Dismissed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1996,
+        "label": "General Oviedo Attempted Coup Against Wasmosy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 1996,
+        "label": "Counter-Coup Attempt Foiled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1996,
+        "label": "Strasser Ousted; Bio Hands Over to Civilians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 1995,
+        "label": "Hamad bin Khalifa Seizes Power in Bloodless Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1994,
+        "label": "Aliyev Suppresses Multiple Coup Attempts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1993,
+        "label": "Abacha Coup \u2014 End of Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1993,
+        "label": "Army Brokers Simultaneous Resignation of President and PM",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1993,
+        "label": "Bashir Assumes Presidency \u2014 Civilian Facade Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1992,
+        "label": "Najibullah government collapses as mujahideen capture Kabul",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1992,
+        "label": "Military coup cancels elections and triggers civil war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1992,
+        "label": "NPRC Coup \u2014 Strasser Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 1992,
+        "label": "November Military Coup Attempt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1991,
+        "label": "Mengistu Flees Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1991,
+        "label": "EPRDF captures Addis Ababa, Derg regime falls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1991,
+        "label": "Military coup overthrows Aristide after eight months; systematic killings begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "August coup attempt against Gorbachev fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1991,
+        "label": "Yeltsin stands on tank defying coup plotters",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1991,
+        "label": "Military Coup Ousts Chatichai on Corruption Grounds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1990,
+        "label": "Failed military coup against Najibullah by Khalq faction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1990,
+        "label": "Orkar Coup Attempt and Northern Exclusion Rhetoric",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1990,
+        "label": "Benazir's First Government Dismissed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1990,
+        "label": "'Telephone Coup' \u2014 Bouterse Ousts Civilian Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1990,
+        "label": "Jamaat al Muslimeen Attempted Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1989,
+        "label": "Failed Ethiopian Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1989,
+        "label": "Failed military coup against Mengistu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1989,
+        "label": "Coup Ousts Stroessner; End of 35-Year Dictatorship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1989,
+        "label": "Al-Bashir's Islamist Coup Radicalizes Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1989,
+        "label": "NIF-Military Coup \u2014 Bashir Seizes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1988,
+        "label": "SLORC Coup Ends Socialist Era, Establishes New Junta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1987,
+        "label": "Major Buyoya overthrows Bagaza in military coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1987,
+        "label": "Coup Attempts Against Aquino",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1987,
+        "label": "Ben Ali Ousts Bourguiba in Medical Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1985,
+        "label": "Coup Attempt by Colonel Diarra Traore Crushed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1985,
+        "label": "Babangida Coup \u2014 IBB Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1985,
+        "label": "Nimeiri Overthrown; Transitional Government in Khartoum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1985,
+        "label": "Popular Uprising and Military Coup Ousts Nimeiry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1985,
+        "label": "Okello Coup Deposes Obote",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1984,
+        "label": "Lansana Conte Seizes Power \u2014 Military Coup Ends First Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1983,
+        "label": "Sankara Revolution \u2014 Radical Coup Transforms Upper Volta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1983,
+        "label": "General Mej\u00eda V\u00edctores Overthrows R\u00edos Montt in Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1983,
+        "label": "Buhari-Idiagbon Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1982,
+        "label": "Second Coup of the Year \u2014 Ou\u00e9draogo Replaces Zerbo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1982,
+        "label": "General R\u00edos Montt Seizes Power in Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1982,
+        "label": "Kenya Air Force Coup Attempt Crushed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1981,
+        "label": "Rawlings Returns to Power in Second Coup, Establishes PNDC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1981,
+        "label": "23-F Military Coup Attempt Fails After King's TV Address",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1981,
+        "label": "Young Turks Coup Attempt Fails After Royal Endorsement of Prem",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1980,
+        "label": "Garcia Meza Cocaine Coup Installs Narco-Military State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1980,
+        "label": "Coup Removes Lamizana \u2014 Colonel Zerbo Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 1980,
+        "label": "Military Coup \u2014 Doe Executes Tolbert, Ends Americo-Liberian Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1980,
+        "label": "Sergeants' Coup \u2014 Bouterse Seizes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "Hafizullah Amin murders President Taraki in palace coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1979,
+        "label": "Reformist Military Coup Overthrows Romero",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1979,
+        "label": "Rawlings Leads AFRC Coup, Executes Former Heads of State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1978,
+        "label": "Saur Revolution: PDPA military coup overthrows and kills Daoud",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1978,
+        "label": "General Akuffo Ousts Acheampong and Promises Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1977,
+        "label": "Zia ul-Haq's Military Coup \u2014 Operation Fair Play",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1976,
+        "label": "Military Coup \u2014 Process of National Reorganization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1976,
+        "label": "Colonel Bagaza ousts Micombero in bloodless coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1976,
+        "label": "Murtala Mohammed Assassinated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1976,
+        "label": "Failed Libyan-Backed Coup and Khartoum Reconciliation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1976,
+        "label": "October 6 Massacre and Military Coup End Democratic Experiment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1976,
+        "label": "Bordaberry Ousted by Military; Aparicio M\u00e9ndez Installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 1975,
+        "label": "Ratsiraka Seizes Power and Declares Socialist Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1975,
+        "label": "Murtala Mohammed Coup Ousts Gowon",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1975,
+        "label": "Attempted Coup Against Nimeiry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1974,
+        "label": "Lamizana Dissolves Government \u2014 Returns to Full Military Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1974,
+        "label": "Haile Selassie Overthrown by Derg Military Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1974,
+        "label": "Mengistu Haile Mariam Rises in Derg",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1974,
+        "label": "Ethiopian Revolution: Haile Selassie deposed by Derg",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1974,
+        "label": "Taxi drivers and fuel price protests ignite broader revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 1974,
+        "label": "Kountche Military Coup Ousts Diori",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1974,
+        "label": "Ibrahim al-Hamdi Seizes Power in YAR",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1973,
+        "label": "Daoud Khan overthrows monarchy in bloodless coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1973,
+        "label": "Pinochet Military Coup Overthrows Allende Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1973,
+        "label": "General Habyarimana seizes power in coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1973,
+        "label": "Military Coup Ends Uruguayan Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1972,
+        "label": "Colonel Acheampong Overthrows Busia in Bloodless Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1972,
+        "label": "General L\u00f3pez Arellano Returns to Power, Pursues Agrarian Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1972,
+        "label": "F-5 Jets Attempt to Shoot Down Royal Aircraft",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1971,
+        "label": "Hugo Banzer Right-Wing Coup Overthrows Torres Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1971,
+        "label": "Sadat Consolidates Power: 'Corrective Revolution'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1971,
+        "label": "Failed Military Coup at Skhirat Palace",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1971,
+        "label": "Communist Coup Attempt Reversed \u2014 Sudan Pivots to Egypt and Arab World",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1971,
+        "label": "Thanom Self-Coup Abolishes Constitution and Bans Political Parties",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1971,
+        "label": "Idi Amin Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 1970,
+        "label": "Qaboos bin Said Overthrows Father in British-Backed Palace Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1970,
+        "label": "Hafez al-Assad Seizes Power in the Corrective Movement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1969,
+        "label": "Gaddafi's Coup Deposes King Idris",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1969,
+        "label": "Revolutionary Command Council Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1969,
+        "label": "Yahya Khan Takes Power in Second Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1969,
+        "label": "Military Coup Brings Siad Barre to Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1969,
+        "label": "Nimeiri's Coup and Initial Southern Overtures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1969,
+        "label": "Nimeiry's May Revolution Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1969,
+        "label": "Corrective Move \u2014 Radical Takeover in South Yemen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1968,
+        "label": "Ba'ath Party Returns to Power \u2014 July Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1968,
+        "label": "General Omar Torrijos Seizes Power in Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1968,
+        "label": "Velasco Alvarado Military Coup and Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1968,
+        "label": "Counter-Coup Restores Siaka Stevens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1967,
+        "label": "Military junta seizes power in coup d'etat on April 21",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1967,
+        "label": "APC Election Victory Blocked by Military",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1966,
+        "label": "Military Coup \u2014 General Ongan\u00eda Seizes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1966,
+        "label": "First Military Coup \u2014 Lamizana Overthrows Yam\u00e9ogo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1966,
+        "label": "Captain Micombero abolishes monarchy and declares republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1966,
+        "label": "Military Coup Overthrows Nkrumah While He Is Abroad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1966,
+        "label": "Supersemar \u2014 formal transfer of power to Suharto",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1966,
+        "label": "January Military Coup \u2014 Balewa Assassinated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1966,
+        "label": "Ironsi's Unification Decree and Counter-Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1966,
+        "label": "Radical Ba'athist Military Faction Seizes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1965,
+        "label": "Colonel Houari Boumediene overthrows Ben Bella in bloodless coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1965,
+        "label": "April Plot Military Coup Attempt Against Zhivkov Foiled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1965,
+        "label": "Failed Hutu coup and ethnic purge of army",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1965,
+        "label": "Mobutu's Second Coup \u2014 Total Power Seizure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1964,
+        "label": "Military Coup Ends Twelve Years of MNR Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1964,
+        "label": "Military Coup Overthrows President Joao Goulart",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1964,
+        "label": "Zanzibar Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1963,
+        "label": "Military Coup Ousts President Juan Bosch After Seven Months",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1963,
+        "label": "Military Coup Removes Yd\u00edgoras to Prevent Reformist Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1963,
+        "label": "Military Coup Removes Villeda Morales Days Before Scheduled Elections",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1963,
+        "label": "Ba'ath Party Seizes Power \u2014 Qasim Killed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1963,
+        "label": "First Ba'ath Regime Collapses \u2014 Arif Takes Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1963,
+        "label": "Ba'ath Party Seizes Power in Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1962,
+        "label": "Military Coup Deposes President Frondizi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1962,
+        "label": "Ne Win Military Coup Overthrows Parliamentary Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1962,
+        "label": "Military Coup Prevents APRA Electoral Victory",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1962,
+        "label": "Military Coup Deposes Syrian Civilian Government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1962,
+        "label": "Coup Attempt Against Bourguiba Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1962,
+        "label": "September 26 Revolution Overthrows Imamate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1961,
+        "label": "Generals' Putsch fails to topple de Gaulle",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1961,
+        "label": "Syrian Social Nationalist Party Coup Attempt Fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 1961,
+        "label": "Northern Officers' Coup Attempt Reveals Post-Union Tensions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1961,
+        "label": "Park Chung-hee Military Coup Ends Second Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1961,
+        "label": "Syrian Military Coup Dissolves the United Arab Republic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "Force Publique Mutiny",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1960,
+        "label": "Mobutu's First Coup \u2014 'Neutralization' of Politicians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1960,
+        "label": "Attempted coup against Haile Selassie fails",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1960,
+        "label": "Coup attempt reveals deep discontent with imperial system",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1960,
+        "label": "Royal Coup \u2014 King Mahendra Dismisses Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1958,
+        "label": "14 July Revolution \u2014 Monarchy Overthrown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1958,
+        "label": "Ayub Khan's Military Coup \u2014 Pakistan's First",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 1958,
+        "label": "Military Coup in Khartoum Hardens Southern Marginalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1958,
+        "label": "General Abboud Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1957,
+        "label": "King Hussein Suppresses Leftist Coup Attempt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1957,
+        "label": "Sarit Thanarat Coup Ousts Phibun, Inaugurates Military Developmental State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1956,
+        "label": "Military Coup Ousts President Lozano D\u00edaz, Installs Junta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1955,
+        "label": "Military Coup Ousts Juan Per\u00f3n \u2014 Revoluci\u00f3n Libertadora",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1955,
+        "label": "Preventive Counter-Coup Defends Democratic Order",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1955,
+        "label": "Governor-General Declares State of Emergency and Dissolves Assembly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1955,
+        "label": "Attempted Coup Against Imam Ahmad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1954,
+        "label": "Nasser Defeats Naguib and Consolidates Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1954,
+        "label": "CIA-Backed Coup Overthrows President \u00c1rbenz \u2014 Operation PBSUCCESS",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1954,
+        "label": "Military Coup Overthrows Shishakli, Civilian Rule Restored",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 1953,
+        "label": "General Gustavo Rojas Pinilla Military Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1953,
+        "label": "CIA-MI6 Coup Overthrows Mosaddegh (Operation AJAX/Boot)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1953,
+        "label": "Constitutional Crisis and Governor-General's Dismissal of PM",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1952,
+        "label": "Batista Military Coup Ends Cuban Constitutional Democracy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1952,
+        "label": "Free Officers Coup Overthrows King Farouk",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1951,
+        "label": "Failed Military Coup Against Per\u00f3n",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1951,
+        "label": "Colonel Adib al-Shishakli Consolidates Power",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1951,
+        "label": "Manhattan Incident and Silent Coup Consolidate Army Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1931,
+        "label": "Accion Comunal Coup Ends Oligarchic Political Order",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 208
+  }
+}

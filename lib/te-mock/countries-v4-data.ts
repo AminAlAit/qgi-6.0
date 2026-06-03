@@ -3091,6 +3091,22 @@ function buildCountriesV4(): CountryV4[] {
 
   // Hydrate every seed, overlaying real TE scores where available.
   const seedIsos = new Set(SEEDS.map((s) => s.iso.toUpperCase()));
+  // iso2 set of the hand-authored seeds, decoded from each seed's flag emoji,
+  // so a country-index entry for a country we already seed is skipped by iso2
+  // even when the names differ ("DR Congo" seed vs the index's "The Democratic
+  // Republic of the Congo"). Prevents the duplicate card + the bad /countries/the.
+  const iso2FromEmoji = (e: string): string => {
+    if (!e) return "";
+    const cps = Array.from(e).map((ch) => ch.codePointAt(0) ?? 0);
+    if (cps.length < 2 || cps[0] < 0x1f1e6) return "";
+    return cps
+      .slice(0, 2)
+      .map((cp) => String.fromCharCode(97 + (cp - 0x1f1e6)))
+      .join("");
+  };
+  const seedIso2s = new Set(
+    SEEDS.map((s) => iso2FromEmoji((s as { flag?: string }).flag ?? "")).filter(Boolean)
+  );
   const base = SEEDS.map((seed) => {
     // For each (recipeId, seedScore) pair, check if TE has a real score.
     const updatedRecipesLit: Array<[string, number]> = seed.recipesLit.map(
@@ -3114,15 +3130,20 @@ function buildCountriesV4(): CountryV4[] {
     const ci = loadCountryIndex();
     const ciVintage = ci.vintage ?? "2026-05-28";
     for (const c of ci.countries) {
-      const iso2 = NAME_TO_ISO2.get(c.name.toLowerCase()) ?? "";
-      // country-index ships null iso for most entries. Use the 2-letter ISO as
-      // the route/display identifier (no trailing "_" padding) until real iso3
-      // ships per-country. 2026-05-31 (founder): the "_" surfaced as "SS_" /
-      // "/countries/ss_" in the UI; dropped.
+      // Prefer the country-index's OWN iso2 (always correct: DRC "cd", The
+      // Gambia "gm"); only fall back to the name map. The old name-map-only
+      // lookup missed "The ..." names -> iso2 "" -> iso3 = name.slice(0,3) =
+      // "THE", giving "/countries/the" with no flag (founder 2026-06-04).
+      const iso2 =
+        ((c as { iso2?: string }).iso2 ?? "").toLowerCase() ||
+        NAME_TO_ISO2.get(c.name.toLowerCase()) ||
+        "";
       const iso3 = iso2 ? iso2.toUpperCase() : c.name.slice(0, 3).toUpperCase();
-      // Skip if we already have a seed for this country.
+      // Skip if we already have a seed for this country (by iso3, by iso2, or
+      // by name) so the index entry never duplicates a seed.
       if (
         seedIsos.has(iso3) ||
+        (iso2 && seedIso2s.has(iso2)) ||
         base.some((b) => b.name.toLowerCase() === c.name.toLowerCase())
       )
         continue;
