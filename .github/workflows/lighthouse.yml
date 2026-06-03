@@ -58,6 +58,7 @@ jobs:
       - name: Build app
         run: npm run build
         env:
+          NODE_OPTIONS: --max-old-space-size=6144
           NEXT_TELEMETRY_DISABLED: "1"
           # Skip auth on build so the audited routes don't bounce to
           # /login. Mirrors the Vercel staging configuration.
