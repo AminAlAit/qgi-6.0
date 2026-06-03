@@ -168,6 +168,9 @@ export default async function RecipeDetailV41Page({ params }: Params) {
   // WindowPanel renders without the "Chosen from X–Y years" caption).
   let windowSearchMin: number | undefined;
   let windowSearchMax: number | undefined;
+  // V4.1 §B.4: real Expected Calibration Error (run-2 bakes it; undefined on
+  // older vintages / cascade-only recipes -> panel stays in its pending state).
+  let calibrationEce: number | undefined;
   if (isTeRecipe) {
     try {
       const card = loadCardV3(slug);
@@ -179,6 +182,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         windowSearchMin = Math.min(...windows);
         windowSearchMax = Math.max(...windows);
       }
+      calibrationEce = (card as { calibration?: { ece?: number } }).calibration?.ece;
     } catch {
       // Card unavailable — point estimate only; window range stays undefined.
     }
@@ -260,7 +264,11 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         walksCompleted={extras.reliability.walksCompleted}
         verdict={extras.reliability.verdict}
       />
-      <CalibrationPanel familyColor={familyColor} showCalibrationData={false} />
+      <CalibrationPanel
+        familyColor={familyColor}
+        showCalibrationData={calibrationEce !== undefined}
+        ece={calibrationEce}
+      />
 
       {/* 3. RESULTS (what does it find) */}
       <CountriesPanel
