@@ -150,15 +150,10 @@ const nextConfig: NextConfig = {
         destination: "/",
         permanent: true,
       },
-      // 2026-05-31 (founder): per-pattern detail is mock pending the backend
-      // SCDI batch. Redirect /patterns/<slug> to the (real) /patterns search
-      // so no mock detail is reachable. Single-segment only, so the retired
-      // /patterns/pair/<slug> route is untouched. Remove when real SCDIs ship.
-      {
-        source: "/patterns/:slug",
-        destination: "/patterns",
-        permanent: false,
-      },
+      // 2026-06-04 (founder): the /patterns/<slug> → /patterns redirect is
+      // REMOVED. The per-pattern detail page is now real (renders from
+      // getPairBySlug; no mock), so single-segment pattern slugs resolve to
+      // their detail page again. The /patterns/pair/<slug> route stays retired.
       // 2026-05-30 — /compound-risk taken down. Page deleted; bookmarks
       // redirect to /risk-board (the most-overlapping live surface).
       // Components + data layer stay in tree (components/compound-risk/,
