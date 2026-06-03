@@ -21,10 +21,13 @@ import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/reci
 import {
   loadScores,
   loadCountryIndex,
+  loadVintage,
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 
-export const BOARD_VINTAGE = "2026-05-28";
+// V4.1 §I: read the live vintage from the MANIFEST (produced_at_utc, date part)
+// so each fleet re-bake lifts the stamp automatically. Was hardcoded "2026-05-28".
+export const BOARD_VINTAGE = loadVintage().slice(0, 10);
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /* Types                                                                       */
@@ -113,7 +116,7 @@ export interface RankMovement {
 /* ────────────────────────────────────────────────────────────────────────── */
 
 /**
- * Build top pairs from all 44 fleet-run-1 recipes: top-1 country per recipe,
+ * Build top pairs from all 44 fleet-run-2 recipes: top-1 country per recipe,
  * collected across the whole catalog and then sorted descending by score.
  * rank_delta_q is null at vintage 1 — no prior vintage to diff against.
  */
@@ -139,7 +142,7 @@ function buildAllTopPairs(): BoardPair[] {
 }
 
 export function getTopPairs(): BoardPair[] {
-  // Derived entirely from real fleet-run-1 scores — no hand-authored data.
+  // Derived entirely from real fleet-run-2 scores — no hand-authored data.
   return buildAllTopPairs();
 }
 
@@ -213,7 +216,7 @@ export function getCuratedTopPairs(): CuratedBoardPair[] {
 
 // RECIPE_ROW_CELLS intentionally removed — all 5 cascade-era hand-authored
 // rows (foreign_intervention, civil_war_and_insurgency, terrorist_attack,
-// economic_recession, elections_and_voting) are now in fleet-run-1 with real
+// economic_recession, elections_and_voting) are now in fleet-run-2 with real
 // scores. getRecipeRow() falls through to getTERecipeRow() for them.
 // Keeping this map non-empty would shadow the real pipeline data.
 const RECIPE_ROW_CELLS: Record<string, BoardCell[]> = {};
@@ -221,11 +224,11 @@ const RECIPE_ROW_CELLS: Record<string, BoardCell[]> = {};
 /**
  * PLATFORM_ROSTER_SIZE: fallback denominator for coverage captions when the
  * scores file doesn't carry n_countries_scored (should not happen for
- * fleet-run-1, but kept as a safe floor).
+ * fleet-run-2, but kept as a safe floor).
  */
 const PLATFORM_ROSTER_SIZE = 174;
 
-// RECIPE_COVERAGE removed — all 44 fleet-run-1 recipes carry real
+// RECIPE_COVERAGE removed — all 44 fleet-run-2 recipes carry real
 // n_countries_scored in their scores file (top-level field). The five
 // previously hand-authored entries (foreign_intervention,
 // civil_war_and_insurgency, terrorist_attack, economic_recession,
@@ -255,10 +258,10 @@ const EMPTY_QUEUED_CELLS: BoardCell[] = Array.from({ length: 10 }, () => ({
   state: "no_walk_yet" as const,
 }));
 
-// ─── TE fleet-run-1 row builder ───────────────────────────────────────────────
+// ─── TE fleet-run-2 row builder ───────────────────────────────────────────────
 
 /**
- * Build a RecipeRow for a TE fleet-run-1 recipe using real scores.
+ * Build a RecipeRow for a TE fleet-run-2 recipe using real scores.
  * Returns null if scores are unavailable (loader throws).
  */
 function buildTERecipeRow(recipeId: string): RecipeRow | null {
@@ -330,7 +333,7 @@ function getTERecipeRow(recipeId: string): RecipeRow | null {
  * the same key it already renders.
  */
 export function getRecipeFullScoreMap(recipeId: string): Record<string, number> {
-  // TE fleet-run-1 rows (real data — all 44 walked recipes).
+  // TE fleet-run-2 rows (real data — all 44 walked recipes).
   if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     try {
       const sf = loadScores(recipeId);
@@ -352,7 +355,7 @@ export function getRecipeFullScoreMap(recipeId: string): Record<string, number> 
 export function getRecipeRow(recipeId: string): RecipeRow | null {
   const recipe = getRecipe(recipeId);
   if (!recipe) return null;
-  // 1. TE fleet-run-1 rows (real data — all 44 walked recipes including the
+  // 1. TE fleet-run-2 rows (real data — all 44 walked recipes including the
   //    former cascade-era hand-authored group).
   if (FLEET_RUN_1_RECIPE_IDS.includes(recipeId)) {
     const teRow = getTERecipeRow(recipeId);
@@ -372,11 +375,11 @@ export function getRecipeRow(recipeId: string): RecipeRow | null {
 /**
  * Recipes shown on the board, in order. Fleet-run-1 walked recipes first
  * (all 44, real data — including the former cascade-era group), then queued
- * recipes that didn't make the fleet-run-1 set but are in the cascade catalog.
+ * recipes that didn't make the fleet-run-2 set but are in the cascade catalog.
  */
 export function getBoardRecipeIds(): string[] {
   const fleetSet = new Set(FLEET_RUN_1_RECIPE_IDS);
-  // Queued-only entries: board recipes not in fleet-run-1
+  // Queued-only entries: board recipes not in fleet-run-2
   const queuedOnly = QUEUED_RECIPES_ON_BOARD.filter((id) => !fleetSet.has(id));
   return [...FLEET_RUN_1_RECIPE_IDS, ...queuedOnly];
 }

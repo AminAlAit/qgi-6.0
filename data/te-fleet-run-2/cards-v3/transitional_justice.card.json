@@ -1,0 +1,2885 @@
+{
+  "recipe_id": "transitional_justice",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Governance Stress",
+  "description_compelling": "A country reckons with past atrocities \u2014 truth commissions, lustration laws, war-crimes tribunals, reparations programs. Rule-of-law indices, judicial-independence scores, and post-conflict mobility metrics typically climb in tandem. Appears after civil wars end, after dictatorships fall, and (rarely) inside still-fragile transitions hoping to forestall the next round.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7204538147076386,
+    "ci95_lo": 0.6647056328570898,
+    "ci95_hi": 0.7693171072977354,
+    "ci80_lo": 0.6857046814164972,
+    "ci80_hi": 0.7523368031203929,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cseeorgs",
+      "v2pepwrort",
+      "v2xlg_legcon",
+      "v2x_polyarchy",
+      "v2csreprss"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)"
+      },
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)"
+      },
+      {
+        "code": "v2xlg_legcon",
+        "name": "Legislative Constraints on Executive (0-1)"
+      },
+      {
+        "code": "v2x_polyarchy",
+        "name": "Electoral Democracy Index (0-1)"
+      },
+      {
+        "code": "v2csreprss",
+        "name": "Civil Society Repression (0-4)"
+      }
+    ],
+    "chosen_window": 25,
+    "final_global_auc": 0.7204538147076386,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cseeorgs",
+        "window": 3,
+        "auc": 0.6696871676710386,
+        "lift_over_previous": 0.16968716767103864,
+        "selected_after": [
+          "v2cseeorgs"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2pepwrort",
+        "window": 25,
+        "auc": 0.6981888628581726,
+        "lift_over_previous": 0.02850169518713397,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2pepwrort"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2xlg_legcon",
+        "window": 25,
+        "auc": 0.7079256809517248,
+        "lift_over_previous": 0.009736818093552202,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2pepwrort",
+          "v2xlg_legcon"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_polyarchy",
+        "window": 25,
+        "auc": 0.7150682100041339,
+        "lift_over_previous": 0.007142529052409086,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2pepwrort",
+          "v2xlg_legcon",
+          "v2x_polyarchy"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2csreprss",
+        "window": 25,
+        "auc": 0.7204538147076386,
+        "lift_over_previous": 0.005385604703504687,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2pepwrort",
+          "v2xlg_legcon",
+          "v2x_polyarchy",
+          "v2csreprss"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "EN.GHG.CO2.PC.CE.AR5",
+        "window": 25,
+        "auc": 0.7176883710801394,
+        "lift_over_previous": -0.002765443627499198,
+        "selected_after": [
+          "v2cseeorgs",
+          "v2pepwrort",
+          "v2xlg_legcon",
+          "v2x_polyarchy",
+          "v2csreprss",
+          "EN.GHG.CO2.PC.CE.AR5"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 128,
+    "n_pos_survive": 123,
+    "n_neg_total": 384,
+    "n_neg_survive": 354,
+    "pos_coverage": 0.9609375,
+    "neg_coverage": 0.921875,
+    "n_countries_survive": 58,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 151,
+      "loco_auc": 0.72998687664042,
+      "ece": 0.09899199663951302,
+      "ece_ci95_lo": 0.061993720615128464,
+      "ece_ci95_hi": 0.15632742074201042,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 78,
+          "mean_predicted": 0.04224382715825087,
+          "mean_actual": 0.10256410256410256
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 35,
+          "mean_predicted": 0.14895493388175965,
+          "mean_actual": 0.08571428571428572
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 11,
+          "mean_predicted": 0.2484430128877813,
+          "mean_actual": 0.36363636363636365
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 6,
+          "mean_predicted": 0.3560443917910258,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 6,
+          "mean_predicted": 0.44632334013779956,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 10,
+          "mean_predicted": 0.5554428100585938,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.6293227672576904,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7073331475257874,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8500899970531464,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6328476984240423,
+      "loco_auc_ci95_hi": 0.8142268672927537
+    },
+    "mid-tier": {
+      "n": 142,
+      "loco_auc": 0.6283295992033856,
+      "ece": 0.14189286655287298,
+      "ece_ci95_lo": 0.10995119862196129,
+      "ece_ci95_hi": 0.2194780910415509,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 50,
+          "mean_predicted": 0.04804508479312062,
+          "mean_actual": 0.24
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 32,
+          "mean_predicted": 0.14904805179685354,
+          "mean_actual": 0.15625
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 17,
+          "mean_predicted": 0.2498470746419009,
+          "mean_actual": 0.058823529411764705
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 12,
+          "mean_predicted": 0.35897668947776157,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 15,
+          "mean_predicted": 0.43558987776438396,
+          "mean_actual": 0.4666666666666667
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5353250503540039,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6565206199884415,
+          "mean_actual": 0.75
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7435415163636208,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8999421000480652,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9785572588443756,
+          "mean_actual": 0.5
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5114388329295257,
+      "loco_auc_ci95_hi": 0.7273770919581326
+    },
+    "stable-democracy": {
+      "n": 184,
+      "loco_auc": 0.7565860215053763,
+      "ece": 0.10784454992972316,
+      "ece_ci95_lo": 0.08066398924439334,
+      "ece_ci95_hi": 0.17976908656115564,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 70,
+          "mean_predicted": 0.047210965491831305,
+          "mean_actual": 0.15714285714285714
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 32,
+          "mean_predicted": 0.14454141655005515,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 17,
+          "mean_predicted": 0.2519824206829071,
+          "mean_actual": 0.35294117647058826
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 13,
+          "mean_predicted": 0.34073979350236744,
+          "mean_actual": 0.23076923076923078
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.43784282273716396,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 7,
+          "mean_predicted": 0.5597690514155796,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.6630794405937195,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 12,
+          "mean_predicted": 0.75601427257061,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.854633595262255,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 11,
+          "mean_predicted": 0.957203827121041,
+          "mean_actual": 0.9090909090909091
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6734000291211794,
+      "loco_auc_ci95_hi": 0.8241907812653577
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T07:00:06.021948+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5162,
+  "stability_diagnostic": {
+    "fold_variance": 0.08111931987075281,
+    "fold_auc_mean": 0.6453464690071833,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Albania": 0.3333333333333333,
+      "Argentina": 0.7571428571428571,
+      "Armenia": 0.8333333333333334,
+      "Australia": 1.0,
+      "Austria": 1.0,
+      "Bangladesh": 0.625,
+      "Belgium": 0.45454545454545453,
+      "Brazil": 0.3333333333333333,
+      "Bulgaria": 1.0,
+      "Burkina Faso": 0.5,
+      "Canada": 0.3333333333333333,
+      "Chile": 0.7222222222222222,
+      "China": 1.0,
+      "Colombia": 0.6666666666666666,
+      "Croatia": 1.0,
+      "Dominican Republic": 0.0,
+      "Egypt": 0.8333333333333334,
+      "El Salvador": 0.16666666666666666,
+      "France": 0.6666666666666666,
+      "Germany": 0.8076923076923077,
+      "Greece": 0.75,
+      "Guatemala": 0.9583333333333334,
+      "Guinea": 1.0,
+      "Honduras": 0.5,
+      "Hungary": 0.6,
+      "Iraq": 1.0,
+      "Israel": 0.5555555555555556,
+      "Ivory Coast": 0.2727272727272727,
+      "Kenya": 0.875,
+      "Lebanon": 1.0,
+      "Liberia": 0.8,
+      "Libya": 1.0,
+      "Malawi": 0.65,
+      "Maldives": 0.9,
+      "Morocco": 0.6666666666666666,
+      "Namibia": 0.38095238095238093,
+      "New Zealand": 0.25,
+      "Panama": 0.5625,
+      "Paraguay": 0.18181818181818182,
+      "Peru": 0.9375,
+      "Philippines": 1.0,
+      "Portugal": 0.25,
+      "Rwanda": 0.4642857142857143,
+      "Serbia": 0.5,
+      "Sierra Leone": 0.95,
+      "South Africa": 1.0,
+      "South Korea": 0.42857142857142855,
+      "Spain": 0.5,
+      "Sudan": 0.5555555555555556,
+      "Suriname": 0.45,
+      "Switzerland": 1.0,
+      "Togo": 0.0,
+      "Uganda": 0.5833333333333334,
+      "Ukraine": 0.5,
+      "Uruguay": 0.75,
+      "Zimbabwe": 0.3333333333333333
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7286,
+    "cohort_loco_floor": 0.6686,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 128,
+  "n_negatives": 384,
+  "walked_at_utc": "2026-06-01T07:05:04.600121+00:00",
+  "elapsed_seconds": 5554.197145938873,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/transitional_justice/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Azerbaijan",
+          "China",
+          "Hong Kong",
+          "El Salvador",
+          "Burkina Faso",
+          "Egypt",
+          "Equatorial Guinea",
+          "Djibouti"
+        ],
+        "country_isos": [
+          "az",
+          "cn",
+          "hk",
+          "sv",
+          "bf",
+          "eg",
+          "gq",
+          "dj"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Barbados",
+          "Morocco",
+          "Turkiye",
+          "Cuba",
+          "Cameroon",
+          "Bosnia and Herzegovina",
+          "Cambodia",
+          "Venezuela",
+          "Togo"
+        ],
+        "country_isos": [
+          "bb",
+          "ma",
+          "tr",
+          "cu",
+          "cm",
+          "ba",
+          "kh",
+          "ve",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Slovakia",
+          "Mali",
+          "Turkmenistan",
+          "Luxembourg",
+          "Ireland",
+          "Comoros",
+          "Singapore",
+          "Russia",
+          "Afghanistan"
+        ],
+        "country_isos": [
+          "sk",
+          "ml",
+          "tm",
+          "lu",
+          "ie",
+          "km",
+          "sg",
+          "ru",
+          "af"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Austria",
+          "Belarus",
+          "Yemen",
+          "Qatar",
+          "Iraq",
+          "Trinidad and Tobago",
+          "Israel"
+        ],
+        "country_isos": [
+          "ee",
+          "at",
+          "by",
+          "ye",
+          "qa",
+          "iq",
+          "tt",
+          "il"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Tajikistan",
+          "Angola",
+          "Saudi Arabia",
+          "United Arab Emirates",
+          "Georgia",
+          "Philippines",
+          "Guinea",
+          "Denmark",
+          "Bangladesh"
+        ],
+        "country_isos": [
+          "tj",
+          "ao",
+          "sa",
+          "ae",
+          "ge",
+          "ph",
+          "gn",
+          "dk",
+          "bd"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Maldives",
+          "Algeria",
+          "Bahrain",
+          "Kazakhstan",
+          "Belgium",
+          "Chad",
+          "Malaysia",
+          "Liberia",
+          "Uganda"
+        ],
+        "country_isos": [
+          "mv",
+          "dz",
+          "bh",
+          "kz",
+          "be",
+          "td",
+          "my",
+          "lr",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Bulgaria",
+          "Lithuania",
+          "Guinea-Bissau",
+          "Nicaragua",
+          "Sierra Leone",
+          "Burundi",
+          "Jordan",
+          "Romania",
+          "Kyrgyzstan"
+        ],
+        "country_isos": [
+          "bg",
+          "lt",
+          "gw",
+          "ni",
+          "sl",
+          "bi",
+          "jo",
+          "ro",
+          "kg"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Cyprus",
+          "North Korea",
+          "Eritrea",
+          "Tunisia",
+          "Finland",
+          "Suriname",
+          "Libya",
+          "Portugal"
+        ],
+        "country_isos": [
+          "cy",
+          "kp",
+          "er",
+          "tn",
+          "fi",
+          "sr",
+          "ly",
+          "pt"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Eswatini",
+          "Bhutan",
+          "Colombia",
+          "Japan",
+          "Kuwait",
+          "Guatemala",
+          "Zimbabwe",
+          "Ethiopia",
+          "France"
+        ],
+        "country_isos": [
+          "sz",
+          "bt",
+          "co",
+          "jp",
+          "kw",
+          "gt",
+          "zw",
+          "et",
+          "fr"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Fiji",
+          "Mozambique",
+          "Albania",
+          "Gabon",
+          "Somalia",
+          "Armenia",
+          "Vietnam",
+          "India",
+          "Kenya"
+        ],
+        "country_isos": [
+          "fj",
+          "mz",
+          "al",
+          "ga",
+          "so",
+          "am",
+          "vn",
+          "in",
+          "ke"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "United Kingdom",
+          "Republic of the Congo",
+          "Central African Republic",
+          "Paraguay",
+          "Honduras",
+          "Pakistan",
+          "Indonesia",
+          "Laos",
+          "Namibia"
+        ],
+        "country_isos": [
+          "gb",
+          "cg",
+          "cf",
+          "py",
+          "hn",
+          "pk",
+          "id",
+          "la",
+          "na"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Taiwan",
+          "Senegal",
+          "South Korea",
+          "New Zealand",
+          "Malta",
+          "Sweden",
+          "Slovenia"
+        ],
+        "country_isos": [
+          "uz",
+          "tw",
+          "sn",
+          "kr",
+          "nz",
+          "mt",
+          "se",
+          "si"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Niger",
+          "Czechia",
+          "Switzerland",
+          "Dominican Republic",
+          "Tanzania",
+          "The Gambia",
+          "South Africa",
+          "Norway",
+          "Ukraine"
+        ],
+        "country_isos": [
+          "ne",
+          "cz",
+          "ch",
+          "do",
+          "tz",
+          "gm",
+          "za",
+          "no",
+          "ua"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "North Macedonia",
+          "Mauritania",
+          "Haiti",
+          "Greece",
+          "Chile",
+          "Sudan",
+          "Mongolia",
+          "Ghana",
+          "Syria"
+        ],
+        "country_isos": [
+          "mk",
+          "mr",
+          "ht",
+          "gr",
+          "cl",
+          "sd",
+          "mn",
+          "gh",
+          "sy"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Bolivia",
+          "Poland",
+          "The Democratic Republic of the Congo",
+          "Myanmar",
+          "Ivory Coast",
+          "Lebanon",
+          "Papua New Guinea",
+          "Madagascar",
+          "Netherlands"
+        ],
+        "country_isos": [
+          "bo",
+          "pl",
+          "cd",
+          "mm",
+          "ci",
+          "lb",
+          "pg",
+          "mg",
+          "nl"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Iceland",
+          "Costa Rica",
+          "Botswana",
+          "Guyana",
+          "Nigeria",
+          "Malawi",
+          "Montenegro",
+          "Australia"
+        ],
+        "country_isos": [
+          "is",
+          "cr",
+          "bw",
+          "gy",
+          "ng",
+          "mw",
+          "me",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Peru",
+          "Mexico",
+          "Ecuador",
+          "Palestine",
+          "Brazil",
+          "Latvia",
+          "Nepal",
+          "Italy",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "pe",
+          "mx",
+          "ec",
+          "ps",
+          "br",
+          "lv",
+          "np",
+          "it",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Solomon Islands",
+          "Zambia",
+          "Uruguay",
+          "Argentina",
+          "Oman",
+          "Sao Tome and Principe",
+          "Rwanda",
+          "United States",
+          "Serbia"
+        ],
+        "country_isos": [
+          "sb",
+          "zm",
+          "uy",
+          "ar",
+          "om",
+          "st",
+          "rw",
+          "us",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Vanuatu",
+          "Lesotho",
+          "Spain",
+          "Germany",
+          "Croatia",
+          "Moldova",
+          "Sri Lanka",
+          "Hungary",
+          "Benin"
+        ],
+        "country_isos": [
+          "vu",
+          "ls",
+          "es",
+          "de",
+          "hr",
+          "md",
+          "lk",
+          "hu",
+          "bj"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "South Sudan",
+          "Iran",
+          "Jamaica",
+          "Timor-Leste",
+          "Mauritius",
+          "Panama",
+          "Canada",
+          "Thailand",
+          "Seychelles"
+        ],
+        "country_isos": [
+          "ss",
+          "ir",
+          "jm",
+          "tl",
+          "mu",
+          "pa",
+          "ca",
+          "th",
+          "sc"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1283,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7301972184813127,
+      "b": 0.0,
+      "c": 0.2679507671686559,
+      "n_fit": 477,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 88,
+        "observed_rate": 0.06818181818181818
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 119,
+        "observed_rate": 0.2184873949579832
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 102,
+        "observed_rate": 0.17647058823529413
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 63,
+        "observed_rate": 0.31746031746031744
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 60,
+        "observed_rate": 0.4166666666666667
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 45,
+        "observed_rate": 0.6222222222222222
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.05050268415814268,
+    "n_predictions": 477,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.09899199663951302,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 78,
+            "mean_predicted": 0.04224382715825087,
+            "mean_actual": 0.10256410256410256
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 35,
+            "mean_predicted": 0.14895493388175965,
+            "mean_actual": 0.08571428571428572
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 11,
+            "mean_predicted": 0.2484430128877813,
+            "mean_actual": 0.36363636363636365
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 6,
+            "mean_predicted": 0.3560443917910258,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 6,
+            "mean_predicted": 0.44632334013779956,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 10,
+            "mean_predicted": 0.5554428100585938,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.6293227672576904,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7073331475257874,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8500899970531464,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 151,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.14189286655287298,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 50,
+            "mean_predicted": 0.04804508479312062,
+            "mean_actual": 0.24
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 32,
+            "mean_predicted": 0.14904805179685354,
+            "mean_actual": 0.15625
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 17,
+            "mean_predicted": 0.2498470746419009,
+            "mean_actual": 0.058823529411764705
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 12,
+            "mean_predicted": 0.35897668947776157,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 15,
+            "mean_predicted": 0.43558987776438396,
+            "mean_actual": 0.4666666666666667
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5353250503540039,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.6565206199884415,
+            "mean_actual": 0.75
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7435415163636208,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8999421000480652,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9785572588443756,
+            "mean_actual": 0.5
+          }
+        ],
+        "n": 142,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.10784454992972316,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 70,
+            "mean_predicted": 0.047210965491831305,
+            "mean_actual": 0.15714285714285714
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 32,
+            "mean_predicted": 0.14454141655005515,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 17,
+            "mean_predicted": 0.2519824206829071,
+            "mean_actual": 0.35294117647058826
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 13,
+            "mean_predicted": 0.34073979350236744,
+            "mean_actual": 0.23076923076923078
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.43784282273716396,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 7,
+            "mean_predicted": 0.5597690514155796,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.6630794405937195,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 12,
+            "mean_predicted": 0.75601427257061,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.854633595262255,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 11,
+            "mean_predicted": 0.957203827121041,
+            "mean_actual": 0.9090909090909091
+          }
+        ],
+        "n": 184,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/transitional_justice.scores.json",
+  "shape_points": [
+    0.0324442881907581,
+    0.040547238761899265,
+    0.04865018933304043,
+    0.0567531399041816,
+    0.06485609047532276,
+    0.07295904104646392,
+    0.08106199161760508,
+    0.08916494218874624,
+    0.09726789275988741,
+    0.10537084333102857,
+    0.11347379390216973,
+    0.12157674447331089
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.2470028400421143,
+    "v2pepwrort": 0.8139597177505493,
+    "v2xlg_legcon": 1.176897644996643,
+    "v2x_polyarchy": 0.9187687635421753,
+    "v2csreprss": 0.9558615684509277
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.24391298752696614,
+    "v2pepwrort": 0.15921001950279245,
+    "v2xlg_legcon": 0.23020045455140045,
+    "v2x_polyarchy": 0.17971060431142266,
+    "v2csreprss": 0.1869659341074183
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "v2pepwrort": -1,
+    "v2xlg_legcon": -1,
+    "v2x_polyarchy": -1,
+    "v2csreprss": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.2033633142709732,
+      "mean_z": 0.12809856235980988,
+      "std_z": 0.31217169761657715,
+      "slope": 0.09134270995855331,
+      "accel": 0.14919622242450714,
+      "tertile1_mean": 0.09525621682405472,
+      "tertile2_mean": 0.16773644089698792,
+      "tertile3_mean": 0.09983769059181213
+    },
+    "v2pepwrort": {
+      "last_z": 0.03318968042731285,
+      "mean_z": 0.03875918686389923,
+      "std_z": 0.10216741263866425,
+      "slope": 0.11541827768087387,
+      "accel": 0.33492398262023926,
+      "tertile1_mean": 0.08200336992740631,
+      "tertile2_mean": 0.08561647683382034,
+      "tertile3_mean": 0.02188132517039776
+    },
+    "v2xlg_legcon": {
+      "last_z": 0.2451646476984024,
+      "mean_z": 0.08507637679576874,
+      "std_z": 0.3438521921634674,
+      "slope": 0.10680073499679565,
+      "accel": 0.1174699068069458,
+      "tertile1_mean": 0.07310527563095093,
+      "tertile2_mean": 0.04751773923635483,
+      "tertile3_mean": 0.1579107642173767
+    },
+    "v2x_polyarchy": {
+      "last_z": 0.038700129836797714,
+      "mean_z": 0.04658112674951553,
+      "std_z": 0.44220566749572754,
+      "slope": 0.08564350008964539,
+      "accel": 0.12648087739944458,
+      "tertile1_mean": 0.0640220120549202,
+      "tertile2_mean": 0.027491750195622444,
+      "tertile3_mean": 0.08764370530843735
+    },
+    "v2csreprss": {
+      "last_z": 0.19818522036075592,
+      "mean_z": 0.06225208565592766,
+      "std_z": 0.1414536088705063,
+      "slope": 0.0888042226433754,
+      "accel": 0.2261277735233307,
+      "tertile1_mean": 0.06717726588249207,
+      "tertile2_mean": 0.10650739073753357,
+      "tertile3_mean": 0.06535395979881287
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 25,
+    "indicators": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 124,
+        "shape": {
+          "mean": [
+            -0.6051,
+            -0.4788,
+            -0.3632,
+            -0.3399,
+            -0.3708,
+            -0.35,
+            -0.2756,
+            -0.2364,
+            -0.2667,
+            -0.2475,
+            -0.1722,
+            -0.1044,
+            -0.0233,
+            0.0283,
+            0.0757,
+            0.0627,
+            0.1452,
+            0.1565,
+            0.1809,
+            0.2103,
+            0.3358,
+            0.401,
+            0.4896,
+            0.6451,
+            0.8833
+          ],
+          "p25": [
+            -1.4096,
+            -1.3754,
+            -1.1684,
+            -1.102,
+            -1.0589,
+            -0.9879,
+            -0.9353,
+            -0.7674,
+            -0.7497,
+            -0.762,
+            -0.6181,
+            -0.5672,
+            -0.5401,
+            -0.5196,
+            -0.4119,
+            -0.521,
+            -0.3825,
+            -0.3825,
+            -0.3319,
+            -0.3075,
+            -0.2825,
+            -0.0654,
+            -0.0303,
+            -0.017,
+            0.0
+          ],
+          "p75": [
+            0.1549,
+            0.5188,
+            0.3111,
+            0.3111,
+            0.2316,
+            0.2723,
+            0.3178,
+            0.3069,
+            0.2833,
+            0.3342,
+            0.3921,
+            0.4338,
+            0.5129,
+            0.5882,
+            0.6273,
+            0.6571,
+            0.6988,
+            0.7344,
+            0.7552,
+            0.8036,
+            0.9378,
+            1.0707,
+            1.146,
+            1.3928,
+            1.6844
+          ]
+        }
+      },
+      {
+        "code": "v2pepwrort",
+        "name": "Power Distributed by Sexual Orientation (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 124,
+        "shape": {
+          "mean": [
+            -0.6335,
+            -0.5329,
+            -0.4685,
+            -0.42,
+            -0.3913,
+            -0.3725,
+            -0.3011,
+            -0.2298,
+            -0.199,
+            -0.1434,
+            -0.1412,
+            -0.0528,
+            -0.0217,
+            0.0497,
+            0.1084,
+            0.1445,
+            0.1776,
+            0.207,
+            0.2407,
+            0.2794,
+            0.439,
+            0.53,
+            0.6075,
+            0.7402,
+            1.0718
+          ],
+          "p25": [
+            -1.1832,
+            -1.0716,
+            -1.0276,
+            -0.9798,
+            -0.9349,
+            -0.901,
+            -0.8182,
+            -0.718,
+            -0.6721,
+            -0.6018,
+            -0.5458,
+            -0.4899,
+            -0.4899,
+            -0.4873,
+            -0.3816,
+            -0.3818,
+            -0.342,
+            -0.3188,
+            -0.2944,
+            -0.2889,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "p75": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.1301,
+            0.1863,
+            0.3404,
+            0.3069,
+            0.3618,
+            0.4718,
+            0.5565,
+            0.5877,
+            0.6512,
+            0.6752,
+            0.7374,
+            0.7818,
+            0.8545,
+            0.9798,
+            1.084,
+            1.2151,
+            1.4025,
+            1.6706
+          ]
+        }
+      },
+      {
+        "code": "v2xlg_legcon",
+        "name": "Legislative Constraints on Executive (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 124,
+        "shape": {
+          "mean": [
+            -0.6419,
+            -0.5597,
+            -0.5297,
+            -0.4887,
+            -0.4919,
+            -0.3289,
+            -0.3415,
+            -0.3065,
+            -0.3094,
+            -0.3234,
+            -0.2389,
+            -0.1406,
+            -0.0958,
+            0.0361,
+            0.0923,
+            0.1307,
+            0.1741,
+            0.2095,
+            0.2396,
+            0.3535,
+            0.3785,
+            0.3999,
+            0.6014,
+            0.7299,
+            0.9006
+          ],
+          "p25": [
+            -1.2502,
+            -1.1951,
+            -1.175,
+            -1.1707,
+            -1.0277,
+            -0.9292,
+            -0.8846,
+            -0.8479,
+            -0.8459,
+            -0.8314,
+            -0.7104,
+            -0.6491,
+            -0.6481,
+            -0.5363,
+            -0.4159,
+            -0.3815,
+            -0.3619,
+            -0.3412,
+            -0.3699,
+            -0.2943,
+            -0.2,
+            -0.2,
+            0.0479,
+            0.2123,
+            0.283
+          ],
+          "p75": [
+            -0.0665,
+            0.0028,
+            0.0,
+            0.0263,
+            0.0143,
+            0.187,
+            0.0164,
+            0.0657,
+            0.1343,
+            0.1587,
+            0.2338,
+            0.4185,
+            0.5464,
+            0.5771,
+            0.6272,
+            0.626,
+            0.7731,
+            0.8023,
+            0.8652,
+            0.9412,
+            1.0198,
+            1.0628,
+            1.1864,
+            1.3191,
+            1.6758
+          ]
+        }
+      },
+      {
+        "code": "v2x_polyarchy",
+        "name": "Electoral Democracy Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 124,
+        "shape": {
+          "mean": [
+            -0.6425,
+            -0.484,
+            -0.3694,
+            -0.3096,
+            -0.327,
+            -0.309,
+            -0.2704,
+            -0.2449,
+            -0.2828,
+            -0.2679,
+            -0.2231,
+            -0.1379,
+            -0.1061,
+            -0.0421,
+            0.0523,
+            0.0652,
+            0.1331,
+            0.1729,
+            0.2064,
+            0.251,
+            0.3848,
+            0.3867,
+            0.4782,
+            0.697,
+            0.9977
+          ],
+          "p25": [
+            -1.4357,
+            -1.3189,
+            -1.0928,
+            -0.9763,
+            -0.9694,
+            -0.8868,
+            -0.8758,
+            -0.774,
+            -0.7489,
+            -0.7618,
+            -0.7407,
+            -0.6844,
+            -0.6399,
+            -0.6175,
+            -0.4738,
+            -0.6179,
+            -0.4908,
+            -0.4489,
+            -0.4514,
+            -0.412,
+            -0.2724,
+            -0.264,
+            -0.1624,
+            0.2424,
+            0.3258
+          ],
+          "p75": [
+            0.3511,
+            0.3187,
+            0.2801,
+            0.3791,
+            0.268,
+            0.2715,
+            0.3732,
+            0.3325,
+            0.2641,
+            0.2905,
+            0.3225,
+            0.3748,
+            0.4349,
+            0.5448,
+            0.6368,
+            0.7057,
+            0.7397,
+            0.7589,
+            0.8387,
+            0.8757,
+            1.0104,
+            1.0104,
+            1.1928,
+            1.3298,
+            1.6562
+          ]
+        }
+      },
+      {
+        "code": "v2csreprss",
+        "name": "Civil Society Repression (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 124,
+        "shape": {
+          "mean": [
+            -0.3066,
+            -0.2974,
+            -0.3191,
+            -0.2272,
+            -0.241,
+            -0.2815,
+            -0.1999,
+            -0.1818,
+            -0.2709,
+            -0.2153,
+            -0.1873,
+            -0.126,
+            -0.0452,
+            -0.0089,
+            0.017,
+            0.0367,
+            0.0164,
+            0.1039,
+            0.163,
+            0.2033,
+            0.3314,
+            0.3909,
+            0.4943,
+            0.6373,
+            0.9322
+          ],
+          "p25": [
+            -1.2457,
+            -1.2,
+            -1.159,
+            -1.1054,
+            -1.049,
+            -0.9259,
+            -0.8061,
+            -0.7292,
+            -0.7988,
+            -0.7023,
+            -0.6767,
+            -0.5845,
+            -0.5388,
+            -0.5283,
+            -0.535,
+            -0.5344,
+            -0.5232,
+            -0.4932,
+            -0.4624,
+            -0.4356,
+            -0.3057,
+            -0.1872,
+            -0.2017,
+            -0.1029,
+            0.056
+          ],
+          "p75": [
+            0.8309,
+            0.7088,
+            0.6651,
+            0.6089,
+            0.469,
+            0.3513,
+            0.3738,
+            0.3564,
+            0.3211,
+            0.3514,
+            0.3719,
+            0.4899,
+            0.5492,
+            0.5697,
+            0.6627,
+            0.7331,
+            0.6469,
+            0.8,
+            0.861,
+            0.8696,
+            0.9244,
+            1.0645,
+            1.1356,
+            1.2968,
+            1.6446
+          ]
+        }
+      }
+    ],
+    "samples_used": 124,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2025,
+        "label": "Trial of Hashim Tha\u00e7i Continues at Specialist Chambers",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2025,
+        "label": "Anti-Corruption Inquiries and Asset-Recovery Drive",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2025,
+        "label": "Duterte Detained at ICC \u2014 Trial Proceedings Begin",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2025,
+        "label": "Catalan Amnesty Law Enters Force Amid Ongoing Legal Challenges",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2025,
+        "label": "War Crimes Accountability: Investigations and Documentation Begin",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2024,
+        "label": "Moussa Dadis Camara Convicted for 2009 Stadium Massacre",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2024,
+        "label": "Former President Hern\u00e1ndez Convicted on All Counts, Sentenced to 45 Years",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2024,
+        "label": "War and Economic Crimes Court Establishment Launched Under Boakai",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2024,
+        "label": "LRA Still Active in Congo Despite Uganda Phase Ending",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2023,
+        "label": "Berisha Placed Under House Arrest on Corruption Charges",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2023,
+        "label": "Reparations Debate Intensifies \u2014 Colonial Legacy Demands",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2023,
+        "label": "ICC issues arrest warrant for Putin over child deportations",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2023,
+        "label": "Bouterse Conviction Upheld on Appeal",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2022,
+        "label": "Lumumba's Remains Returned to Congo in Colonial Reckoning",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2022,
+        "label": "Colonial Reckoning Commission Fails to Approve Formal Apology",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2022,
+        "label": "Former President Hern\u00e1ndez Extradited to United States on Drug Trafficking Charges",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2021,
+        "label": "Unmarked Graves at Residential Schools Deepen Reckoning",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2021,
+        "label": "David Castillo Convicted of Co-Authoring Berta C\u00e1ceres Assassination",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2021,
+        "label": "Germany\u2013Namibia Joint Declaration on Genocide \u2014 1.1 Billion Euros",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2021,
+        "label": "France formally acknowledges 'overwhelming responsibility' for the genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2021,
+        "label": "Catalan Independence Leaders Pardoned in Reconciliation Gesture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2020,
+        "label": "King Philippe Expresses Regrets for Colonial Past in Congo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2020,
+        "label": "Hashim Tha\u00e7i Indicted and Resigns as President",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2020,
+        "label": "Constitutional Court Annuls 2019 Election",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2019,
+        "label": "France-Rwanda genocide accountability review begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2019,
+        "label": "Bouterse Convicted of December Murders \u2014 20-Year Sentence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 2018,
+        "label": "Pashinyan's Anti-Corruption Campaign Arrests Former Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2018,
+        "label": "Supreme Court overturns Nasheed's terrorism conviction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2018,
+        "label": "Martinelli Extradited from US to Face Trial in Panama",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2017,
+        "label": "Vetting Process Begins Dismissing Corrupt Judges and Prosecutors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2017,
+        "label": "Netherlands Tries Bouterse for December Murders In Absentia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2016,
+        "label": "Sankara Assassination Case Reopened \u2014 Justice Sought",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2015,
+        "label": "Truth and Reconciliation Commission Calls for Action",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2015,
+        "label": "Specialist Chambers and Specialist Prosecutor's Office Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2015,
+        "label": "Germany Formally Labels Colonial Killings Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2014,
+        "label": "S\u00e1nchez Cer\u00e9n Wins Narrow Runoff; Amnesty Law Struck Down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2014,
+        "label": "ICC Drops Charges Against President Kenyatta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2013,
+        "label": "R\u00edos Montt Convicted of Genocide \u2014 Verdict Annulled Ten Days Later",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2013,
+        "label": "ICC Trial of Laurent Gbagbo Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2013,
+        "label": "Political Isolation Law Excludes Former Regime Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 2012,
+        "label": "Truth, Dialogue, and Reconciliation Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2012,
+        "label": "Charles Taylor Convicted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2011,
+        "label": "Victims and Land Restitution Law: Landmark Reparations Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2011,
+        "label": "ICTY Convicts then Acquits Gotovina \u2014 Croatian Wartime Conduct Vindicated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2011,
+        "label": "Mubarak and Sons Arrested, Tried for Corruption and Murder",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2011,
+        "label": "Gacaca courts conclude operations after 1.9 million cases",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2011,
+        "label": "Ratko Mladi\u0107 Arrested in Serbia \u2014 Last Major ICTY Fugitive Caught",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2011,
+        "label": "Parliament Passes Amnesty Law for December Murders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2010,
+        "label": "International Crimes Tribunal Established for 1971 War Crimes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2010,
+        "label": "Dos Erres Massacre Case: Former Kaibiles Convicted and Sentenced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2010,
+        "label": "Special Tribunal for Lebanon Moves Toward Hezbollah Indictments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2010,
+        "label": "ICTR completes major genocide convictions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2010,
+        "label": "Charles Taylor Trial Resumes at Special Court",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2010,
+        "label": "Caducidad Amnesty Law Partially Annulled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2009,
+        "label": "Fujimori Convicted of Human Rights Violations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2009,
+        "label": "Bashir Defies ICC with Arab-African Support; Referendum Preparations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2008,
+        "label": "National Apology to Stolen Generations Delivered",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2008,
+        "label": "Harper Apology for Indian Residential Schools",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2008,
+        "label": "ICC Investigation Launched into Post-Election Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2008,
+        "label": "Radovan Karad\u017ei\u0107 Arrested in Belgrade \u2014 Fugitive Caught After 13 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2007,
+        "label": "Historical Memory Law Confronts Franco's Legacy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2006,
+        "label": "Dirty War Trials Resume \u2014 First Convictions Under New Rules",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 2006,
+        "label": "Saddam Hussein Executed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2006,
+        "label": "Truth and Reconciliation Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2006,
+        "label": "Charles Taylor Transferred to Special Court for Sierra Leone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2006,
+        "label": "Alfredo Stroessner Dies in Brazilian Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ua",
+        "country_name": "Ukraine",
+        "year": 2006,
+        "label": "Verkhovna Rada Recognizes Holodomor as Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2005,
+        "label": "Justice and Peace Law Enacted for Paramilitary Demobilization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2005,
+        "label": "General Gotovina Arrested in Spain \u2014 EU Accession Negotiations Resume",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2005,
+        "label": "IER Delivers Final Report with Reparations Recommendations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2005,
+        "label": "Gacaca courts go fully national; mass releases of genocide suspects",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2005,
+        "label": "Truth and Reconciliation Commission Report",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2005,
+        "label": "CAVR truth commission delivers Chega! report",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2005,
+        "label": "ICC Indicts LRA Leadership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2005,
+        "label": "Truth and Reparations Advances; Mass Graves Discovered",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2004,
+        "label": "Kirchner Orders Military Portraits Removed from ESMA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2004,
+        "label": "Valech Report Identifies 27,255 Torture Victims; Divorce Legalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2004,
+        "label": "Equity and Reconciliation Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2004,
+        "label": "Germany Acknowledges Herero and Nama Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2004,
+        "label": "Special Court Indictments and First Trials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2003,
+        "label": "Annulment of Amnesty Laws \u2014 Human Rights Milestone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2003,
+        "label": "AUC Paramilitaries Begin Demobilization Process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2003,
+        "label": "Special Court for Sierra Leone Indicts Taylor for War Crimes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2003,
+        "label": "Truth and Reconciliation Commission: 69,000 Conflict Dead",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2002,
+        "label": "Belgium Formally Apologizes for Lumumba Assassination Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2002,
+        "label": "Special Court for Sierra Leone Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2002,
+        "label": "Bergier Commission Final Report on Swiss WWII Collaboration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2001,
+        "label": "General Gotovina Indicted by ICTY \u2014 National Controversy Erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2001,
+        "label": "Gacaca courts legislated to process genocide cases",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2001,
+        "label": "Milo\u0161evi\u0107 Arrested and Transferred to The Hague",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1999,
+        "label": "CEH Truth Commission Documents Genocide by Guatemalan State",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1999,
+        "label": "Milo\u0161evi\u0107 Indicted by ICTY \u2014 First Sitting Head of State Charged",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1999,
+        "label": "Dutch Court Convicts Bouterse for Drug Trafficking In Absentia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1998,
+        "label": "Operation Condor Archives Revealed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1998,
+        "label": "Videla and Massera Re-arrested for Baby Theft",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1998,
+        "label": "Pinochet Arrested in London on Spanish Human Rights Warrant",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1998,
+        "label": "Equity and Reconciliation Commission Precursors Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1998,
+        "label": "TRC Final Report Released",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1997,
+        "label": "REMHI Catholic Project Documents 55,000 Cases of War Atrocities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1997,
+        "label": "Ngai Tahu Treaty Settlement Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1997,
+        "label": "TRC Hearings \u2014 Apartheid Atrocities Documented",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1997,
+        "label": "Netherlands Issues International Arrest Warrant for Bouterse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1997,
+        "label": "Gukurahundi Report Published \u2014 Catholic Commission",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 1996,
+        "label": "Bergier Commission Established to Investigate WWII Role",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1995,
+        "label": "Brazil Acknowledges Past Disappearances Under Military Rule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1995,
+        "label": "First Military Officers Convicted for Dictatorship-Era Crimes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1995,
+        "label": "Truth Commission Documents 184 Disappearances by Honduran Security Forces in the 1980s",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1995,
+        "label": "Mwanza Inquest Confirms 1983 Murders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1995,
+        "label": "Tainui Raupatu Settlement Marks Treaty Justice Milestone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1995,
+        "label": "Truth and Reconciliation Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 1995,
+        "label": "Holocaust Dormant Accounts Controversy Erupts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "International Criminal Tribunal for Rwanda established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1993,
+        "label": "UN Truth Commission 'From Madness to Hope' Released",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bg",
+        "country_name": "Bulgaria",
+        "year": 1992,
+        "label": "Zhivkov Convicted of Embezzlement and Placed Under House Arrest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1992,
+        "label": "Noriega Convicted on Drug Trafficking in Miami",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1991,
+        "label": "Rettig Report Identifies 2,279 Victims of State Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1990,
+        "label": "Democracy Restored; Rettig Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1990,
+        "label": "Coup Plotters Released Under Amnesty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1989,
+        "label": "Menem Pardons Military Junta Leaders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1989,
+        "label": "Ferdinand Marcos Dies in Hawaii Exile",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1989,
+        "label": "Caducidad Amnesty Law Upheld in Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1988,
+        "label": "Kurapaty mass graves discovery sparks national awakening",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1987,
+        "label": "Due Obedience Law Grants Immunity to Lower-Ranking Officers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1987,
+        "label": "Klaus Barbie War Crimes Trial Forces Reckoning with Vichy Past",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1986,
+        "label": "Full Stop Law Limits Prosecution of Military Officers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1986,
+        "label": "Waldheim Affair: presidential candidate's Nazi past triggers international crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1986,
+        "label": "Truth Commission on Human Rights Violations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1986,
+        "label": "Ley de Caducidad Amnesty Law Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1985,
+        "label": "Trial of the Military Juntas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1984,
+        "label": "CONADEP Presents Nunca M\u00e1s Report",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 1984,
+        "label": "Camp Boiro Opened \u2014 Political Prisoners Released",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1983,
+        "label": "CONADEP Human Rights Commission Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1980,
+        "label": "Trial of the Gang of Four",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1979,
+        "label": "Amnesty Law Frees Political Prisoners and Exiles",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1978,
+        "label": "Amnesty Decree Shields Dictatorship-Era Human Rights Criminals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1975,
+        "label": "Trial of junta leaders results in life sentences for Papadopoulos and coup leaders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1974,
+        "label": "PIDE Secret Police Dissolved After Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1970,
+        "label": "Brandt kneels at Warsaw Ghetto memorial in reconciliation gesture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1963,
+        "label": "Frankfurt Auschwitz trials confront Nazi crimes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1962,
+        "label": "K\u00e1d\u00e1r announces amnesty for most 1956 revolution participants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1961,
+        "label": "Eichmann Trial in Jerusalem",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1960,
+        "label": "Adolf Eichmann Captured in Argentina",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 142
+  }
+}

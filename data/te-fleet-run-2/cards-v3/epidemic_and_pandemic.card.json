@@ -1,0 +1,2886 @@
+{
+  "recipe_id": "epidemic_and_pandemic",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "directional",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "in_play",
+  "family_label": "External Shock",
+  "description_compelling": "A transmissible-disease outbreak sustained beyond baseline morbidity or mortality \u2014 local epidemic that goes national, regional that goes global. Government-effectiveness, transparency-of-law, fiscal-headroom, and democracy indices shape both the response and the political fallout. Recurrent in West and Central Africa, in dense Asian megacities, and across global travel hubs.",
+  "description": null,
+  "verdict": "MARGINAL_PENDING_BETA_CALIBRATION",
+  "stats": {
+    "loco_auc": 0.8793938165687135,
+    "ci95_lo": 0.8386475140519964,
+    "ci95_hi": 0.9105252967110707,
+    "ci80_lo": 0.8532732878592503,
+    "ci80_hi": 0.8997440226097897,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "AG.PRD.FOOD.XD",
+      "FP.CPI.TOTL.ZG",
+      "v2pepwrgen",
+      "NE.IMP.GNFS.CD",
+      "SH.DYN.MORT",
+      "v2csprtcpt"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "AG.PRD.FOOD.XD",
+        "name": null
+      },
+      {
+        "code": "FP.CPI.TOTL.ZG",
+        "name": null
+      },
+      {
+        "code": "v2pepwrgen",
+        "name": "Power Distributed by Gender (0-4)"
+      },
+      {
+        "code": "NE.IMP.GNFS.CD",
+        "name": null
+      },
+      {
+        "code": "SH.DYN.MORT",
+        "name": null
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)"
+      }
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.8793938165687135,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "AG.PRD.FOOD.XD",
+        "window": 10,
+        "auc": 0.781358157298007,
+        "lift_over_previous": 0.28135815729800695,
+        "selected_after": [
+          "AG.PRD.FOOD.XD"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "FP.CPI.TOTL.ZG",
+        "window": 10,
+        "auc": 0.8198293865703868,
+        "lift_over_previous": 0.03847122927237989,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2pepwrgen",
+        "window": 10,
+        "auc": 0.8342629046369204,
+        "lift_over_previous": 0.01443351806653359,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG",
+          "v2pepwrgen"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "NE.IMP.GNFS.CD",
+        "window": 5,
+        "auc": 0.850174300967797,
+        "lift_over_previous": 0.01591139633087657,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG",
+          "v2pepwrgen",
+          "NE.IMP.GNFS.CD"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "SH.DYN.MORT",
+        "window": 10,
+        "auc": 0.8666036163840662,
+        "lift_over_previous": 0.01642931541626924,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG",
+          "v2pepwrgen",
+          "NE.IMP.GNFS.CD",
+          "SH.DYN.MORT"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2csprtcpt",
+        "window": 10,
+        "auc": 0.8793938165687135,
+        "lift_over_previous": 0.012790200184647271,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG",
+          "v2pepwrgen",
+          "NE.IMP.GNFS.CD",
+          "SH.DYN.MORT",
+          "v2csprtcpt"
+        ]
+      },
+      {
+        "step": 7,
+        "candidate": "NY.GDP.MKTP.KD.ZG",
+        "window": 10,
+        "auc": 0.8813078430047964,
+        "lift_over_previous": 0.0019140264360828496,
+        "selected_after": [
+          "AG.PRD.FOOD.XD",
+          "FP.CPI.TOTL.ZG",
+          "v2pepwrgen",
+          "NE.IMP.GNFS.CD",
+          "SH.DYN.MORT",
+          "v2csprtcpt",
+          "NY.GDP.MKTP.KD.ZG"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 160,
+    "n_pos_survive": 131,
+    "n_neg_total": 480,
+    "n_neg_survive": 339,
+    "pos_coverage": 0.81875,
+    "neg_coverage": 0.70625,
+    "n_countries_survive": 95,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 144,
+      "loco_auc": 0.8553098553098553,
+      "ece": 0.1421325625091817,
+      "ece_ci95_lo": 0.10886496540228513,
+      "ece_ci95_hi": 0.21325045911156237,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 76,
+          "mean_predicted": 0.029503086039575896,
+          "mean_actual": 0.06578947368421052
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 11,
+          "mean_predicted": 0.15351930260658264,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.22552997767925262,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.30262431502342224,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.427840668708086,
+          "mean_actual": 0.125
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5387616455554962,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6606924931208292,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7526897192001343,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 11,
+          "mean_predicted": 0.8489397872578014,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 26,
+          "mean_predicted": 0.9802506886995755,
+          "mean_actual": 0.7692307692307693
+        }
+      ],
+      "loco_auc_ci95_lo": 0.770942299290801,
+      "loco_auc_ci95_hi": 0.9119844438179003
+    },
+    "mid-tier": {
+      "n": 114,
+      "loco_auc": 0.8948575171962004,
+      "ece": 0.099982934980449,
+      "ece_ci95_lo": 0.06631320084801573,
+      "ece_ci95_hi": 0.17981863489140668,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 53,
+          "mean_predicted": 0.02643313703241424,
+          "mean_actual": 0.07547169811320754
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 14,
+          "mean_predicted": 0.14730647153088025,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 5,
+          "mean_predicted": 0.2441547393798828,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 1,
+          "mean_predicted": 0.30687955021858215,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 2,
+          "mean_predicted": 0.439344584941864,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 6,
+          "mean_predicted": 0.5407769481341044,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6301532983779907,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7597205638885498,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8694346994161606,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 24,
+          "mean_predicted": 0.9800659691294035,
+          "mean_actual": 0.9583333333333334
+        }
+      ],
+      "loco_auc_ci95_lo": 0.8118893398367016,
+      "loco_auc_ci95_hi": 0.9428947348688839
+    },
+    "stable-democracy": {
+      "n": 200,
+      "loco_auc": 0.9069000507356672,
+      "ece": 0.07167605402355548,
+      "ece_ci95_lo": 0.049343407430947984,
+      "ece_ci95_hi": 0.12422795101087826,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 131,
+          "mean_predicted": 0.020521088546845805,
+          "mean_actual": 0.061068702290076333
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 7,
+          "mean_predicted": 0.14232432310070312,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 6,
+          "mean_predicted": 0.2676270628968875,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 3,
+          "mean_predicted": 0.36417342225710553,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.45261046290397644,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 2,
+          "mean_predicted": 0.5476990640163422,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 4,
+          "mean_predicted": 0.6475879997014999,
+          "mean_actual": 0.75
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 4,
+          "mean_predicted": 0.7415127903223038,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 1,
+          "mean_predicted": 0.8745178580284119,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 41,
+          "mean_predicted": 0.9850979709043736,
+          "mean_actual": 0.8536585365853658
+        }
+      ],
+      "loco_auc_ci95_lo": 0.8401608392011265,
+      "loco_auc_ci95_hi": 0.9500062792139622
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T15:58:03.073191+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.6766,
+  "stability_diagnostic": {
+    "fold_variance": 0.06221795131554303,
+    "fold_auc_mean": 0.9042450994698186,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Albania": 1.0,
+      "Algeria": 1.0,
+      "Australia": 1.0,
+      "Austria": 1.0,
+      "Bahrain": 1.0,
+      "Bangladesh": 1.0,
+      "Belarus": 1.0,
+      "Belgium": 1.0,
+      "Bhutan": 1.0,
+      "Botswana": 1.0,
+      "Brazil": 0.5416666666666666,
+      "Bulgaria": 1.0,
+      "Canada": 0.4666666666666667,
+      "China": 1.0,
+      "Colombia": 1.0,
+      "Croatia": 1.0,
+      "Denmark": 1.0,
+      "Dominican Republic": 1.0,
+      "Ecuador": 0.8888888888888888,
+      "Egypt": 0.9,
+      "El Salvador": 1.0,
+      "Ethiopia": 1.0,
+      "Finland": 1.0,
+      "France": 1.0,
+      "Germany": 1.0,
+      "Greece": 1.0,
+      "Guinea": 0.0,
+      "Haiti": 0.16666666666666666,
+      "Iceland": 1.0,
+      "India": 0.25,
+      "Indonesia": 1.0,
+      "Israel": 1.0,
+      "Italy": 1.0,
+      "Japan": 0.9,
+      "Jordan": 1.0,
+      "Kenya": 1.0,
+      "Kuwait": 1.0,
+      "Kyrgyzstan": 1.0,
+      "Laos": 1.0,
+      "Latvia": 1.0,
+      "Lebanon": 1.0,
+      "Madagascar": 0.5,
+      "Maldives": 1.0,
+      "Mauritius": 1.0,
+      "Mexico": 0.75,
+      "Morocco": 1.0,
+      "Namibia": 1.0,
+      "Nepal": 1.0,
+      "Netherlands": 1.0,
+      "New Zealand": 1.0,
+      "Nicaragua": 1.0,
+      "Norway": 1.0,
+      "Pakistan": 1.0,
+      "Panama": 1.0,
+      "Paraguay": 1.0,
+      "Peru": 0.9285714285714286,
+      "Philippines": 1.0,
+      "Portugal": 1.0,
+      "Romania": 0.4,
+      "Russia": 1.0,
+      "Rwanda": 1.0,
+      "Saudi Arabia": 1.0,
+      "Senegal": 1.0,
+      "Serbia": 1.0,
+      "Sierra Leone": 1.0,
+      "Singapore": 0.75,
+      "Slovakia": 1.0,
+      "Slovenia": 1.0,
+      "South Africa": 1.0,
+      "South Sudan": 0.0,
+      "Spain": 1.0,
+      "Sweden": 1.0,
+      "Switzerland": 1.0,
+      "Tanzania": 1.0,
+      "Thailand": 1.0,
+      "The Democratic Republic of the Congo": 0.09090909090909091,
+      "Timor-Leste": 1.0,
+      "Togo": 1.0,
+      "Tunisia": 1.0,
+      "United Arab Emirates": 1.0,
+      "United Kingdom": 1.0,
+      "United States": 1.0,
+      "Uruguay": 1.0,
+      "Uzbekistan": 1.0,
+      "Venezuela": 0.0,
+      "Vietnam": 0.9444444444444444,
+      "Yemen": 1.0,
+      "Zambia": 1.0,
+      "Zimbabwe": 1.0
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 160,
+  "n_negatives": 480,
+  "walked_at_utc": "2026-06-01T16:05:53.754343+00:00",
+  "elapsed_seconds": 4867.314898967743,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/epidemic_and_pandemic/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 7,
+        "countries": [
+          "Oman",
+          "Moldova",
+          "Croatia",
+          "Ukraine",
+          "Cameroon",
+          "Papua New Guinea",
+          "Luxembourg"
+        ],
+        "country_isos": [
+          "om",
+          "md",
+          "hr",
+          "ua",
+          "cm",
+          "pg",
+          "lu"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Kazakhstan",
+          "Lithuania",
+          "Maldives",
+          "Bulgaria",
+          "Angola",
+          "Bosnia and Herzegovina",
+          "Latvia"
+        ],
+        "country_isos": [
+          "uz",
+          "kz",
+          "lt",
+          "mv",
+          "bg",
+          "ao",
+          "ba",
+          "lv"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Thailand",
+          "Slovenia",
+          "Malta",
+          "Costa Rica",
+          "Honduras",
+          "Seychelles",
+          "Iran",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "th",
+          "si",
+          "mt",
+          "cr",
+          "hn",
+          "sc",
+          "ir",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Hungary",
+          "Sweden",
+          "Armenia",
+          "Namibia",
+          "Bahrain",
+          "Mongolia",
+          "Cambodia",
+          "Poland"
+        ],
+        "country_isos": [
+          "hu",
+          "se",
+          "am",
+          "na",
+          "bh",
+          "mn",
+          "kh",
+          "pl"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Algeria",
+          "Ghana",
+          "Chile",
+          "Ireland",
+          "Dominican Republic",
+          "South Africa",
+          "Canada",
+          "Australia"
+        ],
+        "country_isos": [
+          "dz",
+          "gh",
+          "cl",
+          "ie",
+          "do",
+          "za",
+          "ca",
+          "au"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "Albania",
+          "Guatemala",
+          "Rwanda",
+          "Uganda",
+          "Spain",
+          "Laos",
+          "Comoros",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "al",
+          "gt",
+          "rw",
+          "ug",
+          "es",
+          "la",
+          "km",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Republic of the Congo",
+          "Yemen",
+          "Libya",
+          "Egypt",
+          "Ethiopia",
+          "Senegal",
+          "Tanzania"
+        ],
+        "country_isos": [
+          "pa",
+          "cg",
+          "ye",
+          "ly",
+          "eg",
+          "et",
+          "sn",
+          "tz"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Mexico",
+          "Indonesia",
+          "Israel",
+          "Eswatini",
+          "Peru",
+          "Vanuatu",
+          "Kyrgyzstan",
+          "Solomon Islands"
+        ],
+        "country_isos": [
+          "mx",
+          "id",
+          "il",
+          "sz",
+          "pe",
+          "vu",
+          "kg",
+          "sb"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Romania",
+          "North Macedonia",
+          "Argentina",
+          "Brazil",
+          "Cyprus",
+          "Jordan",
+          "Uruguay",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "ro",
+          "mk",
+          "ar",
+          "br",
+          "cy",
+          "jo",
+          "uy",
+          "sk"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Sierra Leone",
+          "Djibouti",
+          "Botswana",
+          "The Gambia",
+          "Cabo Verde",
+          "The Democratic Republic of the Congo",
+          "Ivory Coast",
+          "Mozambique"
+        ],
+        "country_isos": [
+          "sl",
+          "dj",
+          "bw",
+          "gm",
+          "cv",
+          "cd",
+          "ci",
+          "mz"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 8,
+        "countries": [
+          "Finland",
+          "Germany",
+          "Bangladesh",
+          "Mauritius",
+          "Paraguay",
+          "Mauritania",
+          "Czechia",
+          "Vietnam"
+        ],
+        "country_isos": [
+          "fi",
+          "de",
+          "bd",
+          "mu",
+          "py",
+          "mr",
+          "cz",
+          "vn"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "France",
+          "Pakistan",
+          "Venezuela",
+          "Bolivia",
+          "Serbia",
+          "Chad",
+          "Ecuador",
+          "Bhutan"
+        ],
+        "country_isos": [
+          "fr",
+          "pk",
+          "ve",
+          "bo",
+          "rs",
+          "td",
+          "ec",
+          "bt"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Kenya",
+          "Iraq",
+          "Japan",
+          "United States",
+          "Gabon",
+          "Belgium",
+          "South Korea",
+          "Afghanistan"
+        ],
+        "country_isos": [
+          "ke",
+          "iq",
+          "jp",
+          "us",
+          "ga",
+          "be",
+          "kr",
+          "af"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Norway",
+          "Guinea-Bissau",
+          "Sri Lanka",
+          "Tajikistan",
+          "Portugal",
+          "Guyana",
+          "Philippines",
+          "Lesotho"
+        ],
+        "country_isos": [
+          "no",
+          "gw",
+          "lk",
+          "tj",
+          "pt",
+          "gy",
+          "ph",
+          "ls"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Switzerland",
+          "Colombia",
+          "Montenegro",
+          "Suriname",
+          "Equatorial Guinea",
+          "Kuwait",
+          "Lebanon",
+          "Haiti"
+        ],
+        "country_isos": [
+          "ch",
+          "co",
+          "me",
+          "sr",
+          "gq",
+          "kw",
+          "lb",
+          "ht"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Italy",
+          "New Zealand",
+          "Zambia",
+          "China",
+          "Austria",
+          "Mali",
+          "Central African Republic",
+          "Sudan"
+        ],
+        "country_isos": [
+          "it",
+          "nz",
+          "zm",
+          "cn",
+          "at",
+          "ml",
+          "cf",
+          "sd"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Nepal",
+          "Malawi",
+          "Nicaragua",
+          "Madagascar",
+          "Belarus",
+          "El Salvador",
+          "Benin",
+          "Singapore"
+        ],
+        "country_isos": [
+          "np",
+          "mw",
+          "ni",
+          "mg",
+          "by",
+          "sv",
+          "bj",
+          "sg"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Georgia",
+          "Palestine",
+          "Azerbaijan",
+          "Niger",
+          "Russia",
+          "Guinea",
+          "Togo",
+          "Malaysia"
+        ],
+        "country_isos": [
+          "ge",
+          "ps",
+          "az",
+          "ne",
+          "ru",
+          "gn",
+          "tg",
+          "my"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 7,
+        "countries": [
+          "Syria",
+          "United Kingdom",
+          "Morocco",
+          "Turkiye",
+          "Tunisia",
+          "Netherlands",
+          "United Arab Emirates"
+        ],
+        "country_isos": [
+          "sy",
+          "gb",
+          "ma",
+          "tr",
+          "tn",
+          "nl",
+          "ae"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Iceland",
+          "Denmark",
+          "Qatar",
+          "Zimbabwe",
+          "Burkina Faso",
+          "Estonia",
+          "Saudi Arabia",
+          "India",
+          "Greece"
+        ],
+        "country_isos": [
+          "is",
+          "dk",
+          "qa",
+          "zw",
+          "bf",
+          "ee",
+          "sa",
+          "in",
+          "gr"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.6,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 159,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0516,
+    "v4_oot_recall_pct": null,
+    "verdict": "MARGINAL_PENDING_BETA_CALIBRATION"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.9255106986572943,
+      "b": 0.0,
+      "c": 0.7554862741414007,
+      "n_fit": 470,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 208,
+        "observed_rate": 0.04807692307692308
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 54,
+        "observed_rate": 0.14814814814814814
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 27,
+        "observed_rate": 0.25925925925925924
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 19,
+        "observed_rate": 0.21052631578947367
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 15,
+        "observed_rate": 0.26666666666666666
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 24,
+        "observed_rate": 0.5416666666666666
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 123,
+        "observed_rate": 0.6910569105691057
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.02440820707714718,
+    "n_predictions": 470,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1421325625091817,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 76,
+            "mean_predicted": 0.029503086039575896,
+            "mean_actual": 0.06578947368421052
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 11,
+            "mean_predicted": 0.15351930260658264,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.22552997767925262,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.30262431502342224,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.427840668708086,
+            "mean_actual": 0.125
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5387616455554962,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6606924931208292,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7526897192001343,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 11,
+            "mean_predicted": 0.8489397872578014,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 26,
+            "mean_predicted": 0.9802506886995755,
+            "mean_actual": 0.7692307692307693
+          }
+        ],
+        "n": 144,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.099982934980449,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 53,
+            "mean_predicted": 0.02643313703241424,
+            "mean_actual": 0.07547169811320754
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 14,
+            "mean_predicted": 0.14730647153088025,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 5,
+            "mean_predicted": 0.2441547393798828,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 1,
+            "mean_predicted": 0.30687955021858215,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 2,
+            "mean_predicted": 0.439344584941864,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 6,
+            "mean_predicted": 0.5407769481341044,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6301532983779907,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7597205638885498,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8694346994161606,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 24,
+            "mean_predicted": 0.9800659691294035,
+            "mean_actual": 0.9583333333333334
+          }
+        ],
+        "n": 114,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.07167605402355548,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 131,
+            "mean_predicted": 0.020521088546845805,
+            "mean_actual": 0.061068702290076333
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 7,
+            "mean_predicted": 0.14232432310070312,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 6,
+            "mean_predicted": 0.2676270628968875,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 3,
+            "mean_predicted": 0.36417342225710553,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.45261046290397644,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 2,
+            "mean_predicted": 0.5476990640163422,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 4,
+            "mean_predicted": 0.6475879997014999,
+            "mean_actual": 0.75
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 4,
+            "mean_predicted": 0.7415127903223038,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 1,
+            "mean_predicted": 0.8745178580284119,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 41,
+            "mean_predicted": 0.9850979709043736,
+            "mean_actual": 0.8536585365853658
+          }
+        ],
+        "n": 200,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/epidemic_and_pandemic.scores.json",
+  "shape_points": [
+    0.02798697295950677,
+    0.03650395716884683,
+    0.04502094137818688,
+    0.05353792558752694,
+    0.06205490979686699,
+    0.07057189400620706,
+    0.07908887821554711,
+    0.08760586242488715,
+    0.0961228466342272,
+    0.10463983084356725,
+    0.11315681505290731,
+    0.12167379926224738
+  ],
+  "shap_importance_raw": {
+    "AG.PRD.FOOD.XD": 3.1723203659057617,
+    "FP.CPI.TOTL.ZG": 0.7621803283691406,
+    "v2pepwrgen": 0.8608314990997314,
+    "NE.IMP.GNFS.CD": 0.592120885848999,
+    "SH.DYN.MORT": 0.49307286739349365,
+    "v2csprtcpt": 0.9167075157165527
+  },
+  "shap_importance_normalized": {
+    "AG.PRD.FOOD.XD": 0.4667075779410725,
+    "FP.CPI.TOTL.ZG": 0.11213096219111811,
+    "v2pepwrgen": 0.12664439199712055,
+    "NE.IMP.GNFS.CD": 0.08711204185205483,
+    "SH.DYN.MORT": 0.07254022833345612,
+    "v2csprtcpt": 0.13486479768517787
+  },
+  "shap_direction_signs": {
+    "AG.PRD.FOOD.XD": -1,
+    "FP.CPI.TOTL.ZG": -1,
+    "v2pepwrgen": -1,
+    "NE.IMP.GNFS.CD": -1,
+    "SH.DYN.MORT": -1,
+    "v2csprtcpt": -1
+  },
+  "per_feature_breakdown": {
+    "AG.PRD.FOOD.XD": {
+      "last_z": 0.03238177299499512,
+      "mean_z": 0.1266239881515503,
+      "std_z": 0.4667053818702698,
+      "slope": 0.07091003656387329,
+      "accel": 0.13304883241653442,
+      "tertile1_mean": 0.03195767477154732,
+      "tertile2_mean": 2.181140661239624,
+      "tertile3_mean": 0.12955214083194733
+    },
+    "FP.CPI.TOTL.ZG": {
+      "last_z": 0.03491594269871712,
+      "mean_z": 0.04143431410193443,
+      "std_z": 0.04775936156511307,
+      "slope": 0.06114160642027855,
+      "accel": 0.43235623836517334,
+      "tertile1_mean": 0.018984179943799973,
+      "tertile2_mean": 0.02632431499660015,
+      "tertile3_mean": 0.09926439821720123
+    },
+    "v2pepwrgen": {
+      "last_z": 0.06683554500341415,
+      "mean_z": 0.021774068474769592,
+      "std_z": 0.22050321102142334,
+      "slope": 0.07554003596305847,
+      "accel": 0.1902710199356079,
+      "tertile1_mean": 0.08092182874679565,
+      "tertile2_mean": 0.040443744510412216,
+      "tertile3_mean": 0.1645420640707016
+    },
+    "NE.IMP.GNFS.CD": {
+      "last_z": 0.059663426131010056,
+      "mean_z": 0.061037469655275345,
+      "std_z": 0.029867922887206078,
+      "slope": 0.23620881140232086,
+      "accel": 0.07207627594470978,
+      "tertile1_mean": 0.05659452825784683,
+      "tertile2_mean": 0.020144067704677582,
+      "tertile3_mean": 0.056528396904468536
+    },
+    "SH.DYN.MORT": {
+      "last_z": 0.07644117623567581,
+      "mean_z": 0.014073163270950317,
+      "std_z": 0.0968538373708725,
+      "slope": 0.16067571938037872,
+      "accel": 0.0849602222442627,
+      "tertile1_mean": 0.05485396087169647,
+      "tertile2_mean": 0.002741705160588026,
+      "tertile3_mean": 0.002473070053383708
+    },
+    "v2csprtcpt": {
+      "last_z": 0.030027471482753754,
+      "mean_z": 0.014773380942642689,
+      "std_z": 0.1706259399652481,
+      "slope": 0.15166956186294556,
+      "accel": 0.3702183961868286,
+      "tertile1_mean": 0.15760287642478943,
+      "tertile2_mean": 0.00897175818681717,
+      "tertile3_mean": 0.01281811110675335
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 10,
+    "indicators": [
+      {
+        "code": "AG.PRD.FOOD.XD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 152,
+        "shape": {
+          "mean": [
+            0.2174,
+            0.3496,
+            0.3635,
+            0.5188,
+            0.7224,
+            0.8531,
+            0.9512,
+            1.0883,
+            1.0586,
+            1.2709
+          ],
+          "p25": [
+            0.0842,
+            0.1551,
+            0.0751,
+            0.3807,
+            0.5735,
+            0.6561,
+            0.7759,
+            0.8476,
+            0.8343,
+            1.0147
+          ],
+          "p75": [
+            0.5259,
+            0.6487,
+            0.8093,
+            0.9225,
+            1.0816,
+            1.2229,
+            1.3708,
+            1.5653,
+            1.641,
+            1.8347
+          ]
+        }
+      },
+      {
+        "code": "FP.CPI.TOTL.ZG",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 148,
+        "shape": {
+          "mean": [
+            -0.1041,
+            0.1902,
+            -0.0202,
+            -0.2006,
+            -0.3628,
+            -0.6255,
+            -0.437,
+            -0.2338,
+            -0.253,
+            -0.3336
+          ],
+          "p25": [
+            -0.5519,
+            -0.4268,
+            -0.49,
+            -0.595,
+            -0.7641,
+            -1.1026,
+            -1.0032,
+            -0.6657,
+            -0.7385,
+            -0.8325
+          ],
+          "p75": [
+            0.2682,
+            0.687,
+            0.5047,
+            0.0637,
+            -0.1138,
+            -0.1731,
+            -0.1899,
+            0.0503,
+            0.1947,
+            -0.0984
+          ]
+        }
+      },
+      {
+        "code": "v2pepwrgen",
+        "name": "Power Distributed by Gender (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 155,
+        "shape": {
+          "mean": [
+            0.3537,
+            0.3914,
+            0.3949,
+            0.295,
+            0.3592,
+            0.4506,
+            0.4605,
+            0.5622,
+            0.5982,
+            0.7622
+          ],
+          "p25": [
+            -0.1037,
+            -0.0353,
+            -0.0204,
+            -0.3293,
+            -0.1009,
+            -0.0485,
+            -0.0485,
+            -0.0364,
+            -0.0382,
+            -0.0186
+          ],
+          "p75": [
+            0.7063,
+            0.7659,
+            0.8603,
+            0.9883,
+            1.0351,
+            1.1522,
+            1.1816,
+            1.4283,
+            1.4541,
+            1.6773
+          ]
+        }
+      },
+      {
+        "code": "NE.IMP.GNFS.CD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 138,
+        "shape": {
+          "mean": [
+            0.4304,
+            0.7598,
+            0.8522,
+            0.9634,
+            0.9533,
+            0.8147,
+            0.867,
+            1.0865,
+            1.3383,
+            1.3574
+          ],
+          "p25": [
+            0.1906,
+            0.4117,
+            0.5291,
+            0.6403,
+            0.7266,
+            0.5838,
+            0.6173,
+            0.8608,
+            1.0694,
+            1.0342
+          ],
+          "p75": [
+            0.631,
+            1.1212,
+            1.2134,
+            1.2933,
+            1.2676,
+            1.0829,
+            1.1025,
+            1.4202,
+            1.6125,
+            1.5747
+          ]
+        }
+      },
+      {
+        "code": "SH.DYN.MORT",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 154,
+        "shape": {
+          "mean": [
+            -0.5403,
+            -0.6374,
+            -0.727,
+            -0.8144,
+            -0.8798,
+            -0.9406,
+            -1.0068,
+            -1.0602,
+            -1.134,
+            -1.1815
+          ],
+          "p25": [
+            -0.6421,
+            -0.7361,
+            -0.8183,
+            -0.9013,
+            -0.9768,
+            -1.0706,
+            -1.1811,
+            -1.2694,
+            -1.3311,
+            -1.398
+          ],
+          "p75": [
+            -0.4751,
+            -0.5998,
+            -0.6955,
+            -0.8045,
+            -0.8771,
+            -0.9359,
+            -0.9748,
+            -1.014,
+            -1.0389,
+            -1.0796
+          ]
+        }
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 155,
+        "shape": {
+          "mean": [
+            0.214,
+            0.2453,
+            0.3041,
+            0.2246,
+            0.1891,
+            0.1705,
+            0.177,
+            0.1454,
+            0.1188,
+            0.0822
+          ],
+          "p25": [
+            -0.2,
+            -0.2,
+            -0.2,
+            -0.3662,
+            -0.4229,
+            -0.5105,
+            -0.633,
+            -0.7627,
+            -0.7091,
+            -0.8259
+          ],
+          "p75": [
+            0.6531,
+            0.8066,
+            0.9012,
+            0.8899,
+            0.8899,
+            0.9587,
+            1.0106,
+            1.0347,
+            1.0494,
+            1.179
+          ]
+        }
+      }
+    ],
+    "samples_used": 155,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2025,
+        "label": "National Health Insurance Controversy Continues",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2023,
+        "label": "Uncontacted Yanomami Groups Emerge Amid Health Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2023,
+        "label": "Ebola Outbreak Sudan Strain Contained",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2022,
+        "label": "Austria mandates COVID-19 vaccination, then abandons the policy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2022,
+        "label": "Shanghai COVID lockdown \u2014 two-month shutdown",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2022,
+        "label": "Cholera Outbreak Becomes Worst on Record",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2021,
+        "label": "Brazil Vaccination Campaign Delayed by Government Inaction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2021,
+        "label": "Gamma COVID Variant Devastates Manaus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2021,
+        "label": "Brazil Records Peak COVID Death Tolls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2021,
+        "label": "Delta Variant Wave Forces First Lockdown and Mass Vaccination",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2021,
+        "label": "COVID-19 second wave \u2014 Delta variant devastates India",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2021,
+        "label": "Covaxin and Covishield vaccination drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2021,
+        "label": "COVID-19 delta wave overwhelms hospitals \u2014 500,000 estimated deaths",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2021,
+        "label": "Tokyo Olympics Held Without Spectators During Pandemic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2021,
+        "label": "Vaccination Campaign Achieves Strong Coverage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2021,
+        "label": "Severe COVID-19 Delta Wave Overwhelms Health System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2021,
+        "label": "COVID Vaccine Rollout and Pandemic Management",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 2021,
+        "label": "Healthcare System Crisis During COVID Delta Wave",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2021,
+        "label": "Delta wave overwhelms hospitals",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2021,
+        "label": "Delta Wave Strains Health System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2021,
+        "label": "Thirteenth Party Congress Reelects Trong; Delta Wave COVID Crisis; Renewable Energy Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2020,
+        "label": "COVID-19 pandemic overwhelms Afghan health system",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Prompts State of Natural Disaster Declaration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2020,
+        "label": "Covid-19 pandemic reaches Algeria",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Extended National Lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2020,
+        "label": "COVID-19 Border Closures and Economic Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2020,
+        "label": "Austria implements some of Europe's strictest COVID-19 lockdowns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bh",
+        "country_name": "Bahrain",
+        "year": 2020,
+        "label": "COVID-19 Outbreak Devastates Jau Prison Population",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Triggers Garment Export Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2020,
+        "label": "COVID-19 pandemic: Lukashenko denies virus, refuses lockdowns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "be",
+        "country_name": "Belgium",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Devastates Belgian Care Homes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Managed with Near-Zero Deaths",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Diamond Economy Shut Down",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Kills Hundreds of Thousands in Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2020,
+        "label": "Bolsonaro Fires Health Ministers Amid Pandemic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2020,
+        "label": "COVID-19 Triggers Early Border Closure and Strict Controls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2020,
+        "label": "COVID-19 pandemic \u2014 Burundi's exceptional denial policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2020,
+        "label": "COVID-19 pandemic originates in Wuhan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2020,
+        "label": "Wuhan lockdown \u2014 unprecedented urban quarantine",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: 130,000+ Dead; Economy Contracts 6.8%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Collapses Croatian Tourism Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Triggers Early European Lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2020,
+        "label": "Government Orders Culling of 17 Million Mink",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2020,
+        "label": "COVID-19 Overwhelms Guayaquil; Economy Contracts 7.8%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Egyptian Economy Hard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: Strict Lockdown and Economic Contraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2020,
+        "label": "COVID-19 pandemic response in Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2020,
+        "label": "State of Emergency Declared Over COVID-19 Pandemic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2020,
+        "label": "COVID-19: Germany suspends debt brake for massive economic rescue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2020,
+        "label": "COVID-19 pandemic hits Greece; strict lockdown limits initial spread",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "is",
+        "country_name": "Iceland",
+        "year": 2020,
+        "label": "COVID-19 Managed Through Testing Partnership with deCODE",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2020,
+        "label": "COVID-19 pandemic \u2014 India's largest lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2020,
+        "label": "COVID-19 pandemic \u2014 first recession since 1998",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2020,
+        "label": "COVID-19 Response \u2014 Early Vaccination Success",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Italy First in Europe, Triggering Strict Lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Jamaica Imposes Emergency Measures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2020,
+        "label": "COVID-19 Forces Tokyo Olympics Postponement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Strict Lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Kenya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2020,
+        "label": "COVID-19 Pandemic and Health System Strain",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2020,
+        "label": "COVID-19 Pandemic and Oil Price Crash Hit Kuwait",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Kyrgyzstan with Severe Healthcare Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "la",
+        "country_name": "Laos",
+        "year": 2020,
+        "label": "COVID-19 Lockdowns Strain Lao Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2020,
+        "label": "Latvia Implements COVID-19 State of Emergency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2020,
+        "label": "COVID-19 Compounds Lebanon's Crises",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Liberia \u2014 Health System Under Renewed Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Eliminates Tourism Revenue, Government Promotes Unproven Remedy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2020,
+        "label": "COVID-19 Reaches Malawi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mv",
+        "country_name": "Maldives",
+        "year": 2020,
+        "label": "COVID-19 border closure devastates tourism-dependent economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2020,
+        "label": "COVID-19 Lockdown \u2014 Tourism Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Mexico Among World's Highest Excess Deaths",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Morocco Responds Rapidly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2020,
+        "label": "COVID-19 Hits Namibia's Tourism and Mining Sectors",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Devastates Nepal's Economy and Tourism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: Late Lockdown and Intelligence Failures Draw Criticism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2020,
+        "label": "COVID-19 Elimination Strategy and Strict Border Closure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2020,
+        "label": "Government Rejects COVID-19 Emergency, Encourages Mass Gatherings",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Economic Contraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2020,
+        "label": "COVID-19 Triggers Norway's Strictest Peacetime Restrictions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: Panama Imposes Strict Gendered Lockdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2020,
+        "label": "First COVID-19 Cases and State of Emergency Declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Paraguay",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: Peru Among World's Hardest Hit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 One of Asia's Hardest-Hit Nations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2020,
+        "label": "COVID-19 \u2014 First State of Emergency Since 1974 Revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2020,
+        "label": "Sputnik V COVID-19 vaccine developed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2020,
+        "label": "COVID-19 pandemic \u2014 Rwanda among Africa's earliest and strictest responders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Saudi Response and Hajj Suspension",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Response Praised Internationally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 State of Emergency Declared, Army Deployed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2020,
+        "label": "COVID-19 Circuit Breaker Lockdown Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2020,
+        "label": "Massive COVID-19 Outbreak in Migrant Worker Dormitories",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2020,
+        "label": "Slovakia launches unprecedented nationwide COVID-19 mass testing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2020,
+        "label": "COVID-19 Pandemic \u2014 Strict Lockdown Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2020,
+        "label": "COVID-19 and Economic Collapse Worsen Humanitarian Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2020,
+        "label": "COVID-19 State of Emergency: Spain Among Europe's Hardest Hit",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Deepens Economic Contraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2020,
+        "label": "Sweden's COVID-19 Strategy Avoids Lockdown, Sparks Global Debate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2020,
+        "label": "COVID-19 Emergency Powers Invoked by Federal Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2020,
+        "label": "Taiwan's COVID-19 Response Wins International Praise",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 2020,
+        "label": "Magufuli Denies COVID-19 \u2014 Promotes Herbal Cures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Collapses Tourism, GDP Contracts 6.1 Percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2020,
+        "label": "COVID-19 state of emergency declared",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2020,
+        "label": "COVID-19 Devastates Economy and Tourist Sector",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2020,
+        "label": "COVID-19 Lockdown and Economic Disruption",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Response and Mass Vaccination Drive",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2020,
+        "label": "COVID-19 Pandemic: UK Lockdown and 150,000 Deaths",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2020,
+        "label": "Uruguay's Early COVID-19 Response Praised Internationally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits Uzbekistan; Government Imposes Strict Lockdowns",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Deepens Humanitarian Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2020,
+        "label": "Vietnam Successfully Contains Initial COVID-19; Chairs ASEAN and UN Security Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Compounds Humanitarian Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2020,
+        "label": "COVID-19 Pandemic Hits \u2014 Zambia Enters Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2020,
+        "label": "COVID-19 and Economic Deterioration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2018,
+        "label": "Ebola Outbreak in North Kivu",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2017,
+        "label": "Urban Pneumonic Plague Outbreak Kills Over 200, Draws WHO Emergency Response",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2016,
+        "label": "Zika Virus Epidemic Declared Public Health Emergency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 2016,
+        "label": "7.8 Magnitude Earthquake Kills 650 in Manab\u00ed Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2016,
+        "label": "Ebola Officially Declared Over \u2014 Guinea's Long Outbreak Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2016,
+        "label": "Cholera Epidemic Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2015,
+        "label": "Ebola Declared Eliminated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2014,
+        "label": "Ebola Epidemic Begins in Guinea \u2014 Zero Patient in Forest Region",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lr",
+        "country_name": "Liberia",
+        "year": 2014,
+        "label": "State of Emergency Declared \u2014 Schools and Borders Closed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sn",
+        "country_name": "Senegal",
+        "year": 2014,
+        "label": "Ebola Containment Success Despite Regional Outbreak",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 2014,
+        "label": "Ebola Outbreak Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2012,
+        "label": "MERS Coronavirus Discovered in Saudi Arabia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 2010,
+        "label": "UN peacekeepers introduce cholera; epidemic ultimately kills 10,000",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2009,
+        "label": "H1N1 Influenza Pandemic in Argentina",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2009,
+        "label": "H1N1 Swine Flu Pig Cull Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2009,
+        "label": "H1N1 Swine Flu Pandemic Originates in Mexico",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2008,
+        "label": "Melamine milk scandal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2008,
+        "label": "Cholera Epidemic Kills Thousands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2004,
+        "label": "Ethiopia expands health extension worker program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 2004,
+        "label": "H5N1 Bird Flu Epidemic; Catfish Trade Dispute with U.S.",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2003,
+        "label": "SARS epidemic \u2014 government cover-up and global spread",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2003,
+        "label": "SARS Outbreak Infects 238 and Kills 33 in Singapore",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2003,
+        "label": "Antiretroviral Treatment Plan Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tw",
+        "country_name": "Taiwan",
+        "year": 2003,
+        "label": "SARS Outbreak Hits Taiwan Hard",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2002,
+        "label": "Cholera Outbreak Compounds Food Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2001,
+        "label": "Treatment Action Campaign Court Victory on PMTCT",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2000,
+        "label": "Bangladesh Achieves Major MDG Gains in Child Mortality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 2000,
+        "label": "Walkerton Water Crisis Kills Seven, Exposes Regulatory Failure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2000,
+        "label": "HIV/AIDS Crisis Reaches Catastrophic Proportions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1999,
+        "label": "AIDS Denialism Begins to Shape Government Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1996,
+        "label": "HIV/AIDS Crisis Reaches Catastrophic Scale",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1996,
+        "label": "HIV/AIDS Law Guarantees Free Antiretroviral Treatment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1995,
+        "label": "Ethiopia's health indicators begin improving from very low base",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1994,
+        "label": "Cholera Epidemic in Goma Refugee Camps",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1994,
+        "label": "Plague epidemic in Surat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1993,
+        "label": "Brazil's AIDS Response Becomes Global Model",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pe",
+        "country_name": "Peru",
+        "year": 1991,
+        "label": "Cholera Epidemic Exposes Public Health Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1990,
+        "label": "SUS Universal Health System Legally Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1988,
+        "label": "AIDS Epidemic Devastates Tanzania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ec",
+        "country_name": "Ecuador",
+        "year": 1987,
+        "label": "Major Earthquake Destroys SOTE Pipeline; Ecuador Suspends Debt Payments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1986,
+        "label": "Polio Eradication Campaign Succeeds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1985,
+        "label": "AIDS Epidemic Reaches Brazil's Major Cities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1984,
+        "label": "Bhopal gas tragedy \u2014 worst industrial disaster",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1980,
+        "label": "Relief agencies document widespread malnutrition in Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kh",
+        "country_name": "Cambodia",
+        "year": 1979,
+        "label": "Famine and Humanitarian Crisis Following the Genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1971,
+        "label": "EPLF Establishes Field Hospital and Medical Services",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 163
+  }
+}

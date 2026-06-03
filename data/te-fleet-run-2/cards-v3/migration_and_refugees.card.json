@@ -1,0 +1,2990 @@
+{
+  "recipe_id": "migration_and_refugees",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "Foreign Policy",
+  "description_compelling": "Cross-border population movement at a scale that reshapes both origin and destination \u2014 refugee flows from conflict, economic outmigration, or climate-driven displacement exceeding one percent of population. Refugee-origin counts, private-liberty indices, and political-stability scores deteriorate in the origin years before. Common in conflict-belt states and in climate-stressed agricultural economies.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6161612620508325,
+    "ci95_lo": 0.5715331361870091,
+    "ci95_hi": 0.6630427377895708,
+    "ci80_lo": 0.5875787080711636,
+    "ci80_hi": 0.647184080097665,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cseeorgs"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)"
+      }
+    ],
+    "chosen_window": 5,
+    "final_global_auc": 0.6161612620508325,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cseeorgs",
+        "window": 5,
+        "auc": 0.6161612620508325,
+        "lift_over_previous": 0.11616126205083255,
+        "selected_after": [
+          "v2cseeorgs"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "NV.SRV.TOTL.ZS",
+        "window": 5,
+        "auc": 0.6186549722958956,
+        "lift_over_previous": 0.0024937102450630633,
+        "selected_after": [
+          "v2cseeorgs",
+          "NV.SRV.TOTL.ZS"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 180,
+    "n_pos_survive": 175,
+    "n_neg_total": 540,
+    "n_neg_survive": 489,
+    "pos_coverage": 0.9722222222222222,
+    "neg_coverage": 0.9055555555555556,
+    "n_countries_survive": 88,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 333,
+      "loco_auc": 0.6236213634389927,
+      "ece": 0.13020264945487986,
+      "ece_ci95_lo": 0.10686297186009876,
+      "ece_ci95_hi": 0.18933845568062344,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 45,
+          "mean_predicted": 0.046647006128397256,
+          "mean_actual": 0.17777777777777778
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 55,
+          "mean_predicted": 0.15437360311096365,
+          "mean_actual": 0.16363636363636364
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 53,
+          "mean_predicted": 0.24567242978878742,
+          "mean_actual": 0.2641509433962264
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 39,
+          "mean_predicted": 0.35425598193437624,
+          "mean_actual": 0.28205128205128205
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 33,
+          "mean_predicted": 0.44825628941709345,
+          "mean_actual": 0.36363636363636365
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 35,
+          "mean_predicted": 0.544812296118055,
+          "mean_actual": 0.45714285714285713
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 21,
+          "mean_predicted": 0.6494831613131932,
+          "mean_actual": 0.23809523809523808
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 29,
+          "mean_predicted": 0.7513412072740752,
+          "mean_actual": 0.4827586206896552
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 18,
+          "mean_predicted": 0.8457181917296516,
+          "mean_actual": 0.3888888888888889
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9279888868331909,
+          "mean_actual": 0.4
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5580897192620647,
+      "loco_auc_ci95_hi": 0.6874020369430565
+    },
+    "mid-tier": {
+      "n": 137,
+      "loco_auc": 0.6504672897196262,
+      "ece": 0.14413905043127764,
+      "ece_ci95_lo": 0.11652155226949656,
+      "ece_ci95_hi": 0.22425344394907404,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 26,
+          "mean_predicted": 0.04205471176940661,
+          "mean_actual": 0.11538461538461539
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 30,
+          "mean_predicted": 0.15765944868326187,
+          "mean_actual": 0.1
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 20,
+          "mean_predicted": 0.24427256286144255,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 16,
+          "mean_predicted": 0.3542092051357031,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.4458093751560558,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 10,
+          "mean_predicted": 0.5580854117870331,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 8,
+          "mean_predicted": 0.6547920852899551,
+          "mean_actual": 0.375
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 11,
+          "mean_predicted": 0.7712675766511397,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 2,
+          "mean_predicted": 0.8596437573432922,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 3,
+          "mean_predicted": 0.9123875697453817,
+          "mean_actual": 0.6666666666666666
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5378708256446614,
+      "loco_auc_ci95_hi": 0.7543864575099373
+    },
+    "stable-democracy": {
+      "n": 187,
+      "loco_auc": 0.5786308973172988,
+      "ece": 0.15623482223102114,
+      "ece_ci95_lo": 0.1185096595577029,
+      "ece_ci95_hi": 0.23124005517730598,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 36,
+          "mean_predicted": 0.057598334116240345,
+          "mean_actual": 0.1388888888888889
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 43,
+          "mean_predicted": 0.15610705957163212,
+          "mean_actual": 0.18604651162790697
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 28,
+          "mean_predicted": 0.2564233381833349,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 19,
+          "mean_predicted": 0.3494235606569993,
+          "mean_actual": 0.3684210526315789
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 18,
+          "mean_predicted": 0.44177114301257664,
+          "mean_actual": 0.2222222222222222
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 10,
+          "mean_predicted": 0.552653968334198,
+          "mean_actual": 0.3
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 13,
+          "mean_predicted": 0.6497091467563922,
+          "mean_actual": 0.38461538461538464
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 11,
+          "mean_predicted": 0.7415022579106417,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 7,
+          "mean_predicted": 0.8428467512130737,
+          "mean_actual": 0.14285714285714285
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9199326038360596,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.48147831093205484,
+      "loco_auc_ci95_hi": 0.6573540927617452
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T08:19:20.990633+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5225,
+  "stability_diagnostic": {
+    "fold_variance": 0.08896034219407487,
+    "fold_auc_mean": 0.6218837675734229,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Afghanistan": 0.9666666666666667,
+      "Albania": 0.3333333333333333,
+      "Algeria": 0.4,
+      "Australia": 0.5,
+      "Austria": 0.5833333333333334,
+      "Azerbaijan": 1.0,
+      "Bangladesh": 0.5,
+      "Belarus": 0.6666666666666666,
+      "Bhutan": 0.75,
+      "Brazil": 0.42857142857142855,
+      "Burkina Faso": 0.5,
+      "Burundi": 0.375,
+      "Canada": 0.0,
+      "Chad": 0.7142857142857143,
+      "China": 0.4444444444444444,
+      "Colombia": 1.0,
+      "Croatia": 1.0,
+      "Cuba": 0.5,
+      "Czechia": 0.25,
+      "Denmark": 0.625,
+      "Dominican Republic": 0.125,
+      "Egypt": 0.5,
+      "El Salvador": 0.75,
+      "Eritrea": 0.8923076923076924,
+      "Estonia": 0.4,
+      "Ethiopia": 0.6190476190476191,
+      "Finland": 0.125,
+      "Germany": 0.25,
+      "Greece": 0.7,
+      "Guatemala": 1.0,
+      "Haiti": 0.5,
+      "Honduras": 0.5357142857142857,
+      "Hungary": 0.6666666666666666,
+      "India": 0.7142857142857143,
+      "Iraq": 0.375,
+      "Ireland": 0.6666666666666666,
+      "Israel": 0.65,
+      "Italy": 0.6666666666666666,
+      "Japan": 0.2777777777777778,
+      "Jordan": 0.7333333333333333,
+      "Kuwait": 1.0,
+      "Kyrgyzstan": 1.0,
+      "Latvia": 1.0,
+      "Lebanon": 1.0,
+      "Libya": 0.0,
+      "Lithuania": 0.0,
+      "Mali": 0.5,
+      "Mauritania": 0.0,
+      "Mexico": 0.6071428571428571,
+      "Morocco": 0.6,
+      "Myanmar": 0.75,
+      "Netherlands": 0.9,
+      "Niger": 0.8,
+      "North Korea": 0.5,
+      "North Macedonia": 1.0,
+      "Norway": 0.0,
+      "Pakistan": 0.9,
+      "Panama": 0.8571428571428571,
+      "Papua New Guinea": 0.8571428571428571,
+      "Paraguay": 0.4,
+      "Philippines": 0.5151515151515151,
+      "Poland": 1.0,
+      "Portugal": 0.3,
+      "Qatar": 0.8333333333333334,
+      "Rwanda": 0.7142857142857143,
+      "Saudi Arabia": 1.0,
+      "Serbia": 0.16666666666666666,
+      "Slovakia": 1.0,
+      "Slovenia": 1.0,
+      "South Africa": 0.3333333333333333,
+      "Sri Lanka": 0.9166666666666666,
+      "Sudan": 0.5,
+      "Suriname": 1.0,
+      "Sweden": 1.0,
+      "Switzerland": 0.3333333333333333,
+      "Syria": 0.6666666666666666,
+      "Tajikistan": 0.0,
+      "Tanzania": 0.6666666666666666,
+      "The Democratic Republic of the Congo": 0.3333333333333333,
+      "Togo": 0.5,
+      "Turkiye": 0.8333333333333334,
+      "Uganda": 0.7142857142857143,
+      "United Kingdom": 1.0,
+      "Uzbekistan": 1.0,
+      "Venezuela": 1.0,
+      "Vietnam": 0.6428571428571429,
+      "Yemen": 0.7777777777777778
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 180,
+  "n_negatives": 540,
+  "walked_at_utc": "2026-06-01T08:21:52.984840+00:00",
+  "elapsed_seconds": 2463.3498780727386,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/migration_and_refugees/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Senegal",
+          "Latvia",
+          "Georgia",
+          "Lesotho",
+          "Japan",
+          "Vanuatu",
+          "Finland",
+          "Bosnia and Herzegovina"
+        ],
+        "country_isos": [
+          "sn",
+          "lv",
+          "ge",
+          "ls",
+          "jp",
+          "vu",
+          "fi",
+          "ba"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 9,
+        "countries": [
+          "Ghana",
+          "Norway",
+          "Cyprus",
+          "Montenegro",
+          "Uruguay",
+          "Taiwan",
+          "Trinidad and Tobago",
+          "Iceland",
+          "Madagascar"
+        ],
+        "country_isos": [
+          "gh",
+          "no",
+          "cy",
+          "me",
+          "uy",
+          "tw",
+          "tt",
+          "is",
+          "mg"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Belarus",
+          "Russia",
+          "Kenya",
+          "United States",
+          "Solomon Islands",
+          "The Gambia",
+          "New Zealand",
+          "Netherlands",
+          "Philippines"
+        ],
+        "country_isos": [
+          "by",
+          "ru",
+          "ke",
+          "us",
+          "sb",
+          "gm",
+          "nz",
+          "nl",
+          "ph"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Sweden",
+          "Portugal",
+          "Zambia",
+          "El Salvador",
+          "Colombia",
+          "Nigeria",
+          "Timor-Leste",
+          "Cuba"
+        ],
+        "country_isos": [
+          "se",
+          "pt",
+          "zm",
+          "sv",
+          "co",
+          "ng",
+          "tl",
+          "cu"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 9,
+        "countries": [
+          "Australia",
+          "Brazil",
+          "Comoros",
+          "Palestine",
+          "Turkmenistan",
+          "Sri Lanka",
+          "Mongolia",
+          "Liberia",
+          "Italy"
+        ],
+        "country_isos": [
+          "au",
+          "br",
+          "km",
+          "ps",
+          "tm",
+          "lk",
+          "mn",
+          "lr",
+          "it"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Haiti",
+          "Spain",
+          "Peru",
+          "South Africa",
+          "Bolivia",
+          "Guatemala",
+          "Estonia",
+          "Oman",
+          "Ireland"
+        ],
+        "country_isos": [
+          "ht",
+          "es",
+          "pe",
+          "za",
+          "bo",
+          "gt",
+          "ee",
+          "om",
+          "ie"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 9,
+        "countries": [
+          "Gabon",
+          "Paraguay",
+          "Sao Tome and Principe",
+          "Niger",
+          "Honduras",
+          "Malta",
+          "Argentina",
+          "Jamaica",
+          "Botswana"
+        ],
+        "country_isos": [
+          "ga",
+          "py",
+          "st",
+          "ne",
+          "hn",
+          "mt",
+          "ar",
+          "jm",
+          "bw"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "United Arab Emirates",
+          "North Macedonia",
+          "Mexico",
+          "Suriname",
+          "Costa Rica",
+          "Bangladesh",
+          "Moldova",
+          "Guinea-Bissau"
+        ],
+        "country_isos": [
+          "ae",
+          "mk",
+          "mx",
+          "sr",
+          "cr",
+          "bd",
+          "md",
+          "gw"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 9,
+        "countries": [
+          "Fiji",
+          "Bahrain",
+          "Germany",
+          "Singapore",
+          "Libya",
+          "Croatia",
+          "Serbia",
+          "Ethiopia",
+          "South Sudan"
+        ],
+        "country_isos": [
+          "fj",
+          "bh",
+          "de",
+          "sg",
+          "ly",
+          "hr",
+          "rs",
+          "et",
+          "ss"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 9,
+        "countries": [
+          "Ivory Coast",
+          "Ecuador",
+          "Uzbekistan",
+          "Canada",
+          "Guinea",
+          "Seychelles",
+          "Afghanistan",
+          "Lebanon",
+          "Saudi Arabia"
+        ],
+        "country_isos": [
+          "ci",
+          "ec",
+          "uz",
+          "ca",
+          "gn",
+          "sc",
+          "af",
+          "lb",
+          "sa"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Azerbaijan",
+          "France",
+          "Iraq",
+          "Lithuania",
+          "Papua New Guinea",
+          "Morocco",
+          "Egypt",
+          "Namibia",
+          "South Korea"
+        ],
+        "country_isos": [
+          "az",
+          "fr",
+          "iq",
+          "lt",
+          "pg",
+          "ma",
+          "eg",
+          "na",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Kuwait",
+          "Bhutan",
+          "Qatar",
+          "Venezuela",
+          "Dominican Republic",
+          "Tunisia",
+          "Malawi",
+          "Armenia"
+        ],
+        "country_isos": [
+          "kw",
+          "bt",
+          "qa",
+          "ve",
+          "do",
+          "tn",
+          "mw",
+          "am"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Malaysia",
+          "Myanmar",
+          "Laos",
+          "Nepal",
+          "Equatorial Guinea",
+          "Pakistan",
+          "Burkina Faso",
+          "Rwanda",
+          "Romania"
+        ],
+        "country_isos": [
+          "my",
+          "mm",
+          "la",
+          "np",
+          "gq",
+          "pk",
+          "bf",
+          "rw",
+          "ro"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 9,
+        "countries": [
+          "Mali",
+          "Guyana",
+          "Sierra Leone",
+          "Benin",
+          "Cabo Verde",
+          "Turkiye",
+          "Belgium",
+          "Tajikistan",
+          "Cameroon"
+        ],
+        "country_isos": [
+          "ml",
+          "gy",
+          "sl",
+          "bj",
+          "cv",
+          "tr",
+          "be",
+          "tj",
+          "cm"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 9,
+        "countries": [
+          "Thailand",
+          "Vietnam",
+          "Chile",
+          "Kyrgyzstan",
+          "Panama",
+          "Bulgaria",
+          "Denmark",
+          "Eritrea",
+          "Algeria"
+        ],
+        "country_isos": [
+          "th",
+          "vn",
+          "cl",
+          "kg",
+          "pa",
+          "bg",
+          "dk",
+          "er",
+          "dz"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Mozambique",
+          "Mauritius",
+          "Ukraine",
+          "Austria",
+          "Sudan",
+          "United Kingdom",
+          "Barbados",
+          "China"
+        ],
+        "country_isos": [
+          "mz",
+          "mu",
+          "ua",
+          "at",
+          "sd",
+          "gb",
+          "bb",
+          "cn"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 9,
+        "countries": [
+          "Cambodia",
+          "Syria",
+          "Tanzania",
+          "The Democratic Republic of the Congo",
+          "Republic of the Congo",
+          "Chad",
+          "Hungary",
+          "Switzerland",
+          "Poland"
+        ],
+        "country_isos": [
+          "kh",
+          "sy",
+          "tz",
+          "cd",
+          "cg",
+          "td",
+          "hu",
+          "ch",
+          "pl"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Eswatini",
+          "India",
+          "Somalia",
+          "Angola",
+          "Luxembourg",
+          "Albania",
+          "Hong Kong",
+          "Mauritania",
+          "Togo"
+        ],
+        "country_isos": [
+          "sz",
+          "in",
+          "so",
+          "ao",
+          "lu",
+          "al",
+          "hk",
+          "mr",
+          "tg"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 9,
+        "countries": [
+          "Kazakhstan",
+          "Burundi",
+          "Maldives",
+          "Israel",
+          "Iran",
+          "Czechia",
+          "Greece",
+          "Yemen",
+          "Djibouti"
+        ],
+        "country_isos": [
+          "kz",
+          "bi",
+          "mv",
+          "il",
+          "ir",
+          "cz",
+          "gr",
+          "ye",
+          "dj"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Nicaragua",
+          "Slovenia",
+          "Jordan",
+          "Zimbabwe",
+          "North Korea",
+          "Indonesia",
+          "Central African Republic",
+          "Uganda",
+          "Slovakia"
+        ],
+        "country_isos": [
+          "ni",
+          "si",
+          "jo",
+          "zw",
+          "kp",
+          "id",
+          "cf",
+          "ug",
+          "sk"
+        ]
+      }
+    ],
+    "median": 50.3,
+    "p90": 90.3,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 175,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.0718,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5114587499846187,
+      "b": 0.08409568761392189,
+      "c": -0.31865706367512936,
+      "n_fit": 664,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 25,
+        "observed_rate": 0.12
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 110,
+        "observed_rate": 0.14545454545454545
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 268,
+        "observed_rate": 0.24253731343283583
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 261,
+        "observed_rate": 0.3486590038314176
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.010267490034334196,
+    "n_predictions": 664,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.13020264945487986,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 45,
+            "mean_predicted": 0.046647006128397256,
+            "mean_actual": 0.17777777777777778
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 55,
+            "mean_predicted": 0.15437360311096365,
+            "mean_actual": 0.16363636363636364
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 53,
+            "mean_predicted": 0.24567242978878742,
+            "mean_actual": 0.2641509433962264
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 39,
+            "mean_predicted": 0.35425598193437624,
+            "mean_actual": 0.28205128205128205
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 33,
+            "mean_predicted": 0.44825628941709345,
+            "mean_actual": 0.36363636363636365
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 35,
+            "mean_predicted": 0.544812296118055,
+            "mean_actual": 0.45714285714285713
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 21,
+            "mean_predicted": 0.6494831613131932,
+            "mean_actual": 0.23809523809523808
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 29,
+            "mean_predicted": 0.7513412072740752,
+            "mean_actual": 0.4827586206896552
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 18,
+            "mean_predicted": 0.8457181917296516,
+            "mean_actual": 0.3888888888888889
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 5,
+            "mean_predicted": 0.9279888868331909,
+            "mean_actual": 0.4
+          }
+        ],
+        "n": 333,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.14413905043127764,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 26,
+            "mean_predicted": 0.04205471176940661,
+            "mean_actual": 0.11538461538461539
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 30,
+            "mean_predicted": 0.15765944868326187,
+            "mean_actual": 0.1
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 20,
+            "mean_predicted": 0.24427256286144255,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 16,
+            "mean_predicted": 0.3542092051357031,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.4458093751560558,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 10,
+            "mean_predicted": 0.5580854117870331,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 8,
+            "mean_predicted": 0.6547920852899551,
+            "mean_actual": 0.375
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 11,
+            "mean_predicted": 0.7712675766511397,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 2,
+            "mean_predicted": 0.8596437573432922,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 3,
+            "mean_predicted": 0.9123875697453817,
+            "mean_actual": 0.6666666666666666
+          }
+        ],
+        "n": 137,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.15623482223102114,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 36,
+            "mean_predicted": 0.057598334116240345,
+            "mean_actual": 0.1388888888888889
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 43,
+            "mean_predicted": 0.15610705957163212,
+            "mean_actual": 0.18604651162790697
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 28,
+            "mean_predicted": 0.2564233381833349,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 19,
+            "mean_predicted": 0.3494235606569993,
+            "mean_actual": 0.3684210526315789
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 18,
+            "mean_predicted": 0.44177114301257664,
+            "mean_actual": 0.2222222222222222
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 10,
+            "mean_predicted": 0.552653968334198,
+            "mean_actual": 0.3
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 13,
+            "mean_predicted": 0.6497091467563922,
+            "mean_actual": 0.38461538461538464
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 11,
+            "mean_predicted": 0.7415022579106417,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 7,
+            "mean_predicted": 0.8428467512130737,
+            "mean_actual": 0.14285714285714285
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9199326038360596,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 187,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/migration_and_refugees.scores.json",
+  "shape_points": [
+    0.010934048642714828,
+    0.05152292177081108,
+    0.09211179489890736,
+    0.13270066802700362,
+    0.17328954115509987,
+    0.21387841428319612,
+    0.2544672874112924,
+    0.29505616053938866,
+    0.3356450336674849,
+    0.37623390679558116,
+    0.41682277992367744,
+    0.45741165305177367
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 2.2369232177734375
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 1.0
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.2951066493988037,
+      "mean_z": 0.23417285084724426,
+      "std_z": 0.23946210741996765,
+      "slope": 0.48706647753715515,
+      "accel": 0.4274841248989105,
+      "tertile1_mean": 0.33084291219711304,
+      "tertile2_mean": 0.22278812527656555,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 5,
+    "indicators": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 175,
+        "shape": {
+          "mean": [
+            0.1879,
+            0.1396,
+            0.223,
+            0.1951,
+            0.1821
+          ],
+          "p25": [
+            -0.5421,
+            -0.558,
+            -0.5706,
+            -0.718,
+            -0.787
+          ],
+          "p75": [
+            0.8679,
+            0.8724,
+            0.9949,
+            1.0782,
+            1.0384
+          ]
+        }
+      }
+    ],
+    "samples_used": 175,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2025,
+        "label": "Rohingya Camp Violence and Security Deterioration",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2025,
+        "label": "China's population decline accelerates",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2025,
+        "label": "Trump Administration Threatens TPS Termination for Hundreds of Thousands of Hondurans",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2025,
+        "label": "Demographic Crisis Deepens as Population Falls Below 123 Million",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2025,
+        "label": "Migration Policy \u2014 Mexico as US Buffer State",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2025,
+        "label": "OFW Remittances Remain Economic Lifeline",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2025,
+        "label": "Syrian Refugees Face Complex Return Questions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2024,
+        "label": "Austria tightens integration requirements for migrants amid political shift",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2024,
+        "label": "Sudanese Civil War Drives Massive Refugee Influx",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2024,
+        "label": "Nicaragua Migration Surge Strains Social Services",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2024,
+        "label": "Displacement Crisis in Eastern Congo Catastrophic Scale",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2024,
+        "label": "Eritrean Diaspora Advocacy Intensifies",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2024,
+        "label": "Ethiopia's population reaches 130 million",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2024,
+        "label": "Parliament Passes Controversial Emergency Border Law",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2024,
+        "label": "Diaspora Remittances \u2014 Critical Economic Lifeline",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2024,
+        "label": "EU Visa Liberalization Takes Effect",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2024,
+        "label": "Migration Crisis Continues Through Libya",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2024,
+        "label": "Sustained Refugee Crisis from Sudan Overwhelms Border Communities",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2024,
+        "label": "Sweden Tightens Citizenship Requirements to Highest in Nordic Region",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2024,
+        "label": "Lampedusa Migration Crisis \u2014 Tunisians Among Largest Groups",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2023,
+        "label": "Pakistan orders expulsion of 1.7 million Afghan refugees",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2023,
+        "label": "Austria extends closure of border controls with neighboring Schengen states",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 2023,
+        "label": "Humanitarian Crisis Reaches Record Levels",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2023,
+        "label": "Eritrean Refugees Continue Mass Flight",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2023,
+        "label": "Sudan Crisis Creates New Crisis for Eritrean Refugees",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2023,
+        "label": "Finland Closes Entire Eastern Border Over Russian Hybrid Warfare",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2023,
+        "label": "Cutro Shipwreck Kills 100; Italy Records 150,000 Mediterranean Arrivals",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2023,
+        "label": "Russia Restricts Kyrgyz Labor Migrants; Remittance Dependence Exposed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2023,
+        "label": "Mass Emigration Reaches 15 Percent of Population Since 2018",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2023,
+        "label": "Sudan War Erupts \u2014 Refugee Influx and Pipeline Disruption",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 2023,
+        "label": "Humanitarian Catastrophe \u2014 World's Worst Displacement Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 2023,
+        "label": "Russia Tightens Migration Rules Affecting Tajik Workers",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2023,
+        "label": "Saied Scapegoats Sub-Saharan African Migrants",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Mass emigration wave: over 300,000 Belarusians flee since 2020",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Belarusian IT sector exodus undermines tech economy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2022,
+        "label": "Brain Drain Crisis Accelerates",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2022,
+        "label": "Anglophone Crisis Displaces Over 700,000",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2022,
+        "label": "Record 225,000 Cuban Migrants Encountered at US-Mexico Border",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 2022,
+        "label": "Haitian Gang Violence Drives Unprecedented Migration Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 2022,
+        "label": "Remittances Exceed $18 Billion Annually \u2014 Over 18% of GDP",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2022,
+        "label": "Russian Migration Wave: Tens of Thousands Flee to Kyrgyzstan Post-Mobilization",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2022,
+        "label": "Record Migrant Flows Through Mexico to US Border",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 2022,
+        "label": "Refugee Crisis from Russian Invasion of Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2022,
+        "label": "Niger Becomes Key Transit for European Migration Policy",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2022,
+        "label": "Rwanda-UK migration deal signed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2022,
+        "label": "Slovakia receives largest Ukrainian refugee influx in its history",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 2022,
+        "label": "Mass Migration to Europe Increases Dramatically",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2022,
+        "label": "Uganda Hosts One Million South Sudanese Refugees",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "Chaotic Kabul airport evacuation of 120,000 people",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2021,
+        "label": "Belarus engineers migration crisis on Polish and Lithuanian borders",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2021,
+        "label": "Belarus closes borders with Ukraine amid migration weaponization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2021,
+        "label": "Three-child policy announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2021,
+        "label": "Latvia Faces Belarus-Orchestrated Migration Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2021,
+        "label": "Belarus Weaponizes Migration on Lithuanian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2021,
+        "label": "Darien Gap Migration Surge Reaches Record Levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 2021,
+        "label": "Belarus Engineered Border Crisis \u2014 Hybrid Warfare on EU Frontier",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "qa",
+        "country_name": "Qatar",
+        "year": 2021,
+        "label": "Qatar Facilitates Mass Evacuation from Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2021,
+        "label": "Venezuela Migration Crisis Reaches 5.4 Million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2019,
+        "label": "Eritrean Refugees Return Hesitantly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2019,
+        "label": "Venezuelan Migrant Influx",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "co",
+        "country_name": "Colombia",
+        "year": 2018,
+        "label": "Venezuelan Migration Crisis: Over One Million Refugees in Colombia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2018,
+        "label": "Migrant Caravans from Honduras Draw International Attention to Forced Displacement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2018,
+        "label": "Salvini Closes Italian Ports to NGO Migrant Rescue Ships",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2018,
+        "label": "Japan Enacts Comprehensive Immigration Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2018,
+        "label": "Morocco-Spain Agreement on Migration Management",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2017,
+        "label": "Rohingya Mass Exodus into Cox's Bazar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2017,
+        "label": "Migration Crisis Through Libya Peaks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2017,
+        "label": "Manus Regional Processing Centre Officially Closes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2016,
+        "label": "Record 3.5 million Afghans internally displaced by conflict",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2016,
+        "label": "Austria unilaterally imposes asylum cap and closes Brenner Pass to migrants",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2016,
+        "label": "Controversial Jewellery Law Allows Seizure of Asylum Assets",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2016,
+        "label": "Ethiopia hosts largest refugee population in Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2016,
+        "label": "Sweden Reverses Open-Door Policy with Emergency Asylum Law",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2016,
+        "label": "Parliament Implements Mass Immigration Initiative Without Quotas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2016,
+        "label": "EU-Turkey Refugee Deal Signed for Six Billion Euros",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2016,
+        "label": "EU-Turkey Refugee Deal: Six Billion Euros for Migration Control",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2015,
+        "label": "Austria receives over 90,000 asylum applications during refugee crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2015,
+        "label": "Post-coup crackdown and refugee exodus \u2014 250,000 flee",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2015,
+        "label": "Two Child Policy \u2014 end of One Child Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 2015,
+        "label": "Refugee Crisis \u2014 Croatia on the Balkan Migration Route",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 2015,
+        "label": "Czech Republic Refuses EU Refugee Quotas Amid Refugee Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2015,
+        "label": "European Migrant Crisis Triggers Danish Border Controls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2015,
+        "label": "European Migration Crisis Includes Eritreans",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2015,
+        "label": "Record Asylum Seeker Arrivals During European Migration Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2015,
+        "label": "Germany opens borders and welcomes over one million asylum seekers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2015,
+        "label": "Over one million refugees transit Greece as the European migration crisis peaks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2015,
+        "label": "Hungary erects border fence and declares migration crisis emergency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2015,
+        "label": "Mediterranean Migration Crisis: 150,000 Arrivals and EU Burden-Sharing Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2015,
+        "label": "Arctic Refugee Crisis as Thousands Cross Russian Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2015,
+        "label": "Parliament Votes to Tighten Asylum and Immigration Laws",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 2015,
+        "label": "OFW Remittances Exceed $25 Billion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2015,
+        "label": "Slovakia refuses EU refugee relocation quotas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 2015,
+        "label": "Sweden Receives Record 163,000 Asylum Seekers",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2015,
+        "label": "Syrian Refugee Crisis Overwhelms Europe",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2015,
+        "label": "Humanitarian Crisis Escalates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2014,
+        "label": "Child Migration Crisis: Tens of Thousands Flee Gang Violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 2014,
+        "label": "Surge of Unaccompanied Honduran Child Migrants Reaches US-Mexico Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2014,
+        "label": "Remittance Economy at Peak: Over 30% of GDP from Russia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2014,
+        "label": "Mass Immigration Initiative Passes by Razor-Thin Margin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2013,
+        "label": "Eritrea Becomes Top Refugee Source Globally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2013,
+        "label": "South Sudan refugees flood into Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2013,
+        "label": "Kyrgyz Citizenship Given to Ethnic Kyrgyz in China and Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2012,
+        "label": "Syrian Refugee Crisis Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2012,
+        "label": "Mali Crisis Sends Refugees and Armed Groups into Niger",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2011,
+        "label": "Somali famine response: Ethiopia hosts 200,000 refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2011,
+        "label": "Syrian Refugee Crisis Begins \u2014 Lebanon Hosts Highest Per-Capita Burden",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2011,
+        "label": "Gadhafi's Fall Returns Armed Tuareg Fighters to Mali",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2011,
+        "label": "Syrian Civil War Triggers Mass Refugee Influx",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2011,
+        "label": "Syrian Civil War Begins; Mass Refugee Influx into Turkey Starts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2010,
+        "label": "Criminal Foreigners Deportation Initiative Approved",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2009,
+        "label": "Nador Migrant Detention and Deportation Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 2009,
+        "label": "300,000 Tamil civilians held in internment camps post-war",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2008,
+        "label": "Xenophobic Violence Kills 62",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2007,
+        "label": "US Begins Third-Country Resettlement of Bhutanese Refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2007,
+        "label": "Ethiopian census records 80 million population",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2005,
+        "label": "Sub-Saharan Migration Crisis at Ceuta and Melilla",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2005,
+        "label": "Andijan Refugees Flee to Kyrgyzstan; Resettled Internationally",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2004,
+        "label": "Large-Scale Emigration Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2004,
+        "label": "Citizenship Referendum Ends Birthright Citizenship",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2004,
+        "label": "Japan's Population Peaks: Demographic Turning Point",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2004,
+        "label": "EU Eastern Enlargement Opens UK to Large-Scale Polish Migration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2003,
+        "label": "Darfur Conflict Spills Over into Eastern Chad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2003,
+        "label": "Iraqi Refugees Begin Arriving in Jordan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2003,
+        "label": "Iraqi Refugees Flood Syria Following US Invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2002,
+        "label": "Afghan refugee repatriation begins with UNHCR assistance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 2002,
+        "label": "Strictest Immigration Laws in Europe Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2002,
+        "label": "Zimbabwean Crisis Drives Refugee Flows to South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2001,
+        "label": "Tampa Affair Transforms Immigration Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2001,
+        "label": "US-Mexico Migration Talks Interrupted by 9/11",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2001,
+        "label": "Yemen Population Growth Strains Resources",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2000,
+        "label": "Massive Eritrean Civilian Displacement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 2000,
+        "label": "Xenophobia Against African Migrants Increases",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1999,
+        "label": "Albania Absorbs 450,000 Kosovo Refugees During NATO Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1999,
+        "label": "Humanitarian Crisis Along War Front",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1999,
+        "label": "United States Grants Temporary Protected Status to Hondurans Post-Mitch",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "Mass Expulsion of Kosovo Albanians During Bombing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 1999,
+        "label": "Mass Return of Albanian Refugees and Serb Exodus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mk",
+        "country_name": "North Macedonia",
+        "year": 1999,
+        "label": "Kosovo War Refugee Crisis Strains Macedonia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1999,
+        "label": "Kosovo Under UN Administration \u2014 200,000 Serbs Flee Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "az",
+        "country_name": "Azerbaijan",
+        "year": 1997,
+        "label": "Karabakh IDP Crisis Remains Unresolved Three Years After Ceasefire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dk",
+        "country_name": "Denmark",
+        "year": 1997,
+        "label": "Denmark Tightens Immigration Laws with Integration Act",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hn",
+        "country_name": "Honduras",
+        "year": 1997,
+        "label": "US Deportations Begin Introducing Gang Culture into Honduran Cities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1997,
+        "label": "Mass Defection Wave Through China Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 1996,
+        "label": "U.S. Deportation Policy Accelerates Gang Transplantation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1995,
+        "label": "Flor Contemplacion Case \u2014 OFW Protection Issue",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1994,
+        "label": "Rwandan genocide shocks Burundi and creates refugee wave",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1994,
+        "label": "Rwanda Genocide Refugee Influx \u2014 2 Million Hutu Flee",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1994,
+        "label": "First population census under new government conducted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 1994,
+        "label": "Mass Hutu refugee crisis \u2014 two million flee to Zaire",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1994,
+        "label": "Rwandan Genocide \u2014 Tanzania Hosts 500,000 Refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1993,
+        "label": "Aliens Act Establishes Residency Permit System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1993,
+        "label": "Asylum compromise restricts Germany's refugee policy amid far-right violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1993,
+        "label": "Palestinian Workers Expelled Following Gulf War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tj",
+        "country_name": "Tajikistan",
+        "year": 1993,
+        "label": "Massive Refugee Crisis as 600,000 Tajiks Displaced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hr",
+        "country_name": "Croatia",
+        "year": 1992,
+        "label": "War Refugee Crisis \u2014 500,000 Croatians Internally Displaced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1992,
+        "label": "Return of Eritrean Refugees from Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1992,
+        "label": "U.S. interdicts over 30,000 Haitian boat people fleeing junta violence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "al",
+        "country_name": "Albania",
+        "year": 1991,
+        "label": "Mass Exodus to Italy as Thousands Flee Economic Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1991,
+        "label": "Mass Expulsion of Lhotshampa Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1991,
+        "label": "Mass Deportation of Haitians Draws International Condemnation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1991,
+        "label": "Operation Solomon airlifts Ethiopian Jews to Israel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1991,
+        "label": "Kurdish Refugee Crisis and Northern No-Fly Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1991,
+        "label": "Operation Solomon \u2014 Ethiopian Jews Rescued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1991,
+        "label": "Albanian Refugee Crisis: Tens of Thousands Arrive by Sea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1990,
+        "label": "Egyptian Workers Return from Kuwait After Iraqi Invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1990,
+        "label": "Massive Gulf Returnee Influx Creates Economic Shock",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1990,
+        "label": "OFW Remittances Become Significant Economic Factor",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1990,
+        "label": "Foreign Worker Population Reaches 4 Million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lk",
+        "country_name": "Sri Lanka",
+        "year": 1990,
+        "label": "LTTE expels 75,000 Muslims from Northern Province",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1989,
+        "label": "Afghan refugee population peaks at approximately 6 million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1989,
+        "label": "Ethnic Cleansing; Armenians Expelled from Azerbaijan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1989,
+        "label": "Austria opens border with Hungary, enabling East German exodus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1989,
+        "label": "Kashmiri Pandits begin mass exodus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1989,
+        "label": "Large Aliya from Soviet Union Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1986,
+        "label": "YAR Hosts South Yemeni Refugees After Civil War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1985,
+        "label": "Sudan Hosts Over 500,000 Eritrean Refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1985,
+        "label": "Operation Moses: Ethiopian Jews airlifted to Israel",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1984,
+        "label": "Ethiopian Jews Arrive \u2014 Operation Moses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1983,
+        "label": "Egyptian Workers' Remittances Reach $3 Billion Annually",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gt",
+        "country_name": "Guatemala",
+        "year": 1983,
+        "label": "Scorched-Earth Campaign Displaces One Million \u2014 Refugees Flee to Mexico",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1982,
+        "label": "Afghan refugee population exceeds 3 million in Pakistan alone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1982,
+        "label": "Moroccan Diaspora Remittances Become Economic Lifeline",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1981,
+        "label": "U.S.-Haiti interdiction agreement authorizes returning boat people without asylum review",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1980,
+        "label": "Soviet scorched-earth tactics devastate Afghan agriculture and drive refugee crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1980,
+        "label": "Mariel Boatlift Sends 125,000 Cubans to United States",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1980,
+        "label": "Eritrean Refugees Number Half a Million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1980,
+        "label": "Population Reaches 67 Million \u2014 Urbanization Transforms Mexico",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1980,
+        "label": "Afghan Refugee Crisis Overwhelms Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1979,
+        "label": "One Child Policy announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1979,
+        "label": "Eritrean Diaspora Fundraising Intensifies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 1979,
+        "label": "Anastasio Somoza Takes Refuge in Paraguay",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1979,
+        "label": "Ethiopian Refugees Flood Eastern Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1979,
+        "label": "Boat People Crisis Peaks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1978,
+        "label": "Operation Nagamin Drives 200,000 Rohingya into Bangladesh",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1976,
+        "label": "Labour Migration to C\u00f4te d'Ivoire Institutionalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1976,
+        "label": "Tindouf Sahrawi Refugee Camps Established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1975,
+        "label": "Gulf Labor Migration Surge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1975,
+        "label": "Retornados \u2014 500,000\u2013800,000 Settlers Return from Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 1975,
+        "label": "Mass Emigration Wave to the Netherlands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1975,
+        "label": "Vietnamese Refugee and Boat People Exodus Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cz",
+        "country_name": "Czechia",
+        "year": 1973,
+        "label": "Mass Emigration Wave Follows Soviet Occupation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1972,
+        "label": "Mass Hutu refugee exodus to Tanzania and DRC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1972,
+        "label": "Haitian boat people crisis escalates as refugees reach Florida",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 1972,
+        "label": "Expulsion of Ugandan Asians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1970,
+        "label": "PLO Transfers Headquarters to Beirut After Black September",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 1970,
+        "label": "Moluccan Community Tensions Rise Following Decolonisation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ca",
+        "country_name": "Canada",
+        "year": 1967,
+        "label": "Points-Based Immigration System Ends Racial Hierarchy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1967,
+        "label": "Major Refugee Exodus to Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1967,
+        "label": "Second Wave of Palestinian Refugees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1967,
+        "label": "Mass Displacement from Golan Heights Creates Refugee Population",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1966,
+        "label": "Cuban Adjustment Act Grants Cubans Special US Immigration Status",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1965,
+        "label": "Eritrean Students Union Formed Abroad",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1963,
+        "label": "Rwandan Tutsi refugees flee to Burundi after genocide",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1962,
+        "label": "Exodus of over one million pieds-noirs to France",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1962,
+        "label": "Eritrean Refugees Flee to Sudan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ht",
+        "country_name": "Haiti",
+        "year": 1960,
+        "label": "Brain drain accelerates as professionals flee Duvalier's repression",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1960,
+        "label": "Population Reaches 35 Million",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1957,
+        "label": "Massive Urbanization Wave in Southeast Brazil",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 1956,
+        "label": "Austria receives Hungarian refugees after failed revolution",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1956,
+        "label": "Two hundred thousand Hungarians flee as refugees after the Soviet invasion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1956,
+        "label": "Emigration Wave to France and Western Europe Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1951,
+        "label": "Operation Ezra and Nehemiah \u2014 Iraqi Jews",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 1951,
+        "label": "Palestinian Refugees Settle in Lebanese Camps",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1951,
+        "label": "Bracero Program Expands Mexican Labor Migration to the US",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1950,
+        "label": "Mass Jewish Emigration from Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1950,
+        "label": "Law of Return Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1950,
+        "label": "Mass Immigration from Arab Countries Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1950,
+        "label": "Operation Magic Carpet \u2014 Yemen Airlift",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 1950,
+        "label": "Mass Palestinian Refugee Settlement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1950,
+        "label": "Refugee Crisis Deepens After Partition",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 230
+  }
+}
