@@ -1,0 +1,3369 @@
+{
+  "recipe_id": "fiscal_policy_change",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "A material rewrite of who gets taxed and what gets spent \u2014 emergency budgets, austerity packages, tax-code overhauls, defense or welfare reorderings. Debt-to-GDP, fiscal-capacity, and external-interest-burden measures pressure the move months to years out. Common in countries returning from IMF programs, in mid-cycle democracies, and during war or pandemic shocks.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.6622591491012544,
+    "ci95_lo": 0.6090164129112489,
+    "ci95_hi": 0.7119368094831862,
+    "ci80_lo": 0.628007708834664,
+    "ci80_hi": 0.6945150415923285,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "NV.IND.MANF.ZS",
+      "v2x_clphy",
+      "SP.DYN.TFRT.IN"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "NV.IND.MANF.ZS",
+        "name": null
+      },
+      {
+        "code": "v2x_clphy",
+        "name": "Physical Violence Index (0-1)"
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null
+      }
+    ],
+    "chosen_window": 10,
+    "final_global_auc": 0.6622591491012544,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "NV.IND.MANF.ZS",
+        "window": 12,
+        "auc": 0.6247449723112795,
+        "lift_over_previous": 0.12474497231127946,
+        "selected_after": [
+          "NV.IND.MANF.ZS"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "v2x_clphy",
+        "window": 10,
+        "auc": 0.643395189447821,
+        "lift_over_previous": 0.01865021713654158,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "SP.DYN.TFRT.IN",
+        "window": 10,
+        "auc": 0.6622591491012544,
+        "lift_over_previous": 0.01886395965343335,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy",
+          "SP.DYN.TFRT.IN"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2x_corr",
+        "window": 10,
+        "auc": 0.6635523082891503,
+        "lift_over_previous": 0.0012931591878959647,
+        "selected_after": [
+          "NV.IND.MANF.ZS",
+          "v2x_clphy",
+          "SP.DYN.TFRT.IN",
+          "v2x_corr"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 232,
+    "n_pos_survive": 148,
+    "n_neg_total": 696,
+    "n_neg_survive": 418,
+    "pos_coverage": 0.6379310344827587,
+    "neg_coverage": 0.6005747126436781,
+    "n_countries_survive": 86,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 212,
+      "loco_auc": 0.6059981684981685,
+      "ece": 0.13270800820121295,
+      "ece_ci95_lo": 0.09770377637672388,
+      "ece_ci95_hi": 0.19575267086384315,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 60,
+          "mean_predicted": 0.055453094118274746,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 55,
+          "mean_predicted": 0.14179281971671365,
+          "mean_actual": 0.2909090909090909
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 44,
+          "mean_predicted": 0.24326083267276938,
+          "mean_actual": 0.13636363636363635
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 17,
+          "mean_predicted": 0.34266919949475455,
+          "mean_actual": 0.17647058823529413
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 9,
+          "mean_predicted": 0.4446459843052758,
+          "mean_actual": 0.4444444444444444
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 15,
+          "mean_predicted": 0.5518768827120463,
+          "mean_actual": 0.5333333333333333
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6337068438529968,
+          "mean_actual": 0.6
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 3,
+          "mean_predicted": 0.74086594581604,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8605285485585531,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 1,
+          "mean_predicted": 0.923546314239502,
+          "mean_actual": 0.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5107048954551145,
+      "loco_auc_ci95_hi": 0.6981621343128875
+    },
+    "mid-tier": {
+      "n": 94,
+      "loco_auc": 0.6003787878787878,
+      "ece": 0.193660779677807,
+      "ece_ci95_lo": 0.14149404309610736,
+      "ece_ci95_hi": 0.2931657630298781,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 24,
+          "mean_predicted": 0.05162962836523851,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 11,
+          "mean_predicted": 0.1357127929275686,
+          "mean_actual": 0.09090909090909091
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 13,
+          "mean_predicted": 0.2386328039261011,
+          "mean_actual": 0.07692307692307693
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.3645058870315552,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 11,
+          "mean_predicted": 0.4412017491730777,
+          "mean_actual": 0.45454545454545453
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 11,
+          "mean_predicted": 0.5409465757283297,
+          "mean_actual": 0.18181818181818182
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6398834109306335,
+          "mean_actual": 0.2
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7502766592161996,
+          "mean_actual": 0.42857142857142855
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 3,
+          "mean_predicted": 0.8600544730822245,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.46606912450681987,
+      "loco_auc_ci95_hi": 0.7198117852460925
+    },
+    "stable-democracy": {
+      "n": 252,
+      "loco_auc": 0.7043956043956044,
+      "ece": 0.09614839303558545,
+      "ece_ci95_lo": 0.07299540686469141,
+      "ece_ci95_hi": 0.1591498371889992,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 62,
+          "mean_predicted": 0.04870510368698066,
+          "mean_actual": 0.0967741935483871
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 59,
+          "mean_predicted": 0.14940362638336116,
+          "mean_actual": 0.1864406779661017
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 24,
+          "mean_predicted": 0.24720543809235096,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 24,
+          "mean_predicted": 0.34835053731997806,
+          "mean_actual": 0.4583333333333333
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 17,
+          "mean_predicted": 0.4488164764993331,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 21,
+          "mean_predicted": 0.5362078575860887,
+          "mean_actual": 0.38095238095238093
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 17,
+          "mean_predicted": 0.6561699965420891,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 17,
+          "mean_predicted": 0.7416779013241038,
+          "mean_actual": 0.4117647058823529
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 6,
+          "mean_predicted": 0.8470086753368378,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 5,
+          "mean_predicted": 0.9243114829063416,
+          "mean_actual": 0.6
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6302561222015384,
+      "loco_auc_ci95_hi": 0.7669325196368706
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T05:25:42.488723+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.518,
+  "stability_diagnostic": {
+    "fold_variance": 0.08222955236624427,
+    "fold_auc_mean": 0.6075488283234762,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Algeria": 0.6666666666666666,
+      "Argentina": 0.4,
+      "Austria": 1.0,
+      "Bangladesh": 0.6666666666666666,
+      "Belarus": 0.0,
+      "Bhutan": 0.8571428571428571,
+      "Bolivia": 0.8571428571428571,
+      "Botswana": 0.9,
+      "Brazil": 0.4,
+      "Burkina Faso": 0.5714285714285714,
+      "Cameroon": 1.0,
+      "Chad": 0.5,
+      "Chile": 0.4444444444444444,
+      "Costa Rica": 0.75,
+      "Cuba": 0.0,
+      "Dominican Republic": 0.75,
+      "Egypt": 0.5333333333333333,
+      "Eritrea": 0.75,
+      "Estonia": 1.0,
+      "Ethiopia": 0.4,
+      "Finland": 1.0,
+      "France": 0.0,
+      "Germany": 0.5,
+      "Ghana": 1.0,
+      "Greece": 1.0,
+      "India": 0.5142857142857142,
+      "Indonesia": 0.5,
+      "Iran": 0.25,
+      "Iraq": 0.3333333333333333,
+      "Ireland": 1.0,
+      "Ivory Coast": 1.0,
+      "Jamaica": 0.875,
+      "Japan": 0.3333333333333333,
+      "Jordan": 0.9,
+      "Kazakhstan": 1.0,
+      "Kenya": 0.6363636363636364,
+      "Kyrgyzstan": 0.5714285714285714,
+      "Latvia": 0.875,
+      "Lithuania": 1.0,
+      "Mali": 0.6,
+      "Mauritius": 0.5,
+      "Mexico": 0.5,
+      "Mongolia": 0.3333333333333333,
+      "Morocco": 0.5,
+      "Namibia": 0.5,
+      "Netherlands": 0.375,
+      "New Zealand": 1.0,
+      "Nigeria": 0.4,
+      "Norway": 0.3333333333333333,
+      "Oman": 0.5,
+      "Pakistan": 0.5,
+      "Panama": 1.0,
+      "Portugal": 0.2,
+      "Rwanda": 0.2,
+      "Saudi Arabia": 0.375,
+      "Slovakia": 0.0,
+      "South Korea": 0.5,
+      "Spain": 1.0,
+      "Suriname": 1.0,
+      "Sweden": 0.375,
+      "Switzerland": 0.8,
+      "Timor-Leste": 0.6666666666666666,
+      "Tunisia": 0.7142857142857143,
+      "Turkiye": 1.0,
+      "United Arab Emirates": 0.5,
+      "United Kingdom": 0.5,
+      "United States": 0.2222222222222222,
+      "Uruguay": 0.5555555555555556,
+      "Venezuela": 0.6,
+      "Zambia": 0.4,
+      "Zimbabwe": 0.75
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.7,
+    "cohort_loco_floor": 0.64,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 232,
+  "n_negatives": 696,
+  "walked_at_utc": "2026-06-01T05:30:40.705082+00:00",
+  "elapsed_seconds": 2449.4316504001617,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/fiscal_policy_change/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Japan",
+          "Kyrgyzstan",
+          "Palestine",
+          "Guinea-Bissau",
+          "Italy",
+          "Malawi",
+          "Uzbekistan",
+          "Solomon Islands"
+        ],
+        "country_isos": [
+          "jp",
+          "kg",
+          "ps",
+          "gw",
+          "it",
+          "mw",
+          "uz",
+          "sb"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Mexico",
+          "China",
+          "Senegal",
+          "Hong Kong",
+          "Nicaragua",
+          "Burkina Faso",
+          "Benin"
+        ],
+        "country_isos": [
+          "ee",
+          "mx",
+          "cn",
+          "sn",
+          "hk",
+          "ni",
+          "bf",
+          "bj"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 9,
+        "countries": [
+          "Spain",
+          "Burundi",
+          "Madagascar",
+          "Denmark",
+          "Singapore",
+          "El Salvador",
+          "Namibia",
+          "Nigeria",
+          "Niger"
+        ],
+        "country_isos": [
+          "es",
+          "bi",
+          "mg",
+          "dk",
+          "sg",
+          "sv",
+          "na",
+          "ng",
+          "ne"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Suriname",
+          "Iraq",
+          "Central African Republic",
+          "Hungary",
+          "Vanuatu",
+          "Republic of the Congo",
+          "The Democratic Republic of the Congo",
+          "Afghanistan"
+        ],
+        "country_isos": [
+          "sr",
+          "iq",
+          "cf",
+          "hu",
+          "vu",
+          "cg",
+          "cd",
+          "af"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Brazil",
+          "Romania",
+          "Slovenia",
+          "Cameroon",
+          "North Macedonia",
+          "Panama",
+          "Rwanda",
+          "Paraguay"
+        ],
+        "country_isos": [
+          "br",
+          "ro",
+          "si",
+          "cm",
+          "mk",
+          "pa",
+          "rw",
+          "py"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Gabon",
+          "Sao Tome and Principe",
+          "South Africa",
+          "Philippines",
+          "Malta",
+          "Ghana",
+          "Costa Rica",
+          "South Korea",
+          "Guinea"
+        ],
+        "country_isos": [
+          "ga",
+          "st",
+          "za",
+          "ph",
+          "mt",
+          "gh",
+          "cr",
+          "kr",
+          "gn"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Ecuador",
+          "Haiti",
+          "Pakistan",
+          "Zimbabwe",
+          "Togo",
+          "Armenia",
+          "Somalia",
+          "Croatia"
+        ],
+        "country_isos": [
+          "ec",
+          "ht",
+          "pk",
+          "zw",
+          "tg",
+          "am",
+          "so",
+          "hr"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 9,
+        "countries": [
+          "Zambia",
+          "Bosnia and Herzegovina",
+          "The Gambia",
+          "United Arab Emirates",
+          "Chile",
+          "Lithuania",
+          "Mauritius",
+          "Cambodia",
+          "Kazakhstan"
+        ],
+        "country_isos": [
+          "zm",
+          "ba",
+          "gm",
+          "ae",
+          "cl",
+          "lt",
+          "mu",
+          "kh",
+          "kz"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Qatar",
+          "Iran",
+          "Oman",
+          "Ivory Coast",
+          "Lesotho",
+          "United States",
+          "Eritrea",
+          "Mali"
+        ],
+        "country_isos": [
+          "qa",
+          "ir",
+          "om",
+          "ci",
+          "ls",
+          "us",
+          "er",
+          "ml"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Sri Lanka",
+          "Belarus",
+          "Kenya",
+          "Ireland",
+          "Timor-Leste",
+          "Uganda",
+          "Netherlands",
+          "Serbia"
+        ],
+        "country_isos": [
+          "lk",
+          "by",
+          "ke",
+          "ie",
+          "tl",
+          "ug",
+          "nl",
+          "rs"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Tunisia",
+          "Argentina",
+          "Germany",
+          "Angola",
+          "Ukraine",
+          "Morocco",
+          "Sweden",
+          "Fiji",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "tn",
+          "ar",
+          "de",
+          "ao",
+          "ua",
+          "ma",
+          "se",
+          "fj",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Guatemala",
+          "Latvia",
+          "Tanzania",
+          "Lebanon",
+          "Turkiye",
+          "Czechia",
+          "Uruguay",
+          "Dominican Republic"
+        ],
+        "country_isos": [
+          "gt",
+          "lv",
+          "tz",
+          "lb",
+          "tr",
+          "cz",
+          "uy",
+          "do"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 9,
+        "countries": [
+          "Austria",
+          "Bahrain",
+          "Peru",
+          "Kuwait",
+          "Cuba",
+          "Belgium",
+          "Iceland",
+          "Bolivia",
+          "Portugal"
+        ],
+        "country_isos": [
+          "at",
+          "bh",
+          "pe",
+          "kw",
+          "cu",
+          "be",
+          "is",
+          "bo",
+          "pt"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Laos",
+          "Thailand",
+          "Chad",
+          "Myanmar",
+          "Ethiopia",
+          "Indonesia",
+          "Bhutan",
+          "Honduras"
+        ],
+        "country_isos": [
+          "la",
+          "th",
+          "td",
+          "mm",
+          "et",
+          "id",
+          "bt",
+          "hn"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Poland",
+          "Bangladesh",
+          "New Zealand",
+          "Saudi Arabia",
+          "Albania",
+          "Canada",
+          "Equatorial Guinea",
+          "Finland"
+        ],
+        "country_isos": [
+          "pl",
+          "bd",
+          "nz",
+          "sa",
+          "al",
+          "ca",
+          "gq",
+          "fi"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Luxembourg",
+          "Cyprus",
+          "Algeria",
+          "South Sudan",
+          "Egypt",
+          "Russia",
+          "Sierra Leone",
+          "Venezuela",
+          "Trinidad and Tobago"
+        ],
+        "country_isos": [
+          "lu",
+          "cy",
+          "dz",
+          "ss",
+          "eg",
+          "ru",
+          "sl",
+          "ve",
+          "tt"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Georgia",
+          "Sudan",
+          "Jordan",
+          "Seychelles",
+          "Vietnam",
+          "India",
+          "Mozambique",
+          "Nepal"
+        ],
+        "country_isos": [
+          "ge",
+          "sd",
+          "jo",
+          "sc",
+          "vn",
+          "in",
+          "mz",
+          "np"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 9,
+        "countries": [
+          "Malaysia",
+          "Mauritania",
+          "Djibouti",
+          "Slovakia",
+          "Maldives",
+          "Norway",
+          "Montenegro",
+          "Liberia",
+          "Moldova"
+        ],
+        "country_isos": [
+          "my",
+          "mr",
+          "dj",
+          "sk",
+          "mv",
+          "no",
+          "me",
+          "lr",
+          "md"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Eswatini",
+          "Switzerland",
+          "Greece",
+          "Colombia",
+          "United Kingdom",
+          "Azerbaijan",
+          "Barbados",
+          "Jamaica"
+        ],
+        "country_isos": [
+          "sz",
+          "ch",
+          "gr",
+          "co",
+          "gb",
+          "az",
+          "bb",
+          "jm"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Papua New Guinea",
+          "Mongolia",
+          "France",
+          "Tajikistan",
+          "Libya",
+          "Botswana",
+          "Israel",
+          "Guyana",
+          "Australia"
+        ],
+        "country_isos": [
+          "pg",
+          "mn",
+          "fr",
+          "tj",
+          "ly",
+          "bw",
+          "il",
+          "gy",
+          "au"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.5,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 168,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.104,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.5742324415007573,
+      "b": 0.0,
+      "c": -0.13976259320014023,
+      "n_fit": 566,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 34,
+        "observed_rate": 0.11764705882352941
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 141,
+        "observed_rate": 0.14893617021276595
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 182,
+        "observed_rate": 0.2087912087912088
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 148,
+        "observed_rate": 0.39864864864864863
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 61,
+        "observed_rate": 0.4262295081967213
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.02877213727327676,
+    "n_predictions": 566,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.13270800820121295,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 60,
+            "mean_predicted": 0.055453094118274746,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 55,
+            "mean_predicted": 0.14179281971671365,
+            "mean_actual": 0.2909090909090909
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 44,
+            "mean_predicted": 0.24326083267276938,
+            "mean_actual": 0.13636363636363635
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 17,
+            "mean_predicted": 0.34266919949475455,
+            "mean_actual": 0.17647058823529413
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 9,
+            "mean_predicted": 0.4446459843052758,
+            "mean_actual": 0.4444444444444444
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 15,
+            "mean_predicted": 0.5518768827120463,
+            "mean_actual": 0.5333333333333333
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6337068438529968,
+            "mean_actual": 0.6
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 3,
+            "mean_predicted": 0.74086594581604,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8605285485585531,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 1,
+            "mean_predicted": 0.923546314239502,
+            "mean_actual": 0.0
+          }
+        ],
+        "n": 212,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.193660779677807,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 24,
+            "mean_predicted": 0.05162962836523851,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 11,
+            "mean_predicted": 0.1357127929275686,
+            "mean_actual": 0.09090909090909091
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 13,
+            "mean_predicted": 0.2386328039261011,
+            "mean_actual": 0.07692307692307693
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 9,
+            "mean_predicted": 0.3645058870315552,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 11,
+            "mean_predicted": 0.4412017491730777,
+            "mean_actual": 0.45454545454545453
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 11,
+            "mean_predicted": 0.5409465757283297,
+            "mean_actual": 0.18181818181818182
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6398834109306335,
+            "mean_actual": 0.2
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7502766592161996,
+            "mean_actual": 0.42857142857142855
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 3,
+            "mean_predicted": 0.8600544730822245,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 94,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.09614839303558545,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 62,
+            "mean_predicted": 0.04870510368698066,
+            "mean_actual": 0.0967741935483871
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 59,
+            "mean_predicted": 0.14940362638336116,
+            "mean_actual": 0.1864406779661017
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 24,
+            "mean_predicted": 0.24720543809235096,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 24,
+            "mean_predicted": 0.34835053731997806,
+            "mean_actual": 0.4583333333333333
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 17,
+            "mean_predicted": 0.4488164764993331,
+            "mean_actual": 0.4117647058823529
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 21,
+            "mean_predicted": 0.5362078575860887,
+            "mean_actual": 0.38095238095238093
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 17,
+            "mean_predicted": 0.6561699965420891,
+            "mean_actual": 0.4117647058823529
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 17,
+            "mean_predicted": 0.7416779013241038,
+            "mean_actual": 0.4117647058823529
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 6,
+            "mean_predicted": 0.8470086753368378,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 5,
+            "mean_predicted": 0.9243114829063416,
+            "mean_actual": 0.6
+          }
+        ],
+        "n": 252,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/fiscal_policy_change.scores.json",
+  "shape_points": [
+    -0.00752292577815156,
+    0.009260161309882001,
+    0.02604324839791557,
+    0.042826335485949135,
+    0.05960942257398269,
+    0.07639250966201624,
+    0.0931755967500498,
+    0.10995868383808338,
+    0.1267417709261169,
+    0.1435248580141505,
+    0.16030794510218405,
+    0.1770910321902176
+  ],
+  "shap_importance_raw": {
+    "NV.IND.MANF.ZS": 1.546621322631836,
+    "v2x_clphy": 1.117370843887329,
+    "SP.DYN.TFRT.IN": 1.1738628149032593
+  },
+  "shap_importance_normalized": {
+    "NV.IND.MANF.ZS": 0.40299107968342557,
+    "v2x_clphy": 0.2911446235712632,
+    "SP.DYN.TFRT.IN": 0.30586429674531124
+  },
+  "shap_direction_signs": {
+    "NV.IND.MANF.ZS": -1,
+    "v2x_clphy": -1,
+    "SP.DYN.TFRT.IN": -1
+  },
+  "per_feature_breakdown": {
+    "NV.IND.MANF.ZS": {
+      "last_z": 0.21710853278636932,
+      "mean_z": 0.12509354948997498,
+      "std_z": 0.2528829276561737,
+      "slope": 0.1995552033185959,
+      "accel": 0.22805733978748322,
+      "tertile1_mean": 0.3205264210700989,
+      "tertile2_mean": 0.12458451092243195,
+      "tertile3_mean": 0.07881282269954681
+    },
+    "v2x_clphy": {
+      "last_z": 0.07593701034784317,
+      "mean_z": 0.03672407194972038,
+      "std_z": 0.2176465094089508,
+      "slope": 0.16332365572452545,
+      "accel": 0.22929330170154572,
+      "tertile1_mean": 0.0881195217370987,
+      "tertile2_mean": 0.22407014667987823,
+      "tertile3_mean": 0.08225658535957336
+    },
+    "SP.DYN.TFRT.IN": {
+      "last_z": 0.2156640887260437,
+      "mean_z": 0.07742143422365189,
+      "std_z": 0.20102401077747345,
+      "slope": 0.24006487429141998,
+      "accel": 0.15222524106502533,
+      "tertile1_mean": 0.15126673877239227,
+      "tertile2_mean": 0.049613356590270996,
+      "tertile3_mean": 0.08658309280872345
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 10,
+    "indicators": [
+      {
+        "code": "NV.IND.MANF.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 149,
+        "shape": {
+          "mean": [
+            0.1212,
+            -0.0139,
+            -0.0646,
+            -0.1281,
+            -0.151,
+            -0.2544,
+            -0.2583,
+            -0.3923,
+            -0.4411,
+            -0.5445
+          ],
+          "p25": [
+            -0.4754,
+            -0.5341,
+            -0.6585,
+            -0.7243,
+            -0.8719,
+            -0.9099,
+            -0.9305,
+            -1.0315,
+            -1.1889,
+            -1.3971
+          ],
+          "p75": [
+            0.6569,
+            0.4953,
+            0.5335,
+            0.3846,
+            0.5625,
+            0.2105,
+            0.409,
+            0.2653,
+            0.0847,
+            0.132
+          ]
+        }
+      },
+      {
+        "code": "v2x_clphy",
+        "name": "Physical Violence Index (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 229,
+        "shape": {
+          "mean": [
+            0.1179,
+            0.1753,
+            0.219,
+            0.1868,
+            0.2616,
+            0.3268,
+            0.2888,
+            0.3768,
+            0.4507,
+            0.5697
+          ],
+          "p25": [
+            -0.4824,
+            -0.4238,
+            -0.354,
+            -0.4899,
+            -0.3008,
+            -0.2878,
+            -0.346,
+            -0.2059,
+            -0.2672,
+            -0.2059
+          ],
+          "p75": [
+            0.6657,
+            0.7862,
+            0.8448,
+            0.8723,
+            0.9102,
+            0.9723,
+            0.9976,
+            1.0887,
+            1.2,
+            1.3587
+          ]
+        }
+      },
+      {
+        "code": "SP.DYN.TFRT.IN",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 201,
+        "shape": {
+          "mean": [
+            -0.2022,
+            -0.2801,
+            -0.3405,
+            -0.4033,
+            -0.4933,
+            -0.5385,
+            -0.6096,
+            -0.6872,
+            -0.8027,
+            -0.9591
+          ],
+          "p25": [
+            -0.6461,
+            -0.6971,
+            -0.7481,
+            -0.8625,
+            -0.9712,
+            -1.0769,
+            -1.2081,
+            -1.3694,
+            -1.5406,
+            -1.74
+          ],
+          "p75": [
+            0.0834,
+            0.021,
+            -0.1107,
+            -0.1311,
+            -0.1789,
+            -0.3064,
+            -0.2491,
+            -0.088,
+            -0.1905,
+            -0.3286
+          ]
+        }
+      }
+    ],
+    "samples_used": 229,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2025,
+        "label": "Ramgoolam Government Audit Reveals Fiscal Hole",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2025,
+        "label": "Morocco's Economy Grows \u2014 Services and Manufacturing Diversify",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2025,
+        "label": "Dubai Real Estate Reaches New Record Prices",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "Milei's Shock Therapy \u2014 Peso Devalued 50% on Day One",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "Argentina Achieves Fiscal Surplus for First Time in Decades",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2024,
+        "label": "Inflation Begins to Decline Under Milei",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 2024,
+        "label": "New Government Inherits Diamond Crisis \u2014 Economic Reform Agenda",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2024,
+        "label": "Third Plenum \u2014 economic reform blueprint amid structural crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2024,
+        "label": "Egypt-IMF Deal Expanded to $8 Billion; UAE Ras el-Hekma Investment",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2024,
+        "label": "El Salvador Signs $1.4 Billion IMF Deal with Bitcoin Concessions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2024,
+        "label": "Budget introduces significant capital gains tax changes",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2024,
+        "label": "Pakistan Economy Shows Fragile Stabilization",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2024,
+        "label": "Rwanda's Vision 2050 launched; sustained development despite governance concerns",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2024,
+        "label": "Sovereign Wealth Fund Framework Designed for Oil Revenues",
+        "in_training_set": false
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2024,
+        "label": "Petroleum Fund stress as withdrawals exceed sustainable income",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2024,
+        "label": "Eurobond Debt Restructuring Agreement Completed",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2023,
+        "label": "New IMF Program \u2014 Fourth Consecutive Arrangement",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2023,
+        "label": "IMF Extended Credit Facility Approved",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2023,
+        "label": "Fuel Subsidy Removal \u2014 Petrol Prices Surge Sixfold",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2023,
+        "label": "OECD Minimum Tax Approved by Voters",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 2022,
+        "label": "Domestic Debt Exchange Restructures Government Bonds, Shocks Financial Sector",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2022,
+        "label": "Semiconductor and chip manufacturing push",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2022,
+        "label": "Debt-to-GDP Falls Below 90 Percent \u2014 Fiscal Milestone",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 2022,
+        "label": "Russia-Ukraine War Oil Spike Relieves Fiscal Pressure",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2022,
+        "label": "Lithuania Raises Defense Spending Above 2.5% of GDP",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2022,
+        "label": "Naira Redesign Causes Cash Crisis",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2022,
+        "label": "Truss Mini-Budget Triggers Market Crash and Shortest Premiership Ever",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2022,
+        "label": "IMF $1.4 Billion Programme Approved",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2022,
+        "label": "Zambia-China Debt Negotiations \u2014 Protracted Impasse",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2021,
+        "label": "Argentina Negotiates New IMF Program for $44 Billion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2021,
+        "label": "Crackdown on tech giants \u2014 Ant Group, Didi, Alibaba",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2021,
+        "label": "Public Employment Framework Law Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2021,
+        "label": "Oman Vision 2040 Launched as Structural Transformation Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2021,
+        "label": "Value Added Tax Introduced for the First Time",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 2021,
+        "label": "Panama Returns to FATF Gray List on Money Laundering",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2021,
+        "label": "New UPND Government Launches IMF Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2020,
+        "label": "Jamaica Signs New IMF Precautionary Stand-By Arrangement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2020,
+        "label": "IMF Emergency Programme and Debt Restructuring",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2019,
+        "label": "Pension Reform Passes After Months of Debate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2019,
+        "label": "Saudi Aramco Record IPO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2019,
+        "label": "Saudi Arabia Opens Tourism Visas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2019,
+        "label": "Zambia's Debt Reaches 80% of GDP \u2014 Crisis Signals Accumulate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cr",
+        "country_name": "Costa Rica",
+        "year": 2018,
+        "label": "Fiscal Strengthening Law Enacted Despite Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2018,
+        "label": "IMF Stand-By Arrangement Successor Program Agreed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nl",
+        "country_name": "Netherlands",
+        "year": 2018,
+        "label": "Shell Dividend Tax Reversal Amid Corporate Lobbying Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 2018,
+        "label": "Wellbeing Budget Framework Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2018,
+        "label": "Pension Fund Divests from Coal and Oil Exploration",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2018,
+        "label": "Somalia Begins HIPC Debt Relief Process",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2018,
+        "label": "UAE Introduces Value Added Tax",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2017,
+        "label": "Algeria resorts to 'unconventional financing' \u2014 money printing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2017,
+        "label": "Pension and Labor Reforms Under Temer",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2017,
+        "label": "GST launched \u2014 One Nation, One Tax",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2017,
+        "label": "Tax Cuts and Jobs Act Signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2016,
+        "label": "Macri Removes Currency Controls and Floats Peso",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2016,
+        "label": "Argentina Settles Holdout Creditor Dispute",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2016,
+        "label": "Michel Temer Implements Spending Cap Amendment",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2016,
+        "label": "Demonetization \u2014 Rs 500 and Rs 1000 notes banned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2016,
+        "label": "GST Bill passed in Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2016,
+        "label": "JCPOA Implementation Day; Sanctions Relief",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2016,
+        "label": "Jordan Compact Signed \u2014 Refugees as Development Asset",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 2016,
+        "label": "Vision 2030 Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2015,
+        "label": "Austerity budget adopted in response to oil revenue slump",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2015,
+        "label": "Made in China 2025 industrial strategy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2015,
+        "label": "Estonia Increases Defense Spending to 2% of GDP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2015,
+        "label": "Sipila Government Launches Competitiveness Austerity Package",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jo",
+        "country_name": "Jordan",
+        "year": 2015,
+        "label": "Jordan-EU Compact Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2015,
+        "label": "Dubai Emerges as Global Tourism Leader",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2014,
+        "label": "Tax Reform Raises Corporate Rates to Fund Free Education",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2014,
+        "label": "Eritrean Diaspora Two Percent Tax Controversy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2014,
+        "label": "Hawassa Industrial Park construction begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2014,
+        "label": "Jan Dhan Yojana financial inclusion scheme",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 2014,
+        "label": "Make in India campaign launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 2014,
+        "label": "Fuel subsidy elimination \u2014 infrastructure pivot",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 2014,
+        "label": "Casablanca Finance City Develops as Regional Hub",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2014,
+        "label": "Switzerland Adopts Automatic Exchange of Tax Information",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 2013,
+        "label": "India Briefly Reduces Fuel and Cooking Gas Subsidies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2013,
+        "label": "Third Plenum \u2014 comprehensive reform blueprint",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2013,
+        "label": "IMF Extended Fund Facility \u2014 Jamaica's Landmark Reform Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2013,
+        "label": "Pacto por M\u00e9xico \u2014 Energy, Telecom, and Education Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2012,
+        "label": "Greece receives second bailout and largest-ever sovereign debt write-down (PSI)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 2012,
+        "label": "National Debt Restructuring \u2014 NDX Swap Reduces Borrowing Costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2012,
+        "label": "Abe Shinzo Returns to Power, Launches Abenomics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2012,
+        "label": "Chinggis Bond: First Sovereign International Bond Issued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2012,
+        "label": "Zambia Issues $750 Million Eurobond at 5.4%",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2011,
+        "label": "Mining Tax Legislation Passed Amid Industry Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "na",
+        "country_name": "Namibia",
+        "year": 2011,
+        "label": "Namibia Adopts Vision 2030 Development Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2010,
+        "label": "Carinthia faces near-insolvency from Hypo guarantees",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2010,
+        "label": "Brazil Economy Grows 7.5%, Fastest in 25 Years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2010,
+        "label": "China surpasses Japan as world's second largest economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2010,
+        "label": "Finland Participates in Greek Bailout Despite Domestic Opposition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2010,
+        "label": "Lithuania Begins Internal Devaluation and Fiscal Consolidation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "om",
+        "country_name": "Oman",
+        "year": 2010,
+        "label": "Oman Vision 2020 Mid-Term Review Highlights Diversification Shortfalls",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 2010,
+        "label": "Zapatero's Austerity U-Turn Under Financial Market Pressure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 2010,
+        "label": "UAE Economy Begins Recovery from Financial Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 2010,
+        "label": "Austerity Programme Launches Deepest Spending Cuts in a Generation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2010,
+        "label": "Dodd-Frank Financial Reform Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bn",
+        "country_name": "Brunei",
+        "year": 2009,
+        "label": "Wawasan Brunei 2035 National Vision Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 2009,
+        "label": "PASOK election win reveals budget deficit at 12.7% of GDP, triggering debt crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2009,
+        "label": "NAMA Created to Absorb Toxic Bank Loans",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2009,
+        "label": "Valdis Dombrovskis Government Implements Severe Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 2009,
+        "label": "Budget Deficit Surges to 10% of GDP \u2014 Crisis Deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 2009,
+        "label": "American Recovery and Reinvestment Act Passed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2008,
+        "label": "Brazil Emerges as BRICs Economic Powerhouse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 2008,
+        "label": "Global Financial Crisis Managed Through Sovereign Wealth Funds",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2008,
+        "label": "Global financial crisis \u2014 China's $586B stimulus",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2008,
+        "label": "EU and IMF Approve 7.5 Billion Euro Bailout for Latvia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2007,
+        "label": "Tax Reform \u2014 Flat 15 Percent Personal and Corporate Income Tax",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bd",
+        "country_name": "Bangladesh",
+        "year": 2006,
+        "label": "Muhammad Yunus and Grameen Bank Awarded Nobel Peace Prize",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2006,
+        "label": "HIPC Completion Point and Full Debt Relief",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2006,
+        "label": "HIPC Debt Relief Reached",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 2006,
+        "label": "Minerals Law Imposes 68 Percent Windfall Profits Tax",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2006,
+        "label": "Petroleum Fund Renamed Government Pension Fund Global",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 2005,
+        "label": "Algeria repays IMF debt ahead of schedule",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2005,
+        "label": "Argentina Pays Off IMF Debt in Full",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2005,
+        "label": "Debt Restructuring \u2014 Record Bond Swap",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2005,
+        "label": "Lukashenko designates Belarus 'Market Socialist' economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2005,
+        "label": "Eritrea Adopts Economic Policies of Self-Reliance",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2005,
+        "label": "Ba'ath Party Congress Endorses Cautious Economic Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Timor Leste",
+        "year": 2005,
+        "label": "Petroleum Fund established under sovereign wealth model",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 2005,
+        "label": "HIPC Debt Relief Completion \u2014 $6 Billion Cancelled",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2004,
+        "label": "Opium poppy production surges to record levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2004,
+        "label": "Ahmed Nazif Appointed Prime Minister, Economic Reform Team Installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 2004,
+        "label": "Petroleum Fund Adopts Ethical Investment Guidelines",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2004,
+        "label": "Flat tax revolution introduces 19% uniform rate",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 2003,
+        "label": "Agenda 2010: Schroeder launches major welfare state reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2002,
+        "label": "Cuba Permanently Closes 71 Sugar Mills, Ends Sugar-Centered Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 2002,
+        "label": "Maquiladora Sector Contracts as China Joins WTO",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 2002,
+        "label": "IMF Emergency Rescue Package Secured",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2001,
+        "label": "Kemal Dervis Implements IMF-Backed Economic Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2001,
+        "label": "Zimbabwe Suspended from IMF Programs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2000,
+        "label": "Taliban bans poppy cultivation declaring drugs un-Islamic",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2000,
+        "label": "IMF Blindaje Rescue Package",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "au",
+        "country_name": "Australia",
+        "year": 2000,
+        "label": "Goods and Services Tax Introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 2000,
+        "label": "Fiscal Responsibility Law Enacted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 2000,
+        "label": "HIPC Debt Relief Granted \u2014 Development Resources Freed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cm",
+        "country_name": "Cameroon",
+        "year": 2000,
+        "label": "Heavily Indebted Poor Countries Debt Relief",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "td",
+        "country_name": "Chad",
+        "year": 2000,
+        "label": "World Bank Approves Chad-Cameroon Pipeline Revenue Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 2000,
+        "label": "Kazakhstan National Fund Established to Manage Oil Revenues",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2000,
+        "label": "HIPC Debt Relief Frees Resources for Development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2000,
+        "label": "Vision 2020 development blueprint launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1999,
+        "label": "Inflation Targeting Regime Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1999,
+        "label": "Ethiopian economy grows despite war costs",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1999,
+        "label": "Petroleum Fund Begins Equity Investments",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ae",
+        "country_name": "United Arab Emirates",
+        "year": 1999,
+        "label": "Dubai's Non-Oil Economy Surpasses Oil in GDP Share",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1997,
+        "label": "War Veterans Compensation Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bf",
+        "country_name": "Burkina Faso",
+        "year": 1996,
+        "label": "IMF Structural Adjustment Deepens Under Compaor\u00e9",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1996,
+        "label": "First Capital Deposited into Government Petroleum Fund",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "se",
+        "country_name": "Sweden",
+        "year": 1996,
+        "label": "G\u00f6ran Persson Launches Fiscal Consolidation Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 1996,
+        "label": "Agenda Venezuela Economic Stabilization Package",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 1995,
+        "label": "Bokros austerity package imposes severe economic stabilization measures",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1994,
+        "label": "IMF structural adjustment program signed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1994,
+        "label": "Real Plan Launched, Inflation Finally Subdued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1994,
+        "label": "Tax-sharing reform reshapes central-local fiscal relations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1994,
+        "label": "Fiscal Responsibility Act Sets Government Budget Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1993,
+        "label": "Economic Boom Under Convertibility",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1993,
+        "label": "Mogae Finance Reforms \u2014 Central Bank Modernisation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1993,
+        "label": "Ethiopia becomes landlocked: access to sea lost",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1993,
+        "label": "SEBI given statutory powers to regulate capital markets",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1993,
+        "label": "Tenge Introduced: Kazakhstan Establishes Monetary Sovereignty",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1993,
+        "label": "IMF Structural Adjustment Program Imposed on Kyrgyzstan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kr",
+        "country_name": "South Korea",
+        "year": 1993,
+        "label": "Financial Real-Name System Dismantles Anonymous Accounts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1992,
+        "label": "Deng Xiaoping's Southern Tour relaunches reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kz",
+        "country_name": "Kazakhstan",
+        "year": 1992,
+        "label": "Economic Collapse as Soviet System Disintegrates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 1992,
+        "label": "Economic Reforms and IMF Engagement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1991,
+        "label": "Economic Reform Program Launched with IMF",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mn",
+        "country_name": "Mongolia",
+        "year": 1991,
+        "label": "Mass Privatization Voucher Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "nz",
+        "country_name": "New Zealand",
+        "year": 1991,
+        "label": "Benefit Cuts Trigger Poverty Surge",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1990,
+        "label": "Opium production expands massively during war years",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1990,
+        "label": "Collor Plan Freezes Bank Accounts to Fight Inflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1990,
+        "label": "Shanghai Stock Exchange established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "no",
+        "country_name": "Norway",
+        "year": 1990,
+        "label": "Government Petroleum Fund Established by Parliament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1990,
+        "label": "Balcerowicz Shock Therapy \u2014 Market Economy in One Leap",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1990,
+        "label": "Assad's Pragmatic Alliance Shift Earns Economic Dividends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1989,
+        "label": "Zambia Returns to IMF Negotiations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1988,
+        "label": "IMF Structural Adjustment Programme Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1987,
+        "label": "Social Partnership Model Begins with Programme for National Recovery",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1987,
+        "label": "Economic Liberalisation Reforms Deepen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "vn",
+        "country_name": "Vietnam",
+        "year": 1987,
+        "label": "Foreign Investment Law Enacted; Nguyen Van Linh Becomes General Secretary",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1987,
+        "label": "Zambia Breaks with IMF \u2014 'New Economic Recovery Programme'",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1986,
+        "label": "Oil price collapse to $10 \u2014 structural adjustment and manufacturing pivot",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1986,
+        "label": "Perestroika reforms launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1985,
+        "label": "Austral Plan \u2014 Anti-Inflation Shock Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1985,
+        "label": "Shock Therapy Decree 21060 Ends Hyperinflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1985,
+        "label": "Iraq's War Economy and Alternative Oil Routes",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1985,
+        "label": "Economic Stabilization Plan \u2014 Inflation Halted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1985,
+        "label": "IMF Structural Adjustment \u2014 Currency Devaluation and Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1985,
+        "label": "Plaza Accord Forces Dramatic Yen Appreciation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1985,
+        "label": "Structural Adjustment Programme Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1985,
+        "label": "Gorbachev's anti-alcohol campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1984,
+        "label": "Egypt Begins IMF-Backed Economic Reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1984,
+        "label": "Craxi Decree Cuts Scala Mobile Wage Indexation, Winning 1985 Referendum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1983,
+        "label": "Oil price collapse forces economic reform and devaluation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1983,
+        "label": "Second IMF Program \u2014 Fiscal Stabilization Before EEC",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ma",
+        "country_name": "Morocco",
+        "year": 1982,
+        "label": "IMF Structural Adjustment Programme Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1981,
+        "label": "IMF Stabilization Program Triggers Austerity and Labor Unrest",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tz",
+        "country_name": "Tanzania",
+        "year": 1981,
+        "label": "IMF Negotiations Break Down \u2014 Austerity Rejected",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1980,
+        "label": "Shenzhen designated first Special Economic Zone",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1980,
+        "label": "IMF Structural Adjustment Negotiations Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1980,
+        "label": "Kuwait General Reserve Fund Formalized",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 1980,
+        "label": "Second Oil Shock and First IMF Standby",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1980,
+        "label": "IMF Structural Adjustment Program Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1980,
+        "label": "Thatcher's Monetarist Shock Therapy Triggers Deep Recession",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1979,
+        "label": "Economic 'Opening' Under Mart\u00ednez de Hoz",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 1979,
+        "label": "First IMF Standby and Structural Adjustment Begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1978,
+        "label": "Third Plenum \u2014 Reform and Opening Up begins",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ci",
+        "country_name": "Ivory Coast",
+        "year": 1978,
+        "label": "Debt-Financed Spending Surges as Commodity Revenues Soften",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jm",
+        "country_name": "Jamaica",
+        "year": 1977,
+        "label": "First IMF Agreement \u2014 Austerity Begins Under PNP",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1977,
+        "label": "First IMF Stabilization Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1976,
+        "label": "Second Five-Year Development Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1975,
+        "label": "National Development Plan Institutionalised \u2014 Prudent Fiscal Framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cl",
+        "country_name": "Chile",
+        "year": 1975,
+        "label": "'Shock Treatment' Austerity Causes Economic Contraction",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1975,
+        "label": "Suez Canal Reopened After Eight-Year Closure",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1974,
+        "label": "Retrocession \u2014 Partial Re-privatization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1974,
+        "label": "Udoji Awards \u2014 Public Sector Wage Explosion",
+        "in_training_set": true
+      },
+      {
+        "country_iso": null,
+        "country_name": "Democratic Republic of Congo",
+        "year": 1973,
+        "label": "Zaireanization \u2014 Mass Asset Nationalization",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1973,
+        "label": "Arab Oil Embargo Deployed as Weapon During October War",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1972,
+        "label": "Ghana Repudiates Foreign Debts Under Economic Nationalism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 1972,
+        "label": "Indigenization Decree \u2014 Nigerianization of Business",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1972,
+        "label": "Romania Joins IMF and World Bank \u2014 First Eastern Bloc Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1971,
+        "label": "Gierek's Western Credit Strategy Launches",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1970,
+        "label": "First Five-Year Development Plan Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1969,
+        "label": "Ben Salah Dismissed and Arrested \u2014 Cooperative Experiment Ends",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "id",
+        "country_name": "Indonesia",
+        "year": 1967,
+        "label": "Berkeley Mafia economic stabilization program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 1967,
+        "label": "Mali Returns to Franc Zone Under IMF Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1967,
+        "label": "Economic Inequality Between East and West Pakistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1966,
+        "label": "National industrialization plan prioritizes heavy industry",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1966,
+        "label": "Ghana Seeks IMF Emergency Assistance After Economic Collapse",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1966,
+        "label": "Rupee devalued by 36 percent",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1966,
+        "label": "Kuwait Investment Office Established in London",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1965,
+        "label": "PAEG Economic Stabilization Program Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ke",
+        "country_name": "Kenya",
+        "year": 1965,
+        "label": "Sessional Paper No. 10 on African Socialism",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1965,
+        "label": "Maquiladora Program Established at the Border",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1965,
+        "label": "Kosygin economic reforms introduced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bt",
+        "country_name": "Bhutan",
+        "year": 1961,
+        "label": "First Five-Year Plan Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1961,
+        "label": "Ethiopia invests in Awash Valley agricultural development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1961,
+        "label": "Third Five-Year Plan launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ro",
+        "country_name": "Romania",
+        "year": 1961,
+        "label": "Romania Challenges Soviet Comecon Integration Plans",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1960,
+        "label": "Ikeda's Income Doubling Plan Launches High-Growth Era",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "dz",
+        "country_name": "Algeria",
+        "year": 1959,
+        "label": "Constantine Plan launched for Algerian economic development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1959,
+        "label": "Frondizi Stabilization Plan and IMF Agreement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1959,
+        "label": "Argentine Industrial Conglomerate SIAM Di Tella Expands",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1959,
+        "label": "Superintendent for Northeast Development (SUDENE) Created",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1959,
+        "label": "Seven-Year Plan announced to overtake US economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1959,
+        "label": "IMF Stabilization Plan Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1958,
+        "label": "Frondizi Launches Desarrollismo Economic Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1957,
+        "label": "Afghan government launches first five-year development plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 1957,
+        "label": "Suez Canal Reopened Under Egyptian Operation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1956,
+        "label": "Kubitschek Launches Targets Plan for Development",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 1956,
+        "label": "Eritrean Factories Relocated to Ethiopia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1956,
+        "label": "Second Five-Year Plan \u2014 industrialization push",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1956,
+        "label": "Industrial Policy Resolution \u2014 socialist framework",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1956,
+        "label": "First Five-Year National Development Plan Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mx",
+        "country_name": "Mexico",
+        "year": 1954,
+        "label": "Peso Devaluation and Stabilizing Development Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "de",
+        "country_name": "Germany",
+        "year": 1953,
+        "label": "London Debt Agreement halves West Germany's foreign debts",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1952,
+        "label": "Per\u00f3n Implements Economic Austerity Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1952,
+        "label": "BNDE National Development Bank Founded",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 1952,
+        "label": "Ethiopia gains Red Sea access through Eritrean federation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 1952,
+        "label": "Israel Bonds and Economic Austerity",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1951,
+        "label": "Vargas Launches National Developmentalism Policy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1951,
+        "label": "Banco do Brasil Expands Credit to Agriculture",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1951,
+        "label": "First Five-Year Plan launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1951,
+        "label": "Soviet industrial production surpasses prewar levels",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1950,
+        "label": "Per\u00f3n's Second Five-Year Plan Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1950,
+        "label": "Planning Commission established",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pl",
+        "country_name": "Poland",
+        "year": 1950,
+        "label": "Six-Year Plan and Stalinist Industrialization",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 265
+  }
+}

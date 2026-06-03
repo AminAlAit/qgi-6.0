@@ -1,0 +1,2464 @@
+{
+  "recipe_id": "sanctions_and_arms_embargo",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "An external coalition imposes \u2014 or lifts \u2014 targeted financial, trade, or arms-export restrictions against a country, individual, or sector. Sovereignty indices, trade-share metrics, and FDI flows respond well before the formal designation. The recurring targets cluster around great-power rival states, sanctioned autocracies, and proliferation-risk regimes.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.8069565217391305,
+    "ci95_lo": 0.7406686230338286,
+    "ci95_hi": 0.8596986338727199,
+    "ci80_lo": 0.7635837351957084,
+    "ci80_hi": 0.8412416514105504,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "v2cseeorgs",
+      "NE.CON.GOVT.ZS",
+      "v2csprtcpt",
+      "v2mecenefm",
+      "v2x_partip"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)"
+      },
+      {
+        "code": "NE.CON.GOVT.ZS",
+        "name": null
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)"
+      },
+      {
+        "code": "v2mecenefm",
+        "name": "Print/Broadcast Media Censorship (0-4)"
+      },
+      {
+        "code": "v2x_partip",
+        "name": "Political Participation (0-1)"
+      }
+    ],
+    "chosen_window": 15,
+    "final_global_auc": 0.8069565217391305,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "v2cseeorgs",
+        "window": 25,
+        "auc": 0.6778387810691181,
+        "lift_over_previous": 0.1778387810691181,
+        "selected_after": [
+          "v2cseeorgs"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "NE.CON.GOVT.ZS",
+        "window": 15,
+        "auc": 0.7410869565217392,
+        "lift_over_previous": 0.06324817545262107,
+        "selected_after": [
+          "v2cseeorgs",
+          "NE.CON.GOVT.ZS"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2csprtcpt",
+        "window": 12,
+        "auc": 0.7807720588235294,
+        "lift_over_previous": 0.03968510230179023,
+        "selected_after": [
+          "v2cseeorgs",
+          "NE.CON.GOVT.ZS",
+          "v2csprtcpt"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2mecenefm",
+        "window": 12,
+        "auc": 0.8010294117647059,
+        "lift_over_previous": 0.020257352941176476,
+        "selected_after": [
+          "v2cseeorgs",
+          "NE.CON.GOVT.ZS",
+          "v2csprtcpt",
+          "v2mecenefm"
+        ]
+      },
+      {
+        "step": 5,
+        "candidate": "v2x_partip",
+        "window": 15,
+        "auc": 0.8069565217391305,
+        "lift_over_previous": 0.0059271099744245825,
+        "selected_after": [
+          "v2cseeorgs",
+          "NE.CON.GOVT.ZS",
+          "v2csprtcpt",
+          "v2mecenefm",
+          "v2x_partip"
+        ]
+      },
+      {
+        "step": 6,
+        "candidate": "v2x_regime",
+        "window": 15,
+        "auc": 0.8078985507246377,
+        "lift_over_previous": 0.000942028985507215,
+        "selected_after": [
+          "v2cseeorgs",
+          "NE.CON.GOVT.ZS",
+          "v2csprtcpt",
+          "v2mecenefm",
+          "v2x_partip",
+          "v2x_regime"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 93,
+    "n_pos_survive": 69,
+    "n_neg_total": 279,
+    "n_neg_survive": 200,
+    "pos_coverage": 0.7419354838709677,
+    "neg_coverage": 0.7168458781362007,
+    "n_countries_survive": 43,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 159,
+      "loco_auc": 0.7845681119836122,
+      "ece": 0.14443175889750792,
+      "ece_ci95_lo": 0.10113260486366742,
+      "ece_ci95_hi": 0.22113151704488354,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 60,
+          "mean_predicted": 0.037618270974295834,
+          "mean_actual": 0.1
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 12,
+          "mean_predicted": 0.12556617086132368,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 9,
+          "mean_predicted": 0.25231661399205524,
+          "mean_actual": 0.5555555555555556
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 9,
+          "mean_predicted": 0.3565651343928443,
+          "mean_actual": 0.7777777777777778
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 8,
+          "mean_predicted": 0.45750001817941666,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 14,
+          "mean_predicted": 0.536401276077543,
+          "mean_actual": 0.35714285714285715
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 8,
+          "mean_predicted": 0.6564357355237007,
+          "mean_actual": 0.625
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 7,
+          "mean_predicted": 0.7518857972962516,
+          "mean_actual": 0.5714285714285714
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 17,
+          "mean_predicted": 0.841390444951899,
+          "mean_actual": 0.5882352941176471
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 15,
+          "mean_predicted": 0.9480355779329935,
+          "mean_actual": 0.8
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6992765596989179,
+      "loco_auc_ci95_hi": 0.8481667614982196
+    },
+    "mid-tier": {
+      "n": 63,
+      "loco_auc": 0.7181818181818181,
+      "ece": 0.13037272057096871,
+      "ece_ci95_lo": 0.0651718374546839,
+      "ece_ci95_hi": 0.2066282546709454,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 53,
+          "mean_predicted": 0.0312861434781467,
+          "mean_actual": 0.11320754716981132
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 4,
+          "mean_predicted": 0.15088743343949318,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 1,
+          "mean_predicted": 0.23870594799518585,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 3,
+          "mean_predicted": 0.4606154163678487,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5619043111801147,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.6868612766265869,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.46962519916364237,
+      "loco_auc_ci95_hi": 0.8597105481250414
+    },
+    "stable-democracy": {
+      "n": 47,
+      "loco_auc": 0.6515151515151515,
+      "ece": 0.05631757553349784,
+      "ece_ci95_lo": 0.028033821550296975,
+      "ece_ci95_hi": 0.13552400302290518,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 35,
+          "mean_predicted": 0.04187923278659582,
+          "mean_actual": 0.02857142857142857
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 4,
+          "mean_predicted": 0.1565000656992197,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 6,
+          "mean_predicted": 0.24930219848950705,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5859593152999878,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 1,
+          "mean_predicted": 0.7253806591033936,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.21739130434782608,
+      "loco_auc_ci95_hi": 0.8888888888888888
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T03:00:01.606479+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.5153,
+  "stability_diagnostic": {
+    "fold_variance": 0.08109095573603589,
+    "fold_auc_mean": 0.7595408163265306,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Austria": 0.5,
+      "Belarus": 0.7,
+      "Burundi": 0.75,
+      "China": 1.0,
+      "Cuba": 0.6666666666666666,
+      "Eritrea": 1.0,
+      "Georgia": 0.5,
+      "Greece": 1.0,
+      "Guinea": 1.0,
+      "Iran": 0.8095238095238095,
+      "Iraq": 0.8571428571428571,
+      "Kuwait": 1.0,
+      "Lebanon": 0.8333333333333334,
+      "Libya": 1.0,
+      "Madagascar": 1.0,
+      "Mali": 0.2857142857142857,
+      "Mauritius": 0.375,
+      "Nepal": 1.0,
+      "Nicaragua": 1.0,
+      "Niger": 0.5,
+      "Pakistan": 0.5625,
+      "Panama": 0.8333333333333334,
+      "Russia": 1.0,
+      "Rwanda": 0.0,
+      "Sierra Leone": 0.42857142857142855,
+      "South Africa": 0.8571428571428571,
+      "Sudan": 0.625,
+      "Syria": 0.625,
+      "Togo": 1.0,
+      "Turkiye": 1.0,
+      "United States": 0.0,
+      "Uzbekistan": 1.0,
+      "Venezuela": 1.0,
+      "Yemen": 1.0,
+      "Zimbabwe": 0.875
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.791,
+    "cohort_loco_floor": 0.731,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 93,
+  "n_negatives": 279,
+  "walked_at_utc": "2026-06-01T03:02:34.193661+00:00",
+  "elapsed_seconds": 4679.937832593918,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/sanctions_and_arms_embargo/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "South Korea",
+          "Benin",
+          "Nepal",
+          "Kenya",
+          "Venezuela",
+          "Spain",
+          "Costa Rica",
+          "Lebanon"
+        ],
+        "country_isos": [
+          "kr",
+          "bj",
+          "np",
+          "ke",
+          "ve",
+          "es",
+          "cr",
+          "lb"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Portugal",
+          "Sierra Leone",
+          "Namibia",
+          "Honduras",
+          "Malta",
+          "El Salvador",
+          "Haiti",
+          "North Macedonia"
+        ],
+        "country_isos": [
+          "pt",
+          "sl",
+          "na",
+          "hn",
+          "mt",
+          "sv",
+          "ht",
+          "mk"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Sri Lanka",
+          "Hong Kong",
+          "Slovakia",
+          "Ivory Coast",
+          "Indonesia",
+          "Ireland",
+          "Greece",
+          "Romania"
+        ],
+        "country_isos": [
+          "lk",
+          "hk",
+          "sk",
+          "ci",
+          "id",
+          "ie",
+          "gr",
+          "ro"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Lesotho",
+          "Burkina Faso",
+          "Bhutan",
+          "Solomon Islands",
+          "United Kingdom",
+          "Botswana",
+          "Tanzania",
+          "Netherlands"
+        ],
+        "country_isos": [
+          "ls",
+          "bf",
+          "bt",
+          "sb",
+          "gb",
+          "bw",
+          "tz",
+          "nl"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Colombia",
+          "Armenia",
+          "The Gambia",
+          "Cyprus",
+          "United States",
+          "New Zealand",
+          "Guatemala",
+          "Guinea"
+        ],
+        "country_isos": [
+          "co",
+          "am",
+          "gm",
+          "cy",
+          "us",
+          "nz",
+          "gt",
+          "gn"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 8,
+        "countries": [
+          "Kyrgyzstan",
+          "Tunisia",
+          "Gabon",
+          "Angola",
+          "Oman",
+          "Germany",
+          "Iceland",
+          "Peru"
+        ],
+        "country_isos": [
+          "kg",
+          "tn",
+          "ga",
+          "ao",
+          "om",
+          "de",
+          "is",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Malawi",
+          "Mauritania",
+          "Libya",
+          "Slovenia",
+          "Mali",
+          "Cameroon",
+          "Zambia",
+          "Mexico"
+        ],
+        "country_isos": [
+          "mw",
+          "mr",
+          "ly",
+          "si",
+          "ml",
+          "cm",
+          "zm",
+          "mx"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Thailand",
+          "Senegal",
+          "Ghana",
+          "Hungary",
+          "South Africa",
+          "Kazakhstan",
+          "Central African Republic",
+          "India"
+        ],
+        "country_isos": [
+          "th",
+          "sn",
+          "gh",
+          "hu",
+          "za",
+          "kz",
+          "cf",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Austria",
+          "Iraq",
+          "Qatar",
+          "Bulgaria",
+          "Singapore",
+          "Togo",
+          "Georgia",
+          "Timor-Leste"
+        ],
+        "country_isos": [
+          "at",
+          "iq",
+          "qa",
+          "bg",
+          "sg",
+          "tg",
+          "ge",
+          "tl"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Bosnia and Herzegovina",
+          "Uzbekistan",
+          "Papua New Guinea",
+          "Iran",
+          "Czechia",
+          "Guinea-Bissau",
+          "Seychelles",
+          "Brazil"
+        ],
+        "country_isos": [
+          "ba",
+          "uz",
+          "pg",
+          "ir",
+          "cz",
+          "gw",
+          "sc",
+          "br"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Mozambique",
+          "Lithuania",
+          "Zimbabwe",
+          "Niger",
+          "Somalia",
+          "Argentina",
+          "Algeria",
+          "Ethiopia",
+          "Bangladesh"
+        ],
+        "country_isos": [
+          "mz",
+          "lt",
+          "zw",
+          "ne",
+          "so",
+          "ar",
+          "dz",
+          "et",
+          "bd"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Malaysia",
+          "Norway",
+          "Ukraine",
+          "Saudi Arabia",
+          "Comoros",
+          "Mauritius",
+          "Palestine",
+          "Croatia"
+        ],
+        "country_isos": [
+          "my",
+          "no",
+          "ua",
+          "sa",
+          "km",
+          "mu",
+          "ps",
+          "hr"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Latvia",
+          "Luxembourg",
+          "Philippines",
+          "Vanuatu",
+          "Montenegro",
+          "Bolivia",
+          "Jordan",
+          "Turkmenistan"
+        ],
+        "country_isos": [
+          "lv",
+          "lu",
+          "ph",
+          "vu",
+          "me",
+          "bo",
+          "jo",
+          "tm"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Albania",
+          "Finland",
+          "Chile",
+          "Estonia",
+          "Guyana",
+          "Rwanda",
+          "Kuwait",
+          "Sudan"
+        ],
+        "country_isos": [
+          "al",
+          "fi",
+          "cl",
+          "ee",
+          "gy",
+          "rw",
+          "kw",
+          "sd"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Djibouti",
+          "Switzerland",
+          "Uruguay",
+          "Moldova",
+          "Canada",
+          "Dominican Republic",
+          "Poland",
+          "Cambodia"
+        ],
+        "country_isos": [
+          "dj",
+          "ch",
+          "uy",
+          "md",
+          "ca",
+          "do",
+          "pl",
+          "kh"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 8,
+        "countries": [
+          "Panama",
+          "Pakistan",
+          "Laos",
+          "Vietnam",
+          "Madagascar",
+          "France",
+          "Turkiye",
+          "Nicaragua"
+        ],
+        "country_isos": [
+          "pa",
+          "pk",
+          "la",
+          "vn",
+          "mg",
+          "fr",
+          "tr",
+          "ni"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Burundi",
+          "Japan",
+          "Tajikistan",
+          "Paraguay",
+          "United Arab Emirates",
+          "Russia",
+          "Israel",
+          "Mongolia"
+        ],
+        "country_isos": [
+          "bi",
+          "jp",
+          "tj",
+          "py",
+          "ae",
+          "ru",
+          "il",
+          "mn"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Ecuador",
+          "The Democratic Republic of the Congo",
+          "Equatorial Guinea",
+          "Denmark",
+          "Morocco",
+          "Serbia",
+          "Italy",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "ec",
+          "cd",
+          "gq",
+          "dk",
+          "ma",
+          "rs",
+          "it",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Chad",
+          "Belgium",
+          "Azerbaijan",
+          "Sweden",
+          "Maldives",
+          "Belarus",
+          "Australia",
+          "Uganda"
+        ],
+        "country_isos": [
+          "td",
+          "be",
+          "az",
+          "se",
+          "mv",
+          "by",
+          "au",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Eritrea",
+          "China",
+          "Yemen",
+          "Cuba",
+          "Syria",
+          "Eswatini",
+          "Bahrain",
+          "Egypt",
+          "Republic of the Congo"
+        ],
+        "country_isos": [
+          "er",
+          "cn",
+          "ye",
+          "cu",
+          "sy",
+          "sz",
+          "bh",
+          "eg",
+          "cg"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.1,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 162,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1331,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.85079822686709,
+      "b": 0.0,
+      "c": 0.5378644115728635,
+      "n_fit": 269,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 96,
+        "observed_rate": 0.0625
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 56,
+        "observed_rate": 0.125
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 15,
+        "observed_rate": 0.13333333333333333
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 18,
+        "observed_rate": 0.5
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 25,
+        "observed_rate": 0.44
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 38,
+        "observed_rate": 0.47368421052631576
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 21,
+        "observed_rate": 0.7619047619047619
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.049405068428590555,
+    "n_predictions": 269,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.14443175889750792,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 60,
+            "mean_predicted": 0.037618270974295834,
+            "mean_actual": 0.1
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 12,
+            "mean_predicted": 0.12556617086132368,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 9,
+            "mean_predicted": 0.25231661399205524,
+            "mean_actual": 0.5555555555555556
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 9,
+            "mean_predicted": 0.3565651343928443,
+            "mean_actual": 0.7777777777777778
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 8,
+            "mean_predicted": 0.45750001817941666,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 14,
+            "mean_predicted": 0.536401276077543,
+            "mean_actual": 0.35714285714285715
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 8,
+            "mean_predicted": 0.6564357355237007,
+            "mean_actual": 0.625
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 7,
+            "mean_predicted": 0.7518857972962516,
+            "mean_actual": 0.5714285714285714
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 17,
+            "mean_predicted": 0.841390444951899,
+            "mean_actual": 0.5882352941176471
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 15,
+            "mean_predicted": 0.9480355779329935,
+            "mean_actual": 0.8
+          }
+        ],
+        "n": 159,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.13037272057096871,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 53,
+            "mean_predicted": 0.0312861434781467,
+            "mean_actual": 0.11320754716981132
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 4,
+            "mean_predicted": 0.15088743343949318,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 1,
+            "mean_predicted": 0.23870594799518585,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 3,
+            "mean_predicted": 0.4606154163678487,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5619043111801147,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.6868612766265869,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 63,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.05631757553349784,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 35,
+            "mean_predicted": 0.04187923278659582,
+            "mean_actual": 0.02857142857142857
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 4,
+            "mean_predicted": 0.1565000656992197,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 6,
+            "mean_predicted": 0.24930219848950705,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5859593152999878,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 1,
+            "mean_predicted": 0.7253806591033936,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 47,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/sanctions_and_arms_embargo.scores.json",
+  "shape_points": [
+    -0.01915593206153249,
+    -0.0004436302894489236,
+    0.018268671482634658,
+    0.03698097325471824,
+    0.055693275026801825,
+    0.0744055767988854,
+    0.093117878570969,
+    0.11183018034305257,
+    0.13054248211513614,
+    0.14925478388721974,
+    0.16796708565930332,
+    0.1866793874313869
+  ],
+  "shap_importance_raw": {
+    "v2cseeorgs": 1.160996437072754,
+    "NE.CON.GOVT.ZS": 1.4814715385437012,
+    "v2csprtcpt": 0.9323531985282898,
+    "v2mecenefm": 1.675612449645996,
+    "v2x_partip": 0.668239951133728
+  },
+  "shap_importance_normalized": {
+    "v2cseeorgs": 0.19615821389297852,
+    "NE.CON.GOVT.ZS": 0.2503046535325454,
+    "v2csprtcpt": 0.15752738966351731,
+    "v2mecenefm": 0.2831060757844513,
+    "v2x_partip": 0.11290366712650744
+  },
+  "shap_direction_signs": {
+    "v2cseeorgs": -1,
+    "NE.CON.GOVT.ZS": -1,
+    "v2csprtcpt": -1,
+    "v2mecenefm": -1,
+    "v2x_partip": -1
+  },
+  "per_feature_breakdown": {
+    "v2cseeorgs": {
+      "last_z": 0.274356871843338,
+      "mean_z": 0.059663787484169006,
+      "std_z": 0.19802117347717285,
+      "slope": 0.10777170956134796,
+      "accel": 0.3356474041938782,
+      "tertile1_mean": 0.07920122146606445,
+      "tertile2_mean": 0.011091641150414944,
+      "tertile3_mean": 0.0952426865696907
+    },
+    "NE.CON.GOVT.ZS": {
+      "last_z": 0.1898466944694519,
+      "mean_z": 0.07475193589925766,
+      "std_z": 0.07563135772943497,
+      "slope": 0.5870215892791748,
+      "accel": 0.18494877219200134,
+      "tertile1_mean": 0.1365765482187271,
+      "tertile2_mean": 0.12731388211250305,
+      "tertile3_mean": 0.10538068413734436
+    },
+    "v2csprtcpt": {
+      "last_z": 0.04278101399540901,
+      "mean_z": 0.019073691219091415,
+      "std_z": 0.25602325797080994,
+      "slope": 0.11880679428577423,
+      "accel": 0.16545727849006653,
+      "tertile1_mean": 0.16523177921772003,
+      "tertile2_mean": 0.11242515593767166,
+      "tertile3_mean": 0.0525541827082634
+    },
+    "v2mecenefm": {
+      "last_z": 0.48718205094337463,
+      "mean_z": 0.17076827585697174,
+      "std_z": 0.14397673308849335,
+      "slope": 0.0957527682185173,
+      "accel": 0.1946198046207428,
+      "tertile1_mean": 0.07604295015335083,
+      "tertile2_mean": 0.044302258640527725,
+      "tertile3_mean": 0.4629676640033722
+    },
+    "v2x_partip": {
+      "last_z": 0.08372118324041367,
+      "mean_z": 0.01768997497856617,
+      "std_z": 0.21217110753059387,
+      "slope": 0.09432435035705566,
+      "accel": 0.1341831535100937,
+      "tertile1_mean": 0.017003832384943962,
+      "tertile2_mean": 0.08953454345464706,
+      "tertile3_mean": 0.019611774012446404
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 15,
+    "indicators": [
+      {
+        "code": "v2cseeorgs",
+        "name": "CSO Entry/Exit Freedom (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 90,
+        "shape": {
+          "mean": [
+            -0.0161,
+            0.0242,
+            -0.0298,
+            -0.0284,
+            0.0124,
+            0.0257,
+            0.0912,
+            0.0981,
+            0.0846,
+            0.0485,
+            0.0698,
+            0.0703,
+            0.0332,
+            0.0532,
+            -0.0079
+          ],
+          "p25": [
+            -0.5183,
+            -0.548,
+            -0.6109,
+            -0.6109,
+            -0.5183,
+            -0.5183,
+            -0.4899,
+            -0.4899,
+            -0.4899,
+            -0.6444,
+            -0.6828,
+            -0.7732,
+            -0.7822,
+            -0.96,
+            -0.9798
+          ],
+          "p75": [
+            0.5849,
+            0.5952,
+            0.5776,
+            0.5776,
+            0.5849,
+            0.6335,
+            0.6948,
+            0.6948,
+            0.704,
+            0.9781,
+            0.9692,
+            0.9798,
+            0.9825,
+            1.0494,
+            1.0189
+          ]
+        }
+      },
+      {
+        "code": "NE.CON.GOVT.ZS",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 69,
+        "shape": {
+          "mean": [
+            -0.0795,
+            -0.1562,
+            -0.1345,
+            -0.0727,
+            -0.0633,
+            0.147,
+            0.0314,
+            0.0739,
+            0.172,
+            0.1679,
+            0.1138,
+            0.0699,
+            0.0792,
+            0.0317,
+            0.1305
+          ],
+          "p25": [
+            -0.7235,
+            -0.7348,
+            -0.7185,
+            -0.5568,
+            -0.5016,
+            -0.5575,
+            -0.5738,
+            -0.4615,
+            -0.5025,
+            -0.4999,
+            -0.5738,
+            -0.7739,
+            -0.8698,
+            -0.8659,
+            -0.6752
+          ],
+          "p75": [
+            0.5611,
+            0.3831,
+            0.3534,
+            0.3976,
+            0.5672,
+            0.8207,
+            0.6675,
+            0.5719,
+            0.7576,
+            0.81,
+            0.7075,
+            0.8803,
+            0.9966,
+            0.8933,
+            1.1668
+          ]
+        }
+      },
+      {
+        "code": "v2csprtcpt",
+        "name": "Civil Society Participatory Environment (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 90,
+        "shape": {
+          "mean": [
+            -0.115,
+            -0.0854,
+            -0.0561,
+            -0.0486,
+            0.014,
+            -0.0685,
+            0.0507,
+            0.0175,
+            0.0615,
+            0.1449,
+            0.1033,
+            0.0181,
+            0.0588,
+            0.133,
+            0.2715
+          ],
+          "p25": [
+            -0.6048,
+            -0.6048,
+            -0.5739,
+            -0.5739,
+            -0.5739,
+            -0.6695,
+            -0.5197,
+            -0.5739,
+            -0.5197,
+            -0.4743,
+            -0.5348,
+            -0.6412,
+            -0.6679,
+            -0.6925,
+            -0.7205
+          ],
+          "p75": [
+            0.4464,
+            0.458,
+            0.458,
+            0.4742,
+            0.4742,
+            0.4466,
+            0.4898,
+            0.5474,
+            0.6497,
+            0.8284,
+            0.8284,
+            0.7779,
+            0.8592,
+            1.0082,
+            1.1364
+          ]
+        }
+      },
+      {
+        "code": "v2mecenefm",
+        "name": "Print/Broadcast Media Censorship (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 90,
+        "shape": {
+          "mean": [
+            0.1675,
+            0.1613,
+            0.0237,
+            0.0337,
+            0.0351,
+            0.0114,
+            -0.0212,
+            -0.0469,
+            0.0218,
+            0.0374,
+            -0.0128,
+            -0.1029,
+            -0.1485,
+            -0.2022,
+            -0.1652
+          ],
+          "p25": [
+            -0.2554,
+            -0.2781,
+            -0.4035,
+            -0.4323,
+            -0.4386,
+            -0.4872,
+            -0.4953,
+            -0.5711,
+            -0.5509,
+            -0.6017,
+            -0.8076,
+            -0.8178,
+            -0.8272,
+            -0.8812,
+            -0.9028
+          ],
+          "p75": [
+            0.6619,
+            0.5749,
+            0.5258,
+            0.4759,
+            0.4728,
+            0.4728,
+            0.4759,
+            0.4759,
+            0.5471,
+            0.5733,
+            0.5904,
+            0.5453,
+            0.5453,
+            0.4766,
+            0.6244
+          ]
+        }
+      },
+      {
+        "code": "v2x_partip",
+        "name": "Political Participation (0-1)",
+        "provider": "V-Dem",
+        "n_samples": 90,
+        "shape": {
+          "mean": [
+            0.0225,
+            0.0288,
+            0.0565,
+            0.0422,
+            0.0621,
+            0.0028,
+            0.1222,
+            0.0859,
+            0.0646,
+            0.0606,
+            -0.0096,
+            -0.0046,
+            0.0323,
+            0.041,
+            0.1135
+          ],
+          "p25": [
+            -0.5177,
+            -0.5177,
+            -0.4276,
+            -0.5208,
+            -0.5208,
+            -0.5698,
+            -0.5098,
+            -0.5177,
+            -0.5554,
+            -0.6158,
+            -0.7348,
+            -0.7373,
+            -0.7808,
+            -0.7977,
+            -0.8544
+          ],
+          "p75": [
+            0.5873,
+            0.5672,
+            0.5571,
+            0.5571,
+            0.5571,
+            0.5047,
+            0.626,
+            0.649,
+            0.6381,
+            0.6752,
+            0.6812,
+            0.7215,
+            0.8101,
+            1.0777,
+            0.9468
+          ]
+        }
+      }
+    ],
+    "samples_used": 90,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2025,
+        "label": "EU Lifts Punitive Measures on Kosovo",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2025,
+        "label": "International Community Debates Lifting Syria Sanctions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 2025,
+        "label": "US Revokes Dragon Gas Licence",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "il",
+        "country_name": "Israel",
+        "year": 2024,
+        "label": "Netanyahu Arrest Warrant \u2014 International Criminal Court",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2024,
+        "label": "Secondary Sanctions Pressure: US Treasury Warns Kyrgyz Banks",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2023,
+        "label": "Sanctions cost Belarus access to global potash and petroleum markets",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2023,
+        "label": "EU AML Compliance Concerns Resurface",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2023,
+        "label": "ECOWAS Issues Ultimatum and Threatens Military Intervention",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2023,
+        "label": "US Suspends Most Aid to Niger Following Coup",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ug",
+        "country_name": "Uganda",
+        "year": 2023,
+        "label": "International Sanctions and Aid Restrictions Over LGBTQ Law",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2022,
+        "label": "Most comprehensive EU, US, UK sanctions imposed on Belarus",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "hu",
+        "country_name": "Hungary",
+        "year": 2022,
+        "label": "EU triggers rule-of-law conditionality mechanism, freezing billions in cohesion funds",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 2022,
+        "label": "Italy Supports Ukraine Sanctions and Accelerates Energy Diversification",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 2022,
+        "label": "Ukraine War Sanctions Create Economic Windfall Then Complications",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "py",
+        "country_name": "Paraguay",
+        "year": 2022,
+        "label": "US Treasury Sanctions Cartes and Friedmann for Corruption",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2022,
+        "label": "Western nations impose unprecedented sanctions on Russia",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sg",
+        "country_name": "Singapore",
+        "year": 2022,
+        "label": "Singapore Condemns Russia's Invasion of Ukraine and Imposes Sanctions",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2022,
+        "label": "Switzerland Adopts EU Sanctions Against Russia Over Ukraine",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 2021,
+        "label": "US freezes $9.5 billion in Afghan central bank reserves",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2021,
+        "label": "EU closes airspace to Belarusian airlines after Ryanair hijacking",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2021,
+        "label": "Western sanctions over Xinjiang \u2014 China counter-sanctions freeze EU deal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2021,
+        "label": "US Imposes Sanctions on Eritrean Officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2021,
+        "label": "ECOWAS Suspends Guinea \u2014 Regional Pressure for Transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2020,
+        "label": "EU, US, UK impose broad sanctions packages over election fraud and repression",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2020,
+        "label": "China imposes trade sanctions on Australia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2020,
+        "label": "FATF Grey-Listing for AML Deficiencies",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2020,
+        "label": "Caesar Act Sanctions Devastate Syrian Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ni",
+        "country_name": "Nicaragua",
+        "year": 2019,
+        "label": "U.S., EU, and Canada Impose Targeted Sanctions Over 2018 Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 2019,
+        "label": "FATF Grey List \u2014 Pakistan Faces Sanctions Threat",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2019,
+        "label": "S-400 Delivery Triggers F-35 Removal and US Sanctions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ve",
+        "country_name": "Venezuela",
+        "year": 2019,
+        "label": "US Treasury Full Oil Sector Sanctions on PDVSA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2018,
+        "label": "UN Sanctions on Eritrea Lifted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2018,
+        "label": "Trump Withdraws from JCPOA; Maximum Pressure Campaign",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 2017,
+        "label": "Trump Reverses Obama Cuba Policies, Restricts Travel and Business",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2017,
+        "label": "Arms Embargo Debates at UN Security Council",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ye",
+        "country_name": "Yemen",
+        "year": 2017,
+        "label": "Saudi Arabia Imposes Total Blockade After Missile Strike",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2015,
+        "label": "EU suspends most sanctions as prisoner releases negotiated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 2015,
+        "label": "EU suspends direct budget support \u2014 international isolation deepens",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 2015,
+        "label": "India Blockade Follows Constitution Protests",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2014,
+        "label": "Western sanctions imposed over Ukraine crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2012,
+        "label": "UN Expands Sanctions on Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ml",
+        "country_name": "Mali",
+        "year": 2012,
+        "label": "ECOWAS Sanctions and Transitional Government Installed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 2012,
+        "label": "Magnitsky Act signed imposing sanctions on Russian officials",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rw",
+        "country_name": "Rwanda",
+        "year": 2012,
+        "label": "Western donors suspend aid over M23 support allegations",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2011,
+        "label": "EU and US expand sanctions after 2010 election crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2011,
+        "label": "UN Somalia-Eritrea Monitoring Group Report",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2011,
+        "label": "Arab League Suspends Syria Amid Crackdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2011,
+        "label": "EU Lifts Sanctions After Gradual Diplomatic Re-engagement",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2010,
+        "label": "African Union Condemns Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2010,
+        "label": "UN Security Council Imposes Toughest Sanctions Yet",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "er",
+        "country_name": "Eritrea",
+        "year": 2009,
+        "label": "UN Imposes Sanctions on Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gn",
+        "country_name": "Guinea",
+        "year": 2009,
+        "label": "International Sanctions and ECOWAS Pressure Following Stadium Massacre",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mg",
+        "country_name": "Madagascar",
+        "year": 2009,
+        "label": "US and EU Suspend Hundreds of Millions in Aid After Coup",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ne",
+        "country_name": "Niger",
+        "year": 2009,
+        "label": "ECOWAS and African Union Condemn Tandja",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ss",
+        "country_name": "South Sudan",
+        "year": 2009,
+        "label": "ICC Issues Arrest Warrant for Al-Bashir for Darfur Atrocities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2007,
+        "label": "Revolutionary Guard Designated Terrorist Organization by US",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2006,
+        "label": "EU and US impose targeted sanctions on Lukashenko regime",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 2006,
+        "label": "Russia Imposes Trade Embargo and Deports Georgians",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 2006,
+        "label": "Iran Resumes Uranium Enrichment; UN Sanctions Begin",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 2006,
+        "label": "US Removes Libya from Terrorism Sponsor List",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2005,
+        "label": "EU and US Impose Targeted Sanctions After Andijan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lb",
+        "country_name": "Lebanon",
+        "year": 2004,
+        "label": "UN Resolution 1559 Demands Syrian Withdrawal and Militia Disarmament",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 2004,
+        "label": "US Syria Accountability Act Imposes Sanctions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2003,
+        "label": "DPRK Withdraws from NPT; Six-Party Talks Launched",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 2002,
+        "label": "HEU Program Disclosed; Agreed Framework Collapses",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2002,
+        "label": "EU and Commonwealth Sanctions Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 2001,
+        "label": "US and European Sanctions Tightened on Myanmar Junta",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "so",
+        "country_name": "Somalia",
+        "year": 2001,
+        "label": "Post-9/11 Crackdown Shuts Down Somali Remittance Networks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 2000,
+        "label": "Fowler Report Exposes UNITA Diamond and Arms Networks",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "at",
+        "country_name": "Austria",
+        "year": 2000,
+        "label": "EU sanctions Austria after FPO enters coalition government",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "et",
+        "country_name": "Ethiopia",
+        "year": 2000,
+        "label": "UN Security Council imposes arms embargo on Ethiopia and Eritrea",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1999,
+        "label": "UN imposes sanctions on Taliban over al-Qaeda harboring",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1999,
+        "label": "Embargo lifted \u2014 Buyoya commits to transition",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1999,
+        "label": "UN Sanctions Suspended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pk",
+        "country_name": "Pakistan",
+        "year": 1998,
+        "label": "International Sanctions After Nuclear Tests Deepen Economic Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sl",
+        "country_name": "Sierra Leone",
+        "year": 1997,
+        "label": "UN Sanctions and Arms Embargo",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sd",
+        "country_name": "Sudan",
+        "year": 1997,
+        "label": "US Comprehensive Sanctions Imposed; Khartoum Peace Agreement with Nuer Militias",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bi",
+        "country_name": "Burundi",
+        "year": 1996,
+        "label": "Regional economic embargo isolates Burundi",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1996,
+        "label": "Helms-Burton Act Codifies US Embargo into Law After Plane Shootdown",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1996,
+        "label": "D'Amato Act (ILSA): Third-Country Sanctions on Iran",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1996,
+        "label": "Oil-for-Food Program Begins Operating",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1996,
+        "label": "Serbia-Montenegro Recognized \u2014 UN Sanctions Suspended",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1995,
+        "label": "US Comprehensive Sanctions on Iran Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gr",
+        "country_name": "Greece",
+        "year": 1994,
+        "label": "Greece imposes economic embargo on the Former Yugoslav Republic of Macedonia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ao",
+        "country_name": "Angola",
+        "year": 1993,
+        "label": "Battle of Huambo and UN Sanctions on UNITA",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ir",
+        "country_name": "Iran",
+        "year": 1993,
+        "label": "US Dual Containment Policy Targets Iran and Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1993,
+        "label": "First Nuclear Crisis: DPRK Announces NPT Withdrawal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1992,
+        "label": "Azerbaijan and Turkey Impose Energy Blockade on Armenia",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1992,
+        "label": "Torricelli Act Tightens US Embargo, Bans Foreign Subsidiary Trade",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1992,
+        "label": "UN Sanctions Imposed on Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kp",
+        "country_name": "North Korea",
+        "year": 1992,
+        "label": "IAEA Inspections Reveal Undeclared Plutonium Activities",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "rs",
+        "country_name": "Serbia",
+        "year": 1992,
+        "label": "Federal Republic of Yugoslavia Proclaimed \u2014 UN Sanctions Imposed",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "iq",
+        "country_name": "Iraq",
+        "year": 1990,
+        "label": "UN Comprehensive Sanctions Imposed on Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kw",
+        "country_name": "Kuwait",
+        "year": 1990,
+        "label": "UN Security Council Authorizes Force Against Iraq",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1990,
+        "label": "Soviet Economic Blockade of Lithuania",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1989,
+        "label": "Western sanctions imposed after Tiananmen",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "np",
+        "country_name": "Nepal",
+        "year": 1989,
+        "label": "India Imposes Near-Total Economic Blockade on Nepal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pa",
+        "country_name": "Panama",
+        "year": 1988,
+        "label": "US Indicts Noriega on Drug Trafficking Charges",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1986,
+        "label": "US Comprehensive Anti-Apartheid Act",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sy",
+        "country_name": "Syria",
+        "year": 1986,
+        "label": "Syria Faces Western Sanctions After Terrorism Links",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ly",
+        "country_name": "Libya",
+        "year": 1985,
+        "label": "US Sanctions Expanded on Libya",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1985,
+        "label": "International Disinvestment Campaign Gains Momentum",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "af",
+        "country_name": "Afghanistan",
+        "year": 1979,
+        "label": "United States imposes grain embargo and boycotts Moscow Olympics",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "us",
+        "country_name": "United States",
+        "year": 1979,
+        "label": "Carter Responds to Soviet Invasion of Afghanistan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1977,
+        "label": "UN Mandatory Arms Embargo Against South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 1966,
+        "label": "UN Security Council Imposes Mandatory Sanctions",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zm",
+        "country_name": "Zambia",
+        "year": 1965,
+        "label": "Rhodesian UDI Strains Zambia's Economy",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1962,
+        "label": "United States Imposes Comprehensive Trade Embargo on Cuba",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "do",
+        "country_name": "Dominican Republic",
+        "year": 1960,
+        "label": "OAS Sanctions Dominican Republic After Betancourt Assassination Attempt",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cu",
+        "country_name": "Cuba",
+        "year": 1958,
+        "label": "United States Arms Embargo Signals Withdrawal of Support for Batista",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 110
+  }
+}

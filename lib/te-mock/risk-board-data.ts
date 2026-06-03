@@ -21,10 +21,13 @@ import { getAllRecipes, getRecipe, type TrackerRecipe } from "@/lib/te-mock/reci
 import {
   loadScores,
   loadCountryIndex,
+  loadVintage,
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 
-export const BOARD_VINTAGE = "2026-05-28";
+// V4.1 §I: read the live vintage from the MANIFEST (produced_at_utc, date part)
+// so each fleet re-bake lifts the stamp automatically. Was hardcoded "2026-05-28".
+export const BOARD_VINTAGE = loadVintage().slice(0, 10);
 
 /* ────────────────────────────────────────────────────────────────────────── */
 /* Types                                                                       */

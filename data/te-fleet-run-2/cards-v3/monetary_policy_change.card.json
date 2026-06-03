@@ -1,0 +1,1898 @@
+{
+  "recipe_id": "monetary_policy_change",
+  "engine": "trajectory-engine-v1",
+  "contract_version": "v3-2026-05-30",
+  "tier": "experimental",
+  "tier_provenance": "verdict \u2192 tier mapping in bake_te_fleet_run_1.py",
+  "recipe_status_audience": "coming_soon",
+  "family_label": "International Tension",
+  "description_compelling": "A central bank shifts gear \u2014 rate-cycle inflection, regime change (inflation targeting to FX peg, or vice versa), or a balance-sheet operation that resets liquidity expectations. Inflation, growth, and bank-asset-to-GDP measures usually telegraph the pivot. Visible in inflation-targeting emerging markets and in rich-world banks managing post-crisis policy normalization.",
+  "description": null,
+  "verdict": "HARD_FAIL",
+  "stats": {
+    "loco_auc": 0.7830188679245284,
+    "ci95_lo": 0.6966882700840541,
+    "ci95_hi": 0.8449558014346049,
+    "ci80_lo": 0.7313387445429363,
+    "ci80_hi": 0.823648780961014,
+    "n_bootstrap": 2000
+  },
+  "greedy_walk": {
+    "selected_indicators": [
+      "FI.RES.TOTL.CD",
+      "NY.GDP.DEFL.KD.ZG",
+      "v2excrptps"
+    ],
+    "selected_indicators_named": [
+      {
+        "code": "FI.RES.TOTL.CD",
+        "name": null
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null
+      },
+      {
+        "code": "v2excrptps",
+        "name": "Executive Corruption (0-4)"
+      }
+    ],
+    "chosen_window": 3,
+    "final_global_auc": 0.7830188679245284,
+    "early_abort_floor_unreachable": false,
+    "history": [
+      {
+        "step": 1,
+        "candidate": "FI.RES.TOTL.CD",
+        "window": 18,
+        "auc": 0.6991586538461538,
+        "lift_over_previous": 0.19915865384615383,
+        "selected_after": [
+          "FI.RES.TOTL.CD"
+        ]
+      },
+      {
+        "step": 2,
+        "candidate": "NY.GDP.DEFL.KD.ZG",
+        "window": 3,
+        "auc": 0.7609684019095249,
+        "lift_over_previous": 0.06180974806337103,
+        "selected_after": [
+          "FI.RES.TOTL.CD",
+          "NY.GDP.DEFL.KD.ZG"
+        ]
+      },
+      {
+        "step": 3,
+        "candidate": "v2excrptps",
+        "window": 3,
+        "auc": 0.7830188679245284,
+        "lift_over_previous": 0.02205046601500349,
+        "selected_after": [
+          "FI.RES.TOTL.CD",
+          "NY.GDP.DEFL.KD.ZG",
+          "v2excrptps"
+        ]
+      },
+      {
+        "step": 4,
+        "candidate": "v2exl_legitlead",
+        "window": 3,
+        "auc": 0.7801773130256876,
+        "lift_over_previous": -0.002841554898840748,
+        "selected_after": [
+          "FI.RES.TOTL.CD",
+          "NY.GDP.DEFL.KD.ZG",
+          "v2excrptps",
+          "v2exl_legitlead"
+        ]
+      }
+    ]
+  },
+  "coverage_audit": {
+    "n_pos_total": 70,
+    "n_pos_survive": 53,
+    "n_neg_total": 210,
+    "n_neg_survive": 166,
+    "pos_coverage": 0.7571428571428571,
+    "neg_coverage": 0.7904761904761904,
+    "n_countries_survive": 44,
+    "coverage_pass": true,
+    "thresholds": {
+      "min_pos_survival": 0.5,
+      "min_effective_npos": 30,
+      "min_survive_countries": 10,
+      "min_neg_survival": 0.6
+    },
+    "note": "Sample-truncation audit (Majles MR-14-A1, 2026-05-25). coverage_pass=false \u2192 COVERAGE_FAIL verdict; never graded on a truncated subsample."
+  },
+  "per_cohort": {
+    "fragile-state": {
+      "n": 56,
+      "loco_auc": 0.7710196779964222,
+      "ece": 0.1485333341198774,
+      "ece_ci95_lo": 0.09341929824804537,
+      "ece_ci95_hi": 0.27032363533040277,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 31,
+          "mean_predicted": 0.03960409791268889,
+          "mean_actual": 0.12903225806451613
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 6,
+          "mean_predicted": 0.13796891396244368,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 2,
+          "mean_predicted": 0.2316856011748314,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 3,
+          "mean_predicted": 0.33783289790153503,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.5739093621571859,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.6486135919888815,
+          "mean_actual": 0.6666666666666666
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 2,
+          "mean_predicted": 0.7615090310573578,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8561791479587555,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 2,
+          "mean_predicted": 0.9501711130142212,
+          "mean_actual": 1.0
+        }
+      ],
+      "loco_auc_ci95_lo": 0.5876268676392998,
+      "loco_auc_ci95_hi": 0.9000317323122629
+    },
+    "mid-tier": {
+      "n": 41,
+      "loco_auc": 0.6428571428571429,
+      "ece": 0.15349629428237677,
+      "ece_ci95_lo": 0.08588248089853129,
+      "ece_ci95_hi": 0.2690132072161337,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 25,
+          "mean_predicted": 0.03841370675712824,
+          "mean_actual": 0.08
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 3,
+          "mean_predicted": 0.1550977130730947,
+          "mean_actual": 0.3333333333333333
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 6,
+          "mean_predicted": 0.2508345767855644,
+          "mean_actual": 0.16666666666666666
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 2,
+          "mean_predicted": 0.33511704206466675,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 1,
+          "mean_predicted": 0.47964558005332947,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 1,
+          "mean_predicted": 0.5347703695297241,
+          "mean_actual": 1.0
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 3,
+          "mean_predicted": 0.646445095539093,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 0,
+          "mean_predicted": null,
+          "mean_actual": null
+        }
+      ],
+      "loco_auc_ci95_lo": 0.34210526315789475,
+      "loco_auc_ci95_hi": 0.8611111111111112
+    },
+    "stable-democracy": {
+      "n": 122,
+      "loco_auc": 0.8096697310180456,
+      "ece": 0.11613776733751453,
+      "ece_ci95_lo": 0.08342766146710882,
+      "ece_ci95_hi": 0.1995190728295472,
+      "low_confidence": false,
+      "reliability_diagram_bins": [
+        {
+          "bin_lower": 0.0,
+          "bin_upper": 0.1,
+          "n_in_bin": 62,
+          "mean_predicted": 0.038572900889125926,
+          "mean_actual": 0.06451612903225806
+        },
+        {
+          "bin_lower": 0.1,
+          "bin_upper": 0.2,
+          "n_in_bin": 11,
+          "mean_predicted": 0.14093646000732074,
+          "mean_actual": 0.2727272727272727
+        },
+        {
+          "bin_lower": 0.2,
+          "bin_upper": 0.30000000000000004,
+          "n_in_bin": 4,
+          "mean_predicted": 0.2456984780728817,
+          "mean_actual": 0.25
+        },
+        {
+          "bin_lower": 0.30000000000000004,
+          "bin_upper": 0.4,
+          "n_in_bin": 10,
+          "mean_predicted": 0.3310067355632782,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.4,
+          "bin_upper": 0.5,
+          "n_in_bin": 6,
+          "mean_predicted": 0.4572333445151647,
+          "mean_actual": 0.8333333333333334
+        },
+        {
+          "bin_lower": 0.5,
+          "bin_upper": 0.6000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.5703456044197083,
+          "mean_actual": 0.4
+        },
+        {
+          "bin_lower": 0.6000000000000001,
+          "bin_upper": 0.7000000000000001,
+          "n_in_bin": 5,
+          "mean_predicted": 0.6486116170883178,
+          "mean_actual": 0.0
+        },
+        {
+          "bin_lower": 0.7000000000000001,
+          "bin_upper": 0.8,
+          "n_in_bin": 8,
+          "mean_predicted": 0.7519234046339989,
+          "mean_actual": 0.625
+        },
+        {
+          "bin_lower": 0.8,
+          "bin_upper": 0.9,
+          "n_in_bin": 4,
+          "mean_predicted": 0.8593979626893997,
+          "mean_actual": 0.5
+        },
+        {
+          "bin_lower": 0.9,
+          "bin_upper": 1.0,
+          "n_in_bin": 7,
+          "mean_predicted": 0.9427320957183838,
+          "mean_actual": 0.8571428571428571
+        }
+      ],
+      "loco_auc_ci95_lo": 0.6985480327657124,
+      "loco_auc_ci95_hi": 0.882034892228424
+    }
+  },
+  "architecture": "XGBoost",
+  "architecture_provenance": {
+    "default_per_n_pos_rule": "LR (<60) | XGBoost (>=60)",
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864): XGBoost binding for N_pos>=60; \u00a74.2 fold-variance MLP trigger removed entirely",
+    "amendment_artifact": "qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md",
+    "lock_gate_eval_ts": "2026-06-01T03:41:50.099719+00:00"
+  },
+  "borderline_lock": false,
+  "temporal_confound_auc": 0.501,
+  "stability_diagnostic": {
+    "fold_variance": 0.07950485280989394,
+    "fold_auc_mean": 0.8193562610229277,
+    "label": "MODERATE",
+    "per_country_loco_auc": {
+      "Argentina": 0.8333333333333334,
+      "Belarus": 1.0,
+      "Brazil": 0.2857142857142857,
+      "Bulgaria": 1.0,
+      "China": 0.5,
+      "Cyprus": 1.0,
+      "Egypt": 1.0,
+      "El Salvador": 1.0,
+      "Estonia": 1.0,
+      "Finland": 0.2222222222222222,
+      "France": 1.0,
+      "Ghana": 0.8888888888888888,
+      "India": 0.0,
+      "Ireland": 0.6,
+      "Italy": 1.0,
+      "Japan": 1.0,
+      "Latvia": 1.0,
+      "Lithuania": 1.0,
+      "Malawi": 0.6666666666666666,
+      "Myanmar": 1.0,
+      "Papua New Guinea": 0.75,
+      "Portugal": 1.0,
+      "Slovakia": 0.75,
+      "Slovenia": 1.0,
+      "South Africa": 0.3333333333333333,
+      "Spain": 1.0,
+      "Suriname": 1.0,
+      "Switzerland": 1.0,
+      "Thailand": 1.0,
+      "Tunisia": 0.2,
+      "Turkiye": 1.0,
+      "United Kingdom": 0.6666666666666666,
+      "United States": 1.0,
+      "Uruguay": 1.0,
+      "Uzbekistan": 1.0,
+      "Zimbabwe": 0.8
+    },
+    "thresholds": {
+      "LOW_upper": 0.04,
+      "MODERATE_upper": 0.1
+    },
+    "informational_only": true,
+    "amendment_reference": "F-ML-N \u00a74.2 amendment 2026-05-22 (qgi-aws-tf#864); see qgi-docs/internal/decisions/artifacts/F-ML-N-\u00a74.2-amendment-2026-05-22.md"
+  },
+  "per_recipe_floor_provenance": {
+    "hybrid_baseline": 0.7686,
+    "lock_floor": 0.754,
+    "cohort_loco_floor": 0.694,
+    "note": "Marcus M8-1 path-(a)/(b)/(c) provenance: see F-ML-1 \u00a77 (civil_war_and_insurgency / cascade-inherited) or qgi-docs/internal/ops/ml-track/per-recipe-pre-reg/ (other recipes; recipe_id with `_` -> `-` is the markdown filename stem)."
+  },
+  "n_positives": 70,
+  "n_negatives": 210,
+  "walked_at_utc": "2026-06-01T03:43:10.104398+00:00",
+  "elapsed_seconds": 2143.9336183071136,
+  "raw_summary_s3": "s3://qgi-data-lake-222222222222/ml-results-run2/monetary_policy_change/f-ml-1-poc-summary.json",
+  "score_distribution": {
+    "computed": true,
+    "histogram": [
+      {
+        "bin_lo": 0,
+        "bin_hi": 5,
+        "count": 8,
+        "countries": [
+          "Paraguay",
+          "Barbados",
+          "Tanzania",
+          "Afghanistan",
+          "Israel",
+          "Fiji",
+          "Costa Rica",
+          "India"
+        ],
+        "country_isos": [
+          "py",
+          "bb",
+          "tz",
+          "af",
+          "il",
+          "fj",
+          "cr",
+          "in"
+        ]
+      },
+      {
+        "bin_lo": 5,
+        "bin_hi": 10,
+        "count": 8,
+        "countries": [
+          "Cyprus",
+          "Japan",
+          "Czechia",
+          "Panama",
+          "Hong Kong",
+          "Turkmenistan",
+          "Palestine",
+          "South Korea"
+        ],
+        "country_isos": [
+          "cy",
+          "jp",
+          "cz",
+          "pa",
+          "hk",
+          "tm",
+          "ps",
+          "kr"
+        ]
+      },
+      {
+        "bin_lo": 10,
+        "bin_hi": 15,
+        "count": 8,
+        "countries": [
+          "Estonia",
+          "Luxembourg",
+          "Bangladesh",
+          "Papua New Guinea",
+          "Trinidad and Tobago",
+          "Algeria",
+          "Philippines",
+          "Malta"
+        ],
+        "country_isos": [
+          "ee",
+          "lu",
+          "bd",
+          "pg",
+          "tt",
+          "dz",
+          "ph",
+          "mt"
+        ]
+      },
+      {
+        "bin_lo": 15,
+        "bin_hi": 20,
+        "count": 8,
+        "countries": [
+          "Suriname",
+          "Guinea",
+          "Ireland",
+          "Uruguay",
+          "Cameroon",
+          "The Democratic Republic of the Congo",
+          "Timor-Leste",
+          "Russia"
+        ],
+        "country_isos": [
+          "sr",
+          "gn",
+          "ie",
+          "uy",
+          "cm",
+          "cd",
+          "tl",
+          "ru"
+        ]
+      },
+      {
+        "bin_lo": 20,
+        "bin_hi": 25,
+        "count": 8,
+        "countries": [
+          "Libya",
+          "Djibouti",
+          "Solomon Islands",
+          "China",
+          "Tajikistan",
+          "Malawi",
+          "Sudan",
+          "Liberia"
+        ],
+        "country_isos": [
+          "ly",
+          "dj",
+          "sb",
+          "cn",
+          "tj",
+          "mw",
+          "sd",
+          "lr"
+        ]
+      },
+      {
+        "bin_lo": 25,
+        "bin_hi": 30,
+        "count": 9,
+        "countries": [
+          "Guyana",
+          "Albania",
+          "Vanuatu",
+          "Honduras",
+          "Laos",
+          "Bosnia and Herzegovina",
+          "Madagascar",
+          "Romania",
+          "Rwanda"
+        ],
+        "country_isos": [
+          "gy",
+          "al",
+          "vu",
+          "hn",
+          "la",
+          "ba",
+          "mg",
+          "ro",
+          "rw"
+        ]
+      },
+      {
+        "bin_lo": 30,
+        "bin_hi": 35,
+        "count": 8,
+        "countries": [
+          "Maldives",
+          "Latvia",
+          "Comoros",
+          "Denmark",
+          "United Kingdom",
+          "Kazakhstan",
+          "Slovenia",
+          "Belarus"
+        ],
+        "country_isos": [
+          "mv",
+          "lv",
+          "km",
+          "dk",
+          "gb",
+          "kz",
+          "si",
+          "by"
+        ]
+      },
+      {
+        "bin_lo": 35,
+        "bin_hi": 40,
+        "count": 8,
+        "countries": [
+          "Chile",
+          "Mongolia",
+          "Vietnam",
+          "Iraq",
+          "Brazil",
+          "Tunisia",
+          "Lesotho",
+          "Egypt"
+        ],
+        "country_isos": [
+          "cl",
+          "mn",
+          "vn",
+          "iq",
+          "br",
+          "tn",
+          "ls",
+          "eg"
+        ]
+      },
+      {
+        "bin_lo": 40,
+        "bin_hi": 45,
+        "count": 8,
+        "countries": [
+          "Bahrain",
+          "Central African Republic",
+          "Jamaica",
+          "Canada",
+          "Belgium",
+          "Morocco",
+          "Eswatini",
+          "Somalia"
+        ],
+        "country_isos": [
+          "bh",
+          "cf",
+          "jm",
+          "ca",
+          "be",
+          "ma",
+          "sz",
+          "so"
+        ]
+      },
+      {
+        "bin_lo": 45,
+        "bin_hi": 50,
+        "count": 8,
+        "countries": [
+          "Kuwait",
+          "Malaysia",
+          "Cambodia",
+          "Republic of the Congo",
+          "Mozambique",
+          "Yemen",
+          "Botswana",
+          "Cabo Verde"
+        ],
+        "country_isos": [
+          "kw",
+          "my",
+          "kh",
+          "cg",
+          "mz",
+          "ye",
+          "bw",
+          "cv"
+        ]
+      },
+      {
+        "bin_lo": 50,
+        "bin_hi": 55,
+        "count": 9,
+        "countries": [
+          "Australia",
+          "Iceland",
+          "Mauritania",
+          "Bhutan",
+          "Chad",
+          "North Macedonia",
+          "Guatemala",
+          "Croatia",
+          "Ethiopia"
+        ],
+        "country_isos": [
+          "au",
+          "is",
+          "mr",
+          "bt",
+          "td",
+          "mk",
+          "gt",
+          "hr",
+          "et"
+        ]
+      },
+      {
+        "bin_lo": 55,
+        "bin_hi": 60,
+        "count": 8,
+        "countries": [
+          "Sierra Leone",
+          "Haiti",
+          "Pakistan",
+          "Montenegro",
+          "Oman",
+          "Seychelles",
+          "Nicaragua",
+          "Myanmar"
+        ],
+        "country_isos": [
+          "sl",
+          "ht",
+          "pk",
+          "me",
+          "om",
+          "sc",
+          "ni",
+          "mm"
+        ]
+      },
+      {
+        "bin_lo": 60,
+        "bin_hi": 65,
+        "count": 8,
+        "countries": [
+          "Mexico",
+          "United Arab Emirates",
+          "Singapore",
+          "Ecuador",
+          "Poland",
+          "Finland",
+          "Equatorial Guinea",
+          "Uganda"
+        ],
+        "country_isos": [
+          "mx",
+          "ae",
+          "sg",
+          "ec",
+          "pl",
+          "fi",
+          "gq",
+          "ug"
+        ]
+      },
+      {
+        "bin_lo": 65,
+        "bin_hi": 70,
+        "count": 8,
+        "countries": [
+          "Georgia",
+          "Thailand",
+          "El Salvador",
+          "Azerbaijan",
+          "Ghana",
+          "Jordan",
+          "Turkiye",
+          "Syria"
+        ],
+        "country_isos": [
+          "ge",
+          "th",
+          "sv",
+          "az",
+          "gh",
+          "jo",
+          "tr",
+          "sy"
+        ]
+      },
+      {
+        "bin_lo": 70,
+        "bin_hi": 75,
+        "count": 8,
+        "countries": [
+          "Switzerland",
+          "Slovakia",
+          "Moldova",
+          "Namibia",
+          "Dominican Republic",
+          "Sri Lanka",
+          "Hungary",
+          "Peru"
+        ],
+        "country_isos": [
+          "ch",
+          "sk",
+          "md",
+          "na",
+          "do",
+          "lk",
+          "hu",
+          "pe"
+        ]
+      },
+      {
+        "bin_lo": 75,
+        "bin_hi": 80,
+        "count": 9,
+        "countries": [
+          "Angola",
+          "New Zealand",
+          "Armenia",
+          "Sao Tome and Principe",
+          "Eritrea",
+          "Serbia",
+          "Burundi",
+          "Norway",
+          "Gabon"
+        ],
+        "country_isos": [
+          "ao",
+          "nz",
+          "am",
+          "st",
+          "er",
+          "rs",
+          "bi",
+          "no",
+          "ga"
+        ]
+      },
+      {
+        "bin_lo": 80,
+        "bin_hi": 85,
+        "count": 8,
+        "countries": [
+          "Uzbekistan",
+          "Venezuela",
+          "Colombia",
+          "Mauritius",
+          "Argentina",
+          "Indonesia",
+          "The Gambia",
+          "South Africa"
+        ],
+        "country_isos": [
+          "uz",
+          "ve",
+          "co",
+          "mu",
+          "ar",
+          "id",
+          "gm",
+          "za"
+        ]
+      },
+      {
+        "bin_lo": 85,
+        "bin_hi": 90,
+        "count": 8,
+        "countries": [
+          "Qatar",
+          "United States",
+          "Nepal",
+          "Germany",
+          "Kyrgyzstan",
+          "Greece",
+          "Lithuania",
+          "Italy"
+        ],
+        "country_isos": [
+          "qa",
+          "us",
+          "np",
+          "de",
+          "kg",
+          "gr",
+          "lt",
+          "it"
+        ]
+      },
+      {
+        "bin_lo": 90,
+        "bin_hi": 95,
+        "count": 8,
+        "countries": [
+          "Bulgaria",
+          "Iran",
+          "Zimbabwe",
+          "Austria",
+          "Nigeria",
+          "Zambia",
+          "France",
+          "Kenya"
+        ],
+        "country_isos": [
+          "bg",
+          "ir",
+          "zw",
+          "at",
+          "ng",
+          "zm",
+          "fr",
+          "ke"
+        ]
+      },
+      {
+        "bin_lo": 95,
+        "bin_hi": 100,
+        "count": 9,
+        "countries": [
+          "Bolivia",
+          "Sweden",
+          "Netherlands",
+          "Lebanon",
+          "Ukraine",
+          "South Sudan",
+          "Spain",
+          "Portugal",
+          "Saudi Arabia"
+        ],
+        "country_isos": [
+          "bo",
+          "se",
+          "nl",
+          "lb",
+          "ua",
+          "ss",
+          "es",
+          "pt",
+          "sa"
+        ]
+      }
+    ],
+    "median": 50.6,
+    "p90": 90.2,
+    "p99": 99.4,
+    "max": 100.0,
+    "n_countries_scored": 164,
+    "source": "score_countries.py per-country eval"
+  },
+  "indicator_sensitivity": {
+    "computed": false,
+    "leave_one_out": [],
+    "method": "5-fold-CV LOO ablation per #967"
+  },
+  "reliability_multipass": {
+    "walks_completed": 1,
+    "v1_separation_pp": 0.1668,
+    "v4_oot_recall_pct": null,
+    "verdict": "HARD_FAIL"
+  },
+  "calibration": {
+    "computed": true,
+    "method": "beta-3param (Kull, Silva Filho, Flach 2017) \u2014 sigmoid(a*log(p) + b*log(1-p) + c)",
+    "fit": {
+      "a": 0.7845641751966381,
+      "b": 0.0,
+      "c": 0.3507258227492449,
+      "n_fit": 219,
+      "converged": true
+    },
+    "bins": [
+      {
+        "predicted_lo": 0.0,
+        "predicted_hi": 0.1,
+        "count": 61,
+        "observed_rate": 0.08196721311475409
+      },
+      {
+        "predicted_lo": 0.1,
+        "predicted_hi": 0.2,
+        "count": 59,
+        "observed_rate": 0.0847457627118644
+      },
+      {
+        "predicted_lo": 0.2,
+        "predicted_hi": 0.3,
+        "count": 20,
+        "observed_rate": 0.35
+      },
+      {
+        "predicted_lo": 0.3,
+        "predicted_hi": 0.4,
+        "count": 24,
+        "observed_rate": 0.3333333333333333
+      },
+      {
+        "predicted_lo": 0.4,
+        "predicted_hi": 0.5,
+        "count": 23,
+        "observed_rate": 0.391304347826087
+      },
+      {
+        "predicted_lo": 0.5,
+        "predicted_hi": 0.6,
+        "count": 32,
+        "observed_rate": 0.59375
+      },
+      {
+        "predicted_lo": 0.6,
+        "predicted_hi": 0.7,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.7,
+        "predicted_hi": 0.8,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.8,
+        "predicted_hi": 0.9,
+        "count": 0,
+        "observed_rate": null
+      },
+      {
+        "predicted_lo": 0.9,
+        "predicted_hi": 1.0,
+        "count": 0,
+        "observed_rate": null
+      }
+    ],
+    "ece": 0.0482159566659094,
+    "n_predictions": 219,
+    "notes": "ECE computed on the CALIBRATED probabilities (post-Beta). The verdict policy (whether LOCK requires ECE <= floor) is a methodology gate handled separately under qgi-aws-tf#969 + Majles ratification; this emit is the data the policy will consume.",
+    "per_cohort": {
+      "fragile-state": {
+        "ece": 0.1485333341198774,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 31,
+            "mean_predicted": 0.03960409791268889,
+            "mean_actual": 0.12903225806451613
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 6,
+            "mean_predicted": 0.13796891396244368,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 2,
+            "mean_predicted": 0.2316856011748314,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 3,
+            "mean_predicted": 0.33783289790153503,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.5739093621571859,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.6486135919888815,
+            "mean_actual": 0.6666666666666666
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 2,
+            "mean_predicted": 0.7615090310573578,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8561791479587555,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 2,
+            "mean_predicted": 0.9501711130142212,
+            "mean_actual": 1.0
+          }
+        ],
+        "n": 56,
+        "low_confidence": false
+      },
+      "mid-tier": {
+        "ece": 0.15349629428237677,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 25,
+            "mean_predicted": 0.03841370675712824,
+            "mean_actual": 0.08
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 3,
+            "mean_predicted": 0.1550977130730947,
+            "mean_actual": 0.3333333333333333
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 6,
+            "mean_predicted": 0.2508345767855644,
+            "mean_actual": 0.16666666666666666
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 2,
+            "mean_predicted": 0.33511704206466675,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 1,
+            "mean_predicted": 0.47964558005332947,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 1,
+            "mean_predicted": 0.5347703695297241,
+            "mean_actual": 1.0
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 3,
+            "mean_predicted": 0.646445095539093,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 0,
+            "mean_predicted": null,
+            "mean_actual": null
+          }
+        ],
+        "n": 41,
+        "low_confidence": false
+      },
+      "stable-democracy": {
+        "ece": 0.11613776733751453,
+        "bins": [
+          {
+            "bin_lower": 0.0,
+            "bin_upper": 0.1,
+            "n_in_bin": 62,
+            "mean_predicted": 0.038572900889125926,
+            "mean_actual": 0.06451612903225806
+          },
+          {
+            "bin_lower": 0.1,
+            "bin_upper": 0.2,
+            "n_in_bin": 11,
+            "mean_predicted": 0.14093646000732074,
+            "mean_actual": 0.2727272727272727
+          },
+          {
+            "bin_lower": 0.2,
+            "bin_upper": 0.30000000000000004,
+            "n_in_bin": 4,
+            "mean_predicted": 0.2456984780728817,
+            "mean_actual": 0.25
+          },
+          {
+            "bin_lower": 0.30000000000000004,
+            "bin_upper": 0.4,
+            "n_in_bin": 10,
+            "mean_predicted": 0.3310067355632782,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.4,
+            "bin_upper": 0.5,
+            "n_in_bin": 6,
+            "mean_predicted": 0.4572333445151647,
+            "mean_actual": 0.8333333333333334
+          },
+          {
+            "bin_lower": 0.5,
+            "bin_upper": 0.6000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.5703456044197083,
+            "mean_actual": 0.4
+          },
+          {
+            "bin_lower": 0.6000000000000001,
+            "bin_upper": 0.7000000000000001,
+            "n_in_bin": 5,
+            "mean_predicted": 0.6486116170883178,
+            "mean_actual": 0.0
+          },
+          {
+            "bin_lower": 0.7000000000000001,
+            "bin_upper": 0.8,
+            "n_in_bin": 8,
+            "mean_predicted": 0.7519234046339989,
+            "mean_actual": 0.625
+          },
+          {
+            "bin_lower": 0.8,
+            "bin_upper": 0.9,
+            "n_in_bin": 4,
+            "mean_predicted": 0.8593979626893997,
+            "mean_actual": 0.5
+          },
+          {
+            "bin_lower": 0.9,
+            "bin_upper": 1.0,
+            "n_in_bin": 7,
+            "mean_predicted": 0.9427320957183838,
+            "mean_actual": 0.8571428571428571
+          }
+        ],
+        "n": 122,
+        "low_confidence": false
+      }
+    }
+  },
+  "per_country_scores_pointer": "scores/monetary_policy_change.scores.json",
+  "shape_points": [
+    -0.11600040517460529,
+    -0.08017506973534423,
+    -0.044349734296083146,
+    -0.008524398856822069,
+    0.027300936582439008,
+    0.06312627202170008,
+    0.09895160746096117,
+    0.13477694290022224,
+    0.17060227833948333,
+    0.20642761377874438,
+    0.2422529492180055,
+    0.27807828465726653
+  ],
+  "shap_importance_raw": {
+    "FI.RES.TOTL.CD": 1.9605135917663574,
+    "NY.GDP.DEFL.KD.ZG": 1.8988714218139648,
+    "v2excrptps": 1.2378766536712646
+  },
+  "shap_importance_normalized": {
+    "FI.RES.TOTL.CD": 0.3846209435081748,
+    "NY.GDP.DEFL.KD.ZG": 0.3725277503436124,
+    "v2excrptps": 0.2428513061482128
+  },
+  "shap_direction_signs": {
+    "FI.RES.TOTL.CD": -1,
+    "NY.GDP.DEFL.KD.ZG": -1,
+    "v2excrptps": -1
+  },
+  "per_feature_breakdown": {
+    "FI.RES.TOTL.CD": {
+      "last_z": 0.23150759935379028,
+      "mean_z": 0.030812250450253487,
+      "std_z": 0.20564845204353333,
+      "slope": 0.7146450281143188,
+      "accel": 0.6352711319923401,
+      "tertile1_mean": 0.060401417315006256,
+      "tertile2_mean": 0.0822276845574379,
+      "tertile3_mean": 0.0
+    },
+    "NY.GDP.DEFL.KD.ZG": {
+      "last_z": 0.18230845034122467,
+      "mean_z": 0.11592072248458862,
+      "std_z": 0.703246533870697,
+      "slope": 0.22315317392349243,
+      "accel": 0.4615185558795929,
+      "tertile1_mean": 0.12430944293737411,
+      "tertile2_mean": 0.08841441571712494,
+      "tertile3_mean": 0.0
+    },
+    "v2excrptps": {
+      "last_z": 0.15453021228313446,
+      "mean_z": 0.10707876086235046,
+      "std_z": 0.024843372404575348,
+      "slope": 0.29608994722366333,
+      "accel": 0.3795790672302246,
+      "tertile1_mean": 0.2331293523311615,
+      "tertile2_mean": 0.04262583702802658,
+      "tertile3_mean": 0.0
+    }
+  },
+  "trajectory_alignment": {
+    "window_years": 3,
+    "indicators": [
+      {
+        "code": "FI.RES.TOTL.CD",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 53,
+        "shape": {
+          "mean": [
+            0.8183,
+            0.9373,
+            0.9456
+          ],
+          "p25": [
+            0.2962,
+            0.3091,
+            0.1874
+          ],
+          "p75": [
+            1.3735,
+            1.6146,
+            1.7537
+          ]
+        }
+      },
+      {
+        "code": "NY.GDP.DEFL.KD.ZG",
+        "name": null,
+        "provider": "World Bank",
+        "n_samples": 59,
+        "shape": {
+          "mean": [
+            -0.1733,
+            -0.0147,
+            0.0603
+          ],
+          "p25": [
+            -0.7134,
+            -0.7467,
+            -0.674
+          ],
+          "p75": [
+            0.1398,
+            0.6799,
+            0.6593
+          ]
+        }
+      },
+      {
+        "code": "v2excrptps",
+        "name": "Executive Corruption (0-4)",
+        "provider": "V-Dem",
+        "n_samples": 67,
+        "shape": {
+          "mean": [
+            0.2414,
+            0.0667,
+            0.062
+          ],
+          "p25": [
+            -0.2,
+            -0.8775,
+            -1.0524
+          ],
+          "p75": [
+            0.9798,
+            0.8981,
+            0.9798
+          ]
+        }
+      }
+    ],
+    "samples_used": 67,
+    "method": "z-aggregated across the emitted positive cases (count in samples_used), aligned by lead-year, gaps linearly interpolated. Pre-\u00a7F walks emit head(5) positives; \u00a7F-onward emit the full corpus."
+  },
+  "precedents_corpus": {
+    "events": [
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2024,
+        "label": "Bank of Japan Raises Interest Rates, Ending Ultra-Loose Era",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "ng",
+        "country_name": "Nigeria",
+        "year": 2024,
+        "label": "CBN Foreign Exchange Reforms \u2014 Partial Naira Recovery",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2024,
+        "label": "Orthodox Monetary Policy Restored; Rates Reach 50 Percent",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2024,
+        "label": "Orthodox Monetary Policy Restored: Interest Rates Raised to 50 Percent",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2024,
+        "label": "Zimbabwe Gold (ZiG) Currency Launched",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "xk",
+        "country_name": "Kosovo",
+        "year": 2023,
+        "label": "Dinar Ban in Northern Kosovo",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "mu",
+        "country_name": "Mauritius",
+        "year": 2022,
+        "label": "Inflation Crisis and Central Bank Tightening",
+        "in_training_set": false
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2021,
+        "label": "El Salvador Adopts Bitcoin as Legal Tender",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2021,
+        "label": "Surinamese Dollar Second Collapse \u2014 Further Currency Devaluation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tr",
+        "country_name": "Turkiye",
+        "year": 2021,
+        "label": "Lira Loses 44 Percent as Central Bank Governor Fired",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 2017,
+        "label": "Currency Liberalization Ends Dual Exchange Rate System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 2016,
+        "label": "Belarus redenominates currency; removes four zeros from ruble",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2016,
+        "label": "Egypt Agrees to $12 Billion IMF Loan; Pound Devalued by Half",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2016,
+        "label": "Bank of Japan Adopts Negative Interest Rates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sr",
+        "country_name": "Suriname",
+        "year": 2016,
+        "label": "Surinamese Dollar Collapses \u2014 Currency and Fiscal Crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 2015,
+        "label": "Lithuania Adopts the Euro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 2014,
+        "label": "Latvia Adopts the Euro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 2013,
+        "label": "Bank of Japan Launches Unprecedented Quantitative Easing",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mw",
+        "country_name": "Malawi",
+        "year": 2012,
+        "label": "Kwacha Devalued by 49% Under New IMF Program",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2011,
+        "label": "Estonia Adopts the Euro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ch",
+        "country_name": "Switzerland",
+        "year": 2011,
+        "label": "SNB Introduces EUR/CHF Exchange Rate Floor at 1.20",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 2010,
+        "label": "Estonia Approved for Eurozone Membership",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sk",
+        "country_name": "Slovakia",
+        "year": 2009,
+        "label": "Slovakia adopts the euro amid global financial crisis",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2009,
+        "label": "Zimbabwe Dollar Abandoned \u2014 Multi-Currency System Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cy",
+        "country_name": "Cyprus",
+        "year": 2008,
+        "label": "Cyprus adopts the euro as its official currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "zw",
+        "country_name": "Zimbabwe",
+        "year": 2006,
+        "label": "Reserve Bank Redenominates \u2014 First Zimbabwe Dollar Reissued",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 2005,
+        "label": "Renminbi revaluation and managed float",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "eg",
+        "country_name": "Egypt",
+        "year": 2003,
+        "label": "Egyptian Pound Floated, Devalues Significantly",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 2002,
+        "label": "Peso Devaluation Ends Convertibility",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 2002,
+        "label": "Euro Banknotes and Coins Enter Circulation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 2002,
+        "label": "Euro Banknotes and Coins Enter Circulation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sv",
+        "country_name": "El Salvador",
+        "year": 2001,
+        "label": "Dollarization: U.S. Dollar Becomes Sole Legal Tender",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pg",
+        "country_name": "Papua New Guinea",
+        "year": 2000,
+        "label": "Central Banking Act Establishes Bank of PNG Independence",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1999,
+        "label": "Finland Among First Countries to Adopt the Euro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1999,
+        "label": "France Adopts the Euro",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1999,
+        "label": "Ireland Joins the Euro as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "it",
+        "country_name": "Italy",
+        "year": 1999,
+        "label": "Euro Adopted: Lira Fixed Irrevocably, Italy Joins Monetary Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "jp",
+        "country_name": "Japan",
+        "year": 1999,
+        "label": "Zero Interest Rate Policy Marks Deflationary Trap",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "pt",
+        "country_name": "Portugal",
+        "year": 1999,
+        "label": "Portugal Joins the Euro as Founding Member",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "es",
+        "country_name": "Spain",
+        "year": 1998,
+        "label": "Spain Locks Peseta to Euro, Entering Monetary Union",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gb",
+        "country_name": "United Kingdom",
+        "year": 1997,
+        "label": "Bank of England Granted Independence to Set Interest Rates",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "za",
+        "country_name": "South Africa",
+        "year": 1996,
+        "label": "GEAR Economic Policy Adopted",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ge",
+        "country_name": "Georgia",
+        "year": 1995,
+        "label": "Georgian Lari Replaces Hyperinflated Coupon Currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "cn",
+        "country_name": "China",
+        "year": 1994,
+        "label": "Yuan renminbi unified exchange rate reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uz",
+        "country_name": "Uzbekistan",
+        "year": 1994,
+        "label": "Soum Introduced as National Currency Amid Economic Dislocation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "am",
+        "country_name": "Armenia",
+        "year": 1993,
+        "label": "Armenian Dram Introduced as National Currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "by",
+        "country_name": "Belarus",
+        "year": 1993,
+        "label": "Belarus introduces the Belarusian ruble",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "br",
+        "country_name": "Brazil",
+        "year": 1993,
+        "label": "Real Plan Stabilization Strategy Announced",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "kg",
+        "country_name": "Kyrgyzstan",
+        "year": 1993,
+        "label": "Kyrgyzstan Becomes First CIS State to Introduce Its Own Currency (Som)",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lv",
+        "country_name": "Latvia",
+        "year": 1993,
+        "label": "Latvia Introduces the Lats as National Currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "lt",
+        "country_name": "Lithuania",
+        "year": 1993,
+        "label": "Introduction of the Lithuanian Litas",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tt",
+        "country_name": "Trinidad and Tobago",
+        "year": 1993,
+        "label": "TT Dollar Floated",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ee",
+        "country_name": "Estonia",
+        "year": 1992,
+        "label": "Estonian Kroon Currency Reform",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fi",
+        "country_name": "Finland",
+        "year": 1992,
+        "label": "Markka Floated Freely After Fixed Exchange Rate Abandoned",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "md",
+        "country_name": "Moldova",
+        "year": 1992,
+        "label": "Moldova Introduces the Leu as National Currency",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ru",
+        "country_name": "Russia",
+        "year": 1992,
+        "label": "Russia joins IMF and World Bank",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1991,
+        "label": "Convertibility Plan \u2014 Peso Pegged to US Dollar",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "in",
+        "country_name": "India",
+        "year": 1991,
+        "label": "Economic liberalization \u2014 Manmohan Singh reforms",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "mm",
+        "country_name": "Myanmar",
+        "year": 1987,
+        "label": "1987 Demonetization Wipes Out Savings, Triggers Popular Rage",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "th",
+        "country_name": "Thailand",
+        "year": 1984,
+        "label": "Baht Devaluation Corrects Trade Deficit, Sets Stage for Export Boom",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "fr",
+        "country_name": "France",
+        "year": 1979,
+        "label": "European Monetary System Launched with French Initiative",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ie",
+        "country_name": "Ireland",
+        "year": 1979,
+        "label": "Ireland Joins the European Monetary System",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bw",
+        "country_name": "Botswana",
+        "year": 1976,
+        "label": "Pula Currency Introduced \u2014 Monetary Independence from South Africa",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "gh",
+        "country_name": "Ghana",
+        "year": 1971,
+        "label": "Cedi Devalued 44 Percent Under IMF Conditionality",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "tn",
+        "country_name": "Tunisia",
+        "year": 1970,
+        "label": "Hedi Nouira Appointed Prime Minister \u2014 Liberal Economic Turn",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "uy",
+        "country_name": "Uruguay",
+        "year": 1968,
+        "label": "Wage and Price Freeze Amid Hyperinflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ar",
+        "country_name": "Argentina",
+        "year": 1966,
+        "label": "Krieger Vasena Economic Stabilization Plan",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "ph",
+        "country_name": "Philippines",
+        "year": 1961,
+        "label": "Economic Liberalization Under Macapagal",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "bo",
+        "country_name": "Bolivia",
+        "year": 1956,
+        "label": "IMF Stabilization Plan Curbs Hyperinflation",
+        "in_training_set": true
+      },
+      {
+        "country_iso": "sa",
+        "country_name": "Saudi Arabia",
+        "year": 1952,
+        "label": "Saudi Monetary Authority Established",
+        "in_training_set": true
+      }
+    ],
+    "total_events_in_corpus": 70
+  }
+}

@@ -1,13 +1,13 @@
 /**
- * TE fleet-run-1 loader module.
+ * TE fleet-run-2 loader module.
  *
- * Provides typed access to every file in `data/te-fleet-run-1/`.
+ * Provides typed access to every file in `data/te-fleet-run-2/`.
  * JSON imports are resolved at build-time by Next.js (resolveJsonModule: true).
  *
  * Runtime sanity checks: each loader verifies the shape is non-empty and
  * throws a contract-drift error rather than silently returning garbage data.
  *
- * The 44 fleet-run-1 recipe IDs are enumerated in FLEET_RUN_1_RECIPE_IDS.
+ * The 44 fleet-run-2 recipe IDs are enumerated in FLEET_RUN_1_RECIPE_IDS.
  * data/te-sample-10/ stays on disk for back-compat but is no longer imported.
  */
 
@@ -19,103 +19,103 @@ import type { ProgramFeed } from "./activity-feed";
 
 // ─── Static JSON imports — each resolved at build time ─────────────────────
 // Cards v3 — 44 recipes
-import rawCard_agricultural_policy from "@/data/te-fleet-run-1/cards-v3/agricultural_policy.card.json";
-import rawCard_banking_and_financial_crisis from "@/data/te-fleet-run-1/cards-v3/banking_and_financial_crisis.card.json";
-import rawCard_bilateral_treaty from "@/data/te-fleet-run-1/cards-v3/bilateral_treaty.card.json";
-import rawCard_civil_war_and_insurgency from "@/data/te-fleet-run-1/cards-v3/civil_war_and_insurgency.card.json";
-import rawCard_constitutional_change from "@/data/te-fleet-run-1/cards-v3/constitutional_change.card.json";
-import rawCard_currency_crisis from "@/data/te-fleet-run-1/cards-v3/currency_crisis.card.json";
-import rawCard_democratic_transition from "@/data/te-fleet-run-1/cards-v3/democratic_transition.card.json";
-import rawCard_diplomatic_rupture from "@/data/te-fleet-run-1/cards-v3/diplomatic_rupture.card.json";
-import rawCard_economic_growth_milestone from "@/data/te-fleet-run-1/cards-v3/economic_growth_milestone.card.json";
-import rawCard_economic_liberalization from "@/data/te-fleet-run-1/cards-v3/economic_liberalization.card.json";
-import rawCard_economic_nationalization from "@/data/te-fleet-run-1/cards-v3/economic_nationalization.card.json";
-import rawCard_economic_recession from "@/data/te-fleet-run-1/cards-v3/economic_recession.card.json";
-import rawCard_elections_and_voting from "@/data/te-fleet-run-1/cards-v3/elections_and_voting.card.json";
-import rawCard_energy_policy from "@/data/te-fleet-run-1/cards-v3/energy_policy.card.json";
-import rawCard_epidemic_and_pandemic from "@/data/te-fleet-run-1/cards-v3/epidemic_and_pandemic.card.json";
-import rawCard_ethnic_and_communal_conflict from "@/data/te-fleet-run-1/cards-v3/ethnic_and_communal_conflict.card.json";
-import rawCard_executive_power_consolidation from "@/data/te-fleet-run-1/cards-v3/executive_power_consolidation.card.json";
-import rawCard_fiscal_policy_change from "@/data/te-fleet-run-1/cards-v3/fiscal_policy_change.card.json";
-import rawCard_foreign_intervention from "@/data/te-fleet-run-1/cards-v3/foreign_intervention.card.json";
-import rawCard_government_formation from "@/data/te-fleet-run-1/cards-v3/government_formation.card.json";
-import rawCard_human_rights_reform from "@/data/te-fleet-run-1/cards-v3/human_rights_reform.card.json";
-import rawCard_human_rights_violation from "@/data/te-fleet-run-1/cards-v3/human_rights_violation.card.json";
-import rawCard_infrastructure_project from "@/data/te-fleet-run-1/cards-v3/infrastructure_project.card.json";
-import rawCard_interstate_war from "@/data/te-fleet-run-1/cards-v3/interstate_war.card.json";
-import rawCard_labor_action from "@/data/te-fleet-run-1/cards-v3/labor_action.card.json";
-import rawCard_mass_protest from "@/data/te-fleet-run-1/cards-v3/mass_protest.card.json";
-import rawCard_migration_and_refugees from "@/data/te-fleet-run-1/cards-v3/migration_and_refugees.card.json";
-import rawCard_military_coup from "@/data/te-fleet-run-1/cards-v3/military_coup.card.json";
-import rawCard_military_policy_and_reform from "@/data/te-fleet-run-1/cards-v3/military_policy_and_reform.card.json";
-import rawCard_monetary_policy_change from "@/data/te-fleet-run-1/cards-v3/monetary_policy_change.card.json";
-import rawCard_multilateral_agreement from "@/data/te-fleet-run-1/cards-v3/multilateral_agreement.card.json";
-import rawCard_natural_disaster from "@/data/te-fleet-run-1/cards-v3/natural_disaster.card.json";
-import rawCard_peacekeeping_and_peace_process from "@/data/te-fleet-run-1/cards-v3/peacekeeping_and_peace_process.card.json";
-import rawCard_political_corruption from "@/data/te-fleet-run-1/cards-v3/political_corruption.card.json";
-import rawCard_political_repression from "@/data/te-fleet-run-1/cards-v3/political_repression.card.json";
-import rawCard_political_violence from "@/data/te-fleet-run-1/cards-v3/political_violence.card.json";
-import rawCard_regional_integration from "@/data/te-fleet-run-1/cards-v3/regional_integration.card.json";
-import rawCard_religious_and_social_movement from "@/data/te-fleet-run-1/cards-v3/religious_and_social_movement.card.json";
-import rawCard_sanctions_and_arms_embargo from "@/data/te-fleet-run-1/cards-v3/sanctions_and_arms_embargo.card.json";
-import rawCard_technology_breakthrough from "@/data/te-fleet-run-1/cards-v3/technology_breakthrough.card.json";
-import rawCard_territorial_disputes from "@/data/te-fleet-run-1/cards-v3/territorial_disputes.card.json";
-import rawCard_terrorist_attack from "@/data/te-fleet-run-1/cards-v3/terrorist_attack.card.json";
-import rawCard_trade_agreement from "@/data/te-fleet-run-1/cards-v3/trade_agreement.card.json";
-import rawCard_transitional_justice from "@/data/te-fleet-run-1/cards-v3/transitional_justice.card.json";
+import rawCard_agricultural_policy from "@/data/te-fleet-run-2/cards-v3/agricultural_policy.card.json";
+import rawCard_banking_and_financial_crisis from "@/data/te-fleet-run-2/cards-v3/banking_and_financial_crisis.card.json";
+import rawCard_bilateral_treaty from "@/data/te-fleet-run-2/cards-v3/bilateral_treaty.card.json";
+import rawCard_civil_war_and_insurgency from "@/data/te-fleet-run-2/cards-v3/civil_war_and_insurgency.card.json";
+import rawCard_constitutional_change from "@/data/te-fleet-run-2/cards-v3/constitutional_change.card.json";
+import rawCard_currency_crisis from "@/data/te-fleet-run-2/cards-v3/currency_crisis.card.json";
+import rawCard_democratic_transition from "@/data/te-fleet-run-2/cards-v3/democratic_transition.card.json";
+import rawCard_diplomatic_rupture from "@/data/te-fleet-run-2/cards-v3/diplomatic_rupture.card.json";
+import rawCard_economic_growth_milestone from "@/data/te-fleet-run-2/cards-v3/economic_growth_milestone.card.json";
+import rawCard_economic_liberalization from "@/data/te-fleet-run-2/cards-v3/economic_liberalization.card.json";
+import rawCard_economic_nationalization from "@/data/te-fleet-run-2/cards-v3/economic_nationalization.card.json";
+import rawCard_economic_recession from "@/data/te-fleet-run-2/cards-v3/economic_recession.card.json";
+import rawCard_elections_and_voting from "@/data/te-fleet-run-2/cards-v3/elections_and_voting.card.json";
+import rawCard_energy_policy from "@/data/te-fleet-run-2/cards-v3/energy_policy.card.json";
+import rawCard_epidemic_and_pandemic from "@/data/te-fleet-run-2/cards-v3/epidemic_and_pandemic.card.json";
+import rawCard_ethnic_and_communal_conflict from "@/data/te-fleet-run-2/cards-v3/ethnic_and_communal_conflict.card.json";
+import rawCard_executive_power_consolidation from "@/data/te-fleet-run-2/cards-v3/executive_power_consolidation.card.json";
+import rawCard_fiscal_policy_change from "@/data/te-fleet-run-2/cards-v3/fiscal_policy_change.card.json";
+import rawCard_foreign_intervention from "@/data/te-fleet-run-2/cards-v3/foreign_intervention.card.json";
+import rawCard_government_formation from "@/data/te-fleet-run-2/cards-v3/government_formation.card.json";
+import rawCard_human_rights_reform from "@/data/te-fleet-run-2/cards-v3/human_rights_reform.card.json";
+import rawCard_human_rights_violation from "@/data/te-fleet-run-2/cards-v3/human_rights_violation.card.json";
+import rawCard_infrastructure_project from "@/data/te-fleet-run-2/cards-v3/infrastructure_project.card.json";
+import rawCard_interstate_war from "@/data/te-fleet-run-2/cards-v3/interstate_war.card.json";
+import rawCard_labor_action from "@/data/te-fleet-run-2/cards-v3/labor_action.card.json";
+import rawCard_mass_protest from "@/data/te-fleet-run-2/cards-v3/mass_protest.card.json";
+import rawCard_migration_and_refugees from "@/data/te-fleet-run-2/cards-v3/migration_and_refugees.card.json";
+import rawCard_military_coup from "@/data/te-fleet-run-2/cards-v3/military_coup.card.json";
+import rawCard_military_policy_and_reform from "@/data/te-fleet-run-2/cards-v3/military_policy_and_reform.card.json";
+import rawCard_monetary_policy_change from "@/data/te-fleet-run-2/cards-v3/monetary_policy_change.card.json";
+import rawCard_multilateral_agreement from "@/data/te-fleet-run-2/cards-v3/multilateral_agreement.card.json";
+import rawCard_natural_disaster from "@/data/te-fleet-run-2/cards-v3/natural_disaster.card.json";
+import rawCard_peacekeeping_and_peace_process from "@/data/te-fleet-run-2/cards-v3/peacekeeping_and_peace_process.card.json";
+import rawCard_political_corruption from "@/data/te-fleet-run-2/cards-v3/political_corruption.card.json";
+import rawCard_political_repression from "@/data/te-fleet-run-2/cards-v3/political_repression.card.json";
+import rawCard_political_violence from "@/data/te-fleet-run-2/cards-v3/political_violence.card.json";
+import rawCard_regional_integration from "@/data/te-fleet-run-2/cards-v3/regional_integration.card.json";
+import rawCard_religious_and_social_movement from "@/data/te-fleet-run-2/cards-v3/religious_and_social_movement.card.json";
+import rawCard_sanctions_and_arms_embargo from "@/data/te-fleet-run-2/cards-v3/sanctions_and_arms_embargo.card.json";
+import rawCard_technology_breakthrough from "@/data/te-fleet-run-2/cards-v3/technology_breakthrough.card.json";
+import rawCard_territorial_disputes from "@/data/te-fleet-run-2/cards-v3/territorial_disputes.card.json";
+import rawCard_terrorist_attack from "@/data/te-fleet-run-2/cards-v3/terrorist_attack.card.json";
+import rawCard_trade_agreement from "@/data/te-fleet-run-2/cards-v3/trade_agreement.card.json";
+import rawCard_transitional_justice from "@/data/te-fleet-run-2/cards-v3/transitional_justice.card.json";
 
 // Scores — 44 recipes
-import rawScores_agricultural_policy from "@/data/te-fleet-run-1/scores/agricultural_policy.scores.json";
-import rawScores_banking_and_financial_crisis from "@/data/te-fleet-run-1/scores/banking_and_financial_crisis.scores.json";
-import rawScores_bilateral_treaty from "@/data/te-fleet-run-1/scores/bilateral_treaty.scores.json";
-import rawScores_civil_war_and_insurgency from "@/data/te-fleet-run-1/scores/civil_war_and_insurgency.scores.json";
-import rawScores_constitutional_change from "@/data/te-fleet-run-1/scores/constitutional_change.scores.json";
-import rawScores_currency_crisis from "@/data/te-fleet-run-1/scores/currency_crisis.scores.json";
-import rawScores_democratic_transition from "@/data/te-fleet-run-1/scores/democratic_transition.scores.json";
-import rawScores_diplomatic_rupture from "@/data/te-fleet-run-1/scores/diplomatic_rupture.scores.json";
-import rawScores_economic_growth_milestone from "@/data/te-fleet-run-1/scores/economic_growth_milestone.scores.json";
-import rawScores_economic_liberalization from "@/data/te-fleet-run-1/scores/economic_liberalization.scores.json";
-import rawScores_economic_nationalization from "@/data/te-fleet-run-1/scores/economic_nationalization.scores.json";
-import rawScores_economic_recession from "@/data/te-fleet-run-1/scores/economic_recession.scores.json";
-import rawScores_elections_and_voting from "@/data/te-fleet-run-1/scores/elections_and_voting.scores.json";
-import rawScores_energy_policy from "@/data/te-fleet-run-1/scores/energy_policy.scores.json";
-import rawScores_epidemic_and_pandemic from "@/data/te-fleet-run-1/scores/epidemic_and_pandemic.scores.json";
-import rawScores_ethnic_and_communal_conflict from "@/data/te-fleet-run-1/scores/ethnic_and_communal_conflict.scores.json";
-import rawScores_executive_power_consolidation from "@/data/te-fleet-run-1/scores/executive_power_consolidation.scores.json";
-import rawScores_fiscal_policy_change from "@/data/te-fleet-run-1/scores/fiscal_policy_change.scores.json";
-import rawScores_foreign_intervention from "@/data/te-fleet-run-1/scores/foreign_intervention.scores.json";
-import rawScores_government_formation from "@/data/te-fleet-run-1/scores/government_formation.scores.json";
-import rawScores_human_rights_reform from "@/data/te-fleet-run-1/scores/human_rights_reform.scores.json";
-import rawScores_human_rights_violation from "@/data/te-fleet-run-1/scores/human_rights_violation.scores.json";
-import rawScores_infrastructure_project from "@/data/te-fleet-run-1/scores/infrastructure_project.scores.json";
-import rawScores_interstate_war from "@/data/te-fleet-run-1/scores/interstate_war.scores.json";
-import rawScores_labor_action from "@/data/te-fleet-run-1/scores/labor_action.scores.json";
-import rawScores_mass_protest from "@/data/te-fleet-run-1/scores/mass_protest.scores.json";
-import rawScores_migration_and_refugees from "@/data/te-fleet-run-1/scores/migration_and_refugees.scores.json";
-import rawScores_military_coup from "@/data/te-fleet-run-1/scores/military_coup.scores.json";
-import rawScores_military_policy_and_reform from "@/data/te-fleet-run-1/scores/military_policy_and_reform.scores.json";
-import rawScores_monetary_policy_change from "@/data/te-fleet-run-1/scores/monetary_policy_change.scores.json";
-import rawScores_multilateral_agreement from "@/data/te-fleet-run-1/scores/multilateral_agreement.scores.json";
-import rawScores_natural_disaster from "@/data/te-fleet-run-1/scores/natural_disaster.scores.json";
-import rawScores_peacekeeping_and_peace_process from "@/data/te-fleet-run-1/scores/peacekeeping_and_peace_process.scores.json";
-import rawScores_political_corruption from "@/data/te-fleet-run-1/scores/political_corruption.scores.json";
-import rawScores_political_repression from "@/data/te-fleet-run-1/scores/political_repression.scores.json";
-import rawScores_political_violence from "@/data/te-fleet-run-1/scores/political_violence.scores.json";
-import rawScores_regional_integration from "@/data/te-fleet-run-1/scores/regional_integration.scores.json";
-import rawScores_religious_and_social_movement from "@/data/te-fleet-run-1/scores/religious_and_social_movement.scores.json";
-import rawScores_sanctions_and_arms_embargo from "@/data/te-fleet-run-1/scores/sanctions_and_arms_embargo.scores.json";
-import rawScores_technology_breakthrough from "@/data/te-fleet-run-1/scores/technology_breakthrough.scores.json";
-import rawScores_territorial_disputes from "@/data/te-fleet-run-1/scores/territorial_disputes.scores.json";
-import rawScores_terrorist_attack from "@/data/te-fleet-run-1/scores/terrorist_attack.scores.json";
-import rawScores_trade_agreement from "@/data/te-fleet-run-1/scores/trade_agreement.scores.json";
-import rawScores_transitional_justice from "@/data/te-fleet-run-1/scores/transitional_justice.scores.json";
+import rawScores_agricultural_policy from "@/data/te-fleet-run-2/scores/agricultural_policy.scores.json";
+import rawScores_banking_and_financial_crisis from "@/data/te-fleet-run-2/scores/banking_and_financial_crisis.scores.json";
+import rawScores_bilateral_treaty from "@/data/te-fleet-run-2/scores/bilateral_treaty.scores.json";
+import rawScores_civil_war_and_insurgency from "@/data/te-fleet-run-2/scores/civil_war_and_insurgency.scores.json";
+import rawScores_constitutional_change from "@/data/te-fleet-run-2/scores/constitutional_change.scores.json";
+import rawScores_currency_crisis from "@/data/te-fleet-run-2/scores/currency_crisis.scores.json";
+import rawScores_democratic_transition from "@/data/te-fleet-run-2/scores/democratic_transition.scores.json";
+import rawScores_diplomatic_rupture from "@/data/te-fleet-run-2/scores/diplomatic_rupture.scores.json";
+import rawScores_economic_growth_milestone from "@/data/te-fleet-run-2/scores/economic_growth_milestone.scores.json";
+import rawScores_economic_liberalization from "@/data/te-fleet-run-2/scores/economic_liberalization.scores.json";
+import rawScores_economic_nationalization from "@/data/te-fleet-run-2/scores/economic_nationalization.scores.json";
+import rawScores_economic_recession from "@/data/te-fleet-run-2/scores/economic_recession.scores.json";
+import rawScores_elections_and_voting from "@/data/te-fleet-run-2/scores/elections_and_voting.scores.json";
+import rawScores_energy_policy from "@/data/te-fleet-run-2/scores/energy_policy.scores.json";
+import rawScores_epidemic_and_pandemic from "@/data/te-fleet-run-2/scores/epidemic_and_pandemic.scores.json";
+import rawScores_ethnic_and_communal_conflict from "@/data/te-fleet-run-2/scores/ethnic_and_communal_conflict.scores.json";
+import rawScores_executive_power_consolidation from "@/data/te-fleet-run-2/scores/executive_power_consolidation.scores.json";
+import rawScores_fiscal_policy_change from "@/data/te-fleet-run-2/scores/fiscal_policy_change.scores.json";
+import rawScores_foreign_intervention from "@/data/te-fleet-run-2/scores/foreign_intervention.scores.json";
+import rawScores_government_formation from "@/data/te-fleet-run-2/scores/government_formation.scores.json";
+import rawScores_human_rights_reform from "@/data/te-fleet-run-2/scores/human_rights_reform.scores.json";
+import rawScores_human_rights_violation from "@/data/te-fleet-run-2/scores/human_rights_violation.scores.json";
+import rawScores_infrastructure_project from "@/data/te-fleet-run-2/scores/infrastructure_project.scores.json";
+import rawScores_interstate_war from "@/data/te-fleet-run-2/scores/interstate_war.scores.json";
+import rawScores_labor_action from "@/data/te-fleet-run-2/scores/labor_action.scores.json";
+import rawScores_mass_protest from "@/data/te-fleet-run-2/scores/mass_protest.scores.json";
+import rawScores_migration_and_refugees from "@/data/te-fleet-run-2/scores/migration_and_refugees.scores.json";
+import rawScores_military_coup from "@/data/te-fleet-run-2/scores/military_coup.scores.json";
+import rawScores_military_policy_and_reform from "@/data/te-fleet-run-2/scores/military_policy_and_reform.scores.json";
+import rawScores_monetary_policy_change from "@/data/te-fleet-run-2/scores/monetary_policy_change.scores.json";
+import rawScores_multilateral_agreement from "@/data/te-fleet-run-2/scores/multilateral_agreement.scores.json";
+import rawScores_natural_disaster from "@/data/te-fleet-run-2/scores/natural_disaster.scores.json";
+import rawScores_peacekeeping_and_peace_process from "@/data/te-fleet-run-2/scores/peacekeeping_and_peace_process.scores.json";
+import rawScores_political_corruption from "@/data/te-fleet-run-2/scores/political_corruption.scores.json";
+import rawScores_political_repression from "@/data/te-fleet-run-2/scores/political_repression.scores.json";
+import rawScores_political_violence from "@/data/te-fleet-run-2/scores/political_violence.scores.json";
+import rawScores_regional_integration from "@/data/te-fleet-run-2/scores/regional_integration.scores.json";
+import rawScores_religious_and_social_movement from "@/data/te-fleet-run-2/scores/religious_and_social_movement.scores.json";
+import rawScores_sanctions_and_arms_embargo from "@/data/te-fleet-run-2/scores/sanctions_and_arms_embargo.scores.json";
+import rawScores_technology_breakthrough from "@/data/te-fleet-run-2/scores/technology_breakthrough.scores.json";
+import rawScores_territorial_disputes from "@/data/te-fleet-run-2/scores/territorial_disputes.scores.json";
+import rawScores_terrorist_attack from "@/data/te-fleet-run-2/scores/terrorist_attack.scores.json";
+import rawScores_trade_agreement from "@/data/te-fleet-run-2/scores/trade_agreement.scores.json";
+import rawScores_transitional_justice from "@/data/te-fleet-run-2/scores/transitional_justice.scores.json";
 
 // Reference files
-import rawCountryIndex from "@/data/te-fleet-run-1/countries/country-index.json";
-import rawRankHistory from "@/data/te-fleet-run-1/countries/country-rank-history.json";
-import rawAnalogs from "@/data/te-fleet-run-1/analogs/current-state-analogs.json";
-import rawActivityFeed from "@/data/te-fleet-run-1/activity/program-feed.json";
-import rawManifest from "@/data/te-fleet-run-1/MANIFEST.json";
+import rawCountryIndex from "@/data/te-fleet-run-2/countries/country-index.json";
+import rawRankHistory from "@/data/te-fleet-run-2/countries/country-rank-history.json";
+import rawAnalogs from "@/data/te-fleet-run-2/analogs/current-state-analogs.json";
+import rawActivityFeed from "@/data/te-fleet-run-2/activity/program-feed.json";
+import rawManifest from "@/data/te-fleet-run-2/MANIFEST.json";
 
 // ─── Type assertions ─────────────────────────────────────────────────────────
 // JSON imports come in as `unknown`-like — we assert to the contract types.
@@ -248,12 +248,12 @@ function assertArrayNonEmpty(arr: unknown[], ctx: string): void {
 
 /**
  * Load a single card by recipe_id.
- * Throws if the recipe_id is not in the fleet-run-1 set.
+ * Throws if the recipe_id is not in the fleet-run-2 set.
  */
 export function loadCardV3(recipeId: string): CardV3 {
   const card = CARD_MAP[recipeId];
   if (!card) {
-    throw new Error(`contract drift: no card for recipe_id "${recipeId}" in fleet-run-1`);
+    throw new Error(`contract drift: no card for recipe_id "${recipeId}" in fleet-run-2`);
   }
   assertNonEmpty(card, `card[${recipeId}]`);
   assertNonEmpty(card.greedy_walk, `card[${recipeId}].greedy_walk`);
@@ -262,13 +262,13 @@ export function loadCardV3(recipeId: string): CardV3 {
 
 /**
  * Load per-country scores for a recipe.
- * Throws if the recipe_id is not in the fleet-run-1 set.
+ * Throws if the recipe_id is not in the fleet-run-2 set.
  */
 export function loadScores(recipeId: string): RecipeScoresFile {
   const scores = SCORES_MAP[recipeId];
   if (!scores) {
     throw new Error(
-      `contract drift: no scores for recipe_id "${recipeId}" in fleet-run-1`
+      `contract drift: no scores for recipe_id "${recipeId}" in fleet-run-2`
     );
   }
   assertNonEmpty(scores, `scores[${recipeId}]`);
@@ -338,7 +338,7 @@ export interface RankHistoryFile {
 
 /**
  * Load the cross-vintage country rank history.
- * At fleet-run-1 this contains 7,577 rows (one per country × recipe that
+ * At fleet-run-2 this contains 7,577 rows (one per country × recipe that
  * was scored). Append-only: vintage 2 rows join by (recipe_id, country).
  */
 export function loadRankHistory(): RankHistoryFile {
@@ -369,7 +369,7 @@ export function loadIndicatorCorpusBreakdown(): Record<string, number> {
     .indicator_corpus_breakdown;
 }
 
-/** All 44 fleet-run-1 recipe IDs. Replaces the old SAMPLE_10_RECIPE_IDS constant. */
+/** All 44 fleet-run-2 recipe IDs. Replaces the old SAMPLE_10_RECIPE_IDS constant. */
 export const FLEET_RUN_1_RECIPE_IDS = Object.keys(CARD_MAP) as string[];
 
 /**

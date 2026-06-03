@@ -9,6 +9,7 @@
  */
 import Link from "next/link";
 import type { Route } from "next";
+import { getIndicatorLabel } from "@/lib/indicator-labels";
 
 export interface AlignmentIndicator {
   code: string;
@@ -236,9 +237,9 @@ function IndicatorShape({
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
           }}
-          title={`${indicator.name} (${indicator.code})`}
+          title={`${indicator.name || getIndicatorLabel(indicator.code)} (${indicator.code})`}
         >
-          {indicator.name}
+          {indicator.name || getIndicatorLabel(indicator.code)}
         </div>
         {/* 2026-05-27 (#159): raw indicator code hidden from visible row;
             available on hover via the title attribute. */}
