@@ -78,7 +78,9 @@ export async function deliverEmail({
   const key = process.env.RESEND_API_KEY;
   if (!key) return { ok: false, configured: false };
 
-  const from = process.env.EMAIL_FROM || "QG Intelligence <noreply@qgintelligence.com>";
+  // Must be on the Resend-verified sending domain (send.qgintelligence.com).
+  const from =
+    process.env.EMAIL_FROM || "QG Intelligence <noreply@send.qgintelligence.com>";
   const recipient = to || process.env.EMAIL_TO || "contact@qgintelligence.com";
 
   try {
