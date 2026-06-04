@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Sora } from "next/font/google";
 import "./globals.css";
-import { CANONICAL_SCOPE_SENTENCE, TOTAL_COUNTRIES } from "@/lib/site-stats";
 
 // T16 #309 LOW fix: declare `display: "swap"` so text is visible during
 // webfont download instead of the default "block" FOIT period.
@@ -40,13 +39,19 @@ const soraBrand = Sora({
  *   its own canonical in its own metadata; the home page (`app/page.tsx`)
  *   declares `canonical: "/"` explicitly.
  */
+// 2026-06-04: brand OG repositioned to the "evidence, not opinion" line
+// (founder pick, "Option A"); trivia scope counts dropped from social/meta copy.
+const OG_TITLE = "QG Intelligence · Geopolitics, measured";
+const OG_DESCRIPTION =
+  "Country risk read against the historical record, from public data and openly documented methods. Evidence, not opinion.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://qgintelligence.com"),
   title: "QGI · Quantitative Geopolitical Intelligence",
-  description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
+  description: OG_DESCRIPTION,
   openGraph: {
-    title: "QGI · Quantitative Geopolitical Intelligence",
-    description: `${CANONICAL_SCOPE_SENTENCE} Risk candidates that analysts should examine.`,
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
     url: "https://qgintelligence.com",
     siteName: "QG Intelligence",
     type: "website",
@@ -59,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "QGI · Quantitative Geopolitical Intelligence",
-    description: `Historical precedents across ${TOTAL_COUNTRIES} countries, sourced from Open Source Intelligence.`,
+    title: OG_TITLE,
+    description: OG_DESCRIPTION,
     // Twitter falls back to the same file-based opengraph-image per
     // Next.js conventions when twitter.images is omitted.
   },
@@ -89,7 +94,8 @@ const ORGANIZATION_JSON_LD = {
   name: "QG Intelligence",
   alternateName: "Quantitative Geopolitical Intelligence",
   url: "https://qgintelligence.com",
-  description: `QGI finds historical economic precedents at scale across ${TOTAL_COUNTRIES} countries. Risk candidates that analysts should examine, not probability forecasts.`,
+  description:
+    "QG Intelligence reads every country's trajectory against the historical record, from public data and openly documented methods. Evidence-based country risk, not opinion.",
   founder: { "@type": "Person", name: "Amin Al-Ait" },
   sameAs: ["https://www.linkedin.com/in/aminalait/"],
 };

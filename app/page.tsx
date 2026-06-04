@@ -15,9 +15,9 @@ import { ClosestMatches } from "@/components/dashboard-v4-1/ClosestMatches";
 import { buildClosestMatches } from "@/lib/te-mock/dashboard-v4-1-data";
 
 export const metadata: Metadata = {
-  title: "QG Intelligence · Country risk, read against history",
+  title: "QG Intelligence · Geopolitics, measured",
   description:
-    "Across 180+ countries and territories, every country scored against the shapes that came before the events that matter, and shown alongside the real cases it most resembles.",
+    "Every country's multi-decade indicator trajectory read against the historical record, and the past cases it most resembles. Open data, documented methods, evidence not opinion.",
   alternates: { canonical: "/" },
 };
 

@@ -26,7 +26,7 @@ import Link from "next/link";
 import type { Route } from "next";
 import { notFound } from "next/navigation";
 import { getAnaloguePair, allAnaloguePairKeys } from "@/lib/te-mock/analogue-pair";
-import { TrajectorySparkline } from "@/components/nearest-analog/TrajectorySparkline";
+import { AnalogueOverlayChart } from "@/components/analogue/AnalogueOverlayChart";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
 import { flagFor } from "@/lib/te-mock/country-flags";
 
@@ -384,20 +384,69 @@ export default async function AnaloguePairPage({ params }: Params) {
                 style={{
                   fontSize: "12px",
                   color: "var(--qgi-text-dim)",
-                  margin: "0 0 16px",
+                  margin: "0 0 12px",
                   lineHeight: 1.55,
-                  maxWidth: "680px",
+                  maxWidth: "720px",
                 }}
               >
-                Solid line = {pair.subjectName} (today). Dashed line = {pair.analogueName}{" "}
-                ({pair.analogueYear}, pre-event). Both run left-to-right across the run-up
-                window; each is scaled to its own history (±3σ → 0–100) so the lines
-                compare shape, not absolute level.
+                Each indicator is standardized to its own history, so the lines compare
+                shape rather than absolute level. Every line runs left to right and ends
+                at the right edge (today for {pair.subjectName}, the event year for{" "}
+                {pair.analogueName} and the trend). The dashed line and its band are the{" "}
+                {pair.trendLabel}
+                {
+                  " trend's own canonical shape for that indicator. Hover any chart for the year-by-year values."
+                }
               </p>
+              {/* legend */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "16px",
+                  margin: "0 0 16px",
+                  fontSize: "11px",
+                  fontFamily: "ui-monospace, monospace",
+                  color: "var(--qgi-text-muted)",
+                }}
+              >
+                {[
+                  {
+                    c: "var(--qgi-accent)",
+                    dash: false,
+                    t: `${pair.subjectName} (today)`,
+                  },
+                  {
+                    c: "#C9A66B",
+                    dash: false,
+                    t: `${pair.analogueName} ${pair.analogueYear}`,
+                  },
+                  {
+                    c: fam,
+                    dash: true,
+                    t: `${pair.trendLabel} canonical (p25 to p75 band)`,
+                  },
+                ].map((l) => (
+                  <span
+                    key={l.t}
+                    style={{ display: "inline-flex", alignItems: "center", gap: 6 }}
+                  >
+                    <span
+                      style={{
+                        width: 16,
+                        height: 0,
+                        borderTop: `2px ${l.dash ? "dashed" : "solid"} ${l.c}`,
+                        display: "inline-block",
+                      }}
+                    />
+                    {l.t}
+                  </span>
+                ))}
+              </div>
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
                   gap: "16px",
                 }}
               >
@@ -413,24 +462,48 @@ export default async function AnaloguePairPage({ params }: Params) {
                   >
                     <div
                       style={{
-                        fontSize: "12.5px",
-                        fontWeight: 600,
-                        color: "var(--qgi-text)",
+                        display: "flex",
+                        alignItems: "baseline",
+                        justifyContent: "space-between",
+                        gap: 8,
                         marginBottom: "8px",
-                        lineHeight: 1.3,
                       }}
                     >
-                      {d.name}
+                      <span
+                        style={{
+                          fontSize: "12.5px",
+                          fontWeight: 600,
+                          color: "var(--qgi-text)",
+                          lineHeight: 1.3,
+                        }}
+                      >
+                        {d.name}
+                      </span>
+                      {!d.canonical && (
+                        <span
+                          style={{
+                            fontSize: "9px",
+                            color: "var(--qgi-text-dim)",
+                            fontFamily: "ui-monospace, monospace",
+                            whiteSpace: "nowrap",
+                          }}
+                          title="The trend card has no canonical shape for this indicator yet."
+                        >
+                          no canonical
+                        </span>
+                      )}
                     </div>
-                    <TrajectorySparkline
-                      currentSeries={d.subject}
-                      analogSeries={d.analogue}
-                      currentLabel={pair.subjectName}
-                      analogLabel={`${pair.analogueName} ${pair.analogueYear}`}
-                      analogColor={fam}
-                      height={84}
-                      leftLabel={`−${pair.windowYears}y`}
-                      rightLabel="run-up end"
+                    <AnalogueOverlayChart
+                      subject={d.subject}
+                      analogue={d.analogue}
+                      canonical={d.canonical}
+                      canonicalLo={d.canonicalLo}
+                      canonicalHi={d.canonicalHi}
+                      windowYears={pair.windowYears}
+                      subjectName={pair.subjectName}
+                      analogueName={pair.analogueName}
+                      analogueYear={pair.analogueYear}
+                      familyColor={fam}
                     />
                   </div>
                 ))}
