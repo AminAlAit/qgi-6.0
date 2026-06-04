@@ -205,8 +205,8 @@ export function CompareAtAGlance({
       }}
     >
       <SplitTile
-        label="Recipes in play"
-        captionNode="More recipes in play is not more risk. Each recipe is a distinct structural pattern; the count tells you how many patterns currently match, not how strongly the country is at risk."
+        label="Trends in play"
+        captionNode="More trends in play is not more risk. Each trend is a distinct structural pattern; the count tells you how many patterns currently match, not how strongly the country is at risk."
         countryA={countryA}
         countryB={countryB}
         valueA={glance.recipes_a}
@@ -226,14 +226,14 @@ export function CompareAtAGlance({
         tooltip="Distinct risk categories each country currently matches."
       />
       <SplitTile
-        label="Top recipe rank gap"
+        label="Top trend rank gap"
         countryA={countryA}
         countryB={countryB}
         valueA={glance.top_rank_gap}
         valueB={0}
         formattedA={gapLabel}
-        formattedB="shared recipe"
-        tooltip="Largest single-recipe rank gap between A and B on any shared recipe."
+        formattedB="shared trend"
+        tooltip="Largest single-trend rank gap between A and B on any shared trend."
       />
       <SplitTile
         label="Overlap"
@@ -242,8 +242,8 @@ export function CompareAtAGlance({
         valueA={glance.overlap_count}
         valueB={glance.overlap_count}
         formattedA={String(glance.overlap_count)}
-        formattedB="shared recipes"
-        tooltip="Count of recipes both countries are in play on simultaneously."
+        formattedB="shared trends"
+        tooltip="Count of trends both countries are in play on simultaneously."
       />
     </div>
   );

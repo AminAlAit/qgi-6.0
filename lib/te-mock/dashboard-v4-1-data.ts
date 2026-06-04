@@ -45,6 +45,7 @@ import {
 } from "@/lib/te-data-contract/load";
 import type { CountryIndex } from "@/lib/te-data-contract/country-index";
 import { iso2For } from "@/lib/te-mock/country-flags";
+import { cleanProseCopy } from "@/lib/clean-text";
 import { L1_FAMILIES, familyColor, familyLabel } from "@/lib/te-mock/l1-families";
 import type { HeroTile } from "@/components/dashboard-v4-1/DashboardHero";
 
@@ -529,7 +530,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
           title: `${e.recipe_label}: first release under the Trajectory Engine`,
           detail:
             `Walk completed ${date}. LOCO AUC ${e.loco_auc.toFixed(3)} · ` +
-            `${verdictLabel}. ${e.note}`,
+            `${verdictLabel}. ${cleanProseCopy(e.note)}`,
           href: `/trends/${e.recipe_id}`,
           color: "#7B5EE6",
           iconKey: "crosshair",
@@ -549,7 +550,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
           date,
           kind: "corpus_growth",
           title: `${e.recipe_label}: status correction applied`,
-          detail: `${e.cause} ${e.note}`,
+          detail: `${cleanProseCopy(e.cause)} ${cleanProseCopy(e.note)}`,
           href: `/trends/${e.recipe_id}`,
           color: "#E68F29",
           iconKey: "activity",
@@ -566,7 +567,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
           date,
           kind: "corpus_growth",
           title: `Methodology update: ${e.title}`,
-          detail: e.detail,
+          detail: cleanProseCopy(e.detail),
           href: `/methodology`,
           color: "#5B7E99",
           iconKey: "activity",

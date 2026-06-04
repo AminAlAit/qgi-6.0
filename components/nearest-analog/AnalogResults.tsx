@@ -129,7 +129,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
               lineHeight: 1.2,
             }}
           >
-            Which recipes pulled the match
+            Which trends pulled the match
           </h3>
         </header>
         <p
@@ -141,8 +141,8 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
             maxWidth: "640px",
           }}
         >
-          The trajectory shapes that drew {entry.name} toward its analogues, ranked by
-          weighted contribution.
+          The trend shapes that drew {entry.name} toward its analogues, ranked by weighted
+          contribution.
         </p>
         <RecipeContributionBar contributions={entry.contributions} />
       </section>
@@ -180,7 +180,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           <div
             style={{ fontSize: "12px", color: "var(--qgi-text-muted)", lineHeight: 1.5 }}
           >
-            All 71 recipes in the QGI catalog with mini-trajectories: browse every
+            All 71 trends in the QGI catalog with mini-trajectories: browse every
             trajectory shape, queued or tested, that the analogue finder draws from.
           </div>
         </div>
@@ -204,7 +204,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           }}
         >
           <GitCompare size={14} strokeWidth={2} />
-          Browse all 71 recipes
+          Browse all 71 trends
         </Link>
       </section>
     </div>

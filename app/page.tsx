@@ -25,17 +25,17 @@ const STEPS = [
   {
     num: "01",
     title: "We learn the shapes",
-    desc: "From decades of the historical record, we learn the signal shapes that tend to run ahead of each kind of event, a currency crisis, a coup, a wave of unrest. We call each shape a recipe.",
+    desc: "From decades of the historical record, we learn the signal shapes that tend to run ahead of each kind of event, a currency crisis, a coup, a wave of unrest. We call each shape a trend.",
   },
   {
     num: "02",
     title: "We watch every country",
-    desc: "Across 180+ countries and territories, we track how each one's recent signals are moving and compare them, quarter by quarter, against every recipe.",
+    desc: "Across 180+ countries and territories, we track how each one's recent signals are moving and compare them, quarter by quarter, against every trend.",
   },
   {
     num: "03",
     title: "We show you the evidence",
-    desc: "See how closely a country is tracing a recipe right now, signal by signal, and the real historical cases it most resembles. A measure of resemblance, not a forecast.",
+    desc: "See how closely a country is tracing a trend right now, signal by signal, and the real historical cases it most resembles. A measure of resemblance, not a forecast.",
   },
 ];
 
@@ -229,11 +229,11 @@ export default async function HomePage() {
               />
               <WhyCard
                 label="180+ countries & territories"
-                body="Global coverage, refreshed every quarter. Every country is read against the full catalogue of event recipes, every release."
+                body="Global coverage, refreshed every quarter. Every country is read against the full catalogue of event trends, every release."
               />
               <WhyCard
                 label="Resemblance, not a forecast"
-                body="We tell you what today rhymes with, honestly. Tracing a recipe is a structural analogue an analyst can weigh, not a prediction."
+                body="We tell you what today rhymes with, honestly. Tracing a trend is a structural analogue an analyst can weigh, not a prediction."
               />
             </div>
           </div>
@@ -246,7 +246,7 @@ export default async function HomePage() {
           </h2>
           <p className="mb-8 max-w-md mx-auto" style={{ color: "var(--qgi-text-muted)" }}>
             Open Dashboard for today&rsquo;s closest matches, or browse every country and
-            recipe.
+            trend.
           </p>
           <div className="flex items-center justify-center gap-4 flex-wrap">
             <Link

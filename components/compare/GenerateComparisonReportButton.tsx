@@ -18,7 +18,7 @@ export function GenerateComparisonReportButton({
       disabled
       aria-disabled="true"
       aria-label={`Generate Comparison Report for ${countryA} vs ${countryB} (coming soon)`}
-      title={`Coming soon: a thinking AI model reads everything QGI knows about ${countryA} and ${countryB}, the recipes in play, the indicator drivers, the analogues, and writes you a side-by-side intelligence report via API. Disabled today; live in a future release.`}
+      title={`Coming soon: a thinking AI model reads everything QGI knows about ${countryA} and ${countryB}, the trends in play, the indicator drivers, the analogues, and writes you a side-by-side intelligence report via API. Disabled today; live in a future release.`}
       style={{
         display: "inline-flex",
         alignItems: "center",

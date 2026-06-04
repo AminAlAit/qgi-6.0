@@ -16,7 +16,7 @@ export default function NotFound() {
     { href: "/dashboard" as Route, label: "Dashboard" },
     { href: "/methodology" as Route, label: "Methodology" },
     { href: "/countries" as Route, label: "Countries" },
-    { href: "/trends" as Route, label: "Recipes" },
+    { href: "/trends" as Route, label: "Trends" },
   ];
   return (
     <div

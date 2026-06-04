@@ -212,7 +212,7 @@ function PairRow({
                 minWidth: "32px",
                 textAlign: "right",
               }}
-              title={`${pct}% match: this country's recent path matches the recipe's canonical shape.`}
+              title={`${pct}% match: this country's recent path matches the trend's canonical shape.`}
             >
               {pct}%
             </span>

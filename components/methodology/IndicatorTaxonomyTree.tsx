@@ -297,7 +297,7 @@ export default function IndicatorTaxonomyTree() {
                   fill="var(--qgi-text-muted)"
                 >
                   {fed
-                    ? `${r.ind!.recipe_count} recipe${r.ind!.recipe_count === 1 ? "" : "s"}`
+                    ? `${r.ind!.recipe_count} trend${r.ind!.recipe_count === 1 ? "" : "s"}`
                     : "tracked"}
                 </text>
               </g>
@@ -307,7 +307,7 @@ export default function IndicatorTaxonomyTree() {
 
       <div className="mt-3 mb-1 px-2 flex items-center justify-between flex-wrap gap-2">
         <p className="text-[11px]" style={{ color: "var(--qgi-text-muted)" }}>
-          A filled dot means the indicator currently feeds at least one recipe; a grey dot
+          A filled dot means the indicator currently feeds at least one trend; a grey dot
           means it is tracked but not yet used by one.
         </p>
         <button

@@ -200,8 +200,8 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
         body: "Each analogue pair shows two countries whose indicator trajectories ran in close parallel over a shared historical window. Structural similarity over the past does not predict that the target country will follow the reference country's future path.",
       },
       {
-        title: "Analogue scores come from validated recipes",
-        body: "The recipe scores shown alongside analogue pairs are drawn from the Recipe Tracker. An analogue's relevance depends on whether the shared recipes are validated; the tracker is the source of truth for that.",
+        title: "Analogue scores come from validated trends",
+        body: "The trend scores shown alongside analogue pairs are drawn from the Recipe Tracker. An analogue's relevance depends on whether the shared trends are validated; the tracker is the source of truth for that.",
       },
       {
         title: "Corrections are published on purpose",
@@ -281,7 +281,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
   },
 
   "recipe-country-match": {
-    lede: "Four rules for reading how one country is tracing one recipe.",
+    lede: "Four rules for reading how one country is tracing one trend.",
     rules: [
       {
         title: "The score is a rank, not a probability",

@@ -189,6 +189,7 @@ export function PatternsSearch({
     <div style={{ display: "flex", gap: "24px", alignItems: "flex-start" }}>
       {/* ── Left filter panel ─────────────────────────────────────────────── */}
       <aside
+        data-tour="patterns-filters"
         style={{
           width: "232px",
           flexShrink: 0,
@@ -335,7 +336,7 @@ export function PatternsSearch({
       </aside>
 
       {/* ── Results ─────────────────────────────────────────────────────────── */}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div data-tour="patterns-results" style={{ flex: 1, minWidth: 0 }}>
         {/* Results count */}
         <div
           style={{

@@ -183,7 +183,7 @@ export default function IndicatorsTable() {
                 }}
               >
                 {(e.recipe_count || 0) > 0
-                  ? `${e.recipe_count} recipe${e.recipe_count === 1 ? "" : "s"}`
+                  ? `${e.recipe_count} trend${e.recipe_count === 1 ? "" : "s"}`
                   : "tracked"}
               </div>
             </div>
