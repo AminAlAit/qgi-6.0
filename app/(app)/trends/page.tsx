@@ -5,9 +5,8 @@ import { familyColor } from "@/lib/te-mock/l1-families";
 import { HowToReadButton } from "@/components/te-v4-shared/HowToReadButton";
 
 export const metadata: Metadata = {
-  title: "Recipes · QG Intelligence",
-  description:
-    "The Recipe Catalog: all 71 structural-event recipes, grouped by category.",
+  title: "Trends · QG Intelligence",
+  description: "The Trend Catalog: every structural-event trend, grouped by category.",
 };
 
 const STATUS_ORDER: Record<TrackerRecipe["status"], number> = {
@@ -74,7 +73,7 @@ export default function RecipesV41GalleryPage() {
               margin: "0 0 12px",
             }}
           >
-            The Recipe Catalog
+            The Trend Catalog
           </h1>
           <p
             style={{
@@ -84,8 +83,8 @@ export default function RecipesV41GalleryPage() {
               maxWidth: "780px",
             }}
           >
-            All {recipes.length} structural-event recipes, grouped by category. Pick any
-            recipe to open its full report card.
+            All {recipes.length} structural-event trends, grouped by category. Pick any
+            trend to open its full report card.
           </p>
         </div>
 
@@ -129,7 +128,7 @@ export default function RecipesV41GalleryPage() {
                       letterSpacing: "0.3px",
                     }}
                   >
-                    {rs.length} recipes
+                    {rs.length} trends
                   </div>
                 </div>
               </header>
@@ -149,7 +148,7 @@ export default function RecipesV41GalleryPage() {
                     <RecipeCard
                       key={r.recipe_id}
                       recipe={recipeForCard}
-                      basePath="/recipes"
+                      basePath="/trends"
                       labelStrategy="v4.1"
                     />
                   );

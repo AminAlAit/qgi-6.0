@@ -534,7 +534,7 @@ function RecipeGridRow({
         }}
       >
         <Link
-          href={`/recipes/${recipe.recipe_id}` as Route}
+          href={`/trends/${recipe.recipe_id}` as Route}
           style={{ textDecoration: "none", color: "inherit" }}
         >
           <div
@@ -776,8 +776,8 @@ function HeatCell({
   const cellIso2 = iso2For(cell.country);
   const cellHref =
     cellIso2 && /^[a-z]{2}$/.test(cellIso2)
-      ? `/recipes/${recipeId}/countries/${cellIso2}`
-      : `/recipes/${recipeId}`;
+      ? `/trends/${recipeId}/countries/${cellIso2}`
+      : `/trends/${recipeId}`;
 
   return (
     <Link

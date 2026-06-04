@@ -113,7 +113,7 @@ export default function BriefingPage() {
         </section>
 
         {/* Demoted scope strip */}
-        <section style={{ marginTop: "36px" }}>
+        <section data-tour="scope-strip" style={{ marginTop: "36px" }}>
           <div
             style={{
               display: "flex",

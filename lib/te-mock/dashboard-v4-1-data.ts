@@ -530,7 +530,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
           detail:
             `Walk completed ${date}. LOCO AUC ${e.loco_auc.toFixed(3)} · ` +
             `${verdictLabel}. ${e.note}`,
-          href: `/recipes/${e.recipe_id}`,
+          href: `/trends/${e.recipe_id}`,
           color: "#7B5EE6",
           iconKey: "crosshair",
         };
@@ -550,7 +550,7 @@ export function buildWorldActivityRows(): WorldActivityRow[] {
           kind: "corpus_growth",
           title: `${e.recipe_label}: status correction applied`,
           detail: `${e.cause} ${e.note}`,
-          href: `/recipes/${e.recipe_id}`,
+          href: `/trends/${e.recipe_id}`,
           color: "#E68F29",
           iconKey: "activity",
         };

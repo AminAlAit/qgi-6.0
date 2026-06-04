@@ -24,6 +24,7 @@
  */
 
 import type { CSSProperties } from "react";
+import { stripProviderSuffix } from "@/lib/indicator-labels";
 
 // === R&D-locked strings — DO NOT EDIT ===========================================
 const ANTI_CAUSAL_TOOLTIP =
@@ -35,12 +36,15 @@ const ANTI_CAUSAL_TOOLTIP =
  *    used "AUC drop" naked, which is unintuitive for the audience.
  *  - Caption splits into two sentences: a structural definition + a
  *    diagnostic line about over-reliance. */
+// 2026-06-04 (founder): site-wide "recipe" -> "trend" branding rename. The
+// R&D-approved MEANING is unchanged (and the anti-causal sentence above stays
+// verbatim); only the noun the audience reads is updated.
 const CAPTION =
-  "How much each signal carries the recipe. " +
-  "AUC measures how cleanly the recipe separates pre-event country-years " +
+  "How much each signal carries the trend. " +
+  "AUC measures how cleanly the trend separates pre-event country-years " +
   "from the rest: the bar shows how much that separation falls if we " +
   "remove a single signal. " +
-  "If pulling any one signal collapses the recipe, it was leaning on that " +
+  "If pulling any one signal collapses the trend, it was leaning on that " +
   "signal too hard.";
 // ==============================================================================
 
@@ -122,13 +126,16 @@ export function IndicatorSensitivityPanel({
     marginBottom: 6,
   };
 
+  // Match the peer V4.1 panels' h2 exactly (15px sans, no uppercase) so every
+  // panel title reads in the same Title Case voice — this one used to render
+  // "INDICATOR SENSITIVITY" in mono all-caps, the odd one out.
   const titleStyle: CSSProperties = {
-    fontSize: 13,
-    letterSpacing: "0.6px",
-    textTransform: "uppercase",
-    color: familyColor,
-    fontFamily: MONO,
+    fontSize: 15,
     fontWeight: 600,
+    lineHeight: 1.25,
+    letterSpacing: "0.1px",
+    color: familyColor,
+    margin: 0,
   };
 
   const captionStyle: CSSProperties = {
@@ -151,7 +158,7 @@ export function IndicatorSensitivityPanel({
       data-panel="indicator-sensitivity"
     >
       <header style={headerStyle}>
-        <h2 style={titleStyle}>Indicator sensitivity</h2>
+        <h2 style={titleStyle}>Indicator Sensitivity</h2>
       </header>
 
       <p style={captionStyle}>{CAPTION}</p>
@@ -199,7 +206,7 @@ export function IndicatorSensitivityPanel({
                 }}
                 title={`${row.name} (${row.code} · ${row.provider})`}
               >
-                {row.name}
+                {stripProviderSuffix(row.name)}
                 <span
                   style={{
                     fontSize: 10,
@@ -225,7 +232,7 @@ export function IndicatorSensitivityPanel({
                   letterSpacing: "0.3px",
                 }}
                 aria-label={`Removing this indicator drops the score by ${fmtAucDrop(row.aucDrop)}`}
-                title={`If this indicator were removed, the recipe's score-separation would drop by ${fmtAucDrop(row.aucDrop)}.`}
+                title={`If this indicator were removed, the trend's score-separation would drop by ${fmtAucDrop(row.aucDrop)}.`}
               >
                 −{fmtAucDrop(row.aucDrop)}
               </div>
@@ -294,7 +301,7 @@ export function IndicatorSensitivityPanel({
           letterSpacing: "0.3px",
         }}
       >
-        Each bar is scaled relative to this recipe&apos;s most load-bearing indicator ·{" "}
+        Each bar is scaled relative to this trend&apos;s most load-bearing indicator ·{" "}
         {rows.length} ingredients
       </div>
     </section>

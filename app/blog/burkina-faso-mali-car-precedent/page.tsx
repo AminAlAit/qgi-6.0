@@ -360,7 +360,7 @@ export default function BurkinaFasoPrecedentPage() {
             </li>
             <li>
               <Link
-                href={"/recipes/civil_war_and_insurgency" as Route}
+                href={"/trends/civil_war_and_insurgency" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >

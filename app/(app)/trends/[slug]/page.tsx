@@ -19,6 +19,7 @@ import { getShapeData } from "@/lib/te-mock/recipe-shape-mock";
 import {
   getCorpusEvents,
   getTotalEventsInCorpus,
+  getWindowExample,
 } from "@/lib/te-mock/precedents-corpus-mock";
 import { getPattern } from "@/lib/te-mock/patterns-v4-data";
 import {
@@ -27,6 +28,7 @@ import {
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import recipeTracker from "@/data/recipe-tracker.json";
+import { cleanEmDashes } from "@/lib/clean-text";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
 import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
@@ -78,11 +80,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const recipe = getRecipe(slug);
   return {
     title: recipe
-      ? `${recipe.label} · Recipes · QG Intelligence`
-      : "Recipe not found · QG Intelligence",
+      ? `${recipe.label} · Trends · QG Intelligence`
+      : "Trend not found · QG Intelligence",
     description: recipe
-      ? `${recipe.label} recipe report card: indicator set, validation, results.`
-      : "Recipe not found.",
+      ? `${recipe.label} trend report card: building blocks, validation, results.`
+      : "Trend not found.",
   };
 }
 
@@ -208,7 +210,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
 
   // V4.1 §A1 — prefer the compelling description; fall through to the
   // dry mock definition for back-compat (TE recipes without a tracker row).
-  const heroDefinition = COMPELLING_BY_ID.get(slug) ?? mock.definition;
+  const heroDefinition = cleanEmDashes(COMPELLING_BY_ID.get(slug) ?? mock.definition);
 
   return (
     <PageLayout
@@ -225,10 +227,12 @@ export default async function RecipeDetailV41Page({ params }: Params) {
     >
       {/*
         Panel order — pedagogical sort:
-          1. STRUCTURE   IdentityCard (incl. corpus size) · IndicatorSet · Window
-          2. VALIDATION  Discrimination · Reliability · Calibration
-          3. RESULTS     CountriesPanel · ScoreDistribution
-          4. DEEP-DIVE   Precedents · TrajectoryAlignment · IndicatorSensitivity
+          1. STRUCTURE   Identity Card · Building Blocks · Optimal Window
+          2. PRECEDENTS  the real events this trend was built from (led with,
+                         full-width, expanded by default)
+          3. VALIDATION  Discrimination · Reliability · Calibration
+          4. RESULTS     Countries · Score Distribution
+          5. DEEP-DIVE   Trajectory Alignment · Indicator Sensitivity
       */}
 
       {/* 1. STRUCTURE */}
@@ -245,11 +249,24 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       <WindowPanel
         familyColor={familyColor}
         windowYears={mock.window}
+        trendName={recipe.label}
+        example={getWindowExample(slug)}
         ciLow={windowSearchMin}
         ciHigh={windowSearchMax}
       />
 
-      {/* 2. VALIDATION (does it work) */}
+      {/* 2. PRECEDENTS — the real-world events that built this trend. Lifted up
+          here (second band) and expanded by default so the human anchor for the
+          whole page reads early, not buried in the deep-dive. */}
+      <ExpandableShell familyColor={familyColor} label="Precedents" defaultExpanded>
+        <PrecedentsTimelinePanel
+          familyColor={familyColor}
+          events={corpusEvents}
+          totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
+        />
+      </ExpandableShell>
+
+      {/* 3. VALIDATION (does it work) */}
       <DiscriminationPanel
         familyColor={familyColor}
         locoAuc={locoAuc}
@@ -271,7 +288,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         ece={calibrationEce ?? undefined}
       />
 
-      {/* 3. RESULTS (what does it find) */}
+      {/* 4. RESULTS (what does it find) */}
       <CountriesPanel
         familyColor={familyColor}
         countriesTop={mock.countriesTop}
@@ -280,7 +297,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         showResults={showResults}
         recipeId={recipe.recipe_id}
       />
-      <ExpandableShell familyColor={familyColor} label="Score distribution">
+      <ExpandableShell familyColor={familyColor} label="Score Distribution">
         <ScoreDistributionPanel
           familyColor={familyColor}
           histogram={extras.distribution.histogram}
@@ -292,15 +309,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         />
       </ExpandableShell>
 
-      {/* 4. DEEP-DIVE (anatomy of the prediction) */}
-      <ExpandableShell familyColor={familyColor} label="Precedents">
-        <PrecedentsTimelinePanel
-          familyColor={familyColor}
-          events={corpusEvents}
-          totalEventsInCorpus={totalEventsInCorpus || (mock.nPositives ?? 0)}
-        />
-      </ExpandableShell>
-      <ExpandableShell familyColor={familyColor} label="Trajectory alignment">
+      {/* 5. DEEP-DIVE (anatomy of the prediction) */}
+      <ExpandableShell familyColor={familyColor} label="Trajectory Alignment">
         <PatternAlignmentPanel
           familyColor={familyColor}
           recipeId={recipe.recipe_id}
@@ -310,7 +320,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           hasTrajectory={hasTrajectory}
         />
       </ExpandableShell>
-      <ExpandableShell familyColor={familyColor} label="Indicator sensitivity">
+      <ExpandableShell familyColor={familyColor} label="Indicator Sensitivity">
         <IndicatorSensitivityPanel
           familyColor={familyColor}
           indicators={enrichedIndicators.map((i) => ({

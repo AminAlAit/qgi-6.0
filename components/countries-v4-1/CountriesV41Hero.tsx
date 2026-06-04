@@ -62,7 +62,7 @@ export function CountriesV41Hero({
             margin: 0,
           }}
         >
-          Every country we track, with the recipes its recent signals resemble, the
+          Every country we track, with the trends its recent signals resemble, the
           indicators behind each score, how it has moved, and its closest historical
           analogues. Scores measure resemblance to past pre-event conditions, not the
           chance an event will happen. Open any card for the full country view.

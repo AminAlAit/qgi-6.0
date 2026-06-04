@@ -21,12 +21,20 @@ interface Props {
   /** ARIA label root, e.g. "Score distribution". The toggle button gets
    *  "Expand <label>" / "Minimize <label>" appended. */
   label: string;
+  /** Start in the expanded (full-row) state. Used for panels we want to lead
+   *  with, e.g. Precedents. The user can still minimize it. */
+  defaultExpanded?: boolean;
   /** The chart panel (already a self-styled <section>). */
   children: ReactNode;
 }
 
-export function ExpandableShell({ familyColor, label, children }: Props) {
-  const [expanded, setExpanded] = useState(false);
+export function ExpandableShell({
+  familyColor,
+  label,
+  defaultExpanded = false,
+  children,
+}: Props) {
+  const [expanded, setExpanded] = useState(defaultExpanded);
 
   return (
     <div

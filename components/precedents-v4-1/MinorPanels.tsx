@@ -16,6 +16,7 @@ import type { ReactNode } from "react";
 import { PanelBase } from "./PanelBase";
 import { IndicatorDonut } from "./IndicatorDonut";
 import { flagFor } from "@/lib/te-mock/country-flags";
+import { stripProviderSuffix } from "@/lib/indicator-labels";
 import type { IndicatorWithWeight, CountryScore } from "@/lib/te-mock/recipe-v4-1-mock";
 
 /* ───────── DefinitionPanel (deprecated — kept for compat) ──────────── */
@@ -30,7 +31,7 @@ export function DefinitionPanel({
     <PanelBase
       title="Definition"
       familyColor={familyColor}
-      titleTooltip="The recipe's structural identity. Locked at recipe creation; refines as curated events grow."
+      titleTooltip="The trend's structural identity. Locked at trend creation; refines as curated events grow."
       id="cap-1"
     >
       <p
@@ -68,12 +69,12 @@ export function IndicatorSetPanel({
 
   return (
     <PanelBase
-      title="Indicator set"
+      title="Building Blocks"
       familyColor={familyColor}
-      titleTooltip={`The ${indicators.length || "N"} ingredients whose canonical movement shape defines this recipe. Their weights sum to 100% across the selected set.`}
+      titleTooltip={`The ${indicators.length || "N"} indicators whose combined canonical movement shape defines this trend. Each slice is one signal's weight, derived from its SHAP contribution; weights total 100% across the set.`}
       caption={
         indicators.length > 0
-          ? `The complete signal set for this recipe. Each slice is one indicator; its size is how much that signal counts toward the score. They sum to the whole.`
+          ? `These are the building blocks that give this trend its fingerprint: the handful of signals whose combined movement defines what it looks like in the data.`
           : undefined
       }
       sectionPending={indicators.length === 0 ? "discrimination" : null}
@@ -109,7 +110,7 @@ export function IndicatorSetPanel({
               >
                 {ind.provider}
               </span>
-              {ind.name}
+              {stripProviderSuffix(ind.name)}
             </li>
           ))}
         </ul>
@@ -125,23 +126,39 @@ export function IndicatorSetPanel({
 export function WindowPanel({
   familyColor,
   windowYears,
+  trendName,
+  example,
   ciLow,
   ciHigh,
 }: {
   familyColor: string;
   windowYears: number;
+  /** This trend's display name, used in the plain-English line + example. */
+  trendName: string;
+  /** A real precedent grounding the example; omitted when none is available. */
+  example?: {
+    country: string;
+    iso2: string;
+    year: number;
+    label: string;
+  } | null;
   ciLow?: number;
   ciHigh?: number;
 }) {
   const sweepCopy =
     ciLow !== undefined && ciHigh !== undefined
-      ? `Chosen from a search across ${ciLow}–${ciHigh} years of history.`
-      : null;
+      ? ` Chosen by searching ${ciLow}–${ciHigh} years of history and keeping the most predictive length.`
+      : "";
+  // Lower-case the trend so it reads mid-sentence ("a foreign intervention").
+  const trendLower = trendName.charAt(0).toLowerCase() + trendName.slice(1);
+  const startYear = example ? example.year - windowYears : null;
+
   return (
     <PanelBase
-      title="Optimal window"
+      title="Optimal Window"
       familyColor={familyColor}
-      titleTooltip="How many years of indicator history before the event the recipe's canonical shape spans."
+      titleTooltip="Chosen by sweeping a range of window lengths and keeping the one whose canonical movement shape separates pre-event years most cleanly."
+      caption={`In the data, the warning signs of a ${trendLower} build over about ${windowYears} years. That is the run-up this trend reads before the event arrives.`}
       id="cap-3"
       dataTour="window-panel"
     >
@@ -149,7 +166,7 @@ export function WindowPanel({
         style={{
           display: "flex",
           flexDirection: "column",
-          gap: "10px",
+          gap: "14px",
           marginTop: "2px",
         }}
       >
@@ -180,23 +197,110 @@ export function WindowPanel({
             years
           </span>
         </div>
+
+        {/* Advanced layer — the methodology wording, for readers who want it.
+            The plain-English version lives in the panel caption above. */}
         <p
           style={{
-            fontSize: "12.5px",
+            fontSize: "11.5px",
             lineHeight: 1.55,
-            color: "var(--qgi-text-muted)",
+            color: "var(--qgi-text-dim)",
             margin: 0,
           }}
         >
-          The recipe&apos;s canonical shape spans the {windowYears} years leading up to
-          each event.
-          {sweepCopy ? (
-            <>
-              {" "}
-              <span style={{ color: "var(--qgi-text-dim)" }}>{sweepCopy}</span>
-            </>
-          ) : null}
+          Technically, the trend&apos;s canonical movement shape spans the {windowYears}{" "}
+          years of indicator history leading up to each event.{sweepCopy}
         </p>
+
+        {/* Example — a real precedent. End year is the event itself; the start
+            year is one window earlier, so the line shows the actual run-up. */}
+        {example && startYear !== null && (
+          <div
+            style={{
+              borderTop: "1px dashed var(--qgi-border)",
+              paddingTop: "12px",
+              display: "flex",
+              flexDirection: "column",
+              gap: "8px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "9.5px",
+                letterSpacing: "1px",
+                color: "var(--qgi-text-dim)",
+                fontFamily: "ui-monospace, monospace",
+                textTransform: "uppercase",
+              }}
+            >
+              Example
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                flexWrap: "wrap",
+              }}
+            >
+              <img
+                src={`https://flagcdn.com/24x18/${example.iso2}.png`}
+                alt={`${example.country} flag`}
+                width={24}
+                height={18}
+                style={{ borderRadius: "2px", flexShrink: 0 }}
+              />
+              <span
+                style={{ fontSize: "13px", color: "var(--qgi-text)", fontWeight: 600 }}
+              >
+                {example.country}
+              </span>
+              <span style={{ color: familyColor, fontWeight: 700 }}>→</span>
+              <span style={{ fontSize: "13px", color: familyColor, fontWeight: 600 }}>
+                {trendLower}
+              </span>
+            </div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                fontFamily: "ui-monospace, monospace",
+                fontSize: "12px",
+                color: "var(--qgi-text-muted)",
+              }}
+            >
+              <span>{startYear}</span>
+              <span
+                style={{
+                  flex: 1,
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  color: "var(--qgi-text-dim)",
+                  minWidth: "70px",
+                }}
+              >
+                <span
+                  style={{ flex: 1, height: "1px", background: "var(--qgi-border)" }}
+                />
+                {windowYears}y
+                <span
+                  style={{ flex: 1, height: "1px", background: "var(--qgi-border)" }}
+                />
+                <span style={{ color: familyColor }}>→</span>
+              </span>
+              <span style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
+                {example.year}
+              </span>
+            </div>
+            <div
+              style={{ fontSize: "11px", lineHeight: 1.45, color: "var(--qgi-text-dim)" }}
+            >
+              {example.label}
+            </div>
+          </div>
+        )}
       </div>
     </PanelBase>
   );
@@ -267,9 +371,9 @@ export function IdentityCardPanel({
   const eligibleLabel = thresholdMet ? "Ready to evaluate" : "Building the case corpus";
   return (
     <PanelBase
-      title="Identity card"
+      title="Identity Card"
       familyColor={familyColor}
-      titleTooltip="The recipe's ID badge: where it sits in the taxonomy, how many signals it uses, where it stands today, and how many real-world cases are documented in its corpus."
+      titleTooltip="The trend's ID badge: where it sits in the taxonomy, how many signals it uses, where it stands today, and how many real-world cases are documented in its corpus."
       id="cap-5"
       dataTour="identity-card-panel"
     >
@@ -292,7 +396,7 @@ export function IdentityCardPanel({
               title={
                 thresholdMet
                   ? "The case corpus is large enough for a clean assessment."
-                  : "We are still expanding the case corpus; the recipe enters assessment when the corpus crosses the threshold."
+                  : "We are still expanding the case corpus; the trend enters assessment when the corpus crosses the threshold."
               }
               style={{
                 fontSize: "9.5px",
@@ -394,7 +498,8 @@ export function DiscriminationPanel({
     <PanelBase
       title="Discrimination"
       familyColor={familyColor}
-      titleTooltip={`Leave-One-Cohort-Out AUC. How cleanly the recipe separates pre-event country-years from non-event ones. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a recipe must clear it before graduation.`}
+      titleTooltip={`Leave-One-Cohort-Out AUC: the trend is scored only on country groups it never trained on. The pre-registered validation threshold is ${lockFloor.toFixed(4)}; a trend must clear it to graduate.`}
+      caption="Can this trend tell apart countries heading for the event from those that are not? Higher means a cleaner split. 0.50 is a coin toss."
       sectionPending={!showResults || locoAuc === null ? "discrimination" : null}
       id="cap-6"
       dataTour="discrimination-panel"

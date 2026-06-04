@@ -117,7 +117,7 @@ function HeroRow({
   return (
     <li>
       <Link
-        href={`/recipes/${pair.recipe_id}` as Route}
+        href={`/trends/${pair.recipe_id}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
       >
         <div

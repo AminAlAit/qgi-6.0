@@ -32,8 +32,8 @@ import {
 /**
  * RecipeCard
  *
- * `basePath` defaults to /recipes (V4 gallery). The V4.1 gallery
- * passes "/recipes" so card clicks land on V4.1 detail pages.
+ * `basePath` defaults to /trends (V4 gallery). The V4.1 gallery
+ * passes "/trends" so card clicks land on V4.1 detail pages.
  *
  * `labelStrategy` defaults to "legacy" (byte-identical V4 behavior). Pass
  * "v4.1" for the polished gallery to emit the V4.1 vocabulary
@@ -52,7 +52,7 @@ import {
  */
 export function RecipeCard({
   recipe,
-  basePath = "/recipes",
+  basePath = "/trends",
   labelStrategy = "legacy",
 }: {
   recipe: TrackerRecipe;

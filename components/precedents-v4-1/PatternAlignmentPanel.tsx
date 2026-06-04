@@ -9,7 +9,7 @@
  */
 import Link from "next/link";
 import type { Route } from "next";
-import { getIndicatorLabel } from "@/lib/indicator-labels";
+import { getIndicatorLabel, stripProviderSuffix } from "@/lib/indicator-labels";
 
 export interface AlignmentIndicator {
   code: string;
@@ -78,7 +78,7 @@ export function PatternAlignmentPanel({
             margin: 0,
           }}
         >
-          Trajectory alignment
+          Trajectory Alignment
         </h2>
         <span
           style={{
@@ -105,7 +105,7 @@ export function PatternAlignmentPanel({
           maxWidth: "65ch",
         }}
       >
-        For a country to score high on this recipe, its signals need to MOVE in this shape
+        For a country to score high on this trend, its signals need to MOVE in this shape
         across the window. The <strong>bold line</strong> is the average path across every
         verified precedent; the shaded band is the range the middle 50% of precedents
         followed.
@@ -171,7 +171,7 @@ export function PatternAlignmentPanel({
         <span>year-0 = event year</span>
         {hasTrajectory && (
           <Link
-            href={`/recipes/${recipeId}/trajectory` as Route}
+            href={`/trends/${recipeId}/trajectory` as Route}
             style={{
               marginLeft: "auto",
               fontFamily: "ui-monospace, monospace",
@@ -239,7 +239,7 @@ function IndicatorShape({
           }}
           title={`${indicator.name || getIndicatorLabel(indicator.code)} (${indicator.code})`}
         >
-          {indicator.name || getIndicatorLabel(indicator.code)}
+          {stripProviderSuffix(indicator.name || getIndicatorLabel(indicator.code))}
         </div>
         {/* 2026-05-27 (#159): raw indicator code hidden from visible row;
             available on hover via the title attribute. */}
