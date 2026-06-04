@@ -1,38 +1,21 @@
 /**
- * PrecedentsTimelinePanel — V4.1 "Precedents" section (renamed from
- * "Recent additions" 2026-05-27). Horizontal-timeline ticker of the
- * recipe's verified-positive corpus events: year-axis tick marks,
- * green "+" for added / red "−" for vacated dots.
+ * PrecedentsTimelinePanel — V4.1 "Precedents" section.
  *
- * 2026-05-27 #162 part A:
- *   The chip strip below the timeline (one chip per event) was dropped.
- *   Each event now surfaces ONLY on hover/focus of its dot, as a small
- *   popup themed like Sofia's TooltipChip (small box, family-color left
- *   border, dark surface background). One surface, not two — kills the
- *   redundancy and lets the timeline breathe.
+ * 2026-06-04 (founder): redesigned from a per-event dot timeline into a
+ * year-frequency HISTOGRAM. Each bar is one year; its height is how many
+ * verified cases of this trend the corpus holds for that year. Bars are the
+ * trend's family color — no green/red, no "+"/"−" markers, no "ADDED" badge.
+ * Only the corpus (verified) cases are surfaced; vacated/removed cases are not
+ * shown here (green-only, by founder direction). Hovering a bar opens a single
+ * popup listing every case that year (flag + country + event title) — one bar,
+ * one popup, instead of N dots each with its own popup.
  *
- * 2026-05-27 #162 part B:
- *   Popup flags are <img src="https://flagcdn.com/16x12/<iso2>.png" />
- *   instead of emoji codepoints. Windows 10 default font stack has no
- *   regional-indicator glyph table, so 🇺🇦 renders as "UA". flagcdn gives
- *   us identical bitmap output across Windows / macOS / Linux. Emoji
- *   stays in the data for ARIA / fallback.
- *
- * Title casing harmonised with peer V4.1 panels ("Sample-size sufficiency",
- * "Reliability", "Indicator sensitivity") 2026-05-27 per founder #157.
- * Footer legend extended in the same pass to communicate the MEANING of
- * "added" / "vacated" curator actions, not just their colors.
- *
- * — Daniyar Bekmurat, Comparative Historical Pattern Matching
+ * Flags via flagcdn (Windows has no regional-indicator glyph table); the emoji
+ * is kept as an ARIA/fallback only.
  */
 "use client";
 
-import { useState, type CSSProperties } from "react";
-// 2026-05-29 (Naila #27): switched from country-iso2 to country-flags' iso2For
-// — the country-flags lookup is the more complete table (including the
-// 2026-05-29 gap-fill batch covering Ivory Coast, Benin, Togo, Tanzania,
-// Liberia, Republic of Congo, Mauritania, etc.). country-iso2 returns
-// empty string on miss; country-flags returns null — we treat both as falsy.
+import { useState, useRef, type CSSProperties } from "react";
 import { iso2For } from "@/lib/te-mock/country-flags";
 
 export interface PrecedentEvent {
@@ -55,47 +38,8 @@ export function PrecedentsTimelinePanel({
   events,
   totalEventsInCorpus,
 }: PrecedentsTimelinePanelProps) {
-  const sorted = [...events].sort((a, b) => a.year - b.year);
-  const visibleAdded = sorted.filter((e) => e.action === "added").length;
-  const visibleVacated = sorted.filter((e) => e.action === "vacated").length;
-
-  const minYear = sorted.length > 0 ? sorted[0].year - 1 : new Date().getFullYear() - 10;
-  const maxYear =
-    sorted.length > 0 ? sorted[sorted.length - 1].year + 1 : new Date().getFullYear();
-  const yearSpan = Math.max(1, maxYear - minYear);
-
-  const byYear = new Map<number, PrecedentEvent[]>();
-  for (const ev of sorted) {
-    const bucket = byYear.get(ev.year) ?? [];
-    bucket.push(ev);
-    byYear.set(ev.year, bucket);
-  }
-
-  // Viewport-space coords (px) so the popup can be absolutely positioned
-  // OVER the SVG. We keep the SVG dimensions as the layout's truth and
-  // mirror coords for popup placement via a parent wrapper at the same
-  // aspect ratio.
-  const W = 540;
-  const H = 132;
-  const padL = 14;
-  const padR = 14;
-  const axisY = 86;
-  const innerW = W - padL - padR;
-  const xFor = (year: number) => padL + ((year - minYear) / yearSpan) * innerW;
-
-  const tickStep = Math.max(1, Math.ceil(yearSpan / 7));
-  const ticks: number[] = [];
-  for (let y = minYear; y <= maxYear; y += tickStep) ticks.push(y);
-  if (ticks[ticks.length - 1] !== maxYear) ticks.push(maxYear);
-
-  const chipStyle: CSSProperties = {
-    fontFamily: "ui-monospace, monospace",
-    fontSize: "10px",
-    letterSpacing: "0.3px",
-  };
-
-  const ADDED = "#3FBF8F";
-  const VACATED = "#E64545";
+  // Green-only: surface the corpus (verified) cases; vacated cases are dropped.
+  const corpus = events.filter((e) => e.action !== "vacated");
 
   const titleStyle: CSSProperties = {
     fontSize: "15px",
@@ -104,39 +48,30 @@ export function PrecedentsTimelinePanel({
     margin: 0,
     letterSpacing: "0.1px",
   };
-
-  // ── Flat positioned model for hover targets and popups ──────────────────
-  // Each event gets a stable id from year+iso+stack index; we pre-compute
-  // its normalised x (% across the SVG) and y (% down the SVG) so the
-  // overlaid HTML popup can land near the dot regardless of container size.
-  type Positioned = {
-    id: string;
-    ev: PrecedentEvent;
-    cxSvg: number;
-    cySvg: number;
-    xPct: number; // 0..100
-    yPct: number; // 0..100
+  const chipStyle: CSSProperties = {
+    fontFamily: "ui-monospace, monospace",
+    fontSize: "10px",
+    letterSpacing: "0.3px",
   };
-  const positioned: Positioned[] = [];
-  for (const [year, bucket] of byYear.entries()) {
-    bucket.forEach((ev, i) => {
-      const cxSvg = xFor(year);
-      const cySvg = axisY - 16 - i * 16;
-      positioned.push({
-        id: `${ev.country_iso}-${year}-${i}`,
-        ev,
-        cxSvg,
-        cySvg,
-        xPct: (cxSvg / W) * 100,
-        yPct: (cySvg / H) * 100,
-      });
-    });
-  }
 
-  const [hoveredId, setHoveredId] = useState<string | null>(null);
-  const hovered = positioned.find((p) => p.id === hoveredId) ?? null;
+  const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  // Hover bridge: a short grace delay before hiding lets the cursor cross the
+  // gap from a bar into the popup (and stay there to scroll a busy year's list)
+  // without the popup vanishing.
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showYear = (y: number) => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setHoveredYear(y);
+  };
+  const scheduleHide = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setHoveredYear(null), 140);
+  };
+  const cancelHide = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+  };
 
-  if (sorted.length === 0) {
+  if (corpus.length === 0) {
     return (
       <section
         aria-labelledby="precedents-panel-heading-empty"
@@ -164,11 +99,45 @@ export function PrecedentsTimelinePanel({
             fontSize: "13px",
           }}
         >
-          No recent curation actions for this trend at the current release.
+          No precedent events for this trend at the current release.
         </div>
       </section>
     );
   }
+
+  // ── Bin by year ──────────────────────────────────────────────────────────
+  const byYear = new Map<number, PrecedentEvent[]>();
+  for (const ev of corpus) {
+    const bucket = byYear.get(ev.year) ?? [];
+    bucket.push(ev);
+    byYear.set(ev.year, bucket);
+  }
+  const years = [...byYear.keys()].sort((a, b) => a - b);
+  const minYear = years[0];
+  const maxYear = years[years.length - 1];
+  const span = Math.max(1, maxYear - minYear + 1);
+  const maxCount = Math.max(...[...byYear.values()].map((b) => b.length));
+
+  // ── Chart geometry (viewBox units) ───────────────────────────────────────
+  const W = 560;
+  const chartH = 120;
+  const axisLabelH = 20;
+  const H = chartH + axisLabelH;
+  const padL = 8;
+  const padR = 8;
+  const innerW = W - padL - padR;
+  const colW = innerW / span;
+  const barW = Math.min(colW * 0.7, 24);
+  const xCenter = (year: number) => padL + (year - minYear + 0.5) * colW;
+  const barHeight = (count: number) => (count / maxCount) * (chartH - 8);
+
+  // Year-axis ticks (~7 evenly spaced).
+  const tickStep = Math.max(1, Math.ceil(span / 7));
+  const ticks: number[] = [];
+  for (let y = minYear; y <= maxYear; y += tickStep) ticks.push(y);
+  if (ticks[ticks.length - 1] !== maxYear) ticks.push(maxYear);
+
+  const hoveredEvents = hoveredYear != null ? (byYear.get(hoveredYear) ?? []) : [];
 
   return (
     <section
@@ -176,8 +145,8 @@ export function PrecedentsTimelinePanel({
       data-tour="precedents-timeline-panel"
       style={{
         background: "var(--qgi-surface)",
-        borderLeft: `3px solid ${familyColor}`,
         border: "1px solid var(--qgi-border)",
+        borderLeft: `3px solid ${familyColor}`,
         borderRadius: "6px",
         padding: "16px 18px 18px",
         minWidth: "340px",
@@ -187,283 +156,232 @@ export function PrecedentsTimelinePanel({
         style={{
           display: "flex",
           alignItems: "baseline",
-          justifyContent: "space-between",
-          gap: "12px",
+          gap: "10px",
           marginBottom: "4px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "baseline", gap: "10px" }}>
-          <h2 id="precedents-panel-heading" style={titleStyle}>
-            Precedents
-          </h2>
-          <span style={{ ...chipStyle, color: "var(--qgi-text-dim)" }}>
-            curated-event corpus
-          </span>
-        </div>
-        {/* 2026-05-29 (Naila #27): right-side "75 verified events" chip
-            removed; the subtitle below carries the same number with a
-            proper sentence, so the chip was duplicate signal. */}
+        <h2 id="precedents-panel-heading" style={titleStyle}>
+          Precedents
+        </h2>
+        <span style={{ ...chipStyle, color: "var(--qgi-text-dim)" }}>
+          verified cases by year
+        </span>
       </header>
 
-      {/* 2026-05-29 (Naila #27): subtitle rewritten with proper spacing —
-          previously rendered as "75verified events..." due to a missing
-          space in the template literal. Sentence reads cleanly now and
-          carries the count, the curation actions count, and the hover hint
-          in one breath. */}
       <p
         style={{
           fontSize: "12px",
           color: "var(--qgi-text-muted)",
-          margin: "2px 0 14px",
+          margin: "2px 0 16px",
           lineHeight: 1.5,
         }}
       >
         These are the real-world events that built this trend: the documented cases its
-        shape was learned from. {totalEventsInCorpus.toLocaleString()} verified events sit
-        in the corpus; the timeline shows the {sorted.length} most recent. Hover any
-        marker for detail.
+        shape was learned from, {corpus.length.toLocaleString()} in all from {minYear} to{" "}
+        {maxYear}. Each bar is a year; hover it to see that year&apos;s cases.
       </p>
 
-      {/* Timeline + popup overlay. The wrapper is `position: relative` and
-          carries an aspect ratio matching the SVG viewBox, so the popup
-          (HTML, not SVG) can be placed at xPct/yPct of the wrapper and
-          land on top of the right dot. */}
-      <div style={{ overflowX: "auto" }}>
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            minWidth: "320px",
-            aspectRatio: `${W} / ${H}`,
-          }}
+      {/* Histogram + hover popup overlay. The wrapper is position:relative with
+          the SVG's aspect ratio so the HTML popup can anchor at a bar's x. */}
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          minWidth: "320px",
+          aspectRatio: `${W} / ${H}`,
+        }}
+      >
+        <svg
+          width="100%"
+          height="100%"
+          viewBox={`0 0 ${W} ${H}`}
+          role="img"
+          aria-label={`Histogram of ${corpus.length} verified cases by year, ${minYear} to ${maxYear}`}
+          style={{ display: "block", position: "absolute", inset: 0 }}
         >
-          <svg
-            width="100%"
-            height="100%"
-            viewBox={`0 0 ${W} ${H}`}
-            role="img"
-            aria-label="Horizontal timeline of curated-event corpus actions"
-            style={{ display: "block", position: "absolute", inset: 0 }}
-          >
-            <line
-              x1={padL}
-              x2={W - padR}
-              y1={axisY}
-              y2={axisY}
-              stroke="var(--qgi-border)"
-              strokeWidth={1}
-            />
-            {ticks.map((y) => (
-              <g key={`tick-${y}`}>
-                <line
-                  x1={xFor(y)}
-                  x2={xFor(y)}
-                  y1={axisY - 3}
-                  y2={axisY + 3}
-                  stroke="var(--qgi-text-dim)"
-                  strokeWidth={1}
-                />
-                <text
-                  x={xFor(y)}
-                  y={axisY + 16}
-                  fontSize="9"
-                  textAnchor="middle"
-                  fill="var(--qgi-text-dim)"
-                  fontFamily="ui-monospace, monospace"
-                >
-                  {y}
-                </text>
-              </g>
-            ))}
-            {positioned.map((p) => {
-              const { ev, cxSvg, cySvg, id } = p;
-              const color = ev.action === "added" ? ADDED : VACATED;
-              const isHovered = hoveredId === id;
-              return (
-                <g key={id}>
-                  <line
-                    x1={cxSvg}
-                    x2={cxSvg}
-                    y1={axisY}
-                    y2={cySvg + 5}
-                    stroke={color}
-                    strokeWidth={0.8}
-                    opacity={isHovered ? 0.95 : 0.55}
-                  />
-                  <circle
-                    cx={cxSvg}
-                    cy={cySvg}
-                    r={isHovered ? 5.5 : 4.5}
-                    fill={color}
-                    opacity={0.95}
-                  />
-                  {ev.action === "added" ? (
-                    <g stroke="var(--qgi-bg)" strokeWidth={1.4} strokeLinecap="round">
-                      <line x1={cxSvg - 2.2} x2={cxSvg + 2.2} y1={cySvg} y2={cySvg} />
-                      <line x1={cxSvg} x2={cxSvg} y1={cySvg - 2.2} y2={cySvg + 2.2} />
-                    </g>
-                  ) : (
-                    <line
-                      x1={cxSvg - 2.4}
-                      x2={cxSvg + 2.4}
-                      y1={cySvg}
-                      y2={cySvg}
-                      stroke="var(--qgi-bg)"
-                      strokeWidth={1.4}
-                      strokeLinecap="round"
-                    />
-                  )}
-                </g>
-              );
-            })}
-          </svg>
-
-          {/* HTML hover/focus targets: one transparent disc per dot, sized
-              larger than the SVG circle so the hit area is generous. We
-              keep these as buttons so keyboard focus surfaces the same
-              popup as mouse hover (accessibility parity). */}
-          {positioned.map((p) => {
-            const { ev, xPct, yPct, id } = p;
-            const labelAction = ev.action === "added" ? "added" : "removed";
+          {/* baseline */}
+          <line
+            x1={padL}
+            x2={W - padR}
+            y1={chartH}
+            y2={chartH}
+            stroke="var(--qgi-border)"
+            strokeWidth={1}
+          />
+          {/* bars */}
+          {years.map((year) => {
+            const count = byYear.get(year)!.length;
+            const h = barHeight(count);
+            const x = xCenter(year) - barW / 2;
+            const isHovered = hoveredYear === year;
             return (
-              <button
-                key={`hit-${id}`}
-                type="button"
-                aria-label={`${ev.year} ${ev.country}, ${labelAction}: ${ev.reason}`}
-                onMouseEnter={() => setHoveredId(id)}
-                onMouseLeave={() => setHoveredId((prev) => (prev === id ? null : prev))}
-                onFocus={() => setHoveredId(id)}
-                onBlur={() => setHoveredId((prev) => (prev === id ? null : prev))}
-                style={{
-                  position: "absolute",
-                  left: `${xPct}%`,
-                  top: `${yPct}%`,
-                  width: "18px",
-                  height: "18px",
-                  transform: "translate(-50%, -50%)",
-                  padding: 0,
-                  border: "none",
-                  borderRadius: "50%",
-                  background: "transparent",
-                  cursor: "pointer",
-                  outline: "none",
-                }}
+              <rect
+                key={year}
+                x={x}
+                y={chartH - h}
+                width={barW}
+                height={h}
+                rx={Math.min(2, barW / 2)}
+                fill={familyColor}
+                opacity={hoveredYear == null ? 0.82 : isHovered ? 1 : 0.3}
+                style={{ transition: "opacity 120ms ease" }}
               />
             );
           })}
+          {/* year ticks */}
+          {ticks.map((y) => (
+            <text
+              key={`tick-${y}`}
+              x={xCenter(y)}
+              y={chartH + 14}
+              fontSize="9"
+              textAnchor="middle"
+              fill="var(--qgi-text-dim)"
+              fontFamily="ui-monospace, monospace"
+            >
+              {y}
+            </text>
+          ))}
+        </svg>
 
-          {/* The popup itself — single instance, repositioned per hover.
-              Smart placement: dot in the right 25% opens left; dot in
-              the top 30% opens below; otherwise default opens above &
-              centered. Translate values are picked so the popup never
-              clips its own anchor. */}
-          {hovered &&
-            (() => {
-              const ev = hovered.ev;
-              const iso = iso2For(ev.country);
-              const opensLeft = hovered.xPct > 75;
-              const opensRight = hovered.xPct < 18;
-              const opensBelow = hovered.yPct < 30;
+        {/* Hover/focus hit-areas: one transparent button per year column,
+            covering the full bar height so the whole column is hoverable. */}
+        {years.map((year) => {
+          const leftPct = ((xCenter(year) - colW / 2) / W) * 100;
+          const wPct = (colW / W) * 100;
+          const count = byYear.get(year)!.length;
+          return (
+            <button
+              key={`hit-${year}`}
+              type="button"
+              aria-label={`${year}: ${count} case${count === 1 ? "" : "s"}`}
+              onMouseEnter={() => showYear(year)}
+              onMouseLeave={scheduleHide}
+              onFocus={() => showYear(year)}
+              onBlur={scheduleHide}
+              style={{
+                position: "absolute",
+                left: `${leftPct}%`,
+                top: 0,
+                width: `${wPct}%`,
+                height: `${(chartH / H) * 100}%`,
+                padding: 0,
+                border: "none",
+                background: "transparent",
+                cursor: "pointer",
+                outline: "none",
+              }}
+            />
+          );
+        })}
 
-              // Translate is "(x)% (y)%" relative to popup size. The
-              // anchor (left/top) is the dot center; the translate
-              // moves the popup to the desired quadrant.
-              let tx = "-50%";
-              let ty = "calc(-100% - 10px)"; // default: above & centered
-              if (opensLeft) {
-                tx = "calc(-100% - 10px)";
-                ty = "-50%";
-              } else if (opensRight) {
-                tx = "10px";
-                ty = "-50%";
-              } else if (opensBelow) {
-                ty = "calc(0% + 14px)";
-              }
-
-              const color = ev.action === "added" ? ADDED : VACATED;
-
-              return (
+        {/* Single popup, repositioned per hovered year, listing every case. */}
+        {hoveredYear != null &&
+          hoveredEvents.length > 0 &&
+          (() => {
+            const xPct = (xCenter(hoveredYear) / W) * 100;
+            // Horizontal placement: clamp at the edges so the popup stays on-card.
+            let tx = "-50%";
+            if (xPct < 26)
+              tx = "-8px"; // near left edge: open to the right
+            else if (xPct > 74) tx = "calc(-100% + 8px)"; // near right edge: open left
+            return (
+              <div
+                role="tooltip"
+                onMouseEnter={cancelHide}
+                onMouseLeave={scheduleHide}
+                style={{
+                  position: "absolute",
+                  left: `${xPct}%`,
+                  top: 0,
+                  transform: `translate(${tx}, calc(-100% - 8px))`,
+                  zIndex: 50,
+                  minWidth: "230px",
+                  maxWidth: "330px",
+                  maxHeight: "240px",
+                  overflowY: "auto",
+                  padding: "9px 11px 10px",
+                  background: "var(--qgi-surface-2)",
+                  border: "1px solid var(--qgi-border)",
+                  borderLeft: `2px solid ${familyColor}`,
+                  borderRadius: "5px",
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+                  fontSize: "11px",
+                  lineHeight: 1.5,
+                  color: "var(--qgi-text)",
+                }}
+              >
                 <div
-                  role="tooltip"
                   style={{
-                    position: "absolute",
-                    left: `${hovered.xPct}%`,
-                    top: `${hovered.yPct}%`,
-                    transform: `translate(${tx}, ${ty})`,
-                    zIndex: 50,
-                    minWidth: "200px",
-                    maxWidth: "280px",
-                    padding: "8px 10px 9px",
-                    background: "var(--qgi-surface-2)",
-                    border: "1px solid var(--qgi-border)",
-                    borderLeft: `2px solid ${familyColor}`,
-                    borderRadius: "5px",
-                    boxShadow: "0 4px 16px rgba(0,0,0,0.35)",
-                    pointerEvents: "none",
+                    display: "flex",
+                    alignItems: "baseline",
+                    gap: "8px",
+                    marginBottom: "7px",
                     fontFamily: "ui-monospace, monospace",
-                    fontSize: "11px",
-                    lineHeight: 1.5,
-                    color: "var(--qgi-text)",
-                    letterSpacing: "0.1px",
                   }}
                 >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "6px",
-                      marginBottom: "4px",
-                    }}
-                  >
-                    {iso ? (
-                      <img
-                        src={`https://flagcdn.com/16x12/${iso}.png`}
-                        alt={`${ev.country} flag`}
-                        width={16}
-                        height={12}
-                        style={{
-                          display: "inline-block",
-                          verticalAlign: "middle",
-                          borderRadius: "1px",
-                          flex: "0 0 16px",
-                        }}
-                      />
-                    ) : (
-                      <span aria-hidden="true" style={{ fontSize: "12px" }}>
-                        {ev.flag_emoji}
-                      </span>
-                    )}
-                    <span style={{ color: "var(--qgi-text-dim)" }}>{ev.year}</span>
-                    <span style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
-                      {ev.country}
-                    </span>
-                    <span
-                      style={{
-                        marginLeft: "auto",
-                        color,
-                        fontWeight: 700,
-                        textTransform: "uppercase",
-                        fontSize: "9.5px",
-                        letterSpacing: "0.6px",
-                      }}
-                    >
-                      {ev.action === "vacated" ? "removed" : ev.action}
-                    </span>
-                  </div>
-                  <div
-                    style={{
-                      color: "var(--qgi-text-muted)",
-                      fontFamily:
-                        "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {ev.reason}
-                  </div>
+                  <span style={{ color: familyColor, fontWeight: 700, fontSize: "13px" }}>
+                    {hoveredYear}
+                  </span>
+                  <span style={{ color: "var(--qgi-text-dim)", fontSize: "10px" }}>
+                    {hoveredEvents.length} case{hoveredEvents.length === 1 ? "" : "s"}
+                  </span>
                 </div>
-              );
-            })()}
-        </div>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "7px",
+                  }}
+                >
+                  {hoveredEvents.map((ev, i) => {
+                    const iso = iso2For(ev.country);
+                    return (
+                      <li
+                        key={`${ev.country_iso}-${i}`}
+                        style={{ display: "flex", gap: "7px", alignItems: "flex-start" }}
+                      >
+                        {iso ? (
+                          <img
+                            src={`https://flagcdn.com/16x12/${iso}.png`}
+                            alt={`${ev.country} flag`}
+                            width={16}
+                            height={12}
+                            style={{
+                              borderRadius: "1px",
+                              flex: "0 0 16px",
+                              marginTop: "2px",
+                            }}
+                          />
+                        ) : (
+                          <span
+                            aria-hidden="true"
+                            style={{ fontSize: "12px", flex: "0 0 16px" }}
+                          >
+                            {ev.flag_emoji}
+                          </span>
+                        )}
+                        <span style={{ minWidth: 0, lineHeight: 1.45 }}>
+                          <span style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
+                            {ev.country}
+                          </span>
+                          {ev.reason ? (
+                            <span style={{ color: "var(--qgi-text-muted)" }}>
+                              {" "}
+                              {ev.reason}
+                            </span>
+                          ) : null}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            );
+          })()}
       </div>
 
       <footer
@@ -471,88 +389,14 @@ export function PrecedentsTimelinePanel({
           marginTop: "14px",
           paddingTop: "10px",
           borderTop: "1px dashed var(--qgi-border)",
-          display: "flex",
-          flexDirection: "column",
-          gap: "8px",
           fontFamily: "ui-monospace, monospace",
           fontSize: "10px",
-          color: "var(--qgi-text-muted)",
+          color: "var(--qgi-text-dim)",
           letterSpacing: "0.3px",
         }}
       >
-        {/* 2026-05-29 (Naila #28): legend now reads as plain English —
-            "+" and "−" markers say what each one MEANS, in audience terms,
-            not curator-internal language. "Added to the corpus" beats
-            "curator confirmed this country-year as a real positive...". */}
-        <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-          <span
-            aria-hidden
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: ADDED,
-              color: "var(--qgi-bg)",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flex: "0 0 12px",
-              marginTop: "2px",
-              fontWeight: 700,
-              fontSize: "10px",
-            }}
-          >
-            +
-          </span>
-          <span style={{ lineHeight: 1.55 }}>
-            <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
-              {visibleAdded} added
-            </strong>
-            <span style={{ color: "var(--qgi-text-dim)" }}>
-              {" "}
-              a verified case of this event was admitted to the corpus.
-            </span>
-          </span>
-        </div>
-        <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
-          <span
-            aria-hidden
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: VACATED,
-              color: "var(--qgi-bg)",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flex: "0 0 12px",
-              marginTop: "2px",
-              fontWeight: 700,
-              fontSize: "10px",
-            }}
-          >
-            −
-          </span>
-          <span style={{ lineHeight: 1.55 }}>
-            <strong style={{ color: "var(--qgi-text)", fontWeight: 600 }}>
-              {visibleVacated} removed
-            </strong>
-            <span style={{ color: "var(--qgi-text-dim)" }}>
-              {" "}
-              a previously-included case was removed on re-review (mis-coded event type,
-              insufficient sourcing, or a definitional reframing).
-            </span>
-          </span>
-        </div>
-        <div
-          style={{
-            color: "var(--qgi-text-dim)",
-            paddingTop: "2px",
-          }}
-        >
-          curation actions {minYear}–{maxYear}
-        </div>
+        {totalEventsInCorpus.toLocaleString()} verified events in this trend&apos;s corpus
+        · {minYear}–{maxYear}
       </footer>
     </section>
   );

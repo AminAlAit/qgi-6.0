@@ -179,15 +179,6 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/trends/foreign_intervention",
-    dimension: "a",
-    target: '[data-tour="identity-card-panel"]',
-    title: "Identity, in one card",
-    content:
-      "Who this trend is in one block: the family it belongs to, the events it was trained against, the number of historical cases in its evidence base. Read this first; the rest of the page is its anatomy.",
-    placement: "right",
-  },
-  {
-    page: "/trends/foreign_intervention",
     dimension: "b",
     target: 'section[id="cap-2"]',
     title: "Indicator set: the trend's ingredients",
