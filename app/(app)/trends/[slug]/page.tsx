@@ -225,15 +225,16 @@ export default async function RecipeDetailV41Page({ params }: Params) {
       headerRightSlot={<HowToReadButton routeKey="recipes-v4.1-detail" />}
     >
       {/*
-        Panel order — pedagogical sort:
-          1. STRUCTURE   Building Blocks · Optimal Window
-          2. PRECEDENTS  the real events this trend was built from (led with,
-                         full-width, expanded by default)
-          3. VALIDATION  Discrimination · Reliability · Calibration
-          4. RESULTS     Countries · Score Distribution
-          5. DEEP-DIVE   Trajectory Alignment · Indicator Sensitivity
+        Panel order (rows at the 3-column desktop width):
+          1. STRUCTURE   What is driving this trend (wide) · Optimal Window
+          2. PRECEDENTS  the real events this trend was built from
+                         (full-width, expanded by default)
+          3. RESULTS     Countries · Score Distribution · Trajectory Alignment
+          4. VALIDATION  Indicator Sensitivity · Discrimination · Reliability
+          5. CALIBRATION Calibration
 
-        2026-06-04 (founder): the Identity Card panel was removed.
+        2026-06-04 (founder): Identity Card removed; row order reworked so the
+        results lead the lower half and Calibration closes the page.
       */}
 
       {/* 1. STRUCTURE */}
@@ -247,9 +248,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         ciHigh={windowSearchMax}
       />
 
-      {/* 2. PRECEDENTS — the real-world events that built this trend. Lifted up
-          here (second band) and expanded by default so the human anchor for the
-          whole page reads early, not buried in the deep-dive. */}
+      {/* 2. PRECEDENTS — the real-world events that built this trend, led with
+          and expanded by default so the human anchor reads early. */}
       <ExpandableShell familyColor={familyColor} label="Precedents" defaultExpanded>
         <PrecedentsTimelinePanel
           familyColor={familyColor}
@@ -258,29 +258,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
         />
       </ExpandableShell>
 
-      {/* 3. VALIDATION (does it work) */}
-      <DiscriminationPanel
-        familyColor={familyColor}
-        locoAuc={locoAuc}
-        ciLow={ciLow}
-        ciHigh={ciHigh}
-        showResults={showResults}
-        cvAucFull={cvAucFull}
-      />
-      <ReliabilityPanel
-        familyColor={familyColor}
-        v1SeparationPp={extras.reliability.v1SeparationPp}
-        v4OotRecallPct={extras.reliability.v4OotRecallPct}
-        walksCompleted={extras.reliability.walksCompleted}
-        verdict={extras.reliability.verdict}
-      />
-      <CalibrationPanel
-        familyColor={familyColor}
-        showCalibrationData={typeof calibrationEce === "number"}
-        ece={calibrationEce ?? undefined}
-      />
-
-      {/* 4. RESULTS (what does it find) */}
+      {/* 3. RESULTS (what does it find) + the shape it aligns to */}
       <CountriesPanel
         familyColor={familyColor}
         countriesTop={mock.countriesTop}
@@ -300,8 +278,6 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           countriesFull={countriesFull}
         />
       </ExpandableShell>
-
-      {/* 5. DEEP-DIVE (anatomy of the prediction) */}
       <ExpandableShell familyColor={familyColor} label="Trajectory Alignment">
         <PatternAlignmentPanel
           familyColor={familyColor}
@@ -312,6 +288,8 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           hasTrajectory={hasTrajectory}
         />
       </ExpandableShell>
+
+      {/* 4. VALIDATION (does it work) */}
       <ExpandableShell familyColor={familyColor} label="Indicator Sensitivity">
         <IndicatorSensitivityPanel
           familyColor={familyColor}
@@ -323,6 +301,28 @@ export default async function RecipeDetailV41Page({ params }: Params) {
           }))}
         />
       </ExpandableShell>
+      <DiscriminationPanel
+        familyColor={familyColor}
+        locoAuc={locoAuc}
+        ciLow={ciLow}
+        ciHigh={ciHigh}
+        showResults={showResults}
+        cvAucFull={cvAucFull}
+      />
+      <ReliabilityPanel
+        familyColor={familyColor}
+        v1SeparationPp={extras.reliability.v1SeparationPp}
+        v4OotRecallPct={extras.reliability.v4OotRecallPct}
+        walksCompleted={extras.reliability.walksCompleted}
+        verdict={extras.reliability.verdict}
+      />
+
+      {/* 5. CALIBRATION */}
+      <CalibrationPanel
+        familyColor={familyColor}
+        showCalibrationData={typeof calibrationEce === "number"}
+        ece={calibrationEce ?? undefined}
+      />
     </PageLayout>
   );
 }

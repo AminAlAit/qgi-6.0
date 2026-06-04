@@ -69,12 +69,12 @@ export function IndicatorSetPanel({
 
   return (
     <PanelBase
-      title="Building Blocks"
+      title="What is driving this trend"
       familyColor={familyColor}
       titleTooltip={`The ${indicators.length || "N"} indicators whose combined canonical movement shape defines this trend. Each slice is one signal's weight, derived from its SHAP contribution; weights total 100% across the set.`}
       caption={
         indicators.length > 0
-          ? `These are the building blocks that give this trend its fingerprint: the handful of signals whose combined movement defines what it looks like in the data.`
+          ? `These are the signals driving this trend: the handful whose combined movement gives it its fingerprint in the data.`
           : undefined
       }
       sectionPending={indicators.length === 0 ? "discrimination" : null}
@@ -158,7 +158,7 @@ export function WindowPanel({
       title="Optimal Window"
       familyColor={familyColor}
       titleTooltip="Chosen by sweeping a range of window lengths and keeping the one whose canonical movement shape separates pre-event years most cleanly."
-      caption={`In the data, the warning signs of a ${trendLower} build over about ${windowYears} years. That is the run-up this trend reads before the event arrives.`}
+      caption={`In the data, the warning signs of a ${trendLower} build over about ${windowYears} years. That is the run-up this trend reads before the ${trendLower} event arrives.`}
       id="cap-3"
       dataTour="window-panel"
     >
