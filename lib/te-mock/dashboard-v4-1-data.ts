@@ -140,7 +140,7 @@ export const HERO_TILES_V41 = (c: HeroCounts41): HeroTile[] => [
   {
     big: true,
     value: String(c.recipes_total),
-    label: "Recipes in the catalog",
+    label: "Trends in the catalog",
     sublabel: "Country-risk event shapes drawn from the historical record",
     Icon: ScrollText,
     color: "#7B5EE6",

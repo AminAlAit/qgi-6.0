@@ -47,7 +47,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       },
       {
         title: "Counts come from the tracker",
-        body: "The hero tile counts and the activity feed are pulled from the Recipe Tracker, which is the source of truth. Nothing on this dashboard upgrades or changes a recipe's status.",
+        body: "The hero tile counts and the activity feed are pulled from the Trend Tracker, which is the source of truth. Nothing on this dashboard upgrades or changes a trend's status.",
       },
       {
         title: "Corrections are published on purpose",
@@ -61,45 +61,45 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
   },
 
   "recipes-v4.1": {
-    lede: "Four rules for reading the recipe catalogue.",
+    lede: "Four rules for reading the trend catalogue.",
     rules: [
       {
         title: "Scores are ranks, not probabilities",
-        body: "Every score listed for a recipe is a resemblance rank against historical precedents, not a probability that the event will recur. A higher rank means a closer structural match.",
+        body: "Every score listed for a trend is a resemblance rank against historical precedents, not a probability that the event will recur. A higher rank means a closer structural match.",
       },
       {
         title: "Status comes from the tracker",
-        body: "The status badge on each recipe (validated, tested, queued, and so on) is the Recipe Tracker's current reading. The catalogue table reflects that source directly.",
+        body: "The status badge on each trend (validated, tested, queued, and so on) is the Trend Tracker's current reading. The catalogue table reflects that source directly.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If a recipe's prior status did not survive re-evaluation, the revised status appears here alongside a public note. That transparency is intentional.",
+        body: "If a trend's prior status did not survive re-evaluation, the revised status appears here alongside a public note. That transparency is intentional.",
       },
       {
         title: "Nothing here is a forecast",
-        body: "A recipe describes a structural pattern observed in historical data. It does not predict whether or when a specific country will experience that event.",
+        body: "A trend describes a structural pattern observed in historical data. It does not predict whether or when a specific country will experience that event.",
       },
     ],
   },
 
   "recipes-v4.1-detail": {
-    lede: "Four rules for reading a single recipe's detail page.",
+    lede: "Four rules for reading a single trend's detail page.",
     rules: [
       {
         title: "Scores are ranks, not probabilities",
-        body: "Every country score on this recipe page is a resemblance rank showing how closely that country's current indicators match the historical pattern for this event type. It is not a probability of occurrence.",
+        body: "Every country score on this trend page is a resemblance rank showing how closely that country's current indicators match the historical pattern for this event type. It is not a probability of occurrence.",
       },
       {
         title: "Counts come from the tracker",
-        body: "The validation status, run history, and indicator count shown here are drawn from the Recipe Tracker. The detail page does not produce its own status.",
+        body: "The validation status, run history, and indicator count shown here are drawn from the Trend Tracker. The detail page does not produce its own status.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If this recipe was previously validated and that result was later withdrawn, you will see both states and the reason. Withdrawals are part of the methodology record.",
+        body: "If this trend was previously validated and that result was later withdrawn, you will see both states and the reason. Withdrawals are part of the methodology record.",
       },
       {
         title: "Nothing here is a forecast",
-        body: "This recipe describes resemblance between a country's current trajectory and a historical instability pattern. It does not forecast a specific event in a specific year.",
+        body: "This trend describes resemblance between a country's current trajectory and a historical instability pattern. It does not forecast a specific event in a specific year.",
       },
     ],
   },
@@ -113,11 +113,11 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       },
       {
         title: "Counts come from the tracker",
-        body: "The recipe counts and status badges shown per country are pulled from the Recipe Tracker. The countries list does not generate its own recipe statuses.",
+        body: "The trend counts and status badges shown per country are pulled from the Trend Tracker. The countries list does not generate its own trend statuses.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "When a recipe that previously scored a country is withdrawn or revised, the country's count updates accordingly. That is expected behavior, not a data error.",
+        body: "When a trend that previously scored a country is withdrawn or revised, the country's count updates accordingly. That is expected behavior, not a data error.",
       },
       {
         title: "Nothing here is a forecast",
@@ -131,15 +131,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Scores are ranks, not probabilities",
-        body: "Every recipe lit on this country page shows a resemblance rank, not a probability. A recipe marked as firing means this country's current indicators structurally resemble historical cases where that event type occurred.",
+        body: "Every trend lit on this country page shows a resemblance rank, not a probability. A trend marked as firing means this country's current indicators structurally resemble historical cases where that event type occurred.",
       },
       {
-        title: "Recipe status comes from the tracker",
-        body: "The validated or tested status for each recipe shown here is drawn from the Recipe Tracker. The country profile reflects those statuses; it does not set them.",
+        title: "Trend status comes from the tracker",
+        body: "The validated or tested status for each trend shown here is drawn from the Trend Tracker. The country profile reflects those statuses; it does not set them.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If a recipe that previously fired for this country has since been withdrawn or revised, the profile updates to show the corrected state. The prior result is not erased.",
+        body: "If a trend that previously fired for this country has since been withdrawn or revised, the profile updates to show the corrected state. The prior result is not erased.",
       },
       {
         title: "Nothing here is a forecast",
@@ -153,15 +153,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Scores are ranks, not probabilities",
-        body: "Every cell on the board holds a resemblance rank showing how closely a country-recipe pair matches its validated historical pattern. A higher number is a closer structural match, not a higher probability of an event.",
+        body: "Every cell on the board holds a resemblance rank showing how closely a country-trend pair matches its validated historical pattern. A higher number is a closer structural match, not a higher probability of an event.",
       },
       {
         title: "Cell status comes from the tracker",
-        body: "The color coding and status of each cell reflect the Recipe Tracker's current reading for that recipe. The board is a visualization of tracker data, not an independent scoring layer.",
+        body: "The color coding and status of each cell reflect the Trend Tracker's current reading for that trend. The board is a visualization of tracker data, not an independent scoring layer.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "When a recipe status changes after audit, the relevant cells update. Empty or revised cells after a prior fill are the methodology working correctly.",
+        body: "When a trend status changes after audit, the relevant cells update. Empty or revised cells after a prior fill are the methodology working correctly.",
       },
       {
         title: "Nothing here is a forecast",
@@ -175,15 +175,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Compound scores stack ranks, not odds",
-        body: "A compound score adds up resemblance ranks from multiple recipes for a single country. It does not multiply probabilities. Two recipes each at rank 70 produce a compound score of 140, not a 70% combined probability.",
+        body: "A compound score adds up resemblance ranks from multiple trends for a single country. It does not multiply probabilities. Two trends each at rank 70 produce a compound score of 140, not a 70% combined probability.",
       },
       {
         title: "Input statuses come from the tracker",
-        body: "Only recipes with a current validated status in the Recipe Tracker contribute to compound scores. The tracker is the source of truth for which recipes are eligible to stack.",
+        body: "Only trends with a current validated status in the Trend Tracker contribute to compound scores. The tracker is the source of truth for which trends are eligible to stack.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "When a recipe contributing to a compound score is withdrawn, that country's compound score changes. The change is expected and is reported alongside the withdrawal notice.",
+        body: "When a trend contributing to a compound score is withdrawn, that country's compound score changes. The change is expected and is reported alongside the withdrawal notice.",
       },
       {
         title: "Nothing here is a forecast",
@@ -201,11 +201,11 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       },
       {
         title: "Analogue scores come from validated trends",
-        body: "The trend scores shown alongside analogue pairs are drawn from the Recipe Tracker. An analogue's relevance depends on whether the shared trends are validated; the tracker is the source of truth for that.",
+        body: "The trend scores shown alongside analogue pairs are drawn from the Trend Tracker. An analogue's relevance depends on whether the shared trends are validated; the tracker is the source of truth for that.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "If a recipe that anchored an analogue pair is later revised or withdrawn, the pair's displayed context updates. The analogue itself stays in the record; its recipe context is corrected.",
+        body: "If a trend that anchored an analogue pair is later revised or withdrawn, the pair's displayed context updates. The analogue itself stays in the record; its trend context is corrected.",
       },
       {
         title: "Nothing here is a forecast",
@@ -219,15 +219,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
     rules: [
       {
         title: "Scores are ranks, not probabilities",
-        body: "Every cell on this page is a resemblance rank showing how closely each country's recent trajectory matches a recipe today. A 30-point gap between two countries on a recipe is a gap in rank position, not a gap in event probability.",
+        body: "Every cell on this page is a resemblance rank showing how closely each country's recent trajectory matches a trend today. A 30-point gap between two countries on a trend is a gap in rank position, not a gap in event probability.",
       },
       {
         title: "Comparison is structural, not relative",
-        body: "Placing two countries next to each other on the same recipes does not declare a winner or rank one as more at risk than the other. Both countries sit on the same distribution; the page shows you where each one currently sits.",
+        body: "Placing two countries next to each other on the same trends does not declare a winner or rank one as more at risk than the other. Both countries sit on the same distribution; the page shows you where each one currently sits.",
       },
       {
         title: "Status comes from the tracker",
-        body: "The status chip on each recipe row (deployed, tested, queued, withdrawn) is drawn from the Recipe Tracker, which is the source of truth. The comparison view reflects those statuses; it does not set them.",
+        body: "The status chip on each trend row (deployed, tested, queued, withdrawn) is drawn from the Trend Tracker, which is the source of truth. The comparison view reflects those statuses; it does not set them.",
       },
       {
         title: "Nothing here is a forecast",
@@ -303,7 +303,7 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
   },
 
   "recipe-tracker": {
-    lede: "Four rules for reading the Recipe Tracker, which is the source of truth for all recipe statuses across QGI.",
+    lede: "Four rules for reading the Trend Tracker, which is the source of truth for all trend statuses across QGI.",
     rules: [
       {
         title: "Scores are ranks, not probabilities",
@@ -311,15 +311,15 @@ export const HOW_TO_READ_CONTENT: Record<RouteKey, PageHowToRead> = {
       },
       {
         title: "This page is the source of truth",
-        body: "Every recipe status you see anywhere on QGI traces back to this tracker. If you see a discrepancy between another page and this one, this tracker's reading is correct.",
+        body: "Every trend status you see anywhere on QGI traces back to this tracker. If you see a discrepancy between another page and this one, this tracker's reading is correct.",
       },
       {
         title: "Corrections are published on purpose",
-        body: "Status changes, withdrawals, and revisions are logged here with timestamps. The full history of a recipe's status is part of the methodology record, not a footnote.",
+        body: "Status changes, withdrawals, and revisions are logged here with timestamps. The full history of a trend's status is part of the methodology record, not a footnote.",
       },
       {
         title: "Nothing here is a forecast",
-        body: "A validated recipe means the historical pattern was confirmed to exist and be statistically meaningful. Validation status does not imply a forecast about when or where the pattern will next occur.",
+        body: "A validated trend means the historical pattern was confirmed to exist and be statistically meaningful. Validation status does not imply a forecast about when or where the pattern will next occur.",
       },
     ],
   },
