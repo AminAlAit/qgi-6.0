@@ -283,7 +283,7 @@ export default async function PatternDetailPage({ params }: Params) {
               lineHeight: 1.5,
             }}
           >
-            Each card links to its country profile. Present-day recipe scores for these
+            Each card links to its country profile. Present-day trend scores for these
             countries are on their profile pages. The pair page does not synthesize a
             present-day claim from the historical resemblance.
           </p>

@@ -130,7 +130,7 @@ export function MatchAlignmentPanel({
                 display: "inline-block",
               }}
             />
-            the recipe&apos;s run-up shape
+            the trend&apos;s run-up shape
           </span>
           <span style={{ marginLeft: "auto" }}>earlier &rarr; today ({evalYear})</span>
         </footer>

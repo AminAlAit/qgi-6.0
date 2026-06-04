@@ -280,7 +280,7 @@ export function RecipeCard({
                     alignItems: "flex-end",
                     lineHeight: 1,
                   }}
-                  title={`${Math.round(auc * 100)}% confidence: how closely this country-trajectory has matched the recipe's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
+                  title={`${Math.round(auc * 100)}% confidence: how closely this country-trajectory has matched the trend's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
                 >
                   <div
                     style={{
