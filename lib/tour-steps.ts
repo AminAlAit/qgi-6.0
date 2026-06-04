@@ -181,9 +181,9 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
     page: "/trends/foreign_intervention",
     dimension: "b",
     target: 'section[id="cap-2"]',
-    title: "Indicator set: the trend's ingredients",
+    title: "What is driving the trend",
     content:
-      "Each trend is a small set of indicators whose canonical movement shape defines it. The weights sum to 100% across the set: a higher weight means the indicator pulled more of its weight in distinguishing pre-event years from non-event ones.",
+      "A trend is a small set of indicators whose canonical movement shape defines it. The weights sum to 100% across the set: a higher weight means the indicator pulled more of its weight in distinguishing pre-event years from non-event ones.",
     placement: "right",
   },
   {
