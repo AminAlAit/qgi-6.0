@@ -28,7 +28,7 @@ export function WorldActivity({ rows }: { rows: WorldActivityRow[] }) {
   return (
     <CollapsibleRows
       panelTitle="What's moving this release"
-      panelCaption="Country movements, recipe leaders, and historical resemblances pulled from the current scoring run."
+      panelCaption="Country movements, trend leaders, and historical resemblances pulled from the current scoring run."
       accent={CALM_SLATE_BLUE}
       collapsedCount={COLLAPSED_COUNT}
     >

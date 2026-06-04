@@ -327,7 +327,7 @@ function FilteredGrid({
           fontSize: "13px",
         }}
       >
-        No recipes match the current filters. Try clearing one.
+        No trends match the current filters. Try clearing one.
       </div>
     );
   }
@@ -360,7 +360,7 @@ function FilteredGrid({
         }}
       >
         <div style={{ padding: "10px 14px", borderRight: "1px solid var(--qgi-border)" }}>
-          Recipe ↓ · Country →
+          Trend ↓ · Country →
         </div>
         {/* Header columns — rank labels in BOTH modes. In custom mode the
             cells re-sort per row by score, so a fixed country header at
@@ -655,7 +655,7 @@ function HeatCell({
           justifyContent: "space-between",
           cursor: "default",
         }}
-        title="Coming soon: recipe enters scoring once its evidence base is ready."
+        title="Coming soon: trend enters scoring once its evidence base is ready."
         /* V4.1 §4: "not yet tested" → "coming soon" */
       >
         <div
@@ -706,7 +706,7 @@ function HeatCell({
           opacity: isDimmed ? 0.32 : 1,
           transition: "opacity 120ms ease-out",
         }}
-        title={`${cell.country} · not scored: country lacks indicator coverage for this recipe, not the same as a low score.`}
+        title={`${cell.country} · not scored: country lacks indicator coverage for this trend, not the same as a low score.`}
       >
         <div
           style={{
@@ -802,7 +802,7 @@ function HeatCell({
           opacity: isDimmed ? 0.32 : 1,
           transition: "opacity 120ms ease-out, outline-color 120ms",
         }}
-        title={`${cell.country} · ${pct}% confidence — this country's recent path has been this close to the recipe's canonical pre-event shape.`}
+        title={`${cell.country} · ${pct}% confidence — this country's recent path has been this close to the trend's canonical pre-event shape.`}
       >
         <div
           style={{

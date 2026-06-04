@@ -14,12 +14,16 @@ import { TOUR_STEPS, TOUR_STEPS_BY_PAGE, TOUR_TOTAL_STEPS } from "@/lib/tour-ste
  *   - /dashboard: 4 dead anchors replaced; how-to-read-button step dropped
  *     (dashboard does not render HowToReadButton). Steps: 6→5.
  *   - /countries: cotw-tile step dropped. Steps: 5→4.
- *   - /trends/foreign_intervention: demo-disclosure → section[id="cap-1"].
+ *   - /trends/foreign_intervention: demo-disclosure step retargeted to the
+ *     definition lede (cap-1/DefinitionPanel is not rendered on the page).
  *     Steps: 13→12.
- *   - /risk-board: how-to-read-button step dropped. Steps: 5→4.
+ *   - /risk-board: how-to-read-button dropped + the hero-strip step dropped
+ *     (the top-pairs strip moved to /dashboard). Steps: 5→3.
  *   - /compare: locked surface; backdrop panels are aria-hidden; reduced to
  *     h1 + compare-coming-soon. Steps: 6→2.
- *   - /patterns: how-to-read-button step dropped. Steps: 6→5.
+ *   - /patterns: re-anchored to the live search engine (filters + results);
+ *     the old overview/ranking/family/country browse panels no longer render.
+ *     Steps: 6→3.
  *   - /patterns/172-208: retargeted to real page anchors; how-to-read-button
  *     dropped. Steps: 7→4.
  */

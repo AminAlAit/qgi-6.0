@@ -65,7 +65,7 @@ export function RiskBoardHero({
               color: "var(--qgi-text)",
             }}
           >
-            Top {pairs.length} country × recipe pairs
+            Top {pairs.length} country × trend pairs
           </h2>
         </div>
         {/* V4.1 §2: per-panel vintage stamp removed — one stamp in global header. */}

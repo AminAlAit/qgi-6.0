@@ -399,15 +399,6 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   },
   {
     page: "/risk-board",
-    dimension: "c",
-    target: '[data-tour="risk-board-hero-strip"]',
-    title: "The top pairs, across every trend",
-    content:
-      "These are the highest-resemblance country and trend pairs anywhere on the platform, this release. The arrow tells you how that pair has shifted since last quarter: movement is a rank shift, not a probability change.",
-    placement: "bottom",
-  },
-  {
-    page: "/risk-board",
     dimension: "b",
     target: '[data-tour="risk-board-grid"]',
     title: "Every trend, top ten countries each",
@@ -527,37 +518,19 @@ export const TOUR_STEPS: ReadonlyArray<QgiTourStep> = [
   {
     page: "/patterns",
     dimension: "b",
-    target: '[data-tour="patterns-overview-tiles"]',
-    title: "How big the catalogue is",
+    target: '[data-tour="patterns-filters"]',
+    title: "Narrow the catalogue",
     content:
-      "Three numbers describe the catalogue at a glance: how many pairs are on file, how long the median pair ran in step, and which pair holds the longest run on record. Use them as scale before you dive in.",
-    placement: "bottom",
+      "The whole archive is searchable from this panel: filter by country, by how long the shared window ran, and by start year. The results update as you go.",
+    placement: "right",
   },
   {
     page: "/patterns",
     dimension: "c",
-    target: '[data-tour="patterns-ranking-table"]',
-    title: "The leaderboard, by pair strength",
+    target: '[data-tour="patterns-results"]',
+    title: "The ranked results",
     content:
-      "The strongest paired rhymes on record, ranked. Sort by strength or by window length. Click any pair to open the detail. The score on the right is a rank from 0 to 100, not a probability.",
-    placement: "top",
-  },
-  {
-    page: "/patterns",
-    dimension: "b",
-    target: '[data-tour="patterns-family-browse"]',
-    title: "Browse by event family",
-    content:
-      "Filter to pairs where at least one country in the pair currently resembles a trend in a given family. The colors match the family colors on every other page.",
-    placement: "top",
-  },
-  {
-    page: "/patterns",
-    dimension: "c",
-    target: '[data-tour="patterns-country-browse"]',
-    title: "Browse by country",
-    content:
-      "Pick any country to see every pair it appears in, sorted by rhyme strength. This is the entry point most analysts come back to.",
+      "Each row is a pair: the two countries, the years they ran in step, and how tightly they rhymed. The strongest rhymes sort to the top; click any row to open its detail page. The strength score is a rank, not a probability.",
     placement: "top",
   },
 

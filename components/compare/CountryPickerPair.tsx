@@ -133,7 +133,7 @@ function CountrySlot({ label, selected, otherIso, onChange }: SlotProps) {
               {selected.iso}
             </span>
             <span
-              title={`${recipeCount} recipe${recipeCount === 1 ? "" : "s"} in play`}
+              title={`${recipeCount} trend${recipeCount === 1 ? "" : "s"} in play`}
               style={{
                 fontSize: "10px",
                 fontFamily: "ui-monospace, monospace",
@@ -146,7 +146,7 @@ function CountrySlot({ label, selected, otherIso, onChange }: SlotProps) {
                 letterSpacing: "0.2px",
               }}
             >
-              {recipeCount} recipes
+              {recipeCount} trends
             </span>
             <span
               style={{

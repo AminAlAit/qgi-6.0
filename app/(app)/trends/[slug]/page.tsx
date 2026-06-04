@@ -28,7 +28,7 @@ import {
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import recipeTracker from "@/data/recipe-tracker.json";
-import { cleanEmDashes } from "@/lib/clean-text";
+import { cleanProseCopy } from "@/lib/clean-text";
 
 import { PageLayout } from "@/components/precedents-v4-1/PageLayout";
 import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
@@ -210,7 +210,7 @@ export default async function RecipeDetailV41Page({ params }: Params) {
 
   // V4.1 §A1 — prefer the compelling description; fall through to the
   // dry mock definition for back-compat (TE recipes without a tracker row).
-  const heroDefinition = cleanEmDashes(COMPELLING_BY_ID.get(slug) ?? mock.definition);
+  const heroDefinition = cleanProseCopy(COMPELLING_BY_ID.get(slug) ?? mock.definition);
 
   return (
     <PageLayout

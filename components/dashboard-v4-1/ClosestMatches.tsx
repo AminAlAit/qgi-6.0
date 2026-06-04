@@ -54,8 +54,8 @@ export function ClosestMatches({ matches }: { matches: ClosestMatch[] }) {
             maxWidth: "760px",
           }}
         >
-          Countries whose recent signals are tracing an event recipe especially closely
-          this release. Open any card to see how that country is following the recipe,
+          Countries whose recent signals are tracing an event trend especially closely
+          this release. Open any card to see how that country is following the trend,
           signal by signal. A measure of resemblance, not a forecast.
         </p>
       </header>

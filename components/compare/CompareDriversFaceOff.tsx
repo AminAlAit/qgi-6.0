@@ -82,7 +82,7 @@ export function CompareDriversFaceOff({
   topRow: CompareGapRow | null;
 }) {
   // Determine which recipe to show and what color to use.
-  const recipeLabel = topRow?.label ?? countryA.top_recipes[0]?.label ?? "Top recipe";
+  const recipeLabel = topRow?.label ?? countryA.top_recipes[0]?.label ?? "Top trend";
   const scoreA = topRow?.score_a ?? countryA.top_recipes[0]?.score ?? null;
   const scoreB = topRow?.score_b ?? countryB.top_recipes[0]?.score ?? null;
   const l1Id = topRow?.l1_id ?? countryA.top_recipes[0]?.l1_id ?? "";

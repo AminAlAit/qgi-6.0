@@ -35,8 +35,8 @@ const TERMS: { id: string; short: string; long: string; visual: React.ReactNode 
   },
   {
     id: "recipe",
-    short: "Recipe",
-    long: "The canonical shape distilled from multiple Patterns. A recipe says: this country's current trajectory resembles the trajectory of a country that went on to experience a given kind of event. Recipes are the basis for every country reading on the live site.",
+    short: "Trend",
+    long: "The canonical shape distilled from multiple Patterns. A trend says: this country's current trajectory resembles the trajectory of a country that went on to experience a given kind of event. Trends are the basis for every country reading on the live site.",
     visual: <Fingerprint />,
   },
 ];

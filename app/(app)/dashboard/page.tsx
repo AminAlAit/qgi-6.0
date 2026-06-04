@@ -131,7 +131,7 @@ export default function BriefingPage() {
           >
             <ScopeStat value="180+" label="countries & territories" />
             <ScopeDivider />
-            <ScopeStat value={String(counts.recipes_total)} label="event recipes" />
+            <ScopeStat value={String(counts.recipes_total)} label="event trends" />
             <ScopeDivider />
             <ScopeStat value={String(familyCount)} label="risk families" />
             <ScopeDivider />

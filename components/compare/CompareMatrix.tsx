@@ -175,7 +175,7 @@ export function CompareMatrix({
             paddingLeft: "14px",
           }}
         >
-          Recipe
+          Trend
         </div>
         <div
           style={{
@@ -346,7 +346,7 @@ export function CompareMatrix({
 
             {/* Gap column */}
             <div
-              title="Rank difference, not a probability difference. Both countries sit on the same recipe distribution."
+              title="Rank difference, not a probability difference. Both countries sit on the same trend distribution."
               style={{
                 textAlign: "center",
                 fontFamily: "ui-monospace, monospace",
@@ -391,7 +391,7 @@ export function CompareMatrix({
             borderTop: "1px solid var(--qgi-border)",
           }}
         >
-          Muted rows are recipes In Play: in active rotation on the risk board while the
+          Muted rows are trends In Play: in active rotation on the risk board while the
           next validation pass completes.
         </div>
       )}

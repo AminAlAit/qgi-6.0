@@ -67,7 +67,7 @@ export function CompareVintageSources({
         <Field k="Refresh cadence" v="At least 4x per year" />
         <Field k="Data sources" v={sources.join(" / ") || "n/a"} />
         <Field
-          k="Recipes matched"
+          k="Trends matched"
           v={`${countryA.name}: ${countryA.recipes_lit_count} | ${countryB.name}: ${countryB.recipes_lit_count}`}
         />
       </div>

@@ -22,3 +22,23 @@ export function cleanEmDashes(s: string): string {
       .replace(/^\s*,\s*/, "")
   );
 }
+
+/**
+ * Replace the standalone product noun "recipe(s)" → "trend(s)" (case-preserving)
+ * in bake-generated prose where the backend still emits the old word — e.g. the
+ * activity-feed event notes. `\b` does not match before "_", so code-like tokens
+ * (`recipe_id`, `recipe_label`) are left intact; only the English word changes.
+ */
+export function recipeWordToTrend(s: string): string {
+  if (!s) return s;
+  return s
+    .replace(/\bRecipes\b/g, "Trends")
+    .replace(/\bRecipe\b/g, "Trend")
+    .replace(/\brecipes\b/g, "trends")
+    .replace(/\brecipe\b/g, "trend");
+}
+
+/** Bake-prose cleaner: drop em-dashes AND rename the recipe→trend product noun. */
+export function cleanProseCopy(s: string): string {
+  return cleanEmDashes(recipeWordToTrend(s));
+}

@@ -34,7 +34,7 @@ import { COUNTRIES_V4 } from "@/lib/te-mock/countries-v4-data";
 export const metadata: Metadata = {
   title: "Analogues · QG Intelligence",
   description:
-    "Pick a country today, see its closest historical Analogues: shape matches across the recipe library.",
+    "Pick a country today, see its closest historical Analogues: shape matches across the trend library.",
 };
 
 interface NearestAnalogPageProps {
@@ -120,7 +120,7 @@ export default async function NearestAnalogPage({
           >
             Pick a country today, the engine shows you the closest historical match:
             &ldquo;this looks most like Tunisia 2008 + Argentina 2015.&rdquo; Pure
-            shape-matching across the 71-recipe library. A <strong>similarity</strong>{" "}
+            shape-matching across the 71-trend library. A <strong>similarity</strong>{" "}
             statement, not a forecast: the historical outcome is what happened to the
             analogue country, never a prediction about today&apos;s.
           </p>
