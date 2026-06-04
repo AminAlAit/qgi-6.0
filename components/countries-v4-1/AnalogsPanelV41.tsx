@@ -8,15 +8,21 @@
  * country by a predictive verb. The caption states similarity is not
  * prediction; the outcome text is presented as the analog's own past.
  */
+import Link from "next/link";
+import type { Route } from "next";
 import { PanelShell } from "./PanelShell";
 import { FlagImg } from "./FlagImg";
-import { flagFor } from "@/lib/te-mock/country-flags";
+import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
+import { analogueHref } from "@/lib/te-mock/analogue-href";
 import type { CountryV4 } from "@/lib/te-mock/countries-v4-data";
 
 const ARCHIVAL_GOLD = "#C9A66B";
 
 export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
   const hasAnalogs = country.analogs.length > 0;
+  // Subject half of the analogue-page key. CountryV4.iso is ISO-3, so resolve
+  // ISO-2 from the name; the analogue resolver is tolerant if codes disagree.
+  const subjectIso2 = iso2For(country.name);
 
   return (
     <PanelShell
@@ -46,79 +52,116 @@ export function AnalogsPanelV41({ country }: { country: CountryV4 }) {
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-          {country.analogs.map((a, i) => (
-            <div
-              key={`${a.country}-${a.year}-${i}`}
-              style={{
-                border: "1px solid var(--qgi-border)",
-                background: "var(--qgi-bg)",
-                borderRadius: "6px",
-                padding: "12px 14px",
-              }}
-            >
+          {country.analogs.map((a, i) => {
+            const href = analogueHref(subjectIso2, iso2For(a.country), a.year);
+            const rowInner = (
               <div
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "10px",
-                  marginBottom: "7px",
-                  flexWrap: "wrap",
+                  border: "1px solid var(--qgi-border)",
+                  background: "var(--qgi-bg)",
+                  borderRadius: "6px",
+                  padding: "12px 14px",
                 }}
               >
-                <FlagImg
-                  emoji={flagFor(a.country)}
-                  name={a.country}
-                  width={22}
-                  radius={2}
-                />
-                <span
+                <div
                   style={{
-                    fontSize: "13.5px",
-                    fontWeight: 600,
-                    color: "var(--qgi-text)",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "10px",
+                    marginBottom: "7px",
+                    flexWrap: "wrap",
                   }}
                 >
-                  {a.country}, {a.year}
-                </span>
-                <span
-                  style={{
-                    fontSize: "9.5px",
-                    fontFamily: "ui-monospace, monospace",
-                    letterSpacing: "0.3px",
-                    padding: "2px 8px",
-                    borderRadius: "10px",
-                    color: ARCHIVAL_GOLD,
-                    border: `1px solid ${ARCHIVAL_GOLD}66`,
-                    background: `${ARCHIVAL_GOLD}12`,
-                  }}
-                  title="How closely this past situation's shape resembles the country now."
-                >
-                  {a.match_score.toFixed(0)}% match
-                </span>
-                {a.weak_analog && (
+                  <FlagImg
+                    emoji={flagFor(a.country)}
+                    name={a.country}
+                    width={22}
+                    radius={2}
+                  />
                   <span
                     style={{
-                      fontSize: "10px",
-                      color: "var(--qgi-text-dim)",
-                      fontStyle: "italic",
+                      fontSize: "13.5px",
+                      fontWeight: 600,
+                      color: "var(--qgi-text)",
                     }}
                   >
-                    weaker match, read with care
+                    {a.country}, {a.year}
                   </span>
+                  <span
+                    style={{
+                      fontSize: "9.5px",
+                      fontFamily: "ui-monospace, monospace",
+                      letterSpacing: "0.3px",
+                      padding: "2px 8px",
+                      borderRadius: "10px",
+                      color: ARCHIVAL_GOLD,
+                      border: `1px solid ${ARCHIVAL_GOLD}66`,
+                      background: `${ARCHIVAL_GOLD}12`,
+                    }}
+                    title="How closely this past situation's shape resembles the country now."
+                  >
+                    {a.match_score.toFixed(0)}% match
+                  </span>
+                  {a.weak_analog && (
+                    <span
+                      style={{
+                        fontSize: "10px",
+                        color: "var(--qgi-text-dim)",
+                        fontStyle: "italic",
+                      }}
+                    >
+                      weaker match, read with care
+                    </span>
+                  )}
+                </div>
+                <p
+                  style={{
+                    fontSize: "12.5px",
+                    lineHeight: 1.55,
+                    color: "var(--qgi-text-muted)",
+                    margin: 0,
+                  }}
+                >
+                  {a.what_happened_next}
+                </p>
+                {href && (
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      alignItems: "center",
+                      gap: "5px",
+                      marginTop: "8px",
+                      paddingTop: "8px",
+                      borderTop: "1px solid var(--qgi-border)",
+                      fontSize: "10.5px",
+                      fontWeight: 600,
+                      letterSpacing: "0.3px",
+                      color: ARCHIVAL_GOLD,
+                      fontFamily: "ui-monospace, monospace",
+                    }}
+                  >
+                    Compare trajectories
+                    <span aria-hidden style={{ fontSize: "12px" }}>
+                      &rarr;
+                    </span>
+                  </div>
                 )}
               </div>
-              <p
-                style={{
-                  fontSize: "12.5px",
-                  lineHeight: 1.55,
-                  color: "var(--qgi-text-muted)",
-                  margin: 0,
-                }}
+            );
+            return href ? (
+              <Link
+                key={`${a.country}-${a.year}-${i}`}
+                href={href as Route}
+                style={{ textDecoration: "none", color: "inherit", display: "block" }}
+                aria-label={`Compare ${country.name} with ${a.country} ${a.year}`}
               >
-                {a.what_happened_next}
-              </p>
-            </div>
-          ))}
+                {rowInner}
+              </Link>
+            ) : (
+              <div key={`${a.country}-${a.year}-${i}`}>{rowInner}</div>
+            );
+          })}
         </div>
       )}
     </PanelShell>

@@ -12,6 +12,7 @@ import {
   Columns2,
   Telescope,
   Layers,
+  ShieldAlert,
   PanelLeftClose,
   PanelLeft,
 } from "lucide-react";
@@ -137,6 +138,17 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
     label: "Compare",
     href: "/compare",
     icon: <Columns2 size={16} strokeWidth={1.5} aria-hidden="true" />,
+    badge: "PRIMARY",
+    comingSoon: true,
+  },
+  // Sanctions Simulator (2026-06-04) — Phase-0 teaser. Impact model in R&D;
+  // ships as a coming-soon surface while the counterfactual work runs.
+  // Slotted after Compare so both locked/R&D surfaces sit at the foot of the list.
+  {
+    type: "standalone",
+    label: "Sanctions",
+    href: "/sanctions-simulator",
+    icon: <ShieldAlert size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
     comingSoon: true,
   },

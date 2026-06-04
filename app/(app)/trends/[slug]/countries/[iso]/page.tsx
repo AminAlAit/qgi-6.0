@@ -35,6 +35,7 @@ import {
 import { getRecipeFullScoreMap } from "@/lib/te-mock/risk-board-data";
 import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
 import { flagFor, iso2For } from "@/lib/te-mock/country-flags";
+import { analogueHref } from "@/lib/te-mock/analogue-href";
 import { MUTED_GRAY, confidenceT, lerpHexToRgb, confidenceGlow } from "@/lib/color-lerp";
 
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
@@ -306,6 +307,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
                 <AnaloguesPanel
                   familyColor={familyColor}
                   countryName={countryName}
+                  subjectIso2={iso.toLowerCase()}
                   analogues={match.analogues}
                 />
               )}
@@ -518,10 +520,12 @@ function PeerContext({
 function AnaloguesPanel({
   familyColor,
   countryName,
+  subjectIso2,
   analogues,
 }: {
   familyColor: string;
   countryName: string;
+  subjectIso2: string;
   analogues: MatchAnalogue[];
 }) {
   const anyOutcome = analogues.some((a) => a.event || a.whatHappenedNext);
@@ -541,94 +545,123 @@ function AnaloguesPanel({
           gap: "2px",
         }}
       >
-        {analogues.map((a) => (
-          <li
-            key={`${a.country}-${a.year}`}
-            style={{
-              display: "grid",
-              gridTemplateColumns: "20px minmax(0, 1fr) auto",
-              gap: "10px",
-              alignItems: "center",
-              padding: "9px 4px",
-              borderBottom: "1px solid var(--qgi-border)",
-            }}
-          >
-            <FlagImg emoji={flagFor(a.country)} name={a.country} width={16} radius={2} />
-            <span style={{ fontSize: "13px", color: "var(--qgi-text)" }}>
-              {a.country}, {a.year}
-              {a.weak && (
-                <span
-                  style={{
-                    fontSize: "10px",
-                    color: "var(--qgi-text-dim)",
-                    fontFamily: "ui-monospace, monospace",
-                    marginLeft: "8px",
-                  }}
-                  title="A weaker match; read with care."
-                >
-                  weaker match
-                </span>
-              )}
-              {a.event ? (
-                <span
-                  style={{
-                    display: "block",
-                    fontSize: "12px",
-                    color: "var(--qgi-text-muted)",
-                    lineHeight: 1.5,
-                    marginTop: "3px",
-                  }}
-                >
-                  {a.event.title}
-                  {a.event.source ? (
-                    <>
-                      {" "}
-                      <a
-                        href={a.event.source}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: "var(--qgi-text-dim)",
-                          fontFamily: "ui-monospace, monospace",
-                          fontSize: "10px",
-                          textDecoration: "none",
-                          borderBottom: "1px dotted var(--qgi-border)",
-                          whiteSpace: "nowrap",
-                        }}
-                        title={`Source: ${a.event.sourceDomain ?? a.event.source}`}
-                      >
-                        {a.event.sourceDomain ?? "source"} ↗
-                      </a>
-                    </>
-                  ) : null}
-                </span>
-              ) : a.whatHappenedNext ? (
-                <span
-                  style={{
-                    display: "block",
-                    fontSize: "12px",
-                    color: "var(--qgi-text-muted)",
-                    lineHeight: 1.5,
-                    marginTop: "3px",
-                  }}
-                >
-                  {a.whatHappenedNext}
-                </span>
-              ) : null}
-            </span>
-            <span
+        {analogues.map((a) => {
+          // Per-row "compare" link. The row itself is NOT wrapped in a Link
+          // because it can contain an event-source <a> — a nested <a> is
+          // invalid HTML and breaks hydration. So only "compare →" is the link.
+          const href = analogueHref(subjectIso2, a.iso2, a.year);
+          return (
+            <li
+              key={`${a.country}-${a.year}`}
               style={{
-                fontFamily: "ui-monospace, monospace",
-                fontSize: "13px",
-                fontWeight: 700,
-                color: familyColor,
-                alignSelf: "start",
+                display: "grid",
+                gridTemplateColumns: "20px minmax(0, 1fr) auto",
+                gap: "10px",
+                alignItems: "center",
+                padding: "9px 4px",
+                borderBottom: "1px solid var(--qgi-border)",
               }}
             >
-              {a.matchPct}% match
-            </span>
-          </li>
-        ))}
+              <FlagImg
+                emoji={flagFor(a.country)}
+                name={a.country}
+                width={16}
+                radius={2}
+              />
+              <span style={{ fontSize: "13px", color: "var(--qgi-text)" }}>
+                {a.country}, {a.year}
+                {a.weak && (
+                  <span
+                    style={{
+                      fontSize: "10px",
+                      color: "var(--qgi-text-dim)",
+                      fontFamily: "ui-monospace, monospace",
+                      marginLeft: "8px",
+                    }}
+                    title="A weaker match; read with care."
+                  >
+                    weaker match
+                  </span>
+                )}
+                {a.event ? (
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "12px",
+                      color: "var(--qgi-text-muted)",
+                      lineHeight: 1.5,
+                      marginTop: "3px",
+                    }}
+                  >
+                    {a.event.title}
+                    {a.event.source ? (
+                      <>
+                        {" "}
+                        <a
+                          href={a.event.source}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{
+                            color: "var(--qgi-text-dim)",
+                            fontFamily: "ui-monospace, monospace",
+                            fontSize: "10px",
+                            textDecoration: "none",
+                            borderBottom: "1px dotted var(--qgi-border)",
+                            whiteSpace: "nowrap",
+                          }}
+                          title={`Source: ${a.event.sourceDomain ?? a.event.source}`}
+                        >
+                          {a.event.sourceDomain ?? "source"} ↗
+                        </a>
+                      </>
+                    ) : null}
+                  </span>
+                ) : a.whatHappenedNext ? (
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "12px",
+                      color: "var(--qgi-text-muted)",
+                      lineHeight: 1.5,
+                      marginTop: "3px",
+                    }}
+                  >
+                    {a.whatHappenedNext}
+                  </span>
+                ) : null}
+              </span>
+              <span
+                style={{
+                  fontFamily: "ui-monospace, monospace",
+                  fontSize: "13px",
+                  fontWeight: 700,
+                  color: familyColor,
+                  alignSelf: "start",
+                  textAlign: "right",
+                }}
+              >
+                {a.matchPct}% match
+                {href && (
+                  <Link
+                    href={href as Route}
+                    aria-label={`Compare ${countryName} with ${a.country} ${a.year}`}
+                    style={{
+                      display: "block",
+                      fontSize: "9.5px",
+                      fontWeight: 600,
+                      color: familyColor,
+                      letterSpacing: "0.3px",
+                      marginTop: "2px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    compare &rarr;
+                  </Link>
+                )}
+              </span>
+            </li>
+          );
+        })}
       </ul>
       {!anyOutcome && (
         <p

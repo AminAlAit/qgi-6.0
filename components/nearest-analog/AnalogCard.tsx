@@ -15,8 +15,11 @@
  * - The regional-clustering caveat is shown on the parent results panel,
  *   not repeated on every card.
  */
+import Link from "next/link";
+import type { Route } from "next";
 import { getRecipe } from "@/lib/te-mock/recipes";
 import type { HistoricalAnalog } from "@/lib/te-mock/nearest-analog-data";
+import { analogueHref } from "@/lib/te-mock/analogue-href";
 import { statusLabel } from "@/lib/te-mock/country-families";
 import { TrajectorySparkline } from "./TrajectorySparkline";
 import { RecipeIcon } from "@/components/te-v4-shared/RecipeIcon";
@@ -65,6 +68,8 @@ export interface AnalogCardProps {
   currentTrajectory: number[];
   /** Region of the subject country — used to detect cross-region matches. */
   subjectRegion?: string;
+  /** ISO-2 (lowercase) of the subject country — keys the analogue detail page. */
+  subjectIso2?: string;
 }
 
 export function AnalogCard({
@@ -73,6 +78,7 @@ export function AnalogCard({
   currentCountryName,
   currentTrajectory,
   subjectRegion,
+  subjectIso2,
 }: AnalogCardProps) {
   const recipe = getRecipe(analog.primary_recipe_id);
   // P2-1: derive canonical color via familyColor() so the F-Diplomacy indigo
@@ -97,7 +103,12 @@ export function AnalogCard({
   const zoneColor =
     scoreZone === "STRONG" ? "#3FBF8F" : scoreZone === "MODERATE" ? "#E6C45E" : "#E68F29";
 
-  return (
+  // The whole card links to the analogue comparison page (subject vs this
+  // analogue, over the trend's canonical window). Null when the pair can't be
+  // keyed — the card then renders non-clickable.
+  const href = analogueHref(subjectIso2, analog.country_iso2, analog.year);
+
+  const cardInner = (
     <article
       style={{
         background: "var(--qgi-surface)",
@@ -478,6 +489,45 @@ export function AnalogCard({
           })}
         </div>
       )}
+
+      {/* Click affordance — the whole card links to the side-by-side comparison.
+          Shown only when the pair is keyable (href non-null). */}
+      {href && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "flex-end",
+            gap: "6px",
+            paddingTop: "10px",
+            marginTop: "2px",
+            borderTop: "1px solid var(--qgi-border)",
+            fontSize: "11px",
+            fontWeight: 600,
+            color: l1Color,
+            fontFamily: "ui-monospace, monospace",
+            letterSpacing: "0.3px",
+          }}
+        >
+          Compare {currentCountryName} vs {analog.country} {analog.year}
+          <span aria-hidden style={{ fontSize: "13px" }}>
+            &rarr;
+          </span>
+        </div>
+      )}
     </article>
+  );
+
+  // Wrap the card in a Link when keyable; otherwise render it static.
+  return href ? (
+    <Link
+      href={href as Route}
+      style={{ textDecoration: "none", color: "inherit", display: "block" }}
+      aria-label={`Compare ${currentCountryName} with ${analog.country} ${analog.year}`}
+    >
+      {cardInner}
+    </Link>
+  ) : (
+    cardInner
   );
 }
