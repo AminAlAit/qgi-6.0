@@ -624,6 +624,10 @@ function NavLeafLink({
   comingSoon?: boolean;
 }) {
   const active = isActiveRoute(pathname, href);
+  // Long labels ("Sanctions Simulator") get a smaller, tighter font so they sit
+  // on ONE line in the 224px rail instead of wrapping. Short labels keep the
+  // standard 12px tracking-widest treatment.
+  const isLongLabel = label.length > 14;
   return (
     <Link
       href={href}
@@ -631,7 +635,7 @@ function NavLeafLink({
       aria-current={active ? "page" : undefined}
       aria-label={collapsed ? `${label}${comingSoon ? " (coming soon)" : ""}` : undefined}
       title={collapsed ? `${label}${comingSoon ? ": Coming soon" : ""}` : undefined}
-      className="flex items-center gap-3 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
+      className="flex items-center gap-2.5 px-3 py-2.5 rounded text-xs tracking-widest transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)] focus-visible:ring-offset-1 focus-visible:ring-offset-[var(--qgi-surface)]"
       style={{
         color: active ? "var(--qgi-accent)" : "var(--qgi-text-muted)",
         backgroundColor: active ? "var(--qgi-accent-glow)" : "transparent",
@@ -648,8 +652,9 @@ function NavLeafLink({
         className="flex-1 uppercase overflow-hidden transition-opacity duration-150"
         style={{
           opacity: collapsed ? 0 : 1,
-          whiteSpace: collapsed ? "nowrap" : "normal",
+          whiteSpace: "nowrap",
           lineHeight: 1.3,
+          ...(isLongLabel ? { fontSize: "9px", letterSpacing: "0" } : {}),
         }}
         aria-hidden={collapsed}
       >
@@ -661,7 +666,7 @@ function NavLeafLink({
       {comingSoon && !collapsed && (
         <span
           aria-hidden="true"
-          className="shrink-0 text-center px-1.5 py-0.5 rounded text-[8.5px] font-semibold normal-case"
+          className="shrink-0 text-center px-1 py-0.5 rounded text-[8px] font-semibold normal-case"
           style={{
             color: "var(--qgi-text-dim)",
             border: "1px solid var(--qgi-border)",
