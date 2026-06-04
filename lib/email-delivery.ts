@@ -23,6 +23,8 @@ export interface DeliverInput {
   text: string;
   /** Optional reply-to (e.g. the sender's address on a contact form). */
   replyTo?: string;
+  /** Optional explicit recipient; overrides EMAIL_TO and the default inbox. */
+  to?: string;
 }
 
 export interface DeliverResult {
@@ -71,12 +73,13 @@ export async function deliverEmail({
   subject,
   text,
   replyTo,
+  to,
 }: DeliverInput): Promise<DeliverResult> {
   const key = process.env.RESEND_API_KEY;
   if (!key) return { ok: false, configured: false };
 
   const from = process.env.EMAIL_FROM || "QG Intelligence <noreply@qgintelligence.com>";
-  const to = process.env.EMAIL_TO || "contact@qgintelligence.com";
+  const recipient = to || process.env.EMAIL_TO || "contact@qgintelligence.com";
 
   try {
     const res = await fetch(RESEND_ENDPOINT, {
@@ -87,7 +90,7 @@ export async function deliverEmail({
       },
       body: JSON.stringify({
         from,
-        to: [to],
+        to: [recipient],
         subject,
         text,
         ...(replyTo ? { reply_to: replyTo } : {}),

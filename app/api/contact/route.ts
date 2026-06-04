@@ -15,8 +15,10 @@ const Body = z.object({
   name: z.string().trim().min(1, "Please enter your name.").max(120),
   email: z.string().trim().email("Please enter a valid email address.").max(254),
   message: z.string().trim().min(10, "Please add a little more detail.").max(5000),
-  // Honeypot — must stay empty.
-  company: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot — a hidden field real users never see. Bots that fill it are
+  // silently accepted below (we return ok without sending), so keep the schema
+  // permissive and handle it in code rather than rejecting with a raw zod error.
+  company: z.string().optional(),
 });
 
 export async function POST(req: Request) {
@@ -38,6 +40,7 @@ export async function POST(req: Request) {
 
   const { name, email, message } = parsed.data;
   const result = await deliverEmail({
+    to: "amin@qgintelligence.com",
     subject: `QGI contact form — ${name}`,
     replyTo: email,
     text: `Name: ${name}\nEmail: ${email}\n\n${message}\n`,

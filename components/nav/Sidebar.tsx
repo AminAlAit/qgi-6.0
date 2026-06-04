@@ -646,20 +646,20 @@ function NavLeafLink({
       }}
     >
       <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
-      {/* Label. Hidden via opacity when collapsed; wraps when expanded so a long
-          two-word label ("Sanctions Simulator") shows in full. */}
-      <span
-        className="flex-1 uppercase overflow-hidden transition-opacity duration-150"
-        style={{
-          opacity: collapsed ? 0 : 1,
-          whiteSpace: "nowrap",
-          lineHeight: 1.3,
-          ...(isLongLabel ? { fontSize: "9px", letterSpacing: "0" } : {}),
-        }}
-        aria-hidden={collapsed}
-      >
-        {label}
-      </span>
+      {/* Label — rendered ONLY when expanded, so it consumes no row width when
+          collapsed and the icon centers cleanly in the rail. */}
+      {!collapsed && (
+        <span
+          className="flex-1 uppercase overflow-hidden"
+          style={{
+            whiteSpace: "nowrap",
+            lineHeight: 1.3,
+            ...(isLongLabel ? { fontSize: "9px", letterSpacing: "0" } : {}),
+          }}
+        >
+          {label}
+        </span>
+      )}
       {/* "Coming soon" chip — kept to the RIGHT of the label, only when flagged
           AND expanded. Rendered on two lines ("coming" / "soon") so the chip
           stays narrow and leaves the label its full width. Calm slate-dim. */}
