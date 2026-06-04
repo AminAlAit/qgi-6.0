@@ -40,11 +40,11 @@ export default function NotFound() {
           ← Back to Dashboard
         </Link>
         <Link
-          href="/recipes"
+          href="/trends"
           className="px-3 py-2 rounded text-[11px] tracking-widest uppercase border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
           style={{ borderColor: "var(--qgi-border)", color: "var(--qgi-text-muted)" }}
         >
-          Recipes
+          Trends
         </Link>
         <Link
           href="/countries"

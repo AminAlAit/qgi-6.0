@@ -54,9 +54,11 @@ export function CalibrationPanel({
     <PanelBase
       title="Calibration"
       familyColor={familyColor}
-      titleTooltip="Once the recipe graduates and clears the calibration threshold, the score in country panels flips from a rank to a calibrated probability interval (Venn-Abers, per cohort)."
+      titleTooltip="Once the trend graduates and clears the calibration threshold, the score in country panels flips from a rank to a calibrated probability interval (Venn-Abers, per cohort)."
+      caption="Is the score honest? This checks whether the numbers line up with how often the event actually happens."
       sectionPending={showCalibrationData ? null : "probability"}
       id="cap-11"
+      dataTour="calibration-panel"
     >
       {showCalibrationData && ece !== undefined && (
         <CalibrationBody ece={ece} familyColor={familyColor} />
@@ -140,9 +142,9 @@ function CalibrationBody({ ece, familyColor }: { ece: number; familyColor: strin
           margin: 0,
         }}
       >
-        How close the recipe&apos;s score numbers are to actual frequencies. When the
-        recipe says &ldquo;0.8&rdquo;, does the event happen 80% of the time in similar
-        countries? Lower ECE means closer alignment.
+        When the trend says &ldquo;0.8&rdquo;, does the event follow about 80% of the time
+        in similar countries? Expected Calibration Error is the gap between the score and
+        what actually happens; lower means a closer match.
       </p>
 
       {/* Threshold bar */}

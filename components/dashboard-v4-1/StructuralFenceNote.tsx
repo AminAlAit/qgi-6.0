@@ -53,8 +53,8 @@ export function StructuralFenceNote() {
           title="Tile counts come from the public tracker."
           body={
             <>
-              Recipe counts (validated, tested, queued) are integers drawn directly from
-              the recipe tracker. Nothing on this dashboard promotes a recipe&apos;s tier
+              Trend counts (validated, tested, queued) are integers drawn directly from
+              the recipe tracker. Nothing on this dashboard promotes a trend&apos;s tier
               or softens a verdict in transit.
             </>
           }

@@ -165,7 +165,7 @@ function AnalogCardCompact({ analog, rank }: { analog: CountryAnalog; rank: numb
       </div>
 
       <Link
-        href={`/recipes/${analog.primary_recipe_id}` as Route}
+        href={`/trends/${analog.primary_recipe_id}` as Route}
         style={{
           textDecoration: "none",
           display: "flex",

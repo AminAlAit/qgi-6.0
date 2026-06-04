@@ -1,7 +1,7 @@
 /**
  * country-flags — name → flag-emoji + name → ISO 3166-1 alpha-2 lookup.
  *
- * The recipe mock data (lib/te-mock/recipes.ts) carries country names only
+ * The recipe mock data (lib/te-mock/trends.ts) carries country names only
  * (`countriesTop: [{name, score}]`); V4.1 wants to render flags next to
  * each top/bottom-country entry. This file is a small static lookup
  * keyed by the country names that actually appear in the populated recipes.

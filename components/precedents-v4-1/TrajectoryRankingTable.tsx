@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * TrajectoryRankingTable — the /recipes/trajectory-ranking client
+ * TrajectoryRankingTable — the /trends/trajectory-ranking client
  * surface (migrated + rebuilt from the old /patterns/ranking to the V4.1
  * bar). Top-30 countries by how closely their current movement resembles any
  * trajectory in the catalog. Search + family filter + sortable columns.
@@ -123,7 +123,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search country, region, or recipe"
+                placeholder="Search country, region, or trend"
                 style={{
                   flex: 1,
                   background: "transparent",
@@ -331,7 +331,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
                       </td>
                       <td style={{ padding: "11px 12px" }}>
                         <Link
-                          href={`/recipes/${row.top_pattern_id}/trajectory` as Route}
+                          href={`/trends/${row.top_pattern_id}/trajectory` as Route}
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
@@ -381,7 +381,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
                       </td>
                       <td style={{ padding: "11px 12px" }}>
                         <Link
-                          href={`/recipes/${row.runner_pattern_id}/trajectory` as Route}
+                          href={`/trends/${row.runner_pattern_id}/trajectory` as Route}
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
@@ -439,7 +439,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
           >
             Scores in this table are similarity ranks from 0 to 100, not probabilities. A
             country at 90 resembles that trajectory closely; it is not 90% likely to see
-            the event. No recipe here is yet deployed for real decisions.
+            the event. No trend here is yet deployed for real decisions.
           </div>
         </div>
 
@@ -475,7 +475,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
             }}
           >
             This ranking sorts countries by shape similarity to any trajectory in the
-            catalog, including recipes still in review. It asks:{" "}
+            catalog, including trends still in review. It asks:{" "}
             <em>whose recent movement resembles something we have seen before?</em>
           </p>
           <p
@@ -490,7 +490,7 @@ export function TrajectoryRankingTable({ rows, families }: TrajectoryRankingTabl
             <Link href={"/risk-board" as Route} style={{ color: "var(--qgi-accent)" }}>
               Risk Board
             </Link>{" "}
-            ranks only on deployed recipes with their confidence bands. It asks:{" "}
+            ranks only on deployed trends with their confidence bands. It asks:{" "}
             <em>where are we confident enough to put a number on the table?</em>
           </p>
           <p

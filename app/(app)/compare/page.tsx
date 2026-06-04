@@ -21,7 +21,7 @@ import type { Route } from "next";
 export const metadata: Metadata = {
   title: "Compare · QG Intelligence",
   description:
-    "Compare two countries on the same set of recipes side by side. Read across for one country, down for one recipe.",
+    "Compare two countries on the same set of trends side by side. Read across for one country, down for one trend.",
   robots: { index: false, follow: false },
 };
 
@@ -150,7 +150,7 @@ export default async function ComparePage() {
           }}
         >
           <PanelHeader
-            eyebrow="§01 · Shared recipe matchup"
+            eyebrow="§01 · Shared trend matchup"
             title="Where the two countries diverge most"
           />
           <div
@@ -208,7 +208,7 @@ export default async function ComparePage() {
             }}
           >
             <StatTile
-              label="Recipes both match"
+              label="Trends both match"
               big="9"
               caption="shared catalog entries lit"
               accent={GREEN}
@@ -242,6 +242,7 @@ export default async function ComparePage() {
         }}
       >
         <section
+          data-tour="compare-coming-soon"
           aria-labelledby="compare-lockdown-heading"
           style={{
             background: "var(--qgi-surface)",
@@ -288,8 +289,8 @@ export default async function ComparePage() {
             }}
           >
             We&apos;re currently working on making it possible for you to compare
-            countries to one another. Same recipes, same metrics, side by side. Until
-            then, you can compare any country to its closest historical analogue via
+            countries to one another. Same trends, same metrics, side by side. Until then,
+            you can compare any country to its closest historical analogue via
             <Link
               href={"/analogues" as Route}
               style={{
@@ -393,7 +394,7 @@ function CountryHero({
           }}
         >
           <BigStat label="Compound risk" value={compound} accent={accent} />
-          <BigStat label="Recipes lit" value={litCount} accent={NEUTRAL} />
+          <BigStat label="Trends lit" value={litCount} accent={NEUTRAL} />
         </div>
       </div>
     </div>

@@ -32,8 +32,8 @@ import {
 /**
  * RecipeCard
  *
- * `basePath` defaults to /recipes (V4 gallery). The V4.1 gallery
- * passes "/recipes" so card clicks land on V4.1 detail pages.
+ * `basePath` defaults to /trends (V4 gallery). The V4.1 gallery
+ * passes "/trends" so card clicks land on V4.1 detail pages.
  *
  * `labelStrategy` defaults to "legacy" (byte-identical V4 behavior). Pass
  * "v4.1" for the polished gallery to emit the V4.1 vocabulary
@@ -52,7 +52,7 @@ import {
  */
 export function RecipeCard({
   recipe,
-  basePath = "/recipes",
+  basePath = "/trends",
   labelStrategy = "legacy",
 }: {
   recipe: TrackerRecipe;
@@ -280,7 +280,7 @@ export function RecipeCard({
                     alignItems: "flex-end",
                     lineHeight: 1,
                   }}
-                  title={`${Math.round(auc * 100)}% confidence: how closely this country-trajectory has matched the recipe's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
+                  title={`${Math.round(auc * 100)}% confidence: how closely this country-trajectory has matched the trend's canonical movement shape. 50% is coin-flip resemblance; higher is closer.`}
                 >
                   <div
                     style={{

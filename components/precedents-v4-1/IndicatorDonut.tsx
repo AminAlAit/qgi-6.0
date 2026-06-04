@@ -10,6 +10,7 @@
 "use client";
 
 import { useState } from "react";
+import { stripProviderSuffix } from "@/lib/indicator-labels";
 import type { IndicatorWithWeight } from "@/lib/te-mock/recipe-v4-1-mock";
 
 const SLICE_OPACITY = [1, 0.8, 0.62, 0.48, 0.37, 0.3, 0.26];
@@ -202,7 +203,7 @@ export function IndicatorDonut({
                   }}
                   title={s.ind.code}
                 >
-                  {s.ind.name}
+                  {stripProviderSuffix(s.ind.name)}
                 </div>
               </div>
               <span
@@ -213,7 +214,7 @@ export function IndicatorDonut({
                   color: familyColor,
                   letterSpacing: "-0.3px",
                 }}
-                title="How much this signal counts toward the score for this recipe."
+                title="How much this signal counts toward the score for this trend."
               >
                 {s.ind.shapWeightPct.toFixed(0)}%
               </span>

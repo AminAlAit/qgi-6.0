@@ -1,6 +1,6 @@
 /**
  * country-recipe-match — data join for the
- * /recipes/[slug]/countries/[iso] "how is this country following this recipe"
+ * /trends/[slug]/countries/[iso] "how is this country following this recipe"
  * page, sourced from the REAL fleet-run-1 per-country scores.
  *
  * Source: loadScores(recipeId) -> data/te-fleet-run-1/scores/{id}.scores.json
@@ -34,6 +34,7 @@ import { getIndicatorLabel } from "@/lib/indicator-labels";
 import { iso2For } from "@/lib/te-mock/country-flags";
 import { getRecipeCanonical } from "@/lib/te-mock/recipe-canonical-shape";
 import { findAnalogueEvent, type AnalogueEvent } from "@/lib/te-mock/analogue-events";
+import { whnBlurb } from "@/lib/curation/what-happened-next";
 
 /* ── Local interfaces matching the REAL fleet-run-1 JSON field names ── */
 interface FleetShap {
@@ -235,7 +236,8 @@ export function getCountryRecipeMatch(
     year: a.year,
     matchPct: Math.round(a.match_score * 100),
     weak: a.weak_analog,
-    whatHappenedNext: a.what_happened_next ?? null,
+    whatHappenedNext:
+      whnBlurb(a.country_iso2, a.country, a.year) ?? a.what_happened_next ?? null,
     // Join the analogue to the real verified event that hit that country
     // around that year under this recipe (title + public source).
     event: findAnalogueEvent(a.country, a.year, recipeId),

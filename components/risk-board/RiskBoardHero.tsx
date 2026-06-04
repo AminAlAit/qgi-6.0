@@ -65,7 +65,7 @@ export function RiskBoardHero({
               color: "var(--qgi-text)",
             }}
           >
-            Top {pairs.length} country × recipe pairs
+            Top {pairs.length} country × trend pairs
           </h2>
         </div>
         {/* V4.1 §2: per-panel vintage stamp removed — one stamp in global header. */}
@@ -117,7 +117,7 @@ function HeroRow({
   return (
     <li>
       <Link
-        href={`/recipes/${pair.recipe_id}` as Route}
+        href={`/trends/${pair.recipe_id}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
       >
         <div

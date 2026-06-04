@@ -52,13 +52,13 @@ export function MatchAlignmentPanel({
 
   return (
     <PanelShell
-      title={`How ${countryName} is following this recipe`}
+      title={`How ${countryName} is following this trend`}
       accent={familyColor}
       dataTour="match-alignment-panel"
       caption={
         anyCanon
-          ? `For each of the recipe's signals: the shape it typically traced in the run-up to past cases (the shaded band and line), beside how ${countryName}'s signal has actually moved recently (white). The overall resemblance is the score above; this panel lays the recipe's run-up shape next to ${countryName}'s movement, signal by signal. Shapes are compared, not the calendar.`
-          : `How each of the recipe's signals has moved for ${countryName} over recent years. The recipe's canonical shape for these signals is being computed for this release; the comparison line will appear here once it lands.`
+          ? `For each of the trend's signals: the shape it typically traced in the run-up to past cases (the shaded band and line), beside how ${countryName}'s signal has actually moved recently (white). The overall resemblance is the score above; this panel lays the trend's run-up shape next to ${countryName}'s movement, signal by signal. Shapes are compared, not the calendar.`
+          : `How each of the trend's signals has moved for ${countryName} over recent years. The trend's canonical shape for these signals is being computed for this release; the comparison line will appear here once it lands.`
       }
     >
       {zoneLabel && (
@@ -130,7 +130,7 @@ export function MatchAlignmentPanel({
                 display: "inline-block",
               }}
             />
-            the recipe&apos;s run-up shape
+            the trend&apos;s run-up shape
           </span>
           <span style={{ marginLeft: "auto" }}>earlier &rarr; today ({evalYear})</span>
         </footer>
@@ -213,7 +213,7 @@ function IndicatorOverlayRow({
             color: "var(--qgi-text-dim)",
             fontFamily: "ui-monospace, monospace",
           }}
-          title="How much this signal counts toward the score for this recipe."
+          title="How much this signal counts toward the score for this trend."
         >
           {indicator.weightPct.toFixed(0)}% of the signal
         </div>
@@ -325,7 +325,7 @@ function CanonOverlaySvg({
       width="100%"
       viewBox={`0 0 ${W} ${H}`}
       role="img"
-      aria-label={`${indicator.name}: ${"country"} path over the recipe's canonical run-up shape`}
+      aria-label={`${indicator.name}: ${"country"} path over the trend's canonical run-up shape`}
       style={{ display: "block" }}
       preserveAspectRatio="none"
     >

@@ -43,7 +43,7 @@ const THEME_SLICES = countBy("theme");
 export const metadata: Metadata = {
   title: "All indicators · QGI Methodology",
   description:
-    "Every open-data indicator QGI currently tracks, with its provider, theme, and how many recipes it feeds. World Bank, V-Dem and FAOSTAT.",
+    "Every open-data indicator QGI currently tracks, with its provider, theme, and how many trends it feeds. World Bank, V-Dem and FAOSTAT.",
   alternates: { canonical: "https://qgintelligence.com/methodology/indicators" },
   openGraph: {
     title: "All indicators · QGI Methodology",
@@ -105,7 +105,7 @@ export default function MethodologyIndicatorsPage() {
             >
               QGI reads {TOTAL} open-data indicators, every one public and citable, drawn
               from the World Bank, V-Dem and FAOSTAT. They span the economy, governance,
-              rights, conflict and society, the raw signals a recipe is built from.
+              rights, conflict and society, the raw signals a trend is built from.
             </p>
             <p className="mt-4 text-sm">
               <Link

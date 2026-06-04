@@ -1,5 +1,5 @@
 /**
- * Mock recipe data for the /recipes mockup pages.
+ * Mock recipe data for the /trends mockup pages.
  *
  * Fleet-run-1 wire-up (2026-05-30):
  *
@@ -241,7 +241,7 @@ let _allRecipesCache: TrackerRecipe[] | null = null;
  *     getCascadeRecipe(recipeId) for the Recipe Tracker historical column.
  *
  * All 44 fleet-run-1 recipe IDs are a subset of the 71 cascade catalog rows.
- * The remaining 27 cascade-only rows render as "Coming soon" in /recipes.
+ * The remaining 27 cascade-only rows render as "Coming soon" in /trends.
  */
 export function getAllRecipes(): TrackerRecipe[] {
   if (_allRecipesCache) return _allRecipesCache;
@@ -249,14 +249,14 @@ export function getAllRecipes(): TrackerRecipe[] {
   const te = buildTERecipes();
   const teIds = new Set(te.map((r) => r.recipe_id));
   const cascadeKept = cascade.filter((r) => !teIds.has(r.recipe_id));
-  // Order: cascade-kept first, then TE rows. /recipes groups by status/tier.
+  // Order: cascade-kept first, then TE rows. /trends groups by status/tier.
   _allRecipesCache = [...cascadeKept, ...te];
   return _allRecipesCache;
 }
 
 /**
  * Look up a recipe by ID, preferring the TE row when both engines exist.
- * The dedupe in getAllRecipes() already makes this a no-op for /recipes, but
+ * The dedupe in getAllRecipes() already makes this a no-op for /trends, but
  * call sites that derive from the raw cascade list (e.g. /recipe-tracker
  * historical column) need this helper.
  */

@@ -27,6 +27,7 @@ import {
   FLEET_RUN_1_RECIPE_IDS,
 } from "@/lib/te-data-contract/load";
 import type { NearestAnalogEntry } from "@/lib/te-data-contract/scores";
+import { whnBlurb } from "@/lib/curation/what-happened-next";
 
 /**
  * ISO 3166-1 alpha-2 → alpha-3 lookup for the 216-country TE fleet-run-1
@@ -381,7 +382,10 @@ function buildAllEntries(): CurrentCountryEntry[] {
           // Round-2: what_happened_next is still null from the bake.
           // Use enriched value if non-null; fall back to honest placeholder.
           const whatHappenedNext: string =
-            enriched?.what_happened_next ?? a.what_happened_next ?? "In training set.";
+            whnBlurb(a.country_iso2, a.country, a.year) ??
+            enriched?.what_happened_next ??
+            a.what_happened_next ??
+            "In training set.";
 
           return {
             country: a.country ?? "",

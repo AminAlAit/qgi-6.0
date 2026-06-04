@@ -187,7 +187,7 @@ export function CascadeFlow() {
           <Connector symbol="→" />
           <Node
             Icon={ScrollText}
-            label="Recipes"
+            label="Trends"
             sub="the shape that runs ahead of an event"
             tint="#E68F29"
           />
@@ -209,7 +209,7 @@ export function CascadeFlow() {
         <FlowRow>
           <Node
             Icon={ScrollText}
-            label="A recipe's shape"
+            label="A trend's shape"
             sub="from the Cascade method"
             tint="#E68F29"
           />
@@ -224,7 +224,7 @@ export function CascadeFlow() {
           <Node
             Icon={Gauge}
             label="Resemblance score"
-            sub="how closely it's tracing the recipe"
+            sub="how closely it's tracing the trend"
             tint="#3FBF8F"
           />
         </FlowRow>

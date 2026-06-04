@@ -9,7 +9,10 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import type { Route } from "next";
 import { FlagImg } from "@/components/countries-v4-1/FlagImg";
-import { pairDetailFlagFor } from "@/lib/te-mock/patterns-v4-pair-detail-mock";
+// Use the canonical flag lookup directly — no dependency on any -mock module
+// (the pattern detail route is zero-mock). flagFor is the same lookup the
+// former pairDetailFlagFor wrapper delegated to.
+import { flagFor } from "@/lib/te-mock/country-flags";
 
 interface PairHeaderProps {
   countryA: string;
@@ -71,7 +74,7 @@ export function PairHeader({
             href={"/patterns" as Route}
             style={{ color: "var(--qgi-accent)", textDecoration: "none" }}
           >
-            Patterns V4
+            Patterns
           </Link>
           <span style={{ color: "var(--qgi-text-dim)" }}>/</span>
           <span style={{ color: "var(--qgi-text-dim)" }}>Pair</span>
@@ -114,12 +117,7 @@ export function PairHeader({
               zIndex: 2,
             }}
           >
-            <FlagImg
-              emoji={pairDetailFlagFor(countryA)}
-              name={countryA}
-              width={60}
-              radius={2}
-            />
+            <FlagImg emoji={flagFor(countryA)} name={countryA} width={60} radius={2} />
           </div>
           <div
             style={{
@@ -134,12 +132,7 @@ export function PairHeader({
               zIndex: 1,
             }}
           >
-            <FlagImg
-              emoji={pairDetailFlagFor(countryB)}
-              name={countryB}
-              width={60}
-              radius={2}
-            />
+            <FlagImg emoji={flagFor(countryB)} name={countryB} width={60} radius={2} />
           </div>
         </div>
 
@@ -155,12 +148,7 @@ export function PairHeader({
               marginBottom: "6px",
             }}
           >
-            <FlagImg
-              emoji={pairDetailFlagFor(countryA)}
-              name={countryA}
-              width={20}
-              radius={2}
-            />
+            <FlagImg emoji={flagFor(countryA)} name={countryA} width={20} radius={2} />
             <span
               style={{
                 fontSize: "14px",
@@ -180,12 +168,7 @@ export function PairHeader({
             >
               ↔
             </span>
-            <FlagImg
-              emoji={pairDetailFlagFor(countryB)}
-              name={countryB}
-              width={20}
-              radius={2}
-            />
+            <FlagImg emoji={flagFor(countryB)} name={countryB} width={20} radius={2} />
             <span
               style={{
                 fontSize: "14px",

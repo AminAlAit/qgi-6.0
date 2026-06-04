@@ -10,7 +10,7 @@
  * board metaphor pairs with the risk-board leaderboard framing; reads as
  * "currently in the running," not as a status claim about the recipes).
  * 2026-05-31: "Recipes in play" -> "Active recipes" (founder); rows now link
- * to /recipes/{id}/countries/{iso2} (the "how this country is tracing that
+ * to /trends/{id}/countries/{iso2} (the "how this country is tracing that
  * recipe" match page) instead of the recipe detail page.
  *
  * Honesty: the caption carries Kwame's canonical graduation-gap sentence;
@@ -58,11 +58,11 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
 
   return (
     <PanelShell
-      title="Active recipes"
+      title="Active trends"
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="recipes-in-play-panel"
-      caption={`Every row is a recipe ${country.name}'s recent signals are actively tracing. Scores are a relative 0-to-100 ranking of resemblance, not a probability. Open a row to see how ${country.name} is tracing that recipe, signal by signal.`}
+      caption={`Every row is a trend ${country.name}'s recent signals are actively tracing. Scores are a relative 0-to-100 ranking of resemblance, not a probability. Open a row to see how ${country.name} is tracing that trend, signal by signal.`}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
         {rows.map((r) => {
@@ -73,8 +73,8 @@ export function LitRecipesPanel({ country }: { country: CountryV4 }) {
               key={r.recipe_id}
               href={
                 (iso2
-                  ? `/recipes/${r.recipe_id}/countries/${iso2}`
-                  : `/recipes/${r.recipe_id}`) as Route
+                  ? `/trends/${r.recipe_id}/countries/${iso2}`
+                  : `/trends/${r.recipe_id}`) as Route
               }
               style={{
                 textDecoration: "none",

@@ -12,6 +12,9 @@
 
 export interface AnalogEntry {
   country: string;
+  /** ISO 3166-1 alpha-2 lowercase for this analogue country (present in the
+   *  bake; used to join the curated what-happened-next narratives). */
+  country_iso2?: string | null;
   year: number;
   match_score: number;
   primary_recipe_id: string;

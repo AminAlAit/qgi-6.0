@@ -143,7 +143,7 @@ function PairRow({
   return (
     <li>
       <Link
-        href={`/recipes/${recipeId}` as Route}
+        href={`/trends/${recipeId}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
         title={rationale}
       >
@@ -212,7 +212,7 @@ function PairRow({
                 minWidth: "32px",
                 textAlign: "right",
               }}
-              title={`${pct}% match: this country's recent path matches the recipe's canonical shape.`}
+              title={`${pct}% match: this country's recent path matches the trend's canonical shape.`}
             >
               {pct}%
             </span>
