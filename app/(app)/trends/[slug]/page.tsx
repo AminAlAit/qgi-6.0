@@ -35,7 +35,6 @@ import { familyColor as familyColorFn } from "@/lib/te-mock/l1-families";
 import {
   IndicatorSetPanel,
   WindowPanel,
-  IdentityCardPanel,
   DiscriminationPanel,
 } from "@/components/precedents-v4-1/MinorPanels";
 import { CalibrationPanel } from "@/components/precedents-v4-1/CalibrationPanel";
@@ -227,24 +226,17 @@ export default async function RecipeDetailV41Page({ params }: Params) {
     >
       {/*
         Panel order — pedagogical sort:
-          1. STRUCTURE   Identity Card · Building Blocks · Optimal Window
+          1. STRUCTURE   Building Blocks · Optimal Window
           2. PRECEDENTS  the real events this trend was built from (led with,
                          full-width, expanded by default)
           3. VALIDATION  Discrimination · Reliability · Calibration
           4. RESULTS     Countries · Score Distribution
           5. DEEP-DIVE   Trajectory Alignment · Indicator Sensitivity
+
+        2026-06-04 (founder): the Identity Card panel was removed.
       */}
 
       {/* 1. STRUCTURE */}
-      <IdentityCardPanel
-        familyColor={familyColor}
-        l1_label={recipe.l1_label}
-        l2_label={recipe.l2_label}
-        nIndicators={enrichedIndicators.length}
-        status={recipe.status}
-        nPositives={mock.nPositives ?? 0}
-        thresholdMet={(mock.nPositives ?? 0) >= extras.threshold}
-      />
       <IndicatorSetPanel familyColor={familyColor} indicators={enrichedIndicators} wide />
       <WindowPanel
         familyColor={familyColor}
