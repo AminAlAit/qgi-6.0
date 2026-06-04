@@ -146,7 +146,7 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   // Slotted after Compare so both locked/R&D surfaces sit at the foot of the list.
   {
     type: "standalone",
-    label: "Sanctions",
+    label: "Sanctions Simulator",
     href: "/sanctions-simulator",
     icon: <ShieldAlert size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
@@ -386,71 +386,97 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
           className="flex items-center border-b"
           style={{ borderColor: "var(--qgi-border)" }}
         >
-          <Link
-            href="/dashboard"
-            onClick={closeOnNavigate}
-            className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
-            title="Go to Briefing (command center)"
-          >
-            <span
-              style={{
-                fontSize: "26px",
-                lineHeight: 1,
-                letterSpacing: "0.04em",
-                color: "var(--qgi-accent)",
-                marginRight: "-0.05em",
-                // 2026-05-28 (founder pick): use Century Gothic Bold for the QG
-                // wordmark — matches the Gemini infographics. Fallback chain:
-                // Century Gothic (Windows native), URW Gothic (Linux), Avant
-                // Garde / Geometric Sans (macOS fallbacks), Sora (the
-                // previous web brand font), then generic sans.
-                fontFamily:
-                  "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
-                fontWeight: 700,
-                flexShrink: 0,
-              }}
+          {collapsed ? (
+            /* Collapsed: only the "QG" wordmark shows. Hovering it swaps the
+               wordmark for an expand icon in place; clicking expands the nav.
+               No separate toggle button in the collapsed rail. */
+            <button
+              type="button"
+              onClick={toggleCollapsed}
+              aria-label="Expand sidebar"
+              aria-expanded={false}
+              title="Expand sidebar  ( [ or ] )"
+              className="group relative flex items-center justify-center w-full px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
             >
-              QG
-            </span>
-            {/* "Intelligence" fades + collapses out when the sidebar narrows.
-                opacity transition gives a smoother visual than clipping alone. */}
-            <span
-              className="uppercase transition-opacity duration-200"
-              style={{
-                fontSize: "12px",
-                letterSpacing: "0.2em",
-                color: "var(--qgi-text-muted)",
-                fontWeight: 500,
-                opacity: collapsed ? 0 : 1,
-                // Keep it in layout but invisible during transition; after the
-                // sidebar finishes collapsing it's fully clipped by overflow-hidden.
-                whiteSpace: "nowrap",
-              }}
-            >
-              Intelligence
-            </span>
-          </Link>
+              <span
+                className="transition-opacity duration-150 group-hover:opacity-0"
+                style={{
+                  fontSize: "26px",
+                  lineHeight: 1,
+                  letterSpacing: "0.04em",
+                  color: "var(--qgi-accent)",
+                  fontFamily:
+                    "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
+                  fontWeight: 700,
+                }}
+              >
+                QG
+              </span>
+              {/* Expand icon — revealed in place of "QG" on hover/focus. */}
+              <span
+                aria-hidden="true"
+                className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                <PanelLeft size={18} strokeWidth={1.5} />
+              </span>
+            </button>
+          ) : (
+            <>
+              <Link
+                href="/dashboard"
+                onClick={closeOnNavigate}
+                className="flex items-baseline gap-1.5 px-5 py-6 transition-colors hover:bg-[var(--qgi-surface-2)] min-w-0 flex-1 overflow-hidden"
+                title="Go to Briefing (command center)"
+              >
+                <span
+                  style={{
+                    fontSize: "26px",
+                    lineHeight: 1,
+                    letterSpacing: "0.04em",
+                    color: "var(--qgi-accent)",
+                    marginRight: "-0.05em",
+                    // 2026-05-28 (founder pick): Century Gothic Bold for the QG
+                    // wordmark, matching the Gemini infographics. Fallback chain:
+                    // Century Gothic (Windows), URW Gothic (Linux), Avant Garde /
+                    // Geometric Sans (macOS), Sora (prev web brand), generic sans.
+                    fontFamily:
+                      "'Century Gothic', 'CenturyGothic', 'URW Gothic', 'AppleGothic', 'ITC Avant Garde Gothic', var(--font-qg-brand), sans-serif",
+                    fontWeight: 700,
+                    flexShrink: 0,
+                  }}
+                >
+                  QG
+                </span>
+                <span
+                  className="uppercase"
+                  style={{
+                    fontSize: "12px",
+                    letterSpacing: "0.2em",
+                    color: "var(--qgi-text-muted)",
+                    fontWeight: 500,
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Intelligence
+                </span>
+              </Link>
 
-          {/* Desktop-only collapse toggle. Hidden on mobile (the hamburger
-              handles mobile open/close). Positioned at the right of the
-              header area, inside the border-b row. */}
-          <button
-            type="button"
-            aria-label="Toggle sidebar"
-            aria-expanded={!collapsed}
-            onClick={toggleCollapsed}
-            title={
-              collapsed ? "Expand sidebar  ( [ or ] )" : "Collapse sidebar  ( [ or ] )"
-            }
-            className="hidden md:flex items-center justify-center shrink-0 p-2 mr-2 rounded transition-colors hover:bg-[var(--qgi-surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
-            style={{ color: "var(--qgi-text-muted)" }}
-          >
-            {collapsed ? (
-              <PanelLeft size={15} strokeWidth={1.5} aria-hidden="true" />
-            ) : (
-              <PanelLeftClose size={15} strokeWidth={1.5} aria-hidden="true" />
-            )}
-          </button>
+              {/* Desktop-only collapse toggle (expanded state). Hidden on mobile
+                  (the hamburger handles mobile open/close). */}
+              <button
+                type="button"
+                aria-label="Collapse sidebar"
+                aria-expanded={true}
+                onClick={toggleCollapsed}
+                title="Collapse sidebar  ( [ or ] )"
+                className="hidden md:flex items-center justify-center shrink-0 p-2 mr-2 rounded transition-colors hover:bg-[var(--qgi-surface-2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--qgi-accent)]"
+                style={{ color: "var(--qgi-text-muted)" }}
+              >
+                <PanelLeftClose size={15} strokeWidth={1.5} aria-hidden="true" />
+              </button>
+            </>
+          )}
         </div>
 
         {/* Navigation
@@ -616,34 +642,42 @@ function NavLeafLink({
       }}
     >
       <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
-      {/* Label — hidden (clipped) when collapsed. overflow-hidden on the
-          aside does the actual clipping; opacity gives a smooth fade. */}
+      {/* Label column. The label takes the FULL row width because the
+          "Coming soon" chip stacks BELOW it (not inline) — so long two-word
+          labels like "Sanctions Simulator" show in full instead of being
+          clipped by the chip. Hidden via opacity when collapsed; the flex-1
+          box keeps the same icon position the rail had. */}
       <span
-        className="flex-1 uppercase transition-opacity duration-150 whitespace-nowrap overflow-hidden"
+        className="flex-1 min-w-0 flex flex-col gap-1 transition-opacity duration-150"
         style={{ opacity: collapsed ? 0 : 1 }}
         aria-hidden={collapsed}
       >
-        {label}
-      </span>
-      {/* "Coming soon" chip — only when the entry is flagged AND the sidebar
-          is expanded. Calm slate-dim so it doesn't fight the active-state
-          accent; the visible-but-quiet tone matches the §4 "Coming soon"
-          recipe chip vocabulary, so the same word reads as the same
-          surface signal across the app. */}
-      {comingSoon && !collapsed && (
         <span
-          aria-hidden="true"
-          className="shrink-0 px-1.5 py-0.5 rounded text-[8.5px] tracking-[1.5px] font-semibold normal-case"
+          className="uppercase overflow-hidden"
           style={{
-            color: "var(--qgi-text-dim)",
-            border: "1px solid var(--qgi-border)",
-            background: "var(--qgi-bg)",
-            letterSpacing: "0.5px",
+            whiteSpace: collapsed ? "nowrap" : "normal",
+            lineHeight: 1.3,
           }}
         >
-          Coming soon
+          {label}
         </span>
-      )}
+        {/* "Coming soon" chip — stacked under the label, only when flagged AND
+            expanded. Calm slate-dim so it doesn't fight the active accent. */}
+        {comingSoon && !collapsed && (
+          <span
+            aria-hidden="true"
+            className="self-start px-1.5 py-0.5 rounded text-[8.5px] font-semibold normal-case"
+            style={{
+              color: "var(--qgi-text-dim)",
+              border: "1px solid var(--qgi-border)",
+              background: "var(--qgi-bg)",
+              letterSpacing: "0.5px",
+            }}
+          >
+            Coming soon
+          </span>
+        )}
+      </span>
     </Link>
   );
 }

@@ -181,7 +181,7 @@ export default function SanctionsSimulatorPage() {
                 letterSpacing: "0.5px",
               }}
             >
-              Iran · Tier 4 — Comprehensive sanctions
+              Iran · Tier 4 · Comprehensive sanctions
             </div>
           </div>
           <div style={{ display: "flex", gap: "20px" }}>
@@ -703,8 +703,8 @@ export default function SanctionsSimulatorPage() {
               margin: "0 0 10px",
             }}
           >
-            A what-if scenario tool. Pick a country and a sanctions hardness level —
-            targeted, sectoral, or comprehensive — and see how its indicators would bend
+            A what-if scenario tool. Pick a country and a sanctions hardness level
+            (targeted, sectoral, or comprehensive) and see how its indicators would bend
             and which trends it would start to resemble roughly five years out. A
             scenario, not a forecast.
           </p>
@@ -717,9 +717,9 @@ export default function SanctionsSimulatorPage() {
             }}
           >
             The mechanism: the Trajectory Engine already maps a country&apos;s indicator
-            vector to trend resemblances. The simulator perturbs the inputs — applying a
+            vector to trend resemblances. The simulator perturbs the inputs by applying a
             per-tier impact profile learned from how historically sanctioned
-            countries&apos; indicators moved in the five years following sanctions onset —
+            countries&apos; indicators moved in the five years following sanctions onset,
             then re-runs the same scoring to show the shift.
           </p>
           <p
@@ -732,7 +732,7 @@ export default function SanctionsSimulatorPage() {
               letterSpacing: "0.3px",
             }}
           >
-            Impact model in R&D — shipping when the backtest holds.
+            Impact model in R&D. Shipping when the backtest holds.
           </p>
         </section>
       </div>
