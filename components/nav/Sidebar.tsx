@@ -642,42 +642,39 @@ function NavLeafLink({
       }}
     >
       <span className="flex items-center justify-center w-4 h-4 shrink-0">{icon}</span>
-      {/* Label column. The label takes the FULL row width because the
-          "Coming soon" chip stacks BELOW it (not inline) — so long two-word
-          labels like "Sanctions Simulator" show in full instead of being
-          clipped by the chip. Hidden via opacity when collapsed; the flex-1
-          box keeps the same icon position the rail had. */}
+      {/* Label. Hidden via opacity when collapsed; wraps when expanded so a long
+          two-word label ("Sanctions Simulator") shows in full. */}
       <span
-        className="flex-1 min-w-0 flex flex-col gap-1 transition-opacity duration-150"
-        style={{ opacity: collapsed ? 0 : 1 }}
+        className="flex-1 uppercase overflow-hidden transition-opacity duration-150"
+        style={{
+          opacity: collapsed ? 0 : 1,
+          whiteSpace: collapsed ? "nowrap" : "normal",
+          lineHeight: 1.3,
+        }}
         aria-hidden={collapsed}
       >
+        {label}
+      </span>
+      {/* "Coming soon" chip — kept to the RIGHT of the label, only when flagged
+          AND expanded. Rendered on two lines ("coming" / "soon") so the chip
+          stays narrow and leaves the label its full width. Calm slate-dim. */}
+      {comingSoon && !collapsed && (
         <span
-          className="uppercase overflow-hidden"
+          aria-hidden="true"
+          className="shrink-0 text-center px-1.5 py-0.5 rounded text-[8.5px] font-semibold normal-case"
           style={{
-            whiteSpace: collapsed ? "nowrap" : "normal",
-            lineHeight: 1.3,
+            color: "var(--qgi-text-dim)",
+            border: "1px solid var(--qgi-border)",
+            background: "var(--qgi-bg)",
+            letterSpacing: "0.5px",
+            lineHeight: 1.15,
           }}
         >
-          {label}
+          coming
+          <br />
+          soon
         </span>
-        {/* "Coming soon" chip — stacked under the label, only when flagged AND
-            expanded. Calm slate-dim so it doesn't fight the active accent. */}
-        {comingSoon && !collapsed && (
-          <span
-            aria-hidden="true"
-            className="self-start px-1.5 py-0.5 rounded text-[8.5px] font-semibold normal-case"
-            style={{
-              color: "var(--qgi-text-dim)",
-              border: "1px solid var(--qgi-border)",
-              background: "var(--qgi-bg)",
-              letterSpacing: "0.5px",
-            }}
-          >
-            Coming soon
-          </span>
-        )}
-      </span>
+      )}
     </Link>
   );
 }
