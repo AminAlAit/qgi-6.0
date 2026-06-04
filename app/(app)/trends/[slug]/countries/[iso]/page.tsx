@@ -1,5 +1,5 @@
 /**
- * /recipes/[slug]/countries/[iso] — "how is this country following this
+ * /trends/[slug]/countries/[iso] — "how is this country following this
  * recipe" intersection page.
  *
  * Reached from three entry points (never the left nav):
@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const name = match?.countryName ?? resolveName(slug, iso)?.name ?? iso.toUpperCase();
   return {
     title: `${name} · ${recipe.label} · QG Intelligence`,
-    description: `How ${name}'s recent signals are following the ${recipe.label} recipe, signal by signal.`,
+    description: `How ${name}'s recent signals are following the ${recipe.label} trend, signal by signal.`,
     robots: { index: false, follow: false },
   };
 }
@@ -135,7 +135,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
               }}
             >
               <Link
-                href={`/recipes/${slug}` as Route}
+                href={`/trends/${slug}` as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
                 &larr; {recipe.label}
@@ -189,7 +189,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
                 }}
               >
                 <Link
-                  href={`/recipes/${slug}` as Route}
+                  href={`/trends/${slug}` as Route}
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -203,7 +203,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
                     fontFamily: "ui-monospace, monospace",
                     textDecoration: "none",
                   }}
-                  title={`Open the full ${recipe.label} recipe`}
+                  title={`Open the full ${recipe.label} trend`}
                 >
                   <span style={{ color: familyColor, display: "inline-flex" }}>
                     <RecipeIcon recipeId={recipe.recipe_id} size={13} strokeWidth={1.8} />
@@ -220,7 +220,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
                   margin: "0 0 6px",
                 }}
               >
-                {countryName} is following the {lc} recipe
+                {countryName} is following the {lc} trend
               </h1>
               <p
                 style={{
@@ -255,7 +255,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
               >
                 {match && typeof score === "number"
                   ? `A score of ${Math.round(score)} means ${countryName}'s recent signals have been moving the way they moved before ${lc} in the cases on record. It is a measure of resemblance, not a forecast, and it does not mean a ${Math.round(score)}% chance of anything.`
-                  : `This page shows how closely ${countryName}'s recent signals are following the ${lc} recipe. The signal-by-signal view fills in once this recipe enters scoring.`}
+                  : `This page shows how closely ${countryName}'s recent signals are following the ${lc} trend. The signal-by-signal view fills in once this trend enters scoring.`}
               </p>
             </div>
           </div>
@@ -312,7 +312,7 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
             </>
           ) : (
             <PanelShell
-              title={`How ${countryName} is following this recipe`}
+              title={`How ${countryName} is following this trend`}
               accent={familyColor}
             >
               <p
@@ -323,10 +323,10 @@ export default async function CountryRecipeMatchPage({ params }: Params) {
                   margin: 0,
                 }}
               >
-                {countryName}&apos;s signal-by-signal match on this recipe is being
+                {countryName}&apos;s signal-by-signal match on this trend is being
                 computed for this release. It will show how {countryName}&apos;s own path
-                moves against the historical cases it most resembles, as soon as the
-                recipe enters scoring.
+                moves against the historical cases it most resembles, as soon as the trend
+                enters scoring.
               </p>
             </PanelShell>
           )}
@@ -389,7 +389,7 @@ function ConfidenceFigure({
             lineHeight: 1.3,
           }}
         >
-          Resemblance to the recipe
+          Resemblance to the trend
         </span>
       </div>
       {typeof rank === "number" && typeof nScored === "number" && (
@@ -437,7 +437,7 @@ function MomentumPanel({
     <PanelShell
       title="How the resemblance has moved"
       accent={familyColor}
-      caption={`${countryName}'s score on this recipe across recent years. The line stops at today and is not drawn forward.`}
+      caption={`${countryName}'s score on this trend across recent years. The line stops at today and is not drawn forward.`}
     >
       <div
         style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}
@@ -529,7 +529,7 @@ function AnaloguesPanel({
     <PanelShell
       title="Closest historical analogues"
       accent="#B6924A"
-      caption={`Past situations whose pre-event path most resembles ${countryName} on this recipe right now, and the real event each one was running up to. Similarity is not prediction; every case is its own history.`}
+      caption={`Past situations whose pre-event path most resembles ${countryName} on this trend right now, and the real event each one was running up to. Similarity is not prediction; every case is its own history.`}
     >
       <ul
         style={{
@@ -682,7 +682,7 @@ function ProvenancePanel({
         style={{ display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}
       >
         <Link
-          href={`/recipes/${slug}` as Route}
+          href={`/trends/${slug}` as Route}
           style={{
             fontSize: "12px",
             color: familyColor,
@@ -695,7 +695,7 @@ function ProvenancePanel({
             letterSpacing: "0.3px",
           }}
         >
-          See the full {recipeLabel} recipe &rarr;
+          See the full {recipeLabel} trend &rarr;
         </Link>
         {vintage && (
           <span

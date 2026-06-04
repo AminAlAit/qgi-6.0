@@ -378,14 +378,14 @@ export default function MethodologyPage() {
               </p>
               <div className="mt-5 flex items-center gap-4 flex-wrap">
                 <Link
-                  href={"/recipes/currency_crisis" as Route}
+                  href={"/trends/currency_crisis" as Route}
                   className="px-5 py-2.5 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
                   style={{ backgroundColor: "var(--qgi-accent)", color: "var(--qgi-bg)" }}
                 >
                   See the currency-crisis recipe
                 </Link>
                 <Link
-                  href={"/recipes" as Route}
+                  href={"/trends" as Route}
                   className="text-sm tracking-wide border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
                   style={{
                     color: "var(--qgi-text-muted)",

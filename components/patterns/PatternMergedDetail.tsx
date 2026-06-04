@@ -511,7 +511,7 @@ export function PatternMergedDetail({
             What&apos;s firing on {row.country_b} →
           </Link>
           <Link
-            href={"/recipes" as Route}
+            href={"/trends" as Route}
             className="text-[11px] px-3 py-1.5 rounded border transition-colors hover:bg-[color:var(--qgi-surface-2)]"
             style={{
               borderColor: "var(--qgi-border)",

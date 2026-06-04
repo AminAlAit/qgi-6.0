@@ -86,7 +86,7 @@ function MatchCard({ m }: { m: ClosestMatch }) {
 
   return (
     <Link
-      href={`/recipes/${m.recipe_id}/countries/${m.iso2}` as Route}
+      href={`/trends/${m.recipe_id}/countries/${m.iso2}` as Route}
       className="qgi-cm-card"
       style={{
         display: "flex",

@@ -71,7 +71,7 @@ const VERDICT_CAPTION: Record<Verdict, string> = {
     "In active rotation. Surfacing results on the risk board while we refine the next pass.",
   VACATED: "In active rotation. Under audit.",
   NO_DATA:
-    "On the roadmap. This recipe enters validation once its case corpus is curated.",
+    "On the roadmap. This trend enters validation once its case corpus is curated.",
 };
 
 const TOTAL_PASSES = 4;
@@ -121,7 +121,7 @@ export function ReliabilityPanel({
         gap: "16px",
       }}
     >
-      <header>
+      <header style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
         <h2
           id="reliability-panel-heading"
           style={{
@@ -134,6 +134,17 @@ export function ReliabilityPanel({
         >
           Reliability
         </h2>
+        <p
+          style={{
+            fontSize: "12px",
+            lineHeight: 1.5,
+            color: "var(--qgi-text-muted)",
+            margin: 0,
+          }}
+        >
+          Does the result hold up when we test it again? One clean pass can be luck;
+          reliability re-checks the trend across repeated passes.
+        </p>
       </header>
 
       <div
@@ -153,7 +164,7 @@ export function ReliabilityPanel({
           caption={
             v1SeparationPp == null
               ? `Separation power firms up across the validation arc. Live on pass ${passN} of ${TOTAL_PASSES} planned.`
-              : "How cleanly the recipe separates pre-event country-years from the rest. The gap, in percentile points, between the two groups' median similarity. Higher is better; +20pp is the validation bar."
+              : "How cleanly the trend separates pre-event country-years from the rest. The gap, in percentile points, between the two groups' median similarity. Higher is better; +20pp is the validation bar."
           }
           valueColor={
             v1SeparationPp == null ? IN_PLAY : v1SeparationPp >= 20 ? VALIDATED : IN_PLAY
@@ -169,7 +180,7 @@ export function ReliabilityPanel({
           caption={
             v4OotRecallPct == null
               ? `Out-of-time accuracy firms up across the validation arc. Live on pass ${passN} of ${TOTAL_PASSES} planned.`
-              : "Of crisis country-years held out of training, the share the recipe still ranked HIGH one year before the event. Higher is better; 60% is the validation bar."
+              : "Of crisis country-years held out of training, the share the trend still ranked HIGH one year before the event. Higher is better; 60% is the validation bar."
           }
           valueColor={
             v4OotRecallPct == null ? IN_PLAY : v4OotRecallPct >= 60 ? VALIDATED : IN_PLAY

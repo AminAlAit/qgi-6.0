@@ -2,7 +2,7 @@
  * RecipeScoresTable — the top-N recipe table for a country detail page.
  *
  * Each row: L1 colored bar + recipe icon + label + L1 chip + score bar
- *           + score number. Links to /recipes/<recipe_id>.
+ *           + score number. Links to /trends/<recipe_id>.
  *
  * Per M8-R5: scores are discrimination ranks, surfaced as bars + number
  * on a 0..100 axis. No probability framing anywhere.
@@ -54,7 +54,7 @@ function Row({ row, isLast }: { row: CountryTopRecipe; isLast: boolean }) {
 
   return (
     <Link
-      href={`/recipes/${row.recipe_id}` as Route}
+      href={`/trends/${row.recipe_id}` as Route}
       style={{ textDecoration: "none", color: "inherit", display: "block" }}
     >
       <div

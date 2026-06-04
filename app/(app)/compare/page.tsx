@@ -242,6 +242,7 @@ export default async function ComparePage() {
         }}
       >
         <section
+          data-tour="compare-coming-soon"
           aria-labelledby="compare-lockdown-heading"
           style={{
             background: "var(--qgi-surface)",

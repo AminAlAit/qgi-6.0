@@ -5,7 +5,7 @@
  *   <- Back to Patterns V4 catalogue
  *   /countries/{a-iso}
  *   /countries/{b-iso}
- *   /recipes
+ *   /trends
  *
  * Monospace 12px. No pair-to-pair links.
  */
@@ -54,7 +54,7 @@ export function PairHandoffsFooter({
       }}
     >
       <Link href={"/patterns" as Route} style={linkStyle}>
-        &larr; Back to Patterns V4 catalogue
+        &larr; Back to Patterns catalogue
       </Link>
       <span style={sepStyle}>/</span>
       <Link href={`/countries/${iso2A}` as Route} style={linkStyle}>
@@ -65,8 +65,8 @@ export function PairHandoffsFooter({
         {countryB} profile
       </Link>
       <span style={sepStyle}>/</span>
-      <Link href={"/recipes" as Route} style={linkStyle}>
-        Recipes catalogue
+      <Link href={"/trends" as Route} style={linkStyle}>
+        Trends catalogue
       </Link>
     </footer>
   );

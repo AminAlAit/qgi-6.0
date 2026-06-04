@@ -95,8 +95,8 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   },
   {
     type: "standalone",
-    label: "Recipes",
-    href: "/recipes",
+    label: "Trends",
+    href: "/trends",
     icon: <ScrollText size={16} strokeWidth={1.5} aria-hidden="true" />,
     badge: "PRIMARY",
   },
@@ -142,14 +142,14 @@ const NAV_STRUCTURE: ReadonlyArray<NavEntry> = [
   },
   // /recipe-tracker entry removed 2026-05-29 — the route itself was deleted
   // as part of the V4.1 round-3 amendment (2-bucket vocabulary). The catalog
-  // ledger view is folded into /recipes; the AUC column reborn as the per-
+  // ledger view is folded into /trends; the AUC column reborn as the per-
   // card "Confidence" badge. The /blog/recipe-tracker post is unaffected
   // (different route, audience-facing blog post about the program).
 ];
 
 /** Flatten the structure to the leaf-route list — used by the
  *  longest-prefix-wins active-state algorithm so a deep pathname like
- *  /recipes/foreign_intervention highlights the right item. */
+ *  /trends/foreign_intervention highlights the right item. */
 function collectNavItems(): NavItem[] {
   const all: NavItem[] = [];
   for (const entry of NAV_STRUCTURE) {
@@ -335,7 +335,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
           landmark wrapper. Pointer-events guard during the slide-in
           transition prevents a click on the hamburger from passing
           through to the link beneath while the drawer is translating
-          in (was navigating users to /recipes on mobile tap).
+          in (was navigating users to /trends on mobile tap).
 
           2026-05-29 — collapsible desktop sidebar (§10). The aside uses a
           CSS transition on `width` (220ms ease-in-out). The `data-collapsed`
@@ -443,7 +443,7 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
 
         {/* Navigation
           GH#250: longest-prefix-wins active state. Without this, RECIPE-TRACKER
-          (/recipe-tracker) could mis-activate RECIPES (/recipes) because a naive
+          (/recipe-tracker) could mis-activate RECIPES (/trends) because a naive
           startsWith() would match both. `isActiveRoute` picks the deepest leaf
           href that the current pathname matches.
           2026-05-28: all 9 entries are standalone; NavGroupSection is still
@@ -554,8 +554,8 @@ export function Sidebar({ dataVintage }: { dataVintage?: string }) {
 function isActiveRoute(pathname: string, href: Route): boolean {
   if (pathname === href) return true;
   if (!pathname.startsWith(href + "/")) return false;
-  // A deeper leaf in the same family wins (e.g. /recipes/foreign_intervention
-  // outranks /recipes when the user is on a recipe detail page).
+  // A deeper leaf in the same family wins (e.g. /trends/foreign_intervention
+  // outranks /trends when the user is on a recipe detail page).
   return !FLAT_NAV_ITEMS.some(
     (other) =>
       other.href !== href &&

@@ -164,7 +164,7 @@ export function PrecedentsTimelinePanel({
             fontSize: "13px",
           }}
         >
-          No recent curation actions for this recipe at the current release.
+          No recent curation actions for this trend at the current release.
         </div>
       </section>
     );
@@ -218,9 +218,10 @@ export function PrecedentsTimelinePanel({
           lineHeight: 1.5,
         }}
       >
-        {totalEventsInCorpus.toLocaleString()} verified events in this recipe&apos;s
-        corpus. Showing the {sorted.length} most recent curation actions. Hover any marker
-        for detail.
+        These are the real-world events that built this trend: the documented cases its
+        shape was learned from. {totalEventsInCorpus.toLocaleString()} verified events sit
+        in the corpus; the timeline shows the {sorted.length} most recent. Hover any
+        marker for detail.
       </p>
 
       {/* Timeline + popup overlay. The wrapper is `position: relative` and

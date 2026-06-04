@@ -131,8 +131,8 @@ const nextConfig: NextConfig = {
    * 2026-05-28 — V4.1 canonical promotion redirects.
    *
    * Only four redirect families remain after the V4.1 promo:
-   *  1. /precedents-v4.1 → /recipes (bookmark preservation)
-   *  2. /recipes/foreign_intervention → /blog (graduation article)
+   *  1. /precedents-v4.1 → /trends (bookmark preservation)
+   *  2. /trends/foreign_intervention → /blog (graduation article)
    *  3. /countries-merged → /countries (PR-iii legacy)
    *  4. /patterns-merged → /patterns (PR-iii legacy)
    *  5. /blog/ghana-mauritania-mirror → /reports (elevation redirect)
@@ -180,13 +180,33 @@ const nextConfig: NextConfig = {
 
       // 2026-05-29 — V4.1 round-3 amendment. The /recipe-tracker route
       // (catalog ledger) was deleted; its AUC column reborn as the per-card
-      // Confidence badge on /recipes. Bookmarks preserved here.
+      // Confidence badge on /trends. Bookmarks preserved here.
       // NOTE: /blog/recipe-tracker is a SEPARATE route (the audience-facing
       // program-update blog post) — it lives on and must NOT be caught by
       // this redirect. We use an exact source string, not a prefix wildcard.
       {
         source: "/recipe-tracker",
-        destination: "/recipes",
+        destination: "/trends",
+        permanent: true,
+      },
+
+      // 2026-06-04 (founder): the "Recipes" surface was renamed to "Trends"
+      // site-wide; the route moved /recipes -> /trends. Preserve every old
+      // /recipes link (the gallery and each detail page). These two rules are
+      // deliberately scoped to the /recipes path only:
+      //   - "/recipes"        — the gallery
+      //   - "/recipes/:path*" — detail pages (e.g. /recipes/foreign_intervention)
+      // They do NOT match /api/recipes (different prefix), /recipe-tracker
+      // (handled above, no trailing "s"), or /blog/recipe-tracker (the blog
+      // post, which keeps its slug).
+      {
+        source: "/recipes",
+        destination: "/trends",
+        permanent: true,
+      },
+      {
+        source: "/recipes/:path*",
+        destination: "/trends/:path*",
         permanent: true,
       },
 
@@ -194,18 +214,18 @@ const nextConfig: NextConfig = {
       // pre-canonical URL for the Recipes surface; preserve bookmarks.
       {
         source: "/precedents-v4.1",
-        destination: "/recipes",
+        destination: "/trends",
         permanent: true,
       },
       {
         source: "/precedents-v4.1/:path*",
-        destination: "/recipes/:path*",
+        destination: "/trends/:path*",
         permanent: true,
       },
 
       // (Removed 2026-05-28) The previous redirect from
-      // /recipes/foreign_intervention → /blog/foreign-intervention-graduation
-      // was retired when /recipes-v4.1/ was promoted to /recipes/, because
+      // /trends/foreign_intervention → /blog/foreign-intervention-graduation
+      // was retired when /recipes-v4.1/ was promoted to /trends/, because
       // foreign_intervention is now the canonical demo recipe slug for the
       // V4.1 detail page. The blog graduation article is still live at
       // /blog/foreign-intervention-graduation; visit it directly.

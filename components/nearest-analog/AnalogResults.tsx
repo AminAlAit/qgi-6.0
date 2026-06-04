@@ -185,7 +185,7 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
           </div>
         </div>
         <Link
-          href={"/recipes" as Route}
+          href={"/trends" as Route}
           style={{
             fontSize: "12px",
             padding: "9px 14px",

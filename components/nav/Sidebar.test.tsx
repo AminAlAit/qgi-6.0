@@ -18,13 +18,14 @@ describe("Sidebar", () => {
 
   it("renders the 7 canonical V4.1 entries", () => {
     render(<Sidebar />);
-    // 2026-05-29: Recipe Tracker route deleted (folded into /recipes).
+    // 2026-05-29: Recipe Tracker route deleted (folded into /trends).
     // 2026-05-30: Compound Risk route taken down (308 → /risk-board).
     // Will rejuvenate as compound-negative-event-density per Stats trio.
     // Top slot label is "Briefing" (route still /dashboard); the
     // "Dashboard" copy was renamed to "Briefing" — see NAV_STRUCTURE.
     expect(screen.getByText("Briefing")).toBeInTheDocument();
-    expect(screen.getByText("Recipes")).toBeInTheDocument();
+    // 2026-06-04: "Recipes" nav label renamed to "Trends" (route /trends).
+    expect(screen.getByText("Trends")).toBeInTheDocument();
     expect(screen.getByText("Countries")).toBeInTheDocument();
     expect(screen.getByText("Risk Board")).toBeInTheDocument();
     expect(screen.getByText("Compare")).toBeInTheDocument();

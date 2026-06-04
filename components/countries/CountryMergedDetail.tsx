@@ -483,7 +483,7 @@ export function CountryMergedDetail({
             Risk Board: current country rankings →
           </Link>
           <Link
-            href={"/recipes" as Route}
+            href={"/trends" as Route}
             className="hover:text-[var(--qgi-accent)] transition-colors"
             style={{ color: "var(--qgi-text-muted)" }}
           >

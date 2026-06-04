@@ -1,5 +1,5 @@
 /**
- * /recipes/[slug]/trajectory — Per-recipe trajectory deep-dive.
+ * /trends/[slug]/trajectory — Per-recipe trajectory deep-dive.
  *
  * Round-2 (2026-05-30): shape_points (12-float z-score series) is now emitted
  * by the bake. This page renders the canonical movement shape as a full-width
@@ -16,6 +16,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import type { Route } from "next";
 import { loadCardV3, FLEET_RUN_1_RECIPE_IDS } from "@/lib/te-data-contract/load";
+import { cleanEmDashes } from "@/lib/clean-text";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: `Trajectory · ${slug.replace(/_/g, " ")} · QG Intelligence`,
     description:
-      "The canonical movement shape of a recipe: the recurring indicator-composite arc its verified-positive history rhymes around.",
+      "The canonical movement shape of a trend: the recurring indicator-composite arc its verified-positive history rhymes around.",
   };
 }
 
@@ -52,7 +53,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
     }
     // Use description if available for context.
     if ("description" in card && typeof card.description === "string") {
-      shapeNote = card.description;
+      shapeNote = cleanEmDashes(card.description);
     }
   } catch {
     // Recipe not in fleet-run-1 or card missing — show empty state.
@@ -77,14 +78,14 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
           }}
         >
           <Link
-            href={"/recipes" as Route}
+            href={"/trends" as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
-            ← Recipes
+            ← Trends
           </Link>
           <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
           <Link
-            href={`/recipes/${slug}` as Route}
+            href={`/trends/${slug}` as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
             {slug.replace(/_/g, " ")}
@@ -127,7 +128,7 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
             margin: "0 0 32px",
           }}
         >
-          The normalised indicator-composite arc that this recipe&apos;s verified-positive
+          The normalised indicator-composite arc that this trend&apos;s verified-positive
           history rhymes around, measured over 12 quarters leading up to the canonical
           event. Retrospective only: this is what the model has seen in the past, not a
           forecast.
@@ -290,9 +291,9 @@ export default async function TrajectoryDeepDivePage({ params }: PageProps) {
                 lineHeight: 1.6,
               }}
             >
-              The shape series for this recipe has not been emitted by the bake yet. This
+              The shape series for this trend has not been emitted by the bake yet. This
               page will populate when the trajectory engine produces shape output for this
-              recipe.
+              trend.
             </p>
           </div>
         )}

@@ -143,7 +143,7 @@ function PairRow({
   return (
     <li>
       <Link
-        href={`/recipes/${recipeId}` as Route}
+        href={`/trends/${recipeId}` as Route}
         style={{ textDecoration: "none", color: "inherit", display: "block" }}
         title={rationale}
       >

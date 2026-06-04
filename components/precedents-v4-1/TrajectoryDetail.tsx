@@ -1,6 +1,6 @@
 /**
  * TrajectoryDetail — the per-recipe "Trajectory" deep-dive body, lives at
- * /recipes/[slug]/trajectory.
+ * /trends/[slug]/trajectory.
  *
  * "Trajectory" (Sofia naming consult, 2026-05-28) is the V4 name for a
  * recipe's canonical movement shape — the recurring shape its key indicators
@@ -106,7 +106,7 @@ export function TrajectoryDetail({
             }}
           >
             <Link
-              href={`/recipes/${recipe.recipe_id}` as Route}
+              href={`/trends/${recipe.recipe_id}` as Route}
               style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
             >
               ← {recipe.label}
@@ -302,7 +302,7 @@ export function TrajectoryDetail({
                 ? isNounPhrase(recipe.label)
                   ? `Past cases from the verified record where this shape ran to conditions of ${recipe.label.toLowerCase()}. Each entry is a historical fact about that country, never a statement about anyone's future.`
                   : `Past cases from the verified record where this shape ran to ${an(recipe.label)} ${recipe.label.toLowerCase()} event. Each entry is a historical fact about that country, never a statement about anyone's future.`
-                : "Illustrative cases drawn from the recipe's top-country list. These are NOT from a verified-positives corpus; they are placeholders until that recipe's historical record is curated. Treat them as design content, not historical evidence."
+                : "Illustrative cases drawn from the trend's top-country list. These are NOT from a verified-positives corpus; they are placeholders until that trend's historical record is curated. Treat them as design content, not historical evidence."
             }
           >
             <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
@@ -508,7 +508,7 @@ export function TrajectoryDetail({
                 `This is the shape of the run-up, not a forecast. Each past ${recipe.label.toLowerCase()} case left a similar imprint on these ${nInd} indicators over about ${pattern.window_y} years; we average those to get the shape above.`,
                 "A country matches when its own recent movement resembles that shape. A high match means close resemblance, not a high chance the event happens.",
                 "The indicators are the shape's ingredients, not levers to pull. This describes structure; it does not prescribe a fix.",
-                "Match scores are similarity ranks, not probabilities. No recipe here is yet deployed for real decisions.",
+                "Match scores are similarity ranks, not probabilities. No trend here is yet deployed for real decisions.",
               ].map((s, i) => (
                 <li
                   key={i}
@@ -550,7 +550,7 @@ export function TrajectoryDetail({
             }}
           >
             <Link
-              href={"/recipes/trajectory-ranking" as Route}
+              href={"/trends/trajectory-ranking" as Route}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -568,7 +568,7 @@ export function TrajectoryDetail({
               Trajectory strength ranking →
             </Link>
             <Link
-              href={`/recipes/${recipe.recipe_id}` as Route}
+              href={`/trends/${recipe.recipe_id}` as Route}
               style={{
                 fontSize: "12px",
                 color: "var(--qgi-text-muted)",
@@ -577,7 +577,7 @@ export function TrajectoryDetail({
                 letterSpacing: "0.3px",
               }}
             >
-              ← back to the {recipe.label.toLowerCase()} recipe
+              ← back to the {recipe.label.toLowerCase()} trend
             </Link>
           </div>
         </div>

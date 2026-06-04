@@ -108,10 +108,7 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
       >
         <Field k="Refresh cadence" v="At least 4× per year" />
         <Field k="Data sources" v={sources.join(" · ") || "n/a"} />
-        <Field
-          k="Recipes matched"
-          v={`${country.recipes_lit_count} in active rotation`}
-        />
+        <Field k="Trends matched" v={`${country.recipes_lit_count} in active rotation`} />
       </div>
       <p
         style={{
@@ -122,9 +119,9 @@ export function VintageSourcesPanel({ country }: { country: CountryV4 }) {
           maxWidth: "72ch",
         }}
       >
-        Each recipe shown above is currently in active rotation on the risk board, with
-        its own discrimination score, calibration state, and validation history on the
-        recipe page.
+        Each trend shown above is currently in active rotation on the risk board, with its
+        own discrimination score, calibration state, and validation history on the trend
+        page.
       </p>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
         {/* "Open in Compound Risk" link removed 2026-05-30 — that route
