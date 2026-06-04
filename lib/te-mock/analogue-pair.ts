@@ -27,11 +27,19 @@ const DEFAULT_WINDOW = 12;
 export interface DriverOverlay {
   code: string;
   name: string;
-  /** 0..100 display series (z-scored vs the country's own history, then mapped
-   *  ±3σ → 0..100 — the same scale the 12-quarter analogue trajectories use).
-   *  Ascending by year; length = number of years with data in the window. */
-  subject: number[];
-  analogue: number[];
+  /** All series are 0..100 display (z-scored vs each country's own history, then
+   *  mapped ±3σ → 0..100), POSITION-ALIGNED to the canonical window: index i is
+   *  (windowYears - 1 - i) years before the end; the last index is the end
+   *  (today for the subject, the event year for the analogue and the canonical).
+   *  null = no value that year. */
+  subject: (number | null)[];
+  analogue: (number | null)[];
+  /** The trend's canonical shape for this indicator (mean) plus its p25/p75
+   *  band, on the same 0..100 scale and alignment. null when the card carries no
+   *  alignment for this indicator. */
+  canonical: number[] | null;
+  canonicalLo: number[] | null;
+  canonicalHi: number[] | null;
 }
 
 export interface AnaloguePair {
@@ -70,19 +78,23 @@ function zToDisplay(z: number): number {
   return Math.max(0, Math.min(100, ((z + 3) / 6) * 100));
 }
 
-/** Window of display values ending at endYear (inclusive), ascending; gaps dropped. */
-function windowDisplay(
+/** Position-aligned window of display values, length W, ending at endYear:
+ *  index i maps to year (endYear - (W - 1) + i); null where the year is missing. */
+function windowAligned(
   z: Record<string, number>,
   endYear: number,
-  windowYears: number
-): number[] {
-  const out: number[] = [];
-  for (let y = endYear - windowYears + 1; y <= endYear; y++) {
-    const v = z[String(y)];
-    if (typeof v === "number") out.push(zToDisplay(v));
+  W: number
+): (number | null)[] {
+  const out: (number | null)[] = [];
+  for (let i = 0; i < W; i++) {
+    const v = z[String(endYear - (W - 1) + i)];
+    out.push(typeof v === "number" ? zToDisplay(v) : null);
   }
   return out;
 }
+
+const countReal = (arr: (number | null)[]) =>
+  arr.reduce((n: number, v) => n + (v === null ? 0 : 1), 0);
 
 export function getAnaloguePair(
   subjectIso2: string,
@@ -116,11 +128,24 @@ export function getAnaloguePair(
   const recipe = getRecipe(a.primary_recipe_id);
   let drivers: string[] = [];
   let windowYears = DEFAULT_WINDOW;
+  const alignment = new Map<string, { mean: number[]; p25: number[]; p75: number[] }>();
   try {
     const card = loadCardV3(a.primary_recipe_id);
     drivers = card.greedy_walk?.selected_indicators ?? [];
     const cw = card.greedy_walk?.chosen_window;
     if (typeof cw === "number" && cw > 0) windowYears = cw;
+    // The card's canonical per-indicator shape (mean + p25/p75) over its
+    // alignment window. When present it sets the window length so the subject,
+    // analogue, and canonical lines all share one x-axis.
+    const ta = card.trajectory_alignment;
+    if (ta) {
+      if (typeof ta.window_years === "number" && ta.window_years > 0) {
+        windowYears = ta.window_years;
+      }
+      for (const ind of ta.indicators ?? []) {
+        if (ind?.code && ind.shape) alignment.set(ind.code, ind.shape);
+      }
+    }
   } catch {
     /* no card → header + whn only */
   }
@@ -134,14 +159,20 @@ export function getAnaloguePair(
     const analYears = Object.keys(analZ).map(Number);
     if (subjYears.length === 0 || analYears.length === 0) continue;
     const subjEnd = Math.max(...subjYears); // subject's "today" = latest year present
-    const sW = windowDisplay(subjZ, subjEnd, windowYears);
-    const aW = windowDisplay(analZ, year, windowYears);
-    if (sW.length < 2 || aW.length < 2) continue;
+    const sW = windowAligned(subjZ, subjEnd, windowYears);
+    const aW = windowAligned(analZ, year, windowYears);
+    if (countReal(sW) < 2 || countReal(aW) < 2) continue;
+    const shape = alignment.get(code);
+    const canon = (arr: number[] | undefined): number[] | null =>
+      arr && arr.length === windowYears ? arr.map(zToDisplay) : null;
     overlays.push({
       code,
       name: getIndicatorLabel(code),
       subject: sW,
       analogue: aW,
+      canonical: canon(shape?.mean),
+      canonicalLo: canon(shape?.p25),
+      canonicalHi: canon(shape?.p75),
     });
   }
 
