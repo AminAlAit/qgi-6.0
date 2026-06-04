@@ -18,6 +18,10 @@ export interface TrajectorySparklineProps {
   analogColor: string; // primary recipe l1 color
   width?: number;
   height?: number;
+  /** X-axis tick labels. Default to the 12-quarter framing; the analogue
+   *  comparison page passes a year-window framing (e.g. "-12y" / "run-up end"). */
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
 export function TrajectorySparkline({
@@ -28,6 +32,8 @@ export function TrajectorySparkline({
   analogColor,
   width = 320,
   height = 90,
+  leftLabel = "t-12q",
+  rightLabel = "t-0",
 }: TrajectorySparklineProps) {
   const pad = { top: 8, right: 8, bottom: 14, left: 24 };
   const innerW = width - pad.left - pad.right;
@@ -138,7 +144,7 @@ export function TrajectorySparkline({
           fill="var(--qgi-text-dim)"
           fontFamily="ui-monospace, monospace"
         >
-          t-12q
+          {leftLabel}
         </text>
         <text
           x={pad.left + innerW}
@@ -148,7 +154,7 @@ export function TrajectorySparkline({
           fontFamily="ui-monospace, monospace"
           textAnchor="end"
         >
-          t-0
+          {rightLabel}
         </text>
       </svg>
       <div
