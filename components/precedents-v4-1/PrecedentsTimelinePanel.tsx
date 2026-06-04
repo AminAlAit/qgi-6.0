@@ -15,7 +15,7 @@
  */
 "use client";
 
-import { useState, type CSSProperties } from "react";
+import { useState, useRef, type CSSProperties } from "react";
 import { iso2For } from "@/lib/te-mock/country-flags";
 
 export interface PrecedentEvent {
@@ -55,6 +55,21 @@ export function PrecedentsTimelinePanel({
   };
 
   const [hoveredYear, setHoveredYear] = useState<number | null>(null);
+  // Hover bridge: a short grace delay before hiding lets the cursor cross the
+  // gap from a bar into the popup (and stay there to scroll a busy year's list)
+  // without the popup vanishing.
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showYear = (y: number) => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setHoveredYear(y);
+  };
+  const scheduleHide = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => setHoveredYear(null), 140);
+  };
+  const cancelHide = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+  };
 
   if (corpus.length === 0) {
     return (
@@ -130,8 +145,8 @@ export function PrecedentsTimelinePanel({
       data-tour="precedents-timeline-panel"
       style={{
         background: "var(--qgi-surface)",
-        borderLeft: `3px solid ${familyColor}`,
         border: "1px solid var(--qgi-border)",
+        borderLeft: `3px solid ${familyColor}`,
         borderRadius: "6px",
         padding: "16px 18px 18px",
         minWidth: "340px",
@@ -240,10 +255,10 @@ export function PrecedentsTimelinePanel({
               key={`hit-${year}`}
               type="button"
               aria-label={`${year}: ${count} case${count === 1 ? "" : "s"}`}
-              onMouseEnter={() => setHoveredYear(year)}
-              onMouseLeave={() => setHoveredYear((p) => (p === year ? null : p))}
-              onFocus={() => setHoveredYear(year)}
-              onBlur={() => setHoveredYear((p) => (p === year ? null : p))}
+              onMouseEnter={() => showYear(year)}
+              onMouseLeave={scheduleHide}
+              onFocus={() => showYear(year)}
+              onBlur={scheduleHide}
               style={{
                 position: "absolute",
                 left: `${leftPct}%`,
@@ -273,6 +288,8 @@ export function PrecedentsTimelinePanel({
             return (
               <div
                 role="tooltip"
+                onMouseEnter={cancelHide}
+                onMouseLeave={scheduleHide}
                 style={{
                   position: "absolute",
                   left: `${xPct}%`,
