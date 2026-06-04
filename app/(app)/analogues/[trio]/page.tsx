@@ -365,7 +365,7 @@ export default async function AnaloguePairPage({ params }: Params) {
             {pair.analogueYear} {pair.trendLabel.toLowerCase()}. Below, each indicator
             that drives the {pair.trendLabel}
             {
-              " trend — standardized to each country's own history, so the comparison is about "
+              " trend is standardized to each country's own history, so the comparison is about "
             }
             <strong>shape</strong>, not levels. This is a <strong>resemblance</strong>,
             not a forecast.
@@ -530,7 +530,7 @@ export default async function AnaloguePairPage({ params }: Params) {
             >
               The dated outcome history for {pair.analogueName} {pair.analogueYear} is
               still being curated. When it lands it appears here as fact about{" "}
-              {pair.analogueName} — never as a prediction about {pair.subjectName}.
+              {pair.analogueName}, never as a prediction about {pair.subjectName}.
             </p>
           )}
         </PanelCard>
