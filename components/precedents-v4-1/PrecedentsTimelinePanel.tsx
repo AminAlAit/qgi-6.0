@@ -338,7 +338,14 @@ export function PrecedentsTimelinePanel({
                   }}
                 >
                   {hoveredEvents.map((ev, i) => {
-                    const iso = iso2For(ev.country);
+                    // Prefer the event's own ISO-2 (the bake ships a lowercase
+                    // 2-letter code); fall back to resolving from the name. This
+                    // fixes cases like Panama where the name lookup missed and
+                    // the emoji fallback rendered as bare letters on Windows.
+                    const iso =
+                      ev.country_iso && /^[a-z]{2}$/i.test(ev.country_iso)
+                        ? ev.country_iso.toLowerCase()
+                        : iso2For(ev.country);
                     return (
                       <li
                         key={`${ev.country_iso}-${i}`}
