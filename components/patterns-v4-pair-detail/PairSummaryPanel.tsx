@@ -5,7 +5,7 @@
  *   1. Catalogue rank with magnitude bar (NEUTRAL_SLATE)
  *   2. Window (years range + count)
  *   3. Shared indicators count
- *   4. Strongest decade label only (no correlation number)
+ *   4. Correlation (real Pearson r over the shared window)
  *
  * No status chip. No family color. No probability framing.
  */
@@ -18,7 +18,8 @@ interface PairSummaryPanelProps {
   endYear: number;
   windowLength: number;
   sharedIndicatorCount: number;
-  strongestDecade: string;
+  /** Pearson correlation of the best shared window (real). */
+  correlation: number;
 }
 
 export function PairSummaryPanel({
@@ -28,7 +29,7 @@ export function PairSummaryPanel({
   endYear,
   windowLength,
   sharedIndicatorCount,
-  strongestDecade,
+  correlation,
 }: PairSummaryPanelProps) {
   const rankFraction = 1 - (catalogueRank - 1) / Math.max(catalogueSize - 1, 1);
   const rankBarWidth = Math.round(rankFraction * 100);
@@ -157,10 +158,12 @@ export function PairSummaryPanel({
           </div>
         </div>
 
-        {/* Tile 4: Strongest decade */}
+        {/* Tile 4: Correlation (real Pearson r) */}
         <div style={tileStyle}>
-          <div style={tileLabelStyle}>Strongest decade</div>
-          <div style={{ ...tileValueStyle, marginBottom: "4px" }}>{strongestDecade}</div>
+          <div style={tileLabelStyle}>Correlation</div>
+          <div style={{ ...tileValueStyle, marginBottom: "4px" }}>
+            {correlation.toFixed(2)}
+          </div>
           <div
             style={{
               fontSize: "11px",
@@ -169,7 +172,7 @@ export function PairSummaryPanel({
               lineHeight: 1.4,
             }}
           >
-            tightest indicator co-movement within the window
+            Pearson r across the shared window
           </div>
         </div>
       </div>

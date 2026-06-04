@@ -7,24 +7,48 @@ import { TOUR_STEPS, TOUR_STEPS_BY_PAGE, TOUR_TOTAL_STEPS } from "@/lib/tour-ste
  *
  * 2026-05-28: V4.1 canonical promotion. The original 12 legacy steps
  * (covering /dashboard V3, /precedents, /patterns V3, /signals,
- * /countries V3) were removed because those routes are deleted. The
- * 60 V4.1 steps remain, now under the canonical route paths. The
- * "original-5-page distribution" test has been removed — those pages
- * no longer exist; their steps are gone.
+ * /countries V3) were removed because those routes are deleted.
+ *
+ * 2026-06-04: Anchor-correctness audit + Recipe→Trend rename.
+ *   - /patterns/[slug] updated to "172-208" (real cascade data slug).
+ *   - /dashboard: 4 dead anchors replaced; how-to-read-button step dropped
+ *     (dashboard does not render HowToReadButton). Steps: 6→5.
+ *   - /countries: cotw-tile step dropped. Steps: 5→4.
+ *   - /trends/foreign_intervention: demo-disclosure step retargeted to the
+ *     definition lede (cap-1/DefinitionPanel is not rendered on the page).
+ *     Steps: 13→12.
+ *   - /risk-board: how-to-read-button dropped + the hero-strip step dropped
+ *     (the top-pairs strip moved to /dashboard). Steps: 5→3.
+ *   - /compare: locked surface; backdrop panels are aria-hidden; reduced to
+ *     h1 + compare-coming-soon. Steps: 6→2.
+ *   - /patterns: re-anchored to the live search engine (filters + results);
+ *     the old overview/ranking/family/country browse panels no longer render.
+ *     Steps: 6→3.
+ *   - /patterns/172-208: retargeted to real page anchors; how-to-read-button
+ *     dropped. Steps: 7→4.
  */
 
-/** Canonical pages covered by the post-V4.1-promo tour (12 pages). */
+/** Canonical pages covered by the post-V4.1-promo tour. */
 const ALL_TOUR_PAGES = new Set([
   "/dashboard",
-  "/recipes",
-  "/recipes/foreign_intervention",
+  "/trends",
+  "/trends/foreign_intervention",
   "/countries",
   "/countries/sdn",
   "/risk-board",
   "/analogues",
   "/compare",
   "/patterns",
-  "/patterns/paraguay-south_korea-1963",
+  "/patterns/172-208",
+]);
+
+/** Pages that render HowToReadButton (anchor: how-to-read-button). */
+const PAGES_WITH_HOW_TO_READ = new Set([
+  "/trends",
+  "/trends/foreign_intervention",
+  "/countries",
+  "/countries/sdn",
+  "/analogues",
 ]);
 
 describe("TOUR_STEPS — shape invariants", () => {
@@ -48,11 +72,6 @@ describe("TOUR_STEPS — shape invariants", () => {
   });
 
   it("the FIRST step on every page anchors on the page's primary header", () => {
-    // The first step on each page is always a page-level introduction.
-    // It must anchor on h1 OR on a named data-tour element that serves
-    // as the page header (detail pages may use a specific panel as h1-equivalent).
-    // What is NOT allowed: anchoring on a deeply nested sub-panel that
-    // would be invisible before the page is scrolled.
     for (const page of ALL_TOUR_PAGES) {
       const first = TOUR_STEPS.find((s) => s.page === page);
       if (!first) continue;
@@ -90,5 +109,56 @@ describe("TOUR_STEPS — shape invariants", () => {
         ).toBe(false);
       }
     }
+  });
+
+  it("the /patterns detail page uses the real cascade slug 172-208", () => {
+    const patternDetailSteps = TOUR_STEPS.filter((s) => s.page.startsWith("/patterns/"));
+    expect(patternDetailSteps.length).toBeGreaterThan(0);
+    for (const s of patternDetailSteps) {
+      expect(s.page).toBe("/patterns/172-208");
+    }
+  });
+
+  it("no step targets an anchor known to be absent (old broken anchors)", () => {
+    // These anchors were confirmed absent in the 2026-06-04 audit.
+    const removedAnchors = [
+      "hero-tiles",
+      "highlights-band",
+      "surfaces-grid",
+      "activity-timeline",
+      "cotw-tile",
+      "demo-disclosure",
+      "compare-picker",
+      "compare-matrix",
+      "compare-drivers",
+      "compare-at-a-glance",
+      "generate-comparison-report-button",
+    ];
+    for (const s of TOUR_STEPS) {
+      const t = s.target as string;
+      for (const removed of removedAnchors) {
+        expect(
+          t.includes(removed),
+          `Step on ${s.page} still targets removed anchor "${removed}"`
+        ).toBe(false);
+      }
+    }
+  });
+
+  it("how-to-read-button steps only appear on pages that render HowToReadButton", () => {
+    for (const s of TOUR_STEPS) {
+      const t = s.target as string;
+      if (t.includes("how-to-read-button")) {
+        expect(
+          PAGES_WITH_HOW_TO_READ.has(s.page),
+          `${s.page} has a how-to-read-button step but does not render HowToReadButton`
+        ).toBe(true);
+      }
+    }
+  });
+
+  it("TOUR_STEPS_BY_PAGE sums to TOUR_TOTAL_STEPS", () => {
+    const sum = Object.values(TOUR_STEPS_BY_PAGE).reduce((a, b) => a + b, 0);
+    expect(sum).toBe(TOUR_TOTAL_STEPS);
   });
 });

@@ -90,7 +90,7 @@ interface Props {
   /** Total scored — used for the "~N countries between" elided count.
    *  Defaults to countriesFull.length when omitted. */
   nScored?: number;
-  /** When set, each country row links to /recipes/{recipeId}/countries/{iso2}
+  /** When set, each country row links to /trends/{recipeId}/countries/{iso2}
    *  (the country-recipe match page). Rows whose name has no ISO stay inert. */
   recipeId?: string;
   /** When set, the matching row is outlined in the family color (used on the
@@ -122,7 +122,7 @@ export function CountriesPanel({
       title="Countries"
       familyColor={familyColor}
       dataTour="countries-panel"
-      titleTooltip="Both ends of the distribution at a glance. The recipe's positive (highest-scoring) and structural-negative (lowest-scoring) extremes. Rank, not probability; a country at 98 sits at the top of the distribution of countries whose movement shape resembles past precedents. Expand for the full roster."
+      titleTooltip="Both ends of the distribution at a glance. The trend's positive (highest-scoring) and structural-negative (lowest-scoring) extremes. Rank, not probability; a country at 98 sits at the top of the distribution of countries whose movement shape resembles past precedents. Expand for the full roster."
       caption={
         showResults && countriesTop.length > 0
           ? expanded
@@ -485,7 +485,7 @@ function CountryRow({
     return (
       <li style={liStyle}>
         <Link
-          href={`/recipes/${recipeId}/countries/${iso2}` as Route}
+          href={`/trends/${recipeId}/countries/${iso2}` as Route}
           style={rowStyle}
           onMouseEnter={(e) => {
             if (!highlight) e.currentTarget.style.background = "var(--qgi-bg)";

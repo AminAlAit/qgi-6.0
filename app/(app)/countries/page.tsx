@@ -27,7 +27,7 @@ import { CountryCardV41 } from "@/components/countries-v4-1/CountryCardV41";
 export const metadata: Metadata = {
   title: "Country Atlas · QG Intelligence",
   description:
-    "Per-country atlas: the recipes each country resembles, the indicators behind each score, momentum, and historical analogues.",
+    "Per-country atlas: the trends each country resembles, the indicators behind each score, momentum, and historical analogues.",
 };
 
 interface PageProps {
@@ -171,7 +171,7 @@ export default async function CountriesV41Page({ searchParams }: PageProps) {
             letterSpacing: "0.3px",
           }}
         >
-          {total} countries in the corpus · {litAny} match at least one recipe ·{" "}
+          {total} countries in the corpus · {litAny} match at least one trend ·{" "}
           {compoundHigh} match 3 or more
         </footer>
       </div>

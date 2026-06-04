@@ -39,7 +39,7 @@ export function HonestyDisclosure() {
         <li>
           Scores are <strong>discrimination ranks, not probabilities</strong>. A country
           at 80 is not &ldquo;80% likely&rdquo; to experience the event; it sits high in
-          the distribution of countries whose recent movement shape resembles this recipe.
+          the distribution of countries whose recent movement shape resembles this trend.
         </li>
         <li>
           Movements over time describe <strong>rank shifts</strong>, not changes in
@@ -48,7 +48,7 @@ export function HonestyDisclosure() {
         <li>No row on this board makes a forward-dated claim.</li>
         {/* V4.1 §4: "Not yet tested" → "Coming soon" (audience-facing). */}
         <li>
-          Recipes marked &ldquo;Coming soon&rdquo; show placeholder rows; scores appear
+          Trends marked &ldquo;Coming soon&rdquo; show placeholder rows; scores appear
           once their evidence base is sufficient.
         </li>
       </ol>

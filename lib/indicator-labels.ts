@@ -238,3 +238,22 @@ export function resolveIndicatorLabel(rawId: string | null | undefined): Resolve
 export function getIndicatorLabel(rawId: string | null | undefined): string {
   return resolveIndicatorLabel(rawId).label;
 }
+
+/**
+ * A trailing "(provider)" baked into some catalog names — e.g. "Control of
+ * Corruption (World Bank WGI)" or "Civil society participatory environment
+ * (V-Dem)". Matched only when the parenthetical names a known data provider, so
+ * a methodology note like "(3-yr change)" is never stripped.
+ */
+const PROVIDER_PAREN_RE =
+  /\s*\([^)]*\b(?:V-?Dem|World Bank|WGI|WDI|FAOSTAT|ILOSTAT|IMF|OECD|Polity|Freedom House|UNESCO|UNDP|WHO)\b[^)]*\)\s*$/i;
+
+/**
+ * Drop the trailing "(provider)" from an indicator label. Every panel that
+ * lists indicators already shows the provider on its own line, so the
+ * parenthetical is duplicate noise: "Civil society participatory environment
+ * (V-Dem)" becomes "Civil society participatory environment".
+ */
+export function stripProviderSuffix(name: string): string {
+  return name.replace(PROVIDER_PAREN_RE, "").trim();
+}

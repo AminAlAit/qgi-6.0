@@ -37,7 +37,7 @@ export function CoverageMapPlot({ data }: { data: CoverageSummary }) {
   return (
     <PanelBase
       title="Global coverage"
-      caption="Every country in the roster gets scored on every recipe in the catalog, every release."
+      caption="Every country in the roster gets scored on every trend in the catalog, every release."
       accent={CALM_SLATE_BLUE}
     >
       <div
@@ -186,7 +186,7 @@ export function FamilyDistributionPlot({ slices }: { slices: FamilyDistribSlice[
   return (
     <PanelBase
       title="What the catalog covers"
-      caption="Recipes span eight risk families, from political power to humanitarian crisis."
+      caption="Trends span eight risk families, from political power to humanitarian crisis."
       accent={CALM_SLATE_BLUE}
     >
       <div
@@ -255,7 +255,7 @@ export function FamilyDistributionPlot({ slices }: { slices: FamilyDistribSlice[
                 fontFamily: "ui-monospace, monospace",
               }}
             >
-              recipes
+              trends
             </div>
           </div>
         </div>
@@ -324,7 +324,7 @@ export function IndicatorCorpusPlot({ stats }: { stats: IndicatorCorpusStat[] })
   return (
     <PanelBase
       title="Signal sources"
-      caption="Every recipe is built from a curated mix of institutional, governance, and economic series."
+      caption="Every trend is built from a curated mix of institutional, governance, and economic series."
       accent={CALM_SLATE_BLUE}
     >
       <div
@@ -480,7 +480,7 @@ export function TopPairTeaserPlot({ pairs }: { pairs: CountryPairTeaser[] }) {
                     marginTop: "4px",
                   }}
                 >
-                  on the {p.recipe_label} recipe shape
+                  on the {p.recipe_label} trend shape
                 </div>
               </div>
               <div

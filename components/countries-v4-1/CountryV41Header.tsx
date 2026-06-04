@@ -31,7 +31,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
 
   const lede =
     `${country.name} currently matches ${country.recipes_lit_count} of our risk ` +
-    `recipes across ${famCount} threat famil${famCount === 1 ? "y" : "ies"}. The scores ` +
+    `trends across ${famCount} threat famil${famCount === 1 ? "y" : "ies"}. The scores ` +
     `below rank how closely ${country.name}'s recent signals resemble the conditions ` +
     `that preceded similar events elsewhere. They are a measure of resemblance, not a ` +
     `forecast.`;
@@ -91,7 +91,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 letterSpacing: "0.3px",
                 fontFamily: "ui-monospace, monospace",
               }}
-              title={`These recipes are currently in active rotation on the risk board. Open the recipe page for the full methodology and current performance.`}
+              title={`These trends are currently in active rotation on the risk board. Open the trend page for the full methodology and current performance.`}
             >
               In active rotation
             </span>
@@ -106,7 +106,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
                 fontFamily: "ui-monospace, monospace",
                 fontWeight: 600,
               }}
-              title="A bounded 0-100 score that averages this country's recipe matches, dampened for thin coverage. Not a probability."
+              title="A bounded 0-100 score that averages this country's trend matches, dampened for thin coverage. Not a probability."
             >
               Compound Risk {country.compound_score.toFixed(0)}
             </span>
@@ -117,7 +117,7 @@ export function CountryV41Header({ country }: { country: CountryV4 }) {
             disabled
             aria-disabled="true"
             aria-label={`Generate Country Report for ${country.name} (coming soon)`}
-            title={`Coming soon: a thinking AI model reads everything QGI knows about ${country.name} (every recipe in play, its drivers, its analogues, its movement) and writes you a full intelligence report via API. Disabled today; live in a future release.`}
+            title={`Coming soon: a thinking AI model reads everything QGI knows about ${country.name} (every trend in play, its drivers, its analogues, its movement) and writes you a full intelligence report via API. Disabled today; live in a future release.`}
             style={{
               display: "inline-flex",
               alignItems: "center",

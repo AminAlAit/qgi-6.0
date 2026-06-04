@@ -53,7 +53,7 @@ export function RankHistoryPanel({ country }: { country: CountryV4 }) {
       accent={NEUTRAL_SLATE}
       fullWidth
       dataTour="rank-history-panel"
-      caption={`How ${country.name}'s risk scores have moved across years for its most-lit recipes. Past movement only, not a projection.`}
+      caption={`How ${country.name}'s risk scores have moved across years for its most-lit trends. Past movement only, not a projection.`}
     >
       {!hasHistory ? (
         <p
@@ -65,7 +65,7 @@ export function RankHistoryPanel({ country }: { country: CountryV4 }) {
           }}
         >
           Score trajectory will appear once the country is scored on at least two years.
-          This is the first bake for these recipes.
+          This is the first bake for these trends.
         </p>
       ) : (
         <div
@@ -118,7 +118,7 @@ export function RankHistoryPanel({ country }: { country: CountryV4 }) {
                 >
                   <span
                     title={`${m.label} (${l1ById.get(m.recipe_id) ?? "?"} family)`}
-                    aria-label={`${m.label} recipe icon`}
+                    aria-label={`${m.label} trend icon`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",

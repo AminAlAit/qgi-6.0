@@ -26,7 +26,7 @@ function rankSeries(country: CountryV4): number[] {
 }
 
 function topRecipeLabel(country: CountryV4): string {
-  return country.top_recipes[0]?.label ?? "top recipe";
+  return country.top_recipes[0]?.label ?? "top trend";
 }
 
 function topRecipeColor(country: CountryV4): string {
@@ -155,7 +155,7 @@ export function CompareRankHistory({
             marginLeft: "auto",
           }}
         >
-          Different recipes; same scale.
+          Different trends; same scale.
         </span>
       </div>
 

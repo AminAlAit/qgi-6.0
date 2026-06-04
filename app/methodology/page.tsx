@@ -101,7 +101,7 @@ export default function MethodologyPage() {
           <StatCards />
 
           {/* Pattern to recipe — the opening worked example */}
-          <Section id="pattern-to-recipe" title="From a pattern to a recipe">
+          <Section id="pattern-to-recipe" title="From a pattern to a trend">
             <p
               className="text-sm leading-relaxed mb-6"
               style={{ color: "var(--qgi-text-muted)" }}
@@ -147,14 +147,13 @@ export default function MethodologyPage() {
               className="text-sm leading-relaxed"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              One pattern is not yet a recipe. QGI gathers many patterns whose countries
+              One pattern is not yet a trend. QGI gathers many patterns whose countries
               went on to share the same kind of event, lines them up against the verified
               record, and distils the movement they had in common. That distilled,
               canonical shape is a{" "}
-              <strong style={{ color: "var(--qgi-text)" }}>recipe</strong>: the
-              fingerprint that tends to run ahead of, say, a democratic transition, a
-              currency crisis, or a coup. The two methods below are the two ways QGI does
-              this at scale.
+              <strong style={{ color: "var(--qgi-text)" }}>trend</strong>: the fingerprint
+              that tends to run ahead of, say, a democratic transition, a currency crisis,
+              or a coup. The two methods below are the two ways QGI does this at scale.
             </p>
             <p className="mt-5 text-sm">
               <Link
@@ -193,14 +192,14 @@ export default function MethodologyPage() {
                 relationships that recur across countries, then the country pairs whose
                 whole trajectories rhyme. Fold those relationships together with verified,
                 fact-checked events and you distil a{" "}
-                <strong style={{ color: "var(--qgi-text)" }}>recipe</strong>: the shape a
+                <strong style={{ color: "var(--qgi-text)" }}>trend</strong>: the shape a
                 country&rsquo;s signals tend to trace in the years before a given kind of
                 event.
               </MethodCard>
               <MethodCard title="The Trajectory Engine" tint="#E68F29">
-                Puts those recipes to work. Each quarter it takes a recipe&rsquo;s shape
-                and a country&rsquo;s most recent signals and measures how closely the
-                country is tracing that shape now. The result is a{" "}
+                Puts those trends to work. Each quarter it takes a trend&rsquo;s shape and
+                a country&rsquo;s most recent signals and measures how closely the country
+                is tracing that shape now. The result is a{" "}
                 <strong style={{ color: "var(--qgi-text)" }}>resemblance reading</strong>,
                 not a forecast: a structured way to say what today rhymes with, alongside
                 the real cases it most echoes.
@@ -215,39 +214,39 @@ export default function MethodologyPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               For readers who want the machinery, here is what the Trajectory Engine
-              actually does per recipe. Nothing below is a black box; it is a deliberately
+              actually does per trend. Nothing below is a black box; it is a deliberately
               conservative pipeline built to avoid fooling itself.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <DetailCard title="Per-recipe model">
+              <DetailCard title="Per-trend model">
                 Each event type gets its own supervised model trained on the countries
                 that did and did not experience it. With a healthy positive base we use
                 gradient-boosted trees (XGBoost); where positives are scarce we fall back
-                to regularised logistic regression, so a thin recipe cannot pretend to a
+                to regularised logistic regression, so a thin trend cannot pretend to a
                 complexity its data will not support.
               </DetailCard>
               <DetailCard title="Greedy indicator selection">
                 Indicators are chosen by a forward walk: start from none, repeatedly add
                 the single indicator that most improves cross-validated separation, and
                 stop when the gains plateau. The walk also picks the window length, in
-                years, over which the trajectory is read. A typical recipe ends up resting
+                years, over which the trajectory is read. A typical trend ends up resting
                 on a handful of indicators, not all 109.
               </DetailCard>
               <DetailCard title="Resemblance scoring">
                 A country&rsquo;s recent trajectory on the selected indicators is
                 standardised (z-scored against its own history) and compared to the
-                recipe&rsquo;s canonical shape by cosine similarity, weighted by each
+                trend&rsquo;s canonical shape by cosine similarity, weighted by each
                 indicator&rsquo;s contribution (SHAP). The closer the match, the higher
                 the resemblance score.
               </DetailCard>
               <DetailCard title="Validation, honestly">
-                Every recipe is scored by{" "}
+                Every trend is scored by{" "}
                 <strong style={{ color: "var(--qgi-text)" }}>
                   leave-one-country-out cross-validation
                 </strong>
                 , so it is judged on countries it never trained on, with 95% confidence
                 intervals from 2,000 bootstrap resamples. We also check calibration,
-                run-to-run reliability, temporal confounding, and fold stability. Recipes
+                run-to-run reliability, temporal confounding, and fold stability. Trends
                 that clear the bar are marked Validated; those that only discriminate are
                 Directional; those that fail are shown as Experimental, never dressed up
                 as more.
@@ -258,7 +257,7 @@ export default function MethodologyPage() {
               style={{ color: "var(--qgi-text-muted)" }}
             >
               We use leave-one-country-out rather than random splits on purpose: random
-              test sets leak regional structure and flatter the model. A recipe has to
+              test sets leak regional structure and flatter the model. A trend has to
               generalise to a country it has never seen, or it does not earn a Validated
               mark.
             </p>
@@ -336,7 +335,7 @@ export default function MethodologyPage() {
               className="text-sm leading-relaxed mb-6"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              A recipe is only as trustworthy as the events behind it. Here is how every
+              A trend is only as trustworthy as the events behind it. Here is how every
               event earns its place before it can shape a single reading.
             </p>
             <VerificationFlow />
@@ -355,7 +354,7 @@ export default function MethodologyPage() {
                 className="text-sm leading-relaxed mb-3"
                 style={{ color: "var(--qgi-text)" }}
               >
-                Take the <strong>currency crisis</strong> recipe. From the indicators that
+                Take the <strong>currency crisis</strong> trend. From the indicators that
                 moved together in the run-up to past currency crises, reserves drawing
                 down, short-term debt climbing, confidence in the currency slipping, the
                 Cascade method distils the shape those crises shared beforehand.
@@ -378,21 +377,21 @@ export default function MethodologyPage() {
               </p>
               <div className="mt-5 flex items-center gap-4 flex-wrap">
                 <Link
-                  href={"/recipes/currency_crisis" as Route}
+                  href={"/trends/currency_crisis" as Route}
                   className="px-5 py-2.5 rounded text-sm font-medium tracking-wide transition-all hover:brightness-110"
                   style={{ backgroundColor: "var(--qgi-accent)", color: "var(--qgi-bg)" }}
                 >
-                  See the currency-crisis recipe
+                  See the currency-crisis trend
                 </Link>
                 <Link
-                  href={"/recipes" as Route}
+                  href={"/trends" as Route}
                   className="text-sm tracking-wide border-b pb-0.5 transition-colors hover:text-[var(--qgi-accent)] hover:border-[var(--qgi-accent)]"
                   style={{
                     color: "var(--qgi-text-muted)",
                     borderColor: "var(--qgi-border)",
                   }}
                 >
-                  Browse every recipe &rarr;
+                  Browse every trend &rarr;
                 </Link>
               </div>
             </div>
@@ -404,11 +403,11 @@ export default function MethodologyPage() {
               className="text-sm leading-relaxed mb-3"
               style={{ color: "var(--qgi-text-muted)" }}
             >
-              Not every kind of event leaves the same fingerprint in the data. Some
-              recipes stand out sharply from everything else; others are fainter. Every
-              recipe carries a confidence mark for how clearly its shape separates from
-              the noise, and that mark travels with it, onto every recipe and every
-              country reading.
+              Not every kind of event leaves the same fingerprint in the data. Some trends
+              stand out sharply from everything else; others are fainter. Every trend
+              carries a confidence mark for how clearly its shape separates from the
+              noise, and that mark travels with it, onto every trend and every country
+              reading.
             </p>
             <p
               className="text-sm leading-relaxed"
@@ -430,8 +429,8 @@ export default function MethodologyPage() {
                 <strong style={{ color: "var(--qgi-text)" }}>
                   It is resemblance, not probability.
                 </strong>{" "}
-                A country near the top of a recipe is tracing a shape that has run ahead
-                of that kind of event before. It is not a prediction that the event will
+                A country near the top of a trend is tracing a shape that has run ahead of
+                that kind of event before. It is not a prediction that the event will
                 happen.
               </li>
               <li>

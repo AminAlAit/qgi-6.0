@@ -183,7 +183,7 @@ function MovementRow({
     >
       {/* Recipe icon column */}
       <Link
-        href={`/recipes/${ev.recipe_id}` as Route}
+        href={`/trends/${ev.recipe_id}` as Route}
         style={{
           textDecoration: "none",
           color: "inherit",
@@ -254,7 +254,7 @@ function MovementRow({
           letterSpacing: "0.3px",
           whiteSpace: "nowrap",
         }}
-        title={`Rank moved from #${ev.prior_rank} to #${ev.new_rank} on this recipe row vs ${ev.vs_vintage}`}
+        title={`Rank moved from #${ev.prior_rank} to #${ev.new_rank} on this trend row vs ${ev.vs_vintage}`}
       >
         <DeltaIcon size={12} strokeWidth={2} />
         <span>

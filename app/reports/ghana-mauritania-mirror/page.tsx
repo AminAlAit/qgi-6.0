@@ -410,7 +410,7 @@ export default function GhanaMauritaniaReportPage() {
             Ghana&apos;s{" "}
             <Fn n={2}>
               <Link
-                href={"/recipes/elections_and_voting" as Route}
+                href={"/trends/elections_and_voting" as Route}
                 className="underline underline-offset-2"
                 style={{ color: "var(--qgi-accent)" }}
               >
@@ -437,7 +437,7 @@ export default function GhanaMauritaniaReportPage() {
           <p>
             Ghana&apos;s{" "}
             <Link
-              href={"/recipes/elections_and_voting" as Route}
+              href={"/trends/elections_and_voting" as Route}
               className="underline underline-offset-2"
               style={{ color: "var(--qgi-accent)" }}
             >
@@ -827,7 +827,7 @@ export default function GhanaMauritaniaReportPage() {
               </Link>
               . The Elections and Voting precedent cohort (131 countries ranked) is at{" "}
               <Link
-                href={"/recipes/elections_and_voting" as Route}
+                href={"/trends/elections_and_voting" as Route}
                 className="underline underline-offset-2 transition-colors hover:text-[var(--qgi-accent)]"
                 style={{ color: "var(--qgi-accent)" }}
               >

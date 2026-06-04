@@ -49,7 +49,7 @@ export function WhyScoresPanel({
             margin: 0,
           }}
         >
-          Driver attribution available once the country is scored on at least one recipe.
+          Driver attribution available once the country is scored on at least one trend.
         </p>
       ) : (
         <>

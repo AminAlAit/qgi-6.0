@@ -92,7 +92,7 @@ export function ScoreDistributionPanel({
         }}
       >
         <h2 style={{ fontSize: "15px", fontWeight: 600, color: familyColor, margin: 0 }}>
-          Score distribution
+          Score Distribution
         </h2>
         <div
           style={{
@@ -138,7 +138,7 @@ export function ScoreDistributionPanel({
             letterSpacing: "0.1px",
           }}
         >
-          Score distribution
+          Score Distribution
         </h2>
         {/* V4.1 #26: explicit 1-line caption. The chart shows score spread;
             most readers don't intuit a histogram of recipe scores without
@@ -152,8 +152,8 @@ export function ScoreDistributionPanel({
             maxWidth: "60ch",
           }}
         >
-          How the recipe&apos;s scores spread across every country we evaluate. The right
-          tail (the small set of high-scoring countries) is where the recipe flags
+          How the trend&apos;s scores spread across every country we evaluate. The right
+          tail (the small set of high-scoring countries) is where the trend flags
           structural resemblance to past precedents. Hover any bar for the countries
           inside that score range.
         </p>
@@ -210,7 +210,7 @@ function Histogram({
         viewBox={`0 0 ${W} ${H}`}
         style={{ width: "100%", height: "auto", display: "block" }}
         role="img"
-        aria-label="Histogram of recipe scores"
+        aria-label="Histogram of trend scores"
       >
         {[0.25, 0.5, 0.75, 1].map((t) => {
           const y = PAD_T + plotH - t * plotH;

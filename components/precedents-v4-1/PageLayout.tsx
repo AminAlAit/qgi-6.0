@@ -90,10 +90,10 @@ export function PageLayout({
               }}
             >
               <Link
-                href={"/recipes" as Route}
+                href={"/trends" as Route}
                 style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
               >
-                ← Recipes
+                ← Trends
               </Link>
               <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
               {/* V4.1 §1.2: family rendered as label only — no letter glyph. */}
@@ -168,6 +168,7 @@ export function PageLayout({
               )}
               {definition && (
                 <p
+                  data-tour="definition-lede"
                   style={{
                     marginTop: "16px",
                     marginBottom: 0,

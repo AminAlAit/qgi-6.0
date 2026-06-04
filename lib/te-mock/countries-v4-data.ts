@@ -35,6 +35,7 @@ import {
 } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
 import { getIndicatorLabel } from "@/lib/indicator-labels";
+import { whnBlurb } from "@/lib/curation/what-happened-next";
 
 export interface CountryTopRecipe {
   recipe_id: string;
@@ -2702,6 +2703,7 @@ function buildTEAnalogIndex(): Map<string, CountryAnalog[]> {
           match_score: a.match_score <= 1 ? a.match_score * 100 : a.match_score,
           primary_recipe_id: a.primary_recipe_id,
           what_happened_next:
+            whnBlurb(a.country_iso2, a.country, a.year) ??
             a.what_happened_next ??
             "Outcome history is still being curated for this analog.",
           weak_analog: a.weak_analog ?? false,

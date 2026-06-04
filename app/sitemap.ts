@@ -31,11 +31,11 @@ const STATIC_ROUTES: Array<{
   // redesigns it as QGI's landing page). When PR-vi flips it to
   // indexable, add `{ path: "/dashboard", changeFrequency: "weekly", priority: 0.95 }`.
   // V4.1 canonical family pages (promoted 2026-05-28).
-  // /signals and /precedents are deleted; /recipes, /countries, /patterns
+  // /signals and /precedents are deleted; /trends, /countries, /patterns
   // are now V4.1 canonical. /risk-board, /compare, /compound-risk,
   // /analogues are new surfaces added in the V4.1 promo.
   { path: "/dashboard", changeFrequency: "daily", priority: 0.95 },
-  { path: "/recipes", changeFrequency: "weekly", priority: 0.9 },
+  { path: "/trends", changeFrequency: "weekly", priority: 0.9 },
   { path: "/countries", changeFrequency: "daily", priority: 0.9 },
   { path: "/patterns", changeFrequency: "weekly", priority: 0.7 },
   { path: "/risk-board", changeFrequency: "daily", priority: 0.8 },
@@ -43,7 +43,7 @@ const STATIC_ROUTES: Array<{
   // Redirect 308 → /risk-board.
   { path: "/compare", changeFrequency: "weekly", priority: 0.6 },
   { path: "/analogues", changeFrequency: "weekly", priority: 0.6 },
-  // /recipe-tracker route deleted 2026-05-29 — folded into /recipes via
+  // /recipe-tracker route deleted 2026-05-29 — folded into /trends via
   // the per-card Confidence badge. The blog post at /blog/recipe-tracker
   // is unaffected (separate route, audience-facing program update).
   { path: "/methodology", changeFrequency: "monthly", priority: 0.8 },
@@ -134,7 +134,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // 2026-06-01: the /precedents/{slug} and /signals/{...} emissions were
   // removed. Both route families were deleted in the V4.1 promotion (they
   // now redirect or 404), so listing them only fed search engines
-  // redirecting/dead URLs. Recipes live at /recipes; country profiles at
+  // redirecting/dead URLs. Recipes live at /trends; country profiles at
   // /countries/{id}, which is the only dynamic family still emitted here.
   try {
     const data = await loadCountryRisks();

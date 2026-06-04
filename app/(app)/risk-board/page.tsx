@@ -16,7 +16,7 @@ import { statusLabel } from "@/lib/te-mock/country-families";
 export const metadata: Metadata = {
   title: "Risk Board · QG Intelligence",
   description:
-    "Present-tense, tier-gated discrimination ranks across the recipe catalog. The honest replacement for the retired Signals page.",
+    "Present-tense, tier-gated discrimination ranks across the trend catalog. The honest replacement for the retired Signals page.",
 };
 
 export default function RiskBoardPage() {
@@ -111,7 +111,7 @@ export default function RiskBoardPage() {
               margin: "0 0 10px",
             }}
           >
-            Where today&apos;s country paths resemble history&apos;s event recipes
+            Where today&apos;s country paths resemble history&apos;s event trends
           </h1>
           <p
             style={{
@@ -126,7 +126,7 @@ export default function RiskBoardPage() {
                 the "Not a forecast" hedge. New copy frames rows + cells
                 + the multi-country pick-and-compare affordance. No em-dashes
                 per V4.1 §11. */}
-            Each row is an event recipe, a shape reconstructed from past cases. Each cell
+            Each row is an event trend, a shape reconstructed from past cases. Each cell
             shows how closely a country&apos;s recent path matches that shape. Scan a row
             for today&apos;s closest matches, or pick countries to compare them across the
             catalog.
@@ -172,7 +172,7 @@ export default function RiskBoardPage() {
         >
           {/* V4.1 §2: "Vintage: {BOARD_VINTAGE}" removed from footer. */}
           <span>
-            Scores refresh on each data release. New recipes appear as their evidence base
+            Scores refresh on each data release. New trends appear as their evidence base
             grows.
           </span>
         </footer>

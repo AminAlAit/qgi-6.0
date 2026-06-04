@@ -270,7 +270,7 @@ export function CountryPicker({
         >
           {entries.length} countries available. The selected country&apos;s recent
           12-quarter composite trajectory is matched against pre-event trajectories in the
-          recipe library.
+          trend library.
         </div>
       </div>
 

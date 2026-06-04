@@ -59,8 +59,7 @@ export function SensitivityPanel({
             margin: 0,
           }}
         >
-          Sensitivity analysis available once the country is scored on at least one
-          recipe.
+          Sensitivity analysis available once the country is scored on at least one trend.
         </p>
       ) : (
         <ul

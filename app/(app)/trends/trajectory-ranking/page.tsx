@@ -1,5 +1,5 @@
 /**
- * /recipes/trajectory-ranking — Trajectory strength ranking.
+ * /trends/trajectory-ranking — Trajectory strength ranking.
  *
  * MOCK ELIMINATION — 2026-05-30
  * getRanking() built its rows from patterns-v4-data.ts synthesised
@@ -19,7 +19,7 @@ import type { Route } from "next";
 export const metadata: Metadata = {
   title: "Trajectory strength ranking · QG Intelligence",
   description:
-    "Top countries ranked by how closely their current movement resembles any recipe trajectory.",
+    "Top countries ranked by how closely their current movement resembles any trend trajectory.",
 };
 
 export default function TrajectoryRankingPage() {
@@ -40,10 +40,10 @@ export default function TrajectoryRankingPage() {
           }}
         >
           <Link
-            href={"/recipes" as Route}
+            href={"/trends" as Route}
             style={{ color: "var(--qgi-text-muted)", textDecoration: "none" }}
           >
-            ← Recipes
+            ← Trends
           </Link>
           <span style={{ margin: "0 8px", opacity: 0.5 }}>/</span>
           <span style={{ color: "var(--qgi-text)" }}>Trajectory strength ranking</span>
@@ -104,10 +104,10 @@ export default function TrajectoryRankingPage() {
             }}
           >
             The trajectory strength ranking lists countries whose current indicator
-            movement most closely resembles a recipe&apos;s canonical shape. This ranking
+            movement most closely resembles a trend&apos;s canonical shape. This ranking
             is a real concept the bake will carry, but per-country trajectory alignment
             scores are not yet emitted by the bake. The table will populate here when the
-            trajectory engine begins scoring countries against each recipe shape.
+            trajectory engine begins scoring countries against each trend shape.
           </p>
         </div>
       </div>

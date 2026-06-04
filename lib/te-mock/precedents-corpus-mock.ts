@@ -18,6 +18,7 @@
 import type { PrecedentEvent } from "@/components/precedents-v4-1/PrecedentsTimelinePanel";
 import { loadAllCards } from "@/lib/te-data-contract/load";
 import { NAME_TO_ISO2, flagFromIso2 } from "@/lib/te-mock/country-iso2";
+import { cleanEmDashes } from "@/lib/clean-text";
 
 // ─── Hand-authored corpus events for cascade-era / demo recipes ───────────────
 
@@ -76,7 +77,7 @@ const foreignInterventionEvents: PrecedentEvent[] = [
     country_iso: "SDN",
     flag_emoji: "🇸🇩",
     action: "vacated",
-    reason: "Re-coded intra-state RSF/SAF; not foreign per recipe def.",
+    reason: "Re-coded intra-state RSF/SAF; not foreign per trend def.",
   },
   {
     year: 2024,
@@ -237,7 +238,7 @@ function buildFromCard(recipeId: string): PrecedentEvent[] {
         country_iso: e.country_iso ?? e.country_name.slice(0, 3).toUpperCase(),
         flag_emoji: flag ?? "",
         action: "added" as const,
-        reason: e.label ?? "In training set",
+        reason: cleanEmDashes(e.label ?? "In training set"),
       };
     });
   } catch {
@@ -277,4 +278,57 @@ export function getTotalEventsInCorpus(recipeId: string): number {
   } catch {
     return 0;
   }
+}
+
+/** One real precedent, used to ground the Optimal-window "Example" block. */
+export interface WindowExample {
+  country: string;
+  /** Lowercase 2-letter ISO for flagcdn (e.g. "af"). */
+  iso2: string;
+  /** Year the event happened (the end of the run-up window). */
+  year: number;
+  /** The real curated event label, shown small so the example is verifiable. */
+  label: string;
+}
+
+/**
+ * Pick the single best, TRUE precedent to anchor a trend's Optimal-window
+ * "Example". We prefer a documented historical training positive
+ * (`in_training_set`) with a known flag and a clearly-past year, so the
+ * "<start> -- Xy --> <end>" line reads as a real, completed run-up rather than
+ * a current-state detection. Returns null when the recipe has no card or no
+ * usable corpus event, in which case the panel renders without the example.
+ *
+ * Every value comes straight from the card's verified corpus — nothing here is
+ * hand-typed, so the example can never drift from the data.
+ */
+export function getWindowExample(recipeId: string): WindowExample | null {
+  let card;
+  try {
+    card = loadAllCards()[recipeId];
+  } catch {
+    return null;
+  }
+  const events = card?.precedents_corpus?.events;
+  if (!events || events.length === 0) return null;
+
+  const usable = events.filter((e) => e.country_iso && typeof e.year === "number");
+  if (usable.length === 0) return null;
+
+  const inTraining = usable.filter((e) => e.in_training_set);
+  const pool = inTraining.length > 0 ? inTraining : usable;
+  // Prefer a clearly-historical year so the run-up window sits fully in the
+  // past; otherwise fall back to the most recent usable event.
+  const historical = pool.filter((e) => e.year <= 2023);
+  const ranked = (historical.length > 0 ? historical : pool)
+    .slice()
+    .sort((a, b) => b.year - a.year);
+  const best = ranked[0];
+
+  return {
+    country: best.country_name,
+    iso2: best.country_iso!.toLowerCase(),
+    year: best.year,
+    label: cleanEmDashes(best.label),
+  };
 }
