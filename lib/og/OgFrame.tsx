@@ -205,7 +205,7 @@ export function OgFrame({ eyebrow, title, tagline, rightStat }: OgFrameProps) {
             display: "flex",
           }}
         >
-          Pattern Recurrence Intelligence
+          Read against history
         </div>
       </div>
     </div>

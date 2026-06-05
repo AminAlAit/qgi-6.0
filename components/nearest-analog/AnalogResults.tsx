@@ -94,6 +94,8 @@ export function AnalogResults({ entry }: AnalogResultsProps) {
             analog={a}
             currentCountryName={entry.name}
             currentTrajectory={entry.indicator_trajectory}
+            subjectIso2={entry.iso2}
+            subjectRegion={entry.region}
           />
         ))}
       </div>

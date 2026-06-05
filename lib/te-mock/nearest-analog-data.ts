@@ -257,6 +257,7 @@ const ISO2_TO_ISO3: Readonly<Record<string, string>> = {
 
 export interface HistoricalAnalog {
   country: string;
+  country_iso2: string | null; // ISO-2 (lowercase) from the bake; keys the analogue detail page
   year: number;
   match_score: number; // 0..100, cosine-similarity scaled
   primary_recipe_id: string; // recipe whose canonical shape drove the match
@@ -278,6 +279,7 @@ export interface RecipeContribution {
 
 export interface CurrentCountryEntry {
   iso: string;
+  iso2: string; // ISO-2 (lowercase) — the subject half of the analogue detail key
   name: string;
   region: string;
   indicator_trajectory: number[]; // 12 quarters of "today" — drives the sparkline
@@ -389,6 +391,7 @@ function buildAllEntries(): CurrentCountryEntry[] {
 
           return {
             country: a.country ?? "",
+            country_iso2: a.country_iso2 ? a.country_iso2.toLowerCase() : null,
             year: a.year ?? 0,
             match_score: scaledScore,
             primary_recipe_id: a.primary_recipe_id ?? "",
@@ -432,6 +435,7 @@ function buildAllEntries(): CurrentCountryEntry[] {
 
       base.push({
         iso: iso3,
+        iso2: (te.iso2 ?? "").toLowerCase(),
         name: te.name,
         region: te.region ?? "Unknown",
         // Pipeline does not emit per-country indicator_trajectory — honest empty array.
