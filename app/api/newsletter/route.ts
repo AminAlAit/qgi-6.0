@@ -5,19 +5,22 @@ import { addNewsletterContact, deliverEmail } from "@/lib/email-delivery";
 /**
  * POST /api/newsletter
  *
- * Captures a newsletter sign-up (email only) and notifies the ops inbox via
- * Resend. No database: the signal is an email to the team, which is enough
- * for the pre-launch list. When a managed list (e.g. a Resend Audience or an
- * ESP) is wired, swap the deliver call for an audience-add.
+ * Captures a newsletter sign-up (email only). Two things happen per sign-up:
+ *  1. The address is stored as a contact in the Resend Audience when
+ *     RESEND_AUDIENCE_ID is configured (the durable list).
+ *  2. A notification email goes to amin@qgintelligence.com on EVERY sign-up
+ *     (founder ask, 2026-06-05), which also doubles as the no-audience
+ *     fallback so an address is never silently dropped.
  *
- * Returns 200 {ok:true} on delivery, 422 on a bad email, 503 when delivery
- * is not configured or fails — the client surfaces a graceful retry, never a
- * fake success.
+ * Returns 200 {ok:true} when either path succeeded, 422 on a bad email, 503
+ * when both fail — the client surfaces a graceful retry, never a fake success.
  */
 const Body = z.object({
   email: z.string().trim().email().max(254),
-  // Honeypot — must stay empty. Bots fill every field.
-  company: z.string().max(0).optional().or(z.literal("")),
+  // Honeypot — a hidden field real users never see. Bots that fill it are
+  // silently accepted below (we return ok without saving), so keep the schema
+  // permissive and handle it in code rather than rejecting with a raw zod error.
+  company: z.string().optional(),
 });
 
 export async function POST(req: Request) {
@@ -39,19 +42,25 @@ export async function POST(req: Request) {
   // Honeypot tripped: pretend success, save nothing.
   if (parsed.data.company) return NextResponse.json({ ok: true });
 
-  // Preferred: persist the address as a contact in the Resend audience.
-  const saved = await addNewsletterContact(parsed.data.email);
-  if (saved.ok) return NextResponse.json({ ok: true });
+  const email = parsed.data.email;
 
-  // Fallback: if the audience is not configured, at least notify the ops inbox
-  // so a sign-up is never silently dropped.
-  if (!saved.configured) {
-    const notified = await deliverEmail({
-      subject: "New QGI newsletter sign-up",
-      text: `New newsletter sign-up (audience not configured):\n\n${parsed.data.email}\n`,
-    });
-    if (notified.ok) return NextResponse.json({ ok: true });
-  }
+  // Persist the address as a contact in the Resend audience (when configured),
+  // AND notify the founder inbox on every sign-up (founder ask, 2026-06-05).
+  // Either succeeding means the sign-up is not lost.
+  const saved = await addNewsletterContact(email);
+  const notified = await deliverEmail({
+    to: "amin@qgintelligence.com",
+    subject: "New QGI newsletter sign-up",
+    text: `New newsletter sign-up:\n\n${email}\n\nStored in Resend audience: ${
+      saved.ok
+        ? "yes"
+        : saved.configured
+          ? "FAILED (audience error)"
+          : "no (audience not configured)"
+    }\n`,
+  });
+
+  if (saved.ok || notified.ok) return NextResponse.json({ ok: true });
 
   return NextResponse.json(
     { error: "Could not record your sign-up just now. Please try again shortly." },
