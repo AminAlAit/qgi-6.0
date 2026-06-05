@@ -11,7 +11,7 @@
  *                    { ok:false, configured:false } and the caller surfaces a
  *                    graceful failure (we never fake a success).
  *   EMAIL_FROM       sender, must be a Resend-verified domain address.
- *                    Default "QG Intelligence <noreply@qgintelligence.com>".
+ *                    Default "QG Intelligence <noreply@send.qgintelligence.com>".
  *   EMAIL_TO         destination inbox. Default the ops inbox
  *                    "contact@qgintelligence.com".
  */
@@ -34,19 +34,21 @@ export interface DeliverResult {
 }
 
 /**
- * Persist a newsletter sign-up as a contact in a Resend Audience. This is the
- * real "save the email" path: contacts live in the audience, exportable and
- * mailable later. Requires RESEND_API_KEY + RESEND_AUDIENCE_ID. Returns
- * { ok:false, configured:false } when the audience is not set up, so the caller
- * can fall back to a notification email rather than silently dropping the address.
+ * Persist a newsletter sign-up as a contact in the Resend Audience. This is
+ * the real "save the email" path: contacts live in the account-level audience,
+ * exportable and mailable later. Requires only RESEND_API_KEY — Resend's
+ * current API (POST /contacts) is single-audience, so there is no audience id
+ * to configure (the old audiences/{id}/contacts endpoint does not exist on
+ * new accounts; verified against the dashboard + docs 2026-06-05). Returns
+ * { ok:false, configured:false } when the key is absent, so the caller can
+ * fall back to a notification email rather than silently dropping the address.
  */
 export async function addNewsletterContact(email: string): Promise<DeliverResult> {
   const key = process.env.RESEND_API_KEY;
-  const audienceId = process.env.RESEND_AUDIENCE_ID;
-  if (!key || !audienceId) return { ok: false, configured: false };
+  if (!key) return { ok: false, configured: false };
 
   try {
-    const res = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+    const res = await fetch("https://api.resend.com/contacts", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${key}`,
